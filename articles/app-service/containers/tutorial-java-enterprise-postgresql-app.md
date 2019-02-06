@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 3a668783e8257ef9074d12b30ff0afc3a40325f4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a6e6dfb70182d8b4924a184dcebd1d06695911a5
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539722"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747009"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Oktatóanyag: A Java EE-alapú és a Postgres-webalkalmazás létrehozása az Azure-ban
 
-Ez az oktatóanyag bemutatja, hogyan lehet a Java Enterprise Edition (EE) webalkalmazás létrehozása az Azure App Service-ben, és csatlakoztassa a Postgres-adatbázis. Amikor kész, hogy egy [WildFly](https://www.wildfly.org/about/) adattárolásra alkalmazás [, Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) Azure-on futó [linuxos App Service](app-service-linux-intro.md).
+Ez az oktatóanyag bemutatja, hogyan lehet a Java Enterprise Edition (EE) webalkalmazás létrehozása az Azure App Service-ben, és csatlakoztassa a Postgres-adatbázis. Amikor kész, hogy egy [WildFly](https://www.wildfly.org/about/) adattárolásra alkalmazás [, Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) Azure-on futó [Linuxon futó App Service](app-service-linux-intro.md).
 
 Az oktatóanyag során a következőket fogja elsajátítani:
 > [!div class="checklist"]
@@ -50,40 +50,24 @@ git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
 
 ### <a name="update-the-maven-pom"></a>A Maven POM frissítése
 
-A Maven POM frissítse az App Service a kívánt nevére és erőforráscsoportjára csoportot. Ezeket az értékeket fogja elhelyezte a Azure beépülő modult, amely a további _pom.xml_ fájlt. Nem kell előzetesen létre az App Service-csomag vagy a példány. A Maven bővítménnyel hoz létre az erőforráscsoportot és az App Service-ben, ha azt nem létezik.
+A kívánt nevére és erőforráscsoportjára csoportot az App Service frissítése a Maven Azure beépülő modult. Nem kell előzetesen létre az App Service-csomag vagy a példány. A Maven bővítménnyel hoz létre az erőforráscsoportot és az App Service-ben, ha azt nem létezik. 
 
-Akkor is görgessen le a `<plugins>` szakaszában _pom.xml_ vizsgálhatja meg az Azure beépülő modul. A szakaszban a `<plugin>` konfigurációját a a _pom.xml_ esetében az azure-webapp-maven-beépülő modul tartalmaznia kell a következő konfigurációt:
+Akkor is görgessen le a `<plugins>` szakaszában _pom.xml_, 200, a módosításokat. sor. 
 
 ```xml
-      <!--*************************************************-->
-      <!-- Deploy to WildFly in App Service Linux           -->
-      <!--*************************************************-->
- 
-      <plugin>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.5.0</version>
-        <configuration>
- 
-          <!-- Web App information -->
-          <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
-          <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
-          <appName>${WEBAPP_NAME}</appName>
-          <region>${REGION}</region>
- 
-          <!-- Java Runtime Stack for Web App on Linux-->
-          <linuxRuntime>wildfly 14-jre8</linuxRuntime>
- 
-        </configuration>
-      </plugin>
+<!-- Azure App Service Maven plugin for deployment -->
+<plugin>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>azure-webapp-maven-plugin</artifactId>
+  <version>${version.maven.azure.plugin}</version>
+  <configuration>
+    <appName>YOUR_APP_NAME</appName>
+    <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup>
+    <linuxRuntime>wildfly 14-jre8</linuxRuntime>
+  ...
+</plugin>  
 ```
-
-A helyőrzőket cserélje le a kívánt erőforrás nevét:
-```xml
-<azure.plugin.appname>YOUR_APP_NAME</azure.plugin.appname>
-<azure.plugin.resourcegroup>YOUR_RESOURCE_GROUP</azure.plugin.resourcegroup>
-```
-
+Cserélje le `YOUR_APP_NAME` és `YOUR_RESOURCE_GROUP` az App Service- és erőforrás-csoport nevére.
 
 ## <a name="build-and-deploy-the-application"></a>Az alkalmazás létrehozása és üzembe helyezése
 
@@ -139,12 +123,27 @@ Most már használunk néhány módosítást, a Java-alkalmazás lehetővé tesz
 
 ### <a name="add-postgres-credentials-to-the-pom"></a>A POM Postgres hitelesítő adatok hozzáadása
 
-A _pom.xml_ a helyőrző értékeket cserélje le az Postgres server name, rendszergazdai bejelentkezési nevet és jelszót. Az alkalmazás újbóli telepítése során ezeket az értékeket fogja alkalmazza, a környezeti változókat az App Service-példányában.
+A _pom.xml_, a nagybetűs helyőrző értékeket cserélje le az Postgres server name, rendszergazdai bejelentkezési nevet és jelszót. Ezek a mezők az Azure-Maven bővítménnyel belül vannak. (Ne felejtse el `YOUR_SERVER_NAME`, `YOUR_PG_USERNAME`, és `YOUR_PG_PASSWORD` a a `<value>` ... címkék nem található a `<name>` címkék!)
 
 ```xml
-<azure.plugin.postgres-server-name>SERVER_NAME</azure.plugin.postgres-server-name>
-<azure.plugin.postgres-username>USERNAME@FIRST_PART_OF_SERVER_NAME</azure.plugin.postgres-username>
-<azure.plugin.postgres-password>PASSWORD</azure.plugin.postgres-password>
+<plugin>
+      ...
+      <appSettings>
+      <property>
+        <name>POSTGRES_CONNECTIONURL</name>
+        <value>jdbc:postgresql://YOUR_SERVER_NAME:5432/postgres?ssl=true</value>
+      </property>
+      <property>
+        <name>POSTGRES_USERNAME</name>
+        <value>YOUR_PG_USERNAME</value>
+      </property>
+      <property>
+        <name>POSTGRES_PASSWORD</name>
+        <value>YOUR_PG_PASSWORD</value>
+      </property>
+    </appSettings>
+  </configuration>
+</plugin>
 ```
 
 ### <a name="update-the-java-transaction-api"></a>A Java-tranzakció API frissítése
@@ -164,7 +163,7 @@ Biztosíthatók az újrakonfigurált alkalmazás üzembe helyezése előtt a Wil
 - **postgresql-42.2.5.jar**: A JAR-fájlt a Postgres készült JDBC-illesztőprogram. További információkért lásd: a [hivatalos webhely](https://jdbc.postgresql.org/index.html).
 - **postgres-module.xml**: Az XML-fájl deklarálja a Postgres-modul (org.postgres) nevét. Az erőforrások és a használt modul szükséges függőségeket is meghatározza.
 - **jboss_cli_commands.cl**: Ez a fájl tartalmazza a konfigurációs parancsok, amelyek a JBoss CLI való fogja végrehajtani. A parancsok a Postgres-modul hozzáadása a WildFly application server, adja meg a hitelesítő adatokat, deklarálja JNDI nevét, állítsa be az időkorlát küszöbértéke stb. Ha ismeri a JBoss CLI-vel, tekintse meg a [dokumentációs](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
-- **startup_script.SH**: Végül Ez a héjparancsfájl fog hajtható végre, amikor elindul az App Service-példányhoz. A parancsfájl csak egy függvényt hajtja végre: szereplő parancsok átirányításával `jboss_cli_commands.cli` JBoss CLI.
+- **startup_script.sh**: Végül Ez a héjparancsfájl fog hajtható végre, amikor elindul az App Service-példányhoz. A parancsfájl csak egy függvényt hajtja végre: szereplő parancsok átirányításával `jboss_cli_commands.cli` JBoss CLI.
 
 Erősen javasoljuk, hogy a fájlok tartalmának olvasása különösen _jboss_cli_commands.cli_.
 

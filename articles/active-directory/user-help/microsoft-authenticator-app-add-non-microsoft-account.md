@@ -1,6 +1,6 @@
 ---
-title: A személyes-Microsoft fiókok hozzáadása a Microsoft Authenticator alkalmazás – az Azure Active Directory |} A Microsoft Docs
-description: Hogyan lehet hozzáadni a személyes-Microsoft fiókok, például Google, Facebook vagy a GitHub kétfaktoros ellenőrzéshez a Microsoft Authenticator alkalmazást.
+title: A nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazás – az Azure Active Directory |} A Microsoft Docs
+description: Hogyan lehet hozzáadni a nem Microsoft-fiókok, például Google, Facebook vagy a GitHub kétfaktoros ellenőrzéshez a Microsoft Authenticator alkalmazást.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: db59d3d2795b8cfa3fc7682f4486d968f39ab6ab
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0103aa7fb9142f38e0f34cd70fbdb198137bc2a0
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459145"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753826"
 ---
-# <a name="add-your-personal-non-microsoft-accounts"></a>A személyes-Microsoft fiókok hozzáadása
-Hozzáadása a személyes-Microsoft fiókok, például Google, Facebook vagy a GitHub kétfaktoros ellenőrzéshez a Microsoft Authenticator alkalmazást.
+# <a name="add-your-non-microsoft-accounts"></a>A nem Microsoft-fiókok hozzáadása
+Hozzáadása a nem Microsoft-fiókok, például Google, Facebook vagy a GitHub kétfaktoros ellenőrzéshez a Microsoft Authenticator alkalmazást. A Microsoft Authenticator alkalmazás együttműködik a kétfaktoros ellenőrzési használó alkalmazásokban, és olyan fiókot, amely támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
 
 >[!Important]
 >A fiók hozzáadása előtt le kell töltenie és telepítse a Microsoft Authenticator alkalmazást. Ha még nem tette, hogy, kövesse a [töltse le és telepítse az alkalmazást](microsoft-authenticator-app-how-to.md) cikk.
@@ -29,7 +29,7 @@ Hozzáadása a személyes-Microsoft fiókok, például Google, Facebook vagy a G
 
 1. Jelentkezzen be a fiókjába, és kapcsolja be az eszköz vagy a számítógép kétfaktoros hitelesítési.
 
-2. Adja hozzá a fiókot a Microsoft Authenticator alkalmazást.
+2. Adja hozzá a fiókot a Microsoft Authenticator alkalmazást. Előfordulhat, hogy megkérdezi, hogy QR-kód beolvasása a folyamat részeként.
 
 A Facebook, Google, GitHub és az Amazon fiókok Itt a folyamat tudjuk biztosítani, de ez a folyamat megegyezik más alkalmazás, például az Instagramon, a Netflix vagy az Adobe.
 

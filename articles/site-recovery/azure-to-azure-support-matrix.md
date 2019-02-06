@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 3b41f975b484083dab79f16984e84018b2e830a1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 752be8270f3eb0bcc018cfcb7f87f30f5afbc60a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497298"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753095"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -58,9 +58,9 @@ Kína | Kelet-Kína, Észak-Kína, Kína North2, Kína East2
 >[!NOTE]
 >
 > - A **Dél-Brazília** régió, hogy replikálhat és átadja a feladatokat a következők egyikét: USA déli középső Régiója, USA nyugati középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA és USA északi középső Régiója régióban. Megjegyzendő, hogy a Site Recovery csak engedélyezve Dél-brazíliai régióban, ahol a virtuális gépek védhetők a forrásrégióban, használható. Azt **nem használható egy cél DR régióban** bármely, az USA déli középső Régióját például az Azure-régióban. Folyamatban van a késés okát megfigyelt földrajzi távolságtól miatt javasoljuk, hogy válassza ki a Dél-Brazília kivételével bármely más amerikai régióban.
-> 
+>
 > - Ha Ön **nem lehet megtekinteni az egy régióban** , ahová **hozzon létre egy tárolót a** majd ellenőrizze, hogy az előfizetés-erőforrások létrehozása az adott régióban hozzáféréssel rendelkezik. Példa: Ha nem képes tároló létrehozása a Dél-Franciaország, akkor az előfizetés nem rendelkezik hozzáféréssel Franciaország, Dél-régió. Adja meg az fájl támogatási jegyet a probléma típusa "előfizetés-kezelési" és a probléma "további általános kérdések a" tulajdonos "engedélyezett a XXX-előfizetés az Azure-régió"
-> 
+>
 > - Ha Ön **nem lehet megtekinteni az egy régióban** földrajzi fürtön belüli **replikáció engedélyezése során** majd ellenőrizze, hogy az előfizetés virtuális gép létrehozása az adott régióban hozzáféréssel rendelkezik. Példa: Ha szeretné védeni a virtuális gépek közép-Franciaország, Franciaország, Dél- és nem jelenik meg Dél-Franciaország a régió alatt legördülő akkor az előfizetéssel nem fér hozzá az adott régióban virtuális gép üzembe helyezéséhez. Adja meg az fájl támogatási jegyet a probléma típusa "előfizetés-kezelési" és a probléma "további általános kérdések a" tulajdonos "engedélyezett a XXX-előfizetés az Azure-régió"
 > - Régiók nem választhatja ki a fent említett földrajzi fürtök között.
 
@@ -123,7 +123,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
-Debian 7 | 9.18,9.19,9.20,9.21 | 3.2.0-4-amd64 to 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.19,9.20,9.21,9.22 | 3.2.0-4-amd64 to 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
 Debian 8 | 9.20, 9.21 | 3.16.0-4-amd64 to 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.8-amd64 |
 Debian 8 | 9.19 | 3.16.0-4-amd64 to 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.7-amd64 |
@@ -133,10 +133,10 @@ Debian 8 | 9.18 | 3.16.0-4-amd64 to 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.22 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.72-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.21 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.72-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.20 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.69-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.140-94.42-default SP3 4.4.73-5-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.80-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.138-94.39-default SP3 4.4.73-5-default |
 
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikált gépek – Linux rendszer/Vendég fájltárolás

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 4c5742f8133b5915b7c838888f9887482ac5627e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: be66f24ec6532b93c4554568b0a58d467a09c600
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695355"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746421"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory join megvalósítás megtervezése
 
@@ -111,7 +111,7 @@ Ha a szervezet egy hitelesített kimenő proxy használatát írja elő az inter
 
 Hibrid Azure AD-csatlakozás egy olyan folyamat, automatikusan regisztrálja az Azure AD a helyi tartományhoz csatlakoztatott eszközök. Előfordulhatnak olyan esetek, amikor nem szeretné automatikusan regisztrálja az eszközök. Ha ez igaz az Ön számára, lásd: [eszközt, a hibrid Azure AD join vezérlése](hybrid-azuread-join-control.md).
 
-Ha a Windows 10-tartományhoz csatlakozó eszközök még [Azure ad-ben regisztrált](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) a bérlő, vegye figyelembe, hogy az állapot eltávolítása a hibrid Azure AD-csatlakozás engedélyezése előtt. A kettős állapotát lehet egyszerre, a hibrid Azure AD-csatlakozás és az Azure ad-ben regisztrált eszköz nem támogatott. A Windows 10-es 1809 a kiadásban a következő módosításokat végzett változtatások elkerülése érdekében ebben a kettős állapota: 
+Ha a Windows 10-tartományhoz csatlakozó eszközök még [Azure ad-ben regisztrált](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) a bérlőjéhez, erősen ajánlott, hogy az állapot eltávolítása a hibrid Azure AD-csatlakozás engedélyezése előtt. A Windows 10-es 1809 a kiadásban a következő módosításokat végzett változtatások elkerülése érdekében ebben a kettős állapota: 
  - Minden meglévő Azure ad-ben regisztrált állapot automatikusan megszűnik, miután az eszköz a hibrid Azure AD-hez. 
  - Folyamatban van az Azure AD-ban regisztrálva a beállításkulcs - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" hozzáadásával megakadályozhatja a tartományba léptetett eszköz = dword: 00000001
 
@@ -148,17 +148,17 @@ Az 1.1.819.0-s verziótól kezdve az Azure AD Connectben egy varázsló segíti 
  Ha a szükséges verzió az Azure AD Connect telepítésével lehetőség nem az Ön számára, lásd: [manuális konfigurálása az eszközregisztrációs](https://docs.microsoft.com/en-us/azure/active-directory/devices/hybrid-azuread-join-manual). 
 
 
-## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Alternatív bejelentkezési azonosító használatának támogatását a hibrid Azure AD-csatlakozás
+## <a name="on-premises-ad-upn-support-in-hybrid-azure-ad-join"></a>A helyszíni AD UPN támogatása a hibrid Azure AD-csatlakozás
 
-Korlátozott támogatást nyújt a Windows 10-es hibrid Azure AD-csatlakozás [alternatív bejelentkezési azonosítók](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) alapján a másodlagos bejelentkezési Azonosítót, [hitelesítési módszer](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), típusa és a Windows 10-es verzió. Alternatív bejelentkezési azonosítók, amelyek a környezetében létezhet két típusa van:
+Előfordulhat, hogy a helyszíni AD UPN-EK az Azure AD UPN-EK eltérő lehet. Ezekben az esetekben a Windows 10-es hibrid Azure AD-csatlakozás korlátozott támogatást biztosít a helyszíni AD UPN-EK alapján a [hitelesítési módszer](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), típusa és a Windows 10-es verzió. Két típusa van a helyszíni AD UPN-EK, amely a környezetében is létezik:
 
- - Irányítható másodlagos bejelentkezési Azonosítót: Egy útválasztós alternatív bejelentkezési Azonosítóval rendelkezik egy érvényes ellenőrzött tartományt, a tartományregisztráló regisztrált. Például, ha az elsődleges tartomány, a contoso.com contoso.org contoso.co.uk jsou Contoso tulajdonában lévő érvényes tartományok és [ellenőrzése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
+ - Irányítható egyszerű felhasználónév: Egy útválasztós UPN rendelkezik egy érvényes ellenőrzött tartományt, a tartományregisztráló regisztrált. Például akkor, ha a contoso.com az elsődleges tartomány Azure AD-ben, contoso.org lesz az elsődleges tartomány a helyszíni AD Contoso tulajdonában és [ellenőrzése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
  
- - A nem irányítható másodlagos bejelentkezési Azonosítót: Olyan nem átirányítható alternatív bejelentkezési azonosító nem rendelkezik egy ellenőrzött tartomány. Akkor csak a szervezet magánhálózaton belül. Például ha az elsődleges tartomány, a contoso.com contoso.local nem egy ellenőrizhető az internetes tartományához de szolgál a Contoso hálózatán belül.
+ - Nem átirányítható egyszerű felhasználónév: Olyan nem átirányítható egyszerű felhasználónév nem rendelkezik egy ellenőrzött tartomány. Akkor csak a szervezet magánhálózaton belül. Például akkor, ha a contoso.com az elsődleges tartomány Azure AD-ben, contoso.local lesz az elsődleges tartomány a helyszíni AD, de nem egy ellenőrizhető az internetes tartományához, és csak a Contoso belül a hálózati.
  
-Az alábbi táblázat részletesen mindkét támogatása a hibrid Azure AD-csatlakozás a Windows 10-es alternatív bejelentkezési azonosítók
+Az alábbi táblázat részletesen támogatja ezeket a helyszíni AD UPN-EK a Windows 10-es hibrid Azure AD-csatlakozás
 
-|Alternatív bejelentkezési azonosító típusa|Alkalmazási tartomány típusa|Windows 10-es verzió|Leírás|
+|Írja be a helyszíni AD UPN-jét|Alkalmazási tartomány típusa|Windows 10-es verzió|Leírás|
 |-----|-----|-----|-----|
 |Irányítható|Összevont |A 1703-as kiadás|Általánosan elérhető|
 |Irányítható|Managed|Az 1709-es kiadás|Jelenleg előzetes verzióban érhető el privát. Az Azure AD SSPR nem támogatott. |

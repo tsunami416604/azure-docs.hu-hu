@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 94b2ab0263ccb7b6835a7bbe76ed8776aadb1a65
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e79ffba90f0812d79bcb7ab808e2b6ba80e1c61b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228202"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756665"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V hibaelhárítása az Azure-replikáció és feladatátvétel
 
@@ -115,7 +115,7 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
         - A számláló: "Írási bájt / mp"</br>
         - Ezen adatok lemorzsolódási rátához növeli vagy továbbra is magas szinten, attól függően, hogyan foglalt a virtuális gép vagy az alkalmazások vannak.
         - Az átlagos lemez adatváltozása 2 MB/s a Site Recovery standard szintű tárolóra vonatkozó. [További információ](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - Emellett akkor is [ellenőrzése a storage skálázhatósági célértékét](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account).
+    - Emellett akkor is [ellenőrzése a storage skálázhatósági célértékét](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
 8. Futtassa a [Deployment Planner](hyper-v-deployment-planner-run.md).
 9. Tekintse át a javaslatok [hálózati](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) és [tárolási](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input).
 

@@ -16,12 +16,12 @@ ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 444c67e942fad732c959f834e2c50f0b2a35562c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c398e615e943caad40040ff1b87713304fd9f015
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246534"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746710"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 frissítése
 
@@ -153,6 +153,9 @@ A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az A
 
 <!-- 3190553 - IS ASDK -->
 - Kijavítva, amely jelzi, hogy az infrastruktúra szerepkör-példány nem érhető el, vagy skálázási egység csomópont offline állapotban volt zajos riasztások jönnek létre.
+
+<!-- 2724961 - IS ASDK -->
+- Egy probléma, amelyben a virtuális gépek – áttekintés oldalra megfelelően nem tudja megjeleníteni a virtuális gép metrikadiagram Fiexed. 
 
 ## <a name="changes"></a>Módosítások
 
@@ -297,11 +300,6 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 <!-- 1662991 IS ASDK --> 
 - Linux rendszerű virtuális gép diagnosztikai nem támogatott az Azure Stackben. A Virtuálisgép-diagnosztika engedélyezve van egy Linux rendszerű virtuális Gépet helyez üzembe, a központi telepítés sikertelen lesz. Az üzembe helyezés akkor is sikertelen, ha engedélyezi a Linux rendszerű virtuális gép alapvető metrikák diagnosztikai beállításokon keresztül.  
-
-<!-- 2724961- IS ASDK --> 
-- Amikor regisztrál a **Microsoft.Insight** az előfizetés beállításait, az erőforrás-szolgáltató és a Windows virtuális gép létrehozása a vendég operációs rendszer diagnosztikai engedélyezve van, a Processzorhasználat (%) diagramon a virtuális gépek – Áttekintés lapon does show mérőszámadatokat.
-
-   Keresse meg a mérőszámadatokat, például a processzor-diagram a virtuális gép, lépjen a **metrikák** ablakot, és a támogatott Windows VM show Vendég mérőszámok.
 
 <!-- 3507629 - IS, ASDK --> 
 - Felügyelt lemezeket hoz létre két új [kvótatípusok számítási](azure-stack-quota-types.md#compute-quota-types) korlátozhatja a felügyelt lemezek, amelyek kioszthatóak maximális kapacitását. Alapértelmezés szerint a 2048 GiB az egyes felügyelt lemezek kvóta van lefoglalva. Azonban előfordulhat, hogy problémák merülnek fel a következő:

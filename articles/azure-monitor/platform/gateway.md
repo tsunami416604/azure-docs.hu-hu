@@ -11,16 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 551e7c0ca3b4b5e0e94aca39e19d9a35d08e4e05
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e4ea964600c03ce3f3b5b276ed02d12f573814bf
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353039"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756495"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Számítógépek csatlakoztatása a Log Analytics-átjáró Internet-hozzáférés nélkül
+
+>[!NOTE]
+>Az Azure Monitor folyamatos Váltás a Microsoft Operations Management Suite (OMS) részeként az OMS-átjáró lesz példányaként a Log Analytics-átjáró. 
+>
+
 Ez a dokumentum ismerteti az Azure Automation szolgáltatással kommunikáció konfigurálása és a Log Analytics használatával az a Log Analytics-átjáró, amikor közvetlen csatlakoztatva, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáférés.  A Log Analytics-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozási paranccsal továbbítsa HTTP-proxyt, adatok gyűjtéséhez és küldhet az Azure Automation és a Log Analytics a felhasználók nevében.  
 
 A Log Analytics-átjáró támogatja:
@@ -146,7 +151,7 @@ Követelmények és a lépéseket, az átjáró és a Windows-számítógépeket
 
 Az átjáró kiszolgálón az ügynök telepítése után konfigurálhatja azt, hogy a munkaterületet, vagy a munkaterületek ügynökök az átjáró folytatott kommunikációra. A Log Analytics Windows-ügynök nincs telepítve az átjáróra, ha az esemény 300 íródik a **OMS-átjáró naplójába** eseménynaplójában arról, hogy az ügynök telepítve kell lennie. Ha az ügynök telepítve van, de nincs beállítva a jelentés ugyanazon a munkaterületen található, mint az ügynökök, és azt, események 105 figyelmezteti a jelentés ugyanazon a munkaterületen található, mint az ügynökök t folytatott kommunikációra konfigurálni kell az ügynököt az átjárón azonos eseménynaplóba írása He átjáró.
 
-A konfiguráció befejezése után újra kell indítania a **OMS-átjáró** szolgáltatást, a módosítások érvénybe léptetéséhez. Ellenkező esetben az átjáró el fogják utasítani próbál meg kommunikálni a Log Analytics és a jelentés eseményazonosító 105 az ügynökök a **OMS-átjáró naplójába** Eseménynapló. Ez is vonatkozik, ha hozzáad vagy eltávolít egy munkaterületet a az ügynök konfiguráció az átjárókiszolgálón.   
+A konfiguráció befejezése után újra kell indítania a **OMS-átjáró** szolgáltatást, a módosítások érvénybe léptetéséhez. Ellenkező esetben az átjáró visszautasítja az ügynökök a Log Analytics és a jelentés event ID 105 kommunikálni próbál a **OMS-átjáró naplójába** Eseménynapló. Ez is vonatkozik, ha hozzáad vagy eltávolít egy munkaterületet a az ügynök konfiguráció az átjárókiszolgálón.   
 
 Az Automation hibrid Runbook-feldolgozó kapcsolatos információkért lásd: [hibrid Runbook-feldolgozó üzembe helyezése](../../automation/automation-hybrid-runbook-worker.md).
 

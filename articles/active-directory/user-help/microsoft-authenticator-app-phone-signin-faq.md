@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: d0da7e19934123534bf063deecb5bff584dbc317
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9dc1246f8035dbe35ecc35f91f47aeb6caaa9ab8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699280"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750256"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Jelentkezzen be a fiókok a Microsoft Authenticator alkalmazással
 A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok kétfaktoros ellenőrzési használatakor. A kétfaktoros hitelesítési segítségével a fiókok biztonságosabb, hozzáférhet a különösen bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejtett is, amelyeket elloptak vagy feltört, kéttényezős hitelesítés végrehajtása egy további biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében.
@@ -35,7 +35,7 @@ A Microsoft Authenticator alkalmazás használata előtt a következőket kell t
 
  1. Töltse le és telepítse a Microsoft Authenticator alkalmazást. Ha még nem tette ez, [töltse le és telepítse az alkalmazást](microsoft-authenticator-app-how-to.md).
 
- 2. Adja hozzá a munkahelyi vagy iskolai, a személyes és a külső fiókok a Microsoft Authenticator alkalmazást. A részletes lépéseiért lásd: [adja hozzá munkahelyi vagy iskolai fiókját](microsoft-authenticator-app-add-work-account.md), [adja hozzá a személyes fiókokat](microsoft-authenticator-app-add-personal-account.md), és [adja hozzá a személyes-Microsoft fiókok](microsoft-authenticator-app-add-non-microsoft-account.md).
+ 2. Adja hozzá a munkahelyi vagy iskolai, a személyes és a külső fiókok a Microsoft Authenticator alkalmazást. A részletes lépéseiért lásd: [adja hozzá munkahelyi vagy iskolai fiókját](microsoft-authenticator-app-add-work-account.md), [adja hozzá a személyes fiókokat](microsoft-authenticator-app-add-personal-account.md), és [hozzáadása a nem Microsoft-fiókok](microsoft-authenticator-app-add-non-microsoft-account.md).
 
 ## <a name="turn-on-and-use-phone-sign-in-for-your-work-or-school-account"></a>Kapcsolja be, és a telefonos bejelentkezés a munkahelyi vagy iskolai fiók használata
 Telefonos bejelentkezés olyan kétlépéses ellenőrzési. Továbbra is ellenőriznie kell a személyazonosságát azáltal, hogy egy dolog, tudja, és a egy dolog van, de a telefonos bejelentkezés lehetővé teszi, hogy hagyja ki a fiók jelszavának megadása és az összes az identitás-ellenőrzést hajt végre a mobil eszközére.
@@ -113,7 +113,6 @@ Jelentkezzen be a munkahelyi vagy iskolai vagy személyes fiókjához szüksége
 |**Hogyan leállítása ezzel a funkcióval és térjen vissza a jelszó használatával?**|Személyes fiókok esetében válassza a **inkább jelszó** hivatkozásra a bejelentkezés során. A legutóbbi választott megjegyezze őket, és alapértelmezés szerint el, amikor legközelebb bejelentkezik. Ha szeretne lépjen vissza a telefonos bejelentkezés, válassza ki a **inkább alkalmazás** hivatkozásra a bejelentkezés során.<br><br>A további biztonsági ellenőrzési lapot kell munkahelyi vagy iskolai fiókok esetében (például https://aka.ms/MFASetup) , és távolítsa el a Microsoft Authenticator alkalmazást.|
 |**Miért nem használható a telefonos bejelentkezés egynél több munkahelyi vagy iskolai fiókkal?**| A telefon egyetlen munkahelyi vagy iskolai fiók regisztrálva kell lenniük. Kapcsolja be a telefonos bejelentkezés egy másik munkahelyi vagy iskolai fiókot szeretne, ha meg kell először a régi törli az eszköz regisztrációját keresztül a **beállítások** lapot.|
 |**Is tudok bejelentkezni a számítógépre a telefon használatával?**| A számítógépen javasoljuk, hogy a használatával Windows Hello a Windows 10-es aláírási. Windows Hello lehetővé teszi az arcok, ujjlenyomattal vagy a PIN-kód segítségével jelentkezzen be.|
-|**Használható telefonos bejelentkezés a saját Windows Phone?**| Nem. Ez a funkció nem támogatja a Microsoft Authenticator alkalmazást a Windows Phone.|
 
 ## <a name="next-steps"></a>További lépések
 - Ha az alkalmazással kapcsolatos további általános kérdése van, tekintse meg a [a Microsoft Authenticator – gyakori kérdések](microsoft-authenticator-app-faq.md)

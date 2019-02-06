@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 441821ae422fb4cbddbca5b4c30d68484ce6bc1f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 55632acf516198b5ad0b6430480836dcc62fd5a5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186977"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755381"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Nem várt alkalmazás alkalmazáslistában
 
@@ -63,15 +63,15 @@ Ha a szűrt **minden alkalmazás**, a **minden alkalmazás** **lista** jeleníti
 
 4.  Ha egy egyénileg fejlesztett alkalmazásba használatával létrehoz egy új alkalmazás regisztrálása hozzáadása a [alkalmazás beállításjegyzékében](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 
-5.  Ha egy egyénileg fejlesztett alkalmazásba használatával létrehoz egy új alkalmazás regisztrálása hozzáadása a [V2.0 az alkalmazásregisztrációs portálon](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration#visit-the-microsoft-app-registration-portal)
+5.  Ha egy egyénileg fejlesztett alkalmazásba használatával létrehoz egy új alkalmazás regisztrálása hozzáadása a [V2.0 az alkalmazásregisztrációs portálon](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
 6.  Amikor hozzáad egy alkalmazást fejleszt, a Visual Studio használatával [ASP.net hitelesítési módszerek](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatás](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 
 7.  Amikor hoz létre egy szolgáltatás rendszerbiztonsági tag típusú objektumot használ a [Azure AD PowerShell-modul](/powershell/azure/install-adv2?view=azureadps-2.0)
 
-8.  Ha Ön [járul hozzá az alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) adatok használata a bérlőben rendszergazdaként
+8.  Ha Ön [járul hozzá az alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) adatok használata a bérlőben rendszergazdaként
 
-9.  Ha egy [felhasználó jóváhagy egy alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) adatok használata a bérlőben
+9.  Ha egy [felhasználó jóváhagy egy alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) adatok használata a bérlőben
 
 10. Amikor engedélyezi bizonyos szolgáltatásokat, amelyek adatokat tárolnak a bérlőben. Ez egy jelszó-visszaállítás, amely szerint egy egyszerű szolgáltatást a jelszó tárolásához új kérésére vonatkozó szabályzat van modellezve biztonságosan.
 
@@ -107,7 +107,7 @@ A **törölhető az alkalmazás**, kövesse az alábbi lépéseket:
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Szeretném tiltani minden jövőbeli felhasználói jóváhagyási művelet bármely alkalmazás
 
-Felhasználói beleegyezés letiltása, a teljes címtárban megakadályozza, hogy a végfelhasználók hozzájárul ahhoz, hogy minden olyan alkalmazás esetében. A rendszergazdák továbbra is a felhasználó behalves hagyhatja jóvá. További információ az alkalmazás jóváhagyásának, és ezért lehetséges, hogy, vagy nem biztos, hogy engedélyt adjanak, olvassa el a [ismertetése felhasználói és rendszergazdai jóváhagyás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
+Felhasználói beleegyezés letiltása, a teljes címtárban megakadályozza, hogy a végfelhasználók hozzájárul ahhoz, hogy minden olyan alkalmazás esetében. A rendszergazdák továbbra is a felhasználó behalves hagyhatja jóvá. További információ az alkalmazás jóváhagyásának, és ezért lehetséges, hogy, vagy nem biztos, hogy engedélyt adjanak, olvassa el a [ismertetése felhasználói és rendszergazdai jóváhagyás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 
 A **tiltsa le az összes jövőbeli felhasználói jóváhagyási művelet a teljes címtárban**, kövesse az alábbi lépéseket:
 

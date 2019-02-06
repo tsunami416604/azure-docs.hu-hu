@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: edea614065d67bab23de29e5cef3b56c69905a90
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: a707ae6959b035ae0bcc05ead027dabd528e1b59
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188609"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747509"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -90,7 +90,7 @@ Az ILB ASE létrehozása:
 
 8. Kattintson az **OK**, majd a **Létrehozás** gombra.
 
-    ! [ASE létrehozása] [1]
+    ![ASE létrehozása][1]
 
 A **Virtuális hálózat** panelen található a **Virtuális hálózat konfigurációja**. Használatával kiválaszthat egy külső vagy belső virtuális IP-címet. Az alapértelmezett érték a **Külső**. Ha a **Külső** lehetőséget választja, az ASE közvetlenül az internethez csatlakozó virtuális IP-címet fog használni. Ha a **Belső** lehetőséget választja, az ASE ILB-vel vagy virtuális hálózati IP-címmel lesz konfigurálva.
 
@@ -119,7 +119,7 @@ Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létr
 
 1. Kattintson a **Létrehozás** gombra. Ha azt szeretné, hogy az alkalmazásnak, hogy megjelenjen az irányítópulton, válassza ki a **rögzítés az irányítópulton** jelölőnégyzetet.
 
-    ! [App Service-csomag létrehozása] a(z) [2]
+    ![App Service-csomag létrehozása][2]
 
     Az **Alkalmazásnév** területen a tartománynév frissült az ASE tartományának megfelelően.
 
@@ -129,7 +129,7 @@ Az ILB ASE kissé különbözik az ILB nélküli ASE környezettől. A fenti inf
 
 Az ASE létrehozását követően a tartomány az Ön által megadott tartománynevet jeleníti meg. Egy új elem jelenik meg a **beállítás** nevű menü **ILB-tanúsítvány**. Az ASE olyan tanúsítvánnyal jött létre, amely nem határozza meg az ILB ASE tartományát. Amennyiben ezzel a tanúsítvánnyal használja az ASE környezetet, a böngészője érvénytelennek fogja nyilvánítani. A tanúsítvány egyszerűbbé teszi a HTTPS tesztelését, de fel kell töltenie saját, az ILB ASE környezethez kötött rögzített tanúsítványát. Ez a lépés szükséges, függetlenül attól, hogy a tanúsítvány önaláírt vagy hitelesítésszolgáltatótól származik.
 
-! [Az ILB ASE tartomány neve] [3]
+![ILB ASE tartománynév][3]
 
 Az ILB ASE környezetnek szüksége van egy érvényes SSL-tanúsítványra. Használjon belső tanúsítványszolgáltatót, vásároljon tanúsítványt külső kiállítótól vagy használjon önaláírt tanúsítványt. Az SSL-tanúsítvány forrásától függetlenül az alábbi tanúsítványattribútumokat megfelelően kell konfigurálni:
 
@@ -150,7 +150,7 @@ Amennyiben önaláírt tanúsítványt szeretne létrehozni, itt használhatja a
 
 A böngészők megjelölik a PowerShell-parancs által létrehozott tanúsítványokat, mert a tanúsítványt nem a böngésző megbízhatósági láncában szereplő egyik hitelesítésszolgáltató hozta létre. A böngésző által is elfogadott tanúsítvány beszerzéséhez vegyen egyet a böngésző megbízhatósági láncában megtalálható üzleti hitelesítésszolgáltatók egyikétől. 
 
-! [ILB-tanúsítvány beállítása] [4]
+![ILB-tanúsítvány beállítása][4]
 
 Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez tegye a következőket:
 
@@ -180,7 +180,7 @@ Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez 
 
     Az ILB IP-címe az **IP-címek** területen látható. Ez a lista tartalmazza a külső virtuális IP-címet és a bejövő felügyeleti forgalmak IP-címeit is.
 
-    ! [ILB IP-cím] [5]
+    ![ILB IP-címe][5]
 
 ## <a name="web-jobs-functions-and-the-ilb-ase"></a>WebJobs-feladatok, a Functions és az ILB ASE ##
 
@@ -223,8 +223,13 @@ Az ILB ASE WAF eszközhöz való konfigurálásáról további információkat a
 
 * Az ASE használatával kapcsolatos első lépésekről [Az App Service Environment bemutatása][Intro] témakörben olvashat.
  
+
 <!--Image references-->
-[1]: [2]./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png: [3]./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png:. / Media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-Certificate.png [4]: [5./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png ]:./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
+[1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png
+[2]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png
+[3]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate.png
+[4]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png
+[5]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
 
 <!--Links-->
 [Intro]: ./intro.md

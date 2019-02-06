@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: 0cd0dcaf200b1248204efc2d2c0011a94d3c41d3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b66d4c9fb3bce03248f5696d5a7b2b7b62b7ffd3
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720968"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746371"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Oktatóanyag: Az Azure SignalR Service – hitelesítés az Azure Functions használatával
 
@@ -302,7 +302,7 @@ Eddig a csevegőalkalmazás névtelenül működött. Az Azure-ban az [App Servi
 
 Az alkalmazás eldöntheti, hogy az egyes üzeneteket minden csatlakoztatott ügyfélnek, vagy csak az adott felhasználó esetében hitelesített ügyfeleknek küldje-e el.
 
-1. A VS Code-ban nyissa meg a **SendMessage/function.json** fájlt.
+1. A VS Code-ban nyissa meg a **SignalRInfo/function.json**.
 
 1. A*SignalRConnectionInfo* kötés *userId* tulajdonságában adjon meg egy [kötési kifejezést](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings#binding-expressions-and-patterns): `{headers.x-ms-client-principal-name}`. Ez az értéket a hitelesített felhasználó felhasználónevére állítja be. Az attribútumnak most így kell kinéznie:
 

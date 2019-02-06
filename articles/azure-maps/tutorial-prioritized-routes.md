@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0a278eb1612ec9573c4d12611ccce2d1b5b971bc
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 5458c7e74728952df89380a3649c6ed60eb6ea9a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705278"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749763"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Útvonalak keresése különböző utazási módokhoz az Azure Maps használatával
 
@@ -248,7 +248,7 @@ Ez a szakasz bemutatja, hogyan kereshet egy indulási és célpont között töb
         datasource.add(routeLine, 0);
     });
     ```
-    A fenti kódrészlet a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) metódussal lekérdezést küld az Azure Maps útválasztási szolgáltatásnak, a kapott választ pedig a [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) metódussal elemzi, és GeoJSON-formátumban adja ki. Ezután létrehozza a visszaadott útvonal koordinátáinak gyűjteményét, és hozzáadja az adatforráshoz egy 0-s index kíséretében, hogy az adatforrás egyéb vonalai előtt legyen megjelenítve. Ez azért hasznos, mert a teherautós útvonalakat a rendszer általában lassabban számítja ki, mint a személyautókét, és ha egy teherautós útvonal egy személyautós után adódik hozzá az adatforráshoz, akkor fölötte fog megjelenni. A kód két tulajdonságot rendel a teherautós útvonalhoz: egy kék árnyalatú vonalszínt és 9 képpontos vonalvastagságot. 
+    A fenti kódrészlet a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) metódussal lekérdezést küld az Azure Maps útválasztási szolgáltatásnak, a kapott választ pedig a [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) metódussal elemzi, és GeoJSON-formátumban adja ki. Ezután létrehozza a visszaadott útvonal koordinátáinak gyűjteményét, és hozzáadja az adatforráshoz egy 0-s index kíséretében, hogy az adatforrás egyéb vonalai előtt legyen megjelenítve. Ez azért hasznos, mert a teherautós útvonalakat a rendszer általában lassabban számítja ki, mint a személyautókét, és ha egy teherautós útvonal egy személyautós után adódik hozzá az adatforráshoz, akkor fölötte fog megjelenni. A kód két tulajdonságot rendel a teherautós útvonalhoz: egy kék árnyalatú vonalszínt és 9 képpontos vonalvastagságot. 
 
 4. Adja hozzá a következő JavaScript-kódot az autós útvonal lekéréséhez és az eredmények megjelenítéséhez:
 
@@ -267,7 +267,7 @@ Ez a szakasz bemutatja, hogyan kereshet egy indulási és célpont között töb
         datasource.add(routeLine);
     });
     ```
-    Ez a kódrészlet egy autóra alkalmazza ugyanezt a teherautós útvonal-lekérdezést. A kód a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) metódussal lekérdezést küld az Azure Maps útválasztási szolgáltatásnak, a kapott választ pedig a [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) metódussal elemzi, és GeoJSON-formátumban adja ki. Ezután létrehozza a visszaadott útvonal koordinátáinak gyűjteményét, és hozzáadja az adatforráshoz. A kód két tulajdonságot rendel a személyautós útvonalhoz: egy lila árnyalatú vonalszínt és 5 képpontos vonalvastagságot. 
+    Ez a kódrészlet egy autóra alkalmazza ugyanezt a teherautós útvonal-lekérdezést. A kód a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) metódussal lekérdezést küld az Azure Maps útválasztási szolgáltatásnak, a kapott választ pedig a [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) metódussal elemzi, és GeoJSON-formátumban adja ki. Ezután létrehozza a visszaadott útvonal koordinátáinak gyűjteményét, és hozzáadja az adatforráshoz. A kód két tulajdonságot rendel a személyautós útvonalhoz: egy lila árnyalatú vonalszínt és 5 képpontos vonalvastagságot. 
 
 5. Mentse a **MapTruckRoute.html** fájlt, és frissítse a böngészőt az eredmény megtekintéséhez. A Maps API-jaival való sikeres kapcsolat esetén a következőhöz hasonló térkép jelenik meg.
 

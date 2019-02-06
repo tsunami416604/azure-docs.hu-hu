@@ -1,5 +1,5 @@
 ---
-title: 'Virtuálishálózat-teljesítményi hibák elhárítása: Azure |} A Microsoft Docs'
+title: 'Virtuálishálózat-teljesítményi hibák elhárítása: Azure | Microsoft Docs'
 description: Ez az oldal nyújt az Azure hálózati kapcsolat teljesítmény tesztelése szabványosított módszerrel.
 services: expressroute
 author: tracsman
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 2572ff3711fb86cda88a86744192980a5b2d5361
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: dfd55ac12587cf99cc3fc3ff8eac4f4572229396
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277624"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753500"
 ---
 # <a name="troubleshooting-network-performance"></a>A hálózati teljesítmény hibaelhárítása
 ## <a name="overview"></a>Áttekintés
@@ -180,7 +180,7 @@ Beállítások ellenőrzése:
 | | | | | | |
 |-|-|-|-|-|-|
 |ExpressRoute<br/>Hely|Azure<br/>Régió|Becsült<br/>Távolságskála (km-re)|Késés|1 munkamenet<br/>Bandwidth|Maximum<br/>Bandwidth|
-| Seattle | USA nyugati régiója, 2.        |    191 km-re |   5 ezredmásodperc | 262.0 MB/s |  3.74 Gbits/mp | 21
+| Seattle | USA nyugati régiója, 2.        |    191 km |   5 ms | 262.0 MB/s |  3.74 Gbits/mp | 21
 | Seattle | USA nyugati régiója          |  1,094 km-re |  18 ms |  82.3 MB/s |  3.70 Gbits/mp | 20
 | Seattle | USA középső régiója       |  2,357 km-re |  40 ms |  38.8 MB/s |  2.55 Gbits/mp | 17
 | Seattle | USA déli középső régiója |  2,877 km-re |  51 ms |  30.6 MB/s |  2.49 Gbits/mp | 19
@@ -193,7 +193,7 @@ Beállítások ellenőrzése:
 | Seattle | Kelet-Ausztrália   | 12,484 km-re | 165 ms |   9.4 MB/s |   794 MB/s | 26
 | Seattle | Délkelet-Ázsia   | 12,989 km-re | 170 ms |   9.2 MB/s |   756 MB/s | 25
 | Seattle | Dél-Brazília *   | 10,930 km-re | 189 ms |   8.2 MB/s |   699 MB/s | 22
-| Seattle | Dél-India      | 12,918 km-re | 202-es ms |   7.7 MB/s |   634 MB/s | 27
+| Seattle | Dél-India      | 12,918 km-re | 202 ms |   7.7 MB/s |   634 MB/s | 27
 
 \* A késés, Brazília jó példa, ahol lineáris távolság jelentősen eltér a fiber távolság futtassa. Szeretné, hogy a késés szerepelnie kell a hálózatok 160 MS, de ténylegesen 189 MS várt. Ez a különbség az elvárás elleni utalhat hálózati probléma valahol, de valószínű, hogy futnak-e a fiber Brazília egyenes halad és tartalmaz egy extra 1000 km-re vagy utazási hozhatja a Seattle, Brazília, így.
 
@@ -210,7 +210,7 @@ Beállítások ellenőrzése:
 <!--Link References-->
 [Performance Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/PerformanceTesting.md
 [Availability Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/AvailabilityTesting.md
-[Network Docs]: https://docs.microsoft.com/azure/index#pivot=services&panel=network
+[Network Docs]: https://docs.microsoft.com/azure/index
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
 [ACT]: http://aka.ms/AzCT
 

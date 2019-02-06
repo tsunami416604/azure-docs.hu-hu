@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bace15a89f0dd820c69d51bee0a6b669cdf5ff73
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 7fd671c77b4c0897134457f5aacaabc11d568694
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885587"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756410"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Létrehozása és üzembe helyezése magas rendelkezésre állású virtuális gépek az Azure CLI-vel
 
@@ -49,7 +49,7 @@ Használjon rendelkezésre állási csoportokat, ha megbízható, virtuálisgép
 
 ## <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
 
-Rendelkezésre állási csoportot az [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) paranccsal hozhat létre. Ebben a példában a frissítési és a tartalék tartományok számát egyaránt *2*-re állítjuk a *myResourceGroupAvailability* erőforráscsoport *myAvailabilitySet* nevű rendelkezésre állási csoportjánál.
+Rendelkezésre állási csoportot az [az vm availability-set create](/cli/azure/vm/availability-set) paranccsal hozhat létre. Ebben a példában a frissítési és a tartalék tartományok számát egyaránt *2*-re állítjuk a *myResourceGroupAvailability* erőforráscsoport *myAvailabilitySet* nevű rendelkezésre állási csoportjánál.
 
 Először is hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) parancsmaggal, majd hozza létre a rendelkezésre állási csoportot:
 

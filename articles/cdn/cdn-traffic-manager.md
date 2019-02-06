@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 2d184cc849eb3da60bbf0c387655da9fdf878853
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 4c072ef63c0d4961fba695fc8d9be1d12b4b0e8b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091606"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749214"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Hozza létre a feladatátvétel több Azure CDN-végpontok Azure Traffic Managerrel
 
@@ -42,7 +42,7 @@ Hozzon létre két vagy több Azure CDN-profilok és a végpontokat különböz�
 ## <a name="set-up-azure-traffic-manager"></a>Állítsa be az Azure Traffic Manager
 Hozzon létre egy Azure Traffic Manager-profilt, és terheléselosztást biztosít a CDN-végpontok beállítása. 
 
-1. Az Azure Traffic Manager-profilok létrehozása a lépéseket követve [Traffic Manager-profil létrehozása](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#create-a-traffic-manager-profile-1). 
+1. Az Azure Traffic Manager-profilok létrehozása a lépéseket követve [Traffic Manager-profil létrehozása](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile). 
 
     A **útválasztási módszer**válassza **prioritású**.
 

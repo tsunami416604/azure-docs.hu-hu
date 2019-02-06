@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: d59bc20ea745412f8f2549e0359483d1dd3e608d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 494665e530104cd4711e8112f3a999e68c3485b8
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912782"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746381"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -85,13 +85,13 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
-| Az eseményindító egyidejűségi | Ha az egyidejűség korlátozza 50 | Az eseményindító egyidejűségi vezérlő bekapcsolása, ha az alapértelmezett korlát: 25. Ez a korlátozás ismerteti egy időben, vagy a párhuzamosan futtatható logic app-példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát egy értéknek 1 és 50 között szélsőértékeket is beleértve, lásd: [módosítása az eseményindító egyidejűségi korlátját](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [példányok egymás után aktiválása](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
-| Maximális várakozási futtatások | Ha az egyidejűség korlátozza 100 | Az eseményindító egyidejűségi vezérlő bekapcsolása, ha az alapértelmezett korlát a 10. Ez a korlátozás ismerteti a logikai alkalmazás futtatását, amikor a logikai alkalmazás már fut a legnagyobb párhuzamos alkalmazáspéldányok várhat példányok maximális száma. <p><p>Ha módosítani szeretné az alapértelmezett korlát 0 és 100 közötti értéket szélsőértékeket is beleértve, lásd: [módosítása várakozási futtatások korlátozza](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
-| Foreach tömbelemek | 100 000 | Ez a korlátozás maximális számát, és egy "mindegyikre" hurkot feldolgozására képes tömbelemek ismerteti. <p><p>Nagyobb tömböket szűrhet, használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md). | 
-| Foreach-párhuzamosság | Ha az egyidejűség korlátozza 50 | Ha bekapcsolja a hurok az egyidejűség-vezérlés, az alapértelmezett korlát a 20. Ez a korlátozás ismerteti a "for each" maximális számát az ismétlések egy időben, vagy a párhuzamosan futtatható ikonjához. <p><p>Módosítsa az alapértelmezett korlát 1 és 50 között egy értékre szélsőértékeket is beleértve, lásd: [módosítása "for each" egyidejűségi korlát](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtassa a "for each" hurkokat egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
-| SplitOn-elemek | 100 000 | | 
-| UNTIL-iterációk | 5000 | | 
-|||| 
+| Az eseményindító egyidejűségi | * Korlátlan Ha az egyidejűség-vezérlés ki van kapcsolva <p><p>* 25 Az egyidejűség-vezérlés engedélyezve van, amely nem lehet visszavonni a vezérlő bekapcsolása után az alapértelmezett korlátozás. Módosíthatja az alapértelmezett értéket 1 és 50 között szélsőértékeket is beleértve. | Ezt a korlátot ismerteti az egy időben, vagy a párhuzamosan futtatható logic app-példányok számát vesszük figyelembe. <p><p>Ha módosítani szeretné az alapértelmezett korlát egy értéknek 1 és 50 között szélsőértékeket is beleértve, lásd: [módosítása az eseményindító egyidejűségi korlátját](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [példányok egymás után aktiválása](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
+| Maximális várakozási futtatások | Az egyidejűség-vezérlés be van kapcsolva, a lehető legkevesebb futtatások várakozási esetén 10-es és az egyidejű futtatás (az eseményindító egyidejűségi) száma. A maximális száma legfeljebb 100 módosíthatja szélsőértékeket is beleértve. | Ez a korlátozás ismerteti a logikai alkalmazás futtatását, amikor a logikai alkalmazás már fut a legnagyobb párhuzamos alkalmazáspéldányok várhat példányok számát vesszük figyelembe. <p><p>Az alapértelmezett korlát módosításához lásd [módosítása várakozási futtatások korlátozza](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
+| Foreach tömbelemek | 100 000 | Ezt a korlátot, és egy "mindegyikre" hurkot feldolgozására képes tömbelemek számát vesszük figyelembe ismerteti. <p><p>Nagyobb tömböket szűrhet, használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md). | 
+| Foreach-párhuzamosság | 20 az alapértelmezett korlát, ha az egyidejűség-vezérlés ki van kapcsolva. Módosíthatja az alapértelmezett értéket 1 és 50 között szélsőértékeket is beleértve. | Ezt a korlátot "for each" legnagyobb száma a ciklus ismétléseinek egyszerre, vagy a párhuzamosan futtatható. <p><p>Módosítsa az alapértelmezett korlát 1 és 50 között egy értékre szélsőértékeket is beleértve, lásd: [módosítása "for each" egyidejűségi korlát](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtassa a "for each" hurkokat egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
+| SplitOn-elemek | 100 000 | Eseményindítók, amely egy tömböt adnak vissza, megadhat egy kifejezés, amely használja a "SplitOn" tulajdonság, amely [bontja vagy tömbelemek debatches be több munkafolyamat-példány](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) feldolgozási ahelyett, hogy használja a "Foreach" ikonjához. Ez a kifejezés a tömb létrehozása és futtatása egy munkafolyamat-példány a tömb mindegyik elemén hivatkozik. |
+| UNTIL-iterációk | 5000 | |
+||||
 
 <a name="throughput-limits"></a>
 

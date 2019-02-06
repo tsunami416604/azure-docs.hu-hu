@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: b5b6f1a1cbd4c06106b7817f9fc28d8d4a9cfc06
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: f537ccfd18685cd5aa8ee06910fc80ac3d2056c9
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306335"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750409"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Oktatóanyag: Párhuzamos számítási feladatok futtatása az Azure Batch Python API használatával
 
@@ -170,7 +170,7 @@ A csomópontok száma és a virtuális gépek mérete meghatározott állandókk
 
 A fizikai csomópont tulajdonságain felül ez a készletkonfiguráció tartalmaz egy [StartTask](/python/api/azure.batch.models.starttask) objektumot. A StartTask mindegyik csomóponton fut, amikor a csomópont csatlakozik a készlethez, vagy amikor újraindul. Ebben a példában a StartTask Bash-rendszerhéjparancsokat futtat az ffmpeg csomag és a függőségek csomópontokon való telepítéséhez.
 
-A [pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add) metódus elküldi a készletet a Batch szolgáltatásnak.
+A [pool.add](/python/api/azure.batch.operations.pooloperations) metódus elküldi a készletet a Batch szolgáltatásnak.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -200,7 +200,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>Feladat létrehozása
 
-Egy Batch-feladat meghatároz egy készletet, amelyen futtathatók tevékenységek, valamint opcionális beállításokat, például a prioritást és az ütemezést a munkához. A minta a `create_job` hívásával létrehoz egy feladatot. Ez a meghatározott függvény a [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) osztály használatával létrehoz egy feladatot a készleten. A [job.add](/python/api/azure.batch.operations.joboperations#azure_batch_operations_JobOperations_add) metódus elküldi a készletet a Batch szolgáltatásnak. A feladat kezdetben nem tartalmaz tevékenységeket.
+Egy Batch-feladat meghatároz egy készletet, amelyen futtathatók tevékenységek, valamint opcionális beállításokat, például a prioritást és az ütemezést a munkához. A minta a `create_job` hívásával létrehoz egy feladatot. Ez a meghatározott függvény a [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) osztály használatával létrehoz egy feladatot a készleten. A [job.add](/python/api/azure.batch.operations.joboperations) metódus elküldi a készletet a Batch szolgáltatásnak. A feladat kezdetben nem tartalmaz tevékenységeket.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -216,7 +216,7 @@ Az alkalmazás az `add_tasks` meghívásával hoz létre tevékenységeket a fel
 
 A minta a parancssor futtatása után létrehoz egy [OutputFile](/python/api/azure.batch.models.outputfile) objektumot az MP3-fájlhoz. A rendszer az összes tevékenység kimeneti fájlját (ebben az esetben egyet) feltölti egy, a társított Storage-fiókban lévő tárolóba a tevékenység `output_files` tulajdonsága segítségével.
 
-Ezt követően az alkalmazás tevékenységeket ad a feladathoz a [task.add_colection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz. 
+Ezt követően az alkalmazás tevékenységeket ad a feladathoz a [task.add_colection](/python/api/azure.batch.operations.taskoperations) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz. 
 
 ```python
 tasks = list()

@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: lahugh
-ms.openlocfilehash: b296dce0a83971626c8e66ddc314c4d1e07d8602
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0bc43b82a987ab065677bdbb56de73ef341c249d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840367"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752126"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Hozzon létre egy virtuálisgép-készletek egyéni rendszerkép használatával 
 
@@ -69,7 +69,7 @@ Pillanatkép egy virtuális merevlemez teljes, a csak olvasható példányát. P
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>Rendszerkép létrehozása egy vagy több pillanatképekből
 
-Létrehozhat egy felügyelt rendszerképet egy pillanatképből, használja az Azure parancssori eszközök például a [az lemezkép létrehozása](/cli/azure/image#az_image_create) parancsot. Adjon meg egy operációsrendszer-lemez pillanatfelvételének és opcionálisan egy vagy több lemez pillanatképeinek rendszerképet hozhat létre.
+Létrehozhat egy felügyelt rendszerképet egy pillanatképből, használja az Azure parancssori eszközök például a [az lemezkép létrehozása](/cli/azure/image) parancsot. Adjon meg egy operációsrendszer-lemez pillanatfelvételének és opcionálisan egy vagy több lemez pillanatképeinek rendszerképet hozhat létre.
 
 ## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>Készlet létrehozása egyéni rendszerképből a portálon
 

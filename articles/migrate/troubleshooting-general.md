@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: 12c71086509b0c7017b8326c46ed4a31270ef261
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: bb9d22b45011f5156a63444ec8e1651f148993b6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657382"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751905"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -172,7 +172,7 @@ A probléma akkor fordulhat elő a VMware PowerCLI telepítése való probléma 
 
 Nem lehet csatlakozni a vCenter-kiszolgáló "Servername.com:9443" hiba miatt: Hiba történt a nincs végpont a következő https://Servername.com:9443/sdk , amely fogadni tudta az üzenetet.
 
-Ha Ön a gyűjtőberendezés legújabb verzióját futtatja, ha nem, frissítse a berendezés ellenőrizze a [legújabb verzió](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector).
+Ha Ön a gyűjtőberendezés legújabb verzióját futtatja, ha nem, frissítse a berendezés ellenőrizze a [legújabb verzió](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
 Ha a probléma továbbra is történik a legújabb verzió, annak oka az lehet, mert a naplógyűjtő gépen nem tudja feloldani a vCenter-kiszolgáló neve vagy a megadott megadott port helytelen. Alapértelmezés szerint ha a port nincs megadva, collector megpróbálja szeretne csatlakozni a 443-as portszámhoz.
 

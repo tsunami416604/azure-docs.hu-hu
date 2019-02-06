@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 61957b89bd5ec9a42d6fd03c7009187d71e448f4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5fcd7f05aeb294441b16bab0aeb18ef5d0bf5c28
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474785"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749035"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Visszaállítása egy Azure SQL Database vagy feladatátvétel a másodlagos kiszolgálóra
 
@@ -38,7 +38,7 @@ Folyamatos üzletmenet – forgatókönyvek és a szolgáltatások ezeket a forg
 A sikeres a helyreállítás egy másik adatrégióba feladatátvételi csoportok vagy georedundáns biztonsági mentés használatával, elő kell készíteni egy kiszolgáló egy másik adatközpontban szolgáltatáskimaradás, az új elsődleges kiszolgáló lesz szükség kell merülnek fel, valamint rendelkezik, jól definiált lépéseit és tesztelt a zökkenőmentes helyreállítás biztosítása érdekében. Előkészítő lépések a következők:
 
 - Azonosítsa az SQL Database-kiszolgálóhoz egy másik régióban az új elsődleges kiszolgáló lesz. Geo-visszaállítás esetén ez általában a kiszolgáló a [párosított régióra](../best-practices-availability-paired-regions.md) a régió, amelyben az adatbázis nem található. Ezzel elkerülhető a további adatforgalom költség a geo-visszaállítás műveletek során.
-- Azonosítsa, és igény szerint határozza meg, a kiszolgálószintű tűzfalszabályok a felhasználók férhetnek hozzá az új elsődleges adatbázis szükséges.
+- Azonosítsa, és igény szerint határozza meg, a kiszolgálói szintű IP-tűzfalszabályainak a felhasználók számára az új elsődleges adatbázis eléréséhez szükséges.
 - Határozza meg, hogyan kívánja irányítsa át a felhasználókat az új elsődleges kiszolgáló, például kapcsolati karakterláncok módosításával, vagy meg szeretné változtatni a DNS-bejegyzéseket.
 - Azonosítsa, és újat is létrehozhat, a bejelentkezések, amelyek kell jelen lennie a master adatbázisban az új elsődleges kiszolgáló, és győződjön meg arról, ezek a bejelentkezéseket a master adatbázisban, rendelkezik megfelelő engedélyekkel, ha van ilyen. További információkért lásd: [SQL Database biztonsági katasztrófa utáni helyreállítás után](sql-database-geo-replication-security-config.md)
 - Azonosítsa a riasztási szabályok, amelyek az új elsődleges adatbázis leképezése frissíteni kell.

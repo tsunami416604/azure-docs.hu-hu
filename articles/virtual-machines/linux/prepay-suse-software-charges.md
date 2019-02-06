@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.date: 01/18/2019
 ms.author: yashar
-ms.openlocfilehash: 44d23cf38eb1dca9ade94c5a8fd0ae495300be44
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 4f70a34febcf0b39d051053a6ddd9abe5c9a6726
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582190"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745979"
 ---
 # <a name="prepay-for-suse-software-plans-from-azure-reservations"></a>Fizessen elő az Azure foglalásai közül SUSE szoftvercsomagok – alap
 
@@ -27,7 +27,7 @@ Fizessen elő a SUSE-használatra vonatkozóan, és megtakarítást érhet el a 
 SUSE szoftver tervek az Azure Portalon vásárolhat. A csomag vásárlása:
 
 - Meg kell egy tulajdonosi szerepkör legalább egy vállalati vagy használatalapú fizetéses előfizetésre.
-- Vállalati előfizetés esetén foglalás vásárlások engedélyezve kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com).
+- Vállalati előfizetés esetén **fenntartott példányok hozzáadása** engedélyezve kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com). Vagy, ha ez a beállítás le van tiltva, az előfizetés egy nagyvállalati szerződés rendszergazdájának kell lennie.
 - A Cloud Solution Provider (CSP) program a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatja meg a SUSE-csomagok.
 
 ## <a name="buy-a-suse-software-plan"></a>SUSE szoftver csomag vásárlása
@@ -39,8 +39,8 @@ SUSE szoftver tervek az Azure Portalon vásárolhat. A csomag vásárlása:
     | Mező      | Leírás|
     |:------------|:--------------|
     |Name (Név)        |Ez a vásárlás neve.|
-    |Előfizetés|Ezt a csomagot használt előfizetés. A fizetési módot, az előfizetés fel van töltve a Foglalás az előzetes költségek. Az előfizetés típusa kétféle lehet: nagyvállalati szerződés (ajánlatszám: MS-AZR-0017P) vagy használatalapú fizetéses (ajánlatszám: MS-AZR-0003P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|
-    |Hatókör       |A hatókör egy előfizetést vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>SUSE Linux használati ebben az előfizetésben egyetlen előfizetés – a csomag kedvezmény érvényes. </li><li>Közös – a csomag rendszer alkalmazza a kedvezményt SUSE Linux-használatra a számlázási környezeten belül minden előfizetésben. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és előfizetéseken belül a regisztráció (kivéve a fejlesztési és tesztelési előfizetések) magában foglalja. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.</li></ul>|
+    |Előfizetés|Ezt a csomagot használt előfizetés. A fizetési módot, az előfizetés fel van töltve a Foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR - 0023 P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|
+    |Hatókör       |A hatókör egy előfizetést vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>SUSE Linux használati ebben az előfizetésben egyetlen előfizetés – a csomag kedvezmény érvényes. </li><li>Közös – a csomag rendszer alkalmazza a kedvezményt SUSE Linux-használatra a számlázási környezeten belül minden előfizetésben. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és a regisztráció belüli összes előfizetésre tartalmazza. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.</li></ul>|
     |Szoftvercsomag     |Válassza ki a SUSE Linux-csomagot. Ennek kiválasztásához [a SUSE Linux Enterprise szoftverfoglalási kedvezményét ismertető részben](../../billing/billing-understand-suse-reservation-charges.md) talál további segítséget.|
     |Virtuális gép mérete     |SUSE Linux-díjszabás attól függ, hogy a virtuális gép vcpu-k számát. Válassza ki, a SUSE Linux rendszerű virtuális gépeken vcpu-k számát jelenti.|
     |Időtartam        |Egy vagy három év.|

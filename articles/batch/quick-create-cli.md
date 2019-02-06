@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 10f84a758bdb2e01793aee06cba59a29b5639775
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470960"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752347"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Gyors útmutató: Az első Batch-feladat futtatása az Azure CLI-vel
 
@@ -139,7 +139,7 @@ A parancs kimenete számos részletet tartalmaz. Tekintse meg a tevékenység pa
 
 ## <a name="view-task-output"></a>A tevékenység kimenetének megtekintése
 
-A tevékenységek által egy számítási csomóponton létrehozott fájlok felsorolásához használja az [az batch task file list](/cli/azure/batch/task#az-batch-task-file-list) parancsot. A következő parancs felsorolja a *mytask1* tevékenység által létrehozott fájlokat: 
+A tevékenységek által egy számítási csomóponton létrehozott fájlok felsorolásához használja az [az batch task file list](/cli/azure/batch/task) parancsot. A következő parancs felsorolja a *mytask1* tevékenység által létrehozott fájlokat: 
 
 ```azurecli-interactive 
 az batch task file list \
@@ -160,7 +160,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-A kimeneti fájlok az [az batch task file download](/cli/azure/batch/task#az-batch-task-file-download) paranccsal tölthetők le helyi könyvtárba. Ebben a példában a tevékenység kimenete a `stdout.txt` fájlban található. 
+A kimeneti fájlok az [az batch task file download](/cli/azure/batch/task) paranccsal tölthetők le helyi könyvtárba. Ebben a példában a tevékenység kimenete a `stdout.txt` fájlban található. 
 
 ```azurecli-interactive
 az batch task file download \

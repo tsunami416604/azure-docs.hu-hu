@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 79a7aad8cd747c3fdadcd0f7eec12d861f31fcc0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 2c0d32c5e95504ac99c739af89795ac22a768c63
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730509"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751939"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database adatbázis
 
@@ -108,7 +108,7 @@ Nincsenek több technikák a rendelkezésére, amelyek rosszabb csatlakozási sz
 
 A tűzfal megakadályozza, hogy hozzáférés a kiszolgálóhoz egy külső entitás azáltal, hogy csak adott entitásokhoz a hozzáférést az SQL Database-kiszolgálóhoz. Alapértelmezés szerint az összes kapcsolat és az SQL Database-kiszolgáló belüli adatbázisok nem engedélyezettek, más Azure-szolgáltatásoktól érkező kapcsolatokat kivéve. A tűzfalszabály nyissa meg hozzáférés csak az entitások (például a fejlesztői gépen), amelyek azáltal, hogy a számítógép IP-cím a tűzfalon keresztül, jóváhagyása a kiszolgálóhoz. Azt is lehetővé teszi, hogy adjon meg egy IP-címtartományt, annak az SQL Database-kiszolgálóhoz való hozzáférés engedélyezése. Például a szervezet fejlesztői gép IP-címek is hozzáadhatók egyszerre egy tartományt a tűzfalbeállítások oldal megadásával.
 
-A kiszolgálószintű vagy adatbázisszintű tűzfalszabályok létrehozhat. Kiszolgálói szintű tűzfalszabályokat vagy az Azure portal vagy az ssms használatával hozható létre. További információk a kiszolgáló- és adatbázis-szintű tűzfalszabályt beállítása, lásd: [Tűzfalszabályok létrehozása az SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
+A kiszolgálószintű vagy adatbázisszintű tűzfalszabályok létrehozhat. Kiszolgáló szolgáltatói IP-tűzfalszabályainak vagy az Azure portal vagy az ssms használatával hozható létre. További információk a kiszolgálószintű és adatbázisszintű tűzfalszabályok beállítása, lásd: [SQL Database-ben hozzon létre IP-tűzfalszabályainak](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 

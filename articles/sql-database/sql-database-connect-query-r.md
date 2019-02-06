@@ -12,14 +12,14 @@ ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
 ms.date: 11/30/2018
-ms.openlocfilehash: fc5398b4ffb0b9310b6ab13561830d8d3db7a611
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: fb45d5fe549966dbf1635ee23447f90080bbb627
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725743"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751293"
 ---
-# <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Rövid útmutató: A Machine Learning Services (with R) az Azure SQL Database-ben (előzetes verzió)
+# <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Gyors útmutató: Machine Learning-szolgáltatások (az r nyelv) használata az Azure SQL Database (előzetes verzió)
 
 Ez a cikk bemutatja, hogyan használhatja a Machine Learning Services (with R) nyilvános előzetes verzióját az Azure SQL Database-ben. Megismerkedhet az adatok az SQL-adatbázis és az R közötti áthelyezésének alapjaival. Ezenkívül azt is bemutatja, hogyan csomagolhat megfelelő formátumú R-kódot az [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárásba, amellyel gépi tanulási modelleket állíthat össze, taníthat be és használhat az SQL-adatbázisban.
 
@@ -47,7 +47,7 @@ Csatlakozhat az SQL Database-adatbázishoz, továbbá bármilyen adatbázis-keze
 
 A [csomag hozzáadása](#add-package) gyakorlatban az [R](https://www.r-project.org/)-t és az [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/) alkalmazást is telepítenie kell a helyi számítógépen.
 
-Ez a rövid útmutató egy kiszolgálószintű tűzfalszabály konfigurálását is megköveteli. Ennek módját a [Kiszolgálószintű tűzfalszabály létrehozása](sql-database-get-started-portal-firewall.md) szakasz ismerteti.
+Ez a rövid útmutató egy kiszolgálószintű tűzfalszabály konfigurálását is megköveteli. Ennek módját a [Kiszolgálószintű tűzfalszabály létrehozása](sql-database-server-level-firewall-rule.md) szakasz ismerteti.
 
 ## <a name="different-from-sql-server"></a>Más, mint az SQL Server
 
@@ -293,7 +293,7 @@ Betaníthat egy modellt az R használatával, és mentheti egy SQL-adatbázisban
     - Adja meg a modell betanításához használni kívánt bemeneti adatokat.
 
     > [!TIP]
-    > Ha szeretné felfrissíteni a tudását a lineáris modellekkel kapcsolatban, javasoljuk a [Lineáris modellek igazítása](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model) című oktatóanyagot, amely a modellek az rxLinMod függvény használatával való igazításának folyamatát mutatja be.
+    > Ha a lineáris modell frissítő van szüksége, javasoljuk, hogy ebben az oktatóanyagban egy modell használatával rxLinMod igyekeznek folyamatát ismerteti: [Méretezés lineáris modellt](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
     A modell létrehozásához adja meg a képletet az R-kódban, majd továbbítsa az adatokat bemeneti paraméterként.
 
@@ -533,6 +533,6 @@ Ha olyan csomagot szeretne használni, amely még nincs telepítve az SQL-adatb�
 A Machine Learning Serviceszel kapcsolatos további információért olvassa el az SQL Server Machine Learning-szolgáltatásokkal foglalkozó alábbi cikkeket. Bár ezek a cikkek az SQL Serverhez készültek, az azokban szereplő információk a Machine Learning Services (with R) esetében is alkalmazhatók az Azure SQL Database-ben.
 
 - [SQL Server Machine Learning-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Oktatóanyag: Ismerkedés az adatbázison belüli elemzésekkel az R használatával az SQL Serverben](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
+- [Oktatóanyag: Ismerje meg, az r nyelv használatát az SQL Server adatbázis-elemzés](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
 - [Teljes körű adatelemzési útmutató az R-hez és az SQL Serverhez](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [Oktatóanyag: A RevoScaleR R-függvényeinek használata az SQL Server adataival](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [Oktatóanyag: RevoScaleR R-függvények használata az SQL Server-adatok](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

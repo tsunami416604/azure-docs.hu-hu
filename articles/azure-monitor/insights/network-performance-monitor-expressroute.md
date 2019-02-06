@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
-ms.openlocfilehash: 50819e1378187dda126f25298d8a2ac0a1b815c5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2dcbe170a69c0c285cb6425427f94b5efced8712
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188775"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747458"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
@@ -118,23 +118,12 @@ Tekintse meg az értesítés kódokat, és riasztásokat állíthat be a rajtuk 
 
 | Értesítés kódot (naplók) | Leírás |
 | --- | --- |
-| 5101 | A Microsoft Edge alkapcsolatainak megjelenítése nagy a késés |
-| 5102 | A Microsoft Edge alkapcsolatainak eldobja a csomagot | 
-| 5103 | Az ExpressRoute-átjáró nem megfelelő állapotú | 
-| 5201 | Szolgáltatói kapcsolaton nagy a késés |
-| 5202 | Nem érkeznek csomagok a megfelelő ExpressRoute-kapcsolatcsoport |
-| 5301 | Ügyfél biztonsági útválasztóján nagy a késés | 
-| 5302 | A késést az ügyfél-környezetben lévő eszköz vagy kapcsolat okozza. A probléma nem úgy tűnik, hogy az ExpressRoute-kapcsolatcsoport | 
 | 5501 | Nem sikerült bejárni az ExpressRoute-kapcsolatcsoport másodlagos kapcsolatát |
 | 5502 | Nem sikerült bejárni az ExpressRoute-kapcsolatcsoport elsődleges kapcsolatát |
 | 5503 | Nincs kapcsolat a munkaterülethez társított előfizetés nem található | 
-| 5506 | A kihasználtság hamarosan eléri a maximális kapacitásához | 
-| 5507 | Kihasználtság alacsony. |
 | 5508 | Nem sikerült meghatározni e forgalmat a kapcsolatcsoport sem továbbítja az elérési út |
 | 5510 | A megfelelő kapcsolatcsoport nem továbbítja a forgalmat | 
 | 5511 | A megfelelő virtuális hálózat nem továbbítja a forgalmat | 
-| 5512 | Nem sikerült meghatározni a megfelelő kapcsolatcsoport továbbítja a forgalmat |
-
 
 **Kapcsolatcsoport nem működik.** A Network Performance Monitor értesíti, amint az a helyszíni erőforrások és az Azure virtuális hálózatok közötti kapcsolat megszakad. Ez az értesítés segít proaktív művelet végrehajtása előtt a felhasználó eszkalálást kap, és csökkentheti az állásidőt.
 

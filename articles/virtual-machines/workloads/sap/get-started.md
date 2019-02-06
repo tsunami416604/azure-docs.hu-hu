@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 02/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1afdb5773ff4d7ec6b6b492971fb396641c087a
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 0b7515a5c22b98fb14499e07057ff52311fc6e67
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732702"
+ms.locfileid: "55744821"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Az Azure használatához és az SAP munkaterhelés-forgatókönyvek
 
@@ -35,6 +35,8 @@ Az egyedi-e az SAP Hana Azure-ajánlat, amely Azure verseny szereplőkkel. Ahhoz
 SAP munkaterhelés-forgatókönyvek az Azure-beli futtató is hozhat létre identitásintegráció és egyszeri bejelentkezés használata az Azure Active Directory különböző SAP-összetevők és az SAP SaaS követelményeinek vagy PaaS kínál. Az ilyen integrációt és az Azure Active Directory (AAD) és az SAP entitások Single-Sign-On forgatókönyvek listája leírt, és a szakaszban leírt "AAD SAP-Identitásintegráció és egyszeri bejelentkezést."
 
 ## <a name="latest-changes"></a>Legutóbbi módosítások
+
+Kiadása [SAP munkaterhelés-konfigurációk az Azure-beli rendelkezésre állási zónák](sap-ha-availability-zones.md)
 
 Kiadása [SAP számítási feladatok tervezési és telepítési ellenőrzőlista](sap-deployment-checklist.md)
 

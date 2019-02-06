@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9f979922b2abd2ce1a707a8b91656bbe64119938
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38dec49083e84d105f4eed9cbc149bbc025c5e40
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157261"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755713"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportok az Azure CLI-vel
 Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Egy korábbi oktatóanyagból megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképeket a virtuálisgép-példányok üzembe helyezéséhez. Ez az egyéni rendszerkép tartalmazott manuális alkalmazástelepítéseket és -konfigurációkat. Az egyes virtuálisgép-példányok üzembe helyezése után lehetősége van az alkalmazások méretezési csoportokon történő telepítésének automatizálására, vagy egy a méretezési csoporton már futó alkalmazás frissítésére. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -82,7 +82,7 @@ A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása �
 
 
 ## <a name="apply-the-custom-script-extension"></a>Az egyéni szkriptbővítmény alkalmazása
-Alkalmazza az egyéni szkriptbővítmény konfigurációját a méretezési csoport virtuálisgép-példányain az [az vmss extension set](/cli/azure/vmss/extension#set) paranccsal. Az alábbi példa a *customConfig.json* konfigurációt alkalmazza a *myResourceGroup* nevű erőforráscsoportban található *myScaleSet* virtuálisgép-példányokon:
+Alkalmazza az egyéni szkriptbővítmény konfigurációját a méretezési csoport virtuálisgép-példányain az [az vmss extension set](/cli/azure/vmss/extension) paranccsal. Az alábbi példa a *customConfig.json* konfigurációt alkalmazza a *myResourceGroup* nevű erőforráscsoportban található *myScaleSet* virtuálisgép-példányokon:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -112,7 +112,7 @@ az network lb rule create \
   --protocol tcp
 ```
 
-Ha működés közben szeretné megtekinteni a webkiszolgálót, kérje le a terheléselosztó nyilvános IP-címét az [az network public-ip show](/cli/azure/network/public-ip#show) paranccsal. A következő példa a *myScaleSetLBPublicIP* a méretezési csoport részeként létrehozott IP-címét kéri le:
+Ha működés közben szeretné megtekinteni a webkiszolgálót, kérje le a terheléselosztó nyilvános IP-címét az [az network public-ip show](/cli/azure/network/public-ip) paranccsal. A következő példa a *myScaleSetLBPublicIP* a méretezési csoport részeként létrehozott IP-címét kéri le:
 
 ```azurecli-interactive
 az network public-ip show \
@@ -141,7 +141,7 @@ Az aktuális parancshéjban hozzon létre egy *customConfigv2.json* nevű fájlt
 }
 ```
 
-Alkalmazza újra az egyéni szkriptbővítmény konfigurációját a méretezési csoport virtuálisgép-példányain az [az vmss extension set](/cli/azure/vmss/extension#set) paranccsal. A *customConfigv2.json* nevű sablon az alkalmazás frissített verziójának alkalmazására használatos:
+Alkalmazza újra az egyéni szkriptbővítmény konfigurációját a méretezési csoport virtuálisgép-példányain az [az vmss extension set](/cli/azure/vmss/extension) paranccsal. A *customConfigv2.json* nevű sablon az alkalmazás frissített verziójának alkalmazására használatos:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -159,7 +159,7 @@ A méretezési csoport összes virtuálisgép-példánya automatikusan frissül 
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A méretezési csoport és további erőforrások eltávolításához törölje az erőforráscsoportot és az ahhoz tartozó összes erőforrást az [az group delete](/cli/azure/group#az_group_delete) paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
+A méretezési csoport és további erőforrások eltávolításához törölje az erőforráscsoportot és az ahhoz tartozó összes erőforrást az [az group delete](/cli/azure/group) paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

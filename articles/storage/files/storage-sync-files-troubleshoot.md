@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c1ac1a0fccc2ac9a428a04a1b15030c489968a3f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 376ebcbc17cc9f5c797c2985fe3c0784f5036600
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563694"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752092"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -538,7 +538,7 @@ Ez a hiba oka, hogy a módosítások vannak az Azure-fájlmegosztás közvetlen�
 | **Hibakarakterlánc** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Szervizelés szükséges** | Igen |
 
-Azokban az esetekben vannak sok fájl a szinkronizálási hibák száma, ahol szinkronizálási munkamenetek megkezdheti a sikertelen lesz. Ez az állapot hibaelhárítása: [/ fájl/címtár-szinkronizálási hibák elhárítása](#troubleshooting-per-file-directory-sync-errors).
+Azokban az esetekben vannak sok fájl a szinkronizálási hibák száma, ahol szinkronizálási munkamenetek megkezdheti a sikertelen lesz. Ez az állapot hibaelhárítása: [/ fájl/címtár-szinkronizálási hibák elhárítása]().
 
 > [!NOTE]
 > Az Azure File Sync naponta egyszer létrehoz egy ideiglenes VSS-pillanatkép megnyitott kezelőkkel rendelkező fájlok szinkronizálása a kiszolgálón.
@@ -847,7 +847,7 @@ Ha a fájlok nem hívhatók vissza:
 > Egy esemény azonosítója 9006 óránként egyszer a telemetriai adatok eseménynaplóban naplózza, ha egy fájl sikertelen visszaírásához (egy eseményt a rendszer naplózza hibakód). Az operatív és diagnosztikai eseménynaplók kell használható, ha további információra van szüksége a probléma diagnosztizálása érdekében.
 
 <a id="files-unexpectedly-recalled"></a>**A kiszolgáló váratlanul visszahívásra-fájlok hibaelhárítása**  
-A víruskereső, a backup és az egyéb alkalmazásokhoz, amelyek nagy mennyiségű fájlt olvasása miatt nem kívánt visszahívások, ha nem veszik figyelembe a skip offline attribútumot, és a mellőzik ezen fájlok tartalmának olvasását. Az offline fájlok kihagyása a jelen beállítást támogató termékek esetében segíthet elkerülni a nem kívánt visszahívásokat az olyan műveletek során, mint a víruskeresések vagy a biztonsági mentési feladatok.
+A víruskereső, a backup és az egyéb alkalmazásokhoz, amelyek nagy mennyiségű fájlt olvasása miatt nem kívánt visszahívások, ha nem veszik figyelembe a skip offline attribútumot, és a mellőzik ezen fájlok tartalmának olvasását. Az offline fájlok kihagyását támogató termékek esetében a kihagyás segíthet elkerülni a nem kívánt visszahívásokat a víruskeresések, a biztonsági mentési feladatok és a hasonló műveletek során.
 
 Érdeklődjön a szoftverszállítónál, hogy megtudja, hogyan konfigurálhatja a megoldást az offline fájlok olvasásának kihagyására.
 

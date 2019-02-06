@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 7d456ed76ea425f8870b2045283df5cc307d05fd
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 49a2e16d198130d1c72d36377be1d914cbe3351b
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302476"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745248"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>Adat-előállító és folyamat létrehozása a Python használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -59,7 +59,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     pip install azure-mgmt-datafactory
     ```
 
-    A [Python SDK for Data Factory](https://github.com/Azure/azure-sdk-for-python) a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziójának használatát támogatja.
+    A [Python SDK-t a Data Factory](https://github.com/Azure/azure-sdk-for-python) támogatja a Python 2.7-es, 3.3-as, 3.4-es, 3.5, 3.6-os és 3.7-es verzióját.
 
 ## <a name="create-a-data-factory-client"></a>Adat-előállító ügyfél létrehozása
 

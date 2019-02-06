@@ -3,7 +3,7 @@ title: SAP munkaterhelés-konfigurációk az Azure-beli rendelkezésre állási 
 description: Magas rendelkezésre állású architektúra és forgatókönyvek esetében az SAP NetWeaver az Azure rendelkezésre állási zónák használata
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: juergent
+author: msjuergent
 manager: patfilot
 editor: ''
 tags: azure-resource-manager
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2019
-ms.author: msjuergent
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56c1ffd314a9a8e9440832b9fd92a51cdaf9f228
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 409a304296d3fdff897a203177e2c150162755c6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735654"
+ms.locfileid: "55746217"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP munkaterhelés-konfigurációk az Azure-beli rendelkezésre állási zónák
 
@@ -74,7 +74,7 @@ Döntse el, a rendelkezésre állási zónák használata, kell, amelyen vizsgá
 ### <a name="network-latency-between-zones-and-within-zone"></a>Zónán belül és a zónák közötti hálózati késés
 Ismerje meg, hogy a késés, a különböző zónák között van, akkor kell:
 
-- Helyezze üzembe az összes három zónát a DBMS példány használni kívánt virtuális gép Termékváltozata. Győződjön meg arról, hogy, amely [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) engedélyezve van ez a mérés végrehajtásakor
+- Helyezze üzembe az összes három zónát a DBMS példány használni kívánt virtuális gép Termékváltozata. Győződjön meg arról, hogy [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) engedélyezve van ez a mérés végrehajtásakor
 - A két zónákat a legalacsonyabb hálózati késéssel rendelkező megkereséséhez, üzembe helyezése egy másik három virtuális gépet a VM-termékváltozat használja, mint a három rendelkezésre állási zónák között a virtuális gép alkalmazási rétegre szeretne. A két különböző "DBMS" zónában a választott mérhetők a két "adatbázis-kezelő virtuális gép" a hálózati késést. 
 - Mérhető eszközként használni **niping**. Egy eszközt, a SAP, amely az SAP támogatási megjegyzések leírtak szerint működik [#500235](https://launchpad.support.sap.com/#/notes/500235) és [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). A parancsok késési mérések feljegyezni SAP koncentrálhat. Használatával **ping** egy ajánlott eszköz óta nem **ping** nem működik az Azure-on keresztül a gyorsított hálózati kódhoz tartozó elérési út.
 

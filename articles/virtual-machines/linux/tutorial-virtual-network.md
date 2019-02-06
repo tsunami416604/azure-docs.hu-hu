@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 664dc101232ed092b76e2642ec94c6e7aa5e7a88
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: e90880aeaae17c80d6714f917f2ea849c953711f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660565"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755408"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Hozzon létre, és a Linux rendszerű virtuális gépek az Azure CLI-vel az Azure virtuális hálózatok kezelése
 
@@ -60,7 +60,7 @@ Az oktatóanyag végéig a következő virtuális hálózati erőforrások jönn
 
 Ebben az oktatóanyagban egy virtuális hálózatot hozunk létre két alhálózattal, egy előtérbeli alhálózatot egy webalkalmazás üzemeltetéséhez, és egy háttérbeli alhálózatot egy adatbázis-kiszolgáló üzemeltetéséhez.
 
-A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példa létrehoz egy *myRGNetwork* nevű erőforráscsoportot az eastus helyen.
+A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példa létrehoz egy *myRGNetwork* nevű erőforráscsoportot az eastus helyen.
 
 ```azurecli-interactive 
 az group create --name myRGNetwork --location eastus
@@ -81,7 +81,7 @@ az network vnet create \
 
 ### <a name="create-subnet"></a>Alhálózat létrehozása
 
-Az [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) paranccsal hozzáadunk egy új alhálózatot a virtuális hálózathoz. Ebben a példában az alhálózat neve *myBackendSubnet*, és a *10.0.2.0/24* címelőtagot kapja. A rendszer ezt az alhálózatot használja minden háttérbeli szolgáltatáshoz.
+Az [az network vnet subnet create](/cli/azure/network/vnet/subnet) paranccsal hozzáadunk egy új alhálózatot a virtuális hálózathoz. Ebben a példában az alhálózat neve *myBackendSubnet*, és a *10.0.2.0/24* címelőtagot kapja. A rendszer ezt az alhálózatot használja minden háttérbeli szolgáltatáshoz.
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -103,11 +103,11 @@ A kiosztási módszer átállítható statikusra. Ez biztosítja, hogy a virtuá
 az network public-ip create --resource-group myRGNetwork --name myPublicIPAddress
 ```
 
-Amikor az [az vm create](/cli/azure/vm#az_vm_create) paranccsal létrehoz egy virtuális gépet, az IP-cím-kiosztási módszer alapértelmezés szerint dinamikus. Ha az [az vm create](/cli/azure/vm#az_vm_create) hoz létre virtuális gépet, a `--public-ip-address-allocation static` argumentum szerepeltetésével rendelhet statikus IP-cím a virtuális géphez. Ezt a műveletet nincs ismertetjük ebben az oktatóanyagban, de a következő szakaszban bemutatjuk a dinamikusan kiosztott IP-cím statikusan kiosztott címre módosításának módját. 
+Amikor az [az vm create](/cli/azure/vm) paranccsal létrehoz egy virtuális gépet, az IP-cím-kiosztási módszer alapértelmezés szerint dinamikus. Ha az [az vm create](/cli/azure/vm) hoz létre virtuális gépet, a `--public-ip-address-allocation static` argumentum szerepeltetésével rendelhet statikus IP-cím a virtuális géphez. Ezt a műveletet nincs ismertetjük ebben az oktatóanyagban, de a következő szakaszban bemutatjuk a dinamikusan kiosztott IP-cím statikusan kiosztott címre módosításának módját. 
 
 ### <a name="change-allocation-method"></a>A kiosztási módszer módosítása
 
-Az IP-cím-kiosztási módszer az [az network public-ip update](/cli/azure/network/public-ip#az_network_public_ip_update) paranccsal módosítható. Ebben a példában az előtérbeli virtuális gép IP-cím-kiosztási módszerét módosítottuk statikusra.
+Az IP-cím-kiosztási módszer az [az network public-ip update](/cli/azure/network/public-ip) paranccsal módosítható. Ebben a példában az előtérbeli virtuális gép IP-cím-kiosztási módszerét módosítottuk statikusra.
 
 Először szabadítsa fel a virtuális gépet.
 
@@ -115,7 +115,7 @@ Először szabadítsa fel a virtuális gépet.
 az vm deallocate --resource-group myRGNetwork --name myFrontendVM
 ```
 
-Frissítse a kiosztási módszert az [az network public-ip update](/cli/azure/network/public-ip#az_network_public_ip_update) paranccsal. Ebben az esetben az `--allocation-method` beállítása *static* (statikus) lesz.
+Frissítse a kiosztási módszert az [az network public-ip update](/cli/azure/network/public-ip) paranccsal. Ebben az esetben az `--allocation-method` beállítása *static* (statikus) lesz.
 
 ```azurecli-interactive 
 az network public-ip update --resource-group myRGNetwork --name myPublicIPAddress --allocation-method static
@@ -133,7 +133,7 @@ Gyakran előfordul, hogy egy virtuális gépnek nem kell elérhetőnek lennie az
 
 ## <a name="create-a-front-end-vm"></a>Előtérbeli virtuális gép létrehozása
 
-Az [az vm create](/cli/azure/vm#az_vm_create) paranccsal hozzon létre egy *myPublicIPAddress* IP-címet használó *myFrontendVM* nevű virtuális gépet.
+Az [az vm create](/cli/azure/vm) paranccsal hozzon létre egy *myPublicIPAddress* IP-címet használó *myFrontendVM* nevű virtuális gépet.
 
 ```azurecli-interactive 
 az vm create \
@@ -165,7 +165,7 @@ Az alapértelmezett NSG-szabályok a következők:
 
 ### <a name="create-network-security-groups"></a>Hálózati biztonsági csoportok létrehozása
 
-A virtuális gép létrehozásával egy időben létrehozható egy hálózati biztonsági csoport is az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Ebben a folyamatban az NSG-t a rendszer a virtuális gép hálózati adapteréhez társítja, és automatikusan létrejön egy NSG-szabály, amely a *22*-es porton keresztül bármilyen forrásból engedélyezi az adatforgalmat. Az oktatóanyag egy korábbi szakaszában az előtérbeli virtuális gép létrehozásakor automatikusan létrejött az előtérbeli NSG is. Automatikusan létrejött egy NSG-szabály is a 22-es porthoz. 
+A virtuális gép létrehozásával egy időben létrehozható egy hálózati biztonsági csoport is az [az vm create](/cli/azure/vm) paranccsal. Ebben a folyamatban az NSG-t a rendszer a virtuális gép hálózati adapteréhez társítja, és automatikusan létrejön egy NSG-szabály, amely a *22*-es porton keresztül bármilyen forrásból engedélyezi az adatforgalmat. Az oktatóanyag egy korábbi szakaszában az előtérbeli virtuális gép létrehozásakor automatikusan létrejött az előtérbeli NSG is. Automatikusan létrejött egy NSG-szabály is a 22-es porthoz. 
 
 Bizonyos esetekben érdemes lehet előre létrehozni egy NSG-t, például amikor nem akarjuk, hogy létrejöjjenek alapértelmezett SSH-szabályok, vagy amikor az NSG-t egy alhálózathoz akarjuk csatolni. 
 
@@ -191,7 +191,7 @@ az network vnet subnet update \
 
 Az előtérbeli virtuális gép létrehozásakor létrejön egy NSG-szabály, amely engedélyezi a bejövő forgalmat a 22-es porton. Ez a szabály engedélyezi az SSH-kapcsolatokat a virtuális gép számára. Ebben a példában a forgalmat a *80*-as porton is engedélyezni kell. Ez a konfiguráció lehetővé teszi egy webalkalmazás elérését a virtuális gépen.
 
-Hozzon létre egy szabályt a *80*-as porthoz az [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) paranccsal.
+Hozzon létre egy szabályt a *80*-as porthoz az [az network nsg rule create](/cli/azure/network/nsg/rule) paranccsal.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -218,7 +218,7 @@ az network nsg rule list --resource-group myRGNetwork --nsg-name myFrontendNSG -
 
 A hálózati biztonsági csoport szabályai virtuális gépek közötti forgalomra is vonatkozhatnak. Ebben a példában az előtérbeli virtuális gépnek a *22*-es és a *3306*-os porton kell kommunikálnia a háttérbeli virtuális géppel. Ez a konfiguráció engedélyezi az SSH-kapcsolatokat az előtér virtuális gépről, és azt is lehetővé teszi, hogy az előtérbeli virtuális gép egy alkalmazása kommunikáljon egy háttérbeli MySQL-adatbázissal. Az összes többi forgalmat le kell tiltani az előtérbeli és a háttérbeli virtuális gépek között.
 
-Hozzon létre egy szabályt a 22-es porthoz az [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) paranccsal. Figyelje meg, hogy a `--source-address-prefix` argumentum *10.0.1.0/24* értéket határoz meg. Ez a konfiguráció biztosítja, hogy csak az előtérbeli alhálózatból érkező adatforgalom haladjon át az NSG-n.
+Hozzon létre egy szabályt a 22-es porthoz az [az network nsg rule create](/cli/azure/network/nsg/rule) paranccsal. Figyelje meg, hogy a `--source-address-prefix` argumentum *10.0.1.0/24* értéket határoz meg. Ez a konfiguráció biztosítja, hogy csak az előtérbeli alhálózatból érkező adatforgalom haladjon át az NSG-n.
 
 ```azurecli-interactive 
 az network nsg rule create \

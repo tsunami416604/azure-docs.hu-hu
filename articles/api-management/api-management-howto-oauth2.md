@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 87e5b6098ff9ee74ef8a4314362c30c436d5ad20
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b195271edeea6cd5ea527454ad1615ac85a32138
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967929"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746727"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Hogyan lehet OAuth 2.0-val az Azure API Management fejlesztői fiókok engedélyezése
 
@@ -51,9 +51,9 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgálta
 
     ![OAuth 2.0 új kiszolgálóra](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. Az űrlap a következő szakasz tartalmazza a **engedélyezési kód engedélyezési típusok**, **engedélyezési végpont URL-címe**, és **engedélyezési kérelmi metódus** beállításait.
+4. Az űrlap a következő szakasz tartalmazza a **engedélyezéstípusok**, **engedélyezési végpont URL-címe**, és **engedélyezési kérelmi metódus** beállításait.
 
-    Adja meg a **engedélyezési kód engedélyezési típusok** a kívánt típusú ellenőrzésével. **Engedélyezési kód** alapértelmezés szerint van megadva.
+    Adja meg a **engedélyezéstípusok** a kívánt típusú ellenőrzésével. **Engedélyezési kód** alapértelmezés szerint van megadva.
 
     Adja meg a **engedélyezési végpont URL-címe**. Az Azure Active Directory, az URL-cím a következő URL-címet, hasonló lesz ahol `<client_id>` az ügyfél-azonosítót, amely azonosítja az alkalmazást az OAuth 2.0-kiszolgáló helyére.
 
@@ -75,7 +75,7 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgálta
 
     ![OAuth 2.0 új kiszolgálóra](./media/api-management-howto-oauth2/oauth-04.png)
 
-    Ha **engedélyezési kód engedélyezési típusok** értékre van állítva **erőforrás-tulajdonos jelszava**, a **erőforrás tulajdonosának jelszavas hitelesítő adatai** szakaszban azt adhatja meg ezeket a hitelesítő adatokat; Ellenkező esetben, üresen is hagyhatja.
+    Ha **engedélyezéstípusok** értékre van állítva **erőforrás-tulajdonos jelszava**, a **erőforrás tulajdonosának jelszavas hitelesítő adatai** szakaszban használt hitelesítő adatokat megadnia; egyéb akkor is üresen hagyhatja.
 
     Az űrlap befejeződése után kattintson a **létrehozás** az API Management az OAuth 2.0 engedélyezési kiszolgáló konfigurációjának mentéséhez. A kiszolgáló konfigurációját a mentés után konfigurálhat API-k segítségével használja ezt a konfigurációt, a következő szakaszban látható módon.
 

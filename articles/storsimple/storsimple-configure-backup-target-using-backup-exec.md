@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.openlocfilehash: 0f9f300f589a4818afb0c0de5ede94e5c4fab15e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8cde3402ef52747e61333c56903309259e07599a
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248728"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747594"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>A biztonsági mentési Exec a StorSimple mint biztonsági mentési cél
 
@@ -79,7 +79,7 @@ A StorSimple ezeket az előnyöket kínálja:
 
 Bár a StorSimple alapvetően a két fő üzembe helyezési forgatókönyvet (elsődleges biztonsági mentési cél és a másodlagos biztonsági mentési cél) mutat be, egy egyszerű, block storage eszköz. A StorSimple does minden a tömörítés és a deduplikáció. Zökkenőmentesen küld, és lekéri az adatokat a felhőben és az alkalmazások és a fájlrendszer között.
 
-A StorSimple kapcsolatos további információkért lásd: [a StorSimple 8000 sorozat: a hibrid felhőalapú tárolási megoldást](storsimple-overview.md). Emellett áttekintheti a [StorSimple 8000 sorozat műszaki specifikációk](storsimple-technical-specifications-and-compliance.md).
+További információ a StorSimple: [a StorSimple 8000 sorozat: Hibrid felhőalapú tárolási megoldást](storsimple-overview.md). Emellett áttekintheti a [StorSimple 8000 sorozat műszaki specifikációk](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
 > A StorSimple eszköz biztonsági mentési cél használata támogatott csak az a StorSimple 8000-es Update 3 és újabb verziókban.
@@ -183,7 +183,7 @@ Ebben a szakaszban bemutatjuk, hogyan konfigurációs példákat. A következő 
 
 | A StorSimple üzembe helyezési feladatok  | További megjegyzések |
 |---|---|
-| A helyszíni StorSimple eszköz üzembe helyezése. | Támogatott verziók: Update 3 és újabb verziók. |
+| A helyszíni StorSimple eszköz üzembe helyezése. | Támogatott verziók: 3. frissítés és újabb verziókban. |
 | Kapcsolja be a biztonsági mentési cél. | A parancsok használatához kapcsolja be, vagy kapcsolja ki a biztonsági mentési cél módot, és állapotának beolvasása. További információkért lásd: [távolról csatlakozhat a StorSimple eszköz](storsimple-remote-connect.md).</br> Kapcsolja be a biztonsági mentés módja: `Set-HCSBackupApplianceMode -enable`. </br> Tiltsa le a biztonsági mentés módja: `Set-HCSBackupApplianceMode -disable`. </br> A biztonsági mentési beállításainak aktuális állapotának: `Get-HCSBackupApplianceMode`. |
 | A kötet, amely tárolja a biztonsági mentési adatok közös kötettároló létrehozása. A kötettároló összes adat deduplikált. | A StorSimple-kötettároló deduplikáció tartományok definiálása.  |
 | A StorSimple-köteteket hozhat létre. | Hozzon létre köteteket méretű, a várható használati közeli lehetséges, mert a kötet mérete befolyásolja a felhőbeli pillanatkép időtartamát. A kötet méretének kapcsolatos információkért olvassa el [adatmegőrzési szabályzatok](#retention-policies).</br> </br> Az StorSimple rétegzett köteteket, és válassza ki a **kötet használata ritkábban használt archív adatokhoz** jelölőnégyzetet. </br> Csak a helyileg rögzített kötetekről használata nem támogatott. |
@@ -376,7 +376,7 @@ Az alábbi táblázat bemutatja, hogyan futtathatók a helyi és a StorSimple-le
 \* Teljes kapacitás 17 Tib-ra a StorSimple-lemezek és a helyi RAID kötetre 1 TiB tartalmaz.
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Példa ütemezési GFS: GFS Elforgatás heti, havi és éves ütemterv
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS példa ütemezése: Elforgatás GFS heti, havi és éves ütemterv
 
 | Hét | Korlátlan | 1. nap növekményes | 2. napon növekményes | Növekményes naponta 3 | Növekményes naponta 4 | Növekményes nap 5 |
 |---|---|---|---|---|---|---|
@@ -430,7 +430,7 @@ Az alábbi szakasz elindításához és a StorSimple a felhőbeli pillanatképek
 ### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Indítsa el, és a felhőbeli pillanatképek törlése egy parancsfájl használatával
 
 > [!NOTE]
-> Gondosan mérje fel a megfelelőség és az adatok megőrzési következményekkel StorSimple pillanatkép törlése előtt. A biztonsági mentés utáni parancsfájl futtatásával kapcsolatos további információkért lásd: a [Backup Execkel dokumentáció](https://www.veritas.com/support/en_US/15047.html).
+> Gondosan mérje fel a megfelelőség és az adatok megőrzési következményekkel StorSimple pillanatkép törlése előtt. A biztonsági mentés utáni parancsfájl futtatásával kapcsolatos további információkért lásd: a [Backup Execkel dokumentáció](https://www.veritas.com/support/en_US/article.100032497.html).
 
 ### <a name="backup-lifecycle"></a>Biztonsági mentési életciklusa
 

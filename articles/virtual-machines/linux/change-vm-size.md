@@ -16,27 +16,27 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b8802c91ceb59d391dc27a71da905de9c15a1dc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8bd8136c61a277e730c07c8789afd1bf3214bd7c
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993228"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754149"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Azure CLI-vel Linux virtuális gépek átméretezése 
 
 Miután egy virtuális gépet (VM) üzembe helyez, méretezheti a virtuális gép felfelé vagy lefelé módosításával a [Virtuálisgép-méret][vm-sizes]. Bizonyos esetekben kell először felszabadítja a virtuális Gépet. Szabadítsa fel a virtuális Gépet, ha a kívánt méret nem érhető el a hardver fürtön, amelyen a virtuális Gépet kell. Ez a cikk részletesen bemutatja az Azure CLI-vel Linux rendszerű virtuális gépek átméretezése. 
 
 ## <a name="resize-a-vm"></a>Virtuális gép átméretezése
-Virtuális gép átméretezése, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+Virtuális gép átméretezése, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index).
 
-1. A virtuális Gépet üzemeltető a hardver-fürtön elérhető Virtuálisgép-méretek listájának megtekintéséhez [az vm list-vm-resize-options](/cli/azure/vm#az_vm_list_vm_resize_options). Az alábbi példa felsorolja a Virtuálisgép-méretek nevű virtuális gép `myVM` erőforráscsoportban `myResourceGroup` régió:
+1. A virtuális Gépet üzemeltető a hardver-fürtön elérhető Virtuálisgép-méretek listájának megtekintéséhez [az vm list-vm-resize-options](/cli/azure/vm). Az alábbi példa felsorolja a Virtuálisgép-méretek nevű virtuális gép `myVM` erőforráscsoportban `myResourceGroup` régió:
    
     ```azurecli
     az vm list-vm-resize-options --resource-group myResourceGroup --name myVM --output table
     ```
 
-2. Ha a virtuális gép kívánt méretét szerepel a listán, méretezze át a virtuális Gépet a [az virtuális gép átméretezése](/cli/azure/vm#az_vm_resize). Az alábbi példában a virtuális gép nevű átméretezi `myVM` , a `Standard_DS3_v2` mérete:
+2. Ha a virtuális gép kívánt méretét szerepel a listán, méretezze át a virtuális Gépet a [az virtuális gép átméretezése](/cli/azure/vm). Az alábbi példában a virtuális gép nevű átméretezi `myVM` , a `Standard_DS3_v2` mérete:
    
     ```azurecli
     az vm resize --resource-group myResourceGroup --name myVM --size Standard_DS3_v2
@@ -44,7 +44,7 @@ Virtuális gép átméretezése, a legújabb kell [Azure CLI-vel](/cli/azure/ins
    
     A virtuális gép újraindul, a folyamat során. Az újraindítás után a meglévő operációs rendszer és az adatlemezek állapotba kerülnek. Az ideiglenes lemez semmit sem elvész.
 
-3. Ha a kívánt VM-méret nem szerepel, akkor először szabadítsa fel a virtuális Gépet a [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Ez a folyamat lehetővé teszi, hogy a virtuális Gépen, majd át lehet méretezni, tetszőleges méretű érhető el, hogy a régió támogatja, és ezután elindult. Az alábbi lépéseket felszabadítása, átméretezése és indítsa el a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
+3. Ha a kívánt VM-méret nem szerepel, akkor először szabadítsa fel a virtuális Gépet a [az vm deallocate](/cli/azure/vm). Ez a folyamat lehetővé teszi, hogy a virtuális Gépen, majd át lehet méretezni, tetszőleges méretű érhető el, hogy a régió támogatja, és ezután elindult. Az alábbi lépéseket felszabadítása, átméretezése és indítsa el a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
    
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM

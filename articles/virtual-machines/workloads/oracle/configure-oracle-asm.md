@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 692f6b1f02c6c1e86170971886e83722d0160838
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8cf977f9c5bbf10c6a4d862a29fda98d3ce71844
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203589"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755689"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Oracle ASM beállítása Azure Linux virtuális gépen  
 
@@ -42,7 +42,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az erőforráscsoport létrehozásához használja az [az group create](/cli/azure/group#az_group_create) parancsot. Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure erőforrások üzembe helyezése és felügyelt. Ebben a példában egy erőforráscsoportot nevű *myResourceGroup* a a *eastus* régióban.
+Az erőforráscsoport létrehozásához használja az [az group create](/cli/azure/group) parancsot. Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure erőforrások üzembe helyezése és felügyelt. Ebben a példában egy erőforráscsoportot nevű *myResourceGroup* a a *eastus* régióban.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

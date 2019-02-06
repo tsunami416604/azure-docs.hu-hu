@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: da7848fe561d061470e8921f1f76ac30bed4c809
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163058"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751157"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Hozzon létre és használhat lemezeket a virtuálisgép-méretezési csoportba az Azure CLI-vel
 A virtuálisgép-méretezési csoportok lemezeket használnak a virtuálisgép-példányok operációs rendszereinek, alkalmazásainak és adatainak tárolására. Méretezési csoportok létrehozásakor és kezelésekor fontos szempont, hogy a számítási feladatok jelentette várható terhelésnek megfelelő lemezméretet és konfigurációt válasszon ki. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet virtuálisgép-lemezeket. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -95,13 +95,13 @@ Míg a fenti táblázatban a lemezenkénti maximális IOPS-érték látható, na
 A méretezési csoport létrehozásakor vagy egy meglévő méretezési csoporthoz is létrehozhat és csatlakoztathat lemezeket.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Lemezek csatlakoztatása méretezési csoport létrehozásakor
-Első lépésként hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre az *eastus* régióban.
+Első lépésként hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre az *eastus* régióban.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss#az_vmss_create) parancs használatával. A következő példa egy *myScaleSet* nevű méretezési csoportot, valamint SSH-kulcsokat hoz létre, amennyiben azok még nem léteznének. Két lemez jön létre a `--data-disk-sizes-gb` paraméterrel. Az első lemez *64* GB, míg a második lemez *128* GB méretű:
+Hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss) parancs használatával. A következő példa egy *myScaleSet* nevű méretezési csoportot, valamint SSH-kulcsokat hoz létre, amennyiben azok még nem léteznének. Két lemez jön létre a `--data-disk-sizes-gb` paraméterrel. Az első lemez *64* GB, míg a második lemez *128* GB méretű:
 
 ```azurecli-interactive
 az vmss create \
@@ -117,7 +117,7 @@ az vmss create \
 A méretezési csoport erőforrásainak és virtuálisgép-példányainak létrehozása és konfigurálása néhány percet vesz igénybe.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Lemez csatolása meglévő méretezési csoporthoz
-Meglévő méretezési csoporthoz is hozzáadhat lemezeket. Adjon hozzá egy újabb lemezt az előző lépésben létrehozott méretezési csoporthoz az [az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach) paranccsal. Az alábbi példa egy újabb *128* GB-os lemezt csatlakoztat:
+Meglévő méretezési csoporthoz is hozzáadhat lemezeket. Adjon hozzá egy újabb lemezt az előző lépésben létrehozott méretezési csoporthoz az [az vmss disk attach](/cli/azure/vmss/disk) paranccsal. Az alábbi példa egy újabb *128* GB-os lemezt csatlakoztat:
 
 ```azurecli-interactive
 az vmss disk attach \
@@ -144,7 +144,7 @@ az vmss extension set \
   --settings '{"fileUris":["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.sh"],"commandToExecute":"./prepare_vm_disks.sh"}'
 ```
 
-Annak megerősítéséhez, hogy a lemezek megfelelően elő lettek készítve, SSH-kapcsolaton keresztül csatlakozzon az egyik virtuálisgép-példányhoz. Listázza ki a méretezési csoport kapcsolatadatait az [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) paranccsal:
+Annak megerősítéséhez, hogy a lemezek megfelelően elő lettek készítve, SSH-kapcsolaton keresztül csatlakozzon az egyik virtuálisgép-példányhoz. Listázza ki a méretezési csoport kapcsolatadatait az [az vmss list-instance-connection-info](/cli/azure/vmss) paranccsal:
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -225,7 +225,7 @@ exit
 
 
 ## <a name="list-attached-disks"></a>Csatlakoztatott lemezek listázása
-A méretezési csoporthoz csatlakoztatott lemezekkel kapcsolatos információk megtekintéséhez használja az [az vmss show](/cli/azure/vmss#az_vmss_show) parancsot, és állítsa be a *virtualMachineProfile.storageProfile.dataDisks* lekérdezést:
+A méretezési csoporthoz csatlakoztatott lemezekkel kapcsolatos információk megtekintéséhez használja az [az vmss show](/cli/azure/vmss) parancsot, és állítsa be a *virtualMachineProfile.storageProfile.dataDisks* lekérdezést:
 
 ```azurecli-interactive
 az vmss show \
@@ -279,7 +279,7 @@ A lemez méretével, a tárolási szinttel és a logikai egység számával (LUN
 
 
 ## <a name="detach-a-disk"></a>Lemez leválasztása
-Ha már nincs szüksége egy adott lemezre, válassza azt le a méretezési csoportról. A rendszer eltávolítja a lemezt a méretezési csoport minden virtuálisgép-példányáról. A lemez a méretezési csoportról történő leválasztásához használja az [az vmss disk detach](/cli/azure/vmss/disk) parancsot, és adja meg a lemez logikai egységének számát. A logikai egységek számai az előző szakaszban használt [az vmss show](/cli/azure/vmss#az_vmss_show) parancs kimenetében láthatók. Az alábbi példa leválasztja a *2* LUN-számú lemezt a méretezési csoportról:
+Ha már nincs szüksége egy adott lemezre, válassza azt le a méretezési csoportról. A rendszer eltávolítja a lemezt a méretezési csoport minden virtuálisgép-példányáról. A lemez a méretezési csoportról történő leválasztásához használja az [az vmss disk detach](/cli/azure/vmss/disk) parancsot, és adja meg a lemez logikai egységének számát. A logikai egységek számai az előző szakaszban használt [az vmss show](/cli/azure/vmss) parancs kimenetében láthatók. Az alábbi példa leválasztja a *2* LUN-számú lemezt a méretezési csoportról:
 
 ```azurecli-interactive
 az vmss disk detach \
@@ -290,7 +290,7 @@ az vmss disk detach \
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A méretezési csoport és a lemezek eltávolításához törölje az erőforráscsoportot és az ahhoz tartozó összes erőforrást az [az group delete](/cli/azure/group#az_group_delete) paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
+A méretezési csoport és a lemezek eltávolításához törölje az erőforráscsoportot és az ahhoz tartozó összes erőforrást az [az group delete](/cli/azure/group) paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

@@ -1,43 +1,40 @@
 ---
-title: A Bing Entity Search végpontok
+title: A Bing Entity Search API-végpont
 titlesuffix: Azure Cognitive Services
-description: Az Entity Search API-végpont összefoglalása.
+description: További tudnivalók a Bing Entity Search API-végpont, és a kéréseket küldjön.
 services: cognitive-services
-author: aahill
+author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.author: aahi
-ms.openlocfilehash: 561c64db2b97ed8792acab6cc87de861ecc30fe9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 02/01/2019
+ms.author: v-gedod
+ms.openlocfilehash: cae65c8fb7deb9f68a297de2058a86249b60136b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183985"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753980"
 ---
-# <a name="entity-search-endpoints"></a>Végpontok entitás keresése
-A **Entity Search API** egy végpontot tartalmaz.
+# <a name="bing-entity-search-api-endpoint"></a>A Bing Entity Search API-végpont
 
-## <a name="endpoint"></a>Végpont
-A kért entitás keresési eredmények, a következő végpont egy kérés küldése. A fejlécek és URL-paraméterek használatával további specifikációk meghatározása.
 
-Végpont `GET`: 
-``` 
-https://api.cognitive.microsoft.com/bing/v7.0/entities
+A Bing Entity Search API tartalmaz egy végpontot, amely entitásokat ad vissza, a webről lekérdezés alapján. A keresési eredmények a rendszer JSON formátumban adja vissza.
+
+## <a name="get-entity-results-from-the-endpoint"></a>A végpontról entitás eredményeinek beolvasása
+
+Használatával eredmények lekérése entitás a **Bing-API**, küldjön egy `GET` kérelem a következő végpont. Használat [fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers) és [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query-parameters) szabhatja testre a keresési kérelmet. Keresési kérelmek használatával küldhető a `?q=` paraméter.
+
+```cURL
+ GET https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
-
-A következő URL-paraméter szükség:
-- mkt. A piac, ahonnan az eredmények származnak. 
-- q. Az entitás keresési lekérdezés.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Bing Entity Search rövid útmutatók](quickstarts/csharp.md)
+> [Mi az a Bing Entity Search API?](overview.md)
 
 ## <a name="see-also"></a>Lásd még 
 
-[A Bing Entity Search áttekintése](search-the-web.md )
-[API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+A fejlécek, paraméterek, piaci kódok, válaszobjektumok, hibák és további kapcsolatos további információkért lásd: a [Bing Entity Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) áttekintésével foglalkozó cikkben.

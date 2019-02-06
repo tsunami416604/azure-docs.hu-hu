@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 246b7ae21ceca80c2d1af74330691e527c73cf51
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5bff36f17b407c95858924a2a88b133500c350b6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452736"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751412"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -251,7 +251,10 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 Az Azure File Sync támogatja, és a Storage Sync Service ugyanabban a régióban található Azure-fájlmegosztások csak való szinkronizálását.
 
 ### <a name="azure-disaster-recovery"></a>Azure-beli vészhelyreállításához
-Egy Azure-régióban, adatvesztés elleni védelme érdekében az Azure File Sync integrálható a [georedundáns tárhely-redundancia](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) lehetőséget. GRS tároló működéséről a párosított másodlagos régióban aszinkron blokkreplikációt az elsődleges régióban, amellyel normál esetben kezelheti, storage és a storage használatával. Egy katasztrófa, amely egy Azure-régió ideiglenesen vagy véglegesen offline állapotba a Microsoft feladatátvételt hajt végre a párosított régióban a storage. 
+Egy Azure-régióban, adatvesztés elleni védelme érdekében az Azure File Sync integrálható a [georedundáns tárhely-redundancia](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) lehetőséget. GRS tároló működéséről a párosított másodlagos régióban aszinkron blokkreplikációt az elsődleges régióban, amellyel normál esetben kezelheti, storage és a storage használatával. Egy katasztrófa, amely egy Azure-régió ideiglenesen vagy véglegesen offline állapotba a Microsoft fogja tárolás feladatátvétele a párosított régióba. 
+
+> [!Warning]  
+> Ha GRS tárfiók a felhőbeli végpont, használja az Azure-fájlmegosztást, storage-fiók feladatátvétele nem kezdeményezheti. Ezzel OK sync leállításához működő és május is művelettel váratlan adatvesztés esetén újonnan rétegzett fájlok. Egy Azure-régióban, adatvesztés esetén a Microsoft a tárolási fiók feladatátvétel úgy, hogy a kompatibilis az Azure File Sync aktivál.
 
 Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjával támogatása érdekében minden Azure-fájlszinkronizálás régió egy másodlagos régióba, amely megfelel a másodlagos régióba storage által használt rendszer párban. A párok a következők:
 

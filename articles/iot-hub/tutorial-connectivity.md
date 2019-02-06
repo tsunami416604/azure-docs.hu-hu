@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 05f6b32fad4f0a449f0d801c1c7cc6a28be6f940
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685352"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745809"
 ---
-# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez
+# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT hub-kapcsolat tesztelése
 
 Ebben az oktatóanyagban az Azure IoT Hub portál eszközeivel és az Azure CLI parancsaival teszteli az eszközkapcsolatot. Az oktatóanyag emellett egy egyszerű eszközszimulátort is használ, amelyet az asztali gépén futtat.
 
@@ -75,7 +75,7 @@ A **MyTestDevice** kapcsolati sztringjének lekéréséhez kattintson rá az esz
 
 A **MyTestDevice** által az IoT hubnak küldött telemetria szimulálásához futtassa a Node.js szimulálteszköz-alkalmazást, amelyet korábban letöltött.
 
-A fejlesztői gépen egy terminálablakban keresse meg a letöltött Node.js-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Tutorials\ConnectivityTests\simulated-device** mappára.
+A fejlesztői gépen egy terminálablakban keresse meg a letöltött Node.js-mintaprojekt gyökérmappáját. Keresse meg a **iot-hub\Tutorials\ConnectivityTests** mappát.
 
 Futtassa az alábbi parancsokat a terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás futtatásához. Az eszköz kapcsolati karakterláncának jegyezze fel, amikor az eszköz hozzáadva a portálon végzett használja.
 

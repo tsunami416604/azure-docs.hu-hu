@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 71f226d2ba471a2ccbba3123015697da43d2cf80
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d96ef2fd318d6164e1b7dfc5c4b72d6957af0f3e
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667065"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744434"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>A Power BI alkalmazások technikai információ lap
 
@@ -36,7 +36,7 @@ Az a **technikai információ** lapon meg kell adnia a következő mezőket.  A 
 |    ---------------    |  ----------------------------------------------------------------------------|
 | **Telepítő URL-címe**     | Amikor éles környezetbe való előléptetése és az alkalmazás közzététele a Power BI által létrehozott címe.  Az URL-cím létrehozása a további információkért lásd: [service-alkalmazások közzététele a Power bi-ban](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
 |  **Ellenőrzési utasítások**  |  A Microsoft ellenőrzési csoportja, amelyek segítik a konfigurálása, csatlakozás és az alkalmazás tesztelése nem kötelező szöveg útmutatást (max 3000 karakter) többek között: tipikus konfigurációs beállítások, tesztelni vagy a "Connect adatok" beállítás tesztelésére szolgáló paraméterek stb. Ez az információ csak akkor látható, az érvényesítési csapatának, és csak ellenőrzési célokat szolgál.  |
-| **Ez az alkalmazás a program létrehoz egy Power BI-tartalomcsomag?** | Jelenleg ez az egy belső használt mezőt. Hagyja a beállítást az alapértelmezett értékére, `No`; ellenkező esetben a mezőben a módosítása `No` akadályozhatnák a közzététel.  |  
+| **Ez az alkalmazás a program létrehoz egy Power BI-tartalomcsomag?** | Jelenleg ez az egy belső használt mezőt. Hagyja a beállítást az alapértelmezett értékére, `No`; ellenkező esetben a mezőben a módosítása `Yes` akadályozhatnák a közzététel.  |  
 |  |  |
 
 

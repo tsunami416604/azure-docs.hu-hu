@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 091a165dacbf0e98532f343745e56c4acf765b84
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9369e076517e295a7d17011e024353614ec8ad46
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320795"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751973"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Egy képességcsoport létrehozása Adatbővítés folyamatban
 
@@ -38,9 +38,9 @@ Ajánlott kezdeti lépés gondolkodik adatok kinyerése a nyers adatokat, és ho
 
 Tegyük fel, hogy Önt érdeklő feldolgozása pénzügyi elemzői megjegyzések készletét. Egyes fájlok szeretne kinyerni a vállalat neve és az általános hangulatát hozzászólást. Érdemes azt is, egy egyéni enricher a vállalat például folytat a vállalat üzleti milyen további információkat találhat a Bing Entity Search Service szolgáltatást használó írni. Alapvetően az alábbihoz hasonló információkat vonhat ki a kívánt indexelt dokumentumok:
 
-| rekord-szöveg | Vállalatok | vélemények | Vállalati leírása |
+| record-text | Vállalatok | vélemények | Vállalati leírása |
 |--------|-----|-----|-----|
-|minta-record| ["Microsoft", "LinkedIn"] | 0.99 | ["A Microsoft Corporation-Amerikai nemzetközi technológiai vállalat...", "LinkedIn egy üzleti és alkalmazás-jellegű közösségi hálózati..."]
+|sample-record| ["Microsoft", "LinkedIn"] | 0.99 | ["A Microsoft Corporation-Amerikai nemzetközi technológiai vállalat...", "LinkedIn egy üzleti és alkalmazás-jellegű közösségi hálózati..."]
 
 A következő ábra szemlélteti egy képzeletbeli Adatbővítés folyamatot:
 
@@ -142,11 +142,11 @@ A következő darab készségeitől a képességek egy tömb. Mint egy primitív
 
 ## <a name="add-predefined-skills"></a>Adja hozzá az előre megadott képesség
 
-Nézzük meg az első szakértelem, amely az előre meghatározott [megnevezett entitások felismerése szakértelem](cognitive-search-skill-named-entity-recognition.md):
+Nézzük meg az első szakértelem, amely az előre meghatározott [entitások felismerése szakértelem](cognitive-search-skill-entity-recognition.md):
 
 ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "context": "/document",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
@@ -155,7 +155,8 @@ Nézzük meg az első szakértelem, amely az előre meghatározott [megnevezett 
           "name": "text",
           "source": "/document/content"
         }
-      ],      "outputs": [
+      ],
+      "outputs": [
         {
           "name": "organizations",
           "targetName": "organizations"
@@ -228,7 +229,7 @@ Az egyéni a Bing entity search enricher szerkezete visszahívása:
     }
 ```
 
-Ez a definíció, amely meghívja a webes API-k a Adatbővítés folyamat részeként egyéni műveleteket. Minden egyes szervezet elnevezett entitásfelismeréssel által azonosított szakértelem meghívja a webes API-k az adott szervezet leírását találja. A vezénylés, hogy mikor hívja a webes API-t és a flow a kapott információkat a Adatbővítés motor belsőleg kezeli. Az inicializálás szükséges az egyéni API hívása azonban a JSON-(például uri, hiba a httpHeaders és a várt bemenet) kötelező megadni. Egyéni webes API-k a Adatbővítés folyamat létrehozásakor útmutatásért lásd: [egy egyéni felületen definiálása](cognitive-search-custom-skill-interface.md).
+Ez a definíció egy [egyéni ismeretek](cognitive-search-custom-skill-web-api.md) meghív egy webes API-t a Adatbővítés folyamat részeként. Minden egyes szervezet elnevezett entitásfelismeréssel által azonosított szakértelem meghívja a webes API-k az adott szervezet leírását találja. A vezénylés, hogy mikor hívja a webes API-t és a flow a kapott információkat a Adatbővítés motor belsőleg kezeli. Az inicializálás szükséges az egyéni API hívása azonban a JSON-(például uri, hiba a httpHeaders és a várt bemenet) kötelező megadni. Egyéni webes API-k a Adatbővítés folyamat létrehozásakor útmutatásért lásd: [egy egyéni felületen definiálása](cognitive-search-custom-skill-interface.md).
 
 Figyelje meg, hogy a "környezet" mező értéke ```"/document/organizations/*"``` csillaggal, tehát a Adatbővítés lépést nevezzük *minden* a szervezet ```"/document/organizations"```. 
 

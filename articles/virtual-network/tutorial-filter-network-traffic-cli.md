@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 6a79c75f96c351a470a7ab4f788f79b0e1b6a8a6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 630eddc8494b32d93035913bcb2b55f00153b1be
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656292"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755509"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Hálózati forgalom szűrése hálózati biztonsági csoport az Azure CLI használatával
 
@@ -46,7 +46,7 @@ A hálózati biztonsági csoportok biztonsági szabályokat tartalmaznak. A bizt
 
 ### <a name="create-application-security-groups"></a>Alkalmazásbiztonsági csoportok létrehozása
 
-Először hozzon létre egy erőforráscsoportot a a jelen cikkben létrehozott összes erőforrás [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példa létrehoz egy erőforráscsoportot az *eastus* helyen: 
+Először hozzon létre egy erőforráscsoportot a a jelen cikkben létrehozott összes erőforrás [az csoport létrehozása](/cli/azure/group). A következő példa létrehoz egy erőforráscsoportot az *eastus* helyen: 
 
 ```azurecli-interactive
 az group create \
@@ -54,7 +54,7 @@ az group create \
   --location eastus
 ```
 
-Hozzon létre egy alkalmazásbiztonsági csoportot a [az hálózati adaptertől létrehozása](/cli/azure/network/asg#az_network_asg_create). Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy csoportokba rendezze a hasonló portszűrési követelményekkel rendelkező kiszolgálókat. Az alábbi példa két alkalmazásbiztonsági csoportot hoz létre.
+Hozzon létre egy alkalmazásbiztonsági csoportot a [az hálózati adaptertől létrehozása](/cli/azure/network/asg). Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy csoportokba rendezze a hasonló portszűrési követelményekkel rendelkező kiszolgálókat. Az alábbi példa két alkalmazásbiztonsági csoportot hoz létre.
 
 ```azurecli-interactive
 az network asg create \
@@ -81,7 +81,7 @@ az network nsg create \
 
 ### <a name="create-security-rules"></a>Biztonsági szabályok létrehozása
 
-Hozzon létre egy biztonsági szabályt az [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Az alábbi példa egy olyan szabályt hoz létre, amely engedélyezi az internetről a *myWebServers* alkalmazásbiztonsági csoportba bejövő forgalmat a 80-as és 443-as porton keresztül.
+Hozzon létre egy biztonsági szabályt az [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule). Az alábbi példa egy olyan szabályt hoz létre, amely engedélyezi az internetről a *myWebServers* alkalmazásbiztonsági csoportba bejövő forgalmat a 80-as és 443-as porton keresztül.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -119,7 +119,7 @@ Ez a cikk az SSH (22-es port) közvetlenül csatlakozik az internethez a *myAsgM
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) paranccsal. Az alábbi példa egy *myVirtualNetwork* virtuális hálózatot hoz létre:
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. Az alábbi példa egy *myVirtualNetwork* virtuális hálózatot hoz létre:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -143,7 +143,7 @@ az network vnet subnet create \
 
 Hozzon létre két virtuális gépet a virtuális hálózatban, hogy érvényesíthesse majd a fogalom szűrését egy később lépésben. 
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példa egy virtuális gépet hoz létre, amely webkiszolgálóként fog szolgálni. A `--asgs myAsgWebServers` beállítás hatására az Azure-t, győződjön meg arról, a hálózati adaptert hoz létre a virtuális gép tagja a *myAsgWebServers* alkalmazásbiztonsági csoporthoz.
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példa egy virtuális gépet hoz létre, amely webkiszolgálóként fog szolgálni. A `--asgs myAsgWebServers` beállítás hatására az Azure-t, győződjön meg arról, a hálózati adaptert hoz létre a virtuális gép tagja a *myAsgWebServers* alkalmazásbiztonsági csoporthoz.
 
 A `--nsg ""` megadva a beállítás megakadályozza, hogy az Azure alapértelmezett hálózati biztonsági csoport a hálózati adapter Azure hoz létre, amikor létrehozza a virtuális gép létrehozása. Ez a cikk egyszerűsítésére, jelszó használatos. Kulcsok jellemzően használják az éles környezetekben. Kulcsok használata, ha az SSH-ügynöktovábbítást a hátralévő lépéseket számára is konfigurálnia kell. További információkért tekintse meg az SSH-ügyfél dokumentációját. Cserélje le `<replace-with-your-password>` az a következő parancsot egy tetszőleges jelszót.
 
@@ -234,7 +234,7 @@ Jelentkezzen ki a *myVmMgmt* virtuális Gépet. Annak ellenőrzéséhez, hogy el
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, [az csoport törlése](/cli/azure/group#az_group_delete) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
+Ha már nincs rá szükség, [az csoport törlése](/cli/azure/group) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

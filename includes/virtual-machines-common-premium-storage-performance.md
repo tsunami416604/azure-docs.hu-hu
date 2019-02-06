@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b98261601f352668fa3cc8d18dc3b1d0d7fe2654
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 40e0230e6a8e03aa53a24f2497fcd016909c0ada
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53553315"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55757548"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure Premium Storage: Nagyteljesítményű rendszer tervezése
+# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: Nagyteljesítményű rendszer tervezése
 
 Ez a cikk az Azure Premium Storage nagy teljesítményű alkalmazások létrehozásához nyújt útmutatást. Ez a dokumentum az alkalmazása által használt technológiák alkalmazandó ajánlott eljárások teljesítményének kombinálva szereplő utasítások is használhatja. Az irányelvek mutatja be, ebben a dokumentumban példaként a Premium Storage futó SQL Server rendelkezik használtuk.
 
@@ -95,7 +95,7 @@ Ezután mérje maximális teljesítmény-követelmények az alkalmazás teljes �
 | I/o-kérés mérete | | | |
 | Átlagos átviteli sebesség | | | |
 | Legfeljebb Teljesítmény | | | |
-| Perc. Késés | | | |
+| Min. Késés | | | |
 | Átlagos késés | | | |
 | Legfeljebb CPU | | | |
 | Átlagos processzorhasználat | | | |
@@ -116,7 +116,7 @@ A legjobb módszer az alkalmazás teljesítmény-követelmények mérheti, hogy 
 
 A teljesítményszámlálók processzor, memória, és minden egyes logikai lemez és a kiszolgáló fizikai lemez érhetők el. Ha prémium szintű tárolólemezeket a virtuális gép használja, a fizikai lemez számlálók prémium szintű storage lemezek, és logikai lemez számlálók a premium storage-lemezekkel létrehozott minden kötet esetében. A lemezeket, az alkalmazás számítási feladatait futtató értékeit kell rögzíteni. Ha a logikai és fizikai lemezek között egy-egy leképezést, olvassa el a fizikai lemez számlálók; Ellenkező esetben tekintse meg a logikai lemez számlálókat. Linux rendszeren a iostat parancs lemez- és CPU-kihasználtság jelentést hoz létre. A lemezhasználati jelentés biztosít a fizikai eszközön vagy a partíció statisztikai. Ha az adatok és a napló az adatbázis-kiszolgáló rendelkezik külön lemezeken, gyűjtése ezeket az adatokat a két lemez. Alábbi táblázat ismerteti a lemezek, a processzor és memória számlálói:
 
-| Számláló | Leírás | Teljesítményfigyelés | iostat |
+| Számláló | Leírás | PerfMon | iostat |
 | --- | --- | --- | --- |
 | **Iops-t vagy a tranzakció / másodperc** |Ki a tároló lemez másodpercenkénti i/o-kérések száma. |Lemezolvasások/mp <br> Lemezírások/mp |tps <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |% Olvasási és írási műveleteket a lemezen végzett. |% Olvasási kihasználtsága (%) <br> A(z) % lemezre írási ideje |r/s <br> w/s |
@@ -125,7 +125,7 @@ A teljesítményszámlálók processzor, memória, és minden egyes logikai leme
 | **I/o-mérete** |I/o-mérete, a tárolólemezeket problémák kérelmeket. |Átlagos/olvasott bájtok <br> Átlagos írási idejének bájt/írás |avgrq-sz |
 | **Várólistájának mélysége** |A kérelmek várakozási történő olvasását vagy a storage-lemezre írt szálankénti függőben lévő i/o száma. |Lemezvárólista jelenlegi hossza |avgqu-sz |
 | **Max. Memória** |Zökkenőmentesen alkalmazás futtatásához szükséges memória mennyisége |Előjegyzett kihasználtsága (%) |Vmstat használata |
-| **Max. PROCESSZOR** |Összeg zökkenőmentesen alkalmazás futtatásához szükséges CPU |Processzoridő |a(z) % util |
+| **Max. CPU** |Összeg zökkenőmentesen alkalmazás futtatásához szükséges CPU |Processzoridő |a(z) % util |
 
 Tudjon meg többet [iostat](https://linux.die.net/man/1/iostat) és [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx).
 
@@ -141,7 +141,7 @@ Az alábbi táblázat összefoglalja a teljesítmény tényezők és az IOPS, az
 
 További tájékoztatást a Virtuálisgép-méretek és az IOPS, az átviteli sebesség és a késés érhető el az egyes virtuális Géphez, tekintse meg a [Linux Virtuálisgép-méretek](../articles/virtual-machines/linux/sizes.md) vagy [Windows Virtuálisgép-méretek](../articles/virtual-machines/windows/sizes.md).
 
-| &nbsp; | **IOPS-ÉRTÉK** | **Átviteli sebesség** | **Késés** |
+| &nbsp; | **IOPS** | **Átviteli sebesség** | **Késés** |
 | --- | --- | --- | --- |
 | **Példaforgatókönyv** |Az alkalmazás második arány nagyon magas tranzakciós igénylő vállalati OLTP. |Vállalati adattárház alkalmazás feldolgozási nagy mennyiségű adat. |Közel valós idejű a felhasználói kérések, például az online játékok azonnali válaszokat igénylő alkalmazásokhoz. |
 | Teljesítmény tényezők | &nbsp; | &nbsp; | &nbsp; |
@@ -176,7 +176,7 @@ Ha egy alkalmazás, amely lehetővé teszi, hogy módosítani az i/o-mérete, ha
 
 Íme egy példa a módját, kiszámíthatja az IOPS és átviteli sebesség/sávszélesség az alkalmazáshoz. Vegyünk egy alkalmazást, a típus P30 lemez használatával. A maximális IOPS és átviteli sebesség/sávszélesség P30 lemez érhető el érték 5000 iops értékre, és 200 MB másodpercenként jelölik. Most ha az alkalmazás által kért a maximális P30 lemez IOPS és i/o kisebb mint 8 KB-os méretet használja, az eredményül kapott fogja tudni beolvasni a sávszélesség 40 MB / másodperc. Azonban ha az alkalmazás P30 lemez maximális átviteli sebesség/sávszélességet igényel, például 1024 KB nagyobb i/o-méretet használja, az eredményül kapott IOPS lesz kisebb, 200 iops-t. Az i/o-mérete ezért hangolása úgy, hogy mind az alkalmazás IOPS és átviteli sebesség/sávszélesség követelménynek megfelel-e. Az alábbi táblázat összefoglalja a különböző méretű i/o és azok megfelelő IOPS és átviteli sebesség P30 lemez.
 
-| Alkalmazás követelményeinek | I/o-mérete | IO | A sávszélesség/átviteli sebesség |
+| Alkalmazás követelményeinek | I/o-mérete | IO | Throughput/Bandwidth |
 | --- | --- | --- | --- |
 | Maximális IOPS-érték |8 KB |5000 |40 MB / s |
 | Maximális átviteli sebesség |1024 KB |200 |200 MB / s |
@@ -198,8 +198,8 @@ Virtuális gépek méretezéséhez magas CPU magok, memória, az operációs ren
 
 | Virtuális gép mérete | Processzormagok | Memory (Memória) | Virtuális gép lemezméretek | Legfeljebb Adatlemezek | Gyorsítótár mérete | IO | A sávszélesség-gyorsítótár i/o-korlátozások |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS14 |16 |112 GB |AZ OPERÁCIÓS RENDSZER 1023 GB = <br> Helyi SSD 224 GB = |32 |576 GB |50 000 IOPS-ÉRTÉK <br> 512 MB / s |4000 IOPS és 33 MB / s |
-| Például a Standard_GS5 |32 |448 GB |AZ OPERÁCIÓS RENDSZER 1023 GB = <br> Helyi SSD 896 GB = |64 |4224 GB |80 000 IOPS <br> 2000 MB / s |5000 IOPS és az 50 MB / s |
+| Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Local SSD = 224 GB |32 |576 GB |50 000 IOPS-ÉRTÉK <br> 512 MB / s |4000 IOPS és 33 MB / s |
+| Például a Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Local SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2000 MB / s |5000 IOPS és az 50 MB / s |
 
 Szeretné megtekinteni az összes elérhető Azure-beli Virtuálisgép-méretek teljes listáját, tekintse meg [Windows Virtuálisgép-méretek](../articles/virtual-machines/windows/sizes.md) vagy [Linux Virtuálisgép-méretek](../articles/virtual-machines/linux/sizes.md). Válassza ki a virtuális gép méretét, amelyek megfelelnek és méretezhető, a kívánt alkalmazás teljesítményre vonatkozó követelmények. Ezenkívül a Virtuálisgép-méretek kiválasztásakor a következő fontos szempontokat figyelembe venni.
 
@@ -235,7 +235,7 @@ Az Azure Premium Storage általánosan elérhető nyolc adatlemez-méretet és a
 
 | Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Lemezméret           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16384 giB (16 TiB)    | 32 767 giB (32 GiB)    |
+| Lemezméret           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16384 giB (16 TiB)    | 32,767 GiB (32 GiB)    |
 | IOPS-érték lemezenként       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
 | Adattovábbítás lemezenként | 25 MiB másodpercenként  | 50 MiB másodpercenként  | 100 MiB másodpercenként |125 MiB másodpercenként | Másodpercenként 150 MiB | 200 MiB másodpercenként | 250 MiB másodpercenként | 250 MiB másodpercenként | 480 MiB másodpercenként | 750 MiB másodpercenként | 750 MiB másodpercenként |
 
@@ -281,13 +281,13 @@ Az alábbiakban az adatlemezeket, ajánlott lemez gyorsítótárazási beállít
 | ReadOnly |Csak olvasható gazdagép-gyorsítótár konfigurálása az olvasási és írási-olvasási lemezek. |
 | ReadWrite |Gazdagép-gyorsítótár konfigurálja az olvasási és írási csak akkor, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatok írását szükség esetén állandó lemezt. |
 
-*Csak olvasható*  
+*ReadOnly*  
 A Premium Storage-adatok gyorsítótárazása lemezek ReadOnly konfigurálásával érhet el alacsony olvasási késés, és nagyon magas olvasási IOPS és átviteli sebesség lekérése az alkalmazáshoz. Ez a két okok miatt
 
 1. Olvasás a gyorsítótárból, amely a Virtuálisgép-memória és helyi SSD történik, sokkal gyorsabb, mint az olvasások az adatlemezt, amely az Azure blob storage-ból.  
 1. A Premium Storage nem számít az olvasási gyorsítótár, a lemez iops-érték felé és az átviteli sebesség szolgáltatja. Az alkalmazás ezért magasabb teljes IOPS és átviteli sebességet érhet el.
 
-*Az olvasási és írási*  
+*ReadWrite*  
 Alapértelmezés szerint az operációsrendszer-lemezek rendelkezik olvasási és írási gyorsítótárazás engedélyezve van. Nemrég hozzáadtuk az olvasási és írási gyorsítótárazást az adatokat, valamint a lemezek támogatása. Ha az olvasási és írási gyorsítótárazást használ, egy megfelelő módon az adatokat a gyorsítótárból írni állandó lemezt kell rendelkeznie. Például az SQL Server kezeli a gyorsítótárazott adatok írása az állandó tárolólemezeket önállóan. Az olvasási és írási gyorsítótár használata egy alkalmazás, amely nem kezeli a szükséges adatok megőrzése vezethet az adatvesztést, ha a virtuális gép leáll.
 
 Tegyük fel, alkalmazhatja ezeket az irányelveket az SQL Server a Premium Storage az alábbiak szerint
@@ -349,7 +349,7 @@ Magas várólistamélységének vonalak másolatot a lemezen lévő több művel
 
 Például az SQL Server, a MAXDOP értéke egy lekérdezés "4"-re állítja tájékoztatja az SQL Server, hogy ezáltal az legfeljebb négy magot hajtsa végre a lekérdezést. Az SQL Server meghatározza, milyen ajánlott várólista mélységének értékét, és a lekérdezés végrehajtása a magok számát.
 
-*Optimális Várólistamélységének*  
+*Optimal Queue Depth*  
 Nagyon magas várólista mélységének értékét a hátrányai is tartalmaz. Ha várólista mélység értéke túl magas, az alkalmazás megpróbálja nagyon magas IOPS-meghajtó. Ha az alkalmazás állandó lemezt, és elegendő kiosztott IOPS rendelkezik, ez negatív hatással lehet alkalmazás késéseket. Az IOPS, késés és Várólistamélységének közötti kapcsolat a következő képlet mutatja.  
     ![](media/premium-storage-performance/image6.png)
 
@@ -395,8 +395,8 @@ Maximális IOPs mutatja be, használja a kérést kisebb méretet. Használja a 
 
 | Hozzáférési leírása | Kérés mérete | Véletlenszerű % | Olvassa el a(z) % |
 | --- | --- | --- | --- |
-| RandomWrites\_8 K |8K |100 |0 |
-| RandomReads\_8 K |8K |100 |100 |
+| RandomWrites\_8K |8K |100 |0 |
+| RandomReads\_8K |8K |100 |100 |
 
 *Maximális átviteli sebesség tesztelése specifikációk*  
 Maximális átviteli sebesség bemutatása érdekében használja a kérelem nagyobb méretű. 64K kérés mérete használja, és a véletlenszerű írások és olvasások leírások létrehozásához.
@@ -404,7 +404,7 @@ Maximális átviteli sebesség bemutatása érdekében használja a kérelem nag
 | Hozzáférési leírása | Kérés mérete | Véletlenszerű % | Olvassa el a(z) % |
 | --- | --- | --- | --- |
 | RandomWrites\_64 K |64K |100 |0 |
-| RandomReads\_64 K |64K |100 |100 |
+| RandomReads\_64K |64K |100 |100 |
 
 *A Iometer teszt futtatása*  
 Hajtsa végre a gyorsítótár ízelítőt az alábbi lépéseket
@@ -430,14 +430,14 @@ Után gyorsítótárlemez bemelegíteni van, folytassa az alább felsorolt teszt
 
 | Tesztkörnyezet | Célkötet | Name (Név) | Eredmény |
 | --- | --- | --- | --- |
-| Legfeljebb Olvasási iops-érték |CacheReads |RandomWrites\_8 K |50 000 IOPS-ÉRTÉK |
-| Legfeljebb Az írási IOPS |NoCacheWrites |RandomReads\_8 K |AKÁR 64 000 IOPS-ÉRTÉK |
-| Legfeljebb Kombinált IOPS |CacheReads |RandomWrites\_8 K |100 000 IOPS-ÉRTÉK |
-| NoCacheWrites |RandomReads\_8 K | &nbsp; | &nbsp; |
-| Legfeljebb Olvassa el a MB/mp |CacheReads |RandomWrites\_64 K |524 MB/mp |
-| Legfeljebb MB/mp/írás |NoCacheWrites |RandomReads\_64 K |524 MB/mp |
+| Legfeljebb Olvasási iops-érték |CacheReads |RandomWrites\_8K |50 000 IOPS-ÉRTÉK |
+| Legfeljebb Az írási IOPS |NoCacheWrites |RandomReads\_8K |AKÁR 64 000 IOPS-ÉRTÉK |
+| Legfeljebb Kombinált IOPS |CacheReads |RandomWrites\_8K |100 000 IOPS-ÉRTÉK |
+| NoCacheWrites |RandomReads\_8K | &nbsp; | &nbsp; |
+| Legfeljebb Read MB/sec |CacheReads |RandomWrites\_64 K |524 MB/mp |
+| Legfeljebb MB/mp/írás |NoCacheWrites |RandomReads\_64K |524 MB/mp |
 | Kombinált MB/mp |CacheReads |RandomWrites\_64 K |1000 MB/mp |
-| NoCacheWrites |RandomReads\_64 K | &nbsp; | &nbsp; |
+| NoCacheWrites |RandomReads\_64K | &nbsp; | &nbsp; |
 
 Az alábbiakban a Iometer pillanatképeiért teszteredmények kombinált IOPS és átviteli sebesség forgatókönyvekhez.
 
@@ -464,7 +464,7 @@ A lemezeken környezetbarát olvasási művelet használjuk az írási művelete
 *Maximális írási iops-érték*  
 Hozzon létre következő előírásoknak írási IOPS maximális beolvasni a feladat-fájlt. Nevezze el "fiowrite.ini".
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -504,7 +504,7 @@ A teszt végrehajtása közben lesz száma írási iops-t a virtuális gép és 
 *Maximális olvasási iops-érték*  
 Hozzon létre a feladat-fájlt az alábbi előírások beolvasni a maximális olvasási iops-t. Nevezze el "fioread.ini".
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -544,7 +544,7 @@ A teszt végrehajtása közben lesz száma olvasási iops-t a virtuális gép é
 *Maximális olvasási és írási iops-érték*  
 A feladat-fájlt létrehozni a következő beolvasni a maximális előírások együttesen olvasási és írási iops-t. Nevezze el "fioreadwrite.ini".
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -605,7 +605,7 @@ Beolvasni a maximális kombinált olvasási és írási teljesítményt, a nagyo
 
 További információ az Azure Premium Storage:
 
-* [A Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md)  
+* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md)  
 
 Az SQL Server-felhasználók számára olvassa el az SQL Server ajánlott eljárások teljesítményének javításához cikkeket:
 

@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 2b60d4aed1b16db433439e69f9d6813f36f2faac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 4fc30deb68039130850f87cb70dbb606be463600
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732549"
+ms.locfileid: "55747390"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv eseményindító és művelet típusok referenciája
 
@@ -147,7 +147,7 @@ A trigger ellenőriz vagy *polls* végpont használatával [a Microsoft által f
 | <*lekérdezés-paraméterek*> | JSON-objektum | Hívja meg a lekérdezési paramétereket tartalmazza az API-val. Például a `"queries": { "api-version": "2018-01-01" }` objektumot ad `?api-version=2018-01-01` a hívást. |
 | <*max-runs*> | Egész szám | Alapértelmezés szerint a logikai alkalmazás munkafolyamat-példányok futnak egy időben, vagy a párhuzamos akár a [alapértelmezett korlát](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ez a korlát módosítása egy új beállításával <*száma*> érték, lásd: [módosítása az eseményindító egyidejűségi](#change-trigger-concurrency). |
 | <*max-runs-queue*> | Egész szám | Ha a logikai alkalmazás már fut a példányok maximális száma, amelyet módosíthat alapján a `runtimeConfiguration.concurrency.runs` tulajdonságot használja, minden olyan új futtatások kerüljenek, ennek az üzenetsornak a [alapértelmezett korlát](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Az alapértelmezett korlát módosításához lásd [módosítása várakozási futtatások korlátozza](#change-waiting-runs). |
-| <*splitOn-expression*> | String | Tömbök visszaadó eseményindítók Ez a kifejezés hivatkozik, amelyek akkor létrehozása és futtatása egy munkafolyamat-példány a tömb mindegyik elemén, ahelyett használni egy "mindegyikre" hurkot a tömbben. <p>Például az a kifejezés az eseményindító szövegtörzse belül visszakapott tömbben szereplő elem jelöli: `@triggerbody()?['value']` |
+| <*splitOn-expression*> | String | Tömbök visszaadó eseményindítók Ez a kifejezés hivatkozik, amelyek akkor is létrehozása és futtatása egy munkafolyamat-példány a tömb mindegyik elemén ahelyett, használja a "Foreach" hurkot a tömbben. Ha a `SplitOn` tulajdonság, beolvasása, amely az eseményindítót és a szolgáltatás adhat vissza a korlátig párhuzamos alkalmazáspéldányok. <p>Például az a kifejezés az eseményindító szövegtörzse belül visszakapott tömbben szereplő elem jelöli: `@triggerbody()?['value']` |
 | <*művelet – beállítás*> | String | Az alapértelmezett viselkedés módosításához állítsa a `operationOptions` tulajdonság. További információkért lásd: [műveleti beállítások](#operation-options). |
 ||||
 
@@ -237,7 +237,7 @@ Ez az eseményindító előfizetési kérelmet küld a végpont használatával 
 | <*lekérdezés-paraméterek*> | JSON-objektum | A lekérdezési paramétereket tartalmazza az API-hívással <p>Például a `"queries": { "api-version": "2018-01-01" }` objektumot ad `?api-version=2018-01-01` a hívást. |
 | <*max-runs*> | Egész szám | Alapértelmezés szerint a logikai alkalmazás munkafolyamat-példányok futnak egy időben, vagy a párhuzamos akár a [alapértelmezett korlát](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ez a korlát módosítása egy új beállításával <*száma*> érték, lásd: [módosítása az eseményindító egyidejűségi](#change-trigger-concurrency). |
 | <*max-runs-queue*> | Egész szám | Ha a logikai alkalmazás már fut a példányok maximális száma, amelyet módosíthat alapján a `runtimeConfiguration.concurrency.runs` tulajdonságot használja, minden olyan új futtatások kerüljenek, ennek az üzenetsornak a [alapértelmezett korlát](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Az alapértelmezett korlát módosításához lásd [módosítása várakozási futtatások korlátozza](#change-waiting-runs). |
-| <*splitOn-expression*> | String | Tömbök visszaadó eseményindítók Ez a kifejezés hivatkozik, amelyek akkor létrehozása és futtatása egy munkafolyamat-példány a tömb mindegyik elemén, ahelyett használni egy "mindegyikre" hurkot a tömbben. <p>Például az a kifejezés az eseményindító szövegtörzse belül visszakapott tömbben szereplő elem jelöli: `@triggerbody()?['value']` |
+| <*splitOn-expression*> | String | Tömbök visszaadó eseményindítók Ez a kifejezés hivatkozik, amelyek akkor is létrehozása és futtatása egy munkafolyamat-példány a tömb mindegyik elemén ahelyett, használja a "Foreach" hurkot a tömbben. Ha a `SplitOn` tulajdonság, beolvasása, amely az eseményindítót és a szolgáltatás adhat vissza a korlátig párhuzamos alkalmazáspéldányok. <p>Például az a kifejezés az eseményindító szövegtörzse belül visszakapott tömbben szereplő elem jelöli: `@triggerbody()?['value']` |
 | <*művelet – beállítás*> | String | Az alapértelmezett viselkedés módosításához állítsa a `operationOptions` tulajdonság. További információkért lásd: [műveleti beállítások](#operation-options). |
 ||||
 
@@ -682,8 +682,9 @@ Alapértelmezés szerint egy eseményindítót csak az első után a "200 OK" v�
 
 ## <a name="trigger-multiple-runs"></a>Több Futtatás aktiválásához
 
-If your trigger returns an array for your logic app to process, sometimes a "for each" loop might take too long to process each array item. Ehelyett használhatja a **SplitOn** tulajdonságot az eseményindító *debatch* a tömbben. Kibontás bontja fel a tömbelemek, és elindul egy új logikaialkalmazás-példányt, amely a tömb mindegyik elemén futtatja. Ez a megközelítés hasznos, ha például szeretne lekérdezni egy végpontot, amely több új elemmel lekérdezési időközökben vissza.
-A tömb maximális számát, amely elemek **SplitOn** is egy logikai alkalmazás futtatása feldolgozni, lásd: [korlátozások és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+If your trigger returns an array for your logic app to process, sometimes a "for each" loop might take too long to process each array item. Ehelyett használhatja a **SplitOn** tulajdonságot az eseményindító *debatch* a tömbben. Kibontás bontja fel a tömbelemek, és elindul egy új logikaialkalmazás-példányt, amely a tömb mindegyik elemén futtatja. Ez a megközelítés hasznos, ha például szeretne lekérdezni egy végpontot, amely több új elemmel lekérdezési időközökben vissza. 
+
+Ha a `SplitOn` tulajdonság, beolvasása, amely az eseményindítót és a szolgáltatás adhat vissza a korlátig párhuzamos alkalmazáspéldányok. A tömb maximális számát, amely elemek **SplitOn** is egy logikai alkalmazás futtatása feldolgozni, lásd: [korlátozások és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). 
 
 > [!NOTE]
 > Nem használhat **SplitOn** szinkron válaszra mintával. Minden munkafolyamat által használt **SplitOn** és a válasz tartalmazza művelet aszinkron módon fut, és azonnal küld egy `202 ACCEPTED` választ.
@@ -1425,9 +1426,9 @@ Ellentétben más műveletek a **válasz** műveletnek speciális korlátozások
 
   Azonban ha a munkafolyamatot egy másik logikai alkalmazás egy beágyazott munkafolyamattal, a szülő-munkafolyamat megvárja, amíg a beágyazott munkafolyamat befejeződött, függetlenül attól, hogy mennyi idő alatt továbbítja a beágyazott munkafolyamat befejezése előtt.
 
-* Amikor a munkafolyamat használja a **válasz** művelet és a egy szinkron válaszra mintát, a munkafolyamat is használható a **splitOn** parancs az eseményindító definíciójában, mivel ez a parancs létrehoz több futtatás. Ebben az esetben ellenőrizze a PUT metódust használja, és ha az értéke igaz, a "Hibás kérés" választ adja vissza.
+* Amikor a munkafolyamat használja a **válasz** művelet és a egy szinkron válaszra mintát, a munkafolyamat is használható a **SplitOn** tulajdonság az eseményindító definíciójában, mert ez a parancs létrehoz több futtatás. Ebben az esetben ellenőrizze a PUT metódust használja, és ha az értéke igaz, a "Hibás kérés" választ adja vissza.
 
-  Egyéb esetben, ha a munkafolyamat a **splitOn** parancsot és a egy **válasz** műveletet, a munkafolyamat aszinkron módon fut, és azonnal "202-es ELFOGADVA" választ.
+  Egyéb esetben, ha a munkafolyamat a **SplitOn** tulajdonság és a egy **válasz** műveletet, a munkafolyamat aszinkron módon fut, és azonnal "202-es ELFOGADVA" választ.
 
 * Ha a munkafolyamat-végrehajtási művelet elér a **válasz** művelet, de a bejövő kérelem már kapott választ, a **válasz** művelet "Sikertelen" állapotúnak van jelölve, az ütközés miatt. Ennek eredményeképpen a logikai alkalmazás futtatását, ezért is "Sikertelen" állapotú.
 

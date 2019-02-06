@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: 70cc6210a0c047867980de67ac24701df29ce8bf
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/05/2019
+ms.openlocfilehash: 29997b2ff7d3834a91389790256cd0d075ce1ece
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55485177"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744908"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Az Azure Stream Analytics előzetes verziójú funkciók
 
@@ -23,13 +23,21 @@ Ez a cikk összefoglalja a jelenleg az Azure Stream Analytics előzetes verziób
 
 A következő funkciók vannak a nyilvános előzetes verzióban érhető el. Kihasználhatja ezeket a szolgáltatásokat még ma, de ne használja éles környezetben.
 
+### <a name="sql-database-reference-data"></a>Az SQL Database referenciaadatok
+
+Az Azure Stream Analytics támogatja az Azure SQL Database bemenete referenciaadatokat forrásaként. Használhatja az SQL Database referenciaadatok a Stream Analytics-feladatot az Azure Portalon, és a Visual Studióban a Stream Analytics tools for. További információkért látogasson el, [referenciaadatok használata az Azure Stream Analytics-feladat egy SQL Database-ből](sql-reference-data.md).
+
 ### <a name="integration-with-azure-machine-learning"></a>Az Azure Machine Learning-integráció
 
 Stream Analytics-feladatok a Machine Learning (gépi tanulás) functions skálázhatja. Többet szeretne megtudni, hogyan használhatja a Stream Analytics-feladat ML-függvényeket, a Microsoft [méretezése az Azure Machine Learning-függvényekkel a Stream Analytics-feladat](stream-analytics-scale-with-machine-learning-functions.md). Tekintse meg a való életből vett forgatókönyv [hangulatelemzés végrehajtása az Azure Stream Analytics és Azure Machine Learning segítségével](stream-analytics-machine-learning-integration-tutorial.md).
 
 ### <a name="blob-output-partitioning-by-custom-time"></a>BLOB kimeneti egyéni időpontig particionálása
 
-Az Azure Stream Analytics küldhetnek kimenetet a Blob storage egyéni idő attribútumok alapján. További információért látogasson el [egyéni dátum/idő elérésiút-minták az Azure Stream Analytics a blob storage-kimenet](stream-analytics-custom-path-patterns-blob-storage-output.md).
+Az Azure Stream Analytics küldhetnek kimenetet a blob storage egyéni idő attribútumok alapján. További információért látogasson el [Azure Stream Analytics egyéni blob kimeneti particionálás](stream-analytics-custom-path-patterns-blob-storage-output.md).
+
+### <a name="blob-output-partitioning-by-field-or-attribute"></a>BLOB kimeneti particionálása mező vagy attribútum alapján
+
+Az Azure Stream Analytics küldhetnek kimenetet a blob storage egyéni mezők és attribútumok alapján. További információért látogasson el [Azure Stream Analytics egyéni blob kimeneti particionálás](stream-analytics-custom-path-patterns-blob-storage-output.md).
 
 ### <a name="javascript-user-defined-aggregate"></a>A JavaScript, felhasználó által meghatározott összesítés
 
@@ -55,13 +63,13 @@ Az Azure Stream Analytics bevezeti az új machine learning-modellek támogatása
 
 A fejlesztők mostantól implementálhatók az egyéni deserializers deszerializálni az Azure Stream Analytics a fogadott események C#-ban. Amely képes lehet deszerializálni formátumok közé Parquet, Protopuf, XML vagy bármilyen bináris formátumot.
 
-### <a name="blob-output-partitioning-by-custom-attribute"></a>Egyéni attribútum által particionálási kimeneti BLOB
-
-Már lehetséges az Azure Stream Analytics kimeneti Blob Storage bármely másik oszlopot a lekérdezés alapján particionálásához.
-
 ### <a name="managed-identities-for-azure-resource-authentication-to-azure-data-lake-storage"></a>Felügyelt identitások Azure-erőforrás felé történő hitelesítéshez az Azure Data Lake Storage
 
 Mostantól üzembe helyezheti a valós idejű folyamatok, az Azure-alapú erőforrások hitelesítéshez az Azure Data Lake Storage Gen1 írása közben a felügyelt identitásokból lehetővé teszi, hogy a feladatok programozott módon hozhatók létre. További információért látogasson el [identitások felügyelt használata az Azure-erőforrásokhoz való hitelesítéséhez az Azure Stream Analytics-feladatok az Azure Data Lake Storage Gen1 kimeneti](stream-analytics-managed-identities-adls.md).
+
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>A Visual Studio Code az Azure Stream Analytics szolgáltatáshoz
+
+A Visual Studio Code az Azure Stream Analytics-feladatok hozhatóak létre.
 
 ## <a name="next-steps"></a>További lépések
 

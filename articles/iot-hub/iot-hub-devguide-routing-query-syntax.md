@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: da95bd3832ee647c371c7beabb55b974dcb97740
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496567"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744841"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Az IoT Hub üzenet-útválasztás lekérdezési szintaxis
 
@@ -55,7 +55,7 @@ Rendszertulajdonságok tartalmát, és az üzenetek forrás azonosíthatók.
 | -------- | ---- | ----------- |
 | contentType | sztring | A felhasználó adja meg az üzenet tartalomtípusa. Ahhoz, hogy a lekérdezés az üzenet törzsében, ezt az értéket meg kell application/JSON. |
 | contentEncoding | sztring | A felhasználó adja meg az üzenet kódolási típusának. Megengedett értékek: UTF-8, az UTF-16, az UTF-32, ha a contentType application/JSON értékre van állítva. |
-| connectionDeviceId | sztring | Ez az érték az IoT Hub által van beállítva, és azonosítja az üzenetek forrását. Ez lehet eszköz telemetriai üzeneteket, device twin változási értesítéseket vagy eszköz-életciklussal kapcsolatos események. Ez nem lehet lekérdezni. |
+| iothub-connection-device-id | sztring | Ez az érték van beállítva az IoT Hub által, és azonosítja az eszköz azonosítója. Lekérdezés, használja a `$connectionDeviceId`. |
 | iothub-enqueuedtime | sztring | Ezt az értéket az IoT Hub által van beállítva, és a tényleges idő (UTC), az üzenet sorba, jelöli. Lekérdezés, használja a `enqueuedTime`. |
 
 Leírtak szerint a [IoT Hub-üzenetek](iot-hub-devguide-messages-construct.md), üzenet további rendszer tulajdonságai szerepelnek. Mellett **contentType**, **contentEncoding**, és **enqueuedTime**, a **connectionDeviceId** és  **connectionModuleId** is lekérdezhetők.

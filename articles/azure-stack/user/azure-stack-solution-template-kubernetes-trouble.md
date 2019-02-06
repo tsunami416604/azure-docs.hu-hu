@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/05/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 41383a31955b8f9507ec681650cf73df23b2a895
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 551958317249cbfa25e3af9922f9ded6850c2521
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663414"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752296"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>A Kubernetes üzembe helyezés az Azure Stack hibaelhárítása
 
@@ -53,7 +53,7 @@ Az alábbi ábrán látható, az általános folyamat a fürt üzembe helyezés�
 
 2. Az üzemelő példány virtuális gép létrehozása és az egyéni szkriptek futtatására szolgáló bővítmény.
     -  Az üzembe helyezés Linux rendszerű virtuális gép létrehozása a marketplace Linux-rendszerképek használatával **Ubuntu Server 16.04-LTS**.
-    -  Letölthető, és futtassa az ügyfél szkriptbővítmény a marketplace-ről. A parancsfájl **egyéni parancsfájl Linux 2.0**.
+    -  Töltse le és futtassa az egyéni szkriptek futtatására szolgáló bővítmény a marketplace-ről. A parancsfájl **egyéni parancsfájl Linux 2.0**.
     -  A DVM egyéni parancsfájl futtatásával. A szkript a következő feladatokat hajtja végre:
         1. A katalógus végpont lekérése az Azure Resource Manager-metaadatok végpontja.
         2. Az active directory erőforrás-azonosító lekérése az Azure Resource Manager-metaadatok végpontja.
@@ -61,7 +61,7 @@ Az alábbi ábrán látható, az általános folyamat a fürt üzembe helyezés�
         4. Az ACS Engine telepíti a Kubernetes-fürt, és menti az Azure Stack felhő profilt `/etc/kubernetes/azurestackcloud.json`.
 3. A fő virtuális gépek létrehozásához.
 
-4. Töltse le és futtassa az ügyfél parancsfájl-kiterjesztés.
+4. Töltse le és futtassa egyéni parancsfájl-kiterjesztés.
 
 5. A fő parancsfájl futtatásával.
 
@@ -75,7 +75,7 @@ Az alábbi ábrán látható, az általános folyamat a fürt üzembe helyezés�
         3. A scheduler szolgáltatás elindul.
 6. Az ügynök virtuális gépek létrehozása.
 
-7. Letölthető, és futtassa az ügyfél-szkriptek bővítménye.
+7. Töltse le és futtassa az egyéni szkriptek futtatására szolgáló bővítmény.
 
 7. Futtassa az ügynök parancsfájlt. Az ügynök egyéni szkript a következő feladatokat hajtja végre:
     - Etcd telepíti.

@@ -10,11 +10,11 @@ ms.topic: include
 ms.custom: include file
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: a52bb1c7e71469b3240b9bd6a4ce57de4236b9ae
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7ba217f483e9b57f60bd836011c8887994b36ea6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55480262"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55757564"
 ---
-Ha most ismerkedik a Cognitive Services vagy az Azure, hozzon létre egy [ideiglenes kulcs](https://azure.microsoft.com/try/cognitive-services/). Ha rendelkezik Azure-fiókkal, hozzon létre egy új erőforrást a portálon. Language Understanding végpont lekérdezések támogatja a két Azure-erőforrás típusa: **Language Understanding** vagy a **Cognitive Service** erőforrás. A mikor van szüksége, [hozzárendelése](../articles/cognitive-services/luis/luis-how-to-azure-subscription.md) a kulcsot az alkalmazáshoz.
+Ha most ismerkedik a Cognitive Services vagy az Azure, hozzon létre egy [ideiglenes kulcs](https://azure.microsoft.com/try/cognitive-services/). Ha rendelkezik Azure-fiókkal, hozzon létre egy új erőforrást a portálon. Language Understanding végpont lekérdezések támogatja a két Azure-erőforrás típusa: **Language Understanding** vagy a **Cognitive Service** erőforrás. Az erőforrás nevének kell amikor Ön [hozzárendelése](../articles/cognitive-services/luis/luis-how-to-azure-subscription.md) a kulcsot az alkalmazáshoz.

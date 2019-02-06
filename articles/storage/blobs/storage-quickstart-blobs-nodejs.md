@@ -1,23 +1,26 @@
 ---
-title: Blob létrehozása az Azure Storage-ban a Node.js SDK v2
+title: Blob létrehozása az Azure Storage Node.js v2 esetében az ügyféloldali kódtár használatával
 description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtára a Node.js v2 feltölt egy blobot az Azure Storage, letölt egy blobot, és a tárolóban lévő blobok listázása.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/04/2019
 ms.author: tamram
-ms.openlocfilehash: 6af1a7c1cf140ba8ff4710c0cc90559e3df55135
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 182315c705360d254c3bf342cd9c64ffafa0c021
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734164"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750074"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Hogyan feltöltése, letöltése és használata a Node.js SDK v2 blobok listázása
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Hogyan feltöltése, letöltése és az ügyféloldali kódtár használatával Node.js v2 blobok listázása
 
-Ez az útmutató megtudhatja, hogyan használható a Node.js feltöltése, letöltése és blobok listázása és az Azure Blob storage tárolók kezelése.
+Ez az útmutató útmutatóban megismerheti, hogyan használható az ügyféloldali kódtára a Node.js v2-höz való feltöltése, letöltése és az Azure Blob storage-blobok listázása.
+
+> [!TIP]
+> Az Azure Storage ügyféloldali kódtára a Node.js legújabb verzióját a v10. A Microsoft azt javasolja, hogy ha lehetséges, az ügyféloldali kódtár legújabb verzióját használja-e. Használatának megkezdéséhez v10, lásd: [a rövid útmutató: Feltöltése, letöltése, listázása és törlése a blobok Azure Storage ügyféloldali kódtár használatával a JavaScript v10 (előzetes verzió)](storage-quickstart-blobs-nodejs-v10.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -96,7 +99,7 @@ A modulok rendeltetése a következő:
 
 az *.env* fájl betöltése az aktuális végrehajtási környezetbe
 - a *path* a blobtárolóba feltölteni kívánt fájl abszolút elérési útjának meghatározásához szükséges
-- az *azure-storage* a Node.js [Azure Storage SDK](https://docs.microsoft.com/javascript/api/azure-storage) modulja
+- *az Azure-storage* van a [Azure Storage ügyféloldali kódtár](https://docs.microsoft.com/javascript/api/azure-storage) modul a node.js-ben
 
 Ezután a **blobService** változó az Azure Blob service egy új példányaként lesz inicializálva.
 
@@ -358,4 +361,4 @@ Blob Storage-tárolókat alkalmazó Node.js-alkalmazások fejlesztéséhez tekin
 Ez a cikk bemutatja, hogyan tölthet fel egy fájlt egy helyi lemez és a Node.js használatával az Azure Blob storage között. Ha bővebb információra van szüksége a Blobtárolók használatával kapcsolatban, lépjen tovább a GitHub adattárára.
 
 > [!div class="nextstepaction"]
-> [Azure Storage SDK JavaScript-adattárhoz](https://github.com/Azure/azure-storage-node)
+> [A Microsoft Azure Storage SDK for Node.js és JavaScript-böngészők](https://github.com/Azure/azure-storage-node)

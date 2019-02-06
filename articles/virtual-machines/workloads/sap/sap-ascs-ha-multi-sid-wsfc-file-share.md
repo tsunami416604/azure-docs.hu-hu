@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d7caec3fc1b8bf74098a7b0a211ec2ada8280a3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 0ce4391e8fb2047320c4d84ac18ce0b1f8c8eaad
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732906"
+ms.locfileid: "55745018"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -216,7 +216,7 @@ Ez a cikk foglalkozik egy egyetlen ASCS/SCS-telepítésből áthelyezéséhez az
 > Az ebben a dokumentációban bevezetett konfiguráció még nem támogatott használandó [Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview)
 > 
 
-Load balancer korlátok kapcsolatos további információkért lásd: a "Privát előtéri IP-Címek száma load balancer" szakaszában [hálózati korlátai: Az Azure Resource Manager][networking-limits-azure-resource-manager]. Emellett érdemes a [Azure Standard Load Balancer Termékváltozat](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) helyett a az Azure load Balancer az alapszintű Termékváltozat.
+Load balancer korlátok kapcsolatos további információkért lásd: a "Privát előtéri IP-Címek száma load balancer" szakaszában [hálózati korlátai: Az Azure Resource Manager][networking-limits-azure-resource-manager]. Emellett érdemes a [Azure Standard Load Balancer Termékváltozat](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) helyett az alapszintű Termékváltozat az Azure terheléselosztó.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

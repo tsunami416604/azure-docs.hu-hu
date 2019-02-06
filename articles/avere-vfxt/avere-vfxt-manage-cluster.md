@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0eb5941bfecc023429556434a45460c8727056ec
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300183"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745554"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt felügyelete
 
@@ -202,7 +202,7 @@ Törlés a fürtcsomópontok, vegye figyelembe ezeket az összetevőket eltávol
 
 ### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>Egy fürt erőforráscsoport törlése az Azure Portalról
 
-Hozta létre kimondottan a fürt egy erőforráscsoportot, ha az erőforráscsoport megsemmisítése által is semmisítse meg a a fürt minden kapcsolódó erőforrás. 
+Ha létrehozott egy erőforráscsoportot, kifejezetten a fürt üzemeltetheti, az erőforráscsoport megsemmisítése által is semmisítse meg a a fürt minden kapcsolódó erőforrás. 
 
 > [!Caution] 
 > Csak akkor szüntesse meg az erőforráscsoportot, ha biztos benne, hogy semmi érték a csoportban található. Például ellenőrizze, hogy minden szükséges adatokat helyeztünk át minden olyan storage-tárolók az erőforráscsoporton belül.  

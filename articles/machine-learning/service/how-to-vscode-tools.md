@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: d6f49eb0359db6184b5ecd146d7328a64611a9f9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e6da35eeb98d4017baae6aa2c8e19fa3f9d5ac1b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245566"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752568"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>A Visual Studio Code az Azure Machine Learning használatának első lépései
 
@@ -23,7 +23,7 @@ Ebből a cikkből elsajátíthatja, hogyan telepítheti a **a Visual Studio Code
 
 A Visual Studio code-ban az Azure Machine Learning-bővítmény használatával az Azure Machine Learning szolgáltatás használatával előkészítési adataihoz, tanítási és tesztelési gépi tanulási modelleket a helyi és távoli számítási célnak, ezek a modellek üzembe helyezése és nyomon követheti az egyéni metrikákat és kísérletek.
 
-## <a name="prerequisite"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 
 + Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
@@ -60,19 +60,17 @@ Dolgozunk az Azure Machine Learning, a VS Code alakítsa át a Python ide-vel ke
 > [!Tip] 
 > Tekintse meg a [IntelliCode bővítmény a VS Code (előzetes verzió)](https://go.microsoft.com/fwlink/?linkid=2006060). IntelliCode Python, az IntelliSense behívásakor az aktuális kód környezettől függően a leginkább releváns automatikus kiegészítése például AI támogatású képességeket biztosít.
 
-## <a name="install-the-sdk"></a>Az SDK telepítése
+## <a name="azure-ml-sdk-installation"></a>Azure ML SDK Installation
 
 1. Győződjön meg arról, hogy a Python 3.5-ös vagy újabb telepítve és a VS Code rozpoznána. Ha telepíti azt most, majd indítsa újra a VS Code, és válassza ki a egy Python-fordítóra található utasításokat követve https://code.visualstudio.com/docs/python/python-tutorial.
-
-1. A VS Code-ban nyissa meg a Parancskatalógust **Ctrl + Shift + P**.
-
-1. Írja be "az Azure ML SDK telepítése" a pip található az SDK telepítési parancs. Egy helyi, privát Python-környezetet jön létre, amely az Azure Machine Learning használatának előfeltételei a Visual Studio Code-ot.
-
-   ![Pythonhoz készült Azure Machine Learning SDK telepítése](./media/vscode-tools-for-ai/install-sdk.png)
 
 1. A beépített terminál ablakában adja meg a használandó Python-fordítóra vagy tudja érni **Enter** az alapértelmezett Python-fordítóra használatára.
 
    ![Válassza ki a értelmezője számára készült](./media/vscode-tools-for-ai/python.png)
+
+1. Az ablak jobb alsó sarkában található egy értesítés jelenik meg amely azt jelzi, hogy az Azure Machine Learning SDK automatikusan telepíti.    Egy helyi, privát Python-környezetet jön létre, amely az Azure Machine Learning használatának előfeltételei a Visual Studio Code-ot.
+
+   ![Pythonhoz készült Azure Machine Learning SDK telepítése](./media/vscode-tools-for-ai/runtimedependencies.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>Ismerkedés az Azure Machine Learning szolgáltatással
 

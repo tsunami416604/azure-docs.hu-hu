@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: f8826f0c0cb63068313a570b050531511126dbc9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: db2e2e80ecc98eba0f1bba18abad8b561b16036c
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422923"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745860"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
@@ -76,11 +76,14 @@ Azure-előfizetés birtokában bárki létrehozhat és használhat kulcstároló
 
 A rendszergazda ezután a fejlesztők számára olyan URI-kat biztosíthat, amelyeket meghívhatnak saját alkalmazásaikból, a biztonsági rendszergazda számára pedig kulcshasználati naplózási információkkal szolgálhat. 
 
-! [Azure Key Vault működésének áttekintése] [1]
+![Az Azure Key Vault működésének áttekintése][1]
 
 A fejlesztők közvetlenül is kezelhetik a kulcsokat API-k használatával. További információkért tekintse meg a [Key Vault fejlesztői útmutatóját](key-vault-developers-guide.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [a tároló biztonságos](key-vault-secure-your-key-vault.md) 
- <!--Image references--> [1]: a legtöbb régióban az Azure Key Vault./media/key-vault-whatis/AzureKeyVault_overview.png érhető el. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
+Ismerje meg, hogyan [biztonságos a tároló](key-vault-secure-your-key-vault.md)
+
+<!--Image references-->
+[1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
+Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).

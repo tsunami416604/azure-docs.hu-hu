@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8850ef68c665efcf9e66315af20b7d1e8492fc5f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 109bd1c987c86721c6064fc0294913c85fa3a901
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493762"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745571"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok logikai függvények
 
@@ -34,9 +34,9 @@ Resource Manager összehasonlítások végzett a sablonok számos funkciót bizt
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="and"></a>és
-`and(arg1, arg2)`
+`and(arg1, arg2, ...)`
 
-Ellenőrzi, hogy mindkét paraméter értéket Igaz.
+Ellenőrzi, hogy minden paraméter értéket Igaz.
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -44,10 +44,11 @@ Ellenőrzi, hogy mindkét paraméter értéket Igaz.
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |logikai |Ellenőrizze, hogy az első értéket e igaz. |
 | arg2 |Igen |logikai |A második érték, ellenőrizze, hogy igaz. |
+| További argumentumok |Nem |logikai |További argumentumok ellenőrizze, hogy igaz. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Értéket ad vissza **igaz** Ha mindkét érték igaz; ellenkező esetben **hamis**.
+Értéket ad vissza **igaz** Ha minden érték igaz; ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
@@ -366,9 +367,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ```
 
 ## <a name="or"></a>vagy
-`or(arg1, arg2)`
+`or(arg1, arg2, ...)`
 
-Ellenőrzi, hogy mindkét paraméter értéke igaz.
+Ellenőrzi, hogy minden paraméter értéke igaz.
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -376,10 +377,11 @@ Ellenőrzi, hogy mindkét paraméter értéke igaz.
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |logikai |Ellenőrizze, hogy az első értéket e igaz. |
 | arg2 |Igen |logikai |A második érték, ellenőrizze, hogy igaz. |
+| További argumentumok |Nem |logikai |További argumentumok ellenőrizze, hogy igaz. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Értéket ad vissza **igaz** Ha bármelyik érték igaz; ellenkező esetben **hamis**.
+Értéket ad vissza **igaz** Ha bármely érték igaz; ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 

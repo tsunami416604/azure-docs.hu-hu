@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 8a78abd7f3eea1493ef3f6e8cf3053720ba47478
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cb4b063d17555084f4065d7d7df931b96b95d9a4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695440"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751480"
 ---
-# <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások  
+# <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások
 
 ## <a name="overview"></a>Áttekintés
 Ez a cikk bemutatja, hogyan állítható be a riasztások felhasználói felületén belül az Azure portal riasztások. Riasztási szabály definíciója van három részből áll:
@@ -33,43 +33,45 @@ Az előfizetési időszak **Naplóriasztások** írja le a riasztásokhoz, ahol 
 Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felületén riasztások használatával.
 
 ### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>A riasztási szabály létrehozása az Azure portal használatával
-1. Az a [portál](https://portal.azure.com/), jelölje be **figyelő** , és válassza ki a MONITOR terület - **riasztások**.  
-    ![Monitorozás](media/alerts-log/AlertsPreviewMenu.png)
+1. Az a [portál](https://portal.azure.com/), jelölje be **figyelő** , és válassza ki a MONITOR terület - **riasztások**.
+
+    ![Figyelés](media/alerts-log/AlertsPreviewMenu.png)
 
 1. Válassza ki a **Új riasztási szabály** gombra kattintva hozzon létre egy új értesítés az Azure-ban.
-    ![Riasztás hozzáadása](media/alerts-log/AlertsPreviewOption.png)
+
+    ![Riasztás beállítása](media/alerts-log/AlertsPreviewOption.png)
 
 1. A riasztás létrehozása szakaszt a három részből álló mellett látható: *Riasztási feltétel megadása*, *riasztás részleteinek megadása*, és *definiálása műveletcsoport*.
 
     ![Szabály létrehozása](media/alerts-log/AlertsPreviewAdd.png)
 
-1.  A riasztási feltétel megadása használatával a **erőforrás kiválasztása** hivatkozásra, és adja meg a cél erőforrás kijelölésével. Válassza ki a szűrő a _előfizetés_, _erőforrástípus_, és a szükséges _erőforrás_. 
+1. A riasztási feltétel megadása használatával a **erőforrás kiválasztása** hivatkozásra, és adja meg a cél erőforrás kijelölésével. Válassza ki a szűrő a _előfizetés_, _erőforrástípus_, és a szükséges _erőforrás_.
 
     >[!NOTE]
 
     > A napló létrehozása a riasztás – ellenőrzése a **log** jel a kiválasztott erőforrás érhető el, mielőtt továbblépne.
     ![Erőforrás kiválasztása](media/alerts-log/Alert-SelectResourceLog.png)
 
- 
 1. *Naplóriasztások*: Győződjön meg arról **erőforrástípus** van egy analytics-forrásokhoz, például *Log Analytics* vagy *Application Insights* és típusa, jelezze **Log**, majd egyszer megfelelő **erőforrás** van kiválasztva, kattintson a *kész*. Következő az a **adja meg a feltételeket** érhető el, az erőforrás és a jel listából jel beállítások listájának megtekintése gombra **egyéni naplóbeli keresés** beállítást a kiválasztott log figyelő szolgáltatásokhoz, mint az *napló Analytics* vagy *az Application Insights*.
 
    ![Válasszon ki egy erőforrást – egyéni keresés](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
-   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [a log analytics naplóbeli keresés használatával](../../azure-monitor/log-query/log-query-overview.md) vagy [megosztott lekérdezést az application insights szolgáltatásban Analytics](../../azure-monitor/log-query/log-query-overview.md). 
+   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [a log analytics naplóbeli keresés használatával](../../azure-monitor/log-query/log-query-overview.md) vagy [megosztott lekérdezést az application insights szolgáltatásban Analytics](../../azure-monitor/log-query/log-query-overview.md).
 
-1.  *Naplóriasztások*: A kijelölt riasztási lekérdezés is fel kell tüntetni **keresési lekérdezés** mező; Ha a lekérdezés szintaxisa helytelen a mezőben az hiba vörös színnel jelenik meg. Ha a lekérdezés szintaxisa helyes - referenciaként előzményadatok a megadott lekérdezés látható gráfként kapcsolóval, hogy a Teljesítménybeállítások az időtartomány utolsó 6 óra múlt héten.
+1. *Naplóriasztások*: A kijelölt riasztási lekérdezés is fel kell tüntetni **keresési lekérdezés** mező; Ha a lekérdezés szintaxisa helytelen a mezőben az hiba vörös színnel jelenik meg. Ha a lekérdezés szintaxisa helyes - referenciaként előzményadatok a megadott lekérdezés látható gráfként kapcsolóval, hogy a Teljesítménybeállítások az időtartomány utolsó 6 óra múlt héten.
 
     ![Riasztási szabály konfigurálása](media/alerts-log/AlertsPreviewAlertLog.png)
 
     > [!NOTE]
     
     > Előzményadatok vizualizációt a lekérdezés eredményében van-e idő – részletek csak látható. Ha a lekérdezés eredménye összegzett adatok vagy az adott oszlop értékének - azonos jelenik meg egyes számú rajzot.
-    >  Az Application Insights használatával Naplóriasztások Metrikamérés típusú vagy [átállítja az új API-t](alerts-log-api-switch.md), megadhatja, hogy melyik konkrét változó használatával az adatok csoportosításához a **az összesített** lehetőséget; ahogyan alább:    
-    ![a beállítás az összesítés](media/alerts-log/aggregate-on.png)
+    > Az Application Insights használatával Naplóriasztások Metrikamérés típusú vagy [átállítja az új API-t](alerts-log-api-switch.md), megadhatja, hogy melyik konkrét változó használatával az adatok csoportosításához a **az összesített** lehetőséget; ahogyan alább:
+    >
+    > ![a beállítás az összesítés](media/alerts-log/aggregate-on.png)
 
-1.  *Naplóriasztások*: A helyen, a Vizualizáció **riasztási logika** kiválaszthatók a megjelenített beállítások a feltétel, az összesítés, végül a küszöbértéket. Végül adja meg a logikai időt a megadott feltétel értékelése használatával **időszak** lehetőséget. Milyen gyakran fusson a riasztás a kiválasztásával együtt **gyakorisága**. **Naplóriasztások** alapulhatnak:
+1. *Naplóriasztások*: A helyen, a Vizualizáció **riasztási logika** kiválaszthatók a megjelenített beállítások a feltétel, az összesítés, végül a küszöbértéket. Végül adja meg a logikai időt a megadott feltétel értékelése használatával **időszak** lehetőséget. Milyen gyakran fusson a riasztás a kiválasztásával együtt **gyakorisága**. **Naplóriasztások** alapulhatnak:
     - [Rekordok száma](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): Riasztás akkor jön létre, ha a lekérdezés által visszaadott rekordok számát vagy nagyobb vagy kisebb, mint a megadott érték.
     - [Metrikus egység](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): Riasztás jön létre, ha egyes *összesített érték* az eredmények között meghaladja a megadott küszöbérték és *szerint csoportosítva* választott érték. Az aktivista álláspontokkal riasztás a küszöbérték elérése esetén a választott időszakban hányszor. Összes incidens bármely kombinációjával adatszivárgás is megadhat az eredménykészletet vagy egymás utáni incidensek megkövetelése, hogy az illetéktelen behatolásokat fel kell a rendszer egymást követő minták között.
 
@@ -111,12 +113,11 @@ Felhasználók is fejeződik be, a saját elemzési lekérdezés [naplók elemz�
 
 ### <a name="view--manage-log-alerts-in-azure-portal"></a>Megtekinthet és az Azure Portalon riasztások kezelése
 
-1. Az a [portál](https://portal.azure.com/), jelölje be **figyelő** , és válassza ki a MONITOR terület - **riasztások**.  
+1. Az a [portál](https://portal.azure.com/), jelölje be **figyelő** , és válassza ki a MONITOR terület - **riasztások**.
 
 1. A **riasztások irányítópult** jelenik meg – viselkedésmintáit jelennek meg minden Azure Alerts (riasztások is beleértve) egy egyetlen táblára; beleértve minden példányát, ha a napló a riasztási szabály aktiválva van. További tudnivalókért lásd: [Riasztáskezelés](https://aka.ms/managealertinstances).
     > [!NOTE]
-    > Naplóriasztási szabály foglalja magában a felhasználó által megadott egyéni lekérdezés alapú logika és így olyan megoldott állapotban nélkül. Miatt, amely minden alkalommal, amikor a napló a riasztási szabályban megadott feltételek teljesülnek, akkor lép működésbe. 
-
+    > Naplóriasztási szabály foglalja magában a felhasználó által megadott egyéni lekérdezés alapú logika és így olyan megoldott állapotban nélkül. Miatt, amely minden alkalommal, amikor a napló a riasztási szabályban megadott feltételek teljesülnek, akkor lép működésbe.
 
 1. Válassza ki a **szabályok kezelése** gombot a felső sávon, nyissa meg a szabály felügyeleti szakaszra - létrehozott összes riasztási szabályt listázó; többek között a riasztásokat, amelyek le vannak tiltva.
     ![ Riasztási szabályok kezelése](media/alerts-log/manage-alert-rules.png)
@@ -136,77 +137,76 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0", 
-    "parameters": {      
-    },   
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    },
     "variables": {
-    "alertLocation": "southcentralus",
-    "alertName": "samplelogalert",
-    "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
-    "alertDescription": "Sample log search alert",
-    "alertStatus": "true",
-    "alertSource":{
-        "Query":"requests",
-        "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
-        "Type":"ResultCount"
-         },
-     "alertSchedule":{
-         "Frequency": 15,
-         "Time": 60
-         },
-     "alertActions":{
-         "SeverityLevel": "4"
-         },
-      "alertTrigger":{
-        "Operator":"GreaterThan",
-        "Threshold":"1"
-         },
-       "actionGrp":{
-        "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/actiongroups/sampleAG",
-        "Subject": "Customized Email Header",
-        "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"           
-         }
-  },
-  "resources":[ {
-    "name":"[variables('alertName')]",
-    "type":"Microsoft.Insights/scheduledQueryRules",
-    "apiVersion": "2018-04-16",
-    "location": "[variables('alertLocation')]",
-    "tags":{"[variables('alertTag')]": "Resource"},
-    "properties":{
-       "description": "[variables('alertDescription')]",
-       "enabled": "[variables('alertStatus')]",
-       "source": {
-           "query": "[variables('alertSource').Query]",
-           "dataSourceId": "[variables('alertSource').SourceId]",
-           "queryType":"[variables('alertSource').Type]"
-       },
-      "schedule":{
-           "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
-           "timeWindowInMinutes": "[variables('alertSchedule').Time]"    
-       },
-      "action":{
-           "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
-           "severity":"[variables('alertActions').SeverityLevel]",
-           "aznsAction":{
-               "actionGroup":"[array(variables('actionGrp').ActionGroup)]",
-               "emailSubject":"[variables('actionGrp').Subject]",
-               "customWebhookPayload":"[variables('actionGrp').Webhook]"
-           },
-       "trigger":{
-               "thresholdOperator":"[variables('alertTrigger').Operator]",
-               "threshold":"[variables('alertTrigger').Threshold]"
-           }
-       }
-     }
-   }
- ]
+        "alertLocation": "southcentralus",
+        "alertName": "samplelogalert",
+        "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
+        "alertDescription": "Sample log search alert",
+        "alertStatus": "true",
+        "alertSource":{
+            "Query":"requests",
+            "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
+            "Type":"ResultCount"
+        },
+        "alertSchedule":{
+            "Frequency": 15,
+            "Time": 60
+        },
+        "alertActions":{
+            "SeverityLevel": "4"
+        },
+        "alertTrigger":{
+            "Operator":"GreaterThan",
+            "Threshold":"1"
+        },
+        "actionGrp":{
+            "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/actiongroups/sampleAG",
+            "Subject": "Customized Email Header",
+            "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"
+        }
+    },
+    "resources":[ {
+        "name":"[variables('alertName')]",
+        "type":"Microsoft.Insights/scheduledQueryRules",
+        "apiVersion": "2018-04-16",
+        "location": "[variables('alertLocation')]",
+        "tags":{"[variables('alertTag')]": "Resource"},
+        "properties":{
+            "description": "[variables('alertDescription')]",
+            "enabled": "[variables('alertStatus')]",
+            "source": {
+                "query": "[variables('alertSource').Query]",
+                "dataSourceId": "[variables('alertSource').SourceId]",
+                "queryType":"[variables('alertSource').Type]"
+            },
+            "schedule":{
+                "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
+                "timeWindowInMinutes": "[variables('alertSchedule').Time]"
+            },
+            "action":{
+                "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
+                "severity":"[variables('alertActions').SeverityLevel]",
+                "aznsAction":{
+                    "actionGroup":"[array(variables('actionGrp').ActionGroup)]",
+                    "emailSubject":"[variables('actionGrp').Subject]",
+                    "customWebhookPayload":"[variables('actionGrp').Webhook]"
+                },
+                "trigger":{
+                    "thresholdOperator":"[variables('alertTrigger').Operator]",
+                    "threshold":"[variables('alertTrigger').Threshold]"
+                }
+            }
+        }
+    } ]
 }
 
 ```
 
 > [!IMPORTANT]
-> És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon. 
+> És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon.
 
 A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sampleScheduledQueryRule.json és telepíthetők [Azure Resource Manager az Azure Portalon](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
@@ -219,88 +219,87 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
 
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0", 
-    "parameters": {      
-    },   
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    },
     "variables": {
-    "alertLocation": "Region Name for your Application Insights App or Log Analytics Workspace",
-    "alertName": "sample log alert",
-    "alertDescr": "Sample log search alert",
-    "alertStatus": "true",
-    "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
-    "alertSource":{
-        "Query":"union workspace("servicews").Update, app('serviceapp').requests | summarize AggregatedValue = count() by bin(TimeGenerated,1h), Classification",
-        "Resource1": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews", 
-        "Resource2": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/components/serviceapp",
-        "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
-        "Type":"ResultCount"
-         },
-     "alertSchedule":{
-         "Frequency": 15,
-         "Time": 60
-         },
-     "alertActions":{
-         "SeverityLevel": "4",
-         "SuppressTimeinMin": 20
-         },
-      "alertTrigger":{
-        "Operator":"GreaterThan",
-        "Threshold":"1"
-         },
-      "metricMeasurement": {
-          "thresholdOperator": "Equal",
-          "threshold": "1",
-          "metricTriggerType": "Consecutive",
-          "metricColumn": "Classification"
-      },
-       "actionGrp":{
-        "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG",
-        "Subject": "Customized Email Header",
-        "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"
+        "alertLocation": "Region Name for your Application Insights App or Log Analytics Workspace",
+        "alertName": "sample log alert",
+        "alertDescr": "Sample log search alert",
+        "alertStatus": "true",
+        "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
+        "alertSource":{
+            "Query":"union workspace(\"servicews\").Update, app('serviceapp').requests | summarize AggregatedValue = count() by bin(TimeGenerated,1h), Classification",
+            "Resource1": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
+            "Resource2": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/components/serviceapp",
+            "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
+            "Type":"ResultCount"
+        },
+        "alertSchedule":{
+            "Frequency": 15,
+            "Time": 60
+        },
+        "alertActions":{
+            "SeverityLevel": "4",
+            "SuppressTimeinMin": 20
+        },
+        "alertTrigger":{
+            "Operator":"GreaterThan",
+            "Threshold":"1"
+        },
+        "metricMeasurement": {
+            "thresholdOperator": "Equal",
+            "threshold": "1",
+            "metricTriggerType": "Consecutive",
+            "metricColumn": "Classification"
+        },
+        "actionGrp":{
+            "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG",
+            "Subject": "Customized Email Header",
+            "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"
         }
-  },
-  "resources":[ {
-    "name":"[variables('alertName')]",
-    "type":"Microsoft.Insights/scheduledQueryRules",
-    "apiVersion": "2018-04-16",
-    "location": "[variables('alertLocation')]",
-    "tags":{"[variables('alertTag')]": "Resource"},
-    "properties":{
-       "description": "[variables('alertDescr')]",
-       "enabled": "[variables('alertStatus')]",
-       "source": {
-           "query": "[variables('alertSource').Query]",
-           "authorizedResources": "[concat(array(variables('alertSource').Resource1), array(variables('alertSource').Resource2))]",
-           "dataSourceId": "[variables('alertSource').SourceId]",
-           "queryType":"[variables('alertSource').Type]"
-       },
-      "schedule":{
-           "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
-           "timeWindowInMinutes": "[variables('alertSchedule').Time]"
-       },
-      "action":{
-           "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
-           "severity":"[variables('alertActions').SeverityLevel]",
-           "throttlingInMin": "[variables('alertActions').SuppressTimeinMin]",
-           "aznsAction":{
-               "actionGroup": "[array(variables('actionGrp').ActionGroup)]",
-               "emailSubject":"[variables('actionGrp').Subject]",
-               "customWebhookPayload":"[variables('actionGrp').Webhook]"
-           },
-       "trigger":{
-               "thresholdOperator":"[variables('alertTrigger').Operator]",
-               "threshold":"[variables('alertTrigger').Threshold]",
-               "metricTrigger":{
-                   "thresholdOperator": "[variables('metricMeasurement').thresholdOperator]",
-                   "threshold": "[variables('metricMeasurement').threshold]",
-                   "metricColumn": "[variables('metricMeasurement').metricColumn]",
-                   "metricTriggerType": "[variables('metricMeasurement').metricTriggerType]"
-               }
-           }
-       }
-     }
-   }
- ]
+    },
+    "resources":[ {
+        "name":"[variables('alertName')]",
+        "type":"Microsoft.Insights/scheduledQueryRules",
+        "apiVersion": "2018-04-16",
+        "location": "[variables('alertLocation')]",
+        "tags":{"[variables('alertTag')]": "Resource"},
+        "properties":{
+            "description": "[variables('alertDescr')]",
+            "enabled": "[variables('alertStatus')]",
+            "source": {
+                "query": "[variables('alertSource').Query]",
+                "authorizedResources": "[concat(array(variables('alertSource').Resource1), array(variables('alertSource').Resource2))]",
+                "dataSourceId": "[variables('alertSource').SourceId]",
+                "queryType":"[variables('alertSource').Type]"
+            },
+            "schedule":{
+                "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
+                "timeWindowInMinutes": "[variables('alertSchedule').Time]"
+            },
+            "action":{
+                "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
+                "severity":"[variables('alertActions').SeverityLevel]",
+                "throttlingInMin": "[variables('alertActions').SuppressTimeinMin]",
+                "aznsAction":{
+                    "actionGroup": "[array(variables('actionGrp').ActionGroup)]",
+                    "emailSubject":"[variables('actionGrp').Subject]",
+                    "customWebhookPayload":"[variables('actionGrp').Webhook]"
+                },
+                "trigger":{
+                    "thresholdOperator":"[variables('alertTrigger').Operator]",
+                    "threshold":"[variables('alertTrigger').Threshold]",
+                    "metricTrigger":{
+                        "thresholdOperator": "[variables('metricMeasurement').thresholdOperator]",
+                        "threshold": "[variables('metricMeasurement').threshold]",
+                        "metricColumn": "[variables('metricMeasurement').metricColumn]",
+                        "metricTriggerType": "[variables('metricMeasurement').metricTriggerType]"
+                    }
+                }
+            }
+        }
+    } ]
 }
 
 ```
@@ -330,12 +329,10 @@ az group deployment create --resource-group contosoRG --template-file sampleSche
 ```
 
 Sikeres művelet esetén 201-es állapot új riasztási szabály létrehozása ad vissza, vagy a 200-as vissza kell adni, ha egy meglévő riasztási szabályt módosítva lett.
-  
+
 ## <a name="next-steps"></a>További lépések
 
 * Ismerje meg [Naplóriasztások az Azure-riasztások](../../azure-monitor/platform/alerts-unified-log.md)
 * Megismerheti [naplóriasztásokra vonatkozó Webhook-műveletek](../../azure-monitor/platform/alerts-log-webhook.md)
 * Tudjon meg többet [Application Insights](../../azure-monitor/app/analytics.md)
-* Tudjon meg többet [Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 
-
-
+* Tudjon meg többet [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).

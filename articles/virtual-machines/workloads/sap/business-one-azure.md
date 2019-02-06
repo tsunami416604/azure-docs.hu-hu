@@ -3,7 +3,7 @@ title: SAP Business egy on Azure Virtual Machines |} A Microsoft Docs
 description: SAP Business on Azure egy.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
-author: juergent
+author: msjuergent
 manager: patfilot
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2018
-ms.author: msjuergent
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8bd5ddab4553807f59b7afdf32fbfc1703e3d75
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bb3c2a9cfc1bccf4656be83c6babbe9c7ec139fb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949533"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745350"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business egy on Azure Virtual machines szolgáltatásban
 Ez a dokumentum nyújt útmutatást, üzembe helyezéséhez SAP Business One az Azure Virtual machines szolgáltatásban. A dokumentáció nem helyettesíti a üzleti SAP-dokumentáció áll. A dokumentáció az Azure-infrastruktúra egy üzleti alkalmazások futtatásához az alapvető tervezési és telepítési irányelveket kell kiterjednie.
@@ -125,7 +125,7 @@ Alapvetően a következőket kell elvégeznie:
 - Annak érdekében, hogy a költség-tárolási konfigurációt/hana/adatok és /hana/log kötet egyesítése
 
 
-#### <a name="sql-server-as-dbms"></a>SQL Server adatbázis-kezelő
+#### <a name="sql-server-as-dbms"></a>SQL Server as DBMS
 Telepítése az SQL Server adatbázis-kezelő, egy üzleti, látogasson el a dokumentumot mentén [SAP NetWeaver az SQL Server Azure virtuális gépek DBMS üzembe](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver). 
 
 Az SQL Server adatbázis-kezelő oldalán hozzávetőleges méretezési becsléseket a következők:
@@ -152,7 +152,7 @@ Az SAP Hana biztonsági mentését és visszaállítását stratégiák, érdeme
 Ezeknek az összetevőknek a tárterülettel kapcsolatos szempontok nem tartoznak az elsődleges szempont. Mindazonáltal szeretné megbízható platformon. Ezért használjon az Azure Premium Storage virtuális géphez, az alap virtuális merevlemez esetén is. Méretezés a virtuális gép a megadott adatokat [SAP Business egy hardver Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). Azure-ban hogy a dokumentum 2.4 fejezetben ismertetett követelményeknek kiszámítása, és szüksége. Számít a követelményeknek, mivel kell őket hasonlítani az Ön számára ideális megoldás a virtuális gép található a következő dokumentumokat:
 
 - [Az Azure-beli Windows virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
-- [SAP-Jegyzetnek #1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 Hasonlítsa össze a processzorokat és memóriát, mi a Microsoft dokumentált szükséges számát. Azt is hálózati átviteli sebesség vegye figyelembe a virtuális gépek kiválasztásakor.
 

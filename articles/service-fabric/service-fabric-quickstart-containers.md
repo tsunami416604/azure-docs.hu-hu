@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 085f3fd8ee3fe22333c260fb4de18a8c06c9c55c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 816f12ca5837fa99b4e945c965f9cbad406c63bb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568566"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749797"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Gyors útmutató: Windows-tárolók üzembe helyezése a Service Fabric
 
@@ -91,7 +91,7 @@ A a *ApplicationManifest.xml* fájl, módosítsa **PasswordEncrypted** való **h
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
 
-Az alábbi parancsprogram létrehoz egy öt csomópontot számláló X.509 tanúsítvánnyal biztosított Service Fabric-fürtön. A parancs létrehoz egy önaláírt tanúsítványt, és feltölti azt egy új kulcstartóba. A rendszer emellett a tanúsítványt egy helyi könyvtárba is átmásolja. Ezt a szkriptet az a fürtök létrehozásával kapcsolatos többet is megtudhat [Service Fabric-fürt létrehozása](/scripts/service-fabric-powershell-create-secure-cluster-cert).
+Az alábbi parancsprogram létrehoz egy öt csomópontot számláló X.509 tanúsítvánnyal biztosított Service Fabric-fürtön. A parancs létrehoz egy önaláírt tanúsítványt, és feltölti azt egy új kulcstartóba. A rendszer emellett a tanúsítványt egy helyi könyvtárba is átmásolja. Ezt a szkriptet az a fürtök létrehozásával kapcsolatos többet is megtudhat [Service Fabric-fürt létrehozása](scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
 Ha szükséges, telepítse az Azure Powershellt utasításait a [Azure PowerShell útmutatójának](/powershell/azure/overview).
 

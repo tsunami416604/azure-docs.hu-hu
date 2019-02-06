@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: 7f11579988d965723fedb3d7900f12979ad0feb1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b6b83d944aed2f42f0309eec8a05e65f6fe3eaf6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043906"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746880"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása
 
@@ -96,7 +96,12 @@ function tradePlayers(playerId1, playerId2) {
     var player1Document, player2Document;
 
     // query for players
-    var filterQuery = 'SELECT * FROM Players p where p.id  = "' + playerId1 + '"';
+    var filterQuery = 
+    {     
+        'query' : 'SELECT * FROM Players p where p.id = @playerId1',
+        'parameters' : [{'name':'@playerId1', 'value':playerId1}] 
+    };
+            
     var accept = container.queryDocuments(container.getSelfLink(), filterQuery, {},
         function (err, items, responseOptions) {
             if (err) throw new Error("Error" + err.message);
@@ -104,7 +109,11 @@ function tradePlayers(playerId1, playerId2) {
             if (items.length != 1) throw "Unable to find both names";
             player1Item = items[0];
 
-            var filterQuery2 = 'SELECT * FROM Players p where p.id = "' + playerId2 + '"';
+            var filterQuery2 = 
+            {     
+                'query' : 'SELECT * FROM Players p where p.id = @playerId2',
+                'parameters' : [{'name':'@playerId2', 'value':playerId2}] 
+            };
             var accept2 = container.queryDocuments(container.getSelfLink(), filterQuery2, {},
                 function (err2, items2, responseOptions2) {
                     if (err2) throw new Error("Error" + err2.message);
@@ -200,7 +209,7 @@ function bulkImport(items) {
 
 Az Azure Cosmos DB támogatja az eseményindítók előtti és utáni eseményindítók. Egy adatbázis-elem módosítása előtt végrehajtása előtti eseményindítók, és utáni eseményindítók egy adatbázis-elem módosítása után lesznek végrehajtva.
 
-### <a id="pre-triggers"></a>Üzem előtti eseményindítók
+### <a id="pre-triggers"></a>Pre-triggers
 
 Az alábbi példa bemutatja, hogyan előtti eseményindító létrehozása folyamatban van egy Azure Cosmos DB elem tulajdonságainak ellenőrzésére szolgál. Ebben a példában a ToDoList minta azt kihasználva a [rövid .NET SQL API](create-sql-api-dotnet.md), egy időbélyeg-tulajdonság hozzáadása egy újonnan hozzáadott elem, ha egy nem tartalmaz.
 
@@ -229,7 +238,7 @@ Eseményindítók regisztrálásakor való futtatás műveleteket is megadhat. E
 
 Hogyan kell regisztrálni, és a egy üzem előtti trigger meghívása példákért lásd [előtti eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) és [utáni eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) cikkek. 
 
-### <a id="post-triggers"></a>Utáni eseményindítók
+### <a id="post-triggers"></a>Post-triggers
 
 Az alábbi példa bemutatja egy utáni eseményindítót. Ez az eseményindító lekérdezése metaadat-elemhez, és frissíti, az újonnan létrehozott elemek részleteit.
 

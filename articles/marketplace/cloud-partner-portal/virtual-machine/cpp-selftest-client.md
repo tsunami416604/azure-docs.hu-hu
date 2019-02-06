@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 82f7d69120cf3d6f44c981f985ae29f467ee0655
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7afa64ebedb38b4514bbd155bf8f29268d420d18
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55199086"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745758"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Hozzon létre egy teszteléséhez ügyfél való használatát egy Azure-beli virtuálisgép-lemezkép
 
@@ -54,7 +54,7 @@ Az alábbi ábrán látható, az engedélyezés működése a szolgáltatások k
 A teszteléséhez API tartalmaz egy végpontot, amely támogatja a POST-metódus.  Az alábbi struktúrával rendelkezik.
 
 ```
-Uri:             https://isvapp.azurewebsites.net/selftest
+Uri:             https://isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -215,7 +215,7 @@ A curl használatával az API meghívása, kövesse az alábbi lépéseket:
 ```
 CURL POST -H "Content-Type:application/json" 
 -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-https://isvapp.azurewebsites.net/selftest 
+https://isvapp.azurewebsites.net/selftest-vm 
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
 
 ```
@@ -260,7 +260,7 @@ A következő lépések segítségével regisztrálja az ügyfélalkalmazás.
 
    - **Név** – adjon egy rövid nevet az alkalmazáshoz. Például "SelfTestClient."
    - **Az alkalmazástípus** : Adja meg, **Web App és az API**
-   - **Bejelentkezés URL-cím** – típusa "https://isvapp.azurewebsites.net/selftest"
+   - **Bejelentkezés URL-cím** – típusa "https://isvapp.azurewebsites.net/selftest-vm"
 
 4. Kattintson a **Létrehozás** gombra.
 5. A **alkalmazásregisztrációk** vagy **regisztrált alkalmazás**, másolatot a **Alkalmazásazonosító**.
@@ -410,7 +410,7 @@ $token.AccessToken
 Adja át a jogkivonatot a helyi tesztelése API, az engedélyezési fejléc a következő kód használatával:
 
 ```
-$redirectUri = ‘https://isvapp.azurewebsites.net/selftest’
+$redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
 $accesstoken = ‘place your token here’
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"

@@ -9,102 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 02/03/2019
 ms.author: juliako
-ms.openlocfilehash: 658843fd5acbe0d4e29947e99c00edf4909fe9f4
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: be66dcf8115258b6f593ec913e75785a3f8dbe1f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742745"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743480"
 ---
 # <a name="streaming-locators"></a>Streamelési lokátor
 
-Meg kell adnia az ügyfelek is lejátszására használható URL-kódolású video- vagy fájlokat kell, hogy hozzon létre egy [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) és a streamelési URL-címeket. További információkért lásd: [fájl Stream](stream-files-dotnet-quickstart.md).
+Győződjön meg arról, videók, a kimenetben az eszköz érhető el az ügyfelek számára a lejátszás, létre kell hoznia egy [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) majd kialakítható a streamelési URL-címek. .NET-minta: [beolvasása egy Streamelési lokátor](stream-files-tutorial-with-api.md#get-a-streaming-locator).
 
-## <a name="streaminglocator-definition"></a>StreamingLocator definíciója
+A folyamat létrehozásának egy **Streamelési lokátor** közzététel nevezzük. Alapértelmezés szerint a **Streamelési lokátor** érvényes az API-hívások végrehajtása után azonnal, és tart, amíg nem törli, ha nem konfigurál a választható kezdő és befejező időpontok. 
 
-Az alábbi táblázat a StreamingLocator tulajdonságait jeleníti meg, és lehetővé teszi a definíciójukat.
+Létrehozásakor egy **Streamelési lokátor**, meg kell adnia a [eszköz](https://docs.microsoft.com/rest/api/media/assets) nevét és a [Streamelési házirend](https://docs.microsoft.com/rest/api/media/streamingpolicies) nevét. Használja az előre definiált adatfolyam-szabályzatokra, vagy egy egyéni szabályzatot hozott létre. A jelenleg elérhető előre meghatározott házirendek a következők: 'Predefined_DownloadOnly', 'Predefined_ClearStreamingOnly', 'Predefined_DownloadAndClearStreaming', 'Predefined_ClearKey', 'Predefined_MultiDrmCencStreaming' and 'Predefined_MultiDrmStreaming'. Egyéni használatakor adatfolyam-szabályzatot, tervezzen egy részéhez az ilyen szabályzatok a Media Services-fiók, és újból felhasználja őket a Streamelési Lokátorok, amikor a beállítások és a protokollok van szükség. 
 
-|Name (Név)|Leírás|
-|---|---|
-|id |Az erőforrás teljes erőforrás-azonosítója.|
-|név|Az erőforrás neve.|
-|properties.alternativeMediaId|A Streamelési Lokátorok alternatív Media azonosítója.|
-|properties.assetName|Objektum neve|
-|properties.contentKeys|A Tartalomkulcsok használják a Streamelési lokátor.|
-|Properties.created|A Streamelési lokátor létrehozásának idejét.|
-|properties.defaultContentKeyPolicyName|Az alapértelmezett a Streamelési lokátor által használt ContentKeyPolicy neve.|
-|properties.endTime|A befejezési ideje a Streamelési lokátor.|
-|properties.startTime|A Streamelési lokátor kezdési idejét.|
-|properties.streamingLocatorId|A StreamingLocatorId, a Streamelési Lokátort.|
-|properties.streamingPolicyName |A Streamelési lokátor által használt adatfolyam-házirend nevét. Adja meg a létrehozott Streamelési szabályzat nevét, vagy használja az előre definiált adatfolyam-házirendek egyikét. Elérhető előre definiált adatfolyam-szabályzatok a következők: 'Predefined_DownloadOnly', "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" és "Predefined_MultiDrmStreaming"|
-|type|Az erőforrás típusát.|
+Ha meg szeretné határozni a titkosítási beállítások a streamben, hozza létre a [tartalom kulcs házirend](https://docs.microsoft.com/rest/api/media/contentkeypolicies) , amely beállítja a tartalomkulcsot a rendszer hogyan továbbítja a Media Services kulcs kézbesítési összetevője keresztül végfelhasználók. A Streamelési lokátor való társítása a **tartalom kulcs házirend** és a tartalomkulcsot. A Media Services engedélyezheti a automatikus létrehozása a kulcsot. A következő .NET-példa bemutatja, hogyan AES-titkosítás konfigurálása a Media Services v3 token korlátozás: [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted). **Tartalom-kulcs házirendjei** frissíthető, érdemes lehet frissíteni a szabályzatot, ha kell tennie egy kulcsrotálás azok. A kulcs kézbesítési gyorsítótárak frissítése, és vegye fel a frissített szabályzatot esetében akár 15 percet is igénybe vehet. Javasoljuk, hogy nem az új tartalom kulcs szabályzat létrehozása az egyes Streamelési lokátor. Próbálkozzon újra felhasználhatja a meglévő szabályzatokat, amikor szükség van a ugyanazokkal a beállításokkal.
 
-A teljes meghatározása: [Streamelési Lokátorok](https://docs.microsoft.com/rest/api/media/streaminglocators).
+> [!IMPORTANT]
+> * Tulajdonságainak **Streamelési Lokátorok** a DateTime típusú állandóan UTC formátumban vannak.
+> * Korlátozott számú házirendeket tervezzen a Media Services-fiók és újból felhasználja őket a Streamelési Lokátorok, amikor szükség van a beállítások. 
 
 ## <a name="filtering-ordering-paging"></a>Szűrési, rendezési, stránkování
 
-A Media Services a következő OData lekérdezési beállítások Streamelési Lokátorok támogatja: 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-Operátor leírása:
-
-* EQ = egyenlő
-* Ú = nem egyenlő
-* A GE = nagyobb vagy egyenlő
-* Le = kisebb vagy egyenlő
-* Gt = nagyobb, mint
-* Lt = kisebb, mint
-
-### <a name="filteringordering"></a>Szűrés és rendezés
-
-Az alábbi táblázat bemutatja, hogyan lehet alkalmazni ezeket a beállításokat a StreamingLocator tulajdonságai: 
-
-|Name (Név)|Szűrés|Rendelés|
-|---|---|---|
-|id |||
-|név|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
-|properties.alternativeMediaId  |||
-|properties.assetName   |||
-|properties.contentKeys |||
-|Properties.created |Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
-|properties.defaultContentKeyPolicyName |||
-|properties.endTime |Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
-|properties.startTime   |||
-|properties.streamingLocatorId  |||
-|properties.streamingPolicyName |||
-|type   |||
-
-### <a name="pagination"></a>Tördelés
-
-Tördelés a négy engedélyezve van a rendezési sorrend mindegyike támogatott. Az oldalméret jelenleg 10.
-
-> [!TIP]
-> A gyűjtemény enumerálása, és nem függ egy adott oldal méretét a következő hivatkozás mindig használjon.
-
-A lekérdezési válasz számos elemet tartalmaz, ha a szolgáltatás visszaadja egy "\@odata.nextLink" tulajdonságát a következő lapra az eredmények lekérése. Ez használható a lapozza végig a teljes eredményhalmaz. Az oldal méretét nem lehet konfigurálni. 
-
-Ha StreamingLocators létrehozott vagy a gyűjtemény átlapozva közben, a módosítások megjelennek a kapott találatok közül (ha ezek a módosítások a gyűjteményt, amely még nincs letöltve részén.) 
-
-Az alábbi C#-példa bemutatja a fiókban lévő összes StreamingLocators számba.
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingLocators.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-További példák: [Streamelési Lokátorok - lista](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+Lásd: [szűrése, rendezése, a Media Services entitások lapozás](entities-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
-[Fájl streamelése](stream-files-dotnet-quickstart.md)
+* [Oktatóanyag: Feltöltése, kódolása és streamelése a .NET használatával kíván videókat](stream-files-tutorial-with-api.md)
+* [DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata](protect-with-drm.md)

@@ -15,12 +15,12 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a1ca5125162460b95c0ffcadb1551173d06b5838
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1117ffa94a30a55b7b2a7477bf2770d21dcb5441
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163585"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746506"
 ---
 # <a name="azure-active-directory-risk-events"></a>Az Azure Active Directory kockázati eseményei
 
@@ -164,7 +164,7 @@ A kockázati esemény IP-címek, nem a felhasználói eszközök azonosítja. Ha
 
 Azt javasoljuk, hogy kapcsolattartás a felhasználókkal, és a felhasználói eszközök vizsgálata. Lehetőség arra is, hogy a felhasználó személyes eszközén fertőzött, illetve, hogy valaki más használta az ugyanazon az IP-címről egy fertőzött eszköz felhasználóként. Fertőzött eszközökről gyakran fertőzöttek kártevőkkel, víruskereső szoftver még nem azonosított, és azt is jelezheti bármely felhasználó rossz szokások, amely az eszköz megfertőző okozott.
 
-Cím kártevőszoftver-fertőzések kapcsolatos további információkért lásd: a [Kártevőkezelési központ](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
+Cím kártevőszoftver-fertőzések kapcsolatos további információkért lásd: a [Kártevőkezelési központ](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/).
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Bejelentkezések gyanús tevékenységeket mutató IP-címekkel
 

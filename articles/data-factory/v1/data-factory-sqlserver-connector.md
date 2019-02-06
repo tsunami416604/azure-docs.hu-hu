@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a8283ebe135c5204dd64d8955295fdece38e0ebe
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2687f97fd8c37a3505ee26946d2e34644dc3b4f9
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023498"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752007"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Helyezze át az adatokat, és a helyszíni SQL Server vagy az IaaS (Azure VM) az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ ms.locfileid: "54023498"
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a v2-ben az SQL Server-összekötő](../connector-sql-server.md).
 
-Ez a cikk bemutatja, hogyan kell használni a másolási tevékenység az Azure Data Factoryban az adatok egy helyszíni SQL Server-adatbázis áthelyezése. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése. 
+Ez a cikk bemutatja, hogyan kell használni a másolási tevékenység az Azure Data Factoryban az adatok egy helyszíni SQL Server-adatbázis áthelyezése. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 Adatokat másolja **SQL Server-adatbázisból** tárolja, a következő adatokat:
@@ -40,7 +40,7 @@ A következő adattárakból származó adatokat másolja **az SQL Server-adatb�
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-sql-server-versions"></a>Támogatott SQL Server-verziók
-Az SQL Server connector támogatása az adatokat a/üzemeltetett példány helyszíni, vagy Azure IaaS SQL-hitelesítés és a Windows-hitelesítés együttes használatával a következő verziók másolása: Az SQL Server 2016, az SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008, SQL Server 2005
+Az SQL Server connector támogatása az adatokat a/üzemeltetett példány helyszíni, vagy Azure IaaS SQL-hitelesítés és a Windows-hitelesítés együttes használatával a következő verziók másolása: SQL Server 2016, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008, SQL Server 2005
 
 ## <a name="enabling-connectivity"></a>Kapcsolat engedélyezése
 A fogalmakat és csatlakoztatása a helyszíni SQL Server által futtatott vagy Azure IaaS (infrastruktúra--szolgáltatásként)-beli virtuális gépeken szükséges lépések megegyeznek. Mindkét esetben szeretné használni az adatkezelési átjárót a hálózati kapcsolatot.
@@ -54,18 +54,18 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok egy helysz
 
 A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
-Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani: 
+Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
-1. Hozzon létre egy **adat-előállító**. Adat-előállító egy vagy több folyamattal is tartalmazhat. 
-2. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához. Például ha az adatokat az SQL Server-adatbázisból egy Azure blob Storage-tárolóba másol, hoz létre az SQL Server-adatbázis és az Azure storage-fiók összekapcsolása a data factory két társított szolgáltatást. Konkrétan az SQL Server-adatbázis a társított szolgáltatás tulajdonságait, lásd: [társított szolgáltatások tulajdonságai](#linked-service-properties) szakaszban. 
+1. Hozzon létre egy **adat-előállító**. Adat-előállító egy vagy több folyamattal is tartalmazhat.
+2. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához. Például ha az adatokat az SQL Server-adatbázisból egy Azure blob Storage-tárolóba másol, hoz létre az SQL Server-adatbázis és az Azure storage-fiók összekapcsolása a data factory két társított szolgáltatást. Konkrétan az SQL Server-adatbázis a társított szolgáltatás tulajdonságait, lásd: [társított szolgáltatások tulajdonságai](#linked-service-properties) szakaszban.
 3. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. A példában az előző lépésben említett adja meg az SQL-táblát az SQL Server-adatbázis, amely tartalmazza a bemeneti adatokat egy adatkészletet hoz létre. És megadja a blobtárolót és a mappát, amely tárolja az adatokat másolja az SQL Server-adatbázisból egy másik adatkészletet hoz létre. SQL Server-adatbázis adott adatkészlet tulajdonságai, lásd: [adatkészlet tulajdonságai](#dataset-properties) szakaszban.
-4. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. A példában azt korábban említettük SqlSource forrás-és BlobSink fogadóként esetében használja a másolási tevékenység. Hasonlóképpen, ha az SQL Server-adatbázis másolása az Azure Blob Storage-ból, BlobSource és a használata SqlSink a másolási tevékenység. Másolási tevékenység tulajdonságai adott SQL Server-adatbázis, lásd: [másolási tevékenység tulajdonságai](#copy-activity-properties) szakaszban. A forrás vagy a fogadó adattár használatát részletekért kattintson a hivatkozásra az adattár az előző szakaszban. 
+4. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. A példában azt korábban említettük SqlSource forrás-és BlobSink fogadóként esetében használja a másolási tevékenység. Hasonlóképpen, ha az SQL Server-adatbázis másolása az Azure Blob Storage-ból, BlobSource és a használata SqlSink a másolási tevékenység. Másolási tevékenység tulajdonságai adott SQL Server-adatbázis, lásd: [másolási tevékenység tulajdonságai](#copy-activity-properties) szakaszban. A forrás vagy a fogadó adattár használatát részletekért kattintson a hivatkozásra az adattár az előző szakaszban.
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  Az adatok másolása helyszíni SQL Server-adatbázisból/használt Data Factory-entitások JSON-definíciói minták, lásd: [JSON példák](#json-examples-for-copying-data-from-and-to-sql-server) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban. Az adatok másolása helyszíni SQL Server-adatbázisból/használt Data Factory-entitások JSON-definíciói minták, lásd: [JSON példák](#json-examples-for-copying-data-from-and-to-sql-server) című szakaszát.
 
-Az alábbi szakaszok nyújtanak az SQL Server adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért: 
+Az alábbi szakaszok nyújtanak az SQL Server adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 Létrehoz egy társított szolgáltatást típusú **OnPremisesSqlServer** egy helyszíni SQL Server-adatbázis összekapcsolása a data factoryt. A következő táblázat a JSON-elemeket a helyszíni SQL Server-alapú társított szolgáltatás leírását.
@@ -80,7 +80,7 @@ Az alábbi táblázatban az adott SQL Server-alapú társított szolgáltatás J
 | felhasználónév |Ha Windows-hitelesítést használ, adja meg a felhasználónevet. Példa: **domainname\\felhasználónév**. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 
-A hitelesítő adatok titkosíthatók a **New-AzureRmDataFactoryEncryptValue** parancsmag és a kapcsolati karakterláncot használja őket az alábbi példában látható módon (**EncryptedCredential** tulajdonság):  
+A hitelesítő adatok titkosíthatók a **New-AzureRmDataFactoryEncryptValue** parancsmag és a kapcsolati karakterláncot használja őket az alábbi példában látható módon (**EncryptedCredential** tulajdonság):
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -104,26 +104,26 @@ A hitelesítő adatok titkosíthatók a **New-AzureRmDataFactoryEncryptValue** p
 ```
 **JSON-t a Windows-hitelesítés használatával**
 
-Az adatkezelési átjáró megszemélyesíti a megadott felhasználói fióknak a helyi SQL Server adatbázishoz való csatlakozáshoz. 
+Az adatkezelési átjáró megszemélyesíti a megadott felhasználói fióknak a helyi SQL Server adatbázishoz való csatlakozáshoz.
 
 ```json
 {
-     "Name": " MyOnPremisesSQLDB",
-     "Properties":
-     {
-         "type": "OnPremisesSqlServer",
-         "typeProperties": {
-             "ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;",
-             "username": "<domain\\username>",
-             "password": "<password>",
-             "gatewayName": "<gateway name>"
+    "Name": " MyOnPremisesSQLDB",
+    "Properties":
+    {
+        "type": "OnPremisesSqlServer",
+        "typeProperties": {
+            "ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;",
+            "username": "<domain\\username>",
+            "password": "<password>",
+            "gatewayName": "<gateway name>"
         }
-     }
+    }
 }
 ```
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-A minták használja egy adatkészlet típusú **SqlServerTable** , amelyek egy SQL Server-adatbázisban lévő táblából.  
+A minták használja egy adatkészlet típusú **SqlServerTable** , amelyek egy SQL Server-adatbázisban lévő táblából.
 
 Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (SQL Server, az Azure blob-, az Azure table-, stb.).
 
@@ -167,7 +167,7 @@ Ha sqlReaderQuery vagy sqlReaderStoredProcedureName nincs megadva, a struktúra 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot. |Időtartam<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
-| WriteBatchSize |Amikor a puffer mérete eléri a writeBatchSize adatok beszúrása SQL-táblát. |Egész szám (sorok száma) |Nem (alapértelmezett: 10 000) |
+| WriteBatchSize |Amikor a puffer mérete eléri a writeBatchSize adatok beszúrása SQL-táblát. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | sqlWriterCleanupScript |Adja meg a lekérdezés végrehajtása úgy, hogy az adott szeletre vonatkozó adatok törlődnek a másolási tevékenységhez. További információkért lásd: [reprodukálható másolatot](#repeatable-copy) szakaszban. |A lekérdezési utasítást. |Nem |
 | sliceIdentifierColumnName |Adja meg az oszlop nevét adja meg az automatikusan generált szelet azonosítóval, amelyet egy adott szeletre mikor futtassa újra a adatainak a másolási tevékenység. További információkért lásd: [reprodukálható másolatot](#repeatable-copy) szakaszban. |Egy oszlop binary(32) adattípusú oszlop neve. |Nem |
 | sqlWriterStoredProcedureName |A tárolt eljárást, amely meghatározza, hogyan alkalmazhatja a forrásadatok céloldali táblához, pl. do upserts vagy a saját üzleti logika átalakító neve. <br/><br/>Megjegyzés: Ez a tárolt eljárás lesz **kötegenként meghívása**. Ha azt szeretné, hogy csak egyszer fut, és nem a forrásadatokat, például törlés/truncate, használja a művelet elvégzéséhez `sqlWriterCleanupScript` tulajdonság. |A tárolt eljárás neve. |Nem |
@@ -176,7 +176,7 @@ Ha sqlReaderQuery vagy sqlReaderStoredProcedureName nincs megadva, a struktúra 
 
 
 ## <a name="json-examples-for-copying-data-from-and-to-sql-server"></a>JSON-példák az adatok másolása a kezdő és a SQL Server
-Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A következő példák bemutatják, hogyan másolhat adatokat az SQL Server és az Azure Blob Storage. Azonban az adatok átmásolhatók **közvetlenül** bármelyik források a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.     
+Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A következő példák bemutatják, hogyan másolhat adatokat az SQL Server és az Azure Blob Storage. Azonban az adatok átmásolhatók **közvetlenül** bármelyik források a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 ## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>Példa: Adatok másolása az SQL Server az Azure Blob
 Az alábbi mintában látható:
@@ -249,7 +249,7 @@ Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásb
 ```
 **Azure blobkimeneti adatkészlet**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```json
 {
@@ -311,13 +311,13 @@ Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A ma
 A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **SqlSource** és **fogadó** típusa **BlobSink**. A megadott SQL-lekérdezést a **SqlReaderQuery** tulajdonság kiválasztja az adatokat másolni az elmúlt órában.
 
 ```json
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2016-06-01T18:00:00",
     "end":"2016-06-01T19:00:00",
     "description":"pipeline for copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "SqlServertoBlob",
         "description": "copy activity",
@@ -341,7 +341,7 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
             "type": "BlobSink"
           }
         },
-       "scheduler": {
+        "scheduler": {
           "frequency": "Hour",
           "interval": 1
         },
@@ -352,8 +352,8 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
           "timeout": "01:00:00"
         }
       }
-     ]
-   }
+    ]
+  }
 }
 ```
 Ebben a példában **sqlReaderQuery** a SqlSource van megadva. A másolási tevékenység a lekérdezés fut az SQL Server-adatbázis forrás, az adatok beolvasásához. Másik lehetőségként megadhat egy tárolt eljárást megadásával a **sqlReaderStoredProcedureName** és **storedProcedureParameters** (Ha a tárolt eljárás paraméter szükséges). A sqlReaderQuery hivatkozhat több tábla a bemeneti adatkészlet által hivatkozott adatbázishoz. Nem korlátozódik az csak az a tábla, az adatkészlet tableName typeProperty állítja be.
@@ -402,7 +402,7 @@ A minta másolatokat idősorozat-adatokat egy Azure blobból SQL-kiszolgáló mi
 ```
 **Azure blobbemeneti adatkészlet**
 
-Adatok felülettől új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját és nevét a BLOB dinamikusan a feldolgozás alatt álló szelet kezdő időpontja alapján értékeli ki. A mappa elérési útjának év, hónap és nap részét a kezdési időpont és fájlnevet a kezdő időpontja óra részét használja. "external": "true" beállítással, hogy az adatkészletet a data factory a külső, és nem egy adat-előállító tevékenység által előállított arról tájékoztatja a Data Factory szolgáltatásban.
+Adatok felülettől új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját és nevét a BLOB dinamikusan a feldolgozás alatt álló szelet kezdő időpontja alapján értékeli ki. A mappa elérési útjának év, hónap és nap részét a kezdési időpont és fájlnevet a kezdő időpontja óra részét használja. "external": "true" beállítással, hogy az adatkészletet a data factory a külső, és nem egy adat-előállító tevékenység által előállított arról tájékoztatja a Data Factory szolgáltatásban.
 
 ```json
 {
@@ -493,13 +493,13 @@ A minta adatokat másol az SQL Server "MyTable" nevű tábla. Az SQL Server azon
 A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **BlobSource** és **fogadó** típusa **SqlSink**.
 
 ```json
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
     "description":"pipeline with copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "AzureBlobtoSQL",
         "description": "Copy Activity",
@@ -523,7 +523,7 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
             "type": "SqlSink"
           }
         },
-       "scheduler": {
+        "scheduler": {
           "frequency": "Hour",
           "interval": 1
         },
@@ -534,8 +534,8 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
           "timeout": "01:00:00"
         }
       }
-      ]
-   }
+    ]
+  }
 }
 ```
 
@@ -552,8 +552,8 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
     Lásd: [engedélyezheti vagy tilthatja le a kiszolgálói hálózati protokoll](https://msdn.microsoft.com/library/ms191294.aspx) kapcsolatos részletekért és a TCP/IP-protokoll engedélyezése alternatív módszert is.
 3. Ugyanebben a ablakban kattintson duplán **TCP/IP** elindításához **TCP/IP-tulajdonságok** ablak.
 4. Váltson a **IP-címek** fülre. Legörgetve találja meg **IPAll** szakaszban. Jegyezze fel a ** TCP-Port ** (alapértelmezett érték a **1433-as**).
-5. Hozzon létre egy **szabály a Windows tűzfal** ezen a porton keresztül bejövő adatforgalmát engedélyező a gépen.  
-6. **Kapcsolat ellenőrzése**: Szeretne csatlakozni az SQL Server teljesen minősített nevet, használja az SQL Server Management Studio egy másik gépről. Például: "<machine>.<domain>. Corp<company>.com, 1433. "
+5. Hozzon létre egy **szabály a Windows tűzfal** ezen a porton keresztül bejövő adatforgalmát engedélyező a gépen.
+6. **Kapcsolat ellenőrzése**: Szeretne csatlakozni az SQL Server teljesen minősített nevet, használja az SQL Server Management Studio egy másik gépről. Például: "\<gép\>.\< tartomány\>. mindkettőnek\<vállalati\>.com, 1433. "
 
    > [!IMPORTANT]
 
@@ -572,8 +572,8 @@ Ez a szakasz azt szemlélteti, amely adatokat másol a forrástábla nem identit
 ```sql
 create table dbo.SourceTbl
 (
-       name varchar(100),
-       age int
+    name varchar(100),
+    age int
 )
 ```
 **Céltábla:**
@@ -581,9 +581,9 @@ create table dbo.SourceTbl
 ```sql
 create table dbo.TargetTbl
 (
-       identifier int identity(1,1),
-       name varchar(100),
-       age int
+    identifier int identity(1,1),
+    name varchar(100),
+    age int
 )
 ```
 
@@ -690,7 +690,7 @@ A leképezés megegyezik az SQL Server adattípus-hozzárendelés az ADO.NET ese
 Fogadó-adatkészlet az oszlopok a forrásadatkészlet oszlopok leképezésére, lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
 
 ## <a name="repeatable-copy"></a>Reprodukálható másolatot
-Adatok másolása az SQL Server-adatbázist, amikor a másolási tevékenység adatokat fűz hozzá a fogadó tábla alapértelmezés szerint. Ehelyett hajtsa végre az UPSERT, lásd: [Repeatable írni az SqlSink](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) cikk. 
+Adatok másolása az SQL Server-adatbázist, amikor a másolási tevékenység adatokat fűz hozzá a fogadó tábla alapértelmezés szerint. Ehelyett hajtsa végre az UPSERT, lásd: [Repeatable írni az SqlSink](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) cikk.
 
 Amikor adatmásolásra, relációs adatokat tárol, ismételhetőség tartsa szem előtt, nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryben futtathatja a szelet manuálisan. Beállíthatja az újrapróbálkozási szabályzat egy adatkészlethez, úgy, hogy a szelet akkor fut újra, ha hiba történik. Ha a szelet akkor fut újra, vagy módon, győződjön meg arról, hogy ugyanazokat az adatokat olvasható függetlenül attól, hogy hány alkalommal fut egy szeletet, kell. Lásd: [olvasni a relációs források Repeatable](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 

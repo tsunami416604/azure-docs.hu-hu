@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c8961017fbd63e2d40e98acc19b2819c85118e15
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 10e8a7dd256f796160b81b8ec1f566c5ed7e4cad
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728367"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750205"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Az Azure Batch álló jelenet renderelése 
 
@@ -317,7 +317,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-A tevékenységek létrehozzák a *dragon0002.jpg* - *dragon0007.jpg* képeket a számítási csomópontokon, és feltöltik őket a tárfiók *job-myrenderjob* tárolójába. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob#az-storage-blob-download_batch) paranccsal. Példa:
+A tevékenységek létrehozzák a *dragon0002.jpg* - *dragon0007.jpg* képeket a számítási csomópontokon, és feltöltik őket a tárfiók *job-myrenderjob* tárolójába. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob) paranccsal. Példa:
 
 ```azurecli-interactive
 az storage blob download-batch \

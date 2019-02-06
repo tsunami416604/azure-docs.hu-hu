@@ -1,5 +1,5 @@
 ---
-title: A Fiddler vagy Postman Protokol HTTP webu tesztelési eszközök – Azure Search REST API-k felfedezése
+title: A Postman vagy a Fiddler Protokol HTTP webu tesztelési eszközök – Azure Search REST API-k felfedezése
 description: HTTP-kérések és REST API-hívások küldése az Azure Searchbe a Fiddler vagy Postman használatával.
 author: HeidiSteen
 manager: cgronlun
@@ -10,16 +10,16 @@ ms.topic: quickstart
 ms.date: 04/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5946ff5e75e7c3fedf42c23200f61e821c0d9d61
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 06e2667b59b27039ad3c62379f654dd693999f99
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631396"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756075"
 ---
-# <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Az Azure Search REST API-k vizsgálata a Fiddlerrel vagy a Postmannel
+# <a name="explore-azure-search-rest-apis-using-postman-or-fiddler"></a>Ismerkedés az Azure Search REST API-k Postman vagy a Fiddler
 
-Az [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice) vizsgálatának egyik legegyszerűbb módja a HTTP-kérések összeállítása a Fiddler vagy a Postman használatával, majd a válaszok megvizsgálása. A megfelelő eszközökkel, ezeket az útmutatásokat követve már azelőtt küldhet kéréseket, és megtekintheti a válaszokat, hogy akár egyetlen sornyi kódot is írna.
+Az egyik legegyszerűbb Fedezze fel a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice) állítson össze a HTTP-kérelmekre, és vizsgálja meg a válaszok Postman vagy a Fiddler használatával. A megfelelő eszközökkel, ezeket az útmutatásokat követve már azelőtt küldhet kéréseket, és megtekintheti a válaszokat, hogy akár egyetlen sornyi kódot is írna.
 
 > [!div class="checklist"]
 > * Webes API tesztelési eszköz letöltése

@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/8/2019
+ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: 3e5f84a6f05e451b1eafa98c373f9d838421016e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a497784a665c62d23a017b71acf709120e34c369
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229328"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746965"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Az Azure Site Recovery szolgáltatási hírek
 Szervezetként kell döntse el, hogyan fog az adatok biztonságban és futására tervezett alkalmazások és számítási feladatok, és nem tervezett leállások esetén. Az Azure Site Recovery azzal segíti a BCDR-stratégia, hogy virtuális gépeken és fizikai kiszolgálókon érhető el, ha egy hely leállása futtatja az alkalmazásokat. A Site Recovery replikálja a virtuális gépeken és fizikai kiszolgálókon futó folyamatokat, hogy azok egy másodlagos helyen elérhetők maradjanak az elsődleges hely elérhetetlenné válása esetén. Amikor az elsődleges hely ismét üzembe áll, helyreállítja rajta a munkafolyamatokat.
@@ -97,10 +97,13 @@ Abban az esetben manuálisan a frissítések kezelése választotta, kövesse az
 
 ## <a name="between-an-on-premises-vmware-or-physical-site-to-azure"></a>Egy helyszíni VMware vagy fizikai helyről az Azure között
 
-1. A frissítés telepítéséhez először a helyi felügyeleti kiszolgálón. Ez az a kiszolgálón, amelyen a konfigurációs kiszolgáló és a folyamat kiszolgálói szerepkörök. 
-2. Ha horizontális felskálázási folyamatkiszolgáló, frissítse őket mellett.
-3. Nyissa meg az Azure Portalon, és keresse meg a **védett elemek** > **replikált elemek** lapot.
-Válassza ki a virtuális gép ezen az oldalon. Válassza ki a **Windows Update Agent** minden virtuális géphez az oldal alján megjelenő gombra. Ez frissíti a Mobilitásiszolgáltatás-ügynök minden védett virtuális gépen.
+Frissítések folytatása előtt tekintse meg [Site Recovery támogatási nyilatkozattal](#support-statement-for-azure-site-recovery) tudni, hogy a frissítési útvonalat.
+
+1. A fenti aktuális verziója és a támogatási utasítás alapján, a frissítés telepítése először a helyi felügyeleti kiszolgálón az alábbi az irányelveket, adott [Itt](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). Ez az a kiszolgálón, amelyen a konfigurációs kiszolgáló és a folyamat kiszolgálói szerepkörök.
+2. Ha kibővített kiszolgálók feldolgozni, frissítse azokat melletti megadva a következő irányelvek alapján [Itt](vmware-azure-manage-process-server.md#upgrade-a-process-server).
+3. Ezt követően szeretné frissíteni a mobilitási szolgáltatást a egyes védett elemek, nyissa meg az Azure Portalra, és folytassa a a **védett elemek** > **replikált elemek** lapot. Válassza ki a virtuális gép ezen az oldalon. Válassza ki a **Windows Update Agent** minden virtuális géphez az oldal alján megjelenő gombra. Ez frissíti a Mobilitásiszolgáltatás-ügynök minden védett virtuális gépen.
+
+### <a name="reboot-of-source-machine-after-mobility-agent-upgrade"></a>Indítsa újra a forrásgépen a mobilitási ügynök frissítése után
 
 Újraindítás ajánlott minden mobilitási ügynök frissítését követően győződjön meg arról, hogy az összes legutóbbi módosítások töltődnek be a forrásgépen. Azonban van **nem kötelező**. Ügynök utolsó újraindítás során és az aktuális verziója közötti különbség nagyobb, mint 4, ha újraindításra kötelező. Tekintse meg az alábbi táblázatban részletes ismertetése.
 
@@ -111,14 +114,12 @@ Válassza ki a virtuális gép ezen az oldalon. Válassza ki a **Windows Update 
 | 9.16 | 9.20 | Nem kötelező
  | 9.16 | 9.21 | Igen, először frissítse a 9.20, majd indítsa újra a verziók közötti különbség 9.21 való frissítés előtt (9.16 hol történt meg az utolsó újraindítás és a cél verziójának 9.21) van > 4,
 
-
-
 ## <a name="links-to-currently-supported-update-rollups"></a>Jelenleg támogatott kumulatív mutató hivatkozások
-
 
 |Update Rollup  |Szolgáltató  |Egyesített telepítő| OVF  |MARS|
 |---------|---------|---------|---------|--------|
-|[32-es kumulatív frissítés](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
+|[33. kumulatív frissítés](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
+|[32-es kumulatív frissítés](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
 |[A kumulatív frissítések 31.](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |     5.1.3700.0      |   9.20.5051.1      |     5.1.3700.0    |2.0.9144.0
 |[30. kumulatív frissítés](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)     |    5.1.3650.0   |   9.19.5007.1    |     5.1.3650.0    |2.0.9139.0
 |[29-es kumulatív frissítés](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)     |   5.1.3650.0      |   9.19.4973.1     |     5.1.3700.0    |2.0.9131.0

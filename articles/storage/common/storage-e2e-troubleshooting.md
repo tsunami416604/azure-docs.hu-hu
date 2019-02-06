@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 73073d5240f29906ade5f9b92cf81fec2f99a3d4
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 5a160ef767909814e363dbb692e58c30783aaf6f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661972"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746303"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Teljes körű hibaelhárítás az Azure Storage-mérőszámok és a naplózás, az AzCopy és a Message Analyzer használatával
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -98,7 +98,7 @@ Első lépésként azt konfigurálnia kell az Azure Storage-naplózás és mér�
 
 Az Azure PowerShell használatának első lépései, lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
-1. Használja a [Add-AzAccount](/powershell/module/az.account/add-azaccount) parancsmagot, hogy az Azure felhasználói fiók hozzáadása a PowerShell-ablakban:
+1. Használja a [Add-AzAccount](/powershell/module/servicemanagement/azure/add-azureaccount) parancsmagot, hogy az Azure felhasználói fiók hozzáadása a PowerShell-ablakban:
    
     ```powershell
     Add-AzAccount

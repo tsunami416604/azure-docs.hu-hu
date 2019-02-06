@@ -16,12 +16,12 @@ ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 0281186be4fae71c56b65327e0c67da3f252a33c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 614f8a3e3738e1c99f5a089410814765d278d3fe
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239519"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743840"
 ---
 # <a name="validate-azure-registration"></a>Azure-regisztráció ellenőrzése
  
@@ -67,6 +67,8 @@ A következő előfeltételeknek kell teljesülnie:
    ```powershell
    $registrationCredential = Get-Credential subscriptionowner@contoso.onmicrosoft.com -Message "Enter Credentials for Subscription Owner"
    ```
+> [!NOTE]
+  > Egy CSP-hez, a megosztott szolgáltatások vagy IUR előfizetés használata esetén, mint kell adnia a hitelesítő adatokat, egy felhasználó a saját AAD-ból. Ez általában a lesz hasonló `subscriptionowner@iurcontoso.onmicrosoft.com`. A megfelelő hitelesítő adatokkal kell rendelkeznie, hogy a felhasználó van szüksége, a fent leírt módon.
 
 3. A PowerShell parancssorában futtassa a következőt beállítása `$subscriptionID` mint az Azure-előfizetés fogja használni. Cserélje le `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` a saját előfizetés-Azonosítójára:
    ```powershell

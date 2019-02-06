@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2019
+ms.date: 02/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 77dda85c920fda90b8379445a79569413b2dd463
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 07f4d170ec6f9d71ea3ecdabd88f4438fb7c1c69
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691505"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745589"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
 
@@ -318,22 +318,30 @@ A portálon keresztül a sablon üzembe helyezésekor, a szöveget a leírást m
 
 ![A paraméter tipp megjelenítése](./media/resource-group-authoring-templates/show-parameter-tip.png)
 
-A **erőforrások**, adjon hozzá egy `comments` elemet.
+A **erőforrások**, adjon hozzá egy `comments` elem vagy metaadat-objektum. Az alábbi példa bemutatja egy megjegyzések elem és a egy metaadat-objektum.
 
 ```json
 "resources": [
-    {
-      "comments": "Storage account used to store VM disks",
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountName')]",
-      "apiVersion": "2018-07-01",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[variables('storageAccountType')]"
-      },
-      "kind": "Storage",
-      "properties": {}
+  {
+    "comments": "Storage account used to store VM disks",
+    "apiVersion": "2018-07-01",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+    "location": "[parameters('location')]",
+    "metadata": {
+      "comments": "These tags are needed for policy compliance."
     },
+    "tags": {
+      "Dept": "[parameters('deptName')]",
+      "Environment": "[parameters('environment')]"
+    },
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "Storage",
+    "properties": {}
+  }
+]
 ```
 
 Hozzáadhat egy `metadata` objektum szinte bárhonnan a sablonban. Erőforrás-kezelő figyelmen kívül hagyja az objektum, de a JSON-szerkesztőt is figyelmezteti, hogy a tulajdonság nem érvényes. Az objektum határoz meg a szükséges tulajdonságokat.
@@ -363,14 +371,27 @@ A **kimenete**, a kimeneti érték hozzáadása egy metaadat-objektum.
 
 Felhasználó által definiált függvények metaadat-objektum nem lehet hozzáadni.
 
-Általános megjegyzéseket használhatja `//` , de ez a szintaxis hibát okoz, ha helyezi üzembe a sablont az Azure CLI használatával.
+A beágyazott megjegyzések, használhatja `//` , de ez a szintaxis nem működik az összes eszköz. Azure CLI-vel való helyezze üzembe a sablont a beágyazott megjegyzések nem használható. És nem használható a portál sablon szerkesztő dolgozhat a beágyazott megjegyzések-sablonok. Ha ezen comment stílusát, ügyeljen arra, hogy támogatja a beágyazott JSON megjegyzések eszközeit.
 
 ```json
-"variables": {
-    // Create unique name for the storage account
-    "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
-},
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[parameters('location')]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  "dependsOn": [ // storage account and network interface must be deployed first
+      "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
 ```
+
+A VS Code-ban is beállíthatja a nyelvmód JSON megjegyzésekkel. A beágyazott megjegyzések rendszer már nem érvénytelenként jelölte meg. Az üzemmód módosítása:
+
+1. Nyissa meg a nyelv mód kiválasztása (Ctrl + K M)
+
+1. Válassza ki **megjegyzésekkel JSON**.
+
+   ![Nyelvmód kiválasztása](./media/resource-group-authoring-templates/select-json-comments.png)
 
 ## <a name="template-limits"></a>Sablon korlátok
 
@@ -393,4 +414,4 @@ Néhány sablon korlát beágyazott sablonok segítségével is lehet. További 
 * A sablonon belül használhatja függvényeivel kapcsolatos részletekért lásd: [Azure Resource Manager-Sablonfüggvények](resource-group-template-functions.md).
 * Úgy, hogy számos sablon üzembe helyezése során, tekintse meg a [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
 * Sablonok létrehozásával kapcsolatos ajánlások, lásd: [gyakorlati tanácsok az Azure Resource Manager-sablon](template-best-practices.md).
-* Az [Azure Resource Manager-sablonok létrehozása felhőkonzisztenciához](templates-cloud-consistency.md) című témakörben javaslatokat talál olyan Resource Manager-sablonok létrehozásához, amelyek használhatóak a globális Azure-ban, az Azure szuverén felhőben és az Azure Stackben is.
+* Javaslatok, amelyet használhat az összes Azure-környezetek és az Azure Stack Resource Manager-sablonok létrehozásával, lásd: [felhőalapú konzisztencia fejlesztése az Azure Resource Manager-sablonokkal](templates-cloud-consistency.md).

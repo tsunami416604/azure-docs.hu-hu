@@ -9,101 +9,40 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 02/03/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f12632b20d516c81e21a50cfdda7e40d4163afc1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: d9e86c45d535862e0c3d02b3f331bc40ebb7f6c7
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742218"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745121"
 ---
 # <a name="content-key-policies"></a>Tartalomkulcsszabályok
 
-Az Azure Media Services segítségével az az idő, akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési a médiatartalmak védelmét. A Media Services élő és igény szerinti tartalmait az Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek bármelyikét dinamikusan titkosított juttathat el: A Microsoft PlayReady, a Google Widevine és az Apple fairplay által. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek.
+A Media Services élő és igény szerinti tartalmait az Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek bármelyikét dinamikusan titkosított juttathat el: A Microsoft PlayReady, a Google Widevine és az Apple fairplay által. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek.
 
-Az Azure Media Services v3 egy [tartalom kulcs házirend](https://docs.microsoft.com/rest/api/media/contentkeypolicies) lehetővé teszi a tartalomkulcsot a rendszer hogyan továbbítja a Media Services kulcs kézbesítési összetevő keresztül végfelhasználók megadását. További információkért lásd: [Content protection áttekintése](content-protection-overview.md).
+A stream a titkosítási beállítások megadásához szeretne létrehozni a [tartalom kulcs házirend](https://docs.microsoft.com/rest/api/media/contentkeypolicies) társítsa a **Streamelési lokátor**. A **tartalom kulcs házirend** konfigurálja a tartalomkulcsot a rendszer hogyan továbbítja a Media Services kulcs kézbesítési összetevője keresztül végfelhasználók. A Media Services engedélyezheti a automatikus létrehozása a tartalomkulcsot. Általában lenne hosszú élettartamú van szükség, és a Get-szabályzatok megléte ellenőrzése. A kulcs lekéréséhez kell beolvasni a titkos kódok vagy hitelesítő adatokat, tekintse meg a következő példában egy külön művelet metódust hívja.
 
-Javasoljuk, hogy az összes objektum újból felhasználhatja az azonos ContentKeyPolicy. ContentKeyPolicies frissíthető, így ha szeretne egy kulcsrotálás majd vagy hozzáadhat egy új ContentKeyPolicyOption a meglévő ContentKeyPolicy token korlátozás az új kulcsokkal. Vagy frissítheti az elsődleges ellenőrzőkulcs és a meglévő házirend és a lehetőség alternatív ellenőrzőkulcsok listáját. A kulcs kézbesítési gyorsítótárak frissítése, és vegye fel a frissített szabályzatot esetében akár 15 percet is igénybe vehet.
+**Tartalom-kulcs házirendjei** frissíthetők. Például előfordulhat, hogy szeretné frissíteni a szabályzatot, ha kell tennie egy kulcsrotálás. Frissítheti az elsődleges ellenőrzőkulcs és a meglévő házirendben alternatív ellenőrzőkulcsok listáját. A kulcs kézbesítési gyorsítótárak frissítése, és vegye fel a frissített szabályzatot esetében akár 15 percet is igénybe vehet. 
 
-## <a name="contentkeypolicy-definition"></a>ContentKeyPolicy definíciója
+> [!IMPORTANT]
+> * Tulajdonságainak **Tartalomszabályzat kulcs** a DateTime típusú állandóan UTC formátumban vannak.
+> * Házirendek korlátozott számú tervezzen a Media Services-fiókja és újra alkalmazza őket a Streamelési Lokátorok, amikor szükség van a ugyanazokkal a beállításokkal. 
 
-Az alábbi táblázat a ContentKeyPolicy tulajdonságait jeleníti meg, és lehetővé teszi a definíciójukat.
+## <a name="example"></a>Példa
 
-|Name (Név)|Leírás|
-|---|---|
-|id|Az erőforrás teljes erőforrás-azonosítója.|
-|név|Az erőforrás neve.|
-|Properties.created |A szabályzat létrehozásának dátuma|
-|properties.description |A házirend leírását.|
-|properties.lastModified|A házirend utolsó módosítás dátuma|
-|Properties.Options |A kulcs házirend-beállításokban.|
-|properties.policyId|Az örökölt szabályzat azonosítója.|
-|type|Az erőforrás típusát.|
+A kulcs lekéréséhez használja **GetPolicyPropertiesWithSecretsAsync**, az alábbi példában látható módon.
 
-A teljes meghatározása: [Tartalomszabályzat kulcs](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetOrCreateContentKeyPolicy)]
 
 ## <a name="filtering-ordering-paging"></a>Szűrési, rendezési, stránkování
 
-A Media Services a következő OData lekérdezési beállítások ContentKeyPolicies támogatja: 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-Operátor leírása:
-
-* EQ = egyenlő
-* Ú = nem egyenlő
-* A GE = nagyobb vagy egyenlő
-* Le = kisebb vagy egyenlő
-* Gt = nagyobb, mint
-* Lt = kisebb, mint
-
-### <a name="filteringordering"></a>Szűrés és rendezés
-
-Az alábbi táblázat bemutatja, hogyan lehet alkalmazni ezeket a beállításokat a ContentKeyPolicies tulajdonságai: 
-
-|Name (Név)|Szűrés|Rendelés|
-|---|---|---|
-|id|||
-|név|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
-|Properties.created |Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
-|properties.description |Eq, ne, a ge, le, gt, lt||
-|properties.lastModified|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
-|Properties.Options |||
-|properties.policyId|Eq, ne||
-|type|||
-
-### <a name="pagination"></a>Tördelés
-
-Tördelés a négy engedélyezve van a rendezési sorrend mindegyike támogatott. Az oldalméret jelenleg 10.
-
-> [!TIP]
-> A gyűjtemény enumerálása, és nem függ egy adott oldal méretét a következő hivatkozás mindig használjon.
-
-A lekérdezési válasz számos elemet tartalmaz, ha a szolgáltatás visszaadja egy "\@odata.nextLink" tulajdonságát a következő lapra az eredmények lekérése. Ez használható a lapozza végig a teljes eredményhalmaz. Az oldal méretét nem lehet konfigurálni. 
-
-Ha ContentKeyPolicies létrehozott vagy a gyűjtemény átlapozva közben, a módosítások megjelennek a kapott találatok közül (ha ezek a módosítások a gyűjteményt, amely még nincs letöltve részén.) 
-
-Az alábbi C#-példa bemutatja a fiókban lévő összes ContentKeyPolicies számba.
-
-```csharp
-var firstPage = await MediaServicesArmClient.ContentKeyPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.ContentKeyPolicies.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-További példák: [tartalom kulcs házirendjei – lista](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
+Lásd: [szűrése, rendezése, a Media Services entitások lapozás](entities-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
-[AES-128, a dinamikus titkosítás és a kulcstovábbítást használata](protect-with-aes128.md)
-
-[DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata](protect-with-drm.md)
+* [AES-128, a dinamikus titkosítás és a kulcstovábbítást használata](protect-with-aes128.md)
+* [DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata](protect-with-drm.md)
+* [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)

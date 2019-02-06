@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – felhasználói folyamatok létrehozása az Azure Active Directory B2C |} A Microsoft Docs
+title: Oktatóanyag – felhasználói folyamatok - létrehozása az Azure Active Directory B2C |} A Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre az alkalmazások az Azure Portalon az Azure Active Directory B2C felhasználói folyamatokat.
 services: active-directory-b2c
 author: davidmu1
@@ -7,14 +7,14 @@ manager: daveba
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/01/2019
 ms.author: davidmu
-ms.openlocfilehash: 6e651d23e3b5cced78088d59979507eb09723165
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7f017583a6eeb61b11df86a908d573dba9bd5929
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845597"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750290"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: Felhasználói folyamatok létrehozása az Azure Active Directory B2C-vel
 
@@ -39,29 +39,30 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A regisztráció és bejelentkezés a felhasználói folyamatot egyetlen konfigurációval is regisztráljon, és jelentkezzen be környezeteket kezeli. Az alkalmazást a rendszer le a megfelelő elérési útját a környezettől függően vezetett.
 
-1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
 
     ![Váltás előfizetési könyvtár](./media/tutorial-create-user-flows/switch-directories.png)
 
-2. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-3. A bal oldali menüben válassza ki a **felhasználói folyamatok**, majd válassza ki **új felhasználói folyamat**.
+3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
+4. A bal oldali menüben válassza ki a **felhasználói folyamatok**, majd válassza ki **új felhasználói folyamat**.
 
     ![Válassza ki az új felhasználói folyamat](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
-4. Válassza ki a **regisztráció és bejelentkezés** felhasználói folyamat az ajánlott lapon.
+5. Válassza ki a **regisztráció és bejelentkezés** felhasználói folyamat az ajánlott lapon.
 
     ![Válassza ki a regisztrációs és bejelentkezési felhasználói folyamata](./media/tutorial-create-user-flows/signup-signin-type.png)
 
-5. Adjon meg egy **neve** a felhasználói folyamat. Ha például *signupsignin1*.
-6. A **Identitásszolgáltatók**válassza **regisztráció E-mail-címmel**.
+6. Adjon meg egy **neve** a felhasználói folyamat. Ha például *signupsignin1*.
+7. A **Identitásszolgáltatók**válassza **regisztráció E-mail-címmel**.
 
     ![A folyamat tulajdonságainak beállítása](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
-7. A **felhasználói attribútumokról és jogcímekről**, válassza a jogcímek és az attribútumokat, amelyek gyűjtése és a regisztráció során a felhasználónak küldött. Válassza ki például **Továbbiak megjelenítése**, és válassza a **ország/régió**, **megjelenített név**, és **irányítószám**. Kattintson az **OK** gombra.
+8. A **felhasználói attribútumokról és jogcímekről**, válassza a jogcímek és az attribútumokat, amelyek gyűjtése és a regisztráció során a felhasználónak küldött. Válassza ki például **Továbbiak megjelenítése**, és válassza a **ország/régió**, **megjelenített név**, és **irányítószám**. Kattintson az **OK** gombra.
 
     ![Válassza ki a attribútumokról és jogcímekről](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-8. Kattintson a **létrehozás** hozzáadása a felhasználói folyamatot. Az előtag *B2C_1* automatikusan hozzáfűzi a rendszer a neve.
+9. Kattintson a **létrehozás** hozzáadása a felhasználói folyamatot. Az előtag *B2C_1* automatikusan hozzáfűzi a rendszer a neve.
 
 ### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
@@ -123,4 +124,4 @@ Ebben a cikkben megtanulta, hogyan lehet:
 > * Jelszó alaphelyzetbe állítása felhasználói folyamat létrehozása
 
 > [!div class="nextstepaction"]
-> [Az alkalmazások az Azure Active Directory B2C a felhasználói felület testreszabása](tutorial-customize-ui.md)
+> [Identitásszolgáltató hozzáadása az alkalmazásait az Azure Active Directory B2C-vel](tutorial-add-identity-providers.md)

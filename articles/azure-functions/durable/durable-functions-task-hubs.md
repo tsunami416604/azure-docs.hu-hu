@@ -10,18 +10,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 4e48956e42942761abec0143ba2849601dbb1cf4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 596eedab39ff926fcdc880c82c49ac464b7ff23b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336900"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753470"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Feladatközpontok a tartós függvények (az Azure Functions)
 
 A *feladat hub* a [Durable Functions](durable-functions-overview.md) vezénylések használt Azure Storage-erőforrások logikai tárolója. Orchestrator, illetve a tevékenység funkciók tartoznak, a tevékenység egy központban csak is kapcsolatba egymással.
 
-Minden függvényalkalmazáshoz egy külön feladat központ rendelkezik. Ha több függvényalkalmazás egy tárfiókot, a storage-fiókot a több feladatközpontok tartalmazza. A következő ábra szemlélteti egy feladat hub függvényalkalmazást a közös vagy dedikált storage-fiókok száma.
+Ha több függvényalkalmazás ossza meg egy tárfiókot minden függvényalkalmazáshoz *kell* egy külön feladat központnevet konfigurálni. Storage-fiók több feladat is tartalmazhat. A következő ábra szemlélteti egy feladat hub függvényalkalmazást a közös vagy dedikált storage-fiókok száma.
 
 ![Bemutató ábra. Ez a megosztott, és a storage-fiókok dedikált.](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
@@ -41,24 +41,24 @@ Egy feladat hub a következő tároló-erőforrások áll:
 
 Feladatközpontok van deklarálva a név azonosítja a *host.json* fájljához a következő példában látható módon:
 
-### <a name="hostjson-functions-1x"></a>Host.JSON (1.x függvények)
+### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
 
 ```json
 {
   "durableTask": {
-    "HubName": "MyTaskHub"
+    "hubName": "MyTaskHub"
   }
 }
 ```
 
-### <a name="hostjson-functions-2x"></a>Host.JSON (2.x függvények)
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
 
 ```json
 {
   "version": "2.0",
   "extensions": {
     "durableTask": {
-      "HubName": "MyTaskHub"
+      "hubName": "MyTaskHub"
     }
   }
 }
@@ -66,24 +66,24 @@ Feladatközpontok van deklarálva a név azonosítja a *host.json* fájljához a
 
 Feladatközpontok is konfigurálhatja az alkalmazás beállításokkal, ahogyan az az alábbi *host.json* példa fájlt:
 
-### <a name="hostjson-functions-1x"></a>Host.JSON (1.x függvények)
+### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
 
 ```json
 {
   "durableTask": {
-    "HubName": "%MyTaskHub%"
+    "hubName": "%MyTaskHub%"
   }
 }
 ```
 
-### <a name="hostjson-functions-2x"></a>Host.JSON (2.x függvények)
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
 
 ```json
 {
   "version": "2.0",
   "extensions": {
     "durableTask": {
-      "HubName": "%MyTaskHub%"
+      "hubName": "%MyTaskHub%"
     }
   }
 }
@@ -134,7 +134,7 @@ public static async Task<HttpResponseMessage> Run(
 A feladat értesítésiközpont-nevek kell betűvel kezdődhet, és csak betűkből és számokból állhat. Ha nincs megadva, az alapértelmezett név az **DurableFunctionsHub**.
 
 > [!NOTE]
-> A név egy feladat hub másik kódjába, ha több feladatközpontok megosztott tárfiók található. Ha egy megosztott tárfiókot megosztása több függvényalkalmazás, hogy konfigurálnia minden egyes feladat hub, a különböző neveket a *host.json* fájlokat.
+> A név egy feladat hub másik kódjába, ha több feladatközpontok megosztott tárfiók található. Ha egy megosztott tárfiókot megosztása több függvényalkalmazás, explicit módon kell konfigurálnia minden egyes feladat hub, a különböző neveket a *host.json* fájlokat. Ellenkező esetben a több függvényalkalmazás lesz versengenek egymással az üzenetekről, amelyeken nem definiált viselkedést okozhat.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 6ebef74cee6f919fe6b8cf666db06e0ab22cec73
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 5a6f8328f6809a20b821f5b72106fa48fabf0e91
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566924"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755152"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Csatlakozás SQL Database adatbázishoz C és C++ használatával
 
@@ -40,7 +40,7 @@ Az Azure jelenleg rendelkezik üzemeltető SQL server számítási feladatok ese
 Csatlakozás az Azure SQL DB semmiben nem különbözik, és jelenleg két módon adatbázisaihoz való kapcsolódásra: ODBC (Nyissa meg az adatbázis-kapcsolat) és az OLE-DB (objektum csatolását és beágyazása adatbázis). Az utóbbi években, a Microsoft az igazított [natív relációs adatok elérésére vonatkozó ODBC](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/). ODBC viszonylag egyszerű, de még sokkal gyorsabb, mint az OLE DB. Itt csak csoportosítani, hogy az ODBC egy régi C stílusú API-t használja.
 
 ## <a id="Create"></a>1. lépés:  Az Azure SQL-adatbázis létrehozása
-Tekintse meg a [első lépések lap](sql-database-get-started-portal.md) megtudhatja, hogyan hozhat létre egy mintaadatbázist.  Másik lehetőségként kövesse ezt [rövid kétperces videó](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) hozhat létre egy Azure SQL database, az Azure portal használatával.
+Tekintse meg a [első lépések lap](sql-database-single-database-get-started.md) megtudhatja, hogyan hozhat létre egy mintaadatbázist.  Másik lehetőségként kövesse ezt [rövid kétperces videó](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) hozhat létre egy Azure SQL database, az Azure portal használatával.
 
 ## <a id="ConnectionString"></a>2. lépés:  Kapcsolati sztring lekérése
 Miután az Azure SQL database kiépítését követően kell végezzük el az alábbi lépések végrehajtásával állapítsa meg a kapcsolati adatokat, és tűzfalhozzáférés az ügyfél IP-cím hozzáadása.

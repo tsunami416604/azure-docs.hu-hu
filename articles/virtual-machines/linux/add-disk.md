@@ -16,16 +16,15 @@ ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: fcd8f4f8408c7c51265802fde057146e6cdbb090
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 8457df9ba809e183122fd53de75a40108e4a4ed1
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657620"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754302"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
-Ez a cikk bemutatja, hogyan való állandó lemez csatolása a virtuális gép így megőrizheti az adatait – még akkor is, ha a virtuális gép a karbantartás vagy átméretezése miatt van kiépíteni. 
-
+Ez a cikk bemutatja, hogyan való állandó lemez csatolása a virtuális gép így megőrizheti az adatait – még akkor is, ha a virtuális gép a karbantartás vagy átméretezése miatt van kiépíteni.
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>Új lemez csatolása virtuális géphez
 
@@ -40,7 +39,7 @@ az vm disk attach \
    --size-gb 50
 ```
 
-## <a name="attach-an-existing-disk"></a>Meglévő lemez csatlakoztatása 
+## <a name="attach-an-existing-disk"></a>Meglévő lemez csatlakoztatása
 
 Meglévő lemez csatlakoztatása, keresse meg a lemez Azonosítóját, és adja át az Azonosítót, a [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) parancsot. A következő példalekérdezés nevű lemez *myDataDisk* a *myResourceGroup*, majd csatolja azt a virtuális gép nevű *myVM*:
 
@@ -50,9 +49,9 @@ diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
 ```
 
-
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Csatlakoztassa az új lemezt a Linux rendszerű virtuális gép kapcsolódni
-A partíció formázása és csatlakoztassa az új lemezt a Linux rendszerű virtuális gép is azt, SSH-t a virtuális gép használja. További információ: [SSH használata Linuxon az Azure-on](mac-create-ssh-keys.md). Az alábbi példában a nyilvános DNS-bejegyzést a virtuális gép csatlakozik *mypublicdns.westus.cloudapp.azure.com* , amelynek *azureuser*: 
+
+A partíció formázása és csatlakoztassa az új lemezt a Linux rendszerű virtuális gép is azt, SSH-t a virtuális gép használja. További információ: [SSH használata Linuxon az Azure-on](mac-create-ssh-keys.md). Az alábbi példában a nyilvános DNS-bejegyzést a virtuális gép csatlakozik *mypublicdns.westus.cloudapp.azure.com* , amelynek *azureuser*:
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
@@ -74,10 +73,10 @@ A kimenet a következő példához hasonló:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Itt *sdc* a lemezt, amelyet meg szeretnénk. Particionálja a lemezt a `fdisk`legyen egy elsődleges lemez a partíció 1 és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatát */dev/sdc*:
+Itt *sdc* a lemezt, amelyet meg szeretnénk. Particionálja a lemezt a `parted`, ha a lemez mérete 2 tebibytes (TiB) vagy nagyobb, akkor kell használnia a GPT particionálás, ha alatt 2TiB, használhatja az MBR vagy GPT particionálás. Adja meg egy elsődleges lemez 1 partíción, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `parted` folyamatát */dev/sdc*:
 
 ```bash
-sudo fdisk /dev/sdc
+sudo parted /dev/sdc
 ```
 
 Használja a `n` parancs használatával adja hozzá egy új partíciót. Ebben a példában is lehetőséget választjuk `p` egy elsődleges partíció, és fogadja el az alapértelmezett értékeket a többi. A kimenet a következő példához hasonló lesz:
@@ -228,9 +227,10 @@ Nincsenek a TRIM engedélyezéséhez kétféleképpen támogatja a Linux rendsze
     ```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
+
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>További lépések
+
 * Annak érdekében, hogy a Linux rendszerű virtuális gép megfelelően van konfigurálva, tekintse át a [a Linux-gép teljesítményének optimalizálásához](optimization.md) javaslatok.
 * Bontsa ki a tárolási kapacitás további lemezek felvételével és [RAID konfigurálása](configure-raid.md) további teljesítmény érdekében.
-

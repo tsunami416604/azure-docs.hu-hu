@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 4bee57abe6de8e80ddf6f788fb17bb8b7d82849d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 357b22e4d4a6bf42ba165e49fc3cc01762268297
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913099"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756512"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Hogyan biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for postgresql-hez az Azure CLI használatával
 
@@ -57,7 +57,7 @@ A biztonsági másolat megőrzési idejének milyen időben időponthoz visszaá
 ## <a name="server-point-in-time-restore"></a>Kiszolgáló-időponthoz visszaállítása
 A kiszolgáló szerinti visszaállíthatja egy korábbi időpontra. A visszaállított adatokat másolja egy új kiszolgálóra, és a meglévő kiszolgáló maradt-jébe. Például egy tábla már ma délben véletlenül megszakadása, visszaállíthatja az idő, noon előtt. Ezután letöltheti a hiányzó táblázat és az adatokat a kiszolgáló a visszaállított másolatból. 
 
-A kiszolgáló visszaállításához az Azure CLI használatával [az postgres server restore](/cli/azure/postgres/server#az_postgres_server_restore) parancsot.
+A kiszolgáló visszaállításához az Azure CLI használatával [az postgres server restore](/cli/azure/postgres/server) parancsot.
 
 ### <a name="run-the-restore-command"></a>A restore parancs futtatása
 

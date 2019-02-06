@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bc548ea23249f89fadcec481cc97b6ca3ed2b909
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 270479061ad40fdda9db06571ad4ef24b00d6c4d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466856"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749142"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel
 
@@ -40,7 +40,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) paranccsal. 
+Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. 
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni. Ebben a példában egy *myResourceGroupVM* nevű erőforráscsoportot hozunk létre az *eastus* régióban. 
 
@@ -52,7 +52,7 @@ Az erőforráscsoport meghatározására a virtuális gép létrehozásakor vagy
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) paranccsal. 
+Hozzon létre egy virtuális gépet az [az vm create](https://docs.microsoft.com/cli/azure/vm) paranccsal. 
 
 Virtuális gép létrehozásakor több lehetőség is rendelkezésre áll, például az operációsrendszer-lemezkép, a lemezméretezés vagy a rendszergazdai hitelesítő adatok. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre, mely Ubuntu Server rendszert futtat. Ezen a virtuális gépen létrehozunk egy *azureuser* nevű felhasználói fiókot, illetve SSH-kulcsokat generálunk, ha még nem léteznek a kulcsok alapértelmezett helyén (*~/.ssh*):
 
@@ -98,7 +98,7 @@ exit
 
 Az Azure Marketplace-en számos rendszerkép található, amelyekkel új virtuális gépeket lehet létrehozni. Az előző lépések során a virtuális gépet egy Ubuntu-rendszerkép használatával hoztuk létre. Ebben a lépésben az Azure CLI segítségével egy CentOS-rendszerképet keresünk a piactéren, amelynek használatával aztán üzembe helyezünk egy második virtuális gépet. 
 
-A leggyakrabban használt rendszerképek listájának megtekintéséhez használja az [az vm image list](/cli/azure/vm/image#az_vm_image_list) parancsot.
+A leggyakrabban használt rendszerképek listájának megtekintéséhez használja az [az vm image list](/cli/azure/vm/image) parancsot.
 
 ```azurecli-interactive 
 az vm image list --output table
@@ -155,7 +155,7 @@ A virtuális gép mérete a virtuális gép által elérhető számítási erőf
 
 Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.  
 
-| Típus                     | Méretek           |    Leírás       |
+| Typo                     | Méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](sizes-compute.md)   | Fs, F             | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
@@ -167,7 +167,7 @@ Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.
 
 ### <a name="find-available-vm-sizes"></a>Elérhető virtuálisgép-méretek keresése
 
-Egy adott régióban elérhető virtuálisgép-méretek megtekintéséhez használja az [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) parancsot. 
+Egy adott régióban elérhető virtuálisgép-méretek megtekintéséhez használja az [az vm list-sizes](/cli/azure/vm) parancsot. 
 
 ```azurecli-interactive 
 az vm list-sizes --location eastus --output table
@@ -198,7 +198,7 @@ Részleges kimenet:
 
 ### <a name="create-vm-with-specific-size"></a>Meghatározott méretű virtuális gép létrehozása
 
-Az előző virtuálisgép-létrehozási példában a méretet nem adtuk meg, így az alapértelmezett méret lett alkalmazva. A virtuális gép létrehozásakor a méret az [az vm create](/cli/azure/vm#az_vm_create) paranccsal és a `--size` argumentummal adható meg. 
+Az előző virtuálisgép-létrehozási példában a méretet nem adtuk meg, így az alapértelmezett méret lett alkalmazva. A virtuális gép létrehozásakor a méret az [az vm create](/cli/azure/vm) paranccsal és a `--size` argumentummal adható meg. 
 
 ```azurecli-interactive 
 az vm create \
@@ -217,12 +217,12 @@ A virtuális gépek az üzembe helyezésüket követően a rendelkezésre álló
 az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
 ```
 
-A virtuális gép átméretezése előtt ellenőrizze, hogy a kívánt méret az aktuális Azure-fürtön elérhető-e. Az [az vm list-vm-resize-options](/cli/azure/vm#az_vm_list_vm_resize_options) parancs a méretek listáját adja vissza. 
+A virtuális gép átméretezése előtt ellenőrizze, hogy a kívánt méret az aktuális Azure-fürtön elérhető-e. Az [az vm list-vm-resize-options](/cli/azure/vm) parancs a méretek listáját adja vissza. 
 
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
-Ha a kívánt méret elérhető, a virtuális gépet bekapcsolt állapotban is át lehet méretezni, de a művelet során újraindul. Az átméretezést az [az vm resize]( /cli/azure/vm#az_vm_resize) paranccsal hajthatja végre.
+Ha a kívánt méret elérhető, a virtuális gépet bekapcsolt állapotban is át lehet méretezni, de a művelet során újraindul. Az átméretezést az [az vm resize]( /cli/azure/vm) paranccsal hajthatja végre.
 
 ```azurecli-interactive 
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
@@ -264,7 +264,7 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 
 ### <a name="find-the-power-state"></a>A energiaállapot keresése
 
-Egy adott virtuális gép állapotát az [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) paranccsal kérheti le. Ügyeljen arra, hogy egy érvényes nevet adjon meg a virtuális géphez és az erőforráscsoporthoz. 
+Egy adott virtuális gép állapotát az [az vm get-instance-view](/cli/azure/vm) paranccsal kérheti le. Ügyeljen arra, hogy egy érvényes nevet adjon meg a virtuális géphez és az erőforráscsoporthoz. 
 
 ```azurecli-interactive 
 az vm get-instance-view \

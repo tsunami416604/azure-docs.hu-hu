@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: priyamo
-ms.openlocfilehash: c19c5031c27ac37aee3707911268965912c20994
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e266ebca40ac9a3c1d6c1a77e30fed717f4b1b51
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158196"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753453"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Az Azure Storage elérése hozzáférési kulcs használatával egy Windows virtuális gép alapértelmezett felügyelt identitás használata
 
@@ -173,5 +173,5 @@ Name              : testblob
 Az oktatóanyagban elsajátította a rendszer által hozzárendelt felügyelt identitások létrehozását, amelyekkel elérheti az Azure Storage-ot hozzáférési kulcs használatával.  További információ az Azure Storage tárelérési kulcsairól:
 
 > [!div class="nextstepaction"]
->[A tárelérési kulcsok kezelése](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
+>[A tárelérési kulcsok kezelése](/azure/storage/common/storage-create-storage-account)
 

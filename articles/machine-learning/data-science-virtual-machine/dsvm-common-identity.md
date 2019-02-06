@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 2c981d33c8108386e0287d4c2a800f065c9dc431
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0146ee6ee37c2eb9e98d831b54df2218d7de5b62
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452855"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754600"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen közös identitás beállítása
 
@@ -31,7 +31,7 @@ Active Directory egy népszerű identitásszolgáltatóktól szolgáltató, és 
 
 Ha már rendelkezik Active Directory az identitások kezelésére, használhatja az általános identitás-szolgáltatóként. Ha nem rendelkezik az Active Directory, futtathatja felügyelt Active Directory-példányok az Azure-ban egy úgynevezett szolgáltatáson keresztül [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS). 
 
-A dokumentációban [Azure ad-ben](https://docs.microsoft.com/azure/active-directory/) biztosít részletes [felügyeleti utasításokat](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity), beleértve az Azure ad-ben csatlakozhat a helyszíni címtár, ha rendelkezik ilyennel. 
+A dokumentációban [Azure ad-ben](https://docs.microsoft.com/azure/active-directory/) biztosít részletes [felügyeleti utasításokat](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution), beleértve az Azure ad-ben csatlakozhat a helyszíni címtár, ha rendelkezik ilyennel. 
 
 Ez a cikk ismerteti a lépéseket az Azure AD DS használatával egy teljes körűen felügyelt Active Directory tartományi szolgáltatáshoz az Azure-ban beállított. A Dsvm majd csatlakoztatása a felügyelt Active Directory-tartomány engedélyezése a felhasználók férhetnek hozzá a készlet Dsvm (és más Azure-erőforrások) közös felhasználói fiók és a hitelesítő adatok használatával. 
 

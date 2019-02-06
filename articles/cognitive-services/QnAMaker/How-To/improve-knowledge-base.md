@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7f519729f3ad94324b847ca6b15b254ea7c6abbb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 639b665926f54387dfdc6e837c15c8d6d28df925
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463735"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755764"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
 
@@ -58,7 +58,7 @@ Egy egyszerű számítási közelségi meghatározni az algoritmus nem áll. A t
 
 Aktív tanulás alapértelmezés szerint ki van kapcsolva. Bekapcsolása javasolt kérdések megtekintéséhez. 
 
-1. Aktív tanulás a bekapcsolásához nyissa meg a **Szolgáltatásbeállítások** a QnA Maker Portal jobb felső sarokban.  
+1. Aktív tanulás a bekapcsolásához kattintson a a **neve**, lépjen a [ **Szolgáltatásbeállítások** ](https://www.qnamaker.ai/UserSettings) a QnA Maker Portal jobb felső sarokban.  
 
     ![A szolgáltatás beállításai lapon kapcsolja be a aktív tanulás](../media/improve-knowledge-base/Endpoint-Keys.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure foglalások Windows szoftverek díjait |} A Microsoft Docs
-description: Ismerje meg, mely Windows szoftverek mérőszámok nem szerepelnek az Azure fenntartott VM-példány költségeket.
+title: Foglalást a szoftverek díjait az Azure-hoz |} A Microsoft Docs
+description: Ismerje meg, melyik szoftver mérőszámok nem szerepelnek az Azure fenntartott VM-példány költségeket.
 services: billing
 documentationcenter: ''
 author: manish-shukla01
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2018
+ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: de2aee36f20bd5142f398de7edb301e53ab42cae
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 63b1e850cbcea089a6a115f53ea1ef579a16886f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902661"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744980"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reserved-vm-instances"></a>Windows szoftverek díjait nem tartalmazza az Azure Reserved VM Instances
+# <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Az Azure Reserved VM Instances nem tartalmazza a szoftverek díjait.
 
-Ha az Azure Hybrid Use Benefit nem rendelkezik a fenntartott VM-példányokon, majd díja az alábbi szakaszban felsorolt Windows szoftverek mérőszámokhoz tartozó.
+Ha az Azure Hybrid Use Benefit nem rendelkezik a fenntartott VM-példányokon, majd kell fizetnie a szoftver mérőszámok az alábbiakban felsorolt.
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>Windows szoftverek mérőszámok nem szerepel a fenntartás költsége
 
@@ -50,6 +50,22 @@ Ha az Azure Hybrid Use Benefit nem rendelkezik a fenntartott VM-példányokon, m
 | 904c5c71-1eb7-43a6-961c-d305a9681624 | Foglalás-Windows fenntartott példányok (256 mag) | Mindenhol, kivéve a B sorozat |
 | 6fdab81b-4284-4df9-8939-c237cc7462fe | Foglalás-Windows fenntartott példányok (96 mag) | Mindenhol, kivéve a B sorozat |
 
+## <a name="cloud-services-software-meters-not-included-in-reservation-cost"></a>A felhőszolgáltatások szoftver mérőszámai nem szerepel a fenntartás költsége
+
+| Fogyasztásmérő azonosítója | A használati fájlban MeterName |
+| ------- | ------------------------|
+|ac9d47ff-ff68-4afc-a145-0c321cf8d0d5|Cloud Services 1 vCPU licenc|
+|e0434559-19ee-4132-9c46-05ad4044f3f7|Cloud Services 2 vCPU licenc|
+|6ecc834e-39b3-48b3-8d10-cc5626bacb66|Cloud Services 4 vCPU-licenc|
+|13103090-ca72-4825-ab12-7f16c4931d95|Cloud Services 8 vCPU-licenc|
+|ecd2bb6e-45a5-49aa-a58b-3947ba21c364|Cloud Services 16 vCPU-licenc|
+|de2c7f1d-06dc-4b16-bc8b-c2ec5f4c8aee|Cloud Services 20 vCPU License|
+|ca1af837-4b35-47f5-8d14-b1988149c4ca|Cloud Services 32 vCPU License|
+|dc72ee45-2ab7-4698-b435-e2cf10d1f9f6|Cloud Services 64 vCPU-licenc|
+|7a803026-244c-4659-834c-11e6b2d6b76f|Cloud Services 80-as vCPU-licenc|
+
+## <a name="rates-for-azure-meters"></a>Az Azure-mérőszámok díjszabása
+
 Ezek a mérőszámok költsége Azure RateCard API-n keresztül kérheti le. A díjszabás lekérése egy azure-mérőszámok információkért lásd: [Azure-előfizetésben használt erőforrások kapcsolatos díja és metaadatok beolvasása](https://msdn.microsoft.com/library/azure/mt219004).
 
 ## <a name="next-steps"></a>További lépések
@@ -65,6 +81,3 @@ Azure-foglalások kapcsolatos további információkért tekintse meg a követke
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-
-
-

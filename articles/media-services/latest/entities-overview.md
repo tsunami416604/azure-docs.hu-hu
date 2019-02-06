@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services entitások áttekintése – Azure |} A Microsoft Docs
-description: Ez a cikk áttekintést nyújt az Azure Media Services entitások.
+title: Szűrése, rendezése, az Azure Media Services entitások – Azure lapozás |} A Microsoft Docs
+description: Ez a cikk ismerteti a szűrése, rendezése, az Azure Media Services entitások lapozást.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,27 +12,301 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 3f3322245983508e374d081e5d7905f67344ad7a
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 4c6e3281bd2b37b60c8d165c6c3152e970a5ce32
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912646"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745096"
 ---
-# <a name="azure-media-services-entities-overview"></a>Az Azure Media Services entitások áttekintése
+# <a name="filtering-ordering-paging-of-media-services-entities"></a>A Media Services entitások szűrési, rendezési, stránkování
 
-Ez a cikk rövid áttekintést nyújt az Azure Media Services-entitások és pontok cikkeket hogyan minden entitás használatban van-e a Media Services-munkafolyamatok további információt. 
+## <a name="overview"></a>Áttekintés
 
-| Témakör | Leírás |
-|---|---|
-| [Fiók és eszköz szűrőket](filters-dynamic-manifest-overview.md)|Az ügyfelek számára (élő eseményeket vagy igény szerinti Videószolgáltatás streaming) tartalomtovábbításkor az ügyfél igényelhet az alapértelmezett eszköz jegyzékfájl leírtnál nagyobb rugalmasságot. Az Azure Media Services lehetővé teszi, hogy meghatározza [Fiókszűrők](https://docs.microsoft.com/rest/api/media/accountfilters) és [eszköz szűrők](https://docs.microsoft.com/rest/api/media/assetfilters). Ezután használja **dinamikus jegyzékfájlok** az előre definiált szűrők alapján. |
-| [Eszközök](assets-concept.md)|Egy [eszköz](https://docs.microsoft.com/rest/api/media/assets) entitás tartalmazza a digitális fájlok (beleértve a videót, hangot, képeket, miniatűröket, szövegsávok és feliratfájlok), és ezek a fájlok metaadatait. Miután a digitális fájlok feltöltése egy adategységbe, azok a Media Services encoding, streaming, tartalom munkafolyamatok elemzése használható.|
-| [Tartalmi kulcs házirendjei](content-key-policy-concept.md)|A Media Services segítségével az az idő, akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési a médiatartalmak védelmét. A Media Services élő és igény szerinti tartalmait az Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek bármelyikét dinamikusan titkosított juttathat el: A Microsoft PlayReady, a Google Widevine és az Apple fairplay által. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek.|
-| [Élő események és élő kimenetek](live-events-outputs-concept.md)|Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőben lévő események élő közvetítésére. Az élő események streamelése konfigurálása a Media Services v3-as, ismerje meg kell [élő események](https://docs.microsoft.com/rest/api/media/liveevents) és [élő kimenetek](https://docs.microsoft.com/rest/api/media/liveoutputs).|
-| [Streamvégpontok](streaming-endpoint-concept.md)|A [adatfolyam-továbbítási végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints) entitás jelöli egy adatfolyam-szolgáltatást, amely tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, vagy az egy Content Delivery Network (CDN) további terjesztés céljából. A folyamatos átviteli végponton szolgáltatásból származó kimenő adatfolyamot élő stream, vagy igény szerinti Videoobjektum a Media Services-fiók lehet. Egy Media Services-fiók létrehozásakor egy **alapértelmezett** folyamatos átviteli végponton, létrehozott egy leállított állapotban. Nem lehet törölni a **alapértelmezett** folyamatos átviteli végponton. További Streamelési végpontokkal is létrehozhatók a fiókban. Videók streamelése indításához kell elindítani a folyamatos átviteli végponton, ahonnan a videó. |
-| [A streamelési Lokátorok](streaming-locators-concept.md)|Meg kell adnia az ügyfelek is lejátszására használható URL-kódolású video- vagy fájlokat kell, hogy hozzon létre egy [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) és a streamelési URL-címeket.|
-| [Streamelési házirendek](streaming-policy-concept.md)| [Adatfolyam-házirendek](https://docs.microsoft.com/rest/api/media/streamingpolicies) lehetővé teszi az adatfolyam-továbbítási protokollok és a StreamingLocators titkosítási beállításainak megadása. Adja meg a létrehozott egyéni Streamelési szabályzat nevét, vagy használja a Media Services által kínált előre definiált adatfolyam-házirendek egyikét. <br/><br/>Streamelési egyéni szabályzat használata esetén az ilyen szabályzatok korlátozott számú tervezzen a Media Services-fiókhoz, és újból felhasználja őket a Streamelési Lokátorok, amikor az ugyanazon titkosítási lehetőségeket és a protokollok van szükség. Meg kell nem lehet új szabályzatot hoz létre Streamelési az egyes Streamelési lokátor.|
-| [Átalakítások és feladatok](transforms-jobs-concept.md)|Használat [alakítja át](https://docs.microsoft.com/rest/api/media/transforms) és videók elemzése gyakori feladatok konfigurálása. Minden egyes **átalakítása** egy módszereivel, vagy egy munkafolyamatot a video- és audiotartalmak fájlok feldolgozása kapcsolatos feladatokat ismerteti.<br/><br/>A [feladat](https://docs.microsoft.com/rest/api/media/jobs) van az Azure Media Services tényleges kérelem a alkalmazni a **átalakítása** egy adott a bemeneti videó vagy hang tartalomhoz. A **feladat** információkat, például a bemeneti videó helyét, és a kimeneti helyét adja meg. Megadhatja a helyét, a bemeneti videó használatával: HTTPS URL-címek, SAS URL-címeit, vagy egy eszköz.|
+A Media Services Media Services v3 entitások támogatja a következő OData-lekérdezés beállításai: 
+
+* $filter 
+* $orderby 
+* $top 
+* $skiptoken 
+
+Operátor leírása:
+
+* EQ = egyenlő
+* Ú = nem egyenlő
+* A GE = nagyobb vagy egyenlő
+* Le = kisebb vagy egyenlő
+* Gt = nagyobb, mint
+* Lt = kisebb, mint
+
+A dátum/idő típusú entitások tulajdonságainak mindig UTC formátumban vannak.
+
+## <a name="page-results"></a>Eredmények lap
+
+A lekérdezési válasz számos elemet tartalmaz, ha a szolgáltatás visszaadja egy "\@odata.nextLink" tulajdonságát a következő lapra az eredmények lekérése. Ez használható a lapozza végig a teljes eredményhalmaz. Az oldal méretét nem lehet konfigurálni. Az oldalméret, entitás típusa szerint változó olvassa el a részleteket az egyes szakaszokban.
+
+Entitások létrehozása vagy a gyűjtemény átlapozva közben, ha a módosítások megjelennek a kapott találatok közül (ha ezek a módosítások a gyűjteményt, amely még nincs letöltve részében). 
+
+> [!TIP]
+> A gyűjtemény enumerálása, és nem függ egy adott oldal méretét a következő hivatkozás mindig használjon.
+
+## <a name="assets"></a>Objektumok
+
+### <a name="filteringordering"></a>Szűrés és rendezés
+
+Az alábbi táblázat bemutatja, hogyan a szűrés és rendezés beállítások alkalmazhatók a [eszköz](https://docs.microsoft.com/rest/api/media/assets) tulajdonságai: 
+
+|Name (Név)|Szűrés|Rendelés|
+|---|---|---|
+|id|||
+|név|eq, gt, lt| Növekvő vagy csökkenő sorrendben|
+|properties.alternateId |EQ||
+|properties.assetId |EQ||
+|Properties.Container |||
+|Properties.created| eq, gt, lt| Növekvő vagy csökkenő sorrendben|
+|properties.description |||
+|properties.lastModified |||
+|properties.storageAccountName |||
+|properties.storageEncryptionFormat | ||
+|type|||
+
+Az alábbi C#-példa szűrőit a létrehozás dátuma:
+
+```csharp
+var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
+var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
+```
+
+### <a name="pagination"></a>Tördelés 
+
+Tördelés a négy engedélyezve van a rendezési sorrend mindegyike támogatott. Az oldalméret jelenleg 1000.
+
+#### <a name="c-example"></a>C#-példa
+
+Az alábbi C#-példa bemutatja a fiókban lévő összes eszköz számba.
+
+```csharp
+var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName);
+
+var currentPage = firstPage;
+while (currentPage.NextPageLink != null)
+{
+    currentPage = await MediaServicesArmClient.Assets.ListNextAsync(currentPage.NextPageLink);
+}
+```
+
+#### <a name="rest-example"></a>Példa REST
+
+Tekintse meg a következő példát, amelyben a rendszer használja-e a $skiptoken. Győződjön meg arról, hogy cserélje le *amstestaccount* a fiók nevét és a set-a *api-version* érték a legújabb verzióra.
+
+Ha ehhez hasonló eszközök listájának lekérdezéséhez:
+
+```
+GET  https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
+x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
+Content-Type: application/json; charset=utf-8
+```
+
+A jogosultság hiányát vissza választ ehhez hasonló:
+
+```
+HTTP/1.1 200 OK
+ 
+{
+"value":[
+{
+"name":"Asset 0","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 0","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-5a4f-470a-9d81-6037d7c23eff","created":"2018-12-11T22:12:44.98Z","lastModified":"2018-12-11T22:15:48.003Z","container":"asset-98d07299-5a4f-470a-9d81-6037d7c23eff","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+}
+},
+// lots more assets
+{
+"name":"Asset 517","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 517","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-912e-447b-a1ed-0f723913b20d","created":"2018-12-11T22:14:08.473Z","lastModified":"2018-12-11T22:19:29.657Z","container":"asset-fd05a503-912e-447b-a1ed-0f723913b20d","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+}
+}
+],"@odata.nextLink":"https:// management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517"
+}
+```
+
+A következő oldalon egy get kérés küldése lenne lekérhetik:
+
+```
+https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
+```
+
+REST kapcsolatos további példákért lásd [eszközök – lista](https://docs.microsoft.com/rest/api/media/assets/list)
+
+## <a name="content-key-policies"></a>Tartalomkulcsszabályok
+
+### <a name="filteringordering"></a>Szűrés és rendezés
+
+Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [Tartalomszabályzat kulcs](https://docs.microsoft.com/rest/api/media/contentkeypolicies) tulajdonságai: 
+
+|Name (Név)|Szűrés|Rendelés|
+|---|---|---|
+|id|||
+|név|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
+|Properties.created |Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
+|properties.description |Eq, ne, a ge, le, gt, lt||
+|properties.lastModified|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
+|Properties.Options |||
+|properties.policyId|eq, ne||
+|type|||
+
+### <a name="pagination"></a>Tördelés
+
+Tördelés a négy engedélyezve van a rendezési sorrend mindegyike támogatott. Az oldalméret jelenleg 10.
+
+A következő C# példa bemutatja, hogyan végig az összes számbavétele **Tartalomszabályzat kulcs** a fiókban.
+
+```csharp
+var firstPage = await MediaServicesArmClient.ContentKeyPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
+
+var currentPage = firstPage;
+while (currentPage.NextPageLink != null)
+{
+    currentPage = await MediaServicesArmClient.ContentKeyPolicies.ListNextAsync(currentPage.NextPageLink);
+}
+```
+
+További példák: [tartalom kulcs házirendjei – lista](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
+
+## <a name="jobs"></a>Feladatok
+
+### <a name="filteringordering"></a>Szűrés és rendezés
+
+Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [feladatok](https://docs.microsoft.com/rest/api/media/jobs) tulajdonságai: 
+
+| Name (Név)    | Szűrés                        | Rendelés |
+|---------|-------------------------------|-------|
+| név                    | EQ            | Növekvő vagy csökkenő sorrendben|
+| Properties.state        | eq, ne        |                         |
+| Properties.created      | gt, lt, -le, a ge| Növekvő vagy csökkenő sorrendben|
+| properties.lastModified | gt, lt, -le, a ge | Növekvő vagy csökkenő sorrendben| 
+
+
+### <a name="pagination"></a>Tördelés
+
+A Media Services v3 feladatok tördelés használata támogatott.
+
+A következő C# példa bemutatja a feladatok a fiókban lévő számba.
+
+```csharp            
+List<string> jobsToDelete = new List<string>();
+var pageOfJobs = client.Jobs.List(config.ResourceGroup, config.AccountName, "Encode");
+
+bool exit;
+do
+{
+    foreach (Job j in pageOfJobs)
+    {
+        jobsToDelete.Add(j.Name);
+    }
+
+    if (pageOfJobs.NextPageLink != null)
+    {
+        pageOfJobs = client.Jobs.ListNext(pageOfJobs.NextPageLink);
+        exit = false;
+    }
+    else
+    {
+        exit = true;
+    }
+}
+while (!exit);
+
+```
+
+További példák: [feladatok – lista](https://docs.microsoft.com/rest/api/media/jobs/list)
+
+## <a name="streaming-locators"></a>Streamelési lokátor
+
+### <a name="filteringordering"></a>Szűrés és rendezés
+
+Az alábbi táblázat bemutatja, hogyan lehet alkalmazni ezeket a beállításokat a StreamingLocator tulajdonságai: 
+
+|Name (Név)|Szűrés|Rendelés|
+|---|---|---|
+|id |||
+|név|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
+|properties.alternativeMediaId  |||
+|properties.assetName   |||
+|properties.contentKeys |||
+|Properties.created |Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
+|properties.defaultContentKeyPolicyName |||
+|properties.endTime |Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
+|properties.startTime   |||
+|properties.streamingLocatorId  |||
+|properties.streamingPolicyName |||
+|type   |||
+
+### <a name="pagination"></a>Tördelés
+
+Tördelés a négy engedélyezve van a rendezési sorrend mindegyike támogatott. Az oldalméret jelenleg 10.
+
+Az alábbi C#-példa bemutatja a fiókban lévő összes StreamingLocators számba.
+
+```csharp
+var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
+
+var currentPage = firstPage;
+while (currentPage.NextPageLink != null)
+{
+    currentPage = await MediaServicesArmClient.StreamingLocators.ListNextAsync(currentPage.NextPageLink);
+}
+```
+
+További példák: [Streamelési Lokátorok - lista](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+
+## <a name="streaming-policies"></a>Streamelési szabályok
+
+### <a name="filteringordering"></a>Szűrés és rendezés
+
+Az alábbi táblázat bemutatja, hogyan lehet alkalmazni ezeket a beállításokat a StreamingPolicy tulajdonságai: 
+
+|Name (Név)|Szűrés|Rendelés|
+|---|---|---|
+|id|||
+|név|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
+|properties.commonEncryptionCbcs|||
+|properties.commonEncryptionCenc|||
+|Properties.created |Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
+|properties.defaultContentKeyPolicyName |||
+|properties.envelopeEncryption|||
+|properties.noEncryption|||
+|type|||
+
+### <a name="pagination"></a>Tördelés
+
+Tördelés a négy engedélyezve van a rendezési sorrend mindegyike támogatott. Az oldalméret jelenleg 10.
+
+Az alábbi C#-példa bemutatja a fiókban lévő összes StreamingPolicies számba.
+
+```csharp
+var firstPage = await MediaServicesArmClient.StreamingPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
+
+var currentPage = firstPage;
+while (currentPage.NextPageLink != null)
+{
+    currentPage = await MediaServicesArmClient.StreamingPolicies.ListNextAsync(currentPage.NextPageLink);
+}
+```
+
+További példák: [Streamelési házirendek – lista](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+
+
+## <a name="transform"></a>Átalakítás
+
+### <a name="filteringordering"></a>Szűrés és rendezés
+
+Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [alakítja át az](https://docs.microsoft.com/rest/api/media/transforms) tulajdonságai: 
+
+| Name (Név)    | Szűrés                        | Rendelés |
+|---------|-------------------------------|-------|
+| név                    | EQ            | Növekvő vagy csökkenő sorrendben|
+| Properties.created      | gt, lt, -le, a ge| Növekvő vagy csökkenő sorrendben|
+| properties.lastModified | gt, lt, -le, a ge | Növekvő vagy csökkenő sorrendben|
 
 ## <a name="next-steps"></a>További lépések
 

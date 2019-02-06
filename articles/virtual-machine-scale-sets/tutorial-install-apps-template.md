@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 81ab41518fea81b577738d30970d83f6d6d6f2bc
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 262d7a6a4399a72e762c4ad3c87a878c54e22af4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883993"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750392"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportok Azure-sablonnal
 Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Egy korábbi oktatóanyagból megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképeket a virtuálisgép-példányok üzembe helyezéséhez. Ez az egyéni rendszerkép tartalmazott manuális alkalmazástelepítéseket és -konfigurációkat. Az egyes virtuálisgép-példányok üzembe helyezése után lehetősége van az alkalmazások méretezési csoportokon történő telepítésének automatizálására, vagy egy a méretezési csoporton már futó alkalmazás frissítésére. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -77,13 +77,13 @@ A következő oldalon láthat teljes példát egy olyan Azure-sablonra, amely ü
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-A mintasablon használatával hozzunk létre egy méretezési csoportot, és alkalmazzuk az egyéni szkriptbővítményt. Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+A mintasablon használatával hozzunk létre egy méretezési csoportot, és alkalmazzuk az egyéni szkriptbővítményt. Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuálisgép-méretezési csoportot az [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) paranccsal. Amikor a rendszer kéri, adja meg az egyes virtuálisgép-példányhoz hitelesítő adatként használt saját felhasználó nevét és jelszavát:
+Most hozzon létre egy virtuálisgép-méretezési csoportot az [az group deployment create](/cli/azure/group/deployment) paranccsal. Amikor a rendszer kéri, adja meg az egyes virtuálisgép-példányhoz hitelesítő adatként használt saját felhasználó nevét és jelszavát:
 
 ```azurecli-interactive
 az group deployment create \
@@ -97,7 +97,7 @@ A méretezési csoport összes virtuálisgép-példánya a GitHubról tölti le 
 
 
 ## <a name="test-your-scale-set"></a>Méretezési csoport tesztelése
-Ha működés közben szeretné megtekinteni a webkiszolgálót, kérje le a terheléselosztó nyilvános IP-címét az [az network public-ip show](/cli/azure/network/public-ip#show) paranccsal. A következő példa a *myScaleSetPublicIP* méretezési csoport részeként létrehozott IP-címét kéri le:
+Ha működés közben szeretné megtekinteni a webkiszolgálót, kérje le a terheléselosztó nyilvános IP-címét az [az network public-ip show](/cli/azure/network/public-ip) paranccsal. A következő példa a *myScaleSetPublicIP* méretezési csoport részeként létrehozott IP-címét kéri le:
 
 ```azurecli-interactive
 az network public-ip show \
@@ -141,7 +141,7 @@ Az egyéni szkriptbővítmény definíciójának frissítéséhez módosítsa a 
 }
 ```
 
-Alkalmazza újra az egyéni szkriptbővítmény konfigurációját a méretezési csoport virtuálisgép-példányain az [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) paranccsal. Ez az *azuredeployv2.json* nevű sablon az alkalmazás frissített verziójának alkalmazására használatos. Gyakorlatban módosítania kell a létező *azuredeploy.json* sablont úgy, hogy az a frissített telepítési szkriptre hivatkozzon, ahogy az az előző szakaszban is látható. Amikor a rendszer kéri, adja meg a méretezési csoport első létrehozásakor használt felhasználónevet és jelszót:
+Alkalmazza újra az egyéni szkriptbővítmény konfigurációját a méretezési csoport virtuálisgép-példányain az [az group deployment create](/cli/azure/group/deployment) paranccsal. Ez az *azuredeployv2.json* nevű sablon az alkalmazás frissített verziójának alkalmazására használatos. Gyakorlatban módosítania kell a létező *azuredeploy.json* sablont úgy, hogy az a frissített telepítési szkriptre hivatkozzon, ahogy az az előző szakaszban is látható. Amikor a rendszer kéri, adja meg a méretezési csoport első létrehozásakor használt felhasználónevet és jelszót:
 
 ```azurecli-interactive
 az group deployment create \
@@ -155,7 +155,7 @@ A méretezési csoport összes virtuálisgép-példánya automatikusan frissül 
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A méretezési csoport és további erőforrások eltávolításához törölje az erőforráscsoportot és az ahhoz tartozó összes erőforrást az [az group delete](/cli/azure/group#az_group_delete) paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
+A méretezési csoport és további erőforrások eltávolításához törölje az erőforráscsoportot és az ahhoz tartozó összes erőforrást az [az group delete](/cli/azure/group) paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

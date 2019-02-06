@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 614d8fac4130b3331cf5326800aaf5a2a3c58513
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 1819d1dba777d97590c0b02a89cde3b46af78fff
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658046"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749235"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>Gyors útmutató: Blobok feltöltése, letöltése, és listát az Azure CLI használatával
 
@@ -46,7 +46,7 @@ A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblob
 Először hozza létre a blobba feltölteni kívánt fájlt.
 Az Azure Cloud Shell használata esetén a fájl létrehozásához alkalmazza a következőt: `vi helloworld`, amikor a fájl megnyílik, nyomja le az **Insert** billentyűt, írja be a „Hello world” szöveget, majd nyomja le az **Esc** billentyűt, írja be a `:x` parancsot, és nyomja le az **Enter** billentyűt.
 
-Ebben a példában egy blobot töltünk fel a legutóbbi lépésben, az [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) paranccsal létrehozott tárolóba.
+Ebben a példában egy blobot töltünk fel a legutóbbi lépésben, az [az storage blob upload](/cli/azure/storage/blob) paranccsal létrehozott tárolóba.
 
 ```azurecli-interactive
 az storage blob upload \
@@ -66,11 +66,11 @@ az storage blob upload \
 
 Ez az eljárás létrehozza a blobot, ha az még nem létezett, és felülírja, ha már igen. Mielőtt továbblépne, töltsön fel annyi fájlt, amennyit csak szeretne.
 
-Ha egyszerre több fájlt szeretne feltölteni, használhatja az [az storage blob upload-batch](/cli/azure/storage/blob#az_storage_blob_upload_batch) parancsot.
+Ha egyszerre több fájlt szeretne feltölteni, használhatja az [az storage blob upload-batch](/cli/azure/storage/blob) parancsot.
 
 ## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-Listázza ki a tárolóban található blobokat az [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) paranccsal.
+Listázza ki a tárolóban található blobokat az [az storage blob list](/cli/azure/storage/blob) paranccsal.
 
 ```azurecli-interactive
 az storage blob list \
@@ -80,7 +80,7 @@ az storage blob list \
 
 ## <a name="download-a-blob"></a>Blob letöltése
 
-Az [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download) paranccsal letöltheti a korábban feltöltött blobot.
+Az [az storage blob download](/cli/azure/storage/blob) paranccsal letöltheti a korábban feltöltött blobot.
 
 ```azurecli-interactive
 az storage blob download \

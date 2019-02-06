@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a42f5f441dd63f8d6a7f5bd1cfdf0452d025816e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b0cb72b8a9c1710b2b22d987c2818a490a2ea553
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017684"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753359"
 ---
 # <a name="azure-data-factory-service-identity"></a>Az Azure Data Factory-szolgáltatásidentitás
 
@@ -192,4 +192,4 @@ Tekintse meg a következő témakörök, amelyek vezeti be, mikor és hogyan has
 - [Hitelesítő adatok Store az Azure Key Vaultban](store-credentials-in-key-vault.md)
 - [Másolja az adatokat, és az Azure Data Lake Store az Azure-erőforrások hitelesítési felügyelt identitások használatával](connector-azure-data-lake-store.md)
 
-Lásd: [felügyelt identitások Azure-erőforrások áttekintő](~/articles/active-directory/msi-overview.md) ismertető háttér-felügyelt identitások Azure-erőforrások számára, mely data factory-szolgáltatásidentitás alapul. 
+Lásd: [felügyelt identitások Azure-erőforrások áttekintő](/azure/active-directory/managed-identities-azure-resources/overview) ismertető háttér-felügyelt identitások Azure-erőforrások számára, mely data factory-szolgáltatásidentitás alapul. 

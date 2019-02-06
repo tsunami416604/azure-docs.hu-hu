@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – Node.js webes API-khoz való hozzáférés engedélyezése egy asztali alkalmazásból az Azure Active Directory B2C használatával | Microsoft Docs
+title: Oktatóanyag – való hozzáférés engedélyezése Egy Node.js webes API-t egy asztali alkalmazás – Azure Active Directory B2C |} A Microsoft Docs
 description: Arra vonatkozó útmutató, hogyan használhatja az Active Directory B2C-t egy Node.js webes API védelmére és meghívására egy asztali .NET-alkalmazásból.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.author: davidmu
-ms.date: 3/01/2018
+ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: fc9efe919a7eae34b47fc86100f182827315449a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 90a6a88ff0dc5aab1163e471b24cd1d00e548a1b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492708"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755118"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Oktatóanyag: Egy Node.js webes API-t egy asztali alkalmazásból az Azure Active Directory B2C használatával való hozzáférés engedélyezése
 
@@ -24,97 +24,59 @@ Az oktatóanyag azt mutatja be, hogyan hívhat meg egy Azure Active Directory (A
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Webes API regisztrálása az Azure AD B2C-bérlőben
-> * Webes API hatóköreinek meghatározása és konfigurálása
-> * Alkalmazásengedélyek megadása a webes API számára
-> * Mintakód frissítése egy webes API Azure AD B2C-vel történő védelméhez
+> * Adjon hozzá egy webes API-alkalmazás
+> * A webes API hatóköreinek konfigurálásáról
+> * Adja meg az engedélyeket a webes API-hoz
+> * A minta az alkalmazás frissítése
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Végezze el a [felhasználók asztali alkalmazáson belüli, az Azure Active Directory B2C-vel történő hitelesítésével](active-directory-b2c-tutorials-desktop-app.md) foglalkozó oktatóanyagot.
-* A [Visual Studio 2017](https://www.visualstudio.com/downloads/) telepítése **.NET asztali fejlesztési**, valamint **ASP.NET és webfejlesztési** számítási feladatokkal.
-* [Node.js](https://nodejs.org/en/download/) telepítése
+Hajtsa végre a lépéseket és az Előfeltételek [oktatóanyag: Asztali alkalmazás hitelesítés engedélyezése az Azure Active Directory B2C fiókkal rendelkező](active-directory-b2c-tutorials-desktop-app.md).
 
-## <a name="register-web-api"></a>Webes API regisztrálása
+## <a name="add-a-web-api-application"></a>Adjon hozzá egy webes API-alkalmazás
 
-A webes API-erőforrásoknak regisztrálva kell lenniük a bérlőben, mielőtt fogadni és válaszolni tudnának az [ügyfélalkalmazások](../active-directory/develop/developer-glossary.md#client-application) által leadott, [védett erőforrásokra vonatkozó kérelmekre](../active-directory/develop/developer-glossary.md#resource-server), amelyekhez egy, az Azure Active Directoryból származó [hozzáférési jogkivonat](../active-directory/develop/developer-glossary.md#access-token) tartozik. A regisztráció meghatározza az [alkalmazás- és szolgáltatásnév-objektumot](../active-directory/develop/developer-glossary.md#application-object) a bérlőben. 
+Webes API-erőforrásokhoz regisztrálni kell a bérlőn belüli előtt fogadja el, és védett erőforrás-kérelmek megválaszolásához ügyfélalkalmazások, amelyek egy hozzáférési jogkivonatot. 
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
+4. Válassza ki **alkalmazások**, majd válassza ki **Hozzáadás**.
+5. Adjon meg egy nevet az alkalmazásnak. Ha például *webapi1*.
+6. A **közé tartozik a webalkalmazás vagy webes API** és **implicit engedélyezési folyamat engedélyezése**válassza **Igen**.
+7. A **válasz URL-cím**, adja meg a végpont, ahol az Azure AD B2C-t adja vissza az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut, és figyeli a `https://localhost:5000`.
+8. A **Alkalmazásazonosító URI-t**, adja meg a webes API-hoz használt azonosító. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
+9. Kattintson a **Create** (Létrehozás) gombra.
+10. A Tulajdonságok lapon jegyezze fel az Alkalmazásazonosítót, amelyek a webalkalmazás konfigurálásakor fogja használni.
 
-[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
+## <a name="configure-scopes"></a>Hatókörök konfigurálása
 
-1. Az Azure Portalon válassza az **Azure AD B2C** lehetőséget a szolgáltatások listájából.
+Hatókört biztosít a védett erőforrásokhoz való hozzáférés szabályozására. A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. Egyes felhasználók például rendelkezhetnek olvasási és írási hozzáféréssel is, míg más felhasználóknak csak olvasási engedélye lehet. Ebben az oktatóanyagban meghatározzuk az olvasási engedélyeket a webes API számára.
 
-2. A B2C beállításaiban kattintson az **Alkalmazások**, majd a **Hozzáadás** lehetőségre.
-
-    A mintául szolgáló webes API bérlőben történő regisztrálásához használja a következő beállításokat.
-    
-    ![Új API hozzáadása](media/active-directory-b2c-tutorials-desktop-app-webapi/web-api-registration.png)
-    
-    | Beállítás      | Ajánlott érték  | Leírás                                        |
-    | ------------ | ------- | -------------------------------------------------- |
-    | **Name (Név)** | Mintául szolgáló saját Node.js webes API | Adjon meg egy olyan **nevet**, amely megfelelően körülírja a webes API-t a felhasználók számára. |
-    | **Webalkalmazás vagy webes API szerepeltetése** | Igen | Válassza az **Igen** lehetőséget a webes API-k esetén. |
-    | **Implicit folyamat engedélyezése** | Igen | Válassza az **Igen** lehetőséget, mivel az API [OpenID Connect bejelentkezést](active-directory-b2c-reference-oidc.md) használ. |
-    | **Válasz URL-cím** | `http://localhost:5000` | A válasz URL-címek olyan végpontok, amelyeken keresztül az Azure AD B2C visszaadja az API által kért jogkivonatokat. Ebben az oktatóanyagban a mintául szolgáló webes API helyileg fut (localhost), és az 5000-es porton figyel. |
-    | **Alkalmazásazonosító URI** | demoapi | Az URI egyedileg azonosítja az API-t a bérlőben. Ez lehetővé teszi, hogy bérlőnként több API-t is regisztráljon. A [hatókörök](../active-directory/develop/developer-glossary.md#scopes) szabályozzák a hozzáférést a védett API-erőforrásokhoz, és alkalmazásazonosító URI-nként vannak meghatározva. |
-    | **Natív ügyfél** | Nem | Mivel ez egy webes API, nem pedig egy natív ügyfél, válassza a Nem lehetőséget. |
-    
-3. Kattintson a **Létrehozás** gombra az API regisztrálásához.
-
-A regisztrált API-k az Azure AD B2C-bérlő alkalmazásainak listájában jelennek meg. Válassza ki webes API-ját a listáról. Ekkor megjelenik a webes API tulajdonságpanelje.
-
-![Webes API – Tulajdonságok](./media/active-directory-b2c-tutorials-web-api/b2c-web-api-properties.png)
-
-Jegyezze fel az **alkalmazás ügyfél-azonosítóját**. Az azonosító egyedi módon azonosítja az API-t, és az oktatóanyag későbbi részében, az alkalmazás konfigurálásakor lesz rá szükség.
-
-A webes API Azure AD B2C-vel végzett regisztrációja egy megbízhatósági kapcsolatot határoz meg. Mivel az API B2C-vel van regisztrálva, megbízhat a más alkalmazásoktól kapott B2C hozzáférési jogkivonatokban.
-
-## <a name="define-and-configure-scopes"></a>Hatókörök meghatározása és konfigurálása
-
-A [hatókörök](../active-directory/develop/developer-glossary.md#scopes) lehetőséget nyújtanak a védett erőforrásokhoz való hozzáférés szabályozására. A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. Egyes felhasználók például rendelkezhetnek olvasási és írási hozzáféréssel is, míg más felhasználóknak csak olvasási engedélye lehet. Ebben az oktatóanyagban meghatározzuk az olvasási és írási engedélyeket a webes API számára.
-
-### <a name="define-scopes-for-the-web-api"></a>A webes API hatóköreinek meghatározása
-
-A regisztrált API-k az Azure AD B2C-bérlő alkalmazásainak listájában jelennek meg. Válassza ki webes API-ját a listáról. Ekkor megjelenik a webes API tulajdonságpanelje.
-
-Kattintson a **Közzétett hatókörök (előzetes verzió)** gombra.
-
-Az API hatóköreinek konfigurálásához adja meg a következő bejegyzéseket. 
-
-![a webes API-ban meghatározott hatókörök](media/active-directory-b2c-tutorials-web-api/scopes-defined-in-web-api.png)
-
-| Beállítás      | Ajánlott érték  | Leírás                                        |
-| ------------ | ------- | -------------------------------------------------- |
-| **Hatókör** | demo.read | Olvasási hozzáférés a bemutató API-hoz|
-
-Kattintson a **Save** (Mentés) gombra.
+1. Válassza ki **alkalmazások**, majd válassza ki *webapi1*.
+2. Válassza ki **közzétett hatókörök**.
+3. A **hatókör**, adja meg `Hello.Read`, és adja meg a leírást `Read access to hello`.
+4. A **hatókör**, adja meg `Hello.Write`, és adja meg a leírást `Write access to hello`.
+5. Kattintson a **Save** (Mentés) gombra.
 
 A közzétett hatókörök segítségével ügyfélalkalmazás-engedélyeket biztosíthat a webes API-nak.
 
-### <a name="grant-app-permissions-to-web-api"></a>Alkalmazásengedélyek megadása a webes API-nak
+## <a name="grant-permissions"></a>Engedélyek megadása
 
-Egy védett webes API alkalmazásból történő hívásához alkalmazásengedélyeket kell biztosítania az API számára. Ebben az oktatóanyagban használja a [felhasználók asztali alkalmazáson belüli, az Azure Active Directory B2C-vel történő hitelesítésével](active-directory-b2c-tutorials-desktop-app.md) foglalkozó oktatóanyagban létrehozott asztali alkalmazást.
+Egy védett webes API hívása egy alkalmazásból, az alkalmazásengedélyeket az API-nak kell. Az előfeltételnek számító oktatóanyagot hozott létre egy webalkalmazást az Azure AD B2C nevű *app1*. Ez az alkalmazás használhatja a webes API meghívásához.
 
-1. Válassza ki az Azure Portalon az **Azure AD B2C** elemet a szolgáltatások listájáról, majd kattintson az **Alkalmazások** lehetőségre a regisztrált alkalmazások listájának megjelenítéséhez.
-
-2. Válassza ki a **Mintául szolgáló saját WPF-alkalmazás** elemet az alkalmazáslistából, és kattintson az **API-hozzáférés (előzetes verzió)**, majd a **Hozzáadás** gombra.
-
-3. Az **API kiválasztása** legördülő menüben válassza ki a regisztrált webes API-t: **Mintául szolgáló saját Node.js webes API**.
-
-4. A **Hatókörök kiválasztása** legördülő menüben válassza ki azt a hatókört, amelyet a webes API regisztrációja során megadott.
-
-    ![alkalmazás hatóköreinek kiválasztása](media/active-directory-b2c-tutorials-web-api/selecting-scopes-for-app.png)
-
+1. Válassza ki **alkalmazások**, majd válassza ki *nativeapp1*.
+2. Válassza ki **API-hozzáférés**, majd válassza ki **Hozzáadás**.
+3. Az a **API kiválasztása** legördülő menüben válasszon ki *webapi1*.
+4. Az a **hatókörök kiválasztása** legördülő menüben válasszon ki a **Hello.Read** és **Hello.Write** , amelyet korábban megadott hatókörök.
 5. Kattintson az **OK** gombra.
 
-A **Mintául szolgáló saját WPF-alkalmazás** regisztrálva van a védett **Mintául szolgáló saját Node.js webes API** meghívásához. A WPF asztali alkalmazás használatához a felhasználó az Azure AD B2C-vel [hitelesíti magát](../active-directory/develop/developer-glossary.md#authentication). Az asztali alkalmazás lekéri az [engedélyezést](../active-directory/develop/developer-glossary.md#authorization-grant) az Azure AD B2C-ből a védett webes API-hoz való hozzáféréshez.
+Egy felhasználó hitelesíti magát, az Azure AD B2C a WPF asztali alkalmazás használatához. Az asztali alkalmazás Azure AD B2C-vel hozzáférni a védett webes API-engedélyek kapja.
 
-## <a name="update-web-api-code"></a>Webes API kódjának frissítése
+## <a name="configure-the-sample"></a>A minta konfigurálásához
 
-Most, hogy regisztrálta a webes API-t és meghatározta a hatóköröket, konfigurálnia kell a webes API kódját az Azure AD B2C-bérlő használatához. Ebben az oktatóanyagban a GitHubról letölthető, mintául szolgáló Node.js-webalkalmazást fog konfigurálni. 
+Most, hogy a webes API regisztrálva van, és meghatározta a hatóköröket, konfigurálnia a webes API kódját az Azure AD B2C-bérlő használatához. Ebben az oktatóanyagban a githubról letölthető, mintául szolgáló node.js alapú webes alkalmazás konfigurálása. 
 
 [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip), vagy a klónozza a mintául szolgáló webalkalmazást a GitHubról.
 
@@ -123,24 +85,16 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 ```
 A mintául szolgáló Node.js webes API a Passport.js kódtárat használja arra, hogy engedélyezze az Azure AD B2C-nek az API felé irányuló hívások védelmét. 
 
-### <a name="configure-the-web-api"></a>A webes API konfigurálása
-
-1. Nyissa meg az `index.js` fájlt a mintául szolgáló Node.js webes API-ban.
+1. Nyissa meg az `index.js` fájlt.
 2. Konfigurálja a mintát az Azure AD B2C-bérlő regisztrációs információival. Módosítsa a következő kódsorokat:
 
-```javascript
-var tenantID = "<your-tenant-name>.onmicrosoft.com";
-var clientID = "<Application ID for your Node.js Web API>";
-var policyName = "B2C_1_SiUpIn";  // Sign-in / sign-up policy name
-```
-
-### <a name="configure-the-desktop-app"></a>Az asztali alkalmazás konfigurálása
-
-1. Nyissa meg a [felhasználók asztali alkalmazáson belüli, az Azure Active Directory B2C-vel történő hitelesítésével](active-directory-b2c-tutorials-desktop-app.md) foglalkozó oktatóanyagból származó `active-directory-b2c-wpf` megoldást a Visual Studióban.
+    ```nodejs
+    var tenantID = "<your-tenant-name>.onmicrosoft.com";
+    var clientID = "<application-ID>";
+    var policyName = "B2C_1_signupsignin1";
+    ```
 
 ## <a name="run-the-sample"></a>Minta futtatása
-
-A Node.js webes API futtatása:
 
 1. Indítsa el a Node.js parancssort.
 2. Váltson arra a könyvtárra, amelyben a Node.js-minta található. Például: `cd c:\active-directory-b2c-javascript-nodejs-webapi`
@@ -151,21 +105,25 @@ A Node.js webes API futtatása:
     ```
     node index.js
     ```
-Asztali alkalmazás futtatása:
 
-1. Az asztali alkalmazás futtatásához nyomja le az **F5** billentyűt.
-2. Jelentkezzen be a [felhasználók asztali alkalmazáson belüli, az Azure Active Directory B2C-vel történő hitelesítésével](active-directory-b2c-tutorials-desktop-app.md) foglalkozó oktatóanyagban használt e-mail-címmel és jelszóval.
-3. Kattintson az **API meghívása** gombra. 
+### <a name="run-the-desktop-application"></a>Az asztali alkalmazás futtatása
 
-Az asztali alkalmazás kérést küld a webes API-nak, és válaszként megkapja a bejelentkezett felhasználó megjelenítendő nevét. A védett asztali alkalmazás hívja a védett webes API-t az Azure AD B2C-bérlőben.
+1. Nyissa meg a **active-directory-b2c-wpf** megoldást a Visual Studióban.
+2. Az asztali alkalmazás futtatásához nyomja le az **F5** billentyűt.
+3. Jelentkezzen be a [felhasználók asztali alkalmazáson belüli, az Azure Active Directory B2C-vel történő hitelesítésével](active-directory-b2c-tutorials-desktop-app.md) foglalkozó oktatóanyagban használt e-mail-címmel és jelszóval.
+4. Kattintson az **API meghívása** gombra. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C-oktatóanyagokat is ki szeretne próbálni. Ha már nincs szüksége rá, akkor [törölheti az Azure AD B2C-bérlőt](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
+Az asztali alkalmazás kérést küld a webes API-t, és a bejelentkezett felhasználó megjelenített neve válaszként megkapja. Védett asztali alkalmazás hívja a védett webes API az Azure AD B2C-bérlőben.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk azon vezette végig, hogyan biztosíthat védelmet egy ASP.NET webes API-nak hatókörök Azure AD B2C-ben való regisztrálásával és meghatározásával. További információkért tekintse át az elérhető Azure AD B2C-kódmintákat.
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+
+> [!div class="checklist"]
+> * Adjon hozzá egy webes API-alkalmazás
+> * A webes API hatóköreinek konfigurálásáról
+> * Adja meg az engedélyeket a webes API-hoz
+> * A minta az alkalmazás frissítése
 
 > [!div class="nextstepaction"]
-> [Azure AD B2C-kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory-b2c&sort=0)
+> [Oktatóanyag: Identitásszolgáltató hozzáadása az alkalmazásait az Azure Active Directory B2C-vel](tutorial-add-identity-providers.md)

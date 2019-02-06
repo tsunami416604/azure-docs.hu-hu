@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: f1a580b5c51ec589ef9a52b07d62e091ae712964
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/04/2019
+ms.openlocfilehash: a2500988b174e49870f4da7087b3fa4c81f3c77a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513525"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754982"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Mi az az Azure SQL Database egy adatbázis
 
-Önálló adatbázis egy önálló adatbázis, Azure SQL Database-ben a saját erőforráskészlettel, és a egy SQL Database-kiszolgálón keresztül történik. Önálló adatbázis, az egyes adatbázisok el különítve a önálló, hordozható, és a saját szolgáltatási szinten belül a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) és a egy garantált a számítási méret.
+Egyetlen adatbázis-telepítési beállítás hoz létre egy önálló adatbázis az Azure SQL Database a saját erőforráskészlettel, és a egy SQL Database-kiszolgálón keresztül történik. Önálló adatbázis, az egyes adatbázisok el különítve a önálló, hordozható, és a saját szolgáltatási szinten belül a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) és a egy garantált a számítási méret.
 
 > [!IMPORTANT]
 > Önálló adatbázis az egyik Azure SQL Database három üzembe helyezési lehetőségeit. A másik kettőt vannak [rugalmas készletek](sql-database-elastic-pool.md) és [felügyelt példány](sql-database-managed-instance.md).
@@ -57,6 +57,6 @@ Az SQL Database biztosít széles körű [beépített biztonsági és megfelelő
 
 ## <a name="next-steps"></a>További lépések
 
-- Való használatának gyors megkezdése egy önálló adatbázis, a [egyetlen adatbázis rövid guide.md](sql-database-quickstart-guide.md).
+- Való használatának gyors megkezdése egy önálló adatbázis, a [egyetlen adatbázis rövid guide.md](sql-database-single-database-quickstart-guide.md).
 - Az SQL Server-adatbázis áttelepítése az Azure-bA kapcsolatos további információkért lásd: [áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](sql-database-features.md).

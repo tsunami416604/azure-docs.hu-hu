@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 6015d226bce578661816bd0f934f7818746b4c3b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b3ddaf7667baf98d9d5daa93a3106e457d0aeacb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507756"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756869"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: Feltöltött képek átméretezésének automatizálása az Event Grid használatával
 
@@ -105,7 +105,7 @@ Most konfigurálnia kell a függvényalkalmazást, hogy csatlakozzon az [előző
 
 ## <a name="configure-the-function-app"></a>A függvényalkalmazás konfigurálása
 
-A függvénynek szüksége van arra, hogy a kapcsolati sztring csatlakozzon a Blob Storage-fiókhoz. A függvénykód, amelyet a következő lépésben helyez üzembe az Azure-ban, megkeresi a myblobstorage_STORAGE alkalmazás-beállításban lévő kapcsolati sztringet, és megkeresi a miniatűrtároló nevét a myContainerName alkalmazásbeállításban. Kérje le a kapcsolati sztringet az [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) paranccsal. Adja meg az alkalmazásbeállításokat az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) paranccsal.
+A függvénynek szüksége van arra, hogy a kapcsolati sztring csatlakozzon a Blob Storage-fiókhoz. A függvénykód, amelyet a következő lépésben helyez üzembe az Azure-ban, megkeresi a myblobstorage_STORAGE alkalmazás-beállításban lévő kapcsolati sztringet, és megkeresi a miniatűrtároló nevét a myContainerName alkalmazásbeállításban. Kérje le a kapcsolati sztringet az [az storage account show-connection-string](/cli/azure/storage/account) paranccsal. Adja meg az alkalmazásbeállításokat az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) paranccsal.
 
 Az alábbi parancssori felületi parancsokban a `<blob_storage_account>` az előző oktatóanyagban létrehozott Blob Storage-fiók neve.
 
@@ -128,7 +128,7 @@ Most már üzembe helyezhet egy függvénykód-projektet a függvényalkalmazás
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-A C#-szkript- (.csx) átméretezési minta elérhető a [GitHubon](https://github.com/Azure-Samples/function-image-upload-resize). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) paranccsal. 
+A C#-szkript- (.csx) átméretezési minta elérhető a [GitHubon](https://github.com/Azure-Samples/function-image-upload-resize). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) paranccsal. 
 
 Az alábbi parancsban `<function_app>` a korábban létrehozott függvényalkalmazás neve.
 
@@ -137,7 +137,7 @@ az functionapp deployment source config --name $functionapp --resource-group $re
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-A minta Node.js-átméretezési függvény elérhető a [GitHubon](https://github.com/Azure-Samples/storage-blob-resize-function-node). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) paranccsal.
+A minta Node.js-átméretezési függvény elérhető a [GitHubon](https://github.com/Azure-Samples/storage-blob-resize-function-node). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) paranccsal.
 
 Az alábbi parancsban `<function_app>` a korábban létrehozott függvényalkalmazás neve.
 

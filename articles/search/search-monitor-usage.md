@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ed084520e092802ffa2a42e8a0c664ec09c4cbb7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: e76c8ae671333bcbf50995c4bd9345f8434fbea2
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093240"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745962"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search erőforrás-használat és a lekérdezés tevékenység figyelése
 
@@ -65,7 +65,7 @@ Az alábbi táblázat a naplók tárolásához és hozzáadása a szolgáltatás
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | A naplózott eseményeket és mérőszámokat lekérdezés,-alapú egyet az alábbi sémák. Eseményeket naplózza a Blob-tárolóba, és JSON-fájlban tárolt. Egy JSON-szerkesztő segítségével megtekintheti a fájl tartalmát.|
 | [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Naplózott események és lekérdezés-metrikák, a jelen cikkben leírt sémák alapján. Válassza ezt a hatalmas naplók az alternatív gyűjtemény szolgáltatásként. |
 
-A Log Analytics és a Blob storage érhetők el ingyenes megosztott szolgáltatásként, hogy Ön is próbálja ki ingyenesen elkölthetők az Azure-előfizetés teljes élettartama. Az Application Insights regisztráljon, és mindaddig, amíg az adatok mérete alkalmazás bizonyos korlátozások mellett használata díjmentes (lásd a [díjszabását ismertető lapon](https://azure.microsoft.com/ricing/details/monitor/) részletekért).
+A Log Analytics és a Blob storage érhetők el ingyenes megosztott szolgáltatásként, hogy Ön is próbálja ki ingyenesen elkölthetők az Azure-előfizetés teljes élettartama. Az Application Insights regisztráljon, és mindaddig, amíg az adatok mérete alkalmazás bizonyos korlátozások mellett használata díjmentes (lásd a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/monitor/) részletekért).
 
 Ez a szakasz végigvezeti a lépéseken, engedélyezése és az Azure Blob storage összegyűjtésére és Azure Search-műveletek által létrehozott naplóadatok eléréséhez.
 

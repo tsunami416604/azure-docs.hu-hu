@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017099"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751922"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Megbízható internetes kapcsolatok útmutató
 
@@ -40,16 +40,16 @@ A kezdeményezés is tartalmaz a biztonsági házirendek, irányelvek és keretr
 
 Azure-szolgáltatásokhoz való csatlakozás három fő lehetőség áll rendelkezésre:
 
-- A közvetlen internetkapcsolatot: Azure-szolgáltatások open internetkapcsolatra keresztül közvetlenül csatlakozhat. A közepes és a kapcsolat nyilvánosak legyenek. Az adatvédelem biztosításához a alkalmazás- és átviteli szintű titkosítást vannak támaszkodnak. A sávszélesség korlátozza a hely kapcsolódni az internetre. A megfelelő rugalmasság egynél több aktív szolgáltatót használják.
-- Virtuális magánhálózati (VPN): az Azure virtuális hálózat privát módon csatlakozhat VPN-átjáró használatával.
+- Közvetlen internet-kapcsolat: Azure-szolgáltatások open internetkapcsolatra keresztül közvetlenül csatlakozhat. A közepes és a kapcsolat nyilvánosak legyenek. Az adatvédelem biztosításához a alkalmazás- és átviteli szintű titkosítást vannak támaszkodnak. A sávszélesség korlátozza a hely kapcsolódni az internetre. A megfelelő rugalmasság egynél több aktív szolgáltatót használják.
+- Virtuális magánhálózati (VPN): Az Azure virtual Networkhöz privát módon csatlakozhat VPN-átjáró használatával.
 A közepes azért nyilvános bejárja a hely normál internetkapcsolattal, de a kapcsolat az adatvédelem biztosításához a vezető alagút titkosított. Attól függően, a VPN-eszközök és a kiválasztott konfiguráció korlátozott a sávszélesség. Azure pont – hely kapcsolatok általában legfeljebb 100 MB/s és helyek közötti kapcsolatok korlátozva, 1,25 GB/s.
-- Az Azure ExpressRoute: Az ExpressRoute közvetlen kapcsolatot Microsoft-szolgáltatásokhoz való. Mivel a kapcsolat egy elkülönített fiber channel vezérlőt használó keresztül, a kapcsolat lehet nyilvános vagy privát használt konfigurációjától függően. A sávszélesség általában korlátozva, legfeljebb 10 GB/s.
+- Azure ExpressRoute: Az ExpressRoute közvetlen kapcsolatot a Microsoft szolgáltatásaihoz. Mivel a kapcsolat egy elkülönített fiber channel vezérlőt használó keresztül, a kapcsolat lehet nyilvános vagy privát használt konfigurációjától függően. A sávszélesség általában korlátozva, legfeljebb 10 GB/s.
 
 Többféleképpen is felel meg a TIC függelék H (Felhőbeli szempontok), az a szervezeti egység, haza Security, a "Megbízható internetes kapcsolatok (TIC) referencia architektúra dokumentum, 2.0-s verziójában." Ez a cikk útmutatást DHS TIC nevezzük **TIC 2.0**.
 
 A kapcsolat engedélyezéséhez a **közigazgatási szervek vagy ügynökségek (D/A)** Azure vagy Office 365, a D/A TIC útválasztási forgalmát nélkül a D/A kell használnia egy titkosított csatornán vagy egy dedikált kapcsolat a felhőszolgáltató (CSP). A CSP-szolgáltatásokkal biztosíthatja a D és A felhőbeli eszközökhöz való kapcsolat nem használhatják az Ügynökség közvetlen munkatársai hozzáférés a nyilvános interneten.
 
-Az Office 365 TIC 2.0 függelék H megfelelő, vagy az ExpressRoute használatával [Microsoft Peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) engedélyezve van, vagy a TLS 1.2 használatával titkosítja az összes forgalom internetkapcsolat. D és A végfelhasználók számára a D/A hálózaton keresztül az Ügynökség hálózat és a TIC infrastruktúra az interneten keresztül kapcsolódhatnak. Az összes távoli internet-hozzáférés az Office 365 le van tiltva, és továbbítja az Ügynökség keresztül. A D és A egy ExpressRoute-kapcsolaton keresztül a Microsoft-Peering (a nyilvános társviszony-létesítés típusa) engedélyezve is csatlakozhat az Office 365.  
+Az Office 365 TIC 2.0 függelék H megfelelő, vagy az ExpressRoute használatával [Microsoft Peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings) engedélyezve van, vagy a TLS 1.2 használatával titkosítja az összes forgalom internetkapcsolat. D és A végfelhasználók számára a D/A hálózaton keresztül az Ügynökség hálózat és a TIC infrastruktúra az interneten keresztül kapcsolódhatnak. Az összes távoli internet-hozzáférés az Office 365 le van tiltva, és továbbítja az Ügynökség keresztül. A D és A egy ExpressRoute-kapcsolaton keresztül a Microsoft-Peering (a nyilvános társviszony-létesítés típusa) engedélyezve is csatlakozhat az Office 365.  
 
 Az Azure csak a második lehetőség (VPN) és a harmadik lehetőség (ExpressRoute) is kórháza, amikor a szolgáltatások, amelyek internet-hozzáférés korlátozása együtt használhatók.
 
@@ -63,10 +63,10 @@ A fő követelmény, hogy biztosítsa a TIC referenciaarchitektúra való megfel
 
 Az Azure IaaS TIC megfelelőségi van osztva a két fő lépést:
 
-- 1. lépés: konfiguráció.
-- 2. lépés: naplózás.
+- 1. lépés: Konfiguráció.
+- 2. lépés: Naplózás.
 
-### <a name="azure-iaas-tic-compliance-configuration"></a>Az Azure IaaS TIC megfelelőségi: konfiguráció
+### <a name="azure-iaas-tic-compliance-configuration"></a>Az Azure IaaS TIC megfelelőségi: Konfiguráció
 
 TIC megfelelő architektúra konfigurálása az Azure-ral, először a virtuális hálózat megakadályozható a közvetlen internet-hozzáféréssel, és majd internetforgalmat a helyszíni hálózaton keresztül.
 
@@ -85,7 +85,7 @@ Az Azure automatikusan hoz létre rendszerútvonalakat, és a virtuális hálóz
 
 ![TIC kényszerített bújtatás](media/tic-diagram-c.png)
 
-Minden olyan forgalmat, hogy a virtuális hálózaton keresztül a helyszíni kapcsolat, győződjön meg arról, hogy az összes adatforgalomra a D/A TIC kell. Egyéni útvonalakat hoz létre, felhasználó által megadott útvonalak létrehozásával, vagy a Border Gateway Protocol (BGP) útvonalakat a helyszíni hálózati átjáró és az Azure VPN Gateway-átjárók közötti kicserélésével. Felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd: [virtuális hálózat forgalmának útválasztása: felhasználó által megadott útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined). A BGP-t kapcsolatos további információkért lásd: [virtuális hálózat forgalmának útválasztása: Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol).
+Minden olyan forgalmat, hogy a virtuális hálózaton keresztül a helyszíni kapcsolat, győződjön meg arról, hogy az összes adatforgalomra a D/A TIC kell. Egyéni útvonalakat hoz létre, felhasználó által megadott útvonalak létrehozásával, vagy a Border Gateway Protocol (BGP) útvonalakat a helyszíni hálózati átjáró és az Azure VPN Gateway-átjárók közötti kicserélésével. Felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd: [virtuális hálózat forgalmának útválasztása: Felhasználó által megadott útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined). A BGP-t kapcsolatos további információkért lásd: [virtuális hálózat forgalmának útválasztása: Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol).
 
 #### <a name="add-user-defined-routes"></a>Felhasználó által megadott útvonalak hozzáadása
 
@@ -97,7 +97,7 @@ Minden olyan forgalmat, hogy a virtuális hálózaton keresztül a helyszíni ka
 
 Ha az ExpressRoute vagy egy BGP-kompatibilis virtuális hálózati átjárót, a BGP az előnyben részesített mechanizmusa útvonalak meghirdetése. A BGP hirdetett útvonal 0.0.0.0/0 ExpressRoute- és BGP-t támogató virtuális hálózati átjárók győződjön meg arról, az alapértelmezett útvonal vonatkozik a virtuális hálózatokon lévő összes alhálózathoz.
 
-### <a name="azure-iaas-tic-compliance-auditing"></a>Az Azure IaaS TIC megfelelőségi: naplózás
+### <a name="azure-iaas-tic-compliance-auditing"></a>Az Azure IaaS TIC megfelelőségi: Naplózás
 
 Az Azure több módot is TIC megfelelőséget kínál.
 
@@ -124,8 +124,8 @@ Azure PaaS-szolgáltatások, például az Azure Storage, internetről elérhető
 
 Azure PaaS-szolgáltatások integrálva vannak a virtuális hálózat, ha a szolgáltatás érhető el privát virtuális hálózaton. Egyéni útválasztás a felhasználó által megadott útvonalakat vagy BGP-n keresztül 0.0.0.0/0 alkalmazhat. Egyéni útválasztás biztosítja, hogy minden internetre irányuló forgalmat irányítja a TIC gyermekelemeinek helyszíni. Azure-szolgáltatások integrálása virtuális hálózatokat a következő minták segítségével:
 
-- **A szolgáltatás egy dedikált példánya üzembe**: PaaS-szolgáltatások egyre több rendszer virtuális hálózati csatolású végpontokkal rendelkező dedikált példány üzembe helyezhető. App Service-környezet a powerapps szolgáltatásra, hogy a hálózati végpontot, hogy egy virtuális hálózathoz kell korlátozott, "Elkülönített" módban telepítheti. Az App Service Environment majd üzemeltethető számos Azure PaaS-szolgáltatások, például az Azure Web Apps, az Azure API Management és az Azure Functions.
-- **Virtuális hálózati Szolgáltatásvégpontok használata**: PaaS-szolgáltatások egyre több engedélyezése arra, hogy a végpont át egy virtuális hálózat privát IP-cím nyilvános cím helyett.
+- **A szolgáltatás egy dedikált példánya üzembe**: PaaS-szolgáltatások egyre több olyan virtuális hálózathoz csatlakoztatott végpontokkal rendelkező dedikált példány üzembe helyezhető. App Service-környezet a powerapps szolgáltatásra, hogy a hálózati végpontot, hogy egy virtuális hálózathoz kell korlátozott, "Elkülönített" módban telepítheti. Az App Service Environment majd üzemeltethető számos Azure PaaS-szolgáltatások, például az Azure Web Apps, az Azure API Management és az Azure Functions.
+- **Virtuális hálózati Szolgáltatásvégpontok használata**: PaaS-szolgáltatások egyre több lehetővé teszik, hogy arra, hogy a végpont át egy virtuális hálózat privát IP-cím nyilvános cím helyett.
 
 Üzembe helyezés egy virtuális hálózatban a dedikált példányok vagy a szolgáltatásvégpontokat, 2018 május támogató szolgáltatások az alábbi táblázatban láthatók.
 
@@ -142,7 +142,7 @@ Azure PaaS-szolgáltatások integrálva vannak a virtuális hálózat, ha a szol
 |Azure Data Lake                | Privát előzetes verzió  |
 |Azure Database for PostgreSQL  | Privát előzetes verzió  |
 |Azure Database for MySQL       | Privát előzetes verzió  |
-|Azure SQL Data Warehouse       | Nyilvános előzetes   |
+|Azure SQL Data Warehouse       | Nyilvános előzetes verzió   |
 |Azure SQL Database             | Általánosan elérhető (GA) |
 |Azure Storage                  | FE               |
 
@@ -150,8 +150,8 @@ Azure PaaS-szolgáltatások integrálva vannak a virtuális hálózat, ha a szol
 
 |Szolgáltatás                               |Rendelkezésre állás      |
 |--------------------------------------|------------------|
-|Felügyelt Azure SQL Database-példány   | Nyilvános előzetes   |
-|Azure Kubernetes Service (AKS)        | Nyilvános előzetes   |
+|Felügyelt Azure SQL Database-példány   | Nyilvános előzetes verzió   |
+|Azure Kubernetes Service (AKS)        | Nyilvános előzetes verzió   |
 |Azure Service Fabric                  | FE               |
 |Azure API Management                  | FE               |
 |Azure Active Directory                | FE               |
@@ -178,13 +178,13 @@ Az alábbi ábrán látható, az általános hálózati forgalom PaaS-szolgálta
    - Közvetlenül a virtuális hálózaton helyezi üzembe.
    - Szelektív engedélyezett, a megfelelő Azure-szolgáltatás útmutatás alapján.
 
-#### <a name="option-a-deploy-a-dedicated-instance-of-a-service-virtual-network-injection"></a>"A" lehetőség Központi telepítése egy szolgáltatás (virtuális hálózat injektálás) egy dedikált példánya
+#### <a name="option-a-deploy-a-dedicated-instance-of-a-service-virtual-network-injection"></a>"A" lehetőség Egy szolgáltatás (virtuális hálózat injektálás) olyan dedikált példányának üzembe helyezése
 
 Virtuális hálózat beszúrása lehetővé teszi a szelektív üzembe dedikált példányok adott Azure-szolgáltatás, például a HDInsight, a saját virtuális hálózatban. Szolgáltatáspéldányok a rendszer üzembe helyezi egy ügyfél virtuális hálózatán dedikált alhálózatán. Virtuális hálózat injektálási lehetővé teszi, hogy a nem internet irányítható-címeken keresztül a szolgáltatási erőforrások hozzáférésének. A helyszíni példányok ExpressRoute és a egy helyek közötti VPN használatával közvetlenül a virtuális hálózat címterét, a nyilvános interneten címtér tűzfal megnyitása helyett keresztül szolgáltatás példányok eléréséhez. Ha dedikált végpont csatlakozik, mint az IaaS TIC megfelelőségi ugyanezen stratégiák is használhatja. Alapértelmezett útválasztás biztosítja az internetre irányuló forgalmat a rendszer átirányítja a helyszíni kötött virtuális hálózati átjárót. További szabályozhatja a bejövő és kimenő hozzáférést, az adott alhálózat NSG-k segítségével.
 
 ![A Virtual network injektálási áttekintése](media/tic-diagram-f.png)
 
-#### <a name="option-b-use-virtual-network-service-endpoints-service-tunnel"></a>A beállítás használata a b virtuális hálózati Szolgáltatásvégpontok (szolgáltatás-alagút)
+#### <a name="option-b-use-virtual-network-service-endpoints-service-tunnel"></a>"B" lehetőség Használja a virtuális hálózati Szolgáltatásvégpontok (szolgáltatás-alagút)
 
 Az Azure több-bérlős szolgáltatások egyre növekvő számú ajánlat "Szolgáltatásvégpontok." A Szolgáltatásvégpontok egy alternatív módszer az Azure virtuális hálózatokhoz való integrálásához. Virtuális hálózati Szolgáltatásvégpontok a virtuális hálózati IP-címtér és a virtuális hálózat, a szolgáltatás identitásának bővítése egy közvetlen kapcsolaton keresztül. A virtuális hálózati forgalmat az Azure-szolgáltatás mindig az Azure gerinchálózatán belül marad. 
 
@@ -245,7 +245,7 @@ Hálózati figyelő által figyelt régióban lévő hálózatok következő ugr
 
 Hozzáférés a Microsoft Azure, Office 365 és Dynamics 365 TIC 2.0 függelék H útmutatása alapján, meghatározott és írásbeli 2018 május, amelyek segítségével egyszerűen konfigurálhatja. Microsoft tisztában van vele, hogy a TIC útmutatást a változhat. A Microsoft-kezdeményezéshez segítenek az ügyfeleknek az útmutató új útmutatót akkor szabadul fel időben találkoznak.
 
-## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>A függelék: Megbízható internetes kapcsolatok minták végzett gyakori számítási feladatokhoz
+## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>A függelék: Gyakori munkaterhelés például a megbízható internetes kapcsolatok minták
 
 | Kategória | Számítási feladat | IaaS | PaaS dedikált / virtuális hálózati injektálás  | Szolgáltatásvégpontok  |
 |---------|---------|---------|---------|--------|
@@ -266,7 +266,7 @@ Hozzáférés a Microsoft Azure, Office 365 és Dynamics 365 TIC 2.0 függelék 
 | Adatbázis | Azure Cache for Redis | | Igen | |
 | Storage | Azure Blob Storage | Igen | | |
 | Storage | Azure Files | Igen | | |
-| Storage | Az Azure Queue storage | Igen | | |
+| Storage | Azure Queue storage | Igen | | |
 | Storage | Azure Table Storage | Igen | | |
 | Storage | Az Azure Disk storage | Igen | | |
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5459ba31d30a86efbe40239f9531298c10cf9d98
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 6f2d4c9a7871e0917b33407605abe1389eb4420e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413600"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753605"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>Egy virtuális gép operációsrendszer-lemezének hibaelhárítása
 
@@ -41,11 +41,11 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az vm show](https://docs.microsoft.com/cli/azure/vm#az_vm_show) | Visszaadja a virtuális gépek listáját. Jelen esetben a rendszer a lekérdezési beállítással adja vissza a virtuális gép operációsrendszer-lemezét. Ezt az értéket ezután hozzáadja egy „uri” nevű változóhoz. |
-| [az vm delete](https://docs.microsoft.com/cli/azure/vm#az_vm_delete) | Töröl egy virtuális gépet. |
+| [az vm show](https://docs.microsoft.com/cli/azure/vm) | Visszaadja a virtuális gépek listáját. Jelen esetben a rendszer a lekérdezési beállítással adja vissza a virtuális gép operációsrendszer-lemezét. Ezt az értéket ezután hozzáadja egy „uri” nevű változóhoz. |
+| [az vm delete](https://docs.microsoft.com/cli/azure/vm) | Töröl egy virtuális gépet. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Létrehoz egy virtuális gépet.  |
 | [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk) | Csatlakoztat egy lemezt egy virtuális géphez. |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list_ip_addresses) | Visszaadja egy virtuális gép IP-címeit. |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm) | Visszaadja egy virtuális gép IP-címeit. |
 
 ## <a name="next-steps"></a>További lépések
 

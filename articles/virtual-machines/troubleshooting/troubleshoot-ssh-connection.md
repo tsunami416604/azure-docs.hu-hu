@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 1454eb5dbf8c80dcf7024c150dbff6a2082dbd02
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d84881d4c86fd91fce430956705791097e200937
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100274"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753418"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Az Azure Linux VM, amely nem sikerül, hibák, vagy elutasítják az SSH-kapcsolatok hibaelhárítása
 Ez a cikk segítségével megkeresheti és kijavíthatja a Secure Shell (SSH) hibák, az SSH-kapcsolati hibák, miatt előforduló problémákat, vagy az SSH elutasítják, amikor megpróbál kapcsolódni egy Linux rendszerű virtuális géphez (VM). Az Azure Portalon, az Azure CLI vagy a Linux VM-hozzáférési bővítmény használatával hibaelhárításához és kapcsolati problémák megoldásához.
@@ -78,20 +78,20 @@ Használat [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher
 Network Watcher használatát [a következő Ugrás](../../network-watcher/network-watcher-check-next-hop-portal.md) teszi, hogy erősítse meg, hogy egy útvonal forgalom nem megakadályozza, hogy vagy a virtuális gépről. Érvényes útvonalak a hálózati adapter érvényes útvonalai tekintse át is. További információkért lásd: [érvényes útvonalak használata virtuális gépek forgalom áramlása](../../virtual-network/diagnose-network-routing-problem.md).
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
-Ha még nem tette, telepítse a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
+Ha még nem tette, telepítse a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index).
 
 Ha elkészült, és egyéni Linux lemezképét feltöltve, ellenőrizze, hogy a [a Microsoft Azure Linux-ügynök](../extensions/agent-windows.md) 2.0.5 verzió vagy újabb verziója szükséges. Image z Galerie használatával létrehozott virtuális gép esetében a hozzáférési bővítmény már telepített és konfigurált Önnek.
 
 ### <a name="reset-ssh-configuration"></a>SSH-konfiguráció visszaállítása
 Először is próbálja meg az SSH-konfigurációjának visszaállítása az alapértelmezett értékeket, és az SSH-kiszolgálót a virtuális gép újraindítása. Ez nem változik a felhasználói fiók nevét, jelszó vagy SSH-kulcsokat.
-Az alábbi példában [az virtuális gép felhasználói reset-ssh](/cli/azure/vm/user#az_vm_user_reset_ssh) nevű virtuális gépre SSH-konfiguráció alaphelyzetbe `myVM` a `myResourceGroup`. A saját értékeit használja a következőképpen:
+Az alábbi példában [az virtuális gép felhasználói reset-ssh](/cli/azure/vm/user) nevű virtuális gépre SSH-konfiguráció alaphelyzetbe `myVM` a `myResourceGroup`. A saját értékeit használja a következőképpen:
 
 ```azurecli
 az vm user reset-ssh --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Alaphelyzetbe az SSH-felhasználó hitelesítő adatai
-Az alábbi példában [az vm user frissítése](/cli/azure/vm/user#az_vm_user_update) hitelesítő adatainak alaphelyzetbe állítása `myUsername` a megadott értékkel `myPassword`, nevű virtuális gépre `myVM` a `myResourceGroup`. A saját értékeit használja a következőképpen:
+Az alábbi példában [az vm user frissítése](/cli/azure/vm/user) hitelesítő adatainak alaphelyzetbe állítása `myUsername` a megadott értékkel `myPassword`, nevű virtuális gépre `myVM` a `myResourceGroup`. A saját értékeit használja a következőképpen:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
@@ -117,7 +117,7 @@ Hozzon létre egy fájlt `settings.json` az alábbi tartalommal:
 }
 ```
 
-Az Azure CLI használatával, majd hívja a `VMAccessForLinux` bővítmény kapcsolat alaphelyzetbe állítása SSHD adjon meg egy json-fájlt. Az alábbi példában [az virtuálisgép-bővítmény csoportot](/cli/azure/vm/extension#az_vm_extension_set) alaphelyzetbe állítani a virtuális gép neve SSHD `myVM` a `myResourceGroup`. A saját értékeit használja a következőképpen:
+Az Azure CLI használatával, majd hívja a `VMAccessForLinux` bővítmény kapcsolat alaphelyzetbe állítása SSHD adjon meg egy json-fájlt. Az alábbi példában [az virtuálisgép-bővítmény csoportot](/cli/azure/vm/extension) alaphelyzetbe állítani a virtuális gép neve SSHD `myVM` a `myResourceGroup`. A saját értékeit használja a következőképpen:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -191,7 +191,7 @@ Indítsa újra a virtuális gép az Azure Portalon, válassza ki a virtuális G�
 ![Az Azure Portalon a virtuális gép újraindítása](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-Az alábbi példában [az virtuális gép újraindítása](/cli/azure/vm#az_vm_restart) nevű virtuális gép újraindítását `myVM` az erőforráscsoport neve `myResourceGroup`. A saját értékeit használja a következőképpen:
+Az alábbi példában [az virtuális gép újraindítása](/cli/azure/vm) nevű virtuális gép újraindítását `myVM` az erőforráscsoport neve `myResourceGroup`. A saját értékeit használja a következőképpen:
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
@@ -218,7 +218,7 @@ Ismételt üzembe helyezése egy virtuális Gépet az Azure Portalon, válassza 
 ![Ismételt üzembe helyezése egy virtuális Gépet az Azure Portalon](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-A következő példa használatát [az vm redeploy](/cli/azure/vm#az_vm_redeploy) nevű virtuális gép ismételt üzembe `myVM` az erőforráscsoport neve `myResourceGroup`. A saját értékeit használja a következőképpen:
+A következő példa használatát [az vm redeploy](/cli/azure/vm) nevű virtuális gép ismételt üzembe `myVM` az erőforráscsoport neve `myResourceGroup`. A saját értékeit használja a következőképpen:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM

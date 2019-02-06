@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: ddd97ea73ce476e72c0c94a756c749e5527799ae
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: ee8dcf1488cfb407793bdb35cdbbee18b2ef15ab
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730781"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750970"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Gyors útmutató: Létrehozása és kezelése az Azure-fájlmegosztások Azure CLI-vel
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure CLI-vel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
@@ -57,7 +57,7 @@ STORAGEACCT=$(az storage account create \
 ```
 
 ### <a name="get-the-storage-account-key"></a>A tárfiókkulcs lekérése
-A tárfiókkulcsok vezérlik a tárfiókokban lévő erőforrások elérését. A kulcsok automatikusan jönnek létre a tárfiókok létrehozásakor. Az [az storage account keys list](/cli/azure/storage/account/keys#list) paranccsal kérheti le a tárfiók tárfiókkulcsait: 
+A tárfiókkulcsok vezérlik a tárfiókokban lévő erőforrások elérését. A kulcsok automatikusan jönnek létre a tárfiókok létrehozásakor. Az [az storage account keys list](/cli/azure/storage/account/keys) paranccsal kérheti le a tárfiók tárfiókkulcsait: 
 
 ```azurecli-interactive 
 STORAGEKEY=$(az storage account keys list \
@@ -124,7 +124,7 @@ az storage file upload \
 
 Ha helyileg futtatja az Azure CLI-t, cserélje le a `~/clouddrive` elérési utat a gép egy meglévő elérési útjára.
 
-A fájl feltöltése után az [`az storage file list`](/cli/azure/storage/file#az_storage_file_list) paranccsal ellenőrizheti, hogy a fájl fel lett-e töltve az Azure-fájlmegosztásba:
+A fájl feltöltése után az [`az storage file list`](/cli/azure/storage/file) paranccsal ellenőrizheti, hogy a fájl fel lett-e töltve az Azure-fájlmegosztásba:
 
 ```azurecli-interactive
 az storage file list \
@@ -136,7 +136,7 @@ az storage file list \
 ```
 
 ### <a name="download-a-file"></a>Fájl letöltése
-Az [`az storage file download`](/cli/azure/storage/file#az_storage_file_download) paranccsal letöltheti a Cloud Shell ideiglenes meghajtójára a feltöltött fájl másolatát:
+Az [`az storage file download`](/cli/azure/storage/file) paranccsal letöltheti a Cloud Shell ideiglenes meghajtójára a feltöltött fájl másolatát:
 
 ```azurecli-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists, because you've run this example before
@@ -191,7 +191,7 @@ Az Azure-fájlmegosztással végezhető egyik további hasznos feladat a megoszt
 
 - [Logikaikötet-kezelő (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pillanatképek Linux rendszerekhez
 - [Apple fájlrendszer (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) pillanatképek macOS rendszerhez
-- [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) Windows-fájlrendszerekhez (például NTFS és ReFS) A megosztási pillanatképek az [`az storage share snapshot`](/cli/azure/storage/share#az_storage_share_snapshot) paranccsal hozhatók létre:
+- [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) Windows-fájlrendszerekhez (például NTFS és ReFS) A megosztási pillanatképek az [`az storage share snapshot`](/cli/azure/storage/share) paranccsal hozhatók létre:
 
 ```azurecli-interactive
 SNAPSHOT=$(az storage share snapshot \
@@ -250,7 +250,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Megosztási pillanatkép törlése
-A megosztási pillanatképek az [`az storage share delete`](/cli/azure/storage/share#az_storage_share_delete) paranccsal törölhetők. Használja a `--snapshot` paraméterre mutató `$SNAPSHOT` hivatkozást tartalmazó változót:
+A megosztási pillanatképek az [`az storage share delete`](/cli/azure/storage/share) paranccsal törölhetők. Használja a `--snapshot` paraméterre mutató `$SNAPSHOT` hivatkozást tartalmazó változót:
 
 ```azurecli-interactive
 az storage share delete \

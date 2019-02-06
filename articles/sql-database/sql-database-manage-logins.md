@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7cb2e4214e868bdf9f585d6b0f4468a6c8375191
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 81ec99c5de94736d68392cc7cf0bc3e305e0ce7d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459231"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754013"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Szabályozása és adatbázis-hozzáférés biztosítása az SQL Database és SQL Data warehouse-bA
 
@@ -49,13 +49,13 @@ A **kiszolgáló-rendszergazdai** és **Azure AD-rendszergazdai** fiókok az al�
 - Ezek a fiókok `dbo`-felhasználóként lépnek be a felhasználói adatbázisokba, és minden engedéllyel rendelkeznek az adatbázison belül. (A felhasználói adatbázis tulajdonosa szintén `dbo`-felhasználóként jelentkezik be.) 
 - Ne adja meg a `master` adatbázisba, a `dbo` felhasználó, és korlátozott engedélyekkel a főadatbázisban. 
 - Vannak **nem** tagjai a standard SQL Server `sysadmin` rögzített kiszolgálói szerepkör, amely nem érhető el az SQL database-ben.  
-- Létrehozhat, alter, és dobja el az adatbázisok, bejelentkezések, felhasználók a master és a kiszolgálószintű tűzfalszabályokat.
+- Létrehozhat, alter, és dobja el az adatbázisok, bejelentkezések, felhasználók a master és a kiszolgálói szintű IP-tűzfalszabályainak.
 - Hozzáadhat és eltávolíthat tagokat a `dbmanager` és `loginmanager` szerepköröket.
 - Megtekintheti a `sys.sql_logins` rendszertáblában.
 
 ### <a name="configuring-the-firewall"></a>A tűzfal konfigurálása
 
-Ha a kiszolgálószintű tűzfal egy önálló IP-címhez vagy -tartományhoz van konfigurálva, az **SQL Server-rendszergazda** és az **Azure Active Directory-rendszergazda** a master adatbázishoz és az összes felhasználói adatbázishoz csatlakozhat. A kezdeti kiszolgálószintű tűzfal az [Azure Portalon](sql-database-get-started-portal.md) konfigurálható a [PowerShell](sql-database-powershell-samples.md) vagy a [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) segítségével. A kapcsolat létrehozása után további kiszolgálószintű tűzfalszabályok is konfigurálhatók a [Transact-SQL](sql-database-configure-firewall-settings.md) segítségével.
+Ha a kiszolgálószintű tűzfal egy önálló IP-címhez vagy -tartományhoz van konfigurálva, az **SQL Server-rendszergazda** és az **Azure Active Directory-rendszergazda** a master adatbázishoz és az összes felhasználói adatbázishoz csatlakozhat. A kezdeti kiszolgálószintű tűzfal az [Azure Portalon](sql-database-single-database-get-started.md) konfigurálható a [PowerShell](sql-database-powershell-samples.md) vagy a [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) segítségével. A kapcsolat létrejötte után további kiszolgálószintű IP-tűzfalszabályainak is megadható a [Transact-SQL](sql-database-configure-firewall-settings.md).
 
 ### <a name="administrator-access-path"></a>Rendszergazdai hozzáférés elérési útja
 
@@ -67,7 +67,7 @@ Amikor nyitott portot használ a kiszolgálószintű tűzfalon, a rendszergazdá
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>Csatlakozás egy adatbázishoz az SQL Server Management Studióval
 
-Ha útmutatót szeretne egy kiszolgáló, adatbázis vagy kiszolgálószintű tűzfalszabályok létrehozásához és az SQL Server Management Studio adatbázis-lekérdezéshez való használatához tekintse meg a következőt: [Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure Portallal és az SQL Server Management Studióval történő használatának első lépései](sql-database-get-started-portal.md).
+A kiszolgáló, adatbázis vagy kiszolgálószintű IP-tűzfalszabályainak létrehozásának és egy adatbázist az SQL Server Management Studio segítségével a lépésenkénti útmutatóért lásd: [Ismerkedés az Azure SQL Database kiszolgálók, -adatbázisok és -tűzfalszabályok az Azure portal használatával és az SQL Server Management Studio](sql-database-single-database-get-started.md).
 
 > [!IMPORTANT]
 > Javasoljuk, hogy mindig a Management Studio legfrissebb verzióját használja, hogy kihasználhassa a Microsoft Azure és az SQL Database legújabb frissítései által nyújtott előnyöket. [Az SQL Server Management Studio frissítése](https://msdn.microsoft.com/library/mt238290.aspx).

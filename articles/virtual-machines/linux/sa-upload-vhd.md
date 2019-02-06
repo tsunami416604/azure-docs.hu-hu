@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: a04c4d41d9682389347009446c590fc4e27400b1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 01d3a20022972b0e18de02bd2730ca31e57cd77a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659541"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755025"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Töltse fel, és a egy Linux virtuális gép létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -31,11 +31,11 @@ Ez a témakör a storage-fiókok használja a végleges virtuális merevlemezek,
 ## <a name="quick-commands"></a>Gyors parancsok
 Ha szeretne gyorsan elvégezni a feladatot, a következő szakaszban részletek alap parancsok VHD feltöltése az Azure-bA. Részletes információkat és a környezet minden lépés találja a dokumentum többi részén [itt indítása](#requirements).
 
-Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index).
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa paraméterneveket foglalt `myResourceGroup`, `mystorageaccount`, és `mydisks`.
 
-Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy `WestUs` nevű erőforráscsoportot a `myResourceGroup` helyen:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy `WestUs` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -48,7 +48,7 @@ az storage account create --resource-group myResourceGroup --location westus \
   --name mystorageaccount --kind Storage --sku Standard_LRS
 ```
 
-Az a tárfiók hozzáférési kulcsainak listázása [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys#az_storage_account_keys_list). Jegyezze fel a `key1`:
+Az a tárfiók hozzáférési kulcsainak listázása [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys). Jegyezze fel a `key1`:
 
 ```azurecli
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
@@ -61,7 +61,7 @@ az storage container create --account-name mystorageaccount \
     --account-key key1 --name mydisks
 ```
 
-Végül töltse fel a VHD-t a létrehozott tárolóba [az storage blob feltöltése](/cli/azure/storage/blob#az_storage_blob_upload). Adja meg a VHD-t a helyi elérési útja `/path/to/disk/mydisk.vhd`:
+Végül töltse fel a VHD-t a létrehozott tárolóba [az storage blob feltöltése](/cli/azure/storage/blob). Adja meg a VHD-t a helyi elérési útja `/path/to/disk/mydisk.vhd`:
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -97,7 +97,7 @@ A következő lépések végrehajtásához szüksége:
   * Hozzon létre egy storage-fiók és az egyéni lemez és a létrehozott virtuális gépek tárolására szolgáló tároló
   * Miután létrehozta a virtuális gépek, nyugodtan törölheti a lemez
 
-Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index).
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa paraméterneveket foglalt `myResourceGroup`, `mystorageaccount`, és `mydisks`.
 
@@ -122,7 +122,7 @@ Is megtekintheti a **[Linux telepítési jegyzetek](create-upload-generic.md#gen
 > 
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-Erőforráscsoportok logikailag egyesítheti az összes Azure-erőforrások a virtuális gépekhez, például a virtuális hálózati és tárolási támogatásához. További információk erőforráscsoportok, lásd: [erőforráscsoportokat áttekintése](../../azure-resource-manager/resource-group-overview.md). Az egyéni lemez feltöltése és a virtuális gépek létrehozása előtt először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create).
+Erőforráscsoportok logikailag egyesítheti az összes Azure-erőforrások a virtuális gépekhez, például a virtuális hálózati és tárolási támogatásához. További információk erőforráscsoportok, lásd: [erőforráscsoportokat áttekintése](../../azure-resource-manager/resource-group-overview.md). Az egyéni lemez feltöltése és a virtuális gépek létrehozása előtt először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group).
 
 A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
@@ -142,7 +142,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>Tárfiókkulcsok listája
-Azure létrehoz két 512 bites kulcsot minden olyan tárfiókhoz. Ezek hozzáférési kulcsokkal hitelesítésekor a storage-fiókban, mint például az írási műveletek elvégzésére. Tudjon meg többet [Itt a storage-hozzáférés kezelése](../../storage/common/storage-account-manage.md#access-keys). Megtekintheti a hozzáférési kulcsok [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys#az_storage_account_keys_list).
+Azure létrehoz két 512 bites kulcsot minden olyan tárfiókhoz. Ezek hozzáférési kulcsokkal hitelesítésekor a storage-fiókban, mint például az írási műveletek elvégzésére. Tudjon meg többet [Itt a storage-hozzáférés kezelése](../../storage/common/storage-account-manage.md#access-keys). Megtekintheti a hozzáférési kulcsok [az tárolási fióklista kulcsok](/cli/azure/storage/account/keys).
 
 A létrehozott tárfiók elérési kulcsainak megtekintése:
 
@@ -175,7 +175,7 @@ az storage container create \
 ```
 
 ## <a name="upload-vhd"></a>VHD feltöltése
-Töltsön fel az egyéni lemez [az storage blob feltöltése](/cli/azure/storage/blob#az_storage_blob_upload). Töltse fel, és tárolja az egyéni lemezt lapblobként.
+Töltsön fel az egyéni lemez [az storage blob feltöltése](/cli/azure/storage/blob). Töltse fel, és tárolja az egyéni lemezt lapblobként.
 
 Adja meg a hozzáférési kulccsal, a létrehozott tárolót az előző lépést, és az egyéni lemez elérési útját a helyi számítógépen:
 
@@ -226,7 +226,7 @@ Belül a `Microsoft.Compute/virtualMachines` szolgáltató a sablon, hogy egy `s
 
 Használhat [a meglévő sablont, és a egy virtuális gép létrehozása egyéni rendszerképből](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) vagy olvasási kapcsolatos [a saját Azure Resource Manager-sablonok létrehozására](../../azure-resource-manager/resource-group-authoring-templates.md). 
 
-Ha egy sablon konfigurálva van, az [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az_group_deployment_create) hozhat létre a virtuális gépeket. Adja meg az URI-ját a JSON-sablon az a `--template-uri` paramétert:
+Ha egy sablon konfigurálva van, az [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment) hozhat létre a virtuális gépeket. Adja meg az URI-ját a JSON-sablon az a `--template-uri` paramétert:
 
 ```azurecli
 az group deployment create --resource-group myNewResourceGroup \

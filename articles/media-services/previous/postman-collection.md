@@ -1,6 +1,6 @@
 ---
-title: Az Azure-On-Demand Streaming műveleteivel a Postman gyűjtemény importálásához
-description: Ez a cikk az Azure Media Services REST-hívások Postman gyűjtemény definícióját tartalmazza.
+title: Az Azure igény szerinti folyamatos átvitel műveletek a Postman-gyűjtemény importálása
+description: Ez a cikk ismerteti az Azure Media Services REST-hívások a Postman-gyűjtemény meghatározását.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: juliako
-ms.openlocfilehash: 311bc6a67e2b63f6f514da5abacb00e5c3cb434f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 34eb7c48c8ebc36f9172f97dda845542b3840a19
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790691"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747679"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Az On-Demand Streaming műveleteivel Postman gyűjtemény importálása
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Az igény szerinti folyamatos átvitel műveletek Postman-gyűjtemény importálása
 
-Ez a cikk a definíciót tartalmaz a **Postman** tartalmazó gyűjteményhez, HTTP-kérelmek Azure Media Services REST API-k hívása csoportosítva. Konfigurálásával kapcsolatos információkat **Postman** , hívja a Media Services REST API-k, lásd: használat [konfigurálása Postman Media Services REST API-hívások](media-rest-apis-with-postman.md) oktatóanyag.
+Ez a cikk a definíciót tartalmaz a **Postman** tartalmazó gyűjteményt, amely csoportosítva, amely az Azure Media Services REST API-k meghívása HTTP-kérelmekre. Konfigurálásával kapcsolatos információkat **Postman** így is használható a Media Services REST API-k meghívása, lásd: [Postman konfigurálása a Media Services REST API-hívások](media-rest-apis-with-postman.md) oktatóanyag.
 
-```
+```json
 {
     "info": {
         "name": "Azure Media Services Operations",
@@ -4264,7 +4264,7 @@ Ez a cikk a definíciót tartalmaz a **Postman** tartalmazó gyűjteményhez, HT
                                 "MediaProcessors"
                             ]
                         },
-                        "description": "List MediaProcesors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "List MediaProcessors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 }

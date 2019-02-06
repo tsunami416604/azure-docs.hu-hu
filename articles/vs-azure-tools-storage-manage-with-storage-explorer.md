@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: cdfb1e11a2eb468e390546d69617ff4cadd17a7e
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 77763765e75500d994235bba0a5c0c3bb3e3be70
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658876"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756818"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer használatának első lépései
 
@@ -87,8 +87,8 @@ Emellett használhatja a tárfiókokat a globális és az országos Azure-ban:
 * [Csatlakozás az Azure-előfizetéshez](#connect-to-an-azure-subscription): Az Azure-előfizetéséhez tartozó tárolási erőforrások kezelése.
 * [Munkavégzés helyi fejlesztési tárterülettel](#work-with-local-development-storage): Helyi tárterület kezelése az Azure Storage Emulator használatával.
 * [Külső tárterület csatolása](#attach-or-detach-an-external-storage-account): Tárolási erőforrások egy másik Azure-előfizetéshez tartozó vagy az országos Azure-felhők a storage-fiók neve, kulcsának és végpontjainak használatával kezelheti.
-* [Tárfiók csatolása SAS használatával](): Közös hozzáférésű jogosultságkód (SAS) használatával egy másik Azure-előfizetéséhez tartozó tárolási erőforrások kezelése.
-* [Szolgáltatás csatolása SAS használatával](#attach-service-using-sas): Kezelheti egy adott tárolási szolgáltatás (blob tároló, üzenetsor vagy tábla), amely a SAS használatával egy másik Azure-előfizetéshez tartozik.
+* [Tárfiók csatolása SAS használatával](#attach-a-storage-account-by-using-a-shared-access-signature-sas): Közös hozzáférésű jogosultságkód (SAS) használatával egy másik Azure-előfizetéséhez tartozó tárolási erőforrások kezelése.
+* [Szolgáltatás csatolása SAS használatával](#attach-a-service-by-using-a-shared-access-signature-sas): Kezelheti egy adott tárolási szolgáltatás (blob tároló, üzenetsor vagy tábla), amely a SAS használatával egy másik Azure-előfizetéshez tartozik.
 * [Csatlakozás az Azure Cosmos DB-fiók egy kapcsolati karakterlánc használatával](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Kapcsolati karakterlánc használatával felügyelheti a Cosmos DB-fiókot.
 
 ## <a name="connect-to-an-azure-subscription"></a>Csatlakozás Azure-előfizetéshez
@@ -295,7 +295,7 @@ Mellett kezelése az Azure Cosmos DB-fiókok az Azure-előfizetéssel, egy Azure
 
     ![Csatlakozás az Azure Cosmos DB kapcsolati karakterlánc][21]
 
-2. Azure Cosmos DB API, és illessze be a **kapcsolati karakterlánc**, és kattintson a **OK** Azure Cosmos DB-fiók csatlakoztatásához. A kapcsolati sztring lekérésével kapcsolatos információk: [A kapcsolati sztring lekérése](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
+2. Azure Cosmos DB API, és illessze be a **kapcsolati karakterlánc**, és kattintson a **OK** Azure Cosmos DB-fiók csatlakoztatásához. A kapcsolati sztring lekérésével kapcsolatos információk: [A kapcsolati sztring lekérése](https://docs.microsoft.com/azure/cosmos-db/manage-account).
 
     ![connection-string][22]
 

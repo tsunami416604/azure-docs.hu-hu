@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: a9c37258d7c9631c6e5fe13007b78c4205a1c249
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 69ca9474c613752b98efa6bb236919508a2fe430
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473884"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753690"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabvány SMB protokollon keresztül érhető el a felhőben. Mivel az Azure Files teljes körűen felügyelt, üzembe helyezés éles forgatókönyvekben, sokkal egyszerűbb, mint az üzembe helyezése és kezelése a fájlkiszolgáló vagy NAS-eszköz. Ez a cikk foglalkozik a témakörök figyelembe kell venni üzembe helyezése az Azure-fájlmegosztás a szervezeten belül éles környezetben való használatra.
@@ -34,7 +34,7 @@ ms.locfileid: "55473884"
 * **URL-formátum**: Az Azure-fájlmegosztások a fájl REST protokoll végrehajtott kérelmek a fájlok a következő URL-formátummal:
 
     ```
-    https://<storage account>.file.core.windows.net/<share>/<directory>/directories>/<file>
+    https://<storage account>.file.core.windows.net/<share>/<directory>/<file>
     ```
 
 ## <a name="data-access-method"></a>Adat-hozzáférési módszer
@@ -95,6 +95,9 @@ Az Azure Files három adatredundanciával kapcsolatos lehetőségek támogatja: 
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
 ### <a name="geo-redundant-storage"></a>Georedundáns tárolás
+> [!Warning]  
+> Ha GRS tárfiók a felhőbeli végpont, használja az Azure-fájlmegosztást, storage-fiók feladatátvétele nem kezdeményezheti. Ezzel OK sync leállításához működő és május is művelettel váratlan adatvesztés esetén újonnan rétegzett fájlok. Egy Azure-régióban, adatvesztés esetén a Microsoft a tárolási fiók feladatátvétel úgy, hogy a kompatibilis az Azure File Sync aktivál.
+
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>Növekedési adatmintát

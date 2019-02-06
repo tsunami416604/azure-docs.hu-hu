@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: c0304e290d18e6569e3fcc2efbab8af15727b80c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: a097110bac7dad630f9a85dd8b20678db0c739cf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508157"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744656"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Az Avere vFXT rendszer megtervezése
 
@@ -37,6 +37,9 @@ A Avere vFXT rendszer hálózati infrastruktúra tervezése során kövesse az a
 * Keresse meg a számítási ügyfélrendszer megközelíti a vFXT fürt. Háttér-tároló több távoli lehet.  
 
 * Az egyszerűség kedvéért keresse meg a vFXT fürt és a fürt vezérlő virtuális Géphez, ugyanabban az erőforráscsoportban és ugyanazon a virtuális hálózaton (vnet). Ezek a kell is használhatja ugyanazt a tárfiókot. (A fürt vezérlő létrehozza a fürtöt, és a is használható parancssori fürtkezelés.)  
+
+  > [!NOTE] 
+  > A fürt létrehozása sablon hozhat létre egy új erőforráscsoportot, és a egy új tárfiókot, a fürt számára. Egy meglévő erőforráscsoportot is megadhat, de üresnek kell lennie.
 
 * A fürt IP-címütközés elkerülése az ügyfelekkel, vagy a számítási erőforrásokat a saját alhálózatán található kell működnie. 
 

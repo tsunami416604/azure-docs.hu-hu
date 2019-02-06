@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e568f2adb3ff9310ed92ed19c9543f249cca7658
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 18c05f2a9dd9f7e4a6d5ec62806870311c5eb130
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098697"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745708"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Naplóriasztások az Azure monitorban
 Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
@@ -74,8 +74,10 @@ A riasztás lenne a lekérdezés futtatásával 5 percenként, a 30 percnyi adat
 
 ### <a name="metric-measurement-alert-rules"></a>Metrikamérési riasztási szabályok
 
-- **Metrikus egység** riasztási szabályok az egyes objektumok riasztás létrehozása, a lekérdezés egy értéket, amely meghalad egy megadott küszöbértéket.  A következő közötti különbségeket az rendelkeznek **eredmények száma** riasztási szabályok.
+**Metrikus egység** riasztási szabályok az egyes objektumok riasztás létrehozása, a lekérdezés egy értéket, amely meghalad egy megadott küszöbértéket.  A következő közötti különbségeket az rendelkeznek **eredmények száma** riasztási szabályok.
+
 - **Összesített függvény**: Meghatározza, hogy a számítás végrehajtott műveletek, és egy numerikus mezőjében összesítendő.  Ha például **count()** rekordok számát adja vissza a lekérdezés, **avg(CounterValue)** az időtartamra, az AVG mező átlagát adja vissza. A lekérdezés aggregátumfüggvényt nevű/nevű kell lennie: AggregatedValue és a egy numerikus értéket adjon meg. 
+
 - **A mező csoport**: Egy rekord egy aggregált értékre jön létre minden egyes példányánál ezt a mezőt, és riasztást minden létrehozható.  Például, ha szeretne az egyes számítógépekhez riasztást hoz létre, használja **számítógépenként**. Arra az esetre vannak több csoport mező van megadva a riasztáshoz kapcsolódó lekérdezés, a felhasználó megadhatja, hogy melyik mezőt rendezéséhez használandó eredmények használatával a **összesített a** (metricColumn) paramétert
 
     > [!NOTE]

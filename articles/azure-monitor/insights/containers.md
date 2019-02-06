@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 6fd614a632945dbcc89c530df54b8416809029d1
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9cf64f98e0a06fc063340f39326fdc1c12645db8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194028"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756444"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
 
@@ -105,8 +105,8 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
   - A Docker-gazdagép több vezénylési:
     - Ha egy Red Hat OpenShift környezettel rendelkezik, tekintse át [konfigurálása a Log Analytics-ügynököket, a Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
     - Ha rendelkezik egy Kubernetes-fürtöt az Azure Container Service használatával:
-       - Felülvizsgálat [Kubernetes a Log Analytics Linux-ügynökének konfigurálása](#configure-an-oms-linux-agent-for-kubernetes).
-       - Felülvizsgálat [konfigurálja a Kubernetes a Log Analytics Windows ügynök](#configure-an-oms-windows-agent-for-kubernetes).
+       - Felülvizsgálat [Kubernetes a Log Analytics Linux-ügynökének konfigurálása](#configure-a-log-analytics-linux-agent-for-kubernetes).
+       - Felülvizsgálat [konfigurálja a Kubernetes a Log Analytics Windows ügynök](#configure-a-log-analytics-windows-agent-for-kubernetes).
        - Felülvizsgálat [Helm használata a Linux Kubernetes a Log Analytics-ügynök telepítése](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
     - Ha rendelkezik egy Azure Container Service DC/OS-fürtön, további tudnivalókat talál [egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
     - Ha egy Docker Swarm módú környezettel rendelkezik, további tudnivalókat talál [konfigurálása egy Log Analytics-ügynököket a Docker Swarmra](#configure-an-oms-agent-for-docker-swarm).

@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 6c2a642c30be79c907286e4ffac6bcea40d86fcd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4bc683908646a5c05fee14f721e2c26482518947
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247748"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751395"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagálás Blob storage-események
 
@@ -90,7 +90,7 @@ BLOB storage-események összes kell reagálni az igények változásaira az ada
 További információkért lásd: [Blob storage-események sémája](../../event-grid/event-schema-blob-storage.md).
 
 ## <a name="filtering-events"></a>Események szűrése
-Esemény-előfizetések a BLOB az esemény típusa, valamint a tároló neve és a létrehozott vagy törölt objektum blob neve alapján szűrhetők.  Szűrők alkalmazható esemény-előfizetések vagy során a [létrehozási](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create) az esemény-előfizetés vagy [egy későbbi időpontban](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update). Az Event Grid során alapján tárgy szűrőket "kezdődik" és "vége" egyezést, így az előfizető kézbesíti az eseményeket egy megfelelő témát. 
+Esemény-előfizetések a BLOB az esemény típusa, valamint a tároló neve és a létrehozott vagy törölt objektum blob neve alapján szűrhetők.  Szűrők alkalmazható esemény-előfizetések vagy során a [létrehozási](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) az esemény-előfizetés vagy [egy későbbi időpontban](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest). Az Event Grid során alapján tárgy szűrőket "kezdődik" és "vége" egyezést, így az előfizető kézbesíti az eseményeket egy megfelelő témát. 
 
 A Blob storage-események tárgya a formátumot használja:
 

@@ -1,6 +1,6 @@
 ---
 title: Kötegelés használata Azure SQL Database-alkalmazások teljesítményének javítása érdekében
-description: A témakör igazolja, hogy kötegelés adatbázis-műveletek sebessége nagy mértékben imroves és az Azure SQL Database az alkalmazások méretezhetősége. Bár a kötegelés technikák ugyanúgy alkalmazhatók bármely SQL Server-adatbázis, a cikk célja az Azure-ban.
+description: A témakör igazolja, hogy adatbázis-műveletek kötegelése jelentősen növeli a sebességet és méretezhetőséget biztosít, az Azure SQL Database-alkalmazások. Bár a kötegelés technikák ugyanúgy alkalmazhatók bármely SQL Server-adatbázis, a cikk célja az Azure-ban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: f347543bbea11329cf4bb7c03dac6ccf7f04ac77
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b94c5f712469183d64704307316f8bbdaa3d5a11
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455388"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751633"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Kötegelés használata SQL Database-alkalmazások teljesítményének javítása érdekében
 
@@ -50,42 +50,47 @@ A tanulmány első része a SQL Database használata .NET-alkalmazásokban kül�
 
 Vegye figyelembe az alábbi C#-kódot, amely tartalmazza a Beszúrás sorozatát, és frissítési műveleteket végez egy egyszerű táblázat.
 
-    List<string> dbOperations = new List<string>();
-    dbOperations.Add("update MyTable set mytext = 'updated text' where id = 1");
-    dbOperations.Add("update MyTable set mytext = 'updated text' where id = 2");
-    dbOperations.Add("update MyTable set mytext = 'updated text' where id = 3");
-    dbOperations.Add("insert MyTable values ('new value',1)");
-    dbOperations.Add("insert MyTable values ('new value',2)");
-    dbOperations.Add("insert MyTable values ('new value',3)");
-
+```csharp
+List<string> dbOperations = new List<string>();
+dbOperations.Add("update MyTable set mytext = 'updated text' where id = 1");
+dbOperations.Add("update MyTable set mytext = 'updated text' where id = 2");
+dbOperations.Add("update MyTable set mytext = 'updated text' where id = 3");
+dbOperations.Add("insert MyTable values ('new value',1)");
+dbOperations.Add("insert MyTable values ('new value',2)");
+dbOperations.Add("insert MyTable values ('new value',3)");
+```
 A következő ADO.NET kód egymás után végrehajtja ezeket a műveleteket.
 
-    using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
-    {
-        conn.Open();
+```csharp
+using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+{
+    conn.Open();
 
-        foreach(string commandString in dbOperations)
-        {
-            SqlCommand cmd = new SqlCommand(commandString, conn);
-            cmd.ExecuteNonQuery();                   
-        }
+    foreach(string commandString in dbOperations)
+    {
+        SqlCommand cmd = new SqlCommand(commandString, conn);
+        cmd.ExecuteNonQuery();
     }
+}
+```
 
 Ez a kód optimalizálása érdekében a legjobb módja, hogy valamilyen ügyféloldali kötegelés hívások. Azonban egy egyszerű módja, ez a kód a teljesítmény növeléséhez a egyszerűen alkalmazásburkoló hívások sorrendjét a tranzakcióban. Íme egy tranzakció használja ugyanazt a kódot.
 
-    using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+```csharp
+using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+{
+    conn.Open();
+    SqlTransaction transaction = conn.BeginTransaction();
+
+    foreach (string commandString in dbOperations)
     {
-        conn.Open();
-        SqlTransaction transaction = conn.BeginTransaction();
-
-        foreach (string commandString in dbOperations)
-        {
-            SqlCommand cmd = new SqlCommand(commandString, conn, transaction);
-            cmd.ExecuteNonQuery();
-        }
-
-        transaction.Commit();
+        SqlCommand cmd = new SqlCommand(commandString, conn, transaction);
+        cmd.ExecuteNonQuery();
     }
+
+    transaction.Commit();
+}
+```
 
 Tranzakciók ténylegesen használnak a mindkét példa. Az első példában az egyes hívások egy implicit tranzakciók. A második példában az explicit tranzakciók burkolja az összes, a hívások. A dokumentációban száma a [írási előre tranzakciónapló](https://msdn.microsoft.com/library/ms186259.aspx), naplórekordok kiürített a lemezre, ha a tranzakció-véglegesítések. További hívások együtt egy tranzakcióban, így az a tranzakciós naplóba írás késleltetheti mindaddig, amíg a tranzakció véglegesítve. Érvényben engedélyezi az írási műveletek a kiszolgáló tranzakciónapló-kötegelésében.
 
@@ -124,59 +129,66 @@ ADO.NET-tranzakciók kapcsolatos további információkért lásd: [helyi ADO.NE
 
 Tábla értékű paraméter támogatja a felhasználó által definiált táblatípusokban a Transact-SQL-utasítások, a tárolt eljárások és függvények paraméterekként. Ez az ügyféloldali kötegelés módszer lehetővé teszi, hogy a tábla értékű paraméter belül több adatsor küldhet. Tábla értékű paraméterek használatához először meg kell határoznia egy táblatípus. A következő Transact-SQL-utasítást hoz létre, egy táblatípus, nevű **MyTableType**.
 
+```sql
     CREATE TYPE MyTableType AS TABLE 
     ( mytext TEXT,
       num INT );
-
+```
 
 A kódban, hozzon létre egy **DataTable** pontosan ugyanazokat a neveket és a táblatípus típusú. Továbbítja **DataTable** szöveges lekérdezés vagy tárolt eljárás paraméter hívja. A következő példa ezt a módszert mutatja:
 
-    using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+```csharp
+using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+{
+    connection.Open();
+
+    DataTable table = new DataTable();
+    // Add columns and rows. The following is a simple example.
+    table.Columns.Add("mytext", typeof(string));
+    table.Columns.Add("num", typeof(int));
+    for (var i = 0; i < 10; i++)
     {
-        connection.Open();
-
-        DataTable table = new DataTable();
-        // Add columns and rows. The following is a simple example.
-        table.Columns.Add("mytext", typeof(string));
-        table.Columns.Add("num", typeof(int));    
-        for (var i = 0; i < 10; i++)
-        {
-            table.Rows.Add(DateTime.Now.ToString(), DateTime.Now.Millisecond);
-        }
-
-        SqlCommand cmd = new SqlCommand(
-            "INSERT INTO MyTable(mytext, num) SELECT mytext, num FROM @TestTvp",
-            connection);
-
-        cmd.Parameters.Add(
-            new SqlParameter()
-            {
-                ParameterName = "@TestTvp",
-                SqlDbType = SqlDbType.Structured,
-                TypeName = "MyTableType",
-                Value = table,
-            });
-
-        cmd.ExecuteNonQuery();
+        table.Rows.Add(DateTime.Now.ToString(), DateTime.Now.Millisecond);
     }
+
+    SqlCommand cmd = new SqlCommand(
+        "INSERT INTO MyTable(mytext, num) SELECT mytext, num FROM @TestTvp",
+        connection);
+
+    cmd.Parameters.Add(
+        new SqlParameter()
+        {
+            ParameterName = "@TestTvp",
+            SqlDbType = SqlDbType.Structured,
+            TypeName = "MyTableType",
+            Value = table,
+        });
+
+    cmd.ExecuteNonQuery();
+}
+```
 
 Az előző példában a **SqlCommand** objektum egy tábla értékű paraméter a sor beszúrása **@TestTvp**. A korábban létrehozott **DataTable** objektumot hozzá van rendelve ezt a paramétert a **SqlCommand.Parameters.Add** metódust. A teljesítmény hívásonként Beszúrások kötegelés jelentősen növeli a szekvenciális Beszúrások keresztül.
 
 Az előző példában további javításához használja a tárolt eljárás egy szöveges alapú parancs helyett. A következő Transact-SQL parancs létrehoz egy tárolt eljárást, amely a **SimpleTestTableType** tábla értékű paraméter.
 
-    CREATE PROCEDURE [dbo].[sp_InsertRows] 
-    @TestTvp as MyTableType READONLY
-    AS
-    BEGIN
-    INSERT INTO MyTable(mytext, num) 
-    SELECT mytext, num FROM @TestTvp
-    END
-    GO
+```sql
+CREATE PROCEDURE [dbo].[sp_InsertRows] 
+@TestTvp as MyTableType READONLY
+AS
+BEGIN
+INSERT INTO MyTable(mytext, num) 
+SELECT mytext, num FROM @TestTvp
+END
+GO
+```
 
 Módosítsa a **SqlCommand** objektumot az előző példakódban a következő nyilatkozatot.
 
-    SqlCommand cmd = new SqlCommand("sp_InsertRows", connection);
-    cmd.CommandType = CommandType.StoredProcedure;
+```csharp
+SqlCommand cmd = new SqlCommand("sp_InsertRows", connection);
+cmd.CommandType = CommandType.StoredProcedure;
+```
 
 A legtöbb esetben tábla értékű paraméterek rendelkezik egyenértékű vagy annál nagyobb teljesítmény, mint a többi kötegelés technikákat. Tábla értékű paraméterek gyakran előnyös, mivel olyan rugalmasabb, mint a többi példány. Egyéb technikák, például az SQL tömeges másolási, például csak az új sorok beszúrását teszi lehetővé. De a tábla értékű paraméter használható logikai a tárolt eljárás annak meghatározására, hogy mely sorokat frissítések és amelyek szúr be. A tábla típusa is módosíthatja, amely azt jelzi, hogy egy megadott sorának kell lennie beszúrt, frissített vagy törölt egy "Művelet" oszlop tartalmazhat.
 
@@ -203,18 +215,20 @@ A tábla értékű paraméterek további információkért lásd: [Table-Valued 
 
 A tömeges másolási SQL egy másik módja a nagy mennyiségű adat beillesztése a céladatbázis. .NET-alkalmazások használhatják a **kapcsolatot az SqlBulkCopy** osztály végrehajtásához tömeges beszúrási műveletek. **Kapcsolatot az SqlBulkCopy** a parancssori eszköz, a függvény hasonló **Bcp.exe**, vagy a Transact-SQL utasítás **TÖMEGES Beszúrás**. Az alábbi példakód bemutatja, hogyan tömegesen másolni a sorokat a forrás **DataTable**, tábla-, az SQL Server, a céltábla MyTable.
 
-    using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
-    {
-        connection.Open();
+```csharp
+using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+{
+    connection.Open();
 
-        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
-        {
-            bulkCopy.DestinationTableName = "MyTable";
-            bulkCopy.ColumnMappings.Add("mytext", "mytext");
-            bulkCopy.ColumnMappings.Add("num", "num");
-            bulkCopy.WriteToServer(table);
-        }
+    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
+    {
+        bulkCopy.DestinationTableName = "MyTable";
+        bulkCopy.ColumnMappings.Add("mytext", "mytext");
+        bulkCopy.ColumnMappings.Add("num", "num");
+        bulkCopy.WriteToServer(table);
     }
+}
+```
 
 Vannak bizonyos esetekben, amikor a tömeges másolási előnyben részesített tábla értékű paraméterek keresztül. Lásd a táblázat értékű paraméterek a cikk a TÖMEGES Beszúrás műveletek és-összehasonlító táblázatot [Table-Valued paraméterek](https://msdn.microsoft.com/library/bb510489.aspx).
 
@@ -241,24 +255,25 @@ A tömeges másolás az ADO.NET további információkért lásd: [az SQL Server
 
 Kis kötegei esetében egy alternatív, hogy hozhat létre egy nagy paraméteres INSERT utasítás, amely több sort szúr be. Az alábbi példakód bemutatja ezt a módszert.
 
-    using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+```csharp
+using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
+{
+    connection.Open();
+
+    string insertCommand = "INSERT INTO [MyTable] ( mytext, num ) " +
+        "VALUES (@p1, @p2), (@p3, @p4), (@p5, @p6), (@p7, @p8), (@p9, @p10)";
+
+    SqlCommand cmd = new SqlCommand(insertCommand, connection);
+
+    for (int i = 1; i <= 10; i += 2)
     {
-        connection.Open();
-
-        string insertCommand = "INSERT INTO [MyTable] ( mytext, num ) " +
-            "VALUES (@p1, @p2), (@p3, @p4), (@p5, @p6), (@p7, @p8), (@p9, @p10)";
-
-        SqlCommand cmd = new SqlCommand(insertCommand, connection);
-
-        for (int i = 1; i <= 10; i += 2)
-        {
-            cmd.Parameters.Add(new SqlParameter("@p" + i.ToString(), "test"));
-            cmd.Parameters.Add(new SqlParameter("@p" + (i+1).ToString(), i));
-        }
-
-        cmd.ExecuteNonQuery();
+        cmd.Parameters.Add(new SqlParameter("@p" + i.ToString(), "test"));
+        cmd.Parameters.Add(new SqlParameter("@p" + (i+1).ToString(), i));
     }
 
+    cmd.ExecuteNonQuery();
+}
+```
 
 Ebben a példában az adott megjelenítése alapvető fogalma. Ha valószerűbb forgatókönyvet szeretne egyszerre létrehozni a lekérdezési karakterláncot, és a parancs paraméterei a szükséges entitások lenne hurkot. Ön 2100 lekérdezési paramétereket, összesen legfeljebb ez korlátozza az ilyen módon feldolgozható sorok száma.
 
@@ -378,88 +393,92 @@ Az alábbi példakód [Reactive Extensions - Rx](https://msdn.microsoft.com/data
 
 A következő NavHistoryData osztály modellek a felhasználói navigációs adatai. Például a felhasználói azonosító, az elért URL-cím és a hozzáférés ideje alapvető információkat tartalmaz.
 
-```c#
-    public class NavHistoryData
-    {
-        public NavHistoryData(int userId, string url, DateTime accessTime)
-        { UserId = userId; URL = url; AccessTime = accessTime; }
-        public int UserId { get; set; }
-        public string URL { get; set; }
-        public DateTime AccessTime { get; set; }
-    }
+```csharp
+public class NavHistoryData
+{
+    public NavHistoryData(int userId, string url, DateTime accessTime)
+    { UserId = userId; URL = url; AccessTime = accessTime; }
+    public int UserId { get; set; }
+    public string URL { get; set; }
+    public DateTime AccessTime { get; set; }
+}
 ```
 
 A NavHistoryDataMonitor osztály felelős az adatbázis felhasználói navigációs adatainak pufferelése. Egy módszer, RecordUserNavigationEntry, amely különböző tudásbázisokból megjelenítve jelzi a problémákat tartalmaz egy **OnAdded** esemény. A következő kód bemutatja a konstruktor logika, amely Rx használ egy esemény alapján megfigyelhető gyűjtemény létrehozásához. Majd feliratkozik a megfigyelhető gyűjtemény a puffer módszerrel oszthatók ki. A túlterhelés Megadja, hogy a puffer kell küldeni, 20 másodpercenként vagy 1000 bejegyzések.
 
-```c#
+```csharp
+public NavHistoryDataMonitor()
+{
+    var observableData =
+        Observable.FromEventPattern<NavHistoryDataEventArgs>(this, "OnAdded");
+
+    observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);
+}
+```
+
+A kezelő a pufferelt elemek mindegyikét alakítja át a tábla értékű típusa, és továbbítja majd ilyen egy tárolt eljárást, amely feldolgozza a batch. A következő kód bemutatja a NavHistoryDataEventArgs, mind a NavHistoryDataMonitor osztályok teljes definíciója.
+
+```csharp
+public class NavHistoryDataEventArgs : System.EventArgs
+{
+    public NavHistoryDataEventArgs(NavHistoryData data) { Data = data; }
+    public NavHistoryData Data { get; set; }
+}
+
+public class NavHistoryDataMonitor
+{
+    public event EventHandler<NavHistoryDataEventArgs> OnAdded;
+
     public NavHistoryDataMonitor()
     {
         var observableData =
             Observable.FromEventPattern<NavHistoryDataEventArgs>(this, "OnAdded");
 
-        observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);           
+        observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);
     }
 ```
 
 A kezelő a pufferelt elemek mindegyikét alakítja át a tábla értékű típusa, és továbbítja majd ilyen egy tárolt eljárást, amely feldolgozza a batch. A következő kód bemutatja a NavHistoryDataEventArgs, mind a NavHistoryDataMonitor osztályok teljes definíciója.
 
-```c#
+```csharp
     public class NavHistoryDataEventArgs : System.EventArgs
     {
-        public NavHistoryDataEventArgs(NavHistoryData data) { Data = data; }
-        public NavHistoryData Data { get; set; }
+        if (OnAdded != null)
+            OnAdded(this, new NavHistoryDataEventArgs(data));
     }
 
-    public class NavHistoryDataMonitor
+    protected void Handler(IList<EventPattern<NavHistoryDataEventArgs>> items)
     {
-        public event EventHandler<NavHistoryDataEventArgs> OnAdded;
-
-        public NavHistoryDataMonitor()
+        DataTable navHistoryBatch = new DataTable("NavigationHistoryBatch");
+        navHistoryBatch.Columns.Add("UserId", typeof(int));
+        navHistoryBatch.Columns.Add("URL", typeof(string));
+        navHistoryBatch.Columns.Add("AccessTime", typeof(DateTime));
+        foreach (EventPattern<NavHistoryDataEventArgs> item in items)
         {
-            var observableData =
-                Observable.FromEventPattern<NavHistoryDataEventArgs>(this, "OnAdded");
-
-            observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);           
+            NavHistoryData data = item.EventArgs.Data;
+            navHistoryBatch.Rows.Add(data.UserId, data.URL, data.AccessTime);
         }
 
-        public void RecordUserNavigationEntry(NavHistoryData data)
-        {    
-            if (OnAdded != null)
-                OnAdded(this, new NavHistoryDataEventArgs(data));
-        }
-
-        protected void Handler(IList<EventPattern<NavHistoryDataEventArgs>> items)
+        using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
         {
-            DataTable navHistoryBatch = new DataTable("NavigationHistoryBatch");
-            navHistoryBatch.Columns.Add("UserId", typeof(int));
-            navHistoryBatch.Columns.Add("URL", typeof(string));
-            navHistoryBatch.Columns.Add("AccessTime", typeof(DateTime));
-            foreach (EventPattern<NavHistoryDataEventArgs> item in items)
-            {
-                NavHistoryData data = item.EventArgs.Data;
-                navHistoryBatch.Rows.Add(data.UserId, data.URL, data.AccessTime);
-            }
+            connection.Open();
 
-            using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
-            {
-                connection.Open();
+            SqlCommand cmd = new SqlCommand("sp_RecordUserNavigation", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
 
-                SqlCommand cmd = new SqlCommand("sp_RecordUserNavigation", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(
+                new SqlParameter()
+                {
+                    ParameterName = "@NavHistoryBatch",
+                    SqlDbType = SqlDbType.Structured,
+                    TypeName = "NavigationHistoryTableType",
+                    Value = navHistoryBatch,
+                });
 
-                cmd.Parameters.Add(
-                    new SqlParameter()
-                    {
-                        ParameterName = "@NavHistoryBatch",
-                        SqlDbType = SqlDbType.Structured,
-                        TypeName = "NavigationHistoryTableType",
-                        Value = navHistoryBatch,
-                    });
-
-                cmd.ExecuteNonQuery();
-            }
+            cmd.ExecuteNonQuery();
         }
     }
+}
 ```
 
 Ez az osztály pufferelési használatához az alkalmazás egy statikus NavHistoryDataMonitor-objektumot hoz létre. Minden alkalommal, amikor egy felhasználó hozzáfér egy oldal, az alkalmazás meghívja a NavHistoryDataMonitor.RecordUserNavigationEntry metódust. Ezek a bejegyzések küldését az adatbázist, és kötegekben gondoskodik abból pufferelési logikát.
@@ -469,97 +488,97 @@ Ez az osztály pufferelési használatához az alkalmazás egy statikus NavHisto
 Tábla értékű paraméterek egyszerű INSERT forgatókönyvek hasznosak. Azonban lehet kötegelt Beszúrás egynél több tábla érintő nehéz lehet. A "kapcsolatú" forgatókönyv egy jó példa. A fő táblázat azonosítja az elsődleges entitásnál. Egy vagy több részlet táblát entitás több adatot tároljon. Ebben a forgatókönyvben a külső kulcsok kapcsolatai kényszerítése a kapcsolat adatainak egy egyedi fölérendelt entitásba. Fontolja meg egy PurchaseOrder és a kapcsolódó OrderDetail tábla egyszerűsített változata. A következő Transact-SQL négy oszlopot hoz létre a PurchaseOrder tábla: OrderID, OrderDate, CustomerID és állapotát.
 
 ```sql
-    CREATE TABLE [dbo].[PurchaseOrder](
-    [OrderID] [int] IDENTITY(1,1) NOT NULL,
-    [OrderDate] [datetime] NOT NULL,
-    [CustomerID] [int] NOT NULL,
-    [Status] [nvarchar](50) NOT NULL,
-     CONSTRAINT [PrimaryKey_PurchaseOrder] 
-    PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
+CREATE TABLE [dbo].[PurchaseOrder](
+[OrderID] [int] IDENTITY(1,1) NOT NULL,
+[OrderDate] [datetime] NOT NULL,
+[CustomerID] [int] NOT NULL,
+[Status] [nvarchar](50) NOT NULL,
+CONSTRAINT [PrimaryKey_PurchaseOrder] 
+PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 ```
 
 Minden egyes ahhoz egy vagy több termék vásárlások tartalmazza. Ez az információ a PurchaseOrderDetail tábla van rögzítve. A következő Transact-SQL a PurchaseOrderDetail táblát hoz létre öt oszlopok: OrderID, OrderDetailID, ProductID, UnitPrice és OrderQty.
 
 ```sql
-    CREATE TABLE [dbo].[PurchaseOrderDetail](
-    [OrderID] [int] NOT NULL,
-    [OrderDetailID] [int] IDENTITY(1,1) NOT NULL,
-    [ProductID] [int] NOT NULL,
-    [UnitPrice] [money] NULL,
-    [OrderQty] [smallint] NULL,
-     CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED 
-    ( [OrderID] ASC, [OrderDetailID] ASC ))
+CREATE TABLE [dbo].[PurchaseOrderDetail](
+[OrderID] [int] NOT NULL,
+[OrderDetailID] [int] IDENTITY(1,1) NOT NULL,
+[ProductID] [int] NOT NULL,
+[UnitPrice] [money] NULL,
+[OrderQty] [smallint] NULL,
+CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED 
+( [OrderID] ASC, [OrderDetailID] ASC ))
 ```
 
 Az OrderID oszlop a PurchaseOrderDetail tábla egy megrendelés kell hivatkoznia a PurchaseOrder táblából. A következő idegen kulcs-definíciót kikényszeríti ezt a korlátozást.
 
 ```sql
-    ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
-    CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
-    REFERENCES [dbo].[PurchaseOrder] ([OrderID])
+ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
+CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
+REFERENCES [dbo].[PurchaseOrder] ([OrderID])
 ```
 
 Tábla értékű paraméterek használatához rendelkeznie kell egy felhasználó által definiált táblatípus egyes céloldali táblához.
 
 ```sql
-    CREATE TYPE PurchaseOrderTableType AS TABLE 
-    ( OrderID INT,
-      OrderDate DATETIME,
-      CustomerID INT,
-      Status NVARCHAR(50) );
-    GO
+CREATE TYPE PurchaseOrderTableType AS TABLE 
+( OrderID INT,
+    OrderDate DATETIME,
+    CustomerID INT,
+    Status NVARCHAR(50) );
+GO
 
-    CREATE TYPE PurchaseOrderDetailTableType AS TABLE 
-    ( OrderID INT,
-      ProductID INT,
-      UnitPrice MONEY,
-      OrderQty SMALLINT );
-    GO
+CREATE TYPE PurchaseOrderDetailTableType AS TABLE 
+( OrderID INT,
+    ProductID INT,
+    UnitPrice MONEY,
+    OrderQty SMALLINT );
+GO
 ```
 
 Megadhatja, egy tárolt eljárást, amely az ilyen jellegű táblákat fogad el. Ez az eljárás lehetővé teszi, hogy az alkalmazás helyileg batch-rendeléseket és a egy hívással rendelés részleteit. A következő Transact-SQL beszerzési rendelés Példánk esetében a teljes tárolt eljárás nyilatkozat biztosít.
 
 ```sql
-    CREATE PROCEDURE sp_InsertOrdersBatch (
-    @orders as PurchaseOrderTableType READONLY,
-    @details as PurchaseOrderDetailTableType READONLY )
-    AS
-    SET NOCOUNT ON;
+CREATE PROCEDURE sp_InsertOrdersBatch (
+@orders as PurchaseOrderTableType READONLY,
+@details as PurchaseOrderDetailTableType READONLY )
+AS
+SET NOCOUNT ON;
 
-    -- Table that connects the order identifiers in the @orders
-    -- table with the actual order identifiers in the PurchaseOrder table
-    DECLARE @IdentityLink AS TABLE ( 
-    SubmittedKey int, 
-    ActualKey int, 
-    RowNumber int identity(1,1)
-    );
+-- Table that connects the order identifiers in the @orders
+-- table with the actual order identifiers in the PurchaseOrder table
+DECLARE @IdentityLink AS TABLE ( 
+SubmittedKey int, 
+ActualKey int, 
+RowNumber int identity(1,1)
+);
 
-          -- Add new orders to the PurchaseOrder table, storing the actual
-    -- order identifiers in the @IdentityLink table   
-    INSERT INTO PurchaseOrder ([OrderDate], [CustomerID], [Status])
-    OUTPUT inserted.OrderID INTO @IdentityLink (ActualKey)
-    SELECT [OrderDate], [CustomerID], [Status] FROM @orders ORDER BY OrderID;
+-- Add new orders to the PurchaseOrder table, storing the actual
+-- order identifiers in the @IdentityLink table   
+INSERT INTO PurchaseOrder ([OrderDate], [CustomerID], [Status])
+OUTPUT inserted.OrderID INTO @IdentityLink (ActualKey)
+SELECT [OrderDate], [CustomerID], [Status] FROM @orders ORDER BY OrderID;
 
-    -- Match the passed-in order identifiers with the actual identifiers
-    -- and complete the @IdentityLink table for use with inserting the details
-    WITH OrderedRows As (
-    SELECT OrderID, ROW_NUMBER () OVER (ORDER BY OrderID) As RowNumber 
-    FROM @orders
-    )
-    UPDATE @IdentityLink SET SubmittedKey = M.OrderID
-    FROM @IdentityLink L JOIN OrderedRows M ON L.RowNumber = M.RowNumber;
+-- Match the passed-in order identifiers with the actual identifiers
+-- and complete the @IdentityLink table for use with inserting the details
+WITH OrderedRows As (
+SELECT OrderID, ROW_NUMBER () OVER (ORDER BY OrderID) As RowNumber 
+FROM @orders
+)
+UPDATE @IdentityLink SET SubmittedKey = M.OrderID
+FROM @IdentityLink L JOIN OrderedRows M ON L.RowNumber = M.RowNumber;
 
-    -- Insert the order details into the PurchaseOrderDetail table, 
-          -- using the actual order identifiers of the master table, PurchaseOrder
-    INSERT INTO PurchaseOrderDetail (
-    [OrderID],
-    [ProductID],
-    [UnitPrice],
-    [OrderQty] )
-    SELECT L.ActualKey, D.ProductID, D.UnitPrice, D.OrderQty
-    FROM @details D
-    JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
-    GO
+-- Insert the order details into the PurchaseOrderDetail table, 
+-- using the actual order identifiers of the master table, PurchaseOrder
+INSERT INTO PurchaseOrderDetail (
+[OrderID],
+[ProductID],
+[UnitPrice],
+[OrderQty] )
+SELECT L.ActualKey, D.ProductID, D.UnitPrice, D.OrderQty
+FROM @details D
+JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
+GO
 ```
 
 Ebben a példában a helyileg definiált @IdentityLink tábla tárolja az újonnan behelyezett sorok tényleges OrderID értékeit. Ezeket az azonosítókat sorrend nem ideiglenes OrderID értékei azonosak a @orders és @details táblázat értékű paramétereket. Ebből kifolyólag a @IdentityLink tábla csatlakoztatja az OrderID értékeket a @orders paraméter az a PurchaseOrder táblázatban új sorok valós OrderID értékek. Elvégezte a lépést a @IdentityLink tábla megkönnyítheti a Beszúrás, a tényleges OrderID, amely eleget tesz a Külsőkulcs-korlátozást a rendelés részleteit.
@@ -567,23 +586,23 @@ Ebben a példában a helyileg definiált @IdentityLink tábla tárolja az újonn
 Ez a tárolt eljárás használható a kódot, vagy más Transact-SQL-hívások. Ez a tanulmány a kód például a tábla értékű paraméterek című szakaszában talál. A következő Transact-SQL bemutatja, hogyan hívhat meg a sp_InsertOrdersBatch.
 
 ```sql
-    declare @orders as PurchaseOrderTableType
-    declare @details as PurchaseOrderDetailTableType
+declare @orders as PurchaseOrderTableType
+declare @details as PurchaseOrderDetailTableType
 
-    INSERT @orders 
-    ([OrderID], [OrderDate], [CustomerID], [Status])
-    VALUES(1, '1/1/2013', 1125, 'Complete'),
-    (2, '1/13/2013', 348, 'Processing'),
-    (3, '1/12/2013', 2504, 'Shipped')
+INSERT @orders 
+([OrderID], [OrderDate], [CustomerID], [Status])
+VALUES(1, '1/1/2013', 1125, 'Complete'),
+(2, '1/13/2013', 348, 'Processing'),
+(3, '1/12/2013', 2504, 'Shipped')
 
-    INSERT @details
-    ([OrderID], [ProductID], [UnitPrice], [OrderQty])
-    VALUES(1, 10, $11.50, 1),
-    (1, 12, $1.58, 1),
-    (2, 23, $2.57, 2),
-    (3, 4, $10.00, 1)
+INSERT @details
+([OrderID], [ProductID], [UnitPrice], [OrderQty])
+VALUES(1, 10, $11.50, 1),
+(1, 12, $1.58, 1),
+(2, 23, $2.57, 2),
+(3, 4, $10.00, 1)
 
-    exec sp_InsertOrdersBatch @orders, @details
+exec sp_InsertOrdersBatch @orders, @details
 ```
 
 Ez a megoldás lehetővé teszi, hogy az egyes kötegek OrderID értékek 1-gyel kezdődő használatára. Ezek az értékek ideiglenes OrderID ismertetik a kapcsolatokat, a batch szolgáltatásban, de a tényleges OrderID értékek határozzák meg a beillesztési művelet idején. Futtassa az előző példában ismételten a azonos utasításokat, és egyedi rendelések létrehozása az adatbázisban. Emiatt fontolja meg, további kódot vagy az adatbázis logika, amely megakadályozza a duplikált rendelések használatakor ez technika kötegelés hozzáadását.
@@ -597,40 +616,40 @@ Egy másik kötegelés forgatókönyv magában foglalja a egyidejűleg frissíti
 Tábla értékű paraméterek a frissítések és beilleszti a MERGE utasítás használható. Vegyük példaként egy egyszerűsített alkalmazott tábla, amely a következő oszlopokat tartalmazza: EmployeeID, az Utónév, Vezetéknév, SocialSecurityNumber:
 
 ```sql
-    CREATE TABLE [dbo].[Employee](
-    [EmployeeID] [int] IDENTITY(1,1) NOT NULL,
-    [FirstName] [nvarchar](50) NOT NULL,
-    [LastName] [nvarchar](50) NOT NULL,
-    [SocialSecurityNumber] [nvarchar](50) NOT NULL,
-     CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED 
-    ([EmployeeID] ASC ))
+CREATE TABLE [dbo].[Employee](
+[EmployeeID] [int] IDENTITY(1,1) NOT NULL,
+[FirstName] [nvarchar](50) NOT NULL,
+[LastName] [nvarchar](50) NOT NULL,
+[SocialSecurityNumber] [nvarchar](50) NOT NULL,
+CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED 
+([EmployeeID] ASC ))
 ```
 
 Ebben a példában használhatja arra, hogy a SocialSecurityNumber egyedi több alkalmazottak az egyesítési művelet végrehajtásával. Először hozza létre a felhasználó által definiált táblatípus:
 
 ```sql
-    CREATE TYPE EmployeeTableType AS TABLE 
-    ( Employee_ID INT,
-      FirstName NVARCHAR(50),
-      LastName NVARCHAR(50),
-      SocialSecurityNumber NVARCHAR(50) );
-    GO
+CREATE TYPE EmployeeTableType AS TABLE 
+( Employee_ID INT,
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    SocialSecurityNumber NVARCHAR(50) );
+GO
 ```
 
 Ezután hozzon létre egy tárolt eljárást, vagy hajtsa végre a frissítést, majd szúrja be a MERGE utasítás használatával kód írására. Az alábbi példában a MERGE utasítás egy tábla értékű paraméter @employees, EmployeeTableType típusú. A tartalmát a @employees tábla nem jelennek meg itt.
 
 ```sql
-    MERGE Employee AS target
-    USING (SELECT [FirstName], [LastName], [SocialSecurityNumber] FROM @employees) 
-    AS source ([FirstName], [LastName], [SocialSecurityNumber])
-    ON (target.[SocialSecurityNumber] = source.[SocialSecurityNumber])
-    WHEN MATCHED THEN 
-    UPDATE SET
-    target.FirstName = source.FirstName, 
-    target.LastName = source.LastName
-    WHEN NOT MATCHED THEN
-       INSERT ([FirstName], [LastName], [SocialSecurityNumber])
-       VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
+MERGE Employee AS target
+USING (SELECT [FirstName], [LastName], [SocialSecurityNumber] FROM @employees) 
+AS source ([FirstName], [LastName], [SocialSecurityNumber])
+ON (target.[SocialSecurityNumber] = source.[SocialSecurityNumber])
+WHEN MATCHED THEN 
+UPDATE SET
+target.FirstName = source.FirstName, 
+target.LastName = source.LastName
+WHEN NOT MATCHED THEN
+    INSERT ([FirstName], [LastName], [SocialSecurityNumber])
+    VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
 ```
 
 További információkért lásd: a dokumentáció és a példák a MERGE utasítás. Bár ugyanazzal a munkahelyi sikerült végezhető el egy több lépésből álló tárolt eljáráshívási az INSERT külön, és frissítési műveleteket, a MERGE utasítás hatékonyabb. Adatbázis-kódot is hozhatnak létre, amelyek a MERGE utasítás közvetlenül anélkül, hogy a két adatbázis-hívások a INSERT és UPDATE Transact-SQL-hívásokat.

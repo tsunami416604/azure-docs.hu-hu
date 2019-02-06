@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: c8aadcf7b37e28035e936a9f722ee832127e928d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8e0b0572f0d728474c17b41a0f92948451f4ef3f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038585"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746948"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Az Azure Cache létrehozása sablon használatával redis
 Ebben a témakörben elsajátíthatja, hogyan hozhat létre egy Azure Resource Manager-sablon üzembe helyez egy Azure Cache redis. A gyorsítótár egy meglévő tárfiókot a diagnosztikai adatok is használható. Emellett megismerjük, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
@@ -33,7 +33,7 @@ A teljes sablonját, lásd: [Azure Cache Redis-sablon](https://github.com/Azure/
 > [!NOTE]
 > Az új Resource Manager-sablonok [prémium szintű](cache-premium-tier-intro.md) érhetők el. 
 > 
-> * [Hozzon létre egy prémium szintű Azure Cache redis klaszterezéssel](https://azure.microsoft.com/documentation/templates/201-redis-premium-cluster-diagnostics/)
+> * [Hozzon létre egy prémium szintű Azure Cache redis klaszterezéssel](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
 > * [Prémium szintű Azure Cache létrehozása redis-adatmegőrzés](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
 > * [A virtuális hálózat és a választható fürtszolgáltatás redis prémium szintű Azure Cache létrehozása](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
 > 

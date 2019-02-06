@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/10/2019
-ms.openlocfilehash: 086e1957c68c5864997c9df9213a0c82cbf4c852
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 11c1f34176e7852806464781e80d6dc0fd5345a4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560753"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750341"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>Oktatóanyag: Földrajzilag elosztott adatbázis implementálása
 
@@ -36,7 +36,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Azure SQL Database-adatbázis. Egy használati létrehozása
-  - [Portál](sql-database-get-started-portal.md)
+  - [Portál](sql-database-single-database-get-started.md)
   - [Parancssori felület](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)
 
@@ -48,7 +48,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 > [!IMPORTANT]
 > Győződjön meg arról, a tűzfalszabályok beállítása annak a számítógépnek, amelyre hajt végre a lépéseket ebben az oktatóanyagban a nyilvános IP-címet használja. Adatbázisszintű tűzfal-szabályok automatikusan replikálja a másodlagos kiszolgálóra.
 >
-> További információ: [hozzon létre egy adatbázisszintű tűzfalszabályt](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) meghatározásához lásd a kiszolgálószintű tűzfalszabályt a számítógép a használt IP-cím vagy [kiszolgálószintű tűzfal létrehozása](sql-database-get-started-portal-firewall.md).  
+> További információ: [hozzon létre egy adatbázisszintű tűzfalszabályt](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) meghatározásához lásd a kiszolgálószintű tűzfalszabályt a számítógép a használt IP-cím vagy [kiszolgálószintű tűzfal létrehozása](sql-database-server-level-firewall-rule.md).  
 
 ## <a name="create-a-failover-group"></a>Hozzon létre egy feladatátvételi csoportot
 

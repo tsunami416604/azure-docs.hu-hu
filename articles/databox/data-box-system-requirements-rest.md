@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: e7c2cc0c0ffaae11bd7bf5113c942cdb98397201
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b36926365b85c576cbe2927c690a30cc64df23d8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551428"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752772"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Az Azure Data Box Blob tárolási követelményei
 
@@ -30,7 +30,7 @@ Azt javasoljuk, hogy tekintse át az információkat gondosan előtt a Data Box 
 |    Inaktív adatok titkosítását                  |    256 bites AES-titkosítás                             |    256 bites AES-titkosítás |
 |    Tárfiók típusa                                 |    Általános célú és az Azure blob storage-fiókok    |    Csak az általános célú v1|
 |    A blob neve                                            |    1024 karakter hosszúságú (2048 bájt)                     |    880 karakter (1,760 bájt)|
-|    Block blob maximális mérete                              |    4,75 TB (100 MB X 50 000 blokk)                   |    4,75 TB (100 MB x 50 000 blokk) az Azure Data Box v 1.7-es és újabb verziók esetében.|
+|    Block blob maximális mérete                              |    4,75 TB (100 MB X 50 000 blokk)                   |    4,75 TB (100 MB x 50 000 blokk) az Azure Data Box v 1.8-as és újabb verziók esetében.|
 |    Lapblob maximális méretét                               |    8 TB                                               |    1 TB                   |
 |    Lapblob oldal méretét                                  |    512 bájt                                          |    4 KB                   |
 
@@ -38,8 +38,10 @@ Azt javasoljuk, hogy tekintse át az információkat gondosan előtt a Data Box 
 
 Data Box Blob storage Azure Storage szolgáltatás API-k következő verziói támogatottak:
 
-Nyilvános előzetes kiadás (az Azure Data Box 1.7-es és újabb verziók)
+Nyilvános előzetes kiadás (az Azure Data Box 1.8-as és újabb verziók)
 
+- [2017-11-09](/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](/rest/api/storageservices/version-2017-07-29)
 - [2017-04-17](/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](/rest/api/storageservices/version-2015-12-11)
@@ -50,31 +52,29 @@ Nyilvános előzetes kiadás (az Azure Data Box 1.7-es és újabb verziók)
 
 |     Ügyfélkódtár     |     Data Box-Blob storage támogatott verziója     |     Hivatkozás             |     Végpont-specifikáció         |
 |------------------------|-------------------------------------------------|---------------------------------------------|------------------------------------|
-|    .NET                |    A 6.2.0 8.7.0 való.                         |    Nuget-csomagot:   https://www.nuget.org/packages/WindowsAzure.Storage/ <br>GitHub-verzió:   https://github.com/Azure/azure-storage-net/releases                                                                      |    App.config fájlban                 |
+|    .NET                |    A 6.2.0 8.7.0 való.                         |    Nuget-csomagot:   https://www.nuget.org/packages/WindowsAzure.Storage/ <br>GitHub-verzió:   https://github.com/Azure/azure-storage-net/releases                                                                      |    app.config file                 |
 |    Java                |    A 4.1.0-s 6.1.0                          |    Maven-csomag:   http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>GitHub-verzió:   https://github.com/Azure/azure-storage-java/releases                                                      |    Kapcsolati karakterlánc beállítása         |
 |    Node.js             |    Az 1.1.0-s 2.7.0                          |    Az NPM-hivatkozás:   https://www.npmjs.com/package/azure-storage   (Például: futtatása "npm telepítése azure-storage@2.7.0")   <br>GitHub-verzió:   https://github.com/Azure/azure-storage-node/releases                            |    Szolgáltatás deklarációjában    |
 |    C++                 |    A 2.4.0 3.1.0                          |    Nuget-csomagot:   https://www.nuget.org/packages/wastorage.v140/   <br>GitHub-verzió:   https://github.com/Azure/azure-storage-cpp/releases                                                                            |    Kapcsolati karakterlánc beállítása         |
 |    PHP                 |    Az az 1.0.0-s 0.15.0                         |    GitHub-verzió:   https://github.com/Azure/azure-storage-php/releases   <br>Composer keresztül (lásd lejjebb)                                                                                                   |    Kapcsolati karakterlánc beállítása         |
 |    Python              |    Az az 1.0.0-s 0.30.0                         |    GitHub-verzió:   https://github.com/Azure/azure-storage-python/releases                                                                                                                                              |    Szolgáltatás deklarációjában    |
-|    Ruby                |    A 0.12.1 1.0.1                         |    RubyGems csomag:<br>Közös:   https://rubygems.org/gems/azure-storage-common/   <br>BLOB: https://rubygems.org/gems/azure-storage-blob/      <br>GitHub-verzió:   https://github.com/Azure/azure-storage-ruby/releases    |                                   |
+|    Ruby                |    A 0.12.1 1.0.1                         |    RubyGems csomag:<br>Közös:   https://rubygems.org/gems/azure-storage-common/   <br>Blob: https://rubygems.org/gems/azure-storage-blob/      <br>GitHub-verzió:   https://github.com/Azure/azure-storage-ruby/releases    |                                   |
 
 ## <a name="supported-azure-client-libraries"></a>Támogatott Azure-ügyfélkönyvtárak
 
-A Data Box Blob storage-ban vannak adott klienskódtárak és adott végpont utótagja követelményeinek.
+A Data Box Blob storage-ban vannak adott klienskódtárak és adott végpont utótagja követelményeinek. A Data Box Blob storage-végpontok nem rendelkezik teljes paritás az Azure Blob Storage REST API legújabb verzióját, lásd: a [az Azure Data Box 1.8-as és újabb verziók esetében támogatott verziók](#supported-api-versions). A tároló ügyfélkódtárai meg kell figyelembe venni a REST API-val kompatibilis verzióra.
 
-A Data Box a Blob Storage támogatott REST API-verziók 2017-04-17-es, 2016-05-31, 2015-12-11, a 2015-07-08, és az Azure Data Box 1.7-es verzió frissítésétől kezdve a 2015-04-05. A Data Box Blob storage-végpontok nem rendelkezik teljes paritásos az Azure Blob Storage REST API legfrissebb verziójával. A tároló ügyfélkódtárai meg kell figyelembe venni a REST API-val kompatibilis verzióra.
-
-### <a name="azure-data-box-17-onwards"></a>Az Azure Data Box 1.7-es és újabb verziók
+### <a name="azure-data-box-18-onwards"></a>Az Azure Data Box 1.8-as és újabb verziók
 
 | Ügyfélkódtár     |Data Box-Blob storage támogatott verziója     | Hivatkozás   |     Végpont-specifikáció      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
-|    .NET                |    8.7.0                                           |    Nuget-csomagot:   https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0    <br>GitHub-verzió:   https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0                                                                                                                                                                                               |    App.config fájlban                 |
+|    .NET                |    8.7.0                                           |    Nuget-csomagot:   https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0    <br>GitHub-verzió:   https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0                                                                                                                                                                                               |    app.config file                 |
 |    Java                |    6.1.0                                           |    Maven-csomag:   http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub-verzió:   https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    Kapcsolati karakterlánc beállítása         |
 |    Node.js             |    2.7.0                                           |    Az NPM-hivatkozás:   https://www.npmjs.com/package/azure-storage   (Futtatásához: az npm telepítése azure-storage@2.7.0)   <br>GitHub-verzió:   https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0                                                                                                                                                                        |    Szolgáltatás deklarációjában    |
 |    C++                 |    3.1.0                                           |    Nuget-csomagot:   https://www.nuget.org/packages/wastorage.v140/3.1.0   <br>GitHub-verzió:   https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0                                                                                                                                                                                                     |    Kapcsolati karakterlánc beállítása         |
-|    PHP                 |    1.0.0                                           |    GitHub-verzió:<br>Közös: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common   <br>BLOB: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob      <br>Szerkesztő (a "további, az alábbi részletek megtekintéséhez.) keresztül telepítése                                                                                                             |    Kapcsolati karakterlánc beállítása         |
+|    PHP                 |    1.0.0                                           |    GitHub-verzió:<br>Közös: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common   <br>Blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob      <br>Szerkesztő (a "további, az alábbi részletek megtekintéséhez.) keresztül telepítése                                                                                                             |    Kapcsolati karakterlánc beállítása         |
 |    Python              |    1.0.0                                           |    GitHub-verzió:<br>Közös:   https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>BLOB:   https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob                                                                                                                                                                          |    Szolgáltatás deklarációjában    |
-|    Ruby                |    1.0.1                                           |    RubyGems csomag:<br>Közös:   https://rubygems.org/gems/azure-storage-common/versions/1.0.1   <br>BLOB: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1         <br>GitHub-verzió:<br>Közös: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common   <br>BLOB: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob          |    Kapcsolati karakterlánc beállítása         |
+|    Ruby                |    1.0.1                                           |    RubyGems csomag:<br>Közös:   https://rubygems.org/gems/azure-storage-common/versions/1.0.1   <br>Blob: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1         <br>GitHub-verzió:<br>Közös: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common   <br>Blob: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob          |    Kapcsolati karakterlánc beállítása         |
 
 
 

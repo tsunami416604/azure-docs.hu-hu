@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 4fd9f76223adba20028288b46037586f8f54fd1a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 99c4f838c3c4e4708c3e21ff9c7e63b69a507dbe
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686381"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746914"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Egy Azure Resource Manager-sablon használatával virtuális gépek létrehozása 
 
@@ -47,7 +47,7 @@ Ez a cikk további részében Microsoft.DevTestLab/labs/virtualmachines használ
 [Ajánlott eljárások az Azure Resource Manager-sablonok létrehozására](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) kínál számos irányelvek és javaslatok létrehozása Azure Resource Manager-sablonok, amelyek segítségével a rendszer megbízható és könnyen használható.
 
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Megtekintheti, és a virtuális gépek Resource Manager-sablon mentése
-1. Kövesse a lépéseket [az első virtuális gép létrehozása tesztkörnyezetben](devtest-lab-create-first-vm.md) egy virtuális gép létrehozásának megkezdéséhez.
+1. Kövesse a lépéseket [az első virtuális gép létrehozása tesztkörnyezetben](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) egy virtuális gép létrehozásának megkezdéséhez.
 1. Adja meg a szükséges információkat a virtuális gép, és adja hozzá az összes összetevőt, ez a virtuális gép használni szeretne.
 1. A konfigurálás beállításai ablak alján válassza **nézet ARM-sablon**.
 

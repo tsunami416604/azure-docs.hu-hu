@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: a5943c1d2e6b04564e1de732b8f3924a67393753
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 66243574a259f15f58f3b215e716d24dc6fa6e6d
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065681"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746677"
 ---
 # <a name="azure-network-security-overview"></a>Azure-hálózat biztonsági áttekintése
 
@@ -84,7 +84,7 @@ További információ:
 
 További információ:
 
-* [Az Azure Security Center csak a T](../security-center/security-center-just-in-time.md)
+* [Az Azure Security Center csak az idő Access](../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 
@@ -192,7 +192,7 @@ A szervezetek, általában szükség van a legmagasabb szintű biztonság és el
 További információ:
 
 * [Az ExpressRoute technikai áttekintése](../expressroute/expressroute-introduction.md)
-* [Az ExpressRoute közvetlen](../expressroute/expressroute-erdirect-about.md)
+* [ExpressRoute direct](../expressroute/expressroute-erdirect-about.md)
 * [Express route globális elérhetőséggel](..//expressroute/expressroute-global-reach.md)
 
 ### <a name="connect-virtual-networks-to-each-other"></a>Egymáshoz virtuális hálózatok összekapcsolása

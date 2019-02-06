@@ -10,12 +10,12 @@ ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 1fb6eeb30b8ba348ce90916955bd8ffbb2cbb7c5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d0e9545a6bc8ec56bc5ae9c9532d80822bfe3505
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459168"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753129"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>Gyors útmutató: Translator Speech API a Javával 
 <a name="HOLTop"></a>
@@ -39,7 +39,7 @@ A következő fájlokra lesz szüksége.
 - [javax-websocket-client-impl-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl)
 - [jetty-client-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client)
 
-A „speak.wav” fájlnak ugyanabban a mappában kell lennie, mint az alábbi kódból fordított végrehajtható fájlnak. Ennek a .wav fájlnak standard PCM, 16 bites, 16 kHz-es, mono formátumúnak kell lennie. Ilyen .wav fájlt a [Text to Speech API-tól](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech) szerezhet be.
+A „speak.wav” fájlnak ugyanabban a mappában kell lennie, mint az alábbi kódból fordított végrehajtható fájlnak. Ennek a .wav fájlnak standard PCM, 16 bites, 16 kHz-es, mono formátumúnak kell lennie. Ilyen .wav fájlt a [Text to Speech API-tól](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) szerezhet be.
 
 Rendelkeznie kell egy [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) és a **Microsoft Translator Speech API-val**. Egy fizetős előfizetői kulcsra van szüksége az [Azure-irányítópultról](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 8ce75efae2d735c5653f9dae72c670b0714351ac
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f0b76e54da60396e01b5893b143bcee9048e2184
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567950"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750324"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépést a személyazonosság-infrastruktúra védelme
 
@@ -38,7 +38,7 @@ Az ajánlások a dokumentum összhangban legyenek a [identitás biztonságos pon
 
 ![Biztonságos identitás-pontszám](media/azure-ad/azure-ad-sec-steps0.png)
 
-## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Előkészületek: védelme MFA hitelesítéssel kiemelt jogosultságú fiókok
+## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Előkészületek: Az MFA kiemelt jogosultságú fiókok védelméhez
 
 Ezzel az ellenőrzőlistával Kezdés előtt győződjön meg arról, miközben acélja épp az ezzel az ellenőrzőlistával, nem feltört. Először a kiemelt jogosultságú fiókok védelméhez.
 
@@ -78,6 +78,9 @@ Ha a szervezet hibrid identitáskezelési megoldás használ az átmenő hiteles
 
 Tudjon meg többet [Jelszókivonat-szinkronizálás](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization) működik.
 
+> [!NOTE]
+> Jelszókivonat-szinkronizálás engedélyezése, és az Azure AD tartományi szolgáltatásokat használja, ha (AES-256) a Kerberos-kivonatok, és szükség esetén (RC4, nem a védőérték) NTLM-kivonatok is titkosítása és az Azure ad-vel szinkronizált. 
+
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>Az AD FS extranet az intelligens zárolás megvalósítása
 
 Konfigurálhatja az alkalmazásokat közvetlenül az Azure AD-hitelesítést a szervezet számára előnyös [Azure ad-ben az intelligens zárolási](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords). Ha az AD FS a Windows Server 2012 R2 használata esetén az AD FS megvalósítására [extranetes fiókzárolási védelem](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Az AD FS a Windows Server 2016 használatakor megvalósítása [intelligens extranetes fiókzárolás](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Az AD FS intelligens extranetes fiókzárolási találgatásos tranzakciómentes támadások, melyik céloldali az AD FS megakadályozza, hogy a felhasználók az Active Directory kizárásuk.
@@ -90,13 +93,13 @@ Használatával [Windows Hello](https://docs.microsoft.com/windows/security/iden
 
 Adja meg a jelszót biztonsági sérülés elterjedtségével, minimalizálja a támadási felületet a szervezetben, kritikus fontosságú. Távolítsa el a régebbi, kevésbé biztonságos protokollok, korlátozza az access belépési pontok, és ilyen erőforrásokhoz való rendszergazdai hozzáférés jelentősebb ellenőrzést csökkentheti a támadási felület.
 
-### <a name="block-legacy-authentication"></a>Az örökölt hitelesítés letiltása
+### <a name="block-legacy-authentication"></a>Régi hitelesítési folyamat letiltása
 
 Saját örökölt módszerekkel fér hozzá vállalati adatokhoz, és az Azure AD-vel hitelesítéséhez alkalmazásokat egy másik veszélyt a szervezet számára. Örökölt hitelesítést használó alkalmazások példái olyan POP3, IMAP4 vagy SMTP-ügyfelek. Az örökölt hitelesítési alkalmazások hitelesítéshez a felhasználó nevében, és a speciális biztonsági értékelések ezzel megakadályozza, hogy az Azure AD. Alternatív, modern hitelesítést, csökkenti a biztonsági kockázatot jelent, mivel támogatja a többtényezős hitelesítés és feltételes hozzáférési. Azt javasoljuk, hogy a következő három műveletek:
 
 1. Blokk [örökölt hitelesítés használatakor az AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. A telepítő [SharePoint Online és Exchange online-hoz a modern hitelesítést használó](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
-3. Használat [feltételes hozzáférési szabályzatok letiltása az örökölt hitelesítési](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication).
+3. Használat [feltételes hozzáférési szabályzatok letiltása az örökölt hitelesítési](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blokk érvénytelen hitelesítési belépési pontok
 

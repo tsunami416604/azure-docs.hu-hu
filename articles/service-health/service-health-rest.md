@@ -10,12 +10,12 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: routlaw
-ms.openlocfilehash: bbbaa4c44a7c0d6da189f0c49d73adfa6142cdee
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6e4bd5977eb1761a065d5583675e6fd405b4610a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095791"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750358"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>A REST API használatával a Resource Health beolvasása 
 
@@ -44,12 +44,12 @@ A következő fejléceket szükség:
 
 | Name (Név) | Leírás |
 | :--- | :---------- |
-| subscriptionId | Az előfizetés-azonosítója, amely azonosítja az Azure-előfizetéssel. Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions). |
+| subscriptionId | Az előfizetés-azonosítója, amely azonosítja az Azure-előfizetéssel. Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | API-verzió | A használandó a kérelem API-verzió.<br /><br /> Ez a dokumentum ismerteti az api-version `2015-04-01`, a fenti URL-címe megtalálható.  |
 | $filter | A szűrési a beállítással úgy csökkenthető a kapott találatok közül készletét. Ez a paraméter a megengedett minták érhetők el [a hivatkozás a vizsgálati naplók művelethez](/rest/api/monitor/activitylogs/list#uri-parameters). A példában látható rögzíti eseményeit a 2018-05-16. és 2018-06-20 időtartomány |
 | &nbsp; | &nbsp; |
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 Ez a művelet nem a kérelem törzsében van szükség.
 

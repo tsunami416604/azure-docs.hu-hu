@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f1607a7d795e3934881429feb18c711a75995e31
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f83c05f4d1dcb93bd424a733866f85edf04bbd05
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062944"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745266"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Az Update Management, Change Tracking és Inventory megoldások a több virtuális gépen
 
@@ -68,14 +68,15 @@ Az alábbi táblázat bemutatja a támogatott leképezések:
 |Délkelet-Ausztrália|Délkelet-Ausztrália|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|USA keleti régiója|EastUS2|
+|EastUS|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
-|Régiója|Régiója|
+|WestCentralUS|WestCentralUS|
 |WestEurope|WestEurope|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
 |EastUS2EUAP|CentralUSEUAP|
+|USA nyugati régiója, 2.|USA nyugati régiója, 2.|
 
 Kapcsolja ki bármelyik virtuális gépet, amely nem szeretné engedélyezni, jelölőnégyzetét. Virtuális gépek, amelyek nem lehet engedélyezni a rendszer már sincs kijelölve.
 
@@ -124,13 +125,13 @@ Amikor bevezetése több gépet, előfordulhat, hogy azt mutatják be, mint gép
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Virtuális gép a jelentéseket egy másik munkaterülethez: "\<workspaceName\>".  Engedélyezésének használandó konfigurációjának módosítása
 
-**OK**: Ez a hiba azt mutatja, hogy a virtuális gép, amely egy másik munkaterülethez előkészítése jelentések kívánt.
+**Ok**: Ez a hiba azt mutatja, hogy a virtuális gép, amely egy másik munkaterülethez előkészítése jelentések kívánt.
 
 **Megoldás**: Kattintson a **konfiguráció használható** a megcélzott Automation-fiók és a Log Analytics-munkaterületen módosíthatja.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM-jelentést a munkaterület, amely nem érhető el ebben az előfizetésben
 
-**OK**: A munkaterület, amely a virtuális gép a jelentéseket:
+**Ok**: A munkaterület, amely a virtuális gép a jelentéseket:
 
 * Egy másik előfizetésben található, vagy
 * Már nem létezik, vagy
@@ -146,13 +147,13 @@ Amikor bevezetése több gépet, előfordulhat, hogy azt mutatják be, mint gép
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Klasszikus virtuális gépeket nem lehet engedélyezni.
 
-**OK**: A klasszikus üzemi modellt használó virtuális gépek nem támogatottak.
+**Ok**: A klasszikus üzemi modellt használó virtuális gépek nem támogatottak.
 
 **Megoldás**: A virtuális gép áttelepítése a resource manager-alapú üzemi modellbe. Ezzel kapcsolatban lásd: [klasszikus üzemi modell erőforrások áttelepítése](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 ### <a name="vm-is-stopped-deallocated"></a>Virtuális gép leállt. (felszabadítva)
 
-**OK**: A virtuális gép nem található egy **futó** állapota.
+**Ok**: A virtuális gép nem található egy **futó** állapota.
 
 **Megoldás**: Annak érdekében, hogy készítse elő egy megoldást a virtuális gép virtuális Gépen kell futnia. Kattintson a **VM indítása** szövegbeli hivatkozást anélkül szeretné elindítani a virtuális gép a lapra navigál.
 

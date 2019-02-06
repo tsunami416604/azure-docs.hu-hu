@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dacc2ca995bebd0ae65d9c8221fc1954687949ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 66daa71ffbe97e9f5374eedd7f51e5afe02f0b94
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179837"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755526"
 ---
 # <a name="register-in-dev-center"></a>A fejlesztői központban regisztrálása  
 Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző személyes fiók, nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenetében.  
@@ -78,7 +78,7 @@ Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző
     | Számlázási modell | További lépések |  
     |:--- |:--- |  
     | Ingyenes | Ugrás a Cloud Partner portálra.<ul> <li>Szeretné közzétenni az Azure Marketplace-en, látogasson el a lapon található, a Cloud Partner portálra [cloudpartner.azure.com](https://cloudpartner.azure.com).</li> </ul> |  
-    | Kereskedelmi (transact) | Frissítse a fiók adatait.<ul> <li>Fiókadatok hozzáadásával kapcsolatos további információkért látogasson el a [Hozzáadás banki és adózási adatok](#how-to-add-bank-and-tax-information) szakaszban.</li> </ul> |  
+    | Kereskedelmi (transact) | Frissítse a fiók adatait.<ul> <li>Fiókadatok hozzáadásával kapcsolatos további információkért látogasson el a [Hozzáadás banki és adózási adatok](#add-bank-information) szakaszban.</li> </ul> |  
 
     *   Egy kereskedelmi ajánlattal egyik példája egy Virtuálisgép-ajánlat a számlázási modell óránként történik.  
 
@@ -146,7 +146,7 @@ A banki és adózási adatait az ajánlati típus transact használatával minde
 > Közzétevő, aki közzéteszi az ajánlati típus Transact: Virtuális gép, az Azure apps: megoldássablonokat, és a felügyelt alkalmazások.  
 
 *   **Miért van szükség fejlesztői központban lévő fiókjához?**
-> Fejlesztői központban lévő fiókjához szükség ahhoz, hogy a Microsoft az ügyfél nevében a közzétevő számlázási ajánlati típus Transact. Fejlesztői központban lévő fiókjához regisztráció lehetővé teszi, hogy a Microsoft ellenőrzése a jogi, adózási és banki információt, a vállalat. További információkért kattintson [itt.](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)
+> Fejlesztői központban lévő fiókjához szükség ahhoz, hogy a Microsoft az ügyfél nevében a közzétevő számlázási ajánlati típus Transact. Fejlesztői központban lévő fiókjához regisztráció lehetővé teszi, hogy a Microsoft ellenőrzése a jogi, adózási és banki információt, a vállalat. További információkért kattintson [itt.](https://docs.microsoft.com/azure/marketplace/become-publisher)
 
 *   **Hogyan kezdhetem Dev Center regisztrációját?**
 > Duplikált elkerülése érdekében győződjön meg arról, hogy a vállalat még nem rendelkezik a fejlesztői központban lévő fiókjához regisztrált. Fejlesztői fiók nyitása társítani kívánt Microsoft-fiókjával kell bejelentkeznie. Ha még nincs Microsoft-fiókja, létrehozhat egy új fiókot [itt.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (Példa: contoso_marketplace@live.com) jelentkezzen be, és regisztrálni, keresse fel a https://dev.windows.com/en-us/registration?accountProgram=Azure
@@ -184,7 +184,7 @@ A banki és adózási adatait az ajánlati típus transact használatával minde
 > Rendelje hozzá egy ideiglenes vállalat neve, forduljon a támogatási szolgálathoz [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) , és adja meg azokat a vállalati eszközregisztrációs dokumentumok.
 
 *   **Hogyan adhatok hozzá kifizetés és adó adataimat?**
-> Nem tudja közzétenni az adózási és banki információt, a fejlesztői központban lévő fiókjához nélkül ajánlatok transact.  Fiókadatok hozzáadásával kapcsolatos további információkért látogasson el [hogyan Hozzáadás banki és adózási adatait.](https://docs.microsoft.com/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information)
+> Nem tudja közzétenni az adózási és banki információt, a fejlesztői központban lévő fiókjához nélkül ajánlatok transact.  Fiókadatok hozzáadásával kapcsolatos további információkért látogasson el [hogyan Hozzáadás banki és adózási adatait.](https://docs.microsoft.com/azure/marketplace/register-dev-center)
 
 *   **Módosíthatom a Dev Center a Microsoft bejelentkezési fiók?**
 > Nem. Miután létrejött a fejlesztői központ, a tulajdonos fiókja nem módosítható. Kezdje egy vadonatúj fejlesztői központ-fiókot a kívánt Microsoft-fiókkal kellene.

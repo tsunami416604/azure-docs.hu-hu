@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 38f0d9cc6f507aa7d521aba0ff737f7bbaf2b211
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2a719fcbe2180e366060fba11bf64ad9770aa672
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468121"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756121"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készletek létrehozása és kezelése
 
@@ -39,7 +39,7 @@ Itt választhat bármilyen kombinációja a következő módosításokat, és me
 
 ## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell: Rugalmas készletek és a készletezett adatbázisok kezelése
 
-Hozzon létre és kezeli az SQL Database rugalmas készletek és a készletezett adatbázisok az Azure PowerShell-lel, használja a következő PowerShell-parancsmagok. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps). Hozhat létre, és az SQL Database-kiszolgálók, rugalmas készletek kezelése, tekintse meg a [létrehozása és kezelése az SQL Database-kiszolgálók](sql-database-servers.md). Hozzon létre és tűzfalszabályok kezelése: [létrehozása és a tűzfalszabályok kezelése PowerShell használatával](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
+Hozzon létre és kezeli az SQL Database rugalmas készletek és a készletezett adatbázisok az Azure PowerShell-lel, használja a következő PowerShell-parancsmagok. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps). Hozhat létre, és az SQL Database-kiszolgálók, rugalmas készletek kezelése, tekintse meg a [létrehozása és kezelése az SQL Database-kiszolgálók](sql-database-servers.md). Hozzon létre és tűzfalszabályok kezelése: [létrehozása és a tűzfalszabályok kezelése PowerShell használatával](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-azure-powershell).
 
 > [!TIP]
 > PowerShell-példa szkriptek, lásd: [rugalmas készletek létrehozása és adatbázisok áthelyezése a készletek között, és a egy PowerShell-lel készletből](scripts/sql-database-move-database-between-pools-powershell.md) és [a PowerShell szolgáltatás használatával az Azure SQL DatabaseegySQLrugalmaskészletmonitorozásaésskálázása](scripts/sql-database-monitor-and-scale-pool-powershell.md).
@@ -79,7 +79,7 @@ Létrehozásához és kezeléséhez az SQL Database rugalmas készletei az [Azur
 
 ## <a name="transact-sql-manage-pooled-databases"></a>Transact-SQL: Készletezett adatbázisok kezelése
 
-Hozhat létre és adatbázisok áthelyezése a meglévő rugalmas készletekben, vagy a Transact-SQL az SQL Database rugalmas készlet információt ad vissza, használja a következő T-SQL-parancsokat. Ezek a parancsok az Azure portal használatával adhat ki [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), vagy bármely más programot, amely képes csatlakozni egy Azure SQL Database-kiszolgálóhoz, és adja át a Transact-SQL parancsok. Hozzon létre és kezelheti a tűzfalszabályok a T-SQL használatával: [tűzfalszabályok kezelése a Transact-SQL használatával](sql-database-firewall-configure.md#manage-firewall-rules-using-transact-sql).
+Hozhat létre és adatbázisok áthelyezése a meglévő rugalmas készletekben, vagy a Transact-SQL az SQL Database rugalmas készlet információt ad vissza, használja a következő T-SQL-parancsokat. Ezek a parancsok az Azure portal használatával adhat ki [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), vagy bármely más programot, amely képes csatlakozni egy Azure SQL Database-kiszolgálóhoz, és adja át a Transact-SQL parancsok. Hozzon létre és kezelheti a tűzfalszabályok a T-SQL használatával: [tűzfalszabályok kezelése a Transact-SQL használatával](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-transact-sql).
 
 > [!IMPORTANT]
 > Nem létrehozása, frissítése vagy törlése az Azure SQL Database rugalmas készlet Transact-SQL használatával. Hozzáadhat vagy eltávolíthat adatbázisokat rugalmas készletben, és dinamikus felügyeleti nézetek használatával meglévő rugalmas készletek kapcsolatos információkat ad vissza.

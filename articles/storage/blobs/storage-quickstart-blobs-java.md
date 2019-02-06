@@ -1,23 +1,26 @@
 ---
-title: Blob létrehozása az Azure Storage-ban a Storage SDK-t a Java 7-es verziója |} A Microsoft Docs
+title: Blob létrehozása az Azure Storage-ban a Java 7-es verzióját az ügyféloldali kódtár használatával |} A Microsoft Docs
 description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtára a Java 7-es verziója feltölt egy blobot az Azure Storage, letölt egy blobot, és a tárolóban lévő blobok listázása.
 services: storage
 author: roygara
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/04/2019
 ms.author: rogarana
-ms.openlocfilehash: 18ba3d70951cd59f59b566c8bfff2403a32e4874
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 3bf82f37752009a488512d720093bc9c595dff8e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730459"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753214"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-java-sdk-v7"></a>Hogyan feltöltése, letöltése és a Java SDK 7-es verzióját használó blobok listázása
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Hogyan feltöltése, letöltése és a Java 7-es verzióját az ügyféloldali kódtár használatával blobok listázása
 
-Ez az útmutató elsajátíthatja, hogyan használható a Java feltöltése, letöltése és listázása az Azure Blob storage tárolóban a blokkblobok használatát támogatják.
+Ez az útmutató hogyan használható az ügyféloldali kódtárral való feltöltése, letöltése és az Azure Blob storage tárolóban lévő listában a blokkblobok használatát támogatják a Java 7-es elsajátíthatja.
+
+> [!TIP]
+> A Javához készült Azure Storage ügyféloldali kódtár legújabb verzióját a v10. A Microsoft azt javasolja, hogy ha lehetséges, az ügyféloldali kódtár legújabb verzióját használja-e. Használatának megkezdéséhez v10, lásd: [a rövid útmutató: Feltöltése, letöltése és blobok listázása a Java Storage SDK V10 használatával](storage-quickstart-blobs-java-v10.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -206,8 +209,6 @@ sourceFile.deleteOnExit();
 Ebben a cikkben megtanulta, hogyan vihetők át fájlok egy helyi lemez és a Java használatával Azure Blob storage között. Ha bővebb információra van szüksége a Java használatával kapcsolatban, lépjen tovább a GitHub-forráskódadattárba.
 
 > [!div class="nextstepaction"]
-> [A Javához készült Azure Storage SDK](https://github.com/azure/azure-storage-java) 
-> [API-referencia](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-> [Java-kódminták](../common/storage-samples-java.md)
-
-* További információk a Storage Explorerről és a blobokról: [Azure Blob Storage-erőforrások kezelése a Storage Explorer használatával](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+> [A Microsoft Azure Storage SDK for Java v10](https://github.com/azure/azure-storage-java) 
+> [Java API-referencia](https://docs.microsoft.com/java/azure/)
+> [Java-Kódminták](../common/storage-samples-java.md)

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 0616118274c3698c8f49e02f80dbfb5e2e818074
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4e83909c23dd5a1dd0768b099e2787d2306480f2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168165"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754353"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazás
 A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok kétfaktoros ellenőrzési használatakor. A kétfaktoros hitelesítési segítségével a fiókok biztonságosabb, hozzáférhet a különösen bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejtett is, amelyeket elloptak vagy feltört, kéttényezős hitelesítés végrehajtása egy további biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében.
@@ -38,10 +38,7 @@ Telepítse a legújabb verzióját a Microsoft Authenticator alkalmazást, az op
 
 - **Apple iOS.** Az Apple iOS-eszközön nyissa meg az App Store a [töltse le és telepítse a Microsoft Authenticator alkalmazás](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
-- **Windows Phone.** A Microsoft Store, lépjen a Windows Phone [töltse le és telepítse a Microsoft Authenticator alkalmazás](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fwww.microsoft.com%2Fen-us%2Fp%2Fmicrosoft-authenticator%2F9nblgggzmcj6).
-
-    >[!Note]
-    >A telefonos bejelentkezési folyamat a Windows Phone-telefonok nem használható. Leírtak szerint kell használnia a standard hitelesítési eljárás a [kétlépéses ellenőrzés beállítása](multi-factor-authentication-end-user-first-time.md) cikk.
+    >[Fontos] Ha Ön nem jelenleg a mobileszközén, továbbra is használhatja a Microsoft Authenticator alkalmazás egy letöltési hivatkozást az küldhet magának a [Microsoft Authenticator lap](https://www.microsoft.com/en-us/account/authenticator).
 
 ## <a name="next-steps"></a>További lépések
 

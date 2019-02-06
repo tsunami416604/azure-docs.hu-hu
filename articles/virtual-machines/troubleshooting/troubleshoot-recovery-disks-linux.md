@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 9e3177b9df41a1612435dddadafd5c7e291e0e35
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 76a29ce05aab39d9460dcf068ec8a7f60d1e8fac
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663587"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753282"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure CLI-vel való csatlakoztatásával Linuxos virtuális gépek hibaelhárítása
 Ha a Linux rendszerű virtuális gép (VM) indítási vagy hiba fordul, szükség lehet a hibaelhárítási lépések végrehajtásához a virtuális merevlemezen magát. Ilyenek például a bejegyzés érvénytelen lenne `/etc/fstab` , amely megakadályozza, hogy a virtuális gép képes arra, hogy sikeresen. Ez a cikk részletesen bemutatja a virtuális merevlemez egy másik Linux rendszerű virtuális géphez, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép csatlakoztatása az Azure CLI használatával. 
@@ -55,7 +55,7 @@ Tekintse át a soros kimenetet határozza meg, miért a virtuális gép rendszer
 ## <a name="view-existing-virtual-hard-disk-details"></a>Meglévő virtuális merevlemez részleteinek megtekintése
 A virtuális merevlemez (VHD) csatlakoztathat egy másik virtuális Géphez, mielőtt az URI-ját az operációsrendszer-lemez azonosítania kell. 
 
-A virtuális gép adatainak megtekintése [az vm show](/cli/azure/vm#az_vm_show). Használja a `--query` bontsa ki az URI-t az operációsrendszer-lemez jelzőt. Az alábbi példa lekéri a virtuális gép nevű lemezadatai `myVM` az erőforráscsoport neve `myResourceGroup`:
+A virtuális gép adatainak megtekintése [az vm show](/cli/azure/vm). Használja a `--query` bontsa ki az URI-t az operációsrendszer-lemez jelzőt. Az alábbi példa lekéri a virtuális gép nevű lemezadatai `myVM` az erőforráscsoport neve `myResourceGroup`:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM \
@@ -81,7 +81,7 @@ Várjon, amíg a virtuális gép törlése a virtuális merevlemezt egy másik v
 ## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>Meglévő virtuális merevlemez csatlakoztatása egy másik virtuális géphez
 A következő néhány lépést, egy másik virtuális Géphez hibaelhárítás céljából használja. A meglévő virtuális merevlemez csatlakoztatása a hibaelhárító virtuális Géphez, és szerkessze a lemez tartalma. Ez a folyamat lehetővé teszi, hogy javítsa az esetleges konfigurációs hibákat, vagy további alkalmazás vagy a rendszer naplófájljait, például tekintse át. Válassza ki, vagy hozzon létre egy másik virtuális Géphez hibaelhárítás céljából használja.
 
-A meglévő virtuális merevlemez csatlakoztatása [az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_attach). Ha a meglévő virtuális merevlemezt csatlakoztat, adja meg az URI-t a lemezt az előző kapott `az vm show` parancsot. Az alábbi példa csatlakoztat egy meglévő virtuális merevlemezt a hibaelhárító virtuális géphez nevű `myVMRecovery` az erőforráscsoport neve `myResourceGroup`:
+A meglévő virtuális merevlemez csatlakoztatása [az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk). Ha a meglévő virtuális merevlemezt csatlakoztat, adja meg az URI-t a lemezt az előző kapott `az vm show` parancsot. Az alábbi példa csatlakoztat egy meglévő virtuális merevlemezt a hibaelhárító virtuális géphez nevű `myVMRecovery` az erőforráscsoport neve `myResourceGroup`:
 
 ```azurecli
 az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -147,7 +147,7 @@ Miután a hibák megoldódnak, válassza le, és le a meglévő virtuális merev
     sudo umount /dev/sdc1
     ```
 
-2. Most már le a virtuális merevlemezt a virtuális gépről. Lépjen ki az SSH-munkamenetből a hibaelhárító virtuális géphez. A csatlakoztatott adatlemezekkel, a hibaelhárító virtuális géphez a listában [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_list). Az alábbi példa felsorolja a nevű virtuális géphez csatolt adatlemezek `myVMRecovery` az erőforráscsoport neve `myResourceGroup`:
+2. Most már le a virtuális merevlemezt a virtuális gépről. Lépjen ki az SSH-munkamenetből a hibaelhárító virtuális géphez. A csatlakoztatott adatlemezekkel, a hibaelhárító virtuális géphez a listában [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk). Az alábbi példa felsorolja a nevű virtuális géphez csatolt adatlemezek `myVMRecovery` az erőforráscsoport neve `myResourceGroup`:
 
     ```azurecli
     azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -156,7 +156,7 @@ Miután a hibák megoldódnak, válassza le, és le a meglévő virtuális merev
 
     Jegyezze fel a meglévő virtuális merevlemez nevét. Például egy lemez neve és URI-ját **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** van **myVHD**. 
 
-    A virtuális gépről az adatlemez leválasztása [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_detach). Az alábbi példa leválasztja a lemezt nevű `myVHD` nevű virtuális gépről `myVMRecovery` a a `myResourceGroup` erőforráscsoportot:
+    A virtuális gépről az adatlemez leválasztása [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk). Az alábbi példa leválasztja a lemezt nevű `myVHD` nevű virtuális gépről `myVMRecovery` a a `myResourceGroup` erőforráscsoportot:
 
     ```azurecli
     az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -169,7 +169,7 @@ Egy virtuális Gépet hozhat létre az eredeti virtuális merevlemez [ezen Azure
 
 - https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json
 
-A sablon üzembe helyezi a virtuális gép korábbi parancsot a virtuális merevlemez URI használatával. Helyezze üzembe a sablont [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az_group_deployment_create). Adja meg az URI-t az eredeti virtuális merevlemezen, majd adja meg az operációs rendszer típusa, a virtuális gép mérete és a virtuális gép neve a következő:
+A sablon üzembe helyezi a virtuális gép korábbi parancsot a virtuális merevlemez URI használatával. Helyezze üzembe a sablont [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment). Adja meg az URI-t az eredeti virtuális merevlemezen, majd adja meg az operációs rendszer típusa, a virtuális gép mérete és a virtuális gép neve a következő:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeployment \
@@ -181,7 +181,7 @@ az group deployment create --resource-group myResourceGroup --name myDeployment 
 ```
 
 ## <a name="re-enable-boot-diagnostics"></a>Engedélyezze újra a rendszerindítási diagnosztika
-Amikor a meglévő virtuális merevlemezről hoz létre a virtuális gép, a rendszerindítási diagnosztika lehetséges, hogy nem automatikusan engedélyezni. A rendszerindítási diagnosztika engedélyezése [az vm boot-diagnostics engedélyezése](/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable). A következő példában engedélyezzük a diagnosztikai bővítmény nevű virtuális gépre `myDeployedVM` az erőforráscsoport neve `myResourceGroup`:
+Amikor a meglévő virtuális merevlemezről hoz létre a virtuális gép, a rendszerindítási diagnosztika lehetséges, hogy nem automatikusan engedélyezni. A rendszerindítási diagnosztika engedélyezése [az vm boot-diagnostics engedélyezése](/cli/azure/vm/boot-diagnostics). A következő példában engedélyezzük a diagnosztikai bővítmény nevű virtuális gépre `myDeployedVM` az erőforráscsoport neve `myResourceGroup`:
 
 ```azurecli
 az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM

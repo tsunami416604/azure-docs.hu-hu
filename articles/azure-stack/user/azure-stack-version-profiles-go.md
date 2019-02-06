@@ -14,12 +14,12 @@ ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: 9b66a7a176862fce687b7cc0b1ff3c14bda118d7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fbca9eb3703777c0d20998e65bf446b5951c5091
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243889"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745401"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>API-verzióprofilok használata nyissa meg az Azure Stackben
 
@@ -68,7 +68,7 @@ Go-kódokat a minta futtatásához az Azure Stacken, kövesse az alábbi lépés
 
    > [!NOTE]  
    > A **ResourceManagerUrl** van az Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/`  
-   > A **ResourceManagerUrl** integrált rendszerek van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
+   > A **ResourceManagerUrl** integrált rendszerek van: `https://management.<region>.<fqdn>/`  
    > A szükséges metaadatokat lekéréséhez: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
   
    JSON-mintafájlt:
@@ -126,7 +126,7 @@ Go-kódokat a minta futtatásához az Azure Stacken, kövesse az alábbi lépés
 
 Virtuális hálózat létrehozása az Azure Stackben a Go SDK-profillal egy teljes példa: a [példa](#example).
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Az első a **hitelesítő** tulajdonság az Azure Active Directoryból, a Go SDK segítségével telepítse a **Go-AutoRest** modulok. Ezeket a modulokat kell már telepítették a "Go SDK" telepítés; Ha nem, telepítse a [hitelesítési csomag a Githubról](https://github.com/Azure/go-autorest/tree/master/autorest/adal).
 

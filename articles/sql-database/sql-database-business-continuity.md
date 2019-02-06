@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b3b48c923b10fc201c5ac06b2dd805ee8638a18c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 998d4f45a2d4956e0e230bcf00636a965c35dd97
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473425"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755169"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -107,7 +107,7 @@ A következő szakaszok az adatbázis biztonsági mentése vagy az aktív georep
 
 A használt üzletmenet-folytonossági funkciótól függetlenül végre kell hajtania a következőket:
 
-- Azonosítsa és készítse elő a célkiszolgálót, beleértve a kiszolgálószintű tűzfalszabályokat, a bejelentkezéseket és a főadatbázis szintű jogosultságokat.
+- Azonosítsa és készítse elő a célkiszolgálót, beleértve a kiszolgálószintű IP-tűzfalszabályainak, a bejelentkezéseket és a főadatbázis szintű jogosultságokat.
 - Határozza meg, hogyan legyenek átirányítva az ügyfelek és az ügyfélalkalmazások az új kiszolgálóra.
 - Dokumentálja az egyéb függőségeket, mint a naplózási beállítások és a riasztások.
 
@@ -132,7 +132,7 @@ Ha az automatikus biztonsági másolatokat használ georedundáns tárolás (ala
 A helyreállítási mechanizmusok végrehajtása után a következő további feladatokat kell végrehajtania a felhasználók és az alkalmazások újbóli üzembe helyezéséhez:
 
 - Irányítsa át az ügyfeleket és az ügyfélalkalmazásokat az új kiszolgálóra és a helyreállított adatbázisra.
-- Biztosítsa, hogy megfelelő kiszolgálószintű tűzfalszabályok vannak érvényben a felhasználók csatlakozásához (vagy használjon [adatbázisszintű tűzfalakat](sql-database-firewall-configure.md#creating-and-managing-firewall-rules)).
+- Győződjön meg, hogy a megfelelő kiszolgálói szintű IP tűzfalszabályok vannak érvényben a felhasználók csatlakozni, vagy használjon [adatbázisszintű tűzfalak](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-the-azure-portal) ahhoz, hogy megfelelő szabályokat.
 - Biztosítsa a megfelelő bejelentkezési adatok és főadatbázis-szintű jogosultságok rendelkezésre állását (vagy használjon [tartalmazott felhasználókat](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - Konfigurálja a naplózást, ha szükséges.
 - Konfigurálja a riasztásokat, ha szükséges.

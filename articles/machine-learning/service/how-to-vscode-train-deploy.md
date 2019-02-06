@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 409d1bb30dc956bb19e9a37212d93990d1401e7b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6d190e4c5d283b9f803cf7287445d7591b5465db
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240114"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753112"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Betanítása és gépi tanulási modellek üzembe helyezése a Visual Studio Code használatával
 
@@ -108,9 +108,9 @@ Egy távoli számítási célnak betanításakor használatához szüksége futt
 
 #### <a name="the-conda-dependencies-file"></a>A conda-függőségeket fájl
 
-Alapértelmezés szerint egy új conda-környezet létrehozása az Ön számára, és a telepítési függőségek. Azonban meg kell adnia a függőségeket a `aml_config/conda_dependencies.yml` fájlt.
+Alapértelmezés szerint egy új conda-környezet létrehozása az Ön számára, és a telepítési függőségek. Azonban meg kell adnia a függőségeket és azok verzióinak a a `aml_config/conda_dependencies.yml` fájlt. 
 
-Ez az egy kódrészletet az alapértelmezett aml_config/conda_dependencies.yml a.
+Ez az egy kódrészletet az alapértelmezett aml_config/conda_dependencies.yml a. Meghatározhatja például, hogy "tensorflow = 1.12.0' az alább látható módon. Ha nem adja meg a függőségi verzióját, a legújabb verziót fog használni.  
 Hozzáadhat további függőségeket, a konfigurációs fájlban.
 
 ```yaml
@@ -123,7 +123,7 @@ dependencies:
   # Currently Azure Machine Learning service only supports 3.5.2 and later.
 
 - python=3.6.2
-- tensorflow
+- tensorflow=1.12.0
 
 - pip:
     # Required packages for Azure Machine Learning service execution, history, and data preparation.

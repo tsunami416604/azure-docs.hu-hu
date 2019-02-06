@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 4133d78ccff1fa4eb712d8928cefa604ca2f52ca
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 14b6125bd1467efcd6120bc367a7042ad29552bb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902057"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744500"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -38,7 +38,7 @@ Ha virtuális gépek, az Azure Cosmos DB vagy az SQL-adatbázisok, amelyek hossz
 
 - Fenntartott virtuálisgép-példány: Egy foglalást csak a virtuális gép számítási költségeit tartalmazza. További szoftverek, hálózati vagy tárolási díjakat nem fed le.
 - Az SQL Database szolgáltatás számára fenntartott virtuális mag: Csak a számítási költségek is tartalmaz egy foglalást. A licenc külön kell fizetni.
-- Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás: A Foglalás magában foglalja az átviteli sebesség kiosztott részéért, az erőforrások, nem terjed ki a tárolási és hálózatkezelési díjakat. 
+- Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás: A Foglalás magában foglalja az átviteli sebesség kiosztott részéért, az erőforrások, nem terjed ki a tárolási és hálózatkezelési díjakat.
 
 Windows virtuális gépek és az SQL Database, a licencelési költségek is foglalkozik [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -46,11 +46,16 @@ Windows virtuális gépek és az SQL Database, a licencelési költségek is fog
 
 Az ilyen előfizetések Azure-ügyfelek is vásárolhatnak foglalást:
 
-- Nagyvállalati szerződés típusú előfizetési ajánlat (MS-AZR-0017P).
-- [Használatalapú fizetéses](https://azure.microsoft.com/offers/ms-azr-0003p/) típusú előfizetési ajánlat (MS-AZR-003P). A "Tulajdonos" szerepkörrel kell rendelkeznie az előfizetésben a megvásárolni a foglalást.
+- Nagyvállalati szerződéses előfizetésébe csomag típusa (MS-AZR - 0017P vagy MS-AZR - 0148P).
+- Használatalapú előfizetés ajánlattípusra (MS-AZR - 003P vagy MS-AZR - 0023P).
 - Cloud Solution Provider (CSP) partner használhatja az Azure Portalon vagy [Partnerközpont](https://docs.microsoft.com/partner-center/azure-reservations) megvásárolható Azure-foglalásokat.
 
 A foglalási kedvezményt csak az Enterprise, a használatalapú fizetés vagy a CSP előfizetéstípusok társított erőforrások vonatkozik.
+
+ A csomag vásárlása:
+
+- Meg kell egy tulajdonosi szerepkör legalább egy vállalati vagy használatalapú fizetéses előfizetésre.
+- Vállalati előfizetés esetén **fenntartott példányok hozzáadása** engedélyezve kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com). Vagy, ha ez a beállítás le van tiltva, az előfizetés egy nagyvállalati szerződés rendszergazdájának kell lennie.
 
 ## <a name="how-is-a-reservation-billed"></a>Hogyan történik a Foglalás?
 
@@ -60,7 +65,7 @@ A Foglalás díját a fizetési módot az előfizetéshez kötött. Ha egy váll
 
 A foglalási kedvezményt érvényes erőforrás-használat megfelel az attribútumokat, akkor válassza, ha a foglalást vásárolhat. Az attribútumok közé tartozik a hatókör, ahol a megfelelő virtuális gépek, az SQL adatbázisok, Azure Cosmos DB vagy egyéb erőforrások futtat. Például ha azt szeretné, a foglalási kedvezményt négy Standard D2 virtuális gépek az USA nyugati régiójában, válassza ki az előfizetést, ahol a virtuális gépek futnak. A virtuális gépek futnak, a regisztráció /-fiókon belül különböző előfizetésben található, majd válassza ki azt a hatókört, megosztott. Megosztott hatókör lehetővé teszi, hogy a foglalási kedvezményt a alkalmazni lehet előfizetések között. A hatókör, egy foglalás megvásárlása után módosíthatja. További információkért lásd: [kezelése az Azure-foglalások](billing-manage-reserved-vm-instance.md).
 
-A foglalási kedvezményt csak az Enterprise, a használatalapú fizetés vagy a CSP előfizetéstípusok társított erőforrások vonatkozik. Egy előfizetésben a más típusú futtató erőforrások nem kapja meg a foglalási kedvezményt. A vállalati belépéseket nem a Foglalás értékelemekre feljogosító nagyvállalati fejlesztési és tesztelési előfizetések.
+A foglalási kedvezményt csak az Enterprise, a használatalapú fizetés vagy a CSP előfizetéstípusok társított erőforrások vonatkozik. Egy előfizetésben a más típusú futtató erőforrások nem kapja meg a foglalási kedvezményt.
 
 Jobban megérteni, milyen hatással van a foglalások a számlázási, a következő témakörökben talál:
 

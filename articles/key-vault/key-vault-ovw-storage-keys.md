@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 0392d84efa3a82a6323d6d09db792df7d6c42256
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b6dc0a63340fee03b34f4c5b6eca8ff011d6b178
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210675"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744172"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Az Azure Key Vaultban felügyelt tárfiók – CLI
 
@@ -52,8 +52,9 @@ Az az alábbi utasítások végrehajtásával, hogy társítja az Key Vault enge
 1. Miután létrehozott egy tárfiókot, a storage-fiók erőforrás-azonosító beolvasásához a következő parancsot, a felügyelni kívánt
 
     ```
-    az storage account show -n storageaccountname (Copy ID field out of the result of this command)
+    az storage account show -n storageaccountname 
     ```
+    Másolja ki a fenti parancs eredménye azonosító mező
     
 2. Alkalmazás azonosítója az Azure Key Vault szolgáltatás egyszerű beolvasása 
 
@@ -74,13 +75,16 @@ Az az alábbi utasítások végrehajtásával, hogy társítja az Key Vault enge
     az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-regenerate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
     ```
     Abban az esetben a felhasználó nem hozott létre a tárfiókot, és nem rendelkezik engedélyekkel a storage-fiókba, az alábbi lépéseket, győződjön meg arról, hogy a Key Vault a tárolási engedélyek segítségével kezelheti a fiók engedélyeit, állítsa be.
+    
  > [!NOTE] 
-    Abban az esetben, hogy a felhasználó nem rendelkezik engedélyekkel a tárfiók először lekérjük a felhasználó objektumazonosítóját
+ > Abban az esetben, hogy a felhasználó nem rendelkezik engedélyekkel a tárfiók először lekérjük a felhasználó objektumazonosítóját
+
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
 
     az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
+    
     ```
     
 ## <a name="how-to-access-your-storage-account-with-sas-tokens"></a>A tárfiók SAS-tokeneket elérése
@@ -91,9 +95,9 @@ Az az alábbi szakaszban bemutatjuk, hogyan beolvasni a tárfiókkulcsot a Key V
 
 > [!NOTE] 
   Hitelesítés a Key Vaultba, mert olvashat 3 módon a [alapvető fogalmai](key-vault-whatis.md#basic-concepts)
-- Felügyeltszolgáltatás-identitás (ajánlott) használatával
-- Egyszerű szolgáltatás és a tanúsítvány használatával 
-- Egyszerű szolgáltatás és a jelszóval (nem ajánlott)
+> - Felügyeltszolgáltatás-identitás (ajánlott) használatával
+> - Egyszerű szolgáltatás és a tanúsítvány használatával 
+> - Egyszerű szolgáltatás és a jelszóval (nem ajánlott)
 
 ```cs
 // Once you have a security token from one of the above methods, then create KeyVaultClient with vault credentials

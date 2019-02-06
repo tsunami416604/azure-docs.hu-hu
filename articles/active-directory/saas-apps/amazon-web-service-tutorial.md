@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: d5633648ee94c4db20f095619871ac5cd9cec7da
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: def9d44c31ed50a859bf42aa148fb7e6a36764fd
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825174"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Az Azure Active Directory-integráció az Amazon Web Services (AWS)
 
@@ -442,6 +442,12 @@ Ez a szakasz célja egy Britta Simon az Amazon Web Services (AWS) nevű felhaszn
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Ha a hozzáférési panelen az Amazon Web Services (AWS) csempére kattint, akkor kell automatikusan megtörténik a, az Amazon Web Services (AWS), amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="known-issues"></a>Ismert problémák
+
+ * A a **kiépítési** szakaszban a **leképezések** alterület bemutatják egy "Betöltése..." üzenetet és soha nem jelenít meg az attribútumleképezések. A csak a jelenleg támogatott kiépítési munkafolyamat az importálás a szerepkörök az AWS-től a felhasználó vagy csoport-hozzárendelés során kiválasztható Azure AD-be. Ez az attribútum-leképezéshez az előre meghatározott, és nem módosítható.
+ 
+ * A **kiépítési** szakasz csak támogatja hitelesítőadat megadása egy AWS-bérlő egyszerre. Minden importált szerepkörök az Azure AD appRoles tulajdonságát írt [servicePrincipal objektumot](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) az AWS bérlői. A katalógusból történő üzembe helyezés esetében azonban van egy ismert probléma az nem tudja automatikusan írhat összes importált szerepkört a több AWS-szolgáltatásnevek használt több AWS-bérlő (szolgáltatásnevek jelöli) is hozzáadhatók az Azure ad-hez az egyszeri bejelentkezéshez használt egyetlen servicePrincipal kiépíteni. Áthidaló megoldásként a [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) segítségével csomagolja ki minden egyes AWS servicePrincipal importálja a appRoles ahol kiépítés van konfigurálva. A szerepkör karakterláncait ezt követően lehet hozzáadni az AWS servicePrincipal, ahol egyszeri bejelentkezésre van konfigurálva.
 
 ## <a name="additional-resources"></a>További források
 

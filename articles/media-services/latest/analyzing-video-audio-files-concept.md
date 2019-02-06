@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 20aef7f971b4c4bf8dcff98c633aa0b0aa69811a
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 9a96edbc70eeda8acee792a71d84b4a2c6c4fef8
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828179"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745384"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Video- és hangfájlok elemzése
 
@@ -33,7 +33,7 @@ A Media Services a következő beépített analyzer készletek jelenleg támogat
 
 |**Készlet neve**|**Forgatókönyv**|**Részletek**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Hang elemzése|A készlet egy előre meghatározott készletével AI-alapú elemzési műveleteket, köztük a lejegyzés vonatkozik. A készlet jelenleg egyetlen hangsávra tartalom feldolgozását támogatja. A hang hasznos nyelvét megadhatja a bemeneti adatok a "nyelvi címke-régió" BCP-47 formátum használatával. Támogatott nyelvek a következők angol ("en-US" és "en-GB"), spanyol ("es-ES" és "MX-es"), francia ("fr-FR"), ("it-IT") olasz, japán ("ja-JP"), portugál ("pt-BR"), kínai ("zh-CN"), német ("de-DE"), arab ("ar – pl."), orosz ("ru-RU"), Hindi ("hi-IN" ), és koreai ("ko-KR").<br/><br/> Ha a nyelv nincs megadva, illetve NULL értékű, az automatikus nyelvfelismerést alkalmazzák. A nyelv automatikus észlelési szolgáltatás jelenleg támogatja az angol, kínai, francia, német, olasz, japán, spanyol, spanyol és portugál. A nyelv automatikus észlelési funkció működik a legjobban a hangfelvételeket egyértelműen lekérdezésteljesítmény beszédszolgáltatásokkal. Automatikus nyelvfelismerés nem található a nyelvet, ha a beszédátírási az angol nyelvű vissza fog esni.|
+|**AudioAnalyzerPreset**|Hang elemzése|A készlet AI-alapú elemzési műveleteket, köztük a lejegyzés előre meghatározott vonatkozik. A készlet jelenleg feldolgozás tartalom, amely tartalmaz egy nyelven speech egyetlen hangsávra támogatja. A hang hasznos nyelvét megadhatja a bemeneti adatok a "nyelvi címke-régió" BCP-47 formátum használatával. Támogatott nyelvek a következők angol ("en-US" és "en-GB"), spanyol ("es-ES" és "MX-es"), francia ("fr-FR"), ("it-IT") olasz, japán ("ja-JP"), portugál ("pt-BR"), kínai ("zh-CN"), német ("de-DE"), arab ("ar – pl."), orosz ("ru-RU"), Hindi ("hi-IN" ), és koreai ("ko-KR").<br/><br/> Ha a nyelv nincs megadva, illetve NULL értékű, az automatikus nyelvfelismerést észlelt első nyelvének kiválasztása, és a fájl időtartama a kiválasztott nyelvvel feldolgozni. A nyelv automatikus észlelési szolgáltatás jelenleg támogatja az angol, kínai, francia, német, olasz, japán, spanyol, spanyol és portugál. Ez jelenleg nem támogatja dinamikus nyelvek első nyelv észlelése után közötti váltáskor. A nyelv automatikus észlelési funkció működik a legjobban a hangfelvételeket jól észrevehető beszédszolgáltatásokkal. Automatikus nyelvfelismerés nem található a nyelvet, ha a beszédátírási az angol nyelvű vissza fog esni.|
 |**VideoAnalyzerPreset**|Audio- és elemzése|Insights (bőséges metaadatok) kigyűjti a hang- és video, és kiírja egy JSON-formátumú fájlt. Megadhatja, hogy csak szeretné hang információk kinyerése érdekében videofájl feldolgozásakor. További információkért lásd: [elemzés videó](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset

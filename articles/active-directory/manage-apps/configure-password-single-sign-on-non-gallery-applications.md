@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: f0f4d160b9e9d5e556813115aa39c60ea8f4edb2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f549c748c87405b47868c75cc01af81efd202af2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733331"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755356"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jelszavas egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálása
 
-Mellett a lehetőségek, az Azure AD Alkalmazáskatalógusában belül található, akkor is lehetőséget ad egy **katalógusban nem szereplő alkalmazás** mikor kívánt alkalmazás nem szerepel ott. Ezzel a funkcióval hozzáadhat minden olyan alkalmazás, amely a szervezet már létezik, vagy bármely harmadik fél alkalmazás, amelyet esetleg olyan szállítótól, aki nem már része a [az Azure AD Alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery).
+Mellett a lehetőségek, az Azure AD Alkalmazáskatalógusában belül található, akkor is lehetőséget ad egy **katalógusban nem szereplő alkalmazás** mikor kívánt alkalmazás nem szerepel ott. Ezzel a funkcióval hozzáadhat minden olyan alkalmazás, amely a szervezet már létezik, vagy bármely harmadik fél alkalmazás, amelyet esetleg olyan szállítótól, aki nem már része a [az Azure AD Alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 Miután hozzáadta a katalógusban nem szereplő alkalmazást, majd konfigurálhatja az egyszeri bejelentkezési módszer kiválasztásával használja ezt az alkalmazást a **egyszeri bejelentkezés** navigációs elem a vállalati alkalmazások a [azAzureportal](https://portal.azure.com/).
 

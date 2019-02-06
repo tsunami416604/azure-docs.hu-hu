@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 064cef04ac609b0e6db5f55d9973e3974af8e0cc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: ce95406cbcb6d9514159d84d653a9ff361713aec
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494884"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744398"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén
 
 Általában Azure-erőforrások számára telepít egy erőforráscsoportot az Azure-előfizetésében. Azonban Ön is Azure-erőforráscsoportok létrehozása, és az Azure-erőforrások létrehozása az előfizetés szintjén. Az előfizetés szintjén sablonok üzembe helyezése, Azure CLI-vel és az Azure PowerShell használatához. Az Azure portal nem támogatja a központi telepítés az előfizetési csomagnak.
 
-Hozzon létre egy erőforráscsoportot az Azure Resource Manager-sablon, adjon meg egy [ **Microsoft.Resources/resourceGroups** ](/azure/templates/microsoft.resources/allversions.md) erőforrás nevét és az erőforráscsoport helyét. Hozzon létre egy erőforráscsoportot, és az adott erőforráscsoporton ugyanazt a sablont az erőforrások üzembe helyezése. Az erőforrások az előfizetési szinten üzembe helyezhető a következők: [Házirendek](../azure-policy/azure-policy-introduction.md), és [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
+Hozzon létre egy erőforráscsoportot az Azure Resource Manager-sablon, adjon meg egy [ **Microsoft.Resources/resourceGroups** ](/azure/templates/microsoft.resources/allversions) erőforrás nevét és az erőforráscsoport helyét. Hozzon létre egy erőforráscsoportot, és az adott erőforráscsoporton ugyanazt a sablont az erőforrások üzembe helyezése. Az erőforrások az előfizetési szinten üzembe helyezhető a következők: [Házirendek](../azure-policy/azure-policy-introduction.md), és [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -101,7 +101,7 @@ Az alábbi sablont hoz létre egy üres erőforráscsoportot.
 }
 ```
 
-A sablon séma található [Itt](/azure/templates/microsoft.resources/allversions.md). Hasonló sablonok található [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
+A sablon séma található [Itt](/azure/templates/microsoft.resources/allversions). Hasonló sablonok található [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
 
 ## <a name="create-multiple-resource-groups"></a>Több erőforrás-csoport létrehozása
 

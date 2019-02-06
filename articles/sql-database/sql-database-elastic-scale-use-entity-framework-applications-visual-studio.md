@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/04/2019
-ms.openlocfilehash: 3f0d0b5be2f0c8fc64e02165ff3e2ecacb7e0c04
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 54890aef8dabfa019a5181c155b6668b1c07cf2c
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566964"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755934"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Rugalmas adatbázis-ügyfélkódtárnak az Entity Framework
 
@@ -87,36 +87,38 @@ Integrálható **DbContexts** a Adatfüggő útválasztás a horizontális felsk
 
 Az alábbi példakód azt szemlélteti, hogy ez a megközelítés. (Ez a kód van is a hozzájuk tartozó Visual Studio-projekt)
 
-    public class ElasticScaleContext<T> : DbContext
+```csharp
+public class ElasticScaleContext<T> : DbContext
+{
+public DbSet<Blog> Blogs { get; set; }
+...
+
+    // C'tor for data-dependent routing. This call opens a validated connection 
+    // routed to the proper shard by the shard map manager. 
+    // Note that the base class c'tor call fails for an open connection
+    // if migrations need to be done and SQL credentials are used. This is the reason for the 
+    // separation of c'tors into the data-dependent routing case (this c'tor) and the internal c'tor for new shards.
+    public ElasticScaleContext(ShardMap shardMap, T shardingKey, string connectionStr)
+        : base(CreateDDRConnection(shardMap, shardingKey, connectionStr), 
+        true /* contextOwnsConnection */)
     {
-    public DbSet<Blog> Blogs { get; set; }
-    …
+    }
 
-        // C'tor for data-dependent routing. This call opens a validated connection 
-        // routed to the proper shard by the shard map manager. 
-        // Note that the base class c'tor call fails for an open connection
-        // if migrations need to be done and SQL credentials are used. This is the reason for the 
-        // separation of c'tors into the data-dependent routing case (this c'tor) and the internal c'tor for new shards.
-        public ElasticScaleContext(ShardMap shardMap, T shardingKey, string connectionStr)
-            : base(CreateDDRConnection(shardMap, shardingKey, connectionStr), 
-            true /* contextOwnsConnection */)
-        {
-        }
+    // Only static methods are allowed in calls into base class c'tors.
+    private static DbConnection CreateDDRConnection(
+    ShardMap shardMap, 
+    T shardingKey, 
+    string connectionStr)
+    {
+        // No initialization
+        Database.SetInitializer<ElasticScaleContext<T>>(null);
 
-        // Only static methods are allowed in calls into base class c'tors.
-        private static DbConnection CreateDDRConnection(
-        ShardMap shardMap, 
-        T shardingKey, 
-        string connectionStr)
-        {
-            // No initialization
-            Database.SetInitializer<ElasticScaleContext<T>>(null);
-
-            // Ask shard map to broker a validated connection for the given key
-            SqlConnection conn = shardMap.OpenConnectionForKey<T>
-                                (shardingKey, connectionStr, ConnectionOptions.Validate);
-            return conn;
-        }    
+        // Ask shard map to broker a validated connection for the given key
+        SqlConnection conn = shardMap.OpenConnectionForKey<T>
+                            (shardingKey, connectionStr, ConnectionOptions.Validate);
+        return conn;
+    }
+```
 
 ## <a name="main-points"></a>Fő szempontja
 
@@ -134,26 +136,28 @@ Az alábbi példakód azt szemlélteti, hogy ez a megközelítés. (Ez a kód va
 
 Az új konstruktort használata helyett az alapértelmezett konstruktort, a kódban a DbContext alosztályát. Például: 
 
-    // Create and save a new blog.
+```csharp
+// Create and save a new blog.
 
-    Console.Write("Enter a name for a new blog: "); 
-    var name = Console.ReadLine(); 
+Console.Write("Enter a name for a new blog: "); 
+var name = Console.ReadLine(); 
 
-    using (var db = new ElasticScaleContext<int>( 
-                            sharding.ShardMap,  
-                            tenantId1,  
-                            connStrBldr.ConnectionString)) 
-    { 
-        var blog = new Blog { Name = name }; 
-        db.Blogs.Add(blog); 
-        db.SaveChanges(); 
+using (var db = new ElasticScaleContext<int>( 
+                        sharding.ShardMap,  
+                        tenantId1,  
+                        connStrBldr.ConnectionString)) 
+{ 
+    var blog = new Blog { Name = name }; 
+    db.Blogs.Add(blog); 
+    db.SaveChanges(); 
 
-        // Display all Blogs for tenant 1 
-        var query = from b in db.Blogs 
-                    orderby b.Name 
-                    select b; 
-     … 
-    }
+    // Display all Blogs for tenant 1 
+    var query = from b in db.Blogs 
+                orderby b.Name 
+                select b; 
+    … 
+}
+```
 
 Az új konstruktort megnyitja a kapcsolatot, amely a értéke által azonosított shardlet adatait tartalmazza a szegmens **tenantid1**. A kód a **használatával** block Access változatlan marad a **DbSet** EF használatával a horizontális blogokhoz **tenantid1**. Az a kód a például, hogy az összes adatbázis-műveletek hatóköre mostantól az egyik adatszilánkba író blokkolni szemantika változik ahol **tenantid1** marad. Például egy LINQ-lekérdezésekre keresztül az őt megjelenítő blogokon **DbSet** csak adna vissza, blogok, a jelenlegi szegmens tárolja, de nem a többi szegmens tárolja azokat.  
 
@@ -163,19 +167,21 @@ A Microsoft Patterns és gyakorlatokkal foglalkozó csoportja közzé a [az átm
 
 A következő példakód azt szemlélteti, egy SQL újrapróbálkozási szabályzat segítségével hogyan biztosítható az új körül **DbContext** alosztályát konstruktorok: 
 
-    SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() => 
-    { 
-        using (var db = new ElasticScaleContext<int>( 
-                                sharding.ShardMap,  
-                                tenantId1,  
-                                connStrBldr.ConnectionString)) 
-            { 
-                    var blog = new Blog { Name = name }; 
-                    db.Blogs.Add(blog); 
-                    db.SaveChanges(); 
-            … 
-            } 
-        }); 
+```csharp
+SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() => 
+{ 
+    using (var db = new ElasticScaleContext<int>( 
+                            sharding.ShardMap,  
+                            tenantId1,  
+                            connStrBldr.ConnectionString)) 
+        { 
+                var blog = new Blog { Name = name }; 
+                db.Blogs.Add(blog); 
+                db.SaveChanges(); 
+        … 
+        } 
+    }); 
+```
 
 **SqlDatabaseUtils.SqlRetryPolicy** a fenti kód számít, ha egy **SqlDatabaseTransientErrorDetectionStrategy** újrapróbálkozás-számot 5 másodperc és 10 várjon az újrapróbálkozások között eltelt idő. Ez a megközelítés hasonlít az útmutató EF és a felhasználó által kezdeményezett tranzakció (lásd: [végrehajtási stratégiák újrapróbálkozásainak (EF6-től) korlátozások](https://msdn.microsoft.com/data/dn307226). Mindkét esetben szükséges, hogy az alkalmazás szabályozza a hatókör, amelyhez a átmeneti kivételt adja vissza: Nyissa meg újra a tranzakciót, vagy (amint) hozza létre újra a környezetet, a megfelelő konstruktor, amely használja az elastic database ügyfélkódtár.
 
@@ -209,51 +215,54 @@ Ez vezet megközelítést, ahol EF-áttelepítés – a séma üzembe helyezése
 
 Ezek az előfeltételek teljesülnek, létrehozhat egy normál nem megnyitott **SqlConnection** felhőplatformos termékeiért EF-áttelepítés a séma üzembe helyezése. Az alábbi kódmintában ezt a megközelítést mutatja be. 
 
-        // Enter a new shard - i.e. an empty database - to the shard map, allocate a first tenant to it  
-        // and kick off EF intialization of the database to deploy schema 
+```csharp
+// Enter a new shard - i.e. an empty database - to the shard map, allocate a first tenant to it  
+// and kick off EF initialization of the database to deploy schema 
 
-        public void RegisterNewShard(string server, string database, string connStr, int key) 
-        { 
+public void RegisterNewShard(string server, string database, string connStr, int key) 
+{ 
 
-            Shard shard = this.ShardMap.CreateShard(new ShardLocation(server, database)); 
+    Shard shard = this.ShardMap.CreateShard(new ShardLocation(server, database)); 
 
-            SqlConnectionStringBuilder connStrBldr = new SqlConnectionStringBuilder(connStr); 
-            connStrBldr.DataSource = server; 
-            connStrBldr.InitialCatalog = database; 
+    SqlConnectionStringBuilder connStrBldr = new SqlConnectionStringBuilder(connStr); 
+    connStrBldr.DataSource = server; 
+    connStrBldr.InitialCatalog = database; 
 
-            // Go into a DbContext to trigger migrations and schema deployment for the new shard. 
-            // This requires an un-opened connection. 
-            using (var db = new ElasticScaleContext<int>(connStrBldr.ConnectionString)) 
-            { 
-                // Run a query to engage EF migrations 
-                (from b in db.Blogs 
-                    select b).Count(); 
-            } 
+    // Go into a DbContext to trigger migrations and schema deployment for the new shard. 
+    // This requires an un-opened connection. 
+    using (var db = new ElasticScaleContext<int>(connStrBldr.ConnectionString)) 
+    { 
+        // Run a query to engage EF migrations 
+        (from b in db.Blogs 
+            select b).Count(); 
+    } 
 
-            // Register the mapping of the tenant to the shard in the shard map. 
-            // After this step, data-dependent routing on the shard map can be used 
+    // Register the mapping of the tenant to the shard in the shard map. 
+    // After this step, data-dependent routing on the shard map can be used 
 
-            this.ShardMap.CreatePointMapping(key, shard); 
-        } 
-
+    this.ShardMap.CreatePointMapping(key, shard); 
+} 
+```
 
 Ez a példa bemutatja a metódus **RegisterNewShard** , amely a szegmens regisztrálja a szegmenstérkép az EF-áttelepítés – a séma üzembe helyezi és tárolja a többi olyan szegmenskulcsot térképét. Egy konstruktorának támaszkodik a **DbContext** alosztályát (**ElasticScaleContext** a mintában), amely bemenetként egy SQL-kapcsolati karakterlánc szükséges. Ez a konstruktor kódja lépünk, az alábbi példában látható módon: 
 
-        // C'tor to deploy schema and migrations to a new shard 
-        protected internal ElasticScaleContext(string connectionString) 
-            : base(SetInitializerForConnection(connectionString)) 
-        { 
-        } 
+```csharp
+// C'tor to deploy schema and migrations to a new shard 
+protected internal ElasticScaleContext(string connectionString) 
+    : base(SetInitializerForConnection(connectionString)) 
+{ 
+} 
 
-        // Only static methods are allowed in calls into base class c'tors 
-        private static string SetInitializerForConnection(string connectionString) 
-        { 
-            // You want existence checks so that the schema can get deployed 
-            Database.SetInitializer<ElasticScaleContext<T>>( 
-        new CreateDatabaseIfNotExists<ElasticScaleContext<T>>()); 
+// Only static methods are allowed in calls into base class c'tors 
+private static string SetInitializerForConnection(string connectionString) 
+{ 
+    // You want existence checks so that the schema can get deployed 
+    Database.SetInitializer<ElasticScaleContext<T>>( 
+new CreateDatabaseIfNotExists<ElasticScaleContext<T>>()); 
 
-            return connectionString; 
-        } 
+    return connectionString; 
+} 
+```
 
 Előfordulhat, hogy az egyik használt a konstruktort az alaposztálytól verzióját. De a kód meg kell győződnie arról, hogy a csatlakozáskor használt-e az alapértelmezett inicializáló mintáját. Ezért a rövid detour be a statikus metódus kapcsolati alaposztály konstruktorának hívása előtt. Vegye figyelembe, hogy a regisztráció szegmens fusson-e az eltérő alkalmazástartományból vagy folyamat, győződjön meg arról, hogy ne ütközzenek EF inicializáló beállításait. 
 

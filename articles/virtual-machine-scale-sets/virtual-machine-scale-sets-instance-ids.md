@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: 5d92aa78b132b661af3cdc53b47c0340a0758dd8
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8f85ded20470ecc5a7868c094e88a149c88b7f39
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855312"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749566"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Az Azure Virtuálisgép-méretezési csoport a Példányazonosítók állítsa be a virtuális gépek ismertetése
 Ez a cikk ismerteti a példányok azonosítóit a méretezési csoportok és a surface, a különböző módszereket.
@@ -33,7 +33,7 @@ REST API-val: `POST https://management.azure.com/subscriptions/{subscriptionId}/
 
 PowerShell: `Set-AzureRmVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (további információkért lásd: a [Powershell-dokumentáció](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm))
 
-Parancssori felület: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (további információkért lásd: a [CLI dokumentációját](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_reimage)).
+Parancssori felület: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (további információkért lásd: a [CLI dokumentációját](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
 
 Példány azonosítók listáját megtekintheti a méretezési csoportban lévő összes példány listázásával:
 

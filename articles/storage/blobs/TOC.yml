@@ -519,7 +519,7 @@ items:
   - name: Oktatóanyagok
     items:
     - name: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával
-      href: ../blobs/data-lake-storage-handle-data-using-databricks.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      href: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Hozzáférés a Data Lake Storage-adatokhoz a Databricks és a Spark használatával
       href: ../blobs/data-lake-storage-use-databricks-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával
@@ -606,9 +606,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: Videók
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: ade835f9854efb943e1d6e69db806a811f18b252
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: b6e90dc71e0bb5f81aeaf690217115e39531db93
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564170"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753181"

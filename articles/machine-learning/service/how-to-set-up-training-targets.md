@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75caad2c183ba2d3c5442a3620705c6af8070755
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 14a6bdfff486f13f18d42b1bd20880347d3ebbc8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659592"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756529"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
 
@@ -38,18 +38,14 @@ Ebben a cikkben megismerheti, hogyan használható a különböző számítási 
 Az Azure Machine Learning szolgáltatás különböző támogatással rendelkezik a különböző számítási célnak között. Egy tipikus modell fejlesztési életciklus kisebb mennyiségű adatot a dev/Kísérletezési kezdődik. Ezen a ponton használatát javasoljuk a helyi környezetben. Például a helyi számítógépen vagy egy felhőalapú virtuális Gépen. Vertikális felskálázás a tanítási a nagyobb adatkészletek, vagy hajtsa végre az elosztott betanítás, egy vagy több node fürtöt létrehozni, hogy az automatikus skálázást alkalmat futtató minden elküldésekor a az Azure Machine Learning Compute használatát javasoljuk. Bár a különböző forgatókönyvekben eltérőek lehetnek az alábbiakban ismertetett támogatási is hozzáadhat a saját számítási erőforrás:
 
 
-|Számítási célt képzéshez| GPU-gyorsítás | Automatikus<br/> hiperparaméter finomhangolása | Automatikus</br> gépi tanulás | Folyamatok elvégzésére barátságos|
+|Számítási célt képzéshez| GPU-gyorsítás | Automatikus<br/> hiperparaméter finomhangolása | Automatikus</br> gépi tanulás | Az Azure Machine Learning-folyamatokat |
 |----|:----:|:----:|:----:|:----:|
 |[Helyi számítógép](#local)| Talán | &nbsp; | ✓ | &nbsp; |
 |[Az Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
 |[Távoli virtuális Gépen](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓[*](#pipeline-only) |
-|[Az Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
+|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
+|[Az Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Az Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-
-<a id="pipeline-only"></a>__*__ Az Azure Databricks és az Azure Data Lake Analytics képes __csak__ egy folyamatban használni. 
-
->Hoz létre a machine learning-folyamatokat, ahogyan az ebben a cikkben a számítási célokhoz, de a folyamat lépéseit az alábbi módszerek helyett használja a számítási erőforrások.  Csak néhány folyamat lépést is, használja a ebben a cikkben leírt futtatási konfiguráció.  A folyamat számítási célnak használatával kapcsolatos további információk: [létrehozása és futtatása egy machine learning-folyamat](how-to-create-your-first-pipeline.md).
 
 ## <a name="whats-a-run-configuration"></a>Mi az, hogy egy futtatási konfigurációt?
 

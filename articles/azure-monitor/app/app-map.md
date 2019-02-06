@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/17/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 238b75681ec525187ea27f60ac8b21b05b13954d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f2bd1d863a7900b50712eb23c1088c6b271befa3
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063114"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755889"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Az elosztott alkalmazások osztályozása
 
@@ -191,7 +191,7 @@ A telemetriai adatok inicializálók cloud_RoleName tulajdonság felülbírálá
 
 Ha problémába ütközik az első alkalmazás-hozzárendelés a várt módon működik, próbálja ki ezeket a lépéseket:
 
-1. Győződjön meg arról, hogy egy hivatalosan támogatott SDK-t használja. Közösségi/nem támogatott SDK-k korreláció nem támogatja.
+1. Győződjön meg róla, hogy hivatalosan támogatott SDK-t használ. Előfordulhat, hogy a nem támogatott/közösségi SDK-k nem támogatják a korrelációt.
 
     Ebben [cikk](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) támogatott SDK-k listáját.
 
@@ -199,14 +199,14 @@ Ha problémába ütközik az első alkalmazás-hozzárendelés a várt módon m�
 
 3. Az Azure Functions használata C#frissítsen a [funkciók V2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
-4. Győződjön meg róla [cloud_RoleName](app-map.md#Set-cloud-RoleName) megfelelően van konfigurálva.
+4. Győződjön meg róla [cloud_RoleName](app-map.md#set-cloudrolename) megfelelően van konfigurálva.
 
-5. Ha egy függőség éppen hiányzik, ellenőrizze, hogy listájában [automatikusan gyűjtött függőségek](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Ha nem, továbbra is nyomon követheti azt manuálisan egy [függőségi hívás nyomon](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+5. Ha valamelyik függőség hiányzik, ellenőrizze, hogy az [automatikusan gyűjtött függőségek](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) listájában szerepel-e. Ha nem, manuálisan úgy is nyomon követheti egy [függőségek nyomon követése hívással](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
 ## <a name="portal-feedback"></a>Portál visszajelzés
 Visszajelzést, használja a visszajelzés lehetőség.
 
-![MapLink 1. kép](./media/app-map/14-updated.png)
+![MapLink-1 image](./media/app-map/14-updated.png)
 
 ## <a name="next-steps"></a>További lépések
 

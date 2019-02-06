@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: orspod
-ms.openlocfilehash: f492878ffcb888560d2aed269608950927cebd43
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8f2a7a953ce2964645c281d9454a73b0cf1a8ff6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55570023"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747188"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása, vagy az Azure az adatkezelőt az Azure Data Factory használatával
 
@@ -50,7 +50,7 @@ Azure Data Explorer társított szolgáltatás a következő tulajdonságok tám
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** tulajdonságot állítsa **AzureDataExplorer** | Igen |
-| endpoint | Végpont fürt URL-címét az Azure Data Explorer, a következő formátumban, `https://<clusterName>.kusto.windows.net`. | Igen |
+| endpoint | Végpont fürt URL-címét az Azure Data Explorer, a következő formátumban, `https://<clusterName>.<regionName>.kusto.windows.net `. | Igen |
 | adatbázis | Adatbázis neve. | Igen |
 | bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egérrel viszi, lekéréséhez. | Igen |
 | servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
@@ -64,7 +64,7 @@ Azure Data Explorer társított szolgáltatás a következő tulajdonságok tám
     "properties": {
         "type": "AzureDataExplorer",
         "typeProperties": {
-            "endpoint": "https://<clusterName>.kusto.windows.net",
+            "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
             "database": "<database name>",
             "tenant": "<tenant name/id e.g. microsoft.onmicrosoft.com>",
             "servicePrincipalId": "<service principal id>",
@@ -119,8 +119,8 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a **típus** tulajdons�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrása tulajdonságát: **AzureDataExplorerSource** | Igen |
-| lekérdezés | Az egyéni KQL lekérdezés segítségével olvassa el az adatokat. | Igen |
-| queryTimeout | Adja meg a várakozási idő előtt a lekérdezési kérés túllépi az időkorlátot. Alapértelmezett érték 10 perc (00: 10:00); engedélyezett maximális értéke 1 óra (01: 00:00). | Nem |
+| lekérdezés | Megadott olvasási kérést egy [KQL formátum](/azure/kusto/query/). Használja az egyéni KQL lekérdezés referenciaként. | Igen |
+| queryTimeout | A várakozási idő előtt a lekérdezési kérés túllépi az időkorlátot. Alapértelmezett érték 10 perc (00: 10:00); engedélyezett maximális értéke 1 óra (01: 00:00). | Nem |
 
 **Példa**
 
@@ -162,7 +162,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a type tulajdonság, a 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység fogadó tulajdonságát: **AzureDataExplorerSink** | Igen |
-| ingestionMappingName | Nevére [csv leképezés](/azure/kusto/management/mappings#csv-mapping) táblán. Az Azure-adatok feltárása forrásból az oszlopok leképezése, használhatja a másolási tevékenység [oszlopleképezés](copy-activity-schema-and-type-mapping.md). | Nem |
+| ingestionMappingName | Egy előre létrehozott nevét [csv leképezés](/azure/kusto/management/mappings#csv-mapping) Kusto táblán. Az Azure-adatok feltárása forrásból az oszlopok leképezése, használhatja a másolási tevékenység [oszlopleképezés](copy-activity-schema-and-type-mapping.md). | Nem |
 
 **Példa**
 

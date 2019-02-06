@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 04c89742ac09d1581b978e3612539acb7eab2195
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ea7f32a08a6a183bac21436e7d58afe10c4d7b20
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511054"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756648"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Az Azure SQL Database-kiszolgálók és azok kezelése
 
@@ -78,7 +78,7 @@ Létező adatbázis kezeléséhez, lépjen a **SQL-adatbázisok** lapon, majd ka
 > [!IMPORTANT]
 > Adatbázis teljesítményének tulajdonságok beállítása: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 > [!TIP]
-> Az Azure portal rövid útmutatójában talál [egy Azure SQL database létrehozása az Azure Portalon](sql-database-get-started-portal.md).
+> Az Azure portal rövid útmutatójában talál [egy Azure SQL database létrehozása az Azure Portalon](sql-database-single-database-get-started.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Kezelheti az Azure SQL-kiszolgálók, adatbázisok és tűzfalak a PowerShell használatával
 
@@ -102,7 +102,7 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az A
 | New-AzureRmSqlServerVirtualNetworkRule | Létrehoz egy [ *virtuális hálózati szabályt*](sql-database-vnet-service-endpoint-rule-overview.md)egy alhálózatot, amely egy virtuális hálózati szolgáltatásvégpont alapján. |
 
 > [!TIP]
-> A PowerShell a rövid útmutatóban talál [hozzon létre egy egyetlen Azure SQL database PowerShell-lel](sql-database-get-started-portal.md). PowerShell-példa szkriptek, lásd: [használja a Powershellt egyetlen Azure SQL-adatbázis létrehozása és tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelés és méret egy Azure SQL database PowerShell-lel egyetlen](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> A PowerShell a rövid útmutatóban talál [hozzon létre egy egyetlen Azure SQL database PowerShell-lel](sql-database-single-database-get-started.md). PowerShell-példa szkriptek, lásd: [használja a Powershellt egyetlen Azure SQL-adatbázis létrehozása és tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelés és méret egy Azure SQL database PowerShell-lel egyetlen](scripts/sql-database-monitor-and-scale-database-powershell.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Kezelheti az Azure SQL-kiszolgálók, adatbázisok és tűzfalak az Azure CLI használatával

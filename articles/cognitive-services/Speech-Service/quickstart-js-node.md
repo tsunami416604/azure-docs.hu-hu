@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: Beszédfelismerést, node.js-szel – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
-description: Ez az útmutató segítségével hozzon létre egy hang-szöveg transzformációs konzolalkalmazást az a Speech SDK for node.js használatával. Ha elkészült, a számítógép mikrofonjával valós időben konvertálhat át beszédet szöveggé.
+description: Ez az útmutató segítségével egy hang-szöveg transzformációs Konzolalkalmazás létrehozása a node.js-ben a Speech SDK használatával. Ha elkészült, a számítógép mikrofonjával valós időben konvertálhat át beszédet szöveggé.
 services: cognitive-services
 author: fmegen
 manager: cgronlun
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 1/16/2019
 ms.author: fmegen
-ms.openlocfilehash: c9f83368a540003e8bcc35282c664ec23e4ff068
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 99938f8b64339556c0ee4b9caa9124c609159af6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226502"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747272"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>Gyors útmutató: NODE.js-hez készült beszédfelismerést a Speech SDK-val
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben megismerheti, hogyan hozhat létre egy Node.js-projektet a Cognitive Services beszédfelismerő SDK JavaScript kötése történő Diktálás lefényképezze lesz.
-Az alkalmazás a Microsoft alapján [Cognitive Services beszédfelismerő SDK](https://aka.ms/csspeech/npmpackage).
+Ez a cikk bemutatja, hogyan hozhat létre egy Node.js-projektet a beszédfelismerés lefényképezze a JavaScript-kötés az Azure Cognitive Services beszédfelismerő SDK használatával.
+Az alkalmazás alapján a [Speech SDK JavaScript](https://aka.ms/csspeech/npmpackage).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,48 +31,48 @@ Az alkalmazás a Microsoft alapján [Cognitive Services beszédfelismerő SDK](h
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
-Hozzon létre egy új mappát, és a projekt inicializálása.
+Hozzon létre egy új mappát, és a projekt inicializálása:
 
 ```sh
 npm init -f
 ```
 
-Ez a package.json fájlok, az alapértelmezett értékeket fogja init. Érdemes ezt a fájlt később szerkesztheti.
+Ez a parancs inicializálja a **package.json** fájlok alapértelmezett értékekkel. Érdemes ezt a fájlt később szerkesztheti.
 
 ## <a name="install-the-speech-sdk"></a>A beszédfelismerés SDK telepítése
 
-A beszédfelismerés SDK-t adhat a Node.js-projektet.
+A beszédfelismerés SDK-t adhat a Node.js-projektet:
 
 ```
 npm install microsoft-cognitiveservices-speech-sdk
 ```
 
-Ez letölti és telepíti a legújabb verziót, a beszéd SDK és a szükséges előfeltételeket a npmjs. Az SDK lesznek telepítve a `node_modules` könyvtárban, a projektmappa fájllistájának belül.
+Ez a parancs letölti és telepíti a legújabb verziót a Speech SDK és a szükséges előfeltételeket **npmjs**. Az SDK-t telepíti a `node_modules` könyvtárban, a projektmappa fájllistájának belül.
 
 ## <a name="use-the-speech-sdk"></a>A beszéd SDK használata
 
-Hozzon létre egy új fájlt a mappában `index.js` néven, és nyissa meg a fájlt egy szövegszerkesztőben.
+Hozzon létre egy új fájlt a mappába, nevű `index.js`, és nyissa meg ezt a fájlt egy szövegszerkesztőben.
 
 > [!NOTE]
-> Vegye figyelembe, hogy a node.js-ben a Speech SDK nem támogatja a mikrofon vagy a fájl adattípus. Mindkét csak a böngészők támogatottak. Ehelyett használja a Stream felületen, a beszéd SDK-val, keresztül `AudioInputStream.createPushStream()` vagy `AudioInputStream.createPullStream()`.
+> A node.js-ben, a beszéd SDK nem támogatja a mikrofon vagy a **fájl** adattípus. Mindkét csak a böngészők támogatottak. Ehelyett használja a **Stream** felület, a beszéd SDK-val, keresztül `AudioInputStream.createPushStream()` vagy `AudioInputStream.createPullStream()`.
 
 Ebben a példában használjuk a `PushAudioInputStream` felületet.
 
-Adja hozzá a következő JavaScript-kódot:
+Adja hozzá a JavaScript-kódot:
 
 [!code-javascript[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/js-node/index.js#code)]
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-Indítsa el az alkalmazást, hogy alkalmazkodjon `YourSubscriptionKey`, `YourServiceRegion`, és `YourAudioFile.wav` a konfigurációhoz. Ezután hajthat végre, a következő parancs meghívásával:
+Nyissa meg az alkalmazást, hogy alkalmazkodjon `YourSubscriptionKey`, `YourServiceRegion`, és `YourAudioFile.wav` a konfigurációhoz. Ez a parancs meghívásával ezután futtassa azt:
 
 ```sh
 node index.js
 ```
 
-Ez aktiválja a felismerés, a megadott fájlnév használata, és megtalálható a kimenetet a konzolon.
+Elismerés elindítja a megadott fájlnév használatával. És a kimeneti azt jeleníti meg a konzolon.
 
-Itt látható egy mintakimenet futtatásának `index.js` után az előfizetés-kulcsának frissítése, valamint a fájl használatával `whatstheweatherlike.wav`.
+Ez a minta képezi a kimeneti futtatásakor `index.js` után frissítse az előfizetési kulcsot, és használhatják a fájlt `whatstheweatherlike.wav`:
 
 ```json
 SpeechRecognitionResult {
@@ -94,35 +94,35 @@ SpeechRecognitionResult {
 
 ## <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Telepítse, és a Speech SDK használata a Visual Studio Code használatával
 
-Futtathatja a mintát a Visual Studio Code-ból is. Kövesse az alábbi lépéseket kell telepíteni, nyissa meg, és hajtsa végre a rövid útmutató:
+A mintát a Visual Studio Code-ból is futtathatja. Kövesse az alábbi lépéseket a telepítés, nyissa meg és futtassa a rövid útmutató:
 
-1. Indítsa el a Visual Studio Code-ot, és kattintson a "Mappa megnyitása", majd keresse meg a rövid útmutató mappát
+1. Indítsa el a Visual Studio Code-ot. Válassza ki **nyissa meg a mappa**. Majd keresse meg a rövid útmutató mappát.
 
-   ![Képernyőkép a mappa megnyitása](media/sdk/qs-js-node-01-open_project.png)
+   ![Mappa megnyitása](media/sdk/qs-js-node-01-open_project.png)
 
-1. Nyisson meg egy terminált a Visual Studio Code-ban
+1. A Visual Studio Code-ban nyisson meg egy terminált.
 
-   ![A terminálablakban képernyőképe](media/sdk/qs-js-node-02_open_terminal.png)
+   ![A terminálablakban](media/sdk/qs-js-node-02_open_terminal.png)
 
-1. Futtassa az npm segítségével való függőségek telepítése
+1. Futtatás `npm` függőségek telepítéséhez.
 
-   ![Az npm install képernyőképe](media/sdk/qs-js-node-03-npm_install.png)
+   ![az npm install](media/sdk/qs-js-node-03-npm_install.png)
 
-1. Most már készen áll a nyissa meg a `index.js`és állítson be egy töréspontot
+1. Most már készen megnyitásához `index.js`és állítson be egy töréspontot.
 
-   ![Egy sor 16 töréspontot az index.js képernyőképe](media/sdk/qs-js-node-04-setup_breakpoint.png)
+   ![egy sor 16 töréspontot az index.js](media/sdk/qs-js-node-04-setup_breakpoint.png)
 
-1. Hibakeresés elindításához nyomja le az F5 billentyűt vagy válassza ki a hibakeresési/Start-hibakeresés a menüből
+1. A hibakeresés, vagy válassza az F5 vagy **hibakeresési/Start-hibakeresés** a menüből.
 
-   ![A Hibakeresés menü képernyőképe](media/sdk/qs-js-node-05-start_debugging.png)
+   ![A hibakeresés menüből](media/sdk/qs-js-node-05-start_debugging.png)
 
-1. Ha elérte a töréspontot, vizsgálhatja meg a hívási verem és a változók
+1. Ha elérte a töréspontot, vizsgálhatja és a változókat.
 
-   ![Képernyőkép a hibakereső](media/sdk/qs-js-node-06-hit_breakpoint.png)
+   ![Ladicí program](media/sdk/qs-js-node-06-hit_breakpoint.png)
 
-1. A hibakeresési konzolt ablakban megjelenő kimenetet
+1. A hibakeresési konzolt ablakban látható kimenetet.
 
-   ![Képernyőkép a hibakeresési konzolt](media/sdk/qs-js-node-07-debug_output.png)
+   ![Konzol hibakeresése](media/sdk/qs-js-node-07-debug_output.png)
 
 ## <a name="next-steps"></a>További lépések
 

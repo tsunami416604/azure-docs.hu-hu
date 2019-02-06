@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: e96c637e3c01ccfc27afa967d830c7d0254d11e7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0869786b2aa6c604ee59deb0f5a5fbc27b9ce3bf
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104235"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751565"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -64,7 +64,7 @@ A probléma megoldásához távolítsa el a zárolást a az erőforráscsoport, 
 **Hibakód:**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Chybová zpráva**: Biztonsági mentés nem rendelkezik megfelelő engedélyekkel a key vault a biztonsági mentéshez, a titkosított virtuális gépekhez. <br>
 
-A titkosított virtuális gépek biztonsági mentési művelethez azt a kulcstartó hozzáférési engedéllyel kell rendelkeznie. Ehhez használja a [az Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#provide-permissions-to-backup) vagy a [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)
+A titkosított virtuális gépek biztonsági mentési művelethez azt a kulcstartó hozzáférési engedéllyel kell rendelkeznie. Ehhez használja a [az Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) vagy a [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - pillanatkép-készítési művelet sikertelen volt, mert nincs hálózati kapcsolat a virtuális gépen
 
@@ -121,7 +121,7 @@ Jelenleg az Azure Backup támogatja Standard SSD-lemezeket csak a frissített t�
 
 A legutóbbi biztonsági mentési feladat sikertelen volt, mert folyamatban van egy meglévő biztonsági mentési feladat. Egy új biztonsági mentési feladat nem indítható el, a jelenlegi feladat befejezéséig. Győződjön meg arról, a folyamatban lévő biztonsági mentési művelet elindítása vagy egy másik biztonsági mentési műveletek ütemezése előtt befejeződött. A biztonsági mentési feladatok állapotának ellenőrzéséhez hajtsa végre az alábbi lépéseket:
 
-1. Jelentkezzen be az Azure Portalon, kattintson a **minden szolgáltatás**. Írja be a Recovery Services, és kattintson a **Recovery Services-tárolók**. A Recovery Services-tárolók listája megjelenik.
+1. Az Azure Portalra történő bejelentkezés után kattintson a **Minden szolgáltatás** elemre. Írja be a Recovery Services kifejezést, és kattintson a **Recovery Services-tárolók** elemre. A Recovery Services-tárolók listája megjelenik.
 2. Recovery services-tárolók listájából válassza ki egy tároló, amelyben a biztonsági mentés konfigurálva.
 3. A tároló irányítópultos menüjében kattintson **biztonsági mentési feladatok** megjeleníti a biztonsági mentési feladatok.
 

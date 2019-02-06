@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/31/2019
+ms.date: 2/5/2019
 ms.author: victorh
-ms.openlocfilehash: d680634231b90e5d1cc036f43b96e05d66899e34
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 880a6fc9d5636ff0ac67d24d0ef66c8f48ae22fb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487047"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743650"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatikus skálázás és zónaredundáns az Application Gateway (nyilvános előzetes verzió)
 
@@ -34,7 +34,7 @@ Az Application Gateway és a webalkalmazási tűzfal (WAF) egy új v2 szintű Te
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Az alábbi régiókban érhető el az automatikus skálázás Termékváltozat: eastus2, westus2, westeurope, southeastasia, centralus, francecentral, USA keleti régiója, japaneast, northeurope, southcentralus, ukwest, northcentralus, westus, USA keleti régiója, centralus, japanwest.
+Az automatikus skálázás Termékváltozat érhető el ezekben a régiókban: USA északi középső RÉGIÓJA, USA déli középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Franciaország, közép-India, Egyesült Királyság nyugati, kelet-japán, Nyugat-japán.
 
 ## <a name="pricing"></a>Díjszabás
 

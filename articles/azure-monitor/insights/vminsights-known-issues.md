@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 038c6afe94ccfea707eea3b4032a2e45f69e5102
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 677fec21b7491398da5e4958441e5405e0c10e0e
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187074"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745673"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) az Azure Monitor szolgáltatással kapcsolatos ismert problémák
 
@@ -27,6 +27,7 @@ Ez a cikk ismerteti az Azure Monitor szolgáltatással kapcsolatos ismert probl�
 ## <a name="health"></a>Állapot 
 Az alábbi ismert problémák az állapotfigyelő szolgáltatás jelenlegi kiadása:
 
+- A virtuális gép tulajdonság panelen 2019 a Windows Server operációs rendszer Windows Server 2016 jeleníti meg. Ez egy soron következő kiadásban javítja.
 - Egy Azure virtuális gép eltávolítása vagy törlése, ha egy ideig a virtuális gép nézetben jelenik meg. Ezenkívül egy eltávolított vagy törölt virtuális gép állapotát kattintva megnyílik a **egészségügyi diagnosztikai** megtekintheti, és ezután kezdeményezi a betöltés hurkot. A törölt virtuális gép nevét kiválasztva megnyílik egy ablaktábla és a egy üzenet, amely megállapítja, hogy a virtuális gép törölve lett.
 - Konfigurációs módosítások, például frissítése egy küszöbértéket, akár 30 percet igénybe vehet, még akkor is, ha a portálon vagy a számítási feladatok a figyelő API előfordulhat, hogy azokat azonnal frissítse. 
 - A Health diagnosztikai élmény frissítések gyorsabb, mint a más nézetekhez. Az adatokat késhetnek, amikor azok között. 

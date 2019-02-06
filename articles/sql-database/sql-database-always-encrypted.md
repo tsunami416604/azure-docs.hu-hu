@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviwer: ''
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: de8bb0adf45a7cdaf9cc0d9a451af203e01e87da
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a54fa92e248cb75be315327f7389e62904c7c777
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564874"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754870"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: Bizalmas adatok védelme és a titkosítási kulcsok tárolása a Windows-tanúsítványtároló
 
@@ -47,7 +47,7 @@ A jelen oktatóanyag esetében lesz szüksége:
 ## <a name="create-a-blank-sql-database"></a>Üres SQL-adatbázis létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson a **erőforrás létrehozása** > **adatok + tárolás** > **SQL Database**.
-3. Hozzon létre egy **üres** nevű adatbázis **Clinic** egy új vagy meglévő kiszolgálóra. Adatbázis létrehozása az Azure Portalon részletes utasításokért lásd: [az első Azure SQL database](sql-database-get-started-portal.md).
+3. Hozzon létre egy **üres** nevű adatbázis **Clinic** egy új vagy meglévő kiszolgálóra. Adatbázis létrehozása az Azure Portalon részletes utasításokért lásd: [az első Azure SQL database](sql-database-single-database-get-started.md).
    
     ![Hozzon létre egy üres adatbázist](./media/sql-database-always-encrypted/create-database.png)
 

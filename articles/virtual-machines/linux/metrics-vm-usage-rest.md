@@ -10,12 +10,12 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 2b888d1ac9b5ebffc95d35ecda4ab8d9d260fa6d
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669913"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754846"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>A REST API-val a virtuális gép használati metrikák beolvasása
 
@@ -44,7 +44,7 @@ A következő fejléceket szükség:
 
 | Name (Név) | Leírás |
 | :--- | :---------- |
-| subscriptionId | Az előfizetés-azonosítója, amely azonosítja az Azure-előfizetéssel. Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions). |
+| subscriptionId | Az előfizetés-azonosítója, amely azonosítja az Azure-előfizetéssel. Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | resourceGroupName | Az erőforrás társított Azure-erőforráscsoport nevére. Ez az érték lekérése az Azure Resource Manager API, a CLI vagy a portálon. |
 | vmname | Az Azure virtuális gép neve. |
 | metricnames | Vesszővel tagolt listája érvényes [Load Balancer metrikái](/azure/load-balancer/load-balancer-standard-diagnostics). |
@@ -52,11 +52,11 @@ A következő fejléceket szükség:
 | Időtartam | A következő formátumú karakterlánc- `startDateTime_ISO/endDateTime_ISO` , amely meghatározza, hogy a visszaadott metrikák időtartománya. Ez nem kötelező paraméter értéke a példában egy nap alatt az adatok visszaadása. |
 | &nbsp; | &nbsp; |
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 Ez a művelet nem a kérelem törzsében van szükség.
 
-## <a name="handle-the-response"></a>A válasz kezeléséhez
+## <a name="handle-the-response"></a>A válasz kezelése
 
 200-as állapotkód adja vissza, ha sikeresen metrika értékek listáját adja vissza. Hibakódok teljes listája megtalálható a [referenciadokumentációt](/rest/api/monitor/metrics/list#errorresponse).
 

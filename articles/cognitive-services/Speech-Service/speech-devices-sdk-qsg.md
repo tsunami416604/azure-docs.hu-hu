@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5bd631bf31ba4e6a840c3e4e818062d322da0158
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: a9a1446db66e528cfac98222d4bd258efc660c84
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727925"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750375"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>A beszédfelismerés eszközök SDK használatának első lépései
 
@@ -46,12 +46,14 @@ Fejlesztés a Speech Devices SDK-val a Kezdés előtt gyűjtse össze az adatoka
     Is [hozzon létre egy egyszerű LUIS-modellnek](https://docs.microsoft.com/azure/cognitive-services/luis/) vagy használja a LUIS-modell, a LUIS-example.json mintát. A LUIS-modell érhető el minta a [Speech eszközök SDK letöltési hely](https://shares.datatransfer.microsoft.com/). Feltölteni a JSON-fájlt is a modell a [LUIS portál](https://www.luis.ai/home), jelölje be **importálása új alkalmazás**, majd válassza ki a JSON-fájlt.
 
 ## <a name="set-up-the-development-kit"></a>A fejlesztői készlet beállítása
-
-1. A csomag csatlakozni rendszerű, vagy adapter power egy kiváló minőségű micro USB-kábel használatával. Egy zöld power kijelző fog helyezzen üzembe az első tábla alatt.
-
-1. A csomag csatlakozhat egy számítógépet egy második mini USB-kábel használatával.
+    
+1. A fejlesztői készlet két micro USB-összekötővel rendelkezik. A bal oldali összekötő adatelérésnek köszönhetően a csomag és az alábbi képen kiemelt Power. A jobb oldalon egy vezérlő, és meg van jelölve az a képen hibakeresést.
 
     ![Csatlakozás a fejlesztői csomag](media/speech-devices-sdk/qsg-1.png)
+       
+1. A csomag Power micro USB-kábelen keresztül a kiemelt port kapcsolódni egy számítógéphez, illetve power adapter használatával. Egy zöld power kijelző fog helyezzen üzembe az első tábla alatt.
+
+1. Szabályozhatja a fejlesztői csomag csatlakozni a hibakeresési port számítógép egy második micro USB-kábel használatával. Ez elengedhetetlen, használjon egy kiváló minőségű kábelt, megbízható kommunikációt.
 
 1. Elhelyezés a fejlesztői készlet sem a kör alakú és lineáris konfigurációját.
 
@@ -75,6 +77,8 @@ Fejlesztés a Speech Devices SDK-val a Kezdés előtt gyűjtse össze az adatoka
 
     > [!NOTE]
     > Ezek a parancsok használata az Android-hibakeresési híd `adb.exe`, amely az Android Studio telepítést része. Ez az eszköz található C:\Users\[felhasználónév] \AppData\Local\Android\Sdk\platform-eszközöket. Ebben a címtárban is hozzáadhat az elérési úthoz, hogy kényelmesebbé meghívásához `adb`. Ellenkező esetben meg kell adnia a teljes elérési útja a telepített minden parancshoz, amely meghívja a adb.exe `adb`.
+    >
+    > Ha hibaüzenet jelenik meg `no devices/emulators found` ezután ellenőrizze, hogy az USB-kábel csatlakoztatva van, és a egy kiváló minőségű kábel. Használhat `adb devices` ellenőrizze, hogy a számítógép kommunikálni tudjon az a csomagban található, azon eszközök listáját adja vissza.
 
     > [!TIP]
     > A számítógép mikrofon és előadó, és ellenőrizze, hogy dolgozik a fejlesztői készlet mikrofonok vypnutí. Így nem fog véletlenül indít el az eszközt az audio a számítógépről.

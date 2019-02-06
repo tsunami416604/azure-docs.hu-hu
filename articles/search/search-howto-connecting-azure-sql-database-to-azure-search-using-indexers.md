@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 66712b97807135b1e9e8321e441ac21368f86fc5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7df785d1493ad2df698ff197d72824ceb15d39ad
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633027"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752892"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Csatlakozás és a tartalom az Azure Search-indexelők használatával Azure SQL Database indexelése
 
@@ -210,6 +210,9 @@ Szeretné használni ezt a házirendet, hozzon létre vagy frissíti az adatforr
 
 Ha használja az integrált SQL változáskövetési házirend, ne adjon meg egy külön törlési szabályzat – Ez a házirend azonosítására szolgáló beépített támogatással rendelkezik az törölt sorok. Azonban a törlések észlelt "automagically" kell, a keresési index a dokumentum kulcsaként kell ugyanaz, mint az elsődleges kulcsot az SQL-táblát. 
 
+> [!NOTE]  
+> Használata esetén [TRUNCATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql) nagy számú sorok eltávolítása egy SQL-táblára, az indexelő kell lennie [alaphelyzetbe](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) a change tracking sor törlések csomópontmetrikák állapot alaphelyzetbe állítása.
+
 <a name="HighWaterMarkPolicy"></a>
 
 ### <a name="high-water-mark-change-detection-policy"></a>Magas Vízjelbe beleszámított módosítása szabályzat
@@ -315,27 +318,27 @@ Ezek a beállítások szerepelnek a `parameters.configuration` az indexelő defi
 
 ## <a name="faq"></a>GYIK
 
-**KÉRDÉS: Használhatom az Azure SQL-indexelő az Azure IaaS virtuális gépeken futó SQL-adatbázisok?**
+**K: Használhatom az Azure SQL-indexelő az Azure IaaS virtuális gépeken futó SQL-adatbázisok?**
 
 Igen. Azonban meg kell, hogy a keresési szolgáltatás kapcsolódni az adatbázishoz. További információkért lásd: [konfigurálása egy kapcsolatot az Azure Search indexelők és az SQL Server-beli virtuális gépen](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
-**KÉRDÉS: Használható a helyszínen futó SQL-adatbázisok Azure SQL-indexer?**
+**K: Használható a helyszínen futó SQL-adatbázisok Azure SQL-indexer?**
 
 Közvetlenül nem. Nem javasolt és nem támogatják a közvetlen kapcsolat, ezzel lenne megkövetelik, hogy nyissa meg az adatbázisok, az internetes forgalmat. Ügyfeleink a jelen forgatókönyvben híd technológiák használatával például az Azure Data Factory sikeres volt. További információkért lásd: [adatok leküldése az Azure Search-index, az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
-**KÉRDÉS: Használhatom az Azure SQL-indexelő iaas Azure-on futó SQL Serveren kívül más adatbázisok?**
+**K: Használhatom az Azure SQL-indexelő iaas Azure-on futó SQL Serveren kívül más adatbázisok?**
 
 Nem. Ebben a forgatókönyvben nem támogatjuk, mert még nem teszteltük az indexelő az SQL Serveren kívül más adatbázisokhoz.  
 
-**KÉRDÉS: Ütemezés szerint futó több indexelő is létrehozható?**
+**K: Ütemezés szerint futó több indexelő is létrehozható?**
 
 Igen. Azonban csak egy indexelő is fut egy csomóponton egyszerre. Ha párhuzamosan fut több indexelők van szüksége, fontolja meg, a keresési szolgáltatás több keresési egység vertikális felskálázása.
 
-**KÉRDÉS: Az indexelők futtatása hatással a számítási feladatok?**
+**K: Az indexelők futtatása hatással a számítási feladatok?**
 
 Igen. Indexelő az egyik csomópontot a search szolgáltatás fut, és a csomópont erőforrásokat indexelést és lekérdezést forgalom és az egyéb API-kérések kiszolgáló között megosztott. Ha nagy számításigényű indexelés és a lekérdezési számítási feladatok futtatásához, és 503-as hibák vagy egyre nagyobb válaszidők nagy mértékű észlel, fontolja meg [a keresési szolgáltatás vertikális felskálázásával](search-capacity-planning.md).
 
-**KÉRDÉS: Használható a másodlagos replika egy [feladatátvevő fürt](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) adatforrásként?**
+**K: Használható a másodlagos replika egy [feladatátvevő fürt](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) adatforrásként?**
 
 Ez a konkrét licenctől függ. Teljes indexelése, egy tábla vagy nézet, használhatja egy másodlagos replikára. 
 
@@ -349,7 +352,7 @@ Ha egy csak olvasható replika rowversion használja, a következő hiba jelenik
 
     "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
-**KÉRDÉS: Használhatom-e egy másik, nem rowversion oszlop magas vízjelbe beleszámított változáskövetési?**
+**K: Használhatom-e egy másik, nem rowversion oszlop magas vízjelbe beleszámított változáskövetési?**
 
 Nem ajánlott. Csak **rowversion** lehetővé teszi, hogy megbízható az adatszinkronizálásra használható. Azonban az alkalmazáslogika függően előfordulhat, hogy lehet biztonságos ha:
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: bf73c3226af5b2480d52d5010058f24d912bdab5
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0e324ae82a0223cf48f00b186f46e26840d4d655
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355664"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747526"
 ---
 # <a name="your-marketplace-benefits"></a>A piactér előnyeit
 
@@ -61,7 +61,7 @@ A GTM-támogatás magában foglalja a sablonok, webes tartalom, képzés és esz
 Szeretné elérni ezeket az előnyöket, meg kell:
 
 1. Az ajánlat közzététele az Azure Marketplace-en vagy az appsource-ban.
-2. Győződjön meg arról, egy marketing névjegyet adta meg a **kapcsolattartási adatok** az ajánlat része. Ez egy dedikált marketing erőforrást, egy kevésbé alias figyelésekor legyen. (azaz, kerülje a "támogatási @", "info @", "marketing @" stb.)
+2. Győződjön meg arról, egy marketing névjegyet adta meg a **kapcsolattartási adatok** az ajánlat része. Ez egy dedikált marketing erőforrást, egy kevésbé alias figyelésekor legyen. (azaz, kerülje a "támogatási\@", "info\@", "marketing\@" stb.)
 
 A megoldás állapota alapján, kapni fog egy e-mailt az önsegítő erőforrások, vagy a konzultációs hívást egy dedikált Engagement Manager meghívót. Nem kell tennie semmit sem kell a hívás indításához, a Marketplace-en bevezetési csapata kapcsolatba fog lépni az információk alapján a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
 

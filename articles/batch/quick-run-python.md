@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 3a2e48697efbe0f4969a8fae20c050a38645ed6f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9ede1b48d1b69c738e335676f10233af72e8564e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462079"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754421"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Gyors útmutató: Az első Batch-feladat futtatása a Python API használatával
 
@@ -153,7 +153,7 @@ Batch-készlet létrehozásához az alkalmazás a [PoolAddParameter](/python/api
 
 A csomópontok száma (`_POOL_NODE_COUNT`) és a virtuális gépek mérete (`_POOL_VM_SIZE`) meghatározott állandókkal van megadva. A példa alapértelmezés szerint egy 2 *Standard_A1_v2* méretű csomópontot tartalmazó készletet hoz létre. A javasolt méret jó teljesítmény/költség arányt kínál a jelen rövid példában.
 
-A [pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add) metódus elküldi a készletet a Batch szolgáltatásnak.
+A [pool.add](/python/api/azure.batch.operations.pooloperations) metódus elküldi a készletet a Batch szolgáltatásnak.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -187,7 +187,7 @@ batch_service_client.job.add(job)
 
 Az alkalmazás létrehoz egy listát a tevékenységobjektumokról a [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter) osztály segítségével. Minden tevékenység feldolgoz egy bemeneti `resource_files` objektumot egy `command_line` tulajdonság segítségével. A mintában a parancssor a `cat` Bash felületi parancsot futtatja a szövegfájl megjelenítéséhez. Ez a parancs egy bemutató célú, egyszerű példa. Batch használata esetén a parancssorban adhatja meg az alkalmazást vagy szkriptet. A Batch számos módszert kínál az alkalmazások és szkriptek számítási csomópontokon történő üzembe helyezésére.
 
-Ezt követően az alkalmazás tevékenységeket ad a feladathoz a [task.add_colection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz. 
+Ezt követően az alkalmazás tevékenységeket ad a feladathoz a [task.add_colection](/python/api/azure.batch.operations.taskoperations) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz. 
 
 ```python
 tasks = list()

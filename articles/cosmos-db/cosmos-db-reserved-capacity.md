@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan vásárolhat Azure Cosmos DB szolgáltatás sz�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 01/18/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: b37aa2eb24fe79d322839b4fb5c3c3a8b1296033
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb2d57d3e119fd83d1a984fc31f29a5d93e957d1
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454097"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745945"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimalizálhatja költségeit az Azure Cosmos DB-ben lefoglalt kapacitás
 
@@ -25,7 +25,7 @@ Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás átviteli seb
 Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás is elérhetőek a [az Azure portal](https://portal.azure.com). Lefoglalt kapacitás vásárlása:
 
 * A tulajdonos szerepkör legalább egy vállalati vagy használatalapú fizetéses előfizetésre kell lennie.  
-* Az Enterprise-előfizetések, a foglalást az Azure-beli vásárlásokra engedélyezve kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com/).  
+* Vállalati előfizetés esetén **fenntartott példányok hozzáadása** engedélyezve kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com). Vagy, ha ez a beállítás le van tiltva, az előfizetés egy nagyvállalati szerződés rendszergazdájának kell lennie.
 * A Cloud Solution Provider (CSP) program csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatja meg az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás.
 
 ## <a name="determine-the-required-throughput-before-purchase"></a>A vásárlás előtt szükséges átviteli sebesség meghatározása
@@ -53,8 +53,8 @@ A Foglalás mérete átviteli sebességet, amelyet a fogja használni a meglév�
    |Mező  |Leírás  |
    |---------|---------|
    |Name (Név)   |    A Foglalás nevét. Ez a mező automatikusan megjelenik `CosmosDB_Reservation_<timeStamp>`. Megadhat egy másik nevet a foglalás létrehozása során. Vagy átnevezheti a foglalás létrehozása után.      |
-   |Előfizetés  |   Az Azure Cosmos DB fizetnie használt előfizetés fenntartott kapacitás. A fizetési módot, a kijelölt előfizetéshez az előzetes költségek díjszabási használatos. Az előfizetés típusa a következők egyikének kell lennie: <br/><br/>  [Nagyvállalati szerződés](https://azure.microsoft.com/pricing/enterprise-agreement/) (csomag száma: MS-AZR-0017P): Az Enterprise-előfizetésre a díjakat a regisztráció pénzügyi kötelezettségvállalási egyenleg vonni vagy számlázva a. <br/><br/> [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/) (csomag száma: MS-AZR-0003P): Használatalapú fizetéses előfizetésre az előfizetés bankkártyával vagy számla ellenében fizetési módot, a díjakat számlázzuk ki.    |
-   |Hatókör   |   Ez a beállítás szabályozza, hogy hány előfizetés használhatja az társított a Foglalás számlázási ellátás. Azt is meghatározza, hogyan kell alkalmazni a Foglalás meghatározott előfizetések.   <br/><br/>  Ha **egy előfizetés**, a foglalási kedvezményt a kijelölt előfizetésben az Azure Cosmos DB-példányra van alkalmazva. <br/><br/>  Ha **megosztott**, a foglalási kedvezményt van alkalmazva minden előfizetésre a számlázási környezetben futó Azure Cosmos DB-példányokhoz. A számlázási környezetben alapján hogyan jelentkezett az Azure-hoz. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és előfizetéseken belül a regisztráció (kivéve a fejlesztési és tesztelési előfizetések) magában foglalja. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.  <br/><br/> A lefoglalt kapacitás vásárlás után módosíthatja a Foglalás hatóköre.  |
+   |Előfizetés  |   Az Azure Cosmos DB fizetnie használt előfizetés fenntartott kapacitás. A fizetési módot, a kijelölt előfizetéshez az előzetes költségek díjszabási használatos. Az előfizetés típusa a következők egyikének kell lennie: <br/><br/>  Nagyvállalati Szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P): Az Enterprise-előfizetésre a díjakat a regisztráció pénzügyi kötelezettségvállalási egyenleg vonni vagy számlázva a. <br/><br/> Használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR - 0023 P): Használatalapú fizetéses előfizetésre az előfizetés bankkártyával vagy számla ellenében fizetési módot, a díjakat számlázzuk ki.    |
+   |Hatókör   |   Ez a beállítás szabályozza, hogy hány előfizetés használhatja az társított a Foglalás számlázási ellátás. Azt is meghatározza, hogyan kell alkalmazni a Foglalás meghatározott előfizetések.   <br/><br/>  Ha **egy előfizetés**, a foglalási kedvezményt a kijelölt előfizetésben az Azure Cosmos DB-példányra van alkalmazva. <br/><br/>  Ha **megosztott**, a foglalási kedvezményt van alkalmazva minden előfizetésre a számlázási környezetben futó Azure Cosmos DB-példányokhoz. A számlázási környezetben alapján hogyan jelentkezett az Azure-hoz. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és a regisztráció belüli összes előfizetésre tartalmazza. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.  <br/><br/> A lefoglalt kapacitás vásárlás után módosíthatja a Foglalás hatóköre.  |
    |Fenntartott kapacitás típusa   |  Átviteli sebesség kiosztott kérelemegységek.|
    |Fenntartott kapacitási egységek  |      Átviteli sebesség a lefoglalni kívánt mennyisége. Ez az érték meghatározása az átviteli sebesség a Cosmos DB erőforrásokat (például adatbázisok és tárolók) szükséges régiónként kiszámítása. Majd akkor azt a Cosmos DB-adatbázissal társító régiók száma alapján.  <br/><br/> Példa: Ha öt régió 1 millió RU/s, minden régióban, válassza ki az 5 millió RU/s kapacitás a foglalásvásárlás esetén.    |
    |Időtartam  |   Egy vagy három év.   |

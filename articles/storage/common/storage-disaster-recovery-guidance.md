@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bc79379d1b893beffc085e79b7643fcb6e1dc26f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fbd4782d7fde089f9770e148564ec5941da3dc8e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657314"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753588"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Katasztrófa utáni helyreállítás és a tárolási fiók feladatátvételi (előzetes verzió) az Azure Storage-ban
 
@@ -158,15 +158,11 @@ Nem felügyelt lemezek és az Azure Storage szolgáltatásban tárolódnak. Ha e
 
 Ne feledje, hogy az ideiglenes lemezen tárolt adatokat, ha a virtuális gép leállt.
 
-#### <a name="azure-file-sync"></a>Azure File Sync
-
-Az Azure File Sync fiók feladatátvételi támogatja. Azonban szüksége lesz a feladatátvétel befejezése után, konfigurálja újra az összes Azure File Sync-beállításokat.
-
 ### <a name="unsupported-features-or-services"></a>Nem támogatott szolgáltatások vagy szolgáltatások
-
 A következő szolgáltatások vagy szolgáltatások nem támogatottak a fiók feladatátvételi előzetes kiadásban:
 
-- Az Azure Data Lake Storage Gen2 hierarchikus fájlmegosztásokat nem lehet végrehajtani a feladatátvételt.
+- Az Azure File Sync nem támogatja a fiók a tároló feladatátvételét. Az Azure File Sync felhő végpontként használt Azure-fájlmegosztásokat tartalmazó Storage-fiókok nem feladatátvételt kell végrehajtani. Ezzel OK sync leállításához működő és május is művelettel váratlan adatvesztés esetén újonnan rétegzett fájlok.  
+- Storage-fiókok használata az Azure Data Lake Storage Gen2 hierarchikus névtér nem lehet végrehajtani a feladatátvételt.
 - Archivált blobokat tartalmazó tárfiókot nem lehet végrehajtani a feladatátvételt. Archivált nem tervezi a feladatátvételt egy önálló tárfiókot a blobok karbantartása.
 - Prémium szintű blokkblobok tartalmazó tárfiókot nem lehet végrehajtani a feladatátvételt. Támogatja a blokkblobokat prémium szintű Storage-fiókok jelenleg nem támogatja georedundancia.
 

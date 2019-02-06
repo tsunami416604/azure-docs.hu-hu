@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 2252dc9d1cb4a8b5666e3f8078528206ac0fddf7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9b8340221c61bedbe010b9ef280ada62cfee7a21
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228253"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754871"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Szövegfelolvasás – gyakori kérdések
 
@@ -29,7 +29,7 @@ Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse me
 
 **K: Hogyan kezdjek hozzá standard beszédfelismerési modellek használata esetén?**
 
-**A**: Több mint 80 standard beszédfelismerési modelleket a több mint 45 nyelvet a HTTP-kéréseken keresztül érhetők el. Először kérje le egy [előfizetési kulcs](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Ahhoz, hogy a predeployed beszédfelismerési modellek REST-hívások, tekintse meg a [REST API-val](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+**A**: Több mint 80 standard beszédfelismerési modelleket a több mint 45 nyelvet a HTTP-kéréseken keresztül érhetők el. Először kérje le egy [előfizetési kulcs](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Ahhoz, hogy a predeployed beszédfelismerési modellek REST-hívások, tekintse meg a [REST API-val](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
 **K: Ha szeretne egy testre szabott Hangüzenetek modellt használja, akkor az API-t ugyanaz, mint a standard szintű beszédhangot használt?**
 

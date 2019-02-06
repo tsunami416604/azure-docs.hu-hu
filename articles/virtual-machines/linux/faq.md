@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: ffc724c52fdab01bfbf2846ff06a35f38a57c8eb
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 8d421adfae335a976485ed463a69484a74be5b44
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054292"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753929"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux rendszerű virtuális gépek kapcsolatos gyakori kérdések
 Ez a cikk foglalkozik az Azure Resource Manager-alapú üzemi modellel létrehozott Linux virtuális gépek kapcsolatos gyakori kérdésekre. Ez a témakör Windows verziója: [– gyakori kérdések a Windows Virtual Machines szolgáltatásról](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -31,7 +31,7 @@ Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális g
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Mennyi tárhelyet használhatok egy virtuális gép esetén?
 Minden adatlemez akár 4 TB-ig (4095 GB) lehet. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Azure Managed Disks szolgáltatást ajánljuk lemezes tárolás ajánlatokra használatra az Azure Virtual Machines hosszú távú adattárolásra az adatok. Egy-egy virtuális géppel több felügyelt lemez is használható. A Managed Disks kétféle tartós tárolási lehetőséget kínál: Premium és Standard szintű Managed Disks. Díjszabási információkért tekintse meg a [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks).
+Azure Managed Disks szolgáltatást ajánljuk lemezes tárolás ajánlatokra használatra az Azure Virtual Machines hosszú távú adattárolásra az adatok. Egy-egy virtuális géppel több felügyelt lemez is használható. A felügyelt lemezek ajánlat kétféle tartós tárolási lehetőséget kínál: Premium and Standard Managed Disks. Díjszabási információkért tekintse meg a [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Az Azure storage-fiókok storage is lehetővé teszi az operációsrendszer-lemez és bármely adatlemez számára. Minden lemez egy lapblobként tárolt .vhd-fájl. A díjszabás részleteiért lásd [a Storage szolgáltatás díjszabását](https://azure.microsoft.com/pricing/details/storage/).
 
@@ -53,10 +53,10 @@ Közép-Kanada és kelet-Kanada két új régió automatikusan nincs regisztrál
 Igen, ez a lehetőség most. A virtuális Gépet először meg kell állítani a felszabadítása sikeresen megtörtént. Ezután adja hozzá, vagy távolítsa el a hálózati adapter (kivéve a legutóbbi hálózati Adaptert a virtuális gépen). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Vannak-e minden olyan számítógépre vonatkozó követelményeknek?
-Igen. A számítógép neve legfeljebb 64 karakter hosszúságú lehet. Lásd: [elnevezési konvenciók szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további információt az erőforrások elnevezési körül.
+Igen. A számítógép neve legfeljebb 64 karakter hosszúságú lehet. Lásd: [elnevezési konvenciók szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions) további információt az erőforrások elnevezési körül.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Vannak-e valamelyik erőforrás csoport vonatkozó követelményeknek?
-Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszúságú lehet. Lásd: [elnevezési konvenciók szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) erőforráscsoportokkal kapcsolatos további információt.
+Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszúságú lehet. Lásd: [elnevezési konvenciók szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions) erőforráscsoportokkal kapcsolatos további információt.
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Mik a felhasználónév egy virtuális gép létrehozásakor?
 
@@ -66,16 +66,16 @@ A következő felhasználónevek nem engedélyezettek:
 
 <table>
     <tr>
-        <td style="text-align:center">Rendszergazda </td><td style="text-align:center"> rendszergazda </td><td style="text-align:center"> Felhasználó </td><td style="text-align:center"> Felhasználó1</td>
+        <td style="text-align:center">Rendszergazda </td><td style="text-align:center"> admin </td><td style="text-align:center"> Felhasználó </td><td style="text-align:center"> Felhasználó1</td>
     </tr>
     <tr>
-        <td style="text-align:center">teszt </td><td style="text-align:center"> mind a Felhasználó2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> Felhasználó3</td>
+        <td style="text-align:center">test </td><td style="text-align:center"> mind a Felhasználó2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> Felhasználó3</td>
     </tr>
     <tr>
-        <td style="text-align:center">rendszergazda1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
+        <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
     </tr>
     <tr>
-        <td style="text-align:center">actuser  </td><td style="text-align:center"> ADM – </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
+        <td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
     </tr>
     <tr>
         <td style="text-align:center">biztonsági mentés </td><td style="text-align:center"> konzol </td><td style="text-align:center"> David </td><td style="text-align:center"> Vendég</td>

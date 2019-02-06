@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 7d79e81f8670492d025727ed76d7d529dbd4719d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 177a9cbf9235bb3d2deb0d5f8e4e31a0e1472b48
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188320"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756476"
 ---
 # <a name="get-trending-images-from-the-web"></a>Webes felkapott képek bekérése
 
@@ -90,7 +90,7 @@ A válasz tartalmaz egy [TrendingImages](https://docs.microsoft.com/rest/api/cog
 
 Minden csempe kép és a kapcsolódó képek első beállításokat tartalmazza. A kapcsolódó képek bekérése, használhatja a lekérdezés `text` hívja a [Image Search API](./search-the-web.md) és a kapcsolódó képek megjelenítése, saját magának. Vagy használhatja az URL-címet `webSearchUrl` érvénybe a felhasználót, hogy a Bing lemezképek keresési eredmények oldal, amely a kapcsolódó lemezképet is tartalmaz.
 
-Ha felhívja a képkeresési API, a kapcsolódó képek bekérése, állítsa be a [azonosító](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) lekérdezési paraméter az azonosítót a `id` mező. Az azonosító megadása, hogy a válasz tartalmazza-e a lemezkép (legyen az első képet a válaszban) és a kapcsolódó képek biztosítja. Emellett állítsa a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#q) lekérdezési paraméter, a szöveget a `query` objektum `text` mező.
+Ha felhívja a képkeresési API, a kapcsolódó képek bekérése, állítsa be a [azonosító](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) lekérdezési paraméter az azonosítót a `id` mező. Az azonosító megadása, hogy a válasz tartalmazza-e a lemezkép (legyen az első képet a válaszban) és a kapcsolódó képek biztosítja. Emellett állítsa a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) lekérdezési paraméter, a szöveget a `query` objektum `text` mező.
 
 Az alábbi példa bemutatja, hogyan végezheti a lemezkép-azonosító az előző népszerű képek API-válasz Mr. Smith kapcsolódó rendszerképeket.
 
