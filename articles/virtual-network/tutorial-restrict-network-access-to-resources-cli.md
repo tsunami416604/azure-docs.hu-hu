@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 87fcfd98065bcf1f0fea3a06029853f69d67842d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 31d583456f2ca0a2804c2215906965c2241af52d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663808"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751497"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása a virtuális hálózati Szolgáltatásvégpontok az Azure CLI használatával
 
@@ -51,7 +51,7 @@ az group create \
   --location eastus
 ```
 
-Hozzon létre egy virtuális hálózatot egyetlen alhálózattal rendelkező [az network vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create).
+Hozzon létre egy virtuális hálózatot egyetlen alhálózattal rendelkező [az network vnet létrehozása](/cli/azure/network/vnet).
 
 ```azurecli-interactive
 az network vnet create \
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>Szolgáltatásvégpont engedélyezése 
 
-Engedélyezheti a szolgáltatásvégpontokat csak a szolgáltatások, amelyek támogatják a Szolgáltatásvégpontok. Szolgáltatási végpont engedélyezve van elérhető szolgáltatások megtekintése az Azure-helyen [az network vnet--végpontszolgáltatások listázásához](/cli/azure/network/vnet#az_network_vnet_list_endpoint_services). Az alábbi példa az elérhető szolgáltatások service-végpont engedélyezve van egy listáját adja vissza a *eastus* régióban. Visszaadott szolgáltatások listájában, idővel növekszik, ahogy további Azure-szolgáltatások válnak a szolgáltatásvégpont engedélyezve van.
+Engedélyezheti a szolgáltatásvégpontokat csak a szolgáltatások, amelyek támogatják a Szolgáltatásvégpontok. Szolgáltatási végpont engedélyezve van elérhető szolgáltatások megtekintése az Azure-helyen [az network vnet--végpontszolgáltatások listázásához](/cli/azure/network/vnet). Az alábbi példa az elérhető szolgáltatások service-végpont engedélyezve van egy listáját adja vissza a *eastus* régióban. Visszaadott szolgáltatások listájában, idővel növekszik, ahogy további Azure-szolgáltatások válnak a szolgáltatásvégpont engedélyezve van.
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -103,7 +103,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-A biztonsági szabályok létrehozása [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). A következő szabály lehetővé teszi, hogy a kimenő hozzáférést az Azure Storage szolgáltatáshoz rendelt nyilvános IP-címek: 
+A biztonsági szabályok létrehozása [az network nsg-szabály létrehozása](/cli/azure/network/nsg/rule). A következő szabály lehetővé teszi, hogy a kimenő hozzáférést az Azure Storage szolgáltatáshoz rendelt nyilvános IP-címek: 
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -168,7 +168,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-A tárfiók létrehozása után a tárfiók kapcsolati karakterlánca olvasson be egy változót [az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string). A kapcsolati karakterlánc segítségével hozzon létre fájlmegosztást egy későbbi lépésben.
+A tárfiók létrehozása után a tárfiók kapcsolati karakterlánca olvasson be egy változót [az storage account show-connection-string](/cli/azure/storage/account). A kapcsolati karakterlánc segítségével hozzon létre fájlmegosztást egy későbbi lépésben.
 
 ```azurecli-interactive
 saConnectionString=$(az storage account show-connection-string \
@@ -223,7 +223,7 @@ Tárfiókhoz való hálózati hozzáférés teszteléséhez helyezzen üzembe eg
 
 ### <a name="create-the-first-virtual-machine"></a>Az első virtuális gép létrehozása
 
-A virtuális gép létrehozása a *nyilvános* alhálózat [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
+A virtuális gép létrehozása a *nyilvános* alhálózat [az virtuális gép létrehozása](/cli/azure/vm). Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
 
 ```azurecli-interactive
 az vm create \

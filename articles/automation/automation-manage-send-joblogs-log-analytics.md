@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/12/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0125c64a96929db9c8846ca7ad731fa3dc795f98
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 34a695daa077e882e911d3fb59f8a30e39c3a9d2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432965"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756631"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Feladat állapota és a feladatstreamek automatizálást továbbítása a Log Analyticsbe
 
@@ -64,11 +64,12 @@ Ha meg kell keresnie a *neve* az Automation-fiók az Azure Portalon válassza ki
    Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
    ```
 
-Ez a szkript futtatása után látni fogja az rögzíti a Log Analytics új JobLogs vagy ír JobStreams 10 percen belül.
+Ez a szkript futtatása után is igénybe vehet egy órát, a Log Analytics új JobLogs vagy ír JobStreams rekordok megtekintése előtt.
 
 A naplók megtekintéséhez futtassa a következő lekérdezést a Log Analytics naplóbeli keresés: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Konfiguráció ellenőrzése
+
 Győződjön meg arról, hogy az Automation-fiók naplókat küld a Log Analytics-munkaterülethez, ellenőrizze, hogy diagnosztikai helyesen van konfigurálva az Automation-fiókot a következő PowerShell-lel:
 
 ```powershell-interactive
@@ -76,14 +77,16 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
 
 A kimenetben ellenőrizze, hogy:
-+ A *naplók*, értéke *engedélyezve* van *igaz*.
-+ Az érték *munkaterület azonosítója* az erőforrás-azonosító, a Log Analytics-munkaterület értékre van állítva.
+
+* A *naplók*, értéke *engedélyezve* van *igaz*.
+* Az érték *munkaterület azonosítója* az erőforrás-azonosító, a Log Analytics-munkaterület értékre van állítva.
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
 
 Diagnosztika az Azure Automation két rekordtípust hoz létre a Log Analytics és a címkével **AzureDiagnostics**. A következő lekérdezéseket a Log Analytics frissített lekérdezési nyelvet használja. Az örökölt lekérdezési nyelv és az Azure Log Analytics új lekérdezési nyelvre közötti gyakori lekérdezések információt [örökölt az új Azure Log Analytics lekérdezési nyelv – Adatlap](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)
 
 ### <a name="job-logs"></a>Feladatnaplók
+
 | Tulajdonság | Leírás |
 | --- | --- |
 | TimeGenerated |A runbook-feladat végrehajtásának dátuma és időpontja. |
@@ -128,6 +131,7 @@ Diagnosztika az Azure Automation két rekordtípust hoz létre a Log Analytics �
 | ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-log-analytics"></a>A Log Analytics-naplók Automation megtekintése
+
 Most, hogy az Automation-feladat naplókat küld a Log Analytics kezdi, lássuk, mit tehet a Log Analytics belül ezeket a naplókat.
 
 A naplók megtekintéséhez futtassa a következő lekérdezést: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
@@ -141,7 +145,7 @@ Létrehoz egy riasztási szabályt, hogy először létrehozni egy naplókeresé
 2. Hozzon létre egy naplóbeli keresési lekérdezés a riasztás a következő keresési beírni a szöveget a lekérdezési mezőtől: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`  Emellett szerint csoportosíthatók az RunbookName használatával: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    Ha beállította naplók egynél több Automation-fiókot vagy előfizetést a munkaterületre, előfizetése és az Automation-fiók által a riasztásokat csoportosíthatók. Automation-fiók neve JobLogs keresése erőforrás mezőjében található.
-1. Megnyitásához a **létrehozás szabály** kattintson **+ Új riasztási szabály** az oldal tetején. A beállítások konfigurálása a riasztás további információkért lásd: [Naplóriasztások az Azure-ban](../azure-monitor/platform/alerts-unified-log.md).
+3. Megnyitásához a **létrehozás szabály** kattintson **+ Új riasztási szabály** az oldal tetején. A beállítások konfigurálása a riasztás további információkért lásd: [Naplóriasztások az Azure-ban](../azure-monitor/platform/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Keresse meg az összes feladatot, amely hibákkal fejeződött be
 Mellett hibák riasztást küld, amikor egy runbook-feladat nem megszakító hibát tartalmaz találja. Ezekben az esetekben a PowerShell-hibafolyam eredményez, de a megszakítást nem okozó hibákat nem okoznak a feladat felfüggesztése vagy sikertelen.    

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5a88e1fc5395a1b935371ae9d1eb24528a87b853
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 0ec099e0f210fc267a0a34f76136a517e0ae6ccc
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512339"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744517"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hibrid Runbook-feldolgozók hibaelhárítása
 
@@ -46,7 +46,7 @@ A lehetséges lehetséges okok a következők:
 
 * A runbookok nem tudja hitelesíteni a helyi erőforrásokkal
 
-* A hibrid Runbook-feldolgozó szolgáltatás futtatásához konfigurált számítógép megfelel a minimális hardverkövetelményeknek.
+* A hibrid Runbook-feldolgozó szolgáltatás futtatásához konfigurált számítógép nem felel meg a minimális hardverkövetelményeknek.
 
 #### <a name="resolution"></a>Megoldás:
 

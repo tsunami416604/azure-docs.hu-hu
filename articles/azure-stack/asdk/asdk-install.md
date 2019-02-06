@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 09/10/2018
-ms.openlocfilehash: 363e0868542f56df8c37639b2af7ac295be97da2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 20c96d1e25e0aef86d09c37ed919e61ec6058c6d
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249905"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747441"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Az Azure Stack Development Kit (ASDK) telepítése
 Miután [a ASDK számítógép előkészítése](asdk-prepare-host.md), a ASDK is üzembe helyezhetők az alábbi lépéseket követve ebben a cikkben a CloudBuilder.vhdx lemezképpel.
@@ -59,7 +59,7 @@ A jelen cikkben ismertetett lépések bemutatják, hogyan helyezhet üzembe a gr
     - Írjon be egy érvényes **idő a kiszolgáló IP-címe** címet. Ez szükséges mező állítja be a kiszolgálót a csomag által használható. Ez a paraméter egy érvényes idő-kiszolgáló IP-címét meg kell adni. Kiszolgálók nevei nem támogatottak.
 
       > [!TIP]
-      > Egy idő-kiszolgáló IP-cím található, a Microsoft [pool.ntp.org](http://pool.ntp.org) , illetve pingelni time.windows.com. 
+      > Egy idő-kiszolgáló IP-cím található, a Microsoft [ntppool.org](https://www.ntppool.org/) , illetve pingelni time.windows.com. 
 
     - **Igény szerint**, akkor állítsa be a következő értékeket:
         - **VLAN-AZONOSÍTÓT**: Beállítja a VLAN-azonosítót. Csak akkor használja ezt a beállítást, ha a gazdagép és a AzS-BGPNAT01 konfigurálnia kell a VLAN-Azonosítót a fizikai hálózat (és internet) eléréséhez. 

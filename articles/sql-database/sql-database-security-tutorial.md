@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 8a0c474ab610d89bd702613bc778ad29523a4192
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 2ea87b36d8b489abf59ac4550121369a2ddf540f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732719"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752517"
 ---
 # <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Oktatóanyag: Önálló vagy készletezett adatbázis biztonságossá tétele
 
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzéséhez, ellenőrizze, hogy a következő előfeltétele
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Egy Azure SQL server és adatbázis
-  - Hozza létre azokat az [az Azure portal](sql-database-get-started-portal.md), [CLI](sql-database-cli-samples.md), vagy [PowerShell](sql-database-powershell-samples.md)
+  - Hozza létre azokat az [az Azure portal](sql-database-single-database-get-started.md), [CLI](sql-database-cli-samples.md), vagy [PowerShell](sql-database-powershell-samples.md)
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -64,7 +64,7 @@ Az Azure-ban tűzfallal védett SQL-adatbázisok. Alapértelmezés szerint a kis
 
 ### <a name="set-up-sql-database-server-firewall-rules"></a>Állítsa be az SQL Database-kiszolgáló tűzfalszabályait
 
-Kiszolgálószintű tűzfalszabályok alkalmazni az egyazon SQL Database-kiszolgálón található összes adatbázishoz.
+Kiszolgálószintű IP-tűzfalszabályainak alkalmazása az egyazon SQL Database-kiszolgálón található összes adatbázishoz.
 
 A kiszolgálószintű tűzfalszabályok beállítása:
 

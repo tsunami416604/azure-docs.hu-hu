@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 6b2302e69c9412170b55df4bfd8c1df5a9f75ef3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bfdea1d5380750ec23964cd8564db9b3a9539f15
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479291"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754642"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Alkalmazás figyelembevételével Azure Kubernetes Service (AKS) egy fürt automatikus méretezése
 
@@ -63,6 +63,9 @@ A két autoscalers hogyan tudnak együttműködni, és gyakran egyaránt telepí
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>AKS-fürt létrehozása és a fürt automatikus méretező engedélyezése
 
 Ha egy AKS-fürt létrehozásához szükséges, használja a [az aks létrehozása] [ az-aks-create] parancsot. Adjon meg egy *– kubernetes-verzió* , amely megfelel-e vagy meghaladja a minimális verziószám, ahogyan az előző szükséges [megkezdése előtt](#before-you-begin) szakaszban. Engedélyezze és konfigurálja a fürt méretező használja a *– enable-fürt-méretező* paramétert, és adja meg a csomópont *--min-count* és *--maximális darabszám*.
+
+> [!IMPORTANT]
+> Fürt automatikus méretező egy Kubernetes-összetevő. Bár az AKS-fürtöt a csomópontok beállítása virtuálisgép-méretezési csoportot, nem manuális engedélyezése vagy szerkessze a beállításokat a méretezési csoport automatikus méretezés az Azure portal vagy az Azure CLI használatával. Lehetővé teszik a Kubernetes fürt méretező szükséges méretezési beállításainak kezelése. További információkért lásd: [lehet módosítani az AKS-erőforrások MC_ erőforráscsoportban?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group)
 
 Az alábbi példa egy AKS-fürtöt hoz létre virtuálisgép-méretezési csoportot és a fürt méretező engedélyezve van, és használja legalább *1* és a maximális *3* csomópontok:
 

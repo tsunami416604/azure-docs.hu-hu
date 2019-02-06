@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 01/22/2019
-ms.openlocfilehash: 228de2b7c47115373b26dcaa24b44e90baf76143
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 02/05/2019
+ms.openlocfilehash: be6e2cbea7dd23cbe6932f0110ac1c8b630a17c2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662602"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753190"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
@@ -50,17 +50,19 @@ Felügyelt példány két szolgáltatási csomagban – általános célú és a
 | **Funkció** | **Általános célú** | **Üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Memória) | Gen4: 56GB-156GB<br/>Gen5: 44GB-440GB<br/>\*Arányos virtuális magok száma | Gen4: 56GB-156GB <br/> Gen5: 41GB-408GB<br/>\*Arányos virtuális magok száma |
+| Memory (Memória) | Gen4: 56 GB - 168 GB<br/>Gen5: 40.8 GB – 408 GB<br/>\*Arányos virtuális magok száma | Gen4: 56 GB - 168 GB <br/> Gen5: 40.8 GB – 408 GB<br/>\*Arányos virtuális magok száma |
 | Maximális tárméret | 8 TB | A gen 4: 1 TB <br/> A gen 5: <br/>– 1 TB-os 8, 16 virtuális mag<br/>– A 24 virtuális mag 2 TB<br/>– 4 TB-os 32, 40, 64, 80 virtuális magok |
 | Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány | Határozza meg a maximális tárhelyméretet a példány |
 | Egy példány adatbázisok maximális száma | 100 | 100 |
 | Maximális adatbázisfájlok példányonként | Legfeljebb 280 | – 32 767 fájlt adatbázisonként |
-| Adatok/Log/iops-érték (becsült) | fájlonkénti 500-7500<br/>\*[Fájl méretétől függ] (https://docs.microsoft.com/azure/virtual-machines ce Log átviteli sebesség | 22MB/s-példányonként | 3MB/s / virtuális mag<br/>Maximális száma 48MB/s |
-| A fájlmegosztásra (becsült) | 100 – 250 MB/s fájlonként<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24-48MB/s / virtuális mag |
+| Adatok/Log/iops-érték (becsült) | 500 – 7500 fájlonként<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines)| 11-K – 110 K (1,375 / virtuális mag) |
+|Napló átviteli sebesség | 22 MB/s-példányonként | 3 MB/s / virtuális mag<br/>Legfeljebb 48 MB/s |
+| A fájlmegosztásra (becsült) | 100 - fájlonként 250 MB/s<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 - 48 MB/s / virtuális mag |
 | IO-késés (becsült) | 5-10 ms | 1-2 ms |
-| Max. tempDB mérete | 192-1920 GB (24 GB / virtuális mag) | Nincsenek megkötések - korlátozza a maximális példányméret |
+| Max. tempDB mérete | 192 - 1,920 GB (24 GB / virtuális mag) | Nincsenek megkötések - korlátozza a maximális példányméret |
 
 **Megjegyzések**:
+
 - Adat- és a naplófájlok méretét a felhasználó- és rendszer-adatbázisokat a storage példányméret, a rendszer összehasonlítja a maximális méretkorlát szerepelnek. Használat <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> rendszernézet meghatározni az összes adatbázis által felhasznált terület. Hibanaplók nem megőrzött és a méret nem tartalmazza. Biztonsági mentések nem szerepelnek a tárterület méretét.
 - Adatátviteli sebessége és IOPS is függ az oldal méretét, amely a felügyelt példány explicit módon nem korlátozódik.
 

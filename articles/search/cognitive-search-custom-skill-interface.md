@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: fe575a79fe2f47729e7c7fe039989b2c08af1282
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: e4fe511228f6e80a17af8325ee74ae0927a760bd
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657824"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754727"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Egy egyéni ismeretek hozzáadása a cognitive search folyamat
 
-A [kognitív Keresés indexelése folyamat](cognitive-search-concept-intro.md) az Azure Search szolgáltatásban is összeállítani a [képességek az előre meghatározott](cognitive-search-predefined-skills.md) és egyéni képesség, amely a személyes létrehozása és hozzáadása a folyamatban. Ebből a cikkből megtudhatja, hogyan hozhat létre egy egyéni ismeretek által elérhetővé tett egy felületet, így lehetővé teszi a kognitív keresés folyamat szerepelnek. 
+A [kognitív Keresés indexelése folyamat](cognitive-search-concept-intro.md) az Azure Search szolgáltatásban is összeállítani a [képességek az előre meghatározott](cognitive-search-predefined-skills.md) , valamint [egyéni képesség](cognitive-search-custom-skill-web-api.md) , amelyek személyes létrehozása és hozzáadása a folyamat. Ebből a cikkből megtudhatja, hogyan hozhat létre egy egyéni ismeretek által elérhetővé tett egy felületet, így lehetővé teszi a kognitív keresés folyamat szerepelnek. 
 
 Egy egyéni ismeretek létrehozása lehetőséget nyújt a átalakítások egyedi legyen a tartalom beszúrása. Egyéni műveleteket hajt végre egymástól függetlenül, bármilyen szükséges Adatbővítés lépés alkalmazása. Például, sikerült határozza meg az egyéni entitások mezőt-specifikus, üzleti és a pénzügyi szerződések és a dokumentumok megkülönböztetéséhez egyéni képbesorolási modellek létrehozása vagy hangfájlokat, a kapcsolódó tartalom mélyebb közvetítőn speech recognition szakértelem hozzáadása. Egy részletes példa: [példa: egyéni műveleteket létrehozása](cognitive-search-create-custom-skill-example.md).
 

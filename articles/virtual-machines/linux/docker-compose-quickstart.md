@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: cynthn
-ms.openlocfilehash: aa573b17e8b590f416c4857186cb8989decc4aff
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 257083e1ae0c3c1cb3c5421882ffd0e06e2d1f5c
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888634"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752143"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Ismerkedés a Docker és a Compose megadásához és a egy többtárolós alkalmazást futtatni az Azure-ban
 A [összeállítás](http://github.com/docker/compose), alkalmazások több Docker-tároló feladatátvétele meghatározásához használhat egy egyszerű szöveges fájlt. Majd alkalmazás üzembe helyezése egyetlen paranccsal, amely a megadott környezet telepítéséhez. Tegyük fel ez a cikk bemutatja, hogyan gyorsan beállíthat egy WordPress-blogbejegyzés-háttérrendszer MariaDB SQL database Ubuntu rendszerű virtuális gépen. Összeállítás használatával állítsa be a összetettebb alkalmazásokat.
@@ -35,13 +35,13 @@ A Docker VM bővítmény használata esetén a virtuális gép automatikusan be 
 ### <a name="create-docker-host-with-azure-cli"></a>Docker-gazdagép létrehozása az Azure CLI-vel
 Telepítse a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index).
 
-Először hozzon létre egy erőforráscsoportot a Docker-környezetben a [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Először hozzon létre egy erőforráscsoportot a Docker-környezetben a [az csoport létrehozása](/cli/azure/group). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután telepítse a virtuális gép [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az_group_deployment_create) , amely tartalmazza az Azure Docker VM-bővítmény [ezen Azure Resource Manager-sablon a Githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Amikor a rendszer kéri, adja meg a saját egyedi értékek *newStorageAccountName*, *adminUsername*, *adminPassword*, és *dnsNameForPublicIP*:
+Ezután telepítse a virtuális gép [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment) , amely tartalmazza az Azure Docker VM-bővítmény [ezen Azure Resource Manager-sablon a Githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Amikor a rendszer kéri, adja meg a saját egyedi értékek *newStorageAccountName*, *adminUsername*, *adminPassword*, és *dnsNameForPublicIP*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -52,7 +52,7 @@ Az üzembe helyezés befejeződik néhány percet vesz igénybe.
 
 
 ## <a name="verify-that-compose-is-installed"></a>Győződjön meg arról, hogy telepítve van-e az összeállítás
-A virtuális gép, beleértve a DNS-név, a részletek megtekintéséhez használja a [az vm show](/cli/azure/vm#az_vm_show):
+A virtuális gép, beleértve a DNS-név, a részletek megtekintéséhez használja a [az vm show](/cli/azure/vm):
 
 ```azurecli
 az vm show \

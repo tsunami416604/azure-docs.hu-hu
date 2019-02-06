@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ce5c79d3565a0b9396b15f54d9ab854e8b8d0d8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c9435ba10d69130a634e56992179f11399604fae
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462341"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747492"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az Azure SQL Data Warehouse
 Ismerje meg a biztonsági mentés és visszaállítás működését az Azure SQL Data Warehouse. Használati adatok adatraktár-helyreállítás pillanatképek, vagy másolja az adattárház egy korábbi visszaállítási pontot az elsődleges régióban. Használja az adatraktár-georedundáns biztonsági másolatokat állíthatja vissza egy másik földrajzi régióban. 
@@ -62,7 +62,7 @@ Amikor egy adattárházat, az SQL Data Warehouse végső pillanatképet készít
 > Ha töröl egy logikai SQL server-példányt, a példányhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Kiszolgáló törlése nem állítható vissza.
 >
 
-## <a name="geo-backups"></a>GEO-biztonsági mentések
+## <a name="geo-backups-and-disaster-recovery"></a>GEO-biztonsági mentések és a katasztrófa utáni helyreállítás
 Az SQL Data Warehouse egy georedundáns biztonsági mentés naponta egyszer elvégzi a [párosított adatközpontba](../best-practices-availability-paired-regions.md). Az rpo-t, a georedundáns visszaállítás 24 órán keresztül. A georedundáns biztonsági mentési visszaállíthatja egy bármelyik más régióban, ahol támogatott az SQL Data Warehouse-kiszolgálóhoz. Georedundáns biztonsági biztosítja, visszaállíthatja a data warehouse-bA abban az esetben, ha a visszaállítási pontok az elsődleges régióban nem férhet hozzá.
 
 GEO-biztonsági mentések alapállapotban be van kapcsolva. Ha az adattárház Gen1, is [kikapcsolhatja az újat](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) Ha szeretné. Nem tilthatók le geo-biztonsági mentések Gen2 a garantált beépített adatvédelem-jébe.
