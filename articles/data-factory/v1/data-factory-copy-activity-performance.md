@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331645"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812089"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolási tevékenységek teljesítményéhez és finomhangolási útmutató
 
@@ -176,7 +176,7 @@ Tudnivalók:
 >
 >
 
-A két tulajdonság jobb használatához, és az adatok mozgását átviteli sebesség növelése érdekében, tekintse meg a [alkalmazási minta](#case-study-use-parallel-copy). Nem szükséges konfigurálni **parallelCopies** kihasználásához az alapértelmezett viselkedést. Ha konfigurálja és **parallelCopies** túl kicsi, több felhő DMUs nem teljes kihasználását.
+A két tulajdonság jobb használatához, és az adatok mozgását átviteli sebesség növelése érdekében, tekintse meg a mintát, használati esetek. Nem szükséges konfigurálni **parallelCopies** kihasználásához az alapértelmezett viselkedést. Ha konfigurálja és **parallelCopies** túl kicsi, több felhő DMUs nem teljes kihasználását.
 
 ### <a name="billing-impact"></a>A számlázás gyakorolt hatás
 Rendelkezik **fontos** ne feledje, hogy a másolási művelet teljes időtartama alapján díjkötelesek. Ha most négy felhőbeli egységgel 15 percet vesz igénybe, és egy másolási feladat egy órával tennie egy felhőbeli egységgel használják, akkor a teljes számlája összegét szinte változatlan marad. Ha például négy felhőbeli egység használhatja. Az első felhőbeli egység szintén 10-et, a második érték 10 perc, a harmadik egyet, 5 perc, és a negyedik, 5 perc, a egy másolási tevékenység az összes futtatásához. A Másolás (adatáthelyezés) teljes időpontot, amely 10 + 10 + 5 + 5 = 30 perc díjkötelesek. Használatával **parallelCopies** nem befolyásolják a számlázást.
@@ -297,7 +297,7 @@ Ha a Blob storage adatokat másol az SQL Data Warehouse, fontolja meg **PolyBase
 
 * **Adatmintát**: A következő tábla sémáját másolási átviteli sebesség hatással van. Egy nagy méretű sor mérete kis sor mérete, azonos mennyiségű adatot másolni egy jobb teljesítményt biztosít. A hiba oka, hogy az adatbázis hatékonyabban lekérheti kevesebb váró adatokat, amelyek kevesebb sort tartalmaznak.
 * **Lekérdezés vagy tárolt eljárás**: Optimalizálhatja a lekérdezést, vagy adja meg, ha a másolási tevékenység forrásból történő adatlehívást, hatékonyabban tárolt eljárás logikáját.
-* A **helyszíni relációs adatbázisok**, mint például az SQL Server és az Oracle, a használható **adatkezelési átjáró**, tekintse meg a [adatkezelési átjárószempontjai](#considerations-on-data-management-gateway) szakaszban.
+* A **helyszíni relációs adatbázisok**, mint például az SQL Server és az Oracle, a használható **adatkezelési átjáró**, adatkezelési átjáró szakasz szempontjait lásd:.
 
 ## <a name="considerations-for-the-sink"></a>A fogadó szempontjai
 ### <a name="general"></a>Általános kérdések

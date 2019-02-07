@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 139f6283c2b59aee53afa3f0dd52e06e2b0eff4c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9c463740acf6ef464880a43e0e68de683b97f64f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695219"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813419"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékek
 
@@ -34,13 +34,13 @@ Szűrők kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek, 
 - Csak a megadott beállításkészletben és/vagy a megadott nyelv nyomon követi az eszköz, amellyel a tartalmat ("megjelenítésszűrés") által támogatott kézbesítéséhez. 
 - Módosítsa a megjelenítési ablakot (DVR) annak érdekében, hogy a Windows Media player ("módosításának bemutató időszak") megadott DVR időszak korlátozott hosszát.
 
-Ez a témakör ismerteti [fogalmak](#concepts) és [látható szűrők definíciók](#definitions). Ezután megadja gyakori helyzetek részleteit. A cikk végén található hivatkozásokat, amelyek bemutatják, hogyan hozhat létre programozott módon a szűrőket.  
+Ez a témakör ismerteti [fogalmak](#concepts) és látható szűrők definíciókat. Ezután megadja gyakori helyzetek részleteit. A cikk végén található hivatkozásokat, amelyek bemutatják, hogyan hozhat létre programozott módon a szűrőket.  
 
 ## <a name="concepts"></a>Alapelvek
 
 ### <a name="dynamic-manifests"></a>A dinamikus jegyzékek
 
-Media Services által **dinamikus jegyzékfájlok** alapú az előre meghatározott [szűrők](#filters). Miután meghatározott szűrők, a az ügyfelek használhatja őket egy adott megjelenítés a klipek alárendelt a videó továbbításához. A streamelési URL-CÍMBEN szereplő azokat megadni szűrő(k) alapján. Az adaptív sávszélességű streamelési protokollok szűrőket is lehet alkalmazni: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming. 
+Media Services által **dinamikus jegyzékfájlok** előre definiált szűrők alapján. Miután meghatározott szűrők, a az ügyfelek használhatja őket egy adott megjelenítés a klipek alárendelt a videó továbbításához. A streamelési URL-CÍMBEN szereplő azokat megadni szűrő(k) alapján. Az adaptív sávszélességű streamelési protokollok szűrőket is lehet alkalmazni: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming. 
 
 Az alábbi táblázatban néhány példa az URL-címek szűrőket jeleníti meg:
 

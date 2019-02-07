@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 86a57704b20790628a89bce0f8cda4e0599fd103
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9185d8d236b2a3283cf5a542002adadd0ac74686
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220569"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820538"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK for Java felismerése
 
@@ -41,6 +41,10 @@ Ha Ubuntu 16.04/18.04 rendszert használ, győződjön meg arról, ezek a függ�
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
 ```
+
+Ha Windows (64 bites) ellenőrizze, hogy telepítve van a Microsoft Visual C++ újraterjeszthető csomag a platform.
+* [A Microsoft Visual C++ terjeszthető csomag Visual Studio 2017 letöltése](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+
 
 ## <a name="create-and-configure-project"></a>Projekt létrehozása és konfigurálása
 

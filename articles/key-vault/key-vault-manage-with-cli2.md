@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 9ebfb01071257c8879531c1879b6f8b3ba4493ef
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 11ace1b5cce742579256d08ecfe9d9a7412d3d7c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198898"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822493"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Az Azure CLI használatával a Key Vault felügyelete 
 
@@ -247,7 +247,7 @@ Sablon telepítése a Key Vault engedélyezése: Lehetővé teszi a Resource Man
 
 ## <a name="working-with-hardware-security-modules-hsms"></a>Hardveres biztonsági modulokban (HSM) használata
 
-Hozzáadott garantálja hogy is kulcsok importálását vagy létrehozását a hardveres biztonsági modulokban (HSM) a HSM határait betartó. A hardveres biztonsági modulok a 2. szintű FIPS 140-2 szerint vannak érvényesítve. Ha ez a követelmény nem vonatkozik Önre, ugorja át ezt a szakaszt, és folytassa a [Kulcsartó és a hozzá tartozó kulcsok és titkos kódok törlése](#delete-the-key-vault-and-associated-keys-and-secrets) szakasszal.
+Hozzáadott garantálja hogy is kulcsok importálását vagy létrehozását a hardveres biztonsági modulokban (HSM) a HSM határait betartó. A hardveres biztonsági modulok a 2. szintű FIPS 140-2 szerint vannak érvényesítve. Ha ez a követelmény nem vonatkozik Önre, ugorja át ezt a szakaszt, és nyissa meg a kulcstartó és a hozzá tartozó kulcsok és titkos kódok törlése.
 
 Ezek a HSM által védett kulcsok létrehozásához, egy tároló-előfizetése, amely támogatja a HSM-védelemmel ellátott kulcsokkal kell rendelkeznie.
 

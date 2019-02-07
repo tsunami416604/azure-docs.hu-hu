@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: 2b8a0db21ab4beb2128ae0a1cebbf9fb42691f3c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2ede7a172eda1122b0668984cc8e11937b3ae852
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177407"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768183"
 ---
 # <a name="get-help-with-two-step-verification"></a>Segítség a kétlépcsős ellenőrzéshez
 
@@ -36,7 +36,7 @@ Több oka is lehet, hogy miért egy másik ellenőrzési módszert a fiókjával
 
 - **A telefon elvesztése vagy itt van egy új telefonszámot.** Ha telefonja elveszett vagy új közben, jelentkezzen be egy másik módszerrel, vagy kérje meg a rendszergazdát, hogy törölje a beállításokat. Javasoljuk, hogy a rendszergazda tudja, ha a telefonja volt elvesztette vagy ellopták, így a megfelelő frissítéseket lehet tenni a fiókjához. A beállítások törlődnek, miután kérni fogja a [regisztrálja a kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) amikor legközelebb bejelentkezik.
 
-- **Nem kapják meg a hitelesítési szöveges vagy telefonhíváson alapuló.** Miért nem kaphat a szöveges vagy telefonhíváson alapuló több oka is van. Ha korábban sikeresen szövegek vagy telefonhívások megkapta, ez a valószínűleg probléma-szolgáltatóval telefon, a fiók nem. Ha gyakran az késleltetések miatt rossz jel, azt javasoljuk, használja a [Microsoft Authenticator alkalmazás](microsoft-authenticator-app-how-to.md) a mobileszközén. Ez az alkalmazás képes véletlenszerű biztonsági kódokat generálhat az jelentkezzen be, minden cella jel vagy internetkapcsolat nélkül.<br><br>Ha szöveges üzenetet fogadni, kérje meg egy szöveges ismerős, ellenőrizze, hogy be egyet, és ha is megkapta több üzenetet, győződjön meg arról, hogy a vizsgálat, használja a kód az aktuális.
+- **Nem kapják meg a hitelesítési szöveges vagy telefonhíváson alapuló.** Miért nem kaphat a szöveges vagy telefonhíváson alapuló több oka is van. Ha korábban sikeresen szövegek vagy telefonhívások megkapta, ez a valószínűleg probléma-szolgáltatóval telefon, a fiók nem. Ha gyakran az késleltetések miatt rossz jel, azt javasoljuk, használja a [Microsoft Authenticator alkalmazás](user-help-auth-app-download-install.md) a mobileszközén. Ez az alkalmazás képes véletlenszerű biztonsági kódokat generálhat az jelentkezzen be, minden cella jel vagy internetkapcsolat nélkül.<br><br>Ha szöveges üzenetet fogadni, kérje meg egy szöveges ismerős, ellenőrizze, hogy be egyet, és ha is megkapta több üzenetet, győződjön meg arról, hogy a vizsgálat, használja a kód az aktuális.
 
 - **Az alkalmazásjelszavak nem működik.** Alkalmazásjelszók cserélje le a régebbi asztali alkalmazásokat, amelyek nem támogatják a kétlépéses ellenőrzés normál jelszavát. Győződjön meg róla, hogy helyesen írta be a jelszót. Ha ez nem oldja, próbáljon meg bejelentkezni [hozzon létre egy új jelszót](multi-factor-authentication-end-user-app-passwords.md) vegye fel a kapcsolatot a rendszergazdával vagy [törölje a meglévő alkalmazásjelszavak](../authentication/howto-mfa-userdevicesettings.md) így létrehozhat egy újat.
 
@@ -61,4 +61,4 @@ Ha próbálkozott ezeket a lépéseket, de továbbra is fut, problémák, fordul
 
 * [A kétlépéses ellenőrzés beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md)
 
-* [A Microsoft Authenticator alkalmazás – gyakori kérdések](microsoft-authenticator-app-faq.md)
+* [A Microsoft Authenticator alkalmazás – gyakori kérdések](user-help-auth-app-faq.md)

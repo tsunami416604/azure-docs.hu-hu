@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 0c16369cca4fae89733ad281aa3332c393be2aff
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4fdfbb17670cd30438a8906a6b00bb4db354aedb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828417"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820257"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>A dinamikus titkosítás: A tartalomkulcs-hitelesítési szabályzat konfigurálása
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -279,7 +279,7 @@ Az alábbi példa létrehoz egy megnyitott engedélyezési szabályzatot, és ho
 ```
 
 ### <a name="token-restriction"></a>Token korlátozás
-A token korlátozás beállítás konfigurálásához szüksége XML a jogkivonat hitelesítési követelmények leírása. A token korlátozás konfigurációs XML meg kell felelnie az XML-séma látható a "[jogkivonat korlátozás séma](#token-restriction-schema)" szakaszban.
+A token korlátozás beállítás konfigurálásához szüksége XML a jogkivonat hitelesítési követelmények leírása. A token korlátozás konfigurációs XML meg kell felelnie az XML-séma, a "Token korlátozás schema" szakaszban látható.
 
 ```csharp
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)

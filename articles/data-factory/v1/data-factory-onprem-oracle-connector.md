@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa6f891cc68d19e638bb2b7281f4b332de26bd26
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 6b97968540914bf1edf5624d04e8f47956de7f0d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332642"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822255"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása, vagy a helyszíni Oracle az Azure Data Factory használatával
 
@@ -92,7 +92,7 @@ Az eszközök vagy az API-kat használja, hogy a következő lépéseket egy fol
 3. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. A példában az előző lépésben az Oracle-adatbázis, amely tartalmazza a bemeneti adatokat adja meg a táblát egy adatkészletet hoz létre. Megadja a blobtárolót és a mappát, amely tárolja az adatokat másolja az Oracle-adatbázisból egy másik adatkészletet hoz létre. Oracle adott adatkészlet tulajdonságai, lásd: [adatkészlet tulajdonságai](#dataset-properties).
 4. Hozzon létre egy **folyamat** , amely rendelkezik egy másolási tevékenység, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. Az előző példában használhatja **OracleSource** forrásként és **BlobSink** a másolási tevékenység fogadóként. Hasonlóképpen, ha az Oracle-adatbázis másolása az Azure Blob storage-ból, használhatja a **BlobSource** és **Oraclesinkben** a másolási tevékenység. A másolási tevékenység tulajdonságok, amelyek Oracle-adatbázishoz meghatározott, lásd: [másolási tevékenység tulajdonságai](#copy-activity-properties). A forrás vagy a fogadó adattár használatával kapcsolatos részletekért válassza ki az előző szakaszban az adattárhoz mutató hivatkozás.
 
-A varázsló használatakor a Data Factory-entitások JSON-definíciói automatikusan jönnek létre az Ön számára: társított szolgáltatásokat, adatkészleteket és a folyamatot. Amikor az eszközök vagy az API-k (kivéve a .NET API), meghatározhatja a Data Factory-entitások a JSON formátumban. A minták használatával másolja az adatokat, vagy a helyszíni Oracle-adatbázisból Data Factory-entitások JSON-definíciói rendelkező, lásd: [JSON példák](#json-examples-for-copying-data-to-and-from-oracle-database).
+A varázsló használatakor a Data Factory-entitások JSON-definíciói automatikusan jönnek létre az Ön számára: társított szolgáltatásokat, adatkészleteket és a folyamatot. Amikor az eszközök vagy az API-k (kivéve a .NET API), meghatározhatja a Data Factory-entitások a JSON formátumban. A Data Factory-entitások, amellyel az vagy egy helyszíni Oracle-adatbázisból az adatok másolása JSON-definíciói rendelkező mintát a JSON példák.
 
 A következő szakaszok a Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért.
 
@@ -597,29 +597,29 @@ Ha áthelyezi adatait az Oracle, a következő hozzárendeléseket használatosa
 
 | Oracle-adattípus | .NET-keretrendszer adattípus |
 | --- | --- |
-| BFILE |Byte] |
-| BLOB |Byte]<br/>(csak a támogatott Oracle 10g és későbbi verziók és a egy Microsoft-illesztőprogram) |
-| CHAR |Karakterlánc |
-| CLOB |Karakterlánc |
+| BFILE |Byte[] |
+| BLOB |Byte[]<br/>(csak a támogatott Oracle 10g és későbbi verziók és a egy Microsoft-illesztőprogram) |
+| CHAR |String |
+| CLOB |String |
 | DATE |DateTime |
 | LEBEGŐPONTOS |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
 | INTEGER |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
 | INTERVALLUM ÉV, HÓNAP |Int32 |
-| INTERVALLUM NAP – MÁSODPERC |Időtartam |
-| HOSSZÚ |Karakterlánc |
-| MENNYI IDEIG NYERS |Byte] |
-| NCHAR |Karakterlánc |
-| NCLOB |Karakterlánc |
+| INTERVALLUM NAP – MÁSODPERC |TimeSpan |
+| HOSSZÚ |String |
+| MENNYI IDEIG NYERS |Byte[] |
+| NCHAR |String |
+| NCLOB |String |
 | SZÁM |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| NVARCHAR2 |Karakterlánc |
-| RAW |Byte] |
-| }, ROWID |Karakterlánc |
+| NVARCHAR2 |String |
+| RAW |Byte[] |
+| }, ROWID |String |
 | IDŐBÉLYEG |DateTime |
 | A HELYI IDŐZÓNA IDŐBÉLYEG |DateTime |
 | AZ IDŐZÓNA IDŐBÉLYEG |DateTime |
 | ELŐJEL NÉLKÜLI EGÉSZ SZÁM |Szám |
-| VARCHAR2 |Karakterlánc |
-| XML |Karakterlánc |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > Az adattípusok **IDŐKÖZ YEAR TO hónap** és **IDŐKÖZ nap TO második** egy Microsoft-illesztőprogram használata esetén nem támogatottak.

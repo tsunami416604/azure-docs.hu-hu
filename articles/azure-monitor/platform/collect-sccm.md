@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: b13e92369168a43f529ed0b83c10bc65893da83d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 79539e05e1623b153a8fad817918cfb56a521db1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193314"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814163"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>A Configuration Manager csatlakoztatása a Log Analyticsbe
 A System Center Configuration Manager-környezet szinkronizálási eszköz gyűjtemény adatait az Azure Log Analyticshez csatlakozhat, és ezeket a gyűjteményeket, a Log Analytics és Azure Automation hivatkozhat.  
@@ -32,8 +32,8 @@ Az alábbi lépéseket a Configuration Manager-integráció konfigurálása a Lo
 
 1. Az Azure Portalon regisztrálja a Configuration Manager egy webalkalmazás és/vagy webes API-alkalmazást, és gondoskodjon arról, hogy az ügyfél-azonosító és a regisztráció az Azure Active Directoryból az ügyfél titkos kulcsa. Lásd: [Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](../../active-directory/develop/howto-create-service-principal-portal.md) ehhez a lépéshez részletes tájékoztatást.
 2. Az Azure Portalon [adja meg a Configuration Manager (a regisztrált webalkalmazás) hozzáféréssel a Log Analytics-](#grant-configuration-manager-with-permissions-to-log-analytics).
-3. A Configuration Managerben [vegyen fel egy kapcsolatot az OMS-kapcsolat hozzáadása varázsló használatával](#add-an-oms-connection-to-configuration-manager).
-4. A Configuration Managerben [a kapcsolat tulajdonságainak frissítéséhez](#update-oms-connection-properties) , ha a jelszó vagy az ügyfél titkos kulcsot minden eddiginél jár, vagy megszakad.
+3. A Configuration Managerben, adjon hozzá egy kapcsolatot az OMS-kapcsolat hozzáadása varázsló segítségével.
+4. A Configuration Managerben, a kapcsolat tulajdonságainak frissítéséhez, ha a jelszó vagy az ügyfél titkos kulcsot minden eddiginél jár, vagy megszakad.
 5. [Töltse le és telepítse a Microsoft Monitoring Agent](#download-and-install-the-agent) a Configuration Manager szolgáltatási kapcsolódási pont helyrendszerszerepkört futtató számítógépen. Az ügynök Configuration Manager-adatokat küld a Log Analytics-munkaterületet.
 6. A Log Analyticsben [gyűjteményeket importálhat a Configuration Manager](#import-collections) számítógép csoportokként.
 7. A Log Analyticsben, megtekintheti az adatokat a Configuration Manager alkalmazásból, [számítógépcsoportok](../../azure-monitor/platform/computer-groups.md).

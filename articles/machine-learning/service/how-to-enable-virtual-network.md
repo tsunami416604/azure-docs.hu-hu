@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: fb67821d883317901617bda101ae91a9a92018c2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2e7f6c066ea254fff90ba2f9ff1f559fdb680ddf
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246398"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766690"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Biztonságos futtatására kísérletek vagy következtetési egy Azure virtuális hálózaton belül
 
@@ -231,4 +231,5 @@ A létrehozási folyamat befejezése után az AKS-fürt virtuális hálózat mö
 
 * [Képzési környezetek beállítása](how-to-set-up-training-targets.md)
 * [Az üzembe helyezés modellek](how-to-deploy-and-where.md)
-* [Biztonságos üzembe helyezett modellnél SSL-lel](how-to-secure-web-service.md)
+* [Biztonságos helyezhet üzembe modelleket SSL-lel](how-to-secure-web-service.md)
+

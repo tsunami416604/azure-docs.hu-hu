@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b39fb3ed6dbcf8fde2dadf0de59d154285eb8587
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022538"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813840"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
 Ez a cikk információkat biztosít az adatkezelési átjáró segítségével kapcsolatos hibák elhárítása.
@@ -138,7 +138,7 @@ Láthatja, hogy a következő hibaüzenetet kapja.
 Ez a hiba akkor fordul elő, amikor az átjáró egy olyan környezetben, szükséges egy HTTP-proxy el az internetes erőforrások, vagy a proxy hitelesítési jelszó megváltozik, de nem frissül megfelelően működik az átjáróban.
 
 #### <a name="resolution"></a>Megoldás:
-Kövesse az utasításokat a [Proxy server szempontjai](#proxy-server-considerations) szakaszában című cikket, és konfigurálja a proxybeállításokat a Data Management Gateway Configuration Managerrel.
+A Proxy server szempontok című szakaszt a cikk utasításait, és konfigurálja a proxybeállításokat a Data Management Gateway Configuration Managerrel.
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>Átjáró korlátozott funkciókkal online állapotban
 ### <a name="1-problem"></a>1. Probléma
@@ -169,8 +169,8 @@ Az alábbi hibát látja.
 Kövesse az alábbi lépéseket az átjáró online állapotba:
 
 1. IP-címének engedélyezéséhez az átjárót tartalmazó számítógépen, és a vállalati tűzfalon a kimenő szabályok. Annak IP-címek a Windows Eseménynapló (azonosítója == 401-es): Kísérlet történt olyan módon, a hozzáférési engedélyeket XX tiltott hozzáférés. XX. XX. XX:9350.
-* Proxybeállítások konfigurálása az átjárón. Tekintse meg a [Proxy server szempontjai](#proxy-server-considerations) című szakasz részletezi.
-* Engedélyezze a kimenő 5671 és 9350 – 9354-es mind a Windows tűzfal az átjárót tartalmazó számítógépen és a vállalati tűzfalon. Tekintse meg a [portokat és a tűzfal](#ports-and-firewall) című szakasz részletezi. Ez a lépés nem kötelező, de ajánlott kiegészítője teljesítményének figyelembe veszi.
+* Proxybeállítások konfigurálása az átjárón. Tekintse meg a Proxy server szempontok című szakasz részletezi.
+* Engedélyezze a kimenő 5671 és 9350 – 9354-es mind a Windows tűzfal az átjárót tartalmazó számítógépen és a vállalati tűzfalon. A portok és a tűzfal részleteket a következő szakaszban talál. Ez a lépés nem kötelező, de ajánlott kiegészítője teljesítményének figyelembe veszi.
 
 ### <a name="3-problem"></a>3. Probléma
 Az alábbi hibát látja.

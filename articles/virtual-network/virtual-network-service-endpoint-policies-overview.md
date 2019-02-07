@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 7a3a94e9759dfb3c525ffcf1e840d5bec18f4808
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6e5748f5a76ade9cc1bb91902eb0fddcec2a6daa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051311"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812344"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Virtuális hálózati szolgáltatásvégpont-szabályzatok (előzetes verzió)
 
@@ -119,7 +119,7 @@ A virtuális hálózati szolgáltatásvégpont-szabályzatok a következő előn
      - Azure Application Gateway (klasszikus)
      - Azure VPN Gateway (klasszikus)
 
-- Az Azure Storage: A szolgáltatásvégpont-szabályzatra a klasszikus tárfiókok nem támogatottak. Alapértelmezés szerint a szabályzatok minden klasszikus tárfiókhoz megtagadják a hozzáférést. Ha az alkalmazásának hozzá kell férnie az Azure Resource Managerhez és a klasszikus tárfiókokhoz, ne használjon végpontszabályzatokat a köztük zajló forgalom vezérléséhez. 
+- Azure Storage: A szolgáltatásvégpont-szabályzatra a klasszikus tárfiókok nem támogatottak. Alapértelmezés szerint a szabályzatok minden klasszikus tárfiókhoz megtagadják a hozzáférést. Ha az alkalmazásának hozzá kell férnie az Azure Resource Managerhez és a klasszikus tárfiókokhoz, ne használjon végpontszabályzatokat a köztük zajló forgalom vezérléséhez. 
 
 ## <a name="nsgs-with-service-endpoint-policies"></a>Szolgáltatásvégpont-szabályzatokkal rendelkező NSG-k
 - Alapértelmezés szerint az NSG-k engedélyezik a kimenő internetforgalmat, beleértve az Azure-szolgáltatások felé irányuló virtuális hálózati forgalmat is.
@@ -154,7 +154,7 @@ Szolgáltatásvégpont-szabályzatokhoz a központi naplózás nem érhető el. 
 ### <a name="troubleshooting-scenarios"></a>Hibaelhárítási forgatókönyvek
 - A végpontszabályzatokban nem szereplő tárfiókokhoz való hozzáférés engedélyezése
   - A hálózati biztonsági csoportok más régiókban is lehetővé tehetik az internethez vagy Azure Storage-fiókokhoz való hozzáférést.
-  - A hálózati biztonsági csoportokat úgy kell konfigurálni, hogy megtagadjanak minden kimenő internetes forgalmat, és csak az egyes Azure Storage-régiókba irányuló forgalmat engedélyezzék. További részletekért tekintse meg a [hálózati biztonsági csoportokkal](#network-security-groups) foglalkozó témakört.
+  - A hálózati biztonsági csoportokat úgy kell konfigurálni, hogy megtagadjanak minden kimenő internetes forgalmat, és csak az egyes Azure Storage-régiókba irányuló forgalmat engedélyezzék. További információkért lásd: a hálózati biztonsági csoportok.
 - A végpontszabályzatokban szereplő fiókokhoz való hozzáférés meg van tagadva
   - A hálózati biztonsági csoportok vagy a tűzfalak használatával történő szűrés blokkolhatja a hozzáférést
   - Ha a szabályzat eltávolítása/újbóli életbe léptetése miatt megszűnik a kapcsolat:

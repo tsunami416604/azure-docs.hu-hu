@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1c6d5754af7455a4e4cf864062a1c29dd32c88b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 40e519495b8a245f72e51167f5807f9c585cb344
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492845"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817546"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Összekötők használata az Azure AD Connect szinkronizálása a Service Manager rendszerrel
 
@@ -42,7 +42,7 @@ Az összekötők lap a szinkronizálási motor csatlakozik az összes rendszer k
 | Összekötő importálása |Ne használja. |
 | Összekötő frissítése |Ne használja. |
 | Séma frissítése |Frissíti a gyorsítótárazott séma. Azt részesíti előnyben a telepítési varázsló, a beállítás használata óta, amely szintén frissítések szabályok szinkronizálása. |
-| [Keresési Összekötőterét](#search-connector-space) |Használható objektumok keresésére, és [hajtsa végre az objektum és az adatokat a rendszer](#follow-an-object-and-its-data-through-the-system). |
+| [Keresési Összekötőterét](#search-connector-space) |Objektumok keresése, és kövesse az objektum és a rendszer az adatokat használják. |
 
 ### <a name="delete"></a>Törlés
 A törlési művelet használható két különböző dolgok.  

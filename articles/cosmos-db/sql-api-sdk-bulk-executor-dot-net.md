@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 8675c5ff90f7be2dc0b3ac80eb593adb613ba860
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 76a40c7e9f32deea798441ce53be7c7ef262e2bd
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039758"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770669"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Tömeges végrehajtó .NET könyvtár: Adatok letöltése 
 
@@ -31,20 +31,14 @@ ms.locfileid: "54039758"
 > * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**Leírás**</td><td>A tömeges végrehajtó kódtár lehetővé teszi, hogy az ügyfélalkalmazások tömeges műveletek végrehajtása az Azure Cosmos DB-fiókokhoz. Tömeges végrehajtó kódtár BulkImport BulkUpdate és BulkDelete névterek biztosít. A modul tömegesen BulkImport dokumentumok betöltését optimalizált módon, hogy a legnagyobb mértékben használja fel a gyűjteményhez kiosztott átviteli sebesség. A modul tömegesen BulkUpdate frissíti a meglévő adatok az Azure Cosmos DB-tárolók javítások. A BulkDelete modul tömegesen delete dokumentumok optimalizált módon, hogy a legnagyobb mértékben használja fel a gyűjteményhez kiosztott átviteli sebesség.</td></tr>
-
-<tr><td>**SDK letöltése**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/)</td></tr>
-
-<tr><td>**BulkExecutor könyvtár a Githubon**</td><td>[GitHubon](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)</td></tr>
-
-<tr><td>**API-dokumentáció**</td><td>[.NET API dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)</td></tr>
-
-<tr><td>**Első lépések**</td><td>[A tömeges végrehajtó tár .NET SDK használatának első lépései](bulk-executor-dot-net.md)</td></tr>
-
-<tr><td>**Aktuális támogatott keretrendszer**</td><td>A Microsoft .NET-keretrendszer 4.5.2-es, 4.6.1 és a .NET Standard 2.0 </td></tr>
-</table></br>
+| |  |
+|---|---|
+| **Leírás**| A tömeges végrehajtó kódtár lehetővé teszi, hogy az ügyfélalkalmazások tömeges műveletek végrehajtása az Azure Cosmos DB-fiókokhoz. Tömeges végrehajtó kódtár BulkImport BulkUpdate és BulkDelete névterek biztosít. A modul tömegesen BulkImport dokumentumok betöltését optimalizált módon, hogy a legnagyobb mértékben használja fel a gyűjteményhez kiosztott átviteli sebesség. A modul tömegesen BulkUpdate frissíti a meglévő adatok az Azure Cosmos DB-tárolók javítások. A BulkDelete modul tömegesen delete dokumentumok optimalizált módon, hogy a legnagyobb mértékben használja fel a gyűjteményhez kiosztott átviteli sebesség.|
+|**SDK letöltése**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
+| **BulkExecutor könyvtár a Githubon**| [GitHubon](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
+|**API-dokumentáció**|[.NET API dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
+|**Első lépések**|[A tömeges végrehajtó tár .NET SDK használatának első lépései](bulk-executor-dot-net.md)|
+| **Aktuális támogatott keretrendszer**| A Microsoft .NET-keretrendszer 4.5.2-es, 4.6.1 és a .NET Standard 2.0 |
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 

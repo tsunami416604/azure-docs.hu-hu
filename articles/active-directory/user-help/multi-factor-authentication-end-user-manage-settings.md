@@ -13,12 +13,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
-ms.openlocfilehash: ab3de9b010c0356dea17520b497235e0bf7c818e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2129b1f70ea19bdb2144f0f2a9ca4a6dbac0acbd
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181316"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766816"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>A kétlépéses ellenőrzés beállításainak kezelése
 Ez a cikk a kétlépéses ellenőrzés vagy a multi-factor Authentication hitelesítés beállításainak frissítésével kapcsolatos kérdésekre ad választ. Ha a fiókjához regisztrálással kapcsolatos problémák merülnek fel, tekintse meg [problémákat tapasztal a kétlépéses ellenőrzéssel](multi-factor-authentication-end-user-troubleshoot.md) hibaelhárítási segítséget.
@@ -74,7 +74,7 @@ A szervezet beállításoktól függően előfordulhat, a jelölőnégyzet arró
 2. Amikor legközelebb bejelentkezik bármilyen eszközön, a rendszer kéri a kétlépéses ellenőrzés végrehajtásához.
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>Hogyan régi eszközömet a Microsoft Authenticator törlése és áthelyezése egy új?
-Távolítsa el az alkalmazást az eszközről, vagy az eszköz alaphelyzetbe állítása, az aktiválást a háttér nem távolítja el. További információkért lásd: [Microsoft Authenticator](microsoft-authenticator-app-how-to.md).
+Távolítsa el az alkalmazást az eszközről, vagy az eszköz alaphelyzetbe állítása, az aktiválást a háttér nem távolítja el. További információkért lásd: [Microsoft Authenticator](user-help-auth-app-download-install.md).
 
 ## <a name="next-steps"></a>További lépések
 * Első hibaelhárítási tippek és súgó [problémákat tapasztal a kétlépéses ellenőrzéssel](multi-factor-authentication-end-user-troubleshoot.md)

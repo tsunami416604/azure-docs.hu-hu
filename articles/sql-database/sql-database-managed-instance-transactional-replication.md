@@ -12,16 +12,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 548bc9afb37f8c4a1c6c208a8741d1e3da0a784c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1c542c1e906b078b76b78ed30af8bdf67110199c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469396"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814112"
 ---
 # <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>Tranzakciós replikáció, az önálló, készletezett és adatbázisok az Azure SQL Database-példány
 
-Tranzakciós replikáció funkciója az Azure SQL Database felügyelt példány és, amely lehetővé teszi, hogy az adatok replikálása az Azure SQL Database egyik táblájában az SQL Server vagy SQL Server helyezi a távoli adatbázis tábláit. Ez a funkció lehetővé teszi több táblájából különböző adatbázisok szinkronizálása.
+Tranzakciós replikáció funkciója az Azure SQL Database és SQL Server, amely lehetővé teszi, hogy az adatok replikálása az Azure SQL Database egy táblából vagy a táblák helyezi a távoli adatbázis SQL-kiszolgáló. Ez a funkció lehetővé teszi több táblájából különböző adatbázisok szinkronizálása.
 
 ## <a name="when-to-use-transactional-replication"></a>Tranzakciós replikáció használata
 
@@ -38,15 +38,15 @@ A legfontosabb összetevők, a tranzakciós replikáció a következő képen l�
 ![a replikáció az SQL Database szolgáltatással](media/replication-to-sql-database/replication-to-sql-database.png)
 
 
-A **közzétevő** egy olyan példányt vagy a kiszolgálót, amely közzéteszi az egyes táblák (cikk) végzett módosításokat, ha a frissítéseket küld a Terjesztőn. Közzététel az Azure SQL Database egy helyszíni SQL Serverről az SQL Server következő verzióiban támogatott:
+A **közzétevő** egy olyan példányt vagy a kiszolgálót, amely közzéteszi az egyes táblák (cikk) végzett módosításokat, ha a frissítéseket küld a Terjesztőn. Közzé minden olyan Azure SQL adatbázis egy helyszíni SQL Serverről az SQL Server következő verziói által támogatott:
 
-    - Az SQL Server 2019 (előzetes verzió)
-    - Az SQL Server 2016 SQL 2017-ben
-    - Az SQL Server 2014 SP1 CU3 vagy nagyobb (12.00.4427)
-    - Az SQL Server 2014 RTM CU10 (12.00.2556)
-    - Az SQL Server 2012 SP3 vagy nagyobb (11.0.6020)
-    - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-    - Egyéb verziói esetén az SQL Server, amelyek nem támogatják a közzétételt az objektumok az Azure-ban, is lehet használni a [adatok újbóli közzététele](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) metódus adatok áthelyezése az SQL Server újabb verzióit. 
+   - Az SQL Server 2019 (előzetes verzió)
+   - Az SQL Server 2016 SQL 2017-ben
+   - Az SQL Server 2014 SP1 CU3 vagy nagyobb (12.00.4427)
+   - Az SQL Server 2014 RTM CU10 (12.00.2556)
+   - Az SQL Server 2012 SP3 vagy nagyobb (11.0.6020)
+   - SQL Server 2012 SP2 CU8 (11.0.5634.0)
+   - Egyéb verziói esetén az SQL Server, amelyek nem támogatják a közzétételt az objektumok az Azure-ban, is lehet használni a [adatok újbóli közzététele](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) metódus adatok áthelyezése az SQL Server újabb verzióit. 
 
 A **terjesztő** példány vagy-kiszolgálót, amely a cikkekben módosítások gyűjti össze a közzétevő osztja el azokat az előfizetők számára. A terjesztő lehet az Azure SQL Database felügyelt példányába vagy az SQL Server (bármilyen verzió, ahogy azt a hosszú az egyenlő vagy nagyobb, mint a közzétevő verzió). 
 

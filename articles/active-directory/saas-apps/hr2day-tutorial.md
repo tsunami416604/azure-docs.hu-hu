@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: bb03506bac22c8c82e856f403710a4908af6f9de
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7d77d72264580e4cde83f6cbb9f83bf7030d941e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149254"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820045"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Oktatóanyag: HR2day Merces által az Azure Active Directory-integráció
 
@@ -88,11 +88,11 @@ HR2day által Merces, rendelje hozzá a **felhasználónév** az Azure AD- **fel
 
 Az Azure AD egyszeri bejelentkezés az HR2day Merces által tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on): Engedélyezze a felhasználók a funkció használatához.
-1. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#creating-an-azure-ad-test-user): Tesztelje az Azure AD egyszeri bejelentkezés az Britta Simon.
-1. [Hozzon létre egy HR2day Merces teszt felhasználó](#creating-an-hr2day-by-merces-test-user): Hozzon létre egy megfelelője a Britta Simon HR2day által Merces, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assigning-the-azure-ad-test-user): Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezése.
-1. [Egyszeri bejelentkezés tesztelése](#testing-single-sign-on): Győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az Azure AD egyszeri bejelentkezés konfigurálása: Engedélyezze a felhasználók a funkció használatához.
+1. Hozzon létre egy Azure ad-ben tesztfelhasználó: Tesztelje az Azure AD egyszeri bejelentkezés az Britta Simon.
+1. Hozzon létre egy HR2day Merces tesztfelhasználó szerint: Hozzon létre egy megfelelője a Britta Simon HR2day által Merces, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. Az Azure ad-ben tesztfelhasználó hozzárendelése: Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezése.
+1. Egyszeri bejelentkezés vizsgálata: Győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 

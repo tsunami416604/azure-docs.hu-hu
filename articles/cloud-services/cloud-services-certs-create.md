@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 9cf37e611dce5705a4c866f25afa59e5c1602ec4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b2e87b2855ac1d76fe2ad544c17c33bfa14f635a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282203"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812378"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services – tanúsítványok áttekintése
-Tanúsítványokat használ az Azure cloud Services ([szolgáltatási tanúsítványok](#what-are-service-certificates)) és a felügyeleti API-hoz való hitelesítéshez használt ([felügyeleti tanúsítványok](#what-are-management-certificates)). Ez a témakör hogyan mindkét tanúsítványtípusok általános áttekintést nyújt a [létrehozása](#create) és [üzembe helyezése](#deploy) őket az Azure-bA.
+Tanúsítványokat használ az Azure cloud Services ([szolgáltatási tanúsítványok](#what-are-service-certificates)) és a felügyeleti API-hoz való hitelesítéshez használt ([felügyeleti tanúsítványok](#what-are-management-certificates)). Ez a témakör hogyan mindkét tanúsítványtípusok általános áttekintést nyújt a [létrehozása](#create) és üzembe helyezheti őket az Azure-bA.
 
 Az Azure-ban használt tanúsítványok mind x.509 v3 tanúsítványokkal és a egy másik, megbízható tanúsítvánnyal írhatók alá, vagy önaláírt is lehet. Önaláírt tanúsítvány aláírásával rendelkezik a saját létrehozója, ezért azt nem megbízható alapértelmezés szerint. A legtöbb böngésző figyelmen kívül hagyhatja ezt a problémát. Ha a fejlesztés és tesztelés a cloud services önaláírt tanúsítványokat csak használja. 
 
@@ -64,7 +64,7 @@ Elérhető mindaddig, amíg azok betartja ezeket a beállításokat, hozzon lét
     > Egy SSL-tanúsítványt a cloudapp.net nem szerez be (vagy bármely Azure-hoz kapcsolódó) tartomány; a tanúsítvány tulajdonosnevének egyeznie kell az alkalmazás eléréséhez használt tartománynév. Ha például **contoso.net**, nem **contoso.cloudapp.net**.
 
 * Legalább 2048 bites titkosítást.
-* **Csak szolgáltatási tanúsítvány**: ügyféloldali tanúsítványt kell lennie a *személyes* tanúsítványtárolójába.
+* **Csak szolgáltatási tanúsítvány**: Ügyféloldali tanúsítványt kell lennie a *személyes* tanúsítványtárolójába.
 
 Nincsenek a Windows, a tanúsítvány létrehozása a két egyszerű módon a `makecert.exe` segédprogramot, vagy az IIS.
 
@@ -88,7 +88,7 @@ Ha ezt szeretné [tanúsítványt a kezelési portállal](../azure-api-managemen
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ```
 
-### <a name="internet-information-services-iis"></a>Az Internet Information Services (IIS)
+### <a name="internet-information-services-iis"></a>Internet Information Services (IIS)
 Nincsenek ehhez az IIS-t mind az interneten sok oldal. [Itt](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) nagyszerű csak azt ismerteti, hogy jól gondolja találtam. 
 
 ### <a name="linux"></a>Linux

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: 19e842fc3674536972327c3bc6d31641560e38db
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 73e27044fc8cc79b2c95471e30bca558bd14d473
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659184"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818753"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>A Service Map System Center Operations Manager-integráció
 
@@ -51,7 +51,7 @@ A Service Map integráció konfigurálásához tegye a következőket:
 
     ![Service Map áttekintő panel](media/service-map-scom/scom-configuration.png)
 
-2. Az a **kapcsolat konfigurációja** ablakban írja be a bérlő neve vagy azonosítója, azonosítója (más néven a felhasználónév vagy a clientID) és az egyszerű szolgáltatás jelszava, és kattintson **tovább**. További információért ugorjon [egyszerű szolgáltatás létrehozása](#creating-a-service-principal).
+2. Az a **kapcsolat konfigurációja** ablakban írja be a bérlő neve vagy azonosítója, azonosítója (más néven a felhasználónév vagy a clientID) és az egyszerű szolgáltatás jelszava, és kattintson **tovább**. További információkért nyissa meg a szolgáltatásnév létrehozásához.
 
     ![A kapcsolat konfigurációs ablaka](media/service-map-scom/scom-config-spn.png)
 

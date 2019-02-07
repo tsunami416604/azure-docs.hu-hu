@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: kasinh
-ms.openlocfilehash: b75c9093a983ba3e4ac4050379efbb091b363ff7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 7669d713f9a96ef893f7ec2ac895c28f654385c8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491964"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810967"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint-farm biztonsági mentése az Azure-ba
 Készítsen biztonsági másolatot egy SharePoint-farm a Microsoft Azure-ba, hogy készítsen biztonsági mentést más adatforrásokhoz ugyanolyan módon a Microsoft Azure Backup Server (MABS) használatával. Az Azure Backup rugalmasan hozhat létre naponta a biztonsági mentési ütemezés, heti, havi vagy éves biztonsági mentési mutat, és különböző biztonsági mentési pontok megőrzése házirend lehetőséget kínál fel. Azt is lehetővé teszi a helyi lemez másolatot pedig gyors helyreállítási idő célkitűzései (RTO) tárolására, és tárolja a másolatokat az Azure-bA gazdaságos, hosszú távú megőrzésének.
@@ -222,7 +222,7 @@ A következő példában a *helyreállítás SharePoint-elem* véletlenül tör�
 4. Kattintson a SharePoint-objektum látható a MABS **helyreállítási** fülre, és a tartalom-adatbázist struktúra beolvasása. Kattintson jobb gombbal az elemre, és kattintson a **helyreállítása**.
 
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
-5. Ezen a ponton kövesse a [helyreállítási lépéseket a cikk korábbi részeiben](#restore-a-sharepoint-item-from-disk-using-dpm) lemezről való helyreállításhoz egy SharePoint tartalom-adatbázist.
+5. Ezen a ponton kövesse a cikkben a lemezről való helyreállításhoz egy SharePoint tartalom-adatbázist a helyreállítási lépéseket.
 
 ## <a name="faqs"></a>Gyakori kérdések
 KÉRDÉS: Tudok helyreállítani egy SharePoint-elem az eredeti helyre, ha a SharePoint SQL AlwaysOn (a védelem a lemezen) használatával van konfigurálva?<br>

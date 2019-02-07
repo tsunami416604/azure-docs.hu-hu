@@ -1,24 +1,24 @@
 ---
 title: Az Azure Maps áttekintése | Microsoft Docs
 description: Az Azure Maps bemutatása
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/12/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 02/04/2019
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9bf168a0f06d662526d172687e54327b55d50bd8
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ce55185effc67709157ce6219c405bb8e32dd5db
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104267"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768579"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
-Az Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosítása érdekében friss térképadatokat használó térinformatikai szolgáltatások gyűjteménye. REST API-kat tartalmaz a térképek renderelésére és a fontos helyek keresésére. Az API-k kereshetnek fontos helyekre vezető útvonalakat, forgalmi viszonyokat, időzónákat és IP-címből tartózkodási helyet. Az ismerős eszközökkel együttműködő API-k segítségével gyorsan fejleszthetők és méretezhetők helyadatokat tartalmazó Azure-megoldások. A REST API-kon felül a rendelkezésre bocsátott webalapú [JavaScript térkép vezérlőelem](https://docs.microsoft.com/javascript/api/azure-maps-control) is a könnyű, rugalmas és többféle platformon hordozható fejlesztést segíti.
+Az Azure Maps gyűjteménye, térinformatikai szolgáltatások rögzítetlen által elérhető pontos földrajzi kontextusának biztosításához a webes és mobil alkalmazások a legfrissebb társítási adatok törlése. Renderelési REST API-k áll az Azure Maps **Maps** több stílusok és szatellit képanyag, **keresésével** címek, helyek és hasznos helyek szerte a világon; **Útválasztás** point-to-point, multipoint, multipoint optimalizálás, isochrone, kereskedelmi járművek, befolyásolják a forgalom és mátrix útválasztás; legjavát megtekintése a fajta forgalmat, és az incidensek; létrehozó felhasználó helye keresztül **Földrajzi hely meghatározásának**; és helyre való konvertálást **időzónák**, valamint beolvasása idő egy helyen. Az Azure Maps továbbá lehetővé teszi a szolgáltatások **Geokerítések**, térkép **adatok** helyadatokhoz, az Azure-ban; üzemeltető - tárolót és **térbeli Operations** helyére térinformatikai elemzés révén intelligencia. Azure Maps-szolgáltatások érhetők el közvetlenül a REST API-ként vagy keresztül vagy a robusztus **Web SDK** vagy **Android SDK**. Ezek az eszközök lehetővé teszik a fejlesztők gyorsan üzembe helyezheti és méretezzen olyan megoldásokat, amelyek az Azure-felhőben az Azure megoldásokba. Regisztráljon az ingyenes [Azure Maps-fiók](https://azure.microsoft.com/services/azure-maps/) ma és a kezdő fejlesztésének!
 
 A következő videó részletesen bemutatja az Azure Mapset:
 

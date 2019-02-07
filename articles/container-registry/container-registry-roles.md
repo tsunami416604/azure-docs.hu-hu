@@ -7,18 +7,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: 5dabab02758b4ade0f668adddf7644a654e1804b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: e2ec1b7ad6d1489836937d30b89d0f0f681a9bfa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53756600"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819586"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Az Azure Container Registry-szerepkörök és engedélyek
 
 Az Azure Container Registry szolgáltatás támogat egy Azure-szerepkörök, engedélyek és egy Azure container registry különböző szinteken biztosít. Az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) adott engedélyek hozzárendelése a felhasználókhoz vagy egyszerű szolgáltatások, amelyek a beállításjegyzék kommunikáljon.
 
-| Szerepkör vagy engedély       | [Resource Manager elérése](#access-resource-manage)| [Beállításjegyzék létrehozása/törlése](#create/delete-registry) | [Rendszerkép leküldése](#push-image) | [Rendszerkép lekérése](#pull-image) | [Szabályzatok módosítása](#change-polices) |   [Bejelentkezési képek](#sign-images)  |
+| Szerepkör vagy engedély       | Resource Manager elérése| Beállításjegyzék létrehozása/törlése | [Rendszerkép leküldése](#push-image) | [Rendszerkép lekérése](#pull-image) | Szabályzatok módosítása |   [Bejelentkezési képek](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- |
 | Tulajdonos | X | X | X | X | X |  |  
 | Közreműködő | X | X | X | X | X |  |  

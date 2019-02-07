@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 36d1b4ef9501c94fe385c37f31ee7e8c9f57106e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 80a78d12570e3da1371d2fc1cbb0270eb81fc6ce
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197228"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766843"
 ---
 # <a name="manage-your-security-info-preview"></a>A biztonsági adatok (előzetes verzió) kezelése
 
@@ -81,7 +81,7 @@ Ez a cikk segít, hogy a biztonsági adatait, beleértve a kétlépéses ellenő
 |A telefon elvesztése vagy azt ellopták|Sajnos a telefon, vagy hogy mérsékelje elvesztése fordulhat elő. Ebben az esetben azt javasoljuk, hogy, tájékoztassa a szervezetet, így az informatikai részleg alaphelyzetbe állíthatja az alkalmazásjelszókat, és törölje a megbízható eszközök listájáról eszközök bármely megjegyzett. A saját megbízható eszközök felejtse el a lépéseket követve a [az elveszett vagy vélhetően feltört eszközök biztonsági adatok kezelése](#manage-your-security-info-for-a-lost-or-potentially-compromised-device) szakaszban.|
 |Új telefonszám kaptam|A probléma megoldásának két módja van. Bejelentkezhet, és nem igényel a telefonszámát, e-mail, például másik hitelesítési módszert használ, vagy ha ez nem egy beállítást, forduljon a szervezet informatikai személyzetet tart fenn, és azok a beállítások törlése. Adja hozzá a további metódusokat hozzá biztonsági adataihoz, kövesse a lépéseket a [módosítása az adatok](#change-your-info) szakaszban.|
 |Az alapértelmezett módszer nem megfelelő|Az alapértelmezett módszer a biztonsági beállítások között frissítheti. Konkrét részletekért nyissa meg a [módosítása az adatok](#change-your-info) szakaszban.|
-|E nem érkeznek meg egy szöveget, vagy hívja a mobil eszközömre|Ha már sikeresen kapott szövegek vagy telefonhívások a mobileszközére a múltban, probléma legvalószínűbb a telefonos szolgáltatón, a fiókja nem. Győződjön meg arról, hogy a helyes cella jelet kapunk, és tudja fogadni, SMS-EK és a telefonhívások. Megkérheti, hogy egy ismerőse hívás vagy szöveges üzenet, teszteléshez használhat.<br><br>Ha is sikeresen üzeneteket fog kapni, szöveg és a telefon, de még nem található az értesítés, próbálja meg más módszerrel. A lépéseket követve a biztonsági adataimhoz további módszereket is hozzáadhat a [módosítása az adatok](#change-your-info) szakaszban. Nem kell hozzáadni egy másik módszert, ha a céges ügyfélszolgálattól, és kérje meg őket, törölje a beállításokat, így beállíthatja a módszer a következő bejelentkezéskor.<br><br>Ha gyakran rossz cella fogadás miatt, akkor javasoljuk, használja a Microsoft Authenticator alkalmazást a mobileszközén. Az alkalmazás való bejelentkezéshez használt véletlenszerű biztonsági kódokat generálhat, és ezek a kódok nem igénylik bármilyen cella jel vagy internetes kapcsolatot. A Microsoft Authenticator alkalmazással kapcsolatos további információkért tekintse meg a [Ismerkedés a Microsoft Authenticator alkalmazás](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/microsoft-authenticator-app-how-to) cikk.|
+|E nem érkeznek meg egy szöveget, vagy hívja a mobil eszközömre|Ha már sikeresen kapott szövegek vagy telefonhívások a mobileszközére a múltban, probléma legvalószínűbb a telefonos szolgáltatón, a fiókja nem. Győződjön meg arról, hogy a helyes cella jelet kapunk, és tudja fogadni, SMS-EK és a telefonhívások. Megkérheti, hogy egy ismerőse hívás vagy szöveges üzenet, teszteléshez használhat.<br><br>Ha is sikeresen üzeneteket fog kapni, szöveg és a telefon, de még nem található az értesítés, próbálja meg más módszerrel. A lépéseket követve a biztonsági adataimhoz további módszereket is hozzáadhat a [módosítása az adatok](#change-your-info) szakaszban. Nem kell hozzáadni egy másik módszert, ha a céges ügyfélszolgálattól, és kérje meg őket, törölje a beállításokat, így beállíthatja a módszer a következő bejelentkezéskor.<br><br>Ha gyakran rossz cella fogadás miatt, akkor javasoljuk, használja a Microsoft Authenticator alkalmazást a mobileszközén. Az alkalmazás való bejelentkezéshez használt véletlenszerű biztonsági kódokat generálhat, és ezek a kódok nem igénylik bármilyen cella jel vagy internetes kapcsolatot. A Microsoft Authenticator alkalmazással kapcsolatos további információkért tekintse meg a [Ismerkedés a Microsoft Authenticator alkalmazás](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/user-help-auth-app-download-install) cikk.|
 |A jelen táblázatban lévő lehetőségek egyike már megoldott probléma|Ha már próbálkozott ezeket a hibaelhárítási lépéseket, de futó ütközne; a céges ügyfélszolgálattól, képes segítséget kell lennie.|
 
 ## <a name="next-steps"></a>További lépések

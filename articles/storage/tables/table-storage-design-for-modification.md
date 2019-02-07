@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5e9ade0f6076a34a5662330bab64e9dd71275ba8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e993d169025f9b76c5e813bae31ca6cb2a39ba71
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470535"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809518"
 ---
 # <a name="design-for-data-modification"></a>Tervezés adatmódosításhoz
-Ez a cikk a Beszúrás, frissítés, optimalizálásával kapcsolatos kialakítási szempontok koncentrál, és törli. Bizonyos esetekben kell kiértékelni kompromisszumot kötni a tervek, melyek optimalizálják az ellen, melyek optimalizálják az adatok módosítását, ugyanúgy, mint a relációs adatbázisok tervek (bár a technika kezeléséhez a Tervező feláldozását tervek között eltér a relációs adatbázis). A szakasz [Table tervezési minták](#table-design-patterns) for a Table service néhány részletes tervezési minták ismerteti, és kiemeli a néhányat ezek feláldozását. A gyakorlatban tapasztalni fogja, hogy sok műveletekhez optimalizálva entitások lekérdezése is esetén működik megfelelően entitások módosítása.  
+Ez a cikk a Beszúrás, frissítés, optimalizálásával kapcsolatos kialakítási szempontok koncentrál, és törli. Bizonyos esetekben kell kiértékelni kompromisszumot kötni a tervek, melyek optimalizálják az ellen, melyek optimalizálják az adatok módosítását, ugyanúgy, mint a relációs adatbázisok tervek (bár a technika kezeléséhez a Tervező feláldozását tervek között eltér a relációs adatbázis). A szakasz Table tervezési minták for a Table service néhány részletes tervezési minták ismerteti, és kiemeli a néhányat ezek skálán. A gyakorlatban tapasztalni fogja, hogy sok műveletekhez optimalizálva entitások lekérdezése is esetén működik megfelelően entitások módosítása.  
 
 ## <a name="optimize-the-performance-of-insert-update-and-delete-operations"></a>Az insert, update és delete műveletek teljesítményének optimalizálása
 Szeretne frissíteni, vagy olyan entitást töröl, meg kell tudni segítségével azonosítható a **PartitionKey** és **RowKey** értékeket. Ebben a tekintetben a választott **PartitionKey** és **RowKey** az entitások módosítása kell követniük hasonló feltételek pont lekérdezések támogatására, mert a szervezetek, mint a azonosítani szeretné a kívánt lehető leghatékonyabb. Nem szeretné megkeresni egy entitás felderítése nem elég hatékony partíció vagy tábla vizsgálat használandó a **PartitionKey** és **RowKey** értékeket kell frissítenie vagy törölnie azt.  
 
-A szakaszban a következő minták [Table tervezési minták](#table-design-patterns) cím optimalizálása, a teljesítmény vagy a beszúrási, frissítési és törlési műveletek:  
+A következő minták szakaszában táblázat kialakítási minták cím optimalizálása, a teljesítmény vagy az insert, frissítési és törlési műveletek:  
 
 * [Nagy mennyiségű törlése minta](table-storage-design-patterns.md#high-volume-delete-pattern) -entitások nagy mennyiségű törlésének engedélyezése egyidejű törlésre az entitásokat saját különálló táblában tárolja, a tábla törlésével törli az entitásokat.  
 * [Adatsorozat adatmintát](table-storage-design-patterns.md#data-series-pattern) -Store mindazok az adatok sorozat egyetlen entitás minimalizálása érdekében, hogy kérések száma.  

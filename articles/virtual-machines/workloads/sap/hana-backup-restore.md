@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a72fade57b070ac2ac1aea28cbec92700c3797f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: e71e4ea56bfe467e03be59d6a855272baafc4235
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452547"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822731"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -34,7 +34,7 @@ Egy adatbázis biztonsági mentéséhez, lehetővé teszi az visszaállítás b�
 
 A legjobb eredmények elérése érdekében kétféle típusú biztonsági mentéseket kell végrehajtani:
 
-- Adatbázis-biztonsági mentések: teljes, a növekményes és a különbözeti biztonsági mentések
+- Adatbázisok biztonsági mentése: Teljes körű, a növekményes és a különbözeti biztonsági mentések
 - Tranzakciónapló biztonsági mentései
 
 Mellett az alkalmazás szintjén végrehajtott biztonsági mentések teljes adatbázis-biztonsági másolatok tárolási pillanatképekkel hajthat végre. A pillanatképek tárolási ne cserélje le a tranzakciónaplók biztonsági mentését. Tranzakciós naplók biztonsági mentését is fontos, az adatbázis visszaállítása egy bizonyos ponton vagy a már véglegesített tranzakciók naplóinak üres marad. A pillanatképek tárolási azonban gyorsítható recovery azáltal, hogy gyorsan az adatbázishoz egy visszaállítási-továbbító képe. 
@@ -129,7 +129,7 @@ A Linux operációs rendszer telepítve van, az SAP HANA az Azure-ban (nagymére
 
 A feladata az SAP HANA HDB ügyfél telepítése akkor, amikor telepíti az SAP HANA nagyméretű HANA-példány egységek.
 
-### <a name="step-2-change-the-etcsshsshconfig"></a>2. lépés: Módosítsa az/etc/ssh/ssh\_config
+### <a name="step-2-change-the-etcsshsshconfig"></a>2. lépés: Módosítsa az/etc/ssh/ssh\_config
 
 Változás `/etc/ssh/ssh_config` hozzáadásával a _Mac számítógépek hmac-sha1_ sor itt látható módon:
 ```
@@ -177,15 +177,15 @@ Győződjön meg arról, hogy a nyilvános kulcs javította módosítása a mapp
 
 Ezen a ponton lépjen kapcsolatba az SAP HANA az Azure Service Management szolgáltatáshoz, és adja meg a nyilvános kulcsot. A szolgáltatás képviselő a nyilvános kulcs használatával regisztrálja a mögöttes tároló-infrastruktúra, amely van faragottnak nagyméretű HANA-példány-bérlője számára.
 
-### <a name="step-4-create-an-sap-hana-user-account"></a>4. lépés: Hozzon létre egy SAP HANA-felhasználói fiókot
+### <a name="step-4-create-an-sap-hana-user-account"></a>4. lépés: Az SAP HANA-felhasználói fiók létrehozása
 
-SAP HANA-pillanatképek létrehozásának kezdeményezni, hozzon létre egy felhasználói fiókot, amellyel a storage-pillanatkép parancsfájlok SAP HANA-ban kell. Hozzon létre egy SAP HANA-felhasználói fiókot, az SAP HANA Studio erre a célra. A felhasználónak kell létrehozni a SYSTEMDB alatt, és nem vonatkozik a SID-adatbázis MDC számára. Egyetlen tároló a környezetben a felhasználó beállítva a bérlői adatbázis alapján. Ezt a fiókot a következő jogosultságokkal kell rendelkeznie: **biztonsági mentési rendszergazda** és **katalógus olvasási**. Ebben a példában a felhasználónév az **SCADMIN**. A felhasználói fiók nevét, HANA Studio létrehozott a kis-és nagybetűket. Ügyeljen arra, hogy válassza ki, hogy **nem** megkövetelő a felhasználó számára a következő bejelentkezéskor a jelszavának módosítása.
+SAP HANA-pillanatképek létrehozásának kezdeményezni, hozzon létre egy felhasználói fiókot, amellyel a storage-pillanatkép parancsfájlok SAP HANA-ban kell. Hozzon létre egy SAP HANA-felhasználói fiókot, az SAP HANA Studio erre a célra. A felhasználónak kell létrehozni a SYSTEMDB alatt, és nem vonatkozik a SID-adatbázis MDC számára. Egyetlen tároló a környezetben a felhasználó beállítva a bérlői adatbázis alapján. Ezt a fiókot a következő jogosultságokkal kell rendelkeznie: **Biztonsági mentési rendszergazda** és **olvassa el a katalógus**. Ebben a példában a felhasználónév az **SCADMIN**. A felhasználói fiók nevét, HANA Studio létrehozott a kis-és nagybetűket. Ügyeljen arra, hogy válassza ki, hogy **nem** megkövetelő a felhasználó számára a következő bejelentkezéskor a jelszavának módosítása.
 
 ![A HANA Studio felhasználó létrehozása](./media/hana-overview-high-availability-disaster-recovery/image3-creating-user.png)
 
 Ha több SAP HANA-példányok egy egységen a MCOD központi telepítéseket használ, ismételje meg ezt a lépést minden SAP HANA-példányt szeretné.
 
-### <a name="step-5-authorize-the-sap-hana-user-account"></a>5. lépés: Engedélyezze az SAP HANA-felhasználói fiók
+### <a name="step-5-authorize-the-sap-hana-user-account"></a>5. lépés: Az SAP HANA-felhasználói fiók engedélyezése
 
 Ebben a lépésben is engedélyezni szeretné a létrehozott, az SAP HANA-felhasználói fiókot, hogy a parancsfájlok nem kell elküldeni a jelszavak futásidőben. Az SAP HANA parancs `hdbuserstore` lehetővé teszi egy felhasználó egy vagy több SAP HANA-csomóponton tárolt SAP HANA kulcs létrehozását. A felhasználói kulcs lehetővé teszi, hogy a felhasználói hozzáférést az SAP HANA a parancsfájl-kezelési folyamaton belül a jelszavak kezelése nélkül. A parancsfájl-kezelési folyamat Ez a cikk későbbi részében olvashat.
 
@@ -218,7 +218,7 @@ hdbuserstore set SCADMIN01 lhanad02:30115 SCADMIN <password>
 hdbuserstore set SCADMIN01 lhanad03:30115 SCADMIN <password>
 ```
 
-### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>6. lépés: A pillanatkép-parancsfájlok Get, a pillanatképek konfigurálása és a konfiguráció és a kapcsolat tesztelése
+### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>6. lépés: A pillanatkép-parancsfájlok GET, a pillanatképek konfigurálása és a konfiguráció és a kapcsolat tesztelése
 
 Töltse le a legújabb verzióját a parancsfájlok [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). Másolja a letöltött parancsfájlok és a szöveges fájlt a munkakönyvtárban történő **hdbsql**. Aktuális HANA-példányok esetén ebben a könyvtárban van, a következő formátumban: /hana/shared/D01/exe/linuxx86\_64/hdb. 
 ``` 
@@ -246,9 +246,9 @@ Perl-parancsfájlokat esetén:
 
 A különböző parancsprogramokat és fájlokat célja a következőképpen történik:
 
-- **Azure\_hana\_backup.pl**: Ez a szkript a Linux Cron-ütemezését segédprogrammal van ütemezve, hogy a pillanatképek tárolási a HANA-adatok és megosztott kötetek, a/hana/logbackups köteten, vagy az operációs rendszer.
-- **Azure\_hana\_replikációs\_status.pl**: Ez a szkript biztosítja az alapvető adatokat a replikációs állapot a munkakörnyezeti helyet a vész-helyreállítási webhelyként körül. Győződjön meg arról, hogy a replikáció folyik, és az elemek méretének összege mutatja, hogy a parancsfájl figyelők replikálva. Is nyújt útmutatást, ha túl sokáig tart a replikációt, vagy ha a hivatkozás nem működik.
-- **Azure\_hana\_pillanatkép\_details.pl**: Ez a szkript az összes pillanatképet, köteteként halad, a környezetben meglévő kapcsolatos alapvető tudnivalókat listáját tartalmazza. Ez a szkript futtatható, az elsődleges kiszolgálón vagy a vész-helyreállítási helyet az kiszolgáló található. A szkript a következő adatokat, és minden olyan kötetre, amely tartalmazza a pillanatképek bontásban tartalmazza:
+- **azure\_hana\_backup.pl**: Ez a szkript a HANA-adatok és megosztott kötetek, a /hana/logbackups kötetet, vagy az operációs rendszer tárolási pillanatképekkel hajthat végre a Linux Cron-ütemezését segédprogrammal van ütemezve.
+- **azure\_hana\_replication\_status.pl**: Ez a szkript a replikációs állapot a munkakörnyezeti helyet a vész-helyreállítási webhelyként körül az alapvető adatokat biztosít. Győződjön meg arról, hogy a replikáció folyik, és az elemek méretének összege mutatja, hogy a parancsfájl figyelők replikálva. Is nyújt útmutatást, ha túl sokáig tart a replikációt, vagy ha a hivatkozás nem működik.
+- **azure\_hana\_snapshot\_details.pl**: Ez a szkript az összes pillanatképet, köteteként halad, a környezetben meglévő kapcsolatos alapvető tudnivalókat listáját tartalmazza. Ez a szkript futtatható, az elsődleges kiszolgálón vagy a vész-helyreállítási helyet az kiszolgáló található. A szkript a következő adatokat, és minden olyan kötetre, amely tartalmazza a pillanatképek bontásban tartalmazza:
    * Teljes pillanatképek a kötet mérete
    * Az adott köteten lévő minden egyes pillanatkép a következő adatokat: 
       - Pillanatkép neve 
@@ -256,12 +256,12 @@ A különböző parancsprogramokat és fájlokat célja a következőképpen tö
       - Pillanatkép mérete
       - A pillanatkép gyakorisága
       - Ha szükséges, hogy a pillanatkép társított HANA biztonsági mentés azonosítója
-- **Azure\_hana\_pillanatkép\_delete.pl**: Ez a szkript törli a storage pillanatkép vagy egy pillanatkép. A SAP HANA biztonsági másolat azonosítója, HANA Studio formában, vagy a pillanatkép nevét is használhatja. A biztonsági másolat azonosítója jelenleg csak vannak kötve, a pillanatképek a HANA-adatok/log/megosztott kötetek létrehozása. Ellenkező esetben a pillanatkép-azonosító is meg kell adni, ha azt kívánja összes pillanatképet, amelyek megfelelnek a megadott pillanatkép azonosítója.  
-- **testHANAConnection.pl**: Ez a szkript létesíthető kapcsolat az SAP HANA-példány és a storage-pillanatképek beállításához szükséges.
+- **azure\_hana\_snapshot\_delete.pl**: Ez a szkript egy storage-pillanatkép vagy egy pillanatképek törlése. A SAP HANA biztonsági másolat azonosítója, HANA Studio formában, vagy a pillanatkép nevét is használhatja. A biztonsági másolat azonosítója jelenleg csak vannak kötve, a pillanatképek a HANA-adatok/log/megosztott kötetek létrehozása. Ellenkező esetben a pillanatkép-azonosító is meg kell adni, ha azt kívánja összes pillanatképet, amelyek megfelelnek a megadott pillanatkép azonosítója.  
+- **testHANAConnection.pl**: Ez a szkript létesíthető kapcsolat az SAP HANA-példány, és a storage-pillanatképek beállításához szükséges.
 - **testStorageSnapshotConnection.pl**: Ez a szkript két célja van. Első lépésként azt biztosítja, hogy futtatja a parancsfájlokat, a nagyméretű HANA-példány egység hozzáférés a tárolási hozzárendelt virtuális gépet, és a storage-pillanatkép felületén, a nagyméretű HANA-példányokhoz. A második célja a HANA-példány teszteli egy ideiglenes pillanatképének létrehozása. Ez a szkript egy kiszolgálón, győződjön meg arról, hogy a biztonsági mentés parancsprogramjai várt módon működik-e minden HANA-példány fusson.
 - **removeTestStorageSnapshot.pl**: Ez a szkript törli a létrehozott szkripttel teszt pillanatképének **testStorageSnapshotConnection.pl**.
-- **Azure\_hana\_dr\_failover.pl**: Ez a szkript DR feladatátvételét kezdeményezi egy másik régióba. A parancsfájl kell a nagyméretű HANA-példány egységen a Vészhelyreállítás régióban található, vagy a egység szeretné átadja a feladatokat. Ez a szkript a másodlagos oldalának elsődleges oldaláról storage replikálását, visszaállítja a legutóbbi pillanatképet a DR-köteteken, és a DR akkor a csatlakozási biztosít köteteket.
-- **Azure\_hana\_tesztelése\_dr\_failover.pl**: Ez a szkript a DR-helyre egy feladatátvételi tesztet hajt végre. A végrehajtási ellentétben a azure_hana_dr_failover.pl parancsfájl nem szakítja meg a tárreplikáció, az elsődleges, másodlagos. Ehelyett a replikált tároló kötetek klónok jönnek létre a DR oldalra, és a csatlakozási pontok le a klónozott kötetek találhatók. 
+- **Azure\_hana\_dr\_failover.pl**: Ez a szkript egy másik régióba DR feladatátvételét kezdeményezi. A parancsfájl kell a nagyméretű HANA-példány egységen a Vészhelyreállítás régióban található, vagy a egység szeretné átadja a feladatokat. Ez a szkript a másodlagos oldalának elsődleges oldaláról storage replikálását, visszaállítja a legutóbbi pillanatképet a DR-köteteken, és a DR akkor a csatlakozási biztosít köteteket.
+- **Azure\_hana\_tesztelése\_dr\_failover.pl**: Ez a szkript a DR-helyre hajt végre feladatátvételi tesztet. A végrehajtási ellentétben a azure_hana_dr_failover.pl parancsfájl nem szakítja meg a tárreplikáció, az elsődleges, másodlagos. Ehelyett a replikált tároló kötetek klónok jönnek létre a DR oldalra, és a csatlakozási pontok le a klónozott kötetek találhatók. 
 - **HANABackupCustomerDetails.txt**: Ez a fájl egy módosíthatóvá konfigurációs fájlt, amely alkalmazkodni az SAP HANA konfigurációját módosítani kell. A *HANABackupCustomerDetails.txt* a vezérlő és a konfigurációs fájlt a parancsprogramot, amelynek a tárolási pillanatképek számára. Állítsa be a fájlt a célokra és a telepítőt. Kap a **Storage biztonsági mentés neve** és a **tárolási IP-cím** az SAP HANA az Azure Service Management-példányokat telepítésekor. Nem módosíthatja a feladatütemezési, rendezés, vagy bármely, a fájlban a változók térköz. Ha így tesz, a parancsfájlok nem működnek megfelelően. Megjelenhet az IP-címét a vertikális felskálázás vagy a fő csomópontot (ha horizontális felskálázás) SAP HANA az Azure Service Management-ból. Azt is tudnia a HANA-példány szám, amelyet kap az SAP HANA telepítése során. Most szüksége egy biztonsági mentési név a konfigurációs fájl hozzáadásához.
 
 Vertikális vagy horizontális felskálázás központi telepítés a konfigurációs fájl módon jelenik meg az alábbi példában a kiszolgáló nevét a nagyméretű HANA-példány és a kiszolgáló IP-cím kitöltése után. Töltse ki az összes szükséges mezőket minden SAP HANA biztonsági azonosító biztonsági mentése vagy helyreállítása.
@@ -386,9 +386,9 @@ Ha a teszt pillanatképének a szkript sikeresen végrehajtva, folytathatja a t�
 Előkészítő lépések befejeződése után a tényleges pillanatkép tárolókonfigurációt konfigurálása megkezdése. Ütemezni a szkript SAP HANA vertikális és horizontális felskálázás konfigurációval működik. A biztonsági mentési parancsprogram-ismétlődő és rendszeres végrehajtásához ütemezni a parancsfájl a cron segédprogram használatával. 
 
 Pillanatkép készítése Adatbázisfájlokról három típusú hozhat létre:
-- **HANA**: egy kombinált pillanatkép biztonsági másolatából, amelyben a kötetek/hana/adatokat tartalmazó és a/hana/megosztott (amely tartalmazza, valamint /usr/sap) esnek a koordinált pillanatkép. Egyetlen fájlvisszaállításra lehetőség a pillanatképből.
-- **Naplók**: / hana/logbackups kötet egy pillanatkép biztonsági másolatából. Nincs HANA pillanatképe akkor aktiválódik, a storage-pillanatkép végrehajtásához. A tárkötet hivatott tartalmaz az SAP HANA tranzakciónaplók biztonsági mentését. Ezek történik gyakrabban log növekedésének korlátozása és a potenciális adatvesztés megelőzése érdekében. Egyetlen fájlvisszaállításra lehetőség a pillanatképből. 3 perc alatt az a gyakoriság nem csökken.
-- **Rendszerindító**: a rendszerindító logikaiegység-szám (LUN), a nagyméretű HANA-példányt tartalmazó kötet pillanatképét. A pillanatkép biztonsági mentésre lehetőség, csak a a i. típus SKU-k a nagyméretű HANA-példányokhoz. Nem végezhet egyetlen fájl helyreállítást a pillanatképből a kötet, amely tartalmazza a rendszerindító LUN-t.
+- **HANA**: Egy kombinált pillanatkép biztonsági másolatából, amely/hana/adatokat tartalmazó kötetek és/hana/megosztott (amely tartalmazza a /usr/sap is) a koordinált pillanatkép kezelt. Egyetlen fájlvisszaállításra lehetőség a pillanatképből.
+- **Naplók**: A pillanatképek a kötet biztonsági mentése/hana/logbackups. Nincs HANA pillanatképe akkor aktiválódik, a storage-pillanatkép végrehajtásához. A tárkötet hivatott tartalmaz az SAP HANA tranzakciónaplók biztonsági mentését. Ezek történik gyakrabban log növekedésének korlátozása és a potenciális adatvesztés megelőzése érdekében. Egyetlen fájlvisszaállításra lehetőség a pillanatképből. 3 perc alatt az a gyakoriság nem csökken.
+- **Rendszerindító**: A rendszerindító logikaiegység-szám (LUN), a nagyméretű HANA-példányt tartalmazó kötet pillanatképet. A pillanatkép biztonsági mentésre lehetőség, csak a a i. típus SKU-k a nagyméretű HANA-példányokhoz. Nem végezhet egyetlen fájl helyreállítást a pillanatképből a kötet, amely tartalmazza a rendszerindító LUN-t.
 
 
 >[!NOTE]
@@ -532,7 +532,7 @@ Command completed successfully.
 Egy adott tárolási köteten figyelemmel kísérheti a pillanatképek és a tárhelyhasználat ezen pillanatképek számát. A `ls` parancs nem jelenít meg, a pillanatkép könyvtárat vagy fájlokat. Ugyanakkor a Linux operációs rendszer parancs `du` tárolási pillanatképeket, kapcsolatos részleteket jeleníti meg, mert azok az azonos köteteken tárolt. A parancs is használható a következő beállításokkal:
 
 - `du –sh .snapshot`: Ezt a lehetőséget biztosít a pillanatkép-könyvtárban lévő összes pillanatképet összesen.
-- `du –sh --max-depth=1`: Ez a beállítás felsorolja a mentett összes pillanatképet a **.snapshot** mappát, és minden pillanatkép mérete.
+- `du –sh --max-depth=1`: Ez a beállítás a pillanatképek a mentett sorolja fel a **.snapshot** mappát, és minden pillanatkép mérete.
 - `du –hc`: Ezt a lehetőséget biztosít az összes pillanatképet által használt teljes mérete.
 
 Ezek a parancsok használatával győződjön meg arról, hogy az elvégzett és tárolt pillanatképek nem használ fel a köteteken a tárolót.
@@ -648,9 +648,9 @@ A következő bemutatja, hogyan készülhet fel a kérelmet:
 
 1. Nyisson meg egy Azure-támogatási kérést, és a visszaállítást egy adott pillanatkép kapcsolatos utasításokat is tartalmazzák.
 
- - A visszaállítás során: SAP HANA az Azure Service Management fel, hogy vegyen részt egy konferenciahívás koordinálása, ellenőrzése és megerősítése, hogy a helyes tárfiók-pillanatkép visszaállítása biztosítása érdekében. 
+ - A visszaállítás: alatt SAP HANA az Azure Service Management fel, hogy vegyen részt egy konferenciahívás koordinálása, ellenőrzése és megerősítése, hogy a helyes tárfiók-pillanatkép visszaállítása biztosítása érdekében. 
 
- - A visszaállítás után: SAP HANA az Azure Service Management értesíti, amikor a storage-pillanatkép-visszaállítás.
+ - Miután a visszaállítás: SAP HANA az Azure Service Management értesíti, amikor a storage-pillanatkép-visszaállítás.
 
 1. A visszaállítási folyamat befejezése után csatlakoztassa újra az adatköteteket.
 
@@ -687,7 +687,7 @@ A következő folyamat visszaállítja a HANA-pillanatkép, amely megtalálható
 >[!IMPORTANT]
 >Mielőtt folytatná, ellenőrizze, hogy egy teljes körű és összefüggő lánc tranzakciós naplók biztonsági másolatainak. Ezeket a biztonsági másolatokat, nélkül az adatbázis jelenlegi állapota nem állítható vissza.
 
-1. Hajtsa végre a lépéseket 1 – 6 [a legfrissebb HANA pillanatképe helyreállítás](#recovering-to-the-most-recent-hana-snapshot).
+1. 1 – 6. lépéseket, a legfrissebb HANA pillanatképe a helyreállítás befejezéséhez.
 
 1. Válassza ki **állítsa helyre az adatbázist a legutóbbi állapotára**.
 
@@ -713,7 +713,7 @@ A következő folyamat visszaállítja a HANA-pillanatkép, amely megtalálható
 Helyreállítás egy időben a HANA-pillanatkép (tartalmazza a storage-pillanatkép) és a egy későbbi, mint a pillanatkép-időponthoz HANA helyreállítási között, hajtsa végre az alábbi lépéseket:
 
 1. Győződjön meg arról, hogy rendelkezik-e az összes a tranzakciónapló biztonsági mentései a HANA-pillanatképből a helyreállítani kívánt alkalommal.
-1. Az eljárás alatt megkezdése [, a legutóbbi állapot helyreállításához](#recovering-to-the-most-recent-state).
+1. A legfrissebb állapotba vissza csoportban az eljárás megkezdése.
 1. A 2. lépés: az eljárás a a **helyreállítási típus megadása** ablakban válassza **időben a következő pontot az adatbázis helyreállítása**, majd adja meg a pont időben. 
 1. 3 – 6. lépések elvégzésével.
 

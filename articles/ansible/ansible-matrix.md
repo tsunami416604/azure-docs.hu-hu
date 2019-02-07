@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: 5265b6f6ebf779c83792ab2569c1b613d11070da
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 149f37d0231ecc0547e8dc7937d22a9cc38b7df3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051526"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810218"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Az Ansible modul és verzió mátrix
 
@@ -21,7 +21,7 @@ ms.locfileid: "54051526"
 Az Ansible tartalmaz egy számot, amelyek közvetlenül a távoli gazdagépeken vagy forgatókönyvek keresztül is végrehajthatók.
 Ez a cikk az Azure-ban, amely építhető ki az Azure felhőbeli erőforrások, például a virtuális gép, hálózati és tárolószolgáltatások Ansible modulok listája. Ezeket a modulokat az Ansible hivatalos kiadás, illetve a következő forgatókönyv-szerepkörök, a Microsoft által közzétett kérheti le.
 
-| Az Ansible-modul az Azure-hoz                   |  Az Ansible 2.4 |  Az Ansible 2,5 |  Az Ansible 2.6 | Az Ansible 2.7 | [Az Ansible-szerepkör](#introduction-to-azurepreviewmodule) | 
+| Az Ansible-modul az Azure-hoz                   |  Az Ansible 2.4 |  Az Ansible 2,5 |  Az Ansible 2.6 | Az Ansible 2.7 | Az Ansible-szerepkör | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|-------------------------------------| 
 | **Számítás**                    |           |                          |                          |                            |                                | 
 | azure_rm_availabilityset                    | Igen          | Igen                         | Igen          | Igen          | Igen                                 | 

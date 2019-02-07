@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7e53b50df88c592386d3f2fb140373a0c5aaab13
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 16b4031c0242d79b6d866d612a4d4f594dc608fa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228287"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821949"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Vészhelyreállítás az Azure virtuális gépek Azure ExpressRoute integrálása
 
@@ -190,7 +190,7 @@ Egy egyszerű topológiát használó egyetlen ExpressRoute-kapcsolatcsoport IP-
 ### <a name="example-steps"></a>Példa lépései
 Ebben a példában Itt a helyreállítás automatizálása, mit kell tennie:
 
-1. Kövesse a lépéseket a [-replikálás beállítása](#azure-vm-replication-steps).
+1. Kövesse a lépéseket a replikáció beállítása.
 2. [Az Azure virtuális gépek feladatainak átadása](azure-to-azure-tutorial-failover-failback.md), további lépések során, és a feladatátvétel után.
 
     a. A célként megadott régióban agyi virtuális hálózat létrehozása az Azure ExpressRoute-átjárót. Ez az csatlakoznia kell a cél agyi virtuális hálózat ExpressRoute-kapcsolatcsoporthoz.

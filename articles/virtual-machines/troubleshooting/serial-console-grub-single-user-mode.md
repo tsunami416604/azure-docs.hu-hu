@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5029365e665ce3ee9ba65886a3d6d5bbced0ed9a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 135741a8bf385388fa1b3ac75a45e4c4678bf196
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103309"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814470"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
 Grub-HIBÁT a végösszeg egyesített Rendszerbetöltőt, ami valószínűleg a legfontosabb, láthatja, ha a gép. Megjeleníti az operációs rendszer megkezdése előtt, mert nem érhető el SSH-n keresztül. A grub-HIBÁT Ön tudja módosítani a rendszerindítási konfiguráció többek között a egyfelhasználós módban indul.
@@ -44,7 +44,7 @@ A virtuális gép újraindítását is elvégezhető a egy SysRq `'b'` parancsot
 ![Linux soros konzol újraindítása](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-ubuntu.gif)
 
 ## <a name="general-single-user-mode-access"></a>Hozzáférés az egyfelhasználós módot
-Manuális hozzáférés egyfelhasználós üzemmódra helyzetekben, ahol nincs konfigurálva egy fiók jelszavas hitelesítéssel lehet szükség. Adja meg manuálisan az egyfelhasználós módot a grub-HIBÁT konfigurációját módosítani kell. Ha ezzel végzett, tekintse meg a [használja az egyfelhasználós módot visszaállítására vagy a jelszó hozzáadása](#-Use-Single-User-Mode-to-reset-or-add-a-password) további útmutatást.
+Manuális hozzáférés egyfelhasználós üzemmódra helyzetekben, ahol nincs konfigurálva egy fiók jelszavas hitelesítéssel lehet szükség. Adja meg manuálisan az egyfelhasználós módot a grub-HIBÁT konfigurációját módosítani kell. Miután ezt elvégezte, használja az egyfelhasználós módot visszaállítására, vagy adjon hozzá egy jelszót a további utasításokat talál.
 
 Azokban az esetekben, ahol a virtuális gép nem tud rendszerindító disztribúciókhoz gyakran automatikusan csökken, akkor egyfelhasználós módban vagy vészhelyzeti módban. További telepítési, mások azonban szükség van, mielőtt is dobja el egyfelhasználós vagy vészhelyzeti módban automatikusan (például a gyökér szintű jelszó beállítása).
 

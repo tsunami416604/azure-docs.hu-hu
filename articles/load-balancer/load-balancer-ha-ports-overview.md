@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: kumud
-ms.openlocfilehash: f1d95534fb553c6a6d1be4d72a3251ad6a573f20
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 328471292ea6cbe07e96cc18af7f9c524407de3d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317202"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809470"
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok áttekintő lapján
 
@@ -100,7 +100,7 @@ Konfigurálható *egy* nyilvános Standard Load Balancer-erőforrás a háttér-
 
 - A magas rendelkezésre ÁLLÁSÚ portok funkció az IPv6 nem érhető el.
 
-- Háttér-példány és a egy egyetlen hálózati adapter (és egyetlen IP-konfiguráció) támogatott folyamat szimmetrikus (elsősorban az NVA-forgatókönyv) csak akkor, ha a használt, ahogyan a [diagram](#diagram) fenti és a magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok. Nincs megadva, a bármilyen más forgatókönyvhöz. Ez azt jelenti, hogy két vagy több Load Balancer-erőforrások és a megfelelő szabályok független döntéseket hozhat, és soha ne legyenek. Tekintse meg a leírást és a diagram [hálózati virtuális berendezések](#nva). Ha egy több hálózati adapter használatával, vagy az NVA egy nyilvános és belső Load Balancer között sandwiching, a flow szimmetrikus nem érhető el.  Előfordulhat, hogy a bejövő forgalom áramlását az IP-cím a készülék engedi meg válaszok írását az azonos nva érkezzen NAT'ing forrás szerint ez megoldható.  Azonban erősen ajánlott egy egyetlen hálózati adapter, valamint a referencia-architektúra látható használatához a [diagram](#diagram) felett.
+- A folyamat szimmetrikus (elsősorban az NVA-forgatókönyv) csak akkor támogatott, a háttér-példány és a egy egyetlen hálózati adapter (és egyetlen IP-konfiguráció) használatával, és a fenti ábrán látható módon használatakor a magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok betöltése. Nincs megadva, a bármilyen más forgatókönyvhöz. Ez azt jelenti, hogy két vagy több Load Balancer-erőforrások és a megfelelő szabályok független döntéseket hozhat, és soha ne legyenek. Tekintse meg a leírást és a diagram [hálózati virtuális berendezések](#nva). Ha egy több hálózati adapter használatával, vagy az NVA egy nyilvános és belső Load Balancer között sandwiching, a flow szimmetrikus nem érhető el.  Előfordulhat, hogy a bejövő forgalom áramlását az IP-cím a készülék engedi meg válaszok írását az azonos nva érkezzen NAT'ing forrás szerint ez megoldható.  Azonban erősen ajánlott egy egyetlen hálózati adapter, valamint a fenti ábrán látható referenciaarchitektúra használatához.
 
 
 ## <a name="next-steps"></a>További lépések

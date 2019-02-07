@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2be11f97882a7c6353b214886ce6c5a3a66add89
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 81e9ad5affda7b5e246bd7eb3406a40fd7f24dbb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339110"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814020"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -176,7 +176,7 @@ A Security Center lehetővé teszi a munkaterületen a kijelölt tarifacsomag al
 Manuálisan távolítsa el a Microsoft Monitoring Agent. Ez nem ajánlott, mivel a Security Center javaslatait és riasztások korlátozza.
 
 > [!NOTE]
-> Ha az adatgyűjtés engedélyezve van, a Security Center újratelepíti az ügynök után távolítsa el azt.  Le kell tiltania az adatgyűjtés az ügynök manuális eltávolítása előtt. Lásd: [hogyan állítsa le az ügynök automatikus telepítés és a munkaterület létrehozását?](#how-do-i-stop-the-automatic-agent-installation-and-workspace-creation?) letiltásáról az adatgyűjtést.
+> Ha az adatgyűjtés engedélyezve van, a Security Center újratelepíti az ügynök után távolítsa el azt.  Le kell tiltania az adatgyűjtés az ügynök manuális eltávolítása előtt. Tekintse meg, hogyan állítsa le az ügynök automatikus telepítés és a munkaterület létrehozását? útmutatás az adatok gyűjtésének letiltása.
 >
 >
 

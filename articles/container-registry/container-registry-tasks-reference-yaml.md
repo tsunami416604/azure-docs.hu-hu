@@ -7,14 +7,14 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: danlep
-ms.openlocfilehash: e91b4e881c0f39304e3042d556f111db2089f7de
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: c9b4a27ff1b5467eb752e8cfc09f697ca1a966ba
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334482"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820385"
 ---
-# <a name="acr-tasks-reference-yaml"></a>ACR-feladatok hivatkozás: YAML
+# <a name="acr-tasks-reference-yaml"></a>ACR-feladatok leírása: YAML
 
 Többlépéses feladat meghatározása az ACR-feladatokban biztosít egy tároló-központú számítási primitívet létrehozásához, teszteléséhez és a javítással tárolók összpontosítanak. Ez a cikk ismerteti a parancsok, paraméterek, tulajdonságok és szintaxisa a YAML-fájlokat, amelyek meghatározzák a több lépésből álló feladatokat.
 
@@ -83,10 +83,10 @@ az configure --defaults acr=myregistry
 
 Feladat tulajdonságai általában tetején jelennek meg egy `acr-task.yaml` fájlt, és a globális tulajdonságok, amelyek érvényesek a teljes a feladat végrehajtása során. Ezek a globális tulajdonságok némelyike belül egy adott lépés felülbírálható.
 
-| Tulajdonság | Típus | Optional | Leírás | Támogatott felülbírálása | Alapértelmezett érték |
+| Tulajdonság | Typo | Optional | Leírás | Támogatott felülbírálása | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | sztring | Nem | A következő verziója a `acr-task.yaml` az ACR-feladatok szolgáltatás által elemzett fájlok. ACR-feladatok nagy hangsúlyt fektet a előző verziókkal való kompatibilitás megőrzése érdekében, miközben ez az érték engedélyezi ACR feladatok fenntartja a kompatibilitást belül egy meghatározott verzióra. | Nem | None |
-| `stepTimeout` | Int (másodperc) | Igen | Egy lépés futtathatja másodperc maximális számát. Ez a tulajdonság beállításával a lépés egy lépésben felülbírálható [időtúllépési](#timeout) tulajdonság. | Igen | 600 (10 perc) |
+| `stepTimeout` | Int (másodperc) | Igen | Egy lépés futtathatja másodperc maximális számát. Ez a tulajdonság egy lépésben, a lépés timeout tulajdonságának beállításával felülbírálható. | Igen | 600 (10 perc) |
 | `totalTimeout` | Int (másodperc) | Igen | Másodpercben, hogy egy tevékenység futtatásának maximális számát. A "Futtatás" tartalmazza a végrehajtási és az összes lépés befejezése után a feladat sikeres vagy sikertelen-e. Is tartalmazza a nyomtatási feladat kimeneti például észlelt kép függőségeket és a feladat végrehajtásának állapota. | Nem | 3600 (1 óra) |
 
 ## <a name="task-step-types"></a>Lépés tevékenységtípust
@@ -315,7 +315,7 @@ A standard használatával `docker run` lemezkép a referencia-egyezmény `cmd` 
 
 Minden lépés típusát támogatja a megfelelő ehhez a típushoz több tulajdonságát. Az alábbi táblázat az összes rendelkezésre álló lépés tulajdonság határozza meg. Nem minden lépés esetében támogatja az összes tulajdonság. Ezek a tulajdonságok közül melyik érhetők el az egyes lépés, olvassa el a [cmd](#cmd), [hozhat létre](#build), és [leküldéses](#push) típus szakaszok lépést.
 
-| Tulajdonság | Típus | Optional | Leírás |
+| Tulajdonság | Typo | Optional | Leírás |
 | -------- | ---- | -------- | ----------- |
 | `detach` | Logikai | Igen | Hogy a tároló kell lehet leválasztani futtatásakor. |
 | `entryPoint` | sztring | Igen | Felülbírálja a `[ENTRYPOINT]` egy lépés tároló. |
@@ -389,7 +389,7 @@ ACR-feladatok által elérhető lépések, ha azok végrehajtása változók ala
 * `Run.Registry`
 * `Run.Date`
 
-### <a name="run46id"></a>Futtatás&#46;azonosítója
+### <a name="run46id"></a>Run&#46;ID
 
 Minden egyes Futtatás keresztül `az acr run`, vagy az alapján létrehozott feladatok aktiválásához `az acr task create` rendelkezik egy egyedi azonosítót. Az azonosító a jelenleg végrehajtás alatt Futtatás jelöli.
 

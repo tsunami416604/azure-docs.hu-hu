@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 0e9537f09049d5fe056819e6f8b9718cfc52f489
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
-ms.translationtype: HT
+ms.openlocfilehash: 6bfc12c17b38543f0c6979b5f5eeada562483bfa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352814"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819348"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
 
@@ -26,7 +26,7 @@ A Microsoft Azure Media Services (AMS) lehetővé teszi különböző videó- é
 
 Az AMS világszerte számos adatközpontban működik. Ezek az adatközpontok földrajzi régiók szerint vannak csoportosítva, ami kellő mozgásteret biztosít az alkalmazások létrehozási helyének megválasztásához. [A régiók és a kapcsolódó helyek listáját itt](https://azure.microsoft.com/regions/) tekintheti meg. 
 
-Ezen témakör a tartalmak [élő](#live_scenarios) vagy [igény szerinti](#vod_scenarios) továbbításának leggyakoribb eseteit mutatja be. Ez a témakör a médiafunkciók és szolgáltatások adatközpontok közötti rendelkezésre állásáról is részleteket nyújt.
+Ez a témakör bemutatja a tartalom továbbításának leggyakoribb eseteit [élő](#live_scenarios) vagy igény szerinti. Ez a témakör a médiafunkciók és szolgáltatások adatközpontok közötti rendelkezésre állásáról is részleteket nyújt.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -148,7 +148,7 @@ Az AMS-ügyfelek méretezhetik a streamvégpontokat, a médiafeldolgozást és a
 
     A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. A **prémium** streamvégponttal rendelkező ügyfelek alapértelmezés szerint kapnak egy adategységet (SU-t). A streamvégpont adategységek hozzáadásával méretezhető. Mindegyik adategység további sávszélesség-kapacitást nyújt az alkalmazásnak. A **prémium** szintű streamvégpontok méretezéséről további információt a [streamvégpontok méretezését](media-services-portal-scale-streaming-endpoints.md) ismertető témakörben talál.
 
-* A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő Fenntartott egység típusok közül választhat: **S1**, **S2** vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett.
+* A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: **S1**, **S2**, vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett.
 
     A Fenntartott egység típusának meghatározása mellett megadhatja, hogy ellátja-e a fiókot **Fenntartott egységekkel** (RU-kkal). A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát.
 
@@ -183,7 +183,7 @@ A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-Az összes adatközpontban elérhető a következők kivételével: Németország, Dél-Brazília, Nyugat-India, Dél-India és Közép-India. 
+Kivételével minden adatközpontban elérhető: Németország, Dél-Brazília, Nyugat-India, Dél-India és közép-India. 
 
 ### <a name="encoding-media-processors"></a>Médiafeldolgozók kódolása
 
@@ -240,7 +240,7 @@ Minden adatközpontban elérhető.
 
 ### <a name="reserved-unit-ru-type"></a>Fenntartott egység (RU) típusa
 
-A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő Fenntartott egység típusok közül választhat: S1, S2 vagy S3.
+A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: S1, S2 vagy S3.
 
 További információt a [méretezésről](#scaling) szóló szakaszban talál.
 

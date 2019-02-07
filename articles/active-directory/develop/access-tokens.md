@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7dd2b60a985291311328407b07ef290e962f147b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 110397e8399d153356a574b00d34a4cb781ec1b5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080565"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811562"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Az Azure Active Directory hozzáférési jogkivonatok
 
@@ -76,10 +76,10 @@ Jogcím jelen, csak akkor, ha egy érték létezik, és töltse fel. Így az alk
 |Jogcím | Formátum | Leírás |
 |--------|--------|-------------|
 | `typ` | Karakterlánc - mindig "JWT" | Azt jelzi, hogy a jogkivonat jwt-t.|
-| `nonce` | Karakterlánc | Ismétlésének támadások elleni védelmére szolgáló egyedi azonosítója. Az erőforrást rögzítheti replays elleni védelem érdekében ezt az értéket. |
-| `alg` | Karakterlánc | Azt jelzi, hogy a jogkivonat, például a "RS256" aláírásához használt algoritmust |
-| `kid` | Karakterlánc | Adja meg a nyilvános kulcsot, amely a token aláírásához használt ujjlenyomatát. Hozzáférési jogkivonatok az 1.0-s verziója és a v2.0 rendelkezésre. |
-| `x5t` | Karakterlánc | Működik (a használati és érték) ugyanaz, mint `kid`. `x5t` örökölt jogcím bocsásson ki csak az 1.0-s verziójú hozzáférési jogkivonatok kompatibilitási célból. |
+| `nonce` | String | Ismétlésének támadások elleni védelmére szolgáló egyedi azonosítója. Az erőforrást rögzítheti replays elleni védelem érdekében ezt az értéket. |
+| `alg` | String | Azt jelzi, hogy a jogkivonat, például a "RS256" aláírásához használt algoritmust |
+| `kid` | String | Adja meg a nyilvános kulcsot, amely a token aláírásához használt ujjlenyomatát. Hozzáférési jogkivonatok az 1.0-s verziója és a v2.0 rendelkezésre. |
+| `x5t` | String | Működik (a használati és érték) ugyanaz, mint `kid`. `x5t` örökölt jogcím bocsásson ki csak az 1.0-s verziójú hozzáférési jogkivonatok kompatibilitási célból. |
 
 ### <a name="payload-claims"></a>Hasznos adat jogcímek
 
@@ -101,16 +101,16 @@ Jogcím jelen, csak akkor, ha egy érték létezik, és töltse fel. Így az alk
 | `groups` | JSON-tömböt a GUID azonosítók | A tulajdonos csoporttagságok képviselő objektumazonosítók biztosít. Ezek az értékek egyedi (lásd az Objektumazonosító) és biztonságosan használható például az erőforrás hozzáférési kényszerítése a hozzáférés kezelésében. A csoportok jogcím szerepel a csoportok konfigurálhatóak alkalmazásonkénti particionálja a `groupMembershipClaims` tulajdonságát a [alkalmazásjegyzék](reference-app-manifest.md). NULL értékű kizárja az összes csoport, csak az Active Directory biztonsági csoport tagságát, és a egy értéket "All" lesz tartalmazzák a biztonsági csoportok és az Office 365 terjesztési listák "SecurityGroup" értéket tartalmazza. <br><br>Tekintse meg a `hasgroups` használata részletesen alábbi jogcím a `groups` az implicit engedélyezés jogcím. <br>Más folyamatok Ha a felhasználó szerepel csoportok számának megfelelően egy határértéket (150 SAML, 200 a JWT), majd kerettúllépési jogcím hozzáadódik a jogcím-adatforrások mutat, amely tartalmazza azokat a csoportokat a felhasználó Graph-végpont. |
 | `hasgroups` | Logikai | Ha van ilyen, mindig `true`, jelzi, hogy a felhasználó szerepel-e legalább egy csoporthoz. Helyén használt a `groups` JWTs jogcím típusú implicit engedélyezés folyamatokban, ha a teljes csoportok jogcím lenne kiterjesztése a URI töredék kívül eső URL-cím hossza (jelenleg a 6 vagy a további csoportokat). Azt jelzi, hogy az ügyfélnek használnia kell a grafikon, a felhasználói csoportok meghatározására (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
 | `groups:src1` | JSON-objektum | A jogkivonat-kérelmeket, amelyek nem korlátozott hossza (lásd: `hasgroups` fent), de továbbra is túl nagy a jogkivonatot, a felhasználó a teljes csoportok listáját mutató hivatkozást tartalmaz. Az elosztott jogcímként, a SAML helyén új jogcímként JWTs a `groups` jogcím. <br><br>**Példaérték JWT**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }`|
-| `preferred_name` | Karakterlánc | 2.0-s verziójú jogkivonatok csak szerepelnek. Az elsődleges felhasználónév, amely a felhasználó jelöli. Ez lehet egy e-mail-címet, telefonszámot vagy egy általános felhasználónév nélkül egy megadott formátumban. Az érték mutable és idővel változhatnak. Mivel ezekre kapott válaszokon, ez az érték nem használható az engedélyezési döntésekhez. A `profile` hatókör szükséges, ezt a kérelmet kap. |
-| `name` | Karakterlánc | Itt az emberek számára olvasható érték, amely azonosítja a jogkivonat tárgyában. Az érték nem garantált, hogy egyedi legyen, ezekre kapott válaszokon, és úgy tervezték, hogy csak megjelenítési célokra használható. A `profile` hatókör szükséges, ezt a kérelmet kap. |
+| `preferred_name` | String | 2.0-s verziójú jogkivonatok csak szerepelnek. Az elsődleges felhasználónév, amely a felhasználó jelöli. Ez lehet egy e-mail-címet, telefonszámot vagy egy általános felhasználónév nélkül egy megadott formátumban. Az érték mutable és idővel változhatnak. Mivel ezekre kapott válaszokon, ez az érték nem használható az engedélyezési döntésekhez. A `profile` hatókör szükséges, ezt a kérelmet kap. |
+| `name` | String | Itt az emberek számára olvasható érték, amely azonosítja a jogkivonat tárgyában. Az érték nem garantált, hogy egyedi legyen, ezekre kapott válaszokon, és úgy tervezték, hogy csak megjelenítési célokra használható. A `profile` hatókör szükséges, ezt a kérelmet kap. |
 | `oid` | Karakterlánc, egy GUID Azonosítót | A Microsoft identity platform, ebben az esetben egy felhasználói fiókot az objektum nem módosítható azonosítója. Is használható hitelesítési ellenőrzések elvégzéséhez biztonságosan és a egy kulcsként adatbázistáblák. Alkalmazások közötti egyedileg azonosítja a felhasználó ezt az Azonosítót – ugyanaz a felhasználó bejelentkezik, két különböző alkalmazás ugyanazt az értéket a fog kapni a `oid` jogcím. Ebből kifolyólag `oid` tétele a Microsoft online szolgáltatásaihoz, például a Microsoft Graph-lekérdezések használható. A Microsoft Graph ezt az Azonosítót ad vissza a `id` tulajdonság egy adott felhasználói fiókhoz. Mivel a `oid` korrelációját, ha a felhasználók, több alkalmazás lehetővé teszi a `profile` hatókör szükséges, ezt a kérelmet kap. Vegye figyelembe, hogy ha egy felhasználó több bérlő már létezik, a felhasználó fogja tartalmazni az egyes bérlők egy másik objektum azonosítója – a különböző fiókok, annak ellenére, hogy a felhasználó bejelentkezik az egyes ugyanazokkal a hitelesítő adatokkal rendelkező fiók minősülnek. |
 | `rh` | Átlátszatlan karakterlánc | Egy belső jogcím kísérelje meg újra érvényesítését jogkivonatok Azure segítségével. Erőforrások ne használja ezt a kérelmet. |
 | `scp` | Karakterlánc, szóközzel elválasztott hatókörök listája | Az alkalmazás, amelynek az ügyfélalkalmazás rendelkezik a kért (és a kapott) által közzétett hatókörök készletét hozzájárulás megadása. Az alkalmazás ellenőrizze, hogy azok érvényes, az alkalmazás által elérhetővé tett ezeken a hatókörökön, és ezeken a hatókörökön értéke alapján engedélyezési döntésekhez. Csak tartalmaz [felhasználói jogkivonatok](#user-and-application-tokens). |
 | `roles`| Karakterlánc, szóközzel elválasztva engedélyek listája | Az alkalmazás, amely a kérelmező alkalmazással meghívásához engedélyt kaptak által elérhetővé tett engedélyek készletét. Ennek során használatos a [ügyfél-hitelesítő-adatok](v1-oauth2-client-creds-grant-flow.md) flow felhasználói hatókörök helyett, és csak a jelen [alkalmazások jogkivonatok](#user-and-application-tokens). |
 | `sub` | Karakterlánc, egy GUID Azonosítót | Az egyszerű arról, hogy mely a token használjon esetleg imperatív állításokat információkat, például a felhasználó az alkalmazás. Ez az érték nem módosítható és nem hozzárendelni és újra felhasználható. Ez az engedélyezési ellenőrzéséhez biztonságosan, például amikor a jogkivonat-erőforrás eléréséhez használható, és adatbázistáblák kulcsként használhatók. Mivel a tulajdonos mindig szerepel a jogkivonatokat, hogy az Azure AD-problémák, azt javasoljuk, ez az érték egy általános célú engedélyezési rendszerben. Az a tulajdonos, azonban a páros azonosító – egyedi legyen egy adott alkalmazás azonosítója. Ezért ha egy felhasználó bejelentkezik a két különböző ügyfél-azonosító használatával két különböző alkalmazásokat, ezeket az alkalmazásokat két különböző értékeket, a tulajdonos jogcím fog kapni. Ez előfordulhat, hogy, vagy előfordulhat, hogy nem megfelelő az architektúra és adatvédelmi követelményeitől függően. |
 | `tid` | Karakterlánc, egy GUID Azonosítót | Az Azure AD-bérlő arról, hogy a felhasználó jelöli. Munkahelyi és iskolai fiókok esetében a GUID azonosító a szervezet, amely a felhasználó tartozik Bérlőazonosítója nem módosítható. Személyes fiókok esetében az érték `9188040d-6c67-4c5b-b112-36a304b66dad`. A `profile` hatókör szükséges, ezt a kérelmet kap. |
-| `unique_name` | Karakterlánc | Jelenleg csak az 1.0-s verziójú jogkivonatok. A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantált egy bérlőn belül egyedinek kell lennie, és csak megjelenítési célokra használható. |
-| `upn` | Karakterlánc | A felhasználó felhasználóneve. Egy telefonszám, e-mail címét vagy formázatlan karakterlánc lehet. Csak használandó megjelenítési célokra és újbóli hitelesítés forgatókönyveket biztosító felhasználónév mutatók. |
+| `unique_name` | String | Jelenleg csak az 1.0-s verziójú jogkivonatok. A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantált egy bérlőn belül egyedinek kell lennie, és csak megjelenítési célokra használható. |
+| `upn` | String | A felhasználó felhasználóneve. Egy telefonszám, e-mail címét vagy formázatlan karakterlánc lehet. Csak használandó megjelenítési célokra és újbóli hitelesítés forgatókönyveket biztosító felhasználónév mutatók. |
 | `uti` | Átlátszatlan karakterlánc | Egy belső jogcím kísérelje meg újra érvényesítését jogkivonatok Azure segítségével. Erőforrások ne használja ezt a kérelmet. |
 | `ver` | Karakterlánc, 1.0 vagy 2.0-s | Azt jelzi, hogy a verzió a hozzáférési jogkivonat. |
 
@@ -120,14 +120,14 @@ A következő jogcímek 1.0-s verziójú jogkivonatok, ha van ilyen fog szerepel
 
 | Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
-| `ipaddr`| Karakterlánc | Az IP-cím a felhasználó hitelesítést hajtottak végre. |
+| `ipaddr`| String | Az IP-cím a felhasználó hitelesítést hajtottak végre. |
 | `onprem_sid`| A karakterlánc [biztonsági azonosító formátuma](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | Azokban az esetekben, ahol a felhasználó rendelkezik-e egy a helyszíni hitelesítéshez ezt az igényt a SID biztosít. Használhat `onprem_sid` engedélyezési az örökölt alkalmazások számára. |
 | `pwd_exp`| int, a UNIX-időbélyege | Azt jelzi, ha a felhasználó jelszava lejár. |
-| `pwd_url`| Karakterlánc | Egy URL-címet, ahol a felhasználók visszaállíthatják a jelszavukat küldhető. |
+| `pwd_url`| String | Egy URL-címet, ahol a felhasználók visszaállíthatják a jelszavukat küldhető. |
 | `in_corp`|logikai | Ha az ügyfél bejelentkezik a vállalati hálózatról jelek. Ha nem, a a jogcím lehetőség nem része. |
-| `nickname`| Karakterlánc | A felhasználó, az első vagy utolsó külön további neve.|
-| `family_name` | Karakterlánc | Az utolsó neve, Vezetéknév vagy felhasználó családnév biztosít a user objektum meghatározottak szerint. |
-| `given_name` | Karakterlánc | Az első biztosít vagy a user objektum készletként, a felhasználó utóneve. |
+| `nickname`| String | A felhasználó, az első vagy utolsó külön további neve.|
+| `family_name` | String | Az utolsó neve, Vezetéknév vagy felhasználó családnév biztosít a user objektum meghatározottak szerint. |
+| `given_name` | String | Az első biztosít vagy a user objektum készletként, a felhasználó utóneve. |
 
 #### <a name="the-amr-claim"></a>A `amr` jogcím
 
@@ -239,6 +239,8 @@ Frissítési jogkivonatok érvénytelenítve, vagy bármikor, számos okból vis
 > Egy "jelszó nem-alapú" Bejelentkezés az egyik, a felhasználó nem írja be a jelszót, hogy álljon a. A face használata esetén például a Windows Hello, egy FIDO-kulcs vagy egy PIN-kódot. 
 >
 > A Windows elsődleges frissítési jogkivonat létezik egy ismert probléma. Ha lekérte a PRT keresztül egy jelszót, és ezután a felhasználó bejelentkezik Hello használatával, azzal nem módosítja az eredeti, a PRT, és azt a rendszer visszavonja, ha a felhasználó megváltoztatja a jelszavát.
+>
+> Frissítési biztonsági jogkivonat nem érvénytelenítve, vagy amikor egy új hozzáférési jogkivonatot beolvasni és frissítési jogkivonat visszavonva.  
 
 ## <a name="next-steps"></a>További lépések
 

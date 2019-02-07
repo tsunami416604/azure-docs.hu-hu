@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: f74dc441016a0064aca388ce4881eeae9e7bc6d0
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 3e8d9cc44e4e83dac963b3d85f7dd4d058323bf6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657858"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813823"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Távolról az Azure AD-alkalmazásproxy-alkalmazások eléréséhez szükséges biztonsági szempontok
 
@@ -128,11 +128,11 @@ Minden alkalommal, amikor az alkalmazásproxy-szolgáltatás konfigurációs be�
 
 Amikor a felhasználó a közzétett alkalmazás hozzáfér, a a következő eseményekre kerül sor az alkalmazásproxy-szolgáltatás és az alkalmazásproxy-összekötő között:
 
-1. [A szolgáltatás hitelesíti a felhasználót az alkalmazás a](#the-service-checks-the-configuration-settings-for-the-app)
-2. [A szolgáltatás egy kérelem helyezi az összekötő-üzenetsorba](#The-service-places-a-request-in-the-connector-queue)
-3. [Egy összekötő feldolgozza a kérést, az üzenetsorból](#the-connector-receives-the-request-from-the-queue)
-4. [Az összekötő a válaszra vár](#the-connector-waits-for-a-response)
-5. [A szolgáltatás a felhasználói adatok elemzésének lehetőségeit.](#the-service-streams-data-to-the-user)
+1. A szolgáltatás hitelesíti a felhasználót az alkalmazás a
+2. A szolgáltatás egy kérelem helyezi az összekötő-üzenetsorba
+3. Egy összekötő feldolgozza a kérést, az üzenetsorból
+4. Az összekötő a válaszra vár
+5. A szolgáltatás a felhasználói adatok elemzésének lehetőségeit.
 
 Többet szeretne megtudni, mi történik az egyes lépéseket, tartsa meg az olvasó.
 

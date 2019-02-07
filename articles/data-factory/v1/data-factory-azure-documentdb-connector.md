@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: af528f210f4464c973d88fab7eeb1572effc87bc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 54e78496b98fffefd2932a2ce7625f8b325fb32a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330397"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812650"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok importálására és az Azure Cosmos DB az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -301,11 +301,11 @@ A következő folyamat adatokat másol egy Azure-blobból az Azure Cosmos DB-ada
 ## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>Példa: Adatok másolása Azure blobból az Azure Cosmos DB-hez
 Az alábbi példában látható:
 
-1. A társított szolgáltatás típusa [DocumentDb](#azure-documentdb-linked-service-properties).
+1. A DocumentDb típusú társított szolgáltatás.
 2. A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
 3. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-4. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [DocumentDbCollection](#azure-documentdb-dataset-type-properties).
-5. A [folyamat](data-factory-create-pipelines.md) másolási tevékenységgel, amely használja [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) és [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties).
+4. Kimenet [adatkészlet](data-factory-create-datasets.md) DocumentDbCollection típusú.
+5. A [folyamat](data-factory-create-pipelines.md) másolási tevékenységgel, amely használja [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) és DocumentDbCollectionSink.
 
 A minta adatokat másol az Azure blob az Azure Cosmos DB-hez. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
 

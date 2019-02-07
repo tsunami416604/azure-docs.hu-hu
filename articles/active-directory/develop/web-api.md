@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: b507e6630e5b0b0e73edad1815825e70ed90ec4d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 58cff9be154e693a378f55941e8662563c366b27
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097299"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820215"
 ---
 # <a name="web-api"></a>Webes API
 
@@ -47,7 +47,7 @@ Az alkalmazás azonosítóját és a delegált felhasználói identitás típusa
 
 ### <a name="delegated-user-identity-with-openid-connect"></a>A meghatalmazott felhasználó identitását az OpenID Connect
 
-1. Egy felhasználó van bejelentkezve az Azure AD-vel webalkalmazásnak (lásd a [webalkalmazást a webböngésző](#web-browser-to-web-application) című fenti szakaszban). A webes alkalmazás a felhasználó még nem járult hozzá, így a webalkalmazás a webes API meghívásához nyújtsanak a nevében, ha a felhasználó jóváhagyást kell. Az alkalmazás megjeleníti a szükséges engedélyekkel, és ha ezek egyikét sem rendszergazdai engedélyekkel, nem lesz képes, hogy engedélyt adjanak a normál felhasználót a címtárban. A jóváhagyási folyamat csak több-bérlős alkalmazások, nem egybérlős alkalmazások arra vonatkozik, ahogy az alkalmazás már rendelkezik a szükséges engedélyekkel. Amikor a felhasználó bejelentkezett, a webes alkalmazás kapott egy azonosító jogkivonat a felhasználó, valamint egy hozzáférési kóddal kapcsolatos információkat.
+1. A felhasználó van bejelentkezve az Azure AD-vel webalkalmazásnak (lásd a webböngésző a webalkalmazás című fenti szakaszban). A webes alkalmazás a felhasználó még nem járult hozzá, így a webalkalmazás a webes API meghívásához nyújtsanak a nevében, ha a felhasználó jóváhagyást kell. Az alkalmazás megjeleníti a szükséges engedélyekkel, és ha ezek egyikét sem rendszergazdai engedélyekkel, nem lesz képes, hogy engedélyt adjanak a normál felhasználót a címtárban. A jóváhagyási folyamat csak több-bérlős alkalmazások, nem egybérlős alkalmazások arra vonatkozik, ahogy az alkalmazás már rendelkezik a szükséges engedélyekkel. Amikor a felhasználó bejelentkezett, a webes alkalmazás kapott egy azonosító jogkivonat a felhasználó, valamint egy hozzáférési kóddal kapcsolatos információkat.
 1. Használja az Azure AD által kiállított hozzáférési kód, a webes alkalmazás egy kérést küld az Azure AD jogkivonat-végpont, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás (alkalmazás Azonosítóját és átirányítási URI-t), és a kívánt erőforrást (Alkalmazásazonosító URI a webes API-t).
 1. Az engedélyezési kódot, valamint a webalkalmazás és webes API Azure ad-ben érvényesítette. Sikeres ellenőrzés esetén az Azure AD két jogkivonatok adja vissza: a JWT-jogkivonatokkal és a egy JWT frissítési jogkivonatot.
 1. HTTPS-en keresztüli a webes alkalmazás használja a kapott JWT jogkivonat a JWT-karakterlánc a "Tulajdonos" megnevezéssel a kérelem az engedélyezési fejléc hozzáadása a webes API-t. A webes API majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, visszaadja a kívánt erőforrást.

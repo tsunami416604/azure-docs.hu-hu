@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 06ecdf31c2627eda5bf651667703ddcf39c9d307
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 24ee0083ec79265f0ac4dfc0a2e235bc72522831
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604099"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813891"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>A Media Services REST API-hívások a Postman konfigurálása
 
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja **Postman** így is használható a
 - Szükséges információk [API-k elérése](access-api-cli-how-to.md)
 - Telepítse a [Postman](https://www.getpostman.com/) REST-ügyfelet, hogy végrehajtsa az AMS REST oktatóanyagok egy részében látható REST API-kat. 
 
-    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb alternatívák is: **A Visual Studio Code** az REST beépülő modullal vagy **Telerik Fiddler**. 
+    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb választható lehetőségek: **A Visual Studio Code** az REST beépülő modullal vagy **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Postman-fájlok letöltése
 
@@ -57,7 +57,7 @@ Ebben a szakaszban konfiguráljuk a Postmant.
     > [!Note]
     > Frissítse a hozzáférési változókat a fenti **Hozzáférés a Media Services API-hoz** szakaszban található értékekkel.
 
-7. Kattintson duplán a kiválasztott fájlra, és írja be az [API elérésének](#access-the-media-services-api) lépéseiben lekért értékeket.
+7. Kattintson duplán a kiválasztott fájlra, és adja meg az értékeket, a hozzáférés API szakasz lépéseit követve.
 8. Zárja be a párbeszédpanelt.
 9. Válassza az **Azure Media Service v3 Environment** környezetet a legördülő menüből.
 

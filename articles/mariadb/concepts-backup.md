@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: e36e718d35f652c139958388491642e98469ecaf
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c9a9b6f0127bba4efda6e691a2b7126935d81c0d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548850"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817699"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Biztonsági mentés és visszaállítás az Azure Database for MariaDB
 
@@ -52,7 +52,7 @@ Nincsenek elérhető visszaállítási két típusa:
 A becsült helyreállítási idő az adatbázis maximális mérete, a tranzakciós napló méretétől, a hálózati sávszélességet és az adatbázis helyreállítása zajlik egyidejűleg ugyanabban a régióban száma több tényezőtől függ. A helyreállítási idő általában a kevesebb mint 12 óra.
 
 > [!IMPORTANT]
-> Törölt kiszolgálók **nem** állítható vissza. Ha törli a kiszolgálót, akkor a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre.
+> Törölt kiszolgálók **nem** állítható vissza. Ha törli a kiszolgálót, akkor a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Kiszolgáló erőforrások megfelelő védelméhez a telepítés után, a véletlen törlés vagy a váratlan módosítások rendszergazdák kihasználhatják [felügyeleti zárolások](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources).
 
 ### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 

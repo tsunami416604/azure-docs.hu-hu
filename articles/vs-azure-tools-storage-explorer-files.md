@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: d039654fc1d652a3997515a12caa48acaac124fe
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 194b13e889de4bc1c5938a6ce9cfded6fe2c88c8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425292"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768256"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>A Storage Explorer használata az Azure File Storage szolgáltatással
 
@@ -47,7 +47,7 @@ A következő lépések bemutatják, hogyan hozhat létre fájlmegosztást a Sto
 
     ![Fájlmegosztás létrehozása](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-1. A **Fájlmegosztások** mappa alatt megjelenik egy szövegbeviteli mező. Adja meg a fájlmegosztás nevét. A fájlmegosztások elnevezésére vonatkozó szabályokat és korlátozásokat a [Megosztáselnevezési szabályok](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs#create-a-container) című szakaszban olvashatja el.
+1. A **Fájlmegosztások** mappa alatt megjelenik egy szövegbeviteli mező. Adja meg a fájlmegosztás nevét. A fájlmegosztások elnevezésére vonatkozó szabályokat és korlátozásokat a [Megosztáselnevezési szabályok](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs) című szakaszban olvashatja el.
 
     ![A megosztás elnevezése](media/vs-azure-tools-storage-explorer-files/image2.png)
 

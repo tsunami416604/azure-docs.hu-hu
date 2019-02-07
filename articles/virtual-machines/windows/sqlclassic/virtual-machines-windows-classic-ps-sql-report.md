@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c12190e3c34c3294d2735fdd228aafbf6073f12
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233082"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820113"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Natív üzemmódú jelentéskészítő kiszolgálót futtató Azure-beli virtuális gép létrehozása a PowerShell-lel
 > [!IMPORTANT] 
@@ -62,29 +62,29 @@ Ez a témakör azt ismerteti, és végigvezeti a telepítési és a egy SQL Serv
 6. Az a **virtuálisgép-konfiguráció** lapon, a következő mezők szerkesztése:
    
    * Ha egynél több található **verzió KIADÁSÁT követően**, válassza ki a legújabb verziót.
-   * **A virtuális gép neve**: A gép nevét is szolgál a következő konfigurációs lapon alapértelmezett felhőalapú szolgáltatás DNS-nevét. A DNS-nevének egyedinek kell lennie az Azure-szolgáltatás. Fontolja meg a virtuális gép konfigurálását, amely azt ismerteti, mire használható a virtuális gép számítógépnevére. Például ssrsnativecloud.
+   * **A virtuális gép neve**: A gép nevét is szolgál a következő konfigurációs oldalon az alapértelmezett felhőalapú szolgáltatás DNS-névként. A DNS-nevének egyedinek kell lennie az Azure-szolgáltatás. Fontolja meg a virtuális gép konfigurálását, amely azt ismerteti, mire használható a virtuális gép számítógépnevére. Például ssrsnativecloud.
    * **Réteg**: Standard
    * **Méret: A3** van a SQL Server számítási feladatok esetében ajánlott Virtuálisgép-méretet. Ha egy virtuális gép csak egy jelentéskészítő kiszolgáló, egy virtuális gép méretét A2 is használhatók, kivéve, ha a jelentéskészítő kiszolgáló egy nagy méretű számítási feladatok során lép. A virtuális gép díjszabási információkért, lásd: [Virtual Machines díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/).
    * **Új felhasználónév**: a megadott jön létre a virtuális gépre rendszergazdaként.
    * **Új jelszó** és **megerősítése**. Ez a jelszó használatos az új rendszergazdai fiókhoz, és erős jelszó használatát javasoljuk.
-   * Kattintson a **Tovább** gombra. ![next](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * Kattintson a **tovább**. ![next](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 7. A következő lapon szerkessze a következő mezőket:
    
    * **Cloud Service**: válasszon **új Felhőszolgáltatás hozható létre**.
-   * **Cloud Service DNS-név**: Ez az, hogy a Felhőszolgáltatás, amely a virtuális Géphez társított nyilvános DNS-nevét. Az alapértelmezett név a virtuális gép neve a beírt név. Ha a későbbi lépésekben, a következő témakörben, a megbízható SSL-tanúsítványt hoz létre, és ezután a DNS-név értéke szolgál a "**kiadott**" a tanúsítvány.
-   * **Régió/kapcsolat/csoport/virtuális hálózat**: válassza ki a végfelhasználók legközelebb eső régiót.
-   * **Storage-fiók**: egy automatikusan létrehozott storage-fiókot.
-   * **Rendelkezésre állási csoport**: nincs.
+   * **Cloud Service DNS-név**: Ez az a Felhőszolgáltatás, amely a virtuális Géphez társított nyilvános DNS-nevét. Az alapértelmezett név a virtuális gép neve a beírt név. Ha a későbbi lépésekben, a következő témakörben, a megbízható SSL-tanúsítványt hoz létre, és ezután a DNS-név értéke szolgál a "**kiadott**" a tanúsítvány.
+   * **Régió/Affinitáscsoport/virtuális hálózat**: Válassza ki a végfelhasználók legközelebb eső régiót.
+   * **Storage-fiók**: Használjon egy automatikusan létrehozott tárfiókot.
+   * **Rendelkezésre állási csoport**: Nincs.
    * **VÉGPONTOK** tartsa a **a távoli asztal** és **PowerShell** végpontok majd adja hozzá a HTTP vagy HTTPS-végpont a környezettől függően.
      
-     * **HTTP**: az alapértelmezett nyilvános és magánhálózati port **80-as**. Vegye figyelembe, hogy ha nem a 80-as, magánhálózati portot módosítsa **$HTTPport = 80** a http-szkriptben.
-     * **HTTPS**: az alapértelmezett nyilvános és magánhálózati port **443-as**. Biztonsági szempontból ajánlott, hogy módosítsa a magánhálózati portot, és konfigurálja a tűzfalat, és a jelentéskészítő kiszolgáló a magánhálózati port használatára. A végpontok további információkért lásd: [hogyan állítsa be kommunikációt egy virtuális géppel](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Vegye figyelembe, hogy ha nem a 443-as portot használja a paraméter módosítani **$HTTPsport = 443-as** a HTTPS-szkriptben.
+     * **HTTP**: Az alapértelmezett nyilvános és magánhálózati port **80-as**. Vegye figyelembe, hogy ha nem a 80-as, magánhálózati portot módosítsa **$HTTPport = 80** a http-szkriptben.
+     * **HTTPS**: Az alapértelmezett nyilvános és magánhálózati port **443-as**. Biztonsági szempontból ajánlott, hogy módosítsa a magánhálózati portot, és konfigurálja a tűzfalat, és a jelentéskészítő kiszolgáló a magánhálózati port használatára. A végpontok további információkért lásd: [hogyan állítsa be kommunikációt egy virtuális géppel](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Vegye figyelembe, hogy ha nem a 443-as portot használja a paraméter módosítani **$HTTPsport = 443-as** a HTTPS-szkriptben.
    * Kattintson a Tovább gombra. ![tovább](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. A varázsló utolsó oldalán, tartsa meg az alapértelmezett **Virtuálisgép-ügynök telepítése** kiválasztott. Ebben a témakörben leírt lépéseket nem használja a Virtuálisgép-ügynök, de ha azt tervezi, hogy a virtuális Gépet, a Virtuálisgép-ügynök és a kiterjesztések lehetővé teszi CM javíthatja azt.  A Virtuálisgép-ügynök további információkért lásd: [Virtuálisgép-ügynök és -bővítmények – 1. rész](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Az alapértelmezett telepített kiterjesztéseket ad futó egyik, a "BGINFO" bővítményt, amely a virtuális gép asztalához, például a belső IP-cím és a szabad lemezterület a rendszer-információkat jeleníti meg.
 9. Kattintson a Kész gombra. ![OK](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. A **állapot** megjeleníti a virtuális gép **indítása (kiépítés)** jelenik majd meg, és kiépítése folyamat során **futó** kiépített és készen áll a használatra a virtuális gép esetén.
 
-## <a name="step-2-create-a-server-certificate"></a>2. lépés: Hozzon létre egy kiszolgálói tanúsítvány
+## <a name="step-2-create-a-server-certificate"></a>2. lépés: Hozzon létre egy kiszolgálói tanúsítványt
 > [!NOTE]
 > Ha nincs szüksége HTTPS a jelentéskészítő kiszolgálón, akkor **hagyja ki a 2. lépés** , és keresse meg a **konfigurálása a jelentéskészítő kiszolgáló és a HTTP-szkripttel**. A HTTP-parancsfájl segítségével gyorsan konfigurálása a jelentéskészítő kiszolgáló és a jelentéskészítő kiszolgáló használatra kész lesz.
 
@@ -125,7 +125,7 @@ Egy önaláírt tanúsítványt hozott létre a virtuális gépen a virtuális g
        Ha például az alábbi ábrán a virtuális gép neve van **ssrsnativecloud** és a felhasználónév **testuser**.
       
        ![bejelentkezési tartalmazza a virtuális gép neve](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
-   2. Mmc.exe futtassa. További információkért lásd: [hogyan: tanúsítványok megtekintése az MMC beépülő modullal rendelkező](https://msdn.microsoft.com/library/ms788967.aspx).
+   2. Mmc.exe futtassa. További információkért lásd: [hogyan: Az MMC beépülő modullal rendelkező tanúsítványok megtekintéséhez](https://msdn.microsoft.com/library/ms788967.aspx).
    3. A Konzolalkalmazás **fájl** menüben adja hozzá a **tanúsítványok** beépülő modult, válassza **számítógépfiók** , amikor a rendszer kéri, és kattintson a **következő**.
    4. Válassza ki **helyi számítógép** kezeléséhez, és kattintson a **Befejezés**.
    5. Kattintson a **Ok** majd bontsa ki a **tanúsítványok - személyes** csomópontokat, majd kattintson **tanúsítványok**. A tanúsítvány neve megegyezik a virtuális gép DNS-nevét, és végződik **cloudapp.net**. Kattintson a jobb gombbal a tanúsítvány nevét, és kattintson a **másolási**.
@@ -133,7 +133,7 @@ Egy önaláírt tanúsítványt hozott létre a virtuális gépen a virtuális g
    7. Ellenőrzéséhez kattintson duplán a tanúsítvány neve alatt **megbízható legfelső szintű hitelesítésszolgáltatók** , és ellenőrizze, hogy nem tartalmaz hibát, és láthatja, hogy a tanúsítványt. Ha a jelentéskészítő kiszolgáló, az érték a tanúsítványok konfigurálása a HTTPS-parancsprogramja ebben a témakörben használni kívánt **ujjlenyomat** , mint a parancsfájl egy paraméter megadása kötelező. **Az ujjlenyomat értéket beolvasni**, hajtsa végre a következőket. Emellett van egy PowerShell-minta a szakaszban az ujjlenyomat beolvasása [konfigurálása a jelentéskészítő kiszolgáló és a HTTPS-szkripttel](#use-script-to-configure-the-report-server-and-HTTPS).
       
       1. Kattintson duplán a tanúsítvány, például ssrsnativecloud.cloudapp.net nevére.
-      2. Kattintson a **részletek** fülre.
+      2. Kattintson a **Részletek** fülre.
       3. Kattintson a **ujjlenyomat**. Az ujjlenyomat értéke megjelenik a részletek mezőjében, például a6 08 3 c. df f9 0b f7 e3 7c 25 ed a4 ed 7e ac 91 2c 9c fb 2f.
       4. Másolja az ujjlenyomatot, és mentse az értéket későbbi használatra, vagy most szerkessze a szkriptet.
       5. (*) A parancsfájl futtatása előtt távolítsa el a szóközöket a érték párok között. Például az ujjlenyomat előtt feljegyzett most lenne a6083cdff90bf7e37c25eda4ed7eac919c2cfb2f.
@@ -283,7 +283,7 @@ A jelentéskészítő kiszolgáló konfigurálása a Windows PowerShell-szkript 
 6. A szkript úgy van beállítva, a Reporting Services rendszerhez. Ha azt szeretné, a parancsfájl futtatásához a Reporting Services, a "v11", a Get-WmiObject utasítást a névtér elérési útját verzió részét módosíthatja.
 7. Futtassa a szkriptet.
 
-**Érvényesítési**: annak ellenőrzéséhez, hogy működik-e a alapvető jelentéskészítő kiszolgáló működését, tekintse meg a [a konfiguráció ellenőrzése](#verify-the-configuration) későbbi szakaszában talál.
+**Érvényesítési**: Annak ellenőrzéséhez, hogy működik-e a alapvető jelentéskészítő kiszolgáló működését, tekintse meg a [a konfiguráció ellenőrzése](#verify-the-configuration) későbbi szakaszában talál.
 
 ### <a name="use-script-to-configure-the-report-server-and-https"></a>Parancsfájl használata a jelentéskészítő kiszolgáló és a HTTPS konfigurálása
 A Windows PowerShell segítségével a konfigurálása a jelentéskészítő kiszolgáló, a következő lépéseket. A konfiguráció nem HTTP, HTTPS tartalmazza.
@@ -469,7 +469,7 @@ A Windows PowerShell segítségével a konfigurálása a jelentéskészítő kis
      VAGY
    * A virtuális gép futtatása az mmc.exe, majd adja hozzá a **tanúsítványok** beépülő modult.
    * Alatt a **Megbízható gyökérhitelesítő hatóságok** csomópontot, kattintson duplán a tanúsítvány nevét. Ha a virtuális gép az önaláírt tanúsítványt használ, a tanúsítvány neve megegyezik a virtuális gép DNS-nevét, és végződik **cloudapp.net**.
-   * Kattintson a **részletek** fülre.
+   * Kattintson a **Részletek** fülre.
    * Kattintson a **ujjlenyomat**. Az ujjlenyomat értéke megjelenik a részletek mezőjében, például af 11 60 b6 4b 28 8 d 89 0a 82 12 ff 6b a9-es c3 66 4f 31 90 48
    * **A parancsfájl futtatása előtt**, távolítsa el a szóközöket a érték párok között. Például af1160b64b288d890a8212ff6ba9c3664f319048
 7. Módosítsa a **$httpsport** paramétert: 
@@ -477,13 +477,13 @@ A Windows PowerShell segítségével a konfigurálása a jelentéskészítő kis
    * Ha követte a 443-as portot a HTTPS-végpont, majd nem kell frissíteni ezt a paramétert a szkriptben. Ellenkező esetben használja a kiválasztott titkos HTTPS-végpontot a virtuális gép konfigurálásakor-port értéke.
 8. Módosítsa a **$DNSName** paramétert: 
    
-   * A parancsfájl konfigurálva van egy helyettesítő tanúsítványt $DNSName = "+". Ha nem szeretne egy helyettesítő tanúsítvány kötésének konfigurálása, tegye megjegyzésbe $DNSName mégis ="+"és a következő sort, a teljes $DNSNAme referencia, ## $DNSName="$server.cloudapp.net engedélyezése".
+   * A parancsfájl konfigurálva van egy helyettesítő tanúsítványt $DNSName = "+". If you do no want to configure for a wildcard certificate binding, comment out $DNSName="+" and enable the following line, the full $DNSNAme reference, ##$DNSName="$server.cloudapp.net".
      
        Módosítsa a $DNSName értékét, ha nem szeretné használni a virtuális gép DNS-név a Reporting Services rendszerhez. Használja a paramétert, ha a tanúsítvány is használnia kell ezt a nevet, és regisztrálja a globálisan a DNS-kiszolgáló nevét.
 9. A szkript úgy van beállítva, a Reporting Services rendszerhez. Ha azt szeretné, a parancsfájl futtatásához a Reporting Services, a "v11", a Get-WmiObject utasítást a névtér elérési útját verzió részét módosíthatja.
 10. Futtassa a szkriptet.
 
-**Érvényesítési**: annak ellenőrzéséhez, hogy működik-e a alapvető jelentéskészítő kiszolgáló működését, tekintse meg a [a konfiguráció ellenőrzése](#verify-the-connection) későbbi szakaszában talál. A tanúsítvány kötés nyisson meg egy parancssort rendszergazdai jogosultságokkal, és futtassa a következő parancsot:
+**Érvényesítési**: Annak ellenőrzéséhez, hogy működik-e a alapvető jelentéskészítő kiszolgáló működését, tekintse meg a ellenőrizze a konfigurációs szakasz a jelen témakör későbbi részében. A tanúsítvány kötés nyisson meg egy parancssort rendszergazdai jogosultságokkal, és futtassa a következő parancsot:
 
     netsh http show sslcert
 
@@ -505,14 +505,14 @@ Ha nem szeretné a jelentéskészítő kiszolgáló konfigurálása a PowerShell
 5. A bal oldali ablaktáblán kattintson a **Web Service URL-cím**.
 6. Alapértelmezés szerint a 80-as HTTP-porthoz "Az összes hozzárendelt" IP-Címmel rendelkező RS van konfigurálva. HTTPS hozzáadása:
    
-   1. A **SSL-tanúsítvány**: válassza ki, például [virtuális gép neve] használni kívánt tanúsítványt. cloudapp.net. Ha nincsenek felsorolva tanúsítványok, tekintse meg a szakasz **2. lépés: hozzon létre egy kiszolgálói tanúsítványt** telepítéséről és a virtuális gép tanúsítvány megbízható információk.
+   1. A **SSL-tanúsítvány**: válassza ki, például [virtuális gép neve] használni kívánt tanúsítványt. cloudapp.net. Ha nincsenek felsorolva tanúsítványok, tekintse meg a szakasz **2. lépés: Hozzon létre egy kiszolgálói tanúsítványt** telepítéséről és a virtuális gép tanúsítvány megbízható információk.
    2. A **SSL-Port**: válassza ki a 443-as porton. Ha konfigurálta a privát HTTPS-végpontot a virtuális gépen más magánhálózati port, itt használni ezt az értéket.
    3. Kattintson a **alkalmaz** és várjon, amíg a művelet befejeződik.
 7. A bal oldali ablaktáblán kattintson a **adatbázis**.
    
    1. Kattintson a **Databas módosítása**e.
    2. Kattintson a **hozzon létre egy új jelentéskészítő kiszolgáló adatbázisa** majd **tovább**.
-   3. Hagyja meg az alapértelmezett **kiszolgálónév**: nevezze el a virtuális géppel, és hagyja meg az alapértelmezett **hitelesítési típus** , **aktuális felhasználó** – **integrált biztonsági**. Kattintson a **Tovább** gombra.
+   3. Hagyja meg az alapértelmezett **kiszolgálónév**: nevezze el a virtuális géppel, és hagyja meg az alapértelmezett **hitelesítési típus** , **aktuális felhasználó** – **integrált biztonsági**. Kattintson a **tovább**.
    4. Hagyja meg az alapértelmezett **adatbázisnév** , **ReportServer** kattintson **tovább**.
    5. Hagyja meg az alapértelmezett **hitelesítési típus** , **szolgáltatás hitelesítő adatai** kattintson **tovább**.
    6. Kattintson a **tovább** a a **összefoglalás** lapot.
@@ -520,7 +520,7 @@ Ha nem szeretné a jelentéskészítő kiszolgáló konfigurálása a PowerShell
 8. A bal oldali ablaktáblán kattintson a **Report Manager URL-cím**. Hagyja meg az alapértelmezett **virtuális könyvtár** , **jelentések** kattintson **alkalmaz**.
 9. Kattintson a **kilépési** gombra kattintva zárja be a Reporting Services Configuration Manager.
 
-## <a name="step-4-open-windows-firewall-port"></a>4. lépés: A Windows tűzfal Port megnyitása
+## <a name="step-4-open-windows-firewall-port"></a>4. lépés: Windows tűzfal Port megnyitása
 > [!NOTE]
 > Ha a parancsfájlok a jelentéskészítő kiszolgáló konfigurálása, kihagyhatja az ebben a szakaszban. A parancsfájl tartalmazza a tűzfalport megnyitása egy lépésben. Az alapértelmezett volt a HTTP-hez a 80-as és 443-as portot a HTTPS-hez.
 > 
@@ -573,24 +573,24 @@ A jelentéskészítő kiszolgáló ellenőrzése és konfigurálása után a gya
 ## <a name="to-create-and-publish-reports-to-the-azure-virtual-machine"></a>Hozhat létre és jelentések közzétételét az Azure virtuális gépen
 Az alábbi táblázatban összefoglaltuk a helyi számítógépről a jelentéskészítő kiszolgálón, a Microsoft Azure virtuális gépen futó meglévő jelentések közzétételéhez elérhető beállításokról:
 
-* **RS.exe parancsfájl**: használata RS.exe parancsfájl másolása a jelentéselemek és a meglévő jelentéskészítő kiszolgáló, a Microsoft Azure virtuális gépen. További információkért lásd: a "Natív üzemmódú natív üzemmódra – Microsoft Azure virtuális gép" szakasz a [minta Reporting Services rs.exe parancsfájl tartalmának át jelentéskészítő kiszolgáló közötti](https://msdn.microsoft.com/library/dn531017.aspx).
+* **RS.exe parancsfájl**: RS.exe szkript használatával másolja a jelentéselemek és a meglévő jelentéskészítő kiszolgáló, a Microsoft Azure virtuális gépen. További információkért lásd: a "Natív üzemmódú natív üzemmódra – Microsoft Azure virtuális gép" szakasz a [minta Reporting Services rs.exe parancsfájl tartalmának át jelentéskészítő kiszolgáló közötti](https://msdn.microsoft.com/library/dn531017.aspx).
 * **Jelentéskészítő**: A virtuális gépet tartalmaz, kattintson a – egyszer verzióját a Microsoft SQL Server jelentéskészítőt. A jelentés jelentéskészítő az első alkalommal elindítani a virtuális gépen:
   
   1. Rendszergazdai jogosultságokkal indítsa el a böngészőjében.
   2. Keresse meg a Jelentéskezelő virtuális gépen, és kattintson a **jelentéskészítő** a menüszalagon.
      
      További információkért lásd: [telepítése, eltávolítása és a jelentéskészítő támogató](https://technet.microsoft.com/library/dd207038.aspx).
-* **SQL Server Data Tools: Virtuális gép**: SQL Server 2012 létrehozta a virtuális Gépet, akkor az SQL Server Data Tools a virtuális gépen telepítve van, és a létrehozásához használt **jelentéskészítő kiszolgáló projektek** és a jelentések a virtuális gépen. SQL Server Data Tools a jelentéseket tehetnek közzé a jelentéskészítő kiszolgáló a virtuális gépen.
+* **SQL Server Data Tools: VIRTUÁLIS GÉP**:  Ha létrehozta a virtuális gép az SQL Server 2012, akkor az SQL Server Data Tools a virtuális gépen telepítve van, és a létrehozásához használt **jelentéskészítő kiszolgáló projektek** és a jelentések a virtuális gépen. SQL Server Data Tools a jelentéseket tehetnek közzé a jelentéskészítő kiszolgáló a virtuális gépen.
   
     Ha létrehozta a virtuális gép az SQL server 2014, SQL Server Data Tools - BI for visual Studio is telepítheti. További információkért tekintse meg a következőket:
   
   * [A Microsoft SQL Server Data Tools – Business Intelligence Pro Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)
   * [A Microsoft SQL Server Data Tools – Business Intelligence a Visual Studio 2012](https://www.microsoft.com/download/details.aspx?id=36843)
   * [SQL Server Data Tools és az SQL Server Business Intelligence (SSDT-BI)](https://docs.microsoft.com/sql/ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi)
-* **SQL Server Data Tools: Távoli**: A helyi számítógépen, Reporting Services projekt létrehozása az SQL Server Data Tools, amely tartalmazza a Reporting Services-jelentéseket. A projekt szeretne csatlakozni a web service URL-cím konfigurálása.
+* **SQL Server Data Tools: Távoli**:  A helyi számítógépen a Reporting Services projekt létrehozása az SQL Server Data Tools, amely tartalmazza a Reporting Services-jelentéseket. A projekt szeretne csatlakozni a web service URL-cím konfigurálása.
   
-    ![SSRS-projekthez az SSDT projekt tulajdonságai](./media/virtual-machines-windows-classic-ps-sql-report/IC650114.gif)
-* **Parancsfájl használata**: jelentéskészítő kiszolgáló tartalmának másolása a szkript használatával. További információkért lásd: [minta Reporting Services rs.exe parancsfájl tartalmának át jelentéskészítő kiszolgáló közötti](https://msdn.microsoft.com/library/dn531017.aspx).
+    ![ssdt project properties for SSRS project](./media/virtual-machines-windows-classic-ps-sql-report/IC650114.gif)
+* **Parancsfájl használata**: Jelentéskészítő kiszolgáló tartalmának másolása a parancsfájl használatával. További információkért lásd: [minta Reporting Services rs.exe parancsfájl tartalmának át jelentéskészítő kiszolgáló közötti](https://msdn.microsoft.com/library/dn531017.aspx).
 
 ## <a name="minimize-cost-if-you-are-not-using-the-vm"></a>Minimalizálja a költségeket, ha a virtuális gép nem használ
 > [!NOTE]

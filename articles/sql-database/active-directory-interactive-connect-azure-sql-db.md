@@ -12,16 +12,16 @@ ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 01/25/2019
 manager: craigg
-ms.openlocfilehash: def50aecbcf9186af9d0b9c781c3141ad2dcee59
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a7f2dbdb089df8035d18db25b3968d63a3c97c0f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753673"
+ms.locfileid: "55767499"
 ---
 # <a name="connect-to-azure-sql-database-with-active-directory-mfa"></a>Csatlakozás az Azure SQL Database és az Active Directory MFA
 
-Ez a cikk ismerteti egy C# programot, amely csatlakozik a Microsoft Azure SQL Database. A program interaktív módú hitelesítést, amely támogatja a [Azure Active Directory (AD) többtényezős hitelesítés (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
+Ez a cikk ismerteti egy C# programot, amely csatlakozik a Microsoft Azure SQL Database. A program interaktív módú hitelesítést, amely támogatja a [Azure Active Directory (Azure AD) többtényezős hitelesítés (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
 Többtényezős hitelesítés támogatása az SQL-eszközökkel kapcsolatos további információkért lásd: [Azure Active Directory-támogatás az SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
 
@@ -29,15 +29,15 @@ Többtényezős hitelesítés támogatása az SQL-eszközökkel kapcsolatos tov�
 
 .NET-keretrendszer verziója 4.7.2, a enumerálás kezdődően [ `SqlAuthenticationMethod` ](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) új értéke – `ActiveDirectoryInteractive`. Az ügyfél C# program, a felsorolási érték esetén a rendszer a többtényezős hitelesítés támogatása az Azure AD interaktív mód használatával csatlakozni egy Azure SQL Database. Futtatja a programot a felhasználó számára jelenik meg a következő párbeszédpanelen:
 
-1. Egy párbeszédpanel, amely egy Azure AD felhasználói nevét jeleníti meg, és kéri a jelszót.
+* Egy párbeszédpanel, amely egy Azure AD felhasználói nevét jeleníti meg, és kéri a jelszót.
 
    Ha a felhasználó tartománya össze van vonva az Azure ad-vel, majd a párbeszédpanel nem jelenik meg jelszavát nem szükséges.
 
    Ha az Azure AD-szabályzat ró a felhasználó MFA, majd a következő két párbeszédpanelek jelennek meg.
 
-2. Az első alkalommal a felhasználó végighalad a többtényezős hitelesítés, a rendszer megjeleníti a szöveges üzenetek küldéséhez mobiltelefonszám kérő párbeszédpanel. Minden üzenetet biztosít a *ellenőrzőkódot* , amely a felhasználónak meg kell adnia, a következő párbeszédpanelen.
+* Az első alkalommal a felhasználó végighalad a többtényezős hitelesítés, a rendszer megjeleníti a szöveges üzenetek küldéséhez mobiltelefonszám kérő párbeszédpanel. Minden üzenetet biztosít a *ellenőrzőkódot* , amely a felhasználónak meg kell adnia, a következő párbeszédpanelen.
 
-3. Egy MFA ellenőrző kódot, amelyet a rendszer elküldte a mobiltelefonra kérő párbeszédpanel.
+* Egy MFA ellenőrző kódot, amelyet a rendszer elküldte a mobiltelefonra kérő párbeszédpanel.
 
 Az Azure AD MFA igénylése konfigurálásával kapcsolatos további információkért lásd: [Ismerkedés az Azure multi-factor Authentication a felhőben](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud).
 
@@ -59,7 +59,7 @@ Mielőtt hozzákezd, rendelkeznie kell egy [Azure SQL Database-kiszolgáló](sql
 ### <a name="register-your-app-and-set-permissions"></a>Az alkalmazás regisztrálásához és az engedélyek beállítása
 
 
-Az Azure AD-hitelesítés használatára a C# program rendelkezik egy AD-alkalmazást, regisztrálni. Ha alkalmazásokat szeretne regisztrálni, kell lennie vagy egy AD-rendszergazda vagy egy felhasználó hozzárendelve az AD *alkalmazásfejlesztő* szerepkör. További információ a szerepkörök hozzárendelése: [rendszergazda és a nem rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryval a felhasználók számára.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
+Az Azure AD-hitelesítés használatára a C# program rendelkezik egy Azure AD-alkalmazást, regisztrálni. Ha alkalmazásokat szeretne regisztrálni, kell lennie vagy egy Azure AD-rendszergazda vagy egy felhasználó hozzárendelve az Azure AD *alkalmazásfejlesztő* szerepkör. További információ a szerepkörök hozzárendelése: [rendszergazda és a nem rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryval a felhasználók számára.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
 
  Az alkalmazásregisztráció befejezését állít elő, és megjeleníti az **Alkalmazásazonosító**. A program ezt az Azonosítót való csatlakozáshoz szükséges van.
 
@@ -147,7 +147,7 @@ Futtassa újra az ssms-ben, ezúttal az **hitelesítési** beállítása **Activ
 További információkért lásd: [multi-factor Authentication hitelesítés beállítása az ssms-ben és az Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 
 > [!NOTE]
-> Ha az adatbázis egy vendég felhasználók is kell az adatbázis - AD-tartomány nevet kell adnia **beállítások** > **AD tartomány felhasználónév vagy a bérlői azonosító**. Az Azure Portalon keresse meg a tartomány nevét, válassza a **Azure Active Directory** > **egyéni tartománynevek**. Az a C# példaprogram biztosít egy tartomány név nem szükséges.
+> Ha az adatbázis egy vendég felhasználók is szüksége a az Azure AD-tartomány nevét az adatbázis - **beállítások** > **AD tartomány felhasználónév vagy a bérlői azonosító**. Az Azure Portalon keresse meg a tartomány nevét, válassza a **Azure Active Directory** > **egyéni tartománynevek**. Az a C# példaprogram biztosít egy tartomány név nem szükséges.
 
 ## <a name="c-code-example"></a>C#-kód példa
 
@@ -161,7 +161,7 @@ Ez a csomag telepítéséhez a Visual Studióban, válassza ki a **projekt** > *
 
 using System;
 
-// Reference to AD authentication assembly
+// Reference to Azure AD authentication assembly
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 using DA = System.Data;

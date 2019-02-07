@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 3f38162fd4d95127ddf7797638bc9af21e6aaf20
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5b72bd45299f636a208ab39be5b7eaade2730183
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095694"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814014"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Gyors útmutató: Egy alkalmazást úgy teszi közzé a webes API-k (előzetes verzió)
 
@@ -116,7 +116,7 @@ Ha az alkalmazásjegyzékben kívánja közzétenni új hatókört:
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>A webes API többi alkalmazás számára való közzétételének ellenőrzése
 
 1. Lépjen vissza az Azure AD-bérlőre, válassza az **Alkalmazásregisztrációk** lehetőséget, majd keresse meg és válassza ki a konfigurálni kívánt ügyfélalkalmazást.
-1. Hajtsa végre ismét az [Ügyfélalkalmazás konfigurálása webes API-k elérésére](#configure-a-client-application-to-access-web-apis) című cikkben leírt lépéseket.
+1. Ismételje meg a konfigurálása egy webes API-k eléréséhez ügyfélalkalmazás leírt lépéseket.
 1. Amikor az **API kiválasztása** lépéshez ér, válassza ki az erőforrást. Meg kell jelennie az új hatókörnek, amely így már elérhető az ügyfelek engedélykéréseihez.
 
 ## <a name="more-on-the-application-manifest"></a>További információk az alkalmazásjegyzékről

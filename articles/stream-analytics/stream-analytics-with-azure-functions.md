@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 818c75feffc5dcf09421b22d82b8b0c767cbed7f
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 8ef1b2a2271106a382faf9e06d57b44ca1bf033b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993008"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810796"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Az Azure Functions futtatása Azure Stream Analytics-feladatokból 
 
@@ -40,10 +40,10 @@ Ez a szakasz bemutatja, hogyan konfigurálhatja a Stream Analytics-feladat, Azur
 
 A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
 * [Stream Analytics-feladat létrehozása az Event Hubs szolgáltatást megadva bemenetként](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* [A Redis-példányt az Azure Cache létrehozása](#create-an-azure-redis-cache-instance)  
-* [Függvény létrehozása az tudjon adatokat írni az Azure Cache Redis az Azure Functions szolgáltatásban](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* A Redis-példányt az Azure Cache létrehozása  
+* Függvény létrehozása az tudjon adatokat írni az Azure Cache Redis az Azure Functions szolgáltatásban    
 * [A Stream Analytics-feladat frissítése a kimenetként megadott függvénnyel](#update-the-stream-analytics-job-with-the-function-as-output)  
-* [Ellenőrizze az Azure Cache redis eredmények](#check-azure-redis-cache-for-results)  
+* Ellenőrizze az Azure Cache redis eredmények  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Stream Analytics-feladat létrehozása az Event Hubs szolgáltatást megadva bemenetként
 

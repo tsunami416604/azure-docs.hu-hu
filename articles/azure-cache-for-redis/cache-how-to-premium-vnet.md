@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 6c92b71a8f2b9fbeae9afc5f06b6d5412f6421a6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e71d92b2cf7888fd9e3c560beb6e0e7f18e7add0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019753"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822646"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network támogatása a prémium szintű Azure Cache Redis konfigurálása
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatásait, beleértve a Prémiumszintű funkciókkal, például a fürtözés, az adatmegőrzés és a virtuálishálózat-támogatást is nyújt. Virtuális hálózat egy magánhálózat a felhőben. Ha az Azure Cache Redis-példányt a virtuális hálózathoz van konfigurálva, még nem nyilvánosan címezhető és a virtuális gépek és az alkalmazások a virtuális hálózaton belül csak érhetők el. Ez a cikk ismerteti, hogyan kell egy prémium szintű Azure Cache Redis-példányt a virtuális hálózat támogatásának konfigurálása.
@@ -83,11 +83,11 @@ Csatlakozhassanak az Azure Cache a Redis-példányt, ha a vnet-et használ, adja
 ## <a name="azure-cache-for-redis-vnet-faq"></a>Az Azure Cache Redis virtuális hálózat – gyakori kérdések
 Az alábbi lista az Azure Cache Redis méretezéshez kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 
-* [Mik az Azure Cache a Redis és a virtuális hálózatok Virtual Network szolgáltatás hibás gyakori problémákat?](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
+* Mik az Azure Cache a Redis és a virtuális hálózatok Virtual Network szolgáltatás hibás gyakori problémákat?
 * [Hogyan ellenőrizhetem, hogy működik-e a gyorsítótár egy virtuális hálózaton?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * [Ha szeretne csatlakozni az Azure gyorsítótár egy virtuális hálózaton, miért jelenik meg a távoli tanúsítvány nem érvényes érvénytelenségét jelző hibaüzenet Redis?](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
 * [Használható a virtuális hálózatok a gyorsítótárat standard vagy alapszintűre?](#can-i-use-vnets-with-a-standard-or-basic-cache)
-* [Miért nem az Azure Cache redis nem lehet létrehozni az egyes alhálózatok, de nem más?](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
+* Miért nem az Azure Cache redis nem lehet létrehozni az egyes alhálózatok, de nem más?
 * [Mik azok az alhálózat címterekkel kapcsolatos követelmények?](#what-are-the-subnet-address-space-requirements)
 * [A virtuális hálózat gyorsítótár üzemeltetése esetén működnek minden gyorsítótár-szolgáltatás?](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
@@ -131,9 +131,9 @@ Nincsenek nyolc bejövő port tartományon. Bejövő kérelmek ezen tartományok
 | 6379, 6380 |Bejövő |TCP |Ügyfél-kommunikációhoz a Redishez, Azure terheléselosztási | (Alhálózat redis) | (Redis alhálózat), virtuális hálózat, az Azure Load Balancer |
 | 8443 |Bejövő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) |(Alhálózat redis) |
 | 8500 |Bejövő |TCP/UDP |Az Azure load balancing | (Alhálózat redis) |Azure Load Balancer |
-| 10221-10231 |Bejövő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) |(Redis alhálózat), az Azure Load Balancer |
-| 13000-13999 |Bejövő |TCP |Redis-fürtök, az Azure terheléselosztási ügyfél-kommunikáció | (Alhálózat redis) |Virtuális hálózat, az Azure Load Balancer |
-| 15000-15999 |Bejövő |TCP |Ügyfél-kommunikációhoz a Redis-fürtök, az Azure load terheléselosztás | (Alhálózat redis) |Virtuális hálózat, az Azure Load Balancer |
+| 10221-10231 |Bejövő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) |(Redis subnet), Azure Load Balancer |
+| 13000-13999 |Bejövő |TCP |Redis-fürtök, az Azure terheléselosztási ügyfél-kommunikáció | (Alhálózat redis) |Virtual Network, Azure Load Balancer |
+| 15000-15999 |Bejövő |TCP |Ügyfél-kommunikációhoz a Redis-fürtök, az Azure load terheléselosztás | (Alhálózat redis) |Virtual Network, Azure Load Balancer |
 | 16001 |Bejövő |TCP/UDP |Az Azure load balancing | (Alhálózat redis) |Azure Load Balancer |
 | 20226 |Bejövő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) |(Alhálózat redis) |
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 5054fdc08c7a0a1b3833ed95784f6018ac5c697e
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659252"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770584"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Az Azure Policy használatával korlátozhatja a bővítmények telepítése Linux rendszerű virtuális gépeken
 
@@ -98,7 +98,7 @@ Amikor végzett, nyomja le az **Esc** kulcsra, és írja be **: wq** mentse és 
 
 ## <a name="create-the-policy"></a>A szabályzat létrehozása
 
-Szabályzat-definíció egy olyan objektum, a konfigurációt, amely a használni kívánt tárolja. A szabályzatdefiníció a szabályzat meghatározására szabályok és a paraméterek-fájlokat használja. Létrehozhatja a szabályzat definíciója [az szabályzatdefiníció létrehozása](/cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create).
+Szabályzat-definíció egy olyan objektum, a konfigurációt, amely a használni kívánt tárolja. A szabályzatdefiníció a szabályzat meghatározására szabályok és a paraméterek-fájlokat használja. Létrehozhatja a szabályzat definíciója [az szabályzatdefiníció létrehozása](/cli/azure/role/assignment?view=azure-cli-latest).
 
 Ebben a példában a szabályok és a paraméterek a következők létrehozott és a cloud shellben .JSON kiterjesztésű fájlként tárolja a fájlokat.
 
@@ -117,7 +117,7 @@ az policy definition create \
 
 Ebben a példában a szabályzatot rendel egy erőforrás csoport használatával [az szabályzat-hozzárendelés létrehozására](/cli/azure/policy/assignment). A létrehozott virtuális Gépeket a **myResourceGroup** erőforráscsoport nem fogja tudni a Linux rendszerű virtuális gép hozzáférést vagy a Custom Script-bővítményeinek telepítése Linux rendszeren. Az erőforráscsoport léteznie kell, mielőtt is hozzárendeli a szabályzatot.
 
-Használjon [az fióklista](/cli/azure/account?view=azure-cli-latest#az_account_list) beolvasni az előfizetés-Azonosítóját használja egy, a példában helyett.
+Használjon [az fióklista](/cli/azure/account?view=azure-cli-latest) beolvasni az előfizetés-Azonosítóját használja egy, a példában helyett.
 
 
 ```azurecli-interactive

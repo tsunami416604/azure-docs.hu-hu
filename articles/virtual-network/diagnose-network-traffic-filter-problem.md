@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: d05adabc9bbabdb9f6d1af9831dbb33afe63cf87
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8b494e3f289d7b3a850a77f7f388cee542c088ed
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424642"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821864"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>A virtuális gép hálózati forgalomszűrési problémáinak diagnosztizálása
 
@@ -181,7 +181,7 @@ Miután létrehozta a szabályt, a 80-as porton engedélyezve van-e az internetr
 
 Azure által feldolgozott bejövő forgalmat, amikor feldolgozza a szabályokat az NSG az alhálózathoz (ha van egy társított NSG-t) rendelt, és majd dolgozza fel a szabályokat a hálózati adapterhez társított NSG-ben. Ha a hálózati adapter és az alhálózathoz társított NSG-t, a port mindkét NSG-t, a forgalom elérhesse a virtuális gép nyitva kell lennie. Megkönnyítése érdekében a felügyeleti és kommunikációs problémák, azt javasoljuk, hogy társít egy NSG-t egy alhálózathoz, mint az egyes hálózati adapterek. Egy alhálózaton belüli virtuális gépek különböző biztonsági szabályok van szüksége, ellenőrizze a hálózati adapterek tagjai egy alkalmazásbiztonsági csoportot (Alkalmazásbiztonsági), és adja meg a forrás- és egy biztonsági szabály egy Alkalmazásbiztonsági. Tudjon meg többet [az alkalmazásbiztonsági csoportok](security-overview.md#application-security-groups).
 
-Ha továbbra is kommunikációs problémákat tapasztal, tekintse meg [szempontok](#considerations) és [további elemzés céljából](#additional-dignosis).
+Ha továbbra is kommunikációs problémákat tapasztal, tekintse meg [szempontok](#considerations) és további elemzés céljából.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 4a0e2cd7e0c768512e1aafc042fe55338fdc206e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 88fdaec9e19c082a6fe981dc4d9a0e015335f1e2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084974"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818618"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Python-alkalmazás az Azure Event Hubs használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. További információkért lásd: [az Event Hubs bemutatása](event-hubs-what-is-event-hubs.md). 
@@ -29,10 +29,10 @@ Ez a cikk a következő feladatokat végezheti el a nyelven írt alkalmazások i
 
 - [Események küldése eseményközpontba](#send-events-to-event-hubs)
 - [Események fogadása az eseményközpontba](#receive-events-from-event-hubs)
-- [Olvassa el a rögzített esemény adatok egy Azure storage-ból](#capture-event-hubs-data). 
+- Olvassa el a rögzített esemény adatok egy Azure storage-ból. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Létrehoz egy eseményközpontot, az alábbi gyorsútmutatókkal: [az Azure portal](event-hubs-create.md), [Azure CLI-vel](event-hubs-quickstart-cli.md), [Azure PowerShell-lel](event-hubs-quickstart-powershell.md), [AzureResourceManager-sablon](event-hubs-resource-manager-namespace-event-hub.md). 
+- Az alábbi gyorsútmutatókkal event hub létrehozása: [Az Azure portal](event-hubs-create.md), [Azure CLI-vel](event-hubs-quickstart-cli.md), [Azure PowerShell-lel](event-hubs-quickstart-powershell.md), [Azure Resource Manager-sablon](event-hubs-resource-manager-namespace-event-hub.md). 
 - Python 3.4-es vagy újabb verzió telepítése a számítógépre.
 
 ## <a name="install-python-package"></a>Python-csomag telepítése
@@ -112,7 +112,7 @@ client.stop()
 Események fogadása az eseményközpontok a pythonban írt alkalmazások teljes oktatóanyagot, tekintse meg a [Ez a cikk](event-hubs-python-get-started-receive.md)
 
 ## <a name="read-capture-event-data-from-azure-storage"></a>Olvasási rögzítési eseményadatokat az Azure Storage-ból
-A következő kód bemutatja, hogyan olvassa el a rögzített események a tárolt adatok egy **az Azure blob storage-bA** Python-alkalmazás: engedélyezése **rögzítése** található utasításokat követve, az event hubs szolgáltatást: [Engedélyezze az Event Hubs Capture az Azure portal használatával](event-hubs-capture-enable-through-portal.md). Ezt követően bizonyos események küldése az event hubs a kódot tesztelés előtt. 
+A következő kód bemutatja, hogyan olvassa el a rögzített események a tárolt adatok egy **az Azure blob storage-bA** Python-alkalmazás: Engedélyezése **rögzítése** található utasításokat követve, az event hubs szolgáltatást: [Event Hubs Capture az Azure portal használatával engedélyezése](event-hubs-capture-enable-through-portal.md). Ezt követően bizonyos események küldése az event hubs a kódot tesztelés előtt. 
 
 ```python
 import os

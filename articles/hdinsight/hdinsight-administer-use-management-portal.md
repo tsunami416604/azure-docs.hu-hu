@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4210528003cdb1f584bec3dea80c1aa1db2f86df
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: dd94330835c52b27c61c484d44991152d092fbe7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632023"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811698"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Windows-alapú Apache Hadoop-fürtök kezelése az Azure portal használatával
 
@@ -164,7 +164,7 @@ A fürt a HDInsight által támogatott különböző típusú adatok csomóponto
 
     Az újraegyensúlyozás két módon is elvégezhető:
 
-  * Az Apache Storm webes felhasználói felületen
+  * Apache Storm web UI
   * Parancssori felület (CLI) eszköz
 
     Tekintse meg a [Apache Storm-dokumentáció](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) további részletekért.
@@ -203,7 +203,7 @@ Számos módon meg a program a folyamatot:
 Díjszabási információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/). Tekintse meg a fürt törlésének a portálról, [fürtök törlése](#delete-clusters)
 
 ## <a name="change-cluster-username"></a>Fürt felhasználónév módosítása
-Egy HDInsight-fürt két felhasználói fiókot lehet. A HDInsight-fürt felhasználói fiókjának a létrehozási folyamat során jön létre. RDP-n keresztül a fürt eléréséhez egy RDP-felhasználói fiókot is létrehozhat. Lásd: [engedélyezése a távoli asztal](#connect-to-hdinsight-clusters-by-using-rdp).
+Egy HDInsight-fürt két felhasználói fiókot lehet. A HDInsight-fürt felhasználói fiókjának a létrehozási folyamat során jön létre. RDP-n keresztül a fürt eléréséhez egy RDP-felhasználói fiókot is létrehozhat. Tekintse meg a távoli asztal engedélyezése.
 
 **A HDInsight-fürthöz tartozó felhasználónevet és a jelszó módosítása**
 
@@ -331,7 +331,7 @@ Távoli asztal használatával csatlakozhat a fürthöz, és a Hadoop parancssor
 1. Csatlakozás a fürthöz, a távoli asztal használatával.
 2. Kattintson duplán az asztalon **Hadoop parancssor**.
 
-    ![HDI. HadoopCommandLine][image-hadoopcommandline]
+    ![HDI.HadoopCommandLine][image-hadoopcommandline]
 
     További információk a Hadoop-parancsokat: [referencia az Apache Hadoop-parancsokat](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 01/31/2019
 ms.author: jeedes
-ms.openlocfilehash: 238999448f719ca8c95d8c170a9f2e6b6d7bc851
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 934acf44fe2c36e9f7c2f2d2fdb3b191806d0014
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54814120"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769438"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Oktatóanyag: Slack-az Azure Active Directory-integráció
 
@@ -106,12 +106,12 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Slack, hajtsa végre
 
     ![Slack tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be egy URL-címet a következő mintával: `https://<companyname>.slack.com`.
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<companyname>.slack.com`
 
-    b. Az a **azonosító (entityid)** szöveg mezőben a bejelentkezési URL-frissítse az értéket. Ez a munkaterület tartományához. Például: `https://contoso.slack.com`.
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be egy URL-címe: `https://slack.com`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Slack-ügyfél-támogatási csapatának](https://slack.com/help/contact) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Slack-ügyfél-támogatási csapatának](https://slack.com/help/contact) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Slack alkalmazást a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 

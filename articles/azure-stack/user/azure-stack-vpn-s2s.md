@@ -14,16 +14,19 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: 9a14c819acbc46d8a281f73fd4f3185caa8a1e02
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 96cb07ca4ede26e9bf0e5ceba28f1549061d0bf3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478151"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815676"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>IPsec/IKE-házirend site-to-site VPN-kapcsolatok konfigurálása
 
 Ez a cikk lépésről lépésre bemutatja egy IPsec/IKE-házirend konfigurálása a site-to-site (S2S) VPN-kapcsolatok az Azure Stackben.
+
+>[!NOTE]
+> Fut az Azure Stack-build **1809** vagy újabb verzióját a funkció használatához.  Ha meg van nyitva egy build 1809 előtt, frissítse az Azure Stack-rendszer a legújabb buildre használja ezt a szolgáltatást, vagy kövesse a cikkben ismertetett lépések megkísérlése előtt.
 
 ## <a name="ipsec-and-ike-policy-parameters-for-vpn-gateways"></a>VPN-átjárók IPsec és az IKE szabályzat paraméterei
 

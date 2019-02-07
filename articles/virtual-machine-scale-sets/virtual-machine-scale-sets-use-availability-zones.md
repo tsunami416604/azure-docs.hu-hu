@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: b80ee059459d4c1f4d90d14ee62dcead57596571
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 32679e37062fbf77ce6ab03b6ea708c0d5eeea30
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697053"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816237"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>A rendelkezésre állási zónák használó virtuális gép méretezési csoport létrehozása
 
@@ -65,7 +65,7 @@ Mikor hozzon létre egy méretezési csoportot egy egyetlen zónában, Ön szab�
 Rendelkezésre állási zónák használatára, a méretezési csoportot kell létrehozni egy [az Azure-régióban támogatott](../availability-zones/az-overview.md#regions-that-support-availability-zones). Létrehozhat egy méretezési csoportot, amely a rendelkezésre állási zónák használja az alábbi módszerek egyikével:
 
 - [Azure Portal](#use-the-azure-portal)
-- [Azure CLI](#use-the-azure-cli-20)
+- Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Az Azure Resource Manager-sablonok](#use-azure-resource-manager-templates)
 

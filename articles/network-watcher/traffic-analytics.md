@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 3b0db93d44827e3f5d0543f28a6f4b5fb0c4818e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4f1ce84dba4e9f35e7884ebd9058781eb30c3ec4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429089"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815846"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -164,7 +164,7 @@ Válassza ki a következő beállításokat, amint a képen látható:
 2. Válasszon ki egy meglévő tárfiókot a folyamat-naplók tárolására. Ha tartja az adatokat tárolni szeretné, állítsa az értékét *0*. Azure Storage-díjak a tárfiók díjak.
 3. Állítsa be **megőrzési** adatait tárolni kívánt napok száma.
 4. Válassza ki *a* a **Traffic Analytics állapota**.
-5. Válasszon egy meglévő Log Analytics-munkaterületet, vagy válasszon **új munkaterület létrehozása** hozzon létre egy újat. Log Analytics-munkaterületet a Traffic Analytics használják majd létrehozására szolgál az analytics összesített és indexelt adatok tárolására. Ha egy meglévő munkaterületet, kell-e találhatók, amelyek a [támogatott régiók](#traffic-analytics-supported-regions) és frissítettek az új lekérdezési nyelvre. Ha nem szeretne frissíteni egy meglévő munkaterületet, vagy nem rendelkezik egy munkaterületet egy támogatott régióban, hozzon létre egy újat. Lekérdezési nyelvet kapcsolatos további információkért lásd: [Azure Log Analytics új naplókeresésre frissítési](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+5. Válasszon egy meglévő Log Analytics-munkaterületet, vagy válasszon **új munkaterület létrehozása** hozzon létre egy újat. Log Analytics-munkaterületet a Traffic Analytics használják majd létrehozására szolgál az analytics összesített és indexelt adatok tárolására. Ha egy meglévő munkaterületet, a támogatott régiók egyikében léteznie kell, és frissítettek az új lekérdezési nyelvre. Ha nem szeretne frissíteni egy meglévő munkaterületet, vagy nem rendelkezik egy munkaterületet egy támogatott régióban, hozzon létre egy újat. Lekérdezési nyelvet kapcsolatos további információkért lásd: [Azure Log Analytics új naplókeresésre frissítési](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     A log analytics-munkaterületet a traffic analytics megoldás és az NSG-t üzemeltető nem kell ugyanabban a régióban. Például előfordulhat, a traffic analytics-munkaterületen a Nyugat-európai régióban bár előfordulhat, hogy az NSG-ket az USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA. Több NSG-k ugyanazon a munkaterületen konfigurálhatók.
 6. Kattintson a **Mentés** gombra.

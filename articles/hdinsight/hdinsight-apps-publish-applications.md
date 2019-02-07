@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90ba4f2197dc1b00ad2a3d234f3e81e529ae7e4f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fd6d47d8300872f5bcdf36aec492289f93858504
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653917"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814190"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Egy HDInsight-alkalmazás közzététele az Azure Marketplace-en
 Egy Azure HDInsight alkalmazást is telepítheti egy Linux-alapú HDInsight-fürtön. Ebből a cikkből megtudhatja, hogyan HDInsight alkalmazás közzététele az Azure piactéren. Az Azure Marketplace közzétételi kapcsolatos általános információkért lásd: [-ajánlat közzététele az Azure Marketplace-en](../marketplace/marketplace-publishers-guide.md).
@@ -75,9 +75,9 @@ A telepítési parancsfájl a következő jellemzőkkel kell rendelkeznie:
 * A szkript elindítja a szolgáltatásokat a csomópontokon, ha szolgáltatások figyeli, és úgy konfigurálva, hogy automatikusan elindul, ha egy csomópont-újraindítás történik.
 
 ## <a name="package-the-application"></a>Az alkalmazás becsomagolása
-Hozzon létre egy .zip fájlt, amely tartalmazza a HDInsight-alkalmazás telepítéséhez szükséges összes fájlt. A zip-fájlt használ [az alkalmazás közzététele](#publish-application). A zip-fájlt a következő fájlokat tartalmazza:
+Hozzon létre egy .zip fájlt, amely tartalmazza a HDInsight-alkalmazás telepítéséhez szükséges összes fájlt. Az alkalmazás közzétételéhez használhatja a .zip-fájlt. A zip-fájlt a következő fájlokat tartalmazza:
 
-* [createUiDefinition.json](#define-application)
+* createUiDefinition.json
 * mainTemplate.json (egy minta: [egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md).)
 * Az összes szükséges szkriptek
 
@@ -94,7 +94,7 @@ Egy HDInsight-alkalmazás közzététele:
 5. Válassza ki **megadása a kezdéshez néhány topológiák**. A megoldássablon az összes hozzá tartozó topológia "szülője". Egy ajánlat vagy megoldás sablonban több topológiát is megadhat. Amikor a rendszer továbbítja az ajánlat átmeneti, azt az összes hozzá tartozó topológia leküldésekor. 
 6. Adja meg a topológia nevét, és válassza ki **+**.
 7. Adja meg egy új verziót, és válassza ki **+**.
-8. Töltse fel a .zip-fájlt, akkor meg kell létrehozni, [csomagolva az alkalmazás](#package-application).  
+8. Töltse fel a .zip-fájlt, az alkalmazás csomagolása során létrehozott.  
 9. Válassza ki **kérjen minősítést**. A Microsoft hitelesítő csapata áttekinti a fájlokat, és hitelesíti a topológiát.
 
 ## <a name="next-steps"></a>További lépések

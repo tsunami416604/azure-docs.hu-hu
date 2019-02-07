@@ -4,17 +4,17 @@ description: Az Azure házirend értékelések és hatások határozza meg a meg
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/31/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7925bc8a9f7cb65d0e92c943aa0a54d48611e286
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9fc22e35b2e435b6452f0f36c34687a15bee39c2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508987"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766411"
 ---
 # <a name="getting-compliance-data"></a>A megfelelőségi adatok beszerzése
 
@@ -141,6 +141,26 @@ Események (hozzáfűzés, naplózása, megtagadása, üzembe helyezése) válto
 Kattintson a jobb gombbal a sor az esemény gyűjtse össze a további részleteket a, és válassza ki, szeretné **Tevékenységnaplók megjelenítése**. A tevékenységnapló oldalon megnyílik, és a Keresés az események és az a hozzárendelés részleteit megjelenítő előre szűrt. A tevékenységnapló további kontextus és eseményekből információkat biztosít.
 
 ![Szabályzat megfelelőségi tevékenységnapló](../media/getting-compliance-data/compliance-activitylog.png)
+
+### <a name="change-history-preview"></a>Változások nyomon követése (előzetes verzió)
+
+Egy új részeként **nyilvános előzetes verzióban**, változások nyomon követése az elmúlt 14 napban nem megfelelő erőforrások érhetők el. Változások nyomon követése kapcsolatos tudnivalókat tartalmaz, amikor a rendszer észlelte a változást, és a egy _diff vizuális_ minden módosításakor. Egy címváltozásának felderítését akkor aktiválódik, ha a Resource Manager-tulajdonságok a nem megfelelő erőforrások vannak hozzáadva, törölve vagy módosítani.
+
+1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
+
+1. Az a **áttekintése** vagy **megfelelőségi** lapra, jelölje be egy szabályzatot, amely _nem megfelelő_.
+
+1. Alatt a **erőforrás megfelelőségi** lapján a **szabályzatoknak való megfelelés** lapon, válassza ki, ez az erőforrás _nem megfelelő_.
+
+1. Válassza ki a **változások nyomon követése (előzetes verzió)** lapján a **erőforrás megfelelőségi** lapot. Listáját módosítások észlelése, ha a bármely exist jelennek meg.
+
+   ![A házirend-változások nyomon követése - lap](../media/getting-compliance-data/change-history-tab.png)
+
+1. Válassza ki az egyik észlelt változás. A _diff vizuális_ esetében a nem megfelelő erőforrások egyike jelenik meg a **módosítási előzmények** lapot.
+
+   ![A házirend-változások nyomon követése – Diff vizuális](../media/getting-compliance-data/change-history-visual-diff.png)
+
+A _diff vizuális_ segédeszközökkel erőforrásai azonosításában. A módosítások észlelhetők esetleg nem kapcsolódnak mi okozta, hogy az erőforrás nem kompatibilis a kiválasztott szabályzathoz.
 
 ## <a name="command-line"></a>Parancssor
 

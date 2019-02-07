@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 574a9ae1e283a3918e316d2daa84df727d729471
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5f6e0d2dece791ac4ece73acdf2e15e3c9be412f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477597"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812844"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>A Batch szolgáltatási megoldások és az Active Directory hitelesítést
 
@@ -91,7 +91,7 @@ A Bérlőazonosító azonosítja az Azure AD-bérlővel, amely az alkalmazás hi
 
 Beépített hitelesítéssel hitelesíteni, kell biztosítania az alkalmazás engedélyeit a Batch szolgáltatás API-hoz csatlakozhat. Ez a lépés lehetővé teszi, hogy az alkalmazás az Azure ad-vel a Batch szolgáltatás API-hívás hitelesítéséhez.
 
-Miután [az alkalmazás regisztrálása](#register-your-application-with-an-azure-ad-tenant), kövesse az alábbi lépéseket a Batch szolgáltatáshoz való hozzáférést biztosítania az Azure Portalon:
+Miután regisztrálta az alkalmazást, kövesse az alábbi lépéseket a Batch szolgáltatáshoz való hozzáférést biztosítania az Azure Portalon:
 
 1. Válassza ki az Azure Portal bal oldali navigációs ablaktáblán, **minden szolgáltatás**. Kattintson a **Alkalmazásregisztrációk**.
 2. Keresse meg az alkalmazásregisztrációk a listában az alkalmazás neve:

@@ -9,12 +9,12 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: fc732065f328f653082286508db74cc29107854e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e1e4628a1c777ecc54fdf9a26b334a10b7ab8cb3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232008"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810582"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Az Azure Data Lake Analytics egy .NET-alkalmazás kezelése
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -34,7 +34,7 @@ Ez a cikk ismerteti, hogyan kezelheti az Azure Data Lake Analytics fiókok, adat
 |[Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)| 2.3.1|
 |[Microsoft.Azure.Management.DataLake.Analytics](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Analytics)|3.0.0|
 |[Microsoft.Azure.Management.DataLake.Store](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Store)|2.2.0|
-|[Microsoft.Azure.Management.ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|1.6.0-Preview|
+|[Microsoft.Azure.Management.ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|1.6.0-preview|
 |[Microsoft.Azure.Graph.RBAC](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|3.4.0-Preview|
 
 A következő parancsokkal telepítheti ezeket a csomagokat NuGet parancssori felületen:
@@ -56,7 +56,7 @@ string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Jelentkezzen be az Azure Data Lake Analytics több lehetősége van. Az alábbi kódrészlet egy előugró ablak az interaktív felhasználói hitelesítéssel való hitelesítés egy példát mutat be.
 
@@ -130,7 +130,7 @@ Ha még nem már létrehozott egyet, rendelkeznie kell a Data Lake Analytics-ös
 var resourceGroup = new ResourceGroup { Location = location };
 resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, rg);
 ```
-További információkért lásd: [Azure-erőforráscsoportot és a Data Lake Analytics](#Azure-Resource-Groups-and-Data-Lake-Analytics).
+További információkért tekintse meg az Azure-erőforráscsoportot és a Data Lake Analytics.
 
 ### <a name="create-a-data-lake-store-account"></a>Data Lake Store-fiók létrehozása
 

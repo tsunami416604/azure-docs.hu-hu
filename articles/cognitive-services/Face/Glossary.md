@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 17167271df81914c76882fc4d06717043e1befc1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 06c385b1ca43277b59c337646c41cae360ce48a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214296"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816560"
 ---
 # <a name="glossary"></a>Szószedet
 
@@ -23,14 +23,14 @@ ms.locfileid: "55214296"
 
 #### <a name="attributes"></a>Attribútumok
 
-Attribútumok megadása nem kötelező a a [észlelési](#Detection-Face-Detection) eredményezi, mint például [életkor](#Age-Attribute), [nemek](#Gender-Attribute), [fő testtartás](#Head-Pose-Attribute), [arcfelismerési haj](#Facial-Hair-Attribute), [mosolygó](#Smile-Attribute).
-A lehet beszerezni a [észlelési](#Detection-Face-Detection) API a lekérdezési paraméterek megadásával: returnFaceAttributes. Attribútumok adjon további adatok vonatkozó kiválasztott [arcok](#Face); mellett a [a face ID](#Face-ID) és a [téglalap](#Face-Rectangle).
+Attribútumok nem kötelező a észlelési eredmények között, mint például [életkor](#Age-Attribute), [nemek](#Gender-Attribute), [fő testtartás](#Head-Pose-Attribute), [arcfelismerési haj](#Facial-Hair-Attribute), [mosolygó ](#Smile-Attribute).
+Ezek szerezhető az észlelési API a lekérdezési paraméterek megadásával: returnFaceAttributes. Attribútumok adjon további adatok vonatkozó kiválasztott [arcok](#Face); mellett a [a face ID](#Face-ID) és a [téglalap](#Face-Rectangle).
 
 További részletekért tekintse meg az útmutató [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="age-attribute"></a>Kor (attribútum)
 
-Kor az egyik a [attribútumok](#Attributes) , amely leírja, hogy egy adott arcfelismerési kora. Az életkor attribútum nem kötelező a [észlelési](#Detection-Face-Detection) eredményeket, és szabályozhatja az egy [észlelési](#Detection-Face-Detection) kérelem a returnFaceAttributes paraméter megadásával.
+Kor az egyik a [attribútumok](#Attributes) , amely leírja, hogy egy adott arcfelismerési kora. Az életkor attribútum nem kötelező megadni az észlelési eredmények között, és a returnFaceAttributes paraméter megadásával észlelési kéréssel szabályozható.
 
 További részletekért tekintse meg az útmutató [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -64,13 +64,13 @@ További részletekért tekintse meg az útmutató [arc - észlelése](https://w
 
 #### <a name="face"></a>Arcfelismerés
 
-Face a kapcsolódó észlelt arcok a Face API-ból származó eredményeket egy egységes kifejezés. Végső soron face képviseli egy egységes identitás ([Face ID](#Face-ID)), egy meghatározott régióban képeken ([négyszög meghatározása](#Face-Rectangle)), és a kapcsolódó további face [attribútumok](#Face-Attributes-Facial-Attributes), például [életkor](#Age-Attribute), [nemek](#Gender-Attribute), [arcrész](#Face-Landmarks-Facial-Landmarks) és [fő testtartás](#Head-Pose-Attribute). Ezenkívül arcok a adhatók vissza [észlelési](#Detection-Face-Detection).
+Face a kapcsolódó észlelt arcok a Face API-ból származó eredményeket egy egységes kifejezés. Végső soron face képviseli egy egységes identitás ([Face ID](#Face-ID)), egy meghatározott régióban képeken ([négyszög meghatározása](#Face-Rectangle)), és nagyon kapcsolódó, például [életkor](#Age-Attribute), [nemek](#Gender-Attribute), arcrész és [fő testtartás](#Head-Pose-Attribute). Ezenkívül arcok észlelése a adhatók vissza.
 
 További részletekért tekintse meg az útmutató [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="face-api"></a>Face API
 
-A Face API egy felhőalapú API-t, amely a leginkább korszerű algoritmusokat biztosít a arcok észlelése és felismerése. A Face API fő funkcióit két kategóriába oszthatók: face [észlelési](#Detection-Face-Detection) a [attribútumok](#Face-Attributes-Facial-Attributes), és az arcok [felismerés](#Recognition).
+A Face API egy felhőalapú API-t, amely a leginkább korszerű algoritmusokat biztosít a arcok észlelése és felismerése. A Face API fő funkcióit két kategóriába oszthatók: arcfelismerés attribútumokkal, és a face [felismerés](#Recognition).
 
 További részletekért tekintse meg a következő útmutatókat: [A Face API – áttekintés](./Overview.md), [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [arc – keresés hasonló](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237), [arc - csoport](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238), [arc - azonosítása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), [ A Face – ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
 
@@ -80,13 +80,13 @@ Lásd: [attribútumok](#Attributes).
 
 #### <a name="face-id"></a>Arc azonosítója
 
-Face ID származik a [észlelési](#Detection-Face-Detection) eredményt, egy karakterlánc jelöli, amelyben egy [face](#Face) a [Face API](#Face-API).
+Face ID van származtatva, amelyben egy karakterláncot jelöl az észlelési eredmények egy [face](#Face) a [Face API](#Face-API).
 
 További részletekért tekintse meg az útmutató [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="face-landmarksfacial-landmarks"></a>Arcrészek arcrész és videofelismerést, arc
 
-Arcrész megadása nem kötelező a a [észlelési](#Detection-Face-Detection) eredményét, amely szemantikai arcfelismerési pontok, például a szemet, orr és szájához beszéd (szemlélteti az alábbi ábra). Arcrész vezérelhető a [észlelési](#Detection-Face-Detection) a logikai szám returnFaceLandmarks szerint. Ha returnFaceLandmarks igaz értékre van beállítva, a visszaadott arcok tereptárgyak attribútumokat kell.
+Arcrész megadása nem kötelező a észlelési eredmények; melyek a szemantikai arcfelismerési pontok, például a szemet, orr és szájához beszéd (szemlélteti az alábbi ábra). A logikai szám returnFaceLandmarks arcrész szabályozhatja észlelési kéréssel. Ha returnFaceLandmarks igaz értékre van beállítva, a visszaadott arcok tereptárgyak attribútumokat kell.
 
 További részletekért tekintse meg az útmutató [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -94,19 +94,19 @@ További részletekért tekintse meg az útmutató [arc - észlelése](https://w
 
 #### <a name="face-rectangle"></a>Négyszög meghatározása
 
-Négyszög meghatározása származik a [észlelési](#Detection-Face-Detection) eredményeket, amely egy függőleges téglalap (balra, felső, szélesség, magasság) képeken (képpontban). A bal felső sarkában egy [face](#Face) (balra, top), szélességét és magasságát, mellett azt jelzi, hogy face méretek az x és y tengely, illetve.
+Négyszög meghatározása származó észlelésének eredménye, azaz egy függőleges téglalap (balra, felső, szélesség, magasság) képeken (képpontban). A bal felső sarkában egy [face](#Face) (balra, top), szélességét és magasságát, mellett azt jelzi, hogy face méretek az x és y tengely, illetve.
 
 További részletekért tekintse meg az útmutató [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="facial-hair-attribute"></a>Arcfelismerési haj (attribútum)
 
-Arcfelismerési haj az egyik a [attribútumok](#Attributes) a rendelkezésre álló arcok arcfelismerési haj hossza leírására szolgál. Az arcfelismerési haj attribútum nem kötelező a [észlelési](#Detection-Face-Detection) eredményeket, és szabályozhatja az egy [észlelési](#Detection-Face-Detection) returnFaceAttributes kérelmét. Ha returnFaceAttributes tartalmaz "facialHair", a visszaadott arcok arcfelismerési haj attribútumokat kell.
+Arcfelismerési haj az egyik a [attribútumok](#Attributes) a rendelkezésre álló arcok arcfelismerési haj hossza leírására szolgál. Az arcfelismerési haj attribútum nem kötelező megadni az észlelési eredmények között, és returnFaceAttributes észlelési kéréssel szabályozhatók. Ha returnFaceAttributes tartalmaz "facialHair", a visszaadott arcok arcfelismerési haj attribútumokat kell.
 
 További részletekért tekintse meg az útmutató [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="facelist"></a>FaceList
 
-FaceList gyűjteménye, [PersistedFace](#PersistedFace) és egysége [hasonló](#Find-Similar). Egy FaceList tartalmaz egy [FaceList azonosító](#FaceList-ID), valamint a más attribútumok például [neve](#Name) és [felhasználói adatok](#UserData-User-Data).
+FaceList gyűjteménye, [PersistedFace](#PersistedFace) és egysége [hasonló](#Find-Similar). Egy FaceList tartalmaz egy [FaceList azonosító](#FaceList-ID), valamint a más attribútumok, például a nevét és a felhasználói adatokat.
 
 További részletekért tekintse meg a következő útmutatókat: [FaceList - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b), [FaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c).
 
@@ -118,7 +118,7 @@ További részletekért tekintse meg a következő útmutatókat: [FaceList - l�
 
 #### <a name="find-similar"></a>Hasonló keresése
 
-Az API segítségével hasonló arcokat keres egy téglalapot gyűjtemény alapján lekérdezés. Lekérdezési arc és face gyűjtemények jelentésekként jelennek meg [azonosítók között](#Face-ID) vagy [FceList azonosító](#FaceList-ID)/[LargeFaceList azonosító](#LargeFaceList-ID) a kérésben. Visszaadott eredmények keresett hasonló arcokat keres, által képviselt [azonosítók között](#Face-ID) vagy [PersistedFace azonosítók](#PersistedFace-ID).
+Az API segítségével hasonló arcokat keres egy téglalapot gyűjtemény alapján lekérdezés. Lekérdezési arc és face gyűjtemények jelentésekként jelennek meg [azonosítók között](#Face-ID) vagy [FceList azonosító](#FaceList-ID)/[LargeFaceList azonosító](#LargeFaceList-ID) a kérésben. Visszaadott eredmények keresett hasonló arcokat keres, által képviselt [azonosítók között](#Face-ID) vagy PersistedFace azonosítók.
 
 További részletekért tekintse meg a következő útmutatókat: [A Face – keresés hasonló](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237), [LargeFaceList – hozzon létre](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc), [FaceList - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b).
 
@@ -126,7 +126,7 @@ További részletekért tekintse meg a következő útmutatókat: [A Face – ke
 
 #### <a name="gender-attribute"></a>Gender (attribútum)
 
-Nemek az egyik a [attribútumok](#Attributes) a rendelkezésre álló téglalapot a nemek leírására szolgál. A nemek attribútum nem kötelező a [észlelési](#Detection-Face-Detection) eredményeket, és szabályozhatja az egy [észlelési](#Detection-Face-Detection) returnFaceAttributes kérelmét. Ha returnfaceAttributes tartalmaz "gender", a visszaadott arcok nemek attribútumokat kell.
+Nemek az egyik a [attribútumok](#Attributes) a rendelkezésre álló téglalapot a nemek leírására szolgál. A nemek attribútum nem kötelező megadni az észlelési eredmények között, és returnFaceAttributes észlelési kéréssel szabályozhatók. Ha returnfaceAttributes tartalmaz "gender", a visszaadott arcok nemek attribútumokat kell.
 
 További részletekért tekintse meg az útmutató [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -146,7 +146,7 @@ További részletekért tekintse meg az útmutató [arc - csoport](https://westu
 
 #### <a name="head-pose-attribute"></a>A fő jelentenek (attribútum)
 
-A fő testtartás az egyik a [attribútumok](#Attributes) , hogy jelöli a 3D terület szerint üzembe, a terv lényegét és a kitérése szögek tájolás között, az alábbi ábrán látható módon. Az érték tartományait állítja, és azok [-180, 180] és [-90, 90] yaw fokban. A jelenlegi verzióban felébresztve észlelési által visszaadott érték mindig 0. A fő testtartás attribútum nem kötelező a [észlelési](#Detection-Face-Detection) eredményeket, és szabályozhatja az egy [észlelési](#Detection-Face-Detection) kérelem a returnFaceAttributes paraméterben. ReturnFaceAttributes paraméter tartalmazza a "headPose", a visszaadott arcok attribútumok megoldás fő fog rendelkezni.
+A fő testtartás az egyik a [attribútumok](#Attributes) , hogy jelöli a 3D terület szerint üzembe, a terv lényegét és a kitérése szögek tájolás között, az alábbi ábrán látható módon. Az érték tartományait állítja, és azok [-180, 180] és [-90, 90] yaw fokban. A jelenlegi verzióban felébresztve észlelési által visszaadott érték mindig 0. A fő testtartás attribútum nem kötelező megadni az észlelési eredmények között, és a returnFaceAttributes paraméter által szabályozható észlelési kéréssel. ReturnFaceAttributes paraméter tartalmazza a "headPose", a visszaadott arcok attribútumok megoldás fő fog rendelkezni.
 
 További részletekért tekintse meg az útmutató [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -182,11 +182,11 @@ További részletekért tekintse meg az útmutató [arc - ellenőrzése](https:/
 
 #### <a name="landmarks"></a>Arcrész
 
-Lásd: [arcrész arc](#Face-Landmarks-Facial-Landmarks).
+Tekintse meg a arcrészek.
 
 #### <a name="largefacelist"></a>LargeFaceList
 
-LargeFaceList gyűjteménye, [PersistedFace](#PersistedFace) és egysége [hasonló](#Find-Similar). Egy LargeFaceList tartalmaz egy [LargeFaceList azonosító](#LargeFaceList-ID), valamint a más attribútumok például [neve](#Name) és [felhasználói adatok](#UserData-User-Data).
+LargeFaceList gyűjteménye, [PersistedFace](#PersistedFace) és egysége [hasonló](#Find-Similar). Egy LargeFaceList tartalmaz egy [LargeFaceList azonosító](#LargeFaceList-ID), valamint a más attribútumok, például a nevét és a felhasználói adatokat.
 
 További részletekért tekintse meg a következő útmutatókat: [LargeFaceList – hozzon létre](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc), [LargeFaceList – Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a15827cd2de3616c086f2ce), [LargeFaceList – lista Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158db4d2de3616c086f2d6).
 
@@ -198,7 +198,7 @@ További részletekért tekintse meg a következő útmutatókat: [LargeFaceList
 
 #### <a name="largepersongroup"></a>LargePersonGroup
 
-LargePersonGroup gyűjteménye, [személyek](#Person) és egysége [azonosító](#Identification). Egy LargePersonGroup tartalmaz egy [LargePersonGroup azonosító](#LargePersonGroup-ID), valamint a más attribútumok például [neve](#Name) és [felhasználói adatok](#UserData-User-Data).
+LargePersonGroup gyűjteménye, [személyek](#Person) és egysége [azonosító](#Identification). Egy LargePersonGroup tartalmaz egy [LargePersonGroup azonosító](#LargePersonGroup-ID), valamint a más attribútumok, például a nevét és a felhasználói adatokat.
 
 További részletekért tekintse meg a következő útmutatókat: [LargePersonGroup – hozzon létre](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d), [LargePersonGroup – Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acebb6ac60f11b48b5a9e), [LargePersonGroup személy - listában](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adda06ac60f11b48b5aa1).
 
@@ -236,7 +236,7 @@ További részletekért tekintse meg a következő útmutatókat: [LargePersonGr
 
 #### <a name="persistedface"></a>PersistedFace
 
-PersistedFace olyan adatstruktúra Face API-ban. PersistedFace tartalmaz egy [PersistedFace azonosító](#PersistedFace-ID), valamint a más attribútumok például [neve](#Name), és [felhasználói adatok](#UserData-User-Data).
+PersistedFace olyan adatstruktúra Face API-ban. PersistedFace a PersistedFace ID, valamint más tulajdonságok, például nevét, és a felhasználói adatokat tartalmaz.
 
 További részletekért tekintse meg a következő útmutatókat: [LargeFaceList – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [FaceList - Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [személy LargePersonGroup – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42), [személy is lehet PersonGroup – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
 
@@ -248,7 +248,7 @@ További részletekért tekintse meg a következő útmutatókat: [LargeFaceList
 
 #### <a name="person"></a>Személy
 
-Személy a Face API-ban felügyelt adatstruktúra. Személy tartalmaz egy [személy azonosítója](#Person-ID), valamint a más attribútumok például [neve](#Name), gyűjteménye [PersistedFace](#PersistedFace), és [felhasználói adatok](#UserData-User-Data).
+Személy a Face API-ban felügyelt adatstruktúra. Személy tartalmaz egy [személy azonosítója](#Person-ID), valamint a más attribútumok, például nevét, a gyűjteményét [PersistedFace](#PersistedFace), és a felhasználói adatokat.
 
 További részletekért tekintse meg a következő útmutatókat: [Személy LargePersonGroup – hozzon létre](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40), [személy LargePersonGroup – első](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599add376ac60f11b48b5aa0), [személy is lehet PersonGroup - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c), [személy is lehet PersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523f).
 
@@ -260,7 +260,7 @@ További részletekért tekintse meg a következő útmutatókat: [Személy Larg
 
 #### <a name="persongroup"></a>PersonGroup
 
-Is lehet PersonGroup gyűjteménye, [személyek](#Person) és egysége [azonosító](#Identification). Egy is lehet PersonGroup tartalmaz egy [is lehet PersonGroup azonosító](#PersonGroup-ID), valamint a más attribútumok például [neve](#Name) és [felhasználói adatok](#UserData-User-Data).
+Is lehet PersonGroup gyűjteménye, [személyek](#Person) és egysége [azonosító](#Identification). Egy is lehet PersonGroup tartalmaz egy [is lehet PersonGroup azonosító](#PersonGroup-ID), valamint a más attribútumok, például a nevét és a felhasználói adatokat.
 
 További részletekért tekintse meg a következő útmutatókat: [Is lehet PersonGroup - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244), [is lehet PersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246), [személy is lehet PersonGroup - listában](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
 
@@ -290,19 +290,25 @@ Lásd: [négyszög meghatározása](#Face-Rectangle).
 
 ## <a name="s"></a>S
 
-#### <a name="smile-attribute"></a>Mosolyogjon (attribútum)
-
-Mosoly az egyik a [attribútumok](#Attributes) a mosoly kifejezés a rendelkezésre álló téglalapot leírására szolgál. A mosoly attribútum nem kötelező a [észlelési](#Detection-Face-Detection) eredményeket, és szabályozhatja az egy [észlelési](#Detection-Face-Detection) returnFaceAttributes kérelmét. Ha returnFaceAttributes tartalmaz "smajlíka", akkor a visszaadott arcok mosoly tulajdonságokkal fog rendelkezni.
-
-További részletekért tekintse meg az útmutató [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
-
 #### <a name="similar-face-searching"></a>Hasonló arcok keresése
 
 Lásd: [hasonló](#Find-Similar).
 
+#### <a name="smile-attribute"></a>Mosolyogjon (attribútum)
+
+Mosoly az egyik a [attribútumok](#Attributes) a mosoly kifejezés a rendelkezésre álló téglalapot leírására szolgál. A mosoly attribútum nem kötelező megadni az észlelési eredmények között, és returnFaceAttributes észlelési kéréssel szabályozhatók. Ha returnFaceAttributes tartalmaz "smajlíka", akkor a visszaadott arcok mosoly tulajdonságokkal fog rendelkezni.
+
+További részletekért tekintse meg az útmutató [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+
+#### <a name="snapshot"></a>Pillanatkép
+
+Pillanatkép egy ideiglenes távtároló bizonyos Face adattípus. A vágólap másolhat adatokat egy előfizetésből egy másikba egyfajta működik. Először a felhasználó "" egy pillanatképet készít az adatokat a forrás-előfizetés, és ezek "alkalmazza" azt egy új objektum a cél előfizetésben. 
+
+További részletekért lásd: [Face áttelepítési útmutató](./face-api-how-to-topics/how-to-migrate-face-data.md) , valamint a [érvénybe a pillanatkép -](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot/take) és [a alkalmazni a pillanatkép -](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot/apply) referenciadokumentációt (REST).
+
 #### <a name="status-train"></a>Állapot (Train)
 
-Állapot: karakterlánc, amellyel ismertetik az eljárás [LargeFaceList/LargePersonGroups/Persongroup képzési](#Train), beleértve a "notstarted", "fut", "sikeres", "sikertelen".
+Karakterlánc, amellyel ismertetik az eljárás a képzési LargeFaceList/LargePersonGroups/Persongroup, beleértve a "notstarted", "fut", "sikeres", "sikertelen" állapota.
 
 További részletekért tekintse meg az útmutató [LargeFaceList – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1), [LargePersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4), [is lehet PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249).
 
@@ -330,7 +336,7 @@ További részletekért tekintse meg a következő útmutatókat: [LargePersonGr
 
 #### <a name="verification"></a>Ellenőrzés
 
-Ez az API segítségével győződjön meg arról, hogy két arc ugyanazok, vagy nem. Mindkét arcok jelennek meg, a kérelemben szereplő azonosítók között. Ellenőrzött eredmények tartalmaznak egy logikai típusú mező ([isIdentical](#Is-Identical)) jelző azonos, amennyiben az értéke igaz, és a egy számmező ([megbízhatósági](#Confidence)) megbízhatósági szintjét jelzi.
+Ez az API segítségével győződjön meg arról, hogy két arc ugyanazok, vagy nem. Mindkét arcok jelennek meg, a kérelemben szereplő azonosítók között. Eredmények tartalmazzák, egy logikai típusú mező (isIdentical) jelző azonos, amennyiben az értéke igaz, és a egy számmező ellenőrzése ([megbízhatósági](#Confidence)) megbízhatósági szintjét jelzi.
 
 További részletekért tekintse meg az útmutató [arc - ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
 

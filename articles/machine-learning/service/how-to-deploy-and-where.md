@@ -11,16 +11,16 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a32cb694a18f8fff937f647804659efb71be415e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: caafd5ac43ca94f8b01298b4e18e48065b7001b9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745717"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766622"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
-Az Azure Machine Learning szolgáltatás több módszert is telepíthet a betanított modell az SDK-t biztosít. Ebből a dokumentumból megtudhatja, hogyan helyezi üzembe a modellt webszolgáltatásként, amely az Azure-felhőben, vagy az IoT edge-eszközök.
+Az Azure Machine Learning szolgáltatás több módszert is telepíthet a betanított modell az SDK-t biztosít. Ebből a dokumentumból megtudhatja, hogyan helyezi üzembe a modellt webszolgáltatásként, amely az Azure-felhőben, vagy az IoT Edge-eszközök.
 
 > [!IMPORTANT]
 > Eltérő eredetű erőforrások megosztása (CORS) jelenleg nem támogatott a modellt webszolgáltatásként üzembe helyezésekor.
@@ -119,7 +119,7 @@ A végrehajtási parancsfájl egy üzembe helyezett rendszerképet elküldött a
 
 #### <a name="working-with-json-data"></a>JSON-adatok használata
 
-Az alábbiakban látható egy példa a parancsfájl, amely elfogadja és JSON-adatokat adja vissza. A `run` függvény olyan formátumra, hogy a modellt vár, és ezután alakítja át a JSON-válasz visszaküldés előtt alakítja át az adatok JSON-ból:
+Az alábbi példa parancsfájl fogad el, és JSON-adatokat adja vissza. A `run` függvény olyan formátumra, hogy a modellt vár, és ezután alakítja át a JSON-válasz visszaküldés előtt alakítja át az adatok JSON-ból:
 
 ```python
 # import things required by this script
@@ -149,7 +149,7 @@ def run(raw_data):
 
 #### <a name="working-with-binary-data"></a>Bináris adatok használata
 
-Ha a modell fogad __bináris adatok__, használjon `AMLRequest`, `AMLResponse`, és `rawhttp`. Az alábbiakban látható egy példa egy parancsfájlt, amely elfogadja a bináris adatokat adja vissza a POST kérésekhez a fordított bájt. A GET-kérésekhez akkor a válasz törzsében a teljes URL-címet adja vissza:
+Ha a modell fogad __bináris adatok__, használjon `AMLRequest`, `AMLResponse`, és `rawhttp`. Az alábbi példa parancsfájl bináris adatokat fogad, és a POST kérésekhez a fordított bájtok adja vissza. A GET-kérésekhez akkor a válasz törzsében a teljes URL-címet adja vissza:
 
 ```python
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -244,9 +244,6 @@ Azure Container Instancesben való üzembe helyezéséhez használja az alábbi 
 
     **Becsült időtartam**: Körülbelül 3 perc.
 
-    > [!TIP]
-    > Ha üzembe helyezés során hibák, használja `service.get_logs()` a szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
-
 További információkért lásd: a dokumentáció a a [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) osztályokat.
 
 ### <a id="aks"></a> Az Azure Kubernetes Service üzembe helyezése
@@ -334,9 +331,6 @@ print(service.state)
 
 **Becsült időtartam**: Körülbelül 3 perc.
 
-> [!TIP]
-> Ha üzembe helyezés során hibák, használja `service.get_logs()` a szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
-
 További információkért lásd: a dokumentáció a a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) osztályokat.
 
 ### <a id="fpga"></a> A mező-programmable gate arrays (FPGA) üzembe helyezése
@@ -382,7 +376,7 @@ sudo ./installIoTEdge
 
 Az IoT élcsomóponton elkészült az IoT hub kapcsolati karakterláncát fogadásához. Keresse meg a sor ```device_connection_string:``` , és illessze be a kapcsolati karakterláncot az idézőjelek között a fent.
 
-Akkor is is megtudhatja, hogyan regisztrálja az eszközt, és az IoT-futtatókörnyezet lépésről lépésre követve telepítse a [a rövid útmutató: Az első IoT Edge-modul üzembe helyezése Linux x64 eszköz](../../iot-edge/quickstart-linux.md) dokumentumot.
+Akkor is is megtudhatja, hogyan regisztrálja az eszközt, és az IoT-modul telepítéséhez az alábbi a [a rövid útmutató: Az első IoT Edge-modul üzembe helyezése Linux x64 eszköz](../../iot-edge/quickstart-linux.md) dokumentumot.
 
 
 #### <a name="get-the-container-registry-credentials"></a>A container registry hitelesítő adatainak lekérése
@@ -469,7 +463,7 @@ A webszolgáltatás, egy REST API-t, így a ügyfélalkalmazások számos progra
 
 ## <a id="update"></a> A web service frissítése
 
-A web service frissítéséhez használja a `update` metódust. A következő kód bemutatja, hogyan frissíthető egy új rendszerkép használata a web service:
+Amikor létrehoz egy új rendszerképet, kell manuálisan frissítenie kell minden egyes szolgáltatás, amelyet szeretne az új rendszerképet használja. A web service frissítéséhez használja a `update` metódust. A következő kód bemutatja, hogyan frissíthető egy új rendszerkép használata a web service:
 
 ```python
 from azureml.core.webservice import Webservice
@@ -487,9 +481,6 @@ service.update(image = new_image)
 print(service.state)
 ```
 
-> [!NOTE]
-> Amikor frissít egy képet, a webszolgáltatás nem frissül automatikusan. Minden egyes szolgáltatás, amely az új lemezképet használni kívánt manuálisan kell frissítenie.
-
 További információkért lásd: a dokumentáció a a [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
@@ -501,6 +492,19 @@ Kép törléséhez használja `image.delete()`.
 A regisztrált modell törléséhez használja `model.delete()`.
 
 További információkért lásd: a dokumentáció a [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), [Image.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#delete--), és [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+* __Ha üzembe helyezés során hibák__, használjon `service.get_logs()` a szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
+
+* A naplók is tartalmazhat, amely arra utasítja, hogy hiba __naplózási szint megadásához hibakeresési__. A naplózási szint megadásához adja hozzá a pontozó szkript a következő sorokat a lemezkép létrehozásának és a lemezkép használatával hozza létre:
+
+    ```python
+    import logging
+    logging.basicConfig(level=logging.DEBUG)
+    ```
+
+    Ez a változás lehetővé teszi, hogy további naplózást, és előfordulhat, hogy miért jelentkezik a hiba további információt ad vissza.
 
 ## <a name="next-steps"></a>További lépések
 

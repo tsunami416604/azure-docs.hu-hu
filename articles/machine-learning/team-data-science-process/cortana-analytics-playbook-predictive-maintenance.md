@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 860d24bf9de02d1b2ca46f05f1e09843a826aaf9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ebf376f0bdba8c41f88d6f97cef2c17ecd259022
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466829"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816645"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat az Azure AI útmutatója
 
@@ -325,7 +325,7 @@ Ha idősorozat-helyhez kötött és könnyen kiismerhető, véletlenszerű és i
 ### <a name="time-dependent-split"></a>Időfüggő felosztása
 Ez a szakasz ismerteti az időfüggő split megvalósításához ajánlott eljárások. Egy időfüggő kétirányú felosztása tanítási és tesztelési között az alábbiakban ismertetjük.
 
-Tegyük fel, az időbélyegzővel események például a különféle érzékelőktől származó mérések adatfolyam. Adja meg a funkciók és címkék a tanítási és tesztelési példák több esemény tartalmazó időkereteknek keresztül. Például a bináris osztályozási funkciói elmúlt események alapján hozzon létre, és címkék alapján az "X" egységet jövőbeli időpontot a jövőbeni események létrehozása (a következő szakaszokban talál a [jellemzőkiemelés](#Feature-engineering) és [modellezése technikák](#Modeling-techniques-applied-to-PdM-use-cases)). A címkézési időkereten egy példa, így később, mint az időkeretet funkcióját származnak.
+Tegyük fel, az időbélyegzővel események például a különféle érzékelőktől származó mérések adatfolyam. Adja meg a funkciók és címkék a tanítási és tesztelési példák több esemény tartalmazó időkereteknek keresztül. Például a bináris osztályozási funkciói elmúlt események alapján hozzon létre, és címkék alapján az "X" egységet jövőbeli időpontot a jövőbeni események létrehozása (a következő szakaszokban talál a [jellemzőkiemelés](#Feature-engineering) és a modellezési technikák). A címkézési időkereten egy példa, így később, mint az időkeretet funkcióját származnak.
 
 Időfüggő felosztása, válasszon egy _képzés a megszakítási idő T<sub>c</sub>_  , amikor egy modell betanításához hiperparaméterek lehetőségeire az előzményadatok T akár a<sub>c</sub>. Jövőbeli címkék, amely nem T kiszivárgását elkerülése érdekében<sub>c</sub> a betanítási adatok, válassza ki a legújabb képzési példák címke, x idő előtt T egységek<sub>c</sub>. 7. ábra a példában minden egyes négyzeten egy rekordot a az adatkészlet, ahol funkciók és címkék számítja ki a fent leírt módon. Az ábra bemutatja a rekordokat, amelyek kell képzés és egy tesztelési X = 2 és W = 3:
 

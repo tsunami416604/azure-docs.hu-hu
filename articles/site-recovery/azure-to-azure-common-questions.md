@@ -7,19 +7,30 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bfce998fbabb89d5e9e964bd504571756941afb4
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449554"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770486"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Gyakori kérdések: Azure – Azure replikálás
 
 Ez a cikk a vészhelyreállítás (DR) Azure-beli virtuális üzembe helyezése egy másik Azure-régióba az Azure Site Recovery használatával kapcsolatos gyakori kérdésekre adott válaszokat ismerteti. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumban](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
 
-## <a name="general"></a>Általános kérdések
+## <a name="in-this-article"></a>Ebben a cikkben 
+1.  **[Általános kérdések az Azure-ban az Azure-bA](#general)** 
+1.  **[Replikáció](#replication)** 
+1.  **[Replikációs házirend](#replication-policy)** 
+1.  **[Több virtuális gépre kiterjedő konzisztencia](#multi-vm-consistency)** 
+1.  **[Helyreállítási terv](#recovery-plan)** 
+1.  **[Ismételt védelem és a feladat-visszavétel](#reprotection-and-failback)** 
+1.  **[Biztonsági](#security)** 
+
+
+## <a name="general"></a>Általános
+
 ### <a name="how-is-site-recovery-priced"></a>Hogyan van a Site Recovery díjszabása?
 Felülvizsgálat [Azure Site Recovery díjszabásáról](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) részleteit.
 
@@ -59,7 +70,7 @@ A Site Recovery replikálja, és a virtuális gépek helyreállítása ugyanazon
 
 A Site Recovery nem, nem szükséges az internetkapcsolat. Hozzáférést igényelnek a Site Recovery URL-címek és IP-tartományok, említetteknek megfelelően, de [Ez a cikk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
 
-## <a name="replication-policy"></a>Replikációs szabályzat
+## <a name="replication-policy"></a>Replikációs házirend
 
 ### <a name="what-is-a-replication-policy"></a>Mi a replikációs szabályzat?
 Azt határozza meg a helyreállítási pontok megőrzési előzményeit és az alkalmazáskonzisztens pillanatképek gyakorisága beállításait. Alapértelmezés szerint az Azure Site Recovery létrehoz egy új replikációs házirendet az alapértelmezett beállításokkal:
@@ -198,7 +209,7 @@ Azt az adott helyzettől függ. Például ha a forrásrégióban virtuális gép
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Mennyi idő mindezt végezze el a feladat-visszavételt?
 Ismételt védelem, miután idő a feladat-visszavételhez hasonlít általában az idő a feladatátvételhez az elsődleges régióból egy másodlagos régióba. 
 
-## <a name="security"></a>Biztonság
+## <a name="a-namesecuritysecurity"></a><a name="security">Biztonsági
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>A replikációs adatok el lesznek küldve a Site Recovery szolgáltatáshoz?
 Nem, a Site Recovery nem intercept a replikált adatokat, és nem rendelkezik a virtuális gépeken futó bármilyen információ. A Site Recovery szolgáltatás csak a replikáció és a feladatátvétel levezényléséhez szükséges metaadatokat kapja meg.  
 Site Recovery szolgáltatás ISO 27001:2013, 27018, a HIPAA, DPA hitelesített, és SOC2 és FedRAMP JAB folyamatban van.

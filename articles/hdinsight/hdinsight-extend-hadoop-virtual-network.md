@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: a2731397ece833adcedc4ebab640fa1b3ab2fc05
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2e986e26f22e41e1cbf7b8d1c1af694522a01d06
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076826"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821575"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -70,7 +70,7 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
 
     Felügyelt szolgáltatásként a HDInsight több IP-címek az Azure-adatközpontban korlátlan hozzáférést igényel. Engedélyezi a kommunikációt az ezen IP-címek, bármely meglévő hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalak frissítése.
 
-    HDInsight különböző portok használata több szolgáltatások üzemelteti. Ne blokkolják ezeket a portokat a forgalmat. Engedélyezett a virtuális készülék tűzfalak, portok listáját lásd: a [biztonsági](#security) szakaszban.
+    HDInsight különböző portok használata több szolgáltatások üzemelteti. Ne blokkolják ezeket a portokat a forgalmat. Engedélyezett a virtuális készülék tűzfalak, portok listáját tekintse meg a biztonsági szakaszt.
 
     A meglévő biztonsági konfiguráció, használja a következő Azure PowerShell vagy a klasszikus Azure CLI-parancsokat:
 

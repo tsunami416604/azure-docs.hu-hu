@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.custom: seodec18
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2018
+ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 19b485add894dbe99a524d16f891d001991c1ec7
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 2cfd984129097b598c08e53b3698dc32ed616cca
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558379"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810661"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Az események keresztül az Azure Event Hubs rögzítés engedélyezése
 
@@ -37,6 +37,9 @@ Eseményközpont létrehozásakor a **Be** gombra kattintva engedélyezheti a Ca
 Az időkeret alapértelmezett értéke 5 perc. A minimális értéke 1, a maximális 15. A **Méret** ablak 10–500 MB tartománnyal rendelkezik.
 
 ![Ez alatt az időszak a rögzítéshez][1]
+
+> [!NOTE]
+> Engedélyezheti vagy letilthatja a kibocsátó üres fájlok nincsenek események bekövetkezésekor a rögzítési időszak alatt. 
 
 ## <a name="capture-data-to-an-azure-data-lake-store-account"></a>Adatok rögzítése egy Azure Data Lake Store-fiókba
 

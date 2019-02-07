@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 6d0c8f62d109d07a9f08e5190a5a2caa0d66a0c1
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 2b90457ed939999b5163078750650c92a3516cca
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579328"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816577"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor tevékenységnapló-riasztások kezelése  
 
@@ -93,7 +93,7 @@ Kövesse az alábbi eljárást:
 
     A tevékenységnapló Új riasztási szabály jön létre, és tetején megjelenik egy megerősítő üzenetet, az ablak jobb.
 
-    Engedélyezi, tiltsa le, szerkesztése vagy egy szabály törlése. [További](#view-and-manage-activity-log-alert-rules-in-azure-portal) tevékenység szabály kezelésével kapcsolatban.
+    Engedélyezi, tiltsa le, szerkesztése vagy egy szabály törlése. További információ a tevékenység szabály kezelése.
 
 
 Azt is megteheti, egy egyszerű analógia ismertetése feltételek, amelyeken riasztási szabályok hozható létre a tevékenységnapló-, a rendszer és felfedezni vagy szűrheti az eseményeket a [tevékenységnapló az Azure Portalon](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). Az Azure Monitor - tevékenységnapló-, egy is szűrheti vagy keresse meg szükséges esemény és majd a használatával hozzon létre egy riasztást a **tevékenységnapló-riasztás hozzáadása** gombra; majd lépésekkel 4 és újabb verziók esetében az oktatóanyag a fenti leírtak alapján.
@@ -126,7 +126,7 @@ Azt is megteheti, egy egyszerű analógia ismertetése feltételek, amelyeken ri
 4.  Letiltása, engedélyezése vagy egy szabály törlése. Válassza ki a 2. lépésben leírtaknak megfelelően a szabály kiválasztása után a megfelelő lehetőséget az ablak tetején.
 
 
-## <a name="azure-resource-template"></a>Az Azure Resource-sablon
+## <a name="azure-resource-template"></a>Azure Resource Template
 Tevékenységnapló-riasztás létrehozása a Resource Manager-sablon használatával, a típusú erőforrás létrehozása `microsoft.insights/activityLogAlerts`. Ezután, töltse ki az összes kapcsolódó tulajdonságok. Íme egy sablont, amely létrehoz egy tevékenységnapló-riasztás.
 
 ```json
@@ -203,14 +203,14 @@ A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sa
 [Az Azure Monitor - tevékenység Log riasztások API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.
 
 ## <a name="powershell"></a>PowerShell
-A használati minta erőforrás sablon korábban bemutatott (sampleActivityLogAlert.json) Azure Resource Manager PowerShell-parancsmaggal keresztül alább látható a [erőforrás sablonszakasznak](#manage-alert-rules-for-activity-log-using-azure-resource-template) :
+Az alábbi ábra szemlélteti a használati minta erőforrás sablon korábban bemutatott (sampleActivityLogAlert.json) Azure Resource Manager PowerShell-parancsmaggal keresztül az erőforrás-sablon szakaszban:
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 Viselkedésmintáit a sampleActivityLogAlert.parameters.json rendelkezik a riasztási szabály létrehozásához szükséges paraméterek megadott érték.
 
 ## <a name="cli"></a>parancssori felület
-A használati minta erőforrás sablon korábban bemutatott (sampleActivityLogAlert.json) az Azure CLI Azure Resource Manager parancs-n keresztül alább látható a [erőforrás sablonszakasznak](#manage-alert-rules-for-activity-log-using-azure-resource-template) :
+Az alábbi ábra szemlélteti a használati minta erőforrás sablon korábban bemutatott (sampleActivityLogAlert.json) az Azure CLI Azure Resource Manager parancs-n keresztül az erőforrás-sablon szakaszban:
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file sampleActivityLogAlert.json --parameters @sampleActivityLogAlert.parameters.json

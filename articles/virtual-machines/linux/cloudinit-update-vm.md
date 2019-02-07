@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: rclaus
-ms.openlocfilehash: c958e4e11ba5eb88a8357c8ab373b6501e3eac6a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d5f4dc7f4abc13f253a206a63e65faf1106f9c7c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189918"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766180"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>A cloud-init használatával frissítse és a csomagok telepítése az Azure-beli Linuxos virtuális gép
 Ez a cikk bemutatja, hogyan használható [a cloud-init](https://cloudinit.readthedocs.io) a Linux-csomagok frissítése, a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok (VMSS), kiépítés ideje az Azure-ban. Ezen a cloud-init parancsfájlok futtatása az első rendszerindításkor az Azure-ban kiépített erőforrások után. A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md)
@@ -42,7 +42,7 @@ Ez a rendszerkép üzembe helyezése előtt hozzon létre egy erőforráscsoport
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) , és adja meg a cloud-init fájl `--custom-data cloud_init_upgrade.txt` módon:
+Most hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm) , és adja meg a cloud-init fájl `--custom-data cloud_init_upgrade.txt` módon:
 
 ```azurecli-interactive 
 az vm create \

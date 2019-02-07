@@ -8,34 +8,31 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
-ms.openlocfilehash: b68fa345d4772134c30ce8b8b559f98113a0496f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 00b7ffcba876b6abea59cff170331c7413a61d39
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453097"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55823206"
 ---
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Válassza ki **minden szolgáltatás** a bal oldali menüben, és válassza a **Notification Hubs** a a **Mobile** szakaszban. Válassza ki a csillag (`*`), adja hozzá a a szolgáltatás neve mellett a **Kedvencek** szakaszban a bal oldali menüben. Miután **Notification Hubs** adnak hozzá **Kedvencek**, jelölje ki azt a bal oldali menüben. 
 
-2. Válassza az **Erőforrás létrehozása** > **Mobil** > **Értesítési központ** elemet.
+      ![Az Azure portal – jelölje be a Notification Hubs](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
+3. Az a **Notification Hubs** lapon jelölje be **Hozzáadás** az eszköztáron. 
 
-      ![Azure Portal – Értesítési központ létrehozása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
+      ![Adja hozzá a Notification Hubs - eszköztárgomb](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
+4. Az a **értesítési központ** lapon, tegye a következőket: 
+    1. Adjon meg egy **neve** az értesítés **hub**.  
+    2. Adjon meg egy **neve** számára a **névtér**.
+    3. Válassza ki a **hely** , amelyre szeretné az értesítési központ létrehozása. 
+    4. Válasszon ki egy meglévő erőforráscsoportot, vagy adjon meg egy nevet az új **erőforráscsoport**.
+    5. Kattintson a **Létrehozás** gombra. 
 
-3. Az **Értesítési központ** mezőbe írjon be egy egyedi nevet. Válassza ki a **Helyet**, **Előfizetést** és **Erőforráscsoportot** (ha már rendelkezik ilyennel).
+        ![Azure Portal – értesítési központ tulajdonságainak megadása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
+4. Válassza ki **értesítések** (Harang ikon), és válassza ki **erőforrás megnyitása**, vagy frissítse a listát a **Notification Hubs** lapon, és válassza ki az értesítési központ. 
 
-      Ha még nem rendelkezik szolgáltatásbusz-névtérrel, használhatja a központ neve alapján létrehozott alapértelmezett nevet (ha a névtér neve elérhető).
-
-      Ha már rendelkezik szolgáltatásbusz-névtérrel, amelyben létrehozná a központot, kövesse ezeket a lépéseket
-
-    a. A **Névtér** területen válassza a **Meglévő használata** hivatkozást.
-
-    b. Kattintson a **Létrehozás** gombra.
-
-    ![Azure Portal – értesítési központ tulajdonságainak megadása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
-
-4. Válassza az **Értesítések** (harang ikon), majd az **Erőforrás megnyitása** lehetőséget.
-
-      ![Azure Portal – Értesítések -> Erőforrás megnyitása](./media/notification-hubs-portal-create-new-hub/notification-go-to-resource.png)
+      ![Azure Portal – Értesítések -> Erőforrás megnyitása](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 5. A listáról válassza a **Hozzáférési szabályzatok** lehetőséget. Figyelje meg a két elérhető kapcsolati sztringet. Ezekre később szükség lesz a leküldéses értesítések kezeléséhez.
 
       >[!IMPORTANT]

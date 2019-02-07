@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: spelluru
-ms.openlocfilehash: fa7deb8a1ef536ef0c2b7fbb0a184a950821aebf
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 95a0d1b8afba71f6c8226dfe1ad5268d9e6f24e1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477336"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816917"
 ---
 # <a name="filter-events-for-event-grid"></a>Az Event Griddel kapcsolatos események szűrése
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan használatával szűrhetők az események Event Grid
 
 ## <a name="filter-by-event-type"></a>Eseménytípus szerint szűrheti.
 
-Event Grid-előfizetés létrehozásakor, amelyeket megadhat [eseménytípusok](event-schema.md) a végponthoz való küldéséhez. Ebben a szakaszban található példák egy erőforráscsoportot az esemény-előfizetések létrehozása, de az elküldött események `Microsoft.Resources.ResourceWriteFailure` és `Microsoft.Resources.ResourceWriteSuccess`. Ha nagyobb rugalmasságot listázásakor, események, Eseménytípus szerint kell, lásd: [szűrő a speciális operátorok és az adatok mezők szerint](#filter-by-advanced-operators-and-data-fields).
+Event Grid-előfizetés létrehozásakor, amelyeket megadhat [eseménytípusok](event-schema.md) a végponthoz való küldéséhez. Ebben a szakaszban található példák egy erőforráscsoportot az esemény-előfizetések létrehozása, de az elküldött események `Microsoft.Resources.ResourceWriteFailure` és `Microsoft.Resources.ResourceWriteSuccess`. Ha nagyobb rugalmasságot eseménytípusok események szűrés során, tekintse meg a szűrő a speciális operátorok és az adatok mezők szerint.
 
 PowerShell esetén használja a `-IncludedEventType` paraméter-előfizetés létrehozásakor.
 
@@ -77,7 +77,7 @@ A Resource Manager-sablonnal, használja a `includedEventTypes` tulajdonság.
 
 ## <a name="filter-by-subject"></a>Szűrés tulajdonos szerint
 
-Szűrheti a tulajdonos az eseményadatokat az eseményeket. Elején vagy végén az e-mail tárgyát megfelelő érték adható meg. Ha nagyobb rugalmasságot listázásakor, a tulajdonos által események szüksége, tekintse meg [szűrő a speciális operátorok és az adatok mezők szerint](#filter-by-advanced-operators-and-data-fields).
+Szűrheti a tulajdonos az eseményadatokat az eseményeket. Elején vagy végén az e-mail tárgyát megfelelő érték adható meg. Ha nagyobb rugalmasságot listázásakor, a tulajdonos által események, tekintse meg a szűrő a speciális operátorok és az adatok mezők szerint.
 
 A következő PowerShell-példa hoz létre egy esemény-előfizetés szűri az elején által az e-mail tárgyát. Használja a `-SubjectBeginsWith` paraméter események megjelennek a meghatározott erőforráshoz való korlátozásához. A hálózati biztonsági csoport erőforrás-Azonosítóját adja át.
 

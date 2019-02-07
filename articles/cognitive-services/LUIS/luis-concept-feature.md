@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 35f05df39a37b64c9619ef31455944207de13246
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 89d18ebd2f52467a19a76940044fea3ae254970a
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216081"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770163"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>A LUIS-alkalmazás a kifejezés szolgáltatásai
 
@@ -25,26 +25,57 @@ A machine learning szolgáltatás egy *funkció* egy megkülönböztető is leá
 Funkciók hozzáadása tegyen ismeri fel a bemeneti címke vagy besorolni azokat a kívánt kapcsolatos, nyelvi modell. Szolgáltatások révén is szándékok és entitások felismerésére LUIS, de a funkciók nem állnak a leképezések vagy entitások magukat. Ehelyett szolgáltatásokat biztosíthatnak példák a vonatkozó feltételek.  
 
 ## <a name="what-is-a-phrase-list-feature"></a>Mi az a kifejezés lista szolgáltatás?
-Kifejezés listája tartalmaz egy csoportot az értékek (szavak vagy kifejezések), amely ugyanahhoz az osztályhoz tartozik, és hasonló módon (például az városok vagy a termék nevét) kell kezelni. Mi a LUIS megismerkedik az egyik automatikusan alkalmazza a mások számára is. A lista tehát nem egy zárt [entitás listában](luis-concept-entity-types.md#types-of-entities) (pontos egyezés szövege) egyező szó.
+Egy kifejezés Tranzakciólista szavakat vagy kifejezéseket, az alkalmazáshoz, szükség van egy listája több úgy, mint más szavakat a kimondott szöveg. Kifejezések listáját, egy további jel LUIS-e szavakkal kapcsolatos hozzáadja az jobban illeszkedhet az alkalmazás tartományhoz. Mi a LUIS megismerkedik az egyik automatikusan alkalmazza a mások számára is. A lista tehát nem egy zárt [entitás listában](luis-concept-entity-types.md#types-of-entities) pontos szöveg megfelel.
 
-Kifejezések listáját, LUIS egy második jelzés ezeket szavakkal kapcsolatos hozzáadja az jobban illeszkedhet az alkalmazás tartomány.
+A kifejezés listák segít az így bármely jelentős szókincsből eredőket szavak és kifejezések, amely szerint széles használó utterance (kifejezés) Példák hozzá kell adnia, amely szerint.
 
 ## <a name="phrase-lists-help-all-models"></a>A kifejezés listák segítségével minden modell
 
-Kifejezés listák nem kapcsolódnak egy adott szándékot vagy egy entitás, de egy boost adja hozzá az összes modellekhez. Feladata, szándék észlelési és entitás besorolás javításához.
+A kifejezés listák nem kapcsolódnak egy adott szándékot vagy egy entitás, de jelentős boost adja hozzá a szándékok és entitások. Feladata, szándék észlelési és entitás besorolás javításához.
 
 ## <a name="how-to-use-phrase-lists"></a>A kifejezés listák használata
-A HR alkalmazás [egyszerű entitás oktatóanyag](luis-quickstart-primary-and-secondary-data.md), az alkalmazás által használt egy **feladat** programozói, roofer és miniszter feladat típusú kifejezés listája. Ha az alábbi értékek egyikére gép megtanult egységként címke, LUIS megtanulja felismerni a többi. 
 
-A kifejezéslista felcserélhetők vagy nem cserélhető lehet. Egy *felcserélhetők* kifejezéslista van, amelyek szinonimák, értékek és a egy *nem cserélhető* kifejezéslista célja az, egy meghatározott szókészletet alkalmazáslistájában. A szöveg szóhasználati kifejezés listáját növekedésével tapasztalhatja bizonyos feltételek több formában (szinonimák). Bontja ezeket egy másik kifejezés listája, amelyek felcserélhető. 
+Kifejezés lista létrehozása, ha az alkalmazás szavak vagy kifejezések, amelyek is fontos, hogy az alkalmazás például:
+
+* iparági kifejezések
+* szleng
+* rövidítések
+* a vállalatra jellemző nyelv
+* egy másik nyelven történő, de az alkalmazás gyakran használt nyelv
+* kulcs szavak és kifejezések a példa kimondott szöveg
+
+Miután megadta az néhány szavakat vagy kifejezéseket, a **javasoljuk** kapcsolódó értékek keresése a szolgáltatás. A kifejezés listaértékek való felvétele előtt tekintse át a kapcsolódó értékeket.
 
 |Listatípus|Cél|
 |--|--|
 |Cserélhető|A szinonimák vagy szavak, amikor a listában egy másik szóban változik, rendelkezik az azonos szándékot, és az entitások kinyeréséhez.|
 |Nem cserélhető|Az alkalmazás több, mint általában más szavakat azon a nyelven jellemző alkalmazás szakszavakat.|
 
-A kifejezés nem csak az entitás észlelési kapcsolatban sorolja fel, de is szándék besorolást, ha nem cserélhető logikus például a szöveg szóhasználati szavak nem ismert angol nyelven kívül hozzáadása.
+### <a name="interchangeable-lists"></a>Cserélhető listák
 
+Egy *felcserélhetők* kifejezéslista értékek, amelyek szinonimák van. Ha azt szeretné, például víz összes szervek található, és rendelkezik példa utterances például: 
+
+* Milyen városok megközelítette a nagy Lake? 
+* Milyen út mentén Lake Havasu fut?
+* Ha nem a nílusi kezdő és záró? 
+
+Minden kimondásakor szándékot és entitások víz törzse függetlenül kell meghatározni: 
+
+* Milyen városok [bodyOfWater] közel vannak?
+* Milyen út mentén [bodyOfWater] fut?
+* Ha nem a [bodyOfWater] kezdő és záró? 
+
+Mivel a szavakat vagy kifejezéseket víz törzse megfelel, és a megcímkézzen felcserélhetők, használja a **cserélhető** a kifejezéslista beállítást. 
+
+### <a name="non-interchangeable-lists"></a>Nem cserélhető listák
+
+Nem cserélhető kifejezések listáját, amelyek serkenti az észlelési módszert a LUIS jel. A kifejezéslista azt jelzi, hogy szavak vagy kifejezések, amelyek nagyobb jelentőségű tényező, hogy más szavakat. Ez segít az mindkét meghatározó szándékot és egyéb entitások szolgáltatását. Például tegyük fel például, hogy a globális (azaz a kulturális környezetek között, de továbbra is egyetlen nyelvet) van utazási tulajdonos tartomány rendelkezik. Nincsenek szavak és kifejezések, amelyek fontosak az alkalmazáshoz, de nem egyenértékű. 
+
+Egy másik példa használja a kifejezés nem cserélhető listáját a ritkán használt, a szellemi tulajdont képező és a külső szavakat. Előfordulhat, hogy a LUIS nem ismeri fel a ritka és a szellemi tulajdont képező szavak, valamint a külső szavakat (kívül az alkalmazás kulturális környezet). A nem cserélhető beállítás azt jelzi, hogy a ritka szavak készletét képezi egy osztályt, amely a LUIS kell további ismeri fel, de azok nem szinonimák vagy cserélhető, egymással.
+
+Nem minden lehetséges szó vagy kifejezés hozzáadása egy kifejezést listához, adjon hozzá néhány szavakat vagy kifejezéseket egyszerre, majd újratanítás és közzététele. 
+
+A kifejezés lista növekedésével idővel tapasztalhatja bizonyos feltételek több formában (szinonimák). Bontja ezeket egy másik kifejezés listája, amelyek felcserélhető. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
@@ -55,14 +86,6 @@ Cserélhető kifejezés listák helyes módon a LUIS-alkalmazás teljesítmény�
 Egy kifejezés lista tehát nem a LUIS szigorú az egyeztetés elvégzéséhez, vagy a címke mindig a kifejezés lista összes használati azok, ugyanúgy utasítást. Érdemes egyszerűen csak egy érhető el. Például rendelkezhet, amely azt jelzi, hogy "Patti" és "Selma" nevek kifejezések listáját, de a LUIS továbbra is használhatja környezeti információkat felismerje, hogy azok jelentését mutatják a más "2 foglalás tenni a Patti Diner ma a" és "-fiókom vezetési utasításokat Selma, Grúzia". 
 
 A kifejezéslista hozzáadása nem megjelölésű további példa beszédmódok hozzáadása helyett. 
-
-## <a name="an-interchangeable-phrase-list"></a>Egy cserélhető kifejezéslista
-Egy cserélhető kifejezéslista akkor használja, ha a szavak vagy kifejezések listája a osztályának vagy csoportjának hoz létre. Ilyen például, egy hónapig, például a "January", "February", "Március"; listája vagy nevét, például "János", "Mary", "Frank".  Ezek a listák felcserélhető, hogy az utterance (kifejezés) lenne feliratú ugyanezzel a leképezés vagy entitás, ha egy másik szót, kifejezést listájában használtak. Például ha "a naptár megjelenítése a januári" ugyanennyi a szándék szerint "a naptár megjelenítése a február", majd a szavakat az felcserélhetők listájának kell lennie. 
-
-## <a name="a-non-interchangeable-phrase-list"></a>Nem cserélhető kifejezéslista
-A kifejezés nem cserélhető listáját használata nem azonos szavakat vagy kifejezéseket, a tartományban lévő csoportosíthatók. 
-
-Egy példát használja a kifejezés nem cserélhető listáját a ritkán használt, a szellemi tulajdont képező és a külső szavakat. Előfordulhat, hogy a LUIS nem ismeri fel a ritka és a szellemi tulajdont képező szavak, valamint a külső szavakat (kívül az alkalmazás kulturális környezet). A nem cserélhető beállítás azt jelzi, hogy a ritka szavak készletét képezi egy osztályt, amely a LUIS kell további ismeri fel, de azok nem szinonimák vagy cserélhető, egymással.
 
 ## <a name="when-to-use-phrase-lists-versus-list-entities"></a>A kifejezés listák és a lista entitások használata
 Kifejezések listáját és a lista entitások hatással lehet a kimondott szöveg összes leképezések között, bár egyes azért teszi ezt más módon. Egy kifejezés listával szándék előrejelzési pontszám hatással. Egy lista entitás használatával hatással vannak a szöveg pontos egyezéssel entitások kinyeréséhez. 

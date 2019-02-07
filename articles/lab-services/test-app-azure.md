@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 655159185a6011d79b927fd16d2957e2a59c8376
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a58ebe14749add30deb229f1b7e30fbb6e9921d7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437792"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814890"
 ---
 # <a name="test-your-app-in-azure"></a>Alkalmazás tesztelése az Azure-ban 
 Ez a cikk ismerteti az Azure-ban az alkalmazás tesztelése a DevTest Labs használatával. Először egy fájlmegosztást a tesztkörnyezet beállításához, és csatlakoztassa meghajtóként helyi fejlesztői gépen és a egy laborban lévő virtuális Gépet. Ezután használja a Visual Studio 2017 helyezze üzembe az alkalmazást a fájlmegosztáshoz, hogy a lab-ben a virtuális gépen futtathatja az alkalmazást.  
@@ -57,7 +57,7 @@ Ez a cikk ismerteti az Azure-ban az alkalmazás tesztelése a DevTest Labs haszn
     ![Válassza ki a labor virtuális gép](media/test-app-in-azure/select-lab-vm.png)
 2. Válassza ki **Connect** az eszköztáron a virtuális Géphez való csatlakozáshoz. 
 3. [Azure PowerShell telepítése](https://azure.microsoft.com/downloads/) használatával a **Windows telepítése** hivatkozásra a **parancssori eszközök** szakaszban. Azure PowerShell telepítésének egyéb módjai, lásd: [Ez a cikk](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1).
-4. Kövesse az utasításokat a [csatlakoztassa a fájlmegosztást](#mount-the-file-share) szakaszban. 
+4. Kövesse az utasításokat a csatlakoztatási a fájl megosztási szakaszban. 
 
 ## <a name="publish-your-app-from-visual-studio"></a>Tegye közzé az alkalmazást a Visual Studióból
 Ebben a szakaszban az alkalmazást a közzététel a Visual Studióból a tesztelési virtuális gép a felhőben.

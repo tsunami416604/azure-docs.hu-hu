@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: aeb9f1ba460a009daacf3090c75573dd5d69b813
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d23110f341cdc76306c5cc4c78ab5d6afb5dd2b3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095855"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816271"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -64,7 +64,7 @@ Ezek a lépések bemutatják, hogyan telepítheti és konfigurálhatja a hiteles
 
 Ha inkább a minta Visual Studio-projektjét szeretné letölteni, kövesse az alábbi lépéseket:
 1. [Töltse le a projektet a GitHubról](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/GuidedSetup.zip).
-1. Ugorjon a [Konfigurációs lépésre](#configure-your-webconfig-and-register-an-application) a kódminta végrehajtás előtti konfigurálásához.
+1. Folytassa a konfigurációs lépés végrehajtása előtt a kód minta konfigurálásához.
 
 ## <a name="step-2-create-your-aspnet-project"></a>2. lépés: Az ASP.NET-projekt létrehozása
 

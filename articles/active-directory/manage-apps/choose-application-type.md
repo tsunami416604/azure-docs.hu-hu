@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: d5ff6b05df74cd73fb374bbd7cf27b8fc7d69493
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ef752d2f9d57ee8674d91fd14b56b804ccf50d22
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697975"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814188"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Az alkalmazástípus kiválasztása, amikor egy alkalmazás hozzáadása az Azure Active Directoryban
 További információ a négy típusú alkalmazások Azure Active Directory (Azure AD) adhat hozzá. Ha egy alkalmazás az Azure Active Directoryban ad hozzá, a program felszólítja válasszon egyet a négy alkalmazástípus. 
@@ -95,7 +95,7 @@ Az alábbiakban a támogatott **egyszeri bejelentkezési** módhoz az Azure AD-a
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Egyszeri bejelentkezési módok egyénileg fejlesztett alkalmazásokhoz
 
-Egyéni munka eredményeként kifejlesztett alkalmazások rendelkeznek a [egyénileg fejlesztett alkalmazásba](#_Custom-Developed_Applications) élmény is támogatja a további egyszeri bejelentkezési módok korábban fel nem vett, többek között:
+Van egyéni az egyénileg fejlesztett alkalmazásba kifejlesztett alkalmazások élmény is támogatást további egyszeri bejelentkezési módok korábban fel nem vett, többek között:
 
 -   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) -alapú bejelentkezésre
 

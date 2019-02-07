@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3c3b7d73de9a0e7e72351687af16b98b11f9581b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4cf7c0cdd066879edccf7869ae3c8de0191f1d2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188491"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818872"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás egyéni szabályzat használata az Azure Active Directory B2C a felhasználói felület testreszabása
 
@@ -86,7 +86,7 @@ Blob storage-ban hozzon létre egy nyilvános tárolóban, tegye a következőke
 5. Kattintson a **$root** , nyissa meg az új tárolóhoz.
 6. Kattintson a **Feltöltés** gombra.
 7. Kattintson a Tovább gombra a mappa ikont **válasszon ki egy fájlt**.
-8. Lépjen a **testreszabása ui.html**, amely korábban a létrehozott a [oldal-UI testreszabása](#the-page-ui-customization-feature) szakaszban.
+8. Lépjen a **testreszabása ui.html**, amely az oldal-UI testreszabása szakaszban korábban létrehozott.
 9. Kattintson a **Feltöltés** gombra.
 10. Válassza ki a feltöltött testreszabás-ui.html blob.
 11. A **URL-cím**, kattintson a **másolási**.
@@ -175,7 +175,7 @@ A sample_templates/wingtip mappa a következő HTML-fájlokat tartalmazza:
 | *unified.html* | Ez a fájl sablonként használni egy egyesített regisztrálási vagy bejelentkezési oldal. |
 | *updateprofile.html* | Ez a fájl sablonként használni a profil frissítés laphoz. |
 
-Az a [módosítása a regisztrálási vagy bejelentkezési egyéni szabályzat szakasz](#modify-your-sign-up-or-sign-in-custom-policy), konfigurálta a tartalom definíciója `api.idpselections`. A teljes körű tartalom az Azure AD B2C-identitás-kezelőfelületi keretrendszer és a hozzájuk tartozó leírások által elfogadottakkal szerepkördefiníció-azonosítók az alábbi táblázatban vannak:
+A regisztrálási vagy bejelentkezési egyéni szabályzat szakaszban módosítsa a tartalom definíciója konfigurált `api.idpselections`. A teljes körű tartalom az Azure AD B2C-identitás-kezelőfelületi keretrendszer és a hozzájuk tartozó leírások által elfogadottakkal szerepkördefiníció-azonosítók az alábbi táblázatban vannak:
 
 | Tartalomdefiníció azonosítója | Leírás | 
 |-----------------------|-------------|

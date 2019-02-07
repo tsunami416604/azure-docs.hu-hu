@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 501659a93306342c7a212d135b4fdd89be096451
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 842c0d5e3dff0c21545405624f0f536c80359b19
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428169"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809895"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Az Azure-beli virtuális hálózathoz a topológia megtekintése
 
@@ -56,7 +56,7 @@ A parancsok a következő lépések futtatható:
 
 A fióknak rendelkeznie kell a szükséges [engedélyek](required-rbac-permissions.md).
 
-1. Ha már rendelkezik egy network watcher-topológia a létrehozandó virtuális hálózatok ugyanabban a régióban, folytassa a 3. Hozzon létre egy erőforráscsoportot a network watchert tartalmazó [az csoport létrehozása](/cli/azure/group#az_group_create). A következő parancs létrehozza az erőforráscsoportot a *eastus* régió:
+1. Ha már rendelkezik egy network watcher-topológia a létrehozandó virtuális hálózatok ugyanabban a régióban, folytassa a 3. Hozzon létre egy erőforráscsoportot a network watchert tartalmazó [az csoport létrehozása](/cli/azure/group). A következő parancs létrehozza az erőforráscsoportot a *eastus* régió:
 
     ```azurecli-interactive
     az group create --name NetworkWatcherRG --location eastus
@@ -79,7 +79,7 @@ A fióknak rendelkeznie kell a szükséges [engedélyek](required-rbac-permissio
 
     Topológiai adatok csak az erőforrásra, amely ugyanabban az erőforráscsoportban mint belül adja vissza a *MyResourceGroup* erőforráscsoportot és a network watcher és ugyanabban a régióban. Például egy hálózati biztonsági csoportot, amely nem egy erőforráscsoportban létezik *MyResourceGroup*, nem látható, akkor is, ha a hálózati biztonsági csoportot az alhálózathoz társított a *MyVnet* virtuális hálózat .
 
-  Tudjon meg többet a [kapcsolatok](#relationhips) és [tulajdonságok](#properties) visszaadott kimenet. Ha nem rendelkezik meglévő virtuális hálózattal egy topológiájának megtekintéséhez, hozhat létre egy a [forgalom irányítása hálózati virtuális készüléken keresztül](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) példaszkript. A topológia ábrázoló diagram megjelenítése, és töltse le egy szerkeszthető-fájlban, használja a [portál](#azure-portal).
+  További információ a kapcsolatokat és [tulajdonságok](#properties) visszaadott kimenet. Ha nem rendelkezik meglévő virtuális hálózattal egy topológiájának megtekintéséhez, hozhat létre egy a [forgalom irányítása hálózati virtuális készüléken keresztül](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) példaszkript. A topológia ábrázoló diagram megjelenítése, és töltse le egy szerkeszthető-fájlban, használja a [portál](#azure-portal).
 
 ## <a name = "powershell"></a>Topológia megtekintése – PowerShell
 
@@ -123,7 +123,7 @@ A fióknak rendelkeznie kell a szükséges [engedélyek](required-rbac-permissio
 
    Topológiai adatok csak az erőforrásra, amely ugyanabban az erőforráscsoportban mint belül adja vissza a *MyResourceGroup* erőforráscsoportot és a network watcher és ugyanabban a régióban. Például egy hálózati biztonsági csoportot, amely nem egy erőforráscsoportban létezik *MyResourceGroup*, nem látható, akkor is, ha a hálózati biztonsági csoportot az alhálózathoz társított a *MyVnet* virtuális hálózat .
 
-  Tudjon meg többet a [kapcsolatok](#relationhips) és [tulajdonságok](#properties) visszaadott kimenet. Ha nem rendelkezik meglévő virtuális hálózattal egy topológiájának megtekintéséhez, hozhat létre egy a [forgalom irányítása hálózati virtuális készüléken keresztül](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) példaszkript. A topológia ábrázoló diagram megjelenítése, és töltse le egy szerkeszthető-fájlban, használja a [portál](#azure-portal).
+  További információ a kapcsolatokat és [tulajdonságok](#properties) visszaadott kimenet. Ha nem rendelkezik meglévő virtuális hálózattal egy topológiájának megtekintéséhez, hozhat létre egy a [forgalom irányítása hálózati virtuális készüléken keresztül](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) példaszkript. A topológia ábrázoló diagram megjelenítése, és töltse le egy szerkeszthető-fájlban, használja a [portál](#azure-portal).
 
 ## <a name="relationships"></a>Kapcsolatok
 

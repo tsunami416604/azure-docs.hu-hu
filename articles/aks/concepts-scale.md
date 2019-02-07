@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 3e460df8c4841a23c76ef8d7b254938ce46a2b45
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: f464b6411e1375fa005980454a9b61d2d6c05b0b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381005"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819110"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Méretezési lehetőségeket biztosít az alkalmazások az Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja az alapvető fogalmakat, amelyek segítségével méretezhet
 - [Manuális méretezése](#manually-scale-pods-or-nodes)
 - [Podok horizontális méretező (HPA)](#horizontal-pod-autoscaler)
 - [Fürt méretező](#cluster-autoscaler)
-- [Azure Container Instance (ACI) integrációja az aks-sel](#burst-to-azure-container-instance)
+- Azure Container Instance (ACI) integrációja az aks-sel
 
 ## <a name="manually-scale-pods-or-nodes"></a>Podok vagy a csomópontok manuális méretezése
 
@@ -65,7 +65,7 @@ Ha egy csomópont nem rendelkezik elegendő számítási erőforrás kért podot
 
 Fürt automatikus méretező megjegyzések podok, hogy a csomópont készlethez korlátozott erőforrások miatt nem lehet ütemezni, amikor a csomópont a készletben lévő csomópontok számát adja meg a további számítási erőforrásokat ra emelkedett. Ha további csomópontjaira sikeresen rendszerbe állított és elérhető a csomópont készleten belüli használatra, a podok majd ütemezésére rajtuk.
 
-Ha az alkalmazás számára, szüksége van, néhány podok ütemezve mindaddig, amíg a fürt automatikus méretező által telepített további csomópontokat is fogadja el az ütemezett podok várakozó állapotban maradhatnak. Megnövekvő a növekvő igények szerint rendelkező alkalmazások esetében is [méretezés a virtuális csomópontok és az Azure Container Instances](#burst-to-azure-container-instance).
+Ha az alkalmazás számára, szüksége van, néhány podok ütemezve mindaddig, amíg a fürt automatikus méretező által telepített további csomópontokat is fogadja el az ütemezett podok várakozó állapotban maradhatnak. Megnövekvő a növekvő igények szerint rendelkező alkalmazások méretezheti a virtuális csomópontok és az Azure Container Instances szolgáltatásban.
 
 ### <a name="scale-down-events"></a>Vertikális leskálázás események
 

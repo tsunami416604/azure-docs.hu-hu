@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 5982fcee41dd8c99aaa781a8ff3cd55ff2489929
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/06/2019
+ms.openlocfilehash: 3ee952f10cebe374767e0db4a592695eeb1b4417
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511301"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810065"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -222,7 +222,7 @@ Igen. Azure SQL Database funkcióit nem támogatottak a nagy kapacitású nyilv�
 
 Igen. Az összes meglévő migrálási technológiák használatával nagy kapacitású, beleértve a BACPAC-, tranzakciós replikáció, a logikai Adatbetöltési át. Lásd még a [Azure Database Migration Service](../dms/dms-overview.md).
 
-### <a name="what-is-my-downtown-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>Mi az a Seattle belvárosában helyszíni áttelepítés során vagy a virtuális gépek környezetének nagy kapacitású, és hogyan lehet minimalizálása,
+### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>Szabadidőmben mit jelent a helyszíni áttelepítés során vagy a virtuális gépek környezetének nagy kapacitású, és hogyan lehet minimalizálása,
 
 Állásidő ugyanaz, mint a leállás akkor, ha az adatbázisokat az Azure SQL Database egy adatbázis is. Használhat [tranzakciós replikáció](replication-to-sql-database.md#data-migration-scenario
 ) állásidejű migrálás akár néhány TB méretű adatbázisokhoz minimalizálása érdekében. A nagyon nagy méretű adatbázisból (10 + TB), érdemes lehet az ADF, Spark vagy egyéb adatok mozgását technológiák használata az adatok áttelepítéséhez.

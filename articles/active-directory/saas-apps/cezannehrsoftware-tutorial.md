@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 7515d1d88e3652ba609286b1805e58853763434d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 28a699f62a97120a27ba4d6f555182f090249dcf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183227"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812300"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Oktatóanyag: Az Azure Active Directory-integráció Cezanne HR szoftverrel
 
@@ -88,7 +88,7 @@ Az Azure AD egyszeri bejelentkezés Cezanne HR szoftverrel tesztelése és konfi
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy Cezanne HR szoftver tesztfelhasználót](#create-a-cezannehrsoftware-test-user)**  – egy megfelelője a Britta Simon Cezanne HR szoftver, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **Hozzon létre egy Cezanne HR szoftver tesztfelhasználót** – egy megfelelője a Britta Simon Cezanne HR szoftver, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 

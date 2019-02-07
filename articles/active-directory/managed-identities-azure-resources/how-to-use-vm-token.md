@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
-ms.openlocfilehash: b7ccdcf1cb1e75ab9a8113adc05b02196a0a2023
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: eebc19f5bd14e835b8174695b2d0d87fe8ddc4bc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166577"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822051"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Felügyelt identitások használata az Azure-erőforrások egy Azure-beli virtuális gépen a hozzáférési jogkivonat beszerzése 
 
@@ -55,7 +55,7 @@ Egy ügyfélalkalmazás is kérhető az Azure-erőforrások felügyelt identitá
 | [Go használatával egy token beszerzése](#get-a-token-using-go) | Felügyelt identitások használatával az Azure-erőforrások REST-végpont egy Go-ügyfél – példa |
 | [Azure PowerShell-lel egy token beszerzése](#get-a-token-using-azure-powershell) | Felügyelt identitások használatával az Azure-erőforrások REST-végpont egy PowerShell-ügyfél – példa |
 | [A CURL használatával egy token beszerzése](#get-a-token-using-curl) | Felügyelt identitások használatával az Azure-erőforrások REST-végpont egy Bash vagy a CURL ügyfél – példa |
-| [Token-gyorsítótárazási kezelése](#handling-token-caching) | Kezelési útmutató lejárt hozzáférési jogkivonatok |
+| Token-gyorsítótárazási kezelése | Kezelési útmutató lejárt hozzáférési jogkivonatok |
 | [Hibakezelés](#error-handling) | Útmutató a felügyelt identitások az Azure-erőforrások jogkivonat-végpont által visszaadott HTTP-hibák kezelése |
 | [Erőforrás-azonosítókat megtalálhatja az Azure-szolgáltatásokhoz](#resource-ids-for-azure-services) | A támogatott Azure-szolgáltatások erőforrás-azonosítók beszerzése |
 
@@ -370,17 +370,17 @@ Ha hiba történik, a megfelelő HTTP-válasz törzsében JSON az a hiba részle
 
 Ez a szakasz a lehetséges hibaválaszok dokumentumok. A "200 OK" állapota sikeres válasz, és a hozzáférési jogkivonatot a válasz törzse JSON-t, a access_token elem szerepel.
 
-| Állapotkód | Hiba | Hibaleírás | Megoldás |
+| Állapotkód | Hiba | Hiba leírása | Megoldás |
 | ----------- | ----- | ----------------- | -------- |
 | 400 Hibás kérés | invalid_resource | AADSTS50001: Az alkalmazás nevű *\<URI\>* nem található az nevű bérlőben  *\<TENANT-ID\>*. Ez akkor fordulhat elő, ha az alkalmazás még nem a bérlő rendszergazdája telepítette vagy nem fogadta el a bérlő a egyetlen felhasználója sem. Előfordulhat, hogy a hitelesítési kérést részére elküldött rossz bérlőhöz. \ | (Csak Linux) |
-| 400 Hibás kérés | bad_request_102 | Nincs megadva a szükséges metaadat-fejléc | Vagy a `Metadata` kérelem fejléce mező hiányzik a kérelemből, vagy helytelenül van formázva. Az értéket kell megadni, `true`, csupa kisbetű szerepel. A "mintakérelem" jelenik meg a [előző fejezet REST](#rest) példaként.|
-| 401-es nem engedélyezett | unknown_source | Ismeretlen forrásból származó  *\<URI\>* | Győződjön meg arról, hogy a HTTP GET kérés URI formátuma helytelen. A `scheme:host/resource-path` részét kell megadni, `http://localhost:50342/oauth2/token`. A "mintakérelem" jelenik meg a [előző fejezet REST](#rest) példaként.|
+| 400 Hibás kérés | bad_request_102 | Nincs megadva a szükséges metaadat-fejléc | Vagy a `Metadata` kérelem fejléce mező hiányzik a kérelemből, vagy helytelenül van formázva. Az értéket kell megadni, `true`, csupa kisbetű szerepel. A "mintakérelem" jelenik meg az előző REST szakaszban példaként.|
+| 401-es nem engedélyezett | unknown_source | Ismeretlen forrásból származó  *\<URI\>* | Győződjön meg arról, hogy a HTTP GET kérés URI formátuma helytelen. A `scheme:host/resource-path` részét kell megadni, `http://localhost:50342/oauth2/token`. A "mintakérelem" jelenik meg az előző REST szakaszban példaként.|
 |           | invalid_request | A kérelem hiányzik egy kötelező paraméter, tartalmaz egy érvénytelen paraméterérték, egy paraméter egynél többször tartalmazza vagy egyéb helytelen formátumú. |  |
 |           | unauthorized_client | Az ügyfél nem jogosult ezzel a módszerrel hozzáférési jogkivonat kérése. | Oka egy kérelmet, amely nem a helyi visszacsatolási hívja a bővítményt, vagy egy virtuális gépen, amely nem rendelkezik felügyelt identitások az Azure-erőforrások megfelelően konfigurálva. Lásd: [konfigurálása felügyelt identitások az Azure-erőforrások a virtuális gép az Azure portal használatával](qs-configure-portal-windows-vm.md) Ha Virtuálisgép-konfiguráció segítségre van szüksége. |
 |           | access_denied | Az erőforrás tulajdonosa vagy az engedélyezési kiszolgáló elutasította a kérést. |  |
 |           | unsupported_response_type | Az engedélyezési kiszolgáló nem támogatja ezt a módszert használja hozzáférési jogkivonat beszerzése. |  |
 |           | invalid_scope | A kért hatóköre érvénytelen, ismeretlen vagy hibás formátumú. |  |
-| 500 belső kiszolgálóhiba | ismeretlen | Nem sikerült beolvasni a jogkivonatot az Active Directoryból. További részletekért lásd: a naplók  *\<fájl elérési útja\>* | Győződjön meg arról, hogy a felügyelt identitások az Azure-erőforrások a virtuális gépen engedélyezve van-e. Lásd: [konfigurálása felügyelt identitások az Azure-erőforrások a virtuális gép az Azure portal használatával](qs-configure-portal-windows-vm.md) Ha Virtuálisgép-konfiguráció segítségre van szüksége.<br><br>Emellett győződjön meg arról, hogy a HTTP GET kérés URI azonosító formátuma megfelelő, különösen az erőforrás-URI-t a lekérdezési karakterláncban megadott. A "mintakérelem" jelenik meg a [előző fejezet REST](#rest) egy vonatkozó példáért vagy [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](services-support-msi.md) szolgáltatások és a megfelelő erőforrás-azonosítók listáját.
+| 500 belső kiszolgálóhiba | ismeretlen | Nem sikerült beolvasni a jogkivonatot az Active Directoryból. További részletekért lásd: a naplók  *\<fájl elérési útja\>* | Győződjön meg arról, hogy a felügyelt identitások az Azure-erőforrások a virtuális gépen engedélyezve van-e. Lásd: [konfigurálása felügyelt identitások az Azure-erőforrások a virtuális gép az Azure portal használatával](qs-configure-portal-windows-vm.md) Ha Virtuálisgép-konfiguráció segítségre van szüksége.<br><br>Emellett győződjön meg arról, hogy a HTTP GET kérés URI azonosító formátuma megfelelő, különösen az erőforrás-URI-t a lekérdezési karakterláncban megadott. Az előző REST szakaszban Példaként tekintse meg a "mintakérelem" vagy [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](services-support-msi.md) szolgáltatások és a megfelelő erőforrás-azonosítók listáját.
 
 ## <a name="retry-guidance"></a>Újrapróbálkozásokra vonatkozó útmutató 
 

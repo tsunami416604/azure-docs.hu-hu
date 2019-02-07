@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: b73cdc7e55a60fbefc294a54f70daa9b2a11ced1
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 2613584e336243128067a76ce424e640ebdf94e0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452453"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817326"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Az Azure virtuális gép távoli asztali kapcsolatok hibaelhárítása
 A távoli asztal protokoll (RDP) kapcsolatot a Windows-alapú Azure virtuális gép (VM), és nem fér hozzá a virtuális gép különböző okok miatt meghiúsulhat. A probléma lehet a távoli asztal szolgáltatással a virtuális Gépet, a hálózati kapcsolat vagy a távoli asztali ügyfél a gazdaszámítógépen. Ez a cikk végigvezeti néhány, a leggyakrabban használt módszerek RDP-kapcsolatok problémáinak megoldásához. 
@@ -50,8 +50,8 @@ Olvassa tovább, ha részletes lépéseket és magyarázatok van szüksége. Gy�
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>RDP-hibáinak elhárítása módjai
 Háríthatóak el a virtuális gépek létrehozása a Resource Manager üzemi modell használatával a következő módszerek egyikével:
 
-* [Az Azure portal](#using-the-azure-portal) – nagyszerű, ha szeretne gyorsan az RDP vagy felhasználói hitelesítő adatok alaphelyzetbe állítása, és nem rendelkezik Azure-eszközök telepítve.
-* [Az Azure PowerShell](#using-azure-powershell) – Ha egy PowerShell-parancssort teljesebb gyorsan az RDP vagy felhasználói hitelesítő adatok alaphelyzetbe állítása az Azure PowerShell-parancsmagok használatával.
+* Az Azure portal - nagyszerű, ha szeretné gyorsan kérhet újat az RDP vagy felhasználói hitelesítő adatokat, és nem rendelkezik Azure-eszközök telepítve.
+* Az Azure PowerShell - teljesebb egy PowerShell-parancssort, ha gyorsan az RDP vagy felhasználói hitelesítő adatok alaphelyzetbe állítása az Azure PowerShell-parancsmagok használatával.
 
 A használatával létrehozott virtuális gépek hibaelhárítási lépéseket is megkeresheti a [klasszikus üzemi modellt](#troubleshoot-vms-created-using-the-classic-deployment-model).
 
@@ -236,7 +236,7 @@ Egy adott hibaüzenetet kaphatja meg, a virtuális gép RDP-n keresztül való k
 * [A távoli munkamenet megszakadt, mert nem találhatók távoli asztali licenckiszolgáló kiszolgálók érhető el, amely licencet biztosíthatna](troubleshoot-specific-rdp-errors.md#rdplicense).
 * [Távoli asztal nem találja a számítógép "name"](troubleshoot-specific-rdp-errors.md#rdpname).
 * [Hitelesítési hiba történt. Nem lehet kapcsolódni a helyi biztonsági szervezet](troubleshoot-specific-rdp-errors.md#rdpauth).
-* [Windows biztonsági hiba: nem működött a hitelesítő adatok](troubleshoot-specific-rdp-errors.md#wincred).
+* [Windows biztonsági hiba: A hitelesítő adatok nem működött](troubleshoot-specific-rdp-errors.md#wincred).
 * [A számítógép nem lehet kapcsolódni a távoli számítógép](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
 ## <a name="additional-resources"></a>További források

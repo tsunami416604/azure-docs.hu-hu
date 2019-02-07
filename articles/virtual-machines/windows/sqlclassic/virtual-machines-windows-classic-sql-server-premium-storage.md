@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: df3f4dc163f94ddab08ecdad7f8d4cc625b8917d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: cbb15ff084c3639be801458d071f3966873c2509
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300268"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815652"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 ## <a name="overview"></a>Áttekintés
@@ -1191,7 +1191,7 @@ Ha csak két SQL-kiszolgáló, és szeretne áttérni őket az új felhőalapú 
 
 Miután a migrált másodlagos kerülnek sorra, és hozzáadja az új IP-cím erőforrás a meglévő elsődleges a feladatátvétel előtt az új felhőalapú szolgáltatás, ezeket a lépéseket belül a Feladatátvevőfürt-kezelőt kell tennie:
 
-Adja hozzá az IP-cím, tekintse meg a [függelék](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage), 14. lépés.
+Adja hozzá az IP-cím, lásd: a függelék, 14. lépés.
 
 1. Az aktuális IP-cím erőforráshoz a példában a "dansqlams4" a "Meglévő elsődleges SQL Server", a lehetséges tulajdonos módosítása:
 

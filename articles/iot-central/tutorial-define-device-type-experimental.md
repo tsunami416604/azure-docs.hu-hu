@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 02f09363e9f9a014ceaf63f375c4e417f8c09232
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 2506137e03e8677827bb1e2a3914ee10ae24f368
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55666408"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810116"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-new-ui-design"></a>Oktatóanyag: Egy új eszköz típusának megadása az Azure IoT Central alkalmazásban (új felhasználói felület tervezése)
 
@@ -47,7 +47,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazásra. Ha elvégezte az [Azure IoT Central-alkalmazás létrehozása](quick-deploy-iot-central.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) rövid útmutatót, újból felhasználhatja az abban létrehozott alkalmazást. Egyébként hajtsa végre az alábbi lépéseket egy üres Azure IoT Central-alkalmazás létrehozásához:
+Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazásra. Ha elvégezte az [Azure IoT Central-alkalmazás létrehozása](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) rövid útmutatót, újból felhasználhatja az abban létrehozott alkalmazást. Egyébként hajtsa végre az alábbi lépéseket egy üres Azure IoT Central-alkalmazás létrehozásához:
 
 1. Lépjen az Azure IoT Central [Alkalmazáskezelő](https://aka.ms/iotcentral) oldalára.
 
@@ -63,7 +63,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazá
     
     * Válassza a **Próba** elemet. Próbaalkalmazás létrehozásához nincs szükség Azure-előfizetésre.
     
-       A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
+       A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
     
     * Válassza az **Egyéni alkalmazás** elemet.
     
@@ -73,7 +73,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazá
 
     ![Azure IoT Central Alkalmazás létrehozása oldal](./media/tutorial-define-device-type-experimental/iotcentralcreate.png)
 
-    További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
+    További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
 
 ## <a name="create-a-new-custom-device-template"></a>Új egyéni ügyfélsablon létrehozása
 
@@ -236,7 +236,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
     * _Eszköztulajdonságok_ használatával engedélyezheti, hogy egy eszköz tulajdonságértékeket küldjön az alkalmazásnak. Ezeket a tulajdonságokat csak az eszköz módosíthatja. Az operátorok számára az eszköztulajdonságok írásvédettek. A csatlakoztatott légkondicionáló forgatókönyvében a belső vezérlőprogram verziója és az eszköz sorozatszáma az eszköz által jelentett eszköztulajdonság.
     
-    További információkért lásd: [tulajdonságok](howto-set-up-template.md#properties) az eszköz sablon beállításával kapcsolatos útmutatója.
+    További információkért lásd: [tulajdonságok](howto-set-up-template-experimental.md#properties) az eszköz sablon beállításával kapcsolatos útmutatója.
 
 * A _parancsok_ használatával távoli helyszínről kezelheti az eszközét az alkalmazáson keresztül. Közvetlenül futtathat parancsokat az eszközön a felhőből az eszközök vezérléséhez. Az operátor olyan parancsokat futtathat, mint például az újraindítás, amellyel azonnal újraindíthatja az eszközt.
 

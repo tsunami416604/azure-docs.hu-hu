@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 006d8e28413e0893cafe351577f8a018d13fd268
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ec3fcc0301083e6cd5eff34c111586ef6463f8fd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189999"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821507"
 ---
 # <a name="outbound-connections-classic"></a>Kimenő kapcsolatok (klasszikus)
 
@@ -39,7 +39,7 @@ Az Azure kimenő kapcsolatot klasszikus üzembe helyezéssel eléréséhez háro
 
 | Forgatókönyv | Módszer | IP-protokollok | Leírás | Webes feldolgozó szerepkör | IaaS | 
 | --- | --- | --- | --- | --- | --- |
-| [1. Virtuális gép példány szintű nyilvános IP-címmel](#ilpip) | Port folyamatnak álcázott nem használja az SNAT, | TCP, UDP, AZ ICMP, ESP | Az Azure a hozzárendelt virtuális gép nyilvános IP-címet használ. A példány érhető el minden rövid élettartamú port rendelkezik. | Nem | Igen |
+| [1. Virtuális gép példány szintű nyilvános IP-címmel](#ilpip) | Port folyamatnak álcázott nem használja az SNAT, | TCP, UDP, ICMP, ESP | Az Azure a hozzárendelt virtuális gép nyilvános IP-címet használ. A példány érhető el minden rövid élettartamú port rendelkezik. | Nem | Igen |
 | [2. a nyilvános elosztott terhelésű végpont](#publiclbendpoint) | A port (PAT) folyamatnak álcázott nyilvános végpontjára mutató SNAT | TCP, UDP | Az Azure IP-cím nyilvános nyilvános végpontot a több, saját végponttal rendelkező fájlmegosztások. Azure rövid élettartamú port a nyilvános végpont PAT használ. | Igen | Igen |
 | [3. Önálló virtuális gép ](#defaultsnat) | A port (PAT) folyamatnak álcázott SNAT | TCP, UDP | Az Azure automatikusan jelöl ki egy nyilvános IP-címet az SNAT, a nyilvános IP-címet oszt meg a teljes telepítést, és PAT elmúló port a nyilvános végpont IP-cím használja. Ez az a fenti esetekben egy tartalék forgatókönyvet. Nem ajánlott, ha a szükséges átláthatóságot és irányítást. | Igen | Igen |
 
@@ -54,7 +54,7 @@ Különböző központi telepítésénél a klasszikus rendelkezik a különböz
 
 [Kockázatcsökkentési stratégia](#snatexhaust) azonos különbségek is rendelkezik.
 
-A [használt algoritmus esetén előzetes lefoglalása elmúló port](#ephemeralports) PAT a klasszikus üzemi modellben nem ugyanaz, mint az Azure Resource Manager-erőforrás üzembe helyezések esetében.
+Az előzetes lefoglalása elmúló port a klasszikus üzemi modellben a PAT használt algoritmust ugyanúgy történik, mint az Azure Resource Manager-erőforrás üzembe helyezések.
 
 ### <a name="ilpip"></a>1. forgatókönyv: Virtuális gép példány szintű nyilvános IP-címmel
 
@@ -74,13 +74,13 @@ A terheléselosztó nyilvános IP-cím frontend-port a rövid élettartamú seg�
 
 SNAT portok vannak előzetesen lefoglalt leírtak szerint a [ismertetése SNAT és a PAT](#snat) szakaszban. Azok, amelyek felhasználhatók, is véges erőforrás. Fontos tudni, hogyan vannak [felhasznált](#pat). Megtudhatja, hogyan tervezhet a felhasználásra és szükség szerint, tekintse át a [kezelése SNAT Erőforrásfogyás](#snatexhaust).
 
-Amikor [több nyilvános terheléselosztásos végpontjait](load-balancer-multivip.md) létezik, a nyilvános IP-címek bármelyike egy [a kimenő forgalom jelölt](#multivipsnat), és a egy véletlenszerűen kiválasztott.  
+Amikor [több nyilvános terheléselosztásos végpontjait](load-balancer-multivip.md) létezik, a nyilvános IP-címek bármelyike kimenő forgalom csatlakozni kívánó és egy véletlenszerűen kiválasztott.  
 
 ### <a name="defaultsnat"></a>3. forgatókönyv: Hozzárendelt nyilvános IP-cím
 
 Ebben a forgatókönyvben a virtuális gép vagy a webes feldolgozói szerepkör nem képezi részét nyilvános kiegyenlített terhelésű végpontot.  És a virtuális gép esetén nincs hozzárendelve egy ILPIP-cím. Ha a virtuális Gépet hoz létre egy kimenő folyam, Azure lefordítja a kimenő folyamat egy nyilvános IP-forráscím privát forrás IP-címét. A kimenő flow használt nyilvános IP-cím nem konfigurálható, és nem számítanak bele az előfizetéshez tartozó nyilvános IP-erőforráskorlátot.  Az Azure automatikusan foglalja le ezt a címet.
 
-Azure-port folyamatnak álcázott használja az SNAT ([PAT](#pat)) Ez a függvény végrehajtásához. Ez a forgatókönyv hasonlít a [2. forgatókönyv](#lb), azzal a különbséggel ott nem használt IP-cím nem szabályozza. Ez a tartalék forgatókönyv esetében, ha 1. és 2 forgatókönyvek nem létezik. Ebben a forgatókönyvben nem ajánlott, ha azt szeretné, hogy a kimenő cím felett. Ha a kimenő kapcsolatokat az alkalmazás kritikus része, egy másik forgatókönyv kell választotta.
+Azure-port folyamatnak álcázott használja az SNAT ([PAT](#pat)) Ez a függvény végrehajtásához. Ebben a forgatókönyvben a 2,. forgatókönyv hasonló, azzal a különbséggel ott nem használt IP-cím nem szabályozza. Ez a tartalék forgatókönyv esetében, ha 1. és 2 forgatókönyvek nem létezik. Ebben a forgatókönyvben nem ajánlott, ha azt szeretné, hogy a kimenő cím felett. Ha a kimenő kapcsolatokat az alkalmazás kritikus része, egy másik forgatókönyv kell választotta.
 
 SNAT portok vannak előzetesen lefoglalt leírtak szerint a [ismertetése SNAT és a PAT](#snat) szakaszban.  A virtuális gépek vagy a webes feldolgozói szerepkörök megosztása a nyilvános IP-cím számát előzetesen lefoglalt elmúló port számát határozza meg.   Fontos tudni, hogyan vannak [felhasznált](#pat). Megtudhatja, hogyan tervezhet a felhasználásra és szükség szerint, tekintse át a [kezelése SNAT Erőforrásfogyás](#snatexhaust).
 
@@ -104,7 +104,7 @@ Minták csökkentése érdekében a feltételeket, amelyek gyakran vezetnek SNAT
 
 Portot álcázásos SNAT használata esetén a háttérkészlet mérete alapján egy algoritmus meghatározására száma előzetesen lefoglalt SNAT elérhető portok Azure használja ([PAT](#pat)). SNAT portjait elmúló port egy adott nyilvános IP-forráscím érhető el.
 
-Azure preallocates SNAT portok során egy példány van üzembe helyezve, hány virtuális gép vagy a webes feldolgozói szerepkör-példány osztozik az adott nyilvános IP-cím alapján.  Kimenő forgalom létrehozásakor [PAT](#pat) dinamikusan használ fel (a korlátig előzetesen lefoglalt) és kiadások ezeket a portokat, a folyamat befejeződésekor vagy [üresjárati időtúllépés](#ideltimeout) fordulhat elő.
+Azure preallocates SNAT portok során egy példány van üzembe helyezve, hány virtuális gép vagy a webes feldolgozói szerepkör-példány osztozik az adott nyilvános IP-cím alapján.  Kimenő forgalom létrehozásakor [PAT](#pat) dinamikusan használ fel (a korlátig előzetesen lefoglalt) és kiadások ezeket a portokat, amikor a folyamat bezárása vagy üresjárati időtúllépés fordulhat elő.
 
 Az alábbi táblázat az SNAT port preallocations készletméretek háttér-szint esetében:
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 690c2769e129d5661e7d66cb3f9f968643c0dbdb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: af90a946f12e11602d45300a2796787f839dcf02
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747003"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811086"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Adatkészleteket az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -86,7 +86,7 @@ A következő táblázat ismerteti a fenti JSON-tulajdonságok:
 | struktúra |Az adatkészlet sémája.<br/><br/>További információkért lásd: [adatkészlet-szerkezetekben](#Structure). |Nem |NA |
 | typeProperties | A típus tulajdonságokat különböznek az egyes (például: Az Azure Blob, az Azure SQL-tábla). További információ a támogatott típusok és a hozzájuk tartozó tulajdonságok: [adatkészlettípus](#Type). |Igen |NA |
 | external | Adja meg, hogy data factory-folyamatok explicit módon előállított adatkészlet vagy nem a logikai jelzőt. Ha a tevékenység bemeneti adatkészlete nem a jelenlegi folyamat által előállított, ezt a jelzőt true értékre. Ezt a jelzőt igaz értékre a folyamat az első tevékenység bemeneti adatkészlete esetében.  |Nem |false |
-| rendelkezésre állás | Határozza meg (például óránként vagy naponta) feldolgozási időszakának vagy a slicing az adatkészlet üzemi modellt. Egy tevékenység futtatása által felhasznált és előállított adatok minden egysége adatszelet nevezzük. Kimeneti adatkészlet rendelkezésre állásának napi (gyakorisága –, időköz – 1 nap) értékre van állítva, ha a szelet előállítása naponta. <br/><br/>További információkért lásd: [adatkészlet rendelkezésre](#Availability). <br/><br/>Felosztási modelljét a adatkészlet részletes ismertetéséért tekintse meg a [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) cikk. |Igen |NA |
+| rendelkezésre állás | Határozza meg (például óránként vagy naponta) feldolgozási időszakának vagy a slicing az adatkészlet üzemi modellt. Egy tevékenység futtatása által felhasznált és előállított adatok minden egysége adatszelet nevezzük. Kimeneti adatkészlet rendelkezésre állásának napi (gyakorisága –, időköz – 1 nap) értékre van állítva, ha a szelet előállítása naponta. <br/><br/>További információkért lásd: az adatkészlet rendelkezésre. <br/><br/>Felosztási modelljét a adatkészlet részletes ismertetéséért tekintse meg a [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) cikk. |Igen |NA |
 | szabályzat |Határozza meg a feltételeket és a feltétellel, hogy az adatkészlet szeleteit meg kell felelniük. <br/><br/>További információkért lásd: a [adatkészlet házirend](#Policy) szakaszban. |Nem |NA |
 
 ## <a name="dataset-example"></a>Példa adatkészlet

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 0480a8d4079a39c8e365dde893a9a1af2d7341aa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 99e3abb1bedffdb5a7d49c033ebc8b4c46df1c03
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453110"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769276"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Adatok exportálása az Azure Blob storage-ból az Azure Import/Export szolgáltatás használata
 Ebben a cikkben részletes útmutatás az Azure Import/Export szolgáltatás használatával nagy mennyiségű adat biztonságosan exportálása az Azure Blob storage-ból. A szolgáltatás megköveteli, hogy az Azure-adatközpontba üres meghajtókon szállításra. A szolgáltatás adatokat exportál a tárfiók a meghajtók, és vissza a meghajtók majd tartalmaz.
@@ -145,7 +145,7 @@ Ez *választható* . lépés: azt határozza meg, hány meghajtót az exportál�
     |**/sn:**|Kötelező. A storage-fiók neve az exportálási feladatot.|  
     |**/SK:**|Csak akkor szükséges, ha nincs megadva egy SAS-tárolót. A fiókkulcs a storage-fiókját az exportálási feladatot.|  
     |**/csas:**|Csak akkor szükséges, ha nincs megadva a tárfiók kulcsára. A tároló SAS az exportálási feladatot exportálandó blobok listázásához.|  
-    |**/ExportBlobListFile:**|Kötelező. Az XML-fájl elérési útja blob elérési útjának listáját tartalmazó fájl, vagy a blob elérési útja előtagok exportálható a blobok számára. A használt fájlformátum a `BlobListBlobPath` eleme a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) az Import/Export szolgáltatás REST API-művelet.|  
+    |**/ExportBlobListFile:**|Kötelező. Az XML-fájl elérési útja blob elérési útjának listáját tartalmazó fájl, vagy a blob elérési útja előtagok exportálható a blobok számára. A használt fájlformátum a `BlobListBlobPath` eleme a [Put feladat](/rest/api/storageimportexport/jobs) az Import/Export szolgáltatás REST API-művelet.|  
     |**/DriveSize:**|Kötelező. Exportálási feladatokhoz használható meghajtók méretének *például*, 500 GB, 1,5 TB.|  
 
     Tekintse meg az [példa a PreviewExport parancs](#example-of-previewexport-command).

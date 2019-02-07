@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f03fc201c1bce3187fdbd25c1de3567170478d30
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 38bb0840269d4b7bacbb0101590b389c8542a9b1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488438"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814231"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Az Azure Active Directory Connect szinkronizálási szolgáltatás: Konfigurálja az Office 365-erőforrások adatainak előnyben részesített helye
 Ez a témakör az a célja, hogy végigvezetik az attribútum a adatainak előnyben részesített helye konfigurálása az Azure Active Directory (Azure AD) Connect-szinkronizálás. Amikor valaki használ Multi-földrajzi funkciókat az Office 365-ben, ez az attribútum használatával a földrajzi helymeghatározás, a felhasználó Office 365-adatokat jelöl ki. (A használati *régió* és *földrajzi* azonos értelemben használják.)
@@ -238,7 +238,7 @@ A beépített szinkronizálásütemező újbóli engedélyezése:
 ## <a name="step-8-verify-the-result"></a>8. lépés: Az eredmény ellenőrzése
 Mostantól, ellenőrizze a konfigurációt, és engedélyezheti a felhasználók számára.
 
-1. Adja hozzá a felhasználó által a kijelölt attribútum a földrajzi. A térségek listája található [Ez a táblázat](#enable-synchronization-of-preferreddatalocation).  
+1. Adja hozzá a felhasználó által a kijelölt attribútum a földrajzi. A térségek listája ebben a táblázatban található.  
 ![Képernyőkép egy felhasználó hozzá AD-attribútum](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
 2. Várjon, amíg a szinkronizálását az Azure AD-attribútum.
 3. Az Exchange Online PowerShell használatával, győződjön meg arról, hogy a postaláda régióban megfelelően van beállítva.  

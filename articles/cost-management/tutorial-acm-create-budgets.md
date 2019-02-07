@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2019
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 7ffceaf761d459667e4118e3e10b733898ea2710
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b41d086c092f3b18715d8fb70cd1a487a97c6869
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053976"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814044"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Létrehozása és kezelése az Azure költségvetése
 
@@ -35,7 +35,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Költségvetése minden Azure nagyvállalati szerződéssel rendelkező ügyfelek számára érhetők el. Költségvetések megtekintése az Azure nagyvállalati szerződéssel rendelkező előfizetés olvasási hozzáféréssel kell rendelkeznie. Hozhat létre és kezelheti költségvetése közreműködő engedéllyel kell rendelkeznie. Az EA-előfizetések és -erőforráscsoportok egyes költségvetése hozhat létre. Azonban a nagyvállalati szerződéssel rendelkező fiókok számlázási költségvetése nem hozható létre.
+Többféle Azure-fiók típusú költségvetéshez támogatottak. A támogatott típusok teljes listáját, tekintse meg [megismerheti a Cost Management adataihoz](understand-cost-mgt-data.md). Költségvetése megtekintéséhez legalább az Azure-fiókjával kell olvasási hozzáférést.
+
+ Az Azure EA-előfizetések költségvetések megtekintése olvasási hozzáféréssel kell rendelkeznie. Hozhat létre és kezelheti költségvetése közreműködő engedéllyel kell rendelkeznie. Az EA-előfizetések és -erőforráscsoportok egyes költségvetése hozhat létre. Azonban a nagyvállalati szerződéssel rendelkező fiókok számlázási költségvetése nem hozható létre.
 
 A következő Azure-engedélyeket felhasználó és csoport által támogatott költségvetése előfizetésenként:
 
@@ -59,7 +61,7 @@ Kattintson a **Hozzáadás** parancsra.
 
 ![Az Azure Portalon látható a Cost Management költségvetése](./media/tutorial-acm-create-budgets/budgets01.png)
 
-Az a **létrehozás költségvetés** ablakban adja meg a költségvetés és a költségvetés összege. Ezután válassza ki egy havi, negyedéves, vagy egy éves időtartama. Ezután válassza ki a befejező dátum. Költségvetés legalább egy költséget küszöb (% költségvetés) és a egy megfelelő e-mail-címre van szükség. Szükség esetén belefoglalhatja a legfeljebb öt küszöbértékeket és a egy egyetlen költségvetésben öt e-mail címet. Amikor teljesül a költségvetés küszöbértéket, e-mail-értesítések általában kevesebb mint nyolc óra fogadott.
+Az a **létrehozás költségvetés** ablakban adja meg a költségvetés és a költségvetés összege. Ezután válassza ki egy havi, negyedéves, vagy egy éves időtartama. Ezután válassza ki a befejező dátum. Költségvetés legalább egy költséget küszöb (% költségvetés) és a egy megfelelő e-mail-címre van szükség. Szükség esetén belefoglalhatja a legfeljebb öt küszöbértékeket és a egy egyetlen költségvetésben öt e-mail címet. Amikor teljesül a költségvetés küszöbértéket, e-mail-értesítések általában kevesebb mint nyolc óra fogadott. Értesítések kapcsolatos további információkért lásd: [használata költség riasztások](cost-mgt-alerts-monitor-usage-spending.md).
 
 Íme egy példa egy havi költségvetés hoz létre az $4500. E-mailek beolvasása riasztás 90 %-a költségvetés elérésekor.
 

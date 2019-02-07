@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.openlocfilehash: 705d23a93b25c513d413f2115c47d52ff6ef2bac
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9fa711c86e3ef7f05e87504905ec642808d8f601
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229501"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770282"
 ---
 # <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>Az Azure-ban, CentOS, az Ansible megoldássablon telepítése
 Az Ansible megoldássablon az Azure-hoz készült Ansible és a egy csomag az eszközök konfigurálva az Azure-ral együtt CentOS virtuális gépeken az Ansible-példány konfigurálása. Az eszközök a következőket foglalják magukban:
@@ -53,7 +53,7 @@ Az Ansible megoldássablon az Azure-hoz készült Ansible és a egy csomag az es
 1. Az a **további beállítás** lapra, adja meg a szükséges információkat:
 
     - **Méret** – az Azure portal, az alapértelmezett érték egy standard méretű. Adjon meg egy másik méretet, amely adott forgatókönyvnek megfelelő, válassza a nyílra kattintva különböző méretű listájának megjelenítéséhez.
-    - **Virtuálisgép-lemez mérete** – ezek közül bármelyikre **SSD** (prémium szintű Solid-State meghajtó) vagy **HDD** (merevlemez-meghajtó). A bemutatóhoz én **SSD** van kiválasztva a teljesítmény előnyeit. További információ az egyes lemezes tárolás, az ilyen típusú: a következő cikkeket:
+    - **Virtuális merevlemez típusa** – ezek közül bármelyikre **SSD** (prémium szintű Solid-State meghajtó) vagy **HDD** (merevlemez-meghajtó). A bemutatóhoz én **SSD** van kiválasztva a teljesítmény előnyeit. További információ az egyes lemezes tárolás, az ilyen típusú: a következő cikkeket:
         - [Virtuális gépekhez való nagy teljesítményű Premium Storage és felügyelt lemezek](/azure/virtual-machines/windows/premium-storage)
         - [Standard SSD Managed Disks-Azure-beli virtuális gépek számítási feladataihoz](/azure/virtual-machines/windows/disks-standard-ssd)
     - **Nyilvános IP-cím** – adja meg ezt a beállítást, ha azt szeretné, a virtuális gépet a virtuális gép kívülről folytatott kommunikációhoz. Az alapértelmezett érték az új nyilvános IP-címet, amelynek a neve `ansible-pip`. Adjon meg egy másik IP-címet, a nyilat az attribútumok – például a nevét, Termékváltozat és hozzárendelését, az IP-címet adjon meg. 

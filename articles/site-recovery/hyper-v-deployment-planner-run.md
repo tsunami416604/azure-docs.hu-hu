@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b5f0a2a418c53a5049ebff9bba9188219a9aeb13
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 16c37f5ccaed7c161ecaae65a07c5da7400aad3c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321177"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815072"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery deployment planner a Hyper-V vészhelyreállítás az Azure-bA
 
 Futtathatja a Site Recovery deployment planner parancssori eszköz (ASRDeploymentPlanner.exe) a négy mód bármelyikében: 
--   [A virtuálisgép-lista lekérdezése](#get-vm-list-for-profiling-hyper-v-vms)
+-   A virtuális gép (VM) listájának lekérése
 -   [Profil](#profile-hyper-v-vms)
--   [Jelentés létrehozása](#generate-report)
+-   Jelentés létrehozása
 -   [Átviteli sebesség lekérdezése](#get-throughput)
 
 Először futtassa az eszközt, hogy megkapja a virtuális gépek listáját egy vagy több Hyper-V-gazdagépről. Ezt követően futtassa profilkészítési módban az eszközt a virtuális gép adatváltozásának és IOPS-értékének összegyűjtéséhez. Ezután futtassa az eszközt a jelentés létrehozásához, hogy megtudhassa a hálózati sávszélességet és a tárolási követelményeket.
@@ -74,7 +74,7 @@ Az eszköz 15 másodpercenként lekérdezi a Hyper-V-kiszolgálót a pontos prof
 Az eszköz zökkenőmentesen kezeli a virtuális gépek csomópontok közötti migrációját a fürtben és a tárolómigrációt egy gazdagépen belül.
 
 ### <a name="getting-the-vm-list-to-profile"></a>Profillal ellátni kívánt virtuális gépek listájának lekérése
-Tekintse át a [GetVMList](#get-vm-list-for-profiling-hyper-v-vms) műveletet a profillal ellátni kívánt virtuális gépek listájának létrehozásához.
+Virtuális gépek listájának profilt létrehozni, tekintse meg a GetVMList művelet.
 
 Ha megvan azon virtuális gépek listája, amelyekről profilt szeretne készíteni, futtathatja az eszközt profilkészítési módban. 
 

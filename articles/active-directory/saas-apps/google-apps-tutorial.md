@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 38a6ca75-7fd0-4cdc-9b9f-fae080c5a016
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 4705bb8c93381a2487ba94f9dfe3a7e8820f2fd9
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: dd413f9a7eba60fd72e7cc29f44f49b72eaaf806
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902465"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Oktatóanyag: Az Azure Active Directory-integráció, a G Suite-tal
 
@@ -75,11 +75,11 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 
     V: A telepítő az e-mailek attribútum szükség a felhasználók tudják jelentkezik be. Ez az attribútum nem állítható be kézzel.
 
-    Az e-mailek attribútum töltve egy érvényes Exchange-licenccel rendelkező bármelyik felhasználó számára. Ha a felhasználó nem áll, levelezési címmel rendelkező, ez a hiba fogadja, az alkalmazás meg kell kapnia a hozzáférést, hogy ez az attribútum.
+    Az e-mailek attribútum töltve egy érvényes Exchange-licenccel rendelkező bármelyik felhasználó számára. Levelezési a felhasználó nem áll, ha ez a hiba fog kapni, mint az alkalmazás meg kell kapnia a hozzáférést, hogy ez az attribútum.
 
-    Annak érdekében, hogy az Exchange-licencek hozzárendelése, nyissa meg egy rendszergazdai fiókkal portal.office.com, majd kattintson a felügyeleti központban, számlázási, előfizetési, válassza ki az Office 365-előfizetéssel, és kattintson a hozzárendelése a felhasználókhoz, válassza ki az ellenőrizni kívánt felhasználók azok előfizetés és a jobb oldali ablaktáblában kattintson a Szerkesztés a licenc.
+    Nyissa meg egy rendszergazdai fiókkal portal.office.com, majd kattintson a felügyeleti központban, számlázási, előfizetési lehetőségekről, válassza ki az Office 365-előfizetéssel, és kattintson a hozzárendelheti a felhasználók számára, jelölje be az előfizetésüket, ellenőrizze, és a jobb oldali ablaktáblában kattintson a kívánt felhasználókat Szerkesztés a licenc.
 
-    Miután az Exchange-licenc van hozzárendelve, a alkalmazni kell néhány percet igénybe vehet. Ezt követően a user.mail attribútum lesz töltve, és fel kell oldani a problémát.
+    Miután az Office 365-licenc van hozzárendelve, a alkalmazni kell néhány percet igénybe vehet. Ezt követően a user.mail attribútum lesz töltve, és fel kell oldani a problémát.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -142,28 +142,45 @@ A G Suite konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre az 
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha a konfigurálni kívánt a **Gmail** hajtsa végre az alábbi lépéseket:
 
     ![A G Suite-tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím URL-címe: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím:
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
     | |
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `http://google.com` |
+    | `http://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [G Suite ügyfél-támogatási csapatának](https://www.google.com/contact/) beolvasni ezeket az értékeket.
 
-5. A G Suite-alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőfelvételen látható erre egy példa látható. Az alapértelmezett érték **egyedi felhasználói azonosító** van **user.userprincipalname** , de a G Suite vár ezt a képezhető le a felhasználó e-mail-címmel. Használhatja, amely **user.mail** attribútumot a listából, vagy használja a megfelelő attribútum értéket, a szervezet konfiguráció alapján.
+5. Az a **alapszintű SAML-konfigurációja** szakaszra, ha a konfigurálni kívánt a **Google Cloud Platform** hajtsa végre az alábbi lépéseket:
+
+    ![A G Suite-tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
+
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím URL-címe: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
+
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
+    | |
+    |--|
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `http://google.com` |
+    | `http://google.com/a/<yourdomain.com>` |
+    
+    > [!NOTE] 
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [G Suite ügyfél-támogatási csapatának](https://www.google.com/contact/) beolvasni ezeket az értékeket.
+
+6. A G Suite-alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőfelvételen látható erre egy példa látható. Az alapértelmezett érték **egyedi felhasználói azonosító** van **user.userprincipalname** , de a G Suite vár ezt a képezhető le a felhasználó e-mail-címmel. Használhatja, amely **user.mail** attribútumot a listából, vagy használja a megfelelő attribútum értéket, a szervezet konfiguráció alapján.
 
     ![image](common/edit-attribute.png)
 
-6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+7. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
 
     | Name (Név) | Adatforrás-attribútum |
     | ---------------| --------------- |
@@ -187,11 +204,11 @@ A G Suite konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre az 
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-8. Az a **állítsa be a G Suite** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+9. Az a **állítsa be a G Suite** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
@@ -203,7 +220,7 @@ A G Suite konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre az 
 
 ### <a name="configure-g-suite-single-sign-on"></a>A G Suite egyszeri bejelentkezés konfigurálása
 
-1. Nyisson meg egy új lapot a böngészőben, és jelentkezzen be a [G Suite felügyeleti konzol](https://admin.google.com/) a rendszergazdai fiók használatával.
+1. Nyisson meg egy új lapot a böngészőben, és jelentkezzen be a [G Suite felügyeleti konzol](http://admin.google.com/) a rendszergazdai fiók használatával.
 
 2. Kattintson a **biztonsági**. Ha a hivatkozás nem jelenik meg, akkor előfordulhat, hogy elrejtve a **további vezérlők** menü a képernyő alján.
 

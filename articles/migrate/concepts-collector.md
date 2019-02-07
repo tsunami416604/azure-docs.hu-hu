@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 7a17bed165a5a8ff15a122a1376d1a3a5e17d45f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0568df92db2114c57a0aa027ade369e4b256af84
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700927"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813330"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -65,7 +65,7 @@ A gyűjtő át kell adnia néhány előfeltétel-ellenőrzéseket győződjön m
 - **Ellenőrizze az internetkapcsolatot**: A gyűjtő kapcsolódhatnak közvetlenül az internethez, vagy egy proxyn keresztül.
     - Az előfeltétel-ellenőrzés ellenőrzi a kapcsolatot a [szükséges és választható URL-címek](#urls-for-connectivity).
     - Ha közvetlenül kapcsolódik az internethez, az adott semmit nem szükséges, eltérő gondoskodik róla, hogy, hogy a gyűjtő elérje a szükséges URL-címek.
-    - Ha egy proxyn keresztül csatlakozik, vegye figyelembe a [kapcsolatos követelményeiről alább](#connect-via-a-proxy).
+    - Ha egy proxyn keresztül csatlakoztatja, vegye figyelembe az alábbi követelményeknek.
 - **Időszinkronizálás ellenőrzése**: A gyűjtő kell szinkronizálva az internetes időkiszolgálóval hitelesíti a kérelmeket a szolgáltatás biztosításához.
     - A portal.azure.com URL-cím kell a gyűjtő érhető el, hogy az idő érvényesíthető legyen.
     - Ha a gép nincs szinkronizálva, az idő a gyűjtő virtuális gépen az aktuális idő megfelelően módosítani szeretné. Ehhez a nyissa meg egy rendszergazdai parancssort a virtuális Gépen, futtassa **w32tm /tz** időzóna ellenőrzésére. Futtatás **w32tm/resync** az idő szinkronizálása.
@@ -75,7 +75,7 @@ A gyűjtő át kell adnia néhány előfeltétel-ellenőrzéseket győződjön m
     - A gyűjtő szolgáltatás csatlakozik a vCenter-kiszolgáló, a virtuális gép metaadatainak és a teljesítmény adatokat gyűjti össze és elküldi azokat az Azure Migrate szolgáltatásnak.
 - **Ellenőrizze a VMware PowerCLI 6.5 telepítve**: A VMware PowerCLI 6.5-ös PowerShell modulnak telepítve kell lennie a gyűjtő virtuális gépen, hogy a vCenter-kiszolgáló képes kommunikálni.
     - Ha a gyűjtő el tudja érni az URL-címeket, a modul telepítéséhez szükséges, telepítés automatikusan gyűjtő üzembe helyezés során.
-    - Ha a gyűjtő nem tudja telepíteni a modul üzembe helyezése során, akkor kell [telepítse manuálisan](#install-vwware-powercli-module-manually).
+    - Ha a gyűjtő nem tudja telepíteni a modul üzembe helyezése során, akkor manuálisan kell telepítenie.
 - **Ellenőrizze a vCenter-kiszolgáló kapcsolatot**: A gyűjtő a vCenter-kiszolgálóhoz kapcsolódva kérdezi le a virtuális gépek, a metaadatok és a teljesítményszámlálók képesnek kell lennie. [Előfeltételek ellenőrzése](#connect-to-vcenter-server) kapcsolódáshoz.
 
 

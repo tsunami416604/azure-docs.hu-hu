@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 91e6c2d400fa7add33a6c8e8856a3b9f8cfef4a3
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 53f81a06a0a10d4526816b5117eb12f01d75e25a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912833"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819161"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>A HDInsight Apache Storm írhat az Apache Hadoop HDFS-be
 
@@ -45,7 +45,7 @@ Az alábbi környezeti változók állíthatók be a Java és a JDK fejlesztői 
 ## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>A HdfsBolt használata a HDInsight
 
 > [!IMPORTANT]  
-> A HdfsBolt használata a HDInsight alatt futó Stormmal, előtt meg kell először használjon szkriptműveletet szükséges jar fájlok másolása a `extpath` a Storm. További információkért lásd: a [konfigurálja a fürt](#configure) szakaszban.
+> A HdfsBolt használata a HDInsight alatt futó Stormmal, előtt meg kell először használjon szkriptműveletet szükséges jar fájlok másolása a `extpath` a Storm. További információkért tekintse meg a fürt szakasz konfigurálása.
 
 A HdfsBolt megtudhatja, hogyan írni a HDFS biztosító fájl sémát használó. A HDInsight használja az alábbi rendszerek egyikét:
 

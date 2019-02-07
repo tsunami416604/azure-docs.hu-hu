@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bd9df4553a50f162a4fb2142b7085f813311754f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 77eaa6a642e02206eac319b76666bed8ae1fd165
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015831"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822425"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatok áthelyezése egy helyszíni forrásra, és a felhő között az adatkezelési átjáróval
 > [!NOTE]
@@ -172,7 +172,7 @@ Ebben a lépésben két társított szolgáltatást hoz létre: **AzureStorageLi
       4. Az a **hitelesítő adatok beállítása** párbeszédpanelen adja meg a hitelesítési típus, a felhasználónevet és jelszót, és kattintson a **OK**. Ha a kapcsolat létrejött, a titkosított hitelesítő adatokat a JSON-fájlban tárolódnak, és a párbeszédpanel bezárul.
       5. Zárja be a párbeszédpanel indul el, ha nem automatikusan lezárva üres a böngészőlapot, és az Azure Portalon tartalmazó lapra való visszatéréshez.
 
-         Az átjárót tartalmazó számítógépen, ezek a hitelesítő adatok vannak **titkosított** tanúsítvánnyal, amely a Data Factory szolgáltatás tulajdonosa. Ha azt szeretné, hogy inkább az adatkezelési átjáró társítva van a tanúsítvány használatára, lásd: [hitelesítő adatok beállítása a biztonságos](#set-credentials-and-security).    
+         Az átjárót tartalmazó számítógépen, ezek a hitelesítő adatok vannak **titkosított** tanúsítvánnyal, amely a Data Factory szolgáltatás tulajdonosa. Ha azt szeretné, hogy inkább az adatkezelési átjáró társítva van a tanúsítvány használatára, lásd: biztonságos hitelesítő adatok beállítása.    
    3. Kattintson a **telepítés** a parancssávon az SQL Server telepítéséhez társított szolgáltatást. A társított szolgáltatást, a fanézetben megtekintheti.
 
       ![SQL Server társított szolgáltatásának a faszerkezetes nézetben](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
@@ -280,7 +280,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
    * **folderPath** értékre van állítva **adftutorial/outfromonpremdf** ahol outfromonpremdf-e a mappát az adftutorial tárolóban. Hozzon létre a **adftutorial** tárolót, ha azt nem létezik.
    * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatás létrehoz egy kimeneti adatszeletet az óránként a **emp** táblát az Azure SQL Database-ben.
 
-   Ha nem ad meg egy **fileName** a egy **eredménytábla**, az előállított fájlok a **folderPath** a következő formátumban lesznek elnevezve: Adatok. <Guid>.txt (például:: Data.0a405f8a-93ff-4c6f-B3BE-f69616f1df7a.txt.).
+   Ha nem ad meg egy **fileName** a egy **eredménytábla**, az előállított fájlok a **folderPath** a következő formátumban lesznek elnevezve: Adatok. <Guid>.txt (például:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    Beállítása **folderPath** és **fileName** dinamikusan alapján a **SliceStart** idő, a "partitionedBy" tulajdonsággal. A következő példában a folderPath tulajdonság a SliceStart (a feldolgozás alatt álló szelet kezdő időpontja) változó Év, Hónap és Nap értékeit, a fileName tulajdonság pedig a SliceStart változó Óra értékét használja. Ha például a szelet előállítása a 2014-10-20T08:00:00 időpontban kezdődik, a folderName tulajdonság beállítása wikidatagateway/wikisampledataout/2014/10/20, a fileName beállítása pedig 08.csv lesz.
 
@@ -389,11 +389,11 @@ Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factor
 
 1. Kattintson duplán a diagram **EmpOnPremSQLTable**.  
 
-    ![EmpOnPremSQLTable szeletek](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
+    ![EmpOnPremSQLTable slices](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
 2. Figyelje meg, hogy az adatok a szeleteket be mind a **készen** állapot, mert ez a folyamat időtartama (kezdő időpontja és Befejezés időpontja). Ez azért is az adatok beszúrása az SQL Server-adatbázisban, és van folyamatosan. Győződjön meg arról, hogy nincs szeletek megjelennek a **problémás szeletek** alul található szakaszában. Az összes szelet megjelenítéséhez kattintson **Továbbiak** szeletek hosszabb listájának alján.
 3. Most a **adatkészletek** kattintson **OutputBlobTable**.
 
-    ![OputputBlobTable szeletek](./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png)
+    ![OputputBlobTable slices](./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png)
 4. Kattintson a listában lévő bármelyik adatszeletre, és megjelenik a **Adatszelet** lapot. A szelet tevékenységfuttatásokat fog látni. Általában csak egy tevékenységfuttatás megjelenik.  
 
     ![Data Slice panel](./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png)

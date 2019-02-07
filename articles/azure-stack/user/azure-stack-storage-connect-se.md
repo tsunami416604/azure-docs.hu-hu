@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/24/2019
+ms.date: 02/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: d1bddc8331fc1a9ded37949a8065636947074852
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9debcd121cbbde626758abccfe838abda12ad840
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246730"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822833"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Storage explorer csatlakoztatása Azure Stack-előfizetéshez vagy a storage-fiók
 
@@ -45,20 +45,15 @@ Az az Azure Stack Development Kit (ASDK), kell exportálni az Azure Stack szolg�
 
 ### <a name="export-and-then-import-the-azure-stack-certificate"></a>Exportálja és importálja az Azure Stack-tanúsítvány
 
+Exportálja és importálja az Azure Stack-tanúsítvány esetében a ASDK. Integrált rendszer nyilvánosan aláírt tanúsítvány. Tehát ez a lépés nem szükséges, amíg beállítása a Storage Explorer kapcsolat Azure Stackhez integrált rendszer.
+
 1. Nyissa meg `mmc.exe` az Azure Stack gazdagépen vagy az Azure Stackhez VPN-kapcsolattal egy helyi számítógépre. 
 
 2. A **fájl**válassza **beépülő modul hozzáadása/eltávolítása**, majd adja hozzá **tanúsítványok** kezeléséhez **saját felhasználói fiókot**.
 
-3.  A **Console Root\Certificated (helyi számítógép) \Trusted Root Certification Authorities\Certificates**.
+3.  A **Console Root\Certificated (helyi számítógép) \Trusted Root Certification Authorities\Certificates**. Find **AzureStackSelfSignedRootCert**.
 
-    - A ASDK található **AzureStackSelfSignedRootCert**.
-
-        ![Az Azure Stack főtanúsítványának betöltése az mmc.exe segítségével](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
-
-    - Egy integrált rendszer keresse meg a főtanúsítványt a külső tanúsítványok. 
-    
-        ![Az Azure Stack főtanúsítványának betöltése az mmc.exe segítségével](./media/azure-stack-storage-connect-se/azure-stack-storage-cert-location-is.png)
-        
+    ![Az Azure Stack főtanúsítványának betöltése az mmc.exe segítségével](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
 4. Válassza ki a tanúsítványra jobb kattintás **feladatok** > **exportálása**, majd kövesse az utasításokat a tanúsítvány exportálása a **Base-64 kódolású X.509 (. CER)**.
 

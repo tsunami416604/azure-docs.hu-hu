@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 02/05/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: a90ef531cedb5e4c32a8f0af8b6cca86a93fb39a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e526d7fac3c66c5eaf9686db3c9f9f9506d6fc6b
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997124"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768657"
 ---
 # <a name="what-is-azure-cost-management"></a>Mi az Azure Cost Management?
 
-A költségkezelés az a folyamat, amely során hatékonyan megtervezi és szabályozza az üzleti költségeket. A költségkezelési feladatokat általában pénzügyi, felügyeleti és az alkalmazásokat kezelő csapatok végzik. Az Azure Cost Management a Microsoft nagyvállalati szerződés (EA) segítségével segít a szervezeteknek a tervezésben, figyelembe véve a költségeket. Továbbá támogatást nyújt a költségek hatékony elemzésében, és a felhőköltségek optimalizálásának kezdő lépéseiben. Ha több információra van szüksége arról, hogy szervezetileg hogyan közelíthető meg a költségkezelés, tekintse meg a következő cikket: [Az Azure Cost Management ajánlott eljárásai](cost-mgt-best-practices.md).
+A költségkezelés az a folyamat, amely során hatékonyan megtervezi és szabályozza az üzleti költségeket. A költségkezelési feladatokat általában pénzügyi, felügyeleti és az alkalmazásokat kezelő csapatok végzik. Az Azure Cost Management segít a szervezeteknek szem előtt a költségek tervezését. Továbbá támogatást nyújt a költségek hatékony elemzésében, és a felhőköltségek optimalizálásának kezdő lépéseiben. Ha több információra van szüksége arról, hogy szervezetileg hogyan közelíthető meg a költségkezelés, tekintse meg a következő cikket: [Az Azure Cost Management ajánlott eljárásai](cost-mgt-best-practices.md).
 
 Habár kapcsolódik hozzá, a számlázás eltér a költségkezeléstől. A számlázás a számlák kiállításának folyamata az ügyfelek részére árucikkekről vagy szolgáltatásokról, valamint a kereskedelmi kapcsolat kezelése.  A számlázási feladatokat általában a beszerzés és a pénzügyi csapatok végzik.
 
@@ -29,7 +29,7 @@ Az Azure Portal vagy pedig a különféle API-k használatával automatizálhatj
 
 ## <a name="plan-and-control-expenses"></a>Költségtervezés és -irányítás
 
-A Cost Management többek közt a következő módokon segíthet a költségirányítással, valamint előre tervezni bizonyos költségekkel: költségelemzés, költségvetések, javaslatok és költségelemzési adatok exportálása.
+A lehetőség a Cost Management segítségével tervezze meg és tarthatja kézben a költségeit tartalmazza: Költséghatékony, elemzés, költségvetése, javaslatokat, és exportálása a költségkezelési adatokhoz.
 
 A költségelemzés használatával megvizsgálhatja és elemezheti szervezete költségeit. Megtekintheti szervezete összesített költségeit, hogy jobban átláthassa, hogy mely területeken vannak elhatárolt költségek, valamint felismerheti a kiadási trendeket. Továbbá láthatja az idők során felhalmozott költségeket, így a költségvetéshez viszonyítva készíthet havi, negyedéves vagy akár éves költségtrendbecsléseket is.
 
@@ -45,7 +45,7 @@ A [Cloudyn](overview.md) egy, a Cost Managementhez kapcsolódó Azure-szolgálta
 
 ## <a name="additional-azure-tools"></a>További Azure-eszközök
 
-Az Azure más olyan eszközökkel is rendelkezik, amelyeket az Azure Cost Management szolgáltatáskészlete nem tartalmaz. Azonban fontos szerepük van a költségkezelés folyamatában. Az eszközökkel kapcsolatos további tudnivalókért lásd az alábbi hivatkozásokat.
+Az Azure más olyan eszközökkel is rendelkezik, amelyeket az Azure Cost Management szolgáltatáskészlete nem tartalmaz. Azonban, hogy fontos szerepet játszik a cost management folyamat. Az eszközökkel kapcsolatos további tudnivalókért lásd az alábbi hivatkozásokat.
 
 - [Azure Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) – segítségével becslést végezhet kezdeti felhőköltségeiről.
 - [Azure Migrate](../migrate/migrate-overview.md) – felmérheti adatközpontja jelenlegi számítási feladatait, így betekintést nyerhet abba, hogy mit várjon el egy Azure helyettesítő megoldástól.

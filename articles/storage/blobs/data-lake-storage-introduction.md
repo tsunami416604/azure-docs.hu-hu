@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Storage Gen2 előzetes bemutatása
-description: Az Azure Data Lake Storage Gen2 előzetes verzió nyújt áttekintést
+title: Az Azure Data Lake Storage Gen2 bemutatása
+description: Az Azure Data Lake Storage Gen2 nyújt áttekintést
 services: storage
 author: jamesbak
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 17b6d0ecf56ec07d3a46949b6ae3b63a6c4b94d7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 018171d4b2253c2cf7942f9f10424a9c695438b9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250112"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809436"
 ---
-# <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Bevezetés az Azure Data Lake Storage Gen2 előzetes verzió
+# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Bevezetés az Azure Data Lake Storage Gen2-re
 
-Az Azure Data Lake Storage Gen2 előzetes verzió dedikált alapuló, big data-elemzési képességeket [Azure Blob storage](storage-blobs-introduction.md). Data Lake Storage Gen2 beépül a két meglévő storage-szolgáltatások, az Azure Blob storage és az Azure Data Lake Storage Gen1 képességeit eredménye. A szolgáltatások [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), mint például a fájlrendszer szemantikáját, a könyvtárban, és a fájl biztonság és a méretezési csoport alacsony költségű, a többrétegű tárolást, magas rendelkezésre állás/vész-helyreállítási lehetőségei a kombinálva[Azure Blob storage](storage-blobs-introduction.md).
+Az Azure Data Lake Storage Gen2 dedikált alapuló, big data-elemzési képességeket [Azure Blob storage](storage-blobs-introduction.md). Data Lake Storage Gen2 beépül a két meglévő storage-szolgáltatások, az Azure Blob storage és az Azure Data Lake Storage Gen1 képességeit eredménye. A szolgáltatások [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), mint például a fájlrendszer szemantikáját, a könyvtárban, és a fájl biztonság és a méretezési csoport alacsony költségű, a többrétegű tárolást, magas rendelkezésre állás/vész-helyreállítási lehetőségei a kombinálva[Azure Blob storage](storage-blobs-introduction.md).
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Vállalati big data-elemzés tervezve
 

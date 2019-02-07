@@ -6,19 +6,19 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 5d55879a5a8487636e2252abd359accf07e60ce6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 41065b4ac6bc486e204c2bfd72b78ba8722270c4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634085"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809163"
 ---
-# <a name="mount-the-avere-vfxt-cluster"></a>Csatlakoztassa a Avere vFXT fürt  
+# <a name="mount-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt csatlakoztatása  
 
 Kövesse az alábbi lépéseket az ügyfélgépek a vFXT fürthöz való kapcsolódáshoz.
 
 1. Annak eldöntése, hogyan kell a fürt csomópontok közötti terheléselosztás ügyfél forgalmát. Olvasási [egyenleg ügyfélterhelés](#balance-client-load), az alábbi részleteket. 
-1. Azonosítsa a [IP-cím és a szinkronizációs pont elérési útja](#identify-ip-addresses-and-paths-to-mount) csatlakoztatásához.
+1. Azonosítsa az IP-cím és a szinkronizációs pont csatlakoztatásához elérési.
 1. A probléma a [mount parancs](#mount-command-arguments), megfelelő argumentumokkal.
 
 ## <a name="balance-client-load"></a>Egyenleg ügyfél betöltése
@@ -28,7 +28,7 @@ Annak érdekében, eloszthatja a kérelmeket ügyfél a fürt összes csomópont
 > [!TIP] 
 > Más terhelés terheléselosztási módszert érdemes lehet nagy vagy összetett rendszer; [hozzon létre egy támogatási jegyet](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) segítségét.)
 > 
-> Ha inkább a DNS-kiszolgáló használata kiszolgálóoldali automatikus terheléselosztást, állítsa be, majd a saját DNS-kiszolgáló Azure-ban kezelheti. Ebben az esetben konfigurálhat ciklikus időszeletelési DNS szerint ez a dokumentum a vFXT fürt: [Avere fürt DNS-konfiguráció](avere-vfxt-configure-dns.md).
+> Ha inkább a DNS-kiszolgáló használata kiszolgálóoldali automatikus terheléselosztást, állítsa be, majd a saját DNS-kiszolgáló Azure-ban kezelheti. Ebben az esetben a vFXT fürt szerint ez a dokumentum ciklikus időszeletelési DNS konfigurálhatja: [Fürt DNS-konfiguráció Avere](avere-vfxt-configure-dns.md).
 
 ### <a name="sample-balanced-client-mounting-script"></a>Példa elosztott terhelésű ügyfél parancsfájl csatlakoztatása
 
@@ -68,7 +68,7 @@ Az ügyfélről a ``mount`` parancsot a virtuális kiszolgáló (vserver) lekép
 
 Nincsenek a mount parancs három elemek: 
 
-* vFXT elérési út – (IP-címére és névtér szinkronizációs pont elérési leírt kombinációjával [alábbi](#junction-and-ip-address))
+* vFXT elérési út – (IP-címére és névtér szinkronizációs pont elérési alább leírt kombinációjával)
 * helyi elérési út – a elérési utat az ügyfélen 
 * csatlakoztatási beállítások parancs - (felsorolt [csatlakoztassa a parancs argumentumainak](#mount-command-arguments))
 

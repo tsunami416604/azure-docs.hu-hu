@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 84cc99bac9ae5fa1743ed151e5bf8c3043cf5869
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f4da0a4672bc50688d0a25bbd2db1f3be984ee8b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851016"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821388"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Vészhelyreállítás beállítása az Active Directory és DNS
 
@@ -31,10 +31,10 @@ Ez a cikk bemutatja, hogyan hozhat létre vészhelyreállítási megoldást az A
 
 ## <a name="replicate-the-domain-controller"></a>A tartományvezérlő replikálása
 
-- Be kell állítania [Site Recovery replikációs](#enable-protection-using-site-recovery), legalább egy virtuális gépen, amelyen egy tartományvezérlő vagy a DNS.
-- Ha rendelkezik [több tartományvezérlő](#environment-with-multiple-domain-controllers) környezete is be kell állítania egy [további tartományvezérlő](#protect-active-directory-with-active-directory-replication) a célként megadott helyen. A további tartományvezérlő lehet az Azure-ban, vagy egy másodlagos helyszíni adatközpontba.
+- A Site Recovery replikációs legalább egy virtuális gép, amelyen tartományvezérlő vagy a DNS-be kell állítania.
+- Ha a környezetében rendelkezik több tartományvezérlő, is be kell állítania egy további tartományvezérlőt a célként megadott helyen. A további tartományvezérlő lehet az Azure-ban, vagy egy másodlagos helyszíni adatközpontba.
 - Ha csak néhány alkalmazások és a egy tartományvezérlő, érdemes lehet, hogy feladatátvételt együtt a teljes helyre. Ebben az esetben ajánlott a Site Recovery használatával a tartományvezérlő replikálja a célhely (vagy egy másodlagos helyszíni adatközpontba vagy az Azure-ban). Az azonos replikált tartományvezérlőt vagy a DNS virtuális gép [feladatátvételi teszt](#test-failover-considerations).
-- - Ha több alkalmazás és több tartományvezérlő van a környezetben, vagy ha azt tervezi, hogy átadja a feladatokat néhány alkalmazások egyszerre, továbbá a tartományt vezérlő virtuális gépet a Site Recovery replikálja azt javasoljuk, hogy beállította- [további tartományvezérlő](#protect-active-directory-with-active-directory-replication) a célként megadott helyen (vagy egy másodlagos helyszíni adatközpontba vagy az Azure-ban). A [feladatátvételi teszt](#test-failover-considerations), használhatja a Site Recovery által replikált tartományvezérlőt. A feladatátvételhez használhatja a további tartományvezérlő a célként megadott helyen.
+- - Ha több alkalmazás és több tartományvezérlő van a környezetben, vagy ha azt tervezi, hogy átadja a feladatokat néhány alkalmazások egyszerre, továbbá a tartományt vezérlő virtuális gépet a Site Recovery replikálja azt javasoljuk, hogy állítsa be a egy További tartományvezérlő a célként megadott helyen (vagy egy másodlagos helyszíni adatközpontba vagy az Azure-ban). A [feladatátvételi teszt](#test-failover-considerations), használhatja a Site Recovery által replikált tartományvezérlőt. A feladatátvételhez használhatja a további tartományvezérlő a célként megadott helyen.
 
 ## <a name="enable-protection-with-site-recovery"></a>Engedélyezze a Site recoveryvel
 
@@ -54,7 +54,7 @@ A virtuális gép, amelyen a tartományvezérlő vagy a DNS, a Site Recoveryben,
 ### <a name="site-to-site-protection"></a>Site-to-site védelme
 Hozzon létre egy tartományvezérlőt a másodlagos helyen. Amikor előlépteti a kiszolgáló egy tartományvezérlő szerepkör, adja meg annak a tartománynak az elsődleges helyen használt nevét. Használhatja a **Active Directory – helyek és szolgáltatások** beépülő modul konfigurálja a hely hivatkozásra objektum, amely a helyek ad hozzá. A helykapcsolatot. a beállítások konfigurálásával szabályozhatja, hogy milyen gyakran jelentkezik, és két vagy több helyek közötti replikáció során. További információkért lásd: [helyek közötti replikáció ütemezése](https://technet.microsoft.com/library/cc731862.aspx).
 
-### <a name="site-to-azure-protection"></a>Hely – Azure védelme
+### <a name="site-to-azure-protection"></a>Site-to-Azure protection
 Először hozzon létre egy olyan tartományvezérlő egy Azure virtuális hálózatban. Amikor előlépteti a kiszolgáló egy tartományvezérlő szerepkör, adja meg az elsődleges helyen használt ugyanazon a néven.
 
 Ezután konfigurálja újra a virtuális hálózat DNS-kiszolgáló használata az Azure-ban, a DNS-kiszolgáló.
@@ -165,7 +165,7 @@ Ha az előző feltételek teljesülnek, akkor valószínű, hogy a tartományvez
 1. Hajtsa végre a tartományvezérlő mérvadó visszaállítást. Tartsa szem előtt az alábbi adatokat:
     * Bár nem javasoljuk, hogy [fájlreplikációs](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), ha fájlreplikációs, kövesse a lépéseket a mérvadó visszaállítást. Az eljárást a [fájlreplikációs szolgáltatás újrainicializálása a BurFlags beállításkulcs használatával](https://support.microsoft.com/kb/290762).
 
-        BurFlags kapcsolatos további információkért lásd a következő blogbejegyzésben: [D2 és D4: Mi az a?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
+        BurFlags kapcsolatos további információkért lásd a következő blogbejegyzésben: [D2 és D4: Mi az a? ](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
     * Ha az elosztott fájlrendszer-replikációs replikációt használ, a lépéseket a mérvadó visszaállítást. Az eljárást a [egy mérvadó és nem mérvadó szinkronizálást kényszerítheti az elosztott fájlrendszer replikációs szolgáltatása által replikált SYSVOL (például "D4/D2" beállításaihoz az FRS)](https://support.microsoft.com/kb/2218556).
 
         A PowerShell-funkciók is használható. További információkért lásd: [DFSR-SYSVOL mappa mérvadó és nem mérvadó visszaállítást PowerShell funkciók](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).

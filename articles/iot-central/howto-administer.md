@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4dba6aff2002c1f17055cd647be94c4d8f644ad7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: feaedff2cb9f8eae30fd17c497b4a2f6de490b07
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992202"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822595"
 ---
 # <a name="administer-your-iot-central-application"></a>Az IoT-központ alkalmazás felügyelete
 
@@ -70,7 +70,7 @@ Használja a **törlése** gombra kattintva véglegesen törli az IoT Central al
 
 Minden rendelkezniük kell egy felhasználói fiókkal jelentkezzen be, és hozzáférést az Azure IoT Central alkalmazáshoz. A Microsoft Accounts (msa-k) és az Azure Active Directory (Azure AD) az Azure IoT Central támogatottak. Az Azure Active Directory-csoportok jelenleg nem támogatottak az Azure IoT Central.
 
-További információkért lásd: [Microsoft-fiók súgó](https://support.microsoft.com/products/microsoft-account?category=manage-account) és [a rövid útmutató: új felhasználók hozzáadása az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+További információkért lásd: [Microsoft-fiók súgó](https://support.microsoft.com/products/microsoft-account?category=manage-account) és [a rövid útmutató: Új felhasználók hozzáadása az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
 1. Egy felhasználó IoT Central alkalmazáshoz való hozzáadásához nyissa meg a **felhasználók** lapját a **felügyeleti** szakaszban.
 
@@ -107,7 +107,7 @@ A felhasználó, aki alkalmazást hoz létre automatikusan hozzá van rendelve a
 
 A felhasználók a **alkalmazás Builder** szerepkör műveletek mindegyikét egy alkalmazásban, kivéve az alkalmazás felügyeletét. Ez azt jelenti, hogy sikerei is létrehozásához, szerkesztéséhez és eszközsablonok és eszközök törlése, eszköz készletek felügyelete és analytics és a feladatok futtatásához. Kapcsolat építői többé nem fér hozzá a **felügyeleti** szakaszban az alkalmazás.
 
-### <a name="application-operator"></a>Alkalmazás-operátor
+### <a name="application-operator"></a>Alkalmazásoperátor
 
 A felhasználók a **alkalmazást üzemeltető** szerepkör nem hajthat végre változtatásokat eszközsablonok és az alkalmazás nem tudja felügyelni. Ez azt jelenti, operátorok is hozzáadások és törlések eszközök, eszköz-készletek felügyelete és analytics és a feladatok futtatásához. Operátorok többé nem fér hozzá a **alkalmazás Builder** és **felügyeleti** oldalakat.
 
@@ -141,15 +141,15 @@ Az önkiszolgáló folyamat befejezéséhez kövesse az alábbi lépéseket:
 
 ## <a name="export-data"></a>Adatok exportálása
 
-Engedélyezheti a **folyamatos adatexportálás** mérések, eszközök és eszközadatok sablonok exportálása az Azure Blob storage-fiókot. Tudjon meg többet [az adatok exportálása](#howto-export-data).
+Engedélyezheti a **folyamatos adatexportálás** mérések, eszközök és eszközadatok sablonok exportálása az Azure Blob storage-fiókot. További információ az adatok exportálása.
 
 ## <a name="manage-device-connection"></a>Eszköz kapcsolat kezelése
 
-Csatlakozás az alkalmazásban, a kulcsok és tanúsítványok ide használatával nagy mennyiségű eszközt. Tudjon meg többet [eszközök csatlakoztatásáról](#concepts-connectivity).
+Csatlakozás az alkalmazásban, a kulcsok és tanúsítványok ide használatával nagy mennyiségű eszközt. További információ az eszközök csatlakoztatásáról.
 
 ## <a name="use-access-tokens"></a>Hozzáférési kódok használata
 
-A fejlesztői eszközök használandó hozzáférési jogkivonatokat hoz létre. Jelenleg nincs egy fejlesztői eszköz, amely egyben az IoT-központ explorer figyeléshez az eszközre és változások a propreties és a beállítások. Tudjon meg többet a [IoT-központ explorer](#howto-use-iotc-explorer). 
+A fejlesztői eszközök használandó hozzáférési jogkivonatokat hoz létre. Jelenleg nincs egy fejlesztői eszköz, amely egyben az IoT-központ explorer figyeléshez az eszközre és változások a propreties és a beállítások. További információ az IoT-központ explorer. 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Az Azure SDK-k használata vezérlési síkjával végzett műveletek
 
@@ -159,7 +159,7 @@ Példa bemutatja, hogyan használhatja az Azure Resource Manager SDK-k, annak [ 
 
 További tudnivalókért tekintse meg ezeket a csomagokat a Githubon.
 
-| Nyelv | Tárház | Csomag |
+| Nyelv | Adattár | Csomag |
 | ---------| ---------- | ------- |
 | Csomópont | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)

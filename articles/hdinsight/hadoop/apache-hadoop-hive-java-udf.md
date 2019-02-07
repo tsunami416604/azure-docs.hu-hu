@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6e31062e3965c9ed5a0b24e822f0ec14234cec1c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: a58c61287cfc7828fe0dc15beda9d54f02a694c3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435072"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814146"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Használja a Java UDF-ben az Apache Hive a HDInsight
 
@@ -36,7 +36,7 @@ Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF
 * Egy szövegszerkesztő vagy a Java ide Környezethez
 
     > [!IMPORTANT]
-    > Ha egy Windows-ügyfélen a Python-fájlokat hoz létre, egy szerkesztőt, amelynek LF használja, mint egy sor vége kell használnia. Ha nem biztos abban, hogy a szerkesztő LF Karakterrel vagy a CRLF használja, tekintse meg a [hibaelhárítás](#troubleshooting) szükséges lépéseket a CR karakter eltávolítása a következő szakaszban.
+    > Ha egy Windows-ügyfélen a Python-fájlokat hoz létre, egy szerkesztőt, amelynek LF használja, mint egy sor vége kell használnia. Ha nem biztos abban, hogy a szerkesztő LF Karakterrel vagy a CRLF használja, tekintse meg a hibaelhárítás szakasz lépéseit a CR karakter eltávolítása az.
 
 ## <a name="create-an-example-java-udf"></a>Hozzon létre próbaképpen egy Java UDF-ben 
 

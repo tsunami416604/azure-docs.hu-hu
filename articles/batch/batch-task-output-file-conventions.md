@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 970cab2c782e71defbda828a42273f317dee80e4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ede0b7cbeee9227a7023e5c0550a951897cc43e4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472983"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821184"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>A Batch File Conventions-könyvtárral az Azure Storage-feladatok és tevékenységek adatok megőrzése a .NET-hez
 
@@ -112,7 +112,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 
 A `kind` paraméterében a [TaskOutputStorage](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx).[ SaveAsync](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx) metódus kategorizálja a megőrzött fájlok. Az előre meghatározott négy [TaskOutputKind] [ net_taskoutputkind] típusok: `TaskOutput`, `TaskPreview`, `TaskLog`, és `TaskIntermediate.` azt is megadhatja a kimeneti egyéni kategóriákkal.
 
-Ezek a típusok kimeneti adja meg, milyen típusú listázásához, előfordulhat, hogy később a Batch a megőrzött egy adott feladat kimenetének a kimenetek teszi lehetővé. Más szóval amikor a tevékenység kimeneti listázza, szűrheti listájában a kimeneti típus egyikét. Például ", adja meg a *előzetes* tevékenység kimeneti *109*." További információ az ajánlati és kimenetek beolvasása megjelenik [beolvasni a kimeneti](#retrieve-output) a cikkben.
+Ezek a típusok kimeneti adja meg, milyen típusú listázásához, előfordulhat, hogy később a Batch a megőrzött egy adott feladat kimenetének a kimenetek teszi lehetővé. Más szóval amikor a tevékenység kimeneti listázza, szűrheti listájában a kimeneti típus egyikét. Például ", adja meg a *előzetes* tevékenység kimeneti *109*." További információ az ajánlati és kimenetek beolvasása a cikk későbbi részében lekérése kimeneti jelenik meg.
 
 > [!TIP]
 > A kimenet típusa is határozza meg, ahol az Azure Portalon egy adott fájl így jelenik meg: *TaskOutput*-kategorizált fájlok meg fog jelenni **tevékenység kimeneti fájlok**, és *TaskLog* fájlok meg fog jelenni **naplók feladat**.
@@ -197,7 +197,7 @@ Az Azure portal megjeleníti a feladat kimeneti fájljait, és naplóival, amely
 
 Ahhoz, hogy a megjelenített, a kimeneti fájlok a portálon, akkor a következő követelményeknek kell megfelelnie:
 
-1. [Az Azure Storage-fiókot kapcsol](#requirement-linked-storage-account) a Batch-fiókjához.
+1. Azure Storage-fiókot kapcsol a Batch-fiókjához.
 1. Amikor kimenetek megőrzése tartaniuk az előre meghatározott, a Storage-tárolók és a fájlok elnevezési konvencióinak. A File Conventions-könyvtárral találhatja meg a definíció az alábbi egyezmények [információs][github_file_conventions_readme]. Használatakor a [Azure Batch File Conventions] [ nuget_package] kódtárat a kimenet megőrzése File Conventions szabvány szerinti tárolja a fájlokat.
 
 A feladat kimeneti fájljait és naplók megtekintése az Azure Portalon, keresse meg a feladat kimenete is érdeklik, majd kattintson vagy **mentett kimeneti fájlok** vagy **mentett naplók**. Az ábra a **mentett kimeneti fájlok** "007" Azonosítójú feladat számára:

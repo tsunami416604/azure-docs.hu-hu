@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: spelluru
-ms.openlocfilehash: 9576854fbad88724f3d229d239b9d3e263fb7492
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 7d311a3fa1b00a6324c9bb81a14c1a575319472f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912401"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819994"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Az Azure Lab Services osztályterem-tesztkörnyezetek kezelése 
 Ez a cikk azt ismerteti, hogyan hozhat létre, és törölje az osztályterem-tesztkörnyezet. Bemutatja azt is, az osztályterem-tesztkörnyezetek megtekintése a lab-fiókokban. 
@@ -72,7 +72,7 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
 
         > [!WARNING]
         > Közzététel után a lépés nem vonható vissza. 
-    2. Későbbi közzétételhez kattintson a **Mentés későbbre** gombra. A varázsló futtatása után közzéteheti a virtuálisgép-sablont. Hogyan konfigurálása és közzététele a varázsló befejezése után, konfigurálása és közzététele a varázsló befejezése után információt talál a részletekért lásd: [a sablon közzététele](#publish-the-template) című rész a [osztályterem-tesztkörnyezetek kezelése ](how-to-manage-classroom-labs.md) cikk.
+    2. Későbbi közzétételhez kattintson a **Mentés későbbre** gombra. A varázsló futtatása után közzéteheti a virtuálisgép-sablont. Konfigurálása és közzététele a varázsló befejezése után információt talál arról, hogyan konfigurálása és közzététele a varázsló befejezése után, lásd: Közzététel a sablon című rész a [osztályterem-tesztkörnyezetek kezelése](how-to-manage-classroom-labs.md) cikk.
 
         ![Sablon közzététele](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. Nyomon követheti, hogy **hol tart a sablon közzététele**. Ez a folyamat akár egy órát is igénybe vehet. 

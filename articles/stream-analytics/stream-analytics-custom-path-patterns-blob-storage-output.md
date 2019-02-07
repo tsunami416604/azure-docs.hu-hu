@@ -1,5 +1,5 @@
 ---
-title: Az Azure Stream Analytics egyéni blob kimeneti particionálási (előzetes verzió)
+title: Az Azure Stream Analytics egyéni blob kimeneti particionálása
 description: Ez a cikk ismerteti az egyéni dátum/idő elérésiút-minták és a blob storage-kimenet az Azure Stream Analytics-feladatok egyéni mező vagy attribútumok szolgáltatásokról.
 services: stream-analytics
 author: mamccrea
@@ -7,16 +7,16 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 23f632ea2ca66f973192fdc01cd84c4d0be3a668
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: fc28ddd006e8a117dddd67a6d6668b9639dddec5
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746523"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765195"
 ---
-# <a name="azure-stream-analytics-custom-blob-output-partitioning-preview"></a>Az Azure Stream Analytics egyéni blob kimeneti particionálási (előzetes verzió)
+# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Az Azure Stream Analytics egyéni blob kimeneti particionálása
 
 Az Azure Stream Analytics támogatja a particionálást a egyéni mezők és attribútumok és egyéni dátum/idő elérésiút-minták egyéni blob kimeneti. 
 

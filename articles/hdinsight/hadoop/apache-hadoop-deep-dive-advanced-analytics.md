@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: c6a47448fc99c2f58b315898c1b6af65f894da8d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0e17fa877bc2e1e4f72891315d940546a11e674d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436687"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812497"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Részletes bemutatása – speciális elemzés
 
@@ -50,16 +50,16 @@ A legjobban záró aránytól kiválasztásával, valamint kell érdemes-e meg k
 | Fürtözés | Példák készletét osztásával homogén csoportokba | Felügyeletlen | K-közép-fürtözés |
 | A minta észlelése | Az adatok gyakran társítások azonosítása | Felügyeletlen | Társítási szabályok |
 | Regresszió | Numerikus eredmények előrejelzése | Csak felügyelt eszköz | Lineáris regresszió, a Neurális hálózatokkal |
-| Megerősítése | A robotok optimális viselkedés meghatározása | Megerősítése | Monte Carlo-szimulációk, DeepMind |
+| Megerősítése | A robotok optimális viselkedés meghatározása | Megerősítése | Monte Carlo Simulations, DeepMind |
 
 ## <a name="machine-learning-on-hdinsight"></a>A Machine learning, a HDInsight
 
 HDInsight számos machine learning-beállítások egy fejlett elemzési munkafolyamat rendelkezik:
 
-* [Machine Learning és az Apache Spark](#machine-learning-and-spark)
-* [R és a Machine Learning-szolgáltatások](#r-and-r-server)
-* [Az Azure Machine Learning és az Apache Hive](#azure-machine-learning-and-hive)
-* [Az Apache Spark és a Deep learning](#spark-and-deep-learning)
+* Machine Learning és az Apache Spark
+* R és a Machine Learning-szolgáltatások
+* Az Azure Machine Learning és az Apache Hive
+* Az Apache Spark és a Deep learning
 
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning és az Apache Spark
 

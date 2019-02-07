@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0d915592053c256d3640d0f0de7bb94bf109f2c8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8fc2c487a374a34cd9a7642a45fd59c04061b398
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700162"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817818"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Hozzon létre és telepítse a VPN-ügyfél konfigurációs fájljainak a P2S RADIUS-hitelesítés
 
@@ -260,7 +260,7 @@ Az alábbi lépéseket követve konfigurálhatja a natív VPN-ügyfél Tanúsít
 
 Egy másik hitelesítési típus (például OTP) használatára, vagy egy másik hitelesítési protokoll (például a PEAP-MSCHAPv2 helyett az EAP-MSCHAPv2) használatára, létre kell hoznia a saját VPN-ügyfél konfigurációs profil. A profil létrehozásához szüksége információkat, például a virtuális hálózati átjáró IP-cím, az alagúttípus és a vegyes alagútkezelési útvonalakat. Ezt az információt kaphat az alábbi lépések segítségével:
 
-1. Használja a `Get-AzureRmVpnClientConfiguration` parancsmag segítségével hozzon létre a VPN-ügyfél konfigurációja a EapMSChapv2. Útmutatásért lásd: [ebben a szakaszban](#ccradius) a cikk.
+1. Használja a `Get-AzureRmVpnClientConfiguration` parancsmag segítségével hozzon létre a VPN-ügyfél konfigurációja a EapMSChapv2. Útmutatásért lásd a cikk ezen szakasza.
 
 2. Bontsa ki a VpnClientConfiguration.zip fájlt, és keresse meg a **GenericDevice** mappát. Hagyja figyelmen kívül a Windows 64 bites és 32 bites architektúrák telepítőinek tartalmazó mappához.
  

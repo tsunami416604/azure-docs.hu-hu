@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 10f9aaed87d573926aa261435ba0d7cee9d01370
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 80fe2fb2998ed129098a99f004da9c9e5e88e474
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733977"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815030"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-new-ui-design"></a>Fedezze fel az Azure IoT Central felhasználói felület (új felhasználói felület tervezése)
 
@@ -77,19 +77,19 @@ A kezelő lap megjeleníti a _eszközök_ szerint csoportosítva, az Azure IoT C
 
 ![Eszközkészletek oldal](media/overview-iot-central-tour-experimental/devicesets.png)
 
-Az _Eszközkészletek_ oldalon jelennek meg a szerkesztő által létrehozott eszközkészletek. Az eszközkészletek egymáshoz kapcsolódó eszközök gyűjteményei. A szerkesztő meghatároz egy lekérdezést, amely azonosítja azokat az eszközöket, amelyek egy eszközkészlethez tartoznak. Az eszközkészletek az alkalmazáson belüli elemzések testreszabásakor használatosak. További tudnivalókért lásd az [eszközkészletek az Azure IoT Central-alkalmazásokban történő használatát](howto-use-device-sets.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) ismertető szakaszt.
+Az _Eszközkészletek_ oldalon jelennek meg a szerkesztő által létrehozott eszközkészletek. Az eszközkészletek egymáshoz kapcsolódó eszközök gyűjteményei. A szerkesztő meghatároz egy lekérdezést, amely azonosítja azokat az eszközöket, amelyek egy eszközkészlethez tartoznak. Az eszközkészletek az alkalmazáson belüli elemzések testreszabásakor használatosak. További tudnivalókért lásd az [eszközkészletek az Azure IoT Central-alkalmazásokban történő használatát](howto-use-device-sets-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) ismertető szakaszt.
 
 ## <a name="analytics"></a>Elemzés
 
 ![Elemzés oldal](media/overview-iot-central-tour-experimental/analytics.png)
 
-Az Elemzés oldalon diagramok láthatók, amelyek segítenek áttekinteni az alkalmazáshoz csatlakozó eszközök viselkedését. Az operátorok ezen az oldalon monitorozhatják és vizsgálhatják ki a csatlakoztatott eszközökkel kapcsolatos problémákat. Az ezen az oldalon megjelenő diagramokat a szerkesztő határozza meg. További tudnivalókért lásd az [egyéni elemzések az Azure IoT Central-alkalmazásokban történő létrehozását](howto-create-analytics.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) ismertető szakaszt.
+Az Elemzés oldalon diagramok láthatók, amelyek segítenek áttekinteni az alkalmazáshoz csatlakozó eszközök viselkedését. Az operátorok ezen az oldalon monitorozhatják és vizsgálhatják ki a csatlakoztatott eszközökkel kapcsolatos problémákat. Az ezen az oldalon megjelenő diagramokat a szerkesztő határozza meg. További tudnivalókért lásd az [egyéni elemzések az Azure IoT Central-alkalmazásokban történő létrehozását](howto-use-device-sets-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) ismertető szakaszt.
 
 ## <a name="jobs"></a>Feladatok
 
 ![Feladatok oldal](media/overview-iot-central-tour-experimental/jobs.png)
 
-A feladatok oldal csoportos eszközfelügyeleti műveletek elvégzését teszi lehetővé az eszközökön. A szerkesztő az oldalt az eszköz tulajdonságok, beállítások és parancsok frissítésére használja. További tudnivalókért tekintse meg a [Feladat futtatása](howto-run-a-job.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) cikket.
+A feladatok oldal csoportos eszközfelügyeleti műveletek elvégzését teszi lehetővé az eszközökön. A szerkesztő az oldalt az eszköz tulajdonságok, beállítások és parancsok frissítésére használja. További tudnivalókért tekintse meg a [Feladat futtatása](howto-run-a-job-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) cikket.
 
 ## <a name="device-templates"></a>Eszközsablonok
 
@@ -101,14 +101,14 @@ Az eszköz sablonok lap, ahol egy jelentéskészítő létrehozza és kezeli az 
 
 ![Folyamatos adatexportálás lap](media/overview-iot-central-tour-experimental/export.png)
 
-A folyamatos Exportálás lap, ahol a rendszergazda határozza meg az alkalmazásból származó adatok, telemetriai adatokat, például exportálása. Más szolgáltatások is az exportált adatok tárolására, vagy használhatja az elemzés. További tudnivalókért tekintse meg a [exportálhatja az adatokat az Azure IoT Central](howto-export-data.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) cikk.
+A folyamatos Exportálás lap, ahol a rendszergazda határozza meg az alkalmazásból származó adatok, telemetriai adatokat, például exportálása. Más szolgáltatások is az exportált adatok tárolására, vagy használhatja az elemzés. További tudnivalókért tekintse meg a [exportálhatja az adatokat az Azure IoT Central](howto-export-data-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) cikk.
 
 ## <a name="administration"></a>Adminisztráció
 
 ![Adminisztráció oldal](media/overview-iot-central-tour-experimental/administration.png)
 
-Az Adminisztráció oldal hivatkozásokat tartalmaz a rendszergazda által például az alkalmazás felhasználóinak és szerepköreinek meghatározásához használt eszközökhöz. További tudnivalókért lásd az [Azure IoT Central-alkalmazások adminisztrációját](howto-administer.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) ismertető szakaszt.
+Az Adminisztráció oldal hivatkozásokat tartalmaz a rendszergazda által például az alkalmazás felhasználóinak és szerepköreinek meghatározásához használt eszközökhöz. További tudnivalókért lásd az [Azure IoT Central-alkalmazások adminisztrációját](howto-administer-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) ismertető szakaszt.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy áttekintette az Azure IoT Central jellemzőit, és megismerkedett a kezelőfelület elrendezésével, a javasolt következő lépés az [Azure IoT Central-alkalmazás létrehozását](quick-deploy-iot-central.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) ismertető rövid útmutató elvégzése.
+Most, hogy áttekintette az Azure IoT Central jellemzőit, és megismerkedett a kezelőfelület elrendezésével, a javasolt következő lépés az [Azure IoT Central-alkalmazás létrehozását](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) ismertető rövid útmutató elvégzése.

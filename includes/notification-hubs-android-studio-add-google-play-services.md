@@ -5,30 +5,37 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 01/04/2019
+ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: f00ca7ddf44a9d5b850cd47520970a0396a0c1b5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bc920493b32d500602a5b683c098d23aff855150
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453090"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55823191"
 ---
-1. Nyissa meg az Android SDK Manager alkalmazást az Android Studióban található ikonnal, vagy a **Tools** (Eszközök) > **Android** > **SDK Manager** lehetőségre kattintva a menüben. Keresse meg az alkalmazásában használt Android SDK célverzióját, nyissa meg a **Csomag részleteinek megtekintése** elemre kattintva, és válassza a **Google API-k** elemet, ha még nincs telepítve.
-2. Kattintson az **SDK Tools** (SDK-eszközök) fülre. Ha még nem telepítette a Google Play szolgáltatást, kattintson a **Google Play Services** (Google Play szolgáltatások) elemre, ahogy az ábra mutatja. Ezután kattintson az **Apply** (Alkalmaz) gombra. Jegyezze fel az SDK elérési útját, mert szükség lesz rá egy későbbi lépésben.
+1. A **Android Studio**válassza **eszközök** a menüben, és válassza a **SDK Manager**. 
+2. Válassza ki a projekthez használt Android SDK célverzióját, és válassza ki **csomag részleteinek**. 
 
-    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. Nyissa meg a `build.gradle` fájlt az alkalmazáskönyvtárban.
+    ![Android SDK Manager - verzió cél kiválasztása](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. Válassza ki **Google API-k**, ha nem telepítette.
 
-    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
-4. Adja hozzá ezt a sort a `dependencies`:
+    ![Android SDK Manager – Google API-k kiválasztva](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. Váltson a **SDK Tools** fülre. Ha még nem telepítette a Google Play szolgáltatást, válassza ki a **Google Play-szolgáltatások** az alábbi képen látható módon. Ezután kattintson az **Apply** (Alkalmaz) gombra. Jegyezze fel az SDK elérési útját, mert szükség lesz rá egy későbbi lépésben.
+
+    ![Android SDK Manager – Google Play-szolgáltatások kiválasztva](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. Ha megjelenik a **Módosítás megerősítése** párbeszédpanelen jelölje ki **OK**. Az összetevő-telepítő telepíti a kért összetevőket. Válassza ki **Befejezés** az összetevők telepítése után.
+4. Válassza ki **OK** gombra kattintva zárja be a **beállításait az új projektek** párbeszédpanel bezárásához.  
+5. Nyissa meg a `build.gradle` fájlt a **alkalmazás** könyvtárat, és adja hozzá ezt a sort a `dependencies`. 
 
     ```text
-    compile 'com.google.android.gms:play-services-gcm:12.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:16.0.0'
     ```
-5. Kattintson a **Sync Project with Gradle Files** (Projekt szinkronizálása a Gradle-fájlokkal) ikonra az eszköztárban.
-6. Nyissa meg az **AndroidManifest.xml** fájlt, és adja ezt a címkét az *application* (alkalmazás) címkéhez.
+5. Válassza ki **szinkronizálás most** ikonra az eszköztárban.
+
+    ![Szinkronizálás a gradle-lel](./media/notification-hubs-android-studio-add-google-play-services/gradle-sync.png)
+1. Nyissa meg az **AndroidManifest.xml** fájlt, és adja ezt a címkét az *application* (alkalmazás) címkéhez.
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"

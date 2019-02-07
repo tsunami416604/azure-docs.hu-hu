@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 0869786b2aa6c604ee59deb0f5a5fbc27b9ce3bf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5eecd750642610737d346c5c270349e285106e95
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751565"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820436"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -97,7 +97,7 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 **2. ok: [Az ügynök telepítve van a virtuális gépen nem naprakész (a Linux rendszerű virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **3. ok: [Nem kérhető le a pillanatfelvétel állapotáról, vagy nem lehet egy pillanatképet készíteni](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **4. ok: [A biztonsági mentési bővítményt frissítésére vagy betöltése sikertelen](#the-backup-extension-fails-to-update-or-load)**  
-**5. ok: [Biztonsági mentési szolgáltatás nem rendelkezik engedéllyel a régi visszaállítási pontok törléséhez egy erőforrás-csoport zárolás miatt](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)** <br>
+**5. ok: Biztonsági mentési szolgáltatás nem rendelkezik engedéllyel a régi visszaállítási pontok törléséhez egy erőforrás-csoport zárolás miatt** <br>
 **6. ok: [A virtuális gép nem rendelkezik internet-hozzáférés](#the-vm-has-no-internet-access)**
 
 ## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize – a jelenleg az Azure Backup nem támogatja a 1023GB-nál nagyobb lemezméretek

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: e63db9dd5dcd48e19c75608c39c4c0b62db24527
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 89984335d40d7f58d39e77736c06a9ff137d7a51
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221198"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811257"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Erőforrások az Azure virtual networkök névfeloldása
 
@@ -40,7 +40,7 @@ A névfeloldás használata típusa attól függ, hogyan kell az erőforrások k
 | Névfeloldás a különböző virtuális hálózatokban lévő virtuális gépek vagy szerepkörpéldányok a különböző felhőszolgáltatások között. |[Az Azure DNS Private Zones](../dns/private-dns-overview.md) vagy ügyfél által felügyelt DNS-kiszolgálók (DNS-proxy) az Azure által a névfeloldáshoz virtuális hálózatok közötti lekérdezések továbbítása. Lásd: [névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak teljes tartománynév |
 | Az Azure App Service (Web App, függvény vagy Bot) a névfeloldás virtuális hálózati integráció alkalmazásával szerepkörpéldányok vagy a virtuális gép ugyanazon a virtuális hálózaton. |Ügyfél által felügyelt DNS-kiszolgálók (DNS-proxy) az Azure által a névfeloldáshoz virtuális hálózatok közötti lekérdezések továbbítása. Lásd: [névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak teljes tartománynév |
 | Név feloldása az App Service Web Apps virtuális gépekhez az azonos virtuális hálózatba. |Ügyfél által felügyelt DNS-kiszolgálók (DNS-proxy) az Azure által a névfeloldáshoz virtuális hálózatok közötti lekérdezések továbbítása. Lásd: [névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak teljes tartománynév |
-| Neve az App Service Web Apps egy virtuális hálózaton belüli virtuális gépeken lévő megoldást egy másik virtuális hálózatot. |Ügyfél által felügyelt DNS-kiszolgálók (DNS-proxy) az Azure által a névfeloldáshoz virtuális hálózatok közötti lekérdezések továbbítása. Lásd: [névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server-for-web-apps). |Csak teljes tartománynév |
+| Neve az App Service Web Apps egy virtuális hálózaton belüli virtuális gépeken lévő megoldást egy másik virtuális hálózatot. |Ügyfél által felügyelt DNS-kiszolgálók (DNS-proxy) az Azure által a névfeloldáshoz virtuális hálózatok közötti lekérdezések továbbítása. Tekintse meg a névfeloldás saját DNS-kiszolgáló használatával. |Csak teljes tartománynév |
 | A helyszíni számítógép és a szolgáltatás nevének a virtuális gépeket vagy szerepkörpéldányokat az Azure-beli feloldása. |Ügyfél által felügyelt DNS-kiszolgálók (a helyi tartományvezérlő, helyi írásvédett tartományvezérlő vagy másodlagos DNS zónaletöltés, például használatával szinkronizált). Lásd: [névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak teljes tartománynév |
 | A helyi számítógépek Azure gazdanév feloldása. |Az ügyfél által felügyelt DNS-proxy kiszolgáló a megfelelő virtuális hálózat továbbítási kérelmek a proxykiszolgáló továbbítja a lekérdezéseket az Azure-bA a feloldásához. Lásd: [névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak teljes tartománynév |
 | Fordított DNS belső IP-címek. |[Névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Nem alkalmazható |

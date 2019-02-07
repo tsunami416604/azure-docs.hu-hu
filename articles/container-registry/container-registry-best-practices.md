@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: danlep
-ms.openlocfilehash: e22acc6e698d9b14a55145d8f23f5f773e6c39fd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 2cf64c7c4f99a57c4a4a6cf03e68e8af803ceca9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857703"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810762"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Az Azure Container Registry ajánlott eljárásai
 
@@ -46,15 +46,15 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 ## <a name="dedicated-resource-group"></a>Dedikált erőforráscsoport
 
-Mivel a tárolóregisztrációs adatbázisok több tárológazdagép által használt erőforrások, a regisztrációs adatbázisoknak tárolniuk kell a saját erőforráscsoportjukat.
+Mivel a tároló-beállításjegyzékek több tárológazdagép használt erőforrások, a saját erőforráscsoport beállításjegyzék kell lennie.
 
 Nyugodtan kísérletezhet speciális gazdagéptípusokkal, például az Azure Container Instances-zel, de utána valószínűleg törölni szeretné majd a tárolópéldányt. Előfordulhat azonban, hogy meg szeretné tartani azokat a rendszerképeket, amelyeket átvitt az Azure Container Registry-be. Azzal, hogy a regisztrációs adatbázis a saját erőforráscsoportjába helyezi, csökkentheti annak esélyét, hogy véletlenül törli a rendszerképeket, amikor törli a tárolópéldány erőforráscsoportját.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Azure tárolóregisztrációs adatbázissal való hitelesítéskor két fő forgatókönyv fordulhat elő: az egyéni hitelesítés és a szolgáltatásos (vagy „távfelügyelt”) hitelesítés. A következő táblázat röviden bemutatja ezeket a forgatókönyveket és a hozzájuk fűződő ajánlott hitelesítési módokat.
 
-| Típus | Példaforgatókönyv | Javasolt módszer |
+| Typo | Példaforgatókönyv | Javasolt módszer |
 |---|---|---|
 | Egyéni identitás | Egy fejlesztő rendszerképeket hív le a saját számítógépére, vagy helyez át onnan. | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | Távfelügyelt/szolgáltatásos identitás | Buildelési és üzembe helyezési folyamatok, amelyekben a felhasználó nem vesz közvetlenül részt. | [Egyszerű szolgáltatás](container-registry-authentication.md#service-principal) |
@@ -63,7 +63,7 @@ Az Azure Container Registry-vel kapcsolatos részletes információk: [Hitelesí
 
 ## <a name="manage-registry-size"></a>Regisztrációs adatbázis méretének kezelése
 
-A [tárolóregisztrációs adatbázis egyes termékváltozatainak][container-registry-skus] tárolási korlátai szándékaink szerint a tipikus forgatókönyvekhez igazodnak: **Alapszintű** az induláshoz, **Standard** az üzemi alkalmazások többségéhez és **Prémium** a nagy kapacitású teljesítményhez és a [georeplikációhoz][container-registry-geo-replication]. A regisztrációs adatbázis élettartama során érdemes felügyelnie annak méretét a nem használt tartalmak törlésével.
+A storage korlátozásokat az egyes [container registry Termékváltozata] [ container-registry-skus] célja, hogy összhangba kerüljenek szokás: **Alapszintű** az első lépésekhez, **Standard** a legtöbb éles üzemi alkalmazások pedig, és **prémium** kapacitású teljesítmény és [georeplikációs][container-registry-geo-replication]. A regisztrációs adatbázis élettartama során érdemes felügyelnie annak méretét a nem használt tartalmak törlésével.
 
 Használja az Azure CLI-paranccsal [az acr show-usage] [ az-acr-show-usage] a regisztrációs adatbázis aktuális méretét megjelenítéséhez:
 

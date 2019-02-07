@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c7a3893c35031d05ea8aade0ad5d30b5a56176fd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0e190faca778f4a65a3bd4a29d05c01a89ee7e11
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015134"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816730"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Adatok áthelyezése az Azure Data Factory másolási tevékenység használatával DB2
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](data-factory-onprem-db2-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-db2.md)
 
@@ -72,7 +72,7 @@ Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a
 2. Adatkészleteket hoz létre, a másolási művelet bemeneti és kimeneti adatokat képviselik. 
 3. Létrehoz egy folyamatot egy másolási tevékenység, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
 
-Ha használja a Másolás varázslót, a JSON-definíciók az adat-Előállítóhoz társított szolgáltatások, adatkészletek és folyamat entitásokat automatikusan jönnek létre az Ön számára. Amikor az eszközök vagy az API-k (kivéve a .NET API), meghatározhatja a Data Factory-entitások a JSON formátumban. A [JSON-példa: Adatok másolása az Azure Blob storage DB2](#json-example-copy-data-from-db2-to-azure-blob) jeleníti meg, amely adatokat másol egy helyszíni DB2-adattár segítségével a Data Factory-entitások a JSON-definíciói.
+Ha használja a Másolás varázslót, a JSON-definíciók az adat-Előállítóhoz társított szolgáltatások, adatkészletek és folyamat entitásokat automatikusan jönnek létre az Ön számára. Amikor az eszközök vagy az API-k (kivéve a .NET API), meghatározhatja a Data Factory-entitások a JSON formátumban. A JSON-példa: DB2 az Azure Blob storage-adatok másolása jeleníti meg, amely adatokat másol egy helyszíni DB2-adattár segítségével a Data Factory-entitások a JSON-definíciói.
 
 A következő szakaszok konkrétan egy DB2-adattárat a Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részleteket.
 
@@ -311,43 +311,43 @@ A következő hozzárendeléseket használják, amikor a másolási tevékenysé
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Real |Önálló |
-| Dupla |Dupla |
-| Lebegőpontos |Dupla |
-| tizedes tört |Tizedes tört |
-| DecimalFloat |Tizedes tört |
-| Numerikus |Tizedes tört |
+| Real |Single |
+| Double |Double |
+| Lebegőpontos |Double |
+| tizedes tört |Decimal |
+| DecimalFloat |Decimal |
+| Numerikus |Decimal |
 | Dátum |DateTime |
-| Time |Időtartam |
+| Time |TimeSpan |
 | Időbélyeg |DateTime |
-| Xml |Byte] |
-| CHAR |Karakterlánc |
-| VarChar |Karakterlánc |
-| LongVarChar |Karakterlánc |
-| DB2DynArray |Karakterlánc |
-| Bináris |Byte] |
-| VarBinary |Byte] |
-| LongVarBinary |Byte] |
-| Kép |Karakterlánc |
-| VarGraphic |Karakterlánc |
-| LongVarGraphic |Karakterlánc |
-| CLOB |Karakterlánc |
-| Blob |Byte] |
-| DbClob |Karakterlánc |
+| Xml |Byte[] |
+| CHAR |String |
+| VarChar |String |
+| LongVarChar |String |
+| DB2DynArray |String |
+| Bináris |Byte[] |
+| VarBinary |Byte[] |
+| LongVarBinary |Byte[] |
+| Kép |String |
+| VarGraphic |String |
+| LongVarGraphic |String |
+| CLOB |String |
+| Blob |Byte[] |
+| DbClob |String |
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Real |Önálló |
-| Dupla |Dupla |
-| Lebegőpontos |Dupla |
-| tizedes tört |Tizedes tört |
-| DecimalFloat |Tizedes tört |
-| Numerikus |Tizedes tört |
+| Real |Single |
+| Double |Double |
+| Lebegőpontos |Double |
+| tizedes tört |Decimal |
+| DecimalFloat |Decimal |
+| Numerikus |Decimal |
 | Dátum |DateTime |
-| Time |Időtartam |
+| Time |TimeSpan |
 | Időbélyeg |DateTime |
-| Xml |Byte] |
-| CHAR |Karakterlánc |
+| Xml |Byte[] |
+| CHAR |String |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
 A forrásadatkészlet oszlopok leképezése a fogadó-adatkészlet az oszlopok kapcsolatban lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

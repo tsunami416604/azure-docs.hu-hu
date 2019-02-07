@@ -1,6 +1,6 @@
 ---
-title: A feladatátvétel a StorSimple 8000 sorozat eszközeire vész-helyreállítási |} Microsoft Docs
-description: 'Útmutató: a StorSimple eszköz ugyanarra az eszközre a feladatátvétel.'
+title: A feladatátvétel a StorSimple 8000-es sorozatú eszközökön vész-helyreállítási |} A Microsoft Docs
+description: Ismerje meg, hogyan végezhet feladatátvételt a StorSimple-eszköz ugyanarra az eszközre.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: acc8929dc3476e9590e8e4d9526b38b7c0719570
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd207eaad1a3e821724d51a890d0882bfffda131
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23874821"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809061"
 ---
-# <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>A StorSimple fizikai eszköz ugyanarra az eszközre történő feladatátvételt
+# <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Feladatátvétel ugyanarra az eszközre a StorSimple fizikai eszköz
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag a feladatátvételt a StorSimple 8000 series fizikai az eszköz magát katasztrófa esetén szükséges lépéseket ismerteti. StorSimple eszköz feladatátvételi szolgáltatását használja egy másik fizikai eszközre át adatokat a forrás fizikai eszközt az adatközpontban. Ez az oktatóanyag az útmutató a StorSimple 8000 Series érvényes 3 és újabb verzióit szoftververziók frissítést futtató fizikai eszközöket.
+Ebben az oktatóanyagban a feladatátvételt egy StorSimple 8000 sorozatú fizikai eszköz saját maga vészhelyzet esetén szükséges lépéseket ismerteti. A StorSimple az eszköz feladatátvételi funkciót használja, egy másik fizikai eszközre telepítheti át adatait a forrás fizikai eszköz az adatközpontban. Ebben az oktatóanyagban az útmutató vonatkozik a StorSimple 8000 sorozat szoftververziók Update 3 és újabb verzióit futtató fizikai eszközöket.
 
-Eszköz feladatátvételi, és hogyan használja a katasztrófa utáni helyreállítás kapcsolatos további tudnivalókért keresse fel [feladatátvétel és a katasztrófa utáni helyreállítás a StorSimple 8000 sorozat eszközeire](storsimple-8000-device-failover-disaster-recovery.md).
+Eszköz-feladatátvétel és a egy katasztrófa utáni helyreállítás felhasználási módjáról további információkért lépjen [feladatátvétel és vészhelyreállítás a StorSimple 8000 sorozatú eszközök esetében a helyreállítási](storsimple-8000-device-failover-disaster-recovery.md).
 
-Feladatok átadása egy másik fizikai eszköz fizikai eszköz, keresse fel [átveheti az ugyanazon fizikai StorSimple-eszköz](storsimple-8000-device-failover-physical-device.md). Feladatok átadása a StorSimple felhő készülék StorSimple fizikai eszköz, keresse fel [feladatok átadása a StorSimple felhő készülék](storsimple-8000-device-failover-cloud-appliance.md).
+A feladatátvételt egy másik fizikai eszköz a fizikai eszközt, Ugrás [átadja a feladatokat a ugyanabban StorSimple fizikai eszköz](storsimple-8000-device-failover-physical-device.md). A StorSimple fizikai eszköz a StorSimple Cloud Appliance feladatátvételt, lépjen a [átadja a feladatokat egy StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Győződjön meg arról, hogy átolvasta eszköz feladatátvételi szempontokat. További információkért látogasson el [eszköz feladatátvételi a gyakori szempontok](storsimple-8000-device-failover-disaster-recovery.md).
+- Győződjön meg arról, hogy áttekintette az eszköz feladatátvételi szempontok. További információért ugorjon [általános szempontok az eszköz feladatátvételéhez](storsimple-8000-device-failover-disaster-recovery.md).
 
 
-## <a name="steps-to-fail-over-to-the-same-device"></a>Feladatok átadása a ugyanarra az eszközre lépései
+## <a name="steps-to-fail-over-to-the-same-device"></a>A feladatátvétel ugyanarra az eszközre lépések
 
-Ha feladatátvételt ugyanarra az eszközre van szüksége, hajtsa végre az alábbi lépéseket.
+Hajtsa végre az alábbi lépéseket, ha a feladatátvétel ugyanarra az eszközre van szüksége.
 
-1. A kötetek felhőalapú pillanatfelvételek az eszközt a hálózatról. További információkért látogasson el [StorSimple az Eszközkezelő szolgáltatás a biztonsági mentések létrehozását](storsimple-8000-manage-backup-policies-u2.md).
+1. Minden kötet felhőbeli pillanatképek készítése az eszközön. További információért ugorjon [használata a StorSimple-Eszközkezelő szolgáltatás a biztonsági mentések létrehozását](storsimple-8000-manage-backup-policies-u2.md).
 2. Az eszköz visszaállítása a gyári beállításokat. Részletes utasításait [a StorSimple eszköz visszaállítása a gyári alapértelmezett beállításokra](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
-3. Nyissa meg a StorSimple eszköz Manager szolgáltatáshoz, és válassza ki **eszközök**. Az a **eszközök** panelen jelennek meg a régi eszköz **Offline**.
+3. Keresse meg a StorSimple-Eszközkezelő szolgáltatást, majd **eszközök**. Az a **eszközök** a régi eszköz panelen kell állapotúként **Offline**.
 
     ![Forrás-eszköz kapcsolat nélküli módban](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev2.png)
 
-4. Állítsa be az eszközt, és regisztrálja újra a StorSimple eszköz Manager szolgáltatásban. Az újonnan regisztrált eszközre kell megjeleníteni **már beállíthat**. Az eszköz nevét az új eszköz ugyanaz, mint a régi eszköz, azonban kiegészül a számot jelzi, hogy az eszköz gyári Alapértelmezések visszaállítása, és újra regisztrálni.
+4. Konfigurálja az eszközt, és regisztrálja újra a StorSimple-Eszközkezelő szolgáltatásban. Az újonnan regisztrált eszköz állapotúként kell **beállításra kész**. Az eszköz nevét, az új eszköz ugyanaz, mint a régi eszközök, de egy számot jelzi, hogy az eszköz gyári Alapértelmezések visszaállítása, és újra regisztrálni kiegészítve.
 
-    ![Újonnan regisztrált eszköz beállítása kész](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
-5. Az új eszközhöz az eszköz beállításának befejezése. További információkért látogasson el [4. lépés: minimális eszközbeállítások végrehajtása](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup). Az a **eszközök** panel, az eszköz állapota a **Online**.
+    ![Újonnan regisztrált eszköz beállításra kész](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
+5. Az új eszközhöz az eszköz beállításának befejezése. További információért ugorjon [4. lépés: Minimális eszközbeállítások teljesítéséhez](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup). Az a **eszközök** panelen a az eszköz állapota **Online**.
 
    > [!IMPORTANT]
-   > **Először végezze el a minimális konfiguráció, vagy a vész-Helyreállítási sikertelenek lehetnek.**
+   > **Először végezze el a minimális konfiguráció, vagy a Vészhelyreállításhoz sikertelenek lehetnek.**
 
-    ![Online az újonnan regisztrált eszközre](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev7.png)
+    ![Online újonnan regisztrált eszköz](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev7.png)
 
-6. Válassza ki azt a régi eszközt (kapcsolat nélküli állapota), majd kattintson a parancssávon **feladatátvételt**. Az a **feladatátvételt** panelen válassza ki azt a régi eszközt forrásként, és adja meg a céleszközt az újonnan regisztrált eszköz.
+6. Válassza ki a régi eszközt (kapcsolat nélküli állapot), és kattintson a parancssávon **átadja a feladatokat**. Az a **átadja a feladatokat** panelen válassza ki a régi eszközt a forrásként, és adja meg az újonnan regisztrált eszköz a céleszközön.
 
     ![Feladatátvételi összegzése](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev11.png)
 
-    Részletes útmutatásért tekintse meg [átveheti egy másik fizikai eszköz](#fail-over-to-another-physical-device).
+    Részletes utasításokért tekintse meg a sikertelen keresztül egy másik fizikai eszköz.
 
-7. Egy eszköz-visszaállítási feladat jön létre, hogy a figyelheti a **feladatok** panelen.
+7. Egy eszköz visszaállítási feladat jön létre a figyelésére a **feladatok** panelen.
 
-8. Miután a feladat sikeresen befejeződött, az új eszközhöz való hozzáféréshez, és keresse meg a **kötettárolók** panelen. Győződjön meg arról, hogy a régi eszközről kötettárolók átvitelét az új eszköz.
+8. Miután a feladat sikeresen befejeződött, az új eszköz eléréséhez, és keresse meg a **kötettárolók** panelen. Győződjön meg arról, hogy a régi eszközről minden kötettároló át lettek-e az új eszköz.
 
-   ![Kötettárolók áttelepítése](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev13.png)
+   ![Áttelepített kötettárolók](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev13.png)
 
-9. A feladatátvétel befejezése után inaktiválása, és törli a régi eszközt a portálról. A régi eszköz (offline), kattintson a jobb gombbal, majd válassza ki és **Deactivate**. Az eszközt az Inaktiválás után az eszköz állapota frissül.
+9. A feladatátvétel befejezése után, akkor is eszköz inaktiválása és törlése a régi a portálról. A régi eszköz (offline), kattintson a jobb gombbal, majd válassza ki és **inaktiválás**. Az eszköz az inaktiválása után az eszköz állapota frissül.
 
      ![Forrás eszköz inaktiválása](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev14.png)
 
-10. Válassza ki a deaktivált eszközt, kattintson a jobb gombbal, és válassza **törlése**. Ez törli az eszközt az eszközök listája.
+10. Válassza ki a inaktivált eszköz, kattintson a jobb gombbal, és válassza ki **törlése**. Ez törli az eszközt az eszközlistáról.
 
-    ![Forrás eszköz törlése](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev15.png)
+    ![A forráseszközt törölve](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev15.png)
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Miután elvégezte a feladatátvételt, esetleg [inaktiválja vagy törölje a StorSimple eszköz](storsimple-8000-deactivate-and-delete-device.md).
-* A StorSimple Device Manager szolgáltatás használatával kapcsolatos információkért látogasson el [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).
+* Miután elvégezte a feladatátvételt, szükség lehet [inaktiválja vagy törölje a StorSimple-eszköz](storsimple-8000-deactivate-and-delete-device.md).
+* A StorSimple-Eszközkezelő szolgáltatás használatával kapcsolatos információkért tekintse meg a [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).
 

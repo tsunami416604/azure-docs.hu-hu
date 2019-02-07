@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b48382c8f429576a3d15c624c9c9028cffec3872
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508402"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813024"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>BGP konfigurálása Azure VPN Gateway PowerShell-lel
 Ez a cikk végigvezeti a BGP engedélyezéséhez a létesítmények közötti Site-to-Site (S2S) VPN-kapcsolat és VNet – VNet kapcsolat a Resource Manager üzemi modell és a PowerShell használatával.
@@ -35,7 +35,7 @@ Lásd: [BGP áttekintése az Azure VPN-átjárókkal](vpn-gateway-bgp-overview.m
 Ez a cikk végigvezeti a lépéseken, a következő feladatokat végezheti el:
 
 * [1. rész – az Azure VPN gateway a BGP engedélyezése](#enablebgp)
-* [2. rész – a BGP létesítmények közötti kapcsolat létrehozása](#crossprembgp)
+* 2. rész – a BGP létesítmények közötti kapcsolat létrehozása
 * [3. rész – a BGP VNet – VNet kapcsolat létrehozása](#v2vbgp)
 
 Az egyes részek az utasításokat a hálózati kapcsolatot a BGP engedélyezéséhez építőeleme képezi. Ha elvégezte az összes három részből áll, létre a topológia az alábbi ábrán látható módon:

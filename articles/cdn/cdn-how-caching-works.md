@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
-ms.openlocfilehash: 563c073e781e2a2bee88b4ecdcdc82541c21ec4f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092390"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813041"
 ---
 # <a name="how-caching-works"></a>A gyorsítótárazás működése
 
@@ -35,10 +35,10 @@ Nem gyorsítótárazható, dinamikus erőforrások, amelyek gyakran módosítjá
 
 Gyorsítótárazás akkor fordulhat elő, több szinten, a forráskiszolgáló és a végfelhasználói között:
 
-- Webkiszolgáló: megosztott gyorsítótár használ (a több felhasználó).
-- A tartalomkézbesítési hálózat: megosztott gyorsítótár használ (a több felhasználó).
-- Szolgáltatás internetszolgáltató: megosztott gyorsítótár használ (a több felhasználó).
-- Webböngésző: egy privát gyorsítótárat használ (az egy felhasználó).
+- Webkiszolgáló: Használja a megosztott gyorsítótár (a több felhasználó).
+- Tartalomkézbesítési hálózat: Használja a megosztott gyorsítótár (a több felhasználó).
+- Internet-szolgáltató (Internetszolgáltató): Használja a megosztott gyorsítótár (a több felhasználó).
+- Webböngésző: Privát gyorsítótár használ (az egy felhasználó).
 
 Minden gyorsítótár általában kezeli a saját erőforrás frissesség, és érvényesítési hajt végre, ha egy fájl elavult. Ez a viselkedés a HTTP-specifikáció gyorsítótárazás van definiálva [RFC 7234](https://tools.ietf.org/html/rfc7234).
 
@@ -69,16 +69,16 @@ Két fejlécek gyorsítótár frissessége meghatározásához használható: `C
 
 Az Azure CDN támogatja a következő a HTTP-gyorsítótárirányelv-fejlécek, amelyek meghatározzák a gyorsítótárazás időtartama és a gyorsítótár-megosztás.
 
-**A Cache-Control:**
+**Cache-Control:**
 - A tartalom több felügyeleti lehetőséget biztosítanak a webes közzétevők és céljából vonatkozó korlátozások a HTTP 1.1-ben bevezetett a `Expires` fejléc.
 - Felülbírálja a `Expires` fejléc, ha mindkét, és `Cache-Control` vannak definiálva.
 - A CDN összes jelenléti Pontjára, hogy az ügyfél HTTP-kérelem használatakor `Cache-Control` figyelmen kívül hagyja az összes Azure CDN-profilok, alapértelmezés szerint.
 - Ha egy HTTP-válasz a CDN jelenléti pontra irányíthatja az ügyfél használja:
      - **Az Azure CDN Standard/prémium verizon** és **Azure CDN Standard a Microsoft** támogatja az összes `Cache-Control` irányelveknek.
      - **Az Azure CDN Akamai Standard** támogatja a csak a következő `Cache-Control` irányelvek; az összes többi figyelmen kívül hagyja:
-         - `max-age`: A gyorsítótár tud tárolni a tartalmat a másodpercben megadott. Például: `Cache-Control: max-age=5`. Ez az irányelv meghatározza a maximális időt, a tartalom friss kell tekinteni.
-         - `no-cache`: A tartalom gyorsítótárazása, de a tartalom ellenőrzése minden alkalommal, mielőtt elküldené a gyorsítótárból. Egyenértékű `Cache-Control: max-age=0`.
-         - `no-store`: Soha nem gyorsítótár tartalma. Távolítsa el a tartalmat, ha korábban időtartamnál.
+         - `max-age`: Gyorsítótár tud tárolni a tartalmat a másodpercben megadott. Például: `Cache-Control: max-age=5`. Ez az irányelv meghatározza a maximális időt, a tartalom friss kell tekinteni.
+         - `no-cache`: A tartalom gyorsítótárazni, de a tartalom ellenőrzése minden alkalommal, mielőtt elküldené a gyorsítótárból. Egyenértékű `Cache-Control: max-age=0`.
+         - `no-store`: Soha nem gyorsítótárazzák a tartalmat. Távolítsa el a tartalmat, ha korábban időtartamnál.
 
 **Lejárat:**
 - A HTTP 1.0; bevezetett örökölt fejléc támogatott a visszamenőleges kompatibilitás.
@@ -86,7 +86,7 @@ Az Azure CDN támogatja a következő a HTTP-gyorsítótárirányelv-fejlécek, 
 - Hasonló `Cache-Control: max-age`.
 - Mikor használható `Cache-Control` nem létezik.
 
-**Direktiva Pragma:**
+**Pragma:**
    - Nem fogadja el az Azure CDN, alapértelmezés szerint.
    - A HTTP 1.0; bevezetett örökölt fejléc támogatott a visszamenőleges kompatibilitás.
    - Használja a következő irányelvnek ügyfél fejléc: `no-cache`. Ez az irányelv arra utasítja, hogy az erőforrás egy frissen telepített verzióját a kiszolgálón.
@@ -114,9 +114,9 @@ Nem minden erőforrás gyorsítótárazható. Az alábbi táblázat bemutatja, m
 
 |                   | A Microsoft Azure CDN          | Az Azure CDN a Verizontól | Az Azure CDN az Akamaitól        |
 |-------------------|-----------------------------------|------------------------|------------------------------|
-| HTTP-állapotkódok | 200-as, 203, 206, 300, 301, 410, 416 | 200                    | 200-as, 203, 300, 301, 302, 401-es |
+| HTTP-állapotkódok | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
 | HTTP-metódusok      | GET, HEAD                         | GET                    | GET                          |
-| Fájlméret-korlátozások  | 300 GB                            | 300 GB                 | – Általános webes kézbesítés optimalizálása: 1,8 GB<br />– Online médialejátszás optimalizálása: 1,8 GB<br />– Nagyméretű fájlok optimalizálása: 150 GB |
+| Fájlméret-korlátozások  | 300 GB                            | 300 GB                 | – Általános webes kézbesítés optimalizálása: 1.8-AS GB<br />-Adathordozó adatfolyam-továbbítási optimalizálási lehetőségek: 1.8-AS GB<br />– Nagyméretű fájlok optimalizálása: 150 GB |
 
 A **Azure CDN Standard a Microsoft** gyorsítótárazásának működését az erőforrás, a forráskiszolgáló támogatnia kell az összes fő és GET HTTP-kérések és a tartalomhossz értékeket meg kell egyeznie a fő- és GET HTTP válaszokat az az eszköz. A HEAD-kérések a forráskiszolgáló támogatnia kell a HEAD kérésre, és az azonos fejléccel kell válaszolnia, mintha egy GET kéréssel, korábban fogadott.
 
@@ -124,14 +124,14 @@ A **Azure CDN Standard a Microsoft** gyorsítótárazásának működését az e
 
 A következő táblázat ismerteti az alapértelmezett gyorsítótárazási viselkedésének az Azure CDN termékek és az optimalizálást.
 
-|    | A Microsoft: Általános webes kézbesítés | Verizon: Általános webes kézbesítés | Verizon: DSA | Akamai: Általános webes kézbesítés | Akamai: DSA | Akamai: Nagyméretű fájl letöltése | Akamai: általános vagy VOD médiatartalmak streamelése |
+|    | Microsoft: Általános webes kézbesítés | Verizon: Általános webes kézbesítés | Verizon: DSA | Akamai: Általános webes kézbesítés | Akamai: DSA | Akamai: Nagyméretű fájl letöltése | Akamai: általános vagy VOD médiatartalmak streamelése |
 |------------------------|--------|-------|------|--------|------|-------|--------|
 | **Fogadja el a forrás**       | Igen    | Igen   | Nem   | Igen    | Nem   | Igen   | Igen    |
 | **A CDN-gyorsítótárazás időtartama** | 2 nap |7 nap | None | 7 nap | None | 1 nap | 1 év |
 
-**Fogadja el a forrás**: Megadja, hogy tartsa tiszteletben a [gyorsítótárirányelv-fejlécek támogatott](#http-cache-directive-headers) Ha léteznek az a HTTP-válasz a forráskiszolgálóról.
+**Fogadja el a forrás**: Megadja, hogy tartsa tiszteletben a támogatott gyorsítótárirányelv-fejlécek, ha azok léteznek, a HTTP-válaszban a forráskiszolgálóról.
 
-**A CDN-gyorsítótárazás időtartama**: meghatározza az időt, amelynek egy erőforrást a rendszer gyorsítótárazza az Azure CDN-en. Azonban ha **fogadja el a forrás** Igen értékű, és a forráskiszolgáló a HTTP-válasz tartalmazza a gyorsítótárirányelv-fejléc `Expires` vagy `Cache-Control: max-age`, az Azure CDN használja helyette a fejléc által megadott időtartam értéket. 
+**A CDN-gyorsítótárazás időtartama**: Meghatározza az időt, amelynek egy erőforrást a rendszer gyorsítótárazza az Azure CDN-en. Azonban ha **fogadja el a forrás** Igen értékű, és a forráskiszolgáló a HTTP-válasz tartalmazza a gyorsítótárirányelv-fejléc `Expires` vagy `Cache-Control: max-age`, az Azure CDN használja helyette a fejléc által megadott időtartam értéket. 
 
 ## <a name="next-steps"></a>További lépések
 

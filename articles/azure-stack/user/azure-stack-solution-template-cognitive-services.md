@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 331a71d4f807e1e596a91c1463064e3f6dcbd1e1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7d719ee6bdb8ce1f4131b474fe7602b492e69cd3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247034"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810673"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Az Azure Stack üzembe helyezése az Azure Cognitive Services
 
@@ -144,7 +144,7 @@ Kulcsmezők részleteit:
 | ImageLocation | Azt jelzi, hogy a cognitive Services-szolgáltatás adott tárolórendszerképet az ACR helyét. Ha például az arcok szolgáltatás: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
 | BillingURL |A végpont URL-címe. lépésében feltüntetett [Azure-erőforrás létrehozása](#create-azure-resources) |
 | ApiKey | Az előfizetési kulcsot. lépésében feltüntetett [Azure-erőforrás létrehozása](#create-azure-resources) |
-| SecretName | Název tajného kódu. lépésében feltüntetett [a privát tárolóregisztrációs adatbázis eléréséhez secrete létrehozása](#create-secrete-to-access-the-private-container-registry) |
+| SecretName | Název tajného kódu létrehozás. lépésében feltüntetett secrete a privát tárolóregisztrációs adatbázis eléréséhez |
 
 ## <a name="deploy-the-cognitive-service"></a>A cognitive Services-szolgáltatás üzembe helyezése
 

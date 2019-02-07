@@ -7,12 +7,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 11/28/2018
-ms.openlocfilehash: 7effcc82a737fd2914f06a2c475cece94adc84f3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1c0502458a5c20991ada6f5a33d067a38596752b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841795"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817563"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Az Azure Key Vaultban felügyelt tárfiók – PowerShell
 
@@ -95,7 +95,7 @@ Ugyanebben a PowerShell-munkamenetben használja, frissítse a Key Vault hozzáf
 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azureProfile.Context.Account.Id -PermissionsToStorage get,list,delete,set,update,regeneratekey,recover,backup,restore,purge
+Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azureProfile.Context.Account.Id -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
 ```
 
 Vegye figyelembe, hogy a storage-fiókokra vonatkozó engedélyek nem érhetők el, a tárolási fiók "Hozzáférési házirendek" lapon az Azure Portalon.

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8ac8f2fe62898cdeb386fd3a8275fec1712c1728
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5e8d45a9bf9fdffc824994238add2b8541a878a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491552"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812719"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Az Azure AD Connect szinkronizálása: A deklaratív üzembe helyezés ismertetése
 Ez a témakör ismerteti az Azure AD Connect konfigurációs modell. A modell a deklaratív kiépítés neve, és lehetővé teszi, hogy olyan konfigurációs módosítást egyszerű. Sok-sok dolog ebben a témakörben leírt speciális és a legtöbb ügyfél forgatókönyvhöz nem szükséges.
@@ -37,7 +37,7 @@ A folyamat számos különböző modulokat tartalmaz. Mindegyik felelős felügy
 * Forrás, az adatforrás-objektum
 * [Hatókör](#scope), megkeresi az összes szinkronizálási szabály hatókörébe
 * [Csatlakozás](#join), meghatározza, hogy összekötőterét és metaverzumbeli közötti kapcsolat
-* [Átalakítás](#transform), számítja ki, hogyan lesz átalakítva attribútumok és a flow
+* Átalakítás számítja ki, hogyan lesz átalakítva attribútumok és a flow
 * [Elsőbbségi](#precedence), így feloldja az ütköző attribútum hozzájárulások
 * Cél, a célobjektum
 

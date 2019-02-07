@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: f51ce90d9349d345bb1e77ca5e254315c20c1b1d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 95811459ff51b71153fb5ceef804a64c8b6a9be6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034472"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816628"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Csatlakozás az Azure Cosmos DB BI elemzési eszközök használata az ODBC-illesztő
 
@@ -71,8 +71,8 @@ Kezdjük az ODBC-illesztőt.
     - **Újrapróbálkozások száma**: Adja meg az újrapróbálkozások egy műveletet, ha a kezdeti kérelem befejezése sikertelennek bizonyul szolgáltatás sebesség korlátozása miatt.
     - **Soubor schématu**: Itt több lehetőség van.
         - Elhagyása (üres), mert ez a bejegyzés alapértelmezés szerint az illesztőprogram megvizsgálja az egyes gyűjtemények-séma megállapításához összes gyűjtemény adatainak első oldalán. Ez az úgynevezett leképezési gyűjteményt. Egy sémafájlt definiált nélkül az illesztőprogram a vizsgálat végrehajtania az egyes illesztőprogram-munkamenet, és hatására a DSN használó alkalmazások magasabb indítási idő. Azt javasoljuk, hogy mindig társít egy sémafájlt az Adatbázisnevet.
-        - Ha már rendelkezik egy sémafájlt (valószínűleg egy létrehozott a [Sémaszerkesztőt](#schema-editor)), kattintson **Tallózás**, keresse meg a fájlt, kattintson a **mentése**, és kattintson a **OK**.
-        - Ha azt szeretné, hogy hozzon létre egy új sémát, kattintson a **OK**, és kattintson a **Sémaszerkesztőt** a fő ablakban. Majd folytassa a [Sémaszerkesztőt](#schema-editor) információkat. Miután létrehozta az új sémafájl, ne felejtse el lépjen vissza a **speciális beállítások** az újonnan létrehozott sémafájl ablak.
+        - Ha már rendelkezik egy sémafájlt (valószínűleg egy séma-szerkesztő használatával létrehozott), kattintson **Tallózás**, keresse meg a fájlt, kattintson a **mentése**, és kattintson a **OK**.
+        - Ha azt szeretné, hogy hozzon létre egy új sémát, kattintson a **OK**, és kattintson a **Sémaszerkesztőt** a fő ablakban. Majd folytassa a Sémaszerkesztőt információkat. Miután létrehozta az új sémafájl, ne felejtse el lépjen vissza a **speciális beállítások** az újonnan létrehozott sémafájl ablak.
 
 1. Miután befejezte a, és zárja be a **Azure Cosmos DB ODBC DSN illesztőinek** ablakot, az új felhasználó DSN bekerül a felhasználói DSN lap.
 

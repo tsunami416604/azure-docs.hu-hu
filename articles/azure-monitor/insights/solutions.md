@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 0103225803ca98cb9d8e27eb57f150e0660cd7ab
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 8a6a679aaf43e4a92eb380368f3d68704853d3a3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299127"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816815"
 ---
 # <a name="management-solutions-in-azure-monitor"></a>Felügyeleti megoldások az Azure monitorban
 Felügyeleti megoldások használhatja a szolgáltatásokat nyújt további betekintést a művelet egy adott alkalmazás vagy szolgáltatás Azure-ban. Ez a cikk az Azure és a részletek megoldások rövid áttekintést nyújt a használatáról, és telepíteni kell őket.
@@ -101,7 +101,7 @@ Log Analytics-munkaterületet és Automation-fiók az alábbi eljárást követv
 1. Ha a **munkaterület** beállítás engedélyezve van, akkor ezt a fiókot egy Log Analytics-munkaterülethez van csatolva. Kattintson a **munkaterület** a munkaterület részleteinek megtekintéséhez.
 
 ## <a name="remove-a-management-solution"></a>Egy megoldás eltávolítása
-Keresse meg a telepített megoldás eltávolításához a [telepített megoldások listája](#list-installed-monitoring-solutions). Kattintson az összefoglalás lapon megnyitásához, és kattintson a megoldás nevére a **törlése**.
+Távolítsa el a telepített megoldás, keresse meg a telepített megoldások listáját. Kattintson az összefoglalás lapon megnyitásához, és kattintson a megoldás nevére a **törlése**.
 
 
 

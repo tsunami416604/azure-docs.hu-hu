@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: e4ea964600c03ce3f3b5b276ed02d12f573814bf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e1c225eb77a76015520690916db0399487ffe9e7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756495"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822612"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Számítógépek csatlakoztatása a Log Analytics-átjáró Internet-hozzáférés nélkül
 
@@ -34,7 +34,7 @@ A Log Analytics-átjáró támogatja:
 * Az Azure Automation hibrid Runbook-feldolgozók  
 * A Log Analytics-munkaterülethez közvetlenül kapcsolódó Microsoft Monitoring Agent Windows-számítógépek
 * A Linuxhoz készült Log Analytics-ügynököt a Linux rendszerű számítógépek közvetlenül csatlakozik a Log Analytics-munkaterület  
-* A System Center Operations Manager 2012 SP1 UR7, az Operations Manager 2012 R2 UR3, az Operations Manager 2016 és az Operations Manager verzióra 1801-re felügyeleti csoport integrálva a Log Analytics használatával.  
+* A System Center Operations Manager 2012 SP1 UR7, az Operations Manager 2012 R2 UR3, az Operations Manager 2016 vagy újabb felügyeleti csoport integrálva a Log Analytics használatával.  
 
 Ha az informatikai biztonsági szabályzatok nem teszi lehetővé a számítógépek csatlakozni az internethez, a terminálok (POS) eszközök vagy a kiszolgálók támogatása az IT-szolgáltatások, például a hálózat, de az Azure Automation és a Log Analytics kezelni és megfigyelni őket csatlakoztatni kell , a Log Analytics átjáró és a konfigurációs és a továbbítási adatok saját nevükben való közvetlen kommunikációhoz konfigurálható.  Ha ezek a számítógépek közvetlenül csatlakozhat a Log Analytics-munkaterületet a Log Analytics-ügynökkel rendelkező vannak konfigurálva, az összes számítógép inkább kommunikál a Log Analytics-átjáró.  Az átjáró átviszi az adatokat a az ügynököket a szolgáltatás közvetlenül, nem elemzi az adatokat átvitel közben.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: d105968d13960409a60e2fde9c811a042f444d8f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4e787ab134caee1a7f9a26e46f698f2fe9807d83
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848629"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813679"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Átadása és visszavétele Azure-bA replikált fizikai kiszolgálók
 
@@ -24,9 +24,9 @@ Fizikai kiszolgálók replikálása az Azure Site Recovery használatával; az V
 
 A feladatátvétel és a feladat-visszavétel négy fázisból áll:
 
-1. **Feladatátvétel az Azure-ba**: Gépek átvétele a helyszíni helyről az Azure-ba.
-2. **Azure virtuális gépek ismételt védelme**: az Azure virtuális gépek ismételt védelme, hogy megkezdődhessen a replikálás vissza a helyszíni VMware virtuális gépeket.
-3. **Feladatátvétel a helyszínre**: Feladatátvétel futtatása az Azure-ból való feladat-visszavételhez.
+1. **Az Azure-bA feladatátvételt**: Gépek átvétele a helyszíni helyről az Azure-bA.
+2. **Az Azure virtuális gépek ismételt védelme**: Az Azure virtuális gépek ismételt védelme, hogy megkezdődhessen a vissza a helyszíni VMware virtuális gépek replikálása.
+3. **Átadja a feladatokat a helyszíni**: Feladatátvételt végez, az Azure-ból sikertelen lesz.
 4. **Az ismételt védelem a helyszíni virtuális gépek**: Miután adatokat vissza nem sikerült, ismételt védelme a helyszíni VMware virtuális gépek vissza az, hogy megkezdődhessen a replikálás az Azure-bA.
 
 ## <a name="verify-server-properties"></a>Ellenőrizze a kiszolgáló tulajdonságai
@@ -36,7 +36,7 @@ Ellenőrizze a kiszolgáló tulajdonságait, és győződjön meg arról, hogy m
 1. A **védett elemek**, kattintson a **replikált elemek**, és válassza ki a gépet.
 
 2. Az a **replikált elem** ablaktáblán állapot, gép információk összegzését, és a legújabb elérhető helyreállítási pontok. Kattintson a **Tulajdonságok** lehetőségre a további részletek megtekintéséhez.
-3. A **Számítás és hálózat** területen módosíthatja az Azure-nevet, az erőforráscsoportot, a célméretet, a [rendelkezésre állási csoportot](../virtual-machines/windows/tutorial-availability-sets.md) és a [felügyelt lemez beállításait](#managed-disk-considerations)
+3. A **számítás és hálózat**, módosíthatja az Azure-nevet, az erőforráscsoportot, a célméretet, [rendelkezésre állási csoport](../virtual-machines/windows/tutorial-availability-sets.md), és a felügyelt lemez beállításait
 4. Megtekintheti és módosíthatja a hálózati beállításokat, beleértve azt a hálózatot/alhálózatot, amelyen az Azure-beli virtuális gép a feladatátvétel után lesz és a hozzá rendelt IP-címet.
 5. A **lemezek**, láthatja, hogy a gép operációs rendszerének és az adatlemezek kapcsolatos információkat.
 

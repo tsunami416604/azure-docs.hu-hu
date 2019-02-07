@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a3e7d2e5961f0951806ce9014fc320feef67ac90
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1d6f43b23bddf2d1ff7a2a41a11b4a2c8623d372
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735885"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768623"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Telemetria szabály létrehozása és az Azure IoT központi alkalmazás-értesítések beállítása
 
@@ -80,7 +80,7 @@ Ez a szakasz bemutatja, hogyan állíthatja be a műveleteket, ha a szabály les
 1. Válassza ki a **E-mail** művelet, adjon meg egy érvényes e-mail-címmel a **való** mezőben, és ügyeljen arra, hogy a szabály aktiválásakor jelennek meg az e-mail törzsét adja meg.
 
     > [!NOTE]
-    > Csak hozzá az alkalmazáshoz, és legalább egyszer bejelentkezett felhasználók kapnak e-mailt. Tudjon meg többet [felhasználókezelés](howto-administer.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) az Azure IoT Central.
+    > Csak hozzá az alkalmazáshoz, és legalább egyszer bejelentkezett felhasználók kapnak e-mailt. Tudjon meg többet [felhasználókezelés](howto-administer-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) az Azure IoT Central.
 
    ![Művelet konfigurálása](media/howto-create-telemetry-rules-experimental/Configure_Action.png)
 
@@ -88,8 +88,8 @@ Ez a szakasz bemutatja, hogyan állíthatja be a műveleteket, ha a szabály les
 
 A szabály például a Microsoft Flow és a webhookok más műveleteket is hozzáadhat. Szabályonként legfeljebb 5 műveleteket is hozzáadhat.
 
-- [Microsoft Flow művelet](howto-add-microsoft-flow.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) elindít egy munkafolyamatot a Microsoft Flow, amikor egy szabály akkor lesz kiváltva 
-- [Webhook művelettel](howto-create-webhooks.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) más szolgáltatások értesíti, amikor egy szabály akkor lesz kiváltva
+- [Microsoft Flow művelet](howto-add-microsoft-flow-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) elindít egy munkafolyamatot a Microsoft Flow, amikor egy szabály akkor lesz kiváltva 
+- [Webhook művelettel](howto-create-webhooks-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) más szolgáltatások értesíti, amikor egy szabály akkor lesz kiváltva
 
 ## <a name="parameterize-the-rule"></a>A szabály paraméterezése
 
@@ -115,6 +115,6 @@ Keresse meg az eszközt, és válassza ki az engedélyezni vagy letiltani kívá
 
 Most, hogy megtanulhatta, hogyan hozhat létre szabályokat az Azure IoT Central alkalmazáshoz, az alábbiakban néhány következő lépés:
 
-- [A szabályok a Microsoft Flow művelet hozzáadása](howto-add-microsoft-flow.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
-- [A szabályokban Webhook művelet hozzáadása](howto-create-webhooks.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
-- [Az eszközök kezelése](howto-manage-devices.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+- [A szabályok a Microsoft Flow művelet hozzáadása](howto-add-microsoft-flow-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+- [A szabályokban Webhook művelet hozzáadása](howto-create-webhooks-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+- [Az eszközök kezelése](howto-manage-devices-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)

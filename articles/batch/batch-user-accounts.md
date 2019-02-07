@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: b59bb835c9858c6e47b8bb3a3518086e887d0d84
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ba64ecc334d93c8ff973345cfd10ed12436d3fb6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542832"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813908"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>A felhasználói fiókok feladatok futtatása a Batchben
 
@@ -60,13 +60,13 @@ A feladat a fájlok és könyvtárak elérése további információkért lásd:
 A felhasználói fiók jogosultságszint-emelési szint azt jelzi, hogy egy tevékenység fut-e emelt szintű hozzáféréssel rendelkező. Emelt szintű hozzáférés automatikus – felhasználói fiókkal és a egy névvel ellátott felhasználói fiókot is futtatható. A jogosultságszint-emelési szint két lehetőségek közül választhat:
 
 - **Nonadmin elemet:** Emelt szintű hozzáférés nélkül normál felhasználóként futtatja a tevékenységet. Egy Batch-felhasználói fiókhoz alapértelmezett jogosultságszint-emelési szintje nem mindig **nonadmin elemet**.
-- **Rendszergazda:** A feladat fut, a felhasználó emelt szintű hozzáféréssel rendelkező, és teljes körű rendszergazdai engedélyekkel működik. 
+- **Rendszergazdai:** A feladat fut, a felhasználó emelt szintű hozzáféréssel rendelkező, és teljes körű rendszergazdai engedélyekkel működik. 
 
 ## <a name="auto-user-accounts"></a>Automatikus felhasználói fiókok
 
 Alapértelmezés szerint feladatok futtatása a Batchben automatikus felhasználói fiókkal, emelt szintű hozzáférés nélkül, és a feladat hatókörrel rendelkező normál felhasználóként. Az automatikus felhasználói specifikációt konfigurálásakor feladat hatókör a Batch szolgáltatás létrehozza ezt a feladatot csak egy automatikus-felhasználói fiókot.
 
-A tulajdonos alternatív feladat hatókörhöz készlet hatóköre. Ha az automatikus felhasználói specifikáció egy tevékenység a készlet hatóköre van konfigurálva, futtatja a tevékenységet a készletben lévő minden tevékenység számára elérhető automatikus felhasználói fiókkal. Készlet hatóköre kapcsolatos további információkért lásd: részre [feladat futtatása a készlet hatóköre auto-felhasználóként](#run-a-task-as-the-autouser-with-pool-scope).   
+A tulajdonos alternatív feladat hatókörhöz készlet hatóköre. Ha az automatikus felhasználói specifikáció egy tevékenység a készlet hatóköre van konfigurálva, futtatja a tevékenységet a készletben lévő minden tevékenység számára elérhető automatikus felhasználói fiókkal. Készlet hatóköre kapcsolatos további információkért lásd: a készlet hatóköre auto-felhasználóként részre feladat futtatása.   
 
 Az alapértelmezett hatókör nem egyezik a Windows és Linux-csomópontok:
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Application Gateway hibás átjáró (502-es) hibáinak elhárítása |} Microsoft Docs
-description: Ismerje meg az alkalmazás átjáró 502 hibák elhárítása
+title: Az Azure Application Gateway hibás átjáró (502) hibák elhárítása |} A Microsoft Docs
+description: Ismerje meg az Application Gateway 502-es kapcsolatos hibák elhárítása
 services: application-gateway
 documentationcenter: na
 author: amitsriva
@@ -15,53 +15,53 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 4eca6a588d2c95189f0ba995b8db195907e9dc39
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1db16f203755f9afc265495daba056313138a5dc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356035"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819450"
 ---
-# <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Az Alkalmazásátjáró hibás átjáró hibák elhárítása
+# <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Az Application Gatewayben hibás átjáróval kapcsolatos hibák elhárítása
 
-Megtudhatja, hogyan Alkalmazásátjáró használatakor kapott hibás átjáró (502-es) hibák elhárítását.
+Ismerje meg, hogyan háríthatók el a hibás átjáró (502) hibák az application gateway használata esetén.
 
 ## <a name="overview"></a>Áttekintés
 
-Miután olyan átjárót, a felhasználók esetleg előforduló hibák egyik "kiszolgálóhiba: 502 - webkiszolgáló érvénytelen választ kapott miközben átjáróként vagy proxyként működött". Ez a hiba a következő fő okok miatt fordulhat elő:
+Az application gateway konfigurációját követően a felhasználók esetleg előforduló hibák egyike a "kiszolgálóhiba: 502 – Az átjárói vagy proxykiszolgálói feladatokat ellátó webkiszolgáló érvénytelen választ kapott.” hibaüzenet jelenik meg, Ez a hiba a következő fő okok miatt fordulhat elő:
 
-* NSG-t, UDR vagy egyéni DNS korlátozza a hozzáférést a háttérrendszer a készlet tagjainak.
-* Háttér-virtuális gépek vagy virtuálisgép-méretezési csoport példányait [nem válaszol az alapértelmezett állapotmintáihoz](#problems-with-default-health-probe.md).
-* Érvénytelen vagy nem megfelelő [egyéni állapotteljesítmény konfigurációjának](#problems-with-custom-health-probe.md).
-* Az Azure Application Gateway [háttér-címkészlet nincs konfigurálva üres](#empty-backendaddresspool).
-* A virtuális gépek vagy a példányok egyike [virtuálisgép-méretezési csoport kifogástalan](#unhealthy-instances-in-backendaddresspool).
-* [Időtúllépés vagy csatlakozási problémák kérelem](#request-time-out) a felhasználói kérelmek.
+* NSG-t, az URD vagy az egyéni DNS blokkolja a háttérkészlet érintett tagjai.
+* Háttérbeli virtuális gépeket vagy virtuálisgép-méretezési csoport példányai nem válaszol, az alapértelmezett állapotadat-mintavétel.
+* Az egyéni állapotmintákat érvénytelen vagy nem megfelelő konfigurációja.
+* Az Azure Application Gateway [háttér-címkészletben nincs konfigurált vagy nem üres](#empty-backendaddresspool).
+* A virtuális gépek vagy a példányok egyike [virtuálisgép-méretezési csoportban kifogástalan](#unhealthy-instances-in-backendaddresspool).
+* [Kérelem időtúllépés vagy csatlakozási problémák](#request-time-out) a felhasználói kérelmek.
 
-## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>Hálózati biztonsági csoport, felhasználó által definiált útvonal vagy egyéni DNS-probléma
+## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>Hálózati biztonsági csoport, a felhasználó által megadott útvonal, vagy az egyéni DNS-probléma
 
 ### <a name="cause"></a>Ok
 
-Háttér-hozzáférését blokkolja az NSG-t, UDR vagy egyéni DNS miatt, ha az Application Gateway példányok nem fogja tudni elérni a háttérkészlet, és sikertelen mintavételek 502 hibát okozó eredményezne. Vegye figyelembe, hogy az NSG/UDR jelen lehet Application Gateway alhálózat vagy az alhálózat ahol az alkalmazás virtuális gépek vannak telepítve. Hasonlóképpen virtuális egyéni DNS jelenléte is hibát okozhat, ha teljes Tartománynevet háttér a készlet tagjainak használja, és nem oldja meg helyesen a felhasználó konfigurált DNS-kiszolgáló a vnet.
+NSG-t, az URD vagy az egyéni DNS jelenléte miatt a háttérrendszer való hozzáférés le van tiltva, ha a Application Gateway-példány nem fogja tudni elérni a háttérkészlet, és a mintavételi hiba okozza a 502 hibákat eredményez. Vegye figyelembe, hogy az NSG/UDR jelen lehet az Application Gateway-alhálózatot, vagy az alhálózat, az alkalmazás virtuális gépeire telepítve vannak-e. Ehhez hasonlóan a virtuális hálózat egyéni DNS jelenléte is hibát okozhat ha teljes Tartománynevet háttérkészlet-tagokra használja, és nem oldja meg helyesen a felhasználó konfigurált DNS-kiszolgáló a virtuális hálózathoz.
 
 ### <a name="solution"></a>Megoldás
 
-NSG-t, a UDR és a DNS-konfiguráció érvényesítése haladjon végig a következő lépéseket:
-* Ellenőrizze az Alkalmazásátjáró alhálózathoz társított NSG-ket. Győződjön meg arról, hogy nem blokkolja-e háttér-kommunikációt.
-* Alkalmazásátjáró alhálózathoz társított UDR ellenőrzése. Győződjön meg arról, UDR nem arra utasíthatja a forgalom másik lapra a backend alhálózathoz – például ellenőrizze a hálózati virtuális készülékek vagy az alapértelmezett útvonalak hirdetett alkalmazás átjáróalhálózatot ExpressRoute/VPN-en keresztül történő továbbítást.
+NSG-t, az udr-t és a DNS-konfiguráció érvényesítése és haladjon végig a következő lépéseket:
+* Ellenőrizze az Application Gateway alhálózathoz társított hálózati biztonsági csoportok. Győződjön meg arról, hogy nem blokkolja-e háttér-kommunikációt.
+* Ellenőrizze az Application Gateway alhálózathoz társított udr-t. Győződjön meg arról, hogy UDR van nem irányítja a forgalmat erről a háttérrendszer alhálózatának – például ellenőrizze a hálózati virtuális berendezések vagy Alkalmazásátjáró-alhálózat ExpressRoute/VPN-en keresztül hirdetett útvonalaknak alapértelmezett útvonalakat útválasztási.
 
 ```powershell
 $vnet = Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName
 Get-AzureRmVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
-* Ellenőrizze a hatékony NSG-t és a Virtuálisgép-fájlok útvonal
+* Ellenőrizze a hatékony NSG-t és a háttérbeli Virtuálisgép-útvonal
 
 ```powershell
 Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
 Get-AzureRmEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
 ```
 
-* Ellenőrizze a vnet egyéni DNS jelenlétét. DNS ellenőrizhetők a VNet tulajdonságainak a kimenetben részleteinek megtekintésével.
+* A virtuális hálózat egyéni DNS meglétének ellenőrzése. DNS is ellenőrizni kell a kimenetben a VNet tulajdonságainak részletek megtekintésével.
 
 ```json
 Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName 
@@ -71,85 +71,85 @@ DhcpOptions            : {
                            ]
                          }
 ```
-Ha telepítve van, győződjön meg arról, hogy a DNS-kiszolgáló tudja megfelelően feloldani háttér címkészletet tag FQDN.
+Ha jelen van, győződjön meg arról, hogy a DNS-kiszolgáló tudja megfelelően feloldani a háttérrendszer háttérkészlettag teljes tartománynevéből.
 
-## <a name="problems-with-default-health-probe"></a>Alapértelmezett állapotmintáihoz kapcsolatos problémák
+## <a name="problems-with-default-health-probe"></a>Alapértelmezett állapotadat-mintavétel kapcsolatos problémák
 
 ### <a name="cause"></a>Ok
 
-502 hibákat is lehet, hogy az alapértelmezett állapotmintáihoz nincs tudni érnie a háttér-virtuális gépek gyakori mutatók. Ha egy alkalmazás átjárópéldány ki van építve, egy alapértelmezett állapotmintáihoz az egyes annak a BackendHttpSetting tulajdonságai BackendAddressPool automatikusan konfigurálja. Ez a Hálózatfigyelő beállítása nincs felhasználói bevitel szükséges. Terheléselosztási szabály konfigurálásakor társítás van tenni egy BackendHttpSetting és BackendAddressPool között. Egy alapértelmezett mintavételt a társításokat mindegyikének van beállítva, és Application Gateway-példányokhoz csatlakoznak, a BackendHttpSetting elemben megadott port BackendAddressPool a rendszeres ellenőrzés kapcsolatot kezdeményez. Következő táblázat az alapértelmezett állapotmintáihoz tartozó értékek.
+502 hibákat is lehet, hogy az alapértelmezett állapotminta ne legyen képes elérni a háttérbeli virtuális géppel a gyakori mutatók. Amikor egy Application Gateway-példány üzembe van helyezve, automatikusan egy alapértelmezett állapotmintát a BackendHttpSetting tulajdonságainak használata minden egyes értékre állítja be. Ez a Hálózatfigyelő beállítása nincs felhasználói bevitel szükséges. Terheléselosztási szabály konfigurálásakor a társítás van tenni egy BackendHttpSetting és értékre között. Egy alapértelmezett mintavétel van konfigurálva, az egyes ezeket a hozzárendeléseket, és az Application Gateway az értékre, a BackendHttpSetting elemben meghatározott port minden példány rendszeres ellenőrzése kapcsolatot kezdeményez. Következő táblázat az alapértelmezett állapotminta tartozó értékek.
 
-| Mintavételi tulajdonság | Érték | Leírás |
+| Mintavétel tulajdonság | Érték | Leírás |
 | --- | --- | --- |
 | Teszt URL-címe |http://127.0.0.1/ |URL-cím |
-| Időköz |30 |Mintavételi időköz másodpercben |
-| Időtúllépés |30 |Mintavételi időkorlátja másodpercben |
-| Sérült küszöbérték |3 |Mintavételi újrapróbálkozások maximális számát. A háttér-kiszolgálófiók van megjelölve, miután az egymást követő mintavételi hiba száma eléri a sérült küszöbérték. |
+| Intervallum |30 |Mintavételi időköz (másodperc) |
+| Időtúllépés |30 |Mintavétel időkorlátja másodpercben |
+| Nem kifogástalan állapot küszöbértéke |3 |Mintavételi újrapróbálkozások számát. A háttérkiszolgáló-van megjelölve, miután az egymást követő mintavételi hiba száma eléri a nem kifogástalan állapot küszöbértéke. |
 
 ### <a name="solution"></a>Megoldás
 
-* Győződjön meg arról, hogy egy alapértelmezett webhelyet van konfigurálva, és a 127.0.0.1 figyel.
-* Ha BackendHttpSetting határozza meg a 80-as portra, az alapértelmezett webhely adott porton figyeljen kell megadni.
-* A hívás http://127.0.0.1:port egy 200-as HTTP-eredménykódja kell visszaadnia. Ez vissza kell adni az 30 másodpercet időkorláton belül.
-* Győződjön meg arról, hogy a konfigurált port nyitva-e, és hogy nincsenek-e a tűzfalszabályok vagy Azure hálózati biztonsági csoportok, amelyek a konfigurált port bejövő vagy kimenő forgalmát blokkolja.
-* Az Azure klasszikus virtuális gépek vagy a felhőalapú szolgáltatás FQDN vagy a nyilvános IP-cím használata esetén győződjön meg arról, hogy a megfelelő [végpont](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) már meg van nyitva.
-* Ha a virtuális gép Azure Resource Manager használatával van konfigurálva, és az Application Gateway telepítési helyét, VNet kívül esik [hálózati biztonsági csoport](../virtual-network/security-overview.md) engedélyezi a hozzáférést a kívánt porton kell konfigurálni.
+* Győződjön meg arról, hogy egy alapértelmezett hely van konfigurálva, és a 127.0.0.1 figyel.
+* Ha a BackendHttpSetting határozza meg, nem a 80-as portot, az alapértelmezett hely a porton figyeljen kell konfigurálni.
+* A hívás http://127.0.0.1:port egy 200-as HTTP-eredménykód adja vissza. Ez a rendszer visszalépteti az 30 másodpercet időkorláton belül.
+* Győződjön meg arról, hogy a konfigurált port nyitva-e, hogy nincsenek-e tűzfalszabályok vagy az Azure hálózati biztonsági csoportok, amelyek a konfigurált port bejövő vagy kimenő forgalmát blokkolja.
+* Ha az Azure klasszikus virtuális gép vagy Felhőszolgáltatás használja a teljes tartománynév vagy nyilvános IP-cím, győződjön meg arról, hogy a megfelelő [végpont](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) nyitja meg.
+* Ha a virtuális gép az Azure Resource Manageren keresztül történik, és kívül esik a virtuális hálózathoz, ahol az Application Gateway üzemel, [hálózati biztonsági csoport](../virtual-network/security-overview.md) kell konfigurálni a kívánt port a hozzáférés engedélyezéséhez.
 
-## <a name="problems-with-custom-health-probe"></a>Egyéni állapotmintáihoz kapcsolatos problémák
+## <a name="problems-with-custom-health-probe"></a>Egyéni állapotadat-mintavétel kapcsolatos problémák
 
 ### <a name="cause"></a>Ok
 
-Egyéni állapotteljesítmény az alapértelmezett viselkedés probing további rugalmasságával lehetővé. Egyéni mintavételt használata esetén a felhasználók beállíthatják a mintavételi időköznek, az URL-címet, és elérési útja tesztelése és fogadja el, hogy megsérült a háttér-készlet példányhoz való megjelölése előtt hány hibás válaszokat. A következő további tulajdonságokkal is bővül.
+Egyéni állapot-mintavételei lehetővé teszik a rugalmasságra, az alapértelmezett viselkedés-tesztelés. Egyéni mintavétel használata esetén a felhasználók beállíthatják a mintavételi időköz, az URL-címet, és teszteléséhez elérési útja és a háttérkészlet-példány állapota nem megfelelőként jelölés elfogadásának hány sikertelen válaszokat. A következő további tulajdonságokkal is bővül.
 
-| Mintavételi tulajdonság | Leírás |
+| Mintavétel tulajdonság | Leírás |
 | --- | --- |
-| Name (Név) |A mintavétel neve. Ez a név segítségével tekintse meg a mintavétel a háttér-HTTP-beállításait. |
-| Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttér-HTTP-beállítások között megadott protokollt használ. |
-| Gazdagép |A mintavétel küldendő állomásnevet. Akkor alkalmazható, csak akkor, ha több hely úgy van konfigurálva, az alkalmazás-átjárón. Ez eltér a virtuális gép állomásnevét. |
-| Útvonal |A mintavétel relatív elérési útja. Az érvényes elérési utat elindítja a "/". A mintavétel küldött \<protokoll\>://\<állomás\>:\<port\>\<elérési útja\> |
-| Időköz |Mintavételi időköz másodpercben. Ez a két egymást követő mintavételek menüpontban közötti időközt. |
-| Időtúllépés |Mintavételi időtúllépés másodpercben. Egy érvényes válasz nem érkezett meg a megadott időn belül, ha a mintavételi hibás jelölést. |
-| Sérült küszöbérték |Mintavételi újrapróbálkozások maximális számát. A háttér-kiszolgálófiók van megjelölve, miután az egymást követő mintavételi hiba száma eléri a sérült küszöbérték. |
+| Name (Név) |A mintavétel neve. Ez a név segítségével tekintse meg a mintavétel a háttér-HTTP-beállítások. |
+| Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttér-HTTP-beállítások meghatározott protokollt használ. |
+| Gazdagép |Állomásnév küldeni a Hálózatfigyelő. Akkor alkalmazható, ha csak az Application Gateway többhelyes kapcsolat van konfigurálva. Ez eltér a virtuális gép állomásnevét. |
+| Útvonal |A mintavétel relatív elérési útja. Az érvényes elérési utat indul (/). A mintavétel küldendő \<protokoll\>://\<gazdagép\>:\<port\>\<elérési útja\> |
+| Intervallum |Mintavétel gyakorisága másodpercben. Ez a két egymást követő mintavételek közötti időintervallum. |
+| Időtúllépés |Mintavétel időkorlátja másodpercben. Ha az időkorláton belül nem érkezik meg egy érvényes válasz, a mintavétel van megjelölve nem sikerült. |
+| Nem kifogástalan állapot küszöbértéke |Mintavételi újrapróbálkozások számát. A háttérkiszolgáló-van megjelölve, miután az egymást követő mintavételi hiba száma eléri a nem kifogástalan állapot küszöbértéke. |
 
 ### <a name="solution"></a>Megoldás
 
-Ellenőrizze, hogy az egyéni állapot-mintavételi megfelelően van konfigurálva, az előző táblázatban. Az előző hibaelhárítási lépések mellett is ellenőrizze a következőket:
+Ellenőrizze, hogy az egyéni Állapotminta megfelelően van konfigurálva, az előző táblázatban. Az előző hibaelhárítási lépések mellett is gondoskodjon a következőkről:
 
-* Győződjön meg arról, hogy a mintavétel helyesen van-e megadva megfelelően a [útmutató](application-gateway-create-probe-ps.md).
-* Ha Alkalmazásátjáró egy adott hely van konfigurálva, a gazdagépen alapértelmezés szerint nevét kell megadni a "127.0.0.1", kivéve, ha az egyéni tesztműveleti egyéb konfigurálni.
-* Győződjön meg arról, hogy http:// hívása\<állomás\>:\<port\>\<elérési\> 200-as HTTP eredmény kódot ad vissza.
-* Ellenőrizze, hogy időköz, időtúllépési és UnhealtyThreshold belül elfogadható tartományban.
-* Ha egy HTTPS-kapcsolaton keresztül mintavételi, győződjön meg arról, hogy a háttérkiszolgáló SNI nincs szükség a háttérkiszolgálón magát a fallback tanúsítvány konfigurálásával.
+* Győződjön meg arról, hogy a mintavétel megfelelően van-e megadva megfelelően a [útmutató](application-gateway-create-probe-ps.md).
+* Application Gateway egy adott hely van konfigurálva, ha a gazdagépen alapértelmezés szerint nevét kell megadni, "127.0.0.1", kivéve, ha más módon konfigurált egyéni mintavétel.
+* Ellenőrizze, hogy a http:// hívás\<gazdagép\>:\<port\>\<elérési út\> 200-as HTTP eredmény kódot ad vissza.
+* Győződjön meg arról, hogy időköz, időtúllépés és UnhealtyThreshold a teljesítményük elfogadható tartományon belül.
+* Egy HTTPS-kapcsolaton keresztüli mintavételi, ügyeljen arra, hogy a háttérkiszolgáló SNI nincs szükség a háttérkiszolgálón magát a fallback tanúsítvány konfigurálásával.
 
 ## <a name="request-time-out"></a>Kérelem időtúllépése
 
 ### <a name="cause"></a>Ok
 
-Amikor egy felhasználói kérelem érkezik, Application Gateway konfigurált szabályok vonatkozik a kérelmet, és továbbítja a háttér-készlet példánya. A konfigurálható időtartam, a háttér-példányból választ vár. Alapértelmezés szerint ez az időtartam alatt van **30 másodperces**. Ha a Alkalmazásátjáró nem kapott választ háttéralkalmazás ezen időszak, felhasználói kérelem 502 hiba jelenik meg.
+Ha egy felhasználói kérelem érkezik, az Application Gateway alkalmazza a konfigurált szabályokat a kérelemre, és továbbítja azt a háttérkészlet-példány. A háttér-példány válaszára konfigurálható alapidőponthoz vár. Alapértelmezés szerint ez az időtartam alatt a **30 másodperc**. Az Application Gateway nem kap választ Ez az időtartam alatt a háttéralkalmazás, felhasználói kérelem jelennének meg 502 hiba.
 
 ### <a name="solution"></a>Megoldás
 
-Alkalmazásátjáró BackendHttpSetting, majd alkalmazhatja különböző készletek, amelyek segítségével a beállítás lehetővé teszi. Különböző háttér-készletek különböző BackendHttpSetting és így különböző kérelem időkorlátja konfigurált rendelkezhet.
+Az Application Gateway lehetővé teszi a felhasználóknak a BackendHttpSetting, amely ezután alkalmazható különböző készletek keresztül beállítás megadásához. Különböző háttér-készletek különböző BackendHttpSetting és konfigurálva, ezért másik kérés időtúllépése rendelkezhet.
 
 ```powershell
     New-AzureRmApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
 ```
 
-## <a name="empty-backendaddresspool"></a>Üres BackendAddressPool
+## <a name="empty-backendaddresspool"></a>Empty BackendAddressPool
 
 ### <a name="cause"></a>Ok
 
-Az Alkalmazásátjáró e egyetlen virtuális gépek vagy virtuálisgép-méretezési készletben konfigurálva az a háttér-címkészlethez, azt nem hajt végre semmilyen felhasználói kérelem és a hibás átjáró hibát jelez.
+Ha az Application Gateway nem rendelkezik virtuális gépek vagy virtuálisgép-méretezési csoportot konfigurálva a háttér-címkészletben levő, nem hajthat végre útválasztást bármely ügyfél kérelem és a hibás átjáró hibát jelez.
 
 ### <a name="solution"></a>Megoldás
 
-Győződjön meg arról, hogy a háttér-címkészlet nem üres. Ezt megteheti, vagy PowerShell, a parancssori felületen vagy a portálon.
+Győződjön meg arról, hogy a háttér-címkészlet nem üres. Ezt megteheti, vagy a PowerShell, a parancssori felület vagy a portálon keresztül.
 
 ```powershell
 Get-AzureRmApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
 ```
 
-A fenti parancsmag kimenetében nem üres háttér címkészletet kell tartalmaznia. Az alábbiakban látható egy példa ahol két rendelkezik visszaadott amely háttérkiszolgáló virtuális gépek teljes Tartománynevét vagy IP-címmel vannak konfigurálva. A kiépítési állapotát a BackendAddressPool kell kell "sikeres".
+A fenti parancsmag kimenetében nem üres háttér címkészletet kell tartalmaznia. Az alábbiakban a példaként ahol két készletek visszaadott amelyre a háttérbeli virtuális gép teljes Tartományneve vagy IP-címmel vannak konfigurálva. A kiépítési állapota a értékre kell lennie "sikeres".
 
 BackendAddressPoolsText:
 
@@ -177,17 +177,17 @@ BackendAddressPoolsText:
 }]
 ```
 
-## <a name="unhealthy-instances-in-backendaddresspool"></a>Nem megfelelő állapotú példány BackendAddressPool
+## <a name="unhealthy-instances-in-backendaddresspool"></a>Nem megfelelő állapotú példányokat a értékre
 
 ### <a name="cause"></a>Ok
 
-Ha BackendAddressPool összes példánya sérült állapotban, majd Alkalmazásátjáró nem kellene bármely háttér útvonal felhasználói kérés. Az eset is ennek oka lehet, ha háttér-példányok kifogástalan állapotú, de nem rendelkezik a szükséges alkalmazás telepítése.
+Ha értékre összes példánya nem megfelelő állapotú, majd az Application Gateway sem kell bármilyen útvonalat felhasználói kérés háttér. Az eset is ennek oka lehet, háttérpéldányok kifogástalan állapotú, de nem rendelkezik a szükséges alkalmazás telepítése.
 
 ### <a name="solution"></a>Megoldás
 
-Győződjön meg arról, hogy a példány állapota kifogástalan és az alkalmazás megfelelően van konfigurálva. Ellenőrizze, hogy a háttér-példányok képesek-e egy másik virtuális gép ugyanazon virtuális válaszol a pingelésre. Ha be van állítva egy nyilvános végpontot, győződjön meg arról, hogy a böngésző kérést a webalkalmazásnak használható.
+Győződjön meg arról, hogy a példányok kifogástalan állapotú, és az alkalmazás megfelelően van konfigurálva. Ellenőrizze, hogy az azonos virtuális hálózaton található másik virtuális gépről egy pingelés válaszolhassanak-e a háttérkiszolgáló-példányokhoz. Ha be van állítva egy nyilvános végpontot, győződjön meg arról, hogy egy böngésző kérést a webalkalmazásnak tarthatók karban.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha az előző lépések nem a probléma megoldásához nyissa meg a [támogatja a jegy](https://azure.microsoft.com/support/options/).
+Ha a fenti lépések nem a probléma megoldásához nyissa meg a [támogatási jegyet](https://azure.microsoft.com/support/options/).
 

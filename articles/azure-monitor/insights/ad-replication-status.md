@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: c8cc6ccae59b8ee530ad679c492419a348423553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8d597a3491f80bc09c3e0676d17971f2509ba47a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184118"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818736"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Log Analytics használatával az Active Directory-replikációs állapotának figyelése
 
@@ -49,7 +49,7 @@ Ha nem szeretne minden tartományvezérlő közvetlen csatlakoztatása a Log Ana
 2. [A Windows-számítógép csatlakoztatása a Log Analytics](../../azure-monitor/platform/om-agents.md) vagy [csatlakoztathatja azt a meglévő Operations Manager-környezetet a Log Analytics használatával](../../azure-monitor/platform/om-agents.md), ha nem kapcsolódik.
 3. Az adott számítógépen állítsa be a következő beállításkulcsot:
 
-   * Kulcs: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management csoportok\<ManagementGroupName > \Solutions\ADReplication**
+   * Kulcs: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
    * Érték: **IsTarget**
    * Érték: **igaz**
 
@@ -117,39 +117,39 @@ Is **exportálása** exportálhatja az eredményeket az Excelbe. Az adatok expor
 ![exportált AD replikációs állapota hibák az Excelben](./media/ad-replication-status/oms-ad-replication-export.png)
 
 ## <a name="ad-replication-status-faq"></a>AD-replikáció állapota – gyakori kérdések
-**KÉRDÉS: Milyen gyakran az AD replikálás állapotadatainak frissítése?**
-VÁLASZ: Az adatokat öt naponta frissül.
+**K: Milyen gyakran az AD replikálás állapotadatainak frissítése?**
+V: Az adatokat öt naponta frissül.
 
-**KÉRDÉS: Van mód konfigurálása, hogy milyen gyakran frissül, ezeket az adatokat?**
-VÁLASZ: Jelenleg nem.
+**K: Van mód konfigurálása, hogy milyen gyakran frissül, ezeket az adatokat?**
+V: Jelenleg nem.
 
-**KÉRDÉS: Kell adja hozzá az összes saját tartományvezérlők, a Log Analytics-munkaterület ahhoz, hogy a replikációs állapot megtekintéséhez?**
-VÁLASZ: Nem, csak egyetlen tartományvezérlő hozzá kell adni. Ha rendelkezik több tartományvezérlő a Log Analytics-munkaterülethez, azokat az adatokat küld a Log Analytics.
+**K: Kell adja hozzá az összes saját tartományvezérlők, a Log Analytics-munkaterület ahhoz, hogy a replikációs állapot megtekintéséhez?**
+V: Nem, csak egyetlen tartományvezérlő hozzá kell adni. Ha rendelkezik több tartományvezérlő a Log Analytics-munkaterülethez, azokat az adatokat küld a Log Analytics.
 
-**KÉRDÉS: Nem szeretnék a tartományvezérlők hozzáadni a Log Analytics-munkaterületet. Továbbra is használható az AD Replication Status megoldás?**
-VÁLASZ: Igen. Beállíthat egy beállításkulcs megadásával engedélyezze azt értékét. Lásd: [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+**K: Nem szeretnék a tartományvezérlők hozzáadni a Log Analytics-munkaterületet. Továbbra is használható az AD Replication Status megoldás?**
+V: Igen. Beállíthat egy beállításkulcs megadásával engedélyezze azt értékét. Tekintse meg az egy nem tartományvezérlő AD adatokat küldeni a Log Analytics engedélyezése.
 
-**KÉRDÉS: Mi a neve, a folyamat, amely az adatgyűjtés?**
-VÁLASZ: AdvisorAssessment.exe
+**K: Mi a neve, a folyamat, amely az adatgyűjtés?**
+V: AdvisorAssessment.exe
 
-**KÉRDÉS: Mennyi ideig tart a gyűjtendő adatokat?**
-VÁLASZ: Adatok gyűjtése idő az Active Directory-környezet méretétől függ, de általában kisebb, mint 15 perc alatt.
+**K: Mennyi ideig tart a gyűjtendő adatokat?**
+V: Adatok gyűjtése idő az Active Directory-környezet méretétől függ, de általában kisebb, mint 15 perc alatt.
 
-**KÉRDÉS: Milyen típusú adatokat gyűjt?**
-VÁLASZ: LDAP-n keresztül gyűjt replikációs adatokat.
+**K: Milyen típusú adatokat gyűjt?**
+V: LDAP-n keresztül gyűjt replikációs adatokat.
 
-**KÉRDÉS: Van mód a konfigurálását, amikor az adatgyűjtés történik?**
-VÁLASZ: Jelenleg nem.
+**K: Van mód a konfigurálását, amikor az adatgyűjtés történik?**
+V: Jelenleg nem.
 
-**KÉRDÉS: Milyen engedélyekkel van szükségem adatok gyűjtésére?**
-VÁLASZ: Az Active Directory normál felhasználói engedélyek elegendőek.
+**K: Milyen engedélyekkel van szükségem adatok gyűjtésére?**
+V: Az Active Directory normál felhasználói engedélyek elegendőek.
 
 ## <a name="troubleshoot-data-collection-problems"></a>Adatok gyűjtése kapcsolatos problémák elhárítása
 Annak érdekében, hogy az adatok gyűjtéséhez az AD Replication Status megoldáscsomag szükséges legalább egy tartományvezérlő, a Log Analytics-munkaterületre kell csatlakoztatni. Mindaddig, amíg a tartományvezérlő csatlakozott, megjelenik egy üzenet jelzi, hogy **adatok összegyűjtése még folyamatban van**.
 
 Csatlakozás a tartományvezérlők egyik segítségre van szüksége, ha megtekintheti a dokumentációban, [a Log Analyticshez való csatlakozáshoz Windows számítógépek](../../azure-monitor/platform/om-agents.md). Azt is megteheti, ha a tartományvezérlő már csatlakoztatva van egy meglévő System Center Operations Manager-környezetbe, megtekintheti dokumentációját a [System Center Operations Manager csatlakoztatása a Log Analytics](../../azure-monitor/platform/om-agents.md).
 
-Ha nem szeretne csatlakozni a tartományvezérlők bármelyikét közvetlenül a Log Analytics vagy a System Center Operations Manager, [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+Ha nem szeretne csatlakozni a tartományvezérlők bármelyikét közvetlenül a Log Analytics vagy a System Center Operations Manager, lásd: egy nem tartományvezérlő AD adatokat küldeni a Log Analytics engedélyezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 * Használat [Log Analytics naplóbeli kereséseivel](../../azure-monitor/log-query/log-query-overview.md) Active Directory-replikáció állapota részletes adatainak megtekintéséhez.

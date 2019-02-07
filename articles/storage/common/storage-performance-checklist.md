@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 49e9a057e52d46fd18e13c43d0f6024201499685
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 010a9f4e5be34986c1098f403e4df0ccf569838c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493388"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821666"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája
 ## <a name="overview"></a>Áttekintés
@@ -92,7 +92,7 @@ Az Azure Storage szolgáltatás mindegyike rendelkezik kapacitás (GB), a tranza
 * [Üzenetsorbeli üzenetek / másodperc](#subheading39)  
 
 #### <a name="sub1bandwidth"></a>A sávszélesség méretezhetőségi Célértékét szolgáltatásokhoz
-Írása idején a sávszélesség célokat, az Egyesült Államokban, a georedundáns tárolás (GRS) fiók 10 Gigabit / másodperc (Gbps) a bejövő (a storage-fiókjába küldött adatok) és a 20 GB/s kimenő (a storage-fiók által küldött adatokat). Helyileg redundáns tárolás (LRS) fiók esetén a korlátok a következők magasabb – 20 GB/s a bejövő és kimenő 30 GB/s.  Nemzetközi sávszélességkorlátok lehet alacsonyabb, és találhatók a [méretezhetőségi célok lap](https://msdn.microsoft.com/library/azure/dn249410.aspx).  A storage redundanciabeállításai további információkért tekintse meg a hivatkozásokat a [hasznos források](#sub1useful) alatt.  
+Írása idején a sávszélesség célokat, az Egyesült Államokban, a georedundáns tárolás (GRS) fiók 10 Gigabit / másodperc (Gbps) a bejövő (a storage-fiókjába küldött adatok) és a 20 GB/s kimenő (a storage-fiók által küldött adatokat). Helyileg redundáns tárolás (LRS) fiók esetén a korlátok a következők magasabb – 20 GB/s a bejövő és kimenő 30 GB/s.  Nemzetközi sávszélességkorlátok lehet alacsonyabb, és találhatók a [méretezhetőségi célok lap](https://msdn.microsoft.com/library/azure/dn249410.aspx).  A storage redundanciabeállításai további információkért tekintse meg a hivatkozásokat az alábbi hasznos forrásokat.  
 
 #### <a name="what-to-do-when-approaching-a-scalability-target"></a>Mi a teendő, ha hamarosan eléri a skálázhatósági célok
 Ha Ön hamarosan eléri a storage-fiókokat használhat egy adott előfizetés/régió kombinációja túllépi, az alkalmazás- és tárfiókjai használatának értékelése, és határozza meg, ha bármely feltétel a alkalmazni.

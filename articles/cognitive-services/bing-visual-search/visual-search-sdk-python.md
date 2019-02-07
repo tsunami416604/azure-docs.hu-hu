@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: 372b7719fd77d1fe52f020a419a756bc769a676d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: dfd611746b8d962d5844fcac0e9ea42638acad11
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187845"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766605"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Gyors útmutató: A Bing Visual Search SDK a Pythonhoz készült használatával kép elemzések lekérése
 
@@ -42,7 +42,7 @@ Ez a rövid útmutató segítségével hasznos képadatok lekérése a Bing Visu
     import http.client, urllib.parse
     import json
     import os.path
-    from azure.cognitiveservices.search.visualsearch import VisualSearchAPI
+    from azure.cognitiveservices.search.visualsearch import VisualSearchClient
     from azure.cognitiveservices.search.visualsearch.models import (
         VisualSearchRequest,
         CropArea,
@@ -63,7 +63,7 @@ Ez a rövid útmutató segítségével hasznos képadatok lekérése a Bing Visu
 3. Az ügyfél példányosítása
 
     ```python
-    var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"))
+    var client = new VisualSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"))
     ```
 
 ## <a name="send-the-search-request"></a>A keresési kérelem küldése

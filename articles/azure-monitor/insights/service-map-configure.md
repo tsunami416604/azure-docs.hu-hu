@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: bwren
-ms.openlocfilehash: 8457334e00f7c8dfbaee75a12d6bb71b760e60d9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 60c43475fc044b0847e5d9bd495c0d53b562114e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696993"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822704"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -134,8 +134,8 @@ A Service Map az adatok lekérése a Microsoft Dependency agent. A függőségi 
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Igen | A Service Map elemzi, és gyűjti az adatokat Windows-számítógépek. <br><br>Mellett a [Log Analytics-ügynököket for Windows](../../azure-monitor/platform/log-analytics-agent.md), Windows-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
-| Linux-ügynökök | Igen | A Service Map elemzi, és a Linux rendszerű számítógépek gyűjti az adatokat. <br><br>Mellett a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/platform/log-analytics-agent.md), Linux-ügynökök a Microsoft Dependency agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](#supported-operating-systems) szakaszban. |
+| Windows-ügynökök | Igen | A Service Map elemzi, és gyűjti az adatokat Windows-számítógépek. <br><br>Mellett a [Log Analytics-ügynököket for Windows](../../azure-monitor/platform/log-analytics-agent.md), Windows-ügynökök a Microsoft Dependency agent szükséges. Tekintse meg a támogatott operációs rendszerek teljes listáját az operációsrendszer-verziók. |
+| Linux-ügynökök | Igen | A Service Map elemzi, és a Linux rendszerű számítógépek gyűjti az adatokat. <br><br>Mellett a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/platform/log-analytics-agent.md), Linux-ügynökök a Microsoft Dependency agent szükséges. Tekintse meg a támogatott operációs rendszerek teljes listáját az operációsrendszer-verziók. |
 | System Center Operations Manage felügyeleti csoport | Igen | A Service Map elemzi, és a egy csatlakoztatott a Windows és Linux-ügynökök gyűjti az adatokat [System Center Operations Manager felügyeleti csoport](../../azure-monitor/platform/om-agents.md). <br><br>Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
 | Azure Storage-fiók | Nem | A Service Map gyűjti az adatokat ügynökszámítógépen, így nem szerepel megjeleníthető adat gyűjtését az Azure Storage-ból származó. |
 

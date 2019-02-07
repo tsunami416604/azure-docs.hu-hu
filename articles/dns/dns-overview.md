@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: df890eb0e07c13d0757c706a3cabbbad67b6eac2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 51869bcc2ee892bc150102595de09782eb01547c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716276"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770520"
 ---
 # <a name="what-is-azure-dns"></a>Mi az Azure DNS?
 
@@ -32,7 +32,7 @@ Az Azure DNS-beli DNS-tartományok az Azure globális DNS-névkiszolgálói hál
 
 * [Szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control) – szabályozhatja, hogy ki rendelkezzen hozzáféréssel egy adott művelethez a vállalatban.
 
-* [Tevékenységnaplók](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs) – nyomon követheti, hogy a vállalat felhasználói hogyan módosították az erőforrásokat, vagy megkeresheti a hibákat a hibaelhárításkor.
+* [Tevékenységnaplók](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) – nyomon követheti, hogy a vállalat felhasználói hogyan módosították az erőforrásokat, vagy megkeresheti a hibákat a hibaelhárításkor.
 
 * [Erőforrás-zárolás](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) – zárolhat egy előfizetést, erőforráscsoportot vagy erőforrást. A zárolás megakadályozza, hogy a cég vagy intézmény felhasználói véletlenül töröljék vagy módosítsák a kritikus erőforrásokat.
 

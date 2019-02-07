@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f88cc44890277604411f482779a83ee266820ac8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826479"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816322"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Az Azure DNS használata saját tartományok
 
@@ -32,7 +32,7 @@ Az Azure DNS a következő előnyöket nyújtja:
 
 * **Nincs szükség az egyéni DNS-megoldások**. Korábban a számos ügyfél létrehozott egyéni DNS-megoldások a virtuális hálózat DNS-zónák kezelése. DNS-zónák kezelése most már elvégezheti a natív Azure-infrastruktúra, amely eltávolítja a létrehozása és kezelése az egyéni DNS-megoldások terhe használatával.
 
-* **Minden gyakori DNS rekordjait típust használja**. Azure DNS supports A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, and TXT records.
+* **Minden gyakori DNS rekordjait típust használja**. Azure DNS supports A, AAAA, CNAME, MX, PTR, SOA, SRV, and TXT records.
 
 * **Automatikus állomásnév-rekord-kezelésre**. Egyéni DNS-rekordjait üzemelteti, valamint az Azure automatikusan is kezeli gazdanév-rekordokat a megadott virtuális hálózatokat a virtuális gépek. Ebben a forgatókönyvben optimalizálhatja a tartománynevek egyéni DNS-megoldások létrehozása és alkalmazások módosítása nélkül használhatja.
 

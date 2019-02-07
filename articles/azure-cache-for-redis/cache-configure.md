@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 8a78823a208a5310e62714de7b1a3cd2e35eaa8f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 67cc7d0dc162f2b36e38f1068f46079f46120f1c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104675"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819841"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache Redis konfigurálása
 Ez a témakör ismerteti az Azure Cache a Redis-példány érhető el a konfigurációkat. Ez a témakör ismerteti a Redis server az alapértelmezett konfigurációjának for Azure Cache Redis-példány is.
@@ -46,7 +46,7 @@ Megtekintheti és használatával a következő beállításokat konfigurálhatj
 * [Beállítások](#settings)
     * [Hozzáférési kulcsok](#access-keys)
     * [Speciális beállítások](#advanced-settings)
-    * [Az Azure Cache Redis tanácsadó](#azure-cache-for-redis-advisor)
+    * [Azure Cache for Redis Advisor](#azure-cache-for-redis-advisor)
     * [Méretezés](#scale)
     * [Redis-fürt mérete](#cluster-size)
     * [Redis-adatmegőrzés](#redis-data-persistence)
@@ -57,7 +57,7 @@ Megtekintheti és használatával a következő beállításokat konfigurálhatj
     * [Tulajdonságok](#properties)
     * [Zárolások](#locks)
     * [Automation-szkript](#automation-script)
-* [Felügyelet](#administration)
+* Adminisztráció
     * [Adatok importálása](#importexport)
     * [Adatok exportálása](#importexport)
     * [Újraindítás](#reboot)
@@ -65,7 +65,7 @@ Megtekintheti és használatával a következő beállításokat konfigurálhatj
     * [Redis-metrikák](#redis-metrics)
     * [Riasztási szabályok](#alert-rules)
     * [Diagnosztika](#diagnostics)
-* [Támogatás és hibaelhárítás beállításai](#support-amp-troubleshooting-settings)
+* Támogatás és hibaelhárítás beállításai
     * [A Resource health](#resource-health)
     * [Új támogatási kérelem](#new-support-request)
 
@@ -98,7 +98,7 @@ A **beállítások** szakasz lehetővé teszi, hogy elérheti, és adja meg a k�
 
 * [Hozzáférési kulcsok](#access-keys)
 * [Speciális beállítások](#advanced-settings)
-* [Az Azure Cache Redis tanácsadó](#azure-cache-for-redis-advisor)
+* [Azure Cache for Redis Advisor](#azure-cache-for-redis-advisor)
 * [Méretezés](#scale)
 * [Redis-fürt mérete](#cluster-size)
 * [Redis-adatmegőrzés](#redis-data-persistence)
@@ -163,7 +163,7 @@ Egy új memória foglalás értéket kiválasztásakor érdemes (**maxmemory fen
 #### <a name="keyspace-notifications-advanced-settings"></a>Kulcstérértesítések (Speciális beállítások)
 Kulcstér értesítések be vannak állítva, a redis a **speciális beállítások** panelen. Kulcstérértesítések engedélyezése az ügyfelek értesítéseket kaphat, amikor bizonyos események történnek.
 
-![Az Azure Redis gyorsítótár speciális beállításai](./media/cache-configure/redis-cache-advanced-settings.png)
+![Azure Cache for Redis Advanced Settings](./media/cache-configure/redis-cache-advanced-settings.png)
 
 > [!IMPORTANT]
 > Kulcstérértesítések, és a **értesítése kulcstér-események** beállítás csak Standard és prémium gyorsítótárak esetében érhető el.

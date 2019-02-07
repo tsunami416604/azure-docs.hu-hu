@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 8e8950cbd7927cb6b0543866ab976b550c9ec043
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4f65ebfd2e1ce508c5cf9b224871102a35b55fe0
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959546"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770319"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>A cloud-init használatával egy bash-szkript futtatása Linux rendszerű virtuális gép az Azure-ban
 Ez a cikk bemutatja, hogyan használható [a cloud-init](https://cloudinit.readthedocs.io) futtatásához egy meglévő bash-szkript egy Linux rendszerű virtuális gépre (VM) vagy virtuálisgép-méretezési csoportok (VMSS), a kiépítés ideje az Azure-ban. Ezen a cloud-init parancsfájlok futtatása az első rendszerindításkor az Azure-ban kiépített erőforrások után. A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md)
@@ -36,13 +36,13 @@ Ez a funkció működésének megtekintéséhez hozzon létre egy egyszerű bash
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-Ez a rendszerkép üzembe helyezése előtt hozzon létre egy erőforráscsoportot kell a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+Ez a rendszerkép üzembe helyezése előtt hozzon létre egy erőforráscsoportot kell a [az csoport létrehozása](/cli/azure/group) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) , és adja meg a bash parancsfájl- `--custom-data simple_bash.sh` módon:
+Most hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm) , és adja meg a bash parancsfájl- `--custom-data simple_bash.sh` módon:
 
 ```azurecli-interactive 
 az vm create \

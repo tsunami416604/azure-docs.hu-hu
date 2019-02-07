@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 29af70988cf77b9fad47e5c2478e5c86529fe9cf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cf3c691553f2bc7ae8f10345daee92a8380aba25
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458223"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815744"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -54,7 +54,7 @@ Három alapvető követelménynek kell teljesülnie, hogy ez a forgatókönyv me
 - Nincs UDR módon, megtanulja az útvonalakat a BGP az Azure-tűzfal alhálózat szükséges.
 - A VNet-Hub-tól a VNet-Spoke felé irányuló társviszony létesítésekor az **AllowGatewayTransit** beállítást, a VNet-Spoke-tól a VNet-Hub felé irányuló társviszony létesítésekor pedig a **UseRemoteGateways** beállítást adja meg.
 
-Az útvonalak létrehozásával kapcsolatos információkért lásd az oktatóanyag [Útvonalak létrehozása](#create-routes) című szakaszát.
+Útvonalak létrehozása című ebben az oktatóanyagban, hogy hogyan jönnek létre az ezeket az útvonalakat.
 
 >[!NOTE]
 >Az Azure tűzfal közvetlen internetkapcsolattal kell rendelkeznie. Ha engedélyezte a kényszerített bújtatás a helyi ExpressRoute- vagy Alkalmazásátjáró-n keresztül, szeretné-e az UDR 0.0.0.0/0 konfigurálása a **NextHopType** értéket állítja be **Internet**, majd rendelje hozzá  **AzureFirewallSubnet**.

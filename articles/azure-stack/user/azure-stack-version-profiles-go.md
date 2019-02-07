@@ -14,12 +14,12 @@ ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: fbca9eb3703777c0d20998e65bf446b5951c5091
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 8e63b9854d9491ed2cbb2107c93237526a7f1ba8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745401"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766941"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>API-verzióprofilok használata nyissa meg az Azure Stackben
 
@@ -86,7 +86,7 @@ Go-kódokat a minta futtatásához az Azure Stacken, kövesse az alábbi lépés
 
 3. Ha nem érhető el, hozzon létre egy előfizetést és az előfizetés-azonosító későbbi felhasználás céljából. Előfizetés létrehozásával kapcsolatos információkért lásd: [ajánlatok, előfizetések létrehozása az Azure Stackben](../azure-stack-subscribe-plan-provision-vm.md).
 
-4. Az egyszerű szolgáltatás létrehozása **előfizetés** hatókör és **tulajdonosa** szerepkör. Mentse a szolgáltatásnév-Azonosítót és a titkos kulcsot. További információ az Azure stack-beli szolgáltatásnév létrehozása: [egyszerű szolgáltatás létrehozása](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad). Most már az Azure Stack-környezet van beállítva.
+4. Az egyszerű szolgáltatás létrehozása **előfizetés** hatókör és **tulajdonosa** szerepkör. Mentse a szolgáltatásnév-Azonosítót és a titkos kulcsot. További információ az Azure stack-beli szolgáltatásnév létrehozása: [egyszerű szolgáltatás létrehozása](azure-stack-create-service-principals.md). Most már az Azure Stack-környezet van beállítva.
 
 5. A modul importálása a Go SDK-profillal a kódban. Az Azure Stack profil aktuális verziója: **2017-03-09**. Ha például a hálózati modul importálásához **2017-03-09** profil típusa, a következő kóddal:
 

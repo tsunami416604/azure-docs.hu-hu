@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: c911a53f16e07b67a1ec22a9e0592df06c192325
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1e5b23269c8c9d5aecd7ef8ba58100f17cc7973c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188184"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809419"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Lessonly.com
 
@@ -90,7 +90,7 @@ Az Azure AD egyszeri bejelentkezés az Lessonly.com tesztelése és konfigurál�
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Lessonly.com tesztfelhasználó létrehozása](#creating-a-lessonly-test-user)**  – egy megfelelője a Britta Simon Lessonly.com, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **Lessonly.com tesztfelhasználó létrehozása** – egy megfelelője a Britta Simon Lessonly.com, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 

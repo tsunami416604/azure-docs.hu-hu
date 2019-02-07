@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: howto
 ms.date: 1/31/2019
-ms.openlocfilehash: 8c035524adebcb131872c700280201aaac07c52b
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: a4c9156ef80f05e247b1cfef0acd56b601a2db65
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747956"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812684"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-a-database-using-cli"></a>Hozzon létre egy Azure Data Explorer fürtöt és egy adatbázist, CLI-vel
 
@@ -48,12 +48,11 @@ az kusto cluster create --name azureclitest --sku D11_v2 --resource-group testrg
 
 Adja meg a következő értékek
 
-    **Beállítás** | **Ajánlott érték** | **Mező leírása**
-    |---|---|---|
-    | név | *azureclitest* | A fürt kívánt nevét.|
-    | termékváltozat | *D13_v2* | A Termékváltozat a fürt számára fogja használni. |
-    | resource-group | *testrg* | Az a fürt hol hozható létre erőforráscsoport nevét. |
-    | | |
+   |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
+   |---|---|---|
+   | név | *azureclitest* | A fürt kívánt nevét.|
+   | termékváltozat | *D13_v2* | A Termékváltozat a fürt számára fogja használni. |
+   | resource-group | *testrg* | Az a fürt hol hozható létre erőforráscsoport nevét. |
 
 Ha azt szeretné, nincsenek további nem kötelező paraméter, amelyet használhat, például a kapacitás, a fürt stb.
 
@@ -75,14 +74,13 @@ az kusto database create --cluster-name azureclitest --name clidatabase --resour
 
 Adja meg a következő értékek
 
-    **Beállítás** | **Ajánlott érték** | **Mező leírása**
-    |---|---|---|
-    | cluster-name | *azureclitest* | A fürt nevére, a kell létrehozni.|
-    | név | *clidatabase* | Az adatbázis kívánt nevét.|
-    | resource-group | *testrg* | Az a fürt hol hozható létre erőforráscsoport nevét. |
-    | soft-delete-period | *3650:00:00:00* | Mennyi ideig tartó adatokat meg kell őrizni, hogy lekérdezhetők. |
-    | hot-cache-period | *3650:00:00:00* | Mennyi ideig tartó adatokat kell tárolni a gyorsítótárban. |
-    | | |
+   |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
+   |---|---|---|
+   | cluster-name | *azureclitest* | A fürt nevére, a kell létrehozni.|
+   | név | *clidatabase* | Az adatbázis kívánt nevét.|
+   | resource-group | *testrg* | Az a fürt hol hozható létre erőforráscsoport nevét. |
+   | soft-delete-period | *3650:00:00:00* | Mennyi ideig tartó adatokat meg kell őrizni, hogy lekérdezhetők. |
+   | hot-cache-period | *3650:00:00:00* | Mennyi ideig tartó adatokat kell tárolni a gyorsítótárban. |
 
 Láthatja, hogy a létrehozott futtatott adatbázis
 

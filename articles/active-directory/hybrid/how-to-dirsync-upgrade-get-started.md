@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 57b27854b973ec369ae0e06b854964774f5d91cd
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 15d5b824525bc19d83abfbf2c08e068bd3837350
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487768"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821201"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Frissítés a DirSync szolgáltatásról
 Az Azure AD Connect a DirSync utóda. A DirSync szolgáltatásról való frissítés lehetőségeit találja meg ebben a témakörben. Ezek lépések nem használhatóak az Azure AD Connect másik kiadásáról vagy az Azure AD Syncről való frissítéshez.
@@ -34,7 +34,7 @@ Az Azure AD Connect telepítése előtt győződjön meg arról, hogy [töltse l
 > [!NOTE]
 > Miután engedélyezte, hogy az új Azure AD Connect-kiszolgáló szinkronizálni kezdje a változásokat az Azure AD szolgáltatásba, nem térhet vissza a DirSync vagy Azure AD Sync használatához. Az Azure AD Connectről a régebbi ügyfelekre (például DirSync vagy Azure AD Sync) való visszatérés nem támogatott, és problémákat, például adatvesztést okozhat az Azure AD-ben.
 
-Ha nem a DirSync szolgáltatásról frissít, tekintse meg az egyéb forgatókönyvek [vonatkozó dokumentációját](#related-documentation).
+Ha nem a Dirsync szolgáltatásról frissít, az egyéb forgatókönyvek kapcsolódó dokumentációja.
 
 ## <a name="upgrade-from-dirsync"></a>Frissítés a DirSync szolgáltatásról
 A DirSync jelenleg aktív üzemelő példányától függően több lehetőség is létezik a frissítésre. Ha a várt frissítési idő kevesebb mint három óra, akkor a helyben történő frissítés javasolt. Ha a várt frissítési idő több mint három óra, akkor a párhuzamos üzembe helyezés javasolt egy másik kiszolgálón. A becslések szerint 50 000-nél több objektum esetén a frissítés több mint három órát vesz igénybe.
@@ -127,7 +127,7 @@ Amennyiben párhuzamos üzembe helyezést kíván végrehajtani, az alábbi lép
 
 * Kattintson az **Export settings** (Beállítások exportálása) gombra. Ha az Azure AD Connectet egy különálló kiszolgálón telepíti, ezek a beállítások át lesznek telepítve a jelenlegi DirSyncből az új Azure AD Connect-telepítésre.
 
-Miután a beállítások exportálása sikeresen megtörtént, kiléphet az Azure AD Connect varázslóból a DirSync kiszolgálón. Lépjen tovább a következő lépésre [az Azure AD Connect különálló kiszolgálóra telepítéséhez](#installation-of-azure-ad-connect-on-separate-server)
+Miután a beállítások exportálása sikeresen megtörtént, kiléphet az Azure AD Connect varázslóból a DirSync kiszolgálón. Folytassa a következő lépés az Azure AD Connect telepítése különálló kiszolgálón
 
 **Párhuzamos üzembe helyezés 50 000-nél kevesebb objektummal**
 
@@ -141,7 +141,7 @@ Ha 50 000-nél kevesebb objektummal rendelkezik, azonban mégis párhuzamos üz
 
 ![Elemzés befejeződött](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
 
-Miután a beállítások exportálása sikeresen megtörtént, kiléphet az Azure AD Connect varázslóból a DirSync kiszolgálón. Lépjen tovább a következő lépésre [az Azure AD Connect különálló kiszolgálóra telepítéséhez](#installation-of-azure-ad-connect-on-separate-server).
+Miután a beállítások exportálása sikeresen megtörtént, kiléphet az Azure AD Connect varázslóból a DirSync kiszolgálón. Folytassa a következő lépés az Azure AD Connect telepítése különálló kiszolgálón.
 
 ### <a name="install-azure-ad-connect-on-separate-server"></a>Az Azure AD Connect telepítése különálló kiszolgálóra
 Ha az Azure AD Connectet egy új kiszolgálón telepíti, a rendszer feltételezi, hogy az Azure AD Connect tiszta telepítését kívánja végrehajtani. Mivel a DirSync-konfigurációt szeretné alkalmazni, néhány további lépést is végre kell hajtania:

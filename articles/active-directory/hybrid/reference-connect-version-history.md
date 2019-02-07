@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: bf21b03463733f6613cfa515a6faf7c5ab1f33e8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: caff4973515d3866b94dba2e89d089ff042de43b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498131"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813245"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -36,6 +36,9 @@ Lépések az Azure AD Connect frissítése | Különböző módszerekkel [friss�
 Szükséges engedélyek | Tekintse meg a frissítés alkalmazásához szükséges engedélyek [fiókok és engedélyek](reference-connect-accounts-permissions.md#upgrade).
 
 Letöltés |} [Töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+
+>[!NOTE]
+>Az Azure AD Connect nem minden verziókban lesz elérhető az automatikus frissítés. A kiadási állapota e kiadás legyen elérhető, az automatikus frissítés, vagy csak le fogja jelezni. Ha az automatikus frissítés engedélyezése az Azure AD Connect-kiszolgálón majd, hogy a kiszolgáló automatikusan frissíti az Azure AD Connect automatikus frissítéshez kiadott a legújabb verzióra. Ne feledje, hogy az Azure AD Connect-konfigurációk nem mindegyike automatikus frissítésre jogosult. Kövesse ezt a hivatkozást tudjon meg többet az [automatikus frissítés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
 ## <a name="12700"></a>1.2.70.0
 
@@ -539,7 +542,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
   * Engedélyezte, hogy a felhasználó a jelszóvisszaíró szolgáltatás.
   
   >[!NOTE]
-  >A hatókör az automatikus frissítési szolgáltatás kibővített változata hatással van ügyfeleink az Azure AD Connectben felépítési 1.1.105.0 és után. Ha nem szeretné automatikusan frissíteni az Azure AD Connect-kiszolgáló, futtatnia kell az alábbi parancsmagot az Azure AD Connect-kiszolgálón: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Engedélyezése vagy letiltása az automatikus frissítés kapcsolatos további információkért tekintse meg a cikk [az Azure AD Connect: Automatikus frissítés](how-to-connect-install-automatic-upgrade.md).
+  >A hatókör az automatikus frissítési szolgáltatás kibővített változata hatással van ügyfeleink az Azure AD Connectben felépítési 1.1.105.0 és után. Ha nem szeretné automatikusan frissíteni az Azure AD Connect-kiszolgáló, futtatnia kell az alábbi parancsmagot az Azure AD Connect-kiszolgálón: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Engedélyezése vagy letiltása az automatikus frissítés kapcsolatos további információkért tekintse meg a cikk [az Azure AD Connect: automatikus frissítését](how-to-connect-install-automatic-upgrade.md) ismertető cikket.
 
 ## <a name="115580"></a>1.1.558.0
 Állapot: Nincs elérhető lesz. A build változásai verzió 1.1.561.0 szerepelnek.
@@ -567,7 +570,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
   * Engedélyezte, hogy a felhasználó a jelszóvisszaíró szolgáltatás.
   
   >[!NOTE]
-  >A hatókör az automatikus frissítési szolgáltatás kibővített változata hatással van ügyfeleink az Azure AD Connectben felépítési 1.1.105.0 és után. Ha nem szeretné automatikusan frissíteni az Azure AD Connect-kiszolgáló, futtatnia kell az alábbi parancsmagot az Azure AD Connect-kiszolgálón: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Engedélyezése vagy letiltása az automatikus frissítés kapcsolatos további információkért tekintse meg a cikk [az Azure AD Connect: Automatikus frissítés](how-to-connect-install-automatic-upgrade.md).
+  >A hatókör az automatikus frissítési szolgáltatás kibővített változata hatással van ügyfeleink az Azure AD Connectben felépítési 1.1.105.0 és után. Ha nem szeretné automatikusan frissíteni az Azure AD Connect-kiszolgáló, futtatnia kell az alábbi parancsmagot az Azure AD Connect-kiszolgálón: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Engedélyezése vagy letiltása az automatikus frissítés kapcsolatos további információkért tekintse meg a cikk [az Azure AD Connect: automatikus frissítését](how-to-connect-install-automatic-upgrade.md) ismertető cikket.
 
 ## <a name="115570"></a>1.1.557.0
 Állapot: 2017. július

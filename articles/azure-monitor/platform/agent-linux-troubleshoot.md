@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: b95a9b2243dda83be7de67802a8b6678419e335f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 84c6a88449844d3a2f59b3b93dd95b102b653679
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102584"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817614"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök hibáinak elhárítása 
 
@@ -60,7 +60,7 @@ Ha a fentiek egyikével sem működik, a következő támogatási csatornákat i
 | NOT_DEFINED | Nincsenek telepítve a szükséges függőséget, mert a auoms auditd beépülő modul nem lesz telepítve | Nem sikerült, auoms telepítés csomag auditd. |
 | 2 | Érvénytelen paraméter a rendszerhéj-csomag számára biztosított. Futtatás `sudo sh ./omsagent-*.universal*.sh --help` használatra |
 | 3 | Nincs lehetőség a rendszerhéj-csomag számára biztosított. Futtatás `sudo sh ./omsagent-*.universal*.sh --help` használatra. |
-| 4 | Érvénytelen a csomag, írja be vagy érvénytelen proxybeállítások; omsagent -*rpm*.sh csomagok csak telepíthető az RPM-alapú rendszereken, és omsagent -*deb*.sh csomagok csak telepíthető Debian-alapú rendszereken. Az univerzális telepítővel az ajánlott a [legújabb kiadása](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Emellett [tekintse át](#issue:-unable-to-connect-through-proxy-to-log-analytics) , ellenőrizze a beállításokat. |
+| 4 | Érvénytelen a csomag, írja be vagy érvénytelen proxybeállítások; omsagent -*rpm*.sh csomagok csak telepíthető az RPM-alapú rendszereken, és omsagent -*deb*.sh csomagok csak telepíthető Debian-alapú rendszereken. Az univerzális telepítővel az ajánlott a [legújabb kiadása](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Emellett tekintse át, ellenőrizze a beállításokat. |
 | 5 | A rendszerhéj-csomagot kell végrehajtani a legfelső szintű vagy 403-as hibát adott vissza az előkészítés során. A parancs használatával futtassa `sudo`. |
 | 6 | Érvénytelen architektúra csomag vagy; bevezetés során visszaadott hiba 200-as hiba omsagent -*x64.sh csomagok csak a 64 bites rendszerek és omsagent - telepíthető*x86.sh csomagok csak 32 bites rendszerekre telepíthető. Töltse le az architektúra a megfelelő csomagot a [legújabb kiadása](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | OMS-csomag telepítése nem sikerült. Nézze át a parancs kimenete a legfelső szintű hiba. |
@@ -293,7 +293,7 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) párhuzamosan
 5. Egyes Azure terjesztési rendszerekben omid OMI kiszolgáló démon nem indul el a virtuális gép újraindítása után. Nem jelennek meg a naplózási, Change Tracking vagy UpdateManagement megoldás kapcsolatos adatokat eredményez. A megoldás az, hogy manuálisan indítsa el az omi-kiszolgáló futtatásával `sudo /opt/omi/bin/service_control restart`.
 6. OMI csomag manuális frissítése újabb verzióra, után rendelkezik Log Analytics-ügynököket, hogy tovább működjenek, manuálisan újra kell indítani. Ebben a lépésben szükség néhány disztribúciókhoz ahol OMI-kiszolgáló nem indul el automatikusan az átalakítás után. Futtatás `sudo /opt/omi/bin/service_control restart` OMI újraindítására.
 7. Ha látja a DSC-erőforrás *osztály nem található* hiba omsconfig.log, futtassa a `sudo /opt/omi/bin/service_control restart`.
-8. Bizonyos esetekben amikor a Linuxhoz készült Log Analytics-ügynököt a Log Analytics szolgáltatás nem tud kommunikálni az adatai az ügynökön biztonsági másolatot a a teljes puffer mérete: 50 MB-OT. Az ügynök újra kell indítani a következő parancs futtatásával `/opt/microsoft/omsagent/bin/service_control restart`.
+8. Bizonyos esetekben amikor a Linuxhoz készült Log Analytics-ügynököt a Log Analytics szolgáltatás nem tud kommunikálni az adatai az ügynökön biztonsági másolatot a a teljes puffer mérete: 50 MB. Az ügynök újra kell indítani a következő parancs futtatásával `/opt/microsoft/omsagent/bin/service_control restart`.
 
     >[!NOTE]
     >Ez a probléma kijavítása ügynök verziója 1.1.0-28 vagy újabb verzió

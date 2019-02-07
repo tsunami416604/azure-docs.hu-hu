@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ba8db3ebe2caf4c37d147f744326b6e631cb556
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 81b7bf7c230c66087bf286ebd9369d992e93be90
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022053"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814350"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Adatok áthelyezése egy webes táblázat a forrás Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](data-factory-web-table-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-web-table.md)
 
@@ -208,7 +208,7 @@ A következő minta bemutatja, hogyan másolhat adatokat egy webes táblázat az
 
 **Azure blobkimeneti adatkészlet**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.).
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1).
 
 ```json
 {
@@ -236,7 +236,7 @@ Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.).
 
 A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **WebSource** és **fogadó** típusa **BlobSink**.
 
-Lásd: [WebSource tulajdonságait](#copy-activity-type-properties) a WebSource által támogatott tulajdonságok listáját.
+WebSource írja be a WebSource által támogatott tulajdonságok listája a tulajdonságok között találja.
 
 ```json
 {  

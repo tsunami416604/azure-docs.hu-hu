@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 7f629ceb9fe5bd19c0558d1fde45d0bddcee744e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458873"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813007"
 ---
 # <a name="modeling-relationships"></a>Kapcsolatok modellezése
 Ez a cikk ismerteti az Azure Table storage-megoldások tervezéséhez nyújt segítséget a modellezési folyamatban.
@@ -101,7 +101,7 @@ Tartományi modellekkel tartalmazhat-az-egyhez kapcsolatot az entitások közöt
 Is vannak, amelyek a Table service szolgáltatásban való kapcsolatok implementálási szempontok:  
 
 * Nagy entitások kezelése (további információkért lásd: [nagy entitások minta](table-storage-design-patterns.md#large-entities-pattern)).  
-* Végrehajtási hozzáférés-vezérlés (további információkért lásd: [közös hozzáférésű jogosultságkódokkal hozzáférés szabályozása](#controlling-access-with-shared-access-signatures)).  
+* Végrehajtási hozzáférés-vezérlés (további információkért lásd: közös hozzáférésű jogosultságkódokkal hozzáférés szabályozása).  
 
 ## <a name="join-in-the-client"></a>Csatlakozás az ügyfél
 Bár vannak kapcsolatok modellezésére a Table service szolgáltatásban, meg kell felejtse el, hogy a két elsődleges oka a Table service használatával-e a méretezhetőséget és teljesítményt. Ha talál, amelyek veszélyeztetik a teljesítményét és méretezhetőségét, hogy a megoldás több kapcsolatot vannak modellezés, kérdezze meg saját maga, hogy az adatkapcsolatok beépítése az Táblatervezés szükséges. Előfordulhat, hogy a kialakítás és javítását célzó méretezhetőségét és teljesítményét, hogy a megoldás, ha hagyja, hogy az ügyfélalkalmazás, hajtsa végre a szükséges illesztések.  
@@ -117,7 +117,7 @@ Az a Table service használatával egyetlen személy tábla entitások használa
 
 ![Személy tábla](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-A több entitástípusok ugyanabban a táblában az Ügyfélkód működő kapcsolatos további információkért lásd: a szakasz [használata heterogén entitástípusok](#working-with-heterogeneous-entity-types) Ez az útmutató későbbi. Ez példákat az Ügyfélkód entitástípus felismerése.  
+A több entitástípusok ugyanabban a táblában az Ügyfélkód működő kapcsolatos további információkért lásd: a szakasz az útmutató későbbi részében heterogén entitástípusok dolgozik. Ez példákat az Ügyfélkód entitástípus felismerése.  
 
 
 ## <a name="next-steps"></a>További lépések

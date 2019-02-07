@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: 1df948d2b3127ede7129d26401cd5f0c80e964fb
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 2c402898af713901fc4d6f9bd04a5935334c9b61
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331741"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822340"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Event Hubs-kötések az Azure Functions szolgáltatáshoz
 
@@ -453,7 +453,7 @@ A [host.json](functions-host-json.md#eventhub) fájl az Event Hubs eseményindí
 
 Az Event Hubs-kimeneti kötését beírni az eseményeket az eseménystream használata. Eseményeket írni egy eseményközpontba küldési engedéllyel kell rendelkeznie.
 
-Ellenőrizze, hogy a szükséges csomag hivatkozást a rendszer: [Függvények 1.x](#packages---functions-1.x) vagy [2.x függvények](#packages---functions-2.x)
+Ellenőrizze, hogy a szükséges csomag hivatkozást a rendszer: Függvények 1.x vagy 2.x függvények
 
 ## <a name="output---example"></a>Kimenete – példa
 

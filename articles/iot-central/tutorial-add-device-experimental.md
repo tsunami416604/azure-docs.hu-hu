@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 6b0acd33f6062ef0effe15001c8a8513e88715ba
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 5933f74dcedb579023d187061229cdd53bce6414
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735456"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819433"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -38,13 +38,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt elkezdené, a szerkesztőnek el kell végeznie legalább az Azure IoT Central-alkalmazás létrehozásának első szerkesztői oktatóanyagát:
 
-* [Új eszköztípus definiálása](tutorial-define-device-type.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) (Kötelező)
-* [Az eszközre vonatkozó szabályok és műveletek konfigurálása](tutorial-configure-rules.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) (Nem kötelező)
-* [Operátori nézetek testreszabása](tutorial-customize-operator.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) (Nem kötelező)
+* [Új eszköztípus definiálása](tutorial-define-device-type-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) (Kötelező)
+* [Az eszközre vonatkozó szabályok és műveletek konfigurálása](tutorial-configure-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) (Nem kötelező)
+* [Operátori nézetek testreszabása](tutorial-customize-operator-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) (Nem kötelező)
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Ha valós eszközt szeretne hozzáadni az alkalmazáshoz, használja az [Új eszköztípus definiálása](tutorial-define-device-type.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) című oktatóanyagban létrehozott **Csatlakoztatott légkondicionáló** eszközsablont.
+Ha valós eszközt szeretne hozzáadni az alkalmazáshoz, használja az [Új eszköztípus definiálása](tutorial-define-device-type-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) című oktatóanyagban létrehozott **Csatlakoztatott légkondicionáló** eszközsablont.
 
 1. Ha új eszközt szeretne hozzáadni operátorként, válassza a bal oldali navigációs menüben lévő **Eszközkereső** elemet:
 
@@ -88,7 +88,7 @@ A cikkben szereplő példakód [Node.js](https://nodejs.org/) nyelven van megír
 * Válasz a **Megadott hőmérséklet** beállítást használó operátornak.
 * Az Echo parancs kezelése az Azure IoT Central-alkalmazásból.
 
-A [Következő lépések](#next-steps) szakaszban szereplő „Útmutató” hivatkozások teljesebb mintákat nyújtanak, és bemutatják más programozói nyelvek használatát. Az eszközök Azure IoT Central-alkalmazáshoz való kapcsolódásának módjáról további információt az [Eszközkapcsolatok](concepts-connectivity.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) című cikkben talál.
+A [Következő lépések](#next-steps) szakaszban szereplő „Útmutató” hivatkozások teljesebb mintákat nyújtanak, és bemutatják más programozói nyelvek használatát. Az eszközök Azure IoT Central-alkalmazáshoz való kapcsolódásának módjáról további információt az [Eszközkapcsolatok](concepts-connectivity-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) című cikkben talál.
 
 A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https://nodejs.org/) mintát:
 
@@ -359,15 +359,15 @@ Most, hogy valós eszközt csatlakoztatott az Azure IoT Central-alkalmazáshoz, 
 
 Operátorként a következőket sajátítja el:
 
-* [Saját eszközök kezelése](howto-manage-devices.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
-* [Eszközkészletek használata](howto-use-device-sets.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
-* [Egyéni elemzések létrehozása](howto-create-analytics.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+* [Saját eszközök kezelése](howto-manage-devices-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+* [Eszközkészletek használata](howto-use-device-sets-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+* [Egyéni elemzések létrehozása](howto-use-device-sets-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
 
 Eszközfejlesztőként a következőket sajátítja el:
 
-* [DevKit előkészítése és csatlakoztatása](howto-connect-devkit.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+* [DevKit előkészítése és csatlakoztatása](howto-connect-devkit-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
 * [Raspberry Pi előkészítése és csatlakoztatása](howto-connect-raspberry-pi-python.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
-* [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+* [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
 * [A kód testreszabása][lnk-nodejs-device-ref]
 
 

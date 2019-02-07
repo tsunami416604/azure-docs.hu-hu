@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: 29997b2ff7d3834a91389790256cd0d075ce1ece
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 09f1bdfa4c9a7a179bddf9473b553924bfb58fb7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744908"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768562"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Az Azure Stream Analytics előzetes verziójú funkciók
 
@@ -30,14 +30,6 @@ Az Azure Stream Analytics támogatja az Azure SQL Database bemenete referenciaad
 ### <a name="integration-with-azure-machine-learning"></a>Az Azure Machine Learning-integráció
 
 Stream Analytics-feladatok a Machine Learning (gépi tanulás) functions skálázhatja. Többet szeretne megtudni, hogyan használhatja a Stream Analytics-feladat ML-függvényeket, a Microsoft [méretezése az Azure Machine Learning-függvényekkel a Stream Analytics-feladat](stream-analytics-scale-with-machine-learning-functions.md). Tekintse meg a való életből vett forgatókönyv [hangulatelemzés végrehajtása az Azure Stream Analytics és Azure Machine Learning segítségével](stream-analytics-machine-learning-integration-tutorial.md).
-
-### <a name="blob-output-partitioning-by-custom-time"></a>BLOB kimeneti egyéni időpontig particionálása
-
-Az Azure Stream Analytics küldhetnek kimenetet a blob storage egyéni idő attribútumok alapján. További információért látogasson el [Azure Stream Analytics egyéni blob kimeneti particionálás](stream-analytics-custom-path-patterns-blob-storage-output.md).
-
-### <a name="blob-output-partitioning-by-field-or-attribute"></a>BLOB kimeneti particionálása mező vagy attribútum alapján
-
-Az Azure Stream Analytics küldhetnek kimenetet a blob storage egyéni mezők és attribútumok alapján. További információért látogasson el [Azure Stream Analytics egyéni blob kimeneti particionálás](stream-analytics-custom-path-patterns-blob-storage-output.md).
 
 ### <a name="javascript-user-defined-aggregate"></a>A JavaScript, felhasználó által meghatározott összesítés
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 494acc55001bd3180d345801ef8d62800dd5e837
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 492b15bddad598d65c15c48f04d3148c41cd3c7e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174032"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817529"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Az Azure AD Domain Services – riasztások hibaelhárítása
 A cikk ismerteti a hibaelhárítási útmutatók tapasztalhat a felügyelt tartományra a riasztás.
@@ -42,7 +42,7 @@ Válassza ki a hibaelhárítási lépéseket, amelyek megfelelnek a azonosítój
 | AADDS108 | *Az Azure AD tartományi szolgáltatások által használt előfizetés át lett helyezve egy másik könyvtárra. Az Azure AD Domain Services rendelkeznie kell aktív előfizetés megfelelően működik-e ugyanabban a címtárban.* | [Az előfizetés áthelyezése könyvtárak](#aadds108-subscription-moved-directories) |
 | AADDS109 | *A felügyelt tartomány használt erőforrás törölve lett. Azure AD Domain Services megfelelő működéséhez szükség van ehhez az erőforráshoz.* | [Erőforrás törölve lett](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
 | AADDS110 | *Az Azure AD Domain Services telepítésre kijelölt alhálózat megtelt, és nincs hely a további tartományvezérlő kell létrehozni.* | [Alhálózat megtelt.](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS111 | * Egyszerű szolgáltatás, amely az Azure AD tartományi szolgáltatásokat használ a tartomány nem jogosult az Azure-előfizetés erőforrásainak kezelése. A szolgáltatásnévnek kell a szolgáltatás a felügyelt tartományra a jogosultságokat. * | [Egyszerű szolgáltatás nem engedélyezett](#aadds111-service-principal-unauthorized) |
+| AADDS111 | * Egyszerű szolgáltatás, amely az Azure AD tartományi szolgáltatásokat használ a tartomány nem jogosult az Azure-előfizetés erőforrásainak kezelése. A szolgáltatásnévnek kell a szolgáltatás a felügyelt tartományra a jogosultságokat. * | Egyszerű szolgáltatás nem engedélyezett |
 | AADDS112 | *Azonosítottuk, hogy a tartomány a virtuális hálózat alhálózatának előfordulhat, hogy nincs elegendő IP-címet. Az Azure AD Domain Services kell legalább két rendelkezésre álló IP-címet a engedélyezve van az alhálózaton belül. Javasoljuk, hogy legalább 3 – 5 tartalék IP-címek az alhálózaton belül. Ez azért fordulhatott elő, ha más virtuális gépek vannak telepítve az alhálózatban, így kimerítsék a számos elérhető IP-címek vagy az alhálózaton elérhető IP-címek számának korlátozása.* | [Nincs elegendő IP-címek](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Az Azure AD tartományi szolgáltatások által használt erőforrásokat egy nem várt állapotot észlelt, és nem állítható helyre.* | [Erőforrások helyreállíthatatlan](#aadds113-resources-are-unrecoverable) |
 | AADDS114 | * Az Azure AD tartományi szolgáltatások üzembe helyezéshez kiválasztott alhálózatban nem érvényes, és nem használható. * | [Érvénytelen alhálózat](#aadds114-subnet-invalid) |
@@ -201,7 +201,7 @@ Our service principals need access to be able to manage and create resources on 
 
 **Megoldás:**
 
-1. [A felügyelt tartomány törlése](#active-directory-ds-disable-aadds.md) bérlőjéből.
+1. A felügyelt tartomány bérlőjéből törölni.
 2. Javítsa ki az IP-címtartományt az alhálózat
   1. Keresse meg a [virtuális hálózatok lapján az Azure Portalon](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
   2. Válassza ki a virtuális hálózatot szeretne használni az Azure AD tartományi szolgáltatásokhoz.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.openlocfilehash: b2a262e6829aca75f03db41ff72ab0cc067c93be
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f5c8880535d5b4b89ec3f13caa20051ae1709925
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025793"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812786"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -91,7 +91,7 @@ Felhasználó által megadott útvonal létrehozásakor az alábbi következő u
 
     Meghatározhat egy útvonalat a 0.0.0.0/0 címelőtaggal és a virtuális berendezés következő ugrási típussal, így a berendezés megvizsgálhatja a forgalmat, és meghatározhatja, hogy továbbítja vagy eldobja-e. Ha felhasználó által megadott, a 0.0.0.0/0 címelőtagot tartalmazó útvonalat kíván létrehozni, olvassa el először a [0.0.0.0/0 címelőtag](#default-route) témakört.
 
-- **Virtuális hálózati átjáró**: Adja meg, ha azt szeretné, hogy a virtuális hálózati átjáró irányítva meghatározott címelőtagok felé irányuló forgalom. A virtuális hálózati átjárót a **VPN** típussal kell létrehozni. Egy felhasználó által megadott útvonalhoz nem adható meg **ExpressRoute** típusú virtuális hálózati átjáró, mert az ExpressRoute esetében [BGP](#border-gateway-protocol-routes)-t kell használni az egyéni útvonalakhoz. Meghatározhat olyan útvonalat, amely a 0.0.0.0/0 címelőtag felé haladó adatforgalmat átirányítja egy [útvonalalapú](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype) virtuális hálózati átjáróhoz. Előfordulhat, hogy van a helyszínen egy olyan eszköz, amely ellenőrzi az adatforgalmat, és ennek alapján továbbítja vagy elejti azt. Ha felhasználó által megadott útvonalat szeretne létrehozni a 0.0.0.0/0 címelőtaghoz, olvassa el először a [0.0.0.0/0 címelőtag](#default-route) témakört. Ahelyett, hogy a 0.0.0.0/0 címelőtaghoz felhasználó által megadott útvonalat konfigurálna, meghirdethet egy 0.0.0.0/0 címelőtagú útvonalat a BGP-n keresztül, ha [engedélyezte a BGP számára a VPN virtuális hálózati átjárót](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **Virtuális hálózati átjáró**: Adja meg, ha azt szeretné, hogy a virtuális hálózati átjáró irányítva meghatározott címelőtagok felé irányuló forgalom. A virtuális hálózati átjárót a **VPN** típussal kell létrehozni. Nem adható meg a virtuális hálózati átjáró típusú **ExpressRoute** egy felhasználó által megadott útvonal, mert az expressroute-tal, egyéni útvonalakat a BGP kell használnia. Meghatározhat olyan útvonalat, amely a 0.0.0.0/0 címelőtag felé haladó adatforgalmat átirányítja egy [útvonalalapú](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype) virtuális hálózati átjáróhoz. Előfordulhat, hogy van a helyszínen egy olyan eszköz, amely ellenőrzi az adatforgalmat, és ennek alapján továbbítja vagy elejti azt. Ha felhasználó által megadott útvonalat szeretne létrehozni a 0.0.0.0/0 címelőtaghoz, olvassa el először a [0.0.0.0/0 címelőtag](#default-route) témakört. Ahelyett, hogy a 0.0.0.0/0 címelőtaghoz felhasználó által megadott útvonalat konfigurálna, meghirdethet egy 0.0.0.0/0 címelőtagú útvonalat a BGP-n keresztül, ha [engedélyezte a BGP számára a VPN virtuális hálózati átjárót](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - **Nincs**: Adja meg, ha szeretne egy címelőtagot ahelyett, hogy a forgalmat továbbítja, a cél haladó adatforgalmat. Ha valamelyik funkciót még nem állította be teljesen, előfordulhat, hogy az Azure egyes opcionális rendszerútvonalakhoz a *Nincs* értéket állítja be. Ha például a **Következő ugrás IP-címe** értéke *Nincs*, és a **Következő ugrás típusa** *Virtuális hálózati átjáró* vagy *Virtuális berendezés*, akkor előfordulhat, hogy az eszköz nem üzemel, vagy nincs megfelelően beállítva. Az Azure rendszer [alapértelmezett útvonalakat](#default) hoz létre a fenntartott címelőtagokhoz, ahol a következő ugrás típusa **Nincs**.
 - **Virtuális hálózat**: Adja meg, ha szeretné felülbírálni az alapértelmezett útválasztást egy virtuális hálózaton belül. Lásd az [Útválasztási példát](#routing-example), amely azt szemlélteti, miért lehet érdemes **Virtuális hálózat** ugrástípussal létrehozni egy útvonalat.
 - **Internetes**: Adja meg, ha explicit módon a egy címelőtag felé az Internet felé irányuló forgalom irányítására szeretne, vagy ha azt szeretné, hogy az Azure-szolgáltatásokhoz az Azure gerinchálózatán belül marad, nyilvános IP-címek felé irányuló forgalom.

@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 426c8995e5c3d98e42d0ad334b8ae52171556dce
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ea50902a557e8bd7aa18fbc03fca8fc4a99ac2e2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884962"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770788"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub eszköz adatfolyamok (előzetes verzió)
 
@@ -82,8 +82,22 @@ Az eszköz és a egy eszköz stream szolgáltatás oldalán is képes kapcsolato
 Másik lehetőségként a végpontok információk használata lehet beolvasni a hub tulajdonságok szakasz alatt, Azure CLI használatával `property.hostname` és `property.deviceStreams` kulcsok.
 
 ```azurecli-interactive
-az iot hub show --name <YourIoTHubName>
+az iot hub devicestream show --name <YourIoTHubName>
 ```
+
+JSON-objektum, amely a hub eszköz és szolgáltatás lehet csatlakoztatni kell egy eszköz stream jöjjön összes végpont kimenete.
+
+```json
+{
+  "streamingEndpoints": [
+    "https://<YourIoTHubName>.<region-stamp>.streams.azure-devices.net"
+  ]
+}
+```
+
+> [!NOTE]
+> Győződjön meg arról, telepített Azure CLI-vel 2.0.57 verzió vagy újabb. A legújabb verziót [innen](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) töltheti le.
+> 
 
 ## <a name="whitelist-device-streaming-endpoints"></a>Engedélyezési lista eszköz adatfolyam-továbbítási végpontok
 
@@ -92,9 +106,14 @@ Ahogy említettük [korábbi](#Overview), az eszköz létrehoz egy kimenő kapcs
 Az Azure IoT Hub Portal Áttekintés lapján található eszköz streamvégpont állomásnevét. ![Helyettesítő szöveg](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "eszköz stream végpontok")
 
 Másik lehetőségként találja meg ezeket az információkat az Azure CLI használatával:
-```cmd/sh
-az iot hub show --name <YourIoTHubName>
+
+```azurecli-interactive
+az iot hub devicestream show --name <YourIoTHubName>
 ```
+
+> [!NOTE]
+> Győződjön meg arról, telepített Azure CLI-vel 2.0.57 verzió vagy újabb. A legújabb verziót [innen](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) töltheti le.
+> 
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Hibaelhárítás eszköz Streamek tevékenységeket tartalmazó naplók
 

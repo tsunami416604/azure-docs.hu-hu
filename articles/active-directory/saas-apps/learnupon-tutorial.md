@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: a548f11b1f423fb738108d9314f2fc887ef02c52
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 66953eaa4c42b419a5146ccc396fddda15a31c35
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176845"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811358"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező LearnUpon
 
@@ -208,7 +208,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ez a szakasz célja LearnUpon Britta Simon nevű felhasználó létrehozásához. LearnUpon támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van.
 
-Nincs meg ebben a szakaszban a művelet elem. Egy új felhasználót hoz létre az LearnUpon elérésére, ha még nem létezik tett kísérlet során. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-single-sign-on).
+Nincs meg ebben a szakaszban a művelet elem. Egy új felhasználót hoz létre az LearnUpon elérésére, ha még nem létezik tett kísérlet során. Az Azure AD egyszeri bejelentkezés konfigurálása.
 
 >[!NOTE]
 >Hozzon létre egy felhasználót manuálisan kell, ha kapcsolatba kell [LearnUpon támogatási csapatának](https://www.learnupon.com/features/support/). 

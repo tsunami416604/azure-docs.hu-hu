@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0789f113a68d98ff0d70fd3e9b3c8528122c2fc2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d8a5ca6285624720e23a4986917ab5e715f6ebfa
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729167"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768013"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central-new-ui-design"></a>Oktatóanyag: Szabályok és műveletek az eszköz konfigurálása az Azure IoT Central (új felhasználói felület tervezése)
 
@@ -77,7 +77,7 @@ A szabályok definiálásakor egy műveletet is meghatároz, amely a szabályfel
     | Megjegyzések     | A légkondicionáló hőmérséklete túllépte a küszöbértéket. |
 
     > [!NOTE]
-    > Ha e-mailes értesítést szeretne kapni, az e-mail-címnek [az alkalmazásban lévő felhasználói azonosítónak](howto-administer.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) kell lennie, és ennek a felhasználónak be kellett jelentkeznie legalább egyszer az alkalmazásba.
+    > Ha e-mailes értesítést szeretne kapni, az e-mail-címnek [az alkalmazásban lévő felhasználói azonosítónak](howto-administer-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) kell lennie, és ennek a felhasználónak be kellett jelentkeznie legalább egyszer az alkalmazásba.
 
     ![Hőmérséklet-művelet](media/tutorial-configure-rules-experimental/temperatureaction.png)
 

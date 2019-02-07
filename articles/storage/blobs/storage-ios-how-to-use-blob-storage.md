@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: 9e4c717b3b205d6c8fdd309dada918eb6df35181
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 65ecaaea09c28c31d76f31dc447108273b379f9e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244760"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811664"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Az IOS-es Blob storage használata
 
@@ -162,7 +162,7 @@ Az alábbi példa bemutatja, hogyan hozzon létre egy tárolót az **tároló** 
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Blobok feltöltése a tárolóba
-Említetteknek megfelelően az [Blob szolgáltatással kapcsolatos fogalmak](#blob-service-concepts) szakaszban, a Blob Storage blobok három különböző típusú biztosít: blokkblobokat, hozzáfűző blobokat és lapblobokat. Az Azure Storage-IOS-es kódtárat a blobok három típusú támogatja. A legtöbb esetben a blokkblobok használata javasolt.
+A Blob szolgáltatás alapfogalmai szakaszban ismertetett módon, a Blob Storage blobok három különböző típusú biztosít: blokkblobokat, hozzáfűző blobokat és lapblobokat. Az Azure Storage-IOS-es kódtárat a blobok három típusú támogatja. A legtöbb esetben a blokkblobok használata javasolt.
 
 Az alábbi példa bemutatja, hogyan tölthet fel egy blokkblobot az egy NSString. Ha egy blob ugyanazzal a névvel már létezik ebben a tárolóban, a blob tartalma felülíródik.
 

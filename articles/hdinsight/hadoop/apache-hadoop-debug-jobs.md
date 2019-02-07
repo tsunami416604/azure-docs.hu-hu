@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 86dbb6137964c00f6b98365e4891538751f17922
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0ba3c7321b0771c839289abb7891cd8e6b280afe
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438812"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822680"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop-naplók elemzése
 
@@ -46,7 +46,7 @@ Ezek a táblák a következő mezőket tartalmazzák:
 * N
 * PreciseTimeStamp
 * Szerepkör
-* A RowIndex
+* RowIndex
 * Bérlő
 * IDŐBÉLYEG
 * TraceLevel
@@ -99,7 +99,7 @@ Mostantól használhatja az Excel, a szűrési és rendezési szükség szerint.
     Szűrők létrehozásával kapcsolatos további információkért lásd: [szűrő karakterláncok hozhatnak létre a tábla Designer](../../vs-azure-tools-table-designer-construct-filter-strings.md).
 
 ## <a name="logs-written-to-azure-blob-storage"></a>Az Azure Blob Storage-írt naplók
-[A naplók az Azure-beli táblák írt](#log-written-to-azure-tables) abba, mi történik egy HDInsight-fürtöt egy szintjének megadása. Ezek a táblák azonban nem biztosítanak tevékenységszintű naplókat, amelyek akkor hasznosak, részletes elemzések kibontásáról további felmerülő problémákat. Adja meg a következő részletességi szintje, a HDInsight fürtök úgy vannak konfigurálva, a Blob Storage-fiók minden olyan feladat templeton eszközön keresztül végzett keresztül elküldött feladat naplók írni. Gyakorlatilag ez azt jelenti, hogy a Microsoft Azure PowerShell-parancsmagok vagy a .NET projekt beküldése API-k, nem az RDP/parancssori hozzáférést a fürthöz keresztül elküldött feladatok használatával elküldött feladatok. 
+A naplók az Azure-beli táblák írt abba, mi történik egy HDInsight-fürtöt egy szintjének adja meg. Ezek a táblák azonban nem biztosítanak tevékenységszintű naplókat, amelyek akkor hasznosak, részletes elemzések kibontásáról további felmerülő problémákat. Adja meg a következő részletességi szintje, a HDInsight fürtök úgy vannak konfigurálva, a Blob Storage-fiók minden olyan feladat templeton eszközön keresztül végzett keresztül elküldött feladat naplók írni. Gyakorlatilag ez azt jelenti, hogy a Microsoft Azure PowerShell-parancsmagok vagy a .NET projekt beküldése API-k, nem az RDP/parancssori hozzáférést a fürthöz keresztül elküldött feladatok használatával elküldött feladatok. 
 
 A naplók megtekintéséhez lásd: [hozzáférés Apache Hadoop YARN-alkalmazásnaplók a Linux-alapú HDInsight](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 

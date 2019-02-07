@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 48e20df61844d83deb8ac992f783cf227e658aaf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d86df171de807c23aad6dd2cb8e2128098dede81
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119985"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812456"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights beállítása: Függőségi nyomkövetés
 A *függőségi* egy külső összetevő, amely hívja meg az alkalmazást. Fontos általában nevű HTTP-n vagy egy adatbázist vagy egy fájlrendszert használó szolgáltatás. [Az Application Insights](../../azure-monitor/app/app-insights-overview.md) méri a mennyi az alkalmazás megvárja, amíg függőségeket, és milyen gyakran egy függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívásokat, és összekapcsolhatja őket a kérelmeket és kivételeket.
@@ -52,7 +52,7 @@ Részleges függőségi gyűjtött automatikusan a [Application Insights SDK](as
 * [Alkalmazás-hozzárendelés](#application-map) megjeleníti az alkalmazás és a szomszédos összetevők közötti függőségek.
 * [Teljesítmény, a böngésző és a hiba panelek](#performance-and-blades) kiszolgáló függőségi adatok megjelenítése.
 * [Böngészők panelen](#ajax-calls) jeleníti meg a felhasználók böngészőinek AJAX-hívások.
-* [Kattintson végig a lassú vagy hibás kérésekből származó](#diagnose-slow-requests) ellenőrizze azok függőségi hívások.
+* Kattintson végig ellenőrizze azok függőségi hívásaihoz lassú vagy hibás kérésekből származó.
 * [Analytics](#analytics) használható függőségi adatokat lekérdezni.
 
 ## <a name="application-map"></a>Alkalmazástérkép
@@ -210,7 +210,7 @@ Tekintse meg az alábbi táblázat, és úgy döntött, hogy a helyes konfigurá
 | Az IIS-kiszolgálón |Mindkét [a kiszolgálón telepítse az Állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md). Vagy [frissíteni az alkalmazást a .NET-keretrendszer 4.6-os vagy újabb](https://go.microsoft.com/fwlink/?LinkId=528259) , és telepítse a [Application Insights SDK](asp-net.md) az alkalmazásban. |
 | Az IIS Express |Használja helyette az IIS-kiszolgálón. |
 | Azure Web App |A WebApp Vezérlőpultját, a [nyissa meg az Application Insights paneljén a WebApp Vezérlőpultját](../../azure-monitor/app/azure-web-apps.md) , és válassza ki a telepítés, ha a rendszer kéri. |
-| Azure Cloud Service |[Használat indítási feladat](../../azure-monitor/app/cloudservices.md) vagy [telepítse a .NET-keretrendszer 4.6 +](../../cloud-services/cloud-services-dotnet-install-dotnet.md). |
+| Azure-felhőszolgáltatás |[Használat indítási feladat](../../azure-monitor/app/cloudservices.md) vagy [telepítse a .NET-keretrendszer 4.6 +](../../cloud-services/cloud-services-dotnet-install-dotnet.md). |
 
 ## <a name="video"></a>Videó
 

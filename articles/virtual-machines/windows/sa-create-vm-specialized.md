@@ -1,6 +1,6 @@
 ---
-title: Virtuális gép létrehozása az Azure-ban speciális lemezről |} Microsoft Docs
-description: Hozzon létre egy új virtuális gép lemezcsatlakoztatás egy speciális nem felügyelt, a Resource Manager üzembe helyezési modellben.
+title: Virtuális gép létrehozása speciális lemezről az Azure-ban |} A Microsoft Docs
+description: Új virtuális gép létrehozása a Resource Manager-alapú üzemi modellben egy specializált nem felügyelt lemez csatlakoztatásával.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,76 +16,76 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: da1fa2b182888e623f8df734c9119e208433e2bd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 0de7979edd741a7e4a1dc3354a8dc895929a9532
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012709"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811681"
 ---
-# <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Olyan virtuális merevlemezről speciális tárfiók a virtuális gép létrehozása
+# <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Virtuális gép létrehozása a tárfiókban lévő speciális virtuális merevlemezből
 
-Hozzon létre egy új virtuális Gépet egy speciális nem kezelt lemez csatolása a Powershell használatával az operációs rendszer lemezeként. A speciális lemez egy példányát egy meglévő virtuális Gépet, amely kezeli a felhasználói fiókok, alkalmazások és más állapot adatait az eredeti virtuális gép virtuális merevlemez. 
+Hozzon létre egy új virtuális Gépet a Powershell-lel operációsrendszer-lemezként speciális nem felügyelt lemez csatlakoztatásával. Egy speciális lemez VHD-t, amely fenntartja a felhasználói fiókok, alkalmazások és más állapot adatait az eredeti virtuális gép meglévő virtuális gépről egy példányát. 
 
 Erre két lehetősége van:
 * [VHD feltöltése](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
-* [Egy meglévő Azure virtuális gép virtuális Merevlemezének másolni](sa-create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
+* [Másolja a VHD-t a meglévő Azure virtuális gépek](sa-create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
 
 ## <a name="before-you-begin"></a>Előkészületek
-Ha a PowerShell segítségével, győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modult. A következő parancsot a telepítéshez.
+Ha a PowerShell segítségével, győződjön meg, hogy az AzureRM.Compute PowerShell-modul legújabb verzióját. A következő paranccsal telepítheti.
 
 ```powershell
 Install-Module AzureRM.Compute 
 ```
-További információkért lásd: [Azure PowerShell Versioning](/powershell/azure/overview).
+További információkért lásd: [Azure PowerShell verziószámozás](/powershell/azure/overview).
 
 
-## <a name="option-1-upload-a-specialized-vhd"></a>1. lehetőség: A speciális virtuális merevlemez feltöltéséhez.
+## <a name="option-1-upload-a-specialized-vhd"></a>Option 1: Egyéni VHD feltöltése
 
-Feltöltheti a virtuális merevlemez eszközzel létrehozott egy helyszíni virtualizációs, például a Hyper-V vagy a virtuális gép egy másik felhőből exportált speciális virtuális gép alapján.
+A virtuális Merevlemezt egy specializált virtuális eszközzel létrehozott egy a helyszíni virtualizálási, mint a Hyper-V vagy a virtuális gép exportál egy másik felhőalapú tölthet fel.
 
 ### <a name="prepare-the-vm"></a>A virtuális gép előkészítése
-Egy helyszíni virtuális gép vagy egy másik felhőből exportált virtuális merevlemez használatával létrehozott speciális virtuális merevlemez feltöltése Speciális virtuális merevlemez kezeli a felhasználói fiókok, alkalmazások és az eredeti virtuális gép más állapotba adatait. Ha szeretne használni, mint a VHD-t hozzon létre egy új virtuális Gépet, győződjön meg arról, a következő lépéseket. 
+Feltölthet egy specializált virtuális Merevlemezt, amely egy helyszíni virtuális gép vagy egy virtuális Merevlemezt egy másik felhőben exportálva lett létrehozva. Egyéni VHD tárolja a felhasználói fiókok, alkalmazások és más állapot adatait az eredeti virtuális gépről. Ha szeretne használni, mint a VHD-t hozzon létre egy új virtuális Gépet, győződjön meg arról, a következő lépéseket. 
   
-  * [Az Azure-bA feltölteni egy Windows virtuális merevlemez előkészítése](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Ne** generalize a virtuális Gépet a Sysprep használata.
-  * Távolítsa el a Vendég virtualizációs eszközök és a virtuális Gépre (azaz a VMware-eszközök) telepített ügynökök.
-  * Győződjön meg arról, a virtuális Géphez való lekérésére, az IP-cím és DNS-beállítások DHCP van konfigurálva. Ez biztosítja, hogy a kiszolgáló a Vneten belül egy IP-címet kap, indításkor. 
+  * [Töltse fel az Azure Windows virtuális merevlemez előkészítése](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Ne** a Sysprep használata virtuális gép általánosítása.
+  * A Vendég virtualizációs eszközök és a virtuális gépen (azaz a VMware-eszközök) telepített ügynökök eltávolítása.
+  * Győződjön meg arról, kérje le az IP-cím és DNS-beállítások a DHCP-n keresztül a virtuális gép van konfigurálva. Ez biztosítja, hogy a kiszolgáló a virtuális hálózaton belül egy IP-címet kap, indításkor. 
 
 
-### <a name="get-the-storage-account"></a>A storage-fiók beszerzése
-Kell egy a feltöltött Virtuálisgép-lemezkép tárolásához Azure storage-fiókot. Meglévő tárfiók használata, vagy hozzon létre egy újat. 
+### <a name="get-the-storage-account"></a>A storage-fiók létrehozása
+Az Azure-ban tárolja a virtuális gép feltöltött kép egy tárfiókra van szükség. Használjon egy meglévő tárfiókot, vagy hozzon létre egy újat. 
 
-A rendelkezésre álló tárfiókok megjelenítéséhez írja be:
+A rendelkezésre álló tár fiókokat jeleníti meg, írja be:
 
 ```powershell
 Get-AzureRmStorageAccount
 ```
 
-Ha egy meglévő tárfiókot használni szeretne, ugorjon a [a Virtuálisgép-lemezkép feltöltése](#upload-the-vm-vhd-to-your-storage-account) szakasz.
+Ha egy meglévő tárfiókot használni kívánt, folytassa a feltöltés a virtuális gép rendszerkép szakaszban.
 
-Ha létrehoz egy tárfiókot van szüksége, kövesse az alábbi lépéseket:
+Ha szeretne hozzon létre egy tárfiókot, kövesse az alábbi lépéseket:
 
-1. Az erőforráscsoport, ahol kell létrehozni a tárfiók neve van szüksége. Tudja meg, amelyek az előfizetésében szereplő összes erőforráscsoport, írja be:
+1. Szüksége lesz az erőforráscsoport, amelyben kell létrehozni a tárfiók nevére. Ismerje meg, hogy minden erőforráscsoport az előfizetésben található, írja be:
    
     ```powershell
     Get-AzureRmResourceGroup
     ```
 
-    Nevű erőforráscsoport létrehozásához **myResourceGroup** a a **USA nyugati régiója** régió, írja be:
+    Hozzon létre egy erőforráscsoportot a **myResourceGroup** a a **USA nyugati RÉGIÓJA** régió, írja be:
 
     ```powershell
     New-AzureRmResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. Hozzon létre egy tárfiókot, nevű **mystorageaccount** Ez az erőforráscsoport segítségével a a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) parancsmagot:
+2. Hozzon létre egy tárfiókot, nevű **mystorageaccount** használatával az erőforráscsoport a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) parancsmagot:
    
     ```powershell
     New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
         -SkuName "Standard_LRS" -Kind "Storage"
     ```
    
-### <a name="upload-the-vhd-to-your-storage-account"></a>A VHD-fájlt feltölti a tárfiók
-Használja a [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) parancsmag segítségével feltölti a lemezképet a tárfiókban lévő tárolót. Ez a példa feltölti **myVHD.vhd** a `"C:\Users\Public\Documents\Virtual hard disks\"` tárfiókba nevű **mystorageaccount** a a **myResourceGroup** erőforráscsoportot. A fájl bekerülnek a nevű tárolót **mycontainer** és az új fájlnevet lesz **myUploadedVHD.vhd**.
+### <a name="upload-the-vhd-to-your-storage-account"></a>A virtuális lemezek feltöltése a storage-fiókba
+Használja a [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) parancsmaggal töltse fel a rendszerképet egy tárolót a tárfiókjában. Ez a példa feltölti a fájlt **myVHD.vhd** a `"C:\Users\Public\Documents\Virtual hard disks\"` tárfiókhoz nevű **mystorageaccount** a a **myResourceGroup** erőforráscsoportot. A fájlt a tárolóba nevű kerülnek **mycontainer** és az új fájl neve lesz **myUploadedVHD.vhd**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -95,7 +95,7 @@ Add-AzureRmVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
 ```
 
 
-Sikeres ellenőrzés esetén, a következőhöz hasonló választ kap:
+Sikeres művelet esetén olyan ehhez hasonló választ kap:
 
 ```powershell
 MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
@@ -109,59 +109,59 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-Attól függően, hogy a hálózati kapcsolat és a VHD-fájl mérete a parancs is igénybe vehet igénybe.
+A hálózati kapcsolat és a VHD-fájl méretétől függően ez a parancs is igénybe vehet igénybe.
 
 
-## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>2. lehetőség: Másolja a VHD-t egy meglévő Azure virtuális Gépen
+## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>Option 2: Másolja a VHD-t a meglévő Azure virtuális gépből
 
-Virtuális merevlemez egy másik tárfiókhoz egy új, ismétlődő virtuális gép létrehozásakor használandó másolhatja.
+Virtuális merevlemez másolhatja, amikor egy új, ismétlődő virtuális Gépet hoz létre egy másik tárfiókba.
 
 ### <a name="before-you-begin"></a>Előkészületek
 Győződjön meg arról, hogy Ön:
 
-* Kapcsolatos információkkal rendelkezik a **forrás és cél tárfiókok**. A forrás virtuális gép kell rendelkeznie a tárolási fiók és a tároló neve. Általában a tároló neve lesz **VHD-k**. Szükség van egy cél tárfiókkal. Ha még nem rendelkezik egy, elkészítheti vagy a portál használatával (**minden szolgáltatás** > tárfiókok > hozzáadása) vagy a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) parancsmag. 
+* Kapcsolatos információkkal rendelkezzen a **forrás- és storage-fiókok**. A forrás virtuális gép szüksége lesz a storage-fiók és a tároló nevét. Általában a tároló neve lesz **VHD-k**. Emellett szüksége lesz a cél tárfiók. Ha még nem rendelkezik egy, létrehozhat egyet vagy a portál használatával (**minden szolgáltatás** > tárfiókok > hozzáadása) vagy a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) parancsmagot. 
 * Letöltötte és telepítette a [AzCopy eszköz](../../storage/common/storage-use-azcopy.md). 
 
 ### <a name="deallocate-the-vm"></a>A virtuális gép felszabadítása
-A virtuális helyet szabadít fel a VHD-másolható felszabadítani. 
+Szabadítsa fel a virtuális Gépet, így Önnek be kell másolni a virtuális merevlemez. 
 
-* **Portál**: kattintson a **virtuális gépek** > **myVM** > leállítása
-* **PowerShell**: használata [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) leállítása (felszabadítása) nevű virtuális gép **myVM** erőforráscsoportban **myResourceGroup**.
+* **Portál**: Kattintson a **virtuális gépek** > **myVM** > leállítása
+* **PowerShell**: Használja [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) , állítsa le (szabadítsa fel) nevű virtuális Gépet **myVM** erőforráscsoportban **myResourceGroup**.
 
 ```powershell
 Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
-A **állapot** a virtuális gép az Azure portálon módosítja **leállítva** való **leállítva (felszabadítva)**.
+A **állapot** a virtuális gép az Azure Portalon a változik **leállítva** való **leállítva (felszabadítva)**.
 
 ### <a name="get-the-storage-account-urls"></a>A storage-fiók URL-címek lekérése
-Az URL-címeket, a forrás és cél tárfiók van szüksége. Az URL-címek megjelenését, például: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Ha már ismeri a tárolási fiók és a tároló neve, csak helyettesítheti az adatok az URL-cím létrehozása a szögletes zárójelek között. 
+Szüksége lesz a forrás- és storage-fiókok URL-címei. Az URL-címek néz ki: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Ha már ismeri a tárolási fiók és a tároló nevét, egyszerűen lecserélheti az adatok az URL-cím létrehozása a zárójelek között. 
 
-Az Azure portálon vagy az Azure Powershell használatával az URL-cím beszerzése:
+Használhatja az Azure portal vagy Azure PowerShell-lel az URL-Címének lekéréséhez:
 
-* **Portál**: kattintson a **>** a **minden szolgáltatás** > **tárfiókok** > *tároló fiók* > **Blobok** és a forrás VHD-fájl valószínűleg a **VHD-k** tároló. Kattintson a **tulajdonságok** a tárolót, és másolja a dokumentum szövegét, címkével **URL-cím**. A forrás- és tárolók URL-címei lesz szüksége. 
-* **PowerShell**: használata [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) nevű virtuális gép adatainak megszerzése **myVM** erőforráscsoportban **myResourceGroup**. Az eredmények között, tekintse meg a **tárolási profilban** című rész a **virtuális merevlemez Uri**. Az Uri első része a tároló URL-CÍMÉT, és az utolsó része a virtuális gép operációs rendszer virtuális merevlemez nevét.
+* **Portál**: Kattintson a **>** a **minden szolgáltatás** > **tárfiókok** > *tárfiók*  >  **Blobok** és a forrás VHD-fájl valószínűleg a **VHD-k** tároló. Kattintson a **tulajdonságok** a tároló és a címkével ellátott szöveg másolása **URL-cím**. Szüksége lesz a forrás- és tárolók URL-címei. 
+* **PowerShell**: Használat [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) nevű virtuális gép esetében a adatok **myVM** erőforráscsoportban **myResourceGroup**. Az eredmények között, tekintse meg a **tárolóprofil** szakasz a **Vhd Uri**. Az URI-t első része az URL-címe a tárolóhoz, a második pedig a rendszert tartalmazó virtuális Merevlemezt a virtuális gép nevét.
 
 ```powershell
 Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ``` 
 
-## <a name="get-the-storage-access-keys"></a>A tárelérési kulcsok beszerzése
-Keresése a tárelérési kulcsokat a forrás és cél storage-fiókok. Tárelérési kulcsok kapcsolatos további információkért lásd: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
+## <a name="get-the-storage-access-keys"></a>A tárelérési kulcsok beolvasása
+Keresse meg a hozzáférési kulcsok a forrás- és storage-fiókok. Hozzáférési kulcsokkal kapcsolatos további információkért lásd: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
 
-* **Portál**: kattintson a **minden szolgáltatás** > **tárfiókok** > *tárfiók*  >   **Hívóbetűk**. Másolja a vágólapra a kulcsot címkézve **key1**.
-* **PowerShell**: használata [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) a kulcsot a tárfiók eléréséhez **mystorageaccount** erőforráscsoportban **myResourceGroup**. Másolja a vágólapra a kulcsot feliratú **key1**.
+* **Portál**: Kattintson a **minden szolgáltatás** > **tárfiókok** > *tárfiók* > **hozzáférési kulcsok**. Másolja a kulcsot a következő címkét: **key1**.
+* **PowerShell**: Használat [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) beolvasni a tárfiókhoz a tárfiók hívóbetűjét **mystorageaccount** erőforráscsoportban **myResourceGroup**. Másolja a címkével ellátott kulcsot **key1**.
 
 ```powershell
 Get-AzureRmStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
 ```
 
-### <a name="copy-the-vhd"></a>Másolja a VHD-
-AzCopy alkalmazó tárfiókok között másolhatja. A cél a tároló Ha a megadott tároló nem létezik, az létrehozza meg. 
+### <a name="copy-the-vhd"></a>Másolja a VHD-t
+Másolhatja a fájlokat a storage-fiókok az AzCopy használata között. Céltárolóját Ha a megadott tároló nem létezik, akkor létrejön az Ön számára. 
 
-AzCopy használatához nyisson meg egy parancssort, a helyi számítógépen, és lépjen abba a mappába, amelyen telepítve van-e az AzCopy. Hasonló lesz *C:\Program Files (x86) \Microsoft SDKs\Azure\AzCopy*. 
+Az AzCopy használata, nyisson meg egy parancssort a helyi gépen, és lépjen abba a mappába, amelyen telepítve van-e az AzCopy. Hasonló lesz *C:\Program Files (x86) \Microsoft SDKs\Azure\AzCopy*. 
 
-Az összes olyan tárolóban fájl másolásához használja a **/S** váltani. Ez az operációs rendszer virtuális Merevlemezt és az adatok lemezeket másolása, ha ugyanabban a tárolóban vannak is használható. Ez a példa bemutatja, hogyan másolhatja az összes, a fájlok a tároló **mysourcecontainer** tárfiókban **mysourcestorageaccount** a tárolóhoz **mydestinationcontainer**a a **mydestinationstorageaccount** tárfiók. A saját cserélje le a storage-fiókok és a tároló nevét. Cserélje le `<sourceStorageAccountKey1>` és `<destinationStorageAccountKey1>` saját kulcsokkal.
+Az összes olyan tárolóban fájl másolásához használja a **/S** váltani. Ez a rendszert tartalmazó virtuális Merevlemezt és az összes adatlemezét másolása, ha azok ugyanabban a tárolóban is használható. Ez a példa bemutatja, hogyan másolhatja az összes fájlt a tárolóban **mysourcecontainer** tárfiókban **mysourcestorageaccount** a tárolóhoz **mydestinationcontainer**a a **mydestinationstorageaccount** storage-fiókot. Cserélje le a storage-fiókok és a tárolók neve a saját. Cserélje le `<sourceStorageAccountKey1>` és `<destinationStorageAccountKey1>` saját kulcsokkal.
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -169,7 +169,7 @@ AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecont
     /SourceKey:<sourceStorageAccountKey1> /DestKey:<destinationStorageAccountKey1> /S
 ```
 
-Ha szeretné egy adott VHD másolja a tárolóban lévő több fájl, a fájl nevét a /Pattern kapcsoló használatával is megadhatja. Ebben a példában csak az nevű fájlt **myFileName.vhd** kerülnek.
+Ha csak egy adott virtuális Merevlemezt másolja egy tárolóban több fájlt, adja meg a fájl nevét a /Pattern kapcsoló használatával. Ebben a példában csak a nevű fájl **myFileName.vhd** lesznek másolva.
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -179,7 +179,7 @@ AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecont
 ```
 
 
-Amikor elkészült, alábbihoz hasonló üzenet jelenik meg:
+Amikor elkészült, egy, a következőhöz hasonló üzenetet fog kapni:
 
 ```
 Finished 2 of total 2 file(s).
@@ -193,24 +193,24 @@ Elapsed time:            00.00:13:07
 ```
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
-* AZCopy, használatakor, ha a hiba "A kiszolgáló nem tudta hitelesíteni a kérelmet", győződjön meg arról, hogy az engedélyezési fejléc értékének formátuma helyes többek között az aláírás. Ha a kulcs 2 vagy a másodlagos kulcsot használ, próbálja meg az 1. vagy elsődleges kulcs.
+* AZCopy használatakor, ha a hibaüzenetet a "Kiszolgáló nem tudta hitelesíteni a kérelmet", győződjön meg arról, az engedélyezési fejléc értékének formátuma megfelelő többek között az aláírás. Ha a kulcs 2-es vagy a másodlagos tárelérési kulcsot használ, próbáljon az elsődleges vagy 1-től tárkulcsra.
 
 ## <a name="create-the-new-vm"></a>Az új virtuális gép létrehozása 
 
 Az új virtuális gép által használt hálózati és más Virtuálisgép-erőforrások létrehozásához szükséges.
 
-### <a name="create-the-subnet-and-vnet"></a>Az alhálózat és a virtuális hálózat létrehozása
+### <a name="create-the-subnet-and-vnet"></a>Az alhálózat és virtuális hálózat létrehozása
 
-Hozza létre a virtuális hálózat és az alhálózati a [virtuális hálózati](../../virtual-network/virtual-networks-overview.md).
+Hozza létre a virtuális hálózat és alhálózat, a [virtuális hálózat](../../virtual-network/virtual-networks-overview.md).
 
-1. Hozza létre az alhálózatot. Ez a példa-alhálózatot hoz létre nevű **mySubNet**, erőforráscsoportban **myResourceGroup**, és beállítja a cím alhálózati előtagját **10.0.0.0/24**.
+1. Hozza létre az alhálózatot. Ez a példa létrehoz egy nevű alhálózatot **mySubNet**, az erőforráscsoport **myResourceGroup**, és az alhálózati cím előtag **10.0.0.0/24**.
    
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubNet"
     $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. A virtuális hálózat létrehozása. Ez a példa beállítja a virtuálishálózat-névnek kell lennie **myVnetName**, a helyet, **USA nyugati régiója**, és a virtuális hálózat címelőtag **10.0.0.0/16**. 
+2. A virtuális hálózat létrehozása. Ebben a példában a virtuális hálózat nevét, hogy beállítja **myVnetName**, a hely **USA nyugati RÉGIÓJA**, és a címelőtag a virtuális hálózat **10.0.0.0/16**. 
    
     ```powershell
     $location = "West US"
@@ -218,10 +218,10 @@ Hozza létre a virtuális hálózat és az alhálózati a [virtuális hálózati
     $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>A hálózati biztonsági csoport és egy RDP-szabály létrehozása
-Nem fogja tudni jelentkezzen be a virtuális gép RDP Funkciót használnak, szüksége, hogy egy biztonsági szabály, amely lehetővé teszi a hozzáférést RDP a 3389-es porton. Mivel az új virtuális gép virtuális merevlemez létrehozásának egy meglévő speciális virtuális gép, miután a virtuális gép létrehozása után használható a forrás virtuális gépről, akinek engedélye RDP használatával jelentkezzen be egy meglévő fiókkal.
-Ez kell elvégezni az társítandó hálózati illesztő létrehozása előtt.  
-Ebben a példában a NSG nevének beállítása **myNsg** és az RDP-szabály neve a **myRdpRule**.
+### <a name="create-the-network-security-group-and-an-rdp-rule"></a>A hálózati biztonsági csoport és a egy RDP-szabály létrehozása
+Az, hogy jelentkezzen be a virtuális gép RDP-vel, szüksége lesz egy biztonsági szabályt, amely lehetővé teszi a 3389-es RDP-hozzáférést. Mert a virtuális Merevlemezt az új virtuális gép egy meglévő specializált virtuális gép, miután a virtuális gép létrejött, akkor használhatja egy meglévő fiókot, a forrás virtuális gépen, amely RDP használatával kíván bejelentkezni engedély volna.
+Ezt manuálisan kell végrehajtani, társítva lesz hálózati adapter létrehozása előtt.  
+Ebben a példában állítja be az NSG neve **myNsg** és az RDP-szabály neve, **myRdpRule**.
 
 ```powershell
 $nsgName = "myNsg"
@@ -235,19 +235,19 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
     
 ```
 
-Végpontok és NSG-szabályok kapcsolatos további információkért lásd: [az Azure PowerShell használatával egy virtuális gép portok megnyitása](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+További információ a végpontok és NSG-szabályok: [egy virtuális gép portjainak megnyitása az Azure PowerShell-lel](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-### <a name="create-a-public-ip-address-and-nic"></a>Nyilvános IP-cím és a hálózati adapter létrehozása
+### <a name="create-a-public-ip-address-and-nic"></a>Hozzon létre egy nyilvános IP-cím és a hálózati adapter
 A virtuális hálózaton a virtuális géppel való kommunikáció biztosításához egy [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) és egy hálózati adapter szükséges.
 
-1. A nyilvános IP-cím létrehozása. Ebben a példában a nyilvános IP-cím neve értéke **myIP**.
+1. A nyilvános IP-cím létrehozása. Ebben a példában a nyilvános IP-cím neve van beállítva, **myIP**.
    
     ```powershell
     $ipName = "myIP"
     $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Hozzon létre a hálózati adaptert. Ebben a példában a hálózati adapter neve legyen **myNicName**. Ez a lépés is hozzárendeli a korábban létrehozott, a hálózati adapterhez. hálózati biztonsági csoport
+2. Hozzon létre a hálózati adaptert. Ebben a példában a hálózati adapter neve van beállítva, **myNicName**. Ez a lépés is társítja a hálózati adapteren. a korábban létrehozott hálózati biztonsági csoport
    
     ```powershell
     $nicName = "myNicName"
@@ -255,9 +255,9 @@ A virtuális hálózaton a virtuális géppel való kommunikáció biztosítás�
     -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
     ```
 
-### <a name="set-the-vm-name-and-size"></a>Adja meg a virtuális gép neve és mérete
+### <a name="set-the-vm-name-and-size"></a>A virtuális gép neve és mérete
 
-Ez a példa beállítja a virtuális gép nevét, a "myVM" és "Standard_A2" a virtuális gép méretét.
+Ebben a példában állítja be, a virtuális gép neve a "myVM" és "Standard_A2" a virtuális gép méretét.
 ```powershell
 $vmName = "myVM"
 $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A2"
@@ -270,40 +270,40 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
 ```
     
     
-### <a name="configure-the-os-disk"></a>Konfigurálhatja az operációsrendszer-lemez
+### <a name="configure-the-os-disk"></a>Az operációsrendszer-lemez konfigurálása
 
-1. Az URI be, amely feltölteni, vagy másolja a VHD-t. Ebben a példában a VHD-fájl nevű **myOsDisk.vhd** nevű tárfiók maradjanak **myStorageAccount** nevű tároló **myContainer**.
+1. Állítsa be az URI-t a virtuális merevlemez, amely feltölteni, vagy másolja. Ebben a példában a VHD-fájl nevű **myOsDisk.vhd** nevű storage-fiókban tárolt **myStorageAccount** nevű tárolóban **myContainer**.
 
     ```powershell
     $osDiskUri = "https://myStorageAccount.blob.core.windows.net/myContainer/myOsDisk.vhd"
     ```
-2. Adja hozzá az operációsrendszer-lemezképet. Ebben a példában az operációsrendszer-lemez létrehozásakor "osDisk" kifejezés appened a Virtuálisgép-névre létrehozni az operációsrendszer-lemez neve. Ebben a példában is megadja, hogy a Windows-alapú virtuális Merevlemezt kell csatolni a virtuális Gépet, az operációs rendszer lemezeként.
+2. Adja hozzá az operációsrendszer-lemez. Ebben a példában az operációsrendszer-lemez létrehozásakor a "osDisk" kifejezés appened létrehozása az operációs rendszer lemezének neve a virtuális gép nevére. Ebben a példában is megadja, hogy a Windows-alapú virtuális Merevlemezt a virtuális Gépet az operációsrendszer-lemezként akarjuk csatolni.
     
     ```powershell
     $osDiskName = $vmName + "osDisk"
     $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption attach -Windows
     ```
 
-Nem kötelező: Ha adatlemezt, amelyek csatlakoztatva kell lennie a virtuális géphez, adja hozzá az adatlemezek adatok VHD-k URL-címei és a megfelelő logikai egységen (Lun) használatával.
+Nem kötelező: Ha kell lennie a virtuális Géphez csatolt adatlemezek, adja hozzá az adatlemezeket az URL-címeket, az adatok VHD-k és a megfelelő logikai egységen (Lun) használatával.
 
 ```powershell
 $dataDiskName = $vmName + "dataDisk"
 $vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
 ```
 
-A storage-fiók használata esetén az adatokat és operációsrendszer-lemez URL-címek kinéznie: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. Található ez a portálon keresse meg a célként megadott tárolási tárolóhoz, az operációs rendszer vagy a virtuális merevlemez másolt adatok majd majd másolja az URL-címet a tartalmát.
+Storage-fiók használata esetén az adatokat és operációsrendszer-lemez URL-címek a következőhöz hasonló: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. Megtalálhatja a portálon keresse meg a cél tároló, az operációs rendszer vagy a másolt virtuális majd majd másolja az URL-címet a tartalmát.
 
 
 ### <a name="complete-the-vm"></a>Végezze el a virtuális gép 
 
-A virtuális gép létrehozása használatával az imént létrehozott konfigurációkat.
+Hozzon létre a virtuális Gépet az imént létrehozott konfigurációk használatával.
 
 ```powershell
 #Create the new VM
 New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
-Ha ez a parancs sikeres, megjelenik a kimenet ehhez hasonló:
+Ha ez a parancs sikeres volt, akkor ehhez hasonló kimenet jelenik meg:
 
 ```powershell
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -312,8 +312,8 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ```
 
-### <a name="verify-that-the-vm-was-created"></a>Győződjön meg arról, hogy létrejött-e a virtuális gép
-Megtekintheti az újonnan létrehozott virtuális gép vagy a a [Azure-portálon](https://portal.azure.com)a **minden szolgáltatás** > **virtuális gépek**, vagy a következő PowerShell-lel parancsok:
+### <a name="verify-that-the-vm-was-created"></a>Győződjön meg arról, hogy a virtuális gép létrejött-e.
+Megjelenik az újonnan létrehozott virtuális gép vagy a a [az Azure portal](https://portal.azure.com)alatt **minden szolgáltatás** > **virtuális gépek**, vagy a következő PowerShell-lel parancsok:
 
 ```powershell
 $vmList = Get-AzureRmVM -ResourceGroupName $rgName
@@ -321,5 +321,5 @@ $vmList.Name
 ```
 
 ## <a name="next-steps"></a>További lépések
-Jelentkezzen be az új virtuális gép. További információkért lásd: [csatlakoztatása, és jelentkezzen be a Windowst futtató Azure virtuális gép](connect-logon.md).
+Jelentkezzen be az új virtuális gépet. További információkért lásd: [csatlakoztatása és bejelentkezés Windows rendszert futtató Azure virtuális gép](connect-logon.md).
 

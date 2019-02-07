@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 917a551b8a187db6645e523d0189533e333d5371
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a1b60bdf27e1a5f5cb6b9cfba72d78f8afa068eb
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075166"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768596"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkciók és az Azure Event Hubs terminológiája
 
@@ -160,8 +160,8 @@ Az Event Hubs hatékonyan méretezhető párhuzamos architektúrával rendelkezi
 
 Az Event Hubs átviteli kapacitásának szabályozása *átviteli egységek* révén történik. Az átviteli egységek előre megvásárolt kapacitásegységek. Egy átviteli egység a következő kapacitást biztosítja:
 
-* Bemenő forgalom: Legfeljebb 1 MB, második vagy 1000 esemény / másodperc (amelyik előbb bekövetkezik).
-* Kimenő forgalom: Legfeljebb 2 MB, második vagy 4096 esemény / másodperc.
+* Bemenő forgalom: Második vagy 1000 esemény (amelyik előbb bekövetkezik) másodpercenként legfeljebb 1 MB.
+* Kimenő forgalom: Akár 2 MB / másodpercben a második vagy 4096 esemény.
 
 A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rendszer korlátozza, és [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) választ ad vissza. A kimenő forgalom nem eredményez korlátozási kivételeket, azonban a megvásárolt átviteli egységek kapacitására van korlátozva. Ha közzétételi sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt a névtérhez. Az átviteli egységek segítségével kezelheti a **méretezési** névtereket paneljén a [az Azure portal](https://portal.azure.com). Átviteli egységek használatával programozott módon is kezelhetők a [Event Hubs API-k](event-hubs-api-overview.md).
 
@@ -169,7 +169,7 @@ A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rend
 
 További átviteli egységek 20-átviteli egységeket 100 egységig egységekben vásárolhatja meg az Azure támogatási szolgálatával. Meghaladja a korlátot vásárolhat átviteli egységeket 100 blokk.
 
-Azt javasoljuk, hogy optimális méretezhetőség az átviteli egységek és partíciók kiegyenlítése. Egy partíció legfeljebb egy átviteli egységgel rendelkezhet. Az egyes eseményközpontokban az átviteli egységek száma nem haladhatja meg a partíciók számát.
+Azt javasoljuk, hogy optimális méretezhetőség az átviteli egységek és partíciók kiegyenlítése. Egy partíció rendelkezik a minimális méretezési csoport egy átviteli egységgel rendelkezhet. Az egyes eseményközpontokban az átviteli egységek száma nem haladhatja meg a partíciók számát.
 
 Részletes információk az Event Hubs díjszabásáról: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 

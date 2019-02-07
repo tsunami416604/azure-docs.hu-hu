@@ -11,18 +11,15 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
-ms.openlocfilehash: fa37ed942158ecc0f58aa5884ff93ce27bc42745
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 67265636b26a0eec3c40ee1f95872cc870099de7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751072"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809680"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Mi a Microsoft Authenticator alkalmazást?
 A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok kétfaktoros ellenőrzési használatakor. A kétfaktoros hitelesítési segítségével a fiókok biztonságosabb, hozzáférhet a különösen bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejtett is, amelyeket elloptak vagy feltört, kéttényezős hitelesítés végrehajtása egy további biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében.
-
->[!Important]
->A Microsoft Authenticator alkalmazás együttműködik a kétfaktoros ellenőrzési használó alkalmazásokban, és olyan fiókot, amely támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
 
 Többféle módon, beleértve a Microsoft Authenticator alkalmazást is használhatja:
 
@@ -31,7 +28,11 @@ Többféle módon, beleértve a Microsoft Authenticator alkalmazást is használ
 - Jelentkezzen be lehetővé anélkül, hogy a jelszó, a felhasználónév és a mobil eszköz használata az ujjlenyomatot, arc vagy PIN-kód.
 
 >[!Important]
->Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.<br><br>Ha bejelentkezik a fiókjába problémákat tapasztal, tekintse meg [mikor nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429) segítséget.  További információ arról, mi a teendő, ha kap a ["a megadott Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) jelenik meg, jelentkezzen be Microsoft-fiókjával.
+>A Microsoft Authenticator alkalmazás együttműködik a kétfaktoros ellenőrzési használó alkalmazásokban, és olyan fiókot, amely támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
+
+>Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
+
+>Ha bejelentkezik a fiókjába problémákat tapasztal, tekintse meg [mikor nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429) segítséget. További információ arról, mi a teendő, ha kap a ["a megadott Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) jelenik meg, jelentkezzen be Microsoft-fiókjával.
 
 ## <a name="terminology"></a>Terminológia
 |Időtartam|Leírás|
@@ -67,11 +68,10 @@ A fiók típusától függően a szervezet dönthet, hogy kétfaktoros ellenőrz
 
 |Cikk |Leírás |
 |------|------------|
-|[Az alkalmazás letöltése és telepítése](microsoft-authenticator-app-how-to.md)|Tudhatja meg, hol és hogyan, és telepítse a Microsoft Authenticator alkalmazást Android és iOS rendszerű eszközökre vonatkozó.|
-|[A munkahelyi vagy iskolai fiók hozzáadása](microsoft-authenticator-app-add-work-account.md)|Ismerteti, hogyan lehet a különböző munkahelyi vagy iskolai és személyes fiókok hozzáadása a Microsoft Authenticator alkalmazást.|
-|[Személyes Microsoft-fiók hozzáadása](microsoft-authenticator-app-add-personal-account.md)|Ismerteti, hogyan lehet a személyes Microsoft-fiók hozzáadása a Microsoft Authenticator alkalmazást.|
-|[Egy nem Microsoft-fiók hozzáadása](microsoft-authenticator-app-add-non-microsoft-account.md)|Ismerteti, hogyan lehet a nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazást.|
-|[A fiókok manuális hozzáadása](microsoft-authenticator-app-add-account-manual.md)|Ha nem sikerül, a megadott QR-kód bemutatja, hogyan a fiókok manuális hozzáadása a Microsoft Authenticator alkalmazást.|
-|[Jelentkezzen be az alkalmazás használatával](microsoft-authenticator-app-phone-signin-faq.md)|Ismerteti, hogyan lehet bejelentkezni a különböző fiókokról, a Microsoft Authenticator alkalmazás használatával.|
-|[A fiók hitelesítő adatainak biztonsági mentése és helyreállítása](microsoft-authenticator-app-backup-and-recovery.md)| Információkat biztosít a fiók hitelesítő adatainak biztonsági mentéséhez és visszaállításához a Microsoft Authenticator alkalmazás használatával.|
-|[A Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdések](microsoft-authenticator-app-faq.md)|Az alkalmazással kapcsolatos gyakori kérdésekre ad választ.|
+|[Az alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md)|Tudhatja meg, hol és hogyan, és telepítse a Microsoft Authenticator alkalmazást Android és iOS rendszerű eszközökre vonatkozó.|
+|[A munkahelyi vagy iskolai fiókok hozzáadása](user-help-auth-app-add-work-school-account.md)|Ismerteti, hogyan lehet a különböző munkahelyi vagy iskolai és személyes fiókok hozzáadása a Microsoft Authenticator alkalmazást.|
+|[A személyes fiókok hozzáadása](user-help-auth-app-add-personal-ms-account.md)|Ismerteti, hogyan lehet a személyes Microsoft- és nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazást.|
+|[A fiókok manuális hozzáadása](user-help-auth-app-add-account-manual.md)|Ha nem sikerül, a megadott QR-kód bemutatja, hogyan a fiókok manuális hozzáadása a Microsoft Authenticator alkalmazást.|
+|[Jelentkezzen be az alkalmazás használatával](user-help-auth-app-sign-in.md)|Ismerteti, hogyan lehet bejelentkezni a különböző fiókokról, a Microsoft Authenticator alkalmazás használatával.|
+|[A fiók hitelesítő adatainak biztonsági mentése és helyreállítása](user-help-auth-app-backup-recovery.md)| Információkat biztosít a fiók hitelesítő adatainak biztonsági mentéséhez és visszaállításához a Microsoft Authenticator alkalmazás használatával.|
+|[A Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdések](user-help-auth-app-faq.md)|Az alkalmazással kapcsolatos gyakori kérdésekre ad választ.|

@@ -1,6 +1,6 @@
 ---
-title: Azure Blob Storage tárolóban az Azure Content Delivery Network lejáratának kezelése |} Microsoft Docs
-description: További tudnivalók a beállításait élő idő a blobok az Azure CDN gyorsítótárazását.
+title: Az Azure Blob storage-ban az Azure Content Delivery Network lejáratának kezelése |} A Microsoft Docs
+description: Az Azure CDN gyorsítótárazási lévő blobok esetében szabályozni a time-to-live lehetőségek ismertetése.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,80 +14,80 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: a0f89a272fa300f6acced2de02ba5465ab282079
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 29e9bee5f7712252d95b9416ad5523b4dfdd4b94
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765636"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814316"
 ---
-# <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure Blob storage Azure CDN lejáratának kezelése
+# <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Az Azure Blob storage-ban az Azure CDN lejáratának kezelése
 > [!div class="op_single_selector"]
 > * [Azure webes tartalom](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
-A [Blob storage szolgáltatás](../storage/common/storage-introduction.md#blob-storage) az Azure Storage számos Azure-alapú források egyik integrálva van az Azure Content Delivery Network (CDN). Bármely nyilvánosan elérhető blobtartalom Azure CDN mindaddig, amíg az idő-live (TTL) lejárta gyorsítótárazható. Az élettartam határozza meg a `Cache-Control` fejléc a következő a HTTP-válasz a forráskiszolgálóról. Ez a cikk ismerteti, amely lehet többféle módon a `Cache-Control` az Azure Storage blob fejlécet.
+A [tároló Blobszolgáltatás](../storage/common/storage-introduction.md#blob-storage) az Azure Storage számos Azure-alapú források közül integrálva van az Azure Content Delivery Network (CDN). Bármely nyilvánosan hozzáférhető blob tartalma Azure CDN a gyorsítótárazható, mindaddig, amíg az idő-az-élettartam (TTL) lejárta. Az élettartam határozza meg a `Cache-Control` fejlécet a HTTP-válasz a forráskiszolgálóról. Ez a cikk azt ismerteti, több módszert is, amely lehet a `Cache-Control` egy blobot az Azure Storage-fejléce.
 
-Azt is meghatározhatja, Azure-portálról gyorsítótár beállításait úgy, hogy [szabályok gyorsítótárazás CDN](#setting-cache-control-headers-by-using-caching-rules). Ha Ön gyorsítótárazási szabály létrehozása, és állítsa a gyorsítótár-viselkedést **felülbírálása** vagy **gyorsítótár megkerülése**, a megadott forrás gyorsítótárazási beállítások vannak megadva ebben a cikkben ismertetett figyelmen kívül lesznek hagyva. Általános gyorsítótárazási fogalmak kapcsolatos információkért lásd: [gyorsítótárazás működése](cdn-how-caching-works.md).
+Gyorsítótár beállításai az Azure Portalról beállítás CDN gyorsítótárazási szabályok is szabályozhatja. Ha létrehoz egy gyorsítótárszabály és beállítása a gyorsítótárazási viselkedés **felülbírálása** vagy **gyorsítótár megkerülése**, a forrás által biztosított gyorsítótárazási beállításait a cikkben leírtak szerint a rendszer figyelmen kívül hagyja. Általános gyorsítótárazási fogalmak kapcsolatos információkért lásd: [gyorsítótárazás működése](cdn-how-caching-works.md).
 
 > [!TIP]
-> Ha szeretné, nincs TTL be blob. Ebben az esetben Azure CDN automatikusan érvényes alapértelmezett élettartam 7 nap során, kivéve, ha meg van adva az Azure portálon szabályok gyorsítótárazás. Ez az alapértelmezett élettartam csak azokra az általános webes kézbesítési optimalizálás. A nagy méretű fájlok optimalizálást az alapértelmezett élettartam egy nap, az pedig médiaadatfolyam-továbbítást optimalizálást, az alapértelmezett élettartam egy év.
+> Választhat, nincs élettartam beállítani egy blobot. Ebben az esetben az Azure CDN automatikusan alkalmazza a egy alapértelmezett élettartam hét nap, kivéve, ha meg van adva a gyorsítótár-szabályokkal, az Azure Portalon. Ez az alapértelmezett TTL csak azokra az általános webes kézbesítés optimalizálása. A nagyméretű fájlok optimalizálása az alapértelmezett élettartam egy nap, és az online médialejátszás optimalizálása, az alapértelmezett élettartam egy év.
 > 
-> Azure CDN gyorsabb hozzáférés blobok és egyéb fájlok működésével kapcsolatos további információkért lásd: [az Azure Content Delivery Network áttekintése](cdn-overview.md).
+> Azure CDN gyorsíthatja fel a hozzáférés a blobokhoz és egyéb fájlok működésével kapcsolatos további információkért lásd: [áttekintése az Azure Content Delivery Network](cdn-overview.md).
 > 
-> Azure Blob Storage tárolóban kapcsolatos további információkért lásd: [Blob storage bemutatása](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction).
+> Azure Blob storage szolgáltatással kapcsolatos további információkért lásd: [Blob storage bemutatása](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction).
  
 
-## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Gyorsítótárazás szabályok CDN használatával Cache-Control fejlécek beállítása
-A beállítás egy blob előnyben részesített módszere `Cache-Control` fejléc, hogy gyorsítótárazási szabályokat használja az Azure portálon. Gyorsítótárazás szabályok CDN kapcsolatos további információkért lásd: [vezérlő Azure CDN szolgáltatás használata a szabályok gyorsítótárazással gyorsítótárazásának](cdn-caching-rules.md).
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>CDN gyorsítótárazási szabályok használatával Cache-Control fejléc beállítása
+Az előnyben részesített módja egy blob beállítás `Cache-Control` fejléc gyorsítótárazási szabályok használata az Azure Portalon. CDN gyorsítótárazási szabályok kapcsolatos további információkért lásd: [vezérlő Azure CDN gyorsítótárazási viselkedésének gyorsítótár-szabályokkal](cdn-caching-rules.md).
 
 > [!NOTE] 
-> Gyorsítótárazás szabályok csak esetén érhetők el **Azure CDN Standard verizon** és **Azure CDN Standard Akamai** profilok. A **verizon Azure CDN Premium** -profilok kell használnia a [Azure CDN szabálymotor](cdn-rules-engine.md) a a **kezelése** hasonló funkciókat a portálon.
+> Gyorsítótárazási szabályok csak esetén érhetők el **Azure CDN Standard verizon** és **Azure CDN Akamai Standard** profilok. A **verizon Azure CDN Premium** profilok kell használnia a [Azure CDN szabálymotorral](cdn-rules-engine.md) a a **kezelés** portál a hasonló funkciókat.
 
 **Nyissa meg a CDN gyorsítótárazási szabályok lapot a**:
 
-1. Az Azure portálon válassza ki a CDN-profil, majd válassza ki a blob végpontja.
+1. Az Azure Portalon válassza ki a CDN-profil, majd válassza ki a blob végpontja.
 
-2. A beállítások a bal oldali ablaktáblában jelölje ki a **szabályok gyorsítótárazás**.
+2. A bal oldali ablaktáblán, a Beállítások alatt válassza a **Gyorsítótárszabályok** lehetőséget.
 
-   ![CDN-gyorsítótárazási szabályok gomb](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
+   ![CDN gyorsítótárazási szabályok gomb](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
 
-   A **szabályok gyorsítótárazás** lap jelenik meg.
+   Megjelenik a **Gyorsítótárszabályok** lap.
 
-   ![CDN-gyorsítótárazási lap](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
+   ![CDN gyorsítótárazási lap](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
 
 
-**A Blob storage szolgáltatás Cache-Control fejlécek beállítása globális gyorsítótárazási szabályok használatával:**
+**A Blob storage szolgáltatás Cache-Control fejléc beállítása a globális gyorsítótárazási szabályokat használatával:**
 
-1. A **szabályok gyorsítótárazás globális**, beállíthatja **lekérdezési karakterláncok gyorsítótárazásának működése** való **lekérdezési karakterláncok figyelmen kívül** , és **gyorsítótárazásának** való **Bírálja felül**.
+1. Alatt **globális gyorsítótárszabályok**állítsa be **lekérdezési karakterláncok gyorsítótárazásának működése** való **lekérdezési karakterláncok kihagyása** és **gyorsítótárazási viselkedésének** , **Felülbírálás**.
       
-2. A **gyorsítótár lejárati időtartam**, adja meg a 3600 a **másodperc** gépen, illetve az 1 a **óra** mezőbe. 
+2. A **gyorsítótár elévülési ideje**, adja meg a 3600 a **másodperc** mezőbe, vagy az 1 a **óra** mezőbe. 
 
-   ![CDN globális gyorsítótárazási szabályok – példa](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
+   ![CDN globális gyorsítótárazási szabályokat példa](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
 
-   A globális gyorsítótárszabályt beállítja a gyorsítótárazás időtartama egy óra, és hatással van a végpont minden kérelemhez. Felülbírálja a `Cache-Control` vagy `Expires` az eredeti kiszolgálóra a végpont által megadott által küldött HTTP-fejléceket.   
+   A globális gyorsítótárazási szabály beállítja egy egy órás gyorsítótárazás időtartama, és hatással van az összes kérelem a végponthoz. Ez a beállítás felülbírálja bármely `Cache-Control` vagy `Expires` a végpont által megadott a forráskiszolgáló által küldött HTTP-fejléceket.   
 
 3. Kattintson a **Mentés** gombra.
  
-**Beállítása blob fájl Cache-Control fejlécek gyorsítótárazási egyéni szabályok használatával:**
+**Beállítása egy blob fájl Cache-Control fejléceket egyéni gyorsítótárazási szabályok használatával:**
 
-1. A **egyéni szabályok gyorsítótárazás**, hozzon létre két egyező feltételek:
+1. A **egyéni gyorsítótárszabályok**, hozzon létre két egyezési feltételei:
 
-     A. Az első egyező feltétel beállítása **feltételének** való **elérési** , és írja be `/blobcontainer1/*` a **más értékkel egyezik**. Állítsa be **gyorsítótárazásának** való **felülbírálása** , és adja meg a 4 a **óra** mezőbe.
+     A. Az első egyezés feltétel beállítása **feltételnek megfelelő** való **elérési útja** , és adja meg `/blobcontainer1/*` a **érték egyezik**. Állítsa be **gyorsítótárazási viselkedésének** való **felülbírálása** , és adja meg a 4 a **óra** mezőbe.
 
-    B. A második egyezés feltétel beállítása **feltételének** való **elérési** , és írja be `/blobcontainer1/blob1.txt` a **más értékkel egyezik**. Állítsa be **gyorsítótárazásának** való **felülbírálása** , és adja meg a 2 a **óra** mezőbe.
+    B. Állítsa be a második feltétel egyezik **feltételnek megfelelő** való **elérési** , és adja meg `/blobcontainer1/blob1.txt` a **érték egyezik**. Állítsa be **gyorsítótárazási viselkedésének** való **felülbírálása** , és adja meg a 2 a **óra** mezőbe.
 
-    ![CDN egyéni gyorsítótárazási szabályok – példa](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
+    ![CDN-t egyéni gyorsítótárazási szabályok példa](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
-    Az első egyéni gyorsítótárszabályt beállítja a gyorsítótárazás időtartama négyórás bármely blob fájlokat a `/blobcontainer1` a forrás kiszolgálón, a végpont által megadott mappában. A második szabály felülbírálja az első szabály a `blob1.txt` csak fájlját és beállítása a gyorsítótárazás időtartama két órában.
+    Az első egyéni gyorsítótárszabály beállítja a gyorsítótárazás időtartama négyórás bármely blob fájlokat a `/blobcontainer1` a forráskiszolgálón, a végpont által megadott mappába. A második szabály felülírja az első szabály az `blob1.txt` csak blob fájl és a egy két órás, a gyorsítótárazás idejének beállítása.
 
 2. Kattintson a **Mentés** gombra.
 
 
-## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>A Cache-Control fejlécek beállítása az Azure PowerShell használatával
-[Az Azure PowerShell](/powershell/azure/overview) egyik a leggyorsabb és leghatékonyabb módja az Azure-szolgáltatások felügyeletéhez. Használja a `Get-AzureStorageBlob` parancsmagot, hogy megkapja a blobra mutató hivatkozást, majd állítsa be a `.ICloudBlob.Properties.CacheControl` tulajdonság. 
+## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>A Cache-Control fejléc beállítása az Azure PowerShell-lel
+[Az Azure PowerShell](/powershell/azure/overview) egyik felügyelheti az Azure-szolgáltatások a leggyorsabb és leghatékonyabb módja. Használja a `Get-AzureStorageBlob` -parancsmaggal beolvasható egy hivatkozást a blob, majd állítsa be a `.ICloudBlob.Properties.CacheControl` tulajdonság. 
 
 Példa:
 
@@ -106,12 +106,12 @@ $blob.ICloudBlob.SetProperties()
 ```
 
 > [!TIP]
-> Használhatja a PowerShell [a CDN-profil és a végpontok kezelése](cdn-manage-powershell.md).
+> Is használhatja a PowerShell-lel [a CDN-profilok és a végpontok kezeléséhez](cdn-manage-powershell.md).
 > 
 >
 
-## <a name="setting-cache-control-headers-by-using-net"></a>A beállítás a Cache-Control fejlécek .NET használatával
-Adjon meg egy blobba való `Cache-Control` fejlécet a .NET-kódot, használja a [Azure Storage ügyféloldali kódtára a .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) beállítása a [CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) tulajdonság.
+## <a name="setting-cache-control-headers-by-using-net"></a>A Cache-Control fejléc beállítása a .NET-keretrendszerrel
+Egy blob megadása `Cache-Control` fejléc használatával a .NET-kód, használja a [Azure Storage ügyféloldali kódtára a .NET-hez](../storage/blobs/storage-dotnet-how-to-use-blobs.md) beállítása a [CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) tulajdonság.
 
 Példa:
 
@@ -143,40 +143,40 @@ class Program
 ```
 
 > [!TIP]
-> Nincsenek elérhető további .NET-Kódminták [Azure Blob Storage-példák .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).
+> Nincsenek elérhető további .NET platformra írt kódmintái [Azure Blob Storage-mintákat a .NET-hez](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).
 > 
 
-## <a name="setting-cache-control-headers-by-using-other-methods"></a>A beállítás a Cache-Control fejlécek más módszerrel
+## <a name="setting-cache-control-headers-by-using-other-methods"></a>A beállítás Cache-Control fejléceket egyéb módszerek használatával
 
 ### <a name="azure-storage-explorer"></a>Azure Storage Explorer
-A [Azure Tártallózó](https://azure.microsoft.com/features/storage-explorer/), megtekintheti és szerkesztheti a blob storage-erőforrások, többek között a tulajdonságokat, mint a *CacheControl* tulajdonság. 
+A [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), megtekintheti és szerkesztheti a blob storage-erőforrások, többek között például a tulajdonságok a *CacheControl* tulajdonság. 
 
-Frissítése az *CacheControl* tulajdonság a Tártallózó alkalmazással Azure BLOB:
+Frissítése az *CacheControl* egy blobot az Azure Storage Explorerrel tulajdonságát:
    1. Jelöljön ki egy blobot, majd **tulajdonságok** a helyi menüből. 
    2. Görgessen le a *CacheControl* tulajdonság.
-   3. Adjon meg egy értéket, majd válasszon **mentése**.
+   3. Adjon meg egy értéket, majd válassza ki **mentése**.
 
 
-![Az Azure Tártallózó tulajdonságai](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
+![Az Azure Storage Explorer tulajdonságai](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure parancssori felület
-Az a [Azure parancssori felület](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) (CLI) kezelheti az Azure blob-erőforrások a parancssorból. Állítsa be a cache-control fejléc, ha feltölt egy blobot a az Azure parancssori felület, állítsa be a *cacheControl* tulajdonság használatával a `-p` váltani. A következő példa bemutatja, hogyan állítsa be a TTL-t egy óra (3600 másodperc):
+Az a [Azure parancssori felület](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) (CLI), az Azure blob-erőforrások is kezelhetők a parancssorból. A cache-control fejléc beállítása, ha feltölt egy blobot az Azure CLI-vel, állítsa be a *cacheControl* tulajdonság használatával a `-p` váltani. Az alábbi példa bemutatja, hogyan állítható be az élettartam egy óra (3600 másodperc):
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>
 ```
 
-### <a name="azure-storage-services-rest-api"></a>Az Azure storage szolgáltatások REST API-n
-Használhatja a [az Azure storage szolgáltatások REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) explicit módon meghatározhatja a *x-ms-blob-cache-control* tulajdonság használatával a kérelem a következő műveleteket:
+### <a name="azure-storage-services-rest-api"></a>Az Azure storage szolgáltatásaihoz való REST API-val
+Használhatja a [Azure storage szolgáltatásaihoz való REST API-val](https://msdn.microsoft.com/library/azure/dd179355.aspx) beállításának a *x-ms-blob-cache-control* tulajdonság használatával a kérelem a következő műveleteket:
   
    - [Put Blob](https://msdn.microsoft.com/library/azure/dd179451.aspx)
    - [PUT tiltólista](https://msdn.microsoft.com/library/azure/dd179467.aspx)
-   - [A Blob tulajdonságainak beállítása](https://msdn.microsoft.com/library/azure/ee691966.aspx)
+   - [A Blob tulajdonságainak megadása](https://msdn.microsoft.com/library/azure/ee691966.aspx)
 
 ## <a name="testing-the-cache-control-header"></a>A Cache-Control fejléc tesztelése
-A blobok TTL beállításainak könnyen ellenőrizheti. A böngésző [fejlesztői eszközök](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), tesztelje, hogy a blob magában foglalja a `Cache-Control` válaszfejlécet. Például egy eszköz is használható [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), vagy [Fiddler](http://www.telerik.com/fiddler) megvizsgálhatja a response fejlécekkel együtt.
+Élettartam beállításait, a blobokat egyszerűen ellenőrizheti. A böngésző [fejlesztői eszközök](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), tesztelje, hogy a blob magában foglalja a `Cache-Control` válaszfejléc. Például egy eszköz is használható [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), vagy [Fiddler](http://www.telerik.com/fiddler) a válaszfejlécek vizsgálatához.
 
 ## <a name="next-steps"></a>További lépések
-* [Útmutató: Azure CDN felhő Felhőszolgáltatásbeli tartalom lejáratának kezelése](cdn-manage-expiration-of-cloud-service-content.md)
-* [Gyorsítótárazás fogalmak megismerése](cdn-how-caching-works.md)
+* [Útmutató: Azure CDN-ben a Felhőszolgáltatásbeli tartalom lejáratának kezelése](cdn-manage-expiration-of-cloud-service-content.md)
+* [Gyorsítótárazás fogalmak ismertetése](cdn-how-caching-works.md)
 

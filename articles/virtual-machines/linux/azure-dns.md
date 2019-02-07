@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 93614d4889c9c884f25c5e05cd620e8303226323
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: ae8315b2a484cddc500b5c2dd02a019cb4f46d8e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39357766"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819144"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Linux rendszerű virtuális gépek az Azure DNS-névfeloldás beállításai
 Az Azure DNS-névfeloldás alapértelmezés szerint egyetlen virtuális hálózaton lévő összes virtuális gépekhez biztosít. Valósítható meg a saját DNS-név feloldása megoldást a saját DNS-szolgáltatások konfigurálásával a virtuális gépeken az Azure futtató. A következő esetekben kell segítségével eldöntheti, amelyik az adott helyzetben használható.
@@ -33,7 +33,7 @@ Az alábbi táblázat azt mutatja be, forgatókönyvek és a megfelelő név fel
 
 | **Forgatókönyv** | **Megoldás** | **Suffix** |
 | --- | --- | --- |
-| Szerepkör példányai vagy az azonos virtuális hálózatban lévő virtuális gépek közötti névfeloldás |[Azure által biztosított névfeloldást](#azure-provided-name-resolution) |állomásneve vagy teljes tartománynév (FQDN) |
+| Szerepkör példányai vagy az azonos virtuális hálózatban lévő virtuális gépek közötti névfeloldás |Azure által biztosított névfeloldást |állomásneve vagy teljes tartománynév (FQDN) |
 | Szerepkörpéldányok vagy a különböző virtuális hálózatokban lévő virtuális gépek közötti névfeloldás |Ügyfél által felügyelt DNS-kiszolgálók (DNS-proxy) az Azure által a névfeloldáshoz virtuális hálózatok közötti lekérdezéseket. Lásd: [névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server). |Csak teljes tartománynév |
 | A helyszíni számítógépek és a szerepkör példányai vagy az Azure virtual machines szolgáltatás nevek feloldása |Ügyfél által felügyelt DNS-kiszolgálók (például a helyi tartományvezérlő, helyi írásvédett tartományvezérlő vagy másodlagos DNS zónaletöltés használatával szinkronizált). Lásd: [névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server). |Csak teljes tartománynév |
 | A helyi számítógépek Azure gazdanév feloldása |Továbbítsa az ügyfél által felügyelt DNS-proxy kiszolgáló a megfelelő virtuális hálózatban. A proxykiszolgáló lekérdezések az Azure-bA továbbítja a feloldásához. Lásd: [névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server). |Csak teljes tartománynév |
@@ -83,7 +83,7 @@ Számos különböző DNS-gyorsítótárazást dnsmasq, például a csomagok ér
 1. Telepítse a dnsmasq csomagot ("sudo yum install dnsmasq").
 2. Engedélyezze a dnsmasq szolgáltatást ("systemctl engedélyezése dnsmasq.service").
 3. Indítsa el a dnsmasq szolgáltatást ("systemctl kezdő dnsmasq.service").
-4. Adja hozzá a "illesztenie a tartomány-name-kiszolgálók 127.0.0.1;", "/etc/dhclient-eth0.conf".
+4. Add “prepend domain-name-servers 127.0.0.1;” to “/etc/dhclient-eth0.conf”.
 5. Indítsa újra a hálózati szolgáltatás ("szolgáltatás hálózati restart") számára, hogy a gyorsítótár állítja be a helyi DNS-feloldó
 
 > [!NOTE]
@@ -113,7 +113,7 @@ A resolv.conf fájlt automatikusan létrehozott, és nem szerkeszthetők. Adja h
 2. Futtassa a "netconfig update" frissíteni.
 
 **CentOS Rogue Wave Software-től (korábbi nevén OpenLogic)** (NetworkManager használja)
-1. Adja hozzá a(z) RES_OPTIONS "timeout:1 kísérletek: 5" = ""/ etc/sysconfig/hálózati".
+1. Add 'RES_OPTIONS="timeout:1 attempts:5"' to '/etc/sysconfig/network'.
 2. Futtassa a "szolgáltatás hálózati újraindítás" frissíteni.
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>Névfeloldás saját DNS-kiszolgáló használatával

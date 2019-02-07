@@ -13,12 +13,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: 6a5a2fee11d785c7513b6c1d1e66bd8b80d80292
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9fd7a3c03c72a63f4163f85ac41248e200397206
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749712"
+ms.locfileid: "55770720"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>A kétlépéses ellenőrzéshez a fiók beállítása
 A kétlépéses ellenőrzés egy kiegészítő biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében. Ha ez a cikk olvasása közben, valószínűleg kapott e-mailt a munkahelyi vagy iskolai rendszergazda multi-factor Authentication hitelesítéssel kapcsolatban. Vagy esetleg próbált meg bejelentkezni, és itt van egy üzenet, hogy további biztonsági ellenőrzés beállítása. Ebben az esetben, ha **nem tud bejelentkezni, amíg el nem végezte az automatikus regisztrációs folyamatot**.
@@ -106,4 +106,4 @@ Ha azt szeretné, hogy hozzáadjon egy fiókot a mobilalkalmazásba manuálisan,
 ## <a name="next-steps"></a>További lépések
 * Az előnyben részesített beállításainak módosítása és [a kétlépéses ellenőrzés beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md)
 * Állítsa be a [alkalmazásjelszók](multi-factor-authentication-end-user-app-passwords.md) natív eszköz alkalmazások, amelyek nem támogatják a kétlépéses ellenőrzést.
-* Tekintse meg a [Microsoft Authenticator alkalmazás](microsoft-authenticator-app-how-to.md) gyors, biztonságos hitelesítést akkor is, ha a cella szolgáltatás nem rendelkezik.
+* Tekintse meg a [Microsoft Authenticator alkalmazás](user-help-auth-app-download-install.md) gyors, biztonságos hitelesítést akkor is, ha a cella szolgáltatás nem rendelkezik.

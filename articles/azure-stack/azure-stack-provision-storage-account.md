@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 1/18/2019
 ms.author: mabrigg
 ms.lastreviewed: 1/18/2019
-ms.openlocfilehash: 4123d4cec25bab116c642f1b89cd8eff4779af42
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 692fba97a67a7dc9654e307c2b7628dcc89f3ba8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252149"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768674"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Tárfiókok az Azure Stack szolgáltatásban
 A tárfiókok tartalmazzák a Blob és a Table szolgáltatásokat és az egyedi névteret a tároló adatobjektumaihoz. Alapértelmezés szerint a fiókban tárolt adatok csak Ön, azaz a tárfiók tulajdonosa számára érhetők el.

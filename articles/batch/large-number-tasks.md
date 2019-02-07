@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 3e20aeb0e21eca5e4ac25206d638036f94a58202
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: ed04774969f72f1d6037a350f019d81d812d73f6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749695"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809299"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Nagy számú feladatot egy Batch-feladat elküldése
 
@@ -164,7 +164,7 @@ except Exception as e:
     raise e
 ```
 
-A Batch Python SDK-bővítmény hozzáadása feladat paraméterei feladathoz egy JSON-specifikáció használatával egy feladat Factory is támogatja. Például a paraméteres hasonló az előző feladat paramétereinek konfigurálása [Batch CLI sablon](#example-batch-cli-template) példa:
+A Batch Python SDK-bővítmény hozzáadása feladat paraméterei feladathoz egy JSON-specifikáció használatával egy feladat Factory is támogatja. Például konfigurál egy paraméteres hasonló az előző példában a Batch CLI sablon feladat paraméterei:
 
 ```python
 parameter_sweep = {

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 7a9c0ec081b676631f950270f9234284a102d7fa
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9aaa5dd2c636f9b5d92e949e1af71eda809cdac7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212188"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810320"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Kiszolgálók eltávolítása és a védelem letiltása
 
@@ -154,7 +154,7 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Tiltsa le a védelmet egy Hyper-V virtuális gép (a Hyper-V – Azure)
 
 > [!NOTE]
-> Ez az eljárás használható, ha az Azure Hyper-V virtuális gépeket a VMM-kiszolgáló nélkül replikál. Ha a virtuális gépek használatával replikál a **System Center VMM-ben az Azure-bA** forgatókönyvet, majd kövesse az utasításokat [tiltsa le a védelmet egy Hyper-V virtuális gép replikálásához használja a System Center VMM és az Az Azure-forgatókönyv](#disable-protection-for-a-hyper-v-virtual-machine-replicating-using-the-system-centet-vmm-to-azure-scenario)
+> Ez az eljárás használható, ha az Azure Hyper-V virtuális gépeket a VMM-kiszolgáló nélkül replikál. Ha a virtuális gépek használatával replikál a **System Center VMM-ben az Azure-bA** forgatókönyvet, majd kövesse az utasításokat védelemletiltási egy Hyper-v virtuális gép replikálása a System Center VMM – Azure forgatókönyvére használatával
 
 1. A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gépre > **tiltsa le a replikációt**.
 2. A **tiltsa le a replikációt**, a következő lehetőségek közül választhat:

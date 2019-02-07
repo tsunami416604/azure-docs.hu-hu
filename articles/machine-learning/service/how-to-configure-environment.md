@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 02d0afd18ad966baf8954ae5add180c970fe302e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b322ca0c3a19f0a832fe50b6cfbaaad287205d5e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247408"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812905"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -27,7 +27,7 @@ A fejlesztési környezet csak követelményei a Python 3, a Conda (az elkülön
 
 Ez a cikk elsősorban a következő környezetekben és eszközöket:
 
-* [Az Azure notebookok](#aznotebooks): A Jupyter notebookok az Azure-felhőben üzemeltetett szolgáltatás. Első lépésként a legegyszerűbb módja,, mert az Azure Machine Learning SDK már telepítve van.
+* Az Azure notebookok: A Jupyter notebookok az Azure-felhőben üzemeltetett szolgáltatás. Első lépésként a legegyszerűbb módja,, mert az Azure Machine Learning SDK már telepítve van.
 
 * [Az adatelemző virtuális gép (DSVM)](#dsvm): Egy előre konfigurált fejlesztői és kísérleti környezet az Azure-felhőben, amely a data science munkahelyi készült, és csak Virtuálisgép-példányok CPU vagy a GPU-alapú példányok is telepíthető. Python 3, Conda, a Jupyter notebookok és az Azure Machine Learning SDK már telepítve vannak. A virtuális gép együttműködik a népszerű machine learning és a deep learning-keretrendszerek, eszközök és -szerkesztők, gépi tanulási megoldások fejlesztéséhez. Fontos valószínűleg a legteljesebb körű fejlesztői környezet, a machine learning az Azure platformon.
 
@@ -248,7 +248,7 @@ A Databricks-fürt előkészítéséhez és mintafüzetek lekérése:
 
 1. Hozzon létre egy [Databricks-fürt](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) a következő beállításokkal:
 
-    | Beállítás | Value |
+    | Beállítás | Érték |
     |----|---|
     | Fürt neve | yourclustername |
     | A Databricks futtatókörnyezete | Any non ML runtime (non ML 4.x, 5.x) |
@@ -257,7 +257,7 @@ A Databricks-fürt előkészítéséhez és mintafüzetek lekérése:
 
     Csak akkor, ha a Databricks automatizált gépi tanulási használni, használja ezeket a beállításokat:
     
-    |   Beállítás | Value |
+    |   Beállítás | Érték |
     |----|---|
     | Munkavégző csomópont virtuális gépek típusai | Az optimalizált memóriájú virtuális gép előnyben részesített |
     | Automatikus skálázás engedélyezése | Törölje a jelet |
@@ -271,13 +271,13 @@ A Databricks-fürt előkészítéséhez és mintafüzetek lekérése:
     * [Hozzon létre egy könyvtárat](https://docs.databricks.com/user-guide/libraries.html#create-a-library) ezek a beállítások egyikével (_csak egyet az alábbi lehetőségek közül választhat_):
     
         * Az Azure Machine Learning-SDK telepítése _nélkül_ automatikus machine learning-funkció:
-            | Beállítás | Value |
+            | Beállítás | Érték |
             |----|---|
             |Forrás | Töltse fel a Python tojás vagy PyPI
             |PyPi neve | azureml-sdk[databricks]
     
         * Az Azure Machine Learning-SDK telepítése _a_ automatikus gépi tanulás:
-            | Beállítás | Value |
+            | Beállítás | Érték |
             |----|---|
             |Forrás | Töltse fel a Python tojás vagy PyPI
             |PyPi neve | azureml-sdk[automl_databricks]

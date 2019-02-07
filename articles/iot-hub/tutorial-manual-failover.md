@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: f0e8bf922f142b795dd1a2ded4b3ec265c43481a
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
-ms.translationtype: HT
+ms.openlocfilehash: bd9cb76557c65832de5d249cdccdc36101edf646
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249991"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821286"
 ---
-# <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Oktatóanyag: IoT hub manuális feladatátvételének végrehajtása (nyilvános előzetes verzió)
+# <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Oktatóanyag: Manuális feladatátvétel végrehajtása egy IoT hub (nyilvános előzetes verzió)
 
 A manuális feladatátvétel az IoT Hub szolgáltatás egyik funkciója, amelynek segítségével elvégezhető egy hub műveleteinek [feladatátvétele](https://en.wikipedia.org/wiki/Failover) az elsődleges régióból a megfelelő, földrajzilag párosított másodlagos Azure-régióba. A manuális feladatátvétel regionális szintű katasztrófák vagy hosszabb időtartamú szolgáltatáskimaradás alkalmával hajtható végre. Emellett végrehajthat tervezett feladatátvételt is a vészhelyreállítási képességek tesztelésére, bár ehhez inkább egy tesztelési célú, és nem egy éles környezetben futó IoT hub használatát javasoljuk. A manuális feladatátvételi funkció további költségek nélkül érhető el ügyfeleink számára.
 
@@ -50,7 +50,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
     **Régió**: Válasszon ki egy közeli régiót, amely része az előzetes verziónak. Ebben az oktatóanyagban a következőt használjuk: `westus2`. A feladatátvétel csak földrajzilag párosított Azure-régiók között hajtható végre. A westus2 régióval földrajzilag párosított régió a WestCentralUS régió.
     
    > [!NOTE]
-   > A manuális feladatátvétel jelenleg nyilvános előzetes verzióban érhető el, és a következő Azure-régiókban *nem* elérhető: USA keleti régiója, USA nyugati régiója, Észak-Európa, Nyugat-Európa, Dél-Brazília és USA déli középső régiója.
+   > Manuális feladatátvétel jelenleg nyilvános előzetes verzióban érhető el, és el *nem* a következő Azure-régióban érhető el: USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Dél-Brazília és USA déli középső RÉGIÓJA.
 
    **IoT hub neve**: Adja meg az IoT hub nevét. A hub nevének globálisan egyedinek kell lennie. 
 
@@ -112,7 +112,7 @@ A feladat-visszavétel a manuális feladatátvételhez hasonlóan történik. A 
 
    ![Manuális feladat-visszavételi kérelem képernyőképe](./media/tutorial-manual-failover/trigger-failback-01-regions.png)
 
-   Itt is a [feladatátvétel végrehajtását ismertető](#perform-a-failover) szakaszban ismertetett szalagcímek jelennek meg. A feladat-visszavétel befejeztével ismét a `westus2` jelenik meg elsődleges, a `WestCentralUS` pedig másodlagos helyként az eredeti beállításnak megfelelően.
+   A szalagok jelennek meg a végezze el egy feladatátvételt a szakaszban leírtak szerint. A feladat-visszavétel befejeztével ismét a `westus2` jelenik meg elsődleges, a `WestCentralUS` pedig másodlagos helyként az eredeti beállításnak megfelelően.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 

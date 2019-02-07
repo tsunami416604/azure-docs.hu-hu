@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 2/4/2019
 ms.author: moderakh
-ms.openlocfilehash: 15bab6af4054085d00ec5c2edb7afb993a620b55
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 31683159f96dd87fe4e7ceea050d5e1d213decba
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756257"
+ms.locfileid: "55770350"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Aszinkron Java az Azure Cosmos DB SQL API-hoz készült SDK: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -32,22 +32,15 @@ ms.locfileid: "55756257"
 
 Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatása az eltér az SQL API-t a Java SDK-t a [Netty könyvtár](https://netty.io/). A már meglévő [SQL API-t a Java SDK](sql-api-sdk-java.md) nem támogatja az aszinkron műveleteket. 
 
-<table>
-
-<tr><td>**SDK letöltése**</td><td>[Maven 3](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)</td></tr>
-
-<tr><td>**API-dokumentáció**</td><td>[Java API dokumentációja](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?view=azure-java-stable)</td></tr>
-
-<tr><td>**Hozzájárul az SDK-t**</td><td>[GitHubon](https://github.com/Azure/azure-cosmosdb-java)</td></tr>
-
-<tr><td>**Első lépések**</td><td>[Az aszinkron Java SDK használatának első lépései](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started)</td></tr>
-
-<tr><td>**Kódminta**</td><td>[GitHubon](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)</td></tr>
-
-<tr><td>**Teljesítménnyel kapcsolatos tippek**</td><td>[GitHub információs](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)</td></tr>
-
-<tr><td>**Minimális támogatott futtatókörnyezet**</td><td>[JDK 8](https://aka.ms/azure-jdks)</td></tr>
-</table></br>
+| |  |
+|---|---|
+| **SDK letöltése** | [Maven 3](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) |
+|**API-dokumentáció** |[Java API dokumentációja](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?view=azure-java-stable) | 
+|**Hozzájárul az SDK-t** | [GitHubon](https://github.com/Azure/azure-cosmosdb-java) | 
+|**Első lépések** | [Az aszinkron Java SDK használatának első lépései](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started) | 
+|**Kódminta** | [GitHubon](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)| 
+| **Teljesítménnyel kapcsolatos tippek**| [GitHub információs](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
+| **Minimális támogatott futtatókörnyezet**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 

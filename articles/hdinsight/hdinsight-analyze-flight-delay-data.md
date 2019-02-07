@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: fada29145334a45872aa64b3cc0fe2e859b52568
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 311e2ee65b2c24eb1c288a2161bf371732aea452
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632891"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817665"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Repülőjáratok késési adatainak elemzése a HDInsight az Apache Hive használatával
 [Az Apache Hive](https://hive.apache.org/) futó módszert biztosít az [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) feladatok egy SQL-szerű programozási nyelv révén nevű *[HiveQL] [ hadoop-hiveql]*, felé összefoglalójához, lekérdezéséhez és nagy mennyiségű adat elemzéséhez is alkalmazható.
@@ -232,7 +232,7 @@ Egy HDInsight-fürtöt hoz létre, és Hive-feladatok futtatása a további info
     ```
 3. Az SQL database csatlakozhat, és tekintse meg a AvgDelays tábla város szerint átlagos járatok késésének:
 
-    ![HDI. FlightDelays.AvgDelays.Dataset][image-hdi-flightdelays-avgdelays-dataset]
+    ![HDI.FlightDelays.AvgDelays.Dataset][image-hdi-flightdelays-avgdelays-dataset]
 
 - - -
 
@@ -240,7 +240,7 @@ Egy HDInsight-fürtöt hoz létre, és Hive-feladatok futtatása a további info
 Az adatfájl feltöltése és a [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancsfájlok (lásd: [B függelék](#appendix-b)) néhány tervezést igényel. A cél pedig az adatfájlok és a HiveQL tárolásához, egy HDInsight-fürtöt hoz létre, és a Hive-feladat futtatása előtt. Erre két lehetősége van:
 
 * **A HDInsight-fürt által használandó meg alapértelmezett fájlrendszerként azonos Azure Storage-fiókot használni.** A HDInsight-fürt lesz a Tárfiók hozzáférési kulcsát, mert nem kell további módosításokat.
-* **Használja a HDInsight-fürt alapértelmezett fájlrendszerének egy másik Azure Storage-fiókjában.** Ez a helyzet, ha módosítania kell a Windows PowerShell parancsfájl található létrehozásra vonatkozó részét [létre HDInsight-fürt és az Apache Hive/Sqoop futtathatja feladatait](#runjob) a Storage-fiók kiegészítő tárfiókként. Útmutatásért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight][hdinsight-provision]. A HDInsight-fürt majd tudja, hogy a tárfiók hozzáférési kulcsára.
+* **Használja a HDInsight-fürt alapértelmezett fájlrendszerének egy másik Azure Storage-fiókjában.** Ez a helyzet, ha módosítania kell a Windows PowerShell parancsfájl létrehozása HDInsight-fürt található, és a Storage-fiók kiegészítő tárfiókként Apache Hive/Sqoop-feladatok futtatása a létrehozásra vonatkozó részét. Útmutatásért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight][hdinsight-provision]. A HDInsight-fürt majd tudja, hogy a tárfiók hozzáférési kulcsára.
 
 > [!NOTE]  
 > A Blob storage az adatok fájl elérési útja rögzített bekódolni a HiveQL-parancsfájlt. Ennek megfelelően kell frissíteni.

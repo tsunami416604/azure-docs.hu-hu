@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 728adae62677eb2edb1e203df9b0d9f11f6acecf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 101385b23d8ea683dc5762d491e6a4bef91bbed4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022308"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813763"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -246,7 +246,7 @@ Ha egy külső tűzfalat használ, a portot 8050 manuálisan is megnyithatja. Ha
 
     msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-Ha nem kíván nyissa meg a-8050 az átjárót tartalmazó számítógépen, eltérő használatával mechanizmusok használata a **hitelesítő adatok beállítása** alkalmazás konfigurálása az adattár hitelesítő adatait. Használhat például [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell-parancsmagot. Lásd: [hitelesítő adatok beállítása és biztonsági](#set-credentials-and-securityy) állítható be, hogyan tárolhatja az adatokat a hitelesítő adatok szakaszban.
+Ha nem kíván nyissa meg a-8050 az átjárót tartalmazó számítógépen, eltérő használatával mechanizmusok használata a **hitelesítő adatok beállítása** alkalmazás konfigurálása az adattár hitelesítő adatait. Használhat például [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell-parancsmagot. Tekintse meg, hogyan tárolhatja az adatokat a hitelesítő adatok a hitelesítő adatok beállítása és biztonsági szakaszban beállíthatja.
 
 ## <a name="update"></a>Frissítés
 Alapértelmezés szerint az adatkezelési átjáró automatikusan frissül, ha az átjáró egy újabb verziója érhető el. Az átjáró nem frissül, amíg az ütemezett feladatokat kell elvégezni. Nincsenek további tevékenységeket dolgozza fel az átjáró a frissítési művelet befejeződéséig. Ha a frissítés sikertelen, átjáró, a régi verziót vissza lesz állítva.

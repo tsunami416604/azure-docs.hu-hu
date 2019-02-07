@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: d0e549f0da5eb30dd11992518789d76c0892bca3
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d67085d2e90e318a8f134103f0798554b8967d6d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747475"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814418"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
@@ -774,7 +774,7 @@ Is csatlakoztathat tulajdonságait és a mértékek az események (, valamint is
 
 *Tulajdonságok* olyan karakterlánc-értékek, amelyek segítségével szűrheti a telemetria a használati jelentésekben. Például ha az alkalmazás biztosít több játékok, csatlakoztathat a játék neve minden egyes esemény, hogy melyik játékok további népszerű látható.
 
-A karakterlánc hosszának a 8192 korlátozva van. (Ha szeretne küldeni az adatok nagy méretű adattömböket, használja az üzenet paraméterében [TrackTrace](#track-trace).)
+A karakterlánc hosszának a 8192 korlátozva van. (Ha szeretne küldeni az adatok nagy méretű adattömböket, használni TrackTrace üzenet paraméterében.)
 
 *Metrikák* numerikus érték, amely jelenítheti meg grafikusan. Érdemes például, hogy van-e a pontszámok, amely a játékélményt nyújthat érhető el a fokozatos növekedését. A gráfok lesznek elküldve az esemény tulajdonságainak szegmentálható, annak érdekében, hogy is külön vagy a halmozott diagramok különböző játékok.
 
@@ -992,7 +992,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 Egyéni telemetriát hívások felülbírálhatja az alapértelmezett értékeket a saját tulajdonság szótárak.
 
-*JavaScript a webes ügyfél*, [használata JavaScript telemetriai inicializálók](#js-initializer).
+*JavaScript a webes ügyfél*, JavaScript-telemetria inicializálók használja.
 
 *Tulajdonságok hozzáadása összes telemetriai adat*, beleértve a szabványos adatgyűjtő modulok, adatait [megvalósítása `ITelemetryInitializer` ](../../azure-monitor/app/api-filtering-sampling.md#add-properties).
 

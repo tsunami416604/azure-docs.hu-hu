@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 1/29/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 51086b894de7a02ec78302323512c7766dc9f4fb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 85c5947fa32751bd8381d6a1d59e91ba2026f5f0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226333"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822782"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-bA VMware virtuális gépek replikálásának engedélyezése
 
@@ -56,7 +56,7 @@ VMware virtuális gépek replikálásához:
     >   * Választhatja a prémium vagy standard szintű tárfiókot. Ha prémium szintű fiókot választja, adja meg a folyamatban lévő replikáció naplók egy további standard szintű tárfiók van szükség. Fiókok és a Recovery Services-tárolónak ugyanabban a régióban kell lennie.
     >   * Ha szeretne egy másik tárfiókot használja, akkor [hozzon létre egyet](../storage/common/storage-create-storage-account.md). Storage-fiók létrehozása a Resource Manager használatával, kattintson a **új létrehozása**. 
 
-8. Válassza ki azt az Azure-hálózatot, valamint alhálózatot, amelyhez a feladatátvételt követően felálló Azure virtuális gépek csatlakozni fognak. A hálózatnak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie. Ha a megadott hálózati beállításokat az összes védelemre kijelölt gépre szeretné alkalmazni, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Ha az egyes gépeknél külön-külön szeretné beállítani az Azure-hálózatot, kattintson a **Beállítás később** elemre. Ha a hálózat nem rendelkezik, akkor [hozzon létre egyet](#set-up-an-azure-network). Hálózat létrehozása a Resource Manager használatával, kattintson a **új létrehozása**. Válasszon egy olyan alhálózatot, ha van ilyen, és kattintson a **OK**.
+8. Válassza ki azt az Azure-hálózatot, valamint alhálózatot, amelyhez a feladatátvételt követően felálló Azure virtuális gépek csatlakozni fognak. A hálózatnak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie. Ha a megadott hálózati beállításokat az összes védelemre kijelölt gépre szeretné alkalmazni, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Ha az egyes gépeknél külön-külön szeretné beállítani az Azure-hálózatot, kattintson a **Beállítás később** elemre. Ha nem rendelkezik a hálózathoz, létre kell hoznia egyet. Hálózat létrehozása a Resource Manager használatával, kattintson a **új létrehozása**. Válasszon egy olyan alhálózatot, ha van ilyen, és kattintson a **OK**.
 
     ![Replikációs cél beállítás engedélyezése](./media/vmware-azure-enable-replication/enable-rep3.png)
 9. A **Virtuális gépek** > **Virtuális gépek kijelölése** menüben válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson az **OK** gombra. Ha nem tudja megtekintése/kiválasztani bármely adott virtuális gép, kattintson a [Itt](https://aka.ms/doc-plugin-VM-not-showing) a probléma megoldásához.

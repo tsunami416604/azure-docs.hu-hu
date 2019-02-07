@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d45e4cc8781f4c235c641c4c99f1720871d57fb
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 82418c03039219adedf45828d769d278a14499ff
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359000"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816169"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Adatok másolása, illetve Azure Cosmos DB API a mongodb-hez készült Azure Data Factory használatával
 
@@ -34,7 +34,7 @@ Használhatja az Azure Cosmos DB API a MongoDB-összekötőt:
 
 - Adatok másolása a kezdő és a a [Azure Cosmos DB MongoDB API-](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
 - Írni az Azure Cosmos DB **beszúrása** vagy **upsert**.
-- Importálás és exportálás JSON-dokumentumok,-, vagy másolja az adatokat, vagy egy táblázatos adatkészlethez. Ilyenek például egy SQL-adatbázis és a egy CSV-fájlt. Másolja ki a dokumentumok-, illetve a JSON-fájlok vagy az vagy egy másik Azure Cosmos DB-gyűjtemények, lásd: [importálás vagy exportálás JSON-dokumentumok](#importexport-json-documents).
+- Importálás és exportálás JSON-dokumentumok,-, vagy másolja az adatokat, vagy egy táblázatos adatkészlethez. Ilyenek például egy SQL-adatbázis és a egy CSV-fájlt. Másolja ki a dokumentumok- vagy JSON-fájlokból vagy az vagy egy másik Azure Cosmos DB-gyűjteményből, tekintse meg az importálás vagy exportálás JSON-dokumentumok.
 
 ## <a name="get-started"></a>Bevezetés
 

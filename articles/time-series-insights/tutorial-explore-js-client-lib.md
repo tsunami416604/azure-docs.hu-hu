@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: f231fa7624a2babea2a3d91076ad0348b3c9e976
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540376"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812072"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Oktatóanyag: Az Azure Time Series Insights JavaScript ügyfélkódtár felderítése
 
@@ -101,7 +101,7 @@ Bár nem tekintjük át részletesen, a TSI-ügyfélkódtár (**tsclient.js**) a
 
 A következő alapelvek univerzálisak, és általában érvényesek a TSI-ügyfélkódtár API-kra.
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 Ahogy korábban szerepelt, ez a minta egy egyoldalas alkalmazás (SPA), amely az OAuth 2.0 támogatást használja az ADAL-ban a felhasználói hitelesítéshez. Itt láthatja a szkript ezen szakaszának néhány fontos elemét:
 
@@ -147,7 +147,7 @@ A diagramvezérlők kitöltése és renderelése általános mintázatot követ.
    | `splitByObject`   | Azon sztringtulajdonság, amely alapján fel szeretne osztani (opcionális – null értékű is lehet). | `{property: 'Station', type: 'String'}` |
    | `color`         | A renderelni kívánt objektumok színe. | `'pink'` |
    | `alias`           | Az összesítő kifejezés rövid neve. | `'Factory3Temperature'` |
-   | `contextMenuActions` | Egy vizualizációban a Time Series-objektumokhoz kötni kívánt műveletek tömbje. | További tájékoztatásért lásd: [Előugró helyi menük a Speciális funkciók szakaszban](#popup-context-menus). |
+   | `contextMenuActions` | Egy vizualizációban a Time Series-objektumokhoz kötni kívánt műveletek tömbje. | További információkért tekintse meg a felugró helyi menük speciális funkciók részben. |
 
 3. Hívjon be egy TSI-lekérdezést a `TsiClient.Server` API-k használatával az összesítő adatok lekéréséhez:
 
@@ -260,7 +260,7 @@ A képernyőkép a diagramokat ábrázolja a hozzájuk tartozó előugró helyi 
 
 Az ecsetekkel időtartományok korlátozhatók olyan műveletek meghatározásához, mint a nagyítás és a vizsgálat.
 
-Az ecsetek bemutatásához használt kód az előző „Line Chart with Context Menu to Create Pie/Bar Chart” (Vonaldiagram torta-/sávdiagram létrehozására szolgáló helyi menüvel) példában látható, amely az [előugró helyi menüket](#popup-context-menus-section) ismerteti.
+Az előző "Sor diagram a helyi menü, hozzon létre torta/sávdiagram" példa, amely leírja a felugró helyi menük jelenik meg a kódot, amely ecsetek mutatja be.
 
 1. Az ecsetműveletek abból a szempontból hasonlítanak a helyi menükhöz, hogy egy egyéni műveletsorozatot határoznak meg az ecsethez. Mindegyik művelet egy egy vagy több elemből álló tömböt tartalmaz. Mindegyik elem egyetlen helyimenü-elemet határoz meg:
    - `name`: A szöveg, amely a menüelem szolgál: "Nyomtassa ki a konzol paramétereit."

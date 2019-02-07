@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2018
 ms.author: alkohli
-ms.openlocfilehash: 78ed53e5e2f5d04943e6c32ddfedf037cb9e1f73
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: a7aace89ad4323d6fad6942fe03c4240fb53c8fd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480954"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811198"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>A StorSimple Virtual Array – bevezetés
 
@@ -52,7 +52,7 @@ A következő táblázat összefoglalja a StorSimple Virtual Array fontos jellem
 | Rugalmasan áthelyezhető adatok |Állíthatja vissza ugyanarra az eszközre vagy elemszintű helyreállítást (fájlkiszolgáló) |
 | Tárolási rétegek |Helyi hipervizoron tárolása és felhőben |
 | Megosztás méretének |A rétegzett: akár 20 TB-ig; a helyileg rögzített: 2 TB-ig |
-| Kötet mérete |A többszintű: 500 GB-os 5 TB-ig; a helyileg rögzített: 50 GB és 200 GB <br> A rétegzett kötetek maximális helyi foglalás 200 GB-os. |
+| Kötet mérete |A rétegzett: Legfeljebb 500 GB – 5 TB-ig; a helyileg rögzített: 50 GB és 200 GB <br> A rétegzett kötetek maximális helyi foglalás 200 GB-os. |
 | Pillanatképek |Összeomlás-konzisztens |
 | Elemszintű helyreállítás |Igen; felhasználók visszaállíthatják a megosztások |
 
@@ -98,7 +98,7 @@ A StorSimple Virtual Array a következő munkafolyamatok különösen alkalmas k
 ### <a name="cloud-based-storage-management"></a>Felhőalapú tárolók kezelése
 Az Azure Portalon fut, a StorSimple-Eszközkezelő szolgáltatás segítségével több eszközön, és több helyen tárolt adatok kezeléséhez. Ez különösen hasznos az elosztott fiókirodai forgatókönyvek. Vegye figyelembe, hogy a virtuális tömbök és a fizikai StorSimple-eszközök kezelése a StorSimple-Eszközkezelő szolgáltatás külön példányát kell létrehoznia. Azt is vegye figyelembe, hogy a virtuális tömb most már használja az új Azure Portalon a klasszikus Azure portál helyett.
 
-![felhőalapú tárolók kezelése](./media/storsimple-ova-overview/cloud-based-storage-management.png)
+![Felhőalapú tárolók kezelése](./media/storsimple-ova-overview/cloud-based-storage-management.png)
 
 ### <a name="location-independent-backup"></a>Helyszínfüggetlen biztonsági mentést
 A virtuális tömb felhőbeli pillanatképek biztosíthat egy kötetet vagy megosztást helyfüggetlen, időponthoz másolatát. Felhőbeli pillanatképek alapértelmezés szerint engedélyezve vannak, és nem tiltható le. Minden kötetek és megosztások biztonsági mentése napi biztonsági mentési szabályzat használatával egy időben, és elvégezhető a további ad hoc biztonsági mentések, amikor szükséges.
@@ -169,7 +169,7 @@ A StorSimple megoldás mellett a virtuális tömb és más olyan összetevők, a
 
 * [Automatikus tárolórétegzés](#automatic-storage-tiering) 
 * [A gyors helyi-megosztásokat és -kötetek](#locally-pinned-shares-and-volumes)
-* [A deduplikáció és az adatok tömörítése rétegzett, vagy a felhő biztonsági mentése](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud) 
+* A deduplikáció és az adatok tömörítése rétegzett, vagy a felhő biztonsági mentése 
 * [Ütemezett és igény szerinti biztonsági mentéseket](#scheduled-and-on-demand-backups)
 
 ### <a name="automatic-storage-tiering"></a>Automatikus tárolórétegzés
@@ -179,7 +179,7 @@ Egy adott rétegzett megosztás vagy a kötet adatainak garantáltan a saját he
 
 Az iSCSI létrehozott rétegzett kötetek rendelkezik maximális helyi foglalást a 200 GB-os függetlenül a kötet méretét.
 
-![automatikus tárolórétegzés](./media/storsimple-ova-overview/automatic-storage-tiering.png)
+![Automatikus tárolórétegzés](./media/storsimple-ova-overview/automatic-storage-tiering.png)
 
 > [!NOTE]
 > A helyileg rögzített kötet is megadhat, ebben az esetben az adatok a virtuális tömb nem marad, és soha nem rétegzett a felhőbe. További információért ugorjon [-megosztásokat és -köteteket a helyileg rögzített](#locally-pinned-shares-and-volumes).

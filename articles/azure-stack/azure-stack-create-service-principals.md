@@ -13,12 +13,12 @@ ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 5ff2ee3ed271d8c32e2d41f40a56f71aa4c6c67c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245269"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809248"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Hozzáférést biztosít az alkalmazásoknak az Azure Stackhez
 
@@ -38,10 +38,10 @@ Szolgáltatásnevek használata előnyösebb az alkalmazást a saját hitelesít
 
 Attól függően, hogyan telepített Azure Stack első lépésként létrehozni egy szolgáltatásnevet. Ez a dokumentum ismerteti, hogy a szolgáltatásnév létrehozásához:
 
-- [Azure Active Directory (Azure AD)](#create-service-principal-for-azure-ad). Azure ad-ben egy több-bérlős, felhőalapú címtár, és identitáskezelési szolgáltatása. Használhatja az Azure AD a csatlakoztatott Azure Stack segítségével.
-- [Az Active Directory összevonási szolgáltatások (AD FS)](#create-service-principal-for-ad-fs). Az AD FS egyszerű, biztonságos identitás-összevonási és webes egyszeri bejelentkezés (SSO) képességeket biztosít. Az AD FS csatlakoztatott és a leválasztott Azure Stack-példányokkal is használhatja.
+- Az Azure Active Directory (Azure AD). Azure ad-ben egy több-bérlős, felhőalapú címtár, és identitáskezelési szolgáltatása. Használhatja az Azure AD a csatlakoztatott Azure Stack segítségével.
+- Az Active Directory összevonási szolgáltatások (AD FS). Az AD FS egyszerű, biztonságos identitás-összevonási és webes egyszeri bejelentkezés (SSO) képességeket biztosít. Az AD FS csatlakoztatott és a leválasztott Azure Stack-példányokkal is használhatja.
 
-Az egyszerű szolgáltatás létrehozása után használható-e az AD FS és az Azure Active Directory közös ismertetett lépések [engedélyeket delegálhatnak](#assign-role-to-service-principal) a szerepkörhöz.
+Az egyszerű szolgáltatás létrehozása után az AD FS és az Azure Active Directory közös ismertetett lépések segítségével a szerepkör engedélyeket delegálhatnak.
 
 ## <a name="manage-service-principal-for-azure-ad"></a>Az Azure ad egyszerű szolgáltatás kezelése
 
@@ -63,7 +63,7 @@ Ha programozott módon jelentkezik be, ezt az Azonosítót használja az alkalma
 
 1. A **alkalmazásregisztrációk** az Active Directoryban, válassza ki az alkalmazását.
 
-2. Másolja ki az **Alkalmazásazonosítót**, és tárolja az alkalmazás kódjában. Az alkalmazások a [mintaalkalmazások](#sample-applications) szakaszban tekintse meg ezt az értéket az ügyfél-azonosítót.
+2. Másolja ki az **Alkalmazásazonosítót**, és tárolja az alkalmazás kódjában. A mintául szolgáló alkalmazások szakaszban az alkalmazások ügyfél-azonosítóként hivatkoznak ezt az értéket
 
      ![Ügyfélazonosító](./media/azure-stack-create-service-principal/image12.png)
 3. Webes alkalmazás a hitelesítési kulcs létrehozásához / API-t, jelölje ki **beállítások** > **kulcsok**. 
@@ -74,7 +74,7 @@ A kulcs mentése után megjelenik a kulcs értéke. Másolja a Jegyzettömbbe va
 
 ![mentett kulcs](./media/azure-stack-create-service-principal/image15.png)
 
-Miután végzett, képes [az alkalmazás-szerepkör hozzárendelése](#assign-role-to-service-principal).
+Ha elkészült, hozzárendelheti egy szerepkörhöz az alkalmazás.
 
 ## <a name="manage-service-principal-for-ad-fs"></a>Az AD FS szolgáltatás egyszerű kezelése
 

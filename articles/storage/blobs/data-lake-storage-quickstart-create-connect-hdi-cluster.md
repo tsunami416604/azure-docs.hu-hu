@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: a3c6474c6b1c27c3b413d98d86cdadbcb61e2040
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d49c8a8434dfa7202707731f46ea31c77d32541d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247289"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812259"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Gyors útmutató: A HDInsight-fürtök beállítása
 
@@ -189,11 +189,11 @@ További információkért lásd: [virtuális gépek méretei](../../virtual-mac
 
 Egyéni fürterőforrás telepítő buildelési a gyors üzembe beállítások létrehozása, és hozzáadja a következő beállításokat:
 
-- [HDInsight-alkalmazások](#hdinsight-applications)
-- [Fürt mérete](#cluster-size)
+- HDInsight-alkalmazások
+- Fürt mérete
 - Speciális beállítások
-  - [A Parancsfájlműveletek](#customize-clusters-using-script-action)
-  - [Virtuális hálózat](#use-virtual-network)
+  - Szkriptműveletek
+  - Virtuális hálózat
 
 ## <a name="install-hdinsight-applications-on-clusters"></a>HDInsight-alkalmazások telepítése fürtökön
 

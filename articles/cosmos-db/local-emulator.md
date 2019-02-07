@@ -6,29 +6,16 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 559bdd479d02a8744f9b113c43c2c860d8218401
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbdc57489eb7ebd50e3ce7e2b4e0e4081aef8e27
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038194"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770384"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez
 
-<table>
-<tr>
-  <td><strong>Bináris fájlok</strong></td>
-  <td>[MSI letöltése](https://aka.ms/cosmosdb-emulator)</td>
-</tr>
-<tr>
-  <td><strong>Docker</strong></td>
-  <td>[Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)</td>
-</tr>
-<tr>
-  <td><strong>Docker-forrás</strong></td>
-  <td>[GitHubon](https://github.com/Azure/azure-cosmos-db-emulator-docker)</td>
-</tr>
-</table>
+|**Bináris fájlok**|[MSI letöltése](https://aka.ms/cosmosdb-emulator)|| **Docker**|[Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)|| **Docker-forrás** | [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker)|
 
 Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Az Azure Cosmos DB Emulator használatával helyben fejlesztheti és tesztelheti alkalmazását, anélkül, hogy ehhez regisztrálnia kellene egy Azure-előfizetést, vagy fizetnie kellene a szolgáltatásért. Amikor már elégedett az alkalmazás működésével az Azure Cosmos DB Emulatorban, átválthat az Azure Cosmos DB-fiók használatára a felhőben.
 
@@ -162,133 +149,28 @@ A telepítés helyén a parancssorral elindíthatja és leállíthatja az emulá
 
 A beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.exe /?` parancsot a parancssorba.
 
-<table>
-<tr>
-  <td><strong>Beállítás</strong></td>
-  <td><strong>Leírás</strong></td>
-  <td><strong>Parancs</strong></td>
-  <td><strong>Argumentumok</strong></td>
-</tr>
-<tr>
-  <td>[Nincsenek argumentumok]</td>
-  <td>Az alapértelmezett beállításokkal indítja el az Azure Cosmos DB Emulatort.</td>
-  <td>CosmosDB.Emulator.exe</td>
-  <td></td>
-</tr>
-<tr>
-  <td>[Súgó]</td>
-  <td>Megjeleníti a támogatott parancssori argumentumok listáját.</td>
-  <td>CosmosDB.Emulator.exe /?</td>
-  <td></td>
-</tr>
-<tr>
-  <td>GetStatus</td>
-  <td>Lekéri az Azure Cosmos DB Emulator állapotát. Az állapot jelzi a kilépési kód: 1-től kezdődően 2 = futó, 3 = = leállt. A negatív kilépési kód azt jelzi, hogy hiba történt. Nem jön létre más kimenet.</td>
-  <td>CosmosDB.Emulator.exe /GetStatus</td>
-  <td></td>
-<tr>
-  <td>Leállítás</td>
-  <td>Bezárja az Azure Cosmos DB Emulatort.</td>
-  <td>CosmosDB.Emulator.exe /Shutdown</td>
-  <td></td>
-</tr>
-<tr>
-  <td>DataPath</td>
-  <td>Meghatározza az adatfájlok tárolására szolgáló elérési utat. Az alapértelmezett érték a %LocalAppdata%\CosmosDBEmulator.</td>
-  <td>CosmosDB.Emulator.exe /DataPath=&lt;adatútvonal&gt;</td>
-  <td>&lt;DataPath&gt;: Egy elérhető elérési útja</td>
-</tr>
-<tr>
-  <td>Port</td>
-  <td>Az emulátorhoz használni kívánt portszámot határozza meg. Az alapértelmezett érték: 8081.</td>
-  <td>CosmosDB.Emulator.exe /Port=&lt;port&gt;</td>
-  <td>&lt;Port&gt;: Egyetlen port száma</td>
-</tr>
-<tr>
-  <td>MongoPort</td>
-  <td>A MongoDB kompatibilitási API-hoz használni kívánt portszámot határozza meg. Az alapértelmezett érték: 10255.</td>
-  <td>CosmosDB.Emulator.exe /MongoPort=&lt;mongoport&gt;</td>
-  <td>&lt;mongoport&gt;: Egyetlen port száma</td>
-</tr>
-<tr>
-  <td>DirectPorts</td>
-  <td>A közvetlen kapcsolódáshoz használni kívánt portokat határozza meg. Az alapértelmezett értékek: 10251,10252,10253,10254.</td>
-  <td>CosmosDB.Emulator.exe /DirectPorts:&lt;közvetlen portok&gt;</td>
-  <td>&lt;directports&gt;: 4 portok vesszővel tagolt listája</td>
-</tr>
-<tr>
-  <td>Kulcs</td>
-  <td>Az emulátor engedélyezési kulcsa. A kulcsnak 64 bites vektor base-64 kódolásának kell lennie.</td>
-  <td>CosmosDB.Emulator.exe /Key:&lt;kulcs&gt;</td>
-  <td>&lt;kulcs&gt;: A base-64 kódolását egy 64 bájt méretű vektor kulcsnak kell lennie</td>
-</tr>
-<tr>
-  <td>EnableRateLimiting</td>
-  <td>Megadja, hogy a kérelmek sebességét korlátozó viselkedés engedélyezve van.</td>
-  <td>CosmosDB.Emulator.exe /EnableRateLimiting</td>
-  <td></td>
-</tr>
-<tr>
-  <td>DisableRateLimiting</td>
-  <td>Megadja, hogy a kérelmek sebességét korlátozó viselkedés le van tiltva.</td>
-  <td>CosmosDB.Emulator.exe /DisableRateLimiting</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoUI</td>
-  <td>Az emulátor felhasználói felületének megjelenítése nélkül.</td>
-  <td>CosmosDB.Emulator.exe /NoUI</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoExplorer</td>
-  <td>Az adatkezelő nem jelenik meg az indításkor.</td>
-  <td>CosmosDB.Emulator.exe /NoExplorer</td>
-  <td></td>
-</tr>
-<tr>
-  <td>PartitionCount</td>
-  <td>A particionált gyűjtemények maximális számát határozza meg. További információkért lásd: [A gyűjtemények számának módosítása](#set-partitioncount).</td>
-  <td>CosmosDB.Emulator.exe /PartitionCount=&lt;partíciószám&gt;</td>
-  <td>&lt;partitioncount&gt;: Maximális száma a megengedett egypartíciós gyűjteményeket. Az alapértelmezett érték: 25. Maximálisan 250 engedélyezett.</td>
-</tr>
-<tr>
-  <td>DefaultPartitionCount</td>
-  <td>A particionált gyűjtemények partícióinak alapértelmezett számát határozza meg.</td>
-  <td>CosmosDB.Emulator.exe /DefaultPartitionCount=&lt;alapértelmezett partíciószám&gt;</td>
-  <td>&lt;alapértelmezett partíciószám&gt; Az alapértelmezett érték: 25.</td>
-</tr>
-<tr>
-  <td>AllowNetworkAccess</td>
-  <td>Hozzáférést nyújt az emulátorhoz egy hálózaton keresztül. A /Key=&lt;kulcs_sztring&gt; vagy a /KeyFile=&lt;fájlnév&gt; parancsot is meg kell adnia a hálózati hozzáférés engedélyezéséhez.</td>
-  <td>CosmosDB.Emulator.exe /AllowNetworkAccess /Key=&lt;kulcs sztring&gt;<br><br>vagy<br><br>CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile=&lt;fájlnév&gt;</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoFirewall</td>
-  <td>Ne állítsa be a tűzfalszabályokat az /AllowNetworkAccess használatakor.</td>
-  <td>CosmosDB.Emulator.exe /NoFirewall</td>
-  <td></td>
-</tr>
-<tr>
-  <td>GenKeyFile</td>
-  <td>Új engedélyezési kulcsot készít, és a megadott fájlba menti azt. A létrehozott kulcs a /Key vagy a /KeyFile lehetőséggel használható.</td>
-  <td>CosmosDB.Emulator.exe /GenKeyFile =&lt;kulcsfájl elérési útja&gt;</td>
-  <td></td>
-</tr>
-<tr>
-  <td>Konzisztencia</td>
-  <td>Állítsa be a fiók alapértelmezett konzisztenciaszintjét.</td>
-  <td>CosmosDB.Emulator.exe /Consistency=&lt;konzisztencia&gt;</td>
-  <td>&lt;Konzisztencia&gt;: Érték a következők egyikének kell lennie [konzisztenciaszintek](consistency-levels.md): Munkamenet, erős, végleges, vagy BoundedStaleness. Az alapértelmezett érték a munkamenet (session).</td>
-</tr>
-<tr>
-  <td>?</td>
-  <td>A súgóüzenet megjelenítése.</td>
-  <td></td>
-  <td></td>
-</tr>
-</table>
+|**Beállítás** | **Leírás** | **Parancs**| **Argumentumok**|
+|---|---|---|---|
+|[Nincsenek argumentumok] | Az alapértelmezett beállításokkal indítja el az Azure Cosmos DB Emulatort. |CosmosDB.Emulator.exe| |
+|[Súgó] |Megjeleníti a támogatott parancssori argumentumok listáját.|CosmosDB.Emulator.exe /? | |
+| GetStatus |Lekéri az Azure Cosmos DB Emulator állapotát. Az állapot jelzi a kilépési kód: 1-től kezdődően 2 = futó, 3 = = leállt. A negatív kilépési kód azt jelzi, hogy hiba történt. Nem jön létre más kimenet. | CosmosDB.Emulator.exe /GetStatus| |
+| Leállítás| Bezárja az Azure Cosmos DB Emulatort.| CosmosDB.Emulator.exe /Shutdown | |
+|DataPath | Meghatározza az adatfájlok tárolására szolgáló elérési utat. Az alapértelmezett érték a %LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<adatútvonal\> | \<DataPath\>: Egy elérhető elérési útja |
+|Port | Az emulátorhoz használni kívánt portszámot határozza meg. Az alapértelmezett érték: 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<Port\>: Egyetlen port száma |
+| MongoPort | A MongoDB kompatibilitási API-hoz használni kívánt portszámot határozza meg. Az alapértelmezett érték: 10255. |CosmosDB.Emulator.exe /MongoPort = \<mongoport\>|\<mongoport\>: Egyetlen port száma|
+| DirectPorts |A közvetlen kapcsolódáshoz használni kívánt portokat határozza meg. Az alapértelmezett értékek: 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<közvetlen portok\> | \<directports\>: 4 portok vesszővel tagolt listája |
+| Kulcs |Az emulátor engedélyezési kulcsa. A kulcsnak 64 bites vektor base-64 kódolásának kell lennie. | CosmosDB.Emulator.exe /Key:\<kulcs\> | \<kulcs\>: A base-64 kódolását egy 64 bájt méretű vektor kulcsnak kell lennie|
+| EnableRateLimiting | Megadja, hogy a kérelmek sebességét korlátozó viselkedés engedélyezve van. |CosmosDB.Emulator.exe /EnableRateLimiting | |
+| DisableRateLimiting |Megadja, hogy a kérelmek sebességét korlátozó viselkedés le van tiltva. |CosmosDB.Emulator.exe /DisableRateLimiting | |
+| NoUI | Az emulátor felhasználói felületének megjelenítése nélkül. | CosmosDB.Emulator.exe /NoUI | |
+| NoExplorer | Az adatkezelő nem jelenik meg az indításkor. |CosmosDB.Emulator.exe /NoExplorer | | 
+| PartitionCount | A particionált gyűjtemények maximális számát határozza meg. További információkért lásd: [A gyűjtemények számának módosítása](#set-partitioncount). | CosmosDB.Emulator.exe /PartitionCount=\<partíciószám\> | \<partitioncount\>: Maximális száma a megengedett egypartíciós gyűjteményeket. Az alapértelmezett érték: 25. Maximálisan 250 engedélyezett.|
+| DefaultPartitionCount| A particionált gyűjtemények partícióinak alapértelmezett számát határozza meg. | CosmosDB.Emulator.exe /DefaultPartitionCount=\<alapértelmezett partíciószám\> | \<alapértelmezett partíciószám\> Az alapértelmezett érték: 25.|
+| AllowNetworkAccess | Hozzáférést nyújt az emulátorhoz egy hálózaton keresztül. A /Key=\<kulcs_sztring\> vagy a /KeyFile=\<fájlnév\> parancsot is meg kell adnia a hálózati hozzáférés engedélyezéséhez. | CosmosDB.Emulator.exe AllowNetworkAccess /Key =\<key_string\> vagy CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile =\<fájlnév\>| |
+| NoFirewall | Ne állítsa be a tűzfalszabályokat az /AllowNetworkAccess használatakor. |CosmosDB.Emulator.exe /NoFirewall | |
+| GenKeyFile | Új engedélyezési kulcsot készít, és a megadott fájlba menti azt. A létrehozott kulcs a /Key vagy a /KeyFile lehetőséggel használható. | CosmosDB.Emulator.exe /GenKeyFile =\<kulcsfájl elérési útja\> | |
+| Konzisztencia | Állítsa be a fiók alapértelmezett konzisztenciaszintjét. | CosmosDB.Emulator.exe /Consistency=\<konzisztencia\> | \<Konzisztencia\>: Érték a következők egyikének kell lennie [konzisztenciaszintek](consistency-levels.md): Munkamenet, erős, végleges, vagy BoundedStaleness. Az alapértelmezett érték a munkamenet (session). |
+| ? | A súgóüzenet megjelenítése.| | |
 
 ## <a id="set-partitioncount"></a>A gyűjtemények számának módosítása
 

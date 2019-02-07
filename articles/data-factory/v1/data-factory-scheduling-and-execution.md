@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a70c3ddb624639411dbee961b1c4d59ac1277147
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2d7fc45faf1fb77c7d9181e5a2419096dd1ad0f1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016086"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817420"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory ütemezés és végrehajtás
 > [!NOTE]
@@ -203,7 +203,7 @@ Alapértelmezetten naponta (`"frequency": "Day", "interval": 1`) a szeletek 12 A
     "offset": "06:00:00"
 }
 ```
-### <a name="anchordatetime-example"></a>anchorDateTime példa
+### <a name="anchordatetime-example"></a>anchorDateTime example
 A következő példában az adatkészlet 23 óránként jön létre. Az első szelet elindítja a anchorDateTime, amelynek értéke által meghatározott időben `2017-04-19T08:00:00` (UTC idő).
 
 ```json
@@ -273,10 +273,10 @@ Házirendek egy tevékenység futásidejű viselkedését befolyásolják, kifej
 | Egyidejűség |Egész szám <br/><br/>A maximális érték: 10 |1 |A tevékenység párhuzamos végrehajtások száma.<br/><br/>Ez határozza meg, amely akkor fordulhat elő, a másik szeletek párhuzamos tevékenység-végrehajtások száma. Például ha egy tevékenység kell áthaladnia rengeteg rendelkezésre álló adatok, a nagyobb párhuzamosság értéke felgyorsítja az adatfeldolgozás. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Meghatározza, hogy a feldolgozott adatszelet rendezése.<br/><br/>Például ha 2 szeletekre (du. 4: az egyik oka és a egy másik, 17: 00), és mindkettő végrehajtás függőben. A executionPriorityOrder NewestFirst kell állít be, ha a szelet délután 5-kor lesz elsőként feldolgozva. Hasonlóképpen ha beállította a executionPriorityORder OldestFIrst kell, majd du. 4: a szeletet dolgoz fel. |
 | retry |Egész szám<br/><br/>A maximális érték 10 lehet. |0 |Mielőtt az adatfeldolgozás a szelet hiba van megjelölve. az újrapróbálkozások száma. Tevékenység-végrehajtási adatszelet rendszer legfeljebb a megadott újrapróbálkozások számát. Az újrapróbálkozás történik, a hiba után minél hamarabb. |
-| timeout |Időtartam |00:00:00 |A tevékenység időkorlátja. Példa: 00:10:00 (magában foglalja a időkorlátja 10 perc)<br/><br/>Ha egy érték nincs megadva vagy 0, az időtúllépési érték a végtelen.<br/><br/>Ha a szelet adatok feldolgozási idő meghaladja az időtúllépés értéke, meg lett szakítva, és a rendszer megpróbálja próbálkozzon újra a feldolgozást. Az újrapróbálkozások száma attól függ, hogy az újrapróbálkozási tulajdonság. Időtúllépés történik, ha az állapot értéke időtúllépés miatt megszakadt. |
-| késleltetés |Időtartam |00:00:00 |Adja meg a késleltetés, elindul a szelet feldolgozásának előtt.<br/><br/>Adatszelet tevékenység végrehajtása után a késleltetési idő legyen a várt végrehajtási időn túli elindult.<br/><br/>Példa: 00:10:00 (magában foglalja a késés 10 perc) |
+| timeout |TimeSpan |00:00:00 |A tevékenység időkorlátja. Példa: 00:10:00 (magában foglalja a időkorlátja 10 perc)<br/><br/>Ha egy érték nincs megadva vagy 0, az időtúllépési érték a végtelen.<br/><br/>Ha a szelet adatok feldolgozási idő meghaladja az időtúllépés értéke, meg lett szakítva, és a rendszer megpróbálja próbálkozzon újra a feldolgozást. Az újrapróbálkozások száma attól függ, hogy az újrapróbálkozási tulajdonság. Időtúllépés történik, ha az állapot értéke időtúllépés miatt megszakadt. |
+| késleltetés |TimeSpan |00:00:00 |Adja meg a késleltetés, elindul a szelet feldolgozásának előtt.<br/><br/>Adatszelet tevékenység végrehajtása után a késleltetési idő legyen a várt végrehajtási időn túli elindult.<br/><br/>Példa: 00:10:00 (magában foglalja a késés 10 perc) |
 | longRetry |Egész szám<br/><br/>A maximális érték: 10 |1 |A szelet végrehajtása előtt hosszú újrapróbálkozási kísérletek száma.<br/><br/>longRetry kísérletek által longRetryInterval elosztásban. Ezért ha egy újrapróbálkozási kísérletek közötti időre van szüksége, a longRetry. Ha az újrapróbálkozás és longRetry is meg van adva, egyes longRetry kísérletek magában foglalja az újrapróbálkozási kísérletek és kísérletek maximális számát. a rendszer újrapróbálkozik * longRetry.<br/><br/>Például ha a tevékenységszabályzat is van a következő beállításokat:<br/>Ismételje meg: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Tegyük fel, hogy csak egyetlen szeletet végrehajtására van (Várakozás állapot) és a tevékenység-végrehajtási minden alkalommal sikertelen lesz. Kezdetben lenne 3 egymást követő végrehajtási kísérlet. Minden kísérlet után a szelet állapota lenne, próbálkozzon újra. Első 3 kísérletek esnek, miután a szelet állapota LongRetry lehet.<br/><br/>Egy óra (azaz longRetryInteval a érték) egy másik hárompéldányos készletet 3 egymást követő végrehajtási kísérlet lenne. Ezt követően a szelet állapota szeretné végrehajtani, és nincs további újrapróbálkozások volna lehetséges. Ezért a teljes 6 kísérlet történt.<br/><br/>Minden olyan végrehajtása sikeres, ha a szelet állapota kész lenne, és nincs további próbálkozások nem megkísérlése.<br/><br/>a függő adatok érkeznek nem determinisztikus időpontokban vagy a teljes környezet nem flaky akkor fordul elő, hogy mely adatok feldolgozása a longRetry használni. Ezekben az esetekben újrapróbálkozások egymás után nem segíthet ezzel és a egy időszak után így időben a kívánt kimenetet eredményez.<br/><br/>Legyen körültekintő, Word: nincs beállítva a longRetry, longRetryInterval vagy nagy értékeket. Általában a magasabb értékek hasonló más rendszerből adódó problémákat. |
-| longRetryInterval |Időtartam |00:00:00 |Hosszú újrapróbálkozás kísérletek közötti késleltetés |
+| longRetryInterval |TimeSpan |00:00:00 |Hosszú újrapróbálkozás kísérletek közötti késleltetés |
 
 További információkért lásd: [folyamatok](data-factory-create-pipelines.md) cikk. 
 
@@ -320,7 +320,7 @@ Ahogy korábban említettük, a tevékenységek a különböző folyamatok lehet
 
 ![Láncolási tevékenységek a két folyamatot](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
 
-Tekintse meg a [egymás után másolja](#copy-sequentially) szakaszban példaként a függelékben.
+Tekintse meg a példány egymás után szakaszban példaként a függelékben.
 
 ## <a name="model-datasets-with-different-frequencies"></a>Modell adatkészletek eltérő gyakorisággal
 A minták a bemeneti és kimeneti adatkészleteket és a tevékenység ütemezési ablak a gyakoriságot is azonos. Egyes forgatókönyvekben van szükség, hogy állít elő kimenetet egy vagy több bemeneti gyakoriságát eltér a gyakorisággal. A Data Factory támogatja ezeket a forgatókönyveket a modellezési.
@@ -332,7 +332,7 @@ Itt látható, hogyan modellezhetik az ebben a forgatókönyvben a Data Factoryb
 
 **Bemeneti adatkészlet**
 
-Az óránkénti bemeneti fájlok az adott napra megszakadnak a mappában. Bemeneti rendelkezésre állásra van beállítva, **óra** (frequency: Óra, időköz: 1.).
+Az óránkénti bemeneti fájlok az adott napra megszakadnak a mappában. Bemeneti rendelkezésre állásra van beállítva, **óra** (frequency: Óra, időköz: 1).
 
 ```json
 {
@@ -361,7 +361,7 @@ Az óránkénti bemeneti fájlok az adott napra megszakadnak a mappában. Bemene
 ```
 **Kimeneti adatkészlet**
 
-Egy kimeneti fájl jön létre minden nap a napi mappában. Kimeneti rendelkezésre állásának beállított **nap** (frequency: Nap és időköz: 1.).
+Egy kimeneti fájl jön létre minden nap a napi mappában. Kimeneti rendelkezésre állásának beállított **nap** (frequency: Nap és időköz: 1).
 
 ```json
 {
@@ -452,7 +452,7 @@ Az egyszerű módszer, mely adat-előállítóban automatikusan kitalálja, hogy
 
 Meg kell adnia, hogy minden tevékenység-végrehajtásonként, az adat-előállító kell használnia múlt héten adatszelet heti bemeneti adatkészlete esetében. Használhatja az Azure Data Factory-függvények az alábbi kódrészletben látható módon végrehajtja ezt a viselkedést.
 
-**Input1: Az Azure blob**
+**Input1: Azure blob**
 
 Az első bemeneti adat naponta frissíti az Azure-blobot.
 
@@ -482,7 +482,7 @@ Az első bemeneti adat naponta frissíti az Azure-blobot.
 }
 ```
 
-**Input2: Az Azure blob**
+**Input2: Azure blob**
 
 Input2 az Azure blob hetente frissítése folyamatban.
 
@@ -512,9 +512,9 @@ Input2 az Azure blob hetente frissítése folyamatban.
 }
 ```
 
-**A kimenetre: Az Azure blob**
+**A kimenetre: Azure blob**
 
-Egy kimeneti fájl jön létre minden nap a mappában az adott napra vonatkozóan. Kimeneti rendelkezésre állásának beállítása **nap** (frequency: Nap, időköz: 1.).
+Egy kimeneti fájl jön létre minden nap a mappában az adott napra vonatkozóan. Kimeneti rendelkezésre állásának beállítása **nap** (frequency: Nap, időköz: 1).
 
 ```json
 {

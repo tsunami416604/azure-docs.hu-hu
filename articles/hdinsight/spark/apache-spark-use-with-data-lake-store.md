@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 29fef9177e40bd89dd0f179b028d2f044af8addb
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e33ec52a2546100a043a78f66c2232c3c1ad264e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913090"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821362"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>HDInsight Spark-fürt használata a Data Lake Storage lévő adatok elemzéséhez
 
@@ -30,7 +30,7 @@ Ebben az oktatóanyagban használja [Jupyter Notebook](https://jupyter.org/) egy
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
 
 > [!NOTE]  
-> Nem kell végrehajtani ezt a lépést, ha a HDInsight-fürt a Data Lake Storage alapértelmezett tárolóként hozott létre. A Fürtlétrehozási folyamat néhány adatot a Data Lake Storage-fiókban a fürt létrehozásakor megadott hozzáadja. Váltson át a szakasz [használata a HDInsight Spark-fürt a Data Lake Storage](#use-an-hdinsight-spark-cluster-with-data-lake-store).
+> Nem kell végrehajtani ezt a lépést, ha a HDInsight-fürt a Data Lake Storage alapértelmezett tárolóként hozott létre. A Fürtlétrehozási folyamat néhány adatot a Data Lake Storage-fiókban a fürt létrehozásakor megadott hozzáadja. Folytassa a szakasz használata a HDInsight Spark-fürt a Data Lake Storage.
 
 Ha során létrehozott egy HDInsight-fürt a Data Lake Storage további tárterületet, és az alapértelmezett tároló Azure Storage-Blobból, meg kell először másolja át néhány adatot a Data Lake Storage-fiókba. A minta az Azure Storage-Blobokból származó adatokat a HDInsight-fürthöz társított is használhatja. Használhatja a [ADLCopy eszköz](https://aka.ms/downloadadlcopy) ennek a végrehajtására. Töltse le és telepítse az eszközt a hivatkozásból.
 

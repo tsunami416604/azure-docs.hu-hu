@@ -11,37 +11,37 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 1de70b3ddea84fc0067a0e20ec613f01024f0ed4
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 5ab0a9a92297c46a4090583d41f22f2035bd310c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748034"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816186"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Storage erőforrás törlésével kapcsolatos hibák elhárítása
 
 Bizonyos esetekben merülhetnek fel az alábbi hibák, miközben a próbál egy Azure storage-fiók, tároló vagy egy Azure Resource Manager üzembe helyezése a blobok törlése:
 
->**Nem sikerült törölni a storage-fiók "StorageAccountName". Hiba: Az összetevői használatban miatt nem lehet törölni a tárfiókot.**
+>**Nem sikerült törölni a storage-fiók "StorageAccountName". Hiba: A tárfiók nem törölhető, mert az összetevői használatban.**
 
->**Nem sikerült törölni a # # tároló(k) mimo:<br>VHD-k: jelenleg a címbérlet a tároló és a kérésben megadott nincs bérlet azonosítója.**
+>**Nem sikerült törölni a # # tároló(k) mimo:<br>virtuális merevlemezek: Jelenleg a címbérlet a tárolót, és a kérésben megadott nincs bérlet azonosítója.**
 
->**Nem sikerült törölni a # # blobok mimo:<br>BlobName.vhd: jelenleg a címbérlet a blob és a kérésben megadott nincs bérlet azonosítója.**
+>**Nem sikerült törölni a # # blobok mimo:<br>BlobName.vhd: Jelenleg a címbérlet a blob és a kérésben megadott nincs bérlet azonosítója.**
 
 Az Azure-beli virtuális gépeken használt virtuális merevlemezek egy standard vagy prémium szintű storage-fiókot az Azure-ban lapblobként tárolt .vhd-fájlokat. Az Azure disks kapcsolatos további információkért lásd: [készül nem felügyelt és felügyelt lemezes tárolás a Microsoft Azure Linux rendszerű virtuális gépek](../linux/about-disks-and-vhds.md). 
 
 Azure megakadályozza, hogy az egy lemezt, amely csatolva van egy virtuális gép meghibásodásának elkerülése érdekében törlését. Megakadályozza a tárolók és a storage-fiókok, amelyek egy lapblob egy virtuális géphez csatolt törlését is. 
 
 A folyamat egy tárfiókot, tárolót vagy blobot törölni, ezek a hibák egyike fogadásakor van: 
-1. [Egy virtuális Géphez csatolt blobok azonosítása](#step-1-identify-blobs-attached-to-a-vm)
+1. Egy virtuális Géphez csatolt blobok azonosítása
 2. [Törlés rendelkező virtuális gépeket csatolt **operációsrendszer-lemez**](#step-2-delete-vm-to-detach-os-disk)
 3. [Válassza le az összes **adatok (eke) t** a többi virtuális gép](#step-3-detach-data-disk-from-the-vm)
 
 Próbálja meg újra törölni a tárfiókot, tárolót vagy blobot, miután végrehajtotta ezeket a lépéseket.
 
-## <a name="step-1-identify-blob-attached-to-a-vm"></a>1. lépés: A virtuális Géphez csatolt blob azonosítása
+## <a name="step-1-identify-blob-attached-to-a-vm"></a>1. lépés: Azonosítsa a virtuális Géphez csatolt blob
 
-### <a name="scenario-1-deleting-a-blob--identify-attached-vm"></a>1. forgatókönyv: Egy blob – törlése csatlakoztatott virtuális gépek azonosítása
+### <a name="scenario-1-deleting-a-blob--identify-attached-vm"></a>1. forgatókönyv: Blobok – törlés csatlakoztatott virtuális gépek azonosítása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A központ menüben válassza ki a **összes erőforrás**. Nyissa meg a storage-fiókban található **Blob Service** kiválasztása **tárolók**, és keresse meg a törölni kívánt blob.
 3. Ha a blob **bérlet állapota** van **bérelt**, majd kattintson a jobb gombbal, és válassza ki **metaadatainak szerkesztése** Blob metaadatainak panel megnyitásához. 
@@ -53,7 +53,7 @@ Próbálja meg újra törölni a tárfiókot, tárolót vagy blobot, miután vé
 
      ![A portálon nyissa meg a storage "Blob metaadatainak" ablaktábla képernyőképe](./media/troubleshoot-vhds/utd-blob-metadata-sm.png)
 
-6. Ha a blob lemez **OSDisk** kövesse [2. lépés: törölje a virtuális gép operációsrendszer-lemez leválasztása](#step-2-delete-vm-to-detach-os-disk). Egyéb esetben, ha a blob lemez típusa **DataDisk** kövesse a [3. lépés: a virtuális gépről adatlemez leválasztása](#step-3-detach-data-disk-from-the-vm). 
+6. Ha a blob lemez **OSDisk** kövesse [2. lépés: Törölje a virtuális gép operációsrendszer-lemez leválasztásához](#step-2-delete-vm-to-detach-os-disk). Egyéb esetben, ha a blob lemez típusa **DataDisk** kövesse a [3. lépés: A virtuális gépről adatlemez leválasztása](#step-3-detach-data-disk-from-the-vm). 
 
 > [!IMPORTANT]
 > Ha **MicrosoftAzureCompute_VMName** és **MicrosoftAzureCompute_DiskType** nem jelennek meg a blob metaadatai, az azt jelzi, hogy a blob egy explicit módon bérelt, és a egy virtuális gép nincs csatlakoztatva. Bérelt blobok bérletének érvénytelenítése az első nélkül nem lehet törölni. Érvényteleníteni a bérletet, kattintson a jobb gombbal a blobot, és válassza ki **Break lease**. Bérelt a blobokat, amelyekre a virtuális gép nem csatlakozik a blob törlésének megakadályozása, de nem akadályozzák meg a tároló vagy a storage-fiók törlése.
@@ -61,19 +61,19 @@ Próbálja meg újra törölni a tárfiókot, tárolót vagy blobot, miután vé
 ### <a name="scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms"></a>2. forgatókönyv: Egy tároló - törlése az összes BLOB tárolóból, amely a virtuális gépekhez csatolt azonosítása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A központ menüben válassza ki a **összes erőforrás**. Nyissa meg a storage-fiókban található **Blob Service** kiválasztása **tárolók**, és keresse meg a tároló lehet törölni.
-3. Ide kattintva nyissa meg a tárolót, és a benne lévő blobok listája jelenik meg. Azonosítsa a Blob típusa a blobok = **lapblob** és bérleti állapot = **bérelt** ebből a listából. Hajtsa végre a [1. forgatókönyv](#step-1-identify-blobs-attached-to-a-vm) az ilyen blobok társított virtuális gépet.
+3. Ide kattintva nyissa meg a tárolót, és a benne lévő blobok listája jelenik meg. Azonosítsa a Blob típusa a blobok = **lapblob** és bérleti állapot = **bérelt** ebből a listából. Hajtsa végre az 1. forgatókönyv esetében az ilyen blobok társított virtuális gépet.
 
     ![Képernyőkép a portal, a Storage-fiók BLOB és a "bérleti állapot" a "Bérelt" kiemelésével](./media/troubleshoot-vhds/utd-disks-sm.png)
 
 4. Hajtsa végre a [2. lépés](#step-2-delete-vm-to-detach-os-disk) és [3. lépés](#step-3-detach-data-disk-from-the-vm) törölni a virtuális gép **OSDisk** és leválasztása **DataDisk**. 
 
-### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>3. forgatókönyv: A tároló törlése fiók – minden BLOB storage-fiókon belül, amely a virtuális gépekhez csatolt azonosítása
+### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>3. forgatókönyv: Törlése a storage-fiók – minden BLOB storage-fiókon belül, amely a virtuális gépekhez csatolt azonosítása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A központ menüben válassza ki a **összes erőforrás**. Nyissa meg a storage-fiókban található **Blob Service** kiválasztása **Blobok**.
 3. A **tárolók** ablaktáblán az összes tároló azonosítása ahol **bérlet állapota** van **bérelt** , és kövesse [2. forgatókönyv](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) minden  **Bérelt** tároló.
 4. Hajtsa végre a [2. lépés](#step-2-delete-vm-to-detach-os-disk) és [3. lépés](#step-3-detach-data-disk-from-the-vm) törölni a virtuális gép **OSDisk** és leválasztása **DataDisk**. 
 
-## <a name="step-2-delete-vm-to-detach-os-disk"></a>2. lépés: A virtuális gép operációsrendszer-lemez leválasztásához törlése
+## <a name="step-2-delete-vm-to-detach-os-disk"></a>2. lépés: Törölje a virtuális gép operációsrendszer-lemez leválasztása
 Ha a VHD-t operációsrendszer-lemezt, a csatlakoztatott virtuális merevlemez törlése előtt törölnie kell a virtuális Gépet. Semmilyen további műveletet, miután végrehajtotta ezeket a lépéseket a ugyanazon virtuális Géphez csatolt adatlemezek szükség lesz:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).

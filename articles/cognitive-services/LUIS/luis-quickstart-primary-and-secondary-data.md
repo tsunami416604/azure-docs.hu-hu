@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 167dce168f9adfa59a96c09c62548c7c6e253b09
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 53e975719b911a27667afc8565bd86261f927068
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211406"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820980"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: Az egyszerű entitás és egy kifejezés lista nevének kinyerése
 
@@ -239,7 +239,7 @@ Nyissa meg a [feladatok-kifejezés-list.csv](https://github.com/Azure-Samples/co
 
     [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró szavakat tartalmaznak az értékek listában kifejezés](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "képernyőkép hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró szavakat tartalmaznak az értékek listában kifejezés")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-1. [Tanítsa be](#train) és [tegye közzé](#publish) ismét az alkalmazást a kifejezéslista használatához.
+1. Betanítása, és tegye közzé újra a kifejezés helyett szerepel a listában az alkalmazást.
 
 1. Végezzen újra lekérdezést ugyanazzal a kimondott szöveggel: `This is the lead welder paperwork.`
 

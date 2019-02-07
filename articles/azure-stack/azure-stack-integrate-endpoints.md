@@ -6,17 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.lastreviewed: 12/06/2018
-keywords: ''
-ms.openlocfilehash: 5946f62821d05bd9036b9fc0e6b0fc8daa74c5dc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/06/2019
+ms.openlocfilehash: 0bb2f3ffb4b615451abc41d0d8945b4b3efdde53
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241202"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816356"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Az Azure Stack adatközpont integrációja – végpontok közzététele
 
@@ -53,8 +52,8 @@ Virtuális IP-címek nem jelennek meg, mert azok még nem szükséges a közzét
 |Tárolási üzenetsor|&#42;.queue.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Storage-táblából|&#42;.table.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Storage Blob|&#42;.blob.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
-|SQL típusú erőforrás-szolgáltató|sqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
-|MySQL erőforrás-szolgáltató|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|SQL-erőforrásszolgáltató|sqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|MySQL-erőforrásszolgáltató|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
 |App Service|&#42;.appservice.*&lt;region>.&lt;fqdn>*|TCP|80 (HTTP)<br>443 (HTTPS)<br>8172-es (MSDeploy)|
 |  |&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)|
 |  |api.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)<br>44300 (az azure Resource Manager)|
@@ -69,19 +68,24 @@ Az Azure Stack csak transzparens proxy kiszolgálók támogatja. A központi tel
 > [!Note]  
 > Az Azure Stack nem támogatja az Express Route használatával az alábbi táblázatban felsorolt Azure-szolgáltatások eléréséhez.
 
-|Cél|URL-cím|Protokoll|Portok|
-|---------|---------|---------|---------|
-|Identitás|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|
-|Marketplace-en szindikálás|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|
-|Javítás & frissítése|https://&#42;.azureedge.net|HTTPS|443|
-|Regisztráció|https://management.azure.com|HTTPS|443|
-|Használat|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net|HTTPS|443|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. jövőben a Microsoft<br>https://msdl.microsoft.com/download/symbols<br>`https://www.microsoft.com/pkiops/crl`<br>`https://www.microsoft.com/pkiops/certs`<br>`https://crl.microsoft.com/pki/crl/products`<br>`https://www.microsoft.com/pki/certs`<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
-|NTP|(IP az NTP-kiszolgáló a megadott központi telepítés)|UDP|123|
-|DNS|(IP-megadott DNS-kiszolgáló üzembe helyezéshez)|TCP<br>UDP|53|
-|CRL|(A tanúsítvány CRL terjesztési pontok alapján URL)|HTTP|80|
-|Infrastruktúra biztonsági mentése|(IP vagy FQDN-jének külső cél fájlkiszolgálón)|SMB|445|
-|     |     |     |     |
+|Cél|Destination URL|Protokoll|Portok|Forráshálózat|
+|---------|---------|---------|---------|---------|
+|Identitás|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|Nyilvános virtuális IP - / 27-eset<br>Nyilvános infrastruktúra hálózati|
+|Marketplace-en szindikálás|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|Nyilvános virtuális IP - / 27-eset|
+|Javítás & frissítése|https://&#42;.azureedge.net|HTTPS|443|Nyilvános virtuális IP - / 27-eset|
+|Regisztráció|https://management.azure.com|HTTPS|443|Nyilvános virtuális IP - / 27-eset|
+|Használat|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|Nyilvános virtuális IP - / 27-eset|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. jövőben a Microsoft<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Nyilvános virtuális IP - / 27-eset<br>Nyilvános infrastruktúra hálózati|
+|NTP|(IP az NTP-kiszolgáló a megadott központi telepítés)|UDP|123|Nyilvános virtuális IP - / 27-eset|
+|DNS|(IP-megadott DNS-kiszolgáló üzembe helyezéshez)|TCP<br>UDP|53|Nyilvános virtuális IP - / 27-eset|
+|CRL|(A tanúsítvány CRL terjesztési pontok alapján URL)|HTTP|80|Nyilvános virtuális IP - / 27-eset|
+|Infrastruktúra biztonsági mentése|(IP vagy FQDN-jének külső cél fájlkiszolgálón)|SMB|445|Nyilvános infrastruktúra hálózati|
+|LDAP|Graph-integráció a megadott Active Directory-erdő|TCP<br>UDP|389|Nyilvános virtuális IP - / 27-eset|
+|LDAP SSL|Graph-integráció a megadott Active Directory-erdő|TCP|636|Nyilvános virtuális IP - / 27-eset|
+|LDAP GC|Graph-integráció a megadott Active Directory-erdő|TCP|3268|Nyilvános virtuális IP - / 27-eset|
+|LDAP GC SSL|Graph-integráció a megadott Active Directory-erdő|TCP|3269|Nyilvános virtuális IP - / 27-eset|
+|AD FS|Az AD FS metaadatok végpontja biztosított az AD FS-integráció|TCP|443|Nyilvános virtuális IP - / 27-eset|
+|     |     |     |     |     |
 
 > [!Note]  
 > Kimenő URL-címek az Azure traffic Managerrel a földrajzi hely alapján a legjobb lehetséges csatlakozási elosztott terhelésű rendszer. Az elosztott terhelésű URL-címek betöltése, a Microsoft update, és a háttéralkalmazás végpontjainak módosítása ügyfelek befolyásolása nélkül. A Microsoft nem oszt meg IP-címek listája az elosztott terhelésű URL-címek számára. Használjon olyan eszköz, amely támogatja a szűrést, URL-cím helyett IP-cím alapján.

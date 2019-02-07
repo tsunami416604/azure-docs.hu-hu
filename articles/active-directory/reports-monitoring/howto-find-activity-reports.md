@@ -13,12 +13,12 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9c7560dc6c3c5237a056a9468d3ab4f440e8e6dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bc726f63ea5c8473601623024e18c1402cbebb51
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190785"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820317"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Tevékenységjelentések keresése az Azure Portalon
 
@@ -49,8 +49,6 @@ A naplók jelentés összesíti az alábbi jelentések:
 
 Használhatja a naplózási jelentésben Speciális szűrés megadásával, a naplózási adatokat, konkrét kategóriáját eléréséhez a **tevékenység kategóriája** szűrőt. Válassza ki például az önkiszolgáló jelszó-visszaállítás kapcsolódó összes tevékenységének megtekintéséhez, a **önkiszolgáló jelszókezelés** kategória. 
 
-    ![Category options on the Filter Audit Logs page](./media/howto-find-activity-reports/06.png "Category options on the Filter Audit Logs page")
-
 Tevékenységkategóriák a következők:
 
 - Alapvető könyvtár
@@ -62,8 +60,6 @@ Tevékenységkategóriák a következők:
 ## <a name="sign-ins-report"></a>Bejelentkezések jelentés 
 
 A **bejelentkezések** nézet tartalmazza az összes felhasználói bejelentkezéseket, valamint a **Alkalmazáshasználat** jelentést. Alkalmazás használati adatai is megtekinthetők a **kezelés** szakaszában a **vállalati alkalmazások** áttekintése.
-
-    ![Enterprise applications](./media/howto-find-activity-reports/484.png "Enterprise applications")
 
 A bejelentkezési jelentések elérése:
 

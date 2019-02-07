@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: e47334a20072f4b9f4d1401b5dd1f848fa99df5a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 84f8d8ecbeacc5acb6b19462096e6fbd1aa45816
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497315"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810286"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -239,7 +239,7 @@ Erőforrások erőforráscsoportok közötti áthelyezése ugyanazon az előfize
 * Csak egy tárfiók (klasszikus) egyszerre áthelyezhető.
 * A tárfiók (klasszikus) nem lehet áthelyezni a virtuális gép vagy felhőszolgáltatás műveletben.
 
-Klasszikus erőforrások áthelyezése ugyanazon az előfizetésen belül egy új erőforráscsoportot, a standard szintű áthelyezési műveleteket keresztül használja a [portál](#use-portal), [Azure PowerShell-lel](#use-powershell), [Azure CLI-vel](#use-azure-cli), vagy [REST API-val](#use-rest-api). Resource Manager-erőforrások áthelyezése, ahogy használhatja ugyanazokat a műveleteket.
+Klasszikus erőforrások áthelyezése ugyanazon az előfizetésen belül egy új erőforráscsoportot, a standard szintű áthelyezési műveleteket keresztül használja a [portál](#use-portal), az Azure PowerShell, az Azure CLI vagy REST API-t. Resource Manager-erőforrások áthelyezése, ahogy használhatja ugyanazokat a műveleteket.
 
 #### <a name="new-subscription"></a>Új előfizetés
 

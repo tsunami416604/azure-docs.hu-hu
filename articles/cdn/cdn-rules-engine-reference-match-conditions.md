@@ -1,6 +1,6 @@
 ---
-title: Az Azure CDN szabályok motor egyezés feltételek |} Microsoft Docs
-description: Az Azure Content Delivery Network referenciadokumentációt szabályok motor egyeztetési feltételeknek.
+title: Az Azure CDN-szabályok szabálymotor egyezési feltételei |} A Microsoft Docs
+description: Az Azure Content Delivery Network dokumentációja szabályok szabálymotor egyezési feltételei.
 services: cdn
 documentationcenter: ''
 author: Lichard
@@ -14,824 +14,824 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 44182d686548fa5b6363a87be0ce7851829e20ab
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30173321"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820556"
 ---
-# <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotor feltételek egyeznek 
-Ez a cikk a rendelkezésre álló egyezés feltételek esetében az Azure Content Delivery Network (CDN) részletes leírását tartalmazza [szabálymotor](cdn-rules-engine.md).
+# <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotorral feltételeknek megfelelő 
+Ez a cikk felsorolja az elérhető egyezési feltételei számára az Azure Content Delivery Network (CDN) a részletes leírását [szabálymotorral](cdn-rules-engine.md).
 
-A szabály második része a egyezés feltétel. Egy egyezés feltétel azonosítja az adott típusú kérelmet, amely funkciókat érvényesül.
+A szabály második része az egyezési feltétellel. Egyeztetési feltételt azonosítja az adott típusú kérelmet szolgáltatások történik.
 
-Például egyezést feltételt is használhatja:
-- A tartalom egy adott helyen kérelmek szűrése.
-- Egy adott IP-cím vagy ország alapján generált kérelmek szűrése.
-- Kérések szűrése fejléc-információ.
+Ha például az egyeztetési feltételt is használhatja:
+- Kérelmek szűrése a tartalom egy adott helyen.
+- Kérelmek szűrése egy adott IP-cím vagy ország alapján generált.
+- Kérelmek szűrése a fejléc-információkat.
 
-## <a name="always-match-condition"></a>Az állapot mindig megfelelő
+## <a name="always-match-condition"></a>Mindig a feltételnek megfelelő
 
-A mindig egyezés feltétel alapértelmezés szerinti szolgáltatások összes kérelem vonatkozik.
-
-Name (Név) | Cél
------|--------
-[Mindig](#always) | Szolgáltatások alapértelmezett készlete vonatkozik minden kérelemhez.
-
-## <a name="device-match-condition"></a>Eszköz egyezés feltétel
-
-Az eszköz egyezés feltétel kérelmek egy mobileszközről tulajdonságai alapján azonosítja.  
+A mindig az egyezési feltétellel alapértelmezés szerinti szolgáltatások összes kérelemre érvényes legyen.
 
 Name (Név) | Cél
 -----|--------
-[Device](#device) | Kérelmek egy mobileszközről tulajdonságai alapján azonosítja.
+[Mindig](#always) | Alapértelmezett számos funkciót összes kérelemre érvényes legyen.
 
-## <a name="location-match-conditions"></a>Hely egyezés feltételek
+## <a name="device-match-condition"></a>Eszköz egyezési feltételei
 
-A hely egyezés feltételek kérelmet a kérelmező helye alapján azonosíthatja.
+Az eszköz az egyezési feltétellel kérelmek egy mobileszközzel a tulajdonságok alapján azonosítja.  
 
 Name (Név) | Cél
 -----|--------
-[SZÁMOT](#as-number) | Egy adott hálózati kérelmekkel azonosítja.
+[Device](#device) | A kérelmek egy mobileszközzel a tulajdonságok alapján azonosítja.
+
+## <a name="location-match-conditions"></a>Hely egyezési feltételei
+
+A hely egyezési feltételei kéréseket a kérelmező helye alapján azonosíthatja.
+
+Name (Név) | Cél
+-----|--------
+[AS-szám](#as-number) | Egy adott hálózat kérelmekkel azonosítja.
 [Ország](#country) | A megadott országokból kérelmekkel azonosítja.
 
-## <a name="origin-match-conditions"></a>Forrás egyezés feltételek
+## <a name="origin-match-conditions"></a>Forrás egyezési feltételei
 
-A forrás egyezés feltételek azonosítása kérelmek Content Delivery Network tároló- és egy ügyfél eredeti kiszolgálóra mutasson.
+A forrás egyezési feltételei azonosítsa a kéréseket, amelyek a Content Delivery Network-tároló vagy egy ügyfél eredeti kiszolgálóra mutasson.
 
 Name (Név) | Cél
 -----|--------
-[CDN-forrása](#cdn-origin) | A tartalomhoz tartalom Delivery Network storage-ban tárolt azonosítja.
-[Ügyfél forrása](#customer-origin) | Egy adott ügyfélhez forrás kiszolgálón lévő tartalomhoz azonosítja.
+[CDN-forrás](#cdn-origin) | Azonosítja a Content Delivery Network-storage-ban tárolt tartalomhoz.
+[Ügyfél kezdőpontja](#customer-origin) | Egy adott ügyfél forrás kiszolgálón tárolt tartalomhoz azonosítja.
 
-## <a name="request-match-conditions"></a>Feltételek egyeznek kérése
+## <a name="request-match-conditions"></a>Kérelem egyezési feltételei
 
-A kérelem egyezés feltételek kérelmet tulajdonságaik alapján azonosíthatja.
+A kérelem egyezési feltételei kérelmet tulajdonságaik alapján azonosíthatja.
 
 Name (Név) | Cél
 -----|--------
 [Ügyfél IP-címe](#client-ip-address) | Egy adott IP-címről kérelmekkel azonosítja.
-[Cookie-k paraméter](#cookie-parameter) | Ellenőrzi a megadott értéket minden kérelemhez társított cookie-kat.
-[Cookie-k paraméter Regex](#cookie-parameter-regex) | A cookie-k a megadott reguláris kifejezést minden kérelemhez társított ellenőrzi.
-[Peremhálózati Cname](#edge-cname) | Azonosítja a kérelmeket, amelyek egy adott peremhálózati CNAME.
+[Cookie-k paraméter](#cookie-parameter) | Ellenőrzi a megadott értéket minden kéréshez társított cookie-kat.
+[Cookie-k paramétert reguláris kifejezés](#cookie-parameter-regex) | A cookie-kat, az a megadott reguláris kifejezést az egyes kérelmekkel társított ellenőrzi.
+[Edge Cname](#edge-cname) | Kérelmek, amelyek egy adott edge CNAME azonosítja.
 [Hivatkozó tartomány](#referring-domain) | A megadott állomásnevekről említett kérelmek azonosítja.
-[Kérelem fejléc szövegkonstans](#request-header-literal) | A megadott fejléc-készlettel és egy megadott értéket tartalmazó kérések azonosítja.
-[Kérelem fejléc Regex](#request-header-regex) | A megadott fejléc értéke, amely megfelel a megadott reguláris kifejezést tartalmazó kérések azonosítja.
-[Kérelem fejléc helyettesítő](#request-header-wildcard) | A megadott fejléc értéke, amely megfelel a megadott minta tartalmazó kérések azonosítja.
-[Kérési módszer](#request-method) | A HTTP-metódus azonosítja a kérelmeket.
-[Kérelem séma](#request-scheme) | A HTTP protokoll azonosítja a kérelmeket.
+[Kérelem fejléce szövegkonstans](#request-header-literal) | A megadott fejléc megadott értéke tartalmazó kérelmek azonosítja.
+[Kérelem fejléce reguláris kifejezés](#request-header-regex) | A megadott fejléc értéke, amely megfelel a megadott reguláris kifejezést tartalmazó kérelmek azonosítja.
+[Kérelem fejléce helyettesítő karakter](#request-header-wildcard) | A megadott fejléc értéke, amely megfelel a megadott minta tartalmazó kérelmek azonosítja.
+[Kérelmi metódus](#request-method) | A HTTP-metódus azonosítja a kérelmeket.
+[Kérelem séma](#request-scheme) | A HTTP protokoll alapján azonosítja a kérelmek.
 
-## <a name="url-match-conditions"></a>URL-cím egyezik feltételek
+## <a name="url-match-conditions"></a>URL-cím egyezési feltételei
 
-Az URL-cím egyezik feltételek kérelmet az URL-címek alapján azonosíthatja.
+Az URL-cím egyezési feltételei azonosítsa az URL-címeken alapuló kérelmeket.
 
 Name (Név) | Cél
 -----|--------
-[URL-cím elérési út könyvtár](#url-path-directory) | Azonosítja a kéréseket a relatív elérési útja.
+[URL-cím elérési út könyvtár](#url-path-directory) | Azonosítja a kérelmeket azok relatív elérési út.
 [URL-cím elérési út bővítmény](#url-path-extension) | A fájlnév-kiterjesztésük alapján azonosítja a kérelmeket.
-[URL-cím elérési út fájlnév](#url-path-filename) | A fájl neve azonosítja a kérelmeket.
-[URL-cím elérési út szövegkonstans](#url-path-literal) | Összehasonlítja a kérelem relatív elérési út és a megadott értéket.
-[URL-cím elérési út Regex](#url-path-regex) | Összehasonlítja a kérelem relatív elérési útját a megadott reguláris kifejezés.
-[URL-cím elérési út helyettesítő karakter](#url-path-wildcard) | Összehasonlítja a kérelmet a megadott minta relatív elérési útja.
-[Lekérdezés-szövegkonstans URL-címe](#url-query-literal) | Összehasonlítja a lekérdezési karakterlánc és a megadott értéket.
-[URL-cím lekérdezési paraméter](#url-query-parameter) | A megadott lekérdezési karakterlánc-paraméter értéke, amely megfelel a megadott minta tartalmazó kérések azonosítja.
-[Lekérdezés Regex URL-címe](#url-query-regex) | A megadott lekérdezési karakterlánc-paraméter értéke, amely megfelel a megadott reguláris kifejezést tartalmazó kérések azonosítja.
-[Lekérdezés helyettesítő URL-címe](#url-query-wildcard) | A megadott érték szemben a lekérdezési karakterlánc hasonlítja össze.
+[URL-cím elérési_út fájlnév](#url-path-filename) | A fájl neve azonosítja a kérelmeket.
+[URL-cím elérési út szövegkonstans](#url-path-literal) | A kérelem relatív elérési út és a megadott érték hasonlítja össze.
+[URL Path Regex](#url-path-regex) | A kérelem relatív elérési útja a megadott reguláris kifejezés hasonlítja össze.
+[URL-cím elérési út helyettesítő karakter](#url-path-wildcard) | A kérelem relatív elérési útja a megadott minta hasonlítja össze.
+[URL-cím lekérdezési szövegkonstans](#url-query-literal) | A kérelem lekérdezési karakterláncát a megadott érték hasonlítja össze.
+[URL-cím lekérdezési paraméter](#url-query-parameter) | A megadott lekérdezési karakterlánc-paraméter értéke, amely egy megadott mintának megfelelő tartalmazó kérelmek azonosítja.
+[URL-cím lekérdezési reguláris kifejezés](#url-query-regex) | A megadott lekérdezési karakterlánc-paraméter értéke, amely megfelel a megadott reguláris kifejezést tartalmazó kérelmek azonosítja.
+[URL-cím lekérdezési helyettesítő karakter](#url-query-wildcard) | A megadott értéket a kérelem lekérdezési karakterláncában elleni hasonlítja össze.
 
 
-## <a name="reference-for-rules-engine-match-conditions"></a>Útmutató a szabályok motor egyezés feltételek
+## <a name="reference-for-rules-engine-match-conditions"></a>Szabálymotor egyezési feltételei referenciája
 
 ---
 ### <a name="always"></a>Mindig
 
-A mindig egyezés feltétel alapértelmezés szerinti szolgáltatások összes kérelem vonatkozik.
+A mindig az egyezési feltétellel alapértelmezés szerinti szolgáltatások összes kérelemre érvényes legyen.
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
-
-</br>
-
----
-### <a name="as-number"></a>SZÁMOT 
-Az AS számot hálózati határozza meg az autonóm rendszer számát (ASN). 
-
-A **egyező**/**nem felel meg** beállítás meghatározza, hogy teljesülnek-e a feltételek, amelyek alapján feltétel egyezik a AS száma:
-- **Megfelelő**: megköveteli, hogy az ügyfél hálózati ASN egyezik a megadott ASN-eket. 
-- **Nem felel meg does**: megköveteli, hogy az ügyfél hálózati az ASN nem egyezik a megadott ASN-ek bármelyikét.
-
-Kapcsolatos információkat:
-- Adjon meg több ASN-eket határoló mindegyiken akár egy szóköz. Például 64514 64515 megfelel a kérelmeket, amelyek 64514 vagy 64515 érkeznek.
-- Bizonyos kérelmek esetleg vissza érvényes ASN. A kérdőjel (?) fog egyezni a kérelmeket, amelynek érvényes ASN nem határozható meg.
-- Adja meg a kívánt hálózathoz teljes ASN. Hiányos értékek nem lesz megfelelő.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
-
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
-### <a name="cdn-origin"></a>CDN-forrása
-A CDN-forrása egyezés feltétel nem teljesül, az alábbi két feltétel teljesülése esetén:
-- A kért tartalom CDN tárolóból.
-- A kérelem URI-azonosítója a tartalom hozzáférési pont (például /000001), ez a feltétel egyezik a megadott típusú használ:
-  - CDN URL-címe: A kérelem URI-azonosítója a kiválasztott tartalom-hozzáférési pontot kell tartalmaznia.
-  - Peremhálózati CNAME URL-címe: A kiválasztott tartalom-hozzáférési pont a megfelelő biztonsági CNAME konfigurációs kell mutatnia.
+### <a name="as-number"></a>AS-szám 
+Az AS-számok hálózati határozza meg az autonóm rendszer száma (ASN). 
+
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amelyben az AS-számot a feltételnek megfelelő feltételek teljesülése:
+- **Egyezések**: Megköveteli, hogy az ASN-t, az ügyfél hálózati megegyezik a megadott ASN-ek valamelyikét. 
+- **Nem felel meg**: Szükséges, hogy az ASN-t, az ügyfél hálózati nem egyezik a megadott ASN-ek valamelyikét.
+
+Legfontosabb tudnivalókat:
+- Adja meg az egy szóköz pedig külön határoló több ASN-eket. Például 64514 64515 megfelel a kérelmek, amelyek 64514 vagy 64515 érkezik.
+- Előfordulhat, hogy bizonyos kérelmek nem ad vissza egy érvényes ASN. A kérdőjel (?) egyezni fog a kérelmeket, amelyhez érvényes ASN nem sikerült meghatározni.
+- Adja meg a teljes ASN-t a kívánt hálózathoz. Hiányos értékek nem található, karakterként lesz.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
+
+[Vissza a tetejére](#main)
+
+</br>
+
+---
+### <a name="cdn-origin"></a>CDN-forrás
+A CDN-forrás egyezés feltétel teljesül mindkét következő feltétel teljesülése esetén:
+- A kért tartalom CDN storage-ból.
+- A kérelem URI-t a tartalom-hozzáférési pont (például /000001), ez az egyezési feltétellel meghatározott típusú használja:
+  - A CDN URL-CÍME: A kérés URI azonosítója a kiválasztott tartalom-hozzáférési pontot kell tartalmaznia.
+  - Edge CNAME URL: A kiválasztott tartalom-hozzáférési pont a megfelelő edge CNAME konfigurációt kell mutatnia.
   
-Kapcsolatos információkat:
- - A tartalom-hozzáférési pont azonosítja a szolgáltatást, amely a kért tartalom szolgálhat.
- - Ne használjon az és IF utasítást bizonyos egyezés feltételek kombinálhatók. Például egy ügyfél eredeti egyezik a feltétellel CDN származási egyezés feltétel kombinálásával hozna létre egy egyező mintát, amely soha nem feleltethető. Ezért két CDN származási egyezés feltételek nem használható együtt az és IF utasítást keresztül.
+Legfontosabb tudnivalókat:
+ - A tartalom-hozzáférési pont azonosítja a szolgáltatás, amely szolgálhat a kért tartalmat.
+ - Ne használja az és a egy IF utasítást úgy, hogy bizonyos egyezési feltételei. Például az ügyfél kezdőpontja egyeztetési feltételt CDN Origin egyeztetési feltételt kombinálásával hozna létre-egyeztetési minta, amely sikerült nikdy existovat shoda. Ezért két CDN Origin egyezési feltételei keresztül egy és IF utasítás nelze kombinovat.
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
 ### <a name="client-ip-address"></a>Ügyfél IP-címe
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amelyek alapján az ügyfél IP-cím egyezik feltétel teljesül:
-- **Megfelelő**: megköveteli, hogy az ügyfél IP-cím megegyezik a megadott IP-címek egyikére. 
-- **Nem felel meg does**: megköveteli, hogy az ügyfél IP-cím nem egyezik a megadott IP-címek valamelyikét. 
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amelyek alapján az ügyfél IP-cím a feltételnek megfelelő feltételek teljesülése:
+- **Egyezések**: Megköveteli, hogy az ügyfél IP-cím megegyezik a megadott IP-címek valamelyikét. 
+- **Nem felel meg**: Megköveteli, hogy az ügyfél IP-cím nem egyezik a megadott IP-címek valamelyikét. 
 
-Kapcsolatos információkat:
-- Használja a CIDR-formátumban.
-- Adjon meg több IP-címek és/vagy az IP-címblokkok határoló mindegyiken akár egy szóköz. Példa:
-  - **IPv4-alapú példa**: 1.2.3.4 10.20.30.40 megegyezik bármilyen címről vagy 1.2.3.4 vagy 10.20.30.40 érkező kérelmeket.
-  - **IPv6-alapú példa**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 megegyezik a cím 1:2:3:4:5:6:7:8 vagy 10:20:30:40:50:60:70:80 érkező kérelmeket.
-- Az IP-Címblokk szintaxisa a következő perjellel, majd a előtag mérete alap IP-címét. Példa:
-  - **IPv4-alapú példa**: 5.5.5.64/26 megegyezik bármilyen 5.5.5.64 keresztül 5.5.5.127 címekről érkező kérelmeket.
-  - **IPv6-alapú példa**: 1:2:3: / 48 megegyezik bármilyen címek 1:2:3:0:0:0:0:0 1:2:3:ffff:ffff:ffff:ffff:ffff keresztül érkező kérelmeket.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
+Legfontosabb tudnivalókat:
+- Használjon CIDR-jelölésrendszerben.
+- Adjon meg több IP-címek és/vagy IP-címblokkok határoló egyenként a szóköz. Példa:
+  - **IPv4-példa**: 1.2.3.4 10.20.30.40 megegyezik bármilyen címről vagy 1.2.3.4 vagy 10.20.30.40 érkező kérelmeket.
+  - **IPv6-alapú példa**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 megegyezik bármilyen cím 1:2:3:4:5:6:7:8 vagy 10:20:30:40:50:60:70:80 érkező kérelmeket.
+- IP-Címblokk szintaxisa a kiindulási IP-cím perjellel és az előtag méretét. Példa:
+  - **IPv4-példa**: 5.5.5.64/26 megegyezik bármilyen keresztül 5.5.5.127 5.5.5.64-címekről érkező kérelmeket.
+  - **IPv6-alapú példa**: 1:2:3: / 48 megegyezik bármilyen származó címeket 1:2:3:0:0:0:0:0 1:2:3:ffff:ffff:ffff:ffff:ffff keresztül érkező kérelmeket.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
 ### <a name="cookie-parameter"></a>Cookie-k paraméter
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt a cookie-k paraméter felel meg a feltétel teljesül.
-- **Megfelelő**: vonatkozó kérelmet tartalmaz, amely megfelel az egyeztetés feltétel meghatározott értékek közül legalább egy értéket a megadott cookie-t igényel.
-- **Nem egyezik meg**: megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
-  - A megadott cookie-k nem tartalmaz.
-  - A megadott cookie-t tartalmaz, de az érték nem egyezik meg bármely egyezés feltétel definiált eleme.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a cookie-k paraméter feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: Kell tartalmaznia a megadott cookie-t, amely megfelel az ezen az egyezési feltétellel meghatározott értékek közül legalább egy értéket a kérést.
+- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
+  - A megadott cookie nem tartalmaz.
+  - A megadott cookie-t tartalmaz, de az érték nem egyezik meg az értékeket, hogy ez az egyezési feltétellel vannak meghatározva.
   
-Kapcsolatos információkat:
-- Cookie-név: 
-  - Helyettesítő értékek, beleértve a csillag (*), nem támogatottak, ha a cookie-nevet ad meg, mert csak a pontos cookie neve megegyezik jogosultak az összehasonlításhoz.
-  - E egyezés feltétel példányonként csak egy egyetlen cookie neve adható meg.
-  - Cookie neve összehasonlítások nem különböztetik meg.
+Legfontosabb tudnivalókat:
+- Cookie neve: 
+  - Helyettesítő karakteres értékek, többek között a csillag (*), nem támogatottak, ha egy cookie-nevet ad meg, mert csak pontos cookie neve egyezik jogosultak az összehasonlítást.
+  - Ez az egyezési feltétellel-példányonként csak egy egyetlen cookie-nevet adható meg.
+  - Cookie neve összehasonlítások megkülönböztetik a kis-és nagybetűket.
 - Cookie-értéket: 
-  - Adjon meg több cookie-k érték határoló mindegyiken akár egy szóköz.
-  - A cookie-értéket kihasználhatják a [helyettesítő értékek](cdn-rules-engine-reference.md#wildcard-values). 
-  - Ha egy helyettesítő karakteres érték nincs megadva, csak pontos egyezést kielégítéséhez ez egyeznek az állapot. Például "Érték" meg fog egyezni a "Érték", de nem "Érték1" vagy "Érték2."
-  - Használja a **esetben figyelmen kívül hagyása** lehetőséget szabályozhatja, hogy kis-és nagybetűket összehasonlítást a kérelem cookie-k értékkel.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
+  - Adja meg a cookie-k több érték határoló egyenként a szóköz.
+  - A cookie-értéket kihasználhatják a [helyettesítő karakteres értékek](cdn-rules-engine-reference.md#wildcard-values). 
+  - Ha egy helyettesítő karakteres érték nem lett megadva, csak pontos egyezés kielégíteni ezt az egyezési feltétellel. Például adja meg a "Value" egyezni fog "Value", de nem "Érték1" vagy "Value2."
+  - Használja a **esetben figyelmen kívül hagyása** -e a kis-és nagybetűket összehasonlítás a kérelem cookie-k értékkel ellenőrzési lehetőséget.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
-### <a name="cookie-parameter-regex"></a>Cookie-k paraméter Regex
-A cookie-k paramétert reguláris kifejezéssel egyező feltétel határozza meg, a cookie nevét és értékét. Használhat [reguláris kifejezések](cdn-rules-engine-reference.md#regular-expressions) kívánt cookie-k értékét. 
+### <a name="cookie-parameter-regex"></a>Cookie-k paramétert reguláris kifejezés
+A cookie-k paramétert reguláris kifejezést az egyezési feltétellel határozza meg, a cookie nevét és értékét. Használhat [reguláris kifejezések](cdn-rules-engine-reference.md#regular-expressions) meghatározásához kívánt cookie-értéket. 
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt a cookie-k paraméter Regex felel meg a feltétel teljesül.
-- **Megfelelő**: kérelem tartalmazza a megadott cookie-k a megadott reguláris kifejezésnek megfelelő értéket igényel.
-- **Nem egyezik meg**: megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
-  - A megadott cookie-k nem tartalmaz.
-  - A megadott cookie-t tartalmaz, de az érték nem egyezik a megadott reguláris kifejezés.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a cookie-k paraméter Regex feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: Egy kérelem tartalmazza a megadott reguláris kifejezésnek megfelelő értéket a megadott cookie-t igényel.
+- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
+  - A megadott cookie nem tartalmaz.
+  - A megadott cookie-t tartalmaz, de az érték nem egyezik meg a meghatározott reguláris kifejezéssel.
   
-Kapcsolatos információkat:
-- Cookie-név: 
-  - A reguláris kifejezések és a helyettesítő értékek, beleértve a csillag (*), nem támogatottak, ha egy cookie-nevet ad meg, mert csak a pontos cookie neve megegyezik jogosultak az összehasonlításhoz.
-  - E egyezés feltétel példányonként csak egy egyetlen cookie neve adható meg.
-  - Cookie neve összehasonlítások nem különböztetik meg.
+Legfontosabb tudnivalókat:
+- Cookie neve: 
+  - Reguláris kifejezések és a helyettesítő karakteres értékek, többek között a csillag (*), nem támogatottak, ha egy cookie-nevet ad meg, mert csak a pontos cookie neve egyezik jogosultak az összehasonlítást.
+  - Ez az egyezési feltétellel-példányonként csak egy egyetlen cookie-nevet adható meg.
+  - Cookie neve összehasonlítások megkülönböztetik a kis-és nagybetűket.
 - Cookie-értéket: 
-  - Cookie-k érték reguláris kifejezéseket is előnyeit.
-  - Használja a **esetben figyelmen kívül hagyása** lehetőséget szabályozhatja, hogy kis-és nagybetűket összehasonlítást a kérelem cookie-k értékkel.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
+  - A cookie-értéket reguláris kifejezéseket is előnyeit.
+  - Használja a **esetben figyelmen kívül hagyása** -e a kis-és nagybetűket összehasonlítás a kérelem cookie-k értékkel ellenőrzési lehetőséget.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 --- 
 ### <a name="country"></a>Ország
-Megadhat egy ország keresztül az országhívószámot. 
+Megadhatja, hogy egy ország keresztül az országkódot. 
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az ország felel meg a feltétel teljesül:
-- **Egyezések**: az adott ország kód értékeket tartalmazó kérelem igényel. 
-- **Nem egyezik meg**: megköveteli, hogy a kérelem nem tartalmazza az adott ország érték.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az ország feltételnek megfelelő feltételek teljesülése:
+- **Egyezések**: A kérelem tartalmazza a megadott ország kódértékek igényel. 
+- **Nem felel meg**: Megköveteli, hogy a kérelem nem tartalmazza a megadott ország kódértékek.
 
-Kapcsolatos információkat:
-- Adjon meg több országhívószámok határoló mindegyiken akár egy szóköz.
-- Helyettesítő karakterek nem támogatottak, ha a országkódot ad meg.
-- A "EU" és "AP" országhívószámok nem tartoznak bele azokban a régiókban található összes IP-címet.
-- Bizonyos kérelmek esetleg vissza érvényes országkódot. A kérdőjel (?) fog egyezni a kérelmeket, amelynek érvényes országkódot nem határozható meg.
-- Országhívó számokat-és nagybetűk.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
+Legfontosabb tudnivalókat:
+- Adja meg az országkódok több határoló egyenként a szóköz.
+- Helyettesítő karakterek nem használhatók, amikor az országkódot ad meg.
+- Az "EU" és "AP" országkódok nem tartoznak bele az összes IP-címek ezekben a régiókban.
+- Bizonyos kérelmek nem lehet, hogy egy érvényes országot kóddal tér vissza. A kérdőjel (?) egyezni fog a kérelmeket, amelyhez érvényes országkód nem sikerült meghatározni.
+- Országhívó számokat a rendszer kis-és nagybetűket.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
 
-#### <a name="implementing-country-filtering-by-using-the-rules-engine"></a>Végrehajtási ország szerinti szűrés a szabályok használata
-Ez a feltétel egyezik, amelyből a kérelem származási helye alapján testreszabások számos végrehajtását teszi lehetővé. Például az ország szerinti szűrés funkció működését replikálhatók a következő konfigurációs keresztül:
+#### <a name="implementing-country-filtering-by-using-the-rules-engine"></a>Ország szerinti szűrés megvalósítása a rules engine használatával
+Ez az egyezési feltétellel lehetővé teszi számos testreszabásokat kérést származik, amelyről helye alapján. Például az ország szerinti szűrés funkció működését replikálható keresztül a következő konfigurációt:
 
-- URL-cím elérési út helyettesítő egyezés: állítsa be a [URL-cím elérési út helyettesítő felel meg a feltétel](#url-path-wildcard) ahhoz a könyvtárhoz, megfelelően történik. 
-    A csillag karakter hozzáfűzése annak érdekében, hogy ez a szabály összes gyermekeinek lesz korlátozva relatív elérési út végéhez.
+- URL-cím elérési út helyettesítő egyezés: Állítsa be a [URL-cím elérési út helyettesítő feltételnek megfelelő](#url-path-wildcard) azt a könyvtárat, biztonságát. 
+    Fűzze hozzá a csillag, győződjön meg arról, hogy az összes gyermekre a hozzáférést a szabály által korlátozva lesznek relatív elérési út végén.
 
-- Ország egyezik: az ország egyezés feltétel beállítása a kívánt készletet országok.
-   - Engedélyezése: Állítsa be az ország felel meg az állapotot **nem felel meg** engedélyezi a megadott URL-cím elérési út helyettesítő egyezés feltétel helyen tárolt tartalmat csak a meghatározott országok eléréséhez.
-   - Blokkolás: Állítsa be az ország felel meg az állapotot **egyező** letilthatja a megadott országok elérjék a tartalmat a megadott URL-cím elérési út helyettesítő egyezés feltétel helyen tárolja.
+- Ország egyezés: Állítsa be az ország egyeztetési feltételt a kívánt készlethez országok.
+   - Engedélyezése: Az ország az egyezési feltétellel beállítása **Neodpovídá** határozzák meg az URL-cím elérési út helyettesítő egyeztetési feltételt a helyen tárolt tartalmat csak a megadott országok hozzáférésének engedélyezéséhez.
+   - Blokkolás: Az ország az egyezési feltétellel beállítása **egyezések** nem férhet hozzá az URL-cím elérési út helyettesítő egyezési feltételei által meghatározott helyen tárolt tartalmat a megadott országok blokkolására.
 
-- Megtagadás Access (403-as) szolgáltatás: Engedélyezze a [hozzáférés megtagadása (403-as) szolgáltatás](cdn-rules-engine-reference-features.md#deny-access-403) replikálni az ország szerinti szűrés szolgáltatás engedélyezési vagy tiltólista része.
+- Hozzáférés (403) szolgáltatás megtagadása: Engedélyezze a [hozzáférés megtagadása (403) funkció](cdn-rules-engine-reference-features.md#deny-access-403) az ország szerinti szűrés funkció engedélyezése vagy letiltása részének replikálni.
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
-### <a name="customer-origin"></a>Ügyfél forrása
+### <a name="customer-origin"></a>Ügyfél kezdőpontja
 
-Kapcsolatos információkat: 
-- Az ügyfél eredeti egyezés feltétel teljesül, függetlenül attól, hogy tartalom CDN URL-címet vagy CNAME mutató URL-CÍMMEL a kijelölt ügyfél forrás él keresztül van szükség.
-- A szabály által hivatkozott felhasználói származási konfigurálása az ügyfél eredeti oldalról nem törölhető. Mielőtt megkísérli az ügyfél eredeti konfiguráció törlése, győződjön meg arról, hogy a következő konfigurációk nem hivatkozni rá:
-  - Egy ügyfél eredeti egyezés feltétel
-  - Egy peremhálózati CNAME-konfiguráció
-- Ne használjon az és IF utasítást bizonyos egyezés feltételek kombinálhatók. Például a CDN-forrása egyezik a feltétellel ügyfél eredeti egyezés feltétel kombinálásával hozna létre egy egyező mintát, amely soha nem feleltethető. Ezért két felhasználói származási egyezés feltétel nem használható együtt keresztül az és IF utasítást.
+Legfontosabb tudnivalókat: 
+- Az ügyfél kezdőpontja egyezés feltétel teljesül, függetlenül attól, hogy kért CDN URL-címet vagy egy edge CNAME mutató URL-cím a kijelölt ügyfél kezdőpontja.
+- A szabály által hivatkozott felhasználói forrás konfigurálása nem lehet törölni az ügyfél kezdőpontja oldalról. Mielőtt megkísérli törölni egy ügyfél forrás-konfigurációt, győződjön meg arról, hogy a következő konfigurációk nem hivatkoznak azt:
+  - Egy ügyfél kezdőpontja egyezési feltételei
+  - An edge CNAME configuration
+- Ne használja az és a egy IF utasítást úgy, hogy bizonyos egyezési feltételei. Például kombinálása egy CDN-forrás az egyezési feltétellel rendelkező ügyfél kezdőpontja egyeztetési feltételt hozna létre, amely soha nem egyeztethető-egyeztetési minta. Ezért két ügyfél kezdőpontja egyezési feltételei keresztül egy és IF utasítás nelze kombinovat.
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
 ### <a name="device"></a>Eszköz
 
-Az eszköz egyezés feltétel kérelmek egy mobileszközről tulajdonságai alapján azonosítja. Mobil eszköz észlelési sorrendekben [WURFL](http://wurfl.sourceforge.net/). 
+Az eszköz az egyezési feltétellel kérelmek egy mobileszközzel a tulajdonságok alapján azonosítja. Mobileszköz-felismerés a gazdafájlon keresztül [WURFL](http://wurfl.sourceforge.net/). 
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az eszköz felel meg a feltétel teljesül:
-- **Egyezések**: a megadott értéknek felel meg a kérelmező eszközt. 
-- **Nem felel meg does**: megköveteli, hogy az igénylő eszköz nem egyezik a megadott érték.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az eszköz a feltételnek megfelelő feltételek teljesülése:
+- **Egyezések**: A kérelmező eszközök a megadott értéknek egyeznie kell. 
+- **Nem felel meg**: Megköveteli, hogy a kérelmező eszközök a megadott érték nem egyezik.
 
-Kapcsolatos információkat:
+Legfontosabb tudnivalókat:
 
-- Használja a **esetben figyelmen kívül hagyása** beállítással adhatja meg, hogy a megadott érték kis-és nagybetűket.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
+- Használja a **esetben figyelmen kívül hagyása** lehetőséget adja meg, hogy a megadott érték kis-és nagybetűket.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
 
-#### <a name="string-type"></a>Karakterlánc típusú
-Egy WURFL képesség általában tetszőleges számok, betűk és szimbólumok kombinációját fogad el. A rugalmas jellegű, ezt a képességet, mert ki kell választania a egyezés probléma társított értéket értelmezését. A következő táblázat ismerteti a rendelkezésre álló beállításokat:
+#### <a name="string-type"></a>Karakterlánc típus
+Egy WURFL képesség általában tetszőleges számok, betűk és szimbólumok kombinációját fogad el. Ez a funkció rugalmas jellege miatt ki kell választania ezt az egyezési feltétellel társított értéket értelmezését. A következő táblázat ismerteti az elérhető beállítások készletét:
 
-Típus     | Leírás
+Typo     | Leírás
 ---------|------------
-Literális  | Ezzel a beállítással megakadályozhatja, hogy a legtöbb karakternél a használatával a speciális jelentéssel véve a [literálérték](cdn-rules-engine-reference.md#literal-values).
-Wildcard | Válassza ezt a beállítást, minden [helyettesítő karakterek] kihasználását ([helyettesítő értékek](cdn-rules-engine-reference.md#wildcard-values).
-Regex    | Ezt a beállítást használja [reguláris kifejezések](cdn-rules-engine-reference.md#regular-expressions). A reguláris kifejezések hasznosak mintázat létrehozása karaktereket.
+Szövegkonstans  | Ezt a beállítást, hogy a legtöbb karakterek használatával kulcsszó különleges jelentéssel a felvételt a [Szövegkonstansérték](cdn-rules-engine-reference.md#literal-values).
+Helyettesítő karakter | Ezzel a lehetőséggel előnyeit minden [helyettesítő karakterek] ([helyettesítő karakteres értékek](cdn-rules-engine-reference.md#wildcard-values).
+Regex    | Válassza ezt a lehetőséget a használandó [reguláris kifejezések](cdn-rules-engine-reference.md#regular-expressions). Reguláris kifejezések hasznosak karaktereket a mintázat létrehozása.
 
 #### <a name="wurfl-capabilities"></a>WURFL képességek
-Egy WURFL képesség, amely ismerteti a mobil eszközök kategória hivatkozik. A kiválasztott funkció határozza meg a mobileszköz leírást, amely azonosítja a kérelmeket.
+Egy WURFL képesség, amely ismerteti a mobil eszközök kategória hivatkozik. A kiválasztott funkció határozza meg a mobil eszköz leírása, amely a kérések azonosítására szolgál.
 
-A következő táblázat WURFL képességek és ezek változói a szabályok motor.
+Az alábbi táblázat felsorolja a WURFL képességek és a rules engine azok változókat.
 <br>
 > [!NOTE] 
-> A következő változók használhatók a **ügyfél kérelem fejléc módosítása** és **módosítása ügyfél válaszfejléc** szolgáltatásokat.
+> A következő változók használhatók a **ügyfél kérelem fejléce módosítsa** és **ügyfél válasz fejléce módosítsa** funkciókat.
 
-Képesség | Változó | Leírás | Példaértékek
+Képesség | Változó | Leírás | Mintaértékek
 -----------|----------|-------------|----------------
-Márka neve | %{wurfl_cap_brand_name} | Egy karakterlánc, amely az eszköz márka nevét jelöli. | Samsung
-Az eszköz operációs rendszere | %{wurfl_cap_device_os} | Egy karakterlánc, amely azt jelzi, az operációs rendszer telepítve az eszközön. | IOS
-Eszköz operációs rendszerének verziója | %{wurfl_cap_device_os_version} | Egy karakterlánc, amely azt jelzi, az eszköz a telepített operációs rendszer verziószámát. | 1.0.1
-Kettős tájolását | %{wurfl_cap_dual_orientation} | Egy logikai érték, amely jelzi, hogy az eszköz támogatja-e kettős tájolását. | true
-HTML előnyben részesített DTD | %{wurfl_cap_html_preferred_dtd} | Egy olyan karakterlánc, amely jelzi a mobil eszköz előnyben részesített dokumentumtípusdefiníció (DTD) a HTML-tartalmakat. | nincs<br/>xhtml_basic<br/>HTML5
-A kép Inlining | %{wurfl_cap_image_inlining} | Olyan logikai érték, amely jelzi, hogy az eszköz támogatja-e a Base64 kódolású képek. | false
-Is Android | %{wurfl_vcap_is_android} | Egy logikai érték, amely azt jelzi, hogy az eszköz az Android operációs rendszer használja-e. | true
+Márkanév | %{wurfl_cap_brand_name} | Egy karakterlánc, amely azt jelzi, hogy az eszköz márkanevét. | Samsung
+Eszköz operációs rendszere | %{wurfl_cap_device_os} | Egy karakterlánc, amely azt jelzi, hogy az eszközön telepített operációs rendszer. | IOS
+Eszköz operációs rendszerének verziója | %{wurfl_cap_device_os_version} | Egy karakterlánc, amely azt jelzi, hogy az eszközön telepített operációs rendszer verziószáma. | 1.0.1
+Kettős tájolása | %{wurfl_cap_dual_orientation} | Egy logikai érték, amely jelzi, hogy az eszköz támogatja-e kettős tájolását. | true
+HTML Preferred DTD | %{wurfl_cap_html_preferred_dtd} | Egy karakterlánc, amely azt jelzi, hogy a mobil eszköz előnyben részesített dokumentum típus definíciója (DTD) HTML-tartalmakat. | nincs<br/>xhtml_basic<br/>html5
+Kép Inlining | %{wurfl_cap_image_inlining} | Logikai érték beolvasása, amely azt jelzi, hogy az eszköz támogatja-e a Base64 kódolású lemezképek. | false
+Is Android | %{wurfl_vcap_is_android} | Egy logikai érték, amely azt jelzi, hogy az eszközt az Android operációs rendszer használja-e. | true
 IOS | %{wurfl_vcap_is_ios} | Egy logikai érték, amely azt jelzi, hogy az eszköz iOS használja-e. | false
-Az intelligens TV | %{wurfl_cap_is_smarttv} | Egy logikai érték, amely azt jelzi, hogy az eszköz egy intelligens TV. | false
+Smart TV van | %{wurfl_cap_is_smarttv} | Egy logikai érték, amely azt jelzi, hogy az eszköz egy Okostelevízió. | false
 Smartphone van | %{wurfl_vcap_is_smartphone} | Egy logikai érték, amely azt jelzi, hogy az eszköz okostelefont. | true
-Tábla van | %{wurfl_cap_is_tablet} | Egy logikai érték, amely azt jelzi, hogy az eszköz egy tábla. A leírás megadása az operációs rendszer független. | true
-Vezeték nélküli eszköz | %{wurfl_cap_is_wireless_device} | Egy logikai érték, amely azt jelzi, hogy az eszköz vezeték nélküli eszköz nem megfelelőnek. | true
-Marketing neve | %{wurfl_cap_marketing_name} | Egy karakterlánc, amely megadja, hogy az eszköz marketing néven. | BlackBerry 8100 Pearl
-Mobil böngésző | %{wurfl_cap_mobile_browser} | Egy karakterlánc, amely azt jelzi, a böngésző, amelynek használatával a tartalmat igénylő az eszközről. | Chrome
-Mobil böngészőverzió | %{wurfl_cap_mobile_browser_version} | A böngészőben tartalom kérhet az eszköz használt verzióját jelző karakterlánc. | 31
-Modell neve | %{wurfl_cap_model_name} | Egy karakterlánc, amely azt jelzi, az eszköz modell neve. | s3
-Progresszív letöltés | %{wurfl_cap_progressive_download} | Egy logikai érték, amely jelzi, hogy az eszköz támogatja-e a audió és videó lejátszását, miközben továbbra is letöltése. | true
-Kiadás dátuma | %{wurfl_cap_release_date} | Egy olyan karakterlánc, amely jelzi a kiválasztott évhez és hónaphoz, amelyen az eszköz WURFL adatbázisba lett hozzáadva.<br/><br/>Formátum: `yyyy_mm` | 2013_december
-Megoldási magassága | %{wurfl_cap_resolution_height} | Az eszköz magassága képpontban jelző egész számot. | 768
-Megoldási szélessége | %{wurfl_cap_resolution_width} | Az eszköz szélességét képpontban jelző egész számot. | 1024
+Táblagépes van | %{wurfl_cap_is_tablet} | Egy logikai érték, amely azt jelzi, hogy az eszköz táblagépen. A leírás megadása nem operációs rendszer független. | true
+Vezeték nélküli eszköz | %{wurfl_cap_is_wireless_device} | Egy logikai érték, amely azt jelzi, hogy az eszköz számít-e a vezeték nélküli eszköz. | true
+Marketing neve | %{wurfl_cap_marketing_name} | Egy karakterlánc, amely azt jelzi, hogy az eszköz marketing nevét. | BlackBerry 8100-as Pearl
+Mobileszköz böngészőjében | %{wurfl_cap_mobile_browser} | Egy karakterlánc, amely azt jelzi, hogy a böngésző, amellyel tartalomkérelem az eszközről. | Chrome
+Mobil böngésző verziója | %{wurfl_cap_mobile_browser_version} | Egy karakterlánc, amely azt jelzi, hogy a használt böngészőtől függjön tartalom kérhet az eszköz verzióját. | 31
+Modell neve | %{wurfl_cap_model_name} | Egy karakterlánc, amely azt jelzi, hogy az eszköz modellneve. | s3
+Progresszív letöltés | %{wurfl_cap_progressive_download} | Egy logikai érték, amely jelzi, hogy az eszköz támogatja-e a hang és videó lejátszása, miközben továbbra is letöltése folyamatban. | true
+Kiadás dátuma | %{wurfl_cap_release_date} | Egy karakterlánc, amely azt jelzi, hogy az év és hónap, amelyen az eszköz hozzáadva a WURFL adatbázishoz.<br/><br/>Formátum: `yyyy_mm` | 2013_december
+Feloldási magassága | %{wurfl_cap_resolution_height} | Egész szám, amely azt jelzi, hogy az eszköz magasságát (képpontban). | 768
+Feloldási szélessége | %{wurfl_cap_resolution_width} | Egész szám, amely azt jelzi, hogy az eszköz szélességét (képpontban). | 1024
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
-### <a name="edge-cname"></a>Peremhálózati Cname
-Kapcsolatos információkat: 
-- A rendelkezésre álló biztonsági CNAME listáját ezen peremhálózati CNAME a platform, amelyen a szabálymotor konfigurálva van, a peremhálózati CNAME lapon konfigurált korlátozódik.
-- Mielőtt megkísérli egy peremhálózati CNAME-konfiguráció törlése, ellenőrizze, hogy egy biztonsági Cname egyezés állapot nem hivatkozik. Peremhálózati CNAME konfigurációt a szabályban definiált nem lehet törölni, a peremhálózati CNAME lapról. 
-- Ne használjon az és IF utasítást bizonyos egyezés feltételek kombinálhatók. Például egy peremhálózati Cname egyezés állapot egy ügyfél eredeti egyezik a feltétellel kombinálásával hozna létre egy egyező mintát, amely soha nem feleltethető. Ezért két széle Cname egyezés feltétel nem használható együtt keresztül az és IF utasítást.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
+### <a name="edge-cname"></a>Edge Cname
+Legfontosabb tudnivalókat: 
+- Elérhető edge CNAME rekordok listájának e edge CNAME-rekordokat a platform, amelyen a rules engine konfigurálva van a peremhálózati CNAME rekordok lapon konfigurált korlátozódik.
+- Mielőtt megkísérli törölni egy edge CNAME-konfigurációt, győződjön meg arról, hogy az Edge Cname egyeztetési feltételt nem hivatkozik. A szabályban definiált Edge CNAME-konfigurációk nem lehet törölni az Edge CNAME-rekordokat oldalról. 
+- Ne használja az és a egy IF utasítást úgy, hogy bizonyos egyezési feltételei. Például kombinálása egy Edge Cname az egyezési feltétellel rendelkező ügyfél kezdőpontja egyeztetési feltételt hozna létre, amely soha nem egyeztethető-egyeztetési minta. Ezért két Edge Cname egyezési feltételei keresztül egy és IF utasítás nelze kombinovat.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
 ### <a name="referring-domain"></a>Hivatkozó tartomány
-Az állomásnév társított a hivatkozó, amelyen keresztül a tartalmat a kért határozza meg, hogy a tartomány utaló feltétel teljesül. 
+A gazdagép nevét a hivatkozó, amelyen keresztül tartalmat kért meghatározza, hogy a tartomány hivatkozó feltétel teljesül-e társítva. 
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az utaló tartomány felel meg a feltétel teljesül:
-- **Egyezések**: a megadott értékekre hivatkozó állomásnév szükséges. 
-- **Nem felel meg does**: megköveteli, hogy a hivatkozó állomásnév nem egyezik a megadott érték.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a hivatkozó tartomány feltételnek megfelelő feltételek teljesülése:
+- **Egyezések**: A megadott értékekre hivatkozó állomásnév szükséges. 
+- **Nem felel meg**: Megköveteli, hogy a hivatkozó gazdagép neve nem egyezik a megadott érték.
 
-Kapcsolatos információkat:
-- Adjon meg több állomásnevet határoló mindegyiken akár egy szóköz.
-- Ez a feltétel egyezik támogatja [helyettesítő értékek](cdn-rules-engine-reference.md#wildcard-values).
-- Ha a megadott érték nem tartalmaz egy csillag, a hivatkozó névhez pontos egyezésűnek kell lennie. Például "tartomany.com" megadása nem megfelelő "www.mydomain.com."
-- Használja a **esetben figyelmen kívül hagyása** lehetőséget annak vezérléséhez, hogy kis-és nagybetűket összehasonlítást.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
+Legfontosabb tudnivalókat:
+- Adja meg az egy szóköz pedig külön határoló több állomásnevet.
+- Támogatja-e az egyezési feltétellel [helyettesítő karakteres értékek](cdn-rules-engine-reference.md#wildcard-values).
+- A megadott érték nem tartalmaz egy csillag, ha a hivatkozó névhez pontos egyezésűnek kell lennie. Például adja meg a "tartomany.com" nem felel meg a "www.mydomain.com."
+- Használja a **esetben figyelmen kívül hagyása** -e a kis-és nagybetűket összehasonlítás ellenőrzési lehetőséget.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---  
-### <a name="request-header-literal"></a>Kérelem fejléc szövegkonstans
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt a kérelem fejlécében literális felel meg, a feltétel teljesül.
-- **Egyezések**: a kérelem tartalmazza a megadott fejléc igényel. Az értékét meg kell egyeznie az egyeztetés feltétel definiált.
-- **Nem egyezik meg**: megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
+### <a name="request-header-literal"></a>Kérelem fejléce szövegkonstans
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a kérelem fejlécében szövegkonstans feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: A kérelem tartalmazza a megadott fejléc igényel. Az értékét meg kell egyeznie a az egyezési feltétellel megadott.
+- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
   - A megadott fejléc nem tartalmaz.
-  - A megadott fejléc tartalmaz, de értéke nem egyezik a definiált ez egyeznek az állapot.
+  - A megadott fejléc tartalmaz, de az érték nem felel meg, amely ezt az egyezési feltétellel van definiálva.
   
-Kapcsolatos információkat:
-- Mindig különböztetik meg a fejléc neve összehasonlítást. Használja a **esetben figyelmen kívül hagyása** lehetőséget a fejléc értéke összehasonlítást Kisbetű/nagybetű megkülönböztetése szabályozására.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
+Legfontosabb tudnivalókat:
+- Fejléc neve összehasonlítások mindig nagybetűk nincsenek megkülönböztetve. Használja a **esetben figyelmen kívül hagyása** szabályozhatja a fejléc értéke összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---  
-### <a name="request-header-regex"></a>Kérelem fejléc Regex
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt a kérelem fejlécében Regex felel meg a feltétel teljesül.
-- **Egyezések**: a kérelem tartalmazza a megadott fejléc igényel. Az értéknek meg kell felelnie a megadott mintának a megadott [reguláris kifejezés](cdn-rules-engine-reference.md#regular-expressions).
-- **Nem egyezik meg**: megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
+### <a name="request-header-regex"></a>Kérelem fejléce reguláris kifejezés
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a kérelem fejlécében Regex feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: A kérelem tartalmazza a megadott fejléc igényel. Az értékét meg kell egyeznie a megadott minta a megadott [reguláris kifejezés](cdn-rules-engine-reference.md#regular-expressions).
+- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
   - A megadott fejléc nem tartalmaz.
-  - A megadott fejléc tartalmaz, de az érték nem egyezik a megadott reguláris kifejezés.
+  - A megadott fejléc tartalmaz, de az érték nem egyezik meg a megadott reguláris kifejezés.
 
-Kapcsolatos információkat:
+Legfontosabb tudnivalókat:
 - Fejléc neve: 
-  - Különböztetik meg a fejléc neve összehasonlítást.
+  - Fejléc neve összehasonlítások megkülönböztetik a kis-és nagybetűket.
   - Cserélje le a fejléc neve szóközöket "% 20." 
-- Állomásfejléc-érték: 
-  - Egy állomásfejléc-érték reguláris kifejezéseket is előnyeit.
-  - Használja a **esetben figyelmen kívül hagyása** lehetőséget a fejléc értéke összehasonlítást Kisbetű/nagybetű megkülönböztetése szabályozására.
-  - Csak akkor, ha a fejléc értéke pontosan egyezik a megadott minta legalább egyike a egyezés feltétel teljesül.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult 
+- Fejléc értéke: 
+  - A fejléc értéke kihasználhatják a reguláris kifejezéseket.
+  - Használja a **esetben figyelmen kívül hagyása** szabályozhatja a fejléc értéke összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
+  - A match feltétel nem teljesül, csak akkor, ha egy fejléc értéke pontosan egyezik a megadott minták egyikét.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult 
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
-### <a name="request-header-wildcard"></a>Kérelem fejléc helyettesítő
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt a kérelem fejlécében helyettesítő felel meg a feltétel teljesül.
-- **Egyezések**: a kérelem tartalmazza a megadott fejléc igényel. Az értékét meg kell egyeznie az egyeztetés feltétel meghatározott értékek közül legalább egy.
-- **Nem egyezik meg**: megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
+### <a name="request-header-wildcard"></a>Kérelem fejléce helyettesítő karakter
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a kérelem fejlécében helyettesítő feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: A kérelem tartalmazza a megadott fejléc igényel. Az értékét meg kell egyeznie az értékeket, amelyeket ez az egyezési feltétellel vannak definiálva legalább egyike.
+- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
   - A megadott fejléc nem tartalmaz.
-  - A megadott fejléc tartalmaz, de az érték nem egyezik a megadott értékek valamelyikét.
+  - A megadott fejléc tartalmaz, de az érték nem egyezik a megadott értékeket.
   
-Kapcsolatos információkat:
+Legfontosabb tudnivalókat:
 - Fejléc neve: 
-  - Különböztetik meg a fejléc neve összehasonlítást.
-  - A fejléc neve szóközt kell írni a "% 20." Ez az érték használatával adja meg a szóközöket a fejléc értéke.
-- Állomásfejléc-érték: 
-  - A fejléc értéke kihasználhatják a [helyettesítő értékek](cdn-rules-engine-reference.md#wildcard-values).
-  - Használja a **esetben figyelmen kívül hagyása** lehetőséget a fejléc értéke összehasonlítást Kisbetű/nagybetű megkülönböztetése szabályozására.
-  - Az egyeztetés feltétel teljesül fejléc értéke pontosan megegyezik a megadott minta legalább egyikére.
-  - Adjon meg több érték határoló mindegyiken akár egy szóköz.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
+  - Fejléc neve összehasonlítások megkülönböztetik a kis-és nagybetűket.
+  - A fejléc neve szóközöket le kell cserélni "% 20." Ez az érték használatával adja meg a tárolóhelyek fejléc értékét.
+- Fejléc értéke: 
+  - A fejléc értéke kihasználhatják a [helyettesítő karakteres értékek](cdn-rules-engine-reference.md#wildcard-values).
+  - Használja a **esetben figyelmen kívül hagyása** szabályozhatja a fejléc értéke összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
+  - A fejléc értéke pontosan egyezik a megadott minták egyikét, ha a egyezés feltétel teljesül.
+  - Adja meg az egy szóköz pedig külön határoló több érték.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
-### <a name="request-method"></a>Kérési módszer
-A metódus egyezés feltétel nem teljesül, csak akkor, ha a kijelölt kérelem metódussal kért eszközök. A rendelkezésre álló kérelem megoldások a következők:
+### <a name="request-method"></a>Kérelmi metódus
+A kérelem metódusa egyezés feltétel nem teljesül, csak akkor, ha a eszközök kérik a kijelölt kérelem metódus segítségével. A kérelem elérhető módszerek a következők:
 - GET
 - HEAD 
 - POST 
 - BEÁLLÍTÁSOK 
-- A PUT 
+- PUT 
 - DELETE 
 - NYOMKÖVETÉSI 
 - CSATLAKOZÁS 
 
-Kapcsolatos információkat:
-- Alapértelmezés szerint csak a GET kérelem metódus hozhat létre a gyorsítótárazott tartalom a hálózaton. Minden más kérelem módszereket küldése a proxyn keresztül a hálózaton keresztül.
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
+Legfontosabb tudnivalókat:
+- Alapértelmezés szerint csak a GET metódust kérelem hozhat létre gyorsítótárazott tartalom a hálózaton. Minden más kérelem módszereket használ proxyt a hálózaton keresztül.
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
 ### <a name="request-scheme"></a>Kérelem séma
-A rendszer kérelem egyezés feltétel nem teljesül, csak akkor, ha a kiválasztott protokollal kért eszközök. A rendelkezésre álló protokollok a következők: 
+A kérelem séma egyezik feltétel nem teljesül, csak akkor, ha a eszközök kérik a kiválasztott protokollon keresztül. Az elérhető protokollok a következők: 
 - HTTP
 - HTTPS
 
-Kapcsolatos információkat:
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-  - Fejezze be a gyorsítótár kitöltés
-  - Alapértelmezett belső maximális életkora
-  - Kényszerített belső maximális életkora
-  - Figyelmen kívül hagyja az eredeti No-Cache
-  - Belső maximális elavult
+Legfontosabb tudnivalókat:
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+  - Complete Cache Fill
+  - Alapértelmezett belső Max-Age
+  - Belső Max-Age kényszerítése
+  - Ignore Origin No-Cache
+  - Belső maximális – elavult
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
 ### <a name="url-path-directory"></a>URL-cím elérési út könyvtár
-Azonosítja a kérelmet a relatív elérési utat, amely nem tartalmazza a kért objektum nevét.
+Azonosítja a kérelem relatív elérési úttal, amely nem tartalmazza a kért objektum a fájl nevét.
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az URL-cím elérési út Directory felel meg a feltétel teljesül.
-- **Megfelelő**: szükséges lehet relatív URL-cím elérési út, kivéve a fájl nevét, a megadott URL-cím bizonyos mintázatnak megfelelő a kérelmet.
-- **Nem felel meg does**: tartalmaz egy relatív URL-címe, kivéve a fájl nevét, nem egyezik a megadott URL-cím minta kérelem igényel.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út könyvtár feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: A kérés tartalmaz egy relatív URL-cím, kivéve a a fájlnevet, amely megfelel a megadott URL-minta igényel.
+- **Nem felel meg**: A kérés tartalmaz egy relatív URL-cím, kivéve a fájl neve, amely nem egyezik a megadott URL-minta igényel.
 
-Kapcsolatos információkat:
-- Használja a **viszonyítva** beállítással adhatja meg, hogy az URL-cím összehasonlítás előtt vagy után a tartalom-hozzáférési pont indításakor. A tartalom-hozzáférési pont, amely a Verizon CDN állomásnév és a relatív elérési útját a kért objektum (például /800001/CustomerOrigin) elérési út része. A kiszolgáló típusa (például a CDN-t vagy az ügyfelek forrás) által és a felhasználói fiók száma azonosítja.
+Legfontosabb tudnivalókat:
+- Használja a **a skálához képest** beállítással azt adhatja meg, hogy az URL-cím összehasonlítás kezdődik-e előtt vagy után a tartalom-hozzáférési pont. A tartalom-hozzáférési pont az elérési út és a Verizon CDN gazdagépnév, illetve relatív elérési útját a kért objektumhoz (például /800001/CustomerOrigin) között megjelenő része. Kiszolgáló típusa (például a CDN-t vagy az ügyfél forrás) egy hely és az ügyfél fiók száma azonosítja.
 
-   A következő értékek érhetők el a **viszonyítva** lehetőséget:
-   - **Legfelső szintű**: azt jelzi, hogy az URL-cím összehasonlítás elkezdi közvetlenül a CDN állomásnév után. 
+   A következő értékek érhetők el a **a skálához képest** lehetőséget:
+   - **Legfelső szintű**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi közvetlenül a CDN-gazdaneve után. 
 
      Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/SajátMappa**/index.htm
 
-   - **Forrás**: azt jelzi, hogy az URL-cím összehasonlítás elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a Verizon CDN állomásnév származási könyvtárához alapértelmezés szerint létrejön, Azure CDN felhasználónak kell használnia a **származási** érték. 
+   - **Forrás**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a forrás könyvtárát, a Verizon CDN gazdagépnevét alapértelmezés szerint létrejön, a felhasználók az Azure CDN-t kell használnia a **forrás** értéket. 
 
      Például: https:\//&lt;végpont&gt;.azureedge.net/**SajátMappa**/index.htm 
 
-     Az URL-cím a következő Verizon CDN állomásnév mutat: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**SajátMappa**/index.htm
+     Az URL-cím mutat a következő Verizon CDN gazdaneve: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**SajátMappa**/index.htm
 
-- CNAME URL-cím él az URL-cím összehasonlítás előtt CDN URL-címre van írni.
+- Az edge CNAME URL-cím újraírja van a CDN URL-CÍMÉT az URL-cím összehasonlítás előtt.
 
-    Például mind a következő URL-címeket az azonos eszköz mutasson, így rendelkezik azonos URL-címet.
-    - CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+    Például a következő két URL egyaránt az adott objektum mutasson, és ezért tudja az ugyanazon URL-címet.
+    - A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
     
     - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     További információ:
-    - Az egyéni tartomány: https:\//my.domain.com/path/asset.htm
+    - Egyéni tartomány: https:\//my.domain.com/path/asset.htm
     
-    - URL-címe (gyökeréhez viszonyítva): / 800001/CustomerOrigin/path /
+    - (Root) képest relatív URL-cím: / 800001/CustomerOrigin/path /
     
-    - URL-címe (forrás) viszonyítva: /path/
+    - (Forrás) képest relatív URL-cím: /path/
 
-- A URL-cím összehasonlítás véget ér, csak a fájl nevét, a kért eszköz előtt használt URL-CÍMÉT a részét. A záró perjelet Ez a típus elérési útjának utolsó karaktere.
+- Az URL-cím összehasonlító vége előtt a fájlnév a kért objektum használt URL-cím része. Záró perjellel az ilyen típusú elérési út az utolsó karakter.
     
-- Cserélje le az URL-cím elérési út mintája szereplő "% 20."
+- Cserélje le az URL-cím elérési út mintája a szóközt "% 20."
     
-- Minden egyes URL-cím elérési út mintája tartalmazhat egy vagy több csillagot (*), ha minden csillag megegyezik a karaktersorozatot, mely egy vagy több.
+- Minden egyes URL-cím elérési út mintája egy vagy több csillagot (*), ahol minden egyes csillag olyan sorozataira illeszkedik, egy vagy több karaktert tartalmazhat.
     
-- Megadhatja, több URL-cím elérési út a minta határoló mindegyiken akár egy szóköz.
+- Adja meg a több URL-cím elérési út a minta szerint határoló egyenként a szóköz.
 
     Például: * /sales/ * /marketing/
 
-- URL-cím elérési utat kihasználhatják a [helyettesítő értékek](cdn-rules-engine-reference.md#wildcard-values).
+- URL-cím elérési utat kihasználhatják a [helyettesítő karakteres értékek](cdn-rules-engine-reference.md#wildcard-values).
 
-- Használja a **esetben figyelmen kívül hagyása** vezérlőhöz lehetőséget, hogy egy kis-és nagybetűket összehasonlítás történik.
+- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
 ### <a name="url-path-extension"></a>URL-cím elérési út bővítmény
-Azonosítja a kérelmeket a kért eszköz fájl kiterjesztése.
+A fájl kiterjesztése a kért objektum azonosítja a kérelmeket.
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az URL-cím elérési út bővítmény felel meg a feltétel teljesül.
-- **Megfelelő**: a kérelem tartalmazza a fájlnév kiterjesztését, a megadott minta egyezik az URL-címet igényel.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út bővítmény feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: A kérelem tartalmazza, amely pontosan megegyezik a megadott minta fájlkiterjesztést az URL-cím szükséges.
 
-   Például ha megadja a "htm", "htm" eszközök teljesül, azonban nem "html" eszközök.  
+   Például ha megadja a "htm", "htm" eszközök megfeleltetődnek, azonban nem "html" eszközök.  
 
-- **Nem felel meg does**: az URL-kérelmet tartalmaz, amely nem egyezik a megadott minta fájlkiterjesztés igényel.
+- **Nem felel meg**: Az URL kérelmet tartalmaz, amely nem egyezik a megadott minta kiterjesztése igényel.
 
-Kapcsolatos információkat:
-- Adja meg a kívánt fájlkiterjesztéseket az megegyeznek a **érték** mezőbe. Nem tartalmaznak ponttal; például használni htm .htm helyett.
+Legfontosabb tudnivalókat:
+- Adja meg a kiterjesztések, a megfelelő a **érték** mezőbe. Nem tartalmaznak kezdődhetnek ponttal; Ha például használja htm .htm helyett.
 
-- Használja a **esetben figyelmen kívül hagyása** vezérlőhöz lehetőséget, hogy egy kis-és nagybetűket összehasonlítás történik.
+- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
 
-- Adjon meg több fájlkiterjesztések határoló a egyes kiterjesztések az egy szóköz. 
+- Adjon meg több fájlkiterjesztések határoló összes-bővítményt egy szóközzel. 
 
     Például: htm html
 
-- Például adja meg a "htm" megfelel "htm" eszközök, de nem a "html" eszközök.
+- Például adja meg a "htm" egyezik "htm" eszközök, de nem "html" eszközök.
 
 
 #### <a name="sample-scenario"></a>Mintaforgatókönyv
 
-Az alábbi minta-konfiguráció azt feltételezi, hogy ez egyezés a feltétel teljesül-e, amikor egy kérelem megfelel a megadott egyikével.
+A következő példa konfigurációja azt feltételezi, hogy a match feltétel teljesül-e, amikor egy kérelem megfelel a megadott bővítmények egyikének.
 
-Érték megadását: asp aspx php html
+Specifikáció érték: az asp aspx php html
 
-Ha úgy találja, hogy a következő kiterjesztések URL-címeket a egyezés feltétel teljesül:
+Ha úgy találja, a következő kiterjesztésű befejező URL-címek a match feltétel teljesül:
 - .asp
 - .aspx
 - .php
 - .html
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
-### <a name="url-path-filename"></a>URL-cím elérési út fájlnév
-A fájlnév, a kért eszköz azonosítja a kérelmeket. Ez egyeznek az állapot céljából a fájl nevét a kért eszköz, időtartamra és a fájlnévkiterjesztés (például index.html) nevéből áll.
+### <a name="url-path-filename"></a>URL-cím elérési_út fájlnév
+Azonosítja a kérelmeket a kért objektum a fájl nevét. Ezt az egyezési feltétellel céljából a fájl nevét a kért objektumhoz, időszak és a fájlkiterjesztés (például index.html) nevéből áll.
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az URL-cím elérési út fájlnév felel meg a feltétel teljesül.
-- **Megfelelő**: a kérelem tartalmazza a fájl nevét az URL-címet, amely megfelel a megadott minta a szükséges.
-- **Nem felel meg does**: a kérelem tartalmazza a fájl nevét az URL-címet, amely nem egyezik a megadott minta a szükséges.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út fájlnév feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: A kérelem a fájl nevét a hozzá tartozó URL-cím, amely megfelel a megadott minta tartalmaznia kell.
+- **Nem felel meg**: A kérelem a fájl nevét a hozzá tartozó URL-cím, amely nem egyezik a megadott minta tartalmaznia kell.
 
-Kapcsolatos információkat:
-- Használja a **esetben figyelmen kívül hagyása** vezérlőhöz lehetőséget, hogy egy kis-és nagybetűket összehasonlítás történik.
+Legfontosabb tudnivalókat:
+- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
 
-- Több fájlkiterjesztések megadásához külön a egyes kiterjesztések az egy szóköz.
+- Több fájlkiterjesztések megadásához külön mindegyik bővítmény egyetlen szóközzel.
 
-    Például: index.HTML index.html
+    Például: index.htm index.html
 
-- Cserélje le egy fájl név-érték szóközt "% 20."
+- Tárolóhelyek fájl nevének értékét cserélje le a(z) "% 20."
     
-- A fájl név-érték kihasználhatják a [helyettesítő értékek](cdn-rules-engine-reference.md#wildcard-values). Például minden Fájlnévminta tartalmazhat egy vagy több csillagot (*), ha minden csillag megegyezik a karaktersorozatot, mely egy vagy több.
+- Egy fájl név-érték kihasználhatják a [helyettesítő karakteres értékek](cdn-rules-engine-reference.md#wildcard-values). Például egyes Fájlnévminta tartalmazhat egy vagy több csillagot (*), ahol minden egyes csillag olyan sorozataira illeszkedik, egy vagy több karakter.
     
-- Ha a helyettesítő karakterek nincsenek megadva, csak pontos egyezést kielégítéséhez ez egyeznek az állapot.
+- Ha helyettesítő karaktereket nem meg van adva, csak pontos egyezés kielégíteni ezt az egyezési feltétellel.
 
-    Például adja meg a "bemutató.ppt" megfelel egy eszköz nevű, "bemutató.ppt", de nem egy elnevezett "presentation.pptx."
+    Például adja meg a "bemutató.ppt" megfelel egy "bemutató.ppt", de nem egy elnevezett "presentation.pptx." nevű objektum
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
 ### <a name="url-path-literal"></a>URL-cím elérési út szövegkonstans
-Összehasonlítja a kérelem URL-címe, beleértve a fájlnevet, és a megadott értéket.
+A kérelem URL-cím, beleértve a fájlnevet, és a megadott érték hasonlítja össze.
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az URL-cím elérési út literális felel meg, a feltétel teljesül.
-- **Megfelelő**: tartalmaz egy URL-címet, amely megfelel a megadott minta kérelem igényel.
-- **Nem felel meg does**: tartalmaz egy URL-címet, amely nem egyezik a megadott minta kérelem igényel.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út szövegkonstans feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: A kérés tartalmaz, amely megfelel a megadott minta egy URL-cím szükséges.
+- **Nem felel meg**: A kérés tartalmaz, amely nem egyezik a megadott minta egy URL-cím szükséges.
 
-Kapcsolatos információkat:
-- Használja a **viszonyítva** beállítással adhatja meg, hogy az URL-cím összehasonlítás elkezdi előtt vagy után a tartalom-hozzáférési pont. 
+Legfontosabb tudnivalókat:
+- Használja a **a skálához képest** beállítással azt adhatja meg, hogy az URL-cím összehasonlító elkezdi előtt vagy után a tartalom-hozzáférési pont. 
 
-    A következő értékek érhetők el a **viszonyítva** lehetőséget:
-     - **Legfelső szintű**: azt jelzi, hogy az URL-cím összehasonlítás elkezdi közvetlenül a CDN állomásnév után.
+    A következő értékek érhetők el a **a skálához képest** lehetőséget:
+     - **Legfelső szintű**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi közvetlenül a CDN-gazdaneve után.
 
        Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/myfolder/index.htm**
 
-     - **Forrás**: azt jelzi, hogy az URL-cím összehasonlítás elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a Verizon CDN állomásnév származási könyvtárához alapértelmezés szerint létrejön, Azure CDN felhasználónak kell használnia a **származási** érték. 
+     - **Forrás**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a forrás könyvtárát, a Verizon CDN gazdagépnevét alapértelmezés szerint létrejön, a felhasználók az Azure CDN-t kell használnia a **forrás** értéket. 
 
        Például: https:\//&lt;végpont&gt;.azureedge.net/**myfolder/index.htm**
 
-     Az URL-cím a következő Verizon CDN állomásnév mutat: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
+     Az URL-cím mutat a következő Verizon CDN gazdaneve: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
 
-- CNAME URL-cím él egy URL-cím összehasonlítás előtt CDN URL-címre van írni.
+- Az edge CNAME URL-cím URL-cím összehasonlítása előtt a CDN URL-címre van átírása.
 
-    Például egyaránt a következő URL-címeket az azonos eszköz mutasson, és így az azonos URL-címet rendelkezik:
-    - CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+    Például a következő két URL egyaránt mutasson az adott objektum, és ezért tudja az ugyanazon URL-címet:
+    - A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
     - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     További információ:
     
-    - URL-címe (gyökeréhez viszonyítva): /800001/CustomerOrigin/path/asset.htm
+    - (Root) képest relatív URL-cím: /800001/CustomerOrigin/path/asset.htm
    
-    - URL-címe (forrás) viszonyítva: /path/asset.htm
+    - (Forrás) képest relatív URL-cím: /path/asset.htm
 
-- Lekérdezési karakterláncok a URL-címben a rendszer figyelmen kívül hagyja.
-- Használja a **esetben figyelmen kívül hagyása** vezérlőhöz lehetőséget, hogy egy kis-és nagybetűket összehasonlítás történik.
-- Ez a feltétel egyezik a rendszer összehasonlítja a relatív elérési útja a pontos kérelmet az ügyfél által megadott érték.
+- Az URL-cím lekérdezési karakterláncok figyelmen kívül hagyja.
+- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
+- Ez az egyezési feltétellel a rendszer összehasonlítja a relatív elérési útját a pontos, az ügyfél által kezdeményezett kérelem számára megadott érték.
 
-- Egy adott könyvtár intézett összes kérelem kereséséhez használja a [URL-cím elérési út Directory](#url-path-directory) vagy a [URL-cím elérési út helyettesítő](#url-path-wildcard) feltételének.
+- Egy adott címtárhoz intézett összes kérelem megfelelően, használja a [URL-cím elérési út Directory](#url-path-directory) vagy a [URL-cím elérési út helyettesítő](#url-path-wildcard) feltételnek megfelelő.
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
-### <a name="url-path-regex"></a>URL-cím elérési út Regex
-A kérelem URL-címe a megadott összehasonlítja [reguláris kifejezés](cdn-rules-engine-reference.md#regular-expressions).
+### <a name="url-path-regex"></a>URL-cím elérési út reguláris kifejezés
+A kérelem URL-cím a megadott összehasonlítja [reguláris kifejezés](cdn-rules-engine-reference.md#regular-expressions).
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az URL-cím elérési út Regex felel meg a feltétel teljesül.
-- **Megfelelő**: igényel a kérelem egy URL-címet, amely megfelel a megadott reguláris kifejezést tartalmaz.
-- **Nem felel meg does**: igényel a kérelem egy URL-címet, amely nem egyezik a megadott reguláris kifejezést tartalmaz.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út Regex feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: A kérés tartalmaz egy URL-cím, amely megfelel a megadott reguláris kifejezést igényel.
+- **Nem felel meg**: A kérés tartalmaz egy URL-cím, amely nem egyezik a megadott reguláris kifejezést igényel.
 
-Kapcsolatos információkat:
-- CNAME URL-cím él URL-cím összehasonlítás előtt CDN URL-címre van írni. 
+Legfontosabb tudnivalókat:
+- Az edge CNAME URL-cím URL-cím összehasonlítása előtt a CDN URL-címre van átírása. 
  
-    Például mindkét URL-címeket az azonos eszköz mutasson, és így az azonos URL-címet rendelkezik.
+    Például mindkét URL-címeket az adott objektum mutasson, és így kell az azonos URL-címet.
 
-     - CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+     - A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
 
      - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
     
     További információ:
     
-     - URL-címe: /800001/CustomerOrigin/path/asset.htm
+     - URL-cím: /800001/CustomerOrigin/path/asset.htm
 
-- Lekérdezési karakterláncok a URL-címben a rendszer figyelmen kívül hagyja.
+- Az URL-cím lekérdezési karakterláncok figyelmen kívül hagyja.
     
-- Használja a **esetben figyelmen kívül hagyása** vezérlőhöz lehetőséget, hogy egy kis-és nagybetűket összehasonlítás történik.
+- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
     
-- Az URL-cím elérési út szóközöket le kell cserélni "% 20."
+- Az URL-címet a tárolóhelyek le kell cserélni "% 20."
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
 ### <a name="url-path-wildcard"></a>URL-cím elérési út helyettesítő karakter
-Összehasonlítja a kérelem relatív URL-cím elérési útját a megadott helyettesítő karakterrel.
+A kérelem relatív URL-cím elérési útját a megadott helyettesítő karakterrel hasonlítja össze.
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az URL-cím elérési út helyettesítő karakter felel meg a feltétel teljesül.
-- **Megfelelő**: igényel az egy URL-címet, amely megfelel a megadott helyettesítő karakterrel tartalmaz a kérelem.
-- **Nem felel meg does**: igényel az egy URL-címet, amely nem egyezik a megadott helyettesítő karakterrel tartalmaz a kérelem.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím elérési út helyettesítő feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: A kérés tartalmaz egy URL-cím, amely megfelel a megadott helyettesítő karakterrel kell.
+- **Nem felel meg**: A kérés tartalmaz egy URL-cím, amely nem egyezik a megadott helyettesítő karakterrel kell.
 
-Kapcsolatos információkat:
-- **A relatív** beállítás: Ez a beállítás azt határozza meg, hogy az URL-cím összehasonlítás elkezdi előtt vagy után a tartalom-hozzáférési pont.
+Legfontosabb tudnivalókat:
+- **A skálához képest** lehetőséget: Ez a beállítás határozza meg, hogy az URL-cím összehasonlító elkezdi előtt vagy után a tartalom-hozzáférési pont.
 
    Ez a beállítás a következő értékeket veheti fel:
-     - **Legfelső szintű**: azt jelzi, hogy az URL-cím összehasonlítás elkezdi közvetlenül a CDN állomásnév után.
+     - **Legfelső szintű**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi közvetlenül a CDN-gazdaneve után.
 
        Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/myfolder/index.htm**
 
-     - **Forrás**: azt jelzi, hogy az URL-cím összehasonlítás elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a Verizon CDN állomásnév származási könyvtárához alapértelmezés szerint létrejön, Azure CDN felhasználónak kell használnia a **származási** érték. 
+     - **Forrás**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a forrás könyvtárát, a Verizon CDN gazdagépnevét alapértelmezés szerint létrejön, a felhasználók az Azure CDN-t kell használnia a **forrás** értéket. 
 
        Például: https:\//&lt;végpont&gt;.azureedge.net/**myfolder/index.htm**
 
-     Az URL-cím a következő Verizon CDN állomásnév mutat: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
+     Az URL-cím mutat a következő Verizon CDN gazdaneve: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
 
-- CNAME URL-cím él URL-cím összehasonlítás előtt CDN URL-címre van írni.
+- Az edge CNAME URL-cím URL-cím összehasonlítása előtt a CDN URL-címre van átírása.
 
-    Például egyaránt a következő URL-címeket az azonos eszköz mutasson, és így az azonos URL-címet rendelkezik:
-     - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+    Például a következő két URL egyaránt mutasson az adott objektum, és ezért tudja az ugyanazon URL-címet:
+     - A CDN URL-címe: http://wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
      - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     További információ:
     
-     - URL-címe (gyökeréhez viszonyítva): /800001/CustomerOrigin/path/asset.htm
+     - (Root) képest relatív URL-cím: /800001/CustomerOrigin/path/asset.htm
     
-     - URL-címe (forrás) viszonyítva: /path/asset.htm
+     - (Forrás) képest relatív URL-cím: /path/asset.htm
     
-- Adjon meg több URL-cím elérési út határoló mindegyiken akár egy szóköz.
+- Adja meg az egy szóköz pedig külön határoló több URL-cím elérési út.
 
    Például: /marketing/asset.* /sales/*.htm
 
-- Lekérdezési karakterláncok a URL-címben a rendszer figyelmen kívül hagyja.
+- Az URL-cím lekérdezési karakterláncok figyelmen kívül hagyja.
     
-- Használja a **esetben figyelmen kívül hagyása** vezérlőhöz lehetőséget, hogy egy kis-és nagybetűket összehasonlítás történik.
+- Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
     
-- Cserélje le az URL-cím elérési út szóközöket "% 20."
+- Cserélje le az URL-címet a tárolóhelyek "% 20."
     
-- Egy URL-címe kihasználhatják a megadott [helyettesítő értékek](cdn-rules-engine-reference.md#wildcard-values). Minden egyes URL-cím elérési út mintája tartalmazhat egy vagy több csillagot (*), ahol minden csillag is megegyezhet, a karaktersorozatot, mely egy vagy több.
+- Egy URL-cím kihasználhatják a megadott érték [helyettesítő karakteres értékek](cdn-rules-engine-reference.md#wildcard-values). Minden egyes URL-cím elérési út mintája tartalmazhat egy vagy több csillagot (*), ahol minden egyes csillag meg tudja egy vagy több karakter sorozata.
 
 #### <a name="sample-scenarios"></a>Mintaforgatókönyvek
 
-A minta-konfigurációja az alábbi táblázat azt feltételezik, hogy ez egyezés a feltétel teljesül-e, amikor egy kérelem megfelel a megadott URL-minta:
+A minta konfigurációkat az alábbi táblázat azt feltételezik, hogy a match feltétel teljesül-e, amikor egy kérelem megfelel a megadott URL-minta:
 
 Érték                   | A viszonyítva    | Eredmény 
 ------------------------|----------------|-------
-*/test.html */test.php  | A legfelső szintű vagy forrása | Ez a minta egyezik a kérelem "test.html" vagy "test.php" bármely mappában nevű eszközök.
-/80ABCD/origin/text/*   | Gyökér           | Ez a minta egyezik, amikor a kért eszköz megfelel-e a következő feltételeknek: <br />-Kell lennie egy ügyfél forrás neve "origin." <br />– A relatív elérési út egy "szöveg" nevű mappát kell kezdődnie. Ez azt jelenti, hogy a kért eszköz elhelyezkedhet a "text" mappában vagy egy rekurzív almappája.
-*/CSS/* */js/*          | A legfelső szintű vagy forrása | Ebben a mintában a rendszer megkeres minden CDN vagy peremhálózati egy css vagy js mappát tartalmazó CNAME URL-címeket.
-*.jpg *.gif *.png       | A legfelső szintű vagy forrása | Ebben a mintában a rendszer megkeres minden CDN vagy peremhálózati CNAME URL-címek .jpg, .gif vagy .png végződő által. Adja meg ezt a mintát egy alternatív módja van a [URL-cím elérési út bővítmény felel meg a feltétel](#url-path-extension).
-/ képek / * / media / *      | Forrás         | Ez a minta egyezik CDN vagy peremhálózati relatív elérési úton kezdődik-e egy "képek" vagy "media" mappa CNAME URL-címeket. <br />- CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
+*/test.html */test.php  | Legfelső szintű vagy a forrás | Ez a minta egyezik "test.html" vagy "test.php" bármelyik mappájában nevű eszközök kérelmek szerint.
+/80ABCD/origin/text/*   | Gyökér           | Ez a minta egyezik, ha a kért objektum megfelel a következő feltételeknek: <br />-Kell lennie, egy ügyfél forrás neve "origin". <br />– A relatív elérési út "szöveg." nevű mappát kell kezdődnie. A kért objektumhoz, vagy lehetnek a "text" mappában vagy egy rekurzív almappája.
+*/CSS/* */js/*          | Legfelső szintű vagy a forrás | Ez a minta egyezik az összes CDN vagy edge egy css vagy js mappát tartalmazó CNAME URL-címeket.
+*.jpg *.gif *.png       | Legfelső szintű vagy a forrás | Ez a minta egyezik a CDN- vagy peremtábla CNAME URL-címekhez .jpg, .gif, vagy .png végződésű. Adja meg ezt a mintát egy másik módja a [URL-cím elérési út bővítmény feltételnek megfelelő](#url-path-extension).
+/ képek / * / media / *      | Forrás         | Ez a minta egyezik a CDN- vagy peremtábla CNAME URL-címek, amelyek relatív elérési út egy "rendszerképek" vagy "média" mappa kezdődik. <br />– A CDN URL-cím: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
-### <a name="url-query-literal"></a>Lekérdezés-szövegkonstans URL-címe
-Összehasonlítja a lekérdezési karakterlánc és a megadott értéket.
+### <a name="url-query-literal"></a>URL-cím lekérdezési szövegkonstans
+A kérelem lekérdezési karakterláncát a megadott érték hasonlítja össze.
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az URL-cím lekérdezés literális felel meg, a feltétel teljesül.
-- **Megfelelő**: a kérelmet tartalmaz egy URL-lekérdezési karakterláncot, amely megfelel a megadott lekérdezési karakterlánc szükséges.
-- **Nem felel meg does**: a kérelmet tartalmaz egy URL-lekérdezési karakterláncot, amely nem egyezik a megadott lekérdezési karakterlánc szükséges.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím lekérdezési szövegkonstans feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: A kérés tartalmaz egy URL-cím lekérdezési karakterláncot, amely megfelel a megadott lekérdezési karakterlánc szükséges.
+- **Nem felel meg**: A kérés tartalmaz egy URL-cím lekérdezési karakterláncot, amely nem egyezik a megadott lekérdezési karakterlánc szükséges.
 
-Kapcsolatos információkat:
+Legfontosabb tudnivalókat:
 
-- Csak a pontos lekérdezés karakterlánc megfelel a egyezés probléma kielégítéséhez.
+- Csak a pontos lekérdezés karakterlánc megfelel megfelelnek-e az egyezési feltétellel.
     
-- Használja a **esetben figyelmen kívül hagyása** lehetőséget a lekérdezési karakterláncok összehasonlítására Kisbetű/nagybetű megkülönböztetése szabályozására.
+- Használja a **esetben figyelmen kívül hagyása** szabályozhatja a lekérdezési karakterlánc-összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
     
-- A lekérdezési karakterlánc értéke szöveges bevezető kérdőjelet (?) nem tartalmaz.
+- Ne vegyen fel egy vezető kérdőjelet (?) a lekérdezési karakterlánc értéke szöveget.
     
-- Bizonyos karakterek megkövetelése URL-kódolást. Használja az URL-címre százalékos szimbólum kódolás a következő karaktereket:
+- Bizonyos karakterek megkövetelése URL-Címének kódolása. A százalékos szimbólum URL-címét használja a következő karakterek kódolása:
 
-   Karakter | URL-kódolás
+   Karakter | URL-Címének kódolása
    ----------|---------
    Űr     | %20
    &         | %25
 
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-   - Fejezze be a gyorsítótár kitöltés
-   - Alapértelmezett belső maximális életkora
-   - Kényszerített belső maximális életkora
-   - Figyelmen kívül hagyja az eredeti No-Cache
-   - Belső maximális elavult
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+   - Complete Cache Fill
+   - Alapértelmezett belső Max-Age
+   - Belső Max-Age kényszerítése
+   - Ignore Origin No-Cache
+   - Belső maximális – elavult
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
 ### <a name="url-query-parameter"></a>URL-cím lekérdezési paraméter
-A megadott lekérdezési karakterlánc-paramétert tartalmazó kérések azonosítja. Ez a paraméter értéke egy érték, amely megegyezik a megadott mintával. Lekérdezési karakterlánc-paramétert (például paraméter = érték) a kérelem URL-CÍMÉT határozza meg, hogy ez a feltétel teljesül. Ez egyezés a feltétel azonosítja a lekérdezési karakterlánc paraméterként a neve, és egy vagy több értéket a paraméter értéke a fogad. 
+A megadott lekérdezési karakterláncot tartalmazó kérelmek azonosítja. Ez a paraméter, amely egy megadott mintának megfelelő értékre van állítva. Lekérdezési karakterlánc paramétert (például paraméter = érték) a kérés URL-címe határozza meg, hogy ez a feltétel teljesül. Ez az egyezési feltétellel annak neve azonosítja a lekérdezési karakterlánc paramétereként, és a paraméter értékeként egy vagy több értéket fogad el. 
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az URL-cím lekérdezési paraméter felel meg a feltétel teljesül.
-- **Megfelelő**: vonatkozó kérelmet tartalmaz, amely megfelel az egyeztetés feltétel meghatározott értékek közül legalább egy értéket a megadott paraméter szükséges.
-- **Nem egyezik meg**: megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím lekérdezési paramétert a feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: Kell tartalmaznia a megadott paraméter értéke megegyezik az ezen az egyezési feltétellel meghatározott értékek közül legalább egy kérelmet.
+- **Nem felel meg**: Megköveteli, hogy a kérelem megfelel a következő feltételek valamelyike:
   - A megadott paraméter nem tartalmaz.
-  - A megadott paraméter tartalmaz, de értéke nem egyezik meg bármely egyezés feltétel definiált eleme.
+  - A megadott paraméter tartalmazza, de az érték nem egyezik meg az értékeket, hogy ez az egyezési feltétellel vannak meghatározva.
 
-Ez a feltétel egyezik egyszerűen adja meg a név-érték paraméterkombinációk biztosít. További rugalmasságot biztosít a lekérdezési karakterlánc paraméterként megfelelő, ha fontolja meg a [URL-cím lekérdezés helyettesítő](#url-query-wildcard) feltételének.
+Ez az egyezési feltétellel nyújt egy egyszerű módja annak, hogy adja meg a név-érték párok paraméterkombinációk. A nagyobb rugalmasság biztosítására, ha a lekérdezési sztring paramétereként vannak egyeztetéséhez, fontolja meg a [URL-cím lekérdezési helyettesítő](#url-query-wildcard) feltételnek megfelelő.
 
-Kapcsolatos információkat:
-- Ez egyeznek az állapot-példányonként csak egy egyetlen URL-cím lekérdezési paraméter neve adható meg.
+Legfontosabb tudnivalókat:
+- Ez az egyezési feltétellel-példányonként csak egy egyetlen URL-cím lekérdezési paraméter neve adható meg.
     
-- Helyettesítő karakteres értékek használata nem támogatott, ha a paraméter neve meg van adva, mert csak a pontos paraméter neve megegyezik jogosultak az összehasonlításhoz.
-- Paraméter értékének tartalmazhatnak [helyettesítő értékek](cdn-rules-engine-reference.md#wildcard-values).
-   - Minden paraméter értéke minta egy vagy több csillagot (*), ahol minden csillag is megegyezhet, a karaktersorozatot, mely egy vagy több állhat.
-   - Bizonyos karakterek megkövetelése URL-kódolást. Használja az URL-címre százalékos szimbólum kódolás a következő karaktereket:
+- Helyettesítő karakteres értékek használata nem támogatott, ha a paraméter neve meg van adva, mert csak a pontos paraméter neve egyezik jogosultak az összehasonlítást.
+- Paraméter érték(ek) tartalmazhatnak [helyettesítő karakteres értékek](cdn-rules-engine-reference.md#wildcard-values).
+   - Minden paraméter értéke minta tartalmazhat egy vagy több csillagot (*), ahol minden egyes csillag meg tudja egy vagy több karakter sorozata.
+   - Bizonyos karakterek megkövetelése URL-Címének kódolása. A százalékos szimbólum URL-címét használja a következő karakterek kódolása:
 
-       Karakter | URL-kódolás
+       Karakter | URL-Címének kódolása
        ----------|---------
        Űr     | %20
        &         | %25
 
-- Adja meg a lekérdezési karakterlánc paraméter több értéket határoló mindegyiken akár egy szóköz. Az egyeztetés feltétel teljesül, amikor egy kérelem tartalmazza a megadott név-érték kombinációk egyikét.
+- Adja meg a lekérdezési karakterlánc paraméter több értéket határoló egyenként a szóköz. Amikor egy kérés a megadott név-érték párok kombinációk egyikét tartalmazza a match feltétel teljesül.
 
    - 1. példa:
 
-     - A konfiguráció:
+     - Konfigurálás:
 
-       ValueA ValueB
+       Érték1, érték2
 
-     - Ez a konfiguráció megfelel a következő lekérdezési karakterlánc paramétereket:
+     - Ez a konfiguráció megfelel a következő lekérdezési karakterlánc paraméterei:
 
        Parameter1=ValueA
     
@@ -839,133 +839,133 @@ Kapcsolatos információkat:
 
    - 2. példa
 
-     - A konfiguráció: 
+     - Konfigurálás: 
 
-        % 20A érték % 20B érték
+        Value%20A Value%20B
 
-     - Ez a konfiguráció megfelel a következő lekérdezési karakterlánc paramétereket:
+     - Ez a konfiguráció megfelel a következő lekérdezési karakterlánc paraméterei:
 
        Parameter1=Value%20A
 
        Parameter1=Value%20B
 
-- Csak akkor van legalább egy, a megadott lekérdezési karakterlánc név-érték kombinációk pontos egyezést e egyezés feltétel teljesül.
+- Csak akkor, ha van legalább egy név-érték párok kombinációja megadott lekérdezési karakterlánc pontos egyezést e egyezés feltétel teljesül.
 
-   Például az előző példában a konfigurációt használja, ha a paraméter név-érték kombinációja "Parameter1 = ValueAdd" nem tekint egyezés. Azonban a következő értékek egyikét adja meg, ha azt fog egyezni, hogy a név/érték kombinációja:
+   Például, ha az előző példában a konfigurációt használ, a paraméter név-érték párok kombináció "Parameter1 = ValueAdd" nem tekintik egyezést. Azonban a következő értékek egyikét adja meg, ha azt, hogy a név-érték párok kombináció egyezni fog:
 
-   - ValueA ValueB ValueAdd
-   - ValueA * ValueB
+   - Érték1, érték2 ValueAdd
+   - ValueA* ValueB
 
-- Használja a **esetben figyelmen kívül hagyása** lehetőséget a lekérdezési karakterláncok összehasonlítására Kisbetű/nagybetű megkülönböztetése szabályozására.
+- Használja a **esetben figyelmen kívül hagyása** szabályozhatja a lekérdezési karakterlánc-összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
     
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-   - Fejezze be a gyorsítótár kitöltés
-   - Alapértelmezett belső maximális életkora
-   - Kényszerített belső maximális életkora
-   - Figyelmen kívül hagyja az eredeti No-Cache
-   - Belső maximális elavult
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+   - Complete Cache Fill
+   - Alapértelmezett belső Max-Age
+   - Belső Max-Age kényszerítése
+   - Ignore Origin No-Cache
+   - Belső maximális – elavult
 
 #### <a name="sample-scenarios"></a>Használati példák
-A következő példa bemutatja, hogyan működik ez a beállítás adott helyzetekben:
+A következő példa bemutatja, hogy ez a beállítás működéséről adott helyzetekben:
 
 Name (Név)  | Érték |  Eredmény
 ------|-------|--------
-Felhasználó  | Joe   | Ez a minta egyezik a kért URL-címhez tartozó lekérdezési karakterlánc esetén "? felhasználó = joe."
-Felhasználó  | *     | Ez a minta egyezik, amikor a kért URL-címhez tartozó lekérdezési karakterlánc egy felhasználó paramétert tartalmaz.
-E-mail | Joe\* | Ez a minta egyezik, amikor a kért URL-címhez tartozó lekérdezési karakterlánc a "Joe." kezdetű E-mail paramétert tartalmaz
+Felhasználó  | János   | Ez a minta egyezik a kért URL-cím lekérdezési karakterlánc esetén "? felhasználói János =."
+Felhasználó  | *     | Ez a minta egyezik, ha a kért URL-cím lekérdezési karakterláncot tartalmaz egy felhasználó paramétert.
+E-mail | János\* | Ez a minta egyezik, ha a kért URL-cím lekérdezési karakterláncot tartalmaz egy e-mailek paraméter, amely elindítja a "János".
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
-### <a name="url-query-regex"></a>Lekérdezés Regex URL-címe
-A megadott lekérdezési karakterlánc-paramétert tartalmazó kérések azonosítja. Ez a paraméter értéke, amely megfelel a megadott érték [reguláris kifejezés](cdn-rules-engine-reference.md#regular-expressions).
+### <a name="url-query-regex"></a>URL-cím lekérdezési reguláris kifejezés
+A megadott lekérdezési karakterláncot tartalmazó kérelmek azonosítja. Ez a paraméter értéke, amely megfelel a megadott érték [reguláris kifejezés](cdn-rules-engine-reference.md#regular-expressions).
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az URL-lekérdezés Regex felel meg a feltétel teljesül.
-- **Megfelelő**: igényel a kérelem egy URL-lekérdezési karakterláncot, amely megfelel a megadott reguláris kifejezést tartalmaz.
-- **Nem felel meg does**: igényel a kérelem egy URL-lekérdezési karakterláncot, amely nem egyezik a megadott reguláris kifejezést tartalmaz.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím lekérdezési Regex feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: Szükséges a kérelem URL-cím lekérdezési karakterláncot, amely megfelel a megadott reguláris kifejezést tartalmaz.
+- **Nem felel meg**: Szükséges a kérelem URL-cím lekérdezési karakterláncot, amely nem egyezik a megadott reguláris kifejezést tartalmaz.
 
-Kapcsolatos információkat:
-- Csak a megadott reguláris kifejezésnek pontosan megegyezik ez egyeznek az állapot kielégítéséhez.
+Legfontosabb tudnivalókat:
+- Csak pontos egyezések a megadott reguláris kifejezést megfelelnek-e az egyezési feltétellel.
     
-- Használja a **esetben figyelmen kívül hagyása** lehetőséget a lekérdezési karakterláncok összehasonlítására Kisbetű/nagybetű megkülönböztetése szabályozására.
+- Használja a **esetben figyelmen kívül hagyása** szabályozhatja a lekérdezési karakterlánc-összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
     
-- Ez a beállítás az alkalmazásában egy lekérdezési karakterlánc kezdődik-e az első karakter után a kérdőjel (?) elválasztó, a lekérdezési karakterlánc.
+- Ez a beállítás az alkalmazásában egy lekérdezési karakterlánc kezdődik az első karakter után a kérdőjel (?) elválasztó, a lekérdezési karakterlánc.
     
-- Bizonyos karakterek megkövetelése URL-kódolást. Használja az URL-címre százalékos szimbólum kódolás a következő karaktereket:
+- Bizonyos karakterek megkövetelése URL-Címének kódolása. A százalékos szimbólum URL-címét használja a következő karakterek kódolása:
 
-   Karakter | URL-kódolás | Érték
+   Karakter | URL-Címének kódolása | Érték
    ----------|--------------|------
    Űr     | %20          | \%20
    &         | %25          | \%25
 
-   Vegye figyelembe, hogy százalékos szimbólumokat kell megjelölni.
+   Vegye figyelembe, hogy százalékos szimbólumok escape-karakterrel.
 
-- Speciális reguláris kifejezés dupla-escape-karakterek (például \^$. +) egy fordított perjel szerepeljenek a reguláris kifejezés.
+- Speciális reguláris kifejezést Double-escape-karakter (például \^$. +) egy fordított perjel szerepeljenek a reguláris kifejezés.
 
    Példa:
 
-   Érték | Értelmezésre 
+   Érték | -Ként 
    ------|---------------
    \\+    | +
    \\\\+   | \\+
 
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-   - Fejezze be a gyorsítótár kitöltés
-   - Alapértelmezett belső maximális életkora
-   - Kényszerített belső maximális életkora
-   - Figyelmen kívül hagyja az eredeti No-Cache
-   - Belső maximális elavult
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+   - Complete Cache Fill
+   - Alapértelmezett belső Max-Age
+   - Belső Max-Age kényszerítése
+   - Ignore Origin No-Cache
+   - Belső maximális – elavult
 
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
 ---
-### <a name="url-query-wildcard"></a>Lekérdezés helyettesítő URL-címe
-A megadott értékeket, szemben a lekérdezési karakterlánc hasonlítja össze.
+### <a name="url-query-wildcard"></a>URL-cím lekérdezési helyettesítő karakter
+A megadott értékeket, szemben a kérelem lekérdezési karakterláncában hasonlítja össze.
 
-A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, amely alatt az URL-cím lekérdezés helyettesítő felel meg a feltétel teljesül.
-- **Megfelelő**: a kérés tartalmaz egy URL-lekérdezési karakterláncot, amely megfelel a megadott helyettesítő karakteres érték szükséges.
-- **Nem felel meg does**: a kérés tartalmaz egy URL-lekérdezési karakterláncot, amely nem egyezik a megadott helyettesítő karakteres érték szükséges.
+A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az URL-cím lekérdezési helyettesítő feltételnek megfelelő feltételek teljesülése.
+- **Egyezések**: A kérés tartalmaz egy URL-cím lekérdezési karakterláncot, amely megfelel a megadott helyettesítő karakteres érték szükséges.
+- **Nem felel meg**: A kérés tartalmaz egy URL-cím lekérdezési karakterláncot, amely nem egyezik a megadott helyettesítő karakteres érték szükséges.
 
-Kapcsolatos információkat:
-- Ez a beállítás az alkalmazásában egy lekérdezési karakterlánc kezdődik-e az első karakter után a kérdőjel (?) elválasztó, a lekérdezési karakterlánc.
-- A paraméterértékek tartalmazhatnak [helyettesítő értékek](cdn-rules-engine-reference.md#wildcard-values):
-   - Minden paraméter értéke minta egy vagy több csillagot (*), ahol minden csillag is megegyezhet, a karaktersorozatot, mely egy vagy több állhat.
-   - Bizonyos karakterek megkövetelése URL-kódolást. Használja az URL-címre százalékos szimbólum kódolás a következő karaktereket:
+Legfontosabb tudnivalókat:
+- Ez a beállítás az alkalmazásában egy lekérdezési karakterlánc kezdődik az első karakter után a kérdőjel (?) elválasztó, a lekérdezési karakterlánc.
+- Paraméterértékek tartalmazhatnak [helyettesítő karakteres értékek](cdn-rules-engine-reference.md#wildcard-values):
+   - Minden paraméter értéke minta tartalmazhat egy vagy több csillagot (*), ahol minden egyes csillag meg tudja egy vagy több karakter sorozata.
+   - Bizonyos karakterek megkövetelése URL-Címének kódolása. A százalékos szimbólum URL-címét használja a következő karakterek kódolása:
 
-     Karakter | URL-kódolás
+     Karakter | URL-Címének kódolása
      ----------|---------
      Űr     | %20
      &         | %25
 
-- Adjon meg több érték határoló mindegyiken akár egy szóköz.
+- Adja meg az egy szóköz pedig külön határoló több érték.
 
-   Például: *Parameter1 = ValueA* *ValueB* *Parameter1 = ValueC & Parameter2 = ValueD*
+   Példa: *Parameter1=ValueA* *ValueB* *Parameter1=ValueC&Parameter2=ValueD*
 
-- Csak pontosan megegyezik a megadott lekérdezési karakterlánc minták legalább egy elégíti ki ez egyeznek az állapot.
+- Csak pontos egyezések a megadott lekérdezési karakterlánc mintáit legalább egy megfelelnek-e az egyezési feltétellel.
     
-- Használja a **esetben figyelmen kívül hagyása** lehetőséget a lekérdezési karakterláncok összehasonlítására Kisbetű/nagybetű megkülönböztetése szabályozására.
+- Használja a **esetben figyelmen kívül hagyása** szabályozhatja a lekérdezési karakterlánc-összehasonlítások Kisbetű/nagybetű megkülönböztetése lehetőséget.
     
-- Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
-   - Fejezze be a gyorsítótár kitöltés
-   - Alapértelmezett belső maximális életkora
-   - Kényszerített belső maximális életkora
-   - Figyelmen kívül hagyja az eredeti No-Cache
-   - Belső maximális elavult
+- A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
+   - Complete Cache Fill
+   - Alapértelmezett belső Max-Age
+   - Belső Max-Age kényszerítése
+   - Ignore Origin No-Cache
+   - Belső maximális – elavult
 
 #### <a name="sample-scenarios"></a>Használati példák
-A következő példa bemutatja, hogyan működik ez a beállítás adott helyzetekben:
+A következő példa bemutatja, hogy ez a beállítás működéséről adott helyzetekben:
 
  Name (Név)                 | Leírás
  ---------------------|------------
-user=joe              | Ez a minta egyezik a kért URL-címhez tartozó lekérdezési karakterlánc esetén "? felhasználó = joe."
-\*user=\* \*optout=\* | Ez a minta egyezik, amikor a CDN URL-lekérdezés tartalmazza a felhasználó vagy a optout paraméter.
+user=joe              | Ez a minta egyezik a kért URL-cím lekérdezési karakterlánc esetén "? felhasználói János =."
+\*felhasználó =\* \*optout =\* | Ez a minta egyezik, amikor a CDN URL-lekérdezés tartalmazza a felhasználó vagy a optout paraméter.
 
-[Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
+[Vissza a tetejére](#main)
 
 </br>
 
@@ -974,5 +974,5 @@ user=joe              | Ez a minta egyezik a kért URL-címhez tartozó lekérde
 * [Szabálymotor-referencia](cdn-rules-engine-reference.md)
 * [Szabálymotor feltételes kifejezései](cdn-rules-engine-reference-conditional-expressions.md)
 * [Szabálymotor funkciói](cdn-rules-engine-reference-features.md)
-* [A szabályok használata alapértelmezett HTTP működés felülbírálata](cdn-rules-engine.md)
+* [A rules engine használatával a HTTP alapértelmezés felülbírálása](cdn-rules-engine.md)
 

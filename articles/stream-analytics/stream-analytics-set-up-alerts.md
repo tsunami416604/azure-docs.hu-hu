@@ -7,14 +7,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d32a201da5befbc8b68148f0b051e283ec289
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412389"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769489"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Állítsa be a riasztásokat az Azure Stream Analytics-feladatok
 
@@ -46,17 +46,17 @@ A következő példa bemutatja, hogyan állítható be a riasztások, a feladat 
 
    ![Az Azure Stream Analytics-feladat riasztás beállítása](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. A **erőforrás**, **feltétel**, és **MŰVELETCSOPORTOK** kell minden egyes egy bejegyzést.
+7. A **erőforrás**, **feltétel**, és **MŰVELETCSOPORTOK** kell minden egyes egy bejegyzést. Ne feledje, hogy ahhoz, hogy a riasztások üzenetszám, a megadott feltételeket, amelyeknek teljesülniük kell. Például akkor mérni tudja átlagos értéke a metrika az elmúlt 15 perc, 5 percenként.
 
    ![Stream Analytics riasztási szabály létrehozása](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
    Adjon hozzá egy **riasztási szabály neve**, **leírása**, és a **erőforráscsoport** , a **riasztás részletei** , és kattintson a **létrehozása riasztás a szabály** a szabály a Stream Analytics-feladat létrehozásához.
 
    ![Stream Analytics riasztási szabály létrehozása](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
-
+   
 ## <a name="scenarios-to-monitor"></a>Forgatókönyvek figyelése
 
-Az alábbi riasztások használata akkor javasolt, a Stream Analytics-feladatok teljesítményének monitorozásához. Ezeket a metrikákat a legutóbbi 5 perces időszak alatt percenként kell kiértékelni. Ha a feladat teljesítményproblémák szenved, lekérdezés párhuzamos feldolgozás segítségével győződjön meg arról, hogy több optimális, és próbálja meg növelni a streamelési egységek számát.
+Az alábbi riasztások használata akkor javasolt, a Stream Analytics-feladatok teljesítményének monitorozásához. Ezeket a metrikákat a legutóbbi 5 perces időszak alatt percenként kell kiértékelni.
 
 |Metrika|Állapot|Idő összesítése|Küszöbérték|Javítási műveleteket|
 |-|-|-|-|-|

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: d865028a2ddc7315192030b704a77a332dab14aa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810934"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822705"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-trigger az Azure Functions szolgáltatáshoz
 
@@ -79,7 +79,7 @@ namespace Company.Function
 }
 ```
 
-### <a name="c-2x"></a>C#(2.x)
+### <a name="c-2x"></a>C# (2.x)
 
 Az alábbi példa bemutatja a Functions 2.x [C#-függvény](functions-dotnet-class-library.md) , amely összekapcsolja `EventGridEvent`:
 
@@ -103,7 +103,7 @@ namespace Company.Function
 }
 ```
 
-További információkért lásd: [csomagok](#packages), [attribútumok](#attributes), [konfigurációs](#configuration), és [használati](#usage).
+További információkért tekintse meg a csomagok, [attribútumok](#attributes), [konfigurációs](#configuration), és [használati](#usage).
 
 ### <a name="c-script-example"></a>C#-szkript példa
 
@@ -155,7 +155,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-További információkért lásd: [csomagok](#packages), [attribútumok](#attributes), [konfigurációs](#configuration), és [használati](#usage).
+További információkért tekintse meg a csomagok, [attribútumok](#attributes), [konfigurációs](#configuration), és [használati](#usage).
 
 ### <a name="javascript-example"></a>JavaScript-példa
 

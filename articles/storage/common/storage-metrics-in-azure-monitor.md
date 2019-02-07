@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 4b71c5818ee6eade526134ab1b2508ed55f0c400
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: aabd0ab55c061c9d2cdc27b4ab5a241ad9e9793c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699941"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811767"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -39,7 +39,7 @@ Dimenziók támogató metrikákhoz szűrheti a metrika a kívánt dimenzió ért
 
 ### <a name="access-metrics-with-the-rest-api"></a>Hozzáférés metrikák REST API-val
 
-Az Azure Monitor biztosítja [REST API-k](/rest/api/monitor/) metrikai meghatározásainak és értékek olvasását. Ez a szakasz bemutatja, hogyan olvashatja be a storage-mérőszámok. Erőforrás-azonosító minden REST API-k használatban van. További információkért olvassa el [erőforrás-azonosító Storage-szolgáltatások megismerése](#understanding-resource-id-for-services-in-storage).
+Az Azure Monitor biztosítja [REST API-k](/rest/api/monitor/) metrikai meghatározásainak és értékek olvasását. Ez a szakasz bemutatja, hogyan olvashatja be a storage-mérőszámok. Erőforrás-azonosító minden REST API-k használatban van. További információkért olvassa el erőforrás-azonosító, a tárolási szolgáltatások ismertetése.
 
 Az alábbi példa bemutatja, hogyan használható [ArmClient](https://github.com/projectkudu/ARMClient) egyszerűsítése a REST API-val tesztelése a parancssorból.
 
@@ -136,7 +136,7 @@ A következő választ metrikaértékek JSON formátumban tartalmazza:
 
 ### <a name="access-metrics-with-the-net-sdk"></a>A .net SDK-Access-metrikák
 
-Az Azure Monitor biztosítja [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) metrikai meghatározásainak és értékek olvasását. A [mintakód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) bemutatja, hogyan használhatja az SDK-t eltérő paraméterekkel rendelkező. Kell használnia `0.18.0-preview` vagy újabb verzióját, a storage-mérőszámok. Erőforrás-azonosító szerepel a .net SDK-t. További információkért olvassa el [erőforrás-azonosító Storage-szolgáltatások megismerése](#understanding-resource-id-for-services-in-storage).
+Az Azure Monitor biztosítja [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) metrikai meghatározásainak és értékek olvasását. A [mintakód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) bemutatja, hogyan használhatja az SDK-t eltérő paraméterekkel rendelkező. Kell használnia `0.18.0-preview` vagy újabb verzióját, a storage-mérőszámok. Erőforrás-azonosító szerepel a .net SDK-t. További információkért olvassa el erőforrás-azonosító, a tárolási szolgáltatások ismertetése.
 
 Az alábbi példa bemutatja, hogyan olvassa el a storage-mérőszámok az Azure Monitor .net SDK használatával.
 

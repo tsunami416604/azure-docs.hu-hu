@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 14dc1ca90ecd342330425db840776fa67caa80b0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e2bb5550cfe07064d595151305955d87f9c61050
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208142"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819535"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Első lépések a Knowledge Exploration Service szolgáltatással
 
@@ -100,7 +100,7 @@ Miután a séma- és adatfájlunk megvan, létrehozhatjuk az adatobjektumok bin�
 
 `kes.exe build_index Academic.schema Academic.data Academic.index`
 
-Azure-on kívül gyors prototípuskészítéséhez az [ `kes.exe build_index` ](CommandLine.md#build_index-command) létrehozhat kis helyi indexeket a legfeljebb 10 000 objektumot tartalmazó adatfájlokból. Nagyobb méretű adatfájloknál vagy futtatja a parancsot a [Windows VM-en az Azure-ban](../../../articles/virtual-machines/windows/quick-create-portal.md) belül vagy távoli fordítást végezhet az Azure-ban. További információk: [Felskálázás](#scaling-up).
+Azure-on kívül gyors prototípuskészítéséhez az [ `kes.exe build_index` ](CommandLine.md#build_index-command) létrehozhat kis helyi indexeket a legfeljebb 10 000 objektumot tartalmazó adatfájlokból. Nagyobb méretű adatfájloknál vagy futtatja a parancsot a [Windows VM-en az Azure-ban](../../../articles/virtual-machines/windows/quick-create-portal.md) belül vagy távoli fordítást végezhet az Azure-ban. További információkért lásd: skálázás be.
 
 ## <a name="use-an-xml-grammar-specification"></a>Az XML nyelvtan specifikáció használata
 
@@ -211,7 +211,7 @@ Gyors prototípuskészítéshez a nyelvtan és az index elhelyezhető a helyi g�
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 
-Ez elindítja a webszolgáltatás helyi példányát. A szolgáltatást interaktívan tesztelheti úgy, hogy böngészőben meglátogatja a `http::localhost:<port>` szolgáltatást. További információk: [Szolgáltatás tesztelése](#testing-service).
+Ez elindítja a webszolgáltatás helyi példányát. A szolgáltatást interaktívan tesztelheti úgy, hogy böngészőben meglátogatja a `http::localhost:<port>` szolgáltatást. További információkért tekintse meg a tesztelési szolgáltatás.
 
 A különböző [webes API-k](WebAPI.md) emellett közvetlenül is meghívhatók természetes nyelvi értelmezésre, lekérdezés kiegészítésre, strukturált lekérdezések kiértékelésére és hisztogram kiszámításra. A szolgáltatás leállításához írja be a `kes.exe host_service` parancssorba a „quit” szót, vagy nyomja le a Ctrl + C billentyűkombinációt. Néhány példa:
 
@@ -220,7 +220,7 @@ A különböző [webes API-k](WebAPI.md) emellett közvetlenül is meghívhatók
 * [http://localhost:8000/evaluate?expr=Composite(Author.Name=='susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
 * [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=='susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
 
-Azure-on kívül [ `kes.exe host_service` ](CommandLine.md#host_service-command) az indexek legfeljebb 10 000 objektumra korlátozódnak. Egyéb korlátot jelent a másodpercenkénti 10 API-kérés és az összesen 1000 kérés, ami után a folyamat automatikusan véget ér. Ezeknek a korlátozásoknak a megkerülésére futtassa a parancsot a [Windows VM-en az Azure-ban](../../../articles/virtual-machines/windows/quick-create-portal.md) környezeten belül, vagy a [`kes.exe deploy_service`](CommandLine.md#deploy_service-command) paranccsal tegye át Azure felhőszolgáltatásra. További információk: [Szolgáltatás telepítése](#deploying-service).
+Azure-on kívül [ `kes.exe host_service` ](CommandLine.md#host_service-command) az indexek legfeljebb 10 000 objektumra korlátozódnak. Egyéb korlátot jelent a másodpercenkénti 10 API-kérés és az összesen 1000 kérés, ami után a folyamat automatikusan véget ér. Ezeknek a korlátozásoknak a megkerülésére futtassa a parancsot a [Windows VM-en az Azure-ban](../../../articles/virtual-machines/windows/quick-create-portal.md) környezeten belül, vagy a [`kes.exe deploy_service`](CommandLine.md#deploy_service-command) paranccsal tegye át Azure felhőszolgáltatásra. További információkért lásd: a szolgáltatás telepítéséhez.
 
 ## <a name="scale-up-to-host-larger-indices"></a>Válasszon nagyobb méretet nagyobb indexek tárolására
 
@@ -262,7 +262,7 @@ A szolgáltatás üzembe helyezése után meghívhatja a különböző [webes AP
 
 ## <a name="test-the-service"></a>A szolgáltatás tesztelése
 
-Az élő szolgáltatás hibakereséséhez keresse meg a gazdagépet egy webböngészőben. A [host_service](#hosting-service)-en keresztül üzembe helyezett szolgáltatás esetén lásd: `http://localhost:<port>/`.  A [deploy_service](#deploying-service)-en keresztül üzembe helyezett Azure felhőszolgáltatás esetén lásd: `http://<serviceName>.cloudapp.net/`.
+Az élő szolgáltatás hibakereséséhez keresse meg a gazdagépet egy webböngészőben. Egy helyi host_service szolgáltatással üzembe helyezett szolgáltatáshoz, talál `http://localhost:<port>/`.  Egy Azure-felhőszolgáltatásban deploy_service szolgáltatással üzembe helyezett, látogasson el `http://<serviceName>.cloudapp.net/`.
 
 Ez az oldal statisztikai információkat tartalmaz az alapvető API-hívásokról, valamint a szolgáltatáson helyet foglaló nyelvtanról és indexről. Az oldal tartalmaz egy interaktív kereső felületet is, amely bemutatja a webes API-k használatát. A kérést írja a kereső mezőbe és megtekintheti az [értelmezési](interpretMethod.md), [kiértékelési](evaluateMethod.md) és [számítási hisztogram](calchistogramMethod.md) API-hívások eredményeit. Az oldal HTML forrása példa arra is, hogy a webes API-k alkalmazásba integrálásával hogyan lehet gazdag, interaktív keresési élményt biztosítani.
 

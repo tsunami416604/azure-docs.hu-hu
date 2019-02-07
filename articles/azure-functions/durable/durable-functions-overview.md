@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: caeeaae4dca99a2522d767a5a4a18f0818a2fa7f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4c7b4733d05f18d3c30e45fd08c3cf9c50354ebc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044110"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816092"
 ---
-# <a name="what-is-durable-functions"></a>Mit jelent a Durable Functions?
+# <a name="what-are-durable-functions"></a>Mik a Durable Functions?
 
-*Durable Functions* kiterjesztése [Azure Functions](../functions-overview.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény kezeli a állapot, ellenőrzőpontok és újraindul az Ön számára.
+*Durable Functions* bővítménye, [Azure Functions](../functions-overview.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
 
 ## <a name="benefits"></a>Előnyök
 
@@ -34,7 +34,7 @@ A bővítmény lehetővé teszi, hogy állapot-nyilvántartó munkafolyamatok ha
 Durable Functions elsődleges használati eset van egyszerűsítse összetett, állapot-nyilvántartó koordinációs követelményeket, a kiszolgáló nélküli alkalmazásokat. Az alábbiakban néhány tipikus alkalmazásminták, amelyek Durable Functions is:
 
 * [-Láncolás](durable-functions-concepts.md#chaining)
-* [Fan-kimenő/fan-alatt](durable-functions-concepts.md#fan-in-out)
+* [Fan-out/fan-in](durable-functions-concepts.md#fan-in-out)
 * [Az aszinkron HTTP API-k](durable-functions-concepts.md#async-http)
 * [Monitorozás](durable-functions-concepts.md#monitoring)
 * [Emberi beavatkozást igényel](durable-functions-concepts.md#human)

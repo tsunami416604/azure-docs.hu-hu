@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 0e1a0919975253e24318bb8029249958cbc50d62
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 36b9e6c97a10f7608a4faaef005ca4eeb1fc09c6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473163"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811528"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Azure Diagnostics 1.0-konfigurációs séma
 > [!NOTE]
@@ -101,7 +101,7 @@ A legfelső szintű elem a diagnosztikai konfigurációs fájl.
 
 Attribútumok:
 
-|Attribútum  |Típus   |Szükséges| Alapértelmezett | Leírás|  
+|Attribútum  |Typo   |Szükséges| Alapértelmezett | Leírás|  
 |-----------|-------|--------|---------|------------|  
 |**configurationChangePollInterval**|időtartam|Optional | PT1M| Diagnosztikai konfigurációs módosítások, amelyen a diagnosztikai figyelő kérdezze le az időközt adja meg.|  
 |**overallQuotaInMB**|unsignedInt|Optional| 4000 MB. Ha megad egy értéket, nem haladhatja meg ezt a mennyiséget |Összes naplózási puffer számára lefoglalt fájlrendszer-tárhely teljes mennyisége.|  
@@ -109,11 +109,11 @@ Attribútumok:
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs elem  
 Az alapul szolgáló diagnosztikai infrastruktúra által előállított naplók puffer konfigurációját.
 
-Elem: [DiagnosticMonitorConfiguration elem](#DiagnosticMonitorConfiguration).  
+Elem: DiagnosticMonitorConfiguration eleme.  
 
 Attribútumok:
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
 |**scheduledTransferLogLevelFilter**|sztring|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**. Más lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
@@ -122,11 +122,11 @@ Attribútumok:
 ## <a name="logs-element"></a>Naplók elem  
  Az alapszintű Azure-naplók puffer konfigurációját.
 
- Elem: [DiagnosticMonitorConfiguration elem](#DiagnosticMonitorConfiguration).  
+ Elem: DiagnosticMonitorConfiguration eleme.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
 |**scheduledTransferLogLevelFilter**|sztring|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**. Más lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
@@ -135,12 +135,12 @@ Attribútumok:
 ## <a name="directories-element"></a>Könyvtárak elem  
 A puffer konfigurációs fájl alapú naplókhoz definiálható határozza meg.
 
-Elem: [DiagnosticMonitorConfiguration elem](#DiagnosticMonitorConfiguration).  
+Elem: DiagnosticMonitorConfiguration eleme.  
 
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
 |**scheduledTransferPeriod**|időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
@@ -148,11 +148,11 @@ Attribútumok:
 ## <a name="crashdumps-element"></a>CrashDumps Element  
  Az összeomlási memóriaképek könyvtár határozza meg.
 
- Elem: [Könyvtárak elem](#Directories).  
+ Elem: Könyvtárak eleme.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**container**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
@@ -160,11 +160,11 @@ Attribútumok:
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs elem  
  A sikertelen kérelmek naplókönyvtár határozza meg.
 
- A szülő elem [könyvtárak elem](#Directories).  
+ Elem könyvtárak szülőelemet.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**container**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
@@ -172,11 +172,11 @@ Attribútumok:
 ##  <a name="iislogs-element"></a>IISLogs elem  
  Meghatározza az IIS-napló könyvtár.
 
- A szülő elem [könyvtárak elem](#Directories).  
+ Elem könyvtárak szülőelemet.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**container**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
@@ -184,16 +184,16 @@ Attribútumok:
 ## <a name="datasources-element"></a>Adatforrások elem  
  Határozza meg a nulla vagy több további naplókönyvtárat.
 
- Elem: [Könyvtárak elem](#Directories).
+ Elem: Könyvtárak eleme.
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration elem  
  Határozza meg a könyvtárat a naplófájlok figyeléséhez.
 
- Elem: [Adatforrások elem](#DataSources).
+ Elem: Adatforrások eleme.
 
 Attribútumok:
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**container**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
@@ -201,11 +201,11 @@ Attribútumok:
 ## <a name="absolute-element"></a>Abszolút elem  
  A könyvtár nem kötelező környezeti-bővítése figyelő abszolút elérési utat határozza meg.
 
- Elem: [DirectoryConfiguration elem](#DirectoryConfiguration).  
+ Elem: DirectoryConfiguration eleme.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**path**|sztring|Kötelező. Figyelni kívánt könyvtár abszolút elérési útja.|  
 |**expandEnvironment**|logikai|Kötelező. Ha beállítása **igaz**, az elérési út környezeti változók vannak bontva.|  
@@ -213,11 +213,11 @@ Attribútumok:
 ## <a name="localresource-element"></a>LocalResource elem  
  Meghatározza egy viszonyítva a szolgáltatás-definícióban meghatározott helyi erőforrás elérési útja.
 
- Elem: [DirectoryConfiguration elem](#DirectoryConfiguration).  
+ Elem: DirectoryConfiguration eleme.  
 
 Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**name**|sztring|Kötelező. A helyi erőforrás, amely tartalmazza a figyelni kívánt könyvtár neve.|  
 |**relativePath**|sztring|Kötelező. Az elérési útját a helyi erőforrás monitorozásához viszonyítva.|  
@@ -225,12 +225,12 @@ Attribútumok:
 ## <a name="performancecounters-element"></a>PerformanceCounters Element  
  Határozza meg az elérési út való gyűjtésére a teljesítményszámláló.
 
- Elem: [DiagnosticMonitorConfiguration elem](#DiagnosticMonitorConfiguration).
+ Elem: DiagnosticMonitorConfiguration eleme.
 
 
  Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
 |**scheduledTransferPeriod**|időtartam|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
@@ -238,11 +238,11 @@ Attribútumok:
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration Element  
  Határozza meg a teljesítményszámláló gyűjtéséhez.
 
- Elem: [PerformanceCounters elem](#PerformanceCounters).  
+ Elem: PerformanceCounters Element.  
 
  Attribútumok:  
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**counterSpecifier**|sztring|Kötelező. A teljesítményszámláló gyűjtése az elérési útja.|  
 |**sampleRate**|időtartam|Kötelező. Az a sebesség, amellyel a teljesítményszámláló kell gyűjteni.|  
@@ -250,11 +250,11 @@ Attribútumok:
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element  
  Határozza meg az Eseménynapló bejegyzéseit, amelyek figyelése.
 
- Elem: [DiagnosticMonitorConfiguration elem](#DiagnosticMonitorConfiguration).
+ Elem: DiagnosticMonitorConfiguration eleme.
 
   Attribútumok:
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
 |**scheduledTransferLogLevelFilter**|sztring|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**. Más lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **kritikus**.|  
@@ -263,11 +263,11 @@ Attribútumok:
 ## <a name="datasource-element"></a>DataSource elem  
  Határozza meg az Eseménynapló figyelése.
 
- Elem: [WindowsEventLog elem](#windowsEventLog).  
+ Elem: WindowsEventLog Element.  
 
  Attribútumok:
 
-|Attribútum|Típus|Leírás|  
+|Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**name**|sztring|Kötelező. Adja meg a napló gyűjtése XPath kifejezés.|  
 

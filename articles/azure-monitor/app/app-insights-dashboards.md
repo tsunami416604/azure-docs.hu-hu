@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1b0c991c09d1235215dc9b930c529a219d492a8c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: afbf2bc32aa737eb5f6dde41035b206d6e260252
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117077"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813762"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigáció és irányítópultok az Application Insights portálon
 Miután [Application Insights beállítása a projektben](../../azure-monitor/app/app-insights-overview.md), az alkalmazás teljesítményének és használatának telemetriai adatait jelenik meg a projekt Application Insights-erőforrást a [az Azure portal](https://portal.azure.com).
@@ -62,7 +62,7 @@ A rendszer automatikusan frissíti a diagram, amely attól függ, a diagram idő
 * Időtartomány 24 óra feletti: (Időtartomány) / 60.
 
 ### <a name="pin-any-query-in-analytics"></a>Analytics minden lekérdezés rögzítése
-Emellett [Analytics rögzítése](../../azure-monitor/log-query/get-started-portal.md) a diagram egy [megosztott](#share-dashboards-with-your-team) irányítópult. Ez lehetővé teszi, hogy bármilyen tetszőleges lekérdezés mellett a standard metrikák diagramok. 
+Emellett [Analytics rögzítése](../../azure-monitor/log-query/get-started-portal.md) a megosztott irányítópultra mutató diagramokat. Ez lehetővé teszi, hogy bármilyen tetszőleges lekérdezés mellett a standard metrikák diagramok. 
 
 Eredmények a rendszer automatikusan újraszámít minden órában. Kattintson a diagramban azonnal számítsa ki újra a frissítés ikont. (Böngésző frissítés nem újraszámítása.)
 
@@ -115,7 +115,7 @@ Az Áttekintés panelen az alkalmazással kapcsolatos további információkat a
 * **Időtartomány** – állítsa be a a panelen a diagramok szerint jelenik meg.
 * **Törlés** – az alkalmazás Application Insights-erőforrás törlése. Meg kell is vagy távolítsa el az Application Insights-csomagokat a kód, vagy szerkesztheti a [kialakítási kulcs](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) közvetlen telemetriai adatokat a különböző Application Insights-erőforrást az alkalmazásban.
 
-### <a name="essentials-tab"></a>Alapvető erőforrások lapján
+### <a name="essentials-tab"></a>Essentials tab
 * [Rendszerállapotkulcs](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) -azonosítja az alkalmazás-erőforrást.
 
 ### <a name="app-navigation-bar"></a>Alkalmazás navigációs sáv

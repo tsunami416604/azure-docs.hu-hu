@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 757891a6968313c1a31ce67b399d6aa052abfa21
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7bd228a01cd3841772750882d13c33459385cc21
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999951"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817716"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
 A frissítési garanciával rendelkező ügyfelek az Azure Hybrid Benefit a Windows Server lehetővé teszi a helyszíni Windows Server-licenceivel és a Windows virtuális gépek futtatásához az Azure-ban költséghatékony. Az Azure Hybrid Benefit a Windows Server használatával a Windows operációs rendszer új virtuális gépek üzembe helyezése. Ez a cikk halad keresztül lépéseket, hogyan helyezhet üzembe új virtuális gépeket az Azure Hybrid Benefit a Windows Server, és hogy miként frissítheti meglévő a futó virtuális gépek. További információ az Azure Hybrid Benefit a Windows Server licencelési és költséghatékonyan takaríthat meg, tekintse meg a [Azure Hybrid Benefit a Windows Server licencelési oldal](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -40,7 +40,7 @@ A frissítési garanciával rendelkező ügyfelek az Azure Hybrid Benefit a Wind
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Az Azure Hybrid Benefit a Windows Server használatával
 Windows virtuális gépek használata az Azure Hybrid Benefit néhány módja van:
 
-1. Telepíthet virtuális gépeket a megadott egyik [Windows Server-rendszerképeket az Azure Marketplace-en](# https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WindowsServer?tab=Overview)
+1. Telepíthet virtuális gépeket a megadott Windows Server-rendszerképeket az Azure Marketplace-en
 2. Egyéni VM feltöltése, és üzembe helyezése a Resource Manager-sablon vagy az Azure PowerShell használatával
 3. Váltsa át és átalakíthatja a meglévő virtuális gép futtatása az Azure Hybrid Benefittel között vagy igény szerinti költségek kell fizetnie a Windows Server
 4. Virtuálisgép-méretezési csoportban, valamint is alkalmazhat az Azure Hybrid Benefit a Windows Server

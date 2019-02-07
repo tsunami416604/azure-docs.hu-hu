@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 15ecd594dea9251b64cdfcba3bf620bc101504ec
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 988e72a20fdd80e41ce8fc1ef568d90d4283a848
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486095"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813500"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure AD) topológiákat, amelyek az Azure AD Connect-szinkronizálást használ, a főbb integrációs megoldása. Ez a cikk is támogatott, és nem támogatott konfigurációkat tartalmaz.
@@ -63,7 +63,7 @@ Ha több erdő, minden olyan erdőben van egyetlen elérhetőnek kell lennie az 
 
 Az Azure AD Connect telepítővarázsló egyesíthetők a felhasználók, akik több erdő megjelenjen többféle lehetőséget kínál. A célja, hogy egy felhasználó Azure AD-ben egyszer szerepelnek. Van néhány gyakori topológiák az egyéni telepítési elérési út a telepítési varázslóban konfigurálható. Az a **felhasználók egyedi azonosítása** lapon, válassza ki a megfelelő beállítást, amely a topológia jelöli. Az összevonás csak a felhasználók számára konfigurált. Ismétlődő csoportok nem kell összevonni alapértelmezés szerint.
 
-Közös topológiákat tárgyalja a szakaszok kapcsolatos [külön topológiák](#multiple-forests-separate-topologies), [teljes rácsot alkotó](#multiple-forests-full-mesh-with-optional-galsync), és [a fiók-erőforrás topológia](#multiple-forests-account-resource-forest).
+Közös topológiákat tárgyalja a szakaszok kapcsolatos külön topológiák [teljes rácsot alkotó](#multiple-forests-full-mesh-with-optional-galsync), és [a fiók-erőforrás topológia](#multiple-forests-account-resource-forest).
 
 Feltételezi, hogy az alapértelmezett konfiguráció az Azure AD Connect szinkronizálása:
 

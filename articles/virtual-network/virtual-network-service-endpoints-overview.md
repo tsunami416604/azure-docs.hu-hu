@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 45a0c179677a0a2c144ea33dbfb031c88257e1cb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 0f36439cba4a946fb05466f2d961e537196f0095
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382514"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818600"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -37,10 +37,7 @@ Ez a szolgáltatás a következő Azure-szolgáltatásokhoz és -régiókhoz ér
 - **[Az Azure Key Vault](https://blogs.technet.microsoft.com/kv/2018/06/25/announcing-virtual-network-service-endpoints-for-key-vault-preview/)**: Az Azure nyilvános felhő összes régióban általánosan elérhető.
 - **[Az Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Az Azure nyilvános felhő összes régióban általánosan elérhető.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Az Azure nyilvános felhő összes régióban általánosan elérhető.
-
-**Előzetes verzió**
-
-- **[Az Azure Data Lake Store 1. generációs gyűjtések](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Előzetes verzióban érhető el.
+- **[Az Azure Data Lake Store 1. generációs gyűjtések](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Hol érhető el az ADLS Gen1 minden Azure-régióban általánosan elérhető.
 
 A legfrissebb értesítésekért tekintse meg az [Azure-beli virtuális hálózatok frissítéseinek](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 
@@ -99,7 +96,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 ### <a name="scenarios"></a>Forgatókönyvek
 
 - **Társviszonyban álló, csatlakoztatott vagy többszörös virtuális hálózatok**: Biztonságos Azure-szolgáltatások több virtuális hálózaton vagy virtuális hálózaton belüli több alhálózaton, egymástól függetlenül engedélyezze a szolgáltatásvégpontokat az egyes alhálózatok, és biztonságos Azure-szolgáltatások erőforrásait az alhálózatok.
-- **Az Azure-szolgáltatások virtuális hálózatról kimenő forgalom szűrése**: Ha meg szeretné vizsgálni vagy szűrni a virtuális hálózatról egy Azure-szolgáltatás felé irányuló forgalom, a virtuális hálózaton belüli hálózati virtuális készüléken is telepítheti. Ezután szolgáltatásvégpontokat alkalmazhat azon az alhálózaton, ahol a hálózati virtuális készülék üzemel, hogy csak ennek az alhálózatnak biztosítsa az Azure-szolgáltatási erőforrásokat. Ez a forgatókönyv akkor lehet hasznos, ha a virtuális hálózatnak az Azure-szolgáltatásokhoz való hozzáférését bizonyos Azure-erőforrásokra szeretné korlátozni a hálózati virtuális készülékek szűrésének segítségével. További információkért lásd a [kimenő forgalommal és a hálózati virtuális berendezésekkel](/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json) foglalkozó témakört.
+- **Az Azure-szolgáltatások virtuális hálózatról kimenő forgalom szűrése**: Ha meg szeretné vizsgálni vagy szűrni a virtuális hálózatról egy Azure-szolgáltatás felé irányuló forgalom, a virtuális hálózaton belüli hálózati virtuális készüléken is telepítheti. Ezután szolgáltatásvégpontokat alkalmazhat azon az alhálózaton, ahol a hálózati virtuális készülék üzemel, hogy csak ennek az alhálózatnak biztosítsa az Azure-szolgáltatási erőforrásokat. Ez a forgatókönyv akkor lehet hasznos, ha a virtuális hálózatnak az Azure-szolgáltatásokhoz való hozzáférését bizonyos Azure-erőforrásokra szeretné korlátozni a hálózati virtuális készülékek szűrésének segítségével. További információkért lásd a [kimenő forgalommal és a hálózati virtuális berendezésekkel](/azure/architecture/reference-architectures/dmz/nva-ha) foglalkozó témakört.
 - **Azure-erőforrások közvetlenül virtuális hálózatokra telepített szolgáltatások biztosítása**: Különböző Azure-szolgáltatások virtuális hálózatban lévő adott alhálózatain közvetlenül is telepíthető. Az Azure-szolgáltatási erőforrások a [felügyelt szolgáltatási](virtual-network-for-azure-services.md) alhálózatokon egy szolgáltatásvégpont beállításával biztosíthatók.
 - **Az Azure virtuális gép forgalmát lemez**: Virtuálisgép-lemez forgalom (ideértve a csatlakoztatást és leválasztást, Lemezforgalmát), felügyelt és nem felügyelt lemezek nem befolyásolja a Szolgáltatásvégpontok Azure Storage útválasztásának megváltozása. A lapblobok REST-alapú elérését korlátozhatja a kívánt hálózatokra szolgáltatásvégpontok és [Azure Storage-hálózati szabályok](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json) segítségével. 
 

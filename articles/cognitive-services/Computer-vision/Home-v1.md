@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 57388b4e2f74a1e9e8d9c322020077dfd67e89c1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1ee28d04bfce00a6fe47d6914b75cfd7b18e634d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198146"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816543"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Mi a Computer Vision API 1.0-s verziója?
 
@@ -26,17 +26,17 @@ ms.locfileid: "55198146"
 >- [Computer Vision API 2.0-s verzió](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
 
 A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A Computer Vision API használatával a felhasználók a következő célokból elemezhetnek képeket:
-* [Képek címkézése tartalom alapján.](#Tagging)
-* [Képek kategorizálása.](#Categorizing)
-* [Képek típusának és minőségének azonosítása.](#Identifying)
+* Címkézhet meg képeket a tartalom alapján.
+* Képek kategorizálása.
+* Azonosítsa a típus és minősége lemezképeket.
 * [Emberi arcok észlelése és azok koordinátáinak visszaadása.](#Faces)
-* [Fogalomkör-specifikus tartalom felismerése.](#Domain-Specific)
-* [Tartalomleírások generálása.](#Descriptions)
-* [A képeken található nyomtatott szöveg azonosítása optikai karakterfelismerés használatával.](#OCR)
-* [Kézzel írt szöveg felismerése.](#RecognizeText)
-* [Színsémák megkülönböztetése.](#Color)
-* [Felnőtt tartalom megjelölése.](#Adult)
-* [Képek körülvágása miniatűrként való felhasználáshoz.](#Thumbnails)
+* Ismeri fel a tartomány-specifikus tartalmait.
+* Hozzon létre a tartalom leírását.
+* Optikai karakterfelismerés segítségével azonosíthatja a képeken található nyomtatott szöveg.
+* Kézzel írt szöveg felismerése.
+* Színsémák különbséget.
+* Felnőtt tartalom jelző.
+* Körülvágása fényképeket, a miniatűrök használható.
 
 ## <a name="requirements"></a>Követelmények
 * Támogatott bemeneti módszerek: Egy application/octet-stream vagy URL-formájában bináris nyers kép.
@@ -113,7 +113,7 @@ A képek több módon kategorizálhatók. A Computer Vision API egy logikai jelz
 ### <a name="clip-art-type"></a>ClipArt típus
 Észleli, hogy a kép ClipArt, vagy nem.  
 
-Value | Jelentés
+Érték | Jelentés
 ----- | --------------
 0     | Nem ClipArt
 1     | nem egyértelmű

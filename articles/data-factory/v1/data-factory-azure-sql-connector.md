@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 13e00acaf287a9e153aaa8e5ce7d630f8d198f02
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a7789f9a3f3da46305a9d8cd7cda24019658f2ad
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330415"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811481"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Adatok másolása, és az Azure Data Factory használatával az Azure SQL Database-ből
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -199,7 +199,7 @@ A minta másol idősorozat-adatok (óránként, naponta stb.) az Azure SQL datab
   }
 }
 ```
-Tekintse meg a [Azure SQL társított szolgáltatás](#linked-service) listája a társított szolgáltatás által támogatott tulajdonságok szakaszában.
+Tekintse meg a társított szolgáltatás által támogatott tulajdonságok listája az Azure SQL társított szolgáltatás szakaszt.
 
 **Az Azure Blob storage-beli társított szolgáltatást:**
 
@@ -248,7 +248,7 @@ Beállítás az "external": "true" tájékoztatja az Azure Data Factory szolgál
 }
 ```
 
-Tekintse meg a [Azure SQL-adatkészlet típus tulajdonságainak](#dataset) ehhez az adathalmaztípushoz által támogatott tulajdonságok szakaszában listája.
+Című témakör az Azure SQL adatkészlet típusa tulajdonságok listája ehhez az adathalmaztípushoz által támogatott tulajdonságok.
 
 **Azure blobkimeneti adatkészlet:**
 
@@ -391,7 +391,7 @@ A minta másolatokat idősorozat-adatok (óránként, naponta stb.) az Azure-blo
   }
 }
 ```
-Tekintse meg a [Azure SQL társított szolgáltatás](#linked-service) listája a társított szolgáltatás által támogatott tulajdonságok szakaszában.
+Tekintse meg a társított szolgáltatás által támogatott tulajdonságok listája az Azure SQL társított szolgáltatás szakaszt.
 
 **Az Azure Blob storage-beli társított szolgáltatást:**
 
@@ -499,7 +499,7 @@ A minta adatokat másol egy Azure SQL-ben "MyTable" nevű táblát. A tábla lé
   }
 }
 ```
-Tekintse meg a [Azure SQL-adatkészlet típus tulajdonságainak](#dataset) ehhez az adathalmaztípushoz által támogatott tulajdonságok szakaszában listája.
+Című témakör az Azure SQL adatkészlet típusa tulajdonságok listája ehhez az adathalmaztípushoz által támogatott tulajdonságok.
 
 **Fogadó-Blob-forrás- és SQL rendelkező folyamatot egy másolási tevékenységgel:**
 

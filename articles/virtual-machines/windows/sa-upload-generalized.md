@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 199343fce4774ea643bc22c879efc6717aa0a510
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 658cee95d695a310291d5b7180815c89bc2f0401
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244729"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818107"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Általános VHD feltöltése az új virtuális gép létrehozása Azure-bA
 
@@ -41,7 +41,7 @@ Egy általánosított virtuális merevlemez esetében minden személyes fiókada
   * A Sysprep használata virtuális gép általánosítása
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>A Sysprep használata Windows virtuális gép általánosítása
-Ez a szakasz bemutatja, hogyan általánossá tétele a Windows virtuális gép lemezképként való használatra. A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. További információ a Sysprepről: [A Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
+Ez a szakasz bemutatja, hogyan általánossá tétele a Windows virtuális gép lemezképként való használatra. A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. További információ a Sysprepről: [Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
 
 Ellenőrizze, hogy a Sysprep a gépen futó kiszolgálói szerepkörök támogatottak. További információkért lásd: [Sysprep támogatási kiszolgálói szerepköre tekintetében](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -97,7 +97,7 @@ A rendelkezésre álló tár fiókokat jeleníti meg, írja be:
 Get-AzureRmStorageAccount
 ```
 
-Ha egy meglévő tárfiókot használni kívánt, folytassa a [a Virtuálisgép-Rendszerkép feltöltése](#upload-the-vm-vhd-to-your-storage-account) szakaszban.
+Ha egy meglévő tárfiókot használni kívánt, folytassa a feltöltés a virtuális gép rendszerkép szakaszban.
 
 Ha szeretne hozzon létre egy tárfiókot, kövesse az alábbi lépéseket:
 

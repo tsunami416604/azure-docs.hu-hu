@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6ab3e918feda3dcf898928f159ebf8e317a95527
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 7156249e720416161cd56af7589ed85827c6034b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331843"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812548"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Adatok importálására és az Azure Data Factory használatával az Azure-tábla
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -137,7 +137,7 @@ Az alábbi mintában látható:
 1. A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) (tábla- és blob használatos).
 2. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [AzureTable](#dataset-properties).
 3. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-4. A [folyamat](data-factory-create-pipelines.md) másolási tevékenységgel, amely használja [AzureTableSource](#activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+4. A [folyamat](data-factory-create-pipelines.md) AzureTableSource használó másolási tevékenységgel rendelkező és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
 A minta az alapértelmezett partíció Azure-táblában egy blobhoz tartozó minden órában adatokat másolja. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
 
@@ -479,10 +479,10 @@ Amikor adatok áthelyezése Azure táblából, a következő & [Azure Table Stor
 | Edm.Boolean |Logikai |Logikai érték. |
 | Edm.DateTime |DateTime |Egy 64 bites érték, egyezményes világidő (UTC) szerint kifejezett. A támogatott dátum és idő tartomány kezdődik 12:00 éjféltől. január 1, i 1601. (C.E.,) (UTC). A tartomány vége. December 31-9999. |
 | Edm.Double |double |Egy 64 bites lebegőpontos értéket. |
-| Edm.Guid |GUID |A 128 bites globálisan egyedi azonosítóját. |
+| Edm.Guid |Guid |A 128 bites globálisan egyedi azonosítóját. |
 | Edm.Int32 |Int32 |Egy 32 bites egész számot. |
 | Edm.Int64 |Int64 |Egy 64 bites egész számot. |
-| Edm.String |Karakterlánc |UTF-16 kódolású érték. Karakterlánc-értékek legfeljebb 64 KB lehet. |
+| Edm.String |String |UTF-16 kódolású érték. Karakterlánc-értékek legfeljebb 64 KB lehet. |
 
 ### <a name="type-conversion-sample"></a>Átalakítás minta
 Az alábbi minta az adatok másolása az Azure-Blobból az Azure Table-típuskonverziók van.
@@ -533,7 +533,7 @@ Adja meg az adattípus-hozzárendelés az Azure-tábla OData-típus .NET típusr
 
 **Az Azure tábla sémája:**
 
-| Oszlop neve | Típus |
+| Oszlop neve | Typo |
 | --- | --- |
 | felhasználói azonosító |Edm.Int64 |
 | név |Edm.String |

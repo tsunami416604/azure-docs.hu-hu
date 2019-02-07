@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 150147a0fe0fdfcf2e6c9f2b780587749af1ded0
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: e1013047bb66581e7f9d26854f2cd91655c8bd93
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857907"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810082"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
 Grub-HIBÁT a végösszeget egyesített rendszertöltő. A grub-HIBÁT Ön tudja módosítani a rendszerindítási konfiguráció többek között a egyfelhasználós módban indul.
@@ -39,7 +39,7 @@ Győződjön meg arról, hogy GRUB engedélyezve van a virtuális Gépen ahhoz, 
 A virtuális gép újraindítása a soros konzol panel nyílik meg a végezheti a SysRq `'b'` parancsot, ha [SysRq](./serial-console-nmi-sysrq.md) engedélyezve van, vagy kattintson az Újraindítás gombot az áttekintési panelen (megnyitása a virtuális Gépet egy új böngészőlapon bezárása nélkül indítsa újra a a soros konzol panel). Kövesse a disztribúció-specifikus utasításokat megtudhatja, mi várható a grub-HIBÁT, indítsa újra.
 
 ## <a name="general-single-user-mode-access"></a>Hozzáférés az egyfelhasználós módot
-Manuális hozzáférés egyfelhasználós üzemmódra helyzetekben, ahol nincs konfigurálva egy fiók jelszavas hitelesítéssel lehet szükség. Adja meg manuálisan az egyfelhasználós módot a grub-HIBÁT konfigurációját módosítani kell. Ha ezzel végzett, tekintse meg a [használja az egyfelhasználós módot visszaállítására vagy a jelszó hozzáadása](#-Use-Single-User-Mode-to-reset-or-add-a-password) további útmutatást.
+Manuális hozzáférés egyfelhasználós üzemmódra helyzetekben, ahol nincs konfigurálva egy fiók jelszavas hitelesítéssel lehet szükség. Adja meg manuálisan az egyfelhasználós módot a grub-HIBÁT konfigurációját módosítani kell. Miután ezt elvégezte, használja az egyfelhasználós módot visszaállítására, vagy adjon hozzá egy jelszót a további utasításokat talál.
 
 Azokban az esetekben, ahol a virtuális gép nem tud rendszerindító disztribúciókhoz gyakran automatikusan csökken, akkor egyfelhasználós módban vagy vészhelyzeti módban. További telepítési, mások azonban szükség van, mielőtt is dobja el egyfelhasználós vagy vészhelyzeti módban automatikusan (például a gyökér szintű jelszó beállítása).
 
@@ -55,7 +55,7 @@ RHEL csökken, akkor egyfelhasználós üzemmódba automatikusan ha általában 
 ### <a name="grub-access-in-rhel"></a>Az RHEL GRUB-hozzáférés
 RHEL beépített engedélyezve grub-HIBÁT tartalmaz. Írja be a grub-HIBÁT, indítsa újra a virtuális Gépen való `sudo reboot` , és nyomja le bármelyik billentyűt. Látni fogja a grub-HIBÁT képernyőn jelennek meg.
 
-> Megjegyzés: A Red Hat is biztosít a dokumentáció készenléti módban, a helyreállító módban, a hibakeresési módban indul, és a legfelső szintű jelszó alaphelyzetbe állítása. [Kattintson ide az eléréséhez](https://aka.ms/rhel7grubterminal).
+> Megjegyzés: Red Hat készenléti módban, a helyreállító módban, a hibakeresési mód indul, és a legfelső szintű jelszó alaphelyzetbe állítása dokumentációja is biztosít. [Kattintson ide az eléréséhez](https://aka.ms/rhel7grubterminal).
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>Egyetlen felhasználói mód RHEL a legfelső szintű hozzáférés beállítása
 Az RHEL egyfelhasználós üzemmódra van szükség a gyökér szintű felhasználó engedélyezni kell, amely alapértelmezés szerint le van tiltva. Ha nincs szüksége egyfelhasználós mód engedélyezéséhez, kövesse az alábbi utasításokat:

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 15393f8e10fcda99820d0279d46edf88c7781ff8
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f0290a5f04a396c1d66e2dd1873eb313dcb3f66d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811964"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818396"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Media Encoder Premium munkafolyamat speciális oktatóanyagok
 ## <a name="overview"></a>Áttekintés
@@ -44,12 +44,12 @@ A következő témákat tárgyalja:
   * [Egy külön lejátszása hozzáadása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_audio_tracks)
   * [A "ISM" SMIL fájl hozzáadása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_ism_file)
 * [Kódolási MXF, több MP4 - továbbfejlesztett tervezet](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4)
-  * [A munkafolyamat áttekintése növelése érdekében](#workflow-overview-to-enhance)
+  * A munkafolyamat áttekintése növelése érdekében
   * [A fájlok elnevezési konvenciói](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_file_naming)
   * [A munkafolyamat legfelső szintű alakzatot közzétételi összetevő tulajdonságai](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_publishing)
   * [Kimeneti fájl nevek támaszkodjon közzétett tulajdonságértékek hoztak létre.](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_output_files)
 * [A miniatűrök ad hozzá több MP4-kimenetre](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)
-  * [Miniatűrök hozzáadása a munkafolyamat áttekintése](#workflow-overview-to-add-thumbnails-to)
+  * Miniatűrök hozzáadása a munkafolyamat áttekintése
   * [Hozzáadás a JPG-kódolás](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4__with_jpg)
   * [Szín terület átalakítás többé vesződnie a sérült](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_color_space)
   * [A miniatűrök írása](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_writing_thumbnails)

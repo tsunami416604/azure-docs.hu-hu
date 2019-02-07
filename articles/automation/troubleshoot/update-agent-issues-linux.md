@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e1dca8655c6bf609bee255f183bcd2fe9b56bc55
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: aafed492e83066be20b4728a2617527351291a5b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437493"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813109"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>A Linuxos ügynök ellenőrzésének az eredménye az Update Management ismertetése
 
@@ -28,7 +28,7 @@ Az alábbi lista a gép is lehet három készenléti állapotok:
 
 ## <a name="start-the-troubleshooter"></a>Indítsa el a hibaelhárító
 
-Azure-beli gépek, kattintson a **hibaelhárítás** hivatkozásra a **frissítési ügynök készültsége** oszlopa a portál elindítja a **hibaelhárítása Windows Update Agent** lap. Nem Azure-gépek a hivatkozás teszi elérhetővé, az ebben a cikkben. Tekintse meg a [offline utasításokat](#offline) egy nem Azure-beli gép hibaelhárítása.
+Azure-beli gépek, kattintson a **hibaelhárítás** hivatkozásra a **frissítési ügynök készültsége** oszlopa a portál elindítja a **hibaelhárítása Windows Update Agent** lap. Nem Azure-gépek a hivatkozás teszi elérhetővé, az ebben a cikkben. Tekintse meg a kapcsolat nélküli egy nem Azure-beli gép hibaelhárítása.
 
 ![virtuális gép listáját tartalmazó lapon](../media/update-agent-issues-linux/vm-list.png)
 
@@ -39,7 +39,7 @@ Az a **hibaelhárítása Windows Update Agent** kattintson **ellenőrzések futt
 
 ![Hibaelhárítás lap](../media/update-agent-issues-linux/troubleshoot-page.png)
 
-Amikor végzett, a rendszer visszairányítja az eredményeket az ablakban. A [ellenőrizze szakaszokat](#pre-requisistes-checks) információkat tartalmaz minden ellenőrzés keresi.
+Amikor végzett, a rendszer visszairányítja az eredményeket az ablakban. A jelölőnégyzet részek a mi minden ellenőrzés keres.
 
 ![Az ügynök ellenőrzése lap frissítése](../media/update-agent-issues-linux/update-agent-checks.png)
 

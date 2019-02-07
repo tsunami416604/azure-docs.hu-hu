@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 28b73a70ef9ffd4e73117d599448434823747eca
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 21a3efb67f837a05f3c070d0805aa033f86efbd5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567400"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822442"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Létrehozása, módosítása vagy egy hálózati biztonsági csoport törlése
 
@@ -92,7 +92,7 @@ A hálózati biztonsági csoport hozzárendelése, vagy a hálózati adapter há
 
 ### <a name="delete-a-network-security-group"></a>A hálózati biztonsági csoport törlése
 
-Ha egy hálózati biztonsági csoport bármely alhálózatokhoz vagy a hálózati adapterek társítva, nem lehet törölni. [Leválasztja](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) összes alhálózat és hálózati adapterek, mielőtt megkísérelné törölni a hálózati biztonsági csoport.
+Ha egy hálózati biztonsági csoport bármely alhálózatokhoz vagy a hálózati adapterek társítva, nem lehet törölni. Mielőtt megkísérelné törölni a társítást az összes alhálózat és hálózati adapterek a hálózati biztonsági csoport.
 
 1. Írja be a keresőmezőbe, a portál tetején, *hálózati biztonsági csoportok* kifejezést a keresőmezőbe. Amikor **hálózati biztonsági csoportok** jelennek meg a keresési eredmények közül válassza ki azt.
 2. Válassza ki a hálózati biztonsági csoport törli a listából.

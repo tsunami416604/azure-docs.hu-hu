@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e0f305d8200a6b78eb138d5a3c6d9cd99a095dbe
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f9138ec06900f4a7f856cc90362d16496b7b4fed
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486521"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766012"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Használja őket egységes előtérrendszerként több Azure Monitor az Application Insights-erőforrást 
-Ez a cikk bemutatja, hogyan lekérdezéséhez és az összes Application Insights alkalmazás log adatok megtekintése az egyik helyen, akkor is, ha azokat az Azure-előfizetések, az Application Insights-összekötő elavulása helyettesítője.  
+Ez a cikk bemutatja, hogyan lekérdezéséhez és az összes Application Insights alkalmazás log adatok megtekintése az egyik helyen, akkor is, ha azokat az Azure-előfizetések, az Application Insights-összekötő elavulása helyettesítője. Az Application Insights-erőforrások, amelyeket megadhat egyetlen lekérdezést erőforrások számát 100-ra korlátozódik.  
 
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Ajánlott megközelítést több Application Insights-erőforrások lekérdezése 
 A lekérdezés több Application Insights-erőforrások listázása lehet nehézkes és nehezen fenntartható. Ehelyett használhatja a lekérdezés logikai elkülönítése az alkalmazások hatókörének függvény.  

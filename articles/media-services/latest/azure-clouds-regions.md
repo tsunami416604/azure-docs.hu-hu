@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: juliako
-ms.openlocfilehash: 8eb49010d89c3039f46e5c84cd305b7d0b5ca025
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: d176152429ecac1ed4e570533f1bc0426cc7655f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54307006"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767452"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Magánfelhők és régiók, mely az Azure Media Services v3 létezik
 
@@ -33,9 +33,16 @@ Az Azure Media Services v3-as globális Azure-ban, Azure Government, Azure Germa
 | [LiveEvents](live-streaming-overview.md) | Elérhető | Elérhető | Elérhető | Elérhető |
 | [Streamvégpontok](streaming-endpoint-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
 
-## <a name="regions"></a>Régiók 
+## <a name="regionsgeographieslocations"></a>Régiók és földrajzi területeken/helyek
 
-Amikor meg kell adnia a **hely** paramétert meg kell adnia a régió neve, a **hely** érték. A régió, amely a fiók, és hogy a hívás kell átirányítani a kód nevének futtassa a következő sort [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
+* [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/)
+* [Azure-régiócsoportok](https://azure.microsoft.com/global-infrastructure/geographies/)
+* [Azure-helyek](https://azure.microsoft.com/global-infrastructure/locations/)
+
+## <a name="region-code-name"></a>Régió neve 
+
+Amikor meg kell adnia a **hely** paramétert meg kell adnia a régió neve, a **hely** érték. A régió, amely a fiók, és hogy a hívás kell átirányítani a kód nevének futtassa a következő sort [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
 ```bash
 az account list-locations

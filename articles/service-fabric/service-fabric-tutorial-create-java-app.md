@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: e4552157cab846356c57a135d4e273f5a545bce9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
-ms.translationtype: HT
+ms.openlocfilehash: 619f77b6b50a005b4b5cc688bdbf32d1ce3dce26
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667217"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810814"
 ---
-# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Oktatóanyag: Alkalmazás létrehozása egy Java Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével a Service Fabricben
+# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Oktatóanyag: A Service Fabric-alkalmazások egy Java Web API kezelőfelületi szolgáltatás és a egy állapotalapú háttérszolgáltatás létrehozása
 
 Ez az oktatóanyag egy sorozat első része. Az útmutató elvégzése után rendelkezni fog egy webes kezelőfelületű Java-szavazóalkalmazással, amely egy, a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat. Az oktatóanyag elvégzésének egyik feltétele, hogy rendelkezzen egy működő Mac OSX vagy Linux fejlesztői géppel. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást, akkor [letöltheti a forráskódot a kész alkalmazáshoz](https://github.com/Azure-Samples/service-fabric-java-quickstart), és folytathatja a [mintául szolgáló szavazóalkalmazás bemutatásával](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application).
 
@@ -228,7 +228,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 A HTTP-kommunikáció figyelője úgy működik, mint egy vezérlő, amely beállítja a HTTP-kiszolgálót, és elérhetővé teszi a szavazási műveleteket meghatározó API-kat. A *VotingWeb/src/statelessservice* mappában kattintson a jobb gombbal a *statelessservice* mappára, majd válassza a **New->File (Új->Fájl)** lehetőséget.  A fájlnak adja a *HttpCommunicationListener.java* nevet, majd kattintson a **Finish** (Befejezés) gombra.
 
-Cserélje le a fájl tartalmát a következőkkel, majd mentse a módosításokat.  A későbbiekben, [a HttpCommunicationListener.java fájl frissítését](#updatelistener_anchor) ismertető szakaszban ez a fájl úgy módosul, hogy a háttérszolgáltatásból a szavazás adatait renderelni, olvasni és írni is tudja.  Egyelőre a figyelő egyszerűen a szavazóalkalmazás statikus HTML-jét adja vissza.
+Cserélje le a fájl tartalmát a következőkkel, majd mentse a módosításokat.  Később, a frissítés a HttpCommunicationListener.java fájl, a fájl úgy módosul, jelennek meg, olvassa el, és a háttérszolgáltatás írhat szavazati adatokat.  Egyelőre a figyelő egyszerűen a szavazóalkalmazás statikus HTML-jét adja vissza.
 
 ```java
 // ------------------------------------------------------------
@@ -891,7 +891,7 @@ Ezen a ponton az alkalmazás készen áll egy helyi Service Fabric-fürtön val�
 
 2. Futtassa a helyi Service Fabric-fürtöt. Ez a lépés a fejlesztési környezettől (Mac vagy Linux) függ.
 
-    Ha Mac gépet használ, a helyi fürtöt az alábbi paranccsal futtathatja: cserélje le a **-v** paraméterben átadott parancsot a saját munkaterületére.
+    Ha Mac gépet használ, a helyi fürthöz, futtassa a következő paranccsal: Cserélje le az átadott parancsot a **- v** a saját munkaterületen, paraméterben.
 
     ```bash
     docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox

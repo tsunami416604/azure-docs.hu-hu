@@ -15,12 +15,12 @@ ms.date: 07/27/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: d0a28dc1eee1536a0cabe454cd899d9111edff88
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0d38fa458ae87ce29110b2423e832ff5c6262a01
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197738"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817580"
 ---
 # <a name="compare-remote-access-solutions"></a>Távelérési megoldások összehasonlítása
 
@@ -56,7 +56,7 @@ Azure AD-alkalmazásproxy hasonló termékek, köztük a képest egyedi előnyö
 - Az Azure AD a helyszíni erőforrásokhoz való kiterjesztése
    - A felhőméretű biztonság és védelem
    - Szolgáltatások, mint például a feltételes hozzáférés és a multi-factor Authentication hitelesítés is egyszerűen engedélyezése
-- Nincs a demilitarizált zónában componenet
+- A demilitarizált zónában nincsenek összetevők
 - Szükséges egy kimenő kapcsolatot sem
 - Egy hozzáférési panelen, hogy a felhasználók is nyissa meg az összes alkalmazásokban, beleértve az Office 365, az Azure AD integrált SaaS-alkalmazások, és a helyszíni webalkalmazásokhoz. 
 

@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 3554151490215f128efc6725b7aaa0628d503366
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b0f909bb7f4b59e083f0ef1c8a19c11d5d9fb312
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260124"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821303"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a Githubról Azure App Service-ben a Jenkins folyamatos integrációs és üzembe helyezés
 
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzéséhez szüksége ezeket az elemeket:
 
   Ha nem rendelkezik Jenkins-kiszolgáló, hajtsa végre ezeket a lépéseket, most már az Azure Portalon: [Jenkins-kiszolgáló létrehozása az Azure Linux rendszerű virtuális gépen](/azure/jenkins/install-jenkins-solution-template)
 
-* A [GitHub](https://github.com) , így másolata fiókra ([elágazás](#fork)) a minta Java-webalkalmazás. 
+* A [GitHub](https://github.com) , így (elágazás) másolata a minta Java-webalkalmazáshoz tartozó fiókot. 
 
 * [Az Azure CLI](/cli/azure/install-azure-cli), futtatható vagy a helyi parancssor vagy [Azure Cloud Shell](/azure/cloud-shell/overview)
 

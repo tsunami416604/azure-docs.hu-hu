@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 7152582a73dbaf07eca4aae066c9ac3ab82c3135
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e520c5dc2ae086305692c4bec1e1786d335c97e5
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319052"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765993"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
 Ez a dokumentum információkat biztosít a Log Analyticsbe, amely egy Azure monitor, az információ kiegészítésére a szolgáltatás célja [Azure adatvédelmi központ](../../security/security-microsoft-trust-center.md).  
@@ -52,7 +52,6 @@ Nem javasoljuk, hogy explicit módon beállítás csak a TLS 1.2 használatára,
 | Windows 8.0-s és 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Ellenőrizze, hogy továbbra is használja a [alapértelmezett beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
 | A Windows Server 2012-2016-ban | Támogatott, és alapértelmezés szerint engedélyezve van. | Ellenőrizze, hogy továbbra is használja a [alapértelmezett beállításai](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 és a Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) lap engedélyezése részleteiért.  |
-| Windows Server 2008 SP2 | A TLS 1.2 támogatásához szükséges frissítést. | Lásd: [frissítést a TLS 1.2 támogatása](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2. |
 
 ## <a name="data-segregation"></a>az adatok elkülönítése
 Miután az adatokat a Log Analytics szolgáltatás által betöltött, az adatok van logikailag elkülönítve vannak tárolva a szolgáltatás egyes összetevőiben. Az összes adat munkaterület szerint van megcímkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes. Az adatok a kiválasztott régióban a storage fürtben egy dedikált adatbázisban tárolódik.

@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 905d701437b1b580c019c800d13b18f725580fdd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 51de92eb64e9879b769baf7e574ee1dca9355040
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972946"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767009"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Felhasználók hozzáadása az Azure-beli Linuxos virtuális gép a cloud-init használatával
 Ez a cikk bemutatja, hogyan használható [a cloud-init](https://cloudinit.readthedocs.io) felhasználó hozzáadása egy virtuális gép (VM) vagy virtuálisgép-méretezési csoportok (VMSS): kiépítés az Azure-ban ideje. Ez a szkript a cloud-init egyszer az erőforrásokat az Azure-ban kiépített fut az első rendszerindításkor. A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md).
@@ -43,13 +43,13 @@ users:
 > [!NOTE] 
 > A #cloud-konfigurációs fájl tartalmazza a `- default` paramétert tartalmaz. Ez a felhasználó hozzáfűzése a meglévő rendszergazdai felhasználó a kiépítés során létrehozott. Ha egy felhasználói nélkül hoz létre a `- default` paraméter – az automatikusan létrehozott rendszergazdai felhasználó hozta létre az Azure platform felülírt lenne. 
 
-Ez a rendszerkép üzembe helyezése előtt hozzon létre egy erőforráscsoportot kell a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+Ez a rendszerkép üzembe helyezése előtt hozzon létre egy erőforráscsoportot kell a [az csoport létrehozása](/cli/azure/group) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) , és adja meg a cloud-init fájl `--custom-data cloud_init_add_user.txt` módon:
+Most hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm) , és adja meg a cloud-init fájl `--custom-data cloud_init_add_user.txt` módon:
 
 ```azurecli-interactive 
 az vm create \

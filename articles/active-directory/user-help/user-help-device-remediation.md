@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 97d35eb3442b63736b40d51dda57b872813293ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 668d69921fd2001cd52bc864e5ee272d179a7bbc
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164061"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770469"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>A "Meg nem innen érheti el" hibaüzenetet a lehetséges okok
 Arról, hogy a, hibaüzenetet kaphat közben: a szervezet belső webalkalmazásokat vagy szolgáltatásokat, **nem érheti el itt**. Ez az üzenet azt jelenti, a szervezet rendelkezik egy szabályzatot, amely megakadályozza, hogy az eszköz a szervezet erőforrásaihoz. Bár előfordulhat, hogy végül forduljon az ügyfélszolgálathoz a probléma megoldásához rendelkezik, az alábbiakban néhány dolgot, először próbálja meg.
@@ -68,4 +68,4 @@ Ha az eszköz nem csatlakozik a vállalati hálózaton, két dolog egyikét tehe
 ## <a name="next-steps"></a>További lépések
 - [Mi az a MyApps portálról?](active-directory-saas-access-panel-introduction.md)
 
-- [Bejelentkezés telefonnal a jelszó helyett](microsoft-authenticator-app-phone-signin-faq.md)
+- [Bejelentkezés telefonnal a jelszó helyett](user-help-auth-app-sign-in.md)

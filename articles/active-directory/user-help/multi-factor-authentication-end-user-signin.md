@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: aafc960c0c26a94a8be672d0d72a46dfcb559013
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 13b82aa4f256bf0ec2d0805e85241d72e115d737
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157006"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810201"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication a bejelentkezési élmény
 > [!NOTE]
@@ -31,8 +31,8 @@ A bejelentkezési felület használatához a második tényezőként beállítá
 | --- |
 | [A telefonon hívja fel a mobil- vagy office telefonomra](#signing-in-with-a-phone-call) |
 | [Az SMS-t kérek a mobiltelefonomra](#signing-in-with-a-text-message)
-| [Az értesítések a Microsoft Authenticator alkalmazásból](#signing-in-with-the-microsoft-authenticator-app-using-notification) |
-| [Az ellenőrző kódok kezelésére a Microsoft Authenticator alkalmazásból](#signing-in-with-the-microsoft-authenticator-app-using-verification-code) |
+| Az értesítések a Microsoft Authenticator alkalmazásból |
+| Az ellenőrző kódok kezelésére a Microsoft Authenticator alkalmazásból |
 | [Az alternatív módszert mert jelenleg nem használható az előnyben részesített módszere](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>Bejelentkezés a telefonhívás
@@ -87,4 +87,4 @@ Ha problémába ütközik a kétlépéses ellenőrzés jelentkezik, részletes t
 
 Ismerje meg, hogyan [a kétlépéses ellenőrzés beállításait kezelheti](multi-factor-authentication-end-user-manage-settings.md).
 
-Megtudhatja, hogyan [Ismerkedés a Microsoft Authenticator alkalmazás](microsoft-authenticator-app-how-to.md) , hogy az értesítések segítségével jelentkezzen be, a szövegek és a telefonhívások helyett.
+Megtudhatja, hogyan [Ismerkedés a Microsoft Authenticator alkalmazás](user-help-auth-app-download-install.md) , hogy az értesítések segítségével jelentkezzen be, a szövegek és a telefonhívások helyett.

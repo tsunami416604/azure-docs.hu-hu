@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: de31ab4e617b872239c1b83324e5b8d52b0b4094
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/06/2019
+ms.openlocfilehash: 5ce8464de552fb228b961af199e4b03e645478a2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469113"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809980"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL-kapcsolati architektúra
 
@@ -25,8 +25,7 @@ Ez a cikk ismerteti az Azure SQL Database és az SQL Data Warehouse kapcsolati a
 
 > [!IMPORTANT]
 > **[Közelgő változás] Azure SQL-kiszolgáló, végpont kapcsolatok szolgáltatás egy `Default` kapcsolat viselkedés vált `Redirect`.**
->
-> Módosítás érvényben, vagy azt megelőzően 2019. január 2. minden régió esetében.
+> Ügyfelek javasolja, hogy hozzon létre új kiszolgálók és a kapcsolat típusát a már meglévőket explicit módon állítva átirányítási (előnyösebb) vagy a Proxy kapcsolódási architektúráját függően.
 >
 > Ebből a változásból meglévő környezetekben használhatatlanná tévő szolgáltatási végponton keresztüli kapcsolat megakadályozása érdekében használjuk telemetriai hajtsa végre a következő:
 > - -Kiszolgálók, hogy a rendszer azt észleli, hogy a módosítás előtt a szolgáltatásvégpontokon keresztül elért, hogy váltson a kapcsolat típusát `Proxy`.
@@ -38,7 +37,7 @@ Ez a cikk ismerteti az Azure SQL Database és az SQL Data Warehouse kapcsolati a
 >
 > Végpont szolgáltatáskapcsolatokat nem sikerült létrehozni az Azure SQL Serverhez, és meg is feltételezi, hogy ez a változás által érintett, győződjön meg arról, hogy kapcsolattípus explicit módon értéke `Redirect`. Ha ez a helyzet, hogy nyissa meg a virtuális gép tűzfal-szabályok és a hálózati biztonsági csoportok (NSG) régióban minden olyan Azure IP-címekhez tartozó Sql [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) portok 11000-12000. Ha ez nem megfelelő megoldás, váltson kiszolgáló explicit módon a `Proxy`.
 > [!NOTE]
-> Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
+> Ez a témakör az önálló adatbázisok és rugalmas készletek és az SQL Data Warehouse-adatbázist üzemeltető Azure SQL Database-kiszolgálókra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 

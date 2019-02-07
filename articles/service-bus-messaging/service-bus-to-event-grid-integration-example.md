@@ -14,20 +14,20 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 55798af8d8e2b50614a3eee51b330c5b4fa0f918
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: a1c0078cf2359de7fa018af749c61880caa8fcdd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409576"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821807"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Példák Azure Service Bus – Azure Event Grid integrációra
 
 Ebben a cikkben megtudhatja, hogyan állíthat be egy Azure-függvényt és egy logikai alkalmazást, amelyek mindegyike egy Azure Event Grid-esemény fogadása révén fogad üzeneteket. A következőket fogja elvégezni:
  
-* Létrehoz egy egyszerű [Azure-tesztfüggvényt](#test-function-setup)a hibakereséshez és a kezdeti Event Grid-eseményfolyam megtekintéséhez. Ezt a lépést végezze el attól függetlenül, hogy a többi lépést elvégzi-e.
-* Létrehoz egy [Azure-függvényt az Azure Service Bus-üzenetek fogadásához és feldolgozásához](#receive-messages-using-azure-function) Event Grid-események alapján.
-* Használatba veszi az [Azure App Service Logic Apps funkcióját](#receive-messages-using-azure-logic-app).
+* Hozzon létre egy egyszerű tesztelési Azure-függvényt a hibakereséshez és az Event Grid-eseményfolyam kezdeti folyamat. Ezt a lépést végezze el attól függetlenül, hogy a többi lépést elvégzi-e.
+* Hozzon létre egy Azure-függvényt az Event Grid-események alapján az Azure Service Bus-üzenetek fogadásához és feldolgozásához.
+* Az Azure App Service Logic Apps funkcióját használják.
 
 Az Ön által létrehozott példa feltételezi, hogy a Service Bus-témakörnek két előfizetése van. Emellett feltételezi, hogy az Event Grid-előfizetés úgy lett létrehozva, hogy csak egy Service Bus-előfizetés számára küldjön eseményeket. 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 982a639fe7a57c2db484acc6b272e5314637d1c4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2b033cae63668c1b2af968d5c5b9df4e7b42dc35
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167665"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812922"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ChronicX®
 
@@ -86,7 +86,7 @@ Az Azure AD egyszeri bejelentkezés az ChronicX® tesztelése és konfigurálás
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy ChronicX® tesztfelhasználót](#create-a-chronicx®-test-user)**  – egy megfelelője a Britta Simon ChronicX®, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **Hozzon létre egy ChronicX® tesztfelhasználót** – egy megfelelője a Britta Simon ChronicX®, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
