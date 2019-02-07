@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 6748998e87de7f0d5ea41a10ba16600aa7b31505
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 269ea0162f85c7bd632e0528680fc8b0e2885aa9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972039"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818124"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x
 
-> [!div class="op_single_selector" title1="Válassza ki az Azure Functions futásidejének verzióját: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [1-es verzió](functions-bindings-cosmosdb.md)
 > * [2-es verzió](functions-bindings-cosmosdb-v2.md)
 
@@ -57,7 +57,7 @@ Tekintse meg az adott nyelvű példa:
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-[Hagyja ki az eseményindító-példák](#trigger---attributes)
+Hagyja ki az eseményindító-példák
 
 ### <a name="trigger---c-example"></a>Eseményindító - C#-példa
 
@@ -93,7 +93,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Hagyja ki az eseményindító-példák](#trigger---attributes)
+Hagyja ki az eseményindító-példák
 
 ### <a name="trigger---c-script-example"></a>Eseményindító - C#-szkript példa
 
@@ -131,7 +131,7 @@ Itt van a kötési adatait a *function.json* fájlt:
     }
 ```
 
-[Hagyja ki az eseményindító-példák](#trigger---attributes)
+Hagyja ki az eseményindító-példák
 
 ### <a name="trigger---javascript-example"></a>Eseményindító - JavaScript-példa
 
@@ -199,7 +199,7 @@ A Java-kód itt látható:
 Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@CosmosDBTrigger` jegyzet paraméterekkel, amelynek az értéke lenne származnak, Cosmos DB-ből.  A jegyzet használható natív Java-típusokat, POJOs vagy nullázható értékek használata nem kötelező<T>.
 
 
-[Hagyja ki az eseményindító-példák](#trigger---attributes)
+Hagyja ki az eseményindító-példák
 
 ### <a name="trigger---python-example"></a>Eseményindító - Python-példát
 
@@ -276,7 +276,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**leaseRenewInterval**| **leaseRenewInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, minden bérletek példány által jelenleg birtokolt partíciók megújítási időköz. Alapértelmezés szerint 17000 (17 másodperc).
 |**checkpointFrequency**| **checkpointFrequency**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, a bérlet ellenőrzőpontok közötti időtartam. Alapértelmezés szerint mindig után minden függvény hívásához szükséges.
 |**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Nem kötelező) Ha a beállítás, azt testreszabja egy függvény hívásához szükséges fogadott elemek maximális számát.
-|**startFromBeginning**| **StartFromBeginning**| (Nem kötelező) Ha a beállítás, közli az eseményindítót az olvasást módosítások előzményeit, a gyűjtemény helyett az aktuális idő elejétől kezdi. Ez csak az első alkalommal a Trigger elindul, ahogy ezt követő fut le, az ellenőrzőpontokat már tárolt működik. Ezt a beállítást `true` Ha már létrehozott bérleteket nem lesz hatása.
+|**startFromBeginning**| **startFromBeginning**| (Nem kötelező) Ha a beállítás, közli az eseményindítót az olvasást módosítások előzményeit, a gyűjtemény helyett az aktuális idő elejétől kezdi. Ez csak az első alkalommal a Trigger elindul, ahogy ezt követő fut le, az ellenőrzőpontokat már tárolt működik. Ezt a beállítást `true` Ha már létrehozott bérleteket nem lesz hatása.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1727,7 +1727,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 A C# és F# funkciók, ha a függvény kilép sikeres, a bemeneti dokumentum nevű bemeneti keresztül végzett módosítások automatikusan megmaradnak a paramétereket.
 
-JavaScript-függvények, a frissítések nem automatikusan történik függvény kilépéskor. Ehelyett használjon `context.bindings.<documentName>In` és `context.bindings.<documentName>Out` frissítéséhez. Tekintse meg a [JavaScript példa](#input---javascript-example).
+JavaScript-függvények, a frissítések nem automatikusan történik függvény kilépéskor. Ehelyett használjon `context.bindings.<documentName>In` és `context.bindings.<documentName>Out` frissítéséhez. Tekintse meg a JavaScript-példát.
 
 ## <a name="output"></a>Kimenet
 

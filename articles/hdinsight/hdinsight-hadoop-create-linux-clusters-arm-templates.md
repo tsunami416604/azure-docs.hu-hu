@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1b145b1162dcba5653c962f0af1969c1aa017f57
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d40d3b32f3af8e50079de0a5988584427ea6777c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054639"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819807"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>HDInsight az Apache Hadoop-fürtök létrehozása Resource Manager-sablonok használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -38,11 +38,12 @@ A sablon az erőforrásokat, amelyek szükségesek az alkalmazás határoz meg. 
 
 A HDInsight-sablonminták annak [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?term=hdinsight). Használja a platformok közötti [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) együtt a [erőforrás-kezelő bővítmény](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) vagy egy szövegszerkesztőben menteni a sablont egy fájlba a munkaállomáson. 
 
-Resource Manager-sablonokkal kapcsolatos további információkért lásd a következő cikkeket:
+Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a következő cikkek és példák:
 
 * [Szerzői Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Alkalmazás üzembe helyezése Azure Resource Manager-sablonokkal](../azure-resource-manager/resource-group-template-deploy.md)
-* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters) sablon hivatkozása
+* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) sablon hivatkozása
+* [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>Sablonok készítése
 
@@ -51,7 +52,6 @@ Resource Manager lehetővé teszi, hogy a Resource Manager-sablonok exportálás
 - Az Azure Portalon: Lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](../azure-resource-manager/resource-manager-export-template.md).
 - Azure PowerShell: Lásd: [exportálása az Azure Resource Manager-sablonok a PowerShell-lel](../azure-resource-manager/resource-manager-export-template-powershell.md).
 - Az Azure klasszikus parancssori felület: Lásd: [exportálása az Azure Resource Manager-sablonok az Azure klasszikus parancssori felület](../azure-resource-manager/resource-manager-export-template-cli.md).
-
 
 ## <a name="deploy-using-the-portal"></a>Üzembe helyezés a portálon
 

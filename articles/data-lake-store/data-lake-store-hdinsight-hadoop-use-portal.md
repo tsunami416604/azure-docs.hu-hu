@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: b81916de0940aa56eda97df94527fa6adc208285
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 23a1b2853423dd9f2a62c32792e27e3174495aff
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955830"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817036"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Az Azure Data Lake Storage Gen1 HDInsight-fürtök létrehozása az Azure portal használatával
 > [!div class="op_single_selector"]
@@ -57,8 +57,8 @@ Ebben a szakaszban egy HDInsight-fürt a Data Lake Storage Gen1 fiókokkal, az a
 
     - **Válassza ki, Data Lake Store-fiók**: Válasszon egy meglévő Data Lake Storage Gen1 fiókot. Egy meglévő Data Lake Storage Gen1 fiókot kell megadni.  Lásd: [Előfeltételek](#prerequisites).
     - **Gyökér elérési útját**: Adja meg egy elérési utat, ahol a fürtre jellemző fájlok vannak-e tárolni. A képernyőképen az __/fürtök/myhdiadlcluster/__, amelyben a __/fürtök__ mappának léteznie kell, és a portál létrehozza a *myhdicluster* mappát.  A *myhdicluster* a fürt neve.
-    - **Data Lake Store-hozzáférés**: konfigurálja a HDInsight-fürt és a Data Lake Storage Gen1 fiók közötti hozzáférést. Útmutatásért lásd: [konfigurálása Data Lake Storage Gen1 hozzáférés](#configure-data-lake-store-access).
-    - **További tárfiókok**: Adja hozzá az Azure storage-fiókok, a fürt további tárfiókok. Data Lake Storage Gen1 további fiókok hozzáadása a fürt engedélyek a Data Lake Storage Gen1 további fiókok adatokon, így az elsődleges tárolási típusok, egy Data Lake Storage Gen1 fiók konfigurálása során történik. Lásd: [konfigurálása Data Lake Storage Gen1 hozzáférés](#configure-data-lake-store-access).
+    - **Data Lake Store-hozzáférés**: A Data Lake Storage Gen1 fiók és a HDInsight-fürt közötti hozzáférés konfigurálásához. Útmutatásért tekintse meg a Data Lake Storage Gen1 konfigurálása hozzáférést.
+    - **További tárfiókok**: A fürt további tárfiókok hozzáadása az Azure storage-fiókok. Data Lake Storage Gen1 további fiókok hozzáadása a fürt engedélyek a Data Lake Storage Gen1 további fiókok adatokon, így az elsődleges tárolási típusok, egy Data Lake Storage Gen1 fiók konfigurálása során történik. Lásd: Configure Data Lake Storage Gen1 hozzáférést.
 
 4. Az a **Data Lake Store-hozzáférés**, kattintson a **kiválasztása**, majd folytassa a fürt létrehozása leírtak szerint [Hadoop-fürtök létrehozása a HDInsight](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md).
 

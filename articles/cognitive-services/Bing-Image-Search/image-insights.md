@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: f0f3396852720bbbb31e46f7a9913d9d1bdc4a6c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8798ecd15c673c26c5b1be0920887ff493cc6a85
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157241"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818685"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>A Bing Image Search API-lemezkép elemzések lekérése
 
@@ -221,7 +221,7 @@ Az értékeket a téglalap képest relatív szélességét és magasságát az e
 -   Jobb: 290 / 300 = 0.9667...  
 -   Alsó: 150 / 200 = 0.75  
 
-Használhatja a régiót, amelyben a Bing, az ezt követő insights hívások adja vissza. Ha például vizuálisan hasonló képek a felismert entitás beolvasásához. További információkért lásd: [vágása rendszerképek vizuálisan hasonló és entitások felismerése modulok](#croppingimages). Az alábbiakban látható a régió mezőt és a lekérdezési paraméterek közötti lemezképek levágni használható.  
+Használhatja a régiót, amelyben a Bing, az ezt követő insights hívások adja vissza. Ha például vizuálisan hasonló képek a felismert entitás beolvasásához. További információkért lásd: vágása rendszerképek vizuálisan hasonló és entitások felismerése modulok. Az alábbiakban látható a régió mezőt és a lekérdezési paraméterek közötti lemezképek levágni használható.  
 
 -   Balra képez [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  
 -   Az első lesz leképezve a [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)  

@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 02/06/2019
 ms.author: aschhab
-ms.openlocfilehash: 48b7d7450503b27b5515e655be3f048f57c2238d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: aaa8615c0358b89c02aad8241262320771e426a8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856587"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818073"
 ---
 # <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 
@@ -39,7 +39,7 @@ Particionált üzenetsorok és témakörök használata az Azure Service Bus, az
 
 ### <a name="standard"></a>Standard
 
-A Standard szintű üzenetküldés, a Service Bus-üzenetsorok és témakörök az 1, 2, 3, 4 vagy 5 GB-os méret (az alapértelmezett érték 1 GB-os) hozhat létre. A particionálás engedélyezve van, a Service Bus másolatát hozza létre 4 (4 partíciók) a entitás minden GB, akkor adja meg. Mint ilyen, ha létrehoz egy sort, amely 5 GB-os méretig, a 4 partíciókat a várólista maximális mérete válik (5 \* 4) = 20 GB. A particionált üzenetsor vagy témakör maximális mérete láthatja hozzá tartozó bejegyzés megnézzük a [az Azure portal][Azure portal], a a **áttekintése** panel az adott entitáshoz.
+A Standard szintű üzenetküldés, a Service Bus-üzenetsorok és témakörök az 1, 2, 3, 4 vagy 5 GB-os méret (az alapértelmezett érték 1 GB-os) hozhat létre. A particionálás engedélyezve van, a Service Bus másolatát hozza létre 16 (16 partíciók) a entitás minden GB, akkor adja meg. Mint ilyen, ha létrehoz egy sort, amely 5 GB-os méretig, a 16 partíciókat a várólista maximális mérete válik (5 \* 16) = 80 GB. A particionált üzenetsor vagy témakör maximális mérete láthatja hozzá tartozó bejegyzés megnézzük a [az Azure portal][Azure portal], a a **áttekintése** panel az adott entitáshoz.
 
 ### <a name="premium"></a>Prémium
 

@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 96145906d40e465d2427a8100b3ad9333eec3f29
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249095"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819518"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Az Azure stack-beli tárolási kapacitás kezelése 
 
@@ -51,7 +51,7 @@ Mivel a storage szolgáltatás megosztások tárolási szolgáltatások kizáró
 
 Megosztások, kötetek bérlői adatok tárolásához. Bérlők adatainak magában foglalja a lapblobokat, blokkblobokat, hozzáfűző blobok, táblák, üzenetsorok, adatbázisok és kapcsolatos metaadat-tárolók. Egyetlen megosztása külön-külön tartalmazza a tárolási objektum (blobok, stb.), mert minden egyes objektum maximális mérete nem haladhatja meg a fájlmegosztás méretét. Új objektumok maximális mérete attól függ, hogy a kapacitás, amely az új objektum létrehozásakor, fel nem használt területe olyan megosztáson marad.
 
-Ha egy megosztást alacsony a szabad terület és műveletek [VISSZAIGÉNYLÉSE](#reclaim-capacity) terület nem sikeres, illetve érhető el, az Azure Stack-felhő üzemeltetője lehet [áttelepítése](#migrate-a-container-between) a blobtárolók egy megosztást a másikra.
+Ha egy megosztást alacsony a szabad terület és műveletek [VISSZAIGÉNYLÉSE](#reclaim-capacity) terület nem sikeres, illetve érhető el, az Azure Stack-felhő üzemeltetője telepíthet át a blob-tárolók egy megosztást a másikra.
 
 - Tárolók és blobok kapcsolatos további információkért lásd: [a Blob storage-](azure-stack-key-features.md#blob-storage) a kulcs funkcióiról és koncepciójáról az Azure Stackben.
 - Bérlő felhasználók miként használják a blob storage, az Azure Stack használatával kapcsolatos információkért lásd: [Azure Stack tárolószolgáltatások](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).

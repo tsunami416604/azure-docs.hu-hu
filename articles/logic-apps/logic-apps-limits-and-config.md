@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: 494665e530104cd4711e8112f3a999e68c3485b8
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d77cdd7781f3a371d6089573a16ba642fb1c774c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746381"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769868"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -195,53 +195,58 @@ Az ingyenes szinten csak felderítő forgatókönyvek esetén nem termelési for
 
 | Összetevő | Korlát | Megjegyzések | 
 |----------|-------|-------| 
-| Kereskedelmi EDI-partnerek | 25 | | 
-| Kereskedelmi EDI-szerződést | 10 | | 
-| Maps | 25 | | 
-| Sémák | 25 | 
 | Szerelvények | 10 | | 
 | Kötegkonfigurációk | 5 | 
 | Tanúsítványok | 25 | | 
+| Kereskedelmi EDI-szerződést | 10 | | 
+| Kereskedelmi EDI-partnerek | 25 | | 
+| Maps | 25 | | 
+| Sémák | 25 | 
 |||| 
 
 *Alapszintű csomag*
 
 | Összetevő | Korlát | Megjegyzések | 
 |----------|-------|-------| 
-| Kereskedelmi EDI-partnerek | 2 | | 
-| Kereskedelmi EDI-szerződést | 1 | | 
-| Maps | 500 | | 
-| Sémák | 500 | 
 | Szerelvények | 25 | | 
 | Kötegkonfigurációk | 1 | | 
 | Tanúsítványok | 2 | | 
+| Kereskedelmi EDI-szerződést | 1 | | 
+| Kereskedelmi EDI-partnerek | 2 | | 
+| Maps | 500 | | 
+| Sémák | 500 | 
 |||| 
 
 *Standard csomag*
 
 | Összetevő | Korlát | Megjegyzések | 
 |----------|-------|-------| 
-| Kereskedelmi EDI-partnerek | 500 | | 
-| Kereskedelmi EDI-szerződést | 500 | | 
-| Maps | 500 | | 
-| Sémák | 500 | 
 | Szerelvények | 50 | | 
 | Kötegkonfigurációk | 5 |  
 | Tanúsítványok | 50 | | 
+| Kereskedelmi EDI-szerződést | 500 | | 
+| Kereskedelmi EDI-partnerek | 500 | | 
+| Maps | 500 | | 
+| Sémák | 500 | 
 |||| 
 
 <a name="artifact-capacity-limits"></a>
 
 ### <a name="artifact-capacity-limits"></a>Összetevő kapacitáskorlátait
 
-| Name (Név) | Korlát | Megjegyzések | 
-| ---- | ----- | ----- | 
-| Séma | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használja a [blob URI](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
-| Map (XSLT file) | 2 MB | | 
-| Futásidejű végpont: Olvasási hívások száma 5 percenként | 60,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
-| Futásidejű végpont: Hívások száma 5 percenként meghívása | 45,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
-| Futásidejű végpont: Nyomkövetési hívások száma 5 percenként | 45,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
-| Futásidejű végpont: Blokkolja a párhuzamos hívások | ~1,000 | Csökkentse az egyidejű kérelmek számát, vagy szükség szerint időtartamának csökkentése érdekében. | 
+| Összetevő | Korlát | Megjegyzések | 
+| -------- | ----- | ----- | 
+| Szerelvény | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használja egy [Azure storage-fiók és a blob-tároló](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
+| Map (XSLT file) | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használja a [Azure Logic Apps alkalmazások REST API - térképek](https://docs.microsoft.com/rest/api/logic/maps/createorupdate). | 
+| Séma | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használja egy [Azure storage-fiók és a blob-tároló](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
+||||
+
+| Futásidejű végpont | Korlát | Megjegyzések |
+|------------------|-------|-------|
+| Olvasási hívások száma 5 percenként | 60,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
+| Hívások száma 5 percenként meghívása | 45,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
+| Nyomkövetési hívások száma 5 percenként | 45,000 | Szükség szerint több fiókot is a számítási feladatok szét. | 
+| Blokkolja a párhuzamos hívások | ~1,000 | Csökkentse az egyidejű kérelmek számát, vagy szükség szerint időtartamának csökkentése érdekében. | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>

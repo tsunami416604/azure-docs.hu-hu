@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: b6dc0a63340fee03b34f4c5b6eca8ff011d6b178
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 152e1e5892e3a72286205c2f5bf4e18b2a2bcbf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744172"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814843"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Az Azure Key Vaultban felügyelt tárfiók – CLI
 
@@ -56,23 +56,32 @@ Az az alábbi utasítások végrehajtásával, hogy társítja az Key Vault enge
     ```
     Másolja ki a fenti parancs eredménye azonosító mező
     
-2. Alkalmazás azonosítója az Azure Key Vault szolgáltatás egyszerű beolvasása 
+2. Lekéréséhez objektum azonosítója az Azure Key Vault szolgáltatás egyszerű futtassa az alábbi parancs
 
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
     
+    A parancs sikeres telepítést található az eredmény az objektum azonosítója
+    ```console
+        {
+            ...
+            "objectId": "93c27d83-f79b-4cb2-8dd4-4aa716542e74"
+            ...
+        }
+    ```
+    
 3. Tárolás kulcs operátori szerepkör hozzárendelése az Azure Key Vault Identity
 
     ```
-    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ApplicationIdOfKeyVault> --scope <IdOfStorageAccount>
+    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope <IdOfStorageAccount>
     ```
     
 4. Key Vault létrehozása felügyelt Tárfiók.     <br /><br />
-   Az alábbi azt állítja egy 90 napos regenerációs időszakot. 90 nap után a Key Vault "1. kulcs" újragenerálása és cseréje: key1"a"2. kulcs: az aktív kulcs.
+   Az alábbi azt állítja egy 90 napos regenerációs időszakot. 90 nap után a Key Vault "1. kulcs" újragenerálása és cseréje: key1"a"2. kulcs: az aktív kulcs. Ez lezárásával befejezettként jelöli meg Key1 aktív kulcsként most. 
    
     ```
-    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-regenerate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
+    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id <Id-of-storage-account>
     ```
     Abban az esetben a felhasználó nem hozott létre a tárfiókot, és nem rendelkezik engedélyekkel a storage-fiókba, az alábbi lépéseket, győződjön meg arról, hogy a Key Vault a tárolási engedélyek segítségével kezelheti a fiók engedélyeit, állítsa be.
     

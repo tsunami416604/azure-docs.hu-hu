@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: cdc55491e827ab949d471c9b66c7caaa86f5055d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4ba91bec752b16be0c172c65ff58241c852a61b9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043328"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811647"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnosztikai naplózás az Azure Cosmos DB-ben 
 
@@ -79,7 +79,7 @@ Diagnosztikai naplózás az Azure Portalon engedélyezéséhez kövesse az aláb
 
     * **Archiválás tárfiókba**: Használja ezt a beállítást, egy meglévő tárfiókot csatlakozni kell. Új tárfiók létrehozása a portálon: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md) , és kövesse az utasításokat egy Azure Resource Managerrel, általános célú fiók létrehozásához. Ezt követően térjen vissza erre a lapra, válassza ki a tárfiókot a portálon. Eltarthat néhány percig, újonnan létrehozott tárfiókok jelennek meg a legördülő menüben.
     * **Az eseményközpontok felé Stream**: Használja ezt a beállítást, egy meglévő Event Hubs névtér és az eseményközpont csatlakozni kell. Event Hubs-névtér létrehozása: [Event Hubs-névtér és eseményközpont létrehozása az Azure portal használatával](../event-hubs/event-hubs-create.md). Ezt követően térjen vissza erre a lapra a portálra, válassza ki az Event Hubs névtér és a házirend nevét.
-    * **Küldés a Log Analyticsnek**: Ez a beállítás használatához használja egy meglévő munkaterületet, vagy hozzon létre egy új Log Analytics-munkaterületet a lépéseket követve [hozzon létre egy új munkaterületet](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) a portálon. A naplók megtekintése a Log Analytics kapcsolatos további információkért lásd: [naplók megtekintése a Log Analytics](#view-in-loganalytics).
+    * **Küldés a Log Analyticsnek**: Ez a beállítás használatához használja egy meglévő munkaterületet, vagy hozzon létre egy új Log Analytics-munkaterületet a lépéseket követve [hozzon létre egy új munkaterületet](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) a portálon. A naplók megtekintése a Log Analytics kapcsolatos további információkért tekintse meg a Log Analytics naplók megtekintése.
     * **Bejelentkezés DataPlaneRequests**: Válassza ki ezt a beállítást, az alapul szolgáló Azure Cosmos DB elosztott platformot SQL, a Graph, a MongoDB, a Cassandra és a Table API-fiókok a háttér-kérelmek naplózása. Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók automatikusan törli a megőrzési időszak lejárta után is.
     * **Bejelentkezés MongoRequests**: Válassza ki ezt a beállítást, a felhasználó által kezdeményezett kérelem számára az Azure Cosmos DB API a mongodb-hez konfigurált Cosmos-fiókok az Azure Cosmos DB előtér történő bejelentkezést. Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók automatikusan törli a megőrzési időszak lejárta után is.
     * **Metrika kérelmek**: Ezt a beállítást a részletes adatok tárolására [az Azure-metrikák](../azure-monitor/platform/metrics-supported.md). Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók automatikusan törli a megőrzési időszak lejárta után is.

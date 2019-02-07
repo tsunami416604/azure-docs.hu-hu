@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: f7925c3eb14915c2b811ccfcd3a3803b9bd7c806
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: cd99f8bce8eca622412b834b5a7b75fda3ceb1f7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222915"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812055"
 ---
 # <a name="project-url-preview-v7-reference"></a>Projekt URL-cím előnézete v7-referencia
 
@@ -73,12 +73,12 @@ Az alábbiakban a fejlécek, köztük a kérést és választ.
 ## <a name="query-parameters"></a>Lekérdezési paraméterek
 A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges oszlop, paraméter szükséges. URL-címet kell kódolása a lekérdezési paramétereket. A lekérdezés egy http vagy https sémával; abszolút URL-CÍMNEK kell lennie. nem támogatjuk a relatív URL-címeket vagy más rendszerek például az ftp: / /
 
-|Name (Név)|Value|Typo|Szükséges|
+|Name (Név)|Érték|Typo|Szükséges|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />Piaci a lehetséges értékek listáját lásd: [piaci kódok](#market-codes).<br /><br /> **MEGJEGYZÉS:** Az URL-cím előzetes API jelenleg csak támogatja a földrajzi RÉGIÓJA és az angol nyelvű.<br /><br />|Karakterlánc|Igen|
-|<a name="query" />q|Az előzetes verzióra az URL-cím|Karakterlánc|Igen|
-|<a name="responseformat" />responseFormat|Az adathordozó-típus használata a válaszhoz. A kis-és értékek a következők.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Az alapértelmezett érték a JSON. A JSON-fájllal kapcsolatos információk objektumok, hogy a válasz tartalmazza, lásd: [Válaszobjektumok](#response-objects).<br /><br />Ha JsonLd adja meg, a válasz törzse tartalmazza a keresési eredményeket tartalmazó JSON-LD objektumok. A JSON-LD kapcsolatos információkért lásd: [JSON-LD](http://json-ld.org/).|Karakterlánc|Nem|
-|<a name="safesearch"/>safeSearch|Érvénytelen felnőtt tartalom, vagy a hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód: 200, adja vissza, és a *isFamilyFriendly* jelző false értékre van állítva.<ul><li>safeSearch=strict: Cím, leírás, URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = közepes; Cím, URL-cím és leírás, de nem a leíró képet kaphat.</li><li>biztonságos keresés kikapcsolása:; = Minden válasz objektumok/elemet – title, URL-címet, leírást és képet kaphat.</li></ul> |Karakterlánc|Nem kötelező. </br> Biztonságos keresés alapértelmezés szerint szigorú =.|
+|<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />Tekintse meg piaci kódok piaci a lehetséges értékek listáját.<br /><br /> **MEGJEGYZÉS:** Az URL-cím előzetes API jelenleg csak támogatja a földrajzi RÉGIÓJA és az angol nyelvű.<br /><br />|String|Igen|
+|<a name="query" />q|Az előzetes verzióra az URL-cím|String|Igen|
+|<a name="responseformat" />responseFormat|Az adathordozó-típus használata a válaszhoz. A kis-és értékek a következők.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Az alapértelmezett érték a JSON. A JSON-fájllal kapcsolatos információk objektumok, hogy a válasz tartalmazza, lásd: [Válaszobjektumok](#response-objects).<br /><br />Ha JsonLd adja meg, a válasz törzse tartalmazza a keresési eredményeket tartalmazó JSON-LD objektumok. A JSON-LD kapcsolatos információkért lásd: [JSON-LD](http://json-ld.org/).|String|Nem|
+|<a name="safesearch"/>safeSearch|Érvénytelen felnőtt tartalom, vagy a hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód: 200, adja vissza, és a *isFamilyFriendly* jelző false értékre van állítva.<ul><li>safeSearch=strict: Cím, leírás, URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = közepes; Cím, URL-cím és leírás, de nem a leíró képet kaphat.</li><li>biztonságos keresés kikapcsolása:; = Minden válasz objektumok/elemet – title, URL-címet, leírást és képet kaphat.</li></ul> |String|Nem kötelező. </br> Biztonságos keresés alapértelmezés szerint szigorú =.|
 
 ## <a name="response-objects"></a>Válasz objektumok
 A válasz sémája vagy egy [weblap] vagy byl vrácen Prvek, ahogy a webes keresési API-t. Ha a kérelem meghiúsul, a legfelső szintű objektum a [byl vrácen Prvek](#errorresponse) objektum.
@@ -92,36 +92,36 @@ Határozza meg a következő hiba történt.
 
 |Elem|Leírás|Typo|
 |-------------|-----------------|----------|
-|<a name="error-code" />Kód|A hiba kódja, amely azonosítja a hiba kategóriáját. Lehetséges kódok listáját lásd: [hibakódok](#error-codes).|Karakterlánc|
-|<a name="error-message" />üzenet|A hiba leírása.|Karakterlánc|
-|<a name="error-moredetails" />moreDetails|Egy leírást, amely a hibával kapcsolatos további információkat biztosít.|Karakterlánc|
-|<a name="error-parameter" />A paraméter|A lekérdezési paraméter, amely a hibát okozó a kérésben.|Karakterlánc|
-|<a name="error-subcode" />subCode|A hiba kódja, amely azonosítja a hibát. Például ha `code` InvalidRequest, akkor `subCode` ParameterInvalid vagy ParameterInvalidValue is lehet. |Karakterlánc|
-|<a name="error-value" />value|A lekérdezési paraméter értéke, amely nem érvényes.|Karakterlánc|
+|<a name="error-code" />Kód|A hiba kódja, amely azonosítja a hiba kategóriáját. Lehetséges kódok listáját lásd: [hibakódok](#error-codes).|String|
+|<a name="error-message" />üzenet|A hiba leírása.|String|
+|<a name="error-moredetails" />moreDetails|Egy leírást, amely a hibával kapcsolatos további információkat biztosít.|String|
+|<a name="error-parameter" />A paraméter|A lekérdezési paraméter, amely a hibát okozó a kérésben.|String|
+|<a name="error-subcode" />subCode|A hiba kódja, amely azonosítja a hibát. Például ha `code` InvalidRequest, akkor `subCode` ParameterInvalid vagy ParameterInvalidValue is lehet. |String|
+|<a name="error-value" />value|A lekérdezési paraméter értéke, amely nem érvényes.|String|
 
 ### <a name="errorresponse"></a>Byl vrácen Prvek
 A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem teljesíthető.
 
-|Name (Név)|Value|Typo|
+|Name (Név)|Érték|Typo|
 |----------|-----------|----------|
-|_type|Mutató típusa.|Karakterlánc|
+|_type|Mutató típusa.|String|
 |<a name="errors" />Hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Error](#error)[]|
 
 ### <a name="webpage"></a>WebPage
 Meghatározza, milyen kapcsolatos információkat egy előzetes verzióban érhető el a weblapot.
 
-|Name (Név)|Value|Typo|
+|Name (Név)|Érték|Typo|
 |----------|-----------|----------|
-|név|Az oldal címe, nem feltétlenül a HTML-cím|Karakterlánc|
-|url|Az URL-cím, amely ténylegesen volt bejárt (kérelem előfordulhat, hogy felvette a átirányítások)|Karakterlánc|
-|leírás|Az oldal és a tartalom rövid leírása|Karakterlánc|
+|név|Az oldal címe, nem feltétlenül a HTML-cím|String|
+|url|Az URL-cím, amely ténylegesen volt bejárt (kérelem előfordulhat, hogy felvette a átirányítások)|String|
+|leírás|Az oldal és a tartalom rövid leírása|String|
 |isFamilyFriendly|A legpontosabb a webes index; eleme valós idejű fetches tegye alapján kizárólag az URL-címet, és nem az oldal tartalmát az észlelés|logikai|
-|primaryImageOfPage/contentUrl|Tartalmazza az előzetes verzióban érhető el egy reprezentatív kép URL-címe|Karakterlánc|
+|primaryImageOfPage/contentUrl|Tartalmazza az előzetes verzióban érhető el egy reprezentatív kép URL-címe|String|
 
 ### <a name="identifiable"></a>Azonosításra alkalmas
-|Name (Név)|Value|Typo|
+|Name (Név)|Érték|Typo|
 |-------------|-----------------|----------|
-|id|Egy erőforrás-azonosítója|Karakterlánc|
+|id|Egy erőforrás-azonosítója|String|
 
 ## <a name="error-codes"></a>Hibakódok
 

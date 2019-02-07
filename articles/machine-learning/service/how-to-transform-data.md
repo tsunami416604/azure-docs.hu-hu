@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f02d511c5afa6d515f29b9fc557be3b49223c501
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4291f6083cfe07d689ef9377df57c3e9a41772fc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243283"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812208"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, különböző módszerekkel, amelyen az adatok be
 
 Jelenleg nincsenek funkciókat, a következő feladatokat:
 
-- [Az autorefresh tulajdonság oszlop hozzáadása](#column)
+- Az autorefresh tulajdonság oszlop hozzáadása
 - [Hiányzó imputálására](#impute-missing-values)
 - [Oszlopok származtatása példa](#derive-column-by-example)
 - [Szűrés](#filtering)

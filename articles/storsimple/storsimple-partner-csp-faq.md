@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 76b89c15a12810f98e6324ca93cf581f9b852c88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f2c726fd4159bcb47088e814fd60e054e50a1315
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259938"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814282"
 ---
-# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>A StorSimple felhőalapú megoldások szolgáltató program: gyakori kérdések
+# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>A StorSimple felhőalapú megoldások szolgáltató program: Gyakori kérdések
 
 
 ## <a name="overview"></a>Áttekintés
@@ -31,7 +31,7 @@ Kérdések és válaszok a következő kategóriákba vannak rendezve:
 
  - [A StorSimple és a Felhőbeli szolgáltató Program (CSP) modell](#storsimple-and-csp-model)
  - [Üzembe helyezés és kezelés a virtuális tömb partnerként](#deploy-and-manage-storsimple-as-a-partner)
- - [StorSimple partnerek CSP-hez támogatása](#support-for-storsimple-partners)
+ - StorSimple partnerek CSP-hez támogatása
 
 ## <a name="storsimple-and-csp-model"></a>A StorSimple és a CSP-modell
 

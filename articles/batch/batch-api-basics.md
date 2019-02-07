@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bdb7b1477725235ca88e9cf527c7f711fd6f6b73
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: b4d0ee26cb9f7283cac871c70737cd701fb74c91
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732260"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818583"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -62,7 +62,7 @@ Egyes erőforrásokra (fiókokra, számítási csomópontokra, készletekre, fel
   * [Indítási tevékenység](#start-task)
   * [Feladatkezelő-tevékenység](#job-manager-task)
   * [Feladat-előkészítési és -kiadási tevékenységek](#job-preparation-and-release-tasks)
-  * [Többpéldányos tevékenység (MPI)](#multi-instance-tasks)
+  * Többpéldányos tevékenység (MPI)
   * [Tevékenységfüggőségek](#task-dependencies)
 * [Alkalmazáscsomagok](#application-packages)
 
@@ -215,7 +215,7 @@ A készlethez tartozó számítási csomópontokra üzembe helyezni kívánt [al
 
 ### <a name="network-configuration"></a>Hálózati konfiguráció
 
-Megadhatja annak az Azure [virtuális hálózatnak (VNet)](../virtual-network/virtual-networks-overview.md) alhálózatát, amelyen létre szeretné hozni a készlet számítási csomópontjait. További információért lásd a [Készlet hálózati konfigurációja](#pool-network-configuration) című szakaszt.
+Megadhatja annak az Azure [virtuális hálózatnak (VNet)](../virtual-network/virtual-networks-overview.md) alhálózatát, amelyen létre szeretné hozni a készlet számítási csomópontjait. Tekintse meg a készlet hálózati konfigurációja szakaszban olvashat.
 
 
 ## <a name="job"></a>Feladat
@@ -271,7 +271,7 @@ A csomóponton a számítások elvégzéséhez meghatározott tevékenységek me
 * [Indítási tevékenység](#start-task)
 * [Feladatkezelő-tevékenység](#job-manager-task)
 * [Feladat-előkészítési és -kiadási tevékenységek](#job-preparation-and-release-tasks)
-* [Többpéldányos tevékenységek (MPI)](#multi-instance-tasks)
+* Többpéldányos tevékenységek (MPI)
 * [Tevékenységfüggőségek](#task-dependencies)
 
 ### <a name="start-task"></a>Indítási tevékenység

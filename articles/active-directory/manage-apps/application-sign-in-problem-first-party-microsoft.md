@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 4d75ab2328cbc18142742c3111ef1f5e7d8eb8f2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f67633ec62b28f54a97cccd0f27b43bdb626ee58
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731478"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822765"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Egy Microsoft-alkalmazásba történő bejelentkezésnél
 
@@ -34,11 +34,11 @@ Hogy egy felhasználó kaphat-e a Microsoft által közzétett alkalmazás háro
 
 -   A alkalmazások számára, amely közzéteszi a Microsoft vagy a 3. fél megkötések nélkül bárki használandó, felhasználókat lehet, hogy is hozzáférhetnek, keresztül **rendszergazdai jóváhagyást**. Ez azt jelenti, hogy a rendszergazda azt észlelte, az alkalmazás által a szervezet minden tagja használhatók, így jelentkezzen be az alkalmazás egy globális rendszergazdai fiókkal, és a hozzáférési jogot a szervezet minden tagja.
 
-A probléma elhárításához, kezdje a [általános problémás területek, fontolja meg az alkalmazás-hozzáférés a](#general-problem-areas-with-application-access-to-consider) majd beolvassa a [forgatókönyv: Microsoft Application hozzáférés hibaelhárítása](#walkthrough-steps-to-troubleshoot-microsoft-application-access) beolvasni a részletek megtekintéséhez.
+A probléma elhárításához, kezdje a [fontolja meg az alkalmazás-hozzáférés az általános problémás területek](#general-problem-areas-with-application-access-to-consider) majd beolvassa a forgatókönyv: Microsoft Application hozzáférést kaphat a részletek hibaelhárítási lépéseit.
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Alkalmazás-hozzáférést, fontolja meg az általános problémás területek
 
-Az alábbiakban olyan, az általános problémás területek, amely részletesen is megtekintheti, ha van egy ötlete, hol kell elkezdeni, de javasoljuk, hogy elolvasta a forgatókönyv a gyors induláshoz: [Forgatókönyv: Microsoft Application hozzáférés hibaelhárítása](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
+Az alábbiakban olyan, az általános problémás területek, amely részletesen is megtekintheti, ha van egy ötlete, hol kell elkezdeni, de javasoljuk, hogy elolvasta a forgatókönyv a gyors induláshoz: Forgatókönyv: Microsoft Application hozzáférést hibaelhárítási lépéseit.
 
 -   [A felhasználói fiókkal kapcsolatos problémák](#problems-with-the-users-account)
 

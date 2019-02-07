@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 01f6fe3ef309f19896befe61512d524a8543745f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9a240e15049d1acd7344f3ecf7dbf41ff2c3850d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041458"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818787"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -30,34 +30,28 @@ ms.locfileid: "54041458"
 > * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**SDK letöltése**</td><td>[PyPI](https://pypi.org/project/azure-cosmos)</td></tr>
-
-<tr><td>**API-dokumentáció**</td><td>[Python API dokumentációja](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)</td></tr>
-
-<tr><td>**SDK telepítési utasításokat**</td><td>[Python SDK telepítési utasításokat](https://github.com/Azure/azure-cosmos-python)</td></tr>
-
-<tr><td>**Hozzájárul az SDK-t**</td><td>[GitHubon](https://github.com/Azure/azure-cosmos-python)</td></tr>
-
-<tr><td>**Első lépések**</td><td>[A Python SDK – első lépések](sql-api-python-application.md)</td></tr>
-
-<tr><td>**Aktuális támogatott platform**</td><td>[Python 2.7-es](https://www.python.org/downloads/) és [Python 3.5.](https://www.python.org/downloads/)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**SDK letöltése**|[PyPI](https://pypi.org/project/azure-cosmos)|
+|**API-dokumentáció**|[Python API dokumentációja](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
+|**SDK telepítési utasításokat**|[Python SDK telepítési utasításokat](https://github.com/Azure/azure-cosmos-python)|
+|**Hozzájárul az SDK-t**|[GitHubon](https://github.com/Azure/azure-cosmos-python)|
+|**Első lépések**|[A Python SDK – első lépések](sql-api-python-application.md)|
+|**Aktuális támogatott platform**|[Python 2.7-es](https://www.python.org/downloads/) és [Python 3.5.](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-### <a name="a-name302302"></a><a name="3.0.2"/>3.0.2-es
+### <a name="a-name302302"></a><a name="3.0.2"/>3.0.2
 * Támogatás hozzáadva a MultiPolygon datatype
 * Hibajavítás munkamenetben olvassa el az újrapróbálkozási szabályzat
 * Hibajavítás base 64 karakterláncok dekódolás közben helytelen kitöltési hibák
 
-### <a name="a-name301301"></a><a name="3.0.1"/>3.0.1-es
+### <a name="a-name301301"></a><a name="3.0.1"/>3.0.1
 * Hibajavítás a LocationCache
 * Hibajavítás végpont újrapróbálkozási logika
 * Rögzített dokumentációja
 
-### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0-s
+### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0
 * Többrégiós írási műveletek támogatása.
 * Namespace azure.cosmos módosult.
 * Tároló és elem, document_client cosmos_client új nevet kapott: gyűjtemény és dokumentum fogalmakat. 
@@ -141,7 +135,7 @@ ms.locfileid: "54041458"
 * Proxy-kapcsolatot támogat.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* ÁLTALÁNOSAN ELÉRHETŐ SDK-T.
+* GA SDK.
 
 ## <a name="release--retirement-dates"></a>Állapot tárolá & kivezetési dátum
 A Microsoft biztosít értesítési legalább **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
@@ -159,8 +153,8 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [3.0.2-es](#3.0.2) |2018. november 15. |--- |
-| [3.0.1-es](#3.0.1) |2018. október 04. |--- |
+| [3.0.2](#3.0.2) |2018. november 15. |--- |
+| [3.0.1](#3.0.1) |Oct 04, 2018 |--- |
 | [2.3.3](#2.3.3) |2018. Szeptembertől 08. |--- |
 | [2.3.2](#2.3.2) |08 2018. május |--- |
 | [2.3.1](#2.3.1) |2017. december 21. |--- |
@@ -177,7 +171,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 | [1.6.0](#1.6.0) |2016. március 29-én |--- |
 | [1.5.0](#1.5.0) |2016. január 03. |--- |
 | [1.4.2](#1.4.2) |2015. október 06. |--- |
-| [1.4.1](#1.4.1) |2015. október 06. |--- |
+| 1.4.1 |2015. október 06. |--- |
 | [1.2.0](#1.2.0) |2015. augusztus 06. |--- |
 | [1.1.0](#1.1.0) |2015. július 09. |--- |
 | [1.0.1](#1.0.1) |2015. május 25. |--- |

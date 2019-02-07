@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c9e3a26f1ca8a577b883baacaf672cf73c8c5656
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6198d16b25330fb02cf5642addba0093ec437cab
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488662"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811487"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: A szűrés konfigurálása
 Szűrés segítségével szabályozhatja, mely objektumai jelenjenek meg az Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció minden objektumot a konfigurált erdőben lévő minden tartományban vesz igénybe. Ez általában az ajánlott konfiguráció. Felhasználók használják az Office 365 számítási feladatok, például az Exchange Online és Skype vállalati verzió, egy teljes globális címlista előnyös, így e-mailt, és mindenki hívja. Az alapértelmezett konfigurációnál, ugyanazt a felhasználói élményt, hogy azok egy a helyszíni Exchange-hez vagy a Lync végrehajtásának kellene.
@@ -93,8 +93,8 @@ Ha a telepítővarázsló futtatásához valamilyen okból nem tud csak kövesse
 
 Tartományalapú szűrés konfiguráció alábbi lépésekből áll:
 
-1. [Válassza ki a tartományok](#select-domains-to-be-synchronized) , amely fel szeretne venni a szinkronizálást.
-2. Minden hozzáadott és eltávolított tartomány, módosítsa a [futtatási profilokat](#update-run-profiles).
+1. Válassza ki a tartományok, amelyek fel szeretne venni a szinkronizálást.
+2. Minden hozzáadott és eltávolított tartományhoz módosítsa a futtatási profilokat.
 3. [Módosítások alkalmazása és ellenőrzése](#apply-and-verify-changes).
 
 ### <a name="select-the-domains-to-be-synchronized"></a>Válassza ki a szinkronizálandó tartományok
@@ -110,7 +110,7 @@ Tartományalapú szűrés konfiguráció alábbi lépésekből áll:
    Ha megváltoztatta a helyszíni Active Directory-infrastruktúrát és a hozzáadott vagy tartományok távolítva az erdő, majd kattintson a **frissítése** gomb lekérni frissített listáját. Amikor frissíti, akkor kéri a hitelesítő adatokat. Adja meg a hitelesítő adatokat, olvasási hozzáférés a Windows Server Active Directory. Nem kell lennie a felhasználót, hogy az előre van töltve a párbeszédpanelen.  
    ![Frissítés szükséges](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Ha elkészült, zárja be a **tulajdonságok** kattintva párbeszédpanel **OK**. Az erdő tartományokat eltávolítja, ha egy előugró üzenet szerint, hogy tartományhoz el lett távolítva, és ez a konfiguráció lesznek törölve.
-7. Továbbra is módosíthatja a [futtatási profilokat](#update-run-profiles).
+7. Továbbra is módosíthatja a futtatási profilokat.
 
 ### <a name="update-the-run-profiles"></a>A futtatási profil frissítése
 Ha a tartomány-szűrőnek, is frissíteni szeretné a futtatási profilokat.

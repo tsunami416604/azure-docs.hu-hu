@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff214460d919eff5c3c1a2e608958673867ddc55
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 73643cd6954932f933e200baad09e4301300aac2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44392243"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822544"
 ---
 # <a name="disaster-recovery-principles"></a>Vész-helyreállítási alapelvek
 
@@ -31,7 +31,7 @@ A forgatókönyvekben, amennyiben a telepített ügyfelek használatával az egy
 
 Az áttekintése ábrán látható, akkor egy második együttesét lemezkötetek order kell. A célként megadott kötetek mérete megegyezik az éles üzemelő példányok a vész-helyreállítási egységekben éles kötetek. Ezek a lemez-kötetek társítva a nagyméretű HANA-példányt kiszolgáló egységet a vész-helyreállítási helyként. A következő kötetek éles régióban lesznek replikálva a DR-helyre:
 
-- / hana/adatok
+- /hana/data
 - / hana/logbackups 
 - /Hana/Shared (a/usr/sap tartalmazza)
 
@@ -48,7 +48,7 @@ Azokban az esetekben, ahol HANA Rendszerreplikáció használata magas rendelkez
 
 
 >[!NOTE]
->A nagyméretű HANA-példány storage replikációs funkció tükrözés és a pillanatképek tárolási replikálásához. Ha megfelelésről a pillanatképek tárolási nem hajtható végre a [biztonsági mentési és visszaállítási](#backup-and-restore) szakaszban Ez a cikk nem lehetnek a vész-helyreállítási webhelyként bármely replikáció. Storage-pillanatkép-végrehajtás feltétele a storage-bA a vész-helyreállítási helyként.
+>A nagyméretű HANA-példány storage replikációs funkció tükrözés és a pillanatképek tárolási replikálásához. A pillanatképek tárolási nem végrehajtani, mert ez a cikk a biztonsági mentés és visszaállítás szakaszában bemutatott, ha nem a vész-helyreállítási webhelyként, minden replikációs lehet. Storage-pillanatkép-végrehajtás feltétele a storage-bA a vész-helyreállítási helyként.
 
 
 
@@ -81,7 +81,7 @@ Ezután állítsa be, vagy módosítsa a tárolási pillanatkép biztonsági men
 - A tranzakciós napló biztonsági mentési kötet (pillanatkép típusa **naplók**), készlet replikálni a vész-helyreállítási webhelyként azonos tárolási kötet célelemein kerüljön át 3 percenként.
 
 A helyreállításipont-célkitűzés minimalizálása érdekében állítsa be a következőket:
-- Hajtsa végre egy **hana** típusú storage-pillanatkép (lásd: "7. lépés: hajtsa végre a pillanatképek") 30 percenként 1 óra.
+- Hajtsa végre egy **hana** típusú storage-pillanatkép (lásd: "7. lépés: Hajtsa végre a pillanatképek"), 1 óra 30 percenként.
 - Hajtsa végre az SAP HANA tranzakciónapló biztonsági mentései 5 percenként.
 - Hajtsa végre egy **naplók** írja be az 5 – 15 percenként pillanatkép-tárolás. Az intervallum idővel körülbelül 15-25 percig helyreállítási Időkorlátot érhet el.
 

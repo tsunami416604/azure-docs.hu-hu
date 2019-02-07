@@ -8,16 +8,16 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: ac9af046675cf868f158ee3af71e6c968c6ba98a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 084a5c8113e73590e3e7b9603542a0d866606f96
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463140"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818957"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Fájlmegosztás létrehozása az Azure Filesban
 Azure-fájlmegosztások használatával hozhat létre a [az Azure portal](https://portal.azure.com/), az Azure Storage PowerShell parancsmagjainak, az Azure Storage ügyfélkódtáraival vagy az Azure Storage REST API. Az oktatóanyag során a következőket fogja elsajátítani:
-* [Azure-fájlmegosztás létrehozása az Azure Portal használatával](#create-file-share-through-the-azure-portal)
+* Hogyan hozhat létre Azure-fájlmegosztások az Azure portal használatával
 * [Azure-fájlmegosztás létrehozása PowerShell használatával](#create-file-share-through-powershell)
 * [Hogyan hozhat létre Azure-fájlmegosztások a parancssori felületről](#create-file-share-through-command-line-interface-cli)
 

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: cf011558ab984ecaf8181a4dc4ffcb80851f24fb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ebb6fe9f583c2658f187d3cca1185f1525fb1bf5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352954"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811035"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Java SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -32,20 +32,14 @@ ms.locfileid: "54352954"
 
 Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatást, használja a [SQL API aszinkron Java SDK](sql-api-sdk-async-java.md). 
 
-<table>
-
-<tr><td>**SDK letöltése**</td><td>[Maven 3](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
-
-<tr><td>**API-dokumentáció**</td><td>[Java API dokumentációja](/java/api/com.microsoft.azure.documentdb)</td></tr>
-
-<tr><td>**Hozzájárul az SDK-t**</td><td>[GitHubon](https://github.com/Azure/azure-documentdb-java/)</td></tr>
-
-<tr><td>**Első lépések**</td><td>[A Java SDK használatának első lépései](sql-api-java-get-started.md)</td></tr>
-
-<tr><td>**Alapú webappokról szóló oktatóanyagunkat**</td><td>[Webalkalmazás-fejlesztés az Azure Cosmos DB használatával](sql-api-java-application.md)</td></tr>
-
-<tr><td>**Minimális támogatott futtatókörnyezet**</td><td>[Java fejlesztői készlet (JDK) 7 +](https://aka.ms/azure-jdks)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**SDK letöltése**|[Maven 3](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
+|**API-dokumentáció**|[Java API dokumentációja](/java/api/com.microsoft.azure.documentdb)|
+|**Hozzájárul az SDK-t**|[GitHubon](https://github.com/Azure/azure-documentdb-java/)|
+|**Első lépések**|[A Java SDK használatának első lépései](sql-api-java-get-started.md)|
+|**Alapú webappokról szóló oktatóanyagunkat**|[Webalkalmazás-fejlesztés az Azure Cosmos DB használatával](sql-api-java-application.md)|
+|**Minimális támogatott futtatókörnyezet**|[Java fejlesztői készlet (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -218,7 +212,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.1.1](#2.1.1) |2018. november 21. |--- |
+| 2.1.1 |2018. november 21. |--- |
 | [2.0.0](#2.0.0) |2018. Szeptembertől 21. |--- |
 | [1.16.4](#1.16.4) |2018. Szeptembertől 10. |--- |
 | [1.16.3](#1.16.3) |2018. Szeptembertől 09. |--- |
@@ -249,7 +243,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 | [1.3.0](#1.3.0) |2015. október 05 |--- |
 | [1.2.0](#1.2.0) |2015. augusztus 05 |--- |
 | [1.1.0](#1.1.0) |2015. július 09. |--- |
-| [1.0.1](#1.0.1) |2015. május 12. |--- |
+| 1.0.1 |2015. május 12. |--- |
 | [1.0.0](#1.0.0) |2015. április 07. |--- |
 | 0.9.5-prelease |2015. március 09. |2016. február 29-én |
 | 0.9.4-prelease |2015. február 17. |2016. február 29-én |

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 191afec8733258519370d11942c0f6d18da6b603
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6ee75b0ee465e330d78b166b0da12232b7915ae7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180398"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766061"
 ---
 # <a name="set-up-security-info-to-use-an-authenticator-app-preview"></a>Állítsa be a biztonsági adatok egy hitelesítő alkalmazást (előzetes verzió) használata
 
@@ -28,7 +28,7 @@ A biztonsági adatok beállításához megköveteli, hogy jelentkezzen be munkah
 
 Szervezeti beállítások, attól függően előfordulhat, hogy kéri, amikor bejelentkezik a Microsoft Authenticator alkalmazás beállítása. Ellenkező esetben a biztonsági adatok a Microsoft Authenticator alkalmazás beállítása a kezdéshez kövesse [a biztonsági adatok kezelése](security-info-manage-settings.md).
 
-Töltse le és ismerje meg, hogy a Microsoft Authenticator alkalmazással kapcsolatos további információkért lásd: [Ismerkedés a Microsoft Authenticator alkalmazás](microsoft-authenticator-app-how-to.md).
+Töltse le és ismerje meg, hogy a Microsoft Authenticator alkalmazással kapcsolatos további információkért lásd: [Ismerkedés a Microsoft Authenticator alkalmazás](user-help-auth-app-download-install.md).
 
 >[!Note]
 >Ha nem szeretné használni a Microsoft Authenticator alkalmazást, választhat egy másik alkalmazás alatt állítsa be. Ez a cikk a Microsoft Authenticator alkalmazást használ. Az authenticator alkalmazás beállítás nem jelenik meg, ha, lehetséges, hogy a szervezet nem engedélyezi, hogy az alkalmazás hitelesítési ellenőrzése. Ha ez a helyzet, szüksége lesz egy másik módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.

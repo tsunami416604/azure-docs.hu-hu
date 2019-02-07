@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: ef70b9e58a669695f3bdec7ad8ea4bab93e7e4b9
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 084784af256fdf31cf1661109c0535cb91ef1db5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082044"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817412"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Támogatás B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások
 
@@ -43,7 +43,7 @@ B2B-felhasználók hozzáférést biztosítson a helyszíni alkalmazások védet
 
    A B2B-felhasználó forgatókönyvhöz két módszerrel érhető el, hogy a Vendég felhasználói objektumok, amelyek szükségesek a hitelesítéshez a helyszíni címtárban létrehozásához használhatja:
 
-   - A Microsoft Identity Manager (MIM) és a [MIM-kezelőügynök a Microsoft Graph](#create-b2b-guest-user-objects-through-mim-preview). 
+   - A Microsoft Identity Manager (MIM) és a Microsoft Graph a MIM-kezelőügynök. 
    - [Egy PowerShell-parancsprogram](#create-b2b-guest-user-objects-through-a-script-preview). A szkript használatával a MIM nem igénylő egyszerűbb megoldás. 
 
 A következő ábra biztosít magas szintű áttekintését az Azure AD-alkalmazásproxy és a B2B-felhasználói objektum, a helyszíni generációja directory munkahelyi B2B-felhasználók a helyszíni IWA és KCD alkalmazásokhoz való hozzáférés biztosítása érdekében. A diagramot részletesebben olvashat a számozott lépéseit ismerteti.

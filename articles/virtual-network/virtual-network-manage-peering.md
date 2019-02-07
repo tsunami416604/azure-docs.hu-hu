@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 9c03e0ced565daef01304e288b71c46aa0035384
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: fcd1d8c4dd1f9684db85514a80fea7022f52b0fa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730093"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817087"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy egy virtuális hálózati társviszony törlése
 
@@ -39,7 +39,7 @@ Jelentkezzen be, vagy csatlakozhat az Azure-ban, a fiókot hozzá kell rendelni 
 
 ## <a name="create-a-peering"></a>Társviszony-létesítés
 
-Mielőtt létrehozná a társviszonyt, ismerje meg az a [-követelmények és korlátozások](#requirements-and-contstraints) és [szükséges engedélyek](#permissions).
+Mielőtt létrehozná a társviszonyt, ismerkedjen meg a követelményeket és korlátozásokat és [szükséges engedélyek](#permissions).
 
 1. Az Azure portal tetején a Keresés mezőbe írja be *virtuális hálózatok* kifejezést a keresőmezőbe. Amikor **virtuális hálózatok** jelennek meg a keresési eredmények közül válassza ki azt. Ne válassza **virtuális hálózatok (klasszikus)** Ha, megjelenik a listán, mert nem hozható létre a társviszony a klasszikus üzemi modellel üzembe helyezett virtuális hálózatról.
 2. A társviszony-létesítés kívánt listában jelölje ki a virtuális hálózat.
@@ -75,7 +75,7 @@ Társviszony-létesítés virtuális hálózatok különböző előfizetésekben
 
 ## <a name="view-or-change-peering-settings"></a>Társviszony-létesítési beállításainak megtekintése vagy módosítása
 
-Mielőtt módosítja a társviszonyt, ismerje meg az a [-követelmények és korlátozások](#requirements-and-contstraints) és [szükséges engedélyek](#permissions).
+Mielőtt módosítja a társviszonyt, ismerkedjen meg a követelményeket és korlátozásokat és [szükséges engedélyek](#permissions).
 
 1. Írja be a keresőmezőbe, a portál tetején, *virtuális hálózatok* kifejezést a keresőmezőbe. Amikor **virtuális hálózatok** jelennek meg a keresési eredmények közül válassza ki azt. Ne válassza **virtuális hálózatok (klasszikus)** Ha, megjelenik a listán, mert nem hozható létre a társviszony a klasszikus üzemi modellel üzembe helyezett virtuális hálózatról.
 2. Válassza ki a virtuális hálózati társviszony-létesítési beállításait módosítani szeretné a listában.

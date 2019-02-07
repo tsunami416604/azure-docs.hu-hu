@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 022dd937ae0557ca848a329039703f3b94ad0885
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b5254b45fcd71901876d9e77d1f29c0a0d40ce3f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245354"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813874"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Lemezes tárolás virtuális gép létrehozása az Azure Stackben
 
@@ -50,7 +50,7 @@ Az alábbi táblázat foglalja össze a lemezek hozzáadása a portál használa
 
 | Módszer | Beállítások
 |-|-|
-|[Felhasználói portál](#use-the-portal-to-add-additional-disks-to-a-vm)|-Új adatlemezek hozzáadása egy meglévő virtuális Gépet. Azure Stack új lemezeket hoznak létre. </br> </br>– A meglévő lemezt (.vhd) fájl hozzáadása a korábban létrehozott virtuális géphez. Ehhez kell előkészíteni a .vhd és majd feltöltjük a fájlt az Azure Stackhez. |
+|Felhasználói portál|-Új adatlemezek hozzáadása egy meglévő virtuális Gépet. Azure Stack új lemezeket hoznak létre. </br> </br>– A meglévő lemezt (.vhd) fájl hozzáadása a korábban létrehozott virtuális géphez. Ehhez kell előkészíteni a .vhd és majd feltöltjük a fájlt az Azure Stackhez. |
 |[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | – Új virtuális gép létrehozása az operációsrendszer-lemezt, és a egy időben adjon hozzá egy vagy több adatlemezt a virtuális Gépre. |
 
 ## <a name="use-the-portal-to-add-disks-to-a-vm"></a>Lemezek hozzáadása egy virtuális Géphez a portál használatával

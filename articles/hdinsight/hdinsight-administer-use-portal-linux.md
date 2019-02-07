@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: hrasheed
-ms.openlocfilehash: ce30b752ecf1d5413ae534fa03907cbf11b1c694
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a0da4339586982f5210834bcec5acfe463bc1a9a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794481"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816441"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure portal használatával
 
@@ -124,7 +124,7 @@ A fürt létrehozása után hozzáadhat további Azure Storage-fiókok és az Az
 A fürtméretezés egy funkció lehetővé teszi a fürt újbóli létrehozása nélkül egy Azure HDInsight-fürt által használt munkavégző csomópontok számának módosításához.
 
 > [!NOTE]  
-> Csak 3.1.3 verziójú HDInsight-fürtök vagy újabb verziója támogatott. Ha biztos benne, hogy a fürt verziója, a Tulajdonságok lapon ellenőrizheti.  Lásd: [fürtök listázása és megjelenítése](#list-and-show-clusters).
+> Csak 3.1.3 verziójú HDInsight-fürtök vagy újabb verziója támogatott. Ha biztos benne, hogy a fürt verziója, a Tulajdonságok lapon ellenőrizheti.  Tekintse meg a listában, és bemutatják a fürtök.
 
 Az a [fürt kezdőlap](#homePage):
 
@@ -283,7 +283,7 @@ Lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes felhasználói fel
 
 
 ## <a name="monitor-cluster-usage"></a>Fürt használat monitorozása
-A **használati** szakasz a HDInsight-fürt panelén, a HDInsight segítségével az előfizetéséhez elérhető magok száma, valamint az ehhez a fürthöz, és hogyan vannak lefoglalva számára lefoglalt magok száma információkat jelenít meg a csomópontok a fürtön belül. Lásd: [fürtök listázása és megjelenítése](#list-and-show-clusters).
+A **használati** szakasz a HDInsight-fürt panelén, a HDInsight segítségével az előfizetéséhez elérhető magok száma, valamint az ehhez a fürthöz, és hogyan vannak lefoglalva számára lefoglalt magok száma információkat jelenít meg a csomópontok a fürtön belül. Tekintse meg a listában, és bemutatják a fürtök.
 
 > [!IMPORTANT]  
 > A HDInsight-fürt által nyújtott szolgáltatások figyeléséhez, Ambari Web vagy az Ambari REST API-t kell használnia. Az Ambari használatával kapcsolatos további információkért lásd: [kezelése a HDInsight-fürtök az Apache Ambari](hdinsight-hadoop-manage-ambari.md)

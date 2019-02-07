@@ -1,5 +1,5 @@
 ---
-title: 'Előfeltételek – ExpressRoute: Azure |} A Microsoft Docs'
+title: 'Előfeltételek – ExpressRoute: Azure | Microsoft Docs'
 description: Ez az oldal azon követelmények listáját tartalmazza, amelyeknek teljesülniük kell, mielőtt megrendel egy Azure ExpressRoute-kapcsolatcsoportot. Ellenőrzőlista tartalmazza.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: c44eb4bbf4945973e075ff88bccde19053b812be
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2458dadb8a97deee67a6df9b00ca5390fccb2902
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133478"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812276"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute-előfeltételek és ellenőrzőlista
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, ellenőriznie kell az alábbi szakaszokban felsorolt követelmények teljesülését.
@@ -22,7 +22,7 @@ Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltat
 
 ## <a name="azure-account"></a>Azure-fiók
 * Egy érvényes és aktív Microsoft Azure-fiók. Erre a fiókra az ExpressRoute-kapcsolatcsoport beállításához van szükség. Az ExpressRoute-kapcsolatcsoportok az Azure-előfizetéseken belüli erőforrások. Egy Azure-előfizetés akkor is szükséges, ha a kapcsolat csak nem Azure-os Microsoft-felhőszolgáltatásokra korlátozódik, például az Office 365-szolgáltatásokra és a Dynamics 365-re.
-* Egy aktív Office 365-előfizetés (ha az Office 365 szolgáltatásokat használja). További információkért lásd a cikk [Office 365-specifikus követelmények](#office-365-specific-requirements) című szakaszát.
+* Egy aktív Office 365-előfizetés (ha az Office 365 szolgáltatásokat használja). További információkért lásd: Ez a cikk az Office 365-höz adott vonatkozó követelmények szakaszában.
 
 ## <a name="connectivity-provider"></a>Kapcsolatszolgáltató
 
@@ -32,8 +32,8 @@ Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltat
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 * **Redundáns kapcsolat**: az Ön és a szolgáltató közötti fizikai kapcsolatra nem vonatkoznak redundanciakövetelmények. A Microsoft nem követeli meg, hogy redundáns BGP-munkamenetek legyenek beállítva a Microsoft útválasztói és a társviszony-létesítési útválasztók között, még akkor sem, ha csak [egy fizikai kapcsolattal rendelkezik a felhőalapú adatforgalomhoz](expressroute-faqs.md#onep2plink).
 * **Útválasztás**: attól függően, hogy a Microsoft Cloud csatlakozik, akkor vagy a szolgáltató kell beállítása és kezelése a BGP-munkamenetet [útválasztási tartományok](expressroute-circuit-peerings.md). Egyes Ethernet-kapcsolatszolgáltatók vagy felhőalapú adatcsere-szolgáltatókon kínálhatják BGP-felügyeletet egy értéknövelt szolgáltatásként.
-* **NAT**: A Microsoft csak nyilvános IP-címeket fogad el a Microsoft társviszony-létesítésen keresztül. Ha a helyszíni hálózat privát IP-címeket használ, Önnek vagy a szolgáltatónak kell a nyilvános IP-címek a privát IP-címek fordítása [a NAT használatával](expressroute-nat.md).
-* **QoS**: A Skype Vállalati verzió különböző szolgáltatásokat tartalmaz (például hang, videó, szöveg), amelyek különböző QoS-kezelést igényelnek. Önnek és a szolgáltatónak teljesítenie kell a [QoS-követelményeket](expressroute-qos.md).
+* **NAT**: A Microsoft csak a Microsoft társviszony-létesítésen keresztül a nyilvános IP-címeket fogad el. Ha a helyszíni hálózat privát IP-címeket használ, Önnek vagy a szolgáltatónak kell a nyilvános IP-címek a privát IP-címek fordítása [a NAT használatával](expressroute-nat.md).
+* **A QoS**: Skype vállalati verzió rendelkezik különböző szolgáltatások (például hang, videó, szöveg), amelyek különböző QoS-kezelést igényelnek. Önnek és a szolgáltatónak teljesítenie kell a [QoS-követelményeket](expressroute-qos.md).
 * **Hálózati biztonság**: fontolja meg a [hálózati biztonság](../best-practices-network-security.md) használatát, amikor ExpressRoute-on keresztül csatlakozik a Microsoft Cloudhoz.
 
 ## <a name="office-365"></a>Office 365

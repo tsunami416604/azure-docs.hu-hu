@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: f549c748c87405b47868c75cc01af81efd202af2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 934996f1573520a6fba92ce09f8a14fc4795de6c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755356"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812466"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jelszavas egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálása
 
@@ -43,7 +43,7 @@ Ez ideális megoldás a kezdéshez bármilyen típusú alkalmazásban gyorsan in
 
 -   Lehetővé teszi egy **az üzleti csoport tagjai** a felhasználónevek és jelszavak használatával a felhasználóhoz való megadásához a [önkiszolgáló alkalmazás-hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) funkció
 
--   Lehetővé teszi egy **rendszergazda** adja meg, hogy a felhasználónevek és jelszavak a frissítés hitelesítő adatok használatával a felhasználóhoz rendelt funkciót [felhasználó hozzárendelése egy alkalmazáshoz](#_How_to_configure_1)
+-   Lehetővé teszi egy **rendszergazda** a felhasználónevek és jelszavak a hitelesítő adatok frissítése funkció használatával, amikor egy felhasználó hozzárendelése egy alkalmazáshoz a felhasználóhoz való megadásához
 
 -   Lehetővé teszi egy **rendszergazda** adja meg a megosztott felhasználónév vagy jelszó a frissítési hitelesítő adatok használatával egy csoport tagjainak által használt funkciót [csoport hozzárendelése egy alkalmazáshoz](#assign-an-application-to-a-group-directly)
 
@@ -57,7 +57,7 @@ Az Azure AD katalógusából származó kell az alkalmazás konfigurálása:
 
 -   [Az alkalmazás a jelszavas egyszeri bejelentkezés konfigurálása](#configure-the-application-for-password-single-sign-on)
 
--   [Az alkalmazás egy felhasználó vagy csoport hozzárendelése](#assign-the-application-to-a-user-or-a-group)
+-   Az alkalmazás egy felhasználó vagy csoport hozzárendelése
 
     -   [Közvetlenül a felhasználó hozzárendelése egy alkalmazáshoz](#assign-a-user-to-an-application-directly)
 

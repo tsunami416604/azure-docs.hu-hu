@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 4df96d0c3d1ec9cb64f2394fb97d46178906d916
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b1fc52ac46a6cdb73b9210833e437765398781ef
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434817"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819127"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>A vállalati biztonsági csomaggal HDInsight-fürtök kezelése
 Ismerje meg, a felhasználók és a HDInsight vállalati biztonsági csomag (ESP) és az ESP-fürtök kezelése a szerepkörök.
@@ -215,7 +215,7 @@ HDInsight vállalati biztonsági csomaggal rendelkezik, a következő szerepkör
 6. Kattintson a **felhasználó hozzáadása** vagy **csoport hozzáadása**, majd adja meg a felhasználókat vagy csoportokat, amelyek a Hive-nézetek használatával.
 
 ## <a name="configure-users-for-the-roles"></a>A felhasználók a szerepkörök konfigurálása
- Szerepkörök és a rájuk vonatkozó engedélyek listáját lásd: [szerepkörök a HDInsight-fürtök ESP](#roles-of-domain---joined-hdinsight-clusters).
+ Azon szerepköröket és engedélyeiket listáját, olvassa el az ESP szerepkörök a HDInsight-fürtöket.
 
 1. Nyissa meg az Ambari felügyeleti felhasználói Felületét.  Lásd: [nyissa meg az Ambari felügyeleti felhasználói Felületét](#open-the-ambari-management-ui).
 2. A bal oldali menüben kattintson a **szerepkörök**.

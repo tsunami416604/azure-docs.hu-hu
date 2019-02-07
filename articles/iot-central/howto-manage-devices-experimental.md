@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5e423478e894487795b376340b13155950b4ef8d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 69c7da1a529e46c054d9c824c2aee71fa67bd8ff
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667044"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768640"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-new-ui-design"></a>Az Azure IoT Central application (új felhasználói felület tervezése) lévő mobileszközök felügyelete
 
@@ -180,6 +180,6 @@ A tulajdonságok akkor, az eszköz metaadatait, például az városa és sorozat
 Most, hogy bemutattuk, hogyan lehet az Azure IoT Central alkalmazáshoz lévő eszközök kezeléséhez, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Eszköz-csoportok használata](howto-use-device-sets.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
+> [Eszköz-csoportok használata](howto-use-device-sets-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json)
 
 <!-- Next how-tos in the sequence -->

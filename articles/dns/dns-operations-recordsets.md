@@ -14,18 +14,18 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: b89b7885989a5e93d3d292e5cdcff733fed657af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c60dded96df091b1a715fb7b972e9d7a23608d44
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990178"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818821"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Kezelheti a DNS-rekordok és -rekordhalmazok az Azure DNS Azure powershellel
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Az Azure klasszikus parancssori felület](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure klasszikus parancssori felület](dns-operations-recordsets-cli-nodejs.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
@@ -50,7 +50,7 @@ Ha az új rekord tartalmazza-e az azonos neve és típusa megegyezik egy meglév
 
 Rekordhalmazt a `New-AzureRmDnsRecordSet` parancsmag használatával hozhat létre. Egy rekordhalmaz létrehozásakor meg kell adnia a rekordhalmaz-neve, a zónát, az idő Élettartam (TTL), a rekordtípust és a rekordok létrehozását.
 
-A rekordok rekordhalmazhoz adásának paraméterei a rekordhalmaz típusától függően eltérnek. Például egy "A" típusú rekordhalmazok használata esetén szüksége adja meg az IP-címet a paraméter használatával `-IPv4Address`. Más rekordtípusok más paramétereket használják. Lásd: [további rekordtípusokra](#additional-record-type-examples) részleteiről.
+A rekordok rekordhalmazhoz adásának paraméterei a rekordhalmaz típusától függően eltérnek. Például egy "A" típusú rekordhalmazok használata esetén szüksége adja meg az IP-címet a paraméter használatával `-IPv4Address`. Más rekordtípusok más paramétereket használják. Tekintse meg a további rekordtípusokra részleteiről.
 
 Az alábbi példa egy "contoso.com" DNS-zóna a "www" relatív nevű rekordot hoz létre. A beállított rekord teljes neve "www.contoso.com". A rekord típusa "A", akkor az Élettartama pedig 3600 másodperc. A rekordhalmaz egyetlen rekordot, az IP-címe "1.2.3.4" tartalmazza.
 
@@ -236,7 +236,7 @@ Ez a feladatütemezési műveletek is lehet *parancsoknak*, ami azt jelenti, át
 Get-AzureRmDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-A fenti példák bemutatják az "A" rekord hozzáadása egy meglévő rekordhalmazhoz "A" típusú. A hasonló feladatütemezési műveletek segítségével adhatja hozzá a rekordhalmazokhoz rekordhalmazok más típusú, és cserélje le a `-Ipv4Address` paraméterében `Add-AzureRmDnsRecordConfig` adott, az egyes rekordtípusokra más paraméterekkel. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzureRmDnsRecordConfig` parancsmagot, ahogyan az [további rekordtípusokra](#additional-record-type-examples) felett.
+A fenti példák bemutatják az "A" rekord hozzáadása egy meglévő rekordhalmazhoz "A" típusú. A hasonló feladatütemezési műveletek segítségével adhatja hozzá a rekordhalmazokhoz rekordhalmazok más típusú, és cserélje le a `-Ipv4Address` paraméterében `Add-AzureRmDnsRecordConfig` adott, az egyes rekordtípusokra más paraméterekkel. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzureRmDnsRecordConfig` parancsmagot, a fenti további rekordtípus példákban szemléltetett módon.
 
 "CNAME" vagy "SOA" típusú rekordhalmazok nem tartalmazhat egynél több rekordot. Ezt a korlátozást a DNS-szabványok ered. Már nem az Azure DNS egy korlátozás.
 
@@ -270,7 +270,7 @@ Hasonlóképpen a rekordok rekordhalmazhoz ad, a rekordhalmaz eltávolítása m�
 Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-Különböző rekordtípusok támogatottak tartalmában való böngészéshez illessze a megfelelő típus-specifikus paramétereket `Remove-AzureRmDnsRecordSet`. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzureRmDnsRecordConfig` parancsmagot, ahogyan az [további rekordtípusokra](#additional-record-type-examples) felett.
+Különböző rekordtípusok támogatottak tartalmában való böngészéshez illessze a megfelelő típus-specifikus paramétereket `Remove-AzureRmDnsRecordSet`. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzureRmDnsRecordConfig` parancsmagot, a fenti további rekordtípus példákban szemléltetett módon.
 
 
 ## <a name="modify-an-existing-record-set"></a>Módosíthatja egy meglévő rekordhalmaz

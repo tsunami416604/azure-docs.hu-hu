@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9be8717bc9b1d15a59486edf206dd0657a711c06
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 9db6736813b6d99efad687581f19d23023e1593a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360279"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814537"
 ---
 # <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>WSFC, hozzon létre figyelőt, és konfigurálja az ILB Always On rendelkezésre állási csoporthoz az SQL Server virtuális gép az Azure gyorsindítási sablon
 Ez a cikk ismerteti, hogyan használhatja az Azure gyorsindítási sablonok részlegesen automatizálni az üzembe helyezést egy Always On rendelkezésre állási csoport konfigurációjának az SQL Server Virtual Machines az Azure-ban. Nincsenek az a folyamat által használt két Azure gyorsindítási sablonok. 
@@ -28,7 +28,7 @@ Ez a cikk ismerteti, hogyan használhatja az Azure gyorsindítási sablonok rés
    | Sablon | Leírás |
    | --- | --- |
    | [101-sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | A Windows feladatátvevő fürtöt hoz létre, és azt csatlakoztatja az SQL Server virtuális gépek. |
-   | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | A rendelkezésre állási csoport figyelőjének hoz létre, és a belső terheléselosztó konfigurálja. |
+   | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | A rendelkezésre állási csoport figyelőjének hoz létre, és a belső terheléselosztó konfigurálja. Ez a sablon csak akkor használható, ha a Windows feladatátvevő fürt létrehozásakor a **101-sql-vm-ag-telepítés** sablont. |
    | &nbsp; | &nbsp; |
 
 A rendelkezésre állási csoport konfigurációjának más részein kell elvégezni, manuálisan, például a rendelkezésre állási csoport létrehozása és a belső terheléselosztó létrehozása. Ez a cikk az automatikus és manuális lépések sorrendjét.
@@ -37,25 +37,12 @@ A rendelkezésre állási csoport konfigurációjának más részein kell elvég
 ## <a name="prerequisites"></a>Előfeltételek 
 A telepítő egy Always On rendelkezésre állási csoport gyorsindítási sablonok használatával automatizálhatja, már rendelkeznie kell a következő előfeltételek vonatkoznak: 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
-- Egy erőforráscsoportot egy [tartományvezérlő](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-forest). 
-- Legalább egy tartományhoz csatlakoztatott [virtuális gépek Azure futó SQL Server 2016 (vagy nagyobb) Enterprise verzióban](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) azonos rendelkezésre állási csoport vagy a rendelkezésre állási zónában, amely már a [regisztrálni az SQL virtuális gép erőforrás-szolgáltató](#register-existing-sql-vm-with-new-resource-provider).  
+- Egy erőforráscsoport, egy tartományvezérlővel. 
+- Legalább egy tartományhoz csatlakoztatott [virtuális gépek Azure futó SQL Server 2016 (vagy nagyobb) Enterprise verzióban](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) azonos rendelkezésre állási csoport vagy a rendelkezésre állási zónában, amely már a [regisztrálni az SQL virtuális gép erőforrás-szolgáltató](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-sql-resource-provider).  
 
-## <a name="register-existing-sql-vm-with-new-resource-provider"></a>Az új erőforrás-szolgáltató meglévő SQL virtuális gép regisztrálása
-A rendelkezésre állási csoport Azure gyorsindítási sablonok támaszkodnak az SQL virtuális gép erőforrás-szolgáltató (Microsoft.SqlVirtualMachine), mert meglévő SQL Server virtuális gépek regisztrálva kell lennie az SQL virtuális gép erőforrás-szolgáltató. Hagyja ki ezt a lépést, ha az SQL Server virtuális gép után December 2018, az összes SQL Server virtuális gépek létrehozása, ez a dátum a rendszer automatikusan regisztrálása után létrehozott. Ez a szakasz ismerteti, regisztrálja a szolgáltatót az Azure portal használatával, de is [PowerShell](virtual-machines-windows-sql-ahb.md#powershell). 
-
-  >[!IMPORTANT]
-  > Törölte-e az SQL Server VM-erőforrás, állítja vissza a kép megszegi licenc beállítása módosítva lett. 
-
-1. Nyissa meg az Azure Portalon, és navigáljon a **minden szolgáltatás**. 
-1. Navigáljon a **előfizetések** , és válassza ki az előfizetést a lényeges.  
-1. Az a **előfizetések** panelen lépjen **erőforrás-szolgáltató**. 
-1. Típus `sql` viszi, megjelenik az SQL-kapcsolódó erőforrás-szolgáltatók a szűrőben. 
-1. Válassza *regisztrálása*, *újraregisztrálni*, vagy *Unregister* számára a **Microsoft.SqlVirtualMachine** szolgáltató attól függően, a kívánt művelet. 
-
-  ![A szolgáltató módosítása](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
 
 ## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>1. lépés – a WSFC létrehozása és az SQL Server rendszerű virtuális gépekhez csatlakozhat a fürthöz gyorsindítási sablon használatával 
-Miután az SQL virtuális gép új erőforrás-szolgáltató az SQL Server virtuális gépek vannak regisztrálva, is csatlakozhat az SQL Server virtuális gépek az *SqlVirtualMachineGroup*. Ehhez az erőforráshoz határozza meg a Windows feladatátvevő fürtöt, a verzió, kiadás, teljes tartománynév, a fürt kezelésére AD-fiókok és a Felhőbeli tanúsító a Tárfiók metaadatait. Az SQL Server virtuális gép hozzáadása a *SqlVirtualMachineGroup* csatlakoztatja a Windows feladatátvevő fürtszolgáltatást és az SQL Server virtuális gépek csatlakozik a fürthöz. Ebben a lépésben az automatizált a **101-sql-vm-ag-telepítés** gyorssablon és kialakítható az alábbi lépéseket követve:
+Miután az SQL virtuális gép új erőforrás-szolgáltató az SQL Server virtuális gépek vannak regisztrálva, is csatlakozhat az SQL Server virtuális gépek az *SqlVirtualMachineGroups*. Ehhez az erőforráshoz határozza meg a metaadatok a verzió, edition, teljesen minősített tartománynevét, AD-fiókok kezelése a fürt és az SQL-szolgáltatás és a Storage-fiók a felhőben, beleértve a Windows feladatátvevő fürt tanúsító. Az SQL Server virtuális gépek hozzáadása a *SqlVirtualMachineGroups* erőforráscsoport csatlakoztatja a Windows feladatátvételi fürtszolgáltatás a fürt létrehozásához, és ezután csatlakozik a létrehozott fürtre az SQL Server virtuális gépeken. Ebben a lépésben az automatizált a **101-sql-vm-ag-telepítés** gyorssablon és kialakítható az alábbi lépéseket követve:
 
 1. Keresse meg a [ **101-sql-vm-ag-telepítés** ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) gyorsindítási sablon válassza **üzembe helyezés az Azure** elindíthatja a gyorsindítási sablon az Azure Portalon.
 1. Töltse ki a kötelező mezők konfigurálása a Windows feladatátvevő fürt metaadatait. A választható mezőket kitölteni.
@@ -70,17 +57,24 @@ Miután az SQL virtuális gép új erőforrás-szolgáltató az SQL Server virtu
    | **Meglévő virtuálisgép-lista** | Az SQL Server virtuális gépek kíván részt venni a rendelkezésre állási csoportban, és mint ilyen, az új fürt része lehet. Ezek az értékek elválasztás egy vesszőt és egy szóközt (például: SQLVM1, SQLVM2). |
    | **SQL Server Version** | A legördülő listából válassza ki az SQL Server verzióját az SQL Server virtuális gépek. Jelenleg csak az SQL 2016 és az SQL 2017 lemezképek támogatottak. |
    | **Meglévő teljesen minősített tartománynevét** | A tartományhoz, amelyben az SQL Server virtuális gépen található meglévő teljes Tartománynevét. |
-   | **Meglévő tartományi fiók** | Meglévő tartományi fiók, amely az SQL Server SysAdmin (rendszergazda) hozzáféréssel rendelkezik. | 
-   | **Tartományi fiók jelszava** | A korábban említett tartományi fiók jelszava. | 
-   | **Existing Sql Service Account** | A tartományi felhasználói fiók az SQL Server szolgáltatás vezérléséhez használt. Ez az információ található használatával a [ **SQL Server Configuration Manager**](https://docs.microsoft.com/sql/relational-databases/sql-server-configuration-manager?view=sql-server-2017). |
+   | **Meglévő tartományi fiók** | Egy meglévő tartományi felhasználói fiók, amely "A számítógép objektum létrehozása" engedéllyel rendelkezik a tartományban található, mint a [CNO](/windows-server/failover-clustering/prestage-cluster-adds) jön létre a sablon üzembe helyezése során. Például egy tartományi rendszergazdai fiók általában rendelkezik megfelelő engedéllyel (például: account@domain.com). *Ez a fiók is kell a helyi rendszergazdai csoport összes virtuális gépen a fürt létrehozásához.*| 
+   | **Tartományi fiók jelszava** | A korábban említett tartományi felhasználói fiók jelszava. | 
+   | **Existing Sql Service Account** | A tartományi felhasználói fiók, amely szabályozza a [SQL Server szolgáltatás](/sql/database-engine/configure-windows/configure-windows-service-accounts-and-permissions) rendelkezésre állási csoport üzembe helyezése során (például: account@domain.com). |
    | **Sql Service Password** | A tartományi felhasználói fiók, amely szabályozza, az SQL Server szolgáltatás által használt jelszó. |
+   | **Felhőbeli tanúsító neve** | Ez az egy új Azure storage-fiók által létrehozott és a felhőbeli tanúsító használt. Sikerült módosítani ezt a nevet. |
+   | **\_összetevők helye** | Ez a mező értéke alapértelmezés szerint, és nem szabad módosítani. |
+   | **\_összetevők hely Sas-Token** | Ez a mező üres szándékosan. |
    | &nbsp; | &nbsp; |
 
 1. Ha elfogadja a feltételeket és kikötéseket, jelölje be a jelölőnégyzetet a **elfogadom a feltételeket és a fenti feltételeket** válassza **beszerzési** a rövid útmutató sablon telepítésének véglegesítéséhez. 
 1. Az üzemelő példány monitorozásához válassza a központi telepítést a **értesítések** harang ikonra a felső navigációs fejléc, vagy navigáljon arra a **erőforráscsoport** az Azure Portalon válassza ki a  **Központi telepítések** a a **beállítások** mezőben, majd válassza a "Microsoft.Template" központi telepítés. 
 
+  >[!NOTE]
+  > Sablon üzembe helyezése során megadott hitelesítő adatok a rendszer csak az üzemelő példány a megadott ideig tárolja. Üzembe helyezés befejezése után a rendszer eltávolítja ezeket a jelszavakat, és meg kell adnia, adja meg őket újra kell további SQL Server virtuális gépeket ad hozzá a fürtöt. 
+
+
 ## <a name="step-2---manually-create-the-availability-group"></a>2. lépés – a rendelkezésre állási csoport kézi létrehozása 
-A rendelkezésre állási csoport manuálisan létrehoznia, ahogy azt szokásosan tenné, segítségével [PowerShell](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell?view=sql-server-2017), [SQL Server Management Studio](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio?view=sql-server-2017) vagy [Transact-SQL](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql?view=sql-server-2017). 
+A rendelkezésre állási csoport manuálisan létrehoznia, ahogy azt szokásosan tenné, segítségével [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell?view=sql-server-2017), [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio?view=sql-server-2017) vagy [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql?view=sql-server-2017). 
 
   >[!IMPORTANT]
   > Tegye **nem** jelenleg figyelő létrehozása, mert által automatikusan végbemegy a **101-sql-vm-aglistener-telepítés** gyorsindítási sablon 4. lépés. 
@@ -98,10 +92,10 @@ Az Always On rendelkezésre állási csoport (rendelkezésre állási csoport) f
    | --- | --- |
    | **Name (Név)** |A load balancer jelölő szöveges nevét. Ha például **sqlLB**. |
    | **Típus** |**Belső**: A legtöbb megvalósításokban belső terheléselosztó, amely lehetővé teszi az alkalmazások az adott virtuális hálózaton belül kapcsolódni a rendelkezésre állási csoporthoz.  </br> **Külső**: Lehetővé teszi az alkalmazások szeretne csatlakozni a nyilvános internetkapcsolaton keresztül a rendelkezésre állási csoportot. |
-   | **Virtuális hálózat** |Válassza ki a virtuális hálózathoz, amelyek az SQL Server-példányokat. |
-   | **Alhálózat** |Válassza ki az alhálózatot, amelyet az SQL Server-példányok szerepelnek. |
+   | **Virtuális hálózat** | Válassza ki a virtuális hálózathoz, amelyek az SQL Server-példányokat. |
+   | **Alhálózat** | Válassza ki az alhálózatot, amelyet az SQL Server-példányok szerepelnek. |
    | **IP-cím hozzárendelése** |**Static** |
-   | **Magánhálózati IP-cím** |Adjon meg egy elérhető IP-címet az alhálózatról. Az IP-címet használja, a figyelő a fürt létrehozásakor.|
+   | **Magánhálózati IP-cím** | Adjon meg egy elérhető IP-címet az alhálózatról. |
    | **Előfizetés** |Ha több előfizetéssel rendelkezik, ez a mező jelenhet meg. Válassza ki az ehhez az erőforráshoz társítani kívánt előfizetést. Fontos általában ugyanazt az előfizetést a rendelkezésre állási csoport összes erőforrását. |
    | **Erőforráscsoport** |Válassza ki az erőforráscsoportot, amely az SQL Server-példányok szerepelnek. |
    | **Hely** |Válassza ki az Azure-beli hely, amely az SQL Server-példányok szerepelnek. |
@@ -115,12 +109,17 @@ Az Always On rendelkezésre állási csoport (rendelkezésre állási csoport) f
 
 ## <a name="step-4---create-the-ag-listener-and-configure-the-ilb-with-the-quickstart-template"></a>4. lépés – a rendelkezésre állási csoport figyelőjének létrehozásához, és konfigurálja az ILB-gyorssablon
 
-A rendelkezésre állási csoport figyelőjének létrehozása és konfigurálása automatikusan a belső Load Balancer (ILB) a **101-sql-vm-aglistener-telepítés** Microsoft.SqlVirtualMachine/Sql virtuális látja el, mert a gyorsindítási sablon Csoportok és rendelkezésre állási csoport figyelőjének gép típusú erőforrást. A **101-sql-vm-aglistener-telepítés** rövid sablon, keresztül az SQL virtuális gép erőforrás-szolgáltató által a következő műveleteket:
+A rendelkezésre állási csoport figyelőjének létrehozása és konfigurálása automatikusan a belső Load Balancer (ILB) a **101-sql-vm-aglistener-telepítés** gyorsindítási sablon, mert a Microsoft.SqlVirtualMachine/ építi ki. SqlVirtualMachineGroups/AvailabilityGroupListener erőforrás. A **101-sql-vm-aglistener-telepítés** rövid sablon, keresztül az SQL virtuális gép erőforrás-szolgáltató által a következő műveleteket:
 
+ - A figyelő létrehoz egy új előtérbeli IP-erőforrást (üzembe helyezés során IP-címének értékét alapján). 
  - A fürt és az ILB-hálózat beállításait konfigurálja. 
  - Konfigurálja az ILB-háttérkészlet állapotadat-mintavétel és terheléselosztó szabályai.
  - A rendelkezésre állási csoport figyelőjének hoz létre a megadott IP-címét és nevét.
-
+ 
+   >[!NOTE]
+   > A **101-sql-vm-aglistener-telepítés** csak akkor használható, ha a Windows feladatátvevő fürt létrehozásakor a **101-sql-vm-ag-telepítés** sablont.
+   
+   
 Konfigurálja az ILB, és a rendelkezésre állási csoport figyelőjének létrehozásához tegye a következőket:
 1. Keresse meg a [ **101-sql-vm-aglistener-telepítés** ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) gyorsindítási sablon válassza **üzembe helyezés az Azure** elindíthatja a gyorsindítási sablon az Azure Portalon.
 1. Töltse ki a kötelező mezőket az ILB konfigurálásához, és a rendelkezésre állási csoport figyelőjének létrehozásához. A választható mezőket kitölteni. 
@@ -133,10 +132,9 @@ Konfigurálja az ILB, és a rendelkezésre állási csoport figyelőjének létr
    |**Meglévő feladatátvevő fürt neve** | Az SQL Server virtuális gépek tartományhoz csatlakoztatott a fürt nevére. |
    | **Meglévő Sql rendelkezésre állási csoport**| A rendelkezésre állási csoport, az SQL Server virtuális gépek egy részét képező neve. |
    | **Meglévő virtuálisgép-lista** | A korábban említett rendelkezésre állási csoport részét képező SQL Server virtuális gépek nevei. A neveket vesszővel és a egy szóközzel kell elválasztani (például: SQLVM1, SQLVM2). |
-   | **Meglévő teljesen minősített tartománynevét** | A tartományhoz, amelyben az SQL Server virtuális gépen található meglévő teljes Tartománynevét. |
-   | **Listener** | A DNS-név, amelyet szeretne hozzárendelni a figyelőt. Alapértelmezés szerint ez a sablon meghatározza a aglistener neve, de ez módosítható. |
+   | **Listener** | A DNS-név, amelyet szeretne hozzárendelni a figyelőt. Alapértelmezés szerint ez a sablon meghatározza a aglistener neve, de ez módosítható. A név legfeljebb 15 karakter. |
    | **Figyelő portja** | Azt szeretné, hogy a figyelő használandó port. Általában ez a port az alapértelmezett 1433-as portot kell lennie, és mint ilyen, ez a sablon által megadott portszám. Azonban ha az alapértelmezett port megváltozott, majd a figyelőjének portszámára kell használni ezt az értéket. | 
-   | **Meglévő virtuális hálózat** | Az SQL Server virtuális gépen, és az ILB-ket virtuális hálózat neve. |
+   | **Figyelő IP** | Az IP-cím a figyelőt, hogy használni szeretne.  Az IP-címet jön létre a sablon üzembe helyezése során, ezért adja meg az IP-címet, amely már nem használja.  |
    | **Existing Subnet** | A *neve* az SQL Serveres virtuális gépek a belső alhálózat (pl.: alapértelmezett). Ez az érték lehet meghatározni az a **erőforráscsoport**lehetőségre kattint a **vNet**lehetőségre kattint **alhálózatok** alatt a **beállítások**panelre, és másolja az értéket **neve**. |
    | **Meglévő belső Load Balancer** | A 3. lépésben létrehozott ILB neve. |
    | **Probe Port** | A mintavételi portot az ILB használni kívánt. A sablon által 59999 alapértelmezés szerint, de ez az érték módosítható. |
@@ -159,7 +157,7 @@ A következő kódrészlet törli az SQL rendelkezésre állási csoport figyel�
 Remove-AzureRmResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<resource-group-name>/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/<cluster-name>/availabilitygrouplisteners/<listener-name>' -Force
 ```
  
-## <a name="known-issues-and-errors"></a>Ismert problémák és hibák
+## <a name="common-errors"></a>Gyakori hibák
 Ez a szakasz bemutatja néhány ismert problémákat és azok lehetséges megoldás. 
 
 ### <a name="availability-group-listener-for-availability-group-ag-name-already-exists"></a>Rendelkezésre állási csoport figyelőjének rendelkezésre állási csoport "\<AG-Name >" már létezik
@@ -172,6 +170,24 @@ A probléma elhárításához távolítsa el a figyelővel [PowerShell](#remove-
 
 ### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>BadRequest – csak az SQL virtuális gép lista frissíthető.
 Ez a hiba akkor fordulhat elő, üzembe helyezésekor a **101-sql-vm-aglistener-telepítés** sablon, ha a figyelő keresztül az SQL Server Management Studio (SSMS) törölve lett, de az SQL virtuális gép erőforrás-szolgáltató nem lett törölve. A figyelőt a SSMS törlése nem távolítja el a metaadatokat a figyelő az SQL virtuális gép erőforrás-szolgáltató; a figyelő törölni kell az erőforrás-szolgáltató használatával [PowerShell](#remove-availability-group-listener). 
+
+### <a name="domain-account-does-not-exist"></a>Tartományi fiók nem létezik.
+Ez a hiba két okok valamelyike okozhatja. A megadott tartományi fiók valóban nem létezik, vagy hiányzik a [egyszerű felhasználónév (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) adatokat. A **101-sql-vm-ag-telepítés** sablon vár egy tartományi fiók UPN formájában (azaz user@domain.com), de néhány tartományi fiókok esetleg hiányzik a. Ez általában akkor történhet, ha egy helyi felhasználót lehet az első tartományi rendszergazdai fiókot, ha a kiszolgáló egy tartományvezérlő léptette migrálták, vagy ha a felhasználó Powershellen keresztül lett létrehozva. 
+
+ Győződjön meg arról, hogy a fiók létezik-e. Ha igen, a előfordulhat, hogy fut, a második helyzet be. A probléma megoldásához tegye a következőket:
+
+ 1. A tartományvezérlőn nyissa meg a **Active Directory – felhasználók és számítógépek** ablakot a **eszközök** beállítást **Kiszolgálókezelő**. 
+ 2. Lépjen a fiók kiválasztásával **felhasználók** a bal oldali panelen.
+ 3. Kattintson a jobb gombbal a kívánt fiókot, és válassza ki **tulajdonságok**.
+ 4. Válassza ki a **fiók** lapra, és győződjön meg arról, ha a **felhasználói bejelentkezési név** üres. Ha igen, ez az a hiba okát. 
+
+     ![Üres felhasználói fiók azt jelzi, hogy hiányzó egyszerű felhasználónév](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
+
+ 5. Töltse ki a **felhasználói bejelentkezési név** megfelelően annak a felhasználónak a nevére, majd a megfelelő tartományt a legördülő listából válassza a lefelé. 
+ 6. Válassza ki **alkalmaz** mentse a módosításokat, és zárja be a párbeszédpanelt kiválasztásával **OK**. 
+
+ Ha ezeket a módosításokat, próbálja meg még egyszer üzembe helyezése az Azure gyorsindítási sablon. 
+
 
 
 ## <a name="next-steps"></a>További lépések

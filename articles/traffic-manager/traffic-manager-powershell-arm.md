@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: fe647f96d8b992d8d5c1682d588bbdbba0ddf43b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 921788d1cd3ff24140bdff0c9b6a181e4ab7f0a8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055132"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816209"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager kezelése a PowerShell segítségével
 
@@ -66,7 +66,7 @@ A következő táblázat ismerteti a paramétereket:
 | MonitorPort |Adja meg a végpont állapotának figyeléséhez használt TCP-portot. |
 | MonitorPath |A végpont számára, hogy megvizsgálja a végpontonkénti állapotot használt tartománynév képest relatív elérési útja. |
 
-A parancsmag létrehoz egy Traffic Manager-profil az Azure-ban, és a egy megfelelő profil objektumot ad vissza, a PowerShell. Ezen a ponton a profil nem tartalmaz olyan végpontok, amelyek. Végpontok Traffic Manager-profil történő hozzáadásával kapcsolatos további információkért lásd: [hozzáadása Traffic Manager-végpontok](#adding-traffic-manager-endpoints).
+A parancsmag létrehoz egy Traffic Manager-profil az Azure-ban, és a egy megfelelő profil objektumot ad vissza, a PowerShell. Ezen a ponton a profil nem tartalmaz olyan végpontok, amelyek. Végpontok Traffic Manager-profil történő hozzáadásával kapcsolatos további információkért tekintse meg a Traffic Manager-végpontok hozzáadása.
 
 ## <a name="get-a-traffic-manager-profile"></a>Traffic Manager-profil beolvasása
 

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d7daa0e38a97f55ce7e330c6c474f7aee91ed0d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 5117d426ac9595dfe25828013c1bd8c7fa81f92c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728657"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812361"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
@@ -76,7 +76,7 @@ Ahogyan az itt látható, az `az login` parancs egy tokent ad vissza, amely a hi
 
 ![Jelentkezzen be az Azure-ba](./media/batch-cli-get-started/az-login.png)
 
-A [Shell-szkript minták](#sample-shell-scripts) részben felsorolt példákban is az interaktív bejelentkezés segítségével indítunk majd Azure CLI-munkamenetet. Bejelentkezés után parancshívások használatával elkezdheti a munkát a különböző Batch Management-erőforrásokkal, többek között a Batch-fiókokkal, kulcsokkal, alkalmazáscsomagokkal és kvótákkal.  
+A minta rendszerhéj-parancsfájlok szakaszban felsorolt példák azt is bemutatják, hogyan indítunk majd indítsa el az Azure CLI-munkamenetet. Bejelentkezés után parancshívások használatával elkezdheti a munkát a különböző Batch Management-erőforrásokkal, többek között a Batch-fiókokkal, kulcsokkal, alkalmazáscsomagokkal és kvótákkal.  
 
 ### <a name="log-in-to-your-batch-account"></a>Bejelentkezés a Batch-fiókjába
 
@@ -110,7 +110,7 @@ A Batch-fiók hitelesítését két módon is elvégezheti:
     az batch account login -g myresourcegroup -n mybatchaccount --shared-key-auth
     ```
 
-A [Shell-szkript minták](#sample-shell-scripts) rész példákon keresztül mutatja be, hogyan jelentkezhet be az Azure CLI-vel Batch-fiókjába mind az Azure AD, mind a megosztott kulcsos hitelesítés használatával.
+A minta rendszerhéj-parancsfájlok szakaszban felsorolt példák bemutatják, hogyan bejelentkezni az Azure CLI-vel a Batch-fiók-egyaránt az Azure AD és a megosztott kulcsot.
 
 ## <a name="use-azure-batch-cli-extension-commands"></a>Az Azure Batch CLI-bővítmény parancsainak használata
 
@@ -168,7 +168,7 @@ Az következő tippek segíthetnek az Azure CLI használata során felmerülő p
 
 * A `-h` segítségével **súgószöveget** kérhet bármely CLI parancshoz
 * A `-v` és a `-vv` segítségével **részletes** parancskimenetet jeleníthet meg. Ha a parancs tartalmazza a `-vv` jelzőt, az Azure CLI megjeleníti a tényleges REST-kérelmeket és válaszokat is. Ezek a kapcsolók jól jönnek a teljes hibakimenet megjelenítéséhez.
-* A **kapcsolóval megtekintheti a**parancskimenetet JSON-fájlként`--json`. Például az `az batch pool show pool001 --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezt követően másolhatja és módosíthatja ezt a kimenetet, hogy felhasználhassa egy `--json-file` kapcsolóval (lásd a[JSON-fájlok](#json-files) szakaszt a jelen cikk korábbi részében).
+* A **kapcsolóval megtekintheti a**parancskimenetet JSON-fájlként`--json`. Például az `az batch pool show pool001 --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezután másolja ki és módosíthatja ezt a kimenetet a használatára egy `--json-file` (lásd a cikk korábbi részeiben JSON-fájlok).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
 ## <a name="next-steps"></a>További lépések

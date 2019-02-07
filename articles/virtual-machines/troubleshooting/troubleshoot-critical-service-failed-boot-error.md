@@ -13,25 +13,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: d8140966f3ba8674938a4e21b0990371390d3516
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 8a711596140340b5e6e69d04959abfef36332869
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071227"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813789"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows látható "Kritikus szolgáltatás sikertelen" kék képernyő egy Azure virtuális gép indításakor
 Ez a cikk ismerteti a "Kritikus szolgáltatás sikertelen" hibát tapasztalhat, amikor elindítja a Windows virtuális gép (VM) a Microsoft Azure-ban. A problémák megoldása érdekében hibaelhárítási lépéseket biztosít. 
 
 > [!NOTE] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti, javasoljuk, hogy az új központi telepítéseknél helyett a klasszikus üzemi modell használatával Resource Manager üzemi modell használatával.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti, javasoljuk, hogy az új központi telepítéseknél helyett a klasszikus üzemi modell használatával Resource Manager üzemi modell használatával.
 
 ## <a name="symptom"></a>Jelenség 
 
 Windows virtuális gép nem indul el. Amikor ellenőrizheti a rendszerindító képernyőképek a [rendszerindítási diagnosztika](./boot-diagnostics.md), kék képernyőn láthatja az alábbi hibaüzenetek valamelyike:
 
-- "A számítógép hibába ütközött a problémát, és indítsa újra kell. Újraindíthatja. További információt a problémáról és a lehetséges javításokat, http://windows.com/stopcode. Hívja a támogatási szakember, ha ezt az információt ad neki: állítsa le a kód: kritikus szolgáltatás nem TUDOTT " 
-- "A számítógép hibába ütközött a problémát, és indítsa újra kell. Csak adatok néhány hiba adatait, és hogy fog indítsa újra az Ön számára. Ha tudni szeretné, használja a keresési online később esetében ez a hiba: CRITICAL_SERVICE_FAILED "
+- "A számítógép hibába ütközött a problémát, és indítsa újra kell. Újraindíthatja. További információt a problémáról és a lehetséges javításokat, http://windows.com/stopcode. Ha kapcsolatba lép a támogatási szakember, tegye lehetővé számukra a ezt az információt: Állítsa le a kódot: NEM SIKERÜLT A KRITIKUS FONTOSSÁGÚ SZOLGÁLTATÁS" 
+- "A számítógép hibába ütközött a problémát, és indítsa újra kell. Csak adatok néhány hiba adatait, és hogy fog indítsa újra az Ön számára. Ha tudni szeretné, használja a keresési online később esetében ez a hiba: CRITICAL_SERVICE_FAILED"
 
 ## <a name="cause"></a>Ok
 
@@ -93,7 +93,7 @@ Memóriakép naplók és a soros konzol engedélyezéséhez futtassa a következ
 
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
-2. [Az operációsrendszer-lemez leválasztása, és ezután csatlakoztassa újra az érintett virtuális gépre az operációsrendszer-lemez](troubleshoot-recovery-disks-portal-windows.md). A virtuális gép csökkentett üzemmódban fog elindulni. Ha a hiba továbbra is fennáll, lépjen a [választható lépés](#optional-analysis-the-dump-logs-in-boot-debug-mode).
+2. [Az operációsrendszer-lemez leválasztása, és ezután csatlakoztassa újra az érintett virtuális gépre az operációsrendszer-lemez](troubleshoot-recovery-disks-portal-windows.md). A virtuális gép csökkentett üzemmódban fog elindulni. Ha a hiba továbbra is működik, nyissa meg a választható lépés.
 3. Nyissa meg a **futtatása** mezőbe, majd futtassa **ellenőrző** az illesztőprogram-ellenőrző eszköz elindításához.
 4. Válassza ki **automatikusan kiválasztja az aláírás nélküli illesztőprogramok**, és kattintson a **tovább**.
 5. Az illesztőprogram-fájlok, amelyek aláíratlan listája megjelenik. Ne feledje, hogy a fájl nevét.
@@ -104,7 +104,7 @@ Memóriakép naplók és a soros konzol engedélyezéséhez futtassa a következ
         bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
 8.  Indítsa újra a virtuális gépet. 
 
-### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Választható lehetőség: A memóriakép-naplók módban összeomlási memóriakép elemzése
+### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Nem kötelező: A memóriakép-naplók módban összeomlási memóriakép elemzése
 
 A memóriakép elemzése naplózza a saját magának, kövesse az alábbi lépéseket:
 
@@ -138,7 +138,7 @@ A memóriakép elemzése naplózza a saját magának, kövesse az alábbi lépé
 9. [Az operációsrendszer-lemez leválasztása, és ezután csatlakoztassa újra az érintett virtuális gépre az operációsrendszer-lemez](troubleshoot-recovery-disks-portal-windows.md).
 10. Indítsa el a virtuális Gépet, hogy látható-e a memóriakép elemzése. Keresse meg a fájlt, amely nem sikerül betölteni. Cserélje le ezt a fájlt egy fájlt a működő virtuális kell. 
 
-    Memóriakép elemzése mintája a következő: Láthatja, hogy a **hiba** filecrypt.sys található: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys".
+    Memóriakép elemzése mintája a következő: Láthatja, hogy a **hiba** filecrypt.sys van: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys".
 
     ```
     kd> !analyze -v 

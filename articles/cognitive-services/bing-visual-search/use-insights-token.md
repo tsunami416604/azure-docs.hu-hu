@@ -10,19 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6017fc957d511aa21f8e28cf011378e8012123cc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b3e948c2eafb43f804b330287b114ef9307b0aac
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151719"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813364"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Az insights-jogkivonat használatával kaphat elemzési információkat kép
 
 A Bing Visual Search API információkat ad vissza egy Ön által megadott képről. A kép feltöltéséhez használhatja a kép URL-címét, egy megállapítási jogkivonatot, vagy feltöltheti magát a képet. Ezek a beállítások kapcsolatos információkért lásd: [Mi az a Bing Visual Search API?](overview.md). Ez a cikk bemutatja az insights token használatával. További példák, amelyek bemutatják, hogy elemzéseket, kép feltöltése: a gyors útmutatók ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
 
 
-Ha képhez tartozó jogkivonatot vagy URL-címet küld a Visual Search szolgáltatásnak, az alábbiakban láthatja a POST törzsében kötelezően szerepeltetendő űrlapadatokat. Az űrlap adatait tartalmaznia kell a tartalom-szabályozó fejléc, az `name` paraméter "knowledgeRequest" értékre kell állítani. Az `imageInfo` objektummal kapcsolatos részletekért lásd: [A kérelem](#the-request).
+Ha képhez tartozó jogkivonatot vagy URL-címet küld a Visual Search szolgáltatásnak, az alábbiakban láthatja a POST törzsében kötelezően szerepeltetendő űrlapadatokat. Az űrlap adatait tartalmaznia kell a tartalom-szabályozó fejléc, az `name` paraméter "knowledgeRequest" értékre kell állítani. További információ a `imageInfo` objektumazonosító, tekintse meg a kérelmet.
 
 ```json
 {

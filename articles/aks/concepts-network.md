@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 624e49cb0b211139a70d0262fbb8500deef8bf5b
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: b2fc4b518ee0857014c59b84b89a0102b86f687a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744858"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820130"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazások az Azure Kubernetes Service (AKS) hálózati fogalmai
 
@@ -23,7 +23,7 @@ Ez a cikk az alapfogalmakat, az aks-ben az alkalmazások hálózati biztosító 
 - [Szolgáltatások](#services)
 - [Azure virtuális hálózatok](#azure-virtual-networks)
 - [Bejövő forgalom vezérlők](#ingress-controllers)
-- [Hálózati házirendek](#network-policies)
+- Hálózati házirendek
 
 ## <a name="kubernetes-basics"></a>A Kubernetes alapjai
 

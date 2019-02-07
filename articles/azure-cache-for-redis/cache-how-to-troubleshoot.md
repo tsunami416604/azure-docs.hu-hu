@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: 58c1af860c5ccc87f4396c698b432f47f0ea7c65
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d513825cad397763792fdc9ffb833ba54e957e7d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096959"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822663"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Hogyan háríthatók el az Azure Cache redis
 Ez a cikk nyújt útmutatást a következő kategóriákba tartozó Azure Cache Redis-hibák elhárítása.
@@ -131,7 +131,7 @@ Lásd: [Mi történt a redis adataimat?](https://gist.github.com/JonCole/b6354d9
 Ez a szakasz ismerteti a gyorsítótár-kiszolgálón feltétel miatt előforduló problémák elhárítása.
 
 * [Rendelkezésre álló memória mennyisége a kiszolgálón](#memory-pressure-on-the-server)
-* [Magas CPU-használat / kiszolgáló terhelése](#high-cpu-usage-server-load)
+* Magas CPU-használat / kiszolgáló terhelése
 * [Server Side Bandwidth Exceeded](#server-side-bandwidth-exceeded)
 
 ### <a name="memory-pressure-on-the-server"></a>Rendelkezésre álló memória mennyisége a kiszolgálón
@@ -230,7 +230,7 @@ Ez a hibaüzenet, amely segíthet a pont, a probléma okát és lehetséges mego
 5. Vannak-e a kiszolgálón feldolgozása hosszú időt vesz igénybe parancsok? Hosszú ideig futó parancsok, amelyek a redis-kiszolgáló feldolgozása hosszú ideig tart az időtúllépések okozhat. Néhány példa a hosszú ideig futó parancsokat `mget` kulcsok, nagy számú `keys *` vagy rosszul írt lua-szkriptek. Csatlakozás az Azure Cache a Redis-példányt a redis-cli ügyfél használatával, vagy használja a [Redis konzol](cache-configure.md#redis-console) , és futtassa a [SlowLog](https://redis.io/commands/slowlog) paranccsal tekintheti meg, hogy vannak-e kérések a vártnál tovább tart. Redis-kiszolgáló és a StackExchange.Redis kevesebb nagy kérelmeket, hanem sok kisebb kérelem vannak optimalizálva. Az adatok felosztása szeletekre javíthatja a dolgok itt. 
    
     Az Azure Cache Redis SSL-végpont használatával a redis-cli és a stunnel csatlakozásról információkért lásd: a [bejelentése ASP.NET munkamenetállapot-szolgáltatóját a Redis az előzetes kiadásban](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogbejegyzést. További információkért lásd: [SlowLog](https://redis.io/commands/slowlog).
-6. Magas Redis-kiszolgáló terhelése okozhatja időtúllépések. A kiszolgáló terhelése figyelemmel figyelése a `Redis Server Load` [gyorsítótárazzák a teljesítmény-mérőszám](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). A kiszolgáló terhelését, 100 (maximális értéke) azt jelzi, hogy, a redis-kiszolgáló már foglalt, az üresjárati idővel, a kérelmek feldolgozásához. Ha bizonyos kérelmek igényelnek a kiszolgálói funkció az összes megtekintéséhez futtassa a SlowLog parancs az előző bekezdésben ismertetett módon. További információkért lásd: [magas CPU-használat / kiszolgáló terhelése](#high-cpu-usage-server-load).
+6. Magas Redis-kiszolgáló terhelése okozhatja időtúllépések. A kiszolgáló terhelése figyelemmel figyelése a `Redis Server Load` [gyorsítótárazzák a teljesítmény-mérőszám](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). A kiszolgáló terhelését, 100 (maximális értéke) azt jelzi, hogy, a redis-kiszolgáló már foglalt, az üresjárati idővel, a kérelmek feldolgozásához. Ha bizonyos kérelmek igényelnek a kiszolgálói funkció az összes megtekintéséhez futtassa a SlowLog parancs az előző bekezdésben ismertetett módon. További információkért tekintse meg a magas CPU-használat / kiszolgáló terhelése.
 7. Történt más esemény, amely egy hálózati blip-oka lehetett az ügyféloldalon? Ellenőrizze az ügyfélen (webes, feldolgozói szerepkör vagy egy IaaS-beli virtuális Gépen), ha olyan esemény, például az ügyfél-példányok számának méretezése felfelé vagy lefelé történt, vagy az ügyfél vagy az automatikus méretezés új verziójának telepítése engedélyezve van? A tesztelés található, az automatikus méretezés, vagy a vertikális felskálázásával, vagy le is OK kimenő hálózati kapcsolat elveszhet néhány másodpercig. StackExchange.Redis kódot képes legyen ellenállni a ilyen események és újracsatlakozik. Ebben az időszakban az újracsatlakozás bármilyen kérelmeket az üzenetsorban is időtúllépés.
 8. Történt megelőző több kis kérést az Azure Cache redis túllépte az időkorlátot, big Data típusú kérelmet? A paraméter `qs` a hibás üzenet közli Önnel, hogy hány kérésnek az ügyfélről a kiszolgálónak küldött, de még nem dolgozott választ. Ezt az értéket is folyamatosan növekvő, mert StackExchange.Redis egyetlen TCP-kapcsolatot használ, és egyszerre csak egy választ csak olvasható. Annak ellenére, hogy az első művelet túllépte az időkorlátot, nem állítja le az adatokat küld a rendszer és-tárolókról a kiszolgálón, és más kérelmek le vannak tiltva, amíg a nagy méretű kérelem nem fejeződött időtúllépéssel okozza. Egy megoldás, hogy időtúllépések esélyét annak biztosítása, hogy a gyorsítótár mérete elegendő a számítási feladatok és a nagy értékek felosztása szeletekre. Egy másik lehetséges megoldás az, hogy a készlet használata `ConnectionMultiplexer` az ügyfél az objektumok, és válassza a legkevésbé betöltött `ConnectionMultiplexer` új kérelem küldése során. Ezzel akadályozhatja meg egyetlen időtúllépés küldött egyéb kérések számára is időtúllépés miatt.
 9. Ha használ `RedisSessionStateProvider`, ellenőrizze az újrapróbálkozási időkorlátnak az újrapróbálkozási megfelelően. `retryTimeoutInMilliseconds` érdemes lehet magasabb, mint `operationTimeoutInMilliseconds`, ellenkező esetben fordulhat elő, nem az újrapróbálkozásokat. Az alábbi példában `retryTimeoutInMilliseconds` 3000 értékre van állítva. További információkért lásd: [ASP.NET munkamenetállapot-szolgáltatóját Azure Cache redis](cache-aspnet-session-state-provider.md) és [munkamenetállapot-szolgáltató és a kimeneti gyorsítótár-szolgáltatóját a konfigurációs paraméterek használata](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).

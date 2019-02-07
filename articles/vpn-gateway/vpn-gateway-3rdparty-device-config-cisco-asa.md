@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: f51a97e1493803998cfbdd81523e4e479b50346d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697105"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817240"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Minta-konfiguráció: Minta: Cisco ASA-eszköz (IKEv2/nincs BGP)
 Ez a cikk az Azure VPN Gateway átjárókhoz kapcsolódó Cisco adaptív biztonsági berendezés (ASA) eszközöknél minta konfigurációi. A példa az IKEv2 nélkül a Border Gateway Protocol (BGP) futtató Cisco ASA-eszközökre vonatkozik. 
@@ -44,7 +44,7 @@ Az Azure VPN-átjárók IPsec/IKE protokoll a standard csomagok használatával 
 > Opcionálisan megadhat egy titkosítási algoritmusokat és kulcserősségeket egy adott kapcsolathoz tartozó pontos kombinációja a leírtak szerint [információ a kriptográfiai követelményekről](vpn-gateway-about-compliance-crypto.md). Ha megadja a pontos kombinációja algoritmusokkal és kulcserősségekkel, mindenképpen a VPN-eszközök használata a vonatkozó előírásokat.
 
 ## <a name="single-vpn-tunnel"></a>Egyetlen VPN-alagút
-Ez a konfiguráció az Azure VPN gateway és a egy helyszíni VPN-eszköz között egyetlen S2S VPN-alagút áll. Igény szerint konfigurálható a [a VPN-alagúton keresztül BGP](#bgp).
+Ez a konfiguráció az Azure VPN gateway és a egy helyszíni VPN-eszköz között egyetlen S2S VPN-alagút áll. A BGP-t igény szerint konfigurálhatja a VPN-alagúton keresztül.
 
 ![Egyetlen S2S VPN-alagút](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 

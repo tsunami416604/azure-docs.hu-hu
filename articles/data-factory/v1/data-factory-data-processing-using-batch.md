@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e053fa52b7b7cea1c35b68a0f2079eb5a590a76a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021577"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822748"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek folyamatot a Data Factory és a Batch használatával
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "54021577"
 
 Ez a cikk ismerteti az architektúra a minta megoldás, amely helyezi át, és feldolgozza a nagyméretű adatkészletek automatikus és ütemezett módon. A megoldás megvalósítása a Data Factory és az Azure Batch használatával egy végpontok közötti forgatókönyv is tartalmazza.
 
-Ez a cikk hosszabb, mint egy tipikus cikket, mert tartalmaz egy teljes mintamegoldást bemutató. Ha most ismerkedik a Batch és Data Factory áttekintése, ezek a szolgáltatások talál további információt, és hogyan működnek együtt. Ha ismeri a szolgáltatásokkal kapcsolatos hiba, és vannak tervezése/mikroszolgáltatásokra egy megoldást, akkor előtérbe kerülhet a [architektúra szakasz](#architecture-of-sample-solution) a cikk. Fejleszt egy prototípusként vagy egy megoldást, előfordulhat, hogy szeretné-e, próbálja ki a részletes utasításokat a [forgatókönyv](#implementation-of-sample-solution). Felkérjük ezt a tartalmat, és miként használják a megjegyzéseit.
+Ez a cikk hosszabb, mint egy tipikus cikket, mert tartalmaz egy teljes mintamegoldást bemutató. Ha most ismerkedik a Batch és Data Factory áttekintése, ezek a szolgáltatások talál további információt, és hogyan működnek együtt. Ha ismeri a szolgáltatásokkal kapcsolatos hiba, és vannak tervezése/mikroszolgáltatásokra egy megoldást, összpontosíthat a cikk architektúra szakasza. Ha fejleszt egy prototípusként vagy egy megoldást, érdemes próbálja ki az útmutató részletes utasításokat. Felkérjük ezt a tartalmat, és miként használják a megjegyzéseit.
 
 Először nézzük, hogyan Data Factory és a Batch szolgáltatás segíthet folyamat nagy méretű adatkészleteket a felhőben.     
 
@@ -171,7 +171,7 @@ A módszer van néhány kulcsfontosságú összetevők, ismernie kell:
   * **linkedServices**. Ez a paraméter egy társított szolgáltatást, amely a bemeneti és kimeneti adatokat forrásokból (például blob storage) összekapcsolása a data factory enumerálható listáját. Ebben a példában csak egy társított szolgáltatást a bemeneti és kimeneti is használt Azure Storage típusú van.
   * **az adatkészletek**. A paraméter-adatkészletek enumerálható listáját. Ez a paraméter használatával a helyek és a bemeneti és kimeneti adatkészleteket által definiált sémák.
   * **tevékenység**. Ez a paraméter az aktuális számítási entitás jelöli. Ebben az esetben egy Batch-szolgáltatás.
-  * **naplózó**. A naplózó használhatja, hogy a surface hibakeresési megjegyzéseket írhat, a folyamat a "User" napló.
+  * **logger**. A naplózó használhatja, hogy a surface hibakeresési megjegyzéseket írhat, a folyamat a "User" napló.
 * A metódus adja vissza egy szótár, amely összekapcsolja az egyéni tevékenységek együtt a jövőben is használható. Ez a funkció még nincs megvalósítva, csak egy üres szótár visszaadásához a metódus.
 
 #### <a name="procedure-create-the-custom-activity"></a>Az eljárás: Az egyéni tevékenység létrehozása

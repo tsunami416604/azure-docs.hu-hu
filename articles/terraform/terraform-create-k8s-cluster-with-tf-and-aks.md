@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: f8047960c1e52d77534742d85448ef566f851811
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0ef206cf4407c6392ae5d9a70ba156f5635715e9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567434"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814792"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Kubernetes-fürt létrehozása az Azure Kubernetes Service és a Terraform segítségével
 Az [Azure Kubernetes Service (AKS)](/azure/aks/) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
@@ -352,7 +352,7 @@ Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előz
 
     ![A „terraform plan” eredményeit mutató példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. Futtassa a `terraform apply` parancsot a Kubernetes-fürtöt létrehozó terv alkalmazásához. A Kubernetes-fürt létrehozásának folyamata néhány percet igénybe vehet, ez a Cloud Shell-munkamenet időtúllépését eredményezi. Ha a Cloud Shell-munkamenet túllépi az időkorlátot, kövesse a [„Helyreállítás a Cloud Shell időtúllépéséből”](#recover-from-a-dloud-shell-timeout) szakaszban leírt lépéseket, amelyek lehetővé teszik az oktatóanyag befejezését.
+1. Futtassa a `terraform apply` parancsot a Kubernetes-fürtöt létrehozó terv alkalmazásához. A Kubernetes-fürt létrehozásának folyamata néhány percet igénybe vehet, ez a Cloud Shell-munkamenet időtúllépését eredményezi. Ha a Cloud Shell-munkamenetek időkorlátja lejár, követheti a "A rendszer a Cloud Shell időtúllépés miatt helyreállítása" című szakaszának lépéseit, hogy az oktatóanyag elvégzéséhez.
 
     ```bash
     terraform apply out.plan

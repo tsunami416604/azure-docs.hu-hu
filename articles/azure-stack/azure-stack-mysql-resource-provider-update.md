@@ -15,12 +15,12 @@ ms.date: 01/11/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: f3129c27d123aa448f8293f7e1827dc3ebc5c82e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f38d27c6f82533265705ff5483bfe835c81c9ce6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239077"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817291"
 ---
 # <a name="update-the-mysql-resource-provider"></a>A MySQL erőforrás-szolgáltató frissítése 
 
@@ -30,7 +30,7 @@ Egy új MySQL erőforrás-szolgáltató adapter előfordulhat, hogy szabadul fel
 
 A MySQL erőforrás-szolgáltató 1.1.33.0. verzió kiadását kezdve frissítések összesítettek, és nem kell telepíteni a sorrendben, ahol azok jelentek meg; mindaddig, amíg Ön kezdődően 1.1.24.0 verzió vagy újabb verziója. Például ha a MySQL erőforrás-szolgáltató 1.1.24.0 verzióját futtatja, majd frissítheti 1.1.33.0 verzióra, vagy később anélkül, hogy először a 1.1.30.0 verzió telepítése. Tekintse át az elérhető erőforrás-szolgáltató verziói és az Azure Stack támogatottak a verzióját, a verziók listáját [üzembe helyezése az erőforrás-szolgáltatóra vonatkozó Előfeltételek](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
-Frissíteni az erőforrás-szolgáltatót használ, a **UpdateMySQLProvider.ps1** parancsfájlt. A folyamat egy erőforrás-szolgáltató telepítéséhez használt leírtak szerint a folyamat hasonlít a [az erőforrás-szolgáltató üzembe helyezése](#deploy-the-resource-provider) című szakaszát. A parancsfájl az erőforrás-szolgáltató a letöltés részét képezi. 
+Frissíteni az erőforrás-szolgáltatót használ, a **UpdateMySQLProvider.ps1** parancsfájlt. A folyamat hasonlít a folyamat egy erőforrás-szolgáltató telepíthető, az üzembe helyezés Ez a cikk resource provider szakaszában leírtak szerint. A parancsfájl az erőforrás-szolgáltató a letöltés részét képezi. 
 
  > [!IMPORTANT]
  > Az erőforrás-szolgáltató a frissítés előtt tekintse át a kibocsátási megjegyzéseket, új funkciókat, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés megismeréséhez.

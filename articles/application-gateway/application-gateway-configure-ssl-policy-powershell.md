@@ -8,16 +8,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: a93a3db3010fb9e9d2270414cadeae86b70bb8d0
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5f5b389c66821282668f0b4fce9e0b67af028e9a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157462"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816951"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurálja az SSL-szabályzat verziók és az Application Gateway-titkosítócsomagjai
 
-Ismerje meg, hogyan konfigurálja az SSL-szabályzat verziók és az Application Gateway-titkosítócsomagjai. Választhat egy [előre meghatározott házirendek](#predefined-ssl-policies) , amely SSL-szabályzat verziók különböző konfigurációjú tartalmazhat, és engedélyezett titkosító csomagok. Akkor is definiálhat egy [egyéni SSL-szabályzat](#configure-a-custom-ssl-policy) igényei alapján.
+Ismerje meg, hogyan konfigurálja az SSL-szabályzat verziók és az Application Gateway-titkosítócsomagjai. Választhat az előre meghatározott házirendek különböző konfigurációival SSL-szabályzat verzióját tartalmazza, és engedélyezett titkosító csomagok listáját. Akkor is definiálhat egy [egyéni SSL-szabályzat](#configure-a-custom-ssl-policy) igényei alapján.
 
 ## <a name="get-available-ssl-options"></a>Elérhető az SSL-beállítások beolvasása
 
@@ -106,7 +106,7 @@ CipherSuites:
 
 ## <a name="configure-a-custom-ssl-policy"></a>Egyéni SSL-szabályzat konfigurálása
 
-Egyéni SSL-szabályzat konfigurálásakor adja át a következő paraméterekkel: PolicyType, MinProtocolVersion, CipherSuite és ApplicationGateway. Ha megpróbálja át más paramétereket, hibaüzenet létrehozásakor vagy frissítésekor az Application Gateway. 
+Egyéni SSL-szabályzat konfigurálásakor adja át a következő paraméterekkel: PolicyType, MinProtocolVersion, CipherSuite, and ApplicationGateway. Ha megpróbálja át más paramétereket, hibaüzenet létrehozásakor vagy frissítésekor az Application Gateway. 
 
 Az alábbi példa egy application gateway beállítása egy egyéni SSL-szabályzat. Azt állítja be a minimális protokoll verziója `TLSv1_1` , és lehetővé teszi az alábbi titkosító csomagok:
 

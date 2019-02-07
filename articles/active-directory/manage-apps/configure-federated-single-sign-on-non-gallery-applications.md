@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: d88f44a202ee8def017698dfa8ac40d32bcae4d1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d79076a0669f725c3f1864a979812ede1020cd75
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168583"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812123"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Összevont egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálása
 
@@ -36,7 +36,7 @@ Az alábbi, a katalógusban nem szereplő (pl. egyéni) alkalmazásokhoz SAML 2.
 
 -   [Az Azure AD metaadatértékeket konfigurálása az alkalmazásban (bejelentkezési URL-címet, a kiállító, a kijelentkezési URL-címe és a tanúsítvány)](#_Configuring_single_sign-on)
 
--   [Felhasználók hozzárendelése az alkalmazáshoz](#_Assign_users_to_the_application)
+-   Felhasználók hozzárendelése az alkalmazáshoz
 
 ## <a name="configuring-single-sign-on-to-non-gallery-applications"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazások konfigurálása
 

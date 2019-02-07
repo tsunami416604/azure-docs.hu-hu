@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 760feae2c9b58e162dae487e240dda72099ed91b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5fe2cab3ac9f9e5f3bbba17b8ab9467a298b24ea
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227977"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817682"
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
 Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API Management.
@@ -37,7 +37,7 @@ Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API
 * [Hogyan állíthatok be egy egyetlen API több környezetet?](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [Használhatom-e a SOAP API Management?](#can-i-use-soap-with-api-management)
 * [Az API Management gateway IP cím állandó? Is használhatók a tűzfalszabályok?](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
-* [Konfigurálhatok az OAuth 2.0 engedélyezési kiszolgáló az AD FS biztonsági?](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
+* Konfigurálhatok az OAuth 2.0 engedélyezési kiszolgáló az AD FS biztonsági?
 * [Milyen útválasztási módszert használni a az API Management a több földrajzi helyen történő központi telepítések?](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [Az Azure Resource Manager-sablonok segítségével az API Management szolgáltatáspéldány létrehozása?](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
 * [Használható a háttéralkalmazás az önaláírt SSL-tanúsítvány?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)

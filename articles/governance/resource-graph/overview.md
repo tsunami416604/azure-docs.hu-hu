@@ -4,16 +4,16 @@ description: Az Azure Resource Graph egy olyan Azure-szolgáltatás, amely lehet
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ed64f6317fefb9e82dbe14e806499965d926d434
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6b3bad4e4619f8909f5c6d71111b4fad9ddb3098
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316199"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813279"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az Azure Resource Graph
 
@@ -45,6 +45,10 @@ Első lépésként olvassa el az Azure Resource Graphfal használható művelete
 ## <a name="permissions-in-azure-resource-graph"></a>Engedélyek az Azure Resource Graphban
 
 A Resource Graph használatához megfelelő jogosultságokkal kell rendelkeznie a [szerepköralapú hozzáférés-vezérlésben](../../role-based-access-control/overview.md) (RBAC), és legalább olvasási jogosultsággal kell rendelkeznie a lekérdezni kívánt erőforrásokon. Ha nem rendelkezik legalább `read` engedélyekkel az Azure-objektumhoz vagy -objektumcsoporthoz, a rendszer nem ad vissza eredményeket.
+
+## <a name="throttling"></a>Throttling
+
+Erőforrás-grafikon a lekérdezések szabályozott a legjobb felhasználói élményt és válasz ideje biztosít minden ügyfél számára. Ha a szervezet által támogatni kívánt nagy méretű és gyakori lekérdezések a erőforrás Graph API használatával, használja az Erőforrás-grafikon oldalról "Visszajelzés" portálon. Mindenképpen adja meg az üzleti esetekhez, és jelölje be a "Microsoft e-mail üzeneteket küldhet Önnek a Visszajelzésével kapcsolatban" jelölőnégyzetet ahhoz, hogy a csapat Önnel a kapcsolatot.
 
 ## <a name="running-your-first-query"></a>Az első lekérdezés futtatása
 

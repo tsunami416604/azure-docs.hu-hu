@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: b8abf7a0dc85d20e9075b51b8d42a068cf56846f
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 4110b8f1b336a604c89180ac44ad470132765830
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620523"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820674"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Szolgáltatás távelérésének lehetővé tétele a C# Reliable Services szolgáltatással
 
@@ -239,7 +239,7 @@ Ebben a lépésben gondoskodik arról, hogy a szolgáltatás csak a V2-figyelő 
 
 ## <a name="use-the-remoting-v2-interface-compatible-stack"></a>A távoli eljáráshívás V2 (interface-kompatibilis) verem használata
 
- A távoli eljáráshívás V2 (csatoló kompatibilis, más néven V2_1) stack rendelkezik a V2 távoli eljáráshívás verem összes funkcióját. A felület stack kompatibilis a távoli eljáráshívás V1-vermet, de már nem kompatibilis a V2 és V1. Frissítse a V1 V2_1 anélkül, hogy befolyásolná a szolgáltatás rendelkezésre állása, kövesse a cikkben található lépéseket [v2 a V1 verzióról (felület kompatibilis)](#upgrade-from-remoting-v1-to-remoting-v2interfacecompatible).
+ A távoli eljáráshívás V2 (csatoló kompatibilis, más néven V2_1) stack rendelkezik a V2 távoli eljáráshívás verem összes funkcióját. A felület stack kompatibilis a távoli eljáráshívás V1-vermet, de már nem kompatibilis a V2 és V1. Frissítse a V1 V2_1 anélkül, hogy befolyásolná a szolgáltatás rendelkezésre állása, kövesse a cikk frissítése V1-től v2 (felület kompatibilis).
 
 
 ### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>Egy szerelvény attribútum használata a távoli eljáráshívás V2 (interface-kompatibilis) verem használata

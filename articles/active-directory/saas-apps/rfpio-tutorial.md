@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 0b216d8a8a2c6e1ab7c7b71eedfca9cbd6dbd5cf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 23d745e084bf3439d8400b0cd6ac43bac75c7751
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197347"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815693"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RFPIO
 
@@ -88,11 +88,11 @@ RFPIO, rendelje hozzá a értékét **felhasználónév** értékeként az Azure
 
 Az Azure AD egyszeri bejelentkezés az RFPIO tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**– ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#creating-an-azure-ad-test-user)**– az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy RFPIO tesztfelhasználót](#creating-a-rfpio-test-user)**  --van egy megfelelője a Britta Simon RFPIO, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assigning-the-azure-ad-test-user)**--Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  --működik, ha a konfiguráció ellenőrzéséhez.
+1. **Az Azure AD egyszeri bejelentkezés konfigurálása**– ahhoz, hogy ez a funkció használatát a felhasználók számára.
+1. **Hozzon létre egy Azure ad-ben tesztfelhasználót**– az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+1. **Hozzon létre egy RFPIO tesztfelhasználót** --van egy megfelelője a Britta Simon RFPIO, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **Rendelje hozzá az Azure ad-ben tesztfelhasználó**--Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+1. **Egyszeri bejelentkezés tesztelése** --működik, ha a konfiguráció ellenőrzéséhez.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 

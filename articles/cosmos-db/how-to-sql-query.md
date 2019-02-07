@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5884295e93a14d74a125c27ea597f2311478042a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f8b23533127b9798e5a677f646f94ae0a53fcde8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459026"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822408"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL lekérdezési példák
 
@@ -1365,29 +1365,29 @@ A matematika függvényekkel hajtsa végre a számítási, amelyek argumentumké
 
 | Használat | Leírás |
 |----------|--------|
-| [[ABS (num_expr)](#bk_abs) | A megadott numerikus kifejezés (pozitív) abszolút értékét adja vissza. |
-| [Felső HATÁRÁT (num_expr)](#bk_ceiling) | A legkisebb egész értéket ad vissza, nagyobb vagy egyenlő a megadott numerikus kifejezés. |
-| [EMELET (num_expr)](#bk_floor) | Visszaadja a legnagyobb egész szám kisebb vagy egyenlő a megadott numerikus kifejezés. |
-| [EXP (num_expr)](#bk_exp) | A megadott numerikus kifejezés hatványát adja vissza. |
+| [ABS (num_expr) | A megadott numerikus kifejezés (pozitív) abszolút értékét adja vissza. |
+| CEILING (num_expr) | A legkisebb egész értéket ad vissza, nagyobb vagy egyenlő a megadott numerikus kifejezés. |
+| FLOOR (num_expr) | Visszaadja a legnagyobb egész szám kisebb vagy egyenlő a megadott numerikus kifejezés. |
+| EXP (num_expr) | A megadott numerikus kifejezés hatványát adja vissza. |
 | [NAPLÓ (num_expr [, Alap])](#bk_log) | A megadott numerikus kifejezés, vagy a megadott használatával logaritmus természetes alapú logaritmusát adja vissza |
-| [LOG10 (num_expr)](#bk_log10) | A megadott numerikus kifejezés 10-es logaritmikus értékét adja vissza. |
-| [ROUND (num_expr)](#bk_round) | Egy numerikus értéket, kerekítve a legközelebbi egész értéket ad vissza. |
-| [CSONK (num_expr)](#bk_trunc) | Egy numerikus érték, csonkolva, a legközelebbi egész értéket ad vissza. |
-| [SQRT (num_expr)](#bk_sqrt) | A megadott numerikus kifejezés négyzetgyökét adja vissza. |
-| [SQUARE (num_expr)](#bk_square) | A megadott numerikus kifejezés négyzetét adja vissza. |
+| LOG10 (num_expr) | A megadott numerikus kifejezés 10-es logaritmikus értékét adja vissza. |
+| ROUND (num_expr) | Egy numerikus értéket, kerekítve a legközelebbi egész értéket ad vissza. |
+| TRUNC (num_expr) | Egy numerikus érték, csonkolva, a legközelebbi egész értéket ad vissza. |
+| SQRT (num_expr) | A megadott numerikus kifejezés négyzetgyökét adja vissza. |
+| SQUARE (num_expr) | A megadott numerikus kifejezés négyzetét adja vissza. |
 | [ENERGIAGAZDÁLKODÁSI (num_expr, num_expr)](#bk_power) | A megadott numerikus kifejezés hatékonyságát megadott értéket adja vissza. |
-| [BEJELENTKEZÉS (num_expr)](#bk_sign) | A bejelentkezés (-1, 0, 1) a megadott numerikus kifejezés értékét adja vissza. |
-| [ACOS (num_expr)](#bk_acos) | Adja vissza a szög radiánban, amelynek a koszinusza a megadott numerikus kifejezés; egy szám arkusz koszinusza néven is ismert. |
-| [ASIN (num_expr)](#bk_asin) | Adja vissza a szög radiánban, amelynek szinusza a megadott numerikus kifejezés. Ez a függvény egy szám arkusz szinusza is nevezik. |
-| [ATAN (num_expr)](#bk_atan) | Adja vissza a szög radiánban, amelynek tangense a megadott numerikus kifejezés. Arkusztangens ezt is nevezik. |
-| [ATN2 (num_expr)](#bk_atn2) | Adja vissza a szög radiánban, közötti pozitív x tengely és a ray a forrásból a pont (y, x), ahol x és y értékek a két megadott úszó kifejezésre. |
-| [COS (num_expr)](#bk_cos) | A megadott kifejezést az radiánban megadott szög, trigonometriai koszinuszát adja vissza. |
-| [COT (num_expr)](#bk_cot) | A megadott szög trigonometriai kotangensét adja vissza radiánban, a megadott numerikus kifejezés. |
-| [FOK (num_expr)](#bk_degrees) | A megfelelő szöget adja vissza fokban a egy radiánban megadott szög. |
-| [PI ()](#bk_pi) | Az állandó a PI értékét adja vissza. |
-| [RADIANS (num_expr)](#bk_radians) | Adja vissza radiánban, ha egy numerikus kifejezés, fokban is meg kell adni. |
-| [SIN (num_expr)](#bk_sin) | A megadott kifejezést az radiánban megadott szög, trigonometriai szinuszát adja vissza. |
-| [TAN (num_expr)](#bk_tan) | A bemeneti kifejezést tangensét adja vissza a megadott kifejezésben. |
+| BEJELENTKEZÉS (num_expr) | A bejelentkezés (-1, 0, 1) a megadott numerikus kifejezés értékét adja vissza. |
+| ACOS (num_expr) | Adja vissza a szög radiánban, amelynek a koszinusza a megadott numerikus kifejezés; egy szám arkusz koszinusza néven is ismert. |
+| ASIN (num_expr) | Adja vissza a szög radiánban, amelynek szinusza a megadott numerikus kifejezés. Ez a függvény egy szám arkusz szinusza is nevezik. |
+| ATAN (num_expr) | Adja vissza a szög radiánban, amelynek tangense a megadott numerikus kifejezés. Arkusztangens ezt is nevezik. |
+| ATN2 (num_expr) | Adja vissza a szög radiánban, közötti pozitív x tengely és a ray a forrásból a pont (y, x), ahol x és y értékek a két megadott úszó kifejezésre. |
+| COS (num_expr) | A megadott kifejezést az radiánban megadott szög, trigonometriai koszinuszát adja vissza. |
+| COT (num_expr) | A megadott szög trigonometriai kotangensét adja vissza radiánban, a megadott numerikus kifejezés. |
+| DEGREES (num_expr) | A megfelelő szöget adja vissza fokban a egy radiánban megadott szög. |
+| PI () | Az állandó a PI értékét adja vissza. |
+| RADIANS (num_expr) | Adja vissza radiánban, ha egy numerikus kifejezés, fokban is meg kell adni. |
+| SIN (num_expr) | A megadott kifejezést az radiánban megadott szög, trigonometriai szinuszát adja vissza. |
+| TAN (num_expr) | A bemeneti kifejezést tangensét adja vissza a megadott kifejezésben. |
 
 Ha például már lekérdezéseket is futtathat az alábbi példában látható módon:
 

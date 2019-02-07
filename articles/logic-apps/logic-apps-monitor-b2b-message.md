@@ -9,16 +9,16 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: d5425cf7c2ea39770bbc3e9368f34d57d7279842
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e3d2b377df6a3ed8312ca8b2563fe466236c2741
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534876"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818294"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Az Azure Log Analytics az Azure Logic Apps B2B-üzenetek monitorozása
 
-Telepítése után B2B kommunikációt az integrációs fiókban lévő kereskedelmi partnerek között, ezek a partnerek is alkalmazásközi egymással. Ellenőrizze, hogy ezt a kommunikációt a várt módon működik, AS2, X12, figyelheti és EDIFACT üzeneteket, és állítsa be a diagnosztikai naplózás az integrációs fiók a [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Ez a szolgáltatás figyeli a felhőbeli és helyszíni környezeteket, Súgó, a rendelkezésre állás és teljesítmény fenntartására és futásidejű részleteit, illetve gazdagabb hibakeresési eseményeket gyűjti. Emellett [használja ezeket az adatokat más szolgáltatásokkal](#extend-diagnostic-data) például az Azure Storage és az Azure Event Hubs.
+Telepítése után B2B kommunikációt az integrációs fiókban lévő kereskedelmi partnerek között, ezek a partnerek is alkalmazásközi egymással. Ellenőrizze, hogy ezt a kommunikációt a várt módon működik, AS2, X12, figyelheti és EDIFACT üzeneteket, és állítsa be a diagnosztikai naplózás az integrációs fiók a [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Ez a szolgáltatás figyeli a felhőbeli és helyszíni környezeteket, Súgó, a rendelkezésre állás és teljesítmény fenntartására és futásidejű részleteit, illetve gazdagabb hibakeresési eseményeket gyűjti. Más szolgáltatásokkal, például az Azure Storage és az Azure Event Hubs is használhatja ezeket az adatokat.
 
 > [!NOTE]
 > Ezen a lapon lehet, hogy továbbra is hivatkoznak, a Microsoft Operations Management Suite (OMS), amely [kivonása a január 2019](../azure-monitor/platform/oms-portal-transition.md), de váltja fel ezeket a lépéseket az Azure Log Analytics, ahol csak lehetséges. 
@@ -47,9 +47,9 @@ Ha elkészült, válassza ki a **diagnosztikai beállítás hozzáadása**.
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------|
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az integrációs fiók társított Azure-előfizetés | 
-   | **Erőforráscsoport** | <*Az Azure-erőforrás-csoport-neve*> | Az Azure-erőforráscsoportot az integrációs fiók | 
+   | **Erőforráscsoport** | <*Azure-resource-group-name*> | Az Azure-erőforráscsoportot az integrációs fiók | 
    | **Erőforrás típusa** | **Integrációs fiókok** | Az Azure-beli erőforráshoz, ahol szeretné kapcsolni a naplózást a típus | 
-   | **Erőforrás** | <*Integration-fiók-neve*> | Hol szeretné kapcsolni a naplózást az Azure-erőforrás neve | 
+   | **Erőforrás** | <*integration-account-name*> | Hol szeretné kapcsolni a naplózást az Azure-erőforrás neve | 
    ||||  
 
    Példa:
@@ -89,9 +89,9 @@ Ha elkészült, válassza ki a **diagnosztikai beállítás hozzáadása**.
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------|
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az integrációs fiók társított Azure-előfizetés | 
-   | **Erőforráscsoport** | <*Az Azure-erőforrás-csoport-neve*> | Az Azure-erőforráscsoportot az integrációs fiók | 
+   | **Erőforráscsoport** | <*Azure-resource-group-name*> | Az Azure-erőforráscsoportot az integrációs fiók | 
    | **Erőforrás típusa** | **Integrációs fiókok** | Az Azure-beli erőforráshoz, ahol szeretné kapcsolni a naplózást a típus | 
-   | **Erőforrás** | <*Integration-fiók-neve*> | Hol szeretné kapcsolni a naplózást az Azure-erőforrás neve | 
+   | **Erőforrás** | <*integration-account-name*> | Hol szeretné kapcsolni a naplózást az Azure-erőforrás neve | 
    ||||  
 
    Példa:

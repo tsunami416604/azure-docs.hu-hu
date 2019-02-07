@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 437217bdd3cc2ae8724d6bf24134d8fe725daac7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 34d0c4054273babcc56516d290857c4ddb554bf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093308"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819093"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Gyors útmutató: Az Azure Active Directory-alkalmazás frissítése
 
@@ -156,7 +156,7 @@ Az alkalmazások Azure AD-ben való regisztrálásakor esetenként az a cél, ho
 Fontos kiemelni az egy- és a több-bérlős alkalmazások közti különbségeket:  
 
 - Az egybérlős alkalmazások egy adott szervezetben való használatra készülnek. Ezek általában nagyvállalati fejlesztők által írt üzletági (LoB) alkalmazások. Ez egybérlős alkalmazásokat csak olyan felhasználók használhatják, akik az alkalmazásregisztrációval azonos bérlőn rendelkeznek fiókkal. Így az ilyen alkalmazásokat csak egy címtárban kell kiosztani.
-- A több-bérlős alkalmazások több külön szervezetben való használatra készülnek. Ezeket szolgáltatott szoftverként (SaaS) elérhető webalkalmazásként írhatnánk le, és általában független szoftverfejlesztők (ISV) írják őket. A több-bérlős alkalmazásokat minden bérlőn ki kell osztani, ahol a felhasználóknak el kell tudniuk érni őket. Az alkalmazásregisztráció helyétől eltérő bérlőkön az ilyen alkalmazások regisztrálásához felhasználói vagy rendszergazdai hozzájárulás szükséges. Fontos megjegyezni, hogy a natív ügyfélalkalmazások alapértelmezetten több-bérlősek, mivel az erőforrás-tulajdonos eszközén vannak telepítve. A hozzájárulási keretrendszerrel kapcsolatos információkért lásd [a hozzájárulási keretrendszert áttekintő](#overview-of-the-consent-framework) megelőző szakaszt.
+- A több-bérlős alkalmazások több külön szervezetben való használatra készülnek. Ezeket szolgáltatott szoftverként (SaaS) elérhető webalkalmazásként írhatnánk le, és általában független szoftverfejlesztők (ISV) írják őket. A több-bérlős alkalmazásokat minden bérlőn ki kell osztani, ahol a felhasználóknak el kell tudniuk érni őket. Az alkalmazásregisztráció helyétől eltérő bérlőkön az ilyen alkalmazások regisztrálásához felhasználói vagy rendszergazdai hozzájárulás szükséges. Fontos megjegyezni, hogy a natív ügyfélalkalmazások alapértelmezetten több-bérlősek, mivel az erőforrás-tulajdonos eszközén vannak telepítve. A hozzájárulási keretrendszer jelenik meg az előző áttekintése a hozzájárulási keretrendszer című szakasz részletezi.
 
 Az alkalmazás több-bérlőssé tételéhez módosítani kell az alkalmazásregisztrációt, valamint magát a webalkalmazást is. Az alábbi szakaszokban mindkettőre kitérünk.
 
@@ -184,7 +184,7 @@ A több-bérlős alkalmazások támogatása nagy mértékben támaszkodik az Azu
 A webalkalmazás emellett lehetővé teheti a következőket:
 
 - A rendszergazdák regisztrálhatják a saját vállalatukat. Ez a folyamatot „rendszergazdai hozzájárulásnak” nevezzük, és a rendszergazda ezáltal a szervezet *összes felhasználója* nevében adhatja meg a hozzájárulást. A rendszergazdai hozzájárulást kizárólag a globális rendszergazdai szerepkörhöz tartozó fiókkal bejelentkezett felhasználó adhatja meg, más felhasználók hibaüzenetet kapnak.
-- Egy bejelentkezési folyamatot biztosíthat a felhasználók számára. Várhatóan a felhasználóknál megjelenik egy „regisztrációs” gomb, amely átirányítja a böngészőt az Azure AD OAuth2.0 `/authorize`-végpontra vagy egy OpenID Connect `/userinfo`-végpontra. Ezeken a végpontokon az alkalmazás információkat kérhet le az új felhasználóról az id_token vizsgálatával. A bejelentkezési folyamatot követően a felhasználó egy hozzájárulási kérést kap, amint az [a hozzájárulási keretrendszert áttekintő](#overview-of-the-consent-framework) szakaszban is látható.
+- Egy bejelentkezési folyamatot biztosíthat a felhasználók számára. Várhatóan a felhasználóknál megjelenik egy „regisztrációs” gomb, amely átirányítja a böngészőt az Azure AD OAuth2.0 `/authorize`-végpontra vagy egy OpenID Connect `/userinfo`-végpontra. Ezeken a végpontokon az alkalmazás információkat kérhet le az új felhasználóról az id_token vizsgálatával. A felhasználó a regisztrációs fázis a következő egyike jóváhagyásukat kéri, a hasonló a hozzájárulási keretrendszer szakasz áttekintése látható.
 
 Az alkalmazás több-bérlős hozzáféréséhez és a bejelentkezési/kijelentkezési folyamatok támogatásához szükséges módosításaival kapcsolatos további információkért lásd:
 

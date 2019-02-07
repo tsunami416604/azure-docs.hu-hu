@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 3ba2009ef1ea8fdf5916baab296c7ff5eee953db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 40062cfb2e646fd6befef1e746f9493f3e4b20f9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469192"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821361"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
 Ez a cikk néhány tábla szolgáltatási megoldások használható mintákat ismerteti. Ezenkívül láthatja, miként, gyakorlatilag kezelheti néhány problémákat és egyéb tárolási tervezési cikkek tárgyalt feláldozását. Az alábbi ábrán a különböző minták között létesített kapcsolatait összegzi:  
@@ -73,7 +73,7 @@ Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalós
 
 * [Közötti partíció másodlagos indexe mintája](#inter-partition-secondary-index-pattern)
 * [Összetett kulcs minta](#compound-key-pattern)
-* [Tranzakciók](#entity-group-transactions)
+* Tranzakciók
 * [Heterogén entitástípusok az dolgozik](#working-with-heterogeneous-entity-types)
 
 ## <a name="inter-partition-secondary-index-pattern"></a>Közötti partíció másodlagos indexe mintája
@@ -128,7 +128,7 @@ Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalós
 * [Végül konzisztens tranzakció mintája](#eventually-consistent-transactions-pattern)  
 * [Intra-partition másodlagos index minta](#intra-partition-secondary-index-pattern)  
 * [Összetett kulcs minta](#compound-key-pattern)  
-* [Tranzakciók](#entity-group-transactions)  
+* Tranzakciók  
 * [Heterogén entitástípusok az dolgozik](#working-with-heterogeneous-entity-types)  
 
 ## <a name="eventually-consistent-transactions-pattern"></a>Végül konzisztens tranzakció mintája
@@ -172,7 +172,7 @@ Használja ezt a mintát, ha meg szeretné garantálja a konzisztenciát entitá
 ### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
 Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
-* [Tranzakciók](#entity-group-transactions)  
+* Tranzakciók  
 * [Egyesítés vagy cseréje](#merge-or-replace)  
 
 > [!NOTE]
@@ -212,7 +212,7 @@ A **EmployeeIDs** tárolt utolsó nevű tulajdonság tartalmazza az alkalmazotta
 Az alábbi lépéseket kell követnie, ha a hozzáadni kívánt új alkalmazott a második lehetőség használatakor vázoltuk. Ebben a példában egy alkalmazott azonosítója 000152 és a egy Vezetéknév Jones a Sales nevű részleg adunk hozzá:  
 
 1. Kérje le az index-entitást együtt egy **PartitionKey** "Értékesítés" értéket, és a **RowKey** értéke "János". Mentse a 2. lépésben használandó ETag címkéje ehhez az entitáshoz.  
-2. Hozzon létre egy entitás-csoport tranzakció (azaz kötegelt művelet), amely az új alkalmazottak entitás szúr be (**PartitionKey** "Értékesítés" értéket, és **rowkey tulajdonságok esetén** "000152" érték), és frissíti az index entitás (**PartitionKey** "Értékesítés" értéket, és **RowKey** értéke "János") az új alkalmazott azonosítója a EmployeeIDs mezőjében a listához való hozzáadásával. Tranzakciók kapcsolatos további információkért lásd: [tranzakciók](#entity-group-transactions).  
+2. Hozzon létre egy entitás-csoport tranzakció (azaz kötegelt művelet), amely az új alkalmazottak entitás szúr be (**PartitionKey** "Értékesítés" értéket, és **rowkey tulajdonságok esetén** "000152" érték), és frissíti az index entitás (**PartitionKey** "Értékesítés" értéket, és **RowKey** értéke "János") az új alkalmazott azonosítója a EmployeeIDs mezőjében a listához való hozzáadásával. Tranzakciók kapcsolatos további információkért lásd: tranzakciók.  
 3. Ha az entitás csoport tranzakció (valaki más imént módosította az index entitás) optimista egyidejűségi hiba miatt nem sikerül, majd szüksége 1. lépés: újra kezdenie.  
 
 Egy alkalmazott törlése, ha használja a második lehetőség hasonló megközelítés is használhatja. Az alkalmazottak Vezetéknév módosítjuk az némileg összetettebb, mert szüksége lesz egy entitás, amely frissíti a három entitások csoport tranzakció végrehajtásához: az alkalmazott, az index entitás a régi vezetéknévhez, és a index entitás az új utolsó nevét. Minden entitás, amely ezután használhatja az optimista egyidejűséget használatával frissítések végrehajtásához ETag értékek lekéréséhez változtatások előtt le kell kérnie.  
@@ -251,7 +251,7 @@ Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalós
 
 * [Összetett kulcs minta](#compound-key-pattern)  
 * [Végül konzisztens tranzakció mintája](#eventually-consistent-transactions-pattern)  
-* [Tranzakciók](#entity-group-transactions)  
+* Tranzakciók  
 * [Heterogén entitástípusok az dolgozik](#working-with-heterogeneous-entity-types)  
 
 ## <a name="denormalization-pattern"></a>Denormalizáció minta
@@ -282,7 +282,7 @@ Akkor használja ezt a mintát, ha gyakran kell ellenőrizzék a kapcsolódó in
 Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Összetett kulcs minta](#compound-key-pattern)  
-* [Tranzakciók](#entity-group-transactions)  
+* Tranzakciók  
 * [Heterogén entitástípusok az dolgozik](#working-with-heterogeneous-entity-types)
 
 ## <a name="compound-key-pattern"></a>Összetett kulcs minta
@@ -325,7 +325,7 @@ Akkor használja ezt a mintát, ha kell tárolnia, egy vagy több kapcsolódó e
 ### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
 Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
-* [Tranzakciók](#entity-group-transactions)  
+* Tranzakciók  
 * [Heterogén entitástípusok az dolgozik](#working-with-heterogeneous-entity-types)  
 * [Végül konzisztens tranzakció mintája](#eventually-consistent-transactions-pattern)  
 
@@ -394,7 +394,7 @@ Használja ezt a mintát, ha a létrehozott entitásokat, törölnie kell egy id
 ### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
 Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
-* [Tranzakciók](#entity-group-transactions)
+* Tranzakciók
 * [Entitások módosítása](#modifying-entities)  
 
 ## <a name="data-series-pattern"></a>Adatsorozat adatmintát
@@ -454,7 +454,7 @@ Használja ezt a mintát mikor kell entitásokat, amelynek mérete vagy a tulajd
 ### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
 Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
-* [Tranzakciók](#entity-group-transactions)
+* Tranzakciók
 * [Egyesítés vagy cseréje](#merge-or-replace)
 
 ## <a name="large-entities-pattern"></a>Nagy entitások minta
@@ -556,7 +556,7 @@ Ha tervezi particionálni Teljesítménynapló-adatok tárolására, vegye figye
 Ez a szakasz ismerteti a szempontot figyelembe kell vennie a a fentebbi szakaszokban leírt minták megvalósításának néhányat. Ez a szakasz a legtöbb C# nyelven írt példa, amely a Storage ügyféloldali kódtára (4.3.0 verzióban verzió idején összeállításakor) használja.  
 
 ## <a name="retrieving-entities"></a>Entitások beolvasása
-A szakaszban leírt módon [lekérdezéséhez tervezési](#design-for-querying), a legtöbb hatékony lekérdezések az a pont lekérdezés. Azonban bizonyos esetekben szükség lehet beolvasni a több entitás. Ez a szakasz ismerteti az egyes közös megközelítés a Storage ügyféloldali kódtár használatával entitások beolvasása.  
+A tervezési szakaszban tárgyalt lekérdezéshez, mivel a leghatékonyabb lekérdezés nem egy pont lekérdezést. Azonban bizonyos esetekben szükség lehet beolvasni a több entitás. Ez a szakasz ismerteti az egyes közös megközelítés a Storage ügyféloldali kódtár használatával entitások beolvasása.  
 
 ### <a name="executing-a-point-query-using-the-storage-client-library"></a>A Storage ügyféloldali kódtár használatával pont lekérdezése
 Pont lekérdezés végrehajtása a legegyszerűbb módja az, hogy használja a **lekéréséhez** tábla művelet, ahogyan az az alábbi C# kódrészlettel, amely lekéri az entitás egy **PartitionKey** érték "Értékesítés" és a egy  **RowKey** "212" érték:  

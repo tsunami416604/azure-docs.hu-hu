@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: be72c7fa81bffdcd8864a501264dd36fa697d18e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: fb451ab3a28ecca42fc05edad14cd513c4fe1f68
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489087"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820487"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
 
 Az Azure AD Connect telepítése előtt győződjön meg arról, hogy [töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) és befejeződött a témakörben leírt lépéseket [az Azure AD Connect: Hardverkövetelmények és előfeltételek](how-to-connect-install-prerequisites.md). Emellett győződjön meg róla, hogy a rendelkezésre állnak az [Azure AD Connect-fiókok és -engedélyek](reference-connect-accounts-permissions.md) szakaszban ismertetett fiókok.
 
-Ha az egyedi beállítások nem felelnek meg a topológiának, például a DirSync-frissítésnek, lásd az egyéb forgatókönyvek leírását a [dokumentációban](#related-documentation).
+Ha testre szabott beállításokat nem egyezik meg a topológiának, például a DirSync-frissítésnek, más esetekben kapcsolódó dokumentációjában talál.
 
 ## <a name="custom-settings-installation-of-azure-ad-connect"></a>Az Azure AD Connect telepítése egyéni beállításokkal
 ### <a name="express-settings"></a>Express Settings (Gyorsbeállítások)

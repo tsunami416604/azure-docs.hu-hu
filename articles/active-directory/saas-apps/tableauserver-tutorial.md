@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: a68ffb867a738e11c9895416bbdf2009b268c0c6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 69ae32f63005d3d5ea83dce5aa349bb6c0c92e0c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155811"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Oktatóanyag: A Tableau Server az Azure Active Directory-integráció
 
@@ -215,7 +215,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ez a szakasz célja, a Tableau Server Britta Simon nevű felhasználó létrehozásához. A Tableau server az összes felhasználó kiépítése kell. 
 
-A felhasználó felhasználóneve meg kell egyeznie az érték, amely az Azure ad-ben az egyéni attribútum be vannak állítva **felhasználónév**. Megfelelő hozzárendelési működnie kell az integrációs [konfigurálása az Azure AD egyszeri bejelentkezés](#configuring-azure-ad-single-sign-on).
+A felhasználó felhasználóneve meg kell egyeznie az érték, amely az Azure ad-ben az egyéni attribútum be vannak állítva **felhasználónév**. Az integráció megfelelő hozzárendelési működik az Azure AD konfigurálása egyszeri bejelentkezéshez.
 
 >[!NOTE]
 >Hozzon létre egy felhasználót manuálisan kell, ha szüksége a Tableau Server rendszergazdától a szervezetben.

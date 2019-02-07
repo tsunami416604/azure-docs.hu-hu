@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 6cdfa7492a9916cc3e2300ad71e21acfb68e3d30
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 26eccfd2a144d5bfcb285e6b52af246c3eefde75
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352240"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822034"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Egy Node.js Mongoose alkalmazást az Azure Cosmos DB csatlakoztatása
 
@@ -32,7 +32,7 @@ A cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgál
 
 ## <a name="create-a-cosmos-account"></a>Hozzon létre egy Cosmos-fiók
 
-Hozzunk létre egy Cosmos-fiók. Ha már rendelkezik egy használni kívánt fiókkal, folytassa [A Node.js-alkalmazás beállítása](#SetupNode) című lépéssel. Ha az Azure Cosmos DB Emulatort használja, kövesse az [Azure Cosmos DB Emulatornál](local-emulator.md) leírt lépéseket az emulátor beállításához, majd ugorjon előre [A Node.js-alkalmazás beállítása](#SetupNode) című lépésre.
+Hozzunk létre egy Cosmos-fiók. Ha már rendelkezik egy használni kívánt fiókot, áttérhet csoporthoz be a Node.js-alkalmazás. Ha vannak az Azure Cosmos DB Emulatort használja, kövesse [Azure Cosmos DB Emulatort](local-emulator.md) az emulátor beállításához, és folytassa a Set be a Node.js-alkalmazás.
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 

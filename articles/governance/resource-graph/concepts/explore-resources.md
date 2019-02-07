@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: aa4a4ef1c1ee7281a737db7c7f91e4f330c52246
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: d6ce615e23ce71f22eff3c2c70b387267792fef9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749627"
+ms.locfileid: "55768426"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Az Azure-erőforrások felfedezése a Resource Graph használatával
 
@@ -40,11 +40,11 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1" | ConvertTo-Json
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1" | ConvertTo-Json -Depth 100
 ```
 
 > [!NOTE]
-> Az Azure PowerShell `Search-AzGraph` parancsmag adja vissza egy **PSCustomObject** alapértelmezés szerint. A kimenet néznek ki, mi az Azure CLI-t, adja vissza, hogy a `ConvertTo-Json` parancsmag használható.
+> Az Azure PowerShell `Search-AzGraph` parancsmag adja vissza egy **PSCustomObject** alapértelmezés szerint. A kimenet néznek ki, mi az Azure CLI-t, adja vissza, hogy a `ConvertTo-Json` parancsmag használható. Az alapértelmezett érték a **mélysége** van _2_. Értékre állítaná _100_ minden visszaadott szintek kell konvertálni.
 
 A JSON-eredményeket struktúrája a következő példához hasonló:
 

@@ -16,12 +16,12 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: c65a71d9e64a1ea3f60abbe2e420652c12ba030e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 301a3f9a500c41cf13dfa071d3526d2128b5e131
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549551"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813619"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Batch-fiókok és kvóták kezelése a a Batch Management ügyféloldali kódtára a .NET-hez
 
@@ -64,7 +64,7 @@ await batchManagementClient.Account.DeleteAsync("MyResourceGroup", account.Name)
 ```
 
 > [!NOTE]
-> A Batch Management .NET könyvtár és annak BatchManagementClient osztályt használó alkalmazásoknak **szolgáltatás-rendszergazda** vagy **coadministrator** hozzáférést az előfizetéshez, amely a Batch tulajdonosa fiók kezelését. További információkért lásd: a [Azure Active Directory](#azure-active-directory) szakaszt, és a [AccountManagement] [ acct_mgmt_sample] kódmintát.
+> A Batch Management .NET könyvtár és annak BatchManagementClient osztályt használó alkalmazásoknak **szolgáltatás-rendszergazda** vagy **coadministrator** hozzáférést az előfizetéshez, amely a Batch tulajdonosa fiók kezelését. További információkért tekintse meg az Azure Active Directory szakaszban, és a [AccountManagement] [ acct_mgmt_sample] kódmintát.
 > 
 > 
 

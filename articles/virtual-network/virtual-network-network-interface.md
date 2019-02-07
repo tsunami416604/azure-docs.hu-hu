@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 93534cf80a007dbb848a515ec4ec165c67e3b456
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: deca97b0749ceab9f2dfaf3c3940ac6b02b9c104
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730696"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822187"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy egy hálózati adapter törlése
 
@@ -52,7 +52,7 @@ Az Azure portal használatával a virtuális gép létrehozásakor a portálon a
     |Magánhálózati IP-cím hozzárendelése|Igen| Ebben a beállításban a IPv4-cím a hozzárendelési módszer választhassa. A következő hozzárendelési módszer közül választhat: **Dinamikus:** Ezzel a beállítással az Azure automatikusan hozzárendeli a következő elérhető címe a kiválasztott alhálózat címterét. **Statikus:** Ezzel a beállítással manuálisan kell rendelnie egy elérhető IP-cím a kiválasztott alhálózat címterében. Statikus és dinamikus címek nem változtatja meg, amíg nem módosítja őket, vagy a hálózati adapter törlése. A hozzárendelési módszer a hálózati adapter létrehozása után módosíthatja. Az Azure DHCP-kiszolgáló ezt a címet a virtuális gép operációs rendszerén belül a hálózati adapterhez rendeli.|
     |Hálózati biztonsági csoport|Nem| Hagyja beállítása **nincs**, válasszon egy meglévő [hálózati biztonsági csoport](security-overview.md), vagy [hozzon létre egy hálózati biztonsági csoport](tutorial-filter-network-traffic.md). Hálózati biztonsági csoportok lehetővé teszik egy hálózati adapter kívüli hálózati forgalom szűrésére. Hálózati adapter nulla vagy egy hálózati biztonsági csoport alkalmazhat. Nulla vagy egy hálózati biztonsági csoportot az alhálózathoz, a hálózati adapterhez hozzárendelt is alkalmazható. Néha nem várt eredmények fordulhat elő, amikor egy hálózati adaptert, és az alhálózatot a hálózati adapterhez rendelt hálózati biztonsági csoport alkalmazza. Hálózati adapterek és alhálózatok alkalmazott hálózati biztonsági csoportok hibaelhárítása: [hálózati biztonsági csoportok hibaelhárítása](diagnose-network-traffic-filter-problem.md).|
     |Előfizetés|Igen|Válassza ki az Azure egyik [előfizetések](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). A virtuális gépet, csatlakoztassa a hálózati adaptert, és kösse össze a virtuális hálózat ugyanabban az előfizetésben léteznie kell.|
-    |Private IP address (IPv6)|Nem| Ha bejelöli ezt a jelölőnégyzetet, IPv6-címet a hálózati kapcsolat mellett a hálózati adapterhez rendelt IPv4-cím van hozzárendelve. Tekintse meg a [IPv6](#IPv6) fontos információkhoz juthat használata az IPv6 hálózati adapterrel rendelkező című szakaszban. Az IPv6-cím-hozzárendelési módszer nem választhatja ki. Ha IPv6-címet hozzárendelni, a dinamikus módszerrel van hozzárendelve.
+    |Private IP address (IPv6)|Nem| Ha bejelöli ezt a jelölőnégyzetet, IPv6-címet a hálózati kapcsolat mellett a hálózati adapterhez rendelt IPv4-cím van hozzárendelve. Ez a cikk a fontos adatokat IPv6 hálózati adapterrel rendelkező IPv6-alapú című szakaszában talál. Az IPv6-cím-hozzárendelési módszer nem választhatja ki. Ha IPv6-címet hozzárendelni, a dinamikus módszerrel van hozzárendelve.
     |IPv6-név (csak jelenik meg, amikor a **magánhálózati IP-cím (IPv6)** jelölőnégyzet be van jelölve) |Igen, ha a **magánhálózati IP-cím (IPv6)** jelölőnégyzet be van jelölve.| Ez a név egy másodlagos IP-konfigurációt a hálózati adapter van hozzárendelve. IP-konfigurációval kapcsolatos további információkért lásd: [hálózatiadapter-beállítások megtekintése](#view-network-interface-settings).|
     |Erőforráscsoport|Igen|Válasszon egy meglévő [erőforráscsoport](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) vagy hozzon létre egyet. Hálózati adapter az azonos vagy eltérő erőforráscsoportban, mint a virtuális gépet, csatlakoztassa is létezik, vagy a virtuális hálózathoz csatlakoztatja a.|
     |Hely|Igen|A hálózati adaptert a virtuális géphez csatolni, és kösse össze a virtuális hálózat léteznie kell az azonos [hely](https://azure.microsoft.com/regions), más néven egy régiót.|

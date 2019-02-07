@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 03b4cc919086ff2a8eb038ad9c4f45200e9a6246
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 79bc9310eb3f7c8dd2b295405cea70c514d343d3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715109"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820867"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-fürtök kezelése az Apache Ambari REST API használatával
 
@@ -60,7 +60,7 @@ A HDInsight az Ambari REST API az alap URI https://CLUSTERNAME.azurehdinsight.ne
 >
 > `https://MyCluster.azurehdinsight.net/api/v1/clusters/mycluster`
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 Csatlakozás a HDInsight az Ambari HTTPS van szüksége. A rendszergazdai fiók nevét használja (az alapértelmezett érték **rendszergazdai**) és a fürt létrehozásakor megadott jelszót.
 
@@ -132,7 +132,7 @@ $respObj.Clusters.health_report
 ```
 
 > [!NOTE]  
-> Bár ez a dokumentum használatát a legtöbb példa `ConvertFrom-Json` a válasz dokumentumból elemek megjelenítése a [frissítés Ambari konfigurációs](#example-update-ambari-configuration) példában jq. Jq ebben a példában a JSON-válasz dokumentum az új sablon létrehozására használható.
+> Bár ez a dokumentum használatát a legtöbb példa `ConvertFrom-Json` a válasz dokumentumból elemek megjelenítéséhez a frissítés Ambari példakonfigurációt jq használja. Jq ebben a példában a JSON-válasz dokumentum az új sablon létrehozására használható.
 
 A REST API teljes körű referenciáért lásd: [Apache Ambari API-referencia V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 

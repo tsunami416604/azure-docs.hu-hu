@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: a174ae5eb31620646167f36a6f3e13605db5eac6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5ba12e48092c02f9628e15166c84e871310d7556
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052768"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816373"
 ---
 # <a name="use-data-lake-storage-with-azure-hdinsight-clusters"></a>Data Lake Storage használata az Azure HDInsight-fürtök
 
@@ -69,7 +69,7 @@ Hogy a Data Lake Storage-t alapértelmezett tárolóként használhassa, meg kel
 - Az összes fürt mappája.  Példa: adl://mydatalakestore/clusters.
 - Egy adott fürt mappája.  Példa: adl://mydatalakestore/clusters/cluster1storage.
 
-Szolgáltatás egyszerű és a hozzáférés biztosításával létrehozására vonatkozó további információkért lásd: [konfigurálja a Data Lake Storage access](#configure-data-lake-store-access).
+Szolgáltatás egyszerű és a hozzáférés biztosításával létrehozására vonatkozó további információkért tekintse meg a Data Lake Storage konfigurálása hozzáférést.
 
 ### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>A tanúsítvány kinyerését Azure Keyvault használható a fürt létrehozásakor
 
@@ -117,12 +117,12 @@ Az, hogy a Data Lake Storage használata kiegészítő tárolóként, meg kell b
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-Szolgáltatás egyszerű és a hozzáférés biztosításával létrehozására vonatkozó további információkért lásd: [konfigurálja a Data Lake Storage access](#configure-data-lake-store-access).
+Szolgáltatás egyszerű és a hozzáférés biztosításával létrehozására vonatkozó további információkért tekintse meg a Data Lake Storage konfigurálása hozzáférést.
 
 
 ## <a name="use-more-than-one-data-lake-storage-accounts"></a>Egynél több Data Lake Storage-fiókok használata
 
-További Data Lake Storage-fiók hozzáadása és hozzáadása egynél több Data Lake Storage fiókok a HDInsight-fürt számára, így az adatok egy vagy több Data Lake Storage-fiókok vannak történik. Lásd: [konfigurálja a Data Lake Storage access](#configure-data-lake-store-access).
+További Data Lake Storage-fiók hozzáadása és hozzáadása egynél több Data Lake Storage fiókok a HDInsight-fürt számára, így az adatok egy vagy több Data Lake Storage-fiókok vannak történik. Lásd: Configure Data Lake Storage hozzáférést.
 
 ## <a name="configure-data-lake-storage-access"></a>Data Lake Storage-hozzáférés konfigurálása
 
@@ -241,7 +241,7 @@ Ebben a cikkben megtanulta, hogyan használhat HDFS-kompatibilis Azure Data Lake
 További információkért lásd:
 
 * [Azure HDInsight – első lépések][hdinsight-get-started]
-* [Gyors útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Hozzon létre egy HDInsight-fürtön az Azure PowerShell használatával a Data Lake Storage használata](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Adatok feltöltése a HDInsightba][hdinsight-upload-data]
 * [Az Apache Hive használata a HDInsight][hdinsight-use-hive]

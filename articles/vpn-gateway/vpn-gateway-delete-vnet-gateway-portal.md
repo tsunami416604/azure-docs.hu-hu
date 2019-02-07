@@ -1,5 +1,5 @@
 ---
-title: 'Virtuális hálózati átjáró törlése: az Azure portal: erőforrás-kezelő |} A Microsoft Docs'
+title: 'Virtuális hálózati átjáró törlése: Az Azure Portalon: Erőforrás-kezelő |} A Microsoft Docs'
 description: Az Azure portal használatával a Resource Manager-alapú üzemi modellben virtuális hálózati átjáró törlése.
 services: vpn-gateway
 documentationcenter: na
@@ -7,12 +7,12 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 78af43510e5fc2bed38e109a546944d4a649241c
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d0c54a00afd723b68bedc0a305cfb0f16edf4ac9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984111"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816254"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>A portál használatával virtuális hálózati átjáró törlése
 
@@ -60,5 +60,5 @@ Ezen a ponton a virtuális hálózati átjáró törlése. A következő lépés
 Ha csak át szeretné újrakezdeni, amelyek nem azok tartja az erőforrásokat az erőforráscsoport, egy egész erőforráscsoportot törölheti. Ez az, hogy gyorsan távolítson el minden. Az alábbi lépéseket csak a Resource Manager-alapú üzemi modellre vonatkoznak.
 
 1. A **összes erőforrás**, keresse meg az erőforráscsoportot, és kattintson a panel megnyitásához.
-2. Kattintson a **Törlés** gombra. A Delete panelen megtekintheti az érintett erőforrások. Győződjön meg arról, hogy szeretné-e törölni az összes ezeket az erőforrásokat. Ha nem, akkor szereplő lépések segítségével [VPN gateway törlése](#deletegw) Ez a cikk elején.
+2. Kattintson a **Törlés** gombra. A Delete panelen megtekintheti az érintett erőforrások. Győződjön meg arról, hogy szeretné-e törölni az összes ezeket az erőforrásokat. Ha nem, kövesse a lépéseket törlése a VPN-átjáró Ez a cikk elején.
 3. A folytatáshoz adja meg a az erőforráscsoportot törölje, majd kattintson a kívánt **törlése**.

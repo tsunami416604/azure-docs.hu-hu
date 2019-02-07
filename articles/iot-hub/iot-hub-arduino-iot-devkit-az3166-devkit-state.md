@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 6bc1255c5bbb9cf74c97b88600f34e7fcd90ae4f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e955d21132dda6caa137ad3b5de9d00ccf7ed1b4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343151"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811052"
 ---
-# <a name="mxchip-iot-devkit"></a>Az MXChip IoT DevKit
+# <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
 Ebben a példában használhatja az MXChip IoT DevKit Wi-Fi információkat és érzékelő államok figyelése és szabályozhatja az Azure IoT Hub ikereszközök használata felhasználói LED színét.
 
@@ -55,13 +55,13 @@ Ebben a példában használhatja az MXChip IoT DevKit Wi-Fi információkat és 
 
 6. Valami hasonló *függvényalkalmazás: függvényalkalmazás neve: a(z) xxx*, jelenik meg. Írja le a függvényalkalmazás neve; egy későbbi lépésben lesz.
 
-7. Várjon, amíg az Azure Resource Manager sablon üzembe helyezés befejeződik, amely jelzi, ha az üzenet *Resource Manager-sablon üzembe helyezése: kész* jelenik meg.
+7. Várjon, amíg az Azure Resource Manager sablon üzembe helyezés befejeződik, amely jelzi, ha az üzenet *Resource Manager-sablon üzembe helyezése: Kész* jelenik meg.
 
 ## <a name="deploy-function-app"></a>Függvényalkalmazás üzembe helyezése
 
 1. Kattintson a **feladatok** a Visual Studio Code-ot, és válassza a legördülő menüből **feladat futtatása...**   -  **felhő üzembe helyezése**.
 
-2. Várjon, amíg a függvény kódját folyamat befejezéséhez; feltöltése az üzenet *függvényalkalmazás helyez üzembe: kész* jelenik meg.
+2. Várjon, amíg a függvény kódját folyamat befejezéséhez; feltöltése az üzenet *függvényalkalmazás helyez üzembe: Kész* jelenik meg.
 
 ## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>Az IoT Hub eszköz kapcsolati karakterláncának konfigurálása a fejlesztői készlet
 
@@ -83,7 +83,7 @@ Az MXChip IoT DevKit egymáshoz a számítógépére:
 
 ## <a name="monitor-devkit-state-in-browser"></a>Figyelőállapot DevKit böngészőben
 
-1. Egy webböngészőben nyissa meg a `DevKitState\web\index.html` során létrehozott fájl a [szükségesek](#whatyouneed) . lépés.
+1. Egy webböngészőben nyissa meg a `DevKitState\web\index.html` fájl--létrehozott során a mi lépés szükséges.
 
 2. A következő weblap jelenik meg:![Adja meg a függvényalkalmazás nevét.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
 
@@ -106,7 +106,7 @@ Az MXChip IoT DevKit egymáshoz a számítógépére:
 ![Példa tesztelési eljárás](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Megtekintheti a nyers adatokat az Azure Portalon ikereszköz: az IoT Hub -\> IoT-eszközök –\> *\<az eszköz\>*  - \> Ikereszköz.
+> Nyers adatok az ikereszköz az Azure Portalon tekintheti meg: Az IoT Hub -\> IoT-eszközök –\> *\<az eszköz\>*  - \> Ikereszköz.
 
 ## <a name="next-steps"></a>További lépések
 

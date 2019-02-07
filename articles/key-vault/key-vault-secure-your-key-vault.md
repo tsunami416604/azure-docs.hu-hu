@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 9877698c8c6af68c5ffd88dab37150274ce87b37
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 8a0300eeda49d85ffc08db8f285550e217613dcf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077334"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821615"
 ---
 # <a name="secure-your-key-vault"></a>Kulcstartó védelme
 
@@ -34,7 +34,7 @@ Hitelesítésre mind a felügyeleti sík, mind az adatsík az Azure Active Direc
 
 A tárgyalt témakörök rövid áttekintése:
 
-[Hitelesítés az Azure Active Directory használatával](#authentication-using-azure-active-directory) – Ebből a fejezetből megtudhatja, hogyan végezhet hitelesítést a hívó az Azure Active Directoryval a felügyeleti síkon és az adatsíkon keresztüli kulcstartó-hozzáférés céljából. 
+Hitelesítés az Azure Active Directory – Ez a szakasz azt ismerteti, hogyan végezhet hitelesítést a hívó az Azure Active Directoryval a felügyeleti síkon és az adatsíkon keresztüli kulcstartó-hozzáférés. 
 
 Mindkét sík hitelesítést, az Azure Active Directory (Azure AD) használja. A hitelesítéshez a felügyeleti sík szerepköralapú hozzáférés-vezérlést (RBAC), míg az adatsík használja a Key Vault hozzáférési szabályzattal.
 
@@ -67,8 +67,8 @@ A következő táblázatban a különböző végpontok keresztül érik el a fel
 
 | Hozzáférési sík | Hozzáférés végpontjai | Műveletek | Hozzáférés-vezérlési mechanizmus |
 | --- | --- | --- | --- |
-| Felügyeleti sík |**Globálisan:**<br> management.azure.com:443<br><br> **Az Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 |A Key Vault létrehozása/olvasása/frissítése/törlése <br> A kulcstartó hozzáférési házirendjeinek beállítása<br>A Key Vault címkék beállítása |Az Azure Resource Manager-RBAC |
-| Adatsík |**Globálisan:**<br> &lt;tároló-neve&gt;.vault.azure.net:443<br><br> **Az Azure China 21Vianet:**<br> &lt;tároló-neve&gt;.vault.azure.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> &lt;tároló-neve&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;tároló-neve&gt;.vault.microsoftazure.de:443 |Kulcsok: Visszafejtés, titkosítás, UnwrapKey, WrapKey, győződjön meg arról, aláírásához, beolvasása, listában frissítése, létrehozása, importálása, törlés, biztonsági mentés, visszaállítás<br><br> Például a következők: GET, listázás, beállítása és törlése |Key Vault hozzáférési szabályzattal |
+| Felügyeleti sík |**Globálisan:**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 |A Key Vault létrehozása/olvasása/frissítése/törlése <br> A kulcstartó hozzáférési házirendjeinek beállítása<br>A Key Vault címkék beállítása |Azure Resource Manager RBAC |
+| Adatsík |**Globálisan:**<br> &lt;tároló-neve&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;tároló-neve&gt;.vault.azure.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> &lt;tároló-neve&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;tároló-neve&gt;.vault.microsoftazure.de:443 |Kulcsok: Decrypt, Encrypt, UnwrapKey, WrapKey, Verify, Sign, Get, List, Update, Create, Import, Delete, Backup, Restore<br><br> Például a következők: GET, listázás, beállítása és törlése |Key Vault hozzáférési szabályzattal |
 
 Felügyeleti sík és az adatsík hozzáférés-vezérlése egymástól függetlenül működik. Például ha szeretne hozzáférést biztosítani egy alkalmazás-kulcsok használata a key vaultban, akkor csak kell adatsík-hozzáférés biztosítása. Hozzáférést biztosít a Key Vault hozzáférési házirendek. Ezzel szemben olyan felhasználó, aki el kell olvasnia a Key Vault tulajdonságok és címkék, de nem érheti el adatait (kulcsok, titkos kódok vagy tanúsítványokat), csak a felügyeleti sík hozzáférés kell. Hozzáférést biztosít az RBAC a felhasználónak olvasási hozzáférés hozzárendelésével.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: 9cb41bfde38d9b47f5db994c0ca39c64b453ef1d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 548c05963b0b99ba3434d600b19f80cef6a09d6a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171456"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813347"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Példák Reliable Services-alkalmazások és szolgáltatások jegyzékeire
 A következő példák egy ASP.NET Core webes előtérrendszert és egy állapotalapú háttérszolgáltatás a Service Fabric-alkalmazás az alkalmazás és szolgáltatás jegyzékfájljainak. Ezekben a példákban az a célja, hogy milyen beállítások érhetők el, és azok használatát. Ezen alkalmazás és jegyzékek alapulnak a [Service Fabric .NET – rövid útmutató](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) jegyzékfájlok.
@@ -28,8 +28,8 @@ A következő funkciók jelennek meg:
 |Jegyzék|Szolgáltatások|
 |---|---|
 |[Alkalmazásjegyzék](#application-manifest)| [Erőforrás-szabályozás](service-fabric-resource-governance.md), [szolgáltatás futtatása egy helyi rendszergazdai fiók](service-fabric-application-runas-security.md), [egy alapértelmezett házirend alkalmazása minden szolgáltatás kódcsomagok](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [hozzon létre felhasználói és rendszerbiztonsági tagok](service-fabric-application-runas-security.md), egy adatcsomag, szolgáltatáspéldányok közötti megosztása [Szolgáltatásvégpontok felülbírálása](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
-|[FrontEndService szolgáltatásjegyzékben](#frontendservice-service-manifest)| [Parancsfájl futtatása a szolgáltatás indításakor](service-fabric-run-script-at-service-startup.md), [HTTPS-végpont meghatározása](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
-|[BackEndService szolgáltatásjegyzékben](#backendservice-service-manifest)| [Deklarálja a konfigurációs csomag](service-fabric-application-and-service-manifests.md), [deklaráljon egy adatcsomag](service-fabric-application-and-service-manifests.md), [végpont konfigurálása](service-fabric-service-manifest-resources.md)| 
+|FrontEndService szolgáltatásjegyzékben| [Parancsfájl futtatása a szolgáltatás indításakor](service-fabric-run-script-at-service-startup.md), [HTTPS-végpont meghatározása](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
+|BackEndService szolgáltatásjegyzékben| [Deklarálja a konfigurációs csomag](service-fabric-application-and-service-manifests.md), [deklaráljon egy adatcsomag](service-fabric-application-and-service-manifests.md), [végpont konfigurálása](service-fabric-service-manifest-resources.md)| 
 
 Lásd: [Application manifest elemek](#application-manifest-elements), [VotingWeb service manifest elemek](#votingweb-service-manifest-elements), és [VotingData service manifest elemek](#votingdata-service-manifest-elements) megadott XML-további információ elemek.
 

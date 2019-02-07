@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2017
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 8730070e1b235324a53ad81957339f4ef17db6dc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 61d0f74f59b4d6f59b3fbc87556b260751d33baa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193695"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809629"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Az Automation-Runbook egy naplót a Log Analytics keresési eredmény művelet végrehajtása
 
-A napló keresési eredmény az Azure Log Analyticsben, mostantól kiválaszthatja **művelet végrehajtása** egy Automation-runbook futtatását.  A runbook segítségével kijavítani a problémát, vagy egy másik műveletet, például kapcsolatos hibaelhárításhoz, mert egy e-mailt, vagy hozzon létre egy szolgáltatási kérelmet. 
+A napló keresési eredmény az Azure Log Analyticsben, mostantól kiválaszthatja **művelet végrehajtása** egy Automation-runbook futtatását. A runbook segítségével kijavítani a problémát, vagy egy másik műveletet, például kapcsolatos hibaelhárításhoz, mert egy e-mailt, vagy hozzon létre egy szolgáltatási kérelmet. 
 
 ## <a name="components-and-features-used"></a>Használt összetevők és szolgáltatások
 * [Az Azure Automation-fiók](../../automation/automation-quickstart-create-account.md)
@@ -30,11 +30,11 @@ A napló keresési eredmény az Azure Log Analyticsben, mostantól kiválaszthat
 
 ## <a name="to-initiate-runbook-from-log-search"></a>A naplóbeli keresés runbook kezdeményezése
 
-A művelet végrehajtása a egy eseményt, és a egy runbookot, a napló keresési eredmények között, első lépésként létrehozni egy naplókeresést, és az eredmények közül egy runbook igény szerinti hívhatók meg.  Ez a napló keresési funkciója érhető el a [az Azure portal](../../azure-monitor/log-query/log-query-overview.md).  Ebben a példában egy Naplókeresés Ez a funkció az alapszintű bemutatója az Azure Portalról elvégzése.
+A művelet végrehajtása a egy eseményt, és a egy runbookot, a napló keresési eredmények között, első lépésként létrehozni egy naplókeresést, és az eredmények közül egy runbook igény szerinti hívhatók meg. Ez a klasszikus napló keresési funkciója érhető el a [az Azure portal](../../azure-monitor/log-query/log-query-overview.md). Ebben a példában egy Naplókeresés Ez a funkció az alapszintű bemutatója az Azure Portalról elvégzése.
 
 1. Az Azure Portalon kattintson a **minden szolgáltatás** válassza **Log Analytics**.  
 2. Válassza ki a Log Analytics-munkaterületre.
-3. Válassza ki a munkaterület **naplóbeli keresés**.  
+3. Válassza ki a munkaterület **naplók (klasszikus)**.  
 4. A naplóbeli keresés lapon hajtsa végre a naplók keresése.  
 5. A napló keresési eredmények között kattintson a három pont egy mezőt, és az előugró ablakban válassza a balra **művelet végrehajtása a**.<br><br> ![Válassza ki a művelet eltarthat keresési eredmény](./media/take-action/log-search-takeaction-menuoption.png) 
 6. Válassza ki **futtathat runbookot** , és válassza ki a runbook futtatását.  Minden runbook választhat a Log Analytics-munkaterülethez társított Automation-fiókban.  Vegye figyelembe a következőket:

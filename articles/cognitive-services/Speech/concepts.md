@@ -10,12 +10,12 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4f96302f1035500a10cebaa24efd4b8db329fdff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b5e6853653bab96cd11196ba03fbeadbdc6b337f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219770"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816212"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak
 
@@ -92,7 +92,7 @@ Microsoft speech recognition szolgáltatás a fejlesztők a beszédfelismerési 
 Elismerés három módot: `interactive`, `conversation`, és `dictation`. A beszédfelismerést mód beszédfelismerés hogyan a felhasználók valószínűleg beszéd alapján állítja be. Válassza ki a megfelelő mód az alkalmazáshoz.
 
 > [!NOTE]
-> Elismerési módok esetleg tartalmaz másként a [REST-protokollon](#rest-speech-recognition-api) , mint az a [WebSocket protokoll](#webSocket-speech-recognition-api). Például a REST API nem támogatja folyamatos felismerés beszélgetés vagy Diktálás módban is.
+> Elismerés módok másként lehet a REST protokoll, mint ők a WebSocket protokoll. Például a REST API nem támogatja folyamatos felismerés beszélgetés vagy Diktálás módban is.
 > [!NOTE]
 > Módokban alkalmazandók, ha közvetlenül a REST vagy a WebSocket protokoll használ. A [klienskódtárak](GetStarted/GetStartedClientLibraries.md) különböző paraméterek használatával adja meg a mód. További információkért tekintse meg az ügyféloldali kódtár a választott.
 

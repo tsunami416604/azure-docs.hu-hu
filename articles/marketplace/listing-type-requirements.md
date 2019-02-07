@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: c02bc75a978325f8cb0dc8733fb8d296e8710975
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 8232a197b7916c069ef17393e44a4f9a512a7598
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264682"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818532"
 ---
 # <a name="requirements-by-listing-type"></a>Típus listázásával követelmények  
 A technikai és marketinganyagokat tartalmi követelmények eltérőek lehetnek, storefront, ajánlat és lista típusa. Tekintse át a következő előírásoknak, a megfelelőség ellenőrzése.  
@@ -64,17 +64,17 @@ A listában, listázás, írja be a következő típusú a kirakattípus a tarta
 
 | Csomag típusa | Storefront | Részletek |  
 |:---        |:---        |:---     |  
-| Tanácsadási szolgáltatások | AppSource | [Követelmények: AppSource: Lista: Tanácsadási szolgáltatások](#requirements-appsource-list-consulting-services) |  
-| Tanácsadási szolgáltatások | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Lista: Tanácsadási szolgáltatások](#requirements-azure-marketplace-list-consulting-services) |  
+| Tanácsadási szolgáltatások | AppSource | Követelmények: AppSource: Lista: Tanácsadási szolgáltatások |  
+| Tanácsadási szolgáltatások | Azure Piactér | Követelmények: Az Azure Marketplace-en: Lista: Tanácsadási szolgáltatások |  
 | Kapcsolatfelvétel | AppSource | [](#) |  
-| Kapcsolatfelvétel | Azure Piactér | [Követelmények: AppSource: Lista: Megkeresést kérek](#requirements-azure-marketplace-list-contact-me) |  
+| Kapcsolatfelvétel | Azure Piactér | Követelmények: AppSource: Lista: Kapcsolatfelvétel |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>Követelmények: AppSource: Lista: Tanácsadási szolgáltatás  
 
 | Követelmények | Részletek |  
 |:--- |:--- |  
 | Szolgáltatási ajánlat jellemzői | A tanácsadási szolgáltatást a következő feltételeknek kell megfelelnie.<ul> <li>Egy meghatározott hatókör, rögzített időtartama, rögzített ár (vagy ingyenes) engagement kézbesítéséhez.</li> <li>Elhelyezés elsősorban a értékesítés előtti.</li> <li>Korlátozza az egyetlen ügyfél számára.</li> <li>Végez a helyen.</li> </ul> |  
-| Partner Consulting Services-követelményei | A szolgáltatás megfelel a feltételeknek megfelelő területén.<table><tr><th>Megoldási terület</th><th>Feltételek</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Silver vagy Gold fokozatú Cloud Ügyfélkapcsolat-kezelés kompetenciával rendelkezik.</td></tr><tr><td>Dynamics 365 for Finance and Operations, Enterprise edition</td><td>A záró 12 hónapos $ 25 000 vagy több rendelkezik kompetencia Silver vagy Gold vállalati erőforrás-tervezés és a felhőbeli műveletek származó bevételt.</td></tr><tr><td>Dynamics 365 for Finance and Operations, Business edition</td><td>Cloud Services-szolgáltató (CSP) vagy a digitális partnert a rekord (DPOR) szolgál egy vagy több ügyfelek számára.</td></tr><tr><td>Power BI</td><td>A Felhőszolgáltatói Partner feltételeknek.</td></tr><tr><td>PowerApps</td><td>Van olyan Partnerbemutatókhoz megoldás.</td></tr></table><ul> <li>Ügyfélkapcsolat-kezelés kapcsolatos további információkért látogasson el a lapon található Felhőbeli Ügyfélkapcsolat-kezelés [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency).</li> <li>Erőforrás tervezésével kapcsolatos további információkért látogasson el a vállalati erőforrás-tervezés lapon található [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency).</li> <li>CSP kapcsolatos további információkért látogasson el a lapon található Felhőszolgáltatást nyújtó [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>Dpor-partnerként választotta kapcsolatos további információkért látogasson el a digitális hivatalos közvetítő partneri és partneri társítás oldalon található [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record).</li> <li>Megoldás partner szempontjaival kapcsolatos további információkért látogasson el a megoldás Partneráttekintés és ösztönzők dokumentumban található [www.microsoftpartnerserverandcloud.com/_layouts/download.aspx? SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf).</li> <li>Partner bemutatása kapcsolatos további információkért látogasson el a lapon található Partnerbemutatókhoz [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase).</li> </ul> |  
+| Partner Consulting Services-követelményei | A szolgáltatás megfelel a feltételeknek megfelelő területén.<table><tr><th>Megoldási terület</th><th>Feltételek</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Silver vagy Gold fokozatú Cloud Ügyfélkapcsolat-kezelés kompetenciával rendelkezik.</td></tr><tr><td>Dynamics 365 for Finance and Operations, Enterprise edition</td><td>A záró 12 hónapos $ 25 000 vagy több rendelkezik kompetencia Silver vagy Gold vállalati erőforrás-tervezés és a felhőbeli műveletek származó bevételt.</td></tr><tr><td>Dynamics 365 for Finance and Operations, Business edition</td><td>Cloud Services-szolgáltató (CSP) vagy a digitális partnert a rekord (DPOR) szolgál egy vagy több ügyfelek számára.</td></tr><tr><td>Power BI</td><td>A Felhőszolgáltatói Partner feltételeknek.</td></tr><tr><td>PowerApps</td><td>Van olyan Partnerbemutatókhoz megoldás.</td></tr></table><ul> <li>Ügyfélkapcsolat-kezelés kapcsolatos további információkért látogasson el a lapon található Felhőbeli Ügyfélkapcsolat-kezelés [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency).</li> <li>Erőforrás tervezésével kapcsolatos további információkért látogasson el a vállalati erőforrás-tervezés lapon található [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency).</li> <li>CSP kapcsolatos további információkért látogasson el a lapon található Felhőszolgáltatást nyújtó [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>Dpor-partnerként választotta kapcsolatos további információkért látogasson el a digitális hivatalos közvetítő partneri és partneri társítás oldalon található [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record).</li> <li>Megoldás partner szempontjaival kapcsolatos további információkért látogasson el a megoldás Partneráttekintés és ösztönzők dokumentumban található [www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf).</li> <li>Partner bemutatása kapcsolatos további információkért látogasson el a lapon található Partnerbemutatókhoz [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase).</li> </ul> |  
 
 #### <a name="requirements-azure-marketplace-list-consulting-service"></a>Követelmények: Az Azure Marketplace-en: Lista: Tanácsadási szolgáltatás  
 
@@ -91,11 +91,11 @@ A listában, listázás, írja be a következő típusú a kirakattípus a tarta
 
 | Csomag típusa | Storefront | Részletek |  
 |:---        |:---        |:---     |  
-| Ingyenes / SaaS próbalehetőség | AppSource | [Listaelem adattípus-követelményekkel: Próbaverzió](#listing-type-requirements-trial) |  
-| Ingyenes / SaaS próbalehetőség | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Próbaverzió: Az ingyenes próbaidőszak / SaaS próbalehetőség](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
-| Interaktív bemutató | AppSource | [Listaelem adattípus-követelményekkel: Próbaverzió](#listing-type-requirements-trial) |  
+| Ingyenes / SaaS próbalehetőség | AppSource | Listaelem adattípus-követelményekkel: Próbaverzió |  
+| Ingyenes / SaaS próbalehetőség | Azure Piactér | Követelmények: Az Azure Marketplace-en: Próbaverzió: Az ingyenes próbaidőszak / SaaS próbalehetőség |  
+| Interaktív bemutató | AppSource | Listaelem adattípus-követelményekkel: Próbaverzió |  
 | Interaktív bemutató | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Próbaverzió: Interaktív bemutató](#requirements-azure-marketplace-trial-interactive-demo) |  
-| Próbaüzem | AppSource | [Listaelem adattípus-követelményekkel: Próbaverzió](#listing-type-requirements-trial) |  
+| Próbaüzem | AppSource | Listaelem adattípus-követelményekkel: Próbaverzió |  
 | Próbaüzem | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Próbaverzió: Próbálja ki](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>Követelmények: Az Azure Marketplace-en: Próbaverzió  
@@ -133,8 +133,8 @@ A listában, listázás, írja be a következő típusú a kirakattípus a tarta
 
 | Csomag típusa | Storefront | Részletek |   
 |:---        |:---        | :--- |  
-| Az Azure-alkalmazások: Felügyelt alkalmazás | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Transact: Az Azure-alkalmazások: Felügyelt alkalmazás](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
-| Az Azure-alkalmazások: Megoldássablon | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Transact: Az Azure-alkalmazások: Megoldássablon](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Az Azure-alkalmazások: Felügyelt alkalmazás | Azure Piactér | Követelmények: Az Azure Marketplace-en: Transact: Az Azure-alkalmazások: Felügyelt alkalmazás |  
+| Az Azure-alkalmazások: Megoldássablon | Azure Piactér | Követelmények: Az Azure Marketplace-en: Transact: Az Azure-alkalmazások: Megoldássablon |  
 | Containers | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Transact: Tároló](#requirements-azure-marketplace-transact-container) |  
 | SaaS app  | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Transact: SaaS-alkalmazás](#requirements-azure-marketplace-transact-saas-app) |  
 | Virtuális gép | Azure Piactér | [Követelmények: Az Azure Marketplace-en: Transact: Virtuális gép](#requirements-azure-marketplace-transact-virtual-machine) |  

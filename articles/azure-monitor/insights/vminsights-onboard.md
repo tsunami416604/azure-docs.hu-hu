@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: magoedte
-ms.openlocfilehash: be068904d7aa935d722c59b08c36a1cf4904e933
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 37e2da00ecbecdddcc8757e64c57b03774092e14
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664131"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814989"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Üzembe helyezése az Azure Monitor-beli virtuális gépek (előzetes verzió)
 Ez a cikk ismerteti, hogyan állítható be az Azure Monitor-beli virtuális gépek. A szolgáltatás figyeli az Azure-beli virtuális gépek (VM) és a virtuálisgép-méretezési csoportok és a környezetében a virtuális gépek operációs rendszer állapotát. A monitorozás tartalmaz, a felderítés és az alkalmazás függőségekkel is üzemelhet őket leképezése. 
@@ -62,7 +62,7 @@ Az ipari méretekben a forgatókönyvben a megoldás engedélyezéséhez előbb 
 * Telepítse a ServiceMap és InfrastructureInsights megoldásokat. A telepítést csak ebben a cikkben megadott egy Azure Resource Manager-sablon használatával.
 * Konfigurálja a teljesítményszámlálók adatainak összegyűjtése a Log Analytics-munkaterületet.
 
-Az ipari méretekben a forgatókönyvhöz a munkaterület beállítása: [állítsa be a Log Analytics-munkaterület ipari méretekben üzembe helyezésének](#setup-log-analytics-workspace).
+A munkaterület az ipari méretekben a forgatókönyvhöz, lásd: Set ipari méretekben üzembe helyezésének Log Analytics-munkaterületet.
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 

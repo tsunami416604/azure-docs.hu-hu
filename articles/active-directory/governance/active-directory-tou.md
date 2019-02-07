@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 01/10/2019
 ms.author: rolyon
-ms.openlocfilehash: be8a6ba83de81c5a82797ecf3d30c7a7fcaa65fa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2b8836525e085b41cc8d011087c4fc71afe453cb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162769"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822510"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.
@@ -337,7 +337,7 @@ Feltételes hozzáférési szabályzatot konfigurálni ahhoz a Microsoft Intune 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 **K: Hogyan ellenőrizhetem amikor / felhasználó a használati feltételek elfogadása?**<br />
-V: A panel használata a feltételeket, kattintson a számra **elfogadva**. Is megtekintése vagy keressen a elfogadás tevékenység az Azure AD-ben a naplók. További információkért lásd: [megtekintheti a jelentést, akik elfogadó és elutasító](#view-who-has-accepted-and-declined) és [naplók megtekintése az Azure AD](#view-azure-ad-audit-logs).
+V: A panel használata a feltételeket, kattintson a számra **elfogadva**. Is megtekintése vagy keressen a elfogadás tevékenység az Azure AD-ben a naplók. További információkért tekintse meg a megtekintése, akik elfogadó és elutasító jelentés és [naplók megtekintése az Azure AD](#view-azure-ad-audit-logs).
 
 **K: Mennyi ideig őrzi meg tárolt adatokat?**<br />
 V: A felhasználó-adatokra is használja a jelentés és aki elfogadott/nem fogadta el a használati feltételeket élettartama tárolt feltételeit. Az Azure AD naplózási naplót 30 napig tárol.

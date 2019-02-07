@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: f61a00e3ea243dfdf777af88b5f211580f35d8a0
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5fd220f15f363c1987f1576009519e4b2feae6b9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001665"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814860"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps-kötések az Azure Functions szolgáltatáshoz 
 
@@ -44,7 +44,7 @@ A Mobile Apps bemeneti kötést egy rekord tölt be egy mobil table-végpont, é
 Tekintse meg az adott nyelvű példa:
 
 * [C# script (.csx)](#input---c-script-example)
-* [JavaScript](#input---javascript-example)
+* JavaScript
 
 ### <a name="input---c-script-example"></a>Bemenet – C#-szkript példa
 
@@ -145,7 +145,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 | **type**|| "MobileTable" értékre kell állítani|
 | **direction**||"A" értékre kell állítani|
 | **name**|| Podpis funkce a bemeneti paraméter neve.|
-|**Táblanév** |**Táblanév**|A mobilalkalmazás adatok tábla neve|
+|**Táblanév** |**TableName**|A mobilalkalmazás adatok tábla neve|
 | **id**| **Azonosító** | A beolvasandó rekord azonosítója. Lehet statikus vagy az eseményindító, amely meghívja a függvényt alapján. Például, ha használja egy üzenetsor eseményindító a függvény ezután `"id": "{queueTrigger}"` az üzenetsorban található üzenet karakterlánc értékét használja, mint a Rekordazonosító lekéréséhez.|
 |**kapcsolat**|**kapcsolat**|A mobilalkalmazás URL-CÍMÉT tartalmazó alkalmazásbeállítás neve. A függvény létrehozásához szükséges REST-műveleteinek a mobilalkalmazás szemben az URL-címet használja. Hozzon létre egy alkalmazásbeállításhoz a függvényalkalmazásban, amely tartalmazza a mobilalkalmazás URL-címet, majd adja meg az Alkalmazásbeállítás nevét a `connection` a bemeneti kötésnek a tulajdonságot. Az URL-címe a következőhöz hasonló `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKey**|A mobilalkalmazás API-kulcsot tartalmazó alkalmazásbeállítás neve. Adja meg a fő API-t, ha Ön [API-kulcs megvalósítása a Node.js-mobilalkalmazásban](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), vagy [API-kulcs megvalósítása a .NET-mobilalkalmazásban](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Adja meg a kulcsot, hozzon létre egy alkalmazásbeállításhoz a függvényalkalmazásban, amely tartalmazza az API-kulcsot, majd adja hozzá a `apiKey` tulajdonság frissítése az Alkalmazásbeállítás nevét a bemeneti kötést. |
@@ -303,7 +303,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 | **type**|| "MobileTable" értékre kell állítani|
 | **direction**||"Ki" értékre kell állítani|
 | **name**|| Podpis funkce a kimeneti paraméter neve.|
-|**Táblanév** |**Táblanév**|A mobilalkalmazás adatok tábla neve|
+|**Táblanév** |**TableName**|A mobilalkalmazás adatok tábla neve|
 |**kapcsolat**|**MobileAppUriSetting**|A mobilalkalmazás URL-CÍMÉT tartalmazó alkalmazásbeállítás neve. A függvény létrehozásához szükséges REST-műveleteinek a mobilalkalmazás szemben az URL-címet használja. Hozzon létre egy alkalmazásbeállításhoz a függvényalkalmazásban, amely tartalmazza a mobilalkalmazás URL-címet, majd adja meg az Alkalmazásbeállítás nevét a `connection` a bemeneti kötésnek a tulajdonságot. Az URL-címe a következőhöz hasonló `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|A mobilalkalmazás API-kulcsot tartalmazó alkalmazásbeállítás neve. Adja meg a fő API-t, ha Ön [API-kulcs megvalósítása a Node.js-mobilalkalmazások számára az](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), vagy [API-kulcs megvalósítása a .NET mobile Apps-háttéralkalmazást](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Adja meg a kulcsot, hozzon létre egy alkalmazásbeállításhoz a függvényalkalmazásban, amely tartalmazza az API-kulcsot, majd adja hozzá a `apiKey` tulajdonság frissítése az Alkalmazásbeállítás nevét a bemeneti kötést. |
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 9cf64f98e0a06fc063340f39326fdc1c12645db8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7d538695fe7c920bbd22fcfb0e097220aa249f07
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756444"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811817"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
 
@@ -100,16 +100,16 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 2. Telepítse, és a Docker és a egy Log Analytics-ügynököket a használata. Az operációs rendszer és a Docker orchestrator alapján, használhatja az alábbi módszerek konfigurálása az ügynök.
   - Önálló gazdagépek:
     - A támogatott Linux operációs rendszer telepítése és Docker futtatása és telepítse és konfigurálja a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/learn/quick-collect-linux-computer.md).  
-    - A CoreOS a Linuxhoz készült Log Analytics-ügynök nem futtatható. Ehelyett a Linuxhoz készült Log Analytics-ügynök tárolóalapú verzióját futtatja. Felülvizsgálat [többek között a CoreOS Linux tárológazdagép](#for-all-linux-container-hosts-including-coreos) vagy [CoreOS többek között az Azure Government Linux tárológazdagép](#for-all-azure-government-linux-container-hosts-including-coreos) Ha tárolók az Azure Government felhőben dolgozik.
+    - A CoreOS a Linuxhoz készült Log Analytics-ügynök nem futtatható. Ehelyett a Linuxhoz készült Log Analytics-ügynök tárolóalapú verzióját futtatja. Tekintse át a CoreOS többek között Linuxos tárológazdagép vagy Linux-alapú Azure Government tárológazdagép, beleértve a CoreOS is, ha a tárolók az Azure Government felhőben dolgozik.
     - A Windows Server 2016 és Windows 10-es a Docker-motor és az ügyfél telepítéséhez, majd kösse adatainak összegyűjtése, majd azokat elküldi a Log Analytics-ügynököt. Tekintse át [telepítése és konfigurálása a Windows tárológazdagép](#install-and-configure-windows-container-hosts) Ha egy Windows-környezettel rendelkezik.
   - A Docker-gazdagép több vezénylési:
-    - Ha egy Red Hat OpenShift környezettel rendelkezik, tekintse át [konfigurálása a Log Analytics-ügynököket, a Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
+    - Ha egy Red Hat OpenShift környezettel rendelkezik, tekintse át a konfigurálása a Log Analytics-ügynököket, a Red Hat OpenShift.
     - Ha rendelkezik egy Kubernetes-fürtöt az Azure Container Service használatával:
        - Felülvizsgálat [Kubernetes a Log Analytics Linux-ügynökének konfigurálása](#configure-a-log-analytics-linux-agent-for-kubernetes).
        - Felülvizsgálat [konfigurálja a Kubernetes a Log Analytics Windows ügynök](#configure-a-log-analytics-windows-agent-for-kubernetes).
-       - Felülvizsgálat [Helm használata a Linux Kubernetes a Log Analytics-ügynök telepítése](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
+       - Tekintse át a Helm használata a Linux Kubernetes a Log Analytics-ügynök telepítése.
     - Ha rendelkezik egy Azure Container Service DC/OS-fürtön, további tudnivalókat talál [egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
-    - Ha egy Docker Swarm módú környezettel rendelkezik, további tudnivalókat talál [konfigurálása egy Log Analytics-ügynököket a Docker Swarmra](#configure-an-oms-agent-for-docker-swarm).
+    - Ha egy Docker Swarm módú környezettel rendelkezik, további konfigurálás, egy Log Analytics-ügynököket a Docker Swarmra.
     - Ha egy Service Fabric-fürtöt, további tudnivalókat talál [a Log Analytics Log Analytics-tárolók monitorozása](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
 Tekintse át a [Windows Docker-motor](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) ismertető cikkben talál további információt a telepítése és konfigurálása a Docker-motor a Windows rendszerű számítógépeken.

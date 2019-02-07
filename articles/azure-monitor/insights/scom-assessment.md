@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: fc625192464dce174b4c2a6d8a2a98343519699f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7ae87763d280e129bab96c604f9118ecf088ea2f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186123"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819858"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizálhatja a környezetet a System Center Operations Manager állapotának ellenőrzése (előzetes verzió) megoldás
 
@@ -36,7 +36,7 @@ Után, a megoldáshoz hozzáadott értékelés elvégezni, összefoglaló adatai
 
 ![A System Center Operations Manager megoldás csempe](./media/scom-assessment/log-analytics-scom-healthcheck-tile.png)
 
-![A System Center Operations Manager állapotának ellenőrzése irányítópult](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
+![System Center Operations Manager Health Check dashboard](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
 
 ## <a name="installing-and-configuring-the-solution"></a>A megoldás telepítése és konfigurálása
 
@@ -55,7 +55,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 
  Az Operations Manager operatív konzolján keresztül értékelés konfigurálásához a következő sorrendben hajtsa végre az alábbi lépéseket:
 1. [A futtató fiók beállítása a System Center Operations Manager állapotának ellenőrzése](#operations-manager-run-as-accounts-for-log-analytics)  
-2. [A System Center Operations Manager állapotának ellenőrzése szabály konfigurálása](#configure-the-assessment-rule)
+2. A System Center Operations Manager állapotának ellenőrzése szabály konfigurálása
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>A System Center Operations Manager assessment adatok gyűjtemény részletei
 

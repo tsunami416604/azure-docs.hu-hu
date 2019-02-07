@@ -9,14 +9,14 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 51e9d12d9f8801102997266cfd6699a367b11126
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 8effa84c9d7adc14060fb00fae9915a04c1d04cc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435515"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821218"
 ---
-# <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Az Apache Hive-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal
+# <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-szabályzatok konfigurálása a HDInsightban az Enterprise Security Package csomaggal
 Ismerje meg, az Apache Hive Apache Ranger-házirendek konfigurálása. Ebben a cikkben két Ranger-házirendet hoz létre a hivesampletable nevű táblához való hozzáférés korlátozása érdekében. A hivesampletable HDInsight-fürtöket tartalmaz. Miután konfigurálta a házirendeket, az Excel és az ODBC-illesztőprogram használatával kapcsolódjon a HDInsight Hive-tábláihoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -45,7 +45,7 @@ Ebben a szakaszban két Ranger-házirendet a hivesampletable eléréséhez hozzo
 
 **Ranger-házirendek létrehozása**
 
-1. Nyissa meg a Ranger felügyeleti felhasználói felületét. Lásd a [Csatlakozás az Apache Ranger felügyeleti felhasználói felületéhez](#connect-to-apache-ranager-admin-ui) című részt.
+1. Nyissa meg a Ranger felügyeleti felhasználói felületét. Tekintse meg csatlakozni az Apache Ranger felügyeleti felhasználói Felületéhez.
 2. A **Hive** alatt kattintson a **&lt;ClusterName>_hive** elemre. Két előre konfigurált házirendnek kell megjelennie.
 3. Kattintson az **Új házirend hozzáadása** gombra, majd adja meg a következő értékeket:
 

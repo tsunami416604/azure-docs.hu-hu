@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 5ae7643123552eaa17d51e6cd1ed9c0293292ed0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 734169a0bce546ee2492d100b2abcb2ba8b6ffc9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184971"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822527"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>A jelszavas egyszeri bejelentkezésre beállított, az Azure AD katalógusából származó alkalmazásba történő bejelentkezésnél
 
@@ -88,7 +88,7 @@ Kövesse a [a hozzáférési Panel bővítmény hibaelhárítása az Internet Ex
 
 Az Azure AD katalógusából származó kell az alkalmazás konfigurálása:
 
--   [Az Azure AD katalógusából származó alkalmazás hozzáadása](#_Add_an_application)
+-   Az Azure AD katalógusából származó alkalmazás hozzáadása
 
 -   [Az alkalmazás a jelszavas egyszeri bejelentkezés konfigurálása](#configure-the-application-for-password-single-sign-on)
 
@@ -140,7 +140,7 @@ Egyszeri bejelentkezés az alkalmazás konfigurálásához kövesse az alábbi l
 
 8.  Válassza ki a módot **jelszóalapú bejelentkezés.**
 
-9.  [Felhasználók hozzárendelése az alkalmazás](#_How_to_assign).
+9.  Felhasználók hozzárendelése az alkalmazáshoz.
 
 10. Ezenkívül is megadhatja a felhasználó nevében legyenek hitelesítő adatok a sorok, a felhasználók kiválasztva, majd kattintson a **a hitelesítő adatok frissítése** és a felhasználónév és jelszó megadásával a felhasználók nevében. Ellenkező esetben megkérdezi a felhasználókat a hitelesítő adatokat magukat az indítás után.
 

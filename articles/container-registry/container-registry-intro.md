@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 0118c17045b86c88d8d92048787a20bd7d309c0b
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0ffad78afd6acdfbcea8df970358c639706f14b8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298347"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814248"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Az Azure-beli privát Docker-tárolójegyzékek bemutatása
 
@@ -32,7 +32,7 @@ Rendszerképek lekérése egy Azure-beli tároló-beállításjegyzékből kül�
 
 A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a tárolófejlesztési munkafolyamatok részeként. Például megcélozhat egy tároló-beállításjegyzéket egy olyan folyamatos integrációs és üzembe helyezési eszközből, mint az [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) vagy a [Jenkins](https://jenkins.io/).
 
-Konfigurálja úgy az [ACR Tasks](#azure-container-registry-build) szolgáltatást, hogy az alapszintű rendszerképek frissítésekor a rendszer automatikusan újraépítsék az alkalmazás-rendszerképeket. Az ACR Tasks használatával automatizálhatja a rendszerképek összeállítását, ha a csoport kódot véglegesít egy Git-adattárban.
+Alkalmazás-lemezképek automatikusan újraépítheti a saját alaplemezképek frissítésekor ACR feladatok konfigurálása. Az ACR Tasks használatával automatizálhatja a rendszerképek összeállítását, ha a csoport kódot véglegesít egy Git-adattárban.
 
 ## <a name="key-concepts"></a>Fő fogalmak
 

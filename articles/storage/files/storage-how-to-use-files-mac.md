@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: c393942112f42dc0d56388b8beac44b4287bca23
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 86224b90f7a93eae41c127d4ba87f685f895e15a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475704"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820402"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Azure-fájlmegosztás csatlakoztatása SMB protokoll segítségével macOS rendszeren
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások a macOS rendszer El Capitan 10.11-es vagy újabb verziójában elérhető, iparági szabványnak számító SMB 3 protokollal csatlakoztathatók. Ez a cikk két különböző módszert mutat be az Azure-fájlmegosztások macOS rendszeren történő csatlakoztatására: a Finder felhasználói felület és a Terminál használatát.
@@ -38,7 +38,7 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 1. **Nyissa meg a Findert**: Finder alapértelmezés szerint a macOS rendszeren nyitva, de gondoskodhat az aktuálisan kiválasztott alkalmazásban kattintson a "macOS arc ikonra" a rögzítési hely:  
     ![A macOS arc ikonja](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **Válassza a "Csatlakozás a kiszolgálóhoz" a "Go" menüből**: Az UNC-útvonal használatával az [Előfeltételek](#preq), konvertálja a kezdő dupla fordított perjelet (`\\`) való `smb://` és minden további fordított perjelet (`\`) perjelre (`/`). A hivatkozás a következőhöz hasonlóan kell kinéznie: ![A "Kapcsolódás a kiszolgálóhoz" párbeszédpanel](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **Válassza a "Csatlakozás a kiszolgálóhoz" a "Go" menüből**: Az előfeltételeket, az UNC-útvonal használatával konvertálni az elején dupla fordított perjelet (`\\`) való `smb://` és minden további fordított perjelet (`\`) perjelre (`/`). A hivatkozás a következőhöz hasonlóan kell kinéznie: ![A "Kapcsolódás a kiszolgálóhoz" párbeszédpanel](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
 3. **A tárfiók neve és a tárfiók kulcsát, amikor egy felhasználónév és jelszó megadására kéri**: Ha a "Kapcsolódás a kiszolgálóhoz" párbeszédpanelen kattintson a "Csatlakozás", a rendszer kéri, a felhasználónév és jelszó (a rendszer automatikusan kitölti a macOS-felhasználónevével). Lehetősége van arra, hogy hozzáadja a tárfiók nevét és kulcsát a macOS-kulcskarikához.
 

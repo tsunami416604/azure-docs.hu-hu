@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 305aa28127e453c01de9b55ab6cb0ff3471afad9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f92b2589afc8bf4eba1bfdf421ab27300b41aa91
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473809"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822136"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Az Azure Diagnostics hibaelhárítása
 Ez a cikk ismerteti a hibaelhárítási információkat, amelyek megfelelőek az Azure Diagnostics használatával. Az Azure diagnostics kapcsolatos további információkért lásd: [Azure Diagnostics – áttekintés](diagnostics-extension-overview.md).
@@ -105,7 +105,7 @@ A rendszer, amely eseményadatokat nem jelenik meg a leggyakoribb oka, hogy a st
 
 Megoldás: Javítsa ki a diagnosztikai konfigurációja, majd telepítse újra a diagnosztikát.
 
-Ha a tárfiók megfelelően konfigurálva, a távoli hozzáférés be a számítógépre, és győződjön meg arról, hogy DiagnosticsPlugin.exe és MonAgentCore.exe futnak. Ha nem futnak, kövesse a [nem indítja el az Azure Diagnostics](#azure-diagnostics-is-not-starting).
+Ha a tárfiók megfelelően konfigurálva, a távoli hozzáférés be a számítógépre, és győződjön meg arról, hogy DiagnosticsPlugin.exe és MonAgentCore.exe futnak. Ha nem futnak, kövesse a lépéseket az Azure Diagnostics nem indul el.
 
 Ha a folyamat fut, folytassa a [adatok rögzítése helyben első?](#is-data-getting-captured-locally) , és kövesse az ott található útmutatást.
 
@@ -119,7 +119,7 @@ Diagnosztikai beállítás összegyűjtendő adatok egy adott típusú vonatkoz�
 - **Teljesítményszámlálók**: Nyissa meg a Teljesítményfigyelőt, és ellenőrizze a számlálót.
 
 - **Nyomkövetési naplók**:  Távoli hozzáférés a virtuális géppel, és egy TextWriterTraceListener hozzáadásához az alkalmazás konfigurációs fájlban.  Lásd: https://msdn.microsoft.com/library/sk36c28t.aspx állíthatja be a szöveget figyelő.  Győződjön meg arról, hogy a `<trace>` elemnek `<trace autoflush="true">`.<br />
-Ha nem látja a nyomkövetési naplók generált, [további információ a nyomkövetési naplók hiányzó](#more-about-trace-logs-missing).
+Ha nem látja a nyomkövetési naplók generált, több kapcsolatos hiányzik a nyomkövetési naplókat.
 
 - **ETW-nyomkövetések**: Távoli hozzáférés a virtuális gép, és telepítse a PerfView.  A PerfView, futtassa a **fájl** > **felhasználói parancs** > **etwprovder1 figyelésére** > **etwprovider2**, és így tovább. A **figyelésére** parancs kis-és nagybetűket, és nem lehetnek szóközök közötti ETW-szolgáltatók vesszővel elválasztott listája. Ha a parancs futása sikertelen, kiválaszthatja a **Log** gombra a jobb alsó részén a Perfview eszköz mit próbált meg futni, és milyen eredmény megtekintéséhez.  Feltéve, hogy helyesek-e a bemeneti, egy új ablakban jelenik meg. Néhány másodperc alatt megkezdheti a ETW-nyomkövetések jelent meg.
 
@@ -127,13 +127,13 @@ Ha nem látja a nyomkövetési naplók generált, [további információ a nyomk
 
 #### <a name="is-data-getting-captured-locally"></a>Adatok helyben első rögzített?
 Ezután ellenőrizze, hogy az adatok rögzítése helyben van beolvasása.
-Az adatok helyben van tárolva a `*.tsf` fájlokat [diagnosztikai adatok a helyi tároló](#log-artifacts-path). Különböző típusú naplók lekérése gyűjtött különböző `.tsf` fájlokat. A nevek hasonlóak a táblanevek, az Azure Storage-ban.
+Az adatok helyben van tárolva a `*.tsf` fájljait a helyi tároló diagnosztikai adatokat. Különböző típusú naplók lekérése gyűjtött különböző `.tsf` fájlokat. A nevek hasonlóak a táblanevek, az Azure Storage-ban.
 
 Ha például `Performance Counters` a gyűjtött kigyűjtése `PerformanceCountersTable.tsf`. Eseménynaplók gyűjtött kigyűjtése `WindowsEventLogsTable.tsf`. Útmutatásait a [a helyi kinyerési](#local-log-extraction) szakaszban nyissa meg a helyi gyűjtés fájlokat, és ellenőrizze, hogy azokat a lemezen első gyűjtött látja.
 
 Ha nem jelenik meg az első helyileg gyűjtött naplók, és már ellenőrizte, hogy a gazdagép adatokat generáló, konfigurációs hiba valószínűleg rendelkezik. Gondosan tekintse át a konfigurációt.
 
-Emellett tekintse át a konfigurációt, MonitoringAgent számára létrehozott [MaConfig.xml](#log-artifacts-path). Győződjön meg arról, hogy nincs-e egy a megfelelő naplófájlok forrás leíró szakaszt. Ellenőrizze, hogy azt ne vesszenek fordítási problémái vannak a diagnosztikai és a monitorozási ügynök konfigurációt között.
+Emellett tekintse át a konfigurációt, MonitoringAgent MaConfig.xml számára létrehozott. Győződjön meg arról, hogy nincs-e egy a megfelelő naplófájlok forrás leíró szakaszt. Ellenőrizze, hogy azt ne vesszenek fordítási problémái vannak a diagnosztikai és a monitorozási ügynök konfigurációt között.
 
 #### <a name="is-data-getting-transferred"></a>Az első átvitt adatok?
 Ha ellenőrizte, hogy az adatok rögzítése helyben van első, de továbbra sem látja, a storage-fiókban, tegye a következőket:
@@ -142,10 +142,10 @@ Ha ellenőrizte, hogy az adatok rögzítése helyben van első, de továbbra sem
 
 - Győződjön meg arról, hogy helyesen szerepel-e a megadott tárfiókhoz. Ellenőrizze, hogy nem rendelkezik, amely megakadályozza, hogy az összetevők éri el a nyilvános tárolási végpontok hálózati korlátozások. Az egyik lehetőség, amely távelérési be a számítógépre, és írjon valamit ugyanazt a tárfiókot, majd próbálja.
 
-- Végül megtekintheti milyen hibák a monitorozási ügynök által jelentett folyamatban van. A figyelőügynök ír a naplók `maeventtable.tsf`, található [diagnosztikai adatok a helyi tároló](#log-artifacts-path). Kövesse az utasításokat a [a helyi kinyerési](#local-log-extraction) ennek a fájlnak a következő szakaszban. Próbálja meg meghatározni, hogy van-e `errors` , amely jelzi, hogy a helyi fájlok tárolókba olvasása sikertelen.
+- Végül megtekintheti milyen hibák a monitorozási ügynök által jelentett folyamatban van. A figyelőügynök ír a naplók `maeventtable.tsf`, a helyi tároló diagnosztikai adatok találhatók. Kövesse az utasításokat a [a helyi kinyerési](#local-log-extraction) ennek a fájlnak a következő szakaszban. Próbálja meg meghatározni, hogy van-e `errors` , amely jelzi, hogy a helyi fájlok tárolókba olvasása sikertelen.
 
 ### <a name="capturing-and-archiving-logs"></a>A rögzítés és naplói archiválása
-Mértékegységeként ügyfélszolgálaton, megkérhetik, hogy elsőként e gyűjteni a gépén. Időt takaríthat módon, hogy saját maga. Futtassa a `CollectGuestLogs.exe` segédprogramját [gyűjtemény segédprogram naplóútvonalat](#log-artifacts-path). Létrehoz egy .zip fájlt az összes vonatkozó Azure-naplók ugyanabban a mappában.
+Mértékegységeként ügyfélszolgálaton, megkérhetik, hogy elsőként e gyűjteni a gépén. Időt takaríthat módon, hogy saját maga. Futtassa a `CollectGuestLogs.exe` segédprogramját naplóútvonalat adatgyűjtési segédprogramot. Létrehoz egy .zip fájlt az összes vonatkozó Azure-naplók ugyanabban a mappában.
 
 ## <a name="diagnostics-data-tables-not-found"></a>Diagnosztikai adatok táblák nem található
 A táblák az Azure storage-ban, amelyek rendelkeznek az ETW-események neve a következő kód használatával:
@@ -213,7 +213,7 @@ Ez a kód a négy táblát hoz létre:
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Diagnosztikai bővítmény konfigurációjának ellenőrzése
 A bővítmény konfigurációjának ellenőrzése a legegyszerűbb módja az, hogy lépjen [Azure erőforrás-kezelő](http://resources.azure.com), és lépjen a virtuális gép vagy a cloud service helye az Azure Diagnostics bővítmény (IaaSDiagnostics / PaaDiagnostics) van.
 
-Azt is megteheti a gép, és tekintse meg az Azure Diagnostics konfigurációs fájl leírt távoli asztal a [összetevők elérésiút-szakaszával jelentkezzen](#log-artifacts-path).
+Másik lehetőségként a gépet, és tekintse meg az Azure diagnosztikai konfigurációs fájl a napló összetevők elérésiút-szakaszával leírt távoli asztal.
 
 Mindkét esetben keressen **Microsoft.Azure.Diagnostics**, majd a **xmlCfg** vagy **WadCfg** mező.
 

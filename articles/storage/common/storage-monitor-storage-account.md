@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d437c6e2327fc9771f9567a37bfbf8ad82713b2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 79440cf69f921e5933ed410e276cdf304e94fa4f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452643"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817274"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Az Azure Portal tárfiók figyelése
 
@@ -46,7 +46,7 @@ ms.locfileid: "55452643"
 
 1. Ha befejezte a figyelési konfigurációtól, válassza ki a **mentése**.
 
-Metrikák alapértelmezett készletét diagramokat, a storage-fiók panelen, valamint az adott szolgáltatás paneleken (blob, üzenetsor, tábla és fájl) jelenik meg. Miután engedélyezte a metrikákat egy szolgáltatáshoz, igénybe vehet egy órát adatai megjelennek a diagramokban. Választhat **szerkesztése** bármelyik metrika diagramban [konfigurálása, mely metrikákat](#how-to-customize-metrics-charts) jelennek meg a diagramon.
+Metrikák alapértelmezett készletét diagramokat, a storage-fiók panelen, valamint az adott szolgáltatás paneleken (blob, üzenetsor, tábla és fájl) jelenik meg. Miután engedélyezte a metrikákat egy szolgáltatáshoz, igénybe vehet egy órát adatai megjelennek a diagramokban. Választhat **szerkesztése** a konfigurálása, mely metrikák jelennek meg a diagram bármely metrikadiagram.
 
 Letilthatja a gyűjtemény metrikák és naplózás, beállítás **állapot** való **ki**.
 
@@ -116,7 +116,7 @@ A tárfiókok bármely Azure Storage mérőszámdiagramok adhat hozzá a portál
    ![Az Azure Portalon csempetárral](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
 1. Válassza ki **testreszabás kész** tetején az irányítópult hozzáadása diagramok elkészült.
 
-Miután hozzáadott diagramokat az irányítópulton, további testre szabhatja a [mérőszámdiagramok testreszabása](#how-to-customize-metrics-charts).
+Miután hozzáadott diagramokat az irányítópulton, további testre szabhatja testreszabás mérőszámdiagramok leírtak szerint.
 
 ## <a name="configure-logging"></a>Naplózás konfigurálása
 

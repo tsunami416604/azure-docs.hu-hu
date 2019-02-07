@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 47227b1f9ceb4ba9e35180aa0cb171d1edd5bb9a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: edebd2efda7d8217c9b554f2d1f54135203502cb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696846"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821558"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Linux rendszerű virtuális gép létrehozása egy egyéni lemezről az Azure CLI-vel
 
@@ -31,8 +31,8 @@ Ez a cikk bemutatja, hogyan tölthet fel egy egyéni virtuális merevlemez (VHD)
 Több virtuális gép létrehozása a testre szabott lemezről, először hozzon létre egy rendszerképet a virtuális gép vagy a virtuális Merevlemezt. További információkért lásd: [egy Azure virtuális gép egyéni rendszerképének létrehozása a parancssori felület használatával](tutorial-custom-images.md).
 
 Hozzon létre egy egyéni lemezt, két lehetősége van:
-* [VHD feltöltése](#option-1-upload-a-specialized-vhd)
-* [Egy meglévő Azure virtuális gép másolása](#option-2-copy-an-existing-azure-vm)
+* VHD feltöltése
+* Egy meglévő Azure virtuális gép másolása
 
 ## <a name="quick-commands"></a>Gyors parancsok
 

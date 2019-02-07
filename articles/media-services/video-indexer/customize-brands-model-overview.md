@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: anzaman
-ms.openlocfilehash: 7df709adbd8e45712c112b52fc76920f8b67fe91
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 59a865cf6e822ecd1918d0c04b98f0edc0355223
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284828"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815472"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>A Video Indexer márkái modell testreszabása
 
@@ -30,7 +30,7 @@ Az a [2. a Microsoft Build 2017 napon](https://www.videoindexer.ai/media/ed6ede7
 
 Windows konstrukció kontextusában szó, és nem észleli a Box, az Apple, Fox, stb., egy adott márka, valamint azonos "Windows" szót tudja, hogyan kell értelmezni környezetéből fejlett gépi tanulási algoritmusok alapján. A támogatott nyelvek márka észlelési működik. Ide kattintva [teljes 2. a Microsoft Build 2017 napon nyitó előadás és index](http://www.videoindexer.ai/media/ed6ede78ad/).
 
-Ahhoz, hogy a saját márkákat, tekintse meg [további lépések](#next-stpes).
+Ahhoz, hogy a saját márkákat, ismerje meg a következő lépéseket.
 
 ## <a name="next-steps"></a>További lépések
 

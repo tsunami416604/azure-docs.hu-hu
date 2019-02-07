@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 01/24/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b05f10068cb747f19266683779352f21ec01bff9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: abfdf75c6460efe50dcc9959ffb297f77a72f8c4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491688"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813211"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
@@ -67,10 +67,10 @@ Az AD DS vállalati rendszergazdai fiók a helyi Active Directory konfigurálás
 Ha a Dirsync szolgáltatásról frissít, az AD DS vállalati rendszergazdák hitelesítő adatok segítségével alaphelyzetbe állíthatja a jelszót a DirSync által használt fiók. Emellett az Azure AD globális rendszergazdai hitelesítő adatokkal.
 
 ### <a name="azure-ad-global-admin-credentials"></a>Az Azure AD globális rendszergazdai hitelesítő adatait
-Ezek a hitelesítő adatok csak a telepítés során használt, és nem használja a telepítés befejezése után. Hozzon létre szolgál a [Azure AD-összekötő fiók](#azure-ad-service-account) változásokat az Azure ad-ben használt. A fiók is lehetővé teszi a szinkronizálási szolgáltatásként az Azure ad-ben.
+Ezek a hitelesítő adatok csak a telepítés során használt, és nem használja a telepítés befejezése után. A módosítások szinkronizálása az Azure ad-hez használt Azure AD-összekötő fiók létrehozására szolgál. A fiók is lehetővé teszi a szinkronizálási szolgáltatásként az Azure ad-ben.
 
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>Az AD DS-összekötő fiókhoz tartozó gyorsbeállítások szükséges engedélyek
-A [AD DS-összekötő fiók](#active-directory-account) jön létre olvasását és írását a Windows Server AD és a gyorsbeállítások létrehozásakor a következő engedélyekkel rendelkezik:
+Az AD DS-összekötő fiók jön létre olvasását és írását a Windows Server AD és a gyorsbeállítások létrehozásakor a következő engedélyekkel rendelkezik:
 
 | Engedély | Használt |
 | --- | --- |
@@ -89,9 +89,9 @@ A következő található egy összefoglaló az expressz telepítési varázsló
 
 | Varázsló lapja | Hitelesítő adatok gyűjtése | Szükséges engedélyek | Használt |
 | --- | --- | --- | --- |
-| – |A felhasználó a telepítési varázsló futtatása |A helyi kiszolgáló rendszergazdája |<li>Hozza létre a [ADSync szolgáltatás fiókja](#azure-ad-connect-sync-service-account) feltárhatja, hogy a szinkronizálási szolgáltatás futtatásához használt fiók. |
-| Csatlakozás az Azure AD szolgáltatáshoz |Az Azure Active directory hitelesítő adatok |A globális rendszergazdai szerepkörű Azure AD-ben |<li>Az Azure AD-címtárban a szinkronizálás engedélyezése.</li>  <li>Létrehozását a [Azure AD-összekötő fiók](#azure-ad-service-account) használt a folyamatban lévő szinkronizálási műveletek az Azure AD-ben.</li> |
-| Csatlakozás az AD DS szolgáltatáshoz |A helyszíni Active Directory hitelesítő adatok |A vállalati rendszergazdák (EA) csoport az Active Directoryban |<li>Hozza létre a [AD DS-összekötő fiók](#active-directory-account) az Active Directoryban és a rá vonatkozó engedélyeket ad. Ezt a fiókot hozta létre az olvasási és írási címtár szinkronizálása során használatos.</li> |
+| – |A felhasználó a telepítési varázsló futtatása |A helyi kiszolgáló rendszergazdája |<li>Az ADSync szolgáltatás fiókok feltárhatja, hogy a szinkronizálási szolgáltatás futtatásához használt hoz létre. |
+| Csatlakozás az Azure AD szolgáltatáshoz |Az Azure Active directory hitelesítő adatok |A globális rendszergazdai szerepkörű Azure AD-ben |<li>Az Azure AD-címtárban a szinkronizálás engedélyezése.</li>  <li>Létrehozás az Azure AD-összekötő fiókhoz tartozó Azure AD-ben a folyamatban lévő szinkronizálási műveletek elvégzéséhez használható.</li> |
+| Csatlakozás az AD DS szolgáltatáshoz |A helyszíni Active Directory hitelesítő adatok |A vállalati rendszergazdák (EA) csoport az Active Directoryban |<li>Az Active Directory az AD DS-összekötő fiókot hoz létre, és engedélyt ad hozzá. Ezt a fiókot hozta létre az olvasási és írási címtár szinkronizálása során használatos.</li> |
 
 
 ## <a name="custom-installation-settings"></a>Egyéni telepítési beállítások
@@ -106,10 +106,10 @@ A következő található egy összefoglaló az egyéni telepítési varázsló 
 
 | Varázsló lapja | Hitelesítő adatok gyűjtése | Szükséges engedélyek | Használt |
 | --- | --- | --- | --- |
-| – |A felhasználó a telepítési varázsló futtatása |<li>A helyi kiszolgáló rendszergazdája</li><li>Ha teljes SQL Server használata esetén a felhasználónak kell lennie a rendszergazdai (SA) az SQL-ben</li> |Alapértelmezés szerint a helyi fiók, amely létrehozza a [szinkronizálás a motor szolgáltatásfiók](#azure-ad-connect-sync-service-account). A fiók csak akkor jön létre, amikor a rendszergazda nem adja meg egy adott fiók. |
+| – |A felhasználó a telepítési varázsló futtatása |<li>A helyi kiszolgáló rendszergazdája</li><li>Ha teljes SQL Server használata esetén a felhasználónak kell lennie a rendszergazdai (SA) az SQL-ben</li> |Alapértelmezés szerint hoz létre a helyi fiók, amely a szinkronizálási motor szolgáltatásfiók. A fiók csak akkor jön létre, amikor a rendszergazda nem adja meg egy adott fiók. |
 | Szinkronizálási szolgáltatások, a szolgáltatás fiók lehetőséget telepítése |AD vagy a helyi felhasználói fiók hitelesítő adatait |Felhasználók, engedélyek a telepítő varázsló |Ha a rendszergazda határozza meg egy fiókot, ezt a fiókot lesz a fiók a szinkronizálási szolgáltatás. |
-| Csatlakozás az Azure AD szolgáltatáshoz |Az Azure Active directory hitelesítő adatok |A globális rendszergazdai szerepkörű Azure AD-ben |<li>Az Azure AD-címtárban a szinkronizálás engedélyezése.</li>  <li>Létrehozását a [Azure AD-összekötő fiók](#azure-ad-service-account) használt a folyamatban lévő szinkronizálási műveletek az Azure AD-ben.</li> |
-| Csatlakoztassa a címtárakat |A helyszíni Active Directory hitelesítő adatait, amely csatlakozik az Azure AD-erdőhöz |Az engedélyek attól függenek, a szolgáltatások engedélyezése és található [az AD DS-összekötő fiók létrehozása](#create-the-ad-dso-connector-account) |Ennek a fióknak olvasási és írási címtár szinkronizálása során szolgál. |
+| Csatlakozás az Azure AD szolgáltatáshoz |Az Azure Active directory hitelesítő adatok |A globális rendszergazdai szerepkörű Azure AD-ben |<li>Az Azure AD-címtárban a szinkronizálás engedélyezése.</li>  <li>Létrehozás az Azure AD-összekötő fiókhoz tartozó Azure AD-ben a folyamatban lévő szinkronizálási műveletek elvégzéséhez használható.</li> |
+| Csatlakoztassa a címtárakat |A helyszíni Active Directory hitelesítő adatait, amely csatlakozik az Azure AD-erdőhöz |Az engedélyek attól függenek, a szolgáltatások engedélyezése és található létrehozás az AD DS-összekötő fiók |Ennek a fióknak olvasási és írási címtár szinkronizálása során szolgál. |
 | AD FS-kiszolgálók |A lista minden egyes kiszolgáló esetén a a varázsló hitelesítő adatait gyűjti, amikor a bejelentkezési hitelesítő adatok a varázslót futtató felhasználó nem elegendőek csatlakoztatása |Tartományi rendszergazda |Telepítés és konfigurálás a az AD FS kiszolgálói szerepkör. |
 | Webalkalmazás-proxy kiszolgálók |A lista minden egyes kiszolgáló esetén a a varázsló hitelesítő adatait gyűjti, amikor a bejelentkezési hitelesítő adatok a varázslót futtató felhasználó nem elegendőek csatlakoztatása |Helyi rendszergazda a célgépen |Telepítés és konfigurálás a WAP-kiszolgálói szerepkör. |
 | Proxy megbízhatósági hitelesítő adatai |Összevonási szolgáltatás bizalmi kapcsolat hitelesítő adatait (a hitelesítő adatok egy megbízható tanúsítványt az FS regisztrálásához használja a proxy |Tartományi fiók, amely az AD FS-kiszolgáló helyi rendszergazdája |A regisztráció FS – WAP megbízható tanúsítvány. |
@@ -157,7 +157,7 @@ Ha a gyorsbeállítások használata, majd egy fiókot az Active Directoryban, a
 
 ![AD-fiók](./media/reference-connect-accounts-permissions/adsyncserviceaccount.png)
 
-Ha egyéni beállításokat használja, majd Ön felelős a fiók létrehozása a telepítés megkezdése előtt.  Lásd: [az AD DS-összekötő létrehozása](#create-the-ad-dso-connector-account).
+Ha egyéni beállításokat használja, majd Ön felelős a fiók létrehozása a telepítés megkezdése előtt.  Tekintse meg az AD DS-összekötő fiók létrehozása.
 
 ### <a name="adsync-service-account"></a>ADSync szolgáltatás fiókja
 A szinkronizálási szolgáltatást futtathatja eltérő fiókkal. A Futtatás egy **virtuális szolgáltatásfiókot** (Szállítóspecifikus), egy **csoportosan felügyelt szolgáltatásfiók** (csoportosan felügyelt szolgáltatásfiókot vagy önállóan felügyelt szolgáltatásfiókot), vagy egy normál felhasználói fiókot. A támogatott beállítások módosultak, 2017 áprilisi kiadása Connect ekkor egy friss telepítését. Ha az Azure AD Connect egy korábbi kiadásáról frissít, ezek a beállítások nem érhetők el.
@@ -198,7 +198,7 @@ Egy helyi szolgáltatásfiókot egy olyan fiók, amely nem rendelkezik egy jelsz
 
 ![VSA](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
-A Szállítóspecifikus célja használható forgatókönyvek a szinkronizálási motor SQL amelyeknél és ugyanazon a kiszolgálón. Ha távoli SQL használja, akkor használata ajánlott olyan [csoportosan felügyelt szolgáltatásfiók](#managed-service-account) helyette.
+A Szállítóspecifikus célja használható forgatókönyvek a szinkronizálási motor SQL amelyeknél és ugyanazon a kiszolgálón. Ha távoli SQL használja, majd azt javasoljuk, használja helyette a csoportosan felügyelt szolgáltatásfiók.
 
 A szolgáltatás használatához a Windows Server 2008 R2 vagy újabb. Ha az Azure AD Connect telepítése Windows Server 2008 rendszeren, akkor a telepítés visszaáll egy [felhasználói fiók](#user-account) helyette.
 

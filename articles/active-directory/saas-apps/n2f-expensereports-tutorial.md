@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált N2F - költségjelentés |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező N2F - költségjelentés |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és N2F - között költségjelentés.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 27fb299bc3bbbbf75bdf40ae02eac627763ce6d4
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: d8d3d9c14ee1eaa5e5d6dc3245c0d4071306f12a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006452"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811630"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Oktatóanyag: Azure Active Directoryval integrált N2F - költségjelentés
+# <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező N2F - költségjelentés
 
 Ebben az oktatóanyagban megismerheti, hogyan integrálhatja N2F - költségjelentés az Azure Active Directoryval (Azure AD).
 
@@ -61,7 +61,7 @@ N2F – az Azure AD-be a költségjelentések integráció konfigurálásához, 
 
 **Adja hozzá a N2F - katalógusból, költségjelentések hajtsa végre az alábbi lépéseket:**
 
-1. Az a ** [az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -85,11 +85,11 @@ Egyszeri bejelentkezés használatát Azure ad-ben tudnia kell, milyen a partner
 
 Az Azure AD egyszeri bejelentkezés az N2F - költségjelentések, tesztelése és konfigurálása kell hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ** – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) ** – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy N2F – költségjelentések tesztfelhasználó](#create-a-n2f---expense-reports-test-use) ** -, N2F rendelkezik egy megfelelője a Britta Simon – költségeket jelent, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) ** – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on) ** – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **Hozzon létre egy N2F – költségjelentések tesztfelhasználó** -, N2F rendelkezik egy megfelelője a Britta Simon – költségeket jelent, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -211,7 +211,7 @@ Ahhoz, hogy az Azure AD-felhasználók N2F - költségjelentések, jelentkezzen 
 
     ![N2F - költségjelentések konfiguráció](./media/n2f-expensereports-tutorial/user3.png)
 
-    a. Az a **E-mail-cím** szövegmezőbe írja be például a felhasználó e-mail-címe ** brittasimon@contoso.com **.
+    a. Az a **E-mail-cím** szövegmezőbe írja be például a felhasználó e-mail-címe **brittasimon@contoso.com**.
 
     b. Az a **Utónév** szövegmezőbe írja be például a felhasználó utónevét **Britta**.
 
@@ -254,7 +254,7 @@ Ebben a szakaszban Britta Simon által biztosított hozzáférés N2F használan
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

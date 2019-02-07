@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9002ab7396cd9beda767b4a9f81d9983ec74923d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e2aa52e8ad19274d45f648978e7b2f021139fe4a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163415"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812301"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Engedélyezze a bejelentkezve maradás (KMSI) az Azure Active Directory B2C-vel
 
@@ -150,7 +150,7 @@ Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozo
 2. Nyissa meg az új fájlt, és frissítse a **PolicyId** az attribútum a **TrustFrameworkPolicy** egyedi értékkel. Ez az a házirend nevét. Például: `SignUpOrSignInWithKmsi`.
 3. Módosítsa a **referenceid megadása** az attribútum a **DefaultUserJourney** elem megfelelő az Ön által létrehozott új felhasználói interakciósorozat azonosítóját. Például: `SignUpOrSignInWithKmsi`.
 
-    KMSI használatára van konfigurálva, a **UserJourneyBehaviors** elemet. A **KeepAliveInDays** attribútum meghatározza, hogy mennyi ideig a felhasználó bejelentkezve marad. A következő példában a KMSI munkamenet automatikusan lejárata után `7` nap, függetlenül attól, hogy milyen gyakran a felhasználói beavatkozás nélküli hitelesítést hajt végre. Beállítás a **KeepAliveInDays** értéket a következőre `0` KMSI funkciót kikapcsol. Alapértelmezés szerint ez az érték a `0`. Ha az értéke **SessionExpiryType** van `Rolling`, a KMSI munkamenet bővített `7` nappal minden alkalommal, amikor a felhasználó csendes hitelesítést hajt végre.  Ha `Rolling` van kijelölve, érdemes megtartani a napok számát minimális. 
+    KMSI használatára van konfigurálva, a **UserJourneyBehaviors** elemet **SingleSignOn**, **SessionExpiryType**, és **SessionExpiryInSeconds** , az első alárendelt elemei. A **KeepAliveInDays** attribútum meghatározza, hogy mennyi ideig a felhasználó bejelentkezve marad. A következő példában a KMSI munkamenet automatikusan lejárata után `7` nap, függetlenül attól, hogy milyen gyakran a felhasználói beavatkozás nélküli hitelesítést hajt végre. Beállítás a **KeepAliveInDays** értéket a következőre `0` KMSI funkciót kikapcsol. Alapértelmezés szerint ez az érték a `0`. Ha az értéke **SessionExpiryType** van `Rolling`, a KMSI munkamenet bővített `7` nappal minden alkalommal, amikor a felhasználó csendes hitelesítést hajt végre.  Ha `Rolling` van kijelölve, érdemes megtartani a napok számát minimális. 
 
     Az érték **SessionExpiryInSeconds** az egyszeri bejelentkezés munkamenet lejárati idejét jelzi. Ez belső használatára szolgál az Azure AD B2C-vel ellenőrizze, hogy KMSI a munkamenet lejárt-e vagy sem. Az érték **KeepAliveInDays** meghatározza, hogy az egyszeri bejelentkezési cookie-t a böngésző Expires és Max-Age értékét. Ellentétben **SessionExpiryInSeconds**, **KeepAliveInDays** szolgál, hogy a böngészőben a cookie-k törlése, ha be van zárva. A felhasználói beavatkozás nélkül jelentkezhetnek be, csak akkor, ha az egyszeri bejelentkezés munkamenet cookie-k létezik, amelyek vezérlik **KeepAliveInDays**, és nem járt le, amelyek vezérlik **SessionExpiryInSeconds**. 
     

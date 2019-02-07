@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bb89c76fb19bff74d39d919c8d2e65d430cb0566
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123172"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817750"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>REST-végpontokat HTTP + Swagger összekötő az Azure Logic Appsben
 
@@ -40,7 +40,7 @@ Tudjon meg többet [logikaialkalmazás-triggerek és műveletek](connectors-over
 4. Írja be az URL-címet a Swagger-dokumentumok:
    
    * Használhatja a Logikaialkalmazás-Tervező, az URL-cím HTTPS-végpontokat kell lennie, és a CORS engedélyezve van.
-   * A Swagger-dokumentumok nem felel meg ennek a követelménynek, ha [CORS-támogatással az Azure Storage](#hosting-swagger-from-storage) tárolja a dokumentumot.
+   * A Swagger-dokumentumok nem felel meg ennek a követelménynek, ha Azure Storage a CORS engedélyezve van a dokumentum tárolására is használható.
 5. Kattintson a **tovább** olvasását és a Swagger-dokumentum jelennek meg.
 6. Adja hozzá a szükséges a HTTP-hívás paramétereit.
    
@@ -96,9 +96,9 @@ Egy csillag (*) azt jelenti, hogy a kötelező kitölteni.
 | --- | --- | --- |
 | Módszer * |method |HTTP-parancs használata. |
 | URI * |uri azonosító |A HTTP-kérés URI azonosítója. |
-| Fejlécek |fejlécek |A HTTP-fejléceket tartalmazza JSON-objektum. |
+| Fejlécek |A fejlécek |A HTTP-fejléceket tartalmazza JSON-objektum. |
 | Törzs |törzs |A HTTP-kérelem törzse. |
-| Hitelesítés |hitelesítés |Hitelesítési kérelem használatára. További információkért lásd: a [HTTP-összekötő](connectors-native-http.md#authentication). |
+| Authentication |hitelesítés |Hitelesítési kérelem használatára. További információkért lásd: a [HTTP-összekötő](connectors-native-http.md#authentication). |
 
 **Kimenet részletei**
 

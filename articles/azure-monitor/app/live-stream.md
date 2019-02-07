@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f369eb6241a8eb3d44a0a38e243c533da47103e1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b741528b2770314be7e851f38817611d6908352b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104613"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814945"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő Stream metrikák: Figyelő & 1 másodperc késéssel diagnosztizálása
 
@@ -64,7 +64,7 @@ Ellenőrizze a [kimenő portok az élő metrikák Stream](../../azure-monitor/ap
 |Igény szerinti|Adatok streamelése közben, nyissa meg az élő mérőszámok|Adatokat küld, amikor az SDK telepítése és engedélyezése|
 |Ingyenes|Semmilyen díjat nem az élő Stream adatok|Státuszban [díjszabása](../../azure-monitor/app/pricing.md)
 |Mintavételezés|Az összes kijelölt mérőszámok és -számlálók továbbít. Hibák és a hívásláncokat mintát. TelemetryProcessors sem lépnek érvénybe.|Lehet, hogy eseményeket [mintavételezés](../../azure-monitor/app/api-filtering-sampling.md)|
-|Vezérlőcsatorna|Szűrő vezérlőelem jelekkel kell küldeni az SDK-t. Javasoljuk, hogy [biztonságos csatorna](#secure-channel).|Kommunikációs még csak egyirányú, a portálra|
+|Vezérlőcsatorna|Szűrő vezérlőelem jelekkel kell küldeni az SDK-t. Azt javasoljuk, hogy ez a csatorna biztonságossá tenni.|Kommunikációs még csak egyirányú, a portálra|
 
 
 ## <a name="select-and-filter-your-metrics"></a>Válassza ki, és a mérőszámok szűrése

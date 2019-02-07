@@ -1,6 +1,6 @@
 ---
-title: StorSimple-köteteket (Update 3) kezelése |} Microsoft Docs
-description: Elmagyarázza, hozzáadása, módosítása, figyeléséhez, és törölje a StorSimple-köteteket, és hogyan offline állapotba rájuk szükség.
+title: A StorSimple-kötetek (Aktualizace 3) kezelése |} A Microsoft Docs
+description: Azt ismerteti, hogyan hozzáadása, módosítása, figyelheti és törölni a StorSimple-köteteket, és hogyan offline állapotba őket szükség esetén.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,85 +14,85 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: c9c575f42e6c8730b9404c62fb60e710d9d3bc80
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: b748e203e3bf769eef8ce728bbb9471b8d13fb9a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26578873"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822306"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>A StorSimple Device Manager szolgáltatás segítségével kezelheti a kötetek (Update 3-as vagy újabb)
+# <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>A StorSimple-Eszközkezelő szolgáltatás használata kezelheti a kötetek (Update 3 vagy újabb)
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag ismerteti, hogyan a StorSimple Device Manager szolgáltatás létrehozását és kezelését a StorSimple 8000 sorozat eszközeire 3 és újabb verzióit futtató a frissítés köteteket.
+Ez az oktatóanyag ismerteti, hogyan hozhat létre és kezelhet a kötetek a StorSimple 8000-es sorozatú eszközökön Update 3 és újabb verzióit futtató a StorSimple-Eszközkezelő szolgáltatásban.
 
-A StorSimple Device Manager szolgáltatás nem egy bővítmény, az Azure portálon, amely lehetővé teszi a StorSimple megoldásban egy egyetlen webes felhasználói felületen keresztüli kezelését. Kötetek az eszközök kezelését az Azure-portál használatával. Akkor is létrehozása és a StorSimple-szolgáltatások kezelése, kezelheti az eszközöket, a biztonsági mentési házirendek és a biztonságimásolat-katalógus, és megtekintheti a riasztásokat.
+A StorSimple-Eszközkezelő szolgáltatásban egy bővítmény az Azure Portalon, amely lehetővé teszi, hogy a StorSimple megoldás egy közös webes felületről kezelheti. Az Azure portal segítségével kezelheti a kötetek az eszközön. Is is létrehozása és kezelése a StorSimple-szolgáltatások, eszközök, a biztonsági mentési szabályzatok és a biztonságimásolat-katalógus kezelése és megtekintheti a riasztásokat.
 
-## <a name="volume-types"></a>Kötet típusok
+## <a name="volume-types"></a>Kötettípusok
 
-StorSimple-köteteket lehet:
+A StorSimple-kötetek lehetnek:
 
-* **Helyileg rögzített kötetek**: mindig a helyi StorSimple eszközön marad ezeken a köteteken lévő adatok.
-* **Rétegzett kötet**: ezeken a köteteken lévő adatok kerülnek a felhőbe is.
+* **A helyileg rögzített kötetekről**: Ezeken a köteteken lévő adatok mindig a helyi StorSimple-eszköz marad.
+* **A rétegzett kötetek**: Ezeken a köteteken lévő adatok a felhőben is kerülnek.
 
-Az archiválási köteten a rétegzett kötet típusú. Archiválási kötetek használt nagyobb deduplikációs adattömbméret lehetővé teszi az eszköz nagyobb szegmensek az adatok átvitele a felhőben.
+Az archív kötetek olyan rétegzett kötet. Az archív kötetek esetén használt nagyobb deduplikációs adattömbméret lehetővé teszi, hogy az eszköz, nagyobb méretű szegmenseket, az adatok átvitelét a felhőbe.
 
-Ha szükséges, módosíthatja a kötet típusa helyi rétegzett vagy rétegzett helyi. További információkért látogasson el [kötet típusának módosítása](#change-the-volume-type).
+Ha szükséges, módosíthatja a kötet rétegzett típusát a helyi vagy a rétegzett a helyi számítógépre. További információért ugorjon [a kötet típusának módosításához](#change-the-volume-type).
 
-### <a name="locally-pinned-volumes"></a>Helyileg rögzített kötetek
+### <a name="locally-pinned-volumes"></a>A gyors helyi kötetek
 
-Helyileg rögzített kötetek, amelyek nem réteg adatok összekapcsolása a felhővel teljesen kiosztott köteteket, ezzel biztosítva a helyi biztosítja, hogy az elsődleges adatok, a felhő kapcsolat független. A helyileg rögzített kötetekhez adatok nem deduplikált, és tömörített; azonban a pillanatképeket a helyileg rögzített kötetek deduplikálásának. 
+Helyileg rögzített kötetek teljesen kiosztott köteteket, amelyeket nem csomag adatait a felhőbe, ezzel biztosítva a helyi garantálja, hogy az elsődleges adatokat, független a felhővel. Az adatok gyors helyi kötetek nem deduplikált és tömörített; azonban a helyileg rögzített kötetek pillanatképek deduplikálásának. 
 
-Helyileg rögzített kötetekhez teljesen kiépített; ezért rendelkeznie kell elegendő lemezterület az eszközön a létrehozott. Helyileg rögzített kötetekhez legfeljebb 8 TB, a StorSimple 8100 eszközön és az 8600 eszközön 20 TB maximális méretén építhető ki. StorSimple fenntartja a fennmaradó helyi területet az eszközön a pillanatképek, a metaadatok és az adatok feldolgozása. A rendelkezésre álló maximális lemezterület a helyileg rögzített kötet mérete növelheti, de a létrehozását követően a kötet mérete nem csökkenthető.
+A gyors helyi kötetek teljes felhasznált; Ezért kell rendelkeznie elég hely az eszközön azok létrehozásakor. Helyileg rögzített kötetekhez legfeljebb 8 TB-ra a StorSimple 8100 sorozatú eszköz és a 8600-as eszközön 20 TB-os maximális mérettel építhető ki. A StorSimple fenntartja a fennmaradó helyi terület az eszközön a pillanatképek, a metaadatokat és az adatok feldolgozása. Egy helyileg rögzített kötet a rendelkezésre álló maximális lemezterület méretének növeléséhez, de Miután létrehozott egy kötet mérete nem csökkenthető.
 
-Ha helyileg rögzített kötetet hoz létre, a rétegzett kötetek létrehozásához rendelkezésre álló terület csökken. Fordítva is igaz: Ha a meglévő rétegzett kötetek, a szabad lemezterületet az létrehozása helyileg rögzített kötetek alacsonyabb, mint a fent megadott maximális határok lesz. A helyi köteteken további információkért tekintse meg a [gyakran ismételt kérdések a helyileg rögzített kötetekhez](storsimple-8000-local-volume-faq.md).
+Ha helyileg rögzített kötetet hoz létre, a rétegzett kötetek létrehozásához rendelkezésre álló terület csökken. Ennek az ellenkezője is igaz: Ha a meglévő rétegzett kötetek, a szabad lemezterületet az létrehozása helyileg rögzített kötetekről alacsonyabb, mint a fenti korlátozásokat lesz. További információ a helyi köteteken, tekintse meg a [gyakori kérdések a helyileg rögzített kötetekhez](storsimple-8000-local-volume-faq.md).
 
 ### <a name="tiered-volumes"></a>Rétegzett kötetek
 
-Rétegzett kötetek rendszer dinamikusan kiosztott köteteket a ritkábban használt adatokhoz marad az eszközön helyi és a felhő automatikusan rétegzett a ritkábban használt adatok. Dinamikus kiosztás egy virtualizációs technológia, amely rendelkezésre álló tár hosszabb legyen, mint a fizikai erőforrásokat jelenik meg. Ahelyett, hogy elegendő tárhely előre foglalással, StorSimple használja a dinamikus kiosztás aktuális követelményeknek éppen elegendő lemezterületet foglaljon le. Felhőalapú tárolás rugalmas jellege elősegíti ezt a módszert használja, mert StorSimple növelheti vagy csökkentheti a felhőalapú tárolást tartalomkérései változó igényeinek kielégítéséhez.
+Rétegzett kötetek dinamikusan kiosztott köteteket, amelyben a gyakran használt adatok tárolódnak az eszközön, és a felhőbe automatikusan rétegzett a ritkábban használt adatok. A dinamikus kiosztás egy virtualizációs technológia, amely rendelkezésre álló tár meghaladja a fizikai erőforrásokat jelenik meg. Ahelyett, hogy elegendő tárhely az előzetesen lefoglalását, a StorSimple használja a dinamikus kiosztás aktuális követelményeinek éppen elegendő lemezterületet foglaljon le. Rugalmas jellegének köszönhetően felhőalapú tárolás Ez a megközelítés lehetővé teszi, mert StorSimple növelheti vagy csökkentheti a változó igényekkel összhangban a felhőalapú tárolás.
 
-Ha a rétegzett kötetet archív adatokhoz használ, válassza ki a **kötet használata ritkábban használt archív adatokhoz** melletti jelölőnégyzetet, hogy módosítsa a deduplikációs adattömbméret a kötethez tartozó 512 KB. Ha nem ezt a beállítást, a megfelelő rétegzett kötet 64 KB adattömbméretet fogja használni. Egy nagyobb deduplikációs adattömbméret lehetővé teszi az eszköz számára a nagy mennyiségű archiválási adatok továbbítását a felhőbe.
+Ha a rétegzett kötetet archív adatokhoz használ, válassza ki a **kötet használata ritkábban használt archív adatokhoz** jelölőnégyzet bejelölésével módosíthatja a a kötet deduplikációs adattömbméret 512 KB. Ha nem ezt a beállítást, a megfelelő rétegzett kötet 64 KB-os adattömbméretet fogja használni. Egy nagyobb deduplikációs adattömbméret lehetővé teszi az eszköz számára a nagy mennyiségű archiválási adatok továbbítását a felhőbe.
 
 
 ### <a name="provisioned-capacity"></a>Kiosztott kapacitást
 
-Tekintse meg a következő táblázat az egyes eszköz és a kötet maximális kiosztott kapacitást. (Vegye figyelembe, hogy helyileg rögzített kötetekhez ne legyenek elérhetők a virtuális eszköz.)
+Tekintse meg a következő táblázat tartalmazza az egyes eszköz- és a maximális kiosztott kapacitást. (Vegye figyelembe, hogy a gyors helyi kötetek nem érhetők el a virtuális eszközön.)
 
-|  | Maximális rétegzett kötet mérete | Maximális helyileg rögzített kötet mérete |
+|  | A rétegzett kötetek maximális mérete | Maximális helyileg rögzített kötet mérete |
 | --- | --- | --- |
-| **Fizikai eszköz** | | |
+| **Fizikai eszközök** | | |
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Virtuális eszközök** | | |
-| 8010 |30 TB |N/A |
-| 8020 |64 TB |N/A |
+| 8010 |30 TB |– |
+| 8020 |64 TB |– |
 
 ## <a name="the-volumes-blade"></a>A kötetek panel
 
-A **kötetek** panel lehetővé teszi a tárolókötetek törlődnek a Microsoft Azure StorSimple eszközön a kezdeményezőktől (kiszolgálóktól) való kezelését. A StorSimple eszköz a szolgáltatáshoz való kapcsolódás kötetek listáját megjeleníti.
+A **kötetek** panel lehetővé teszi, hogy a tároló kötetek, a Microsoft Azure StorSimple eszközön a kezdeményezőktől (kiszolgálóktól) az üzembe helyezett kezelése. A StorSimple eszköz csatlakozik a szolgáltatáshoz a kötetek listáját megjeleníti.
 
  ![Kötetek lap](./media/storsimple-8000-manage-volumes-u2/volumeslist.png)
 
-A kötet attribútumainak állnak:
+Egy kötet attribútumainak áll:
 
-* **Kötet neve** – egy leíró nevet, amely egyedinek kell lennie, és segít azonosítani a kötetet. Ez a név monitoring jelentések, amikor egy adott köteten szűrheti is szerepel. A kötet létrehozása után nem lehet átnevezni.
-* **Állapot** – lehet online vagy offline állapotú. Ha egy kötet offline állapotban, nincs látható kezdeményezőktől (kiszolgálóktól), amelyek hozzáférhetnek a kötetet használja.
-* **Kapacitás** – a kezdeményező (kiszolgáló) tárolt adatok teljes mennyisége határozza meg. Helyileg rögzített kötetek teljes törlődnek, és a StorSimple eszközön találhatók. Rétegzett kötetek kiosztása, és az adatok deduplikált. A dinamikusan kiosztott köteteket az eszköz nem előre lefoglalni fizikai tárolási kapacitás belső vagy a felhő megfelelően konfigurált kötet kapacitása. A kötet kapacitása lefoglalt és felhasznált igény szerint.
+* **Kötet neve** – egy leíró nevet, amely egyedinek kell lennie, és segít azonosítani a kötetet. Ez a név monitoring jelentések, ha egy adott köteten is szerepel. A kötet létrehozása után nem lehet átnevezni.
+* **Állapot** – lehet online vagy offline állapotban van. Ha a kötet offline állapotban van, akkor sem, melyek hozzáférhetnek a kötetet használja kezdeményezőktől (kiszolgálóktól) számára látható.
+* **Kapacitás** – Itt adhatja meg a kezdeményező (kiszolgáló) által tárolható adatok teljes mennyisége. Helyileg rögzített kötetek teljes felhasznált, és a StorSimple eszközön találhatók. Rétegzett kötetek kiosztása és az adatok deduplikált. A dinamikusan kiosztott köteteket, az eszköz nem előre fizikai tárolókapacitás foglalása belső vagy a felhő megfelelően konfigurált kötet kapacitása. A kötet kapacitása lefoglalt és felhasznált igény szerint.
 * **Típus** – azt jelzi, hogy a kötet **rétegzett** (alapértelmezés) vagy **helyileg rögzített**.
 
-Kövesse az utasításokat ebben az oktatóanyagban a következő feladatokat:
+Ebben az oktatóanyagban az utasítások segítségével a következő feladatokat:
 
 * Kötet hozzáadása 
-* A kötet módosítása 
-* Módosítsa a kötet típusa
+* Kötet módosítása 
+* A kötet típusának módosítása
 * Kötet törlése 
 * A kötet offline állapotba helyezése 
-* A kötet figyelése 
+* Megfigyelési 
 
 ## <a name="add-a-volume"></a>Kötet hozzáadása
 
-Ön [kötet létrehozott](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) a StorSimple 8000 series eszköz telepítése során. Hasonló eljárással hozzáadna egy kötetet.
+Ön [létrehozott egy kötetet](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) a StorSimple 8000 sorozatú eszköz üzembe helyezése során. A kötet hozzáadása nem hasonló eljárást.
 
 #### <a name="to-add-a-volume"></a>Kötet hozzáadása
 
@@ -120,213 +120,213 @@ Kövesse az utasításokat ebben az oktatóanyagban a következő feladatokat:
       
        Ha a 8100-as eszközön kioszt egy 8,5 TB-os (vagyis a legnagyobb megengedett méretű) gyors helyi kötetet, azzal elfoglalja az összes rendelkezésre álló helyi területet az eszközön. Innentől kezdve nem hozhat létre további rétegzett köteteket, mivel nincs helyi terület az eszközön, amely üzemeltethetné a rétegzett kötet munkakészletét. A meglévő rétegzett kötetek is hatással vannak a rendelkezésre álló területre. Ha például egy 8100-as eszközhöz már tartozik körülbelül 106 TB rétegzett kötet, akkor csak 4 TB érhető el a gyors helyi kötetekhez.
 
-    6. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. Az a **csatlakozó állomások** panelen válassza ki egy meglévő ACR, vagy adja hozzá egy új ACR. Ha úgy dönt, hogy egy új ACR, majd adjon meg egy **neve** az ACR, adja meg a **iSCSI Qualified Name** (IQN) a Windows-állomás. Ha nem tudja az IQN-t, lépjen a [Windows Server-gazdagép IQN nevének lekérése](#get-the-iqn-of-a-windows-server-host) szakaszhoz. Kattintson a **Létrehozás** gombra. Létrejön egy kötet a megadott beállításokkal.
+    6. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. Az a **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR-t, vagy adjon hozzá egy új ACR. Ha úgy dönt, hogy egy új ACR, majd adjon meg egy **neve** az ACR, adja meg a **iSCSI Qualified nevet** (IQN) a Windows-gazdagép. Ha nem rendelkezik az IQN-t, látogasson el a Windows Server-gazdagép IQN Nevének lekérése. Kattintson a **Create** (Létrehozás) gombra. Létrejön egy kötet a megadott beállításokkal.
 
         ![Kattintson a Létrehozás gombra](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
 Az új kötet már készen áll a használatra.
 
 > [!NOTE]
-> Ha helyileg rögzített kötet létrehozása, és majd hozzon létre egy másik helyileg rögzített kötet azonnal ezek után a kötetek létrehozását feladatok egymás után futnak. Az első kötet-létrehozási feladatot a következő kötet-létrehozási feladat megkezdése előtt kell befejezni.
+> Ha helyileg rögzített kötet létrehozása, és majd egy másik helyileg rögzített kötet létrehozása azonnal ezt követően a feladatok egymás után futnak a kötet létrehozása. Az első kötet-létrehozási feladatot a következő feladat a kötet létrehozásának megkezdése előtt kell be.
 
-## <a name="modify-a-volume"></a>A kötet módosítása
+## <a name="modify-a-volume"></a>Kötet módosítása
 
-Bontsa ki, vagy módosítsa a gazdagépek, amelyek a kötethez kell egy kötet módosításával.
+Bontsa ki azt, vagy módosítsa a gazdagépeket, amelyek elérni a kötetet kell egy kötet módosítása
 
 > [!IMPORTANT]
-> * Ha módosítja a kötet méretét, az eszközön, a kötet mérete kell módosítani a gazdagépen.
-> * A gazdagép-oldali itt leírt lépésekre a Windows Server 2012 (2012R2). Eljárások a Linux vagy más állomás operációs rendszerek eltérőek lesznek. Ha módosítja a kötet olyan operációs rendszert futtató másik gazdagépre tekintse meg a gazdagép operációs rendszer utasításokat.
+> * Az eszközön a kötet méretének módosítása esetén a kötet mérete a gazdagépen módosítani kell.
+> * A gazdagép-oldali lépéseket az itt leírtak szerint vannak a Windows Server 2012, (2012 R2). Eljárások a Linux rendszerű vagy más állomás operációs rendszerek eltérő lesz. Ha módosítja a kötet egy másik operációs rendszert futtató gazdagépen tekintse meg a gazdagép operációs rendszer utasításokat.
 
-#### <a name="to-modify-a-volume"></a>A kötet módosítása
+#### <a name="to-modify-a-volume"></a>Kötet módosítása
 
-1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listája, jelölje ki az eszközt, amely rendelkezik a kötetet, amelyet módosítani szeretne. Kattintson a **beállítások > kötetek**.
+1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listájából válassza ki az eszközt, amely rendelkezik a kötetet, amelyet módosítani szeretne. Kattintson a **beállítások > kötetek**.
 
     ![Ugrás a kötetek panel](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-2. A kötetek táblázatos listája, válassza ki a kötetet, és kattintson a jobb gombbal a helyi menü meghívni. Válassza ki **offline állapotba** módosítani fogja a kötet offline állapotba.
+2. A kötetek táblázatos listájában, válassza ki a kötetet, és kattintson a jobb gombbal a helyi menü meghívásához. Válassza ki **offline állapotba** módosítani fogja a kötet offline állapotba.
 
-    ![Válassza ki, és helyezze offline állapotba a kötet](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+    ![Válassza ki, és a kötet offline állapotba helyezése](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. Az a **offline állapotba** panelt, tekintse át a hatását, hogy a kötet offline állapotba helyezése, és válassza ki a megfelelő jelölőnégyzetet. Győződjön meg arról, hogy a megfelelő kötet a gazdagépen offline először. A gazdagép-kiszolgálón, a StorSimple csatlakozik egy kötet offline kapcsolatos információkért tekintse meg az operációs rendszer konkrét utasításokat. Kattintson a **offline állapotba**.
+3. Az a **offline állapotba** panelen tekintse át a kötet offline állapotba a hatását, és válassza ki a megfelelő jelölőnégyzetet. Győződjön meg arról, hogy a gazdagép a megfelelő kötet offline először. A gazdakiszolgálón StorSimple csatlakozik egy kötetet offline állapotrúra kapcsolatos információkért tekintse meg az operációs rendszer konkrét utasításokat. Kattintson a **offline állapotba**.
 
     ![Tekintse át a kötet offline állapotba helyezése hatása](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-4. Miután a kötet offline (ahogy a kötet állapot szerint), válassza ki a kötetet, és kattintson a jobb gombbal a helyi menü meghívni. Válassza ki **kötet módosítása**.
+4. Miután a kötet offline (ahogy azt a kötet állapota), válassza ki a kötetet, és meghívni a helyi menüben kattintson a jobb gombbal. Válassza ki **a kötet módosításának**.
 
     ![Válassza ki a kötet módosítása](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
 
 
-5. Az a **kötet módosítása** panelen módosításokat végezheti el a következő:
+5. Az a **a kötet módosításának** panelen, a következő módosításokat végezheti el:
    
    1. A kötet **neve** nem szerkeszthető.
-   2. Alakítsa át a **típus** a helyileg rögzített a rétegzett vagy a rétegzett a helyileg rögzített (lásd: [kötet típusának módosítása](#change-the-volume-type) további információk).
-   3. Növelje a **kapacitás kiosztása**. A **kiosztott kapacitást** pedig csak növelni. A kötet nem zsugorítható, létrehozás után.
-   4. A **csatlakozó állomások**, módosíthatja a ACR. Egy ACR módosításához a kötet offline állapotban kell lennie.
+   2. Konvertálja a **típus** a helyileg rögzített a rétegzett, vagy a rétegzett a helyileg rögzített (lásd: [a kötet típusának módosításához](#change-the-volume-type) további információt).
+   3. Növelje a **kiosztott kapacitás**. A **kiosztott kapacitást** pedig csak növelni. A létrehozást követően a kötet nem zsugorítható.
+   4. A **csatlakoztatott gazdagépek**, az ACR-REL módosíthatja. Módosítja egy ACR-t, a kötet offline állapotban kell lennie.
 
        ![Tekintse át a kötet offline állapotba helyezése hatása](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. Kattintson a **mentése** menti a módosításokat. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. Az Azure portál egy frissítési kötet üzenetet jelenít meg. Egy üzenetet, jelenít meg, ha a kötet sikeresen frissítve.
+5. Kattintson a **mentése** a módosítások mentéséhez. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. Az Azure Portalon egy frissítési mennyiségi üzenetet jelenít meg. A sikert jelző üzenet jelenik meg, ha a kötet frissítése sikeresen befejeződött.
 
     ![Tekintse át a kötet offline állapotba helyezése hatása](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-7. Ha egy kötet bővíti, végezze el az alábbi lépéseket a Windows-állomás számítógépen:
+7. Ha egy kötet bővíteni, hajtsa végre az alábbi lépéseket a Windows-állomás számítógépen:
    
-   1. Ugrás a **számítógép-kezelés** ->**felügyeleti lemez**.
+   1. Lépjen a **számítógép-kezelés** ->**lemez kezelése**.
    2. Kattintson a jobb gombbal **Lemezkezelés** válassza **lemezek újraellenőrzése**.
-   3. A lemezek, jelölje ki a kötetet, amelyeket azért frissített, kattintson a jobb gombbal, és válassza **kötet kiterjesztése**. A kötet kiterjesztése varázsló elindul. Kattintson a **Tovább** gombra.
-   4. Fejezze be a varázslót, az alapértelmezett értékek elfogadásával. A varázsló befejezése után, a kötet mérete nagyobb kell megjelenítenie.
+   3. A lemezek listája, válassza ki a kötetet, amelyet a frissített, kattintson a jobb gombbal, és válassza ki **kötet kiterjesztése**. A kötet kiterjesztése varázsló elindul. Kattintson a **tovább**.
+   4. Fejezze be a varázslót, az alapértelmezett értékek elfogadásával. A varázsló befejezése után a kötet megnövelt mérete kell megjelennie.
       
       > [!NOTE]
-      > Ha bontsa ki a helyileg rögzített kötet, és bontsa ki egy másik helyileg rögzített kötet közvetlenül ezek után a kötet bővítése feladatok egymás után futnak. A kötet bővítése első feladat a következő kötet bővítése feladat megkezdése előtt kell befejezni.
+      > Ha bontsa ki a helyileg rögzített kötetet, és bontsa ki egy másik helyileg rögzített kötet azonnal ezt követően a kötet bővítése feladatok egymás után futnak. Az első kötet bővítése feladat a következő kötet bővítése feladat megkezdése előtt kell be.
       
 
-## <a name="change-the-volume-type"></a>Módosítsa a kötet típusa
+## <a name="change-the-volume-type"></a>A kötet típusának módosítása
 
-Módosíthatja a kötet típusa a helyileg rögzített a rétegzett, vagy a helyileg rögzített a rétegzett. Ez a konverzió azonban nem lehet egy gyakori előfordulásainak kívánt számát.
+Módosíthatja a kötettípus rétegzettről a helyileg rögzített, illetve a helyileg rögzített a rétegzett. Az átalakítás azonban nem lehet egy gyakori előfordulás.
 
-### <a name="tiered-to-local-volume-conversion-considerations"></a>Helyi kötet átalakítás megfontolandó rétegzett
+### <a name="tiered-to-local-volume-conversion-considerations"></a>Rétegzettről helyi kötet átalakítás kapcsolatos szempontok
 
-Néhány ok, amiért a kötet alakításának a helyileg rögzített rétegzett vannak:
+Néhány ok a kötet konvertálása rétegzettről helyi rögzített a következők:
 
 * Helyi garanciákat adatok rendelkezésre állását és teljesítményét
-* Felhő késéseket és a felhő kapcsolódási problémák megszüntetését.
+* Felhőbeli késéseket és a felhőbeli kapcsolódási problémák megszüntetését.
 
-Ezek általában kicsi, amelyet gyakran használt meglévő kötetet. Egy helyileg rögzített kötet teljesen kiépítve, létrehozásakor. 
+Ezek általában kicsi, gyakran használt meglévő kötetet. Egy helyileg rögzített kötet létrehozásakor teljes kiépítése. 
 
-A rétegzett kötetek alakít át egy helyileg rögzített kötetet, ha a StorSimple ellenőrzi, hogy van elegendő hely az eszközön az átalakítás megkezdése előtt. Ha nincs elég hely van, hibaüzenetet kap, és megszakítja a műveletet. 
+Ha egy rétegzett kötet a helyileg rögzített kötetet, a StorSimple áll rendelkezésre elegendő lemezterület az eszközön az átalakítás megkezdése előtt ellenőrzi. Ha nincs elég hely van, hibaüzenetet kap, és megszakítja a műveletet. 
 
 > [!NOTE]
-> A helyileg rögzített rétegzett való átalakítás megkezdése előtt győződjön meg arról, hogy érdemes-e a lemezterület-igénye a többi munkaterhelését. 
+> A helyileg rögzített rétegzett a konvertálást megkezdése előtt győződjön meg arról, hogy érdemes-e a szükséges lemezterület a többi alkalmazáshoz és. 
 
-A helyileg rögzített kötet egy rétegzett történő átalakítás kedvezőtlen hatással lehet a Teljesítmény eszköz. Emellett az alábbi tényezők növelheti a konvertálás befejezéséhez szükséges idő:
+A helyileg rögzített kötetet egy rétegzett történő átalakítás eszközteljesítmény kedvezőtlen hatással lehet. Ezenkívül a következő tényezőket növelheti az átalakítás végrehajtásához szükséges idő:
 
 * Nincs elegendő sávszélesség.
-* Nincs aktuális biztonsági másolat.
+* Nincs aktuális biztonsági mentés.
 
-Ha csökkenteni szeretné a ezek a tényezők lehetnek:
+Minimalizálása érdekében, hogy előfordulhat, hogy ezek a tényezők:
 
-* Tekintse át a sávszélesség-szabályozási házirendeket, és győződjön meg arról, hogy rendelkezésre áll-e a dedikált 40 MB/s sávszélességet.
-* A konverzió kevesen ütemezni.
-* A felhő pillanatképet az átalakítás előtt.
+* Tekintse át a sávszélesség-szabályozási házirendek, és győződjön meg arról, hogy egy dedikált 40 MB/s sávszélesség érhető el.
+* Csúcsidőszakon kívüli órán keresztül az átalakítás ütemezése.
+* Felhőbeli pillanatkép készítése, az átalakítás előtt.
 
-Ha több kötet (támogatja a különböző terhelésekhez), majd kell helyezi előtérbe a kötet átalakítás, hogy a magasabb prioritású kötetek először konvertálja. Például kell átalakítása üzemeltető virtuális gépek (VM) és az SQL-munkaterhelések kötetek fájl megosztási munkaterhelések kötetek átalakítása előtt.
+Ha több kötet (támogatja a különböző számítási feladatok), majd Ön előnyben részesíti a kötet átalakítását, hogy a magasabb prioritású kötetek először konvertálja. Például alakítsuk üzemeltető virtuális gépek (VM) és az SQL-tevékenységprofilokhoz kötetek előtt, alakítsa át a köteteket a fájl megosztási számítási feladatokkal.
 
-### <a name="local-to-tiered-volume-conversion-considerations"></a>Helyi rétegzett kötet átalakítás megfontolandó
+### <a name="local-to-tiered-volume-conversion-considerations"></a>Helyi és rétegzett kötet átalakítás kapcsolatos szempontok
 
-Érdemes lehet módosítani egy helyileg rögzített kötet rétegzett kötetet, ha más kötetek kiépítéséhez további területre van szükség. A helyileg rögzített kötet rétegzett, az eszköz növeli az elérhető kapacitás mérete elérhető kapacitást alakításakor. Ha problémák megakadályozzák a kötet a helyi-típusra történő konvertálást rétegzett típusra, a helyi kötet virágot fog hozni egy rétegzett kötet tulajdonságainak csak az átalakítás befejeződése után. Ennek oka az, néhány adat előfordulhat, hogy rendelkezik kiömlött a felhőbe. Ezek az adatok kiömlött továbbra helyi terület az eszközön, amely nem szabadítható, amíg a művelet újra, és befejeződött.
+Előfordulhat, hogy szeretné módosítani egy helyileg rögzített kötet a rétegzett kötetek, ha más kötetek kiépítéséhez további tárterületre van szükség. Amikor címkévé alakít a helyileg rögzített kötet rétegzett, az eszköz növeli az elérhető kapacitás mérete a rendelkezésre álló kapacitást. Ha kapcsolódási problémák megakadályozzák a típusról egy kötet a helyi a rétegzett típusú, a helyi kötet mindaddig, amíg a konvertálás befejeződött a rétegzett kötet tulajdonságait a mutatnak. Ennek az oka néhány adatot lehet, hogy rendelkezik kiömlött a felhőbe. Ez kiömlött adatai továbbra is helyi területet az eszközön, amely nem szabadítható fel addig, amíg a művelet újraindul, és befejeződött foglalhat el.
 
 > [!NOTE]
-> Egy kötet konvertálása eltarthat egy ideig, és a konvertálás nem vethető el, miután elindult. A kötet online állapotban marad az átalakítás során és a biztonsági másolatok készítése, de nem kibontása vagy a kötet visszaállítása, az átalakítás közben.
+> Egy kötet konvertálása eltarthat egy ideig, és a egy átalakítás nem szakítható meg, miután elindult. A kötet online állapotban marad az átalakítás során és a biztonsági másolatok készítése, de nem kibontása vagy az átalakítás lefolyása közben a kötet visszaállítása.
 
 
-#### <a name="to-change-the-volume-type"></a>A kötet típusa módosítása
+#### <a name="to-change-the-volume-type"></a>A kötet típusának módosítása
 
-1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listája, jelölje ki az eszközt, amely rendelkezik a kötetet, amelyet módosítani szeretne. Kattintson a **beállítások > kötetek**.
+1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listájából válassza ki az eszközt, amely rendelkezik a kötetet, amelyet módosítani szeretne. Kattintson a **beállítások > kötetek**.
 
     ![Ugrás a kötetek panel](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. A kötetek táblázatos listája, válassza ki a kötetet, és kattintson a jobb gombbal a helyi menü meghívni. Válassza ki **módosítása**.
+3. A kötetek táblázatos listájában, válassza ki a kötetet, és kattintson a jobb gombbal a helyi menü meghívásához. Válassza ki **módosítása**.
 
     ![Válassza ki a helyi menüből módosítása](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
 
-4. A a **kötet módosítása** panelen jelölje ki az új a kötet típusának módosítása a **típus** legördülő listában.
+4. Az a **a kötet módosításának** panelen, a kötet típusának módosításához jelölje ki a új, a **típusa** legördülő listából válassza ki.
    
-   * Ha módosítja a típus a **helyileg rögzített**, StorSimple ellenőrzi, hogy van-e elegendő kapacitása.
-   * Ha módosítja a típus a **rétegzett** és archiválási adatok, jelölje be ezt a kötetet fog történni a **kötet használata ritkábban használt archív adatokhoz** jelölőnégyzetet.
-   * Ha konfigurál egy helyileg rögzített kötetet, rétegzett vagy _viszont_, a következő üzenet jelenik meg.
+   * Ha módosítja a típus a **helyileg rögzített**, a StorSimple ellenőrzi, hogy van-e elegendő kapacitással.
+   * Ha módosítja a típus a **rétegzett** és archiválási adatok, válassza ezt a kötetet lesz a **kötet használata ritkábban használt archív adatokhoz** jelölőnégyzetet.
+   * Ha helyileg rögzített kötetet állítja be, a rétegzett vagy _fordítva_, a következő üzenet jelenik meg.
    
-    ![Változás kötet típus üzenet](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+    ![Változás kötet típusa üzenet](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
-7. Kattintson a **Mentés** gombra a módosítások mentéséhez. Amikor felszólítja a megerősítésre, kattintson **Igen** az átalakítási folyamat elindításához. 
+7. Kattintson a **Mentés** gombra a módosítások mentéséhez. Amikor a rendszer megerősítést kér, kattintson a **Igen** az átalakítási folyamat elindításához. 
 
     ![Mentse és megerősítése](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-8. Az Azure-portál a feladat létrehozásához, amely a kötet frissítené értesítést jelenít meg. Kattintson az értesítésre kattinthat a kötet átalakítási feladat állapotának figyelésére.
+8. Az Azure Portalon a feladat létrehozásához, amely a kötet frissítené értesítést jelenít meg. Kattintson az értesítésre, figyelheti a feladat állapotát.
 
-    ![Kötet átalakítási feladat](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
+    ![Feladat kötet átalakításhoz](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
 
 ## <a name="take-a-volume-offline"></a>A kötet offline állapotba helyezése
 
-Szükség lehet egy kötet offline állapotba, ha azt tervezi, hogy módosítja vagy törli a kötetet. Ha egy kötet offline állapotban, nincs olvasási és írási hozzáférése érhető el. A kötet offline állapotba a gazdagép és az eszköz szükséges.
+Szükség lehet egy kötetet offline állapotba, ha azt tervezi, vagy a kötet törlése. Ha egy kötetet offline állapotban, akkor nem érhető olvasási és írási hozzáférése. Meg kell tennie a kötetet offline állapotrúra a gazdagép és az eszközt.
 
 #### <a name="to-take-a-volume-offline"></a>A kötet offline állapotba
 
-1. Győződjön meg arról, hogy az adott kötet nem offline állapotba helyezése előtt használatban van.
-2. Igénybe offline állapotba a kötet a gazdagépen első. Ezzel a megoldással a köteten adatsérülés lehetséges kockázatát. Tekintse meg az utasításokat a gazda operációs rendszer megadott lépéseket.
-3. Miután a gazdagép offline állapotban, igénybe a kötet offline állapotba az eszközön az alábbi lépések elvégzésével:
+1. Győződjön meg arról, hogy az adott kötet nem használja, offline állapotba helyezése előtt.
+2. Állítsa offline állapotba a gazdagépen első. Ezzel elkerülhető, hogy a köteten adatsérülés lehetséges kockázatát. Tekintse meg az utasításokat a gazda operációs rendszer megadott lépéseket.
+3. Miután a gazdagép offline állapotban van, végre a kötet offline módban az eszközt a következő lépések végrehajtásával:
    
-    1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listája, jelölje ki az eszközt, amely rendelkezik a kötetet, amelyet módosítani szeretne. Kattintson a **beállítások > kötetek**.
+    1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listájából válassza ki az eszközt, amely rendelkezik a kötetet, amelyet módosítani szeretne. Kattintson a **beállítások > kötetek**.
 
         ![Ugrás a kötetek panel](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-    2. A kötetek táblázatos listája, válassza ki a kötetet, és kattintson a jobb gombbal a helyi menü meghívni. Válassza ki **offline állapotba** módosítani fogja a kötet offline állapotba.
+    2. A kötetek táblázatos listájában, válassza ki a kötetet, és kattintson a jobb gombbal a helyi menü meghívásához. Válassza ki **offline állapotba** módosítani fogja a kötet offline állapotba.
 
-        ![Válassza ki, és helyezze offline állapotba a kötet](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+        ![Válassza ki, és a kötet offline állapotba helyezése](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. Az a **offline állapotba** panelt, tekintse át a hatását, hogy a kötet offline állapotba helyezése, és válassza ki a megfelelő jelölőnégyzetet. Kattintson a **offline állapotba**. 
+3. Az a **offline állapotba** panelen tekintse át a kötet offline állapotba a hatását, és válassza ki a megfelelő jelölőnégyzetet. Kattintson a **offline állapotba**. 
 
     ![Tekintse át a kötet offline állapotba helyezése hatása](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
-      Értesítést kap a kötet offline állapotban. A kötet állapota offline is frissíti.
+      Értesítést kap a kötet offline állapotban. Offline is frissíti a kötet állapota.
       
-4. Miután egy kötet nem érhető el, ha a kötet, és kattintson a jobb gombbal, **online állapotba hozás** beállítás akkor válik elérhetővé a helyi menü.
+4. Miután egy kötet offline állapotban, ha a kötet, és kattintson a jobb gombbal, válassza ki **online állapotba hozás** lehetőség válik elérhetővé a helyi menüben.
 
 > [!NOTE]
-> A **Offline állapotba** parancs kérést küld az eszközt, hogy a kötet offline állapotba. Gazdagépek még mindig használja a kötetet, ha az eredmény megszakadt kapcsolat, de a kötet offline állapotba helyezése nem sikertelen lesz.
+> A **Offline állapotba** parancs egy kérést küld az eszköz a kötet offline állapotba. Ha a gazdagépek továbbra is használja a kötetet, ennek hatására a megszakadt kapcsolatok, de a kötet offline állapotba helyezése nem sikertelen lesz.
 
 ## <a name="delete-a-volume"></a>Kötet törlése
 
 > [!IMPORTANT]
-> Törölheti a kötet csak akkor, ha offline állapotban.
+> A kötet törölheti csak akkor, ha a kapcsolat nélküli üzemmódban.
 
-Az alábbi lépésekkel kötet törlése.
+A következő lépéseket egy kötet törlése.
 
 #### <a name="to-delete-a-volume"></a>Kötet törlése
 
-1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listája, jelölje ki az eszközt, amely rendelkezik a kötetet, amelyet módosítani szeretne. Kattintson a **beállítások > kötetek**.
+1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listájából válassza ki az eszközt, amely rendelkezik a kötetet, amelyet módosítani szeretne. Kattintson a **beállítások > kötetek**.
 
     ![Ugrás a kötetek panel](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. A törölni kívánt kötet állapotának ellenőrzéséhez. Ha törli a kötet nem offline állapotban, offline állapotba először. Kövesse a [kötet offline állapotba](#take-a-volume-offline).
-4. Után a kötet offline állapotban, jelölje ki a kötetet, kattintson a jobb gombbal a helyi menü meghívni, és jelölje ki **törlése**.
+3. A törölni kívánt kötet állapotának ellenőrzéséhez. Ha törölni szeretné a kötet nem offline állapotban van, a hálózatról, először. Kövesse a [egy kötetet offline állapotba](#take-a-volume-offline).
+4. Után a kötet offline állapotban, válassza ki a kötetet, kattintson a jobb gombbal indítja el a helyi menüt, és válassza ki **törlése**.
 
-    ![Helyi menüből válassza törlése](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
+    ![Helyi menüből válassza delete](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
 
-5. Az a **törlése** panelt, tekintse át, és jelölje be a kötet törlésekor hatását ellen. Ha töröl egy köteten, a köteten található összes adat elvész. 
+5. Az a **törlése** panelen tekintse át, és jelölje be a kötet törlésének következményeit. Egy kötet törlésekor a köteten lévő összes adat elvész. 
 
-    ![Mentse és módosításának megerősítése](./media/storsimple-8000-manage-volumes-u2/deletevol2.png)
+    ![Mentés és a módosítások megerősítése](./media/storsimple-8000-manage-volumes-u2/deletevol2.png)
 
-6. A kötet törlését követően kötetek táblázatos listáját frissíti, a törlés jelzi.
+6. A kötet törlését követően a kötetek táblázatos listájában frissíti törlését jelzi.
 
     ![Frissített kötet listája](./media/storsimple-8000-manage-volumes-u2/deletevol3.png)
    
    > [!NOTE]
-   > Ha töröl egy helyileg rögzített kötetet, a szabad lemezterület az új kötetekre esetleg nem azonnal frissíti. A StorSimple Device Manager szolgáltatás rendszeres időközönként frissíti a rendelkezésre álló helyi területet. Javasoljuk, hogy csak néhány perc elteltével az új kötet létrehozásakor várja.
+   > Ha töröl egy helyileg rögzített kötetet, az új kötetek rendelkezésre álló terület nem frissíthető közvetlenül. A StorSimple-Eszközkezelő szolgáltatás rendszeres időközönként frissíti a rendelkezésre álló helyi területet. Javasoljuk, hogy, várjon néhány percet, mielőtt az új kötet létrehozásakor.
    >
-   > Emellett ha töröl egy helyileg rögzített kötet, és törölje a másikra helyileg rögzített kötet azonnal ezt követően, a kötet törlési feladatok egymás után futnak. Az első kötet törlési feladat a következő kötet törlési feladat megkezdése előtt kell befejezni.
+   > Ezenkívül ha törli a helyileg rögzített kötetet, majd törölje a másikra helyileg rögzített kötet azonnal ezt követően a kötet törlési feladatok egymás után futnak. Az első törlési feladat a következő feladat a kötet törlésének megkezdése előtt kell be.
 
-## <a name="monitor-a-volume"></a>A kötet figyelése
+## <a name="monitor-a-volume"></a>Megfigyelési
 
-Mennyiségi figyelési lehetővé teszi, hogy a kötet I/O-hez kapcsolódó Statisztika gyűjtése. Figyelés az Ön által létrehozott első 32 kötetekhez alapértelmezés szerint engedélyezve van. A további kötetek figyelés alapértelmezés szerint le van tiltva. 
+A kötet figyelésének lehetővé teszi egy kötet I/O-hez kapcsolódó statisztikákat gyűjthet. Figyelés az Ön által létrehozott első 32 kötetek alapértelmezés szerint engedélyezve van. További kötetek figyelés alapértelmezés szerint le van tiltva. 
 
 > [!NOTE]
-> A klónozott kötetek figyelés alapértelmezés szerint le van tiltva.
+> Klónozott kötet figyelés alapértelmezés szerint le van tiltva.
 
 
-A következő lépésekkel engedélyezhető vagy tiltható le a kötet figyelését.
+A következő lépésekkel engedélyezhető vagy tiltható le, a kötet figyelésének.
 
-#### <a name="to-enable-or-disable-volume-monitoring"></a>Engedélyezheti vagy tilthatja le a kötet figyelése
+#### <a name="to-enable-or-disable-volume-monitoring"></a>A kötet figyelésének letiltása és engedélyezése
 
-1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listája, jelölje ki az eszközt, amely rendelkezik a kötetet, amelyet módosítani szeretne. Kattintson a **beállítások > kötetek**.
-2. A kötetek táblázatos listája, válassza ki a kötetet, és kattintson a jobb gombbal a helyi menü meghívni. Válassza ki **módosítása**.
-3. A a **kötet módosítása** panelen a **figyelés** kiválasztása **engedélyezése** vagy **tiltsa le a** engedélyezni vagy letiltani a figyelés.
+1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listájából válassza ki az eszközt, amely rendelkezik a kötetet, amelyet módosítani szeretne. Kattintson a **beállítások > kötetek**.
+2. A kötetek táblázatos listájában, válassza ki a kötetet, és kattintson a jobb gombbal a helyi menü meghívásához. Válassza ki **módosítása**.
+3. Az a **a kötet módosításának** panelen a **figyelés** kiválasztása **engedélyezése** vagy **letiltása** engedélyezni vagy letiltani a figyelést.
 
-    ![Tiltsa le a figyelése](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 
+    ![Monitorozás letiltása](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 
 
-4. Kattintson a **mentése** és megerősítést kér, amikor kattintson **Igen**. Az Azure-portálon frissítéséhez a kötetet és egy üzenetet, miután frissítése sikeres volt a kötet értesítést jelenít meg.
+4. Kattintson a **mentése** és amikor a rendszer megerősítést kér, kattintson a **Igen**. Az Azure Portalon a kötetet, majd egy sikert jelző üzenettel, frissítésére, a kötet sikeres frissítése után egy értesítés jeleníti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [klónozza a StorSimple-kötet](storsimple-8000-clone-volume-u2.md).
-* Megtudhatja, hogyan [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).
+* Ismerje meg, hogyan [StorSimple-kötet klónozása](storsimple-8000-clone-volume-u2.md).
+* Ismerje meg, hogyan [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).
 

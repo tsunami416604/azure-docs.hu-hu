@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: f68e2d9c303b6df0d4a2a355dd9d41ac1616be9f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5af403b2d75a552719088daa17259f0771b77a94
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185970"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765678"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Az Azure Log Analytics-ügynököket a naplóadatok gyűjtése
 
-Az Azure Log Analytics (OMS) ügynök, a Microsoft Monitoring Agent (MMA) vagy az OMS Linux-ügynök, mint korábban említett kifejlesztett átfogó felügyeletét nyújtja a helyszíni gépeken által felügyelt számítógépek [System Center Operations Kezelő](https://docs.microsoft.com/system-center/scom/), és a virtuális gépek bármilyen felhőben. A Windows és Linux-ügynökök csatlakoztatása a Log Analytics-munkaterület különböző forrásokból, valamint minden olyan egyedi naplók adatainak összegyűjtése, illetve metrikák, meghatározott figyelési megoldásban. 
+Az Azure Log Analytics ügynök, a Microsoft Monitoring Agent (MMA) vagy az OMS Linux-ügynök, mint korábban említett kifejlesztett átfogó felügyeletét nyújtja a helyszíni gépeken által felügyelt számítógépek [System Center Operations Manager ](https://docs.microsoft.com/system-center/scom/), és a virtuális gépek bármilyen felhőben. A Windows és Linux-ügynökök csatlakoztatása a Log Analytics-munkaterület különböző forrásokból, valamint minden olyan egyedi naplók adatainak összegyűjtése, illetve metrikák, meghatározott figyelési megoldásban. 
 
 Ez a cikk részletes áttekintést nyújt az ügynök, a rendszer és a hálózati követelmények és a különböző központi telepítési módszer.   
 
@@ -41,7 +41,7 @@ A Linux és Windows-ügynököt nem csak a Log Analyticshez való kapcsolódás,
 ## <a name="supported-windows-operating-systems"></a>A támogatott Windows operációs rendszerek
 A Windows-ügynök hivatalosan támogatott a Windows operációs rendszer következő verziói:
 
-* A Windows Server 2008 Service Pack 1 (SP1) vagy újabb
+* A Windows Server 2008 R2 vagy újabb
 * Windows 7 SP1 és újabb verziók.
 
 ## <a name="supported-linux-operating-systems"></a>Támogatott Linux operációs rendszerek

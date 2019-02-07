@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 2/6/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: 43cceeb9b65bcee97855f96c781c5d157b32346a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 001eb1946ff0fdc073baaa6da76f4bfa63fc3652
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080923"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810627"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure Portalon
 
@@ -45,7 +45,7 @@ B2B-együttműködés felhasználók hozzáadása a címtárhoz, kövesse az al�
    ![Látható, ahol új vendégfelhasználó a felhasználói felületen](./media/add-users-administrator/InviteGuest.png) 
 
     > [!NOTE]
-    > Néhány e-mail-szolgáltatók engedélyezése a felhasználók hozzáadása a plusz jelet (+) és az e-mail címeket, például a Beérkezett üzenetek szűrése érdekében további szöveget. Azure ad-ben azonban jelenleg nem támogatja e-mail-címek szereplő szimbólumok jelentései a plusz. Kézbesítési problémák elkerülése érdekében hagyja ki ezt a szimbólumot, és akár a következő karaktereket a @ karaktert.
+    > E-mail-címek nem támogatottak; Adja meg az e-mail-cím egy egyéni. Emellett a bizonyos e-mail-szolgáltatók engedélyezése a felhasználóknak adjon hozzá egy plusz jelet (+) és az e-mail címeket, például a Beérkezett üzenetek szűrése érdekében további szöveget. Azure ad-ben azonban jelenleg nem támogatja e-mail-címek szereplő szimbólumok jelentései a plusz. Kézbesítési problémák elkerülése érdekében hagyja ki ezt a szimbólumot, és akár a következő karaktereket a @ karaktert.
 
 6. Válassza ki **Meghívás** elemet az meghívó automatikus elküldéséhez a vendégfelhasználó számára. 
  

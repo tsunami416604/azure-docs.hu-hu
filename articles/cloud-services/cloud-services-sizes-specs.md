@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 78a073ec7ee8432ba7804daef150afcbbca23ef6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a2af7ffde336016ae89a1ab03d753ed11b901e05
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095569"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818702"
 ---
 # <a name="sizes-for-cloud-services"></a>A Cloud Services méretei
 Ez a témakör ismerteti az elérhető méretek és a Cloud Service-szerepkörpéldányok (webes és feldolgozói szerepkörök) beállításokat. Telepítési szempontok figyelembe ezeket az erőforrásokat használatának tervezésekor is tartalmazza. Minden méretét rendelkezik egy Azonosítót, amely helyezi a [szolgáltatásdefiníciós fájl](cloud-services-model-and-package.md#csdef). Árak méreteire vonatkoztatva érhetők az [Cloud Services díjszabása](https://azure.microsoft.com/pricing/details/cloud-services/) lapot.
@@ -60,7 +60,7 @@ Hoztunk létre a fogalom, az Azure számítási egységek (ACU-k) az Azure-term�
 | Termékváltozat-család | ACU/mag |
 | --- | --- |
 | [ExtraSmall](#a-series) |50 |
-| [Kisméretű ExtraLarge](#a-series) |100 |
+| [Small-ExtraLarge](#a-series) |100 |
 | [A5-7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [A v2](#av2-series) |100 |
@@ -107,7 +107,7 @@ További információért és megfontolásokért a méretek használatával kapc
 
 ## <a name="av2-series"></a>Av2-sorozat
 
-| Méret            | Processzormagok | Memória: GiB  | Ideiglenes tárolást (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret            | Processzormagok | Memória: GiB  | Temporary Storage (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_A1_v2  | 1         | 2            | 10                   | 1/közepes                 |
 | Standard_A2_v2  | 2         | 4            | 20                   | 2/közepes                 |
@@ -119,7 +119,7 @@ További információért és megfontolásokért a méretek használatával kapc
 
 
 ## <a name="d-series"></a>D-sorozat
-| Méret            | Processzormagok | Memória: GiB  | Ideiglenes tárolást (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret            | Processzormagok | Memória: GiB  | Temporary Storage (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1     | 1         | 3.5          | 50                   | 1/közepes |
 | Standard_D2     | 2         | 7            | 100                  | 2/magas |
@@ -131,7 +131,7 @@ További információért és megfontolásokért a méretek használatával kapc
 | Standard_D14    | 16        | 112          | 800                  | 8/nagyon magas |
 
 ## <a name="dv2-series"></a>Dv2-sorozat
-| Méret            | Processzormagok | Memória: GiB  | Ideiglenes tárolást (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret            | Processzormagok | Memória: GiB  | Temporary Storage (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1_v2  | 1         | 3.5          | 50                   | 1/közepes |
 | Standard_D2_v2  | 2         | 7            | 100                  | 2/magas |
@@ -146,18 +146,18 @@ További információért és megfontolásokért a méretek használatával kapc
 
 ## <a name="dv3-series"></a>Dv3-sorozat
 
-| Méret            | Processzormagok | Memória: GiB   | Ideiglenes tárolást (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret            | Processzormagok | Memória: GiB   | Temporary Storage (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_D2_v3  | 2         | 8             | 50                   | 2/közepes |
 | Standard_D4_v3  | 4         | 16            | 100                  | 2/magas |
 | Standard_D8_v3  | 8         | 32            | 200                  | 4/magas |
 | Standard_D16_v3 | 16        | 64            | 400                  | 8/rendkívül magas |
 | Standard d32 v3 | 32        | 128           | 800                  | 8/rendkívül magas |
-| Standard D64 v3 | 64        | 256           | 1600                 | 8/rendkívül magas |
+| Standard_D64_v3 | 64        | 256           | 1600                 | 8/rendkívül magas |
 
 ## <a name="ev3-series"></a>Ev3-sorozat
 
-| Méret            | Processzormagok | Memória: GiB   | Ideiglenes tárolást (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret            | Processzormagok | Memória: GiB   | Temporary Storage (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_E2_v3  | 2         | 16            | 50                   | 2/közepes |
 | Standard_E4_v3  | 4         | 32            | 100                  | 2/magas |
@@ -168,7 +168,7 @@ További információért és megfontolásokért a méretek használatával kapc
 
 
 ## <a name="g-series"></a>G-sorozat
-| Méret            | Processzormagok | Memória: GiB  | Ideiglenes tárolást (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret            | Processzormagok | Memória: GiB  | Temporary Storage (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_G1     | 2         | 28           | 384                  |1/magas |
 | Standard_G2     | 4         | 56           | 768                  |2/magas |
@@ -181,7 +181,7 @@ Az Azure H-sorozat virtuális gépei a nagy teljesítményű feldolgozásra kép
 
 A jelentős CPU-teljesítmény mellett a H-sorozat különféle lehetőségeket kínál a kis késésű RDMA-hálózatkezeléshez az FDR InfiniBand használatával, valamint számos memóriakonfigurációt is a memóriaigényes számítási követelmények támogatására.
 
-| Méret            | Processzormagok | Memória: GiB  | Ideiglenes tárolást (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
+| Méret            | Processzormagok | Memória: GiB  | Temporary Storage (SSD): GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_H8     | 8         | 56           | 1000                 | 8/magas |
 | Standard_H16    | 16        | 112          | 2000                 | 8/nagyon magas |
@@ -195,7 +195,7 @@ A jelentős CPU-teljesítmény mellett a H-sorozat különféle lehetőségeket 
 ## <a name="configure-sizes-for-cloud-services"></a>Méretek konfigurálása a Felhőszolgáltatásokhoz
 A modell által leírt részeként is megadhat egy szerepkörpéldány virtuális gép méretét a [szolgáltatásdefiníciós fájl](cloud-services-model-and-package.md#csdef). A szerepkör méretét határozza meg a Processzor, a memória-kapacitás és a egy futó példány számára lefoglalt helyi fájlrendszeri méretet magok számát. Válassza ki a szerepkör méretét, az alkalmazás erőforrás-követelmény alapján.
 
-Íme egy példa a szerepkör méretét beállítás [Standard_D2](#general-purpose-d) egy webes szerepkör-példány:
+Íme egy példa a szerepkör méretét Standard_D2 egy webes szerepkör-példány beállításához:
 
 ```xml
 <WorkerRole name="Worker1" vmsize="Standard_D2">

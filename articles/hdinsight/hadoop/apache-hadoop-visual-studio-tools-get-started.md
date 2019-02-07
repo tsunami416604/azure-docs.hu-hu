@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: dc93d0b44d6d99e8418d4333ca8698bc9ebf3a96
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a23a2f536f765c62919960f3c582d04543b1f49a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629679"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820827"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>A Data Lake Tools for Visual Studio használatával csatlakozhat az Azure HDInsight és az Apache Hive-lekérdezések futtatása
 
@@ -250,11 +250,11 @@ A Hive on Tez feladatokhoz készült feladat-végrehajtási nézettel strukturá
 ![Képernyőkép a Data Lake Visual Studio Tools feladat-végrehajtási nézetének ablakáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png "Feladat-végrehajtási nézet")
 
 ## <a name="run-hive-batch-jobs"></a>Hive-os kötegelt feladatok futtatása
-A Hive-szkriptek HDInsight-fürtökön való tesztelése (az interaktív lekérdezési fürt kivételével) időigényes lehet. Ez a folyamat több percig, vagy akár tovább is eltarthat. A Data Lake Tools for Visual Studio képes helyben érvényesíteni a Hive-szkripteket anélkül, hogy egy élő fürthöz csatlakozna. Az interaktív lekérdezések futtatásával kapcsolatban lásd [az interaktív Hive-lekérdezések futtatásáról](#run-interactive-hive-queries) szóló cikket.
+A Hive-szkriptek HDInsight-fürtökön való tesztelése (az interaktív lekérdezési fürt kivételével) időigényes lehet. Ez a folyamat több percig, vagy akár tovább is eltarthat. A Data Lake Tools for Visual Studio képes helyben érvényesíteni a Hive-szkripteket anélkül, hogy egy élő fürthöz csatlakozna. Interaktív lekérdezések futtatásával kapcsolatos további információkért lásd az interaktív Hive-lekérdezések futtatása.
 
 A Data Lake Tools for Visual Studio segítségével megtekintheti, mi található a Hive-feladatokban, mivel begyűjtheti és a felszínre hozhatja bizonyos Hive-feladatok YARN-naplóit.
 
-A Hive-os kötegelt feladatok futtatásával kapcsolatos részleteket lásd [az interaktív Hive-lekérdezések futtatásáról](#run-interactive-hive-queries) szóló részben. Az ott található információk az időigényesebb Hive-os kötegelt feladatok futtatására vonatkoznak.
+Hive-os kötegelt feladatok futtatásával kapcsolatos további tudnivalókért lásd az interaktív Hive-lekérdezések futtatása. Az ott található információk az időigényesebb Hive-os kötegelt feladatok futtatására vonatkoznak.
 
 ## <a name="run-apache-pig-scripts"></a>Az Apache Pig-parancsfájlok futtatása
 A Data Lake Tools for Visual Studio támogatja a Pig-szkriptek létrehozását és HDInsight-fürtökbe való elküldését. Első lépésként hozzon létre egy Pig-projektet egy sablonból. Ezután küldje el a szkriptet a HDInsight-fürtökre.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c87b6791ea2d90ed302d796f17727a0338104beb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5339b0c77a69a915e58118888f8b82d095a43e38
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174992"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817784"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>A Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása
 Ez a témakör a Jelszókivonat-szinkronizálás hibáinak elhárítása a lépéseit ismerteti. Ha a jelszavak nem szinkronizál a várt módon, az összes felhasználó vagy felhasználók alcsoportjaihoz lehet.
@@ -237,7 +237,7 @@ Kövesse az alábbi lépéseket meghatározni, miért jelszó szinkronizálása 
 
 5. Ha nem érkezett szívverés jelenik meg, vagy ha semmi más működött, futtassa [teljes az összes jelszó-szinkronizálás aktiválása](#trigger-a-full-sync-of-all-passwords). Csak egyszer futtassa a szkriptet.
 
-6. Tekintse meg a [egy jelszavak nem szinkronizálódó objektumok hibaelhárítása](#one-object-is-not-synchronizing-passwords) szakaszban.
+6. A hibaelhárítás egy objektum, amely nem szinkronizálja a jelszavakat a szakaszban látható.
 
 ### <a name="connectivity-problems"></a>Csatlakozási problémák
 
@@ -303,7 +303,7 @@ Jelszó Jelszókivonat szinkronizálása problémák objektum állapotának megt
 
     ![Objektum napló részletei](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    Ha az objektum napló üres, az Azure AD Connect nem sikerült beolvasni a Jelszókivonat az Active Directoryból lett. Folytassa a [kapcsolódási hibák](#connectivity-errors). Ha látja, mint bármely más érték **sikeres**, tekintse meg a tábla [jelszó-szinkronizálási napló](#password-sync-log).
+    Ha az objektum napló üres, az Azure AD Connect nem sikerült beolvasni a Jelszókivonat az Active Directoryból lett. Továbbra is jelentkezik a hibaelhárítást. Ha látja, mint bármely más érték **sikeres**, tekintse meg a tábla [jelszó-szinkronizálási napló](#password-sync-log).
 
     h. Válassza ki a **leszármaztatási** lapra, és győződjön meg arról, hogy legalább egy szinkronizálási szabály a **PasswordSync** oszlop **igaz**. Az alapértelmezett beállítás a szinkronizálási szabály neve nem **az ad - felhasználó AccountEnabled**.  
 

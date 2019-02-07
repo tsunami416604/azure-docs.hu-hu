@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7b43b0e0676cc31938bf64cf84f9e6799c2dd3dd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 4336cabd256e492981e1bbff8d1b3b9e4ef07df1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296597"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820521"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Az Azure ad-val nem szinkronizálódó objektumok hibaelhárítása
 
@@ -143,7 +143,7 @@ Az objektum, és melyik szabály alkalmazása adott attribútum folyamathoz tart
 A oldalon tekintse meg a jelszó-szinkronizálás állapota és előzményei szolgál. További információkért lásd: [Jelszókivonat-szinkronizálás hibaelhárítása](tshoot-connect-password-hash-synchronization.md).
 
 ## <a name="metaverse-object-properties"></a>A Metaverzumbeli objektum tulajdonságai
-Általában jobb kezdeni a keresést az Active Directory forrásból [összekötőterében](#connector-space). De a Keresés a metaverzumban is elindíthatja.
+Általában célszerűbb a forrás-összekötőtérbe keresés indításához. De a Keresés a metaverzumban is elindíthatja.
 
 ### <a name="search-for-an-object-in-the-mv"></a>Keresse meg a MV-objektum
 A **Synchronization Service Managert**, kattintson a **keresés a Metaverzumban**. Hozzon létre egy lekérdezést, megkeresi a felhasználó ismeri. Általános attribútumokkal rendelkeznek, például accountName (sAMAccountName) és a userPrincipalName kereshet. További információkért lásd: [keresés a Metaverzumban](how-to-connect-sync-service-manager-ui-mvsearch.md).
@@ -195,6 +195,5 @@ Ha az Azure AD-összekötő hiányoznak, majd elolvashatják [MV attribútumok](
 Ezen a lapon emellett lehetővé teszi keresse meg a [összekötőtér objektuma](#connector-space-object-properties). Jelöljön ki egy sort, és kattintson a **tulajdonságok**.
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet a [Azure AD Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációja.
-
-További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).
+- [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md).
+- [Mi a hibrid identitás? ](whatis-hybrid-identity.md).

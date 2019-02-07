@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 5f096d016b2fa82e3b340a4a6b6c7e1fd6420216
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9c6ea982d9a605696dad0c943aa6dd2ae155d6bd
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037191"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770737"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Térinformatikai és GeoJSON helyadatok használata az Azure Cosmos DB SQL API-fiók
 
@@ -150,32 +150,13 @@ Most, hogy készített egy pillantást a földrajzi adatok beszúrása, vessünk
 ### <a name="spatial-sql-built-in-functions"></a>Térbeli SQL beépített függvények
 Az Azure Cosmos DB a következő nyissa meg a földrajzi Consortium (OGC) beépített függvények támogatja a térinformatikai lekérdezéséhez. A beépített függvény az SQL-nyelv, minden további információkért lásd: [Azure Cosmos DB lekérdezése](how-to-sql-query.md).
 
-<table>
-<tr>
-  <td><strong>Használat</strong></td>
-  <td><strong>Leírás</strong></td>
-</tr>
-<tr>
-  <td>ST_DISTANCE (spatial_expr, spatial_expr)</td>
-  <td>A két GeoJSON-pont, Polygon vagy LineString kifejezések között adja vissza a távolságot.</td>
-</tr>
-<tr>
-  <td>ST_WITHIN (spatial_expr, spatial_expr)</td>
-  <td>Egy logikai kifejezés, amely azt jelzi, hogy a második GeoJSON-objektum (pont, Polygon vagy LineString) belül van-e az első GeoJSON-objektumot (pont, Polygon vagy LineString) adja vissza.</td>
-</tr>
-<tr>
-  <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>Egy logikai kifejezés jelzi, hogy a két megadott GeoJSON objektum (pont, Polygon vagy LineString) átfedésben adja vissza.</td>
-</tr>
-<tr>
-  <td>ST_ISVALID</td>
-  <td>Jelzi, hogy a megadott GeoJSON-pont, Polygon vagy LineString kifejezés érvénytelen egy logikai értéket ad vissza.</td>
-</tr>
-<tr>
-  <td>ST_ISVALIDDETAILED</td>
-  <td>Egy JSON-értéket tartalmazó logikai értéket, ha a megadott GeoJSON-pont, Polygon vagy LineString kifejezés érvénytelen, és ha érvénytelen értéket ad vissza, továbbá egy olyan karakterláncértéket, az oka.</td>
-</tr>
-</table>
+|**Használat**|**Leírás**|
+|---|---|
+| ST_DISTANCE (spatial_expr, spatial_expr) | A két GeoJSON-pont, Polygon vagy LineString kifejezések között adja vissza a távolságot.|
+|ST_WITHIN (spatial_expr, spatial_expr) | Egy logikai kifejezés, amely azt jelzi, hogy a második GeoJSON-objektum (pont, Polygon vagy LineString) belül van-e az első GeoJSON-objektumot (pont, Polygon vagy LineString) adja vissza.|
+|ST_INTERSECTS (spatial_expr, spatial_expr)| Egy logikai kifejezés jelzi, hogy a két megadott GeoJSON objektum (pont, Polygon vagy LineString) átfedésben adja vissza.|
+|ST_ISVALID| Jelzi, hogy a megadott GeoJSON-pont, Polygon vagy LineString kifejezés érvénytelen egy logikai értéket ad vissza.|
+| ST_ISVALIDDETAILED| Egy JSON-értéket tartalmazó logikai értéket, ha a megadott GeoJSON-pont, Polygon vagy LineString kifejezés érvénytelen, és ha érvénytelen értéket ad vissza, továbbá egy olyan karakterláncértéket, az oka.|
 
 Térbeli funkciók térbeli adatokon közelségi lekérdezések végrehajtásához használható. Ha például Íme egy lekérdezést, amely visszaadja az összes családi dokumentumot, amelyek 30 km-re, a ST_DISTANCE beépített függvény használatával a megadott helyen belül. 
 
@@ -238,7 +219,7 @@ Az Azure Cosmos DB is támogatja a más néven inverz lekérdezések végrehajt�
 
 ST_ISVALID és ST_ISVALIDDETAILED használható annak ellenőrzésére, ha egy térbeli objektum érvénytelen. A következő lekérdezés például kívüli tartományértéke szélesség (-132.8) rendelkező pontok érvényességét ellenőrzi. ST_ISVALID csak egy logikai értéket ad vissza, és ST_ISVALIDDETAILED adja vissza, a logikai és az az oka, hogy miért minősül érvénytelen tartalmazó karakterlánc.
 
-** Lekérdezése **
+**Lekérdezés**
 
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 

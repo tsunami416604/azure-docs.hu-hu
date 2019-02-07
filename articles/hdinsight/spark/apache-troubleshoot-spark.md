@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2108de8988e973644e0622a4b76a04408949298e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f6e9641d106c40c061752b57744eda09aac157a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635150"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821966"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Hibaelhárítás az Apache Spark az Azure HDInsight segítségével
 
@@ -23,7 +23,7 @@ Ismerje meg a leggyakoribb problémák és azok megoldásait az használatakor [
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-A konfigurációs értékeket az eljárás végrehajtásához korábban be lett beállítva, a HDInsight. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza az Apache Spark-alkalmazás OutofMemoryError kivételt](#what-causes-a-spark-application-outofmemoryerror-exception). 
+A konfigurációs értékeket az eljárás végrehajtásához korábban be lett beállítva, a HDInsight. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: Mi az Apache Spark-alkalmazás OutofMemoryError kivétel okozza. 
 
 1. Fürtök listájából válassza ki **Spark2**.
 
@@ -92,7 +92,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza az Apache Spark-alkalmazás OutofMemoryError kivételt](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: Mi az Apache Spark-alkalmazás OutofMemoryError kivétel okozza.
 
 2. Az első olyan cellára, a Jupyter notebookot az után a **%% konfigurálása** irányelv, érvényes JSON formátumban adja meg a Spark-konfigurációkat. A tényleges értékek módosítása szükséges:
 
@@ -107,7 +107,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza az Apache Spark-alkalmazás OutofMemoryError kivételt](#what-causes-a-spark-application-outofmemoryerror-exception). 
+1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: Mi az Apache Spark-alkalmazás OutofMemoryError kivétel okozza. 
 
 2. Küldje el a Livy-, Spark-alkalmazás REST-ügyfél, például a cURL használatával. Használjon az alábbihoz hasonló parancsot. A tényleges értékek módosítása szükséges:
 
@@ -124,7 +124,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: [mi okozza az Apache Spark-alkalmazás OutofMemoryError kivételt](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: Mi az Apache Spark-alkalmazás OutofMemoryError kivétel okozza.
 
 2. Indítsa el a spark-shell az alábbihoz hasonló parancs használatával. Szükség szerint módosítsa a konfiguráció a tényleges érték: 
 

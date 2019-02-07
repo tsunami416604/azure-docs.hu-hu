@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: f36ee3ce6a8d678cdd846474576fc049df0b4f88
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 14b3d62235cfcc8bbc8a929757a16cf99b860753
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472303"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815761"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Az SQL Data Warehouse az SQL kód áttelepítése
 Ez a cikk ismerteti, hogy a kód egy másik adatbázis-ről az SQL Data Warehouse való áttelepítés esetén valószínűleg kell kódmódosítás. Néhány SQL Data Warehouse szolgáltatás jelentősen javíthatja a teljesítményt, a célja, hogy elosztott módon működnek. Azonban a teljesítmény és méretezhetőség fenntartása egyes funkciók nem érhetők el is.
@@ -32,7 +32,7 @@ A következő lista foglalja össze a leggyakrabban használt funkciók, amelyek
 * Output záradékban
 * belső felhasználó által definiált függvények
 * több utasításból álló függvények
-* [közös táblakifejezésekben](#Common-table-expressions)
+* közös táblakifejezésekben
 * [rekurzív közös táblakifejezésekben (irányuló)] (#Recursive-common-table-expressions-(CTE)
 * CLR-függvények és eljárások
 * $partition függvény

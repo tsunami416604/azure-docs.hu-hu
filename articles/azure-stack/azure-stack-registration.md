@@ -16,12 +16,12 @@ ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: d9ab89afba2b83f99bfbf432d033cd0546a25a9d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 36699acab7a10a11ae60c62bab8e5130362ddfc7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247391"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817257"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -142,7 +142,7 @@ Csatlakoztatott környezetek hozzáférhet az interneten és az Azure. Ilyen kö
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. Indítsa el a PowerShell ISE-t rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** akkor könyvtárat kell létrehozni, [letöltött az Azure Stack eszközök](#bkmk_tools). Importálás a **RegisterWithAzure.psm1** a modul PowerShell-lel:
+5. Indítsa el a PowerShell ISE-t rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** jön létre, amikor az Azure Stack eszközök letöltött könyvtár. Importálás a **RegisterWithAzure.psm1** a modul PowerShell-lel:
 
    ```PowerShell  
    Import-Module .\RegisterWithAzure.psm1
@@ -206,7 +206,7 @@ Csatlakoztatott környezetek hozzáférhet az interneten és az Azure. Ilyen kö
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. Indítsa el a PowerShell ISE-t rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** akkor könyvtárat kell létrehozni, [letöltött az Azure Stack eszközök](#bkmk_tools). Importálás a **RegisterWithAzure.psm1** a modul PowerShell-lel:
+5. Indítsa el a PowerShell ISE-t rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** jön létre, amikor az Azure Stack eszközök letöltött könyvtár. Importálás a **RegisterWithAzure.psm1** a modul PowerShell-lel:
 
   ```PowerShell  
   $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -225,11 +225,11 @@ Csatlakoztatott környezetek hozzáférhet az interneten és az Azure. Ilyen kö
 
 ## <a name="register-disconnected-with-capacity-billing"></a>A kapacitás számlázással leválasztott regisztrálása
 
-Ha regisztrál az Azure Stack kapcsolat nélküli környezetben (az internet-hozzáférés nélküli), szerezze be egy regisztrációs tokent az Azure Stack-környezet, majd ezt a jogkivonatot, amely képes csatlakozni az Azure, és egy számítógépen kell [PowerShell az Azure Stack telepítése](#bkmk_powershell).  
+Ha regisztrál az Azure Stack kapcsolat nélküli környezetben (nincs internetkapcsolat), szeretné-e szerezze be egy regisztrációs tokent az Azure Stack-környezet, majd ezt a jogkivonatot egy számítógépen, amely képes csatlakozni az Azure és az Azure Stack PowerShell rendelkezik telepítve van.  
 
 ### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>Szerezze be egy regisztrációs tokent az Azure Stack-környezet
 
-1. Indítsa el a PowerShell ISE-t rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** akkor könyvtárat kell létrehozni, [letöltött az Azure Stack eszközök](#bkmk_tools). Importálás a **RegisterWithAzure.psm1** modul:  
+1. Indítsa el a PowerShell ISE-t rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** jön létre, amikor az Azure Stack eszközök letöltött könyvtár. Importálás a **RegisterWithAzure.psm1** modul:  
 
    ```PowerShell  
    Import-Module .\RegisterWithAzure.psm1
@@ -448,15 +448,15 @@ A parancsmag futtatásához szüksége:
 | Paraméter | Typo | Leírás |
 |-------------------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | PrivilegedEndpointCredential | PSCredential | A használt hitelesítő adatok [az emelt szintű végpontot](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). A felhasználónevet a következő formátumban kell **AzureStackDomain\CloudAdmin**. |
-| PrivilegedEndpoint | Karakterlánc | Egy előre konfigurált távoli PowerShell-konzolt, amely biztosít, mint például a naplógyűjtés és egyéb post telepítési feladatokat. További tudnivalókért tekintse meg a [használatával a privilegizált végpont](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) cikk. |
+| PrivilegedEndpoint | String | Egy előre konfigurált távoli PowerShell-konzolt, amely biztosít, mint például a naplógyűjtés és egyéb post telepítési feladatokat. További tudnivalókért tekintse meg a [használatával a privilegizált végpont](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) cikk. |
 | AzureContext | PSObject |  |
-| ResourceGroupName | Karakterlánc |  |
-| ResourceGroupLocation | Karakterlánc |  |
-| BillingModel | Karakterlánc | A számlázási modell, amely az előfizetés használja. Ez a paraméter megengedett értékei a következők: Kapacitás, PayAsYouUse és fejlesztésére. |
+| ResourceGroupName | String |  |
+| ResourceGroupLocation | String |  |
+| BillingModel | String | A számlázási modell, amely az előfizetés használja. Ez a paraméter megengedett értékei a következők: Kapacitás, PayAsYouUse és fejlesztésére. |
 | MarketplaceSyndicationEnabled | Igaz/hamis | Meghatározza, hogy-e a Marketplace-en felügyeleti funkció érhető el a portálon. Állítsa az igaz értékre, ha az internetkapcsolattal rendelkező regisztrálása. "False" értékűre, ha regisztrálja az kapcsolat nélküli környezetekben is. Kapcsolat nélküli regisztrációkhoz a [offline szindikálási eszköz](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) letöltése a marketplace-elemek is használható. |
 | UsageReportingEnabled | Igaz/hamis | Az Azure Stack használati metrikai jelentések alapértelmezés szerint. Kapacitás használt vagy leválasztott környezetben támogató kezelők kell kikapcsolni a használati jelentések készítése. Ez a paraméter megengedett értékei a következők: IGAZ, hamis. |
-| AgreementNumber | Karakterlánc |  |
-| RegistrationName | Karakterlánc | Állítsa be egy egyedi nevet a regisztráció, ha futtatja a regisztrációs szkriptet az Azure Stack több példányának használatával az ugyanabban az Azure előfizetés-azonosító. A paraméter alapértelmezett értéke van **AzureStackRegistration**. Azonban ha ugyanazzal a névvel egynél több Azure Stack-példányt használ, a parancsfájl futtatása sikertelen. |
+| AgreementNumber | String |  |
+| RegistrationName | String | Állítsa be egy egyedi nevet a regisztráció, ha futtatja a regisztrációs szkriptet az Azure Stack több példányának használatával az ugyanabban az Azure előfizetés-azonosító. A paraméter alapértelmezett értéke van **AzureStackRegistration**. Azonban ha ugyanazzal a névvel egynél több Azure Stack-példányt használ, a parancsfájl futtatása sikertelen. |
 
 ### <a name="get-azsregistrationtoken"></a>Get-AzsRegistrationToken
 
@@ -470,14 +470,14 @@ Get-AzsRegistrationToken egy regisztrációs jogkivonatot hoz létre a bemeneti 
 | Paraméter | Typo | Leírás |
 |-------------------------------|--------------|-------------|
 | PrivilegedEndpointCredential | PSCredential | A használt hitelesítő adatok [az emelt szintű végpontot](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). A felhasználónevet a következő formátumban kell **AzureStackDomain\CloudAdmin**. |
-| PrivilegedEndpoint | Karakterlánc |  Egy előre konfigurált távoli PowerShell-konzolt, amely biztosít, mint például a naplógyűjtés és egyéb post telepítési feladatokat. További tudnivalókért tekintse meg a [használatával a privilegizált végpont](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) cikk. |
+| PrivilegedEndpoint | String |  Egy előre konfigurált távoli PowerShell-konzolt, amely biztosít, mint például a naplógyűjtés és egyéb post telepítési feladatokat. További tudnivalókért tekintse meg a [használatával a privilegizált végpont](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) cikk. |
 | AzureContext | PSObject |  |
-| ResourceGroupName | Karakterlánc |  |
-| ResourceGroupLocation | Karakterlánc |  |
-| BillingModel | Karakterlánc | A számlázási modell, amely az előfizetés használja. Ez a paraméter megengedett értékei a következők: Kapacitás, PayAsYouUse és fejlesztésére. |
+| ResourceGroupName | String |  |
+| ResourceGroupLocation | String |  |
+| BillingModel | String | A számlázási modell, amely az előfizetés használja. Ez a paraméter megengedett értékei a következők: Kapacitás, PayAsYouUse és fejlesztésére. |
 | MarketplaceSyndicationEnabled | Igaz/hamis |  |
 | UsageReportingEnabled | Igaz/hamis | Az Azure Stack használati metrikai jelentések alapértelmezés szerint. Kapacitás használt vagy leválasztott környezetben támogató kezelők kell kikapcsolni a használati jelentések készítése. Ez a paraméter megengedett értékei a következők: IGAZ, hamis. |
-| AgreementNumber | Karakterlánc |  |
+| AgreementNumber | String |  |
 
 
 ## <a name="next-steps"></a>További lépések

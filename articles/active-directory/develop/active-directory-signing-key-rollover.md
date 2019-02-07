@@ -16,12 +16,12 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6174dd210cf85bfa6a3daf38965d1da65801321c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d137f2217575bfddec5a2bc2ead4e210b8cf1865
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076332"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815337"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directory aláírókulcs
 Ez a cikk ismerteti, mit kell tudni az Azure Active Directory (Azure AD) biztonsági jogkivonatok aláírásához használt nyilvános kulcsok. Fontos megjegyezni, hogy a kulcsok váltása rendszeres időközönként, és a egy robotkart sikerült kell leváltani azonnal. Minden alkalmazás, amely az Azure AD használata programozott módon kezelni a kulcshoz kapcsolódó kulcsváltás folyamat vagy rendszeres manuális váltása folyamatot képesnek kell lennie. Tudni, hogyan működnek a kulcsokat, olvassa tovább az alkalmazás a Váltás hatásainak kiértékelését és frissítheti az alkalmazást, vagy időszakos manuális váltása folyamatot kulcsváltás kezelésére, ha szükséges.
@@ -44,7 +44,7 @@ Hogyan kezeli az alkalmazás a kulcshoz kapcsolódó kulcsváltás attól függ,
 * [Webes alkalmazások / API-k használata a Node.js passport-azure-ad-modul erőforrások védelme](#passport)
 * [Webes alkalmazások / erőforrások védelme és a Visual Studio 2015 vagy Visual Studio 2017 használatával létrehozott API-k](#vs2015)
 * [Erőforrások védelme és a Visual Studio 2013 létrehozott webalkalmazások](#vs2013)
-* [Webes API-k erőforrások védelméről, és Visual Studio 2013-hoz létre](#vs2013_webapi)
+* Webes API-k erőforrások védelméről, és Visual Studio 2013-hoz létre
 * [Erőforrások védelme és a Visual Studio 2012-vel létrehozott webalkalmazások](#vs2012)
 * [Erőforrások védelme és a Visual Studio 2010, a Windows Identity Foundation használatával 2008 o létrehozott webalkalmazások](#vs2010)
 * [Webes alkalmazások / API-k használatával bármilyen más könyvtárat vagy manuális megvalósítása a támogatott protokollok erőforrások védelme](#other)

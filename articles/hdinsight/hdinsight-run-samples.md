@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf7ef6f8e5dc157d3c3e89c9dfe3735c255694fa
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0a174c3de33b01f936eec599c1de68e2cebbf9c5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745057"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820419"
 ---
 # <a name="run-mapreduce-samples-in-windows-based-hdinsight"></a>A Windows-alapú HDInsight MapReduce-minták futtatása
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -54,7 +54,7 @@ Napjainkban sok ember válassza ki az Apache Hive- és Apache Pig MapReduce kere
 ## <a name="hdinsight-sample-wordcount"></a>Szószámlálás – Java
 Küldje el egy MapReduce-projektet, először hozzon létre egy MapReduce-feladat definíciója. A feladat-definícióban, a MapReduce program jar-fájlra és a jar-fájlt, amely a helyének megadásához **wasb:///example/jars/hadoop-mapreduce-examples.jar**, az osztály nevét, és az argumentumokat.  A wordcount MapReduce-programot két argumentumot: a forrásfájl, amellyel szavakat, és a kimeneti helyet száma.
 
-A forráskód megtalálható a [függelék](#apendix-a---the-word-count-MapReduce-program-in-java).
+A forráskód tekintheti meg a A. függelék
 
 Az eljárás egy Java MapReduce fejlődő programok, lásd: - [fejlesztés Java MapReduce programok HDInsight az Apache Hadoophoz készült](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
@@ -135,7 +135,7 @@ Addig is a nyomáscsökkentő gyűjti a sor alapú kimenete a [stdout] [ stdin-s
 
 **Egy C# streamelési word-count feladat elküldése**
 
-* Kövesse a [Szószámlálás – Java](#word-count-java), és cserélje le a feladat definícióját a következő sort:
+* Kövesse a Word-count - Java, és cserélje le a feladat definícióját a következő sort:
 
     ```powershell
     $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
@@ -157,7 +157,7 @@ Ehhez a mintához megadott parancsfájl egy Hadoop-jar feladatot, és értéke l
 
 **A pi estimator feladatok elküldése**
 
-* Kövesse a [Szószámlálás – Java](#word-count-java), és cserélje le a feladat definícióját a következő sort:
+* Kövesse a Word-count - Java, és cserélje le a feladat definícióját a következő sort:
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -185,7 +185,7 @@ Három feladat a példaszkript, egyes megfelelő bevezető ismertetett MapReduce
 
 **A feladatok elküldése**
 
-* Kövesse a [Szószámlálás – Java](#word-count-java), és használja a következő definíciók:
+* Kövesse a Word-count - Java, és használja a következő definíciók:
 
     ```powershell
     $teragen = New-AzureRmHDInsightMapReduceJobDefinition `

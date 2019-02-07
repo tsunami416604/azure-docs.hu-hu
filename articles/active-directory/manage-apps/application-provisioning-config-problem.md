@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2d1a449511ce944783c8d93b79d59be263b20fa3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38075c9216eab955a023fee53aad74f3768d783c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163943"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822272"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>A probléma az Azure AD katalógusából származó alkalmazásba történő felhasználókiépítés konfigurálása
 
@@ -41,7 +41,7 @@ Miután konfigurálta a szolgáltatást, a szolgáltatás működését a legtö
 Az alábbi, az általános problémás területek, amely részletesen is megtekintheti, ha van egy ötlete, hol kell elkezdeni listáját.
 
 * [A kiépítési szolgáltatás nem jelenik meg indítása](#provisioning-service-does-not-appear-to-start)
-* [Nem lehet menteni a konfiguráció miatt nem működik alkalmazás hitelesítő adatok](#can’t-save-configuration-due-to-app-credentials-not-working)
+* Nem lehet menteni a konfiguráció miatt nem működik alkalmazás hitelesítő adatok
 * [Auditnaplók tegyük fel, hogy felhasználók "kihagyva", és nincs kiépítve, még akkor is, ha hozzá vannak rendelve](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>A kiépítési szolgáltatás nem jelenik meg indítása

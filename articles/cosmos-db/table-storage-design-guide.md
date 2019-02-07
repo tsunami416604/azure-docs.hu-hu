@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: bb759c0b21287f8198f2f4e0dac10020a3b31d62
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 433f99d72feb7dc697050049817478a8c8b679e6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913597"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820963"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage Table tervezési útmutatója: Tervezési méretezhető és Nagytejesítményű táblákat
 
@@ -205,9 +205,9 @@ Az alábbi példák azt feltételezik, hogy a table service az alábbi struktúr
 | **Keresztnév** |Karakterlánc |
 | **Vezetéknév** |Karakterlánc |
 | **Kor** |Egész szám |
-| **E-mail cím** |Karakterlánc |
+| **E-mail cím** |String |
 
-A korábbi szakaszban [Azure Table service áttekintése](#overview) néhány, az Azure Table service legfontosabb funkcióit, hogy közvetlenül befolyásolják a lekérdezés tervezéséhez. Ezek a következő általános irányelveket a Table service Lekérdezéstervezés eredményez. A szűrési szintaxist, az alábbi példákban használt van, a Table service REST API-t, további információért lásd: [Entitáslekérdezés](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+A korábbi szakaszban az Azure Table service áttekintése ismerteti az Azure Table service legfontosabb funkcióit, amelyek közvetlenül befolyásolják a lekérdezés tervezéséhez. Ezek a következő általános irányelveket a Table service Lekérdezéstervezés eredményez. A szűrési szintaxist, az alábbi példákban használt van, a Table service REST API-t, további információért lásd: [Entitáslekérdezés](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 * A ***pont lekérdezés*** használandó leghatékonyabb keresési és javasoljuk, hogy nagy mennyiségű kereséseket és legkisebb késés igénylő keresések használható. Ilyen lekérdezések használhatja az indexeket egy egyéni entitás hatékonyan mindkét megadásával keresse meg a **PartitionKey** és **RowKey** értékeket. Például: $filter = (PartitionKey eq "Értékesítés") és (RowKey eq '2')  
 * A második legjobb van egy ***Sortartomány-lekérdezés*** , amely használja a **PartitionKey** és a szűrők számos **rowkey tulajdonságok esetén** több entitást visszaadandó értékek. A **PartitionKey** érték azonosítja az adott partíciók és a **RowKey** az értékek azonosítják az adott partíció az entitásokat egy részét. Például: $filter = PartitionKey eq "Értékesítések és a rowkey tulajdonságok esetén a ge" és a rowkey tulajdonságok esetén lt sikerült "  
@@ -1294,7 +1294,7 @@ Minden entitás továbbra is rendelkeznie kell **PartitionKey**, **rowkey tulajd
 
 Az entitás előtag-beillesztés, az első lehetőség írja be a **RowKey**, akkor hasznos, ha lehetséges, hogy két különböző típusú entitás lehet ugyanazt a kulcsérték. Csoportosítja a együtt, a partíció azonos típusú entitásokat is.  
 
-Ebben a szakaszban leírt technikákkal különösen fontosak, vitára [öröklési kapcsolatok](#inheritance-relationships) ebben az útmutatóban a szakasz korábbi [kapcsolatok modellezését](#modelling-relationships).  
+Ebben a szakaszban leírt technikákkal különösen fontosak, vitára [öröklési kapcsolatok](#inheritance-relationships) Ez az útmutató a szakaszban a korábbi kapcsolatok modellezését.  
 
 > [!NOTE]
 > Fontolja meg egy verziószámot beleértve entitás típusa érték lehetővé teszik az ügyfél alkalmazások fejlesztése a csatlakoztathatóság érdekében POCO objektumok és más verziókkal működik.  

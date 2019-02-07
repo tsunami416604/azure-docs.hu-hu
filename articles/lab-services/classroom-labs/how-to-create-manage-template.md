@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 2f34b6c71c448f7273ba7477f18f5abb8f89cdec
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: d0942d3465811687937ce113e664fbf3f91277d0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391197"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815244"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Létrehozása és kezelése az Azure Lab Services osztályterem-sablonból
 A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. Úgy állítsa be a virtuálisgép-sablont, hogy az pontosan aszerint legyen konfigurálva, amit a tesztkörnyezet felhasználóinak biztosítani kíván. A sablonhoz megadhat egy nevet és egy leírást, amely a tesztkörnyezet felhasználói számára jelenik meg. Ezt követően a sablont a Virtuálisgép-sablon példányainak a labor számára elérhetővé tehet közzé. Amikor közzétesz egy sablont, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval.
@@ -72,7 +72,7 @@ Először állítsa be, és a sablon közzététele osztályterem-tesztkörnyeze
 
         > [!WARNING]
         > Közzététel után a lépés nem vonható vissza. 
-    2. Későbbi közzétételhez kattintson a **Mentés későbbre** gombra. A varázsló futtatása után közzéteheti a virtuálisgép-sablont. Hogyan konfigurálása és közzététele a varázsló befejezése után, konfigurálása és közzététele a varázsló befejezése után információt talál a részletekért lásd: [a sablon közzététele](#publish-the-template) című rész a [osztályterem-tesztkörnyezetek kezelése ](how-to-manage-classroom-labs.md) cikk.
+    2. Későbbi közzétételhez kattintson a **Mentés későbbre** gombra. A varázsló futtatása után közzéteheti a virtuálisgép-sablont. Konfigurálása és közzététele a varázsló befejezése után információt talál arról, hogyan konfigurálása és közzététele a varázsló befejezése után, lásd: Közzététel a sablon című rész a [osztályterem-tesztkörnyezetek kezelése](how-to-manage-classroom-labs.md) cikk.
 
         ![Sablon közzététele](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. Nyomon követheti, hogy **hol tart a sablon közzététele**. Ez a folyamat akár egy órát is igénybe vehet. 

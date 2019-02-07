@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 515b21c6854620a6bd1af53af8b1778d70613622
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1dd1cf143d66fec2ab8c12ee28a61bb3b8a83ade
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203946"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821824"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Oktatóanyag: A G Suite konfigurálása a felhasználók automatikus átadása
 
@@ -127,7 +127,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás a felhasználói fiók kiép�
     e. Ismételje meg a fenti lépéseket minden további tartományt, amelyet meg kíván hozzáadni a Google Apps.
      
      > [!WARNING]
-     > Ha módosítja az elsődleges tartomány G Suite-bérlője számára, és ha Ön már rendelkezik konfigurált az egyszeri bejelentkezés az Azure ad-vel, akkor meg kell ismételnie a #3. lépés [2. lépés: Egyszeri bejelentkezés engedélyezése](#step-two-enable-single-sign-on).
+     > Ha módosítja az elsődleges tartomány G Suite-bérlője számára, és ha már beállította az egyszeri bejelentkezés az Azure ad-vel, Önnek kell ismételje meg a #3. lépés a 2. lépés: Egyszeri bejelentkezés engedélyezése.
        
 1. Az a [Google Apps felügyeleti konzol](https://admin.google.com/)válassza **rendszergazdai szerepkörök**.
    

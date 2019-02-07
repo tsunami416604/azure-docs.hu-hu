@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 7af14143e8ce4924c17a41c6bb1ff33954f4b583
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1c30e679b250c2d6c6b03a1fe5d70dbd06acf052
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568726"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818362"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>A csomagok vizsgálata az Azure Network Watcher
 
@@ -45,7 +45,7 @@ Ha a TCP-kapcsolat létrejött, az első három, a kapcsolat küldött csomagok 
 
 ### <a name="step-1"></a>1. lépés
 
-Indítsa el a WireShark
+Launch WireShark
 
 ### <a name="step-2"></a>2. lépés
 
@@ -61,7 +61,7 @@ Hogy könnyebben megtekinthesse az első két csomagokat a TCP háromutas kézfo
 
 A szűrő WireShark a alkalmazni, bontsa ki a "Transmission Control Protocol" szegmens a rögzítés [SZIN] csomag, és vizsgálja meg a TCP-fejléc beállítása a jelzők.
 
-Mivel tudjuk szeretne szűrjön az összes [SZIN] és [SZIN, Nyugtázási] csomagok területen jelzők cofirm, hogy a szinkronizálás a mi bit értéke 1, majd a jobb gombbal kattintva elérhető a szinkronizálás a mi-bit -> alkalmaz, a szűrő -> kijelölt.
+Mivel tudjuk szeretne szűrjön az összes [SZIN] és [SZIN, Nyugtázási] csomagok jelzők alatt győződjön meg arról, hogy a szinkronizálás a mi bit értéke 1, majd a jobb gombbal kattintva elérhető a szinkronizálás a mi-bit -> alkalmaz, a kijelölt szűrő ->.
 
 ![7. ábra][7]
 

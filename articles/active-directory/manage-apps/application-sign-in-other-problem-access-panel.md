@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 529191cf867b6003b0c2eab5ed919087277c7095
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6dfc0f80285dfd7da6e78d7cbf9c993fed388a2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178035"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813534"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>A hozzáférési panelen alkalmazáshoz való bejelentkezésnél
 
@@ -104,7 +104,7 @@ Az Azure AD katalógusából származó a vállalati szintű egyszeri bejelentke
 
 Az Azure AD katalógusából származó kell az alkalmazás konfigurálása:
 
--   [Az Azure AD katalógusából származó alkalmazás hozzáadása](#add-an-application)
+-   Az Azure AD katalógusából származó alkalmazás hozzáadása
 
 -   [Az alkalmazás metaadatértékeket konfigurálása az Azure ad-ben (bejelentkezési URL-CÍMÉT, az azonosítója, válasz URL-cím)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
@@ -114,7 +114,7 @@ Az Azure AD katalógusából származó kell az alkalmazás konfigurálása:
 
 -   [Az Azure AD metaadatértékeket konfigurálása az alkalmazásban (bejelentkezési URL-címet, a kiállító, a kijelentkezési URL-címe és a tanúsítvány)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
--   [Felhasználók hozzárendelése az alkalmazáshoz](#assign-users-to-the-application)
+-   Felhasználók hozzárendelése az alkalmazáshoz
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>Az Azure AD katalógusából származó alkalmazás hozzáadása
 
@@ -362,9 +362,9 @@ Az Azure ad-ből az alkalmazás metaadatait, vagy a tanúsítvány letöltéséh
 
 Az Azure AD katalógusából származó kell az alkalmazás konfigurálása:
 
--   [Az Azure AD katalógusából származó alkalmazás hozzáadása](#add-an-application)
+-   Az Azure AD katalógusából származó alkalmazás hozzáadása
 
--   [Az alkalmazás a jelszavas egyszeri bejelentkezés konfigurálása](#configure-the-application)
+-   Az alkalmazás a jelszavas egyszeri bejelentkezés konfigurálása
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>Az Azure AD katalógusából származó alkalmazás hozzáadása
 

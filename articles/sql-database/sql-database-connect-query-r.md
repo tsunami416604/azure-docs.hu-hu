@@ -11,37 +11,30 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 11/30/2018
-ms.openlocfilehash: fb45d5fe549966dbf1635ee23447f90080bbb627
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 01/31/2019
+ms.openlocfilehash: 84017e95d41f8934de248065a2b66792628b41d2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751293"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815541"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Gyors útmutató: Machine Learning-szolgáltatások (az r nyelv) használata az Azure SQL Database (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan használhatja a Machine Learning Services (with R) nyilvános előzetes verzióját az Azure SQL Database-ben. Megismerkedhet az adatok az SQL-adatbázis és az R közötti áthelyezésének alapjaival. Ezenkívül azt is bemutatja, hogyan csomagolhat megfelelő formátumú R-kódot az [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárásba, amellyel gépi tanulási modelleket állíthat össze, taníthat be és használhat az SQL-adatbázisban.
+Ez a cikk azt ismerteti, hogyan használhatja a nyilvános előzetes verziója [Machine Learning-szolgáltatások (az r nyelv) az Azure SQL Database](sql-database-machine-learning-services-overview.md). Megismerkedhet az adatok az SQL-adatbázis és az R közötti áthelyezésének alapjaival. Ezenkívül azt is bemutatja, hogyan csomagolhat megfelelő formátumú R-kódot az [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárásba, amellyel gépi tanulási modelleket állíthat össze, taníthat be és használhat az SQL-adatbázisban.
 
-Az SQL Database-ben a gépi tanulás az R-kód és -függvények futtatásához használatos, a kód pedig teljes mértékben rendelkezésre áll a relációs adatokhoz tárolt eljárások, R-utasításokat tartalmazó T-SQL-szkriptek vagy T-SQL-t tartalmazó R-kódok formájában. Használja a vállalati R-csomagokat, amelyekkel speciális elemzéseket futtathat nagy léptékben, valamint számítási és feldolgozási műveleteket használhat az adatok tárolási helyén, hogy ne legyen szükség az adatok hálózaton belüli mozgatására.
+Használja az R nyelvvel, hogy a fejlett elemzési és gépi tanulási adatbázison belüli. Ez a képesség számos lehetőséget kínál, számítások és feldolgozása, ahol az adatok találhatók, így nincs szükség az adatok a hálózaton keresztül. Erejével is működésre, a vállalati R-csomagok, hogy a fejlett analitikai ipari méretekben.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+Machine Learning-szolgáltatások, R, a Microsoft nagyvállalati R-csomagok az átfedett alap terjesztési tartalmazza. A Microsoft R-függvények és algoritmusokat a méretezés és a prediktív elemzés, statisztikai modellezési, adatvizualizációk és élvonalbeli gépi tanulási algoritmusok segédprogram fejthetők vissza.
 
-## <a name="sign-up-for-the-preview"></a>Feliratkozás az előzetes verzióra
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
 
-A Machine Learning Services (with R) nyilvános előzetes verziójának használata az SQL Database-ben alapértelmezés szerint nem engedélyezett. E-mail küldése a Microsoftnak, [ sqldbml@microsoft.com ](mailto:sqldbml@microsoft.com) regisztrálhat a nyilvános előzetes verziója.
-
-A programban regisztrált, Microsoft megjelenik majd, a nyilvános előzetes verzióban, és a áttelepítése vagy a meglévő adatbázis, vagy hozzon létre egy új adatbázist egy R-kompatibilis Service.
-
-A Machine Learning Services (with R) az SQL Database-ben jelenleg csak a vCore-alapú vásárlási modellben érhetők el a készletezett adatbázisok **Általános célú** és **Üzleti szempontból kritikus** szolgáltatásszintjein. A kezdeti nyilvános előzetes verzióban sem a **Rugalmas skálázás** szolgáltatásszint, sem a **Felügyelt példányok** nem támogatottak. A Machine Learning Services (with R) nem használható éles számítási feladatokhoz a nyilvános előzetes verzióban.
-
-Ha a Machine Learning Services (with R) használata engedélyezve van az Ön SQL-adatbázisához, térjen vissza erre az oldalra, ahol megtudhatja, hogyan futtathat R-szkripteket tárolt eljárások esetén.
-
-Jelenleg az R az egyetlen támogatott nyelv. A Python jelenleg nem támogatott.
+> [!NOTE]
+> Machine Learning-szolgáltatások (az r nyelv) az Azure SQL Database jelenleg nyilvános előzetes verzióban érhető el. [Regisztráljon az előzetes verzió](sql-database-machine-learning-services-overview.md#signup).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyakorlatokban szereplő példakód futtatásához először szüksége lesz egy Machine Learning Services (with R)-kompatibilis SQL-adatbázisra. A nyilvános előzetes verzióban a Microsoft belépteti Önt, és a fent leírt módon engedélyezi a gépi tanulást a meglévő vagy az új adatbázisban.
+A gyakorlatokban szereplő példakód futtatásához először szüksége lesz egy Machine Learning Services (with R)-kompatibilis SQL-adatbázisra. A nyilvános előzetes verzió ideje alatt a Microsoft is megjelenik majd, és engedélyezze a gépi tanulás a meglévő vagy új adatbázis számára. Kövesse a [regisztrálni az előzetes verzióra](sql-database-machine-learning-services-overview.md#signup).
 
 Csatlakozhat az SQL Database-adatbázishoz, továbbá bármilyen adatbázis-kezelő vagy lekérdezési eszközzel futtathatja az R-szkripteket, amíg az képes egy SQL Database-adatbázishoz való csatlakozásra, illetve T-SQL-lekérdezések vagy tárolt eljárások futtatására. Ez a rövid útmutató az [SQL Server Management Studio](sql-database-connect-query-ssms.md) eszközt használja.
 
@@ -49,20 +42,11 @@ A [csomag hozzáadása](#add-package) gyakorlatban az [R](https://www.r-project.
 
 Ez a rövid útmutató egy kiszolgálószintű tűzfalszabály konfigurálását is megköveteli. Ennek módját a [Kiszolgálószintű tűzfalszabály létrehozása](sql-database-server-level-firewall-rule.md) szakasz ismerteti.
 
-## <a name="different-from-sql-server"></a>Más, mint az SQL Server
-
-Az Azure SQL Database-ben a Machine Learning Services (with R) funkciói hasonlóak az [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) funkcióihoz. Van azonban közöttük néhány különbség:
-
-- Csak az R-rel kompatibilis. A Python jelenleg nem támogatott.
-- Nincs szükség az `external scripts enabled` az `sp_configure` használatával való konfigurálására.
-- A csomagokat az **sqlmlutils** használatával kell telepíteni.
-- Nincs külön külsőerőforrás-szabályozás. Az R-erőforrások az SQL-erőforrások adott százalékát teszik ki, a szolgáltatásszinttől függően.
-
 ## <a name="verify-r-exists"></a>Az R meglétének ellenőrzése
 
 Ellenőrizheti, hogy a Machine Learning Services (with R) engedélyezve van-e az SQL-adatbázisban. Kövesse az alábbi lépéseket.
 
-1. Nyissa meg az SQL Server Management Studiót, és csatlakozzon az SQL-adatbázishoz.
+1. Nyissa meg az SQL Server Management Studiót, és csatlakozzon az SQL-adatbázishoz. Való csatlakozásról további információkért lásd: [a rövid útmutató: SQL Server Management Studio használatával csatlakozhat, és az Azure SQL Database-adatbázis lekérdezéséhez](sql-database-connect-query-ssms.md).
 
 1. Futtassa az alábbi kódot. 
 
@@ -262,7 +246,6 @@ A Microsoft számos előre telepített R-csomagot biztosít a Machine Learning S
     **Results**
 
     ![Telepített csomagok az R-ben](./media/sql-database-connect-query-r/r-installed-packages.png)
-
 
 ## <a name="create-a-predictive-model"></a>Prediktív modell létrehozása
 
@@ -530,8 +513,9 @@ Ha olyan csomagot szeretne használni, amely még nincs telepítve az SQL-adatb�
 
 ## <a name="next-steps"></a>További lépések
 
-A Machine Learning Serviceszel kapcsolatos további információért olvassa el az SQL Server Machine Learning-szolgáltatásokkal foglalkozó alábbi cikkeket. Bár ezek a cikkek az SQL Serverhez készültek, az azokban szereplő információk a Machine Learning Services (with R) esetében is alkalmazhatók az Azure SQL Database-ben.
+A Machine Learning-szolgáltatások további információkért lásd az alábbi cikkeket. Néhány, az alábbi cikkek, amelyek közül az SQL Server legtöbb információ akkor is vonatkozik a Machine Learning-szolgáltatások (az r nyelv) Azure SQL Database-ben.
 
+- [Az Azure SQL Database Machine Learning-szolgáltatások (az R)](sql-database-machine-learning-services-overview.md)
 - [SQL Server Machine Learning-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
 - [Oktatóanyag: Ismerje meg, az r nyelv használatát az SQL Server adatbázis-elemzés](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
 - [Teljes körű adatelemzési útmutató az R-hez és az SQL Serverhez](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)

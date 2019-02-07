@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eafc5dbd89d5727fac0040816785dbfcdf123b62
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: b7a785cc506f12360edc14555b7241a557dc400c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563615"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817335"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Redshift Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a
 2. Adatkészleteket hoz létre, a másolási művelet bemeneti és kimeneti adatokat képviselik.
 3. Létrehoz egy folyamatot egy másolási tevékenység, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként.
 
-A másolás varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitások JSON-definíciói. Amikor az eszközök vagy az API-k (kivéve a .NET API), meghatározhatja a Data Factory-entitások a JSON formátumban. A [JSON-példa: Adatok másolása az Amazon Redshift az Azure Blob storage](#json-example-copy-data-from-amazon-redshift-to-azure-blob) jeleníti meg, amely adatokat másol egy Amazon Redshift-adattár segítségével a Data Factory-entitások a JSON-definíciói.
+A másolás varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitások JSON-definíciói. Amikor az eszközök vagy az API-k (kivéve a .NET API), meghatározhatja a Data Factory-entitások a JSON formátumban. A JSON-példa: Amazon Redshift az Azure Blob storage-adatok másolása jeleníti meg, amely adatokat másol egy Amazon Redshift-adattár segítségével a Data Factory-entitások a JSON-definíciói.
 
 A következő szakaszok ismertetik az Amazon Redshift a Data Factory-entitások definiálásához használt JSON-tulajdonságokat.
 

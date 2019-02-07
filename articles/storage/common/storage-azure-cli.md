@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: d815bae2478d8853c63cd773cbfeaf5d3e90458c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f485f38d4c580937b027bb76d0c34c98f699ed93
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659763"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816849"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Using the Azure CLI with Azure Storage (Az Azure CLI és az Azure Storage együttes használata)
 
@@ -173,7 +173,7 @@ Done
 ## <a name="manage-storage-accounts"></a>Tárfiókok kezelése
 
 ### <a name="create-a-new-storage-account"></a>Új tárfiók létrehozása
-Az Azure Storage használatához tárfiókra van szüksége. A számítógép konfigurálása után létrehozhat egy új Azure Storage-fiók [csatlakozzon az előfizetéséhez](#connect-to-your-azure-subscription).
+Az Azure Storage használatához tárfiókra van szüksége. Új Azure Storage-fiókot hozhat létre, a számítógép csatlakozni az előfizetés konfigurálása után.
 
 ```azurecli
 az storage account create \
@@ -277,7 +277,7 @@ az storage blob download \
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-A tárolóban lévő blobok listázása a [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) parancsot.
+A tárolóban lévő blobok listázása a [az storage blob list](/cli/azure/storage/blob) parancsot.
 
 ```azurecli
 az storage blob list \

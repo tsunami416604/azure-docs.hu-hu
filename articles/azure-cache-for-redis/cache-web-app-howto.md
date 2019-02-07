@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: fd5a995bf03d530ccbcf9b839ccc840d202b47d6
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d80a10bea58fdcd5b20e24f9f8ba633f2714d55c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556187"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822578"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Gyors útmutató: ASP.NET-webapp létrehozása 
 
@@ -98,9 +98,9 @@ A következő lépésben létrehozza az alkalmazás gyorsítótárát.
 Ebben a szakaszban frissítse az alkalmazás egy új nézetet, amely egy egyszerű tesztelési ellen az Azure Cache jeleníti meg a redis támogatja.
 
 * [A web.config fájl frissítése egy gyorsítótárhoz tartozó alkalmazásbeállítással](#Update-the-webconfig-file-with-an-app-setting-for-the-cache)
-* [Az alkalmazás konfigurálása a StackExchange.Redis ügyfél használatára](#configure-the-application-to-use-stackexchangeredis)
-* [A HomeController és az elrendezés frissítése](#update-the-homecontroller-and-layout)
-* [Új RedisCache nézet hozzáadása](#add-a-new-rediscache-view)
+* A StackExchange.Redis ügyfél használatához az alkalmazás konfigurálása
+* A HomeController és az elrendezés frissítése
+* Új RedisCache nézet hozzáadása
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>A web.config fájl frissítése egy gyorsítótárhoz tartozó alkalmazásbeállítással
 

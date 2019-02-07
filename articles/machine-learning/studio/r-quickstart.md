@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/06/2017
-ms.openlocfilehash: d56c44e299125b6b7d8aff429aa6352b8e653a16
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9fcdcc5f4e3e7a6aadb3749459562eb575deca2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508657"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822374"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Gyors üzembe helyezési oktatóanyag az R programozási nyelv, az Azure Machine Learning Studióban
 
@@ -745,7 +745,7 @@ A `ts.detrend()` alábbi függvényt is ezeket a műveleteket hajt végre. A kö
 
 Van még egy bit képzésén a `ts.detrend()` függvény. Ez a kód a legtöbb ellenőrzi az argumentumokkal potenciális problémákat vagy kivételeket, továbbra is a számítások során felmerülő többé vesződnie a sérült. Ez a kód csak néhány sornyi csinálni számításokat.
 
-Van már beszéltünk a defenzív programozás például [érték-átalakítások](#valuetransformations). Mindkét számítási blokkok burkolja `tryCatch()`. Bizonyos hibák logikus adja vissza az eredeti bemeneti vektort, és a többi nullák vektor visszatérés.  
+Már beszéltünk rendelkezik az értéket az átalakítások defenzív programozás egy példát. Mindkét számítási blokkok burkolja `tryCatch()`. Bizonyos hibák logikus adja vissza az eredeti bemeneti vektort, és a többi nullák vektor visszatérés.  
 
 Vegye figyelembe, hogy megszünteti trendelemzés használt lineáris regressziós modell futtatása egy time series regressziós. A előjelző változó egy time series objektumot.  
 

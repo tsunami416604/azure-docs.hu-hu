@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3d0a3014fa224d6b5c85142e492afb0679f9f0b1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014681"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821320"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Adatok áthelyezése másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -209,7 +209,7 @@ Különböző adattárakban különböző nativní typ rendszerek rendelkezik. M
 1. Natív forrástípusok .NET típusúra konvertálni.
 2. Typ .NET natív fogadó típusúra konvertálni.
 
-A leképezés egy adattár .NET típusra nativní typ rendszer a megfelelő adatokat tároló cikkben szerepel. (A megadott hivatkozásra kattintva a [támogatott adattárak](#supported-data-stores) tábla). Ezeket a leképezéseket segítségével megfelelő típusainak meghatározása a táblák létrehozása során, úgy, hogy a másolási tevékenység végzi a megfelelő átalakítás.
+A leképezés egy adattár .NET típusra nativní typ rendszer a megfelelő adatokat tároló cikkben szerepel. (Kattintson a hivatkozásra a támogatott adatok stores táblában). Ezeket a leképezéseket segítségével megfelelő típusainak meghatározása a táblák létrehozása során, úgy, hogy a másolási tevékenység végzi a megfelelő átalakítás.
 
 ## <a name="next-steps"></a>További lépések
 * További információ a másolási tevékenység, lásd: [adatok másolása az Azure Blob storage-ból az Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

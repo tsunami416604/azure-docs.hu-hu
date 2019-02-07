@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: geetha
-ms.openlocfilehash: a5b0e6d700ce64a25c20b23738508d2796fc6caa
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 676c6a45f4a3930d350bbcbdcbb1a0fb47880407
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487557"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809997"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Biztonsági mentése és visszaállítása titkosított virtuális gépek az Azure Backup szolgáltatással
 Ez a cikk ismerteti a lépéseket, biztonsági mentése és visszaállítása a virtuális gépek (VM) az Azure Backup használatával. A következő többi hibaeseteket támogatott forgatókönyveket, előfeltételeket és hibaelhárítási lépéseket részletesen is ismerteti.
@@ -36,7 +36,7 @@ Ez a cikk ismerteti a lépéseket, biztonsági mentése és visszaállítása a 
 
 * Recovery Services-tároló lett létrehozva, és a storage-replikációt állított leírt lépések végrehajtásával [előkészítik a környezetét a biztonsági mentés](backup-azure-arm-vms-prepare.md).
 
-* A megadott biztonsági mentési [engedélyeket az eléréséhez a key vault](#provide-permissions-to-backup) tartalmazó kulcsokat és titkos kulcsokat, a titkosított virtuális gépek.
+* Biztonsági mentés megadott engedélyekkel kulcsokat és titkos kulcsokat tartalmazó titkosított virtuális gépekhez tartozó key vault eléréséhez.
 
 ## <a name="backup-encrypted-vm"></a>Biztonsági mentés titkosított virtuális gépek
 Az alábbi lépések segítségével állítsa be a biztonsági mentés célját, meghatározhat egy olyan szabályzatot, elemek konfigurálása és indítson egy biztonsági mentést.
@@ -76,7 +76,7 @@ Ha Ön egy **tag felhasználói**, biztonsági mentés engedélyezése folyamat 
 
    ![Titkosított virtuális gépek üzenet](./media/backup-azure-vms-encryption/member-user-encrypted-vm-warning-message.png)
 
-   Az egy **vendégfelhasználó**, meg kell adnia az engedélyeket a biztonsági mentési szolgáltatás hozzáférjen a kulcstartóhoz működéséhez a biztonsági mentésekhez. Megadhatja azokat az engedélyeket az alábbi a [a következő szakaszban leírt lépéseket](#provide-permissions-to-backup)
+   Az egy **vendégfelhasználó**, meg kell adnia az engedélyeket a biztonsági mentési szolgáltatás hozzáférjen a kulcstartóhoz működéséhez a biztonsági mentésekhez. Megadhatja azokat az engedélyeket az alábbi szakaszban ismertetett lépéseket követve
 
    ![Titkosított virtuális gépek üzenet](./media/backup-azure-vms-encryption/guest-user-encrypted-vm-warning-message.png)
 

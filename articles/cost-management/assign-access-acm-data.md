@@ -5,27 +5,31 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/01/2019
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: a64a1e35811b8bcdf721425580fe66641cb8ebe2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 267919900fe68271365a73c3cbea7b1f0befc8a7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661003"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766817"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management adataihoz való hozzáférés hozzárendelése
 
-A felhasználók többsége számára az Azure portal és a Nagyvállalati portálon megadott engedélyek kombinációját az Azure Cost Management adataihoz való hozzáférés egy felhasználó szintjét határozza meg. Ez a cikk végigvezeti a Cost Management adataihoz való hozzáférés hozzárendelése. Az engedélyek kombinációját hozzá van rendelve, miután a felhasználói nézetek adatokat a Cost Management alapján a hatókör, hogy ők is hozzáférhetnek, és az Azure Portalon válassza a hatókörön.
+A felhasználók számára az Azure Enterprise-megállapodások az Azure portal és a Nagyvállalati portálon megadott engedélyek kombinációját Azure Cost Management adataihoz való hozzáférés egy felhasználó szintjét határozza meg. A felhasználók más Azure-fiók típusú, a felhasználó hozzáférési szintjét, hogy a Cost Management adataihoz az egyszerűbb. Ez a cikk végigvezeti a Cost Management adataihoz való hozzáférés hozzárendelése. Az engedélyek kombinációját hozzá van rendelve, miután a felhasználói nézetek adatokat a Cost Management alapján a hatókör, hogy ők is hozzáférhetnek, és az Azure Portalon válassza a hatókörön.
 
 Adja meg az adatok összevonása, és a költségadatok való hozzáférésének a hatókör, amely a felhasználó kiválaszt Cost Management használja. Hatókörök használatakor a felhasználók ne válassza ki őket. Ehelyett, válassza ki a nagyobb hatókör, amely gyermek hatókörök visszaállítás akár, és ezután azok szűrő válassza ki, amit szeretnének megtekintéséhez. Adatok összevonása fontos tudni, mert vannak, akik nem rendelkezik hozzáféréssel, annak egy szülőhatóköréhez gyermek hatókörök összegző akár.
 
 ## <a name="cost-management-scopes"></a>A Cost Management hatókörök
 
-Költségadatok megtekintése, a felhasználó kell rendelkeznie legalább olvasási hozzáféréssel kell rendelkeznie egy vagy több, a következő hatókörök.
+A Cost management többféle típusú Azure-fiók támogat. A támogatott típusok teljes listáját, tekintse meg [megismerheti a Cost Management adataihoz](understand-cost-mgt-data.md). Fiók típusa határozza meg a rendelkezésre álló hatókörök.
+
+### <a name="azure-ea-subscription-scopes"></a>Az Azure nagyvállalati szerződéssel rendelkező előfizetés hatókörök
+
+Azure EA-előfizetések a költségadatok megtekintéséhez egy felhasználó kell rendelkeznie legalább olvasási hozzáféréssel kell rendelkeznie a következő hatókörök közül.
 
 | **Hatókör** | **Meghatározás helye** | **Hozzáférési adatok megtekintéséhez** | **Nagyvállalati Szerződés előfeltételként szükséges beállítása** | **Összesíti az adatokat** |
 | --- | --- | --- | --- | --- |
@@ -47,6 +51,14 @@ A következő ábra szemlélteti a Cost Management hatókörök szerepkörökkel
 Amikor **DA költségek megtekintése** le vannak tiltva az EA-portálon megjelenik egy üzenet, amelyen *költségek le van tiltva, a szervezet* amikor próbálja költségek szervezeti egységek és a fiókok megtekintéséhez.
 
 Hasonlóképpen, ha **AO költségek megtekintése** le vannak tiltva az EA-portálon megjelenik egy üzenet, amelyen *költségek le van tiltva, a szervezet* regisztrációs fiókok, a felügyeleti csoportok, a költségek megtekintése közben Előfizetések és erőforráscsoportok.
+
+## <a name="other-azure-account-scopes"></a>Más Azure-fiók hatókörök
+
+Más Azure-előfizetésekre vonatkozó költségadatok megtekintéséhez, a felhasználó kell rendelkeznie legalább olvasási hozzáféréssel kell rendelkeznie egy vagy több, a következő hatókörök:
+
+- Azure-fiók
+- Felügyeleti csoport
+- Erőforráscsoport
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>A nagyvállalati szerződések portáljának költségek hozzáférésének engedélyezése
 
@@ -113,7 +125,7 @@ A fenti lépések végrehajtását követően a felhasználói fiók lesz az Ent
 
 ## <a name="assign-management-group-scope-access"></a>Felügyeleti csoport hozzáférési hatókör hozzárendelése
 
-A felügyeleti csoport hatóköre használatához legalább a Cost Management Reader (vagy olvasó) engedéllyel. A felügyeleti csoport engedélyeit az Azure Portalon konfigurálhatja. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) a felügyeleti csoport hozzáférésének engedélyezésére vonatkozó másokkal. És akkor is engedélyeznie kell a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
+A felügyeleti csoport hatóköre használatához legalább a Cost Management Reader (vagy olvasó) engedéllyel. A felügyeleti csoport engedélyeit az Azure Portalon konfigurálhatja. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) a felügyeleti csoport hozzáférésének engedélyezésére vonatkozó másokkal. Azure nagyvállalati szerződéssel rendelkező fiókok esetében kell is engedélyezve van a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Válassza ki **minden szolgáltatás** az oldalsáv keressen _felügyeleti csoportok_, majd **felügyeleti csoportok**.
@@ -129,7 +141,7 @@ A felügyeleti csoport hatóköre használatához legalább a Cost Management Re
 
 ## <a name="assign-subscription-scope-access"></a>Előfizetés hozzáférési hatókör hozzárendelése
 
-Egy előfizetéshez legalább a Cost Management Reader (vagy olvasó) engedély szükséges. Az Azure Portal előfizetés engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) az előfizetés hozzáférésének engedélyezésére vonatkozó másokkal. És akkor is engedélyeznie kell a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
+Egy előfizetéshez legalább a Cost Management Reader (vagy olvasó) engedély szükséges. Az Azure Portal előfizetés engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) az előfizetés hozzáférésének engedélyezésére vonatkozó másokkal. Azure nagyvállalati szerződéssel rendelkező fiókok esetében kell is engedélyezve van a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Válassza ki **minden szolgáltatás** az oldalsáv keressen _előfizetések_, majd **előfizetések**.
@@ -143,7 +155,7 @@ Egy előfizetéshez legalább a Cost Management Reader (vagy olvasó) engedély 
 
 ## <a name="assign-resource-group-scope-access"></a>Erőforrás-csoport hozzáférési hatókör hozzárendelése
 
-Egy erőforráscsoport használatához legalább a Cost Management Reader (vagy olvasó) engedéllyel. Az Azure Portalon egy erőforráscsoportba tartozó engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) hozzáférésének engedélyezésére vonatkozó mások az erőforráscsoportnak. És akkor is engedélyeznie kell a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
+Egy erőforráscsoport használatához legalább a Cost Management Reader (vagy olvasó) engedéllyel. Az Azure Portalon egy erőforráscsoportba tartozó engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) hozzáférésének engedélyezésére vonatkozó mások az erőforráscsoportnak. Azure nagyvállalati szerződéssel rendelkező fiókok esetében kell is engedélyezve van a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Válassza ki **minden szolgáltatás** az oldalsáv keressen _erőforráscsoportok_, majd **erőforráscsoportok**.
