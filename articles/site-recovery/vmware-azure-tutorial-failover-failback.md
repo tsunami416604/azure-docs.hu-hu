@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e17ddb45143e03023c30b69ed314270ed97dc039
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e3687ac5941d4f4fda70f96fa9df1ec1904e102e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973169"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822476"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók feladatátvétele és feladat-visszavétele
 
@@ -56,7 +56,7 @@ Ellenőrizze a virtuális gép tulajdonságait, és győződjön meg arról, hog
 
 2. A **Replikált elemek** ablaktáblában szerepel a virtuális gép információinak összegzése, állapota és a legújabb elérhető helyreállítási pontok. Kattintson a **Tulajdonságok** lehetőségre a további részletek megtekintéséhez.
 
-3. A **Számítás és hálózat** területen módosíthatja az Azure-nevet, az erőforráscsoportot, a célméretet, a [rendelkezésre állási csoportot](../virtual-machines/windows/tutorial-availability-sets.md) és a [felügyelt lemez beállításait](#managed-disk-considerations)
+3. A **számítás és hálózat**, módosíthatja az Azure-nevet, az erőforráscsoportot, a célméretet, [rendelkezésre állási csoport](../virtual-machines/windows/tutorial-availability-sets.md), és a felügyelt lemez beállításait
 
 4. Megtekintheti és módosíthatja a hálózati beállításokat, beleértve azt a hálózatot/alhálózatot, amelyen az Azure-beli virtuális gép a feladatátvétel után lesz és a hozzá rendelt IP-címet.
 

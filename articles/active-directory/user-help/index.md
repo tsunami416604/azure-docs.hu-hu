@@ -10,12 +10,12 @@ ms.subservice: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 510ecfc217c5e3b3e1ac6cd285fcaf7001199aa4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5d69f4cbf78cf75cf018070a0d02c4b109689449
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149714"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769486"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez
 
@@ -87,10 +87,10 @@ Ezeket a tartalmakat azért hoztuk létre, hogy segítséget nyújtsunk a bizton
                         <h3>A Microsoft Authenticator alkalmazás súgója</h3>
                         <p>
                         <a href="/azure/active-directory/user-help/user-help-auth-app-overview">Áttekintés</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">Az alkalmazás letöltése és telepítése</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-add-accounts-overview">Fiókok hozzáadása</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">Bejelentkezés az alkalmazással</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">A fiók hitelesítő adatainak biztonsági mentése és helyreállítása</a>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-download-install">Az alkalmazás letöltése és telepítése</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-add-account-overview">Fiókok hozzáadása</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-sign-in">Bejelentkezés az alkalmazással</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-backup-recovery">A fiók hitelesítő adatainak biztonsági mentése és helyreállítása</a>
                         </p>
                     </div>
                 </div>
