@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 62711ac094a10a9e4a0350319a316c5a293fd522
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: fb9725e18c53e9d42ae51418a1eb614aaa10fd12
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157328"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816781"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -103,7 +103,7 @@ Az alábbi szakasz részletesen keresés és a rekordok és módosíthatja az ad
 * [Kereshet meg egy rekord azonosítója](#lookingup)
 * [A típus nélküli lekérdezések kezelése](#untypedqueries)
 * [Adatok beszúrása](#inserting)
-* [Adatok frissítése](#updating)
+* Adatok frissítése
 * [Adatok törlése](#deleting)
 * [Ütközésfeloldás és az optimista egyidejűség](#optimisticconcurrency)
 * [Egy Windows felhasználói felület kötést](#binding)
@@ -902,7 +902,7 @@ private async void InitNotificationsAsync()
 Wns küld, akkor a következőket kell TENNIE [szerezze be a Microsoft Store csomag biztonsági azonosítója](#package-sid).  További információ a Windows-alkalmazásokra, hogyan kell regisztrálni a sablon regisztrációhoz, beleértve: [Leküldéses értesítések hozzáadása az alkalmazáshoz].
 
 A címkék kér az ügyfél nem támogatott.  Címke kérelmek csendes regisztrációs a rendszer eldobja.
-Ha az eszköz regisztrálása a címkéket, hozzon létre egy egyéni API-t, amely a Notification Hubs API-t használja a regisztráció végrehajtásához az Ön nevében.  [Az egyéni API-t](#customapi) helyett a `RegisterNativeAsync()` metódust.
+Ha az eszköz regisztrálása a címkéket, hozzon létre egy egyéni API-t, amely a Notification Hubs API-t használja a regisztráció végrehajtásához az Ön nevében.  Az egyéni API-t helyett a `RegisterNativeAsync()` metódust.
 
 ### <a name="package-sid"></a>kézikönyv: Szerezze be a Microsoft Store csomag biztonsági azonosítója
 A Microsoft Store-alkalmazások leküldéses értesítések engedélyezése szükség van a csomag biztonsági azonosítója.  Ha szeretne kapni a csomag biztonsági azonosítója, regisztrálhatja alkalmazását a Microsoft Store.

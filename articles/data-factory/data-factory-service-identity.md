@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: b0cb72b8a9c1710b2b22d987c2818a490a2ea553
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 068929bbde8e4c1411004b45fc77f0188de43ff8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753359"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814200"
 ---
 # <a name="azure-data-factory-service-identity"></a>Az Azure Data Factory-szolgáltatásidentitás
 
@@ -44,7 +44,7 @@ Ha látja az adat-előállító nem rendelkezik a következő tartozó szolgált
 
 - [PowerShell-lel felügyeltszolgáltatás-identitás létrehozása](#generate-service-identity-using-powershell)
 - [A REST API használatával felügyeltszolgáltatás-identitás létrehozása](#generate-service-identity-using-rest-api)
-- [Hozzon létre egy Azure Resource Manager-sablonnal felügyeltszolgáltatás-identitás](#generate-service-identity-using-azure-resource-manager-template)
+- Hozzon létre egy Azure Resource Manager-sablonnal felügyeltszolgáltatás-identitás
 - [SDK-val felügyeltszolgáltatás-identitás létrehozása](#generate-service-identity-using-sdk)
 
 >[!NOTE]

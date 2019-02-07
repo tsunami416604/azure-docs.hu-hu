@@ -29,39 +29,37 @@ items:
     href: cli-samples.md
 - name: Alapelvek
   items:
-  - name: Migrálás a 2-esről a 3-as verzióra
-    href: migrate-from-v2-to-v3.md
-  - name: Entitások
-    href: entities-overview.md
+  - name: Betöltés
     items:
-    - name: Fiókszűrők és objektumszűrők
-      href: filters-dynamic-manifest-overview.md
     - name: Objektumok
       href: assets-concept.md
-    - name: Tartalomkulcsszabályok
-      href: content-key-policy-concept.md
-    - name: Élő események és élő kimenetek
-      href: live-events-outputs-concept.md
+  - name: Kódolás
+    href: encoding-concept.md
+    items:
+    - name: Átalakítások és feladatok
+      href: transforms-jobs-concept.md
+    - name: Media Encoder Standard-formátumok
+      href: media-encoder-standard-formats.md
+    - name: Adaptív sávszélességi skála automatikus létrehozása
+      href: autogen-bitrate-ladder.md
+  - name: Elemzés
+    href: analyzing-video-audio-files-concept.md
+    items:
+    - name: Átalakítások és feladatok
+      href: transforms-jobs-concept.md
+  - name: Stream
+    items:
     - name: Streamvégpontok
       href: streaming-endpoint-concept.md
     - name: Streamelési lokátor
       href: streaming-locators-concept.md
     - name: Streamelési szabályok
       href: streaming-policy-concept.md
-    - name: Átalakítások és feladatok
-      href: transforms-jobs-concept.md
-  - name: Tartalom kódolása
-    href: encoding-concept.md
-    items:
-    - name: Media Encoder Standard-formátumok
-      href: media-encoder-standard-formats.md
-    - name: Adaptív sávszélességi skála automatikus létrehozása
-      href: autogen-bitrate-ladder.md
-  - name: Tartalom elemzése
-    href: analyzing-video-audio-files-concept.md
-  - name: Élő események streamelése
+  - name: Élő stream
     href: live-streaming-overview.md
     items:
+    - name: Élő események és élő kimenetek
+      href: live-events-outputs-concept.md
     - name: Ajánlott élő kódolók
       href: recommended-on-premises-live-encoders.md
     - name: Egy felhőalapú DVR használata
@@ -72,13 +70,23 @@ items:
       href: live-event-states-billing.md
     - name: Késés
       href: live-event-latency.md
+  - name: Kézbesítés
+    items:
+    - name: Szűrők és dinamikus jegyzék
+      href: filters-dynamic-manifest-overview.md
   - name: Figyelés
     items:
     - name: Event Grid
       href: reacting-to-media-services-events.md
-  - name: Tartalom védelme
+  - name: Védelem
     href: content-protection-overview.md
     items:
+    - name: Tartalomkulcsszabályok
+      href: content-key-policy-concept.md
+    - name: Streamelési szabályok
+      href: streaming-policy-concept.md
+    - name: Streamelési lokátor
+      href: streaming-locators-concept.md
     - name: Multi-DRM rendszer hozzáférés-vezérléssel
       href: design-multi-drm-system-with-access-control.md
   - name: Lejátszás
@@ -89,6 +97,10 @@ items:
       href: limits-quotas-constraints.md
     - name: Tárfiókok
       href: storage-account-concept.md
+  - name: Szűrés, rendezés, oldalentitások
+    href: entities-overview.md
+  - name: Migrálás a 2-esről a 3-as verzióra
+    href: migrate-from-v2-to-v3.md
 - name: Útmutatók
   items:
   - name: Bevezetés
@@ -199,15 +211,17 @@ items:
       href: https://aka.ms/ams-v3-nodejs-sdk
     - name: Ruby
       href: https://aka.ms/ams-v3-ruby-sdk
+  - name: AMSE
+    href: https://github.com/Azure/Azure-Media-Services-Explorer
   - name: Kibocsátási megjegyzések
     href: release-notes.md
   - name: GYIK
     href: frequently-asked-questions.md
   - name: Azure-felhők és -régiók
     href: azure-clouds-regions.md
-ms.openlocfilehash: 0e748b32092ec9e27888c9fac039c27e6411b34a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cadf1d0b73c7d04b2748cb5fa60de7cca23beadc
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693867"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744806"

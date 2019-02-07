@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: wesmc
-ms.openlocfilehash: 60f9baf7fb54706dc9d31c6920c0df24173d7b35
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 903fd465ce2a88e94b821c9a1b4c6c531083180a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105846"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819059"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Adatok megőrzését egy prémium szintű Azure Cache Redis konfigurálása
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatásait, beleértve a Prémiumszintű funkciókkal, például a fürtözés, az adatmegőrzés és a virtuálishálózat-támogatást is nyújt. Ez a cikk ismerteti egy prémium szintű Azure Cache Redis-példányt az adatmegőrzés konfigurálása.
@@ -133,7 +133,7 @@ Az RDB-fájlba való és a AOF megőrzése:
 * Ha méretezte egy kisebb méretű, és nincs elég hely a kisebb méretű az utolsó biztonsági adatok tárolására, kulcsok ki lesz zárva a visszaállítás során, általában a [allkeys-lru](https://redis.io/topics/lru-cache) kiürítési szabályzatot.
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Módosíthatom a RDB-fájlba való biztonsági mentés gyakoriságát, a gyorsítótár létrehozása után?
-Igen, módosíthatja a biztonsági mentés gyakorisága RDB-fájlba való megőrzésre a **Redis-adatmegőrzés** panelen. Útmutatásért lásd: [megőrzése a redis Cache](#configure-redis-persistence).
+Igen, módosíthatja a biztonsági mentés gyakorisága RDB-fájlba való megőrzésre a **Redis-adatmegőrzés** panelen. Útmutatásért lásd: A redis Cache megőrzése.
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Miért van egy RDB-fájlba való biztonsági mentés gyakorisága 60 perc van-e több mint 60 perc között biztonsági mentések?
 Az RDB-fájlba való megőrzését biztonsági mentési időköz nem indul el addig, amíg az előző biztonsági mentési folyamat sikeresen befejeződött. Ha a biztonsági mentés gyakorisága 60 perc és egy biztonsági mentési folyamat 15 percet vesz sikeresen befejeződik, a következő biztonsági mentés az előző biztonsági mentés kezdő időpontja után 75 perccel nem indul.

@@ -4,43 +4,41 @@ items:
 - name: Áttekintés
   items:
   - name: Mi a Bing Entity Search?
-    href: search-the-web.md
+    href: overview.md
   - name: Bing Search API-k összehasonlítása
     href: ../Bing-Web-Search/bing-api-comparison.md
     maintainContext: true
 - name: REST API – rövid útmutatók
   items:
-  - name: C#
-    href: quickstarts/csharp.md
-  - name: Java
-    href: quickstarts/java.md
-  - name: Node.js
-    href: quickstarts/nodejs.md
-  - name: PHP
-    href: quickstarts/php.md
-  - name: Python
-    href: quickstarts/python.md
-  - name: Ruby
-    href: quickstarts/ruby.md
+  - name: REST API
+    items:
+    - name: A C# használata
+      href: quickstarts/csharp.md
+    - name: A Java használata
+      href: quickstarts/java.md
+    - name: A Node.js használata
+      href: quickstarts/nodejs.md
+    - name: A PHP használata
+      href: quickstarts/php.md
+    - name: A Python használata
+      href: quickstarts/python.md
+    - name: A Ruby használata
+      href: quickstarts/ruby.md
+  - name: SDK
+    items:
+    - name: A C# használata
+      href: quickstarts/entity-sdk-csharp-quickstart.md
+    - name: A Node.js használata
+      href: quickstarts/entity-sdk-node-quickstart.md
+    - name: A Python használata
+      href: quickstarts/entity-sdk-python-quickstart.md
+    - name: A Java használata
+      href: quickstarts/entity-sdk-java-quickstart.md
   expanded: true
-- name: SDK – rövid útmutatók
-  items:
-  - name: SDK-minták áttekintése
-    href: sdk.md
-  - name: Entity Search C# – rövid útmutató
-    href: entity-search-sdk-quickstart.md
-  - name: Entity Search Node.js – rövid útmutató
-    href: entity-search-sdk-node-quickstart.md
-  - name: Entity Search Python – rövid útmutató
-    href: entity-sdk-python-quickstart.md
-  - name: Entity Search Java – rövid útmutató
-    href: entity-sdk-java-quickstart.md
 - name: Oktatóanyagok
   items:
-  - name: Egyoldalas webalkalmazás
+  - name: Egyoldalas webalkalmazás készítése
     href: tutorial-bing-entities-search-single-page-app.md
-  - name: Egyoldalas webalkalmazás (forráskód)
-    href: tutorial-bing-entities-search-single-page-app-source.md
 - name: Példák
   items:
   - name: Kódminták
@@ -49,6 +47,12 @@ items:
   items:
   - name: Miniatűrök átméretezése és körülvágása
     href: resize-and-crop-thumbnails.md
+- name: Alapelvek
+  items:
+  - name: Entitások keresése
+    href: concepts/search-for-entities.md
+  - name: Keresési kérések küldése
+    href: concepts/sending-requests.md
 - name: Referencia
   items:
   - name: Bing Search API – követelmények használata és megjelenítése
@@ -90,9 +94,9 @@ items:
     href: entity-search-endpoint.md
   - name: Bing Entity Search API – elemzés
     href: bing-entity-stats.md
-ms.openlocfilehash: 919d44bbf41397cf58c06cfe2eff56867546b61e
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 6574b06a9aced43f381bcb106e0b6426bd6f4fd7
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509932"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755793"

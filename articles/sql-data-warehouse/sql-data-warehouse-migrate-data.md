@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: a09037f2e33d87446696dd11477c4e8b45af4187
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 11d41f9839456020ab65f11661c21f1e679cd76f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474173"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770652"
 ---
 # <a name="migrate-your-data"></a>Az adatok áttelepítése
 Adatok különböző forrásokból származó áthelyezhetők a különböző eszközök, az SQL Data Warehouse szolgáltatásba.  ADF-példány, az SSIS és a bcp az összes használható e cél eléréséhez. Azonban adatokat nő a mennyisége, gondolja bontásához, az áttelepítési folyamat lépésekre. Ez végrehajtható optimalizálható a teljesítmény és rugalmasság zökkenőmentes áttelepítés biztosítása érdekében az egyes lépések lehetőséget.
@@ -29,11 +29,7 @@ Ha indítja el az adatokat egybesimított fájlokba, majd, először vigye át a
 
 PolyBase az adatok betöltése a nagy teljesítményű lehetőséget is kínál. Azonban, amely: a két eszköz használata helyett. Ha a lehető legjobb teljesítményt kell, majd a polybase szolgáltatást akkor használja. Ha azt szeretné, hogy egy egyszerű eszközt élmény (és az adatok nem nagy) ADF a válasz.
 
-
-> 
-> 
-
-Látogasson el a következő cikk néhány nagyszerű [ADF minták] [ADF minták].
+Hajtsa végre a [ebben az oktatóanyagban]( /articles/data-factory/load-azure-sql-data-warehouse.md) az ADF használata az adatok betöltése az adattárházba.
 
 ## <a name="integration-services"></a>Integrációs szolgáltatások
 Integration Services (SSIS) egy olyan hatékony és rugalmas kinyerése, átalakítás és betöltés (ETL) eszköz, amely támogatja a bonyolult munkafolyamatok, átalakítását és adatok betöltését számos. Az SSIS használata egyszerűen adatok átviteléhez az Azure-bA vagy egy szélesebb körű áttelepítés részeként.
@@ -182,7 +178,7 @@ További fejlesztési tippek: [fejlesztői áttekintés][development overview].
 
 <!--Article references-->
 [AzCopy]: ../storage/common/storage-use-azcopy.md
-[ADF Copy]: ../data-factory/copy-activity-overview.md 
+[ADF Copy]: ../data-factory/load-azure-sql-data-warehouse.md 
 [ADF Copy examples]: ../data-factory/quickstart-create-data-factory-dot-net.md
 [development overview]: sql-data-warehouse-overview-develop.md
 [séma áttelepítése]: sql-data-warehouse-migrate-schema.md

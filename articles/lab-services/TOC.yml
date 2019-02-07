@@ -66,12 +66,8 @@ items:
       href: classroom-labs/how-to-create-schedules.md
   - name: DevTest Labs
     items:
-    - name: Labor létrehozása
-      href: devtest-lab-create-lab.md
-    - name: Virtuális gép létrehozása a tesztkörnyezetben
-      href: devtest-lab-create-first-vm.md
-    - name: Tesztkörnyezet vagy tesztkörnyezetben lévő virtuális gép törlése
-      href: devtest-lab-delete-lab-vm.md
+    - name: Erőforráscsoport meghatározása a labor virtuális gépeihez
+      href: resource-group-control.md
     - name: Tesztkörnyezetre vonatkozó szabályzatok létrehozása
       href: devtest-lab-get-started-with-lab-policies.md
     - name: Titkos kulcsok tárolása az Azure Key Vaultban
@@ -101,6 +97,10 @@ items:
           href: devtest-lab-guidance-governance-application-migration-integration.md
     - name: Virtuális gépek használata tesztkörnyezetben
       items:
+      - name: Labor létrehozása
+        href: devtest-lab-create-lab.md
+      - name: Tesztkörnyezet vagy tesztkörnyezetben lévő virtuális gép törlése
+        href: devtest-lab-delete-lab-vm.md
       - name: Virtuális gépek létrehozása
         href: devtest-lab-add-vm.md
       - name: Igényelhető virtuális gépek létrehozása és felügyelete
@@ -223,9 +223,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: 1fc989f61f5c11e06e2651326e0e7e7f51092253
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 783aec352d79c56525751142e4e5e95697149dbc
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496720"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747281"

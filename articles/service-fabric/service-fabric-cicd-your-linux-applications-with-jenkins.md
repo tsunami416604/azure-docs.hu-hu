@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: f381285d29d70d6f5da6a6cd319c682cd0c6a235
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7abc15264a44c969f57071e84ffcedca30d326fb
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444538"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766316"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>A Jenkins használata a fejleszthetők és helyezhetők üzembe Linuxos alkalmazások
 A Jenkins egy népszerű eszköz az alkalmazások folyamatos integrációjához és üzembe helyezéséhez. Ebből a témakörből megtudhatja, hogyan helyezheti üzembe Azure Service Fabric-alkalmazásait a Jenkins használatával.
@@ -229,11 +229,11 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan konfigurálhatja a 
 1. Az a **hozhat létre eseményindítókat** Jenkins lapra, válassza ki a kívánt felépítési. Ebben a példában a buildelés kiváltása, valahányszor az adattárba egy leküldéses történik, ezért kattintson kívánt **GitHub hook trigger for GITScm lekérdezés**. (Korábban ez **Build when a change is pushed to GitHub** (Felépítés módosítások GitHubon való közzétételekor) volt.)
 1. Az a **összeállítása** lapon, tegye a következők egyikét attól függően, hogy egy Java-alkalmazás vagy egy .NET Core-alkalmazást készít:
 
-   * **A Java-alkalmazások:** származó a **felépítési lépés hozzáadása** legördülő menüben válassza **Invoke Gradle Script**. Kattintson a **speciális**. A Speciális menüben adja meg az elérési útját **fő felépítési szkript** az alkalmazáshoz. A rendszer felveszi a build.gradle elemet a megadott elérési útból, és annak megfelelően működik. Az a [ActorCounter alkalmazás](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter), ez a: `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter`.
+   * **A Java-alkalmazások:** Az a **felépítési lépés hozzáadása** legördülő menüben válassza **Invoke Gradle Script**. Kattintson a **speciális**. A Speciális menüben adja meg az elérési útját **fő felépítési szkript** az alkalmazáshoz. A rendszer felveszi a build.gradle elemet a megadott elérési útból, és annak megfelelően működik. Az a [ActorCounter alkalmazás](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter), ez a: `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter`.
 
      ![Service Fabric, Jenkins felépítési művelet][build-step]
 
-   * **A .NET Core-alkalmazásokban:** származó a **felépítési lépés hozzáadása** legördülő menüben válassza **végrehajtása rendszerhéj**. A parancs mezőben megjelenő a címtár először meg kell módosítani az elérési utat, ahol a build.sh fájlban található. Miután a címtár megváltozott, a build.sh szkript futtatható, és felépíti az alkalmazást.
+   * **A .NET Core-alkalmazásokban:** Az a **felépítési lépés hozzáadása** legördülő menüben válassza **végrehajtása rendszerhéj**. A parancs mezőben megjelenő a címtár először meg kell módosítani az elérési utat, ahol a build.sh fájlban található. Miután a címtár megváltozott, a build.sh szkript futtatható, és felépíti az alkalmazást.
 
       ```sh
       cd /var/jenkins_home/workspace/[Job Name]/[Path to build.sh]  # change directory to location of build.sh file
@@ -246,13 +246,13 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan konfigurálhatja a 
 
 1. Helyezze üzembe az alkalmazást a felépítés utáni műveletek a Service Fabric-fürtön a Jenkins konfigurálásához kell a fürt tanúsítvány helyét a Jenkins-tárolót. Válassza ki a következők egyikét attól függően, hogy a Jenkins-tárolót belül vagy kívül a fürt fut, és jegyezze fel a fürt tanúsítvány helye:
 
-   * **A fürtben futó jenkins:** a tanúsítvány elérési útjának értékét echo találhatók a *Certificates_JenkinsOnSF_Code_MyCert_PEM* környezeti változót, a tárolóban.
+   * **A jenkins a fürtben fut:** A tanúsítvány elérési útjának értékét echo találhatók a *Certificates_JenkinsOnSF_Code_MyCert_PEM* környezeti változót, a tárolóban.
 
       ```sh
       echo $Certificates_JenkinsOnSF_Code_MyCert_PEM
       ```
    
-   * **A fürtön kívül futó jenkins:** kövesse az alábbi lépéseket a fürt tanúsítvány másolatára a tároló:
+   * **A jenkins fut a fürtön kívül:** Kövesse az alábbi lépéseket a fürt tanúsítvány másolatára a tároló:
       1. A tanúsítvány PEM formátumban kell lennie. Ha nem rendelkezik egy PEM-fájlt, létrehozhat egyet a tanúsítvány PFX-fájlból. Ha nem jelszóval védett PFX-fájlt, futtassa a következő parancsot a gazdagépről:
 
          ```sh
@@ -298,10 +298,10 @@ Fejlesztési és tesztelési környezetek esetében konfigurálhatja az Azure hi
 
 1. Hozzon létre egy Azure Active Directory egyszerű szolgáltatás, és rendelje hozzá az engedélyek az Azure-előfizetésében, kövesse a [egy Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozása a portál használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Figyelje meg, a következőhöz:
 
-   * Miközben a témakörben leírt lépéseket követve, ügyeljen arra, hogy másolja ki és mentse a következő értékeket: *Alkalmazásazonosító*, *alkalmazáskulcsot*, *címtár-azonosító (bérlő azonosító)*, és *Előfizetés-azonosító*. Szükség van rájuk a Jenkins az Azure hitelesítő adatainak konfigurálása.
+   * Miközben a témakörben leírt lépéseket követve, ügyeljen arra, hogy másolja ki és mentse a következő értékeket: *Alkalmazásazonosító*, *alkalmazáskulcsot*, *címtár-azonosító (bérlő azonosító)*, és *előfizetés-azonosító*. Szükség van rájuk a Jenkins az Azure hitelesítő adatainak konfigurálása.
    * Ha nem rendelkezik a [szükséges engedélyek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) a címtárban kell kérje meg egy rendszergazda adhat meg engedélyeket, vagy az Ön számára az egyszerű szolgáltatás létrehozása vagy konfigurálása a felügyeleti végpontja kell a a fürt a **felépítés utáni műveletekben** a feladatnak a Jenkinsben.
    * Az a [létrehozása az Azure Active Directory-alkalmazás](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application) a szakaszban adhatja meg minden olyan megfelelően formázott URL-CÍMÉT a **bejelentkezési URL-**.
-   * Az a [rendelje hozzá az alkalmazást egy szerepkörhöz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) területen rendelhet hozzá az alkalmazás a *olvasó* szerepkör az az erőforráscsoport, a fürt számára.
+   * Az a [rendelje hozzá az alkalmazást egy szerepkörhöz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) területen rendelhet hozzá az alkalmazás a *olvasó* szerepkör az az erőforráscsoport, a fürt számára.
 
 1. A Jenkins-feladatot, kattintson a **felépítés utáni műveletekben** fülre.
 1. A **Post-Build Actions** (Felépítés utáni műveletek) legördülő menüből válassza a **Deploy Service Fabric Project** (Service Fabric-projekt üzembe helyezése) elemet. 
@@ -309,9 +309,9 @@ Fejlesztési és tesztelési környezetek esetében konfigurálhatja az Azure hi
 1. Válassza ki a Jenkins-hitelesítő adatok szolgáltató **a Microsoft Azure egyszerű szolgáltatás** származó a **Kind** legördülő.
 1. A mentett beállításakor mentése az egyszerű szolgáltatást az 1. lépésben a következő mezők beállítása értékeket használja:
 
-   * **Ügyfél-azonosító**: *alkalmazás azonosítója*
+   * **Ügyfél-azonosító**: *Alkalmazás azonosítója*
    * **Titkos Ügyfélkód**: *Alkalmazáskulcs*
-   * **Bérlőazonosító**: *címtár-azonosító*
+   * **Bérlőazonosító**: *Címtár-azonosító*
    * **Előfizetés-azonosító**: *előfizetés-azonosító*
 1. Adjon meg egy leíró **azonosító** segítségével válassza ki a hitelesítő adatokat a Jenkins és a egy rövid **leírás**. Kattintson a **egyszerű szolgáltatás ellenőrzése**. Ha az ellenőrzés sikeres, kattintson a **Hozzáadás**.
 
@@ -324,9 +324,9 @@ Fejlesztési és tesztelési környezetek esetében konfigurálhatja az Azure hi
     ![Az Azure hitelesítő adatok beállítása a Service Fabric Jenkins felépítés utáni művelet](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
 1. Kattintson a **konfigurációjának ellenőrzése**. Kattintson az ellenőrzés sikeres **mentése**. A Jenkins-feladat folyamat most már teljes körűen konfigurálva. Továbbra is a [további lépések](#next-steps) az üzemelő példány teszteléséhez.
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Hibaelhárítás a Jenkins beépülő modul
+## <a name="troubleshooting-the-jenkins-plugin"></a>A Jenkins beépülő modul hibáinak elhárítása
 
-Ha bármely hibái a Jenkins beépülő modulok, a fájl be a problémát a [Jenkins JIRA](https://issues.jenkins-ci.org/) az adott összetevő.
+Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
 
 ## <a name="next-steps"></a>További lépések
 A GitHub és a Jenkins beállítása kész. Fontolja meg néhány mintamódosítást a a `reliable-services-actor-sample/Actors/ActorCounter` projekt a saját elágazásában a tárház https://github.com/Azure-Samples/service-fabric-java-getting-started. A módosításokat továbbíthatja a távoli `master` ágra (vagy bármilyen egyéb olyan használata már konfigurálta ágra). Ez aktiválja a konfigurált `MyJob` Jenkins-feladatot. Beolvassa a módosításokat a Githubról, lépteti őket, és központilag telepíti az alkalmazást a fürt megadott felépítés utáni műveletekben.  

@@ -6,6 +6,8 @@ items:
   - name: Machine Learning Studio
     displayName: overview
     href: what-is-ml-studio.md
+  - name: Machine Learning-termékeink összehasonlítása
+    href: ../service/overview-more-machine-learning.md
   - name: Az ML Studio képességei
     displayName: overview
     href: studio-overview-diagram.md
@@ -93,10 +95,6 @@ items:
     - name: Kísérletek kipróbálása az AI katalógusban
       displayName: gallery
       href: sample-experiments.md
-    - name: Algoritmusok kiválasztása
-      href: algorithm-choice.md
-    - name: Algoritmus-adatlap
-      href: algorithm-cheat-sheet.md
     - name: Eredmények kiértékelése és értelmezése
       items:
       - name: Teljesítmény kiértékelése
@@ -118,6 +116,12 @@ items:
         href: custom-r-modules.md
       - name: Python-szkriptek végrehajtása
         href: execute-python-scripts.md
+  - name: Algoritmus kiválasztása
+    items:
+    - name: Algoritmusok kiválasztása
+      href: algorithm-choice.md
+    - name: Algoritmus-adatlap
+      href: algorithm-cheat-sheet.md
   - name: Modellek üzembe helyezése
     items:
     - name: Webszolgáltatás üzembe helyezése
@@ -210,15 +214,11 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/machine-learning/
-  - name: R fejlesztői útmutató
-    href: ../r-developers-guide.md
   - name: Egyéni neurális hálózatok (Net#)
     href: azure-ml-netsharp-reference-guide.md
-  - name: Machine Learning-termékeink összehasonlítása
-    href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 400e6a2e98b8d29018b135204eaefa7ae3a7d965
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d6d4020d76c8eab2418b3b7ac5d26eaf93363870
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731427"
+ms.locfileid: "55746166"

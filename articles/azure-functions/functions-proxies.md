@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 507927934c442c8b217ed8fea371f505bb517d35
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 4bfe4f9f97587b6791e73c2f04055b2dcf5d0f0d
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198711"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766214"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Az Azure Functions-proxyk használata
 
@@ -88,8 +88,8 @@ Az útvonal Sablonparaméterek mellett a következő értékeket is használhat�
 
 Válasz paraméterek módosítása a válasz az ügyfélhez részeként is használható. A következő értékeket a konfigurációs értékek használhatók:
 
-* **{backend.response.statusCode}** : A háttér-válasz visszaadott HTTP-állapotkódot.
-* **{backend.response.statusReason}** : A háttér-válasz visszaadott HTTP indoklás.
+* **{backend.response.statusCode}**: A háttér-válasz visszaadott HTTP-állapotkódot.
+* **{backend.response.statusReason}**: A háttér-válasz visszaadott HTTP indoklás.
 * **{backend.response.headers. \<HeaderName\>}**: A fejlécet, amely a háttér-válaszból olvasható. Cserélje le *\<HeaderName\>* az olvasni kívánt fejléc nevét. Ha a válasz nem tartalmazza a fejléc, az érték nem üres karakterlánc.
 
 ### <a name="use-appsettings"></a>Referencia-Alkalmazásbeállítások
@@ -189,7 +189,7 @@ Proxyk, olvassa el minden kívül egy JSON-karakterlánc fájl használatával \
 A requestOverrides objektuma határozza meg, amikor a háttér-erőforrás neve a kérés végzett módosítások. Az objektum az alábbi tulajdonságokat határozzák meg:
 
 * **backend.Request.Method**: A háttéralkalmazás meghívásához használt HTTP-metódus.
-* **backend.Request.QueryString. \<ParameterName\>**: Lekérdezési sztring paramétereként, amely állíthat be a háttéralkalmazás meghívásához. Cserélje le *\<ParameterName\>* , amely beállítja a paraméter nevével. Ha az üres karakterlánc van megadva, a paraméter nem szerepel a háttér-kérés.
+* **backend.request.querystring.\<ParameterName\>**: Lekérdezési sztring paramétereként, amely állíthat be a háttéralkalmazás meghívásához. Cserélje le *\<ParameterName\>* , amely beállítja a paraméter nevével. Ha az üres karakterlánc van megadva, a paraméter nem szerepel a háttér-kérés.
 * **backend.Request.Headers. \<HeaderName\>**: A fejlécet, amely állíthat be a háttéralkalmazás meghívásához. Cserélje le *\<HeaderName\>* nevét a fejlécet, amely a következőt kívánja beállítani. Az üres karakterláncot adjon meg, ha a háttér-kérelem nem tartalmazza a fejlécet.
 
 Értékek hivatkozhatnak Alkalmazásbeállítások és a paraméterek az eredeti ügyfél kérelemből.
@@ -249,7 +249,7 @@ Konfiguráció például előfordulhat, hogy a következőhöz hasonló:
 > Ebben a példában a válasz törzse értéke közvetlenül, ezért nem `backendUri` tulajdonság van szükség. A példa bemutatja, hogyan használhatja az Azure Functions-proxyk utánzási API-k esetében.
 
 [Azure Portal]: https://portal.azure.com
-[HTTP-eseményindítók]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
+[HTTP-eseményindítók]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [Egy requestOverrides objektum meghatározása]: #requestOverrides

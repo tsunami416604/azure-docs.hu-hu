@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 214f32c4dc35661480b96477caf0cdf6243c75a8
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 703b8a7a094d0ea6f5b5dedaf02a218b407269d3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094241"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813806"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -28,7 +28,7 @@ Az Azure Functions Core Tools lehetővé teszi a fejlesztés és tesztelés a he
 
 Nincsenek az Azure Functions Core Tools két verziója. A verzió, attól függ, a helyi fejlesztési környezetbe [choice nyelvi](supported-languages.md), és a szükséges támogatási szint:
 
-+ [Verzió 1.x](#v1): verziót támogatja a futtatókörnyezet 1.x. Ez a verzió, az eszközök csak Windows-számítógépeken támogatott, és telepítve van a egy [npm-csomag](https://docs.npmjs.com/getting-started/what-is-npm). Az ebben a verzióban a kísérleti nem hivatalosan támogatott nyelvek funkciókat is létrehozhat. További információkért lásd: [támogatott nyelv az Azure Functions szolgáltatásban](supported-languages.md)
++ Verzió 1.x: verziót támogatja a futtatókörnyezet 1.x. Ez a verzió, az eszközök csak Windows-számítógépeken támogatott, és telepítve van a egy [npm-csomag](https://docs.npmjs.com/getting-started/what-is-npm). Az ebben a verzióban a kísérleti nem hivatalosan támogatott nyelvek funkciókat is létrehozhat. További információkért lásd: [támogatott nyelv az Azure Functions szolgáltatásban](supported-languages.md)
 
 + [Verzió 2.x](#v2): támogatja a [verzió 2.x verziójú futtatókörnyezet](functions-versions.md). Ez a verzió támogatja a [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux). Telepítési platformspecifikus csomagkezelők vagy az npm-et használ.
 

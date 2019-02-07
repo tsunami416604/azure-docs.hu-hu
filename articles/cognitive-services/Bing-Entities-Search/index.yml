@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f1db6f04a7e7bf32f861fd2eaf193e3cd25d9e12
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 23c5ccd33e63f2cdc9a62925078c3d70d92e9165
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167836"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55748981"
 documentType: LandingData
 title: A Bing Entity Search dokumentációja
 metadata:
-  title: A Bing Entity Search dokumentációja – oktatóanyagok, rövid útmutatók és API-referencia | Microsoft Docs
+  title: A Bing Entity Search API dokumentációja – oktatóanyagok, rövid útmutatók és API-referencia | Microsoft Docs
   description: Útmutató a Bing Entity Search API használatához a személyekkel, helyekkel vagy más meghatározott alanyokkal kapcsolatos információk keresése céljából. Az oktatóanyagok ismertetik, hogyan hozhat létre a szolgáltatást használó alkalmazásokat.
   services: cognitive-services
   author: mikedodaro
@@ -18,11 +18,32 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/07/2018
+  ms.date: 02/01/2019
   ms.author: v-gedod
 abstract:
-  description: A Bing Entity Search API a Bing megállapítása alapján a felhasználó lekérdezéséhez kapcsolódó entitásokkal kapcsolatos információkat ad vissza.
+  description: A Bing Entity Search API-val az alkalmazások információkhoz juthatnak a keresési lekérdezésekben észlelt entitásokról. Az entitások lehetnek személyek, helyek, médiatartalmak címei és egyebek.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-entities-search/overview
+      html: <p>Bing Entity Search API</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Entitások keresése
+    - href: /azure/cognitive-services/bing-entities-search/concepts/search-for-entities
+      html: <p>Megtudhatja, hogyan kereshet entitásokat az interneten a Bing Entity Search API-val.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Keresési kérések küldése
+    - href: /azure/cognitive-services/bing-custom-search/hosted-ui
+      html: <p>Megtudhatja, hogyan küldhet keresési kéréseket az API-nak.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Keresési lekérdezések küldése
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -32,15 +53,15 @@ sections:
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: quickstarts/csharp
+      href: quickstarts/entity-sdk-csharp-quickstart
       text: C&#35;
     - image:
         src: media/index/logo_java.svg
-      href: quickstarts/java
+      href: quickstarts/entity-sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: quickstarts/nodejs
+      href: quickstarts/entity-sdk-node-quickstart
       text: Node.js
     - image:
         src: media/index/logo_php.svg
@@ -48,7 +69,7 @@ sections:
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: quickstarts/python
+      href: quickstarts/entity-sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg
@@ -59,7 +80,7 @@ sections:
   - type: paragraph
     text: 'További információ a Bing Entity Search API-t használó alkalmazások fejlesztéséről:'
   - type: paragraph
-    text: <a href="tutorial-bing-entities-search-single-page-app">Egyoldalas webalkalmazás</a> | <a href="tutorial-bing-entities-search-single-page-app-source">Forráskód</a>
+    text: <a href="tutorial-bing-entities-search-single-page-app">Egyoldalas webalkalmazás</a>
 - title: Példák
   items:
   - type: paragraph

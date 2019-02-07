@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8ec180b40e52c5702495a0124bf8ae33d2dc24a1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 66e913f6d461d2671bd217745a9d128e24c1a60c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727783"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820929"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Oktatóanyag: Az Azure Deployment Manager Resource Manager-sablonokkal való használata (privát előzetes verzió)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok (privát előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan helyezheti üzembe alkalmazásait több régióban az [Azure Deployment Manager](./deployment-manager-overview.md) használatával. Deployment Manager használatához szeretne létrehozni a két sablon:
 
@@ -129,7 +129,7 @@ A két verzió (1.0.0.0 és 1.0.0.1) a [változatok üzembe helyezését](#deplo
 
 A sablonösszetevőket a szolgáltatástopológia-sablon, a bináris összetevőket a bevezetési sablon használja. A topológiasablon és a bevezetési sablon is meghatároz egy összetevőforrásként szolgáló Azure-erőforrást, amely az üzemelő példányban használt sablon- és bináris összetevőkre irányítja a Resource Managert. Az oktatóanyag egyszerűsége érdekében ugyanaz a tárfiók tárolja a sablonösszetevőket és a bináris összetevőket. Mindkét összetevőforrás ugyanarra a tárfiókra mutat.
 
-1. Hozzon létre egy Azure-tárfiókot. Útmutatásért tekintse meg a [Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Portal használatával](../storage/blobs/storage-quickstart-blobs-portal.md) című dokumentumot.
+1. Hozzon létre egy Azure-tárfiókot. Az utasításokért lásd: [a rövid útmutató: Blobok feltöltése, letöltése, és listát az Azure portal használatával](../storage/blobs/storage-quickstart-blobs-portal.md).
 2. Hozzon létre egy blobtárolót a tárfiókban.
 3. Másolja a blobtárolóba a két mappát (a binaries és a templates mappát) és a tartalmukat. A [Microsoft Azure Storage Explorer](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409) támogatja a fájlok húzását.
 4. A tároló SAS-helyét az alábbi utasításokat követve tudhatja meg:
@@ -172,15 +172,15 @@ A sablon a következő paramétereket tartalmazza:
 
 ![Azure Deployment Manager oktatóanyag – topológiasablon paraméterei](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-parameters.png)
 
-- **namePrefix**: Ez az előtag hozza létre a Deployment Manager-erőforrások nevét. Például a jdoe előtaggal a szolgáltatástopológia neve **jdoe**ServiceTopology lesz.  Az erőforrásnevek ennek a sablonnak a változókat tartalmazó szakaszában definiálhatók.
-- **azureResourcelocation**: Az oktatóanyag egyszerűsítése érdekében mindegyik erőforrás ezen a helyen található, hacsak másként nem jelezzük. Jelenleg az Azure Deployment Manager-erőforrások csak az **USA középső** és **2. keleti régiójában** hozhatók létre.
-- **artifactSourceSASLocation**: Annak a blobtárolónak a SAS URI-ja, amely a szolgáltatási egység sablonját és paramétereit tárolja az üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
-- **templateArtifactRoot**: A relatív elérési út a sablonokat és paramétereket tároló blobtárolótól. Az alapértelmezett érték **templates/1.0.0.0**. Ne módosítsa ezt az értéket, hacsak nem szeretné módosítani a mappastruktúrát [az összetevők előkészítését](#prepare-the-artifacts) ismertető szakaszban foglaltak szerint. Ebben az oktatóanyagban relatív elérési utakat használunk.  A teljes elérési út a következők összefűzésével áll elő: **artifactSourceSASLocation**, **templateArtifactRoot** és **templateArtifactSourceRelativePath** (vagy **parametersArtifactSourceRelativePath**).
-- **targetSubscriptionID**: Annak az előfizetésnek az azonosítója, amelyben a Deployment Manager-erőforrások telepítve és számlázva lesznek. Ebben az oktatóanyagban használja a saját előfizetése azonosítóját.
+- **namePrefix**: Ezt az előtagot a Deployment Manager erőforrások nevét létrehozására szolgál. Például a jdoe előtaggal a szolgáltatástopológia neve **jdoe**ServiceTopology lesz.  Az erőforrásnevek ennek a sablonnak a változókat tartalmazó szakaszában definiálhatók.
+- **azureResourcelocation**: Az oktatóanyag leegyszerűsítése összes erőforrás ezen a helyen megosztani, hacsak nincs másképpen megadva. Jelenleg az Azure Deployment Manager-erőforrások csak az **USA középső** és **2. keleti régiójában** hozhatók létre.
+- **artifactSourceSASLocation**: Az SAS URI-t a Blob-tároló üzembe helyezéshez egység sablon és paraméterek fájljainak tárolására.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
+- **templateArtifactRoot**: A Blob tárolóból a sablonokat és paraméterfájlt tároló eltolási elérési útja. Az alapértelmezett érték **templates/1.0.0.0**. Ne módosítsa ezt az értéket, hacsak nem szeretné módosítani a mappastruktúrát [az összetevők előkészítését](#prepare-the-artifacts) ismertető szakaszban foglaltak szerint. Ebben az oktatóanyagban relatív elérési utakat használunk.  A teljes elérési út a következők összefűzésével áll elő: **artifactSourceSASLocation**, **templateArtifactRoot** és **templateArtifactSourceRelativePath** (vagy **parametersArtifactSourceRelativePath**).
+- **targetSubscriptionID**: Az előfizetés-azonosítója, amelyhez a Deployment Manager erőforrások üzembe helyezését és a számlázás fog. Ebben az oktatóanyagban használja a saját előfizetése azonosítóját.
 
 ### <a name="the-variables"></a>A változók
 
-A változók szakasz definiálja az erőforrások nevét, a két szolgáltatás (**Service WUS** és **Service EUS**) Azure-helyeit, valamint az összetevők elérési útját:
+A változók szakaszban határozza meg az erőforrásokat, az Azure-helyek esetében a két szolgáltatás nevei: **Szolgáltatás WUS** és **szolgáltatás EUS**, és az összetevő elérési út:
 
 ![Azure Deployment Manager-oktatóanyag – topológiasablon változói](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-variables.png)
 
@@ -199,7 +199,7 @@ Az alábbi képernyőképen a szolgáltatástopológiának, a szolgáltatásokna
 ![Azure Deployment Manager-oktatóanyag – topológiasablon erőforrásainak szolgáltatástopológiája](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-resources-service-topology.png)
 
 - Az **artifactSourceId** az összetevőforrás erőforrást társítja a szolgáltatástopológia erőforráshoz.
-- **dependsOn**: Minden szolgáltatástopológia-erőforrás függ az összetevőforrás-erőforrástól.
+- **dependsOn**: A szolgáltatás topológia összes erőforrást az összetevő-forrás erőforrás függenek.
 - Az **artifacts** elem a sablonösszetevőkre mutat.  Itt relatív elérési utakat használunk. A teljes elérési út a következők összefűzésével áll elő: artifactSourceSASLocation (az összetevőforrásban definiálva), artifactRoot (az összetevőforrásban definiálva) és templateArtifactSourceRelativePath (vagy parametersArtifactSourceRelativePath).
 
 > [!NOTE]
@@ -212,10 +212,10 @@ Hozzon létre egy paraméterfájlt, amely a topológiasablonnal használható.
 1. Nyissa meg a következő fájlt a Visual Studio Code-ban vagy valamilyen szövegszerkesztőben: **\ADMTemplates\CreateADMServiceTopology.Parameters**.
 2. Töltse ki a paraméterek értékeit:
 
-    - **namePrefix**: Adjon meg egy 4–5 karakterből álló láncot. Az előtag használatával egyedi Azure-erőforrásnevek hozhatók létre.
-    - **azureResourceLocation**: Ha nem ismerné az Azure-helyeket, ebben az oktatóanyagban használja a **centralus** helyet.
-    - **artifactSourceSASLocation**: Adja meg annak a gyökérkönyvtárnak (a blobtárolónak) az SAS URI-ját, amely a szolgáltatási egység sablonját és paramétereit tárolja az üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
-    - **templateArtifactRoot**: Hacsak nem módosítja az összetevők mappastruktúráját, használja a **templates/1.0.0.0** értéket az oktatóanyagban.
+    - **namePrefix**: Adja meg a 4 – 5 karakterből álló karakterlánc. Az előtag használatával egyedi Azure-erőforrásnevek hozhatók létre.
+    - **azureResourceLocation**: Ha nem ismeri az Azure-helyen, használjon **centralus** ebben az oktatóanyagban.
+    - **artifactSourceSASLocation**: Adja meg a SAS URI-t a gyökérkönyvtárba (a Blob-tároló) szolgáltatás egység sablon és paraméterek fájlokat tároló üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
+    - **templateArtifactRoot**: Ha nem módosítja a mappastruktúra az összetevők, használja **templates/1.0.0.0** ebben az oktatóanyagban.
     - **targetScriptionID**: Adja meg az Azure-előfizetés azonosítóját.
 
 > [!IMPORTANT]
@@ -231,11 +231,11 @@ A sablon a következő paramétereket tartalmazza:
 
 ![Azure Deployment Manager-oktatóanyag – bevezetési sablon paraméterei](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
-- **namePrefix**: Ez az előtag hozza létre a Deployment Manager-erőforrások nevét. Például a jdoe előtaggal a bevezetés neve **jdoe**Rollout lesz.  A nevek ennek a sablon a változókat tartalmazó szakaszában vannak definiálva.
-- **azureResourcelocation**: Az oktatóanyag egyszerűsítése érdekében mindegyik Deployment Manager-erőforrás ezen a helyen található, hacsak másként nem jelezzük. Jelenleg az Azure Deployment Manager-erőforrások csak az **USA középső** és **2. keleti régiójában** hozhatók létre.
-- **artifactSourceSASLocation**: Annak a gyökérkönyvtárnak (a blobtárolónak) a SAS URI-ja, amely a szolgáltatási egység sablonját és paramétereit tárolja az üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
-- **binaryArtifactRoot**: Az alapértelmezett érték **binaries/1.0.0.0**. Ne módosítsa ezt az értéket, hacsak nem szeretné módosítani a mappastruktúrát [az összetevők előkészítését](#prepare-the-artifacts) ismertető szakaszban foglaltak szerint. Ebben az oktatóanyagban relatív elérési utakat használunk.  A teljes elérési út a következők összefűzésével áll elő: **artifactSourceSASLocation**, **binaryArtifactRoot** és a **deployPackageUri**, amely a CreateWebApplicationParameters.json fájlban van megadva.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
-- **managedIdentityID**: A felhasználó által hozzárendelt felügyelt identitás, amely a telepítési műveleteket végrehajtja. Lásd: [A felhasználó által hozzárendelt felügyelt identitás létrehozása](#create-the-user-assigned-managed-identity).
+- **namePrefix**: Ezt az előtagot a Deployment Manager erőforrások nevét létrehozására szolgál. Például a jdoe előtaggal a bevezetés neve **jdoe**Rollout lesz.  A nevek ennek a sablon a változókat tartalmazó szakaszában vannak definiálva.
+- **azureResourcelocation**: Egyszerűbb az oktatóanyag, minden Deployment Manager erőforrás ezen a helyen megosztani, hacsak nincs másképpen megadva. Jelenleg az Azure Deployment Manager-erőforrások csak az **USA középső** és **2. keleti régiójában** hozhatók létre.
+- **artifactSourceSASLocation**: A SAS URI-t a gyökérkönyvtárba (a Blob-tároló) szolgáltatás egység sablon és paraméterek fájlokat tároló üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
+- **binaryArtifactRoot**:  Az alapértelmezett érték **binaries/1.0.0.0**. Ne módosítsa ezt az értéket, hacsak nem szeretné módosítani a mappastruktúrát [az összetevők előkészítését](#prepare-the-artifacts) ismertető szakaszban foglaltak szerint. Ebben az oktatóanyagban relatív elérési utakat használunk.  A teljes elérési út a következők összefűzésével áll elő: **artifactSourceSASLocation**, **binaryArtifactRoot** és a **deployPackageUri**, amely a CreateWebApplicationParameters.json fájlban van megadva.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
+- **managedIdentityID**: A felhasználó által hozzárendelt felügyelt identitás, amely a központi telepítési műveleteket hajtja végre. Lásd: [A felhasználó által hozzárendelt felügyelt identitás létrehozása](#create-the-user-assigned-managed-identity).
 
 ### <a name="the-variables"></a>A változók
 
@@ -259,10 +259,10 @@ Az alábbi képernyőképen a bevezetés definíciójának csak egyes részei l�
 
 ![Azure Deployment Manager-oktatóanyag – bevezetési sablon erőforrásainak bevezetése](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-resources-rollout.png)
 
-- **dependsOn**: A bevezetési erőforrás az összetevőforrás erőforrástól és az összes definiált lépéstől is függ.
+- **dependsOn**: A bevezetési erőforrás az összetevő-forrás erőforrást, és bármelyik megadott lépések függ.
 - **artifactSourceId**: Az összetevőforrás erőforrást társítja a bevezetési erőforráshoz.
 - **targetServiceTopologyId**: A szolgáltatástopológia-erőforrást társítja a bevezetési erőforráshoz.
-- **deploymentTargetId**: A szolgáltatástopológia-erőforrás szolgáltatási egység erőforrás-azonosítója.
+- **deploymentTargetId**: A szolgáltatás egység erőforrás-azonosító a szolgáltatás topológia erőforrás.
 - **preDeploymentSteps** és **postDeploymentSteps**: A bevezetés lépéseit tartalmazzák. A sablonban egy várakozási lépés lesz meghívva.
 - **dependsOnStepGroups**: A lépéscsoportok közötti függőségeket konfigurálja.
 
@@ -273,11 +273,11 @@ Hozzon létre egy paraméterfájlt, amely a bevezetési sablonnal használható.
 1. Nyissa meg a következő fájlt a Visual Studio Code-ban vagy valamilyen szövegszerkesztőben: **\ADMTemplates\CreateADMRollout.Parameters**.
 2. Töltse ki a paraméterek értékeit:
 
-    - **namePrefix**: Adjon meg egy 4–5 karakterből álló láncot. Az előtag használatával egyedi Azure-erőforrásnevek hozhatók létre.
-    - **azureResourceLocation**: Jelenleg az Azure Deployment Manager-erőforrások csak az **USA középső** és **2. keleti régiójában** hozhatók létre.
-    - **artifactSourceSASLocation**: Adja meg annak a gyökérkönyvtárnak (a blobtárolónak) az SAS URI-ját, amely a szolgáltatási egység sablonját és paramétereit tárolja az üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
-    - **binaryArtifactRoot**: Hacsak nem módosítja az összetevők mappastruktúráját, használja a **binaries/1.0.0.0** értéket az oktatóanyagban.
-    - **managedIdentityID**: Adja meg a felhasználó által hozzárendelt felügyelt identitást. Lásd: [A felhasználó által hozzárendelt felügyelt identitás létrehozása](#create-the-user-assigned-managed-identity). A szintaxis a következő:
+    - **namePrefix**: Adja meg a 4 – 5 karakterből álló karakterlánc. Az előtag használatával egyedi Azure-erőforrásnevek hozhatók létre.
+    - **azureResourceLocation**: Jelenleg az Azure Deployment Manager-erőforrások csak az USA középső és **2. keleti régiójában** hozhatók létre.
+    - **artifactSourceSASLocation**: Adja meg a SAS URI-t a gyökérkönyvtárba (a Blob-tároló) szolgáltatás egység sablon és paraméterek fájlokat tároló üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
+    - **binaryArtifactRoot**: Ha nem módosítja a mappastruktúra az összetevők, használja **binaries/1.0.0.0** ebben az oktatóanyagban.
+    - **managedIdentityID**: Adja meg a felhasználóhoz felügyelt identitásnak. Lásd: [A felhasználó által hozzárendelt felügyelt identitás létrehozása](#create-the-user-assigned-managed-identity). A szintaxis a következő:
 
         ```
         "/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userassignedidentities/<ManagedIdentityName>"
@@ -336,7 +336,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
         -Name $rolloutName
     ```
 
-    A Deployment Manager PowerShell-parancsmagjait telepíteni kell ahhoz, hogy a parancsmagot futtatni lehessen. Lásd: [Előfeltételek](#prerequisite).
+    A Deployment Manager PowerShell-parancsmagjait telepíteni kell ahhoz, hogy a parancsmagot futtatni lehessen. Tekintse meg az előfeltételeket.
 
     Az alábbi példa mutatja a futtatási állapotot:
     
