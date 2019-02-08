@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c09816d45169ce9bb6c926b8b17b075ea1059ec7
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e56169d74d1669c3bb7adda06590145d2ca31b72
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695372"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893340"
 ---
 # <a name="saas-sell-through-azure---apis"></a>SaaS-értékesítési Azure - API-k segítségével
 
@@ -68,7 +68,7 @@ Az Azure Portallal egy új alkalmazás regisztrálásához hajtsa végre az alá
     -   **Bejelentkezés URL-cím**: Webes alkalmazás és az API-alkalmazások adja meg az alkalmazás alap URL-CÍMÉT. Ha például **http://localhost:31544** lehet, hogy a helyi gépen futó webalkalmazás URL-CÍMÉT. Felhasználók a webes ügyfélalkalmazás bejelentkezni majd használna az URL-címet.
     -   **Átirányítási URI**: Natív alkalmazások esetén adja meg az Azure AD a jogkivonatválaszok visszaadására használt URI-ja. Adja meg például egy adott értéket az alkalmazás **http://MyFirstAADApp**.
 
-        ![SaaS-AD Alkalmazásregisztrációk](./media/saas-offer-app-registration-2.png) adott példák a webalkalmazásokra vagy natív alkalmazásokat, tekintse meg a gyors üzembe helyezési interaktív bevezetés szakaszában rendelkezésre álló beállításokat a [az Azure AD fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started).
+        ![SaaS-AD Alkalmazásregisztrációk](./media/saas-offer-app-registration-2.png) adott példák a webalkalmazásokra vagy natív alkalmazásokat, tekintse meg a gyors üzembe helyezési interaktív bevezetés szakaszában rendelkezésre álló beállításokat a [az Azure AD fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
 5.  Ha végzett, kattintson a **Létrehozás** gombra. Az Azure AD egy egyedi Alkalmazásazonosító rendeli az alkalmazást, és\'újra megnyílik az alkalmazás\'s fő való regisztrációhoz. Attól függően, hogy az alkalmazás webes vagy natív, eltérő lehetőségek állnak rendelkezésre az alkalmazás további funkcióinak hozzáadásához.
 
@@ -93,7 +93,7 @@ HTTP-metódus
 
 |  **Paraméter neve**  | **Kötelező**  | **Leírás**                               |
 |  ------------------  | ------------- | --------------------------------------------- |
-| tenantId             | True (Igaz)          | A regisztrált AAD-alkalmazás Bérlőazonosítója   |
+| tenantId             | Igaz          | A regisztrált AAD-alkalmazás Bérlőazonosítója   |
 |  |  |  |
 
 
@@ -101,7 +101,7 @@ HTTP-metódus
 
 |  **Fejléc neve**  | **Kötelező** |  **Leírás**                                   |
 |  --------------   | ------------ |  ------------------------------------------------- |
-|  Content-Type     | True (Igaz)         | A kéréshez társított tartalom típusa. Az alapértelmezett érték `application/x-www-form-urlencoded`.  |
+|  Content-Type     | Igaz         | A kéréshez társított tartalom típusa. Az alapértelmezett érték `application/x-www-form-urlencoded`.  |
 |  |  |  |
 
 
@@ -109,10 +109,10 @@ HTTP-metódus
 
 | **Tulajdonság neve**   | **Kötelező** |  **Leírás**                                                          |
 | -----------------   | -----------  | ------------------------------------------------------------------------- |
-|  Grant_type         | True (Igaz)         | Engedélyezési típus. Az alapértelmezett érték `client_credentials`.                    |
-|  Client_id          | True (Igaz)         |  Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás azonosítója.                  |
-|  client_secret      | True (Igaz)         |  Az Azure AD-alkalmazáshoz társított jelszót.                               |
-|  Erőforrás           | True (Igaz)         |  A célerőforrás, amelyre a jogkivonat kérik. Az alapértelmezett érték `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
+|  Grant_type         | Igaz         | Engedélyezési típus. Az alapértelmezett érték `client_credentials`.                    |
+|  Client_id          | Igaz         |  Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás azonosítója.                  |
+|  client_secret      | Igaz         |  Az Azure AD-alkalmazáshoz társított jelszót.                               |
+|  Erőforrás           | Igaz         |  A célerőforrás, amelyre a jogkivonat kérik. Az alapértelmezett érték `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
 |  |  |  |
 
 
@@ -148,7 +148,9 @@ Az API-verzió `api-version=2017-04-15`.
 
 ### <a name="resolve-subscription"></a>Oldja meg az előfizetés
 
-A POST művelet oldja meg a végpont lehetővé teszi a felhasználóknak oldja fel a jogkivonatot egy állandó erőforrás-azonosítója.
+A POST művelet oldja meg a végpont lehetővé teszi a felhasználóknak a Marketplace-en jogkivonat feloldani egy állandó erőforrás-azonosítója.  Az erőforrás-azonosítója a SAAS-előfizetéshez tartozó egyedi azonosítója. 
+
+Független Szoftverszállító webhelyre a rendszer átirányítja a felhasználót, ha az URL-címet tartalmaz egy jogkivonatot a lekérdezési paraméterek. A független Szoftvergyártók várhatóan használja ezt a jogkivonatot, és kérheti oldható meg. A válasz egyedi SAAS előfizetés-azonosító, nevét, Ajánlatazonosító, és az erőforrás tervezése tartalmaz. Ez a token érvényességét csak egy óránál.
 
 *Kérés*
 
@@ -632,6 +634,6 @@ Egy SaaS-webhook proaktív módon a SaaS-szolgáltatás módosításait értesí
 | offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. Csak a "Frissítés" művelet megadott.        |
 | publisherId                | String        | Az SaaS-ajánlat a Gyártóazonosítóval         |
 | planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója. Csak a "Frissítés" művelet megadott.          |
-| action                 | String        | A művelet, amely ezt az értesítést kezdeményezi. A lehetséges értékek - aktiválása, töröl, a felfüggesztés, visszaállítása, frissítés          |
+| a művelet                 | String        | A művelet, amely ezt az értesítést kezdeményezi. A lehetséges értékek - aktiválása, töröl, a felfüggesztés, visszaállítása, frissítés          |
 | timeStamp                 | String        | Időbélyeg értékét UTC formátumban, amikor az értesítés lett elindítva.          |
 |  |  |  |

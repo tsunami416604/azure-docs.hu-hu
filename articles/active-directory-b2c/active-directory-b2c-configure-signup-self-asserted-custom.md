@@ -1,38 +1,40 @@
 ---
-title: Módosítása jelentkezzen be az egyéni házirendek és a saját kiszolgáló által megerősített szolgáltató konfigurálása |} A Microsoft Docs
-description: Regisztráljon, és a felhasználó által megadott adatok konfigurálása jogcímek hozzáadását bemutató
+title: Adja hozzá a jogcímeket, és testre szabhatja a felhasználói bevitel egyéni szabályzatok – Azure Active Directory B2C használatával |} A Microsoft Docs
+description: Ismerje meg, hogy felhasználói bevitel testreszabása, és a regisztrálási vagy bejelentkezési utazás jogcímeket hozzáadása az Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/29/2017
+ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2989af12407bdddf6e55e8967a0a574fff690208
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3e48ce4adc64f434b80210ff8aa36a983ba88c26
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179208"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894921"
 ---
-# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Módosítsa a jelentkezzen be új jogcímeket adhatnak hozzá és felhasználó által megadott adatok konfigurálása.
+#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Adja hozzá a jogcímeket, és testre szabhatja a felhasználói bevitel, az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk egy új felhasználó által megadott bejegyzés (jogcím) adnak hozzá a regisztráció felhasználói interakciósorozat.  A bejegyzés konfigurálása, a legördülő listából, és határozza meg, ha szükséges.
+Ez a cikk az Azure Active Directory (Azure AD) B2C-ben a bejelentkezési felhasználói interakciósorozat vegyen fel egy új felhasználó által megadott bejegyzés (jogcím).  A bejegyzés konfigurálja a legördülő listából, és határozza meg, hogy ez szükséges.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A cikkben leírtak elvégzése [Ismerkedés az egyéni szabályzatok](active-directory-b2c-get-started-custom.md).  Tesztelje a folytatás előtt egy új helyi fiókot regisztrálni szeretne a regisztráció/bejelentkezés felhasználói interakciósorozat.
+A cikkben leírtak elvégzése [Ismerkedés az egyéni szabályzatok](active-directory-b2c-get-started-custom.md). Regisztráció a folytatás előtt egy új helyi fiók regisztrálási vagy bejelentkezési felhasználói interakciósorozat teszteléséhez.
+
+## <a name="add-claims"></a>Jogcím hozzáadása
+
+A felhasználók kezdeti adatgyűjtést érhető el, a regisztrálási vagy bejelentkezési felhasználói interakciósorozat használatával. További jogcímek később gyűjthetők a felhasználói út profil szerkesztése. Bármikor az Azure AD B2C-vel információt gyűjt közvetlenül a felhasználó interaktív módon, akkor az identitás-kezelőfelületi keretrendszer a selfasserted-szolgáltatóját használja.
 
 
-A regisztráció/bejelentkezés keresztül érhető el a felhasználók kezdeti adatgyűjtést.  További jogcímek később gyűjthetők profil szerkesztése felhasználói utak keresztül. Bármikor az Azure AD B2C-vel információt gyűjt közvetlenül a felhasználó interaktív módon, az identitás-kezelőfelületi keretrendszer használ annak `selfasserted provider`. Az alábbi lépéseket bármikor ezt a szolgáltatót használja a alkalmazni.
+### <a name="define-the-claim"></a>Az igényt definiálása
 
-
-## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>A jogcím, a megjelenítendő nevét és a felhasználói adatbevitel típusa
-Lehetővé teszi, hogy a felhasználó kérése az városa.  Adja hozzá a következő elemet, a `<ClaimsSchema>` elem a TrustFrameworkBase házirend fájlban:
+Lehetővé teszi, hogy a felhasználó kérése az városa. Adja hozzá a következő elemet, a **ClaimsSchema** elem a TrustFrameworkBase házirend fájlban:
 
 ```xml
 <ClaimType Id="city">
@@ -42,14 +44,15 @@ Lehetővé teszi, hogy a felhasználó kérése az városa.  Adja hozzá a köve
   <UserInputType>TextBox</UserInputType>
 </ClaimType>
 ```
-Nincsenek további választható lehetőségeket Itt szabhatja testre a jogcímet.  A teljes séma, tekintse meg a **identitás élmény keretrendszer műszaki referencia-útmutató**.  Ez az útmutató hamarosan közzé lesz téve a hivatkozási szakaszban.
 
-* `<DisplayName>` egy karakterlánc, amely meghatározza a felhasználó által használt *felirat*
+A következő elemeket a jogcím meghatározásához használják:
 
-* `<UserHelpText>` segít a szükséges ismertetése
+- **DisplayName** – egy karakterlánc, amely meghatározza a felhasználói címkét.
+- **UserHelpText** -segít a szükséges ismertetése.
+- **UserInputType** – egy szövegmező, választógomb kijelölés, a legördülő listából válassza ki vagy többszörös kijelölés is lehet.
 
-* `<UserInputType>` a következő négy beállítás alatt van kiemelve:
-    * `TextBox`
+#### <a name="textbox"></a>TextBox
+
 ```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
@@ -59,7 +62,8 @@ Nincsenek további választható lehetőségeket Itt szabhatja testre a jogcíme
 </ClaimType>
 ```
 
-    * `RadioSingleSelectduration` – Egyetlen kijelölésre érvénybe lépteti.
+#### <a name="radiosingleselect"></a>RadioSingleSelect
+
 ```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
@@ -73,10 +77,9 @@ Nincsenek további választható lehetőségeket Itt szabhatja testre a jogcíme
 </ClaimType>
 ```
 
-    * `DropdownSingleSelect` – Csak az érvényes érték a kiválasztását teszi lehetővé.
+#### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
 ![Képernyőfelvétel a lehetőségéről](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
-
 
 ```xml
 <ClaimType Id="city">
@@ -91,11 +94,9 @@ Nincsenek további választható lehetőségeket Itt szabhatja testre a jogcíme
 </ClaimType>
 ```
 
-
-* `CheckboxMultiSelect` Lehetővé teszi, hogy a kijelölt egy vagy több értéket.
+#### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
 ![Képernyőkép a többszörös kiválasztási lehetőséget](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
-
 
 ```xml
 <ClaimType Id="city">
@@ -110,142 +111,169 @@ Nincsenek további választható lehetőségeket Itt szabhatja testre a jogcíme
 </ClaimType>
 ```
 
-## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>Adja hozzá a bejelentkezést a jogcím up/sign felhasználói interakciósorozatban szereplő
+### <a name="add-the-claim-to-the-user-journey"></a>Adja hozzá a jogcím felhasználói interakciósorozat
 
-1. A jogcím, adjon hozzá egy `<OutputClaim ClaimTypeReferenceId="city"/>` , a TechnicalProfile `LocalAccountSignUpWithLogonEmail` (a TrustFrameworkBase házirend fájlban található).  Vegye figyelembe a TechnicalProfile a SelfAssertedAttributeProvider használja.
+1. Adja hozzá a jogcím, mint egy `<OutputClaim ClaimTypeReferenceId="city"/>` , a `LocalAccountSignUpWithLogonEmail` technikai profil a TrustFrameworkBase házirend fájlban található. A technikai profil a SelfAssertedAttributeProvider használ.
 
-  ```xml
-  <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-    <DisplayName>Email signup</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-      <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
-      <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
-      <Item Key="language.button_continue">Create</Item>
-    </Metadata>
-    <CryptographicKeys>
-      <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
-    </CryptographicKeys>
-    <InputClaims>
-      <InputClaim ClaimTypeReferenceId="email" />
-    </InputClaims>
-    <OutputClaims>
-      <OutputClaim ClaimTypeReferenceId="objectId" />
-      <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
-      <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
-      <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
-      <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
-      <OutputClaim ClaimTypeReferenceId="authenticationSource" />
-      <OutputClaim ClaimTypeReferenceId="newUser" />
-      <!-- Optional claims, to be collected from the user -->
-      <OutputClaim ClaimTypeReferenceId="givenName" />
-      <OutputClaim ClaimTypeReferenceId="surName" />
-      <OutputClaim ClaimTypeReferenceId="city"/>
-    </OutputClaims>
-    <ValidationTechnicalProfiles>
-      <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
-    </ValidationTechnicalProfiles>
-    <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
-  </TechnicalProfile>
-  ```
-
-2. Az AAD-UserWriteUsingLogonEmail, mint a jogcím hozzáadása egy `<PersistedClaim ClaimTypeReferenceId="city" />` az AAD-címtárában, a felhasználó összegyűjtése után a jogcím írni. Ezt a lépést kihagyhatja, ha nem szeretné megőrizni a jogcím későbbi használatra a könyvtárban.
-
-  ```xml
-  <!-- Technical profiles for local accounts -->
-  <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
-    <Metadata>
-      <Item Key="Operation">Write</Item>
-      <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
-    </Metadata>
-    <IncludeInSso>false</IncludeInSso>
-    <InputClaims>
-      <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" Required="true" />
-    </InputClaims>
-    <PersistedClaims>
-      <!-- Required claims -->
-      <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
-      <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password" />
-      <PersistedClaim ClaimTypeReferenceId="displayName" DefaultValue="unknown" />
-      <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration" />
-      <!-- Optional claims. -->
-      <PersistedClaim ClaimTypeReferenceId="givenName" />
-      <PersistedClaim ClaimTypeReferenceId="surname" />
-      <PersistedClaim ClaimTypeReferenceId="city" />
-    </PersistedClaims>
-    <OutputClaims>
-      <OutputClaim ClaimTypeReferenceId="objectId" />
-      <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
-      <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-      <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
-      <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-    </OutputClaims>
-    <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-    <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
-  </TechnicalProfile>
-  ```
-
-3. Adja hozzá a TechnicalProfile, amely a könyvtárból olvassa be, amikor egy felhasználó bejelentkezik a jogcím- `<OutputClaim ClaimTypeReferenceId="city" />`
-
-  ```xml
-  <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
-    <Metadata>
-      <Item Key="Operation">Read</Item>
-      <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
-    </Metadata>
-    <IncludeInSso>false</IncludeInSso>
-    <InputClaims>
-      <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames" Required="true" />
-    </InputClaims>
-    <OutputClaims>
-      <!-- Required claims -->
-      <OutputClaim ClaimTypeReferenceId="objectId" />
-      <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-      <!-- Optional claims -->
-      <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
-      <OutputClaim ClaimTypeReferenceId="displayName" />
-      <OutputClaim ClaimTypeReferenceId="otherMails" />
-      <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-      <OutputClaim ClaimTypeReferenceId="city" />
-    </OutputClaims>
-    <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-  </TechnicalProfile>
-  ```
-
-4. Adja hozzá a `<OutputClaim ClaimTypeReferenceId="city" />` SignUporSignIn.xml az RP-házirendhez fájlt, így a sikeres felhasználói út után az alkalmazás a jogkivonatban a jogcím megkap.
-
-  ```xml
-  <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-    <TechnicalProfile Id="PolicyProfile">
-      <DisplayName>PolicyProfile</DisplayName>
-      <Protocol Name="OpenIdConnect" />
+    ```xml
+    <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
+      <DisplayName>Email signup</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+        <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
+        <Item Key="language.button_continue">Create</Item>
+      </Metadata>
+      <CryptographicKeys>
+        <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
+      </CryptographicKeys>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="email" />
+      </InputClaims>
       <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="objectId" />
+        <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
+        <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
+        <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+        <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
+        <OutputClaim ClaimTypeReferenceId="authenticationSource" />
+        <OutputClaim ClaimTypeReferenceId="newUser" />
+        <!-- Optional claims, to be collected from the user -->
         <OutputClaim ClaimTypeReferenceId="givenName" />
-        <OutputClaim ClaimTypeReferenceId="surname" />
-        <OutputClaim ClaimTypeReferenceId="email" />
-        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="surName" />
+        <OutputClaim ClaimTypeReferenceId="city"/>
+      </OutputClaims>
+      <ValidationTechnicalProfiles>
+        <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
+      </ValidationTechnicalProfiles>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+    </TechnicalProfile>
+    ```
+
+2. Az AAD-UserWriteUsingLogonEmail technikai profilban, a jogcím hozzáadása egy `<PersistedClaim ClaimTypeReferenceId="city" />` az AAD-címtárában, a felhasználó összegyűjtése után a jogcím írni. Ezt a lépést kihagyhatja, ha nem szeretné megőrizni a jogcím későbbi használatra a könyvtárban.
+
+    ```xml
+    <!-- Technical profiles for local accounts -->
+    <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
+      <Metadata>
+        <Item Key="Operation">Write</Item>
+        <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+      </Metadata>
+      <IncludeInSso>false</IncludeInSso>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" Required="true" />
+      </InputClaims>
+      <PersistedClaims>
+        <!-- Required claims -->
+        <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
+        <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password" />
+        <PersistedClaim ClaimTypeReferenceId="displayName" DefaultValue="unknown" />
+        <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration" />
+        <!-- Optional claims. -->
+        <PersistedClaim ClaimTypeReferenceId="givenName" />
+        <PersistedClaim ClaimTypeReferenceId="surname" />
+        <PersistedClaim ClaimTypeReferenceId="city" />
+      </PersistedClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="objectId" />
+        <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
+        <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+        <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
+        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
+      </OutputClaims>
+      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+    </TechnicalProfile>
+    ```
+
+3. Adja hozzá a `<OutputClaim ClaimTypeReferenceId="city" />` jogcím a technikai profilok, olvassa el a címtárból, amikor egy felhasználó bejelentkezik.
+
+    ```xml
+    <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
+      <Metadata>
+        <Item Key="Operation">Read</Item>
+        <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+        <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
+      </Metadata>
+      <IncludeInSso>false</IncludeInSso>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames" Required="true" />
+      </InputClaims>
+      <OutputClaims>
+        <!-- Required claims -->
+        <OutputClaim ClaimTypeReferenceId="objectId" />
+        <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+        <!-- Optional claims -->
+        <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="otherMails" />
+        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
         <OutputClaim ClaimTypeReferenceId="city" />
       </OutputClaims>
-      <SubjectNamingInfo ClaimType="sub" />
+      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
     </TechnicalProfile>
-  </RelyingParty>
-  ```
+    ```
 
-## <a name="test-the-custom-policy-using-run-now"></a>Tesztelje a egyéni szabályzat "Futtatás most" segítségével
+    ```xml
+    <TechnicalProfile Id="AAD-UserReadUsingObjectId">
+      <Metadata>
+        <Item Key="Operation">Read</Item>
+        <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+      </Metadata>
+      <IncludeInSso>false</IncludeInSso>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="objectId" Required="true" />
+      </InputClaims>
+      <OutputClaims>
+        <!-- Optional claims -->
+        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="otherMails" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="city" />
+      </OutputClaims>
+      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+    </TechnicalProfile>
+    ```
+   
+4. Adja hozzá a `<OutputClaim ClaimTypeReferenceId="city" />` jogcímet a SignUporSignIn.xml fájlt úgy, hogy ezt az igényt a sikeres felhasználói út után a jogkivonat az alkalmazás érkezik.
 
-1. Nyissa meg a **Azure AD B2C paneljén** , és keresse meg **identitás-kezelőfelületi keretrendszer > egyéni szabályzatok**.
-2. Válassza ki az egyéni házirend feltöltött, majd kattintson a **Futtatás most** gombra.
+    ```xml
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+      <TechnicalProfile Id="PolicyProfile">
+        <DisplayName>PolicyProfile</DisplayName>
+        <Protocol Name="OpenIdConnect" />
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="displayName" />
+          <OutputClaim ClaimTypeReferenceId="givenName" />
+          <OutputClaim ClaimTypeReferenceId="surname" />
+          <OutputClaim ClaimTypeReferenceId="email" />
+          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+          <OutputClaim ClaimTypeReferenceId="identityProvider" />
+          <OutputClaim ClaimTypeReferenceId="city" />
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub" />
+      </TechnicalProfile>
+    </RelyingParty>
+    ```
+
+## <a name="test-the-custom-policy"></a>Az egyéni házirend tesztelése
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Győződjön meg arról, hogy használja az Azure AD-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és kiválasztása az Azure AD-bérlő tartalmazó könyvtárra.
+3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **alkalmazásregisztrációk**.
+4. Válassza ki **identitás-kezelőfelületi keretrendszer (előzetes verzió)**.
+5. Válassza ki **egyéni szabályzat feltöltése**, majd töltse fel a módosított két-fájlok.
+2. Válassza ki a regisztrálási vagy bejelentkezési szabályzatot, feltöltött, majd kattintson a **Futtatás most** gombra.
 3. Regisztráció e-mail-címmel kell lennie.
 
-A regisztrációs képernyő tesztmódban ehhez hasonlóan kell kinéznie:
+A regisztrációs képernyő ehhez hasonlóan kell kinéznie:
 
 ![Képernyőkép a módosított regisztrációs lehetőség](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-  Most már tartalmazza a tokent, az alkalmazásnak a `city` jogcím, ahogy az alábbi
+Tartalmazza a tokent, az alkalmazásnak küldött a `city` jogcím.
+
 ```json
 {
   "exp": 1493596822,
@@ -266,19 +294,16 @@ A regisztrációs képernyő tesztmódban ehhez hasonlóan kell kinéznie:
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a>Nem kötelező: Távolítsa el e-mailes ellenőrzés előfizetési utazás
+## <a name="optional-remove-email-verification"></a>Nem kötelező: Távolítsa el az e-mailes ellenőrzés
 
-E-mail-ellenőrzés kihagyása, hogy a szabályzat Szerző lehet váltani, távolítsa el `PartnerClaimType="Verified.Email"`. Az e-mail-cím lesz szükség, de nem ellenőrzi, kivéve, ha a "Kötelező" = true törlődik.  Alaposan gondolja át, ha ez a beállítás akkor megfelelő, a használati esetek!
+Az e-mail-ellenőrzés kihagyása, dönthet úgy, hogy távolítsa el `PartnerClaimType="Verified.Email"`. Ebben az esetben az e-mail-cím szükséges, de nem ellenőrzi, kivéve, ha a "Kötelező" = true törlődik.  Alaposan gondolja át, ha ez a beállítás akkor megfelelő, a használati esetek.
 
-Ellenőrzött e-mail alapértelmezés szerint engedélyezve van a `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` az alapszintű csomag TrustFrameworkBase házirend fájlban:
+Ellenőrzött e-mail alapértelmezés szerint engedélyezve van a `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` a TrustFrameworkBase házirend fájlban:
+
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a szabályzat támogatja a közösségi fiókok, az alábbi technikai profilok módosításával adja hozzá az új jogcímet a flow közösségi fiók bejelentkezéseket. Ezeket a jogcímeket közösségi fiók bejelentkezések gyűjtése és a felhasználó írhat adatokat használják.
-
-1. Keresse meg a technikai profil **SelfAsserted-közösségi** , és adja hozzá a kimeneti jogcímek. A jogcímeket sorrendje **OutputClaims** szabályozza, hogy az Azure AD B2C-vel rendereli a jogcímeket a képernyőn sorrendjét. Például: `<OutputClaim ClaimTypeReferenceId="city" />`.
-2. Keresse meg a technikai profil **AAD-UserWriteUsingAlternativeSecurityId** , és adja hozzá a megőrzése jogcímet. Például: `<PersistedClaim ClaimTypeReferenceId="city" />`.
-3. Keresse meg a technikai profil **AAD-UserReadUsingAlternativeSecurityId** , és adja hozzá a kimeneti jogcímek. Például: `<OutputClaim ClaimTypeReferenceId="city" />`.
+Ismerje meg, hogyan [egyéni attribútumok használata egyéni profil házirend szerkesztése](active-directory-b2c-create-custom-attributes-profile-edit-custom.md).

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 34e7a578fb04b617221376f5d1065997b12d2613
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0265de5b224e62d188fe6e3b9322d5c2e3f77fa1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302121"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883134"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Az Azure Data Box átjáró előzetes verzió kibocsátási megjegyzései
 
@@ -41,7 +41,7 @@ Az alábbi táblázat hibáinak javításai ebben a kiadásban összegzését ta
 
 Az alábbi táblázat összefoglalja az ismert problémákról a Data Box Gateway előzetes kiadást futtató.
 
-| Nem. | Szolgáltatás | Probléma | Megkerülő megoldás és megjegyzések |
+| Nem. | Funkció | Probléma | Megkerülő megoldás és megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |A Data Box Gateway eszközök létrehozott a korábbi előzetes verziók nem frissíthető erre a verzióra. |A virtuális lemez képeket tölt le az új kiadásban, és úgy konfigurálhatja, és új eszközök üzembe helyezésére. További információért ugorjon [üzembe helyezését az Azure Data Box Gateway](data-box-gateway-deploy-prep.md). |
 | **2.** |Kiépített adatlemez |Bizonyos megadott méretű adatlemez kiépítése után, és a megfelelő mezőbe átjáró hozta létre, meg kell nem csökkentheti az adatlemezt. Kísérlet zsugorítása lemez eredményeit az adatvesztést a helyi adatokat az eszközön. | |
@@ -52,9 +52,8 @@ Az alábbi táblázat összefoglalja az ismert problémákról a Data Box Gatewa
 | **7.** |Frissítés | Engedélyek és hozzáférés-vezérlési listák (ACL) nem maradnak a frissítési művelet között.  | |
 | **8.** |Másolás | Adatok másolása hibával meghiúsul:  A kért művelet nem sikerült a fájlrendszer egy korlátozása miatt.  |Ez akkor fordul elő, ha a másik Data Stream (ADS) a fájlhoz tartozó meghaladja 128 KB-os (maximális száma a refs fájlrendszer).  |
 | **9.** |Szimbolikus hivatkozások |Szimbolikus hivatkozások nem támogatottak.  |Szimbolikus hivatkozások címtárakhoz soha nem offline kezdeti megjelölve könyvtárak eredményez. Ennek eredményeképpen, előfordulhat, hogy nem jelenik meg a szürke keresztszűrés a könyvtárak, amely azt jelzi, hogy a könyvtárakat offline üzemmódban van, a kapcsolódó tartalmat teljesen töltött fel az Azure-bA. |
-| **10.** |Online súgó |Az Azure portal súgó hivatkozásai nem csatolhatja dokumentációját.|A súgó hivatkozásai az általánosan elérhető kiadások fog működni. |
-
-
+| **10.** |Megosztások |Feltöltési hibák fájl módosítása a Lapblobok és a egy Blokkblob-megosztás (vagy fordítva) meglévő tároló frissítése vezet.  |Ez a viselkedés látható mikor kövesse az alábbi lépéseket: <li> A Blokkblobok megosztani az eszközön. </li><li> A megosztás társítása meglévő felhőalapú tároló, amely rendelkezik a Lapblobokat.</li><li>Frissítse a használt megosztást. </li><li>Módosítsa a frissített fájlokat már lapblobként a felhőben tárolt némelyike.</li> Feltöltési hibák láthatók. |
+| **11.** |Online súgó |Az Azure portal súgó hivatkozásai nem csatolhatja dokumentációját.|A súgó hivatkozásai az általánosan elérhető kiadások fog működni. |
 
 ## <a name="next-steps"></a>További lépések
 

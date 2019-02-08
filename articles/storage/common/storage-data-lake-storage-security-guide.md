@@ -5,24 +5,24 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/07/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: ca1012e0f1b0b7a9e0d8bd88d94876c20d22dec5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fce7beeda352b9add3603fb74c558ad1b64fac2a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473782"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895516"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Az Azure Data Lake Storage Gen2 biztonsági útmutató
 
-Az Azure Data Lake Storage Gen2 előzetes verzió, egy Azure Storage-fiókok a beépített funkcióinak. Mint ilyen ebben a cikkben minden hivatkozást úgy van kialakítva, az Azure Storage-fiókhoz tartozó hierarchikus névtér engedélyezve (Data Lake Storage Gen2 funkciók).
+Az Azure Data Lake Storage Gen2 olyan készlete, az Azure Storage-fiókok beépített funkcióinak előnyeit. Mint ilyen ebben a cikkben minden hivatkozást úgy van kialakítva, az Azure Storage-fiókhoz tartozó hierarchikus névtér engedélyezve (Data Lake Storage Gen2 funkciók).
 
 - Azure Storage tárterületre írt összes adat automatikusan titkosítva lesznek használatával [Storage Service Encryption (SSE)](storage-service-encryption.md). További információkért lásd: [bejelentése alapértelmezés titkosításának Azure-Blobok, fájlok, táblák és a Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 - Az Azure Active Directory (Azure AD) és a szerepköralapú hozzáférés-vezérlés (RBAC) támogatottak az Azure Storage erőforrás-felügyeleti műveletek és a műveletekhez, a következő:
     - Hatóköre a storage-fiók erőforrás felügyeleti műveleteket, mint a kulcskezelés engedélyezésére rendszerbiztonsági tagok és az Azure AD RBAC-szerepkörök rendelhet hozzá.
-    - Az Azure AD-integrációs műveletekhez az Azure Storage előzetes verziója támogatott. RBAC-szerepkör hatóköre egy előfizetés, erőforráscsoport, tárfiók vagy egy egyéni fájlrendszer egy rendszerbiztonsági tag vagy egy felügyelt identitás, az Azure-erőforrások rendelhet hozzá. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).
+    - Az Azure AD-integráció az Azure Storage műveletekhez használata támogatott. RBAC-szerepkör hatóköre egy előfizetés, erőforráscsoport, tárfiók vagy egy egyéni fájlrendszer egy rendszerbiztonsági tag vagy egy felügyelt identitás, az Azure-erőforrások rendelhet hozzá. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory használatával](storage-auth-aad.md).
 - Az Azure Storage az adatobjektumok való delegált hozzáférés adható használatával [közös hozzáférési aláírások](../storage-dotnet-shared-access-signature-part-1.md).
 
 Ez a cikk az egyes biztonsági funkció, amely használható az Azure Storage áttekintése. Hivatkozások olyan cikkeket, amely az egyes szolgáltatások részletei így könnyedén megteheti a megadott további vizsgálatra minden témában.
@@ -133,7 +133,7 @@ Adatsík adatbiztonság hivatkozik az Azure Storage-ban tárolt objektumok véde
 
 Három lehetőség közül választhat, amelyek engedélyezik a hozzáférést az adatobjektumokhoz, az Azure Storage, többek között:
 
-- Az Azure AD-vel történő hitelesítéséhez fájlrendszereit és üzenetsorok (előzetes verzió) való hozzáférést. Az Azure AD engedélyezési, beleértve a kód a titkos kulcsok tárolására szükségtelenné más módjaival előnyöket biztosít. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md). 
+- Az Azure AD-vel történő hitelesítéséhez fájlrendszereit és üzenetsorokhoz való hozzáférést. Az Azure AD engedélyezési, beleértve a kód a titkos kulcsok tárolására szükségtelenné más módjaival előnyöket biztosít. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory használatával](storage-auth-aad.md). 
 - A tárfiókkulcsok-vel történő elérését megosztott kulcsos hitelesítéséhez. A storage-fiók kulcsok tárolására az alkalmazás, a Microsoft azt javasolja, hogy inkább az Azure AD, ha lehetséges keresztül megosztott kulcsos engedélyezése szükséges. Az éles környezetben, vagy Azure-táblák és fájlok való hozzáférésre folytassa a megosztott kulcs használatával, amíg az Azure AD-integráció előzetes verzióként.
 - Közös hozzáférési aláírások használatával bizonyos objektumokhoz szabályzott engedélyekkel az egy adott időtartam megadását.
 
@@ -229,7 +229,7 @@ További információt a közös hozzáférési aláírások és a tárolt hozz�
 
     Ez a cikk a SAS-modell példák a közös hozzáférésű Jogosultságkódokat egy leírását tartalmazza, és az ajánlott eljárás javaslatok SAS használja. Azt is ismertetjük, a megadott engedélyeket visszavonását.
 
-* Hitelesítés
+* Authentication
 
   * [Az Azure Storage szolgáltatásainak hitelesítése](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * A közös hozzáférésű Jogosultságkódot első lépéseit ismertető Oktatóanyaga

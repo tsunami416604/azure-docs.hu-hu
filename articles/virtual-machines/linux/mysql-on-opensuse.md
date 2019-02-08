@@ -1,6 +1,6 @@
 ---
 title: A MySQL telepítése OpenSUSE rendszerű virtuális gépen az Azure-ban |} A Microsoft Docs
-description: Ismerje meg a MySQL telepítése OpenSUSE Linux VMirtual gépen az Azure-ban.
+description: Ismerje meg a MySQL telepítése OpenSUSE Linux rendszerű virtuális gépen az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: za-rhoads
-ms.openlocfilehash: 98eb331fbd82ff718b01c99afd6840e3c2252777
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 06fb4b9c39b773393d7a58bba44f240265e2200f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227854"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893701"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>A MySQL telepítése Azure-ban működő, OpenSUSE Linux rendszerű virtuális gépen
 
@@ -130,7 +130,7 @@ Ez akkor vált, amennyiben a MySQL-parancssorban ahol adhat ki az adatbázis SQL
 
 Most hozzon létre egy új MySQL-felhasználót.
 
-```   
+```sql
 CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
@@ -142,7 +142,7 @@ Pontosvesszővel (;) a sor végén található elengedhetetlen a befejezési a p
 
 Hozzon létre egy adatbázist, és adja meg a `mysqluser` felhasználói engedélyeket.
 
-```   
+```sql
 CREATE DATABASE testdatabase;
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
@@ -151,7 +151,7 @@ Adatbázis felhasználónevek és jelszavak csak az adatbázishoz csatlakozássa
 
 Jelentkezzen be egy másik számítógépről engedélyezése. Ebben a példában az IP-cím annak a számítógépnek, hogy a bejelentkezési van *10.112.113.114*.
 
-```   
+```sql
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';
 ```
    

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ez az útmutató a Unity nevű Project Acoustics-mintajelenetet ismerteti, beleértve az asztali számítógépen és VR-ban történő üzembe helyezést is.
 services: cognitive-services
 author: kegodin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7d8ba2f25bd53b407ab6860bc57163a79b7d228a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ecd19ec343b2744a70456fd1d3ad226856768d71
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174261"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55880711"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity mintaútmutató
 Ez egy Project Acoustics-mintaútmutató. A Project Acousticsról további információkat a [Project Acoustics bevezető részében](what-is-acoustics.md) talál. Ha segítségre van szüksége a Project Acoustics-csomag már meglévő Unity-projekthez való hozzáadásában, tekintse meg az [első lépéseket ismertető útmutatót](getting-started.md).

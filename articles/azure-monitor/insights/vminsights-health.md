@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: magoedte
-ms.openlocfilehash: f61f420b6a738a410deed2d68acc06862600104f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 17fdcb4a57379fd11e841715a6908a4a0d280bd9
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563337"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891470"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) és az Azure Monitor az Azure virtuális gépek állapotának ismertetése
 Az Azure több szolgáltatást tartalmaz, amelyek külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés területen, de biztosít az Azure-beli virtuális gépeken futó operációs rendszer egy részletes állapota szempontjából nem volt elérhető.  A Log Analytics vagy az Azure Monitor használatával különböző feltételek esetén felügyelheti, amíg nem tervezték őket modellezheti, és az alapvető összetevők állapotát vagy a virtuális gép általános állapotát.  Az Azure virtuális gépek Állapotfigyelő szolgáltatás figyelője proaktív módon figyeli a rendelkezésre állás és a Windows vagy Linux-alapú vendég operációs rendszer, amelyek a legfontosabb összetevők és a kapcsolatok, feltételek, amely meghatározza, hogy miként állapotát, a modell teljesítményét összetevők, és riasztást küld, ha a nem kifogástalan állapot észlelésekor.  
@@ -106,7 +106,7 @@ Egy Azure virtuális gép állapotának megtekintéséhez válassza **Insights (
 
 ![A virtuális gépek állapotának áttekintése a kiválasztott Azure virtuális gép az Azure Monitor](./media/vminsights-health/vminsights-directvm-health.png)
 
-Az a **egészségügyi** lapon, a szakasz a **Vendég virtuális gép állapota**, a táblázat bemutatja a virtuális gép aktuális állapotát, és a egy nem megfelelő állapotú összetevőre váltotta ki a virtuális gép állapota riasztások számát. Tekintse meg [riasztások](#alerting-and-alert-management) riasztási funkciókkal kapcsolatos további részletekért.  
+Az a **egészségügyi** lapon, a szakasz a **Vendég virtuális gép állapota**, a táblázat bemutatja a virtuális gép aktuális állapotát, és a egy nem megfelelő állapotú összetevőre váltotta ki a virtuális gép állapota riasztások számát. Tekintse meg a riasztási funkciókkal kapcsolatos további részletekért a riasztások szakaszban.  
 
 A virtuális gép meghatározott állapotokat az alábbi táblázat ismerteti: 
 

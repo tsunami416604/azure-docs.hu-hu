@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: b85afeb18fdd93afdedbee00df995ba52a66cd5e
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 3c5f087ed44c252737e7f45fde12a4b509637499
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731852"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892881"
 ---
 # <a name="azure-sql-database-data-discovery--classification"></a>Az Azure SQL Database adatfelderítés és besorolás
 
@@ -143,7 +143,8 @@ REST API-k használatával programozott módon kezelheti a besorolásokat. A kö
 - [Hozzon létre vagy frissítsen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – létrehozza vagy frissíti a érzékenységi címkét egy adott oszlop
 - [Törlés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) – a érzékenységi címkét egy adott oszlop törlése
 - [Első](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) – lekérdezi a érzékenységi címkét egy adott oszlop
-- [Lista által adatbázis](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) – lekérdezi a megadott adatbázis érzékenységi címkék
+- [Aktuális által adatbázis listában](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) -lekérdezi az aktuális érzékenységi címkék egy adott adatbázis
+- [Adatbázis által ajánlott listában](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) -lekérdezi az aktuális érzékenységi címkék egy adott adatbázis
 
 ## <a id="subheading-5"></a>Következő lépések
 

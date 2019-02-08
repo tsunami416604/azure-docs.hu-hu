@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: afcac73af84010f37eccd018f39852712e495b84
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: f0f0e32ccbb8fdac934f81e2f90132f63a91f069
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773508"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892116"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>A nem Microsoft-fiókok hozzáadása
 Hozzáadása a nem Microsoft-fiókok, például Google, Facebook vagy a GitHub kétfaktoros ellenőrzéshez a Microsoft Authenticator alkalmazást. A Microsoft Authenticator alkalmazás együttműködik a kétfaktoros ellenőrzési használó alkalmazásokban, és olyan fiókot, amely támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
@@ -55,7 +55,7 @@ Adja hozzá a Google-fiók kétfaktoros ellenőrzési bekapcsolásával, és ezu
 4. A QR-kód az eszköz kamerájának használata a **állítsa be az Authenticator** lap a számítógépen.
 
     >[!Note]
-    >Ha a kamera nem működik megfelelően, akkor [írja be a QR-kódot és URL-cím manuálisan](#add-an-account-to-the-app-manually).
+    >Ha a kamera nem működik megfelelően, megadhatja a QR-kódot és URL-címet manuálisan.
 
 5. Tekintse át a **fiókok** lapja a Microsoft Authenticator alkalmazást az eszközön, győződjön meg arról, hogy a fiók adatait el a jobb oldalon, és hogy van-e egy kapcsolódó 6 jegyű ellenőrző kódot.
 
@@ -94,7 +94,7 @@ Adja hozzá a Facebook-fiókban kétfaktoros ellenőrzési bekapcsolásával, é
 3. A QR-kód az eszköz kamerájának használata a **kéttényezős hitelesítéssel a két** lap a számítógépen.
 
     >[!Note]
-    >Ha a kamera nem működik megfelelően, akkor [írja be a QR-kódot és URL-cím manuálisan](#add-an-account-to-the-app-manually).
+    >Ha a kamera nem működik megfelelően, megadhatja a QR-kódot és URL-címet manuálisan.
 
 4. Tekintse át a **fiókok** lapja a Microsoft Authenticator alkalmazást az eszközön, győződjön meg arról, hogy a fiók adatait el a jobb oldalon, és hogy van-e egy kapcsolódó 6 jegyű ellenőrző kódot.
 
@@ -165,7 +165,7 @@ Adja hozzá az Amazon-fiókkal kétfaktoros ellenőrzési bekapcsolásával, és
 6. A QR-kód az eszköz kamerájának használata a **válassza ki, hogyan fog kapni a kódok** lap a számítógépen.
 
     >[!Note]
-    >Ha a kamera nem működik megfelelően, akkor [írja be a QR-kódot és URL-cím manuálisan](#add-an-account-to-the-app-manually).
+    >Ha a kamera nem működik megfelelően, megadhatja a QR-kódot és URL-címet manuálisan.
 
 5. Tekintse át a **fiókok** lapja a Microsoft Authenticator alkalmazást az eszközön, győződjön meg arról, hogy a fiók adatait el a jobb oldalon, és hogy van-e egy kapcsolódó 6 jegyű ellenőrző kódot.
 

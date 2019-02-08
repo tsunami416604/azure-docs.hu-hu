@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 0d2fde4ce80e09db19f65134697ba0ba379e1824
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 0b5d9deacdd4266da30f17c95b6e575a652d2f76
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166212"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889719"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 Ebben az eljárásban fogja végrehajtani:
 
 1. [Készítse elő a karbantartó végrehajtható fájl futtatásához](#to-prepare-to-run-the-maintainer) .
@@ -29,7 +27,7 @@ Ebben az eljárásban fogja végrehajtani:
    
     `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
 6. Használat `aspnet_regiis –pef connectionStrings` újratitkosítása a web.config fájlt. 
-7. Nevezze át a web.config Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config. 
+7. Rename web.config to Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config. 
 
 #### <a name="to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs"></a>A tartalom előkészítése, adatbázis, és azonnal törli a Lomtár árva Blobok
 1. Az SQL Server az SQL Management Studióban futtassa a következő frissítés lekérdezéseket a cél tartalom-adatbázist: 

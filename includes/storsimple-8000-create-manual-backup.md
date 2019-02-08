@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 50c0c781e7e1c95896a22f0cd71ed20bbad4c2b3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164528"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889448"
 ---
-<!--author=alkohli last changed: 01/20/2017-->
-
 #### <a name="to-create-a-manual-backup"></a>Manuális biztonsági mentés létrehozása
 
 1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listájából válassza ki az eszközt. Lépjen a **Beállítások > Kezelés > Biztonsági mentési házirendek** részhez.
@@ -23,7 +21,7 @@ ms.locfileid: "50164528"
 
 3. Hajtsa végre a következő lépéseket a **Biztonsági másolat készítése** panelen:
 
-    1. A legördülő menüben válassza ki a megfelelő **pillanatképtípust**: **helyi** vagy **felhőbeli**. Gyors biztonsági mentéshez és visszaállításhoz válassza a helyi pillanatképet, az adatrugalmassághoz pedig a felhőbeli pillanatképet.
+    1. Válassza ki a megfelelő **Pillanatképtípust** a legördülő listából: **Helyi** pillanatkép vagy **felhőalapú** pillanatkép. Gyors biztonsági mentéshez és visszaállításhoz válassza a helyi pillanatképet, az adatrugalmassághoz pedig a felhőbeli pillanatképet.
 
         ![Manuális biztonsági mentés létrehozása](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/30/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: ce44d4c066183ff796c8efa1dceb20dff73868ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ea865fe246bcb414dd1ab3f83b7135989bc0adf3
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192392"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894904"
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Biztonságos hozzáférés egy alkalmazás adataihoz a felhőben
 
@@ -50,7 +50,7 @@ az storage container set-permission \ --account-name $blobStorageAccount \ --acc
 
 Az oktatóanyag-sorozat első részében a webalkalmazás egy nyilvános tárolóból származó képeket jelenített meg. A sorozat ezen részében a [közös hozzáférésű jogosultságkód (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature) jogkivonatai segítségével kérjük le a miniatűr képeket. A SAS-jogkivonatok segítségével korlátozott hozzáférést biztosíthat egy tárolóhoz vagy blobhoz IP-cím, protokoll, időintervallum vagy engedélyezett jogosultságok alapján.
 
-A példában a forráskód adattára a `sasTokens` ágat használja, amely egy frissített kódmintát tartalmaz. Törölje a meglévő GitHub-telepítést az [az webapp deployment source delete](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_delete) parancs segítségével. Azután konfigurálja a GitHub-telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.  
+A példában a forráskód adattára a `sasTokens` ágat használja, amely egy frissített kódmintát tartalmaz. Törölje a meglévő GitHub-telepítést az [az webapp deployment source delete](/cli/azure/webapp/deployment/source) parancs segítségével. Azután konfigurálja a GitHub-telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.  
 
 Az alábbi parancsban a `<web-app>` a webalkalmazás neve.  
 
@@ -146,7 +146,7 @@ Az SSE automatikusan titkosítja minden teljesítményszint (Standard és Prémi
 
 ## <a name="enable-https-only"></a>Csak HTTPS engedélyezése
 
-A tárfiókba érkező és az onnan kimenő adatkérések biztonsága érdekében korlátozhatja a kéréseket a HTTPS-protokoll használatára. Frissítse a tárfiók által kért protokollt az [az storage account update](/cli/azure/storage/account#az_storage_account_update) parancs segítségével.
+A tárfiókba érkező és az onnan kimenő adatkérések biztonsága érdekében korlátozhatja a kéréseket a HTTPS-protokoll használatára. Frissítse a tárfiók által kért protokollt az [az storage account update](/cli/azure/storage/account) parancs segítségével.
 
 ```azurecli-interactive
 az storage account update --resource-group myresourcegroup --name <storage-account-name> --https-only true

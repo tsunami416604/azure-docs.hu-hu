@@ -4,17 +4,15 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 77fc95c53ba89c3905ebd1aec785e22f42339369
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8cc5dbb907c342b766cebe6da36cf580ddac5e2c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165884"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888700"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>Storsimple-höz készült Windows Powershellen keresztül rendszeres gyorsjavítások telepítése
-1. Az eszköz soros konzoljához való csatlakozáshoz. További információkért lásd: [1. lépés: csatlakozás soros konzolon](../articles/storsimple/storsimple-update-device.md#step1).
+1. Az eszköz soros konzoljához való csatlakozáshoz. További információkért lásd: [1. lépés: Csatlakozás soros konzolon](../articles/storsimple/storsimple-update-device.md#step1).
 2. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes hozzáféréssel**. Írja be a jelszót. Az alapértelmezett jelszó az **jelszó1**.
 3. A parancssorba írja be a következőt:
    

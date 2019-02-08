@@ -6,23 +6,29 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 01/18/2019
-ms.openlocfilehash: e397540d33df8a509e10f52fde41fc178cdba67e
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 02/07/2019
+ms.openlocfilehash: 3de5996f574bf076b856a4d0cf7e18d77b1a9e5d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411747"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895686"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>A mobilitási szolgáltatás leküldéses telepítési problémák elhárítása
 
 Mobilitási szolgáltatás telepítésének legfontosabb lépése replikálás engedélyezése során. Ez a lépés sikeres kizárólag Előfeltételek teljesítése és a támogatott konfigurációk használata attól függ. A mobilitási szolgáltatás telepítése során között leggyakoribb hibák a következők miatt:
 
-* Hitelesítő adatok vagy jogosultsági hibák
-* Sikertelen bejelentkezések
-* Kapcsolódási hibák
-* Nem támogatott operációs rendszerek
-* VSS telepítési hibák
+* [Hitelesítő adatok vagy jogosultsági hibák](#credentials-check-errorid-95107--95108)
+* [Sikertelen bejelentkezések](#login-failures-errorid-95519-95520-95521-95522)
+* [Csatlakozási hibák](#connectivity-failure-errorid-95117--97118)
+* [A fájl- és nyomtatómegosztás hibák](#file-and-printer-sharing-services-check-errorid-95105--95106)
+* [A WMI-hibák](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+* [Nem támogatott operációs rendszerek](#unsupported-operating-systems)
+* [Rendszerindítás nem támogatott konfigurációk](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
+* [VSS-telepítési hibák](#vss-installation-failures)
+* [Eszköz UUID helyett GRUB-konfigurációban eszköz neve](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
+* [LVM kötet](#lvm-support-from-920-version)
+* [Indítsa újra a figyelmeztetések](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
 
 A replikáció engedélyezése az Azure Site Recovery megpróbálja küldje le a virtuális gép mobilitásiszolgáltatás-ügynök telepíthető. Ennek részeként konfigurációs kiszolgáló megkísérli a virtuális géppel csatlakozhat, és másolja az ügynököt. A sikeres telepítés engedélyezéséhez kövesse az alábbi részletes hibaelhárítási útmutatót.
 
@@ -56,12 +62,14 @@ Tartomány megbízhatósági kapcsolat létrehozása az elsődleges tartomány �
 
 Ha szeretné módosítani a kiválasztott felhasználói fiók hitelesítő adatait, hajtsa végre az adott utasítások [Itt](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="login-failure-errorid-95519"></a>Bejelentkezési hiba történt (ErrorID: 95519)
+## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Sikertelen bejelentkezések (ErrorID: 95519, 95520, 95521, 95522)
+
+### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>A felhasználói fiók hitelesítő adatok le vannak tiltva (ErrorID: 95519)
 
 A replikálás engedélyezése során kiválasztott felhasználói fiók le van tiltva. A felhasználói fiók engedélyezéséhez tekintse meg a cikk [Itt](https://aka.ms/enable_login_user) vagy futtassa a következő parancsot a szöveg cseréje *felhasználónév* tényleges felhasználónévvel.
 `net user 'username' /active:yes`
 
-## <a name="login-failure-errorid-95520"></a>Bejelentkezési hiba történt (ErrorID: 95520)
+### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>Több sikertelen bejelentkezési kísérlet miatt zárolva hitelesítő adatait (ErrorID: 95520)
 
 Több sikertelen újrapróbálkozási erőfeszítések eléréséhez egy gép zárolja a felhasználói fiókot. A hiba oka lehet:
 
@@ -70,11 +78,11 @@ Több sikertelen újrapróbálkozási erőfeszítések eléréséhez egy gép z�
 
 Ezért, módosítsa a kiválasztott megadott utasítások szerint hitelesítő adatok [Itt](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) , majd próbálja megismételni a műveletet később.
 
-## <a name="login-failure-errorid-95521"></a>Bejelentkezési hiba történt (ErrorID: 95521)
+### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Bejelentkezési kiszolgálók nem érhetők el a forrásgépen (ErrorID: 95521)
 
 Ez a hiba akkor fordul elő, ha a bejelentkezési kiszolgálók nem érhetők el a forrásgépen. Bejelentkezési kiszolgálók hiányában sikertelen bejelentkezési kérelem vezet, és így nem lehet telepíteni a mobilitási ügynök. Sikeres bejelentkezés győződjön meg arról, hogy a bejelentkezési kiszolgálók érhetők el a forrásgépen, és indítsa el a bejelentkezési szolgáltatás. Részletes utasításokért kattintson [Itt](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available).
 
-## <a name="login-failure-errorid-95522"></a>Bejelentkezési hiba történt (ErrorID: 95522)
+### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Bejelentkezési szolgáltatás nem fut a forrásgépen (ErrorID: 95522)
 
 A bejelentkezési szolgáltatás a forrásgépen nem fut, és a bejelentkezési kérelem hibáját okozta. Így nem lehet telepíteni a mobilitási ügynök. Megoldásához, győződjön meg arról, hogy bejelentkezési szolgáltatás fut a forrásgépen a sikeres bejelentkezés. A bejelentkezési szolgáltatás elindításához futtassa a parancsot "net start bejelentkezési" parancssorból, vagy indítsa el a "NetLogon" szolgáltatást a Feladatkezelő.
 
@@ -138,15 +146,17 @@ Az alábbi cikkekben talál további WMI hibaelhárítási cikkek található.
 Nem támogatott operációs rendszer egy másik Ennek leggyakoribb oka a hiba oka lehet. Győződjön meg arról, a sikeres telepítés a mobilitási szolgáltatást a támogatott operációs rendszer/Kernel verziója. Kerülje a privát javítás használatát.
 Az operációs rendszerek és az Azure Site Recovery által támogatott kernel-verzióknál listájának megtekintéséhez, tekintse meg a [támogatási mátrix dokumentum](vmware-physical-azure-support-matrix.md#replicated-machines).
 
-## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Rendszerindító és a rendszerpartíciók / kötetek nem ugyanazon a lemezen (ErrorID: 95309)
+## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>Nem támogatott lemezkonfigurációk rendszerindító (ErrorID: 95309, 95310, 95311)
+
+### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Rendszerindító és a rendszerpartíciók / kötetek nem ugyanazon a lemezen (ErrorID: 95309)
 
 Mielőtt 9.20 verzió, rendszerindító és a rendszerpartíciók / eltérő lemezeken lévő kötetek volt konfigurációja nem támogatott. A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ez a konfiguráció támogatott. A támogatási használja a legújabb verziót.
 
-## <a name="boot-disk-not-found-errorid-95310"></a>Rendszerindító lemez nem található (ErrorID: 95310)
+### <a name="the-boot-disk-is-not-available-errorid-95310"></a>A rendszerindító lemez nem érhető el (ErrorID: 95310)
 
 A rendszerindító lemez nem rendelkező virtuális gép nem védhető. Ez a virtuális gép zavartalan helyreállítási biztosítására a feladatátvételi művelet során. Rendszerindító lemez hiányában nem sikerült a feladatátvétel után indítsa el a gépet eredményez. Győződjön meg arról, hogy a virtuális gép rendszerindító lemezt tartalmaz, és próbálja megismételni a műveletet. Vegye figyelembe azt is, hogy ugyanazon a gépen több rendszerindító lemez nem támogatott.
 
-## <a name="multiple-boot-disks-found-errorid-95311"></a>Több rendszerindító lemez található (ErrorID: 95311)
+### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>A forrásgépen több rendszerindító lemez megtalálható (ErrorID: 95311)
 
 Egy több rendszerindító lemezzel rendelkező virtuális gép nincs olyan [támogatott konfigurációs](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
 
@@ -154,9 +164,45 @@ Egy több rendszerindító lemezzel rendelkező virtuális gép nincs olyan [tá
 
 9.20 verziónál korábbi verziókban a legfelső szintű partíción vagy köteten több lemezen meghatározott volt konfigurációja nem támogatott. A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ez a konfiguráció támogatott. A támogatási használja a legújabb verziót.
 
-## <a name="grub-uuid-failure-errorid-95320"></a>LÁRVAJÁRAT UUID-hiba (ErrorID: 95320)
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>Nem sikerült, mert a GRUB-konfigurációban UUID helyett említett eszköznév védelmének engedélyezése (ErrorID: 95320)
 
-Ha a forrásgépen lévő GRUB eszköznév UUID helyett használja, akkor a mobilitási ügynök telepítése sikertelen lesz. Kapcsolatba rendszergazdai módosítások GRUB-fájlba.
+**Lehetséges ok:** </br>
+A konfigurációs GRUB-fájlok ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", "/ boot/grub2/grub.cfg" vagy "/ etc/alapértelmezett/grub") az értéket a paraméterek tartalmazhatja **legfelső szintű** és **folytatása** , a tényleges eszköznevek UUID helyett. A Site Recovery UUID megközelítés előírásoknak, módon eszközök név változhat között a virtuális gép újraindítása, a virtuális gép lehet, hogy nem érkeznek felfelé ugyanazzal a névvel feladatátvételi problémákat eredményez. Példa: </br>
+
+
+- A következő sort a GRUB-fájlból áll **/boot/grub2/grub.cfg**. <br>
+*Linux /boot/vmlinuz-3.12.49-11-default **= / dev/sda2 kiváltó** ${extra_cmdline} **= / dev/sda1 folytatása** beavatkozás nélküli, csendes showopts splash =*
+
+
+- A következő sort a GRUB-fájlból áll **/boot/grub/menu.lst**
+*kernel /boot/vmlinuz-3.0.101-63-default **= / dev/sda2 kiváltó** **= / dev/sda1 folytatása ** splash = beavatkozás nélküli crashkernel 256M-:128M showopts vga = = 0x314*
+
+Ha a fenti félkövér karakterlánc megfigyelte, grub-HIBÁT nevét is tartalmazza, tényleges eszközre a paramétereket "root" és "Folytatás" UUID helyett.
+ 
+**Hogyan háríthatja el:**<br>
+Az eszköz nevét le kell cserélni a megfelelő UUID azonosítója.<br>
+
+
+1. Az eszköz UUID található parancs végrehajtásával "blkid <device name>". Példa:<br>
+```
+blkid /dev/sda1
+/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
+blkid /dev/sda2 
+/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+```
+
+2. Most cserélje le az eszköz nevét annak UUID azonosító, a következő formátumban, például a "legfelső szintű UUID azonosítója = =<UUID>". Például, ha azt az alapvető cserélje le az eszköz nevét UUID azonosító, és folytathatja a fájlokat a fent említett paraméter "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" vagy "/ etc/alapértelmezett/grub: a fájlokban a sorok néz majd. <br>
+*kernel /boot/vmlinuz-3.0.101-63-default **legfelső szintű UUID azonosítója = 62927e85-f7ba-40bc-9993-cc1feeb191e4 =** **folytatása UUID azonosítója = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b =** splash = beavatkozás nélküli crashkernel = 256M-:128M showopts vga = 0x314*
+3. Indítsa újra a védelmi műveletet
+
+## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Befejeződött figyelmeztetéssel, indítsa újra a mobilitási szolgáltatás telepítése (ErrorID: 95265 & 95266)
+
+A Site Recovery mobilitási szolgáltatás számos összetevőből, amelyek közül az egyik szűrő-illesztőprogram neve van. Szűrő-illesztőprogram lekérdezi a memóriába rendszer csak a rendszer újraindítását egyszerre. Ez azt jelenti, hogy a szűrő-illesztőprogram javítások csak megvalósíthatók betöltésekor egy új szűrő-illesztőprogram; amely akkor fordulhat elő, csak a rendszer újraindítását idején.
+
+**Vegye figyelembe, hogy** , hogy ez a figyelmeztetés, és a meglévő replikációt az új ügynök frissítése után fog működni. Ha szeretné, indítsa újra az új szűrő-illesztőprogram, de ha nem újraindítás is régi szűrő illesztőprogramjának tartja munkáról, mint a kihasználása érdekében megváltoztathatja. Igen, a szűrő-illesztőprogram szereplőkkel, újraindítás nélkül frissítés után **lekérdezi, hogy egyéb fejlesztések és javítások a mobilitási szolgáltatás előnyei**. Így, ajánlott, bár nem kötelező minden frissítés után indítsa újra. További információ a kötelező újraindítás esetén [Itt](https://aka.ms/v2a_asr_reboot).
+
+> [!TIP]
+>Ajánlott eljárások a frissítések ütemezése a karbantartási időszak alatt, tekintse meg [Itt](https://aka.ms/v2a_asr_upgrade_practice).
 
 ## <a name="lvm-support-from-920-version"></a>LVM támogatási 9.20 verzióról
 

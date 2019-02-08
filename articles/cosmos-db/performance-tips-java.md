@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 221dd8a26f0d01d79d066c214bd53f7e881e5554
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 747f58ba5062bd8bcc3995bbfa73cea49e8ddc4b
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201221"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892898"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Az Azure Cosmos DB és a javát a teljesítménnyel kapcsolatos tippek
 
@@ -103,11 +103,11 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
    <a id="tune-page-size"></a>
 8. **Az oldal méretét a lekérdezések és olvasási hírcsatornák, a jobb teljesítmény hangolása**
 
-    Mikor végez a tömeges olvasása a dokumentumok használatával olvasási hírcsatorna-funkciókat (például [readDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdocuments#com.microsoft.azure.documentdb.documentclient.readDocumentsStringFeedOptionsc)) vagy egy SQL-lekérdezést kiadásakor mely visszaadja az eredményeket szegmentált feldolgozza-e az eredményhalmaz túl nagy. Alapértelmezés szerint az eredmény akkor 100 elemet vagy 1 MB-os blokkonként, bármelyik korlát nyomja le az első.
+    Mikor végez a tömeges olvasása a dokumentumok használatával olvasási hírcsatorna-funkciókat (például [readDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdocuments)) vagy egy SQL-lekérdezést kiadásakor mely visszaadja az eredményeket szegmentált feldolgozza-e az eredményhalmaz túl nagy. Alapértelmezés szerint az eredmény akkor 100 elemet vagy 1 MB-os blokkonként, bármelyik korlát nyomja le az első.
 
     Kevesebb hálózati kerekíteni lelassítja az összes vonatkozó eredmények beolvasásához szükséges, növelhető a méret használatával a [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) legfeljebb 1000 kérelem fejléce. Azokban az esetekben, ahol csak néhány eredmények megjelenítéséhez szüksége például, ha a felhasználói felület vagy a kérelem API függvény csak 10 eredménye egy idő, is csökkentheti, ha az oldal méretét a 10-re az olvasást és lekérdezések felhasznált átviteli sebesség csökkentése érdekében.
 
-    Az oldal méretét használatával is beállíthatja a [setPageSize metódus](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptionsbase.setpagesize#com.microsoft.azure.documentdb.feedoptionsbase.setPageSizeInteger).
+    Az oldal méretét használatával is beállíthatja a [setPageSize metódus](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptionsbase.setpagesize).
 
 ## <a name="indexing-policy"></a>Indexelési házirend
  

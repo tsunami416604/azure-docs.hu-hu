@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan hívhatja meg a Computer Vision API-t a REST használatával az Azure Cognitive Servicesben.
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4cca3db778347e9bd8c8b881d85f0882f6b90f72
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: abbdda96acabb44a225ce16b4750726d37ff86b0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216251"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882862"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Példa: A Computer Vision API meghívása
 
@@ -153,11 +153,11 @@ Például:
 Mező   | Typo  | Tartalom
 ------|------|------|
 Címkék    | objektum    | Felső szintű objektum a címkék tömbjének
-tags[].Name | sztring    | Kulcsszó a címke osztályozótól
+tags[].Name | Karakterlánc    | Kulcsszó a címke osztályozótól
 tags[].Score    | szám    | Megbízhatósági pontszám, 0 és 1 között.
 leírás  | objektum   | Felső szintű objektum a leírásnak.
-description.tags[] |    sztring  | Címkék listája.  Ha a felirat létrehozásához nincs elegendően nagy megbízhatóság, akkor a hívó számára egyedül a címkék adnak elérhető információt.
-description.captions[].text | sztring    | A képet leíró kifejezés.
+description.tags[] |    Karakterlánc  | Címkék listája.  Ha a felirat létrehozásához nincs elegendően nagy megbízhatóság, akkor a hívó számára egyedül a címkék adnak elérhető információt.
+description.captions[].text | Karakterlánc    | A képet leíró kifejezés.
 description.captions[].confidence   | szám    | A kifejezéshez tartozó megbízhatóság.
 
 ### <a name="Step4">4. lépés: Beolvasása és a tartomány-specifikus modelleket JSON-kimenetét ismertetése</a>
@@ -213,7 +213,7 @@ A kategóriák mező egy vagy több lista az eredeti [86-kategóriás](../Catego
 Mező   | Typo  | Tartalom
 ------|------|------|
 kategóriák | objektum | Legfelső szintű objektum
-categories[].name    | sztring   | Neve a 86-kategóriás rendszerben
+categories[].name    | Karakterlánc   | Neve a 86-kategóriás rendszerben
 categories[].score  | szám    | Megbízhatósági pontszám, 0 és 1 között
 categories[].detail  | objektum?      | Nem kötelező részletes objektum
 

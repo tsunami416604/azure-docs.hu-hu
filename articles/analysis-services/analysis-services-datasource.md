@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/07/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 92c2d59ffe8c144bea6e7f8676880c866e234885
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c7b3695e5cb43a9c8f659a3ac1baddab51526b2d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299044"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893731"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Services
 
@@ -28,14 +28,15 @@ Az adatforrások és összekötők jelennek meg adatok lekérése vagy a Visual 
 |Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Igen       |    Nem      |
 |Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Igen       |    Nem      |
 |Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Igen        |  Nem        |
-|Az Azure Data Lake Store<sup>[1](#tab1400a)</sup>     |   Igen       |    Nem      |
+|Az Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup> [4](#gen2)</sup>      |   Igen       |    Nem      |
 |Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     Igen     |   Nem       |
 |Az Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup> [3](#databricks)</sup>     |   Igen       |   Nem       |
 ||||
 
-<a name="tab1400a">1</a> táblázatos 1400-as és újabb modellek csak.   
-<a name="azsqlmanaged">2</a> támogatott az azure SQL Database felügyelt példányain. Mivel a felügyelt példány az Azure virtuális hálózaton belüli magánhálózati IP-címmel, egy helyszíni Adatátjáróra szükség.   
-<a name="databricks">3</a> azure Databricks a Spark-összekötő használata jelenleg nem támogatott.
+<a name="tab1400a">1</a> – táblázatos 1400-as és újabb modellek csak.   
+<a name="azsqlmanaged">2</a> – azure SQL Database felügyelt példányába használata támogatott. Mivel a felügyelt példány az Azure virtuális hálózaton belüli magánhálózati IP-címmel, egy helyszíni Adatátjáróra szükség.   
+<a name="databricks">3</a> – azure Databricks használatával a Spark-összekötő jelenleg nem támogatott.   
+<a name="gen2">4</a> – ADLS Gen2 jelenleg nem támogatott.
 
 
 **Szolgáltató**   

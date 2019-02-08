@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API és a Ruby segítségével.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: 67f1a7b4a064aa46ef7d258dd72b1d686a797349
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9c59e8ddc300a7736a1ff6eb284c7885b164e547
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458108"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894343"
 ---
 # <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-ruby"></a>Gyors útmutató: A Translator Text REST API (Ruby) támogatott nyelvek beolvasása
 
@@ -25,16 +25,13 @@ Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárb
 
 A kód futtatásához [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) vagy újabb verzió szükséges.
 
-A Translator Text API használatához szüksége van egy előfizetési kulcsra is. Lásd [a Translator Text API regisztrációját](translator-text-how-to-signup.md).
-
 ## <a name="languages-request"></a>Languages kérés
 
 A következő kód lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelveket és példákat a [Languages](./reference/v3-0-languages.md) metódussal.
 
 1. Hozzon létre egy új Ruby-projektet a kedvenc kódszerkesztőjében.
 2. Adja hozzá az alábbi kódot.
-3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Futtassa a programot.
+3. Futtassa a programot.
 
 ```ruby
 require 'net/https'
@@ -42,20 +39,12 @@ require 'uri'
 require 'cgi'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the key string value with your valid subscription key.
-key = 'ENTER KEY HERE'
-
 host = 'https://api.cognitive.microsofttranslator.com'
 path = '/languages?api-version=3.0'
 
 uri = URI (host + path)
 
 request = Net::HTTP::Get.new(uri)
-request['Ocp-Apim-Subscription-Key'] = key
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
     http.request (request)
@@ -67,6 +56,7 @@ json = JSON.pretty_generate(JSON.parse(result))
 
 output_path = 'output.txt'
 
+# Write response to file
 File.open(output_path, 'w' ) do |output|
     output.print json
 end

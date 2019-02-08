@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c280a1f7e060ab7637e8d0b2484951f72b58a89c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fe671dec730cd1a593c6413c38625677c3f9d164
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081194"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894105"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása
 
@@ -54,7 +54,7 @@ A Data Factoryval az adatok továbbítására és átalakítására szolgáló a
 Lásd: [az Azure Data Factory bemutatását](data-factory-introduction.md) és [az első folyamat létrehozása](data-factory-build-your-first-pipeline.md) gyorsan az Azure Data Factory szolgáltatás használatának első lépései a cikkeket.
 
 ### <a name="data-factory-and-machine-learning-together"></a>A Data Factory és a gépi tanulás együtt
-Az Azure Data Factory lehetővé teszi, hogy egyszerűen hozzon létre egy közzétett használó folyamatok [Azure Machine Learning] [ azure-machine-learning] webszolgáltatás prediktív elemzőeszközöket. Használatával a **kötegelt végrehajtási tevékenység** az Azure Data Factory-folyamatot, az Azure Machine Learning studio-webszolgáltatás, hogy előrejelzéseket végezzen az adatok a Batch szolgáltatásban lévő hívhatók meg. Lásd: [meghívása az Azure Machine Learning studio webszolgáltatás a kötegelt végrehajtási tevékenység használatával](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity) című szakasz részletezi.
+Az Azure Data Factory lehetővé teszi, hogy egyszerűen hozzon létre egy közzétett használó folyamatok [Azure Machine Learning] [ azure-machine-learning] webszolgáltatás prediktív elemzőeszközöket. Használatával a **kötegelt végrehajtási tevékenység** az Azure Data Factory-folyamatot, az Azure Machine Learning studio-webszolgáltatás, hogy előrejelzéseket végezzen az adatok a Batch szolgáltatásban lévő hívhatók meg. Az Azure Machine Learning studio webszolgáltatás a kötegelt végrehajtási tevékenység szakaszban használatával részletekért tekintse meg a Invoking.
 
 Az idő múlásával a prediktív modelleket a az Azure Machine Learning studio kísérletek pontozási kell kell retrained új bemeneti adatkészletek használatával. A Data Factory-folyamatot egy Azure Machine Learning studio-modell ténytábláknál a következő lépések végrehajtásával:
 

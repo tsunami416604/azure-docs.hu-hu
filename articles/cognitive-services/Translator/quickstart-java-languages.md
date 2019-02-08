@@ -4,30 +4,27 @@ titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban a fordítás, átbetűzésű és a Translator Text API használatával szótár keresési támogatott nyelvek listájának lekérése.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: 937fd58b28a3e64f7f4f9fc4bf52e8280af81136
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 63f71a0431ebeb63d041d19ce2c7b1e942e6fa14
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226972"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894955"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-java"></a>Gyors útmutató: Java használatával támogatott nyelvek listáját a Translator Text API használatával
 
 Ebben a rövid útmutatóban a fordítás, átbetűzésű és a Translator Text API használatával szótár keresési támogatott nyelvek listájának lekérése.
 
-Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [JDK 7 vagy újabb verzió](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle](https://gradle.org/install/)
-* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
 
 ## <a name="initialize-a-project-with-gradle"></a>Gradle-projekt inicializálása
 
@@ -50,7 +47,7 @@ Amikor a rendszer kéri, válassza ki a **DSL**válassza **Kotlin**.
 
 Keresse meg `build.gradle.kts` és nyissa meg a kedvenc IDE-szerkesztőben vagy szövegszerkesztőben. Ezután másolja a build konfigurációját:
 
-```
+```java
 plugins {
     java
     application
@@ -104,7 +101,6 @@ public class GetLanguages {
 Adja hozzá ezeket a sorokat a `GetLanguages` osztály:
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0";
 ```
 
@@ -117,14 +113,13 @@ Adja hozzá a sort, hogy a `GetLanguages` osztály példányt létrehozni a `OkH
 OkHttpClient client = new OkHttpClient();
 ```
 
-Következő lépésként létrehozzuk a GET-kérés.
+Következő lépésként létrehozzuk a `GET` kérelmet.
 
 ```java
 // This function performs a GET request.
 public String Get() throws IOException {
     Request request = new Request.Builder()
             .url(url).get()
-            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
             .addHeader("Content-type", "application/json").build();
     Response response = client.newCall(request).execute();
     return response.body().string();

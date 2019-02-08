@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 80208c83c96ba78db052017c2baa3bc0db63953f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f8a5c12bb57a8f59960320c6227174b240bcbc3d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258850"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892235"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Sorszintű biztonság a Power BI munkaterületi gyűjteményekkel
 
@@ -48,7 +48,7 @@ Az RLS a Power BI Desktopban készül. Ha az adatkészlet és jelentés megnyit�
 Az alábbiakban néhány szempont, figyelje meg, hogy ebben a sémában:
 
 * Az összes mértékre, például **Total Sales**, vannak tárolva a **értékesítési** ténytáblában.
-* Nincsenek négy további kapcsolódó dimenziótábla: **elem**, **idő**, **Store**, és **kerület**.
+* Nincsenek négy további kapcsolódó dimenziótábla: **Elem**, **idő**, **Store**, és **kerület**.
 * A kapcsolatvonalakon lévő azt jelzik, hogy milyen módon szűrőket is flow egyik táblából egy másikba. Ha például egy szűrő el van helyezve **Time [Date]**, az aktuális sémában, akkor csak szűrése lefelé értékeket a **értékesítési** tábla. Más táblák a szűrőt, mert a kapcsolatvonalakon lévő összes mutasson a sales táblába, és azonnal nem befolyásolhat.
 * A **kerület** mérőszámának táblájában, aki a kezelő az egyes kerületek:
   
@@ -56,7 +56,7 @@ Az alábbiakban néhány szempont, figyelje meg, hogy ebben a sémában:
 
 A séma alapján, ha szűrőt alkalmazunk a **körzeti vezető** a körzeti táblában, és ez a szűrő megfelel a jelentést megtekintő felhasználónak, ha, amely lehet szűkíteni is szűrők a **Store** és  **Értékesítési** csak táblázatokban adott adott menedzser adatait manager.
 
-Íme, miként:
+Ezt a következőképpen teheti meg:
 
 1. Kattintson a modellezés lap **szerepkörök kezelése**.  
    ![Szerepkörök gombra a modellezés menüszalag kezelése](media/row-level-security/modeling-tab-5.png)
@@ -94,7 +94,7 @@ Ez kell tenni a Power BI Desktopban minden munkát értünk, de egy további mun
 * **felhasználónév** (nem kötelező) – használja az RLS Ez egy karakterláncérték, amely segítségével azonosítható a felhasználó az RLS-szabályok alkalmazásakor. Lásd a sorszintű biztonság a Power BI Embedded használatával:
 * **szerepkörök** – sorszintű biztonsági szabályok alkalmazásakor kiválasztható szerepköröket tartalmazó karakterlánc. Több szerepkör átadásakor kell azokat átadni karakterlánctömbként.
 
-A jogkivonat használatával hoz létre a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#Microsoft_PowerBI_Security_PowerBIToken_CreateReportEmbedToken_System_String_System_String_System_String_System_DateTime_System_String_System_Collections_Generic_IEnumerable_System_String__) metódust. Ha a felhasználónév tulajdonság jelen, akkor szerepkörök is meg kell adnia legalább egy értéket.
+A jogkivonat használatával hoz létre a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metódust. Ha a felhasználónév tulajdonság jelen, akkor szerepkörök is meg kell adnia legalább egy értéket.
 
 Ha például sikerült módosítani a EmbedSample. Sikerült frissíteni a DashboardController sor 55
 

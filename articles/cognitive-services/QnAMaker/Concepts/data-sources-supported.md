@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: A QnA Maker automatikusan kinyeri a kérdés-válasz párt, például – gyakori kérdések, kézikönyvek, irányelvek, támogatási dokumentumok és szabályzatok weblapok, a PDF-fájlokat vagy a Microsoft Word-dokumentum fájlok tárolt részben strukturált tartalomból. Tartalmakat is hozzáadhat a Tudásbázis származó strukturált QnA tartalomfájlok.
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: tulasim
-ms.openlocfilehash: b30f910b7eebabe02443e5b3ce328a89a25c7a6f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 09e01f7705c61bdf110c0bc84cefa396f430f7f8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213701"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884511"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>A tartalmat a QnA Maker adatforrások
 

@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 01612b32e6c1b363df8a5c70405d0c709210328e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 720288aff462b0590bb9da509096a9305b9b6cc7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164314"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888457"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Storsimple-höz készült Windows Powershellen keresztül a karbantartási módú frissítések telepítése
 1. Ha még nem tette meg, az eszköz soros konzoljához és select 1. lehetőség – hozzáféréshez **jelentkezzen be a teljes hozzáféréssel**. 
 2. Írja be a jelszót. Az alapértelmezett jelszó az **jelszó1**.
@@ -28,5 +26,5 @@ ms.locfileid: "50164314"
    
     Ha a `RunInProgress` van `True`, a frissítés még folyamatban van. Ha `RunInProgress` van `False`, az azt jelzi, hogy a frissítés befejeződött.  
 8. Ha a frissítés telepítve van a jelenlegi vezérlő, és azt újraindult, a másik vezérlőre csatlakozzon, és 1 – 6. lépéseket.
-9. Mindkét vezérlő frissítve lett, miután kilépett a karbantartási módból. Lásd: [4. lépés: kilépési karbantartási módba](../articles/storsimple/storsimple-update-device.md#step4) útmutatást.
+9. Mindkét vezérlő frissítve lett, miután kilépett a karbantartási módból. Lásd: [4. lépés: Kilépés a karbantartási módból](../articles/storsimple/storsimple-update-device.md#step4) útmutatást.
 

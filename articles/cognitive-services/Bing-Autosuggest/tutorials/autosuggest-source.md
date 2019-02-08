@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Forráskód a Bing Autosuggest API egyoldalas webalkalmazásban való használatát bemutató oktatóanyaghoz.
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 6fdb72b92a444b889ddfafd0ceecbb4fab6570c8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b1bd2d7065dea5efecddb82699a7dc474bac9b34
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171252"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881056"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 

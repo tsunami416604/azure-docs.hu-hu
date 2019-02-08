@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, sashan
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 91f49adbc922e96bf3cf250735ebfe96e6b39868
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b58c3cc677291c11b93cff439bd669c58735f31e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512261"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892830"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL Database
 
@@ -43,9 +43,9 @@ A következő ábrán látható négy csomópont elkülönített számítási é
 A standard szintű rendelkezésre állás modellben az alábbi két réteg:
 
 - Állapot nélküli számítási rétegét, amelyen fut a `sqlserver.exe` feldolgozásához, és csak átmeneti és a gyorsítótárazott adatokat tartalmazza (például – tervgyorsítótárból, pufferkészletben, oszlop store készlet). Ez az állapot nélküli SQL Server-csomóponton, inicializálja a folyamatot, a csomópont állapotát vezérli és hajt végre feladatátvételt egy másik helyre, szükség esetén az Azure Service Fabric szolgáltatást.
-- Állapot-nyilvántartó adatrétege-adatbázisfájlokat (.mdf/.ldf), amely az Azure Premium Storage szolgáltatásban tárolódnak. Az Azure Storage garantálja, hogy az bármilyen adatbázis-fájlban lévő bármelyik rekordra adatvesztés nélkül lesz. Az Azure Storage rendelkezik beépített rendelkezésre állása/adatredundancia, amely biztosítja, hogy a naplófájl minden rekord vagy adatfájlban lap megőrzi még akkor is, ha az SQL Server-folyamat leáll.
+- Állapot-nyilvántartó adatrétege-adatbázisfájlokat (.mdf/.ldf), amely az Azure Blob storage tárolja. Az Azure Blob storage garantálja, hogy az bármilyen adatbázis-fájlban lévő bármelyik rekordra adatvesztés nélkül lesz. Az Azure blog storage rendelkezik beépített rendelkezésre állása/adatredundancia, amely biztosítja, hogy a naplófájl minden rekord vagy adatfájlban lap megőrzi még akkor is, ha az SQL Server-folyamat leáll.
 
-Alapul szolgáló infrastruktúra egy része sikertelen lesz, amikor az adatbázis-kezelő vagy az operációs rendszer frissítve van, vagy az Sql Server-folyamat kritikus probléma észlelése esetén az Azure Service Fabric az állapot nélküli SQL Server-folyamat áthelyezi egy másik az állapot nélküli számítási csomóponton. Nincs meg az új számítási szolgáltatás feladatátvétel esetén futtassa a feladatátvételi idő minimalizálása érdekében váró tartalék csomópontok. Nincs hatással az Azure Storage-rétegből az adatokat, és adatokat vagy naplófájlokat csatolt újrainicializált SQL Server folyamatán. Ez a folyamat garantálja a 99,99 %-os rendelkezésre állást, de előfordulhat, hogy rendelkezik néhány teljesítményére nagy terhelést, amely miatt a váltás ideje fut-e a, és azt a tényt az új SQL Server-csomópont hideg gyorsítótáras kezdődik.
+Alapul szolgáló infrastruktúra egy része sikertelen lesz, amikor az adatbázis-kezelő vagy az operációs rendszer frissítve van, vagy az Sql Server-folyamat kritikus probléma észlelése esetén az Azure Service Fabric az állapot nélküli SQL Server-folyamat áthelyezi egy másik az állapot nélküli számítási csomóponton. Nincs meg az új számítási szolgáltatás feladatátvétel esetén futtassa a feladatátvételi idő minimalizálása érdekében váró tartalék csomópontok. Nincs hatással az adatok Azure Blob storage-ban, és adatokat vagy naplófájlokat csatolt újrainicializált SQL Server folyamatán. Ez a folyamat garantálja a 99,99 %-os rendelkezésre állást, de előfordulhat, hogy rendelkezik néhány teljesítményére nagy terhelést, amely miatt a váltás ideje fut-e a, és azt a tényt az új SQL Server-csomópont hideg gyorsítótáras kezdődik.
 
 ## <a name="premium-and-business-critical-service-tier-availability"></a>Prémium és üzletileg kritikus szolgáltatási szint rendelkezésre állása
 
@@ -78,7 +78,7 @@ A magas rendelkezésre állású architektúra redundáns zóna verziója által
 
 ## <a name="conclusion"></a>Összegzés
 
-Az Azure SQL Database és az Azure platform mélyen integrált, és nagymértékben függ, a Service Fabric hiba észlelése és a helyreállítás, az Azure Storage-Blobokból a data protection és a hibatűrés magasabb rendelkezésre állási zónák. Egy időben az Azure SQL database teljes mértékben kihasználja az Always On rendelkezésre állási csoport technológia a replikációt és feladatátvételt az SQL Server box termékből. Ezek a technológiák kombinációja lehetővé teszi, hogy az alkalmazásokat a teljes mértékben a vegyes tárolási modell előnyeinek és a legnagyobb erőforrás-igényű SLA-kat támogatja.
+Az Azure SQL Database és az Azure platform mélyen integrált, és nagymértékben függ, a Service Fabric hiba észlelése és a helyreállítás, az Azure Blob storage-adatok védelme és a hibatűrés magasabb rendelkezésre állási zónák. Egy időben az Azure SQL database teljes mértékben kihasználja az Always On rendelkezésre állási csoport technológia a replikációt és feladatátvételt az SQL Server box termékből. Ezek a technológiák kombinációja lehetővé teszi, hogy az alkalmazásokat a teljes mértékben a vegyes tárolási modell előnyeinek és a legnagyobb erőforrás-igényű SLA-kat támogatja.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 02/07/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: f9ffbebee06ab7b9e010c7e6c84fee533611fb38
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f2cf9d1ed2cb970cf6f477df07af62d594ea930c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567655"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890906"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>kézikönyv: Kockázati szabályzatainak konfigurálása az Azure Active Directory identity protection (frissítve)
 
@@ -60,7 +60,7 @@ A bejelentkezési kockázati házirend konfigurálásakor kell beállítani:
 
 - Milyen típusú hozzáférést szeretne kényszeríti ki a bejelentkezési kockázati szint teljesülésekor:  
 
-    ![Hozzáférés](./media/howto-configure-risk-policies/13.png)
+    ![Access](./media/howto-configure-risk-policies/13.png)
 
 - A szabályzat állapotát:
 
@@ -81,7 +81,7 @@ Azonban biztonsági okokból a beállítás csak akkor működik, amely a multi-
 
 Ha azt szeretné, a többtényezős hitelesítés megkövetelése a kockázatos bejelentkezések, a következőket kell elvégeznie:
 
-1. Engedélyezze a [többtényezős hitelesítési regisztrációs házirend](#multi-factor-authentication-registration-policy) az érintett felhasználók számára.
+1. Az érintett felhasználók a többtényezős hitelesítési regisztrációs házirend engedélyezése.
 
 2. Az érintett felhasználók a bejelentkezéshez szükséges az MFA-regisztráció végrehajtásához nem kockázatos munkamenetben.
 
@@ -141,7 +141,7 @@ A felhasználói kockázati házirend konfigurálásakor kell beállítani:
 
 - Milyen típusú hozzáférést szeretne kényszeríti ki a bejelentkezési kockázati szint teljesülésekor:  
 
-    ![Hozzáférés](./media/howto-configure-risk-policies/113.png)
+    ![Access](./media/howto-configure-risk-policies/113.png)
 
 - A szabályzat állapotát:
 

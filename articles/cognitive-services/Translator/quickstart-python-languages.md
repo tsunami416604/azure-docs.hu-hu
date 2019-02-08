@@ -4,31 +4,28 @@ titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API és a Python használatával.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: 6f52df9166da371b38069138bc4389a9be6b0121
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 099485f37cc188307b6c04343ef174740acf07cb
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692222"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891573"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Gyors útmutató: A Python használatával támogatott nyelvek listáját a Translator Text API használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a támogatott nyelvek listáját egy GET kérelemmel a Python és a Translator Text REST API használatával.
-
-Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * Python 2.7.x vagy 3.x
-* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
@@ -44,25 +41,7 @@ import os, requests, uuid, json
 
 Az első megjegyzés arra utasítja a Python-értelmezőt, hogy UTF-8 kódolást használjon. A rendszer importálja azokat a modulokat, amelyek az előfizetői azonosító egy környezeti változóból való beolvasásához, a HTTP-kérelem felépítéséhez, egy egyedi azonosító létrehozásához, illetve a Translator Text API által visszaadott JSON-válasz kezeléséhez szükségesek.
 
-## <a name="set-the-subscription-key-base-url-and-path"></a>Az előfizetői azonosító, az alap URL-cím és az elérési út beállítása
-
-Ez a minta megpróbálja beolvasni a Translator Text-előfizetői azonosítót a `TRANSLATOR_TEXT_KEY` környezeti változóból. Ha még nem ismeri a környezeti változókat, beállíthatja a `subscriptionKey` sztringet, és megjegyzéssé teheti a feltételes utasítást.
-
-Másolja a projektbe a következő kódot:
-
-```python
-# Checks to see if the Translator Text subscription key is available
-# as an environment variable. If you are setting your subscription key as a
-# string, then comment these lines out.
-if 'TRANSLATOR_TEXT_KEY' in os.environ:
-    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
-else:
-    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
-    exit()
-# If you want to set your subscription key as a string, uncomment the line
-# below and add your subscription key.
-#subscriptionKey = 'put_your_key_here'
-```
+## <a name="set-the-base-url-and-path"></a>Állítsa be a kiindulási URL-címét, és elérési útja
 
 A Translator Text globális végpontja van beállítva, a `base_url`. A `path` tulajdonság a `languages` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
 
@@ -77,13 +56,12 @@ constructed_url = base_url + path
 
 ## <a name="add-headers"></a>Fejlécek hozzáadása
 
-A kérelmek hitelesítésének legegyszerűbb módja az, hogy átadja az előfizetői azonosítót `Ocp-Apim-Subscription-Key` fejlécként, amit ebben a példában alkalmazunk. Alternatív megoldásként hozzáférési jogkivonatra cserélheti az előfizetői azonosítóját, és átadhatja a hozzáférési jogkivonatot is `Authorization` fejlécként a kérelem ellenőrzése céljából. További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+A támogatott nyelvek beolvasására irányuló kérelem nem igényel hitelesítést. Állítsa be a `Content-type` , `application/json` , és adja hozzá `X-ClientTraceId` egyedi azonosítására szolgál a kérést.
 
 Másolja a projektbe a következő kódrészletet:
 
 ```python
 headers = {
-    'Ocp-Apim-Subscription-Key': subscriptionKey,
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
 }

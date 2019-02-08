@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: caafd5ac43ca94f8b01298b4e18e48065b7001b9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c83342e5eb0e6c1f45daa54ea3c4f3c602ff7a39
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766622"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878612"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -463,7 +463,7 @@ A webszolgáltatás, egy REST API-t, így a ügyfélalkalmazások számos progra
 
 ## <a id="update"></a> A web service frissítése
 
-Amikor létrehoz egy új rendszerképet, kell manuálisan frissítenie kell minden egyes szolgáltatás, amelyet szeretne az új rendszerképet használja. A web service frissítéséhez használja a `update` metódust. A következő kód bemutatja, hogyan frissíthető egy új rendszerkép használata a web service:
+Amikor létrehoz egy új rendszerképet, manuálisan frissítenie kell minden egyes szolgáltatás, amelyet szeretne az új rendszerképet használja. A web service frissítéséhez használja a `update` metódust. A következő kód bemutatja, hogyan frissíthető egy új rendszerkép használata a web service:
 
 ```python
 from azureml.core.webservice import Webservice

@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Az elemzők számát REST API-t a nyelvi elemzési API által jelenleg támogatott elemzők listáját tartalmazza.
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 06/30/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8bf13bffe763b88e95da94f885e30d271e36da42
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9338e87644554ac8b3121c5341cea6f2bc512a97
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221683"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878187"
 ---
 # <a name="analyzers-method"></a>Elemző módszer
 
@@ -35,10 +35,10 @@ None
 Name (Név) | Típus | Leírás
 -----|------|--------------
 Nyelvek | karakterláncok | két betű ISO nyelvi kód, amelynek segítségével a analyzer listája.
-id   | sztring | az elemző eszköz egyedi azonosítója
-típusa | sztring | Itt analyzer széles körű típusa
-Specifikáció | sztring | a meghatározás az elemző nevét
-Megvalósítása | sztring | a modell és/vagy az elemző eszköz mögött algoritmus leírása
+id   | Karakterlánc | az elemző eszköz egyedi azonosítója
+típusa | Karakterlánc | Itt analyzer széles körű típusa
+Specifikáció | Karakterlánc | a meghatározás az elemző nevét
+Megvalósítása | Karakterlánc | a modell és/vagy az elemző eszköz mögött algoritmus leírása
 
 <br>
 ## <a name="example"></a>Példa

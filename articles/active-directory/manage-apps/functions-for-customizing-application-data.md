@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
-ms.openlocfilehash: 7b69929b210f0f30db28b18073893505d2977051
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3361bc384f3da3d2bde6eab703056dd85356b5f8
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179038"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895414"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -34,7 +34,7 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
   1. Attribútumok, amelyek szögletes zárójelek közé kell tenni. Például: [attributeName]
   2. A karakterlánc-állandókat, amelyek dupla idézőjelek közé kell tenni. Példa: "Egyesült Államok"
   3. Más funkciók. Példa: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
-* A karakterlánc-állandókat Ha egy fordított perjel (\) vagy az idézőjel (") a karakterláncban van szüksége, kell megjelölni a fordított perjel (\) szimbólum. Példa: "Cég neve: \"Contoso\""
+* A karakterlánc-állandókat Ha egy fordított perjel (\) vagy az idézőjel (") a karakterláncban van szüksége, kell megjelölni a fordított perjel (\) szimbólum. Példa: "Cég neve: \\"Contoso\\""
 
 ## <a name="list-of-functions"></a>Függvények listája.
 [Hozzáfűzés](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [csatlakozzon](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [cseréje](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Kapcsoló](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
@@ -220,7 +220,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
-| **culture** |Optional |Karakterlánc |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
+| **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
 
 - - -
 ### <a name="toupper"></a>ToUpper
@@ -233,7 +233,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
-| **culture** |Optional |Karakterlánc |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
+| **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
 
 ## <a name="examples"></a>Példák
 ### <a name="strip-known-domain-name"></a>Sáv ismert tartománynév

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 0cd7ecdc6ee7b6ccd66c9d0d88ebef0a1220a40a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1df7765f4f006d3d79f867fbf23929f6b9b0cf08
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249112"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884392"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Teljesítmény-finomhangolási útmutató a MapReduce on HDInsight és az Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ Ismerje meg, amikor beállítja a Mapreduce-feladatok teljesítményét, megfont
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Az Azure Data Lake Storage Gen2 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [a rövid útmutató: Hozzon létre egy Azure Data Lake Storage Gen2 tárfiókot](data-lake-storage-quickstart-create-account.md).
-* **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen2-fiókot. Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
+* **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen2-fiókot. Lásd: [használata Azure Data Lake Storage Gen2 Azure HDInsight-fürtök](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
 * **A MapReduce használata a HDInsight**.  További információkért lásd: [a HDInsight a Hadoop MapReduce használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
 * **Teljesítmény-finomhangolási útmutató a Data Lake Storage Gen2**.  Az általános teljesítmény fogalmak, lásd: [Data Lake Storage Gen2 teljesítményének hangolása útmutatója](data-lake-storage-performance-tuning-guidance.md)
 

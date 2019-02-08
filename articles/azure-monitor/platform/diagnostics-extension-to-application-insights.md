@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2016
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: a808dc3e924d3f1800790bdb83cb4ce65112480b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470137"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892853"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Cloud Service, a virtuális gép vagy a Service Fabric diagnosztikai adatok küldése az Application Insights
 Cloud services, Virtual Machines, Virtual Machine Scale Sets és a Service Fabric összes adatok összegyűjtéséhez használja az Azure Diagnostics bővítmény.  Az Azure diagnosztikai adatokat küld az Azure Storage-táblák.  Azonban is minden cső vagy más helyekre, 1.5-ös vagy újabb Azure Diagnostics bővítmény használata az adatok egy részét.
@@ -215,7 +215,7 @@ Az előző beállítás szerint a következő sorokat jelentése a következő:
 - **Az Application insights-bA az Azure diagnostics bővítmény által gyűjtött Blobadatok nem küldhető el.** Például semmit alatt megadott a *könyvtárak* csomópont. Az összeomlási memóriaképek a tényleges összeomlási memóriakép blob storage-bA küldött, és csak egy értesítést, hogy az összeomlási memóriaképben jött létre az Application insights szolgáltatásba küldi el.
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [megtekintése az Azure diagnostics adatait](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events) az Application Insightsban.
+* Ismerje meg, hogyan [megtekintése az Azure diagnostics adatait](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) az Application Insightsban.
 * Használat [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) az alkalmazás az Azure diagnosztikai bővítmény engedélyezése.
 * Használat [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) az alkalmazás az Azure diagnosztikai bővítmény engedélyezése
 

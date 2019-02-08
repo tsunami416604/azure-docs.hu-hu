@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: e16598a10cbbe4cfa65e6b5394e749bfee99dbdc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: faebf6c5e7b32ec842c19af07e36a1120156e103
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732583"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894122"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
 
@@ -38,9 +38,9 @@ Ez a funkció használható együtt a "saját alkalmazások használata" lehető
 
 Nincsenek SCIM használata az Azure Active Directoryban két alkalmazási helyzetei:
 
-* **Felhasználók és csoportok alkalmazásokhoz, amelyek támogatják az SCIM-kiépítés** -alkalmazást, amely támogatja az SCIM 2.0 és OAuth tulajdonosi jogkivonatokat hitelesítés működéséről az Azure AD-konfiguráció nélkül.
+* **Felhasználók és csoportok alkalmazásokhoz, amelyek támogatják az SCIM-kiépítés** -alkalmazásokat, amelyek támogatják az SCIM 2.0 és OAuth tulajdonosi jogkivonatokat a hitelesítéshez használt működnek az Azure AD-konfiguráció nélkül.
   
-* **A saját kiépítési megoldás az alkalmazások létrehozásához, amely támogatja a más API-alapú üzembe helyezés** -nem SCIM-alkalmazások, létrehozhat egy SCIM-végpont lefordítani az Azure AD SCIM végpont és az alkalmazás támogat az API között felhasználók átadása. Könnyebben fejleszthet egy SCIM-végpontot, nincsenek közös nyelvi infrastruktúra (CLI) kódtárak kódmintákkal, amelyek bemutatják, hogyan egy SCIM-végpontot biztosít, és lefordítja az SCIM-üzenetek együtt.  
+* **A saját kiépítési megoldás az alkalmazások létrehozásához, amely támogatja a más API-alapú üzembe helyezés** -nem SCIM-alkalmazások, létrehozhat egy SCIM-végpont lefordítani az Azure AD SCIM végpont és az alkalmazás támogat az API között felhasználók átadása. Könnyebben fejleszthet egy SCIM-végpontot, nincsenek közös nyelvi infrastruktúra (CLI) kódtárak kódmintákkal, amelyek bemutatják, hogyan egy SCIM-végpontot biztosítanak, és lefordítja az SCIM-üzenetek együtt.  
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Felhasználók és csoportok alkalmazásokhoz, amelyek támogatják az SCIM-kiépítés
 Az Azure AD beállítható úgy, hogy az automatikusan hozzárendelt felhasználók és csoportok megvalósító alkalmazások egy [a tartományok közötti Identity Management (SCIM) 2 rendszer](https://tools.ietf.org/html/draft-ietf-scim-api-19) webes szolgáltatás, és fogadja el az OAuth tulajdonosi jogkivonatokat a hitelesítéshez. Az SCIM 2.0 ismertetőjének belüli alkalmazások az alábbi követelményeknek kell megfelelnie:
@@ -74,7 +74,7 @@ Ebben a cikkben leírt az SCIM-profil támogató alkalmazások csatlakoztatható
    *3. ábra: Létrehozás az Azure Portalon konfigurálása*
     
 6. Az a **bérlői URL-cím** mezőben adja meg az alkalmazás SCIM-végpont URL-CÍMÉT. Például: https://api.contoso.com/scim/v2/
-7. Ha az SCIM-végpont egy OAuth tulajdonosi jogkivonat egy Azure AD-től eltérő kiállítótól van szüksége, majd másolja a szükséges OAuth tulajdonosi jogkivonat a választható **titkos jogkivonat** mező. Ha ezt a mezőt üresen hagyja, az Azure AD az OAuth tulajdonosi jogkivonat kiállított Azure ad-ben minden egyes kérelemmel tartalmazza. Alkalmazások, amelyek használhatja az Azure AD Identitásszolgáltatóként ellenőrizheti ezt az Azure AD-jogkivonatot állít ki.
+7. Ha az SCIM-végpont egy OAuth tulajdonosi jogkivonat egy Azure AD-től eltérő kiállítótól van szüksége, majd másolja a szükséges OAuth tulajdonosi jogkivonat a választható **titkos jogkivonat** mező. Ha ezt a mezőt üresen hagyja, az Azure AD az OAuth tulajdonosi jogkivonat kiállított Azure ad-ben minden egyes kérelemmel tartalmaz. Az Azure AD Identitásszolgáltatóként használó alkalmazások az Azure AD által kiállított token ellenőrizheti.
 8. Kattintson a **kapcsolat tesztelése** szeretné, hogy az Azure Active Directory megpróbál csatlakozni az SCIM-végpont gombra. Sikertelen kísérlet, hibaüzenetet jelenik meg.  
 
     >[!NOTE]
@@ -86,7 +86,7 @@ Ebben a cikkben leírt az SCIM-profil támogató alkalmazások csatlakoztatható
     >[!NOTE]
     >Igény szerint letilthatja a csoportobjektumokhoz, tiltsa le a "csoport" leképezési szinkronizálása. 
 
-11. A **beállítások**, a **hatókör** mező határozza meg, hogy mely felhasználók és az or csoportok vannak szinkronizálva. Válassza a "Sync csak a hozzárendelt felhasználók és csoportok" (ajánlott) csak szinkronizálás felhasználók és a hozzárendelt csoportok a **felhasználók és csoportok** fülre.
+11. A **beállítások**, a **hatókör** mező határozza meg, hogy mely felhasználók és csoportok szinkronizálása. Válassza a "Sync csak a hozzárendelt felhasználók és csoportok" (ajánlott) csak szinkronizálás felhasználók és a hozzárendelt csoportok a **felhasználók és csoportok** fülre.
 12. A konfiguráció befejezése után módosítsa a **üzembe helyezési állapotra** való **a**.
 13. Kattintson a **mentése** az Azure AD létesítési szolgáltatás elindításához. 
 14. Ha szinkronizálása csak a hozzárendelt felhasználók és csoportok (ajánlott), mindenképpen jelölje ki a **felhasználók és csoportok** lapra, és rendelje hozzá a felhasználókat, illetve a szinkronizálni kívánt csoportokat.
@@ -153,7 +153,7 @@ A legegyszerűbb módja egy SCIM-végpontot, amely az Azure ad-ből kiépítési
    ![][2]
    *4. ábra: Létrehozás az Azure Portalon konfigurálása*
     
-6. Az a **bérlői URL-cím** mezőben adja meg az interneten közzétett URL-cím és port a SCIM-végpont. A bejegyzés a következőképpen fog kinézni http://testmachine.contoso.com:9000 vagy http://<ip-address>:9000/, ahol az < ip-cím > az internetről elérhető IP-címet.  
+6. Az a **bérlői URL-cím** mezőben adja meg az interneten közzétett URL-cím és port a SCIM-végpont. A bejegyzés a következőképpen fog kinézni http://testmachine.contoso.com:9000 vagy a http://\<ip-cím >: 9000 /, ahol \<ip-cím > az internetről elérhető IP cím.  
 7. Ha az SCIM-végpont egy OAuth tulajdonosi jogkivonat egy Azure AD-től eltérő kiállítótól van szüksége, majd másolja a szükséges OAuth tulajdonosi jogkivonat a választható **titkos jogkivonat** mező. Ha ezt a mezőt üresen hagyja, az Azure AD tartalmazza az OAuth tulajdonosi jogkivonat ki minden egyes kérelemmel Azure AD-ből. Alkalmazások, amelyek használhatja az Azure AD Identitásszolgáltatóként ellenőrizheti ezt az Azure AD-jogkivonatot állít ki.
 8. Kattintson a **kapcsolat tesztelése** szeretné, hogy az Azure Active Directory megpróbál csatlakozni az SCIM-végpont gombra. Sikertelen kísérlet, hibaüzenetet jelenik meg.  
 

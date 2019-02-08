@@ -13,13 +13,13 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f82c96b972baa161658f4a864572bfcb791939ed
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 452811cae74253570591e5ffe2c58708fe632b39
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728997"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894394"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés az Azure SQL Database felügyelt példány naplózási szolgáltatásával
 
@@ -154,7 +154,7 @@ Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurál�
 
 További információ:
 
-- [Naplózás az Azure SQL Database és SQL Server-adatbázisok önálló adatbázisok, rugalmas készlet, s és a felügyelt példányok közötti különbségek](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
+- [Naplózás az Azure SQL Database és SQL Server-adatbázisok önálló adatbázisok, rugalmas készlet, s és a felügyelt példányok közötti különbségek](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
 - [KISZOLGÁLÓ NAPLÓZÁSI LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [AZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -223,13 +223,13 @@ A log Analytics azonnal elemezze a rekordok millióit, a számítási feladatok 
 
 A naplózás az Azure SQL Database és az adatbázisok az SQL Server-adatbázisok közötti fő különbségeket a következők:
 
-- Az Azure SQL Database felügyelt példány üzembe helyezési lehetősége, a naplózást a kiszolgáló szintjén, és a tárolók működését `.xel` naplófájlokat az Azure blob storage-fiók.
+- Az Azure SQL Database felügyelt példány üzembe helyezési lehetősége, a naplózást a kiszolgáló szintjén, és a tárolók működését `.xel` naplófájlokat az Azure Blob storage-ban.
 - Az önálló adatbázisok és az Azure SQL Database rugalmas készlet üzembe helyezési lehetőséget, a naplózás az adatbázis szintjén működik.
 - A helyszíni SQL Server / virtuális gépek, naplózási működik a kiszolgálón. szintű, de a fájlok rendszer-vagy windows-eseménynaplók az események tárolja.
 
-Az XEvent naplózási a felügyelt példány az Azure blob storage tárolók támogatja. Fájl- és windows-naplók **nem támogatott**.
+Az XEvent naplózási a felügyelt példány támogatja az Azure Blob storage tárolók. Fájl- és windows-naplók **nem támogatott**.
 
-A kulcs közötti különbségek a `CREATE AUDIT` vannak a naplózás az Azure blob storage-Szintaxis:
+A kulcs közötti különbségek a `CREATE AUDIT` vannak a naplózás az Azure Blob storage-szintaxissal:
 
 - Egy új szintaxis `TO URL` van megadva, és lehetővé teszi a URL-címét az Azure blob Storage-tárolóba, a `.xel` fájlok kerülnek.
 - Egy új szintaxis `TO EXTERNAL MONITOR` ahhoz, hogy még a hubot és a Log Analytics célok biztosított.

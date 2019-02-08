@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 58d8cfdbd2ad5d7e727decfa3e3cfdd7151b0048
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3075f515b8095451a873727fef696fd523664d0a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250202"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891712"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -63,57 +63,62 @@ Ebben a cikkben megismerkedhet a .NET SDK használata a szolgáltatások közöt
 
 6. Nyissa meg a **Program.cs** fájlt, törölje a meglévő kódot, majd illessze be az alábbi utasításokat, hogy hivatkozásokat a névterekre való hivatkozásokat tudjon felvenni.
 
-        using System;
-        using System.IO;
-        using System.Linq;
-        using System.Text;
-        using System.Threading;
-        using System.Collections.Generic;
-        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
-                
-        using Microsoft.Rest;
-        using Microsoft.Rest.Azure.Authentication;
-        using Microsoft.Azure.Management.DataLake.Store;
-        using Microsoft.Azure.Management.DataLake.Store.Models;
-        using Microsoft.IdentityModel.Clients.ActiveDirectory;
+```csharp
+using System;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+
+using Microsoft.Rest;
+using Microsoft.Rest.Azure.Authentication;
+using Microsoft.Azure.Management.DataLake.Store;
+using Microsoft.Azure.Management.DataLake.Store.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+```
 
 ## <a name="service-to-service-authentication-with-client-secret"></a>Szolgáltatások közötti hitelesítés a titkos Ügyfélkód
 Ez a kódrészlet adja hozzá a .NET-ügyfélalkalmazás. A helyőrző értékeket cserélje le az értékeket (az előfeltételként felsorolt) egy Azure AD-webalkalmazás lekért.  Ez a kódrészlet lehetővé teszi az alkalmazás hitelesítéséhez **nem interaktív módon** Data Lake Storage Gen1 használja az ügyfél titkos/kulcsát az Azure AD-webalkalmazás. 
 
-    private static void Main(string[] args)
-    {    
-        // Service principal / appplication authentication with client secret / key
-        // Use the client ID of an existing AAD "Web App" application.
-        string TENANT = "<AAD-directory-domain>";
-        string CLIENTID = "<AAD_WEB_APP_CLIENT_ID>";
-        System.Uri ARM_TOKEN_AUDIENCE = new System.Uri(@"https://management.core.windows.net/");
-        System.Uri ADL_TOKEN_AUDIENCE = new System.Uri(@"https://datalake.azure.net/");
-        string secret_key = "<AAD_WEB_APP_SECRET_KEY>";
-        var armCreds = GetCreds_SPI_SecretKey(TENANT, ARM_TOKEN_AUDIENCE, CLIENTID, secret_key);
-        var adlCreds = GetCreds_SPI_SecretKey(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, secret_key);
-    }
+```csharp
+private static void Main(string[] args)
+{    
+    // Service principal / application authentication with client secret / key
+    // Use the client ID of an existing AAD "Web App" application.
+    string TENANT = "<AAD-directory-domain>";
+    string CLIENTID = "<AAD_WEB_APP_CLIENT_ID>";
+    System.Uri ARM_TOKEN_AUDIENCE = new System.Uri(@"https://management.core.windows.net/");
+    System.Uri ADL_TOKEN_AUDIENCE = new System.Uri(@"https://datalake.azure.net/");
+    string secret_key = "<AAD_WEB_APP_SECRET_KEY>";
+    var armCreds = GetCreds_SPI_SecretKey(TENANT, ARM_TOKEN_AUDIENCE, CLIENTID, secret_key);
+    var adlCreds = GetCreds_SPI_SecretKey(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, secret_key);
+}
+```
 
-A portáladatbázis előző kódrészlet egy segédfüggvény `GetCreds_SPI_SecretKey`. Ez a segédfüggvény a kódját érhető el [Itt a Githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
+Az előző kódrészlet segítő függvény `GetCreds_SPI_SecretKey`. Ez a segédfüggvény a kódját érhető el [Itt a Githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
 
 ## <a name="service-to-service-authentication-with-certificate"></a>Szolgáltatások közötti hitelesítés tanúsítvánnyal
 
 Ez a kódrészlet adja hozzá a .NET-ügyfélalkalmazás. A helyőrző értékeket cserélje le az értékeket (az előfeltételként felsorolt) egy Azure AD-webalkalmazás lekért. Ez a kódrészlet lehetővé teszi az alkalmazás hitelesítéséhez **nem interaktív módon** Data Lake Storage Gen1 használja a tanúsítvány egy Azure AD-webalkalmazás. Az Azure AD-alkalmazás létrehozása az utasításokért lásd: [egyszerű szolgáltatás létrehozása a tanúsítványok](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
 
-    
-    private static void Main(string[] args)
-    {
-        // Service principal / application authentication with certificate
-        // Use the client ID and certificate of an existing AAD "Web App" application.
-        string TENANT = "<AAD-directory-domain>";
-        string CLIENTID = "<AAD_WEB_APP_CLIENT_ID>";
-        System.Uri ARM_TOKEN_AUDIENCE = new System.Uri(@"https://management.core.windows.net/");
-        System.Uri ADL_TOKEN_AUDIENCE = new System.Uri(@"https://datalake.azure.net/");
-        var cert = new X509Certificate2(@"d:\cert.pfx", "<certpassword>");
-        var armCreds = GetCreds_SPI_Cert(TENANT, ARM_TOKEN_AUDIENCE, CLIENTID, cert);
-        var adlCreds = GetCreds_SPI_Cert(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, cert);
-    }
+```csharp
+private static void Main(string[] args)
+{
+    // Service principal / application authentication with certificate
+    // Use the client ID and certificate of an existing AAD "Web App" application.
+    string TENANT = "<AAD-directory-domain>";
+    string CLIENTID = "<AAD_WEB_APP_CLIENT_ID>";
+    System.Uri ARM_TOKEN_AUDIENCE = new System.Uri(@"https://management.core.windows.net/");
+    System.Uri ADL_TOKEN_AUDIENCE = new System.Uri(@"https://datalake.azure.net/");
+    var cert = new X509Certificate2(@"d:\cert.pfx", "<certpassword>");
+    var armCreds = GetCreds_SPI_Cert(TENANT, ARM_TOKEN_AUDIENCE, CLIENTID, cert);
+    var adlCreds = GetCreds_SPI_Cert(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, cert);
+}
+```
 
-A portáladatbázis előző kódrészlet egy segédfüggvény `GetCreds_SPI_Cert`. Ez a segédfüggvény a kódját érhető el [Itt a Githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
+Az előző kódrészlet segítő függvény `GetCreds_SPI_Cert`. Ez a segédfüggvény a kódját érhető el [Itt a Githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan service-to-service-hitelesítés használatára való hitelesítés a Data Lake Storage Gen1 .NET SDK használatával. Most már megtekintheti a következő cikkeket, hogy hogyan használhatja a .NET SDK használata a Data Lake Storage Gen1 beszélni.

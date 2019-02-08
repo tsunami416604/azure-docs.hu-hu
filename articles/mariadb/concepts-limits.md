@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/03/2018
-ms.openlocfilehash: e611c5e11d3c86474a7775971918ba95b8487da4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 02/07/2019
+ms.openlocfilehash: 79d6e185b64fdaf332f877718487809ba6273441
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970287"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895788"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB korlátozásai
 A következő szakaszok ismertetik a kapacitást, motor támogatása, jogosultság támogatja, adatok adatkezelési utasítást, és az adatbázis-szolgáltatás működési korlátai.
@@ -34,7 +34,7 @@ Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a követk
 |Memóriára optimalizált| 16| 5000|
 
 Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
-> 1040 (08004). HIBA: Túl sok kapcsolat
+> ERROR 1040 (08004): Túl sok kapcsolat
 
 ## <a name="storage-engine-support"></a>Storage engine-támogatás
 
@@ -52,6 +52,7 @@ Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 ### <a name="unsupported"></a>Nem támogatott
 - Adatbázis-szerepkör: Számos kiszolgálói paraméterek és beállítások véletlenül rontják a kiszolgáló teljesítményét vagy amelyet tagadni kell a Célrendszerben ACID tulajdonságait. Emiatt a szolgáltatás integritás és SLA-t, a termék szintjén fenntartására, ezt a szolgáltatást nem biztosít az adatbázis-szerepkör. Az alapértelmezett felhasználói fiók, amely jön létre egy új adatbázis-példány létrehozásakor, lehetővé teszi, hogy a felhasználó hajtani a legtöbb DDL és DML utasítást, a felügyelt adatbázis példányában.
 - FELÜGYELŐI jogosultság: Hasonlóképpen [FELÜGYELŐI jogosultságok](https://mariadb.com/kb/en/library/grant/#global-privileges) is korlátozva.
+- DEFINER: Hozhat létre felügyelői jogosultságokat igényel, és korlátozott. Ha egy biztonsági mentési adatokat importál, távolítsa el a `CREATE DEFINER` parancsok manuális vagy a `--skip-definer` parancsot a mysqldump végrehajtásakor.
 
 ## <a name="data-manipulation-statement-support"></a>Adatok adatkezelési utasítás támogatása
 
@@ -76,6 +77,9 @@ Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 
 ### <a name="subscription-management"></a>Előfizetés-kezelés
 - Dinamikusan előfizetést és erőforráscsoportot az előre létrehozott kiszolgálók áthelyezése jelenleg nem támogatott.
+
+### <a name="vnet-service-endpoints"></a>Virtuális hálózati Szolgáltatásvégpontok
+- Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.
 
 ## <a name="current-known-issues"></a>Jelenlegi ismert problémák
 - MariaDB-server-példány a megfelelő verziója a kapcsolat létrejötte után jeleníti meg. A megfelelő kiszolgáló példány motor verziója, amelyet a `select version();` parancsot.

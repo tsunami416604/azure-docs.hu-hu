@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/15/2018
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4b8b5502090e1b115829b65834532dd6ce15a934
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 28710ebfaef4c82212e0208c36f50a96f0dda083
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835913"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892048"
 ---
-# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Oktatóanyag: Tesztkörnyezetfiók beállítása az Azure Lab Services szolgáltatással
+# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Oktatóanyag: Az Azure Lab Services tesztkörnyezetfiók beállítása
 Az Azure Lab Services szolgáltatásban a tesztkörnyezetfiók központi fiókként szolgál a vállalat összes tesztkörnyezetének felügyeletéhez. A tesztkörnyezetfiókban engedélyeket adhat másoknak a tesztkörnyezetek létrehozására, és szabályzatokat állíthat be, amelyek a tesztkörnyezetfiók alá tartozó összes tesztkörnyezetben érvényesek. Ebben az oktatóanyagban megismerheti, hogyan hozhat létre tesztkörnyezetfiókot tesztkörnyezet-rendszergazdaként. 
 
 Az oktatóanyag során a következő lépéseket hajtja végre:
@@ -37,11 +37,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 A következő lépések bemutatják, hogyan használhatja az Azure Portalt tesztkörnyezetfiók létrehozására az Azure Lab Services szolgáltatásban. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali főmenüben válassza az **Erőforrás létrehozása** lehetőséget.
-3. Keressen a **Lab Services** szövegre az Azure Marketplace-en, és válassza a **Lab Services** alkalmazást a legördülő listából. 
-4. Válassza a **Lab Services (előzetes verzió)** lehetőséget a szűrt szolgáltatáslistában. 
-1. A **Tesztkörnyezetfiók létrehozása** ablakban válassza a **Létrehozás** elemet.
-2. A **Tesztkörnyezetfiók** ablakban tegye a következőket: 
+2. Válassza ki **minden szolgáltatás** a bal oldali menüben. Válassza ki **Tesztkörnyezetfiókok** a a **fejlesztési és üzemeltetési** szakaszban. Ha bejelöli a csillag (`*`) melletti **Tesztkörnyezetfiókok**, megjelenik a **Kedvencek** szakaszban a bal oldali menüben. És újabb verziók esetében a következő időpont választja **Tesztkörnyezetfiókok** alatt **Kedvencek**.
+
+    ![Az összes szolgáltatás -> Lab-fiókokban](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. Az a **Tesztkörnyezetfiókok** lapon jelölje be **Hozzáadás** az eszköztáron. 
+
+    ![A Lab-fiókokban oldalon válassza a Hozzáadás](../media/tutorial-setup-lab-account/add-lab-account-button.png)
+4. Az a **labor fiók** lapon, tegye a következőket: 
     1. Írjon be egy nevet a **Tesztkörnyezetfiók neve** mezőbe. 
     2. Válassza ki azt az **Azure-előfizetést**, amelyben a tesztkörnyezetfiókot létre szeretné hozni.
     3. Az **Erőforráscsoport** esetében válassza az **Új létrehozása** lehetőséget, majd adjon nevet az új erőforráscsoportnak.
@@ -49,9 +51,11 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt teszt
     5. Kattintson a **Létrehozás** gombra. 
 
         ![Tesztkörnyezetfiók létrehozása ablak](../media/tutorial-setup-lab-account/lab-account-settings.png)
-5. Ha a tesztkörnyezetfiók oldala nem látható, kattintson az **Értesítések** gombra, majd az **Ugrás ide: erőforrás** gombra az értesítésekben. 
+5. Válassza ki a **harang ikonra** eszköztár (**értesítések**), győződjön meg arról, hogy az üzembe helyezés sikeres volt-e, és válassza ki **erőforrás megnyitása**. 
 
-    ![Tesztkörnyezetfiók létrehozása ablak](../media/tutorial-setup-lab-account/notification-go-to-resource.png)    
+    Jelölje ki **frissítése** a a **Tesztkörnyezetfiókok** lapon, és válassza ki a létrehozott tesztkörnyezet-fiókot. 
+
+    ![Tesztkörnyezetfiók létrehozása ablak](../media/tutorial-setup-lab-account/go-to-lab-account.png)    
 6. Megjelenik az alábbi **tesztkörnyezetfiók** oldala:
 
     ![Tesztkörnyezetfiók-oldal](../media/tutorial-setup-lab-account/lab-account-page.png)
@@ -62,9 +66,13 @@ A felhasználónak **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkezn
 Ha engedélyt kíván adni az oktatóknak, hogy létrehozzák a tesztkörnyezeteket a tanóráikhoz, adja hozzá őket a **Tesztkörnyezet-létrehozó** szerepkörhöz:
 
 1. A a **labor fiók** lapon válassza ki **hozzáférés-vezérlés (IAM)**, és kattintson a **+ szerepkör-hozzárendelés hozzáadása** az eszköztáron. 
-2. Az **Engedélyek hozzáadása** oldal **Szerepkör** területén válassza a **Tesztkörnyezet-létrehozó** lehetőséget, válassza ki a Tesztkörnyezet-létrehozó szerepkörhöz hozzáadni kívánt felhasználót, majd kattintson a **Mentés** gombra. 
 
-## <a name="specify-marketplace-images-available-to-lab-owners"></a>A tesztkörnyezet-tulajdonosok számára elérhető rendszerképek megadása a Marketplace-en
+    ![Hozzáférés-vezérlés -> szerepkör-hozzárendelés hozzáadása gomb](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
+1. Az a **szerepkör-hozzárendelés hozzáadása** lapon jelölje be **tesztkörnyezet létrehozója** a **szerepkör**, válassza ki a felhasználót, adja hozzá a labor létrehozó szerepkörhöz, és válassza ki a kívánt **mentése**. 
+
+    ![Tesztkörnyezet létrehozója hozzáadása](../media/tutorial-setup-lab-account/add-lab-creator.png)
+
+## <a name="specify-marketplace-images-available-to-lab-creators"></a>Adja meg a Marketplace-rendszerképek labor létrehozói számára elérhető
 A tesztkörnyezetfiók tulajdonosaként megadhatja azokat a Marketplace-beli rendszerképeket, amelyek használatával a tesztkörnyezet-létrehozók tesztkörnyezeteket hozhatnak létre a tesztkörnyezetfiókban. 
 
 1. Válassza a bal oldali menüből a **Marketplace-beli rendszerképek** elemet. Alapértelmezés szerint a rendszerképek teljes listája jelenik meg (az engedélyezett és a letiltott rendszerképek egyaránt). A fenti legördülő listában a **Csak az engedélyezettek**/**Csak a letiltottak** lehetőségre kattintva szűrheti a listát, hogy csak az engedélyezett/letiltott rendszerképek jelenjenek meg. 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: c62be5041792690f023361da6254157aed1beeb2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: e0455ef99016fe1029f17256a6dbf5d9bbd8aa4d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749052"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890569"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Az Azure SQL Database vásárlási modellek
 
@@ -56,10 +56,13 @@ A Virtuálismag-alapú vásárlási modell lehetővé teszi, hogy egymástól f�
 
 > [!IMPORTANT]
 > Számítási, IOs-, adat, és a naplók tárolásához díját adatbázis vagy a rugalmas készletet. Biztonsági másolatok tárolási számlázása az egyes adatbázisokhoz. További információ a felügyelt példány díjak kapcsolatban, lásd: [felügyelt példányai](sql-database-managed-instance.md).
-> **Régió korlátozások:** A támogatott régiók aktuális listájáért lásd: [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Ha szeretne egy felügyelt példány létrehozása jelenleg nem támogatott a régióban, akkor [küldési támogatási kérést az Azure Portalon keresztül](#obtaining-a-larger-quota-for-sql-managed-instance).
+> **Régió korlátozások:** A támogatott régiók aktuális listájáért lásd: [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Ha szeretne egy felügyelt példány létrehozása jelenleg nem támogatott a régióban, akkor [küldési támogatási kérést az Azure Portalon keresztül](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
 .
 
-Ha az adatbázis vagy a rugalmas készlet dtu-k több mint 300 átalakítása virtuális mag fogyaszt csökkentheti költségeit. A választott API-val vagy az Azure Portallal, leállás nélkül konvertálhatja. Azonban átalakítás, nem szükséges. Ha a DTU-vásárlási modell felel meg a teljesítmény- és üzleti követelményeinek, akkor továbbra is használja azt. Ha úgy dönt, hogy a DTU-modellből átalakítása virtuális mag – modell, választhat a számítási méret használatával a következő tapasztalatok: minden egyes 100 DTU standard szintű csomag szükséges általános célú csomagban; legalább 1 virtuális mag minden egyes 125 DTU prémium szintű üzletileg kritikus legalább 1 virtuális mag szükséges.
+Ha az önálló adatbázis vagy a rugalmas készletet használ fel, több mint 300 dtu-k, a Virtuálismag-alapú vásárlási modell konvertálása csökkentheti költségeit. Ha úgy dönt, hogy konvertálni, átválthat a tetszőleges API-val vagy az Azure Portallal, üzemkimaradás nélkül. Átalakítás azonban nem kötelező, és nem történik meg automatikusan. Ha a DTU-alapú vásárlási modell felel meg a teljesítmény- és üzleti követelményeinek, akkor továbbra is használja azt. Ha úgy dönt, a DTU-alapú vásárlási modell átalakítása a Virtuálismag-alapú vásárlási modell, válassza ki a számítási méret a következő szabályok költségcsökkenést eredményezzen használatával: 
+
+- Minden 100 DTU standard szintű csomag szükséges általános célú csomagban legalább 1 virtuális mag
+- Minden egyes 125 DTU prémium szintű csomag szükséges üzletileg kritikus legalább 1 virtuális mag
 
 ## <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 

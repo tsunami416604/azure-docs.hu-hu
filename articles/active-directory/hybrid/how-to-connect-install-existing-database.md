@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f863c4b115616ff709634f3c68955c3be3241707
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2f1b6cec49507c5106434bf42743aadd1b3230aa
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494187"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894972"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect használatával a meglévő ADSync-adatbázis telepítése
 Az Azure AD Connect adatok tárolásához SQL Server-adatbázis szükséges. Az alapértelmezett Azure AD connecttel telepített SQL Server 2012 Express LocalDB használata, vagy használja a saját SQL teljes verziójával. Korábban amikor telepítette az Azure AD Connect, az egy új adatbázist ADSync mindig létrejött. Az Azure AD Connect verziója 1.1.613.0 (vagy után) lehetősége van az Azure AD Connect telepítése meglévő ADSync-adatbázis jelzésével.
@@ -59,6 +59,10 @@ Fontos megjegyzések figyelembe vegye figyelembe a folytatás előtt:
 2.  Miután az MSI-telepítés befejeződött, az Azure AD Connect varázslója elindítja az expressz módú telepítést. A Kilépés ikonra kattintva zárja be a képernyőt.
 ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db1.png)
 3.  Indítson új parancssort vagy PowerShell-munkamenetet. Lépjen a <drive>\program files\Microsoft Azure AD Connect mappához. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
+
+> [!NOTE]
+> A kapcsoló **/useexistingdatabase** csak ha az adatbázis már tartalmaz egy korábbi az Azure AD Connect telepítése adatait. Például ha helyez át egy helyi adatbázisból a teljes SQL Server-adatbázis, vagy ha az Azure AD Connect-kiszolgáló újraépítése, és visszaállította egy SQL az ADSync-adatbázis az Azure AD Connect egy korábbi telepítésből. Ha létrehozott egy üres adatbázist, és használhatja a telepítéshez, kihagyhatja ezt a lépést.
+
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 4.  Megjelenik az Azure AD Connect üdvözlőképernyője. A licencfeltételek és az adatvédelmi nyilatkozat elfogadása után kattintson a **Folytatás** gombra.
 ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db3.png)
@@ -91,7 +95,7 @@ Az Azure AD Connect 1.2.65.0 előtti verziójával létrehozott adatbázis bizto
 
 Az alábbi táblázat segítségével ellenőrizheti a további lépések szükségesek.
 
-|Szolgáltatás|Lépések|
+|Funkció|Lépések|
 |-----|-----|
 |Jelszókivonat-szinkronizálás| a Jelszókivonat-szinkronizálás és a jelszó-visszaírás beállításokat teljes mértékben visszaállnak az Azure AD Connect-verziók 1.2.65.0 kezdve.  Ha visszaállítása az Azure AD Connect egy régebbi verzióját használja, tekintse át a szinkronizálási beállítások a következő szolgáltatások biztosítására, hogy azok megfelelnek a aktív szinkronizálási kiszolgáló.  Lehet, hogy további konfigurációs lépések szükségesek.|
 |Összevonás az AD FS rendszerrel|Az Azure-hitelesítés továbbra is az aktív szinkronizálási kiszolgáló konfigurálása az AD FS-házirend használata.  Ha az Azure AD Connect használatával kezelheti az AD FS farmon, igény szerint módosíthatja a bejelentkezési módszer az aktív szinkronizálást példány váljon a készenléti kiszolgáló előkészítése az AD FS összevonási.   Ha eszközbeállítások az aktív szinkronizálást kiszolgálón engedélyezve vannak, állítsa be ezeket a beállításokat ezen a kiszolgálón a "Eszközbeállítások konfigurálása" feladat futtatásával.|

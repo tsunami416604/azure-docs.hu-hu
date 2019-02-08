@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API és a Ruby használatával.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a944a6ebe51eef25245ea732621950de0062e23b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d2d9f9d333afaf134b7fd188d29ddde1bfc4960f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225635"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878833"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-ruby-in-computer-vision"></a>Gyors útmutató: A REST API-t és a Ruby használatával a Computer Vision (OCR) nyomtatott szöveg kinyerése
 

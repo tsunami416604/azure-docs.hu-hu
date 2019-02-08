@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: b242fca5a5a8490cc51222a6dd8b1ff1bb724417
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5d7b798c66ec6512c8badcccbf36d6f2f0d50e3b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247908"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882947"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Teljesítmény-finomhangolási útmutató a Storm on HDInsight és az Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ Ismerje meg, amelyek érdemes figyelembe venni, egy Azure Storm-topológia telje
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Az Azure Data Lake Storage Gen2 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [a rövid útmutató: Hozzon létre egy tárfiókot fiókra a elemzési](data-lake-storage-quickstart-create-account.md).
-* **Egy Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen2-fiókot. Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
+* **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen2-fiókot. Lásd: [használata Azure Data Lake Storage Gen2 Azure HDInsight-fürtök](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
 * **Egy Storm-fürt futtatása a Data Lake Storage Gen2**. További információkért lásd: [HDInsight alatt futó Stormmal](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
 * **Teljesítmény-finomhangolási útmutató a Data Lake Storage Gen2**.  Az általános teljesítmény fogalmak, lásd: [Data Lake Storage Gen2 teljesítményének hangolása útmutatója](data-lake-storage-performance-tuning-guidance.md).   
 

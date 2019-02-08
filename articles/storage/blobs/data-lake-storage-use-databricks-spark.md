@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Hozzáférés a 2. generációs Azure Data Lake Storage előzetes verziójának adataihoz az Azure Databricks és a Spark használatával | Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Data Lake Storage Gen2 adatok eléréséhez az Azure Databricks Spark használatával |} A Microsoft Docs'
 description: Ez az oktatóanyag bemutatja, hogyan futtathat Spark lekérdezéseket egy Azure Databricks-fürtön az Azure Data Lake Storage Gen2 tárfiókban lévő adatok eléréséhez.
 services: storage
 author: dineshmurthy
@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: 533665ebfa3d35ed5f03326cf5614e37056b7713
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e448ef0de9ef5560c1b4ea0df5c02e8efd8c0ea9
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813602"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891657"
 ---
-# <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Data Lake Storage Gen2 előzetes verzió az adatok elérhetők az Azure Databricks Spark használatával
+# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Data Lake Storage Gen2-adatok elérhetők az Azure Databricks Spark használatával
 
-Az oktatóanyag bemutatja, hogyan csatlakozhat egy Azure storage-fiókot, amely rendelkezik az Azure Data Lake Storage Gen2-ban tárolt adatok az Azure Databricks-fürt (előzetes verzió) engedélyezve van. Ez a kapcsolat lehetővé teszi a natív lekérdezések és futtathatók elemzések a fürtről, az adatok.
+Ez az oktatóanyag bemutatja, hogyan csatlakozhat egy Azure storage-fiók, amely rendelkezik az Azure Data Lake Storage Gen2 engedélyezve van a tárolt adatok az Azure Databricks-fürt. Ez a kapcsolat lehetővé teszi a natív lekérdezések és futtathatók elemzések a fürtről, az adatok.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
@@ -145,7 +145,7 @@ Ebben a szakaszban fog létrehozni egy fájlrendszert és a egy mappát a storag
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
-18. A kódblokk, cserélje le a `storage-account-name`, `application-id`, `authentication-id`, és `tenant-id` lépéseinek végrehajtását összegyűjtött értékek a kódblokk a helyőrző értékeket a [félretett storage-fiók konfigurációs](#config) és [egyszerű szolgáltatás létrehozása](#service-principal) Ez a cikk szakaszainak. Cserélje le a `file-system-name` bármilyen nevet kíván rendelni a fájlrendszer helyőrzőt.
+18. A kódblokk, cserélje le a `storage-account-name`, `application-id`, `authentication-id`, és `tenant-id` helyőrző értékeket az értékeket, ha végrehajtotta a lépéseket, a Set feltöltési tárfiók konfigurálása és összegyűjtöttakódblokk[Egyszerű szolgáltatás létrehozása](#service-principal) Ez a cikk szakaszainak. Cserélje le a `file-system-name` bármilyen nevet kíván rendelni a fájlrendszer helyőrzőt.
 
 19. Nyomja le az **SHIFT + ENTER** kulcsok a kód futtatásához a blokk. 
 

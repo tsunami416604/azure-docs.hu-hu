@@ -4,31 +4,28 @@ titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API és Node.js segítségével.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/29/2018
+ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: 71af575273b7299979679fa149c4960143b2b221
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: eb852f0449a7f59ba0235ffc8ad7c8aff6f3babc
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208346"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892751"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-with-nodejs"></a>Gyors útmutató: A node.js használatával a támogatott nyelvek listáját a Translator Text API használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a támogatott nyelvek listáját egy GET kérelemmel a Node.js és a Translator Text REST API használatával.
-
-Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Node 8.12.x vagy újabb](https://nodejs.org/en/)
-* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
@@ -43,25 +40,6 @@ const uuidv4 = require('uuid/v4');
 > Ha még nem használta ezeket a modulokat, a program futtatása előtt telepítenie kell őket. A csomagok telepítéséhez futtassa a következő parancsot: `npm install request uuidv4`.
 
 Ezekre a modulokra a HTTP-kérelem és az `'X-ClientTraceId'` fejléc egyedi azonosítójának létrehozásához van szükség.
-
-## <a name="set-the-subscription-key"></a>Az előfizetői azonosító megadása
-
-Ez a kód megpróbálja beolvasni a Translator Text előfizetői azonosítóját a `TRANSLATOR_TEXT_KEY` környezeti változóból. Ha még nem ismeri a környezeti változókat, beállíthatja a `subscriptionKey` sztringet, és megjegyzéssé teheti a feltételes utasítást.
-
-Másolja a projektbe a következő kódot:
-
-```javascript
-/* Checks to see if the subscription key is available
-as an environment variable. If you are setting your subscription key as a
-string, then comment these lines out.
-
-If you want to set your subscription key as a string, replace the value for
-the Ocp-Apim-Subscription-Key header as a string. */
-const subscriptionKey = process.env.TRANSLATOR_TEXT_KEY;
-if (!subscriptionKey) {
-  throw new Error('Environment variable for your subscription key is not set.')
-};
-```
 
 ## <a name="configure-the-request"></a>A kérelem konfigurálása
 
@@ -79,17 +57,12 @@ let options = {
       'api-version': '3.0',
     },
     headers: {
-      'Ocp-Apim-Subscription-Key': subscriptionKey,
       'Content-type': 'application/json',
       'X-ClientTraceId': uuidv4().toString()
     },
     json: true,
 };
 ```
-
-### <a name="authentication"></a>Hitelesítés
-
-A kérelmek hitelesítésének legegyszerűbb módja az, hogy átadja az előfizetői azonosítót `Ocp-Apim-Subscription-Key` fejlécként, amit ebben a példában alkalmazunk. Alternatív megoldásként hozzáférési jogkivonatra cserélheti az előfizetői azonosítóját, és átadhatja a hozzáférési jogkivonatot is `Authorization` fejlécként a kérelem ellenőrzése céljából. További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="make-the-request-and-print-the-response"></a>A kérelem indítása és a válasz megjelenítése
 

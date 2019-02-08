@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/16/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 3b425af972b0983db076ab103a33c57f7a127210
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 1e2511ed22cfc6e81844bfdc4672d5fc67ea744f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095753"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893218"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -43,13 +43,12 @@ A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet
 2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
 3. Az **Új tesztkörnyezet** ablakban tegye a következőket: 
     1. Adjon egy **nevet** a tesztkörnyezetnek. 
-    2. Adja meg azoknak a **felhasználóknak a maximális számát**, akik használhatják a tesztkörnyezetet. 
+    2. Adja meg a maximális **virtuális gépek száma** a tesztkörnyezetben. Növelheti vagy decreate a virtuális gépek száma, a tesztkörnyezet létrehozása után, vagy egy meglévő lab-ben. További információkért lásd: [a labor virtuális gépek számának frissítése](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab)
     6. Kattintson a **Mentés** gombra.
 
         ![Osztályterem-tesztkörnyezet létrehozása](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. A **virtuális gép specifikációinak kiválasztására** szolgáló lapon hajtsa végre a következőket:
     1. Válasszon **méretet** a tesztkörnyezetben létrehozott virtuális gépeknek. 
-    2. Válassza ki a **régiót**, amelyben létre szeretné hozni a virtuális gépeket. 
     3. Válassza ki a tesztkörnyezetben a virtuális gépek létrehozásához használni kívánt **virtuálisgép-rendszerképet**. 
     4. Kattintson a **Tovább** gombra.
 
@@ -69,14 +68,12 @@ A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet
 7. Miután a sablon konfigurálása befejeződött, az alábbi oldal jelenik meg: 
 
     ![Sablon konfigurálása oldal a folyamat befejeződése után](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. Az oktatóanyag alábbi lépéseit nem kötelező végrehajtani: 
+8. Az a **konfigurálása sablon** lapon, tegye a következőket: Ezeknek a lépéseknek **választható** -t az oktatóanyaghoz.
     1. Az **Indítás** gomb kiválasztásával indítsa el a virtuálisgép-sablont.
     2. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. 
     3. Telepítsen és konfiguráljon szoftvert a virtuálisgép-sablonon. 
     4. **Állítsa le** a virtuális gépet.  
     5. Adja meg a sablon **leírását**.
-
-        ![A Tovább lépés a Sablon konfigurálása oldalon](../media/tutorial-setup-classroom-lab/configure-template-next.png)
 9. Válassza ki a **Tovább** gombot a sablon oldalán. 
 10. A **Sablon közzététele** oldalon tegye az alábbiakat. 
     1. A sablon azonnali közzétételéhez jelölje be a következő figyelmeztetés jelölőnégyzetét: *Megértettem, hogy közzététel után nem lehet módosítani a sablont. A folyamatot csak egyszer lehet elvégezni, és akár egy órát is igénybe vehet*, majd válassza ki a **Közzététel** gombot.  
@@ -103,7 +100,9 @@ A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet
 
 1. Válassza ki **felhasználók** a bal oldali menüben. Alapértelmezés szerint a **hozzáférés korlátozása** beállítás engedélyezve van. Ha ez a beállítás ki kapcsolva, a felhasználó nem regisztrálja a labor létrehozása akkor is, ha a felhasználó nem rendelkezik a regisztráció hivatkozásra, ha a felhasználó szerepel a felhasználók listáját. Csak a listán szereplő felhasználók regisztrálhatja az a labor létrehozása a regisztrációs hivatkozással küld. Ezzel az eljárással, hozzá felhasználókat a listából. Másik megoldásként kikapcsolhatja a **hozzáférés korlátozása**, lehetővé teszi a felhasználók is rendelkeznek a regisztráció hivatkozásra a labor regisztrálni. 
 2. Válassza ki **felhasználók hozzáadása** az eszköztáron. 
-3. Az a **felhasználók hozzáadása** lap, adja meg a felhasználók e-mail címét, külön sorban, vagy egyetlen sorban, egymástól pontosvesszővel elválasztva. 
+
+    ![Felhasználók gomb hozzáadása](../media/how-to-configure-student-usage/add-users-button.png)
+1. Az a **felhasználók hozzáadása** lap, adja meg a felhasználók e-mail címét, külön sorban, vagy egyetlen sorban, egymástól pontosvesszővel elválasztva. 
 
     ![Adja hozzá a felhasználó e-mail-címei](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. Kattintson a **Mentés** gombra. Láthatja, hogy a felhasználók és azok állapotát (vagy nem regisztrált) a lista e-mail címét. 

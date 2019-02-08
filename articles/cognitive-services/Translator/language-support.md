@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: A Translator Text API által támogatott természetes nyelvek listáját.
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 96f73d7d1324de9e5531aefcc4ee3b9a054cf941
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d0ab683ac59c17cbae1e0947cd2acd785b0365d3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228049"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884977"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
@@ -106,7 +106,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 
 A Transliterate módszer a következő nyelveket támogatja. A "/", a "<> –" azt jelzi, hogy a nyelvi átírt, vagy az a felsorolt parancsfájlok közül választhat. A "-->" azt jelzi, hogy a nyelvi is csak át kell írni egy parancsfájlból származó a másikba.
 
-| Nyelv    | Nyelvkód | Szkript | És-tárolókról | Szkript|
+| Nyelv    | Nyelvkód | Parancsfájl | És-tárolókról | Parancsfájl|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | arab | `ar` | arab `Arab` | <--> | Latin `Latn` |
 |Bengáli  | `bn` | bengáli `Beng` | <--> | Latin `Latn` |
@@ -186,7 +186,7 @@ A szótár, vagy a Keresés és a példák módszerekkel angol a következő nye
 | vietnami      | `vi`          |
 | walesi      | `cy`          |
 
-## <a name="detect"></a>Észlelés
+## <a name="detect"></a>Detect
 
 Az észlelési módszer a következő nyelveket támogatja. Észleli a május azonosítani azokat a nyelveket, amelyek a Microsoft Translator nem fordítható le.
 

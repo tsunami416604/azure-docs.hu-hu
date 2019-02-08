@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API PHP-vel való használatával.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6d945cc651aade3f751c1fa57e7c2397e39d705b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2d15b134502ec7d13f6cbebc99fdfa17bcd61474
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207938"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878731"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>Gyors útmutató: A REST API-t és a PHP használ a Computer Vision (OCR) nyomtatott szöveg kinyerése
 
@@ -36,7 +36,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 
 1. Telepítse a PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) csomagot.
    1. Nyissa meg a parancssori ablakot rendszergazdaként.
-   1. Futtassa az alábbi parancsot:
+   1. Futtassa a következő parancsot:
 
       ```console
       pear install HTTP_Request2
@@ -222,7 +222,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely elem
 Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el a PHP5 `HTTP_Request2` csomagot. A csomag eltávolításához hajtsa végre a következő lépéseket:
 
 1. Nyissa meg a parancssori ablakot rendszergazdaként.
-2. Futtassa az alábbi parancsot:
+2. Futtassa a következő parancsot:
 
    ```console
    pear uninstall HTTP_Request2

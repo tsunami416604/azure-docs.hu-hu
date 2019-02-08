@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 5e4921be3116754f146ed0845513010f2642c97b
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 2d0fd904dd704c704662192e1e92fe403f0971c5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165625"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888798"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-install-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>Storsimple-höz készült Windows Powershellen keresztül a karbantartási módú gyorsjavítások telepítése
 > [!IMPORTANT]
 > Karbantartási módban kell egy tartományvezérlőre, majd a másik vezérlőre először telepítse a gyorsjavítást.
@@ -26,5 +24,5 @@ ms.locfileid: "50165625"
 3. Amikor a rendszer kéri, adja meg a hálózati megosztott mappa, amely tartalmazza a gyorsjavítások fájljainak elérési útját.
 4. Meg kell adnia megerősítést. Típus **Y** folytatásához a gyorsjavítás telepítését.
 5. A gyorsjavítás az egyik vezérlő alkalmazását követően jelentkezzen be a másik vezérlőre. Telepítse a gyorsjavítást, ahogy az előző vezérlőhöz.
-6. A gyorsjavítások is vonatkozik, miután kilépett a karbantartási módból. Lásd: [4. lépés: kilépési karbantartási módba](../articles/storsimple/storsimple-update-device.md#step4) útmutatást.
+6. A gyorsjavítások is vonatkozik, miután kilépett a karbantartási módból. Lásd: [4. lépés: Kilépés a karbantartási módból](../articles/storsimple/storsimple-update-device.md#step4) útmutatást.
 

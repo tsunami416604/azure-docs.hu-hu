@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 998d4f45a2d4956e0e230bcf00636a965c35dd97
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 90d95d7ad1ffb3200a69e0e7980dae2d7ed97470
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755169"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894326"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -132,7 +132,7 @@ Ha az automatikus biztonsági másolatokat használ georedundáns tárolás (ala
 A helyreállítási mechanizmusok végrehajtása után a következő további feladatokat kell végrehajtania a felhasználók és az alkalmazások újbóli üzembe helyezéséhez:
 
 - Irányítsa át az ügyfeleket és az ügyfélalkalmazásokat az új kiszolgálóra és a helyreállított adatbázisra.
-- Győződjön meg, hogy a megfelelő kiszolgálói szintű IP tűzfalszabályok vannak érvényben a felhasználók csatlakozni, vagy használjon [adatbázisszintű tűzfalak](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-the-azure-portal) ahhoz, hogy megfelelő szabályokat.
+- Győződjön meg, hogy a megfelelő kiszolgálói szintű IP tűzfalszabályok vannak érvényben a felhasználók csatlakozni, vagy használjon [adatbázisszintű tűzfalak](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal) ahhoz, hogy megfelelő szabályokat.
 - Biztosítsa a megfelelő bejelentkezési adatok és főadatbázis-szintű jogosultságok rendelkezésre állását (vagy használjon [tartalmazott felhasználókat](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - Konfigurálja a naplózást, ha szükséges.
 - Konfigurálja a riasztásokat, ha szükséges.

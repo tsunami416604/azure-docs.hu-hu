@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 07be781c917a466b67580a99490eca4f6ff29985
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9e5570b937fe97cc9b6ccd9ac804a35ff8e07d6f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239791"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883066"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Teljesítmény-finomhangolási útmutató a Hive a HDInsight és az Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ Az alapértelmezett beállításokat, adja meg a megfelelő teljesítmény szám
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **A Data Lake Storage Gen2 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [a rövid útmutató: Az Azure Data Lake Storage Gen2-storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
-* **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen2-fiókot.
+* **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen2-fiókot. Lásd: [használata Azure Data Lake Storage Gen2 Azure HDInsight-fürtök](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
 * **HDInsight Hive futó**.  A HDInsight Hive-feladatok futtatásával kapcsolatos tudnivalókért lásd: [a HDInsight Hive használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
 * **Teljesítmény-finomhangolási útmutató a Data Lake Storage Gen2**.  Az általános teljesítmény fogalmak, lásd: [Data Lake Storage Gen2 teljesítményének hangolása útmutatója](data-lake-storage-performance-tuning-guidance.md)
 

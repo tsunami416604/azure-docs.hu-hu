@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 3b57bea85b76b69b1826a81aa582f5326db588cb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f1d1ad091f08545225b1f9aa195329df19c4194d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811570"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Oktatóanyag: Antik ismerje meg az Azure Active Directory-integráció
 
@@ -211,7 +211,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 ### <a name="create-blackboard-learn-test-user"></a>Hozzon létre Antik ismerje meg a tesztfelhasználó számára
 
-Ebben a szakaszban egy Britta Simon nevű Antik ismerje meg a felhasználó hoz létre. Antik ismerje meg az alkalmazás támogatja a csak az idő felhasználókiépítés. Győződjön meg arról, hogy konfigurálta a jogcímeket a szakaszban leírt módon  **[konfigurálása az Azure AD egyszeri bejelentkezés](#configuring-azure-ad-single-sign-on)**
+Ebben a szakaszban egy Britta Simon nevű Antik ismerje meg a felhasználó hoz létre. Antik ismerje meg az alkalmazás támogatja a csak az idő felhasználókiépítés. Győződjön meg arról, hogy konfigurálta a jogcímeket a szakaszban leírt módon **konfigurálása az Azure AD egyszeri bejelentkezés**
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

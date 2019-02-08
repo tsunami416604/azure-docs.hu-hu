@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: A Translator Text API nyelvek módszert használja.
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 1f7590b07ccb0af867680ce86bd1c3b042f8f7dd
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2625b4807d98359b3534b8406182cd7bed194746
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694669"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882403"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
@@ -232,7 +232,7 @@ A támogatott nyelvek listája nem változik gyakran. Spórolhat a sávszéless�
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>ETag</td>
+    <td>az eTag</td>
     <td>A támogatott nyelvek a kért csoportok entitáscímkéje aktuális értéke. Ahhoz, hogy hatékonyabb szeretnének hozzáférni, az ügyfél küldhet a `ETag` értékét egy `If-None-Match` fejlécmezőt.
     </td>
   </tr>

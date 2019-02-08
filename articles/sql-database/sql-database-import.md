@@ -12,23 +12,23 @@ ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: c1b6c55475c1600c89c1ac1cae9dee0068b92070
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5b717e26e61a6633ea51817bcb21ebeb15a20969
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478219"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892003"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Gyors útmutató: Az új Azure SQL-adatbázis BACPAC-fájl importálása
 
-SQL Server-adatbázis is áttelepíthet egy Azure SQL database-adatbázishoz egy [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) fájlt (a zip-fájlt a egy `.bacpac` bővítmény, amely rendelkezik az adatbázis metaadatai és adatok). BACPAC-fájl importálása az Azure blob storage-ba (csak standard szintű storage) vagy a helyszíni helyen a helyi tárolóból. Importálás sebesség maximalizálása adjon meg egy magasabb szolgáltatási szintre, és a számítási méret (például P6). Majd vertikális sikeres importálása után. Az importált adatbázis kompatibilitási szintjét a forrás-adatbázis-kompatibilitási szint alapján történik.
+SQL Server-adatbázis is áttelepíthet egy Azure SQL database-adatbázishoz egy [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) fájlt (a zip-fájlt a egy `.bacpac` bővítmény, amely rendelkezik az adatbázis metaadatai és adatok). BACPAC-fájl (csak standard szintű tároló) Azure Blob storage-ból importálhatja, vagy a helyszíni helyen a helyi tárolóból. Importálás sebesség maximalizálása adjon meg egy magasabb szolgáltatási szintre, és a számítási méret (például P6). Majd vertikális sikeres importálása után. Az importált adatbázis kompatibilitási szintjét a forrás-adatbázis-kompatibilitási szint alapján történik.
 
 > [!IMPORTANT]
 > Az adatbázis az importálás után kiválaszthatja, működtetheti az adatbázist, a jelenlegi kompatibilitási szinten (100. szint az AdventureWorks2008R2 adatbázis), vagy egy magasabb szinten. Az adatbázis meghatározott kompatibilitási szinten való működtetésének következményeivel és lehetőségeivel kapcsolatos további információkért lásd: [ADATBÁZIS kompatibilitási szintjének MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). A kompatibilitási szintekkel kapcsolatos további adatbázisszintű beállításokról itt talál információt: [ADATBÁZISHOZ KÖTŐDŐ KONFIGURÁCIÓ MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).
 
 ## <a name="import-from-a-bacpac-file-in-the-azure-portal"></a>Az Azure Portalon BACPAC-fájlból való importálása
 
-Ez a szakasz bemutatja, hogyan, a a [az Azure portal](https://portal.azure.com), egy Azure SQL database létrehozása az Azure blob storage-ban tárolt BACPAC-fájlból. A portál *csak* támogatja a BACPAC-fájl importálása az Azure blob storage-ban.
+Ez a szakasz bemutatja, hogyan, a a [az Azure portal](https://portal.azure.com), egy Azure SQL database létrehozása az Azure Blob storage szolgáltatásban tárolt BACPAC-fájlból. A portál *csak* támogatja a BACPAC-fájl importálása az Azure Blob storage-ból.
 
 > [!NOTE]
 > [Az Azure SQL Database felügyelt példányain](sql-database-managed-instance.md) támogatja az ebben a cikkben az egyéb módszerek használatával BACPAC-fájlból való importálása, de jelenleg nem támogatja az Azure Portalon való migrálás.

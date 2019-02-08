@@ -5,24 +5,27 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/22/2019
+ms.date: 2/7/2019
 ms.author: victorh
-ms.openlocfilehash: 87a80703c473245660a850645ca3fef21bbd80f6
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 31543db8e177701ddfe6beaaa3091d6465b0e9cd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452717"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895480"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Az Azure DNS-altartomány delegálása
 
-Az Azure portal segítségével egy DNS-altartomány delegálása. Például ha Ön a tulajdonosa a contoso.com tartományhoz, akkor is engedélyezheti – delegálja nevű altartomány *mérnöki* , egy másik zónához, amely képes lehet különül el a contoso.com zóna.
+Az Azure portal segítségével egy DNS-altartomány delegálása. Például ha Ön a tulajdonosa a contoso.com tartományhoz, akkor is engedélyezheti – delegálja nevű altartomány *mérnöki* , egy másik zónához, amely a contoso.com zóna a külön-külön felügyelheti.
+
+Igény szerint egy altartományt az delegálhatja [Azure PowerShell-lel](delegate-subdomain-ps.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure DNS altartományában delegálni, először delegálnia kell az Azure DNS nyilvános tartományát. Lásd: [tartomány delegálása az Azure DNS](./dns-delegate-domain-azure-dns.md) vonatkozó utasításokat a névkiszolgálókat a delegálás konfigurálása. Az Azure DNS-zónabeli tartományához delegált, miután az altartomány delegálhat.
 
-Ez a cikk a példákban a contoso.com tartományhoz. Ezek az eljárások használata esetén helyettesítse a saját tartományából.
+> [!NOTE]
+> A contoso.com egész cikkben példaként szolgál. A contoso.com helyére írja be a saját tartománynevét.
 
 ## <a name="create-a-zone-for-your-subdomain"></a>Create a zone for your subdomain
 
@@ -38,10 +41,13 @@ Először hozza létre a zónát a **mérnöki** altartományt.
 
 ## <a name="note-the-name-servers"></a>Vegye figyelembe a Névkiszolgálók
 
-Next, copy the four name servers for your subdomain.
+Next, note the four name servers for the engineering subdomain.
 
-1. Az a **mérnöki** zóna panelen jegyezze fel a négy névkiszolgálói nevet a zóna. Ezektől a névkiszolgálóktól később fogja használni.
-2. Hozzon létre egy **A** teszteléshez használni kívánt rekord. Hozzon létre például egy **www** A jegyezze fel, és állítsa be úgy a egy **10.10.10.10** IP-címet.
+Az a **mérnöki** zóna panelen jegyezze fel a négy névkiszolgálói nevet a zóna. Ezektől a névkiszolgálóktól később fogja használni.
+
+## <a name="create-a-test-record"></a>Test-rekord létrehozása
+
+Hozzon létre egy **A** teszteléshez használni kívánt rekord. Hozzon létre például egy **www** A jegyezze fel, és állítsa be úgy a egy **10.10.10.10** IP-címet.
 
 ## <a name="create-an-ns-record"></a>NS-rekord létrehozása
 
@@ -59,10 +65,8 @@ Ezután hozzon létre egy név névkiszolgáló (NS) rekordot a **mérnöki** z�
 Az nslookup követve tesztelheti a delegálást.
 
 1. Nyisson meg egy PowerShell-ablakot.
-2. Írja be a parancssorba `nslookup www.engineering.<your domain name>.`
+2. Írja be a parancssorba `nslookup www.engineering.contoso.com.`
 3. Ekkor kap egy nem mérvadó válasz, a cím megjelenítése **10.10.10.10**.
-
-
 
 ## <a name="next-steps"></a>További lépések
 

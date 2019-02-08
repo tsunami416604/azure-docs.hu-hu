@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 5d844692b6199d93fa835da1021c9753311e17de
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 55ab80dc0d914810ad430f59acc304620a7054d4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55823402"
+ms.locfileid: "55882981"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -33,7 +33,7 @@ Ez a dokumentum végigvezeti a különböző forgatókönyvekben hol szeretne á
 Ügyfeleink a virtuális gépek áthelyezése a következő okok miatt:-
 
 - Ha korábban már üzembe helyezte egy adott régióban és a egy új régióban váltak, amely a végfelhasználók számára az alkalmazás vagy szolgáltatás közelebb, akkor érdemes **helyezze át a virtuális gépek, az, az új régióban** a késés csökkentése érdekében. Ugyanezzel a módszerrel történik, ha szeretne az előfizetések egyesíteni, vagy nincsenek a cégirányítási / szervezeti szabályok, amelyek kell áthelyezni. 
-- Ha a virtuális gép lett üzembe helyezve az Egypéldányos virtuális gép vagy részeként rendelkezésre állási csoportot, és szeretné magasabb rendelkezésre állást is SLAsm **helyezze át a virtuális gépek rendelkezésre állási**. 
+- Ha a virtuális gép lett üzembe helyezve az Egypéldányos virtuális gép vagy részeként rendelkezésre állási készlet, és szeretné növelni a rendelkezésre állási SLA-k is **helyezhetik át a virtuális gépek rendelkezésre állási zónában**. 
 
 ## <a name="how-to-move-azure-vms"></a>Azure virtuális gépek áthelyezése
 Virtuális gépek áthelyezése a következő lépésekből áll:

@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 465fe66eadddbdd0cb428dc868d70a1ed8f5e47f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2b032405a2fb3b8b608228d8a739bf91dcf439ef
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476954"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895941"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>A vendég operációs rendszer mérőszámok küldése az Azure Monitor metrika áruház egy Windows virtuálisgép-méretezési csoportot az Azure Resource Manager-sablon használatával
 
@@ -25,7 +25,7 @@ Ha most ismerkedik a Resource Manager-sablonokat, további információ [sablon-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az előfizetés regisztrálva kell lenniük [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal). 
+- Az előfizetés regisztrálva kell lenniük [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
 - Rendelkeznie kell [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) telepítve, vagy használhat [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
 
@@ -243,7 +243,7 @@ Azure PowerShell használatával a Resource Manager-sablon üzembe helyezéséhe
    ```PowerShell
    Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>" 
    ```
-1. Hozzon létre egy új erőforráscsoportot a virtuális gép üzembe helyezéséhez. Futtassa az alábbi parancsot: 
+1. Hozzon létre egy új erőforráscsoportot a virtuális gép üzembe helyezéséhez. Futtassa a következő parancsot: 
 
    ```PowerShell
     New-AzureRmResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 

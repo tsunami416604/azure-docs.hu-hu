@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 01/24/2019
-ms.openlocfilehash: c8b97ed5a1e1131e073783300a233ef72ef34110
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 57de2d9c63a4185997ac86056b9e3189ad66e478
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818651"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893132"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: A kinyerési, átalakítási és az adatok betöltése az Azure Databricks használatával
 
@@ -153,7 +153,7 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    ```
 
-6. A kódblokk, cserélje le a `application-id`, `authentication-id`, és `tenant-id` lépéseinek végrehajtását összegyűjtött értékek a kódblokk a helyőrző értékeket a [félretett tárfiók konfigurálása](#config). Cserélje le a `storage-account-name` helyőrző értéket cserélje a tárfiókja nevére.
+6. A kódblokk, cserélje le a `application-id`, `authentication-id`, és `tenant-id` lépéseit a Set feltöltési storage-fiók konfigurációjának befejezésekor gyűjtött értékek a kódblokk a helyőrző értékeket. Cserélje le a `storage-account-name` helyőrző értéket cserélje a tárfiókja nevére.
 
 7. Nyomja le az **SHIFT + ENTER** kulcsok a kód futtatásához a blokk.
 

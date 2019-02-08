@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: d67085d2e90e318a8f134103f0798554b8967d6d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 2b26261fdbae07bf3eea793efe6ff0755ca3f577
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814418"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895992"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
@@ -572,6 +572,20 @@ telemetry.trackTrace({
     properties: properties
 });
 ```
+
+*/ Böngésző ügyféloldali JavaScript*
+
+```javascript
+trackTrace(message: string, properties?: {[string]:string}, severityLevel?: AI.SeverityLevel)
+```
+
+Jelentkezzen be- vagy metódus például egy diagnosztikai esemény.
+
+ Paraméter | Leírás
+---|---
+`message` | Diagnosztikai adatok. Sokkal hosszabb, mint egy név lehet.
+`properties` | Térkép karakterlánc, karakterlánc: További adatok használt [kivételek szűrése](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties) a portálon. Az alapértelmezett érték üres.
+`severityLevel` | Támogatott értékek: [SeverityLevel.ts](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/JavaScript/JavaScriptSDK.Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 Az üzenet tartalmát kereshet, de (ellentétben a tulajdonságértékek), nem lehet szűrni.
 
@@ -1175,4 +1189,4 @@ Mennyi ideig meghatározásához adatért, lásd: [adatok megőrzésére és az 
 ## <a name="next"></a>Következő lépések
 
 * [Keresési események és naplók](../../azure-monitor/app/diagnostic-search.md)
-* [hibaelhárítással](../../azure-monitor/app/troubleshoot-faq.md)
+* [Hibaelhárítás](../../azure-monitor/app/troubleshoot-faq.md)

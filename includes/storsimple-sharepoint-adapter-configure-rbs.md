@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 3888242f0379cc97bbe511e49a31a0f7eb8c5372
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165192"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889383"
 ---
-<!--author=SharS last changed: 1/14/2016 -->
-
 > [!NOTE]
 > A StorSimple Adapter for SharePoint RBS konfigurációs beállításainak módosításakor, meg kell bejelentkeznie, amely a Tartománygazdák csoporthoz tartozó felhasználói fiókkal. Emellett a konfigurációs lapon kell elérnie egy központi adminisztrációs ugyanazon a gazdagépen futó böngészőben.
 > 
@@ -60,7 +58,7 @@ ms.locfileid: "50165192"
 6. (Nem kötelező) Használhatja a Microsoft RBS `Migrate()` SharePoint meglévő BLOB-tartalmak migrálása a StorSimple-eszközt a mellékelt PowerShell-parancsmagot. További információkért lásd: [tartalmainak Migrálása, vagy onnan máshová a SharePoint 2013-ban RBS] [ 6] vagy [tartalmainak Migrálása, vagy onnan máshová RBS (a SharePoint Foundation 2010)] [7].
 7. (Nem kötelező) A teszt telepítésekre ellenőrizheti, hogy a Blobok át lettek helyezve kívül a tartalom-adatbázist a következő: 
    
-   1. Indítsa el az SQL Management Studiót.
+   1. Start SQL Management Studio.
    2. A következőképpen futtassa a ListBlobsInDB_2010.sql vagy ListBlobsInDB_2013.sql lekérdezést.
       
       ```
@@ -115,7 +113,7 @@ ms.locfileid: "50165192"
    > [!WARNING]
    > Ha nem engedélyezte a RBS, a tartalom-adatbázis áthelyezése a StorSimple-eszköz nem javasoljuk. Ez az egy nem tesztelt konfigurációt.
    
-9. Nyissa meg a következő lépés: [szemétgyűjtés konfigurálása](#configure-garbage-collection).
+9. Nyissa meg a következő lépés: [Konfigurálja a szemétgyűjtés](#configure-garbage-collection).
 
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eaf6890223526b213ac4ec1180288b95fe6eaa29
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c32b24007a041b9eb2cc1a5418c221239f3267b6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149862"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893868"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Az SaaS-alkalmazásokhoz az Azure Active Directory-attribútumleképezések testreszabása Felhasználókiépítés
 A Microsoft Azure AD külső SaaS-alkalmazások például a Salesforce, a Google Apps és a másokkal való támogatást nyújt. Ha felhasználókiépítése egy külső SaaS-alkalmazás engedélyezve van, az Azure Portalon szabályozza az attribútumértékek attribútum-leképezések formájában.
@@ -102,7 +102,7 @@ Alkalmazások és rendszerek, amelyek támogatják az attribútumlista testre sz
 * Támogató alkalmazások [SCIM 2.0](https://tools.ietf.org/html/rfc7643), ahol az attribútumok meghatározott a [core séma](https://tools.ietf.org/html/rfc7643) hozzá kell adni
 
 >[!NOTE]
->Támogatott attribútumok listáját szerkesztési csak rendszergazdák számára, akik testreszabták a saját alkalmazások és rendszerek sémája és első kézből tudomásuk egyéni attribútumaik definiálva hogyan ajánlott. Egyes esetekben ehhez az API-k és fejlesztők egy alkalmazás vagy rendszer által biztosított eszközök ismeretét. 
+>Támogatott attribútumok listáját szerkesztési csak rendszergazdák számára, akik testreszabták a saját alkalmazások és rendszerek sémája és első kézből tudomásuk egyéni attribútumaik definiálva hogyan ajánlott. Ez néha az egy alkalmazás vagy rendszer által biztosított API-k és a fejlesztői eszközök ismeretét igényli. 
 
 ![Szerkesztő](./media/customize-application-attributes/25.png) 
 

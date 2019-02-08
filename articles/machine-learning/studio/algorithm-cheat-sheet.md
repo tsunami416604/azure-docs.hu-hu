@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: f445f13d3c2d63e8942864458064658d237aa763
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 83a8a7f927e78f3524128338d874334ebf0b3df1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245947"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884001"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Gépi tanulási algoritmus-Adatlap az Azure Machine Learning Studióban
 
@@ -67,8 +67,6 @@ Töltse le, és a Machine Learning Studio algoritmus Adatlap lap nyomtatása tab
 * A Machine Learning Studióban elérhető összes gépi tanulási algoritmusok, kategória szerint, lásd: [modell inicializálása] [ initialize-model] a Machine Learning Studio algoritmus-és modul segítségével.
 
 * Betűrend szerinti rendezés listájáért algoritmusok és a Machine Learning Studióban modulok, lásd: [betűrend szerinti lista Machine Learning Studio-modulok] [ a-z-list] a Machine Learning Studio algoritmus- és modul segítségével.
-
-* Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](studio-overview-diagram.md) című cikket.
 
 
 

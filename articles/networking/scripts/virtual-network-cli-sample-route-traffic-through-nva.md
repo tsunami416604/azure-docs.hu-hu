@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: jdial
-ms.openlocfilehash: 110e8c6a57cd2cdfedec808e073f04b70a55362d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f077080793ef595019667028188a2a98dcbd2c0c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465573"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895703"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>Forgalom irányítása hálózati virtuális készüléken keresztül
 
@@ -50,18 +50,18 @@ Ez a szkript az alábbi parancsokkal létrehoz egy erőforráscsoportot, egy vir
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az group create](/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az network vnet create](/cli/azure/network/vnet) | Létrehoz egy Azure-beli virtuális hálózatot és előtérbeli alhálózatot. |
-| [az network subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | Háttérbeli és DMZ-alhálózatokat hoz létre. |
-| [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) | Létrehoz egy nyilvános IP-címet a virtuális gép elérését az internetről. |
+| [az network subnet create](/cli/azure/network/vnet/subnet) | Háttérbeli és DMZ-alhálózatokat hoz létre. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Létrehoz egy nyilvános IP-címet a virtuális gép elérését az internetről. |
 | [az network nic create](/cli/azure/network/nic) | Virtuális hálózati adatpert hoz létre, és engedélyezi hozzá az IP-továbbítást. |
-| [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) | Egy hálózati biztonsági csoportot (NSG) hoz létre. |
-| [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | NSG-szabályokat hoz létre, amelyek engedélyezik a virtuális gép bejövő HTTP- és HTTPS-portjait. |
-| [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update)| Az alhálózatokhoz rendeli az NSG-ket és az útválasztási táblázatokat. |
+| [az network nsg create](/cli/azure/network/nsg) | Egy hálózati biztonsági csoportot (NSG) hoz létre. |
+| [az network nsg rule create](/cli/azure/network/nsg/rule) | NSG-szabályokat hoz létre, amelyek engedélyezik a virtuális gép bejövő HTTP- és HTTPS-portjait. |
+| [az network vnet subnet update](/cli/azure/network/vnet/subnet)| Az alhálózatokhoz rendeli az NSG-ket és az útválasztási táblázatokat. |
 | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| Útválasztási táblázatot hoz létre minden útvonalhoz. |
 | [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Alhálózatok és az interneten keresztül a virtuális gép közötti forgalom irányítására útvonalakat hoz létre. |
-| [az vm create](/cli/azure/vm#az_vm_create) | Létrehoz egy virtuális gépet, és csatolja hozzá a NIC-t. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai hitelesítő adatokat. |
-| [az group delete](/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot és a benne található összes erőforrást. |
+| [az vm create](/cli/azure/vm) | Létrehoz egy virtuális gépet, és csatolja hozzá a NIC-t. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai hitelesítő adatokat. |
+| [az group delete](/cli/azure/group) | Töröl egy erőforráscsoportot és a benne található összes erőforrást. |
 
 ## <a name="next-steps"></a>További lépések
 

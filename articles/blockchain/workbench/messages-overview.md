@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 48e7de2798d9c34942df281febcc1d4ec443010d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fd723304e2219c457e982cbe54529d00afe526f4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662227"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55896009"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Az Azure Blockchain Workbench integrációs üzenetkezelés
 
@@ -408,7 +408,7 @@ Az egyes blokkok kapcsolatos információt tartalmazza. A *BlockMessage* tartalm
 | TransactionHash    | A tranzakció a Főkönyv a kivonata |
 | forrás:               | A tranzakció forrás a Főkönyv az egyedi azonosítója |
 | erre:                 | A tranzakció célgépre a Főkönyv egyedi azonosítója |
-| provisioningStatus | Azonosítja a tranzakció a kiépítési folyamat az aktuális állapotát. Lehetséges értékek: </br>0 – a tranzakció az adatbázis az API által létrehozva</br>1 – a tranzakció el lett küldve a Főkönyv</br>2 – a tranzakció főkönyvi sikeresen véglegesítve lett</br>3-as vagy 4 – a tranzakció nem sikerült megerősíteni a Főkönyv</br>5 – a tranzakció sikeresen véglegesítve, főkönyvi |
+| provisioningStatus | Azonosítja a tranzakció a kiépítési folyamat az aktuális állapotát. Lehetséges értékek a következők: </br>0 – a tranzakció az adatbázis az API által létrehozva</br>1 – a tranzakció el lett küldve a Főkönyv</br>2 – a tranzakció főkönyvi sikeresen véglegesítve lett</br>3-as vagy 4 – a tranzakció nem sikerült megerősíteni a Főkönyv</br>5 – a tranzakció sikeresen véglegesítve, főkönyvi |
 
 Példa egy *BlockMessage* a Blockchain Workbenchet:
 
@@ -568,7 +568,7 @@ Ha például a függvény nevét, a bemeneti paramétereket és a hívónak a f�
 | contractLedgerIdentifier    | A szerződést a Főkönyv egyedi azonosítója |
 | Függvénynév                | A függvény neve |
 | paraméterek                  | [Informace](#parameter-information) |
-| Tranzakció                 | [Tranzakció információi](#eventmessage-transaction-information) |
+| Tranzakció                 | Tranzakció információi |
 | inTransactionSequenceNumber | A sorszám a tranzakció a blokk |
 | connectionId                | A kapcsolat egyedi azonosítója |
 | messageSchemaVersion        | Üzenetkezelési sémaverzió |

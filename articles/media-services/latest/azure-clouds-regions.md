@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/07/2019
 ms.author: juliako
-ms.openlocfilehash: d176152429ecac1ed4e570533f1bc0426cc7655f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: cadf4c564ab8600094bc545ae7270eb9c0642e1e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767452"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890960"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Magánfelhők és régiók, mely az Azure Media Services v3 létezik
 
@@ -24,7 +24,7 @@ Az Azure Media Services v3-as globális Azure-ban, Azure Government, Azure Germa
 
 ## <a name="feature-availability-in-azure-clouds"></a>A szolgáltatás rendelkezésre állása az Azure-felhők
 
-| Szolgáltatás|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| Funkció|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
@@ -40,7 +40,7 @@ Az Azure Media Services v3-as globális Azure-ban, Azure Government, Azure Germa
 * [Azure-régiócsoportok](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure-helyek](https://azure.microsoft.com/global-infrastructure/locations/)
 
-## <a name="region-code-name"></a>Régió neve 
+### <a name="region-code-name"></a>Régió neve 
 
 Amikor meg kell adnia a **hely** paramétert meg kell adnia a régió neve, a **hely** érték. A régió, amely a fiók, és hogy a hívás kell átirányítani a kód nevének futtassa a következő sort [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
@@ -62,6 +62,14 @@ Ha például az Azure-régiót (alább látható) 2. nyugati RÉGIÓJA, az haszn
       "subscriptionId": null
     }
 ```
+
+## <a name="endpoints"></a>Végpontok  
+
+| Végpont|Globális Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| --- | --- | --- | --- | --- |
+| Azure Resource Manager |  `https://management.azure.com/` | `https://management.usgovcloudapi.net/` | `https://management.cloudapi.de/` | `https://management.chinacloudapi.cn/` |
+| Authentication | `https://login.microsoftonline.com/` | `https://login.microsoftonline.us/` | `https://login.microsoftonline.de/` | `https://login.chinacloudapi.cn/` |
+| Token célrendszere | `https://management.core.windows.net/` | `https://management.core.usgovcloudapi.net/` | `https://management.core.cloudapi.de/`| `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="next-steps"></a>További lépések
 

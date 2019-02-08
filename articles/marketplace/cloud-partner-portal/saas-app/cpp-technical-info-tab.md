@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7a49e69b2e27a38b1a89fedbd6bbd70066b37dc2
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f0f6bbf5f235d6ae3e86114e583d55c502296470
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451221"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895397"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS-alkalmazás technikai információ lapon
 
@@ -42,7 +42,7 @@ Segítségével eldöntheti, hogy milyen típusú SaaS-alkalmazásokat fejleszt,
 A felhasználói élményt hozhat létre, konfigurálnia kell az alábbi adatokra:
 
 - Az SaaS-szolgáltatás webhelyen csatlakozzon a Microsoft SaaS API-kkal. A [SaaS eladása, Azure-ban – API-k segítségével](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis) a cikk azt ismerteti, hogyan hozhat létre a kapcsolatot.
-- Eladása, Cloud Partner portálra szóló Azure-on keresztül engedélyezi a műszaki konfigurációs képernyőn, és adja meg a szükséges információkat. Ez a számlázási modell, és hogyan megvalósított kapcsolatos további információkért lásd: [SaaS – értékesítheti Azure-on keresztül](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions#overview).
+- Eladása, Cloud Partner portálra szóló Azure-on keresztül engedélyezi a műszaki konfigurációs képernyőn, és adja meg a szükséges információkat. Ez a számlázási modell, és hogyan megvalósított kapcsolatos további információkért lásd: [SaaS – értékesítheti Azure-on keresztül](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions).
 
  ![Értékesítsen rajuk keresztül Microsoft űrlap](./media/saas-techinfo-sellthrough-ms.png)
 

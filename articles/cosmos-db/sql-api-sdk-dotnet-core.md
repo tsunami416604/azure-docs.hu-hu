@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 642c59e9349585ea2287f7bf439250dbfef9ba7a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d25fcbce99017ff19adebd61275b395c980a3cf5
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766248"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891691"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -49,6 +49,12 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 * Új hálózatiobjektum-modellt, a legfelső szintű CosmosClient és módszerek elosztja a megfelelő CosmosDatabases, CosmosContainers és CosmosItems osztályokat.
 * Streamek támogatását.
 * Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról.
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2.
+
+* Hozzáadott környezeti változó beállítása "POCOSerializationOnly".
+
+* DocumentDB.Spatial.Sql.dll eltávolítva, és most már szerepel a Microsoft.Azure.Documents.ServiceInterop.dll
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
@@ -227,6 +233,7 @@ Ha ez az SDK kapcsolatos kérdése van, küldése a [StackOverflow](https://stac
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.2.2](#2.2.2) |2019. február 06. |--- |
 | [2.2.1](#2.2.1) |2018. december 24. |--- |
 | [2.2.0](#2.2.0) |2018. december 07. |--- |
 | [2.1.3](#2.1.3) |2018. október 15. |--- |

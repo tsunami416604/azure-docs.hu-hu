@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: A Node.js REST-alapú rövid útmutató végigvezeti egy válasz lekérése a Tudásbázis programozott módon.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: 720d249321d20161b6a1ef19bb522ec6c2fc665e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fd6f6cd9b0078533541c9d846281c48a446f9c4a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216672"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883100"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Válaszok a kérdést a Tudásbázis a node.js használatával
 

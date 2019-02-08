@@ -1,6 +1,6 @@
 ---
-title: Adatmásolás az Azure Data Lake Storage Gen1 Gen2-re (előzetes verzió) az Azure Data Factoryvel
-description: Adatmásolás az Azure Data Lake Storage Gen1 Gen2-re az Azure Data Factory használatával (előzetes verzió)
+title: Adatok másolása az Azure Data Lake Storage Gen1 Gen2-re az Azure Data Factoryvel
+description: Adatmásolás az Azure Data Lake Storage Gen1 Gen2-re az Azure Data Factory használatával
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: jingwang
-ms.openlocfilehash: 40cf8dcf6729d577c4fff694b0380833fccb142d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: da42e0bf86aca571fb26367f18bbf07f90f5531b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679358"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884613"
 ---
-# <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-preview-with-azure-data-factory"></a>Adatmásolás az Azure Data Lake Storage Gen1 Gen2-re (előzetes verzió) az Azure Data Factoryvel
+# <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Adatok másolása az Azure Data Lake Storage Gen1 Gen2-re az Azure Data Factoryvel
 
-Az Azure Data Lake Storage Gen2 előzetes verzió egy olyan dedikált big data-analitika, beépített képességei [Azure Blob storage](../storage/blobs/storage-blobs-introduction.md). Lehetővé teszi az adatok használata mindkét fájl rendszer és a objektum tárolási paradigmákat csatoló.
+Az Azure Data Lake Storage Gen2 egy olyan dedikált big data-analitika, beépített képességei [Azure Blob storage](../storage/blobs/storage-blobs-introduction.md). Lehetővé teszi az adatok használata mindkét fájl rendszer és a objektum tárolási paradigmákat csatoló.
 
 Ha jelenleg az Azure Data Lake Storage Gen1 használ, másolja az adatokat a Data Lake Storage Gen1 Gen2-re az Azure Data Factory használatával kiértékelheti az Gen2 új funkciót.
 
@@ -32,9 +32,9 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
+* Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * Az Azure Data Lake Storage Gen1 fiók adattal.
-* Az Azure Storage-fiókot a Data Lake Storage Gen2 engedélyezve: Ha nem rendelkezik egy tárfiókot, kattintson a [Itt](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) hozhat létre egyet.
+* Azure Storage-fiókjába Data Lake Storage Gen2 engedélyezve: Ha nem rendelkezik egy tárfiókot, kattintson a [Itt](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) hozhat létre egyet.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
@@ -46,10 +46,10 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
    ![Új adat-előállító lap](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
  
     * **Név**: Adja meg az Azure data factory egy globálisan egyedi nevet. Ha a hibaüzenetet kapja "adat-előállító nevét \"LoadADLSDemo\" nem érhető el" adja meg a data Factory egy másik nevet. Például használhatja a név  _**sajátneve**_**ADFTutorialDataFactory**. Próbálja meg újra létrehozni az adat-előállító. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
-    * **Előfizetés**: válassza ki az Azure-előfizetés, amelyben az adat-előállító létrehozásához. 
-    * **Erőforráscsoport**: a legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válassza ki a **új létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-    * **Verzió**: válasszon **V2**.
-    * **Hely**: válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak más helyeken / régiókban is lehetnek. 
+    * **Előfizetés**: Válassza ki az Azure-előfizetés, amelyben az adat-előállító létrehozásához. 
+    * **Erőforráscsoport**: A legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válassza ki a **új létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+    * **Verzió**: Válassza ki **V2**.
+    * **Hely**: Válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak más helyeken / régiókban is lehetnek. 
 
 3. Kattintson a **Létrehozás** gombra.
 4. Létrehozás befejezése után nyissa meg az adat-előállítóhoz. Megjelenik a **adat-előállító** kezdőlapja a következő képen látható módon: 
@@ -92,7 +92,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 
     ![Adja meg a kimeneti mappa](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
-7. Az a **célként megadott adattárba** lap, kattintson **+ új kapcsolat létrehozása**, majd válassza ki **Azure Data Lake Storage Gen2 (előzetes verzió)**, és válassza ki **Folytatás** :
+7. Az a **célként megadott adattárba** lap, kattintson **+ új kapcsolat létrehozása**, majd válassza ki **Azure Data Lake Storage Gen2**, és válassza ki **Folytatás**:
 
     ![Céladattár lap](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-storage-page.png)
 

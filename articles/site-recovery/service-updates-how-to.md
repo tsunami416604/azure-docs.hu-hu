@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: a497784a665c62d23a017b71acf709120e34c369
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 67fe5da86b4736daa43a85a7a1a077c329732b60
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746965"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890459"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Az Azure Site Recovery szolgáltatási hírek
 Szervezetként kell döntse el, hogyan fog az adatok biztonságban és futására tervezett alkalmazások és számítási feladatok, és nem tervezett leállások esetén. Az Azure Site Recovery azzal segíti a BCDR-stratégia, hogy virtuális gépeken és fizikai kiszolgálókon érhető el, ha egy hely leállása futtatja az alkalmazásokat. A Site Recovery replikálja a virtuális gépeken és fizikai kiszolgálókon futó folyamatokat, hogy azok egy másodlagos helyen elérhetők maradjanak az elsődleges hely elérhetetlenné válása esetén. Amikor az elsődleges hely ismét üzembe áll, helyreállítja rajta a munkafolyamatokat.
@@ -118,6 +118,7 @@ Frissítések folytatása előtt tekintse meg [Site Recovery támogatási nyilat
 
 |Update Rollup  |Szolgáltató  |Egyesített telepítő| OVF  |MARS|
 |---------|---------|---------|---------|--------|
+|[34. kumulatív frissítés](https://support.microsoft.com/en-us/help/4490016/update-rollup-34-for-azure-site-recovery) -gyorsjavítást     |   5.1.3950.0  |  9.22.5142.1   |  5.1.3950.0  | 2.0.9155.0
 |[33. kumulatív frissítés](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
 |[32-es kumulatív frissítés](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
 |[A kumulatív frissítések 31.](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |     5.1.3700.0      |   9.20.5051.1      |     5.1.3700.0    |2.0.9144.0

@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: A LUIS egy Azure data store, a kulcs által megadott a régióhoz tartozó, a titkosított adatokat tárolja.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: a382c3b3f9949e95ebc09f9db5072a123c59f970
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 05a2bd5334fe2836a96bd9437121252fe6ef6eff
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223204"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882318"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Az adattárolás és eltávolítása a Cognitive Services Language Understanding (LUIS)
 A LUIS egy Azure data store, a kulcs által megadott a régióhoz tartozó, a titkosított adatokat tárolja. Ezek az adatok 30 napig tárolja. 

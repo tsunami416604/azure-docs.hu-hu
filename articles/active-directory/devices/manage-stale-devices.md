@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: d6d0ee1c9a77006df2239f4e0e0457c0c0aa2c28
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: bb2d1182d473203e045b85e25d7c7a90f45a3ac6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493313"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894377"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>kézikönyv: Elavult eszközök kezelése az Azure ad-ben
 
@@ -122,7 +122,7 @@ Törlés Azure AD-ben:
 
 - **Windows 10-es eszközök** – Tiltsa le vagy törölje a Windows 10-es eszközöket a helyszíni AD-ben, majd engedélyezze az Azure AD Connect számára a megváltozott eszközállapot szinkronizálását az Azure AD-vel.
 
-- **Windows 7/8** – Tiltsa le vagy törölje a Windows 10-es eszközöket az Azure AD-ben. Az Azure AD Connect használatával nem tud letiltani vagy törölni Windows 7/8 rendszerű eszközöket az Azure AD-ben.
+- **Windows 7 vagy 8** – tiltsa le vagy Windows 7 vagy 8 eszközök törlése az Azure AD-ben. Az Azure AD Connect használatával nem tud letiltani vagy törölni Windows 7/8 rendszerű eszközöket az Azure AD-ben.
 
 
 

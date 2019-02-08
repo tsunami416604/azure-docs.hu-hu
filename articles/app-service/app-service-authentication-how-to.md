@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 34902016578d92847bd83a7dede8ef73bb640b3e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: da3c90579dafebf1b5b362c7129e681663a0a7ab
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301577"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891878"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service speciális használata
 
@@ -174,7 +174,7 @@ A kiszolgálói kódból a szolgáltatóhoz tartozó jogkivonatok vannak elhelye
 Az Ügyfélkód (például egy mobilalkalmazás vagy a böngészőben JavaScript), a küldjön egy HTTP `GET` kérelmet `/.auth/me`. A visszaadott JSON-FÁJLBAN szerepel a szolgáltatóhoz tartozó jogkivonatok.
 
 > [!NOTE]
-> Hozzáférési jogkivonatok olyan eléréséhez a felhőszolgáltatók erőforrásainak, így ezek meg adva, csak akkor, ha a egy ügyfélkulcsot a szolgáltató konfigurálhat. Frissítési biztonsági jogkivonat beszerzése megtekintéséhez lásd: [hozzáférési jogkivonatok Frissítésérőt](#refresh-access-tokens).
+> Hozzáférési jogkivonatok olyan eléréséhez a felhőszolgáltatók erőforrásainak, így ezek meg adva, csak akkor, ha a egy ügyfélkulcsot a szolgáltató konfigurálhat. Frissítési biztonsági jogkivonat beszerzése, olvassa el hozzáférési jogkivonatok Frissítésérőt.
 
 ## <a name="refresh-identity-provider-tokens"></a>Identitásból szolgáltató frissítése
 
