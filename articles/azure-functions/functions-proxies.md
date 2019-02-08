@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 4bfe4f9f97587b6791e73c2f04055b2dcf5d0f0d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: da46d33e05a6f76687d3b8982855d477cbabfe86
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766214"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895618"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Az Azure Functions-proxyk használata
 
@@ -94,7 +94,7 @@ Válasz paraméterek módosítása a válasz az ügyfélhez részeként is haszn
 
 ### <a name="use-appsettings"></a>Referencia-Alkalmazásbeállítások
 
-Is hivatkozhat [a függvényalkalmazás definiált Alkalmazásbeállítások](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop) téve a beállítás nevét százalékjelek (%).
+Is hivatkozhat [a függvényalkalmazás definiált Alkalmazásbeállítások](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) téve a beállítás nevét százalékjelek (%).
 
 Ha például egy háttér-URL-címe *https://%ORDER_PROCESSING_HOST%/api/orders* "% ORDER_PROCESSING_HOST %" ORDER_PROCESSING_HOST beállítás értéke lenne.
 

@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Érzelemfelismerés az arcok a képen – Emotion API,
 description: Információk és kódminták segítségével ismerkedhet meg az Emotion API Pythonnal való használatának első lépéseivel.
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 02/05/2018
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: bdc42233d027134ca42e52398eeefd83ae45669f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: cb22e627c8da6a5a869458980b3b98ce7f287465
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211253"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869976"
 ---
 # <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Gyors útmutató: Érzelemfelismerés az arcok a képen az alkalmazás létrehozása.
 

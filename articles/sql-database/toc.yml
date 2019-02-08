@@ -191,6 +191,8 @@ items:
       href: sql-database-automated-backups.md
     - name: Biztonsági mentés hosszú távú megőrzése
       href: sql-database-long-term-retention.md
+    - name: Tervezett karbantartási események
+      href: sql-database-planned-maintenance.md
     - name: Feladatátvételi csoportok és georeplikáció
       items:
       - name: Aktív georeplikáció
@@ -295,8 +297,6 @@ items:
       href: sql-database-elastic-query-overview.md
     - name: Rugalmas tranzakciók
       href: sql-database-elastic-transactions-overview.md
-  - name: SQL-funkciók összehasonlítása
-    href: sql-database-features.md
   - name: Monitorozás és finomhangolás
     items:
     - name: A monitorozás és finomhangolás áttekintése
@@ -321,24 +321,28 @@ items:
         href: sql-database-performance.md
       - name: A Database Advisor teljesítménnyel kapcsolatos javaslatai
         href: sql-database-advisor.md
-  - name: Adatok betöltése és áthelyezése
-    items:
-    - name: SQL-adatszinkronizálás
-      href: sql-database-sync-data.md
-    - name: Tranzakciós replikáció
-      href: sql-database-managed-instance-transactional-replication.md
   - name: Adatbázisfunkciók
     items:
-    - name: Adatbázisfunkciók
-      href: sql-database-develop-overview.md
+    - name: SQL-funkciók összehasonlítása
+      href: sql-database-features.md
     - name: Többmodelles képességek
       href: sql-database-multi-model-features.md
     - name: Memóriabeli
       href: sql-database-in-memory.md
+    - name: Tranzakciós replikáció
+      href: sql-database-managed-instance-transactional-replication.md
+    - name: SQL-adatszinkronizálás
+      href: sql-database-sync-data.md
     - name: Historikus táblák
       href: sql-database-temporal-tables.md
     - name: Feladat automatizálása
       href: sql-database-job-automation-overview.md
+    - name: Gépi tanulás
+      items:
+      - name: Gépi tanulás – áttekintés
+        href: sql-database-machine-learning-services-overview.md
+      - name: Fő eltérések
+        href: sql-database-machine-learning-services-differences.md
 - name: Útmutatók
   items:
   - name: Áttekintés
@@ -523,8 +527,8 @@ items:
       href: sql-database-manage-automation.md
   - name: Alkalmazásfejlesztés
     items:
-    - name: Kapcsolatok
-      href: sql-database-libraries.md
+    - name: Áttekintés
+      href: sql-database-develop-overview.md
     - name: JSON-adatok használata
       href: sql-database-json-features.md
     - name: Spark-összekötő használata
@@ -712,9 +716,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Rugalmas feladat eltávolítása (elavult)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 9a04e463a7324b1021594a8fbefc5988ad8471f2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1b32688e6e9ed6b826dd9191c8d58e85b1b2b128
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756733"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813676"
