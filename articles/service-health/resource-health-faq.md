@@ -1,25 +1,18 @@
 ---
 title: Az Azure Resource Health – gyakori kérdések |} A Microsoft Docs
 description: Az Azure Resource Health áttekintése
-services: Resource health
-documentationcenter: dev-center-name
-author: BernardoAMunoz
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
+author: stephbaron
+ms.author: stbaron
+ms.topic: conceptual
 ms.service: service-health
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.date: 01/29/2019
 ms.workload: Supportability
-ms.date: 03/27/2018
-ms.author: BernardoAMunoz
-ms.openlocfilehash: 1e22c62c291909bb4079ebaf389cfbd15ae9d8d5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: c0de42935c1e46fd51e82a58083f85f6cee83ce3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055084"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884538"
 ---
 # <a name="azure-resource-health-faq"></a>Az Azure Resource Health – gyakori kérdések
 Ismerje meg az Azure Resource Health szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat.
@@ -40,7 +33,7 @@ A Resource health alapján különböző ellenőrzéseket hajtja végre a [erőf
 Nincsenek három különböző állapot-állapotok:
 - Elérhető: Nincs olyan ismert probléma az Azure platformon, amely ezt az erőforrást érintő sikerült
 - Nem érhető el: A Resource health észlelt problémákat, amelyek negatív hatással vannak az erőforráshoz
-- Ismeretlen: A Resource health is nem meghatározni az egy erőforrást, mert leállt az információk fogadására. 
+- Ismeretlen: A Resource health nem is meghatározni az erőforrás állapotát, mert leállt az információk fogadására. 
 
 ## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Mit jelent az ismeretlen állapot? Nem megfelelő erőforrással rendelkező valamit?
 Ha a Resource Health nem fogadja az adott erőforrásra vonatkozó adatokat az állapot ismeretlen értéke. Bár ez az állapot nem egy végleges arra utalhat, hogy az erőforrás azokban az esetekben, ahol olyan problémákat tapasztal, állapotát jelezheti probléma van az Azure.

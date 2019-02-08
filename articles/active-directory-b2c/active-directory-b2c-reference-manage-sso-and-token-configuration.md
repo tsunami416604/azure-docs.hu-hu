@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2ef37e9661139b0b1d24ddc005df7bf338397803
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163806"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856359"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés és egyéni szabályzatok használatával az Azure Active Directory B2C jogkivonat testreszabása kezelése
 
@@ -52,7 +52,18 @@ A következő értékeket az előző példában vannak beállítva:
 - **Frissítési jogkivonat élettartama** – a frissítési jogkivonat élettartama érték van beállítva a **refresh_token_lifetime_secs** metaadatelem. Az alapértelmezett érték: 1209600 másodperc (14 nap).
 - **Frissítési jogkivonat csúszóablak-élettartama** – Ha egy csúszóablak-élettartama beállítása a frissítési jogkivonatot, az értékét állítsa be szeretné **rolling_refresh_token_lifetime_secs** metaadatelem. Az alapértelmezett érték: 7776000 (90 nap). Ha nem szeretné kényszeríteni a csúszóablak-élettartama, cserélje le a cikk a `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
 - **Kibocsátói (iss) jogcím** – a kibocsátói (iss) jogcím van beállítva a **IssuanceClaimPattern** metaadatelem. Az érvényes értékek a következők `AuthorityAndTenantGuid` és `AuthorityWithTfp`.
-- **Beállítás a házirend Azonosítóját jelölő jogcím** -érték a lehetőségeket vannak `TFP` (megbízhatósági keretrendszer házirend) és `ACR` (hitelesítési környezeti hivatkozás). `TFP` az ajánlott érték. Állítsa be **AuthenticationContextReferenceClaimPattern** értékét `None`. Az a **OutputClaims** elemet, adja hozzá ezt az elemet:
+- **Beállítás a házirend Azonosítóját jelölő jogcím** -érték a lehetőségeket vannak `TFP` (megbízhatósági keretrendszer házirend) és `ACR` (hitelesítési környezeti hivatkozás). `TFP` az ajánlott érték. Állítsa be **AuthenticationContextReferenceClaimPattern** értékét `None`. 
+
+    Az a **ClaimsSchema** elemben adja hozzá ezt az elemet: 
+    
+    ```XML
+    <ClaimType Id="trustFrameworkPolicy">
+      <DisplayName>Trust framework policy name</DisplayName>
+      <DataType>string</DataType>
+    </ClaimType>
+    ```
+    
+    Az a **OutputClaims** elemben adja hozzá ezt az elemet:
     
     ```XML
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API és Ruby segítségével.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 10f74e04349984885f9c69ac17ac1aa9b41e710f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e3f3ce3e509b690de57cfabfafa29ef1f7487877
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461185"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856617"
 ---
 # <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-ruby"></a>Gyors útmutató: A Translator Text REST API (Ruby) szöveg átírás
 

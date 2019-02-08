@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogy az attribútumok a papír entitás az Academic Knowledge API használható.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: d36a39f10f9e0129af3b730a65387d7108209004
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 240541dd76221ee19c96b162da02ced90fb0ad90
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168379"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873087"
 ---
 # <a name="paper-entity"></a>A tanulmány entitás
 
@@ -25,26 +25,26 @@ ms.locfileid: "55168379"
 Name (Név)    |Leírás                                        |Typo       | Műveletek
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                                          |Int64      |Egyenlő
-Ti      |A tanulmány címe                                        |Sztring     |Egyenlő,<br/>StartsWith
-L       |Tanulmány nyelvkód elválasztva "\@@@"            |Sztring     |Egyenlő
+Ti      |A tanulmány címe                                        |String     |Egyenlő,<br/>StartsWith
+L       |Tanulmány nyelvkód elválasztva "\@@@"            |String     |Egyenlő
 I       |A tanulmány év                                         |Int32      |Egyenlő,<br/>IsBetween
 D       |A tanulmány dátuma                                         |Dátum       |Egyenlő,<br/>IsBetween
-Másolatot kap      |Idézetet száma                                     |Int32      |nincs  
+Másolat      |Idézetet száma                                     |Int32      |nincs  
 ECC     |Becsült idézetet száma                           |Int32      |nincs
-AA.AuN  |Szerző neve                                        |Sztring     |Egyenlő,<br/>StartsWith
+AA.AuN  |Szerző neve                                        |String     |Egyenlő,<br/>StartsWith
 AA.AuId |Szerző azonosítója                                          |Int64      |Egyenlő
-AA.AfN  |Szerző kapcsolat neve                            |Sztring     |Egyenlő,<br/>StartsWith
+AA.AfN  |Szerző kapcsolat neve                            |String     |Egyenlő,<br/>StartsWith
 AA.AfId |Szerző kapcsolatot azonosítója                              |Int64      |Egyenlő
 AA.S    |Szerző ahhoz, hogy a tanulmány                         |Int32      |Egyenlő
-F.FN    |Tanulmány név mező                                |Sztring     |Egyenlő,<br/>StartsWith
+F.FN    |Tanulmány név mező                                |String     |Egyenlő,<br/>StartsWith
 F.FId   |Tanulmány azonosító mezője                                  |Int64      |Egyenlő
-J.JN    |Napló neve                                       |Sztring     |Egyenlő,<br/>StartsWith
+J.JN    |Napló neve                                       |String     |Egyenlő,<br/>StartsWith
 J.JId   |Napló azonosítója                                         |Int64      |Egyenlő
-C.CN    |Konferencia az adatsorozat neve                             |Sztring     |Egyenlő,<br/>StartsWith
+C.CN    |Konferencia az adatsorozat neve                             |String     |Egyenlő,<br/>StartsWith
 C.CId   |Konferencia sorozat azonosítója                               |Int64      |Egyenlő
 RId     |Hivatkozott tanulmányok azonosítója                              |Int64]    |Egyenlő
 W       |A tanulmány címe és absztrakt szavakat                |String]   |Egyenlő
-E       |Kiterjesztett metaadatok (lásd az alábbi táblázatot)                |Sztring     |nincs  
+E       |Kiterjesztett metaadatok (lásd az alábbi táblázatot)                |String     |nincs  
         
 
 
@@ -66,7 +66,7 @@ I       | Probléma - napló probléma
 FP      | FirstPage - tanulmány első oldalán
 LP      | LastPage - tanulmány utolsó oldalán
 DOI     | Digital Object Identifier
-Másolatot kap      | Idézetet környezetek – hivatkozott tanulmány listája azonosítóhoz tartozó és a megfelelő környezettel a tanulmány (például: [{123: ["a hivatkozott tanulmány 123 lépésközt barna foxes ismert", "a Lusta kutyák egy korábbi misnomer, ahogyan a papír 123"]})
+Másolat      | Idézetet környezetek – hivatkozott tanulmány listája azonosítóhoz tartozó és a megfelelő környezettel a tanulmány (például: [{123: ["a hivatkozott tanulmány 123 lépésközt barna foxes ismert", "a Lusta kutyák egy korábbi misnomer, ahogyan a papír 123"]})
 IA      | Fordított absztrakt
 IA.IndexLength| Az index (absztrakt a word száma) lévő elemek száma
 IA.InvertedIndex| Absztrakt szavak és az eredeti absztrakt megfelelő pozícióját (például: [{"a": [0, 15, 30]}, {"barna": [1]}, {"fox":[2]}])

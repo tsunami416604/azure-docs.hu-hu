@@ -1,22 +1,21 @@
 ---
-title: Az Azure Queue storage bemutatása |} A Microsoft Docs
-description: Az Azure Queue storage bemutatása
+title: Az Azure-üzenetsorok bemutatása |} A Microsoft Docs
+description: Az Azure-üzenetsorok bemutatása
 services: storage
 author: tamram
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 02/06/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: b173934db17b8c3ac5a48e599b75478fb214c240
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2ae0d3993df54e1c9e5a9bf93619e8f9faa8a917
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458397"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873597"
 ---
-# <a name="introduction-to-queues"></a>Az üzenetsorok bemutatása
+# <a name="what-are-azure-queues"></a>Mik az Azure-üzenetsorok?
 
 Az Azure Queue Storage szolgáltatás üzenetek nagy számban történő tárolására szolgál, amelyek HTTP- vagy HTTPS-kapcsolattal, hitelesített hívásokon keresztül a világon bárhonnan elérhetők. Egyetlen üzenetsor akár 64 KB méretű is lehet, és a tárfiók maximális kapacitásán belül több millió üzenetet tartalmazhat.
 

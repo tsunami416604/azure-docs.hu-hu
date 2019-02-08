@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c89a239cd3abbdd59813626f4b64596ee8a1fd7e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 521d9f3e435e972d373f62619904f9fa478e0685
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756801"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858637"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: Tároló rendszerképek létrehozásának automatizálása az Azure container registry alapképet frissítésekor 
 
@@ -79,6 +79,8 @@ Ez az oktatóanyag végigvezeti az alapként szolgáló rendszerkép frissítés
 
 A következő szakaszokban létrehozunk egy feladatot, frissítjük a `NODE_VERSION` értékét az alapként szolgáló rendszerkép Docker-fájljában, majd az ACR Tasks használatával összeállítjuk az alapként szolgáló rendszerképet. Amikor az ACR-feladat leküldi az alapként szolgáló új rendszerképet a regisztrációs adatbázisba, az automatikusan kiváltja az alkalmazás-rendszerkép összeállítását. Ha kívánja, az alkalmazástároló-rendszerkép helyi futtatásával megtekintheti az összeállított rendszerképek eltérő verzió-sztringjeit.
 
+Ebben az oktatóanyagban az ACR-feladat állít össze, és leküldéses értesítések egy-egy docker-fájlban megadott egyetlen tároló rendszerképét. ACR-feladatokat is futtathat [több lépésből álló feladatokat](container-registry-tasks-multi-step.md) meghatározásához lépések végrehajtásával hozhat létre, leküldéses, igény szerint több tároló fájlt egy YAML használatával (jelenleg előzetes verzióban elérhető).
+
 ## <a name="build-the-base-image"></a>Az alapként szolgáló rendszerkép összeállítása
 
 Első lépésként állítsa össze az alapként szolgáló rendszerképet az ACR Tasks *gyors feladat* funkciójával. Amint azt a sorozat [első részében](container-registry-tutorial-quick-task.md) bemutattuk, ez a folyamat nem csupán összeállítja a rendszerképet, hanem siker esetén le is küldi azt a tárolóregisztrációs adatbázisba.
@@ -87,7 +89,7 @@ Első lépésként állítsa össze az alapként szolgáló rendszerképet az AC
 az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Dockerfile-base .
 ```
 
-## <a name="create-a-task"></a>Tevékenység létrehozása
+## <a name="create-a-task"></a>Feladat létrehozása
 
 Ezután hozzon létre egy feladatot az [az acr task create][az-acr-task-create] paranccsal:
 

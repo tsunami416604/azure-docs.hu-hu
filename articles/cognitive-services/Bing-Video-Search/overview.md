@@ -1,29 +1,29 @@
 ---
-title: Mi az a Bing Videókeresési API?
+title: Mi az a Bing Video Search API?
 titlesuffix: Azure Cognitive Services
 description: Útmutató videók keresése a weben, a Bing Videókeresési API használatával.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 86722f1a69d2f12ec1689854999db52f0ff8f158
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a7fbd9eb70c50f3bbd154726bdaa807c2bc41818
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569497"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863958"
 ---
-# <a name="what-is-the-bing-video-search-api"></a>Mi az a Bing Videókeresési API?
+# <a name="what-is-the-bing-video-search-api"></a>Mi az a Bing Video Search API?
 
 A Bing Video Search API megkönnyíti a videó keresését-képességeket adhat a szolgáltatások és alkalmazások. Felhasználói keresési lekérdezések az API-val küldésével lekérése és hasonló releváns és kiváló minőségű videók megjelenítése [Bing Video](https://www.bing.com/video). Az API-val videókat tartalmazó keresési eredmények. A [Bing Web Search API](../bing-web-search/search-the-web.md) webes tartalmat, beleértve a weblapok, videók, hírek és lemezképek más típusú adhat vissza.
 
 ## <a name="bing-video-search-api-features"></a>A Bing Video Search API-funkciók
 
-| Szolgáltatás                                                                                                                                                                                 | Leírás                                                                                                                                                            |
+| Funkció                                                                                                                                                                                 | Leírás                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Keresési kifejezések valós idejű felkínálása](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | A [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) a begépelés során javaslatokat tesz a keresési kifejezésekre, így könnyebbé teszi az alkalmazások használatát. |
 | [Szűrés és a videó korlátozása](concepts/get-videos.md#filtering-videos)                      | A videók szerkesztésével a lekérdezési paraméterek visszaadott szűrése.                                                                                                       |

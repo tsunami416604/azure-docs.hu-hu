@@ -3,18 +3,18 @@ title: A Text Analytics REST API (Microsoft vonatkozó Cognitive Services az Azu
 description: Hogyan hangulat felismerése a Text Analytics REST API használatával a Microsoft Cognitive Services, Azure-ban az bemutató oktatóanyag.
 services: cognitive-services
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: e5ceb6208229baf3e07e4030992d5de85309789c
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 4c5b55a5e11bddd6eac8155c2e49ccbd80d3164e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212494"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856376"
 ---
 # <a name="example-how-to-detect-sentiment-in-text-analytics"></a>Példa: A Text Analytics sentiment észlelése
 
@@ -88,7 +88,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
+## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
 
 Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
 

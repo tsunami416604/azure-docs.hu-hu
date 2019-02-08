@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével megkezdheti a keresési eredmények kér a Bing Custom Search példány C#.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: maheshb
-ms.openlocfilehash: ae50d8ea1556d7956f96b13a6ccbb84c28e8aae9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ec0b1d95f5151d4aef45d4e02926d33ee71c5fbd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149803"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878323"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Gyors útmutató: A Bing Custom Search-végpontot a hívásC# 
 

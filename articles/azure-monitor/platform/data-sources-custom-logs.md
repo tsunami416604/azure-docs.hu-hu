@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: 624091d4b5c1e17a301d9087f56ec5f9b0fecc5c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 628cbcbfb712d2fcaa53bdaee262f88a78dd1527
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198779"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895669"
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Log Analytics egyéni naplók
 Az egyéni naplókat adatforrás a Log Analytics lehetővé teszi az események gyűjtésére a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba. Követően az adatok elemzése az egyes mezők a lekérdezéseiben, vagy az adatokat nyerhet ki az egyes mezők a gyűjtés során.
@@ -29,7 +29,7 @@ A naplófájlok gyűjtendő egyeznie kell a következő feltételeknek.
 
 - A napló kell, vagy minden sorában egy-egy bejegyzésnek kell vagy elején minden bejegyzés a következő formátumok egyikének megfelelő időbélyeg használja.
 
-    ÉÉÉÉ-HH-NN ÓÓ<br>H/ÉÉÉÉ ÓÓ: PP: MP DE/DU<br>Hónap nn, éééé óó<br />ééhhnn óó<br />ddMMyy óó<br />MMM d óó<br />nn/MMM/yyyy:HH:mm:ss zzz<br />éééé-hh-ddTHH:mm:ssK
+    ÉÉÉÉ-HH-NN ÓÓ<br>H/ÉÉÉÉ ÓÓ: PP: MP DE/DU<br>Hónap nn, éééé óó<br />ééhhnn óó<br />ddMMyy óó<br />MMM d óó<br />dd/MMM/yyyy:HH:mm:ss zzz<br />yyyy-MM-ddTHH:mm:ssK
 
 - A naplófájl nem engedélyezheti a körkörös naplózást, vagy naplóváltás, ahol a fájl új bejegyzések felülírja.
 - A naplófájl ASCII vagy UTF-8 kódolást kell használnia.  Eltérő, például az UTF-16 formátumban nem támogatottak.
@@ -40,6 +40,10 @@ A naplófájlok gyűjtendő egyeznie kell a következő feltételeknek.
   
 >[!NOTE]
 > Ha az alkalmazás egy új naplófájlt hoz létre, minden nap, vagy ha egy bizonyos méretet elér, a Linuxhoz készült Log Analytics-ügynök nem deríti fel őket, amíg újra nem indítják. Ez azért, mert az ügynök csak enumerálása, és megkezdődik a figyelés indítása után a megadott naplók mintákat, és ezért meg kell terveznie, körülötte az az ügynök újraindítása automatizálásával.  Ez a korlátozás nem létezik a Windows a Log Analytics-ügynököt.  
+>
+
+>[!NOTE]
+> Legfeljebb 500 egyéni naplókat per Log Analytics-munkaterület is létrehozható. 
 >
 
 ## <a name="defining-a-custom-log"></a>Egyéni napló meghatározása
@@ -67,7 +71,7 @@ Egy időbélyeg elválasztó használata, majd a TimeGenerated tulajdonság, az 
 4. Módosítsa az új rekord azonosításához, és válassza ki a kivonni kívánt a naplófájl rekordjainak legjobb azonosításához használt elválasztó karaktert.
 5. Kattintson a **tovább**.
 
-### <a name="step-3-add-log-collection-paths"></a>3. lépés Naplógyűjtemények elérési útjának felvétele
+### <a name="step-3-add-log-collection-paths"></a>3. lépés. Naplógyűjtemények elérési útjának felvétele
 Az ügynökön, ahol keresse meg az egyéni napló definiálni kell egy vagy több elérési útvonalat.  Vagy megadhat egy adott elérési útja és a naplófájl neve, vagy a név helyettesítő karakter segítségével adható meg egy elérési utat. Ez támogatja az alkalmazásokat, amelyek minden nap, vagy ha egy fájl bizonyos méretet elér, hozzon létre egy új fájlt. Az egyetlen naplófájl több elérési úttal is megadhatja.
 
 Egy alkalmazás előfordulhat, hogy hozzon létre például egy naplófájlt minden nap log20100316.txt hasonlóan a neve tartalmazza a dátuma. Lehet, hogy az ilyen naplók mintát *log\*.txt* amely bármely naplófájl, az alkalmazás a következő lenne érvényes a séma elnevezése.
@@ -89,14 +93,14 @@ Az alábbi táblázat példákat érvényes minták adja meg a különböző nap
 2. Írja be a elérési utat, majd kattintson a **+** gombra.
 3. Ismételje meg a folyamatot minden olyan további elérési utak.
 
-### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. lépés Adjon meg egy nevet és leírást a napló
+### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. lépés. Adjon meg egy nevet és leírást a napló
 Az Ön által megadott név lesz használható a napló típusa fent leírtak szerint.  Mindig megszűnik az egyéni napló, csatornától való _CL.
 
 1. Írja be a napló nevét.  A  **\_CL** utótag automatikusan elérhető.
 2. Adjon hozzá egy nem kötelező **leírás**.
 3. Kattintson a **tovább** az egyéni napló-definíció mentéséhez.
 
-### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>5. lépés Ellenőrizze, hogy az egyéni naplókat gyűjtött
+### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>5. lépés. Ellenőrizze, hogy az egyéni naplókat gyűjtött
 Igénybe vehet egy órát a kezdeti adatok az új egyéni naplót megjelennek a Log Analyticsben.  Elindul az bejegyzések gyűjtése a ponttól, hogy az egyéni napló megadott megadott a naplókból, az elérési úton található.  Azt nem őrzi meg az egyéni napló létrehozása során feltöltött bejegyzések, de a naplófájlokban talál, már meglévő bejegyzéseket gyűjt.
 
 Megkezdéséről Log Analytics gyűjti össze az egyéni napló, a rekordok log lekérdezéssel elérhető lesz.  Mint az egyéni napló megadott nevét használja a **típus** a lekérdezésben.

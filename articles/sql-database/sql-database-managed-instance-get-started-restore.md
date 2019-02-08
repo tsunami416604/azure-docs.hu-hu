@@ -12,16 +12,16 @@ ms.author: srbozovi
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/14/2018
-ms.openlocfilehash: f75ea7bd728b16c91122119c3e14da2a1e123d45
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9459aa9df74efa500109d7c281daad28355bd0d0
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452311"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895730"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Gyors útmutató: Adatbázis visszaállítása felügyelt példányra 
 
-Ez a rövid útmutatóban fogja használni az SQL Server Management Studio (SSMS) (a Wide World Importers – Standard biztonságimásolat-fájl) adatbázis visszaállítása az Azure blob storage-ból egy Azure SQL Database-be [felügyelt példány](sql-database-managed-instance.md). 
+Ez a rövid útmutatóban fogja használni az SQL Server Management Studio (SSMS) (a Wide World Importers – Standard biztonságimásolat-fájl) adatbázis visszaállítása az Azure Blob storage-ból egy Azure SQL Database-be [felügyelt példány](sql-database-managed-instance.md). 
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
@@ -40,11 +40,11 @@ Ez a rövid útmutató:
   - [Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányába való helyszíni](sql-database-managed-instance-configure-p2s.md).
 
 > [!NOTE]
-> További információ a biztonsági mentése és visszaállítása egy SQL Server-adatbázis az Azure blob storage-dzsal és a egy [közös hozzáférésű Jogosultságkód (SAS) kulcs](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), lásd: [URL-címét az SQL Server biztonsági másolat](sql-database-managed-instance-get-started-restore.md).
+> További információ a biztonsági mentése és visszaállítása egy SQL Server-adatbázis az Azure Blob storage és a egy [közös hozzáférésű Jogosultságkód (SAS) kulcs](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), lásd: [URL-címét az SQL Server biztonsági másolat](sql-database-managed-instance-get-started-restore.md).
 
 ## <a name="restore-the-database-from-a-backup-file"></a>Állítsa vissza az adatbázist egy biztonsági mentési fájlból
 
-Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis visszaállítása a felügyelt példányhoz. Az adatbázis biztonsági másolatát egy előre konfigurált Azure blob storage-fiók van tárolva.
+Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis visszaállítása a felügyelt példányhoz. Az adatbázis biztonsági másolatát egy előre konfigurált Azure Blob storage-fiók van tárolva.
 
 1. Nyissa meg az SMSS, és csatlakozhat a felügyelt példányhoz.
 2. A bal oldali menüben kattintson a jobb gombbal a felügyelt példány, és válassza ki **új lekérdezés** egy új lekérdezési ablak megnyitásához.

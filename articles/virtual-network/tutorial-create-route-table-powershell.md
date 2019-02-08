@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 0c2ff94d65e775a12fd76b3115aa8b69ae9a405f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9b4dc2e48093398077071eb2423a80c86eb62c67
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815013"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894938"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Hálózati forgalom továbbítása PowerShell-lel útválasztási táblázat
 
@@ -248,7 +248,7 @@ New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 
 Habár ebben a cikkben útválasztásának teszteléséhez útvonalkövetést használunk, ICMP engedélyezése a Windows tűzfalon, éles környezetekben üzemelő példányok esetében nem ajánlott.
 
-Az Azure-ban a virtuális gép hálózati adapterében, az [IP-továbbítás engedélyezése](#enable-ip-forwarding) szakaszban engedélyezte az IP-továbbítást. A virtuális gépen, az operációs rendszeren, vagy egy a virtuális gépen futó alkalmazáson belül szintén működnie kell a hálózati forgalom továbbításának. Az operációs rendszer, az IP-továbbítást a *myVmNva*.
+Engedélyezett IP-továbbítást a virtuális hálózati adapter IP-továbbítás engedélyezése az Azure-ban. A virtuális gépen, az operációs rendszeren, vagy egy a virtuális gépen futó alkalmazáson belül szintén működnie kell a hálózati forgalom továbbításának. Az operációs rendszer, az IP-továbbítást a *myVmNva*.
 
 A parancsot a parancssorba a *myVmPrivate* virtuális Gépet, a távoli asztal a *myVmNva*:
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dee649c388ee1e9207d1fc0ecb454d03cda304b0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 40a43fd8ea1f47b564d0c0ee2b5e67fd011f2ff9
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730764"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895975"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -182,7 +182,7 @@ Importálja a letöltött fájlt a vCenter Serverre.
     - Válassza ki az Azure-felhő, amelyhez (az Azure globális vagy az Azure Government) áttelepítését tervezi.
     - Fogadja el a licencfeltételeket, és olvassa el a külső szolgáltatóval kapcsolatos információkat.
     - A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel.
-    - Ha a virtuális gép proxykiszolgálón keresztül éri el az internetet, kattintson a **Proxy settings** (Proxybeállítások) gombra, és adja meg a proxykiszolgáló címét és a figyelőportot. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel. [További](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) internet kapcsolat követelményeivel kapcsolatos és a [URL-címek listája](https://docs.microsoft.com/azure/migrate/concepts-collector#connect-to-urls) a gyűjtő fér hozzá.
+    - Ha a virtuális gép proxykiszolgálón keresztül éri el az internetet, kattintson a **Proxy settings** (Proxybeállítások) gombra, és adja meg a proxykiszolgáló címét és a figyelőportot. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel. [További](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) internet kapcsolat követelményeivel kapcsolatos és a [URL-címek listája](https://docs.microsoft.com/azure/migrate/concepts-collector) a gyűjtő fér hozzá.
 
       > [!NOTE]
       > A proxykiszolgáló címét http://ProxyIPAddress vagy http://ProxyFQDN formátumban kell megadni. Csak a HTTP-proxyk használata támogatott. Ha egy lehallgató proxy, az internetkapcsolat kezdetben meghiúsulhat, ha nem importálta a proxy-tanúsítvány [további](https://docs.microsoft.com/azure/migrate/concepts-collector) meg arról, hogyan oldhatja ezt egy megbízható tanúsítványt a gyűjtő virtuális Gépen, a proxy tanúsítvány importálásával.
@@ -270,10 +270,10 @@ A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virt
    **Az adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
    --- | ---
    0%–20% | 1 csillag
-   21%–40% | 2 csillag
-   41%–60% | 3 csillag
-   61%–80% | 4 csillag
-   81%–100% | 5 csillag
+   21%-40% | 2 csillag
+   41%-60% | 3 csillag
+   61%-80% | 4 csillag
+   81%-100% | 5 csillag
 
 Az értékelésekben a következő okok miatt nem lehet elérhető az összes adatpont:
 

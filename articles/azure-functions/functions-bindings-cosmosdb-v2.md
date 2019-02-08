@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 269ea0162f85c7bd632e0528680fc8b0e2885aa9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 8c8110cd714400ea896f5359c26374591a481e53
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818124"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894041"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x
 
@@ -2288,7 +2288,7 @@ Az attribútum konstruktorának paramétereként meg az adatbázis és gyűjtem�
     }
 ```
 
-Egy teljes példa: [kimenet – C#-példa](#output---c-example).
+Egy teljes példa: kimenet – C# példa.
 
 ## <a name="output---configuration"></a>Kimenete – konfiguráció
 

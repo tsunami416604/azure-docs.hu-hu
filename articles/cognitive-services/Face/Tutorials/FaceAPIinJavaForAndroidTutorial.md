@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban létrehozhat egy egyszerű Android-alkalmazást, amely a Face API-t használja és keret arcok a képen.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 11/12/2018
 ms.author: pafarley
-ms.openlocfilehash: 2c28aa58e64253d5a25dbdfc8f1473e0e462af57
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 18e7323f16970b5ab365688b2af896b2c90b9099
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220008"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858705"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: Keret arcok a képet, és Android-alkalmazás létrehozása
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 0ef206cf4407c6392ae5d9a70ba156f5635715e9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 57615ecd4c81359360004b732736bf757c0026c3
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814792"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892065"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Kubernetes-fürt létrehozása az Azure Kubernetes Service és a Terraform segítségével
 Az [Azure Kubernetes Service (AKS)](/azure/aks/) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
@@ -32,7 +32,7 @@ Ebben az oktatóanyagban megtudhatja, hogyan végezheti el az alábbi feladatoka
 
 - **A Terraform konfigurálása**: A cikk utasításait követve [Terraform hozzáférési szabályzatokat az Azure-bA](/azure/virtual-machines/linux/terraform-install-configure)
 
-- **Az Azure szolgáltatás egyszerű**: Szakaszának utasításait a **az egyszerű szolgáltatás létrehozása** szakasz a cikkben [egy Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Jegyezze fel az appId, a displayName, a password és a tenant értékét.
+- **Az Azure szolgáltatás egyszerű**: Szakaszának utasításait a **az egyszerű szolgáltatás létrehozása** szakasz a cikkben [egy Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Jegyezze fel az appId, a displayName, a password és a tenant értékét.
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 Az első lépés a könyvtár létrehozása, amely a feladathoz tartozó Terraform konfigurációs fájlokat tárolja.
@@ -377,7 +377,7 @@ Ha a Cloud Shell-munkamenet túllépi az időkorlátot, az alábbi lépéseket h
     cd /clouddrive/terraform-aks-k8s
     ```
 
-1. Futtassa az alábbi parancsot:
+1. Futtassa a következő parancsot:
 
     ```bash
     export KUBECONFIG=./azurek8s

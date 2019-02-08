@@ -4,19 +4,19 @@ titlesuffix: Text Analytics - Azure Cognitive Services
 description: Szövegelemzés biztosít az egyes tárolók és a egy közös keretrendszer konfigurációs, egyszerűen konfigurálása és kezelése a storage, a naplózás és a telemetriai adatok és a biztonsági beállítások a tárolókhoz.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 2360cb56f40bf899cec5d4a5fb6637eaac59f4d1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e390b3fbaca23dd60d1ab7553a2d69cfb9b4897c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224326"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878255"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Szövegelemzés a docker-tárolók konfigurálása
 
@@ -79,8 +79,8 @@ A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs r
 
 |Optional| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
-|Nem engedélyezett| `Input` | Karakterlánc | Text Analytics tárolók ez nem használható.|
-|Optional| `Output` | Karakterlánc | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nem engedélyezett| `Input` | String | Text Analytics tárolók ez nem használható.|
+|Optional| `Output` | String | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="hierarchical-settings"></a>Hierarchikus beállításai
 

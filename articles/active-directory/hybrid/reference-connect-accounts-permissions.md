@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 01/24/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: abfdf75c6460efe50dcc9959ffb297f77a72f8c4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 539567634b940584c3bff47011e0891cc96ff0bd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813211"
+ms.locfileid: "55862071"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
@@ -79,7 +79,7 @@ Az AD DS-összekötő fiók jön létre olvasását és írását a Windows Serv
 | Olvasási/írási összes tulajdonságok iNetOrgPerson |Importálás és az Exchange hibrid |
 | Olvasási/írási csoportban az összes tulajdonság |Importálás és az Exchange hibrid |
 | Olvasási/írási forduljon az összes tulajdonság |Importálás és az Exchange hibrid |
-| Új jelszó létrehozása |Felkészülés a jelszóvisszaírás engedélyezése |
+| Másik jelszó kérése |Felkészülés a jelszóvisszaírás engedélyezése |
 
 ### <a name="express-installation-wizard-summary"></a>Az Expressz telepítés varázsló összefoglalás
 
@@ -89,7 +89,7 @@ A következő található egy összefoglaló az expressz telepítési varázsló
 
 | Varázsló lapja | Hitelesítő adatok gyűjtése | Szükséges engedélyek | Használt |
 | --- | --- | --- | --- |
-| – |A felhasználó a telepítési varázsló futtatása |A helyi kiszolgáló rendszergazdája |<li>Az ADSync szolgáltatás fiókok feltárhatja, hogy a szinkronizálási szolgáltatás futtatásához használt hoz létre. |
+| – |A felhasználó a telepítési varázsló futtatása |A helyi kiszolgáló rendszergazdája |<li>Az ADSync szolgáltatást feltárhatja, hogy a szinkronizálási szolgáltatás futtatásához használt fiókot hoz létre. |
 | Csatlakozás az Azure AD szolgáltatáshoz |Az Azure Active directory hitelesítő adatok |A globális rendszergazdai szerepkörű Azure AD-ben |<li>Az Azure AD-címtárban a szinkronizálás engedélyezése.</li>  <li>Létrehozás az Azure AD-összekötő fiókhoz tartozó Azure AD-ben a folyamatban lévő szinkronizálási műveletek elvégzéséhez használható.</li> |
 | Csatlakozás az AD DS szolgáltatáshoz |A helyszíni Active Directory hitelesítő adatok |A vállalati rendszergazdák (EA) csoport az Active Directoryban |<li>Az Active Directory az AD DS-összekötő fiókot hoz létre, és engedélyt ad hozzá. Ezt a fiókot hozta létre az olvasási és írási címtár szinkronizálása során használatos.</li> |
 
@@ -128,7 +128,7 @@ A szükséges engedélyeket is kell rendelkeznie. A telepítővarázsló ellenő
 
 Engedélyezi a választható funkciókat függ, hogy milyen engedélyeket van szüksége. Ha több tartományom van, az erdőben lévő összes tartományban a engedélyt kell biztosítani. Ha nem engedélyezi az ezek a szolgáltatások, az alapértelmezett **tartományi felhasználó** elegendő.
 
-| Szolgáltatás | Engedélyek |
+| Funkció | Engedélyek |
 | --- | --- |
 | MS-DS-ConsistencyGuid funkció |Írási engedélyekkel az ms-DS-ConsistencyGuid attribútum dokumentált [tervezési alapelvei – az ms-DS-ConsistencyGuid használata sourceanchorként](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Jelszókivonat-szinkronizálás |<li>Címtárváltozások replikálása</li>  <li>Replikálás könyvtár összes változik |

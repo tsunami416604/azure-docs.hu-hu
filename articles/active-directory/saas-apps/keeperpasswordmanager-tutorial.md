@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 70dfc03c37b2e7a93218ff7e710dbd22f622d418
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 01c6fd8cb0e4995bfd4409072d47d2743d1aed1f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813304"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893306"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Oktatóanyag: A jelszókezelő üzemeltetőjének & digitális Vault az Azure Active Directory-integráció
 
@@ -78,7 +78,7 @@ Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolód
 Az Azure AD egyszeri bejelentkezés a üzemeltetőjének jelszókezelő & digitális tároló tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Jelszókezelő üzemeltetőjének & digitális Vault egyszeri bejelentkezés konfigurálása](#configure-keeper-password-manager-&-digital-vault-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **Jelszókezelő üzemeltetőjének & digitális Vault egyszeri bejelentkezés konfigurálása** – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Jelszókezelő üzemeltetőjének & digitális Vault tesztfelhasználó létrehozása](#create-keeper-password-manager--digital-vault-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon üzemeltetőjének jelszókezelő & digitális tároló, amely kapcsolódik az Azure AD felhasználói ábrázolása.

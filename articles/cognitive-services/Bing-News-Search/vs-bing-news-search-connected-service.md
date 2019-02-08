@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Kapcsolódás a Bing News Searchhöz egy ASP.NET Core-webalkalmazással.
 services: cognitive-services
 author: ghogen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: e90b630b46f9c54175e30cf28e631ba40146f9ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 188e58261cec90e9afcc885f3da21fa3fab3b746
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189170"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875433"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Oktatóanyag: Csatlakozni a Bing News Search API-hoz a Visual Studio csatlakoztatott szolgáltatások ésC#
 

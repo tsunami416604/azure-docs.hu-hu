@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Győződjön meg arról, a gyártási minőségű egyéni beszédfelismerési robusztus parancsfájl előkészítése, mindegyik hangalapú jó szakembereket és professzionális rögzítése.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: ccde70aecd0ebb79928a1a6d548607a6ed36ab50
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0ca82da43ea53aed3fbcf858b34a3ad94d712661
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212053"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864944"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták
 

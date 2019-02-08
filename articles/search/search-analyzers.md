@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 121b5542f9388355b97744aa224ac824dd8d8728
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631942"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867205"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Az Azure Search szövegfeldolgozást elemzők
 
@@ -92,7 +92,7 @@ Ebben a példában ajánljuk figyelmébe:
 * Elemzők a mező osztály kereshető mező tulajdonsága.
 * Egyéni elemző egy indexdefiníciót részét képezi. Előfordulhat, hogy alaposan testreszabható (például egy szűrő az egyetlen lehetőség testreszabása) vagy testre szabott több helyen is.
 * Ebben az esetben az egyéni elemző-e "my_analyzer", amely viszont használja a "my_standard_tokenizer" testre szabott standard jogkivonatokat létrehozó és két token szűrők: kis- és testre szabott asciifolding szűrő "my_asciifolding".
-* Cserélje le az összes kötőjelek aláhúzásjeleket tartalmazhat, mielőtt a jogkivonatok (a standard szintű tokenizer megszakad a dash, de nem az aláhúzás) egyéni "map_dash" char szűrőt is meghatározza.
+* 2 egyéni char szűrők "map_dash" és "remove_whitespace" is meghatározza. Az elsőt összes kötőjelek lecseréli aláhúzásjeleket tartalmazhat, míg a másodiknál eltávolítja az összes nem állhat kizárólag szóközökből. Az elválasztó karakterek kell lennie az UTF-8 kódolású található a leképezési szabályokat. A char szűrők előtt a jogkivonatok érvényesek, és hatással lesz az eredményül kapott jogkivonatokkal (a standard szintű tokenizer oldaltörések dash és a tárolóhelyek azonban nem aláhúzásjelet).
 
 ~~~~
   {
@@ -116,7 +116,8 @@ Ebben a példában ajánljuk figyelmébe:
            "name":"my_analyzer",
            "@odata.type":"#Microsoft.Azure.Search.CustomAnalyzer",
            "charFilters":[
-              "map_dash"
+              "map_dash",
+              "remove_whitespace"
            ],
            "tokenizer":"my_standard_tokenizer",
            "tokenFilters":[
@@ -130,6 +131,11 @@ Ebben a példában ajánljuk figyelmébe:
            "name":"map_dash",
            "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
            "mappings":["-=>_"]
+        },
+        {
+           "name":"remove_whitespace",
+           "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
+           "mappings":["\\u0020=>"]
         }
      ],
      "tokenizers":[

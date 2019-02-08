@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ebből a gyorsútmutatóból megtudhatja, hogyan átalakítandó szöveg-hang transzformációs Node.js és a szöveg-hang transzformációs REST API használatával. A jelen útmutatóban szereplő minta szöveg van felépítve, beszéd összefoglaló Markup Language (SSML). Ez lehetővé teszi, hogy válassza ki a beszédfelismerési és nyelvi beszédfelismerési válasz.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 808466e9d2546472a4f86dd0d7eacd48e75cb94a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7faa69e4adf96af7f7df9724521ee5ee1cacaad1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224479"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861646"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Gyors útmutató: Átalakítás szöveg-hang transzformációs Node.js használatával
 

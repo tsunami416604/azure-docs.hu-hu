@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 9d3b1c14ce872cd02fc8d4a8c2596d7d1e270895
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 901c844ecbfbbe68163c70b12cc061eae0f75d5a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754373"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860473"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: Hozhat létre és helyezhet üzembe rendszerképeket az Azure Container Registry feladatokat a felhőben
 
@@ -21,7 +21,7 @@ Az **ACR Tasks** az Azure Container Registry egy szolgáltatáscsomagja, amely l
 
 A „belső” fejlesztési ciklus a kódírás, alkalmazás-összeállítás és alkalmazástesztelés ismétlődő folyamata a verziókövetésbe küldés előtt. A gyors feladat funkció kiterjeszti a „belső” fejlesztési ciklust a felhőre, és lehetővé teszi az összeállítások sikerességének ellenőrzését, valamint a sikeresen összeállított rendszerképek automatikus leküldését a tárolóregisztrációs adatbázisba. A rendszerképek összeállítása natív módon a felhőben történik, a regisztrációs adatbázis közelében, ami meggyorsítja az üzembe helyezést.
 
-A Docker-fájlokkal kapcsolatos ismeretek közvetlenül kamatoztathatók az ACR Tasks használata során. A Docker-fájlokat nem, csupán a futtatott parancsot kell módosítani, ha az ACR Tasks segítségével szeretne a felhőben összeállítást végrehajtani.
+A Docker-fájlokkal kapcsolatos ismeretek közvetlenül kamatoztathatók az ACR Tasks használata során. A Docker-fájlokat nem, csupán a futtatott parancsot kell módosítani, ha az ACR Tasks segítségével szeretne a felhőben összeállítást végrehajtani. 
 
 Ez az oktatóanyag egy sorozat első része, és az alábbiakat ismerteti:
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag egy sorozat első része, és az alábbiakat ismerteti:
 > * Tárolórendszerkép összeállítása az Azure-ban
 > * Tároló üzembe helyezése az Azure Container Instances szolgáltatásban
 
-A további oktatóanyagokban elsajátítja majd, hogyan lehet az ACR Tasks segítségével automatizálni a tárolórendszerképek összeállítását kódvéglegesítés, illetve az alapként szolgáló rendszerképek frissítése alkalmával.
+A további oktatóanyagokban elsajátítja majd, hogyan lehet az ACR Tasks segítségével automatizálni a tárolórendszerképek összeállítását kódvéglegesítés, illetve az alapként szolgáló rendszerképek frissítése alkalmával. ACR-feladatokat is futtathat [több lépésből álló feladatokat](container-registry-tasks-multi-step.md) meghatározásához lépések végrehajtásával hozhat létre, leküldéses, igény szerint több tároló fájlt egy YAML használatával (jelenleg előzetes verzióban elérhető).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

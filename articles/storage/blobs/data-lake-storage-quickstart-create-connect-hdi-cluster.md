@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: d49c8a8434dfa7202707731f46ea31c77d32541d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4ec63251e73e694a69f84262e9de7cce6eb8f11f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812259"
+ms.locfileid: "55878493"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Gyors útmutató: A HDInsight-fürtök beállítása
 
-Ebben a rövid útmutatóban megismerheti, hogyan állíthatja be, és a HDInsight Hadoop, Spark, Kafka, interaktív lekérdezés, HBase, R Server vagy a Storm-fürtök konfigurálása. Fürtök testreszabása, csatlakoztatása tartományhoz, és csatolja őket egy tárfiókot is elsajátíthatja [Azure Data Lake Storage Gen2 előzetes](data-lake-storage-introduction.md) engedélyezve van.
+Ebben a rövid útmutatóban megismerheti, hogyan állíthatja be, és a HDInsight Hadoop, Spark, Kafka, interaktív lekérdezés, HBase, R Server vagy a Storm-fürtök konfigurálása. Fürtök testreszabása, csatlakoztatása tartományhoz, és csatolja őket egy tárfiókot is elsajátíthatja [Azure Data Lake Storage Gen2](data-lake-storage-introduction.md) engedélyezve van.
 
 Hadoop-fürt több virtuális gépek (csomópontok), elosztott feldolgozási feladatok által használt áll. Azure HDInsight megvalósítási részletei telepítési és konfigurációs egyes csomópontjainak kezeli, így csak meg kell adnia az általános konfigurációs adatait.
 

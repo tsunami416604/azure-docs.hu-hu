@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 310d662782ff7d9713007b59f0d9b75620a03f5f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 426c090a79931f252a5daeacbdd83d0238ecf672
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455099"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868114"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készlet erőforrások skálázása
 
@@ -27,8 +27,8 @@ Ez a cikk ismerteti az Azure SQL Database rugalmas készletek és a készletezet
 
 - A maximális méretkorlát legfeljebb tárolók kiépítésével:
 
-  - Standard szintű tárolóra vonatkozó növelése, vagy 10 GB-os lépésekben méretének csökkentése
-  - A Premium storage növelheti, vagy 250 GB-os lépésekben méretének csökkentése
+  - A standard vagy általános célú szolgáltatásszinten tároláshoz növelése, vagy mérete 10 GB-os lépésekben csökkentése
+  - A prémium szintű vagy üzletileg kritikus tárolás szolgáltatásszintek, növelje vagy csökkentse a 250-GB onként növelhető tárhelyet
 - Rugalmas készletek tárolók kiépítésével növelésével vagy csökkentésével a maximális méretét.
 - Tároló rugalmas készletek ára a tárolókapacitás, szorozva a szolgáltatási rétegben tárolási egységárát. Az extra tárterület ára a részletekért lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 

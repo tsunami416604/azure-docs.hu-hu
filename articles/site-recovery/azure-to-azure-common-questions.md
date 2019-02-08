@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: bfce998fbabb89d5e9e964bd504571756941afb4
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 555c8b0b4046fd20583597ae4f0215a815806b8e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770486"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860407"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Gyakori kérdések: Azure – Azure replikálás
 
@@ -33,6 +33,10 @@ Ez a cikk a vészhelyreállítás (DR) Azure-beli virtuális üzembe helyezése 
 
 ### <a name="how-is-site-recovery-priced"></a>Hogyan van a Site Recovery díjszabása?
 Felülvizsgálat [Azure Site Recovery díjszabásáról](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) részleteit.
+### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Mit jelent az Azure Site Recovery szolgáltatás esetében az ingyenes szint?
+Az Azure Site Recovery szolgáltatás által védett példányok a védelem első 31 napja során díjmentesek. A 32. naptól kezdődően a példányokra vonatkozó védelem díjának felszámítása a fenti díjszabás alapján történik.
+###<a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Az első 31 nap során kell valamilyen más Azure-díjat fizetni?
+Igen. Bár az Azure Site Recovery szolgáltatás a védett példányok tekintetében díjmentes az első 31 nap során, az Azure Storage szolgáltatás, a tárolási tranzakciók és az adatforgalom díjkötelesek lehetnek. Továbbá a helyreállított virtuális gépekre is vonatkozhatnak Azure-díjak a számítási idő alapján. Kész részletek a díjszabási [Itt](https://azure.microsoft.com/pricing/details/site-recovery)
 
 ### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>Mik azok a Site Recovery konfigurálása az Azure virtuális gépekhez ajánlott eljárásai?
 1. [Azure – Azure architektúrájának ismertetése](azure-to-azure-architecture.md)
@@ -70,6 +74,10 @@ A Site Recovery replikálja, és a virtuális gépek helyreállítása ugyanazon
 
 A Site Recovery nem, nem szükséges az internetkapcsolat. Hozzáférést igényelnek a Site Recovery URL-címek és IP-tartományok, említetteknek megfelelően, de [Ez a cikk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
 
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Replikálhatok külön szinteket külön erőforráscsoportot kellene az alkalmazást? 
+Igen, replikálja az alkalmazást, és ne a vész-helyreállítási konfiguráció külön erőforráscsoportot túl.
+Például egy alkalmazást a minden alkalmazás, db, és külön erőforráscsoportot a webes szint esetében, akkor a elemre kell kattintania, a [replikálás varázsló](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) háromszor való védelme minden szinten. Az ASR replikálja ezeket mindhárom szintet három másik erőforráscsoportban található.
+
 ## <a name="replication-policy"></a>Replikációs házirend
 
 ### <a name="what-is-a-replication-policy"></a>Mi a replikációs szabályzat?
@@ -89,9 +97,12 @@ Napjainkban a legtöbb alkalmazás helyreállíthatja jól összeomlás-konziszt
 A Site Recovery 5 percenként összeomlás-konzisztens helyreállítási pont létrehozása.
 
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Mi az az alkalmazáskonzisztens helyreállítási pontot? 
-Alkalmazáskonzisztens helyreállítási pontok az alkalmazáskonzisztens pillanatképek jönnek létre. Alkalmazáskonzisztens pillanatképek rögzítése összeomlás-konzisztens pillanatképekkel, a memóriában lévő összes adatot, és minden folyamatban lévő tranzakciót is ugyanazokat az adatokat. 
+Alkalmazáskonzisztens helyreállítási pontok az alkalmazáskonzisztens pillanatképek jönnek létre. Alkalmazáskonzisztens helyreállítási pontok rögzítése összeomlás-konzisztens pillanatképekkel, a memóriában lévő összes adatot, és minden folyamatban lévő tranzakciót is ugyanazokat az adatokat. 
 
 Miatt további tartalmak a alkalmazáskonzisztens pillanatképek a legtöbb metódusa vesz, és tegye meg a legrégebb végrehajtásához. Azt javasoljuk, hogy az adatbázis operációs rendszerek és alkalmazások, például az SQL Server alkalmazáskonzisztens helyreállítási pontjait.
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Mit jelent alkalmazásteljesítmény alkalmazáskonzisztens helyreállítási pontokat a hatását?
+Alkalmazáskonzisztens helyreállítási pontok összes adatot a memória és a folyamat rögzíti a mérlegeli igényel a keretrendszert, például VSS letiltásától az alkalmazás windows rendszeren. Ha nagyon gyakran meg lehet a teljesítményt, ha a számítási feladat már nagyon elfoglalt. Általában javasolt nem 1 óra használata kevésbé gyakori alkalmazáskonzisztens helyreállítási pontok adatbázis-számítási feladatokhoz és adatbázis-munkaterhelés esetén is elegendő. 
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Mi az a minimális gyakoriságot a alkalmazáskonzisztens helyreállítási pont létrehozásakor?
 A Site Recovery segítségével hoz létre egy alkalmazáskonzisztens helyreállítási pont egy minimális gyakoriság (1 óra).

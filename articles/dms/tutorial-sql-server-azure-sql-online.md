@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/06/2019
-ms.openlocfilehash: ac7b4dc563fa663dd016971ba6a27104860c8cce
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.date: 02/07/2019
+ms.openlocfilehash: e28aba5c482cbacefbe42be9c8825e58c130fe76
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767966"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858943"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-online-using-dms"></a>Oktatóanyag: SQL Server online migrálása az Azure SQL Database-be a DMS használatával
 Az Azure Database Migration Service segítségével minimális állásidővel migrálhatja egy helyszíni SQL Server-példány adatbázisait az [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)-be. Ebben az oktatóanyagban az SQL Server 2016 (vagy újabb) helyi példányára visszaállított **Adventureworks2012** adatbázist migrálhatja egy Azure SQL Database-példányba az Azure Database Migration Service használatával.
@@ -233,7 +233,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
  
 3. Válassza a + **Új migrálási projekt** lehetőséget.
 4. Az **Új migrálási projekt** képernyőn nevezze el a projektet, majd a **Forráskiszolgáló típusa** szövegbeviteli mezőben válassza ki az **SQL Servert**, a **Célkiszolgáló típusa** szövegbeviteli mezőben pedig az **Azure SQL Database-t**.
-5. A **Tevékenység típusának kiválasztása** szakaszban válassza az **Online adatok migrálása** lehetőséget.
+5. Az a **válassza ki a tevékenység típusát** szakaszban jelölje be **Online adatáttelepítés**.
 
     ![Azure Database Migration Service-projekt létrehozása](media/tutorial-sql-server-to-azure-sql-online/dms-create-project3.png)
 
@@ -312,6 +312,6 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
     ![Tevékenység állapota: Befejezve](media/tutorial-sql-server-to-azure-sql-online/dms-activity-completed.png)
 
 ## <a name="next-steps"></a>További lépések
-- Az Azure Database for MySQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure SQL Database online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-sql-online.md).
+- Ismert problémák és korlátozások online migrálást az Azure SQL Database végrehajtásakor kapcsolatos információkért lásd: a cikk [ismert problémák és megoldások az Azure SQL Database online áttelepítések](known-issues-azure-sql-online.md).
 - Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-- Az Azure SQL Database-re vonatkozó tudnivalók: [Mi az Azure SQL Database szolgáltatás?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)
+- Azure SQL Database kapcsolatos információkért tekintse meg a cikket [Mi az az Azure SQL Database szolgáltatás?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).

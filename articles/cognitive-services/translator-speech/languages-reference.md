@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: A Translator Speech API nyelvek módszert használja.
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: f377e073f42e96264fe4c7edb31ea58c68c46494
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 12f989137c3aea57bdcde0d50315ad157898cd28
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474972"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862751"
 ---
 # <a name="translator-speech-api-languages"></a>Beszédfordító API: Languages
 
@@ -133,16 +133,16 @@ Langagues {beszéd (object, nem kötelező), szöveg (object, nem kötelező), s
 
 |Fejléc|Leírás|Typo|
 :--|:--|:--|
-X-RequestId|Érték a kiszolgáló azonosításához a kérelem által generált, és használják hibaelhárítási célból.|sztring|
+X-RequestId|Érték a kiszolgáló azonosításához a kérelem által generált, és használják hibaelhárítási célból.|Karakterlánc|
 
 ### <a name="parameters"></a>Paraméterek
 
 |Paraméter|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|
-|API-verzió    |Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés|sztring|
-|scope  |Támogatott nyelvek, vagy térjen vissza az ügyfél beszédhangot részhalmazához. Ez a paraméter van megadva kulcsszavak vesszővel elválasztott listáját. A következő kulcsszavak érhetők el:<ul><li>`speech`: A beszédfelismerés lefényképezze támogatott nyelvek készletét nyújtja.</li><li>`tts`: A szöveg-beszéd átalakítás támogatott beszédhangot biztosít.</li><li>`text`: Szöveg fordítása a támogatott nyelvek készletét nyújtja.</li></ul>Ha az érték nincs megadva, az értékét `scope` alapértelmezés szerint a `text`.|lekérdezés|sztring|
-|X-ClientTraceId    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megkönnyítése érdekében kapcsolatos hibák elhárítása, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.|header|sztring|
-|Accept-Language    |A mezők a válaszban némelyike régiók és nyelvek neve. Ez a paraméter használatával határozza meg a nyelvet, amelyben a nevét adja vissza. A nyelv azáltal, hogy megfelelően formázott BCP-47 nyelvi címke van megadva. Válassza ki a címke nyelv azonosítók hibát adott vissza a listából a `text` hatókör. Nem támogatott nyelvek a nevek angol nyelven szerepelnek.<br/>Például használja az értéket `fr` kérése nevek francia nyelvű, vagy használja az értéket `zh-Hant` hagyományos kínai kérelem nevek.|header|sztring|
+|API-verzió    |Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés|Karakterlánc|
+|scope  |Támogatott nyelvek, vagy térjen vissza az ügyfél beszédhangot részhalmazához. Ez a paraméter van megadva kulcsszavak vesszővel elválasztott listáját. A következő kulcsszavak érhetők el:<ul><li>`speech`: A beszédfelismerés lefényképezze támogatott nyelvek készletét nyújtja.</li><li>`tts`: A szöveg-beszéd átalakítás támogatott beszédhangot biztosít.</li><li>`text`: Szöveg fordítása a támogatott nyelvek készletét nyújtja.</li></ul>Ha az érték nincs megadva, az értékét `scope` alapértelmezés szerint a `text`.|lekérdezés|Karakterlánc|
+|X-ClientTraceId    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megkönnyítése érdekében kapcsolatos hibák elhárítása, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.|header|Karakterlánc|
+|Accept-Language    |A mezők a válaszban némelyike régiók és nyelvek neve. Ez a paraméter használatával határozza meg a nyelvet, amelyben a nevét adja vissza. A nyelv azáltal, hogy megfelelően formázott BCP-47 nyelvi címke van megadva. Válassza ki a címke nyelv azonosítók hibát adott vissza a listából a `text` hatókör. Nem támogatott nyelvek a nevek angol nyelven szerepelnek.<br/>Például használja az értéket `fr` kérése nevek francia nyelvű, vagy használja az értéket `zh-Hant` hagyományos kínai kérelem nevek.|header|Karakterlánc|
     
 ### <a name="response-messages"></a>Parancsválasz-üzeneteket
 

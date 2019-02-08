@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével-kérelmeket küldjön a Bing Web Search REST API Ruby használatával, és a egy JSON-választ kap
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4b5194628e47340f9582800e3fdd9117d9ade212
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 24bbe5e4f7dacf588ff1b68642ac79a91099bd85
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192639"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878663"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Gyors útmutató: A Ruby használatával a Bing Web Search API meghívása  
 

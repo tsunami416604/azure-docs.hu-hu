@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan használható a szemantikai értelmezés a a Knowledge Exploration Service (KES) API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 2b0065dbdac8e3bdbc535f2d7d103b24110e1d02
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 26f8d885f8cf85ab849ba221392df206e492aac4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217271"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860813"
 ---
 # <a name="semantic-interpretation"></a>Szemantikai értelmezés
 
@@ -35,12 +35,12 @@ Az alábbiakban felsoroljuk a jelenleg támogatott adattípusok:
 
 |Typo|Leírás|Példák|
 |----|----|----|
-|Karakterlánc|0 vagy több karakter sorozata|"Hello World!"<br/>""|
-|Logikai|Logikai érték|true<br/>false|
+|String|0 vagy több karakter sorozata|"Hello World!"<br/>""|
+|Bool|Logikai érték|true<br/>false|
 |Int32|32 bites előjeles egész számokat.  -2.1e9 való 2.1e9|123<br/>-321|
 |Int64|64 bites előjeles egész számokat. -9.2e18 és 9.2e18|9876543210|
-|Dupla|Kétszeres pontosságú lebegőpontos. 1.7E +/-308 (15 számjegy)|123.456789<br/>1.23456789e2|
-|GUID|Globálisan egyedi azonosító|"602DD052-CC47-4B23-A16A-26B52D30C05B"|
+|Double|Kétszeres pontosságú lebegőpontos. 1.7E +/-308 (15 számjegy)|123.456789<br/>1.23456789e2|
+|Guid|Globálisan egyedi azonosító|"602DD052-CC47-4B23-A16A-26B52D30C05B"|
 |Lekérdezés|Lekérdezési kifejezés, amely meghatározza az objektumok egy részét az indexben|All()<br/>És (*q1*, *q2*)|
 
 ## <a name="semantic-functions"></a>Szemantikai funkciók
@@ -141,8 +141,8 @@ Rendszerváltozók a szolgáltatás által előre meghatározott, és használha
 
 |Name (Név)|Típus|Leírás|
 |----|----|----|
-|IsAtEndOfQuery|Logikai|IGAZ, ha az aktuális értelmezése felelt meg az összes bemeneti lekérdezés szövege|
-|IsBeyondEndOfQuery|Logikai|IGAZ, ha az aktuális értelmezése javasolt befejezésekből túl a bemeneti lekérdezés szövege|
+|IsAtEndOfQuery|Bool|IGAZ, ha az aktuális értelmezése felelt meg az összes bemeneti lekérdezés szövege|
+|IsBeyondEndOfQuery|Bool|IGAZ, ha az aktuális értelmezése javasolt befejezésekből túl a bemeneti lekérdezés szövege|
 
 ### <a name="setvariable-function"></a>SetVariable függvény
 

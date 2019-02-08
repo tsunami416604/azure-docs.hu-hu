@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ismerje meg a fejlesztői szempontból Bing Speech és a Speech Service közötti különbségeket, és a Speech szolgáltatással az alkalmazás migrálása a.
 services: cognitive-services
 author: wsturman
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: b862975cda4a73d087d9aa0d5816fdcb9e0149dc
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 73df93345cf73939f33afedfd655cef847d895dc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218008"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863567"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech áttelepít a beszédszolgáltatás
 
@@ -37,7 +37,7 @@ A [beszéd SDK](speech-sdk.md) a Bing Speech-klienskódtárakkal működési hel
 
 A beszédfelismerési szolgáltatás hasonlít nagyrészt a Bing Speech, a következő eltérésekkel.
 
-Szolgáltatás | Bing – Beszédfelismerés | Beszédszolgáltatás | Részletek
+Funkció | Bing – Beszédfelismerés | Beszédszolgáltatás | Részletek
 -|-|-|-
 C++ SDK | : heavy_minus_sign: | :heavy_check_mark: | Beszédszolgáltatás támogatja a Windows és Linux rendszereken.
 Java SDK | :heavy_check_mark: | :heavy_check_mark: | Beszédszolgáltatás támogatja az Android- és beszédfelismerés eszközök.

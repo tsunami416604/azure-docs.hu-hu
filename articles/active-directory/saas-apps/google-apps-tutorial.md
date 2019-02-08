@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dd413f9a7eba60fd72e7cc29f44f49b72eaaf806
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 50f95ea10308e27fa36bda77c4f3e1bd4914bb30
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769406"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873699"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Oktatóanyag: Az Azure Active Directory-integráció, a G Suite-tal
 
@@ -42,7 +42,7 @@ Az Azure AD-integráció konfigurálása a G Suite, a következőkre van szüks�
 - A Google Apps előfizetést vagy a Google Cloud Platform-előfizetés.
 
 > [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja. Ez a dokumentum létrehozása az új felhasználói élmény Single-Sign-on. Ha továbbra is használja a régit, a telepítő diferent fog kinézni. Az új felhasználói felületre, az egyszeri bejelentkezés beállításai G-Suite alkalmazás is engedélyezheti. Lépjen a **Azure AD-ben a vállalati alkalmazások**válassza **G Suite**, jelölje be **egyszeri bejelentkezés** majd kattintson a **próbálja ki az új funkciót**.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja. Ez a dokumentum létrehozása az új felhasználói élmény Single-Sign-on. Ha továbbra is használja a régit, a telepítő fog kinézni. Az új felhasználói felületre, az egyszeri bejelentkezés beállításai G-Suite alkalmazás is engedélyezheti. Lépjen a **Azure AD-ben a vállalati alkalmazások**válassza **G Suite**, jelölje be **egyszeri bejelentkezés** majd kattintson a **próbálja ki az új funkciót**.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
@@ -146,7 +146,7 @@ A G Suite konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre az 
 
     ![A G Suite-tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím URL-címe: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
     | |
@@ -163,7 +163,7 @@ A G Suite konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre az 
 
     ![A G Suite-tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím URL-címe: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
     | |

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan az alkalmazások áttelepíthetők a Translator Speech API a Speech Service.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: aahi
-ms.openlocfilehash: 42f1279e0459f113fbe9540a6a3a15b307c93763
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: de9727df9255fb880403e0409055b73db240e882
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225584"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868113"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>A beszédfelismerési szolgáltatás át a Translator Speech API
 
@@ -26,7 +26,7 @@ Ez a cikk segítségével az alkalmazások át a Microsoft Translator Speech API
 
 ## <a name="comparison-of-features"></a>Szolgáltatások összehasonlítása
 
-| Szolgáltatás                                           | Translator Speech API                                  | Beszédszolgáltatás | Részletek                                                                                                                                                                                                                                                                            |
+| Funkció                                           | Translator Speech API                                  | Beszédszolgáltatás | Részletek                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Szöveg fordítása                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | A beszédfelismerés fordítása                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |

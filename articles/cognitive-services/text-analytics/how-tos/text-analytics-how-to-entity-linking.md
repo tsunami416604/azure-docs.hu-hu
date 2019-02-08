@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan ismerhetik fel a Text Analytics REST API használatával.
 services: cognitive-services
 author: ashmaka
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 3f56bd4efafe506a95d46524713ebe49e3250f63
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5b8ebc76355d39c1e81217fd1f7af09f876838c9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220384"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862345"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Megnevezett entitások felismerése használata a Text Analytics (előzetes verzió)
 
@@ -58,12 +58,12 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 | DateTime      | Dátum          | "2., 2017 május", "05/02/2017"   | 
 | Dátum és idő     | Time          | "8 am", "8:00"  | 
 | DateTime      | DateRange     | "Május 2. május 5-én a"    | 
-| DateTime      | Időtartomány     | "du. 6, 7 pm"     | 
+| DateTime      | timeRange     | "du. 6, 7 pm"     | 
 | DateTime      | Időtartam      | "1 perc 45 másodpercig"   | 
 | DateTime      | Beállítás           | "minden kedden"     | 
 | DateTime      | Időzóna      |    | 
-| URL-cím           | N/A\*         | „http://www.bing.com”    |
-| E-mail         | N/A\*         | „support@contoso.com” |
+| URL-cím           | N/A\*         | "http://www.bing.com"    |
+| E-mail         | N/A\*         | "support@contoso.com" |
 \* Attól függően, a bemeneti és a kinyert entitásokat, bizonyos entitások előfordulhat, hogy kihagyja a `SubType`.
 
 
@@ -104,7 +104,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
+## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
 
 Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
 

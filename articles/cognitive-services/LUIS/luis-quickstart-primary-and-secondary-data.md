@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban adatok kinyerése az gép megismerte az alkalmazási projekt neve az utterance (kifejezés) használatával az egyszerű entitás. A kinyerés pontosságának növeléséhez adjon hozzá egy kifejezéslistát az egyszerű entitásra jellemző kifejezésekről.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 53e975719b911a27667afc8565bd86261f927068
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9da2f8fa345ad3447d7c3344772458c451cf427e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820980"
+ms.locfileid: "55867239"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: Az egyszerű entitás és egy kifejezés lista nevének kinyerése
 

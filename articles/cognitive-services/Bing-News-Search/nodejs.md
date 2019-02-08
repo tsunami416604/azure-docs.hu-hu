@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével egy kérelmet küld a Bing News Search REST API a Node.js használata, és a egy JSON-választ kap.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9eb8869847f60d277857826e810a7e9bf51fc1fa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 287a82292994a629bde8255321c7f603fdf00b67
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157160"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869279"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hajtsa végre a Node.js és a Bing News Search REST API használatával hírkeresés
 

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 1430bc4a9de863c25e40a2655f0a1cd7a75ae0f7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 50cec0774729073678498922b2c58f1ca62d7d82
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561387"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858280"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurálhatja és kezelheti az Azure SQL Database geo-visszaállítás vagy a feladatátvételi biztonsága
 
@@ -32,6 +32,9 @@ A fő kompromisszum, hogy a vész-helyreállítást, ipari méretekben kezelése
 ## <a name="how-to-configure-logins-and-users"></a>Bejelentkezések és felhasználók konfigurálása
 
 Bejelentkezések és felhasználók használata (ahelyett, hogy tartalmazott felhasználók), akkor győződjön meg arról, hogy létezik-e az azonos bejelentkezéseket a master adatbázisban, további lépéseket kell végrehajtani. Az alábbi szakaszok a lépések részt vevő és a további szempontok tagolni.
+
+  >[!NOTE]
+  > Az is lehetséges az adatbázisok kezelése az Azure Active Directory (AAD) bejelentkezések használatával. További információkért lásd: [Azure SQL-bejelentkezések és felhasználók](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Állítsa be a felhasználói hozzáférés a másodlagos és a helyreállított adatbázis
 

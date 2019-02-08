@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Az 1-es verziójú végpont és az Authoring Tool API-k elavulttá váltak. Ez az útmutató segítségével megtudhatja, hogyan át a 2. verziójú végpont és az API-k készítése.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 8b2057c6649f0dcec5f5c9b2d5923be2446f4d6b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: dfd30ce148002e32986c58aff607e182033e02b3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208618"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859872"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1-v2 áttelepítési útmutatója a LUIS-alkalmazások
 Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-jai elavultak. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 

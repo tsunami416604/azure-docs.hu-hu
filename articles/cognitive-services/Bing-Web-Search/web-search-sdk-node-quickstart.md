@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a Node.js-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: aahi
-ms.openlocfilehash: 172fe7bd8c5b6bc5e881eb7fec7c9891a79900cb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 94bc7d2ddca84b01dd799552fe7a331c9bb958a1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177134"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856895"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Gyors útmutató: A Bing Web Search SDK használata a node.js-ben
 

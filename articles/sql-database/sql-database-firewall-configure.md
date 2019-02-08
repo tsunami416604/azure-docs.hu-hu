@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: e4b217ada2aae159680b113b6ddcb41c9d121f24
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: dcd0c7073f2126e001a65e2142ea54a229553ebd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753061"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894700"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Az Azure SQL Database és az SQL Data Warehouse IP tűzfalszabályok
 
@@ -92,7 +92,7 @@ A teljesítmény javítása érdekében a kiszolgálószintű IP-tűzfalszabály
 > [!TIP]
 > Használhat [SQL Database naplózási szolgáltatásával](sql-database-auditing.md) kiszolgálószintű és adatbázisszintű tűzfalszabályokkal módosítások naplózását.
 
-## <a name="manage-ip-firewall-rules-using-the-azure-portal"></a>Az Azure portal használatával IP-tűzfalszabályainak kezelése
+## <a name="manage-server-level-ip-firewall-rules-using-the-azure-portal"></a>Az Azure portal használatával kiszolgálószintű IP tűzfalszabályok kezelése
 
 IP-kiszolgálószintű tűzfalszabály beállítása az Azure Portalon, vagy megnyithatja az Áttekintés oldal az Azure SQL database vagy az Áttekintés oldal az SQL Database-kiszolgáló.
 
@@ -149,7 +149,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 
 ## <a name="manage-server-level-ip-firewall-rules-using-azure-powershell"></a>Kiszolgálószintű Azure PowerShell-lel IP-tűzfalszabályainak kezelése
 
-| Parancsmag | Szint | Leírás |
+| A parancsmag | Szint | Leírás |
 | --- | --- | --- |
 | [Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule) |Kiszolgáló |Az aktuális kiszolgálószintű IP-tűzfalszabályainak beolvasása |
 | [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) |Kiszolgáló |Létrehoz egy új kiszolgálószintű IP-tűzfalszabály |
@@ -169,7 +169,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ## <a name="manage-server-level-ip-firewall-rules-using-azure-cli"></a>Kiszolgálószintű Azure CLI-vel IP-tűzfalszabályainak kezelése
 
-| Parancsmag | Szint | Leírás |
+| A parancsmag | Szint | Leírás |
 | --- | --- | --- |
 |[az sql server firewall-rule létrehozása](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Kiszolgáló|A kiszolgáló IP-tűzfalszabály létrehozása|
 |[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Kiszolgáló|Felsorolja egy kiszolgáló IP-tűzfalszabályainak|
@@ -196,7 +196,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 | [Tűzfalszabály törlése](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Kiszolgáló |Eltávolítja a kiszolgálói szintű IP-tűzfalszabályainak |
 | [Tűzfal-szabályok beolvasása](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Kiszolgáló | Kiszolgálószintű IP-tűzfalszabályainak beolvasása |
 
-## <a name="server-level-ip-firewall-rule-versus-a-database-level-ip-firewall-rule"></a>Kiszolgálószintű IP-tűzfalszabály és a egy adatbázisszintű IP-tűzfalszabály
+## <a name="server-level-versus-database-level-ip-firewall-rules"></a>Kiszolgálószintű és adatbázisszintű IP-tűzfalszabályainak
 
 K. Egy adatbázis felhasználói lehet egy másik adatbázisból elszigetelt?
 Ha igen, hozzáférést adatbázisszintű IP-tűzfalszabályainak használatával. Ezzel elkerülhető a kiszolgálószintű IP-tűzfalszabályainak, amelyek lehetővé teszik az összes adatbázis, a védelem mélysége csökkenti a tűzfalon keresztüli hozzáférés használatával.

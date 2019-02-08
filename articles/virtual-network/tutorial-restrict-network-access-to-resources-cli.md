@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 31d583456f2ca0a2804c2215906965c2241af52d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e4f8b99cfeaa35644ed51fd8ad712fe4744c0226
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751497"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890943"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása a virtuális hálózati Szolgáltatásvégpontok az Azure CLI használatával
 
@@ -72,7 +72,7 @@ az network vnet list-endpoint-services \
   --out table
 ``` 
 
-Hozzon létre egy további alhálózatot a virtuális hálózaton [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Ebben a példában egy szolgáltatásvégpontot *Microsoft.Storage* jön létre az alhálózatot: 
+Hozzon létre egy további alhálózatot a virtuális hálózaton [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet). Ebben a példában egy szolgáltatásvégpontot *Microsoft.Storage* jön létre az alhálózatot: 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ## <a name="restrict-network-access-for-a-subnet"></a>Alhálózat hálózati hozzáférésének korlátozása
 
-Hozzon létre egy hálózati biztonsági csoport [az network nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). A következő példában létrehozunk egy hálózati biztonsági csoport nevű *myNsgPrivate*.
+Hozzon létre egy hálózati biztonsági csoport [az network nsg létrehozása](/cli/azure/network/nsg). A következő példában létrehozunk egy hálózati biztonsági csoport nevű *myNsgPrivate*.
 
 ```azurecli-interactive
 az network nsg create \
@@ -93,7 +93,7 @@ az network nsg create \
   --name myNsgPrivate
 ```
 
-A hálózati biztonsági csoport társítása a *privát* alhálózat [az hálózati virtuális hálózat alhálózati frissítés](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update). Az alábbi példa hozzárendeli a *myNsgPrivate* hálózati biztonsági csoportot, amely a *privát* alhálózat:
+A hálózati biztonsági csoport társítása a *privát* alhálózat [az hálózati virtuális hálózat alhálózati frissítés](/cli/azure/network/vnet/subnet). Az alábbi példa hozzárendeli a *myNsgPrivate* hálózati biztonsági csoportot, amely a *privát* alhálózat:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -156,7 +156,7 @@ A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létr
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy Azure storage-fiókkal [az tárfiók létrehozása](/cli/azure/storage/account#az_storage_account_create). Cserélje le `<replace-with-your-unique-storage-account-name>` , egyedi el az összes Azure-helyen 3 – 24 karakter közötti hosszúságú, melynek neve használatával csak számokból és kisbetűkből állhat.
+Hozzon létre egy Azure storage-fiókkal [az tárfiók létrehozása](/cli/azure/storage/account). Cserélje le `<replace-with-your-unique-storage-account-name>` , egyedi el az összes Azure-helyen 3 – 24 karakter közötti hosszúságú, melynek neve használatával csak számokból és kisbetűkből állhat.
 
 ```azurecli-interactive
 storageAcctName="<replace-with-your-unique-storage-account-name>"
@@ -197,7 +197,7 @@ az storage share create \
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>Storage-fiók összes hálózati hozzáférés megtagadása
 
-Alapértelmezés szerint a tárfiókok bármely hálózatban lévő ügyféltől érkező hálózati kapcsolatokat elfogadnak. Kijelölt hálózatok való hozzáférés korlátozására, módosítsa az alapértelmezett művelet *Megtagadás* a [storage-fiók frissítése az](/cli/azure/storage/account#az_storage_account_update). Hálózati hozzáférés megtagadva, miután a tárfiók nem érhető egyetlen hálózathoz sem.
+Alapértelmezés szerint a tárfiókok bármely hálózatban lévő ügyféltől érkező hálózati kapcsolatokat elfogadnak. Kijelölt hálózatok való hozzáférés korlátozására, módosítsa az alapértelmezett művelet *Megtagadás* a [storage-fiók frissítése az](/cli/azure/storage/account). Hálózati hozzáférés megtagadva, miután a tárfiók nem érhető egyetlen hálózathoz sem.
 
 ```azurecli-interactive
 az storage account update \
@@ -208,7 +208,7 @@ az storage account update \
 
 ### <a name="enable-network-access-from-a-subnet"></a>Hálózati hozzáférés engedélyezése alhálózatról
 
-Hálózati hozzáférés engedélyezése a storage-fiókjában az *privát* alhálózat [az tárolási fiók hálózati-szabály hozzáadása](/cli/azure/storage/account/network-rule#az_storage_account_network_rule_add).
+Hálózati hozzáférés engedélyezése a storage-fiókjában az *privát* alhálózat [az tárolási fiók hálózati-szabály hozzáadása](/cli/azure/storage/account/network-rule).
 
 ```azurecli-interactive
 az storage account network-rule add \
@@ -334,7 +334,7 @@ A hozzáférés megtagadva, és megjelenik egy *a kérelem nem jogosult e művel
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, [az csoport törlése](/cli/azure#az_group_delete) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
+Ha már nincs rá szükség, [az csoport törlése](/cli/azure) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

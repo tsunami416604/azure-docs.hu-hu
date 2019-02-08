@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Lake Storage Gen2 előzetes verziója a DistCp használata |} A Microsoft Docs
-description: A DistCp eszközzel másolhat adatokat, és a Data Lake Storage Gen2 előzetes verzió
+title: Adatmásolás az Azure Data Lake Storage Gen2 a DistCp |} A Microsoft Docs
+description: A DistCp eszközzel másolhat adatokat, és a Data Lake Storage Gen2
 services: storage
 author: seguler
 ms.subservice: data-lake-storage-gen2
@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 9c12f96399de218241c8aa7ed686113c17a7410c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8328ea5afb66bbecdafbb06dcbf6700194d62f9e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244147"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864060"
 ---
-# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2-preview"></a>Azure Storage-blobokat és az Azure Data Lake Storage Gen2 előzetes verzió közötti adatokat másolja a DistCp használatával
+# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Adatok másolása az Azure Storage-blobokat és az Azure Data Lake Storage Gen2 között a DistCp használatával
 
 Használhat [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) másolhat adatokat egy általános célú V2-tárfiók és a egy általános célú V2-tárfiók között hierarchikus névtér esetében engedélyezve van. Ez a cikk útmutatást nyújt a DistCp eszközzel.
 
@@ -24,8 +24,8 @@ A DistCp biztosít különböző parancssori paraméterek, és Határozottan jav
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy meglévő Azure Storage-fiók nélkül a Data Lake Storage Gen2 előzetes verzióként elérhető funkciókat (hierarchikus névtér) engedélyezve**.
-* **Azure Storage-fiókot a Data Lake Storage Gen2 (előzetes verzió) szolgáltatás engedélyezve van**. Létrehozásával kapcsolatos utasításokért lásd: [hozzon létre egy storage-fiókot az Azure Data Lake Storage Gen2 előzetes verzió](data-lake-storage-quickstart-create-account.md)
+* **Egy meglévő Azure Storage-fiók nélkül a Data Lake Storage Gen2 képességeket (hierarchikus névtér) engedélyezve**.
+* **Data Lake Storage Gen2 szolgáltatás engedélyezve van az Azure Storage-fiók**. Létrehozásával kapcsolatos utasításokért lásd: [Azure Data Lake Storage Gen2-storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
 * **A fájlrendszer** , hogy létre lett hozva a tárfiókban lévő hierarchikus névtér engedélyezve van.
 * **Az Azure HDInsight-fürt** együtt egy Data Lake Storage Gen2 engedélyezve van a tárfiókhoz való hozzáférést. Lásd: [használata Azure Data Lake Storage Gen2 Azure HDInsight-fürtök](data-lake-storage-use-hdi-cluster.md). Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
 
@@ -41,7 +41,7 @@ A DistCp segédprogram, amely segítségével különböző forrásokból szárm
 
     A kimenet kell biztosítania a tároló tartalmának listáját.
 
-3. Ehhez hasonlóan ellenőrizze e képes-e a tárfiók eléréséhez hierarchikus névtér esetében engedélyezve van a fürtből. Futtassa az alábbi parancsot:
+3. Ehhez hasonlóan ellenőrizze e képes-e a tárfiók eléréséhez hierarchikus névtér esetében engedélyezve van a fürtből. Futtassa a következő parancsot:
 
         hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
 

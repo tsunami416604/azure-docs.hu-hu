@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 824bedf782d6d227f2fa3adcf52492bb5a3eb478
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c018bec98fc9e1edc22a8535d06961d192f4c992
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696863"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55880414"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Előzetes verzió: Üzembe helyezése az Azure AD jelszóvédelem
 
@@ -169,7 +169,7 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
       A fenti példákban csak akkor lesz sikeres, ha az aktuálisan bejelentkezett felhasználó egyben a legfelső szintű tartomány Active Directory tartományi rendszergazda. Ha nem ez a helyzet, előfordulhat, hogy adja meg a - ForestCredential paraméter alternatív tartományi hitelesítő adatokat.
 
    > [!NOTE]
-   > Ha a proxykiszolgálók több vannak telepítve a környezetben, nem számít, melyik proxy kiszolgáló az erdő regisztrálásához használja.
+   > Ha a proxykiszolgálók több vannak telepítve a környezetben, nem számít, mely proxykiszolgáló az erdő regisztrálásához használatos.
 
    > [!TIP]
    > Előfordulhatnak olyan jelentős késleltetés (sok másodperc) egy adott Azure-bérlő esetében futtassa ezt a parancsmagot, a parancsmag végrehajtásának befejeződése előtt először. Csak akkor jelent hibát, ezt a késést nem tekinthető ijesztő.

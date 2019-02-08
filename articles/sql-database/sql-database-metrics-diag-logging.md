@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 24feef28edac73f625de1c1b7dfd9a4aaf9883af
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: f6874b1d97c36d22e60606ad8c8a356baec53b85
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734623"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893596"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -65,14 +65,14 @@ A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be az 
 
 | Telemetria adatbázisok figyelése | Önálló adatbázis és a készletezett adatbázisok támogatása | Felügyelt példány támogatása |
 | :------------------- | ------------------- | ------------------- |
-| [Minden metrika](sql-database-metrics-diag-logging.md#all-metrics): Dtu-k/Processzorhasználat (%), a dtu-k/CPU-korlát, a fizikai tartalmaz napló írási adatok olvasása a százalékos aránya, százalékos aránya, sikeres/sikertelen/letiltott által tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, storage, és XTP tároló (%). | Igen | Nem |
-| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): A lekérdezések futásidejének statisztikai adatait, például a CPU-használat és a lekérdezés időtartama statisztikai információkat tartalmaz. | Igen | Igen |
-| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): A lekérdezés várakozási statisztika (Mi a lekérdezések megvárta) kapcsolatos információt tartalmazza, például a Processzor, a napló és a ZÁROLÁS. | Igen | Igen |
-| [Hibák](sql-database-metrics-diag-logging.md#errors-dataset): Az adatbázis SQL-hibákkal kapcsolatos információkat tartalmaz. | Igen | Igen |
-| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Az adatbázis töltött a különböző várakozási típusok vár mennyi ideig kapcsolatos információt tartalmazza. | Igen | Nem |
-| [Időtúllépések](sql-database-metrics-diag-logging.md#time-outs-dataset): Az adatbázis időtúllépések információkat tartalmazza. | Igen | Nem |
-| [Blokkok](sql-database-metrics-diag-logging.md#blockings-dataset): Blokkoló események az adatbázison kapcsolatos információt tartalmazza. | Igen | Nem |
-| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Intelligent Insights teljesítményéről tartalmaz. További tudnivalókért lásd: [Intelligent Insights](sql-database-intelligent-insights.md). | Igen | Igen |
+| [Minden metrika](#all-metrics): Dtu-k/Processzorhasználat (%), a dtu-k/CPU-korlát, a fizikai tartalmaz napló írási adatok olvasása a százalékos aránya, százalékos aránya, sikeres/sikertelen/letiltott által tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, storage, és XTP tároló (%). | Igen | Nem |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): A lekérdezések futásidejének statisztikai adatait, például a CPU-használat és a lekérdezés időtartama statisztikai információkat tartalmaz. | Igen | Igen |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): A lekérdezés várakozási statisztika (Mi a lekérdezések megvárta) kapcsolatos információt tartalmazza, például a Processzor, a napló és a ZÁROLÁS. | Igen | Igen |
+| [Hibák](#errors-dataset): Az adatbázis SQL-hibákkal kapcsolatos információkat tartalmaz. | Igen | Igen |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Az adatbázis töltött a különböző várakozási típusok vár mennyi ideig kapcsolatos információt tartalmazza. | Igen | Nem |
+| [Időtúllépések](#time-outs-dataset): Az adatbázis időtúllépések információkat tartalmazza. | Igen | Nem |
+| [Blokkok](#blockings-dataset): Blokkoló események az adatbázison kapcsolatos információt tartalmazza. | Igen | Nem |
+| [SQLInsights](#intelligent-insights-dataset): Intelligent Insights teljesítményéről tartalmaz. További tudnivalókért lásd: [Intelligent Insights](sql-database-intelligent-insights.md). | Igen | Igen |
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -169,7 +169,7 @@ A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be a f
 
 | Erőforrás | Telemetriai adatok figyelése |
 | :------------------- | ------------------- |
-| **Felügyelt példány** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) virtuális magok száma, átlagos Processzorhasználat (%), i/o-kérelmek, bájtot írt vagy olvasott, foglalt tárhely tartalmaz, és a használt tárterület. |
+| **Felügyelt példány** | [ResourceUsageStats](#logs-for-managed-instances) virtuális magok száma, átlagos Processzorhasználat (%), i/o-kérelmek, bájtot írt vagy olvasott, foglalt tárhely tartalmaz, és a használt tárterület. |
 
 Felügyelt példány erőforrás diagnostics telemetriai adatainak streamelésének engedélyezéséhez kövesse az alábbi lépéseket:
 

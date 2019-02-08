@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Hogyan használható az elemzés módszer nyelvi elemzési API bizonyos természetes nyelvű bemeneti adatok elemzéséhez.
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: a14a685ba80dbd5e7e3d44e9032e5baaad5ef3fe
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b02b048719dd7707db7e97df3641a314b512177
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208635"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861680"
 ---
 # <a name="analyze-method"></a>Elemzési módszer
 
@@ -40,9 +40,9 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 Name (Név) | Typo | Kötelező | Leírás
 -----|-------|----------|------------
-**language**    | sztring | Igen | A kétbetűs ISO nyelv kódja elemzéshez használható. Például angol nyelven az "en".
+**language**    | Karakterlánc | Igen | A kétbetűs ISO nyelv kódja elemzéshez használható. Például angol nyelven az "en".
 **analyzerIds** | karakterláncok | Igen | Az elemzők a alkalmazni GUID azonosítók listája. További információ az elemzők dokumentációjában talál.
-**text**        | sztring | Igen | Nyers bemeneti elemezni. Ez lehet például egy szót vagy kifejezést, egy teljes mondatot, vagy egy teljes bekezdés vagy discourse rövid karakterlánc.
+**text**        | Karakterlánc | Igen | Nyers bemeneti elemezni. Ez lehet például egy szót vagy kifejezést, egy teljes mondatot, vagy egy teljes bekezdés vagy discourse rövid karakterlánc.
 
 ## <a name="response-json"></a>Válasz (JSON)
 
@@ -52,7 +52,7 @@ Az eredményeket a hasonlítania:
 
 Name (Név) | Típus | Leírás
 -----|------|--------------
-analyzerId | sztring | A megadott elemző GUID-ja
+analyzerId | Karakterlánc | A megadott elemző GUID-ja
 Eredmény | objektum | elemző eredménye
 
 Vegye figyelembe, hogy az eredmény típusát a bemeneti analyzer típusától függ.
@@ -67,8 +67,8 @@ Eredmény | mondat objektumok listája | a szövegben azonosított mondat határ
 [x] eredményt. Jogkivonatok | jogkivonat-objektumok listája | az adott mondaton belül azonosított token határok |
 [x] eredményt. Token [y]. Eltolás | int | a jogkivonat ofszetet karakter |
 [x] eredményt. Token [y]. Len | int | a jogkivonat karakterszámát |
-[x] eredményt. Token [y]. RawToken | sztring | Ezt a jogkivonatot, mielőtt normalizálási belül a karakterek |
-[x] eredményt. Token [y]. NormalizedToken | sztring | a karakter, biztonságosan használható legyen a normalizált űrlap egy [elemzési fa](Constituency-Parsing.md); például egy nyitó zárójel karakter "(" - LRB - válik |
+[x] eredményt. Token [y]. RawToken | Karakterlánc | Ezt a jogkivonatot, mielőtt normalizálási belül a karakterek |
+[x] eredményt. Token [y]. NormalizedToken | Karakterlánc | a karakter, biztonságosan használható legyen a normalizált űrlap egy [elemzési fa](Constituency-Parsing.md); például egy nyitó zárójel karakter "(" - LRB - válik |
 
 Példabemenet: "Ez egy tesztművelet. Hello.'
 Példa JSON-választ:

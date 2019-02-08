@@ -4,24 +4,24 @@ titleSuffix: Azure Cognitive Services
 description: Az szöveg-beszéd átalakítás szolgáltatással kapcsolatban a legnépszerűbb kérdésekre adott válaszok.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 9b8340221c61bedbe010b9ef280ada62cfee7a21
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: d93de4ff3f6dd00ac049ea9d83aebb7aad07137e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754871"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883287"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Szövegfelolvasás – gyakori kérdések
 
 Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse meg az [más támogatási lehetőségeket](support.md).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 **K: Mi a különbség, standard beszédfelismerési modellek és a egy egyéni beszédfelismerési modell között?**
 
@@ -63,5 +63,5 @@ További szolgáltatások segítő szkripteket a rögzítés lehetőséget bizto
 
 ## <a name="next-steps"></a>További lépések
 
-* [hibaelhárítással](troubleshooting.md)
+* [Hibaelhárítás](troubleshooting.md)
 * [Kibocsátási megjegyzések](releasenotes.md)

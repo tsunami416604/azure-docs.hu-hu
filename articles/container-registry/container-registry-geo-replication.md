@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: 784174c1fb2427441e0ed1a13b147d2440539fa9
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a83cf6b37a28ec38165778faa7a9ecc266cce7bd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870338"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858259"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikáció az Azure Container Registryben
 
@@ -26,14 +26,18 @@ A georeplikált beállításjegyzékbe a következő előnyöket nyújtja:
 * Nincsenek további forgalmi díjat képként kikerülnek az tárológazda ugyanabban a régióban egy helyi, a replikált beállításjegyzék
 * Egyetlen felügyeleti beállításjegyzék több régióban
 
+> [!NOTE]
+> Másolatait a tárolórendszerképek az egynél több Azure container registryben van szüksége, ha az Azure Container Registry támogatja a is [kép importálása](container-registry-import-images.md). Például egy DevOps-munkafolyamatban importálhat egy képet fejlesztési beállításjegyzék éles beállításjegyzékhez, anélkül, hogy a Docker-parancsokkal.
+>
+
 ## <a name="example-use-case"></a>Példa használati esetekhez
-Contoso fut, az Egyesült Államok, Kanada és Európában lévő nyilvános jelenlét webhely. E piacokon kiszolgálása a helyi és a hálózatközeli tartalommal, Contoso fut [az Azure Container Service](/azure/container-service/kubernetes/) (ACS) Kubernetes-fürtök az USA nyugati RÉGIÓJA, USA keleti RÉGIÓJA, közép-Kanada és Nyugat-Európa. A webhely alkalmazást, egy Docker-rendszerképet telepített a kód és a kép minden régióban használja. Tartalom helyi régióban, veszi át egy adatbázis, amely egyedi az egyes régiókban van kiépítve. Minden egyes regionális központi telepítés rendelkezik az erőforrásokhoz, mint a helyi adatbázis egyedi konfigurációjában.
+Contoso fut, az Egyesült Államok, Kanada és Európában lévő nyilvános jelenlét webhely. E piacokon kiszolgálása a helyi és a hálózatközeli tartalommal, Contoso fut [Azure Kubernetes Service](/azure/aks/) (AKS)-fürtök az USA nyugati RÉGIÓJA, USA keleti RÉGIÓJA, közép-Kanada és Nyugat-Európa. A webhely alkalmazást, egy Docker-rendszerképet telepített a kód és a kép minden régióban használja. Tartalom helyi régióban, veszi át egy adatbázis, amely egyedi az egyes régiókban van kiépítve. Minden egyes regionális központi telepítés rendelkezik az erőforrásokhoz, mint a helyi adatbázis egyedi konfigurációjában.
 
 A fejlesztői csapat található Seattle WA, az USA nyugati RÉGIÓJA adatközpont felhasználásával.
 
 ![Több beállításjegyzékek leküldése](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Több beállításjegyzékek leküldése*
 
-Előtt a georeplikációs funkciókat használ, a Contoso egy Egyesült Államokbeli székhelyű beállításjegyzék az USA nyugati RÉGIÓJA, Nyugat-Európában, egy további beállításjegyzék rendelkezett. Ezek a különböző régiók szolgálnak, a fejlesztői csapat kellett rendszerképek leküldése a két különböző beállításjegyzékek.
+Előtt a georeplikációs funkciókat használ, a Contoso egy Egyesült Államokbeli székhelyű beállításjegyzék az USA nyugati RÉGIÓJA, Nyugat-Európában, egy további beállításjegyzék rendelkezett. Ezek a különböző régiók kiszolgálására, a fejlesztői csapat leküldött rendszerképek két különböző beállításjegyzékek.
 
 ```bash
 docker push contoso.azurecr.io/public/products/web:1.2

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Nagy léptékű funkció használata a Face API-ban.
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 9289f7178a6e285b447041937f191d283fc2f2f0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2d96a04b1287033999dd5f026dd7d8d017259eb4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222898"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859046"
 ---
 # <a name="example-how-to-use-the-large-scale-feature"></a>Példa: A nagy méretű szolgáltatás használata
 
@@ -59,7 +59,7 @@ FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, Sub
 Az előfizetési kulcs és a hozzátartozó végpont az Azure portál Marketplace oldaláról szerezhető be.
 Lásd az [előfizetéseket](https://azure.microsoft.com/services/cognitive-services/directory/vision/).
 
-## <a name="step-2-code-migration-in-action"></a>2. lépés: Kód áttelepítése működés közben
+## <a name="step-2-code-migration-in-action"></a>2. lépés: Kód áttelepítése működés közben
 
 Ez a szakasz csak a PersonGroup és a FaceList alapú megvalósítások LargePersonGroup és LargeFaceList használatára történő áttelepítési folyamatával foglalkozik.
 Bár a LargePersonGroup/LargeFaceList kialakításában és belső megvalósításában más, mint a PersonGroup/FaceList, az API-felületek hasonlóak a visszafelé kompatibilitás érdekében.
@@ -78,11 +78,11 @@ Az adat migráció tekintetében lásd referenciaként lásd: [Hogyan lehet arco
 
 | FaceList API-k | LargeFaceList API-k |
 |:---:|:---:|
-| Létrehozás | Létrehozás |
+| Hozzon létre | Hozzon létre |
 | Törlés | Törlés |
 | Lekérés | Lekérés |
 | Lista | Lista |
-| Frissítés | Frissítés |
+| frissítés | frissítés |
 | - | Betanítás |
 | - | Betanítási állapot lekérdezése |
 
@@ -221,7 +221,7 @@ A különböző méretek esetén becsült betanítási időt sorolja fel a köve
 |:---:|:---:|
 | 1,000 | 1–2 s |
 | 10,000 | 5–10 s |
-| 100 000 | 1–2 perc |
+| 100,000 | 1–2 perc |
 | 1,000,000 | 10–30 perc |
 
 A nagy léptékű funkció jobb kihasználására célszerű néhány stratégiát megfontolni.

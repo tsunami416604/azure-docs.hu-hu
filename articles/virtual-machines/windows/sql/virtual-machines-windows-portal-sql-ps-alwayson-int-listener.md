@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/22/2017
+ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 76ebdc85db2c65b1ad99c1e7abe5e697f1c1284c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: dd09dd337cfe11729ef3ddc5d9b19f024d64300e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063998"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873002"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Egy vagy több Always On rendelkezésre állási csoport figyelője – erőforrás-kezelő konfigurálása
 Ez a témakör bemutatja, hogyan lehet:
@@ -40,16 +40,42 @@ Kapcsolódó témakörök a következők:
 
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
+## <a name="verify-powershell-version"></a>PowerShell-verziójának ellenőrzése
+
+Ebben a cikkben szereplő példák az Azure PowerShell-modul 5.4.1-es használatával vizsgálják.
+
+Ellenőrizze a PowerShell-modul 5.4.1 vagy újabb.
+
+Lásd: [Azure PowerShell-modul telepítéséhez](http://docs.microsoft.com/powershell/azure/install-az-ps).
+
 ## <a name="configure-the-windows-firewall"></a>A Windows tűzfal konfigurálása
+
 Az SQL Server-hozzáférés engedélyezése a Windows tűzfal konfigurálásához. A tűzfalszabályok engedélyezik a portokat használja a figyelő mintavétel, valamint az SQL Server-példány TCP-kapcsolatot. Részletes útmutatásért lásd: [Windows tűzfal konfigurálása az hozzáféréshez](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Hozzon létre egy bejövő szabályt az SQL Server-portot és a mintavételi portot.
 
 Ha Ön az Azure hálózati biztonsági csoporttal való hozzáférés korlátozása győződjön meg arról, hogy az engedélyezési szabályok közé tartoznak a háttér SQL Server virtuális gép IP-címek és a terheléselosztó nem fix IP-címek a rendelkezésre állási csoport figyelőjének és a fürt alapvető IP-címét, ha van ilyen.
 
+## <a name="determine-the-load-balancer-sku-required"></a>Határozza meg a terheléselosztó Termékváltozat megadása kötelező
+
+[Az Azure load balancer](../../../load-balancer/load-balancer-overview.md) 2 termékváltozatban érhető el: Alapszintű és Standard. A standard load balancer használata javasolt. Ha a virtuális gépeket egy rendelkezésre állási csoportban, az alapszintű load balancer számára engedélyezett. A standard load balancer szükséges, hogy az összes virtuális gép IP-címek szabványos IP-cím használatára.
+
+Az aktuális [Microsoft sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) egy rendelkezésre állási csoportot használja az alapszintű load balancer alapszintű IP-címmel.
+
+Ebben a cikkben szereplő példák a standard load balancer adja meg. A parancsfájl tartalmazza a példákban `-sku Standard`.
+
+```PowerShell
+$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
+```
+
+Alapszintű load balancer létrehozása, távolítsa el a `-sku Standard` a sorból, amely a terheléselosztó hoz létre. Példa:
+
+```PowerShell
+$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
+```
+
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Példa parancsfájl: Belső terheléselosztó létrehozása a PowerShell használatával
+
 > [!NOTE]
-> Ha létrehozta a rendelkezésre állási csoportnak a [Microsoft sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), a belső load balancer már létre lett hozva. 
-> 
-> 
+> Ha létrehozta a rendelkezésre állási csoportnak a [Microsoft sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), a belső load balancer már létre lett hozva.
 
 A következő PowerShell-parancsfájl egy belső terheléselosztót hoz létre, konfigurálja a terheléselosztási szabályok és állítja be az IP-címet a terheléselosztóhoz. A szkript futtatásához nyissa meg a Windows PowerShell ISE-ben, és illessze be a parancsfájlt a parancsfájl panelen. Használat `Connect-AzureRmAccount` való bejelentkezés a Powershellbe. Ha több Azure-előfizetéssel rendelkezik, használja a `Select-AzureRmSubscription ` az előfizetés beállításához. 
 
@@ -86,7 +112,7 @@ $SQLHealthProbe = New-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -Protoco
 
 $ILBRule = New-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP 
 
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe 
+$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 
 $bepool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB 
 
@@ -206,8 +232,8 @@ További információkért lásd: [konfigurálása Always On rendelkezésre áll
 A következő PowerShell-parancsmagok használatával hozzon létre egy Azure-beli virtuális gépek belső terheléselosztót.
 
 * [Új-azurermloadbalancer paranccsal](https://msdn.microsoft.com/library/mt619450.aspx) egy terheléselosztót hoz létre. 
-* [Új AzureRMLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) hoz létre egy előtérbeli IP-konfigurációt egy terheléselosztóhoz. 
-* [Új-AzureRmLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) hoz létre egy szabálykonfigurációt egy terheléselosztóhoz. 
-* [Új AzureRmLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) egy háttérbeli címkészlet beállítása egy terheléselosztót hoz létre. 
+* [New-AzureRMLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) creates a front-end IP configuration for a load balancer. 
+* [New-AzureRmLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) creates a rule configuration for a load balancer. 
+* [New-AzureRmLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) creates a backend address pool configuration for a load balancer. 
 * [Új AzureRmLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) hoz létre egy mintavételi konfigurációt egy terheléselosztóhoz.
 * [Remove-azurermloadbalancer paranccsal](https://msdn.microsoft.com/library/mt603862.aspx) terheléselosztó távolít el egy Azure-erőforráscsoportot.

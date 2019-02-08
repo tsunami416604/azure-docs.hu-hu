@@ -10,14 +10,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: d8232b1e29a3d2585e79cf56d0f180a5084fd13e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3e3c456da122e33a67b2ee3377bc15cb684b896
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979066"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864859"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure CLI-vel az Azure Data Lake Store használatának első lépései
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -37,7 +40,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Az Azure CLI** – lásd: [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) útmutatást.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage Gen1 hol jelentkezik be végfelhasználóként. A hozzáférési szintet a Data Lake Storage Gen1 fiók és egy fájlrendszert, majd szolgáltatás a bejelentkezett felhasználó hozzáférési szintjét. Előfordulhatnak azonban olyan egyéb megközelítések is lehet hitelesíteni a Data Lake Storage Gen1, amelyek **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
 

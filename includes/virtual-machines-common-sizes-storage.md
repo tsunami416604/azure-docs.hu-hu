@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: b4de9efbe85d5ab497bccd1742df23ddc1b3af43
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bb88736762219028d58fe70d0ec32309967c95a4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354659"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55830700"
 ---
 Tárolási optimalizált Virtuálisgép-méretek magas lemez-adatátviteli és i/o-e, és ideálisak a Big Data, SQL, nosql-alapú adatbázisok, az adattárházak és nagy tranzakciós adatbázisok.  Ilyenek például Cassandra, MongoDB, Cloudera vagy Redis. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint helyi tároló átviteli sebesség és a hálózati sávszélesség optimalizált méreteire vonatkoztatva számát.
 
@@ -31,7 +31,7 @@ Prémium szintű Storage: Támogatott
 
 Prémium szintű Storage gyorsítótárazást: Nem támogatott
 
-| Méret          | vCPU | Memória (GiB) | Ideiglenes lemez<sup>1</sup> (GiB) | NVMe lemezeket | NVMe lemezteljesítmény<sup>2</sup> (olvasási IOPS / MBps) | Host Cache Size<sup>3</sup> | Adatlemezek maximális száma | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) | 
+| Méret          | vCPU | Memória (GiB) | Ideiglenes lemez<sup>1</sup> (GiB) | NVMe lemezeket<sup>2</sup> | NVMe lemezteljesítmény<sup>3</sup> (olvasási IOPS / MBps) | Host Cache Size<sup>4</sup> | Adatlemezek maximális száma | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) | 
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
 | Standard_L8s_v2   |  8 |  64 |  80 |  1x1.92 TB  | 340,000 / 2,000 | – | 16 | 2 / 3,200  | 
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 680,000 / 4,500 | – | 32 | 4 / 6,400  | 
@@ -39,11 +39,13 @@ Prémium szintű Storage gyorsítótárazást: Nem támogatott
 | Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.7 M / 18,000   | – | 32 | 8 / 25,600 |
 | Standard_L80s_v2  | 80 | 640 | 800 | 10x1.92TB   | 3.4 M / 22,000   | – | 32 | 8 / 32,000 |
  
-<sup>1</sup> Lsv2 sorozatú virtuális gépek egy standard SCSI-alapú ideiglenes erőforrás lemez az operációs rendszer stránkování/felcserélés fájl használata (a Windows, Linux rendszeren /dev/sdb D:) rendelkezik. Ezt a lemezt biztosít a tároló 80 GB, 4 000 iops-t, és 80 MB/s átviteli sebesség a minden 8 Vcpu (pl. Standard_L80s_v2 biztosít 800 GiB 40 000 IOPS és 800 MB/s). Ez biztosítja, hogy az NVMe-meghajtókkal teljes dedikálhatja alkalmazás használatát.
+<sup>1</sup> Lsv2 sorozatú virtuális gépek egy standard SCSI-alapú ideiglenes erőforrás lemez az operációs rendszer stránkování/felcserélés fájl használata (a Windows, Linux rendszeren /dev/sdb D:) rendelkezik. Ezt a lemezt biztosít a tároló 80 GB, 4 000 iops-t, és 80 MB/s átviteli sebesség a minden 8 Vcpu (pl. Standard_L80s_v2 biztosít 800 GiB 40 000 IOPS és 800 MB/s). Ez biztosítja, hogy az NVMe-meghajtókkal teljes dedikálhatja alkalmazás használatát. Ez a lemez elmúló, és minden adat el fog veszni a Leállítás/felszabadítás.
 
-<sup>2</sup> Hyper-V NVMe közvetlen technológia biztonságosan leképezve a Vendég virtuális gép terén NVMe-meghajtókkal leszabályozás hozzáférést biztosít.  A maximális teljesítmény eléréséhez szükséges vagy a legújabb WS2019 build vagy Ubuntu 18.04, 16.04 használatával az Azure Marketplace-ről.  Írási teljesítmény i/o-mérete, a meghajtó terhelés és a tárolókapacitás kihasználtságát alapján változik.
+<sup>2</sup> helyi NVMe lemezeket a rövid élettartamú, az adatok a lemezeken lévő elvesznek, ha, állítsa le vagy szabadítsa fel a virtuális Gépet.
 
-<sup>3</sup> Lsv2-sorozat virtuális gépei nem biztosít gazdagép gyorsítótár adatlemez nem tudják igénybe a Lsv2 számítási feladatokhoz.  Azonban Lsv2 virtuális gépek az Azure virtuális gép rövid élettartamú operációsrendszer lemez lehetőséget (akár 30 GiB) képes kezelni. 
+<sup>3</sup> Hyper-V NVMe közvetlen technológia leszabályozás férhet hozzá biztonságosan a Vendég virtuális gép terén leképezett helyi NVMe-meghajtókkal.  A maximális teljesítmény eléréséhez szükséges vagy a legújabb WS2019 build vagy Ubuntu 18.04, 16.04 használatával az Azure Marketplace-ről.  Írási teljesítmény i/o-mérete, a meghajtó terhelés és a tárolókapacitás kihasználtságát alapján változik.
+
+<sup>4</sup> Lsv2-sorozat virtuális gépei nem biztosít gazdagép gyorsítótár adatlemez nem tudják igénybe a Lsv2 számítási feladatokhoz.  Azonban Lsv2 virtuális gépek az Azure virtuális gép rövid élettartamú operációsrendszer lemez lehetőséget (akár 30 GiB) képes kezelni. 
 
 
 

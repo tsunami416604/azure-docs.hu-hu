@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ismerje meg a séma formátuma a a Knowledge Exploration Service (KES) API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 4fa8f072d420a0245b9de65482ab4c97fa775bdf
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 23120e45a1070f46ae4e1927a29bdab4c990d96f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227301"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860711"
 ---
 # <a name="schema-format"></a>Sémaformátum
 
@@ -43,12 +43,12 @@ Alább felsoroljuk a attribútum támogatott adattípusok:
 
 | Typo | Leírás | Műveletek | Példa |
 |------|-------------|------------|---------|
-| Karakterlánc | Karakterlánc (1 és 1024 karakter) | egyenlő, starts_with | "hello world" |
+| String | Karakterlánc (1 és 1024 karakter) | egyenlő, starts_with | "hello world" |
 | Int32 | 32 bites, előjeles egész | egyenlő, starts_with, is_between | 2016 |
 | Int64 | 64 bites, előjeles egész | egyenlő, starts_with, is_between | 9876543210 |
-| Dupla | Kétszeres pontosságú lebegőpontos értéket | egyenlő, starts_with, is_between | 1.602e-19 |
+| Double | Kétszeres pontosságú lebegőpontos értéket | egyenlő, starts_with, is_between | 1.602e-19 |
 | Dátum | (1400-01-01-9999-12-31) dátum | egyenlő, is_between | '2016-03-14' |
-| GUID | Globálisan egyedi azonosító | egyenlő | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
+| Guid | Globálisan egyedi azonosító | egyenlő | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
 | Blob | Belsőleg tömörített nem indexelt adatok | *Nincsenek* | "Minden ember és minden szervezet tett kötelezettségvállalásai biztosítson hatékony eszközöket" |
 | Összetett | Összeállítás több alárendelt attribútumok| *N/A* | {"Name": "harry shum", "Kapcsolat": "microsoft"} |
 

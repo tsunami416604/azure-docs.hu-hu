@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Küldje el a nyers szöveg feldolgozásra a Cognitive Services Text Analytics műveletek hozzáférési kulcs beszerzése.
 services: cognitive-services
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: d52d241131e3222a10648289183ee656f119641d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d19b71d388974ab0d2adbbdf2006fe4e37da464f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226451"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865437"
 ---
 # <a name="how-to-find-endpoints-and-access-keys-for-the-text-analytics-cognitive-service"></a>A Text Analytics Cognitive Service megkeresése a végpontok és a hozzáférési kulcsok
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: fb8922424de064bc63f793479d8c3a98b506b844
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3f41edef56b238d8789264d00d73998794fec7eb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232515"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881995"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-végpontok
 A Microsoft Azure Traffic Manager lehetővé teszi, hogy vezérelheti a hálózati forgalom hogyan ossza el a különböző adatközpontokban futó alkalmazások központi telepítéseit. A Traffic Manager konfigurálása minden egyes alkalmazás üzembe helyezési-végpontként. Amikor a Traffic Manager DNS-kérelmet kap, azt úgy dönt, a DNS-válaszban visszaadandó elérhető végpontot. A TRAFFIC manager végpont aktuális állapota és a forgalom-útválasztási módszer a kiválasztott adatbázisok. További információkért lásd: [Traffic Manager működése](traffic-manager-how-it-works.md).
@@ -63,7 +63,7 @@ Beágyazott végpontokat össze több Traffic Manager-profilokat hozhat létre r
 
 További megfontolásokat a alkalmazni: Web Apps Traffic Manager-végpontként konfigurálásakor:
 
-1. Web Apps csak a "Standard" Termékváltozat vagy meghaladja a jogosultak a Traffic Managerrel történő használathoz. Sikertelen kísérlet egy alacsonyabb termékváltozat webes alkalmazás hozzáadásához. A Traffic Manager többé nem forgalmat küld a webalkalmazást egy meglévő Web Apps-Termékváltozat alacsonyabb szolgáltatásszintre eredmények.
+1. Web Apps csak a "Standard" Termékváltozat vagy meghaladja a jogosultak a Traffic Managerrel történő használathoz. Sikertelen kísérlet egy alacsonyabb termékváltozat webes alkalmazás hozzáadásához. A Traffic Manager többé nem forgalmat küld a webalkalmazást egy meglévő Web Apps-Termékváltozat alacsonyabb szolgáltatásszintre eredmények. További információ a támogatott csomagok: a [App Service-csomagok](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/)
 2. Ha a végpont HTTP-kérést kap, akkor használja a "host" a kérelemben szereplő tartományfejléc meghatározásához melyik webalkalmazás kell kiszolgálni a kérelmet. Az állomásfejlécnek kezdeményezhető a kérést, például a "contosoapp.azurewebsites.net" DNS-nevét tartalmazza. Webalkalmazással együtt egy másik DNS-név használatához regisztrálni kell a DNS-nevet az alkalmazás az egyéni tartomány nevét. Ha egy Azure-végpont hozzáadása egy webalkalmazás-végpontot, a Traffic Manager-profil DNS neve automatikusan regisztrálja az alkalmazás. A végpont törlése a rendszer automatikusan törli a regisztrációt.
 3. Minden egyes Traffic Manager-profil legfeljebb egy webalkalmazás-végpontot rendelkezhet minden egyes Azure-régióból. Külső végpontként megkerüléséhez ezt a korlátozást, konfigurálhatja egy webalkalmazást. További információkért lásd: a [– gyakori kérdések](traffic-manager-faqs.md#traffic-manager-endpoints).
 

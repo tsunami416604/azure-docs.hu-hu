@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: bffdbf58929a0cb7525726be53d83794adf315bf
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: a180dd92af20df5cd8f7dbfd12687e7cddd223f2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295576"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856631"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető Infografika: A Machine learning alapjai algoritmuspéldákkal
 Töltse le a machine learning alapjait kapcsolatos gyakori machine learning kérdésre népszerű algoritmusok könnyen érthető infografika áttekintése. Algoritmus példákkal a machine learning kezdő algoritmusok közül melyiket szeretné használni, és mire használhatók a megismerése érdekében.
@@ -32,8 +32,8 @@ Töltse le a machine learning alapjait kapcsolatos gyakori machine learning kér
 * A különböző típusú gépi tanulási algoritmusok, használatuk és arról, hogy a megfelelőt a megoldáshoz válassza alaposabb ismertetéséhez lásd: [algoritmusok kiválasztása a Microsoft Azure Machine Learninghez](algorithm-choice.md).
 * A Machine Learning Studióban elérhető összes gépi tanulási algoritmusok, kategória szerint, lásd: [modell inicializálása] [ initialize-model] a Machine Learning Studio algoritmus-és modul segítségével.
 * Betűrend szerinti rendezés listájáért algoritmusok és a Machine Learning Studióban modulok, lásd: [betűrend szerinti lista Machine Learning Studio-modulok] [ a-z-list] a Machine Learning Studio algoritmus- és modul segítségével.
-* Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](studio-overview-diagram.md) című cikket.
 * Az Azure AI-katalógusban, és a Közösség által készített rendelkezésére álló számos forrás áttekintését, lásd: [megosztás és az Azure AI katalógusban erőforrások felderítéséhez](gallery-how-to-use-contribute-publish.md).
+* Töltse le, és nyomtassa ki a Machine Learning Studio képességeit áttekintő diagram: [Microsoft Azure Machine Learning Studio képességeinek áttekintése (PDF)](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf).
 
 
 

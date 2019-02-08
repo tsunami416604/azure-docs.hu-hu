@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: A Válaszkeresés projekt Javában történő használatának első lépései.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 0353736b3b66c58288dbd3d351b3b3dd53f467d6
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fc0f8519644c5b9f722ab67f2e9d600a0be7960b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226876"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883525"
 ---
 # <a name="quickstart-project-answer-search-query-in-java"></a>Gyors útmutató: Projekt válasz keresési lekérdezés Java nyelven
 Ez a cikk Javát használ annak bemutatására, hogyan használható a Microsoft Cognitive Services részét képező Bing Answer Search API az Azure-on. Az API egy REST-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre.

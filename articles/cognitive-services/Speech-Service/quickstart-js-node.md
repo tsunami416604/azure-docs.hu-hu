@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ez az útmutató segítségével egy hang-szöveg transzformációs Konzolalkalmazás létrehozása a node.js-ben a Speech SDK használatával. Ha elkészült, a számítógép mikrofonjával valós időben konvertálhat át beszédet szöveggé.
 services: cognitive-services
 author: fmegen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 1/16/2019
 ms.author: fmegen
-ms.openlocfilehash: 99938f8b64339556c0ee4b9caa9124c609159af6
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5fa0b6d2a361fdbf372ba73fed9d8e2c48cb3630
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747272"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871217"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>Gyors útmutató: NODE.js-hez készült beszédfelismerést a Speech SDK-val
 

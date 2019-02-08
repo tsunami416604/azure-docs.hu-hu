@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: A Face API használatával felismerheti az arcokat a képeken.
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 8c89a43910a5e98286a82de8626870d3aec55b94
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 30d5294defe02ca6c8cfd588648429859bdf19ad
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214211"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856394"
 ---
 # <a name="example-how-to-detect-faces-in-image"></a>Példa: Hogyan Arcfelismerés képen
 
@@ -54,7 +54,7 @@ Alternatív megoldásként az előfizetési kulcs is megadható az a HTTP-kérel
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>2. lépés: A szolgáltatásba töltsön fel egy képet, és hajtsa végre az arcfelismerés
+## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>2. lépés: A szolgáltatásba töltsön fel egy képet, és hajtsa végre az arcfelismerés
 
 Az arcfelismerés végeztetésének legalapvetőbb módja a kép közvetlen feltöltése. Ez „POST” kérés küldését jelenti application/octet-stream tartalomtípussal, az adatok olvasása JPEG képről történik. A kép maximális mérete 4 MB.
 

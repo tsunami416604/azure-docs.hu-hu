@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: A Custom Speech Service most már a beszédfelismerési szolgáltatás részét képezi. Váltson a beszédfelismerési szolgáltatás számára, hogy a legújabb minőségi és frissítéseket.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 594233b9e345f9578c218b042a64ea167d50addb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 698962aa0e3d72b204c4e990aa1384b44bf3896f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211032"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856892"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>A Custom Speech Service áttelepít a beszédszolgáltatás
 
@@ -40,12 +40,6 @@ A díjszabási modell az egyszerűbb, a beszédfelismerési szolgáltatás egy �
 3. Kövesse a gyors útmutatók és az SDK-minták a megfelelő API-k használata. A REST API-k használatakor is szeretné használni a megfelelő végpontokra és erőforrás kulcsainak.
 
 4. A Speech Service és az API-k használata az ügyfélalkalmazás frissítése.
-
-> [!NOTE]
-> * Ha engedélyezte a beszéd, a Language Understanding (LUIS), LUIS ugyanabban a régióban egy erőforrást a LUIS, valamint a beszédszolgáltatások fog működni. További információkért lásd: [ismeri fel a speech leképezések](how-to-recognize-intents-from-speech-csharp.md).
-> * Szöveg szövegfordítás nem szerepel a Speech Service. Ez a funkció a saját Azure-erőforrás előfizetésre van szükség.
- 
-
 
 ## <a name="migration-for-existing-customers"></a>Meglévő ügyfelek migrálása
 

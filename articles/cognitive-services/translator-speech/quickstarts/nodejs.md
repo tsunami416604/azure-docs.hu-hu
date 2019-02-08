@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Információ és kódminták segítségével ismerkedhet meg a Translator Speech API használatának alapjaival.
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8f2adf743760c85b8c2a75c0f398bc5b61fd1061
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a76d3c3ed54b3b4d9d79cd778c75719dd12507d5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754235"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874022"
 ---
 # <a name="quickstart-translator-speech-api-with-nodejs"></a>Gyors útmutató: Translator Speech API a node.js használatával 
 <a name="HOLTop"></a>

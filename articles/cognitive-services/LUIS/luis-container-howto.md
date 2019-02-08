@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: A LUIS-tároló a betanított vagy a közzétett alkalmazást tölt be egy docker-tárolót, és hozzáférést biztosít az API-végpontokat a tárolót a lekérdezés előrejelzéseket.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 97f11523c0418caaee66930c87a7de64570097d6
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 1ae4396c6b91f81e273e6ad171f4cac9b55445f6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296902"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864725"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -252,18 +252,18 @@ További [példák](luis-container-configuration.md#example-docker-run-commands)
 
 A tároló REST-alapú lekérdezési előrejelzési végpontot API-kat biztosít. Közzétett (előkészítési vagy termelési) alkalmazások végpontoknak egy _különböző_ útvonalat, mint a végpontok betanított alkalmazásokhoz. 
 
-Használja a gazdagép https://localhost:5000, API-k tároló. 
+Használja a gazdagép `https://localhost:5000`, API-k tároló. 
 
 |Csomag típusa|Módszer|Útválasztás|Lekérdezési paraméterek|
 |--|--|--|--|
-|Közzétéve|[Első](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& előkészítés<br>[&timezoneOffset]<br>[& részletes]<br>[& log]<br>|
+|Közzétett|[Első](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& előkészítés<br>[&timezoneOffset]<br>[& részletes]<br>[& log]<br>|
 |Betanított|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[& részletes]<br>[& log]|
 
 A lekérdezési paraméterek konfigurálása módját és a lekérdezésekre adott válaszok adja vissza:
 
 |Lekérdezési paraméter|Typo|Cél|
 |--|--|--|
-|`q`|sztring|A felhasználó utterance (kifejezés).|
+|`q`|Karakterlánc|A felhasználó utterance (kifejezés).|
 |`timezoneOffset`|szám|A timezoneOffset lehetővé teszi, hogy [időzóna módosítása](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) az előre összeállított entitások datetimeV2 használják.|
 |`verbose`|logikai|Adja vissza minden leképezések és eredményeiket, ha a beállítása igaz értékre. Alapértelmezett érték FALSE (hamis), csak a felső leképezést ad vissza.|
 |`staging`|logikai|Átmeneti környezet eredményei, ha az értéket ad vissza lekérdezés beállítása igaz értékre. |

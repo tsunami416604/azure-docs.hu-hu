@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: cb44311ecdf6a2c9284b14884184863237422f96
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e7939b8d7a6a64519ac8239591c37e06ced56599
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754540"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890518"
 ---
 # <a name="service-fabric-application-lifecycle"></a>A Service Fabric-alkalmazás-életciklus
 Egyéb platformok esetén az Azure Service fabric-alkalmazás általában halad végig a következő fázisok szerint: tervezési, fejlesztési, tesztelési, üzembe helyezés, frissítése, karbantartási és eltávolítását. A Service Fabric első osztályú támogatási szolgáltatásokat biztosít a felhőalapú alkalmazások, a fejlesztéstől az üzembe helyezés, a napi felügyeleti és a karbantartási végleges leszerelésének alkalmazás teljes életciklusa. A modell lehetővé teszi, hogy több különböző szerepkörök egymástól függetlenül részt vesznek az alkalmazásfejlesztési életciklust. Ez a cikk áttekintést az API-k és azok hogyan használhatók a eltérő szerepkörök fázisai a a Service Fabric-alkalmazás életciklusa során.
@@ -58,7 +58,7 @@ Lásd: [alkalmazás üzembe helyezése](service-fabric-deploy-remove-application
 
 ## <a name="test"></a>Tesztelés
 1. A helyi fejlesztési fürt vagy egy test-fürtöt, üzembe helyezése után egy *fejlesztői szolgáltatás* a beépített feladatátvételi tesztkörnyezet használatával futtatja a [ **FailoverTestScenarioParameters** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters) és [ **FailoverTestScenario** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenario) osztályok, vagy a [ **Invoke-ServiceFabricFailoverTestScenario** parancsmag](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps). A feladatátvételi teszt forgatókönyv fontos átmenetek és feladatátvételi teszteket, hogy, hogy továbbra is elérhető, és üzemel az adott szolgáltatást futtatja.
-2. A *fejlesztői szolgáltatás* majd futtatja a beépített káosz teszt forgatókönyv használata a [ **ChaosTestScenarioParameters** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) és [  **ChaosTestScenario** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario#System_Fabric_Testability_Scenario_ChaosTestScenario) osztályok, vagy a [ **Invoke-ServiceFabricChaosTestScenario** parancsmag](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps). A chaos tesztkörnyezet kapott több csomópont, a kódcsomag és a replika hibák véletlenszerűen a fürtbe.
+2. A *fejlesztői szolgáltatás* majd futtatja a beépített káosz teszt forgatókönyv használata a [ **ChaosTestScenarioParameters** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) és [  **ChaosTestScenario** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario) osztályok, vagy a [ **Invoke-ServiceFabricChaosTestScenario** parancsmag](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps). A chaos tesztkörnyezet kapott több csomópont, a kódcsomag és a replika hibák véletlenszerűen a fürtbe.
 3. A *fejlesztői szolgáltatás* [teszteli a szolgáltatások közötti kommunikációs](service-fabric-testability-scenarios-service-communication.md) tesztelési helyzetek, amely körül a fürt elsődleges replikára áthelyezése készítésével.
 
 Lásd: [Fault Analysis Service bemutatása](service-fabric-testability-overview.md) további információt.

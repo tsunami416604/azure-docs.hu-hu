@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban fog létrehozni egy egyszerű .NET-keretrendszer alkalmazás rögzítése felhasználói speech, azt fordítása más nyelvre és a szöveg a parancssorba. Ez az útmutató Windows-felhasználók számára tervezték.
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 948565bc3266b2835a8948c391442c132d93471b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f39012b02174cd5a14032efccdc1977579b7ff70
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227675"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859997"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Gyors útmutató: Lefordítja a beszéd, a beszéd SDK-val .NET-keretrendszer
 

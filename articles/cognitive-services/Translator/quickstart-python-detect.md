@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan állapíthatja meg egy adott szöveg nyelvét a Python és a Translator Text REST API használatával.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 70b73fec4a6955bc1fcc91cb3895b07fd667ebca
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5aee82695a5172f590f5e117058961187ef27a0d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692738"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856954"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>Gyors útmutató: A Translator Text API segítségével észlelheti a szöveg nyelvét Python használatával
 

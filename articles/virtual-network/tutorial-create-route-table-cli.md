@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 8bfa4178baae0d92f7efb5ea156cfd35a8b32b1b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 08189522f4f73e996ed98f3996f87da8d93b5d2a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157465"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895635"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Hálózati forgalom továbbítása az Azure CLI használatával útválasztási táblázat
 
@@ -44,7 +44,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="create-a-route-table"></a>Útválasztási táblázat létrehozása
 
-Mielőtt létrehozhatna egy útválasztási táblázatot, hozzon létre egy erőforráscsoportot [az csoport létrehozása](/cli/azure/group#az_group_create) az ebben a cikkben létrehozott összes erőforrást. 
+Mielőtt létrehozhatna egy útválasztási táblázatot, hozzon létre egy erőforráscsoportot [az csoport létrehozása](/cli/azure/group) az ebben a cikkben létrehozott összes erőforrást. 
 
 ```azurecli-interactive
 # Create a resource group.
@@ -78,7 +78,7 @@ az network route-table route create \
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
 
-Mielőtt hozzárendelhetne egy útválasztási táblázatot egy alhálózathoz, akkor hozzon létre egy virtuális hálózatot és alhálózatot. Hozzon létre egy virtuális hálózatot egyetlen alhálózattal rendelkező [az network vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create).
+Mielőtt hozzárendelhetne egy útválasztási táblázatot egy alhálózathoz, akkor hozzon létre egy virtuális hálózatot és alhálózatot. Hozzon létre egy virtuális hálózatot egyetlen alhálózattal rendelkező [az network vnet létrehozása](/cli/azure/network/vnet).
 
 ```azurecli-interactive
 az network vnet create \
@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-Társítsa a *myRouteTablePublic* útválasztási táblázatot az *nyilvános* alhálózat [az hálózati virtuális hálózat alhálózati frissítés](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update).
+Társítsa a *myRouteTablePublic* útválasztási táblázatot az *nyilvános* alhálózat [az hálózati virtuális hálózat alhálózati frissítés](/cli/azure/network/vnet/subnet).
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -136,7 +136,7 @@ az vm create \
 
 A virtuális gép üzembe helyezése néhány percet vesz igénybe. Csak akkor folytassa a következő lépés az Azure befejezte a virtuális gép létrehozását és a virtuális gép kimenetet ad vissza. 
 
-Ahhoz, hogy egy hálózati adapter továbbíthassa a neki küldött, de nem a saját IP-címére címzett forgalmat, engedélyeznie kell az IP-továbbítást a hálózati adapteren. A hálózati adaptert az IP-továbbítás engedélyezése [az network nic update](/cli/azure/network/nic#az_network_nic_update).
+Ahhoz, hogy egy hálózati adapter továbbíthassa a neki küldött, de nem a saját IP-címére címzett forgalmat, engedélyeznie kell az IP-továbbítást a hálózati adapteren. A hálózati adaptert az IP-továbbítás engedélyezése [az network nic update](/cli/azure/network/nic).
 
 ```azurecli-interactive
 az network nic update \
@@ -145,7 +145,7 @@ az network nic update \
   --ip-forwarding true
 ```
 
-A virtuális gépen, az operációs rendszeren, vagy egy a virtuális gépen futó alkalmazáson belül szintén működnie kell a hálózati forgalom továbbításának. A virtuális gép operációs rendszer, amely IP-továbbítást [az virtuálisgép-bővítmény csoportot](/cli/azure/vm/extension#az_vm_extension_set):
+A virtuális gépen, az operációs rendszeren, vagy egy a virtuális gépen futó alkalmazáson belül szintén működnie kell a hálózati forgalom továbbításának. A virtuális gép operációs rendszer, amely IP-továbbítást [az virtuálisgép-bővítmény csoportot](/cli/azure/vm/extension):
 
 ```azurecli-interactive
 az vm extension set \
@@ -268,7 +268,7 @@ Zárja be az SSH-munkamenet egyaránt a *myVmPublic* és *myVmPrivate* virtuáli
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, [az csoport törlése](/cli/azure/group#az_group_delete) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
+Ha már nincs rá szükség, [az csoport törlése](/cli/azure/group) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

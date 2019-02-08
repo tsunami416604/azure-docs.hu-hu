@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével keresse meg a Bing Entity Search SDK a Javához készült rendelkező entitások
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 5911719e0277d0ac842b285aebc03369aa82621f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1534b2a85067867800c147c86ee7d82374de8794
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757467"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866195"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Gyors útmutató: A Bing Entity Search SDK Java-keresési kérelem küldése
 

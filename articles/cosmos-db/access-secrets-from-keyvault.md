@@ -1,6 +1,6 @@
 ---
 title: A Key Vault használatával tárolhatja és érheti el az Azure Cosmos DB-kulcsok
-description: Az Azure Key Vault használatával tárolhatja és érheti el az Azure Cosmos DB kapcsolati sztring, kulcsok, URI-t a.
+description: Az Azure Key Vault használatával tárolhatja és érheti el az Azure Cosmos DB kapcsolati sztring, a kulcsokat, a végpontok.
 author: rafats
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
 ms.reviewer: sngun
-ms.openlocfilehash: 8a3863ff67549c77692f8629c2e7315aec94faf8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 770e1e543a16bb54acc216aa550c44be26ab7a1a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463310"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858451"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Biztonságos Azure Key Vault használatával az Azure Cosmos-kulcsok 
 
-Azure Cosmos DB használatával az alkalmazások számára, amikor az adatbázis, a gyűjtemények, dokumentumok hozzáférhet az alkalmazás konfigurációs fájljában a végpont URI-t és a kulcs használatával.  Azonban akkor sem biztonságos kulcsokat és URL-címet közvetlenül a helyezi az alkalmazáskód, mert a tiszta szöveges formátumban mindenki számára elérhetők. Győződjön meg arról, hogy az URI és kulcsok is elérhető, de biztonságos mechanizmus segítségével szeretné. Ez az, ahol az Azure Key Vault segítségével biztonságosan tárolhatja, és a titkos alkalmazáskulcsok kezelése.
+Amikor az alkalmazások Azure Cosmos DB használatával, az adatbázis, a gyűjtemények, dokumentumok hozzáférhet az alkalmazás konfigurációs fájljában a végpont és a kulcs használatával.  Azonban akkor sem biztonságos kulcsokat és URL-címet közvetlenül a helyezi az alkalmazáskód, mert a tiszta szöveges formátumban mindenki számára elérhetők. Győződjön meg arról, hogy a végpont és a kulcsok nem érhető el, de biztonságos mechanizmus segítségével szeretné. Ez az, ahol az Azure Key Vault segítségével biztonságosan tárolhatja, és a titkos alkalmazáskulcsok kezelése.
 
 A következő lépések szükségesek, tárolására, és olvassa el az Azure Cosmos DB tárelérési kulcsok a Key Vaultból:
 

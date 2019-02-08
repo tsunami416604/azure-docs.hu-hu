@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 08d9978134ce214a468691ec367fb1797f6e86fc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f7536b5d0815351d2e6cb67705060d2e1046c970
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457751"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857872"
 ---
 # <a name="query-an-azure-cosmos-container"></a>A lekérdezés egy Azure Cosmos-tárolóhoz
 
-Ez a cikk ismerteti, hogyan kérdezhet le egy (gyűjtemény, gráf vagy táblázat típusú) tárolót az Azure Cosmos DB-ben.
+Ez a cikk bemutatja, hogyan kérdezhet le egy tárolót az Azure Cosmos DB (gyűjtemény, graph vagy tábla).
 
 ## <a name="in-partition-query"></a>Partíción belüli lekérdezés
 
-Tárolók, adatokat kérdezhet le, ha a lekérdezés a partíció megadott szűrőjének, amikor az Azure Cosmos DB automatikusan átirányítja a lekérdezést a szűrőben meghatározott partíciós kulcsérték-értékeknek megfelelő partíciókhoz. A következő lekérdezés például az "XMS-0001" partíciókulcs-értékkel tartozó összes dokumentumot tartalmazó DeviceId partíció lesz irányítva.
+Tárolók, adatokat kérdezhet le, ha a lekérdezés a partíció megadott szűrőjének, amikor az Azure Cosmos DB automatikusan kezeli a lekérdezést. A lekérdezés a partíciós kulcs szűrőben megadott értékeknek megfelelő partíciókhoz irányítja. Ha például a következő lekérdezés irányítja a rendszer a `DeviceId` partíció található, a megfelelő partíciókulcs-értékkel dokumentumokat tartalmazó `XMS-0001`.
 
 ```csharp
 // Query using partition key into a class called, DeviceReading
@@ -30,7 +30,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 ## <a name="cross-partition-query"></a>Többpartíciós kiterjedő lekérdezés
 
-A következő lekérdezés nem rendelkezik a partíciókulcsra (DeviceId) vonatkozó szűrővel, és minden partícióra kiterjed, ahol a partíció indexén lesz végrehajtva. A többpartíciós lekérdezés végrehajtásához állítsa az **EnableCrossPartitionQuery** értéket igazra (vagy adja meg az x-ms-documentdb-query-enablecrosspartition értéket a REST API-ban).
+A következő lekérdezés nem tartalmaz egy szűrőt a partíciókulcs (`DeviceId`), és az összes partíciót, amelyen fut a partíció indexe alapján van rendezve. Több partícióra kiterjedő lekérdezések futtatása, állítsa be `EnableCrossPartitionQuery` igaz (vagy `x-ms-documentdb-query-enablecrosspartition`  a REST API-ban).
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading
@@ -40,11 +40,11 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
 
-A Cosmos DB az SQL használatával támogatja a COUNT, MIN, MAX és AVG összesítő függvényeket a tárolókban. A tárolókra vonatkozó összesítő függvények az SDK 1.12.0-s és újabb verzióiban használhatók. A lekérdezéseknek egyetlen összesítő operátort kell tartalmazniuk, valamint egyetlen értéket a vetítésben.
+Az Azure Cosmos DB támogatja az aggregátumfüggvények COUNT, MIN, MAX és átlagos keresztül tárolók SQL használatával. Az aggregátumfüggvények keresztül tárolók kezdődően az SDK-verzió 1.12.0 és újabb verziók. Lekérdezések tartalmaznia kell egy egyetlen összesítő operátort, és egyetlen értéket kell adni a leképezésben.
 
 ## <a name="parallel-cross-partition-query"></a>Párhuzamos többpartíciós lekérdezés
 
-A Cosmos DB SDK 1.9.0-s és újabb verziói támogatják a párhuzamos lekérdezés-végrehajtási lehetőségeket.  A párhuzamos többpartíciós lekérdezésekkel kis késésű többpartíciós lekérdezések hajthatók végre. A következő lekérdezés például a partíciókon való párhuzamos futtatásra van konfigurálva.
+Azure Cosmos DB SDK 1.9.0-s és újabb verziói támogatják a párhuzamos lekérdezés-végrehajtási lehetőségeket. A párhuzamos többpartíciós lekérdezésekkel kis késésű többpartíciós lekérdezések hajthatók végre. A következő lekérdezés például a partíciókon való párhuzamos futtatásra van konfigurálva.
 
 ```csharp
 // Cross-partition Order By Query with parallel execution
@@ -57,15 +57,15 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 
 A lekérdezések párhuzamos végrehajtását az alábbi paraméterek beállításával kezelheti:
 
-- **MaxDegreeOfParallelism**: A tároló partíciók állítja be egyidejű hálózati kapcsolatok maximális számát. Ha ennek a tulajdonságnak az értéke -1, a párhuzamosság szintjét az SDK felügyeli. Ha a MaxDegreeOfParallelism érték nincs megadva, vagy az értéke 0 (ez az alapértelmezett érték), akkor csak egy hálózati kapcsolat jön létre a tároló partícióihoz.
+- **MaxDegreeOfParallelism**: A tároló partíciók állítja be egyidejű hálózati kapcsolatok maximális számát. Ha ez a tulajdonság a -1, az SDK kezeli a párhuzamosság foka. Ha a `MaxDegreeOfParallelism` nem megadott, vagy az értéke 0, amely az alapértelmezett érték, egy egyetlen hálózati kapcsolat a tároló partíciókra.
 
-- **MaxBufferedItemCount**: Ügyletek ügyféloldali memóriahasználat és a késés lekérdezése. Ha kihagyja ezt a beállítást, vagy -1 értéket ad meg, akkor a párhuzamos lekérdezés-végrehajtás során pufferelt elemek számát az SDK felügyeli.
+- **MaxBufferedItemCount**: Ügyletek ügyféloldali memóriahasználat és a késés lekérdezése. Ha kihagyja ezt a beállítást, vagy a -1 értékre állítva, az SDK kezeli a párhuzamos lekérdezés-végrehajtás során pufferelt elemek számát.
 
-Ha a gyűjtemény állapota azonos, a párhuzamos lekérdezés ugyanazon sorrendben adja vissza az értékeket, mint egy soros lekérdezés esetén. A rendezési operátorokat (ORDER BY és/vagy TOP) is tartalmazó, több partícióra kiterjedő lekérdezések végrehajtásakor az Azure Cosmos DB SDK párhuzamosan hajtja végre a lekérdezéseket a partíciókon, majd egyesíti a részlegesen tárolt eredményeket az ügyféloldalon, ezáltal globálisan rendezett eredményeket ad vissza.
+A gyűjtemény állapota azonos, a a párhuzamos lekérdezés ugyanazon sorrendben, mint a soros lekérdezés eredményeket ad vissza. A rendezést (ORDER BY, TOP) operátorok tartalmazó partícióra kiterjedő lekérdezések végrehajtásakor az Azure Cosmos DB SDK bocsát ki a párhuzamos lekérdezés partíciók között. Egyesíti a részlegesen tárolt eredményeket az ügyféloldalon, globálisan rendezett eredményeket.
 
 ## <a name="next-steps"></a>További lépések
 
-A Cosmos DB-ben történő particionálásról a következő cikkekben talál további információt:
+További információ az Azure Cosmos DB particionálási a következő cikkekben talál:
 
 - [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 - [Szintetikus partíciókulcsok az Azure Cosmos DB-ben](synthetic-partition-keys.md)

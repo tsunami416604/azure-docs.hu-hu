@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban megismerheti, hogyan észleli a Java és a Translator Text REST API használatával megadott szöveg nyelvét fogja.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 00ffb0eef5b7452894b27a00328dae4546d45c6f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e67a5eb645350fdb582c81c0a47cdfec06be5c3e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208437"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55855713"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>Gyors útmutató: A Translator Text API segítségével észlelheti a szöveg nyelvét, a Java használatával
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: a4fc037ed566905133f59163ef99d5e107ca4bcc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e47bf2a75b06f0804e446b0fdde4215b6e8193f6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190921"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874719"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Kiépítés és megszüntetés SaaS-alkalmazásokhoz az Azure Active Directory felhasználói automatizálása
 
@@ -39,7 +39,7 @@ Az Azure Active Directory (Azure AD) segítségével automatizálhatja a létreh
 
 * Forrás- és rendszerek közötti meglévő azonosítók egyeznek lehetővé teszi.
 * Testre szabható attribútum-leképezéshez, amelyek meghatározzák, hogy milyen felhasználói adatokat a forrás rendszerből áramlásának a célrendszerbe.
-* Nem kötelező e-mailes riasztásokhoz kiépítési hibák
+* Nem kötelező e-mailes riasztásokhoz kiépítési hibák.
 * Jelentéskészítés és a tevékenység naplók monitorozási és hibaelhárítási segítséget.
 
 ## <a name="why-use-automated-provisioning"></a>Miért érdemes használni az automatikus üzembe helyezést?
@@ -47,7 +47,7 @@ Az Azure Active Directory (Azure AD) segítségével automatizálhatja a létreh
 Néhány gyakori motivációit ezzel a funkcióval a következők:
 
 * Kerülje a költségek, a hatékonysági és a manuális üzembe helyezési folyamatok emberi hibákat.
-* Üzemeltetési és üzembe helyezési megoldásokat saját fejlesztésű és parancsfájlok társított költségek elkerülése
+* Üzemeltetési és üzembe helyezési megoldásokat saját fejlesztésű és parancsfájlok társított költségek elkerülése.
 * A szervezet biztonságának azonnal eltávolítása felhasználók identitását a legfontosabb SaaS-alkalmazásokban, ha elhagyják a szervezet.
 * Az egyszerűen importálhatja a felhasználók nagy száma egy adott SaaS-alkalmazáshoz vagy a rendszer.
 * Csak egy készletével határozza meg, akik ki van építve, és ki jelentkezhet be az alkalmazás-szabályzatok kellene.
@@ -107,7 +107,7 @@ Az alkalmazás felügyeleti szolgáltatásban képernyőjéről, a kiépítés k
 
 ![Beállítások](./media/user-provisioning/provisioning_settings1.PNG)
 
-* **Hatókörkezeléshez kapcsolódó szűrők** mondja el a kiépítési szolgáltatás, mely felhasználók és a csoport a forrásrendszerben kell kell kiépített és/vagy a célrendszerbe – figyelmeztetés megszüntetésről. Két szempontot hatókörének beállítása szűrőket, amelyek együtt lett kiértékelve, amelyek meghatározzák, hogy ki a kiépítés hatókörébe van:
+* **Hatókörkezeléshez kapcsolódó szűrők** mondja el a kiépítési szolgáltatás, mely felhasználók és csoportok a forrásrendszerben kell kell kiépített és/vagy megszűnt a célrendszerbe. Két szempontot hatókörének beállítása szűrőket, amelyek együtt lett kiértékelve, amelyek meghatározzák, hogy ki a kiépítés hatókörébe van:
 
     * **Attribútum értékei alapján végezhet szűrést** – meghatározott attribútumértékek szűrését teszi lehetővé az attribútumleképezések "Forrásobjektum hatóköre" menüben. Megadhatja például, hogy csak egy "Eladások", "Részleg" attribútummal rendelkező felhasználók a kiépítés hatókörébe kell lennie. További információkért lásd: [Hatókörszűrő használatával](define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -214,13 +214,13 @@ A konfiguráció **szinkronizálási rendelt felhasználók és csoportok csak**
     
 Összegzés befejezéséhez szükséges idő befolyásoló tényezők egy **a kezdeti szinkronizálás**:
 
-* Felhasználók és csoportok a kiépítés hatókörébe teljes száma
+* A felhasználók és csoportok a kiépítés hatókörébe teljes száma.
 
-* A felhasználók, csoportok és a forrás rendszerben (Azure AD) csoport tagjai teljes száma
+* A felhasználók, csoportok és a forrás rendszerben (Azure AD) csoport tagjai teljes száma.
 
 * E felhasználók kiépítés hatókörébe teljesül, a meglévő felhasználók számára a célalkalmazás vagy első alkalommal kell létrehozni. Szinkronizálási feladat, amelynek minden felhasználó jönnek létre az első alkalommal körülbelül igénybe *kétszer mindaddig* , feladatok, amelynek minden felhasználó egyeztetését a meglévő felhasználók szinkronizálása.
 
-* Hibák száma a [auditnaplók](check-status-user-account-provisioning.md). Teljesítmény lassabb lesz, ha sok hiba, és az eszközkiépítési szolgáltatás karantén állapotba került 
+* Hibák száma a [auditnaplók](check-status-user-account-provisioning.md). Teljesítmény lassabb lesz, ha sok hiba, és az eszközkiépítési szolgáltatás karantén állapotba került.    
 
 * A sebességkorlátokat és a szabályozás, melyet a célrendszer megvalósított kérelmet. Néhány célrendszereket hajtja végre a kérést a sebességkorlátokat és a szabályozás, amely befolyásolhatja a teljesítményt nagy szinkronizálási műveletek során. Ezen feltételek mellett egy alkalmazást, amely megkapja a túl sok kérelem túl nagy lehet, hogy a válaszadási arányát lassú vagy bontja a kapcsolatot. A teljesítmény javítása érdekében az összekötőjét beállítása nem az alkalmazás kérések küldésével gyorsabb, mint az alkalmazás azokat fel tudná dolgozni. Üzembe helyezési összekötők a Microsoft által készített ellenőrizze ezt a módosítást. 
 

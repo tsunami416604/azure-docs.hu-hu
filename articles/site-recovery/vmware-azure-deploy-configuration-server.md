@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 02/05/2018
 ms.author: ramamill
-ms.openlocfilehash: 1d5c2dccabbc2acdddec6176d9b52681d4a18e68
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 4a8ab770eef1c8d95ea2fb6340480089ded0218b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744092"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863142"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -167,7 +167,7 @@ Folyamatban lévő replikáció megszakítása a szükséges elkerülése érdek
 
 További gyakori kérdések a konfigurációs kiszolgálón, tekintse meg [dokumentációjában a konfigurációs kiszolgáló gyakori kérdésekre](vmware-azure-common-questions.md#configuration-server) .
 
-## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
+## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezés hibáinak elhárítása
 
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 

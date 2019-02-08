@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: a2851272d15ed2ce2c7f940cc3e429ef9f8b4446
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1752ec8b2f846b51ef8222c54a00d5a5a0cdd05a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824070"
+ms.locfileid: "55875195"
 ---
 # <a name="features"></a>Szolgáltatások
 
@@ -102,7 +102,7 @@ Az összes keresési paramétert típusok támogatottak. Paraméterek és a lán
 
 ## <a name="persistence"></a>Adatmegőrzés
 
-A Microsoft FHIR kiszolgálón, a moduláris adatmegőrzés modul (lásd: [ `Microsoft.Health.Fhir.Core.Features.Persistence` ](https://github.com/Microsoft/fhir-server/src/Microsoft.Health.Fhir.Core/Features/Persistence)).
+A Microsoft FHIR kiszolgálón, a moduláris adatmegőrzés modul (lásd: [ `Microsoft.Health.Fhir.Core.Features.Persistence` ](https://github.com/Microsoft/fhir-server/tree/master/src/Microsoft.Health.Fhir.Core/Features/Persistence)).
 
 Jelenleg a FHIR kiszolgáló nyílt forráskód tartalmazza a implementaci Pro [Azure Cosmos DB](../cosmos-db/index-overview.md).
 

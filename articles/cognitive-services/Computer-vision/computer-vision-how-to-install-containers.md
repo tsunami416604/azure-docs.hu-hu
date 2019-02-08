@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Hogyan letöltése, telepítése és a Computer Vision-tárolókat futtathat az bemutató oktatóanyag.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1e7f62d35e9850202b7d55c3c3440ff88413931d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fbfe32ee8eede6666e0c7086ef4c586af1c1b4c4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473493"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861306"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
 
@@ -63,7 +63,7 @@ Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek 
 
 Szöveg ismeri fel a tárolórendszerképeket érhetők el. 
 
-| Tároló | Adattár |
+| Tároló | Tárház |
 |-----------|------------|
 |Szövegének felismerése | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 

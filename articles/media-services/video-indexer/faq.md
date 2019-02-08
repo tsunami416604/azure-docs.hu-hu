@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/31/2019
 ms.author: juliako
-ms.openlocfilehash: 84f2b4d68bf95d18a63401f796e2ffca682c808f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0b74b6ef1d849f40e7a8e6f50d87e7b322e919e7
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567274"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891776"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -66,7 +66,7 @@ A Video Indexer webes portálon feltölthet egy médiafájlt a fájlfeltöltési
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Mennyi ideig tart a Video Indexer-adatokat nyerhet ki az adathordozó a?
 
-Mennyi ideig tart a video- vagy fájl, mind a Video Indexer API és a Video Indexer webes felület használatával index attól függ, például a fájl hossza és minősége, több paraméter insights száma található a fájlban, száma[szolgáltatás számára fenntartott egységek](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) érhető el, és hogy a [streamvégpont](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) engedélyezve van-e. A legtöbb tartalomtípus feltételezve, hogy 10 fenntartott egységet S3 típusú engedélyezve vannak, hogy előre jelezni, hogy az indexelés szükséges 1/3 ½ azon időtartam a hang- vagy fájl (például egy 10 perces forrás videó kerül 3.5-5 perc). Azonban javasoljuk, hogy néhány tesztfájlok futtatása a saját tartalommal, és a megvilágításához átlagát.
+Mennyi ideig tart a video- vagy fájl, mind a Video Indexer API és a Video Indexer webes felület használatával index attól függ, például a fájl hossza és minősége, több paraméter insights száma található a fájlban, száma[szolgáltatás számára fenntartott egységek](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) érhető el, és hogy a [streamvégpont](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) engedélyezve van-e. Azt javasoljuk, hogy néhány tesztfájlok futtatása a saját tartalommal, és a megvilágításához átlagát.
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>A Video Indexer folyamatok automatizálása a testre szabott munkafolyamatokat hozhat létre?
 

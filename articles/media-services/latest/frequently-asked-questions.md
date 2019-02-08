@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: juliako
-ms.openlocfilehash: be4c08bc31c8811655230ab89b48271f4c2b3164
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a447c359c38c2173ea42b6d717067fc8b3a88f9a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756580"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875491"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Az Azure Media Services v3 – gyakori kérdések
 
@@ -36,17 +36,7 @@ Javasoljuk, hogy Ön egy HTTP (s) a videóra mutató URL-címet használó felad
 
 ### <a name="how-does-pagination-work"></a>Hogyan működik a tördelés?
 
-A Media Services OData támogató erőforrások $top támogatja, de átadott $top értéke nem lehet kisebb, mint 1000 (például az oldal méretét a tördelés).
-
-Ez lehetővé teszi, vagy egy elemet a $top (például a 100 legutóbbi elemek) kis méretű mintát vagy való azonban tördelés használó összes elemet oldalon. 
-
-A Media Services nem támogatja a lapozást az adatok között a megadott felhasználóhoz oldalméret.
-
-További információkért lásd: [szűrése, rendezése, lapozás](entities-overview.md).
-
-### <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Hogyan kérheti le a Media Services v3 entitás?
-
-V3 alapján egy egységes API-felület, épülő felügyeleti és a műveletek funkciókkal rendelkezik, amely **Azure Resource Manager**. Szolgáltatást **Azure Resource Manager**, az erőforrások nevei mindig egyediek. Bármely egyedi azonosító karakterláncot (például, GUID), használhatja az erőforrás.
+Tördelés használatakor mindig használjon a következő hivatkozás enumerálása a gyűjteményt, és nem függ egy adott oldal méretét. Részletek és példák: [szűrése, rendezése, lapozás](entities-overview.md).
 
 ## <a name="live-streaming"></a>Live streaming (Élő adatfolyam) 
 

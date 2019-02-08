@@ -1,6 +1,6 @@
 ---
 title: Az Azure Storage Explorer használatával a Data Lake Storage Gen2 engedélyeinek beállítása
-description: Ez annak ismerteti az Azure Storage Explorerrel engedélyek beállítása a fájlok és könyvtárak belül az Azure Data Lake Storage Gen2 képes a tárfiók (előzetes verzió).
+description: A jelen, akkor meg, hogyan állítsa be az Azure Storage Explorer használatával a fájlok és könyvtárak belül az Azure Data Lake Storage Gen2 képes a storage-fiókot.
 services: storage
 author: roygara
 ms.custom: mvc
@@ -9,16 +9,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: fd4ca3946ed4c32a8fd2f08c1c242c33dbca2aaf
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b64b433920a5ce769122c7956c18997c28a3d11a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238313"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867052"
 ---
-# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2-preview"></a>Azure Storage Explorer használata az Azure Data Lake Storage Gen2 fájl- és oszlopszintű engedélyek beállítása (előzetes verzió)
+# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Azure Storage Explorer használata az Azure Data Lake Storage Gen2 fájl- és oszlopszintű engedélyek beállítása
 
-Az Azure Data Lake Storage Gen2 tárolt fájlok (előzetes verzió) támogatás finom részletes engedélyek és hozzáférés-vezérlést a felügyeleti lista (ACL). Együtt finom részletes engedélyek és ACL-kezelés lehetővé teszik a rendkívül részletes adatokhoz való hozzáférés kezelése.
+Az Azure Data Lake Storage Gen2 tárolt fájlok részletes engedélyeket támogatja, és hozzáférés-vezérlési lista (ACL) kezelés. Együtt finom részletes engedélyek és ACL-kezelés lehetővé teszik a rendkívül részletes adatokhoz való hozzáférés kezelése.
 
 Ez a cikk bemutatja az Azure Storage Explorer használata:
 

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan használható a CalcHistogram metódus az a Knowledge Exploration Service (KES) API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: f994a254e661cd245d2e953efd3bd595d50c6fc7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: aaa5b3a85c08f11d821557257de451b8ffc8a3fc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214313"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860456"
 ---
 # <a name="calchistogram-method"></a>calchistogram metódus
 A *calchistogram* módszer kiszámítja a strukturált a lekérdezés megfelelő objektumok és azok attribútumértékek eloszlását számítja ki.
@@ -23,7 +23,7 @@ A *calchistogram* módszer kiszámítja a strukturált a lekérdezés megfelelő
 ## <a name="request"></a>Kérés
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
-Name (Név)|Value|Leírás
+Name (Név)|Érték|Leírás
 ----|-----|-----------
 kifejezés | Szöveges karakterlánc | Strukturált lekérdezési kifejezés, amely meghatározza az index entitások keresztül hisztogramok értékének kiszámításához.
 Attribútumok | Szöveges karakterlánc (alapértelmezés = "") | A válaszba foglalandó attribútumot tartalmazó, vesszővel elválasztott listája.

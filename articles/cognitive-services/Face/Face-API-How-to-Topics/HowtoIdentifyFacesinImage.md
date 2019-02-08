@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: A Face API használatával arcokat azonosíthat a képeken.
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: c61852763353189321b8f98711928e0e8b3a389d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 013467cb64220b525d429c901c48028bf65b3852
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208091"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864927"
 ---
 # <a name="example-how-to-identify-faces-in-images"></a>Példa: Arcok, képek azonosítása
 
@@ -57,7 +57,7 @@ faceServiceClient = new FaceServiceClient("<Subscription Key>");
  
 Az előfizetési kulcs az Azure Portal Marketplace oldaláról szerezhető be. Lásd az [előfizetéseket](https://azure.microsoft.com/try/cognitive-services/).
 
-## <a name="step-2-create-the-persongroup"></a>2. lépés: Az is lehet PersonGroup létrehozása
+## <a name="step-2-create-the-persongroup"></a>2. lépés: Az is lehet PersonGroup létrehozása
 
 Ebben a lépésben létrehoztunk egy "MyFriends", amely tartalmazza a három személyek nevű is lehet PersonGroup: Anna, számlázási és Clare. Mindegyikükhöz több arcot jegyeztünk be. Az arcokat fel kell ismerni a képekről. Minden lépés elvégzése után, a kapott PersonGroup az alábbi ábrához hasonló:
 

@@ -1,6 +1,6 @@
 ---
-title: A HDFS-CLI-vel rendelkező Azure Data Lake Storage Gen2 előzetes verzió
-description: Bevezetés a HDFS CLI a Data Lake Storage Gen2 előzetes verzió
+title: A HDFS CLI használata az Azure Data Lake Storage Gen2
+description: Bevezetés a Data Lake Storage Gen2 a HDFS-CLI
 services: storage
 author: artemuwka
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2691346433b3cc29b22446152ea797cefb02a380
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 649fe5ebadf69a90b4794fcaf4519ea5bcc0c4a2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241270"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874182"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>A HDFS parancssori felület használatával a Data Lake Storage Gen2
 
-Az Azure Data Lake Storage Gen2 előzetes verzió lehetővé teszi, hogy a kezelése és az adatok eléréséhez, ugyanúgy, mint az egy [Hadoop elosztott fájlrendszer (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). E van csatlakoztatva, vagy egy Azure Databricks használatával egy Azure Storage-fiókban tárolt adatokon végrehajtandó analytics Apache Spark-feladatok futtatása egy HDInsight-fürt, parancssori felület (CLI) segítségével lekérése és módosítására a betöltött adatokra.
+Az Azure Data Lake Storage Gen2 lehetővé teszi, hogy a kezelése és az adatok eléréséhez, ugyanúgy, mint az egy [Hadoop elosztott fájlrendszer (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). E van csatlakoztatva, vagy egy Azure Databricks használatával egy Azure Storage-fiókban tárolt adatokon végrehajtandó analytics Apache Spark-feladatok futtatása egy HDInsight-fürt, parancssori felület (CLI) segítségével lekérése és módosítására a betöltött adatokra.
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDFS CLI-t a HDInsight
 

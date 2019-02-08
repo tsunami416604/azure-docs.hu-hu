@@ -7,18 +7,18 @@ ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: 7403a23e236c14d77672d5b80d953b1e11088f8a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e3889ed9f758ce2c374eae106674930ba67f7620
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824066"
+ms.locfileid: "55878782"
 ---
 # <a name="frequently-asked-questions-about-azure-api-for-fhir"></a>Gyakori kérdések az Azure API FHIR számára
 
 ## <a name="storage-location"></a>Tárolási hely
 
-**Az adatok a FHIR mögött&reg; API-k az Azure-ban tárolt?** Igen, az adatokat a felügyelt adatbázisok az Azure-ban vannak tárolva. Az Azure API for FHIR nem biztosít az alapul szolgáló adattár közvetlen hozzáférést.
+**Az adatok a FHIR mögött&reg; API-k az Azure-ban tárolt?** Igen, az adatokat az Azure-ban felügyelt adatbázisok tárolják. Az Azure API for FHIR nem biztosít az alapul szolgáló adattár közvetlen hozzáférést.
 
 ## <a name="identity-providers"></a>Identitásszolgáltatók
 

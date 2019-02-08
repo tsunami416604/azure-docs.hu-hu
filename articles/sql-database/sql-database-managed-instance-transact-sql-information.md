@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f1adcca48882ca3a149046cbc0729612666363cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 59599686b2a9ccee7250e33f0786d4c7af816983
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734606"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894309"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az Azure SQL Database felügyelt példány T-SQL különbségek az SQL Serverről
 
@@ -27,7 +27,7 @@ A felügyelt példány üzembe helyezési lehetőséget biztosít nagy mértékb
 
 Különbségek is vannak a továbbra is a szintaxist és a viselkedés, mivel ez a cikk összefoglalja, és ismerteti a különbségeket. <a name="Differences"></a>
 - [Rendelkezésre állási](#availability) többek között a különbségek [Always-On](#always-on-availability) és [biztonsági mentések](#backup),
-- [Biztonsági](#security) többek között a különbségek [naplózási](#auditing), [tanúsítványok](#certificates), [hitelesítő adatok](#credentials), [kriptográfiai szolgáltatókat](#cryptographic-providers), [Bejelentkezések és felhasználók](#logins--users), [szolgáltatás kulcs és a szolgáltatás főkulcsát](#service-key-and-service-master-key),
+- [Biztonsági](#security) többek között a különbségek [naplózási](#auditing), [tanúsítványok](#certificates), [hitelesítő adatok](#credential), [kriptográfiai szolgáltatókat](#cryptographic-providers), [Bejelentkezések és felhasználók](#logins--users), [szolgáltatás kulcs és a szolgáltatás főkulcsát](#service-key-and-service-master-key),
 - [Konfigurációs](#configuration) többek között a különbségek [kiterjesztés puffer](#buffer-pool-extension), [rendezést](#collation), [kompatibilitási szinteken](#compatibility-levels),[adatbázis tükrözés](#database-mirroring), [adatbázis-beállítások](#database-options), [SQL Server Agent](#sql-server-agent), [lehetőségek tábla](#tables),
 - [Funkciók](#functionalities) beleértve [TÖMEGES beszúrási vagy OPENROWSET](#bulk-insert--openrowset), [CLR-beli](#clr), [DBCC](#dbcc), [elosztott tranzakciók](#distributed-transactions), [ Bővített események](#extended-events), [külső kódtáraiban](#external-libraries), [Filestream- és Filetable](#filestream-and-filetable), [szemantikai teljes szöveges keresés](#full-text-semantic-search), [társított kiszolgálók](#linked-servers), [Polybase](#polybase), [replikációs](#replication), [VISSZAÁLLÍTÁSA](#restore-statement), [Service Broker](#service-broker), [ Tárolt eljárások, függvények és eseményindítók](#stored-procedures-functions-triggers),
 - [A felügyelt példányok eltérő viselkedéssel rendelkező szolgáltatások](#Changes)
@@ -74,13 +74,13 @@ Biztonsági másolatok a T-SQL használatával kapcsolatos információkért lá
 
 A naplózás az Azure SQL Database és az adatbázisok az SQL Server-adatbázisok közötti fő különbségeket a következők:
 
-- Az Azure SQL Database felügyelt példány üzembe helyezési lehetősége, a naplózást a kiszolgáló szintjén, és a tárolók működését `.xel` naplófájlokat az Azure blob storage-fiók.
+- Az Azure SQL Database felügyelt példány üzembe helyezési lehetősége, a naplózást a kiszolgáló szintjén, és a tárolók működését `.xel` naplófájlokat az Azure Blob storage-ban.
 - Az önálló adatbázisok és az Azure SQL Database rugalmas készlet üzembe helyezési lehetőséget, a naplózás az adatbázis szintjén működik.
 - A helyszíni SQL Server / virtuális gépek, naplózási működik a kiszolgálón. szintű, de a fájlok rendszer-vagy windows-eseménynaplók az események tárolja.
   
-Az XEvent naplózási a felügyelt példány az Azure blob storage tárolók támogatja. Fájl- és windows-naplók nem támogatottak.
+Az XEvent naplózási a felügyelt példány támogatja az Azure Blob storage tárolók. Fájl- és windows-naplók nem támogatottak.
 
-A kulcs közötti különbségek a `CREATE AUDIT` szintaxist a naplózás az Azure blob storage-vannak:
+A kulcs közötti különbségek a `CREATE AUDIT` szintaxist a naplózás az Azure Blob storage-vannak:
 
 - Egy új szintaxis `TO URL` van megadva, és lehetővé teszi az Azure blob Storage-tároló URL-cím megadásához ahol `.xel` fájlok kerülnek.
 - A szintaxist `TO FILE` nem támogatott, mert a felügyelt példány nem érhető el Windows-fájlmegosztásokon.
@@ -170,7 +170,7 @@ További információkért lásd: [ALTER DATABASE SET PARTNER és a SET WITNESS]
 - Memóriában lévő objektumok nem támogatottak az általános célú szolgáltatási rétegben található.  
 - Úgy adatbázisonként legfeljebb 280 fájlok példányonkénti 280 fájlok korlátozva van. Adatok és a naplófájlok számításba vesszük ezt a korlátot felé.  
 - Adatbázis nem tartalmazhatnak filestream-adatokat tartalmazó fájlcsoportokat.  Helyreállítás sikertelen lesz, ha a .bak tartalmaz `FILESTREAM` adatokat.  
-- Minden fájl kerül, az Azure Premium storage-ban. I/o és átviteli sebesség fájlonként függ minden egyes fájl méretének ugyanúgy, mint az Azure Premium Storage-lemez. Lásd: [prémium szintű lemezek teljesítménye](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)  
+- Minden fájl kerül, az Azure Blob storage-ban. I/o és teljesítmény / fájl egyes fájlok méretét függenek.  
 
 #### <a name="create-database-statement"></a>CREATE DATABASE utasítás
 
@@ -275,10 +275,10 @@ További információ a létrehozása és módosítása a táblák: [CREATE TABL
 
 ### <a name="bulk-insert--openrowset"></a>Tömeges beszúrás / openrowset
 
-Felügyelt példány nem elérhető fájlmegosztásokat és a Windows-mappák, így a fájlokat kell importálni az Azure blob storage-ból:
+Felügyelt példány nem elérhető fájlmegosztásokat és a Windows-mappák, így a fájlokat kell importálni az Azure Blob storage-ból:
 
-- `DATASOURCE` a szükséges `BULK INSERT` parancsot a fájlok az Azure blob storage-ba való importálás során. Lásd: [TÖMEGES Beszúrás](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
-- `DATASOURCE` a szükséges `OPENROWSET` működni, amikor egy fájl tartalmát olvassa el az Azure blob storage-ból. Lásd: [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+- `DATASOURCE` a szükséges `BULK INSERT` parancsot az Azure Blob storage-ból fájlok importálása során. Lásd: [TÖMEGES Beszúrás](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
+- `DATASOURCE` a szükséges `OPENROWSET` működni, amikor egy fájl tartalmát olvassa el az Azure Blob storage-ból. Lásd: [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
 
 ### <a name="clr"></a>CLR-BELI
 
@@ -305,7 +305,7 @@ Sem az MSDTC sem [rugalmas tranzakciók](sql-database-elastic-transactions-overv
 
 Egyes Windows-specifikus céljainak xevent típusú eseményekhez nem támogatottak:
 
-- `etw_classic_sync target` nem támogatott. Store `.xel` fájlokat az Azure blob storage-ban. Lásd: [etw_classic_sync cél](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target).
+- `etw_classic_sync target` nem támogatott. Store `.xel` fájlokat az Azure blob storage-ban. Lásd: [etw_classic_sync cél](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
 - `event_file target`nem támogatott. Store `.xel` fájlokat az Azure blob storage-ban. Lásd: [event_file cél](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Külső kódtárak
@@ -347,7 +347,7 @@ Műveletek
 
 ### <a name="polybase"></a>PolyBase
 
-A HDFS- vagy Azure blob Storage-fájlok hivatkozó külső táblák nem támogatottak. A Polybase kapcsolatos információkért lásd: [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
+A HDFS- vagy Azure Blob storage-ban fájlok hivatkozó külső táblák nem támogatottak. A Polybase kapcsolatos információkért lásd: [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikáció
 
@@ -365,7 +365,7 @@ Replikációs felügyelt példányok nyilvános előzetes verziója érhető el.
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
 - Forrás  
-  - `FROM URL` (Az azure blob storage) lehetőség csak támogatott.
+  - `FROM URL` (Az azure Blob storage) lehetőség csak támogatott.
   - `FROM DISK`/`TAPE`/ biztonsági mentési eszköz nem támogatott.
   - Biztonságimásolat-készletek nem támogatottak.
 - `WITH` beállítások nem támogatottak (nem `DIFFERENTIAL`, `STATS`stb.)

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: A terjesztési tanulmány entitásokban attribútumértékei kiszámításához a CalcHistogram módszert használja.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: cb47b3933ecb6e38aa7945ac7f81f7602a0c8034
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1e922f1c02876f09dcf51b192bc08c4f4fccac9e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192536"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879020"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram metódus
 
@@ -30,7 +30,7 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
   
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-Name (Név)  |Value | Kötelező?  |Leírás
+Name (Név)  |Érték | Kötelező?  |Leírás
 -----------|----------|--------|----------
 **kifejezés**    |Szöveges karakterlánc | Igen  |A lekérdezési kifejezés, amely meghatározza az entitásokat, amelyen hisztogramok kiszámításához.
 **model** |Szöveges karakterlánc | Nem |Válassza ki a modellt, amely a lekérdezni kívánt nevét.  Jelenleg az alapértelmezett érték *legújabb*.

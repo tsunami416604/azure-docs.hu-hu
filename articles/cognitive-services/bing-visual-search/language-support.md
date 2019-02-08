@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Természetes nyelvek, ország és a Bing Visual Search API által támogatott régiók listáját. A Bing Visual Search API több mint három tucat országok/régiók, számos, az egynél több nyelvet támogat.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 0f7d3f8a7a9c7bdd67dc80a98744e1cd6a2433a1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8181fc259ffbed11672fe64a8fc821e234183b72
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180823"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856852"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>A Bing Visual Search API nyelvéhez és régiójához támogatása
 
@@ -51,7 +51,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Németország|DE|
 |Hongkong KKT|HK|
 |India|IN|
-|Indonézia|ID (Azonosító)|
+|Indonézia|ID|
 |Olaszország|IT|
 |Japán|JP|
 |Korea|KR|

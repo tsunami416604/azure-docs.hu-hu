@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Ismerkedés egy alapszintű JavaScript-alkalmazással, amely a Computer Vision API-t használja az Azure Cognitive Services szolgáltatásban. OCR végrehajtása, miniatűrök létrehozása és képek vizuális jellemzőinek használata.
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 1ad25b383e3d275324b57ae1c343560c82b2a3a2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7ac8b9e28996c14e702730b72265fd6165798227
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215231"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865073"
 ---
 # <a name="tutorial-computer-vision-api-javascript"></a>Oktatóanyag: Számítógép Vision API a JavaScript
 

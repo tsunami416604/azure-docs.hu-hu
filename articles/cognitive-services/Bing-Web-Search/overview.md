@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: A Bing Web Search API egy RESTful szolgáltatás, amely azonnali választ ad a felhasználói lekérdezésekre. A keresés könnyen konfigurálható, hogy weboldalakra, képekre, videókra, hírekre, fordításokra és egyéb találatokra is kiterjedjen. A találatok JSON formátumban érkeznek, és a keresési relevancia, valamint a Bing Web Search-előfizetései alapján állnak össze.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 46d79b1ac6c56ba953eb0908e46338387b69ff1f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 2cf135cc984ce032113de65bead210bd4c5e95ce
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768242"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861799"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Mi az a Bing Web Search API?
 
@@ -30,7 +30,7 @@ Szeretné látni működés közben? Próbálja ki a [Bing Web Search API bemuta
 
 Az azonnali válaszok mellett a Bing Web Search további szolgáltatásokat és funkciókat is biztosít, amelyekkel testre szabhatja a keresések eredményeit a felhasználók számára.
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 |---------|-------------|
 | [Keresési kifejezések valós idejű felkínálása](../bing-autosuggest/get-suggested-search-terms.md) | A Bing Autosuggest API a begépelés során javaslatokat tesz a keresési kifejezésekre, így könnyebbé teszi az alkalmazások használatát. |
 | [Találatok szűrése és korlátozása a tartalom típusa alapján](filter-answers.md) | Keresési eredmények szűrőkkel és lekérdezési paraméterekkel történő testre szabása és finomítása a weboldalakra, képekre, videókra, a biztonságos keresésre és egyebekre vonatkozóan. |

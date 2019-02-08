@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: A beszédfelismerő szoftver Development Kit (SDK) hozzáférést biztosít az alkalmazások a funkciók a beszédfelismerési szolgáltatás így könnyebben fejleszthet beszédfelismerő szoftver. Jelenleg az SDK-k hozzáférést biztosítanak beszéd szöveges, beszédalapú fordítási és leképezés felismerése.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 2df835265abdaad4ec8bc99d1b99c53a9823da15
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e3374a94848dc4fdc192b941f81700151271c63a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220214"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866797"
 ---
 # <a name="speech-sdk-api-reference"></a>Beszéd SDK API-referencia
 

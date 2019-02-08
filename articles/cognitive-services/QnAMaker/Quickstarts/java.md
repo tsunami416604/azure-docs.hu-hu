@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Java REST-alapú információk lekérése, és kódminták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 9e9f9b718928614bcd018677a2ddd094fe68f2c4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: db3723fe4a17559b6b2583cfe4d85f8d9824030c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218206"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866882"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>A QnA Maker REST API használata javával 
 <a name="HOLTop"></a>

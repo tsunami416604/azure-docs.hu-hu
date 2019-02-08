@@ -6,34 +6,34 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 550201e692bb79197d50c2f44017c43ab9ea2016
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4df8a12581b5d71a76964ca1e3d40c6c53185f67
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477328"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860320"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Egy Azure Cosmos-tároló átviteli sebességet kiépítése
 
-Ez a cikk ismerteti, hogyan oszthatja ki az átviteli sebességet egy (gyűjtemény, gráf vagy táblázat típusú) tároló számára az Azure Cosmos DB-ben. Az átviteli sebességet kioszthatja egyetlen tárolóhoz, vagy [kioszthatja egy adatbázishoz](how-to-provision-database-throughput.md), majd megoszthatja az adatbázisban található tárolók között. A tárolók átviteli sebességét az Azure Portal, az Azure CLI vagy Cosmos DB SDK-k használatával is kioszthatja.
+Ez a cikk bemutatja, hogyan helyezhet üzembe egy tárolót (gyűjteményt, graph vagy tábla) az Azure Cosmos DB az átviteli sebességet. Is kioszthatja az átviteli sebesség az egyetlen tároló, vagy [adatbázis kiépítése](how-to-provision-database-throughput.md) , és ossza meg az adatbázisban lévő tárolók között. Is kioszthatja az átviteli sebességet egy tárolóhoz az Azure Portalon, az Azure CLI-vel vagy az Azure Cosmos DB SDK-k használatával.
 
-## <a name="provision-throughput-using-azure-portal"></a>Átviteli sebesség kiosztása az Azure Portallal
+## <a name="provision-throughput-by-using-azure-portal"></a>Kiépítés átviteli sebesség az Azure portal használatával
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. [Hozzon létre egy új Cosmos DB-fiókot](create-sql-api-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
+1. [Hozzon létre egy új Azure Cosmos DB-fiókot](create-sql-api-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
-1. Nyissa meg az **Adatkezelő** ablaktáblát, és válassza az **Új gyűjtemény** lehetőséget. Töltse ki az űrlapot a következő értékekkel:
+1. Nyissa meg a **adatkezelő** panelre, és válassza **új gyűjtemény**. Következő lépésként adja meg a következő adatokat:
 
-   * Hozzon létre egy új adatbázist, vagy használjon egy meglévőt.
-   * Adja meg egy gyűjtemény azonosítóját (illetve egy táblázatét vagy gráfét).
-   * Adja meg például a partíciókulcs-értékkel, `/userid`.
-   * Adjon meg egy átviteli sebességet, például 1000 kérelemegységet.
+   * Adja meg e létrehozásakor egy új adatbázist és egy meglévő használatával.
+   * Adjon meg egy gyűjtemény azonosítója (vagy táblázat vagy gráf).
+   * Adja meg a partíciókulcs-értékkel (például `/userid`).
+   * Adjon meg egy átviteli sebesség (például 1000 ru-k).
    * Kattintson az **OK** gombra.
 
-![SQL API – tároló átviteli sebességének kiosztása](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
+![Képernyőfelvétel az adatkezelő, kiemelve új gyűjteménnyel](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-azure-cli"></a>Átviteli sebesség kiosztása az Azure CLI használatával
+## <a name="provision-throughput-by-using-azure-cli"></a>Azure CLI-vel üzembe helyezése átviteli
 
 ```azurecli-interactive
 # Create a container with a partition key and provision throughput of 1000 RU/s
@@ -46,9 +46,9 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-Átviteli sebességet egy Cosmos-fiókot konfigurálni az Azure Cosmos DB API a mongodb-hez szeretne kiépíteni, ha használja a "/ myShardKey" a partíciós kulcs elérési útja és átviteli sebességet egy Cosmos-fiókot, Cassandra API-hoz konfigurált üzembe helyezésekor, használja a(z) / myPrimaryKey "az a partíciós kulcs elérési útja.
+Ha szeretne kiépíteni az Azure Cosmos DB-fiókot, az Azure Cosmos DB API a mongodb-hez konfigurálva az átviteli sebesség, `/myShardKey` a partíciós kulcs elérési útja. Ha szeretne kiépíteni az Azure Cosmos DB-fiókot, Cassandra API-hoz konfigurált átviteli sebesség, `/myPrimaryKey` a partíciós kulcs elérési útja.
 
-## <a name="provision-throughput-using-net-sdk"></a>Átviteli sebesség kiosztása a .NET SDK használatával
+## <a name="provision-throughput-by-using-net-sdk"></a>Kiépítés átviteli .NET SDK-val
 
 > [!Note]
 > Az SQL API használatával a Cassandra API kivételével minden API-hoz kioszthat átviteli sebességet.
@@ -79,7 +79,7 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 
 ## <a name="next-steps"></a>További lépések
 
-Az átviteli sebesség Cosmos DB-ben történő kiosztásáról a következő cikkekben talál további információt:
+További információ az átviteli sebesség kiépítése az Azure Cosmos DB a következő cikkekben talál:
 
 * [Átviteli sebesség kiosztása adatbázisokhoz](how-to-provision-database-throughput.md)
 * [Kérelemegységek és átviteli sebesség az Azure Cosmos DB-ben](request-units.md)
