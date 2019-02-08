@@ -1,22 +1,22 @@
 ---
-title: Az Azure Data Lake Storage Gen2 előzetes verzió használata Azure HDInsight-fürtök
-description: Ismerje meg, hogyan kérdezhet le adatokat az Azure Data Lake Storage Gen2 előzetes verzió, és tárolhatja az elemzések eredményeit.
+title: Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök
+description: Ismerje meg, hogyan kérdezhet le adatokat az Azure Data Lake Storage Gen2 és tárolhatja az elemzések eredményeit.
 author: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 739076289a1324cb47f0c980f0d21b153c7b5edc
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 0932c576a47af85c496d5d2d12dbc1b997d48e16
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662958"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874328"
 ---
-# <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 előzetes verzió használata Azure HDInsight-fürtök
+# <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök
 
-Egy HDInsight-fürtön lévő adatok elemzéséhez, tárolhatja az adatokat az Azure Blob Storage, Azure Data Lake Storage Gen2 előnézet engedélyezve van az Azure Blob Storage vagy Azure Data Lake Storage Gen1 tetszőleges kombinációját. Az összes tárolási lehetőség lehetővé, hogy biztonságosan törölje a felhasználói adatok elvesztése nélkül törölje a számításhoz használt HDInsight fürtöket.
+Egy HDInsight-fürtön lévő adatok elemzéséhez, tárolhatja az adatokat az Azure Blob Storage, Azure Data Lake Storage Gen2 engedélyezve van az Azure Blob Storage vagy Azure Data Lake Storage Gen1 tetszőleges kombinációját. Az összes tárolási lehetőség lehetővé, hogy biztonságosan törölje a felhasználói adatok elvesztése nélkül törölje a számításhoz használt HDInsight fürtöket.
 
 A Hadoop támogatja az alapértelmezett fájlrendszert. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight fürt létrehozása során blobtárolók is megadhat, az Azure Storage vagy a Data Lake Storage Gen2 az alapértelmezett fájlrendszerként által kínált hierarchikus névtér. Másik lehetőségként a HDInsight 3.5-ös, választhat egy tároló vagy a hierarchikus névtér az alapértelmezett fájlrendszerként, néhány kivétellel.
 
@@ -154,7 +154,7 @@ az storage account create \
 ```
 
 > [!NOTE]
-> A nyilvános előzetes verzióban a Data Lake Storage Gen2 csak `--sku Standard_LRS` használata támogatott.
+> A nyilvános csak a Data Lake Storage Gen2 során `--sku Standard_LRS` használata támogatott.
 
 A rendszer kéri, hogy adja meg a földrajzi régiót, amelyben a tárfiók létre lett hozva. Hozzon létre a tárfiókot ugyanabban a régióban, amely a HDInsight-fürt létrehozását tervezi.
 

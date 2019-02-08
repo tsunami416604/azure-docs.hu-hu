@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogy mely országok/régiók és nyelvek a Bing Image Search API által támogatott.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 10/06/2017
 ms.author: aahi
-ms.openlocfilehash: d214c227171066e0a401e22d20538014790a58d3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3b1c4108b18d744eb526a765a98f740d6e27a444
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157329"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868395"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>A Bing Image Search API nyelvéhez és régiójához támogatása
 
@@ -49,7 +49,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Németország|DE|
 |Hongkong KKT|HK|
 |India|IN|
-|Indonézia|ID (Azonosító)|
+|Indonézia|ID|
 |Olaszország|IT|
 |Japán|JP|
 |Korea|KR|

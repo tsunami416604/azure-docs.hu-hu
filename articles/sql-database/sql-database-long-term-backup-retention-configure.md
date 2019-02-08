@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/07/2019
-ms.openlocfilehash: 8f88579a5fcdb96622a32c5b55bf8fee744d916e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 3657844d5dd4c4dcf9b9729aaeea6c9af3ed6519
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567179"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894878"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL-adatbázis hosszú távú megőrzésének kezelése
 
-Egyetlen vagy készletezett adatbázis konfigurálhatja az Azure SQL Database, egy [hosszú távú adatmegőrzés](sql-database-long-term-retention.md) házirend (LTR) automatikusan az Azure blob storage-biztonsági mentések megőrzési idejét, akár 10 évig. Ezt követően helyreállíthatja a segítségével ezeket a biztonsági másolatokat az Azure portal vagy a PowerShell használatával.
+Egyetlen vagy készletezett adatbázis konfigurálhatja az Azure SQL Database, egy [hosszú távú adatmegőrzés](sql-database-long-term-retention.md) házirend (LTR) automatikusan az Azure Blob storage-biztonsági mentések megőrzési idejét, akár 10 évig. Ezt követően helyreállíthatja a segítségével ezeket a biztonsági másolatokat az Azure portal vagy a PowerShell használatával.
 
 > [!IMPORTANT]
 > [Az Azure SQL Database felügyelt példányain](sql-database-managed-instance.md) jelenleg nem támogatja a hosszú távú adatmegőrzés.

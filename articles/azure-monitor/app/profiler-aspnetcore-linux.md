@@ -3,20 +3,21 @@ title: Profiljának ASP.NET Core Azure Linux-webalkalmazások Application Insigh
 description: Fogalmi áttekintése és Application Insights Profiler használatának részletes oktatóanyaga.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: cweining
 manager: carmonm
+ms.reviewer: mbullwin
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mbullwin
-ms.openlocfilehash: cb294f0a3c22d52bc40f30e1d8655aed185857c6
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.author: cweining
+ms.openlocfilehash: 5787db7e2b726a10891fcabb0b215399d0d4e0ae
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118489"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884307"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Az ASP.NET Core Azure Linux-webalkalmazások Application Insights Profiler-profil
 
@@ -174,4 +175,4 @@ Dolgozunk a probléma megoldása.
 ## <a name="next-steps"></a>További lépések
 Ha egyéni Azure App Service által üzemeltetett tárolók használja, kövesse a [ Service Profiler engedélyezése a tárolóalapú ASP.NET Core alkalmazás](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) Application Insights Profiler engedélyezése.
 
-Jelentheti a hibákat és javaslatokat az Application Insights GitHub-adattárhoz: [ApplicationInsights – Profiler-AspNetCore: Problémák](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
+Jelentheti a hibákat és javaslatokat az Application Insights GitHub-adattárhoz: [ApplicationInsights-Profiler-AspNetCore: Problémák](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).

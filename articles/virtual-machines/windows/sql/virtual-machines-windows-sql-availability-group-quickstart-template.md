@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9db6736813b6d99efad687581f19d23023e1593a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0ac37c2bb0430cc4299947638596be8698ae4a34
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814537"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892339"
 ---
 # <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>WSFC, hozzon létre figyelőt, és konfigurálja az ILB Always On rendelkezésre állási csoporthoz az SQL Server virtuális gép az Azure gyorsindítási sablon
 Ez a cikk ismerteti, hogyan használhatja az Azure gyorsindítási sablonok részlegesen automatizálni az üzembe helyezést egy Always On rendelkezésre állási csoport konfigurációjának az SQL Server Virtual Machines az Azure-ban. Nincsenek az a folyamat által használt két Azure gyorsindítási sablonok. 
@@ -166,7 +166,7 @@ A kiválasztott rendelkezésre állási csoport már szerepel a rendelkezésre �
 ### <a name="connection-only-works-from-primary-replica"></a>Kapcsolat csak akkor működik, az elsődleges replika
 Ez a viselkedés valószínű oka egy sikertelen **101-sql-vm-aglistener-telepítés** sablonalapú telepítés és az ILB-konfiguráció inkonzisztens állapotban. Győződjön meg arról, hogy a háttérkészlet felsorolja a rendelkezésre állási csoport, és hogy szabályok létezik-e az állapotminta és a terheléselosztási szabályokat. Ha hiányzik valami, majd az ILB konfigurációja, inkonzisztens állapotba. 
 
-A probléma elhárításához távolítsa el a figyelővel [PowerShell](#remove-availability-group-listener), törölje a belső terheléselosztó az Azure Portalon, és újrakezdheti a [3. lépés](#step-3---manually-create-the-internal-load-balanced-ilb). 
+A probléma elhárításához távolítsa el a figyelővel [PowerShell](#remove-availability-group-listener), törölje a belső terheléselosztó az Azure Portalon, és újrakezdheti a 3. lépés. 
 
 ### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>BadRequest – csak az SQL virtuális gép lista frissíthető.
 Ez a hiba akkor fordulhat elő, üzembe helyezésekor a **101-sql-vm-aglistener-telepítés** sablon, ha a figyelő keresztül az SQL Server Management Studio (SSMS) törölve lett, de az SQL virtuális gép erőforrás-szolgáltató nem lett törölve. A figyelőt a SSMS törlése nem távolítja el a metaadatokat a figyelő az SQL virtuális gép erőforrás-szolgáltató; a figyelő törölni kell az erőforrás-szolgáltató használatával [PowerShell](#remove-availability-group-listener). 

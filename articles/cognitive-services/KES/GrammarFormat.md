@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: További információ a szintaxisformátum a a Knowledge Exploration Service (KES) API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: f3cb307a52cfddebfa97c1b8608549acdd89169d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 72dec3effe5e350818c01cf65c9140e778effd17
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215068"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860286"
 ---
 # <a name="grammar-format"></a>Szintaxisformátum
 
@@ -128,8 +128,8 @@ A következő táblázat felsorolja a támogatott `op` értékek az egyes attrib
 
 | Attribútum típusa | Op érték | Leírás | Index művelet
 |----|----|----|----|
-| Karakterlánc | EQ | Karakterlánc pontos egyezés | egyenlő |
-| Karakterlánc | starts_with | Előtag-egyeztetést karakterlánc | starts_with |
+| String | EQ | Karakterlánc pontos egyezés | egyenlő |
+| String | starts_with | Előtag-egyeztetést karakterlánc | starts_with |
 | Int32, Int64, dupla | EQ |  Numerikus pontos egyezés | egyenlő |
 | Int32, Int64, dupla | lt, a le, a BT, a ge | Numerikus egyenlótlenség match (<, < =, >, > =) | is_between |
 | Int32, Int64, dupla | starts_with | Előtag-egyeztetést a decimális jelölés érték | starts_with |

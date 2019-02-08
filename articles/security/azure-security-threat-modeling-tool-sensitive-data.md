@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7f90fccd062826493b7add1a90406fa9244e00b2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5e9104f59173c3d39ef2f2232ed2a9c6864cf84f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002047"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892558"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Biztonsági keret: Bizalmas adatok |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -41,7 +41,7 @@ ms.locfileid: "53002047"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
-| **SDL fázis**               | Környezet |  
+| **SDL Phase**               | Környezet |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -52,7 +52,7 @@ ms.locfileid: "53002047"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -63,7 +63,7 @@ ms.locfileid: "53002047"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
-| **SDL fázis**               | Környezet |  
+| **SDL Phase**               | Környezet |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -74,8 +74,8 @@ ms.locfileid: "53002047"
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
-| **Megfelelő technológiák** | Általános, Web Forms-MVC5, MVC6 |
+| **SDL Phase**               | Felépítés |  
+| **Megfelelő technológiák** | Generic, Web Forms, MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
 | **Lépések** | Böngészők gyorsítótárazás és előzmények célokra adatokat tárolhat. Ezek a gyorsítótárazott fájlok tárolódnak, mint az ideiglenes internetfájlok mappa esetén az Internet Explorer egy mappában. Ezeket az oldalakat a újra hivatkozunk, amikor a böngésző megjeleníti őket a gyorsítótárból. Ha bizalmas információk is megjelennek a felhasználó (például a címe, hitelkártya adatait, társadalombiztosítási szám vagy felhasználónév), majd ezeket az információkat lehet tárolja a böngésző gyorsítótárát, és így lekérdezhető, vizsgálata folyamatban van a böngésző gyorsítótárát keresztül, vagy egyszerűen csak billentyű a böngészőben "Újra" gombra. Állítsa be a cache-control válasz fejléce érték "no-store" minden lap. |
@@ -127,7 +127,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Útmutató: Az ASP.NET 2.0 használatával DPAPI konfigurációs szakaszokat titkosítása](https://msdn.microsoft.com/library/ff647398.aspx), [adjon meg egy védett Konfigurációszolgáltató](https://msdn.microsoft.com/library/68ze1hb2.aspx), [Azure Key Vault használatával az alkalmazás titkainak védelmére](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
@@ -138,7 +138,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN: az automatikus kiegészítés attribútum](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [automatikus kiegészítési funkciójának használatával HTML](https://msdn.microsoft.com/library/ms533032.aspx), [HTML-tisztító biztonsági](https://technet.microsoft.com/security/bulletin/MS10-071), [automatikus kiegészítés., újra?](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
@@ -157,7 +157,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -168,10 +168,10 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
-| **Megfelelő technológiák** | Az SQL Azure, a rendszert |
+| **SDL Phase**               | Felépítés |  
+| **Megfelelő technológiák** | Sql Azure, OnPrem |
 | **Attribútumok**              | SQL - 12-es, az SQL-verzió - verzió MsSQL2016 |
-| **Hivatkozások**              | [Dinamikus Adatmaszkolás](https://msdn.microsoft.com/library/mt130841) |
+| **Hivatkozások**              | [Dynamic Data Masking](https://msdn.microsoft.com/library/mt130841) |
 | **Lépések** | A dinamikus adatmaszkolás célja, hogy korlátozza a bizalmas adatok, megakadályozza, hogy a felhasználók, akik nem hozzáféréssel kell rendelkeznie az adatok megtekintésekor, megjelenítését. Dinamikus adatmaszkolás nem célja, hogy az adatbázis-felhasználók közvetlenül csatlakozik az adatbázishoz, és tegye elérhetővé a bizalmas adatok következőben történő részletes ellentmondás-lekérdezések futtatásához. Dinamikus adatmaszkolás kiegészíti a többi SQL Server biztonsági funkciók (naplózás, titkosítás, sorszintű biztonság...), és a funkció használatához őket együtt emellett ahhoz, hogy az a bizalmas adatok védelme érdekében előírta erősen ajánlott a az adatbázis. Vegye figyelembe, hogy ez a funkció csak az SQL Server 2016 kezdve és az Azure SQL Database által támogatott. |
 
 ## <a id="salted-hash"></a>Győződjön meg arról, hogy a jelszavak tárolása sózott ujjlenyomat formátuma
@@ -179,7 +179,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Jelszó Hashing .NET kriptográfiai API-k használatával](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
@@ -190,10 +190,10 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | SQL-verzió - minden |
-| **Hivatkozások**              | [Az SQL server bizalmas adatok titkosítása](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [hogyan: az SQL Server egy oszlopadatok titkosítása](https://msdn.microsoft.com/library/ms179331), [tanúsítvány titkosítása](https://msdn.microsoft.com/library/ms188061) |
+| **Hivatkozások**              | [Az SQL server bizalmas adatok titkosítása](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [hogyan: Az SQL Server adatoszlopok titkosítása](https://msdn.microsoft.com/library/ms179331), [tanúsítvány titkosítása](https://msdn.microsoft.com/library/ms188061) |
 | **Lépések** | Bizalmas adatok, például hitelkártyaszámokon rendelkezik titkosítását az adatbázisban. Képes az oszlopszintű encryption használatával titkosított adatok, vagy egy alkalmazás-függvényt a titkosítási funkciók használatával. |
 
 ## <a id="tde-enabled"></a>Győződjön meg arról, hogy adatbázis-szintű titkosítást (TDE) engedélyezve van
@@ -201,7 +201,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az SQL Server transzparens adattitkosításának (TDE) ismertetése](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
@@ -212,7 +212,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | SQL Azure, OnPrem |
 | **Attribútumok**              | SQL - 12-es, az SQL-verzió - verzió MsSQL2014 |
 | **Hivatkozások**              | [Az SQL database biztonsági mentés titkosítása](https://msdn.microsoft.com/library/dn449489) |
@@ -223,8 +223,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL fázis**               | Felépítés |  
-| **Megfelelő technológiák** | MVC 5, 6 MVC |
+| **SDL Phase**               | Felépítés |  
+| **Megfelelő technológiák** | MVC 5, MVC 6 |
 | **Attribútumok**              | Identity Provider - ADFS, identitásszolgáltató – Azure ad-ben |
 | **Hivatkozások**              | –  |
 | **Lépések** | <p>Egyes megvalósítások a webes API-hitelesítés-és nagybetűket összetevők böngésző helyi tároló vannak tárolva. Például az Azure AD hitelesítési összetevők például adal.idtoken, adal.nonce.idtoken, adal.access.token.key, adal.token.keys, adal.state.login, adal.session.state, adal.expiration.key stb.</p><p>Ezek az összetevők után sem érhetők el az összes jelentkezzen ki, vagy a böngésző be van zárva. Ha egy támadó lekérdezi ezeket az összetevőket a hozzáférést, hallgatója felhasználhatja őket a védett erőforrások (API-k) eléréséhez. Győződjön meg arról, hogy webes API-hoz kapcsolódó összes bizalmas összetevők nem a böngészőben a storage-ban tárolt. Azokban az esetekben, ahol a storage ügyféloldali elkerülhetetlen (például egyetlen lapon alkalmazások (SPA), az Implicit OpenIdConnect/OAuth folyamatok kell helyileg a hozzáférési jogkivonatok tárolására), használható tárolási lehetőségek a nincs megőrzését. például inkább SessionStorage LocalStorage.</p>| 
@@ -247,7 +247,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure Document DB-ről | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -258,7 +258,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure IaaS virtuális gép megbízhatósági kapcsolat határán | 
-| **SDL fázis**               | Környezet |  
+| **SDL Phase**               | Környezet |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az Azure Disk Encryption segítségével a virtuális gépek által használt lemezek titkosítása](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
@@ -269,7 +269,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | Környezet – Azure |
 | **Hivatkozások**              | [Service Fabric-alkalmazásokat a titkos kulcsok kezelése](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
@@ -280,7 +280,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -291,7 +291,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
-| **SDL fázis**               | Környezet |  
+| **SDL Phase**               | Környezet |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -302,7 +302,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
-| **SDL fázis**               | Környezet |  
+| **SDL Phase**               | Környezet |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -313,7 +313,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
-| **SDL fázis**               | Környezet |  
+| **SDL Phase**               | Környezet |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -324,7 +324,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | StorageType - Blob |
 | **Hivatkozások**              | [Az Azure Storage Service Encryption for Data at Rest (előzetes verzió)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
@@ -335,10 +335,10 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Ügyféloldali titkosítás és a Microsoft Azure Storage for Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/), [oktatóanyag: az Azure Key Vault használatával a Microsoft Azure Storage blobok titkosítása és visszafejtése](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [adattárolás az Azure-Blobban található Storage-titkosítás az Azure-bővítmények](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **Hivatkozások**              | [Ügyféloldali titkosítás és az Azure Key Vault a Microsoft Azure Storage](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/), [oktatóanyag: Az Azure Key Vault használatával a Microsoft Azure Storage blobok titkosítása és visszafejtése](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [adattárolás az Azure Blob Storage Azure titkosítási bővítményekkel](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
 | **Lépések** | <p>Az Azure Storage ügyféloldali kódtárat for .NET Nuget csomag támogatja a belüli titkosítását az ügyfélalkalmazások előtt feltöltése az Azure Storage, az adatok visszafejtése során az ügyfélre történő letöltéskor. A kódtár emellett támogatja az Azure Key Vault rendszerrel való integrálást a tárfiókkulcs-kezelés biztosítása érdekében. Itt látható egy rövid leírást ügyféloldali titkosítása működése:</p><ul><li>Az Azure Storage ügyféloldali SDK állít elő, a tartalom titkosítási kulcsot (CEK), amely egyszer használható egy szimmetrikus kulcs</li><li>Vásárlói adatok titkosítását a rendszer a CEK</li><li>A CEK ezt követően (titkosítva) a kulcstitkosítási kulcs-(KEK) használatával. A KEK kulcsazonosítójával azonosíthatók és aszimmetrikus kulcspárt alkotnak, vagy egy szimmetrikus kulcsot és is kezelhetők helyileg vagy az Azure Key Vaultban tárolt. A Storage-kliens maga soha nem rendelkezik hozzáféréssel a KEK. Csak a Key Vault által biztosított kulcs alkalmazásburkoló algoritmus hív meg. Ügyfeleink kiválaszthatják kulcs alkalmazásburkoló/kicsomagolási szükség esetén egyéni szolgáltató használata</li><li>A titkosított adatok majd fel van töltve az Azure Storage szolgáltatásba. Ellenőrizze a hivatkozások alacsony szintű megvalósítási részletei szakaszban található hivatkozásokat.</li></ul>|
 
 ## <a id="pii-phones"></a>Bizalmas vagy telefonok helyi tárba írt PII adatok titkosítása
@@ -346,10 +346,10 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Mobileszköz ügyfél | 
-| **SDL fázis**               | Felépítés |  
-| **Megfelelő technológiák** | Általános, Xamarin  |
+| **SDL Phase**               | Felépítés |  
+| **Megfelelő technológiák** | Generic, Xamarin  |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Beállításainak és funkcióinak az eszközökön a Microsoft Intune-házirendek kezelése](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies#create-a-configuration-policy), [kulcslánc Pótkulcs](https://components.xamarin.com/view/square.valet) |
+| **Hivatkozások**              | [Beállításainak és funkcióinak az eszközökön a Microsoft Intune-házirendek kezelése](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies), [kulcslánc Pótkulcs](https://components.xamarin.com/view/square.valet) |
 | **Lépések** | <p>Ha az alkalmazás írja az érzékeny információkat, például a felhasználó személyazonosításra alkalmas adatok (e-mail, telefonszám, Utónév, Vezetéknév, beállítások stb.) – mobile a fájlrendszerben, majd azt titkosítani kell a helyi fájlrendszerben írása előtt. Ha az alkalmazás egy vállalati alkalmazást, majd Fedezze fel a Windows Intune-nal közzétételi alkalmazás lehetőségét.</p>|
 
 ### <a name="example"></a>Példa
@@ -396,7 +396,7 @@ Ha az alkalmazás nem egy vállalati alkalmazást, majd a megadott platform keys
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Mobileszköz ügyfél | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Titkosítási rejtjelezésre utaló jeleket, a .NET-hez](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
@@ -407,7 +407,7 @@ Ha az alkalmazás nem egy vállalati alkalmazást, majd a megadott platform keys
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Erősítse meg](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
@@ -426,7 +426,7 @@ Tanúsítvány vagy Windows clientCredentialType beállítva.
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános, .NET-keretrendszer 3 |
 | **Attribútumok**              | Biztonsági mód - átvitel, biztonsági üzemmód - üzenet |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [WCF biztonsági alapok CoDe magazin](http://www.codemag.com/article/0611051) |

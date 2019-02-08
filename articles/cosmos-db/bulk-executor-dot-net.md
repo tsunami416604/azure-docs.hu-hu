@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d6fed65dad0e8f12495177b274cef181e9e91879
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 7c47e6df1e8b92d122dcc6bed55506f2fccf9e89
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044314"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877507"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges végrehajtó .NET-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-ben
 
@@ -28,7 +28,7 @@ Tömeges végrehajtó könyvtár jelenleg az Azure Cosmos DB SQL API-t, és csak
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt. 
 
-* Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül. Vagy használhatja a [Azure Cosmos DB Emulatort](https://docs.microsoft.com/azure/cosmos-db/local-emulator) együtt a `https://localhost:8081` URI-t. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.
+* Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül. Vagy használhatja a [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) együtt a `https://localhost:8081` végpont. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.
 
 * Hozzon létre egy Azure Cosmos DB SQL API-fiókot az ismertetett lépéseket követve [adatbázisfiók létrehozása](create-sql-api-dotnet.md#create-a-database-account) .NET rövid cikkének. 
 
@@ -114,7 +114,7 @@ A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és 
    |---------|---------|
    |NumberOfDocumentsImported (hosszú)   |  Sikeresen importálva lettek a tömeges megadott dokumentumból dokumentumok száma importálja az API-hívás.       |
    |TotalRequestUnitsConsumed (kétirányú)   |   A tömeges által felhasznált teljes kérelemegység (RU) importálni az API-hívás.      |
-   |TotalTimeTaken (időtartam)    |   Teljes idő a tömeges importálás API-hívás végrehajtása befejeződik.      |
+   |TotalTimeTaken (TimeSpan)    |   Teljes idő a tömeges importálás API-hívás végrehajtása befejeződik.      |
    |BadInputDocuments (lista<object>)   |     A lista rossz formátumú dokumentumok importálása nem sikerült a tömeges importálása API-hívás. Felhasználó kell hárítsa el a dokumentumokat ad vissza, és próbálkozzon újra az importálással. Hibás formátumú dokumentumok tartalmazzák a dokumentumok, amelynek azonosító értéke nem egy karakterláncot (NULL értékű vagy bármely más adattípus érvénytelen akkor tekinthető).    |
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>Tömeges frissítés adatainak az Azure Cosmos DB
@@ -163,7 +163,7 @@ Meglévő dokumentumok frissítheti a BulkUpdateAsync API-val. Ebben a példába
    |---------|---------|
    |NumberOfDocumentsUpdated (hosszú)    |   A sikeresen frissített helyreállításra dokumentumok teljes számát a tömeges frissítés megadott API-hívás.      |
    |TotalRequestUnitsConsumed (kétirányú)   |    A teljes kérelemegység (RU) a tömeges frissítés által használt API-hívás.    |
-   |TotalTimeTaken (időtartam)   | A tömeges teljes idő frissítés API-hívás végrehajtása befejeződik. |
+   |TotalTimeTaken (TimeSpan)   | A tömeges teljes idő frissítés API-hívás végrehajtása befejeződik. |
     
 ## <a name="performance-tips"></a>Teljesítménnyel kapcsolatos tippek 
 

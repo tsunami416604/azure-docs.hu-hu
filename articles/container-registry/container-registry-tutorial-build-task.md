@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: dd99a6b49894b3489d1cc01f1fcbc56d29247b41
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 763ff0d5f619d2808fb06c05d5b266160b3a7069
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756359"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868565"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: Felhőalapú tároló-rendszerképek létrehozásának automatizálása, ha forráskódot véglegesítése
 
@@ -22,7 +22,7 @@ A [gyors feladat](container-registry-tutorial-quick-task.md) mellett az ACR Task
 Az oktatóanyag-sorozat második része a következő lépésekből áll:
 
 > [!div class="checklist"]
-> * Tevékenység létrehozása
+> * Feladat létrehozása
 > * A feladat tesztelése
 > * Tevékenységek állapotának megtekintése
 > * A feladat aktiválása kódvéglegesítéssel
@@ -51,6 +51,8 @@ Az ACR Tasks jelenleg a következő triggerek használatát támogatja:
 
 * Véglegesítés egy Git-adattárba
 * Az alapként szolgáló rendszerkép frissítése
+
+Ebben az oktatóanyagban az ACR-feladat állít össze, és leküldéses értesítések egy-egy docker-fájlban megadott egyetlen tároló rendszerképét. ACR-feladatokat is futtathat [több lépésből álló feladatokat](container-registry-tasks-multi-step.md) meghatározásához lépések végrehajtásával hozhat létre, leküldéses, igény szerint több tároló fájlt egy YAML használatával (jelenleg előzetes verzióban elérhető).
 
 ## <a name="create-a-build-task"></a>Összeállítási feladat létrehozása
 
@@ -99,7 +101,7 @@ az acr task create \
 > [!IMPORTANT]
 > Ha korábban már létrehozott feladatokat az előzetes verzióban az `az acr build-task` paranccsal, azokat a feladatokat újra létre kell hoznia az [az acr task][az-acr-task] paranccsal.
 
-A feladat megadja, hogy minden alkalommal, amikor kódot véglegesítenek a `--context` argumentumban megadott adattár *fő* elágazásába, az ACR Tasks összeállítja a tárolórendszerképet az elágazásban lévő kódból. A rendszer a `--file` által az adattár gyökeréből megadott Docker-fájlt használja. Az `--image` argumentum a `{{.Run.ID}}` egy parametrikus értékét adja meg a rendszerkép címkéjének a verzióra vonatkozó részéhez, ezzel biztosítva, hogy az összeállított rendszerkép egy adott összeállításhoz tartozzon és egyedi címkével legyen jelölve.
+A feladat megadja, hogy minden alkalommal, amikor kódot véglegesítenek a `--context` argumentumban megadott adattár *fő* elágazásába, az ACR Tasks összeállítja a tárolórendszerképet az elágazásban lévő kódból. A docker-fájlban megadott `--file` a tárházból legfelső szintű a rendszerkép létrehozásához használt. Az `--image` argumentum a `{{.Run.ID}}` egy parametrikus értékét adja meg a rendszerkép címkéjének a verzióra vonatkozó részéhez, ezzel biztosítva, hogy az összeállított rendszerkép egy adott összeállításhoz tartozzon és egyedi címkével legyen jelölve.
 
 A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbihoz hasonló:
 

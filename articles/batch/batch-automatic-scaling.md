@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1bd9710edddde04f76c6373a7718519f8ede8a19
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730007"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869092"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Hozzon létre egy automatikus méretezési képlet egy Batch-készletben lévő számítási csomópontok méretezése
 
@@ -89,7 +89,7 @@ Első és a egy készletben lévő számítási csomópontok számának kezelés
 | --- | --- |
 | $TargetDedicatedNodes |A célszáma dedikált számítási csomópontok a készlethez. Dedikált csomópontok száma cél van megadva, mert a készlet minden esetben nem érhetik el a kívánt számú csomópontot. Például ha az automatikus skálázás kiértékelési ezt a dedikált csomópontok célszáma módosítanak, mielőtt a készlet elérte a kezdeti cél, majd a készlet nem jut el a cél. <br /><br /> Egy készletet a Batch szolgáltatás konfigurációjával létrehozott fiókban nem érhetik el a célértéket, ha a cél meghaladja a Batch-fiók csomópont- vagy core kvóták. Felhasználói előfizetés-konfigurációval létrehozott fiók, a készlet nem érhetik el a célértéket, ha a célként megadott előfizetés magkvótáján megosztott meghaladja.|
 | $TargetLowPriorityNodes |A kitűzött számát alacsony prioritású számítási csomópontok a készlethez. Alacsony prioritású csomópontok száma cél van megadva, mert a készlet minden esetben nem érhetik el a kívánt számú csomópontot. Például ha alacsony prioritású csomópontok célszáma van módosította az automatikus skálázás kiértékelési, mielőtt a készlet elérte a kezdeti cél, majd a készlet lehet, hogy nem érhető el a cél. Egy készlet is nem érhetik el a célértéket, ha a cél meghaladja a Batch-fiók csomópont- vagy core kvóták. <br /><br /> Alacsony prioritású számítási csomópontok további információkért lásd: [alacsony prioritású virtuális gépek használata a Batch (előzetes verzió)](batch-low-pri-vms.md). |
-| $NodeDeallocationOption |A művelet, amikor a számítási csomópontot a készletből törlődnek. Lehetséges értékek:<ul><li>**újbóli várólistázás**– leállítja a feladatok azonnal, és a replikaügynöknek vissza a feladat-várólistában lévő, így azok időpontra van ütemezve.<li>**leállítja**– leállítja a feladatok azonnal, és eltávolítja azokat a feladat-várólistában.<li>**taskcompletion**--vár a jelenleg futó feladat befejeződik, és majd eltávolítja a csomópontot a készletből.<li>**retaineddata**– minden helyi feladat megőrzött adat megvárja, amíg a csomóponton, mielőtt megpróbálja eltávolítani a csomópontot a készletből törlődnek.</ul> |
+| $NodeDeallocationOption |A művelet, amikor a számítási csomópontot a készletből törlődnek. Lehetséges értékek a következők:<ul><li>**újbóli várólistázás**– leállítja a feladatok azonnal, és a replikaügynöknek vissza a feladat-várólistában lévő, így azok időpontra van ütemezve.<li>**leállítja**– leállítja a feladatok azonnal, és eltávolítja azokat a feladat-várólistában.<li>**taskcompletion**--vár a jelenleg futó feladat befejeződik, és majd eltávolítja a csomópontot a készletből.<li>**retaineddata**– minden helyi feladat megőrzött adat megvárja, amíg a csomóponton, mielőtt megpróbálja eltávolítani a csomópontot a készletből törlődnek.</ul> |
 
 Ezeket a módosításokat a Batch szolgáltatás mérőszámainak alapuló szolgáltatás által definiált változókat értékét kaphat:
 
@@ -126,7 +126,7 @@ Ezek a típusok támogatottak a képletet:
 * double
 * doubleVec
 * doubleVecList
-* sztring
+* Karakterlánc
 * időbélyeg – időbélyeg: egy összetett struktúra, amely tartalmazza a következő tagok:
 
   * év
@@ -376,7 +376,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Az automatikus méretezés felkészített készletet hoz létre, ha nem adja meg a _targetDedicatedComputeNodes_ paraméter vagy a _targetLowPriorityComputeNodes_ hívása paraméterrel **CreatePool** . Ehelyett adja meg a **AutoScaleEnabled** és **AutoScaleFormula** a készlet tulajdonságait. Ezek a tulajdonságok értékeit a száma minden egyes csomópont típusa határozza meg. Is, a manuális átméretezése az automatikus méretezés engedélyezve van a készlet (például [BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync]), első **letiltása** az automatikus méretezés a tárolókészlet, majd méretezze át.
+> Az automatikus méretezés felkészített készletet hoz létre, ha nem adja meg a _targetDedicatedNodes_ paraméter vagy a _targetLowPriorityNodes_ hívása paraméterrel **CreatePool** . Ehelyett adja meg a **AutoScaleEnabled** és **AutoScaleFormula** a készlet tulajdonságait. Ezek a tulajdonságok értékeit a száma minden egyes csomópont típusa határozza meg. Is, a manuális átméretezése az automatikus méretezés engedélyezve van a készlet (például [BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync]), első **letiltása** az automatikus méretezés a tárolókészlet, majd méretezze át.
 >
 >
 
@@ -412,7 +412,7 @@ Ha egy meglévő készlet automatikus skálázás engedélyezéséhez vegye figy
   * Ha nincs megadva az automatikus méretezési képlet vagy a kiértékelési időköze, a a Batch szolgáltatás továbbra is az aktuális értéket használja.
 
 > [!NOTE]
-> Ha a megadott értékeket a *targetDedicatedComputeNodes* vagy *targetLowPriorityComputeNodes* paramétereit a **CreatePool** módszer a készlet létrehozásakor .NET-, vagy az összehasonlítható paraméterek egy másik nyelven, majd ezeket az értékeket nem veszi figyelembe az automatikus skálázási képletet értékeli ki.
+> Ha a megadott értékeket a *targetDedicatedNodes* vagy *targetLowPriorityNodes* paramétereit a **CreatePool** metódus a .NET-ben, vagy az a készlet létrehozásakor a egy másik nyelvet, majd ezeket az értékeket az összehasonlítható paraméterek a rendszer figyelmen kívül hagyja, ha az automatikus skálázási képletet értékeli ki.
 >
 >
 

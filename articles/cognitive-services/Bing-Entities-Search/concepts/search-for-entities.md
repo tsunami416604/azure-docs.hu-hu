@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: A Bing Entity Search API használatával csomagolja ki, majd keresse meg a vállalatok és a helyek a keresési lekérdezések.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: b1d46d125d390f8612c5708e1964e0626acde343
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e78cc86a91e229b5d4d4aead5709da2f694ecac1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757457"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895363"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Keresés a Bing Entity API-val rendelkező entitások esetében
 
@@ -174,7 +174,7 @@ Az entitásinformáció (név, leírás és kép) megjelenítésekor a `webSearc
 
 ## <a name="find-places"></a>Helyek keresése
 
-A `places` mező egy [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#localentityanswer) listáját tartalmazó objektum [hely](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place) objektumok (lásd a [entitástípusok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types) további információt). A lista egy vagy több, a kérésre választ adó helyi entitást tartalmaz.
+A `places` mező egy [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) listáját tartalmazó objektum [hely](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place) objektumok (lásd a [entitástípusok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types) további információt). A lista egy vagy több, a kérésre választ adó helyi entitást tartalmaz.
 
 A helyek lehetnek éttermek, szállodák vagy különböző helyi vállalkozások. Az [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entitypresentationinfo) mező tartalmazza a helyi entitás típusát azonosító mutatókat. Ilyen mutató lehet például a Place (hely), LocaLBusiness (helyi vállalkozás), Restaurant (étterem). Az egymást követő mutatók leszűkítik az entitás típusát. A lehetséges típusok listájáért lásd az [entitások különböző típusait](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types) ismertető szakaszt.
 

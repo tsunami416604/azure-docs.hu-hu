@@ -1,6 +1,6 @@
 ---
-title: A replikáció konfigurálása az Azure SQL Database felügyelt példányába |} A Microsoft Docs
-description: További információ az Azure SQL Database felügyelt példánya a tranzakciós replikáció konfigurálása
+title: Replikálás konfigurálása a egy Azure SQL Database felügyelt példány adatbázisa |} A Microsoft Docs
+description: Egy Azure SQL Database felügyelt példány adatbázisa a tranzakciós replikáció konfigurálásával kapcsolatos tudnivalók
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,28 +11,28 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: b0188a0983ea18490f3997b857386e313daa58ed
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 038d8c919e68e68f886525a6c78139496edef8e1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467663"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893014"
 ---
-# <a name="configure-replication-in-azure-sql-database-managed-instance"></a>A replikáció konfigurálása az Azure SQL Database felügyelt példánya
+# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Replikálás konfigurálása a egy Azure SQL Database felügyelt példány adatbázisa
 
-Tranzakciós replikáció lehetővé teszi, az SQL Server vagy az Azure SQL Database felügyelt példányába adatbázisok másolatát a felügyelt példányon replikálni, vagy a felügyelt példány más SQL Server, az önálló SQL Database-adatbázist az adatbázisok végrehajtott módosítások leküldése vagy rugalmas készlet, vagy más felügyelt példány. Replikáció a nyilvános előzetes verzióban van, a [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md). Felügyelt példány közzétevő terjesztője és előfizető adatbázisok is üzemeltethet. Lásd: [tranzakciós replikáció konfigurációk](sql-database-managed-instance-transactional-replication.md#common-configurations) elérhető konfigurációk esetén.
+Tranzakciós replikáció lehetővé teszi adatok replikálása egy Azure SQL Database felügyelt példány adatbázisa SQL Server-adatbázis vagy egy másik példány adatbázisa be. Tranzakciós replikáció használatával az Azure SQL Database felügyelt példány az SQL Server-adatbázis, az önálló adatbázis az Azure SQL Database, az Azure SQL Database rugalmas készlet készletezett adatbázis-példány adatbázisban végrehajtott módosításokat. Tranzakciós replikáció a nyilvános előzetes verzióban van, a [Azure SQL Database felügyelt példány](sql-database-managed-instance.md). Felügyelt példány közzétevő terjesztője és előfizető adatbázisok is üzemeltethet. Lásd: [tranzakciós replikáció konfigurációk](sql-database-managed-instance-transactional-replication.md#common-configurations) elérhető konfigurációk esetén.
 
 ## <a name="requirements"></a>Követelmények
 
-Közzétevő és az Azure SQL Database terjesztő szükségesek:
+A felügyelt példány működhet a közzétevő vagy forgalmazó konfigurálása szükséges:
 
-- Az Azure SQL Database felügyelt példánya, amely nem szerepel a Geo-DR-konfigurációt.
+- Hogy a felügyelt példány nem jelenleg vesz részt a georeplikációs kapcsolatban.
 
    >[!NOTE]
-   >Az Azure SQL Database felügyelt példánya nem konfigurált előfizetők csak lehet.
+   >Önálló adatbázisok és a készletezett adatbázisok Azure SQL Database-ben csak előfizetők lehetnek.
 
-- Az SQL Server összes példányát kell az azonos virtuális hálózaton.
+- Az összes felügyelt példányok ugyanabban a virtuális hálózatban kell lennie.
 
 - Kapcsolat SQL-hitelesítést használ a replikációs résztvevők között.
 
@@ -44,28 +44,25 @@ Közzétevő és az Azure SQL Database terjesztő szükségesek:
 
 A következőket támogatja:
 
-- A helyszíni és Azure SQL Database felügyelt példányába példányok tranzakciós és pillanatkép-replikációs vegyesen.
-
-- Előfizetők lehet a helyszíni, önálló adatbázis az Azure SQL Database vagy Azure SQL Database rugalmas készletei a készletezett adatbázisok.
-
+- A helyszíni SQL Server és az Azure SQL Database felügyelt példány tranzakciós és pillanatkép-replikációs arányát.
+- A helyszíni SQL Server-adatbázisok, az Azure SQL Database önálló adatbázisok vagy készletezett adatbázisok az Azure SQL Database rugalmas készletei előfizetőket is lehet.
 - Egyirányú és kétirányú replikációt.
 
-A következő funkciók nem támogatottak:
+A következő funkciók nem támogatottak az Azure SQL Database felügyelt példány:
 
 - Frissíthető előfizetések.
-
 - Aktív georeplikáció.
 
 ## <a name="configure-publishing-and-distribution-example"></a>Közzététel és terjesztés példa konfigurálása
 
-1. [Hozzon létre egy Azure SQL Database felügyelt példányába](sql-database-managed-instance-create-tutorial-portal.md) a portálon.
+1. [Hozzon létre egy Azure SQL Database felügyelt példány](sql-database-managed-instance-create-tutorial-portal.md) a portálon.
 2. [Hozzon létre egy Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtárhoz.
 
    Győződjön meg arról, a tárelérési kulcsok másolása. Lásd: [megtekintése és másolása tárelérési kulcsok](../storage/common/storage-account-manage.md#access-keys
 ).
-3. Hozzon létre egy adatbázist a közzétevőre vonatkozóan.
+3. A közzétevő-példány adatbázis létrehozása.
 
-   Cserélje le az alábbi parancsfájlpéldákat `<Publishing_DB>` e adatbázis nevére.
+   Cserélje le az alábbi parancsfájlpéldákat `<Publishing_DB>` a példány adatbázis nevével.
 
 4. Hozzon létre egy adatbázis-felhasználót a terjesztő SQL-hitelesítés. Használjon biztonságos jelszót.
 

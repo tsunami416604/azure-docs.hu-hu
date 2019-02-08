@@ -14,19 +14,22 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5ab5c769280bdd91a15e6107df8c9c6b7814571c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 7f0af2c64d04d83cc3eb4043007979c17c75e051
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599910"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877286"
 ---
+> [!NOTE]
+> Minden App Service-környezeti rendelkezik egy virtuális IP-(VIP), amely használható az App Service Environment kapcsolatba.
+>
 # <a name="create-an-external-app-service-environment"></a>Külső App Service environment létrehozása #
 
 Az Azure App Service Environment az Azure App Service egy olyan példánya, amelyet egy Azure virtuális hálózat alhálózatában helyeztek üzembe. Az App Service Environment (ASE) üzembe helyezésének két módja van:
 
 - Egy virtuális IP-cím vagy külső IP-cím, azaz külső ASE használatával.
-- A VIP-nek a belső IP-cím, az gyakran nevezik ILB ASE mert a belső végpont egy belső terheléselosztóval (ILB).
+- A VIP-nek a belső IP-cím, az gyakran nevezik ILB ASE mert a belső végpont egy belső Load Balancer (ILB).
 
 Ez a cikk bemutatja, hogyan hozhat létre a külső ASE környezetben. Az ASE áttekintését lásd: [az App Service Environment bemutatása][Intro]. Az ILB ASE létrehozásával kapcsolatos információkért lásd: [létrehozása és használata az ILB ASE][MakeILBASE].
 

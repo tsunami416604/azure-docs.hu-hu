@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 49598eb8579e20dd20ca63d11529ba106a510102
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 71ddf1d70953b721911a7315ab6875dd41a9a4db
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170521"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894173"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Oktatóanyag: A Media Services v3 élő Stream .NET használatával
 
@@ -166,7 +166,7 @@ A következő kód bemutatja, hogyan megtisztítani a fiók az összes élő ese
 
 ## <a name="watch-the-event"></a>Esemény megtekintése
 
-Tekintse meg az eseményt, másolja a streamelési URL-cím, az ismertetett programkódot futtatásakor kapott [Streamelési Lokátorok létrehozásához](#create-a-streaminglocator) és a egy tetszőleges lejátszó használata. A stream kipróbálásához használhatja az [Azure Media Playert](http://amp.azure.net/libs/amp/latest/docs/index.html) a http://ampdemo.azureedge.net címen. 
+Esemény megtekintése, másolása a streamelési URL-cím, a kód futtatásakor ismertetett létrehozása a Streamelési lokátor, és egy tetszőleges player használja. A stream kipróbálásához használhatja az [Azure Media Playert](http://amp.azure.net/libs/amp/latest/docs/index.html) a http://ampdemo.azureedge.net címen. 
 
 Élő esemény automatikusan átalakítja az eseményeket igény szerinti tartalommá. Ha már leállította és törölte is az eseményt, a felhasználók igény szerinti videóként le tudják játszani az archivált tartalmat mindaddig, amíg az objektumot nem törli. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni. 
 

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: A értelmezése módszer használatával felhasználói lekérdezési karakterláncok Academic Graph-adatok és a Microsoft Cognitive Services Academic nyelvtani alapján formázott értelmezéseket ad vissza.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: d79e14fa48631ec6ce3cde42a7dbe300034782cb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6db9a5b65fc2723af2eae006ad81716e23e52133
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171653"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860524"
 ---
 # <a name="interpret-method"></a>Módszer értelmezése
 
@@ -29,7 +29,7 @@ Ahhoz, hogy az interaktív élményt, meghívhatja ezt a módszert ismételten u
 
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-Name (Név)     | Value | Kötelező?  | Leírás
+Name (Név)     | Érték | Kötelező?  | Leírás
 ---------|---------|---------|---------
 **Lekérdezés**    | Szöveges karakterlánc | Igen | Felhasználó által megadott lekérdezés.  Ha teljes értéke 1, lekérdezés létrehozni lekérdezési automatikus kiegészítését javaslatok előtagjaként is értelmezhető.        
 **model**    | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték *legújabb*.        

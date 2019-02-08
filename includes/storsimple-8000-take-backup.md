@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 5ec3bff505d2c887269b20c5fa4d0363a3040c1a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 48a3326dbe0e9eed4a5490e720248555586d189c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165145"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889793"
 ---
-<!--author=alkohli last changed: 01/12/17-->
-
 ### <a name="to-take-a-backup"></a>Biztonsági mentés végrehajtása
 
 1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. Az eszközök táblázatos listájából válassza ki az eszközt és kattintson rá, majd kattintson az **Összes beállítás** elemre. A **Beállítások** panelen lépjen a **Beállítások > Kezelés > Biztonsági mentési szabályzat** részhez.

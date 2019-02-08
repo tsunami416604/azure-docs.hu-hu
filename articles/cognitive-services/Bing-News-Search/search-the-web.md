@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan több kategóriákban, beleértve a hírek és témakörök népszerű aktuális hírek a webes keresés a Bing News Search API használatával.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
 ms.date: 01/10/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 1409839718b7ea2f685952a396ea2f52bd34fae1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a28445199c47c666fb2323a70317f81f3302c765
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55148812"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877099"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Mi az a Bing News Search API?
 
@@ -28,7 +28,7 @@ Vegye figyelembe, hogy a Bing News Search API hírkeresési eredményeket csak b
 
 Bár a Bing News Search API elsősorban talál, és adja vissza a kapcsolódó hírek, számos funkciót biztosít a intelligens és összpontosítás hírek lekéréséhez a weben.
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
 |[Javasolhat, és a keresési feltételek használata](concepts/search-for-news.md#suggest-and-use-search-terms)     | A keresési élmény javításához használatával a [a Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) a javasolt keresési kifejezéseket, éppen gépelt megjelenítéséhez.         |
 |[Általános hírek](concepts/search-for-news.md#get-general-news)     | Hírek keresése egy keresési lekérdezést küld a Bing News Search API, és visszaállítani híreket cikkek listáját.           |

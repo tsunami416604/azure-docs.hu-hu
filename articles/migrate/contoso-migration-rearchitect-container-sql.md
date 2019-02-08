@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 149a15353a7fd1d698af306971ecb0949db4c165
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 243b19d19fbce11d77f60bc2eccc4d1c58c85b80
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817231"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892184"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso áttelepítése: Egy Azure container és az Azure SQL Database a helyszíni alkalmazás újratervezése
 
@@ -183,7 +183,7 @@ Contoso rendszergazdák üzembe helyezése egy Azure SQL database.
 
 
 
-## <a name="step-2-create-an-acr-and-provision-an-azure-container"></a>2. lépés: Hozzon létre egy ACR-t és a egy Azure-tároló üzembe helyezése
+## <a name="step-2-create-an-acr-and-provision-an-azure-container"></a>2. lépés: Hozzon létre egy ACR-t és a egy Azure-tároló üzembe helyezése
 
 Az Azure container jön létre a webkiszolgáló virtuális gépről az exportált fájlok használatával. A tároló az Azure Container Registry (ACR) részeként.
 
@@ -317,7 +317,7 @@ Szeretne csatlakozni az Azure SQL Database, a Contoso rendszergazdák való hozz
 
 További segítségre van szüksége?
 
-[Ismerje meg](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#creating-and-managing-firewall-rules) létrehozása és az Azure SQL Database-tűzfalszabályok kezelése.
+[Ismerje meg](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) létrehozása és az Azure SQL Database-tűzfalszabályok kezelése.
 
 ### <a name="migrate"></a>Migrate (Áttelepítés)
 

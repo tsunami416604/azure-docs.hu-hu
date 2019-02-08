@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
-ms.openlocfilehash: 2235c281b5b25390838a8f201481cfbdc9e5c223
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6add7323fdbcf07681e8566437632aa6679828e4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479193"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891981"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Kubernetes-fürt létrehozása az Application Gateway bejövőforgalom-vezérlőjéhez Azure Kubernetes Service-ben és a Terraform használatával
 [Az Azure Kubernetes Service (AKS)](/azure/aks/) felügyeli az üzemeltetett Kubernetes környezetet. Az AKS segítségével gyorsan és egyszerűen üzembe és kezelhet tárolóalapú alkalmazásokat tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
@@ -35,7 +35,7 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan hajtsa végre a következő fe
 
 - **A Terraform konfigurálása**: A cikk utasításait követve [Terraform hozzáférési szabályzatokat az Azure-bA](/azure/virtual-machines/linux/terraform-install-configure)
 
-- **Az Azure szolgáltatás egyszerű**: Szakaszának utasításait a **az egyszerű szolgáltatás létrehozása** szakasz a cikkben [egy Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Jegyezze fel az appId, a displayName és a jelszó értékeit.
+- **Az Azure szolgáltatás egyszerű**: Szakaszának utasításait a **az egyszerű szolgáltatás létrehozása** szakasz a cikkben [egy Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Jegyezze fel az appId, a displayName és a jelszó értékeit.
     - Vegye figyelembe a szolgáltatásnév Objektumazonosítóját a következő parancs futtatásával
 
     ```bash
@@ -617,7 +617,7 @@ Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előz
 
     ![A „terraform plan” eredményeit mutató példa](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
-1. Futtassa a `terraform apply` parancsot a Kubernetes-fürtöt létrehozó terv alkalmazásához. A Kubernetes-fürt létrehozásának folyamata néhány percet igénybe vehet, ez a Cloud Shell-munkamenet időtúllépését eredményezi. Ha a Cloud Shell-munkamenet túllépi az időkorlátot, kövesse a [„Helyreállítás a Cloud Shell időtúllépéséből”](#recover-from-a-dloud-shell-timeout) szakaszban leírt lépéseket, amelyek lehetővé teszik az oktatóanyag befejezését.
+1. Futtassa a `terraform apply` parancsot a Kubernetes-fürtöt létrehozó terv alkalmazásához. A Kubernetes-fürt létrehozásának folyamata néhány percet igénybe vehet, ez a Cloud Shell-munkamenet időtúllépését eredményezi. Ha a Cloud Shell-munkamenetek időkorlátja lejár, követheti a "A rendszer a Cloud Shell időtúllépés miatt helyreállítása" című szakaszának lépéseit, hogy az oktatóanyag elvégzéséhez.
 
     ```bash
     terraform apply out.plan
@@ -642,7 +642,7 @@ Ha a Cloud Shell-munkamenetek időkorlátja lejár, a helyreállításához hasz
     cd /clouddrive/terraform-aks-k8s
     ```
 
-1. Futtassa az alábbi parancsot:
+1. Futtassa a következő parancsot:
 
     ```bash
     export KUBECONFIG=./azurek8s

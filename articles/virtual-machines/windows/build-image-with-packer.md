@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
 ms.author: cynthn
-ms.openlocfilehash: f848c6b654f3378df04d1320d957e76ac5384465
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bab3b37d2d5063c77f8aceee84646b1ee72b0617
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427824"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892541"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows virtuálisgép-rendszerképek létrehozása az Azure-ban a Packer használatával
 Az Azure-ban minden virtuális gép (VM) jön létre egy rendszerképből, amely meghatározza a Windows-telepítési és az operációs rendszer verzióját. Rendszerképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactér sok első és a külső képek biztosít az operációs rendszer leggyakrabban használt, és az környezetek, vagy létrehozhat saját igényeire szabott lemezképek. Ez a cikk részletesen bemutatja a nyílt forráskódú eszköz [Packer](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
@@ -70,7 +70,6 @@ Hozzon létre egy fájlt *windows.json* , és illessze be az alábbi tartalommal
 | *client_secret*                     | A megadott jelszó `$securePassword` |
 | *tenant_id*                         | A kimeneti `$sub.TenantId` parancs |
 | *subscription_id*                   | A kimeneti `$sub.SubscriptionId` parancs |
-| *object_id*                         | Nézet azonosítója a `$sp.Id` |
 | *managed_image_resource_group_name* | Az első lépésben létrehozott erőforráscsoport nevét |
 | *managed_image_name*                | A létrehozott felügyelt lemez lemezkép neve |
 
@@ -83,7 +82,6 @@ Hozzon létre egy fájlt *windows.json* , és illessze be az alábbi tartalommal
     "client_secret": "P@ssw0rd!",
     "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "subscription_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "object_id": "a7dfb070-0d5b-47ac-b9a5-cf214fff0ae2",
 
     "managed_image_resource_group_name": "myResourceGroup",
     "managed_image_name": "myPackerImage",

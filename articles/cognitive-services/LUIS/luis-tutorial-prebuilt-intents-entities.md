@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban egy alkalmazást, amellyel gyorsan nyerhetnek szándék előrejelzési és adatok kivonása előre összeállított szándékok és entitások hozzá. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal. Az entitást a rendszer automatikusan észleli.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: d8569bbc2d1befdd2b6fb9c8783dab206e19c7c9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 346e7ac9a76f4ce4a87565ffc77032b095b2975c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211967"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878000"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Oktatóanyag: Közös szándékok és entitások azonosítása
 

@@ -3,18 +3,18 @@ title: Tudásbázis létrehozása, betanítása és közzététele – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. A jelen példában szereplő QnA Maker-tudásbázist egy egyszerű, gyakori kérdéseket tartalmazó weblap alapján hozzuk létre, a BitLocker-kulcsok helyreállításával kapcsolatos kérdések megválaszolásához.
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 41a8f11f817ec550ef3423d85eb107796bdd1b28
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2ac6e6fcd73abddcee668b8f73184b923aeab5d3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216948"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876997"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>A QnA Maker-tudásbázis létrehozása, betanítása és közzététele
 

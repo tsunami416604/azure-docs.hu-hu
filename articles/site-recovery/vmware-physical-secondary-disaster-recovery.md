@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 34b38f979fcab765a35d8aa6f0714ce85beec6fe
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0cc9c8dc214589e03e5a6a5405c07c9f6b3e53e6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105185"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895839"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók másodlagos helyre történő vészhelyreállításának beállítása
 
@@ -50,7 +50,7 @@ fizikai gépek o kövesse ezt [oktatóanyag](./physical-azure-disaster-recovery.
 --|--|--
 **Szükséges összetevők** |Mobilitási szolgáltatás a replikált gépek. A helyszíni konfigurációs kiszolgáló, folyamatkiszolgáló, fő célkiszolgáló. Ideiglenes folyamatkiszolgáló az Azure-ban feladat-visszavételhez.|Mobilitási szolgáltatás, a Folyamatkiszolgáló, a konfigurációs kiszolgáló és a fő célkiszolgáló
 **Konfigurációs és vezénylési** |Recovery Services-tárolót az Azure Portalon | VContinuum használatával 
-**Replikált**|Lemez (Windows és Linux) |Kötet – Windows<br> Lemez – Linux
+**Replikált**|Lemez (Windows és Linux) |Volume-Windows<br> Disk-Linux
 **Megosztott lemezfürt**|Nem támogatott|Támogatott
 **Data churn korlátait (átlag)** |Lemezenként 10 MB/s-adatok<br> Virtuális gépenként 25MB/s-adatok<br> [További információ](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | > 10 MB/s adatok lemezenként  <br> Virtuális gépenként > 25 MB/s-adatok
 **Monitorozás** |Az Azure Portalról|A CX (konfigurációs kiszolgáló)
@@ -72,7 +72,7 @@ Az oktatóanyag elvégzéséhez:
 2. Konfigurációs kiszolgálók
 3. Folyamatkiszolgálók
 4. A fő célkiszolgáló kiszolgálók
-5. vContinuum-kiszolgáló
+5. vContinuum servers
 6. Forráskiszolgáló (Windows és Linux-kiszolgálók)
 
 A frissítések a következőképpen telepítheti:
@@ -82,7 +82,7 @@ A frissítések a következőképpen telepítheti:
 
 Töltse le a [frissítése](https://aka.ms/asr-scout-update7) .zip-fájlt, és a [MySQL és PHP frissítése](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) konfigurációs fájlokat. A frissítés .zip-fájlban található az összes, az alap bináris fájljait és összegző frissítés bináris fájljait a következő összetevők: 
   - InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
-  - RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.GZ
+  - RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz
   - InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
   - InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
   - CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
@@ -122,7 +122,7 @@ Töltse le a [frissítése](https://aka.ms/asr-scout-update7) .zip-fájlt, és a
 3. **Konfigurációs kiszolgáló és a folyamatkiszolgáló**: Másolás **CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe** a konfigurációs kiszolgáló és a folyamatkiszolgáló. Kattintson duplán a futtatáshoz.<br>
 4. **Windows fő célkiszolgáló**: Az egyesített ügynök frissítése, másolása **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** a kiszolgálóhoz. Kattintson duplán a futtatáshoz. Ugyanebben a fájlban a friss telepítés is használható. Az azonos egységes ügynök frissítése akkor is alkalmazható a forráskiszolgálón.
   A frissítést nem szükséges a alkalmazni a fő cél az előkészített **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** , ez az új GA telepítő a legújabb módosításokkal.
-5. **vContinuum-kiszolgáló**:  Másolás **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** a kiszolgálóhoz.  Győződjön meg arról, hogy bezárt a vContinuum varázslóját. Kattintson duplán a fájlra a futtatáshoz.
+5. **vContinuum server**:  Másolás **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** a kiszolgálóhoz.  Győződjön meg arról, hogy bezárt a vContinuum varázslóját. Kattintson duplán a fájlra a futtatáshoz.
 6. **Linux rendszerű fő célkiszolgáló**: Az egyesített ügynök frissítése, másolása **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** a Linuxos fő célkiszolgáló, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
 7. **A forráskiszolgáló Windows**: Az egyesített ügynök frissítése, másolása **InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe** a forráskiszolgálón. Kattintson duplán a fájlra a futtatáshoz. 
 8. **Linux-forráskiszolgálón**: Az egyesített ügynök frissítése, másolja az egyesített ügynök fájl megfelelő verziója a Linux-kiszolgálón, és csomagolja. A kibontott mappát, futtassa a **/Install**.  Példa: Az RHEL 6.7 server 64 bites, a másolási **InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz** a kiszolgálóra, és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
@@ -194,7 +194,7 @@ Töltse le a [frissítése](https://aka.ms/asr-scout-update6) .zip-fájlt. A fá
 3. **Konfigurációs kiszolgáló és a folyamatkiszolgáló**: Másolás **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** a konfigurációs kiszolgáló és a folyamatkiszolgáló. Kattintson duplán a futtatáshoz.<br>
 4. **Windows fő célkiszolgáló**: Az egyesített ügynök frissítése, másolása **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** a kiszolgálóhoz. Kattintson duplán a futtatáshoz. Az azonos egységes ügynök frissítése akkor is alkalmazható a forráskiszolgálón. Ha a forrás még nem lett frissítve, a 4-es frissítést, frissítenie kell az egyesített ügynök.
   A frissítést nem szükséges a alkalmazni a fő cél az előkészített **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** , ez az új GA telepítő a legújabb módosításokkal.
-5. **vContinuum-kiszolgáló**:  Másolás **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** a kiszolgálóhoz.  Győződjön meg arról, hogy bezárt a vContinuum varázslóját. Kattintson duplán a fájlra a futtatáshoz.
+5. **vContinuum server**:  Másolás **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** a kiszolgálóhoz.  Győződjön meg arról, hogy bezárt a vContinuum varázslóját. Kattintson duplán a fájlra a futtatáshoz.
     A frissítést nem szükséges a fő célkiszolgálón előkészítve a alkalmazni **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** mivel ez új a végleges verzió telepítőjét a érintő legújabb változásokat.
 6. **Linux rendszerű fő célkiszolgáló**: Az egyesített ügynök frissítése, másolása **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** a fő célkiszolgáló és csomagolja ki. A kibontott mappát, futtassa a **/Install**.
 7. **A forráskiszolgáló Windows**: Az egyesített ügynök frissítése, másolása **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** a forráskiszolgálón. Kattintson duplán a fájlra a futtatáshoz. 
@@ -217,8 +217,8 @@ Scout Update 5 a kumulatív frissítés. Update 4-es frissítés 1-től az össz
 - Ha az adatforrás-kiszolgálók, a fő célkiszolgáló, konfigurációs, folyamat és RX kiszolgálók Update 4 már fut, akkor csak a fő célkiszolgáló a alkalmazni azt. 
 
 #### <a name="new-platform-support"></a>Új eszközplatform-támogatás
-* SUSE Linux Enterprise Server 11. szervizcsomag 4(SP4)
-* SLES 11 SP4 64 bites **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** a Scout általánosan elérhető alapszintű csomag együtt van csomagolva (**InMage_Scout_Standard_8.0.1 GA.zip**). Töltse le a GA-csomagot a portálról, leírtak szerint [hozzon létre egy tárolót](#create-a-vault).
+* SUSE Linux Enterprise Server 11 Service Pack 4(SP4)
+* SLES 11 SP4 64 bites **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** a Scout általánosan elérhető alapszintű csomag együtt van csomagolva (**InMage_Scout_Standard_8.0.1 GA.zip**). Letöltés a GA-csomag a portálról, leírtak szerint hozzon létre egy tárolót.
 
 
 #### <a name="bug-fixes-and-enhancements"></a>Hibajavítások és fejlesztések
@@ -252,7 +252,7 @@ Scout Update 5 a kumulatív frissítés. Update 4-es frissítés 1-től az össz
   * CentOS 6.8
 
 > [!NOTE]
-> RHEL/CentOS 7 64 bites **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** a Scout általánosan elérhető alapszintű csomag együtt van csomagolva **InMage_Scout_Standard_8.0.1 GA.zip**. A Scout a GA-csomag letöltése a portálról, leírtak szerint [hozzon létre egy tárolót](#create-a-vault).
+> RHEL/CentOS 7 64 bites **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** a Scout általánosan elérhető alapszintű csomag együtt van csomagolva **InMage_Scout_Standard_8.0.1 GA.zip**. Letöltés a Scout általánosan elérhető csomag, a portálról leírtak szerint hozzon létre egy tárolót.
 
 #### <a name="bug-fixes-and-enhancements"></a>Hibajavítások és fejlesztések
 
@@ -330,7 +330,7 @@ A 2. frissítésben javításokat tartalmazza:
 * Támogatási 5.5-ös frissítés 2 vsphere parancssori felület (vCLI) lett hozzáadva.
 * Támogatás hozzáadva ezen Linux operációs rendszerek a forráskiszolgálón:
     * RHEL 6 6 frissítése
-    * RHEL 5 11 frissítése
+    * RHEL 5 Update 11
     * CentOS 6 6. összesített frissítéssel
     * CentOS 5 frissítés 11
 * Hibajavítások a következő problémák:

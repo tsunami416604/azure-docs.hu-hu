@@ -3,21 +3,21 @@ title: Profil élő Azure Cloud Services az Application insights segítségével
 description: Engedélyezze az Application Insights Profiler az Azure Cloud Servicesben.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: cweining
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: cawa
+ms.reviewer: mbullwin
 ms.date: 08/06/2018
-ms.author: mbullwin
-ms.openlocfilehash: 76512a2c930f44ae5a9b57d85ca34544788a538a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: cweining
+ms.openlocfilehash: e050122984c19e46f3782c8364331323b403caad
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435889"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893834"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil élő Azure Cloud Services az Application insights segítségével
 
@@ -45,7 +45,7 @@ Application Insights Profiler az Azure Diagnostics bővítmény telepítve van. 
 
       ![A diagnosztika konfigurációs fájl helye](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      Ha nem találja a fájlt, tekintse meg [diagnosztika beállítása az Azure Cloud Services és Virtual Machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them).
+      Ha nem találja a fájlt, tekintse meg [diagnosztika beállítása az Azure Cloud Services és Virtual Machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
     b. Adja hozzá a következő `SinksConfig` szegmensben, mint a gyermekelemet `WadCfg`:  
 

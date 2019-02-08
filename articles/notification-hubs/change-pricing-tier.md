@@ -1,5 +1,5 @@
 ---
-title: A Notification Hubs-névtér priciing csomagváltás |} A Microsoft Docs
+title: A Notification Hubs-névtér tarifacsomag módosítása |} A Microsoft Docs
 description: Útmutató az Azure Notification Hubs-névtér tarifacsomagjának módosítása.
 services: notification-hubs
 author: jwargo
@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/28/2019
 ms.author: jowargo
-ms.openlocfilehash: fb84cc0a6e2fc427727fa0c50583b7f1a37e0160
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c572f64bdcb8846b5f73a0fee34f11c9729ee45d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55199070"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55885055"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Az Azure notification hubs-névtér tarifacsomagjának módosítása
 A Notification Hubs három szinten érhető el: **ingyenes**, **alapszintű**, és **standard**. Ez a cikk bemutatja, hogyan módosíthatja a tarifacsomagot az Azure Notification Hubs-névterekhez. 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: b1aa60b028efb4bf4820f1f084a7cf0eea6e9639
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: adcf823879ee04c43d74743aa5d94184b63fd337
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808119"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893289"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Oktatóanyag: Az Azure Active Directory-integráció Symantec webes biztonsági szolgáltatás (VSS)
 
@@ -79,7 +79,7 @@ Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolód
 Az Azure AD egyszeri bejelentkezés Symantec webes biztonsági szolgáltatás (VSS) tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[A Symantec a webes biztonsági szolgáltatás (VSS) egyszeri bejelentkezés konfigurálása](#configure-symantec-web-security-service-(wss)-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **A Symantec a webes biztonsági szolgáltatás (VSS) egyszeri bejelentkezés konfigurálása** – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[A Symantec a webes biztonsági szolgáltatás (VSS) tesztfelhasználó létrehozása](#create-symantec-web-security-service-wss-test-user)**  – egy megfelelője a Britta Simon kell a Symantec webes biztonsági szolgáltatás (WSS), amely kapcsolódik az Azure AD felhasználói ábrázolása.

@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: a8134e2350b650f7dfe0b3a1d58d107e42493223
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: aa88c2c63d348d0c82e0ad93115ea49437a63567
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766503"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895059"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Az Azure Stack tárfiókok kezelése
 
@@ -67,7 +67,7 @@ Olyan helyzetekben, ahol meg kell helyreállítani egy törölt fiók is.
 
 Az Azure Stack egy egyszerű módja van:
 
-1. Keresse meg a storage-fiókok listáján. Lásd: [keresse meg a tárfiókot](#find) ebben a cikkben további információt.
+1. Keresse meg a storage-fiókok listáján. Tekintse meg a Keresés ebben a cikkben további információkat a storage-fiók.
 2. Keresse meg az adott fiók a listában. Szükség lehet szűrni.
 3. Ellenőrizze a *állapot* fiók. Üzenetnek kell megjelennie **törölt**.
 4. Válassza ki a fiókot, amely a fiók részletei ablaktábla megnyitása.
@@ -113,7 +113,7 @@ Az, hogy olyan megőrzési időszakot hatásai egyik célja, hogy egy törölt f
 A kapacitás a portál vagy a PowerShell használatával is visszaigényelhetők.
 
 **A portál használatával kapacitás visszaigényléséhez:**
-1. Keresse meg a storage-fiókok panelen. Lásd: [keresse meg a tárfiókot](#find).
+1. Keresse meg a storage-fiókok panelen. Tekintse meg a storage-fiók található.
 2. Válassza ki **jusson** a panel tetején.
 3. Olvassa el az üzenetet, majd **OK**.
 

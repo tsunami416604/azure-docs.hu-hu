@@ -11,17 +11,18 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: bdb4db2d1a9447e8e328728288c1cf425c65a988
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: 3521f910ded2e24de9cfa7b1aa1d635843527ef5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511827"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878816"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Az Azure SQL Database szolgáltatási csomagjai
 
 Az Azure SQL Database az SQL Server adatbázismotor architektúra, amely 99,99 %-os rendelkezésre állását, még akkor is, az infrastruktúra-hibák esetekben biztosítása érdekében a felhőalapú környezet módosul alapul. Nincsenek az Azure SQL Database által használt három architekturális modellek:
+
 - [Általános célú](sql-database-service-tier-general-purpose.md) többsége az általános számítási feladatokhoz tervezték.
 - [Üzletileg kritikus](sql-database-service-tier-business-critical.md) rövid késleltetésű számítási feladatok és egy olvasható replika tervezve.
 - [Nagy kapacitású](sql-database-service-tier-hyperscale.md) nagyon nagy méretű adatbázisok számára hoztuk létre (akár 100 TB-os) rendelkező több olvasható replika.
@@ -40,8 +41,8 @@ A következőket ajánljuk figyelmébe:
 - Amikor konfigurálja a szükséges egyetlen adatbázis mérete (MDF mérete), 30 %-a további tárhely automatikusan hozzáadott LDF támogatása
 - A felügyelt példány tároló mérete 32 GB többszörösének kell adni.
 - Kiválaszthatja, hogy minden önálló adatbázis mérete 10 GB-os és a támogatott maximális érték között
-  - Standard szintű tárolóra vonatkozó növelése, vagy 10 GB-os lépésekben méretének csökkentése
-  - A Premium storage növelheti, vagy 250 GB-os lépésekben méretének csökkentése
+  - A standard vagy általános célú szolgáltatásszinten tároláshoz növelése, vagy mérete 10 GB-os lépésekben csökkentése
+  - Prémium szintű vagy buxiness kritikus szolgáltatási szinten tárolásához növelheti, illetve 250 GB-os lépésekben méretének csökkentése
 - Az általános célú szolgáltatásszinten lévő `tempdb` használ egy csatlakoztatott SSD és a tárolási költségek a virtuális mag díja tartalmazza.
 - Az üzletileg kritikus szolgáltatási rétegben található `tempdb` megosztások a csatlakoztatott SSD az MDF és az LDF-fájlok és a TempDB adatbázisban a tárolási költségek a virtuális mag díja tartalmazza.
 

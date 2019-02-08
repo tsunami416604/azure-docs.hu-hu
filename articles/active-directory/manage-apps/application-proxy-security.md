@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 3e8d9cc44e4e83dac963b3d85f7dd4d058323bf6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f7df77447d0571b6d111e316f3f2bcf85b4e1aa4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813823"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893757"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Távolról az Azure AD-alkalmazásproxy-alkalmazások eléréséhez szükséges biztonsági szempontok
 
@@ -147,7 +147,7 @@ Ha konfigurálta az alkalmazást, hogy az Azure ad-vel preauthenticate, az Azure
 
 2. Összes ellenőrzés rendelkezik követően az Azure AD STS az alkalmazás egy aláírt jogkivonatot, és átirányítja a felhasználót vissza az alkalmazásproxy-szolgáltatás.
 
-3. Alkalmazásproxy ellenőrzi, hogy az alkalmazás javítása a jogkivonatot adta-e. Azt ellenőrzi más is, például annak biztosítása, hogy a jogkivonat aláírása az Azure AD, és hogy továbbra is a érvényes időszakon belül.
+3. Az alkalmazásproxy ellenőrzi, hogy a jogkivonat a megfelelő alkalmazáshoz adta-e. Azt ellenőrzi más is, például annak biztosítása, hogy a jogkivonat aláírása az Azure AD, és hogy továbbra is a érvényes időszakon belül.
 
 4. Application Proxy beállítja annak jelzésére, hogy a hitelesítés, az alkalmazás-titkosított hitelesítési cookie történt. A cookie-t tartalmaz egy lejárati időbélyeg, amely az Azure AD-ből és más adatok, például a felhasználó nevét, a hitelesítés alapján alapul. A cookie-k és csak az alkalmazásproxy-szolgáltatás által ismert titkos kulccsal van titkosítva.
 

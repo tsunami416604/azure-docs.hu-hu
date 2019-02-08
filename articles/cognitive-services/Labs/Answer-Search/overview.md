@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: A Válaszkeresés projekt bemutatása.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: cb02c9067e4d672b0aace4caf13e4c8f0d718afb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1898a4576b86d7abb302e325aef827bab6b9d7dd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220195"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877419"
 ---
 # <a name="what-is-project-answer-search"></a>Mi a Válaszkeresés projekt?
 A Project Answer Search API a Bing v7 végpontot használja a válaszokat váró lekérdezések megválaszolására. Például a „Mekkora a Föld kerülete?” kérdésre a rendszer tényekkel válaszol.  A személyekkel, helyekkel vagy dolgokkal kapcsolatos lekérdezések a lekérdezésben azonosított entitásokkal kapcsolatos információkat adnak vissza. Ezek a forgatókönyvek olyan alkalmazások esetén lehetnek hasznosnak, amilyenek a csevegőrobotok, az üzenőalkalmazások, az olvasók stb.  

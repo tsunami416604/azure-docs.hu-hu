@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Hogyan használható a reporting által biztosított együttműködési környezettel Translation Framework (CTF).
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 273b54961adafb58fe9faa7993003ff74d50b6f9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 69fbcad92d31744cae798b7ff376e77f655f6440
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218156"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877559"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
 
@@ -99,9 +99,9 @@ Az eredményhalmaz tömbjét tartalmazza a **UserTranslationCount**. Minden egye
 | Mező | Leírás |
 |:---|:---|
 | Darabszám| Beolvasott eredmények száma|
-| Ettől: | A Forrásnyelv|
+| Forrás | A Forrásnyelv|
 | Minősítés| A minősítés az alkalmazott a küldőtől AddTranslation() metódushívás|
-| Művelet| A Célnyelv|
+| Cél| A Célnyelv|
 | URI| Az URI-t a AddTranslation() metódus meghívása a alkalmazni|
 | Felhasználó| A felhasználó neve|
 
@@ -170,10 +170,10 @@ Az eredményhalmaz tömbjét tartalmazza a **UserTranslation**. Minden egyes Use
 | Mező | Leírás |
 |:---|:---|
 | CreatedDateUtc| A létrehozást, a bejegyzés AddTranslation() használatával|
-| Ettől:| A Forrásnyelv|
+| Forrás| A Forrásnyelv|
 | OriginalText| A Forrásnyelv szöveget a kérelem elküldésekor használt|
 |Minősítés |A minősítés az alkalmazott a küldőtől AddTranslation() metódushívás|
-|Művelet|    A Célnyelv|
+|Cél|    A Célnyelv|
 |TranslatedText|    A fordítás küldött AddTranslation() metódushívás|
 |URI|   Az URI-t a AddTranslation() metódus meghívása a alkalmazni|
 |Felhasználó   |A felhasználó neve|

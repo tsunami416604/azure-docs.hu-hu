@@ -3,19 +3,19 @@ title: Tudásbázis – QnA Maker javítása
 titleSuffix: Azure Cognitive Services
 description: ''
 author: diberry
-manager: cgronlun
+manager: nitinme
 displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 639b665926f54387dfdc6e837c15c8d6d28df925
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6feb521aa47ca813b3067451c8c77111deb60e73
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755764"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874005"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
 
@@ -56,7 +56,7 @@ Egy egyszerű számítási közelségi meghatározni az algoritmus nem áll. A t
 
 ## <a name="turn-on-active-learning"></a>Aktív tanulás bekapcsolása
 
-Aktív tanulás alapértelmezés szerint ki van kapcsolva. Bekapcsolása javasolt kérdések megtekintéséhez. 
+Aktív tanulás alapértelmezés szerint ki van kapcsolva. Kapcsolja be a javasolt kérdések talál. 
 
 1. Aktív tanulás a bekapcsolásához kattintson a a **neve**, lépjen a [ **Szolgáltatásbeállítások** ](https://www.qnamaker.ai/UserSettings) a QnA Maker Portal jobb felső sarokban.  
 

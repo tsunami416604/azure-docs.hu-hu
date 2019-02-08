@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: ad45b117df545c361f17c299bee47b314a408b06
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e2d258f327ade2149adc92bdb7fb4bcc87cdd58c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165146"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888442"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>A StorSimple-Adapter telepítése a Sharepointhoz
 1. Másolja a telepítőt a előtér (WFE) webkiszolgálón a SharePoint központi felügyelet webalkalmazás futtatása is konfigurálva van. 
 2. Rendszergazdai jogosultságokkal rendelkező fiók használatával jelentkezzen be az ELŐTÉR-webkiszolgálón.
@@ -29,5 +27,5 @@ ms.locfileid: "50165146"
    
     ![A StorSimple adapter beállítása befejeződött lapon](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
 7. Nyissa meg a SharePoint központi felügyelet lapján. A StorSimple Adapter for SharePoint-hivatkozásokat tartalmazó StorSimple konfigurációs csoportot kell megjelennie.
-8. Nyissa meg a következő lépés: [konfigurálása RBS](#configure-rbs).
+8. Nyissa meg a következő lépés: [Konfigurálja a RBS](#configure-rbs).
 

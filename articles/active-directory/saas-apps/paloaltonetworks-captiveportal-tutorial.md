@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 15ddb29f090ca8dc14befc93e3377c181038b554
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1888ac8098773d6110e5510a3dd6c0ca1220f5d7
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816160"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892490"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Oktatóanyag: A Palo Alto hálózatok függő Portal Azure Active Directory-integráció
 
@@ -81,7 +81,7 @@ Az Azure AD egyszeri bejelentkezés Palo Alto hálózatok függő portállal tes
 2. **[Palo Alto hálózatok függő portál egyszeri bejelentkezés konfigurálása](#configure-palo-alto-networks-captive-portal-single-sign-on)**: Az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazásban.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**: Az Azure AD egyszeri bejelentkezés a felhasználóval tesztelje *Britta Simon*.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**: Britta Simon beállítása az Azure AD egyszeri bejelentkezés használatára.
-5. **[Hozzon létre egy Palo Alto hálózatok függő portál tesztfelhasználót](#create-palo-alto-networks-captive-portal-test-user)**: Hozzon létre egy partner felhasználót *Britta Simon* a Palo Alto hálózatok függő portál, amely kapcsolódik az Azure AD-felhasználót.
+5. **Hozzon létre egy Palo Alto hálózatok függő portál tesztfelhasználót**: Hozzon létre egy partner felhasználót *Britta Simon* a Palo Alto hálózatok függő portál, amely kapcsolódik az Azure AD-felhasználót.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**: Győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása

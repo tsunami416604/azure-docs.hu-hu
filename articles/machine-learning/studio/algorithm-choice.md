@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 5edf301ffc87a17963c3c32c7ea1b559e0834cf7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d60c99349fef26fc1ead7f6ea4b77d0c364c4abb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244470"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868140"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban az algoritmusok kiválasztása
 
@@ -44,9 +44,7 @@ E volt szó, az említett, amelyek több az adatszakértők a csak hogy keresse 
 Íme egy példa a a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/) kísérletet, amelyek az ugyanazon adatokra irányuló számos algoritmust megpróbál, és összehasonlítja az eredmények: [Hasonlítsa össze a többcsoportos besorolások: Elismerési betűs](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
 > [!TIP]
-> Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](studio-overview-diagram.md) című cikket.
-> 
-> 
+> Machine learning alapjait kapcsolatos gyakori machine learning kérdésre népszerű algoritmusok könnyen érthető szemléltető ábra áttekintést tölthető le: [Machine learning alapjai algoritmuspéldákkal](basics-infographic-with-algorithm-examples.md).
 
 ## <a name="flavors-of-machine-learning"></a>A gépi tanulás változatban érhetők el
 
@@ -242,13 +240,13 @@ Elindult, és a Microsoft Research saját John Langford által vezetett, VW egy 
 
 ## <a name="next-steps"></a>További lépések
 
-* Letölthető infografika, amely ismerteti az algoritmusokkal, és példákat talál, lásd: [letölthető Infografika: Machine learning alapjai algoritmuspéldákkal](basics-infographic-with-algorithm-examples.md).
+* Machine learning alapjait kapcsolatos gyakori machine learning kérdésre népszerű algoritmusok könnyen érthető szemléltető ábra áttekintést tölthető le: [Machine learning alapjai algoritmuspéldákkal](basics-infographic-with-algorithm-examples.md).
 
 * A Machine Learning Studióban elérhető összes gépi tanulási algoritmusok, kategória szerint, lásd: [modell inicializálása](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model) a Machine Learning Studio algoritmus-és modul segítségével.
 
 * Betűrend szerinti rendezés listájáért algoritmusok és a Machine Learning Studióban modulok, lásd: [betűrend szerinti lista Machine Learning Studio-modulok](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list) a Machine Learning Studio algoritmus- és modul segítségével.
 
-* Ha szeretne egy letölthető és kinyomtatható diagramot a Machine Learning Studio funkcióiról, tekintse meg [Az Azure Machine Learning Studio funkcióit bemutató diagram](studio-overview-diagram.md) című cikket.
+* Töltse le, és nyomtassa ki a Machine Learning Studio képességeit áttekintő diagram: [Microsoft Azure Machine Learning Studio képességeinek áttekintése (PDF)](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf).
 
 <!-- Media -->
 

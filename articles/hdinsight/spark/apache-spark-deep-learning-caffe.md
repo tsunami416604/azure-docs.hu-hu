@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 451ccff9747988ee019f2be9e0cccec12c9c1ef9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c79f840becce43c47287ef38bd39ed3ac9168b73
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118234"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891079"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Caffe elosztott deep learning az Azure HDInsight Spark használata
 
@@ -64,12 +64,12 @@ A szkriptműveletek két lépésből áll. Az első lépés, hogy a szükséges 
 
 A második lépés, hogy töltse le, fordítsa le és telepítheti a protopuf 2.5.0 Caffe a Futtatás ideje alatt. A Protopuf 2.5.0 [szükséges](https://github.com/yahoo/CaffeOnSpark/issues/87), azonban ez a verzió nem érhető el a 16, az Ubuntu-csomagként így fordítsa le a forráskód szükséges. Vannak még néhány erőforrások az interneten, hogy hogyan. További információkért lásd: [Itt](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
 
-Első lépésként mindössze futtathatja a parancsprogram-művelet a fürtre küldött, a munkavégző csomópontok és a fő csomópontok (a HDInsight 3.5). A szkriptműveletek futtathat egy meglévő fürt, vagy parancsprogram-műveletek használata a fürt létrehozása során. A szkriptműveletek további információkért lásd: a dokumentáció [Itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions).
+Első lépésként mindössze futtathatja a parancsprogram-művelet a fürtre küldött, a munkavégző csomópontok és a fő csomópontok (a HDInsight 3.5). A szkriptműveletek futtathat egy meglévő fürt, vagy parancsprogram-műveletek használata a fürt létrehozása során. A szkriptműveletek további információkért lásd: a dokumentáció [Itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
 ![Szkriptműveletek függőségek telepítése](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
-## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2. lépés: Épülnek Caffe Apache Spark for HDInsight az átjárócsomóponthoz
+## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2. lépés: Épülnek Caffe Apache Spark for HDInsight az átjárócsomóponthoz
 
 A második lépéseként, az átjárócsomópont Caffe buildet, és a lefordított tárak a feldolgozó csomópontokat, majd terjesztheti. Ebben a lépésben kell [ssh, az átjárócsomópont](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Ezt követően kell követnie a [CaffeOnSpark összeállítása folyamatban](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Alább a parancsfájl segítségével CaffeOnSpark készíthet néhány további lépést van. 
 
@@ -182,8 +182,8 @@ Egyéb vonalat igény szerint módosíthatók.
 
 A második fájl ({CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt$) határozza meg, hogyan néz ki a idegsejt hálózathoz, például a, és a megfelelő bemeneti és kimeneti fájl. is frissíteni szeretné a fájlt, hogy tükrözze a betanítási adatok helye. A következő részben lenet_memory_train_test.prototxt (kell, hogy adott a fürthöz a megfelelő helyre mutasson) történő módosítása:
 
-- Módosítsa a "file:/Users/mridul/bigml/demodl/mnist_train_lmdb" "wasb: / / / projektek/machine_learning/image_dataset/mnist_train_lmdb"
-- "file:/Users/mridul/bigml/demodl/mnist_test_lmdb/" módosítsa "wasb: / / / projektek/machine_learning/image_dataset/mnist_test_lmdb"
+- change the "file:/Users/mridul/bigml/demodl/mnist_train_lmdb" to "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb"
+- change "file:/Users/mridul/bigml/demodl/mnist_test_lmdb/" to "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb"
 
 ![Caffe-Config](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
 

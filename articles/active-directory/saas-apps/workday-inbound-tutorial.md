@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
-ms.openlocfilehash: d4a47130dadb782f41579bd20c4b5e1d1e9978bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 11541318ca7e693cc422ecaeab182407cc5bd736
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188592"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895754"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a Workday konfigurálása
 
@@ -713,7 +713,7 @@ A Workday kiépítési alkalmazáskonfigurációk elvégzése után, bekapcsolha
 
 3. Ez a művelet indul el a kezdeti szinkronizálás, amely attól függően, hogy hány felhasználó van az a Workday-bérlői óra változó számú is igénybe vehet. 
 
-4. Bármikor, ellenőrizze a **Auditnaplók** lap meg, milyen műveletet végzett el a kiépítési szolgáltatás, az Azure Portalon. A naplók a kiépítési szolgáltatás, például, hogy melyik felhasználók vannak kívül workdayjel képes olvasni és majd ezt követően hozzáadása vagy frissítése az Active Directory által végrehajtott minden egyes szinkronizálási események listája. Tekintse meg a [hibaelhárítás](#troubleshooting-provisioning-issues) tekintse át a vizsgálati naplók és a hibák javítása útmutatást a következő szakaszban.
+4. Bármikor, ellenőrizze a **Auditnaplók** lap meg, milyen műveletet végzett el a kiépítési szolgáltatás, az Azure Portalon. A naplók a kiépítési szolgáltatás, például, hogy melyik felhasználók vannak kívül workdayjel képes olvasni és majd ezt követően hozzáadása vagy frissítése az Active Directory által végrehajtott minden egyes szinkronizálási események listája. Talál a hibaelhárítási utasításokért tekintse át a naplókat, és javítsa ki a kiépítési hibákat.
 
 5. A kezdeti szinkronizálás befejezése után rendszer írási összefoglaló jelentést a **kiépítési** lapon, a lent látható módon.
 
@@ -956,7 +956,7 @@ A megoldás jelenleg nem támogatja a bináris attribútumok például *thumbnai
      | ----------------- | -------------------- |
      | PreferredFirstName | WD:Worker/WD:Worker_Data/WD:Personal_Data/WD:Name_Data/WD:Preferred_Name_Data/WD:Name_Detail_Data/WD:First_Name/Text() |
      | PreferredLastName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:Last_Name/text() |
-     | Vállalat | WD:Worker / wd:Worker_Data / wd:Organization_Data / wd:Worker_Organization_Data [wd:Organization_Data / wd:Organization_Type_Reference / wd:ID [@wd:type= 'Organization_Type_ID'] = "Céges"]/wd:Organization_Reference/@wd:Descriptor |
+     | Vállalati | WD:Worker / wd:Worker_Data / wd:Organization_Data / wd:Worker_Organization_Data [wd:Organization_Data / wd:Organization_Type_Reference / wd:ID [@wd:type= 'Organization_Type_ID'] = "Céges"]/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | WD:Worker / wd:Worker_Data / wd:Organization_Data / wd:Worker_Organization_Data / wd:Organization_Data [wd:Organization_Type_Reference / wd:ID [@wd:type= 'Organization_Type_ID'] = 'Felügyeleti'] /wd:Organization_Name/text() |
   
    Erősítse meg a Workday-csapattal, hogy a fenti API kifejezés a Workday-bérlői konfigurációjától érvényes. Ha szükséges, módosíthatja őket a szakaszban leírt módon [Workday felhasználói attribútumok listája testre szabható](#customizing-the-list-of-workday-user-attributes).
@@ -1329,7 +1329,7 @@ Ez a szakasz ismerteti, hogyan használhatja a Microsoft Graph API és a Graph E
 
    ![A WORKDAY App Service résztvevő-azonosító](./media/workday-inbound-tutorial/wd_export_01.png)
 
-#### <a name="step-2-sign-into-microsoft-graph-explorer"></a>2. lépés: Jelentkezzen be a Microsoft Graph Explorer
+#### <a name="step-2-sign-into-microsoft-graph-explorer"></a>2. lépés: Jelentkezzen be a Microsoft Graph Explorer
 
 1. Indítsa el a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)
 1. Kattintson a "Bejelentkezés a Microsoft" gombra, és jelentkezzen be az Azure AD globális rendszergazdai vagy alkalmazás rendszergazdai hitelesítő adatok használatával.

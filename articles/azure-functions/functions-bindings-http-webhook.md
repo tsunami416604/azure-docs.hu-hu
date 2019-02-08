@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: dc9c3b6740533ae26cf395e436908a359cadf8d9
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: c92bb8e7441e9701d11f3223fa6ebde7869d6233
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321313"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895726"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Az Azure Functions – HTTP-eseményindítók és kötések
 
@@ -27,6 +27,8 @@ HTTP-trigger válaszolni a testre szabható [webhookok](https://en.wikipedia.org
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+Ebben a cikkben a kód az alapértelmezett függvények 2.x szintaxist használó .NET Core. Az 1.x szintaxissal kapcsolatos információkért lásd: a [1.x függvények sablonok](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates).
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
@@ -63,26 +65,21 @@ A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-librar
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
-public static async Task<HttpResponseMessage> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]HttpRequestMessage req, 
-    ILogger log)
+public static async Task<IActionResult> Run(
+    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] 
+    HttpRequest req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
 
-    // parse query parameter
-    string name = req.GetQueryNameValuePairs()
-        .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
-        .Value;
+    string name = req.Query["name"];
 
-    // Get request body
-    dynamic data = await req.Content.ReadAsAsync<object>();
-
-    // Set name to query string or body data
+    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
 
-    return name == null
-        ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
-        : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+    return name != null
+        ? (ActionResult)new OkObjectResult($"Hello, {name}")
+        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
 }
 ```
 
@@ -117,48 +114,46 @@ Az alábbi példa bemutatja a trigger kötés egy *function.json* fájl és a eg
 
 A [konfigurációs](#trigger---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
-Íme a C#-szkriptkódot kötődő `HttpRequestMessage`:
+Íme a C#-szkriptkódot kötődő `HttpRequest`:
 
-```csharp
+```cs
 using System.Net;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
 
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
+public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 {
-    log.LogInformation($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
+    log.LogInformation("C# HTTP trigger function processed a request.");
 
-    // parse query parameter
-    string name = req.GetQueryNameValuePairs()
-        .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
-        .Value;
+    string name = req.Query["name"];
 
-    // Get request body
-    dynamic data = await req.Content.ReadAsAsync<object>();
-
-    // Set name to query string or body data
+    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
 
-    return name == null
-        ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
-        : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+    return name != null
+        ? (ActionResult)new OkObjectResult($"Hello, {name}")
+        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
 }
 ```
 
-Helyett egyéni objektumot kell kötni `HttpRequestMessage`. Ez az objektum létrejön a JSON-ként értelmezni a kérelem törzséből. Hasonlóképpen egy kimeneti kötést, és a válasz törzse együtt 200 állapotkódot adja vissza a HTTP-válasz adható át.
+Helyett egyéni objektumot kell kötni `HttpRequest`. Ez az objektum, a kérelem törzséből és a JSON-ként értelmezni. Hasonlóképpen egy kimeneti kötést, és a válasz törzse együtt 200 állapotkódot adja vissza a HTTP-válasz adható át.
 
 ```csharp
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-public static string Run(CustomObject req, ILogger log)
-{
-    return "Hello " + req?.name;
+public static string Run(Person person, ILogger log)
+{   
+    return person.Name != null
+        ? (ActionResult)new OkObjectResult($"Hello, {person.Name}")
+        : new BadRequestObjectResult("Please pass an instance of Person.");
 }
 
-public class CustomObject {
-     public string name {get; set;}
+public class Person {
+     public string Name {get; set;}
 }
 ```
 
@@ -547,12 +542,12 @@ Beállíthatja az engedélyezési engedélyezett és a egy HTTP-metódusok attri
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
-public static HttpResponseMessage Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequestMessage req)
+public static Task<IActionResult> Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequest req)
 {
     ...
 }
- ```
+```
 
 Egy teljes példa: [eseményindító – C#-példa](#trigger---c-example).
 
@@ -572,7 +567,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 ## <a name="trigger---usage"></a>Eseményindító - használat
 
-A C# és F# funkciók eszközhöz adhat meg a bemeneti adatokat lehet az eseményindító típusú `HttpRequestMessage` vagy egy egyéni típus. Ha úgy dönt, `HttpRequestMessage`, a kérelem objektum teljes hozzáférést kap. Egyéni írja be a következőt a modul megpróbálja elemezni az objektum tulajdonságainak JSON-kérelem törzse.
+A C# és F# funkciók eszközhöz adhat meg a bemeneti adatokat lehet az eseményindító típusú `HttpRequest` vagy egy egyéni típus. Ha úgy dönt, `HttpRequest`, a kérelem objektum teljes hozzáférést kap. Egyéni írja be a következőt a modul megpróbálja elemezni az objektum tulajdonságainak JSON-kérelem törzse.
 
 A JavaScript-függvények a Functions futtatókörnyezete biztosít, a kérelem törzsében a támogatásikérelem-objektum helyett. További információkért lásd: a [JavaScript eseményindító példa](#trigger---javascript-example).
 
@@ -612,13 +607,19 @@ http://<yourapp>.azurewebsites.net/api/products/electronics/357
 Ez lehetővé teszi a függvénykódot a címet, két paramétert támogató _kategória_ és _azonosító_. Bármilyen [webes API útvonal megkötés](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) a paraméterekkel. Az alábbi C#-függvénykódot mindkét paraméter használnak.
 
 ```csharp
-public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id,
-                                                ILogger log)
+public static Task<IActionResult> Run(HttpRequest req, string category, int? id, ILogger log)
 {
     if (id == null)
-        return  req.CreateResponse(HttpStatusCode.OK, $"All {category} items were requested.");
+    {
+        return (ActionResult)new OkObjectResult($"All {category} items were requested.");
+    }
     else
-        return  req.CreateResponse(HttpStatusCode.OK, $"{category} item with id = {id} has been requested.");
+    {
+        return (ActionResult)new OkObjectResult($"{category} item with id = {id} has been requested.");
+    }
+    
+    // -----
+    log.LogInformation($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
 }
 ```
 
@@ -674,7 +675,7 @@ public static IActionResult Run(HttpRequest req, ILogger log)
 {
     ClaimsPrincipal identities = req.HttpContext.User;
     // ...
-    return new OkResult();
+    return new OkObjectResult();
 }
 ```
 
@@ -730,7 +731,7 @@ Nem támogatott API-t olyan programozott módon a függvény kulcsok beszerzés�
 
 A legtöbb HTTP-eseményindító sablonok a kérelem API-kulcs szükséges. Így a HTTP-kérés általában a következő URL-cím hasonlóan néz ki:
 
-    https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>
+    https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
 
 A kulcs tartalmazhat egy lekérdezési karakterlánc változóban nevű `code`, a fentiek szerint. Azt is képezheti egy `x-functions-key` HTTP-fejléc. A kulcsnak az értéke lehet bármely függvénykulcs, a függvény definiálva, vagy bármely állomás kulcsát.
 
@@ -774,7 +775,7 @@ A Slack webhook állít elő, helyett adja meg, így konfigurálnia kell egy ado
 
 Webhook engedélyezési kezelje a webhook fogadó összetevő, a HTTP-eseményindítóval része, és a mechanizmus a webhook típusa alapján változik. Minden egyes mechanizmus támaszkodik egy kulcsot. Alapértelmezés szerint az "alapértelmezett" nevű függvény kulcsot használja. Egy másik kulcsot használatához adja meg a webhook-szolgáltatót, hogy a kulcs nevét, a kérés küldése a következő módszerek valamelyikével:
 
-* **Lekérdezési karakterlánc**: A szolgáltató adja át a kulcs nevét a `clientid` például a lekérdezési sztring paramétereként, `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
+* **Lekérdezési karakterlánc**: A szolgáltató adja át a kulcs nevét a `clientid` például a lekérdezési sztring paramétereként, `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`.
 * **Kérelem fejléce**: A szolgáltató adja át a kulcs nevét a `x-functions-clientid` fejléc.
 
 ## <a name="trigger---limits"></a>Eseményindító - korlátok
@@ -805,7 +806,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 ## <a name="output---usage"></a>Kimenet – használat
 
-HTTP-választ küldeni, a nyelv – standard válasz minták használatával. C# vagy C#-szkript, győződjön meg arról, a függvény visszatérési típusa `HttpResponseMessage` vagy `Task<HttpResponseMessage>`. A C# a visszatérési érték attribútum nem szükséges.
+HTTP-választ küldeni, a nyelv – standard válasz minták használatával. C# vagy C#-szkript, győződjön meg arról, a függvény visszatérési típusa `IActionResult` vagy `Task<IActionResult>`. A C# a visszatérési érték attribútum nem szükséges.
 
 Például a válaszokat, tekintse meg a [eseményindító példa](#trigger---example).
 

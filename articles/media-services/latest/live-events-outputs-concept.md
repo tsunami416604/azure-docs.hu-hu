@@ -13,20 +13,20 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: juliako
-ms.openlocfilehash: db7d47005b2855ffe3e28c43086a2bfa6b22c8f3
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: cce3ea06ebd7d3469dad14e491124f81567610ea
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659507"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894053"
 ---
 # <a name="live-events-and-live-outputs"></a>Élő események és élő kimenetek
 
 Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőben lévő események élő közvetítésére. Konfigurálása az élő események streamelése a Media Services v3-as, meg kell ismernie a ebben a cikkben tárgyalt fogalmakat:
 
 * [Élő események](#live-events)
-* [Élő események típusai](#live-vent-types)
-* [Élő esemény típusok összehasonlítása](#live-event-types-comparison)
+* Élő események típusai
+* Élő esemény típusok összehasonlítása
 * [Élő esemény-létrehozási beállítások](#live-event-creation-options)
 * [Élő esemény betöltési URL-címek](#live-event-ingest-urls)
 * [Élő esemény előnézeti URL-címe](#live-event-preview-url)

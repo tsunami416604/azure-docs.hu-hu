@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: e9e00dd9d05ff7339a6b5fd93e86bae61fbbf5ee
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3ab70febbb41b26fd824f9ae6ef0d00358c7530f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188429"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864417"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
 Az Azure Monitor-beli virtuális gépek teljesítmény- és kapcsolati metrikák, a számítógép és a folyamat leltáradatokat és az állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics data store az Azure Monitor.  Ezek az adatok érhető el [keresési](../../azure-monitor/log-query/log-query-overview.md) a Log Analyticsben. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
@@ -117,7 +117,7 @@ Típussal rendelkező rekordok *ServiceMapComputer_CL* leltáradatokat a függő
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| Típus | *ServiceMapComputer_CL* |
+| Typo | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | A munkaterületen belül a gépek egyedi azonosítója |
 | ResourceName_s | A munkaterületen belül a gépek egyedi azonosítója |
@@ -142,7 +142,7 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| Típus | *ServiceMapProcess_CL* |
+| Typo | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | A munkaterületen belül a folyamat egyedi azonosítója |
 | ResourceName_s | A gépen, amelyen fut a folyamat egyedi azonosítója|
@@ -159,13 +159,19 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 | CommandLine_s | A parancssorból |
 | ExecutablePath z | A végrehajtható fájl elérési útja |
 | WorkingDirectory_s | A munkakönyvtárban |
-| Felhasználónév | A fiók, amely alatt a folyamat végrehajtása |
+| UserName | A fiók, amely alatt a folyamat végrehajtása |
 | UserDomain | A tartományhoz, amelyben a folyamat végrehajtása |
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 
 ### <a name="list-all-known-machines"></a>Az összes ismert gépek listája
 `ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+
+### <a name="when-was-the-vm-last-rebooted"></a>Ha a virtuális gép utolsó újraindították
+`let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+
+### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Kép, a hely és a Termékváltozat Azure virtuális gépek – összefoglalás
+`ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>A fizikai memória-kapacitás az összes felügyelt számítógép listája.
 `ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
@@ -185,7 +191,7 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Egy megadott számítógép összes ismert folyamat listázása
 `ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
-### <a name="list-all-computers-running-sql"></a>Az SQL futtató számítógépek listája
+### <a name="list-all-computers-running-sql-server"></a>Az SQL Server rendszert futtató számítógépek listája
 `ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Saját adatközpontban curl összes egyedi termék verziója listázása
@@ -193,6 +199,18 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Az összes számítógép CentOS rendszerű számítógépcsoport létrehozása
 `ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+
+### <a name="bytes-sent-and-received-trends"></a>Bájt küldött és fogadott trendek
+`VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+
+### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>Melyik Azure-beli virtuális gépek vannak továbbítaná a legtöbb bájt
+`VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+
+### <a name="link-status-trends"></a>Kapcsolat állapota trendek
+`VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+
+### <a name="connection-failures-trend"></a>Kapcsolódási hibák trend
+`VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>A kimenő kapcsolatok a gépek csoportból összefoglalója
 ```

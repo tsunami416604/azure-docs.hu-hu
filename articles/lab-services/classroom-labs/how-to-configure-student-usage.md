@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 946a2a05cee0cf8f3b91eef58442fbb2e26935c4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 577860baa74d9f0cd7f411a64d9e6bfa9322731c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490447"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894990"
 ---
 # <a name="configure-usage-settings-and-policies"></a>És használati beállítások és szabályzatok konfigurálása
 Ez a cikk ismerteti a felhasználók hozzáadása a tesztkörnyezethez, azok regisztrálva a labor, szabályozhatja a virtuális Gépet, és további használatához órák száma. 
@@ -29,7 +29,9 @@ Ha rendelkezik a **hozzáférés korlátozása** felhasználók (e-mail cím) be
 
 1. Válassza ki **felhasználók** a bal oldali menüben.
 2. Válassza ki **felhasználók hozzáadása** az eszköztáron. 
-3. Az a **felhasználók hozzáadása** lap, adja meg a felhasználók e-mail címét, külön sorban, vagy egyetlen sorban, egymástól pontosvesszővel elválasztva. 
+
+    ![Felhasználók gomb hozzáadása](../media/how-to-configure-student-usage/add-users-button.png)
+1. Az a **felhasználók hozzáadása** lap, adja meg a felhasználók e-mail címét, külön sorban, vagy egyetlen sorban, egymástól pontosvesszővel elválasztva. 
 
     ![Adja hozzá a felhasználó e-mail-címei](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. Kattintson a **Mentés** gombra. Láthatja, hogy a felhasználók és azok állapotát (vagy nem regisztrált) a lista e-mail címét. 

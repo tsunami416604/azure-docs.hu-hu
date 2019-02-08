@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 2e2bf4f0f7ba4546c2f8609ee3ec7efc072024ae
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: c0067dc96837d758e4c2551bcb29faf63c1a7715
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751548"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895041"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Speciális biztonsági adatokat, a virtuális hálózatok és a közel 100 %-os kompatibilitást SQL Database használata
 
@@ -51,7 +51,7 @@ A felügyelt példány ötvözi a legjobb funkciókat, Azure SQL Database és SQ
 
 A felügyelt példányok legfontosabb funkcióit az alábbi táblázatban láthatók:
 
-|Szolgáltatás | Leírás|
+|Funkció | Leírás|
 |---|---|
 | SQL Server-verzió létrehozása / | SQL Server Database Engine (poslední stabilní) |
 | Automatikus biztonsági másolatok kezelése | Igen |
@@ -93,8 +93,8 @@ Mindkét szolgáltatásszintek 99,99 %-os rendelkezésre állásának biztosít�
 Az alábbi lista ismerteti az általános célú szolgáltatásszint kulcsfontosságú jellemzője:
 
 - A legtöbb üzleti alkalmazások, az általános teljesítmény-követelmények tervezése
-- Nagy teljesítményű Azure Premium storage (8 TB)
-- Beépített [magas rendelkezésre állású](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) alapján megbízható Azure Premium Storage és [Azure Service Fabric](../service-fabric/service-fabric-overview.md)
+- Nagy teljesítményű Azure Blob storage (8 TB)
+- Beépített [magas rendelkezésre állású](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) megbízható Azure Blob Storage-alapú és [Azure Service Fabric](../service-fabric/service-fabric-overview.md)
 
 További információkért lásd: [tárolási réteg az általános célú csomagban](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) és [tárolási teljesítmény ajánlott eljárások és szempontjai felügyelt példányai (általános célú)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
@@ -107,7 +107,7 @@ További információ a szolgáltatási szintek közötti különbség [felügye
 Az alábbi lista ismerteti azokat az üzletileg kritikus szolgáltatási rétegben főbb jellemzői:
 
 - A lehető legjobb teljesítmény és a magas rendelkezésre ÁLLÁSÚ követelmények üzleti alkalmazásokhoz tervezve
-- Együttműködik a villámgyors SSD-tárolás (legfeljebb 1 TB a Gen 4. és 4 TB-ra Gen 5)
+- Adathozzáférésnek köszönhetően gyors helyi SSD-tárolóval együtt származik (akár 1 TB a Gen 4. és 4 TB-ra Gen 5)
 - Beépített [magas rendelkezésre állású](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) alapján [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) és [Azure Service Fabric](../service-fabric/service-fabric-overview.md).
 - További beépített [csak olvasható adatbázis-replika](sql-database-read-scale-out.md) , amely a jelentéskészítés és más csak olvasási számítási feladatokhoz használható
 - [Memóriabeli OLTP](sql-database-in-memory.md) , amely a nagy teljesítményű követelményekkel rendelkező számítási feladatokhoz használható  
@@ -179,7 +179,7 @@ A felügyelt példány üzembe helyezési lehetőség tárolók felhasználói e
 
 ### <a name="back-up-and-restore"></a>Biztonsági mentés és visszaállítás  
 
-A migrálási megközelítés használ az SQL biztonsági másolatokat az Azure blob storage. Az Azure storage-blobban tárolt biztonsági másolatok közvetlenül állíthatók be a felügyelt példány használatával az [T-SQL RESTORE parancsot](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current).
+A migrálási megközelítés használ az SQL biztonsági másolatokat az Azure Blob storage. Az Azure storage-blobban tárolt biztonsági másolatok közvetlenül állíthatók be a felügyelt példány használatával az [T-SQL RESTORE parancsot](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current).
 
 - A rövid útmutató, amely visszaállítása a Wide World Importers – Standard adatbázis biztonsági másolatát, lásd: [visszaállítása biztonsági másolatból egy felügyelt példányra](sql-database-managed-instance-get-started-restore.md). A rövid útmutató bemutatja, hogy a biztonsági mentési fájl feltöltése az Azure-blog storage és a biztonságos, egy közös hozzáférési jogosultságkód (SAS) kulccsal rendelkezik.
 - URL-címről visszaállítási kapcsolatos információkért lásd: [natív VISSZAÁLLÍTÁSA URL-címről](sql-database-managed-instance-migrate.md#native-restore-from-url).

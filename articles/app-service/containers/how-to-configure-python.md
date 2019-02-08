@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 416566ac52e8df6324cbf6146919df160deb0f98
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6965379aadefd110ce6e46e105bbde10626b63c1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220994"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892167"
 ---
 # <a name="configure-your-python-app-for-azure-app-service"></a>A Python-alkalmazás konfigurálása az Azure App Service-ben
 Ez a cikk azt ismerteti, hogyan [Azure App Service](app-service-linux-intro.md) fut, a Python-alkalmazásokat, és hogyan szabhatja testre a szükség esetén az App Service viselkedését. Python-alkalmazások az összes telepíteni kell a szükséges [pip](https://pypi.org/project/pip/) modulok. Az App Service üzembe helyezési motorban (Kudu) automatikusan aktiválja a virtuális környezetet, és futtatja `pip install -r requirements.txt` , ha telepít egy [Git-tárház](../deploy-local-git.md), vagy egy [Zip-csomagját](../deploy-zip.md) az összeállítási folyamatairól kapcsolni.
@@ -82,7 +82,7 @@ Django-alkalmazások esetén az App Service a(z) `wsgi.py` nevű fájlt keresi a
 gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
 
-Ha az indítási parancsot szeretné jobban szabályozni, használjon egy [egyéni indítási parancsot](#custom-startup-command), és cserélje le a(z) `<module>` modult annak a modulnak a nevével, amely tartalmazza a *wsgi.py* fájlt.
+Ha azt szeretné, hogy az indítási parancs pontosabb felett, egy egyéni indítási parancs, és cserélje le `<module>` , amely tartalmazza a modul nevével *wsgi.py*.
 
 ### <a name="flask-app"></a>Flask-alkalmazás
 
@@ -95,7 +95,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 application:app
 gunicorn --bind=0.0.0.0 --timeout 600 app:app
 ```
 
-Ha a fő alkalmazásmodul egy másik fájlban található, használjon másik nevet az alkalmazásobjektum számára, vagy ha további argumentumok szeretne megadni a Gunicornhoz, használjon egy [egyéni indítási parancsot](#custom-startup-command).
+Az alkalmazás fő modul megtalálható egy másik fájl, használjon másik nevet az alkalmazás objektumhoz, vagy a kívánt további argumentumok nyújtson Gunicorn, egy egyéni indítási parancs használata.
 
 ### <a name="default-behavior"></a>Alapértelmezett viselkedés
 
@@ -160,7 +160,7 @@ Népszerű webes keretrendszerek, hozzáférést biztosítanak a `X-Forwarded-*`
 - Indítsa újra az App Service-t, várjon 15-20 másodpercet, és ellenőrizze újra az alkalmazást.
 - Bizonyosodjon meg róla, hogy az App Service Linux- és nem Windows-alapú példányát használja. Az Azure CLI parancssori felületről futtassa az `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind` parancsot, a `<resource_group_name>` és az `<app_service_name>` helyőrzőket megfelelően behelyettesítve. Az `app,linux` kimenetet kell látnia, máskülönben hozza újra létre az App Service szolgáltatást, és válassza a linuxos verziót.
 - SSH- vagy a Kudu konzol használatával közvetlenül csatlakozzon az App Service-hez, és győződjön meg arról, hogy a fájlok léteznek a *site/wwwroot* könyvtárban. Ha a fájlok nem léteznek, tekintse át a telepítési folyamatot, és telepítse újra az alkalmazást.
-- Ha a fájlok léteznek, az App Service nem tudta azonosítani az adott indítási fájlt. Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#custom-startup-command).
+- Ha a fájlok léteznek, az App Service nem tudta azonosítani az adott indítási fájlt. Ellenőrizze, hogy az alkalmazás felépítése, az App Service-ben a vár [Django](#django-app) vagy [Flask](#flask-app), vagy használjon egy egyéni indítási parancsot.
 - **A böngészőben megjelenik „A szolgáltatás nem érhető el” üzenet.** A böngésző az App Service válaszára vára túllépte az időkorlátot, ami azt jelzi, hogy az App Service elindította a Gunicorn-kiszolgálót, de az alkalmazás kódját meghatározó argumentumok helytelenek.
 - Frissítse a böngészőt, különösen akkor, ha az App Service-csomag legalacsonyabb tarifacsomagját használja. Az ingyenes szolgáltatásszintek használatakor például az alkalmazás lassabban indul, és csak a böngésző frissítése után fog ismét reagálni.
 - Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#customize-startup-command).

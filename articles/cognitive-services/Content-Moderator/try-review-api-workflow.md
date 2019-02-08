@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Az Azure Content Moderator a munkafolyamat-műveletek használatával létrehozhat vagy a munkafolyamat frissítésére, vagy a munkafolyamat adatainak lekérése a felülvizsgálati API-val.
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: c71358828be1c5a2a83092f8079eca37c9e757dd
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1c18544a0fd135eb546660c442b865bf1249dfe5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207207"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883083"
 ---
 # <a name="workflows-from-the-api-console"></a>Az API-konzol munkafolyamatokat
 

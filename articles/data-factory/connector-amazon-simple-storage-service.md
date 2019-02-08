@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: cd07343e056493369d2093651ecf7c466595f412
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 16d0002ec8e42eec92895aaf582a8c2b3df2c3a6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656583"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895261"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Adatok másolása az Amazon Simple Storage szolgáltatásból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -57,7 +57,7 @@ Az Amazon S3-társított szolgáltatást a következő tulajdonságok támogatot
 | type | A type tulajdonságot állítsa **AmazonS3**. | Igen |
 | accessKeyId | A titkos hozzáférési kulcs azonosítója. |Igen |
 | secretAccessKey | A titkos hívóbetűje magát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
-| serviceUrl | Adja meg az egyéni S3-végpont, ha a hivatalos Amazon S3 szintű szolgáltatáscsomagban eltérő S3-kompatibilis storage szolgáltatói adatokat másolhat. Például, hogy [adatokat másol a Google Cloud Storage](#copy-from-google-cloud-storage), adja meg `https://storage.googleapis.com`. | Nem |
+| serviceUrl | Adja meg az egyéni S3-végpont, ha a hivatalos Amazon S3 szintű szolgáltatáscsomagban eltérő S3-kompatibilis storage szolgáltatói adatokat másolhat. Adatok másolása a Google Cloud Storage-ból, például adja meg a `https://storage.googleapis.com`. | Nem |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 >[!TIP]

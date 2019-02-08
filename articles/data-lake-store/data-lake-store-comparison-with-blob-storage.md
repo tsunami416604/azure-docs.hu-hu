@@ -12,22 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4bdebe415bcd86867bebeb7f03dc6dafa8480169
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3f37b996caa60a54c18388cb1f65873bf0aa4ed9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259784"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877694"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Az Azure Data Lake Storage Gen1 és az Azure Blob Storage összehasonlítása
-  >[!NOTE] 
-    >[Az Azure Data Lake Storage Gen2 előzetes verzió](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) nemrég bejelentettük. Data Lake Storage Gen2 előzetes verzió oka beépül a két meglévő társzolgáltatások, Azure Blob Storage a képességeit és [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index). Fájlrendszer szemantikáját, például az Azure Data Lake Storage Gen1 funkciók fájlszintű biztonsági és méretezési csoport alacsony költségű, többrétegű tárolás, a magas rendelkezésre állás/vész-helyreállítási lehetőségei vannak kombinálva [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). <br> Kifejezetten ajánljuk, hogy indítsa el a Data Lake Storage Gen2 előzetes verzió használata alapjaként, amellyel a vállalat adattárakba rendezhetjük, és az Azure Blob Storage, valamint az Azure Data Lake Storage Gen1 előnyeit.
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)] 
 
 Ebben a cikkben a táblázat néhány fontos szempontjai big data-feldolgozáshoz mentén az Azure Data Lake Storage Gen1 és az Azure Blob Storage közötti különbségeket foglalja össze. Az Azure Blob Storage egy általános célú, skálázható objektumtárolását, amely számos különböző adattárolási forgatókönyvekhez készült. Az Azure Data Lake Storage Gen1 egy nagy kapacitású adattár, amely a big data-elemzési számítási feladatokhoz van optimalizálva.
-
-
-
-
 
 |  | 1. generációs Azure Data Lake Storage | Azure Blob Storage |
 | --- | --- | --- |

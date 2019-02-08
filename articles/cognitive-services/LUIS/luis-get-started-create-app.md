@@ -5,18 +5,18 @@ description: Hozzon létre egy LUIS-alkalmazást, amely az előre összeállíto
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 1dc7c0d8f5b55b9fcbe2680470dcb1e8d352bcd2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 347de9b575e3b47ee795026115fd2452c28b866b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222627"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877337"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Gyors útmutató: Előre összeállított kezdőlap automation alkalmazás használata
 

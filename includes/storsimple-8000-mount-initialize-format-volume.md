@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 71b031469d8d1292358132df129c11b4297ec0ee
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: ba2985b8b6c92e299e8ab378263c9b4c062561d5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165333"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888784"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-mount-initialize-and-format-a-volume"></a>Kötet csatlakoztatása, inicializálása és formázása
 1. Indítsa el a Microsoft iSCSI-kezdeményezőt.
 2. Az **iSCSI-kezdeményező tulajdonságai** ablakban a **Felderítés** lapon kattintson a **Kapu felderítése** elemre.

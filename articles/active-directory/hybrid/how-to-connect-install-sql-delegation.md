@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 89d5c9c4e553ac82b604c1d3a20eb67b4055e6c4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e681d192b3df429fc7aa5f340baa56fa739bad34
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492893"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891640"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Telepítse az Azure AD Connect SQL-lel delegált rendszergazdai engedélyekkel
 Az Azure AD Connect legújabb buildjének, mielőtt felügyeleti delegálás, SQL, a szükséges konfigurációk központi telepítésekor nem támogatott.  Felhasználók számára az Azure AD Connect telepítése szükséges az SQL Server kiszolgáló (SA) rendszergazdai jogosultságokkal rendelkezik.
@@ -54,10 +54,7 @@ A sávon kívüli-adatbázis kiépítése, és az Azure AD Connect telepítése 
 ## <a name="additional-information"></a>További információ
 Miután az adatbázishoz ki van építve, az Azure AD Connect-rendszergazda telepítheti és konfigurálhatja a helyszíni szinkronizálási, saját igényeik.  
 
-A **/useexistingdatabase** jelző egy előre létrehozott adatbázis használata esetén kötelező.  Nem csak használatos helyreállítási helyzetekben.
-
-Mellett támogatása az Azure AD Connect új telepítések esetén ez a funkció is lehetővé teszi a delegálás bármilyen forgatókönyvhöz a kapcsolódó a **/useexistingdatabase** jelzőt.  Egy meglévő adatbázist az Azure AD Connect telepítésével további információkért lásd: [telepítse az Azure AD Connect használatával a meglévő ADSync-adatbázis](how-to-connect-install-existing-database.md)
-
+Egy meglévő adatbázist az Azure AD Connect telepítésével további információkért lásd: [telepítse az Azure AD Connect használatával a meglévő ADSync-adatbázis](how-to-connect-install-existing-database.md)
 
 ## <a name="next-steps"></a>További lépések
 - [Első lépések az Azure AD Connecttel a gyorsbeállítások használatával](how-to-connect-install-express.md)

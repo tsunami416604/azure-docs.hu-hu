@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Ismerkedés egy alapszintű Java Swing-alkalmazással, amely a Computer Vision API-t használja az Azure Cognitive Services szolgáltatásban. OCR végrehajtása, miniatűrök létrehozása és képek vizuális jellemzőinek használata.
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: 2c306a5447f2e5d9c7072bd2bed8dd8f1d4078d0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 4f6af31ba6b04ddbecb7cb42cebe345b6af720ac
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225397"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868089"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>Oktatóanyag: Számítógép Vision API-Java
 

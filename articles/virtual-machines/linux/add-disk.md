@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 8457df9ba809e183122fd53de75a40108e4a4ed1
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1f545747b883ab70b597b4e598a86b192f89b027
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754302"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892764"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 Ez a cikk bemutatja, hogyan való állandó lemez csatolása a virtuális gép így megőrizheti az adatait – még akkor is, ha a virtuális gép a karbantartás vagy átméretezése miatt van kiépíteni.
@@ -73,10 +73,10 @@ A kimenet a következő példához hasonló:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Itt *sdc* a lemezt, amelyet meg szeretnénk. Particionálja a lemezt a `parted`, ha a lemez mérete 2 tebibytes (TiB) vagy nagyobb, akkor kell használnia a GPT particionálás, ha alatt 2TiB, használhatja az MBR vagy GPT particionálás. Adja meg egy elsődleges lemez 1 partíción, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `parted` folyamatát */dev/sdc*:
+Itt *sdc* a lemezt, amelyet meg szeretnénk. Particionálja a lemezt a `parted`, ha a lemez mérete 2 tebibytes (TiB) vagy nagyobb, akkor kell használnia a GPT particionálás, ha alatt 2TiB, használhatja az MBR vagy GPT particionálás. Ha MBR particionálás használata esetén használhatja `fdisk`. Adja meg egy elsődleges lemez 1 partíción, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatát */dev/sdc*:
 
 ```bash
-sudo parted /dev/sdc
+sudo fdisk /dev/sdc
 ```
 
 Használja a `n` parancs használatával adja hozzá egy új partíciót. Ebben a példában is lehetőséget választjuk `p` egy elsődleges partíció, és fogadja el az alapértelmezett értékeket a többi. A kimenet a következő példához hasonló lesz:

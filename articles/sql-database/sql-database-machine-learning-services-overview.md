@@ -11,20 +11,24 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 01/31/2019
-ms.openlocfilehash: e2159e7cc59830c3d0d10f1c5b9697ab5b45b666
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/06/2019
+ms.openlocfilehash: b50fd21e4d3325875134d2e2e9caeed9f8db75d0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824091"
+ms.locfileid: "55875603"
 ---
 # <a name="machine-learning-services-with-r-in-azure-sql-database-preview"></a>Machine Learning-szolgáltatások (az r nyelv) az Azure SQL Database (előzetes verzió)
 
 Machine Learning-szolgáltatások az Azure SQL Database-adatbázis-R-parancsfájlok futtatásához használt egy funkciója. A szolgáltatás a Microsoft R-csomagokat a nagy teljesítményű prediktív elemzési és gépi tanulási tartalmazza. Tárolt eljárások, a T-SQL parancsfájlt tartalmazó R utasítások vagy az R-kód, amely tartalmazza a T-SQL R-szkriptek a relációs adatok is használható.
 
-> [!NOTE]
-> Machine Learning-szolgáltatások (az r nyelv) az Azure SQL Database jelenleg nyilvános előzetes verzióban érhető el. [Regisztráljon az előzetes verzió](#signup) alatt.
+> [!IMPORTANT]
+> Machine Learning-szolgáltatások (az r nyelv) az Azure SQL Database jelenleg nyilvános előzetes verzióban az önálló adatbázisok és rugalmas készletek a Virtuálismag-alapú vásárlási modell a használatával a **általános célú** és **üzleti kritikus** szolgáltatáshoz. A kezdeti nyilvános előzetes verzióban érhető el a **nagy kapacitású** szolgáltatási szint és a **felügyelt példány** rendszerbe állítási beállításának használata nem támogatott. Jelenleg az R az egyetlen támogatott nyelv. A Python jelenleg nem támogatott. 
+>
+> Az előzetes verzió jelenleg érhető el a következő régióban: Nyugat-Európa, Észak-Európa, USA 2. nyugati, USA keleti RÉGIÓJA, USA déli középső Régiója, USA északi középső Régiója, közép-Kanada, Délkelet-Ázsia, Dél-India és Délkelet-Ausztrália. 
+>
+> [Regisztráljon az előzetes verzió](#signup) alatt.
 
 ## <a name="what-you-can-do-with-r"></a>Teendők, R-rel
 
@@ -55,10 +59,6 @@ Ha szeretne regisztrálni a nyilvános előzetes verzió, kövesse az alábbi l�
 2. E-mail küldése a Microsoftnak, [ sqldbml@microsoft.com ](mailto:sqldbml@microsoft.com) regisztrálhat a nyilvános előzetes verziója. A Machine Learning Services (with R) nyilvános előzetes verziójának használata az SQL Database-ben alapértelmezés szerint nem engedélyezett.
 
 Miután a programban regisztrált, a Microsoft is megjelenik majd, a nyilvános előzetes verziója és az R engedélyezése a meglévő vagy új adatbázis.
-
-Machine Learning-szolgáltatások (az r nyelv) az SQL Database jelenleg csak a Virtuálismag-alapú vásárlási modell érhető el a **általános célú** és **üzletileg kritikus fontosságú** szolgáltatásszintek önálló és rugalmas készlet üzembe helyezési lehetősége. A kezdeti nyilvános előzetes verzióban érhető el a **nagy kapacitású** szolgáltatásszint és **felügyelt példány** üzembe helyezést nem támogatottak.
-
-Jelenleg az R az egyetlen támogatott nyelv. A Python jelenleg nem támogatott. Az előzetes verzió kezdetben érhető el a következő régióban: Nyugat-Európa, Észak-Európa, USA 2. nyugati, USA keleti RÉGIÓJA, USA déli középső Régiója, USA északi középső Régiója, közép-Kanada, Délkelet-Ázsia, Dél-India és Délkelet-Ausztrália. További régiók később fog bővülni.
 
 Ne használjon Machine Learning-szolgáltatások az r nyelv a termelési számítási feladatokhoz a nyilvános előzetes verzió ideje alatt.
 

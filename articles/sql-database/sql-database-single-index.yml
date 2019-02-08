@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3a404c9f7abae979a4f4d54c6ff502a33edc9b7f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: bf79947ef3622bbbd1e41308497534a5599f8da6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814401"
+ms.locfileid: "55884477"
 documentType: LandingData
 title: 'Azure SQL Database: Önálló adatbázis'
 metadata:
@@ -80,6 +80,7 @@ sections:
     - html: (Előzetes verzió) Új SQL Server 2019 <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">intelligens lekérdezés-feldolgozás</a> funkciók, például <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">táblaváltozót késleltetve fordítási</a>, <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">kötegelt mód sortárindex táblákon</a>, és <a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json"> skaláris UDF inlining</a>.
     - html: (Előzetes verzió) Új Transact-SQL nyelvi funkciókat, például <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">APPROX_COUNT_DISTINCT összesítés</a> és <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">tömeges importálás az Azure Blob storage-ból</a>.
     - html: (Előzetes verzió) Új SQL Server 2019 Online <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">összeállítása</a> , és építse újra a fürtözött oszlopcentrikus index műveleteket.
+    - html: (Előzetes verzió) Új <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">az Azure SQL Database Machine Learning-szolgáltatások (az r nyelv)</a>.
 - title: Öt perces gyors útmutatók
   items:
   - type: paragraph

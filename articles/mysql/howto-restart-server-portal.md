@@ -5,16 +5,16 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/16/2018
-ms.openlocfilehash: 83e862aea5b1f2de5a3f80970c2331fc9d81704e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 2/7/2019
+ms.openlocfilehash: cd9275e9e112d24d9dbb3d1d5a60c871d7d8ae5c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540262"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890456"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Indítsa újra az Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával
-Ez a témakör ismerteti, hogyan újraindíthatja, egy Azure Database for MySQL-kiszolgálóhoz. Indítsa újra a kiszolgálót, a kiszolgáló a műveletet hajt végre egy rövid kimaradás okozó karbantartási okokból szükségessé.
+Ez a témakör ismerteti, hogyan újraindítható egy Azure Database for MySQL-kiszolgálóhoz. Indítsa újra a kiszolgálót, a kiszolgáló a műveletet hajt végre egy rövid kimaradás okozó karbantartási okokból szükségessé.
 
 A kiszolgáló újraindítására, ha a szolgáltatás nem foglalt le lesz tiltva. Ha például a szolgáltatás feldolgozás lehet egy korábban kért művelet, például a virtuális magok méretezés.
 
@@ -34,7 +34,7 @@ Az alábbi lépéseket a MySQL-kiszolgáló újraindítása:
 
    ![Azure Database for MySQL – áttekintés – újraindítás gomb](./media/howto-restart-server-portal/2-server.png)
 
-3. Kattintson a **Igen** annak ellenőrzéséhez, hogy a kiszolgáló újraindítása. 
+3. Kattintson a **Igen** annak ellenőrzéséhez, hogy a kiszolgáló újraindítása.
 
    ![Azure Database for MySQL - Újraindítás megerősítése ](./media/howto-restart-server-portal/3-restart-confirm.png)
 
@@ -48,4 +48,4 @@ Az alábbi lépéseket a MySQL-kiszolgáló újraindítása:
 
 ## <a name="next-steps"></a>További lépések
 
-[Gyors útmutató: Hozzon létre az Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[Rövid útmutató: Hozzon létre az Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával](./quickstart-create-mysql-server-database-using-azure-portal.md)

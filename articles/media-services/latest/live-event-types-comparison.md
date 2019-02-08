@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/06/2019
 ms.author: juliako
-ms.openlocfilehash: 9c8bff5a0a4f1599a3d23e0c7b07a1caca536a9b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9d62ef2295abbb8f8fc6f45ffc0c7ab1ce9616e4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153963"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878357"
 ---
 # <a name="live-event-types-comparison"></a>Élő esemény típusok összehasonlítása
 
@@ -28,7 +28,7 @@ Az Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api
 
 Az alábbi táblázat az élő esemény kétféle funkcióit hasonlítja össze.
 
-| Szolgáltatás | Az átmenő élő esemény | Szabványos élő esemény |
+| Funkció | Az átmenő élő esemény | Szabványos élő esemény |
 | --- | --- | --- |
 | Egyféle sávszélességű bemeneti bitsebességekre a felhőben van kódolva. |Nem |Igen |
 | Az hozzájárulásra hírcsatorna maximális képfelbontás |4 KB-os (4096 × 2160 60 keretek/s) |1080p (1920 x 1088 30 keretek/s)|
@@ -45,7 +45,7 @@ Az alábbi táblázat az élő esemény kétféle funkcióit hasonlítja össze.
 | Kimeneti videó videó maximális felbontás|Ugyanaz, mint a bemenet|720p (30 képkocka/másodperc)|
 | A bemeneti protokollok|RTMP, töredékes MP4 (Smooth Streaming)|RTMP, töredékes MP4 (Smooth Streaming)|
 | Ár|Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/media-services/) , majd kattintson a "Élő videó" lap|Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/media-services/) , majd kattintson a "Élő videó" lap|
-| Maximálisan engedélyezett futási idő|24 x 365 élő lineáris|A hét minden napján, 24 órában elérhető|
+| Maximálisan engedélyezett futási idő| 24 x 365 nap órája és élő lineáris | Akár 24 óra|
 | A feliratok adatokat képes keresztül beágyazott CEA 608/708 átadni|Igen|Igen|
 | Befutók beillesztésének támogatását|Nem|Nem|
 | API-n keresztül jelzés ad támogatása| Nem|Nem|

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével a Bing Video Search SDK a Pythonhoz készült használatával videókeresési kérelmek küldése
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: ef3e92ce708f2dfaeb38fcbb93dd0b34eb592032
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ead69b0165831fef04e68b4c2eb7ea43115ca4ea
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569532"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867800"
 ---
 #  <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Gyors útmutató: Hajtsa végre a videókeresési Bing Video Search SDK-val a Pythonhoz
 

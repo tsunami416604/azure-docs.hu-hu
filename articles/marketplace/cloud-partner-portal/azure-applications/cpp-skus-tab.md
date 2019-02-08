@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0af7a7fd43bba46de6faa770bf3042fbf58a90f6
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7f73e71677a700ba8047246addb2d27799c5a616
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196983"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890892"
 ---
 # <a name="azure-application-skus-tab"></a>Az Azure application termékváltozatok lapja
 
@@ -90,7 +90,7 @@ Adja meg a következő SKU-beállításokat:
   >[!NOTE]
   >Exportálás/importálás díjszabási adatok engedélyezéséhez a díjszabási módosítások mentéséhez.
 
-- **Pénznem díjszabás egyszerűsített** – adja meg az ár a Termékváltozatot USD havonta. Ez lehet ugyanaz, mint a régi díjszabás. További információkért lásd: [pénznem díjszabás egyszerűsített](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer#simplified-currency-pricing).
+- **Pénznem díjszabás egyszerűsített** – adja meg az ár a Termékváltozatot USD havonta. Ez lehet ugyanaz, mint a régi díjszabás. További információkért lásd: [pénznem díjszabás egyszerűsített](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer).
 
 ### <a name="package-details-for-solution-template"></a>A Megoldássablon csomag részletei
 
@@ -121,7 +121,7 @@ Vegye figyelembe a következő kulcstulajdonságokat ehhez az erőforráshoz:
     - "PublisherPackageId" – a karakterlánc, amely egyedileg azonosítja a csomagot. Ezt az értéket meg kell összetevődni: [publisherId] összefűzésével. [OfferId]-[SKUID] előnézetét. [PackageVersion.]
 
   >[!IMPORTANT] 
-  >Ez a csomag kell tartalmaz beágyazott sablonok vagy az alkalmazás telepítéséhez szükséges parancsprogramok. Ezeket a fájlokat a gyökérmappájában lévő mappának kell lennie:  MainTemplate.json applianceMainTemplate.json és applianceCreateUIDefinition.json.
+  >Ez a csomag kell tartalmaz beágyazott sablonok vagy az alkalmazás telepítéséhez szükséges parancsprogramok. Ezeket a fájlokat a gyökérmappájában lévő mappának kell lennie:  MainTemplate.json, applianceMainTemplate.json, and applianceCreateUIDefinition.json.
 
 - **Bérlőazonosító** – a szervezet az Azure Active Directory-bérlő azonosítója.
 - **Igény szerinti hozzáférés engedélyezéséhez?** – Select **Igen** ügyfél központi telepítésekhez célból Just-In-Time felügyeleti hozzáférés engedélyezéséhez.

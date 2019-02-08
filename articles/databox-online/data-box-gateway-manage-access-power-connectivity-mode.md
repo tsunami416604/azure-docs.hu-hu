@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f9172418f15b129a71242038efd4cdb7683bbf7
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 0ad94799320e25d88f616117f1bfcf9f0513aadf
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516226"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873019"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway-preview"></a>Kezelheti a hozzáférést, a teljesítmény és a csatlakozási mód az Azure Data Box Gateway (előzetes verzió)
 
@@ -35,7 +35,7 @@ A Data Box átjáróeszköz eléréséhez a rendszergazdai jelszó használatát
 
 ### <a name="change-device-administrator-password"></a>Az eszköz rendszergazdai jelszavának módosítása
 
-Ha elfelejtette a jelszavát, majd módosíthatja a jelszavát. Kövesse az alábbi lépéseket a helyi felhasználói felületen, az eszköz rendszergazdai jelszavának módosítása.
+Kövesse az alábbi lépéseket a helyi felhasználói felületen, az eszköz rendszergazdai jelszavának módosítása.
 
 1. A helyi webes felhasználói felületen váltson **karbantartási > jelszó módosítása**.
 2. Adja meg a jelenlegi jelszavát, majd az új jelszót. A megadott jelszónak 8 – 16 karakter hosszúságúnak kell lennie. A következő karakterek közül 3 a jelszóban: nagybetű, kisbetű, számjegyeket és speciális karaktereket. Az új jelszót.
@@ -50,12 +50,12 @@ A visszaállítási munkafolyamat nem szükséges majd előkeresnie a régi jels
 
 1. Az Azure Portalon lépjen a **áttekintés > rendszergazdai jelszó alaphelyzetbe állítása**.
 
-    ![Új jelszó létrehozása](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Másik jelszó kérése](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
 
  
 2. Adja meg az új jelszót, és erősítse azt. A megadott jelszónak 8 – 16 karakter hosszúságúnak kell lennie. A következő karakterek közül 3 a jelszóban: nagybetű, kisbetű, számjegyeket és speciális karaktereket. Kattintson a **alaphelyzetbe**.
 
-    ![Új jelszó létrehozása](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Másik jelszó kérése](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-connectivity-mode"></a>Csatlakozási mód kezelése
 

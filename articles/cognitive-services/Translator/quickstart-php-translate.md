@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API és PHP segítségével.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 66b4fddb84b28ba1189fff6c77c9ec588ee2c2e2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a0f362c6a735c7022096571390162e7df256e050
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207224"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857651"
 ---
 # <a name="quickstart-translate-text-with-the-translator-text-rest-api-php"></a>Gyors útmutató: A Translator Text REST API (PHP) szöveg lefordítása
 

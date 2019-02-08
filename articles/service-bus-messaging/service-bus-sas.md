@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 3e2fa51bcf6040eb94a9d270a7f5f375f726e62a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d70b7acb906c60001ad005a0fe9361950bc029b7
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846336"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895856"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>A Service Bus hozzáférés-vezérlés közös hozzáférésű jogosultságkódokkal
 
@@ -96,7 +96,7 @@ SAS-token érvénytelen, az összes erőforrás előtaggal van ellátva a `<reso
 
 A használt kulcsok rendszeres újragenerálása ajánlott a [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) objektum. Az elsődleges és másodlagos kulcsok tárolóhelyei, hogy fokozatosan is kulcsainak rotálása létezik. Ha az alkalmazás általánosan az elsődleges kulcsot használ, másolja az elsődleges kulcsot a másodlagos kulcs tárolóhely, és csak ezután újragenerálja az elsődleges kulcs. Az új elsődleges kulcs értékét dokumentumtárára is konfigurálható, az ügyfélalkalmazások számára, amely továbbra is a régi elsődleges kulcsot használja a másodlagos tárolóhelyben hozzáférést. Után minden ügyfelei már frissítettek, létrehozhatja a másodlagos kulcsot végül vonja ki a régi elsődleges kulcsot.
 
-Ha ismeri vagy feltételezhető, hogy a kulcs biztonsága sérült, és a kulcsok visszavonása az kell, újból létrehozhatja is a [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) és a [adni az újragenerálni](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) , egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), és cserélje le őket az új kulcsokkal. Ez az eljárás a régi kulcsok aláírt összes jogkivonatok érvényteleníti.
+Ha ismeri vagy feltételezhető, hogy a kulcs biztonsága sérült, és a kulcsok visszavonása az kell, újból létrehozhatja is a [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) és a [adni az újragenerálni](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) , egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), és cserélje le őket az új kulcsokkal. Ez az eljárás a régi kulcsok aláírt összes jogkivonatok érvényteleníti.
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>A Service Bus közös hozzáférésű Jogosultságkód hitelesítési
 

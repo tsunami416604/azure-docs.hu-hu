@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e2aa52e8ad19274d45f648978e7b2f021139fe4a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a8ad5c3091c3c78aa31dbf38eb6b3032e4dc7662
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812301"
+ms.locfileid: "55870962"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Engedélyezze a bejelentkezve maradás (KMSI) az Azure Active Directory B2C-vel
 
@@ -154,7 +154,7 @@ Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozo
 
     Az érték **SessionExpiryInSeconds** az egyszeri bejelentkezés munkamenet lejárati idejét jelzi. Ez belső használatára szolgál az Azure AD B2C-vel ellenőrizze, hogy KMSI a munkamenet lejárt-e vagy sem. Az érték **KeepAliveInDays** meghatározza, hogy az egyszeri bejelentkezési cookie-t a böngésző Expires és Max-Age értékét. Ellentétben **SessionExpiryInSeconds**, **KeepAliveInDays** szolgál, hogy a böngészőben a cookie-k törlése, ha be van zárva. A felhasználói beavatkozás nélkül jelentkezhetnek be, csak akkor, ha az egyszeri bejelentkezés munkamenet cookie-k létezik, amelyek vezérlik **KeepAliveInDays**, és nem járt le, amelyek vezérlik **SessionExpiryInSeconds**. 
     
-    Ha a felhasználó nem engedélyezi az **bejelentkezve szeretnék maradni** a regisztrációs és bejelentkezési oldalon a munkamenet által jelzett idő után jár le **SessionExpiryInSeconds** megfelelt vagy a böngésző be van zárva. Ha a felhasználó engedélyezi **bejelentkezve szeretnék maradni**, értékét **KeepAliveInDays** értékét felülírja **SessionExpiryInSeconds** és előírja a munkamenet lejárati ideje. A felhasználók még akkor is, zárja be a böngészőt, és nyissa meg újra, is csendes továbbra is be, amíg idején belül **KeepAliveInDays**. Javasoljuk, hogy az értékét állítsa be **SessionExpiryInSeconds** rövid időn (1200-as másodperc), miközben értékét kell **KeepAliveInDays** értékre lehet beállítani egy viszonylag hosszú ideje (7 nap), ahogyan az a Példa:
+    Ha a felhasználó nem engedélyezi az **bejelentkezve szeretnék maradni** a regisztrációs és bejelentkezési oldalon a munkamenet által jelzett idő után jár le **SessionExpiryInSeconds** megfelelt vagy a böngésző be van zárva. Ha a felhasználó engedélyezi **bejelentkezve szeretnék maradni**, értékét **KeepAliveInDays** értékét felülírja **SessionExpiryInSeconds** és előírja a munkamenet lejárati ideje. Akkor is, ha a felhasználók zárja be a böngészőt, és nyissa meg újra, is csendes továbbra is be, amíg idején belül **KeepAliveInDays**. Javasoljuk, hogy az értékét állítsa be **SessionExpiryInSeconds** rövid időn (1200-as másodperc), miközben értékét kell **KeepAliveInDays** értékre lehet beállítani egy viszonylag hosszú ideje (7 nap), ahogyan az a Példa:
 
     ```XML
     <RelyingParty>

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
-ms.openlocfilehash: dfc47c40ce82eb8e9d414cb49c22bee033d000a6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1c50a6e14955b2c31222ff1317aa99ad28866ec8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239028"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864733"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Az Azure Data Lake Storage Gen2 használata big data-követelményekhez
 
@@ -82,6 +82,8 @@ Több terabájt tartománya az adatkészletek fel, a fenti módszerek használat
 Amint az adatok Data Lake Storage Gen2 elérhető analysis futtathatja az adatok a támogatott big data-alkalmazások használatával. Jelenleg használhatja az Azure HDInsight és az Azure Databricks a Data Lake Storage Gen2-ban tárolt adatokkal kapcsolatos adatok elemzési feladatok futtatásához.
 
 ![Adatok elemzése az Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/analyze-data.png "a Data Lake Storage Gen2 adatok elemzése")
+
+Egy vonatkozó példáért lásd: [használata Azure Data Lake Storage Gen2 Azure HDInsight-fürtök](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
 
 
 ## <a name="download-data-from-data-lake-storage-gen2"></a>Töltse le az adatokat a Data Lake Storage Gen2

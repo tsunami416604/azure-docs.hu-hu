@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: 56a324aba3c5d8f550e5b51ff49b5ee0e74a3415
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c420b1b5fc15f89bd14b8ae42919f24de97da4fc
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658334"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894156"
 ---
 # <a name="marketplace-faqs"></a>Piactér – gyakori kérdések
 
@@ -350,7 +350,7 @@ Ha még nincs Microsoft-fiókkal, akkor [hozzon létre egy fiókot](https://sign
 
 **Miért van szükség fejlesztői központban lévő fiókjához?**
 
-A Microsoft nevében a közzétevő ügyfelek használati típusok ajánlati Transact-fejlesztői központban lévő fiókjához szükséges. Fejlesztői központban lévő fiókjához regisztráció lehetővé teszi, hogy a Microsoft ellenőrzése a jogi, adózási és banki információt. További információkért lásd: [a fejlesztői központban regisztrálása](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center).
+A Microsoft nevében a közzétevő ügyfelek használati típusok ajánlati Transact-fejlesztői központban lévő fiókjához szükséges. Fejlesztői központban lévő fiókjához regisztráció lehetővé teszi, hogy a Microsoft ellenőrzése a jogi, adózási és banki információt. További információkért lásd: [a fejlesztői központban regisztrálása](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
 **Amelyen a kiadók szükséges egy fejlesztői központ-fiókot regisztrálni?**
 

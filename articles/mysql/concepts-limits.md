@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/6/2018
-ms.openlocfilehash: 19fc20f21a57c2325254581c642b75c92c221fd9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 55106f855d1f2cab82b751b306a3a289bd740e9e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536090"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895346"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL-hez korlátozásai
 A következő szakaszok ismertetik a kapacitást, motor támogatása, jogosultság támogatja, adatok adatkezelési utasítást, és az adatbázis-szolgáltatás működési korlátai. További tájékoztatás [általános korlátozások](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) a MySQL-adatbázismotor alkalmazható.
@@ -36,7 +36,7 @@ Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a követk
 |Memóriára optimalizált| 32| 10000|
 
 Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
-> 1040 (08004). HIBA: Túl sok kapcsolat
+> ERROR 1040 (08004): Túl sok kapcsolat
 
 ## <a name="storage-engine-support"></a>Storage engine-támogatás
 
@@ -55,6 +55,7 @@ Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 ### <a name="unsupported"></a>Nem támogatott
 - Adatbázis-szerepkör: Számos kiszolgálói paraméterek és beállítások véletlenül rontják a kiszolgáló teljesítményét vagy amelyet tagadni kell a Célrendszerben ACID tulajdonságait. Emiatt a szolgáltatás integritás és SLA-t, a termék szintjén fenntartására, ezt a szolgáltatást nem biztosít az adatbázis-szerepkör. Az alapértelmezett felhasználói fiók, amely jön létre egy új adatbázis-példány létrehozásakor, lehetővé teszi, hogy a felhasználó hajtani a legtöbb DDL és DML utasítást, a felügyelt adatbázis példányában. 
 - FELÜGYELŐI jogosultság: Hasonlóképpen [FELÜGYELŐI jogosultságok](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) is korlátozva.
+- DEFINER: Hozhat létre felügyelői jogosultságokat igényel, és korlátozott. Ha egy biztonsági mentési adatokat importál, távolítsa el a `CREATE DEFINER` parancsok manuális vagy a `--skip-definer` parancsot a mysqldump végrehajtásakor.
 
 ## <a name="data-manipulation-statement-support"></a>Adatok adatkezelési utasítás támogatása
 

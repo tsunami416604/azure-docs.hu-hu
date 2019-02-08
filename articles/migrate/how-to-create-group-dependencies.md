@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 007f7fe95be77a2b1661cd6c82118eb875401f24
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5c4d16ff85972bc4b608e6ce2006912fb27d49d2
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472575"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895431"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Eszközcsoport-leképezés függőségi csoport pontosítása
 
@@ -104,7 +104,7 @@ Miután a csoport összes gépen telepített ügynökök, a függőségeket, a c
 3. A függőségek részletesebb megtekintéséhez kattintson az időtartományt, módosíthatja azt. Alapértelmezés szerint a tartománya egy órán keresztül. Módosíthatja az időtartományt, vagy adja meg a kezdő és záró dátumát, és időtartama.
 
     > [!NOTE]
-      A függőségek képi megjelenítéséről felhasználói felület jelenleg nem támogatja egy óránál hosszabb időtartomány kiválasztását. A Log Analytics használatához [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-a-group#query-dependency-data-from-log-analytics) hosszabb ideig keresztül.
+      A függőségek képi megjelenítéséről felhasználói felület jelenleg nem támogatja egy óránál hosszabb időtartomány kiválasztását. A Log Analytics használatához [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-a-group) hosszabb ideig keresztül.
 
 4. Ellenőrizze a függő gépek, a folyamat minden gépen futó, és azonosítja azokat a gépeket kell hozzáadott vagy eltávolított a csoportból.
 5. Ctrl + kattintás segítségével válassza ki a gépet a térképen hozzáadása vagy eltávolítása a csoportból.

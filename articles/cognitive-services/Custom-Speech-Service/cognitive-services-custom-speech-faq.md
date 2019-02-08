@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: custom-speech
 ms.topic: article
 ms.date: 11/21/2016
-ms.author: panosper
-ms.openlocfilehash: 88486ec9d1ca11d25ca31ca0abb4a34509d19a27
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: 757fb6c1315940b73a8f9d7d28f8926cb7ccfd7b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228032"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884409"
 ---
 # <a name="custom-speech-service-frequently-asked-questions"></a>Custom Speech Service – gyakori kérdések
 
@@ -22,7 +22,7 @@ ms.locfileid: "55228032"
 
 Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, próbálja meg a Custom Speech Service Közösség kéri a [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) és [uservoice-on](https://cognitive.uservoice.com/)
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 **Kérdés**: Honnan tudom, ha az adatkészlet vagy a modell feldolgozása befejeződött?
 

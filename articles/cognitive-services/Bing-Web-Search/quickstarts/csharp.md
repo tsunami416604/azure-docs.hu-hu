@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével-kérelmeket küldjön a Bing Web Search REST API használatával C#, és a egy JSON-választ kapnak.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: bca5ff84dee08d7681939b55ccb344f9507ccb38
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4e6159bd28a6a405e3418e5433fcecf759c5cf45
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178018"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869483"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API használatával, ésC#
 

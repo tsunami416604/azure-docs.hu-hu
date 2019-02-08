@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: e51803a8baffc904c8d68a8cf22d1ff584e065d1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e40d8e7c05213e99fc2ef65f5dc05f17ba0d185e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456204"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890535"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Importálási/exportálási feladat állapotinformációinak lekérése
-Hívása a [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) mindkettő adatainak beolvasásához művelet importálja és a feladatok exportálása. A visszaadott információ tartalmazza:
+Hívása a [Get Job](/rest/api/storageimportexport/jobs) mindkettő adatainak beolvasásához művelet importálja és a feladatok exportálása. A visszaadott információ tartalmazza:
 
 -   A feladat jelenlegi állapota.
 

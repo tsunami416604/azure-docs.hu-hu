@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Batch beszédátírási ideális, ha azt szeretné, a storage szolgáltatással, például az Azure-Blobok hang nagy mennyiségű lefényképezze. A dedikált REST API használatával hangfájlok egy közös hozzáférésű jogosultságkód (SAS) URI-mutasson, és aszinkron módon fogadni az beszédátírás.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: bf89180ea98473d2da3495286396a12c6f25288f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0e03c388dac4a70fc45150287154406551ac2672
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228661"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867120"
 ---
 # <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
 
@@ -49,7 +49,7 @@ A Batch Beszédátírási API támogatja a következő formátumok:
 > [!NOTE]
 > A Batch Beszédátírási API egy (a szint már fizetőssé) S0 kulcs szükséges. Ingyenes (f0) kulccsal nem működik.
 
-Sztereó audiostreamek lejátszásával, a a Batch API beszédátírási bontja a bal és jobb csatorna a beszédátírási során. A két JSON-fájlok az eredmény az egyes jönnek létre egyetlen csatornákon. Az utterance (kifejezés) / időbélyegeket köszönhetően a fejlesztő hozzon létre egy rendezett végleges átiratok. Az alábbi JSON-minta a kimenet egy csatorna, includuing tulajdonságok beállításához a profanitásszűrőjének és az absztrakt típus látható.
+Sztereó audiostreamek lejátszásával, a a Batch API beszédátírási bontja a bal és jobb csatorna a beszédátírási során. A két JSON-fájlok az eredmény az egyes jönnek létre egyetlen csatornákon. Az utterance (kifejezés) / időbélyegeket köszönhetően a fejlesztő hozzon létre egy rendezett végleges átiratok. A következő JSON mutatja egy mintakérelmet includuing tulajdonságok beállításához a vulgáris szűrésére, az írásjelek modell és a word-szintű időbélyegek
 
 ```json
 {
@@ -60,7 +60,8 @@ Sztereó audiostreamek lejátszásával, a a Batch API beszédátírási bontja 
   "description": "An optional description of the transcription.",
   "properties": {
     "ProfanityFilterMode": "Masked",
-    "PunctuationMode": "DictatedAndAutomatic"
+    "PunctuationMode": "DictatedAndAutomatic",
+    "AddWordLevelTimestamps" : "True"
   },
 ```
 
@@ -208,7 +209,7 @@ A támogatott csak tárolási jelenleg az Azure Blob storage.
 Találhatja meg a mintában Ez a cikk a [GitHub](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
 > [!NOTE]
-> A hanganyag átírása általában szükséges a hangfájl, valamint a két - a három perces terhelést időtartama annál meg azt az időtartományt.
+> Nem biztosítunk szolgáltatásszint-szerződéssel idő számára audiotartalmak trascriptions batch keresztül. Azonban ha a beszédátírási feladat actioned (a futó állapotban), typially feldolgozása gyorsabb, mint a valós idejű.
 
 ## <a name="next-steps"></a>További lépések
 

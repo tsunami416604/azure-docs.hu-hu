@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Funkciók hozzáadása tegyen ismeri fel a bemeneti címke vagy besorolni azokat a kívánt kapcsolatos, nyelvi modell.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 89d18ebd2f52467a19a76940044fea3ae254970a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fa0a8c4baa9458a3784babe1e342d768748f8a4d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770163"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882454"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>A LUIS-alkalmazás a kifejezés szolgáltatásai
 
@@ -46,7 +46,7 @@ Kifejezés lista létrehozása, ha az alkalmazás szavak vagy kifejezések, amel
 
 Miután megadta az néhány szavakat vagy kifejezéseket, a **javasoljuk** kapcsolódó értékek keresése a szolgáltatás. A kifejezés listaértékek való felvétele előtt tekintse át a kapcsolódó értékeket.
 
-|Listatípus|Cél|
+|Lista típusa|Cél|
 |--|--|
 |Cserélhető|A szinonimák vagy szavak, amikor a listában egy másik szóban változik, rendelkezik az azonos szándékot, és az entitások kinyeréséhez.|
 |Nem cserélhető|Az alkalmazás több, mint általában más szavakat azon a nyelven jellemző alkalmazás szakszavakat.|

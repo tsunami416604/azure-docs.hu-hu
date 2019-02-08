@@ -6,38 +6,38 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: c648522e689c64de8e7e09b85ca3b6eb26b6945b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 759adf95604e66209cf3ec5083246d16e952114a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477199"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884188"
 ---
-# <a name="provision-throughput-on-an-azure-cosmos-database"></a>Egy Azure Cosmos-adatbázis kiépítése átviteli sebességet
+# <a name="provision-throughput-for-a-database-in-azure-cosmos-db"></a>Átviteli sebesség kiosztása adatbázisokhoz az Azure Cosmos DB-ben
 
-Ez a cikk azt ismerteti, hogy hogyan oszthatja ki az átviteli sebességet egy adatbázishoz az Azure Cosmos DB-ben. Az átviteli sebességet kioszthatja egyetlen [tárolóhoz](how-to-provision-container-throughput.md), vagy kioszthatja egy adatbázishoz, majd megoszthatja a benne található tárolók között. Az átviteli sebességet az Azure Portal vagy a Cosmos DB SDK használatával oszthatja ki adatbázisszinten.
+Ez a cikk azt ismerteti, hogy hogyan oszthatja ki az átviteli sebességet egy adatbázishoz az Azure Cosmos DB-ben. Az átviteli sebességet kioszthatja egyetlen [tárolóhoz](how-to-provision-container-throughput.md), vagy kioszthatja egy adatbázishoz, majd megoszthatja a benne található tárolók között. Adatbázis-szintű átviteli telepíthet az Azure portal vagy az Azure Cosmos DB SDK-k használatával.
 
-## <a name="provision-throughput-using-azure-portal"></a>Átviteli sebesség kiosztása az Azure Portallal
+## <a name="provision-throughput-by-using-azure-portal"></a>Kiépítés átviteli sebesség az Azure portal használatával
 
 ### <a id="portal-sql"></a>SQL (Core) API
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. [Hozzon létre egy új Cosmos DB-fiókot](create-sql-api-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
+1. [Hozzon létre egy új Azure Cosmos DB-fiókot](create-sql-api-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
-1. Nyissa meg az **Adatkezelő** ablaktáblát, és válassza az **Új adatbázis** lehetőséget. Töltse ki az űrlapot a következő értékekkel:
+1. Nyissa meg a **adatkezelő** panelre, és válassza **új adatbázis**. Adja meg a következő adatokat:
 
-   * Adjon meg egy adatbázis-azonosítót. 
-   * Válassza ki az Átviteli sebesség kiosztása elemet.
-   * Adjon meg egy átviteli sebességet, például 1000 kérelemegységet.
+   * Adjon meg egy adatbázist. 
+   * Válassza ki **kiépítése átviteli**.
+   * Adjon meg egy átviteli sebesség (például 1000 ru-k).
    * Kattintson az **OK** gombra.
 
-![SQL API – adatbázis átviteli sebességének kiosztása](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+![Képernyőfelvétel az új adatbázis párbeszédpanel](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-net-sdk"></a>Átviteli sebesség kiosztása a .NET SDK használatával
+## <a name="provision-throughput-by-using-net-sdk"></a>Kiépítés átviteli .NET SDK-val
 
 > [!Note]
-> Az SQL API használatával minden API-hoz kioszthat átviteli sebességet. Az alábbi példát igény szerint a Cassandra API esetében is használhatja.
+> Az SQL API használatával minden API-hoz kioszthat átviteli sebességet. Igény szerint használhatja az alábbi példa a Cassandra API-hoz is.
 
 ### <a id="dotnet-all"></a>Minden API
 
@@ -63,7 +63,7 @@ session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provision
 
 ## <a name="next-steps"></a>További lépések
 
-Az átviteli sebesség Cosmos DB-ben történő kiosztásáról a következő cikkekben talál további információt:
+További információ a kiépítése az Azure Cosmos DB átviteli sebesség a következő cikkekben talál:
 
 * [Átviteli sebesség kiosztása tárolókhoz](how-to-provision-container-throughput.md)
 * [Kérelemegységek és átviteli sebesség az Azure Cosmos DB-ben](request-units.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport – portal: Azure |} A Microsoft Docs'
+title: 'Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport - portálon: Azure | Microsoft Docs'
 description: Hozzon létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és ExpressRoute-kapcsolatcsoport megszüntetése.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 974421662a33cd9167d3c39b31d8da20db9f505f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3abdeff3c3f1a4069130ed7c8d49d485feea4093
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091527"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894717"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoporttal
 > [!div class="op_single_selector"]
@@ -51,7 +51,8 @@ Egy böngészőből lépjen az [Azure Portalra](http://portal.azure.com), majd j
   ![A Termékváltozat-szint és az adatforgalom-mérést konfigurálása](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
   * **Réteg** határozza meg, hogy egy ExpressRoute-standard vagy az ExpressRoute prémium bővítmény engedélyezve van. Megadhat **Standard** beolvasni a standard Termékváltozat vagy **prémium** for a premium bővítményt.
-  * **Az adatforgalom-mérést** határozza meg a számlázási típusát. Megadhat **forgalmi díjas** forgalmi díjas csomag, és **korlátlan** a korlátlan adatforgalmú. Vegye figyelembe, hogy a számlázási típust módosíthatja **forgalmi díjas** való **korlátlan**, de nem módosíthatja a típust **korlátlan** való **forgalmi díjas**.
+  * **Az adatforgalom-mérést** határozza meg a számlázási típusát. Megadhat **forgalmi díjas** forgalmi díjas csomag, és **korlátlan** a korlátlan adatforgalmú. Vegye figyelembe, hogy a számlázási típust módosíthatja **forgalmi díjas** való **korlátlan**.
+    > [!IMPORTANT] Nem módosíthatja a típust **korlátlan** való **forgalmi díjas**.
   * **Társviszony-létesítési helyszínen** a fizikai hely, ahol van Microsoft-társviszony van.
 
     > [!IMPORTANT]
@@ -77,20 +78,20 @@ Ezen a lapon **szolgáltató állapota** információt nyújt a szolgáltatói o
 
 Amikor létrehoz egy új ExpressRoute-kapcsolatcsoportot, a kapcsolatcsoport a következő állapotban van:
 
-Szolgáltató állapota: nincs kiépítve<BR>
-Kapcsolatcsoport-állapot: engedélyezve
+Szolgáltató állapota: Nincs kiépítve<BR>
+Kapcsolatcsoport állapota: Engedélyezve
 
 ![Üzembe helyezési folyamatának elindításához](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 A kapcsolatcsoport változik a következő állapotot, amikor a kapcsolatszolgáltató van folyamatban, amely lehetővé teszi az Ön számára:
 
-Szolgáltató állapota: kiépítése<BR>
-Kapcsolatcsoport-állapot: engedélyezve
+Szolgáltató állapota: Kiépítés<BR>
+Kapcsolatcsoport állapota: Engedélyezve
 
 ExpressRoute-kapcsolatcsoport segítségével tudja meg a következő állapotban kell lennie:
 
-Szolgáltató állapota: kiépítve<BR>
-Kapcsolatcsoport-állapot: engedélyezve
+Szolgáltató állapota: Telepítve<BR>
+Kapcsolatcsoport állapota: Engedélyezve
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Rendszeresen ellenőrizze a kapcsolatcsoport kulcs állapotát és az állapot
 Megtekintheti, hogy az Önt érdeklő, ha kiválasztja a kapcsolatcsoport tulajdonságainak. Ellenőrizze a **szolgáltató állapota** , és győződjön meg arról, hogy átkerült az **kiépített** a folytatás előtt.
@@ -117,10 +118,11 @@ Egyes ExpressRoute-kapcsolatcsoport tulajdonságainak kapcsolat befolyásolása 
 Leállás nélkül a következő feladatokat hajthatja végre:
 
 * Engedélyezi vagy letiltja az ExpressRoute Premium az ExpressRoute-kapcsolatcsoport bővítménye.
-* Növelje az ExpressRoute-kapcsolatcsoport sávszélességét, feltéve, hogy kapacitás érhető el a porton. A sávszélesség csökkentése azonban a kapcsolat nem támogatott. 
-* Módosítsa a mérési a csomagot az *díjas* való *korlátlan*. Mérési csomag módosítása a korlátlan, a forgalmi díjas adatok nem támogatott.
+* Növelje az ExpressRoute-kapcsolatcsoport sávszélességét, feltéve, hogy kapacitás érhető el a porton.
+  > [!IMPORTANT] A sávszélesség csökkentése azonban a kapcsolat nem támogatott. 
+* Módosítsa a mérési a csomagot az *díjas* való *korlátlan*.
+  > [!IMPORTANT] Mérési csomag módosítása a korlátlan, a forgalmi díjas adatok nem támogatott.
 * Engedélyezheti és letilthatja az *klasszikus működés engedélyezése*.
-
 > [!IMPORTANT]
 > Az ExpressRoute-kapcsolatcsoport hozza létre újra, ha nincs elegendő kapacitás a meglévő porton is. A kapcsolatcsoport nem frissíthető, ha nincsenek további kapacitás érhető el az adott helyhez.
 >

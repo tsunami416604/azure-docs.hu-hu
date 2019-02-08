@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban fog létrehozni egy egyszerű univerzális Windows Platform (UWP) alkalmazás felhasználói speech rögzítése, azt fordítása más nyelvre, és a szöveg a parancssorba. Ez az útmutató Windows-felhasználók számára tervezték.
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: fa65eabecba062a7b5d875483d821dfdfb2d64b3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: aa3a714b6c280f8bcd0b94b68bcbc4d0b09c0320
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207734"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876504"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK for fordítása C# (UWP)
 

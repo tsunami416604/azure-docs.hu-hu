@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
-ms.author: panosper
-ms.openlocfilehash: 0e4c21a064cdb0a60aef49482eee4b768112b899
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: 19a7f3e5a807066aacda593be64cda61a0a77fe7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216421"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868072"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Oktatóanyag: Egyéni akusztikai modell létrehozása
 

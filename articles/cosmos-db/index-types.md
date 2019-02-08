@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: 50e8e63c9508aa9e81222f242ca330637075e42d
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 02055ec07de2b08abdc949e17c668912431e00ce
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199068"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871251"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Az Azure Cosmos DB index típusa
 
@@ -42,7 +42,7 @@ Példa a lekérdezéseket, amelyek kivonata, tartomány, és a térbeli indexek 
 | ---------- | ---------------- |
 | Kivonat  | Ujjlenyomat-keresztül/prop /? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Kivonatoló keresztül/Kellékek / [] /? (és / vagy/Kellékek /) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki címkét a gyűjtemény c ILLESZTÉSI címke IN c.props WHERE címke = 5  |
 | Tartomány  | Tartomány/prop/keresztül? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop   |
-| Térbeli     | Tartomány/prop/keresztül? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény c<br><br>HOL ST_DISTANCE (c.prop, {"type": "Pont", "koordináták": [0.0, 10.0]}) < 40<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN(c.prop, {"type": "Sokszög",...}) – az indexelést a pont van engedélyezve<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN({"type": "Pontra:",...}, c.prop) – az indexelést a sokszög engedélyezve van.     |
+| Térbeli     | Tartomány/prop/keresztül? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény c<br><br>HOL ST_DISTANCE (c.prop, {"type": "Pont", "koordináták": [0.0, 10.0]}) < 40<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN(c.prop, {"type": "Pontra:",...}) – az indexelést a pont van engedélyezve<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN({"type": "Sokszög",...}, c.prop) – az indexelést a sokszög engedélyezve van.     |
 
 ## <a name="default-behavior-of-index-kinds"></a>Index típusú az alapértelmezett viselkedés
 

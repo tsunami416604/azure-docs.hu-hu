@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Az Evaluate módszert a lekérdezés alapján tudományos entitások egy készletét adja vissza.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: c3449d3b61c9b8950c0530590e7f1950c06afbc3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a5ad7005a2ab3d6ed5f9c8fe38db9552e3925a30
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187298"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871319"
 ---
 # <a name="evaluate-method"></a>Módszer kiértékelése
 
@@ -28,7 +28,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 ```   
 <br>
 ## <a name="request-parameters"></a>A kérés paraméterei  
-Name (Név)     | Value | Kötelező?  | Leírás
+Name (Név)     | Érték | Kötelező?  | Leírás
 -----------|-----------|---------|--------
 **kifejezés**       | Szöveges karakterlánc | Igen | A lekérdezési kifejezés, amely meghatározza, mely entitások vissza kell adni.
 **model**      | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték *legújabb*.        
