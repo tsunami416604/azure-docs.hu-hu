@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 57ba4b35cf470eff040d4a2dca42c60820fa9d9e
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: a119e2797c4771551b6087e148d609c68ffd36db
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079970"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977511"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívót tartalmazó e - Azure Active Directory elemei
 
@@ -66,6 +66,14 @@ A lábléc tartalmazza a Microsoft vállalati márka, és lehetővé teszi, hogy
 
   ![Amikor a címzett nem szüksége van a meghívó beváltása](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
+## <a name="how-the-language-is-determined"></a>Hogyan határozza meg, a nyelv
+A meghívó e-mailben a Vendég felhasználó számára megjelenő nyelvét határozza meg a következő beállításokat. Ezek a beállítások elsőbbségi sorrendben vannak felsorolva. Ha a beállítás nincs konfigurálva, a listán a következő beállítás meghatározza, hogy a nyelvet. 
+- A **messageLanguage** tulajdonságát a [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) objektumot, ha a létrehozás meghívó API-t használja
+-   A **preferredLanguage** a Vendég a megadott tulajdonság [felhasználói objektum](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)
+-   A **értesítés nyelve** a vendégfelhasználó saját bérlőjén (a csak az Azure AD-bérlőn) tulajdonságainak beállítása
+-   A **értesítés nyelve** az erőforrás-bérlő tulajdonságainak beállítása
+
+Ha ezek a beállítások egyike sincs konfigurálva, a nyelv az angol (amerikai) alapértelmezés szerint.
 
 ## <a name="next-steps"></a>További lépések
 

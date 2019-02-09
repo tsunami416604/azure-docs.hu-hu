@@ -13,19 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: b5f851fe5c8aebba441903ccc004b7dbd0029ba3
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 3a615beeec45871aab1e98ad338ffa053ddbec92
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413821"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984766"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>A BitLocker rendszerindítási hibák-beli virtuális gépen
 
  Ez a cikk ismerteti a BitLocker hibák léphetnek fel egy Windows virtuális gép (VM) megnyitásakor a Microsoft Azure-ban.
 
-> [!NOTE] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell használatával. Azt javasoljuk, hogy az új központi telepítéseknél a klasszikus üzemi modell helyett ezt a modellt használja.
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
  ## <a name="symptom"></a>Jelenség
 
@@ -33,7 +32,7 @@ ms.locfileid: "47413821"
 
 - Csatlakoztassa az USB-illesztőprogramot, amely rendelkezik a BitLocker-kulcs
 
-- Már zárolva van! Adja meg a helyreállítási kulcsot az induláshoz újra (billentyűzetkiosztás: USA) a megfelelő bejelentkezési adatok megadott túl sokszor, így a számítógép adatainak védelme zárolták. folyamatban van. A helyreállítási kulcs lekéréséhez lépjen a http://windows.microsoft.com/recoverykeyfaq egy másik számítógépen vagy mobileszközön. Abban az esetben szüksége lesz rá, a kulcs azonosítója XXXXXXX. Vagy visszaállíthatja a Számítógépet.
+- Már zárolva van! Adja meg a helyreállítási kulcsot az induláshoz újra (billentyűzetkiosztás módosítása: Egyesült Államok) nem a megfelelő bejelentkezési adatok a megadott túl sokszor, így a számítógép adatainak védelme zárolták. folyamatban van. A helyreállítási kulcs lekéréséhez lépjen a http://windows.microsoft.com/recoverykeyfaq egy másik számítógépen vagy mobileszközön. Abban az esetben szüksége lesz rá, a kulcs azonosítója XXXXXXX. Vagy visszaállíthatja a Számítógépet.
 
 - Adja meg a jelszót, a meghajtó [] tekintse meg a jelszó beírása a Beszúrás billentyű lenyomásával zárolásának feloldásához.
 - Adja meg a helyreállítási kulcs betöltése a helyreállítási kulcsot az USB-eszközt.
@@ -57,17 +56,17 @@ Ez a módszer nem nem a hárítsa el a problémát, ha manuálisan állítsa vis
     $rgName = "myResourceGroup"
     $osDiskName = "ProblemOsDisk"
 
-    New-AzureRmDiskUpdateConfig -EncryptionSettingsEnabled $false |Update-AzureRmDisk -diskName $osDiskName -ResourceGroupName $rgName
+    New-AzDiskUpdateConfig -EncryptionSettingsEnabled $false |Update-AzDisk -diskName $osDiskName -ResourceGroupName $rgName
 
     $recoveryVMName = "myRecoveryVM" 
     $recoveryVMRG = "RecoveryVMRG" 
-    $OSDisk = Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $osDiskName;
+    $OSDisk = Get-AzDisk -ResourceGroupName $rgName -DiskName $osDiskName;
 
-    $vm = get-AzureRMVM -ResourceGroupName $recoveryVMRG -Name $recoveryVMName 
+    $vm = get-AzVM -ResourceGroupName $recoveryVMRG -Name $recoveryVMName 
 
-    Add-AzureRmVMDataDisk -VM $vm -Name $osDiskName -ManagedDiskId $osDisk.Id -Caching None -Lun 3 -CreateOption Attach 
+    Add-AzVMDataDisk -VM $vm -Name $osDiskName -ManagedDiskId $osDisk.Id -Caching None -Lun 3 -CreateOption Attach 
 
-    Update-AzureRMVM -VM $vm -ResourceGroupName $recoveryVMRG
+    Update-AzVM -VM $vm -ResourceGroupName $recoveryVMRG
     ```
      Felügyelt lemez nem csatolható a blob rendszerképből visszaállított virtuális géphez.
 
@@ -76,7 +75,7 @@ Ez a módszer nem nem a hárítsa el a problémát, ha manuálisan állítsa vis
 4. Nyisson meg egy emelt szintű Azure PowerShell-munkamenetet (Futtatás rendszergazdaként). Jelentkezzen be Azure-előfizetés a következő parancsok futtatásával:
 
     ```Powershell
-    Add-AzureRMAccount -SubscriptionID [SubscriptionID]
+    Add-AzAccount -SubscriptionID [SubscriptionID]
     ```
 
 5. Futtassa a következő parancsfájl ellenőrzéséhez a blokktitkosítási kulcsot fájl neve:
@@ -135,7 +134,7 @@ Ez a módszer nem nem a hárítsa el a problémát, ha manuálisan állítsa vis
         ```powershell
         manage-bde -protectors -disable F: -rc 0
         ```      
-    - Ha azt tervezi, a virtuális gép újraépítése a dytem lemez segítségével, teljes körűen vissza kell fejtenie a meghajtó. Ehhez futtassa a következő parancsot:
+    - Ha azt tervezi, a virtuális gép újraépítése a dytem lemez segítségével, teljes körűen vissza kell fejtenie a meghajtó. Ehhez futtassa az alábbi parancsot:
 
         ```powershell
         manage-bde -off F:
@@ -262,7 +261,7 @@ A Kulcsalapú titkosítás kulcsa esetben kövesse az alábbi lépéseket:
         ```powershell
         manage-bde -protectors -disable F: -rc 0
         ```      
-    - Ha azt tervezi, a virtuális gép újraépítése a dytem lemez segítségével, teljes körűen vissza kell fejtenie a meghajtó. Ehhez futtassa a következő parancsot:
+    - Ha azt tervezi, a virtuális gép újraépítése a dytem lemez segítségével, teljes körűen vissza kell fejtenie a meghajtó. Ehhez futtassa az alábbi parancsot:
 
         ```powershell
         manage-bde -off F:

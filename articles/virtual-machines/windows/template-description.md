@@ -15,18 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: e32e2833edc7027a984bb27b34608e4b1b898113
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 094df21bb0264ebbd8ad23c594ceb52db19d9c2f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767078"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979615"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuális gépek az Azure Resource Manager-sablon
 
 Ez a cikk ismerteti az Azure Resource Manager-sablon, amely a virtuális gép aspektusait. Ez a cikk egy teljes sablont hoz létre virtuális gépet; nem ismerteti. szüksége lesz a storage-fiókok, hálózati adapterek, nyilvános IP-címek és virtuális hálózatok erőforrás-definíciókban. Hogyan ezen erőforrások együtt definiálható kapcsolatos további információkért lásd: a [Resource Manager sablonokhoz](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
 Számos [a tárban lévő sablonok](https://azure.microsoft.com/documentation/templates/?term=VM) , amely tartalmazza a VM-erőforrás. Nem minden elemek a sablonban szereplő ebben a témakörben találhatók.
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 Ez a példa bemutatja egy sablon a megadott számú virtuális gépek létrehozásához egy jellemző erőforrás szakaszába:
 
@@ -163,8 +165,9 @@ A sablonban megadott API-verzió melyik tulajdonságokat adhatja meg a sablon va
 Ezek a lehetőségek lekérhesse a legújabb API-verziók használata:
 
 - REST API - [összes erőforrás-szolgáltató listázása](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
-- Az Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider)
+- PowerShell - [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
+- Az Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
+
 
 ## <a name="parameters-and-variables"></a>Paraméterek és változók
 
@@ -442,7 +445,7 @@ A bővítmények beállítások a portálon a telepített bővítmények állapo
 
 ![Bővítmény állapotának beolvasása](./media/template-description/virtual-machines-show-extensions.png)
 
-Emellett információkat szerezhet a bővítmény használatával a **Get-AzureRmVMExtension** PowerShell-parancsot a **vm-bővítmény get** Azure CLI-paranccsal, vagy a **sémakiterjesztésiadatoklekérése**REST API-t.
+Emellett információkat szerezhet a bővítmény használatával a **Get-AzVMExtension** PowerShell-parancsot a **vm-bővítmény get** Azure CLI-paranccsal, vagy a **sémakiterjesztésiadatoklekérése**REST API-t.
 
 ## <a name="deployments"></a>Központi telepítés
 

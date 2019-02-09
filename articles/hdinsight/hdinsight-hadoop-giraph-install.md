@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ec80be0ece3596eab418ac39507954142944e34a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4bcd7bcef0969cec82d42ead6307e72a3abea6e1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260489"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978868"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Telepítse, és az Apache Giraph használata Windows-alapú HDInsight-fürtökön
 
@@ -46,17 +46,12 @@ Telepítheti a Giraph bármilyen típusú Azure HDInsight (Hadoop-, Storm, HBase
 
     ![Fürt testreszabása Szkriptműveletek használatával](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "Szkriptműveleteket használata a fürt testreszabása")
 
-    <table border='1'>
-        <tr><th>Tulajdonság</th><th>Érték</th></tr>
-        <tr><td>Name (Név)</td>
-            <td>Adja meg a parancsfájlművelet nevét. Ha például <b>telepíteni a Giraph</b>.</td></tr>
-        <tr><td>Szkript URI-ja</td>
-            <td>Adja meg az egységes erőforrás-azonosító (URI) a parancsfájlt, amely a fürt testreszabásához meghívott. Ha például <i>https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1</i></td></tr>
-        <tr><td>Csomóponttípus</td>
-            <td>Adja meg a csomópontok, amelyen fut a testreszabási parancsfájlt. Választhat <b>minden csomópont</b>, <b>csak Átjárócsomópontokhoz</b>, vagy <b>csak a munkavégző csomópontok</b>.
-        <tr><td>Paraméterek</td>
-            <td>Adja meg a paramétereket, ha a parancsfájl által igényelt. A szkriptet a Giraph telepítése nem szükséges paramétereket, így is ezt üresen hagyja.</td></tr>
-    </table>
+    |Tulajdonság|Érték|  
+    |---|---|  
+    |Name (Név)|Adja meg a parancsfájlművelet nevét. Ha például **Giraph telepítése**|
+    |Szkript URI-ja|Adja meg az egységes erőforrás-azonosító (URI) a parancsfájlt, amely a fürt testreszabásához meghívott. Ha például *https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
+    |Csomóponttípus|Adja meg a csomópontok, amelyen fut a testreszabási parancsfájlt. Választhat **minden csomópont**, **csak Átjárócsomópontokhoz**, vagy **csak a munkavégző csomópontok**.
+    |Paraméterek|Adja meg a paramétereket, ha a parancsfájl által igényelt. A szkriptet a Giraph telepítése nem szükséges paramétereket, így is ezt üresen hagyja.|  
 
     Hozzáadhat több parancsfájlművelet több összetevők telepíthetők a fürtön. Miután hozzáadta a parancsfájlok, kattintson a pipa jelre a fürt létrehozásának megkezdéséhez.
 
@@ -78,6 +73,7 @@ Használjuk a SimpleShortestPathsComputation példa az alapszintű bemutatásáh
     Dolgozni, és az objektumok közötti távolságot a értéket (vagy a súly) használ, a fenti adatokat ehhez hasonló lehet:
 
     ![különböző távolságát sornyi körök Megrajzolás tiny_graph.txt](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
+
 2. Futtassa a SimpleShortestPathsComputation példa. A következő Azure PowerShell-parancsmagok használatával futtassa a példa bemenetként a tiny_graph.txt fájl használatával.
 
     > [!IMPORTANT]  

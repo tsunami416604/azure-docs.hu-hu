@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 63334c861cc85c7119ccd3111429dee47ada3162
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ae3a2788a0d5451736433a6338a71eda3d0ad9ca
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862938"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984358"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Jó utterances Mik a LUIS alkalmazás ismertetése
 
@@ -39,7 +39,7 @@ Amikor Ön először első lépésként [példa beszédmódok hozzáadása](luis
 
 ### <a name="utterances-arent-always-well-formed"></a>Beszédmódok mindig nem megfelelő
 
-Elképzelhető, hogy egy mondatot, például "Book egy jegyet Párizsba számomra", vagy egy kódrészletet egy mondatot, például a "Foglalás" vagy "Párizs repülési."  Felhasználók gyakran ellenőrizze a helyesírási hibákat. Az alkalmazás megtervezésekor vegye figyelembe, e használata [a Bing Spell Check][(luis-tutorial-bing-spellcheck) a LUIS való továbbítás előtt javítsa ki a felhasználói bevitel. 
+Elképzelhető, hogy egy mondatot, például "Book egy jegyet Párizsba számomra", vagy egy kódrészletet egy mondatot, például a "Foglalás" vagy "Párizs repülési."  Felhasználók gyakran ellenőrizze a helyesírási hibákat. Az alkalmazás megtervezésekor vegye figyelembe, e használhatja [a Bing Spell Check](luis-tutorial-bing-spellcheck.md) a LUIS való továbbítás előtt javítsa ki a felhasználói bevitel. 
 
 Ha Ön nem helyesírás-ellenőrzés felhasználói kimondott szöveg, a LUIS kell vonat a a kimondott szöveg, amely tartalmazza a gépelési és helyesírási hibák.
 

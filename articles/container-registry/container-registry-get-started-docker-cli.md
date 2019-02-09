@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: e4963ebae73bdd81246433fe43206139caa1661c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c27af57ce4fa80a4ae167ce1e27018d049923a3f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295780"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982845"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 
@@ -37,7 +37,7 @@ az acr login --name myregistry
 
 Is bejelentkezhet a következővel [docker login](https://docs.docker.com/engine/reference/commandline/login/). Előfordulhat például, hogy [hozzárendelt egy egyszerű szolgáltatást](container-registry-authentication.md#service-principal) a beállításjegyzékhez egy automatizálási forgatókönyvhöz. A következő parancs futtatásakor adja meg a szolgáltatás egyszerű appID (felhasználónév) és a jelszót, amikor a rendszer kéri. Az ajánlott eljárásokat, és bejelentkezési hitelesítő adatok kezelése, tekintse meg a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) referencia parancsot:
 
-```Docker
+```
 docker login myregistry.azurecr.io
 ```
 
@@ -50,7 +50,7 @@ Mindkét parancsot vissza `Login Succeeded` Ha befejeződött.
 
 Először kérje le a nyilvános Nginx-rendszerképet a helyi számítógépen.
 
-```Docker
+```
 docker pull nginx
 ```
 
@@ -58,7 +58,7 @@ docker pull nginx
 
 Hajtsa végre következő [futtatása docker](https://docs.docker.com/engine/reference/run/) parancsot egy helyi példányát az Nginx-tároló interaktívan (`-it`) a 8080-as porton. A `--rm` argumentum meghatározza, hogy a tároló el kell távolítani, leállításakor.
 
-```Docker
+```
 docker run -it --rm -p 8080:80 nginx
 ```
 
@@ -74,7 +74,7 @@ Mivel elindítottuk a tárolóhoz, az interaktív módon `-it`, láthatja, hogy 
 
 Használat [docker címke](https://docs.docker.com/engine/reference/commandline/tag/) hozhat létre egy aliast a rendszerképről a teljes elérési útja a tárolójegyzékbe. A példa a(z) `samples` névteret határozza meg, hogy ne legyen zsúfolt a beállításjegyzék gyökere.
 
-```Docker
+```
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
@@ -84,7 +84,7 @@ Címkézés a névterek kapcsolatos további információkért lásd: a [adattá
 
 Most, hogy miután ellátta azt, hogy a kép a teljes elérési útja és a privát regisztrációs adatbázisba, leküldheti a tárolójegyzékbe [docker leküldéses](https://docs.docker.com/engine/reference/commandline/push/):
 
-```Docker
+```
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
@@ -92,7 +92,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 Használja a [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) parancsot a rendszerkép lekérése a beállításjegyzékből:
 
-```Docker
+```
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
@@ -100,7 +100,7 @@ docker pull myregistry.azurecr.io/samples/nginx
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/run/) parancs futtatása a lemezképet, már a regisztrációs adatbázisból beolvasott:
 
-```Docker
+```
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
@@ -112,7 +112,7 @@ Keresse meg a [ http://localhost:8080 ](http://localhost:8080) a futó tároló 
 
 Ha már nincs szüksége az Nginx rendszerképet, törölheti a helyben a [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) parancsot.
 
-```Docker
+```
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 

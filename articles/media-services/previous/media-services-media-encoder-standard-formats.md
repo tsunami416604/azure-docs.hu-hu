@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 02/08/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: fe1d681fa5f9ab49fec9112398ed03c87c975176
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 27e9a5b33170855455e8906b659e0f0c009e42d3
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384734"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984103"
 ---
-# <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-formátumok és -kodekek
+# <a name="media-encoder-standard-formats-and-codecs-legacy"></a>Media Encoder Standard-formátumok és -kodekek (örökölt)
 
-> [!div class="op_single_selector" title1="Válassza ki a használni kívánt Media Services verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
 > * [2-es verzió](media-services-media-encoder-standard-formats.md)
 > * [3-as verzió](../latest/media-encoder-standard-formats.md)
 
@@ -32,14 +32,14 @@ Ez a dokumentum a legismertebb importálható és exportálható fájlformátumo
 | Fájlformátum (fájlkiterjesztés) | Támogatott |
 | --- | --- | --- | --- |
 | FLV (H.264 és AAC kodekkel) (.flv) |Igen |
-| MXF (.mxf) |Igen |
-| MXF (.mxf) |Igen |
+| MXF    (.mxf) |Igen |
+| GXF    (.gxf) |Igen |
 | MPEG2 PS, MPEG2-TS, 3GP (.ts, .ps, .3gp, .3gpp, .mpg) |Igen |
 | Windows Media Video (WMV) / ASP (.wmv, .asf) |Igen |
 | AVI (tömörítetlen 8 bites/10 bit) (.avi) |Igen |
 | MP4 (.mp4, .m4a, .m4v) / ISMV (.isma, .ismv) |Igen |
 | [A Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr ms) |Igen |
-| Matroska vagy WebM (.mkv) |Igen |
+| Matroska/WebM (.mkv) |Igen |
 | WAVE/WAV (.wav) |Igen |
 | QuickTime (.mov) |Igen |
 
@@ -62,14 +62,14 @@ vagy
 | --- | --- | --- | --- |
 | AVC 8 bites/10 bites-, akár 4:2:2, ideértve az avcintrát is |8 bites 4:2:0. és 4:2:2 |
 | Avid DNxHD (MXF-ben) |Igen |
-| DVCPro/DVCProHD (MXF-ben) |Igen |
+| DVCPro/DVCProHD (in MXF) |Igen |
 | Digital video (DV) (a AVI-fájlokban) |Igen |
 | JPEG 2000 |Igen |
 | MPEG-2 (akár a 422-es Profilig és a magas szintig; az XDCAM, XDCAM HD, XDCAM IMX, CableLabs® és D10 például) |Akár 422-es Profilig |
 | MPEG-1 |Igen |
 | VC-1/WMV9 |Igen |
 | Canopus HQ/HQX |Nem |
-| MPEG-4: 2. rész |Igen |
+| MPEG-4 Part 2 |Igen |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Igen |
 | Tömörítetlen YUV420 vagy mezzanine |Igen |
 | Az Apple ProRes 422 |Igen |
@@ -78,16 +78,16 @@ vagy
 | Az Apple ProRes Proxy |Igen |
 | Az Apple ProRes 4444 |Igen |
 | Az Apple ProRes 4444 XQ |Igen |
-| HEVC/H.265| Fő profil|
+| HEVC/H.265| Elsődleges és a 10-es főbb (&#42;) profilok<br/>Fő 10-es profil használatát támogató célja a 8 bites 4:2:0 tartalmat. |
 
 ## <a name="input-audio-codecs"></a>Bemeneti hangkodekek
 | Bemeneti hangkodekek | Támogatott |
 | --- | --- | --- | --- |
 | AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1) |Igen |
-| MPEG 2 réteg |Igen |
+| MPEG Layer 2 |Igen |
 | MP3 (MPEG-1-3 hangréteg) |Igen |
-| Windows Media hang |Igen |
-| A PCM/WAV |Igen |
+| Windows Media Audio |Igen |
+| WAV/PCM |Igen |
 | [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Igen |
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Igen |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Igen |
@@ -102,8 +102,8 @@ Az alábbi táblázat a kodekeket és fájlformátumot exportálási által tám
 
 | Fájlformátum | Videó kodek | Hang kodek |
 | --- | --- | --- |
-| MP4 <br/><br/>(beleértve a többszörös átviteli sebességű MP4-tárolók) |A H.264 (magas, fő és alapkonfiguráció-profilok) |Az AAC-LC, HE-AAC v1, v2 az AAC-HE |
-| MPEG2-TS |A H.264 (magas, fő és alapkonfiguráció-profilok) |Az AAC-LC, HE-AAC v1, v2 az AAC-HE |
+| MP4 <br/><br/>(beleértve a többszörös átviteli sebességű MP4-tárolók) |A H.264 (magas, fő és alapkonfiguráció-profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MPEG2-TS |A H.264 (magas, fő és alapkonfiguráció-profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

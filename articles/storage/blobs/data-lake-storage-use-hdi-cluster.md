@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 0932c576a47af85c496d5d2d12dbc1b997d48e16
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: df65c29b39921eda6ba2bd682e5938f58a9e4de7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874328"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964577"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök
 
@@ -20,7 +20,7 @@ Egy HDInsight-fürtön lévő adatok elemzéséhez, tárolhatja az adatokat az A
 
 A Hadoop támogatja az alapértelmezett fájlrendszert. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight fürt létrehozása során blobtárolók is megadhat, az Azure Storage vagy a Data Lake Storage Gen2 az alapértelmezett fájlrendszerként által kínált hierarchikus névtér. Másik lehetőségként a HDInsight 3.5-ös, választhat egy tároló vagy a hierarchikus névtér az alapértelmezett fájlrendszerként, néhány kivétellel.
 
-Ebből a cikkből megtudhatja, hogyan Data Lake Storage Gen2 használható a HDInsight-fürtökkel. Egy HDInsight-fürt létrehozásával kapcsolatos további információkért lásd: [állítsa be a HDInsight-fürtök az Azure Data Lake Storage használata a Hadoop, Spark, Kafka és további](data-lake-storage-quickstart-create-connect-hdi-cluster.md).
+Ebből a cikkből megtudhatja, hogyan Data Lake Storage Gen2 használható a HDInsight-fürtökkel. Egy HDInsight-fürt létrehozásával kapcsolatos további információkért lásd: [állítsa be a HDInsight-fürtök az Azure Data Lake Storage használata a Hadoop, Spark, Kafka és további](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).
 
 Az Azure Blob Storage egy robusztus, általános célú tárolómegoldás, amely zökkenőmentesen integrálható a HDInsight eszközzel. HDInsight fürthöz is használhatja az Azure Data Lake Storage az alapértelmezett fájlrendszerként a. A Hadoop elosztott fájlrendszer (HDFS) felületen keresztül a HDInsight összetevők teljes készlete működhet közvetlenül a fájlokat az Azure Data Lake Storage.
 
@@ -209,7 +209,6 @@ További információkért lásd:
 
 * [Az Azure Data Lake Storage Gen2 ABFS Hadoop-fájlrendszer illesztőprogramja](data-lake-storage-abfs-driver.md)
 * [Bevezetés az Azure Data Lake Storage Gen2-re](data-lake-storage-introduction.md)
-* [Az Azure Data Lake Storage Gen2 használata a Hadoop, Spark, Kafka és több HDInsight-fürtök beállítása](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 * [Adatokat az Azure Data Lake Storage Gen2 a distcp használata](data-lake-storage-use-distcp.md)
 
 [powershell-install]: /powershell/azure/install-az-ps

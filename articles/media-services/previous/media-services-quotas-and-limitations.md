@@ -1,10 +1,10 @@
 ---
-title: A Media Services kvóták és korlátozás |} Microsoft Docs
-description: Ez a témakör ismerteti a kvóták és korlátait, a Microsoft Azure Media Services.
+title: Media Services – kvóták és korlátozás |} A Microsoft Docs
+description: Ez a témakör azt ismerteti, kvótáit és korlátozásait a Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: d4c43afd-dba8-40a2-ad92-6de54152f7ec
 ms.service: media-services
@@ -12,25 +12,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: c755cc4297e0729726d63ff1ce85f85672a07041
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d647c60cbe692f617891201accb1a32e1d885389
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790264"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982114"
 ---
-# <a name="quotas-and-limitations"></a>Kvóták és korlátozások
-Ez a cikk ismerteti a kvóták és korlátait, a Microsoft Azure Media Services.
+# <a name="quotas-and-limitations-legacy"></a>Kvóták és korlátozások (örökölt)
+
+Ez a cikk azt ismerteti, kvótáit és korlátozásait a Microsoft Azure Media Services.
 
 [!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]
 
-## <a name="open-a-support-ticket-to-request-changes-to-the-default-quotas"></a>Ha módosítani szeretné az alapértelmezett kvóták támogatási jegy megnyitása
-Ha módosítani szeretné az alapértelmezett kvóták, megnyithatja a támogatási jegy. A kérelem a kívánt kvóta változik, a használati eset forgatókönyveket, és a szükséges régiók tüntesse fel részletes információkat.
+## <a name="open-a-support-ticket-to-request-changes-to-the-default-quotas"></a>Nyisson egy támogatási jegyet, ha módosítani szeretné az alapértelmezett kvóták
+Ha módosítani szeretné az alapértelmezett kvóták, megnyithatja egy támogatási jegyet. Részletes információkat adja meg a kívánt kvótát változik, a használatieset-forgatókönyvek, és a szükséges régiókról a kérésben.
 
 ### <a name="how-to-open-a-support-ticket"></a>Támogatási jegy megnyitása
-Az Azure-portálon lépjen [súgó + támogatás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Ha nem jelentkezik Azure-ba, kérni fogja a hitelesítő adatok megadását.
+Az Azure Portalon lépjen a [súgó + támogatás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Ha nem jelentkezik Azure-ba, a hitelesítő adatok megadását kéri.
 
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek

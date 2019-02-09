@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 105b4e34d307ac08b8efbb5e263825f2df28e28c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f2b8b97878fc0970c8cfc95e5bd4420306e34cc0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862326"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977100"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Telepítse és futtassa a Text Analytics tárolók
 
@@ -77,19 +77,19 @@ Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandl
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>A kulcs kifejezés kinyerése tároló docker pull
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
 ```
 
 ### <a name="docker-pull-for-the-language-detection-container"></a>A nyelv észlelése tároló docker pull
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 ```
 
 ### <a name="docker-pull-for-the-sentiment-container"></a>A róluk szóló véleményeket tároló docker pull
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 ```
 
@@ -156,18 +156,7 @@ A kimenet futtatásakor a tároló [csatlakoztatási](../text-analytics-resource
 
 A Text Analytics tárolók küldés számlázási adatokat az Azure-ba, a használatával egy _Text Analytics_ erőforrást az Azure-fiókjával. 
 
-Cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat. Cognitive Services-tárolók nem vásárlói adatokat küldeni a Microsoftnak. 
-
-A `docker run` parancsot használja a következő argumentumok számlázás szempontjából:
-
-| Beállítás | Leírás |
-|--------|-------------|
-| `ApiKey` | Az API-kulcsot a _Szövegelemzés_ erőforrás számlázási adatok nyomon követésére szolgál. |
-| `Billing` | Az a végpont a _Text Analytics_ erőforrás számlázási adatok nyomon követésére szolgál.|
-| `Eula` | Azt jelzi, hogy Ön már elfogadta a tároló licencét.<br/>Ez a beállítás értékét állítsa `accept`. |
-
-> [!IMPORTANT]
-> Mindhárom meg kell adni az érvényes értékek, vagy a tároló nem indul el.
+[!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Ezek a beállítások kapcsolatos további információkért lásd: [tárolók konfigurálása](../text-analytics-resource-container-config.md).
 

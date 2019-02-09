@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
-ms.openlocfilehash: e402cc214f25447407754bc6269300f4f052af4f
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 30d9de5653db385760155d533ad747c3cf6d2400
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232736"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960351"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>A Log Analytics használatával az Azure Resource Manager-sablonok felügyelete
 Használhat [Azure Resource Manager-sablonok](../../azure-resource-manager/resource-group-authoring-templates.md) létrehozása és konfigurálása a Log Analytics-munkaterületeket. A feladatokat hajthat végre a sablonok közé:
@@ -54,9 +54,9 @@ A következő paraméterekkel állítsa be az alapértelmezett érték:
 * hely – USA keleti RÉGIÓJA, az alapértelmezett érték
 * Termékváltozat - alapértelmezés szerint az új GB-onkénti tarifacsomag, amely a 2018 áprilisi díjszabási modell
 
->[!WARNING]
->Ha létrehozása vagy konfigurálása a Log Analytics-munkaterület egy előfizetésben, amely rendelkezik az új 2018 áprilisi díjszabási modell jelentkezett, van-e a csak érvényes tarifacsomagban a Log Analytics **PerGB2018**. 
->
+> [!NOTE]
+>Ha létrehozása vagy konfigurálása a Log Analytics-munkaterület egy előfizetésben, amely rendelkezik az új 2018 áprilisi díjszabási modell jelentkezett, van-e a csak érvényes tarifacsomagban a Log Analytics **PerGB2018**.  
+>Ha lehetséges, hogy bizonyos előfizetéseket a (2018 előtti-áprilisi díjszabási modell) [https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model], megadhatja a **önálló** tarifacsomag, és ez lesz sikeres, a 2018 előtti-április díjszabási modell, és mindkét előfizetéshez az új díjszabás az előfizetések. Az új proicing modell alkalmazó előfizetésekben munkaterületek, a tarifacsomag értékre lesz beállítva **PerGB2018**. 
 
 ### <a name="create-and-deploy-template"></a>Hozzon létre, és a sablon üzembe helyezése
 

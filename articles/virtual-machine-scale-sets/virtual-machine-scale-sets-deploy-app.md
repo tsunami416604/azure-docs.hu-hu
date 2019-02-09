@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b977a2fe9dadfe42e02063fa4fa291b9be484ac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 09145612821cb669e26e3ccb8d15611112eca700
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733139"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980074"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>A virtual machine scale sets az alkalmazás üzembe helyezése
+
 Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Ez a cikk bemutatja a módon hozhat létre egyéni Virtuálisgép-rendszerképet a méretezési csoportban lévő példányok állítsa be, vagy már meglévő Virtuálisgép-példányok automatikus futtatásra telepítési szkriptek. Azt is megtudhatja, hogyan kezelhetők alkalmazás vagy az operációs rendszer frissítése egy méretezési csoportot.
 
 
@@ -50,8 +51,8 @@ A PowerShell DSC bővítmény lehetővé teszi, hogy a PowerShell-lel méretezé
 
 - Arra utasítja a DSC-csomag letöltése a Githubról – a Virtuálisgép-példányok *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - Beállítja a futtatásához egy telepítési parancsfájl - bővítmény `configure-http.ps1`
-- Egy méretezési csoportot az információ lekérése [a Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss)
-- Vonatkozik a bővítményt a Virtuálisgép-példányok [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss)
+- Egy méretezési csoportot az információ lekérése [Get-AzVmss](/powershell/module/az.compute/get-azvmss)
+- Vonatkozik a bővítményt a Virtuálisgép-példányok [Update-AzVmss](/powershell/module/az.compute/update-azvmss)
 
 A DSC-bővítmény alkalmazott a *myScaleSet* nevű erőforráscsoportot a Virtuálisgép-példányok *myResourceGroup*. Adja meg a saját nevek a következők szerint:
 
@@ -67,12 +68,12 @@ $dscConfig = @{
 }
 
 # Get information about the scale set
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
                 -ResourceGroupName "myResourceGroup" `
                 -VMScaleSetName "myScaleSet"
 
 # Add the Desired State Configuration extension to install IIS and configure basic website
-$vmss = Add-AzureRmVmssExtension `
+$vmss = Add-AzVmssExtension `
     -VirtualMachineScaleSet $vmss `
     -Publisher Microsoft.Powershell `
     -Type DSC `
@@ -81,13 +82,13 @@ $vmss = Add-AzureRmVmssExtension `
     -Setting $dscConfig
 
 # Update the scale set and apply the Desired State Configuration extension to the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
     -ResourceGroupName "myResourceGroup" `
     -Name "myScaleSet"  `
     -VirtualMachineScaleSet $vmss
 ```
 
-Ha a házirend a méretezési *manuális*, a Virtuálisgép-példányok a frissítés [Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance). Ez a parancsmag a Virtuálisgép-példányok a frissített méretezésicsoport-konfigurációt vonatkozik, és telepíti az alkalmazást.
+Ha a házirend a méretezési *manuális*, a Virtuálisgép-példányok a frissítés [Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance). Ez a parancsmag a Virtuálisgép-példányok a frissített méretezésicsoport-konfigurációt vonatkozik, és telepíti az alkalmazást.
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Alkalmazások telepítése egy Linux rendszerű virtuális gépre, a cloud-Init használatával

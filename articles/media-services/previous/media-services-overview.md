@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/15/2018
+ms.date: 02/08/2018
 ms.author: juliako
-ms.openlocfilehash: c3d9b0660ab7803fc0c2696ded7bbffa90e07a5a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: eacb01d11799b7e739fa3d05beeef994ca187e84
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211604"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977643"
 ---
-# <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
+# <a name="azure-media-services-overview-legacy"></a>Az Azure Media Services áttekintése (örökölt)
 
-> [!div class="op_single_selector" title1="Válassza ki a használni kívánt Media Services verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
 > * [2-es verzió](media-services-overview.md)
 > * [3-as verzió](../latest/media-services-overview.md)
 
@@ -61,7 +61,7 @@ A Media Services-megoldások létrehozásához a következőket használhatja:
 
 ## <a name="code-samples"></a>Kódminták
 
-Az **Azure-kódminták** katalógusban számos kódmintát talál: [Azure Media Services-kódminták](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+A számos kódmintát talál a **Azure-Kódminták** katalógus: [Az Azure Media Services-Kódminták](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 ## <a name="concepts"></a>Alapelvek
 

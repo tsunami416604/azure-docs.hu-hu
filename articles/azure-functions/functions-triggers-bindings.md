@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: a44b348e0c41e96c575555f2b5c275e196284c5b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: df722f305d60eb0ab53964bfc4e3f48961036708
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074527"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984851"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -506,7 +506,7 @@ Például az Azure Queue storage-eseményindító támogatja az alábbi tulajdon
 
 * QueueTrigger - üzenet tartalma aktiválása, ha érvénytelen karakterláncot tartalmaz
 * DequeueCount
-* expirationTime
+* ExpirationTime
 * Azonosító
 * InsertionTime
 * NextVisibleTime
@@ -671,7 +671,7 @@ A kötés kifejezés `DateTime` mutat `DateTime.UtcNow`. A következő blob elé
 
 C# és az egyéb .NET nyelven, használhatja az imperatív kötés minta, ellentétben a deklaratív kötése *function.json* és attribútumok. Imperatív kötés akkor hasznos, ha a kötési paramétereket kell futásidejű kialakítása helyett időpontjában a következő időpontban számítja. További tudnivalókért tekintse meg a [C# – fejlesztői referencia](functions-dotnet-class-library.md#binding-at-runtime) vagy a [C# szkript fejlesztői segédanyagok](functions-reference-csharp.md#binding-at-runtime).
 
-## <a name="functionjson-file-schema"></a>Function.JSON fájlt séma
+## <a name="functionjson-file-schema"></a>function.json file schema
 
 A *function.json* sémáját mindig elérhető legyen [ http://json.schemastore.org/function ](http://json.schemastore.org/function).
 
@@ -702,4 +702,3 @@ Egy adott kötés további információkért lásd a következő cikkeket:
 - [Twilio](functions-bindings-twilio.md)
 - [Értesítési központ](functions-bindings-notification-hubs.md)
 - [Mobile Apps](functions-bindings-mobile-apps.md)
-- [Külső fájl](functions-bindings-external-file.md)

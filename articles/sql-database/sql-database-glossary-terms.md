@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: 0ae6dea86019b84e8d086a595995f8bd5b2a55ed
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: d773d270b3b352bcaef189d201d824695b42bcef
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753299"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980142"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Az Azure SQL Database szószedet
 
@@ -28,7 +28,7 @@ ms.locfileid: "55753299"
 ||Rugalmas készlet|[Rugalmas készlet](sql-database-elastic-pool.md)|
 ||Felügyelt példány|[Felügyelt példány](sql-database-managed-instance.md)|
 |Kiszolgálóobjektumok|SQL Database-kiszolgáló vagy adatbázis-kiszolgáló|[Adatbázis-kiszolgáló](sql-database-servers.md)|
-||Az SQL Database felügyelt példány, vagy a felügyelt példány|[Felügyelt példány](sql-database-managed-instance.md)|
+||SQL Database felügyelt példány server, a felügyelt példány server vagy a server-példány|[Felügyelt példány](sql-database-managed-instance.md)|
 Adatbázis-objektumok|Azure SQL-adatbázis|Bármely Azure SQL Database-adatbázis|
 ||Önálló adatbázis|Az önálló adatbázis rendszerbe állítási beállításának használata önálló adatbázisként létrehozott adatbázis|
 ||Készletezett adatbázis|Egy adatbázis belül létrehozott vagy áthelyezése rugalmas készletbe|
@@ -47,6 +47,6 @@ Adatbázis-objektumok|Azure SQL-adatbázis|Bármely Azure SQL Database-adatbázi
 ||Tárolókapacitás|Egy önálló adatbázis, a rugalmas készlet vagy a felügyelt példány számára elérhető tárterület mérete|
 ||Számítási generáció|A szolgáltatási szinten belül processzor generációja|
 |Adatbázis-kiszolgáló IP-tűzfalszabályai|IP-tűzfalszabályainak|[IP-tűzfalszabályainak](sql-database-firewall-configure.md)|
-||Kiszolgálószintű IP-tűzfalszabályainak|[Kiszolgálószintű IP-tűzfalszabályainak](sql-database-firewall-configure.md#overview)|
+||Kiszolgálószintű IP-tűzfalszabályok|[Kiszolgálószintű IP-tűzfalszabályainak](sql-database-firewall-configure.md#overview)|
 || Adatbázisszintű IP-tűzfalszabályainak|[Adatbázisszintű IP-tűzfalszabályainak](sql-database-firewall-configure.md#overview)|
 ||Virtuális hálózati végpontokat és szabályok|[Virtuális hálózati végpontok és szabályok](sql-database-vnet-service-endpoint-rule-overview.md)|

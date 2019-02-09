@@ -13,16 +13,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 09/10/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.lastreviewed: 09/10/2018
-ms.openlocfilehash: 2513f397457c4866229605487149aa1fe03a2c68
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: 0fb3e9cd193e570a965d6bbd3e16c86dc39de350
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247731"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984273"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>A parancssorból a ASDK üzembe helyezése
 A ASDK olyan kiértékeléséhez, és mutassa be az Azure Stack-szolgáltatások és szolgáltatások telepítését, tesztelési és fejlesztési környezet. Letöltés működik, és szüksége a környezet hardver előkészítése, és néhány (Ez több óráig fog tartani) parancsfájlok futtatása. Ezt követően bejelentkezhet a rendszergazdai és felhasználói portált az Azure Stack használatának megkezdéséhez.
@@ -134,7 +134,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 Ha a környezet nem rendelkezik DHCP-kompatibilis, majd meg kell adnia a következő további paramétereket a fenti (a megadott példa használati) lehetőségek közül: 
 
 ```powershell
-.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -NatIPv4Subnet 10.10.10.0/24 -NatIPv4Address 10.10.10.3 -NatIPv4DefaultGateway 10.10.10.1 -TimeServer 10.222.112.26
+.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -TimeServer 10.222.112.26
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>ASDK InstallAzureStackPOC.ps1 választható paraméterek:
@@ -146,9 +146,6 @@ Ha a környezet nem rendelkezik DHCP-kompatibilis, majd meg kell adnia a követk
 |InfraAzureDirectoryTenantAdminCredential|Optional|Beállítja az Azure Active Directory felhasználónevet és jelszót. Ezeket az Azure a hitelesítő adatokat kell lennie a szervezeti azonosítóval.|
 |InfraAzureEnvironment|Optional|Válassza ki a Azure-környezet, amellyel az Azure Stack üzemelő példányához regisztrálni szeretne. Nyilvános Azure, Azure - Kína, Azure - US Government a lehetőségek között.|
 |DNSForwarder|Optional|DNS-kiszolgáló létrehozása az Azure Stack üzembe helyezés részeként. Ahhoz, hogy a számítógépek belül a megoldás a stamp kívül nevek feloldása, adja meg a meglévő infrastruktúra DNS-kiszolgáló. A stamp a DNS-kiszolgáló ezen a kiszolgálón ismeretlen névfeloldási kérelmeket továbbítja.|
-|NatIPv4Address|A DHCP hálózati Címfordítás támogatása szükséges|Statikus IP-cím MAS-BGPNAT01 állítja be. Csak akkor használja ezt a paramétert, ha a DHCP nem tud érvényes IP-címet rendelni az internet eléréséhez.|
-|NatIPv4Subnet|A DHCP hálózati Címfordítás támogatása szükséges|IP-alhálózat előtag használt DHCP hálózati Címfordítás támogatása. Csak akkor használja ezt a paramétert, ha a DHCP nem tud érvényes IP-címet rendelni az internet eléréséhez.|
-|PublicVlanId|Optional|Beállítja a VLAN-azonosítót. Csak akkor használja ezt a paramétert, ha a gazdagép és a MAS-BGPNAT01 konfigurálnia kell a VLAN-Azonosítót a fizikai hálózat (és Internet) eléréséhez. Ha például.\InstallAzureStackPOC.ps1-Verbose - PublicVLan 305|
 |Ismétlés|Optional|Ez a jelző használatával futtassa újra a központi telepítés. Az összes korábbi bemenet használata esetén. Az adatok ismételt beírására korábban megadott nem támogatott, mert több egyedi értékeket jönnek létre és üzembe helyezéshez használt.|
 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Az expressroute-hoz egy Azure virtuális hálózat átjáró hozzáadása: Portal |} A Microsoft Docs'
+title: 'Az expressroute-hoz egy Azure virtuális hálózat átjáró hozzáadása: Portál |} A Microsoft Docs'
 description: Ez a cikk végigvezeti egy már létrehozott Resource Manager virtuális hálózathoz, az ExpressRoute virtuális hálózati átjáró hozzáadása.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 37fe2e2adb947e2e9ddc86a34baf6994b5771be6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a21c9682cfeaa7421d089bf75eb9d8b45e1d3d46
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091203"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982760"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Az Azure portal használatával ExpressRoute virtuális hálózati átjáró konfigurálása
 > [!div class="op_single_selector"]
@@ -39,12 +39,11 @@ Ez a feladat lépései használják egy virtuális hálózathoz, a következő k
     * Alhálózat címtere = "192.168.1.0/24"
 * Erőforráscsoport = "TestRG"
 * Hely = "USA keleti RÉGIÓJA"
-* Átjáróalhálózat neve: "GatewaySubnet" kell neve egy átjáró-alhálózatot *GatewaySubnet*.
+* Átjáróalhálózat neve: Egy átjáró-alhálózatot kell neve "GatewaySubnet" *GatewaySubnet*.
     * Átjáró-alhálózat címtere = "192.168.200.0/26"
 * Átjáró neve = "ERGW"
-* Átjáró IP-név = "MyERGWVIP"
-* Átjáró típusa "az ExpressRoute" = a típusát kötelező megadni egy ExpressRoute-konfigurációhoz.
 * Átjáró nyilvános IP-cím neve = "MyERGWVIP"
+* Átjáró típusa "az ExpressRoute" = a típusát kötelező megadni egy ExpressRoute-konfigurációhoz.
 
 Megtekintheti egy [videó](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) az alábbi lépéseket a konfigurálás megkezdése előtt.
 
@@ -67,14 +66,14 @@ Megtekintheti egy [videó](https://azure.microsoft.com/documentation/videos/azur
 2. A **Virtuális hálózati átjáró létrehozása** panelen töltse ki a virtuális hálózati átjáró értékeit.
 
     ![Virtuális hálózati átjáró létrehozása panel mezői](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "Virtuális hálózati átjáró létrehozása panel mezői")
-3. **Név**: adjon nevet az átjárónak. Ez nem ugyanaz, mint egy átjáró alhálózatának elnevezése. Ez a létrehozni kívánt átjáróobjektum neve.
-4. **Átjáró típusa**: válasszon **ExpressRoute**.
-5. **SKU**: válassza ki az átjáró SKU-ját a legördülő listából.
+3. **Név**: Adjon nevet az átjáró. Ez nem ugyanaz, mint egy átjáró alhálózatának elnevezése. Ez a létrehozni kívánt átjáróobjektum neve.
+4. **Átjáró típusa**: Válassza ki **ExpressRoute**.
+5. **TERMÉKVÁLTOZAT**: A legördülő listából válassza ki az átjáró-Termékváltozatot.
 6. **Hely**: Állítsa be úgy a **Hely** mezőt, hogy a virtuális hálózat helyére mutasson. Ha a hely nem egyezik meg azzal a régióval, ahol a virtuális hálózat található, a virtuális hálózat nem jelenik meg a Virtuális hálózat választása legördülő menüben.
 7. Válassza ki azt a virtuális hálózatot, amelyhez hozzá kívánja adni az átjárót. Kattintson a **Virtuális hálózat** elemre a **Virtuális hálózat választása** panel megnyitásához. Válassza ki a VNet elemet. Ha a VNet nem jelenik meg, ellenőrizze, hogy a **Hely** mező arra a régióra mutat-e, amelyikben a virtuális hálózata található.
 9. Válasszon egy nyilvános IP-címet. A **Nyilvános IP-cím** elemre kattintva nyissa meg a **Nyilvános IP-cím választása** panelt. Ezután az **+Új létrehozása** elemre kattintva nyissa meg a **Nyilvános IP-cím létrehozása** panelt. Adjon egy nevet a nyilvános IP-címnek. Ez a panel létrehoz egy nyilvános IP-cím-objektumot, amelyhez dinamikusan hozzá lesz rendelve egy nyilvános IP-cím. Kattintson az **OK** gombra a panel módosításainak mentéséhez.
-10. **Előfizetés**: ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
-11. **Erőforráscsoport**: ezt a beállítást a kiválasztott virtuális hálózat határozza meg.
+10. **Előfizetés**: Győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva.
+11. **Erőforráscsoport**: Ez a beállítás a kiválasztott virtuális hálózat határozza meg.
 12. Ne módosítsa a **Helyet** az előbbi beállítások megadása után.
 13. Ellenőrizze a beállításokat. Ha azt szeretné, hogy az átjáró megjelenjen az irányítópulton, válassza a panel alján lévő **Rögzítés az irányítópulton** elemet.
 14. A **Létrehozás** gombra kattintva hozzákezdhet az átjáró létrehozásához. A rendszer érvényesíti a beállításokat, és az átjáró üzembe helyezése megtörténik. Virtuális hálózati átjáró létrehozása akár 45 percet is igénybe vehet.

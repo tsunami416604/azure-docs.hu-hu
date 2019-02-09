@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 1960cac28b74980d17f37b4e06e79604e156381e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 540abeed3587959af5ca229f59343774b824547b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566237"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982896"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Az IaaS-erőforrások klasszikusból Azure Resource Manager az áttelepítés tervezése
 Azure Resource Manager számos nagyszerű funkciókat biztosít, rendkívül fontos tervezze meg, hogy zökkenőmentességét sure dolgot a migrálási folyamat elkezdésekor. Tervezési idő kiadások biztosítja, hogy nem problémák merülnek fel migrálási tevékenységek végrehajtása közben.
@@ -131,23 +131,25 @@ A következő számos, a nagyobb áttelepítések a felmerült problémák volta
     - Útvonaltáblák
 
     Az aktuális Azure erőforrás-kezelő kvótái, az Azure PowerShell legújabb verzióját a következő parancsokkal ellenőrizheti.
+    
+    [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
     **COMPUTE** *(magok, a rendelkezésre állási csoportok)*
 
     ```powershell
-    Get-AzureRmVMUsage -Location <azure-region>
+    Get-AzVMUsage -Location <azure-region>
     ```
 
     **Hálózati** *(virtuális hálózatok, statikus nyilvános IP-címek, nyilvános IP-címek, hálózati biztonsági csoportok, hálózati adaptereket, terheléselosztókat, útvonaltáblák)*
 
     ```powershell
-    Get-AzureRmUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
+    Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
     **Tárolási** *(Tárfiók)*
 
     ```powershell
-    Get-AzureRmStorageUsage
+    Get-AzStorageUsage
     ```
 
 - **Az Azure Resource Manager API szabályozási korlátait** – Ha rendelkezik egy megfelelő méretű környezetben (például) > 400 egy virtuális hálózaton található virtuális gépek), előfordulhat, hogy eléri az alapértelmezett API szabályozási korlátait az írási műveletek (jelenleg `1200 writes/hour`) az Azure Resource Manager. Mielőtt megkezdenék az áttelepítést, hoz létre egy támogatási jegyet a az előfizetéshez tartozó korlát növelését.

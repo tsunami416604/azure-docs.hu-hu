@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/11/2016
+ms.date: 02/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf999e15c04a64f717bcd7bac87e357d5ccc92e6
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ecf0638aa999208331603ac30ccf4eb17b3c4500
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189932"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960683"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Elemzés hibaelhárítása az Application Insights szolgáltatásban
 Problémák [Application Insights-elemzési](analytics.md)? Itt érdemes kezdenie. Analytics az Azure Application Insights hatékony keresési eszközben.
@@ -36,7 +36,7 @@ A bővítmény letiltása, vagy használjon egy másik böngészőben.
 
 Belső hiba történt a portál modul nem kezelt kivétel.
 
-* Tisztítsa meg a böngésző gyorsítótárát. 
+* Tisztítsa meg a böngésző gyorsítótárát.
 
 ## <a name="e-b"></a>403-as... Próbálkozzon ide az újrabetöltéshez
 ![403-as... Próbálkozzon ide az újrabetöltéshez](media/analytics-troubleshooting/020.png)
@@ -71,7 +71,7 @@ Hitelesítési hiba történt (a hitelesítési eljárás, illetve a hozzáfér�
 ## <a name="e-d"></a>404 ... Nem található az erőforrás
 ![404... nem található az erőforrás](media/analytics-troubleshooting/040.png)
 
-Alkalmazás-erőforrás törölve lett az Application Insights és a nem t elérhető többé. Ez akkor fordulhat elő, ha az elemzési lap mentett URL-CÍMÉT.
+Alkalmazás-erőforrás törölve lett az Application Insights, és nem használható többé. Ez akkor fordulhat elő, ha az elemzési lap mentett URL-CÍMÉT.
 
 ## <a name="e-e"></a>403 ... Nincs engedély
 ![403-as... nem jogosult](media/analytics-troubleshooting/050.png)
@@ -81,11 +81,11 @@ Nincs engedélye az alkalmazás megnyitásához az Analyticsben.
 * Jutott el a hivatkozást személy? Kérje meg őket, hogy Ön a [olvasók vagy az erőforráscsoporthoz közreműködő](../../azure-monitor/app/resources-roles-access-control.md).
 * Menti a különböző hitelesítő adatok használatával hivatkozást? Nyissa meg a [az Azure portal](https://portal.azure.com), jelentkezzen ki, és ismételje meg ezt a hivatkozást, a megfelelő hitelesítő adatokkal.
 
-## <a name="html-storage"></a>403 ... HTML5-alapú tárolás
+## <a name="html-storage"></a>403 ... HTML5 Storage
 A portál a HTML5-alapú localStorage és sessionStorage használja.
 
 * Chrome-ban: Beállítások, adatvédelmi, tartalom beállításait.
-* Az Internet Explorer: Internetbeállítások, Speciális lapján, biztonság, a DOM-tároló engedélyezése
+* Internet Explorer: Internetbeállítások, Speciális lapján, biztonság, a DOM-tároló engedélyezése
 
 ![403-as... Próbálja meg engedélyezni a HTML5-alapú tárolás](media/analytics-troubleshooting/060.png)
 

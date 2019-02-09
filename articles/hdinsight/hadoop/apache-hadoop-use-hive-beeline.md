@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: c1c4637bf3b71ade6cceb4427180edf8bc408670
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3470caec801c5be54f04fc09a5da734a973f0c82
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408102"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962162"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Hive az Apache a Beeline-ügyfél használata
 
@@ -25,6 +25,7 @@ A beeline egy Hive-ügyfél, amely része az átjárócsomópontokkal a HDInsigh
 
 * __Az SSH-kapcsolatot a Beeline segítségével átjárócsomópontjával vagy peremhálózati csomópont__: `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'`
 * __A Beeline használata a HDInsight egy Azure virtuális hálózaton keresztül csatlakozó ügyfél,__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
+* __A Beeline használata a HDInsight vállalati biztonsági csomag (ESP) fürthöz csatlakozik egy Azure virtuális hálózaton keresztüli, ügyfél__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>`
 * __A Beeline használata a HDInsight a nyilvános interneten keresztül csatlakozó ügyfél,__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
 
 > [!NOTE]  
@@ -35,6 +36,8 @@ A beeline egy Hive-ügyfél, amely része az átjárócsomópontokkal a HDInsigh
 > Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére.
 >
 > Ha a fürt virtuális hálózaton keresztül kapcsolódik, cserélje le a `<headnode-FQDN>` egy fürt átjárócsomójával létesített teljesen minősített nevére.
+>
+> Ha egy vállalati biztonsági csomag (ESP) fürthöz csatlakozik, cserélje le a `<AAD-Domain>` , az Azure Active Directory (AAD), amely csatlakozik a fürt nevét. Cserélje le `<username>` a tartományon a fürt elérésére jogosult fiók nevével.
 
 ## <a id="prereq"></a>Előfeltételek
 
@@ -67,6 +70,12 @@ A beeline egy Hive-ügyfél, amely része az átjárócsomópontokkal a HDInsigh
 
         ```bash
         beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
+        ```
+    * Ha egy vállalati biztonsági csomag (ESP) fürthöz való csatlakozás tartományhoz az Azure Active Directory (AAD), is meg kell adnia a tartománynevet `<AAD-Domain>` és a fürt elérésére jogosult tartományi felhasználói fiók nevével `<username>`:
+        
+        ```bash
+        kinit <username>
+        beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>
         ```
 
 2. A beeline-parancsok kezdődhet egy `!` karakter, például `!help` megjeleníti a súgót. Azonban a `!` egyes parancsok elhagyható. Ha például `help` is működik.

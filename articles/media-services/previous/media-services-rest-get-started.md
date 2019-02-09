@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 794c2cf6c52ead465d35d3d551cfe76e87c06787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b76adda6e09cdce1f94c2d0691cbe7e4cc2b6b50
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237604"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983525"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Tartalmak továbbítása igény szerint REST használatával
+# <a name="get-started-with-delivering-content-on-demand-using-rest-legacy"></a>Tartalmak továbbítása igény szerint használatával REST (örökölt)
+
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 
 Ez a rövid útmutató végigvezeti a lépéseken, egy Video-on-Demand (VoD) tartalomtovábbító alkalmazást az Azure Media Services (AMS) REST API-k használatával.
@@ -268,7 +269,7 @@ A SAS URL-cím formátuma a következő:
 Vegye figyelembe a következőket:
 
 * Nem lehet több mint öt, egy adott eszköz egyszerre társított egyedi keresők. 
-* Ha szeretné azonnal a fájlok feltöltése, a StartTime érték öt perc alatt az aktuális időpont elé a kell beállítania. Ennek az oka lehet óra között az ügyfélszámítógép és a Media Services döntés. Ezenkívül a StartTime érték a következő dátum és idő formátumban kell lennie: éééé-hh-DDTHH:mm:ssZ (például "2014-05-23T17:53:50Z").    
+* Ha szeretné azonnal a fájlok feltöltése, a StartTime érték öt perc alatt az aktuális időpont elé a kell beállítania. Ennek az oka lehet óra között az ügyfélszámítógép és a Media Services döntés. Ezenkívül a StartTime érték a következő dátum és idő formátumban kell lennie: ÉÉÉÉ-hh-DDTHH:mm:ssZ (például "2014-05-23T17:53:50Z").    
 * Előfordulhat, hogy egy 30 – 40 második késleltetés használatra elérhetővé válik egy kereső létrehozása után. A probléma egyaránt vonatkozik [SAS URL-címet](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) , a forrás-keresők.
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy SAS URL-cím kereső határozzák meg a kérelem törzsében ("1" egy SAS-kereső) és a egy igény szerinti forrás kereső "2" tulajdonság. A **elérési út** visszaadott tulajdonság tartalmazza az URL-cím, amely a fájl feltöltéséhez kell használnia.
@@ -407,7 +408,7 @@ Ha ez sikeres, a következőket adja vissza:
 
 Fürtjét a Media Services media szolgáltatásba eszközöket is kódolhatók, transmuxed, teljesítményjellemzőit, és így tovább, miután előtt biztosítását az ügyfeleknek. Ezen tevékenységek több háttérbeli szerepkörpéldányhoz képest vannak ütemezve és futtatva a magas teljesítmény és rendelkezésre állás biztosítása érdekében. Ezeket a tevékenységeket feladatoknak nevezzük, és minden feladat el a valódi munkát az adategységfájlon Részműveletből áll (további információkért lásd: [feladat](https://docs.microsoft.com/rest/api/media/operations/job), [feladat](https://docs.microsoft.com/rest/api/media/operations/task) leírása).
 
-Ahogy korábban már említettük, ha az Azure Media Services egyik leggyakrabban használt működő forgatókönyve az adaptív sávszélességű streamelés az ügyfelek felé. A Media Services tudja dinamikusan csomagolni adaptív sávszélességű MP4-fájlokat a következő formátumok egyikét: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH.
+Ahogy korábban már említettük, ha az Azure Media Services egyik leggyakrabban használt működő forgatókönyve az adaptív sávszélességű streamelés az ügyfelek felé. A Media Services tudja dinamikusan csomagolni egy adaptív sávszélességű MP4-fájlok készlete a következő formátumok egyikét: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
 
 A következő szakasz bemutatja, hogyan hozhat létre egy feladatot, amely tartalmaz egy kódolási feladat. A feladat nem alakítható át mezzanine-fájlt adja meg az adaptív sávszélességű MP4-használatával egy csoportba **Media Encoder Standard**. A szakasz azt is bemutatja, hogyan figyelheti a feladat feldolgozása folyamatban van. Ha a feladat befejeződött, lenne az eszközök eléréséhez szükséges keresők létrehozása.
 
@@ -458,7 +459,7 @@ A következő kódot kér a kódoló azonosítója.
     }
 
 ### <a name="create-a-job"></a>Feladat létrehozása
-Minden egyes feladat elvégezni kívánt feldolgozási típusától függően egy vagy több feladat is rendelkezhet. A REST API-n keresztül hozhat létre feladatokat és azok kapcsolódó feladatok két módszer egyikével: feladatok lehetnek a tevékenységek navigációs tulajdonság entitások feladat vagy OData kötegelt feldolgozás révén definiálva van soron belül. A Media Services SDK-t használ a kötegelt feldolgozás. Az ebben a cikkben szereplő példák az olvashatóság érdekében, azonban a feladatok is definiálva van soron belül. Kötegelt feldolgozás kapcsolatos tudnivalókat lásd: [Open Data (OData) protokollnak kötegelt feldolgozási](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Minden egyes feladat elvégezni kívánt feldolgozási típusától függően egy vagy több feladat is rendelkezhet. A REST API-n keresztül hozhat létre feladatokat és azok kapcsolódó tevékenységeket a két módszer egyikével: Feladatok lehetnek a tevékenységek navigációs tulajdonság entitások feladat vagy OData kötegelt feldolgozás révén definiálva van soron belül. A Media Services SDK-t használ a kötegelt feldolgozás. Az ebben a cikkben szereplő példák az olvashatóság érdekében, azonban a feladatok is definiálva van soron belül. Kötegelt feldolgozás kapcsolatos tudnivalókat lásd: [Open Data (OData) protokollnak kötegelt feldolgozási](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
 Az alábbi példa bemutatja, hogyan hozhat létre, és a egy feladatot egy feladat beállítása egy adott feloldási és minőségi videó kódolásához közzététele. A következő dokumentáció tartalmazza az összes a [készletek feladat](https://msdn.microsoft.com/library/mt269960) a Media Encoder Standard-feldolgozó által támogatott.  
 
@@ -692,7 +693,7 @@ A következő kód bemutatja, hogyan kérhetnek a kimeneti objektum azonosítój
 
 ## <a id="publish_get_urls"></a>Tegye közzé az adategységet, és a streamelési és a progresszív letöltési URL-cím, a REST API-val
 
-Egy adategység továbbításához vagy letöltéséhez először a „közzététele” szükséges, egy kereső létrehozásával. A keresők biztosítják az adategységben található fájlokhoz való hozzáférést. A Media Services kétféle keresőtípust támogat: az OnDemandOrigin keresők médiatartalmak továbbításához használatosak (például MPEG DASH, HLS vagy Smooth Streaming), a hozzáférési jogosultságkód (SAS)-keresők pedig médiafájlok letöltéséhez. 
+Egy adategység továbbításához vagy letöltéséhez először a „közzététele” szükséges, egy kereső létrehozásával. Az objektumban található fájlokhoz a lokátorok biztosítanak hozzáférést. A Media Services két lokátortípust támogat: OnDemandOrigin keresők médiatartalmak (például MPEG DASH, HLS vagy Smooth Streaming), a hozzáférési Jogosultságkód (SAS) keresők, médiafájlok letöltéséhez használt. 
 
 A keresők létrehozása után létrehozhatja a fájlok továbbításához vagy letöltéséhez használt URL-címeket.
 
@@ -742,7 +743,7 @@ Az alábbi példa bemutatja, hogyan adja meg a AccessPolicy olvasási engedélye
 Ha ez sikeres, a 201 sikeres kódot ad vissza az Ön által létrehozott AccessPolicy entitást leíró. Ezt követően használhatja a AccessPolicy azonosítója, amely tartalmazza a fájl szeretne (például egy kimeneti objektum) létrehozása a lokátor entitás az eszköz az eszközazonosító mellett.
 
 > [!NOTE]
-> Ez a alapvető munkafolyamat megegyezik a fájlt feltölteni, amikor egy eszköz (mint hozzászóló, ez a témakör korábbi részében) fürtjét. Is például a fájlok feltöltése, ha Ön (vagy az ügyfelek) kell azonnal hozzáférhet a fájljaihoz, állítsa a StartTime értéket öt perc alatt az aktuális időpont elé. Ez a művelet szükség, mert előfordulhat óra között az ügyfél és a Media Services döntés. A StartTime érték a következő dátum és idő formátumban kell lennie: éééé-hh-DDTHH:mm:ssZ (például "2014-05-23T17:53:50Z").
+> Ez a alapvető munkafolyamat megegyezik a fájlt feltölteni, amikor egy eszköz (mint hozzászóló, ez a témakör korábbi részében) fürtjét. Is például a fájlok feltöltése, ha Ön (vagy az ügyfelek) kell azonnal hozzáférhet a fájljaihoz, állítsa a StartTime értéket öt perc alatt az aktuális időpont elé. Ez a művelet szükség, mert előfordulhat óra között az ügyfél és a Media Services döntés. A StartTime érték a következő dátum és idő formátumban kell lennie: ÉÉÉÉ-hh-DDTHH:mm:ssZ (például "2014-05-23T17:53:50Z").
 >
 >
 
@@ -915,7 +916,7 @@ A videótovábbításhoz használja az [Azure Media Services Player](http://amsp
 
 Progresszív letöltés teszteléséhez, illessze be egy URL-címet egy böngészőben (például Internet Explorer, Chrome, a Safari).
 
-## <a name="next-steps-media-services-learning-paths"></a>Következő lépések: Media Services képzési tervek
+## <a name="next-steps-media-services-learning-paths"></a>További lépések: Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

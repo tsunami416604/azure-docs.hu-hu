@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6b4acf2a8effaef6d9572a4ca36b29af19f2970d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: f0f3ec25f10faa25b6b90ba4d8114c15d25131c6
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359987"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979139"
 ---
-# <a name="streaming-endpoints-overview"></a>Adatfolyam-Szolgáltatásvégpontok áttekintése 
+# <a name="streaming-endpoints-overview-legacy"></a>Streamelési végpontok áttekintése (örökölt)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -48,7 +48,7 @@ Minden további végpontok: `{EndpointName}-{AccountName}.streaming.mediaservice
 
 A Media Services 2017 január kiadásával kezdődően, két folyamatos átviteli típussal rendelkezik: **Standard szintű** és **prémium**. Ezek a típusok "2.0-s" Streaming endpoint verziójának részét képezik.
 
-Típus|Leírás
+Typo|Leírás
 ---|---
 **Standard**|Ez az alapértelmezett beállítást, akkor működik a legtöbb forgatókönyv esetében.<br/>Ezzel a beállítással meghatározott/korlátozott SLA-t kap, első 15 nap elindítása után a tartalomstreameléshez használt streamvégpont ingyenes.<br/>Ha egynél több streamvégpontok, csak az elsőt díjmentes az első 15 nap során, a többi számítjuk fel, amint elindítani ezeket. <br/>Vegye figyelembe, hogy ingyenes próbaverziója csak érvényes újonnan létrehozott media services-fiókok és az alapértelmezett streamvégpontot. Meglévő streamvégpontok, és emellett létrehozott streamelési végpontok nem tartalmazza az ingyenes próbaidőszak még frissíti őket 2.0-s verzió vagy 2.0-s verzióját, a létrehozásuk.
 **Prémium**|Ez a beállítás akkor megfelelő szakmai újabb skálázási vagy vezérlőelem igénylő forgatókönyvek esetén.<br/>Változó SLA-t, amely prémium szintű streamelési egységek (SU) kapacitást alapul, a dedikált streamvégpontok élő izolált környezetben található, és ne kelljen az erőforrásokhoz.
@@ -71,7 +71,7 @@ Ha a **verzió "1.0"** streamvégpont rendelkezik > = 1 prémium szintű streame
 
 ### <a name="versions"></a>Verziók
 
-|Típus|StreamingEndpointVersion|ScaleUnits|Tartalomkézbesítési hálózat (CDN)|Számlázás|SLA| 
+|Typo|StreamingEndpointVersion|ScaleUnits|Tartalomkézbesítési hálózat (CDN)|Számlázás|SLA| 
 |--------------|----------|-----------------|-----------------|-----------------|-----------------|    
 |Klasszikus|1.0|0|NA|Ingyenes|NA|
 |Standard szintű streamvégpont|2.0|0|Igen|Díjköteles|Igen|

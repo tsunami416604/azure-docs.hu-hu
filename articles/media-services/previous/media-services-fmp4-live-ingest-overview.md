@@ -4,7 +4,7 @@ description: 'Ez az meghatározás protokoll és formátum: darabolt MP4-alapú 
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 43fac263-a5ea-44af-8dd5-cc88e423b4de
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/08/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 16b8b5a012c5d2073a3472a70cf2064b8b0e59cd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228878"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984834"
 ---
-# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Specifikáció: darabolt MP4 élő az Azure Media Services feldolgozása
+# <a name="azure-media-services-fragmented-mp4-live-ingest-specification-legacy"></a>Az Azure Media Services darabolt MP4 élő feldolgozása specification (örökölt)
+
 Ez az meghatározás protokoll és formátum: darabolt MP4-alapú élő streamelési támogatunk az Azure Media Services ismerteti. Media Services élő streamelési szolgáltatás, amellyel az ügyfelek által az Azure-t a felhőplatform az élő események streamelése és valós időben tartalom biztosít. Ez a dokumentum is ismerteti, ajánlott eljárásokat, amellyel hatékonyan redundáns és robusztus élő betöltési mechanizmusokat.
 
 ## <a name="1-conformance-notation"></a>1. Megfelelési jelöléssel
@@ -82,17 +83,17 @@ Videó – 3000 KB/s, 1 500 kbps, 750 KB/s
 
 Hang – 128 kb/s
 
-### <a name="option-1-all-tracks-in-one-stream"></a>1. lehetőség: Az összes nyomon követi a több adatfolyam
+### <a name="option-1-all-tracks-in-one-stream"></a>Option 1: Az összes nyomon követi a több adatfolyam
 Ezt a beállítást, az egyetlen kódoló állít elő, az összes hang/kép nyomon követi, és ezután be egy darabolt MP4 bitstream bundles. A darabolt MP4 bitstream egyetlen HTTP POST-kapcsolaton keresztül elküldi. Ebben a példában csak egy stream az élő bemutató van.
 
 ![Adatfolyam-egy nyomon követése][image2]
 
-### <a name="option-2-each-track-in-a-separate-stream"></a>2. lehetőség: Minden egyes nyomon követése egy külön Stream
+### <a name="option-2-each-track-in-a-separate-stream"></a>Option 2: Az önálló stream minden egyes nyomon követése
 Ezt a beállítást a kódoló egy követése beteszi egyes töredék MP4 bitstream, és majd közzéteszi a Streamek mindegyike külön HTTP-kapcsolaton keresztül. Ez elvégezhető Encoder egy vagy több kódolókkal történő továbbítását. Az élő betöltési az élő bemutató látja, mint négy Streamek összetevői.
 
 ![Az elkülönített Streamek nyomon követi][image3]
 
-### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>3. lehetőség: A legalacsonyabb MP4 videó nyomon követése az hangsávra csomagot egy adatfolyamba való
+### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>3. lehetőség: A legalacsonyabb MP4 videó nyomon követése be egy stream-csomag hangsávra
 Ez esetben az ügyfél úgy dönt, hogy a hangsávot a legalacsonyabb sávszélességű, MP4 videó nyomon követése a csomagot a egy töredék MP4 bitstream, és hagyja a többi két videó nyomon követi, külön Streamek. 
 
 ![Adatfolyam-hang és videó nyomon követi][image4]

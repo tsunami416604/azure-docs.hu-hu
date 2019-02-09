@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 1370f541f8913d86db948a3165d6660a8cd66528
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f29c995c4fb4a1e87c95295779ff83dd133ac61c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963504"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984392"
 ---
 # <a name="custom-script-extension-for-windows"></a>A Windows egyéni szkriptek futtatására szolgáló bővítmény
 
@@ -31,7 +31,7 @@ Ez a dokumentum részletesen használata az egyéni Szkriptbővítmény használ
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!NOTE]  
-> Ne használja az Update-AzureRmVM futtatható a virtuális géppel azonos a paraméterként, mert maga a vár az egyéni szkriptek futtatására szolgáló bővítmény.  
+> Ne használjon egyéni szkriptek futtatására szolgáló bővítmény óta magát a vár az Update-azvm parancsmag futtatásához a virtuális géppel azonos a paraméterként.  
 >   
 > 
 
@@ -116,7 +116,7 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 | fileUris (például:) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tömb |
 | időbélyegző (például:) | 123456789 | 32 bites egész szám |
 | commandToExecute (például:) | PowerShell - ExecutionPolicy Unrestricted - fájl konfigurálása music-app.ps1 | sztring |
-| storageAccountName (például:) | examplestorageacct | sztring |
+| storageAccountName (e.g) | examplestorageacct | sztring |
 | storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
 
 >[!NOTE]
@@ -140,15 +140,15 @@ Nyilvános beállításokat a virtuális gép, ahol a parancsfájl végrehajtás
 
 Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A JSON-séma, amely az előző szakaszban részletes az egyéni szkriptek futtatására szolgáló bővítmény futtatása során egy Azure Resource Manager-sablon üzembe helyezése Azure Resource Manager-sablon is használható. A következő példák bemutatják, hogyan használja az egyéni szkriptek futtatására szolgáló bővítmény:
 
-* [Oktatóanyag: Virtuálisgép-bővítmények az Azure Resource Manager-sablonok üzembe helyezése](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Oktatóanyag: Az Azure Resource Manager-sablonok virtuálisgép-bővítmények telepítése](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
 * [A Windows és az Azure SQL Database két szintű alkalmazás üzembe helyezése](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>PowerShell környezetben végzett telepítés
 
-A `Set-AzureRmVMCustomScriptExtension` parancs használható az egyéni szkriptek futtatására szolgáló bővítmény hozzáadása egy meglévő virtuális gépet. További információkért lásd: [Set-AzureRmVMCustomScriptExtension](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmcustomscriptextension).
+A `Set-AzVMCustomScriptExtension` parancs használható az egyéni szkriptek futtatására szolgáló bővítmény hozzáadása egy meglévő virtuális gépet. További információkért lásd: [Set-AzVMCustomScriptExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmcustomscriptextension).
 
 ```powershell
-Set-AzureRmVMCustomScriptExtension -ResourceGroupName myResourceGroup `
+Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
     -VMName myVM `
     -Location myLocation `
     -FileUri myURL `
@@ -173,7 +173,7 @@ $storagekey = "1234ABCD"
 $ProtectedSettings = @{"storageAccountName" = $storageaccname; "storageAccountKey" = $storagekey; "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File 1_Add_Tools.ps1"};
 
 #run command
-Set-AzureRmVMExtension -ResourceGroupName myRG `
+Set-AzVMExtension -ResourceGroupName myRG `
     -Location myLocation ` 
     -VMName myVM ` 
     -Name "buildserver1" ` 
@@ -190,7 +190,7 @@ Ebben a példában érdemes helyi SMB-kiszolgáló használata a parancsfájl he
 ```powershell
 $ProtectedSettings = @{"commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File \\filesvr\build\serverUpdate1.ps1"};
  
-Set-AzureRmVMExtension -ResourceGroupName myRG 
+Set-AzVMExtension -ResourceGroupName myRG 
     -Location myLocation ` 
     -VMName myVM ` 
     -Name "serverUpdate" 
@@ -213,7 +213,7 @@ Ha azt szeretné, az egyéni szkriptek futtatására szolgáló bővítmény fut
 Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure PowerShell-modul segítségével. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot:
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 Bővítmény végrehajtás kimenetének a cél virtuális gépen a következő könyvtárban található fájlokat a rendszer naplózza.

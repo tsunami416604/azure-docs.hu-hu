@@ -10,18 +10,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 344b049c46243c06c32ed061410f48f71bc70f54
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4d336f657baef99d97568ba722e64a1f4440367f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580943"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984579"
 ---
-# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Előfizetések Azure-tevékenységnaplóinak gyűjtése a Log Analyticsbe
+# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions-in-different-azure-active-directory-tenants"></a>Az Azure-tevékenységnaplóinak gyűjtése a Log Analytics az Azure Active Directory-bérlők különböző előfizetésekben
 
-Ez a cikk részletesen bemutat egy módszert az Azure-tevékenységnaplók Log Analytics-munkaterületre való gyűjtésére a Logic Apps Azure Log Analytics Data Collector-összekötőjének használatával. Akkor használja a cikkben ismertetett folyamatot, ha egy másik Azure Active Directoryba kell naplókat küldenie. Például ha felügyelt szolgáltatást kínál, előfordulhat, hogy tevékenységnaplókat szeretne gyűjteni az egyik ügyfél előfizetéséből, és a saját előfizetése Log Analytics-munkaterületén szeretné tárolni azokat.
+Ez a cikk részletesen bemutat egy módszert az Azure-tevékenységnaplók Log Analytics-munkaterületre való gyűjtésére a Logic Apps Azure Log Analytics Data Collector-összekötőjének használatával. Ebben a cikkben a folyamat használata, amikor szüksége van egy munkaterülethez egy másik Azure Active Directory-bérlőben található naplók elküldése. Például ha felügyelt szolgáltatást kínál, előfordulhat, hogy tevékenységnaplókat szeretne gyűjteni az egyik ügyfél előfizetéséből, és a saját előfizetése Log Analytics-munkaterületén szeretné tárolni azokat.
 
 Ha a Log Analytics-munkaterület ugyanabban az Azure-előfizetésben, vagy egy másik előfizetésben, de ugyanabban az Azure Active Directoryban található, az Azure-tevékenységnaplók gyűjtéséhez kövesse az [Azure-tevékenységnapló megoldás](collect-activity-logs.md) című cikkben ismertetett lépéseket.
 

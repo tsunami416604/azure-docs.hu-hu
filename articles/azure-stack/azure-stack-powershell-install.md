@@ -3,7 +3,7 @@ title: Az Azure Stack PowerShell telepítése |} A Microsoft Docs
 description: Ismerje meg az Azure Stack PowerShell telepítése.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 01/17/2018
-ms.author: sethm
+ms.date: 02/08/2019
+ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 01/17/2018
-ms.openlocfilehash: 7909fd3c7eba4ada9dc74e2eada019327d054fee
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: f249f5e975ce046a3e19da93534d99ff675b8391
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240506"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961482"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Az Azure Stack PowerShell telepítése
 
@@ -28,7 +28,7 @@ ms.locfileid: "55240506"
 
 Dolgozunk a felhőben, telepítenie kell az Azure Stack-kompatibilis PowerShell-modulok. Keresztül szolgáltatás engedélyezve van a kompatibilitási *API profilok*.
 
-API-profilok kezeléséhez az Azure és az Azure Stack közötti tartalmaznak. Egy API-verzióprofil egy Azure Resource Manager PowerShell-modulok az adott API-verziókat. Minden felhőalapú platform a támogatott API-verzióprofilok készletével rendelkezik. Például Azure Stack is támogatja a felülírás Profilverzió például **2018-03-01-hibrid**. Amikor telepít egy profilt, az Azure Resource Manager PowerShell-modulok, amelyek megfelelnek a megadott profil vannak telepítve.
+API-profilok kezeléséhez az Azure és az Azure Stack közötti tartalmaznak. Egy API-verzióprofil egy Azure Resource Manager PowerShell-modulok az adott API-verziókat. Minden felhőalapú platform a támogatott API-verzióprofilok készletével rendelkezik. Például az Azure Stack egy adott profil verziót támogatja például **2.4.0**. Amikor telepít egy profilt, az Azure Resource Manager PowerShell-modulok, amelyek megfelelnek a megadott profil vannak telepítve.
 
 Azure Stack kompatibilis PowerShell-modulok az internethez csatlakoztatott, részben csatlakoztatva vagy leválasztott forgatókönyvek is telepítheti. Ez a cikk végigvezeti a részletes utasításokat az Azure Stack PowerShell telepítése az ilyen feladatokhoz szükséges.
 
@@ -51,7 +51,7 @@ Mielőtt elkezdené, az Azure Stack és a PowerShell, a következő előfeltéte
 
 Ha egy adattár, regisztrálva van a PSGallery ellenőrzése.
 
-> [!Note]
+> [!Note]  
 > Ezt a lépést Internet-hozzáférést igényel.
 
 Nyisson meg egy rendszergazda jogú PowerShell-parancssort, és futtassa a következő parancsmagokat:
@@ -87,41 +87,28 @@ A szükséges verzió telepítése előtt győződjön meg arról, hogy távolí
 
 Az Azure Stack igényel a **2018-03-01-hibrid** API-verzióprofil az Azure Stack 1808 vagy újabb verziójára. A profil telepítésével érhető el a **AzureRM.Bootstrapper** modul. Emellett az AzureRM-modulok kell is telepíti az Azure Stack-specifikus PowerShell-modulok. Az API-verzióprofil és van szüksége az Azure Stack PowerShell-modulok függ az Azure Stack verzióját a rendszer futó.
 
+Telepítési három lépésből áll:
+
+1. Azure Stack verziójától függően az Azure Stack PowerShell telepítése
+2. További tárolási szolgáltatások engedélyezése
+3. Erősítse meg a PowerShell telepítése
+
+### <a name="install-azure-stack-powershell"></a>Az Azure Stack PowerShell telepítése
+
 Futtassa a következő PowerShell-parancsfájl ezeket a modulokat a fejlesztői munkaállomáson telepítendő:
 
-- Az Azure Stack 1811 vagy újabb verziója.
+- Az Azure Stack 1901 vagy újabb verziója.
 
     ```PowerShell
-    # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
-    Install-Module -Name AzureRm.BootStrapper
-
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-    Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
-
-    Install-Module -Name AzureStack -RequiredVersion 1.6.0
+    Install-Module AzureRM -RequiredVersion 2.4.0
+    Install-Module -Name AzureStack -RequiredVersion 1.7.0
     ```
 
-    Szeretné, hogy a további tárolási funkciók (csatlakoztatott szakaszban említett), használja a letöltési és a következő csomagok telepítéséhez.
+    > [!Note]  
+    > Az Azure Stack modul 1.7.0-ás verzió használhatatlanná tévő változás történik. Migrálhat az Azure Stack 1.6.0-s tekintse meg a [áttelepítési útmutató](https://aka.ms/azspshmigration170).
 
-    ```PowerShell
-    # Install the Azure.Storage module version 4.5.0
-    Install-Module -Name Azure.Storage -RequiredVersion 4.5.0 -Force -AllowClobber
-
-    # Install the AzureRm.Storage module version 5.0.4
-    Install-Module -Name AzureRM.Storage -RequiredVersion 5.0.4 -Force -AllowClobber
-
-    # Remove incompatible storage module installed by AzureRM.Storage
-    Uninstall-Module Azure.Storage -RequiredVersion 4.6.1 -Force
-
-    # Load the modules explicitly specifying the versions
-    Import-Module -Name Azure.Storage -RequiredVersion 4.5.0
-    Import-Module -Name AzureRM.Storage -RequiredVersion 5.0.4
-    ```
-
-> [!Note]
-> Frissítése az Azure PowerShell-lel a **2017-03-09-profile** való **2018-03-01-hibrid**, tekintse át a [áttelepítési útmutató](https://github.com/azure/azure-powershell/blob/AzureRM/documentation/migration-guides/Stack/migration-guide.2.3.0.md).
-
-- Az Azure Stack 1811 vagy újabb verziója.
+- Az Azure Stack 1811 vagy valamely korábbi rendszerrel.
 
     ```PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
@@ -145,6 +132,30 @@ Futtassa a következő PowerShell-parancsfájl ezeket a modulokat a fejlesztői 
     Install-Module -Name AzureStack -RequiredVersion 1.5.0
     ```
 
+> [!Note]  
+> Frissítése az Azure PowerShell-lel a **2.3.0-át** (is jelzi a **2017-03-09-profile**) való **2.4.0**, tekintse át a [áttelepítési útmutató](https://github.com/azure/azure-powershell/blob/AzureRM/documentation/migration-guides/Stack/migration-guide.2.3.0.md).
+
+### <a name="enable-additional-storage-features"></a>További tárolási szolgáltatások engedélyezése
+
+Szeretné, hogy a további tárolási funkciók (csatlakoztatott szakaszban említett), használja a letöltési és a következő csomagok telepítéséhez.
+
+```PowerShell
+# Install the Azure.Storage module version 4.5.0
+Install-Module -Name Azure.Storage -RequiredVersion 4.5.0 -Force -AllowClobber
+
+# Install the AzureRm.Storage module version 5.0.4
+Install-Module -Name AzureRM.Storage -RequiredVersion 5.0.4 -Force -AllowClobber
+
+# Remove incompatible storage module installed by AzureRM.Storage
+Uninstall-Module Azure.Storage -RequiredVersion 4.6.1 -Force
+
+# Load the modules explicitly specifying the versions
+Import-Module -Name Azure.Storage -RequiredVersion 4.5.0
+Import-Module -Name AzureRM.Storage -RequiredVersion 5.0.4
+```
+
+### <a name="confirm-the-installation-of-powershell"></a>Erősítse meg a PowerShell telepítése
+
 Erősítse meg a telepítést a következő parancs futtatásával:
 
 ```PowerShell
@@ -158,28 +169,34 @@ Ha a telepítés sikeres, a kimenetben az AzureRM- és AzureStack modulok jelenn
 
 Leválasztott forgatókönyvekben először töltse le a PowerShell-modulok olyan gépre, amely rendelkezik internetkapcsolattal, és utána az Azure Stack Development Kit telepítéséhez.
 
-Jelentkezzen be a számítógépre az internetkapcsolattal rendelkező, és az Azure Resource Manager és az AzureStack-csomagok letöltése, Azure Stack verziójától függően az alábbi parancsfájlok használata:
+Jelentkezzen be a számítógépre az internetkapcsolattal rendelkező, és az Azure Resource Manager és az AzureStack-csomagok letöltése, Azure Stack verziójától függően az alábbi parancsfájlok használatával.
 
-  - Az Azure Stack 1811 vagy újabb verziója.
+Telepítés négy lépésből áll:
+
+1. Csatlakoztatott gépek az Azure Stack PowerShell telepítése
+2. További tárolási szolgáltatások engedélyezése
+3. A PowerShell-csomagok a kapcsolat nélküli munkaállomáson átviteli
+4. Erősítse meg a PowerShell telepítése
+
+
+### <a name="install-azure-stack-powershell"></a>Az Azure Stack PowerShell telepítése
+
+- Az Azure Stack 1901 vagy újabb verziója.
 
     ```PowerShell
     Import-Module -Name PowerShellGet -ErrorAction Stop
     Import-Module -Name PackageManagement -ErrorAction Stop
 
     $Path = "<Path that is used to save the packages>"
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.4.0
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.0
     ```
 
-    Szeretné, hogy a további tárolási funkciók (csatlakoztatott szakaszban említett), használja a letöltési és a következő csomagok telepítéséhez.
+    > [!Note]  
+    > Az Azure Stack modul 1.7.0-ás verzió használhatatlanná tévő változás történik. 1.2.9-es migrálhat 1.6.0-s tekintse meg a [áttelepítési útmutató](https://github.com/Azure/azure-powershell/tree/AzureRM/documentation/migration-guides/Stack).
 
-    ```PowerShell
-    $Path = "<Path that is used to save the packages>"
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azure.Storage -Path $Path -Force -RequiredVersion 4.5.0
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRm.Storage -Path $Path -Force -RequiredVersion 5.0.4
-    ```
 
-  - Az Azure Stack 1811 vagy újabb verziója.
+  - Az Azure Stack 1811 vagy valamely korábbi rendszerrel.
 
     ```PowerShell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -201,11 +218,23 @@ Jelentkezzen be a számítógépre az internetkapcsolattal rendelkező, és az A
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
     ```
 
-2. Másolja a letöltött csomagokat egy USB-eszközt.
+### <a name="enable-additional-storage-features"></a>További tárolási szolgáltatások engedélyezése
 
-3. Jelentkezzen be a munkaállomás, és másolja a csomagokat az USB-eszközt egy olyan helyre a munkaállomáson.
+Szeretné, hogy a további tárolási funkciók (csatlakoztatott szakaszban említett), használja a letöltési és a következő csomagok telepítéséhez.
 
-4. Most már ezen a helyen az alapértelmezett tárház regisztrálja, és a tárházból az AzureRM- és az AzureStack modulok telepítéséhez:
+```PowerShell
+$Path = "<Path that is used to save the packages>"
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azure.Storage -Path $Path -Force -RequiredVersion 4.5.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRm.Storage -Path $Path -Force -RequiredVersion 5.0.4
+```
+
+### <a name="add-your-packages-to-your-workstation"></a>A csomagok hozzáadása a munkaállomáson
+
+1. Másolja a letöltött csomagokat egy USB-eszközt.
+
+2. Jelentkezzen be a kapcsolat nélküli munkaállomáson, és másolja a csomagokat az USB-eszközt egy olyan helyre a munkaállomáson.
+
+3. Most már ezen a helyen az alapértelmezett tárház regisztrálja, és a tárházból az AzureRM- és az AzureStack modulok telepítéséhez:
 
    ```PowerShell
    #requires -Version 5
@@ -222,6 +251,15 @@ Jelentkezzen be a számítógépre az internetkapcsolattal rendelkező, és az A
 
    Install-Module -Name AzureStack -Repository $RepoName
    ```
+
+### <a name="confirm-the-installation-of-powershell"></a>Erősítse meg a PowerShell telepítése
+
+Erősítse meg a telepítést a következő parancs futtatásával:
+
+```PowerShell
+Get-Module -Name "Azure*" -ListAvailable
+Get-Module -Name "Azs*" -ListAvailable
+```
 
 ## <a name="6-configure-powershell-to-use-a-proxy-server"></a>6. Proxykiszolgáló használata a PowerShell konfigurálása
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-parancsfájl minta - példány (áthelyezése) által kezelt lemezeken ugyanazon vagy másik előfizetésbe |} Microsoft Docs
-description: Az Azure PowerShell-parancsfájl minta - példány (áthelyezése) által kezelt lemezeken ugyanazon vagy másik előfizetésbe
+title: Az Azure PowerShell-Példaszkript – felügyelt azonos vagy eltérő előfizetéshez lemezek másolása (áthelyezése) |} A Microsoft Docs
+description: Az Azure PowerShell-Példaszkript – felügyelt azonos vagy eltérő előfizetéshez lemezek másolása (áthelyezése)
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,40 +15,42 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: a14b25236fc233ef7b98b29e62a1270c5e4d8f53
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: b337fb5dd74889c6b15e9fbbbbd684859bed90b0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23879630"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980125"
 ---
-# <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Felügyelt lemezeket másolja a ugyanahhoz az előfizetéshez vagy másik előfizetést, a PowerShell használatával
+# <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Felügyelt lemezek másolása a ugyanahhoz az előfizetéshez vagy a PowerShell-lel másik előfizetésre
 
-Ez a parancsfájl egy létező felügyelt lemezes másolatot készít a ugyanahhoz az előfizetéshez vagy másik előfizetést. Az új lemez ugyanabban a régióban, mint a szülő kezelt lemez jön létre.   
+Ez a szkript létrehoz egy olyan meglévő felügyelt lemezről példányát ugyanahhoz az előfizetéshez vagy másik előfizetést. Az új lemez jön létre a szülő felügyelt lemez ugyanabban a régióban.   
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
+## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.ps1 "Copy managed disk")]
 
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat egy új kezelt lemez létrehozása a célként megadott előfizetés azonosítóját felügyelt lemezt használja. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja egy új felügyelt lemez létrehozásához a célul szolgáló előfizetésben a forrásul szolgáló felügyelt lemez azonosítója alapján. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Új AzureRmDiskConfig](/powershell/module/azurerm.compute/New-AzureRmDiskConfig) | A lemez létrehozásához használt lemezkonfiguráció hoz létre. Ez magában foglalja az erőforrás-azonosítót a szülőlemezt, és a helyre, amely ugyanaz, mint a szülő lemez helyét.  |
-| [Új AzureRmDisk](/powershell/module/azurerm.compute/New-AzureRmDisk) | Lemezkonfiguráció, a lemez neve és a paraméterként erőforráscsoport-név használatával lemezt hozott létre. |
+| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Létrehoz egy lemezkonfigurációt lemezlétrehozáshoz. Az erőforrás-azonosítóját a szülőlemezt és a helyet, hogy ugyanaz, mint a szülőlemezt helyét tartalmazza.  |
+| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Létrehoz egy lemezt a paraméterként megadott lemezkonfiguráció, lemeznév és erőforráscsoport-név alapján. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[A felügyelt lemezes virtuális gép létrehozása](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Virtuális gép létrehozása felügyelt lemezből](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Az Azure PowerShell modul további információkért lásd: [Azure PowerShell dokumentációs](/powershell/azure/overview).
+Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 
-További virtuális gép PowerShell-parancsfájl példák találhatók a [Azure Windows virtuális dokumentációját](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+A virtuális gépekhez kapcsolódó további PowerShell-példaszkripteket az [Azure Windows rendszerű virtuális gépekre vonatkozó dokumentációjában](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) találhat.

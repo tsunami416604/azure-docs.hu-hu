@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 71330e72ef27b62472622472b37e2ec8c78211d7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: b121996530ea0618fc757f1ae12dfafde10ed7bb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075566"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979377"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Windows-aktiválás sikertelen, a kényszerített bújtatás forgatókönyvben
 
@@ -37,19 +37,21 @@ Az Azure Windows virtuális gépek az Azure KMS-kiszolgálóhoz Windows-aktivál
 
 A probléma megoldásához használja az Azure egyéni útvonalat az útvonal aktiválási adatforgalom Azure KMS-kiszolgálón.
 
-Az Azure globális felhőalapú a KMS-kiszolgáló IP-cím 23.102.135.246 áll. A DNS-név kms.core.windows.net. Ha például az Azure Germany más az Azure platformon használja, a megfelelő KMS-kiszolgáló IP-címét kell használnia. További információkért lásd az alábbi táblázatot:
+Az Azure globális felhőalapú a KMS-kiszolgáló IP-cím 23.102.135.246 áll. Its DNS name is kms.core.windows.net. Ha például az Azure Germany más az Azure platformon használja, a megfelelő KMS-kiszolgáló IP-címét kell használnia. További információkért lásd az alábbi táblázatot:
 
-|Platform| A KMS-DNS|A KMS-IP|
+|Platform| KMS DNS|KMS IP|
 |------|-------|-------|
-|Az Azure globális|KMS.Core.Windows.NET|23.102.135.246|
-|Azure Germany|KMS.Core.cloudapi.de|51.4.143.248|
-|Amerikai Egyesült Államok kormánya által használt Azure|KMS.Core.usgovcloudapi.NET|23.97.0.13|
-|Azure China 21Vianet|KMS.Core.chinacloudapi.CN|42.159.7.249|
+|Azure Global|kms.core.windows.net|23.102.135.246|
+|Azure Germany|kms.core.cloudapi.de|51.4.143.248|
+|Amerikai Egyesült Államok kormánya által használt Azure|kms.core.usgovcloudapi.net|23.97.0.13|
+|Azure China 21Vianet|kms.core.chinacloudapi.cn|42.159.7.249|
 
 
 Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
 ### <a name="for-resource-manager-vms"></a>Resource Manager-beli virtuális gépek
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 1. Nyissa meg az Azure Powershellt, majd [jelentkezzen be az Azure-előfizetés](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Futtassa az alábbi parancsot:
@@ -57,15 +59,15 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
     ```powershell
     # First, get the virtual network that hosts the VMs that have activation problems. In this case, we get virtual network ArmVNet-DM in Resource Group ArmVNet-DM:
 
-    $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "ArmVNet-DM" -Name "ArmVNet-DM"
+    $vnet = Get-AzVirtualNetwork -ResourceGroupName "ArmVNet-DM" -Name "ArmVNet-DM"
 
     # Next, create a route table and specify that traffic bound to the KMS IP (23.102.135.246) will go directly out:
 
-    $RouteTable = New-AzureRmRouteTable -Name "ArmVNet-DM-KmsDirectRoute" -ResourceGroupName "ArmVNet-DM" -Location "centralus"
+    $RouteTable = New-AzRouteTable -Name "ArmVNet-DM-KmsDirectRoute" -ResourceGroupName "ArmVNet-DM" -Location "centralus"
 
-    Add-AzureRmRouteConfig -Name "DirectRouteToKMS" -AddressPrefix 23.102.135.246/32 -NextHopType Internet -RouteTable $RouteTable
+    Add-AzRouteConfig -Name "DirectRouteToKMS" -AddressPrefix 23.102.135.246/32 -NextHopType Internet -RouteTable $RouteTable
 
-    Set-AzureRmRouteTable -RouteTable $RouteTable
+    Set-AzRouteTable -RouteTable $RouteTable
     ```
 3. Nyissa meg a virtuális gép, amely rendelkezik az aktiválással kapcsolatos problémák. Használat [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) azt is eléri a KMS-kiszolgáló teszteléséhez:
 

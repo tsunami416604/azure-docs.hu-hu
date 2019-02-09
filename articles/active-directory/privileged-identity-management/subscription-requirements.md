@@ -16,12 +16,12 @@ ms.subservice: pim
 ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ad64fba0288aa5663e008484d6f0d2cbdff0bca6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f6e2042f94ce653c1d569385deddbade548a58b4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187283"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977830"
 ---
 # <a name="license-requirements-to-use-pim"></a>Licenckövetelmények vonatkoznak, miközben a PIM használata
 
@@ -33,6 +33,7 @@ A PIM használatát tervezi, a következő fizetett vagy a próbaverziós licenc
 
 - Prémium szintű Azure AD P2
 - Enterprise Mobility + Security (EMS) E5
+- Microsoft 365 M5
 
 További információkért lásd: [Mi az az Azure Active Directory?](../fundamentals/active-directory-whatis.md).
 
@@ -63,5 +64,6 @@ Ha egy Azure AD Premium P2, EMS E5 vagy próbaverziós licenc lejár, miközben 
 
 ## <a name="next-steps"></a>További lépések
 
+- [A PIM telepítése](pim-deployment-plan.md)
 - [Ismerkedés a PIM-mel](pim-getting-started.md)
 - [Nem kezelheti a PIM szerepkörök](pim-roles.md)

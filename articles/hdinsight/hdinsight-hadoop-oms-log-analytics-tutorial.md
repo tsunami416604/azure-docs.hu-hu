@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2af68c0b9deb9d5b065f5fae42cf4bf927f0c671
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 2f45b8e5a8fbf06a86a16336b825d185baf4976b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386454"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959671"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>HDInsight-fürtök figyelése az Azure Log Analytics használatával
 
@@ -46,9 +46,19 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Ebben a szakaszban konfigurálja egy meglévő HDInsight Hadoop-fürtöt az Azure Log Analytics-munkaterületet a figyelheti a feladatokat, hibakeresési naplók, stb.
 
-1. Nyisson meg egy HDInsight-fürtön az Azure Portalon.
-2. A bal oldali panelen válassza ki a **figyelés**.
-3. A jobb oldali ablaktáblán válassza ki a **engedélyezése**, egy meglévő Log Analytics-munkaterületet, majd válassza ki és **mentése**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+
+2. A bal oldali menüben válassza ki a **minden szolgáltatás**.
+
+3. A **ANALYTICS**válassza **HDInsight-fürtök**.
+
+4. A bal oldali alatt **figyelés**válassza **Operations Management Suite**.
+
+5. A fő nézetből alatt **OMS-Monitorozással**válassza **engedélyezése**.
+
+6. Az a **válasszon ki egy munkaterületet** legördülő listára, válassza ki egy meglévő Log Analytics-munkaterületet.
+
+7. Kattintson a **Mentés** gombra.
 
     ![Engedélyezze a monitorozást az HDInsight-fürtök](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "engedélyezze a monitorozást az HDInsight-fürtök")
 

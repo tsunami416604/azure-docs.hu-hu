@@ -12,16 +12,16 @@ ms.topic: overview
 ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fc18353ff89f8613847c977066e51620fb3e834f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: bc468f328b8bd6066687996f5e74cfe867a4fc87
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494664"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984637"
 ---
 # <a name="what-is-hybrid-identity"></a>Mi az a hibrid identitás? 
 
-Ma cégek és vállalatok egy egyre több és több helyszíni vegyesen program, és a felhőbeli alkalmazásokhoz.  Felhasználók igényelnek, ezeknek az alkalmazásoknak hozzáférést a helyszínen és a felhőben. Ez a követelmény kihívást a forgatókönyv elérhetetlenné válik. 
+Ma, a vállalatok és a vállalatok egyre több és több helyszíni vegyesen, és a felhőbeli alkalmazásokhoz.  Felhasználók igényelnek, ezeknek az alkalmazásoknak hozzáférést a helyszínen és a felhőben. Ez a követelmény kihívást a forgatókönyv elérhetetlenné válik. 
 
 A Microsoft identitáskezelési megoldások kiterjednek a helyszíni és felhőalapú képességek.  Ezeket a megoldásokat hozzon létre egy általános felhasználói identitást, hitelesítés és engedélyezés az összes erőforráshoz, helytől függetlenül. Erre **hibrid identitás**.
 
@@ -42,14 +42,14 @@ Szeretnénk bemutatni néhány gyakori hibrid identitás- és hozzáféréskezel
 |Cél:|PHS és SSO<sup>1</sup>| PTA és SSO<sup>2</sup> | AD FS<sup>3</sup>| 
 |-----|-----|-----|-----| 
 |A helyszíni Active Directoryban létrehozott új felhasználói, kapcsolattartói és csoportfiókok automatikus szinkronizálása a felhőbe|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|A bérlő beállítása hibrid Office 365-forgatókönyvekhez|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|A felhőszolgáltatásokba való bejelentkezés engedélyezése a felhasználók helyszíni jelszavaival|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|A vállalati hitelesítő adatokat használó egyszeri bejelentkezés implementálása|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|  
-|Gondoskodás arról, hogy a jelszókivonatok ne tárolódjanak a felhőben| |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Felhőbeli többtényezős hitelesítési megoldások engedélyezése| |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Helyszíni többtényezős hitelesítési megoldások engedélyezése| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Intelligens kártyával végzett hitelesítés támogatása a felhasználók számára<sup>4</sup>| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Jelszólejárati értesítések megjelenítése az Office portálon és a Windows 10 asztali verziójában| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Állítsa be a hibrid forgatókönyvek Office 365-bérlőhöz.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Engedélyezze a felhasználók bejelentkezhet és elérheti a cloud services használatával a helyszíni jelszavát.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Bemutatjuk az egyszeri bejelentkezést a vállalati hitelesítő adatok.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|  
+|Győződjön meg arról, nincs jelszókivonatokat a felhőben vannak tárolva.| |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Felhőmegoldások a multi-factor authentication szolgáltatás engedélyezése.| |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Engedélyezze a helyszíni többtényezős hitelesítési megoldásokat.| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Intelligens kártyás hitelesítés támogatása a felhasználók számára. <sup>4</sup>| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Jelszó lejárati értesítés megjelenítése, az Office portálon és a Windows 10 asztali verzió.| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
 
 > <sup>1</sup> Jelszókivonat-szinkronizálás egyszeri bejelentkezéssel. 
 > 

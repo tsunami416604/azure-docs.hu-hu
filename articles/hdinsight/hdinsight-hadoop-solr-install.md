@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 749a599936825f5f69ae18affad0fa89a4f1118f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 95b5bbb6c227b5001865a751abddddc4924e7b2d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259631"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981077"
 ---
 # <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>Telepítse és Apache Solr használata Windows-alapú HDInsight-fürtökön
 
@@ -46,17 +46,12 @@ A minta parancsfájl a jelen témakörben használt egyedi konfigurációs Solr 
 
     ![Fürt testreszabása Szkriptműveletek használatával](./media/hdinsight-hadoop-solr-install/hdi-script-action-solr.png "Szkriptműveleteket használata a fürt testreszabása")
 
-    <table border='1'>
-        <tr><th>Tulajdonság</th><th>Érték</th></tr>
-        <tr><td>Name (Név)</td>
-            <td>Adja meg a parancsfájlművelet nevét. Ha például <b>Solr telepítése</b>.</td></tr>
-        <tr><td>Szkript URI-ja</td>
-            <td>Adja meg az egységes erőforrás-azonosító (URI) a parancsfájlt, amely a fürt testreszabásához meghívott. Ha például <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
-        <tr><td>Csomóponttípus</td>
-            <td>Adja meg a csomópontok, amelyen fut a testreszabási parancsfájlt. Választhat <b>minden csomópont</b>, <b>csak Átjárócsomópontokhoz</b>, vagy <b>csak a munkavégző csomópontok</b>.
-        <tr><td>Paraméterek</td>
-            <td>Adja meg a paramétereket, ha a parancsfájl által igényelt. A szkriptet a Solr telepítése nem szükséges paramétereket, így is ezt üresen hagyja.</td></tr>
-    </table>
+    |Tulajdonság|Érték|
+    |---|---|
+    |Name (Név)|Adja meg a parancsfájlművelet nevét. Ha például **Solr telepítése**.|
+    |Szkript URI-ja|Adja meg az egységes erőforrás-azonosító (URI) a parancsfájlt, amely a fürt testreszabásához meghívott. Ha például *https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1*|
+    |Csomóponttípus|Adja meg a csomópontok, amelyen fut a testreszabási parancsfájlt. Választhat **minden csomópont**, **csak Átjárócsomópontokhoz**, vagy **csak a munkavégző csomópontok**.
+    |Paraméterek|Adja meg a paramétereket, ha a parancsfájl által igényelt. A szkriptet a Solr telepítése nem szükséges paramétereket, így is ezt üresen hagyja.|
 
     Hozzáadhat több parancsfájlművelet több összetevők telepíthetők a fürtön. Miután hozzáadta a parancsfájlok, kattintson a pipa jelre a fürt létrehozásának megkezdéséhez.
 

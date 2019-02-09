@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 0bb2f3ffb4b615451abc41d0d8945b4b3efdde53
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9a209aaf730b356c8c102eab7a8832ce670204cc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816356"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977747"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Az Azure Stack adatközpont integrációja – végpontok közzététele
 
@@ -38,11 +38,11 @@ Virtuális IP-címek nem jelennek meg, mert azok még nem szükséges a közzét
 |Endpoint (VIP)|DNS host A record|Protokoll|Portok|
 |---------|---------|---------|---------|
 |AD FS|Adfs.*&lt;region>.&lt;fqdn>*|HTTPS|443|
-|Portál (rendszergazda)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015|
+|Portál (rendszergazda)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Adminhosting | *.adminhosting.\<region>.\<fqdn> | HTTPS | 443 |
-|Az Azure Resource Manager (rendszergazda)|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
-|Portál (felhasználó)|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003|
-|Az Azure Resource Manager (felhasználó)|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
+|Az Azure Resource Manager (rendszergazda)|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Portál (felhasználó)|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Az Azure Resource Manager (felhasználó)|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Graph|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Visszavont tanúsítványok listája|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|A TCP ÉS UDP|53|
@@ -79,7 +79,6 @@ Az Azure Stack csak transzparens proxy kiszolgálók támogatja. A központi tel
 |NTP|(IP az NTP-kiszolgáló a megadott központi telepítés)|UDP|123|Nyilvános virtuális IP - / 27-eset|
 |DNS|(IP-megadott DNS-kiszolgáló üzembe helyezéshez)|TCP<br>UDP|53|Nyilvános virtuális IP - / 27-eset|
 |CRL|(A tanúsítvány CRL terjesztési pontok alapján URL)|HTTP|80|Nyilvános virtuális IP - / 27-eset|
-|Infrastruktúra biztonsági mentése|(IP vagy FQDN-jének külső cél fájlkiszolgálón)|SMB|445|Nyilvános infrastruktúra hálózati|
 |LDAP|Graph-integráció a megadott Active Directory-erdő|TCP<br>UDP|389|Nyilvános virtuális IP - / 27-eset|
 |LDAP SSL|Graph-integráció a megadott Active Directory-erdő|TCP|636|Nyilvános virtuális IP - / 27-eset|
 |LDAP GC|Graph-integráció a megadott Active Directory-erdő|TCP|3268|Nyilvános virtuális IP - / 27-eset|
@@ -89,9 +88,6 @@ Az Azure Stack csak transzparens proxy kiszolgálók támogatja. A központi tel
 
 > [!Note]  
 > Kimenő URL-címek az Azure traffic Managerrel a földrajzi hely alapján a legjobb lehetséges csatlakozási elosztott terhelésű rendszer. Az elosztott terhelésű URL-címek betöltése, a Microsoft update, és a háttéralkalmazás végpontjainak módosítása ügyfelek befolyásolása nélkül. A Microsoft nem oszt meg IP-címek listája az elosztott terhelésű URL-címek számára. Használjon olyan eszköz, amely támogatja a szűrést, URL-cím helyett IP-cím alapján.
-
-> [!Note]  
-> A 1809 a biztonsági mentési infrastruktúra-szolgáltatás kommunikál a külső fájlkiszolgáló a nyilvános VIP hálózatra. Mielőtt 1809 a szolgáltatás továbbítani a nyilvános infrastruktúra-hálózaton keresztül. Ha a környezet nem engedélyezi a hozzáférést az infrastruktúra-erőforrások a nyilvános VIP hálózatra, a alkalmazni a legújabb [1809 gyorsjavítás](azure-stack-update-1809.md#post-update-steps) az Azure Stackhez. Ez a gyorsjavítás áthelyezi az nyilvános infrastruktúra-hálózaton a biztonsági mentési infrastruktúra-szolgáltatás. A 1811 Ha gyorsjavítást a 1809, a biztonsági mentési infrastruktúra-szolgáltatás marad a nyilvános infrastruktúra-hálózaton. A gyorsjavítás csak akkor érvényesíthetők, ha a frissítés Visszalépés a szolgáltatás a nyilvános infrastruktúra-hálózathoz.
 
 ## <a name="next-steps"></a>További lépések
 

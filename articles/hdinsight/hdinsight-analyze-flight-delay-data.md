@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 311e2ee65b2c24eb1c288a2161bf371732aea452
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e95440f72580b928cd41b6d03f30459cfb70a510
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817665"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965392"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Repülőjáratok késési adatainak elemzése a HDInsight az Apache Hive használatával
 [Az Apache Hive](https://hive.apache.org/) futó módszert biztosít az [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) feladatok egy SQL-szerű programozási nyelv révén nevű *[HiveQL] [ hadoop-hiveql]*, felé összefoglalójához, lekérdezéséhez és nagy mennyiségű adat elemzéséhez is alkalmazható.
@@ -66,13 +66,13 @@ Ha szeretné megtanulni, hogyan get feltölti az adatokat a saját tárfiókját
 
 Az alábbi táblázat a jelen oktatóanyagban használt fájlokat listázza:
 
-<table border="1">
-<tr><th>Fájlok</th><th>Leírás</th></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>A HiveQL-parancsfájlt használja a Hive-feladatokban. Ez a szkript egy Azure Blob storage-fiókot a nyilvános hozzáférést lett feltöltve. <a href="#appendix-b">"B" függelék</a> utasítások előkészítése és a fájl feltöltése a saját Azure Blob storage-fiókba.</td></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Bemeneti adatokat a Hive-feladatokban. Az adatok egy Azure Blob storage-fiókot a nyilvános hozzáférést lett feltöltve. <a href="#appendix-a">A függelék</a> utasításokat az adatok beolvasásakor, és az adatok feltöltése a saját Azure Blob storage-fiók rendelkezik.</td></tr>
-<tr><td>\tutorials\flightdelays\output</td><td>A Hive-feladat kimeneti elérési útja. Az alapértelmezett tároló kimeneti adatok tárolására szolgál.</td></tr>
-<tr><td>\tutorials\flightdelays\jobstatus</td><td>A Hive feladat állapota mappa az alapértelmezett tároló.</td></tr>
-</table>
+|Fájlok|Leírás|  
+|----|----|   
+|wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql|A HiveQL-parancsfájlt használja a Hive-feladatokban. Ez a szkript egy Azure Blob storage-fiókot a nyilvános hozzáférést lett feltöltve. <a href="#appendix-b">"B" függelék</a> utasítások előkészítése és a fájl feltöltése a saját Azure Blob storage-fiókba.|
+|wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data|Bemeneti adatokat a Hive-feladatokban. Az adatok egy Azure Blob storage-fiókot a nyilvános hozzáférést lett feltöltve. <a href="#appendix-a">A függelék</a> utasításokat az adatok beolvasásakor, és az adatok feltöltése a saját Azure Blob storage-fiók rendelkezik.|
+|\tutorials\flightdelays\output|A Hive-feladat kimeneti elérési útja. Az alapértelmezett tároló kimeneti adatok tárolására szolgál.|
+|\tutorials\flightdelays\jobstatus|A Hive feladat állapota mappa az alapértelmezett tároló.|
+
 
 ## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Fürt létrehozása és a Sqoop és Hive-feladatok futtatása
 Hadoop MapReduce kötegelt feldolgozás. A leginkább költséghatékony módon futtathat Hive-feladatokat, hogy hozzon létre egy fürtöt, a feladat, és törli a feladatot, a feladat befejezése után. A következő szkriptet az egész folyamat magában foglalja.
@@ -250,12 +250,11 @@ Az adatfájl feltöltése és a [HiveQL](https://cwiki.apache.org/confluence/dis
 1. Nyissa meg a [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] (Kutatási és Innovációs Műszaki Felügyelőség, Közlekedési Statisztikai Hivatal) oldalt.
 2. Az oldalon válassza ki a következő értékeket:
 
-    <table border="1">
-    <tr><th>Name (Név)</th><th>Érték</th></tr>
-    <tr><td>Filter Year (Szűrési év)</td><td>2013 </td></tr>
-    <tr><td>Filter Period (Szűrési időszak)</td><td>January</td></tr>
-    <tr><td>Mezők</td><td>*Év*, *FlightDate*, *UniqueCarrier*, *szolgáltatója*, *FlightNum*, *OriginAirportID*, *Forrás*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (a többi mező törlése)</td></tr>
-    </table>
+    |Name (Név)|Érték|
+    |---|---|
+    |Filter Year (Szűrési év)|2013|
+    |Filter Period (Szűrési időszak)|January|
+    |Mezők|*Év*, *FlightDate*, *UniqueCarrier*, *szolgáltatója*, *FlightNum*, *OriginAirportID*, *Forrás*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (a többi mező törlése)|
 
 3. Kattintson a **Letöltés** gombra.
 4. Bontsa ki a fájlt a **C:\Tutorials\FlightDelay\2013Data** mappát. Minden fájlt egy CSV-fájl, és körülbelül 60 GB-nál.
@@ -266,11 +265,10 @@ Az adatfájl feltöltése és a [HiveQL](https://cwiki.apache.org/confluence/dis
 
 1. Készítse elő a paramétereket:
 
-    <table border="1">
-    <tr><th>Változó neve</th><th>Megjegyzések</th></tr>
-    <tr><td>$storageAccountName</td><td>Ahol szeretné feltölteni az adatokat az Azure Storage-fiókhoz.</td></tr>
-    <tr><td>$blobContainerName</td><td>Ahol az adatokat feltölteni kívánt Blob-tárolóban.</td></tr>
-    </table>
+    |Változó neve|Megjegyzések|
+    |---|---|
+    |$storageAccountName|Ahol szeretné feltölteni az adatokat az Azure Storage-fiókhoz.|
+    |$blobContainerName|Ahol az adatokat feltölteni kívánt Blob-tárolóban.|
     
 2. Nyissa meg az Azure PowerShell ISE-ben.
 3. A parancsfájl panelen illessze be az alábbi parancsfájlt:
@@ -375,11 +373,10 @@ A HiveQL parancsok teljes listájáért lásd: [Apache Hive-adatdefiníciós nye
 
 1. Készítse elő a paramétereket:
 
-    <table border="1">
-    <tr><th>Változó neve</th><th>Megjegyzések</th></tr>
-    <tr><td>$storageAccountName</td><td>Az Azure Storage-fiók ahol szeretné feltölteni a HiveQL-parancsfájlt.</td></tr>
-    <tr><td>$blobContainerName</td><td>Ha a HiveQL-parancsfájlt a feltölteni kívánt Blob-tárolóban.</td></tr>
-    </table>
+    |Változó neve|Megjegyzések|
+    |---|---|
+    |$storageAccountName|Az Azure Storage-fiók ahol szeretné feltölteni a HiveQL-parancsfájlt.|
+    |$blobContainerName|Ha a HiveQL-parancsfájlt a feltölteni kívánt Blob-tárolóban.|
     
 2. Nyissa meg az Azure PowerShell ISE-ben.  
 
@@ -564,14 +561,14 @@ A HiveQL parancsok teljes listájáért lásd: [Apache Hive-adatdefiníciós nye
 
 1. Készítse elő a paramétereket:
 
-    <table border="1">
-    <tr><th>Változó neve</th><th>Megjegyzések</th></tr>
-    <tr><td>$sqlDatabaseServerName</td><td>Az Azure SQL adatbázis-kiszolgáló neve. Adja meg, hozzon létre egy új kiszolgálót semmi sem.</td></tr>
-    <tr><td>$sqlDatabaseUsername</td><td>A bejelentkezési név az Azure SQL-kiszolgálóhoz. Ha $sqlDatabaseServerName egy meglévő kiszolgálót, a bejelentkezési nevét és bejelentkezési jelszó segítségével hitelesíti a kiszolgálót. Ellenkező esetben ezek szolgálnak hozzon létre egy új kiszolgálót.</td></tr>
-    <tr><td>$sqlDatabasePassword</td><td>Az Azure SQL adatbázis-kiszolgáló bejelentkezési jelszava.</td></tr>
-    <tr><td>$sqlDatabaseLocation</td><td>Ezt az értéket csak egy új Azure database-kiszolgáló létrehozásakor használja.</td></tr>
-    <tr><td>$sqlDatabaseName</td><td>Az SQL database, a Sqoop feladat AvgDelays-tábla létrehozásához használt. Hagyja üresen HDISqoop nevű adatbázist hoz létre. A tábla neve, a Sqoop feladat kimenetének a AvgDelays. </td></tr>
-    </table>
+    |Változó neve|Megjegyzések|
+    |---|---|
+    |$sqlDatabaseServerName|Az Azure SQL adatbázis-kiszolgáló neve. Adja meg, hozzon létre egy új kiszolgálót semmi sem.|
+    |$sqlDatabaseUsername|A bejelentkezési név az Azure SQL-kiszolgálóhoz. Ha $sqlDatabaseServerName egy meglévő kiszolgálót, a bejelentkezési nevét és bejelentkezési jelszó segítségével hitelesíti a kiszolgálót. Ellenkező esetben ezek szolgálnak hozzon létre egy új kiszolgálót.|
+    |$sqlDatabasePassword|Az Azure SQL adatbázis-kiszolgáló bejelentkezési jelszava.|
+    |$sqlDatabaseLocation|Ezt az értéket csak egy új Azure database-kiszolgáló létrehozásakor használja.|
+    |$sqlDatabaseName|Az SQL database, a Sqoop feladat AvgDelays-tábla létrehozásához használt. Hagyja üresen HDISqoop nevű adatbázist hoz létre. A tábla neve, a Sqoop feladat kimenetének a AvgDelays.|
+
     
 2. Nyissa meg az Azure PowerShell ISE-ben.
 

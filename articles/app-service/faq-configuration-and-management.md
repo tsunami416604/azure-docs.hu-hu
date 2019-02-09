@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 14f74c26822ac1dc9e781ada82809bf3a4166f18
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5ab47165118b68e91c1218be35c6f88aa55350e2
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190901"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982607"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurálás és felügyelet – gyakori kérdések az Azure Web Apps
 
@@ -244,7 +244,7 @@ Az ütemezett webjobs-feladat Cron-kifejezések használatával hozhat létre:
 
 1. Hozzon létre egy settings.job fájlt.
 2. A JSON-fájlban a következők a schedule tulajdonság egy Cron-kifejezés használatával: 
-    ```
+    ```json
     { "schedule": "{second}
     {minute} {hour} {day}
     {month} {day of the week}" }
@@ -270,7 +270,7 @@ Az üzenet azt jelzi, az csalás ellenőrzési folyamat akár 24 óráig is elta
 
 Ha az App Service-tanúsítvány továbbra is jelenjen meg ez az üzenet 24 óra múlva, futtassa a következő PowerShell-parancsfájlt. A parancsfájl kapcsolatba lép a [tanúsítványszolgáltató](https://www.godaddy.com/) közvetlenül a probléma megoldása érdekében.
 
-```
+```powershell
 Connect-AzureRmAccount
 Set-AzureRmContext -SubscriptionId <subId>
 $actionProperties = @{
@@ -312,10 +312,10 @@ Ha ezek a feltételek egyike a alkalmazni, és a probléma tartósan fennáll, k
 
 Tömörítés mindkét a statikus és dinamikus tartalomtípusok bekapcsolásához adja hozzá a következő kódot az alkalmazásszintű web.config fájlba:
 
-```
+```xml
 <system.webServer>
-<urlCompression doStaticCompression="true" doDynamicCompression="true" />
-< /system.webServer>
+    <urlCompression doStaticCompression="true" doDynamicCompression="true" />
+</system.webServer>
 ```
 
 A megadott dinamikus és statikus MIME-típusok tömöríteni kívánt is megadhatja. További információkért lásd: a fórum kérdés válasz [httpCompression beállítások egy egyszerű Azure-webhelyen](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview).

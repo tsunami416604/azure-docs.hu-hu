@@ -7,20 +7,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 1/30/2019
 ms.author: yizhon
-ms.openlocfilehash: b213642b093c3b5f79e5993af91ae51517f09c70
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 0bfba7f923ca394aa29dd907db1b8b1284a605d8
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747959"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981672"
 ---
-# <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Fejlesztés a mobil eszközök Azure IoT SDK-k használatával
-[Az Azure IoT Hub SDK-k](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) első szintű támogatást nyújt a számos népszerű platformokhoz, beleértve a Windows, Linux, OSX, MBED és mobil platformokon, például az Android és IOS rendszerek esetén.  Ahhoz, hogy nagyobb rugalmasságának és szabadságának IoT üzemelő elkötelezettségünk részeként, a Java SDK-t is támogatja [Android dolgot](https://developer.android.com/things/) platform.  A fejlesztők kihasználhatják a dolgok Android operációs rendszer eszköz oldalán előnyeinek használata során [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) a központi üzenetnek számít hub méretezhető több millió egyszerre csatlakoztatott eszközök. 
+# <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Fejlesztés az Azure IoT SDK-k használatával Android dolgot platform
+[Az Azure IoT Hub SDK-k](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) első szintű támogatást nyújt a népszerű platformokhoz, mint a Windows, Linux, OSX, MBED és mobil platformokon, például az Android és IOS rendszerek esetén.  Ahhoz, hogy nagyobb rugalmasságának és szabadságának IoT üzemelő elkötelezettségünk részeként, a Java SDK-t is támogatja [Android dolgot](https://developer.android.com/things/) platform.  A fejlesztők kihasználhatják a dolgok Android operációs rendszer eszköz oldalán előnyeinek használata során [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) a központi üzenetnek számít hub méretezhető több millió egyszerre csatlakoztatott eszközök. 
 
 Ez az oktatóanyag ismerteti, egy eszköz kiszolgálóoldali alkalmazások gépen az Azure IoT-Java SDK használatával Android dolog.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Egy Android dolgot Android dolgot operációs rendszert futtató hardver támogatott.  Követheti [Android dolgot dokumentáció](https://developer.android.com/things/get-started/kits#flash-at) Flash-Android dolog hogyan.  Ellenőrizze, hogy az Android dolgot eszköz csatlakoztatva van például a billentyűzet, megjelenítési és csatlakoztatott egér alapvető perifériák az interneten keresztül.  Ebben az oktatóanyagban a Raspberry Pi 3.
+* Egy Android dolgot Android dolgot operációs rendszert futtató hardver támogatott.  Követheti [Android dolgot dokumentáció](https://developer.android.com/things/get-started/kits#flash-at) Android dolgot operációs rendszer flash való.  Ellenőrizze, hogy az Android dolgot eszköz csatlakoztatva van például a billentyűzet, megjelenítési és csatlakoztatott egér alapvető perifériák az interneten keresztül.  Ebben az oktatóanyagban a Raspberry Pi 3.
 * Legújabb verziójának [Android Studio](https://developer.android.com/studio/)
 * Legújabb verziójának [Git](https://git-scm.com/)
 
@@ -69,12 +69,13 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
     ```
 4.  Az Android Studióban nyissa meg a található "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample" az Android-projekt.
 5.  Nyissa meg gradle.properties fájlt, és cserélje le a "Device_connection_string" az eszköz kapcsolati karakterláncát a korábban feljegyzett.
+    ![A tárház főágába képernyőképe](./media/how-to-android-things/connection-string.png)
 6.  Kattintson a Run - hibakeresés, és válassza ki az eszközt, ezt a kódot a dolgok Android-eszközökre telepíteni kívánt.
 7.  Amikor az alkalmazás sikeresen elindult, megjelenik a dolgok Androidos eszközön futó alkalmazások.  Ez a mintaalkalmazás véletlenszerűen generált hőmérsékletét küld.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
 
-Az XCode-emulátorban futtatott mintaalkalmazás megjeleníti az eszközről küldött üzenetek adatait. Az IoT Hub segítségével is megtekintheti az adatokat a kapott formában. Az IoT Hub CLI-bővítmény csatlakozhat a szolgáltatásoldali **Események** végponthoz az IoT Hubon. A bővítmény fogadja az eszközről a felhőbe irányuló üzeneteket, amelyeket a rendszer a szimulált eszközről küld. Az IoT Hub-háttéralkalmazások általában a felhőben futnak, hogy fogadják és feldolgozzák az eszközről a felhőbe küldött üzeneteket.
+Megtekintheti az adatokat az IoT hub segítségével, kapott formában. Az IoT Hub CLI-bővítmény csatlakozhat a szolgáltatásoldali **Események** végponthoz az IoT Hubon. A bővítmény fogadja az eszközről a felhőbe irányuló üzeneteket, amelyeket a rendszer a szimulált eszközről küld. Az IoT Hub-háttéralkalmazások általában a felhőben futnak, hogy fogadják és feldolgozzák az eszközről a felhőbe küldött üzeneteket.
 
 Futtassa a következő parancsokat az Azure Cloud Shellben úgy, hogy a `YourIoTHubName` helyére az IoT Hub neve kerüljön:
 

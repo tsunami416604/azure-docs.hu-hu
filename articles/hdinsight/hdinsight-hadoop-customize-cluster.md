@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e11ef458fad11f04ce159d5e79c4152d2bd7e4c6
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6f67ad04fed2018ba71dd39ed03c24e6aebecf90
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746783"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984732"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Szkriptműveletek használatával Windows-alapú HDInsight-fürtök testre szabása
 **Parancsfájl-művelet** hívja használhatók [egyéni parancsfájlok](hdinsight-hadoop-script-actions.md) a további szoftverek telepítése egy fürtre a fürt létrehozása során.
@@ -62,17 +62,12 @@ HDInsight számos szkript a következő összetevők telepítése a HDInsight-f�
 
     ![Fürt testreszabása Szkriptműveletek használatával](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "Szkriptműveleteket használata a fürt testreszabása")
 
-    <table border='1'>
-        <tr><th>Tulajdonság</th><th>Érték</th></tr>
-        <tr><td>Name (Név)</td>
-            <td>Adja meg a parancsfájlművelet nevét.</td></tr>
-        <tr><td>Szkript URI-ja</td>
-            <td>Adja meg az URI-t a parancsfájl, amely a fürt testreszabásához meghívott. s</td></tr>
-        <tr><td>A fő/feldolgozó</td>
-            <td>Adja meg a csomópontok (**Head** vagy **munkavégző**) a testreszabási parancsfájl futtatása a</b>.
-        <tr><td>Paraméterek</td>
-            <td>Adja meg a paramétereket, ha a parancsfájl által igényelt.</td></tr>
-    </table>
+      |Tulajdonság|Érték|  
+      |---|---|
+      |Name (Név)|Adja meg a parancsfájlművelet nevét.|
+      |Szkript URI-ja|Adja meg az URI-t a parancsfájl, amely a fürtök testreszabásához meghívott.|
+      |A fő/feldolgozó|Adja meg a csomópontok (**fő** vagy **feldolgozó**) a testreszabási parancsfájl futtatása a.|
+      |Paraméterek|Adja meg a paramétereket, ha a parancsfájl által igényelt.|
 
     Nyomja le az ENTER billentyűt, hogy több összetevő telepítése a fürtön egynél több parancsprogram-művelet hozzáadása.
 3. Kattintson a **kiválasztása** mentse a parancsfájlt művelet konfigurációját, és folytassa a fürt létrehozása.
@@ -80,7 +75,7 @@ HDInsight számos szkript a következő összetevők telepítése a HDInsight-f�
 ## <a name="call-scripts-using-azure-powershell"></a>Azure PowerShell-lel szkriptek meghívása
 A következő PowerShell-parancsprogram bemutatja, hogyan Spark telepítése Windows-alapú HDInsight-fürt.  
 
-    ```powershell
+```powershell  
     # Provide values for these variables
     $subscriptionID = "<Azure Subscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
 
@@ -159,7 +154,7 @@ A következő PowerShell-parancsprogram bemutatja, hogyan Spark telepítése Win
             -OSType Windows `
             -DefaultStorageContainer $defaultBlobContainerName `
             -Config $config
-    ```
+```
 
 Más szoftver telepítéséhez szüksége cserélje le a parancsfájlt a parancsfájlt:
 
@@ -172,12 +167,14 @@ A következő minta bemutatja, hogyan Apache Spark telepítése Windows-alapú H
 
 1. Hozzon létre egy C# konzolalkalmazást a Visual Studióban.
 2. A Nuget-Csomagkezelő konzolról futtassa a következő parancsot.
-    ```powershell
+
+    ```powershell  
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
     ```
-3. Használja a következő using utasításokat a Program.cs fájlban:
+
+1. Használja a következő using utasításokat a Program.cs fájlban:
 
     ```csharp
         using System;

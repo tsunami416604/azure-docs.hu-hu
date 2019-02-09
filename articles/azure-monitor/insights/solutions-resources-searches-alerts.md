@@ -13,14 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c46c65fe7e720e3afdd976e2480e8f183cc4398d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 97e6029ff85ce7ee8572fd76d04a5d72b27b2950
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901190"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980108"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics hozzáadása mentett keresések és a riasztások felügyeleti megoldásra (előzetes verzió)
+
+> [!IMPORTANT]
+> A részleteket itt a Resource Manager-sablonnal riasztások létrehozásának vannak kívüli dátum most már, amely [kiterjesztettük a Log Analytics-riasztásokkal, az Azure monitornak](../platform/alerts-extend.md). Naplóriasztás létrehozása Resource Manager-sablonnal a részletekért lásd: [kezelése riasztások Azure Resource-sablonnal](../platform/alerts-log.md#managing-log-alerts-using-azure-resource-template).
 
 > [!NOTE]
 > Ez az előzetes dokumentum, jelenleg előzetes verzióban elérhető kezelési megoldások létrehozásához. Semmilyen sémát, az alábbiakban a változhat.
@@ -180,7 +183,7 @@ A riasztási művelet erőforrás tulajdonságait az alábbi táblázatok ismert
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| Típus | Igen | A művelet típusa.  Ez a **riasztás** riasztási műveletek esetében. |
+| Typo | Igen | A művelet típusa.  Ez a **riasztás** riasztási műveletek esetében. |
 | Name (Név) | Igen | A riasztás megjelenítendő neve.  Ez a riasztási szabályt a konzolon megjelenített nevet. |
 | Leírás | Nem | A riasztás leírását. |
 | Severity | Igen | A következő értékek közül a riasztásbejegyzést súlyossága:<br><br> **critical**<br>**warning**<br>**Tájékoztató**

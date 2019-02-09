@@ -16,12 +16,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24a12c9144535fecd23be432ee33402eb6528b28
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8f18fbabe52c9170cde70900933ce96a3a6400c7
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413815"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984341"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Az Azure-ban új Windows virtuális gépek létrehozásakor felmerülő üzembehelyezési hibák elhárítása
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -44,23 +44,23 @@ Hibaelhárítás indítása, hogy azonosítsa a hibát a probléma társított a
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**Y:** az operációs rendszer általánosított, Windows és a feltöltött, illetve rögzíteni az általánosított beállítást, akkor a hibák nem lesz. Hasonlóan ha az operációs rendszer Windows specializált, feltöltött, illetve a speciális beállítással rögzített, majd hibákat nem lesz.
+**Y:** Ha az operációs rendszer általánosított Windows, és a feltöltött, illetve rögzíteni az általánosított beállítást, majd nem kell esetleges hibákat. Hasonlóan ha az operációs rendszer Windows specializált, feltöltött, illetve a speciális beállítással rögzített, majd hibákat nem lesz.
 
 **Feltöltéssel kapcsolatos hibák:**
 
-**N<sup>1</sup>:** , ha az operációs rendszer általánosított Windows és a feltöltés speciális, kap egy kiépítési időtúllépési hiba a virtuális géppel a Kezdőélmény képernyőn elakadt.
+**N<sup>1</sup>:** Ha az operációs rendszer általánosított Windows, mint a feltöltés specializált, kap egy kiépítési időtúllépési hiba a virtuális géppel a Kezdőélmény képernyőn elakadt.
 
-**N<sup>2</sup>:** Ha az operációs rendszer Windows kifejezetten, és fel lesz töltve általánosítottként, kap a virtuális géppel a Kezdőélmény képernyő megakad, mert az új virtuális gép fut-e az eredeti számítógépnévvel egy kiépítési hibák felhasználónév és jelszó.
+**N<sup>2</sup>:** Ha az operációs rendszer Windows kifejezetten, és fel lesz töltve általánosítottként, kap egy kiépítési hibák és a virtuális gép megakad a Kezdőélmény képernyő, mert az új virtuális gép fut-e az eredeti számítógép neve, felhasználónévvel és jelszóval.
 
 **Felbontás**
 
-Mindkét ezek a hibák elhárításához használja [Add-AzureRmVhd az eredeti virtuális merevlemez feltöltéséhez](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd), elérhető a helyszínen, az ugyanazt a beállítást, amely az operációs rendszer (általánosítva/speciális) számára. Általánosként feltölteni, ne felejtse el először futtassa a Sysprep eszközt.
+Mindkét ezek a hibák elhárításához használja [Add-AzVhd az eredeti virtuális merevlemez feltöltéséhez](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), elérhető a helyszínen, az ugyanazt a beállítást, amely az operációs rendszer (általánosítva/speciális) számára. Általánosként feltölteni, ne felejtse el először futtassa a Sysprep eszközt.
 
 **Rögzítés a hibák:**
 
 **N<sup>3</sup>:** Ha az operációs rendszer általánosított Windows, mint rögzítése specializált, kap egy kiépítési időtúllépési hiba, mert az eredeti virtuális gép már nem használható, mert általánosként van megjelölve.
 
-**N<sup>4</sup>:** Windows kifejezetten, és általánosként rögzítése az operációs rendszer esetén a kiépítési hibák kap, mert az új virtuális gép fut-e az eredeti számítógép neve, felhasználónévvel és jelszóval. Ezenkívül az eredeti virtuális gép nem áll használható, mert meg van jelölve a speciális.
+**N<sup>4</sup>:** Az operációs rendszer Windows kifejezetten, és azt általánosként van rögzítve, ha egy kiépítési hibák kap, mert az új virtuális gép fut-e az eredeti számítógép neve, felhasználónévvel és jelszóval. Ezenkívül az eredeti virtuális gép nem áll használható, mert meg van jelölve a speciális.
 
 **Felbontás**
 
@@ -69,7 +69,7 @@ Mindkét a hibák elhárításához, az aktuális lemezkép törlése a portálr
 ## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Probléma: Egyéni/katalógus/Piactéri lemezképhez; foglalási hibák
 Ez a hiba helyzetekben akkor keletkezik, ha az új virtuális gép kérelem rögzítve van egy fürtöt, amely nem támogatja a kért Virtuálisgép-méretet, vagy nem rendelkezik a rendelkezésre álló szabad területet a kérelem befogadásához.
 
-**1. ok:** a fürt nem támogatja a kért Virtuálisgép-méretet.
+**1. ok:** A fürt nem támogatja a kért Virtuálisgép-méretet.
 
 **1. megoldás:**
 
@@ -80,7 +80,7 @@ Ez a hiba helyzetekben akkor keletkezik, ha az új virtuális gép kérelem rög
   * Után állítsa le a virtuális gépek, a új virtuális gép létrehozása a kívánt méretet.
   * Először indítsa el az új virtuális Gépet, majd válassza ki a leállított virtuális gépek mindegyike és kattintson **Start**.
 
-**2. ok:** a fürt nem rendelkezik ingyenes erőforrások.
+**2. ok:** A fürt nem rendelkezik ingyenes erőforrások.
 
 **2. megoldás:**
 

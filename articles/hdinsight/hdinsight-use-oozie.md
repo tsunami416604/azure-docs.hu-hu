@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 983ea87a7387c4ce6bb0c1c67bf46d81c717e69a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5048a4ab4db6d4cb168d2a643a412f89273658b4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993082"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984256"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Az Apache Hadoop megadásához és a munkafolyamat futtatása a HDInsight Apache Oozie használata
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -123,26 +123,23 @@ Nincsenek definiálva a munkafolyamat két műveletet. A kezdő művelet *RunHiv
 
 A RunHiveScript rendelkezik értékkel a változókat. Az Oozie feladat elküldésekor a munkaállomásáról Azure PowerShell-lel átadhatja az értékeket.
 
-<table border = "1">
-<tr><th>Munkafolyamat-változók</th><th>Leírás</th></tr>
-<tr><td>${jobTracker}</td><td>Adja meg a Hadoop-feladat tracker URL-CÍMÉT. Használat <strong>jobtrackerhost:9010</strong> a HDInsight 3.0-s és a 2.1-es verzió.</td></tr>
-<tr><td>${nameNode}</td><td>Adja meg a Hadoop neve csomópont URL-CÍMÉT. Például használja az alapértelmezett fájl rendszer cím <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
-<tr><td>${queueName}</td><td>Megadja, hogy a feladat elküldve a várólista nevét. Használja a <strong>alapértelmezett</strong>.</td></tr>
-</table>
+|Munkafolyamat-változók|Leírás|
+|---|---|
+|${jobTracker}|Adja meg a Hadoop-feladat tracker URL-CÍMÉT. Használat **jobtrackerhost:9010** a HDInsight 3.0-s és a 2.1-es verzió.|
+|${nameNode}|Adja meg a Hadoop neve csomópont URL-CÍMÉT. Például használja az alapértelmezett fájl rendszer cím *wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net*.|
+|${queueName}|Megadja, hogy a feladat elküldve a várólista nevét. Használja a **alapértelmezett**.|
 
-<table border = "1">
-<tr><th>Hive-művelet</th><th>Leírás</th></tr>
-<tr><td>${hiveDataFolder}</td><td>Megadja a forráskönyvtár a Hive-tábla létrehozása a parancshoz.</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Megadja a kimeneti mappát az FELÜLÍRÁSA INSERT utasítás.</td></tr>
-<tr><td>${hiveTableName}</td><td>Itt adhatja meg, amely hivatkozik a log4j adatfájlok Hive-tábla neve.</td></tr>
-</table>
+|Hive-művelet|Leírás|
+|---|---|
+|${hiveDataFolder}|Megadja a forráskönyvtár a Hive-tábla létrehozása a parancshoz.|
+|${hiveOutputFolder}|Megadja a kimeneti mappát az FELÜLÍRÁSA INSERT utasítás.|
+|${hiveTableName}|Itt adhatja meg, amely hivatkozik a log4j adatfájlok Hive-tábla neve.|
 
-<table border = "1">
-<tr><th>Műveleti változó sqoop használatával</th><th>Leírás</th></tr>
-<tr><td>${sqlDatabaseConnectionString}</td><td>Itt adhatja meg az Azure SQL-adatbázis kapcsolati karakterláncát.</td></tr>
-<tr><td>${sqlDatabaseTableName}</td><td>Adja meg az Azure SQL database tábla, ahol az adatok exportálva lettek.</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Megadja a kimeneti mappát, a Hive-BESZÚRÁSA FELÜLÍRÁSA utasításra vonatkozóan. Ez a Sqoop export (Exportálás-dir) ugyanabban a mappában.</td></tr>
-</table>
+|Műveleti változó sqoop használatával|Leírás|
+|---|---|
+|${sqlDatabaseConnectionString}|Itt adhatja meg az Azure SQL-adatbázis kapcsolati karakterláncát.|
+|${sqlDatabaseTableName}|Adja meg az Azure SQL database tábla, ahol az adatok exportálva lettek.|
+|${hiveOutputFolder}|Megadja a kimeneti mappát, a Hive-BESZÚRÁSA FELÜLÍRÁSA utasításra vonatkozóan. Ez a Sqoop export (Exportálás-dir) ugyanabban a mappában.|
 
 Oozie-munkafolyamatokkal és a munkafolyamat-műveletek használatával kapcsolatos további információkért lásd: [Apache Oozie 4.0 dokumentáció] [ apache-oozie-400] (a HDInsight 3.0-s verzió) vagy [ApacheOozie3.3.2-dokumentáció] [ apache-oozie-332] (a HDInsight 2.1-es verzió).
 
@@ -184,7 +181,7 @@ Ez a szakasz a PowerShell-parancsprogram a következő lépéseket hajtja végre
     Mindkét fájljai egy nyilvános Blob-tárolóba.
    
    * Másolja a HiveQL-parancsfájlt (useoozie.hql) az Azure Storage (wasb:///tutorials/useoozie/useoozie.hql).
-   * Másolja a workflow.xml wasb:///tutorials/useoozie/workflow.xml.
+   * Copy workflow.xml to wasb:///tutorials/useoozie/workflow.xml.
    * Másolja az adatfájl (/ example/data/sample.log) való wasb:///tutorials/useoozie/data/sample.log.
 6. Az Oozie-feladat elküldéséhez.
    

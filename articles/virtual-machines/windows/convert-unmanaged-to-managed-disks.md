@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: fecf17d95231cc37a141cfb72397f44ce2e980b5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: bcfb227b8ced6b17fe23c1a60468de24f1835ba0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435600"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979955"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows virtuális gép átalakítása nem felügyeltről felügyelt a managed Disks szolgáltatásba
 
 Ha rendelkezik meglévő Windows virtuális gépek (VM), amely a nem felügyelt lemezeket használ, a virtuális gépek keresztül felügyelt lemezek használata alakíthatja a [Azure Managed Disks](managed-disks-overview.md) szolgáltatás. Ez a folyamat az operációsrendszer-lemez és a bármely más csatolt lemez alakítja.
 
-Ez a cikk bemutatja, hogyan átalakítása a virtuális gépek Azure PowerShell használatával. Ha szeretné telepíteni, vagy frissít a csomagon belül, lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/azurerm/install-azurerm-ps).
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -43,18 +43,18 @@ Ez a cikk bemutatja, hogyan átalakítása a virtuális gépek Azure PowerShell 
 ## <a name="convert-single-instance-vms"></a>Egypéldányos virtuális gépek konvertálása
 Ez a szakasz bemutatja, hogyan átalakítása nem felügyeltről felügyelt egypéldányos Azure virtuális gépek felügyelt lemezeket. (Ha a virtuális gépek rendelkezésre állási csoportban, lásd a következő szakaszban.) 
 
-1. Szabadítsa fel a virtuális gép használatával a [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) parancsmagot. Az alábbi példa felszabadítja a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`: 
+1. Szabadítsa fel a virtuális gép használatával a [Stop-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) parancsmagot. Az alábbi példa felszabadítja a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`: 
 
   ```azurepowershell-interactive
   $rgName = "myResourceGroup"
   $vmName = "myVM"
-  Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
+  Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
   ```
 
-2. A virtuális gép konvertálása a felügyelt lemezek használatával a [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) parancsmagot. A következő folyamat alakítja át a korábbi VM, beleértve az operációsrendszer-lemez és bármely adatlemez, és elindítja a virtuális gépet:
+2. A virtuális gép konvertálása a felügyelt lemezek használatával a [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) parancsmagot. A következő folyamat alakítja át a korábbi VM, beleértve az operációsrendszer-lemez és bármely adatlemez, és elindítja a virtuális gépet:
 
   ```azurepowershell-interactive
-  ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
+  ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
   ```
 
 
@@ -63,40 +63,40 @@ Ez a szakasz bemutatja, hogyan átalakítása nem felügyeltről felügyelt egyp
 
 Ha az átalakítani kívánt virtuális gépek felügyelt lemezeket egy rendelkezésre állási csoportban, először konvertálnia kell a rendelkezésre állási felügyelt rendelkezésre állási csoportban.
 
-1. A rendelkezésre állási csoportot az átalakítás a [Update-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/update-azurermavailabilityset) parancsmagot. Az alábbi példa frissíti a rendelkezésre állási csoportot elnevezett `myAvailabilitySet` az erőforráscsoport neve `myResourceGroup`:
+1. A rendelkezésre állási csoportot az átalakítás a [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) parancsmag. Az alábbi példa frissíti a rendelkezésre állási csoportot elnevezett `myAvailabilitySet` az erőforráscsoport neve `myResourceGroup`:
 
   ```azurepowershell-interactive
   $rgName = 'myResourceGroup'
   $avSetName = 'myAvailabilitySet'
 
-  $avSet = Get-AzureRmAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
-  Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
+  $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
+  Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
   ```
 
   Ha a régió, ahol a rendelkezésre állási található csak 2 felügyelt hibatűrési tartományt tartalmaz, de nem felügyelt tartalék tartományok száma: 3, ez a parancs hasonló jelenít meg hiba "a megadott tartalék tartományok száma 3 1-2 tartományban kell lennie." A hiba elhárításához frissítse a tartalék tartomány 2 és a frissítés `Sku` való `Aligned` módon:
 
   ```azurepowershell-interactive
   $avSet.PlatformFaultDomainCount = 2
-  Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
+  Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
   ```
 
-2. Szabadítsa fel, és konvertálja a virtuális gépek rendelkezésre állási csoportban. Az alábbi parancsfájlt minden virtuális gép felszabadítja a használatával a [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) parancsmag használatával konvertálja [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk), és automatikusan is vannak, az átalakítási folyamat újraindítása :
+2. Szabadítsa fel, és konvertálja a virtuális gépek rendelkezésre állási csoportban. Az alábbi parancsfájlt minden virtuális gép felszabadítja használatával a [Stop-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) parancsmag használatával konvertálja [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk), és automatikusan is vannak, az átalakítási folyamat újraindítása:
 
   ```azurepowershell-interactive
-  $avSet = Get-AzureRmAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
+  $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
 
   foreach($vmInfo in $avSet.VirtualMachinesReferences)
   {
-     $vm = Get-AzureRmVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
-     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name -Force
-     ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
+     $vm = Get-AzVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
+     Stop-AzVM -ResourceGroupName $rgName -Name $vm.Name -Force
+     ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
   }
   ```
 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a konvertálás során hiba történik, vagy ha a virtuális gép egy korábbi konverziós a problémák miatt a hibás állapotban van, futtassa a `ConvertTo-AzureRmVMManagedDisk` újra a parancsmagot. Egy egyszerű újra általában feloldja a helyzet.
+Ha a konvertálás során hiba történik, vagy ha a virtuális gép egy korábbi konverziós a problémák miatt a hibás állapotban van, futtassa a `ConvertTo-AzVMManagedDisk` újra a parancsmagot. Egy egyszerű újra általában feloldja a helyzet.
 Átalakítás, előtt ellenőrizze a Virtuálisgép-bővítmények "A kiépítés sikeres" állapotban van, vagy az átalakítás sikertelen lesz a következő hibakóddal: 409.
 
 

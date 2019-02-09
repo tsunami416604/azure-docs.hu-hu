@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: c0067dc96837d758e4c2551bcb29faf63c1a7715
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d8959e25280a9d1dd62549c698f7b2b6b98d6154
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895041"
+ms.locfileid: "55964151"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Speciális biztonsági adatokat, a virtuális hálózatok és a közel 100 %-os kompatibilitást SQL Database használata
 
@@ -51,7 +51,7 @@ A felügyelt példány ötvözi a legjobb funkciókat, Azure SQL Database és SQ
 
 A felügyelt példányok legfontosabb funkcióit az alábbi táblázatban láthatók:
 
-|Funkció | Leírás|
+|Szolgáltatás | Leírás|
 |---|---|
 | SQL Server-verzió létrehozása / | SQL Server Database Engine (poslední stabilní) |
 | Automatikus biztonsági másolatok kezelése | Igen |
@@ -107,7 +107,7 @@ További információ a szolgáltatási szintek közötti különbség [felügye
 Az alábbi lista ismerteti azokat az üzletileg kritikus szolgáltatási rétegben főbb jellemzői:
 
 - A lehető legjobb teljesítmény és a magas rendelkezésre ÁLLÁSÚ követelmények üzleti alkalmazásokhoz tervezve
-- Adathozzáférésnek köszönhetően gyors helyi SSD-tárolóval együtt származik (akár 1 TB a Gen 4. és 4 TB-ra Gen 5)
+- Együttműködik a adathozzáférésnek köszönhetően gyors helyi SSD-tárolás (legfeljebb 1 TB-ig a Gen4 és akár 4 TB-ra Gen5)
 - Beépített [magas rendelkezésre állású](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) alapján [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) és [Azure Service Fabric](../service-fabric/service-fabric-overview.md).
 - További beépített [csak olvasható adatbázis-replika](sql-database-read-scale-out.md) , amely a jelentéskészítés és más csak olvasási számítási feladatokhoz használható
 - [Memóriabeli OLTP](sql-database-in-memory.md) , amely a nagy teljesítményű követelményekkel rendelkező számítási feladatokhoz használható  

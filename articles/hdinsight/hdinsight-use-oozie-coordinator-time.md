@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6e45dfbea9545c72d80a17e8ae144f4dacc70a63
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 000f8de4d40fda39f183b0824bea6a09605e6e9d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995014"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977609"
 ---
 # <a name="use-time-based-apache-oozie-coordinator-with-apache-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Időalapú Apache Oozie-koordinátor használata a HDInsight Apache hadoop-keretrendszer határozza meg a munkafolyamatok, és a feladatok koordinálása
 Ebből a cikkből megtudhatja, hogy hogyan munkafolyamatok és koordinátorok meghatározásához, és hogy miként indítható el a koordinátor feladatok, ideje alapján. Hasznos lehet haladhat végig [Apache Oozie használata a HDInsight-] [ hdinsight-use-oozie] Ez a cikk elolvasása előtt. Oozie, mellett is ütemezhet feladatokat az Azure Data Factory. Azure Data Factory kapcsolatban lásd: [Apache Pig használata és az Apache Hive, a Data Factory](../data-factory/transform-data.md).
@@ -68,24 +68,23 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Egy HDInsight-fürt**. Egy HDInsight-fürt létrehozásával kapcsolatos információkért lásd: [létre HDInsight-fürtök][hdinsight-provision], vagy [HDInsight – első lépések][hdinsight-get-started]. Szüksége lesz az oktatóanyagot az alábbi adatokat:
 
-    <table border = "1">
-    <tr><th>Fürt tulajdonság</th><th>Windows PowerShell-változó neve</th><th>Érték</th><th>Leírás</th></tr>
-    <tr><td>HDInsight-fürt neve</td><td>$clusterName</td><td></td><td>A HDInsight-fürt, amelyen ez az oktatóanyag futni fog.</td></tr>
-    <tr><td>HDInsight-fürt felhasználóneve</td><td>$clusterUsername</td><td></td><td>A HDInsight fürt felhasználó neve. </td></tr>
-    <tr><td>HDInsight-fürt felhasználói jelszó </td><td>$clusterPassword</td><td></td><td>A HDInsight fürt felhasználó jelszavát.</td></tr>
-    <tr><td>Az Azure storage-fiók neve</td><td>$storageAccountName</td><td></td><td>Azure Storage-fiókot a HDInsight-fürtön elérhető. A jelen oktatóanyag esetében használja az alapértelmezett tárfiókot, a fürt üzembe helyezése során megadott.</td></tr>
-    <tr><td>Az Azure Blob-tároló neve</td><td>$containerName</td><td></td><td>Ebben a példában használja az Azure Blob storage-tároló, amely a HDInsight fürt alapértelmezett fájlrendszerének szolgál. Alapértelmezés szerint rendelkezik a HDInsight-fürt azonos néven.</td></tr>
-    </table>
+    |Fürt tulajdonság|Windows PowerShell-változó neve|Érték|Leírás|
+    |---|---|---|---|
+    |HDInsight-fürt neve|$clusterName||A HDInsight-fürt, amelyen ez az oktatóanyag futni fog.|
+    |HDInsight-fürt felhasználóneve|$clusterUsername||A HDInsight fürt felhasználó neve. |
+    |HDInsight-fürt felhasználói jelszó |$clusterPassword||A HDInsight fürt felhasználó jelszavát.|
+    |Az Azure storage-fiók neve|$storageAccountName||Azure Storage-fiókot a HDInsight-fürtön elérhető. A jelen oktatóanyag esetében használja az alapértelmezett tárfiókot, a fürt üzembe helyezése során megadott.|
+    |Az Azure Blob-tároló neve|$containerName||Ebben a példában használja az Azure Blob storage-tároló, amely a HDInsight fürt alapértelmezett fájlrendszerének szolgál. Alapértelmezés szerint rendelkezik a HDInsight-fürt azonos néven.|
+
 
 * **Az Azure SQL database**. Konfigurálnia kell egy tűzfalszabályt az SQL Database-kiszolgálóhoz, hogy engedélyezze a hozzáférést a munkaállomáson. Egy Azure SQL-adatbázis létrehozása, és a tűzfal konfigurálásával kapcsolatos útmutatásért lásd: [első lépései az Azure SQL database-t használó][sqldatabase-get-started]. Ez a cikk egy Windows PowerShell-parancsprogram létrehozásához az Azure SQL database tábla, amely ebben az oktatóanyagban szüksége lesz.
 
-    <table border = "1">
-    <tr><th>Az SQL database tulajdonság</th><th>Windows PowerShell-változó neve</th><th>Érték</th><th>Leírás</th></tr>
-    <tr><td>Az SQL database-kiszolgálónév</td><td>$sqlDatabaseServer</td><td></td><td>Az SQL adatbázis-kiszolgáló, amelyhez a sqoop használatával exportálja az adatokat. </td></tr>
-    <tr><td>SQL database-bejelentkezési név</td><td>$sqlDatabaseLogin</td><td></td><td>Az SQL Database-bejelentkezési név.</td></tr>
-    <tr><td>Az SQL database bejelentkezési jelszava</td><td>$sqlDatabaseLoginPassword</td><td></td><td>SQL-adatbázis bejelentkezési jelszót.</td></tr>
-    <tr><td>SQL-adatbázis neve</td><td>$sqlDatabaseName</td><td></td><td>Az Azure SQL database, amelyhez a sqoop használatával exportálja az adatokat. </td></tr>
-    </table>
+    |Az SQL database tulajdonság|Windows PowerShell-változó neve|Érték|Leírás|
+    |---|---|---|---|
+    |Az SQL database-kiszolgálónév|$sqlDatabaseServer||Az SQL adatbázis-kiszolgáló, amelyhez a sqoop használatával exportálja az adatokat. |
+    |SQL database-bejelentkezési név|$sqlDatabaseLogin||Az SQL Database-bejelentkezési név.|
+    |Az SQL database bejelentkezési jelszava|$sqlDatabaseLoginPassword||SQL-adatbázis bejelentkezési jelszót.|
+    |SQL-adatbázis neve|$sqlDatabaseName||Az Azure SQL database, amelyhez a sqoop használatával exportálja az adatokat. |
 
   > [!NOTE]   
   > Alapértelmezés szerint az Azure SQL database az Azure-szolgáltatások, például az Azure HDInsight engedélyezi a csatlakozást. Ha a tűzfal beállítás nincs engedélyezve, engedélyeznie kell azt az Azure Portalról. Egy SQL-adatbázis létrehozása, és a tűzfal-szabályok konfigurálásával kapcsolatos útmutatást lásd: [létrehozása és konfigurálása az SQL Database][sqldatabase-get-started].
@@ -190,30 +189,27 @@ A Hive-művelet a munkafolyamat meghívja a HiveQL-parancsfájlt. A parancsfájl
 
     Munkafolyamat-változók
 
-    <table border = "1">
-    <tr><th>Munkafolyamat-változók</th><th>Leírás</th></tr>
-    <tr><td>${jobTracker}</td><td>Adja meg a Hadoop-feladat tracker URL-CÍMÉT. Használat <strong>jobtrackerhost:9010</strong> HDInsight fürtön, 3.0-s és 2.0-s verzióját.</td></tr>
-    <tr><td>${nameNode}</td><td>Adja meg a Hadoop neve csomópont URL-CÍMÉT. Használja az alapértelmezett fájl rendszer wasb: / / cím, például <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
-    <tr><td>${queueName}</td><td>Megadja, hogy a feladat a rendszer elküldi a várólista nevét. Használat <strong>alapértelmezett</strong>.</td></tr>
-    </table>
+    |Munkafolyamat-változók|Leírás|
+    |---|---|
+    |${jobTracker}|Adja meg a Hadoop-feladat tracker URL-CÍMÉT. Használat **jobtrackerhost:9010** HDInsight fürtön, 3.0-s és 2.0-s verzióját.|
+    |${nameNode}|Adja meg a Hadoop neve csomópont URL-CÍMÉT. Használja az alapértelmezett fájl rendszer wasb: / / cím, például *wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net*.|
+    |${queueName}|Megadja, hogy a feladat a rendszer elküldi a várólista nevét. Használat **alapértelmezett**.|
 
     Hive-művelet változói
 
-    <table border = "1">
-    <tr><th>Hive-művelet</th><th>Leírás</th></tr>
-    <tr><td>${hiveDataFolder}</td><td>A forráskönyvtár a Hive-tábla létrehozása parancsot.</td></tr>
-    <tr><td>${hiveOutputFolder}</td><td>A kimeneti mappát az FELÜLÍRÁSA INSERT utasítás.</td></tr>
-    <tr><td>${hiveTableName}</td><td>A Hive-tábla, amely hivatkozik a log4j adatfájlok neve.</td></tr>
-    </table>
+    |Hive-művelet|Leírás|
+    |----|----|
+    |${hiveDataFolder}|A forráskönyvtár a Hive-tábla létrehozása parancsot.|
+    |${hiveOutputFolder}|A kimeneti mappát az FELÜLÍRÁSA INSERT utasítás.|
+    |${hiveTableName}|A Hive-tábla, amely hivatkozik a log4j adatfájlok neve.|
 
     Sqoop művelet változói
 
-    <table border = "1">
-    <tr><th>Műveleti változó sqoop használatával</th><th>Leírás</th></tr>
-    <tr><td>${sqlDatabaseConnectionString}</td><td>SQL-adatbázis kapcsolati karakterláncát.</td></tr>
-    <tr><td>${sqlDatabaseTableName}</td><td>Az Azure SQL database tábla, ahol az adatok lesznek exportálva.</td></tr>
-    <tr><td>${hiveOutputFolder}</td><td>A kimeneti mappát, a Hive-BESZÚRÁSA FELÜLÍRÁSA utasításra vonatkozóan. Ez a Sqoop export (Exportálás-dir) ugyanabban a mappában.</td></tr>
-    </table>
+    |Műveleti változó sqoop használatával|Leírás|
+    |---|---|
+    |${sqlDatabaseConnectionString}|SQL-adatbázis kapcsolati karakterláncát.|
+    |${sqlDatabaseTableName}|Az Azure SQL database tábla, ahol az adatok lesznek exportálva.|
+    |${hiveOutputFolder}|A kimeneti mappát, a Hive-BESZÚRÁSA FELÜLÍRÁSA utasításra vonatkozóan. Ez a Sqoop export (Exportálás-dir) ugyanabban a mappában.|
 
     Oozie-munkafolyamatokkal, és a munkafolyamat-műveletek használatával kapcsolatos további információkért lásd: [Apache Oozie 4.0 dokumentáció] [ apache-oozie-400] (a HDInsight fürt 3.0-s verzió) vagy [Apache Oozie 3.3.2-dokumentáció ] [ apache-oozie-332] (a HDInsight fürt 2.1-es verzió).
 
@@ -248,8 +244,8 @@ A Hive-művelet a munkafolyamat meghívja a HiveQL-parancsfájlt. A parancsfájl
 Futtatni fogja az Azure PowerShell-szkript a következő lépések végrehajtásához:
 
 * A HiveQL-parancsfájlt (useoozie.hql) másolása az Azure Blob storage, wasb:///tutorials/useoozie/useoozie.hql.
-* Másolja a workflow.xml wasb:///tutorials/useoozie/workflow.xml.
-* Másolja a coordinator.xml wasb:///tutorials/useoozie/coordinator.xml.
+* Copy workflow.xml to wasb:///tutorials/useoozie/workflow.xml.
+* Copy coordinator.xml to wasb:///tutorials/useoozie/coordinator.xml.
 * Másolja az adatfájl (/ example/data/sample.log) való wasb:///tutorials/useoozie/data/sample.log.
 * Hozzon létre egy Azure SQL-adatbázistáblába, az adatok exportálása a Sqoop tárolására. A tábla neve a *log4jLogCount*.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 32679e37062fbf77ce6ab03b6ea708c0d5eeea30
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dbf614f9749039b054e1134df31334a6248e2b78
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816237"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981400"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>A rendelkezésre állási zónák használó virtuális gép méretezési csoport létrehozása
 
@@ -117,12 +117,12 @@ Hozzon létre, és konfigurálhatók a méretezési csoport erőforrásainak és
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
-A rendelkezésre állási zónák használatához létre kell hoznia a méretezési csoportban egy támogatott Azure-régióban. Adja hozzá a `-Zone` paramétert a [New-azurermvmssconfig parancsmaghoz](/powershell/module/azurerm.compute/new-azurermvmssconfig) parancsot, majd adja meg, melyik zónába használata (például a zóna *1*, *2*, vagy *3*).
+A rendelkezésre állási zónák használatához létre kell hoznia a méretezési csoportban egy támogatott Azure-régióban. Adja hozzá a `-Zone` paramétert a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) parancsot, majd adja meg, melyik zónába használni (például a zóna *1*, *2*, vagy *3*).
 
 A következő példában létrehozunk egy Egyzónás méretezési elnevezett *myScaleSet* a *USA keleti RÉGIÓJA 2* zóna *1*. A rendszer automatikusan létrehozza az Azure-beli hálózati erőforrásokat a virtuális hálózathoz, a nyilvános IP-címhez és a terheléselosztóhoz. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
 
 ```powershell
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS2" `
   -VMScaleSetName "myScaleSet" `
@@ -139,7 +139,7 @@ New-AzureRmVmss `
 Zónaredundáns méretezési csoport létrehozása, adja meg a több zónában a `-Zone` paraméter. A következő példában létrehozunk egy zónaredundáns méretezési csoport nevű *myScaleSet* között *USA keleti RÉGIÓJA 2* zónák *1, 2, 3*. A zónaredundáns Azure hálózati erőforrásainak virtuális hálózat, a nyilvános IP-cím és a load balancer automatikusan jönnek létre. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
 
 ```powershell
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS2" `
   -VMScaleSetName "myScaleSet" `

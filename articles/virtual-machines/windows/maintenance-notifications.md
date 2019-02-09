@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: f8cac174844d7f87687d08975b6fbf17ed47b03e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7c391e84f335e013ce1914063ccec75ba20f8685
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543291"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980091"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Tervezett karbantartásával kapcsolatos értesítések Windows virtuális gépek kezelése
 
@@ -77,12 +77,14 @@ Célszerű használni az önkiszolgáló karbantartás a következő esetekben:
 
 ## <a name="check-maintenance-status-using-powershell"></a>PowerShell-lel karbantartási állapot ellenőrzése
 
-Azure Powershell használatával látják, amikor a karbantartásra ütemezett virtuális gépek. Tervezett karbantartás információ érhető el a [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) parancsmag használatakor a `-status` paraméter.
+Azure Powershell használatával látják, amikor a karbantartásra ütemezett virtuális gépek. Tervezett karbantartás információ érhető el a [Get-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) parancsmag használatakor a `-status` paraméter.
  
 Tervezett karbantartás esetén csak karbantartási információk jelennek-e. Ha nincs karbantartás ütemezve van, amely hatással van a virtuális Gépet, a parancsmag nem ad vissza semmilyen karbantartási információt. 
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ```powershell
-Get-AzureRmVM -ResourceGroupName rgName -Name vmName -Status
+Get-AzVM -ResourceGroupName rgName -Name vmName -Status
 ```
 
 A MaintenanceRedeployStatus visszaadott a következő tulajdonságokkal: 
@@ -97,10 +99,10 @@ A MaintenanceRedeployStatus visszaadott a következő tulajdonságokkal:
 
 
 
-Akkor is kaphat a karbantartási állapot egy erőforráscsoportba tartozó összes virtuális gép használatával [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) , és nem adja meg a virtuális gép.
+Akkor is kaphat a karbantartási állapot egy erőforráscsoportba tartozó összes virtuális gép használatával [Get-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) , és nem adja meg a virtuális gép.
  
 ```powershell
-Get-AzureRmVM -ResourceGroupName rgName -Status
+Get-AzVM -ResourceGroupName rgName -Status
 ```
 
 A következő PowerShell-függvény vesz igénybe az előfizetés-Azonosítóját, és kiírja a karbantartásra ütemezett virtuális gépek listáját.
@@ -109,18 +111,18 @@ A következő PowerShell-függvény vesz igénybe az előfizetés-Azonosítójá
 
 function MaintenanceIterator
 {
-    Select-AzureRmSubscription -SubscriptionId $args[0]
+    Select-AzSubscription -SubscriptionId $args[0]
 
-    $rgList= Get-AzureRmResourceGroup 
+    $rgList= Get-AzResourceGroup 
 
     for ($rgIdx=0; $rgIdx -lt $rgList.Length ; $rgIdx++)
     {
         $rg = $rgList[$rgIdx]        
-    $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
+    $vmList = Get-AzVM -ResourceGroupName $rg.ResourceGroupName 
         for ($vmIdx=0; $vmIdx -lt $vmList.Length ; $vmIdx++)
         {
             $vm = $vmList[$vmIdx]
-            $vmDetails = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName -Name $vm.Name -Status
+            $vmDetails = Get-AzVM -ResourceGroupName $rg.ResourceGroupName -Name $vm.Name -Status
               if ($vmDetails.MaintenanceRedeployStatus )
             {
                 Write-Output "VM: $($vmDetails.Name)  IsCustomerInitiatedMaintenanceAllowed: $($vmDetails.MaintenanceRedeployStatus.IsCustomerInitiatedMaintenanceAllowed) $($vmDetails.MaintenanceRedeployStatus.LastOperationMessage)"               
@@ -136,7 +138,7 @@ function MaintenanceIterator
 A függvény információk alapján az előző szakaszban a következő indítása karbantartása a virtuális gép Ha **IsCustomerInitiatedMaintenanceAllowed** értéke igaz.
 
 ```powershell
-Restart-AzureRmVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
+Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
 ```
 
 ## <a name="classic-deployments"></a>Klasszikus üzembe helyezések
@@ -159,48 +161,48 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 ## <a name="faq"></a>GYIK
 
 
-**KÉRDÉS: Miért van szüksége, a virtual machines Újraindítás most?**
+**K: Miért van szüksége, a virtual machines Újraindítás most?**
 
 **VÁLASZ:** A frissítéseket és az Azure platform többsége nem érinti a virtuális gép rendelkezésre állási, amíg vannak esetek, hogy nem azzal elkerülheti az Azure-ban üzemeltetett virtuális gépek. A Microsoft rendelkezik halmozott számos, szükség lehet, hogy a virtuális gépek újraindításával jár újra módosítást.
 
-**KÉRDÉS: Ha a rendelkezésre állási csoport I követi a magas rendelkezésre állás érdekében a javaslatok, vagyok a biztonságos?**
+**K: Ha a rendelkezésre állási csoport I követi a magas rendelkezésre állás érdekében a javaslatok, vagyok a biztonságos?**
 
 **VÁLASZ:** A rendelkezésre állási csoportban vagy virtuálisgép-méretezési csoportban üzembe helyezett virtuális gépek frissítési tartományokhoz (Update Domains, UD) tartoznak. A karbantartás során az Azure figyelembe veszi az UD-kényszert, és nem fogja újraindítani a virtuális gépek más frissítési tartományhoz tartozó (belül az azonos rendelkezésre állási csoport).  Az Azure is megvárja, amíg legalább 30 perc a következő csoporthoz a virtuális gépek áthelyezése előtt. 
 
 Magas rendelkezésre állású kapcsolatos további információkért lásd: [régiók és rendelkezésre állás az Azure-beli virtuális gépek](regions-and-availability.MD).
 
-**KÉRDÉS: Hogyan tegye szeretnék értesítést kaphat a tervezett karbantartásról?**
+**K: Hogyan tegye szeretnék értesítést kaphat a tervezett karbantartásról?**
 
 **VÁLASZ:** Tervezett karbantartási műveletek úgy, hogy egy vagy több Azure-régiók ütemezés szerint kezdődik. Hamarosan, e-mail-értesítés elküldése után az előfizetés tulajdonosainak (előfizetésenként egy e-mail címet). További csatornák és az értesítés címzettjeit sikerült konfigurálni a tevékenységnapló-riasztások segítségével. Abban az esetben, ha telepít egy virtuális gépet egy régióban, ahol már ütemezve van a tervezett karbantartás, nem kapják meg az értesítést, de nem kell a virtuális gép a karbantartás állapotának ellenőrzése.
 
-**KÉRDÉS: Bármely a portal, Powershell vagy parancssori felület a tervezett karbantartásra utaló jel nem látható. mi a baj?**
+**K: Bármely a portal, Powershell vagy parancssori felület a tervezett karbantartásra utaló jel nem látható. mi a baj?**
 
 **VÁLASZ:** Tervezett karbantartással kapcsolatos adatokat csak a virtuális gépek, amelyek hatással lehet, hogy a tervezett karbantartási műveletek során érhető el. Más szóval ha adatokat nem jelenik meg, annak oka az lehet, hogy a karbantartás már befejeződött (vagy nem kezdődött el), illetve, hogy a virtuális gép már üzemel frissített kiszolgálón.
 
-**KÉRDÉS: Van mód, pontosan akkor, ha a virtuális gép érint?**
+**K: Van mód, pontosan akkor, ha a virtuális gép érint?**
 
 **VÁLASZ:** Az ütemezés beállítása, ha egy olyan időkeretet, több napig meghatározzuk. Azonban ezen időszakon belül kiszolgálók (és virtuális gépek) pontos karbantartási ütemezése nem ismert. Pontosan tudni, hogy a virtuális gépek kívánó ügyfelek használhatják a [ütemezett események](scheduled-events.md) és kérdezheti le a virtuális gép és a egy 15 perces értesítés a virtuális gép újraindítása előtt.
 
-**KÉRDÉS: Mennyi ideig tart a virtuális gép újraindítását?**
+**K: Mennyi ideig tart a virtuális gép újraindítását?**
 
 **VÁLASZ:**  A virtuális gép méretétől függően az újraindítás a önkiszolgáló karbantartási időszak alatt több percig is eltarthat. Során az Azure által kezdeményezett újraindítása az ütemezett karbantartási időszakban, az újraindítás általában percet vesz igénybe körülbelül 25. Vegye figyelembe, hogy abban az esetben a Cloud Services (webes/feldolgozói szerepkört), a virtuálisgép-méretezési csoportok vagy a rendelkezésre állási csoportok, egyúttal 30 perc közötti minden csoport a virtuális gépek Garantáltnak az ütemezett karbantartási időszak alatt. 
 
-**KÉRDÉS: Mi az a Virtual Machine Scale Sets karbantartása?**
+**K: Mi az a Virtual Machine Scale Sets karbantartása?**
 
 **VÁLASZ:** Tervezett karbantartás már elérhető a Virtual Machine Scale Sets. Önkiszolgáló karbantartást kezdeményez útmutatást lásd [tervezett karbantartás az vmss-hez](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md) dokumentumot.
 
-**KÉRDÉS: Mi a Cloud Services (webes/feldolgozói szerepkör) és a Service Fabric karbantartása?**
+**K: Mi a Cloud Services (webes/feldolgozói szerepkör) és a Service Fabric karbantartása?**
 
 **VÁLASZ:** Bár a tervezett karbantartás érinti ezeket a platformokat, az ezeket használó ügyfelek biztonsága garantáltnak tekinthető, mivel egy adott időpontban kizárólag egyetlen frissítési tartomány virtuális gépeit érinti a frissítés. Az önkiszolgáló karbantartás jelenleg nem érhető el a Cloud Services (webes/feldolgozói szerepkör) és a Service Fabric.
 
-**KÉRDÉS: A virtuális gépek nem látható semmilyen karbantartási információt. Mi történt?**
+**K: A virtuális gépek nem látható semmilyen karbantartási információt. Mi történt?**
 
 **VÁLASZ:** Miért nem lát minden karbantartási információt a virtuális gépeken több oka is van:
 1.  Belső Microsoft megjelölve előfizetést használ.
 2.  A virtuális gépek nem ütemezett karbantartás céljából. Annak oka az lehet, hogy a karbantartás befejeződött, megszakított vagy módosítható úgy, hogy a virtuális gépek már nem érinti azt.
 3.  Nem rendelkezik a **karbantartási** a virtuális gép listanézetre felvett oszloppal. Ezt az oszlopot hozzáadtuk az alapértelmezett nézethez, miközben az ügyfelek, akik a nem alapértelmezett oszlopok megjelenítéséhez manuálisan kell hozzáadni a **karbantartási** oszlop a virtuális gépek listanézetéhez.
 
-**KÉRDÉS: A virtuális gépem második karbantartásra van ütemezve. Hogy miért?**
+**K: A virtuális gépem második karbantartásra van ütemezve. Hogy miért?**
 
 **VÁLASZ:** Több felhasználási eset van, amikor a virtuális gép a karbantartás utáni ismételt üzembe helyezés után is karbantartásra ütemezettként jelenik meg:
 1.  Hogy megszakadt a karbantartás és újraindul, egy másik hasznos adattal. Annak oka az, hogy hibás hasznos észleltünk, és egyszerűen kell telepíteni egy további hasznos lehet.

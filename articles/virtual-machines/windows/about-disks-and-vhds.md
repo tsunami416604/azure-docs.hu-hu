@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 968c8aa74a35bf753d92e7c417aaec2a1361f425
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0caa88939e263aa5d18460144893cdbce72f10ec
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467968"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961533"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>Az Azure Windows virtuális gépek disks storage-ról
 
@@ -34,7 +34,7 @@ Minden virtuális gép rendelkezik egy csatlakoztatott operációsrendszer-lemez
 
 ### <a name="temporary-disk"></a>Ideiglenes lemez
 
-Minden virtuális gép egy ideiglenes lemezt tartalmaz. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok, és csak az adatok, például lapozófájlokat tárolására szolgál. Az ideiglenes lemezen lévő adatok elveszhetnek során egy [karbantartási esemény](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) , vagy ha Ön [egy virtuális gép ismételt üzembe](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Során a virtuális gép sikeres standard újraindítása az adatok az ideiglenes meghajtón kell megőrizni. Azonban előfordulhatnak olyan esetek, ahol az adatok nem aktívak maradnak, például egy új gazdagépre helyezi át. Ennek megfelelően az ideiglenes meghajtón lévő adatokat nem lehet, hogy a rendszer kritikus fontosságú adatokat.
+Minden virtuális gép egy ideiglenes lemezt tartalmaz. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok, és csak az adatok, például lapozófájlokat tárolására szolgál. Az ideiglenes lemezen lévő adatok elveszhetnek során egy [karbantartási esemény](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) , vagy ha Ön [egy virtuális gép ismételt üzembe](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Során a virtuális gép sikeres standard újraindítása az adatok az ideiglenes meghajtón kell megőrizni. Azonban előfordulhatnak olyan esetek, ahol az adatok nem aktívak maradnak, például egy új gazdagépre helyezi át. Ennek megfelelően az ideiglenes meghajtón lévő adatokat nem lehet, hogy a rendszer kritikus fontosságú adatokat. Amikor egy alkalmazás által használt ideiglenes meghajtó gyorsítótárként alkalmazás teljesítményének növelése érdekében, azt feltételezik, hogy a gyorsítótár az ideiglenes meghajtón történik adatvesztés újraindítás és, hogy az alkalmazásnak kell építenie az adatgyorsítótárat előtt egy hasonló idő a tervezés elérte a teljesítménye.
 
 Az ideiglenes lemez a D: meghajtó címkével alapértelmezés szerint és azt pagefile.sys tárolására szolgál. Tekintse meg ezt a lemezt, más meghajtóbetűt újramegfeleltetése, [a Windows ideiglenes lemez meghajtóbetűjelét](change-drive-letter.md). Az ideiglenes lemez méretének a függvénye a virtuális gép méretét. További információkért lásd: [méretek a Windows virtuális gépek](sizes.md).
 

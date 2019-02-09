@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 62cdc50b40fb1273fdc2eece050869fc2284cf6c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 6b57c3a172f39c596250b05024ad954a5d065440
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632976"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984817"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban
 
@@ -59,7 +59,7 @@ cd docker-django-webapp-linux
 
 A Git-adattárban tekintse meg a _Dockerfile_ nevű fájlt. Ez a fájl az alkalmazás futtatásához szükséges Python-környezetet írja le. Emellett a rendszerkép beállít egy [SSH](https://www.ssh.com/ssh/protocol/)-kiszolgálót a tároló és a gazdagép közötti biztonságos kommunikációhoz.
 
-```docker
+```Dockerfile
 FROM python:3.4
 
 RUN mkdir /code
@@ -254,7 +254,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 ### <a name="test-the-web-app"></a>A webalkalmazás tesztelése
 
-Tallózással győződjön meg arról, hogy a webalkalmazás működik (`http://<app_name>azurewebsites.net`). 
+Tallózással győződjön meg arról, hogy a webalkalmazás működik (`http://<app_name>.azurewebsites.net`). 
 
 ![Webalkalmazás portkonfigurációjának tesztelése](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
@@ -280,7 +280,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 * Egy [RUN](https://docs.docker.com/engine/reference/builder/#run) utasítás, amely meghívja az `apt-get` parancsot, majd beállítja a rendszergazdafiók jelszavát erre: `"Docker!"`.
 
-    ```docker
+    ```Dockerfile
     ENV SSH_PASSWD "root:Docker!"
     RUN apt-get update \
             && apt-get install -y --no-install-recommends dialog \
@@ -294,7 +294,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 * Egy [COPY](https://docs.docker.com/engine/reference/builder/#copy) utasítás, amely utasítja a Docker-motort az [sshd_config](https://man.openbsd.org/sshd_config) fájl az */etc/ssh/* könyvtárba történő másolására. A konfigurációs fájlnak [ezen az sshd_config fájlon](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config) kell alapulnia.
 
-    ```docker
+    ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
@@ -305,7 +305,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 * Egy [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose) utasítás, amely elérhetővé teszi a tároló 2222-es portját. Bár a rendszergazdai szintű jelszó ismert, a 2222-es port nem érhető el az internet irányából. Ez egy belső port, amely csak egy privát virtuális hálózat hálózati hidas kapcsolatán belüli tárolók által érhető el. Ezt követően a parancsok átmásolják az SSH konfigurációs részleteit, majd elindítják az `ssh` szolgáltatást.
 
-    ```docker
+    ```Dockerfile
     EXPOSE 8000 2222
     ```
 

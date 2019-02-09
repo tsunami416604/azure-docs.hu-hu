@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: c0e6aa34b80389689e49ac6ad3566a3a109a96e1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 803c9af7b6c40f7deee2b81fb7ff0ae82ef6778a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158162"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965154"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Az Azure Mobile Apps SDK használata az Android rendszerhez
 
@@ -55,7 +55,7 @@ Mindkettőt módosíthatja **build.gradle** fájlok:
 
 1. Adja hozzá a kódot a *projekt* szint **build.gradle** belül fájlt a *buildscript* címkét:
 
-    ```text
+    ```gradle
     buildscript {
         repositories {
             jcenter()
@@ -65,7 +65,7 @@ Mindkettőt módosíthatja **build.gradle** fájlok:
 
 2. Adja hozzá a kódot a *modul alkalmazás* szint **build.gradle** belül fájlt a *függőségek* címkét:
 
-    ```text
+    ```gradle
     compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
@@ -496,7 +496,7 @@ Az elrendezés XML-kódot néhány kódrészleteket határozza meg. Adja meg egy
 
 Az a fenti kóddal a *listitem* attribútum az elrendezést az egyes sorok azonosítóját adja meg a listában. Ez a kód egy jelölőnégyzet és a hozzá tartozó szöveg adja meg, és egyszer lekérdezi példányosítása a lista minden eleme. Ez az elrendezés nem jelennek meg a **azonosító** mezőben, és a egy összetettebb elrendezés kellene megadnia további mezőket a megjelenő információk. Ez a kód szerepel a **row_list_to_do.xml** fájlt.
 
-```java
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -520,7 +520,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
 Bírálja felül az adapterek **getView** metódust. Példa:
 
-```
+```java
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -770,7 +770,7 @@ Az Azure Mobile Apps ügyféloldali SDK kapcsolat nélküli szinkronizálás az 
 * Növekményes szinkronizálás: Csak frissített és új rekordok lesznek letöltve, sávszélesség-és memóriafelhasználás mentése.
 * Optimista párhuzamosság: Műveletek rendszer feltételezi, hogy sikeres legyen.  Ütközésfeloldás van halasztott mindaddig, amíg a frissítéseket a kiszolgálón történik.
 * Ütközések feloldása: Az SDK-t észleli, ha egy ütköző módosítás történt a kiszolgálón, és biztosít beavatkozási pontjainak figyelmezteti a felhasználót.
-* Helyreállítható törlés: A törölt rekordok törölt, így azok offline gyorsítótár frissítése más eszközök lesznek megjelölve.
+* Soft Delete: A törölt rekordok törölt, így azok offline gyorsítótár frissítése más eszközök lesznek megjelölve.
 
 ### <a name="initialize-offline-sync"></a>Kapcsolat nélküli szinkronizálás – inicializálása
 
@@ -959,7 +959,7 @@ Azt is konfigurálnia kell a customtabs projektet.  Először adja meg egy átir
 
 Adja hozzá a **redirectUriScheme** , a `build.gradle` fájlt az alkalmazás:
 
-```text
+```gradle
 android {
     buildTypes {
         release {
@@ -976,7 +976,7 @@ android {
 
 Végül adja hozzá `com.android.support:customtabs:23.0.1` a függőségek listájához a `build.gradle` fájlt:
 
-```text
+```gradle
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.code.gson:gson:2.3'
@@ -1076,7 +1076,7 @@ Az Active Directory Authentication Library (ADAL) segítségével bejelentkezhet
 1. A mobil-háttéralkalmazás az AAD-bejelentkezés konfigurálása a következő a [konfigurálása App Service-ben az Active Directory-bejelentkezés] [ 22] oktatóanyag. Ellenőrizze, hogy a natív ügyfélalkalmazás regisztrációja nem kötelező lépése.
 2. Telepítse az adal-t módosításával a build.gradle fájllal, hogy az alábbi definíciókat tartalmazza:
 
-    ```
+    ```gradle
     repositories {
         mavenCentral()
         flatDir {

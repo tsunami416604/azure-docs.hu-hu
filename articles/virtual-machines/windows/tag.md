@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 75a6466578808cb5c0dd8d2e32d9445a6e5a5bf8
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: ca389814b35a666a48959a50de58a231df6728c5
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140536"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981128"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Az Azure-beli Windows virtuális gép címkézése
 Ez a cikk ismerteti a különböző módjait a Windows virtuális gép címkézése Azure-ban a Resource Manager-alapú üzemi modellel. A címkék olyan felhasználó által definiált kulcs/érték párok, amelyeket közvetlenül az erőforrás vagy erőforráscsoport helyezhető. Az Azure jelenleg támogatja az erőforrás és erőforráscsoport legfeljebb 15 címkék. Címkék erőforrás elhelyezve a létrehozásakor vagy hozzáadni egy meglévő erőforrást. Vegye figyelembe, hogy a címkék csak a Resource Manager üzemi modell használatával létrehozott erőforrások támogatottak. Ha szeretne Linux virtuális gép címkézése, [Linux rendszerű virtuális gép címkézése Azure-ban](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -30,9 +30,11 @@ Ez a cikk ismerteti a különböző módjait a Windows virtuális gép címkéz�
 ## <a name="tagging-with-powershell"></a>Címkézés, a PowerShell-lel
 Szeretne létrehozni, hozzáadása és törlése a PowerShell, először meg kell állíthat be címkéket az [az Azure Resource Manager PowerShell környezetet][PowerShell environment with Azure Resource Manager]. Miután végzett a telepítő, elhelyezhet címkék számítási, hálózati és tárolási erőforrások létrehozásakor, vagy a Powershellen keresztül az erőforrás létrehozása után. Ez a cikk megtekintéséhez vagy szerkesztéséhez címkék elhelyezni a virtuális gépek összpontosít.
 
-Először keresse meg a virtuális gép a `Get-AzureRmVM` parancsmagot.
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
-        PS C:\> Get-AzureRmVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
+Először keresse meg a virtuális gép a `Get-AzVM` parancsmagot.
+
+        PS C:\> Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
 
 Ha a virtuális gép már tartalmazza a címkék, ekkor megjelenik az összes címke az erőforráson:
 
@@ -43,11 +45,11 @@ Ha a virtuális gép már tartalmazza a címkék, ekkor megjelenik az összes c�
                 "Environment": "Production"
                }
 
-Ha szeretné Powershellen keresztül címkéket adhat hozzá, akkor használhatja a `Set-AzureRmResource` parancsot. Megjegyzés: amikor frissíti a PowerShell, a címkék címkéket egészét frissülnek. Ezért egy címke hozzáadásakor a címkékkel rendelkező erőforráshoz, szüksége lesz az erőforrás elhelyezni kívánt összes címkét felvenni. Alább van további címkék hozzáadására a PowerShell parancsmagokon keresztül egy erőforrás egy példát.
+Ha szeretné Powershellen keresztül címkéket adhat hozzá, akkor használhatja a `Set-AzResource` parancsot. Megjegyzés: amikor frissíti a PowerShell, a címkék címkéket egészét frissülnek. Ezért egy címke hozzáadásakor a címkékkel rendelkező erőforráshoz, szüksége lesz az erőforrás elhelyezni kívánt összes címkét felvenni. Alább van további címkék hozzáadására a PowerShell parancsmagokon keresztül egy erőforrás egy példát.
 
-Az első parancsmag beállítja elhelyezett címkék *MyTestVM* , a *$tags* változó, használja a `Get-AzureRmResource` és `Tags` tulajdonság.
+Az első parancsmag beállítja elhelyezett címkék *MyTestVM* , a *$tags* változó, használja a `Get-AzResource` és `Tags` tulajdonság.
 
-        PS C:\> $tags = (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
+        PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
 A második parancs jeleníti meg a címkéket az adott változó.
 
@@ -68,12 +70,12 @@ A harmadik parancs hozzáad egy további címkét a *$tags* változó. Vegye fig
 
 A negyedik parancs beállítja a megadott címkék mindegyikével a *$tags* változó az adott erőforráshoz. Ebben az esetben MyTestVM.
 
-        PS C:\> Set-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
+        PS C:\> Set-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
 
 Az ötödik parancs megjeleníti, címkék az erőforráson. Amint láthatja, *hely* most számít, ha a címke *MyLocation* értékeként.
 
 ```
-    PS C:\> (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
+    PS C:\> (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
     Key           Value
     ----          -----
@@ -93,7 +95,7 @@ Címkézés PowerShell-lel kapcsolatos további információkért tekintse meg a
 * Hogyan címkék segít Önnek az Azure-erőforrások kezeléséhez, olvassa el [az Azure-elszámolások ismertetése] [ Understanding your Azure Bill] és [betekintést nyerhet a Microsoft Azure erőforrás-használat] [Gain insights into your Microsoft Azure resource consumption].
 
 [PowerShell environment with Azure Resource Manager]: ../../azure-resource-manager/powershell-azure-resource-manager.md
-[Azure Resource Cmdlets]: https://docs.microsoft.com/powershell/module/azurerm.resources/
+[Azure Resource Cmdlets]: https://docs.microsoft.com/powershell/module/az.resources/
 [Azure Resource Manager Overview]: ../../azure-resource-manager/resource-group-overview.md
 [Using Tags to organize your Azure Resources]: ../../azure-resource-manager/resource-group-using-tags.md
 [Understanding your Azure Bill]: ../../billing/billing-understand-your-bill.md

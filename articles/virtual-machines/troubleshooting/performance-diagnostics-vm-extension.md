@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3430ff2b292a3e5fe675c3a5f332a12a88d4bfbf
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 415cf34a8b19400091807005e1e9943aa025f244
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096789"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980023"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>A teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény Windows
 
@@ -210,7 +210,7 @@ Az Azure virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource
 ```
 
 ## <a name="powershell-deployment"></a>PowerShell környezetben végzett telepítés
-A `Set-AzureRmVMExtension` parancs használható egy már meglévő virtuális gépek üzembe helyezéséhez Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény.
+A `Set-AzVMExtension` parancs használható egy már meglévő virtuális gépek üzembe helyezéséhez Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény.
 
 PowerShell
 
@@ -218,7 +218,7 @@ PowerShell
 $PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z";"resourceId"="VMResourceId" }
 $ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
-Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
+Set-AzVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.Azure.Performance.Diagnostics" `

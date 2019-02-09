@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b5f1e5838fcf6eeac3b58fb0eef8fe08eb9202d4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7c2c8967cbdb404ca23f860f019cfbb6cce5415b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167138"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982726"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
@@ -58,13 +58,15 @@ A PIM és a hozzá tartozó dokumentáció jobb megértéséhez, tekintse át az
 | --- | --- | --- |
 | Jogosult | Typo | Szerepkör-hozzárendelés, amelyhez a felhasználót a szerepkör használatához egy vagy több művelet végrehajtásához szükséges. Ha egy felhasználó jogosult szerepkör lett végrehajtva, ez azt jelenti, ha kiemelt feladatait van szükségük a szerepkör aktiválásához. Nincs megadott valaki egy állandó jogosult szerepkör-hozzárendelés és hozzáférési nincs különbség. Az egyetlen különbség, hogy néhány felhasználó nem kell olyan folyamatosan. |
 | aktív | Typo | Szerepkör-hozzárendelés, amelyek nem igényelnek a felhasználót, hogy a szerepkör használatához bármely művelet elvégzésére. A felhasználók hozzárendelve aktívként a szerepkörhöz rendelt jogosultság. |
-| aktiválás |  | Folyamat végrehajtása egy vagy több műveletet, amely a felhasználó nem jogosult a szerepkör használatához. Műveletek tartalmazhat, egy üzleti indoklásának megadása, vagy jóváhagyási kérése a kijelölt jóváhagyókat többtényezős hitelesítés (MFA)-ellenőrzés elvégzése. |
+| aktiválás |  | Folyamat használatához egy szerepkör, amely a felhasználó nem jogosult egy vagy több műveletet hajt végre. Műveletek tartalmazhat, egy üzleti indoklásának megadása, vagy jóváhagyási kérése a kijelölt jóváhagyókat többtényezős hitelesítés (MFA)-ellenőrzés elvégzése. |
 | Hozzárendelve | Állapot | Aktív szerepkör-hozzárendeléssel rendelkező felhasználóként. |
-| Aktiválva | Állapot | Egy jogosult szerepkör-hozzárendelés rendelkező felhasználóként végrehajtani a műveleteket a szerepkör aktiválását, és most már aktív. |
+| Aktiválva | Állapot | Egy jogosult szerepkör-hozzárendelés rendelkező felhasználóként végrehajtani a műveleteket a szerepkör aktiválását, és most már aktív.  Aktiválta, miután a felhasználó használhatja az előre konfigurált időszak-az-ideje előtt újra aktiválni kell azokat a szerepkör. |
 | állandó jogosult | Időtartam | Ahol a felhasználó mindig a szerepkör aktiválását jogosult szerepkör-hozzárendelés. |
 | állandó aktív | Időtartam | Szerepkör-hozzárendelés ahol a felhasználó bármikor használhatja a szerepkör bármilyen művelet végrehajtása nélkül. |
 | jogosult lejár | Időtartam | Ahol a felhasználó abban az esetben a szerepkör aktiválását a megadott kezdő és záró dátum belül jogosult szerepkör-hozzárendelés. |
 | aktív lejár | Időtartam | Szerepkör-hozzárendelés ahol a felhasználó használhatja a szerepkör belül megadott kezdő és záró dátum bármilyen művelet végrehajtása nélkül. |
+| – igény (szerinti JIT) hozzáférési |  | A modell, amelyben a felhasználók megkapják a rendszerjogosultságú feladatait ideiglenes engedélyek, amely megakadályozza, hogy a rosszindulatú vagy jogosulatlan felhasználók hozzáférjenek a engedélyekkel rendelkezik lejárta után. Hozzáférés csak akkor, ha a felhasználók szüksége van rá. |
+| legkisebb jogosultság hozzáférés elve |  | A feladatok elvégzéséhez jogosultak, amelyben minden felhasználó csak a minimális jogosultságokkal rendelkező megadott ajánlott biztonsági eljárás szükséges. Ez az eljárás minimálisra csökkentik a globális rendszergazdák, és helyette használja az adott rendszergazdai szerepköröket bizonyos forgatókönyvek esetén. |
 
 ## <a name="what-does-pim-look-like"></a>Milyen kinéznie PIM?
 
@@ -104,6 +106,6 @@ A PIM használatát támogatja a következő esetekben:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Ismerkedés a PIM-mel](pim-getting-started.md)
 - [Licenckövetelmények vonatkoznak, miközben a PIM használata](subscription-requirements.md)
 - [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [A PIM telepítése](pim-deployment-plan.md)

@@ -15,17 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: 2613584e336243128067a76ce424e640ebdf94e0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4fb31721da679b21fa311340269cf07f93cd903
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817326"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981264"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Az Azure virtuális gép távoli asztali kapcsolatok hibaelhárítása
 A távoli asztal protokoll (RDP) kapcsolatot a Windows-alapú Azure virtuális gép (VM), és nem fér hozzá a virtuális gép különböző okok miatt meghiúsulhat. A probléma lehet a távoli asztal szolgáltatással a virtuális Gépet, a hálózati kapcsolat vagy a távoli asztali ügyfél a gazdaszámítógépen. Ez a cikk végigvezeti néhány, a leggyakrabban használt módszerek RDP-kapcsolatok problémáinak megoldásához. 
 
 Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a [az MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatja az első**.
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 <a id="quickfixrdp"></a>
 
@@ -107,7 +109,7 @@ Ha még nem tette, [a legújabb Azure PowerShell telepítése és konfigurálás
 Az alábbi példák a változókkal például `myResourceGroup`, `myVM`, és `myVMAccessExtension`. A változó nevét és helyét. cserélje le a saját értékeire.
 
 > [!NOTE]
-> A felhasználói hitelesítő adatok és az RDP-konfigurációjának visszaállítása használatával a [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell-parancsmagot. A következő példákban `myVMAccessExtension` a folyamat részeként megadott név. Ha előzőleg dolgozott a VMAccessAgent, a meglévő bővítmény nevét beszerezheti a `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` a virtuális gép tulajdonságainak ellenőrzése. Tekintse meg a nevet, tekintse meg a kimeneti "Bővítmények" szakaszában.
+> A felhasználói hitelesítő adatok és az RDP-konfigurációjának visszaállítása használatával a [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell-parancsmagot. A következő példákban `myVMAccessExtension` a folyamat részeként megadott név. Ha előzőleg dolgozott a VMAccessAgent, a meglévő bővítmény nevét beszerezheti a `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` a virtuális gép tulajdonságainak ellenőrzése. Tekintse meg a nevet, tekintse meg a kimeneti "Bővítmények" szakaszában.
 
 Hibaelhárítási lépések, után próbáljon csatlakozni a virtuális gép újra. Ha még nem sikerül, próbálja meg a következő lépéssel.
 
@@ -116,7 +118,7 @@ Hibaelhárítási lépések, után próbáljon csatlakozni a virtuális gép új
     Az alábbi példa alaphelyzetbe állítja az RDP-kapcsolat a virtuális gép nevű `myVM` a a `WestUS` helye és nevű erőforráscsoportban `myResourceGroup`:
    
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
+    Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location Westus -Name "myVMAccessExtension"
     ```
 2. **Ellenőrizze a hálózati biztonsági csoport szabályai**. Hibaelhárítási ebben a lépésben ellenőrzi, hogy rendelkezik-e a szabály a hálózati biztonsági csoportot, hogy engedélyezze az RDP-forgalmat a. Az alapértelmezett port, RDP a 3389-es TCP-port az. Egy szabályt, amely engedélyezi az RDP-forgalmat előfordulhat, hogy nem hozhatók létre automatikusan a virtuális gép létrehozásakor.
@@ -124,7 +126,7 @@ Hibaelhárítási lépések, után próbáljon csatlakozni a virtuális gép új
     Első lépésként rendelje hozzá a konfigurációs adatokat a hálózati biztonsági csoport a `$rules` változó. Az alábbi példa a hálózati biztonsági csoport nevű információt szerez `myNetworkSecurityGroup` az erőforráscsoport neve `myResourceGroup`:
    
     ```powershell
-    $rules = Get-AzureRmNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
+    $rules = Get-AzNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
         -Name "myNetworkSecurityGroup"
     ```
    
@@ -164,7 +166,7 @@ Hibaelhárítási lépések, után próbáljon csatlakozni a virtuális gép új
     Most frissítse a hitelesítő adatokat a virtuális Gépen. Az alábbi példa frissíti a hitelesítő adatokat a virtuális gép nevű `myVM` a a `WestUS` helye és nevű erőforráscsoportban `myResourceGroup`:
    
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
+    Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location WestUS -Name "myVMAccessExtension" `
         -UserName $cred.GetNetworkCredential().Username `
         -Password $cred.GetNetworkCredential().Password
@@ -174,14 +176,14 @@ Hibaelhárítási lépések, után próbáljon csatlakozni a virtuális gép új
     A következő példa újraindítja a virtuális gép nevű `myVM` az erőforráscsoport neve `myResourceGroup`:
    
     ```powershell
-    Restart-AzureRmVM -ResourceGroup "myResourceGroup" -Name "myVM"
+    Restart-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
 5. **A virtuális gép ismételt üzembe**. Ez a hibaelhárítási lépés újbóli üzembe helyezése bármely alapul szolgáló platform vagy hálózati problémák megoldására az Azure-on belül egy másik gazdagépre a virtuális gép.
    
     Az alábbi példa ismét üzembe helyezi a virtuális gép nevű `myVM` a a `WestUS` helye és nevű erőforráscsoportban `myResourceGroup`:
    
     ```powershell
-    Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
+    Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
 6. **Ellenőrizze az útválasztást**. Network Watcher használatát [a következő Ugrás](../../network-watcher/network-watcher-check-next-hop-portal.md) teszi, hogy erősítse meg, hogy egy útvonal forgalom nem megakadályozza, hogy vagy a virtuális gépről. Érvényes útvonalak a hálózati adapter érvényes útvonalai tekintse át is. További információkért lásd: [érvényes útvonalak használata virtuális gépek forgalom áramlása](../../virtual-network/diagnose-network-routing-problem.md).

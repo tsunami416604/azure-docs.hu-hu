@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 1/30/2019
+ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6e083c4a7595bb70e77bca860c756abc2eaa18e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658386"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979649"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -209,7 +209,7 @@ A következő táblázat felsorolja az Automation-fiókban létrehozott változ�
 |External_AutoStop_TimeAggregationOperator | Az idő összesítési operátor, alkalmazott a kijelölt méretének Pro vyhodnocení podmínky. Elfogadható értékek a következők **átlagos**, **minimális**, **maximális**, **teljes**, és **utolsó**.|
 |External_AutoStop_TimeWindow | Az ablak mérete, amely során Azure elemzi a riasztást kiváltó mód kiválasztott adatai. Ez a paraméter bemeneti timespan formátumban fogad el. Lehetséges értékek: 5 percet vagy akár 6 óráig.|
 |External_EnableClassicVMs| Itt adhatja meg, hogy klasszikus virtuális gépeket a megoldás által megcélzott. Az alapértelmezett érték: igaz. Ez kell beállítani hamis értékre a CSP-előfizetésekben.|
-|External_ExcludeVMNames | Adja meg, amelyet ki szeretne, egy virtuális gép neve, nevek elválasztó vessző használatával szóközök nélküli szövegláncként.|
+|External_ExcludeVMNames | Adja meg, amelyet ki szeretne, egy virtuális gép neve, nevek elválasztó vessző használatával szóközök nélküli szövegláncként. Ez a korlátozott 140 virtuális gépekhez. Előfordulhat, hogy ha több mint 140 virtuális gépek kerülnek a virtuális gépek ki lesznek zárva hivatott elindítani vagy -leállítás véletlenül|
 |External_Start_ResourceGroupNames | Itt adható meg egy vagy több erőforráscsoport megadhat, az értékek egy vesszővel tagolt indítási műveleteket a megcélzott használatával.|
 |External_Stop_ResourceGroupNames | Itt adható meg egy vagy több erőforráscsoport megadhat, az értékek egy vesszővel tagolt stop műveleteket a megcélzott használatával.|
 |Internal_AutomationAccountName | Itt adhatja meg az Automation-fiók nevére.|
@@ -333,7 +333,7 @@ Néhány módon segítségével győződjön meg arról, hogy egy virtuális gé
 
 ### <a name="exclude-a-vm"></a>Virtuális gép kizárása
 
-Virtuális gép kizárása a megoldást, adhat hozzá, hogy a **External_ExcludeVMNames** változó. Ezt a változót az adott virtuális gépek kizárása a indítása és leállítása a megoldás a vesszővel tagolt listája.
+Virtuális gép kizárása a megoldást, adhat hozzá, hogy a **External_ExcludeVMNames** változó. Ezt a változót az adott virtuális gépek kizárása a indítása és leállítása a megoldás a vesszővel tagolt listája. Ez a lista 140 virtuális gépek korlátozódik. Ha több mint 140 virtuális gépeket ad hozzá a vesszővel tagolt listája, virtuális gépek vannak beállítva, amelyet ki szeretne előfordulhat, hogy véletlenül elindítandó vagy leállítandó.
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Az indítási és leállítási ütemezés módosítása
 

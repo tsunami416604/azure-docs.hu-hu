@@ -15,16 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: ff2352005470755c8ca0f472c4a790a820fea6b6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a5e3fbc3369f19af8d93e23d669a4449ab3d414c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754387"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980584"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Az Azure-beli általánosított virtuális gép felügyelt rendszerképének létrehozása
 
 Egy felügyelt rendszerképet erőforrás az általánosított virtuális gép (VM) tárolt felügyelt lemez vagy a storage-fiókban lévő nem felügyelt lemez hozható létre. A lemezkép ezután több virtuális gép létrehozására használható. Információk a felügyelt lemezképek számlázása, lásd: [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks/). 
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Windows rendszerű virtuális gép általánosítása a Sysprep használatával
 
@@ -85,11 +87,11 @@ A Windows virtuális gép általánosításához, kövesse az alábbi lépéseke
 Lemezkép létrehozása a virtuális gépről közvetlenül biztosítja, hogy a rendszerkép tartalmazza a virtuális Géphez, többek között az operációsrendszer-lemez és bármely adatlemez társított lemezeket. Ez a példa bemutatja, hogyan hozhat létre egy felügyelt rendszerképet, hogy a használt felügyelt lemezek virtuális gépből.
 
 
-Mielőtt elkezdené, győződjön meg arról, hogy a legújabb verzióját az AzureRM.Compute PowerShell-modul, amely 5.7.0 verziójúnak kell lennie, vagy később. A verzió megkereséséhez futtassa `Get-Module -ListAvailable AzureRM.Compute` a PowerShellben. Ha frissíteni szeretne, olvassa el [Azure PowerShell telepítése a Windows a Powershellgettel](/powershell/azure/azurerm/install-azurerm-ps). Ha Ön helyileg futtatja a Powershellt, futtassa `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
+Mielőtt elkezdené, győződjön meg arról, hogy a legújabb verzióját az AzureRM.Compute PowerShell-modul, amely 5.7.0 verziójúnak kell lennie, vagy később. A verzió megkereséséhez futtassa `Get-Module -ListAvailable AzureRM.Compute` a PowerShellben. Ha frissíteni szeretne, olvassa el [Azure PowerShell telepítése a Windows a Powershellgettel](/powershell/azure/azurerm/install-az-ps). Ha Ön helyileg futtatja a Powershellt, futtassa `Connect-AzAccount` kapcsolat létrehozása az Azure-ral.
 
 
 > [!NOTE]
-> Ha szeretné tárolni a rendszerképet a zónaredundáns tárolás, egy régióban, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `-ZoneResilient` paramétert a rendszerkép-konfiguráció (`New-AzureRmImageConfig` parancsot).
+> Ha szeretné tárolni a rendszerképet a zónaredundáns tárolás, egy régióban, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `-ZoneResilient` paramétert a rendszerkép-konfiguráció (`New-AzImageConfig` parancsot).
 
 Virtuálisgép-rendszerkép létrehozásához kövesse az alábbi lépéseket:
 
@@ -104,30 +106,30 @@ Virtuálisgép-rendszerkép létrehozásához kövesse az alábbi lépéseket:
 2. Győződjön meg arról, hogy a virtuális gép fel lett szabadítva.
 
     ```azurepowershell-interactive
-    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
+    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
 3. A virtuális gép állapotának beállítása **Általánosítottra**. 
    
     ```azurepowershell-interactive
-    Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized
+    Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized
     ```
     
 4. Töltse be a virtuális gépet. 
 
     ```azurepowershell-interactive
-    $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName
+    $vm = Get-AzVM -Name $vmName -ResourceGroupName $rgName
     ```
 
 5. Hozza létre a rendszerkép-konfigurációt.
 
     ```azurepowershell-interactive
-    $image = New-AzureRmImageConfig -Location $location -SourceVirtualMachineId $vm.Id 
+    $image = New-AzImageConfig -Location $location -SourceVirtualMachineId $vm.Id 
     ```
 6. Hozza létre a rendszerképet.
 
     ```azurepowershell-interactive
-    New-AzureRmImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
+    New-AzImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
     ``` 
 
 ## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Rendszerkép létrehozása egy felügyelt lemezről a PowerShell használatával
@@ -148,7 +150,7 @@ Ha azt szeretné, hozzon létre egy rendszerképet az operációsrendszer-lemez,
 2. A virtuális gép lekérése.
 
    ```azurepowershell-interactive
-   $vm = Get-AzureRmVm -Name $vmName -ResourceGroupName $rgName
+   $vm = Get-AzVm -Name $vmName -ResourceGroupName $rgName
    ```
 
 3. A felügyelt lemez Azonosítójának lekéréséhez.
@@ -160,14 +162,14 @@ Ha azt szeretné, hozzon létre egy rendszerképet az operációsrendszer-lemez,
 3. Hozza létre a rendszerkép-konfigurációt.
 
     ```azurepowershell-interactive
-    $imageConfig = New-AzureRmImageConfig -Location $location
-    $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -ManagedDiskId $diskID
+    $imageConfig = New-AzImageConfig -Location $location
+    $imageConfig = Set-AzImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -ManagedDiskId $diskID
     ```
     
 4. Hozza létre a rendszerképet.
 
     ```azurepowershell-interactive
-    New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
+    New-AzImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ``` 
 
 
@@ -188,19 +190,19 @@ Egy általánosított virtuális gép pillanatképe a következő lépésekkel h
 2. A pillanatkép beolvasása.
 
    ```azurepowershell-interactive
-   $snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgName -SnapshotName $snapshotName
+   $snapshot = Get-AzSnapshot -ResourceGroupName $rgName -SnapshotName $snapshotName
    ```
    
 3. Hozza létre a rendszerkép-konfigurációt.
 
     ```azurepowershell-interactive
-    $imageConfig = New-AzureRmImageConfig -Location $location
-    $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -SnapshotId $snapshot.Id
+    $imageConfig = New-AzImageConfig -Location $location
+    $imageConfig = Set-AzImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -SnapshotId $snapshot.Id
     ```
 4. Hozza létre a rendszerképet.
 
     ```azurepowershell-interactive
-    New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
+    New-AzImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ``` 
 
 
@@ -221,20 +223,20 @@ Hozzon létre egy felügyelt rendszerképet általános virtuális merevlemezbő
 2. Állítsa le és felszabadítja a virtuális Gépet.
 
     ```azurepowershell-interactive
-    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
+    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
 3. A virtuális gép megjelölése általánosítva.
 
     ```azurepowershell-interactive
-    Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized 
+    Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized  
     ```
 4.  A rendszerkép létrehozása a operációs rendszer általánosított virtuális merevlemez használatával.
 
     ```azurepowershell-interactive
-    $imageConfig = New-AzureRmImageConfig -Location $location
-    $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsType Windows -OsState Generalized -BlobUri $osVhdUri
-    $image = New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
+    $imageConfig = New-AzImageConfig -Location $location
+    $imageConfig = Set-AzImageOsDisk -Image $imageConfig -OsType Windows -OsState Generalized -BlobUri $osVhdUri
+    $image = New-AzImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ```
 
     

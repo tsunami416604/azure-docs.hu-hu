@@ -1,6 +1,6 @@
 ---
-title: Töltse le a sablont egy Azure virtuális gép |} Microsoft Docs
-description: Töltse le a virtuális gép számára a Resource Manager üzembe helyezési modellel központi telepítésének automatizálása templatefor
+title: Egy Azure-beli Virtuálisgép-sablon letöltése |} A Microsoft Docs
+description: Töltse le a virtuális gép a Resource Manager-alapú üzemi modellben üzemelő példányok automatizálása érdekében templatefor
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,40 +15,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 93ed84cb146119c877c3a143c5f7af9ca8ba0656
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 574227e010a37340ce7248d2e4657f6a3f231d0a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
-ms.locfileid: "26055789"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984528"
 ---
 # <a name="download-the-template-for-a-vm"></a>Virtuálisgép-sablon letöltése
-Egy virtuális Gépet az Azure-ban a portál vagy PowerShell létrehozásakor Resource Manager-sablon automatikusan létrejön. Ez a sablon használatával gyorsan ismétlődő egy központi telepítést. A sablon összes erőforrást erőforráscsoportban információt tartalmaz. A virtuális gép esetén ez azt jelenti, a sablon tartalmaz mindent, létrejön a virtuális gép az erőforráscsoport, beleértve a hálózati erőforrások támogatásához.
+Az Azure-ban a portál vagy a PowerShell használatával egy virtuális Gépet hoz létre, amikor egy Resource Manager-sablon automatikusan létrejön az Ön számára. Ez a sablon használatával gyorsan ismétlődő egy központi telepítést. A sablon egy erőforráscsoportba tartozó összes információt tartalmazza. Virtuális gép esetén ez azt jelenti, a sablon tartalmaz mindent, ami jön létre a virtuális Gépet, az erőforráscsoport, beleértve a hálózati erőforrások támogatásához.
 
-## <a name="download-the-template-using-the-portal"></a>Töltse le a sablont, a portál használatával
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Válasszon egyet a bal oldali menüben **virtuális gépek**.
+## <a name="download-the-template-using-the-portal"></a>Töltse le a sablont a portálról
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Válassza a bal oldali menüben, egy **virtuális gépek**.
 3. Válassza ki a virtuális gépet a listából.
-4. Válassza ki **automatizálási parancsfájl**.
-5. Válassza ki **letöltése** a menüből a lap tetején, és mentse a .zip fájlt a helyi számítógépen.
-6. Nyissa meg a .zip fájlt, és bontsa ki a fájlt egy mappába. A zip-fájlt tartalmaz:
+4. Válassza ki **Automation-szkript**.
+5. Válassza ki **letöltése** a menü tetején, és mentse a .zip-fájlt a helyi számítógépen.
+6. Nyissa meg a .zip-fájlt, és bontsa ki a fájlokat egy mappában. A .zip-fájlban található:
    
-   * Deploy.ps1
+   * deploy.ps1
    * Deploy.SH 
-   * deployer.RB
+   * deployer.rb
    * DeploymentHelper.cs
-   * Parameters.JSON
-   * Template.JSON
+   * parameters.json
+   * template.json
 
-A template.json fájl nem a sablon.
+A template.json fájlt az sablon.
 
 ## <a name="download-the-template-using-powershell"></a>Töltse le a sablon PowerShell használatával
-A .JSON kiterjesztésű sablon fájl használatával is letöltheti a [Export-AzureRMResourceGroup](https://msdn.microsoft.com/library/mt715427.aspx) parancsmag. Használhatja a `-path` paramétert adja meg a fájlnevet és elérési útja a .JSON kiterjesztésű fájlt. Ez a példa bemutatja, hogyan nevű erőforráscsoport a sablon letöltése **myResourceGroup** számára a **C:\users\public\downloads** mappát a helyi számítógépen.
+A .json sablon fájl használatával is letöltheti a [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) parancsmagot. Használhatja a `-path` paramétert adja meg a nevét és elérési útját a .JSON kiterjesztésű fájlt. Ez a példa bemutatja, hogyan töltheti le az erőforráscsoport neve a sablon **myResourceGroup** , a **C:\users\public\downloads** mappát a helyi számítógépen.
 
 ```powershell
-    Export-AzureRmResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
+    Export-AzResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Sablonok használata erőforrások telepítésével kapcsolatos további tudnivalókért lásd: [Resource Manager sablonokhoz](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+## <a name="next-steps"></a>További lépések
+Az üzembe helyezni erőforrásokat sablonok használatával kapcsolatos további információkért lásd: [Resource Manager sablonokhoz](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 

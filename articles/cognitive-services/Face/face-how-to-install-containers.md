@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 93fbcb96415aa2c800a772fdeb925b1513d7512d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2be50b7f2583f7f15b2a0783ef729b91bc158234
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863006"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983661"
 ---
 # <a name="install-and-run-containers"></a>Tárolók telepítése és futtatása
 
@@ -60,7 +60,7 @@ Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek 
 
 Face API tárolórendszerképeket érhetők el. 
 
-| Tároló | Tárház |
+| Tároló | Adattár |
 |-----------|------------|
 | Arcfelismerés | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
@@ -68,7 +68,7 @@ Face API tárolórendszerképeket érhetők el.
 
 ### <a name="docker-pull-for-the-face-container"></a>A Face tároló docker pull
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/face:latest
 ```
 
@@ -132,18 +132,7 @@ A kimenet futtatásakor a tároló [csatlakoztatási](./face-resource-container-
 
 A Face API tárolók küldés számlázási adatokat az Azure-ba, a használatával egy _Face API_ erőforrást az Azure-fiókjával. 
 
-Cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat. Cognitive Services-tárolók nem vásárlói adatokat küldeni a Microsoftnak. 
-
-A `docker run` parancsot használja a következő argumentumok számlázás szempontjából:
-
-| Beállítás | Leírás |
-|--------|-------------|
-| `ApiKey` | Az API-kulcsot a _Face API_ erőforrás számlázási adatok nyomon követésére szolgál. |
-| `Billing` | Az a végpont a _Face API_ erőforrás számlázási adatok nyomon követésére szolgál.|
-| `Eula` | Azt jelzi, hogy Ön már elfogadta a tároló licencét.<br/>Ez a beállítás értékét állítsa `accept`. |
-
-> [!IMPORTANT]
-> Mindhárom meg kell adni az érvényes értékek, vagy a tároló nem indul el.
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Ezek a beállítások kapcsolatos további információkért lásd: [tárolók konfigurálása](./face-resource-container-config.md).
 

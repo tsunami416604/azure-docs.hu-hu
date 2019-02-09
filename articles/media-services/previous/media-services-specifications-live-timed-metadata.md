@@ -4,7 +4,7 @@ description: Ez az meghatározás Media Services élő streamelési belül jelk�
 services: media-services
 documentationcenter: ''
 author: johndeu
-manager: cfowler
+manager: femila
 editor: johndeu
 ms.assetid: 265b94b1-0fb8-493a-90ec-a4244f51ce85
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 02/08/2019
 ms.author: johndeu;
-ms.openlocfilehash: f29efb9a58c0b269f64d637fa3c5d59bb3610bbc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3c51b5fd5bf577479aaeb316d5c1b5f8704f2d19
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265890"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980431"
 ---
-# <a name="signaling-timed-metadata-in-live-streaming"></a>Jelzés időzített metaadatok jelzése az élő Streamelés
+# <a name="signaling-timed-metadata-in-live-streaming-legacy"></a>Időzített metaadatok Live Streaming (örökölt) jelzés
 
 
 ## <a name="1-introduction"></a>1. bevezetés 
@@ -68,8 +68,8 @@ Media Services RTMP egyszerű módban, egy AMF köteg üzenet a következő form
 
 | Mezőnév | Mező típusa | Kötelező? | Leírások                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| Köteg        | Karakterlánc     | Szükséges | Az eseményüzenet.  Kell lennie egy egyszerű módot kijelölése "SpliceOut" splice.                                              |
-| id         | Karakterlánc     | Szükséges | A splice vagy szegmens leíró egyedi azonosítója. Ez az üzenet példányát azonosítja.                            |
+| Köteg        | String     | Szükséges | Az eseményüzenet.  Kell lennie egy egyszerű módot kijelölése "SpliceOut" splice.                                              |
+| id         | String     | Szükséges | A splice vagy szegmens leíró egyedi azonosítója. Ez az üzenet példányát azonosítja.                            |
 | időtartam   | Szám     | Szükséges | A splice időtartama. Egységek törtmásodpercek.                                                                |
 | elapsed    | Szám     | Optional | A jel támogatása érdekében folyamatban ismételt hallgassa meg, ezt a mezőt a bemutatót, hogy mennyi ideig a splice kezdete óta eltelt kell lennie. Egységek törtmásodpercek. Egyszerű mód használatakor ez az érték nem haladhatja meg a splice eredeti időtartamára.                                                  |
 | time       | Szám     | Szükséges | A splice idején bemutató időben kell lennie. Egységek törtmásodpercek.                                     |
@@ -80,9 +80,9 @@ Media Services RTMP egyszerű módban, egy AMF köteg üzenet a következő form
 
 | Mezőnév | Mező típusa | Kötelező? | Leírások                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| Köteg        | Karakterlánc     | Szükséges | Az eseményüzenet.  [SCTE – 35]-üzenetek a Base64-kódolású kell lennie (IETF RFC 4648) bináris kódolású splice_info_section() ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket.                                              |
-| type       | Karakterlánc     | Szükséges | URN vagy URL-cím az üzenet rendszer azonosítása. [SCTE – 35]-üzenetek "urn: scte:scte35:2013a:bin" ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket kell lennie.  |
-| id         | Karakterlánc     | Szükséges | A splice vagy szegmens leíró egyedi azonosítója. Ez az üzenet példányát azonosítja.  Egyenértékű sémantikou üzenetek ugyanazzal az értékkel rendelkezik.|
+| Köteg        | String     | Szükséges | Az eseményüzenet.  [SCTE – 35]-üzenetek a Base64-kódolású kell lennie (IETF RFC 4648) bináris kódolású splice_info_section() ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket.                                              |
+| type       | String     | Szükséges | URN vagy URL-cím az üzenet rendszer azonosítása. [SCTE – 35]-üzenetek "urn: scte:scte35:2013a:bin" ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket kell lennie.  |
+| id         | String     | Szükséges | A splice vagy szegmens leíró egyedi azonosítója. Ez az üzenet példányát azonosítja.  Egyenértékű sémantikou üzenetek ugyanazzal az értékkel rendelkezik.|
 | időtartam   | Szám     | Szükséges | Az esemény vagy ad splice-szegmens, ha ismert időtartama. Ismeretlen, ha az érték lehet 0.                                                                 |
 | elapsed    | Szám     | Optional | A [SCTE – 35] hirdetési jel esetén ismételt alatt annak érdekében, hogy hallgassa meg, ezt a mezőt kell bemutató a splice kezdete óta eltelt idő mennyisége. Egységek törtmásodpercek. [SCTE – 35] módban Ez az érték haladhatja meg az eredeti megadott időtartam a splice vagy szegmens.                                                  |
 | time       | Szám     | Szükséges | Az esemény vagy ad splice bemutató idején.  A bemutató időpontja és időtartama kell igazítani a Stream hozzáférési pontok (SAP) 1 vagy 2, típus meghatározott i. [ISO-14496 – 12]. Kimenő HLS időpontja és időtartama szegmens határokkal kell igazítani. A bemutató idő és az előfizetésen belül különböző eseményüzenetek időtartamát eseménystream nem LEHETNEK egymással átfedésben. Egységek törtmásodpercek.
@@ -102,11 +102,11 @@ A ritka fájlok nyomon követése deklarálni kell a kiszolgáló Manifest élő
 | **Attribútum neve** | **Mező típusa** | **Kötelező?** | **Leírás**                                                                                                                                                                                                                                                 |
 |--------------------|----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | systemBitrate      | Szám         | Szükséges      | "0", jelezve az ismeretlen, változó bitsebességű nyomon kell lennie.                                                                                                                                                                                                 |
-| parentTrackName    | Karakterlánc         | Szükséges      | A szülő pálya, amelyhez a ritka fájlok nyomon követése időkódját igazítva időskálára nevének kell lennie. A szülő nyomon követése nem lehet egy ritka nyomon követése.                                                                                                                    |
+| parentTrackName    | String         | Szükséges      | A szülő pálya, amelyhez a ritka fájlok nyomon követése időkódját igazítva időskálára nevének kell lennie. A szülő nyomon követése nem lehet egy ritka nyomon követése.                                                                                                                    |
 | manifestOutput     | Logikai        | Szükséges      | "True", annak jelzésére, hogy a ritka fájlok nyomon követése ágyazva a zökkenőmentes ügyfél jegyzékfájl kell lennie.                                                                                                                                                               |
-| Altípus            | Karakterlánc         | Szükséges      | KELL lennie a négy karaktert code "Adatok".                                                                                                                                                                                                                         |
-| Séma             | Karakterlánc         | Szükséges      | Kell egy URN vagy URL-cím azonosítására az üzenet sémát. [SCTE – 35]-üzenetek "urn: scte:scte35:2013a:bin" ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket kell lennie. |
-| TrackName          | Karakterlánc         | Szükséges      | A ritka fájlok nyomon követése a nevének kell lennie. A trackName ugyanazt a sémát használja több esemény-adatfolyamok megkülönböztetéséhez használható. Minden egyedi esemény-adatfolyam követése egyedi névvel kell rendelkeznie.                                                                           |
+| Altípus            | String         | Szükséges      | KELL lennie a négy karaktert code "Adatok".                                                                                                                                                                                                                         |
+| Séma             | String         | Szükséges      | Kell egy URN vagy URL-cím azonosítására az üzenet sémát. [SCTE – 35]-üzenetek "urn: scte:scte35:2013a:bin" ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket kell lennie. |
+| TrackName          | String         | Szükséges      | A ritka fájlok nyomon követése a nevének kell lennie. A trackName ugyanazt a sémát használja több esemény-adatfolyamok megkülönböztetéséhez használható. Minden egyedi esemény-adatfolyam követése egyedi névvel kell rendelkeznie.                                                                           |
 | időskálára          | Szám         | Optional      | Csökkentse a szülő követése kell lennie.                                                                                                                                                                                                                      |
 
 -------------------------------------

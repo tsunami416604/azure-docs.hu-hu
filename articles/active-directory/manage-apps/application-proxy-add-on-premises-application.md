@@ -2,21 +2,21 @@
 title: Adja hozzá a helyszíni alkalmazás – az Azure Active Directory alkalmazásproxy |} A Microsoft Docs
 description: Az Azure Active Directory (Azure AD) egy alkalmazásproxy-szolgáltatás, amely lehetővé teszi a felhasználók hozzáférhessenek a helyszíni alkalmazásokhoz bejelentkezik az Azure AD-fiókja van. Ez az oktatóanyag bemutatja, hogyan használható az alkalmazásproxy használatával a környezet előkészítése a, majd, és az Azure portal használatával az Azure AD-bérlő helyszíni alkalmazás hozzáadása.
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 1f6962f0313b6b0ca187512185c990606789da6e
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ad6487284084d40199aeaee1e1008c75ace49400
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661955"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965120"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 

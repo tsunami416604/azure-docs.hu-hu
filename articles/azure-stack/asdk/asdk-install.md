@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.lastreviewed: 09/10/2018
-ms.openlocfilehash: 20c96d1e25e0aef86d09c37ed919e61ec6058c6d
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: a58f5a3794d352fa8671321f5a30d74d2598df75
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747441"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977728"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Az Azure Stack Development Kit (ASDK) telepítése
 Miután [a ASDK számítógép előkészítése](asdk-prepare-host.md), a ASDK is üzembe helyezhetők az alábbi lépéseket követve ebben a cikkben a CloudBuilder.vhdx lemezképpel.
@@ -34,36 +34,29 @@ A jelen cikkben ismertetett lépések bemutatják, hogyan helyezhet üzembe a gr
 
 
 1. Miután a számítógép sikeresen CloudBuilder.vhdx lemezképpel indul el, jelentkezzen be rendszergazdai hitelesítő adatok használatával megadni, ha, [előkészítve a development kit gazdaszámítógép](asdk-prepare-host.md) ASDK telepítéséhez. Ez legyen ugyanaz, mint a development kit gazdagép helyi rendszergazdai hitelesítő adatokkal.
-2. Nyisson meg egy rendszergazda jogú PowerShell-konzolt, és futtassa a  **&lt;rendszermeghajtó betűjele > \AzureStack_Installer\asdk-installer.ps1** szkriptet (amely most már lehet a CloudBuilder.vhdx kép C:\ meghajtón található). Kattintson az **Install** (Telepítés) gombra.
+2. Nyisson meg egy rendszergazda jogú PowerShell-konzolt, és futtassa a  **&lt;rendszermeghajtó betűjele > \AzureStack_Installer\asdk-installer.ps1** PowerShell-parancsfájlt. Vegye figyelembe, hogy a parancsfájl előfordulhat, hogy most már a CloudBuilder.vhdx kép C:\ meghajtón található. Kattintson az **Install** (Telepítés) gombra.
 
     ![](media/asdk-install/1.PNG) 
 
-3. Az identitásszolgáltató **típus** legördülő mezőben válassza ki **Azure felhő** vagy **az AD FS**. A **helyi rendszergazdai jelszó** (amelynek meg kell egyeznie a jelenlegi konfigurált helyi rendszergazda jelszavát) a helyi rendszergazdai jelszót a **jelszó** mezőbe, majd kattintson a  **Tovább**.
-    - **Azure Cloud**: Konfigurálja az Azure Active Directory (Azure AD) Identitásszolgáltatóként. Használja ezt a beállítást, van szükségük internetkapcsolatra, a teljes neve az Azure AD directory-bérlő formájában *domainname*. onmicrosoft.com vagy egy Azure AD ellenőrzött egyéni tartományának neve, és a globális rendszergazdai hitelesítő adatait a megadott a könyvtár. Az üzembe helyezést követően az Azure Active Directory globális rendszergazdának, nem szükséges. Egyes műveletek azonban szükség lehet a globális rendszergazdai hitelesítő adatok. Például egy erőforrás-szolgáltató szoftvertelepítő parancsfájl vagy egy új szolgáltatást igénylő engedélyt kell adni. Ideiglenesen újbóli regisztrációra a fiók globális rendszergazdai jogosultságokkal, vagy használjon egy külön globális rendszergazdai fiókkal, amely a tulajdonosa a *szolgáltatói előfizetés alapértelmezett*.
-    - **AD FS**: Az alapértelmezett stamp címtárszolgáltatás használja Identitásszolgáltatóként. Jelentkezzen be az alapértelmezett fiók azurestackadmin@azurestack.local, és a jelszó használata a telepítés során megadottal.
+3. Az identitásszolgáltató **típus** legördülő mezőben válassza ki **Azure China Cloud**, **Azure US Government Cloud**, **az AD FS**, vagy **Azure-felhő**. A **helyi rendszergazdai jelszó** (amelynek meg kell egyeznie a jelenlegi konfigurált helyi rendszergazda jelszavát) a helyi rendszergazdai jelszót a **jelszó** mezőbe, majd kattintson a  **Tovább**.
 
     ![](media/asdk-install/2.PNG) 
-    
-    > [!NOTE]
-    > A legjobb eredmények érdekében még akkor is, ha az AD FS használata Identitásszolgáltatóként, kapcsolat nélküli Azure Stack-környezet használni kívánt célszerű telepíteni a ASDK, ha az internethez csatlakozik. Ezzel a módszerrel a development kit telepítést része a Windows Server 2016 próbaverzió a központi telepítéskor aktiválható.
+  
+   Ha úgy dönt, hogy az Azure-előfizetés identitásszolgáltatókhoz, szüksége van-e internetkapcsolat, a teljes neve az Azure AD directory-bérlő formájában *domainname*. onmicrosoft.com vagy egy Azure AD ellenőrizte az egyéni tartomány nevét és globális a megadott könyvtár rendszergazdai hitelesítő adataival.<br><br>Az üzembe helyezést követően az Azure Active Directory globális rendszergazdának, nem szükséges. Egyes műveletek azonban szükség lehet a globális rendszergazdai hitelesítő adatok. Például egy erőforrás-szolgáltató szoftvertelepítő parancsfájl vagy egy új szolgáltatást igénylő engedélyt kell adni. Ideiglenesen újbóli regisztrációra a fiók globális rendszergazdai jogosultságokkal, vagy használjon egy külön globális rendszergazdai fiókkal, amely a tulajdonosa a *szolgáltatói előfizetés alapértelmezett*.<br><br>Az AD FS használata Identitásszolgáltatóként, az alapértelmezett stamp címtárszolgáltatás szolgál. Jelentkezzen be az alapértelmezett fiók azurestackadmin@azurestack.local, és a jelszó használata a telepítés során megadottal.
+
+  > [!NOTE]
+  > A legjobb eredmények érdekében még akkor is, ha az AD FS használata Identitásszolgáltatóként, kapcsolat nélküli Azure Stack-környezet használni kívánt célszerű telepíteni a ASDK, ha az internethez csatlakozik. Ezzel a módszerrel a development kit telepítést része a Windows Server 2016 próbaverzió a központi telepítéskor aktiválható.
+
 4. Válassza ki a csomagot használja, és kattintson egy hálózati adaptert **tovább**.
 
     ![](media/asdk-install/3.PNG)
 
-5. Válassza ki a DHCP vagy statikus hálózati konfiguráció a BGPNAT01 virtuális gépen.
-    > [!TIP]
-    > A BGPNAT01 virtuális gép a peremhálózati útválasztó, amely NAT- és VPN-képességeket biztosít az Azure Stackhez.
-
-    - **DHCP** (alapértelmezett): A virtuális gépet a DHCP-kiszolgáló az IP-hálózati konfiguráció beolvasása.
-    - **Statikus**: Csak akkor használja ezt a beállítást, ha a DHCP nem rendelhető hozzá az Azure Stackhez az Internet eléréséhez érvényes IP-címet. **Statikus IP-címet kell megadni a CIDR-formátumban (például 10.0.0.5/24) alhálózati maszk hossza**.
-    - Írjon be egy érvényes **idő a kiszolgáló IP-címe** címet. Ez szükséges mező állítja be a kiszolgálót a csomag által használható. Ez a paraméter egy érvényes idő-kiszolgáló IP-címét meg kell adni. Kiszolgálók nevei nem támogatottak.
+5. Az a **hálózati konfiguráció** területén adjon meg egy érvényes **idő a kiszolgáló IP-címe** címet. Ez szükséges mező állítja be a kiszolgálót a csomag által használható. Ez a paraméter egy érvényes idő-kiszolgáló IP-címét meg kell adni. Kiszolgálók nevei nem támogatottak.
 
       > [!TIP]
       > Egy idő-kiszolgáló IP-cím található, a Microsoft [ntppool.org](https://www.ntppool.org/) , illetve pingelni time.windows.com. 
 
-    - **Igény szerint**, akkor állítsa be a következő értékeket:
-        - **VLAN-AZONOSÍTÓT**: Beállítja a VLAN-azonosítót. Csak akkor használja ezt a beállítást, ha a gazdagép és a AzS-BGPNAT01 konfigurálnia kell a VLAN-Azonosítót a fizikai hálózat (és internet) eléréséhez. 
-        - **DNS-továbbító**: DNS-kiszolgáló létrehozása az Azure Stack üzembe helyezés részeként. Ahhoz, hogy a számítógépek belül a megoldás a stamp kívül nevek feloldása, adja meg a meglévő infrastruktúra DNS-kiszolgáló. A stamp a DNS-kiszolgáló ezen a kiszolgálón ismeretlen névfeloldási kérelmeket továbbítja.
+    **Igény szerint**, megadhat egy **DNS-továbbító** IP-címet. DNS-kiszolgáló létrehozása az Azure Stack üzembe helyezés részeként. Ahhoz, hogy a számítógépek belül a megoldás a stamp kívül nevek feloldása, adja meg a meglévő infrastruktúra DNS-kiszolgáló. A stamp a DNS-kiszolgáló ezen a kiszolgálón ismeretlen névfeloldási kérelmeket továbbítja.
 
     ![](media/asdk-install/4.PNG)
 
@@ -71,22 +64,20 @@ A jelen cikkben ismertetett lépések bemutatják, hogyan helyezhet üzembe a gr
 
     ![](media/asdk-install/5.PNG)
 
-9. A **összefoglalás** kattintson **telepítés** ASDK telepítésének elindítása a development kit gazdagépen.
+7. A **összefoglalás** kattintson **telepítés** ASDK telepítésének elindítása a development kit gazdagépen.
 
     ![](media/asdk-install/6.PNG)
 
     > [!TIP]
     > Itt is másolhatja a PowerShell telepítő-parancsokat a csomag telepítéséhez használt. Ez akkor hasznos, ha a átállítására lenne szükség [ismételt üzembe helyezése a PowerShell használatával a gazdagépen ASDK](asdk-deploy-powershell.md).
 
-10. Az Azure AD központi telepítésének hajt végre, ha meg kéri, adja meg az Azure AD globális rendszergazdai fiók hitelesítő adatait, a telepítő indítása után néhány percet.
+8. Az Azure AD központi telepítésének hajt végre, ha meg kéri, adja meg az Azure AD globális rendszergazdai fiók hitelesítő adatait, a telepítő indítása után néhány percet.
+
+9. Az üzembe helyezési folyamat eltarthat néhány óráig, amely idő alatt a számítógép automatikusan újraindul egyszer. Ha azt szeretné, a telepítési folyamat állapotának monitorozásához, jelentkezzen be felhasználóként azurestack\AzureStackAdmin a development kit gazdagép újraindítása után. Az üzembe helyezés sikeres, a PowerShell-konzolon jeleníti meg: **HAJTSA VÉGRE: A művelet "Telepítés"**. 
+    > [!IMPORTANT]
+    > Ha bejelentkezik egy helyi rendszergazdaként után a gép az azurestack tartományhoz csatlakozik, akkor nem jelenik meg az üzembehelyezési folyamatot. Futtassa újra a központi telepítés, ne inkább jelentkezhessen be azurestack\AzureStackAdmin ellenőrzése, hogy fut-e.
 
     ![](media/asdk-install/7.PNG)
-
-11. Az üzembe helyezési folyamat eltarthat néhány óráig, amely idő alatt a számítógép automatikusan újraindul egyszer. Ha azt szeretné, a telepítési folyamat állapotának monitorozásához, jelentkezzen be felhasználóként azurestack\AzureStackAdmin a development kit gazdagép újraindítása után. Az üzembe helyezés sikeres, a PowerShell-konzolon jeleníti meg: **HAJTSA VÉGRE: A művelet "Telepítés"**. 
-    > [!IMPORTANT]
-    > Ha bejelentkezik egy helyi rendszergazdaként után a gép csatlakozik a tartományhoz, akkor nem jelenik meg az üzembe helyezés folyamatban. Futtassa újra a központi telepítés, ne inkább jelentkezhessen be azurestack\AzureStackAdmin ellenőrzése, hogy fut-e.
-
-    ![](media/asdk-install/8.PNG)
 
 Gratulálunk, sikeresen telepítette a ASDK!
 

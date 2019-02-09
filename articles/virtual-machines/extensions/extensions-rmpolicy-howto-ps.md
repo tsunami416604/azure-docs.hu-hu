@@ -13,18 +13,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 82b01cec892f15f7f85f6b5f822475114b5b73c6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 68a652fe16162d96d4ec07e6690f10f0bd34f2c0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434989"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980873"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Az Azure Policy használatával korlátozhatja a bővítmények telepítése Windows virtuális gépeken
 
 Ha azt szeretné, hogy használatát vagy a Windows virtuális gépek az egyes bővítmények telepítését, létrehozhat egy Azure szabályzat bővítmények korlátozása a virtuális gépek erőforráscsoporton belül a PowerShell használatával. 
 
-Ebben az oktatóanyagban az Azure PowerShell belül a Cloud Shell, amely folyamatosan frissül a legújabb verzióra. Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. 
+Ebben az oktatóanyagban az Azure PowerShell belül a Cloud Shell, amely folyamatosan frissül a legújabb verzióra. 
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="create-a-rules-file"></a>Hozzon létre egy szabályok fájlt
 
@@ -97,13 +99,13 @@ Amikor végzett, nyomja le az **Ctrl + O** , majd **Enter** szeretné menteni a 
 
 ## <a name="create-the-policy"></a>A szabályzat létrehozása
 
-Szabályzat-definíció egy olyan objektum, a konfigurációt, amely a használni kívánt tárolja. A szabályzatdefiníció a szabályzat meghatározására szabályok és a paraméterek-fájlokat használja. Hozzon létre egy szabályzat definíciója a [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) parancsmagot.
+Szabályzat-definíció egy olyan objektum, a konfigurációt, amely a használni kívánt tárolja. A szabályzatdefiníció a szabályzat meghatározására szabályok és a paraméterek-fájlokat használja. Hozzon létre egy szabályzat definíciója a [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) parancsmagot.
 
  A szabályok és a paraméterek a létrehozott és a cloud shellben .JSON kiterjesztésű fájlként tárolja a fájlokat.
 
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
    -Name "not-allowed-vmextension-windows" `
    -DisplayName "Not allowed VM Extensions" `
    -description "This policy governs which VM extensions that are explicitly denied."   `
@@ -116,13 +118,13 @@ $definition = New-AzureRmPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>A szabályzat hozzárendelése
 
-Ebben a példában a szabályzatot rendel egy erőforrás csoport használatával [New-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment). A létrehozott virtuális Gépeket a **myResourceGroup** erőforráscsoport nem fogja tudni telepíteni a Virtuálisgép-hozzáférési ügynök vagy egyéni parancsfájl-bővítmények. 
+Ebben a példában a szabályzatot rendel egy erőforrás csoport használatával [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment). A létrehozott virtuális Gépeket a **myResourceGroup** erőforráscsoport nem fogja tudni telepíteni a Virtuálisgép-hozzáférési ügynök vagy egyéni parancsfájl-bővítmények. 
 
-Használja a [Get-AzureRMSubscription |} Táblázat formázása](/powershell/module/azurerm.profile/get-azurermsubscription) -parancsmaggal beolvasható az előfizetés-Azonosítóját használja egy, a példában helyett.
+Használja a [Get-AzSubscription |} Táblázat formázása](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) -parancsmaggal beolvasható az előfizetés-Azonosítóját használja egy, a példában helyett.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"
-$assignment = New-AzureRMPolicyAssignment `
+$assignment = New-AzPolicyAssignment `
    -Name "not-allowed-vmextension-windows" `
    -Scope $scope `
    -PolicyDefinition $definition `
@@ -139,10 +141,10 @@ $assignment
 
 ## <a name="test-the-policy"></a>A házirend tesztelése
 
-Ha tesztelni szeretné a szabályzatot, próbálja meg használni a Virtuálisgép-hozzáférési bővítmény. A következő üzenettel kell sikertelen "Set-AzureRmVMAccessExtension: Erőforrás "myVMAccess" szabályzat tiltja."
+Ha tesztelni szeretné a szabályzatot, próbálja meg használni a Virtuálisgép-hozzáférési bővítmény. A következő üzenettel kell sikertelen "Set-AzVMAccessExtension: Erőforrás "myVMAccess" szabályzat tiltja."
 
 ```azurepowershell-interactive
-Set-AzureRmVMAccessExtension `
+Set-AzVMAccessExtension `
    -ResourceGroupName "myResourceGroup" `
    -VMName "myVM" `
    -Name "myVMAccess" `
@@ -154,13 +156,13 @@ A portálon a jelszó módosítása kell sikertelen, és az "a sablon telepíté
 ## <a name="remove-the-assignment"></a>A hozzárendelés eltávolítása
 
 ```azurepowershell-interactive
-Remove-AzureRMPolicyAssignment -Name not-allowed-vmextension-windows -Scope $scope
+Remove-AzPolicyAssignment -Name not-allowed-vmextension-windows -Scope $scope
 ```
 
 ## <a name="remove-the-policy"></a>Távolítsa el a szabályzatot
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyDefinition -Name not-allowed-vmextension-windows
+Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows
 ```
     
 ## <a name="next-steps"></a>További lépések

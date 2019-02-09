@@ -4,26 +4,25 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: mikeray
-ms.openlocfilehash: e81cdb478a63e1e584aef2c32754bd321d245365
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: f9a45da2703518000aa464da067c5cf71a198fd4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440202"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984970"
 ---
 ## <a name="start-your-powershell-session"></a>Indítsa el a PowerShell-munkamenetet
-Először szüksége lesz a legújabb [Azure PowerShell-lel](https://msdn.microsoft.com/library/mt619274.aspx) telepíteni és futtatni. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
+ 
 
-> [!NOTE]
-> Ez a témakör használatban példák [Azure Resource Manager üzemi modell](../articles/azure-resource-manager/resource-group-overview.md), így a példák a [Azure Resource Manager parancsmagjainak](https://msdn.microsoft.com/library/azure/mt125356.aspx). 
-> 
-> 
+Futtassa a [ **Connect – Az Account** ](https://docs.microsoft.com/powershell/module/az.accounts/connect-azmaccount) parancsmagot, és megjelenik egy bejelentkezési képernyő, amely a hitelesítő adatainak megadását. Használja a hitelesítő adatokat, amelyeket az Azure Portalra való bejelentkezéshez használ.
 
-Futtassa a [ **Connect-AzureRmAccount** ](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) parancsmagot, és megjelenik egy bejelentkezési képernyő, amely a hitelesítő adatainak megadását. Használja a hitelesítő adatokat, amelyeket az Azure Portalra való bejelentkezéshez használ.
+```powershell
+Connect-AzAccount
+```
 
-    Connect-AzureRmAccount
+Ha több előfizetés használata az [ **Set-AzContext** ](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) parancsmagot, amellyel kiválaszthatja, hogy melyik előfizetéssel, a PowerShell-munkamenetet használjon. Milyen előfizetésre az aktuális PowerShell-munkamenetet használ megtekintéséhez futtassa [ **Get-AzContext**](https://docs.microsoft.com/powershell/module/az.accounts/get-azcontext). Összes előfizetés megtekintéséhez futtassa [ **Get-AzSubscription**](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription).
 
-Ha több előfizetéssel rendelkezik, használja a [**Set-AzureRmContext**](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext) parancsmagot, amellyel kiválaszthatja, hogy melyik előfizetéssel használja a PowerShell-munkamenet. Ahhoz, hogy megtudja, melyik előfizetést használja a jelenlegi PowerShell-munkamenet, futtassa a [**Get-AzureRmContext**](https://docs.microsoft.com/powershell/module/azurerm.profile/get-azurermcontext) parancsmagot. Az összes előfizetés megtekintéséhez futtassa a [**Get-AzureRmSubscription**](https://docs.microsoft.com/powershell/module/servicemanagement/azurerm.profile/get-azurermsubscription) parancsmagot.
-
-    Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
+```powershell
+Set-AzContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
+```
 

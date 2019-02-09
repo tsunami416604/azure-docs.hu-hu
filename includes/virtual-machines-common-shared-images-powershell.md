@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3ec5b9c6357f0d075ddd9b0fd5c8a88ee2846209
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 8770aaeff3e0d7b2d6a39f596aafebf15ed48b23
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192217"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985007"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
@@ -27,31 +27,31 @@ A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy k�
 Megosztott kép katalógusok előzetes verzióban érhető el, de szeretne regisztrálni a szolgáltatást ahhoz is használhatja. A megosztott kép katalógusok funkció regisztrálása:
 
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature `
+Register-AzProviderFeature `
    -FeatureName GalleryPreview `
    -ProviderNamespace Microsoft.Compute
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ## <a name="get-the-managed-image"></a>A felügyelt lemezkép beolvasása
 
-Láthatja, hogy egy erőforrás csoport az elérhető rendszerképek listájának [Get-AzureRmImage](/powershell/module/AzureRM.Compute/get-azurermimage). Ha már tudja, hogy a rendszerkép nevének és milyen erőforráscsoport, akkor használhatja `Get-AzureRmImage` újra, hogy a kép objektum, és a későbbi használat céljából változóban tárolja. Ebben a példában beolvassa-nevű rendszerképet *myImage* a "myResourceGroup" erőforráscsoportot, és hozzárendeli azt a változót *$managedImage*. 
+Láthatja, hogy egy erőforrás csoport az elérhető rendszerképek listájának [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage). Ha már tudja, hogy a rendszerkép nevének és milyen erőforráscsoport, akkor használhatja `Get-AzImage` újra, hogy a kép objektum, és a későbbi használat céljából változóban tárolja. Ebben a példában beolvassa-nevű rendszerképet *myImage* a "myResourceGroup" erőforráscsoportot, és hozzárendeli azt a változót *$managedImage*. 
 
 ```azurepowershell-interactive
-$managedImage = Get-AzureRmImage `
+$managedImage = Get-AzImage `
    -ImageName myImage `
    -ResourceGroupName myResourceGroup
 ```
 
 ## <a name="create-an-image-gallery"></a>Lemezkép-katalógus létrehozása 
 
-Lemezkép-katalógus, hogy az elsődleges erőforrás használt lemezkép megosztása. Katalógus egyedieknek kell lenniük az előfizetésben. Hozzon létre egy rendszerképet katalógus [New-AzureRmGallery](/powershell/module/AzureRM.Compute/new-azurermgallery). A következő példában létrehozunk egy katalógusban nevű *myGallery* a a *myGalleryRG* erőforráscsoportot.
+Lemezkép-katalógus, hogy az elsődleges erőforrás használt lemezkép megosztása. Katalógus egyedieknek kell lenniük az előfizetésben. Hozzon létre egy rendszerképet katalógus [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). A következő példában létrehozunk egy katalógusban nevű *myGallery* a a *myGalleryRG* erőforráscsoportot.
 
 ```azurepowershell-interactive
-$resourceGroup = New-AzureRMResourceGroup `
+$resourceGroup = New-AzResourceGroup `
    -Name 'myGalleryRG' `
    -Location 'West Central US'  
-$gallery = New-AzureRmGallery `
+$gallery = New-AzGallery `
    -GalleryName 'myGallery' `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
@@ -60,10 +60,10 @@ $gallery = New-AzureRmGallery `
    
 ## <a name="create-an-image-definition"></a>Kép definíció létrehozása 
 
-Létrehozhatja a katalógus kép definíció [New-AzureRmGalleryImageDefinition](/powershell/module/azurerm.compute/new-azurermgalleryimageversion). Ebben a példában a katalógus-lemezkép neve *myGalleryImage*.
+Létrehozhatja a katalógus kép definíció [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). Ebben a példában a katalógus-lemezkép neve *myGalleryImage*.
 
 ```azurepowershell-interactive
-$galleryImage = New-AzureRmGalleryImageDefinition `
+$galleryImage = New-AzGalleryImageDefinition `
    -GalleryName $gallery.Name `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $gallery.Location `
@@ -87,7 +87,7 @@ Az alábbi három egyedi értékek amelyekre. Egy későbbi kiadásban lesz úgy
 
 ```powershell
 # The following should set the source image as myImage1 from the table above
-$vmConfig = Set-AzureRmVMSourceImage `
+$vmConfig = Set-AzVMSourceImage `
    -VM $vmConfig `
    -PublisherName myPublisher `
    -Offer myOffer `
@@ -98,14 +98,14 @@ Ez hasonlít hogyan jelenleg megadhatja ezeket [Azure Marketplace-rendszerképek
 
 ##<a name="create-an-image-version"></a>Hozzon létre egy lemezkép verziója
 
-Hozzon létre egy lemezkép verziója egy felügyelt rendszerképet az [New-AzureRmGalleryImageVersion](/powershell/module/AzureRM.Compute/new-azurermgalleryimageversion) . Ebben a példában a rendszerkép verziószáma *1.0.0-s* , és mindkét replikálás *USA nyugati középső Régiója* és *USA déli középső Régiójában* adatközpontokban.
+Hozzon létre egy lemezkép verziója egy felügyelt rendszerképet az [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) . Ebben a példában a rendszerkép verziószáma *1.0.0-s* , és mindkét replikálás *USA nyugati középső Régiója* és *USA déli középső Régiójában* adatközpontokban.
 
 
 ```azurepowershell-interactive
 $region1 = @{Name='South Central US';ReplicaCount=1}
 $region2 = @{Name='West Central US';ReplicaCount=2}
 $targetRegions = @($region1,$region2)
-$job = $imageVersion = New-AzureRmGalleryImageVersion `
+$job = $imageVersion = New-AzGalleryImageVersion `
    -GalleryImageDefinitionName $galleryImage.Name `
    -GalleryImageVersionName '1.0.0' `
    -GalleryName $gallery.Name `

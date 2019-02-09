@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 09/18/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6581c389cb7b1aa9c6ce6b9e84b56017264822f4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 7ef7216b2d3adf99b0c1fd9ace84991169106529
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232953"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976265"
 ---
-# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Az Azure Media Services Java ügyfél-SDK használatának megkezdése
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services-legacy"></a>A Java ügyfél-SDK használatának első lépései az Azure Media Services-(örökölt)
+
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 
 Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű videotartalom-továbbítási szolgáltatást hozhat létre a Java ügyfél-SDK segítségével, az Azure Media Services alkalmazással.
@@ -58,10 +59,10 @@ A következő kód bemutatja, hogyan hozhat létre egy adategységet, tölthet f
 A kód használata előtt hozzon létre egy Media Services-fiókot. A fiók létrehozásával kapcsolatos információk: [Media Services-fiók létrehozása](media-services-portal-create-account.md)
 
 A kód csatlakozik az Azure Media Services API-hoz az Azure AD egyszerű szolgáltatásnév hitelesítésével. Hozzon létre egy Azure AD-alkalmazást, és adja meg a kódban a következő változók értékeit:
-* `tenant`: Annak az Azure AD-bérlőnek a tartománya, ahol az Azure AD-alkalmazás található
-* `clientId`: Az Azure AD-alkalmazás ügyfél-azonosítója
+* `tenant`: Az Azure AD-alkalmazást tartalmazó Azure AD-bérlői tartomány
+* `clientId`: Az Azure AD-alkalmazás Ügyfélazonosítója
 * `clientKey`: Az Azure AD-alkalmazás ügyfélkulcsa
-* `restApiEndpoint`: Az Azure Media Services-fiók REST API-végpontja
+* `restApiEndpoint`: Az Azure Media Services-fiók REST API-végpont
 
 Létrehozhat egy Azure AD-alkalmazást, és lekérheti a megelőző konfigurációs értékeket az Azure Portalról. További információt az **Azure Portalon keresztül történő Azure AD-alapú hitelesítést** ismertető cikkben, az [egyszerű szolgáltatásnév hitelesítését](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad) bemutató szakaszban talál.
 

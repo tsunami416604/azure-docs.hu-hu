@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 412e114fde8f9b9017d476083f1237c922c67bc8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c6bfa9acb29820a2c9646d6302871bb6a2dd1ac6
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463055"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982165"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mailben kapott egyszeri jelszót hitelesítés (előzetes verzió)
 
@@ -29,7 +29,7 @@ Az e-mailben kapott egyszeri jelszót funkció nem hitelesíthetők, más módon
 Ez a funkció jelenleg elérhető előzetes verzióban (lásd: [az előzetes verzióra való engedélyezés](#opting-in-to-the-preview) alább). A minta után ez a funkció, lesz kapcsolva alapértelmezés szerint az összes bérlőre vonatkozóan.
 
 > [!NOTE]
-> Egyszer használatos jelszót kell bejelentkeznek egy hivatkozással, amely tartalmazza a bérlő környezetben (például `https://myapps.microsoft.com/?tenantid=<tenant id>` vagy `https://portal.azure.com/<tenant id>`, vagy egy alapértelmezett ellenőrzött tartomány esetén `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Alkalmazások és erőforrások mutató közvetlen hivatkozásokat is működik, amíg a bérlő környezet tartalmazzák. Vendégfelhasználók nem jelentkezzen be a végpontok, amelyeken nincs bérlői környezet. Például `https://myapps.microsoft.com`, `https://portal.azure.com`, vagy a csapatok közös végponti egy hibát eredményez. 
+> Egyszer használatos jelszót kell bejelentkeznek egy hivatkozással, amely tartalmazza a bérlő környezetben (például `https://myapps.microsoft.com/?tenantid=<tenant id>` vagy `https://portal.azure.com/<tenant id>`, vagy egy ellenőrzött tartomány esetén `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Alkalmazások és erőforrások mutató közvetlen hivatkozásokat is működik, amíg a bérlő környezet tartalmazzák. Vendégfelhasználók nem jelentkezzen be a végpontok, amelyeken nincs bérlői környezet. Például `https://myapps.microsoft.com`, `https://portal.azure.com`, vagy a csapatok közös végponti egy hibát eredményez. 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Felhasználói élmény a kapott egyszer használatos jelszót vendégfelhasználók számára
 Egyszeri jelszó hitelesítéssel a vendégfelhasználó beválthatja a meghívást közvetlen hivatkozására kattintva, vagy a meghívó e-mail használatával. Mindkét esetben a böngészőben egy üzenet azt jelzi, hogy egy kódot küldeni a Vendég felhasználó e-mail címét. A Vendég felhasználó **kód küldése**:

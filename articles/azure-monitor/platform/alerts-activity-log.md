@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 2b90457ed939999b5163078750650c92a3516cca
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 17a7b0e0ee76490ef43fb869260dceef83cbd124
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816577"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984494"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor tevékenységnapló-riasztások kezelése  
 
@@ -203,20 +203,28 @@ A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sa
 [Az Azure Monitor - tevékenység Log riasztások API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.
 
 ## <a name="powershell"></a>PowerShell
-Az alábbi ábra szemlélteti a használati minta erőforrás sablon korábban bemutatott (sampleActivityLogAlert.json) Azure Resource Manager PowerShell-parancsmaggal keresztül az erőforrás-sablon szakaszban:
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
-```
-Viselkedésmintáit a sampleActivityLogAlert.parameters.json rendelkezik a riasztási szabály létrehozásához szükséges paraméterek megadott érték.
+
+A tevékenységnapló-riasztások rendelkezhetnek dedikált elérhető PowerShell-parancsmagokkal:
+
+- [Set-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/set-azurermactivitylogalert): Új létrehozása vagy meglévő tevékenység log riasztási szabály erőforrás frissítése
+- [Get-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermactivitylogalert): Egy vagy több tevékenység log riasztási szabály erőforrást beolvasni
+- [Remove-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/remove-azurermactivitylogalert): Tevékenység log riasztási szabály erőforrás a felhasználói megerősítés törlése
+- [Enable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/enable-azurermactivitylogalert): Ahhoz, hogy egy meglévő tevékenység log riasztásiszabály-erőforrás
+- [Disable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/disable-azurermactivitylogalert): Egy meglévő tevékenységet log riasztási szabály erőforrás letiltása
 
 ## <a name="cli"></a>parancssori felület
-Az alábbi ábra szemlélteti a használati minta erőforrás sablon korábban bemutatott (sampleActivityLogAlert.json) az Azure CLI Azure Resource Manager parancs-n keresztül az erőforrás-sablon szakaszban:
 
-```azurecli
-az group deployment create --resource-group myRG --template-file sampleActivityLogAlert.json --parameters @sampleActivityLogAlert.parameters.json
-```
-A *sampleActivityLogAlert.parameters.json* fájl rendelkezik a riasztási szabály létrehozásához szükséges paraméterek megadott érték.
+Azure CLI-parancsok mellett a csoport dedikált [az monitor tevékenységnapló riasztás](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) érhetők el tevékenység napló a riasztási szabályok kezelése.
 
+Egy új tevékenység riasztási szabály létrehozásához használja az alábbi sorrendben:
+
+1. [az monitor tevékenységnapló riasztás létrehozása](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create): Új tevékenység log riasztásiszabály-erőforrás létrehozása
+1. [az monitor tevékenységnapló riasztás hatókör](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope): Adja hozzá a létrehozott tevékenység riasztási szabály hatóköre
+1. [az monitor tevékenységnapló riasztás – műveletcsoport](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/action-group): Műveletcsoport hozzáadása a tevékenység riasztási szabály
+
+Egy tevékenység log riasztási szabály erőforrás, az Azure CLI-paranccsal lekérése [az monitor tevékenységnapló riasztás megjelenítése](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
+) is használható. És minden tevékenység log riasztási szabály erőforrás egy erőforráscsoportba tartozó megtekintésre [az monitor tevékenységnapló riasztás lista](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
+Tevékenység log riasztási szabály erőforrásokat az Azure CLI-paranccsal eltávolítható [az monitor tevékenységnapló riasztás törlése](https://docs.microsoft.com/en-us/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete).
 
 ## <a name="next-steps"></a>További lépések
 

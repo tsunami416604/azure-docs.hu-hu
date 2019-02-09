@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: eda5f21a535c6256d534bfdaa6cf30ae710ba075
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 47b9d25f8db2241bb578528780e28f43d56371e5
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413183"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963080"
 ---
 # <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 A NetApp-fiókok létrehozásával lehetősége lesz kapacitáskészleteket beállítani, majd azt követően köteteket létrehozni. NetApp-fiókokat az Azure NetApp Files panelen hozhat létre.
@@ -31,8 +31,8 @@ Az előfizetést a NetApp erőforrás-szolgáltató és a nyilvános előzetes v
 
 ## <a name="steps"></a>Lépések 
 
-1. Keresse meg az Azure előzetes portál URL-CÍMÉT az előzetes meghívást, és jelentkezzen be a portálra. 
-2.  Az Azure NetApp Files panelt a következő módszerek egyikével érheti el:  
+1. Jelentkezzen be az Azure portálra. 
+2. Az Azure NetApp Files panelt a következő módszerek egyikével érheti el:  
   * Keressen rá az **Azure NetApp Files** kifejezésre az Azure Portal keresőmezőjében.  
   * Kattintson a navigációs menü **Minden szolgáltatás** elemére, majd szűrjön az Azure NetApp Files kifejezésre.  
 
@@ -50,7 +50,6 @@ Az előfizetést a NetApp erőforrás-szolgáltató és a nyilvános előzetes v
     Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
   * **Hely**  
     Válassza ki azt az Azure-régiót, ahol a fiókot és annak alárendelt erőforrásait létre szeretné hozni.  
-    Az Azure NetApp Files szolgáltatás használata jelenleg csak az USA keleti régiójában támogatott.  
 
     ![Új NetApp-fiók](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6ae388107e527b399dc758abccbefcec955a60d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 9682b9b832a8fd7374cb84e8cc6faad69df15945
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661632"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979067"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Hitelesítés a egy privát Docker regisztrációs adatbázist
 
@@ -60,7 +60,7 @@ A szolgáltatásnevek lekéréses és a leküldéses helyzetek, például a köv
 
 Akkor is bejelentkezhet közvetlenül a szolgáltatásnévvel. A következő parancs futtatásakor adja meg a szolgáltatás egyszerű appID (felhasználónév) és a jelszót, amikor a rendszer kéri. Az ajánlott eljárásokat, és bejelentkezési hitelesítő adatok kezelése, tekintse meg a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) referencia parancsot:
 
-```Docker
+```
 docker login myregistry.azurecr.io
 ```
 
@@ -80,7 +80,7 @@ Minden tároló-beállításjegyzékhez magában foglalja a rendszergazdai felha
 
 A rendszergazdai fiók kerül a két jelszavakkal, amelyek helyreállíthatja. Két jelszó-használatával hozza létre újra a másik egy jelszót a beállításjegyzék kapcsolat fenntartását teszi lehetővé. Ha a rendszergazdai fiókon engedélyezve van, a felhasználónevet és jelszót vagy átadható a `docker login` parancsot, amikor a rendszer kéri, az alapszintű hitelesítés, a regisztrációs adatbázisba. Példa:
 
-```Docker
+```
 docker login myregistry.azurecr.io 
 ```
 

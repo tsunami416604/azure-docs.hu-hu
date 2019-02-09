@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/08/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: fbfe32ee8eede6666e0c7086ef4c586af1c1b4c4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 58a22253efb6928c87937e4aba852dd93a3e4422
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861306"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978544"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
 
@@ -63,7 +63,7 @@ Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek 
 
 Szöveg ismeri fel a tárolórendszerképeket érhetők el. 
 
-| Tároló | Tárház |
+| Tároló | Adattár |
 |-----------|------------|
 |Szövegének felismerése | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
@@ -72,7 +72,7 @@ Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandl
 
 ### <a name="docker-pull-for-the-recognize-text-container"></a>A szöveg felismerése tároló docker pull
 
-```Docker
+```
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-rocognize-text:latest
 ```
 
@@ -146,18 +146,7 @@ A kimenet futtatásakor a tároló [csatlakoztatási](./computer-vision-resource
 
 Szöveg felismerése tárolók Küldés a számlázási adatokat az Azure-ba, a használatával egy _szöveg felismerése_ erőforrást az Azure-fiókjával. 
 
-Cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat. Cognitive Services-tárolók nem vásárlói adatokat küldeni a Microsoftnak. 
-
-A `docker run` parancsot használja a következő argumentumok számlázás szempontjából:
-
-| Beállítás | Leírás |
-|--------|-------------|
-| `ApiKey` | Az API-kulcsot a _szöveg felismerése_ erőforrás számlázási adatok nyomon követésére szolgál. |
-| `Billing` | Az a végpont a _szöveg felismerése_ erőforrás számlázási adatok nyomon követésére szolgál.|
-| `Eula` | Azt jelzi, hogy Ön már elfogadta a tároló licencét.<br/>Ez a beállítás értékét állítsa `accept`. |
-
-> [!IMPORTANT]
-> Mindhárom meg kell adni az érvényes értékek, vagy a tároló nem indul el.
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Ezek a beállítások kapcsolatos további információkért lásd: [tárolók konfigurálása](./computer-vision-resource-container-config.md).
 

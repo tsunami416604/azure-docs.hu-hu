@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: 799f47b291b3943dcb4d6b31bc8df732c28990cd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/07/2019
+ms.openlocfilehash: a9e5be3c1dcbf4461bd00b2b1ce530aa16e441ef
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816594"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962128"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
@@ -34,7 +34,7 @@ Felügyelt példány jellemzőit és az adott díjcsomagtól függ az alapul szo
 
 Az Azure SQL Database felügyelt példánya is telepíthető a két hardver generációja (Gen4 és Gen5). Hardvergenerációk az alábbi táblázatban ismertetett más jellemzőkkel rendelkeznek:
 
-|   | **A gen 4** | **A gen 5** |
+|   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | Hardver | Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokkal, SSD virtuális mag csatolt = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorokkal, gyors NVMe SSD, virtuális mag = 1. LP (a hyper-szál) |
 | Compute | 8, 16, 24 virtuális mag | 8, 16, 24, 32, 40, 64, 80 virtuális magok |
@@ -51,7 +51,7 @@ Felügyelt példány két szolgáltatási csomagban – általános célú és a
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
 | Memory (Memória) | Gen4: 56 GB - 168 GB<br/>Gen5: 40.8 GB – 408 GB<br/>\*Arányos virtuális magok száma | Gen4: 56 GB - 168 GB <br/> Gen5: 40.8 GB – 408 GB<br/>\*Arányos virtuális magok száma |
-| Maximális tárméret | 8 TB | A gen 4: 1 TB <br/> A gen 5: <br/>– 1 TB-os 8, 16 virtuális mag<br/>– A 24 virtuális mag 2 TB<br/>– 4 TB-os 32, 40, 64, 80 virtuális magok |
+| Maximális tárméret | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>– 1 TB-os 8, 16 virtuális mag<br/>– A 24 virtuális mag 2 TB<br/>– 4 TB-os 32, 40, 64, 80 virtuális magok |
 | Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány | Határozza meg a maximális tárhelyméretet a példány |
 | Egy példány adatbázisok maximális száma | 100 | 100 |
 | Maximális adatbázisfájlok példányonként | Legfeljebb 280 | – 32 767 fájlt adatbázisonként |

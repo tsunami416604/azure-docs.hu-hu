@@ -12,15 +12,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f4b72a95c64467ce287d2cb762222d17334aad57
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755425"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982267"
 ---
-# <a name="the-azure-sql-database-service"></a>Az Azure SQL Database szolgáltatásban
+# <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
 Az SQL Database általános célú, felügyelt relációsadatbázis-szolgáltatás a Microsoft Azure-ban, amely egyebek mellett relációs, JSON-, térbeli és XML-struktúrákat is támogat. Az SQL Database két különböző vásárlási modell belül dinamikusan méretezhető teljesítményt nyújt: a Virtuálismag-alapú vásárlási modell és a egy DTU-alapú vásárlási modell. Az SQL Database emellett olyan lehetőségeket kínál, mint az [oszlopcentrikus indexelés](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) a kivételes mélységű elemzéshez és jelentéskészítéshez, illetve a [memóriabeli OLTP](sql-database-in-memory.md) a rendkívül nagy teljesítményű tranzakciófeldolgozáshoz. A Microsoft zökkenőmentesen kezeli az SQL kódbázis karbantartását és frissítését, és teljesen átveszi az alapul szolgáló infrastruktúra kezelését.
 
@@ -67,10 +67,10 @@ A dinamikus méretezhetőség különbözik az automatikus skálázástól. Auto
 SQL Database két vásárlási modellt kínál:
 
 - A [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) számítási, memória, IO-erőforrások kis és nagy terhelést jelentő adatbázisokhoz database három szolgáltatásszintet kínálja. A számítási biztosít különböző többféle, ezeket az erőforrásokat, amelyhez további tárterület-erőforrások adhat hozzá az egyes szinteken belül.
-- A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) válassza ki a virtuális magok, a vagy a memória, és a számát és a storage sebességétől teszi lehetővé.
+- A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) válassza ki a virtuális magok, a vagy a memória, és a számát és a storage sebességétől teszi lehetővé. A Virtuálismag-alapú vásárlási modell azt is lehetővé teszi, hogy [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) költségmegtakarítást biztosítanak. Az Azure Hybrid Benefittel kapcsolatos további információkért lásd: [– gyakori kérdések](#sql-database-frequently-asked-questions-faq).
 
   > [!IMPORTANT]
-  > A [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md) jelenleg nyilvános előzetes verzióban érhető el. Nem ajánlott semmilyen éles számítási feladatok futtatása a nagy kapacitású adatbázisokban még. Nagy kapacitású adatbázis egyéb szolgáltatási csomagokra nem frissíthető. Tesztelési célra ajánlott másolatot készít az aktuális adatbázisban, és frissíti a példányt nagy kapacitású szolgáltatásszinthez.
+  > A [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md) az önálló adatbázisok jelenleg nyilvános előzetes verzióban érhető el. Nem ajánlott semmilyen éles számítási feladatok futtatása a nagy kapacitású adatbázisokban még. Nagy kapacitású adatbázis egyéb szolgáltatási csomagokra nem frissíthető. Tesztelési célra ajánlott másolatot készít az aktuális adatbázisban, és frissíti a példányt nagy kapacitású szolgáltatásszinthez.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Rugalmas készletek az erőforrások kihasználtságának maximalizálásához
 
@@ -195,6 +195,41 @@ Az SQL Database egyszerűbbé és hatékonyabbá teszi az alkalmazások létreho
   Egy ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, macOS és Linux rendszerekre, amely támogatja a bővítményeket, beleértve a [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez.
 
 Az SQL Database támogatja a Python, Java, Node.js, PHP, Ruby, és .NET alkalmazásfejlesztést a MacOS, Linux, és Windows rendszeren. Az SQL Database az SQL Serverrel azonos [adatkapcsolattárakat](sql-database-libraries.md) támogat.
+
+## <a name="sql-database-frequently-asked-questions-faq"></a>Az SQL Database – gyakori kérdések (GYIK)
+
+### <a name="what-is-the-current-version-of-sql-database"></a>Mi a jelenlegi verzió az SQL Database
+
+A jelenlegi verzió az SQL Database V12-es. Verzió V11 visszavontuk.
+
+### <a name="can-i-control-when-patching-downtime-occurs"></a>Szabályozhatom javítás leállás esetén
+
+Nem. A javítás hatását az általában nem észrevehető Ha Ön [újrapróbálkozási logikát alkalmazni](sql-database-develop-overview.md#resiliency) az alkalmazásban. Hogyan lehet felkészülni a tervezett karbantartási események az Azure SQL Database kapcsolatos további információkért lásd: [tervezése az Azure SQL Database Azure karbantartási események](sql-database-planned-maintenance.md).
+
+### <a name="azure-hybrid-benefit-questions"></a>Az Azure Hybrid Benefit kérdések
+
+#### <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Vannak-e kettős-használati jogok az Azure Hybrid Benefittel az SQL Server
+
+Kettős használati jogok a licenc annak biztosítása érdekében az áttelepítés zökkenőmentesen futnak, 180 nap áll rendelkezésére. A 180 napos időszak után a SQL Server licence csak akkor használható a felhőben, SQL Database-ben, és nincs kettős használati jogok a helyszíni és a felhőben.
+
+#### <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>Miben licenc mobility az Azure Hybrid Benefittel az SQL Server
+
+Licenc mobility előnyeit még ma, az SQL Server-ügyfelek számára, amely lehetővé teszi az ismételt hozzárendelése után a külső megosztott kiszolgálókra licenceiket frissítési garanciával rendelkező biztosítunk. Ez a kedvezmény az Azure IaaS- és AWS EC2 lehet használni.
+Az Azure Hybrid Benefittel az SQL Server eltér a licenchordozhatósági program két fő területen:
+
+- Nagymértékben virtualizált számítási feladatok áthelyezése az Azure gazdasági haszna biztosítja. SQL EE magonkénti 4 mag az Azure-ban minden egyes tartozó magért általános célú termékváltozatban saját nagymértékben virtualizált alkalmazások helyszíni. Licenc mobility nem engedélyezi a semmilyen különleges árelőnyök virtualizált számítási feladatok áthelyezése a felhőbe.
+- Biztosítja az Azure-on (SQL Database felügyelt példánya), amely nagy mértékben kompatibilis a helyszíni SQL Server egy PaaS-cél
+
+#### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Mik az Azure Hybrid Benefit SQL Serverhez, a megfelelő jogosultságok
+
+Az SQL Database ügyfelei az Azure Hybrid benefittel az SQL Server társított alábbi jogosultságokkal fog rendelkezni:
+
+|License Footprint|Az SQL Server beolvasása, mire Azure Hybrid Benefit?|
+|---|---|
+|Az SQL Server Enterprise Edition core ügyfeleit, SA|<li>Általános célú vagy üzletileg kritikus fontosságú Termékváltozatoknál alapegysége is kell fizetnie.</li><br><li>helyszíni 1 mag = 4 mag, általános célú termékváltozatban</li><br><li>helyszíni 1 mag = 1 mag az üzletileg kritikus fontosságú Termékváltozatoknál</li>|
+|SQL Server Standard Edition core ügyfeleit, SA|<li>Fizethet a szolgáltatásért alapegysége/az általános célú Termékváltozatban csak</li><br><li>helyszíni 1 mag = 1 mag, általános célú termékváltozatban</li>|
+|||
+
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kapcsolatfelvétel az SQL Server műszaki csoportjával
 

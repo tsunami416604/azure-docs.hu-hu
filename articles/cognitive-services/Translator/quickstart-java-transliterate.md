@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 76de6b91d6b136dc0d2f6933e29f24ca3ea3e785
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2345204fc8b51cf1f7dc8020950c121e12676547
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857073"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961295"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-java"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveg Java használatával
 
@@ -171,6 +171,12 @@ Ennyi az egész, készen áll a mintaalkalmazás futtatásához. A parancssor (v
 
 ```console
 gradle build
+```
+
+A build elkészültekor futtassa:
+
+```console
+gradle run
 ```
 
 ## <a name="sample-response"></a>Mintaválasz

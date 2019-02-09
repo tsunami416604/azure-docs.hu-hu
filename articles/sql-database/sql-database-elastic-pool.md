@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1e7ec07c29f742202b17e94d96d88b0dfb223100
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 4e4de6d487aaad8a0d036928fe59b47f25157bf6
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464347"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963845"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése és a több Azure SQL-adatbázisok horizontális Súgó
 
@@ -34,6 +34,9 @@ Rugalmas készletek megoldhatja a problémát azáltal, hogy az adatbázisok beo
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
+
+> [!IMPORTANT]
+> Nem jár a rugalmas adatbázis-költségekkel. Egy készlet a legmagasabb edtu-k vagy a virtuális magok, hogy egy óránál kevesebb ideig volt a készlet active függetlenül meglétének minden órája számlázzuk ki.
 
 Rugalmas készletek köszönhetően a fejlesztő által az egyes adatbázisok használati időszakok kiszámíthatatlan befogadásához több adatbázis által közösen használt készlethez tartozó erőforrások megvásárlására. A készlet alapján vagy konfigurálhat erőforrásokat a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Egy készlet erőforrás-követelmény-adatbázisa a összesített kihasználtsága határozza meg. A fejlesztői költségvetés határozza meg a készlet számára elérhető erőforrások mennyisége. A fejlesztő egyszerűen adatbázisokat ad a készlethez, beállítja az adatbázisok erőforrások minimális és maximális (vagy minimális és maximális dtu-k vagy minimális vagy maximális virtuális magok a választott modell resourcing függően), és ezután beállítja az erőforrás-készlet alapján azok Költségvetés. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
 

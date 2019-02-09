@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/31/2016
+ms.date: 02/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: c284236af64c3981a5d15570bcd2705bb7d6a99b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: edbd7000001ae6927078e2f1bb9e348cc78f9efa
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121054"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962111"
 ---
 # <a name="smart-detection-in-application-insights"></a>Az Application Insights intelligens detektálás
  Intelligens észlelés automatikusan figyelmezteti, az esetleges teljesítményproblémákat okozhat a webalkalmazásban. Proaktív elemzése a telemetriát, amely elküldi az alkalmazás végrehajt [Application Insights](../../azure-monitor/app/app-insights-overview.md). Ha hirtelen megnövekedhet a hibaarányok, vagy a rendellenes mintákat ügyfél vagy kiszolgáló teljesítményét, riasztást kap. Ez a funkció nincs konfigurációs van szüksége. Ha az alkalmazása elég telemetriát küld működik.
@@ -46,6 +46,14 @@ Válasszon ki egy riasztást, a részletek megtekintéséhez.
 * [Intelligens detektálás – Azure-Felhőszolgáltatás problémák](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/). Riasztásokat kaphat, ha az alkalmazás üzemel az Azure Cloud Services és a egy szerepkörpéldány rendelkezik a hibák, gyakori újrahasznosítás vagy futásidejű összeomlások.
 
 (A Súgó az egyes értesítések hivatkozások az ide tartozó cikkekre.)
+
+## <a name="smart-detection-email-notifications"></a>Az intelligens észlelési e-mail-értesítések
+
+Minden intelligens detektálási szabályok, kivéve a szabályokat, az előzetes verzióként megjelölt e-mail értesítések küldéséhez észlelések esetén alapértelmezés szerint vannak konfigurálva.
+
+Az intelligens detektálási szabályra adott e-mail-értesítések konfigurálása teheti meg az intelligens detektálási megnyitásával **beállítások** panelre, és válassza a szabályt, amely megnyitja a **szabály szerkesztése** panelen.
+
+Másik lehetőségként a konfigurációját az Azure Resource Manager-sablonok segítségével módosíthatja. [Tekintse meg az Azure Resource Manager-sablonok használata kezelheti az Application Insights intelligens detektálási szabályok](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) további részletekért.
 
 ## <a name="video"></a>Videó
 

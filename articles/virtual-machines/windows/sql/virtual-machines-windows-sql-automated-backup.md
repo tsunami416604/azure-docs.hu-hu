@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ca9c7611197de001265f70fd1b34314d90ee83b2
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 99439c2b6bd4fdd271dda7a49850c5b6f44330b3
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329840"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984715"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatikus biztonsági mentés az SQL Server 2014 virtuális gépeken (Resource Manager)
 
@@ -103,16 +103,18 @@ Ha első alkalommal engedélyezi automatikus biztonsági mentés, akkor az Azure
 Automatikus biztonsági mentés konfigurálása a PowerShell használatával is. Mielőtt hozzákezd, tegye a következőket:
 
 - [Töltse le és telepítse a legújabb Azure PowerShell](https://aka.ms/webpi-azps).
-- Nyissa meg a Windows Powershellt, és társítsa a fiókját a **Connect-AzureRmAccount** parancsot.
+- Nyissa meg a Windows Powershellt, és társítsa a fiókját a **Connect-AzAccount** parancsot.
+
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ### <a name="install-the-sql-iaas-extension"></a>Az SQL IaaS-bővítményének telepítése
-Ha Ön egy SQL Server virtuális gépet az Azure Portalról, az SQL Server IaaS-bővítmény már telepítve kell lennie. Megadhatja, hogy ha, telepítve van a virtuális gép meghívásával **Get-AzureRmVM** parancsot, és megvizsgálja a **bővítmények** tulajdonság.
+Ha Ön egy SQL Server virtuális gépet az Azure Portalról, az SQL Server IaaS-bővítmény már telepítve kell lennie. Megadhatja, hogy ha, telepítve van a virtuális gép meghívásával **Get-azvm parancsmag** parancsot, és megvizsgálja a **bővítmények** tulajdonság.
 
 ```powershell
 $vmname = "vmname"
 $resourcegroupname = "resourcegroupname"
 
-(Get-AzureRmVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions
+(Get-AzVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions
 ```
 
 Ha az SQL Server IaaS-ügynök bővítmény telepítve van, megjelenik az "SqlIaaSAgent" vagy "SQLIaaSExtension" jelenik. **ProvisioningState** esetében a kiterjesztést is jelenítsen meg a "sikeres üzenet".
@@ -121,7 +123,7 @@ Ha van telepítve, vagy nem telepítése sikertelen volt, a következő paranccs
 
 ```powershell
 $region = "EASTUS2"
-Set-AzureRmVMSqlServerExtension -VMName $vmname `
+Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region
 ```
@@ -131,10 +133,10 @@ Set-AzureRmVMSqlServerExtension -VMName $vmname `
 
 ### <a id="verifysettings"></a> Jelenlegi beállítások ellenőrzése
 
-Ha engedélyezte az automatikus biztonsági mentés üzembe helyezés során, a PowerShell használatával a jelenlegi konfiguráció ellenőrzéséhez. Futtassa a **Get-AzureRmVMSqlServerExtension** parancsot, és vizsgálja meg a **AutoBackupSettings** tulajdonság:
+Ha engedélyezte az automatikus biztonsági mentés üzembe helyezés során, a PowerShell használatával a jelenlegi konfiguráció ellenőrzéséhez. Futtassa a **Get-AzVMSqlServerExtension** parancsot, és vizsgálja meg a **AutoBackupSettings** tulajdonság:
 
 ```powershell
-(Get-AzureRmVMSqlServerExtension -VMName $vmname -ResourceGroupName $resourcegroupname).AutoBackupSettings
+(Get-AzVMSqlServerExtension -VMName $vmname -ResourceGroupName $resourcegroupname).AutoBackupSettings
 ```
 
 Kimenetet kell kapnia a következőhöz hasonló:
@@ -168,31 +170,31 @@ Először válasszon ki vagy hozzon létre egy tárfiókot, a biztonsági menté
 $storage_accountname = “yourstorageaccount”
 $storage_resourcegroupname = $resourcegroupname
 
-$storage = Get-AzureRmStorageAccount -ResourceGroupName $resourcegroupname `
+$storage = Get-AzStorageAccount -ResourceGroupName $resourcegroupname `
     -Name $storage_accountname -ErrorAction SilentlyContinue
 If (-Not $storage)
-    { $storage = New-AzureRmStorageAccount -ResourceGroupName $storage_resourcegroupname `
+    { $storage = New-AzStorageAccount -ResourceGroupName $storage_resourcegroupname `
     -Name $storage_accountname -SkuName Standard_GRS -Location $region }
 ```
 
 > [!NOTE]
 > Automatikus biztonsági mentés nem támogatja a tárolását biztonsági mentések prémium szintű storage-ban, de a Premium Storage használata Virtuálisgép-lemezek biztonsági másolatait is igénybe vehet.
 
-Ezután a **New-AzureRmVMSqlServerAutoBackupConfig** paranccsal engedélyezheti és konfigurálhatja az automatikus biztonsági mentés beállításainak biztonsági másolatok tárolására az Azure storage-fiókban. Ebben a példában a biztonsági mentések 10 napig őrződnek meg. A második parancs **Set-AzureRmVMSqlServerExtension**, frissíti a megadott Azure virtuális gép ezekkel a beállításokkal.
+Ezután a **New-AzVMSqlServerAutoBackupConfig** paranccsal engedélyezheti és konfigurálhatja az automatikus biztonsági mentés beállításainak biztonsági másolatok tárolására az Azure storage-fiókban. Ebben a példában a biztonsági mentések 10 napig őrződnek meg. A második parancs **Set-AzVMSqlServerExtension**, frissíti a megadott Azure virtuális gép ezekkel a beállításokkal.
 
 ```powershell
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
     -RetentionPeriodInDays 10 -StorageContext $storage.Context `
     -ResourceGroupName $storage_resourcegroupname
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
 Telepítse és konfigurálja az SQL Server IaaS-ügynök több percet igénybe vehet.
 
 > [!NOTE]
-> Vannak más beállításokat a **New-AzureRmVMSqlServerAutoBackupConfig** , amely csak az SQL Server 2016 és az automatikus biztonsági mentés v2 vonatkoznak. Az SQL Server 2014 nem támogatja a következő beállításokat: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours**, és **LogBackupFrequencyInMinutes**. Ezeket a beállításokat az SQL Server 2014 virtuális gép kísérli meg, ha nem történt hiba, de nem a beállítások legyenek alkalmazva. Ha szeretné ezeket a beállításokat az SQL Server 2016 virtuális gép használja, lásd: [automatikus biztonsági mentés v2 az SQL Server 2016 az Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
+> Vannak más beállításokat a **New-AzVMSqlServerAutoBackupConfig** , amely csak az SQL Server 2016 és az automatikus biztonsági mentés v2 vonatkoznak. Az SQL Server 2014 nem támogatja a következő beállításokat: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours**, és **LogBackupFrequencyInMinutes**. Ezeket a beállításokat az SQL Server 2014 virtuális gép kísérli meg, ha nem történt hiba, de nem a beállítások legyenek alkalmazva. Ha szeretné ezeket a beállításokat az SQL Server 2016 virtuális gép használja, lásd: [automatikus biztonsági mentés v2 az SQL Server 2016 az Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
 
 Titkosítás engedélyezéséhez módosítsa a át az előző parancsfájlt a **EnableEncryption** paraméterrel együtt (biztonságos karakterlánc) jelszavát a **CertificatePassword** paraméter. A következő parancsfájl lehetővé teszi, hogy az előző példában az automatikus biztonsági mentés beállításait, és hozzáadja a titkosítás.
 
@@ -200,12 +202,12 @@ Titkosítás engedélyezéséhez módosítsa a át az előző parancsfájlt a **
 $password = "P@ssw0rd"
 $encryptionpassword = $password | ConvertTo-SecureString -AsPlainText -Force
 
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
     -EnableEncryption -CertificatePassword $encryptionpassword `
     -RetentionPeriodInDays 10 -StorageContext $storage.Context `
     -ResourceGroupName $storage_resourcegroupname
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
@@ -213,12 +215,12 @@ Ellenőrizze a beállításokat is vonatkozik, [az automatikus biztonsági ment�
 
 ### <a name="disable-automated-backup"></a>Automatikus biztonsági mentés letiltása
 
-Automatikus biztonsági mentés letiltása, futtassa ugyanezt a szkriptet nélkül a **-engedélyezése** paramétert a **New-AzureRmVMSqlServerAutoBackupConfig** parancsot. Hiányában a **-engedélyezése** paraméter jelzi a parancs a funkció letiltásához. Csakúgy, mint a telepítés, automatikus biztonsági mentés letiltása több percig is eltarthat.
+Automatikus biztonsági mentés letiltása, futtassa ugyanezt a szkriptet nélkül a **-engedélyezése** paramétert a **New-AzVMSqlServerAutoBackupConfig** parancsot. Hiányában a **-engedélyezése** paraméter jelzi a parancs a funkció letiltásához. Csakúgy, mint a telepítés, automatikus biztonsági mentés letiltása több percig is eltarthat.
 
 ```powershell
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -ResourceGroupName $storage_resourcegroupname
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -ResourceGroupName $storage_resourcegroupname
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
@@ -236,27 +238,27 @@ $retentionperiod = 10
 
 # ResourceGroupName is the resource group which is hosting the VM where you are deploying the SQL IaaS Extension
 
-Set-AzureRmVMSqlServerExtension -VMName $vmname `
+Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region
 
 # Creates/use a storage account to store the backups
 
-$storage = Get-AzureRmStorageAccount -ResourceGroupName $resourcegroupname `
+$storage = Get-AzStorageAccount -ResourceGroupName $resourcegroupname `
     -Name $storage_accountname -ErrorAction SilentlyContinue
 If (-Not $storage)
-    { $storage = New-AzureRmStorageAccount -ResourceGroupName $storage_resourcegroupname `
+    { $storage = New-AzStorageAccount -ResourceGroupName $storage_resourcegroupname `
     -Name $storage_accountname -SkuName Standard_GRS -Location $region }
 
 # Configure Automated Backup settings
 
-$autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
+$autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
     -RetentionPeriodInDays $retentionperiod -StorageContext $storage.Context `
     -ResourceGroupName $storage_resourcegroupname
 
 # Apply the Automated Backup settings to the VM
 
-Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
+Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: 78812f7bcce82090802672e3e232e713f0d047d1
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: a6607fa91d9c8556881a5532527a63b6f21ad4d1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214113"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977456"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Ujjlenyomat helyett a tanúsítvány köznapi nevét használó Service Fabric-fürt üzembe helyezése
 Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltás vagy felügyeleti is rendelkezhet. Több tanúsítvány, azonban lehet a ugyanazzal a névvel vagy a tulajdonos.  Tanúsítvány köznapi nevek a fürtök teszi tanúsítványok kezelése sokkal egyszerűbb. Ez a cikk ismerteti, hogyan helyezhet üzembe Service Fabric-fürt helyett a tanúsítvány ujjlenyomata a tanúsítvány köznapi nevét használni.
@@ -177,13 +177,17 @@ Ezután nyissa meg a *azuredeploy.json* fájlt egy szövegszerkesztőben, és h�
             "commonNames": [
             {
                 "certificateCommonName": "[parameters('certificateCommonName')]",
-                "certificateIssuerThumbprint": ""
+                "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprint')]"
             }
             ],
             "x509StoreName": "[parameters('certificateStoreValue')]"
         },
         ...
     ```
+> [!NOTE]
+> A "certificateIssuerThumbprint" mező lehetővé teszi, hogy a várt tanúsítványkiállítókat egy adott tulajdonos köznapi nevének megadása. Ez a mező egy vesszővel tagolt felsorolása SHA1 ujjlenyomatok fogad el. Vegye figyelembe, hogy ez a tanúsítvány-ellenőrzés – abban az esetben, ha a kiállító nincs megadva vagy üres, a tanúsítvány fogadható el a hitelesítést, ha a lánc építhetők fel és építhet fel a érvényesítő által megbízhatónak tartott legfelső annak megerősítése. Ha a kiállító van megadva, a tanúsítvány fogadják, ha közvetlen kiállítójának ujjlenyomata megegyezik az ebben a mezőben - attól függetlenül, a legfelső szintű-e megbízható-e a megadott értékeket. Vegye figyelembe, hogy a nyilvános kulcsokra épülő infrastruktúra különböző hitelesítésszolgáltatók használatával azonos téma tanúsítványokat, és ezért fontos, hogy adja meg az összes várt kibocsátójának ujjlenyomatai egy adott témához.
+>
+> Adja meg a kibocsátó számít a legjobb; kihagyva, miközben továbbra is működni fog - láncolás a megbízható legfelső szintű - tanúsítványok ezt a viselkedést korlátozások vonatkoznak, és előfordulhat, hogy lezárul a közeljövőben. Azt is vegye figyelembe, hogy a fürtök az Azure-ban üzembe helyezett, és biztosított, X509 tanúsítványok privát PKI által kiadott és a tulajdonos által deklarált előfordulhat, hogy nem lehet hitelesítenie kell az Azure Service Fabric-szolgáltatás (a fürtszolgáltatás kommunikációhoz), ha a PKI-tanúsítvány-házirend Nincs észlelhető, elérhető és nem érhető el. 
 
 ## <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
 A módosítások elvégzése után a frissített sablon újbóli telepítése.

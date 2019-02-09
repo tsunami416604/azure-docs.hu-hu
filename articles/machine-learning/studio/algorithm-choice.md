@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: d60c99349fef26fc1ead7f6ea4b77d0c364c4abb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ee2ea608fb2a53563340b76ea916160231b27dca
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868140"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978425"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban az algoritmusok kiválasztása
 
@@ -245,8 +245,6 @@ Elindult, és a Microsoft Research saját John Langford által vezetett, VW egy 
 * A Machine Learning Studióban elérhető összes gépi tanulási algoritmusok, kategória szerint, lásd: [modell inicializálása](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model) a Machine Learning Studio algoritmus-és modul segítségével.
 
 * Betűrend szerinti rendezés listájáért algoritmusok és a Machine Learning Studióban modulok, lásd: [betűrend szerinti lista Machine Learning Studio-modulok](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list) a Machine Learning Studio algoritmus- és modul segítségével.
-
-* Töltse le, és nyomtassa ki a Machine Learning Studio képességeit áttekintő diagram: [Microsoft Azure Machine Learning Studio képességeinek áttekintése (PDF)](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf).
 
 <!-- Media -->
 

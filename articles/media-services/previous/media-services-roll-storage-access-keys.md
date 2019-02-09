@@ -4,7 +4,7 @@ description: Ez a cikk ad útmutatást a Media Services frissítése táreléré
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a892ebb0-0ea0-4fc8-b715-60347cc5c95b
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 02/08/2019
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: 4ab2c58e5a0f9e04d824eeea443a13af7a32617d
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 096372215ae44902c633489d197dc1d8aa60f193
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619656"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983015"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys"></a>A Media Services frissítése tárelérési kulcsok váltása után
+# <a name="update-media-services-after-rolling-storage-access-keys-legacy"></a>A Media Services frissítése tárelérési kulcsok (örökölt) váltása után
 
 Amikor létrehoz egy új Azure Media Services (AMS)-fiókot, a rendszer is felkéri Azure Storage-fiókot, amely a médiatartalmak tárolására szolgál. A Media Services-fiók több mint egy storage-fiókok is hozzáadhat. Ez a cikk bemutatja, hogyan tárkulcsok rotálása. Azt is bemutatja, hogyan tárfiókok hozzáadása media-fiók. 
 
@@ -68,7 +68,7 @@ Az alábbi példa bemutatja, hogyan a storage-fiók és szinkronizálás a az AM
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Az AMS-fiók a storage-fiókok hozzáadásának lépéseit
 
-A következő cikk bemutatja, hogyan tárfiókok hozzáadása az AMS-fiók: [több tárfiók csatolása a Media Services-fiók](meda-services-managing-multiple-storage-accounts.md).
+A következő cikk bemutatja, hogyan tárfiókok hozzáadása az AMS-fiók: [Több tárfiók csatolása a Media Services-fiók](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

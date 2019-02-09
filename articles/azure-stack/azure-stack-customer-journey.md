@@ -16,18 +16,18 @@ ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: f900fa5105f42dac57b392d41a8cd888850fc648
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 491664067c87de8f94d2395cb2ffbdeade2595b0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249491"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979547"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Az Azure Stack adatközpont integrációja
 
-Ez a cikk ismerteti a teljes körű Azure Stack felhasználói élmény a vásárlási keresztül a helyszíni üzembe helyezés sikerességét megoldásszolgáltató által integrált megoldást. Ezen információk használatával megkönnyítése érdekében juthat, és segítségével ismertetheti az elvárásokat a milyen Ön, mint az Azure Stack-ügyfél, amikor integrálják az Azure Stack adatközpontban várhatóan.
+Ez a cikk ismerteti a teljes körű Azure Stack felhasználói élmény a vásárlási keresztül a helyszíni üzembe helyezés sikerességét megoldásszolgáltató által integrált rendszer. Ezt az információt használja megkönnyítése érdekében foglalkozás és közölheti az elvárásokat, az ügyfél egy Azure Stack segítségével.
 
-Az Azure Stack ügyfélként kell várhatóan a következő adatközpont integrációja fázisok:
+Az Azure Stack ügyfélként kell várhatóan az alábbi lépéseket:
 
 |     |Tervezési fázis|Rendelés feldolgozása|Központi telepítés előtti|Feldolgozó folyamat|Hardver kézbesítés|Helyszíni üzembe helyezés|
 |-----|-----|-----|-----|-----|-----|-----|
@@ -63,7 +63,7 @@ Ebben a fázisban kell annak eldöntése, hogyan szeretné az adatközponttal in
 A [általános adatközpont integrációja szempontok](azure-stack-datacenter-integration.md) cikk, amely segítséget nyújt a kitöltheti a sablont, más néven az üzembehelyezési munkalap információkat tartalmaz. 
 
 > [!IMPORTANT]
-> Ezen szakasz során fontos, hogy az összes előfeltételként információk vizsgálni és kiválasztotta az a megoldás Rendezés előtt. Vegye figyelembe, hogy ez a lépés időigényes koordinálása és a szervezeten belül több oktatnak történő adatok gyűjtési van szükség. 
+> Ezen szakasz során fontos, hogy az összes előfeltételként információk vizsgálni és kiválasztotta az a megoldás Rendezés előtt. Vegye figyelembe, hogy ez a lépés időigényes koordinálása és a szervezeten belül több oktatnak történő adatok gyűjtési van szükség. Helytelen vagy hiányos adatok hosszabb központi telepítés eredményezhet. 
 
 A központi telepítés előtti fázist dönthet arról, hogy a következő lesz szüksége:
 
@@ -90,7 +90,7 @@ Ez **kulcsfontosságú** , hogy az összes előfeltételként adatok zárolva, �
 
 -   Minden tanúsítvány kell vásárolnia, és készen áll.
 
--   Tartománynevet kell határozni.
+-   Régió neve meg kell határoznia.
 
 -   Minden hálózati integráció paraméterek véglegesítése, és mi osztottak meg a megoldásszolgáltató felel meg.
 
@@ -102,16 +102,16 @@ Azure Stack üzembe helyezéséhez a hardveres megoldás szolgáltatói helyszí
 
 A következő egy mire számíthat a helyszínen mérnök, az üzembe helyezés során:
 
-- Ellenőrizze az összes kábelek és szegély kapcsolatot annak biztosítására, a megoldás megfelelő felépítését, és megfelel a követelményeknek
-- Konfigurálja a megoldást HLH (hardver életciklus gazdagép)
+- Ellenőrizze az összes kábelek és szegély kapcsolatot annak biztosítására, a megoldás megfelelő felépítését, és megfelel a követelményeknek.
+- A megoldás HLH (hardver életciklus gazdagép), konfigurálása, ha van ilyen.
 - Ellenőrizze, hogy minden BMC, a BIOS-ban és a hálózati beállítások megfelelőek.
-- Ellenőrizze, hogy az összes összetevő belső vezérlőprogramját a legújabb jóváhagyott verzióját a megoldás által jelenleg
-- A telepítés megkezdése
+- Ellenőrizze, hogy az összes összetevő belső vezérlőprogramját a legújabb jóváhagyott verziójú a megoldás által.
+- Indítsa el a központi telepítést.
 
 > [!NOTE]
 > A telepítési eljárás által a helyszínen mérnök eltarthat egy üzleti hét végrehajtásához.
 
-## <a name="post-integration-phase"></a>Integráció utáni fázist
+## <a name="post-deployment-phase"></a>Üzembe helyezés utáni fázist
 Számos lépést kell végrehajtani a partner által előtt a megoldás lesz továbbítva az ügyfél a utáni integrációs fázisban. Ebben a fázisban érvényesítési, fontos, hogy a rendszer központi telepítésének és teljesítményű megfelelően. 
 
 Az OEM-Partner által végrehajtandó műveletek a következők:
@@ -122,13 +122,13 @@ Az OEM-Partner által végrehajtandó műveletek a következők:
 
 -   [Marketplace-en szindikálás](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
 
--   Biztonsági mentési kapcsoló konfigurációs fájlok
+-   Biztonsági mentési Kapcsolókonfiguráció és HLH konfigurációs fájlok
 
 -   Remove DVM
 
 -   Összefoglaló ügyfél telepítésének előkészítése
 
--   [Győződjön meg arról, hogy a megoldás szoftverek a legújabb verzióra frissül, a frissítések keresése](azure-stack-updates.md)
+-   [Győződjön meg arról, hogy a megoldás szoftverek a legújabb verzióra frissül, a frissítések keresése](.\azure-stack-updates.md)
 
 Vannak kötelező vagy nem kötelező a telepítés típusától függően számos lépést.
 

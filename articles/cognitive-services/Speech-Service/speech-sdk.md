@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 749def4df4aa210583f778668a398419ec08a07d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5d98ae7fe4062ce88ee2a3df5f9bb4d992d4023c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861425"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984681"
 ---
 # <a name="about-the-speech-service-sdk"></a>A beszédfelismerés Szolgáltatásoldali SDK-val kapcsolatos
 
@@ -76,13 +76,13 @@ Az Android Studio-projektek-csomagot használhat, a következő módosításokat
 
 * A projekt szintű build.gradle fájlban adja hozzá a következőt a `repository` szakaszban:
 
-  ```text
+  ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```
 
 * A modul szintű build.gradle fájlban adja hozzá a következőt a `dependencies` szakaszban:
 
-  ```text
+  ```gradle
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.2.0'
   ```
 

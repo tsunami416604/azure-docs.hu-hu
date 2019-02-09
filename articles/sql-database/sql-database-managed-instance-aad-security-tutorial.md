@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 32d1be97405624fe929a9e9e1ff486f6a31200aa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 402e10d9b99dbf0eeba8aac27071e4d78fdf0f01
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732770"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984511"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-logins"></a>Oktatóanyag: Felügyelt példány biztonsági az Azure SQL Database az Azure AD bejelentkezési adatok használata
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > - Hozzon létre egy Azure Active Directory (AD) bejelentkezést egy felügyelt példány
 > - Felügyelt példány az Azure AD bejelentkezési engedélyek megadása
 > - Az Azure AD-felhasználók létrehozása az Azure AD-bejelentkezések
-> - Engedélyek hozzárendelése az Azure AD-felhasználók és a felügyelt adatbázis-biztonság
+> - Engedélyek hozzárendelése az Azure AD-felhasználók és adatbázis-biztonság kezelése
 > - A megszemélyesítést használhatja az Azure AD-felhasználók
 > - Adatbázisközi lekérdezések használata az Azure AD-felhasználók
 > - További információ a biztonsági funkciókat, például veszélyforrások elleni védelem, naplózás, adatmaszkolás és titkosítás

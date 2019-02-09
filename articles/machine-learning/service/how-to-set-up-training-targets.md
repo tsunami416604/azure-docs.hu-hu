@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14a6bdfff486f13f18d42b1bd20880347d3ebbc8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 292063183561722eae76c3d30ce242facd22df26
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756529"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981451"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
 
@@ -47,6 +47,11 @@ Az Azure Machine Learning szolgáltatás különböző támogatással rendelkezi
 |[Az Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Az Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
+**Célok több betanítási feladatokhoz felhasználható számítási**. Például ha csatlakoztat egy távoli virtuális Gépen a munkaterülethez, felhasználhatja azt több feladat esetében.
+
+> [!NOTE]
+> Az Azure Machine Learning Compute létrehozhatják állandó erőforrásként vagy dinamikusan létrehozott, egy Futtatás kérés. Futtatás-alapú létrehozása eltávolítja a számítási célnak, a betanítási Futtatás befejezése után, ezért az ilyen módon létrehozott számítási célnak nem használhat újra.
+
 ## <a name="whats-a-run-configuration"></a>Mi az, hogy egy futtatási konfigurációt?
 
 Amikor képzésekről, indítsa el a helyi számítógépen, és később futhatnak a tanítási szkriptet a különböző számítási céloknak közös. Az Azure Machine Learning szolgáltatás a szkriptet futtathatja a különböző számítási célnak a parancsfájl módosítása nélkül. 
@@ -65,7 +70,7 @@ A rendszer által felügyelt környezetben használja, ha azt szeretné, [Conda]
 
 Adja meg az egyes függőségi használatával mást nem kell tennie a [CondaDependency osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) Conda-majd létrehoz egy fájlt **conda_dependencies.yml** a a **aml_config** a könyvtár a munkaterületen, a függőségek csomagolása és állítja be a Python-környezetében, a betanítási kísérlet elküldésekor a listája. 
 
-A kezdeti beállítása egy új környezet a szükséges függőségek méretétől függően több percig is eltarthat. Mindaddig, amíg változatlan marad a csomagok listájában, idő beállítása csak egyszer történik.
+A kezdeti beállítás új környezet a szükséges függőségek méretétől függően több percig is eltarthat. Mindaddig, amíg változatlan marad a csomagok listájában, a telepítési idő csak egyszer történik.
   
 Az alábbi kód példa scikit igénylő rendszer által felügyelt környezetben – ismerje meg:
     
@@ -73,7 +78,7 @@ Az alábbi kód példa scikit igénylő rendszer által felügyelt környezetben
 
 #### <a name="user-managed-environment"></a>Felhasználó által felügyelt környezetben
 
-Egy felhasználó által felügyelt környezetek esetében Ön felelős egy környezet felépítésének lépésein, és a számítási célnak a tanítási szkriptet van szüksége minden csomag telepítését. Ha a képzési környezet már konfigurálva van (például a helyi gépen), kihagyhatja a lépést a létrehozott beállításával `user_managed_dependencies` igaz értékre. Conda nem ellenőrzése a környezetben, vagy az Ön számára telepít semmit.
+Felhasználó által felügyelt környezetben Ön felelős egy környezet felépítésének lépésein, és a számítási célnak a tanítási szkriptet van szüksége minden csomag telepítését. Ha a képzési környezet már konfigurálva van (például a helyi gépen), akkor kihagyhatja a telepítő beállításával `user_managed_dependencies` igaz értékre. Conda nem ellenőrzése a környezetben, vagy az Ön számára telepít semmit.
 
 A következő kód bemutatja egy példa az egy felhasználó által felügyelt környezetben a betanítási Futtatás:
 
@@ -242,7 +247,7 @@ Elérheti a számítási célokhoz, amely az Azure Portalon a munkaterülethez l
 
 * [Nézet számítási céljainak](#portal-view) csatlakoztatva a munkaterülethez
 * [Hozzon létre egy számítási célnak](#portal-create) a munkaterületen
-* [Újból felhasználhatja a meglévő számítási célnak](#portal-reuse)
+* [Egy számítási célnak csatolása](#portal-reuse) , amely a munkaterületen kívül lett létrehozva
 
 Miután a tároló létrehozása és csatlakoztatása a munkaterülethez, használja azt a futtatási konfigurációt a `ComputeTarget` objektum: 
 
@@ -293,9 +298,11 @@ Az előző lépésekkel számítási célnak listájának megtekintéséhez. Eze
 
 
 
-### <a id="portal-reuse"></a>Újból felhasználhatja a meglévő számítási célnak
+### <a id="portal-reuse"></a>Számítási célnak csatolása
 
-A számítási célokhoz listájának megtekintéséhez a korábban ismertetett lépésekkel. Ezután tegye a következőket számítási célt használja: 
+Az Azure Machine Learning szolgáltatás munkaterület alkalmazáson kívül létrehozott számítási célnak használatához csatolja őket. Egy számítási célnak csatolása tesz elérhetővé a munkaterülethez.
+
+A számítási célokhoz listájának megtekintéséhez a korábban ismertetett lépésekkel. A következő lépések segítségével csatolása számítási célt: 
 
 1. Válassza a pluszjelet (+) számítási célt. 
 1. Adjon meg egy nevet a számítási célnak. 

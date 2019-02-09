@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6066ca586ce9923158026fbeaa405de16681de9b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 080cfb43f8fef04d2459dd0bb8779d2aa66cc359
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461339"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960973"
 ---
 # <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>Egy tranzakciós szempontból konzisztens másolatot készít egy Azure SQL database másolása
 
@@ -68,6 +68,7 @@ Jelentkezzen be a kiszolgálószintű fő bejelentkező vagy a bejelentkezés á
 Indítsa el a forrás-adatbázis-Másolás a [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) utasítást. Ez az utasítás végrehajtása indítja el az adatbázis másolása folyamat. Mivel az adatbázis másolása egy aszinkron folyamat, a CREATE DATABASE utasítás adja vissza, az adatbázis-Másolás befejezése előtt.
 
 ### <a name="copy-a-sql-database-to-the-same-server"></a>SQL-adatbázis másolása ugyanarra a kiszolgálóra
+
 Jelentkezzen be a kiszolgálószintű fő bejelentkező vagy a bejelentkezés által létrehozott szeretné másolni az adatbázist a master adatbázisban. Az adatbázis másolása sikeres, a bejelentkezések, amelyek nem a kiszolgálószintű rendszerbiztonsági tagnak a dbmanager szerepkör tagjának kell lennie.
 
 Ezzel a paranccsal egy új adatbázist 2. adatbázis ugyanazon a kiszolgálón Adatbázis1 másolja. Az adatbázis méretétől függően a másolási művelet eltarthat egy ideig.
@@ -86,6 +87,9 @@ Ezzel a paranccsal az 1. kiszolgálón Adatbázis1 egy új adatbázisra, 2. adat
     -- Start copying from Server1 to Server2
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
+## <a name="to-move-a-database-between-subscriptions"></a>-Adatbázis áthelyezése előfizetések között
+
+Az a [az Azure portal](https://portal.azure.com), kattintson a **SQL Server-kiszolgálók** , és válassza ki azt a kiszolgálót a listából az adatbázist tároló. Kattintson a **áthelyezése**, majd válasszon az áthelyezni kívánt erőforrásokat és az előfizetés áthelyezése.
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>A másolási művelet állapotának figyelése
 
@@ -96,7 +100,6 @@ A másolási folyamat figyeléséhez a sys.databases és a sys.dm_database_copie
 
 > [!NOTE]
 > Ha úgy dönt, hogy megszakítja a másolás, amíg folyamatban van, hajtsa végre a [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) utasítás az új adatbázis. Másik lehetőségként a DROP DATABASE utasítás végrehajtása a forrásadatbázison is megszakítja a másolási folyamat.
-> 
 
 ## <a name="resolve-logins"></a>Oldja meg a bejelentkezések
 

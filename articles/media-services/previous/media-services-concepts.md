@@ -11,16 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/08/2018
 ms.author: juliako
-ms.openlocfilehash: 06c6451a7c8532b32a1c130f6b71df97857d2e7f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b3805cf46fe0fbf2461ab11959de101d8d4154f0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353702"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984596"
 ---
-# <a name="azure-media-services-concepts"></a>Az Azure Media Services – alapelvek
+# <a name="azure-media-services-concepts-legacy"></a>Az Azure Media Services alapfogalmaiért (örökölt)
+
 Ez a témakör áttekintést nyújt a Media Services legfontosabb fogalmakat.
 
 ## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>Eszközök és tárolás
@@ -74,7 +75,7 @@ A blob-tároló egy készlet a blobok csoportosítását biztosítja. BLOB-táro
 ### <a name="a-idlocatorslocators"></a><a id="locators"/>Keresők
 [Kereső](https://docs.microsoft.com/rest/api/media/operations/locator)s adjon meg egy belépési pont eléréséhez az eszközintelligencia mappában található fájlokat. Hozzáférési házirendek az engedélyek és időtartama, hogy egy ügyfél hozzáfér egy adott eszköz meghatározására szolgál. Lokátorok rendelkezhet több az egyhez kapcsolat egy hozzáférési szabályzattal együtt, hogy különböző lokátorok is biztosítanak különböző kezdési ideje és kapcsolattípusok különböző ügyfelek számára a ugyanezt az engedélyt és időtartama beállításainak; minden használata során azonban egy megosztott elérési szabályzat korlátozási is megszűnnek az Azure storage-szolgáltatások által beállított, miatt nem lehet több mint öt, egy adott eszköz egyszerre társított egyedi keresők. 
 
-Media Services kétféle keresőtípust támogat: OnDemandOrigin keresők használt adathordozó (például MPEG DASH, HLS vagy Smooth Streaming) vagy fokozatosan letölteni az adathordozó és a SAS URL-címet lokátorokat, fel- vagy letölteni media files to\from az Azure storage segítségével. 
+A Media Services két lokátortípust támogat: OnDemandOrigin keresők médiatartalmak (például MPEG DASH, HLS vagy Smooth Streaming) segítségével, vagy fokozatosan letölteni az adathordozót, a SAS URL-címet keresők fel- vagy letölteni media files to\from az Azure storage segítségével. 
 
 >[!NOTE]
 >A lista engedéllyel (AccessPermissions.List) nem használható egy OnDemandOrigin kereső létrehozásakor. 
@@ -107,8 +108,8 @@ További információ a támogatott kódolók: [kódolók](media-services-encode
 ## <a name="live-streaming"></a>Élő adások online közvetítése
 Az Azure Media Services esetén a csatorna egy olyan folyamatot jelent élőben közvetített tartalmak feldolgozása. Egy csatorna bemeneti élő Streamek kap a két módszer egyikével:
 
-* A helyszíni élő kódoló és többféle sávszélességű RTMP vagy Smooth Streaming (töredékes MP4) küld a csatornát. Használhatja a következő élő kódolók, és többféle sávszélességű Smooth Streaming-kimenetre: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco és Elemental. RTMP-kimenetre a következő élő kódolók: Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision és Tricaster kódolókkal történő továbbítását. A feldolgozott adatfolyamok további átkódolása és kódolás nélkül csatornákon keresztül adja át. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
-* Egy egyféle sávszélességű adatfolyamot (a következő formátumok egyikében: RTMP vagy Smooth Streaming (töredékes MP4)) küld a csatornának, amely engedélyezve van a valós idejű kódolás a Media Services használatával. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* A helyszíni élő kódoló és többféle sávszélességű RTMP vagy Smooth Streaming (töredékes MP4) küld a csatornát. Használhatja a következő élő kódolók, és többféle sávszélességű Smooth Streaming-kimenetre: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco és Elemental. A következő élő kódolók RTMP-kimenetre: Az Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision és Tricaster kódolókkal történő továbbítását. A feldolgozott adatfolyamok további átkódolása és kódolás nélkül csatornákon keresztül adja át. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* Egy egyféle sávszélességű adatfolyamot (a következő formátumok egyikében: A csatorna, amelyen engedélyezve van a valós idejű kódolás a Media Services RTMP vagy Smooth Streaming (töredékes MP4)) kerül. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
 ### <a name="channel"></a>Csatorna
 A Media Services szolgáltatásban [csatorna](https://docs.microsoft.com/rest/api/media/operations/channel)s felelősek az élő adatfolyam-tartalmak feldolgozása. Egy csatorna bemeneti végpontot biztosít (betöltési URL-címe), majd adja át egy élő átkódolók. A csatorna élő bemeneti streamekhez fogadja a élő átkódolók, és lehetővé teszi egy vagy több Streamvégpontok keresztül. Csatorna előnézeti végpont (előzetes verzió URL-cím), amellyel és ellenőrzéséhez a stream előnézetének a feldolgozás folytatása és a továbbítás előtti is biztosítanak.
@@ -137,7 +138,7 @@ További információkért lásd:
 ### <a name="dynamic-encryption"></a>Dinamikus titkosítás
 Az Azure Media Services lehetővé teszi, hogy elhagyják a számítógép tárolási, feldolgozási és kézbesítési kezdve a médiatartalmak védelmét. A Media Services lehetővé teszi a tartalom Advanced Encryption Standard (AES) (128 bites titkosítási kulcsok használatával) és az általános titkosítás (CENC) a PlayReady és/vagy Widevine DRM segítségével dinamikusan titkosítja. A Media Services emellett modult az AES-kulcsok és a PlayReady-licenc jogosult ügyfeleknek.
 
-Jelenleg, hogy titkosítsa a következő formátumban: HLS, MPEG DASH és Smooth Streaming. A progresszív letöltés nem titkosítható.
+Jelenleg hogy titkosítsa a következő formátumban: HLS, MPEG DASH és Smooth Streaming. A progresszív letöltés nem titkosítható.
 
 Ha azt szeretné, a Media Services az objektum titkosítására, meg kell rendel hozzá egy titkosítási kulcsot (CommonEncryption vagy EnvelopeEncryption) az eszköz és engedélyezési házirendek, a kulcs is konfigurálhatja.
 

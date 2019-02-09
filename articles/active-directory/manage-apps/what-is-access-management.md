@@ -3,9 +3,8 @@ title: Az Azure AD-vel az alkalmazásokhoz való hozzáférés kezelése |} A Mi
 description: Ismerteti, hogyan Azure Active Directory lehetővé teszi a szervezetek számára, hogy az alkalmazások, amelyhez hozzáféréssel rendelkezik minden felhasználóhoz adja meg.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
-editor: ''
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: barbkess
-ms.openlocfilehash: 0c8450523890430587bedebbcd77ceddd8a03e42
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: 1be695384ff6828561fe8e1e858d052cba302dc0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183390"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982694"
 ---
 # <a name="managing-access-to-apps"></a>Alkalmazásokhoz való hozzáférés kezelése
 Folyamatban lévő hozzáférés-kezelés, használati értékelő és jelentéskészítési továbbra is kihívást jelenthet, miután az alkalmazás integrálva van a szervezet identitáskezelő rendszerbe. Sok esetben a rendszergazdák vagy a segélyszolgálat kell elvégeznie az alkalmazásokhoz való hozzáférés kezelése a folyamatban lévő aktív szerepet. Egyes esetekben hozzárendelést egy általános vagy részlegszintű informatikai csapat történik. Gyakran előfordul, a hozzárendelés döntést célja, hogy az üzleti döntéshozó, azok révén az informatikai előtt jóváhagyásra van szükség a delegálható a hozzárendelést.  Integráció a meglévő automatikus identitás- és hozzáférés felügyeleti rendszer, mint a szerepköralapú hozzáférés-vezérlés (RBAC) vagy attribútum-szerepköralapú hozzáférés-vezérlés (ABAC) más szervezetek befektetni. Az integráció és a szabály fejlesztés általában a speciális és költséges lehet. Monitoring, vagy mindkét felügyeleti megközelítés a reporting saját külön, költséges és bonyolult befektetése jelenti.
@@ -39,7 +38,7 @@ E két hozzárendelés mód használata esetén a rendszergazdák érheti el bá
 Az Azure AD-használat és a hozzárendelés jelentéskészítési rendszer teljesen integrált része, ezáltal a rendszergazda egyszerűen hozzárendelés állapota hozzárendelési hibákkal és még akkor is, használati jelentést.
 
 ## <a name="complex-application-assignment-with-azure-ad"></a>Az Azure ad-vel bonyolult az alkalmazás-hozzárendelés
-Vegyünk egy alkalmazást, mint például a Salesforce. Számos szervezet Salesforce elsősorban a marketing és értékesítés szervezetek használják. Gyakran előfordul a marketing csapat tagjai rendelkeznek magas privilegizált hozzáférési jogosultsága a Salesforce-hoz, amíg az értékesítési csoport tagjai csak korlátozott hozzáféréssel rendelkeznek. Sok esetben az információkkal dolgozó szakemberek a széles körű populációs korlátozta a hozzáférést az alkalmazáshoz. Ezek a szabályok alóli kivételek bonyolítja. Ez a legtöbbször a marketing vagy értékesítési vezetői csapatok számára a felhasználói hozzáférésének biztosítása, vagy módosítsa az alábbi általános szabályokkal függetlenül szerepkörökhöz korlátain.
+Vegyünk egy alkalmazást, mint például a Salesforce. Számos szervezet Salesforce elsősorban a marketing- és értékesítési csapatokat. Gyakran előfordul a marketing csapat tagjai rendelkeznek magas privilegizált hozzáférési jogosultsága a Salesforce-hoz, amíg az értékesítési csoport tagjai csak korlátozott hozzáféréssel rendelkeznek. Sok esetben az információkkal dolgozó szakemberek a széles körű populációs korlátozta a hozzáférést az alkalmazáshoz. Ezek a szabályok alóli kivételek bonyolítja. Ez a legtöbbször a marketing vagy értékesítési vezetői csapatok számára a felhasználói hozzáférésének biztosítása, vagy módosítsa az alábbi általános szabályokkal függetlenül szerepkörökhöz korlátain.
 
 Az Azure AD-alkalmazások, mint például a Salesforce lehet előre konfigurált az egyszeri bejelentkezés (SSO) és automatikus üzembe helyezést. Miután konfigurálta az alkalmazást, a rendszergazda is igénybe vehet a egyszeri művelet létrehozása és hozzárendelése a megfelelő csoportok. Ebben a példában a rendszergazda a következő hozzárendeléseket hajthatnak végre:
 
@@ -47,7 +46,7 @@ Az Azure AD-alkalmazások, mint például a Salesforce lehet előre konfigurált
   
   * Marketing csoportok minden tagját hozzájuk a "marketing" szerepkörhöz, a Salesforce-ban
   * Csoportok hozzájuk a "sales" szerepkör a Salesforce-ban az értékesítési csoport minden tagját. További finomítható több különböző Salesforce szerepkörökhöz hozzárendelt regionális értékesítési csapatot képviselő csoport használatával.
-* Ahhoz, hogy a kivételképzési mechanizmus, egy önkiszolgáló csoportkezelési sikerült létrehozni az egyes szerepkörökhöz. Például a "Salesforce marketing kivétel" csoport is létrehozható egy önkiszolgáló csoportként. A csoport a Salesforce marketing szerepkört kell hozzárendelni, és a marketing vezetőségi tulajdonosok lehet tenni. A marketing vezetőségi tagja sikerült hozzáadása, vagy távolítsa el a felhasználókat, illesztési szabályzat, vagy még hagyja jóvá vagy csatlakozni az egyes felhasználói kérések elutasítása. Ez a mechanizmus segítségével adatokat feldolgozó megfelelő felületet tulajdonosok és tagok speciális képzési nem igénylő használata támogatott.
+* Ahhoz, hogy a kivételképzési mechanizmus, egy önkiszolgáló csoportkezelési sikerült létrehozni az egyes szerepkörökhöz. Például a "Salesforce marketing kivétel" csoport is létrehozható egy önkiszolgáló csoportként. A csoport a Salesforce marketing szerepkört kell hozzárendelni, és a marketing vezetőségi tulajdonos lehet tenni. A marketing vezetőségi tagja sikerült hozzáadása, vagy távolítsa el a felhasználókat, illesztési szabályzat, vagy még hagyja jóvá vagy csatlakozni az egyes felhasználói kérések elutasítása. Ez a mechanizmus segítségével adatokat feldolgozó megfelelő felületet tulajdonosok és tagok speciális képzési nem igénylő használata támogatott.
 
 Ebben az esetben az összes hozzárendelt felhasználó lenne automatikusan üzembe helyezve a Salesforce-hoz, a szerepkör-hozzárendelés frissülnek a Salesforce-ban különböző csoportokhoz való hozzáadásuk. Felhasználók lenne képes felderíteni és hozzáférni a Salesforce keresztül a Microsoft alkalmazás-hozzáférési panelen, az Office web ügyfelek számára, vagy akár szervezeti Salesforce bejelentkezési oldalra lépjen. A rendszergazdák egyszerűen megtekintheti a használati és a hozzárendelés állapotát az Azure AD-jelentéskészítés lenne.
 

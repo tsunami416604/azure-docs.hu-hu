@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 53062ee6384113ef8c483bc9cc6b407559c35994
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 662713a5ef350bd34f25558de69e3cbfd5fc80a3
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406126"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982862"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows virtuális gép létrehozása speciális lemezről a PowerShell használatával
 
@@ -37,28 +37,22 @@ Használhatja az Azure Portalon is [új virtuális gép létrehozása speciális
 
 Ez a cikk bemutatja, hogyan felügyelt lemezek használata. Ha rendelkezik egy örökölt üzembe helyezési igénylő storage-fiók használatával, lásd: [virtuális gép létrehozása speciális virtuális merevlemezből egy storage-fiókban lévő](sa-create-vm-specialized.md).
 
-## <a name="before-you-begin"></a>Előkészületek
-PowerShell segítségével, győződjön meg arról, hogy az AzureRM.Compute PowerShell-modul legújabb verzióját. 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
-```powershell
-Install-Module AzureRM -RequiredVersion 6.0.0
-```
-További információkért lásd: [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview).
+## <a name="option-1-use-an-existing-disk"></a>Option 1: Meglévő lemez használata
 
-## <a name="option-1-use-an-existing-disk"></a>1. lehetőség: A meglévő lemez használata
-
-Ha egy virtuális Gépet, amelyet törölt kellett, és hozzon létre egy új virtuális Gépet, használja az operációsrendszer-lemez újbóli szeretne [Get-AzureRmDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermdisk?view=azurermps-6.8.1).
+Ha egy virtuális Gépet, amelyet törölt kellett, és hozzon létre egy új virtuális Gépet, használja az operációsrendszer-lemez újbóli szeretne [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk?view=azurermps-6.8.1).
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
 $osDiskName = 'myOsDisk'
-$osDisk = Get-AzureRmDisk `
+$osDisk = Get-AzDisk `
 -ResourceGroupName $resourceGroupName `
 -DiskName $osDiskName
 ```
 Most már csatolhatja ezt a lemezt az operációsrendszer-lemezként egy [új virtuális gép](#create-the-new-vm).
 
-## <a name="option-2-upload-a-specialized-vhd"></a>2. lehetőség: Az egyéni VHD feltöltése
+## <a name="option-2-upload-a-specialized-vhd"></a>Option 2: Egyéni VHD feltöltése
 
 A virtuális Merevlemezt egy specializált virtuális eszközzel létrehozott egy a helyszíni virtualizálási, mint a Hyper-V vagy a virtuális gép exportál egy másik felhőalapú tölthet fel.
 
@@ -76,31 +70,31 @@ Szüksége lesz egy storage-fiókot az Azure-ban, a feltöltött virtuális mere
 A rendelkezésre álló tár fiókokat jeleníti meg.
 
 ```powershell
-Get-AzureRmStorageAccount
+Get-AzStorageAccount
 ```
 
 Egy meglévő tárfiókot használja, továbbléphet a [töltse fel a virtuális merevlemez](#upload-the-vhd-to-your-storage-account) szakaszban.
 
 Tárfiók létrehozása.
 
-1. Szüksége lesz az erőforráscsoport, ahol létrejön a tárfiók nevére. Használja a Get-AzureRmResourceGroup tekintse meg az összes erőforráscsoport az előfizetésben található.
+1. Szüksége lesz az erőforráscsoport, ahol létrejön a tárfiók nevére. Használja a Get-AzResourceGroup tekintse meg az összes erőforráscsoport az előfizetésben található.
    
     ```powershell
-    Get-AzureRmResourceGroup
+    Get-AzResourceGroup
     ```
 
     Hozzon létre egy erőforráscsoportot *myResourceGroup* a a *USA nyugati RÉGIÓJA* régióban.
 
     ```powershell
-    New-AzureRmResourceGroup `
+    New-AzResourceGroup `
        -Name myResourceGroup `
        -Location "West US"
     ```
 
-2. Hozzon létre egy tárfiókot, nevű *mystorageaccount* használatával új erőforráscsoportban a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) parancsmagot.
+2. Hozzon létre egy tárfiókot, nevű *mystorageaccount* használatával új erőforráscsoportban a [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) parancsmagot.
    
     ```powershell
-    New-AzureRmStorageAccount `
+    New-AzStorageAccount `
        -ResourceGroupName myResourceGroup `
        -Name mystorageaccount `
        -Location "West US" `
@@ -109,12 +103,12 @@ Tárfiók létrehozása.
     ```
 
 ### <a name="upload-the-vhd-to-your-storage-account"></a>A virtuális lemezek feltöltése a storage-fiókba 
-Használja a [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) parancsmaggal töltse fel a VHD-t a tárfiókban lévő tárolóba. Ez a példa feltölti a fájlt *myVHD.vhd* a "C:\Users\Public\Documents\Virtual merevlemezek\" tárfiókhoz nevű *mystorageaccount* a a  *myResourceGroup* erőforráscsoportot. A fájl tárolva van nevű tárolót *mycontainer* és az új fájl neve lesz *myUploadedVHD.vhd*.
+Használja a [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) parancsmaggal töltse fel a VHD-t a tárfiókban lévő tárolóba. Ez a példa feltölti a fájlt *myVHD.vhd* a "C:\Users\Public\Documents\Virtual merevlemezek\" tárfiókhoz nevű *mystorageaccount* a a  *myResourceGroup* erőforráscsoportot. A fájl tárolva van nevű tárolót *mycontainer* és az új fájl neve lesz *myUploadedVHD.vhd*.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
 $urlOfUploadedVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzureRmVhd -ResourceGroupName $resourceGroupName `
+Add-AzVhd -ResourceGroupName $resourceGroupName `
    -Destination $urlOfUploadedVhd `
    -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
 ```
@@ -138,13 +132,13 @@ Ez a parancs eltarthat egy ideig, a hálózati kapcsolatot és a VHD-fájl mére
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>Felügyelt lemez létrehozása virtuális merevlemezről
 
-Felügyelt lemez létrehozása speciális virtuális merevlemezből a tárfiókban található használatával [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk). Ez a példa *myOSDisk1* a lemez neve helyezi a lemez *Standard_LRS* tárolási és használja *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* , a forrás virtuális merevlemez URI Azonosítóját.
+Felügyelt lemez létrehozása speciális virtuális merevlemezből a tárfiókban található használatával [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk). Ez a példa *myOSDisk1* a lemez neve helyezi a lemez *Standard_LRS* tárolási és használja *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* , a forrás virtuális merevlemez URI Azonosítóját.
 
 Hozzon létre egy új erőforráscsoportot a új virtuális gép számára.
 
 ```powershell
 $destinationResourceGroup = 'myDestinationResourceGroup'
-New-AzureRmResourceGroup -Location $location `
+New-AzResourceGroup -Location $location `
    -Name $destinationResourceGroup
 ```
 
@@ -153,21 +147,21 @@ Az új operációsrendszer-lemez létrehozása a feltöltött virtuális merevle
 ```powershell
 $sourceUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
 $osDiskName = 'myOsDisk'
-$osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
-    (New-AzureRmDiskConfig -AccountType Standard_LRS  `
+$osDisk = New-AzDisk -DiskName $osDiskName -Disk `
+    (New-AzDiskConfig -AccountType Standard_LRS  `
     -Location $location -CreateOption Import `
     -SourceUri $sourceUri) `
     -ResourceGroupName $destinationResourceGroup
 ```
 
-## <a name="option-3-copy-an-existing-azure-vm"></a>3. lehetőség: A meglévő Azure virtuális gép másolása
+## <a name="option-3-copy-an-existing-azure-vm"></a>3. lehetőség: Egy meglévő Azure virtuális gép másolása
 
 Létrehozhat egy virtuális Gépet, amely szerint pillanatkép készítése a virtuális gép a managed disks szolgáltatást használ, és majd a pillanatkép használatával hozzon létre egy új felügyelt lemez és a egy új virtuális Gépet egy példányát.
 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Az operációsrendszer-lemez pillanatfelvételének
 
-Csak egyetlen lemez vagy -beli virtuális gépek (beleértve az összes lemez) teljes pillanatkép is igénybe vehet. A következő lépések bemutatják, hogyan csak a virtuális gép operációsrendszer-lemez pillanatfelvételének a [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) parancsmagot. 
+Csak egyetlen lemez vagy -beli virtuális gépek (beleértve az összes lemez) teljes pillanatkép is igénybe vehet. A következő lépések bemutatják, hogyan csak a virtuális gép operációsrendszer-lemez pillanatfelvételének a [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) parancsmagot. 
 
 Először állítsa be az egyes paramétereket. 
 
@@ -181,20 +175,20 @@ $snapshotName = 'mySnapshot'
 A Virtuálisgép-objektum beolvasása.
 
 ```powershell
-$vm = Get-AzureRmVM -Name $vmName `
+$vm = Get-AzVM -Name $vmName `
    -ResourceGroupName $resourceGroupName
 ```
 Az operációs rendszer lemezének neve beolvasása.
 
  ```powershell
-$disk = Get-AzureRmDisk -ResourceGroupName $resourceGroupName `
+$disk = Get-AzDisk -ResourceGroupName $resourceGroupName `
    -DiskName $vm.StorageProfile.OsDisk.Name
 ```
 
 Hozza létre a pillanatkép-konfigurációt. 
 
  ```powershell
-$snapshotConfig =  New-AzureRmSnapshotConfig `
+$snapshotConfig =  New-AzSnapshotConfig `
    -SourceUri $disk.Id `
    -OsType Windows `
    -CreateOption Copy `
@@ -204,24 +198,24 @@ $snapshotConfig =  New-AzureRmSnapshotConfig `
 A pillanatkép elkészítésére.
 
 ```powershell
-$snapShot = New-AzureRmSnapshot `
+$snapShot = New-AzSnapshot `
    -Snapshot $snapshotConfig `
    -SnapshotName $snapshotName `
    -ResourceGroupName $resourceGroupName
 ```
 
 
-A pillanatkép használatával hoz létre egy virtuális gép, kell lennie a nagy teljesítményű, adja hozzá a paraméter `-AccountType Premium_LRS` a New-AzureRmSnapshot parancshoz. Ez a paraméter a pillanatképet hoz létre, úgy, hogy prémium szintű felügyelt lemez lesz tárolva. Prémium szintű Managed Disks drágább, mint a standard szintű, ezért mindenképpen kell prémium Ez a paraméter használata előtt.
+A pillanatkép használatával hoz létre egy virtuális gép, kell lennie a nagy teljesítményű, adja hozzá a paraméter `-AccountType Premium_LRS` a New-AzSnapshot parancshoz. Ez a paraméter a pillanatképet hoz létre, úgy, hogy prémium szintű felügyelt lemez lesz tárolva. Prémium szintű Managed Disks drágább, mint a standard szintű, ezért mindenképpen kell prémium Ez a paraméter használata előtt.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Hozzon létre egy új lemezt a pillanatképből
 
-Felügyelt lemez létrehozása pillanatképből a használatával [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk). Ez a példa *myOSDisk* a lemez neve.
+Felügyelt lemez létrehozása pillanatképből a használatával [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk). Ez a példa *myOSDisk* a lemez neve.
 
 Hozzon létre egy új erőforráscsoportot a új virtuális gép számára.
 
 ```powershell
 $destinationResourceGroup = 'myDestinationResourceGroup'
-New-AzureRmResourceGroup -Location $location `
+New-AzResourceGroup -Location $location `
    -Name $destinationResourceGroup
 ```
 
@@ -234,8 +228,8 @@ $osDiskName = 'myOsDisk'
 A felügyelt lemez létrehozása.
 
 ```powershell
-$osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
-    (New-AzureRmDiskConfig  -Location $location -CreateOption Copy `
+$osDisk = New-AzDisk -DiskName $osDiskName -Disk `
+    (New-AzDiskConfig  -Location $location -CreateOption Copy `
     -SourceResourceId $snapshot.Id) `
     -ResourceGroupName $destinationResourceGroup
 ```
@@ -253,7 +247,7 @@ Hozzon létre a [virtuális hálózat](../../virtual-network/virtual-networks-ov
    
     ```powershell
     $subnetName = 'mySubNet'
-    $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig `
+    $singleSubnet = New-AzVirtualNetworkSubnetConfig `
        -Name $subnetName `
        -AddressPrefix 10.0.0.0/24
     ```
@@ -262,7 +256,7 @@ Hozzon létre a [virtuális hálózat](../../virtual-network/virtual-networks-ov
    
     ```powershell
     $vnetName = "myVnetName"
-    $vnet = New-AzureRmVirtualNetwork `
+    $vnet = New-AzVirtualNetwork `
        -Name $vnetName -ResourceGroupName $destinationResourceGroup `
        -Location $location `
        -AddressPrefix 10.0.0.0/16 `
@@ -278,11 +272,11 @@ Ebben a példában állítja be a hálózati biztonsági csoport (NSG) neve *myN
 ```powershell
 $nsgName = "myNsg"
 
-$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 `
     -SourceAddressPrefix Internet -SourcePortRange * `
     -DestinationAddressPrefix * -DestinationPortRange 3389
-$nsg = New-AzureRmNetworkSecurityGroup `
+$nsg = New-AzNetworkSecurityGroup `
    -ResourceGroupName $destinationResourceGroup `
    -Location $location `
    -Name $nsgName -SecurityRules $rdpRule
@@ -298,7 +292,7 @@ Engedélyezi a kommunikációt a virtuális hálózatban a virtuális géppel, s
    
     ```powershell
     $ipName = "myIP"
-    $pip = New-AzureRmPublicIpAddress `
+    $pip = New-AzPublicIpAddress `
        -Name $ipName -ResourceGroupName $destinationResourceGroup `
        -Location $location `
        -AllocationMethod Dynamic
@@ -308,7 +302,7 @@ Engedélyezi a kommunikációt a virtuális hálózatban a virtuális géppel, s
    
     ```powershell
     $nicName = "myNicName"
-    $nic = New-AzureRmNetworkInterface -Name $nicName `
+    $nic = New-AzNetworkInterface -Name $nicName `
        -ResourceGroupName $destinationResourceGroup `
        -Location $location -SubnetId $vnet.Subnets[0].Id `
        -PublicIpAddressId $pip.Id `
@@ -323,31 +317,31 @@ Ebben a példában a virtuális gép nevének beállítása *myVM* és a virtuá
 
 ```powershell
 $vmName = "myVM"
-$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A2"
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize "Standard_A2"
 ```
 
 ### <a name="add-the-nic"></a>A hálózati adapter hozzáadása
     
 ```powershell
-$vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
+$vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 ```
     
 
 ### <a name="add-the-os-disk"></a>Az operációsrendszer-lemez hozzáadása 
 
-Az operációsrendszer-lemez hozzáadása a konfiguráció használatával [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk). Ebben a példában a lemez méretének megadása *128 GB-os* , és csatolja a felügyelt lemez egy *Windows* operációsrendszer-lemez.
+Az operációsrendszer-lemez hozzáadása a konfiguráció használatával [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk). Ebben a példában a lemez méretének megadása *128 GB-os* , és csatolja a felügyelt lemez egy *Windows* operációsrendszer-lemez.
  
 ```powershell
-$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
+$vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
     -DiskSizeInGB 128 -CreateOption Attach -Windows
 ```
 
 ### <a name="complete-the-vm"></a>Végezze el a virtuális gép 
 
-A virtuális gép létrehozása használatával [New-AzureRMVM](/powershell/module/azurerm.compute/new-azurermvm) az imént létrehozott konfigurációkkal.
+A virtuális gép létrehozása használatával [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) az imént létrehozott konfigurációkkal.
 
 ```powershell
-New-AzureRmVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
+New-AzVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
 ```
 
 Ha ez a parancs végrehajtása sikeres, akkor a következőhöz hasonló kimenetnek jelenik meg:
@@ -363,7 +357,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 Megjelenik az újonnan létrehozott virtuális gép vagy a a [az Azure portal](https://portal.azure.com) alatt **Tallózás** > **virtuális gépek**, vagy a következő PowerShell-parancsok használatával.
 
 ```powershell
-$vmList = Get-AzureRmVM -ResourceGroupName $destinationResourceGroup
+$vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup
 $vmList.Name
 ```
 

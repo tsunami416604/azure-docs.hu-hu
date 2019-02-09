@@ -3,8 +3,8 @@ title: Az Azure Active Directoryban attribútumleképezések kifejezések írás
 description: Ismerje meg, hogyan SaaS-alkalmazás objektumok az Azure Active Directoryban az Automatikus kiépítés során elfogadható formátumot attribútumértékek alakítsa át a kifejezés-leképezések használatával.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
-ms.openlocfilehash: 3361bc384f3da3d2bde6eab703056dd85356b5f8
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: c97fd915e9022171125c7c0f687413e433f82871
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895414"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983838"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -49,7 +49,7 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
+| **source** |Szükséges |Karakterlánc |Általában az attribútum neve, az adatforrás-objektum. |
 | **suffix** |Szükséges |Karakterlánc |Az adatforrás-értéke végére hozzáfűzni kívánt karakterlánc. |
 
 - - -
@@ -72,7 +72,7 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
 
 **Leírás:**<br> JOIN() hasonlít Append(), azzal a különbséggel, hogy több képes kombinálni **forrás** karakterláncot egyetlen karakterlánccá értéket, majd az egyes értékek fogja elválasztani a **elválasztó** karakterlánc.
 
-Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes értékhez az ezt az attribútumot tartományhoz fog csatlakozni egymáshoz, akkor az elválasztó tagolt.
+Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes értékhez ezt az attribútumot a tartományhoz fog csatlakozni együttesen elválasztó értéke elválasztva.
 
 **Paraméterek:**<br> 
 
@@ -105,7 +105,7 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc | Általában egy Utónév vagy utolsó név attribútum |
+| **source** |Szükséges |String | Általában egy Utónév vagy utolsó név attribútum. |
 
 - - -
 ### <a name="not"></a>nem
@@ -117,7 +117,7 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Logikai típusú karakterlánc |A várt **forrás** értékek: "True" vagy "False"... |
+| **source** |Szükséges |Logikai típusú karakterlánc |A várt **forrás** értékek: "True" vagy "False". |
 
 - - -
 ### <a name="replace"></a>Csere
@@ -128,7 +128,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 * Amikor **oldValue** és **helyettesítő értéke** biztosított:
   
-  * Lecseréli az összes előfordulását a forrás oldValue helyettesítő értéke
+  * Összes előfordulását lecseréli **oldValue** a a **forrás** az *helyettesítő értéke**
 * Amikor **oldValue** és **sablon** biztosított:
   
   * Összes előfordulását lecseréli a **oldValue** a a **sablon** együtt a **forrás** érték
@@ -167,7 +167,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **uniqueValueRule1... uniqueValueRuleN** |Legalább a 2 szükséges, nem felső határérték |Karakterlánc | Egyedi érték létrehozási szabályok kiértékelése listája |
+| **uniqueValueRule1... uniqueValueRuleN** |Legalább a 2 szükséges, nem felső határérték |String | Egyedi érték létrehozási szabályok kiértékelése listája. |
 
 
 - - -
@@ -219,7 +219,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
+| **source** |Szükséges |Karakterlánc |Általában az attribútum neve, az adatforrás-objektum. |
 | **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
 
 - - -
@@ -232,7 +232,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
+| **source** |Szükséges |Karakterlánc |Általában az attribútum neve, az adatforrás-objektum. |
 | **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
 
 ## <a name="examples"></a>Példák

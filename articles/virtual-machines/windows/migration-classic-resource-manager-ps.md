@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: e1144611c68e8a3c450f8017388cfa84629f9921
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5e905168ab2c2f10bcfadfc605fdcaa800e70332
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256493"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982007"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Át IaaS-erőforrások klasszikusból Azure Resource Manager Azure PowerShell-lel
 Ezek a lépések bemutatják, hogyan áttelepítése infrastruktúra-szolgáltatás (IaaS) erőforrások a klasszikus üzemi modellben az Azure Resource Manager-alapú üzemi modellbe, az Azure PowerShell-parancsok használatával.
@@ -36,6 +36,8 @@ Azonosíthatja a sorrendet, amelyben lépéseket kell végrehajtani egy áttelep
 
 ![Képernyőkép a migrálási lépésekről](media/migration-classic-resource-manager/migration-flow.png)
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ## <a name="step-1-plan-for-migration"></a>1. lépés: Az áttelepítés megtervezése
 Az alábbiakban néhány ajánlott eljárást, amely azt javasoljuk, áttelepítése IaaS-erőforrásokat a klasszikusból a Resource Managernek kipróbálása:
 
@@ -47,14 +49,14 @@ Az alábbiakban néhány ajánlott eljárást, amely azt javasoljuk, áttelepít
 >
 >ExpressRoute-átjáró csatlakoztatása ExpressRoute-Kapcsolatcsoportok egy másik előfizetésben nem telepíthetők át automatikusan. Ezekben az esetekben távolítsa el az ExpressRoute-átjárót, a virtuális hálózat migrálása, és hozza létre újra az átjárót. Lásd: [áttelepítése ExpressRoute-Kapcsolatcsoportok és kapcsolódó virtuális hálózatok a klasszikusból a Resource Manager-alapú üzemi modellbe](../../expressroute/expressroute-migration-classic-resource-manager.md) további információt.
 
-## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>2. lépés: Telepítse az Azure PowerShell legújabb verzióját
-Azure PowerShell telepítése két fő módja van: [PowerShell-galériából](https://www.powershellgallery.com/profiles/azure-sdk/) vagy [Webplatform-telepítő (WebPI)](https://aka.ms/webpi-azps). WebPI kapja a havi frissítéseit. PowerShell-galériából rendszeresen frissítéseket kapja. Ez a cikk az Azure PowerShell-lel 2.1.0-ás alapul.
+## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>2. lépés: Azure PowerShell legújabb verziójának telepítése
+Azure PowerShell telepítése két fő lehetőség van: [PowerShell-galériából](https://www.powershellgallery.com/profiles/azure-sdk/) vagy [Webplatform-telepítő (WebPI) webes](https://aka.ms/webpi-azps). WebPI kapja a havi frissítéseit. PowerShell-galériából rendszeresen frissítéseket kapja. Ez a cikk az Azure PowerShell-lel 2.1.0-ás alapul.
 
 A telepítési utasításokért lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
 <br>
 
-## <a name="step-3-ensure-that-you-are-an-administrator-for-the-subscription-in-azure-portal"></a>3. lépés: Győződjön meg arról, hogy-e az előfizetés-rendszergazda az Azure Portalon
+## <a name="step-3-ensure-that-you-are-an-administrator-for-the-subscription-in-azure-portal"></a>3. lépés: Ellenőrizze, hogy-e az előfizetés-rendszergazda az Azure Portalon
 Az áttelepítés végrehajtásához meg kell adni az előfizetés társadminisztrátorai a [az Azure portal](https://portal.azure.com).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -63,25 +65,25 @@ Az áttelepítés végrehajtásához meg kell adni az előfizetés társadminisz
 
 Ha nem a társ-rendszergazdaként adhat hozzá, majd lépjen kapcsolatba, szolgáltatás-rendszergazdaként vagy megtalál hozzá az előfizetés társadminisztrátori.   
 
-## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>4. lépés: Az előfizetés beállításához, és iratkozzon fel az áttelepítéshez
+## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>4. lépés: Állítsa be az előfizetést, és iratkozzon fel az áttelepítéshez
 Először indítsa el egy PowerShell-parancssort. Az áttelepítéshez, állítsa be a környezetet, mind a klasszikus üzemi modell esetén kell és a Resource Manager.
 
 Jelentkezzen be a fiókját a Resource Manager-modellben.
 
 ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
 ```
 
 A következő paranccsal kérje le a rendelkezésre álló előfizetések:
 
 ```powershell
-    Get-AzureRMSubscription | Sort Name | Select Name
+    Get-AzSubscription | Sort Name | Select Name
 ```
 
 Állítsa be az Azure-előfizetés az aktuális munkamenet. Ebben a példában a alapértelmezett előfizetés nevének beállítása **saját Azure-előfizetés**. Cserélje le a példában előfizetés nevét a saját.
 
 ```powershell
-    Select-AzureRmSubscription –SubscriptionName "My Azure Subscription"
+    Select-AzSubscription –SubscriptionName "My Azure Subscription"
 ```
 
 > [!NOTE]
@@ -92,13 +94,13 @@ A következő paranccsal kérje le a rendelkezésre álló előfizetések:
 Regisztrálás az áttelepítés erőforrás-szolgáltató a következő paranccsal:
 
 ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+    Register-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
 Kérjük, várjon öt perc alatt, a regisztráció befejezéséhez. A jóváhagyás állapotát a következő paranccsal ellenőrizheti:
 
 ```powershell
-    Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+    Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
 Győződjön meg arról, hogy van-e RegistrationState `Registered` folytatás előtt.
@@ -129,10 +131,10 @@ A következő PowerShell-parancs segítségével ellenőrizze az Azure Resource 
 Ebben a példában a rendelkezésre állását ellenőrzi a **USA nyugati RÉGIÓJA** régióban. Cserélje le a régió neve a példában a saját.
 
 ```powershell
-Get-AzureRmVMUsage -Location "West US"
+Get-AzVMUsage -Location "West US"
 ```
 
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>6. lépés: Futtassa a parancsokat az IaaS-erőforrások áttelepítése
+## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>6. lépés: Az IaaS-erőforrások migrálásához parancsok futtatása
 * [Virtuális gépek áttelepítése egy felhőalapú szolgáltatásban (nem a virtuális hálózat esetén)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
 * [Virtuális gépek áttelepítése a virtuális hálózaton](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
 * [Tárfiók migrálása](#step-62-migrate-a-storage-account)
@@ -222,7 +224,7 @@ Az előkészített konfiguráció megfelelőnek tűnik, ha előre, és végleges
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>6.1. lépés: 2. lehetőség – a virtuális hálózatban a virtuális gépek Migrálása
+### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>6.1. lépés: 2. lehetőség – a virtuális hálózatban lévő virtuális gépek Migrálása
 
 Egy virtuális hálózatban lévő virtuális gépek áttelepítését, telepítse át a virtuális hálózat. A virtuális gépek automatikus áttelepítése a virtuális hálózattal. Válassza ki az áttelepíteni kívánt virtuális hálózat.
 > [!NOTE]

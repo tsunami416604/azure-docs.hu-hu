@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 6a888df453a2626756fa47115ef97d04be701265
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 79cf839a23d41058e0d9583a378dc063cd220136
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892857"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981757"
 ---
-# <a name="understand-cost-management-data"></a>A Cost Management adataihoz ismertetése
+# <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
 Ez a cikk segít jobban megismerheti, mit tartalmaz az Azure Cost Managementben. És ismerteti, hogy milyen gyakran adatot dolgoz fel, összegyűjtött megjelenített és lezárt. A számlázás az Azure-használat havonta. Azonban az Azure-előfizetés típusa határozza meg, ha az elszámolási hónap vége. Különféle tényezők alapján, hogy milyen gyakran a Cost Management kap a használati adatok változik. E tényezők közé tartozik, mennyi ideig tart az adatok feldolgozásához, és hogy milyen gyakran Azure-szolgáltatások használati a számlázási rendszerhez gridre bocsáthatja ki.
 
@@ -28,14 +28,13 @@ Az alábbi információkat jeleníti meg a jelenleg támogatott [Microsoft Azure
 | Kategória  | **Ajánlat neve** | **Csomag száma** |
 | --- | --- | --- |
 | **Azure Germany** | [Azure Germany Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-de-0003p/) | MS-AZR-DE-0003P |
-|**Azure Government**|Azure Government Enterprise|MS-AZR-USGOV-0017P|
-| **Nagyvállalati Szerződés (EA)**| Nagyvállalati Szerződés – Fejlesztés és tesztelés | MS-AZR-0148P |
+| **Azure Government** | Azure Government Enterprise | MS-AZR-USGOV-0017P |
+| **Nagyvállalati Szerződés (EA)** | Nagyvállalati Szerződés – Fejlesztés és tesztelés | MS-AZR-0148P |
 | **Nagyvállalati Szerződés (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade/) | MS-AZR-0017P |
 | **A Microsoft Developer Network (MSDN)** | [MSDN-platformok](https://azure.microsoft.com/offers/ms-azr-0062p/) | MS-AZR-0062P |
 | **Pay-As-You-Go** | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/) | MS-AZR-0003P |
 | **Pay-As-You-Go** | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) | MS-AZR-0023P |
 | **Pay-As-You-Go** | [A Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/) | MS-AZR-0025P |
-| **Pay-As-You-Go** | [A Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
 | **Pay-As-You-Go** | [Ingyenes próbaverzió](https://azure.microsoft.com/offers/ms-azr-0044p/) | MS-AZR-0044P |
 | **Pay-As-You-Go** | [Azure in Open licencprogram](https://azure.microsoft.com/offers/ms-azr-0111p/) | MS-AZR-0111P |
 | **Pay-As-You-Go** | [Az Azure diákoknak](https://azure.microsoft.com/offers/ms-azr-0170p/) | MS-AZR-0170P |
@@ -54,6 +53,7 @@ Az alábbi táblázat az ajánlatok nem támogatott.
 | **Cloud Solution Provider (CSP)** | Azure Government CSP | MS-AZR-USGOV-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Germany a Microsoft Cloud Germany felhőszolgáltató programjában | MS-AZR-DE-0145P |
 | **Pay-As-You-Go** | Azure diákoknak kezdő csomag | MS-AZR-0144P |
+| **Pay-As-You-Go** | [A Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
 | **Támogatási csomagok** | Standard szintű támogatás | MS-AZR-0041P |
 | **Támogatási csomagok** | A közvetlen professzionális támogatás | MS-AZR-0042P |
 | **Támogatási csomagok** | A fejlesztői támogatás | MS-AZR-0043P |
@@ -69,17 +69,6 @@ Ha nem lát adatokat egy előfizetéshez, és meg szeretné határozni, ha az el
 ## <a name="costs-included-in-cost-management"></a>Cost Management költségeket
 
 Az alábbi táblázatokban foglalt, vagy nem Költségkezelés az adatokat.
-
-**Fiókok típusai**
-
-| **Foglalt** | **Nem tartalmazza** |
-| --- | --- |
-| Nagyvállalati Szerződés (EA) | Cloud Solution Provider (CSP) – további információt találhat a [Partnerközpont áttekintése](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview). |
-| Használatalapú fizetés (PAYG) |   |
-| Fejlesztés/tesztelés |   |
-| Ingyenes és próbaverzió |   |
-| Partnerhálózat |   |
-| Azure in Open | &nbsp;  |
 
 **Költség- és használati adatok**
 

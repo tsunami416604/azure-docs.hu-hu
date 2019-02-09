@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: e27826629873566bf7b746649923c25e6ab70827
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 750bb275ef936b3911503cd4c0f50674d3dff2d1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457156"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981145"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>A Windows virtuális gépről adatlemez leválasztása
 
@@ -35,16 +35,18 @@ Ha már nincs szüksége egy virtuális géphez csatolt adatlemezre, könnyedén
 Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ugyanahhoz vagy egy másik virtuális géphez.
 
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ## <a name="detach-a-data-disk-using-powershell"></a>PowerShell-lel adatlemez leválasztása
 
 Is *gyakori elérésű* eltávolítani egy adatlemezt a PowerShell használatával, de ellenőrizze, hogy semmi sem aktívan használja a lemezt, a virtuális gép leválasztása előtt.
 
-Ebben a példában eltávolítjuk a nevű lemez **myDisk** a virtuális gépről **myVM** a a **myResourceGroup** erőforráscsoportot. Először, távolítsa el a lemez használata a [Remove-AzureRmVMDataDisk](/powershell/module/azurerm.compute/remove-azurermvmdatadisk) parancsmagot. Ezután frissíti a virtuális gép állapotát használatával a [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) parancsmagot, az adatlemez eltávolítása, a folyamat befejezéséhez.
+Ebben a példában eltávolítjuk a nevű lemez **myDisk** a virtuális gépről **myVM** a a **myResourceGroup** erőforráscsoportot. Először, távolítsa el a lemez használata a [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) parancsmagot. Ezután frissíti a virtuális gép állapotát használatával a [Update-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) parancsmagot, az adatlemez eltávolítása, a folyamat befejezéséhez.
 
 ```azurepowershell-interactive
-$VirtualMachine = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
-Remove-AzureRmVMDataDisk -VM $VirtualMachine -Name "myDisk"
-Update-AzureRmVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
+$VirtualMachine = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
+Remove-AzVMDataDisk -VM $VirtualMachine -Name "myDisk"
+Update-AzVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
 ```
 
 A lemez storage-ban marad, de már nincs csatolva egy virtuális géphez.
