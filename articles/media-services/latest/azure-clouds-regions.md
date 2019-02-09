@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: juliako
-ms.openlocfilehash: cadf4c564ab8600094bc545ae7270eb9c0642e1e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a5a4205c97e4db25d5d0a92472610364d912b278
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890960"
+ms.locfileid: "55963437"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Magánfelhők és régiók, mely az Azure Media Services v3 létezik
 
@@ -24,7 +24,7 @@ Az Azure Media Services v3-as globális Azure-ban, Azure Government, Azure Germa
 
 ## <a name="feature-availability-in-azure-clouds"></a>A szolgáltatás rendelkezésre állása az Azure-felhők
 
-| Funkció|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| Szolgáltatás|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
@@ -65,11 +65,39 @@ Ha például az Azure-régiót (alább látható) 2. nyugati RÉGIÓJA, az haszn
 
 ## <a name="endpoints"></a>Végpontok  
 
-| Végpont|Globális Azure | Azure Government|Azure Germany|Azure China 21Vianet|
-| --- | --- | --- | --- | --- |
-| Azure Resource Manager |  `https://management.azure.com/` | `https://management.usgovcloudapi.net/` | `https://management.cloudapi.de/` | `https://management.chinacloudapi.cn/` |
-| Authentication | `https://login.microsoftonline.com/` | `https://login.microsoftonline.us/` | `https://login.microsoftonline.de/` | `https://login.chinacloudapi.cn/` |
-| Token célrendszere | `https://management.core.windows.net/` | `https://management.core.usgovcloudapi.net/` | `https://management.core.cloudapi.de/`| `https://management.core.chinacloudapi.cn/` |
+Az alábbi végpontokat is fontos tudni, hogy különböző országos Azure-felhők a Media Services-fiókok való csatlakozáskor.
+
+### <a name="global-azure"></a>Globális Azure
+
+|Végpontok ||
+| --- | --- | 
+| Azure Resource Manager |  `https://management.azure.com/` |
+| Authentication | `https://login.microsoftonline.com/` | 
+| Token célrendszere | `https://management.core.windows.net/` |
+
+### <a name="azure-government"></a>Azure Government
+
+|Végpontok||
+| --- | --- | 
+| Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
+| Authentication | `https://login.microsoftonline.us/` | 
+| Token célrendszere | `https://management.core.usgovcloudapi.net/` |
+
+### <a name="azure-germany"></a>Azure Germany
+
+| Végpontok ||
+| --- | --- |  
+| Azure Resource Manager | `https://management.cloudapi.de/` |
+| Authentication | `https://login.microsoftonline.de/` |
+| Token célrendszere | `https://management.core.cloudapi.de/`|
+
+### <a name="azure-china-21vianet"></a>Azure China 21Vianet
+
+|Végpontok||
+| --- | --- | 
+| Azure Resource Manager | `https://management.chinacloudapi.cn/` |
+| Authentication | `https://login.chinacloudapi.cn/` |
+| Token célrendszere |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="next-steps"></a>További lépések
 

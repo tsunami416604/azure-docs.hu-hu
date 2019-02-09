@@ -16,12 +16,12 @@ ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: beb86284256d42c119e551a18d9900f0dad61b7f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d23aab91df2d69850e8c3b80a1c12f49f2e7fcaa
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247493"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965171"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -130,9 +130,9 @@ Emellett tartalmazza a kockázatcsökkentési spekulatív végrehajtás kockáza
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure Stack telepítése [1807 frissítése](azure-stack-update-1807.md) az Azure Stack 1808 frissítés alkalmazása előtt. 
+- Az Azure Stack 1807 frissítés az Azure Stack 1808 frissítés alkalmazása előtt. 
 
-- Telepítse a legújabb elérhető [frissítést vagy gyorsjavítást verzió 1807](azure-stack-update-1807.md#post-update-steps).  
+- Telepítse a legújabb elérhető frissítés vagy gyorsjavítás 1807 verzióhoz.  
   > [!TIP]  
   > Fizessen elő a következő *RRS* vagy *Atom* tartani az Azure Stack gyorsjavítások-hírcsatornák:
   > - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 

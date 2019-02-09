@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: roiyz
-ms.openlocfilehash: 8eb7822962988b02f09c2a2ea31b745ef01d5533
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: f7a1cb0ff1e530f15db7d56421fcc67555ac8ada
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451850"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978561"
 ---
 # <a name="custom-script-extension-for-windows-using-the-classic-deployment-model"></a>Egyéni parancsfájl kiterjesztése a Windows a klasszikus üzemi modell használatával
 
@@ -89,7 +89,7 @@ Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource
 
 ## <a name="powershell-deployment"></a>PowerShell környezetben végzett telepítés
 
-A `Set-AzureVMCustomScriptExtension` parancs használható az egyéni szkriptek futtatására szolgáló bővítmény hozzáadása egy meglévő virtuális gépet. További információkért lásd: [Set-AzureRmVMCustomScriptExtension ](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmcustomscriptextension).
+A `Set-AzureVMCustomScriptExtension` parancs használható az egyéni szkriptek futtatására szolgáló bővítmény hozzáadása egy meglévő virtuális gépet. További információkért lásd: [Set-AzVMCustomScriptExtension ](https://docs.microsoft.com/powershell/module/az.compute/set-azvmcustomscriptextension).
 
 ```powershell
 # create vm object

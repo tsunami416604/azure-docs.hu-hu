@@ -3,8 +3,8 @@ title: Felhasználók és csoportok hozzárendelése egy alkalmazáshoz |} A Mic
 description: Felhasználók hozzárendelése az alkalmazáshoz való hozzáférés biztosítása
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2018
-ms.author: barbkess
-ms.openlocfilehash: 4d7a27713e6ea49ebe3b2f3f2f9c63090a6ca25c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: d5fa3c84e7934511e5b37ac1e1396c7fe58c00ae
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165880"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962026"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Felhasználók és csoportok hozzárendelése egy alkalmazáshoz az Azure Active Directoryban
 Ez a cikk bemutatja, hogyan felhasználók vagy csoportok hozzárendelése az Azure Active Directoryban (Azure AD-) alkalmazáshoz. Felhasználók először hozzá kell rendelni egy alkalmazás előtt a rendszergazda is hozzáférést biztosít nekik a következőket:

@@ -3,8 +3,8 @@ title: Nincsenek felhasználók sem lett létrehozva az Azure AD katalógusábó
 description: Szembesülnek, ha nem lát megjelenjenek az Azure AD katalógusából származó alkalmazásba konfigurálta a felhasználókiépítés Azure AD-val a felhasználók gyakori hibáinak elhárítása
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 181f8488255bca67131ed32474bb05a9d6d082aa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e4a33aba906fe782c4c13760aa033fce5c1fe1d9
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154983"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964627"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Nincsenek felhasználók sem lett létrehozva, egy Azure AD katalógusából származó alkalmazásba
 Miután az Automatikus kiépítés konfigurálva lett az alkalmazás (beleértve az ellenőrzése, hogy a alkalmazás Azure ad-hez való csatlakozáshoz az alkalmazás megadott hitelesítő adatok érvényesek), majd felhasználók és csoportok lesznek kiépítve, az alkalmazást. Kiépítés határozza meg az alábbiakat:
@@ -60,4 +60,4 @@ Amikor megjelenik a felhasználó-e, a "kihagyva" a naplók, fontos a kiterjeszt
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure AD Connect szinkronizálása: Deklaratív kiépítés ismertetése](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)
+[Az Azure AD Connect szinkronizálása: A deklaratív üzembe helyezés ismertetése](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)

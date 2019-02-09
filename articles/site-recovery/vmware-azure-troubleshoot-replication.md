@@ -1,22 +1,61 @@
 ---
 title: VMware virtuális gépek és fizikai kiszolgálók Azure-bA vész-helyreállítási replikációs problémák hibaelhárítása az Azure Site Recovery használatával |} A Microsoft Docs
 description: Ez a cikk során a VMware virtuális gépek vészhelyreállítása az általános replikációs problémákat hibaelhárítási információkat és fizikai kiszolgálók Azure-bA az Azure Site Recovery használatával.
-author: Rajeswari-Mamilla
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/18/2019
-ms.author: ramamill
-ms.openlocfilehash: 5c2d33b39614ded95ac38e07c844b0a8cafa7cd2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 02/7/2019
+ms.author: mayg
+ms.openlocfilehash: 71c07d93d75ee372a50ec4ff5fc81e92926d329b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411475"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964773"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware virtuális gépek és fizikai kiszolgálók replikációjával kapcsolatos problémák elhárítása
 
 A VMware virtuális gépek vagy fizikai kiszolgálók védelme az Azure Site Recovery használatával egy adott hiba általános jelentését üzenet előfordulhat, hogy jelenik meg. Ez a cikk ismerteti, a helyszíni VMware virtuális gépek és fizikai kiszolgálók replikálása az Azure használatával során esetlegesen jelentkező gyakori problémákat [Site Recovery](site-recovery-overview.md).
+
+## <a name="monitor-process-server-health-to-avoid-replication-issues"></a>Állapotmonitorozás a Folyamatkiszolgáló replikációs problémák elkerülése érdekében
+
+Javasoljuk, hogy a portálon, győződjön meg arról, hogy a replikáció folyik a forrásoldali gépek folyamat kiszolgáló (PS) állapotát. A tárolót, lépjen a kezelés > Site Recovery-infrastruktúra > konfigurációs kiszolgálók. A konfigurációs kiszolgáló panelen kattintson a társított kiszolgálók a Folyamatkiszolgálón. Folyamat Server panel megnyílik az egészségügyi statisztikák. CPU-használat, memóriahasználat, replikáció, a tanúsítvány lejárati dátuma és a rendelkezésre álló szabad terület szükséges PS-szolgáltatások állapotának nyomon követéséhez. Az összes statisztika állapota zöld kell lennie. 
+
+**Javasoljuk, hogy rendelkezik memória és CPU-használat alatt 70 %-os és a szabad terület a fenti 25 %-os**. Szabad terület hivatkozik a gyorsítótár lemezterület a Folyamatkiszolgálónak, amely az Azure-ba való feltöltéséhez forrás gépek replikációs adatainak tárolására szolgál. Ha kevesebb mint 20 %-ra csökkenti, a replikáció az összes társított forrásgépek szabályozva lesz. Kövesse a [kapacitás útmutatást](./site-recovery-plan-capacity-vmware.md#capacity-considerations) forrásgépek replikálásához szükséges konfigurációinak megértését.
+
+Győződjön meg arról, hogy a következő szolgáltatások futnak-e a PS-gépen. Indítsa el, vagy bármely szolgáltatás nem fut, indítsa újra.
+
+**A beépített Folyamatkiszolgáló**
+
+* cxprocessserver
+* Az InMage PushInstall
+* Napló feltöltési szolgáltatás (LogUpload)
+* Az InMage Scout alkalmazásszolgáltatás
+* A Microsoft Azure Recovery Services Agent (obengine)
+* Az InMage Scout VX Agent – Sentinel/Outpost (svagents)
+* tmansvc
+* World Wide Web Publishing Service (W3SVC)
+* MySQL
+* A Microsoft Azure Site Recovery szolgáltatás (dra)
+
+**Kibővíthető Folyamatkiszolgáló**
+
+* cxprocessserver
+* Az InMage PushInstall
+* Napló feltöltési szolgáltatás (LogUpload)
+* Az InMage Scout alkalmazásszolgáltatás
+* A Microsoft Azure Recovery Services Agent (obengine)
+* Az InMage Scout VX Agent – Sentinel/Outpost (svagents)
+* tmansvc
+
+**Az Azure-ban feladat-visszavételi Folyamatkiszolgáló**
+
+* cxprocessserver
+* Az InMage PushInstall
+* Napló feltöltési szolgáltatás (LogUpload)
+
+Győződjön meg arról, hogy az összes szolgáltatás lefokozáskor értéke **automatikus vagy automatikus (Késleltetett indítás)**. A Microsoft Azure Recovery Services Agent (obengine) szolgáltatás nem kell a lefokozáskor a fenti beállítása.
 
 ## <a name="initial-replication-issues"></a>Kezdeti replikációs problémákat
 
@@ -26,7 +65,7 @@ Kezdeti replikációs hibák gyakran okozza a forráskiszolgáló és a folyamat
 
 A következő listában látható módon ellenőrizheti, hogy a forrásgép:
 
-*  A parancssorban a forráskiszolgálón használja a Telnet a folyamatkiszolgálót a HTTPS-portot (az alapértelmezett HTTPS-port a 9443-as) keresztül pingelni a következő parancs futtatásával. A parancs ellenőrzi a hálózati kapcsolattal fennálló problémákat, és a problémák, amelyek blokkolják a tűzfalport.
+*  A parancssorban a forráskiszolgálón a Telnet használatával a folyamatkiszolgáló a HTTPS-porton keresztül pingelni a következő parancs futtatásával. 9443-as Port HTTPS a a folyamatkiszolgáló replikációs forgalom küldésére és fogadására használt alapértelmezett. A regisztrációs időpontjában módosíthatja ezt a portot. A következő parancsot a hálózati kapcsolattal fennálló problémákat és a problémák, amelyek blokkolják a tűzfalport ellenőrzi.
 
 
    `telnet <process server IP address> <port>`
@@ -35,13 +74,42 @@ A következő listában látható módon ellenőrizheti, hogy a forrásgép:
    > [!NOTE]
    > A Telnet használatával kapcsolat tesztelése. Ne használjon `ping`. Ha a Telnet nincs telepítve, végezze el a felsorolt lépéseket [Telnet-ügyfél telepítése](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx).
 
+   Ha a telnet tud sikeresen csatlakozni a PS-port, üres képernyőt lenne látható.
+
    A folyamatkiszolgáló nem tud csatlakozni, ha engedélyezi a bejövő 9443-as a folyamatkiszolgálón. Például előfordulhat, hogy a folyamatkiszolgálón a 9443-as a bejövő portot, ha a hálózaton szegélyhálózaton vagy alapos szűrésen átesett alhálózat. Ezután ellenőrizze, hogy a probléma továbbra is fennáll-e.
 
-*  Ellenőrizze az állapotát a **InMage Scout VX Agent – Sentinel/OutpostStart** szolgáltatás. Ha a szolgáltatás nem fut, indítsa el a szolgáltatást, és ellenőrizze, hogy a probléma továbbra is jelentkezik.   
+*  Ha telnet sikeres volt, és még a forrásgép jelenti, hogy a PS nem érhető el, nyissa meg a webböngészőt a forrásgépen, és ellenőrizze, hogy cím https://<PS_IP>:<PS_Data_Port>/ érhető el.
+
+    Szerezze meg ezt a címet a HTTPS-tanúsítvány hiba várható. Figyelmen kívül hagyja a Tanúsítványhiba és folytatás kell végül a 400 – Hibás kérés, ami azt jelenti, hogy a kiszolgáló a böngészőben a kérés nem teljesíthető, és a szabványos HTTPS kapcsolat a kiszolgálóval működik jól, és jó.
+
+    Ha ez nem sikerül, akkor a böngészőben a hibaüzenet részletei útmutatást nyújtanak. A például a proxy hitelesítési helytelen, ha a proxykiszolgáló adja vissza a 407-es – Proxy hitelesítés szükséges a hibaüzenetben szükséges műveletek mellett. 
+
+*  Ellenőrizze, hogy a következő naplók kapcsolódnak a forrás virtuális gép a hálózathoz kapcsolódó hibák feltöltési hibák:
+
+       C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\svagents*.log 
 
 ### <a name="check-the-process-server"></a>Ellenőrizze a folyamatkiszolgáló
 
 A következő listában látható módon ellenőrizheti, hogy a folyamatkiszolgáló:
+
+> [!NOTE]
+> Folyamatkiszolgáló rendelkeznie kell egy statikus IPv4-címet, és nem NAT IP konfigurálni kell rajta.
+
+* **Ellenőrizze a forrásgépek és a Folyamatkiszolgáló közötti kapcsolat**
+1. Abban az esetben a telnet a forrásgép és akkor még a PS nem érhető el a forrás, ellenőrizze a forrás virtuális gép cxprocessserver a végpontok közötti kapcsolat forrásoldali virtuális gép cxpsclient eszköz futtatásával:
+
+       <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
+
+    Tekintse meg a generált naplókat, a PS megfelelő hibáival kapcsolatos részletekért a következő könyvtárban:
+
+       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
+       and
+       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
+2. Abban az esetben, ha nem érkezett szívverés az PS, ellenőrizze a PS meg a következő naplók kapcsolódnak:
+
+       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
+       and
+       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
 *  **Ellenőrizze, hogy a folyamatkiszolgáló van aktívan küld-e adatokat az Azure-bA**.
 

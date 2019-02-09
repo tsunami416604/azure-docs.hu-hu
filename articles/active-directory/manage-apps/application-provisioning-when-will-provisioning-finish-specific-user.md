@@ -3,8 +3,8 @@ title: Ismerje meg, ha egy adott felhasználó fog tudni hozzáférni egy alkalm
 description: Hogyan tudhatja meg, ha egy kritikus fontosságú felhasználói férhetnek hozzá a felhasználókiépítés Azure AD-val konfigurált alkalmazás
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 13568c42ed520ba9963541eb7c890612d9657b91
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2f6ebd6d9024c912e1af427ac5a5b62a817651ab
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174193"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964372"
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Ismerje meg, ha egy adott felhasználó fog tudni hozzáférni egy alkalmazáshoz
 Felhasználók automatikus átadása az alkalmazás használatakor az Azure AD-alkalmazás üzembe helyezése és frissítése felhasználói fiókok alapján automatikusan többek között [felhasználó és csoport-hozzárendelések](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) rendszeresen ütemezett időintervallum, általában minden 10 perc.

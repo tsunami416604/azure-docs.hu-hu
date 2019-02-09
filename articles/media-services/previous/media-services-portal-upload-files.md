@@ -4,7 +4,7 @@ description: Ez az oktatóprogram végigvezeti azon lépéseken, amelyek segíts
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 3ad3dcea-95be-4711-9aae-a455a32434f6
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/07/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 36e1f797263e367a73fde140d979243f96e83948
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 7730d15b0d3be9c0ffc7c7fbafe40fece713afbd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780551"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976792"
 ---
-# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Fájlok feltöltése Media Services-fiókba az Azure Portalon
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal-legacy"></a>Fájlok feltöltése Media Services-fiókba az Azure Portalon (örökölt)
+
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-upload-files.md)
 > * [.NET](media-services-dotnet-upload-files.md)
@@ -63,6 +64,6 @@ A feltöltést követően az új objektum megjelenik az **Objektumok** panelen.
 ## <a name="next-steps"></a>További lépések
 * Ismerkedjen meg a [feltöltött objektumok kódolásának](media-services-portal-encode.md) módjával.
 
-* Emellett az Azure Functions használatával is elindíthatja a kódolási feladatokat a fájloknak a konfigurált tárolóba történő érkezésekor. További információkért tekintse meg a [Media Services: Az Azure Media Services integrálása Azure Functions- és Logic Apps- alkalmazásokkal](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/) cikkben található mintát.
+* Emellett az Azure Functions használatával is elindíthatja a kódolási feladatokat a fájloknak a konfigurált tárolóba történő érkezésekor. További információkért tekintse meg, a minta [Media Services: Az Azure Media Services integrálása Azure Functions és a Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/).
 
 

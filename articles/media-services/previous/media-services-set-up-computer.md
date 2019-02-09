@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/29/2018
+ms.date: 02/08/2018
 ms.author: juliako
-ms.openlocfilehash: 84ca8aff053fdcd7e085392ecf28ca687803a8f9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: bb857a0457b3c75bcb3f7d2f3c5cc560452a7df5
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230216"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977252"
 ---
-# <a name="set-up-your-media-services-development-environment"></a>Az Azure Media Services fejlesztési környezet beállítása
+# <a name="set-up-your-media-services-development-environment-legacy"></a>A Media Services fejlesztési környezet beállítása (örökölt)
 
 A következő lépésekben az Azure Media Services szolgáltatással történő fejlesztés előfeltételeit ismertetjük.
 
@@ -44,7 +44,7 @@ Ha az Azure Media Services API-hoz szeretne csatlakozni, lásd [az Azure Media S
 
 ## <a name="next-steps"></a>További lépések
 
-Az **Azure-kódminták** katalógusban számos kódmintát talál: [Azure Media Services-kódminták](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+A számos kódmintát talál a **Azure-Kódminták** katalógus: [Az Azure Media Services-Kódminták](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

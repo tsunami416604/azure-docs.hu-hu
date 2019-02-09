@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: c28839d03b2c4cc2e5f7d754fbb3264d72110e77
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5eba927b2080e7a7f98d6ea9de593edf846c3c02
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856835"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978494"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Gyors útmutató: A Translator Text API segítségével lefordítani egy karakterlánc, a node.js használatával
 

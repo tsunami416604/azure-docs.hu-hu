@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 95dc004e1a4b34f1f3a3c547da4ea7cd35e8c753
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 45ecc1cbe2a9cf7d11d7b17a7a72887dcb7aa1e3
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821473"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965409"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>A Log Analytics használat és költségek kezelése
 
@@ -117,6 +117,9 @@ A munkaterület helyezhetik át a jelenlegi tarifacsomag szeretne, ha szeretné 
 > [!NOTE]
 > Ha a munkaterület Automation-fiókhoz van társítva, az *Önálló (GB-alapú)* tarifacsomag kiválasztása előtt törölnie kell az összes **Automation and Control** megoldást, és meg kell szüntetnie az Automation-fiók társítását. A megoldások megtekintéséhez és törléséhez kattintson a munkaterület panel **Általános** területén a **Megoldások** elemre. Az Automation-fiók társításának megszüntetéséhez kattintson az Automation-fiók nevére a **Tarifacsomag** panelen.
 
+> [!NOTE]
+> További információ (beállításáról a tarifacsomag ARM-n keresztül) [https://docs.microsoft.com/en-us/azure/azure-monitor/platform/template-workspace-configuration#create-a-log-analytics-workspace] és annak biztosítása érdekében, hogy az ARM üzembe helyezési lesz sikeres, függetlenül attól, hogy az előfizetés van a régi vagy új díjszabási modell. 
+
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>A Log Analytics már nem gyűjt adatokat okozó hibák elhárítása
 Ha a régi ingyenes tarifacsomagban és a egy nap alatt több mint 500 MB mennyiségű adatot küldő adatgyűjtés leáll, a többi, a nap. Napi korlát elérése a gyakori oka, hogy a Log Analytics leállítja az adatgyűjtést, vagy adatokat úgy tűnik, hogy hiányzik.  A log Analytics művelet típusú eseményt hoz létre, amikor adatgyűjtés indítása és leállítása. A keresés, ellenőrizze, hogy vannak napi korlát elérése és adatok hiányoznak a következő lekérdezés futtatásával: 
@@ -128,7 +131,7 @@ Ha leállítja az adatgyűjtést, a OperationStatus figyelmeztetés. Amikor megk
 |OK gyűjtemény leáll| Megoldás| 
 |-----------------------|---------|
 |Elérte az örökölt az ingyenes tarifacsomag napi korlátot |Várja meg, amíg a gyűjtemény indítja újra automatikusan a következő napon, vagy módosítása fizetős tarifacsomagra.|
-|Elérte a napi korlát a munkaterület|Várja meg, indítsa újra automatikusan a gyűjtemény, vagy növelje a napi mennyiségi korlátot ismertetett kezelése a maximális napi adatmennyiséget. A napi korlát visszaállítási idő mutat be kapcsolva a **adatmennyiség-kezelés** lapot. |
+|Elérte a napi korlát a munkaterület|Várja meg, indítsa újra automatikusan a gyűjtemény, vagy növelje a napi mennyiségi korlátot ismertetett [a maximális napi adatmennyiség kezelése](#manage-the-maximum-daily-volume). A napi korlát visszaállítási idő mutat be kapcsolva a **adatmennyiség-kezelés** lapot. |
 |Azure-előfizetés miatt felfüggesztett állapotban van:<br> Ingyenes próbaidőszak véget ért<br> Az Azure pass lejárt<br> Havonta költségkeret elérése (például az MSDN vagy a Visual Studio előfizetési)|Fizetős előfizetéssé alakítani<br> Távolítsa el a korlátot, vagy várjon, amíg a korlát alaphelyzetbe állítása|
 
 Értesítés az adatgyűjtés leáll, használja a leírt lépéseket követve *létrehozás napi adatkorlátjának* , ami arról értesíti, ha leállítja az adatgyűjtést, és kövesse a lépéseket használja leírt lépéseket követve adja hozzá a műveletek a riasztási szabály konfigurálása egy e-mailt, webhook vagy runbook műveletet a riasztási szabály. 

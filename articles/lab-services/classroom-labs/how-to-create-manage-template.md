@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: d0942d3465811687937ce113e664fbf3f91277d0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b287a67c470cc1697065838e52916c285a2233a7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815244"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960190"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Létrehozása és kezelése az Azure Lab Services osztályterem-sablonból
 A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. Úgy állítsa be a virtuálisgép-sablont, hogy az pontosan aszerint legyen konfigurálva, amit a tesztkörnyezet felhasználóinak biztosítani kíván. A sablonhoz megadhat egy nevet és egy leírást, amely a tesztkörnyezet felhasználói számára jelenik meg. Ezt követően a sablont a Virtuálisgép-sablon példányainak a labor számára elérhetővé tehet közzé. Amikor közzétesz egy sablont, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval.
@@ -92,7 +92,7 @@ Az alábbi lépéseket követve cím és leírás, először állítsa be, és k
 1. Az a **sablon** részben, vigye az egérmutatót **neve** -sablon vagy **leírás** a sablon, és jelölje ki. 
 2. Adja meg a **új nevet** vagy **új leírást** a sablont, majd nyomja le az **ENTER**.
 
-    ![Templae neve és leírása](../media/how-to-create-manage-template/template-name-description.png)
+    ![A sablon nevét és leírását](../media/how-to-create-manage-template/template-name-description.png)
 
 ## <a name="set-up-or-update-a-template-vm"></a>Állítsa be, vagy egy Virtuálisgép-sablon frissítéséhez
  A virtuálisgép-sablonhoz csatlakozva telepítse a szükséges szoftvereket, mielőtt elérhetővé tenné a sablont a diákok számára. Kövesse az alábbi lépéseket egy sablont, virtuális gép beállításához először, vagy frissítse a virtuális Gépet. 
@@ -103,7 +103,12 @@ Az alábbi lépéseket követve cím és leírás, először állítsa be, és k
 1. Tekintse át a figyelmeztető üzenetet, és válassza ki **Start**. 
 
     ![Indítsa el a sablon – figyelmeztetés](../media/how-to-create-manage-template/start-template-warning.png)
+2. A laborgyakorlat csempéje állapota a **sablon** szakaszban.
+
+    ![Indítsa el a sablon - állapot](../media/how-to-create-manage-template/template-start-status.png)
 1. Miután elindul, a virtuális Géphez való csatlakozáshoz válassza **Connect**, és kövesse az utasításokat. 
+
+    ![Csatlakozni vagy a sablon virtuális gép leállítása](../media/how-to-create-manage-template/connect-stop-vm.png)
 1. Telepítse a diákok számára a tesztkörnyezet használatához szükséges szoftvereket (például Visual Studio, Azure Storage Explorer stb). 
 2. Szakítsa meg a kapcsolatot a virtuálisgép-sablonnal (zárja be a távoli asztali munkamenetet). 
 3. **Állítsa le** a virtuálisgép-sablont a **Leállítás** kiválasztásával. 

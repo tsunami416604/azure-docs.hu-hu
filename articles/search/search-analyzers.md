@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 121b5542f9388355b97744aa224ac824dd8d8728
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 008a24fe9822ca51b81e1f6979a3731d794a8867
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867205"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964338"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Az Azure Search szövegfeldolgozást elemzők
 
@@ -92,7 +92,7 @@ Ebben a példában ajánljuk figyelmébe:
 * Elemzők a mező osztály kereshető mező tulajdonsága.
 * Egyéni elemző egy indexdefiníciót részét képezi. Előfordulhat, hogy alaposan testreszabható (például egy szűrő az egyetlen lehetőség testreszabása) vagy testre szabott több helyen is.
 * Ebben az esetben az egyéni elemző-e "my_analyzer", amely viszont használja a "my_standard_tokenizer" testre szabott standard jogkivonatokat létrehozó és két token szűrők: kis- és testre szabott asciifolding szűrő "my_asciifolding".
-* 2 egyéni char szűrők "map_dash" és "remove_whitespace" is meghatározza. Az elsőt összes kötőjelek lecseréli aláhúzásjeleket tartalmazhat, míg a másodiknál eltávolítja az összes nem állhat kizárólag szóközökből. Az elválasztó karakterek kell lennie az UTF-8 kódolású található a leképezési szabályokat. A char szűrők előtt a jogkivonatok érvényesek, és hatással lesz az eredményül kapott jogkivonatokkal (a standard szintű tokenizer oldaltörések dash és a tárolóhelyek azonban nem aláhúzásjelet).
+* 2 egyéni char szűrők "map_dash" és "remove_whitespace" is meghatározza. Az elsőt összes kötőjelek szerepelhetnek, míg a másodiknál minden szóközt eltávolít aláhúzásjeleket lecseréli. UTF-8 kódolású a leképezési szabályokat a tárolóhelyek kell. A char szűrők előtt a jogkivonatok érvényesek, és hatással lesz az eredményül kapott jogkivonatokkal (a standard szintű tokenizer oldaltörések dash és a tárolóhelyek azonban nem aláhúzásjelet).
 
 ~~~~
   {

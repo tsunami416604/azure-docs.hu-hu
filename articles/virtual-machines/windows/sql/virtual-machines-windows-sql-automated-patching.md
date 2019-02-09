@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0f6677cce369117886a8b4534423414c2fd56d0c
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d9cedd05e949d9684473d620629314a34802c1fc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331061"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977303"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Az SQL Server automatikus javítása az Azure Virtual Machines szolgáltatásban (Resource Manager)
 > [!div class="op_single_selector"]
@@ -53,6 +53,8 @@ Automatikus javítás használatához vegye figyelembe a következő előfeltét
 **Azure PowerShell**:
 
 * [Telepítse a legújabb Azure PowerShell-parancsok](/powershell/azure/overview) Ha azt tervezi, hogy az automatikus javítás beállítása a PowerShell használatával.
+
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 > [!NOTE]
 > Automatikus javítás az SQL Server IaaS-ügynök bővítmény támaszkodik. Aktuális SQL virtuálisgép-katalógus rendszerképek alapértelmezés szerint ez a bővítmény hozzáadása. További információkért lásd: [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).
@@ -103,13 +105,13 @@ Ha engedélyezi a automatikus javítás először, akkor az Azure az SQL Server 
 ## <a name="configuration-with-powershell"></a>PowerShell-konfiguráció
 Az SQL virtuális gép kiépítése, után a PowerShell segítségével konfigurálhatja az automatikus javítás.
 
-A következő példában a PowerShell konfigurálása az automatikus javítás az SQL Server meglévő virtuális gép szolgál. A **AzureRM.Compute\New-AzureRmVMSqlServerAutoPatchingConfig** parancs konfigurálja az automatikus frissítések egy új karbantartási időszakot.
+A következő példában a PowerShell konfigurálása az automatikus javítás az SQL Server meglévő virtuális gép szolgál. A **AzureRM.Compute\New-AzVMSqlServerAutoPatchingConfig** parancs konfigurálja az automatikus frissítések egy új karbantartási időszakot.
 
     $vmname = "vmname"
     $resourcegroupname = "resourcegroupname"
-    $aps = AzureRM.Compute\New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
+    $aps = AzureRM.Compute\New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 
-    Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
+    Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
 
 > [!IMPORTANT]
 > Ha a bővítmény nem telepítette, a bővítmény telepítése újraindítja az SQL Server szolgáltatást.
@@ -125,7 +127,7 @@ Ebben a példában alapján, a következő táblázat ismerteti a gyakorlati hat
 
 Telepítse és konfigurálja az SQL Server IaaS-ügynök több percet igénybe vehet.
 
-Automatikus javítás letiltásához futtassa ugyanazt a parancsprogramot nélkül a **-engedélyezése** paramétert a **AzureRM.Compute\New-AzureRmVMSqlServerAutoPatchingConfig**. Hiányában a **-engedélyezése** paraméter jelzi a parancs a funkció letiltásához.
+Automatikus javítás letiltásához futtassa ugyanazt a parancsprogramot nélkül a **-engedélyezése** paramétert a **AzureRM.Compute\New-AzVMSqlServerAutoPatchingConfig**. Hiányában a **-engedélyezése** paraméter jelzi a parancs a funkció letiltásához.
 
 ## <a name="next-steps"></a>További lépések
 Más elérhető automation-feladatokkal kapcsolatos további információkért lásd: [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).

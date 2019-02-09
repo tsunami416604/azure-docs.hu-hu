@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/01/2019
-ms.openlocfilehash: 494b9b5d8be804842406aac98d3b328c7848570d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 02/07/2019
+ms.openlocfilehash: 482ce5c218675e226c8ca2ba8782fc04d316876c
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663978"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961567"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis
 
@@ -260,5 +260,9 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyakori kérdésekre adott válaszokat.
+- Önálló adatbázis dtu-k erőforráskorlátok, lásd: [erőforráskorlátok és önálló adatbázisokat a DTU-alapú vásárlási modell használatával](sql-database-dtu-resource-limits-single-databases.md)
+- Rugalmas készletek erőforráskorlátok virtuális mag, lásd: [erőforráskorlátok a rugalmas készletek a Virtuálismag-alapú vásárlási modell használatával](sql-database-vcore-resource-limits-elastic-pools.md)
+- DTU-erőforrás limites rugalmas készletek esetén, lásd: [erőforráskorlátok a rugalmas készletek a DTU-alapú vásárlási modell használatával](sql-database-dtu-resource-limits-elastic-pools.md)
+- Erőforráskorlátok a felügyelt példányok, lásd: [felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md).
 - Azure – általános korlátozások kapcsolatos információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
+- Adatbázis-kiszolgáló erőforráskorlátok kapcsolatos információkért lásd: [az SQL Database-kiszolgálóhoz erőforráskorlátok áttekintése](sql-database-resource-limits-database-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.

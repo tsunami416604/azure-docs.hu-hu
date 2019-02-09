@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 4b9c57785b9b3176def495af6bc5956d70fa5c35
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7da765bda815e9112dac809d259fd417dc4d866e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657909"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981094"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?
 
@@ -228,45 +228,35 @@ Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapért
 
 * Az összes támogatott, kivéve Dél-Brazíliát és Nyugat-japán régióban:
 
-<html><body><table width="100%">
-<tr align="left"><th>Fürttípus</th><th>Hadoop</th><th>A HBase&nbsp;&nbsp;</th><th>Interaktív lekérdezés</th><th>A Storm&nbsp;&nbsp;</th><th>A Spark&nbsp;&nbsp;</th><th>Machine Learning-kiszolgáló&nbsp;</th><th>Kafka&nbsp;</th></tr>
-
-<tr><td>A fő: virtuális gépek alapértelmezett mérete</td><td>D12 v2</td><td>D12 v2</td><td>D13 v2</td><td>A3</td><td>D12 v2</td><td>D12 v2</td><td>D3v2</td></tr>
-
-<tr><td rowspan="4" valign="top">A fő: javasolt Virtuálisgép-méretek</td><td>D3 v2</td><td>D3 v2</td><td>D13</td><td>A4 v2</td><td>D12 v2</td><td>D12 v2</td><td>A2M v2</td></tr>
-<tr><td>D4 v2</td><td>D4 v2</td><td>D14</td><td>A8 v2</td><td>D13 v2</td><td>D13 v2</td><td>D3 v2</td></tr>
-<tr><td>D12 v2</td><td>D12 v2</td><td>E16 v3</td><td>A2m v2</td><td>D14 v2</td><td>D14 v2</td><td>D4 v2</td></tr>
-<tr><td>E4 v3</td><td>E4 v3</td><td>E32 v3</td><td>E4 v3</td><td>E4 v3</td><td>E4 v3</td><td>D12 v2</td></tr>
-
-<tr><td>Feldolgozó: virtuális gépek alapértelmezett mérete</td><td>D4 v2</td><td>D4 v2</td><td>D14 v2</td><td>D3 v2</td><td>D13 v2</td><td>D4 v2</td><td>4 D12v2 közvetítőnként 2 S30 lemezek</td></tr>
-
-<tr><td rowspan="8" valign="top">Feldolgozó: javasolt Virtuálisgép-méretek</td><td>D3 v2</td><td>D3 v2</td><td>D13</td><td>D3 v2</td><td>D4 v2</td><td>D4 v2</td><td>D13 v2</td></tr>
-<tr><td>D4 v2</td><td>D4 v2</td><td>D14</td><td>D4 v2</td><td>D12 v2</td><td>D12 v2</td><td>DS12 v2</td></tr>
-<tr><td>D12 v2</td><td>D12 v2</td><td>E16 v3</td><td>D12 v2</td><td>D13 v2</td><td>D13 v2</td><td>DS13 v2</td></tr>
-<tr><td>E4 v3</td><td>E4 v3</td><td>E20 v3</td><td>E4 v3</td><td>D14 v2</td><td>D14 v2</td><td>E4 v3</td></tr>
-<tr><td></td><td></td><td>E32 v3</td><td></td><td>E16 v3</td><td>E16 v3</td><td>ES4 v3</td></tr>
-<tr><td></td><td></td><td>E64 v3</td><td></td><td>E20 v3</td><td>E20 v3</td><td>E8 v3</td></tr>
-<tr><td></td><td></td><td></td><td></td><td>E32 v3</td><td>E32 v3</td><td>ES8 v3</td></tr>
-<tr><td></td><td></td><td></td><td></td><td>E64 v3</td><td>E64 v3</td><td></td></tr>
-
-<tr><td>ZooKeeper: virtuális gépek alapértelmezett mérete</td><td></td><td>A4 v2</td><td>A4 v2</td><td>A4 v2</td><td></td><td>A2 v2</td><td>D3v2</td></tr>
-
-<tr><td rowspan="3" valign="top">ZooKeeper: javasolt Virtuálisgép-méretek</td><td></td><td>A4 v2</td><td></td><td>A2 v2</td><td></td><td></td><td>A2M v2</td></tr>
-<tr><td></td><td>A8 v2</td><td></td><td>A4 v2</td><td></td><td></td><td>D3 v2</td></tr>
-<tr><td></td><td>A2m v2</td><td></td><td>A8 v2</td><td></td><td></td><td>E8 v3</td></tr>
-
-<tr align="left"><td>Edge: virtuális gépek alapértelmezett mérete</td><td></td><td></td><td></td><td></td><td></td><td>D4 v2</td><td></td></tr>
-
-<tr><td rowspan="8" valign="top">Edge: Virtuálisgép-méretet ajánlott</td><td></td><td></td><td></td><td></td><td></td><td>D4 v2</td><td></td></tr>
-<tr><td></td><td></td><td></td><td></td><td></td><td>D12 v2</td><td></td></tr>
-<tr><td></td><td></td><td></td><td></td><td></td><td>D13 v2</td><td></td></tr>
-<tr><td></td><td></td><td></td><td></td><td></td><td>D14 v2</td><td></td></tr>
-<tr><td></td><td></td><td></td><td></td><td></td><td>E16 v3</td><td></td></tr>
-<tr><td></td><td></td><td></td><td></td><td></td><td>E20 v3</td><td></td></tr>
-<tr><td></td><td></td><td></td><td></td><td></td><td>E32 v3</td><td></td></tr>
-<tr><td></td><td></td><td></td><td></td><td></td><td>E64 v3</td><td></td></tr>
-
-</table></body></html>
+|Fürttípus|Hadoop|HBase|Interaktív lekérdezés|Storm|Spark|Machine Learning-kiszolgáló|Kafka|
+|---|---|---|---|---|---|---|---|
+|A fő: virtuális gépek alapértelmezett mérete|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
+|A fő: javasolt Virtuálisgép-méretek|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
+||D4 v2|D4 v2|D14|A8 v2|D13 v2|D13 v2|D3 v2|
+||D12 v2|D12 v2|E16 v3|A2m v2|D14 v2|D14 v2|D4 v2|
+||E4 v3|E4 v3|E32 v3|E4 v3|E4 v3|E4 v3|D12 v2|
+|Feldolgozó: virtuális gépek alapértelmezett mérete|D4 v2|D4 v2|D14 v2|D3 v2|D13 v2|D4 v2|4 D12v2 közvetítőnként 2 S30 lemezek|
+|Feldolgozó: javasolt Virtuálisgép-méretek|D3 v2|D3 v2|D13|D3 v2|D4 v2|D4 v2|D13 v2|
+||D4 v2|D4 v2|D14|D4 v2|D12 v2|D12 v2|DS12 v2|
+||D12 v2|D12 v2|E16 v3|D12 v2|D13 v2|D13 v2|DS13 v2|
+||E4 v3|E4 v3|E20 v3|E4 v3|D14 v2|D14 v2|E4 v3|
+||||E32 v3||E16 v3|E16 v3|ES4 v3|
+||||E64 v3||E20 v3|E20 v3|E8 v3|
+||||||E32 v3|E32 v3|ES8 v3|
+||||||E64 v3|E64 v3||
+|ZooKeeper: virtuális gépek alapértelmezett mérete||A4 v2|A4 v2|A4 v2||A2 v2|D3v2|
+|ZooKeeper: javasolt Virtuálisgép-méretek||A4 v2||A2 v2|||A2M v2|
+|||A8 v2||A4 v2|||D3 v2|
+|||A2m v2||A8 v2|||E8 v3|
+|Edge: virtuális gépek alapértelmezett mérete||||||D4 v2||
+|Edge: Virtuálisgép-méretet ajánlott||||||D4 v2||
+|||||||D12 v2||
+|||||||D13 v2||
+|||||||D14 v2||
+|||||||E16 v3||
+|||||||E20 v3||
+|||||||E32 v3||
+|||||||E64 v3||
 
 * Dél-Brazíliát és Nyugat-Japánban csak (nincs v2 méretű):
 

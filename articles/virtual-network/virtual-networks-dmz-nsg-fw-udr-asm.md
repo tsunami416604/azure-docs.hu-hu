@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 36d6733ddc73ace2026ea838cf8f701db95469e6
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 93402f9124a5c2f6a251cb0e3b3dab21386fa5ff
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448466"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965256"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Például: 3 – semleges egy tűzfal, az udr-t és az NSG-t a hálózatok védelme
 [Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]
@@ -109,35 +109,46 @@ Ha az útválasztási táblázatok jönnek létre, azok alhálózatok vannak kö
 Ebben a példában a következő parancsokat használja az útválasztási táblázat létrehozása, és adjon hozzá egy felhasználó által megadott útvonalat, majd társítanak az útválasztási táblázatot egy alhálózathoz (Megjegyzés; alatti kiadásától kezdve egy dollárjelet elemek (pl.: $BESubnet) vannak a felhasználó által definiált változókat a parancsfájl a referencia a dokumentum szakaszát):
 
 1. Először az útválasztási alaptábla kell létrehozni. Ez a kódrészlet bemutatja a tábla a háttérrendszer alhálózatának. A parancsfájl egy kapcsolódó tábla is létrejön az előtér-alhálózatot.
-   
-     New-AzureRouteTable -Name $BERouteTableName `
-   
-         -Location $DeploymentLocation `
-         -Label "Route table for $BESubnet subnet"
+
+   ```powershell
+   New-AzureRouteTable -Name $BERouteTableName `
+       -Location $DeploymentLocation `
+       -Label "Route table for $BESubnet subnet"
+   ```
+
 2. Az útvonaltábla létrehozása után a megadott felhasználó által megadott útvonalakat is hozzáadhatók. A jelen snipped a virtuális berendezés (egy változót, a [0], $VMIP használt adja át a virtuális készülék a parancsfájl a korábbi létrehozásakor rendelt IP-cím) keresztül minden forgalmat (0.0.0.0/0) lesznek irányítva. A parancsfájl egy megfelelő szabályt is létrejön az előtér-táblázatban.
-   
-     Get-AzureRouteTable $BERouteTableName | `
-   
-         Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
-         -NextHopType VirtualAppliance `
-         -NextHopIpAddress $VMIP[0]
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
+       -NextHopType VirtualAppliance `
+       -NextHopIpAddress $VMIP[0]
+   ```
+
 3. A fenti útvonal bejegyzés felülírják az alapértelmezett "0.0.0.0/0" útvonalat, de továbbra is meglévő alapértelmezett 10.0.0.0/16 szabály, amely lehetővé tenné, hogy a forgalom közvetlenül a rendeltetési helyre és nem a hálózati virtuális berendezés továbbítani a Vneten belül. Helyes-e ezt a viselkedést az alábbi szabály hozzá kell adni.
-   
-        Get-AzureRouteTable $BERouteTableName | `
-            Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
-            -NextHopType VirtualAppliance `
-            -NextHopIpAddress $VMIP[0]
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
+       -NextHopType VirtualAppliance `
+       -NextHopIpAddress $VMIP[0]
+   ```
+
 4. Ezen a ponton választási lehetőség van kell tenni. Az a fenti két útvonalakat az értékelés, még akkor is, forgalmat egy egyetlen alhálózaton belül a tűzfal az összes forgalmat irányítja át. Ez előfordulhat, hogy lehet megfelelő, de ahhoz, hogy a forgalom egy helyileg, a tűzfal bevonása nélkül irányíthatja a harmadik alhálózatban, nagyon adott szabályokat is hozzáadhatók. Ezt az útvonalat, amely bármilyen címet a helyi alhálózaton rendkívül egyszerűen destine állapotok közvetlenül útvonal létezik (NextHopType = VNETLocal).
-   
-        Get-AzureRouteTable $BERouteTableName | `
-            Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
-            -NextHopType VNETLocal
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
+           -NextHopType VNETLocal
+   ```
+
 5. Végül az útválasztási tábla létrehozott és feltöltött egy felhasználó által megadott útvonalakat az a tábla most kell kötni egy alhálózathoz. A parancsfájl az előtér-útválasztási tábla is van kötve az előtér-alhálózatot. Íme a kötés parancsfájlt a háttér-alhálózat.
-   
-     Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
-   
-        -SubnetName $BESubnet `
-        -RouteTableName $BERouteTableName
+
+   ```powershell
+   Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
+       -SubnetName $BESubnet `
+       -RouteTableName $BERouteTableName
+   ```
 
 ## <a name="ip-forwarding"></a>IP-továbbítás
 Egy kiegészítő funkció, amellyel udr-t, az IP-továbbítást. Ez az egy-egy virtuális berendezés, amely lehetővé teszi, hogy a készülék nem kifejezetten címzett forgalom fogadása és majd továbbítsa a forgalmat a végső rendeltetési beállítást.
@@ -149,13 +160,14 @@ Tegyük fel AppVM01 érkező kérést küld a DNS01 kiszolgálóra, ha udr-t kel
 > 
 > 
 
-Az IP-továbbítás beállításához egyetlen paranccsal és virtuális gépek létrehozáskor teheti meg. Az ebben a példában a folyamat a kódtöredék a szkript végén, és az UDR-parancsokkal csoportosítva:
+Az IP-továbbítás beállításához egyetlen paranccsal és virtuális gépek létrehozáskor teheti meg. Ebben a példában a folyamat a kódtöredék a szkript végén, és az UDR-parancsokkal csoportosítva:
 
 1. A Virtuálisgép-példány, amely a virtuális berendezéshez, a tűzfal ebben az esetben nevezik, és az IP-továbbítás engedélyezése (Megjegyzés; piros kiadásától kezdve egy dollárjelet tetszőleges elemre (pl.: $VMName[0]) a referencia szakasz ebben a dokumentumban szereplő parancsfájl egy felhasználó által definiált változó. Zárójelek között, a [0], a nulla képviseli az első virtuális gép, virtuális gépek, a módosítás nélkül használható példa parancsfájl a tömbben, az első virtuális gép (VM-0) kell lennie a tűzfalon):
-   
-     Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
-   
+
+    ```powershell
+    Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
         Set-AzureIPForwarding -Enable
+    ```
 
 ## <a name="network-security-groups-nsg"></a>Hálózati biztonsági csoportok (NSG)
 Ebben a példában egy NSG-csoport beépített, és aztán betölti a egyetlen szabállyal. Ez a csoport majd kötött csak az előtérbeli és háttérbeli alhálózatok (nem a SecNet). Deklaratív a következő szabály létrehozása folyamatban van:
@@ -166,22 +178,26 @@ Bár ebben a példában az NSG-ket használja, azt a fő célja manuális kiszol
 
 Ebben a példában a hálózati biztonsági csoport kapcsolatos egy érdekes pont, hogy csak egy szabályt, az alább látható benne: Ez a teljes virtuális hálózatot, amely hozzáadja a biztonság – alhálózati internetes forgalom. 
 
-    Get-AzureNetworkSecurityGroup -Name $NSGName | `
-        Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
-        from the Internet" `
-        -Type Inbound -Priority 100 -Action Deny `
-        -SourceAddressPrefix INTERNET -SourcePortRange '*' `
-        -DestinationAddressPrefix VIRTUAL_NETWORK `
-        -DestinationPortRange '*' `
-        -Protocol *
+```powershell
+Get-AzureNetworkSecurityGroup -Name $NSGName | `
+    Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
+    from the Internet" `
+    -Type Inbound -Priority 100 -Action Deny `
+    -SourceAddressPrefix INTERNET -SourcePortRange '*' `
+    -DestinationAddressPrefix VIRTUAL_NETWORK `
+    -DestinationPortRange '*' `
+    -Protocol *
+```
 
 Azonban az NSG-t csak az előtérbeli és háttérbeli alhálózataihoz van kötve, mivel a szabály nem feldolgozott forgalom a bejövő biztonsági az alhálózathoz. Ennek eredményeképpen annak ellenére, hogy a Hálózatibiztonságicsoport-szabály nincs internetes forgalmat bármilyen cím felirat látható a virtuális hálózaton, mivel az NSG-t soha nem lett kötve a biztonság – alhálózati, forgalom biztonsági az alhálózathoz.
 
-    Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
-        -SubnetName $FESubnet -VirtualNetworkName $VNetName
+```powershell
+Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
+    -SubnetName $FESubnet -VirtualNetworkName $VNetName
 
-    Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
-        -SubnetName $BESubnet -VirtualNetworkName $VNetName
+Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
+    -SubnetName $BESubnet -VirtualNetworkName $VNetName
+```
 
 ## <a name="firewall-rules"></a>Tűzfalszabályok
 A tűzfalon továbbítási szabályokat kell létrehozni. Mivel a tűzfal blokkolja-e vagy az összes bejövő, kimenő továbbítás és belüli virtuális hálózatok közötti forgalom számos tűzfalszabályok van szükség. Minden bejövő forgalom is, kattintson a biztonsági szolgáltatás nyilvános IP-cím (a különböző portok), a tűzfal feldolgozásra. Ajánlott eljárás, hogy a logikai folyamatokban az alhálózatok beállítása előtt a diagramon, és később újragyártási tűzfalszabályok elkerülése érdekében. Az alábbi ábra az ebben a példában a tűzfalszabályok logikai nézetében:
@@ -233,9 +249,11 @@ A virtuális gép fut, a tűzfal egy előfeltétel olyan nyilvános végpontok. 
 
 A végpont segítségével lehet megnyitni, vagy a virtuális gép létrehozásakor, vagy build közzététele a példa parancsfájl kész, és ez a kódrészlet az alább látható módon (Megjegyzés; dollárjelet bármely elem kezdődő (pl.: $VMName[$i]) a referencia-rész a parancsfájl a felhasználó által definiált változó Ez a dokumentum n. A "$i" zárójelben [$i], a virtuális tömböt adott virtuális gép tömb számát jelenti):
 
-    Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
-        -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
-        Update-AzureVM
+```powershell
+Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
+    -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
+    Update-AzureVM
+```
 
 Bár nem jelenik meg világosan itt oka az, hogy vannak-e a változókat, de a végpontok használata **csak** nyit meg a biztonsági Felhőszolgáltatás. Ez azért szükséges, hogy az összes bejövő forgalom kezelése (irányítva, NAT rendelkezett, kihagyva) a tűzfal.
 
@@ -338,7 +356,7 @@ Ebben a példában végrehajtásához szükséges minden egyes szabály tulajdon
   
     A Pass-szabály lehetővé teszi, hogy a bármely az IIS-kiszolgálón az előtérbeli alhálózat elérni a AppVM01 (IP-cím 10.0.2.5) bármely porton bármely protokoll, a webes alkalmazás számára szükséges adatok elérését használatával.
   
-    A képernyőfelvételen egy "\<explicit-dest\>" jelölésére 10.0.2.5 célhelyként szolgál a cél mezőben. Ez lehet, vagy explicit módon, vagy nevű objektum (ahogyan az az előfeltételeket a DNS-kiszolgáló). Ez a csak az a tűzfal feltárhatja, hogy mely metódus lesz használva. Egy létrehozását Desitnation 10.0.2.5 hozzáadni, kattintson duplán az első üres sor alatt \<explicit-dest\> és a címet írja be a felugró ablakban.
+    A képernyőfelvételen egy "\<explicit-dest\>" jelölésére 10.0.2.5 célhelyként szolgál a cél mezőben. Ez lehet, vagy explicit módon, vagy nevű objektum (ahogyan az az előfeltételeket a DNS-kiszolgáló). Ez a csak az a tűzfal feltárhatja, hogy mely metódus lesz használva. Adja hozzá a 10.0.2.5 létrehozását célként, kattintson duplán az első üres sor alatt \<explicit-dest\> és a címet írja be a felugró ablakban.
   
     Ez a fázis szabály, és nem NAT van szükség, mivel ez a belső forgalom, így "No SNAT" értékre lehet beállítani a kapcsolódási módszert.
   
@@ -389,7 +407,7 @@ Az aktiválás, a tűzfal szabálykészletben Ez a példa környezet build elké
 
 ## <a name="traffic-scenarios"></a>Forgalom forgatókönyvek
 > [!IMPORTANT]
-> A kulcs takeway, hogy ne feledje, hogy **összes** adatforgalom a tűzfalon keresztül fog érkezni. Ezért a IIS01 kiszolgálóhoz a távoli asztal annak ellenére, hogy a végfelhasználók az előtérbeli felhőszolgáltatás és az előtérbeli alhálózat a kiszolgálóhoz való azt fogja kell az RDP-hez 8014 porton a tűzfal, és engedje, hogy a tűzfal a IIS01 RDP Por irányíthatja a cégen belül az RDP-kérelem t. Az Azure portal "Csatlakozás" gomb nem fog működni, mert nincs közvetlen RDP-elérési útját IIS01 (szerint a portálon látható). Ez azt jelenti, hogy az összes az internetről érkező kapcsolatokat a Security Service és a egy Port, pl. secscv001.cloudapp.net:xxxx lesz.
+> A típushelyzetből az, hogy ne feledje, hogy **összes** adatforgalom a tűzfalon keresztül fog érkezni. Ezért a IIS01 kiszolgálóhoz a távoli asztal annak ellenére, hogy a végfelhasználók az előtérbeli felhőszolgáltatás és az előtérbeli alhálózat a kiszolgálóhoz való azt fogja kell az RDP-hez 8014 porton a tűzfal, és engedje, hogy a tűzfal a IIS01 RDP Por irányíthatja a cégen belül az RDP-kérelem t. Az Azure portal "Csatlakozás" gomb nem fog működni, mert nincs közvetlen RDP-elérési útját IIS01 (szerint a portálon látható). Ez azt jelenti, hogy az összes az internetről érkező kapcsolatokat a Security Service és a egy Port, pl. secscv001.cloudapp.net:xxxx lesz.
 > 
 > 
 
@@ -592,6 +610,7 @@ Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számít
 > 
 > 
 
+```powershell
     <# 
      .SYNOPSIS
       Example of DMZ and User Defined Routing in an isolated network (Azure only, no hybrid connections)
@@ -604,7 +623,7 @@ Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számít
        - A Network Virtual Appliance (NVA), in this case a Barracuda NextGen Firewall
        - One server on the FrontEnd Subnet
        - Three Servers on the BackEnd Subnet
-       - IP Forwading from the FireWall out to the internet
+       - IP Forwarding from the FireWall out to the internet
        - User Defined Routing FrontEnd and BackEnd Subnets to the NVA
 
       Before running script, ensure the network configuration file is created in
@@ -702,7 +721,7 @@ Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számít
           $SubnetName += $FESubnet
           $VMIP += "10.0.1.4"
 
-        # VM 2 - The First Appliaction Server
+        # VM 2 - The First Application Server
           $VMName += "AppVM01"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -711,7 +730,7 @@ Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számít
           $SubnetName += $BESubnet
           $VMIP += "10.0.2.5"
 
-        # VM 3 - The Second Appliaction Server
+        # VM 3 - The Second Application Server
           $VMName += "AppVM02"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -730,7 +749,7 @@ Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számít
           $VMIP += "10.0.2.4"
 
     # ----------------------------- #
-    # No User Defined Varibles or   #
+    # No User Defined Variables or   #
     # Configuration past this point #
     # ----------------------------- #
 
@@ -741,7 +760,7 @@ Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számít
 
       # Create Storage Account
         If (Test-AzureName -Storage -Name $StorageAccountName) { 
-            Write-Host "Fatal Error: This storage account name is already in use, please pick a diffrent name." -ForegroundColor Red
+            Write-Host "Fatal Error: This storage account name is already in use, please pick a different name." -ForegroundColor Red
             Return}
         Else {Write-Host "Creating Storage Account" -ForegroundColor Cyan 
               New-AzureStorageAccount -Location $DeploymentLocation -StorageAccountName $StorageAccountName}
@@ -872,7 +891,7 @@ Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számít
             |Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $FEPrefix `
             -NextHopType VNETLocal
 
-      # Assoicate the Route Tables with the Subnets
+      # Associate the Route Tables with the Subnets
         Write-Host "Binding Route Tables to the Subnets" -ForegroundColor Cyan 
         Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
             -SubnetName $BESubnet `
@@ -920,11 +939,12 @@ Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számít
       Write-Host " - Install Test Web App (Run Post-Build Script on the IIS Server)" -ForegroundColor Gray
       Write-Host " - Install Backend resource (Run Post-Build Script on the AppVM01)" -ForegroundColor Gray
       Write-Host
-
+```
 
 #### <a name="network-config-file"></a>Hálózati konfigurációs fájl
 Mentse az xml-fájlt a hely frissítve, és adja hozzá a hivatkozás ehhez a fájlhoz, a szkriptben $NetworkConfigFile változó.
 
+```xml
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
@@ -957,6 +977,7 @@ Mentse az xml-fájlt a hely frissítve, és adja hozzá a hivatkozás ehhez a f�
         </VirtualNetworkSites>
       </VirtualNetworkConfiguration>
     </NetworkConfiguration>
+```
 
 #### <a name="sample-application-scripts"></a>Mintaszkriptek alkalmazás
 Ha szeretne egy mintaalkalmazás telepítése ezzel és más DMZ példák, egy, a következő hivatkozás lett megadva: [A Példaszkript alkalmazás][SampleApp]

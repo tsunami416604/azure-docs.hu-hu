@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
 ms.reviewer: marcozo
-ms.openlocfilehash: 0771c417a526c17d1bef7b0d40405efd94333929
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c56aef180f5e16d2ec1931caabe04295ef288ca9
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869993"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980686"
 ---
 # <a name="register-your-application"></a>Alkalmazás regisztrálása
 
 A Custom Decision Service az alkalmazás használatához regisztrálni a portálon. Ez a cikk azt ismerteti, hogyan.
 
-1. Nyissa meg a [első oldal](https://ds.microsoft.com/) a Custom Decision Service. Kattintson a menüszalag **saját portál**, az ábrán a kiemelt:
+1. Nyissa meg a [első oldal](https://portal.ds.microsoft.com/) a Custom Decision Service. Kattintson a menüszalag **saját portál**, az ábrán a kiemelt:
 
     ![A portálon](./media/portal.png)
 

@@ -3,8 +3,8 @@ title: Összevont egyszeri bejelentkezés az Azure AD katalógusából származ�
 description: Összevont egyszeri bejelentkezés egy meglévő Azure AD katalógusából származó alkalmazás és -felhasználási oktatóanyagok a gyors induláshoz konfigurálása
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: e1555830fb8e355ec4e291dc49b7d6983f87ffc5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: 5fdb03327f25a215b5bfc550fb69f8d575013ae2
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168396"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964764"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Összevont egyszeri bejelentkezés az Azure AD katalógusából származó alkalmazás konfigurálása
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 577860baa74d9f0cd7f411a64d9e6bfa9322731c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 834674eb63af75088434db0f614b11c7a36e7adf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894990"
+ms.locfileid: "55964814"
 ---
 # <a name="configure-usage-settings-and-policies"></a>És használati beállítások és szabályzatok konfigurálása
 Ez a cikk ismerteti a felhasználók hozzáadása a tesztkörnyezethez, azok regisztrálva a labor, szabályozhatja a virtuális Gépet, és további használatához órák száma. 
@@ -66,11 +66,14 @@ Felhasználónként kvóták az alábbi lépéseket követve állíthatja be:
 
 1. Válassza ki **felhasználók** a bal oldali menüben.
 2. Válassza ki **felhasználónként kvóta: korlátlan** az eszköztáron. 
-3. Az a **felhasználónként kvóta** lapon jelölje be **óra, a felhasználó használhatja a virtuális gépek számának korlátozásához**. 
-4. A **hány órát kíván adni, az egyes felhasználók**, adja meg az órák számát, és válassza ki **mentése**. 
+3. Az a **felhasználónként kvóta** lapra, jelölje be az alábbi lehetőségek közül: 
+    1. **Nincs**. Felhasználók a saját virtuális gépek csak az ütemezett időszakban, vagy ha a labor tulajdonos kapcsolja be a virtuális gépek a számukra.
+    2. **Korlátlan (alapértelmezett)**. Felhasználók használhatják a virtuális gépeik időbeli korlátozások nélkül.
+    3. **Adja meg a felhasználónként órák száma**. Óra (az alább megadott) mellett a megadott időpont a meghatározott számú virtuális gépeik felhasználók használhatják. Ha ezt a lehetőséget választja, adja meg a **órák száma** a szövegmezőben. 
 
-    ![Felhasználónként órák száma](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
-5. Láthatja azon órák számát az eszköztáron most: **Felhasználói kvóta: &lt;órák száma&gt;**. 
+        ![Felhasználónként órák száma](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+    4. Kattintson a **Mentés** gombra. 
+5. Módosított értéke most már az eszköztáron látható: **Felhasználói kvóta: &lt;órák száma&gt;**. 
 
     ![Kvóta felhasználó szerint](../media/how-to-configure-student-usage/quota-per-user.png)
 
@@ -80,8 +83,19 @@ Felhasználónként kvóták az alábbi lépéseket követve állíthatja be:
 ### <a name="add-users-by-uploading-a-csv-file"></a>Felhasználók hozzáadása egy CSV-fájl feltöltésével
 A felhasználók e-mail-címét tartalmazó CSV-fájl feltöltésével is hozzáadhat felhasználókat.
 
-1. Válassza ki **töltse fel a fürt megosztott kötetei szolgáltatás** az eszköztáron.
-2. Válassza ki a felhasználó e-mail-címmel rendelkező CSV-fájlt. Az Excel megnyitásakor minden e-mail-címét egy oszlopot kell megadni. 
+1. Hozzon létre egy CSV-fájlt egy oszlop felhasználók e-mail címét.
+
+    ![Kvóta felhasználó szerint](../media/how-to-configure-student-usage/csv-file-with-users.png)
+2. Az a **felhasználók** a labor létrehozása, válassza a lap **töltse fel a fürt megosztott kötetei szolgáltatás** az eszköztáron.
+
+    ![Töltse fel a fürt megosztott kötetei szolgáltatás gomb](../media/how-to-configure-student-usage/upload-csv-button.png)
+3. Válassza ki a felhasználó e-mail-címmel rendelkező CSV-fájlt. Ha bejelöli **nyílt** válassza ki a CSV-fájlt, lásd a következő **felhasználók hozzáadása** ablak. Az e-mail-címek listájából a CSV-fájlból az e-mail-címmel rendelkező ki van töltve. 
+
+    ![Feltöltve a CSV-fájlból az e-mail-címmel rendelkező felhasználók ablak hozzáadása](../media/how-to-configure-student-usage/add-users-window.png)
+4. Válassza ki **mentése** a a **felhasználók hozzáadása** ablak. 
+5. Győződjön meg arról, hogy a felhasználók a listán szereplő felhasználók. 
+
+    ![A hozzáadott felhasználók listája](../media/how-to-configure-student-usage/list-of-added-users.png)
 
 ## <a name="manage-user-vms"></a>Felhasználói virtuális gépek kezelése
 Miután tanulók regisztrálása az Azure Lab Services segítségével a regisztráció társítani a megadott, a tanulók a hozzárendelt virtuális gépeket láthatja a **virtuális gépek** fülre. 

@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: c71c7423b4cde2a24c8154899eec256e5746b6d7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9bff93fbec73eb73dca01660d46e35e194edb626
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865363"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963488"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Az Azure Key Vaultban felügyelt tárfiók – CLI
 
@@ -44,6 +44,12 @@ ms.locfileid: "55865363"
       
 <a name="step-by-step-instructions-on-how-to-use-key-vault-to-manage-storage-account-keys"></a>Útmutató a Key Vault használata kezelheti a Tárfiók kulcsait. lépés
 --------------------------------------------------------------------------------
+A koncepciót tekintve, hogy teljesülnek a lépések listájában vannak
+- Először lekérjük a (meglévő) storage-fiók
+- Azt, majd beolvassa (meglévő) key vault
+- Hogy majd KeyVault által felügyelt tárfiók hozzáadása a tárolóhoz, 1. kulcs beállítása az aktív kulcshoz és egy regenerációs időszakot 180 napig
+- Végül beállított egy storage-környezetet, a megadott tárfiók, az 1. kulcs
+
 Az az alábbi utasítások végrehajtásával, hogy társítja az Key Vault engedélyekkel kell rendelkeznie operátor a tárfiók szolgáltatásként
 
 > [!NOTE]
@@ -85,9 +91,41 @@ Az az alábbi utasítások végrehajtásával, hogy társítja az Key Vault enge
     ```
     Abban az esetben a felhasználó nem hozott létre a tárfiókot, és nem rendelkezik engedélyekkel a storage-fiókba, az alábbi lépéseket, győződjön meg arról, hogy a Key Vault a tárolási engedélyek segítségével kezelheti a fiók engedélyeit, állítsa be.
     
+
+<a name="step-by-step-instructions-on-how-to-use-key-vault-to-create-and-generate-sas-tokens"></a>Útmutató a Key Vault használatát létrehozása és SAS-jogkivonatokat hoz létre. lépés
+--------------------------------------------------------------------------------
+Is megkérheti a Key Vault SAS (közös hozzáférésű Jogosultságkód) jogkivonatokat hoz létre. Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. A SAS használatával biztosíthat az ügyfelek erőforrásokhoz való hozzáférés a tárfiókban lévő a fiókkulcsok megosztása nélkül. Ez a lényege a közös hozzáférésű jogosultságkód alkalmazásokban való használatának – az SAS a fiókkulcsok veszélyeztetése nélkül teszi lehetővé a tárolási erőforrások megosztását.
+
+Miután végzett a fent felsorolt lépéseket futtathatja kérje meg a Key Vault-, SAS-jogkivonatokat hoz létre a következő parancsokat. 
+
+A lista azokról a dolgokról, amelyek a azok megvalósítására az alábbi lépéseket is
+- Beállítja egy SAS-definíciója nevű fiók "<YourSASDefinitionName>"a "KeyVault által felügyelt storage-fiók<YourStorageAccountName>"a a tár'<VaultName>". 
+- Létrehoz egy SAS-jogkivonata szolgáltatások Blob, fájl, tábla és üzenetsor, erőforrástípusok Service, a tároló és az objektum, minden engedélyt https-kapcsolaton keresztül és a megadott kezdő és záró dátuma
+- A KeyVault által felügyelt tárolási SAS-definíciója beállítja a tárolóban, a sablon URI-N napig fent, SAS típusa "account", és érvényes létrehozott SAS-token
+- A tényleges hozzáférési jogkivonat lekéri a KeyVault titkos kulcsnak megfelelő az SAS-definíciója
+
+1. Ebben a lépésben hozunk létre egy SAS-definíciója. Miután létrejött az SAS-definíciója, megkérheti a Key Vault további SAS-jogkivonatok létrehozásához meg. Ez a művelet a tárolás/setsas engedélyre van szüksége.
+
+```
+$sastoken = az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-types sco --services bfqt --https-only --account-name storageacct --account-key 00000000
+```
+Láthatja, hogy a fenti művelettel kapcsolatos további segítségért [Itt](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas)
+
+Ha ez a művelet sikeresen lefutott, lent látható módon a hasonló kimenetnek kell megjelennie. Másolja ki, amely
+
+```console
+   "se=2020-01-01&sp=***"
+```
+
+2. Ebben a lépésben használjuk az előállított kimeneti adatokat ($sasToken) feletti hozzon létre egy SAS-definíciót. További dokumentáció olvasási [Itt](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)   
+
+```
+az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
+```
+                        
+
  > [!NOTE] 
  > Abban az esetben, hogy a felhasználó nem rendelkezik engedélyekkel a tárfiók először lekérjük a felhasználó objektumazonosítóját
-
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
@@ -96,11 +134,11 @@ Az az alábbi utasítások végrehajtásával, hogy társítja az Key Vault enge
     
     ```
     
-## <a name="how-to-access-your-storage-account-with-sas-tokens"></a>A tárfiók SAS-tokeneket elérése
+## <a name="fetch-sas-tokens-in-code"></a>SAS-tokeneket kód beolvasása
 
 Ebben a szakaszban ismertetjük, hogyan elvégezhető műveletek a tárfiók a beolvasása [SAS-tokeneket](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) a Key Vaultból
 
-Az az alábbi szakaszban bemutatjuk, hogyan beolvasni a tárfiókkulcsot a Key Vaultban tárolt, és az, hogy a tárfiók SAS (közös hozzáférésű Jogosultságkód) definíciójának létrehozása.
+Az az alábbi szakaszban bemutatjuk, hogyan SAS-tokeneket beolvasni egy SAS-definíciója, ahogyan fentebb létrehozása után.
 
 > [!NOTE] 
   Hitelesítés a Key Vaultba, mert olvashat 3 módon a [alapvető fogalmai](key-vault-whatis.md#basic-concepts)

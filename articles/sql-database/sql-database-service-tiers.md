@@ -12,19 +12,19 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e0455ef99016fe1029f17256a6dbf5d9bbd8aa4d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 3e4e9d9fb3b7e9a66ec3522e046bdca1ecad98c9
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890569"
+ms.locfileid: "55965086"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Az Azure SQL Database vásárlási modellek
 
 Az Azure SQL Database lehetővé teszi, hogy teljes körűen felügyelt PaaS adatbázismotor, válassza ki a teljesítménnyel és költségekkel igényeinek megfelelő könnyű vásárlás. Az Azure SQL Database üzembe helyezési modelltől, függően válassza ki a vásárlási modell, amely a legjobban az igényeinek:
 
 - [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) (ajánlott), amely lehetővé teszi, hogy válassza ki a tárolási kapacitás pontos mennyisége és a számítási, hogy a számítási feladathoz szükséges.
-- [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) elosztott terhelésű gyakori munkaterhelés például a számítás és tárolás csomagok adja meg a csomagokban.
+- [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) adja meg a csomagokban a leggyakoribb munkaterhelésekhez elosztott terhelésű számítási és tárolási csomagokat.
 
 Az Azure SQL Database üzemi modellekben található különböző vásárlási modell érhetők el:
 
@@ -39,10 +39,20 @@ Az alábbi táblázatos és hasonlítsa össze két vásárlási modell.
 |**Beszerzési modell**|**Leírás**|**A legjobb**|
 |---|---|---|
 |DTU-alapú modell|Ez a modell csomagolt méri, számítási, tárolási és i/o-erőforrások alapján. A számítási méret az önálló adatbázisok adatbázis-tranzakciós egységek (dtu-k) és a rugalmas Database Transaction Unitok (Edtu) rugalmas készletek vannak kifejezve. További információ a dtu-król és Edtu-: [Mik a dtu-król és edtu-k?](sql-database-service-tiers.md#dtu-based-purchasing-model).|A legjobb erőforrás egyszerű, előre konfigurált beállítások használni.|
-|vCore-alapú modell|Ez a modell lehetővé teszi a számítási és tárolási erőforrások egymástól függetlenül kiválasztását. Lehetővé teszi az SQL Server Azure Hybrid Benefit használatával költséget takaríthat meg.|Legjobb ügyfelek esetében, akik a rugalmasságot, a szabályozhatóság, és értékét.|
+|vCore-alapú modell|Ez a modell lehetővé teszi a számítási és tárolási erőforrások egymástól függetlenül kiválasztását. A Virtuálismag-alapú vásárlási modell azt is lehetővé teszi, hogy [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) költségmegtakarítást biztosítanak.|Legjobb ügyfelek esetében, akik a rugalmasságot, a szabályozhatóság, és értékét.|
 ||||  
 
 ![díjszabási modell](./media/sql-database-service-tiers/pricing-model.png)
+
+## <a name="compute-costs"></a>Számítási költségeit
+
+A számítási költségeket tükrözi az összes számítási kapacitás, amely ki van építve az alkalmazás. Az üzleti kritikus szolgáltatási rétegben hogy automatikusan lefoglalni a legalább 3 replika. A számítási erőforrások a további lefoglalási megfelelően, a 2.7 x nagyobb az üzleti kritikus szolgáltatási rétegben, mint az általános célú szolgáltatásszinten lévő szolgáltatás díja az a Virtuálismag-alapú vásárlási modell. Ugyanezen okból, a magasabb tárolási a GB-onkénti ár a kritikus fontosságú üzleti szolgáltatásszint tükrözi a a nagy i/o közel az SSD-tárhelyet. Egy időben a költség, a biztonsági mentési tár nem áll két szolgáltatási szintek között különböző mert mindkét esetben a standard szintű tárterülettel osztály használjuk.
+
+## <a name="storage-costs"></a>Tárolási költségek
+
+Különböző típusú tárolóhelyek eltérően számítjuk fel. Az adattárolás díjkötelesek a felhasznált tárterület alapján választja maximális adatbázis vagy készlet méretét. Díja nem változik, kivéve, ha csökkentse vagy növelje a legnagyobb. Biztonsági mentési tár a példány automatizált biztonsági mentések társított, és dinamikusan le van foglalva. A biztonsági másolatok megőrzési időszakának kiterjesztésével a példány által felhasznált biztonsági mentési tárterület is nő. A kiszolgáló kiépített tárolója 100%-ának megfelelő biztonsági mentési tár díjmentesen használható. További használati a biztonsági mentési tár díjszabásának GB / hó. Ha például az adatbázistárhelye 100 GB, 100 GB biztonsági mentési tárhelyet kap díjmentesen. De ha a biztonsági mentés mérete 110 GB, 10 GB Többletméretért fizetnie.
+
+Biztonságimásolat-tároláshoz egyetlen adatbázis a számlázás a tárolóhoz az adatbázis biztonsági mentéséhez az adatbázis mérete csökkentve lett lefoglalva arányos alapon. A biztonsági mentési tár egy rugalmas készlet a számlázás a arányos alapon, az adatbázis biztonsági másolatait a rugalmas készlet adatok maximális mérete csökkentve a készletben található összes adatbázishoz lefoglalt tárolására. Azokat az adatbázis mérete vagy a rugalmas készlet növekedése, illetve a tranzakciós sebesség növekedése több tárhelyet igényel, és így növeli a biztonsági mentési tár számlázási.  Ha növeli a maximális adatméret, ez a mennyiség vonni számlázott biztonsági másolati tárhely méretét.
 
 ## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
@@ -97,6 +107,22 @@ Ha meg szeretne áttelepítést végezni egy meglévő helyszíni vagy SQL Serve
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Számítási feladatok, amelyek rugalmas készletek az erőforrások
 
 A készleteket nagy számú, speciális felhasználási mintákkal rendelkező adatbázishoz tervezték. Egy adott adatbázis esetében ez a minta egy viszonylag rendszertelen kiugró kihasználtság jellemzi az alacsony kihasználtságú átlagos jellemzi. Az SQL Database automatikusan kiértékeli az SQL Database-kiszolgálók adatbázisainak erőforrás-használati előzményeit, és felajánlja a megfelelő készletkonfigurációt az Azure Portalon. További információkért lásd: [Mikor érdemes rugalmas készletet használni?](sql-database-elastic-pool.md)
+
+## <a name="service-tier-frequently-asked-questions-faq"></a>Szolgáltatásszint – gyakori kérdések (GYIK)
+
+### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Kell az alkalmazásom átalakítása a Virtuálismag-alapú szolgáltatási szinten a DTU-alapú adatbázis
+
+Az új szolgáltatáscsomagok egyszerű online konverziós módszert kínálnak, amely hasonló az adatbázisok Standardról Premium szolgáltatáscsomagra és vissza történő átállításának jelenlegi eljárásához. Ez a konverzió használatával indítható el az Azure portal, PowerShell, Azure CLI-vel, a T-SQL vagy a REST API-t. Lásd: [önálló adatbázisok kezelése](sql-database-single-database-scale.md) és [rugalmas készletek kezelése](sql-database-elastic-pool.md).
+
+### <a name="can-i-convert-a-database-from-a-vcore-based-service-tier-to-a-dtu-based-one"></a>Átválthatók egy adatbázist a Virtuálismag-alapú szolgáltatási szinten a DTU-alapú egy
+
+Az adatbázis Igen, minden támogatott teljesítmény célja az Azure portal, PowerShell, Azure CLI-vel, a T-SQL vagy a REST API használatával könnyedén átalakíthatja. Lásd: [önálló adatbázisok kezelése](sql-database-single-database-scale.md) és [rugalmas készletek kezelése](sql-database-elastic-pool.md).
+
+### <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>Frissítse és Visszaléptetés az általános célú és az üzletileg kritikus szolgáltatási csomagok között
+
+Igen, bizonyos korlátozásokkal. A cél Termékváltozat meg kell felelnie az adatbázis maximális vagy a rugalmas készlet mérete, a meglévő üzembe helyezési beállított. Ha használ [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/), üzletileg kritikus fontosságú Termékváltozatoknál csak Enterprise Edition-licencek rendelkező ügyfelek számára érhető el. Csak olyan ügyfelek, akik át a helyszínről az Azure Hybrid Benefit használatával az SQL Server Enterprise Edition-licencek az általános célú szolgáltatásszint frissítheti az üzleti kritikus fontosságú szolgáltatási szint. További részletekért lásd: [Mik az Azure Hybrid Benefit SQL Serverhez, a megfelelő jogosultságok](https://azure.microsoft.com/pricing/hybrid-benefit/)?
+
+Ez a konverzió nem okoz állásidőt, és az Azure portal, PowerShell, Azure CLI-vel, a T-SQL vagy a REST API használatával indítható el. Lásd: [önálló adatbázisok kezelése](sql-database-single-database-scale.md) és [rugalmas készletek kezelése](sql-database-elastic-pool.md).
 
 ## <a name="next-steps"></a>További lépések
 

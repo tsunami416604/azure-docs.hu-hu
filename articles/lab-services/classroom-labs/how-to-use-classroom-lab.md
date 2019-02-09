@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 8ea1afbfb90a55ec1c34f5c59cf38ea5417118ff
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 387e59eccc7dd9b20142bd692a1fe361435d3d57
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390898"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965018"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Hozzáférés osztályterem-tesztkörnyezethez az Azure Lab Servicesben
 Ez a cikk bemutatja, hogyan férhet hozzá az osztályterem-tesztkörnyezetekhez, hogyan csatlakozhat a tesztkörnyezetben található virtuális gépekhez, és hogyan állíthatja le a virtuális gépeket. 
@@ -44,10 +44,8 @@ Miután regisztrálta a labs, az osztályterem-tesztkörnyezetek tekintheti meg 
 
 ## <a name="connect-to-the-virtual-machine-in-a-classroom-lab"></a>Csatlakozás virtuális géphez osztályterem-tesztkörnyezetben
 
-1. A virtuális gép Ha még nem indult el, válassza ki a kezdési **Start**.
+1. A virtuális gép Ha még nem indult el, válassza ki a kezdési **Start** a csempére. 
 2. Válassza a **Csatlakozás** elemet azon a csempén, amely annak a tesztkörnyezetnek a virtuális gépét jelöli, amelyhez hozzá szeretne férni. 
-
-    ![Összes tesztkörnyezet megtekintése](../media/how-to-use-classroom-lab/connect-button.png)
 3. Mentse az RDP-fájlt (a Windows VM-EK) a merevlemezen, és nyissa meg. 
 4. Adja meg a **felhasználónevet** és **jelszót**, amelyet az oktatótól/tanártól kapott a gépbe való bejelentkezéshez. 
 

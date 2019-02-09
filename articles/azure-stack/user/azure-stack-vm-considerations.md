@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/19/2018
-ms.openlocfilehash: 421e3bf4465f5aa9aafc4ad666af2178faedb7c3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 112e9aa023fb29bd960b61139861db4007c61b4d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245958"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962247"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Szempontok a virtuális gépek az Azure Stackben
 
@@ -41,8 +41,9 @@ Az Azure Stack virtuális gépek igény szerinti, méretezhető számítási er�
 | Virtuális gépek lemezek teljesítménye | Függ a lemez típusát és méretét. | Virtuális gép, a lemezek vannak csatolva a virtuális gép méretétől függ, tekintse meg a [virtuális gépek méretei az Azure Stackben támogatott](azure-stack-vm-sizes.md) cikk.
 | API-verziók | Az Azure mindig a legújabb API-verziók a virtuális gép minden funkció esetén rendelkezik. | Az Azure Stack konkrét Azure-szolgáltatás és az adott API-verziók támogatja ezeket a szolgáltatásokat. Ha szeretné megtekinteni a támogatott API-verziók listáját, tekintse meg a [API-verziók](#api-versions) című szakaszát. |
 | Az Azure Instance Metadata szolgáltatás | Az Azure Instance Metadata szolgáltatás fut, amelyek segítségével kezelheti és konfigurálhatja a virtuális gépek virtuálisgép-példányok információkat biztosít.  | A Instance metadata szolgáltatás nem támogatott az Azure Stacken. |
-|Virtuális gép rendelkezésre állási csoportok|Több tartalék tartomány (2 vagy 3 régiónként)<br>Több frissítési tartomány<br>Felügyelt lemezek támogatása|Több tartalék tartomány (2 vagy 3 régiónként)<br>(Legfeljebb 20) több frissítési tartomány<br>Nem felügyelt lemezes támogatás|
-|Virtuálisgép-méretezési csoportok|Az automatikus méretezés támogatott|Az automatikus méretezés nem támogatott.<br>További példányok hozzáadása egy méretezési csoportot a portálon, a Resource Manager-sablonok vagy a PowerShell használatával.
+| Virtuális gép rendelkezésre állási csoportok|Több tartalék tartomány (2 vagy 3 régiónként)<br>Több frissítési tartomány|Több tartalék tartomány (2 vagy 3 régiónként)<br>(Legfeljebb 20) több frissítési tartomány|
+| Virtuálisgép-méretezési csoportok|Az automatikus méretezés támogatott|Az automatikus méretezés nem támogatott.<br>További példányok hozzáadása egy méretezési csoportot a portálon, a Resource Manager-sablonok vagy a PowerShell használatával. |
+| Virtuálisgép-diagnosztika | Linux Virtuálisgép-diagnosztika | Linux rendszerű virtuális gép diagnosztikai nem támogatottak az Azure Stackben. A Virtuálisgép-diagnosztika engedélyezve van egy Linux rendszerű virtuális Gépet helyez üzembe, a központi telepítés sikertelen lesz. Az üzembe helyezés akkor is sikertelen, ha engedélyezi a Linux rendszerű virtuális gép alapvető metrikák diagnosztikai beállításokon keresztül.
 
 ## <a name="virtual-machine-sizes"></a>Virtuálisgép-méretek
 
@@ -71,7 +72,7 @@ Virtuálisgép-méretek és a társított erőforrás mennyiségek konzisztensek
 
 ## <a name="virtual-machine-extensions"></a>Virtuálisgép-bővítmények
 
- Az Azure Stack bővítmények egy kis készletét tartalmazza. Frissítések és a további kiterjesztések tartalomtípus-gyűjtési Marketplace-en keresztül érhető el.
+Az Azure Stack bővítmények egy kis készletét tartalmazza. Frissítések és a további kiterjesztések tartalomtípus-gyűjtési Marketplace-en keresztül érhető el.
 
 A következő PowerShell-parancsfájl használatával érhetők el az Azure Stack környezettel virtuálisgép-bővítmények listájának beolvasása:
 
@@ -82,6 +83,8 @@ Get-AzureRmVmImagePublisher -Location local | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
+
+Egy virtuális gép üzembe helyezése a bővítmény kiépítési túl hosszú időt vesz igénybe, ha lehetővé teszik az üzembe helyezési időtúllépés helyett fel, vagy törölje a virtuális Gépet, a folyamat leállítása érdekében.
 
 ## <a name="api-versions"></a>API-verziók
 

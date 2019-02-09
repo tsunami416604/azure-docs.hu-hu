@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 33bab4b66532a4cdcbd33c2f8594476d07985f4b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 88efa25e09cf6034e9320569358488d9aebb7ad6
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096942"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958439"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: Hozzon létre egy új bérlőt az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) portált használva elvégezheti valamennyi felügyeleti feladatát, a szervezet számára új bérlő létrehozását is beleértve. 
@@ -34,7 +34,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/) globális rendsz
 Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szervezet számára. Az új bérlő a szervezetét képviseli és segíti a Microsoft felhőszolgáltatások konkrét példányának kezelését a belső és külső felhasználók számára.
 
 ### <a name="to-create-a-new-tenant"></a>Új bérlő létrehozása
-1. Válassza ki az **Azure Active Directoryt**, jelölje be az **Erőforrás létrehozást**, az **Identitást**, majd válassza ki az **Azure Active Directoryt**.
+1. Válassza ki **erőforrás létrehozása**válassza **identitás**, majd válassza ki **Azure Active Directory**.
 
     Megjelenik a **Címtár létrehozása** lap.
 

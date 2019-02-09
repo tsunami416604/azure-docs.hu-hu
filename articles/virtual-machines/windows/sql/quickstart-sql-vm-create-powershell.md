@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e79b85a2dd47706ca83b6cbc2c59100b05574fab
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 24dfc9602f7329b4ea56db2257f29f5711510d22
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425560"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977796"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Gyors útmutató: SQL Servert futtató, Windows rendszerű virtuális gép létrehozása az Azure PowerShell használatával
 
@@ -38,14 +38,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a id="powershell"></a> Az Azure PowerShell beszerzése
 
-Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket.
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ## <a name="configure-powershell"></a>A PowerShell konfigurálása
 
-1. Nyissa meg a PowerShellt, és állítsa be az Azure-fiókja elérését a **Connect-AzureRmAccount** parancs futtatásával.
+1. Nyissa meg a Powershellt, és állítsa be az Azure-fiókja elérését futtatásával a **Connect-AzAccount** parancsot.
 
    ```PowerShell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
 1. Megjelenik egy képernyő, amely a hitelesítő adatainak megadását. Használja ugyanazt az e-mail-címet és jelszót, amelyet az Azure Portalra való bejelentkezéshez használ.
@@ -67,7 +67,7 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verzi�
 1. Hozza létre az erőforráscsoportot.
 
    ```PowerShell
-   New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+   New-AzResourceGroup -Name $ResourceGroupName -Location $Location
    ```
 
 ## <a name="configure-network-settings"></a>A hálózati beállítások konfigurálása
@@ -80,14 +80,14 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verzi�
    $PipName = $ResourceGroupName + $(Get-Random)
 
    # Create a subnet configuration
-   $SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix 192.168.1.0/24
+   $SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix 192.168.1.0/24
 
    # Create a virtual network
-   $Vnet = New-AzureRmVirtualNetwork -ResourceGroupName $ResourceGroupName -Location $Location `
+   $Vnet = New-AzVirtualNetwork -ResourceGroupName $ResourceGroupName -Location $Location `
       -Name $VnetName -AddressPrefix 192.168.0.0/16 -Subnet $SubnetConfig
 
    # Create a public IP address and specify a DNS name
-   $Pip = New-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName -Location $Location `
+   $Pip = New-AzPublicIpAddress -ResourceGroupName $ResourceGroupName -Location $Location `
       -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name $PipName
    ```
 
@@ -95,18 +95,18 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verzi�
 
    ```PowerShell
    # Rule to allow remote desktop (RDP)
-   $NsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
+   $NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
       -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
 
    #Rule to allow SQL Server connections on port 1433
-   $NsgRuleSQL = New-AzureRmNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp `
+   $NsgRuleSQL = New-AzNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp `
       -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 1433 -Access Allow
 
    # Create the network security group
    $NsgName = $ResourceGroupName + "nsg"
-   $Nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName `
+   $Nsg = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroupName `
       -Location $Location -Name $NsgName `
       -SecurityRules $NsgRuleRDP,$NsgRuleSQL
    ```
@@ -115,7 +115,7 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verzi�
 
    ```PowerShell
    $InterfaceName = $ResourceGroupName + "int"
-   $Interface = New-AzureRmNetworkInterface -Name $InterfaceName `
+   $Interface = New-AzNetworkInterface -Name $InterfaceName `
       -ResourceGroupName $ResourceGroupName -Location $Location `
       -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $Pip.Id `
       -NetworkSecurityGroupId $Nsg.Id
@@ -137,13 +137,13 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verzi�
    ```PowerShell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
-   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
-      Set-AzureRmVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
-      Set-AzureRmVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
-      Add-AzureRmVMNetworkInterface -Id $Interface.Id
+   $VMConfig = New-AzVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
+      Set-AzVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
+      Set-AzVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
+      Add-AzVMNetworkInterface -Id $Interface.Id
    
    # Create the VM
-   New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VMConfig
+   New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VMConfig
    ```
 
    > [!TIP]
@@ -154,7 +154,7 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verzi�
 A portál integrációjához és az SQL virtuálisgép-funkciókhoz telepíteni kell az [SQL Server IaaS-ügynök bővítményt](virtual-machines-windows-sql-server-agent-extension.md). Telepítse az ügynököt az új virtuális gép, futtassa a következő parancsot a virtuális gép létrehozása után.
 
    ```PowerShell
-   Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
    ```
 
 ## <a name="remote-desktop-into-the-vm"></a>Távoli asztal a virtuális gépen
@@ -162,7 +162,7 @@ A portál integrációjához és az SQL virtuálisgép-funkciókhoz telepíteni 
 1. Használja a következő parancsot az új virtuális gép nyilvános IP-cím lekéréséhez.
 
    ```PowerShell
-   Get-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
+   Get-AzPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
 1. A visszaadott IP-címet adja át a parancssori paramétereként **mstsc** , indítson el egy távoli asztali munkamenetet az új virtuális gépen.
@@ -186,10 +186,10 @@ Most már csatlakozott az SQL Server helyi. Ha távolról kapcsolódni szeretne,
 Ha már nincs szüksége a virtuális gép folyamatosan fusson, a szükségtelen díjak elkerüléséhez leállításával, amikor nincs használatban. A következő parancs leállítja a virtuális gépet, de elérhető állapotban hagyja későbbi használat céljából.
 
 ```PowerShell
-Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
+Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-Emellett véglegesen is törölheti a virtuális géppel társított erőforrásokat a **Remove-AzureRmResourceGroup** paranccsal. Ezzel véglegesen törli a virtuális gépet is, ezért ezt a parancsot körültekintően.
+A virtuális géppel társított összes erőforrás véglegesen is törölheti a **Remove-AzResourceGroup** parancsot. Ezzel véglegesen törli a virtuális gépet is, ezért ezt a parancsot körültekintően.
 
 ## <a name="next-steps"></a>További lépések
 

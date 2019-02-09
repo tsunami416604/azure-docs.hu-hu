@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: c223b55e8854c9d304354d917e07f4dd7720e72c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: aa9f3b42bbbe8255be328240d26ed4b8740cc5f7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507810"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958490"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Az Azure SQL adatbázis Premium RS szolgáltatási szint (előzetes verzió) kivezetjük - áttelepítési lehetőségek
 
@@ -50,8 +50,8 @@ A nagy számítási igényű a prémium RS számítási feladatokhoz javasoljuk,
 
 |**Ha jelenleg...**|**Át összehasonlítható Virtuálismag-alapú...**|**Át összehasonlítható DTU-alapú...**|
 |---|---|---|
-|1 prémium RS|Általános célú 1 virtuális mag (4. generációs)|Standard 3|
-|2. prémium RS|Általános célú, 2 virtuális mag (4. generációs)|Standard 4|
+|1 prémium RS|Általános célú 1 virtuális mag (Gen4)|Standard 3|
+|2. prémium RS|Általános célú, 2 virtuális mag (Gen4)|Standard 4|
 |Prémium RS 4|Általános célú, 4 virtuális magra jogosult (Gen4)|Standard 6|
 |Prémium RS 6|Általános célú 6 virtuális magra jogosult (Gen4)|Standard 7|
 
@@ -59,8 +59,8 @@ A nagy számítási igényű a prémium RS számítási feladatokhoz javasoljuk,
 
 |**Ha jelenleg...**|**Át összehasonlítható Virtuálismag-alapú...**|**Át összehasonlítható DTU-alapú...**|
 |---|---|---|
-|Prémium RS tárolókészlet 125 dtu-k|Általános célú 1 virtuális mag (4. generációs)|Standard készlet 100 edtu-k|
-|Prémium RS tárolókészlet 250 dtu-k|Általános célú, 2 virtuális mag (4. generációs)|250 standard készlet edtu-k|
+|Prémium RS tárolókészlet 125 dtu-k|Általános célú 1 virtuális mag (Gen4)|Standard készlet 100 edtu-k|
+|Prémium RS tárolókészlet 250 dtu-k|Általános célú, 2 virtuális mag (Gen4)|250 standard készlet edtu-k|
 |Prémium RS erőforráskészlet 500 dtu-k|Általános célú, 4 virtuális magra jogosult (Gen4)|Standard készlet 500 edtu-k|
 |Prémium RS erőforráskészlet 1000 dtu-k|Általános célú, 8 virtuális maggal (Gen4)|Standard készlet 1000 edtu-k|
 
@@ -70,10 +70,10 @@ Azt javasoljuk, hogy az i/o-igényes egyetlen adatbázisok migrálását a Virtu
 
 |**Ha jelenleg...**|**Át összehasonlítható Virtuálismag-alapú...**|**Át összehasonlítható DTU-alapú...**|
 |---|---|---|
-|1 prémium RS|(Előzetes verzió) Nagy kapacitású 1 virtuális mag (4. generációs) vagy a kritikus fontosságú üzleti-1 virtuális mag (4. generációs)|1 prémium|
-|2. prémium RS|(Előzetes verzió) Nagy kapacitású 2 virtuális mag (4. generációs) vagy üzleti kritikus 2 virtuális mag (4. generációs|Premium 2|
-|Prémium RS 4|(Előzetes verzió) Nagy kapacitású 4 virtuális magra jogosult (4. generációs) vagy üzleti kritikus 4 virtuális magra jogosult (Gen4)|Prémium szintű 4
-|Prémium RS 6|(Előzetes verzió) Nagy kapacitású 6 virtuális magra jogosult (4. generációs) vagy a kritikus fontosságú üzleti-6 virtuális magra jogosult (Gen4)|Prémium szintű 6|
+|1 prémium RS|(Előzetes verzió) Nagy kapacitású 1 virtuális mag (Gen4) vagy a kritikus fontosságú üzleti-1 virtuális mag (Gen4)|1 prémium|
+|2. prémium RS|(Előzetes verzió) Nagy kapacitású 2 virtuális mag (Gen4) vagy üzleti kritikus 2 virtuális mag (Gen4|Premium 2|
+|Prémium RS 4|(Előzetes verzió) Nagy kapacitású 4 virtuális magra jogosult (Gen4) vagy üzleti kritikus 4 virtuális magra jogosult (Gen4)|Prémium szintű 4
+|Prémium RS 6|(Előzetes verzió) Nagy kapacitású 6 virtuális magra jogosult (Gen4) vagy a kritikus fontosságú üzleti-6 virtuális magra jogosult (Gen4)|Prémium szintű 6|
 
 |**Ha jelenleg...**|**Át összehasonlítható Virtuálismag-alapú...**|**Át összehasonlítható DTU-alapú...**|
 |---|---|---|

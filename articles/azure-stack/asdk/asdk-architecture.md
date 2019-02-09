@@ -12,24 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 01/21/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2cee4d75a111f56012782228d8070bb728720aca
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9157acc7517aea56f087a3dbff0fe7114f8b4c87
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238338"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958805"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>A Microsoft Azure Stack Development Kit architektúrája
-Az Azure Stack Development Kit (ASDK) egy egy csomópontos üzembe helyezhető Azure Stacket. Minden az összetevő telepítve van az önálló gazdagépen futó virtuális gépek. 
+Az Azure Stack Development Kit (ASDK) az egyetlen csomópontos üzemelő példánya egy egyetlen számítógépen futó Azure Stack. Peremhálózati útválasztó compontents a NAT- és VPN-képességeket biztosít az Azure Stack gazdagépen van telepítve. Az Azure Stack infrastruktúra-szerepkörök futtatása a Hyper-V réteget a fizikai gazdaszámítógépen.
 
-## <a name="logical-architecture-diagram"></a>Logikai architektúra ábrája
-A következő ábra szemlélteti a ASDK és összetevői a logikai architektúrát.
-
-![ASDK architektúra](media/asdk-architecture/image1.png)
 
 ## <a name="virtual-machine-roles"></a>Virtuálisgép-szerepkörök
 A ASDK használatával a következő virtuális gépek a development kit gazdagépen futó szolgáltatásokat nyújtja:
@@ -38,7 +34,6 @@ A ASDK használatával a következő virtuális gépek a development kit gazdag�
 | ----- | ----- |
 | **AzS-ACS01** | Az Azure Stack-tárolási szolgáltatások.|
 | **AzS-ADFS01** | Active Directory összevonási szolgáltatások (ADFS).  |
-| **AzS-BGPNAT01** | Útválasztó él, és a NAT- és VPN-képességeket biztosít az Azure Stackhez. |
 | **AzS-CA01** | A tanúsítványszolgáltatás a szerepkör-szolgáltatások az Azure Stack szolgáltató szolgáltatásaival.|
 | **AzS-DC01** | A Microsoft Azure Stackhez az Active Directory, DNS és DHCP szolgáltatások.|
 | **AzS-ERCS01** | Vészhelyzeti helyreállítási konzol virtuális Gépet. |

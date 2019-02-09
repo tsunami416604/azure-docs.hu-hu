@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 2/4/2019
+ms.date: 2/8/2019
 ms.author: moderakh
-ms.openlocfilehash: 31683159f96dd87fe4e7ceea050d5e1d213decba
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 88fcfec903dac9d939d658e5d06a51ab8ff1aba9
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770350"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979173"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Aszinkron Java az Azure Cosmos DB SQL API-hoz készült SDK: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -43,6 +43,12 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 | **Minimális támogatott futtatókörnyezet**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+* Közvetlen általánosan elérhető
+* Támogatás hozzáadva a QueryMetrics.
+* Az API-kat, amelynek sorrend fontos, hogy fogadják el java.util.List java.util.Collection elfogadásával módosítani.
+  Most már ConnectionPolicy#getPreferredLocations() JsonSerialization és PartitionKey(.) listában fogadja el.
 
 ### <a name="a-name240-beta-1240-beta-1"></a><a name="2.4.0-beta-1"/>2.4.0-beta-1
 * Közvetlen támogatása.
@@ -130,6 +136,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |2019. február 8.|--- |
 | [2.4.0-beta-1](#2.4.0-beta-1) |2019. február 4.|--- |
 | [2.3.1](#2.3.1) |2019. január 15.|--- |
 | [2.3.0](#2.3.0) |2018. november 29.|--- |

@@ -10,12 +10,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: A cosmos DB, nyissa meg a Service Brokert, az Open Service Broker for Azure
-ms.openlocfilehash: 04b513de1d47749bb87b7aaf79839389ab4d7290
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 3146d11f33809391d93305d63bad757ed281fb70
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082516"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977015"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrálható meglévő MongoDB-alkalmazások Azure Cosmos DB API a mongodb-hez és az Open Service Broker for Azure (OSBA)
 
@@ -208,7 +208,7 @@ Ez a parancs létrehoz összetevők, beleértve egy *diagramok /* mappát, amely
 
 Hozzon létre egy fájlt a projekt neve gyökérmappájában *Dockerfile* ezzel a tartalommal:
 
-```dockerfile
+```Dockerfile
 FROM openjdk:8-jdk-alpine
 EXPOSE 8080
 WORKDIR /app

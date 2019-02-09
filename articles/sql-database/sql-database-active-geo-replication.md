@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ae57605b0fb2cba8cdb0c2f9ecfbab8eef7a5197
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 0c574aab722cdce91cd5a2569c14c4f1710483ed
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468274"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965222"
 ---
 # <a name="create-readable-secondary-databases-using-active-geo-replication"></a>Aktív georeplikáció használatával olvasható másodlagos adatbázis létrehozása
 
@@ -46,6 +46,14 @@ Replikáció és a egy önálló adatbázis feladatátvételét, vagy egy kiszol
 A feladatátvételt követően ellenőrizze a hitelesítési követelmények, a kiszolgáló és az adatbázis az új elsődleges. További információkért lásd: [vész-helyreállítása után az SQL Database biztonsági](sql-database-geo-replication-security-config.md).
 
 Aktív georeplikáció kihasználja a [Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technológia az SQL Server replikálása aszinkron módon véglegesített tranzakciók száma, az elsődleges adatbázison egy másodlagos adatbázis-pillanatkép-elkülönítés használatával. Automatikus feladatátvételi csoportok a csoport szemantikát felett aktív georeplikációt biztosít, de az azonos aszinkrón replikációs mechanizmus használatos. Közben lekérdezhet, a másodlagos adatbázis némileg lehet az elsődleges adatbázis mögött, a másodlagos adatok garantáltan soha többé nem kell a részleges tranzakciók. Régiók közötti redundancia lehetővé teszi az alkalmazások gyorsan helyreállíthatók a teljes adatközpont vagy az egy kínai adatközpont természeti katasztrófa, katasztrofális az emberi hibák vagy rosszindulatú jogszabályok által okozott részei végleges adatvesztést. Az adott helyreállítási Időkorlát adatokat tekinthet meg [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
+
+> [!NOTE]
+> Ha két régió között hálózati hiba, így újra létrehozza a kapcsolatokat próbálkozni 10 másodpercenként.
+> [!IMPORTANT]
+> Garantálja, hogy a kritikus változásokat az elsődleges adatbázis egy másodlagos, a feladatátvétel előtt replikálódnak, kényszerítheti a szinkronizálási annak biztosítására, a replikáció kritikus változások (például jelszó frissítések). A kényszerített szinkronizálási mert blokkolja a hívó szálat mindaddig, amíg minden véglegesített tranzakciók replikálva vannak hatással van a teljesítményre. További információkért lásd: [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). A replikációs késés az elsődleges adatbázis és a geo-secondary figyeléséről lásd: [sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
+
+
+
 
 Az alábbi ábra példát mutat be egy aktív georeplikáció által beállított, az elsődleges régióban az USA északi középső Régiójában és a másodlagos régióban az USA déli középső Régiója.
 

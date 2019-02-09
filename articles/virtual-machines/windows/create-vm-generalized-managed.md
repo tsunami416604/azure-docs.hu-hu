@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: c452341567055e0272c8e6a90c43d6b886d6a928
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9157765afaa610d207a47e19b73f80ae3898fd68
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425594"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977558"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Virtuális gép létrehozása felügyelt rendszerképből
 
 Több virtuális gép (VM) az Azure felügyelt virtuális gépből hozhat létre az Azure portal vagy a PowerShell használatával kép. Egy felügyelt Virtuálisgép-rendszerképet a virtuális gép, beleértve az operációs rendszer és az adatlemezek létrehozásához szükséges információkat tartalmazza. A virtuális merevlemezek (VHD) a lemezképet, beleértve az operációsrendszer-lemez és bármely adatlemez alkotó felügyelt lemezként tárolt. 
 
 Egy új virtuális Gépet létrehozni, mielőtt kell [felügyelt Virtuálisgép-lemezkép létrehozása](capture-image-resource.md) forrásaként használandó. 
+
 
 ## <a name="use-the-portal"></a>A portál használata
 
@@ -41,17 +42,17 @@ Egy új virtuális Gépet létrehozni, mielőtt kell [felügyelt Virtuálisgép-
 
 ## <a name="use-powershell"></a>A PowerShell használata
 
-Virtuális gép létrehozása egy rendszerképből az egyszerűsített paraméter beállított használhatja a Powershellt a [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) parancsmagot. A kép kell lennie, amelyeken kíván létrehozni a virtuális gép ugyanabban az erőforráscsoportban.
+Virtuális gép létrehozása egy rendszerképből az egyszerűsített paraméter beállított használhatja a Powershellt a [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmagot. A kép kell lennie, amelyeken kíván létrehozni a virtuális gép ugyanabban az erőforráscsoportban.
 
-Ebben a példában van szükség az AzureRM-modul 5.6.0-s vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket.
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
-Az egyszerűsített paraméterkészlet a [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) csak követeli meg, hogy biztosítson egy név, erőforráscsoport és rendszerkép neve hozhat létre virtuális Gépet egy rendszerképből. Új-AzureRmVm értékét fogja használni a **-név** paraméter az összes olyan erőforrást, amely automatikusan hoz létre nevet. Ebben a példában azt adja meg a részletes nevét az erőforrásokat, de lehetővé teszik a parancsmag automatikus létrehozása. Is létre erőforrásokat előzetesen, például a virtuális hálózathoz, és adja át az erőforrás neve a parancsmagba. Új-AzureRmVm fogja használni a meglévő erőforrások, ha akkor is neve szerint találja.
+Az egyszerűsített paraméterkészlet a [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) csak követeli meg, hogy biztosítson egy név, erőforráscsoport és rendszerkép neve hozhat létre virtuális Gépet egy rendszerképből. Új AzVm értékét fogja használni a **-név** paraméter az összes olyan erőforrást, amely automatikusan hoz létre nevet. Ebben a példában azt adja meg a részletes nevét az erőforrásokat, de lehetővé teszik a parancsmag automatikus létrehozása. Is létre erőforrásokat előzetesen, például a virtuális hálózathoz, és adja át az erőforrás neve a parancsmagba. Új-azvm parancsmag fogja használni a meglévő erőforrások, ha őket a nevük is talál.
 
 A következő példában létrehozunk egy nevű virtuális Gépet *myVMFromImage*, a a *myResourceGroup* erőforráscsoport rendszerkép *myImage*. 
 
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVMfromImage" `
     -ImageName "myImage" `

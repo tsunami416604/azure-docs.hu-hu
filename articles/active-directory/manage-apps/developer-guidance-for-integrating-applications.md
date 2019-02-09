@@ -3,22 +3,21 @@ title: Regisztrálja az alkalmazást, hogy az Azure Active Directory |} A Micros
 description: Az informatikai szakemberek számára írt, ez a cikk útmutatást nyújt a az Azure-alkalmazások integrálása az Active Directoryval.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
-editor: ''
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: barbkess
+ms.author: celested
 ms.custom: seohack1
-ms.openlocfilehash: d307b0f5f855b48d13b3c302a62f154b9df7aa48
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c74ba9529544f44c9656328c7f16c74a536baf7d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155085"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961183"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Az Azure Active Directory-üzleti alkalmazások fejlesztése
 Ez az útmutató áttekintést fejlesztése – üzletági (LoB) alkalmazásokat az Azure Active Directory (AD). A célközönség az Active Directory vagy Office 365 globális rendszergazdái.

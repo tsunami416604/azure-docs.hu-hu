@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: f79db8cdec0aa48ae300aff4c58072fb6afdc932
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 1bd5c63db63bea24e5cf088cf9974233d3535912
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932782"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976470"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Hogyan nyithat meg portokat és végpontokat egy virtuális géphez a PowerShell használatával
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -30,15 +30,15 @@ Hozzon létre egy hálózati biztonsági csoportok és ACL-szabályok kell [tele
 Jelentkezzen be az Azure-fiókjával:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 A következő példákban cserélje le a saját értékeire paraméterek nevei. Példa paraméterneveket foglalt *myResourceGroup*, *myNetworkSecurityGroup*, és *myVnet*.
 
-Hozzon létre egy szabályt az [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig). A következő példában létrehozunk egy nevű szabályt *myNetworkSecurityGroupRule* engedélyezéséhez *tcp* port forgalmát *80-as*:
+Hozzon létre egy szabályt az [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig). A következő példában létrehozunk egy nevű szabályt *myNetworkSecurityGroupRule* engedélyezéséhez *tcp* port forgalmát *80-as*:
 
 ```powershell
-$httprule = New-AzureRmNetworkSecurityRuleConfig `
+$httprule = New-AzNetworkSecurityRuleConfig `
     -Name "myNetworkSecurityGroupRule" `
     -Description "Allow HTTP" `
     -Access "Allow" `
@@ -51,40 +51,40 @@ $httprule = New-AzureRmNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-Ezután hozza létre a hálózati biztonsági csoport [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) és rendelje hozzá az újonnan létrehozott módon HTTP szabály. A következő példában létrehozunk egy hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
+Ezután hozza létre a hálózati biztonsági csoport [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) és rendelje hozzá az újonnan létrehozott módon HTTP szabály. A következő példában létrehozunk egy hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
 
 ```powershell
-$nsg = New-AzureRmNetworkSecurityGroup `
+$nsg = New-AzNetworkSecurityGroup `
     -ResourceGroupName "myResourceGroup" `
     -Location "EastUS" `
     -Name "myNetworkSecurityGroup" `
     -SecurityRules $httprule
 ```
 
-Most tegyük a hálózati biztonsági csoport hozzárendelése egy alhálózathoz. Az alábbi példa hozzárendeli nevű meglévő virtuális hálózat *myVnet* változóként *$vnet* a [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork):
+Most tegyük a hálózati biztonsági csoport hozzárendelése egy alhálózathoz. Az alábbi példa hozzárendeli nevű meglévő virtuális hálózat *myVnet* változóként *$vnet* a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork):
 
 ```powershell
-$vnet = Get-AzureRmVirtualNetwork `
+$vnet = Get-AzVirtualNetwork `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVnet"
 ```
 
-Az alhálózatot, amelyen a hálózati biztonsági csoport társítása [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig). Az alábbi példa hozzárendeli a nevű alhálózat *mySubnet* a hálózati biztonsági csoporttal:
+Az alhálózatot, amelyen a hálózati biztonsági csoport társítása [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig). Az alábbi példa hozzárendeli a nevű alhálózat *mySubnet* a hálózati biztonsági csoporttal:
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}
 
-Set-AzureRmVirtualNetworkSubnetConfig `
+Set-AzVirtualNetworkSubnetConfig `
     -VirtualNetwork $vnet `
     -Name "mySubnet" `
     -AddressPrefix $subnetPrefix.AddressPrefix `
     -NetworkSecurityGroup $nsg
 ```
 
-Végül frissítse a virtuális hálózaton [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) ahhoz, hogy a módosítások érvénybe léptetéséhez:
+Végül frissítse a virtuális hálózaton [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) ahhoz, hogy a módosítások érvénybe léptetéséhez:
 
 ```powershell
-Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
 
 

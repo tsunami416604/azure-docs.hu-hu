@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 02/07/2019
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 0b56451231f1fda4e5bd156d0aded6e84c9c0162
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 8e9cb570f69eb29887f4f904ba7b2b35548f3771
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117452"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965358"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -195,6 +195,63 @@ Amikor Ön [a weblapok konfigurálása az Application Insights](../../azure-moni
 A mintavételi arányt, amely közel 100/N van, ahol N az egész százalékos válassza.  Mintavétel jelenleg nem támogatja a többi értéket.
 
 Ha rögzített mintavételi a kiszolgálón is engedélyezi, az ügyfelek és a kiszolgáló szinkronizálja úgy, hogy a keresési navigálhat kapcsolódó Lapmegtekintések és a kérések között.
+
+## <a name="aspnet-core-sampling"></a>ASP.NET Core Sampling
+
+Adaptív mintavételezés minden ASP.NET Core-alkalmazás alapértelmezés szerint engedélyezve van. Tiltsa le, vagy testre szabható a mintavételi viselkedése.
+
+### <a name="turning-off-adaptive-sampling"></a>Az adaptív mintavételezés kikapcsolásával
+
+Az alapértelmezett mintavételi szolgáltatás letiltható, amikor az Application Insights szolgáltatást, hozzáadjuk a metódusban ```ConfigureServices```révén ```ApplicationInsightsServiceOptions```:
+
+``` c#
+public void ConfigureServices(IServiceCollection services)
+{
+// ...
+
+var aiOptions = new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions();
+aiOptions.EnableAdaptiveSampling = false;
+services.AddApplicationInsightsTelemetry(aiOptions);
+
+//...
+}
+```
+
+A fenti kód mintavételezés funkció letiltja. További testreszabási lehetőségek a mintavétel hozzáadása az alábbi lépésekkel.
+
+### <a name="configure-sampling-settings"></a>Mintavételi beállítások konfigurálása
+
+A bővítmény módszerekkel ```TelemetryProcessorChainBuilder``` mintavételi viselkedésének testreszabása az alább látható módon.
+
+> [!IMPORTANT]
+> Ha ezt a módszert használja, konfigurálja a mintavételi, ellenőrizze, hogy aiOptions.EnableAdaptiveSampling használandó = false; AddApplicationInsightsTelemetry()-beállításokat.
+
+``` c#
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+var configuration = app.ApplicationServices.GetService<TelemetryConfiguration>();
+
+var builder = configuration .TelemetryProcessorChainBuilder;
+// version 2.5.0-beta2 and above should use the following line instead of above. (https://github.com/Microsoft/ApplicationInsights-aspnetcore/blob/develop/CHANGELOG.md#version-250-beta2)
+// var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+
+// Using adaptive sampling
+builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond:10);
+ 
+// OR Using fixed rate sampling   
+double fixedSamplingPercentage = 50;
+builder.UseSampling(fixedSamplingPercentage);
+
+builder.Build();
+
+// ...
+}
+
+```
+
+**Ha a fenti módszerrel mintavétel konfigurálása, ellenőrizze, hogy a használandó ```aiOptions.EnableAdaptiveSampling = false;``` AddApplicationInsightsTelemetry()-beállításokat.**
+
+E nélkül lesz mintavételi kibővíthesse a vezető nem kívánt következményekkel TelemetryProcessor lánc.
 
 ## <a name="fixed-rate-sampling-for-aspnet-and-java-web-sites"></a>Az ASP.NET, Java és a webhelyek rögzített mintavétel
 Rögzített a mintavételezés csökkenti a webkiszolgálót és a böngészők által küldött forgalmat. Ellentétben az adaptív mintavételezés csökkenti gyakorisággal úgy döntött, Ön által rögzített telemetria. Azt is szinkronizálja az ügyfél és kiszolgáló mintavételi úgy, hogy a kapcsolódó elemek megmaradnak – például ha egy lapmegtekintés kifejezést a keresőmezőbe, annak a kapcsolódó kérelem.

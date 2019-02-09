@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3b9de282b95b27a04ac6d182b1045e18e65c5f6
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: e4b737117880393e24fe6ea00223fb0f719be4e4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025905"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980467"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és szolgáltatások Windows
 
@@ -75,12 +75,12 @@ A Windows Vendégügynöke nem rendelkezik a proxykiszolgálón keresztül ügyn
 
 ## <a name="discover-vm-extensions"></a>Fedezze fel a Virtuálisgép-bővítmények
 
-Számos különböző Virtuálisgép-bővítmények Azure virtuális gépekhez való használatra érhetők el. Teljes listájának megtekintéséhez használja [Get-AzureRmVMExtensionImage](/powershell/module/azurerm.compute/get-azurermvmextensionimage). Az alábbi példa felsorolja az összes rendelkezésre álló bővítményeket a *WestUS* helye:
+Az Azure-beli virtuális gépekhez számos különböző virtuális gépi bővítmény érhető el. Teljes listájának megtekintéséhez használja [Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage). Az alábbi példa felsorolja az összes rendelkezésre álló bővítményeket a *WestUS* helye:
 
 ```powershell
-Get-AzureRmVmImagePublisher -Location "WestUS" | `
-Get-AzureRmVMExtensionImageType | `
-Get-AzureRmVMExtensionImage | Select Type, Version
+Get-AzVmImagePublisher -Location "WestUS" | `
+Get-AzVMExtensionImageType | `
+Get-AzVMExtensionImage | Select Type, Version
 ```
 
 ## <a name="run-vm-extensions"></a>Futtassa a Virtuálisgép-bővítmények
@@ -91,10 +91,10 @@ Az alábbi módszerek bővítmény egy meglévő virtuális gép futtatásához 
 
 ### <a name="powershell"></a>PowerShell
 
-Számos PowerShell-parancsok futtatása az egyes bővítmények léteznek. Listájának megtekintéséhez használja a [Get-Command](/powershell/module/microsoft.powershell.core/get-command) és szűrheti a *bővítmény*:
+Számos PowerShell-parancsok futtatása az egyes bővítmények léteznek. Listájának megtekintéséhez használja a [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) és szűrheti a *bővítmény*:
 
 ```powershell
-Get-Command Set-AzureRM*Extension* -Module AzureRM.Compute
+Get-Command Set-Az*Extension* -Module AzureRM.Compute
 ```
 
 Ez biztosítja, hogy a kimenet az alábbihoz hasonló:
@@ -102,25 +102,25 @@ Ez biztosítja, hogy a kimenet az alábbihoz hasonló:
 ```powershell
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Cmdlet          Set-AzureRmVMAccessExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMADDomainExtension                     4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMAEMExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMBackupExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMBginfoExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMChefExtension                         4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMCustomScriptExtension                 4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMDiagnosticsExtension                  4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMDiskEncryptionExtension               4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMDscExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMExtension                             4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVMSqlServerExtension                    4.5.0      AzureRM.Compute
-Cmdlet          Set-AzureRmVmssDiskEncryptionExtension             4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMAccessExtension                       4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMADDomainExtension                     4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMAEMExtension                          4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMBackupExtension                       4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMBginfoExtension                       4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMChefExtension                         4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMCustomScriptExtension                 4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMDiagnosticsExtension                  4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMDiskEncryptionExtension               4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMDscExtension                          4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMExtension                             4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      AzureRM.Compute
+Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      AzureRM.Compute
 ```
 
 Az alábbi példa egy szkript letöltése a GitHub-adattárból a cél virtuális gépre, és futtassa a szkriptet az egyéni szkriptek futtatására szolgáló bővítmény használatával. Az egyéni szkriptek bővítménye további információkért lásd: [egyéni szkriptek bővítményének áttekintése](custom-script-windows.md).
 
 ```powershell
-Set-AzureRmVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
+Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" -Name "myCustomScript" `
     -FileUri "https://raw.githubusercontent.com/neilpeterson/nepeters-azure-templates/master/windows-custom-script-simple/support-scripts/Create-File.ps1" `
     -Run "Create-File.ps1" -Location "West US"
@@ -131,12 +131,12 @@ A következő példában a Virtuálisgép-hozzáférési bővítmény segítség
 ```powershell
 $cred=Get-Credential
 
-Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" `
+Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" `
     -Location WestUS -UserName $cred.GetNetworkCredential().Username `
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-A `Set-AzureRmVMExtension` parancs is használható, bármely Virtuálisgép-bővítmény indítása. További információkért lásd: a [Set-AzureRmVMExtension referencia](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmextension).
+A `Set-AzVMExtension` parancs is használható, bármely Virtuálisgép-bővítmény indítása. További információkért lásd: a [Set-AzVMExtension referencia](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -269,7 +269,7 @@ A kiadók elérhetővé frissítések régiók eltérő időpontokban, így a k�
 #### <a name="listing-extensions-deployed-to-a-vm"></a>Egy virtuális gépre telepített bővítmények listázása
 
 ```powershell
-$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -VMName "myVM"
+$vm = Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM"
 $vm.Extensions | select Publisher, VirtualMachineExtensionType, TypeHandlerVersion
 ```
 
@@ -310,10 +310,10 @@ A legújabb kiadás kisebb hibajavítások lekéréséhez azt javasoljuk, hogy m
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Ha a bővítmény az autoUpgradeMinorVersion van beállítva a virtuális gép azonosítása
 
-Ha a bővítmény lett üzembe helyezve, az "autoUpgradeMinorVersion" láthatja a virtuális gép modellből. Ellenőrzéséhez használja [Get-AzureRmVm](/powershell/module/azurerm.compute/get-azurermvm) , és adja meg az erőforráscsoportot és a virtuális gép neve a következő:
+Ha a bővítmény lett üzembe helyezve, az "autoUpgradeMinorVersion" láthatja a virtuális gép modellből. Ellenőrzéséhez használja [Get-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) , és adja meg az erőforráscsoportot és a virtuális gép neve a következő:
 
 ```powerShell
- $vm = Get-AzureRmVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
+ $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
  $vm.Extensions
 ```
 
@@ -366,10 +366,10 @@ Az alábbi hibaelhárítási lépéseket az összes Virtuálisgép-bővítménye
 
 ### <a name="view-extension-status"></a>Bővítmény állapotának megtekintése
 
-VM-bővítmény virtuális gépek elleni futott, miután a [Get-AzureRmVM ](/powershell/module/azurerm.compute/get-azurermvm) a bővítmény állapotát adja vissza. *[0] részállapotok* azt mutatja, hogy a bővítmény kiépítési sikeres volt, ami azt jelenti, hogy a virtuális gép központi telepítése sikeres azt, de a bővítményt a virtuális gép végrehajtása sikertelen volt, *részállapotok [1]*.
+VM-bővítmény virtuális gépek elleni futott, miután a [Get-azvm parancsmag ](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) a bővítmény állapotát adja vissza. *[0] részállapotok* azt mutatja, hogy a bővítmény kiépítési sikeres volt, ami azt jelenti, hogy a virtuális gép központi telepítése sikeres azt, de a bővítményt a virtuális gép végrehajtása sikertelen volt, *részállapotok [1]*.
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
+Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
 ```
 
 A kimenet hasonlít az alábbi példa kimenetében:
@@ -402,10 +402,10 @@ Bővítmény végrehajtási állapotát az Azure Portalon is található. Egy b�
 
 ### <a name="rerun-vm-extensions"></a>Futtassa újra a Virtuálisgép-bővítmények
 
-Előfordulhat, hogy esetek, amelyben a VM-bővítmény kell újra kell futtatni. Egy bővítmény akkor távolítsa el, majd újbóli a bővítmény-végrehajtási módszerrel tetszőleges futtathatja. Egy bővítmény eltávolításához használja [Remove-AzureRmVMExtension](/powershell/module/AzureRM.Compute/Remove-AzureRmVMExtension) módon:
+Előfordulhat, hogy esetek, amelyben a VM-bővítmény kell újra kell futtatni. Egy bővítmény akkor távolítsa el, majd újbóli a bővítmény-végrehajtási módszerrel tetszőleges futtathatja. Egy bővítmény eltávolításához használja [Remove-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) módon:
 
 ```powershell
-Remove-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"
+Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"
 ```
 
 Valamint eltávolíthatja kiterjesztése az Azure Portalon a következő:

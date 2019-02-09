@@ -11,20 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: d9de6100e3bb7c3cc71a7a251d790df4907be5f2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/07/2019
+ms.openlocfilehash: 01c4bcfcea038f3e69620cdce78719c8c5128faf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820351"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964797"
 ---
 # <a name="sql-database-application-development-overview"></a>Az SQL Database-alapú alkalmazásfejlesztés – áttekintés
 
 Ez a cikk ismerteti az alapvető szempontokat, amelyeket a fejlesztőknek érdemes figyelembe venniük az Azure SQL Database-hez való csatlakozáshoz használt kód írásakor. Ez a cikk az Azure SQL Database (önálló adatbázisok, rugalmas készletek és a felügyelt példánynak) minden üzembehelyezési modell vonatkozik.
 
 > [!TIP]
-> Tekintse meg az első lépések útmutatók [önálló adatbázis](sql-database-single-database-quickstart-guide.md) és [a felügyelt példánynak](sql-database-managed-instance-quickstart-guide.md) Ha szeretné beállítani az Azure SQL Database.
+> Tekintse meg az első lépések útmutatók [önálló adatbázisok](sql-database-single-database-quickstart-guide.md) és [felügyelt példányai](sql-database-managed-instance-quickstart-guide.md) Ha szeretné beállítani az Azure SQL Database.
 >
 
 ## <a name="language-and-platform"></a>Nyelv és platform
@@ -49,14 +49,16 @@ Kerülje a hosszú ideig futó tranzakció, hiszen minden infrastruktúra vagy c
 
 ## <a name="resiliency"></a>Rugalmasság
 
-Azure SQL Database egy felhőalapú szolgáltatás, így várhatóan fordulhat elő átmeneti hibák az alapul szolgáló infrastruktúra vagy a felhőbeli entitás közötti kommunikációt.
-Bár a tranzitív infrastruktúra hibák a rugalmas Azure SQL Database, ezek a hibák befolyásolhatják a kapcsolatot. SQL-adatbázishoz való kapcsolódás során egy átmeneti hiba akkor fordul elő, ha a kódot kell [ismételje meg a hívás](sql-database-connectivity-issues.md). Ajánlott, hogy az újrapróbálkozási logika leállítási logikát használjon, hogy több ügyfél egyidejű újrapróbálkozási kísérlete ne terhelje túl az SQL Database-t. Újrapróbálkozási logika függ a [SQL Database-ügyfélprogramok hibaüzenetei](sql-database-develop-error-messages.md).
+Azure SQL Database egy felhőalapú szolgáltatás, így várhatóan fordulhat elő átmeneti hibák az alapul szolgáló infrastruktúra vagy a felhőbeli entitás közötti kommunikációt. Bár a tranzitív infrastruktúra hibák a rugalmas Azure SQL Database, ezek a hibák befolyásolhatják a kapcsolatot. SQL-adatbázishoz való kapcsolódás során egy átmeneti hiba akkor fordul elő, ha a kódot kell [ismételje meg a hívás](sql-database-connectivity-issues.md). Ajánlott, hogy az újrapróbálkozási logika leállítási logikát használjon, hogy több ügyfél egyidejű újrapróbálkozási kísérlete ne terhelje túl az SQL Database-t. Újrapróbálkozási logika függ a [SQL Database-ügyfélprogramok hibaüzenetei](sql-database-develop-error-messages.md).
+
+Hogyan lehet felkészülni a tervezett karbantartási események az Azure SQL Database kapcsolatos további információkért lásd: [tervezése az Azure SQL Database Azure karbantartási események](sql-database-planned-maintenance.md).
 
 ## <a name="network-considerations"></a>A hálózatokkal kapcsolatos szempontok
 
 - Győződjön meg róla, hogy az ügyfélprogramot futtató számítógép tűzfala engedélyezi a kimenő TCP-kommunikációt az 1433-as porton.  További információ: [Az Azure SQL Database-tűzfalak konfigurálása](sql-database-configure-firewall-settings.md).
 - Ha az ügyfélprogram kapcsolódik az SQL Database-beli virtuális gépen (VM) futtatott, meg kell nyitnia bizonyos portokat a virtuális gépen. További információ: [Az ADO.NET 4.5 és az SQL Database 1433-ason túli](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Az Azure SQL Database-ügyfélkapcsolatok néha a proxyt, és közvetlenül kommunikáljanak az adatbázis. Ekkor válnak fontossá az 1433-astól különböző portok. További információ [Azure SQL Database kapcsolati architektúra](sql-database-connectivity-architecture.md) és [az ADO.NET 4.5 és az SQL Database 1433-Ason túli](sql-database-develop-direct-route-ports-adonet-v12.md).
+- A felügyelt példány hálózati configation, lásd: [felügyelt példányok hálózati konfigurációja](sql-database-howto-managed-instance.md#network-configuration).
 
 ## <a name="next-steps"></a>További lépések
 

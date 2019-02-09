@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: c679d2e6b7dc8998016e79d265f368504d6def3d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f2ba1a6fef944911c0706ca4e71be6a55bc4b16a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038413"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961839"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>Csatlakozás Cosmos-fiókhoz a Studio 3T használata
 
@@ -26,7 +26,7 @@ Ha csatlakozni szeretne egy Cosmos-fiók mongodb-hez készült Azure Cosmos DB A
 ## <a name="create-the-connection-in-studio-3t"></a>A kapcsolat létrehozása ezen a Studio 3T
 A Cosmos-fiók hozzáadása a Studio 3T Csatlakozáskezelő, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Cosmos DB API a MongoDB szakaszban foglaltak konfigurált Cosmos-fiók kapcsolódási adatainak lekérése a [egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása](connect-mongodb-account.md) cikk.
+1. A Cosmos-fiók konfigurálva az Azure Cosmos DB API a mongodb-hez az utasításokat a kapcsolat adatainak lekérése a [egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása](connect-mongodb-account.md) cikk.
 
     ![Képernyőfelvétel a kapcsolati karakterlánc oldaláról](./media/mongodb-mongochef/ConnectionStringBlade.png)
 2. Kattintson a **Connect** a kapcsolat-kezelő megnyitásához kattintson a **új kapcsolat**

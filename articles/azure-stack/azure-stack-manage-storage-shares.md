@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 01/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 97cdae49b4676500e29ac25b12712c94e575e5f8
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819518"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960564"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Az Azure stack-beli tárolási kapacitás kezelése 
 
@@ -91,7 +91,7 @@ Felhő-felelősként minden megosztás tárkapacitása megtekintéséhez haszná
 1. Jelentkezzen be a [felügyeleti portál](https://adminportal.local.azurestack.external).
 2. Válassza ki **minden szolgáltatás** > **tárolási** , ahol megtekintheti a használati adatok fájl megosztási listájának megnyitásához. 
 
-  ![Példa: Tárolófájl-megosztások](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+    ![Példa: Tárolófájl-megosztások](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
   - **TELJES** a teljes területe, amely elérhető a megosztáson (bájt). Ez a terület az adat- és a tárolási szolgáltatások által kezelt metaadat szolgál.
   - **HASZNÁLT** , amennyit a a fájlokat, a bérlői adatok és kapcsolódó metaadatok összes egységek által használt adatok (bájt).

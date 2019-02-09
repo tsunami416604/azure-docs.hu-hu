@@ -7,16 +7,16 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: 027d4a9f93032bfdd0f4cda96df74c92b5679540
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 02ecb3cdec9ddb07bf48dfe77d1ed5fbf07975e0
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251571"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965324"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>A ASDK használata az Azure Stack biztonsági másolat ellenőrzése
 Azure Stack üzembe helyezése és felhasználói erőforrások, például az ajánlatok, tervek, kvóták és az előfizetések kiépítése, után kell [Azure Stack infrastruktúrájának biztonsági mentés engedélyezése](../azure-stack-backup-enable-backup-console.md). Az ütemezés és az infrastruktúra rendszeres biztonsági mentések futtatása biztosítja, hogy infrastruktúra felügyeleti ne legyen adatvesztés a katasztrofális hardver vagy szolgáltatás hibája esetén.
@@ -47,7 +47,7 @@ Az integrált rendszerek üzembe helyezés infrastruktúra biztonsági másolata
 
 
 
-### <a name="cloud-recovery-prerequisites"></a>Felhőbeli helyreállítási Előfeltételek
+### <a name="prereqs"></a>Felhőbeli helyreállítási Előfeltételek
 Mielőtt elkezdené a ASDK helyreállítási üzembe a felhőben, ellenőrizze, hogy a következő információkat:
 
 |Előfeltétel|Leírás|
@@ -80,6 +80,43 @@ A **InstallAzureStackPOC.ps1** parancsfájl felhőbeli helyreállítási indít�
 > [!IMPORTANT]
 > ASDK telepítési pontosan egy hálózati kártya (NIC) támogatja a hálózatkezeléshez. Ha több hálózati adapterrel rendelkezik, győződjön meg arról, hogy csak egy van engedélyezve (és a többi le van tiltva) az üzembe helyezési parancsfájl futtatása előtt.
 
+### <a name="use-the-installer-to-deploy-the-asdk-in-recovery-mode"></a>A telepítő használata a helyreállítási módban ASDK üzembe helyezése
+A jelen szakaszban ismertetett lépések bemutatják, hogyan helyezhet üzembe a grafikus felhasználói felületen (GUI) megadott letöltésével és futtatásával ASDK a **asdk-installer.ps1** PowerShell-parancsfájlt.
+
+> [!NOTE]
+> Az Azure Stack Development Kit telepítő felhasználói felületének, egy nyílt forráskódú szkript alapján a WCF és a PowerShell használatával.
+
+1. Miután a számítógép sikeresen CloudBuilder.vhdx lemezképpel indul el, jelentkezzen be rendszergazdai hitelesítő adatok használatával megadni, ha, [előkészítve a development kit gazdaszámítógép](asdk-prepare-host.md) ASDK telepítéséhez. Ez legyen ugyanaz, mint a development kit gazdagép helyi rendszergazdai hitelesítő adatokkal.
+2. Nyisson meg egy rendszergazda jogú PowerShell-konzolt, és futtassa a  **&lt;rendszermeghajtó betűjele > \AzureStack_Installer\asdk-installer.ps1** PowerShell-parancsfájlt. A parancsfájl most már lehet a CloudBuilder.vhdx kép C:\ meghajtón található. Kattintson a **helyreállítása**.
+
+    ![ASDK szoftvertelepítő parancsfájl](media/asdk-validate-backup/1.PNG) 
+
+3. Adja meg az Azure Active directory-információk (nem kötelező) és a helyi rendszergazda jelszavát a ASDK gazdagépnek az identity provider és a hitelesítő adatok oldalon. Kattintson a **tovább**.
+
+    ![Identitás- és hitelesítő adatok lap](media/asdk-validate-backup/2.PNG) 
+
+4. Válassza ki a hálózati adaptert használják a ASDK gazdaszámítógépet, majd kattintson a **tovább**. Minden más hálózati adapterek letiltjuk ASDK telepítése során. 
+
+    ![Hálózati adapter kapcsolatának](media/asdk-validate-backup/3.PNG) 
+
+5. A hálózati konfiguráció lapon adjon meg érvényes kiszolgálót és a DNS-továbbító IP-címeket. Kattintson a **tovább**.
+
+    ![Hálózati konfiguráció lap](media/asdk-validate-backup/4.PNG) 
+
+6. Ha már ellenőrizte a hálózati kártya tulajdonságai, kattintson az **tovább**. 
+
+    ![Hálózati kártya beállítások ellenőrzése](media/asdk-validate-backup/5.PNG) 
+
+7. Adja meg a szükséges információkat a korábban leírt [előfeltételeknél](#prereqs) a biztonsági mentés beállításai lapon és a felhasználónév és a megosztás eléréséhez használt jelszó. Kattintson a **tovább**: 
+
+   ![Biztonsági mentési beállítások lap](media/asdk-validate-backup/6.PNG) 
+
+8. Tekintse át a telepítési parancsfájl a ASDK az összefoglalás lapon telepítéséhez használható. Kattintson a **telepítés** való központi telepítésének megkezdése. 
+
+    ![Összefoglaló lap](media/asdk-validate-backup/7.PNG) 
+
+
+### <a name="use-powershell-to-deploy-the-asdk-in-recovery-mode"></a>A helyreállítási módban ASDK üzembe helyezése a PowerShell használatával
 Módosítsa a következő PowerShell-parancsokat a környezetben, és futtassa őket a felhőbeli helyreállítási módban ASDK üzembe helyezéséhez:
 
 ```powershell

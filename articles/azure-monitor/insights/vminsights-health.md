@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
+ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 17fdcb4a57379fd11e841715a6908a4a0d280bd9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 67217b63588946782d42b4287cf5f24e29ebe5bd
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891470"
+ms.locfileid: "55961262"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) és az Azure Monitor az Azure virtuális gépek állapotának ismertetése
 Az Azure több szolgáltatást tartalmaz, amelyek külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés területen, de biztosít az Azure-beli virtuális gépeken futó operációs rendszer egy részletes állapota szempontjából nem volt elérhető.  A Log Analytics vagy az Azure Monitor használatával különböző feltételek esetén felügyelheti, amíg nem tervezték őket modellezheti, és az alapvető összetevők állapotát vagy a virtuális gép általános állapotát.  Az Azure virtuális gépek Állapotfigyelő szolgáltatás figyelője proaktív módon figyeli a rendelkezésre állás és a Windows vagy Linux-alapú vendég operációs rendszer, amelyek a legfontosabb összetevők és a kapcsolatok, feltételek, amely meghatározza, hogy miként állapotát, a modell teljesítményét összetevők, és riasztást küld, ha a nem kifogástalan állapot észlelésekor.  
@@ -44,7 +44,7 @@ A virtuális gépek az Azure Monitor konfigurálásával kapcsolatos további in
 >
 >Nincs olyan funkciókat, ma kiadásaiban az állapotfigyelő szolgáltatás Azure monitor-beli virtuális gépek nem regressziós.
 
->Ebből a változásból lesz egy rövid idő alatt a szolgáltatás és az ügyfélállapot-előzmények az egyes megszakítása. A két megközelítés az egészségügyi diagnostics érintett - állapot módosítási előzményeinek alaphelyzetbe állnak, és korábbi állapotára vonatkozó feltételek állapotváltozásait nem lesz elérhető, tekintse át a Állapotváltozási oszlopban található a Health diagnosztika lapot. Ha érdekli a korábbi adatok bármelyik üzleti szempontból alapvető kritikus fontosságú virtuális Gépet, akkor is igénybe vehet a feltételek-állapotadatok és a megfelelő állapotváltozások képernyőkép referenciaként. 
+>Ebből a változásból két megközelítés az egészségügyi diagnostics érintett - állapot módosítási előzményeinek alaphelyzetbe állnak, és korábbi állapotára vonatkozó feltételek állapotváltozásait nem lesz elérhető, tekintse át a Állapotváltozási oszlopban található a Health diagnosztika lapot. Ha érdekli a korábbi adatok bármelyik üzleti szempontból alapvető kritikus fontosságú virtuális Gépet, akkor is igénybe vehet a feltételek-állapotadatok és a megfelelő állapotváltozások képernyőkép referenciaként. 
 
 ## <a name="monitoring-configuration-details"></a>Figyelési konfiguráció részletei
 Ez a rész bemutatja az Azure Windows és Linux rendszerű virtuális gépek figyelése meghatározott alapértelmezett állapotára vonatkozó feltételek. Az összes állapotára vonatkozó feltételek riasztás előre konfigurálva, a nem megfelelő állapotú feltétel teljesülése esetén. 

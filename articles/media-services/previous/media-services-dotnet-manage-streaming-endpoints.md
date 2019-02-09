@@ -1,11 +1,11 @@
 ---
-title: Adatfolyam-végpontokat kezelheti a .NET SDK-val. | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan adatfolyam-végpontokat kezelheti a az Azure-portálon.
+title: .NET SDK-val streamelési végpontok kezelése. | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan streamvégpontok skálázása az Azure portal használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
 writer: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0da34a97-f36c-48d0-8ea2-ec12584a2215
 ms.service: media-services
@@ -13,38 +13,38 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 741eb35c58fb723985a60f6ac071892c02d08412
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: caa2ef878100394fe4bb3282024958bb9dcb46aa
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788318"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977083"
 ---
-# <a name="manage-streaming-endpoints-with-net-sdk"></a>.NET SDK-val adatfolyam-továbbítási végpontok kezelése
+# <a name="manage-streaming-endpoints-with-net-sdk-legacy"></a>Streamvégpontok skálázása .NET SDK-val (örökölt)
 
 >[!NOTE]
->Mindenképpen tekintse át a [áttekintése](media-services-streaming-endpoints-overview.md) cikk. Ezenkívül tekintse át a [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+>Mindenképpen tekintse át a [áttekintése](media-services-streaming-endpoints-overview.md) cikk. Ezenkívül tekintse át a [Streamvégpontok](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
 
-Ebben a cikkben a kód bemutatja, hogyan hajtsa végre a következő feladatokat az Azure Media Services .NET SDK használatával:
+Ebben a cikkben a kódot mutatja be az Azure Media Services .NET SDK használatával a következő feladatokat végezheti el:
 
-- Vizsgálja meg az alapértelmezett streamvégpontból.
-- Új streamvégpont létrehozása/felvétele.
+- Vizsgálja meg az alapértelmezett streamvégpontot.
+- Új streamvégpont létrehozása/felvételéhez.
 
-    Érdemes több adatfolyam-továbbítási végpontok is, ha azt tervezi, hogy a különböző tartalomtovábbító vagy a CDN és a közvetlen hozzáférést.
+    Előfordulhat, hogy szeretné több streamvégpontok rendelkezik, ha azt tervezi, hogy a különböző CDN vagy egy CDN-t és a közvetlen hozzáférést.
 
     > [!NOTE]
-    > Csak számlázása, amikor a Streamvégpontot futó állapotban van.
+    > Ha a futó állapotban van a folyamatos átviteli végponton csak számolunk fel.
     
-- Az adatfolyam-továbbítási végpontjának frissítése.
+- A streamvégpont frissítéséhez.
     
     Ellenőrizze, hogy Update() függvény.
 
-- Az adatfolyam-továbbítási végpontjának törlése.
+- Törölje a tartalomstreameléshez használt streamvégpont.
 
     >[!NOTE]
-    >Az alapértelmezett streamvégpontból nem lehet törölni.
+    >Nem lehet törölni az alapértelmezett streamvégpontot.
 
 A streamvégpont méretezése kapcsolatos információkért lásd: [ez](media-services-portal-scale-streaming-endpoints.md) cikk.
 
@@ -52,9 +52,9 @@ A streamvégpont méretezése kapcsolatos információkért lásd: [ez](media-se
 
 Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
 
-## <a name="add-code-that-manages-streaming-endpoints"></a>Adja hozzá a kódot, amely adatfolyam-továbbítási végpontok kezelése
+## <a name="add-code-that-manages-streaming-endpoints"></a>Adja hozzá a kódot, amely kezeli a streamvégpontok
     
-Cserélje le a Program.cs lévő kódot az alábbi kódra:
+Cserélje le a program.cs fájlban lévő kódot az alábbira:
 
 ```csharp
 using System;

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Lab Services osztályterem-tesztkörnyezetek kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre és konfigurálja az osztályterem-tesztkörnyezet, megtekintheti az összes az osztályterem-tesztkörnyezetek, a regisztráció hivatkozásra a lab-felhasználó vagy törlése a labor fájlmegosztás.
+description: Ismerje meg, hogyan hozzon létre és osztályterem-tesztkörnyezet konfigurálása, megtekintheti az osztályterem-tesztkörnyezetek, küldje el a regisztrációs hivatkozást a lab-felhasználó vagy egy tesztkörnyezet törlése.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 7d311a3fa1b00a6324c9bb81a14c1a575319472f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4f6d94c7090c2bbb0335d46b60be320b2fc19375
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819994"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962825"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Az Azure Lab Services osztályterem-tesztkörnyezetek kezelése 
 Ez a cikk azt ismerteti, hogyan hozhat létre, és törölje az osztályterem-tesztkörnyezet. Bemutatja azt is, az osztályterem-tesztkörnyezetek megtekintése a lab-fiókokban. 
@@ -107,7 +107,12 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
 3. Az a **Delete lab** párbeszédpanelen jelölje ki **törlése**. 
 
     ![Törlése párbeszédpanel](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)
- 
+
+## <a name="switch-to-another-classroom-lab"></a>Váltson egy másik osztályterem-tesztkörnyezet
+Az aktuális váltani egy másik osztályterem-tesztkörnyezet, válassza ki a legördülő listából válassza ki, ekkor a tesztkörnyezetek tetején a labor-fiókban.
+
+![Válassza ki a labor felső legördülő listából](../media/how-to-manage-classroom-labs/switch-lab.png)
+
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:

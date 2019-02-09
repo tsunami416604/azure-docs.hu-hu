@@ -11,15 +11,15 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/01/2019
-ms.openlocfilehash: cb4d3c4d15dded3c7f90a1e3cf118ca10371dcb1
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 02/072019
+ms.openlocfilehash: 4f025680c1c637f8b8475be2d5784d08e9e2343b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700995"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962009"
 ---
-# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell a rugalmas készletek korlátai
+# <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Rugalmas készletek használata a Virtuálismag-alapú vásárlási modell korlátok erőforráskorlátok
 
 Ez a cikk a részletes erőforráskorlátok Azure SQL Database rugalmas készletek és a készletezett adatbázisokat, a Virtuálismag-alapú vásárlási modell használatával.
 
@@ -259,6 +259,9 @@ A következő táblázat ismerteti a készletezett adatbázisok tulajdonságait.
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyakori kérdésekre adott válaszokat.
-- Lásd: [erőforrás áttekintése korlátozza az SQL Database-kiszolgálón](sql-database-resource-limits-database-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.
+- Önálló adatbázis erőforráskorlátok virtuális mag, lásd: [erőforráskorlátok és önálló adatbázisokat a Virtuálismag-alapú vásárlási modell használatával](sql-database-vcore-resource-limits-single-databases.md)
+- Önálló adatbázis dtu-k erőforráskorlátok, lásd: [erőforráskorlátok és önálló adatbázisokat a DTU-alapú vásárlási modell használatával](sql-database-dtu-resource-limits-single-databases.md)
+- Dtu-k erőforráskorlátok a rugalmas készletek, lásd: [erőforráskorlátok a rugalmas készletek a DTU-alapú vásárlási modell használatával](sql-database-dtu-resource-limits-elastic-pools.md)
+- Erőforráskorlátok a felügyelt példányok, lásd: [felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md).
 - Azure – általános korlátozások kapcsolatos információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
+- Adatbázis-kiszolgáló erőforráskorlátok kapcsolatos információkért lásd: [az SQL Database-kiszolgálóhoz erőforráskorlátok áttekintése](sql-database-resource-limits-database-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.

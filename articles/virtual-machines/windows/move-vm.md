@@ -15,19 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 1daf04e3f878d0748bfa0904259c7b7187481843
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: ede2092be4e4eaf201e15307a7d9934ea267ae37
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580486"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980703"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Windows virtuális gép áthelyezése egy másik Azure előfizetés vagy a resource group
 Ez a cikk végigvezeti egy Windows virtuális gép (VM) áthelyezése erőforráscsoportok vagy előfizetések között. Az előfizetések közötti áthelyezése lehet hasznos, ha egy személyes előfizetés egy virtuális Gépet eredetileg létrehozták, és most át kívánja helyezni a vállalati előfizetésre, és folytatni a munkáját.
 
 > [!IMPORTANT]
->Jelenleg nem helyezhetők át az Azure Managed Disks. 
->
 >Új erőforrás-azonosítók az áthelyezés során jönnek létre. Után a virtuális gép át lett helyezve, az eszközök és parancsfájlok használata az új erőforrás-azonosítók frissíteni kell. 
 > 
 > 
@@ -36,23 +34,23 @@ Ez a cikk végigvezeti egy Windows virtuális gép (VM) áthelyezése erőforrá
 
 ## <a name="use-powershell-to-move-a-vm"></a>Virtuális gép áthelyezése a Powershell használatával
 
-Virtuális gép áthelyezése másik erőforráscsoportba, győződjön meg arról, hogy akkor is helyezze át az összes függő erőforrást kell. Egy listát az egyes ezeket az erőforrásokat az erőforrás-azonosító lekéréséhez használja a [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource) parancsmagot.
+Virtuális gép áthelyezése másik erőforráscsoportba, győződjön meg arról, hogy akkor is helyezze át az összes függő erőforrást kell. Egy listát az egyes ezeket az erőforrásokat az erőforrás-azonosító lekéréséhez használja a [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) parancsmagot.
 
 ```azurepowershell-interactive
- Get-AzureRMResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
+ Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
 ```
 
-Az erőforrás-azonosítók vesszővel elválasztott listáját is használhatja az előző parancs kimenetéből [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) az egyes erőforrások áthelyezése a célhelyre. 
+Az erőforrás-azonosítók vesszővel elválasztott listáját is használhatja az előző parancs kimenetéből [Move-AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) az egyes erőforrások áthelyezése a célhelyre. 
 
 ```azurepowershell-interactive
-Move-AzureRmResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
+Move-AzResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```
     
 Az erőforrások áthelyezése másik előfizetésben, adjon meg a **- DestinationSubscriptionId** paraméter. 
 
 ```azurepowershell-interactive
-Move-AzureRmResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
+Move-AzResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
     -DestinationResourceGroupName "<myDestinationResourceGroup>" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```

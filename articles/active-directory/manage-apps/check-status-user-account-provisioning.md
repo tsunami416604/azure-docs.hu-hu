@@ -3,8 +3,8 @@ title: Jelentéskészítés az Azure Active Directory automatikus felhasználói
 description: Ismerje meg, hogyan automatikus felhasználói fiók kiépítése a feladatok állapotát, és az egyes felhasználók átadásának hibaelhárítása.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: 833fe24f83a2f159fd00d24c67b6864ce614c445
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a013c8d3c78801414ab83fd89a59caa316f1c28f
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203912"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958702"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: -Jelentések automatikus felhasználói fiók kiépítése
 
@@ -58,13 +58,13 @@ Itt is elérheti a kiépítési összefoglaló jelentés és az üzembe helyezé
 
 Az üzembe helyezési összefoglaló jelentés jelenik meg a a **kiépítési** megadott alkalmazás lapján. Található a **szinkronizálás részleteivel** szakasz alatt **beállítások**, és a következő információkat tartalmazza:
 
-* Felhasználók száma és a csoportok, amely nincs szinkronizálva, és jelenleg a forrás és a cél rendszer közötti kiépítés hatókörébe /
+* Felhasználók száma és a / csoportok, amely nincs szinkronizálva, és jelenleg a forrás és a cél rendszer közötti kiépítés hatókörébe.
 
 * A szinkronizálás a legutóbbi alkalommal futott. Szinkronizálás általában után fordulhat elő, percenként 20 – 40- [a kezdeti szinkronizálás](user-provisioning.md#what-happens-during-provisioning) befejeződött.
 
-* E- [a kezdeti szinkronizálás](user-provisioning.md#what-happens-during-provisioning) befejezése
+* E- [a kezdeti szinkronizálás](user-provisioning.md#what-happens-during-provisioning) befejeződött.
 
-* -E a kiépítési folyamat karanténba került-e, és mi az a karanténba helyezett állapot oka (például nem sikerült kommunikálni a célrendszer érvénytelen rendszergazdai hitelesítő adatok miatt)
+* -E a kiépítési folyamat karanténba került-e, és mi az a karanténba helyezett állapot oka (például nem sikerült kommunikálni a célrendszer érvénytelen rendszergazdai hitelesítő adatok miatt).
 
 Az üzembe helyezési összefoglaló jelentés kell lennie a helyi rendszergazdák áttekintés a létesítési feladat működési állapotának az ellenőrzéséhez.
 
@@ -79,7 +79,7 @@ A kiépítési szolgáltatás által végzett tevékenységek tárolja, amely az
 
 * **Események exportálását** – az "export" esemény minden alkalommal, amikor az Azure AD létesítési szolgáltatás egy felhasználói fiókot vagy csoportot objektum ír a rendszer rögzíti. Ezeket az eseményeket rögzíteni a felhasználói attribútumok és azok értékeit, hogy az írt által az Azure AD létesítési szolgáltatás az esemény időpontjában. Hiba történt a felhasználói fiók vagy csoport objektum írását a célrendszeren, ha megjelenik itt.
 
-* **Dolgozza fel letéti** -folyamat escrows fordulhat elő, ha a kiépítési szolgáltatás közben egy művelet egy hiba lép fel, és próbálja megismételni a műveletet egy visszatartási időköz elteltéig kezd. Egy "letéti" esemény minden alkalommal, amikor egy üzembe helyezési művelet volt elavult rögzíti.
+* **Dolgozza fel letéti** -folyamat escrows fordulhat elő, ha a kiépítési szolgáltatás közben egy művelet egy hiba lép fel, és próbálja megismételni a műveletet egy visszatartási időköz elteltéig kezd. Egy "letéti" esemény minden alkalommal, amikor egy üzembe helyezési művelet kísérelte meg van rögzítve.
 
 Ha megnézzük a kiépítés események az egyes felhasználók számára, az események általában történnek az itt látható sorrendben:
 
@@ -102,7 +102,7 @@ A leggyakoribb üzembe helyezési Naplók funkcióban egyedi felhasználói fió
 
 2. Az a **kategória** menüjében válassza **fiók üzembe helyezésének**.
 
-3. Az a **dátumtartomány** menüben válassza ki a dátumtartományt szeretne keresni,
+3. Az a **dátumtartomány** menüben válassza ki a keresendő dátumtartományt.
 
 4. Az a **keresési** sáv, adja meg a keresni kívánt felhasználó felhasználói azonosítója. Azonosító értékének formátuma meg kell egyeznie a függetlenül van kiválasztva, mint az elsődleges egyező azonosító attribútumleképezés konfigurációjában (például userPrincipalName vagy az alkalmazott azonosítója szám). A szükséges azonosító értéke meg fognak jelenni a cél(ok) oszlop.
 

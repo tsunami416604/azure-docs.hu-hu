@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: 6f0ffac9ecf4d0c8f6c3dc7c57670b168417cd3a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ed50f49b110d910a298e608f3625a3bddfe8a0a8
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855139"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963166"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>A frissítés és önálló Service Fabric-fürt frissítése
 
 Minden modern rendszeren bővíthetőség for designing fontos a termék hosszú távú sikert eléréséhez. Egy Azure Service Fabric önálló fürt saját erőforrás. Ez a cikk bemutatja, milyen frissíthetőek vagy frissíteni.
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>A fabric-verziót a fürtön futó szabályozása
-Győződjön meg arról, hogy a fürt mindig fut a Service Fabric támogatott verziója. A kiadás a Service Fabric egy új verzióját a Microsoft bejelenti, ha az előző verziója legalább a közlemény 60 nap után támogatásuk van megjelölve. Új kiadásokkal már bejelentettünk [a Service Fabric blogján](https://blogs.msdn.microsoft.com/azureservicefabric/). Ezen a ponton kiválasztása az új kiadásban érhető el.
+Győződjön meg arról, hogy mindig fut-e a fürt egy [Service Fabric verziója támogatott](service-fabric-versions.md). A kiadás a Service Fabric egy új verzióját a Microsoft bejelenti, ha az előző verziója legalább a közlemény 60 nap után támogatásuk van megjelölve. Új kiadásokkal már bejelentettünk [a Service Fabric blogján](https://blogs.msdn.microsoft.com/azureservicefabric/). Ezen a ponton kiválasztása az új kiadásban érhető el.
 
 Beállíthatja, hogy a fürt automatikus hálófrissítések fogadásához, azok a Microsoft által kiadott, vagy ha manuálisan végrehajtja a rendszer a fürt támogatott fabric verziója. További információkért olvassa el [a fürtön futó Service Fabric verziófrissítéséhez](service-fabric-cluster-upgrade-windows-server.md).
 

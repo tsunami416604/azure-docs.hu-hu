@@ -6,14 +6,14 @@ author: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/07/2019
 ms.author: jamesbak
-ms.openlocfilehash: 70ad37aa0ccbab762aa6e5cfb05d385e8b2a86ee
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 977d3535ad6c06b5dacd786905585d27f6d3d996
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244011"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964270"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Oktatóanyag: A kinyerési, átalakítási és az Azure HDInsight segítségével a Apache Hive-adatok betöltése
 
@@ -30,7 +30,13 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **A HDInsight Linux-alapú Hadoop-fürt**: Linux-alapú HDInsight-fürtöt létrehozni, tekintse meg [fürtök beállítása a HDInsight a Hadoop, Spark, Kafka és további](./data-lake-storage-quickstart-create-connect-hdi-cluster.md).
+* **Egy Azure Data Lake Storage Gen2 storage-fiókot, amely konfigurálva van a HDInsight**
+
+    Lásd: [használata Azure Data Lake Storage Gen2 Azure HDInsight-fürtök](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
+
+* **A HDInsight Linux-alapú Hadoop-fürt**
+
+    Lásd: [a rövid útmutató: Ismerkedés az Apache Hadoop- és Apache Hive, az Azure HDInsight az Azure portal használatával](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
 
 * **Azure SQL Database**: Egy Azure SQL Database-t használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL Database az Azure Portalon történő létrehozását](../../sql-database/sql-database-get-started.md) ismertető cikket.
 
@@ -47,62 +53,67 @@ Ebben az oktatóanyagban a bemutatják, hogyan végezhet ETL-műveletet, a szál
 
 1. Lépjen a [kutatásáról és az innovatív technológia felügyeleti, a szállítás statisztikák Hivatala](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
-1. Az oldalon válassza ki a következő értékeket:
+2. Válassza ki a **Prezipped fájl** jelölőnégyzet bejelölésével kijelölheti az összes adatmezőket.
 
-   | Name (Név) | Value |
-   | --- | --- |
-   | **Szűrő év** |2013 |
-   | **Időszak szűrése** |January |
-   | **Mezők** |Year, FlightDate, UniqueCarrier, Carrier, FlightNum, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+3. Válassza ki a **letöltése** gombra, és az eredmények mentése a számítógépre. 
 
-1. Az összes többi mező jelölését törölje.
-
-1. Válassza a **Download** (Letöltés) lehetőséget. A kiválasztott adatok mezőkkel .zip fájlt kap.
+4. Csomagolja ki a tömörített fájl tartalmát, és jegyezze fel a fájl nevét és a fájl elérési útját. Ez egy későbbi lépésben információra van szüksége.
 
 ## <a name="extract-and-upload-the-data"></a>Csomagolja ki, és töltse fel az adatokat
 
 Ebben a szakaszban használhatja `scp` feltölteni az adatokat a HDInsight-fürthöz.
 
-Nyisson meg egy parancssort, és a következő paranccsal töltse fel a .zip fájlt a HDInsight-fürt fejcsomópontjára:
+1. Nyisson meg egy parancssort, és a következő paranccsal töltse fel a .zip fájlt a HDInsight-fürt fejcsomópontjára:
 
-```bash
-scp <FILE_NAME>.zip <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net:<FILE_NAME.zip>
-```
+   ```bash
+   scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
+   ```
 
-* Cserélje le \<fájlnév > a .zip fájl nevére.
-* Cserélje le \<SSH_USER_NAME > a HDInsight-fürthöz az SSH-bejelentkezéskor.
-* Cserélje le \<fürtnév > a HDInsight-fürt nevére.
+   * Cserélje le a `<file-name>` helyőrzőt a .zip fájl neve.
+   * Cserélje le a `<ssh-user-name>` helyőrző a HDInsight-fürthöz az SSH-bejelentkezéskor.
+   * Cserélje le a `<cluster-name>` helyőrzőt a HDInsight-fürt nevére.
 
-Ha az SSH-bejelentkezést egy jelszóval hitelesíti, a rendszer bekéri a jelszót. 
+   Ha az SSH-bejelentkezést egy jelszóval hitelesíti, a rendszer bekéri a jelszót. 
 
-Nyilvános kulcs használatakor lehetséges, hogy az `-i` paramétert kell használnia, és meg kell adnia a megfelelő titkos kulcs elérési útját. Például: `scp -i ~/.ssh/id_rsa FILE_NAME.zip USER_NAME@CLUSTER_NAME-ssh.azurehdinsight.net:`.
+   Nyilvános kulcs használatakor lehetséges, hogy az `-i` paramétert kell használnia, és meg kell adnia a megfelelő titkos kulcs elérési útját. Például: `scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`.
 
-Ha a feltöltés befejeződött, csatlakozzon a fürthöz az SSH-val. A parancssorban adja meg a következő parancsot:
+2. Ha a feltöltés befejeződött, csatlakozzon a fürthöz az SSH-val. A parancssorban adja meg a következő parancsot:
 
-```bash
-ssh <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net
-```
+   ```bash
+   ssh <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net
+   ```
 
-Használja az alábbi parancsot a .zip fájl kicsomagolásához:
+3. Használja az alábbi parancsot a .zip fájl kicsomagolásához:
 
-```bash
-unzip <FILE_NAME>.zip
-```
+   ```bash
+   unzip <file-name>.zip
+   ```
 
-A parancs kibontja a **.csv** fájlt, amely nagyjából 60 MB.
+   A parancs kibontja a **.csv** fájlt.
 
-Az alábbi parancsokkal hozzon létre egy könyvtárat, majd másolja a könyvtárba a *.csv* fájlt:
+4. A következő paranccsal hozzon létre a Data Lake Storage Gen2 fájlrendszer.
 
-```bash
-hdfs dfs -mkdir -p abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data
-hdfs dfs -put <FILE_NAME>.csv abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data/
-```
+   ```bash
+   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+   ```
+   
+   Cserélje le a `<file-system-name>` kíván adni a fájlrendszer neve helyőrzőt.
 
-A következő paranccsal hozzon létre a Data Lake Storage Gen2 fájlrendszer.
+   Cserélje le a `<storage-account-name>` helyőrzőt a tárfiók nevére.
 
-```bash
-hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/
-```
+5. A következő paranccsal hozzon létre egy könyvtárat.
+
+   ```bash
+   hdfs dfs -mkdir -p abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
+   ```
+
+6. A következő parancs használatával másolja a *.csv* fájlt a könyvtárba:
+
+   ```bash
+   hdfs dfs -put "<file-name>.csv" abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
+   ```
+
+   Használja az ajánlatok köré a fájl nevét, ha a fájl neve szóközöket és speciális karaktereket tartalmaz.
 
 ## <a name="transform-the-data"></a>Az adatok átalakítása
 
@@ -110,105 +121,99 @@ Ebben a szakaszban a Beeline egy Apache Hive-feladat futtatásához használhat.
 
 Az Apache Hive-feladat részeként, az adatokat importálhat a .csv-fájlt nevű Apache Hive-táblába **késések**.
 
-A HDInsight-fürthöz már megnyitott SSH-parancssorba írja be a következő parancsot, amely létrehoz egy **flightdelays.hql** nevű a szerkesztéséhez:
+1. A SSH használatával, amely már rendelkezik a HDInsight-fürthöz, a következő paranccsal hozhat létre és szerkeszthet egy új fájlt **flightdelays.hql**:
 
-```bash
-nano flightdelays.hql
-```
+   ```bash
+   nano flightdelays.hql
+   ```
 
-A fájl tartalma legyen a következő szöveg:
+2. A következő szöveg módosításához cserélje le a `<file-system-name>` és `<storage-account-name>` helyőrzőket a rendszer és a tárolási fiók nevére. Ezután másolja és illessze be a nano-konzol használatával, az egér jobb gombjával kattintson a gomb mellett a SHIFT billentyű lenyomásával.
 
-```hiveql
- DROP TABLE delays_raw;
- -- Creates an external table over the csv file
- CREATE EXTERNAL TABLE delays_raw (
-    YEAR string,
-    FL_DATE string,
-    UNIQUE_CARRIER string,
-    CARRIER string,
-    FL_NUM string,
-    ORIGIN_AIRPORT_ID string,
-    ORIGIN string,
-    ORIGIN_CITY_NAME string,
-    ORIGIN_CITY_NAME_TEMP string,
-    ORIGIN_STATE_ABR string,
-    DEST_AIRPORT_ID string,
-    DEST string,
-    DEST_CITY_NAME string,
-    DEST_CITY_NAME_TEMP string,
-    DEST_STATE_ABR string,
-    DEP_DELAY_NEW float,
-    ARR_DELAY_NEW float,
-    CARRIER_DELAY float,
-    WEATHER_DELAY float,
-    NAS_DELAY float,
-    SECURITY_DELAY float,
-    LATE_AIRCRAFT_DELAY float)
- -- The following lines describe the format and location of the file
- ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
- LINES TERMINATED BY '\n'
- STORED AS TEXTFILE
- LOCATION 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data';
+   ```hiveql
+   DROP TABLE delays_raw;
+    CREATE EXTERNAL TABLE delays_raw (
+       YEAR string,
+       FL_DATE string,
+       UNIQUE_CARRIER string,
+       CARRIER string,
+       FL_NUM string,
+       ORIGIN_AIRPORT_ID string,
+       ORIGIN string,
+       ORIGIN_CITY_NAME string,
+       ORIGIN_CITY_NAME_TEMP string,
+       ORIGIN_STATE_ABR string,
+       DEST_AIRPORT_ID string,
+       DEST string,
+       DEST_CITY_NAME string,
+       DEST_CITY_NAME_TEMP string,
+       DEST_STATE_ABR string,
+       DEP_DELAY_NEW float,
+       ARR_DELAY_NEW float,
+       CARRIER_DELAY float,
+       WEATHER_DELAY float,
+       NAS_DELAY float,
+       SECURITY_DELAY float,
+      LATE_AIRCRAFT_DELAY float)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    STORED AS TEXTFILE
+    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
+   DROP TABLE delays;
+   CREATE TABLE delays
+   LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
+   AS
+   SELECT YEAR AS Year,
+       FL_DATE AS FlightDate,
+       substring(UNIQUE_CARRIER, 2, length(UNIQUE_CARRIER) -1) AS Reporting_Airline,
+       substring(CARRIER, 2, length(CARRIER) -1) AS  IATA_CODE_Reporting_Airline,
+       substring(FL_NUM, 2, length(FL_NUM) -1) AS  Flight_Number_Reporting_Airline,
+       ORIGIN_AIRPORT_ID AS OriginAirportID,
+       substring(ORIGIN, 2, length(ORIGIN) -1) AS Origin,
+       substring(ORIGIN_CITY_NAME, 2) AS OriginCityName,
+       substring(ORIGIN_STATE_ABR, 2, length(ORIGIN_STATE_ABR) -1)  AS OriginStateName,
+       DEST_AIRPORT_ID AS DestAirportID,
+       substring(DEST, 2, length(DEST) -1) AS Dest,
+       substring(DEST_CITY_NAME,2) AS DestCityName,
+       substring(DEST_STATE_ABR, 2, length(DEST_STATE_ABR) -1) AS DestState,
+       DEP_DELAY_NEW AS DepDelay,
+       ARR_DELAY_NEW AS ArrDelay,
+       CARRIER_DELAY AS CarrierDelay,
+       WEATHER_DELAY AS WeatherDelay
+       NAS_DELAY AS NASDelay,
+       SECURITY_DELAY AS SecurityDelay,
+       LATE_AIRCRAFT_DELAY AS LateAircraftDelay
+   FROM delays_raw;
+   ```
 
--- Drop the delays table if it exists
-DROP TABLE delays;
--- Create the delays table and populate it with data
--- pulled in from the CSV file (via the external table defined previously)
-CREATE TABLE delays
-LOCATION abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/processed
-AS
-SELECT YEAR AS year,
-    FL_DATE AS flight_date,
-    substring(UNIQUE_CARRIER, 2, length(UNIQUE_CARRIER) -1) AS unique_carrier,
-    substring(CARRIER, 2, length(CARRIER) -1) AS carrier,
-    substring(FL_NUM, 2, length(FL_NUM) -1) AS flight_num,
-    ORIGIN_AIRPORT_ID AS origin_airport_id,
-    substring(ORIGIN, 2, length(ORIGIN) -1) AS origin_airport_code,
-    substring(ORIGIN_CITY_NAME, 2) AS origin_city_name,
-    substring(ORIGIN_STATE_ABR, 2, length(ORIGIN_STATE_ABR) -1)  AS origin_state_abr,
-    DEST_AIRPORT_ID AS dest_airport_id,
-    substring(DEST, 2, length(DEST) -1) AS dest_airport_code,
-    substring(DEST_CITY_NAME,2) AS dest_city_name,
-    substring(DEST_STATE_ABR, 2, length(DEST_STATE_ABR) -1) AS dest_state_abr,
-    DEP_DELAY_NEW AS dep_delay_new,
-    ARR_DELAY_NEW AS arr_delay_new,
-    CARRIER_DELAY AS carrier_delay,
-    WEATHER_DELAY AS weather_delay,
-    NAS_DELAY AS nas_delay,
-    SECURITY_DELAY AS security_delay,
-    LATE_AIRCRAFT_DELAY AS late_aircraft_delay
-FROM delays_raw;
-```
+3. Mentse a fájlt a CTRL + X használja, és írja be `Y` amikor a rendszer kéri.
 
-Mentse a fájlt, jelölje be az Esc billentyűt, és adja meg `:x`.
+4. Indítsa el a Hive-ot, és futtassa a **flightdelays.hql** fájlt az alábbi paranccsal:
 
-Indítsa el a Hive-ot, és futtassa a **flightdelays.hql** fájlt az alábbi paranccsal:
+   ```bash
+   beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
+   ```
 
-```bash
-beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
-```
+5. Miután a __flightdelays.hql__ szkript lefutott, a következő paranccsal nyisson meg egy interaktív Beeline-munkamenetet:
 
-Miután a __flightdelays.hql__ szkript lefutott, a következő paranccsal nyisson meg egy interaktív Beeline-munkamenetet:
+   ```bash
+   beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
+   ```
 
-```bash
-beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
-```
+6. Amikor a `jdbc:hive2://localhost:10001/>` parancssor megjelenik, a következő lekérdezéssel nyerhet ki adatokat az importált repülőjárat-késési adatokból:
 
-Amikor a `jdbc:hive2://localhost:10001/>` parancssor megjelenik, a következő lekérdezéssel nyerhet ki adatokat az importált repülőjárat-késési adatokból:
+   ```hiveql
+   INSERT OVERWRITE DIRECTORY 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output'
+   ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+   SELECT regexp_replace(OriginCityName, '''', ''),
+       avg(WeatherDelay)
+   FROM delays
+   WHERE WeatherDelay IS NOT NULL
+   GROUP BY OriginCityName;
+   ```
 
-```hiveql
-INSERT OVERWRITE DIRECTORY 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output'
-ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-SELECT regexp_replace(origin_city_name, '''', ''),
-    avg(weather_delay)
-FROM delays
-WHERE weather_delay IS NOT NULL
-GROUP BY origin_city_name;
-```
+   Ez a lekérdezés lekéri azon városok listáját, ahol időjárás miatti késések történtek, valamint a késések átlagos idejét, és menti ezeket az adatokat a következő helyen: `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`. Később a Sqoop erről a helyről olvassa be az adatokat, amelyeket exportál az Azure SQL Database-be.
 
-Ez a lekérdezés lekéri azon városok listáját, ahol időjárás miatti késések történtek, valamint a késések átlagos idejét, és menti ezeket az adatokat a következő helyen: `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output`. Később a Sqoop erről a helyről olvassa be az adatokat, amelyeket exportál az Azure SQL Database-be.
-
-A Beeline-ból való kilépéshez írja be a parancssorba a `!quit` parancsot.
+7. A Beeline-ból való kilépéshez írja be a parancssorba a `!quit` parancsot.
 
 ## <a name="create-a-sql-database-table"></a>SQL Database-tábla létrehozása
 
@@ -216,110 +221,112 @@ A kiszolgáló nevét kell ehhez a művelethez az SQL database-ből. Ezeket a l�
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
-1. Válassza ki **SQL-adatbázisok**.
+2. Válassza ki **SQL-adatbázisok**.
 
-1. Szűrhet a használni kívánt adatbázis nevét. A kiszolgáló neve a **Kiszolgáló neve** oszlopban látható.
+3. Szűrhet a használni kívánt adatbázis nevét. A kiszolgáló neve a **Kiszolgáló neve** oszlopban látható.
 
-1. Szűrhet a használni kívánt adatbázis nevét. A kiszolgáló neve a **Kiszolgáló neve** oszlopban látható.
+4. Szűrhet a használni kívánt adatbázis nevét. A kiszolgáló neve a **Kiszolgáló neve** oszlopban látható.
 
     ![Az Azure SQL-kiszolgáló részleteinek lekérése](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Az Azure SQL-kiszolgáló részleteinek lekérése")
 
     Számos módon csatlakozhat az SQL Database-hez, majd hozhat létre egy táblát. A következő lépések során a [FreeTDS](http://www.freetds.org/) eszközt használjuk a HDInsight-fürtről.
 
-A FreeTDS telepítéséhez használja a következő parancsot egy, a fürthöz csatlakozó SSH-kapcsolaton:
+5. A FreeTDS telepítéséhez használja a következő parancsot egy, a fürthöz csatlakozó SSH-kapcsolaton:
 
-```bash
-sudo apt-get --assume-yes install freetds-dev freetds-bin
-```
+   ```bash
+   sudo apt-get --assume-yes install freetds-dev freetds-bin
+   ```
 
-A telepítés befejezése után használja a következő parancsot az SQL Database-kiszolgálóhoz való csatlakozáshoz.
+6. A telepítés befejezése után használja a következő parancsot az SQL Database-kiszolgálóhoz való csatlakozáshoz.
 
-* Cserélje le \<kiszolgáló_neve > az SQL Database-kiszolgáló nevével.
-* Cserélje le \<ADMIN_LOGIN > az SQL Database-adatbázis rendszergazdai bejelentkezéssel.
-* Cserélje le \<adatbázisnév > az adatbázis nevével.
+   ```bash
+   TDSVER=8.0 tsql -H <server-name>.database.windows.net -U <admin-login> -p 1433 -D <database-name>
+    ```
+   * Cserélje le a `<server-name>` helyőrzőt az SQL Database-kiszolgáló nevével.
 
-```bash
-TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -p 1433 -D <DATABASE_NAME>
-```
+   * Cserélje le a `<admin-login>` helyőrzőt az SQL Database-adatbázis rendszergazdai bejelentkezéssel.
 
-Amikor kéri, adja meg a jelszót az SQL Database-rendszergazdai bejelentkezési.
+   * Cserélje le a `<database-name>` helyőrzőt az adatbázis neve
 
-A kimenet a következő szöveghez fog hasonlítani:
+   Amikor kéri, adja meg a jelszót az SQL Database-rendszergazdai bejelentkezési.
 
-```
-locale is "en_US.UTF-8"
-locale charset is "UTF-8"
-using default charset "UTF-8"
-Default database being set to sqooptest
-1>
-```
+   A kimenet a következő szöveghez fog hasonlítani:
 
-Jelenleg a `1>` kéri, adja meg az alábbi utasításokat:
+   ```
+   locale is "en_US.UTF-8"
+   locale charset is "UTF-8"
+   using default charset "UTF-8"
+   Default database being set to sqooptest
+   1>
+   ```
 
-```hiveql
-CREATE TABLE [dbo].[delays](
-[origin_city_name] [nvarchar](50) NOT NULL,
-[weather_delay] float,
-CONSTRAINT [PK_delays] PRIMARY KEY CLUSTERED   
-([origin_city_name] ASC))
-GO
-```
+7. Jelenleg a `1>` kéri, adja meg az alábbi utasításokat:
 
-A `GO` utasítás megadásakor a rendszer kiértékeli az előző utasításokat.
-A lekérdezés nevű táblát hoz létre **késések**, amely egy fürtözött indexszel rendelkezik.
+   ```hiveql
+   CREATE TABLE [dbo].[delays](
+   [OriginCityName] [nvarchar](50) NOT NULL,
+   [WeatherDelay] float,
+   CONSTRAINT [PK_delays] PRIMARY KEY CLUSTERED
+   ([OriginCityName] ASC))
+   GO
+   ```
 
-Győződjön meg arról, hogy létrejött-e a tábla használja a következő lekérdezést:
+8. A `GO` utasítás megadásakor a rendszer kiértékeli az előző utasításokat.
 
-```hiveql
-SELECT * FROM information_schema.tables
-GO
-```
+   A lekérdezés nevű táblát hoz létre **késések**, amely egy fürtözött indexszel rendelkezik.
 
-A kimenet az alábbi szöveghez hasonló:
+9. Győződjön meg arról, hogy létrejött-e a tábla használja a következő lekérdezést:
 
-```
-TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
-databaseName       dbo             delays        BASE TABLE
-```
+   ```hiveql
+   SELECT * FROM information_schema.tables
+   GO
+   ```
 
-A tsql eszközből való kilépéshez írja be az `exit` kifejezést az `1>` parancssorba.
+   A kimenet az alábbi szöveghez hasonló:
+
+   ```
+   TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
+   databaseName       dbo             delays        BASE TABLE
+   ```
+
+10. A tsql eszközből való kilépéshez írja be az `exit` kifejezést az `1>` parancssorba.
 
 ## <a name="export-and-load-the-data"></a>Exportálás és az adatok betöltéséhez
 
-Az előző szakaszokban az átalakított adatok a helyen található másolt `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output`. Ebben a szakaszban használhatja Sqoop exportálja az adatokat a `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output` az Azure SQL database-ben létrehozott táblához.
+Az előző szakaszokban az átalakított adatok a helyen található másolt `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`. Ebben a szakaszban használhatja Sqoop exportálja az adatokat a `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` az Azure SQL database-ben létrehozott táblához.
 
-A következő paranccsal ellenőrizze, hogy a Sqoop látja-e az SQL-adatbázist:
+1. A következő paranccsal ellenőrizze, hogy a Sqoop látja-e az SQL-adatbázist:
 
-```bash
-sqoop list-databases --connect jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433 --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD>
-```
+   ```bash
+   sqoop list-databases --connect jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433 --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD>
+   ```
 
-A parancs olyan adatbázisokhoz, beleértve az adatbázist, amelyben létrehozta listáját adja vissza a **késések** tábla.
+   A parancs olyan adatbázisokhoz, beleértve az adatbázist, amelyben létrehozta listáját adja vissza a **késések** tábla.
 
-A következő paranccsal exportálhatja az adatokat a **hivesampletable** táblázatból a **késések** tábla:
+2. A következő paranccsal exportálhatja az adatokat a **hivesampletable** táblázatból a **késések** tábla:
 
-```bash
-sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<FILE_SYSTEM_NAME>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
-```
+   ```bash
+   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<file-system-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+   ```
 
-Sqoop használatával csatlakozik az adatbázis, amely tartalmazza a **késések** táblázat és az adatok exportálása a `/tutorials/flightdelays/output` könyvtárat a a **késések** tábla.
+   Sqoop használatával csatlakozik az adatbázis, amely tartalmazza a **késések** táblázat és az adatok exportálása a `/tutorials/flightdelays/output` könyvtárat a a **késések** tábla.
 
-Miután a `sqoop` parancs végez, a tsql segédprogrammal az adatbázishoz való csatlakozáshoz:
+3. Miután a `sqoop` parancs végez, a tsql segédprogrammal az adatbázishoz való csatlakozáshoz:
 
-```bash
-TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
-```
+   ```bash
+   TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
+   ```
 
-Győződjön meg arról, hogy a korábban exportált adatok az alábbi utasítások segítségével a **késések** tábla:
+4. Győződjön meg arról, hogy a korábban exportált adatok az alábbi utasítások segítségével a **késések** tábla:
 
-```sql
-SELECT * FROM delays
-GO
-```
+   ```sql
+   SELECT * FROM delays
+   GO
+   ```
 
-A táblában látnia kell az adatok listáját. A tábla a városok nevét és az egyes városokhoz tartozó átlagos késések idejét tartalmazza.
+   A táblában látnia kell az adatok listáját. A tábla a városok nevét és az egyes városokhoz tartozó átlagos késések idejét tartalmazza.
 
-Adja meg `exit` való kilépéshez a tsql-segédprogramot.
+5. Adja meg `exit` való kilépéshez a tsql-segédprogramot.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

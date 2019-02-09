@@ -2,21 +2,21 @@
 title: Egyszeri bejelentkezés konfigurálása – Azure Active Directory | Microsoft Docs
 description: Ez az oktatóanyag az Azure Portalon konfigurál SAML-alapú egyszeri bejelentkezést egy alkalmazáshoz az Active Directory (Azure AD) használatával.
 services: active-directory
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
 ms.date: 12/06/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 9da66bc82de1b8beeacadf3a38dda11cf0b2f2e1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fdb009a8f66ffe47ac7e677717152a2620beebc7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170785"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960955"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Oktatóanyag: Az Azure Active Directory a SAML-alapú egyszeri bejelentkezés az alkalmazás konfigurálása
 

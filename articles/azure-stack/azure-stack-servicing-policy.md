@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/09/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 1664e19f3a238b2986af4669c3853a54d7c7e328
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6825524667c473496b62cecbce54f6e249742bae
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250823"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977711"
 ---
 # <a name="azure-stack-servicing-policy"></a>Az Azure Stack karbantartási szabályzat
 
@@ -52,11 +52,10 @@ A Microsoft vár a szoftverfrissítési csomagok havi kiadása ütemben történ
 Megtervezheti és kezelheti a frissítéseket, és miként állapítható meg, a jelenlegi verziót dokumentáció [kezelés frissítések – áttekintés](azure-stack-updates.md).
 
 Egy adott frissítés, és töltheti le, beleértve kapcsolatos információkat lásd: kibocsátási megjegyzései, amely frissítése:
-
+- [Azure Stack 1901 frissítése](azure-stack-update-1901.md)
 - [Azure Stack 1811 frissítése](azure-stack-update-1811.md)
 - [Azure Stack 1809 frissítése](azure-stack-update-1809.md)
 - [Azure Stack 1808 frissítése](azure-stack-update-1808.md)
-- [Azure Stack 1807 frissítése](azure-stack-update-1807.md)
 
 ## <a name="hotfixes"></a>Gyorsjavítások
 

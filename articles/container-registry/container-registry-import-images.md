@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 02/06/2019
 ms.author: danlep
-ms.openlocfilehash: a4187176548a674525d0be0d06bc2557de196af0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8e9f488f194c3326e79439a65214a060ff16e6c4
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885660"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958748"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Importálás tárolórendszerképek továbbíthat egy tárolóregisztrációs adatbázisba
 
@@ -98,10 +98,10 @@ az acr import --name myregistry --source mysourceregistry.azurecr.io/aci-hellowo
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>Egy másik előfizetésben található beállításjegyzék importálása
 
-A következő példában *mysourceregistry* a egy másik előfizetésben található *myregistry* az ugyanahhoz az Active Directory-bérlőhöz. Adja meg a forrás beállításjegyzék, az erőforrás-Azonosítóját a `--registry` paraméter.
+A következő példában *mysourceregistry* a egy másik előfizetésben található *myregistry* az ugyanahhoz az Active Directory-bérlőhöz. Adja meg a forrás beállításjegyzék, az erőforrás-Azonosítóját a `--registry` paraméter. Figyelje meg, hogy a `--source` paraméter csak az adatforrás adattárak és rendszerképek neve, nem a rendszerleíró adatbázis bejelentkezési kiszolgálójának nevét adja meg.
  
 ```azurecli
-az acr import --name myregistry --source mysourceregistry.azurecr.io/aci-helloworld:latest --image hello-world:latest --registry /subscriptions/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
+az acr import --name myregistry --source sourcerepo/aci-helloworld:latest --image aci-hello-world:latest --registry /subscriptions/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
 ### <a name="import-from-a-registry-using-service-principal-credentials"></a>Egyszerű szolgáltatás hitelesítő adatai használatával beállításjegyzék importálása

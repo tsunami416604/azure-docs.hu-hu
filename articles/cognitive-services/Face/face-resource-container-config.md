@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: bb5bea5fb74c48e4568898d77763d442db5b41c7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a70c200f0260d87d35eae8728ed1f908e7061f32
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870537"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979105"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker-tárolók konfigurálása
 
@@ -45,7 +45,7 @@ Ez a beállítás a következő helyen található:
 
 ## <a name="billing-configuration-setting"></a>Számlázási konfigurációs beállítás
 
-A `Billing` beállítás határozza meg a végpont URI-t, a _Face_ erőforrást az Azure-ban használt mérni a tároló számlázási adatokat. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie egy érvényes végpont URI-t a egy _Face_ erőforrást az Azure-ban.
+A `Billing` beállítás határozza meg a végpont URI-t, a _Face_ erőforrást az Azure-ban használt mérni a tároló számlázási adatokat. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie egy érvényes végpont URI-t a egy _Face_ erőforrást az Azure-ban. A tároló használati jelentések kapcsolatos 10 – 15 percenként.
 
 Ez a beállítás a következő helyen található:
 
@@ -112,7 +112,7 @@ Az alábbi Docker-példák a face tároló is.
 
 ### <a name="basic-example"></a>Alapszintű példa 
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
@@ -122,7 +122,7 @@ Az alábbi Docker-példák a face tároló is.
 
 ### <a name="logging-example-with-command-line-arguments"></a>Parancssori argumentumok naplózását példa
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
   Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
@@ -131,7 +131,7 @@ Az alábbi Docker-példák a face tároló is.
 
 ### <a name="logging-example-with-environment-variable"></a>Naplózás példában a környezeti változó
 
-  ```Docker
+  ```
   SET Logging:Console:LogLevel=Information
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
