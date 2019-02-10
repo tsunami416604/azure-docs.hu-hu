@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7ae3886db6391836cd8d281e44c95c5253cc8dd5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8c55b9b9ce6e98e91e7c6a712e0a9dbca0964512
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323804"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985438"
 ---
 Minden virtuális hálózathoz pont – hely kapcsolattal csatlakozó ügyfélszámítógépen rendelkeznie kell telepített ügyféltanúsítvánnyal. Hozza létre a főtanúsítvány az, és telepítse az egyes ügyfélszámítógépekre. Ha nem telepít egy érvényes ügyféltanúsítványt, hitelesítés sikertelen lesz, amikor az ügyfél megpróbál csatlakozni a virtuális hálózathoz.
 
@@ -31,4 +31,8 @@ Létrehozhat egy egyedi tanúsítványt minden ügyfél számára, vagy használ
   * [Útmutatás a MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): Ha nem rendelkezik hozzáféréssel Windows 10 rendszerű számítógéphez a tanúsítványok létrehozásához használja a Makecertet. Bár a MakeCert elavult, továbbra is használhatja azt is létrehozhat tanúsítványokat. Telepítheti a létrehozott tanúsítványok bármely támogatott P2S-ügyfélen.
   * [Linuxra vonatkozó utasítások](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
 
-  Egy önaláírt főtanúsítványból létre ügyféltanúsítványt, ha automatikusan települ a létrehozáshoz használt számítógépen. Telepíthet ügyféltanúsítványt egy másik ügyfélszámítógépre szeretne, ha exportálja .pfx-fájlként, a teljes tanúsítványlánccal együtt. Ez létrehoz egy .pfx-fájlt, amely tartalmazza a főtanúsítvány információit az ügyfél hitelesítéséhez szükséges. Tanúsítvány exportálása lépéseiért lásd: [tanúsítványok létrehozása és exportálása pont – hely PowerShell-lel](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).
+  Egy önaláírt főtanúsítványból létre ügyféltanúsítványt, ha automatikusan települ a létrehozáshoz használt számítógépen. Telepíthet ügyféltanúsítványt egy másik ügyfélszámítógépre szeretne, ha exportálja .pfx-fájlként, a teljes tanúsítványlánccal együtt. Ez létrehoz egy .pfx-fájlt, amely tartalmazza a főtanúsítvány információit az ügyfél hitelesítéséhez szükséges. 
+
+**Exportálja a tanúsítványt**
+
+Tanúsítvány exportálása lépéseiért lásd: [tanúsítványok létrehozása és exportálása pont – hely PowerShell-lel](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).

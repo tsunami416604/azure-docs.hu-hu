@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: a13ce8d3dc71be83e05fae5bd07f30f413ce59f2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 2978da7f2e7ec27ded6b5994570fa50a9032d0d2
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55148028"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985436"
 ---
 A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése a diagnosztikai számos lehetőségek előnyeit, és az adatok. Ehhez egyszerűen [figyelési](../articles/azure-monitor/overview.md) a virtuális gép is használhatja az Áttekintés képernyő a virtuális gép az Azure Portalon. Használhat [bővítmények](../articles/virtual-machines/windows/extensions-features.md) diagnosztika konfigurálása további metrikai adatok gyűjtésére a virtuális gépeken. Is használhatja fejlett figyelési lehetőségek, például [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) és [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -23,7 +23,7 @@ A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése
 
     Virtuális gépek rendszerindítójaként a rendszerindítási diagnosztikai ügynök rögzíti a rendszerindítás kimeneti és az Azure storage-ban tárolja azokat. Ezek az adatok a virtuális gépek rendszerindítási problémáinak hibaelhárításához használhatóak. A rendszerindítási diagnosztika nem engedélyezettek automatikusan, egy virtuális gép létrehozásakor a parancssori eszközök. Ahhoz, hogy a rendszerindítási diagnosztikát engedélyezni lehessen, tárfiókot kell létrehozni a rendszerindítási naplók tárolásához. Ha engedélyezi a rendszerindítási diagnosztika az Azure Portalon, a storage-fiók automatikusan létrejön az Ön számára.
 
-    Ha nem engedélyezte a rendszerindítási diagnosztika a virtuális gép létrehozásakor, mindig engedélyezheti azt később használatával [Azure CLI-vel](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmbootdiagnostics), vagy egy [Azure Resource Manager-sablon](../articles/virtual-machines/windows/extensions-diagnostics-template.md).
+    Ha nem engedélyezte a rendszerindítási diagnosztika a virtuális gép létrehozásakor, mindig engedélyezheti azt később használatával [Azure CLI-vel](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostics), vagy egy [Azure Resource Manager-sablon](../articles/virtual-machines/windows/extensions-diagnostics-template.md).
 
 - **A vendég operációs rendszer diagnosztikai adatok gyűjtésének engedélyezéséhez.** Amikor létrehoz egy virtuális Gépet, lehetősége van a vendég operációs rendszer diagnosztika engedélyezése a beállítások képernyőn. Ha engedélyezte a diagnosztikai adatgyűjtés, a [IaaSDiagnostics-bővítmény linuxhoz](../articles/virtual-machines/linux/diagnostic-extension.md) vagy a [Windows IaaSDiagnostics bővítmény](../articles/virtual-machines/windows/ps-extensions-diagnostics.md) adnak hozzá a virtuális gép, amely lehetővé teszi, hogy összegyűjtse a további lemez, a Processzor és memória-adatokat.
 

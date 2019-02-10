@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ec8fa6c06dff0091627a800c895d45fd3b0e778e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e55058d6b1f76b4afcb847b946df85d5ab69971b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53381515"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985432"
 ---
 # <a name="enabling-azure-ultra-ssds"></a>Az Azure Ultranagy SSD-k engedélyezése
 
@@ -23,7 +23,7 @@ Jelenleg Ultranagy SSD-k előzetes verzióban érhető el, és meg kell [regiszt
 
 Amint jóváhagyják, határozza meg, melyik zónát, az USA keleti RÉGIÓJA 2, a Ultranagy SSD való üzembe helyezéséhez a következő parancsok egyikét futtatja:
 
-PowerShell: `Get-AzureRmComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
+PowerShell: `Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
 
 PARANCSSORI FELÜLET: `az vm list-skus --resource-type disks --query “[?name==’UltraSSD_LRS’]”`
 
@@ -31,7 +31,7 @@ A válasz formáját az alábbi, ahol X a zóna használatára az USA keleti RÉ
 
 |ResourceType  |Name (Név)  |Hely  |Zóna  |Korlátozás  |Képesség  |Érték  |
 |---------|---------|---------|---------|---------|---------|---------|
-|Lemezek     |Az UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|Lemezek     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 Ha a parancs nem válaszolt, azt jelenti, hogy regisztrációját, hogy a szolgáltatás még mindig vagy folyamatban lévő, vagy nincs még jóváhagyva.
 

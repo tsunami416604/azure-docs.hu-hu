@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ccb502cd5ae21468e52bdc4d56202a595cd19ef
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 93103311e8a9f6f4998195e21cdbc7523b1d4fca
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53594257"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985434"
 ---
 Könnyen [automatikus méretezése](../articles/azure-monitor/platform/autoscale-best-practices.md) a [virtuális gépeken (VM)](../articles/virtual-machines/windows/overview.md) használatakor [a virtual machine scale sets](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) és a [az Azure automatikus skálázási funkcióval A figyelő](../articles/azure-monitor/platform/autoscale-overview.md). A virtuális gépek kell lennie egy méretezési csoport automatikus skálázását tagjai. Ez a cikk nyújt információt, amely lehetővé teszi, hogy jobban megértheti a virtuális gépek vertikális és horizontális skálázást végezhet módszerekkel automatikus és manuális méretezése.
 
@@ -57,11 +57,11 @@ Is [eseményindítók beállítása](../articles/azure-monitor/platform/autoscal
 
 Adja hozzá, vagy távolítsa el a virtuális gépeket a méretezési csoport kapacitásának módosításával. Az Azure Portalon, csökkentse vagy növelje a virtuális gépek száma (így jelölve: **példányszám**) a méretezési csoportban a késleltetett a felülbírálás feltétel sáv bal vagy jobb oldali méretezés képernyőjén.
 
-Azure PowerShell-lel, le szeretné kérni a méretezési készlet objektum használatával [a Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss). Majd állítsa be a **sku.capacity** a virtuális gépek számát, amelyeket szeretne és frissítési tulajdonságot a méretezési csoport a [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss). Azure CLI-vel, hogy az a kapacitás módosításához a **– új kapacitás** paramétere a [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) parancsot.
+Azure PowerShell-lel, le szeretné kérni a méretezési készlet objektum használatával [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss). Majd állítsa be a **sku.capacity** a virtuális gépek számát, amelyeket szeretne és frissítési tulajdonságot a méretezési csoport a [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss). Azure CLI-vel, hogy az a kapacitás módosításához a **– új kapacitás** paramétere a [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) parancsot.
 
 ### <a name="vertical"></a>Függőleges
 
-Manuálisan módosíthatja a méretét képernyőn a méretezési csoport esetében az Azure Portalon a virtuális gépek méretét. Azure PowerShell használata a Get-AzureRmVmss, a referencia-lemezkép termékváltozat tulajdonság beállításával, és ezután használatával [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) és [Update-AzureRmVmssInstance](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance).
+Manuálisan módosíthatja a méretét képernyőn a méretezési csoport esetében az Azure Portalon a virtuális gépek méretét. Azure PowerShell-lel is használhatja a Get-AzVmss, a referencia-lemezkép termékváltozat tulajdonság beállításával, és ezután használatával [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) és [Update-AzVmssInstance](https://docs.microsoft.com/powershell/module/az.compute/update-azvmssinstance).
 
 ## <a name="next-steps"></a>További lépések
 
