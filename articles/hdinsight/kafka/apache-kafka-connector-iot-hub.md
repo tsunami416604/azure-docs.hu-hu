@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ff96204d53d31940846d2ec74db57caf69d4329e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd7254a9ec1ce5671aa5271ca26c678b20ef48cb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608630"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978068"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Használat Apache Kafka on HDInsight az Azure IoT hubbal
 
@@ -84,7 +84,7 @@ A csatlakozás API további információkért lásd: [ https://kafka.apache.org/
 >
 >    Ez a parancs létrehoz egy fájlt `kafka-connect-iothub-assembly_2.11-0.6.jar` a a `target/scala-2.11` könyvtárat a projekthez.
 
-## <a name="configure-apache-kafka"></a>Az Apache Kafka konfigurálása
+## <a name="configure-apache-kafka"></a>Configure Apache Kafka
 
 Az élcsomóponthoz SSH-kapcsolatot a következő lépések használatával konfigurálja az összekötőt futtató önálló módban Kafka:
 
@@ -127,7 +127,7 @@ Az élcsomóponthoz SSH-kapcsolatot a következő lépések használatával konf
 
     * Módosítsa a `key.converter=` és `value.converter=` sorokat, a következő értékeket:
 
-        ```text
+        ```ini
         key.converter=org.apache.kafka.connect.storage.StringConverter
         value.converter=org.apache.kafka.connect.storage.StringConverter
         ```
@@ -174,8 +174,8 @@ Az összekötő által használt IoT hub információk lekéréséhez használja
         2. A __beépített végpontokról__válassza __események__.
         3. A __tulajdonságok__, másolja a következő mezők értékét:
 
-            * __Event Hub-kompatibilis név__
-            * __Event Hub-kompatibilis végpont__
+            * __Event Hub-compatible name__
+            * __Event Hub-compatible endpoint__
             * __Partíciók__
 
         > [!IMPORTANT]  
@@ -189,7 +189,7 @@ Az összekötő által használt IoT hub információk lekéréséhez használja
 
         Cserélje le `myhubname` az IoT hub nevét. A válasz az alábbi szöveghez hasonlít:
 
-        ```text
+        ```json
         "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
         "EventHubCompatibleName": "iothub-ehub-myhub08-207673-d44b2a856e",
         "Partitions": 2
@@ -349,7 +349,7 @@ t.runtime.WorkerSinkTask:262)
     > [!IMPORTANT]  
     > Be kell értékét a `"deviceId"` bejegyzést az eszköz azonosítója. A következő példában az eszköz neve `fakepi`:
 
-    ```text
+    ```json
     {"messageId":"msg1","message":"Turn On","deviceId":"fakepi"}
     ```
 

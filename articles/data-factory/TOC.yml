@@ -304,6 +304,8 @@ items:
     items:
     - name: Adatok másolása Másolási tevékenységgel
       href: copy-activity-overview.md
+    - name: Fájlok törlése a Törlés tevékenységgel
+      href: delete-activity.md
     - name: Adatok másolása eszköz
       href: copy-data-tool.md
     - name: 2. generációs Data Lake Storage betöltése
@@ -458,8 +460,22 @@ items:
       href: how-to-create-schedule-trigger.md
     - name: Átfedésmentes ablak eseményindítójának létrehozása
       href: how-to-create-tumbling-window-trigger.md
+    - name: Függőség létrehozása átfedésmentes ablak eseményindítójához
+      href: tumbling-window-trigger-dependency.md
     - name: Eseményalapú trigger létrehozása
       href: how-to-create-event-trigger.md
+  - name: Sablonok
+    items:
+    - name: A sablonok áttekintése
+      href: solution-templates-introduction.md
+    - name: Fájlok másolása több tárolóból
+      href: solution-template-copy-files-multiple-containers.md
+    - name: Tömeges másolás vezérlőtáblával
+      href: solution-template-bulk-copy-with-control-table.md
+    - name: Változásadatok másolása vezérlőtáblával
+      href: solution-template-delta-copy-with-control-table.md
+    - name: Adatátalakítás a Databricksszel
+      href: solution-template-databricks-notebook.md
 - name: Referencia
   items:
   - name: .NET
@@ -490,9 +506,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Támogatási lehetőségek
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: fd664db6e5f4bfbf0a86d9984559a1e5eabf262d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c73a736dadee91f344da32fb5569d5809a382f1b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567247"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960241"
