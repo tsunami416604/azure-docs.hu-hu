@@ -682,8 +682,6 @@ items:
     href: /learn/browse/?products=azure-sql-database
   - name: Azure-ütemterv
     href: https://azure.microsoft.com/roadmap/
-  - name: GYIK
-    href: sql-database-faq.md
   - name: Nyilvános adatkészletek
     href: sql-database-public-data-sets.md
   - name: Kapcsolatok hibaelhárítása
@@ -716,9 +714,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Rugalmas feladat eltávolítása (elavult)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 1b32688e6e9ed6b826dd9191c8d58e85b1b2b128
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9b11a1bd8cc68aabc8881636d5fcdfe5cbaec034
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813676"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960547"

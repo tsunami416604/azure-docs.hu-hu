@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 4e2fcdac282d0cca9fe993efdaf787e43c2b6e9d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 68e4a7bd73b7fdd4b21140c912422b062f51c775
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433816"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869194"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Az 1. generációs Azure Data Lake Storage dokumentációja
 
-Ismerje meg, hogy hogyan használhatja a nagy kapacitású, Hadoop-kompatibilis 1. generációs Data Lake Storage (korábban Azure Data Lake Store) adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhat létre, kezelhet, és érhet el egy Data Lake adattárat, amellyel üzemeltetési és magyarázó elemzéseket végezhet.
+Az Azure Data Lake Storage Gen2 mostantól általánosan elérhető. Javasoljuk, hogy már ma kezdje el használni. További információt a [termékoldalon](https://aka.ms/adlsgen2-product) olvashat.
 
-Ha érdeklik a 2. generációs Data Lake Storage előzetes verziójának további részletei, tekintse meg a [termék ismertető oldalát](https://aka.ms/adlsgen2-product).
+Ismerje meg, hogy hogyan használhatja a nagy kapacitású, Hadoop-kompatibilis 1. generációs Data Lake Storage (korábban Azure Data Lake Store) adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhat létre, kezelhet, és érhet el egy Data Lake adattárat, amellyel üzemeltetési és magyarázó elemzéseket végezhet.
 
 <ul class="panelContent cardsFTitle">
     <li>

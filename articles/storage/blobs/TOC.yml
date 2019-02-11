@@ -512,14 +512,12 @@ items:
       href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: Gyors útmutatók
     items:
-    - name: 2. generációs Data Lake Storage-kompatibilis tárfiók létrehozása
+    - name: Storage-fiók létrehozása
       href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Databricks-fiók létrehozása vagy csatlakoztatása
-      href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: HDInsight-fürt létrehozása
-      href: ../blobs/data-lake-storage-quickstart-create-connect-hdi-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Az Azure Storage Explorer használatának első lépései
+    - name: Adatok kezelése a Storage Explorerrel
       href: ../blobs/data-lake-storage-explorer.md
+    - name: Adatelemzés a Databricksszel
+      href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: Oktatóanyagok
     items:
     - name: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával
@@ -530,9 +528,9 @@ items:
       href: ../blobs/data-lake-storage-tutorial-extract-transform-load-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: Alapelvek
     items:
-    - name: Azure Blob FileSystem-illesztőprogram Hadoophoz
+    - name: Azure Blob File System-illesztőprogram Hadoophoz
       href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Az Azure Blob File System URI-jának ismertetése
+    - name: Az Azure Blob File System URI-ja
       href: ../blobs/data-lake-storage-introduction-abfs-uri.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: HNS (Hierarchical Namespace Service, hierarchikus névtér-szolgáltatás)
       href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -546,53 +544,57 @@ items:
         href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Inaktív adatok titkosítása ügyfélkulcsokkal
         href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Hozzáférés-vezérlés az Azure Data Lake Storage Gen2-ben
+      - name: Hozzáférés-vezérlés
         href: data-lake-storage-access-control.md
-      - name: Tűzfalak és virtuális hálózatok konfigurálása
-        href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Hitelesítés
-        items:
-        - name: Hozzáférési jogosultságok felügyelete RBAC használatával
-          href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: Útmutató
     items:
-    - name: Engedélyek beállítása az Azure Storage Explorerrel
-      href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
-    - name: A 2. generációs Data Lake Storage használata Azure HDInsight-fürtökkel
-      href: ../blobs/data-lake-storage-use-hdi-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: A Hadoop fájlrendszer parancssori felületének használata a 2. generációs Data Lake Storage szolgáltatással
-      href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Frissítés a Data Lake Storage Gen1-ből
-      href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Adatok betöltése
       items:
-      - name: Adatok másolása a 2. generációs Data Lake Storage-ba a Distcp használatával
+      - name: A Distcp használata
         href: ../blobs/data-lake-storage-use-distcp.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Adatok másolása a 2. generációs Data Lake Storage-ba az Azure Data Factory használatával
+      - name: Az Azure Data Factory használata
         href: ../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Teljesítmény
+    - name: Adatok védelme
+      items:
+      - name: Tűzfalak és virtuális hálózatok konfigurálása
+        href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Hozzáférési jogosultságok felügyelete RBAC használatával
+        href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Fájl- és könyvtárszintű tulajdonságok beállítása
+        href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
+    - name: Integráció az Azure-szolgáltatásokkal
+      items:
+      - name: Használat HDInsight-fürtökkel
+        href: ../blobs/data-lake-storage-use-hdi-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Használat a Hadoop fájlrendszer parancssori felületével
+        href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: Használat az Azure Databricksszel
+        href: https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html
+      - name: Használat az Azure SQL Data Warehouse-zal
+        href: ../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase
+    - name: Teljesítmény optimalizálása
       items:
       - name: Áttekintés
         href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: A Spark on HDInsight használata
+      - name: A HDInsight-alapú Spark optimalizálása
         href: ../blobs/data-lake-storage-performance-tuning-spark.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: A Hive on HDInsight használata
+      - name: A HDInsight-alapú Hive optimalizálása
         href: ../blobs/data-lake-storage-performance-tuning-hive.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: A MapReduce on HDInsight használata
+      - name: A HDInsight-alapú MapReduce optimalizálása
         href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: A Storm on HDInsight használata
+      - name: A HDInsight-alapú Storm optimalizálása
         href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Csatlakozás az Azure Databrickshez
-      href: https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html
-    - name: Csatlakozás az Azure SQL Data Warehouse-hoz
-      href: ../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase
+    - name: Adatok áttelepítése
+      items:
+      - name: Frissítés a Data Lake Storage Gen1-ből
+        href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: Referencia
     items:
     - name: REST
       href: https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2
   - name: További források
     items:
-    - name: A Data Lake Storage Gen2 ismert problémái
+    - name: Ismert problémák
       href: data-lake-storage-known-issues.md
     - name: Azure-ütemterv
       href: https://azure.microsoft.com/roadmap/?category=storage
@@ -610,9 +612,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: Videók
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: dec146846ac3bf889ac0d694fc769c899ab1d12e
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6264c175c38c767e4e81ce70042c0d0c4ce2d89b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767666"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963216"

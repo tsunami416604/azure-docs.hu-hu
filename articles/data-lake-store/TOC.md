@@ -1,5 +1,5 @@
 # [1. generációs Data Lake Storage dokumentációja](index.md)
-# [A 2. generációs Azure Data Lake Storage-ra (előzetes verzió) történő váltás dokumentációja](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction)
+# [A 2. generációs Azure Data Lake Storage-ra történő váltás dokumentációja](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction)
 
 # Áttekintés
 ## [Az 1. generációs Data Lake Storage áttekintése](data-lake-store-overview.md)
