@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 358e8cd92fe250741adbbb9208b5e149a5f60216
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cddb3769cfc5a2ba002e19036d986f4165670dc1
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959733"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962451"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Az Apache Cordova ügyféloldali kódtár használata az Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -31,7 +31,7 @@ Ez az SDK támogatja az Apache Cordova v6.0.0, és később iOS, Android és Win
 
 * Android API 19 – 24 (KitKat Nougat keresztül).
 * iOS 8.0 és újabb verziók.
-* Windows Phone 8.1-es.
+* Windows Phone 8.1.
 * Univerzális Windows Platform.
 
 ## <a name="Setup"></a>A telepítő és Előfeltételek
@@ -55,7 +55,7 @@ ionic plugin add cordova-plugin-ms-azure-mobile-apps
 
 Adja hozzá a következő sorokat `app.component.ts` az ügyfél-objektum létrehozásához:
 
-```
+```typescript
 declare var WindowsAzure: any;
 var client = new WindowsAzure.MobileServiceClient("https://yoursite.azurewebsites.net");
 ```
@@ -71,19 +71,19 @@ Az Azure Mobile Apps Cordova beépülő modullal mindkét ionos v1 és v2-es alk
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Hogyan: felhasználók hitelesítése
-Az Azure App Service támogatja a hitelesítés és engedélyezés az alkalmazás felhasználóinak különböző külső identitásszolgáltató használatával: Facebook, Google, Microsoft Account és Twitter. Beállíthatja, hogy a engedélyeit azokon a táblákon, az adott műveletek csak a hitelesített felhasználók a hozzáférés korlátozásához. Az engedélyezési szabályok megvalósításához a kiszolgálóoldali parancsprogramok is használhatja a hitelesített felhasználók identitását. További információkért lásd: a [hitelesítés első lépései] oktatóanyag.
+## <a name="auth"></a>kézikönyv: Felhasználók hitelesítése
+Az Azure App Service támogatja a hitelesítés és engedélyezés az alkalmazás felhasználóinak különböző külső identitásszolgáltató használatával: Facebook, Google, Microsoft-fiókjával, és a Twitter. Beállíthatja, hogy a engedélyeit azokon a táblákon, az adott műveletek csak a hitelesített felhasználók a hozzáférés korlátozásához. Az engedélyezési szabályok megvalósításához a kiszolgálóoldali parancsprogramok is használhatja a hitelesített felhasználók identitását. További információkért lásd: a [hitelesítés első lépései] oktatóanyag.
 
 Ha hitelesítési Apache Cordova-alkalmazást használ, a következő Cordova beépülő modulok elérhetőnek kell lennie:
 
-* [cordova beépülő modul-eszközök]
-* [cordova-beépülő modul – inappbrowser]
+* [cordova-plugin-device]
+* [cordova-plugin-inappbrowser]
 
 Két hitelesítési folyamatok támogatottak: a server flow és a egy ügyfél folyamatot.  A server flow a legegyszerűbb felhasználói hitelesítés támaszkodik a szolgáltató webes hitelesítés felületet nyújt. A client flow lehetővé teszi, hogy az eszköz specifikus képességek mélyebb integrációjuk például single-sign-on, a szolgáltatóhoz tartozó eszközspecifikus SDK-k támaszkodik.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Útmutató: a Mobile App Service konfigurálása külső átirányítási URL-címek.
+### <a name="configure-external-redirect-urls"></a>kézikönyv: A Mobile App Service konfigurálása külső átirányítási URL-címek.
 Az Apache Cordova-alkalmazások számos különböző egy visszacsatolási képesség segítségével OAuth felhasználói felület folyamatok kezeléséhez.  A localhost OAuth felhasználói felület folyamatok problémákat okozhat, mivel a hitelesítési szolgáltatás csak tudja, hogyan használják a szolgáltatást alapértelmezés szerint.  Problémás OAuth felhasználói felület folyamatok közé:
 
 * A Ripple emulátort.
@@ -123,10 +123,10 @@ Ezek visszacsatolási URL-címeket is hozzáadhat az App Service CORS-beállít�
 
 Körülbelül 10 – 15 másodperc az új beállítások érvénybe léptetéséhez vesz igénybe.
 
-## <a name="register-for-push"></a>Hogyan: leküldéses értesítések regisztrálása
+## <a name="register-for-push"></a>kézikönyv: A leküldéses értesítések regisztrálása
 Telepítse a [phonegap-beépülő modul – leküldéses] leküldéses értesítések kezeléséhez.  Ez a beépülő modul is könnyen hozzáadhatók használatával a `cordova plugin add` parancsot a parancssorban vagy a Git-beépülő modul telepítő Visual Studión belül.  Az Apache Cordova-alkalmazásban a következő kód regisztrálja az eszközt a leküldéses értesítésekhez:
 
-```
+```javascript
 var pushOptions = {
     android: {
         senderId: '<from-gcm-console>'
@@ -179,6 +179,6 @@ A részletes API részletei a [API-dokumentáció](https://azure.github.io/azure
 [az első Apache Cordova-alkalmazás]: https://cordova.apache.org/#getstarted
 [phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
 [phonegap-beépülő modul – leküldéses]: https://www.npmjs.com/package/phonegap-plugin-push
-[cordova beépülő modul-eszközök]: https://www.npmjs.com/package/cordova-plugin-device
-[cordova-beépülő modul – inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
+[cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
+[cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

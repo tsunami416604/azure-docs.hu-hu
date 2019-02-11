@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 05caf83ffbd75ffdc66f9e31e4b34f2303c2024c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 54c5daa45a7a31334a8f4f437e914dff64752499
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448856"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963063"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>Oktatóanyag: Az Azure Notification Hubs és a Google Cloud Messaging leküldéses értesítések Android-eszközök
 
@@ -88,13 +88,13 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
 
 1. Az **alkalmazás** `Build.Gradle` fájljában adja hozzá az alábbi sorokat a **dependencies** (függőségek) szakaszhoz.
 
-    ```text
+    ```gradle
     compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
     compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 2. A **dependencies** (függőségek) szakasz után vegye fel az alábbi tárhelyet.
 
-    ```text
+    ```gradle
     repositories {
         maven {
             url "http://dl.bintray.com/microsoftazuremobile/SDK"

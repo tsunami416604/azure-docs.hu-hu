@@ -1,19 +1,19 @@
 ---
 title: Gyakori kérdések – VMware-ből az Azure Site recoveryvel Azure-beli vészhelyreállításához |} A Microsoft Docs
 description: Ez a cikk gyakori kérdésekre foglalja össze, amikor, vészhelyreállítás beállítása helyszíni VMware virtuális gépek az Azure-bA az Azure Site Recovery használatával
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 1/29/2019
+ms.date: 2/7/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aa4b0fcdfecde181eea4481cc40b898ca74fce76
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fb4add1194f7fe6d10859f76f244f027b35ad92d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212231"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960581"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -108,6 +108,9 @@ A replikáció VMware virtuális gép futnia kell egy támogatott operációs re
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Milyen gyakran replikálhatja az Azure-bA?
 Replikáció Azure-bA replikált VMware virtuális gépek esetén a folyamatos.
+
+### <a name="can-i-retain-the-ip-address-on-failover"></a>A feladatátvételi IP-cím is megőrizheti?
+Igen, őrizheti meg a feladatátvételi IP-címe. Győződjön meg arról, hogy a számítás és hálózat panelen, a feladatátvétel előtt említik a cél IP-címe. Arra is ügyeljen a gépek leállítása a feladatátvétel, feladat-visszavétel időpontjában IP-ütközések elkerülése érdekében idején.
 
 ### <a name="can-i-extend-replication"></a>Ki lehet terjeszteni a replikációt?
 A kiterjesztett vagy láncolt replikáció nem támogatott. Ennek a funkciónak a kérelem [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).

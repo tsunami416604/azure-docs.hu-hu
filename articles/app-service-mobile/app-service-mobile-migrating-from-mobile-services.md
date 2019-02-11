@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 1c519c658db29152f7ecafa8ac244c922cf4cd9f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: dfc5e2923215b1669b0a3300653ad0cae7379655
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118992"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960734"
 ---
 # <a name="article-top"></a>A meglévő Azure Mobile Service migrálása az Azure App Service
 Az a [az Azure App Service általános elérhetősége], az Azure Mobile Services-webhelyek könnyen migrálhatók helyi kihasználásához az Azure App Service összes funkcióját.  Ez a dokumentum leírja, mi történik, ha telepítheti át webhelyét az Azure Mobile Services az Azure App Service-ben.
@@ -270,8 +270,8 @@ A következő további beállításokkal is a saját mobilszolgáltatás áttele
 | Nastavení aplikace | Leírás |
 |:--- |:--- |
 | **MS\_MobileServiceName** |Az alkalmazás neve |
-| **MS\_MobileServiceDomainSuffix** |A megadott tartománynév előtagja. azaz azure-mobile.net |
-| **MS\_applicationkey-hez** |Az Alkalmazáskulcs |
+| **MS\_MobileServiceDomainSuffix** |The domain prefix. i.e azure-mobile.net |
+| **MS\_ApplicationKey** |Az Alkalmazáskulcs |
 | **MS\_MasterKey** |Az alkalmazás főkulcs |
 
 Az Alkalmazáskulcs és a főkulcs megegyeznek az alkalmazás kulcsainak az eredeti Mobile Service-ből.  Különösen az Alkalmazáskulcsot által küldött mobilügyfelek mobil API-használati ellenőrzése.
@@ -332,7 +332,7 @@ Megoldás: Ha szeretné a hely klónozza, tegye meg a portálon keresztül.
 ### <a name="changing-webconfig-does-not-work"></a>Módosítja a Web.config nem működik
 Egy ASP.NET-hellyel rendelkezik, ha módosítja a `Web.config` fájl nincs alkalmazva.  Az Azure App Service összeállít egy megfelelő `Web.config` fájl támogatásához a mobilszolgáltatások modul indítása során.  XML-átalakítás fájl használatával bizonyos beállításokat (például egyéni fejlécek) felül lehet bírálni.  Hozzon létre egy fájlt a nevű `applicationHost.xdt` -Ez a fájl végződése a `D:\home\site` az Azure Service könyvtárába.  Töltse fel a `applicationHost.xdt` fájlt egy egyéni üzembehelyezési szkript keresztül, vagy közvetlenül a Kudu használatával.  Az alábbiakban látható egy példa a dokumentum:
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
   <system.webServer>

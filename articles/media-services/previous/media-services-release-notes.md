@@ -11,16 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: aa2a059dd470e671aa3483f2259bcf91796c070d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3cf819ceb01e52b029e8654dddc355afd27a9b63
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631668"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982998"
 ---
-# <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
+# <a name="azure-media-services-release-notes-legacy"></a>Az Azure Media Services kibocsátási megjegyzéseket (örökölt)
+
 Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója változásokat a korábbi kiadások és ismert problémáit.
 
 > [!NOTE]
@@ -346,12 +347,12 @@ A Media Services REST-metaadatok már 2.7-es verzió. A legújabb REST frissít�
 A Media Services SDK for .NET már 3.0.0.7 verzió
 
 ### <a id="sept_14_breaking_changes"></a>Használhatatlanná tévő változásai
-* Forrás átnevezte [Streamvégpontok].
+* Forrás átnevezte [StreamingEndpoint].
 * A módosítás az alapértelmezett viselkedés kódolásához, és tegye közzé az MP4-fájlokat az Azure portal használatakor.
 
 ### <a id="sept_14_GA_changes"></a>Új funkciók/forgatókönyveket, amelyek részei az általánosan elérhető kiadások
 * A Media Indexer médiafeldolgozót jelent meg. További információkért lásd: [a Media Indexer médiafájlok indexelése](https://msdn.microsoft.com/library/azure/dn783455.aspx).
-* Használhatja a [Streamvégpontok] entitás hozzáadása az egyéni tartománynevek (fogadó).
+* Használhatja a [StreamingEndpoint] entitás hozzáadása az egyéni tartománynevek (fogadó).
   
     Egyéni tartománynév használata a Media Services streaming endpoint neveként, a streamvégpontnak egyéni állomásnevek hozzá. A Media Services REST API-k vagy a .NET SDK használatával egyéni állomásnevek hozzáadása.
   
@@ -461,7 +462,7 @@ A következő módosításokat ebben a szakaszban említett a 2013. június Medi
 
 * Lehetővé teszi több tárfiók csatolása egy Media Services-fiókját. 
     * Tárfiók
-    * Asset.StorageAccountName és Asset.StorageAccount
+    * Asset.StorageAccountName and Asset.StorageAccount
 * Job.Priority frissítésének lehetőségét. 
 * Értesítési kapcsolatos entitásokat és tulajdonságok: 
     * JobNotificationSubscription
@@ -484,16 +485,16 @@ A következő változások legyenek belefoglalva a június 2013 a Media Services
 * Értesítési kapcsolatos API-k. 2.2.0.0 verziójával kezdődően, figyelheti az Azure Queue storage értesítésekre. További információkért lásd: [kezelni a Media Services feladat értesítések](https://msdn.microsoft.com/library/azure/dn261241.aspx).
   
     * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions tulajdonság
-    * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint típusa
+    * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint type
     * Microsoft.WindowsAzure.MediaServices.Client.IJobNotificationSubscription típusa
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection típusa
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType típusa
+    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection type
+    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType type
 * A Storage ügyféloldali SDK 2.0-s (Microsoft.WindowsAzure.StorageClient.dll) függőség
 * Függőség OData 5.5-ös (Microsoft.Data.OData.dll)
 
 ## <a id="december_changes_12"></a>2012. december kiadás
 ### <a name="dec_12_dotnet_changes"></a>Media Services .NET SDK-módosítások
-* Az IntelliSense: Hiányzik az IntelliSense dokumentáció számos hozzá lett adva.
+* IntelliSense: Hiányzik az IntelliSense dokumentáció számos hozzá lett adva.
 * Microsoft.Practices.TransientFaultHandling.Core: Probléma volt rögzített, ahol az SDK továbbra is rendelkezett egy függőséget ezt a szerelvényt, régebbi verzióját. Az SDK-val most már hivatkozik a szerelvény 5.1.1209.1 verzióját.
 
 A 2012. November SDK található hibák javításait:
@@ -504,7 +505,7 @@ A 2012. November SDK található hibák javításait:
 * IAssetFile.Upload(filepath): Probléma volt rögzített, ahol a szinkron feltöltési módszer történt kivétel a következő hiba az eszközre feltöltésekor a rendszer több fájlt. Hiba: "a kiszolgáló nem tudta hitelesíteni a kérelmet. Győződjön meg arról, hogy az engedélyezési fejléc értékének formátuma megfelelő többek között az aláírás."
 * IAssetFile.UploadAsync: Probléma volt rögzített fájlok öt fájl egyidejű feltöltésének korlátozott.
 * IAssetFile.UploadProgressChanged: Az SDK-t mostantól megjeleníti ezt az eseményt.
-* IAssetFile.DownloadAsync (karakterlánc, BlobTransferClient, ILocator, CancellationToken): Ez a módszer túlterhelés mostantól megjeleníti.
+* IAssetFile.DownloadAsync(string, BlobTransferClient, ILocator, CancellationToken): Ez a módszer túlterhelés mostantól megjeleníti.
 * IAssetFile.DownloadAsync: Rögzített volt a problémát, amely legfeljebb öt fájlt a fájlok az egyidejű letöltését.
 * IAssetFile.Delete(): Probléma hol hívó delete előfordulhat, hogy kivételt, ha nem történt fájlfeltöltés a IAssetFile a rendszerriasztások mechanizmusában.
 * Feladatok: Probléma volt rögzített, ahol egy "MP4 zökkenőmentes Streamek feladat" a "PlayReady védelmi feladat" feladat a sablonok segítségével-láncolás nem hozott létre tevékenységeket egyáltalán.
@@ -526,7 +527,7 @@ Ebben a szakaszban említett módosításra-frissítéseket a 2012. November (ve
     * IAssetFile váltja fel a FileInfo és a egy másik működés. A használatához az objektumpéldány IAssetFiles, kiegészítve a feltöltés, a Media Services SDK-t vagy a segítségével a Storage SDK-t. A következő IAssetFile.Upload túlterheléssel használhatók:
   
         * IAssetFile.Upload(filePath): A szinkron módszer blokkolja a hozzászólásláncot, és ajánlott csak egyetlen fájl feltöltésekor.
-        * IAssetFile.UploadAsync (fájl elérési útja, blobTransferClient, lokátort, cancellationToken): Ez a metódus aszinkron az előnyben részesített feltöltési mechanizmusa. 
+        * IAssetFile.UploadAsync(filePath, blobTransferClient, locator, cancellationToken): Ez a metódus aszinkron az előnyben részesített feltöltési mechanizmusa. 
     
             Ismert hiba: Ha a megszakítási tokent használ, a feltöltés meg lett szakítva. A feladatok számos megszakítás állapotok is rendelkezhet. Később kell a tényleges, kivételek kezelése.
 * Keresők
@@ -562,7 +563,7 @@ Az alábbi funkciókat lett az SDK novemberi kiadásában új:
 [Kimeneti metaadatok]: http://msdn.microsoft.com/library/azure/dn783217.aspx
 [Deliver content]: http://msdn.microsoft.com/library/azure/hh973618.aspx
 [Index media files with the Azure Media Indexer]: http://msdn.microsoft.com/library/azure/dn783455.aspx
-[Streamvégpontok]: http://msdn.microsoft.com/library/azure/dn783468.aspx
+[StreamingEndpoint]: http://msdn.microsoft.com/library/azure/dn783468.aspx
 [Work with Media Services live streaming]: http://msdn.microsoft.com/library/azure/dn783466.aspx
 [Use AES-128 dynamic encryption and the key delivery service]: http://msdn.microsoft.com/library/azure/dn783457.aspx
 [Use PlayReady dynamic encryption and the license delivery service]: http://msdn.microsoft.com/library/azure/dn783467.aspx
