@@ -11,18 +11,40 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: cea5f2a3eaa7bddb523d95936fbe0a50e0fd16ed
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4e7cc1340a85e1d00c2f64abeb35a99052184c52
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564340"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100176"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.  Az SDK teljes leírását látogasson el a referenciadokumentumai:
 + Az Azure Machine Learning [ **fő SDK a Pythonhoz**](https://aka.ms/aml-sdk)
 + Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-02-11"></a>2019-02-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Az Azure Machine Learning SDK for Python v1.0.15
+
++ **Új funkciók**
+  + Az Azure Machine Learning-folyamatokat hozzáadott AzureBatchStep ([notebook](https://aka.ms/pl-azbatch)), HyperDriveStep ([notebook](https://aka.ms/pl-hyperdrive)) és ütemezési fuctionality időalapú ([notebook](https://aka.ms/pl-schedule)).
+  +  DataTranferStep frissítve, hogy működik az Azure SQL Server és az Azure database for postgresql-hez ([notebook](https://aka.ms/pl-data-trans)).
+
++ **Módosítások**
+  + Elavult `PublishedPipeline.get_published_pipeline` érvénytelenítve `PublishedPipeline.get`.
+  + Elavult `Schedule.get_schedule` érvénytelenítve `Schedule.get`.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1012"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.12
+
++ **Új funkciók**
+  + Data Prep mostantól támogatja egy Azure SQL database adattárolója használatával olvasásakor.
+ 
++ **Módosítások**
+  + Nagy mennyiségű adat bizonyos műveletek teljesítményét memória jelentősen javult.
+  + `read_pandas_dataframe()` Mostantól csak `temp_folder` adni.
+  + A `name` tulajdonsága `ColumnProfile` lett használata elavult - `column_name` helyette.
 
 ## <a name="2019-01-28"></a>2019-01-28
 

@@ -14,15 +14,17 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: wesmc
-ms.openlocfilehash: 0f86bd807bf7bf0d00ad659f86b6e1170f31074c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 72e27b7098d9891dc54b31c34e2211362e7c9f50
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019686"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099972"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>A Redis Azure Cache felügyelete
 Ez a témakör ismerteti, hogyan lehet felügyeleti feladatok végrehajtásához [újraindítása](#reboot) és [frissítések ütemezése](#schedule-updates) az Azure Cache Redis-példány számára.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="reboot"></a>Újraindítás
 A **újraindítás** panel lehetővé teszi, hogy a gyorsítótár egy vagy több csomópont újraindítását. Az újraindítás funkció lehetővé teszi, hogy tesztelje az alkalmazást a rugalmassághoz, ha sikertelen. a gyorsítótár-csomópont.
@@ -92,7 +94,7 @@ A **frissítések ütemezése** panel lehetővé teszi, hogy a prémium szintű 
 
 Adja meg a karbantartási időszak, ellenőrizze a kívánt napok és adja meg a karbantartási időszak kezdő órája minden nap, és kattintson **OK**. Vegye figyelembe, hogy a karbantartási ablak időpontja (UTC). 
 
-A frissítések az alapértelmezett és minimális karbantartási időszak 5 óra. Ez az érték nem konfigurálható az Azure Portalról, de a PowerShell használatával konfigurálhatja a `MaintenanceWindow` paraméterében a [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) parancsmagot. További információkért lásd: [felügyelhető a PowerShell, a parancssori felület vagy a más felügyeleti eszközök ütemezett frissítések?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
+A frissítések az alapértelmezett és minimális karbantartási időszak 5 óra. Ez az érték nem konfigurálható az Azure Portalról, de a PowerShell használatával konfigurálhatja a `MaintenanceWindow` paraméterében a [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) parancsmagot. További információkért lásd: [felügyelhető a PowerShell, a parancssori felület vagy a más felügyeleti eszközök ütemezett frissítések?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
 
 
 ## <a name="schedule-updates-faq"></a>Frissítések ütemezése – Gyakori kérdések
@@ -110,10 +112,10 @@ Csak a Redis-kiszolgáló frissítéseket az ütemezett karbantartási időszakb
 ### <a name="can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools"></a>A PowerShell, a parancssori felület vagy a más felügyeleti eszközök felügyelt ütemezett frissítések lehetőségeket?
 Igen, az ütemezett frissítések a következő PowerShell-parancsmagok használata kezelheti:
 
-* [Get-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/get-azurermrediscachepatchschedule)
-* [New-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/new-azurermrediscachepatchschedule)
-* [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry)
-* [Remove-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/remove-azurermrediscachepatchschedule)
+* [Get-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/get-azrediscachepatchschedule)
+* [New-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/new-azrediscachepatchschedule)
+* [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry)
+* [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality"></a>Milyen díjszabás szint esetében, használhatja, hogy az ütemezés frissítések funkciót?
 A **frissítések ütemezése** szolgáltatás csak a prémium tarifacsomagban érhető el.

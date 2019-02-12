@@ -11,12 +11,12 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 751a1dc84f81b388a1fffb82cc3dfbc4996eed1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a6f558fd97dc13044d1ea4da63ff5879e6599f9e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249629"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100705"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -230,3 +230,4 @@ Ismerkedés az Azure Machine Learning szolgáltatással, tekintse meg:
 * [Mi az Azure Machine Learning szolgáltatás?](overview-what-is-azure-ml.md)
 * [Rövid útmutató: Hozzon létre egy munkaterületet a Pythonnal](quickstart-get-started.md)
 * [Oktatóanyag: A modell tanítása](tutorial-train-models-with-aml.md)
+* [Munkaterület létrehozása egy resource manager-sablonnal](how-to-create-workspace-template.md)

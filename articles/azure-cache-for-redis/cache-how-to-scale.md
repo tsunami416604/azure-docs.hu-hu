@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 009fbd3b86518758e9654fab547bab99bec369de
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 904c96d71194a097f2750ad2c1076b30b80f3745
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105202"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100227"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>A Redis az Azure Cache méretezése
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatások a kiválasztott biztosítanak. Gyorsítótár létrehozása után skálázhatja mérete és a gyorsítótár a tarifacsomagot, ha az alkalmazás a követelmények változnak. Ez a cikk bemutatja, hogyan méretezzünk át a gyorsítótár az Azure portal és az eszközök, például az Azure PowerShell-lel és az Azure CLI használatával.
@@ -69,9 +69,12 @@ Mellett a cache-példányok skálázása az Azure Portalon, skálázhatja PowerS
 * [Méretezési csoport MAML használatával](#scale-using-maml)
 
 ### <a name="scale-using-powershell"></a>Méretezési csoport PowerShell-lel
-Az Azure Cache a Redis-példány a PowerShell használatával méretezheti a [Set-azurermrediscache parancsmag esetében](https://docs.microsoft.com/powershell/module/azurerm.rediscache/set-azurermrediscache?view=azurermps-6.6.0) parancsmag során a `Size`, `Sku`, vagy `ShardCount` tulajdonság módosítását mutatjuk be. Az alábbi példa bemutatja, hogyan nevű gyorsítótár méretezése `myCache` 2,5 GB-gyorsítótárhoz. 
 
-    Set-AzureRmRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Az Azure Cache a Redis-példány a PowerShell használatával méretezheti a [Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) parancsmag során a `Size`, `Sku`, vagy `ShardCount` tulajdonság módosítását mutatjuk be. Az alábbi példa bemutatja, hogyan nevű gyorsítótár méretezése `myCache` 2,5 GB-gyorsítótárhoz. 
+
+    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
 A PowerShell-lel méretezéssel kapcsolatos további információkért lásd: [Redis Powershell-lel az Azure Cache méretezését](cache-howto-manage-redis-cache-powershell.md#scale).
 

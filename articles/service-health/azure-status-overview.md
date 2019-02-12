@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 11/16/2018
+ms.date: 02/11/2019
 ms.author: stbaron
-ms.openlocfilehash: 7121087d9d9699a73b88e07599f70e0c7c40c1eb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6054b33e4068d36c5bfbb80120086a92a03525c8
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308280"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097508"
 ---
 # <a name="azure-status"></a>Az Azure állapota
-[Az Azure állapota](https://azure.microsoft.com/status/) biztosít az Azure-szolgáltatások állapotának globális nézet készítése. Az Azure állapota a szolgáltatás rendelkezésre állására Press információkat szerezhet. Mindenki hozzáférhet az Azure állapota, és jelenthetik nézetben minden szolgáltatás, amely a szolgáltatás állapotát. 
+[Az Azure állapota](https://azure.microsoft.com/status/) nyújt Azure-szolgáltatások és régiók globális nézet készítése. Az Azure állapota a szolgáltatás rendelkezésre állására Press információkat szerezhet. Az Azure állapota minden olyan szolgáltatás, amely a szolgáltatás állapotát, valamint a széleskörű hatással van az incidensek jelentés megtekintéséhez mindenki számára érhető el. Ha Ön egy jelenlegi Azure-felhasználó, azonban Határozottan javasoljuk, hogy használja a személyre szabott élmény az [Azure Service Health](https://aka.ms/azureservicehealth). Az Azure Service Health összes valamilyen okból kimaradás lép, a közelgő tervezett karbantartáshoz tevékenységeket és a szolgáltatás tanácsadók tartalmazza.
 
 ![Azure állapotlapján](./media/azure-status-overview/azure-status.PNG)
 

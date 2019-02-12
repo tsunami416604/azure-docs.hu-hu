@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 25b2e90c6293b93a15aeae2fbf08b70cb191cef0
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 13841e1ef6298ffc85f6ccf5cb2a60e5a9b992b3
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098714"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099377"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési kódfolyamat
 
@@ -53,13 +53,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
-&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &state=12345
 ```
 
 > [!TIP]
 > A kérelem végrehajtása a hivatkozásra kattintva! Miután bejelentkezett, a böngésző át kell irányítani `https://localhost/myapp/` együtt egy `code` címet a címsorba.
-> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> 
+> 
 
 | Paraméter    | Required/optional | Leírás |
 |--------------|-------------|--------------|
@@ -138,7 +140,7 @@ Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
@@ -168,7 +170,7 @@ Token sikeres válasz fog kinézni:
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...",
     "token_type": "Bearer",
     "expires_in": 3599,
-    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fmail.read",
+    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fuser.read",
     "refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
@@ -239,7 +241,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 Access_tokens rövid életűek, és frissítenie kell azokat után folytatja az erőforrások eléréséhez. Ha elküldi egy másik megteheti `POST` kérelmet a `/token` végpont, ezúttal biztosítása a `refresh_token` helyett a `code`.  Frissítési jogkivonatok érvényesek az összes engedélyt, hogy az ügyfél már megkapta-hozzájárulás, a frissítési jogkivonatok kiadott vonatkozó kérés `scope=mail.read` segítségével egy új hozzáférési jogkivonat a kérelem `scope=api://contoso.com/api/UseResource`.  
 
-Frissítési jogkivonatok nem rendelkezik megadott élettartam. A frissítési biztonsági jogkivonat élettartamának jellemzően viszonylag hosszú. Azonban bizonyos esetekben frissítési biztonsági jogkivonat lejár, vissza lenne vonva, vagy nem rendelkezik megfelelő jogosultsággal a kívánt műveletet. Az alkalmazás várható és kezelni kell [a kiállítási végpont által visszaadott hibák](#error-codes-for-token-endpoint-errors) megfelelően. 
+Frissítési jogkivonatok nem rendelkezik megadott élettartam. A frissítési biztonsági jogkivonat élettartamának jellemzően viszonylag hosszú. Azonban bizonyos esetekben frissítési biztonsági jogkivonat lejár, vissza lenne vonva, vagy nem rendelkezik megfelelő jogosultsággal a kívánt műveletet. Az alkalmazás várható és kezelni kell [a kiállítási végpont által visszaadott hibák](#error-codes-for-token-endpoint-errors) megfelelően.  Vegye figyelembe, hogy frissítési biztonsági jogkivonat nem kerülnek visszavonásra, amikor új hozzáférési jogkivonatok beszerzésére használható. 
 
 ```
 // Line breaks for legibility only
@@ -249,7 +251,7 @@ Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=refresh_token
@@ -280,7 +282,7 @@ Token sikeres válasz fog kinézni:
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...",
     "token_type": "Bearer",
     "expires_in": 3599,
-    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fmail.read",
+    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fuser.read",
     "refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }

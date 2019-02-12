@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
-ms.openlocfilehash: d0176cde824346c80fff097b87c107b7052e822f
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 3588496a2f41af0af273497ea3952d138385f0af
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959561"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100856"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Ismert problémák és megoldásaik az SCIM 2.0 protokoll megfelelőség az Azure AD-felhasználó kiépítési szolgáltatás
 
@@ -59,7 +59,7 @@ Igen. Ha már használja az alkalmazáspéldány egyszeri bejelentkezést, és s
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com.
 2. Az a **Azure Active Directory > Vállalati alkalmazások** szakaszban az Azure Portalon keresse meg és válassza ki a meglévő SCIM-alkalmazást.
 3.  Az a **tulajdonságok** szakaszában a meglévő SCIM-alkalmazás, példány a **Objektumazonosító**.
-4.  Egy új böngészőablakban, lépjen a https://developer.microsoft.com/en-us/graph/graph-explorer , és jelentkezzen be az Azure AD-bérlővel, ahol az alkalmazás bekerül a rendszergazdájaként.
+4.  Egy új böngészőablakban, lépjen a https://developer.microsoft.com/graph/graph-explorer , és jelentkezzen be az Azure AD-bérlővel, ahol az alkalmazás bekerül a rendszergazdájaként.
 5. A Graph Explorer keresse meg az üzembe helyezési feladat Azonosítóját az alábbi parancs futtatásával. Cserélje le a szolgáltatást a harmadik lépésben másolt résztvevő-azonosító (objektumazonosító:) "[object-id]".
  
  `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
@@ -99,7 +99,7 @@ Igen. Ha az alkalmazás régi viselkedés előtti a javításokat, és üzembe h
 1.  Jelentkezzen be az Azure Portalra a https://portal.azure.com.
 2. az a **Azure Active Directory > Vállalati alkalmazások > alkalmazás létrehozása** szakaszban az Azure Portal, hozzon létre egy új **katalógusban nem szereplő** alkalmazás.
 3.  Az a **tulajdonságok** az új egyéni alkalmazás, példány szakaszában a **Objektumazonosító**.
-4.  Egy új böngészőablakban, lépjen a https://developer.microsoft.com/en-us/graph/graph-explorer , és jelentkezzen be az Azure AD-bérlővel, ahol az alkalmazás bekerül a rendszergazdájaként.
+4.  Egy új böngészőablakban, lépjen a https://developer.microsoft.com/graph/graph-explorer , és jelentkezzen be az Azure AD-bérlővel, ahol az alkalmazás bekerül a rendszergazdájaként.
 5. A Graph Explorer futtassa az alábbi parancsot az alkalmazás kiépítési konfigurációjának inicializálása.
 Cserélje le a szolgáltatást a harmadik lépésben másolt résztvevő-azonosító (objektumazonosító:) "[object-id]".
 

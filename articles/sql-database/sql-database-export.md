@@ -7,17 +7,17 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: douglaslMS
-ms.author: douglasl
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d00d9b4a945b139ed7b930609fdab24e4a211551
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 050da5e71fd804055d0a2ece1150b79b3922170f
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891097"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100584"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL-adatbázis exportálása BACPAC-fájlba
 
@@ -100,5 +100,5 @@ $exportStatus
 - Az SQL Server-adatbázis egy BACPAC importálásával kapcsolatos további információkért lásd: [SQL Server-adatbázis BACPAC importálása](https://msdn.microsoft.com/library/hh710052.aspx).
 - SQL Server-adatbázis exportálása BACPAC kapcsolatos további információkért lásd: [egy adatrétegbeli alkalmazás exportálása](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 - Adatbázis áttelepítése a Data Migration Service használatával kapcsolatos további információkért lásd: [SQL Server Migrálása az Azure SQL Database-kapcsolat nélküli módban a DMS használatával](../dms/tutorial-sql-server-to-azure-sql.md).
-- Ha exportálja az SQL Serverből, egy prelude áttelepítése az Azure SQL Database, [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
+- Ha exportálja az SQL Serverből, egy prelude áttelepítése az Azure SQL Database, [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-single-database-migrate.md).
 - Megtudhatja, hogyan kezelésére és megosztására tárkulcsok és közös hozzáférésű jogosultságkódok biztonságosan, lásd: [Azure Storage biztonsági útmutatóját](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

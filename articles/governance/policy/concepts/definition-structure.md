@@ -4,17 +4,17 @@ description: 'Ismerteti, hogy a szabályzatdefiníció erőforrás az Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/04/2019
+ms.date: 02/11/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fc0d5c4abc3b8584212798d5ea5b6ab65404e93d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 14c5a9a5d9e3bd71ca1fdaf3545af3e74b3973c2
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698292"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100628"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -90,8 +90,20 @@ Paraméterek ugyanúgy működnek, szabályzatok készítése során. Paraméter
 > [!NOTE]
 > Paraméterek egy meglévő és hozzárendelt-definíció adható hozzá. Az új paraméternek tartalmaznia kell a **defaultValue** tulajdonság. Ez megakadályozza, hogy meglévő hozzárendelését a szabályzatot vagy kezdeményezést közvetve érvénytelen kerül sor.
 
-Például meghatározhat egy szabályzatot, amely korlátozza a helyeken, ahol erőforrásokat is üzembe helyezhetők.
-A házirend létrehozásakor deklarálhatja lenne a következő paraméterekkel:
+### <a name="parameter-properties"></a>Jelentésparaméter tulajdonságai
+
+A paraméter a következő tulajdonságokat a szabályzat-definícióban használt rendelkezik:
+
+- **Név**: A paraméter neve. Használja a `parameters` üzembe helyezési funkció a szabály belül. További információkért lásd: [paraméter értéke](#using-a-parameter-value).
+- `type`: Meghatározza, hogy a paraméter egy **karakterlánc** vagy egy **tömb**.
+- `metadata`: Elsősorban az Azure Portalon felhasználóbarát információk megjelenítéséhez altulajdonságok határozza meg:
+  - `description`: A paraméter mire való a leírását. Példák az elfogadható értékek használható.
+  - `displayName`: A rövid név jelenik meg a paraméter a portálon.
+  - `strongType`: (Nem kötelező) Használja a portálon keresztül a szabályzatdefiníció hozzárendelésekor. Környezet figyelembe listáját tartalmazza. További információkért lásd: [strongType](#strongtype).
+- `defaultValue`: (Nem kötelező) Beállítja a hozzárendelés a paraméter értékét, ha nincs érték megadva. Szükséges, amikor frissíti egy meglévő szabályzat-definíció, amely hozzá van rendelve.
+- `allowedValues`: (Nem kötelező) A paraméter során hozzárendelés fogadó értékek listáját jeleníti meg.
+
+Például meghatározhat szabályzatdefiníció korlátozni a helyeken, ahol erőforrásokat is üzembe helyezhetők. A szabályzat-definíció egy paramétere lehet **allowedLocations**. Ez a paraméter az elfogadott értékek korlátozásának mindegyik szabályzatdefiníció-hozzárendelés volna használható. Használatát **strongType** nyújt hatékonyabb, ha a portálon keresztül a hozzárendelés befejezése:
 
 ```json
 "parameters": {
@@ -102,21 +114,17 @@ A házirend létrehozásakor deklarálhatja lenne a következő paraméterekkel:
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "westus2"
+        "defaultValue": "westus2",
+        "allowedValues": [
+            "eastus2",
+            "westus2",
+            "westus"
+        ]
     }
 }
 ```
 
-A paraméter típusa karakterláncként vagy a tömb lehet. A metaadat-tulajdonságot felhasználóbarát információk megjelenítésére szolgál eszközökkel, mint például az Azure Portalon.
-
-A metaadat-tulajdonságot belül használhatja **strongType** biztosít az Azure Portalon lehetőségek többszörös kijelöléses listája. Megengedett értékek a **strongType** jelenleg tartalmaz:
-
-- `"location"`
-- `"resourceTypes"`
-- `"storageSkus"`
-- `"vmSKUs"`
-- `"existingResourceGroups"`
-- `"omsWorkspace"`
+### <a name="using-a-parameter-value"></a>A paraméter értékének használata
 
 A szabályzatbeli szabályban hivatkozik az alábbi paraméterek `parameters` telepítési érték függvény Szintaxis:
 
@@ -126,6 +134,19 @@ A szabályzatbeli szabályban hivatkozik az alábbi paraméterek `parameters` te
     "in": "[parameters('allowedLocations')]"
 }
 ```
+
+Ez a minta hivatkozik a **allowedLocations** paraméter, amely a mutattuk [jelentésparaméter tulajdonságai](#parameter-properties).
+
+### <a name="strongtype"></a>strongType
+
+Belül a `metadata` tulajdonság, használhat **strongType** biztosít az Azure Portalon lehetőségek többszörös kijelöléses listája. Megengedett értékek a **strongType** jelenleg tartalmaz:
+
+- `"location"`
+- `"resourceTypes"`
+- `"storageSkus"`
+- `"vmSKUs"`
+- `"existingResourceGroups"`
+- `"omsWorkspace"`
 
 ## <a name="definition-location"></a>Definíció helye
 

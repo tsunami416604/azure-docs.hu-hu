@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 6c498f51bffeadce7a7c0dba8491942f1d4d0248
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 09e1f99c7d0b56f5e2af893385dde19b8f358a19
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766095"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099139"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 frissítése
 
@@ -118,6 +118,18 @@ A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az A
 - A felügyelt lemezek mostantól alapértelmezés szerint engedélyezve van az Azure Stack portálon használó virtuális gépek létrehozásakor. Tekintse meg a [ismert problémák](#known-issues-post-installation) a Managed Disks Virtuálisgép-létrehozási hibák elkerülése érdekében szükséges további lépéseket a következő szakaszban.
 
 - Ebben a kiadásban bevezeti a riasztás **javítási** az Azure Stack-operátori műveletek. Néhány 1811 riasztásokat biztosít egy **javítási** gombra a figyelmeztető kiválasztható a probléma megoldásához. További információkért lásd: [figyelni és riasztásokat az Azure Stackben](azure-stack-monitor-health.md).
+
+- A frissítési élmény az Azure Stackben frissítéseit. A frissítés fejlesztések: 
+    - A frissítéseket a jobb nyomon követés frissítések folyamatban lévő frissítési előzmények osztani, és a befejezett frissítések lapot.
+    - Az essentials szakaszban az új ikonok és az aktuális és az OEM-verziók, valamint az utolsó elrendezés továbbfejlesztett állapot Vizualizációk frissítése dátum.
+    - **Nézet** a kibocsátási megjegyzések oszlop végigvezeti a felhasználót a dokumentációját közvetlenül az adott a Általános lap helyett a frissítési hivatkozásra.
+    - A **-előzmények frissítéséhez** lapon határozza meg a futtatási idejét, a frissítéseket, valamint a speciális szűrési képességeket.  
+    - Csatlakoztatott, az Azure Stack skálázási egységek továbbra is automatikusan megkap **frissítés érhető el** , amint elérhetővé válnak.
+    - Az Azure Stack skálázási egységek, amelyek nem csatlakoznak ugyanúgy, mint importálhatja a frissítés előtt. 
+    - Nem változtak a folyamat a JSON-naplók letöltése a portálról. Az Azure Stack-operátorok jelenik meg bővülő kifejezése folyamat lépéseit.
+
+    További információkért lásd: [alkalmazza a frissítéseket az Azure Stackben](azure-stack-apply-updates.md).
+
 
 ## <a name="fixed-issues"></a>Hibák kijavítva:
 

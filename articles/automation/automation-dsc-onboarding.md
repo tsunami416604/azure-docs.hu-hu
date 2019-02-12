@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 1a3cfb51cc75c89c5a4580b1b7721eb763078980
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f9a1076ddfb840ba845718c5ca0deea8c5788e7d
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096704"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100329"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Gépek előkészítése kezelésre, az Azure Automation állapot konfigurációja
 
@@ -24,7 +24,8 @@ Például [PowerShell Desired State Configuration](/powershell/dsc/overview), az
 
 Azure Automation Állapotkonfiguráció különböző gépek kezeléséhez használhatók:
 
-- Az Azure virtual machines (klasszikus és Azure Resource Manager üzemi modell is telepített)
+- Azure virtuális gépek
+- Azure-beli virtuális gépek (klasszikus)
 - Az Amazon Web Services (AWS) EC2-példányok
 - Fizikai/virtuális Windows-számítógépek a helyszínen, vagy nem az Azure vagy AWS felhőben
 - Fizikai/virtuális Linux rendszerű számítógépek a helyszínen, az Azure-ban, vagy eltérő Azure-felhőben
@@ -35,6 +36,31 @@ Ezenkívül ha nem áll készen a gép konfigurációjának kezelése a felhőb�
 > Kezelése az Azure virtuális gépek konfigurációs külön díjak nélkül tartalmazza, ha a telepített virtuális gépek DSC bővítmény 2.70-nál nagyobb. Tekintse meg a [ **díjszabását ismertető lapon Automation** ](https://azure.microsoft.com/pricing/details/automation/) további részletekért.
 
 A következő szakaszok szerkezeti hogyan segítségével készítheti elő az Azure Automation Állapotkonfiguráció gép különböző típusú.
+
+## <a name="azure-virtual-machines"></a>Azure virtuális gépek
+
+Azure Automation Állapotkonfiguráció teszi lehetővé egyszerűen előkészítése az Azure virtual machines, a konfigurációkezelés, az Azure Portalon, a az Azure Resource Manager-sablonok vagy a PowerShell használatával. Technikai részletek, valamint anélkül, hogy a rendszergazda nem kell a virtuális gép távolról az Azure virtuális gépek Desired State Configuration bővítmény regisztrálja a virtuális gép az Azure Automation Állapotkonfiguráció.
+Mivel az Azure virtuális gépek Desired State Configuration bővítmény aszinkron módon fut, a következő lépéseket az előrehaladásának követéséhez vagy hibaelhárítás biztosított [ **hibáinak elhárítása Azure virtuális gép bevezetési** ](#troubleshooting-azure-virtual-machine-onboarding) szakaszban.
+
+### <a name="azure-portal"></a>Azure Portal
+
+Az a [az Azure portal](https://portal.azure.com/), keresse meg az Azure Automation-fiók, amelyre a virtuális gépek előkészítése. A konfigurációs lapon és a **csomópontok** lapra, majd **+ Hozzáadás**.
+
+Válassza ki egy Azure virtuális gépet üzembe helyezni.
+
+Ha a gép nem rendelkezik a PowerShell desired state bővítmény telepítve van, és a energiaállapota fut, kattintson az **Connect**.
+
+A **regisztrációs**, adja meg a [PowerShell DSC helyi Configuration Manager értékek](/powershell/dsc/metaconfig4) hozzárendelése a virtuális gép a használati eset, és szükség esetén a csomópont-konfiguráció szükséges.
+
+![Előkészítés](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+
+### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
+
+Azure-beli virtuális gépek is üzembe helyezhetők és előkészítve az Azure Automation konfiguráló Azure Resource Manager-sablonok használatával. Lásd: [konfigurálhatja egy virtuális géphez a DSC-bővítmény és Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) egy példa sablon előkészítését végző egy meglévő virtuális gép az Azure Automation Állapotkonfiguráció. Keresse meg a regisztrációs kulcs és a regisztrációs URL-cím foglalt a bemeneti ebben a sablonban, tekintse meg a következőt [ **regisztrációs biztonságos** ](#secure-registration) szakaszban.
+
+### <a name="powershell"></a>PowerShell
+
+A [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) parancsmag segítségével előkészítheti a virtuális gépeket az Azure Portal, PowerShell-lel.
 
 ## <a name="azure-virtual-machines-classic"></a>Azure-beli virtuális gépek (klasszikus)
 
@@ -116,31 +142,6 @@ $VM | Update-AzureVM
 
 > [!NOTE]
 > Állami konfigurációs csomópont-nevek a következők a portálon a nagybetűk. Ha az esetet nem egyezik a csomópont nem alatt fog megjelenni a **csomópontok** fülre.
-
-## <a name="azure-virtual-machines"></a>Azure virtuális gépek
-
-Azure Automation Állapotkonfiguráció teszi lehetővé egyszerűen előkészítése az Azure virtual machines, a konfigurációkezelés, az Azure Portalon, a az Azure Resource Manager-sablonok vagy a PowerShell használatával. Technikai részletek, valamint anélkül, hogy a rendszergazda nem kell a virtuális gép távolról az Azure virtuális gépek Desired State Configuration bővítmény regisztrálja a virtuális gép az Azure Automation Állapotkonfiguráció.
-Mivel az Azure virtuális gépek Desired State Configuration bővítmény aszinkron módon fut, a következő lépéseket az előrehaladásának követéséhez vagy hibaelhárítás biztosított [ **hibáinak elhárítása Azure virtuális gép bevezetési** ](#troubleshooting-azure-virtual-machine-onboarding) szakaszban.
-
-### <a name="azure-portal"></a>Azure Portal
-
-Az a [az Azure portal](https://portal.azure.com/), keresse meg az Azure Automation-fiók, amelyre a virtuális gépek előkészítése. A konfigurációs lapon és a **csomópontok** lapra, majd **+ Hozzáadás**.
-
-Válassza ki egy Azure virtuális gépet üzembe helyezni.
-
-Ha a gép nem rendelkezik a PowerShell desired state bővítmény telepítve van, és a energiaállapota fut, kattintson az **Connect**.
-
-A **regisztrációs**, adja meg a [PowerShell DSC helyi Configuration Manager értékek](/powershell/dsc/metaconfig4) hozzárendelése a virtuális gép a használati eset, és szükség esetén a csomópont-konfiguráció szükséges.
-
-![Előkészítés](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
-
-### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
-
-Azure-beli virtuális gépek is üzembe helyezhetők és előkészítve az Azure Automation konfiguráló Azure Resource Manager-sablonok használatával. Lásd: [konfigurálhatja egy virtuális géphez a DSC-bővítmény és Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) egy példa sablon előkészítését végző egy meglévő virtuális gép az Azure Automation Állapotkonfiguráció. Keresse meg a regisztrációs kulcs és a regisztrációs URL-cím foglalt a bemeneti ebben a sablonban, tekintse meg a következőt [ **regisztrációs biztonságos** ](#secure-registration) szakaszban.
-
-### <a name="powershell"></a>PowerShell
-
-A [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) parancsmag segítségével előkészítheti a virtuális gépeket az Azure Portal, PowerShell-lel.
 
 ## <a name="amazon-web-services-aws-virtual-machines"></a>Az Amazon Web Services (AWS) virtuális gépek
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 1cd862c59154f9da766b5df1ab8fb8d61e15d054
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3f55b3b099cc22fda2bebf0dcb8d3e9c1a580f02
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628289"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099694"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Az Azure Active Directory-identitások használatával találatok vágást biztonsági szűrők
 
@@ -64,7 +64,7 @@ Azonban ha nem rendelkezik meglévő felhasználók, használhatja a Microsoft G
 
 Felhasználó és csoport tagságának lehet nagyon képlékeny, különösen a nagy szervezetek is használnak. Kód, amely összeállítja a felhasználó- és identitások elég gyakran kell futnia a szervezet tagsági módosításainak életbe léptetéséhez. Hasonlóképpen az Azure Search-index az engedélyezett felhasználók és erőforrások aktuális állapotát tükröző hasonló frissítési ütemezést igényelnek.
 
-### <a name="step-1-create-aad-grouphttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apigrouppostgroups"></a>1. lépés: Hozzon létre [AAD-csoport](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/group_post_groups) 
+### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>1. lépés: Hozzon létre [AAD-csoport](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -78,7 +78,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomen-usgraphdocsapi-referencev10apiuserpostusers"></a>2. lépés: Hozzon létre [AAD-felhasználó](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users) 
+### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>2. lépés: Hozzon létre [AAD-felhasználó](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 ```csharp
 User user = new User()
 {
@@ -139,7 +139,7 @@ A dokumentumok a kérést kiadó felhasználó csoportok alapján, a keresési e
 
 ### <a name="step-1-retrieve-users-group-identifiers"></a>1. lépés: Felhasználói csoport azonosítók beolvasása
 
-Ha a felhasználói csoportok nem már lettek gyorsítótárazva, vagy lejárt a gyorsítótár, a [csoportok](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/directoryobject_getmembergroups) kérelem
+Ha a felhasználói csoportok nem már lettek gyorsítótárazva, vagy lejárt a gyorsítótár, a [csoportok](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) kérelem
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {

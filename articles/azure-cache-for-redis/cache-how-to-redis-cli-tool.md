@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: wesmc
-ms.openlocfilehash: 68c533235480ec49e3c561d99095d5722f6f69a4
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 30288c338785c45b860b4b2b29a646662572e179
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106324"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100604"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>A Redis parancssori eszköz használata az Azure Cache redis
 
@@ -30,10 +30,12 @@ Ha szeretné futtatni a parancssori eszköz egy másik platformon, töltse le az
 
 ## <a name="gather-cache-access-information"></a>Gyorsítótár hozzáférési adatainak összegyűjtése
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Három módszerrel gyorsítótár-hozzáféréshez szükséges információkat gyűjthet:
 
 1. Az Azure CLI használatával [az redis list-keys](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys)
-2. Az Azure PowerShell használatával [Get-AzureRmRedisCacheKey](https://docs.microsoft.com/powershell/module/azurerm.rediscache/Get-AzureRmRedisCacheKey?view=azurermps-4.4.1)
+2. Azure PowerShell using [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-AzRedisCacheKey)
 3. Az Azure portal használatával.
 
 Ebben a szakaszban az Azure Portalról lesz a kulcsok lekéréséhez.

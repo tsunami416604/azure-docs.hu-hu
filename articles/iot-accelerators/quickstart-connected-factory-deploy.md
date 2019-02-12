@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/26/2018
+ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: d02e72a46e2bec69792eacef673c779310561f83
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 46ea73e0a0c2dd14dcafcaa332c7feb1c70445df
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602647"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098885"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Gyors útmutató: Próbálja ki a felhőalapú megoldást ipari IoT-eszközök kezelése
 
@@ -42,7 +42,7 @@ A **Create Connected Factory solution** (Csatlakoztatottgyár-megoldás létreho
 
 Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Ebben a rövid útmutatóban a **Visual Studio Enterprise** és az **USA keleti régiója** értékeket választjuk. Mindehhez [globális rendszergazdának vagy felhasználónak](iot-accelerators-permissions.md) kell lennie az előfizetésben.
 
-Az üzembe helyezés megkezdéséhez kattintson a **Megoldás létrehozása** gombra. A folyamat legalább öt percig tart:
+Kattintson a **létrehozás** üzembe helyezés megkezdéséhez. A folyamat legalább öt percig tart:
 
 ![Csatlakoztatottgyár-megoldás részletei](./media/quickstart-connected-factory-deploy/createform.png)
 
@@ -54,7 +54,7 @@ A **Kiépített megoldások** lapon kattintson az új Csatlakoztatott gyár mego
 
 ![Új megoldás kiválasztása](./media/quickstart-connected-factory-deploy/choosenew.png)
 
-A megjelenő panelen megtekintheti a Csatlakoztatott gyár megoldásgyorsítójára vonatkozó adatokat. Válassza ki a **Megoldások irányítópultja** elemet a Csatlakoztatott gyár megoldásgyorsítójának megjelenítéséhez:
+Az Okosgyár-megoldásgyorsító az oldal jelenik meg a vonatkozó információkat is megtekintheti. Válasszon **nyissa meg a megoldásgyorsító** az Okosgyár-megoldásgyorsító megtekintése:
 
 ![Megoldás panel](./media/quickstart-connected-factory-deploy/solutionpanel.png)
 

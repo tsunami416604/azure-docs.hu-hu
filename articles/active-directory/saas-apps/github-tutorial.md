@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 5afcec7a1dfd306cb87989e1a24cc662af183b5e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6a4ed4da4edd29819def4328b8264ad7ed118881
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826258"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Oktatóanyag: Az Azure Active Directory-integráció a Githubon
 
@@ -113,40 +113,15 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés GitHub, hajtsa végr
     > [!NOTE]
     > Vegye figyelembe, hogy ezek nem állnak a valós értékeket. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket kell. Itt javasoljuk, hogy az azonosító egyedi karakterlánc értékét használhatja. Nyissa meg az értékek lekéréséhez a GitHub-rendszergazda szakaszban.
 
-5. GitHub-alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőfelvételen látható erre egy példa látható. Az alapértelmezett érték **egyedi felhasználói azonosító** van **user.userprincipalname** , de a GitHub vár ezt a képezhető le a felhasználó e-mail-címmel. Használhatja, amely **user.mail** attribútumot a listából, vagy használja a megfelelő attribútum értéket, a szervezet konfiguráció alapján.
+5. GitHub-alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. GitHub-alkalmazás vár **nameidentifier** a leképezendő **user.mail**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa az attribútum leképezés.
 
     ![image](common/edit-attribute.png)
 
-6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
-    
-    | Name (Név) | Adatforrás-attribútum|
-    | ---------------| --------------- |
-    | Egyedi felhasználói azonosító | User.mail |
-    | | |
-
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
-
-    c. Hagyja a **Namespace** üres.
-
-    d. Válassza ki a forrás, **attribútum**.
-
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
-
-    f. Kattintson a **Ok**
-
-    g. Kattintson a **Save** (Mentés) gombra.
-
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. Az a **állítsa be a Githubot** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. Az a **állítsa be a Githubot** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 

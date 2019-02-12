@@ -17,20 +17,20 @@ ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 4ee2f0387ee3c56dda7cd1a89f5c808f55699856
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 47786ac687272cc2a88c3fa885fece9c858a3c2b
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658623"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099071"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Az Azure Active Directory Identity Protection és a Microsoft Graph használatának első lépései
 
 A Microsoft Graph a Microsoft unified API-végpont és az otthoni [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API-k. Nincsenek kockázatos felhasználók és bejelentkezések közzétevő három API-kkal. Az első API **identityRiskEvents**, lehetővé teszi, hogy a Microsoft Graph lekérdezése listáját [kockázati események](../reports-monitoring/concept-risk-events.md) és a kapcsolódó adatokat. A második API-t, **riskyUsers**, lehetővé teszi, hogy a Microsoft Graph lekérdezési információ a felhasználók Identity Protection kockázatokat észleli. A harmadik API **bejelentkezési**, lehetővé teszi, hogy a Microsoft Graph lekérdezése az Azure AD bejelentkezési információk kapcsolatos kockázat állapota, az adott tulajdonságokkal rendelkező részletességi és szinten. Ez a cikk veheti használatba [csatlakozik a Microsoft Graph](#Connect-to-Microsoft-Graph) és [ezen API-k lekérdezése](#Query-the-APIs). Részletes bemutatása, teljes dokumentációt és a Graph Explorer a hozzáférést, tekintse meg a [Microsoft Graph-hely](https://graph.microsoft.io/) vagy API-k az adott segédanyagok:
 
-* [identityRiskEvents API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/identityriskevent)
-* [riskyUsers API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/riskyuser)
-* [signIn API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/signin)
+* [identityRiskEvents API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
+* [riskyUsers API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
+* [signIn API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
 
 
 ## <a name="connect-to-microsoft-graph"></a>Csatlakozás a Microsoft graph
@@ -217,7 +217,7 @@ Adja hozzá az ügyfél-azonosító, a titkos kulcsot és a bérlő tartománya.
 
 ## <a name="query-the-apis"></a>Az API-k lekérdezése
 
-Ezen három API-k számos lehetőséget kínál arra, a kockázatos felhasználók és bejelentkezések a szervezet adatainak beolvasásához adja meg. Ezen API-k és az ahhoz tartozó kérések az alábbiakban néhány gyakori felhasználási esetét. Ezeket a lekérdezéseket, azzal a mintakóddal, vagy a fenti futtathatja [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer).
+Ezen három API-k számos lehetőséget kínál arra, a kockázatos felhasználók és bejelentkezések a szervezet adatainak beolvasásához adja meg. Ezen API-k és az ahhoz tartozó kérések az alábbiakban néhány gyakori felhasználási esetét. Ezeket a lekérdezéseket, azzal a mintakóddal, vagy a fenti futtathatja [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
 
 ### <a name="get-the-high-risk-and-medium-risk-events-identityriskevents-api"></a>A magas kockázatú és közepes kockázatú események (identityRiskEvents API-t)
 
@@ -251,7 +251,7 @@ Gratulálunk, most végzett az első hívás a Microsoft Graph!
 Most identitás kockázati események, és használhatja az adatokat, de igény szerint.
 
 
-A Microsoft Graph és hogyan hozhat létre alkalmazásokat a Graph API-val kapcsolatos további információkért tekintse meg a [dokumentáció](https://docs.microsoft.com/graph/overview) és sok mást a a [Microsoft Graph-hely](https://developer.microsoft.com/en-us/graph). 
+A Microsoft Graph és hogyan hozhat létre alkalmazásokat a Graph API-val kapcsolatos további információkért tekintse meg a [dokumentáció](https://docs.microsoft.com/graph/overview) és sok mást a a [Microsoft Graph-hely](https://developer.microsoft.com/graph). 
 
 
 Kapcsolódó tudnivalókért lásd:

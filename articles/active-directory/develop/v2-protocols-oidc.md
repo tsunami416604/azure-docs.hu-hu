@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e763c1512e52111e1294c5cad8b4bea46ff0406
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 3ae46578132cb128b249b72f344cd788a69a49a0
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100617"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099109"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Az Azure Active Directory 2.0-s verzió és az OpenID Connect protokoll
 
@@ -51,7 +51,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 A `{tenant}` négy értékek valamelyikét hajthatja végre:
 
-| Value | Leírás |
+| Érték | Leírás |
 | --- | --- |
 | `common` |Személyes Microsoft-fiókkal és a egy munkahelyi vagy iskolai fiókkal az Azure Active Directory (Azure AD) rendelkező felhasználók jelentkezhetnek be az alkalmazáshoz. |
 | `organizations` |Csak a felhasználók munkahelyi vagy iskolai fiókok Azure AD-ből az alkalmazás jelentkezhetnek be. |
@@ -228,14 +228,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 &response_mode=form_post                              // 'form_post' or 'fragment'
 &scope=openid%20                                      // Include both 'openid' and scopes that your app needs  
 offline_access%20                                         
-https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &state=12345                                          // Any value, provided by your app
 &nonce=678910                                         // Any value, provided by your app
 ```
 
 > [!TIP]
-> Kattintson az alábbi hivatkozásra a kérelem végrehajtásához. Miután bejelentkezett, a rendszer átirányítja a böngésző https://localhost/myapp/, egy azonosító jogkivonat és a egy kód a címsorba. Vegye figyelembe, hogy a kérelem használ `response_mode=fragment` (bemutatási célokra csak). Javasoljuk, hogy használjon `response_mode=form_post`.
-> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> Kattintson az alábbi hivatkozásra a kérelem végrehajtásához. Miután bejelentkezett, a rendszer átirányítja a böngésző https://localhost/myapp/, egy azonosító jogkivonat és a egy kód a címsorba. Vegye figyelembe, hogy a kérelem használ `response_mode=fragment` csak bemutató célokra. Javasoljuk, hogy használjon `response_mode=form_post`.
+> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
 

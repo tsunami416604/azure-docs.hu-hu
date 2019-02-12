@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 06130a5ade63e23fdcd139902a19694a510393a3
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ff3c1e51bcf0b7d730019fad66ed8b0c3fe17a20
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332302"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097648"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Bevezetés a hálózati biztonsági csoportok csoportforgalom naplózása
 
@@ -287,5 +287,6 @@ A következő szöveget, amelyek egy folyamat napló. Amint láthatja, nincsenek
 ## <a name="next-steps"></a>További lépések
 
 - A folyamat-naplók engedélyezésére, lásd: [engedélyezése NSG csoportforgalom naplózása](network-watcher-nsg-flow-logging-portal.md).
+- A forgalom naplóinak olvasása kapcsolatban lásd: [olvasási NSG-Folyamatnaplók](network-watcher-read-nsg-flow-logs.md).
 - NSG-t naplózásával kapcsolatos további tudnivalókért lásd: [Naplóelemzés hálózati biztonsági csoportok (NSG-k)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - Annak megállapításához, hogy engedélyezett vagy tiltott forgalmat, illetve a virtuális gép, lásd: [egy virtuális gép hálózati forgalomszűrési problémáinak diagnosztizálása](diagnose-vm-network-traffic-filtering-problem.md)

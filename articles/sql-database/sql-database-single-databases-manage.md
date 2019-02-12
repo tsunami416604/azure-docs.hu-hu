@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 5612926b26ac71675a42c7c726d0354a1738ac31
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 0a43414ef446beb3f5d6c8e357390363a95ac31c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996428"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099343"
 ---
 # <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>SQL Database-kiszolgálók és az Azure SQL Database önálló adatbázisok létrehozása és kezelése
 
@@ -160,5 +160,5 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak, eze
 
 ## <a name="next-steps"></a>További lépések
 
-- Az SQL Server-adatbázis áttelepítése az Azure-bA kapcsolatos további információkért lásd: [áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
+- Az SQL Server-adatbázis áttelepítése az Azure-bA kapcsolatos további információkért lásd: [áttelepítése az Azure SQL Database](sql-database-single-database-migrate.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](sql-database-features.md).

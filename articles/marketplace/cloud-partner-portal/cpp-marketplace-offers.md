@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 02/07/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ca4979188830fcb53732750a3eaadfc2009c4f9a
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f13d49fde7f0e40f6dcb026fcb20cb11c028c64b
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658708"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100883"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Az Azure és az appsource-ban Marketplace-ajánlat
 
@@ -32,6 +32,18 @@ A következő videó bemutatja a különböző képességekkel és az Azure Mark
 **Alkalmazások létrehozása és a szolgáltatások az Azure Marketplace és AppSource - Build 2018.**
 
 Ezek a piactér kapcsolatos további információkért lásd: [közzétételi útmutató az Azure Marketplace és AppSource](../marketplace-publishers-guide.md).
+
+
+## <a name="common-offer-operations"></a>Az ajánlat olyan gyakori műveleteket
+
+A folyamaton, létrehozhat egy új ajánlat szolgáltatásfrissítési jelentősen különböző típusú, például egy [Azure alkalmazásra vonatkozó ajánlat](./azure-applications/cpp-azure-app-offer.md) és a egy [tanácsadási szolgáltatási ajánlat](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md).  Ezzel szemben a többi művelet számos hajt végre egy ajánlatot az a [Cloud Partner Portalon](https://cloudpartner.azure.com) viszonylag szabványosítottak ajánlattípusokról között.  Ezek olyan gyakori műveleteket – beleértve a közzététel, állapot megtekintése, frissítési és törlési – a szakaszban ismertetett [ajánlatok kezelése](./manage-offers/cpp-manage-offers.md)
+
+
+## <a name="test-drive"></a>Tesztverzió
+
+*Próbálja ki a* lehetővé az ügyfelek számára egy bemutató "próbálja ki a vásárlás előtt" beállítást engedélyezve ajánlatok piactéren funkció.  A Test Drive funkció korlátozódik ajánlattípusokról következő részét: [Az Azure-alkalmazások](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [ SaaS-alkalmazások](./saas-app/cpp-saas-offer.md), és [virtuális gépek](./virtual-machine/cpp-virtual-machine-offer.md).  Ez a funkció a közzétevő számára hozzon létre egy Test Drive-sablont, az ajánlat testre szabott van szükség.  További információkért lásd: a szakasz [Test Drive](../cloud-partner-portal-orig/what-is-test-drive.md).
+
+Megnyithatja a meglévő marketplace-ajánlat, amelyek rendelkeznek a Test Drive bemutatók alkalmazásával a [test drive szűrő](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive). 
 
 
 ## <a name="azure-marketplace-and-appsource-offer-types"></a>Az Azure Marketplace és AppSource ajánlat típusok
