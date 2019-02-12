@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 89a54d99aa47af273e5955c2103ec696a985737e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 8e9d41131228c2399277e59a6d0edd78efda307b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493745"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999113"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Az Azure Machine Learning Studio-webszolgáltatás üzembe helyezése
 Az Azure Machine Learning segítségével hozhat létre, tesztelheti és üzembe helyezése a prediktív elemzési megoldásokat is.
@@ -34,7 +34,7 @@ Prediktív elemzési modellek betanítása, használhatja az Azure Machine Learn
 A folyamat létrehozásának és kezelésének képzési kísérletek alaposabban máshol vonatkozik. További információval a következő cikkek szolgálnak:
 
 * [Egyszerű kísérlet létrehozása az Azure Machine Learning Studióban](create-experiment.md)
-* [Az Azure Machine Learning prediktív megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
+* [Az Azure Machine Learning prediktív megoldás fejlesztése](tutorial-part1-credit-risk.md)
 * [A betanítási adatok importálása az Azure Machine Learning studióba](import-data.md)
 * [Kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban](manage-experiment-iterations.md)
 

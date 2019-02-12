@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 804044dbfc5428c3a80aab13227730ed13c43ce2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4f92860ac128bdb6e4e2e059592745285779688d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098030"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001977"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -28,6 +28,7 @@ Az Azure Monitor a lehető legnagyobbra növeli a az alkalmazások teljesítmén
 ## <a name="overview"></a>Áttekintés
 Az alábbi ábrán egy magas szintű áttekintést nyújt az Azure Monitor. A diagram közepén olyan metrikákat és naplókat, amelyek adatokat használja az Azure Monitor két alapvető típusú adattárakban. A bal oldali vannak a [megfigyelési adatok forrásai](platform/data-sources.md) , amely feltölti ezeket [adattárak](platform/data-collection.md). A jobb oldalon a különböző függvényeket, amely az Azure Monitor az elemzés, például a gyűjtött adatok hajt végre, riasztó és a külső rendszerekkel streamelési vannak.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ![Az Azure Monitor áttekintése](media/overview/overview.png)
 
@@ -35,11 +36,11 @@ Az alábbi ábrán egy magas szintű áttekintést nyújt az Azure Monitor. A di
 ## <a name="monitoring-data-platform"></a>Figyelési adatplatform
 Az Azure Monitor által gyűjtött összes adat illeszkedik a két alapvető típusok, [metrikák és naplók](platform/data-collection.md). [Metrikák](platform/data-collection.md#metrics) időben bizonyos elemeit a rendszer egy adott időpontban leíró numerikus érték. Azok a könnyen használható, és képes a közel valós idejű feldolgozásához. [Naplók](platform/data-collection.md#logs) tartalmazhat különböző típusú adatokkal rendelkező különböző tulajdonságokat az egyes rekordok vannak rendezve. Telemetriai adatokat – például az események és nyomok formájában tárolja naplók emellett teljesítményadatokká úgy, hogy azt az összes kombinálható is elemzés céljából.
 
-Sok Azure-erőforrások látni fogja az áttekintő oldala az Azure Portalon az Azure Monitor jobb által gyűjtött adatokat. Például rendelkezik egy pillantást bármelyik virtuális gépet, és látni fogja a teljesítmény-mérőszámok megjelenítése több diagramot. Kattintson bármelyik, nyissa meg az adatokat a gráfok [metrika explorer](platform/metrics-charts.md) az Azure Portalon, amely lehetővé teszi, hogy idővel több mérőszámok értékeit diagram.  A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket.
+Sok Azure-erőforrások látni fogja az áttekintő oldala az Azure Portalon az Azure Monitor jobb által gyűjtött adatokat. Például rendelkezik egy pillantást bármelyik virtuális gépet, és látni fogja a teljesítmény-mérőszámok megjelenítése több diagramot. Kattintson bármelyik, nyissa meg az adatokat a gráfok [metrikaböngésző](platform/metrics-charts.md) az Azure Portalon, amely lehetővé teszi, hogy idővel több mérőszámok értékeit diagram.  A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket.
 
 ![Mérőszámok](media/overview/metrics.png)
 
-A Log Analyticsben, amely tartalmazza a tárolt naplóadatokat az Azure Monitor által gyűjtött egy [teljes funkcionalitású lekérdezésnyelvet](log-query/log-query-overview.md) gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelheti a lekérdezéseket a [Log Analytics lapot](log-query/portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [ riasztási szabályok](platform/alerts-overview.md).
+Az Azure Monitor által gyűjtött naplóadatok elemezhetők a [lekérdezések](log-query/log-query-overview.md) gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelhet használatával [log analytics](log-query/portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [riasztás szabályok](platform/alerts-overview.md).
 
 Az Azure Monitor-verzióját használja, a [adatkezelő lekérdezési nyelv](/azure/kusto/query/) , amely ideális választás a egyszerű napló kérdezi le, de tartoznak az olyan speciális funkciókat, például összesítés, illesztés és intelligens elemzés. Segítségével gyorsan megismerkedhet a lekérdezési nyelv használatával [több leckék](log-query/get-started-queries.md).  Azon felhasználók számára, akik már ismerik az [SQL](log-query/sql-cheatsheet.md) és [Splunk](log-query/splunk-cheatsheet.md) használatát, külön útmutató áll rendelkezésére.
 
@@ -54,7 +55,7 @@ Az Azure Monitor tud adatokat gyűjteni a különböző forrásokból. Az alkalm
 - **Azure-előfizetés monitorozási adatok**: A művelet és a felügyeleti Azure-előfizetés adatait, valamint állapotának és az Azure működésének adatait magát. 
 - **Az Azure-bérlő monitorozási adatok**: A bérlői szintű Azure-szolgáltatások, például az Azure Active Directory művelettel kapcsolatos adatokat.
 
-Amint hoz létre egy Azure-előfizetés és az erőforrások, például virtuális gépek és webalkalmazások hozzáadása kezdő, az Azure Monitor adatgyűjtés megkezdése.  [A Tevékenységnaplók](platform/activity-logs-overview.md) jegyezze fel, ha erőforrások létrehozásakor vagy módosításakor. [Metrikák](../monitoring-and-diagnostics/monitoring-overview-metrics.md) mondja el, hogyan működik-e az erőforrás és az erőforrásokat, azt használja. 
+Amint hoz létre egy Azure-előfizetés és az erőforrások, például virtuális gépek és webalkalmazások hozzáadása kezdő, az Azure Monitor adatgyűjtés megkezdése.  [A Tevékenységnaplók](platform/activity-logs-overview.md) jegyezze fel, ha erőforrások létrehozásakor vagy módosításakor. [Metrikák](platform/data-collection.md) mondja el, hogyan működik-e az erőforrás és az erőforrásokat, azt használja. 
 
 Kiterjesztheti az adatokat gyűjt be az erőforrások a tényleges művelet [engedélyezi a diagnosztikát](platform/diagnostic-logs-overview.md) és [hozzáadása egy ügynök](platform/agent-windows.md) számítási erőforrásokra. Ez a belső művelet az erőforrás telemetriai adatok gyűjtésére és konfigurálását lehetővé különböző [adatforrások](platform/agent-data-sources.md) naplók és mérőszámok gyűjtését a Windows és Linux rendszerű vendég operációs rendszer. 
 
