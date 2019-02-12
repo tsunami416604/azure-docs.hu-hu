@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/10/2019
+ms.date: 02/09/2019
 ms.author: rolyon
-ms.openlocfilehash: 2b8836525e085b41cc8d011087c4fc71afe453cb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d063fd27d4de2fa37825294cd10f4f9a69731f63
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822510"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099989"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.
@@ -266,7 +266,7 @@ Az eszközönkénti használati feltételeket tartalmazó fájl a következő ko
 
 - Egy eszköz csak egyetlen bérlő lehet csatlakoztatni.
 - A felhasználónak jogosultnak kell lennie csatlakoztassák az eszközüket.
-- Az Intune regisztrációs alkalmazás nem támogatott.
+- Az Intune-regisztráció alkalmazás nem támogatott.
 
 Ha a felhasználó eszköze nincs tartományhoz csatlakoztatva, egy üzenet csatlakoztassák az eszközüket a kapja meg. Szerzett függ a szoftver és platform lesz.
 
@@ -333,6 +333,9 @@ Az Azure Information Protection alkalmazásra vonatkozó feltételes hozzáfér�
 Feltételes hozzáférési szabályzatot konfigurálni ahhoz a Microsoft Intune regisztrációs alkalmazást, és a használati feltételeket, mielőtt az eszköz Intune-beli regisztrációját megkövetelése. További információkért lásd: az olvasási [kiválasztani a feltételek megoldást kínál a szervezet blogbejegyzés](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 ![A Microsoft Intune felhőalapú alkalmazás](./media/active-directory-tou/cloud-app-intune.png)
+
+> [!NOTE]
+> Az Intune-regisztráció alkalmazás nem támogatott a [eszközönkénti használati feltételeit](#per-device-terms-of-use).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

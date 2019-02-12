@@ -7,17 +7,17 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: douglaslMS
-ms.author: douglasl
-ms.reviewer: carlrab
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 5b717e26e61a6633ea51817bcb21ebeb15a20969
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/11/2019
+ms.openlocfilehash: 7ea1de4719d171605a49727d6924cb4b617b04bc
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892003"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097863"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Gyors útmutató: Az új Azure SQL-adatbázis BACPAC-fájl importálása
 
@@ -37,7 +37,7 @@ Importálását az Azure Portalon, nyissa meg a lapot fog üzemeltetni az import
 
    ![adatbázis importálása](./media/sql-database-import/import.png)
 
-Válassza ki a tárfiókot, a tároló és a BACPAC-fájlba importálni kívánja. Adja meg az új adatbázis mérete (általában ugyanaz, mint forrás), és adja meg a cél SQL-kiszolgáló hitelesítő adatai. 
+Válassza ki a tárfiókot, a tároló és a BACPAC-fájlba importálni kívánja. Adja meg az új adatbázis mérete (általában ugyanaz, mint forrás), és adja meg a cél SQL-kiszolgáló hitelesítő adatai. Egy új Azure SQL database a lehetséges értékek listáját lásd: [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
 
 ### <a name="monitor-imports-progress"></a>Az importálási folyamat figyelése
 
@@ -120,5 +120,5 @@ Ezek a varázslók is használhatja.
 
 - Megtudhatja, hogyan csatlakozhat, és az importált SQL Database-adatbázis lekérdezéséhez, lásd: [a rövid útmutató: Azure SQL Database: SQL Server Management Studio használatával csatlakozhat, és adatokat kérdezhet le](sql-database-connect-query-ssms.md).
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
-- A teljes SQL Server adatbázis áttelepítési folyamat, beleértve a teljesítménnyel kapcsolatos javaslatok, lásd: [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
+- A teljes SQL Server adatbázis áttelepítési folyamat, beleértve a teljesítménnyel kapcsolatos javaslatok, lásd: [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-single-database-migrate.md).
 - Megtudhatja, hogyan kezelésére és megosztására tárkulcsok és közös hozzáférésű jogosultságkódok biztonságosan, lásd: [Azure Storage biztonsági útmutatóját](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 2c0d32c5e95504ac99c739af89795ac22a768c63
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 419ee13f88e63af9bebb6dda2d96530c54baa0d0
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751939"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099734"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database adatbázis
 
@@ -310,7 +310,7 @@ Az SQL Database egy intelligens technikákat, amelyek lehetővé teszik, hogy az
 Ennek eléréséhez több módszert is van:
 
 - **[Adatszinkronizálás](sql-database-sync-data.md)**  – Ez a funkció segítségével szinkronizálhatják helyszíni SQL Server-adatbázisok és az SQL Database több közötti adatszinkronizáláshoz. Szinkronizálás a helyszíni SQL Server-adatbázisok, szüksége telepítése és konfigurálása a sync-ügynök a helyi számítógépen, és nyissa meg az 1433-as kimenő TCP port.
-- **[Tranzakciós replikáció](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – tranzakciós replikáció, szinkronizálhatja az adatok a helyszínről az Azure SQL DB-t a helyszíni a közzétevő és az Azure SQL DB alatt az előfizető. Egyelőre csak a beállítás használata támogatott. Az adatok migrálását a helyszíni az Azure SQL minimális állásidővel kapcsolatos további információkért lásd: [Tranzakciós replikáció használata](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
+- **[Tranzakciós replikáció](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – tranzakciós replikáció, szinkronizálhatja az adatok a helyszínről az Azure SQL DB-t a helyszíni a közzétevő és az Azure SQL DB alatt az előfizető. Egyelőre csak a beállítás használata támogatott. Az adatok migrálását a helyszíni az Azure SQL minimális állásidővel kapcsolatos további információkért lásd: [Tranzakciós replikáció használata](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>További lépések
 

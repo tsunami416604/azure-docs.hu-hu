@@ -1,5 +1,5 @@
 ---
-title: Mobile Apps-t használó Univerzális Windows-platform (UWP) létrehozása | Microsoft Docs
+title: Hozzon létre egy univerzális Windows Platform (UWP), amely használja az Azure Mobile Apps |} A Microsoft Docs
 description: Az útmutató bevezeti Önt az Azure-alapú, az Univerzális Windows-platformra (UWP) C#, Visual Basic vagy JavaScript nyelven történő alkalmazásfejlesztésre szolgáló mobil-háttéralkalmazások használatába.
 services: app-service\mobile
 documentationcenter: windows
@@ -14,14 +14,14 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: c8bd6430b362fde81c3133c2c16cf369aa050103
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 00b635853d0dfad73a258ddc8ef9b168559fc5df
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999375"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098425"
 ---
-# <a name="create-a-windows-app"></a>Windows-alkalmazás létrehozása
+# <a name="create-a-windows-app-with-an-azure-backend"></a>-Windows-alkalmazás létrehozása az Azure-környezetben
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
@@ -38,7 +38,9 @@ Az oktatóanyag végrehajtása feltétele a Mobile Apps UWP-alkalmazásokra vona
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* Windows 10.
 * [Visual Studio Community 2017].
+* UWP-alkalmazások fejlesztéséhez ismeretét. Látogasson el a [UWP dokumentációja](https://docs.microsoft.com/windows/uwp/) megtudhatja, hogyan [beállításához](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) UWP-alkalmazásokat hozhat létre.
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Új Azure Mobile Apps-háttéralkalmazás létrehozása
 

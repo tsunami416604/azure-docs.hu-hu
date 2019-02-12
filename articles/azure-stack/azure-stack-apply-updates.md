@@ -11,22 +11,58 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 02/11/2019
 ms.author: mabrigg
-ms.reviewer: wfayed
-ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 585fc4f1bbddb08d881414b581120b7bc14232ab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.reviewer: justini
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: 0c3f52c78bbfd3094324b74f3b66610fcebfa2f4
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729934"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099292"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Alkalmazza a frissítéseket az Azure Stackben
 
 *Vonatkozik: Az Azure Stack integrált rendszerek*
 
-Használhatja a **frissítése** csempére a alkalmazni a Microsoft- vagy OEM csomagok az Azure Stack a felügyeleti portálon. Kell a frissítési csomag letöltéséhez, a csomagfájlok importálása az Azure Stackben és a frissítési csomag telepítése.
+Használhatja a **frissítése** csempére a alkalmazni a Microsoft- vagy OEM csomagok az Azure Stack a felügyeleti portálon.
+
+Ha egy integrált rendszerek 1807 verzióját használja, vagy a korábban, töltse le a csomag, a csomagfájlok importálása az Azure Stackhez, és a frissítési csomag telepítése. Útmutatásért lásd: [frissítés az Azure Stack úgy, hogy letölti a csomagot](#update-azure-stack-by-downloading-the-package)
+
+Ezek frissítse az Azure Stack integrált rendszerek utasítások használata. Ha az Azure Stack fejlesztői rendszer használ, le kell töltenie az aktuális verzió esetében a telepítőcsomagot. Útmutatásért lásd: [az Azure Stack fejlesztői készletének telepítése](.\asdk\asdk-install.md)
+
+## <a name="update-azure-stack"></a>Az Azure Stack frissítése
+
+### <a name="select-and-apply-an-update-package"></a>Válassza ki, és a egy frissítési csomag alkalmazása
+
+1. Nyissa meg a felügyeleti portált.
+
+2. Válassza ki **irányítópult**. Válassza ki a **frissítés** csempére.
+
+    ![Az Azure Stack frissítés érhető el](media/azure-stack-apply-updates/azure-stack-updates-1901-dashboard.png)
+
+3. Jegyezze fel az Azure Stack jelenlegi verziójával. A következő teljes verzióra frissítheti. Például, ha Ön az Azure Stack 1811 fut, a következő elérhető verziója van-e 1901.
+
+    ![Az Azure Stack szoftverfrissítést az alkalmazása](media/azure-stack-apply-updates/azure-stack-updates-1901-updateavailable.png)
+
+4. Jelölje ki a következő elérhető verzió a frissítések listájához. Választhat **nézet** , a kibocsátási megjegyzések oszlop nyissa meg a kibocsátási megjegyzések a témakör a verzió, ha szeretné tekintse át a verzió módosításokat.
+
+5. Most jelölje ki a frissítést. A frissítés elindul.
+
+### <a name="review-update-history"></a>Tekintse át a frissítési előzmények
+
+1. Nyissa meg a felügyeleti portált.
+
+2. Válassza ki **irányítópult**. Válassza ki a **frissítés** csempére.
+
+3. Válassza ki **-előzmények frissítéséhez**.
+
+![Az Azure Stack-frissítési előzményei](media/azure-stack-apply-updates/azure-stack-update-history.PNG)
+
+## <a name="update-azure-stack-by-downloading-the-package"></a>Frissítés az Azure Stack úgy, hogy letölti a csomagot
+
+Ha egy integrált rendszerek 1807 verzióját használja, vagy a korábban, töltse le a csomag, a csomagfájlok importálása az Azure Stackhez, és a frissítési csomag telepítése.
 
 ## <a name="download-the-update-package"></a>A frissítési csomag letöltése
 

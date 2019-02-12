@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: 8e0b0572f0d728474c17b41a0f92948451f4ef3f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 69f40a482997e7cafa665ab1cb53e26d8653e45e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746948"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099871"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Az Azure Cache létrehozása sablon használatával redis
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ebben a témakörben elsajátíthatja, hogyan hozhat létre egy Azure Resource Manager-sablon üzembe helyez egy Azure Cache redis. A gyorsítótár egy meglévő tárfiókot a diagnosztikai adatok is használható. Emellett megismerjük, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
 Diagnosztikai beállítások jelenleg az összes gyorsítótárakhoz ugyanabban a régióban egy előfizetéshez vannak megosztva. Más régióban található összes gyorsítótárak frissítése a régióban egy gyorsítótár van hatással.
@@ -127,7 +130,8 @@ Az Azure Cache Redis hoz létre.
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
-    New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
+
+    New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
 
 ### <a name="azure-cli"></a>Azure CLI
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup

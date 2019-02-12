@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f21c54100a46d2f6ba28d2063bea91b84ea06d4
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 160bc0e67b2686d17357241887a207cb4a03002c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769321"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098102"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>SSL használatával biztonságossá tétele az Azure Machine Learning szolgáltatás a webszolgáltatások
 
@@ -82,6 +82,16 @@ A tanúsítvány igénylésekor meg kell adni a teljesen minősített tartomány
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
++ **A mező Programmable Gate Arrays (FPGA) üzembe helyezése**
+
+  Miközben üzembe helyezése FPGA, adja meg az SSL kapcsolatos paraméterek értékeit a kódrészletben látható módon:
+
+    ```python
+    from azureml.contrib.brainwave import BrainwaveWebservice
+
+    deployment_config = BrainwaveWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem")
+    ```
+
 ## <a name="update-your-dns"></a>A DNS frissítése
 
 Ezt követően frissítenie kell a DNS, a web Service mutasson.
@@ -97,10 +107,6 @@ Ezt követően frissítenie kell a DNS, a web Service mutasson.
   Frissítse a DNS, a "Beállítások" lapon a "nyilvános IP-címe" az AKS-fürtöt a képen látható módon. A nyilvános IP-címet az erőforráscsoportban, amely tartalmazza az AKS-ügynök csomópontok és más hálózati erőforrások létrehozása az erőforrástípusok egyikét találja.
 
   ![Azure Machine Learning service: Webszolgáltatások SSL használatával biztonságossá tétele](./media/how-to-secure-web-service/aks-public-ip-address.png)
-
-+ **A FPGA**:
-
-SSL használata FPGA telepített szolgáltatások jelenleg nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 Az alábbiak végrehajtásának módját ismerheti meg:

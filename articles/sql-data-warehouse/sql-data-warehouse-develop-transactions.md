@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 02/10/2019
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f463620f43ae95535a55005ebe9732495b89dc9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ac2bc9fc05a7014cd575ec531ef0a6ba08b2609e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456663"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100142"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Az SQL Data Warehouse olyan tranzakciók használatával
 Tippek a tranzakciók végrehajtása az Azure SQL Data Warehouse-megoldások fejlesztése.
@@ -90,8 +90,8 @@ BEGIN TRAN
 
         IF @@TRANCOUNT > 0
         BEGIN
-            PRINT 'ROLLBACK';
             ROLLBACK TRAN;
+            PRINT 'ROLLBACK';
         END
 
     END CATCH;

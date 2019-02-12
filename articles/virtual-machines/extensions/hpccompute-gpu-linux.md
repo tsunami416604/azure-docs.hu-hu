@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/09/2019
+ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: fe730c826e082f26ce7b4604a5fbf46692ef0bed
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 9d9f634d494c3c88146ab1f243d17609cf30bbcd
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982505"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100261"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogramjának-bővítmény linuxhoz
 
@@ -85,7 +85,7 @@ Minden beállítás nem kötelező. Az alapértelmezett viselkedést, hogy a ker
 | Name (Név) | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Frissítse a kernel akkor is, ha az illesztőprogram telepítéséhez nem szükséges | false | IGAZ, hamis | logikai |
-| driverVersion | NV: RÁCS illesztőprogram verziója<br> NC/ND: CUDA-eszközkészlet verzió. A legújabb illesztőprogramokat a kiválasztott CUDA automatikusan települnek. | legújabb | GRID: "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sztring |
+| driverVersion | NV: RÁCS illesztőprogram verziója<br> NC/ND: CUDA-eszközkészlet verzió. A legújabb illesztőprogramokat a kiválasztott CUDA automatikusan települnek. | legújabb | GRID: "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sztring |
 | installCUDA | Telepítse a CUDA eszközkészlet. Csak akkor érvényes, a hálózati vezérlő/ND sorozatú virtuális gépek. | true | IGAZ, hamis | logikai |
 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: b76b64ddf854b32c51b8b319479a35331e0f72f3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b8f8d0a089a74334a908e3dad65c63231bbe5975
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957434"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098935"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Hogyan teheti biztonságossá a háttérszolgáltatások ügyfél Tanúsítványalapú hitelesítés az Azure API Management
 
@@ -83,7 +83,7 @@ Ha a tanúsítvány egy API-t használja, akkor a figyelmeztetési képernyő je
 
 Ha önaláírt tanúsítványokat használ, szüksége lesz ahhoz, hogy a háttérrendszer kommunikálni az API Management tanúsítványlánc érvényesítésének letiltása. Ellenkező esetben egy 500 hibakódot ad vissza. Ennek konfigurálásához használhatja a [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (az új háttér-) vagy [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (a meglévő háttér) PowerShell-parancsmagok és állítsa be a `-SkipCertificateChainValidation` paramétert `True`.
 
-```
+```powershell
 $context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```

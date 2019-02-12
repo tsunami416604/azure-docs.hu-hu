@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably;nicking
 ms.custom: seodec18
-ms.openlocfilehash: ab1ae63352e66da557cad49bf5f320b577055877
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8d4290f1411749e2d8d3d27fbd792ceeeea47ef7
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726561"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100496"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Az Azure-beli alkalmazás visszaállítása pillanatképből
 Ez a cikk bemutatja, hogyan állíthatja vissza egy alkalmazás a [Azure App Service](../app-service/overview.md) egy pillanatképből. Az alkalmazás visszaállíthatja egy korábbi állapotát, az alkalmazás a pillanatképek alapján. Nem kell a pillanatképek biztonsági mentés engedélyezése, a platform automatikusan menti a helyreállítási célból minden alkalmazás pillanatképét.
@@ -38,6 +38,7 @@ A pillanatképek helyreállítása érhető el futó alkalmazásokra **prémium*
 - App Service-ben a cél alkalmazásban és a céltárolóhelyen megadott leállítja a visszaállítás végrehajtása közben.
 - Az App Service biztosítja, hogy három hónapnyi pillanatképek tartozó platform adat-helyreállítási céllal.
 - A pillanatképek csak állíthatja vissza az elmúlt 30 napra vonatkozóan.
+- App Services futó App Service-környezet nem támogatja a pillanatképeket.
  
 
 ## <a name="restore-an-app-from-a-snapshot"></a>Alkalmazás visszaállítása pillanatképből

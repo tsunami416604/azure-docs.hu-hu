@@ -14,18 +14,23 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6050ad98c87dbe38516a6ee3c4862495ad868031
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 78aa65614920d093b6ba0b8fa43614fd7f3c5176
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414385"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100431"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Az Azure-alkalmazás technikai eszközök előkészítése
 
 Ez a cikk bemutatja az erőforrások a technikai eszközök előkészítése az Azure-alkalmazás ajánlatban.
 
 ## <a name="before-you-begin"></a>Előkészületek
+
+Tekintse át a következő videót, [létrehozása Megoldássablonokkal, és a felügyelt alkalmazások az Azure Marketplace-en](https://channel9.msdn.com/Events/Build/2018/BRK3603), hogyan hozzon létre egy Azure Resource Manager-sablon egy Azure application megoldás, és ezután hogyan meghatározásához áttekintése Ezt követően tegye közzé az alkalmazást az ajánlat az Azure piactéren.
+
+>[!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3603/player]
+
 
 Tekintse át a következő Azure-alkalmazás dokumentációját, amely biztosítja az útmutatóink, Oktatóanyagaink és Példáink segítségével.
 

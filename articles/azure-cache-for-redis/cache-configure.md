@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 67cc7d0dc162f2b36e38f1068f46079f46120f1c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c9158eebb876f5c3349528ffb7707629791421ce
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819841"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099938"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache Redis konfigurálása
 Ez a témakör ismerteti az Azure Cache a Redis-példány érhető el a konfigurációkat. Ez a témakör ismerteti a Redis server az alapértelmezett konfigurációjának for Azure Cache Redis-példány is.
@@ -429,7 +429,7 @@ Kattintson a **új támogatási kérelem** , nyisson egy támogatási kérelmet 
 Adatbázisokkal kapcsolatos további információkért lásd: [Mik azok a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases)
 
 > [!NOTE]
-> A `databases` beállítás lehet, csak a cache létrehozásakor konfigurált, és csak a PowerShell, a parancssori felület vagy a más felügyeleti ügyfeleket. Példa konfigurálása `databases` gyorsítótár létrehozása során PowerShell-lel, tekintse meg a [New-azurermrediscache parancsmag esetében](cache-howto-manage-redis-cache-powershell.md#databases).
+> A `databases` beállítás lehet, csak a cache létrehozásakor konfigurált, és csak a PowerShell, a parancssori felület vagy a más felügyeleti ügyfeleket. Példa konfigurálása `databases` gyorsítótár létrehozása során PowerShell-lel, tekintse meg a [New-AzRedisCache](cache-howto-manage-redis-cache-powershell.md#databases).
 > 
 > 
 

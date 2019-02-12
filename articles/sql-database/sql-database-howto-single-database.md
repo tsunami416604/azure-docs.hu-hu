@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 195afabc0f512f1202904ab7ebf1471b34e2377f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: c85a7106e9567859c34345528c6549bcd752f1c6
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989270"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100465"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Önálló adatbázis használata Azure SQL Database-ben
 
@@ -25,7 +25,7 @@ Ebben a szakaszban található különböző útmutatók, parancsfájlok és le�
 
 ## <a name="migrate"></a>Migrate (Áttelepítés)
 
-- [Az SQL Database áttelepítése](sql-database-cloud-migrate.md) – további információ a javasolt áttelepítési folyamat és az eszközök a migrálás felügyelt példányra.
+- [Az SQL Database áttelepítése](sql-database-single-database-migrate.md) – további információ a javasolt áttelepítési folyamat és az eszközök a migrálás felügyelt példányra.
 - Ismerje meg, hogyan [SQL database kezelése a migrálás után](sql-database-manage-after-migration.md).
 
 ## <a name="configure-features"></a>Funkciók konfigurálása

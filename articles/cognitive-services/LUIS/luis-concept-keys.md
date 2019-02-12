@@ -1,6 +1,6 @@
 ---
 title: Előfizetői azonosítók
-titleSuffix: Language Understadning - Azure Cognitive Services
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: A LUIS használ két kulcsot, az ingyenes szerzői a modell létrehozásához és a forgalmi díjas végpont kulcs lekérdezése az előrejelzési végpont felhasználói kimondott szöveg.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 0bb535a75d1eefcb835d25d28dc65c565655d2c5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1898d6e5119d3cbc2061aff8d4a7e673abd83198
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881808"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097457"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Szerzői műveletek és a lekérdezés előrejelzési végpont kulcsok a LUIS
 A LUIS használ két kulcsot: [szerzői](#programmatic-key) és [végpont](#endpoint-key). Az Authoring Tool kulcs az Ön számára automatikusan létrejön a LUIS-fiók létrehozásakor. Amikor készen áll a LUIS-alkalmazás közzététele, meg kell [a végpont kulcs létrehozása](luis-how-to-azure-subscription.md), [rendelje hozzá](luis-how-to-azure-subscription.md) , a LUIS-alkalmazás és [használhatja a végpont lekérdezés](#use-endpoint-key-in-query). 

@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 198fb3376d44123d39a0b3ca2fb1edbd070f1f09
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 7822b5abe78bf969171f7f6ee7d706dadb8d0188
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510986"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100448"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Az Azure Active Directoryban egyéni tartománynevek kezelése
 
@@ -66,7 +66,7 @@ Módosítani kell, vagy bármely ilyen erőforrás törlése az Azure AD-címtá
 
 ### <a name="forcedelete-option"></a>ForceDelete option
 
-Is **ForceDelete** egy tartománynevet a [Azure AD felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete). Ezek a beállítások egy aszinkron művelet, és frissítse az összes hivatkozást az egyéni tartománynév például a "user@contoso.com", a kezdeti alapértelmezett tartománynévnek például"user@contoso.onmicrosoft.com." 
+Is **ForceDelete** egy tartománynevet a [Azure AD felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Ezek a beállítások egy aszinkron művelet, és frissítse az összes hivatkozást az egyéni tartománynév például a "user@contoso.com", a kezdeti alapértelmezett tartománynévnek például"user@contoso.onmicrosoft.com." 
 
 A hívás **ForceDelete** az Azure Portalon, gondoskodnia kell arról, hogy is tartománynév 1000-nél kevesebb hivatkozik, és esetleges hivatkozásokat, ahol az Exchange-e a kiépítési szolgáltatás kell lehet frissíteni vagy abból eltávolított a [ Az Exchange felügyeleti központban](https://outlook.office365.com/ecp/). Ez magában foglalja a Exchange Mail-Enabled biztonsági csoportok és elosztott listák; További információkért lásd: [eltávolítás, levelezési címmel rendelkező biztonsági csoportok](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Emellett a **ForceDelete** művelet nem sikeres, ha teljesül a következők egyikét:
 
@@ -112,4 +112,4 @@ A tartománynevek az Azure Active Directoryban a legtöbb kezelési feladatot a 
 
 * [Egyéni tartománynevek hozzáadása](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Távolítsa el az Exchange levelezési címmel rendelkező biztonsági csoportok az Exchange felügyeleti központban az egyéni tartománynév az Azure ad-ben](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [Egyéni tartománynév ForceDelete Microsoft Graph API-val](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete)
+* [Egyéni tartománynév ForceDelete Microsoft Graph API-val](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)

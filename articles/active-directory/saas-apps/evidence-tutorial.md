@@ -4,180 +4,193 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: f9a7cb7c-ff67-40dc-872c-1fa35f9dd03b
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/25/2017
+ms.topic: tutorial
+ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 6aa3d0299cb909a4cb642012703ff361f66265e7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2833d37cac87f114183ebfe2d9d17a308bf5faa5
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176710"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Evidence.com
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Evidence.com integrálása az Azure Active Directory (Azure AD).
-
 Evidence.com integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, ki férhet hozzá Evidence.com Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Evidence.com (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja, ki férhet hozzá Evidence.com Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Evidence.com (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Evidence.com az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy Evidence.com egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Evidence.com egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Evidence.com hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* Támogatja a Evidence.com **SP** által kezdeményezett egyszeri bejelentkezés
 
 ## <a name="adding-evidencecom-from-the-gallery"></a>Evidence.com hozzáadása a katalógusból
+
 Az Azure AD integrálása a Evidence.com konfigurálásához hozzá kell Evidence.com a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
 **Evidence.com hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Az új alkalmazás gomb][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. A Keresés mezőbe írja be a **Evidence.com**válassza **Evidence.com** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az eredmények listájában Evidence.com](./media/evidence-tutorial/tutorial_evidence.com_addfromgallery.png)
+4. A Keresés mezőbe írja be a **Evidence.com**válassza **Evidence.com** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+
+     ![Az eredmények listájában Evidence.com](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Evidence.com a teszt "Britta Simon" nevű felhasználó.
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Evidence.com mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Evidence.com hivatkozás kapcsolata kell létrehozni.
-
-Evidence.com, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Evidence.com nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Evidence.com hivatkozás kapcsolata kell létrehozni.
 
 Az Azure AD egyszeri bejelentkezés az Evidence.com tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy Evidence.com tesztfelhasználót](#create-a-evidencecom-test-user)**  – egy megfelelője a Britta Simon Evidence.com, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+2. **[Evidence.com egyszeri bejelentkezés konfigurálása](#configure-evidence.com-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Evidence.com tesztfelhasználót](#create-evidence.com-test-user)**  – egy megfelelője a Britta Simon Evidence.com, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Evidence.com alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Evidence.com, hajtsa végre az alábbi lépéseket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Evidence.com, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **Evidence.com** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **Evidence.com** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/evidence-tutorial/tutorial_evidence.com_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-1. Az a **Evidence.com tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Evidence.com tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/evidence-tutorial/tutorial_evidence.com_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<yourtenant>.evidence.com`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<yourtenant>.evidence.com`
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Evidence.com ügyfél-támogatási csapatának](https://communities.taser.com/support/SupportContactUs?typ=LE) beolvasni ezeket az értékeket. 
+    ![Evidence.com tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<yourtenant>.evidence.com`
 
-    ![A tanúsítvány letöltési hivatkozás](./media/evidence-tutorial/tutorial_evidence.com_certificate.png) 
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<yourtenant>.evidence.com`
 
-1. Kattintson a **mentése** gombra.
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Evidence.com ügyfél-támogatási csapatának](https://communities.taser.com/support/SupportContactUs?typ=LE) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/evidence-tutorial/tutorial_general_400.png)
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-1. Az a **Evidence.com konfigurációs** területén kattintson **konfigurálása Evidence.com** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-    ![Evidence.com konfiguráció](./media/evidence-tutorial/tutorial_evidence.com_configure.png) 
+6. Az a **Evidence.com beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-evidencecom-single-sign-on"></a>Evidence.com egyszeri bejelentkezés konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a Evidence.com bérlői rendszergazdaként, és keresse meg a **rendszergazdai** lap
 
-1. Kattintson a **ügynökség az egyszeri bejelentkezés**
+2. Kattintson a **ügynökség az egyszeri bejelentkezés**
 
-1. Válassza ki **SAML egyszeri bejelentkezéshez a alapján.**
+3. Válassza ki **SAML egyszeri bejelentkezéshez a alapján.**
 
-1. Másolás a **SAML Entitásazonosító**, **SAML egyszeri bejelentkezési szolgáltatás URL-cím** és **kijelentkezéses URL-cím** az Azure Portalon, és a megfelelő mezőihez Evidence.com látható értékeket.
+4. Másolás a **az Azure AD-azonosító**, **bejelentkezési URL-cím** és **kijelentkezési URL-címe** az Azure Portalon, és a megfelelő mezőihez Evidence.com látható értékeket.
 
-1. Nyissa meg a letöltött Certificate(Base64) fájlt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **biztonsági tanúsítvány** mezőbe. 
+5. Nyissa meg a letöltött Certificate(Base64) fájlt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **biztonsági tanúsítvány** mezőbe. 
 
-1. Mentse a konfigurációt Evidence.com.
+6. Mentse a konfigurációt Evidence.com.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure Active Directory gomb](./media/evidence-tutorial/create_aaduser_01.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/evidence-tutorial/create_aaduser_02.png)
-
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
-
-    ![A Hozzáadás gombra.](./media/evidence-tutorial/create_aaduser_03.png)
-
-1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/evidence-tutorial/create_aaduser_04.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
-
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="create-a-evidencecom-test-user"></a>Evidence.com tesztfelhasználó létrehozása
+
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Evidence.com Azure egyszeri bejelentkezés használatára.
+
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Evidence.com**.
+
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+
+2. Az alkalmazások listájában jelölje ki a **Evidence.com**.
+
+    ![Az alkalmazások listáját a Evidence.com hivatkozásra](common/all-applications.png)
+
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
+
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+
+### <a name="create-evidencecom-test-user"></a>Evidence.com tesztfelhasználó létrehozása
 
 Az Azure AD-felhasználók tudnak bejelentkezni azok ki kell építeni az Evidence.com alkalmazáson belüli hozzáféréshez. Ez a szakasz ismerteti, hogyan hozhat létre az Azure AD-felhasználói fiókok Evidence.com belül
 
@@ -185,67 +198,25 @@ Az Azure AD-felhasználók tudnak bejelentkezni azok ki kell építeni az Eviden
 
 1. Egy böngészőablakban jelentkezzen be a Evidence.com vállalati hely rendszergazdaként.
 
-1. Navigáljon a **rendszergazdai** fülre.
+2. Navigáljon a **rendszergazdai** fülre.
 
-1. Kattintson a **felhasználó hozzáadása**.
+3. Kattintson a **felhasználó hozzáadása**.
 
-1. Kattintson a **Hozzáadás** gombra.
+4. Kattintson a **Hozzáadás** gombra.
 
-1. A **E-mail cím** hozzáadott felhasználó egyeznie kell a felhasználónévvel a felhasználók számára szeretne hozzáférést biztosítani Azure AD-ben. Ha a felhasználónév és e-mail cím nem ugyanazt az értéket a szervezetben, használhatja a **Evidence.com > attribútumok > egyszeri bejelentkezés** szakaszban az Azure Portal a nameidenitifer Evidence.com küldött lehet módosítani a e-mail-cím.
+5. A **E-mail cím** hozzáadott felhasználó egyeznie kell a felhasználónévvel a felhasználók számára szeretne hozzáférést biztosítani Azure AD-ben. Ha a felhasználónév és e-mail cím nem ugyanazt az értéket a szervezetben, használhatja a **Evidence.com > attribútumok > egyszeri bejelentkezés** szakaszban az Azure Portal a nameidenitifer Evidence.com küldött lehet módosítani a e-mail-cím.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Evidence.com Azure egyszeri bejelentkezés használatára.
-
-![A felhasználói szerepkör hozzárendelése][200] 
-
-**Britta Simon rendel Evidence.com, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201] 
-
-1. Az alkalmazások listájában jelölje ki a **Evidence.com**.
-
-    ![Az alkalmazások listáját a Evidence.com hivatkozásra](./media/evidence-tutorial/tutorial_evidence.com_app.png)  
-
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
-
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel][203]
-
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
-
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Evidence.com csempére kattint, meg kell lekérése automatikusan bejelentkezett az Evidence.com alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Evidence.com csempére kattint, meg kell lehet automatikusan bejelentkezett a Evidence.com, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/evidence-tutorial/tutorial_general_01.png
-[2]: ./media/evidence-tutorial/tutorial_general_02.png
-[3]: ./media/evidence-tutorial/tutorial_general_03.png
-[4]: ./media/evidence-tutorial/tutorial_general_04.png
-
-[100]: ./media/evidence-tutorial/tutorial_general_100.png
-
-[200]: ./media/evidence-tutorial/tutorial_general_200.png
-[201]: ./media/evidence-tutorial/tutorial_general_201.png
-[202]: ./media/evidence-tutorial/tutorial_general_202.png
-[203]: ./media/evidence-tutorial/tutorial_general_203.png
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

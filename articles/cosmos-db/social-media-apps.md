@@ -4,14 +4,14 @@ description: Ismerje meg a kialakítási mintában a közösségi hálózatokkal
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/11/2019
 ms.author: maquaran
-ms.openlocfilehash: 8d6dfa292bd597c2e37f7111e3a068010dc4653c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 36b77ff6666c2c8b0d27cbdc8552ade15b21d005
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042683"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100363"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi tartalom az Azure Cosmos DB használatával
 
@@ -222,7 +222,7 @@ Egy másik elérhető lehetőség [Azure Cognitive Services](https://www.microso
 
 Egy utolsó, de nem utolsósorban fontos cikk kell címezni: **méretezhetőség**. Az architektúrák tervezésekor egyes összetevő önállóan kell méretezhető. Végül kell további adatokat feldolgozni, vagy egy nagyobb földrajzi lefedettségével rendelkezik célszerű. Szerencsére éri el mindkét feladat van egy **kulcsrakész megoldást** a Cosmos DB használatával.
 
-A cosmos DB támogatja a [dinamikus particionálás](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) -a-beépített. Alapján automatikusan létrehoz egy adott **partíciókulcs**, amely a dokumentumok attribútumaként van definiálva. A megfelelő partíciókulcs meghatározása a tervezés során kell elvégezni. További információkért lásd: a [válassza ki a megfelelő partíciókulcs](partitioning-overview.md#choose-partitionkey) cikk.
+A cosmos DB támogatja a dinamikus particionálási-a-beépített. Alapján automatikusan létrehoz egy adott **partíciókulcs**, amely a dokumentumok attribútumaként van definiálva. A megfelelő partíciókulcs meghatározása a tervezés során kell elvégezni. További információkért lásd: [az Azure Cosmos DB particionálási](partitioning-overview.md).
 
 Közösségi élményt el kell végeznie az írási és lekérdezési módja a particionálási stratégia igazítását. (Például olvasási ugyanazon a partíción belül kívánatos, és kerülje a "hotspotok" osztja szét a írási művelet több partíciót.) Egyes beállítások akkor: tartalom kategória szerint, földrajzi régió vagy felhasználó által a historikus kulcs (nap/hó/hét) alapján partíciókat. Az összes valóban attól függ, hogyan fog kérdezni az adatokat, és az adatok megjelenítése a közösségi tapasztalatait.
 

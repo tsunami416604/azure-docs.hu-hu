@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 23b36fb647c2949dca1c5efe7f8194ec5a397965
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 19e340609e80998037938bdad59e9e6e74894bad
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140400"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098306"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>A csatlakoztatottgyár-alapú megoldásgyorsító bemutatója
 
@@ -46,7 +46,7 @@ A következő diagram a megoldásgyorsító logikai összetevőit vázolja fel:
 
 A megoldás az [OPC UA Pub/Sub specifikációt](https://opcfoundation.org/news/opc-foundation-news/opc-foundation-announces-support-of-publish-subscribe-for-opc-ua/) használja az OPC UA telemetriai adatok JSON-formátumban való küldésére az IoT Hub részére. A megoldás az [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) IoT Edge-modult használja erre a célra.
 
-A megoldás webalkalmazásba integrált OPC UA-ügyféllel is rendelkezik, amely képes kapcsolatot létesíteni a helyszíni OPC UA-kiszolgálókkal. Az ügyfél [fordított proxyt](https://wikipedia.org/wiki/Reverse_proxy) használ, és az IoT Hub segítségével anélkül képes létrehozni a kapcsolatot, hogy nyitott portokra lenne szüksége a helyszíni tűzfalon. Ezt a kommunikációs mintát [szolgáltatás által támogatott kommunikációnak](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/) hívják. A megoldás az [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy/) IoT Edge-modult használja erre a célra.
+A megoldás webalkalmazásba integrált OPC UA-ügyféllel is rendelkezik, amely képes kapcsolatot létesíteni a helyszíni OPC UA-kiszolgálókkal. Az ügyfél [fordított proxyt](https://wikipedia.org/wiki/Reverse_proxy) használ, és az IoT Hub segítségével anélkül képes létrehozni a kapcsolatot, hogy nyitott portokra lenne szüksége a helyszíni tűzfalon. Ezt a kommunikációs mintát a szolgáltatással segített kommunikáció nevezzük. A megoldás az [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy/) IoT Edge-modult használja erre a célra.
 
 
 ## <a name="simulation"></a>Szimuláció

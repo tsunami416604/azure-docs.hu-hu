@@ -12,19 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/07/2018
+ms.date: 02/11/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: b739db654a182433bbe1f47528d1ab99f1b10c08
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: e0f6e3068a26eef3b6cca79cffbb98614eb44a34
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242161"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100159"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Identitásarchitektúra az Azure Stackhez
-Az identitásszolgáltató az Azure Stack használata mellett dönt, mielőtt különbségeit fontos a beállításokat az Azure Active Directory (Azure AD) és az Active Directory összevonási szolgáltatások (AD FS). 
+
+Ha az Azure Stack használata Identitásszolgáltatóként, tisztában kell lennie a fontos különbségek a beállításokat az Azure Active Directory (Azure AD) és az Active Directory összevonási szolgáltatások (AD FS) között.
 
 ## <a name="capabilities-and-limitations"></a>Képességei és korlátozásai 
 Az Ön által választott identitásszolgáltató korlátozhatja a beállításokat, beleértve a több-bérlős támogatás. 

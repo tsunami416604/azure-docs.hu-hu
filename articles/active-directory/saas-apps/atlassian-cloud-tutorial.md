@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/20/2018
+ms.date: 02/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 55c1aa4a478031ebc49ec5ab7ea5744d9d980470
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 2089f600d89d1b072829976e2b3257bbf086bafa
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825755"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Oktatóanyag: Az Azure Active Directory-integráció Atlassian felhővel
 
@@ -39,6 +39,7 @@ Atlassian felhőalapú Azure AD-integráció konfigurálásához a következőkr
 
 * Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
 * Atlassian felhőalapú egyszeri bejelentkezés engedélyezve van az előfizetés
+* Engedélyezi a Security Assertion Markup Language (SAML) egyszeri bejelentkezést az Atlassian felhőalapú termékek, szüksége Atlassian hozzáférés beállítása. Tudjon meg többet [Atlassian hozzáférés]( https://www.atlassian.com/enterprise/cloud/identity-manager).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -124,29 +125,15 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Atlassian felhő, ha
     > [!NOTE]
     > A fenti bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Atlassian felhőalapú ügyfél-támogatási csapatának](https://support.atlassian.com/) lekérni ezt az értéket.
 
-6. Atlassian felhőalapú alkalmazás vár egy megadott formátumban, amelyhez egyéni attribútum-leképezéshez hozzá a SAML-jogkivonat attribútumai a SAML helyességi feltételek kereséséhez.
-
-    Alapértelmezés szerint a **felhasználóazonosító** érték user.userprincipalname van leképezve. Ez az érték user.mail leképezése módosítható. Azt is beállíthatja bármely más megfelelő érték a szervezet telepítő megfelelően, de a legtöbb esetben működnie kell az e-mailt. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+6. Az Atlassian felhőalapú alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. Atlassian felhőalkalmazás vár **nameidentifier** a leképezendő **user.mail**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa a Attribútumleképzés.
 
     ![image](common/edit-attribute.png)
 
-7. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    a. Kattintson a **Szerkesztés ikon** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
-
-    ![image](./media/atlassian-cloud-tutorial/tutorial_usermail.png)
-
-    ![image](./media/atlassian-cloud-tutorial/tutorial_usermailedit.png)
-
-    b. Az a **forrásattribútum** listáról válassza ki **user.mail**.
-
-    c. Kattintson a **Save** (Mentés) gombra.
-
-8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-9. Az a **Atlassian felhő beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+8. Az a **Atlassian felhő beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 

@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 8127abf19c31b8a50079f416e73c98efebfd0983
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.date: 02/11/2019
+ms.openlocfilehash: 1460b595e8887fc932d5be335ae51b07a000b9fb
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999419"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098357"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
-Ebben a cikkben megismerkedhet az áttelepítés egy SQL Server 2005 vagy újabb verzió-példány módszerek [Azure SQL Database felügyelt példány](sql-database-managed-instance.md).
+Ebben a cikkben megismerkedhet az áttelepítés egy SQL Server 2005 vagy újabb verzió-példány módszerek [Azure SQL Database felügyelt példány](sql-database-managed-instance.md). Egy önálló adatbázist vagy a rugalmas készletben való áttelepítéssel kapcsolatos információkért lásd: [egy önálló vagy készletezett adatbázis áttelepítése](sql-database-cloud-migrate.md). Áttelepítési más platformokon az áttelepítéssel kapcsolatos információkért lásd: [Azure adatbázis-Migrálási útmutató](https://datamigration.microsoft.com/).
 
 Magas szintű az adatbázis-áttelepítési folyamat hasonlóan néz ki:
 
@@ -34,7 +34,7 @@ Magas szintű az adatbázis-áttelepítési folyamat hasonlóan néz ki:
 - [Alkalmazások figyelése](#monitor-applications)
 
 > [!NOTE]
-> Egy önálló adatbázis egy önálló adatbázis vagy a rugalmas készlet áttelepítéséhez lásd: [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
+> Egy önálló adatbázis egy önálló adatbázis vagy a rugalmas készlet áttelepítéséhez lásd: [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-single-database-migrate.md).
 
 ## <a name="assess-managed-instance-compatibility"></a>Felügyelt példány kompatibilitási felmérése
 

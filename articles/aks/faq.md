@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: a7a7c8a6f16183d677aeb09ca62ac601cbd01289
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2366bd5543a7c3ee4a45eff74f71232a9c60989f
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694040"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098535"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>– Azure Kubernetes Service (AKS) kapcsolatos gyakori kérdések
 
@@ -60,7 +60,7 @@ Az AKS-fürt használatra erőforrásokat hoz létre, ha például a storage-fi�
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Címkék és egyéb tulajdonságait az AKS a MC_ * erőforráscsoportban lévő erőforrásokat is módosíthatja?
 
-Módosítása és törlése az Azure által létrehozott címkék és egyéb erőforrások tulajdonságait a *MC_** erőforráscsoportban például a méretezés és a hibák frissítése váratlan eredményekhez vezethet. Létrehozásához és módosításához a további egyéni címkéket, mint például egy üzleti egységet vagy költség center hozzárendelése támogatott. Az erőforrások alapján módosítja a *MC_** az aks-ben a fürt a szolgáltatási szint Célkitűzésének működésképtelenné válik.
+Módosítása és törlése az Azure által létrehozott címkék és egyéb erőforrások tulajdonságait a *MC_** erőforráscsoportban például a méretezés és a hibák frissítése váratlan eredményekhez vezethet. Létrehozásához és módosításához a további egyéni címkéket, mint például egy üzleti egységet vagy költség center hozzárendelése támogatott. Az erőforrások alapján módosítja a *MC_** az aks-ben a fürt működésképtelenné válik a szolgáltatási szint célkitűzés (SLO). További információkért lásd: [Does AKS kínál egy szolgáltatói szerződést?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Milyen Kubernetes már a betegfelvétel tartományvezérlők támogatja az AKS? Is már a betegfelvétel vezérlők hozzáadásának vagy eltávolításának?
 

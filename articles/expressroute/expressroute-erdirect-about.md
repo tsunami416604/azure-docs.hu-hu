@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: mialdrid
+ms.date: 02/11/2019
+ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0415c329364f8df312667e725f3c5376ea13a6f4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 3124e98dd035080c2989849232b978c5d4a563ea
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098098"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100737"
 ---
 # <a name="about-expressroute-direct-preview"></a>Kapcsolatos az ExpressRoute közvetlen (előzetes verzió)
 
@@ -58,7 +58,7 @@ A legtöbb esetben a funkció megegyezik, amelyek használatához az ExpressRout
 
 ## <a name="circuit-skus"></a>Kapcsolatcsoport SKU-k
 
-Az ExpressRoute közvetlen támogatja az adatmennyiség nagymértékű Adatbetöltési forgatókönyveket az Azure storage és más big Data típusú adatok szolgáltatásokba. Az ExpressRoute Kapcsolatcsoportok az ExpressRoute közvetlen most is támogatási **40 GB/s** és **100 GB/s** kapcsolatcsoport SKU-k.
+Az ExpressRoute közvetlen támogatja az adatmennyiség nagymértékű Adatbetöltési forgatókönyveket az Azure storage és más big Data típusú adatok szolgáltatásokba. Az ExpressRoute Kapcsolatcsoportok az ExpressRoute közvetlen most is támogatási **40 GB/s** és **100 GB/s** kapcsolatcsoport SKU-k. A fizikai port pár **100 GB/s** csak és rendelkezhet több virtuális kapcsolatok az 5 GB/s sebességű, 10 GB/s, 40 GB/s, 100 GB/s - sávszélesség legfeljebb 200 GB/s bármilyen kombinációban történő. 
 
 ## <a name="vlan-tagging"></a>VLAN-címkézés
 

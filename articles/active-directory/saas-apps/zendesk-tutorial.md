@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/03/2018
+ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2f58bb8a1a3a0f0593513570355b8d3ba46816b9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 9a399b78ed4afa0391f8e1479a22cfb2a2fd8ffd
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825833"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098847"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zendesk
 
@@ -108,7 +108,12 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Zendesk, hajtsa vég
 
     a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.zendesk.com`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `<subdomain>.zendesk.com`
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím:
+    | |
+    |-|-|
+    | `<subdomain>.zendesk.com` |
+    | `https://<subdomain>.zendesk.com` |
+    | |
 
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Zendesk-ügyfél-támogatási csapatának](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
@@ -162,7 +167,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Zendesk, hajtsa vég
 
 11. A felvett bővítmény a böngészőre, kattintson a **telepítő Zendesk** fogja irányítani, a Zendesk-alkalmazás. Itt adja meg a rendszergazdai hitelesítő adatok a Zendesk bejelentkezik. A webböngésző-bővítmény automatikusan az Ön számára az alkalmazás konfigurálása és automatizálhatja a szakasz **konfigurálása Zendesk egyszeri bejelentkezés**.
 
-     ![image](./media/zendesk-tutorial/d2_saml.png)
+    ![image](./media/zendesk-tutorial/d2_saml.png)
 
 ### <a name="configure-zendesk-single-sign-on"></a>Zendesk egyszeri bejelentkezés konfigurálása
 
@@ -190,7 +195,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Zendesk, hajtsa vég
 
     f. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
@@ -278,5 +283,4 @@ Ha a hozzáférési panelen a Zendesk-csempére kattint, meg kell automatikusan 
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Felhasználók átadásának konfigurálása](zendesk-provisioning-tutorial.md) 
-
+- [Felhasználók átadásának konfigurálása](zendesk-provisioning-tutorial.md)

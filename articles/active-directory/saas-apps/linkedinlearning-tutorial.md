@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d5857070-bf79-4bd3-9a2a-4c1919a74946
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 02/11/2018
 ms.author: jeedes
-ms.openlocfilehash: be5dd0a0fd1eb45c505a2f0ddf1489d21bfd38e6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0b742ec14dfb40d941fab68594d4bb45f6e37f55
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821184"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099275"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Oktatóanyag: A LinkedIn Learning az Azure Active Directory-integráció
 
@@ -118,11 +118,11 @@ A LinkedIn Learning konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa 
     > [!NOTE]
     > Ezek az értékek nem valódi értéket. Ezeket az értékeket a tényleges azonosítója és a válasz URL-címe, amelynek az ismertetése a később frissíteni a **konfigurálása LinkedIn Learning egyszeri bejelentkezés** oktatóanyag szakaszában.
 
-5. LinkedIn Learning alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőfelvételen látható erre egy példa látható. Az alapértelmezett érték **egyedi felhasználói azonosító** van **user.userprincipalname** , de a LinkedIn Learning vár ezt a képezhető le a felhasználó e-mail-címmel. Használhatja, amely **user.mail** attribútumot a listából, vagy használja a megfelelő attribútum értéket, a szervezet konfiguráció alapján. 
+5. LinkedIn Learning alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. LinkedIn Learning alkalmazás vár **nameidentifier** a leképezendő **user.mail**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa a Attribútumleképzés.
 
     ![image](common/edit-attribute.png)
 
-6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+6. Emellett a fent LinkedIn Learning alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
     
     | Name (Név) | Adatforrás-attribútum |
     | ---------------| --------------- |
@@ -133,9 +133,9 @@ A LinkedIn Learning konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa 
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
-    ![image](./media/linkedinlearning-tutorial/tutorial_usermail.png)
+    ![image](common/new-save-attribute.png)
 
-    ![image](./media/linkedinlearning-tutorial/tutorial_usermailedit.png)
+    ![image](common/new-attribute-details.png)
 
     b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 

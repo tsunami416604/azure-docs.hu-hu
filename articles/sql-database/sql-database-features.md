@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: f80ebbccab0ac6f227bbba149797ea46f6a23227
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: c2a1cbd75bb3ff0b936d8dd801572e5783ab5260
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004628"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100917"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Az Azure SQL Database és az SQL Server összehasonlítása
 
@@ -131,7 +131,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Igen | Igen |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Igen | Igen |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nem – lásd: [bővített események](sql-database-xevent-db-diff-from-svr.md) | Igen |
-| [SQL Server Replication](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate.md) | Igen, a [nyilvános előzetes verzió](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
+| [SQL Server Replication](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-single-database-migrate.md) | Igen, a [nyilvános előzetes verzió](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nem - [tekintse meg a Power BI](https://docs.microsoft.com/power-bi/) | Nem - [tekintse meg a Power BI](https://docs.microsoft.com/power-bi/) |
 | [Tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | Igen | Igen |
 | [A rendszer tárolt függvényei](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |

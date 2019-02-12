@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: 3ee952f10cebe374767e0db4a592695eeb1b4417
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 16d536ff5bd1f7d9a3427877a93036d9f711564e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810065"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099776"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -243,7 +243,7 @@ Nem. Az SQL Database rendkívüli egy állapotáttelepítési pont architektúra
 
 ### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>Mi az a legrégebbi verzió fogja az SQL Database rendkívüli támogatási áttelepítést a SQL Server
 
-SQL Server 2005. További információkért lásd: [egy adatbázist vagy egy készletezett adatbázis áttelepítése](sql-database-cloud-migrate.md#migrate-to-a-single-database-or-a-pooled-database). A kompatibilitási problémákat, tekintse meg a [adatbázis-migrálás kompatibilitási problémáinak megoldása](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues).
+SQL Server 2005. További információkért lásd: [egy adatbázist vagy egy készletezett adatbázis áttelepítése](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database). A kompatibilitási problémákat, tekintse meg a [adatbázis-migrálás kompatibilitási problémáinak megoldása](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues).
 
 ### <a name="does-sql-database-hyperscale-support-migration-from-other-data-sources-such-as-aurora-mysql-oracle-db2-and-other-database-platforms"></a>Támogatja az SQL Database rendkívüli Sarki fény, MySQL, Oracle, DB2 és más adatbázis platformokon, például más adatforrásokból áttelepítést
 

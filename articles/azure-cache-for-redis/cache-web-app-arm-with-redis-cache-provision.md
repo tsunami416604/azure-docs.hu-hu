@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: f95db9b1c8119784d2b1d9cfb9dd005fc42ac3e4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 90c26e73fd3b2f8592df70ed9d0bfb0e70ca5a89
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033791"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098578"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Hozzon létre egy webalkalmazás és az Azure Cache redis-sablon használatával
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ebben a témakörben megtudhatja, hogyan hozhat létre egy Azure Resource Manager-sablon üzembe helyez egy Azure-webalkalmazást az Azure Cache redis. Megtudhatja, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
 Sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md). A JSON-szintaxist és a gyorsítótár erőforrástípusok tulajdonságaival kapcsolatos tudnivalókért lásd: [a Microsoft.Cache erőforrás-típus](/azure/templates/microsoft.cache/allversions).
@@ -122,7 +125,7 @@ Figyelje meg, hogy a web app alkalmazás beállítás tulajdonságokkal, amelyek
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
-    New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup
+    New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup
 
 ### <a name="azure-cli"></a>Azure CLI
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup

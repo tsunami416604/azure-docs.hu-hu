@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: fbafd2d224879dbe33c581c13dfe52fc9a22ae55
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ecbc1af97ce5ed158138f2bcf47f5729842c0fe9
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510818"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098534"
 ---
 # <a name="api-management-cross-domain-policies"></a>Az API Management tartományközi házirendjei
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -145,7 +145,7 @@ Ez a példa bemutatja, hogyan repülés kérések, például az egyéni fejléce
 Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 - **A házirend-szakaszok:** bejövő
-- **A házirend-hatókörök:** API-művelet
+- **A házirend-hatókörök:** globális, API-művelet
 
 ## <a name="JSONP"></a> JSNOP
 A `jsonp` egy műveletet, vagy lehetővé teszi a tartományok közötti hívások JavaScript-ügyfelekből webböngésző-alapú API-házirend hozzáadja az padding (JSNOP) támogatásával JSON. JSNOP a JavaScript-programok használt adatokat kérjen egy kiszolgálóról egy másik tartományban módszer. JSNOP megkerüli a korlátozás kényszeríti ki a legtöbb webböngésző, ahol a weblapok elérése ugyanabban a tartományban kell lennie.

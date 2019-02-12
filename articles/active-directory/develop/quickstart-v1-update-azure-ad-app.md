@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 34d0c4054273babcc56516d290857c4ddb554bf7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 49aa4751ce5e9b5addfc1b1d131d5287cce77154
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819093"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098612"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Gyors útmutató: Az Azure Active Directory-alkalmazás frissítése
 
@@ -144,7 +144,7 @@ Az alkalmazásjegyzékekkel kapcsolatos fogalmakra vonatkozó további informác
 
 Ahogy korábban említettük, amellett, hogy közzéteheti/elérheti a saját alkalmazásai API-jait, az ügyfélalkalmazása regisztrálásával elérheti a Microsoft-erőforrások által közzétett API-kat is. A Microsoft Graph API (a Portal erőforrás-/API-listájában csak „Microsoft Graph” nevén szerepel) az Azure AD-ben regisztrált összes alkalmazás számára elérhető. Ha az ügyfélalkalmazást egy valamely Office 365-előfizetésre feliratkozott fiókokat tartalmazó bérlőn regisztrálja, a különféle Office 365-erőforrások által közzétett hatóköröket is elérheti.
 
-A Microsoft Graph API által közzétett hatókörök részletes leírásáért olvassa el a [Microsoft Graph-engedélyek referenciáját](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference).
+A Microsoft Graph API által közzétett hatókörök részletes leírásáért olvassa el a [Microsoft Graph-engedélyek referenciáját](https://docs.microsoft.com/graph/permissions-reference).
 
 > [!NOTE]
 > Egy jelenleg érvényben lévő korlátozás miatt a natív ügyfélalkalmazások csak „A szervezet címtárának elérése” engedély használatával hívhatják meg az Azure AD Graph API-t. Ez a korlátozás a webalkalmazásokra nem vonatkozik.

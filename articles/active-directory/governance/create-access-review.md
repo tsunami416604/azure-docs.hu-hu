@@ -14,12 +14,12 @@ ms.subservice: compliance
 ms.date: 11/15/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 1c71333a49643647bae3730e4f14f26939388c4f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2393aaec32f2813860ab422b42772eef11ccd8a3
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153743"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099156"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Az Azure AD-csoport tagjainak vagy alkalmazás-hozzáférés hozzáférési felülvizsgálat létrehozása
 
@@ -115,7 +115,7 @@ A beállításokat a befejezést követő művelet beállításai alapján, auto
 
 ## <a name="create-reviews-via-apis"></a>API-kon keresztül felülvizsgálat létrehozása
 
-A hozzáférési felülvizsgálatok API-k használatával is létrehozhat. A csoportok kezelésére mit ellenőrzi, és alkalmazás felhasználói számára az Azure Portalon is elvégezhető a Microsoft Graph API-k használatával. További információkért lásd: a [Azure AD hozzáférési felülvizsgálatok API-referencia](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/accessreviews_root). A kód minta: [példa beolvasása az Azure AD hozzáférési felülvizsgálatok segítségével a Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
+A hozzáférési felülvizsgálatok API-k használatával is létrehozhat. A csoportok kezelésére mit ellenőrzi, és alkalmazás felhasználói számára az Azure Portalon is elvégezhető a Microsoft Graph API-k használatával. További információkért lásd: a [Azure AD hozzáférési felülvizsgálatok API-referencia](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). A kód minta: [példa beolvasása az Azure AD hozzáférési felülvizsgálatok segítségével a Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
 
 ## <a name="next-steps"></a>További lépések
 

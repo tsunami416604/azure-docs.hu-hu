@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 22f0eae805ad112c5a6a7746897dac7e37d90028
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fdb481961680d5f84170a25c7a76bffa8423e0cc
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604337"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097167"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Gyors útmutató: Próbálja ki egy felhőalapú megoldás a csatlakoztatott eszközök a prediktív karbantartási elemzés futtatása
 
@@ -42,7 +42,7 @@ A **Prediktív karbantartási megoldás létrehozása** oldalon adjon meg egy **
 
 Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Ebben a rövid útmutatóban a **Visual Studio Enterprise** és az **USA keleti régiója** értékeket választjuk. Mindehhez [globális rendszergazdának vagy felhasználónak](iot-accelerators-permissions.md) kell lennie az előfizetésben.
 
-Kattintson a **Megoldás létrehozása** gombra az üzembe helyezés elkezdéséhez. A folyamat legalább öt percig tart:
+Kattintson a **létrehozás** a telepítés megkezdéséhez. A folyamat legalább öt percig tart:
 
 ![A prediktív karbantartási megoldás részletei](./media/quickstart-predictive-maintenance-deploy/createform.png)
 
@@ -50,9 +50,13 @@ Kattintson a **Megoldás létrehozása** gombra az üzembe helyezés elkezdésé
 
 Ha az üzembe helyezés befejeződött az Azure-előfizetésen, a megoldás csempéjén egy zöld pipa és a **Kész** felirat jelenik meg. Ekkor bejelentkezhet a prediktív karbantartási megoldásgyorsító irányítópultjára.
 
-A **Kiépített megoldások** lapon kattintson az új prediktív karbantartási megoldásgyorsítóra. A megjelenő panelen megtekintheti a prediktív karbantartási megoldásgyorsítóra vonatkozó információkat. Válassza ki a **Megoldások irányítópultja** elemet a prediktív karbantartási megoldásgyorsító megjelenítéséhez:
+A **Kiépített megoldások** lapon kattintson az új prediktív karbantartási megoldásgyorsítóra.
 
-![Megoldás panel](./media/quickstart-predictive-maintenance-deploy/solutionpanel.png)
+![Megoldás panel](./media/quickstart-predictive-maintenance-deploy/solution.png)
+
+ Megtekintheti a megoldásgyorsító kapcsolatos információkat az oldal jelenik meg. Válasszon **nyissa meg a megoldásgyorsító** a prediktív karbantartási megoldásgyorsító megtekintése:
+
+![Megoldás panel](./media/quickstart-predictive-maintenance-deploy/solutionpaneldetails.png)
 
 Kattintson az **Elfogadás** gombra az engedélykérések elfogadásához. Ekkor a böngészőben megjelenik a prediktív karbantartási megoldásgyorsító irányítópultja:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 73f2e7a37e1e51bf215cbac782b454d909f275dc
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ad389cfaa92ad487fad8b7ecb6feac40324572f0
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568532"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100567"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Hibaelhárítási & korlátozások az Azure Cloud Shell
 
@@ -109,10 +109,6 @@ A cloud Shell az alábbi böngészők legújabb verzióit támogatja:
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Egy adott felhasználó csak egy parancshéj lehet aktív.
-
-Csak indíthatják egyfajta rendszerhéj egyszerre, vagy **Bash** vagy **PowerShell**. Előfordulhat azonban, Bash- vagy PowerShell fut egyszerre több példányát. Érvényesítheti a Bash- vagy PowerShell okok Cloud Shell újraindítása, amely befejezi a meglévő munkameneteket között.
-
 ### <a name="usage-limits"></a>Használati korlátozások
 
 A cloud Shell interaktív használati esetek szól. Ennek eredményeképpen minden olyan hosszan futó nem interaktív munkamenet befejeződik figyelmeztetés nélkül.
@@ -140,10 +136,6 @@ A `SqlServer` modul tartalmazza a Cloud Shellben a PowerShell Core csak előzete
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Fájl alapértelmezett helye az Azure-meghajtó létrehozása
 
 PowerShell-parancsmagok használatával felhasználók az Azure-meghajtó a fájlok nem hozható létre. Amikor a felhasználó más eszközökkel, például vim vagy nano, új fájlok létrehozása a fájlok menti, és a `$HOME` alapértelmezés szerint.
-
-### <a name="commands-that-create-gui-pop-ups-are-not-supported"></a>Grafikus felhasználói Felülettel felugró ablakokat hoznak létre parancsok nem támogatottak.
-
-Ha egy felhasználó futtat egy parancsot kell létrehoznia egy Windows párbeszédablak, mint például `Connect-AzureAD`, `Connect-AzureRmAccount`, vagy `Connect-AzAccount`, például kap egy hibaüzenetet: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
 ### <a name="tab-completion-can-throw-psreadline-exception"></a>Kiegészítés nagyvállalat PSReadline kivétel
 

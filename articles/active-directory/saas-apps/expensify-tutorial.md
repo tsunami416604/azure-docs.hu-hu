@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d86cbcf4f5c5029f215cd6c327e05fb93f7144
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c31711b5b8972187449807fd2cc6ea750208e5d2
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453893"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098119"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Expensify
 
@@ -104,9 +104,12 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Expensify, hajtsa v�
 
     ![Expensify tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be egy URL-címe: `https://www.expensify.com/authentication/saml/login`
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be az URL-cím a következő minta használatával: `https://www.expensify.com/authentication/saml/loginCallback?domain=[yourdomain]`
 
     b. Az a **azonosító (entityid)** szövegmezőbe írja be egy URL-címe: `https://www.expensify.com`
+
+    > [!NOTE]
+    > A bejelentkezési URL-érték nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Expensify ügyfél-támogatási csapatának](mailto:help@expensify.com) lekérni ezt az értéket.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -125,18 +128,18 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Expensify, hajtsa v�
 ### <a name="configure-expensify-single-sign-on"></a>Konfigurálása egyszeri bejelentkezéshez Expensify
 
 Ahhoz, hogy az egyszeri bejelentkezés az Expensify, akkor először engedélyeznie kell **tartomány-ellenőrzési** az alkalmazásban. Tartomány-ellenőrzési engedélyezheti az alkalmazást a felsorolt lépéseket [Itt](https://help.expensify.com/domain-control). Ha további támogatási együttműködve [Expensify ügyfél-támogatási csapatának](mailto:help@expensify.com). Ha már rendelkezik a tartomány-ellenőrzési engedélyezve van, kövesse az alábbi lépéseket:
-   
+
 ![Egyszeri bejelentkezés konfigurálása](./media/expensify-tutorial/tutorial_expensify_51.png)
-    
+
 1. Jelentkezzen be az Expensify alkalmazás.
-    
+
 2. Kattintson a bal oldali panel **beállítások** , és keresse meg **SAML**.
-    
+
 3. Váltás a **SAML bejelentkezési** lehetőséget igény **engedélyezve**.
-    
+
 4. Nyissa meg a letöltött összevonási metaadatok az Azure ad-ből a Jegyzettömbben, másolja a tartalmat, és illessze be azt a **Identity Provider metaadatok** szövegmezőbe.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
@@ -191,7 +194,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Expensify hoz létre. Együttműködve [Expensify ügyfél-támogatási csapatának](mailto:help@expensify.com) a felhasználók hozzáadása az Expensify platformon.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -204,4 +207,3 @@ Ha a hozzáférési panelen a Expensify csempére kattint, meg kell lehet automa
 - [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

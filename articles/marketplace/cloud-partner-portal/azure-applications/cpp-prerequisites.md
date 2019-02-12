@@ -14,16 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1fe847bd0cdceec7eccab8218ccf787d8f4366ba
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b3f978635127ef6aabb123d1c95b76ed06fccbbf
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196956"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097790"
 ---
 # <a name="azure-application-prerequisites"></a>Az Azure application Előfeltételek
 
-Ez a cikk egy kezelt alkalmazásra vonatkozó ajánlat az Azure piactér közzétételi technikai és üzleti előfeltételeit ismerteti.
+Ez a cikk egy kezelt alkalmazásra vonatkozó ajánlat az Azure piactér közzétételi technikai és üzleti előfeltételeit ismerteti.  Ha még nem tette meg, tekintse meg a videó [létrehozása Megoldássablonokkal, és a felügyelt alkalmazások az Azure Marketplace-en](https://channel9.msdn.com/Events/Build/2018/BRK3603).
+
 
 ## <a name="technical-requirements"></a>Technikai követelmények
 
@@ -36,6 +37,7 @@ A technikai követelményekről a következő elemeket tartalmazza:
   * [GitHub: Az Azure Resource Manager gyorsindítási sablonok](https://github.com/azure/azure-quickstart-templates). Ebben a tárházban az összes jelenleg elérhető Azure Resource Manager sablon a Közösség által biztosított tartalmazza. Egy sablon kereshető indexet kell tartani, https://azure.microsoft.com/en-us/documentation/templates/.
 * UI-definíció létrehozása<br>
 További információkért lásd: [létrehozása az Azure portal felhasználói felületet a felügyelt alkalmazás](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview). Ez a cikk az alapfogalmakat, a createUiDefinition.json fájl mutatja be. Az Azure Portalon ezt a fájlt használja egy felügyelt alkalmazás létrehozásához a felhasználói felület létrehozásához.
+
 
 ## <a name="business-requirements"></a>Üzleti feltételek
 
@@ -52,7 +54,8 @@ Az üzleti követelmények a következők a következő eljárási, és a jogi s
 * Ön felelős a szoftver- és külső függőségek licencelése.
 * Meg kell adnia a tartalmat, amely megfelel az Azure Marketplace-en és az Azure Portalon való megjelentetéséhez ajánlat feltételeit.
 * El kell fogadnia a Microsoft Azure Marketplace részvételi szabályzata és a kiadói szerződés feltételeit.
-* Be kell tartania a Microsoft Azure webhelyhasználati feltételek, a Microsoft adatvédelmi nyilatkozatát és a Microsoft Azure Certified Program szerződését.
+* Be kell tartania a Microsoft Azure webhelyhasználati feltételek, a Microsoft adatvédelmi nyilatkozat és a Microsoft Azure Certified Program szerződését.
+
 
 ## <a name="publishing-requirements"></a>Közzétételi követelményei
 
@@ -62,10 +65,12 @@ Egy új Azure-alkalmazás-ajánlat közzétételéhez a következő előfeltéte
   * Cím
   * Egy leírást (HTML formátumban)
   * Emblémakép (PNG formátumban), valamint ezek a rögzített lemezkép mérete: 40 x 40 képpont, 90 x 90 képpont, 115 x 115 képpont és 255 x 115 képpont.
-* A használati feltételeit és adatvédelmi szabályzata
+* A *használati feltételeket tartalmazó fájl* és a egy *adatvédelmi szabályzat*
 * Dokumentáció
 * Támogatási kapcsolattartók
 
+
 ## <a name="next-steps"></a>További lépések
 
-[Hozzon létre egy Azure-alkalmazás ajánlatot](./cpp-create-offer.md) 
+Ha teljesítette a szükséges összes követelmény, készen áll a fogja [hozzon létre egy Azure-alkalmazás ajánlatot](./cpp-create-offer.md). 
+ 

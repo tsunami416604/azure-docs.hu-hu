@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/28/2018
 ms.author: troyhop
-ms.openlocfilehash: 12f993f606fc1ef44280142d5acfa2687cd4e043
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 84b232b175d45a12bb6e0f8b462849282144c19b
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601593"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097576"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Gyors útmutató: Helyezhet üzembe és futtathat egy IoT-eszköz szimulálása az Azure-ban
 
@@ -44,7 +44,7 @@ Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **
 
 Az Eszközszimulációs megoldással együtt használandó IoT Hub üzembe helyezéséhez jelölje be a jelölőnégyzetet. Később bármikor módosíthatja a szimulációja által használt IoT Hubot.
 
-Kattintson a **Megoldás létrehozása** gombra a megoldás kiépítésének elkezdéséhez. A folyamat legalább öt percig tart:
+Kattintson a **létrehozás** a megoldás kiépítéséhez. A folyamat legalább öt percig tart:
 
 ![Az eszközszimulációs megoldás adatai](./media/quickstart-device-simulation-deploy/createform.png)
 

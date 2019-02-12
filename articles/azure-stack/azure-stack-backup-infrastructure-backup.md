@@ -14,12 +14,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 607356bb59550626c9fe5f71d4609b9c3e2b2fe0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 77493782802eeb29313b57d11442535f1734c12e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251299"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097385"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Az Azure Stackhez az infrastruktúra biztonsági mentési szolgáltatással a biztonsági mentés és adat-helyreállítás
 
@@ -52,12 +52,16 @@ A szolgáltatások a következő szolgáltatásokat tartalmazza.
   Fájlmegosztás elérhető az Azure Stacken, amely tartalmazhat hét biztonsági mentéseket kell. Minden biztonsági mentés: 10 GB. A megosztás tárolja a biztonsági mentések 140 GB képesnek kell lennie. Az Azure Stack infrastruktúra Backup szolgáltatás egy tárolási hely kiválasztásával kapcsolatos további információkért lásd: [biztonsági mentést vezérlő követelmények](azure-stack-backup-reference.md#backup-controller-requirements).
 - **Hitelesítő adatok**  
   Szüksége van egy tartományi felhasználói fiók és a hitelesítő adatok, például használhatja az Azure Stack rendszergazdai hitelesítő adatait.
-- **Titkosítási kulcs**  
-  Biztonsági másolatok ezt a kulcsot az vannak titkosítva. Ellenőrizze, hogy ezt a kulcsot biztonságos helyen tárolja. Után állítsa be ezt a kulcsot az első alkalommal vagy a kulcs rotálása a jövőben, akkor ezt a kulcsot a felületén nem jelennek meg. Előre megosztott kulcs létrehozásához további utasításokért hajtsa végre a scripts [biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](azure-stack-backup-enable-backup-powershell.md).
+- **Titkosítási tanúsítvány**  
+  Biztonságimásolat-fájlok titkosítottak, a tanúsítvány nyilvános kulcsával. Ellenőrizze, hogy ezt a tanúsítványt tárolja biztonságos helyen. 
+
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [biztonsági mentés engedélyezése az Azure Stack a felügyeleti portálról](azure-stack-backup-enable-backup-console.md).
-- Ismerje meg, hogyan [biztonsági mentés engedélyezése a PowerShell-lel az Azure Stack](azure-stack-backup-enable-backup-powershell.md).
-- Ismerje meg, hogyan [biztonsági mentése az Azure Stackben](azure-stack-backup-back-up-azure-stack.md )
-- Ismerje meg, hogyan [végzetes adatvesztés utáni helyreállítás](azure-stack-backup-recover-data.md)
+Ismerje meg, hogyan [biztonsági mentés engedélyezése az Azure Stack a felügyeleti portálról](azure-stack-backup-enable-backup-console.md).
+
+Ismerje meg, hogyan [biztonsági mentés engedélyezése a PowerShell-lel az Azure Stack](azure-stack-backup-enable-backup-powershell.md).
+
+Ismerje meg, hogyan [biztonsági mentése az Azure Stackben](azure-stack-backup-back-up-azure-stack.md )
+
+Ismerje meg, hogyan [végzetes adatvesztés utáni helyreállítás](azure-stack-backup-recover-data.md)

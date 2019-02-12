@@ -16,12 +16,12 @@ ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7efac4138f21a3f8e9dae087991f97dabad61822
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fa8328039c82ffb8be94c1d7abde7b2b6b6dd52d
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077243"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098238"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás (nyilvános előzetes verzió)
 
@@ -76,7 +76,7 @@ Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem k
 | `ztdid`                    | Beavatkozás nélküli telepítés azonosítója | JWT | | A használt eszközidentitás [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
 |`email`                     | Címezhető e-mail a felhasználó, ha a felhasználó rendelkezik ilyennel.  | JWT, SAML | | Ha a felhasználó a bérlő Vendég Ez az érték alapértelmezés szerint tartalmazza.  Felügyelt felhasználók (amelyeket a bérlőn belül) azt kell kérik, ez nem kötelező a jogcím, vagy a 2.0-s verziójú csak, és az OpenID hatókörének.  Felügyelt felhasználók esetén az e-mail-cím formájában kell megadni a [Office rendszergazdai portál](https://portal.office.com/adminportal/home#/users).|  
 | `acct`             | Felhasználói fiók állapota-bérlőben. | JWT, SAML | | Ha a felhasználó tagja a bérlő, a értéke `0`. A Vendég, ha az értéke `1`. |
-| `upn`                      | UserPrincipalName claim. | JWT, SAML  |           | Bár ez a jogcím automatikusan tartalmazza, mint egy nem kötelező jogcím csatolni a Vendég felhasználói esetben viselkedésének módosítása további tulajdonságok megadhat. <br> További tulajdonságok: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
+| `upn`                      | UserPrincipalName claim. | JWT, SAML  |           | Bár ez a jogcím automatikusan tartalmazza, mint egy nem kötelező jogcím csatolni a Vendég felhasználói esetben viselkedésének módosítása további tulajdonságok megadhat.  |
 
 ### <a name="v20-optional-claims"></a>Nem kötelező jogcímek 2.0-s verzió
 
@@ -85,30 +85,28 @@ Ezeket a jogcímeket 1.0-s verziójú jogkivonatok mindig szerepel, de nem tarta
 **3. táblázat: Nem kötelező jogcímek csak 2.0-s verzió**
 
 | JWT-jogcím     | Name (Név)                            | Leírás                                | Megjegyzések |
-|---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
+|---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-cím                      | Az IP-címet az ügyfél a bejelentkezett.   |       |
 | `onprem_sid`  | Helyi biztonsági azonosító |                                             |       |
 | `pwd_exp`     | Jelszó lejárati ideje        | A dátumot/időt, amikor a jelszó lejár. |       |
-| `pwd_url`     | Jelszó URL-Címének módosítása             | Egy URL-címet, amely a felhasználó ellátogathat a jelszó módosítására.   |       |
-| `in_corp`     | Vállalati hálózaton belül        | Ha az ügyfél bejelentkezik a vállalati hálózatról jelek. Ha nem, a a jogcím lehetőség nem része.   |       |
-| `nickname`    | Becenév.                        | A felhasználó, az első vagy utolsó külön további neve. |       |                                                                                                                |       |
+| `pwd_url`     | Jelszó URL-Címének módosítása             | Egy URL-címet, amely a felhasználó ellátogathat a jelszó módosítására.   |   |
+| `in_corp`     | Vállalati hálózaton belül        | Ha az ügyfél bejelentkezik a vállalati hálózatról jelek. Ha nem, a a jogcím lehetőség nem része.   |  Ki-alapú a [megbízható IP-címek](../authentication/howto-mfa-mfasettings.md#trusted-ips) beállításokat az MFA-ban.    |
+| `nickname`    | Becenév.                        | A felhasználó, az első vagy utolsó külön további neve. | 
 | `family_name` | Vezetéknév                       | Az utolsó neve, Vezetéknév vagy felhasználó család neve biztosít az Azure AD-felhasználói objektum. <br>"family_name":"Miller" |       |
 | `given_name`  | Utónév                      | Itt az első vagy az "adott" a felhasználó neve az Azure AD-felhasználói objektum vannak megadva.<br>"given_name": "Frank"                   |       |
+| `upn`       | Felhasználó egyszerű neve | Egy azonosítóval, a felhasználó a username_hint paraméterrel használható.  A felhasználó nem egy tartós azonosítót, és nem használható a fontos adatokat. | Lásd: [további tulajdonságok](#additional-properties-of-optional-claims) alább a jogcím-konfigurációhoz. |
 
 ### <a name="additional-properties-of-optional-claims"></a>Nem kötelező jogcímek további tulajdonságok
 
-Egyes nem kötelező jogcímek konfigurálható megváltoztatni a jogcímet ad vissza. Ezek a további tulajdonságok vannak többnyire kódtáblázatokhoz használják a különböző adatokat elvárásainak a helyszíni alkalmazások migrálása érdekében (például `include_externally_authenticated_upn_without_hash` segít az ügyfeleknek, amely nem tudja kezelni a hashmarks a (`#`) UPN-jét)
+Egyes nem kötelező jogcímek konfigurálható megváltoztatni a jogcímet ad vissza. Ezek a további tulajdonságok vannak többnyire kódtáblázatokhoz használják a különböző adatokat elvárásainak a helyszíni alkalmazások migrálása érdekében (például `include_externally_authenticated_upn_without_hash` segít az ügyfelekkel, hogy nem tudja kezelni a kettős kereszt (`#`) UPN-jét)
 
-**4. táblázat: Értékek standard választható jogcím konfigurálása**
+**4. táblázat: Értékek nem kötelező jogcím konfigurálása**
 
-| Tulajdonság neve                                     | További tulajdonság neve                                                                                                             | Leírás |
-|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `upn`                                                 |                                                                                                                                      |  A SAML- és a JWT-válaszok használható.        |
-| | `include_externally_authenticated_upn`              | A Vendég UPN adatbázisában található az erőforrás-bérlő tartalmazza. Például: `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
-| | `include_externally_authenticated_upn_without_hash` | Ugyanaz, mint a fenti, kivéve, amelyek a hashmarks (`#`) cserélése aláhúzásjeleket (`_`), például `foo_hometenant.com_EXT_@resourcetenant.com` |             
-
-> [!Note]
->Adja meg a választható jogcím egy új tulajdonság nélkül nem változik meg a minden viselkedés – annak érdekében, hogy a jogkivonatban kiadott új jogcímet talál, a további tulajdonságok közül legalább hozzá kell adni. 
+| Tulajdonság neve  | További tulajdonság neve | Leírás |
+|----------------|--------------------------|-------------|
+| `upn`          |                          | A SAML- és a JWT-válaszok és az 1.0-s és 2.0-s verziójú jogkivonatok használható. |
+|                | `include_externally_authenticated_upn`  | A Vendég UPN adatbázisában található az erőforrás-bérlő tartalmazza. Például: `foo_hometenant.com#EXT#@resourcetenant.com` |             
+|                | `include_externally_authenticated_upn_without_hash` | Ugyanaz, mint a fenti, azzal a különbséggel, hogy a kivonat jelöli meg (`#`) cserélése aláhúzásjeleket (`_`), például `foo_hometenant.com_EXT_@resourcetenant.com` |
 
 #### <a name="additional-properties-example"></a>További tulajdonságok példa
 
@@ -151,12 +149,12 @@ Az alkalmazás nem kötelező jogcímek az alkalmazásjegyzéknek (lásd példá
 "saml2Token": [ 
               { 
                     "name": "upn", 
-                    "essential": true
+                    "essential": false
                },
                { 
                     "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
                     "source": "user", 
-                    "essential": true
+                    "essential": false
                }
        ]
    }

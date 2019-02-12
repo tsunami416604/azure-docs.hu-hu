@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c569d1be9a301b2282ad1b4fd6e21130f7de2575
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ae589cdf1ef7df054bbbbe393cc2ebe8454937e5
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103530"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099751"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 protokoll - gyógyfürdők az implicit folyamat használata
 
@@ -79,7 +79,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `client_id` | szükséges |Az alkalmazás azonosítója, amely a regisztrációs portál ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) az alkalmazás hozzárendelve. |
 | `response_type` | szükséges |Tartalmaznia kell `id_token` OpenID Connect bejelentkezhet. A response_type is tartalmazhat `token`. Használatával `token` itt lehetővé teszi az alkalmazások a kapott hozzáférési jogkivonat azonnal a hitelesítési végpontra ne kelljen egy második kérést a hitelesítési végpontra. Ha használja a `token` response_type, a `scope` paraméternek tartalmaznia kell egy hatókör, melyik erőforrást kell kiállítani token jelzi. |
 | `redirect_uri` | Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. |
-| `scope` | szükséges |Hatókörök szóközzel elválasztott listáját. Az OpenID Connect, tartalmaznia kell a hatókör `openid`, amelyet a rendszer lefordítja arra a jóváhagyási felhasználói felület a "Bejelentkezés" engedélyt. Szükség esetén is érdemes felvenni a `email` vagy `profile` [hatókörök](v2-permissions-and-consent.md) a további felhasználói adatokhoz való hozzáférést. A különböző erőforrások hozzájárulás kérése a kéréshez más hatókörök is. |
+| `scope` | szükséges |Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md). Az OpenID Connect, tartalmaznia kell a hatókör `openid`, amelyet a rendszer lefordítja arra a jóváhagyási felhasználói felület a "Bejelentkezés" engedélyt. Szükség esetén is érdemes felvenni a `email` vagy `profile` hatókörök további felhasználói adatok elérésekor. A különböző erőforrások hozzájárulás kérése a kéréshez más hatókörök is. |
 | `response_mode` | választható |Meghatározza a létrejövő jogkivonat vissza küldhet az alkalmazáshoz használandó módszert. Az alapértelmezett lekérdezése egy hozzáférési jogkivonatot, de az töredék, ha a kérelemben id_token. |
 | `state` | Ajánlott |A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat, akinél karakterlánc lehet. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](https://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet is szolgál. |
 | `nonce` | szükséges |A kérésben, az eredményül kapott id_token jogcímként szerepeljenek, az alkalmazás által generált érték. Az alkalmazás ezután ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Az érték általában véletlenszerű, egyedi karakterlánc, amely a kérés eredetének azonosítására használhatók. Csak akkor szükséges, ha id_token van szükség. |
@@ -100,7 +100,7 @@ GET https://localhost/myapp/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &token_type=Bearer
 &expires_in=3599
-&scope=https%3a%2f%2fgraph.microsoft.com%2fmail.read 
+&scope=https%3a%2f%2fgraph.microsoft.com%2fuser.read 
 &id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=12345
 ```
@@ -156,7 +156,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=token
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&response_mode=fragment
 &state=12345&nonce=678910
 &prompt=none
 &domain_hint=organizations
@@ -166,9 +166,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 A lekérdezési paramétereket az URL-címben a részletekért lásd: [a bejelentkezési kérelem küldése](#send-the-sign-in-request).
 
 > [!TIP]
-> Próbálja ki a másolás és beillesztés a kérést egy böngészőlap alább! (Ne felejtse el lecserélni a `domain_hint` és a `login_hint` értékek a felhasználó a megfelelő értékekkel)
+> Próbálja ki a másolás és beillesztés a kérést egy böngészőlap alább! (Ne felejtse el lecserélni a `login_hint` a megfelelő értéket a felhasználóhoz tartozó értékek)
 >
->`https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&domain_hint=consumers-or-organizations&login_hint=your-username`
+>`https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fgraph.microsoft.com%2user.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&login_hint=your-username`
 >
 
 Köszönhetően a `prompt=none` paramétert, a kérelem vagy sikeres vagy meghiúsul azonnal, és térjen vissza az alkalmazást. Sikeres választ küld az alkalmazást a jelzett `redirect_uri`, a megadott metódussal a `response_mode` paraméter.

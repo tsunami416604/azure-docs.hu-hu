@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/22/2019
-ms.openlocfilehash: 7b1d58b82f2ccc99ecacb6099f6063fba5899421
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/11/2019
+ms.openlocfilehash: c5d74c707c34cdcfba7bb0556c6e91a356123296
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478457"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099687"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás az SQL Database és a Data warehouse-bA
 
@@ -40,15 +40,14 @@ A Microsoft is zökkenőmentesen helyezi és kezeli a georeplikációhoz szüks�
 > [!IMPORTANT]
 > Minden újonnan létrehozott SQL-adatbázis szolgáltatás által kezelt transzparens adattitkosítás használatával alapértelmezés szerint vannak titkosítva. Az Azure SQL felügyelt példánya adatbázisok, a 2017. május előtt létrehozott meglévő SQL-adatbázisok és a visszaállítás, georeplikáció és adatbázis-másolat létrehozása SQL-adatbázisok alapértelmezés szerint nincs titkosítva.
 
-## <a name="bring-your-own-key"></a>A saját kulcs használata
+## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Felhasználó által kezelt transzparens adattitkosítás – Bring Your Own Key
 
-A transzparens titkosítási kulcsok és férhet hozzá őket elvégezhető Bring Your Own Key-támogatással, és mikor. A Key Vault, amely az Azure-alapú külső kulcs-kezelési rendszer, akkor az első kulcskezelő szolgáltatás transzparens adattitkosítás Bring Your Own Key-támogatás van integrálva. A Bring Your Own Key-támogatásával az adatbázis-titkosítási kulcs a Key Vault aszimmetrikus kulccsal védett. Az aszimmetrikus kulcs sosem hagyja el a Key Vaultban. Után a kiszolgáló egy Key Vaultot engedélyekkel rendelkezik, a kiszolgáló alapszintű kulcsműveletet kéréseket küld, Key Vaulton keresztül. Az aszimmetrikus kulcs állítsa be a kiszolgáló szintjén, és az összes *titkosított* adott kiszolgálóhoz tartozó adatbázisok öröklik.
+[Az ügyfél által felügyelt kulcsok Azure Key vaultban TDE](transparent-data-encryption-byok-azure-sql.md) lehetővé teszi, hogy az adatbázis-titkosítási kulcs (Adattitkosítási) titkosítása a TDE-Védőhöz nevű aszimmetrikus ügyfél által felügyelt kulccsal.  A TDE-Védőhöz tárolja egy ügyfél által birtokolt és felügyelt [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), az Azure-alapú külső kulcs kezelési rendszer. A TDE adattitkosítási kulcsot, ami az adatbázis rendszerindító oldalának, titkosított, és visszafejti által a TDE-Védőhöz, amely az Azure Key Vaultban tárolt, és sosem hagyja el a key vault.  Az SQL Database, a felhasználói tulajdonú key vault az adattitkosítási kulcs titkosítására és visszafejtésére engedélyt kell. A logikai SQL Server, a key vault-engedélyek vissza lenne vonva, ha egy adatbázis nem érhető el, és az összes adat titkosítva van. Az Azure SQL Database a TDE-védőhöz a logikai SQL server szintjén van beállítva, és adott kiszolgálóhoz tartozó összes adatbázis öröklik. Az Azure SQL felügyelt példánya, a TDE-védőhöz van beállítva, a példány szintjén, és azt az összes örökölt *titkosított* adatbázisokat azon a példányon. Az előfizetési időszak *kiszolgáló* mind a kiszolgáló és példány ebben a dokumentumban hivatkozik, hacsak másként.
 
-A Bring Your Own Key-támogatásával szabályozhatja a fontos kezelési feladatok, például a kulcsok cseréjét, és a key vault-engedélyek. Is törli a kulcsokat és az összes titkosítási kulcs a naplózás és jelentéskészítés engedélyezéséhez. A Key Vault központi kulcskezelési biztosít, és szorosan figyelt hardveres biztonsági modulokat használ. A Key Vault elősegíti a kulcsok és adatok, amelyek az előírásoknak való megfelelés felügyeleti elkülönítése. A Key Vaulttal kapcsolatos további információkért tekintse meg a [Key Vault-dokumentációs oldalát](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).
+TDE az Azure Key Vault-integráció, a felhasználók felügyeletének legfontosabb felügyeleti tevékenységek, például a kulcsok cseréjét, a key vault-engedélyek, a kulcs biztonsági mentések, és az Azure Key Vault szolgáltatással minden TDE védő naplózás és jelentéskészítés engedélyezéséhez. A Key Vault központi kulcskezelési biztosít, szorosan figyelt hardveres biztonsági modulokban (HSM) használ, és lehetővé teszi a feladatkörök kulcsok kezelését és az adatok között, amelyek az biztonsági házirendek betartását.
+Transzparens adattitkosítás az Azure Key Vault-integráció (Bring Your Own Key-támogatás) Azure SQL Database, a felügyelt SQL-példány és a Data Warehouse kapcsolatos további információkért lásd: [Azure Key Vault-integrációtranszparensadattitkosítás](transparent-data-encryption-byok-azure-sql.md).
 
-Transzparens adattitkosítás az Azure SQL Database, a felügyelt SQL-példány és a Data Warehouse Bring Your Own Key-támogatással kapcsolatos további információkért lásd: [transzparens adattitkosítás Bring Your Own Key-támogatással rendelkező](transparent-data-encryption-byok-azure-sql.md).
-
-Transzparens adattitkosítás használatával Bring Your Own Key-támogatással rendelkező indításához lásd: útmutatója [transzparens adattitkosítás kapcsolja be a Key Vaultból saját kulcs használatával a PowerShell-lel](transparent-data-encryption-byok-azure-sql-configure.md).
+Transzparens adattitkosítás használata (Bring Your Own Key-támogatás) az Azure Key Vault-integráció indításához lásd: útmutatója [transzparens adattitkosítás kapcsolja be a Key Vaultból saját kulcs használatával a PowerShell-lel](transparent-data-encryption-byok-azure-sql-configure.md).
 
 ## <a name="move-a-transparent-data-encryption-protected-database"></a>Transzparens-titkosítás által védett adatbázis áthelyezése
 

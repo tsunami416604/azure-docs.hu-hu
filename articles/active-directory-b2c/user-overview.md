@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a901072875d6810711cb0b23d17555d9492c240a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9d4bcc66cfd82fee13ce57d096e061ddd8706720
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157975"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100125"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói fiókok áttekintése
 
@@ -47,21 +47,21 @@ Egy új munkahelyi fiók hozzáadásakor meg kell fontolja meg a következő be�
 Az alábbi információk használatával hozzon létre egy új munkahelyi fiókot:
 
 - [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>A felhasználói profil frissítése
 
 Az alábbi információkat használhatja egy felhasználó profiljának frissítése:
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Egy felhasználó jelszavának alaphelyzetbe állítása
 
 Az alábbi információk segítségével a felhasználó jelszavának alaphelyzetbe állítása: 
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Vendégfelhasználó
 
@@ -69,7 +69,7 @@ Egy külső felhasználók küldhetnek meghívót a bérlőhöz. Az Azure AD B2C
 
 Ha a bérlőbe meghívott vendégfelhasználó, meg kell adnia a címzetten, és a egy üzenetet a meghívó leíró e-mail-címét. A meghívó hivatkozás átirányítja a felhasználót, hogy a hozzájárulást kérő lap, a **Ismerkedés** gombot, és az engedélyek a felülvizsgálat elfogadták. Ha egy beérkező e-mail cím nem csatlakozik, a felhasználó által meghívott hitelesítő adatok használatával egy Microsoft-weblapra a hozzájárulást kérő lap is lépjen. A felhasználónak ezután meg kell beváltani a meghívót, ugyanúgy, mint az e-mailben szereplő hivatkozásra kattint. Például: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-Is használhatja a [Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/invitation_post) vendégfelhasználó meghívni.
+Is használhatja a [Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) vendégfelhasználó meghívni.
 
 ## <a name="consumer-user"></a>Fogyasztói felhasználó
 

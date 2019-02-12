@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: celested
 ms.reviewer: paulgarn
-ms.openlocfilehash: 0e2b6e29e159970784ab8c321bbc8c16e96b60e3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 21bd83511f09c3049c396e13161e02dead6e3459
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757690"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100006"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>Útmutató: Az Azure AD SAML-jogkivonat titkosítása (előzetes verzió) konfigurálása
 
@@ -33,19 +33,19 @@ A SAML helyességi feltételek az Azure AD közötti titkosítása és az alkalm
 
 Token titkosítás nélkül is az Azure AD SAML-jogkivonatok soha nem továbbítódnak a titkosítatlan a hálózaton. Az Azure AD szükséges jogkivonat kérés/válasz cseréje, hogy végre lehessen hajtani a titkosított HTTPS/TLS-csatornákon keresztül, hogy az Identitásszolgáltató, a böngésző és az alkalmazás közötti kommunikáció titkosított kapcsolaton keresztül kerül sor. Fontolja meg az adott helyzetben a további tanúsítványok kezelésével járó többletterhelést képest tokentitkosítási értékét.   
 
-Tokentitkosítási konfigurálásához fel kell töltenie egy X509 az Azure AD alkalmazást képviselő objektum, amely az alkalmazás a nyilvános kulcsot tartalmazó tanúsítványfájlt. A X509 beszerzése tanúsítvány, letöltheti azt magának az alkalmazásnak vagy esetek, ahol az alkalmazás gyártójától biztosítja a titkosítási kulcsokat, vagy azokban az esetekben, ahol az alkalmazás vár, hogy a titkos kulcsot, lehet, az alkalmazás gyártójának a get titkosítás eszközök használatával létrehozott, titkoskulcs feltöltött kulcs az alkalmazás-áruház, és a megfelelő nyilvános kulcsú tanúsítvány feltöltése az Azure ad-hez.
+Tokentitkosítási konfigurálásához kell egy X.509 tanúsítvány fájl, amely tartalmazza a nyilvános kulcsot az Azure AD alkalmazást képviselő objektum, amely az alkalmazás feltöltése. X.509-tanúsítvány beszerzése, letöltheti az alkalmazás saját maga, vagy a get, az alkalmazás gyártójának az esetekben, ahol az alkalmazás gyártójától biztosítja a titkosítási kulcsokat, vagy azokban az esetekben, ahol az alkalmazás vár, hogy a titkos kulcsot, lehet titkosítás eszközök használatával létrehozott, titkoskulcs feltöltött kulcs az alkalmazás-áruház, és a megfelelő nyilvános kulcsú tanúsítvány feltöltése az Azure ad-hez.
 
 Azure ad-ben az SAML helyességi feltétel adatok titkosítása AES-256 algoritmust használ.
 
 ## <a name="configure-saml-token-encryption"></a>SAML-jogkivonat titkosítása konfigurálása
 
-SAML-jogkivonat titkosítása konfigurálásához kövesse az alábbi lépéseket.
+SAML-jogkivonat titkosítása konfigurálásához kövesse az alábbi lépéseket:
 
 1. Szerezze be a nyilvános kulcsú tanúsítvány, amely megfelel egy titkos kulcsot, amely az alkalmazásban van konfigurálva.
 
-    Hozzon létre a titkosításhoz használandó aszimmetrikus kulcspárt. Vagy, ha az alkalmazás a titkosításhoz használandó nyilvános kulcs választékát kínálja, kövesse az alkalmazás utasításokat: Töltse le a X509 tanúsítványt.
+    Hozzon létre a titkosításhoz használandó aszimmetrikus kulcspárt. Vagy, ha az alkalmazás megadta a titkosításhoz használandó nyilvános kulcsot, kövesse az alkalmazás utasításokat követve töltse le az X.509-tanúsítványt.
 
-    A nyilvános kulcsot kell tárolni egy X509 .cer formátumú tanúsítványfájlt.
+    A nyilvános kulcsot egy X.509 tanúsítvány .cer formátumú fájl kell tárolni.
 
     Ha az alkalmazás a példány létrehozott kulcsot használ, kövesse az utasításokat, az alkalmazás telepítéséhez a titkos kulcsot, amelynek használatával az alkalmazás az Azure AD-bérlőből jogkivonatokat által biztosított.
 
@@ -66,9 +66,9 @@ A nyilvános tanúsítvány adhat hozzá az alkalmazás konfigurálása az Azure
     > [!NOTE]
     > A **jogkivonat-titkosítási** lehetőség csak érhető el a beállított SAML-alkalmazások esetén a **vállalati alkalmazások** panel az Azure Portalon, vagy az alkalmazáskatalógusból vagy a Katalógusban nem szereplő alkalmazást. Más alkalmazások Ez a menüpont le van tiltva. Az alkalmazások keresztül regisztrált az **alkalmazásregisztrációk** élmény az Azure Portalon megadható titkosítás SAML-jogkivonatok használatával az application manifest, a Microsoft Graphon keresztül vagy a Powershellen keresztül.
 
-1. Az a **jogkivonat-titkosítási** lapon jelölje be **tanúsítvány importálása** importálja a .cer fájlt, amely tartalmazza a nyilvános X509 tanúsítványt.
+1. Az a **jogkivonat-titkosítási** lapon jelölje be **tanúsítvány importálása** a .cer fájlt, amely tartalmazza a nyilvános X.509-tanúsítvány importálásához.
 
-    ![Importálja a .cer fájlt, amely tartalmazza a X509 tanúsítvány](./media/howto-saml-token-encryption/import-certificate-small.png)
+    ![A .cer fájlt, amely tartalmazza az X.509-tanúsítvány importálása](./media/howto-saml-token-encryption/import-certificate-small.png)
 
 1. Miután a tanúsítvány importálása, és a titkos kulcsot használja az alkalmazás oldalán van konfigurálva, aktiválja a titkosítási kiválasztásával a **...**  tovább állapota az ujjlenyomatot, és adja meg **tokentitkosítási aktiválása** a legördülő menüből az közül.
 
@@ -94,7 +94,7 @@ Amikor konfigurál egy keyCredential Graph-hoz a PowerShell használatával vagy
 
 ### <a name="to-configure-token-encryption-using-microsoft-graph"></a>A Microsoft Graph használatával tokentitkosítási konfigurálása
 
-1. Az alkalmazás frissítéséhez `keyCredentials` egy X509 a titkosítási tanúsítványt. Az alábbi példa bemutatja, hogyan ehhez.
+1. Az alkalmazás frissítéséhez `keyCredentials` titkosítási X.509 tanúsítvánnyal. Az alábbi példa bemutatja, hogyan ehhez.
 
     ```
     Patch https://graph.microsoft.com/beta/applications/<application objectid>

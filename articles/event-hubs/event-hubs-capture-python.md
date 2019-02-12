@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 72efe156920bb78631ea71a0f47f7f5fe19c7e23
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 639bc4ff9c69bca3d5f8bca6967bfc3e8e6a13d4
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133655"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100550"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture forgatókönyv: Python
 
@@ -41,7 +41,7 @@ Ebben a példában a [Azure Python SDK](https://azure.microsoft.com/develop/pyth
 - Python 2.7.x
 - Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 - Az aktív [az Event Hubs-névtér és az eseményközpont](event-hubs-create.md). 
-- Engedélyezése **rögzítése** található utasításokat követve az event hub funkció: [engedélyezze az Event Hubs Capture az Azure portal használatával](event-hubs-capture-enable-through-portal.md)
+- Engedélyezése **rögzítése** található utasításokat követve, az event hubs szolgáltatást: [Engedélyezze az Event Hubs Capture az Azure portal használatával](event-hubs-capture-enable-through-portal.md)
 
 ## <a name="create-an-azure-blob-storage-account"></a>Azure Blob storage-fiók létrehozása
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
@@ -62,7 +62,7 @@ Ebben a példában a [Azure Python SDK](https://azure.microsoft.com/develop/pyth
    import datetime
    import random
    import json
-   from azure.servicebus import ServiceBusService
+   from azure.servicebus.control_client import ServiceBusService
    
    sbs = ServiceBusService(service_namespace='INSERT YOUR NAMESPACE NAME', shared_access_key_name='RootManageSharedAccessKey', shared_access_key_value='INSERT YOUR KEY')
    devices = []

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/25/2019
+ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bdc3b88109a8d8c46f0a6a09297b0ca197165
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 95d61ac5fc1f7bcafb09107034c7b1588003f8cc
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479195"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097807"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-euromonitor-passport"></a>Oktatóanyag: Az Azure Active Directory-integráció Euromonitor Passport
 
@@ -66,7 +66,7 @@ Az Azure AD integrálása a Euromonitor Passport konfigurálása, hozzá kell Eu
 
 4. A Keresés mezőbe írja be a **Euromonitor Passport**, jelölje be **Euromonitor Passport** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Az eredmények listájában Euromonitor Passport](common/search-new-app.png)
+    ![Az eredmények listájában Euromonitor Passport](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
@@ -104,17 +104,17 @@ A Euromonitor Passport konfigurálása az Azure AD egyszeri bejelentkezés, hajt
 
     ![Euromonitor Passport-tartomány és URL-címek egyszeri bejelentkezési adatait](common/preintegrated.png)
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+5. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett módban le szeretné kérni a bejelentkezési URL-űrlapot a [Euromonitor Passport támogatási csapatának](mailto:passport.support@euromonitor.com). A bejelentkezési URL-cím beszerzése a Euromonitor Passport támogatási csapatának, után kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést:
 
     ![Euromonitor Passport-tartomány és URL-címek egyszeri bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  `https://portal.euromonitor.com`
+    Illessze be a kapott bejelentkezési URL-érték a Euromonitor Passport támogatási csapatával a bejelentkezési URL szövegmezőjébe.
 
 6. Euromonitor Passport alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](./media/euromonitor-passport-tutorial/attribute1.png)
 
-7. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket: 
+7. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------- |

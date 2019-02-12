@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: db1bdeed75264e32d5a96800096b6b433c62c44a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: eb05d1b28b80cb7bf48bc1160c251936423763e6
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822629"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100783"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-kötések az Azure Functions szolgáltatáshoz
 
@@ -982,7 +982,7 @@ Webhookok lehetővé teszik a Microsoft Graph reagálhat rájuk. Webhookok támo
 - A [Microsoft Graph-webhookelőfizetés bemeneti kötést](#webhook-input) lehetővé teszi, hogy a meglévő előfizetések listában, és szükség esetén frissítse azokat.
 - A [Microsoft Graph-webhookelőfizetés kimeneti kötésének](#webhook-output) lehetővé teszi, hogy hozzon létre vagy webhook előfizetések törlése.
 
-Maguk a kötések nem szükséges minden olyan Azure AD-engedélyekről, de kell igényelnie reagálhat a kívánt erőforrások típusának megfelelő engedélyekkel. Egyes erőforrástípusok szükséges engedélyek, amelyek listáját lásd: [előfizetése engedélyei](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions).
+Maguk a kötések nem szükséges minden olyan Azure AD-engedélyekről, de kell igényelnie reagálhat a kívánt erőforrások típusának megfelelő engedélyekkel. Egyes erőforrástípusok szükséges engedélyek, amelyek listáját lásd: [előfizetése engedélyei](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
 
 További információ a webhookok: [webhookok a Microsoft Graph-használata].
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 78f00b00465b6d834f30411485a874d6d2116ea4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0dced367f62ab97d62cd4b11758e13a05278442e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081245"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099258"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service
 
@@ -220,7 +220,9 @@ aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.9
 
 Ha elkészült, a rendszer gyorsítótárazza a hitelesítési jogkivonat. Csak reprompted jelentkezzen be, amikor a jogkivonat lejárt vagy a Kubernetes konfigurációs fájl újból létrehozza.
 
-Ha az engedélyezési hibaüzenet azért jelent meg, miután sikeresen bejelentkezett, ellenőrizze, hogy a felhasználó bejelentkezik, nem a vendég nem (Ez gyakran a helyzet, ha egy másik címtárban való összevont bejelentkezést használ) az Azure AD-ben.
+Ha látja az engedélyezési hibaüzenet Miután sikeresen bejelentkezett, ellenőrizze, hogy:
+1. A felhasználó bejelentkezik, nem az Azure AD-példányt (Ez gyakran a helyzet, ha egy másik címtárban való összevont bejelentkezést használ) a vendég nem.
+2. A felhasználó nincs több mint 200 csoport tagja.
 
 ```console
 error: You must be logged in to the server (Unauthorized)

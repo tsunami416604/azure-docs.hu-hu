@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: af2a2c84f9eb420a7ca9a8bd5909cbf856d29a5e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b54331e644d55497a7c7d33344cf29a82404847e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309195"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56096912"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Mi az csatlakoztatott gyári IoT-megoldásgyorsítók?
 
@@ -25,21 +25,21 @@ Az Okosgyár-megoldásgyorsító [kódja a Githubon elérhető](https://github.c
 
 Csatlakoztatott gyár a következő szolgáltatásokat tartalmazza:
 
-## <a name="industrial-device-interoperability"></a>Együttműködés a ipari eszközök
+## <a name="industrial-device-interoperability"></a>Ipari eszközök együttműködési képessége
 
-- Az OPC UA-illesztővel ipari eszközök csatlakozhat.
+- Csatlakozás ipari objektumokhoz OPC UA-interfészen keresztül.
 - A szimulált gyártósort (OPC UA kiszolgálókat futtató Docker-tárolókban) segítségével megtekintheti az élő telemetria belőlük.
 - Az OPC UA információs modell, egy felhőbeli irányítópultról OPC UA-kiszolgálók tallózása
 
 ## <a name="remote-management"></a>Távfelügyelet
 
-- Az OPC UA eszközöket a felhő Irányítópultról (hívás módszerek, és adatokat ír) konfigurálása.
-- Tegye közzé, és az OPC UA eszközöket egy felhőalapú irányítópultról küldött telemetriai adatok közzétételét.
+- OPC UA-objektumait a felhőalapú irányítópultról konfigurálhatja (metódusok hívása, adatok írása és olvasása).
+- OPC UA-objektumokból származó telemetriai adatok közzététele és a közzététel visszavonása felhőalapú irányítópultról.
 
-## <a name="cloud-dashboard"></a>A cloud irányítópultja
+## <a name="cloud-dashboard"></a>Felhőalapú irányítópult
 
 - Telemetria előzetes verziók közvetlenül egy felhőbeli irányítópult megtekintése.
-- A telemetriai adatok megtekinthessék a szalagfelhasználási tendenciákat, és hozzon létre a Time Series Insights Explorerben irányítópulttal összefüggéseket.
+- A telemetriai adatok trendjeinek megtekintése, és korrelációk létrehozása A Time Series Insights irányítópultjának használatával.
 - Tekintse meg a számított általános berendezések hatékonyságát (OEE) és a fő teljesítménymutatók (KPI-k) egy felhőalapú irányítópultról.
 - Ipari eszközök hierarchiák fa topológia, valamint egy olyan interaktív térkép a.
 - Megtekintheti, tudomásul veszi, és zárja be a riasztások a felhőalapú irányítópultról.
@@ -55,7 +55,7 @@ Csatlakoztatott gyár a következő szolgáltatásokat tartalmazza:
 
 ## <a name="end-to-end-security"></a>Teljes körű biztonság
 
-- Szerepköralapú hozzáférés-vezérlés (RBAC) használó felhasználók számára a biztonsági engedélyek konfigurálásáról.
+- Biztonsági engedélyek konfigurálása felhasználókhoz szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
 - Végpontok közötti titkosítást OPC UA-hitelesítést (X.509-tanúsítványok használatával), valamint a biztonsági jogkivonatok segítségével van megvalósítva.
 
 ## <a name="customizability"></a>Testreszabhatóság

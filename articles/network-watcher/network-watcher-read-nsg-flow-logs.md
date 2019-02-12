@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: jdial
-ms.openlocfilehash: 7c35961894cbc8fb33f15b36910021f8ad38fac8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 3d97f84ba7809ba54fe7a5670fc1602f1ed6e180
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976392"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100875"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-forgalom naplóinak olvasása
 
@@ -185,6 +185,6 @@ Ebben a forgatókönyvben, amelyek a bejegyzéseket az NSG-forgalom naplóinak o
 
 ## <a name="next-steps"></a>További lépések
 
-Látogasson el [megjelenítése nyílt forráskódú eszközök használatával az Azure Network Watcher NSG-Folyamatnaplók](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) NSG-forgalom naplóinak megtekintéséhez egyéb módjaival kapcsolatos további.
+Látogasson el [Elastic Stack használata](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [használata Grafana](network-watcher-nsg-grafana.md), és [Graylog használata](network-watcher-nsg-graylog.md) NSG-Folyamatnaplók megtekintés tájékozódhat. Előfordulhat, hogy itt található egy nyílt forráskódú Azure-függvény megközelítés közvetlenül felhasználása a blobok és a log analytics különféle fogyasztók kibocsátó: [Az Azure Network Watcher NSG naplói a összekötő](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
 További információ a storage-blobokat talál: [Az Azure Functions – a Blobtároló kötései](../azure-functions/functions-bindings-storage-blob.md)
