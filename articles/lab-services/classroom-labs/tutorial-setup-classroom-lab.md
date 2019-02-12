@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 1e2511ed22cfc6e81844bfdc4672d5fc67ea744f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893218"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998518"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -28,7 +28,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
 > * Osztályterem-tesztkörnyezet létrehozása
-> * Az osztályterem-tesztkörnyezet konfigurálása
+> * Felhasználók hozzáadása a labor létrehozása
 > * Regisztrációs hivatkozás küldése a diákoknak
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -76,7 +76,7 @@ A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet
     5. Adja meg a sablon **leírását**.
 9. Válassza ki a **Tovább** gombot a sablon oldalán. 
 10. A **Sablon közzététele** oldalon tegye az alábbiakat. 
-    1. A sablon azonnali közzétételéhez jelölje be a következő figyelmeztetés jelölőnégyzetét: *Megértettem, hogy közzététel után nem lehet módosítani a sablont. A folyamatot csak egyszer lehet elvégezni, és akár egy órát is igénybe vehet*, majd válassza ki a **Közzététel** gombot.  
+    1. A sablon azonnali közzétételének, és válassza ki **közzététel**.  
 
         > [!WARNING]
         > Közzététel után a lépés nem vonható vissza. 

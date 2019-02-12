@@ -13,14 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 3458bdc0f010cab622a5ddbb87cb8e1077c404a5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 928ed383c08dd87cb003d1f729bc3fecce0c6935
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693884"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999232"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM-védelemmel ellátott és hogyan lehet az Azure Key Vault-kulcsok
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 A hozzáadott frissítési garanciát biztosító Azure Key Vault használata esetén meg is kulcsok importálását vagy létrehozását hardveres biztonsági modulokban (HSM) a HSM határait betartó. Ebben a forgatókönyvben gyakran nevezik *saját kulcs használata*, azaz BYOK. A hardveres biztonsági modulok a 2. szintű FIPS 140-2 szerint vannak érvényesítve. Az Azure Key Vault Ön kulcsainak védelmét Thales nShield hardveres biztonsági modulok-család használ.
 
@@ -78,21 +80,19 @@ Első lépésként hajtsa végre az alábbi eljárásokat az internethez csatlak
 
 ### <a name="step-11-install-azure-powershell"></a>1.1. lépés: Az Azure PowerShell telepítése
 
-Az internetkapcsolattal rendelkező munkaállomáson, a töltse le és telepítse az Azure PowerShell-modult, amely tartalmazza a parancsmagok az Azure Key Vault kezeléséhez. Ehhez 0.8.13 verziójával.
-
-A telepítési utasításokért lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
+Az internetkapcsolattal rendelkező munkaállomáson, a töltse le és telepítse az Azure PowerShell-modult, amely tartalmazza a parancsmagok az Azure Key Vault kezeléséhez. A telepítési utasításokért lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>1.2. lépés: Az Azure előfizetés-azonosító beszerzése
 
 Indítsa el az Azure PowerShell-munkamenetet, és jelentkezzen be Azure-fiókjába a következő parancs használatával:
 
 ```Powershell
-   Add-AzureRMAccount
+   Connect-AzAccount
 ```
-Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Ezután használja a [Get-AzureSubscription](/powershell/module/servicemanagement/azure/get-azuresubscription?view=azuresmps-3.7.0) parancsot:
+Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Ezután használja a [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) parancsot:
 
 ```powershell
-   Get-AzureRMSubscription
+   Get-AzSubscription
 ```
 A kimenetben keresse meg azt az előfizetést, használhatja az Azure Key Vault azonosítója. Később szüksége lesz az előfizetés-azonosító.
 
@@ -493,10 +493,10 @@ USB-meghajtóra vagy egyéb hordozható tárolóeszköz használatával másolja
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>5. lépés: A kulcs átvitele az Azure Key Vault
 
-Ez az utolsó lépés az internethez csatlakozó munkaállomáson használja a [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) parancsmag, amely az Azure Key Vault HSM-be a kapcsolat nélküli munkaállomásról másolt kulcsátviteli csomag feltöltéséhez:
+Ez az utolsó lépés az internethez csatlakozó munkaállomáson használja a [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag, amely az Azure Key Vault HSM-be a kapcsolat nélküli munkaállomásról másolt kulcsátviteli csomag feltöltéséhez:
 
    ```powershell
-        Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
+        Add-AzKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
    ```
 
 Sikeres feltöltés esetén, tekintse meg a tulajdonságait, a kulcs, amelyet az imént hozzáadott jelenik meg.

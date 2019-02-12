@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: eca20b775b97296510545c4d2f2f005fd91d6758
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0903756ba7df34e7dba20301d45cbd4b6cc4d5ea
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471317"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992517"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Az Azure Cosmos DB magas rendelkezésre állás
 
@@ -63,6 +63,20 @@ Regionális üzemkimaradások utáni helyreállításon nem ritkák, és az Azur
 - Többrégiós Cosmos-fiókok, egy egyetlen-írási régió konfigurált [automatikus feladatátvétel engedélyezése az Azure CLI-vel vagy az Azure portal használatával](how-to-manage-database-account.md#automatic-failover). Miután engedélyezte az automatikus feladatátvételt egy regionális katasztrófa történik, Cosmos DB automatikusan feladatátvételt fiókját.  
 
 - Akkor is, ha a Cosmos-fiók magas rendelkezésre állású, az alkalmazás lehetséges, hogy nem helyesen kialakítani, hogy továbbra is magas rendelkezésre állású. A végpontok közötti magas rendelkezésre állás az alkalmazás teszteléséhez rendszeres időközönként meghívása a [manuális feladatátvételt az Azure CLI-vel vagy az Azure portal használatával](how-to-manage-database-account.md#manual-failover), az alkalmazás tesztelésének vagy a vészhelyreállítás (DR) részeként gyakorlatokat.
+
+
+Az üzletmenet folytonosságát biztosító terve kidolgozásakor kell tudni, mielőtt az alkalmazás a zavaró eseményeket követő teljes helyreállításának maximális elfogadható idő. Az alkalmazás teljes helyreállításához szükséges időt a helyreállítási időre vonatkozó célkitűzés (RTO) néven ismert. Emellett ismernie kell a leghosszabb az alkalmazás működését, Adatfrissítés elvesztése zavaró eseményeket követő helyreállítása során. Az adott időszakban, előfordulhat, hogy elfogadható frissítések helyreállításipont-célkitűzés (RPO) néven ismert.
+
+Az alábbi táblázat a leggyakoribb forgatókönyvekben az RPO és RTO jeleníti meg.
+
+|Régió(k) száma |Konfiguráció |Konzisztenciaszint|Helyreállítási időkorlát |RTO |
+|---------|---------|---------|-------|-------|
+|1    | *    |*   | < 240 perc | < 1 hét |
+|>1     | Egyetlen főkiszolgálós replikációs | Session, Consistent Prefix, Eventual | < 15 perc | < 15 perc |
+|>1     | Egyetlen főkiszolgálós replikációs | Kötött elavulás | K &AMP; T | < 15 perc |
+|>1     | Több főkiszolgálós replikációs | Session, Consistent Prefix, Eventual | < 15 perc | 0 |
+|>1     | Több főkiszolgálós replikációs | Kötött elavulás | K &AMP; T | 0 |
+|>1     | * | Erős | 0 | < 15 perc |
 
 ## <a name="next-steps"></a>További lépések
 

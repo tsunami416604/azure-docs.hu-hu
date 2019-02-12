@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 22603de40e2ebafb1354377898f5a0432e4f6129
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3bc42bf5b83f9ff983c3d8d88a9a496cc395096c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388886"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992585"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-formátumok és -kodekek
 
@@ -29,14 +29,14 @@ Ez a cikk megtalálhatja a legismertebb importálható és exportálható fájlf
 | Fájlformátum (fájlkiterjesztés) | Támogatott |
 | --- | --- | --- | --- |
 | FLV (H.264 és AAC kodekkel) (.flv) |Igen |
-| MXF (.mxf) |Igen |
-| MXF (.mxf) |Igen |
+| MXF    (.mxf) |Igen |
+| GXF    (.gxf) |Igen |
 | MPEG2 PS, MPEG2-TS, 3GP (.ts, .ps, .3gp, .3gpp, .mpg) |Igen |
 | Windows Media Video (WMV) / ASP (.wmv, .asf) |Igen |
 | AVI (tömörítetlen 8 bites/10 bit) (.avi) |Igen |
 | MP4 (.mp4, .m4a, .m4v) / ISMV (.isma, .ismv) |Igen |
 | [A Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr ms) |Igen |
-| Matroska vagy WebM (.mkv) |Igen |
+| Matroska/WebM (.mkv) |Igen |
 | WAVE/WAV (.wav) |Igen |
 | QuickTime (.mov) |Igen |
 
@@ -59,14 +59,14 @@ vagy
 | --- | --- | --- | --- |
 | AVC 8 bites/10 bites-, akár 4:2:2, ideértve az avcintrát is |8 bites 4:2:0. és 4:2:2 |
 | Avid DNxHD (MXF-ben) |Igen |
-| DVCPro/DVCProHD (MXF-ben) |Igen |
+| DVCPro/DVCProHD (in MXF) |Igen |
 | Digital video (DV) (a AVI-fájlokban) |Igen |
 | JPEG 2000 |Igen |
 | MPEG-2 (akár a 422-es Profilig és a magas szintig; az XDCAM, XDCAM HD, XDCAM IMX, CableLabs® és D10 például) |Akár 422-es Profilig |
 | MPEG-1 |Igen |
 | VC-1/WMV9 |Igen |
 | Canopus HQ/HQX |Nem |
-| MPEG-4: 2. rész |Igen |
+| MPEG-4 Part 2 |Igen |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Igen |
 | Tömörítetlen YUV420 vagy mezzanine |Igen |
 | Az Apple ProRes 422 |Igen |
@@ -81,10 +81,10 @@ vagy
 | Bemeneti hangkodekek | Támogatott |
 | --- | --- | --- | --- |
 | AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1) |Igen |
-| MPEG 2 réteg |Igen |
+| MPEG Layer 2 |Igen |
 | MP3 (MPEG-1-3 hangréteg) |Igen |
-| Windows Media hang |Igen |
-| A PCM/WAV |Igen |
+| Windows Media Audio |Igen |
+| WAV/PCM |Igen |
 | [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Igen |
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Igen |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Igen |
@@ -99,8 +99,8 @@ Az alábbi táblázat a kodekeket és fájlformátumot exportálási által tám
 
 | Fájlformátum | Videó kodek | Hang kodek |
 | --- | --- | --- |
-| MP4 <br/><br/>(beleértve a többszörös átviteli sebességű MP4-tárolók) |A H.264 (magas, fő és alapkonfiguráció-profilok) |Az AAC-LC, HE-AAC v1, v2 az AAC-HE |
-| MPEG2-TS |A H.264 (magas, fő és alapkonfiguráció-profilok) |Az AAC-LC, HE-AAC v1, v2 az AAC-HE |
+| MP4 <br/><br/>(beleértve a többszörös átviteli sebességű MP4-tárolók) |A H.264 (magas, fő és alapkonfiguráció-profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MPEG2-TS |A H.264 (magas, fő és alapkonfiguráció-profilok) |AAC-LC, HE-AAC v1, HE-AAC v2 |
 
 ## <a name="next-steps"></a>További lépések
 

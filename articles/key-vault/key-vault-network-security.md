@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/02/2019
 ms.author: ambapat
-ms.openlocfilehash: d95ede3b6e99d6791a2642c6059281dedca3fcf2
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: caf649c51346f63aa05d8f2d460e2870493b1587
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423160"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991616"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Az Azure Key Vault-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -38,11 +38,11 @@ Ebben a cikkben részletes útmutatást nyújt az Azure Key Vault-tűzfalak és 
 
 Új virtuális hálózatok és alhálózatok is hozzáadhat, és, majd engedélyezze a szolgáltatásvégpontokat az újonnan létrehozott virtuális hálózatok és alhálózatok kiválasztásával **+ új virtuális hálózat hozzáadása**. Ezután kövesse az utasításokat.
 
-## <a name="use-the-azure-cli-20"></a>Az Azure CLI 2.0 használata
+## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata 
 
-Íme a Key Vault-tűzfalak és virtuális hálózatok konfigurálása az Azure CLI 2.0 használatával:
+Íme a Key Vault-tűzfalak és virtuális hálózatok konfigurálása az Azure CLI-vel
 
-1. [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) és [jelentkezzen be a](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
+1. [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) és [jelentkezzen be a](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
 
 2. Elérhető a virtuális hálózati szabályok listája. A kulcstartó szabályok nem állított be, ha a lista üres lesz.
    ```azurecli
@@ -77,45 +77,47 @@ Ebben a cikkben részletes útmutatást nyújt az Azure Key Vault-tűzfalak és 
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Íme a Key Vault-tűzfalak és virtuális hálózatok konfigurálása a PowerShell használatával:
 
-1. Telepítse a legújabb [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps), és [jelentkezzen be a](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Telepítse a legújabb [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-az-ps), és [jelentkezzen be a](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
 2. Elérhető a virtuális hálózati szabályok listája. Ha nem állított be ehhez a kulcstartóhoz tartozó szabályokat, a lista üres lesz.
    ```PowerShell
-   (Get-AzureRmKeyVault -VaultName "mykeyvault").NetworkAcls
+   (Get-AzKeyVault -VaultName "mykeyvault").NetworkAcls
    ```
 
 3. Szolgáltatásvégpont engedélyezése a Key vault a egy meglévő virtuális hálózatot és alhálózatot.
    ```PowerShell
-   Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzureRmVirtualNetwork
+   Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
    ```
 
 4. Adjon hozzá egy virtuális hálózatot és alhálózatot a hálózati szabályt.
    ```PowerShell
-   $subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mysubnet"
-   Add-AzureRmKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
+   $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
+   Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
    ```
 
 5. Adjon hozzá egy IP-címtartományt, ahonnan a forgalom engedélyezéséhez.
    ```PowerShell
-   Add-AzureRmKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
+   Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
    ```
 
 6. Ha ezt a kulcstartót kell lennie minden olyan megbízható szolgáltatások által elérhető, állítsa be `bypass` való `AzureServices`.
    ```PowerShell
-   Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
+   Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
    ```
 
 7. Kapcsolja be a hálózati szabályokat úgy, hogy az alapértelmezett művelet a `Deny`.
    ```PowerShell
-   Update-AzureRmKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
+   Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 
 ## <a name="references"></a>Referencia
 
-* Az Azure CLI 2.0-parancsok: [az keyvault hálózati-szabály](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
-* Az Azure PowerShell-parancsmagokat: [Get-AzureRmKeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurermkeyvault), [Add-AzureRmKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Add-AzureRmKeyVaultNetworkRule), [Remove-AzureRmKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Remove-AzureRmKeyVaultNetworkRule), [Update-AzureRmKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Update-AzureRmKeyVaultNetworkRuleSet)
+* Az Azure CLI-parancsok: [az keyvault hálózati-szabály](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
+* Az Azure PowerShell-parancsmagokat: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,21 +3,23 @@ title: Irányítás az Azure DevTest Labs-infrastruktúra
 description: Ez a cikk az Azure DevTest Labs-infrastruktúra cégirányítási útmutatást nyújt.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
-author: spelluru
+author: christianreddington
 manager: femila
+editor: spelluru
 ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
-ms.author: spelluru
-ms.openlocfilehash: 7835674536c43fcb694ad8eaeb18aebb89de5fad
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 02/11/2019
+ms.author: chredd
+ms.reviewer: anthdela,juselph
+ms.openlocfilehash: 68139dee2a506918a001d52212dad76483f24068
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262074"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999793"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Irányítás az Azure DevTest Labs-infrastruktúra - erőforrások
 Ez a cikk foglalkozik az igazítási és erőforrások kezelését a DevTest Labs a szervezeten belül. 
@@ -75,7 +77,7 @@ Az Azure DevOps projects belül egy adott projekt labor is használhatja. Ezutá
 Hogyan tudjuk megakadályozni labor belüli erőforrások törlését?
 
 ### <a name="answer"></a>Válasz
-Javasoljuk, hogy, megfelelő engedélyekkel a labor szintjén, hogy csak a jogosult felhasználók erőforrásokat törölheti vagy módosíthatja a laborszabályzatok. A fejlesztők belül kell elhelyezni a **DevTest Labs-felhasználó** csoport. A vezető fejlesztői vagy az infrastruktúra érdeklődő kell lennie a **DevTest Labs tulajdonosa**. Azt javasoljuk, hogy csak két labortulajdonosok. Ez a szabályzat kiterjesztése felé a kódtárat a sérülés elkerülése érdekében. Labor használ erőforrások használatára jogosult, de nem tudja frissíteni a laborszabályzatok. A következő cikkben talál, amely felsorolja a szerepkörök és a jogosultságokat, amelyeket minden beépített csoport rendelkezik kulcsok tesztkörnyezetben: [tulajdonosai és felhasználók hozzáadása az Azure DevTest Labs szolgáltatásban](devtest-lab-add-devtest-user.md).
+Javasoljuk, hogy, megfelelő engedélyekkel a labor szintjén, hogy csak a jogosult felhasználók erőforrásokat törölheti vagy módosíthatja a laborszabályzatok. A fejlesztők belül kell elhelyezni a **DevTest Labs-felhasználó** csoport. A vezető fejlesztői vagy az infrastruktúra érdeklődő kell lennie a **DevTest Labs tulajdonosa**. Azt javasoljuk, hogy csak két labortulajdonosok. Ez a szabályzat kiterjesztése felé a kódtárat a sérülés elkerülése érdekében. Labor használ erőforrások használatára jogosult, de nem tudja frissíteni a laborszabályzatok. Tekintse meg a következő cikkben, amely felsorolja a szerepkörök és a jogosultságokat, amelyeket a labor belül minden beépített csoport rendelkezik: [Tulajdonosok és felhasználók hozzáadása az Azure DevTest Labs szolgáltatásban](devtest-lab-add-devtest-user.md).
 
 ## <a name="move-lab-to-another-resource-group"></a>Labor áthelyezése másik erőforráscsoportba 
 

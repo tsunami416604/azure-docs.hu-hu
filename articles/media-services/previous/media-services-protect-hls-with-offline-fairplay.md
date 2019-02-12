@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 02/10/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 7d4094abacb46c5e2b525766d61cb0ede7fc20ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 710ec72e9867ad180afcae8273a093f48933112a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251832"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991497"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming iOS-hez 
  Az Azure Media Services jól megtervezett készletét nyújtja [content protection szolgáltatás](https://azure.microsoft.com/services/media-services/content-protection/) pontosan rögzítik:
@@ -115,14 +115,14 @@ Most már a Media Services-fiók van konfigurálva, hogy az offline FairPlay-lic
 ## <a name="sample-ios-player"></a>Példa iOS-lejátszó
 A rendszer csak az iOS 10-es és újabb verziói FPS kapcsolat nélküli módban támogatja. Dokumentum és mintát FPS kapcsolat nélküli módban, a Képkocka kiszolgálói SDK (3.0-s vagy újabb verzió) tartalmazza. FPS kiszolgálói SDK (3.0-s vagy újabb verzió) kifejezetten, a kapcsolódó kapcsolat nélküli módban a következő két elemet tartalmazza:
 
-* A dokumentum: "Offline FairPlay Streaming lejátszás és a HTTP élő Streamelési." Apple-től 2016. szeptember 14-én. FPS Server SDK 4.0-s verziója Ez a dokumentum egyesítve a fő FPS dokumentumot.
-* Kódminta: FPS kapcsolat nélküli módban az a kiszolgáló SDK Streamelési \FairPlay verzió 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ HLSCatalog minta. A HLSCatalog mintaalkalmazás kapcsolat nélküli módban funkciók megvalósításához használja a következő kód fájlokat:
+* Dokumentum tartalma: "Offline FairPlay Streaming lejátszás és a HTTP Live Streaming." Apple-től 2016. szeptember 14-én. FPS Server SDK 4.0-s verziója Ez a dokumentum egyesítve a fő FPS dokumentumot.
+* Kódminta: Offline mód FPS a \FairPlay Streamelési Server SDK verziója 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ HLSCatalog minta. A HLSCatalog mintaalkalmazás kapcsolat nélküli módban funkciók megvalósításához használja a következő kód fájlokat:
 
     - A kódfájl AssetPersistenceManager.swift: AssetPersistenceManager Ez a minta azt mutatja be, a fő osztály hogyan:
 
         - Letöltése HLS-adatfolyamok, kezelése, például az API-k használt elindításához és a letöltéseket és eszközök ki meglévő eszközök törlése.
         - A letöltési előrehaladásának figyeléséhez.
-    - A kód fájlok AssetListTableViewController.swift és AssetListTableViewCell.swift: AssetListTableViewController Ez a minta fő felületet. Ez a minta lejátszása, letöltése, törlése vagy a letöltés megszakítása használható eszközök listáját tartalmazza. 
+    - AssetListTableViewController.swift és AssetListTableViewCell.swift kódfájlok: AssetListTableViewController Ez a minta fő felületet. Ez a minta lejátszása, letöltése, törlése vagy a letöltés megszakítása használható eszközök listáját tartalmazza. 
 
 Ezek a lépések bemutatják, hogyan állítható be a futó iOS-lejátszó. Ha FPS Server SDK verziója 4.0.1 HLSCatalog mintából elkezdené, győződjön meg a következő kód módosítása:
 

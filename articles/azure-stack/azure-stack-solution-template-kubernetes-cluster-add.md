@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 707cd7e72245ce47289c0a744d7103c713acecb9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d0051f081f005d61a1eed43d177a11781b2b3fa8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765483"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997088"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Adja hozzá a Kubernetes az Azure Stack piactéren
 
@@ -65,15 +65,15 @@ Hozzon létre egy csomag, ajánlat és a Kubernetes Piactéri elem előfizetést
 
 Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity management szolgáltatás használja, szüksége lesz a létre szolgáltatásnevet a Kubernetes-fürt üzembe helyezése felhasználók számára.
 
-1. Hozzon létre, és a szolgáltatásnév létrehozásához használt tanúsítvány exportálása. Az alábbi kódot az alábbi kódrészlet bemutatja, hogyan hozzon létre egy önaláírt tanúsítványt. 
+1. Hozzon létre, és a szolgáltatásnév létrehozásához használt önaláírt tanúsítvány exportálása. 
 
     - Az alábbi adatokra lesz szüksége:
 
        | Érték | Leírás |
        | ---   | ---         |
-       | Jelszó | A tanúsítvány jelszavát. |
-       | Helyi tanúsítvány elérési útja | A tanúsítvány elérési útja és neve. Például:`path\certfilename.pfx` |
-       | Tanúsítvány neve | A tanúsítvány nevére. |
+       | Jelszó | Adja meg egy új jelszót a tanúsítványhoz. |
+       | Helyi tanúsítvány elérési útja | Adja meg a tanúsítvány elérési útja és fájlneve. Például:`c:\certfilename.pfx` |
+       | Tanúsítvány neve | Adja meg a tanúsítvány nevét jelöli. |
        | Tanúsítványtár helye |  Például: `Cert:\LocalMachine\My` |
 
     - Nyisson meg egy rendszergazda jogú parancssorba PowerShell. Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
@@ -82,8 +82,7 @@ Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity man
         # Creates a new self signed certificate 
         $passwordString = "<password>"
         $certlocation = "<local certificate path>.pfx"
-        $certificateName = "<certificate name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
+        $certificateName = "CN=<certificate name>"
         $certStoreLocation="<certificate store location>"
         
         $params = @{
@@ -105,24 +104,33 @@ Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity man
         Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
         ```
 
-2. Szolgáltatásnév létrehozása a tanúsítvány használatával.
+2.  Jegyezze fel az új tanúsítvány azonosító jelenik meg a PowerShell-munkamenetet a `1C2ED76081405F14747DC3B5F76BB1D83227D824`. Az azonosító használható az egyszerű szolgáltatás létrehozásakor.
+
+    ```PowerShell  
+    VERBOSE: Generated new certificate 'CN=<certificate name>' (1C2ED76081405F14747DC3B5F76BB1D83227D824).
+    ```
+
+3. Szolgáltatásnév létrehozása a tanúsítvány használatával.
 
     - Az alábbi adatokra lesz szüksége:
 
        | Érték | Leírás                     |
        | ---   | ---                             |
        | ERCS IP | A ASDK a kiemelt végponthoz van általában `AzS-ERCS01`. |
-       | Alkalmazásnév | Az alkalmazás egyszerű szolgáltatás egyszerű neve. |
-       | Tanúsítványtár helye | A számítógépen, a tanúsítványt tároló elérési útja. Például:`Cert:\LocalMachine\My\<someuid>` |
+       | Alkalmazásnév | Adja meg az egyszerű szolgáltatás egyszerű nevét. |
+       | Tanúsítványtár helye | A számítógépen, a tanúsítványt tároló elérési útja. Ez jelzi a tárolási helynek, és a tanúsítvány Azonosítóját az első lépésben létrehozott. Például:`Cert:\LocalMachine\My\1C2ED76081405F14747DC3B5F76BB1D83227D824` |
 
-    - Nyisson meg egy rendszergazda jogú parancssorba PowerShell. Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
+       Amikor a rendszer kéri, használja a következő hitelesítő adatok a jogosultság végponthoz csatlakozik. 
+        - Felhasználónév: Adja meg a CloudAdmin fiók formátumban <Azure Stack domain>\cloudadmin. (ASDK, a felhasználói név azurestack\cloudadmin.)
+        - Jelszó: Adja meg ugyanazt a jelszót a Azurestack tartományi rendszergazdai fiók a telepítés során megadott.
+
+    - Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
 
         ```PowerShell  
         #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
-        $certStoreLocation="<certificate store location>"
+        $certStoreLocation="<certificate location>"
         
         # Get certificate information
         $cert = Get-Item $certStoreLocation
@@ -189,7 +197,7 @@ Adja hozzá a következő Ubuntu Server-lemezképet a Marketplace-en:
 
 1. Válassza ki **+ hozzáadása az Azure-ból**.
 
-1. Írja be a `UbuntuServer` (igen) kifejezést.
+1. Írja be a `Ubuntu Server` (igen) kifejezést.
 
 1. Válassza ki a kiszolgálót a legújabb verziója. A teljes verziószám, és győződjön meg arról, hogy a legújabb verzióval rendelkezik:
     - **Közzétevő**: Canonical

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Monitor metrikaböngészőjének
-description: Az Azure Monitor Metrikaböngészőjének új szolgáltatásainak megismerése
+description: Az Azure Monitor metrikaböngészőjének új szolgáltatásainak megismerése
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2b6d982f514f347dc2a59f9ca8f3c33b8c24849b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 594ebb6a3c82c9b9dd3ee03a8083abf052d20f49
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827448"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991327"
 ---
-# <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor Metrikaböngészőjének
+# <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor metrikaböngészőjének
 
-Az Azure Monitor Metrikaböngészőjének a Microsoft Azure-portálon, amely lehetővé teszi, hogy a diagramok küldik az ábrázolást, vizuálisan naplókezelője trendeket és kivizsgálása adatforgalmi csúcsokhoz és a ' értékeihez süllyedések egyik összetevője. Metrikaböngésző egy alapvető kiindulási pontként különböző teljesítmény- és az alkalmazások és az Azure-ban üzemeltetett vagy az Azure Monitor szolgáltatás által figyelt infrastruktúra rendelkezésre állási problémák kivizsgálása.
+Az Azure Monitor metrikaböngészőjének összetevő, amely lehetővé teszi a ábrázolási diagramok, vizuálisan naplókezelője trendeket, és vizsgálja a csúcsok és süllyedések értékeihez ' a Microsoft Azure-portálon. Metrikaböngésző egy alapvető kiindulási pontként különböző teljesítmény- és az alkalmazások és az Azure-ban üzemeltetett vagy az Azure Monitor szolgáltatás által figyelt infrastruktúra rendelkezésre állási problémák kivizsgálása.
 
 ## <a name="metrics-in-azure"></a>Metrikák az Azure-ban
 
-A Microsoft Azure-ban mérőszámok olyan mért értékek sorozata, összegyűjtött és tárolt idővel számát. Nincsenek metrikák standard (vagy "platform"), és egyéni mérőszámok. A standard mérőszámok az Azure platform saját maga által biztosított Önnek. Standard mérőszámok az Azure-erőforrások állapotát és a használati statisztikáit tükrözik. Mivel az egyéni metrikák használatával az alkalmazások által az Azure-bA küldött a [Application Insights API egyéni eseményekhez](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Egyéni metrikák és más alkalmazás adott mérőszámok az Application Insights-erőforrások vannak tárolva.
+[Metrikák az Azure monitorban](data-collection.md#metrics) mért értékek sorozata, összegyűjtött és tárolt idővel számát is. Nincsenek metrikák standard (vagy "platform"), és egyéni mérőszámok. A standard mérőszámok az Azure platform saját maga által biztosított Önnek. Standard mérőszámok az Azure-erőforrások állapotát és a használati statisztikáit tükrözik. Mivel az egyéni metrikák használatával az alkalmazások által az Azure-bA küldött a [Application Insights API egyéni eseményekhez](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Egyéni metrikák és más alkalmazás adott mérőszámok az Application Insights-erőforrások vannak tárolva.
 
 ## <a name="create-a-new-chart"></a>Új diagram létrehozása
 
@@ -52,7 +52,7 @@ A Microsoft Azure-ban mérőszámok olyan mért értékek sorozata, összegyűjt
 7. Kattintson a **metrika hozzáadása** és 3 – 6. lépéseket, ismétlődő adhat hozzá további metrikák ugyanezen a diagramon.
 
    > [!NOTE]
-   > Általában nem érdemes metrikák különböző mértékegységben (pl. "ezredmásodperc" és "kilobájt") vagy jelentősen eltérő méretezési rendelkezik egy diagram. Ehelyett érdemes lehet több diagramot. Kattintson a több diagram létrehozása a Metrikaböngészőben diagram hozzáadása gombra.
+   > Általában nem érdemes metrikák különböző mértékegységben (pl. "ezredmásodperc" és "kilobájt") vagy jelentősen eltérő méretezési rendelkezik egy diagram. Ehelyett érdemes lehet több diagramot. Kattintson a több diagram létrehozása a metrikaböngészőben diagram hozzáadása gombra.
 
 ## <a name="apply-filters-to-charts"></a>Szűrőket alkalmazhat a diagramok
 

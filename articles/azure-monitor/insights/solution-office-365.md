@@ -1,6 +1,6 @@
 ---
 title: Az Office 365 felügyeleti megoldás az Azure-ban |} A Microsoft Docs
-description: Ez a cikk részletesen konfigurációját és használatát az Office 365-megoldás az Azure-ban.  Az Office 365 rekordok létrehozott Log Analytics részletes leírását tartalmazza.
+description: Ez a cikk részletesen konfigurációját és használatát az Office 365-megoldás az Azure-ban.  Az Office 365 rekordok létrehozása az Azure monitorban részletes leírását tartalmazza.
 services: operations-management-suite
 documentationcenter: ''
 author: bwren
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 370483b92dcd2c468cd676a32db0ded80e8814d0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 92ba185ce3c271284ae20981408b2b12f516e3c8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216612"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999300"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
 ![Office 365-embléma](media/solution-office-365/icon.png)
 
-Az Office 365 felügyeleti megoldás a Log Analytics az Office 365-környezete figyelését teszi lehetővé.
+Az Office 365 felügyeleti megoldás az Office 365-környezethez az Azure Monitor figyelését teszi lehetővé.
 
 - Az Office 365-fiókkal, a használati minták elemzése, valamint viselkedési trendek azonosítása a felhasználói tevékenység monitorozása. Ha például is kibonthat egy konkrét használati forgatókönyvek, például a szervezet vagy a legnépszerűbb SharePoint-webhelyek kívül megosztott fájlok.
 - Konfigurációs módosítások vagy magas jogosultságú műveleteket nyomon követéséhez rendszergazdai tevékenységek figyelése.
 - Észlelése és vizsgálata a nem kívánt felhasználói viselkedés, amely a szervezet igényeinek megfelelően testre szabható.
 - Naplózási és megfelelőségi bemutatása. Figyelheti például fájl bizalmas fájlokat, amelyek segítségére lehet a naplózást és megfelelőségi folyamat a hozzáférési műveleteket.
-- Az operatív hibaelhárítás elvégzése érdekében [naplókereséseket](../log-query/log-query-overview.md) a szervezet az Office 365 adatok felett.
+- Az operatív hibaelhárítás elvégzése érdekében [lekérdezések naplózását](../log-query/log-query-overview.md) a szervezet az Office 365 adatok felett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A következő kötelező végezniük a megoldás telepítve és konfigurálva.
@@ -43,7 +43,7 @@ A következő kötelező végezniük a megoldás telepítve és konfigurálva.
 Ez a megoldás nem telepíti a minden felügyeleti csomagot [csatlakoztatott felügyeleti csoportok](../platform/om-agents.md).
   
 ## <a name="install-and-configure"></a>Telepítés és konfigurálás
-Először adja hozzá a [az előfizetés az Office 365-megoldás](solutions.md#install-a-management-solution). Miután hozzáadta, ebben a szakaszban neki hozzáférést az Office 365-előfizetéssel, hajtsa végre a konfigurációs lépéseket.
+Először adja hozzá a [az előfizetés az Office 365-megoldás](solutions.md#install-a-monitoring-solution). Miután hozzáadta, ebben a szakaszban neki hozzáférést az Office 365-előfizetéssel, hajtsa végre a konfigurációs lépéseket.
 
 ### <a name="required-information"></a>Szükséges információk
 Ez az eljárás megkezdése előtt gyűjtse össze a következő információkat.
@@ -375,7 +375,7 @@ At line:12 char:18
 ```
 
 ## <a name="uninstall"></a>Eltávolítás
-Az Office 365 felügyeleti megoldás részben ismertetett eljárással eltávolíthatja [távolítsa el a felügyeleti megoldás](solutions.md#remove-a-management-solution). A begyűjtött adatok Office 365-ből azokat a Log Analytics azonban nem leáll. Mondja le az Office 365 és az adatgyűjtés leállításához az alábbi eljárást követve.
+Az Office 365 felügyeleti megoldás részben ismertetett eljárással eltávolíthatja [távolítsa el a felügyeleti megoldás](solutions.md#remove-a-monitoring-solution). Ez összegyűjtött adatokat az Office 365-ből az Azure Monitor szolgáltatásba, ha nem állítja le. Mondja le az Office 365 és az adatgyűjtés leállításához az alábbi eljárást követve.
 
 1. Mentse a következő szkriptet, *office365_unsubscribe.ps1*.
 
@@ -479,9 +479,12 @@ Az Office 365 felügyeleti megoldás részben ismertetett eljárással eltávol�
 Az Office 365-megoldás nem adatlekéréshez bármelyikét a [Log Analytics-ügynökök](../platform/agent-data-sources.md).  Lekéri az adatokat közvetlenül az Office 365-höz.
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
-Kezdetben gyűjtendő adatokat, több óráig is eltarthat. Miután gyűjtése kezdődik, az Office 365 küld egy [webhook értesítési](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) részletes adatokat a Log Analyticshez való minden alkalommal, amikor létrejön egy rekord. Ez a rekord fogadását követően néhány percen belül a Log Analytics érhető el.
+Kezdetben gyűjtendő adatokat, több óráig is eltarthat. Miután gyűjtése kezdődik, az Office 365 küld egy [webhook értesítési](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) részletes adatok az Azure monitornak minden alkalommal, amikor létrejön egy rekord. Ez a rekord érhető el az Azure monitorban fogadását követően néhány percen belül.
 
 ## <a name="using-the-solution"></a>A megoldás használata
+
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
 A Log Analytics-munkaterületet, az Office 365-megoldás hozzáadásakor az **Office 365** csempe felkerül az irányítópulton. Ez a csempe a környezetben jelenleg elérhető számítógépek számát és grafikus ábrázolását jeleníti meg, valamint a frissítési megfelelőségi állapotukat.<br><br>
 ![Az Office 365-összefoglaló csempe](media/solution-office-365/tile.png)  
 
@@ -501,9 +504,9 @@ Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. 
 
 
 
-## <a name="log-analytics-records"></a>Log Analytics-rekordok
+## <a name="azure-monitor-log-records"></a>Az Azure Monitor-rekordok naplózása
 
-A Log Analytics-munkaterületet az Office 365-megoldás által létrehozott összes rekordok egy **típus** , **OfficeActivity**.  A **OfficeWorkload** tulajdonság határozza meg, melyik a rekord hivatkozik – Exchange, az AzureActiveDirectory, a SharePoint vagy a onedrive vállalati verzió az Office 365 szolgáltatás.  A **RecordType** tulajdonság határozza meg a művelet típusát.  A tulajdonságok az egyes művelet eltérőek, és az alábbi táblázatban láthatók.
+A Log Analytics-munkaterületet az Azure monitorban az Office 365-megoldás által létrehozott összes rekordok egy **típus** , **OfficeActivity**.  A **OfficeWorkload** tulajdonság határozza meg, melyik a rekord hivatkozik – Exchange, az AzureActiveDirectory, a SharePoint vagy a onedrive vállalati verzió az Office 365 szolgáltatás.  A **RecordType** tulajdonság határozza meg a művelet típusát.  A tulajdonságok az egyes művelet eltérőek, és az alábbi táblázatban láthatók.
 
 ### <a name="common-properties"></a>Közös tulajdonságok
 A következő tulajdonságok megegyeznek az összes Office 365-rekord.
@@ -708,6 +711,6 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 
 
 ## <a name="next-steps"></a>További lépések
-* A részletes frissítési adatokat a [Log Analytics](../log-query/log-query-overview.md) Naplókeresés funkciójával is megtekintheti.
+* Használat [lekérdezések jelentkezzen be az Azure Monitor](../log-query/log-query-overview.md) frissítés részletes adatainak megtekintéséhez.
 * [Saját irányítópult létrehozásával](../learn/tutorial-logs-dashboards.md) kedvenc Office 365 keresési lekérdezések megjelenítéséhez.
 * [Riasztások létrehozása](../platform/alerts-overview.md) proaktívan értesíti a fontos Office 365-tevékenységek.  

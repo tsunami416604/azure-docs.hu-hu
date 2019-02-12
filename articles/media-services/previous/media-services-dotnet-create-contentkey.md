@@ -1,10 +1,10 @@
 ---
-title: A .NET ContentKeys létrehozása
-description: Ismerje meg, amelyek biztonságos hozzáférést biztosítanak az eszközök tartalomkulcs létrehozása.
+title: Tartalomkulcsok létrehozása a .NET használatával
+description: Ismerje meg, hogyan hozhat létre, amelyek biztonságos hozzáférést biztosítanak az eszközök tartalomkulcs.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7
 ms.service: media-services
@@ -12,37 +12,37 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 53df4c4cef19f6eef99aa15bb265317aa0cd1d58
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: af8c2b547e1ce1b15410ee20eb59934559ac41ac
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788185"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992160"
 ---
-# <a name="create-contentkeys-with-net"></a>A .NET ContentKeys létrehozása
+# <a name="create-contentkeys-with-net-legacy"></a>Tartalomkulcsok létrehozása a .NET-tel (örökölt)
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 
 
-A Media Services titkosított eszközök teszi lehetővé. A **ContentKey** biztonságos hozzáférést biztosít a **eszköz**s. 
+A Media Services lehetővé teszi, hogy hozhat létre és nyújthat a titkosított eszközökre. A **ContentKey** biztonságos hozzáférést biztosít a **eszköz**s. 
 
-Amikor létrehoz egy új eszközt (például előtt [fájlok feltöltése](media-services-dotnet-upload-files.md)), a következő titkosítási beállításokat adhat meg: **StorageEncrypted**, **CommonEncryptionProtected**, vagy **EnvelopeEncryptionProtected**. 
+Amikor létrehoz egy új eszköz (például előtt [fájlok feltöltése](media-services-dotnet-upload-files.md)), a következő titkosítási beállításokat is megadhat: **StorageEncrypted**, **CommonEncryptionProtected**, vagy **EnvelopeEncryptionProtected**. 
 
-Eszközök kézbesítése az ügyfelek számára, amikor is [dinamikusan legyen titkosítva eszközök konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md) valamelyik, a következő két titkosítások használatára: **DynamicEnvelopeEncryption** vagy **DynamicCommonEncryption**.
+Ha az ügyfelek számára teszi elérhetővé az eszközök, [dinamikusan legyen titkosítva eszközök konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md) valamelyik a következő két titkosítások használatára: **DynamicEnvelopeEncryption** vagy **DynamicCommonEncryption**.
 
-Titkosított eszközöknek kell társítani **ContentKey**s. A cikkből megtudhatja, hogyan hozzon létre egy tartalomkulcsot.
+A titkosított eszközökre kell társítani **ContentKey**s. Ez a cikk ismerteti, hogyan hozhat létre egy tartalomkulcsot.
 
 > [!NOTE]
-> Amikor hoz létre egy új **StorageEncrypted** eszközök a Media Services .NET SDK használatával a **ContentKey** az automatikusan létrehozott és az eszköz kapcsolódik.
+> Egy új létrehozásakor **StorageEncrypted** eszközintelligencia, a Media Services .NET SDK használatával a **ContentKey** az automatikusan létrehozott és az eszköz kapcsolódik.
 > 
 > 
 
 ## <a name="contentkeytype"></a>ContentKeyType
-A tartalom létrehozása a értékeket, hogy kell-e állítva mikor kulcsa a tartalom írja be. A következő értékek közül választhat. 
+A egyike, hogy kell-e beállítva mikor hozzon létre egy tartalom kulcs a tartalom kulcs típusa. A következő értékek közül választhat. 
 
 ```csharp
     public enum ContentKeyType
@@ -70,8 +70,8 @@ A tartalom létrehozása a értékeket, hogy kell-e állítva mikor kulcsa a tar
     }
 ```
 
-## <a id="envelope_contentkey"></a>Boríték típus ContentKey létrehozása
-A következő kódrészletet hoz létre egy tartalomkulcsot a boríték titkosítási típus. Ezután a kulcs társít a megadott eszköz.
+## <a id="envelope_contentkey"></a>ContentKey boríték-típus létrehozása
+Az alábbi kódrészlet létrehoz egy tartalomkulcsot a boríték titkosítási típus. Majd társítja a kulcsot a megadott eszköz.
 
 ```csharp
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
@@ -109,7 +109,7 @@ call
 
 
 ## <a id="common_contentkey"></a>Általános típus ContentKey létrehozása
-A következő kódrészletet hoz létre egy tartalomkulcsot a közös titkosítási típus. Ezután a kulcs társít a megadott eszköz.
+Az alábbi kódrészlet létrehoz egy tartalomkulcsot a közös titkosítási típus. Majd társítja a kulcsot a megadott eszköz.
 
 ```csharp
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)

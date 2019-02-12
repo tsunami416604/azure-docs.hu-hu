@@ -16,16 +16,16 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2c889368afe601bc7188f3b0989e7799c88131b4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b6738496a25c49a74d3156b5dfba1ba2a91f102c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081959"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002041"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Gyors útmutató: Letiltja a hozzáférést az Azure Active Directory feltételes hozzáférés a munkamenet kockázata észlelésekor  
 
-A védett környezet megtartásához érdemes blokkolja a gyanús felhasználói tevékenység insign az aláíró. [Az Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) minden bejelentkezési elemzi, és kiszámítja a valószínűsége, hogy egy bejelentkezési kísérlet nem hajtottak végre egy felhasználói fiók jogos tulajdonosa. Annak a valószínűségét (alacsony, közepes, nagy) nevű számított érték képernyőn jelzett [bejelentkezési kockázati szintek](conditions.md#sign-in-risk). A bejelentkezési kockázati feltétellel beállításával konfigurálhatja a feltételes hozzáférési szabályzatot, konkrét bejelentkezési kockázati szinteknek megfelelően válaszolnak. 
+A környezetet védett megtartásához Érdemes megakadályozhatja a gyanús felhasználók jelentkezzen be. [Az Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) minden bejelentkezési elemzi, és kiszámítja a valószínűsége, hogy egy bejelentkezési kísérlet nem hajtottak végre egy felhasználói fiók jogos tulajdonosa. Annak a valószínűségét (alacsony, közepes, nagy) nevű számított érték képernyőn jelzett [bejelentkezési kockázati szintek](conditions.md#sign-in-risk). A bejelentkezési kockázati feltétellel beállításával konfigurálhatja a feltételes hozzáférési szabályzatot, konkrét bejelentkezési kockázati szinteknek megfelelően válaszolnak. 
 
 Ez a rövid útmutató ismerteti, hogyan konfigurálható egy [feltételes hozzáférési szabályzat](../active-directory-conditional-access-azure-portal.md) , amely blokkolja egy bejelentkezési beállított bejelentkezési kockázati szint észlelésekor. 
 

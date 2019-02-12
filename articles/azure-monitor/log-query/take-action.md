@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 61d0f74f59b4d6f59b3fbc87556b260751d33baa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9194d5fe6553607ac5a0bb4e133da97f53790984
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809629"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005352"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Az Automation-Runbook egy naplót a Log Analytics keresési eredmény művelet végrehajtása
 
-A napló keresési eredmény az Azure Log Analyticsben, mostantól kiválaszthatja **művelet végrehajtása** egy Automation-runbook futtatását. A runbook segítségével kijavítani a problémát, vagy egy másik műveletet, például kapcsolatos hibaelhárításhoz, mert egy e-mailt, vagy hozzon létre egy szolgáltatási kérelmet. 
+> [!NOTE]
+> Runbook indítása a keresési eredmények funkciója a klasszikus Naplókeresési portál, amely 2019. február 15-én érvénytelenné válnak. Műveletcsoport elindíthat egy runbookot, az egyéb műveletek mellett beállíthatja egy [riasztási szabály](../platform/alerts-log.md) az Azure monitorban.
+
+A napló keresési eredmény az Azure Log Analyticsben, mostantól kiválaszthatja **művelet végrehajtása** egy Automation-runbook futtatását.  A runbook segítségével kijavítani a problémát, vagy egy másik műveletet, például kapcsolatos hibaelhárításhoz, mert egy e-mailt, vagy hozzon létre egy szolgáltatási kérelmet. 
+
 
 ## <a name="components-and-features-used"></a>Használt összetevők és szolgáltatások
 * [Az Azure Automation-fiók](../../automation/automation-quickstart-create-account.md)

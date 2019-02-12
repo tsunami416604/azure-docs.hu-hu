@@ -9,16 +9,29 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.custom: seodec2018
-ms.openlocfilehash: 9b682b9cd17c174363dcd04707a11075e30cc8e1
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 62f9d24204e734b7b5e2ed97f361ccf228ba89dc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214827"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005046"
 ---
-# <a name="query-types-and-composition-in-azure-search"></a>Lekérdezés típusa és létrehozása az Azure Search
+# <a name="how-to-compose-a-query-in-azure-search"></a>Hogyan lehet lekérdezést adhat az Azure Search szolgáltatásban
 
-Az Azure Search szolgáltatásban a lekérdezés egy oda-vissza művelet teljes leírását. Paraméterek és az index, végrehajtási utasítások a motor és a válasz alakító irányelvek dokumentumok keresése az egyezési feltételek adja meg. Pontosabban megadhatja, melyik mezők a releváns, hogyan kereshet, melyik mezők adja vissza, hogy rendezésére és szűrésére, és így tovább. Nincs megadva, a lekérdezés fut kereshető mező alapján egy teljes szöveges keresési művelet egy tetszőleges sorrendben pontozás nélküli eredményhalmazt visszaadása.
+Az Azure Search szolgáltatásban a lekérdezés egy oda-vissza művelet teljes leírását. A kérelem paramétereinek egyezési feltételek adja meg az index, végrehajtási utasítások motor és a válasz alakító irányelvek dokumentumok keresése. 
+
+A lekérdezési kérést egy gazdag szerkezet, adja meg, melyik mezők a releváns, hogyan kereshet, melyik mezők adja vissza, hogy rendezésére és szűrésére, és így tovább. Nincs megadva, a lekérdezés fut kereshető mező alapján egy teljes szöveges keresési művelet egy tetszőleges sorrendben pontozás nélküli eredményhalmazt visszaadása.
+
+### <a name="apis-and-tools-for-testing"></a>API-k és tesztelési eszközök
+
+A következő táblázat felsorolja az API-k és a lekérdezések elküldése az eszköz-alapú megközelítéseken.
+
+| Módszer | Leírás |
+|-------------|-------------|
+| [A keresési ablak (portál)](search-explorer.md) | Itt egy keresősáv és a lehetőségek a kiválasztott index és api-verziót. A eredmény JSON-dokumentumok formájában. <br/>[Részletek](search-get-started-portal.md#query-index) | 
+| [Postman vagy más HTTP tesztelési eszköz](search-fiddler.md) | Azt ismerteti, hogyan állítható be egy HTTP-kérelem fejléce és a szervezet az Azure Search-lekérdezések küldési.  |
+| [A SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Az Azure Search-index lekérdezése használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Dokumentumok keresése (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | GET vagy POST metódus az indexen, további bemeneti lekérdezési paraméterek használatával.  |
 
 ## <a name="a-first-look-at-query-requests"></a>Először tekintse meg a lekérdezésekre vonatkozó kérelmek
 
@@ -52,7 +65,7 @@ A lekérdezés végrehajtásához használja [keresés explorer és a ingatlan b
 
 Az explorer keresősávba is illessze be a lekérdezési karakterlánc: `search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
 
-### <a name="how-query-operations-are-enabled-by-the-index"></a>Hogyan lekérdezési műveletek az index által engedélyezettek
+## <a name="how-query-operations-are-enabled-by-the-index"></a>Hogyan lekérdezési műveletek az index által engedélyezettek
 
 Index tervezési és kialakítási szorosan összekapcsolva az Azure Search lekérdezési. Az alapvető tény előre tudni, hogy a *indexsémát*, az egyes mezők attribútumai, határozza meg, milyen típusú lekérdezési hozhat létre. 
 
@@ -148,17 +161,6 @@ Ha azt szeretné, hogy vissza a keresési pontszámtól eltérő érték szerint
 
 ### <a name="hit-highlighting"></a>Találatok kiemelése
 Az Azure Search a keresési lekérdezésnek megfelelő keresési eredmények pontos részének tárgyalta megkönnyíti a használatával a **`highlight`**, **`highlightPreTag`**, és **`highlightPostTag`** paramétereket. Megadhatja, hogy mely *searchable* (kereshető) mezők esetében kívánja bekapcsolni az egyező szöveg kiemelését, valamint az Azure által visszaadott egyező szöveg elejére és végére hozzáfűzni kívánt sztringcímkéket.
-
-## <a name="apis-and-tools-for-testing"></a>API-k és tesztelési eszközök
-
-A következő táblázat felsorolja az API-k és a lekérdezések elküldése az eszköz-alapú megközelítéseken.
-
-| Módszer | Leírás |
-|-------------|-------------|
-| [A SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Az Azure Search-index lekérdezése használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Dokumentumok keresése (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | GET vagy POST metódus az indexen, további bemeneti lekérdezési paraméterek használatával.  |
-| [A fiddler, Postman vagy más HTTP tesztelési eszköz](search-fiddler.md) | Azt ismerteti, hogyan állítható be egy kérés fejlécéhez és a szervezet az Azure Search-lekérdezések küldési.  |
-| [Az Azure Portalon a keresési ablak](search-explorer.md) | Itt egy keresősáv és a lehetőségek a kiválasztott index és api-verziót. A eredmény JSON-dokumentumok formájában. <br/>[Részletek](search-get-started-portal.md#query-index) | 
 
 ## <a name="see-also"></a>Lásd még
 

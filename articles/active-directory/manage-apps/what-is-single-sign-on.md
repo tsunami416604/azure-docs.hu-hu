@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: celested
 ms.reviewer: arvindh
-ms.openlocfilehash: 7903094efc75ec54811bf565f407752f958498b7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 2e70746de4b744daf7242e91c51a3ccc1b331878
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959205"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997302"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 Egyszeri bejelentkezés (SSO) ad hozzá biztonsági és kényelmet, amikor a felhasználók bejelentkezés az Azure Active Directoryban (Azure AD-) alkalmazások. Ez a cikk az egyszeri bejelentkezési módszereket írja le, és segítséget nyújt az alkalmazások konfigurálásakor, válassza ki a legmegfelelőbb egyszeri bejelentkezési módszert.
@@ -27,7 +27,7 @@ Egyszeri bejelentkezés (SSO) ad hozzá biztonsági és kényelmet, amikor a fel
 
 ## <a name="choosing-a-single-sign-on-method"></a>Egyszeri bejelentkezés módszer kiválasztása
 
-Többféleképpen is lehet az alkalmazás egyszeri bejelentkezés konfigurálása. Egyszeri bejelentkezési módszer kiválasztása attól függ, hogy az alkalmazás hitelesítésre van beállítva. 
+Többféleképpen is lehet az alkalmazás egyszeri bejelentkezés konfigurálása. Egyszeri bejelentkezés módszer kiválasztása attól függ, hogy az alkalmazás hogyan van konfigurálva a hitelesítéshez. 
 
 - A felhőalapú alkalmazások OpenID Connect, OAuth, SAML, jelszóalapú, a társított, vagy letiltott módszereket használhatja az egyszeri bejelentkezés. 
 - A helyszíni alkalmazások használhatják a jelszóalapú, integrált Windows hitelesítést, az egyszeri bejelentkezés fejlécalapú, összekapcsolt vagy letiltott metódust. A helyszíni lehetőségek működnek, ha a alkalmazások Application Proxy van konfigurálva.
@@ -58,7 +58,7 @@ További információkért lásd:
 - [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
 ## <a name="saml-sso"></a>SAML EGYSZERI BEJELENTKEZÉS
-A **SAML egyszeri bejelentkezés**, az Azure AD akkor hitelesíti az alkalmazásnak a felhasználó Azure AD-fiók használatával. Azure ad-ben a bejelentkezési adatait az alkalmazás egy kapcsolat protokollon keresztül kommunikál. Az SAML-alapú egyszeri bejelentkezés leképezheti felhasználók a SAML-jogcímek az meghatározott szabályok alapján adott alkalmazás-szerepkörök
+A **SAML egyszeri bejelentkezés**, az Azure AD akkor hitelesíti az alkalmazásnak a felhasználó Azure AD-fiók használatával. Azure ad-ben a bejelentkezési adatait az alkalmazás egy kapcsolat protokollon keresztül kommunikál. SAML-alapú egyszeri bejelentkezés, a felhasználók leképezheti a SAML-jogcímek az meghatározott szabályok alapján adott alkalmazás-szerepkörökhöz.
 
 Válassza az SAML-alapú egyszeri bejelentkezés, ha az alkalmazás ezt támogatja.
 
@@ -85,7 +85,7 @@ Válassza ki a jelszóalapú egyszeri bejelentkezés mikor:
 Jelszavas egyszeri bejelentkezés bármely felhőalapú alkalmazás, amely rendelkezik egy HTML-alapú bejelentkezési oldal támogatott. A felhasználó az alábbi böngészők bármelyike használható:
 
 - Az Internet Explorer 11 Windows 7-es vagy újabb
-- A Microsoft Edge a Windows 10 Évfordulós kiadása vagy újabb 
+- A Microsoft Edge a Windows 10 Évfordulós kiadása vagy újabb
 - Chrome, a Windows 7 vagy újabb, és a MacOS X rendszeren vagy újabb
 - Firefox 26.0 vagy újabb, Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb
 

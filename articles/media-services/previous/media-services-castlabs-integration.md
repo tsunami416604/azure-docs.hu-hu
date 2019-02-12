@@ -1,10 +1,10 @@
 ---
-title: Widevine-licencek kézbesíthet Azure Media Services castLabs használatával |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan használható az Azure Media Services (AMS) által a PlayReady vagy a Widevine DRMs AMS dinamikusan titkosított adatfolyam továbbítására. A PlayReady-licenc Media Services PlayReady licenckiszolgáló származik, és Widevine-licenc castLabs licenckiszolgáló hozta.
+title: A castLabs használata a Widevine licencek kézbesítéséhez az Azure Media Services |} A Microsoft Docs
+description: Ez a cikk bemutatja, hogyan használhatja az Azure Media Services (AMS), hogy olyan adatfolyamra, amely a PlayReady vagy a Widevine DRMs AMS dinamikusan titkosítja. A Media Services PlayReady licenckiszolgáló származik, a PlayReady-licenc, és a Widevine-licenc castLabs licenckiszolgáló hozta.
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 2a9a408a-a995-49e1-8d8f-ac5b51e17d40
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 02/08/2019
 ms.author: Mingfeiy;willzhan;Juliako
-ms.openlocfilehash: aff5b94840e63176358d64a535c9cc0dd9ec617a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0b3d8759f13f48e5fa95ff709fa283ed41e0ea25
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788500"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003210"
 ---
-# <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe
+# <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe 
 > [!div class="op_single_selector"]
 > * [Axinom](media-services-axinom-integration.md)
 > * [castLabs](media-services-castlabs-integration.md)
@@ -29,83 +29,90 @@ ms.locfileid: "33788500"
 > 
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk ismerteti, hogyan használható az Azure Media Services (AMS) által a PlayReady vagy a Widevine DRMs AMS dinamikusan titkosított adatfolyam továbbítására. A PlayReady-licenc származik a licenckiszolgáló Media Services PlayReady és Widevine-licenc hozta **castLabs** licenckiszolgáló.
 
-Adatfolyam-CENC (PlayReady és/vagy Widevine) által védett tartalmak lejátszásához, használhatja a [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). Lásd: [AMP dokumentum](http://amp.azure.net/libs/amp/latest/docs/) részleteiről.
+Ez a cikk bemutatja, hogyan használhatja az Azure Media Services (AMS), hogy olyan adatfolyamra, amely a PlayReady vagy a Widevine DRMs AMS dinamikusan titkosítja. A Media Services PlayReady licenckiszolgáló származik, a PlayReady-licenc, és a Widevine-licenc hozta **castLabs** licenckiszolgáló.
 
-A következő ábra azt mutatja be, a magas szintű Azure Media Services és a castLabs integrációs architektúra.
+Vissza a CENC (PlayReady és/vagy Widevine) által védett tartalmak online lejátszásához használható [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). Lásd: [AMP dokumentum](http://amp.azure.net/libs/amp/latest/docs/) részleteiről.
+
+Az alábbi ábrán egy magas szintű Azure Media Services és a castLabs integrációs architektúra bemutatja.
 
 ![Integráció](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
 ## <a name="typical-system-set-up"></a>Tipikus rendszer beállítása
+
 * A médiatartalom AMS tárolja.
-* Kulcs azonosítók tartalom kulcsok castLabs, mind az AMS vannak tárolva.
-* castLabs és AMS egyaránt rendelkezik beépített tokent használó hitelesítés. Az alábbi szakaszok ismertetik a hitelesítési tokenek. 
-* Amikor egy ügyfél történő folyamatos igényel, a tartalom dinamikusan titkosított rendelkező **Common Encryption** (CENC) és a Smooth Streaming, valamint a kötőjel AMS által dinamikusan csomagolni. Azt is biztosítanak a HLS streamelési protokoll PlayReady M2TS elemi adatfolyam titkosítását.
-* PlayReady-licenc AMS licenckiszolgáló kéri le a rendszer, és Widevine-licenc castLabs licenckiszolgáló kéri le a rendszer. 
-* Media Player automatikusan eldönti, mely licenc beolvasni az ügyfél platform képességei alapján. 
+* Tartalomkulcs kulcs azonosítóját castLabs és az AMS vannak tárolva.
+* a castLabs és a AMS egyaránt rendelkeznek az eszközjogkivonattal történő hitelesítés a beépített. A következő részekben bemutatjuk a hitelesítési tokenek. 
+* Amikor egy ügyfél a videó továbbításához, dinamikusan a tartalom titkosított a **Common Encryption** (CENC) és a Smooth Streaming és DASH AMS által dinamikusan csomagolni. Is tudunk PlayReady M2TS elemi stream titkosítási HLS streamelési protokollhoz.
+* PlayReady-licenc az AMS-licenckiszolgáló nem gyűjt, és a Widevine-licenc castLabs licenckiszolgáló nem gyűjt. 
+* Media Player automatikusan úgy dönt, hogy melyik licenc beolvasni az ügyfél-platform képességei alapján. 
 
-## <a name="authentication-token-generation-for-getting-a-license"></a>Hitelesítési jogkivonatok létrehozásához a licenc beolvasásakor
-CastLabs, mind az AMS támogatja (JSON Web Token) JWT jogkivonat formátumának engedélyezése licenccel. 
+## <a name="authentication-token-generation-for-getting-a-license"></a>Hitelesítési jogkivonatok létrehozásához az első licenc
 
-### <a name="jwt-token-in-ams"></a>Az AMS JWT jogkivonat
+A castLabs és AMS is támogatja a JWT-(JSON Web Token) token formátuma engedélyezése licenccel. 
+
+### <a name="jwt-token-in-ams"></a>Az AMS JWT-jogkivonat
+
 A következő táblázat ismerteti az AMS JWT jogkivonat. 
 
-| Kiállító | A választott kibocsátó karakterláncot Secure Token Service (STS) |
+| Kiállító | A kiválasztott kiállítók karakterláncra Secure Token Service (STS) |
 | --- | --- |
-| Célközönség |A használt STS a célközönség karakterlánc |
-| Igénylések |Jogcímek egy készletét |
-| NotBefore |A token érvényességének kezdő |
+| Célközönség |A használt STS célközönség karakterláncra |
+| Igénylések |A jogcímek készlete |
+| NotBefore |Indítsa el a jogkivonat érvényessége |
 | Elévül |A token érvényességének vége |
-| SigningCredentials |A kulcs, amelyet használ PlayReady licenckiszolgáló, castLabs licenckiszolgáló és STS, annak oka lehet szimmetrikus vagy aszimmetrikus kulcs. |
+| SigningCredentials |A kulcs, amelyet használ PlayReady licenckiszolgáló, castLabs licenckiszolgáló telepítése és az STS, annak oka az lehet szimmetrikus vagy aszimmetrikus kulccsal. |
 
-### <a name="jwt-token-in-castlabs"></a>A castLabs JWT jogkivonat
+### <a name="jwt-token-in-castlabs"></a>A castLabs JWT-jogkivonat
+
 A következő táblázat ismerteti a castLabs JWT jogkivonat. 
 
 | Name (Név) | Leírás |
 | --- | --- |
-| optData |Egy adatokat tartalmazó JSON-karakterlánc. |
-| CRT |Az eszköz adatainak tartalmazó JSON karakterláncnak a licencelési adatokat, és a lejátszás jogok. |
-| IAT |Az aktuális dátum és idő a epoch. |
-| jti |Ez a token (összes jogkivonat csak egyszer használható a castLabs rendszerben) kapcsolatos egyedi azonosítója. |
+| optData |Önnel kapcsolatos információkat tartalmazó JSON-karakterláncot. |
+| CRT |Az eszköz adatait tartalmazó JSON-karakterláncot a licencelési adatokat és a lejátszás jogok. |
+| IAT |Az aktuális dátum és epoch. |
+| jti |Ez a token (jogkivonat minden csak egyszer használhatók fel a castLabs rendszerben) kapcsolatos egyedi azonosítója. |
 
-## <a name="sample-solution-set-up"></a>A minta megoldás beállítása
-A [megoldás minta](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) két projektet tartalmaz:
+## <a name="sample-solution-setup"></a>Mintául szolgáló megoldás – telepítés
 
-* Egy konzolalkalmazás használható egy már feldolgozott eszköz, mind a PlayReady, mind a Widevine DRM korlátozások beállítása.
-* A webes alkalmazás, amely átadja a jogkivonatokat, ami az STS szolgáltatással nagyon egyszerűsített verziója sikerült tekinthető meg.
+A [minta megoldás](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) két projektből áll:
+
+* Egy konzolalkalmazást, amely egy már betöltött eszköz, a PlayReady és Widevine DRM korlátozások beállítása is használható.
+* Egy webalkalmazást, amely átadja ki jogkivonatokat, ami az STS szolgáltatással rendkívül egyszerűsített változata látható volt.
 
 A Konzolalkalmazás használata:
 
-1. Módosítsa az app.config AMS hitelesítő adatokat, a castLabs hitelesítő adatokat, a STS konfigurációs és a megosztott kulcs beállítása.
-2. Töltse fel az eszköz az AMS.
-3. Az UUID azonosító beszerzése a feltöltött eszköz, és módosítsa a sor 32 a Program.cs fájlban:
+1. Módosítsa az app.config állíthatja be az AMS hitelesítő adatok, a castLabs hitelesítő adatokat, a STS-konfiguráció és a megosztott kulcsot.
+2. Az AMS-eszköz feltöltése.
+3. A feltöltött adategység UUID kérhet, és módosítsa a sor 32 a Program.cs fájlban:
    
-      var objIAsset = _context. Assets.Where (x = > x.Id == "nb:cid:UUID:dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault();
-4. Használjon egy AssetId elnevezési az eszköz a castLabs rendszerben (sor 44 a Program.cs fájlban).
+      var objIAsset = _context. Assets.Where (x = > x.Id == "nb:cid:UUID:dac53a5d – 1500-80bd-b864-f1e4b62594cf"). FirstOrDefault();
+4. Használjon egy AssetId elnevezési az eszköz a castLabs rendszerben (sor: 44 a Program.cs fájlban).
    
-   Meg kell adni a AssetId **castLabs**; kell lennie egy egyedi alfanumerikus karakterlánc.
+   Be kell állítani a AssetId **castLabs**; egyedi alfanumerikus karakterláncnak lennie kell.
 5. Futtassa a programot.
 
-A webes alkalmazás (STS) használata:
+A Web Application (STS) használata:
 
-1. Módosítsa a web.config telepítő castlabs kereskedelmi azonosítója, az STS-konfiguráció és a megosztott kulcsot.
-2. Telepítse az Azure-webhelyekre.
-3. Nyissa meg a webhelyet.
+1. Módosítsa a Web.config fájlt, a telepítő castlabs kereskedelmi Azonosítót, az STS-konfiguráció és a megosztott kulcsot.
+2. Helyezze üzembe az Azure-webhelyek.
+3. Keresse meg a webhelyet.
 
-## <a name="playing-back-a-video"></a>Vissza a videó lejátszása
-(PlayReady és/vagy Widevine) közös titkosítással titkosított videó lejátszása, használhatja a [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). Ha fut a Konzolalkalmazás, annál a tartalom kulcs azonosítója és a jegyzékfájl URL-címet.
+## <a name="playing-back-a-video"></a>Videó lejátszásának
 
-1. Nyisson meg egy új lapot, és indítsa el a STS: http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid].
-2. Ugrás a [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
-3. Illessze be a streamelési URL-cím.
+Szeretne lejátszani egy videót, az általános titkosítás (a PlayReady és/vagy Widevine) titkosított, használhatja a [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). A Konzolalkalmazás futtatásakor meg a tartalom kulcs Azonosítóját és a jegyzékfájl URL-CÍMÉT.
+
+1. Nyisson meg egy új lapot, majd indítsa el az STS: http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid].
+2. Lépjen a [az Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+3. Illessze be a streamelési URL-CÍMÉT.
 4. Kattintson a **speciális beállítások** jelölőnégyzetet.
 5. Az a **védelmi** legördülő menüben válassza a PlayReady és/vagy Widevine.
-6. Illessze be a származik a jogkivonat szövegmezőjének az STS-tokent. 
+6. Illessze be a jogkivonatot, portáltól kapott az STS a jogkivonat szövegmezőben. 
    
-   A castLab licenckiszolgáló nem kell a "tulajdonosi =" előtag előtt a jogkivonatot. Ezért távolítsa el, amely a token elküldése előtt.
-7. A Windows Media player frissítése.
-8. A videó lejátszása kell lehet.
+   A castLab licenckiszolgáló nem kell a "tulajdonosi =" előtag a token elé. Ezért távolítsa el, hogy a jogkivonat elküldése előtt.
+7. Frissítés a Windows Media player.
+8. A videó lejátszás alatt kell lennie.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 1ea4639d547616f2cfdf1d5e2b78c1388ef09dc4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 80c9f1c7e2bec3e3f3fa696134a23f0760598a29
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826122"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001136"
 ---
-# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Statikus csomagolás feladatok elvégzéséhez az Azure Media Packager használata
+# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Statikus csomagolás feladatok elvégzéséhez az Azure Media Packager használata  
 > [!NOTE]
 > 2017. március 1-most már elérhető a Microsoft Azure Media Packager és a Microsoft Azure Media Encryptor életre dátum végén. Ezen időpont előtt a processzorokat funkciói bekerül a Media Encoder Standard (MES) állnak. Ügyfelek rendelkezésre álló feladatokat küldhet a MES használatával történő áttelepítés munkafolyamataikhoz utasításokat. Formátum konverziós és titkosítási funkciókat a dinamikus csomagolás és a dinamikus titkosítás keresztül érhető el.
 > 

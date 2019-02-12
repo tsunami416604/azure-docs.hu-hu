@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 156d06b3c3fab5df1cd4360fb9e6ec2648d8d0b6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1935c670b5c7622f45f8c96b8c2faf03da6282f3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455065"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993632"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása
 
@@ -237,7 +237,7 @@ További információkért lásd: [Bevezetés a memóriaoptimalizált táblák](
 
 A cserélhető eszközként észlelhetőnek teljesítmény minta azt jelzi, hogy a az aktuális adatbázis számítási feladatok teljesítménye az elmúlt hét nap alaptervhez képest. A rugalmas készletben az előfizetésben elérhető dtu-k hiánya okozza. 
 
-Az SQL Database erőforrásokat általában nevezzük [DTU-erőforrások](sql-database-service-tiers.md#dtu-based-purchasing-model), amely Processzor- és i/o-(adat- és naplózási IO) erőforrások összesített mérésén állnak. [Az Azure rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool.md) rendelkezésre álló eDTU-erőforrások méretezése céljából több adatbázis között megosztott készletét használják. A rugalmas készlet rendelkezésre álló eDTU-erőforrások nem elég nagy a készletben található összes adatbázis támogatására, amikor a rendszer egy rugalmas készlet dtu-k hiánya teljesítménybeli problémát észlel.
+Az SQL Database erőforrásokat általában nevezzük [DTU-erőforrások](sql-database-purchase-models.md#dtu-based-purchasing-model), amely Processzor- és i/o-(adat- és naplózási IO) erőforrások összesített mérésén állnak. [Az Azure rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool.md) rendelkezésre álló eDTU-erőforrások méretezése céljából több adatbázis között megosztott készletét használják. A rugalmas készlet rendelkezésre álló eDTU-erőforrások nem elég nagy a készletben található összes adatbázis támogatására, amikor a rendszer egy rugalmas készlet dtu-k hiánya teljesítménybeli problémát észlel.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 

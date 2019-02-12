@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/24/2018
+ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: ace02a0cb93cf3e56e4b895524b9e2d35440aecb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7dcf77a34179f6ab71e1b48e088d364393258e5a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812982"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998331"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Oktatóanyag: Nagyítás az Azure Active Directory-integráció
 
@@ -124,6 +124,10 @@ A Nagyítás konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre 
     | Vezetéknév  | user.surname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname |
     | Telefonszám  | user.telephonenumber  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone |
     | Részleg  | user.department  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department |
+    | szerepkör |    user.assignedrole |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role |
+
+    > [!NOTE]
+    > Kattintson a [Itt](https://docs.microsoft.com/en-gb/azure/role-based-access-control/role-assignments-portal) tudni, hogy az Azure AD-szerepkör konfigurálása
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -141,11 +145,14 @@ A Nagyítás konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre 
 
     f. Kattintson a **Save** (Mentés) gombra.
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+    > [!NOTE]
+    > Nagyítás előfordulhat, hogy számítson csoportos jogcímet SAML hasznos, ha létrehozott bármely majd forduljon [nagyítás ügyfél-támogatási csapatával](https://support.zoom.us/hc/en-us) a csoport adatokkal, hogy konfigurálhatják a csoportinformációk is, hogy a végén. Emellett meg kell adnia a kívánt objektum Azonosítóját [nagyítás ügyfél-támogatási csapatával](https://support.zoom.us/hc/en-us) úgy, hogy a végén. Kérjük, kövesse a [dokumentum](https://support.zoom.us/hc/en-us/articles/115005887566) megszerezni az objektum azonosítóját.
+
+7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-6. Az a **nagyítás beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+8. Az a **nagyítás beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
@@ -160,29 +167,29 @@ A Nagyítás konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre 
 1. Egy másik böngészőablakban jelentkezzen be a Nagyítás vállalati hely rendszergazdaként.
 
 2. Kattintson a **egyszeri bejelentkezés** fülre.
-   
-    ![Egyszeri bejelentkezés lap](./media/zoom-tutorial/IC784700.png "egyszeri bejelentkezés")
+
+    ![Egyszeri bejelentkezés lap](./media/zoom-tutorial/ic784700.png "egyszeri bejelentkezés")
 
 3. Kattintson a **biztonsági ellenőrzést** lapra, és folytassa a a **egyszeri bejelentkezés** beállításait.
 
 4. Az egyszeri bejelentkezés szakaszban hajtsa végre az alábbi lépéseket:
-   
-    ![Egyszeri bejelentkezés szakasz](./media/zoom-tutorial/IC784701.png "egyszeri bejelentkezés")
-   
+
+    ![Egyszeri bejelentkezés szakasz](./media/zoom-tutorial/ic784701.png "egyszeri bejelentkezés")
+
     a. A a **bejelentkezési oldal URL** szövegmezőjébe illessze be az értéket, **bejelentkezési URL-cím** Azure Portalról másolt.
-   
+
     b. Az a **kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket, **kijelentkezési URL-címe** Azure Portalról másolt.
-     
+
     c. Nyissa meg a base-64 kódolású tanúsítványt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **szolgáltató identitástanúsítványt** szövegmezőbe.
 
     d. A a **kibocsátó** szövegmezőjébe illessze be az értéket, **Azure Ad-azonosító** Azure Portalról másolt. 
 
     e. Kattintson a **Save** (Mentés) gombra.
 
-    > [!NOTE] 
+    > [!NOTE]
     > További információért látogasson el a Nagyítás dokumentációja [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
@@ -240,17 +247,17 @@ Ahhoz, hogy a nagyításhoz. Jelentkezzen be az Azure AD-felhasználók, akkor k
 ### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:
 
 1. Jelentkezzen be a **nagyítás** rendszergazdaként a vállalati webhely.
- 
+
 2. Kattintson a **fiókkezelés** fülre, majd **felhasználókezelés**.
 
 3. Jelölje be a felhasználói felügyeleti csoport **felhasználók hozzáadása**.
-   
-    ![Felhasználókezelés](./media/zoom-tutorial/IC784703.png "felhasználók kezelése")
+
+    ![Felhasználókezelés](./media/zoom-tutorial/ic784703.png "felhasználók kezelése")
 
 4. Az a **felhasználók hozzáadása** lapon, a következő lépésekkel:
-   
-    ![Felhasználók hozzáadása](./media/zoom-tutorial/IC784704.png "felhasználók hozzáadása")
-   
+
+    ![Felhasználók hozzáadása](./media/zoom-tutorial/ic784704.png "felhasználók hozzáadása")
+
     a. Mint **felhasználótípus**válassza **alapszintű**.
 
     b. Az a **e-mailek** beviteli mező, írja be az e-mail-címe érvényes Azure AD-fiók kíván üzembe helyezni.
@@ -260,7 +267,7 @@ Ahhoz, hogy a nagyításhoz. Jelentkezzen be az Azure AD-felhasználók, akkor k
 > [!NOTE]
 > Bármely más nagyítás felhasználói fiók létrehozása eszközöket használhatja, vagy nagyítás üzembe helyezni az Azure Active Directory által biztosított API-k felhasználói fiókok.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -273,4 +280,3 @@ Ha a hozzáférési panelen a Nagyítás csempére kattint, meg kell kell automa
 - [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

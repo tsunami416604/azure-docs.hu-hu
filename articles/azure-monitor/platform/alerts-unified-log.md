@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 18c05f2a9dd9f7e4a6d5ec62806870311c5eb130
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 70f53ed06daad8adf10ef5a88f0672f86d6a8b48
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745708"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004128"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Naplóriasztások az Azure monitorban
-Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
+Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](../platform/alerts-overview.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
 
-Riasztás létre naplóbeli keresés szabályból áll [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). A használattal kapcsolatos további információkért lásd: [riasztások létrehozása az Azure-ban](../../azure-monitor/platform/alerts-log.md)
+Riasztás áll számára létrehozott lekérdezési szabály [Azure Monitor](../learn/tutorial-viewdata.md) vagy [Application Insights](../app/cloudservices.md#view-azure-diagnostics-events). A használattal kapcsolatos további információkért lásd: [riasztások létrehozása az Azure-ban](../platform/alerts-log.md)
 
 > [!NOTE]
-> Népszerű naplóadatait [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) is már elérhető az Azure monitorban metrika-platformon. A Részletek nézetben [naplók riasztási metrika](../../azure-monitor/platform/alerts-metric-logs.md)
+> Népszerű naplóadatait [Azure Monitor](../learn/tutorial-viewdata.md) is már elérhető az Azure monitorban metrika-platformon. A Részletek nézetben [naplók riasztási metrika](../platform/alerts-metric-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Log search riasztásiszabály - definíció- és típusok
@@ -41,7 +41,7 @@ Log search szabályok határozzák meg a következő adatokat:
 
 - **Küszöbérték**.  A Naplókeresés eredménye értékeli ki a meghatározásához, hogy egy riasztást kell létrehozni.  A küszöbérték nem azonos a különféle keresési naplóriasztási szabály.
 
-Log search szabályokat kell azt a [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events), kétféle típusú lehet. Ezek a típusok leírását a következő szakaszok részletesen ismertetjük.
+Legyen szó a lekérdezési szabályok jelentkezzen [Azure Monitor](../learn/tutorial-viewdata.md) vagy [Application Insights](../app/cloudservices.md#view-azure-diagnostics-events), kétféle típusú lehet. Ezek a típusok leírását a következő szakaszok részletesen ismertetjük.
 
 - **[Az eredmények száma](#number-of-results-alert-rules)**. Egyetlen riasztás jön létre, amikor a naplóbeli keresés által visszaadott rekordokat meghaladja a megadott szám.
 - **[Metrikus egység](#metric-measurement-alert-rules)**.  A megadott küszöbértéket meghaladó értékek naplóbeli keresés eredményei az egyes objektumok létrehozott riasztás.
@@ -114,11 +114,11 @@ Keresés riasztási szabály a logikai való megfelelően konfigurációja és a
 
 Most már feltételezik, hogy rendelkezünk egy úgynevezett riasztási szabály *Contoso Naplóriasztás*, a konfiguráció szerint a [száma az eredmények típusú riasztás biztosított](#example-of-number-of-records-type-log-alert). 
 - 1:05 du.: Ha a Contoso-Log-riasztás hajtott végre Azure-riasztások a naplózott keresési eredményeknek kurzorműveletnek 0 rekordot; alább a küszöbérték, és ezért nem aktiválja a riasztást. 
-- A következő verzió továbbfejlesztésében 1: alapszintűről mikor Contoso Naplóriasztás hajtott végre Azure-riasztások, a naplózott keresési eredményeknek megadott 5 rekordjának; meghaladja a küszöbértéket, és a riasztást kiváltó után minél hamarabb elindításával a [műveletcsoport](../../azure-monitor/platform/action-groups.md) társítva. 
-- 1:15-kor mikor Contoso Naplóriasztás hajtott végre Azure-riasztások, a naplózott keresési eredményeknek megadott 2 rekordok; meghaladja a küszöbértéket, és a riasztást kiváltó után minél hamarabb elindításával a [műveletcsoport](../../azure-monitor/platform/action-groups.md) társítva.
+- A következő verzió továbbfejlesztésében 1: alapszintűről mikor Contoso Naplóriasztás hajtott végre Azure-riasztások, a naplózott keresési eredményeknek megadott 5 rekordjának; meghaladja a küszöbértéket, és a riasztást kiváltó után minél hamarabb elindításával a [műveletcsoport](../platform/action-groups.md) társítva. 
+- 1:15-kor mikor Contoso Naplóriasztás hajtott végre Azure-riasztások, a naplózott keresési eredményeknek megadott 2 rekordok; meghaladja a küszöbértéket, és a riasztást kiváltó után minél hamarabb elindításával a [műveletcsoport](../platform/action-groups.md) társítva.
 - Jelenleg a következő verzió továbbfejlesztésében du. 1:20 mikor Contoso Naplóriasztás hajtott végre az Azure riasztás, a naplózott keresési eredményeknek most megadott újra 0 rekordot; alább a küszöbérték, és ezért nem aktiválja a riasztást.
 
-De a fenti listán szereplő esetben 1:15 PM -, Azure-riasztások nem tudja megállapítani, hogy az észlelés időpontja: 1:10 alapul szolgáló problémák továbbra is fennállnak-e és van-e nettó új hibák; felhasználó által megadott lekérdezést is kell figyelembe véve korábbi rekordok -, Azure-riasztások biztos lehet. Ezért, járjon el, ha a Contoso Naplóriasztási oldalán err hajtja végre: 1:15-kor, konfigurált [műveletcsoport](../../azure-monitor/platform/action-groups.md) újra lesz elindítva. Du. 1:20 Ha rekordokat nem láthatók – Azure-riasztások nem lehet róla, hogy most már a rekordok okának megoldódott; ezért a Contoso-Log-riasztás fog megoldott riasztás Azure-irányítópult és/vagy értesítéseket figyelmezteti a riasztás feloldása nem változott.
+De a fenti listán szereplő esetben 1:15 PM -, Azure-riasztások nem tudja megállapítani, hogy az észlelés időpontja: 1:10 alapul szolgáló problémák továbbra is fennállnak-e és van-e nettó új hibák; felhasználó által megadott lekérdezést is kell figyelembe véve korábbi rekordok -, Azure-riasztások biztos lehet. Ezért, járjon el, ha a Contoso Naplóriasztási oldalán err hajtja végre: 1:15-kor, konfigurált [műveletcsoport](../platform/action-groups.md) újra lesz elindítva. Du. 1:20 Ha rekordokat nem láthatók – Azure-riasztások nem lehet róla, hogy most már a rekordok okának megoldódott; ezért a Contoso-Log-riasztás fog megoldott riasztás Azure-irányítópult és/vagy értesítéseket figyelmezteti a riasztás feloldása nem változott.
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Árak és számlázás az riasztások
@@ -133,9 +133,8 @@ Naplóriasztásokra vonatkozó díjszabás érvényes van megadva a [Azure Monit
     > Ha érvénytelen karaktert `<, >, %, &, \, ?, /` jelen, akkor fogja írni a `_` szerepel a számlán. A riasztási szabályok használatával számlázását a létrehozott scheduleQueryRules erőforrást törölni [örökölt Log Analytics API](api-alerts.md) -felhasználónak kell törölni az eredeti ütemezés és a riasztási művelet használatával [örökölt Log Analytics API](api-alerts.md)
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [létrehozása a naplóriasztások az Azure-ban](../../azure-monitor/platform/alerts-log.md).
+* Ismerje meg [létrehozása a naplóriasztások az Azure-ban](../platform/alerts-log.md).
 * Megismerheti [naplóriasztások az Azure-ban a webhookok](alerts-log-webhook.md).
-* Ismerje meg [Azure-riasztások](../../azure-monitor/platform/alerts-overview.md).
-* Tudjon meg többet [Application Insights](../../azure-monitor/app/analytics.md).
-* Tudjon meg többet [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).    
-
+* Ismerje meg [Azure-riasztások](../platform/alerts-overview.md).
+* Tudjon meg többet [Application Insights](../app/analytics.md).
+* Tudjon meg többet [Azure Monitor log-lekérdezések](../log-query/log-query-overview.md).    

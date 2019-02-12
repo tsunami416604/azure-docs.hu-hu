@@ -12,12 +12,12 @@ ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 26517e55685de6e1fd9174bb1892b877f0e263d6
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 26e131ef598feae099e789bc51909c4eb249bd79
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895652"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001991"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -74,13 +74,13 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 
 3. Ha inkább a állítsa be a kiszolgáló naplózási szabályzatot, válassza a **kiszolgálóbeállítások megtekintése** az adatbázis naplózási lapon. Ezután megtekintheti vagy módosíthatja a kiszolgáló naplózási beállításait. Kiszolgáló naplózási házirendek ezen a kiszolgálón az összes meglévő és újonnan létrehozott adatbázisokra érvényesek.
 
-    ![Navigációs ablak][2]
+    ![Navigációs ablaktábla][2]
 
 4. Ha szeretné engedélyezni a naplózást az adatbázisszintű, váltson **naplózási** való **ON**.
 
     Ha a kiszolgáló-naplózás engedélyezve van, az adatbázisszinten konfigurált naplózás egymás mellett az a kiszolgáló naplózási fog létezik.
 
-    ![Navigációs ablak][3]
+    ![Navigációs ablaktábla][3]
 
 5. **Új** – most már több lehetőség áll rendelkezésére konfigurálásához ahol auditnaplók lesz írva. Naplók az Azure storage-fiók, egy Log Analytics-munkaterületet a Log Analytics által felhasználásához vagy kínál az event hubs az eseményközpont írhat. Az alábbi lehetőségek közül bármelyiket is beállíthat, és minden egyes auditnaplók lesz írva.
 
@@ -125,6 +125,7 @@ Ha úgy döntött, hogy auditnaplók írni a Log Analytics:
 Ha úgy döntött, hogy auditnaplók írni az Event Hubs:
 
 - Az Event Hubs naplózási adatok felhasználásához, szüksége lesz egy stream események felhasználásához, és a cél beállítása. További információkért lásd: [Azure Event Hubs – dokumentáció](https://docs.microsoft.com/azure/event-hubs/).
+- Törzsében rögzítve lesznek a naplók az Event Hub [Apache Avro](http://avro.apache.org/) események segítségével a JSON formázását az UTF-8 kódolást és tárolhatók. A vizsgálati naplók elolvasásához használja [Avro eszközök](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) vagy hasonló eszközt, amely ezt a formátumot.
 
 Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon használhatja a naplók megtekintéséhez:
 
@@ -132,7 +133,7 @@ Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon 
 
 - Használja a [az Azure portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázis. Az adatbázis tetején **naplózási** kattintson **naplók megtekintése**.
 
-    ![Navigációs ablak][7]
+    ![Navigációs ablaktábla][7]
 
     **Naplórekordok** megnyitása, amelyen is elérheti a naplók megtekintéséhez.
 
@@ -140,14 +141,14 @@ Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon 
   - Naplózás a rekordok által létrehozott között válthat a *kiszolgáló naplózási házirend* és a *adatbázis naplózási házirend* átállításával **naplózási forrás**.
   - Csak az SQL-injektálás kapcsolódó naplórekordok ellenőrzésével megtekintheti **megjelenítése csak a naplózási bejegyzések az SQL-injektálások** jelölőnégyzetet.
 
-       ![Navigációs ablak][8]
+       ![Navigációs ablaktábla][8]
 
 - A rendszer függvénnyel **sys.fn_get_audit_file** (T-SQL) a naplózási adatokat vissza a táblázatos formátumban. Ez a funkció használatáról további információkért lásd: [sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - Használat **naplózási fájlok egyesítése** az SQL Server Management Studio (SSMS 17-től induló):
     1. Az SSMS menüből válassza ki a **fájl** > **nyílt** > **naplózási fájlok egyesítése**.
 
-        ![Navigációs ablak][9]
+        ![Navigációs ablaktábla][9]
     2. A **naplózási fájlok hozzáadása** párbeszédpanel nyílik meg. Válassza ki az egyik a **Hozzáadás** beállítások számára, hogy a helyi lemezen lévő naplófájlokat egyesítéséhez, vagy importálhatja őket az Azure Storage-ból. Adja meg az Azure Storage-adatokat és a fiókkulcs szükségesek.
 
     3. Egyesítheti az összes fájl hozzáadása után kattintson a **OK** az egyesítési művelet végrehajtása.
@@ -191,10 +192,10 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
 
 1. Nyissa meg **tárolási adatok**. Az a **Tárelérési kulcs** jelölje ki **másodlagos**, és kattintson a **OK**. Kattintson a **mentése** a naplózási konfiguráció lap tetején.
 
-    ![Navigációs ablak][5]
+    ![Navigációs ablaktábla][5]
 2. A tároló konfigurációs lap megnyitásához, és az elsődleges elérési kulcs újragenerálása.
 
-    ![Navigációs ablak][6]
+    ![Navigációs ablaktábla][6]
 3. Lépjen vissza a naplózási konfiguráció lapon váltson a tárelérési kulcs az elsődleges, másodlagos, és kattintson **OK**. Kattintson a **mentése** a naplózási konfiguráció lap tetején.
 4. Lépjen vissza a tárolási konfiguráció lapon, és újragenerálja a másodlagos elérési kulcsot (a frissítés során a következő kulcs előkészítése).
 

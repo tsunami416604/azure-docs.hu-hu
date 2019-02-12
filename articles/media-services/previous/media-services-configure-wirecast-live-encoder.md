@@ -4,7 +4,7 @@ description: 'Ez a témakör bemutatja, hogyan konfigurálhatja a Wirecast egyf�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/09/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: e0e41714f6979a9cd699df70498b9c89a44d5ee1
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c734c8033947c4f4d5636bc8d82d38a3d871bdbd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138954"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998569"
 ---
-# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Használja a Wirecast kódoló egyféle sávszélességű élő adatfolyamot küldeni
+# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Használja a Wirecast kódoló egyféle sávszélességű élő adatfolyamot küldeni 
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -75,14 +75,14 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
 **A videó**:
 
 * Kodek: H.264
-* Profil: High (4.0-s szint)
+* Profil: Nagy (4.0-s szint)
 * Átviteli sebesség: 5000 KB/s
 * Kulcsképkocka: 2 másodperc (60 másodperc)
-* Keret arány: 30
+* Képkockasebesség: 30
 
 **Hang**:
 
-* Kodekkel: Az AAC (LC)
+* Kodek: AAC (LC)
 * Átviteli sebesség: 192 Kb/s
 * Mintavételi gyakoriság: 44,1 kHz
 
@@ -106,7 +106,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
    * Kódoló: MainConcept H.264
    * A képkockák másodpercenkénti: 30
    * Átlagos átviteli sebesség: 5000 kbit/s (módosítható hálózati korlátai alapján)
-   * Profil: Main
+   * Profil: Elsődleges
    * Kulcs keret minden: 60 keretek
 
     **Audio**

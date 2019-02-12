@@ -13,14 +13,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 49a2e16d198130d1c72d36377be1d914cbe3351b
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: fcef143f48bc9e7864fe69900e3c9002fd597fb5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745248"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001868"
 ---
-# <a name="create-a-data-factory-and-pipeline-using-python"></a>Adat-előállító és folyamat létrehozása a Python használatával
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Gyors útmutató: Adat-előállító és folyamat létrehozása a Python használatával
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](quickstart-create-data-factory-python.md)
@@ -47,6 +48,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 2.  Az [Azure Storage Explorerrel](http://storageexplorer.com/) vagy egy hozzá hasonló eszközzel hozza létre az **adfv2tutorial** tárolót, és a tárolóban az **input** mappát. Ezután töltse fel az **input.txt** fájlt az **input** mappába.
 
 ## <a name="install-the-python-package"></a>Python-csomag telepítése
+
 1. Nyisson meg egy terminált vagy parancssort rendszergazdai jogosultságokkal. 
 2. Először telepítse a Python-csomagot az Azure felügyeleti erőforrásokhoz:
 
@@ -104,7 +106,6 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
             print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
-
     ```
 3. Adja hozzá a következő kódot a **Main** metódushoz, amely létrehoz egy DataPipelineManagementClient osztályú példányt. Ezzel az objektummal adat-előállítót, társított szolgáltatást, adatkészleteket és folyamatot hozhat létre. Ezenfelül ez az objektum a folyamat futása részleteinek monitorozására is használható. Állítsa be a **subscription_id** változót az Azure-előfizetés azonosítójaként. Azure-régióban, amelyben a Data Factory jelenleg listája, válassza ki a régiók, amelyek a következő oldalon érdeklődésére számot tartó, és bontsa ki **Analytics** található **adat-előállító**: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
@@ -165,9 +166,11 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
     print_item(ls)
 ```
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
+
 Ebben a részben két adatkészletet hoz létre: egyet a forráshoz és egyet a fogadóhoz.
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Adatkészlet létrehozása a forrás Azure Blobhoz
+
 Adja hozzá a következő kódot a Main metódushoz, amely létrehoz egy Azure Blob-adatkészletet. Az Azure Blob-adatkészlet tulajdonságaival kapcsolatos információkért tekintse meg az [Azure Blob-összekötőt](connector-azure-blob-storage.md#dataset-properties) ismertető cikket.
 
 Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban. Ez a blob-adatkészlet az előző lépésben létrehozott Azure Storage-beli társított szolgáltatásra vonatkozik.
@@ -184,6 +187,7 @@ Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban
 ```
 
 ### <a name="create-a-dataset-for-sink-azure-blob"></a>Adatkészlet létrehozása a fogadó Azure Blobhoz
+
 Adja hozzá a következő kódot a Main metódushoz, amely létrehoz egy Azure Blob-adatkészletet. Az Azure Blob-adatkészlet tulajdonságaival kapcsolatos információkért tekintse meg az [Azure Blob-összekötőt](connector-azure-blob-storage.md#dataset-properties) ismertető cikket.
 
 Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban. Ez a blob-adatkészlet az előző lépésben létrehozott Azure Storage-beli társított szolgáltatásra vonatkozik.
@@ -218,7 +222,6 @@ Adja hozzá a következő kódot a **Main** metódushoz, amely létrehozza a **m
     print_item(p)
 ```
 
-
 ## <a name="create-a-pipeline-run"></a>Folyamat futásának létrehozása
 
 Adja hozzá a következő kódot a **Main** metódushoz, amely **elindítja a folyamat futását**.
@@ -232,6 +235,7 @@ Adja hozzá a következő kódot a **Main** metódushoz, amely **elindítja a fo
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>Folyamat futásának monitorozása
+
 A folyamat futtatásának monitorozásához adja hozzá a következő kódot a **Main** metódushoz:
 
 ```python
@@ -251,6 +255,7 @@ main()
 ```
 
 ## <a name="full-script"></a>Teljes szkript
+
 Itt látható a teljes Python-kód:
 
 ```python
@@ -381,6 +386,7 @@ main()
 ```
 
 ## <a name="run-the-code"></a>A kód futtatása
+
 Állítsa össze és indítsa el az alkalmazást, majd ellenőrizze a folyamat-végrehajtást.
 
 A konzol megjeleníti az adat-előállító, a társított szolgáltatás, az adatkészletek, a folyamat, valamint a folyamat futása létrehozási állapotát. Várjon, amíg megjelennek a másolási tevékenység futásának részletei, beleértve az olvasott és írt adatok méretét. Ezután például az [Azure Storage Explorerhez](https://azure.microsoft.com/features/storage-explorer/) hasonló eszközök használatával ellenőrizheti, hogy a blobok a változókban megadottak szerint át lettek-e másolva az outputBlobPath helyre az inputBlobPath helyről.
@@ -417,8 +423,8 @@ Number of bytes written: 18
 Copy duration: 4
 ```
 
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
 Az adat-előállító törléséhez adja hozzá az alábbi kódot a programhoz:
 
 ```python
@@ -426,4 +432,5 @@ adf_client.factories.delete(rg_name,df_name)
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md).

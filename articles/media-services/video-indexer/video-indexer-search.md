@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bbe26b19f9467034a4612ac1b40124122bee7f0c
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: d2c2e87b3dade68dc311aa38743c11a60a69f68b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292263"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004546"
 ---
 # <a name="find-exact-moments-within-videos"></a>Pontos időpontok keresése videókban
 
@@ -26,7 +26,6 @@ Ez a témakör bemutatja, hogy a keresési lehetőségeket, amelyek lehetővé t
     A következő példában azt keres az összes videó channel9-on, Scott Hanselman videosorozatának e által létrehozott is.
 
     ![Keresés](./media/video-indexer-search/video-indexer-search01.png)
-    
 3. A videó összefoglaló elemzések keresése.
 
     Majd videón belüli kattintva kereshet **lejátszása** videó. Ezt követően is végezhető keresés a videó kiválasztásával a **keresési** fülre. Például hogy keresni minden olyan hely, ahol az "identity protection" szöveget használják. 
@@ -34,8 +33,6 @@ Ez a témakör bemutatja, hogy a keresési lehetőségeket, amelyek lehetővé t
     ![Keresés](./media/video-indexer-search/video-indexer-search02.png)
 
     Kattint az eredmények közül, ha a Windows Media player méretezhetőséget kínál, hogy a videóban. A player/elemzések megtekintése és a szinkronizálás érheti el az alkalmazásban. További információkért lásd: [az alkalmazásba való beágyazása a Video Indexer widgetek](video-indexer-embed-widgets.md). 
-
-    
 4. Keresés a videó részletes áttekintését.
 
     Ha szeretne létrehozni a saját lebontása a videót, a megtalált alapján, nyomja le az **szerkesztése** gombra. Ez az oldal megjeleníti egy videó teljes lebontását. Csak a részletezést belül kereshet az Önt érdeklő sorokat. További információkért lásd: [megtekintése és szerkesztése a Videóindexelő-elemzések](video-indexer-view-edit.md).

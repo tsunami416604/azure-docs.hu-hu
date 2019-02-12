@@ -2,7 +2,7 @@
 title: Videolejátszó alkalmazások készítése
 description: A témakör hivatkozásokat tartalmaz a Player keretrendszerekkel és beépülő modulokat, amelyek segítségével a saját médiafolyamainak a Media Services ügyfél alkalmazásokat fejleszthet.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: d7f55022dc526f44251814ac953787d6652e6f90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6c57c8ad85ef83e8739bc2bf35b3bd0dc6d5a902
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237043"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004842"
 ---
 # <a name="develop-video-player-applications"></a>Videolejátszó alkalmazások készítése
 ## <a name="overview"></a>Áttekintés
@@ -53,7 +53,7 @@ A következő SDK-k bármelyikét is használhatja:
 * [Videó XBOX fejlesztése](https://xbox.create.msdn.com/) 
 
 ## <a name="advertising"></a>Hirdetés
-Az Azure Media Services támogatja a reklámjelölőket keresztül a Windows Media Platform: Player keretrendszerekkel. Ad-támogatás a Player keretrendszerek érhetők el a Windows 8, a Silverlight, a Windows Phone 8 és az iOS-eszközökhöz. Minden egyes player keretrendszer, amely bemutatja, hogyan valósíthat meg egy médialejátszó alkalmazásba mintakód tartalmazza. Nincsenek szúrhat be a multimédiás ads három különböző típusú:
+Az Azure Media Services reklámjelölőket keresztül a Windows Media Platform támogatja: Player keretrendszerekkel. Ad-támogatás a Player keretrendszerek érhetők el a Windows 8, a Silverlight, a Windows Phone 8 és az iOS-eszközökhöz. Minden egyes player keretrendszer, amely bemutatja, hogyan valósíthat meg egy médialejátszó alkalmazásba mintakód tartalmazza. Nincsenek szúrhat be a multimédiás ads három különböző típusú:
 
 Lineáris – a teljes keret hirdetések fő videó megállítása
 
@@ -61,7 +61,7 @@ Lineáris – területre hirdetések vannak feltüntetve, a fő videó lejátsz�
 
 Kiegészítő – kívül a Windows Media player megjelenített hirdetések
 
-Hirdetések helyezhető a fő videó idősorán bármely pontján. A Windows Media player kell mondja el, ha lejátszása az ad és melyik lejátszásához hirdetéseket. Ebben az esetben a szabványos XML-alapú fájlokat használ: a videó Ad szolgáltatás sablon (VAST), a digitális videót több Ad lista (VMAP), a Media absztrakt alkalmazás-előkészítés sablon (OSZLOPOS) és a digitális videót Player Ad Interface Definition (VPAID). HATALMAS fájlokat adja meg, milyen hirdetések megjelenítéséhez. VMAP fájlokat adja meg, mikor lejátszása különböző hirdetések és HATALMAS XML-kódot tartalmaz. OSZLOPOS fájlok módon egy másik feladatütemezési ads is tartalmazó HATALMAS XML. VPAID fájlokat adja meg a videó lejátszási és az ad vagy ad-kiszolgáló közötti illesztőfelületet. További információkért lásd: [Beszúrás, hirdetések](https://msdn.microsoft.com/library/dn387398.aspx).
+Hirdetések helyezhető a fő videó idősorán bármely pontján. A Windows Media player kell mondja el, ha lejátszása az ad és melyik lejátszásához hirdetéseket. Ebben az esetben a szabványos XML-alapú fájlokat használatával: Videó Ad szolgáltatási sablon (VAST), digitális videót több Ad lista (VMAP), a Media absztrakt alkalmazás-előkészítés sablont (OSZLOPOS), és a digitális videolejátszó Ad illesztőjének definícióját (VPAID). HATALMAS fájlokat adja meg, milyen hirdetések megjelenítéséhez. VMAP fájlokat adja meg, mikor lejátszása különböző hirdetések és HATALMAS XML-kódot tartalmaz. OSZLOPOS fájlok módon egy másik feladatütemezési ads is tartalmazó HATALMAS XML. VPAID fájlokat adja meg a videó lejátszási és az ad vagy ad-kiszolgáló közötti illesztőfelületet. További információkért lásd: [Beszúrás, hirdetések](https://msdn.microsoft.com/library/dn387398.aspx).
 
 A feliratozás és hirdetések támogatása az élő adatfolyam-továbbítási videók kapcsolatos információkért lásd: [támogatott kódolt feliratok és Ad beszúrási szabványok](https://msdn.microsoft.com/library/c49e0b4d-357e-4cca-95e5-2288924d1ff3#caption_ad).
 

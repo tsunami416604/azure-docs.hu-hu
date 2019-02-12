@@ -1,6 +1,6 @@
 ---
-title: Lekérdezések az Azure Log Analytics használatának első lépései |} A Microsoft Docs
-description: Ez a cikk egy oktatóanyag, az első lépésekhez írása lekérdezések a Log Analyticsben.
+title: Az Azure Monitor log-lekérdezések használatának első lépései |} A Microsoft Docs
+description: Ez a cikk ismerteti az első lépések oktatóanyag az Azure Monitor log-lekérdezések írásának módját.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 326e12444067e950b9d6ae0862424589d444b83d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 599e6b0cd615be7275df127b0b2f174bd8e6c290
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882600"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994886"
 ---
-# <a name="get-started-with-queries-in-log-analytics"></a>A Log Analytics lekérdezések használatának első lépései
+# <a name="get-started-with-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések használatának első lépései
 
 
 > [!NOTE]
-> Hajtsa végre [az Analytics-portál – első lépések](get-started-portal.md) Ez az oktatóanyag elvégzése előtt.
+> Hajtsa végre [Ismerkedés az Azure Monitor log-analytics](get-started-portal.md) Ez az oktatóanyag elvégzése előtt.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ebben az oktatóanyagban elsajátíthatja az Azure Log Analytics-lekérdezések írása. Mely arról szól, hogyan való:
+Ebben az oktatóanyagban elsajátíthatja az Azure LMonitor log lekérdezéseket írni. Mely arról szól, hogyan való:
 
 - A lekérdezések struktúra ismertetése
 - Lekérdezési eredmények rendezése
@@ -43,10 +43,10 @@ Ebben az oktatóanyagban elsajátíthatja az Azure Log Analytics-lekérdezések 
 Lekérdezések megkezdheti a következők egyikével táblanév vagy a *keresési* parancsot. A tábla nevét, mert a lekérdezés törlése hatókör határozza meg, és javítja a lekérdezési teljesítmény és az eredmények relevancia alapján végzett kell kezdődnie.
 
 > [!NOTE]
-> Az Azure Log Analytics lekérdezési nyelve, kis-és nagybetűket. Vezérlőnyelvi kulcsszavak általában nyelven írták kisbetűs. Táblák vagy oszlopok nevei a lekérdezésben használatakor ügyeljen arra, hogy a megfelelő kis-és nagybetűhasználattal a séma ablaktáblán látható módon.
+> Az adatkezelő lekérdezési nyelve, használja az Azure Monitor, kis-és nagybetűket. Vezérlőnyelvi kulcsszavak általában nyelven írták kisbetűs. Táblák vagy oszlopok nevei a lekérdezésben használatakor ügyeljen arra, hogy a megfelelő kis-és nagybetűhasználattal a séma ablaktáblán látható módon.
 
 ### <a name="table-based-queries"></a>Tábla-alapú lekérdezések futtatása
-Az Azure Log Analytics rendezik az adatokat táblákban, minden egyes tevődik össze több oszlopot. A séma ablaktáblán az analitika portálon minden táblák és oszlopok jelennek meg. Határozza meg, hogy érdeklő, és ezután tekintse meg az adatok egy kis, tábla:
+Az Azure Monitor rendszerezi a naplóadatok táblákban, minden egyes tevődik össze több oszlopot. A séma panelen az Analytics-portálon a Log Analytics összes táblák és oszlopok jelennek meg. Határozza meg, hogy érdeklő, és ezután tekintse meg az adatok egy kis, tábla:
 
 ```Kusto
 SecurityEvent
@@ -110,9 +110,9 @@ Szűrési feltételek írásakor, használhatja az alábbi kifejezések:
 
 | Kifejezés | Leírás | Példa |
 |:---|:---|:---|
-| == | Egyenlőség ellenőrzése<br>(kis-és nagybetűket) | `Level == 8` |
-| =~ | Egyenlőség ellenőrzése<br>(kis-és nagybetűket) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| ! =, <> | Egyenlótlenség ellenőrzése<br>(a mindkét kifejezés azonosak) | `Level != 4` |
+| == | Egyenlőség ellenőrzése<br>(case-sensitive) | `Level == 8` |
+| =~ | Egyenlőség ellenőrzése<br>(case-insensitive) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
+| !=, <> | Egyenlótlenség ellenőrzése<br>(a mindkét kifejezés azonosak) | `Level != 4` |
 | *és*, *vagy* | Szükséges feltételek között| `Level == 16 or CommandLine != ""` |
 
 Szűrés több feltétel alapján, hogy használhatja **és**:
@@ -164,7 +164,7 @@ SecurityEvent
 
 Az előző példában állít elő, ez a kimenet:
 
-![Log Analytics projekt eredmények](media/get-started-queries/project.png)
+![Lekérdezés projekt eredményei](media/get-started-queries/project.png)
 
 Is **projekt** oszlopok átnevezése, illetve újakat megadása. A következő példában projekt tegye a következőket:
 
@@ -236,7 +236,7 @@ Perf
 
 Ahhoz, hogy világosabb kimeneti, választja egy idő-diagramon megjeleníthető a rendelkezésre álló memória megjelenítő idővel:
 
-![Log Analytics memória időbeli alakulása](media/get-started-queries/chart.png)
+![Lekérdezés memória időbeli alakulása](media/get-started-queries/chart.png)
 
 
 

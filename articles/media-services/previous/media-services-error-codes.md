@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: d485195b868b6cbca587c736ac02663491742cdb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d700423ea966cab3b0f546d21d4d2f5ca5208971
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236874"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990513"
 ---
 # <a name="azure-media-services-error-codes"></a>Az Azure Media Services-hibakódok
 A Microsoft Azure Media Services használata esetén a HTTP-hibakódok a szolgáltatástól függően például a hitelesítési tokenek lejár, a Media Services szolgáltatásban nem támogatott műveleteket is megjelenhet. A következő lista **HTTP-hibakódok** , amely által visszaadott Media Services és a lehetséges okok a számukra.  
@@ -56,7 +56,7 @@ A kérelem nem engedélyezett a következő okok egyike miatt:
 
 * A Media Services-fiók nem található, vagy törölve lett.
 * A Media Services-fiók le van tiltva, a kérelemtípus nem HTTP GET. Szolgáltatási műveletek 403-as, valamint választ ad vissza.
-* A hitelesítési jogkivonat nem tartalmazza a felhasználói hitelesítő adatok: AccountName és/vagy előfizetés-azonosító. A Media Services-fiókba az Azure felügyeleti portálon, ezt az információt is található a Media Services felhasználói felületi bővítmény.
+* A hitelesítési jogkivonat nem tartalmazza a felhasználói hitelesítő adatokat: AccountName és/vagy előfizetés-azonosító. A Media Services-fiókba az Azure felügyeleti portálon, ezt az információt is található a Media Services felhasználói felületi bővítmény.
 * Az erőforrás nem érhető el.
   
   * Kísérlet történt egy MediaProcessor, amely nem érhető el a Media Services-fiók használata.

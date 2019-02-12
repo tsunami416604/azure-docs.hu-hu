@@ -1,6 +1,6 @@
 ---
-title: Az Azure Log Analytics-lekérdezéseket a karakterláncokkal való munka |} A Microsoft Docs
-description: Ez a cikk nyújt segítséget az Analytics-portál használatával kell lekérdezéseket írni a Log Analyticsben.
+title: Az Azure Monitor log-lekérdezéseket a karakterláncokkal való munka |} A Microsoft Docs
+description: Ez a cikk egy oktatóanyag az Azure Monitor log analytics az Azure Portalon, lekérdezéséhez és elemezheti a naplófájlok adatait az Azure monitorban.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 24f22d659ccfb6923ad2a038e12454716b2c5445
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: dda7ef2e4e974ea053f030a3ebe71a16872612b0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263883"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993724"
 ---
-# <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>A JSON és használatához adatok struktúrák a Log Analytics-lekérdezések
+# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>JSON és a használata adatok struktúrák az Azure Monitor log-lekérdezések
 
 > [!NOTE]
-> Hajtsa végre [az Analytics-portál – első lépések](get-started-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
+> Hajtsa végre [Ismerkedés az Azure Monitor log-analytics](get-started-portal.md) és [Ismerkedés az Azure Monitor log-lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -131,7 +131,7 @@ print hosts_object
 ![Séma létrehozása](media/json-data-structures/buildschema.png)
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a Log Analytics lekérdezési nyelv segítségével a többi leckék:
+Tekintse meg az Azure Monitor log-lekérdezésekkel más leckék:
 
 - [Karakterlánc-műveletek](string-operations.md)
 - [Dátum és idő műveletek](datetime-operations.md)

@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 3f358be630d9a50d0f048d66c9f79e168c8adcdf
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2d36b10adbe277331eafdf1b68d0f5711508cc05
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230199"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992212"
 ---
-#  <a name="manage-speed-and-concurrency-of-your-encoding"></a>Sebességének és egyidejűségének a kódolás kezelése
+#  <a name="manage-speed-and-concurrency-of-your-encoding-legacy"></a>Kezelheti a sebességének és egyidejűségének a kódolás (örökölt)
 
 Ez a cikk röviden bemutatja, hogyan kezelheti sebességének és egyidejűségének a kódolási feladatok feladatokat biztosít.
 
 ## <a name="overview"></a>Áttekintés
 
-A Media Services szolgáltatásban egy **fenntartott egység típussal** meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő Fenntartott egység típusok közül választhat: **S1**, **S2** vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett. A [kódolási egységek méretezése](media-services-scale-media-processing-overview.md) témakör, amely segítséget nyújt a különböző kódolási sebességű közötti kiválasztásakor döntéseket táblázatát jeleníti meg.
+A Media Services szolgáltatásban egy **fenntartott egység típussal** meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: **S1**, **S2**, vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett. A [kódolási egységek méretezése](media-services-scale-media-processing-overview.md) témakör, amely segítséget nyújt a különböző kódolási sebességű közötti kiválasztásakor döntéseket táblázatát jeleníti meg.
 
 A szolgáltatás számára fenntartott egység típusának meghatározása, mellett is megadhat a fiók kiépítése **szolgáltatás számára fenntartott egységek**. A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát. Például ha a fiókja rendelkezik öt fenntartott egységet, majd öt feldolgozható médiafeladatok fog futni, amíg egy időben, amennyi a feldolgozandó feladatok. A hátralévő feladatok a várólistában várakozik, és feldolgozására egymás után futtatott feladat végeztével lesznek első mértékének. Ha a fiók nem rendelkezik minden üzembe helyezett szolgáltatás számára fenntartott egységeket, majd feladatok fog felvenni, egymás után. Ebben az esetben egy feladat befejeződik, és a következő egy kezdő között a várakozási idő függ az erőforrások rendelkezésre állása a rendszerben.
 

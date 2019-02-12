@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 57c9f9a0b6f3a0502a07ca3124cbe157d8008117
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c9c5ad0af39b698175c4bc7cb7f720452546ec10
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486894"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997066"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Excel-bővítmény az Azure Machine Learning Studio-webszolgáltatások
 Az Excel megkönnyíti a webszolgáltatások közvetlenül kód írása nélkül.
@@ -24,8 +24,8 @@ Az Excel megkönnyíti a webszolgáltatások közvetlenül kód írása nélkül
 
 1. Nyissa meg a [minta Excel-fájl](https://aka.ms/amlexcel-sample-2), amely Excel-bővítmény és a titanic Katasztrófáját az utasok adatait tartalmazza. 
  
-> [!NOTE]
-> Látni fogja a webszolgáltatások listája kapcsolódó a fájl és a lap alján egy jelölőnégyzetet az "Automatikus előrejelzése". Ha engedélyezi az automatikus – előre jelezni az előrejelzések **összes** minden alkalommal, amikor megváltozik a bemeneti adatok az frissíti a szolgáltatásokat. Ha nincs bejelölve, kell kattintson "Az összes előrejelzése" a frissítéshez. Engedélyezésének automatikus – előrejelzésére egy szolgáltatási szint lépjen a 6. lépés:.
+    > [!NOTE]
+    > Látni fogja a webszolgáltatások listája kapcsolódó a fájl és a lap alján egy jelölőnégyzetet az "Automatikus előrejelzése". Ha engedélyezi az automatikus – előre jelezni az előrejelzések **összes** minden alkalommal, amikor megváltozik a bemeneti adatok az frissíti a szolgáltatásokat. Ha nincs bejelölve, kell kattintson "Az összes előrejelzése" a frissítéshez. Engedélyezésének automatikus – előrejelzésére egy szolgáltatási szint lépjen a 6. lépés:.
 
 2. Válassza ki a web service rákattintva – "Titanic túlélő előjelző (Excel-bővítményben minta) [Pontszám]" Ebben a példában.
    
@@ -37,7 +37,7 @@ Az Excel megkönnyíti a webszolgáltatások közvetlenül kód írása nélkül
    
     ![A szakasz előrejelzése][02]
 
-Webszolgáltatás üzembe helyezése, vagy egy meglévő webes szolgáltatás használatához. A web Service szolgáltatásának telepítése További információkért lásd: [útmutató 5. lépés: Az Azure Machine Learning Web service telepítése](walkthrough-5-publish-web-service.md).
+Webszolgáltatás üzembe helyezése, vagy egy meglévő webes szolgáltatás használatához. A web Service szolgáltatásának telepítése További információkért lásd: [oktatóanyag 3: Kredit kockázati modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md).
 
 A webszolgáltatás API-kulcs beszerzése. Hajt végre, ha ez a művelet attól függ, egy új Machine Learning webszolgáltatás klasszikus Machine Learning webszolgáltatás közzététele e.
 
@@ -65,7 +65,7 @@ A webszolgáltatás API-kulcs beszerzése. Hajt végre, ha ez a művelet attól 
 
 ## <a name="steps-to-add-a-new-web-service"></a>Új webes szolgáltatás hozzáadásának lépéseit
 
-1. Webszolgáltatás üzembe helyezése, vagy egy meglévő webes szolgáltatás használatához. A web Service szolgáltatásának telepítése További információkért lásd: [útmutató 5. lépés: Az Azure Machine Learning Web service telepítése](walkthrough-5-publish-web-service.md).
+1. Webszolgáltatás üzembe helyezése, vagy egy meglévő webes szolgáltatás használatához. A web Service szolgáltatásának telepítése További információkért lásd: [oktatóanyag 3: Kredit kockázati modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md).
 2. Kattintson a **felhasználása**.
 3. Keresse meg a **alapvető fogyasztási adatai** szakaszban. Másolja ki és mentse a **elsődleges kulcs** és a **kérés-válasz** URL-CÍMÉT.
 4. Az Excelben, nyissa meg a **webszolgáltatások** szakaszban (Ha a **Predict** területén kattintson a vissza nyílra, hogy nyissa meg a webes szolgáltatások listája).

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: ecfcfd5026f310a617f81af42483c29d89385288
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8966eb337af07b90e7d9c697a4bfd14c543540aa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700723"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991361"
 ---
 # <a name="understand-role-definitions"></a>A szerepkör-definíciók ismertetése
 
@@ -147,7 +147,7 @@ Storage-blobadatok közreműködője (minta)
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-Mivel Alice szerepel egy helyettesítő karakter (`*`) műveletet egy előfizetési hatókörben, saját engedélyek öröklése le engedélyezéséhez számára a kezelési műveletek végrehajtásához. Alice nem végezhetnek adatműveleteket. Például alapértelmezés szerint Ágnes nem tudja olvasni a blobokat a tárolókon belül, de ő olvasási, írási és törölheti a tárolókat.
+Mivel Alice szerepel egy helyettesítő karakter (`*`) műveletet egy előfizetési hatókörben, saját engedélyek öröklése le engedélyezéséhez számára a kezelési műveletek végrehajtásához. Alice olvasási, írási és törölheti a tárolókat. Azonban az Ágnes nem tudja végrehajtani az Adatműveletek anélkül, hogy további lépéseket. Például alapértelmezés szerint Ágnes nem tudja olvasni a blobok tárolóban. Olvassa el a blobokat, hogy Ágnes kellene a tárelérési kulcsok lekéréséhez, és ezek segítségével érheti el a blobokat.
 
 Bob engedélyek korlátozódnak csupán a `Actions` és `DataActions` megadott a [Storage-Blobadatok Közreműködője (előzetes verzió)](built-in-roles.md#storage-blob-data-contributor-preview) szerepkör. A szerepkör alapján, Bob végrehajthat felügyeleti és az üzemeltetés is. Például Bálint olvasási, írási és törölheti a tárolókat a megadott tárfiók, és ő is olvasási, írási, és a blobok törlése.
 

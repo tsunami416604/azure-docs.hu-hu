@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés a Log Analytics használatával az Azure Portalon |} A Microsoft Docs
+title: Az Azure Monitor log analytics használatának első lépései |} A Microsoft Docs
 description: Ez a cikk egy oktatóanyag, a Log Analytics szolgáltatást az Azure Portalon kell lekérdezéseket írni.
 services: log-analytics
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 6ed8906066d66b6e16ec482a53137f9ca70ae9c7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b9a5c78ff9d6c1e2c7194f5b92511e94dfafb058
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000052"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990496"
 ---
-# <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Ismerkedés a Log Analytics használatával az Azure Portalon
+# <a name="get-started-with-azure-monitor-log-analytics"></a>Az Azure Monitor log analytics használatának első lépései
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ebben az oktatóanyagban megtudhatja hogyan Log Analytics-lekérdezések a Log Analytics lapot (jelenleg előzetes verzióban érhető el) az Azure portal használatával. Mely arról szól, hogyan való:
+Ebben az oktatóanyagban megismerheti, hogyan Azure Monitor log analytics használatához az Azure Portalon az Azure Monitor log-lekérdezések írása lesz. Mely arról szól, hogyan való:
 
 - Egyszerű lekérdezéseket írni
 - A séma az adatok megismerése
@@ -35,8 +35,8 @@ Ebben az oktatóanyagban megtudhatja hogyan Log Analytics-lekérdezések a Log A
 - Exportálás és lekérdezések megosztása
 
 
-## <a name="meet-the-log-analytics-page"></a>Felel meg a Log Analytics-lap 
-A Log Analytics-lap egy olyan webes eszköz, írható és az Azure Log Analytics-lekérdezések végrehajtására. Nyissa meg a kiválasztásával **naplók (előzetes verzió)** a Log Analytics menüben. Egy új üres lekérdezés kezdődik.
+## <a name="meet-log-analytics"></a>A log analytics felel meg
+A log analytics egy webes eszköz írása, és hajtsa végre az Azure Monitor log-lekérdezéseket a. Nyissa meg a kiválasztásával **naplók** az Azure figyelő menü. Egy új üres lekérdezés kezdődik.
 
 ![Kezdőlap](media/get-started-portal/homepage.png)
 
@@ -64,7 +64,7 @@ Ebben a példában **keresési** hatókörét a _esemény_ table és az adott t�
 ## <a name="running-a-query"></a>A lekérdezés futtatása
 A lekérdezés futtatásához kattintson a **futtatása** gombra vagy nyomja le **Shift + Enter**. Vegye figyelembe a következő adatokat, amelyek meghatározzák a kódot, amely akkor fut, és a visszaadott adatok:
 
-- Sortöréssel: egyetlen szünet lehetővé teszi a világosabb lekérdezést. Több sortörést külön azt fel.
+- Sortörések: Egyetlen szünet lehetővé teszi, hogy világosabb a lekérdezést. Több sortörést külön azt fel.
 - A kurzor: Vigye a kurzort a lekérdezés végrehajtásához, belül valahol. Az aktuális lekérdezési kódot kell, amíg nem talál egy üres sort minősül.
 - Időtartomány - egy időtartománya _elmúlt 24 órában_ alapértelmezés szerint van beállítva. Egy másik tartományt használ, használja a időválasztó, vagy adjon hozzá egy kifejezett idő dátumtartomány-szűrőt ad a lekérdezéshez.
 
@@ -83,10 +83,10 @@ Első lépésként előkészítés véglegesítése a _esemény_ tábla.
 Event
 ```
 
-A Log Analytics lap automatikusan hatókörök eredményeket szerint:
+Automatikusan log analytics által eredmények hatókörök:
 
-- Időtartomány: alapértelmezés szerint a lekérdezések korlátozva az utolsó 24 óra.
-- Az eredmények száma: eredmények korlátozva, legfeljebb 10 000 rekord.
+- Időtartomány:  Alapértelmezés szerint lekérdezések pedig csak az utolsó 24 óra.
+- Az eredmények száma: Eredmények korlátozva, legfeljebb 10 000 rekordot.
 
 Ez a lekérdezés nagyon általános, és hasznos lehet a túl sok eredményt adja vissza. A táblázat elemei, vagy explicit módon hozzá egy szűrőt a lekérdezés az eredményeket szűrheti. Szűrés eredményei a táblázat elemei keresztül vonatkozik a meglévő eredményhalmaz, amíg magát a lekérdezést egy szűrőt egy új szűrt eredmények állítsa be, és ezért sikerült előállítani a pontosabb eredmények adja vissza.
 
@@ -121,7 +121,7 @@ Eredmények táblázatában gyakran sok oszlopot tartalmaz. Előfordulhat, hogy 
 
 
 ## <a name="select-a-time-range"></a>Időtartomány megadása
-Alapértelmezés szerint a Log Analytics lap vonatkozik a _elmúlt 24 órában_ időtartomány. Egy másik tartományt használja, válasszon ki egy másik értéket a időválasztó keresztül, és kattintson a **futtatása**. Az előre definiált értékek mellett használhatja a _egyéni időtartomány_ választhatja a lekérdezés egy abszolút címtartományt.
+Alapértelmezés szerint a log analytics alkalmazza a _elmúlt 24 órában_ időtartomány. Egy másik tartományt használja, válasszon ki egy másik értéket a időválasztó keresztül, és kattintson a **futtatása**. Az előre definiált értékek mellett használhatja a _egyéni időtartomány_ választhatja a lekérdezés egy abszolút címtartományt.
 
 ![Időpontválasztó](media/get-started-portal/time-picker.png)
 
@@ -142,7 +142,7 @@ Event
 
 Alapértelmezés szerint egy táblázatban eredmények jelennek meg. Kattintson a _diagram_ kattintva megjelenítjük az eredményeket egy grafikus nézetben:
 
-![Sávdiagram](media/get-started-portal/bar-chart.png)
+![Oszlopdiagram](media/get-started-portal/bar-chart.png)
 
 Az eredményeket egy halmozott sávdiagram látható. Kattintson a _-ig halmozott oszlop_ válassza _torta_ az eredményeket egy másik nézetének megjelenítése:
 
@@ -164,9 +164,9 @@ A diagram vagy a táblát az egyik a megosztott Azure-irányítópultok rögzít
 
 Bizonyos egyszerűbb lépnek érvénybe a diagram rögzítése az irányítópultra:
 
-- Tábla oszlopainak és sorainak: ahhoz, hogy az Irányítópulton egy táblázat rögzítéséhez, négy vagy kevesebb oszlopot kell rendelkeznie. Csak a felső hét sorok jelennek meg.
-- Korlátozás ideje: lekérdezések korlátozódnak automatikusan az elmúlt 14 napban.
-- Bin száma korlátozás: diszkrét bins rengeteg rendelkező diagram megjelenítése, ha kevesebb feltöltött bins automatikusan csoportosítva egyetlen _mások_ bin.
+- Tábla oszlopainak és sorainak: Annak érdekében, hogy az Irányítópulton egy táblázat rögzítéséhez, négy vagy kevesebb oszlopot kell rendelkeznie. Csak a felső hét sorok jelennek meg.
+- Korlátozása: Lekérdezések pedig automatikusan csak az elmúlt 14 napban.
+- Doboz száma korlátozás: Egy diagram, amely különálló bins sok jeleníti meg, ha kevesebb feltöltött bins automatikusan csoportosítva egyetlen _mások_ bin.
 
 ## <a name="save-queries"></a>Lekérdezések mentése
 Miután létrehozott egy hasznos lekérdezés, érdemes menti vagy megosztja másokkal. A **mentése** ikonra a felső sávon található van.
@@ -175,7 +175,7 @@ Mentheti a teljes lapja, vagy egyetlen lekérdezés továbbítása. Functions ol
 
 ![Függvény mentése](media/get-started-portal/save-function.png)
 
-Log Analytics-lekérdezések mindig egy kijelölt munkaterületen menti, és a munkaterület más felhasználókkal megosztott.
+Log analytics-lekérdezések mindig egy kijelölt munkaterületen menti, és a munkaterület más felhasználókkal megosztott.
 
 ## <a name="load-queries"></a>Lekérdezések betöltése
 A lekérdezéskezelő ikonra a jobb felső területen van. Ez felsorolja az összes mentett lekérdezések kategória szerint. Lehetővé teszi kedvencként adott lekérdezések gyorsan megtalálhatja azokat a jövőben. Kattintson duplán egy korábban mentett lekérdezés az aktuális ablakban történő hozzáadáshoz.
@@ -183,12 +183,12 @@ A lekérdezéskezelő ikonra a jobb felső területen van. Ez felsorolja az öss
 ![Lekérdezéskezelő](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Exportálási és megosztási hivatkozásként
-A Log Analytics lapot több exportáló módszereket támogatja:
+A log analytics több módszert is exportáló támogatja:
 
 - Excel: Az eredmények mentése CSV-fájlként.
-- A Power bi-ban: Exportálhatja az eredményeket a power bi-ban. Lásd: [importálása az Azure Log Analytics-adatok Power BI-bA](../../azure-monitor/platform/powerbi.md) részleteiről.
-- Hivatkozás megosztása: magát a lekérdezést, egy hivatkozás, amely majd küldhető és más, ugyanahhoz a munkaterülethez hozzáféréssel rendelkező felhasználók által végrehajtott megoszthatók.
+- Power BI: Exportálhatja az eredményeket a power bi-ban. Lásd: [importálása az Azure Monitor log-adatok Power BI-bA](../../azure-monitor/platform/powerbi.md) részleteiről.
+- Hivatkozás megosztása: Magát a lekérdezést, amely majd küldhető és más, ugyanahhoz a munkaterülethez hozzáféréssel rendelkező felhasználók által végrehajtott hivatkozásként is megoszthatók.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [Log Analytics-lekérdezések írása](get-started-queries.md).
+- Tudjon meg többet [Azure Monitor log-lekérdezések írása](get-started-queries.md).

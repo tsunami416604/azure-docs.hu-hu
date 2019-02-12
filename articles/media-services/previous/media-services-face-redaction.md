@@ -4,23 +4,23 @@ description: Ez a témakör bemutatja, hogyan szereplők az Azure media analytic
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/09/2019
 ms.author: juliako;
-ms.openlocfilehash: 910cc246aa19e19b109fc660682c6b2dc239cbb7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 7fa1bec1b6f83b18684f6139bf6ac8db1ae9daec
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "33789382"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004893"
 ---
-# <a name="redact-faces-with-azure-media-analytics"></a>Az Azure Media Analytics arcok szereplők
+# <a name="redact-faces-with-azure-media-analytics-legacy"></a>Kivonás arcokat, az Azure Media Analytics (örökölt)
 ## <a name="overview"></a>Áttekintés
 **Az Azure Media Redactor** van egy [Azure Media Analytics](media-services-analytics-overview.md) médiafeldolgozót. (pont) által kínált méretezhető arcszerkesztés a felhőben. Arcszerkesztés lehetővé teszi, hogy a videó módosíthatja annak érdekében, hogy arcának elmossa. Előfordulhat, hogy szeretné használni a face kivonási szolgáltatás közbiztonsági megfontolásokból és sajtóbeli híradásoknál. Néhány perc alatt több arcokat tartalmazó képanyag manuálisan szereplők órát is igénybe vehet, de ezzel a szolgáltatással a face kivonási folyamat néhány egyszerű lépéssel van szükség. További információkért lásd: [ez](https://azure.microsoft.com/blog/azure-media-redactor/) blog.
 
@@ -135,7 +135,7 @@ Példa foo_IDList.txt
 
 ## <a name="blur-types"></a>Elmossa típusok
 
-Az a **kombinált** vagy **Redact** üzemmódban, 5 különböző életlenítés módban közül választhat a bemeneti JSON-konfigurációs keresztül: **alacsony**, **Med**, **Magas**, **Box**, és **fekete**. Alapértelmezés szerint **Med** szolgál.
+Az a **kombinált** vagy **Redact** üzemmódban, 5 különböző életlenítés módban közül választhat a bemeneti JSON-konfigurációs keresztül: **Alacsony**, **Med**, **magas**, **Box**, és **fekete**. Alapértelmezés szerint **Med** szolgál.
 
 Megtalálhatja a életlenítés típusú mintákat.
 

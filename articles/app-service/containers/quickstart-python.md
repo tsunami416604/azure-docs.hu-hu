@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/23/2019
+ms.date: 02/08/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: be78c91a4fb5c1e79e7b58620f65c9f17bfb4bae
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 14678ed789b611c0226d98fe11b3c9bacb993208
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226485"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991480"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Egy Python-alkalmazás létrehozása az Azure App Service Linux (előzetes verzió)
 
@@ -39,7 +39,7 @@ A gyorsútmutató elvégzéséhez:
 * <a href="https://www.python.org/downloads/" target="_blank">A Python 3.7 telepítése</a>
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
 
-## <a name="download-the-sample"></a>A minta letöltése
+## <a name="download-the-sample-locally"></a>Minta helyi letöltése
 
 Futtassa a következő parancsokat egy terminálablakban. Ezzel klónozza a mintaalkalmazást a helyi gépre, és a mintakódot tartalmazó könyvtárba lép.
 
@@ -79,49 +79,80 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
+## <a name="download-the-sample"></a>A minta letöltése
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
+A Cloud Shellben hozzon létre egy quickstart könyvtárat, és lépjen a könyvtárba.
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
+```bash
+mkdir quickstart
+
+cd quickstart
+```
+
+Ezután futtassa a következő parancsot a mintaalkalmazás-adattár a quickstart könyvtárba való klónozásához.
+
+```bash
+git clone https://github.com/Azure-Samples/python-docs-hello-world
+```
+
+Futtatás közben a parancs a következő példához hasonló információkat jelenít meg:
+
+```bash
+Cloning into 'python-docs-hello-world'...
+remote: Enumerating objects: 43, done.
+remote: Total 43 (delta 0), reused 0 (delta 0), pack-reused 43
+Unpacking objects: 100% (43/43), done.
+Checking connectivity... done.
+```
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
+Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot.
 
-Keresse meg a helyen szeretné megtekinteni a beépített rendszerképpel rendelkező újonnan létrehozott alkalmazást. Cserélje le  _&lt;alkalmazásnév >_ az alkalmazás nevére.
+A következő példában az <app_name> helyett adjon meg egy egyedi alkalmazásnevet.
 
 ```bash
-http://<app_name>.azurewebsites.net
+cd python-docs-hello-world
+
+az webapp up -n <app_name>
 ```
 
-Íme, mi az új alkalmazás hasonlóan kell kinéznie:
+A parancs futtatása eltarthat néhány percig. Futtatás közben a parancs a következő példához hasonló információkat jelenít meg:
 
-![Üres alkalmazás lap](media/quickstart-php/app-service-web-service-created.png)
+```json
+The behavior of this command has been altered by the following extension: webapp
+Creating Resource group 'appsvc_rg_Linux_CentralUS' ...
+Resource group creation complete
+Creating App service plan 'appsvc_asp_Linux_CentralUS' ...
+App service plan creation complete
+Creating app '<app_name>' ....
+Webapp creation complete
+Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
+Preparing to deploy contents to app.
+All done.
+{
+  "app_url": "https:/<app_name>.azurewebsites.net",
+  "location": "Central US",
+  "name": "<app_name>",
+  "os": "Linux",
+  "resourcegroup": "appsvc_rg_Linux_CentralUS ",
+  "serverfarm": "appsvc_asp_Linux_CentralUS",
+  "sku": "BASIC",
+  "src_path": "/home/username/quickstart/python-docs-hello-world ",
+  "version_detected": "-",
+  "version_to_create": "python|3.7"
+}
+```
 
-[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
+Az `az webapp up` parancs a következő műveleteket hajtja végre:
 
-```bash
-Counting objects: 42, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (39/39), done.
-Writing objects: 100% (42/42), 9.43 KiB | 0 bytes/s, done.
-Total 42 (delta 15), reused 0 (delta 0)
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'c40efbb40e'.
-remote: Generating deployment script.
-remote: Generating deployment script for python Web Site
-.
-.
-.
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
-To https://user2234@cephalin-python.scm.azurewebsites.net/cephalin-python.git
- * [new branch]      master -> master
- ```
+- Egy alapértelmezett erőforráscsoport létrehozása.
+
+- Egy alapértelmezett App Service-csomag létrehozása.
+
+- Egy alkalmazás létrehozása a megadott néven.
+
+- [Zip üzembe helyezése](https://docs.microsoft.com/azure/app-service/deploy-zip) fájlok az alkalmazás az aktuális munkakönyvtár.
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
@@ -139,17 +170,22 @@ A Python-mintakód fut az App Service Linux rendszeren egy beépített rendszerk
 
 ## <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
 
-A helyi adattárban nyissa meg az `application.py` fájlt, majd módosítsa annak szövegét az utolsó sorban:
+Írja be a Cloud shellben `code application.py` a Cloud Shell-szerkesztő megnyitásához.
+
+![Kód application.py](media/quickstart-python/code-applicationpy.png)
+
+ Végezzen el egy kis módosítást a `return` hívásának szövegében:
 
 ```python
 return "Hello Azure!"
 ```
 
-Mentse a módosításokat a Gitben, majd továbbítsa a kód módosításait az Azure-ba.
+Mentse a módosításokat, és zárja be a szerkesztőt. A mentéshez a `^S`, a kilépéshez a `^Q` parancsot használja.
+
+Most újra üzembe helyezzük az alkalmazást. A helyettesítő `<app_name>` az alkalmazással.
 
 ```bash
-git commit -am "updated output"
-git push azure master
+az webapp up -n <app_name>
 ```
 
 Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás megkeresése tallózással** lépésben megnyitott böngészőablakra, és frissítse az oldalt.

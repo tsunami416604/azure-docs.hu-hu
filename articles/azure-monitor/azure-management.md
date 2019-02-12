@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: 29daa447be051af3df86ba9211bc2e4871d8c71e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e0ad6b212e328612d2934562e1292b5c36546478
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965105"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990263"
 ---
 # <a name="azure-management---monitoring"></a>Az Azure felügyelete – Monitorozás
 
@@ -52,13 +52,3 @@ A védelem annak garantálását jelenti, hogy az alkalmazások és adatok mindi
 ## <a name="migrate"></a>Migrate (Áttelepítés) 
 A migrálás a helyszíni gépen futó számítási feladatok átvitelét jelenti az Azure-fehőbe.  Az [Azure Migrate](../migrate/migrate-overview.md) szolgáltatás segít felmérni, hogy a helyszíni virtuális gépek mennyire alkalmasak az Azure-felhőbe való migrálásra, és erről teljesítményalapú méretezési és költségbecsléseket is készít.  Az Azure Site Recovery segít a [helyszíni](../site-recovery/migrate-tutorial-on-premises-azure.md) virtuális gépek vagy az [Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) virtuális gépeinek tényleges migrálásában.  Az [Azure Database Migration](../dms/dms-overview.md) több adatbázis-erőforrás migrálását teszi lehetővé Azure-adatplatformokra.
 
-
-## <a name="operations-management-suite"></a>Operations Management Suite
-Az Azure felügyeleti szolgáltatásaival kapcsolatos korábbi technikai dokumentáció részét képezte az Operations Management Suite (OMS), amely a következő Azure felügyeleti szolgáltatások csomagja:
-
-- Azure Automation
-- Azure Backup
-- Log Analytics
-- Site Recovery
-
-A jelen technikai dokumentációban nem foglalkozunk külön ezzel a csomaggal, mivel az Azure-beli teljes körű felügyelet már további szolgáltatásokkal is bővült. Az OMS-ben továbbra is a fenti szolgáltatások találhatóak meg, amelyeknek jelentős szerepük van az Azure-alkalmazások és -erőforrások kezelésében. Önnek azonban elég a szükséges felügyeleti feladatokra és a feladatok során együtt használható Azure-szolgáltatásokra összpontosítania.

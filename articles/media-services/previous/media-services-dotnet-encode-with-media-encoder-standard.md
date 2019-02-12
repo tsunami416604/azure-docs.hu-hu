@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/09/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: e557b7220077be7fcca418f0c2cf8aceeace1eb5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d2d910c5f031329e952f4892431877ec690c2a5a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809581"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991192"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Adategység kódolása a Media Encoder Standard .NET használatával 
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Adategység kódolása a Media Encoder Standard .NET használatával  
+
 A kódolási feladat a Media Services egyik leggyakrabban használt művelete. A kódolási feladat a médiafájlokat alakítja át egy meghatározott kódolásból egy másikra. Kódolás, ha a Media Services beépített Media Encoder is használhatja. Egy Media Services; partner által biztosított kódoló is használhatja külső kódolókkal az Azure Marketplace-en keresztül érhetők el. 
 
 Ez a cikk bemutatja, hogyan a kódolásához, a Media Encoder Standard (MES) állnak a .NET használatával. Media Encoder Standard használatával lett konfigurálva a kódolók készletek egyikét leírt [Itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).

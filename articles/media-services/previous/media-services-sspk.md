@@ -4,7 +4,7 @@ description: További tudnivalók a Microsoft® Smooth Streaming Client portolá
 services: media-services
 documentationcenter: ''
 author: xpouyat
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e3b488e7-8428-4c10-a072-eb3af46c82ad
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 02/08/2019
 ms.author: xpouyat
-ms.openlocfilehash: 71cb4ff7c5948067dfb039caf69241cfa9e22408
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1954ccf07badbd4632c653bb1af4d6e96153e1fb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243896"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000073"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencelési Microsoft® Smooth Streaming Ügyfélportolási készlet
+# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencelési Microsoft® Smooth Streaming Ügyfélportolási készlet 
 ## <a name="overview"></a>Áttekintés
 A Microsoft Smooth Streaming Client portolása Kit (**SSPK** röviden) Smooth Streaming client megvalósítása érdekében a beágyazott eszközgyártók, kábelek és mobilszolgáltatók, tartalom szolgáltatók, kézibeszélő optimalizált gyártó, független szoftverszállítók (ISV-k) és szolgáltatást nyújtó vállalkozásoknak hozhat létre, termékeket és szolgáltatásokat a Smooth Streaming formátumban adaptív tartalmak online lejátszásához. SSPK egy eszköz és a Smooth Streaming-ügyfél, amely a hasznosító minden eszköz és platform szerint is tartalomfájlokat platformfüggetlen megvalósítását. 
 
@@ -80,27 +80,27 @@ Ideiglenes és végső SSPK licenctulajdonosok esetében technikai kérdéseket 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>A Microsoft Smooth Streaming Client ideiglenes termék szerződés licenctulajdonosok esetében
 * Adroit üzleti megoldások, Inc
 * Fejlett digitális adás SA
-* AirTies Kablosuz Iletism Sanayive lemez Ticaret A.S.
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
 * Albis technológiák Kft.
 * Alticast Corporation
-* Amazon digitális szolgáltatások, Inc.
+* Amazon Digital Services, Inc.
 * Arion technológia, Inc.
-* AVC multimédiás szoftver Co., Ltd.
+* AVC Multimedia Software Co., Ltd.
 * Cavium, Inc.
 * EchoStar megvásárlásával Corporation
 * Enseo, Inc.
-* Dél-amerikai Fluendo
+* Fluendo S.A.
 * HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
-* Dél-amerikai iWEDIA 
+* iWEDIA S.A. 
 * Liberty globális szolgáltatások BV
 * MediaTek Inc.
-* MStar Co, Ltd.
+* MStar Co, Ltd
 * Nintendo Co., Ltd.
 * OpenTV, Inc.
 * Sáfrány digitális korlátozott
-* Szecsuan Changhong Electric Co., Ltd.
+* Sichuan Changhong Electric Co., Ltd
 * SoftAtHome
 * Sony Corporation
 * Tatung technológia Inc.
@@ -112,10 +112,10 @@ Ideiglenes és végső SSPK licenctulajdonosok esetében technikai kérdéseket 
 
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>A Microsoft Smooth Streaming Client végtermékben szerződés licenctulajdonosok esetében
 * Fejlett digitális adás SA
-* AirTies Kablosuz Iletism Sanayive lemez Ticaret A.S.
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
 * Albis technológiák Kft.
-* Amazon digitális szolgáltatások, Inc.
-* AmTRAN technológia Co., Ltd.
+* Amazon Digital Services, Inc.
+* AmTRAN Technology Co., Ltd.
 * Arcadyan technológiai vállalat
 * Arion technológia, Inc.
 * ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
@@ -126,12 +126,12 @@ Ideiglenes és végső SSPK licenctulajdonosok esetében technikai kérdéseket 
 * EchoStar megvásárlásával Corporation
 * Enseo, Inc.
 * Filmflex filmek korlátozott
-* Dél-amerikai Fluendo
+* Fluendo S.A.
 * Gibson Innovációkat korlátozott
 * Haier információk Applicantion S.R.L
 * HANDAN BroadInfoCom Co., Ltd.
-* Hisense nemzetközi Co., Ltd. 
-* Homecast Co., Ltd.
+* Hisense International Co., Ltd. 
+* Homecast Co., Ltd
 * HON Hai pontosság Industry Co., Ltd.
 * Infomir GMBH
 * Kaonmedia Co., Ltd.
@@ -139,14 +139,14 @@ Ideiglenes és végső SSPK licenctulajdonosok esetében technikai kérdéseket 
 * Nintendo Co., Ltd.
 * Narancssárga SA
 * Sáfrány digitális korlátozott
-* Sagemcom szélessávú SAS
-* Shenzhen Coship Electronics CO., Ltd.
-* Shenzhen Jiuzhou Electric Co., Ltd.
-* Shenzhen Skyworth digitális technológia Co., Ltd.
+* Sagemcom Broadband SAS
+* Shenzhen Coship Electronics CO., LTD
+* Shenzhen Jiuzhou Electric Co., Ltd
+* Shenzhen Skyworth Digital Technology Co., Ltd
 * Szecsuan Changhong Electric Co., Ltd.
 * Skardin ipari Corp.
 * Sky Deutschland Fernsehen GmbH & Co. KG
-* Dél-amerikai SmarDTV
+* SmarDTV S.A.
 * SoftAtHome
 * Sony Corporation
 * Korlátozott TCL tengerentúli Marketing (tengeri a kereskedelmi Makaó KKT)

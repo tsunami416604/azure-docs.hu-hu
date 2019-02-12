@@ -1,6 +1,6 @@
 ---
-title: Önálló vagy készletezett Azure SQL Database-adatbázis védelme |} A Microsoft Docs
-description: Ismerje meg a módszerek és szolgáltatások biztonságos önálló vagy készletezett Azure SQL Database-adatbázishoz.
+title: Az Azure SQL Database önálló vagy készletezett adatbázis védelme |} A Microsoft Docs
+description: Ismerje meg a módszerek és szolgáltatások biztonságossá egy önálló vagy készletezett adatbázis az Azure SQL Database-ben.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,17 +9,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 2ea87b36d8b489abf59ac4550121369a2ddf540f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: b9141fcef8bda181cd7b679f58d22d4ba2895b14
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752517"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004581"
 ---
-# <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Oktatóanyag: Önálló vagy készletezett adatbázis biztonságossá tétele
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>Oktatóanyag: Egyetlen vagy készletezett adatbázis védelme
 
-Az Azure SQL Database önálló vagy készletezett adatbázis adatait azáltal, hogy védelemmel látja el:
+Az Azure SQL Database egy önálló vagy készletezett adatbázis adatait azáltal, hogy védelemmel látja el:
 
 - Hozzáférés korlátozása tűzfalszabályok használatával
 - Identitást igénylő hitelesítési mechanizmusok használata

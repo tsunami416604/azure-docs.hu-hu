@@ -9,12 +9,12 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: fe7d3956c1a5ead55acd8605086668e20e85e1d2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 22cfdd22a8d2adacb5a5a5c817a628fe2c072755
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496074"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001697"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Hogyan készülhet fel a modell üzembe helyezése az Azure Machine Learning Studióban
 
@@ -22,7 +22,7 @@ Az Azure Machine Learning Studio prediktív elemzési modellek fejlesztése majd
 
 Ehhez a kísérlet létrehozásának - nevű használhatja Studio egy *betanítási kísérlet* –, amelyen a vonat, pontszám, és szerkesztheti a modell. Ha elégedett, Felkészülés a modell üzembe helyezéséhez a betanítási kísérlet átalakítása egy *prediktív kísérletté* pontszám felhasználói adatok megfelelően van konfigurálva.
 
-Ez a folyamat egy példa látható [forgatókönyv: Az Azure Machine Learning hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md).
+Ez a folyamat egy példa látható [ 1. oktatóanyag: Hitelkockázat előrejelzése](tutorial-part1-credit-risk.md).
 
 Ez a cikk részletes hogyan alakulnak át betanítási kísérlet be egy prediktív kísérletet, és a prediktív kísérletté telepítési módját mélyreható vesz igénybe. Megismerésével ezeket az adatokat, ismerje meg az üzembe helyezett modell hatékonyabbá tétele konfigurálása.
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Log Analytics-lekérdezéseket a karakterláncokkal való munka |} A Microsoft Docs
-description: Ez a cikk nyújt segítséget az Analytics-portál használatával kell lekérdezéseket írni a Log Analyticsben.
+title: Munka karakterláncokkal az Azure Monitor log-lekérdezések |} A Microsoft Docs
+description: Ismerteti, hogyan szerkesztése, összehasonlítani, a Keresés és számos más művelet a karakterláncok végrehajtása az Azure Monitor log-lekérdezésekben.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 729d98dda1ae0a1410a15ee1e40c670ca211d864
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9748cd2c37775a47eb630797dd09981c38f8f7e1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186242"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995407"
 ---
-# <a name="working-with-strings-in-log-analytics-queries"></a>Log Analytics-lekérdezéseket a karakterláncokkal való munka
+# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Munka karakterláncokkal az Azure Monitor log-lekérdezések
 
 
 > [!NOTE]
-> Hajtsa végre [az Analytics-portál – első lépések](get-started-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) Ez az oktatóanyag elvégzése előtt.
+> Hajtsa végre [Ismerkedés az Azure Monitor log-analytics](get-started-portal.md) és [Ismerkedés az Azure Monitor log-lekérdezések](get-started-queries.md) Ez az oktatóanyag elvégzése előtt.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ez a cikk bemutatja, hogyan szerkesztheti, összehasonlítása, a Keresés és számos egyéb karakterláncokat a művelet végrehajtása. 
+Ez a cikk bemutatja, hogyan szerkesztheti, összehasonlítása, a Keresés és számos egyéb karakterláncokat a művelet végrehajtása.
 
 Egy karakterláncban szereplő karakterek egyenként indexszáma, a helye szerint. Az első karakter 0. indexnél, a következő karakter 1, és így egy. Különböző karakterlánc-függvények indexszámok használja, az alábbiakban látható módon. Az alábbi példák közül használ a **nyomtatása** karakterlánc adatkezelési bemutatása egy adott adatforrás használata nélkül parancsot.
 
@@ -49,7 +49,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>A karakterlánc-összehasonlítások
 
-Művelet       |Leírás                         |Kis-és nagybetűket|Példa (poskytne `true`)
+Művelet       |Leírás                         |Case-Sensitive|Példa (poskytne `true`)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Egyenlő                              |Igen           |`"aBc" == "aBc"`
 `!=`           |Nem egyenlő                          |Igen           |`"abc" != "ABC"`

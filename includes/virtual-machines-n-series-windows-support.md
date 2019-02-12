@@ -5,19 +5,19 @@ services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 11/27/2018
+ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0276ccdec19e130da59cd215769d2ea17273f1c2
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5fb92c95463a5c1766b543dfc7b08a49250beda7
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54084038"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56078564"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
-### <a name="nvidia-tesla-cuda-drivers"></a>Az NVIDIA Tesla (CUDA) illesztőprogramok
+### <a name="nvidia-tesla-cuda-drivers"></a>NVIDIA Tesla (CUDA) drivers
 
 Az NVIDIA Tesla (CUDA) illesztőprogramjait NC, NCv2, az NCv3, ND és NDv2-sorozat virtuális gépei (NV-sorozat nem kötelező) csak az alábbi táblázatban felsorolt operációs rendszerek támogatottak. Illesztőprogram letöltési hivatkozásai a rendszer az aktuális időpontjában aktuálisak. A legújabb illesztőprogramokért látogasson el az [NVIDIA](http://www.nvidia.com/) webhelyére.
 
@@ -36,5 +36,5 @@ A Microsoft újraterjeszti az NVIDIA GRID illesztőprogramok telepítők NV és 
 
 | Operációs rendszer | Illesztőprogram |
 | -------- |------------- |
-| Windows Server 2016<br/><br/>Windows 10 rendszerű (akár 1803 verzió) | [RÁCS (411.81) 7](https://go.microsoft.com/fwlink/?linkid=874181) (.exe) |
-| Windows Server 2012 R2 | [RÁCS (411.81) 7](https://go.microsoft.com/fwlink/?linkid=874184) (.exe)  |
+| Windows Server 2016<br/><br/>Windows 10 rendszerű (akár 1803 verzió) | [GRID 7.1 (412.16)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe) |
+| Windows Server 2012 R2 | [GRID 7.1 (412.16)](https://go.microsoft.com/fwlink/?linkid=874184) (.exe)  |

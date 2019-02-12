@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 065845bb2abd02f02fe2050780bc0613cbd2f12c
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 4b5196a995576e5b00a988e14183eb720d5b2eae
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036002"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989860"
 ---
-# <a name="widevine-license-template-overview"></a>Widevine-licencsablon áttekintése
+# <a name="widevine-license-template-overview"></a>Widevine-licencsablon áttekintése 
 Az Azure Media Services segítségével a konfigurálása és a Google Widevine-licenceket kérnek. Ha Widevine-védelemmel ellátott tartalom lejátszása a Media player próbál, egy kérelem érkezik a szolgáltatásra vonatkozó licencet beszereznie. A szolgáltatás jóváhagyja a kérést, ha a szolgáltatásproblémák a licencet. Ez van az ügyfélnek küldött, és a megadott tartalom lejátszása és visszafejtésére szolgál.
 
 A Widevine-licenc kérelem egy JSON-ként van formázva.  
@@ -59,12 +59,12 @@ A Widevine-licenc kérelem egy JSON-ként van formázva.
     }
 
 ## <a name="json-message"></a>JSON-üzenet
-| Name (Név) | Value (Díj) | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
 | hasznos adat |Base64-kódolású karakterlánc |Az ügyfelek által küldött licenc kérelem. |
 | content_id |Base64-kódolású karakterlánc |A kulcs azonosítója és a tartalom létrehozására használt azonosító minden content_key_specs.track_type kulcsával. |
 | Szolgáltató |sztring |Tartalom kulcsok és szabályzatok keresésére használt. A Microsoft kulcskézbesítési használata a Widevine-licenckézbesítés, a rendszer figyelmen kívül hagyja ezt a paramétert. |
-| házirendnév |sztring |Egy korábban regisztrált házirend nevét. Választható. |
+| policy_name |sztring |Egy korábban regisztrált házirend nevét. Választható. |
 | allowed_track_types |Enum |SD_ONLY vagy SD_HD. Kulcsok tartalmakat vezérlők licenc szerepelnek. |
 | content_key_specs |JSON-tömb struktúrák, tekintse meg a következő szakaszt: "Content key specifikációihoz."  |Részletesebben vezérlő a melyik tartalomkulcs való visszatéréshez. További információkért lásd: a szakasz "Content key specifikációihoz." Csak a allowed_track_types és content_key_specs értékek egyike adható meg. |
 | use_policy_overrides_exclusively |Logikai érték true vagy FALSE (hamis) |Házirend attribútumainak policy_overrides által megadott használja, és hagyja ki az összes korábban tárolt házirend. |
@@ -77,16 +77,16 @@ Egy már létező irányelveit, ha ott nem adja meg az értékeket a tartalom ku
 
 Minden egyes content_key_specs értéknek meg kell adni az összes nyomon követi, függetlenül a use_policy_overrides_exclusively lehetőséget. 
 
-| Name (Név) | Value (Díj) | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
 | content_key_specs. track_type |sztring |Track típusnév. Ha content_key_specs van megadva, a licenc-kérelemben, ügyeljen arra, hogy adja meg az összes nyomon típusokat explicit módon. Amennyiben ezt nem sikerült lejátszani elmúlt 10 másodperc eredményez. |
 | content_key_specs  <br/> security_level |UInt32 |A lejátszás vonatkozó ügyfélkövetelmények robusztusság határozza meg. <br/> -Fehér-box cryptography szoftveralapú megadása kötelező. <br/> -Szoftver titkosítás és a egy rejtjelezett dekóder szükség. <br/> – A kulcsfontosságú anyagok és a titkosítási műveletek egy megbízható végrehajtási hardveres biztonsági környezetben kell végrehajtani. <br/> – A titkosítás és a tartalom dekódolás egy megbízható végrehajtási hardveres biztonsági környezetben kell végrehajtani.  <br/> – A titkosítás, a dekódolás és az összes kezelése a media (tömörített és tömörítetlen) egy megbízható végrehajtási hardveres biztonsági környezetben kell kezelni. |
-| content_key_specs <br/> required_output_protection.hDC |karakterlánc, HDCP_NONE, HDCP_V1, HDCP_V2 egyik |Azt jelzi, hogy szükség-e HDCP. |
+| content_key_specs <br/> required_output_protection.hdc |karakterlánc, HDCP_NONE, HDCP_V1, HDCP_V2 egyik |Azt jelzi, hogy szükség-e HDCP. |
 | content_key_specs <br/>kulcs |Base64-<br/>a kódolt karakterlánc |A track használandó tartalomkulcsot. Ha meg van adva, a track_type vagy key_id szükség. A tartalomszolgáltató Ez a beállítás segítségével beszúrása a tartalomkulcsot a követése helyett, ami lehetővé teszi a Widevine-licenckiszolgáló készítése vagy kereshet meg egy kulcsot. |
 | content_key_specs.key_id |Base-64 kódolású karakterláncot bináris, 16 bájtos |A kulcs egyedi azonosítója. |
 
 ## <a name="policy-overrides"></a>A házirend felülbírálások
-| Name (Név) | Value (Díj) | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
 | policy_overrides. can_play |Logikai érték true vagy FALSE (hamis) |Azt jelzi, hogy a tartalom lejátszását használata engedélyezett. Az alapértelmezett érték a false (hamis). |
 | policy_overrides. can_persist |Logikai érték true vagy FALSE (hamis) |Azt jelzi, hogy a licenc előfordulhat, hogy őrizhető meg, az offline használatra felejtő storage. Az alapértelmezett érték a false (hamis). |
@@ -101,7 +101,7 @@ Minden egyes content_key_specs értéknek meg kell adni az összes nyomon követ
 | policy_overrides. renew_with_usage |Logikai érték true vagy FALSE (hamis) |Azt jelzi, hogy a licenc küldeni megújítási, használati indításakor. Csak akkor, ha teljesül can_renew használja ezt a mezőt. |
 
 ## <a name="session-initialization"></a>Munkamenet inicializálása
-| Name (Név) | Value (Díj) | Leírás |
+| Name (Név) | Érték | Leírás |
 | --- | --- | --- |
 | provider_session_token |Base64-kódolású karakterlánc |A munkamenet-jogkivonat vissza a licenc átadott, és az ezt követő megújítás létezik. A munkamenet-jogkivonat munkamenetek kívül nem tárol. |
 | provider_client_token |Base64-kódolású karakterlánc |Ügyfél token vissza a licenc-válasz küldése. Ha a licenc kérelem egy ügyfél jogkivonatot tartalmaz, a rendszer figyelmen kívül hagyja ezt az értéket. Az ügyfél jogkivonat továbbra is fennáll, licenc-munkamenetek túl. |

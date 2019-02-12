@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 11829256451990401b6de4bcf62f2b0b51010832
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: d2568a4dfc4fefe9628fc63dcc0526b0876fde00
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241152"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993877"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Infrastruktúra Backup szolgáltatás – ajánlott eljárások
 
@@ -43,9 +43,18 @@ Az univerzális elnevezési konvenció (UNC) karakterlánc az elérési út egy 
 
 ### <a name="encryption"></a>Titkosítás
 
+#### <a name="version-1901-and-newer"></a>1901 és újabb verzió
+
+A titkosítási tanúsítvány lekérdezi a külső tárhelyen exportált adatok biztonsági másolatának titkosításához használatos. A tanúsítvány lehet egy önaláírt tanúsítványt, mivel a tanúsítványt csak szolgál kulcsok. Tekintse meg a New-SelfSignedCertificate további információ a tanúsítvány létrehozásával.  
+A kulcs (például globális Azure Key Vault-tanúsítvánnyal) biztonságos helyen kell tárolni. A tanúsítvány CER formátumú adatok titkosítására szolgál. A PFX-formátum biztonsági mentési adatok visszafejtése során felhőbeli helyreállítási üzembe helyezhető Azure Stacket kell használni.
+
+![A tanúsítvány tárolja biztonságos helyen.](media/azure-stack-backup/azure-stack-backup-encryption-store-cert.png)
+
+#### <a name="1811-and-older"></a>1811 és régebbi
+
 A titkosítási kulcs beolvasása külső tárterület exportált adatok biztonsági másolatának titkosításához használatos. A kulcs létrehozásának részeként [a biztonsági mentés engedélyezése az Azure Stack a PowerShell-lel](azure-stack-backup-enable-backup-powershell.md).
 
-A kulcs (például nyilvános Azure Key Vaultban titkos kódot) biztonságos helyen kell tárolni. Ezt a kulcsot kell használni az Azure Stack újbóli üzembe helyezés során. 
+A kulcs (például globális Azure Key Vaultban titkos kódot) biztonságos helyen kell tárolni. Ezt a kulcsot kell használni az Azure Stack újbóli üzembe helyezés során. 
 
 ![A kulcsot biztonságos helyen tárolja.](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
@@ -74,7 +83,7 @@ Régió: nyc
 
 MASBackup mappában, ahol az Azure Stack tárolja a biztonsági mentési adatok. Ez a mappa nem használjon a saját adatok tárolására. OEM vagy bármely biztonsági mentési adatok tárolására ne használja ezt a mappát. 
 
-OEM-ek javasolt, hogy az a régió mappában összetevők biztonsági mentési adatok tárolására. Minden egyes hálózati kapcsolók, hardver életciklus állomás (HLH), és így tovább a saját almappájába kell tárolni. Példa:
+OEM-ek javasolt, hogy az a régió mappában összetevők biztonsági mentési adatok tárolására. Minden egyes hálózati kapcsolók, a hardver életciklus gazdagépet (HLH) és így tovább, a saját almappájába kell tárolni. Példa:
 
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\HLH
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\Switches
@@ -95,6 +104,6 @@ A rendszer támogatja a következő riasztásokat:
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a referenciaanyag az olyan a [infrastruktúra biztonsági mentési szolgáltatás](azure-stack-backup-reference.md).
+Tekintse át a referenciaanyag az olyan a [infrastruktúra biztonsági mentési szolgáltatás](azure-stack-backup-reference.md)
 
-Engedélyezze a [infrastruktúra biztonsági mentési szolgáltatás](azure-stack-backup-enable-backup-console.md).
+Engedélyezze a [infrastruktúra biztonsági mentési szolgáltatás](azure-stack-backup-enable-backup-console.md)

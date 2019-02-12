@@ -1,6 +1,6 @@
 ---
-title: Az Azure Log Analyticsben szöveges adatok elemzése |} A Microsoft Docs
-description: A Log Analytics-rekordok adatok elemzésekor, amikor az adatok be lett töltve és lekérdezés lekéri azt, amikor a relatív előnyeit összehasonlítása az egyes különböző lehetőségeit ismerteti.
+title: Az Azure Monitor naplóira szöveges adatok elemzése |} A Microsoft Docs
+description: Naplóadatok az Azure Monitor rekordok elemzéséhez, amikor betöltött adatokat, és összehasonlítja a relatív előnyeit minden lekérdezés lekéri azt a különböző lehetőségeket ismerteti.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 0d589156824c7b9f3f6a8c31591d69479d11780a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b6a2ca70faa36b94ace8158f33e58b5e6688ece3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214130"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002200"
 ---
-# <a name="parse-text-data-in-log-analytics"></a>A Log Analytics szöveges adatok elemzése
-Egyes Log Analytics által gyűjtött adatok egy-egy tulajdonság több információt tartalmazni fogja. Ezek az adatok elemzése több tulajdonságot be megkönnyíti a lekérdezések használata. Ilyenek például a [egyéni napló](../../log-analytics/log-analytics-data-sources-custom-logs.md) , amely egy teljes naplóbejegyzés több értékkel rendelkező gyűjti be egy-egy tulajdonság. Hozzon létre külön tulajdonságait a különböző értékeket, kereshet és az egyes összesített.
+# <a name="parse-text-data-in-azure-monitor-logs"></a>Az Azure Monitor naplóira szöveges adatok elemzése
+Bizonyos Azure Monitor által gyűjtött naplóadatok egyetlen tulajdonsággal több információt tartalmazza. Ezek az adatok elemzése több tulajdonságot be megkönnyíti a lekérdezések használata. Ilyenek például a [egyéni napló](../../log-analytics/log-analytics-data-sources-custom-logs.md) , amely egy teljes naplóbejegyzés több értékkel rendelkező gyűjti be egy-egy tulajdonság. Hozzon létre külön tulajdonságait a különböző értékeket, kereshet és az egyes összesített.
 
-Ez a cikk ismerteti az adatok a Log Analytics-rekordok elemzésekor, amikor az adatok betöltött és lekérdezés lekéri azt, amikor a relatív előnyeit összehasonlítása az egyes különböző lehetőségeket.
+Ez a cikk ismerteti a különböző lehetőségeket az Azure monitorban naplóadatok elemzéséhez, amikor betöltött adatokat, és összehasonlítja a relatív előnyeit minden lekérdezés lekéri azt.
 
 
 ## <a name="parsing-methods"></a>Elemzési módszer
@@ -60,7 +60,7 @@ Ezt a módszert hátrányai a következők:
 - Terhelés hozhat létre, ha nagyon nagy rekord összetett logikát futtat csoportokat (több milliárd rekordon,).
 
 ## <a name="parse-data-as-its-collected"></a>Mivel a begyűjtésük adatainak elemzése
-Lásd: [egyéni mezőket hozhat létre a Log Analytics](../../log-analytics/log-analytics-custom-fields.md) adatok elemzésekor, mivel a begyűjtésük részleteiért. Ez a tábla, csakúgy, mint minden más tulajdonság lekérdezések által használható egyéni tulajdonságok hoz létre.
+Lásd: [egyéni mezőket hozhat létre az Azure monitorban](../platform/custom-fields.md) adatok elemzésekor, mivel a begyűjtésük részleteiért. Ez a tábla, csakúgy, mint minden más tulajdonság lekérdezések által használható egyéni tulajdonságok hoz létre.
 
 ## <a name="parse-data-in-query-using-patterns"></a>A minták használatával lekérdezés adatainak elemzése
 Elemezni kívánt adatokat a rekordok között ismétlődő minta segítségével azonosítható, ha a különböző operátorok használhatja a [adatkezelő lekérdezési nyelv](/azure/kusto/query/) be egy vagy több új tulajdonságok a konkrét adat kibontásához.
@@ -106,7 +106,7 @@ AzureActivity
 | distinct UPNUserPart, Caller
 ```
 
-Ahhoz, hogy hatékony elemzési nagy méretekben Log Analytics használja re2 verziója reguláris kifejezések, amely hasonló, de nem egyeznek, amelyek a reguláris kifejezés variantní hodnoty. Tekintse meg a [re2 kifejezés szintaxisa](https://aka.ms/kql_re2syntax) részleteiről.
+Ahhoz, hogy hatékony elemzési nagy méretekben Azure Monitor használja re2 verziója reguláris kifejezések, amely hasonló, de nem egyeznek, amelyek a reguláris kifejezés variantní hodnoty. Tekintse meg a [re2 kifejezés szintaxisa](https://aka.ms/kql_re2syntax) részleteiről.
 
 
 ## <a name="parse-delimited-data-in-a-query"></a>A lekérdezésben tagolt adatainak elemzése

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: d86df171de807c23aad6dd2cb8e2128098dede81
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 880b4e4ce09fec3caf70586c2cfb54236d13b668
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812456"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996304"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights beállítása: Függőségi nyomkövetés
 A *függőségi* egy külső összetevő, amely hívja meg az alkalmazást. Fontos általában nevű HTTP-n vagy egy adatbázist vagy egy fájlrendszert használó szolgáltatás. [Az Application Insights](../../azure-monitor/app/app-insights-overview.md) méri a mennyi az alkalmazás megvárja, amíg függőségeket, és milyen gyakran egy függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívásokat, és összekapcsolhatja őket a kérelmeket és kivételeket.
@@ -133,7 +133,7 @@ Kattintson végig a sikertelen kérelmek előfordulása, és tekintse meg a kapc
 ![Kattintson egy kérés típusa, a másik nézet ugyanazon-példány beolvasásához, kattintson rá a kivétel részletes-példány.](./media/asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>Elemzés
-Nyomon követheti a függőségeket a [Log Analytics lekérdezési nyelvre](https://aka.ms/LogAnalyticsLanguage). Néhány példa:
+Nyomon követheti a függőségeket a [adatkezelő lekérdezési nyelv](https://aka.ms/LogAnalyticsLanguage). Néhány példa:
 
 * Keresse meg az összes sikertelen függőségi hívások:
 

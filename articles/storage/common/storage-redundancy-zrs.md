@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
 ms.subservice: common
-ms.openlocfilehash: 62c6e24776c1d9a4e6a82eea557244bb390ebd00
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 11891153f1ffce438597dc4f2799a9f25d76c2f5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471487"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992602"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zónaredundáns tárolás (ZRS): Azure Storage magas rendelkezésre állású alkalmazások
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -30,6 +30,7 @@ A ZRS az alábbi régiókban általában érhető el:
 - Észak-Európa
 - Közép-Franciaország
 - Kelet-Japán
+- Az Egyesült Királyság déli régiója
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA 2. nyugati régiója

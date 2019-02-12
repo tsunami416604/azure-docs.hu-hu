@@ -6,15 +6,15 @@ keywords: kódolás; kódolók; adathordozó
 author: dbgeorge
 manager: johndeu
 ms.author: johndeu
-ms.date: 09/13/2018
+ms.date: 02/09/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c90d6a5784fe9d80df4fab304b6122d3fa24d0b5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: f07b2d128bd770854b7c240fd3c964d880029d3c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605164"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999011"
 ---
 # <a name="recommended-on-premises-encoders"></a>Ajánlott helyszíni kódolók
 Amikor az élő adások online közvetítése az Azure Media Services, megadhatja, hogyan történjen a csatorna a bemeneti streamet. Ha egy helyszíni kódolót használata élő kódolás csatornát választja, a kódoló leküldéses egy kiváló minőségű egyszeres átviteli sebességű streamet kimenetként. Ha egy helyszíni kódolót használata a pass-csatornán keresztül, a kódoló leküldéses egy többszörös sávszélességű streamet az összes kívánt kimeneti minőség kimenetként. További információkért lásd: [élő adások online közvetítése helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).
@@ -28,15 +28,15 @@ Az Azure Media Services javasolja, hogy valamelyik a következő élő kódolók
 - Teradek szelet 756
 - A 8000-es TriCaster
 - Tricaster Mini HD-4
-- OBS-Studio
+- OBS Studio
 - VMIX
 - xStream
-- Környezetválasztó Studio (iOS)
+- Switcher Studio (iOS)
 
 Az Azure Media Services a következő élő kódolók többféle sávszélességű töredezett-MP4 (Smooth Streaming) kimenetként rendelkező egyikének használatát javasolja:
 - Media Excel élő Hero és a Hero 4 KB-os (UHD/HEVC)
-- Élő TITAN Ateme
-- Cisco digitális Media Encoder 2200
+- Ateme TITAN Live
+- Cisco Digital Media Encoder 2200
 - Elemental Live
 - Envivio 4Caster C4 csomag általános III.
 - Az Imagine Communications Selenio MCP3

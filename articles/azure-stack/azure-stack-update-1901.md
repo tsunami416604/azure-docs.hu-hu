@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/09/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: cf86fafc1fcb0ffd6513abc9d02da16d1f00f22b
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: MT
+ms.openlocfilehash: 45905b5180ac248394e52b1d03a034acc47e8dbc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978935"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993588"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 frissítése
 
@@ -68,6 +68,35 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az Azure Stack:
 
 - Felügyelt engedélyezése az Azure Stack-rendszerképek, hogy hozzon létre egy felügyelt rendszerképet objektumot egy általánosított virtuális gépen (mindkettő nem felügyelt és felügyelt), amely csak hozhat létre felügyelt lemezes virtuális gépek, a jövőben. További információkért lásd: [Azure Stack-Managed Disks](user/azure-stack-managed-disk-considerations.md#managed-images).
+
+- **AzureRm 2.4.0**
+   * **AzureRm.Profile**  
+         Hibajavítás – `Import-AzureRmContext` helyesen deszerializálni a mentett jogkivonatot.  
+   * **AzureRm.Resources**  
+         Hibajavítás – `Get-AzureRmResource` lekérdezés esethez insensitively erőforrástípus szerint.  
+   * **Azure.Storage**  
+         Összesítő AzureRm-modul mostantól tartalmazza a már közzétett verzió 4.5.0 támogató a **api-verzió 2017-07-29**.  
+   * **AzureRm.Storage**  
+         Összesítő AzureRm-modul mostantól tartalmazza a már közzétett verzió 5.0.4 támogató a **api-verzió 2017-10-01**.  
+   * **AzureRm.Compute**  
+         A hozzáadott egyszerű paraméterkészletek `New-AzureRMVM` és `NewAzureRMVMSS`, `-ImageName` paraméter megadásával felhasználói lemezképek támogatja.  
+   * **AzureRm.Insights**  
+         Összesítő AzureRm-modul mostantól tartalmazza a már közzétett verzió 5.1.5 támogató a **api-verzió a 2018-01-01** metrikákhoz, metrikadefinícióinak erőforrástípusok.
+
+- **1.7.0-ás AzureStack** Ez használhatatlanná tévő változást kiadás. A kompatibilitástörő változásokat részletes ismertetéséért tekintse meg https://aka.ms/azspshmigration170
+   * **Azs.Backup.Admin modul**  
+         Kompatibilitástörő változás: Ügyféltanúsítvány-alapú titkosítási mód biztonsági mentési módosításait. A szimmetrikus kulcsok támogatása elavult.  
+   * **Azs.Fabric.Admin Module**  
+         `Get-AzsInfrastructureVolume` elavult. Új parancsmag `Get-AzsVolume`.  
+         `Get-AzsStorageSystem` elavult.  Új parancsmag új `Get-AzsStorageSubSystem`.  
+         `Get-AzsStoragePool` elavult. A `StorageSubSystem` objektum tartalmazza a kapacitás tulajdonság.  
+   * **Azs.Compute.Admin Module**  
+         Hibajavítás – `Add-AzsPlatformImage`, `Get-AzsPlatformImage`: Hívó `ConvertTo-PlatformImageObject` csak az a sikerhez vezető utat.  
+         BugFix - `Add-AzsVmExtension`, `Get-AzsVmExtension`: ConvertTo-VmExtensionObject hívása csak a sikerhez vezető utat.  
+   * **Azs.Storage.Admin Module**  
+         Hibajavítás – új tárolási kvótát használ alapértelmezett értékeket, ha nincs megadva.
+
+A frissített modulok referenciája áttekintéséhez lásd: [Azure Stack modulhivatkozás](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0).
 
 ## <a name="fixed-issues"></a>Hibák kijavítva:
 

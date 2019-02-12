@@ -15,17 +15,20 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
-ms.openlocfilehash: d21d588660b67da024491151fe4f4376cebba46f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 43ec22836cb32c21953b9eb6871b9efe300cbf9e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731046"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001170"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérfeladatok futtatása a WebJobs Azure App Service-ben
 
 ## <a name="overview"></a>Áttekintés
 Webjobs-feladatok csak a [Azure App Service](https://docs.microsoft.com/azure/app-service/) , amely lehetővé teszi egy program vagy parancsprogram futtatását egy webalkalmazás, API-alkalmazás vagy mobilalkalmazás ugyanabban a környezetben. Nincs WebJobs használatával további költség nélkül.
+
+> [!IMPORTANT]
+> Webjobs-feladatok még nem támogatott a Linuxon futó App Service-ben.
 
 Ez a cikk bemutatja, hogyan helyezhet üzembe a WebJobs használatával a [az Azure portal](https://portal.azure.com) végrehajtható vagy parancsfájlokat feltölteni. Fejlesztés és a WebJobs üzembe helyezése a Visual Studio használatával kapcsolatos információkért lásd: [WebJobs üzembe helyezése a Visual Studio használatával](webjobs-dotnet-deploy-vs.md).
 

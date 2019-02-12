@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: c3f10e268101cfa5aff6506a64aab98b07fb948a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4af7af6616b5415cd13abacd6aca13bd412d4ad8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464381"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998083"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Az Azure Machine Learning Studio webszolgáltatás használata
 
@@ -70,7 +70,7 @@ A klasszikus Machine Learning webszolgáltatás API-kulcs lekéréséhez:
 ## <a id="connect"></a>Csatlakozás egy Machine Learning webszolgáltatás
 A Machine Learning Web service bármilyen programozási nyelvet, amely támogatja a HTTP-kérés-válasz csatlakozhat. Megtekintheti a szereplő példák C#, Python és az R, Machine Learning Web service Súgó oldal.
 
-**A Machine Learning API help** Machine Learning API-súgó egy webszolgáltatás telepítésekor jön létre. Lásd: [az Azure Machine Learning bemutató – webszolgáltatás üzembe helyezése](walkthrough-5-publish-web-service.md).
+**A Machine Learning API help** Machine Learning API-súgó egy webszolgáltatás telepítésekor jön létre. Lásd: [3. oktatóanyag: Kredit kockázati modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md).
 Machine Learning API segítségével előrejelzési webszolgáltatást részleteit tartalmazza.
 
 1. Kattintson a webes szolgáltatás, amellyel dolgozik.

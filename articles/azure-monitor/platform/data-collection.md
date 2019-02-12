@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: efc5fb022d117caeaec9da014252b501f2d06769
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6fc568546721511f6289600148919d28773058f4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450012"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002283"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -81,7 +81,7 @@ Például az alkalmazás egy adott időben felhasználók bizonyos számú kider
 ### <a name="sources-of-metric-data"></a>Metrikus adatok forrásai
 Nincsenek Azure-figyelése által gyűjtött metrikák három alapvető forrásai. Az összes metrikák érhetők el a metrika tárolóban, ahol azok kiértékelése együtt forrásától függetlenül.
 
-**Platform metrikák** hozhatók létre az Azure-erőforrások és azok állapotát és teljesítményét betekintést biztosítanak. Különböző típusú erőforrást hoz létre egy [metrikák meghatározott készletét](../../azure-monitor/platform/metrics-supported.md) szükséges konfiguráció nélkül.
+**Platform metrikák** hozhatók létre az Azure-erőforrások és azok állapotát és teljesítményét betekintést biztosítanak. Különböző típusú erőforrást hoz létre egy [metrikák meghatározott készletét](metrics-supported.md) szükséges konfiguráció nélkül. 
 
 **Alkalmazásmetrikák** a figyelt alkalmazások és a teljesítménybeli problémák észlelése, és nyomon követheti a trendeket, hogyan használják az alkalmazását az Application Insights által létrehozott. Ez magában foglalja az ilyen értékek _kiszolgáló válaszideje_ és _böngészőkivételek_.
 
@@ -96,32 +96,39 @@ Nincsenek Azure-figyelése által gyűjtött metrikák három alapvető forrása
 ### <a name="what-can-you-do-with-metrics"></a>Tudja, mire a metrikák?
 Metrikákkal elvégezhető feladatok a következők:
 
-- Használat [metrikaböngésző](../../azure-monitor/platform/metrics-charts.md) elemezheti az összegyűjtött metrikák és a egy diagramon jeleníti meg őket. Egy erőforrás (például egy virtuális Gépet, a webhely vagy a logikai alkalmazás) teljesítményének nyomon követésével diagramok rögzítésével egy [Azure irányítópultján](../../azure-portal/azure-portal-dashboards.md).
+- Használat [metrikák analytics](metrics-charts.md) elemezheti az összegyűjtött metrikák és a egy diagramon jeleníti meg őket. Egy erőforrás (például egy virtuális Gépet, a webhely vagy a logikai alkalmazás) teljesítményének nyomon követésével diagramok rögzítésével egy [Azure irányítópultján](../../azure-portal/azure-portal-dashboards.md).
 - Konfigurálja egy [a metrikaalapú riasztási szabály](alerts-metric.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](action-groups.md) mikor a metrika átlép egy küszöbértéket.
-- Használat [automatikus skálázási](../../azure-monitor/platform/autoscale-overview.md) növelése vagy csökkentése érdekében a küszöbérték átlépését metrika alapján erőforrásokat.
-- Metrikák irányíthatja a Log Analytics metrikai adatok és naplóadatok elemzéséhez és metrikaértékek 93 napnál hosszabb ideig tárolja.
-- Metrikák Stream- [Eseményközpont](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) irányíthatja őket [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) vagy a külső rendszerekkel.
+- Használat [automatikus skálázási](autoscale-overview.md) növelése vagy csökkentése érdekében a küszöbérték átlépését metrika alapján erőforrásokat.
+- Metrikák irányíthatja a naplók metrikai adatok és naplóadatok elemzéséhez és metrikaértékek 93 napnál hosszabb ideig tárolja. 
+- Metrikák Stream- [Eseményközpont](stream-monitoring-data-event-hubs.md) irányíthatja őket [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) vagy a külső rendszerekkel.
 - [Archív](../../azure-monitor/learn/tutorial-archive-data.md) az erőforrás megfelelőségét, naplózás, vagy offline jelentéskészítésre teljesítmény vagy egészségügyi előzményeit.
-- Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) vagy [REST API-val](../../azure-monitor/platform/rest-api-walkthrough.md).
+- Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) vagy [REST API-val](rest-api-walkthrough.md).
+
+
 
 ### <a name="viewing-metrics"></a>Metrikák megtekintése
 Metrikák az Azure monitorban vannak tárolva egy idősorozat 93 napig gyors lekérési és a tárolók metrikaértékek optimalizált adatbázis. Metrikák hosszú távú elemzésekhez és trendelemzés naplókat másolja.
 
-Metrikaadatok többféle módon szerepel, a fent leírt módon. Használat [metrikaböngésző](../../azure-monitor/platform/metrics-charts.md) közvetlenül elemezheti az adatokat a metrika-tárolót, és több mérőszámok értékeit diagram idővel. A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Metrikák használatával is lekérhet a [Azure REST API-val figyelési](../../azure-monitor/platform/rest-api-walkthrough.md).
+Metrikaadatok többféle módon szerepel, a fent leírt módon. Használat [metrikák analytics](metrics-charts.md) közvetlenül elemezheti az adatokat a metrika-tárolót, és több mérőszámok értékeit diagram idővel. A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Metrikák használatával is lekérhet a [Azure REST API-val figyelési](rest-api-walkthrough.md).
 
-![Metrikaböngésző](media/data-collection/metrics-explorer.png)
+![Metrikák Analytics](media/data-collection/metrics-explorer.png)
 
 ## <a name="logs"></a>Logs
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 Naplók tartalmaznak különböző típusú adatokkal rendelkező különböző tulajdonságokat az egyes rekordok vannak rendezve. Naplók például metrikák numerikus értékeket tartalmaz, de rendszerint a szöveges adatok részletes leírását tartalmazza. Azok további különböznek metrikák, azok szerkezetét, változó és gyakran nem gyűjtött rendszeres időközönként.
 
 A naplóbejegyzés gyakori típus egy eseményt, amely időnként gyűjtött. Ezek a már létrehozott egy alkalmazás vagy szolgáltatás, és általában a teljes kontextusba saját elegendő információt tartalmaznak. Például az esemény azt jelzi, hogy egy adott erőforrás létrejött, és módosíthatók, megnövekedett forgalmának indított új gazdagépre, vagy hiba történt az alkalmazások.
 
 Naplók különösen hasznosak a különböző forrásokból származó adatok összevonása, az összetett elemzésekre és az időbeli alakulását. Mivel az adatok formátumát változhat, alkalmazások segítségével hozhat létre egyéni naplók szükségük van a struktúrát. Metrikák még replikált kombinálhatja őket más figyelési adatokhoz trendelemzés és egyéb adatok elemzése a naplókat.
 
+
+
 ### <a name="sources-of-log-data"></a>Naplózási adatok forrásai
 Az Azure Monitor naplóadatokat gyűjthet, különböző forrásokból is Azure-ban és a helyszíni erőforrásokhoz. Naplózási adatok forrásai az alábbiak:
 
-- [Tevékenységnaplók](collect-activity-logs.md) az Azure-erőforrások, amelyek tartalmazzák az információkat a konfigurációjukról és egészségügyi és [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) termék működésével kapcsolatos információkat tartalmaznak, amelyek.
+- [Tevékenységnaplók](collect-activity-logs.md) az Azure-erőforrások, amelyek tartalmazzák az információkat a konfigurációjukról és egészségügyi és [diagnosztikai naplók](diagnostic-logs-stream-log-store.md) termék működésével kapcsolatos információkat tartalmaznak, amelyek.
 - Az ügynökök [Windows](agent-windows.md) és [Linux](../learn/quick-collect-linux-computer.md) virtuális gépeket, amelyek a vendég operációs rendszer és alkalmazások az Azure monitornak a következők szerint küldött telemetriai adatokra [adatforrások](data-sources.md) , konfigurálja.
 - Alkalmazásadatok által gyűjtött [Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Az adatok egy adott alkalmazás vagy szolgáltatás betekintést nyújtó [figyelési megoldások](../insights/solutions.md) vagy szolgáltatások, például a Container Insights, a virtuális gép Insights vagy a csoport Insights erőforrás.
@@ -159,12 +166,12 @@ Metrikák, naplók, más adattípusokkal, az Azure Monitor révén funkciókban 
 ### <a name="logs-to-metrics"></a>Naplók, metrikák
 A fentiekben ismertetettek szerint metrikák, gyorsabb, mint a naplókat, így kisebb késéssel és a egy alacsonyabb költségek létrehozhat riasztásokat. Numerikus adatok jelentős mennyiségű naplók, metrikák alkalmas lenne, de nem tárolt és mérőszámok az Azure Monitor van tárolva. Ilyenek például az ügynökök és felügyeleti megoldásokat összegyűjtött teljesítményadatok. Ezek az értékek némelyike mérőszámokat, ahol elérhetők a riasztás és a metrikaböngésző elemzéshez másolódnak.
 
-A magyarázat, ez a funkció elérhető legyen [metrika riasztások létrehozása az Azure Monitor-naplók](../../azure-monitor/platform/alerts-metric-logs.md). Az értékek támogatási listája érhető el: [az Azure monitorban támogatott mérőszámok](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces).
+A magyarázat, ez a funkció elérhető legyen [metrika riasztások létrehozása az Azure Monitor-naplók](alerts-metric-logs.md). Az értékek támogatási listája érhető el: [az Azure monitorban támogatott mérőszámok](metrics-supported.md#microsoftoperationalinsightsworkspaces).
 
 ## <a name="stream-data-to-external-systems"></a>Stream data a külső rendszerekkel
 Mellett az Azure-ban az eszközök használatával elemezheti a monitorozási adatok, szükség lehet a követelmény, hogy egy külső eszköz, például a biztonsági információk és az esemény (SIEM) termékben továbbítja. Közvetlenül a figyelt erőforrások keresztül általában történik a továbbító [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
 
-Útmutatást kaphat a különböző típusú monitorozási adatait a [Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Útmutatást kaphat a különböző típusú monitorozási adatait a [Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel](stream-monitoring-data-event-hubs.md).
 
 ## <a name="next-steps"></a>További lépések
 

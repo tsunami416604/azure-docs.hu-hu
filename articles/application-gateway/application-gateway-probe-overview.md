@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: f9bd0288d4009af536bdc8f45cbaed4b3f1eee18
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 884775fc2783256d9fff43e8bc6b26cc4f638648
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018709"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998620"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway állapotfigyelés – áttekintés
 
@@ -27,7 +27,7 @@ Alapértelmezett mintavételi állapotfigyelés használatán is testreszabhatja
 
 Egy application gateway automatikusan úgy konfigurálja az alapértelmezett állapotvizsgálat, konfigurálásakor kell minden olyan egyéni mintavétel konfigurálása nem. A figyelési viselkedését, így egy HTTP-kérelem a háttér-készlet konfigurált IP-címek működik. Az alapértelmezett mintavételek a http-háttérbeállítások vannak konfigurálva, HTTPS, ha a mintavétel HTTPS PROTOKOLLT használ, valamint a háttérrendszerek állapotának ellenőrzéséhez.
 
-Például: konfigurálja az application gateway 80-as port HTTP-hálózati forgalom fogadására A, B és C háttér-kiszolgálók használatával. A három kiszolgáló az alapértelmezett állapotfigyelés teszteli a megfelelő HTTP-válasz 30 másodpercenként. Rendelkezik megfelelő HTTP-válasz egy [állapotkód](https://msdn.microsoft.com/library/aa287675.aspx) 200-as és 399 között.
+Példa: Konfigurálja az application gateway 80-as port HTTP-hálózati forgalom fogadására A, B és C háttér-kiszolgálók használatával. A három kiszolgáló az alapértelmezett állapotfigyelés teszteli a megfelelő HTTP-válasz 30 másodpercenként. Rendelkezik megfelelő HTTP-válasz egy [állapotkód](https://msdn.microsoft.com/library/aa287675.aspx) 200-as és 399 között.
 
 Ha a kiszolgáló az alapértelmezett mintavétel-ellenőrzés sikertelen, az application gateway automatikusan eltávolítja a háttérkészlet, és a hálózati forgalom megakadályozza, hogy elérjék a ezen a kiszolgálón. Az alapértelmezett mintavétel továbbra is keresni a kiszolgáló egy 30 másodpercenként továbbra is. Ha a kiszolgáló válaszol sikeresen egy kérést az alapértelmezett állapotvizsgálat, hozzáadódik ismét kifogástalan állapotú a háttérkészlet, és adatforgalom megindul a kiszolgálón újra.
 
@@ -44,7 +44,7 @@ Egyezés kritériumok adhatók meg a `New-AzureRmApplicationGatewayProbeHealthRe
 
 Példa:
 
-```
+```powershell
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
@@ -55,7 +55,7 @@ Után az egyezési feltételek meg van adva, akkor lehet csatolni, mintavételi 
 | Mintavétel tulajdonság | Érték | Leírás |
 | --- | --- | --- |
 | Teszt URL-címe |http://127.0.0.1:\<port\>/ |URL-cím |
-| Időköz |30 |Mennyi ideig várjon a következő állapotadat-mintavétel előtt zajlik.|
+| Intervallum |30 |Mennyi ideig várjon a következő állapotadat-mintavétel előtt zajlik.|
 | Időtúllépés |30 |Idő másodpercben az application gateway probe válaszra vár a mintavétel nem kifogástalanként való megjelölése előtt. Mintavétel kifogástalan állapotúként adja vissza, ha a megfelelő háttér azonnal van megjelölve kifogástalan.|
 | Nem kifogástalan állapot küszöbértéke |3 |Szabályozza, hogy hány mintavételek küldése abban az esetben az rendszeres állapotminta hiba történik. Ezek további állapotadat-mintavételek meghatározni a a háttérrendszer gyorsan egymás után gyorsan küldik, és nem várja meg a mintavételi időköz. A háttérkiszolgáló-van megjelölve, miután az egymást követő mintavételi hiba száma eléri a nem kifogástalan állapot küszöbértéke. |
 
@@ -84,7 +84,7 @@ Az alábbi táblázat biztosít jelentésdefiníciókat egyéni állapotmintát 
 | Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttér-HTTP-beállítások meghatározott protokollt használ. |
 | Gazdagép |Állomásnév küldeni a Hálózatfigyelő. Alkalmazható csak akkor, ha a többhelyes konfigurálva van az Application Gatewayen, ellenkező esetben használja a "127.0.0.1". Ez az érték eltér a virtuális gép állomásnevét. |
 | Útvonal |A mintavétel relatív elérési útja. Az érvényes elérési utat indul (/). |
-| Időköz |Mintavétel gyakorisága másodpercben. Ez az érték két egymást követő mintavételek közötti időintervallum. |
+| Intervallum |Mintavétel gyakorisága másodpercben. Ez az érték két egymást követő mintavételek közötti időintervallum. |
 | Időtúllépés |Mintavétel időkorlátja másodpercben. Ha az időkorláton belül nem érkezik meg egy érvényes válasz, a mintavétel van megjelölve nem sikerült.  |
 | Nem kifogástalan állapot küszöbértéke |Mintavételi újrapróbálkozások számát. A háttérkiszolgáló-van megjelölve, miután az egymást követő mintavételi hiba száma eléri a nem kifogástalan állapot küszöbértéke. |
 

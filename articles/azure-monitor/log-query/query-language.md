@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor Log Analytics lekérdezési nyelvre |} A Microsoft Docs
-description: Megtudhatja, hogyan kell lekérdezéseket írni a Log Analytics az erőforrásokhoz való hivatkozásokat.
+title: Az Azure Monitor log-lekérdezések |} A Microsoft Docs
+description: Források az Azure monitorban log lekérdezések írásával hivatkozik.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,55 +11,57 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: 32e64ce7772d562ea34a0d74afbd737be27d247d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f2c4939436db5ae4c862cb311cc66a162ac716e3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968868"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989246"
 ---
-# <a name="log-analytics-query-language"></a>Log Analytics lekérdezési nyelve
-A log Analytics biztosít az Azure Monitor napló gyűjtése és elemzése. Azure adatkezelő épül és a egy verzióját használja, a lekérdezési nyelvre. A [Azure adatkezelő lekérdezési nyelvi dokumentáció](/azure/kusto/query) rendelkezik az összes részletes adat a nyelv és a Log Analytics-lekérdezések írására szolgáló elsődleges erőforrás kell lennie. Ez az oldal más forrásokra mutató hivatkozásokat biztosít, megtudhatja, hogyan kell lekérdezéseket írni és a nyelvet a Log Analytics végrehajtása kapcsán.
+# <a name="azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések
+Az Azure Monitor naplóira Azure adatkezelő épül, és az Azure Monitor log-lekérdezéseket a lekérdezési nyelvre verzióját használja. A [Azure adatkezelő lekérdezési nyelvi dokumentáció](/azure/kusto/query) rendelkezik az összes részletes adat a nyelv és kell lennie az Azure Monitor log-lekérdezések írására szolgáló elsődleges erőforrás. Ez a lap egyéb forrásokra mutató hivatkozásokat biztosít, megtudhatja, hogyan kell lekérdezéseket írni és a különbség az Azure Monitor megvalósításra, a nyelv.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="getting-started"></a>Első lépések
 
-- [Ismerkedés a Log Analytics használatával az Azure Portalon](get-started-portal.md) van egy leckében lekérdezések írása és használata az eredményeket az Azure Portalon.
--  [Ismerkedés a Log Analytics lekérdezéseinek](get-started-queries.md) van egy Log Analytics-adatok használatával összetevőjében leckében.
+- [Ismerkedés az Azure Monitor log-analytics](get-started-portal.md) van egy leckében lekérdezések írása és használata az eredményeket az Azure Portalon.
+- [Ismerkedés az Azure Monitor log-lekérdezések](get-started-queries.md) van egy leckében összetevőjében naplóadatokat az Azure Monitor használatával.
 
 ## <a name="concepts"></a>Alapelvek
-- [Az Azure monitorban Log Analytics-adatok elemzése](../../azure-monitor/log-query/log-query-overview.md) lehetővé teszi a napló rövid áttekintést lekérdezése és ismerteti, hogyan épül fel Log Analytics-adatok.
-- [A Log Analytics adatok megtekintésére és elemzésére](../../azure-monitor/log-query/portals.md) ismerteti a portálok, ahol létrehozni és a Log Analytics-lekérdezések futtatásához.
+- [Elemezheti a naplófájlok adatait az Azure monitorban](../../azure-monitor/log-query/log-query-overview.md) biztosít napló rövid áttekintést lekérdezése, és ismerteti, hogyan épül fel az Azure Monitor naplóadatokat.
+- [Az Azure Monitor log-adatok megtekintésére és elemzésére](../../azure-monitor/log-query/portals.md) a portálok, ahol létrehozása és futtatása a naplólekérdezések ismerteti.
 
 ## <a name="reference"></a>Leírások
 
 - [Lekérdezési nyelvi leírása](/azure/kusto/query) van a teljes nyelvi dokumentáció az adatkezelő lekérdezési nyelv.
-- [Log Analytics lekérdezési nyelv különbségek](data-explorer-difference.md) az adatkezelő lekérdezési nyelv verziói közötti különbségeket ismerteti.
-- [A Log Analytics-rekordok alapvető tulajdonságainak](../../azure-monitor/platform/log-standard-properties.md) összes Log Analytics-adatok a szabványos tulajdonságokat ismerteti.
-- [Hajtsa végre az erőforrások közötti naplókeresések a Log Analytics](../../azure-monitor/log-query/cross-workspace-query.md) ismerteti, hogyan lehet több Log Analytics-munkaterületek és Application Insights-alkalmazások adatait használó lekérdezéseket írni.
+- [Azure Monitor log lekérdezési nyelv különbségek](data-explorer-difference.md) az adatkezelő lekérdezési nyelv verziói közötti különbségeket ismerteti.
+- [Az Azure monitorban alapvető tulajdonságainak naplórekordok](../../azure-monitor/platform/log-standard-properties.md) szabványos Azure Monitor log tárolt összes tulajdonságokat ismerteti.
+- [Erőforrások közötti log-lekérdezések végrehajtása az Azure monitorban](../../azure-monitor/log-query/cross-workspace-query.md) ismerteti, hogyan lehet több Log Analytics-munkaterületek és Application Insights-alkalmazások adatait használó log lekérdezéseket írni.
 
 
 ## <a name="examples"></a>Példák
 
-- [Log Analytics lekérdezési példa](examples.md) biztosít a Log Analytics-adatok használatával például lekérdezések.
+- [Az Azure Monitor log lekérdezés példák](examples.md) naplóadatokat az Azure Monitor használatával például lekérdezések biztosít.
 
 
 
 ## <a name="lessons"></a>Leckék
 
-- [Log Analytics-lekérdezéseket a karakterláncokkal való munka](string-operations.md) a karakterlánc használatát ismerteti.
-- [Dátum-idő értékek a Log Analytics-lekérdezések használata](datetime-operations.md) dátum és idő adatok használatát ismerteti. 
-- [A Log Analytics-lekérdezések összesítések](aggregations.md) és [speciális összesítések a Log Analytics-lekérdezések](advanced-aggregations.md) ismerteti, hogyan egyesítik és összegzik az adatokat.
-- [A Log Analytics-lekérdezések csatlakozik](joins.md) azt ismerteti, hogyan lehet az adatok több táblából.
-- [A JSON és használatához adatok struktúrák a Log Analytics-lekérdezések](json-data-structures.md) ismerteti, hogyan lehet json-adatok elemzése.
-- [Lekérdezések a Log Analytics speciális írási](advanced-query-writing.md) összetett lekérdezések létrehozása és kód újrafelhasználása vonatkozó stratégiákat ismerteti.
-- [Diagramok és ábrák hoz létre a Log Analytics-lekérdezések](charts.md) azt ismerteti, hogyan jelenítheti meg a lekérdezésből származó adatok.
+- [Az Azure Monitor log-lekérdezéseket a karakterláncokkal való munka](string-operations.md) a karakterlánc használatát ismerteti.
+- [Dátum idő értékek az Azure Monitor log-lekérdezések használata](datetime-operations.md) dátum és idő adatok használatát ismerteti. 
+- [Az Azure monitorban összesítések lekérdezések naplózását](aggregations.md) és [speciális összesítések az Azure Monitor log-lekérdezések](advanced-aggregations.md) ismerteti, hogyan egyesítik és összegzik az adatokat.
+- [Az Azure Monitor log-lekérdezések csatlakozik](joins.md) azt ismerteti, hogyan lehet az adatok több táblából.
+- [JSON és a használata adatok struktúrák az Azure Monitor log-lekérdezések](json-data-structures.md) ismerteti, hogyan lehet json-adatok elemzése.
+- [Az Azure monitorban írása speciális lekérdezések naplózását](advanced-query-writing.md) összetett lekérdezések létrehozása és kód újrafelhasználása vonatkozó stratégiákat ismerteti.
+- [Diagramok és ábrák létrehozása az Azure Monitor log-lekérdezések](charts.md) azt ismerteti, hogyan jelenítheti meg a napló lekérdezésből származó adatok.
 
 ## <a name="cheatsheets"></a>Hasznos tanácsok
 
--  [SQL-t a Log Analytics-nyelvi segédletünkkel](sql-cheatsheet.md) segít a felhasználóknak, akik már jól ismert SQL-lel.
--  [A Log Analytics-nyelvi segédletünkkel Splunk](sql-cheatsheet.md) segít a felhasználóknak, akik már ismerik az Splunk.
+-  [SQL-t az Azure Monitor naplólekérdezés](sql-cheatsheet.md) segít a felhasználóknak, akik már jól ismert SQL-lel.
+-  [Az Azure Monitor log-lekérdezéshez Splunk](sql-cheatsheet.md) segít a felhasználóknak, akik már ismerik az Splunk.
  
 ## <a name="next-steps"></a>További lépések
 

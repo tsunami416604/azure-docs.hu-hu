@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5df3b9541dafad64e012519802b09b19ef199a03
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 1c812a77429e13ea39b2f4946043c13e10aaf097
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231734"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993742"
 ---
 # <a name="add-html-markers-to-the-map"></a>A térkép HTML jelölők hozzáadása
 
@@ -63,25 +63,16 @@ Ez a példa bemutatja, hogyan javíthatja egy HTML-jelölő húzható. Támogatj
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Húzható HTML jelölő' src='//codepen.io/azuremaps/embed/wQZoEV/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/wQZoEV/'>húzható HTML jelölő</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Draggable HTML Marker' src='//codepen.io/azuremaps/embed/wQZoEV/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/wQZoEV/'>húzható HTML jelölő</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="add-mouse-events-to-html-markers"></a>HTML jelölők egér események felvétele
 
-Ezek a minták bemutatják, hogyan egér események felvétele egy HTML-jelölő standard JavaScript események ad hozzá a jelölő HTML-tartalmakat. 
-
-Ha a `htmlContent` a jelölő van (div, img...) során prvek, hozzáadhat események közvetlenül a számukra. 
+Ezek a minták ismertetik, hogyan adhat hozzá az egér, és húzza az eseményeket egy HTML-jelölő.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Egér HTML jelölők való felvétele' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>egér HTML jelölők való felvétele</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-Ha a `htmlContent` karakterlánc (vagyis) a hasonló az alapértelmezett), a DOM-elem létrehozása és hozzá tud adni a karakterlánc, innerHTML tulajdonságot, majd a DOM-elem hozzáadása a htmlContent. Ha a `htmlContent` egy sablonalapú karakterlánc keresése és cseréje kell `{text}` és `{color}` először a karakterláncban szereplő értékeket.
-
-<br/>
-
-<iframe height='500' scrolling='no' title='Egér alapértelmezett HTML jelölő való felvétele' src='//codepen.io/azuremaps/embed/ZmZLBa/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/ZmZLBa/'>egér események hozzáadása az alapértelmezett HTML jelölő</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>További lépések

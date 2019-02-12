@@ -14,14 +14,16 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: d3f2682c7e750885a6c3947ce47b5da45f251a25
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8f3045394afbfbc9ae4839069c85ed405477a423
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421385"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003873"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault PowerShell-lel
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. A Key Vaulttal kapcsolatos további információt az [Áttekintés](key-vault-overview.md) szakaszban talál. Ebben a rövid útmutatóban egy kulcstartót hoz létre a PowerShell használatával. Ezután titkos kulcsokat tárolhat az újonnan létrehozott tárolóban.
 
@@ -29,18 +31,18 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.1.1-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a helyi telepítése és használata PowerShell választja, az oktatóanyaghoz az Azure PowerShell-modul verzióját 1.0.0 vagy újabb. Típus `$PSVersionTable.PSVersion` a verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ```azurepowershell-interactive
-Login-AzureRmAccount
+Login-AzAccount
 ```
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
+Hozzon létre egy Azure-erőforráscsoportot [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name ContosoResourceGroup -Location EastUS
+New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 ```
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
@@ -54,7 +56,7 @@ Bár ebben a rövid útmutatóban a kulcstartó neve Contoso KeyVault2, egyedi n
 - **Hely**: USA keleti régiója.
 
 ```azurepowershell-interactive
-New-AzureRmKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
+New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
 ```
 
 Ezzel a parancsmaggal megjelenítheti az újonnan létrehozott kulcstartó tulajdonságait. Jegyezze fel az alábbi két tulajdonságot:
@@ -68,24 +70,24 @@ A tároló létrehozása után az Azure-fiókja az egyetlen fiók, amely bármit
 
 ## <a name="adding-a-secret-to-key-vault"></a>Titkos kulcs hozzáadása a Key Vaulthoz
 
-Titkos kulcs a tárolóhoz való hozzáadásához csak néhány lépést kell végrehajtania. Ebben az esetben egy alkalmazás által használható jelszót fog megadni. A jelszó neve **ExamplePassword** lesz, és a **Pa$$w0rd** értékét fogja tárolni.
+Titkos kulcs a tárolóhoz való hozzáadásához csak néhány lépést kell végrehajtania. Ebben az esetben egy alkalmazás által használható jelszót fog megadni. A jelszó neve **ExamplePassword** azonosítóját tárolja, és **hVFkk965BuUv** benne.
 
-Először konvertálja a Pa$$w0rd értéket egy biztonságos sztringre az alábbiak beírásával:
+Először konvertálja az értékét **hVFkk965BuUv** egy biztonságos karakterláncra beírásával:
 
 ```azurepowershell-interactive
-$secretvalue = ConvertTo-SecureString 'Pa$$w0rd' -AsPlainText -Force
+$secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
 ```
 
-Ezt követően írja be az alábbi PowerShell-parancsokat egy **ExamplePassword** nevű, **Pa$$w0rd** értékű titkos kulcs létrehozásához a Key Vaultban:
+Ezt követően írja be az alábbi PowerShell-parancsok a Key Vaultban titkos kulcs létrehozása **ExamplePassword** értékkel **hVFkk965BuUv** :
 
 ```azurepowershell-interactive
-$secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'ExamplePassword' -SecretValue $secretvalue
+$secret = Set-AzKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'ExamplePassword' -SecretValue $secretvalue
 ```
 
 A titkos kódban tárolt érték megtekintése egyszerű szövegként:
 
 ```azurepowershell-interactive
-(Get-AzureKeyVaultSecret -vaultName "Contosokeyvault" -name "ExamplePassword").SecretValueText
+(Get-AzKeyVaultSecret -vaultName "Contosokeyvault" -name "ExamplePassword").SecretValueText
 ```
 
 Most létrehozott egy Key Vaultot, tárolt egy titkos kulcsot, és lekérte azt.
@@ -94,15 +96,17 @@ Most létrehozott egy Key Vaultot, tárolt egy titkos kulcsot, és lekérte azt.
 
  A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
 
-Ha már nincs rá szükség, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal eltávolítható az erőforráscsoport, a Key Vault és az összes kapcsolódó erőforrás.
+Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolítható az erőforráscsoport, a Key Vaultban, és az összes kapcsolódó erőforrás.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name ContosoResourceGroup
+Remove-AzResourceGroup -Name ContosoResourceGroup
 ```
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy kulcstartót, és elhelyezett benne egy szoftverkulcsot. Ha bővebb információra van szüksége a Key Vaultról és arról, hogyan használhatja az alkalmazásaival, lépjen tovább a Key Vaulttal használható webalkalmazásokat bemutató oktatóanyagra.
 
+Megtudhatja, hogyan olvashatja be egy titkos kulcsot a Key Vaultból egy webalkalmazásból az Azure-erőforrások felügyelt identitások használatával, lépjen tovább a következő oktatóanyagra
+
 > [!div class="nextstepaction"]
-> Ha meg szeretné tudni, hogyan olvashatja be a Key Vault titkos kulcsait egy, az Azure-erőforrások felügyelt identitásait használó webalkalmazásból, lépjen tovább a következő, az [Azure-webalkalmazások a Key Vault titkos kulcsainak olvasásához történő konfigurálását](quick-create-net.md) ismertető oktatóanyagra.
+> [Konfigurálja az Azure-webalkalmazások titkos Key vault olvasásához](quick-create-net.md).

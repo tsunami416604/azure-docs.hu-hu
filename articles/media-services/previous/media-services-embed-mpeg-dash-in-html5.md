@@ -1,8 +1,8 @@
 ---
-title: Egy MPEG-DASH adaptív adatfolyam-továbbítási videó beágyazása DASH.js HTML5 alkalmazás |} Microsoft Docs
-description: Ez a témakör bemutatja, hogyan egy MPEG-DASH adaptív adatfolyam-videó beágyazása DASH.js HTML5 alkalmazás.
+title: Egy MPEG-DASH adaptív Streamelt videók beágyazása dash.js-sel rendelkező HTML5-alkalmazásba |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan egy MPEG-DASH adaptív Streamelés videók beágyazása dash.js-sel rendelkező HTML5-alkalmazásba.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,35 +12,36 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 2b0e6bf643f55e1809b29def7766c58b59f4bb50
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2c8e71a058b2c770741c38f07c6c440fea90f2b2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788633"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998433"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Egy MPEG-DASH adaptív adatfolyam-továbbítási videó beágyazása DASH.js HTML5 alkalmazás
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs-legacy"></a>Egy MPEG-DASH adaptív Streamelés videók beágyazása dash.js-sel (örökölt) rendelkező HTML5-alkalmazásba
+
 ## <a name="overview"></a>Áttekintés
-MPEG-DASH egy ISO szabvány a videotartalom, ami jelentős előnyt kínál a fejlesztők számára, aki a kiváló minőségű, adaptív video-kimeneti adatfolyam továbbítására adaptív streameléshez. A MPEG-DASH a video-adatfolyamot automatikusan módosítja egy alacsonyabb definíciójához a hálózati sávszélességből válik. Ez csökkenti a "felfüggesztett" videó jelent meg, amíg a Windows Media player számára, hogy (más néven pufferelés) a következő néhány másodpercig letölti megjelenítő valószínűségét. Csökkenti a hálózati torlódás, mert a videólejátszó pedig visszatérhet egy magasabb színvonalú adatfolyam. Így meghatározhatja, hogy a szükséges sávszélesség igazítja videó gyorsabb idejét is eredményezi. Amely azt jelenti, hogy az első néhány másodperc is lehet lejátszott egy gyors-letöltési alacsonyabb minőségi szegmens majd eltárolva a lépés akár egy magasabb minőségi egyszer elegendő tartalom pufferben.
+MPEG-DASH egy ISO szabvány a videó tartalmát, amelyet jelentős előnyöket kínál a fejlesztők számára, aki a kiváló minőségű, az adaptív videó kimeneti adatfolyam továbbítása az adaptív streameléshez. MPEG-dash protokollal a video-adatfolyamot igazodik automatikusan alacsonyabb definícióját, ha a hálózat túlterheltnek válik. Ez csökkenti annak lehetőségét, hogy a megjelenítő "szüneteltetett" videó jelent meg, amíg a Windows Media player letölti a play (más néven pufferelés) tovább néhány másodperc alatt. Csökkenti a hálózati torlódás, mivel a videólejátszó ezután visszaküldi jobb minőségű adatfolyam. A szükséges sávszélesség alkalmazkodni is a videó gyorsabb kezdési időt eredményez. Ez azt jelenti, hogy az első néhány másodperc alatt játszhatók le egy gyors letöltési alacsonyabb minőségi szegmens, és majd eltárolva a lépés a magasabb minőségű egyszer elegendő tartalom legfeljebb pufferben.
 
-Dash.js egy nyílt forráskódú MPEG-DASH videólejátszó JavaScript nyelven írt. A cél, hogy adjon meg egy robusztus, platformfüggetlen player, amelyek a videó lejátszása igénylő alkalmazások szabadon felhasználható. A böngészők támogat a W3C Media forrás Extensions (MSE), amely Chrome, Microsoft Edge és (a más böngészőkkel MSE támogatásához a leképezés jelezte) IE11 MPEG-DASH lejátszás biztosít. Js DASH.js kapcsolatos további információkért tekintse meg a GitHub-tárházban dash.js.
+Dash.js-sel egy nyílt forráskódú MPEG-DASH videolejátszó JavaScript nyelven. A cél, hogy adja meg a nagy teherbírású, többplatformos lejátszók, amely a videó lejátszás igénylő alkalmazások szabadon felhasználható. Minden olyan böngészőre, amely támogatja a W3C Media forrás Extensions (MSE) még ma, hogy a Chrome, a Microsoft Edge és az IE11 (más böngészők támogatásához MSE szándékát jelezte,) az MPEG-DASH lejátszás biztosít. Js dash.js-sel kapcsolatos további információkért tekintse meg a GitHub-adattár dash.js-sel.
 
-## <a name="creating-a-browser-based-streaming-video-player"></a>Webböngésző-alapú adatfolyam videólejátszó létrehozása
-Egy egyszerű weblap, amely megjeleníti a videólejátszó várt létrehozása szabályozza ilyen a play, szüneteltetése, Visszatekerés stb., újra kell:
+## <a name="creating-a-browser-based-streaming-video-player"></a>Böngésző-alapú streamelési videolejátszó létrehozása
+Egy egyszerű várt videolejátszót megjelenítő weblap létrehozása azt szabályozza, ilyen a Play áruházból, szüneteltetése, Visszatekerés stb. kell, hogy:
 
-1. Hozzon létre egy HTML-weblap
+1. Hozzon létre egy HTML-oldalt
 2. A videó címke hozzáadása
-3. Adja hozzá a dash.js player
+3. Adja hozzá a Windows Media player dash.js-sel
 4. A Windows Media player inicializálása
-5. Adja hozzá az egyes CSS-stílus
+5. Adjon hozzá néhány CSS-stílus
 6. Az eredmények megtekintése a böngészőben, amely megvalósítja az MSE
 
-A Windows Media player inicializálása a csupán néhány sornyi JavaScript-kód olyan hajthatók végre. Dash.js használ, akkor valóban, amely egyszerű MPEG-DASH videó beágyazása a webböngésző-alapú alkalmazásokat.
+A Windows Media player inicializálása elvégezhető a mindössze néhány sornyi JavaScript-kódot. Dash.js-sel használja, ez valójában, amely egyszerű, MPEG-DASH videók beágyazása a böngészőalapú alkalmazások.
 
-## <a name="creating-the-html-page"></a>A HTML-weblap létrehozása
-Az első lépés az, hogy hozzon létre egy szabványos HTML tartalmazó oldalra a **videó** elem, a fájl basicPlayer.html, a következő példa szemlélteti:
+## <a name="creating-the-html-page"></a>A HTML-oldal létrehozása
+Az első lépés az, hogy hozzon létre egy standard HTML tartalmazó oldalra a **videó** elem, a fájl basicPlayer.html, mint az alábbi példa szemlélteti:
 
 ```html
     <!DOCTYPE html>
@@ -53,17 +54,17 @@ Az első lépés az, hogy hozzon létre egy szabványos HTML tartalmazó oldalra
     </html>
 ```
 
-## <a name="adding-the-dashjs-player"></a>A DASH.js Player hozzáadása
-A dash.js hivatkozás végrehajtása hozzáadni az alkalmazáshoz, az 1.0-ás kiadásba dash.js projekt dash.all.js a fájl adása kell. Ez az alkalmazás a JavaScript mappában mentéséhez. Ezt a fájlt egy olyan kényelmi fájl együtt az összes szükséges dash.js kód lekéri egyetlen fájlba. Ha tekintse meg a dash.js tárház körül, akkor az egyes fájlok található, tesztelni kódot, és még sok más, de ha összes szeretné van használja dash.js, az dash.all.js fájl nem találja.
+## <a name="adding-the-dashjs-player"></a>A dash.js-sel Windows Media Player hozzáadása
+Az alkalmazás ad hozzá a dash.js-sel referenciaimplementációt, szüksége dash.js-sel projekt 1.0-ás kiadásba dash.all.js fájl megnyitása. Ez az alkalmazás JavaScript mappájában menteni kell. Ez a fájl egy kényelmes fájlt, amely a együttesen kéri le a szükséges dash.js-kódot egyetlen fájlba. Ha tekintse meg a dash.js-sel tárház körül, akkor keresse meg az egyes fájlokat, tesztelje a kódot, és még sok más, de minden ehhez van használja dash.js-sel, az dash.all.js fájl nem a következőkre lesz szüksége.
 
-Az alkalmazások a dash.js player hozzáadásához basicPlayer.html központi szakaszába parancsfájl címke hozzáadása:
+Szeretne hozzáadni a dash.js-sel Windows Media player az alkalmazások, a fő szakaszt az basicPlayer.html parancsfájl címke hozzáadása:
 
 ```html
     <!-- DASH-AVC/265 reference implementation -->
     < script src="js/dash.all.js"></script>
 ```
 
-Ezután hozzon létre egy működnek, mint a Windows Media player inicializálni az oldal betöltésekor. Vegye fel a következő parancsfájlt a sort, amelyben dash.all.js betöltése után:
+Ezután hozzon létre egy függvényt, amely a Windows Media player inicializálni az oldal betöltésekor. Adja hozzá a következő szkriptet a sort, amelyben dash.all.js betöltése után:
 
 ```html
     <script>
@@ -79,19 +80,19 @@ Ezután hozzon létre egy működnek, mint a Windows Media player inicializálni
     </script>
 ```
 
-Ez a funkció először létrehoz egy DashContext. Ez az alkalmazás egy adott futásidejű környezet konfigurálására szolgál. Technikai szempontból meghatározza az osztályokat a függőségi injektálási keretrendszer kell használni, amikor az alkalmazás létrehozása. A legtöbb esetben Dash.di.DashContext használja.
+Ez a függvény először létrehoz egy DashContext. Ez az alkalmazás egy adott futtatókörnyezethez konfigurálására szolgál. Egy technikai szempontból meghatározza a osztályokat, amelyeket a függőségi injektálási keretrendszer használnia kell, ha az alkalmazás létrehozása. A legtöbb esetben Dash.di.DashContext használja.
 
-A következő példányosítható dash.js keretrendszer, Media Player elsődleges osztály. Ez az osztály tartalmazza a legfontosabb módszerek, például a szükséges lejátszásához és szüneteltetése, kezeli a videó elem kapcsolattal is kezeli az adathordozó bemutató leírása (MPD) fájlt, amely lejátszható a videó ismerteti a értelmezését.
+Következő lépésként hozza létre az elsődleges osztály az dash.js-sel keretrendszer, a Media Player. Ez az osztály tartalmazza az alapvető módszerek, például a szükséges lejátszásához és szüneteltetése, kezeli a videóelemet rendelkező kapcsolatot és is kezeli az adathordozó bemutató leírása (MPD) fájlt, amely lejátszható a videó ismerteti az értelmezésében.
 
-A Media Player osztály startup() funkciót, hogy a Windows Media player készen áll a videó lejátszása nevezik. Többek között a funkció biztosítja, hogy a szükséges osztályokat (a környezet által meghatározott) lett betöltve. Ha készen áll a Windows Media player, csatolhat a videó elem a attachView() függvény használatával. Az indítási funkció lehetővé teszi, hogy a Media Player a video-adatfolyamot behelyezése elem, és szükség szerint lejátszás is szabályozhatja.
+Annak érdekében, hogy a Windows Media player készen áll a videó lejátszása a Media Player osztály startup() függvény nevezzük. Többek között a funkció biztosítja, hogy a szükséges osztályokat (a környezet által meghatározott) lettek betöltve. Ha készen áll a lejátszó, a attachView() függvény használatával csatolhat a videóelemet. Az indítási függvényben lehetővé teszi a Media Player a video-adatfolyamot behelyezése elem, és szükség szerint lejátszási mennyiségét is szabályozhatja.
 
-Így az tudni fogja, kapcsolatos a videó lejátszása várható a Media Player átadása a MPD fájl URL-CÍMÉT. Az imént létrehozott setupVideo() függvényt kell hajtható végre, ha az oldal teljes mértékben be van töltve. Ezt úgy teheti meg a törzs elem betöltésre. Módosítsa a <body> elemet:
+A Media Player URL-címét a MPD fájl adja meg, hogy azt ismer a videó lejátszásához várható. Az imént létrehozott setupVideo() függvény kell hajtható végre, miután az oldal teljes mértékben be van töltve. Ehhez használja a szervezet elem betöltésre. Módosítsa a <body> elem:
 
 ```html
     <body onload="setupVideo()">
 ```
 
-Végezetül be a videó elem stíluslappal méretének. Adaptív adatfolyam-továbbítási környezetben ez különösen fontos, mert a videó lejátszását méretét, a lejátszás alkalmazkodik a változó hálózati körülmények módosíthatja. Ez egyszerű bemutató a egyszerűen kényszerítése videó elemként 80 %-át a rendelkezésre álló böngészőablakban adja hozzá a következő CSS a head részt a lap:
+Végezetül állítsa a CSS segítségével videóelemet méretét. Adaptív adatfolyam-továbbítási környezetben ez különösen fontos, mert a mérete, a videó lejátszását változhatnak lejátszási alkalmazkodik a változó hálózati körülmények. Az egyszerű bemutató egyszerűen kényszerítése videó elem 80 %-a rendelkezésre álló böngészőablakban adja hozzá a következő CSS a lap a fő szakaszra:
 
 ```html
     <style>
@@ -102,8 +103,8 @@ Végezetül be a videó elem stíluslappal méretének. Adaptív adatfolyam-tov�
     </style>
 ```
 
-## <a name="playing-a-video"></a>A videó lejátszása
-A videó lejátszása, irányítsa a böngészőt a basicPlayback.html fájlt, és a videólejátszó jelenik meg a lejátszás gombra.
+## <a name="playing-a-video"></a>Videó lejátszása
+Videó lejátszása, a basicPlayback.html fájlban a böngészőt, és megjelenik a videólejátszó a lejátszás gombra.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -114,5 +115,5 @@ A videó lejátszása, irányítsa a böngészőt a basicPlayback.html fájlt, �
 ## <a name="see-also"></a>Lásd még:
 [Videolejátszó alkalmazások fejlesztése](media-services-develop-video-players.md)
 
-[GitHub-tárházban dash.js](https://github.com/Dash-Industry-Forum/dash.js) 
+[GitHub-adattár dash.js-sel](https://github.com/Dash-Industry-Forum/dash.js) 
 

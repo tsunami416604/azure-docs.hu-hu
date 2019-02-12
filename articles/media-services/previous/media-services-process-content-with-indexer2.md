@@ -1,61 +1,61 @@
 ---
-title: Az Azure Media Indexer 2 előzetes verziójú médiafájlok indexelő |} Microsoft Docs
-description: Az Azure Media Indexer lehetővé teszi, hogy a médiafájlok tartalmának kereshető és a teljes szöveges Beszélgetés szövegének lezárt feliratok és kulcsszavak készítése. Ez a témakör bemutatja, hogyan Media Indexer 2 előzetes verzió használatára.
+title: Médiafájlokat az Azure Media Indexer 2 előzetes verzió |} A Microsoft Docs
+description: Az Azure Media Indexer lehetővé teszi a médiafájlok tartalom kereshetővé és a egy lezárt a feliratozás és a kulcsszavak teljes szövegű átiratot létrehozása érdekében. Ez a témakör bemutatja, hogyan használja a Media Indexer 2 megtekintése.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/10/2019
 ms.author: adsolank;juliako;
-ms.openlocfilehash: ae06f397fd0ed3f1a1b5ebbdc418abc02789fe91
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dd09e8949c2d71e550d02cd79611a7424d8113fc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790243"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000915"
 ---
-# <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Az Azure Media Indexer 2 előzetes verziójú médiafájlok indexelő
+# <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Médiafájlokat az Azure Media Indexer 2 előzetes verzió
 ## <a name="overview"></a>Áttekintés
-A **Azure Media Indexer 2 Preview** media processzor (MP) teszi lehetővé tegye médiafájlok és a tartalom kereshető, valamint a készítése lezárt feliratok követi nyomon. A régebbi képest [Azure Media Indexer](media-services-index-content.md), **Azure Media Indexer 2 Preview** elvégzi a gyorsabb indexelő és nyelvi szélesebb körű támogatást nyújt. Támogatott nyelvek angol, német, francia, német, olasz, kínai (Mandarin, egyszerűsített), portugál, arab, orosz és japán.
+A **Azure Media Indexer 2 előzetes** médiafeldolgozót. (pont) lehetővé teszi, hogy az adathordozó-fájlok és tartalmak kereshetővé, valamint a készítése a lezárt feliratozási nyomon követi. Az előző verziójú képest [Azure Media Indexer](media-services-index-content.md), **Azure Media Indexer 2 – előzetes** végzi a gyorsabb indexelés és a szélesebb körű támogatást biztosít. Támogatott nyelvek angol, spanyol, francia, német, olasz, kínai (Mandarin, egyszerűsített), portugál, arab, spanyol és japán.
 
-A **Azure Media Indexer 2 Preview** felügyeleti csomag jelenleg előzetes verzió.
+A **Azure Media Indexer 2 előzetes** felügyeleti csomag jelenleg előzetes verzióban érhető el.
 
-Ez a cikk bemutatja, hogyan hozzon létre az indexelési feladatokat **Azure Media Indexer 2 Preview**.
+Ez a cikk bemutatja, hogyan hozhat létre az indexelési feladatok **Azure Media Indexer 2 előzetes**.
 
 > [!NOTE]
-> A következők érvényesek:
+> A következő szempontokat kell figyelembe venni:
 > 
-> Indexer 2 Azure Kínában és Azure Government nem támogatott.
+> Azure China és az Azure Government az Indexer 2 nem támogatott.
 > 
-> Tartalom indexelő, ellenőrizze, világossá beszéd (nélkül háttér zene, zaj, hatások vagy mikrofon hiss) rendelkező médiafájlok használatára. Néhány példa a megfelelő tartalom: értekezletek, előadások vagy bemutatók rögzíti. A következő tartalmat nem lehet megfelelő indexelő: filmek, tévéműsorok, semmi a vegyes hang- és hatást, rosszul rögzített háttérzaj (hiss) tartalmát.
+> Amikor a tartalom indexelése, ügyeljen arra, hogy egyértelmű speech (nélkül háttér zene, zaj, hatások vagy mikrofon hiss) ellátott adathordozó-fájlok használata. Néhány példa a megfelelő tartalom: értekezletek, előadások vagy bemutatók rögzíti. A következő tartalmat nem lehet megfelelő, az indexelés: filmek, tévéműsorok karaktereket a vegyes hang és a hatást, rosszul rögzíti a tartalmat, a háttérzaj (hiss).
 > 
 > 
 
-Ez a cikk részletezi kapcsolatos **Azure Media Indexer 2 Preview** és a .NET-keretrendszerhez készült Media Services SDK-val való használatát ismerteti
+Ez a cikk kapcsolatos részleteket nyújt **Azure Media Indexer 2 előzetes** , és bemutatja, hogyan használja a Media Services SDK for .NET
 
 ## <a name="input-and-output-files"></a>Bemeneti és kimeneti fájlok
-### <a name="input-files"></a>A bemeneti fájlok
+### <a name="input-files"></a>Bemeneti fájlok
 Hang- vagy fájlok
 
 ### <a name="output-files"></a>Kimeneti fájlok
-Az indexelő feladat feliratfájlokat fájlok hozhat létre a következő formátumban:  
+Egy indexelési feladat feliratfájlok hozhat létre a következő formátumban:  
 
 * **SAMI**
 * **TTML**
 * **WebVTT**
 
-Lezárt felirat (CC) az alábbi formátumokban fájlok használhatók hang- és fájlok elérhetővé a fogyatékkal élők nyújtanak segítséget.
+Ezek a formátumok a fájlok használhatók elérhetővé a hang- és videofájlok, a hallás fogyatékkal személyek (CC) felirat lezárva.
 
-## <a name="task-configuration-preset"></a>A feladat konfigurációja (beállítás)
-A feladat létrehozása az indexelő **Azure Media Indexer 2 Preview**, meg kell adnia egy konfigurációs készletet.
+## <a name="task-configuration-preset"></a>A feladat konfigurációs (előre)
+A feladat létrehozása egy indexelő **Azure Media Indexer 2 előzetes**, meg kell adnia egy konfigurációs készletet.
 
-A következő JSON azokat a rendelkezésre álló paramétereket állítja be.
+A következő JSON paramétereket állítja be.
 
 ```json
     {
@@ -74,9 +74,9 @@ A következő JSON azokat a rendelkezésre álló paramétereket állítja be.
 ```
 
 ## <a name="supported-languages"></a>Támogatott nyelvek
-Az Azure Media Indexer 2 Preview beszéd-szöveg (megadásakor a nyelv nevének a feladat konfigurációja, a szögletes zárójelbe használata 4 karakterből álló kódot alább látható módon) a következő nyelveket támogatja:
+Az Azure Media Indexer 2 előzetes hang-szöveg transzformációs (amikor a nyelv nevének megadása a feladat a konfigurációban zárójelben használata 4 karakterből álló kódot alább látható módon) a következő nyelveket támogatja:
 
-* Angol [EnUs]
+* Angol nyelvű [EnUs]
 * Spanyol [EsEs]
 * Kínai (Mandarin, egyszerűsített) [ZhCn]
 * Francia [FrFr]
@@ -87,18 +87,18 @@ Az Azure Media Indexer 2 Preview beszéd-szöveg (megadásakor a nyelv nevének 
 * Japán [JaJp]
 * Orosz [RuRu]
 * Brit angol [EnGb]
-* Mexikói spanyol [EsMx] 
+* Mexikói spanyol [EsMx] 
 
 ## <a name="supported-file-types"></a>Támogatott fájltípusok
 
-További információ a támogatott fájltípusok: a [kodekek/formátum támogatott](media-services-media-encoder-standard-formats.md#input-containerfile-formats) szakasz.
+Támogatott fájlok típusaival kapcsolatos információkért lásd: a [kodekek/formátum támogatott](media-services-media-encoder-standard-formats.md#input-containerfile-formats) szakaszban.
 
 ## <a name="net-sample-code"></a>.NET mintakód
 
-A következő program bemutatja hogyan:
+A következő program mutat be, hogyan:
 
-1. Hozzon létre egy eszközt, és adathordozó-fájl feltöltése az objektumba.
-2. Hozzon létre egy feladatot az indexelési feladat a következő json-készletet tartalmazó konfigurációs fájl alapján:
+1. Hozzon létre egy objektumot, és a egy médiafájlt feltöltése az objektumba.
+2. Hozzon létre egy feladatot egy indexelési feladat a következő json-készletet tartalmazó konfigurációs fájl alapján:
 
     ```json
             {
@@ -116,7 +116,7 @@ A következő program bemutatja hogyan:
             }
     ```
     
-3. A kimeneti fájlok letöltéséhez. 
+3. Töltse le a kimeneti fájlokat. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
@@ -299,7 +299,7 @@ namespace IndexContent
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-[Azure Media Services elemző áttekintése](media-services-analytics-overview.md)
+[Az Azure Media Services analitikai funkcióinak áttekintése](media-services-analytics-overview.md)
 
 [Az Azure Médiaelemzés bemutatók](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

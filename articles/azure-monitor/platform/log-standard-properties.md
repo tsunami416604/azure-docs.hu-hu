@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor Log Analytics-rekordok alapvető tulajdonságok |} A Microsoft Docs
-description: Az Azure Monitor Log Analytics-több adattípusok előforduló tulajdonságait ismerteti.
+title: Az Azure monitorban alapvető tulajdonságainak naplórekordok |} A Microsoft Docs
+description: Az Azure Monitor naplóira adattípusok közös tulajdonságokat ismerteti.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: 27c732a2ddd21401ffbefa727cbb8001ec288293
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 2309e7762ad36f59e0833e675e7012ee3c459e3e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381954"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997039"
 ---
-# <a name="standard-properties-in-log-analytics-records"></a>A Log Analytics-rekordok szabványos tulajdonságai
-Az adatok [Log Analytics](../log-query/log-query-overview.md) rekordkészletet, amelyek mindegyike egy adott adattípus, amely egy egyedi tulajdonságkészlettel rendelkezik van tárolva. Számos adattípusok, amelyek közösek a több típus több alapvető tulajdonságainak lesz. Ez a cikk ismerteti ezeket a tulajdonságokat és példákat, hogyan használhatja ezeket a lekérdezéseket.
+# <a name="standard-properties-in-azure-monitor-log-records"></a>Az Azure Monitor naplórekordok standard tulajdonságok
+Naplóadatok az Azure monitorban [tárolt rekordkészletet és](../log-query/log-query-overview.md), amelyek mindegyike egy adott adattípus, amely egy egyedi tulajdonságkészlettel rendelkezik. Számos adattípusok, amelyek közösek a több típus több alapvető tulajdonságainak lesz. Ez a cikk ismerteti ezeket a tulajdonságokat és példákat, hogyan használhatja ezeket a lekérdezéseket.
 
 Ezek a tulajdonságok néhány létrehozás folyamatban van megvalósítva, így előfordulhat, hogy megjelennek az egyes adattípusok, de még nincs a többi.
 
@@ -39,7 +39,7 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-## <a name="type"></a>Típus
+## <a name="type"></a>Typo
 A **típus** tulajdonság nevét tárolja a tábla, hogy a rekord, amelyből beolvasták is is értelmezhetők, a rekord típusa. Ez a tulajdonság akkor hasznos, a lekérdezések, amelyek több táblából, például rekordok a `search` operátor szerinti szűrése, megkülönböztetni a különböző típusú rekordok. **$table** helyén használható **típus** egyes helyeken.
 
 ### <a name="examples"></a>Példák
@@ -151,6 +151,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>További lépések
 
-- További információk [Log Analytics-adatok tárolt](../log-query/log-query-overview.md).
-- Gyorsan egy leckében a [lekérdezések írása a Log Analytics](../../azure-monitor/log-query/get-started-queries.md).
-- Gyorsan egy leckében a [a táblázatok összekapcsolása a Log Analytics-lekérdezések](../../azure-monitor/log-query/joins.md).
+- További információk [tárolt naplóadatokat az Azure Monitor](../log-query/log-query-overview.md).
+- Gyorsan egy leckében a [log-lekérdezések írása](../../azure-monitor/log-query/get-started-queries.md).
+- Gyorsan egy leckében a [a táblázatok összekapcsolása a naplólekérdezések](../../azure-monitor/log-query/joins.md).

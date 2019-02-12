@@ -1,5 +1,5 @@
 ---
-title: Összegyűjtheti és elemezheti a Syslog-üzeneteket a Log Analytics Rendszereben |} A Microsoft Docs
+title: Összegyűjtheti és elemezheti a Syslog-üzeneteket az Azure Monitor |} A Microsoft Docs
 description: Syslog-esemény naplózása protokoll, amely Linux közös. Ez a cikk ismerteti a Syslog-üzeneteket gyűjteményét konfigurálása a Log Analytics és az általuk létrehozott rekordok részleteit.
 services: log-analytics
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 6af1dcd6ffac1722ed39f8fe69f3d78aa4ed8313
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: fb59740289caffaf8325aa75aaf8ae649611b347
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104420"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991633"
 ---
-# <a name="syslog-data-sources-in-log-analytics"></a>A Log Analytics Syslog-adatforrások
-Syslog-esemény naplózása protokoll, amely Linux közös.  Alkalmazások küld üzeneteket, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtő lett elküldve.  A Linuxhoz készült Log Analytics-ügynök telepítve van, konfigurálja a továbbított üzenetek az ügynöknek a helyi Syslog démon.  Az ügynök ezután elküldi az üzenetet a Log Analytics, ahol létrejön egy megfelelő bejegyzés.  
+# <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-adatforrások az Azure monitorban
+Syslog-esemény naplózása protokoll, amely Linux közös.  Alkalmazások küld üzeneteket, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtő lett elküldve.  A Linuxhoz készült Log Analytics-ügynök telepítve van, konfigurálja a továbbított üzenetek az ügynöknek a helyi Syslog démon.  Az ügynök ezután elküldi az üzenetet az Azure Monitor, ahol létrejön egy megfelelő bejegyzés.  
 
 > [!NOTE]
-> A log Analytics támogatja az üzeneteket a rsyslog vagy syslog-ng, ahol rsyslog-e az alapértelmezett démon gyűjteménye. Red Hat Enterprise Linux, CentOS és Oracle Linux-verzió (sysklog) 5-ös verzióját az alapértelmezett syslog démon nem támogatott a syslog-események gyűjtése. A syslog-adatok gyűjtésére ezek disztribúciók jelen verziója a [rsyslog démonnal](http://rsyslog.com) telepíteni és konfigurálni kell az sysklog helyett.
+> Az Azure Monitor támogatja az üzeneteket a rsyslog vagy syslog-ng, ahol rsyslog-e az alapértelmezett démon gyűjteménye. Red Hat Enterprise Linux, CentOS és Oracle Linux-verzió (sysklog) 5-ös verzióját az alapértelmezett syslog démon nem támogatott a syslog-események gyűjtése. A syslog-adatok gyűjtésére ezek disztribúciók jelen verziója a [rsyslog démonnal](http://rsyslog.com) telepíteni és konfigurálni kell az sysklog helyett.
 >
 >
 

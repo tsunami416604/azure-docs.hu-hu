@@ -1,6 +1,6 @@
 ---
-title: Munkaterületek kezelése az Azure Log Analyticsben és az OMS-portálon | Microsoft Docs
-description: Az Azure Log Analytics és az OMS-portál munkaterületeinek kezeléséhez különféle adminisztratív feladatokat végezhet el a felhasználókon, fiókokon, munkaterületeken és Azure-fiókokon.
+title: Az Azure monitorban Log Analytics munkaterületeinek kezeléséhez |} A Microsoft Docs
+description: Kezelheti a Log Analytics-munkaterületek az Azure Monitor használatával különféle felügyeleti feladatokat a felhasználók, fiókok, munkaterületeken és Azure-fiókokon.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,18 +11,17 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 32a31a87bacbb13cd3b2cb4561ac04e54d51ba46
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 4a777c2bd57d40b4bb6c8d36c996b655cb019e5f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656753"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005369"
 ---
-# <a name="manage-workspaces"></a>Munkaterületek kezelése
-
-A Log Analyticshez való hozzáférés kezeléséhez a munkaterületekhez kapcsolódó különféle adminisztratív feladatokat kell végrehajtania. Ez a cikk praktikus tanácsokat és kezelheti a munkaterületeket. A munkaterület lényegében egy tároló, amely a fiók adatait és egyszerű konfigurációs adatait tartalmazza. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.
+# <a name="manage-log-analytics-workspaces-in-azure-monitor"></a>Az Azure monitorban Log Analytics munkaterületeinek kezeléséhez
+Az Azure Monitor-tárolók adatok jelentkezzen be a Log Analytics-munkaterület, amely lényegében, ha egy tároló, amely adatot és konfigurációs információt tartalmazza. Az adatok hozzáférésének kezelése, munkaterületekhez kapcsolódó különféle adminisztratív feladatokat végezhet. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.
 
 Munkaterület létrehozásához az alábbiak szükségesek:
 
@@ -32,11 +31,11 @@ Munkaterület létrehozásához az alábbiak szükségesek:
 4. Földrajzi hely kiválasztása.
 
 ## <a name="determine-the-number-of-workspaces-you-need"></a>A szükséges munkaterületek számának meghatározása
-A munkaterület egy Azure-erőforrás, továbbá egy tároló is, amelyben az adatok összegyűjtése, összesítése, elemzése és az Azure Portalon való megjelenítése történik.
+Log Analytics-munkaterületet egy Azure-erőforrás és egy tárolót az adatokat, gyűjtött, összesítése, elemzése, és jelenik meg az Azure monitorban.
 
-Azure-előfizetésenként több munkaterülettel rendelkezhet, több munkaterülethez is hozzáférhet, és ezek között egyszerűen hajthat végre lekérdezéseket. Ez a szakasz azt ismerteti, hogy mikor lehet hasznos egynél több munkaterület létrehozása.
+Azure-előfizetésenként több munkaterülettel rendelkezhet, és lehetővé teszi az egyszerű lekérdezésére, egynél több munkaterülethez férhet. Ez a szakasz azt ismerteti, hogy mikor lehet hasznos egynél több munkaterület létrehozása.
 
-A munkaterületek jelenleg a következőket biztosítják:
+Log Analytics-munkaterületet biztosít:
 
 * Egy földrajzi helyet az adattárolás számára
 * Az adatok elkülönítését a különböző felhasználói hozzáférési jogosultságokat meghatározása
@@ -44,7 +43,7 @@ A munkaterületek jelenleg a következőket biztosítják:
 
 Felhasználás szempontjából javasoljuk, hogy a lehető legkevesebb munkaterületek hoz létre. Gyorsabb és egyszerűbb felügyelet és a lekérdezések adatbeolvasási. Azonban a fenti jellemzők alapján, érdemes több munkaterületet létrehozni:
 
-* Globális vállalatként az adatokat elkülönítési vagy megfelelőségi okok miatt külön régiókban kell tárolnia.
+* Globális és az adatok szuverenitását vagy megfelelőségi okok miatt külön régiókban tárolt adatok kell jelentkezik.
 * Az Azure-t használja, és a kimenő adatátviteli díjak elkerülése érdekében ugyanabban a régióban szeretne létesíteni egy munkaterületet, amelyikben az általa kezelt Azure-erőforrás is található.
 * Szeretné költségeket különböző részlegekre vagy üzleti csoportokra használat alapján hozzon létre egy munkaterületet, az egyes részlegek vagy üzleti csoport a saját Azure-előfizetésében.
 * Felügyelt szolgáltatást kínál, és az egyes felügyelt ügyfelek naplóelemzési adatait külön kell tárolnia a többi ügyfél adataitól.
@@ -55,16 +54,14 @@ Ha az adatgyűjtéshez Windows-ügynököket használ, [konfigurálhatja úgy az
 A System Center Operations Manager használata esetén az Operations Manager egyes felügyeleti csoportjai csak egy munkaterülethez csatlakoztathatók. Telepítheti a Microsoft Monitoring Agentet az Operations Manager által felügyelt számítógépekre, és beállíthatja az ügynököt úgy, hogy az Operations Managernek és egy másik Log Analytics-munkaterületnek is küldjön jelentést.
 
 ## <a name="workspace-information"></a>Munkaterület-információk
+A Log Analytics-munkaterületen lévő adatok elemzéséhez, míg a **Azure Monitor** az Azure portal menüjében létrehozásához és kezeléséhez a munkaterületeket, a **Log Analytics-munkaterületek** menü.
+ 
 
-A munkaterületek adatait az Azure Portalon tekintheti meg. 
-
-1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-
-2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.  
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) kattintson **minden szolgáltatás**. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Log Analytics** munkaterületek.  
 
     ![Azure Portal](media/manage-access/azure-portal-01.png)  
 
-3. Az a Log Analytics-előfizetések ablaktábláján válasszon egy munkaterületet.
+3. Válassza ki a munkaterületet a listából.
 
 4. A munkaterület oldalán a kezdeti lépések, a konfiguráció és a hivatkozások további információkat jeleníti meg.  
 
@@ -84,10 +81,10 @@ Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 | Munkaterület létrehozása az Azure Portalon                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
 
 
-### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>A Log Analyticshez való hozzáférés szabályozása Azure-engedélyekkel
+### <a name="managing-access-to-log-analytics-workspace-using-azure-permissions"></a>Azure-engedélyekkel Log Analytics-munkaterülethez való hozzáférés kezelése
 Ha Azure-engedélyekkel kíván hozzáférést biztosítani a Log Analytics-munkaterülethez, kövesse [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../../role-based-access-control/role-assignments-portal.md) című rész lépéseit.
 
-Az Azure két beépített felhasználói szerepkört biztosít a Log Analyticshez:
+Az Azure Log Analytics-munkaterületek a két beépített felhasználói szerepkörökhöz rendelkezik:
 - Log Analytics olvasó
 - Log Analytics közreműködő
 
@@ -149,5 +146,4 @@ Azt javasoljuk, hogy a pontos hozzáférés-vezérlés biztosítása érdekében
 ## <a name="next-steps"></a>További lépések
 * Lásd: [Log Analytics-ügynök – áttekintés](../../azure-monitor/platform/log-analytics-agent.md) gyűjthet velük adatokat az adatközpontban vagy egyéb felhőalapú környezetben lévő számítógépekről.
 * Az adatgyűjtés Azure-beli virtuális gépekről való konfigurálásáról lásd: [Adatgyűjtés Azure-beli virtuális gépekről](../../azure-monitor/learn/quick-collect-azurevm.md).  
-* A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](../../azure-monitor/insights/solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
 

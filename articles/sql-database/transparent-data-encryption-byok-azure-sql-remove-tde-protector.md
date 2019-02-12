@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/12/2018
-ms.openlocfilehash: 8ffda7fd1b987e34dc0e8157b535ccef65571247
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 95a86dafc4705d58ac459ff57e4f221d19fb7a37
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567893"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990291"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Távolítsa el a transzparens adattitkosítás (TDE) védőelem a PowerShell használatával
 
@@ -25,11 +25,11 @@ ms.locfileid: "55567893"
 
 - Azure-előfizetés és a lehet az előfizetés-rendszergazda
 - Rendelkeznie kell Azure PowerShell 4.2.0-s verzió vagy újabb telepítése és futtatása. 
-- Ez az útmutató feltételezi, hogy már használja egy kulcs Azure Key vault a TDE-védőhöz, egy Azure SQL Database vagy Data warehouse-bA. Lásd: [transzparens adattitkosítás BYOK-támogatással](transparent-data-encryption-byok-azure-sql.md) további.
+- Ez az útmutató feltételezi, hogy már használja egy kulcs Azure Key vault a TDE-védőhöz, egy Azure SQL Database vagy Data warehouse-bA. Lásd: [transzparens adattitkosítás az Azure Key Vault-integráció - BYOK-támogatással](transparent-data-encryption-byok-azure-sql.md) további.
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az útmutató azt ismerteti, hogyan reagáljon a potenciálisan veszélyeztetett TDE-védőhöz egy Azure SQL Database vagy az adattárház, amely a TDE támogatással Bring Your Own Key (BYOK) használ. TDE BYOK-támogatással kapcsolatos további információkért tekintse meg a [áttekintőlapján](transparent-data-encryption-byok-azure-sql.md). 
+Ez az útmutató azt ismerteti, hogyan reagáljon a potenciálisan veszélyeztetett TDE-védőhöz egy Azure SQL Database vagy az adattárház, amely az ügyfél által felügyelt kulcsok Azure Key Vault - Bring Your Own Key (BYOK) támogatása a TDE használ. TDE BYOK-támogatással kapcsolatos további információkért tekintse meg a [áttekintőlapján](transparent-data-encryption-byok-azure-sql.md). 
 
 Az alábbi eljárások csak szélsőséges esetben vagy tesztelési környezetben kell végrehajtani. Tekintse át alaposan útmutatója, mint aktívan használt TDE törlése az Azure Key Vault protectors eredményezhet **adatvesztés**. 
 

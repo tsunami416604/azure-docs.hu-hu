@@ -1,6 +1,6 @@
 ---
-title: Keresési lekérdezéseket a Log Analytics Rendszereben |} A Microsoft Docs
-description: Ez a cikk ismerteti az első lépések oktatóanyag keresési lekérdezések írása a Log Analyticsben.
+title: Keresési lekérdezéseket az Azure Monitor naplóira |} A Microsoft Docs
+description: Ez a cikk egy oktatóanyag, az első lépések a search használatával az Azure Monitor log-lekérdezések.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 1f3131585a8f6581690eda777b8ffc96768b3cc6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cda66b91a0e829ec3bc84a82c190b9d856827ad3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882539"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004451"
 ---
-# <a name="search-queries-in-log-analytics"></a>A Log Analytics keresési lekérdezések
+# <a name="search-queries-in-azure-monitor-logs"></a>Keresési lekérdezések az Azure Monitor naplóira
 
 > [!NOTE]
-> Hajtsa végre [Ismerkedés a Log Analytics lekérdezéseinek](get-started-queries.md) ebben a leckében befejezése előtt.
+> Hajtsa végre [Ismerkedés az Azure Monitor log-lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Az Azure Log Analytics-lekérdezések egy Táblanév vagy a keresési parancs indítható. Ez az oktatóanyag bemutatja a search-alapú lekérdezések. Nincsenek előnye az, hogy az egyes módszerek.
+Az Azure Monitor log-lekérdezések megkezdheti a táblanév vagy a keresési parancsot. Ez az oktatóanyag bemutatja a search-alapú lekérdezések. Nincsenek előnye az, hogy az egyes módszerek.
 
 Tábla-alapú lekérdezések első lépésként hatókörének beállítása a lekérdezést, és ezért általában a hatékonyabb, mint a keresési lekérdezések. Keresési lekérdezések olyan kisebb strukturált, ami lehetővé teszi őket a jobb választás egy adott érték keresése oszlopok vagy táblázatok között. **Keresés** beolvashatja az összes oszlop az adott táblában, vagy az összes tábla megadott értéket. Feldolgozott adatok mennyisége lehet hatalmas, ezért ezeket a lekérdezéseket sikerült hosszabb időt vesz igénybe, ezért előfordulhat, hogy a nagyon nagy eredményhalmazt visszaadása.
 
@@ -144,4 +144,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>További lépések
 
-- További oktatóanyagok tekintse meg a [Log Analytics lekérdezési nyelv hely](https://aka.ms/LogAnalyticsLanguage).
+- További oktatóanyagok tekintse meg a [adatkezelő lekérdezési nyelv hely](/azure/kusto/query/).

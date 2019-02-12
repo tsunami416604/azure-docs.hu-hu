@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 01/21/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 26721aa0eac69875f6a3704025e6ab71a54a1e31
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 086816bdb93873a39575564496cf043797f3a530
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078100"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993265"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés? 
 
@@ -34,9 +34,9 @@ Ez a cikk a helyfeltétel konfigurálásához szükséges információkat biztos
 
 Az Azure AD lehetővé teszi, hogy egyszeri bejelentkezést az eszközöket, alkalmazásokat és szolgáltatásokhoz bárhonnan a nyilvános interneten. A hely a feltétellel a felhőalkalmazásokhoz, a felhasználó hálózati helye alapján szabályozhatja a hozzáférést. A hely feltétel gyakori alkalmazási helyzetek a következők:
 
-- A felhasználók a szolgáltatás elérésére, amelyek a vállalati hálózatról a multi-factor authentication megkövetelése  
+- Többtényezős hitelesítés megkövetelése a felhasználók a szolgáltatás elérésére, amelyek a vállalati hálózatról.
 
-- Blokkolja a hozzáférést a felhasználók bizonyos országokban vagy régiókban a szolgáltatás elérésére. 
+- Blokkolja a hozzáférést a felhasználók bizonyos országokban vagy régiókban a szolgáltatás elérésére.
 
 Egy hely a címkét, egy hálózati helyre, vagy jelöli egy elnevezett helyet, vagy a multi-factor authentication megbízható IP-címek.
 
@@ -62,9 +62,9 @@ Egy elnevezett helye a következő összetevőket tartalmazza:
 
 - **Megjelölés megbízható helyként** -jelzőt beállíthat egy elnevezett helyet megbízható helyen jelzi. Megbízható helyek jellemzően az IT-részleg által vezérelt hálózati területek. Feltételes hozzáférés mellett megbízható nevesített helyek is használják az Azure Identity Protection és az Azure AD biztonsági jelentések csökkentése érdekében [vakriasztások](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 
-- **Ország / régió** – Ez a beállítás lehetővé teszi egy vagy több országban vagy régióban, adjon meg egy nevesített. 
+- **Országok/régiók** – Ez a beállítás lehetővé teszi egy vagy több országban vagy régióban, adjon meg egy nevesített. 
 
-- **Ismeretlen területek belefoglalása** -néhány IP-címek nincsenek leképezve egy adott országban. Ezzel a beállítással kiválaszthatja, ha az IP-címeket kell szerepelnie a nevű helyen. Ezek lehet ellenőrzés esetén a szabályzat segítségével az elnevezett hely alkalmazni kell az ismeretlen helyekkel.
+- **Ismeretlen területek belefoglalása** -néhány IP-címek nincsenek leképezve egy adott országban. Ezzel a beállítással kiválaszthatja, ha az IP-címeket kell szerepelnie a nevű helyen. Használja ezt a beállítást, ha ismeretlen helyekről alkalmazni kell a házirendet, a nevesített hely használatával.
 
 Az Azure ad-ben a kapcsolódó objektum mérete konfigurálható nevesített helyek száma korlátozza. Konfigurálhatja:
 
@@ -87,7 +87,7 @@ A beállítások lapon a multi-factor authentication szolgáltatás, azonosítha
 
 Ezt a beállítást az ellenőrzés után többek között a névvel rendelkező hely **MFA megbízható IP-CÍMEK** a kiválasztott bármely szabályzat érvényes lesz.
 
-Asztali és mobil alkalmazások, amelyek hosszú éltek meg a munkamenetek élettartamát, a feltételes hozzáférés rendszeres időközönként újraértékelése is megtörténik. Az alapértelmezett érték egyszer egy óra. Ha a belső vállalati hálózaton jogcím, és csak az első hitelesítés alkalmával kiállított, az Azure AD nem rendelkezik a megbízható IP-címtartományok listáját. Ebben az esetben nehezebb annak megállapításához, hogy a felhasználó továbbra is a vállalati hálózaton:
+Asztali és mobil alkalmazások, amelyek hosszú éltek meg a munkamenetek élettartamát, a feltételes hozzáférés rendszeres időközönként újraértékelése is megtörténik. Az alapértelmezett érték egyszer egy óra. Ha a belső vállalati hálózathoz csak jogcímet az első hitelesítés alkalmával, előfordulhat, hogy az Azure AD nem rendelkezik a megbízható IP-címtartományok listáját. Ebben az esetben nehezebb annak megállapításához, hogy a felhasználó továbbra is a vállalati hálózaton:
 
 1. Ellenőrizze, hogy a felhasználó IP-cím van-e a megbízható IP-címtartományok egyikében.
 
@@ -150,7 +150,7 @@ Hozzon létre vagy frissítésekor nevesített helyek tömeges frissítéshez fe
 
 ### <a name="cloud-proxies-and-vpns"></a>Felhőbeli proxyk és a VPN-EK 
 
-Egy felhőben üzemeltetett proxy- vagy VPN-megoldást használ, az IP-cím az Azure AD használja pedig egy házirend kiértékelése a proxy IP-címét. A nyilvános IP-címet nem használja, mert nem történik ellenőrzés, amely egy megbízható forrásból származik a felhasználókat tartalmazó X-Forwarded-For (XFF) fejléc így jelentene IP-cím faking módját. 
+Egy felhőben üzemeltetett proxy- vagy VPN-megoldást használ, az IP-cím az Azure AD használja pedig egy házirend kiértékelése a proxy IP-címét. A X-Forwarded-For (XFF) fejlécet, amely tartalmazza a nyilvános IP-cím a felhasználó nem használja, mivel nem történik ellenőrzés, így az IP-cím faking módszert bemutatja egy megbízható forrásból származik. 
 
 Ha egy felhőbeli proxy van-e, olyan szabályzatot, amely használható egy tartományba léptetett eszköz megkövetelése szolgál, vagy a belső vállalati hálózaton kívüli jogcímek az AD FS.
 

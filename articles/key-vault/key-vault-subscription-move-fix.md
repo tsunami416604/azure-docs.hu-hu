@@ -13,14 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: ea6fc4b155075084150d5bb732f3f8a08846974f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 975a020cb6dee5881c6addaafa0cf7d2b75368be
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074308"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996270"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="q-my-subscription-was-moved-from-tenant-a-to-tenant-b-how-do-i-change-the-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>KÉRDÉS: Az előfizetésem át lett helyezve az A bérlőből a B bérlőbe. Hogyan módosíthatom a meglévő kulcstartó bérlőazonosítóját, és hogyan állíthatom be megfelelően a résztvevők hozzáférés-vezérlési listáját (ACL) a B bérlőben?
 
@@ -33,17 +35,17 @@ Amikor új kulcstartót hoz létre egy előfizetésben, az automatikusan annak a
 Ha például a „kucstarto” kulcstartót használja egy olyan előfizetésben, amelyet áthelyezett az A bérlőtől a B bérlőhöz, a következőképpen módosíthatja a kulcs bérlőazonosítóját, és törölheti a régi hozzáférési szabályzatokat.
 
 <pre>
-Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
-$vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId
-$vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties
-$vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId
+Select-AzSubscription -SubscriptionId YourSubscriptionID
+$vaultResourceId = (Get-AzKeyVault -VaultName myvault).ResourceId
+$vault = Get-AzResource –ResourceId $vaultResourceId -ExpandProperties
+$vault.Properties.TenantId = (Get-AzContext).Tenant.TenantId
 $vault.Properties.AccessPolicies = @()
-Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
+Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>
 
-Ez a kulcstartó az áthelyezést megelőzően az A bérlőhöz tartozott, ezért a **$vault.Properties.TenantId** eredeti értéke az A bérlő, a **(Get-AzureRmContext).Tenant.TenantId** értéke pedig B bérlő.
+Mivel ez a kulcstartó előzőleg az eredeti értéke az áthelyezést megelőzően az a bérlőhöz **$vault. Properties.TenantId** a bérlő, ideje **(Get-AzContext). Tenant.TenantId** értéke pedig b bérlő.
 
-A kulcstartó most már a helyes bérlőazonosítóhoz van társítva, a régi hozzáférésiszabályzat-bejegyzések pedig törölve vannak, tehát beállíthatja az új hozzáférésiszabályzat-bejegyzéseket a [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) parancsmaggal.
+Most, hogy a tároló társítva a helyes Bérlőazonosítóhoz, és a régi hozzáférésiszabályzat-bejegyzések el lesznek távolítva, beállíthatja az új hozzáférésiszabályzat-bejegyzéseket a [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy).
 
 ## <a name="next-steps"></a>További lépések
 

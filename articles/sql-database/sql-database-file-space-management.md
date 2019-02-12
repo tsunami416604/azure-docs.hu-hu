@@ -11,15 +11,16 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 94b793d4ab68ae4d2b8a28961d76eed1ea875ff7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: cf73708682a8434ffabaff101d6d6928671af4b6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468631"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003720"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Lapozófájl-terület az Azure SQL Database kezelése
+
 Ez a cikk ismerteti a különböző típusú tárterület az Azure SQL Database és a lépések, amelyeket elvégezhet a fájlhely lefoglalt adatbázisok és rugalmas adatbáziskészletekhez explicit módon kell kezelnie.
 
 ## <a name="overview"></a>Áttekintés
@@ -33,11 +34,14 @@ A következő esetekben szükség lehet a fájlterület használatának monitoro
 - Ha lehetővé szeretné tenni egy önálló adatbázis vagy rugalmas készlet módosítását egy másik, kisebb maximális méretű szolgáltatási vagy teljesítményszintre.
 
 ### <a name="monitoring-file-space-usage"></a>Fájl lemezterület-használat figyelése
+
 A legtöbb tárolási hely metrikák jelennek meg az Azure portal és a következő API-k csak mérésére használt lapok mérete:
+
 - Az Azure Resource Manager-alapú API-k metrikák többek között a PowerShell [get-metrikák](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Azonban a következő API-kat is mérheti az adatbázisok és rugalmas lefoglalt terület méretét készletek:
+
 - T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
@@ -62,13 +66,14 @@ A következő tárolási hely mennyiségek ismertetése fontosak a lapozófájl-
 
 A következő ábra szemlélteti a különböző típusú tárterület-adatbázis közötti kapcsolat.
 
-![tárolási hely adattípusok és a kapcsolatok](./media/sql-database-file-space-management/storage-types.png) 
+![tárolási hely adattípusok és a kapcsolatok](./media/sql-database-file-space-management/storage-types.png)
 
 ## <a name="query-a-database-for-storage-space-information"></a>Egy adatbázis a tárolási terület adatainak lekérdezése
 
 A következő lekérdezések segítségével határozza meg a tárolási terület mennyisége adatbázishoz.  
 
 ### <a name="database-data-space-used"></a>Használt adatbázis-adatterület
+
 Módosítsa a következő lekérdezést, a használt adatbázis-adatok terület mennyiségét adja vissza.  A lekérdezés eredményének egységek olyan MB-ban.
 
 ```sql
@@ -81,6 +86,7 @@ ORDER BY end_time DESC
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Adatbázis adatait a lefoglalt terület és a fel nem használt lefoglalt terület
+
 Használja a következő lekérdezést a adatbázis adatait a lefoglalt terület mennyisége és a fel nem használt lefoglalt terület mennyisége visszaadása.  A lekérdezés eredményének egységek olyan MB-ban.
 
 ```sql
@@ -94,6 +100,7 @@ HAVING type_desc = 'ROWS'
 ```
  
 ### <a name="database-data-max-size"></a>Adatbázis adatainak maximális mérete
+
 Módosítsa a következő lekérdezés az adatbázis adatainak maximális méretét adja vissza.  A lekérdezés eredményének egységek bájtban vannak megadva.
 
 ```sql

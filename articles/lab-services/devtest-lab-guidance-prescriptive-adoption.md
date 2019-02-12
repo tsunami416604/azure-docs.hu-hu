@@ -3,21 +3,23 @@ title: Az Azure DevTest Labs elfogadják a vállalat számára
 description: Ez a cikk az Azure DevTest Labs bevezetése a vállalati részletes útmutatást.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
-author: spelluru
+author: christianreddington
+editor: spelluru
 manager: femila
 ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
-ms.author: spelluru
-ms.openlocfilehash: 5b4a52327227ecd650ee38d60f6bdfcc6bf20056
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 02/11/2019
+ms.author: chredd
+ms.reviewer: anthdela,juselph
+ms.openlocfilehash: b237162e2371888ed38ffbf5bd8b9e987cf60ed5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251043"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993316"
 ---
 # <a name="set-up-azure-devtest-labs-infrastructure-in-your-enterprise"></a>A vállalat az Azure DevTest Labs-infrastruktúra beállítása
 Vállalatok számára, akik vezetnek be a felhőben gyorsan előnyt kínál a rugalmasság, a rugalmasság és a felhőtárolás perspektíva miatt. A szokásos első lépése a felhőbe migrálja fejlesztési és tesztelési számítási feladatokat. Van olyan közös vethet fel ezeket a feladatokat, például a következő eszközök áttelepítésekor: 

@@ -4,7 +4,7 @@ description: Ez a cikk bemutatja, hogyan a content protection-szabályzatok konf
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: c46faf2298ebaac4f40fb1d18cbfca83076e0d4f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dc5439c98b5abc69b6cb1ba144e015426bb887ce
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423546"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996944"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>A content protection-szabályzatok konfigurálása az Azure portal használatával
  Az Azure Media Services akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési kezdve a media gondoskodhat. A Media Services segítségével a 128 bites titkosítás kulcsok használatával dinamikusan és az Advanced Encryption Standard (AES) titkosított tartalmat. Is használhatja az általános titkosítás (CENC) a PlayReady és/vagy Widevine digitális jogkezelési (technológia DRM), és az Apple FairPlay használatával. 
@@ -90,10 +90,10 @@ Az összes eszköz megtekintéséhez válasszon **beállítások** > **eszközö
 ![Eszközök lehetőség](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
 ### <a name="encrypt-with-aes-or-drm"></a>Az AES vagy DRM titkosítása
-Ha bejelöli **titkosítása** az adott eszköz számára a két választási lehetőség látja: **AES** vagy **DRM**. 
+Ha bejelöli **titkosítása** az adott eszköz számára a két választási lehetőség láthatja: **AES** vagy **DRM**. 
 
 #### <a name="aes"></a>AES
-AES tiszta kulcs titkosítás engedélyezve van az összes streamelési protokollhoz: Smooth Streaming, HLS és MPEG-DASH.
+Az AES tiszta kulcs titkosítás engedélyezve van az összes streamelési protokollhoz: Smooth Streaming, HLS és MPEG-DASH.
 
 ![Titkosítási konfiguráció](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 

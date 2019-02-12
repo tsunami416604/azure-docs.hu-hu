@@ -1,10 +1,10 @@
 ---
-title: Az Azure Media Services-Közösség áttekintése |} Microsoft Docs
-description: 'Az Azure Media Services (AMS)-Közösség oldalára, láthatja AMS vonatkozó frissítések letöltése, új videók és podcastok, kérdései vannak, és visszajelzést adhat a különböző módszereket ismerteti. '
+title: Az Azure Media Services-Közösség – áttekintés |} A Microsoft Docs
+description: 'Az Azure Media Services (AMS) közösségi oldalon láthatja kapcsolatos AMS-frissítések, új videók és podcastok, kérdéseket tehet fel, és küldje el visszajelzését a különböző módokon ismerteti. '
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0df020f4-8297-4f31-92bf-de098283e997
 ms.service: media-services
@@ -12,54 +12,55 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: dc6a1259eb3bb15793d0b48a883d4bbfb69e48c3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 641218e6a9a366d8c3b0d269223a98c08b860bdb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788157"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001153"
 ---
-# <a name="azure-media-services-community"></a>Azure Media Services-közösség
-Az Azure Media Services (AMS)-Közösség oldalára, kaphat frissítéseire vonatkozó AMS különböző módját tárgyalja. Is megtekintheti új videók és podcastok, kérdéseit és visszajelzés küldése.   
+# <a name="azure-media-services-community"></a>Azure Media Services-közösség  
 
-## <a name="videos-and-podcasts"></a>Podcastok és videók
+Az Azure Media Services (AMS) közösségi oldalai különböző módon kérheti a frissítések kapcsolatos AMS ismerteti. Is megtekintheti az új videók és podcastok, kérdéseket tehet fel és küldje el visszajelzését.   
 
-- [A médiatartalom és DRM védelme](https://azure.microsoft.com/documentation/videos/azurefridayprotectingyourmediacontentdrm/) 
-- [A médiatartalom AES titkosítással védi](https://azure.microsoft.com/documentation/videos/azure-media-services-protecting-your-media-content-with-aes-encryption/) 
-- [Az Azure Media Services-fejlesztői részletes bemutatója](https://azure.microsoft.com/documentation/videos/build-2015-azure-media-services-developer-deep-dive/) 
-- [Az Azure Media Indexer hozza létre automatikusan ki a médiához](https://azure.microsoft.com/documentation/videos/azure-media-indexer-autoatically-creates-transcripts-for-your-media-with-adarsh-solanki/)  
+## <a name="videos-and-podcasts"></a>Videók és podcastok
+
+- [A médiatartalmak védelmének DRM-](https://azure.microsoft.com/documentation/videos/azurefridayprotectingyourmediacontentdrm/) 
+- [A médiatartalmak védelmének AES titkosítással](https://azure.microsoft.com/documentation/videos/azure-media-services-protecting-your-media-content-with-aes-encryption/) 
+- [Az Azure Media Services fejlesztői részletes bemutatása](https://azure.microsoft.com/documentation/videos/build-2015-azure-media-services-developer-deep-dive/) 
+- [Az Azure Media Indexer automatikusan létrehozza az adathordozó szövegekben](https://azure.microsoft.com/documentation/videos/azure-media-indexer-autoatically-creates-transcripts-for-your-media-with-adarsh-solanki/)  
 
 
-## <a name="provide-feedback-and-make-suggestions"></a>Visszajelzés küldése és javaslatokat
+## <a name="provide-feedback-and-make-suggestions"></a>Visszajelzést, és javaslatokat
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Az ismertető
+## <a name="discussion"></a>Hozzászólások
 ### <a name="twitter"></a>Twitter
-Használja a [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) twitter leíró, lépjen velünk kapcsolatba, vagy hajtsa végre a frissítést a Twitteren. Használhatja a [ @AzureSupport ](https://twitter.com/azuresupport) twitter leíró kérjen támogatást a Twitteren.  
+Használja a [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) twitter-leírót, lépjen kapcsolatba velünk, vagy hajtsa végre a frissítéseket a Twitteren. Használhatja a [ @AzureSupport ](https://twitter.com/azuresupport) twitter-leírót kérjen támogatást a Twitteren.  
 
 ### <a name="online-forums"></a>Online fórumok
-A következő fórumok kérdéseket feltenni aktuális termékekkel és szolgáltatásokkal kapcsolatban használható.
+A következő fórumok aktuális termékekkel és szolgáltatásokkal kapcsolatos kérdések feltevéséhez használható.
 
-MSDN jelenleg Media Services team elsődleges közösségi fórum.
+Jelenleg az MSDN a Media Services team elsődleges közösségi fórum.
 
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
-A csapat is figyeli a Stack overflow oldalon az "azure-media-services" címkézett kérdéseket.
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-media-services) 
+A csapat is figyeli a Stack overflow oldalon az "azure-media-services" címkével ellátott kérdések.
+[![Stackoverflow-n](./media/media-services-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>Forduljon a csoporthoz
-Az Azure Media Services elsődleges támogatási e-mail: **amshelp@microsoft.com**.
+## <a name="contact-the-team"></a>Vegye fel a kapcsolatot a csapattal
+Az Azure Media Services az elsődleges támogatási e-mail cím: **amshelp@microsoft.com**.
 
-A következő táblázat felsorolja az e-mailek szolgáltatás sub csoportok:
+Az alábbi táblázat a funkció a sub csoportos e-mail:
 
 | Szolgáltatás | E-mail |
 | --- | --- |
-| Az Azure Médiaelemzés használatával |amsanalytics@microsoft.com |
+| Azure Media Analytics |amsanalytics@microsoft.com |
 | Azure Media Player |ampinfo@microsoft.com |
-| Az Azure Media Explorer |amse@microsoft.com |
-| Munkafolyamat-Tervező |mepd@microsoft.com |
-| Fájlok adatfolyamos és csomagolt |amsstreaming@microsoft.com |
-| Az élő adatfolyam- és a csomagban |amslived@microsoft.com |
+| Azure Media Explorer |amse@microsoft.com |
+| A munkafolyamat-tervezővel |mepd@microsoft.com |
+| Fájlok adatfolyamos és csomagolási funkciójához szükséges |amsstreaming@microsoft.com |
+| Élő Streaming és becsomagolásához |amslived@microsoft.com |
 

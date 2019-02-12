@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: c14267f6fc7f8c6be9199b9f25b6430b5f1aa5dd
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 9f5bdc3686e35f09b461bd5c2df695218b48ede3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887410"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993367"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware Monitoring (előzetes verzió) megoldás a Log Analyticsben
 
@@ -34,7 +34,7 @@ A megoldás az adatok leküldése egy cél virtuális Gépen, amely rendelkezik 
 ## <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
-* A VMware Monitoring megoldás hozzáadása az előfizetésben az ismertetett folyamatot [management megoldás telepítése](../insights/solutions.md#install-a-management-solution).
+* A VMware Monitoring megoldás hozzáadása az előfizetésben az ismertetett folyamatot [figyelési megoldás telepítése](../insights/solutions.md#install-a-monitoring-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Támogatott VMware ESXi-gazdagépek
 a vSphere ESXi-gazdagép egy 5.5-ös, 6.0-s és 6.5-ös

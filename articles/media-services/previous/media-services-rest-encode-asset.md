@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: ada3210a59e0c3044551bee54b0a705b4b513594
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e51fa086b26e5692d8dd572654b7c1ec50c641c5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254434"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005148"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Adategység kódolása a Media Encoder Standard használatával hogyan
 > [!div class="op_single_selector"]
@@ -30,6 +30,7 @@ ms.locfileid: "51254434"
 >
 
 ## <a name="overview"></a>Áttekintés
+
 A digitális videót továbbíthasson az interneten keresztül, akkor kell tömörítését. Digitális videofájlok nagy, és előfordulhat, hogy az interneten, vagy az ügyfelek eszközök jelennek meg megfelelően túl nagy. Kódolás az a folyamat tömöríti az audio- és videofájlokat, így az ügyfelek tekintheti meg az adathordozó.
 
 Kódolási feladatot hajt végre az Azure Media Services leggyakoribb feldolgozási műveletek tartoznak. A kódolási feladat a médiafájlokat alakítja át egy meghatározott kódolásból egy másikra. Kódolás, ha a Media Services beépített kódoló (Media Encoder Standard) is használhatja. Egy Media Services-partner által biztosított kódoló is használhatja. Külső kódolókkal az Azure Marketplace-en keresztül érhetők el. Megadhatja, hogy a részletek a kódolási feladatokat a kódolóra meghatározott előre beállított karakterláncok használatával, vagy előre beállított konfigurációs fájlok használatával. A rendelkezésre álló készletek típusú megtekintéséhez lásd: [feladat készletek Media Encoder standard](https://msdn.microsoft.com/library/mt269960).
@@ -54,12 +55,13 @@ Mielőtt elkezdené a médiaelemzés médiafeldolgozói hivatkozik, ellenőrizze
 Az AMS API-t kapcsolódás információkért lásd: [eléréséhez az Azure Media Services API Azure AD-hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="create-a-job-with-a-single-encoding-task"></a>Hozzon létre egy feladatot az egy kódolási feladat
+
 > [!NOTE]
 > Dolgozik, a Media Services REST API-val, amikor a következő szempontokat kell figyelembe venni:
 >
 > A Media Services entitások elérésekor a be kell állítani a HTTP-kérelmekre a meghatározott fejlécmezők és értékek. További információkért lásd: [Media Services REST API fejlesztési telepítő](media-services-rest-how-to-use.md).
 >
-> Ha JSON használatával, és adja meg a használandó a **__metadata** kulcsszó a kérelemben (például, hogy hivatkozási csatolt objektum), be kell a **elfogadás** fejlécet [arészletesJSONformátumban](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Fogadja el: application/json; odata = részletes.
+> Ha JSON használatával, és adja meg a használandó a **__metadata** kulcsszó a kérelemben (például, hogy hivatkozási csatolt objektum), be kell a **elfogadás** fejlécet [arészletesJSONformátumban](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Accept: application/json;odata=verbose.
 >
 >
 

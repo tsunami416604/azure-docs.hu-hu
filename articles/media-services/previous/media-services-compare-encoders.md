@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 02/08/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: c08759f4682c6010c2338ff7aaf61cda92eb0484
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3dac469c2932276a903a516b71caa860f8870fa6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232087"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989338"
 ---
-# <a name="comparison-of-azure-on-demand-media-encoders"></a>Az igény szerinti médiakódolók Azure összehasonlítása
+# <a name="comparison-of-azure-on-demand-media-encoders"></a>Az igény szerinti médiakódolók Azure összehasonlítása  
 
 Ez a témakör összehasonlítja a kódolási képességeit **Media Encoder Standard** és **Media Encoder Premium munkafolyamat**.
 
@@ -33,7 +33,7 @@ Az alábbi táblázat összehasonlítja a funkciók között a Media Encoder Sta
 |---|---|---|
 |Feltételes logika alkalmazására kódolás közben<br/>(például, ha a bemeneti HD, majd 5.1 hang kódolása)|Nem|Igen|
 |Kódolt feliratok|Nem|[Igen](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Dolby® szakmai hangerő javítása](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> a párbeszéd Intelligence™|Nem|Igen|
+|[Dolby® Professional Loudness Correction](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> a párbeszéd Intelligence™|Nem|Igen|
 |Vonja kötésre, más néven inverz filmátírási|Alapszintű|Szórási minősége|
 |Észlelése és eltávolítása a fekete szegély <br/>(pillarboxes letterboxes)|Nem|Igen|
 |Miniatűrkép-készítés|[Igen](media-services-dotnet-generate-thumbnail-with-mes.md)|[Igen](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
@@ -45,7 +45,7 @@ Az alábbi táblázat összehasonlítja a funkciók között a Media Encoder Sta
 ## <a id="billing"></a>Számlázási egyes kódoló által használt mérőszám
 | Médiafeldolgozó neve | Díjszabásról | Megjegyzések |
 | --- | --- | --- |
-| **Media Encoder Standard** |KÓDOLÓ |Kódolás, feladatok számítunk fel a teljes időtartam percben, kimenetként pedig az a megadott előállított médiafájlok alapján [Itt][1], KÓDOLÓ oszlop alatt. |
+| **Media Encoder Standard** |ENCODER |Kódolás, feladatok számítunk fel a teljes időtartam percben, kimenetként pedig az a megadott előállított médiafájlok alapján [Itt][1], KÓDOLÓ oszlop alatt. |
 | **Media Encoder Premium-munkafolyamat** |PRÉMIUM SZINTŰ KÓDOLÓ |Kódolás, feladatok számítunk fel a teljes időtartam percben, kimenetként pedig az a megadott előállított médiafájlok alapján [Itt][1], a prémium szintű KÓDOLÓ oszlop alatt. |
 
 ## <a name="input-containerfile-formats"></a>Bemeneti tároló/fájlformátum
@@ -57,12 +57,12 @@ Az alábbi táblázat összehasonlítja a funkciók között a Media Encoder Sta
 | MPEG-2 Transport Streams |Igen |Igen |
 | MPEG-2 Program Streamek |Igen |Igen |
 | MPEG-4/MP4 |Igen |Igen |
-| Windows Media/ASP |Igen |Igen |
+| Windows Media/ASF |Igen |Igen |
 | AVI (tömörítetlen 8 bites/10 bites) |Igen |Igen |
 | 3GPP/3GPP2 |Igen |Nem |
 | Smooth Streaming fájlformátum (PIFF 1.3) |Igen |Nem |
-| [A Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |Igen |Nem |
-| Matroska vagy WebM |Igen |Nem |
+| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |Igen |Nem |
+| Matroska/WebM |Igen |Nem |
 | QuickTime (.mov) |Igen |Nem |
 
 ## <a name="input-video-codecs"></a>Bemeneti videókodekek
@@ -70,13 +70,13 @@ Az alábbi táblázat összehasonlítja a funkciók között a Media Encoder Sta
 | --- | --- | --- |
 | AVC 8 bites/10 bites-, akár 4:2:2, ideértve az avcintrát is |8 bites 4:2:0. és 4:2:2 |Igen |
 | Avid DNxHD (MXF-ben) |Igen |Igen |
-| DVCPro/DVCProHD (MXF-ben) |Igen |Igen |
+| DVCPro/DVCProHD (in MXF) |Igen |Igen |
 | JPEG2000 |Igen |Igen |
 | MPEG-2 (akár a 422-es Profilig és a magas szintig; az XDCAM, XDCAM HD, XDCAM IMX, CableLabs® és D10 például) |Akár 422-es Profilig |Igen |
 | MPEG-1 |Igen |Igen |
 | Windows Media Video/VC-1 |Igen |Igen |
 | Canopus HQ/HQX |Nem |Nem |
-| MPEG-4: 2. rész |Igen |Nem |
+| MPEG-4 Part 2 |Igen |Nem |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Igen |Nem |
 | Az Apple ProRes 422 |Igen |Nem |
 | Az Apple ProRes 422 LT |Igen |Nem |
@@ -94,10 +94,10 @@ Az alábbi táblázat összehasonlítja a funkciók között a Media Encoder Sta
 | Dolby® digitális (AC3) |Nem |Igen |
 | Dolby® digitális plusz (E-AC3) |Nem |Igen |
 | AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1) |Igen |Igen |
-| MPEG 2 réteg |Igen |Igen |
+| MPEG Layer 2 |Igen |Igen |
 | MP3 (MPEG-1-3 hangréteg) |Igen |Igen |
-| Windows Media hang |Igen |Igen |
-| A PCM/WAV |Igen |Igen |
+| Windows Media Audio |Igen |Igen |
+| WAV/PCM |Igen |Igen |
 | [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Igen |Nem |
 | [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |Igen |Nem |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Igen |Nem |
@@ -111,7 +111,7 @@ Az alábbi táblázat összehasonlítja a funkciók között a Media Encoder Sta
 | GXF |Nem |Igen |
 | MPEG-4/MP4 |Igen |Igen |
 | MPEG-TS |Igen |Igen |
-| Windows Media/ASP |Nem |Igen |
+| Windows Media/ASF |Nem |Igen |
 | AVI (tömörítetlen 8 bites/10 bites) |Nem |Igen |
 | Smooth Streaming fájlformátum (PIFF 1.3) |Nem |Igen |
 
@@ -135,9 +135,9 @@ Az alábbi táblázat összehasonlítja a funkciók között a Media Encoder Sta
 | Dolby® digitális (AC3) |Nem |Igen |
 | Dolby® Digital Plus (E-AC3) legfeljebb 7.1 |Nem |Igen |
 | AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1) |Igen |Igen |
-| MPEG 2 réteg |Nem |Igen |
+| MPEG Layer 2 |Nem |Igen |
 | MP3 (MPEG-1-3 hangréteg) |Nem |Igen |
-| Windows Media hang |Nem |Igen |
+| Windows Media Audio |Nem |Igen |
 
 >[!NOTE]
 >Dolby® Digital (AC3) való kódol, ha a kimeneti csak az ISO MP4-fájlokat lehet írni.

@@ -1,6 +1,6 @@
 ---
-title: az Azure Log Analytics lekérdezési App() kifejezés |} A Microsoft Docs
-description: Az alkalmazás kifejezés szolgál a Log Analytics-lekérdezés-adatokat lekérni egy adott Application Insights alkalmazást ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot vagy egy másik előfizetést.
+title: az Azure Monitor log-lekérdezések App() kifejezés |} A Microsoft Docs
+description: Az alkalmazás kifejezés szolgál a lekérdezésben az Azure Monitor log-adatokat lekérni egy adott Application Insights alkalmazást ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot vagy egy másik előfizetés.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: 2d6f3517e988d6bd66ee9007e072ee87c71d1340
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: db92db315875348ff05ec3a34b1a9fa946479c27
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104660"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998535"
 ---
-# <a name="app-expression-in-log-analytics-query"></a>a Log Analytics-lekérdezés App() kifejezés
+# <a name="app-expression-in-azure-monitor-query"></a>az Azure Monitor lekérdezés App() kifejezés
 
-A `app` kifejezés szolgál a Log Analytics-lekérdezés adatokat lekérni egy adott Application Insights alkalmazást ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot vagy egy másik előfizetést. Ez hasznos alkalmazás adatait tartalmazzák a Log Analytics-lekérdezés, és adatokat szeretne lekérdezni egy Application Insights-lekérdezés több alkalmazás között.
+A `app` kifejezés szerepel az Azure Monitor lekérdezés adatokat lekérni egy adott Application Insights alkalmazást ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot vagy egy másik előfizetést. Ez hasznos alkalmazás adatait tartalmazzák az Azure Monitor log-lekérdezést, és adatokat szeretne lekérdezni egy Application Insights-lekérdezés több alkalmazás között.
 
 
 
@@ -79,4 +79,5 @@ union
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [munkaterület kifejezés](workspace-expression.md) lehet hivatkozni a Log Analytics-munkaterületet.
-- Megtudhatja, hogyan lehet [Log Analytics-adatok](../../azure-monitor/log-query/log-query-overview.md) tárolja.
+- Megtudhatja, hogyan lehet [Azure Monitor adatok](../../azure-monitor/log-query/log-query-overview.md) tárolja.
+- A teljes dokumentációt eléréséhez a [adatkezelő lekérdezési nyelv](/azure/kusto/query/).

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2b9aee39942562ec7f17c08c0fcf46143a7a25d3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585349"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997022"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>A figyelő erőforráscsoportok és az Azure Monitor (előzetes verzió)
 
@@ -93,9 +93,9 @@ Számos **szerkesztése** mező jelenik meg a munkafüzetet a különböző elem
 
 ![Képernyőkép a Szerkesztés mezők](./media/resource-group-insights/0009-failure-edit-graph.png)
 
-Ez a tárja fel az alapjául szolgáló Log Analytics-lekérdezés, amelyek a tábla vizualizációra.
+Ez a tárja fel az alapjául szolgáló log lekérdezés, amelyek a tábla vizualizációra.
 
- ![Log analytics lekérdezési ablak képernyőképe](./media/resource-group-insights/0010-failure-edit-query.png)
+ ![Napló lekérdezési ablak képernyőképe](./media/resource-group-insights/0010-failure-edit-query.png)
 
 A lekérdezés közvetlenül módosíthatja. Vagy használja azt referenciaként, és kérjen kölcsön származó, a saját egyéni paraméteres munkafüzet tervezésekor.
 
@@ -122,5 +122,5 @@ Az Azure Monitor erőforrás-csoportok az Azure Monitor riasztások felügyeleti
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure Monitor munkafüzetek](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
-- [Az Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
+- [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Az Azure Monitor riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

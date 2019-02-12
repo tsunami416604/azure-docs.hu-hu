@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: d2276eb11ce904b485440a6ce91981846a980dbc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 096f310b7c82718ea836d1b2048ca665a1e1e2f4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462188"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994951"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Exportálás és terméken belüli felhasználói adatok törlése az Azure Machine Learning Studióban
 
@@ -53,7 +53,7 @@ Nincsenek három típusú fiókok a Machine Learning Studióban. Fiók típusa h
     - Exportálhatja a személyes és a vásárlói adatokat a felhasználói felület, a REST API-k vagy a PowerShell-csomag
     - Törölheti az adatokat az Azure Portalon.
 
-## <a name="delete-workspace-data-in-studio"></a>A Studio munkaterület adatainak törlése 
+## <a name="delete"></a>A Studio munkaterület adatainak törlése 
 
 ### <a name="delete-individual-assets"></a>Egyes eszközök törlése
 

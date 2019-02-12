@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 64276047410280f8e818cf695f1fbb0c80fdd693
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e2add42e56f939dbfeb33ac2774d404411b1fefb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497672"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997251"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio Web Services: Telepítés és használat
 Az Azure Machine Learning segítségével telepítheti a machine learning-munkafolyamatok és a modellek webszolgáltatásként. Ezekhez a webszolgáltatásokhoz majd hívja a gépi tanulási modellek alkalmazásokból az interneten-t az előrejelzések valós időben vagy kötegelt módban használható. Mivel a webes szolgáltatások RESTful, meghívhatja azokat a különböző programozási nyelvekhez és platformokhoz, mint például a .NET, a Java, és az alkalmazások, például az Excel.
@@ -31,10 +31,10 @@ Az alábbi hivatkozások új webszolgáltatásként üzembe helyezésével kapcs
 
 * Azure Resource Manageren alapuló új webszolgáltatásként üzembe helyezésével kapcsolatos áttekintéséhez lásd: [egy új webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md).
 * Egy webszolgáltatás üzembe helyezésével kapcsolatos általános bemutatóért lásd: [egy Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md).
-* Hogyan hozhat létre, és a egy webszolgáltatás üzembe helyezése kapcsolatos teljes forgatókönyv, lásd: [forgatókönyv 1. lépés: Machine Learning-munkaterület létrehozása](walkthrough-1-create-ml-workspace.md).
+* Hogyan hozhat létre, és a egy webszolgáltatás üzembe helyezése kapcsolatos teljes forgatókönyv, kezdje [ 1. oktatóanyag: Hitelkockázat előrejelzése](tutorial-part1-credit-risk.md).
 * Webszolgáltatás üzembe helyezése konkrét példákat lásd:
 
-  * [Az útmutató 5. lépés: Az Azure Machine Learning webszolgáltatás üzembe helyezése](walkthrough-5-publish-web-service.md)
+  * [3. oktatóanyag: Kredit kockázati modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md)
   * [Webszolgáltatás üzembe helyezése több régióban](how-to-deploy-to-multiple-regions.md)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>A web services-szolgáltató API-k (Azure Resource Manager API-k)
@@ -84,7 +84,7 @@ Az Azure Machine Learning Web Services portálon a webszolgáltatás tesztelheti
 
 * [Új webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md)
 * [Az Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md)
-* [Az útmutató 5. lépés: Az Azure Machine Learning webszolgáltatás üzembe helyezése](walkthrough-5-publish-web-service.md)
+* [3. oktatóanyag: Kredit kockázati modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Az Excelből
 Egy Excel-sablont, amely a web service tölthető le:

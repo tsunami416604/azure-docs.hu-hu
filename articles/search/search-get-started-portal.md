@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 01/07/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9bdc2e197b4d7aea270c954305a96a01a1371945
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 53be1180f074c075ed2ca2d544b9b164a3a1bdd6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121549"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991310"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Gyors útmutató: Az Azure Search-importálási, az indexelés és a lekérdezések beépített portal-eszközök használata
 
@@ -83,7 +83,7 @@ Azt fogjuk ezt a lépést kihagyhatja a lépést, és helyezze közvetlenül a *
 
 ### <a name="step-3---configure-index"></a>3. lépés – index konfigurálása
 
-Az index létrehozása általában egy kódalapú gyakorlatban befejeződött az adatok betöltése előtt. Azonban ez az oktatóanyag azt mutatja, ahogy a varázsló hozhat létre egy alapszintű index fel tud térképezni semmilyen adatforrás esetében. Az indexhez szükség van legalább egy névre és egy mezőgyűjteményre, amely mezők közül az egyiket a dokumentum kulcsaként kell megjelölni. Ez az egyes dokumentumok egyedi azonosítására szolgál. Ezenkívül azt is megadhatja a nyelvi elemzőket vagy javaslattevőket Ha azt szeretné, automatikus kiegészítés vagy a lekérdezések javasolt.
+Az index létrehozása általában egy kódalapú gyakorlatban befejeződött az adatok betöltése előtt. Azonban ez az oktatóanyag azt mutatja, ahogy a varázsló hozhat létre egy alapszintű index fel tud térképezni semmilyen adatforrás esetében. Az indexhez szükség van legalább egy névre és egy mezőgyűjteményre, amely mezők közül az egyiket a dokumentum kulcsaként kell megjelölni. Ez az egyes dokumentumok egyedi azonosítására szolgál. Ezenkívül azt is megadhatja a nyelvi elemzőket vagy javaslattevőket Ha azt szeretné, hogy az automatikus kiegészítés vagy a javasolt lekérdezések.
 
 A mezők adattípusokkal és attribútumokkal rendelkeznek. A fent látható jelölőnégyzetek *indexattribútumok*, amelyek a mező használati módját szabályozzák.
 

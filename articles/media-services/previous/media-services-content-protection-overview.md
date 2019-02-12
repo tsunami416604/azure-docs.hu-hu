@@ -12,17 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 89e28a9b70d078c3fe385225af305252ececefce
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3ac07b06e1cf7b5b24956c10e202f9baeab60b2b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249922"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992246"
 ---
-# <a name="content-protection-overview"></a>A Content protection áttekintése
- Az Azure Media Services segítségével az az idő, akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési a médiatartalmak védelmét. A Media Services élő és igény szerinti tartalmait az Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek dinamikusan titkosított juttathat el: a Microsoft PlayReady, a Google Widevine és az Apple fairplay által. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek. 
+# <a name="content-protection-overview"></a>A Content protection áttekintése 
+
+ Az Azure Media Services segítségével az az idő, akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési a médiatartalmak védelmét. A Media Services élő és igény szerinti tartalmait az Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek bármelyikét dinamikusan titkosított juttathat el: A Microsoft PlayReady, a Google Widevine és az Apple fairplay által. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek. 
 
 Az alábbi ábrán a Media Services content protection munkafolyamat: 
 
@@ -35,7 +36,7 @@ Ez a cikk ismerteti az alapelvek és fogalmak ismertetése a Media Services cont
 
 - AES: MPEG-DASH, Smooth Streaming és HLS
 - PlayReady: MPEG-DASH, Smooth Streaming és HLS
-- Widevine: MPEG-dash PROTOKOLLHOZ
+- Widevine: MPEG-DASH
 - FairPlay: HLS
 
 Az objektum titkosítására, meg kell rendel hozzá egy titkosítási tartalomkulcsot az objektumot, és is konfigurálhatja a kulcs az engedélyezési házirend. Tartalomkulcs megadott vagy a Media Services által automatikusan generált is.
@@ -81,8 +82,8 @@ A következő szempontokat kell figyelembe venni:
 * Titkosítási típus megkülönbözteti a kis-és nagybetű nincs megkülönböztetve.
 * A következő titkosítási típusok adható meg:
   * **cenc**: A PlayReady vagy Widevine (common encryption)
-  * **cbcs-aapl**: A FairPlay (AES-CBC titkosítás)
-  * **CBC**: az AES boríték-titkosítást
+  * **cbcs-aapl**: A fairplay rendszerhez (AES-CBC titkosítás)
+  * **cbc**: A boríték AES-titkosítás
 
 ## <a name="next-steps"></a>További lépések
 Az alábbi cikkek segítséget nyújtanak a content protection használatának első lépései a következő lépések ismertetik:

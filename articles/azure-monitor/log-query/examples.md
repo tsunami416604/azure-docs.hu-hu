@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor Log Analytics lekérdezési példa |} A Microsoft Docs
-description: Példa a Kusto-nyelv használatával Log Analytics-lekérdezéseket.
+title: Az Azure Monitor az Azure Monitor log lekérdezés példák |} A Microsoft Docs
+description: Példa log-lekérdezéseket az Azure monitorban az adatkezelő segítségével lekérdezési nyelv.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: d5cad3869e74f33a2d1a56352c658bb9c8f23db6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 81852590ec714c458ebf2ba2b714d0b20f0b873c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883107"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993197"
 ---
-# <a name="log-analytics-query-examples"></a>Log Analytics lekérdezési példa
-Ez a cikk példákat különböző [lekérdezések](../../azure-monitor/log-query/log-query-overview.md) használatával a [Kusto nyelvi](https://docs.microsoft.com/azure/kusto/query/) Log Analytics különféle típusú adatokat lekérdezni. Különböző módszerek használhatók konszolidálhatja és az adatok elemzése, így ezek a minták segítségével azonosíthatja a különböző stratégiákat használhatja a saját igényeinek megfelelően.  
+# <a name="azure-monitor-log-query-examples"></a>Az Azure Monitor log lekérdezés példák
+Ez a cikk példákat különböző [lekérdezések](log-query-overview.md) használatával a [adatkezelő lekérdezési nyelv](https://docs.microsoft.com/azure/kusto/query/) lekérni a különböző típusú naplóadatokat az Azure Monitor. Különböző módszerek használhatók konszolidálhatja és az adatok elemzése, így ezek a minták segítségével azonosíthatja a különböző stratégiákat használhatja a saját igényeinek megfelelően.  
 
-Tekintse meg a [Kusto nyelvi referencia](https://docs.microsoft.com/azure/kusto/query/) használja ezeket a mintákat a különböző kulcsszavak részleteiért. Olvassa el a [leckében a lekérdezések létrehozásáról](get-started-queries.md) Ha most ismerkedik a Log Analytics szolgáltatásba.
+Tekintse meg a [Kusto nyelvi referencia](https://docs.microsoft.com/azure/kusto/query/) használja ezeket a mintákat a különböző kulcsszavak részleteiért. Olvassa el a [leckében a lekérdezések létrehozásáról](get-started-queries.md) Ha most ismerkedik az Azure Monitor.
 
 ## <a name="events"></a>Események
 
@@ -237,7 +237,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Biztonsági események száma tevékenység azonosítója
 
 
-Ebben a példában a rögzített szerkezete támaszkodik a **tevékenység** oszlop: \<azonosító\>-\<neve\>.
+Ebben a példában a rögzített szerkezete támaszkodik a **tevékenység** oszlopban: \<ID\>-\<neve\>.
 Azt elemzi a **tevékenység** érték két új oszlopot, és mindegyik előfordulását számolja **activityID**.
 
 ```Kusto
@@ -278,7 +278,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Elemezheti a tevékenység neve és azonosítója
-A rögzített szerkezete támaszkodjon az alábbi két példában a **tevékenység** oszlop: \<azonosító\>-\<neve\>. Az első példában a **elemezni** operátor két új oszlop értékeit hozzárendelése: **activityID** és **activityDesc**.
+A rögzített szerkezete támaszkodjon az alábbi két példában a **tevékenység** oszlopban: \<ID\>-\<neve\>. Az első példában a **elemezni** operátor két új oszlop értékeit hozzárendelése: **activityID** és **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -440,4 +440,4 @@ Update
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [Kusto nyelvi referencia](/azure/kusto/query) nyelv részleteiért.
-- Végig egy [leckében a Log Analytics lekérdezések írásáról](get-started-queries.md).
+- Végig egy [lecke az Azure Monitor log-lekérdezések írásáról](get-started-queries.md).

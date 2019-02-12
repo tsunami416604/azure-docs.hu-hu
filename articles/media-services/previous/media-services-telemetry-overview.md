@@ -1,10 +1,10 @@
 ---
-title: Az Azure Media Services-Telemetria |} Microsoft Docs
-description: Ez a cikk áttekintést nyújt az Azure Media Services telemetriai adatokat.
+title: Az Azure Media Services Telemetriai |} A Microsoft Docs
+description: Ez a cikk áttekintést nyújt az Azure Media Services-telemetria.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 95c20ec4-c782-4063-8042-b79f95741d28
 ms.service: media-services
@@ -12,205 +12,205 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 97df0876afd8b7258f985ab375b14f4aabde6e22
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48b88aed833b0cd15f47195c67be80fe75fe153f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790565"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005182"
 ---
-# <a name="azure-media-services-telemetry"></a>Az Azure Media Services-Telemetria
+# <a name="azure-media-services-telemetry"></a>Az Azure Media Services-telemetria  
 
-Az Azure Media Services (AMS) lehetővé teszi, hogy a hozzá tartozó szolgáltatások telemetriai/metrikák adatokhoz való hozzáférést. AMS jelenlegi verziója lehetővé teszi, hogy a működés közbeni telemetriai adatokat gyűjthessen **csatorna**, **StreamingEndpoint**, és működés közbeni **archív** entitásokat. 
+Az Azure Media Services (AMS) lehetővé teszi a telemetriai adatok és metrikák adatokhoz a szolgáltatásokhoz való hozzáférést. Az AMS jelenlegi verziója lehetővé teszi a telemetriai adatokat gyűjthessen élő **csatorna**, **Streamvégpontok**, és élő **archív** entitásokat. 
 
-Telemetria ír egy Azure Storage-fiók megadott tárolási táblához (általában, használja a tárfiók az AMS-fiók társított). 
+Telemetriai adatokat írt egy tárolótáblában a megadott Azure Storage-fiók (általában akkor használja az AMS-fiók társított storage-fiók). 
 
-A telemetria-rendszer nem tudja kezelni az adatok megőrzése. A régi telemetriai adatok eltávolításához törölni kell a storage-táblákat.
+A telemetriai rendszer nem felügyeli az adatmegőrzés. A storage-táblák törlésével eltávolíthatja a a korábbi telemetriai adatokat.
 
-Ez a témakör ismerteti a konfigurálásával és AMS telemetriai adatok felhasználását.
+Ez a témakör ismerteti az AMS telemetriai adatok felhasználását és konfigurálása.
 
-## <a name="configuring-telemetry"></a>Telemetriai adatok konfigurálása
+## <a name="configuring-telemetry"></a>Telemetria konfigurálása
 
-Telemetria összetevő szintű részletesség konfigurálhatók. Nincsenek két részletességi szintje "Normál" és "Részletes". Mindkét szintek jelenleg, ugyanazokat az információkat adja vissza. Javasoljuk, hogy használja a "normál. 
+Telemetria egy összetevő szintű részletességig is beállíthatja. Nincsenek két részletességgel "Normál" vagy "Részletes". Mindkét szintek jelenleg ugyanazokat az információkat adja vissza. Javasoljuk, hogy használja a "normál. 
 
-A következő témakörök bemutatják, hogyan telemetriai engedélyezése:
+A következő témakörök bemutatják, hogyan telemetria engedélyezése:
 
-[A telemetriai adatok .NET engedélyezése](media-services-dotnet-telemetry.md) 
+[.NET-tel telemetria engedélyezése](media-services-dotnet-telemetry.md) 
 
-[A telemetriai adatok REST engedélyezése](media-services-rest-telemetry.md)
+[A REST segítségével telemetria engedélyezése](media-services-rest-telemetry.md)
 
-## <a name="consuming-telemetry-information"></a>Telemetria információk felhasználása
+## <a name="consuming-telemetry-information"></a>Fogyasztó telemetrikus adatokat
 
-Telemetriai adatok írása az Azure Storage táblájához a tárfiókot, a Media Services-fiókhoz tartozó telemetriai konfigurálásakor megadott. Ez a szakasz ismerteti a metrikák a storage-táblákat.
+Telemetriai adatokat egy Azure Storage-táblához, amely a Media Services-fiókot telemetria konfigurálásakor megadott tárfiókban van megírva. Ez a szakasz ismerteti a storage-táblák a metrikákkal.
 
-Használatba vehetné a telemetriai adatokat a következő módszerek valamelyikével:
+Telemetriai adatokat felhasználhatja az alábbi módszerek egyikével:
 
-- Olvassa el az adatokat közvetlenül az Azure Table Storage (pl. tárhely SDK használatával). A telemetriai adatokat tároló tábla ismertetését lásd: a **telemetriai adatokat fel** a [ez](https://msdn.microsoft.com/library/mt742089.aspx) témakör.
+- Olvassa el az adatokat közvetlenül az Azure Table Storage (például a Storage SDK-val). A telemetriai adatok tárolótáblákat ismertetését lásd: a **telemetrikus adatokat használó** a [ez](https://msdn.microsoft.com/library/mt742089.aspx) témakör.
 
 Vagy
 
-- Használjon a támogatás a Media Services .NET SDK tárolási adatok olvasása a [ez](media-services-dotnet-telemetry.md) témakör. 
+- A támogatást a Media Services .NET SDK a tár-adatok beolvasására szolgáló ismertetett módon kihasználhassák [ez](media-services-dotnet-telemetry.md) témakör. 
 
 
-Az alábbiakban ismertetett telemetriai séma ahhoz, hogy megkapja az Azure Table Storage keretein belül a megfelelő teljesítmény célja:
+Az alábbiakban ismertetett telemetriai séma Azure Table Storage határain belül jó teljesítményt biztosíthat célja:
 
-- Adatok particionálása fiókkal azonosítója és felügyeletiszolgáltatás-azonosító telemetriai minden szolgáltatás engedélyezése a egymástól függetlenül lehet lekérdezni.
-- Partíció mindegyike a dátumot adjon egy ésszerű felső határa a partíció méretét.
-- Sor kulcsai fordított idő érdekében, hogy lehetővé teszi az utolsó telemetriai elemek kérdezhető le egy adott szolgáltatáshoz.
+- A fiók- és szolgáltatás-Azonosítóját, hogy az egyes szolgáltatásoktól érkező telemetriai adatok egymástól függetlenül lehet lekérdezni az adatok particionálása.
+- Partíciók tartalmazza a dátumot adjon egy ésszerű felső határa a partíció méretét.
+- Sor kulcsai fordított idő ahhoz, hogy az adott szolgáltatás kérdezhető le a legújabb telemetriai elemek.
 
-Ez lehetővé teszi a közös lekérdezések hatékony számos:
+Ez lehetővé teszi számos, a gyakori lekérdezések számára hatékony:
 
-- Párhuzamos, független különböző szolgáltatások adatainak letöltése.
-- Egy adott szolgáltatáshoz dátumtartomány az összes adat beolvasása.
-- A szolgáltatáshoz a legújabb adatok beolvasása.
+- Párhuzamos, független szolgáltatások külön adatainak letöltése.
+- Egy adott szolgáltatáshoz, a dátumtartomány összes adat beolvasása.
+- A szolgáltatás a legfrissebb adatok beolvasása során.
 
-### <a name="telemetry-table-storage-output-schema"></a>Kimeneti tárolási telemetriai táblaséma
+### <a name="telemetry-table-storage-output-schema"></a>Telemetriai table storage kimeneti sémája
 
-Egy tábla, "TelemetryMetrics20160321" hol "20160321" az dátum, a létrehozott tábla összesítés telemetriai adatokat tárolja. Telemetria rendszer táblázatot hoz létre külön: 00:00 UTC alapú új naponként. A tábla Ismétlődő értékek tárolására szolgál például betöltési sávszélességű egy adott időszakban idő, a küldött bájtok mennyiségét, stb. 
+Egy tábla, "TelemetryMetrics20160321", "20160321" az dátum, a létrejött táblában szereplő telemetriai adatokat tárolja. Telemetriai rendszer új naponta: 00:00 (UTC) alapján hoz létre egy különálló táblában. A táblázat az ismétlődő értékek tárolására szolgál például betöltési sávszélességű egy adott időszakban idő, a küldött bájtok, stb. 
 
-Tulajdonság|Érték|Példák/megjegyzések
+Tulajdonság|Érték|Példák és megjegyzések
 ---|---|---
-PartitionKey|{szolgáltatásfiók azonosítója} _ {Entitásazonosító}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66 < br /<br/>A Fiókazonosító egyszerűbbé teheti a munkafolyamatok, ahol több Media Services-fiók ugyanabban a tárfiókban ír a partíciós kulcs szerepel.
-RowKey|{másodperc éjféli} _ {véletlenszerű értéket}|01688_00199<br/><br/>A sorkulcs kezdődik-e a felső n stílus lekérdezések a partíción belüli engedélyezéséhez éjféli másodpercek számát. További információkért tekintse meg [ezt](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) a cikket. 
-Időbélyeg|Dátum/idő|Az Azure tábla 2016 időbélyeg Auto-09-09T22:43:42.241Z
-Típus|A telemetriai adatokat szolgáltató entitás típusa|Csatorna/StreamingEndpoint/archív<br/><br/>Esemény típusa csak karakterlánc-értéke.
-Name (Név)|A telemetriai adatok esemény neve|ChannelHeartbeat/StreamingEndpointRequestLog
-ObservedTime|Az idő a telemetriai adatok esemény történt (idő szerint UTC)|2016-09-09T22:42:36.924Z<br/><br/>A megfigyelt idő (például egy csatorna) telemetriai adatok küldése az entitás valósul meg. Nem határozható meg, ez az érték összetevői közötti szinkronizálás problémák megközelítőleges időpontja
-ServiceID|{felügyeletiszolgáltatás-azonosító}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-Entitás jellemző tulajdonságok|Az esemény által meghatározott módon|StreamName: stream1, sávszélességű 10123...<br/><br/>A többi tulajdonság az adott esemény típushoz vannak definiálva. Az Azure tábla tartalma kulcs-érték párokat.  (Ez azt jelenti, hogy a tábla különböző soraira különböző tulajdonságkészletekkel rendelkező tulajdonságai).
+PartitionKey|{fiókazonosító} _ {entity Azonosítójú}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>A Fiókazonosító tartalmazza a partíciókulcsot, ahol több Media Services-fiókok írása ugyanazt a tárfiókot a munkafolyamatok egyszerűsítése érdekében.
+RowKey|{seconds éjféli} _ {véletlenszerű értéket}|01688_00199<br/><br/>A sorkulcs indul ki, hogy a felső n stílus lekérdezések egy partíción belül éjféli másodpercek számát. További információkért tekintse meg [ezt](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) a cikket. 
+Időbélyeg|Dátum/idő|Automatikus időbélyege az Azure-tábla 2016-09-09T22:43:42.241Z
+Typo|A telemetria-adatokat biztosítva entitás típusa|Channel/StreamingEndpoint/Archive<br/><br/>Esemény típus egy karakterláncértéket.
+Name (Név)|A telemetriai esemény neve|ChannelHeartbeat/StreamingEndpointRequestLog
+ObservedTime|Az idő, a telemetriai esemény történt (UTC)|2016-09-09T22:42:36.924Z<br/><br/>A megfigyelt idő (például egy csatorna) telemetriát küld az entitás által biztosított. Szinkronizálási hibák, ez az érték-összetevők közötti hozzávetőleges időt lehet
+ServiceID|{service} Azonosítójú|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+Entitás jellemző tulajdonságok|Az esemény által meghatározott módon|StreamName: stream1, sávszélességű 10123...<br/><br/>A többi tulajdonság az adott esemény típus vannak meghatározva. Az Azure tábla tartalma kulcs-érték párral.  (a tábla az egyes sorok eltérő kell, hogy a különböző tulajdonságokat is).
 
 ### <a name="entity-specific-schema"></a>Entitás-specifikus séma
 
-A következő gyakorisággal leküldött entitásra vonatkozó távmérést adatokat bejegyzések három típusa van:
+A következő gyakorisággal leküldött entitásspecifikus telemetria-adatok bejegyzések három típusa van:
 
-- Adatfolyam-végpontok: minden 30 másodperc
-- Az élő csatornák: percenként
-- Archív Live: percenként
+- Streamvégpontok: Ez lehet 30 másodperc
+- Az élő csatornák: Minden perc
+- Élő archiválás: Minden perc
 
-**A Streamvégpont**
+**Streamvégpont**
 
 Tulajdonság|Érték|Példák
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Időbélyeg|Időbélyeg|Automatikus Azure tábla 2016 időbélyeg-09-09T22:43:42.241Z
-Típus|Típus|StreamingEndpoint
+Időbélyeg|Időbélyeg|Automatikus időbélyeg Azure Table 2016-09-09T22:43:42.241Z
+Typo|Typo|StreamingEndpoint
 Name (Név)|Name (Név)|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Service ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-Állomásnév|A végpont állomásneve|builddemoserver.origin.mediaservices.Windows.NET
-statusCode|Rögzíti a HTTP-állapot|200
-ResultCode|Eredmény kódja részletei|S_OK
-RequestCount|Összes kérést az összesítés|3
+ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+Állomásnév|A végpont állomásneve|builddemoserver.origin.mediaservices.windows.net
+StatusCode|Rögzíti a HTTP-állapot|200
+Eredménykód|Eredmény kódja részletei|S_OK
+RequestCount|Ilyenkor az összesítést a kérelmek száma összesen|3
 BytesSent|Küldött bájtok összesített száma|2987358
-ServerLatency|Átlagos kiszolgáló késleltetése (beleértve a tároló)|129
+Kiszolgáló késése|Kiszolgáló átlagos késése (tárolóval együtt)|129
 E2ELatency|Átlagos végpontok közötti késés|250
 
 **Élő csatorna**
 
-Tulajdonság|Érték|Példák/megjegyzések
+Tulajdonság|Érték|Példák és megjegyzések
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Időbélyeg|Időbélyeg|Az Azure tábla 2016 időbélyeg Auto-09-09T22:43:42.241Z
-Típus|Típus|Csatorna
+Időbélyeg|Időbélyeg|Automatikus időbélyege az Azure-tábla 2016-09-09T22:43:42.241Z
+Typo|Typo|Csatorna
 Name (Név)|Name (Név)|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Service ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-TrackType|Írja be a videó/hang/szöveg nyomon követése|videó/hang
-TrackName|A track neve|videó/audio_1
-Átviteli sebesség|Track sávszélességű|785000
+ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+TrackType|Írja be a videó vagy hang/szöveg nyomon követése|a videó vagy hang
+TrackName|A track neve|a videó/audio_1
+Átviteli sebesség|Sávszélességű nyomon követése|785000
 CustomAttributes||   
 IncomingBitrate|Tényleges bejövő sávszélességű|784548
-OverlapCount|A bemeneti átfedésben vannak|0
-DiscontinuityCount|A track folytonosságában|0
-LastTimestamp|Utolsó feldolgozott adatokat időbélyeg|1800488800
-NonincreasingCount|Töredék száma nem növekvő miatt elvetett időbélyeg|2
-UnalignedKeyFrames|E fragment(s) érkezett (különböző szolgáltatásminőségi szinteket) ahol kulcs nincsenek egyeztetve keretek |True (Igaz)
-UnalignedPresentationTime|E megkaptuk fragment(s) (egyes szolgáltatásminőségi szinteket /), ahol nem illeszkednek a bemutató idő|True (Igaz)
-UnexpectedBitrate|Igaz Ha a hang-és videófolyamot számított/tényleges sávszélességű > 40 000 bps és IncomingBitrate nyomon == vagy IncomingBitrate és actualBitrate eltérő 50 % 0 |True (Igaz)
-Kifogástalan|IGAZ, ha <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> a rendszer minden 0|True (Igaz)<br/><br/>Kifogástalan állapot van olyan összetett függvényt ad vissza, ha az alábbi feltételek bármelyike tartsa hamis:<br/><br/>-OverlapCount > 0<br/>-DiscontinuityCount > 0<br/>-NonincreasingCount > 0<br/>-UnalignedKeyFrames == True<br/>-UnalignedPresentationTime == True<br/>-UnexpectedBitrate == True
+OverlapCount|A betöltés átfedésben vannak|0
+DiscontinuityCount|Nyomon követheti a kihagyást|0
+LastTimestamp|Legutóbbi feldolgozott adatok időbélyege|1800488800
+NonincreasingCount|Töredékek száma miatt nem növekvő elvetett időbélyeg|2
+UnalignedKeyFrames|E fragment(s) (biztosít, minőségi) érkezett ahol kulcs nincsenek egyeztetve keretek |True (Igaz)
+UnalignedPresentationTime|E érkezett fragment(s) (között a minőségi szintet és nyomon követi) bemutató idő nem igazodik ahol|True (Igaz)
+UnexpectedBitrate|Igaz Ha számított/tényleges átviteli sebesség a hang/kép nyomon követheti az > 40 000/s és IncomingBitrate == vagy IncomingBitrate és actualBitrate különböznek egymástól, 50 %-kal 0 |True (Igaz)
+Kifogástalan|IGAZ, ha <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> a rendszer minden 0|True (Igaz)<br/><br/>Kifogástalan állapotú összetett függvény, amely a hamis értéket ad vissza, ha az alábbi feltételek bármelyike tartsa van:<br/><br/>-OverlapCount > 0<br/>-DiscontinuityCount > 0<br/>-NonincreasingCount > 0<br/>-UnalignedKeyFrames igaz ==<br/>- UnalignedPresentationTime == True<br/>-UnexpectedBitrate igaz ==
 
-**Élő archív**
+**Élő archiválás**
 
-Tulajdonság|Érték|Példák/megjegyzések
+Tulajdonság|Érték|Példák és megjegyzések
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Időbélyeg|Időbélyeg|Az Azure tábla 2016 időbélyeg Auto-09-09T22:43:42.241Z
-Típus|Típus|Archívum
+Időbélyeg|Időbélyeg|Automatikus időbélyege az Azure-tábla 2016-09-09T22:43:42.241Z
+Typo|Typo|Archívum
 Name (Név)|Name (Név)|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Service ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-ManifestName|Program URL-címe|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4BD2-8c01-a92a2b38c9ba.ISM
+ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+manifestName|Program URL-címe|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
 TrackName|A track neve|audio_1
-TrackType|A track típusa|Hang-és videófolyamot
-CustomAttribute|Hexadecimális karakterlánc, amely állapottípust határoz meg különböző nyomon követése, azonos nevű és átviteli sebesség (multi kamera szög)|
-Átviteli sebesség|Track sávszélességű|785000
-Kifogástalan|IGAZ, ha FragmentDiscardedCount == 0 & & ArchiveAcquisitionError == False|Igaz (e két érték nem szerepelnek a mérték, de jelen a forrás esemény)<br/><br/>Kifogástalan állapot van olyan összetett függvényt ad vissza, ha az alábbi feltételek bármelyike tartsa hamis:<br/><br/>-FragmentDiscardedCount > 0<br/>-ArchiveAcquisitionError == True
+TrackType|A szám típus|Hang/kép
+Atribut CustomAttribute s|Hexadecimális karakterlánc, amely állapottípust azonos nevű másik nyomon követése és sávszélességű (többszörös kamera szög)|
+Átviteli sebesség|Sávszélességű nyomon követése|785000
+Kifogástalan|True, if FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False|Igaz (ezt a két értéket nem szerepelnek a mérőszám, de ezek meg adva a forrás esemény)<br/><br/>Kifogástalan állapotú összetett függvény, amely a hamis értéket ad vissza, ha az alábbi feltételek bármelyike tartsa van:<br/><br/>-FragmentDiscardedCount > 0<br/>-ArchiveAcquisitionError igaz ==
 
-## <a name="general-qa"></a>Általános kérdések és válaszok
+## <a name="general-qa"></a>Általános a Q & A
 
-### <a name="how-to-consume-metrics-data"></a>Hogyan metrikák adatokat?
+### <a name="how-to-consume-metrics-data"></a>Hogyan metrikai adatok felhasználását?
 
-Metrikák tárolja az ügyfél tárfiókja Azure táblák sorozataként. Ezek az adatok használatával a következő eszközöket képes használni:
+Metrikák adatait a storage-fiókban az ügyfél Azure-beli táblák sorozataként tárolódik. Ezeket az adatokat a következő eszközökkel használhatók fel:
 
 - AMS SDK
-- A Microsoft Azure Tártallózó (vesszővel tagolt adatfájlba és a feldolgozott Excel exportálási támogatja)
+- A Microsoft Azure Storage Explorer (támogatja az exportálást, és vesszővel tagolt formátumú, és a feldolgozott Excel)
 - REST API
 
-### <a name="how-to-find-average-bandwidth-consumption"></a>Hol találhatók a átlagos sávszélesség-használat?
+### <a name="how-to-find-average-bandwidth-consumption"></a>Hogyan találhatja meg a átlagos sávszélesség-használatot?
 
-Az átlagos sávszélesség-használat BytesSent átlagát az időtartam alatt.
+Átlagos sávszélesség-használatot az az időtartam, BytesSent átlaga.
 
-### <a name="how-to-define-streaming-unit-count"></a>Hogyan streamelési egységek számának meghatározásához?
+### <a name="how-to-define-streaming-unit-count"></a>Hogyan adhat meg a streamelési egységek számát?
 
-A streamelési egységek száma a szolgáltatás streamvégpontok a maximális átviteli sebesség egy adatfolyam-továbbítási végpontjának osztva az a maximális átviteli sebesség adható meg. Egy streamvégpont használható maximális átviteli sebesség 160 MB/s.
-Tegyük fel, hogy az ügyfél szolgáltatás a maximális átviteli sebesség 40 MB/s (a maximális értékének BytesSent az időtartam alatt). Ezt követően a streamelési egységek száma megegyezik (40 MB/s) * (8 Bit/bájt) /(160 Mbps) = 2 adatfolyam-továbbítási egység.
+A folyamatos átviteli egységek száma a szolgáltatás streamvégpontok elosztva a maximális átviteli sebesség egy streamvégponton, az a maximális átviteli sebesség adható meg. Egy streamvégponton használható maximális átviteli sebesség 160 MB/s.
+Tegyük fel például, a maximális átviteli sebesség ügyfél szolgáltatásból 40 MB/s (maximális értéke BytesSent az időtartam alatt). Ezt követően a folyamatos átviteli egységek száma egyenlő (40 MB/s) * (8 Bit/bájt) /(160 Mbps) 2 folyamatos átviteli egység =.
 
-### <a name="how-to-find-average-requestssecond"></a>Hol találhatók átlagos kérelmek/másodperc?
+### <a name="how-to-find-average-requestssecond"></a>Hogyan találhatja meg a átlagos kérelmek/másodperc?
 
-Átlagos száma található kérelmek/másodperc, számítási kérelmek (RequestCount) átlagos száma az időtartam alatt.
+Átlagos száma kérelmek/másodperc megkereséséhez számítási kérelmek (RequestCount) átlagos száma az időtartam alatt.
 
-### <a name="how-to-define-channel-health"></a>Hogyan csatorna állapotának meghatározásához?
+### <a name="how-to-define-channel-health"></a>Hogyan adhat meg a csatorna állapotát?
 
-Csatorna állapotfigyelő logikai függvény összetett lehet meghatározni, hogy legyen hamis tartsa a következő feltételek:
+Csatorna állapota logikai függvény összetett lehet meghatározni, hogy legyen False (hamis) a következő feltételek bármelyikének tárolásához:
 
 - OverlapCount > 0
 - DiscontinuityCount > 0
 - NonincreasingCount > 0
-- UnalignedKeyFrames == True 
-- UnalignedPresentationTime == True 
-- UnexpectedBitrate == True
+- UnalignedKeyFrames igaz == 
+- UnalignedPresentationTime igaz == 
+- UnexpectedBitrate igaz ==
 
 
-### <a name="how-to-detect-discontinuities"></a>Hogyan folytonosság megszakítását észlelését?
+### <a name="how-to-detect-discontinuities"></a>Hogyan észleli a folytonosság megszakítását?
 
-Minden csatorna adatok bejegyzések kerültek folytonosság megszakítását észleléséhez, ahol DiscontinuityCount > 0. A megfelelő ObservedTime időbélyeg az időpontokat a folytonosság megszakítását létrejöttének időpontját jelzi.
+Folytonosság megszakítását észleléséhez, keresse meg az összes csatorna adatbevitelek ahol DiscontinuityCount > 0. A megfelelő ObservedTime időbélyege azt jelzi, hogy az időpontokat, amikor a folytonosság megszakítását történt.
 
-### <a name="how-to-detect-timestamp-overlaps"></a>Hogyan észleli a rendszer átfedéseket időbélyeg?
+### <a name="how-to-detect-timestamp-overlaps"></a>Időbélyeg észlelése átfedésben van?
 
-Minden csatorna adatok bejegyzések kerültek észleli a rendszer átfedéseket timestamp, ahol OverlapCount > 0. A megfelelő ObservedTime időbélyeg azt jelenti, hogy az időbélyegző átfedésben van az időpontokat történt.
+Időbélyeg átfedések észleléséhez található összes csatorna adatbevitelek ahol OverlapCount > 0. A megfelelő ObservedTime időbélyege azt jelenti, hogy az időpontokat, amikor az időbélyeg átfedésben van történt.
 
-### <a name="how-to-find-streaming-request-failures-and-reasons"></a>Hol találhatók az adatfolyam-továbbítási kérelem hibákat és azokat az oka?
+### <a name="how-to-find-streaming-request-failures-and-reasons"></a>Hogyan találhatja meg a streamelési kérelemhibák és oka?
 
-Adatfolyam-továbbítási kérelem hibák és okok megkereséséhez található összes Streamvégponton adatok bejegyzés, ahol ResultCode nincs értékkel egyenlőnek. A megfelelő StatusCode mező azt jelzi, hogy a kérelem sikertelenségének okát.
+Streamelési kérelemhibák és okokból megkereséséhez található összes folyamatos átviteli végponton adatbevitelek, nem egyenlő S_OK ahol ResultCode. A megfelelő StatusCode a kérelem hiba okát jelzi.
 
-### <a name="how-to-consume-data-with-external-tools"></a>Hogyan lehet külső eszközökkel adatokat?
+### <a name="how-to-consume-data-with-external-tools"></a>Hogyan lehet az adatokat a külső eszközöket?
 
-Távmérést adatok feldolgozása, illetve a következő eszközök formájában jelenik meg:
+Telemetria adatok feldolgozása, illetve a következő eszközök formájában jelenik meg:
 
 - PowerBI
 - Application Insights
 - Az Azure Monitor (korábbi nevén Shoebox)
-- AMS élő irányítópult
-- Azure-portálon (függőben lévő kiadás)
+- AMS Live Dashboard
+- Az Azure Portal (függőben lévő kiadás)
 
-### <a name="how-to-manage-data-retention"></a>Hogyan kezelhetők az adatmegőrzés?
+### <a name="how-to-manage-data-retention"></a>Hogyan kezelheti az adatmegőrzés?
 
-A telemetria-rendszer nem biztosít megőrzési adatkezelés vagy automatikus törlési régi rögzíti. Így kell kezelni, és törölje manuálisan a régi rögzíti a tárolási táblából. Tárolási menete SDK hivatkozhat.
+A telemetriai rendszer nem biztosít megőrzési adatkezelés vagy automatikus törlés régi rögzíti. Ebből kifolyólag kell kezelése és a storage-tábla manuális módszerrel törölje a régi rögzíti. A storage SDK for menete hivatkozhat.
 
 ## <a name="next-steps"></a>További lépések
 

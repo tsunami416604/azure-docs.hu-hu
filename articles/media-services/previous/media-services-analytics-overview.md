@@ -1,10 +1,10 @@
 ---
-title: A Media Services platform Médiaelemzés |} Microsoft Docs
-description: A Médiaelemzés beszéd- és számítógép stratégiai szolgáltatásának vállalati méretezés, a megfelelőségi, a biztonsági és a globális reach gyűjteménye public Preview – áttekintés
+title: A Media Services platformon Médiaelemzés |} A Microsoft Docs
+description: A Médiaelemzés beszéd- és vizuális szolgáltatások nagyvállalati szintű, megfelelőségi, biztonsági és globális elérhetőséget gyűjteménye a nyilvános előzetes verzió – áttekintés
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: c56e3781-8510-4f7f-b5ff-a218c1bb6f4c
 ms.service: media-services
@@ -12,57 +12,58 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/08/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 0ac8b9fad35267ceaec5b5acec4722b6005f68a9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c60fd90adda4c362b15fe2e324aa55a581c9e59a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788780"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003765"
 ---
-# <a name="media-analytics-on-the-media-services-platform"></a>A Media Services platform Médiaelemzés használatával
+# <a name="media-analytics-on-the-media-services-platform"></a>A Media Services platformon Médiaelemzés 
+
 ## <a name="overview"></a>Áttekintés
-További szervezetek segítségével végzi a videó adathordozóként előnyben részesített az alkalmazottak számára, az ügyfelek végezhetnek, de a dokumentum üzleti funkciók. A felhőalapú informatika tárolhatja, adatfolyamként, és el nagy médiafájlokat lehetőséget kínál. De videotartalom könyvtárának a vállalat növekedésével egyaránt hatékony elemzések a tartalom kibontása eszközt kell. 
+Több szervezet használ a videó a az előnyben részesített közepes betanításához alkalmazottak, az ügyfelek megszólítása és üzleti funkciók dokumentálja. A felhő-számítástechnika segítségével tárolhatja, adatfolyam és érheti el nagy médiafájlokat. De videótartalmak könyvtára a vállalat növekedésével a insights kinyerését a tartalom egyformán hatékony eszközt kell. 
 
-Kell, hogy az egyre növekvő, az Azure Media Services kínál Azure Médiaelemzés használatával. A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egyszerűbbé teszi a szervezetek és vállalatok számára, hogy a gyakorlatban is használható elemzéseket készítsenek videófájljaikból. A Media Services platform alapösszetevőket használatával készültek, Media Analytics napon az egyik léptékű feldolgozás media képes kezelni.
+Kell, hogy folyamatosan bővülő, az Azure Media Services az Azure Médiaelemzés biztosít. A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egyszerűbbé teszi a szervezetek és vállalatok számára, hogy a gyakorlatban is használható elemzéseket készítsenek videófájljaikból. A Media Services platform alapvető összetevői használatával létrehozott, a Media Analytics médiafeldolgozási ipari méretekben ismereteik alapján képes kezelni.
 
-Media Analytics fejlesztők is gyorsan vonja fejlett videó funkciói alkalmazások. A teljes skála, a megfelelőségi, a biztonsági és a szükséges nagy méretű szervezeteknek globális reach biztosít vállalati környezetben.
+A Media Analytics-szel a fejlesztők is gyorsan beemelése összetettebb video funkciók alkalmazások. A teljes méretezési, megfelelőségi, biztonsági és nagyméretű szervezetek által megkövetelt globális jelenléttel rendelkező vállalati környezetek biztosít.
 
-A következő ábrán az látható, Médiaelemzés és egyéb a Media Services platform fontosabb részei. 
+Az alábbi ábrán látható, a Media Analytics és a Media Services platform más fontosabb részei. 
 
 ![VoD-munkafolyamat](./media/media-services-analytics-overview/media-services-analytics-overview01.png)
 
-A Médiaelemzés médiafeldolgozói MP4- vagy JSON-fájlokat hoznak létre. Egy media processzor MP4-fájlokat hoz létre, ha fokozatosan lehet letölteni a fájlt. Egy media processzor JSON-fájlt hoz létre, ha az Azure Blob storage letöltheti a fájlt. 
+A Médiaelemzés médiafeldolgozói MP4- vagy JSON-fájlokat hoznak létre. Egy médiaprocesszorral MP4-fájlokat hoz létre, ha fokozatosan letöltheti a fájlt. Ha egy médiaprocesszorral hoz létre egy JSON-fájlt, letöltheti a fájlt az Azure Blob storage-ból. 
 
-## <a name="media-analytics-services"></a>Médiaelemzés-szolgáltatások
+## <a name="media-analytics-services"></a>Médiaelemzés
 
 ### <a name="indexer"></a>Indexelő
-Az Azure Media Indexer hogy tartalom kereshető és készítése kódolt-feliratok követi nyomon. Az előző verzió képest, Azure Media Indexer 2 Preview rendelkezik gyorsabban indexelési és szélesebb körű nyelv támogatja. Támogatott nyelvek angol, német, francia, német, olasz, kínai, portugál és arab. Részletes útmutatást és példákat, lásd: [videók feldolgozása az Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
+Az Azure Media Indexerrel is felvehető tartalom kereshető, és létrehozni feliratozáshoz nyomon követi. Az előző verzióhoz képest, az Azure Media Indexer 2 előzetes verzió támogatja a gyorsabb indexelés és a szélesebb körű nyelvi rendelkezik. Támogatott nyelvek angol, spanyol, francia, német, olasz, kínai, portugál és arab. Részletes információkért és példákért lásd: [videók feldolgozása az Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
 ### <a name="hyperlapse"></a>Hyperlapse
-Microsoft Hyperlapse videó exportstabilizációt és gyors, a hosszú tartalomról fogyasztható videók létrehozásához Gyorsított felvétel funkció egyesíti. Gyorsított felvétel videó létrehozása, mellett a Hyperlapse hozhat létre stabil videók a mobiltelefonokat és kamerák rögzített shaky videók. Részletes útmutatást és példákat, lásd: [Hyperlapse médiafájlok az Azure Media Hyperlapse](media-services-hyperlapse-content.md).
+A Microsoft Hyperlapse-ben videóstabilizálási és finomíthat funkció gyors, a hosszú tartalomból értelmezhető videók létrehozásához. Amellett, hogy a videó finomíthat hoz létre, a Hyperlapse segítségével hozzon létre stabil videók mobiltelefonok vagy kamerák keresztül rögzített remegő videók. Részletes információkért és példákért lásd: [Hyperlapse médiafájlokat az Azure Media Hyperlapse](media-services-hyperlapse-content.md).
 ### <a name="motion-detector"></a>Mozgásérzékelő
-Mozgásérzékelő segítségével mozgásérzékelési észleli a helyhez kötött hátterek és videó. Ez lehetővé teszi téves térfigyelő kamerák használatát által észlelt mozgásérzékelési események kereséséhez. Részletes útmutatást és példákat, lásd: [Mozgásérzékelés az Azure Médiaelemzés használatával](media-services-motion-detection.md).
+Mozgásérzékelő segítségével egy videóban hátterű mozgásfelismerés. Ez lehetővé teszi a térfigyelő kamerák által észlelt mozgásban lévő események által kiváltott hamis pozitív kereséséhez. Részletes információkért és példákért lásd: [Mozgásérzékelés az Azure Médiaelemzés használatával](media-services-motion-detection.md).
 ### <a name="face-detector"></a>Arcérzékelő
-Arcfelismerési érzékelő használatával Népi lapokat és a érzelmek, beleértve a Boldogsága, sadness és jelzés nélküli észlelését. Számos hasznos iparági alkalmazások, későbbi, beleértve összesítésére és elemzésére esemény részt vevő személyek reakciók azt. Részletes útmutatást és példákat, lásd: [Arcfelismerés és érzelemfelismerési észlelési az Azure Médiaelemzés használatával](media-services-face-and-emotion-detection.md).
-### <a name="video-summarization"></a>Videóösszegzés
-Videóösszegzés segítségével létre videók kijelölésével automatikusan érdekes kódtöredékek a forrás-videót. Ez a lehetőség akkor hasznos, ha lehetővé szeretné tenni, mi történik, a hosszú videó gyors áttekintést. Részletes útmutatást és példákat, lásd: [használata Azure Media videó miniatűrök videó összegzésének létrehozása](media-services-video-summarization.md).
+A Face detector használatával, people's arcokat és az érzelmeket azonosíthat, például boldogság, szomorúság és meglepetés észlelését. Több hasznos iparági alkalmazást, a később ismertetett és elemzésére reakciók személyek részt vesz egy eseményt, beleértve azt. Részletes információkért és példákért lásd: [Arcfelismerés és az érzelmeket észlelése az Azure Médiaelemzés használatával](media-services-face-and-emotion-detection.md).
+### <a name="video-summarization"></a>Videó-összefoglalás
+Videó-összefoglalás segíthet a hosszú videókról összefoglalókat készíthet az a forrás videó érdekes kódrészletek automatikusan kiválasztásával. Ez a lehetőség akkor hasznos, ha lehetővé szeretné tenni, mire számítson hosszú videó röviden. Részletes információkért és példákért lásd: [használata az Azure Media Videóminiatűrök hozhat létre a videó-összefoglalás](media-services-video-summarization.md).
 ### <a name="optical-character-recognition"></a>Optikai karakterfelismerés
-Az Azure Media OCR (optikai karakter használata) átalakíthatja videofájlok a szöveges tartalom szerkeszthető, kereshető digitális szöveg. A médiafájlt a videó jel jelentéssel bíró metaadatok kibontásával majd automatizálható.
-### <a name="scalable-face-redaction"></a>Méretezhető arcfelismerési kivonási
-Az Azure Media Redactor kínál a felhőben méretezhető arcfelismerési kivonási Médiaelemzés media processzor. Arcfelismerési kivonási használatával módosíthatja az lehetőséget felületei kijelölt személyek a videó. Előfordulhat, hogy használni kívánt a tapasztalt kivonási szolgáltatás hírek media, vagy ha nyilvános biztonsági van szó. Több lapokat tartalmazó felvételei, néhány perc múlva a kivonás a manuálisan órát is igénybe vehet, de ezzel a szolgáltatással arcfelismerési kivonási tart néhány egyszerű lépésben. További információkért lásd: a [az Azure Media Analytics lapok kivonás](media-services-face-redaction.md) cikk.
+Az Azure Media OCR (optikai karakterfelismerés) szerkeszthetők, kereshető digitális szöveggé alakíthatja videofájlok szöveges tartalommal. Majd segítségével automatizálhatja az értelmezhető metaadatokat kibontásával kinyert videó médiafájlt.
+### <a name="scalable-face-redaction"></a>Méretezhető arcszerkesztés
+Az Azure Media Redactor kínál a felhőben méretezhető arcszerkesztés Media Analytics médiafeldolgozó. Arcszerkesztés használatával módosíthatja a arcának elmossa videó. Előfordulhat, hogy használni kívánt a face kivonási szolgáltatás sajtóbeli híradásoknál, vagy ha közbiztonság van szó. Néhány perc alatt több arcokat tartalmazó képanyag manuálisan szereplők órát is igénybe vehet, de ennek a szolgáltatásnak arcszerkesztés néhány egyszerű lépéssel vesz igénybe. További információkért lásd: a [szereplők az Azure Media Analytics arcok](media-services-face-redaction.md) cikk.
 ### <a name="content-moderation"></a>Tartalom-jóváhagyás
-Azure tartalom moderátor lehetővé teszi, hogy a videók gép támogatású moderálás használhat. Például előfordulhat, hogy kívánt lehetséges felnőtt és ellopható tartalom észlelése a videók, és tekintse át a megjelölt tartalom emberi moderálás csapat által. Sok időt vesz igénybe, és költséges feladat manuálisan moderálás a videók nemkívánatos tartalom. A szolgáltatás és a kapcsolódó felülvizsgálati eszközök kombinálásával gép támogatású moderálás a legjobb eredmények elérése érdekében emberi hurok kezelésére képes hatékonyan és gazdaságosan. További tudnivalókért tekintse meg a [a videók feldolgozása az Azure Content moderátor](media-services-content-moderation.md) cikk.
+Az Azure Content Moderator lehetővé teszi a gépi támogatású képmoderálás használhatja a videókhoz. Például érdemes észlelheti a videók lehetséges felnőtt és szexuális tartalom, és tekintse át a megjelölt tartalom az emberi moderálás csoportok. Manuálisan moderálása nem kívánatos tartalmakat a videók a időigényes és drága feladat. A szolgáltatás és a kapcsolódó vizsgálóeszközt kombinálja a legjobb eredmények elérése érdekében emberi hurok képességekkel rendelkező gépi támogatású képmoderálás hatékonyan és költséghatékonyan. További tudnivalókért tekintse meg a [feldolgozhatja a videóit Azure Content Moderator](media-services-content-moderation.md) cikk.
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
-Media Analytics segítségével a szervezetek és vállalatok glean videó új információkat kaphat, és több hogyan kezelhet hatékonyan videotartalom nagy mennyiségű. Az alábbiakban néhány forgatókönyv:
+Media Analytics megkönnyíti a szervezetek számára, és vállalatok glean új elemzéseket az videót, és kezelheti hatékonyan videótartalmak nagy mennyiségű. Az alábbiakban néhány forgatókönyvre:
 
-* **Erőforrások hívás**. Még a közösségi média megjelenésével ügyfél telefonos ügyfélszolgálatok továbbra is megkönnyíteni az ügyfélszolgálati tranzakciók nagy része. Nagy mennyiségű ügyfél adatait, amely újabb ügyfelek elégedettségének eléréséhez elemzése a hangadatok kódolású van. Media Indexer használatával a szervezetek szöveg és keresési indexek és irányítópultokat hozhat létre. Majd kinyerhessék eszközintelligencia gyakran panaszkodnak, panaszokat források és egyéb kapcsolódó adatokat.
-* **Felhasználó által létrehozott tartalom moderálás**. Rendőrségi szervezeti egységek hírek media a számos szervezet rendelkezik nyilvánosan elérhető portálok fogadja el a felhasználók által létrehozott adathordozók, például videók és a képeket. A tartalom mennyisége miatt nem várt események is lefoglalását. Ezekben az esetekben is nehézkes elvégzésével hatékony manuális értékelést, melyekkel tartalom. Az ügyfelek a tartalom-moderálás szolgáltatás megfelelő tartalmat összpontosíthat támaszkodhat.
-* **Felügyeleti**. Használja a növekedési IP kamerák rendelkező előre videó egy egyre bővülő leltár a felügyelet. Manuálisan megtekintésével felügyeleti videó az idő, intenzív és emberi tévedések hibalehetőségeket rejt magában. Media Analytics például mozgásérzékelés, arc észlelési és annak ellenőrzése, kezelése és származékaik egyszerűbb létrehozását érdekében Hyperlapse szolgáltatásokat biztosít.
+* **Hívás központok**. Közösségi média bevezetése mellett is ügyfél telefonos ügyfélszolgálatok továbbra is az ügyfélszolgálati tranzakciók álló megkönnyítése. Nagy mennyiségű ügyfél-információkat, amelyek magasabb szintű ügyfél-elégedettség érdekében elemezheti a hívásaiból kódolva van. A Media Indexer segítségével szervezetek szöveg kinyerése és keresési indexek és irányítópultokat hozhat létre. Bontsa ki a azok is intelligencia közös panaszok, panaszok forrásai és más vonatkozó adatokat.
+* **Felhasználó által létrehozott tartalom moderálása**. A news médiaorgánumok rendőrségi részlegekhez számos vállalat rendelkezik olyan nyilvános portálok, amely fogadja el a felhasználók által létrehozott adathordózóról, például a képek és videók. A tartalom mennyisége miatt nem várt események is lefoglalását. Ezekben a forgatókönyvekben meglehetősen nehéz indították tartalmának manuális felülvizsgálatai hatékony elvégzésére. Ügyfelek a tartalom-jóváhagyás szolgáltatás összpontosíthat a megfelelő tartalom is támaszkodik.
+* **Felügyeleti**. Használatban lévő IP-kamerák növekedést is tartalmaz egy egyre bővülő felügyeleti készlet videó. Manuális megtekintésével felügyeleti videó az idő nagy számításigényű és az emberi hibák hibalehetőség. Media Analytics például mozgásérzékelés, arcfelismerés és annak áttekintése, kezelése és származékaik egyszerűbb létrehozása Hyperlapse szolgáltatásokat biztosít.
 
-## <a name="media-analytics-media-processors"></a>Media Analytics media processzor
-Ebben a szakaszban a Médiaelemzés media processzorok sorolja fel, és a media (MP) processzor objektum .NET és REST használatát ismerteti.
+## <a name="media-analytics-media-processors"></a>A médiaelemzés médiafeldolgozói
+Ez a szakasz felsorolja a médiaelemzés médiafeldolgozói, és bemutatja a .NET vagy a REST használata a media (MP) processzor-objektum.
 
 ### <a name="mp-names"></a>Felügyeleti csomag neve
 * Az Azure Media Indexer 2 előzetes verzió
@@ -72,10 +73,10 @@ Ebben a szakaszban a Médiaelemzés media processzorok sorolja fel, és a media 
 * Azure Media Motion Detector
 * Azure Media Video Thumbnails
 * Azure Media OCR
-* Az Azure Media tartalom moderátor
+* Azure Media Content Moderator
 
 ### <a name="net"></a>.NET
-A következő függvény egyikét a megadott felügyeleti csomag nevét, és a felügyeleti csomag objektum beállítása/beolvasása.
+A következő függvényt a megadott felügyeleti csomag nevek egyikét veheti fel és a egy felügyeleti csomag objektumot ad vissza.
 
     static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {
@@ -94,7 +95,7 @@ A következő függvény egyikét a megadott felügyeleti csomag nevét, és a f
 
 
 ### <a name="rest"></a>REST
-A kérelem:
+Kérés:
 
     GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20OCR' HTTP/1.1
     DataServiceVersion: 1.0;NetFx
@@ -125,7 +126,7 @@ Válasz:
     }
 
 ## <a name="demos"></a>Bemutatók
-Lásd: [Azure Médiaelemzés használatával bemutatók](http://azuremedialabs.azurewebsites.net/demos/Analytics.html).
+Lásd: [Azure Media Analytics bemutatók](http://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

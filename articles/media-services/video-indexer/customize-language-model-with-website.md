@@ -7,14 +7,14 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 9bf48a994c3efeb433bcb99342f7a477d87858eb
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: be0b930c99bb14c34e395efce494e8d7372719b0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285269"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998144"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>A Video Indexer webhelyet nyelvi modell testreszabása
 
@@ -75,11 +75,11 @@ A nyelvi modell használatával egy videót a gyűjteményt a újraindexelés, l
 
 A videó szerkesztése, törlése, videó és a videó újraindexelése beállításokat láthatja. Kattintson a beállítás újraindexelni a videót.
 
-![Újraindexelése](./media/customize-language-model/reindex1.png)
+![Reindex](./media/customize-language-model/reindex1.png)
 
 Ez lehetővé teszi a kívánt a **videó Forrásnyelv** újraindexelni a videót. Kattintson a legördülő, és válassza ki a nyelvi modell, amely létrehozta a listából. Üzenetnek kell megjelennie, a nyelvi modell és a nevét, amely rendelte hozzá zárójelben nyelvét.
 
-![Újraindexelése](./media/customize-language-model/reindex.png)
+![Reindex](./media/customize-language-model/reindex.png)
 
 Kattintson a **újraindexelése** gomb, valamint a videó lesz újra kell indexelni, nyelvi modell használatával.
 

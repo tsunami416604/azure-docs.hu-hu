@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: fdccb4e94d9b9fd8b698575c890efad56a115a3e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452819"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994015"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés az Azure Monitor szolgáltatással
 
@@ -64,7 +64,7 @@ Folyamatos integráció / folyamatos üzembe helyezés lehetővé teszi, hogy au
 
 - Használat [Azure folyamatok](/azure/devops/pipelines) folyamatos üzembe helyezés implementálását és automatizálását a CI/CD-tesztek alapján éles kód véglegesítésétől a teljes folyamatot.
 - Használat [minőségi kapuk](/azure/devops/pipelines/release/approvals/gates) integrálható a központi telepítés előtti vagy utáni figyelést. Ez biztosítja, hogy a kulcs egészségügyi/teljesítmény-mérőszámokat (KPI-k) a megfelel, az alkalmazások éles és az infrastruktúra-környezetben a különbségeket válthatnak fejlesztési vagy a méretezési csoport nem negatív negatív hatással van a KPI-ket.
-- [Különálló figyelési példány karbantartása](../azure-monitor/app/separate-resources.md) például fejlesztési, tesztelési, Kanári és éles a különböző üzemi környezetek között. Ez biztosítja, hogy összegyűjtött adatok megfelelő társított alkalmazások és infrastruktúra között. Ha adatainak korreláltatására környezetek van szüksége, használhatja [több erőforrás-diagramok a Metrikaböngésző](../azure-monitor/platform/metrics-charts.md) , vagy hozzon létre [erőforrások közötti lekérdezések a Log Analytics](log-query/cross-workspace-query.md).
+- [Különálló figyelési példány karbantartása](../azure-monitor/app/separate-resources.md) például fejlesztési, tesztelési, Kanári és éles a különböző üzemi környezetek között. Ez biztosítja, hogy összegyűjtött adatok megfelelő társított alkalmazások és infrastruktúra között. Ha adatainak korreláltatására környezetek van szüksége, használhatja [több erőforrás-diagramok a Metrikaböngésző](../azure-monitor/platform/metrics-charts.md) , vagy hozzon létre [erőforrások közötti lekérdezések az Azure monitorban](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Műveletek a gyakorlatban hasznosítható riasztások létrehozása

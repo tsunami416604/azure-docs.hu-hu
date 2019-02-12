@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 3b49ac0a38c18ab19d991e4f07350c56db6a172f
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3a21fe180dca4cc0b678624e775b67c3868f57ab
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250386"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992354"
 ---
-# <a name="h264-multiple-bitrate-1080p-audio-51"></a>H264 Több Bitrate 1080p hang 5.1
+# <a name="h264-multiple-bitrate-1080p-audio-51-legacy"></a>H264 Multiple Bitrate 1080p hang 5.1 (örökölt)
+
 `Media Encoder Standard` határozza meg a kódolási készletek is használhatja a kódolási feladat létrehozásakor. Használhatja egy `preset name` mely formátumba, amelyet szeretne kódolása a media-fájl megadásához. Vagy létrehozhat saját JSON vagy XML-alapú készletek (UTF-8 és UTF-16 kódolást használatával. Az egyéni készletet a kódoló majd kellene átadnia. Ez által támogatott összes előre definiált nevek a lista `Media Encoder Standard` kódoló, lásd: [feladat készletek Media Encoder standard](media-services-mes-presets-overview.md).  
   
  Ez a témakör bemutatja a `H264 Multiple Bitrate 1080p Audio 5.1` előre definiált XML és JSON formátumban.  
@@ -29,7 +30,7 @@ ms.locfileid: "50250386"
  Ez a készlet 8 Képcsoporttal igazított MP4-fájlokat, és a 6000 KB/s 400 kb/s és AAC 5.1 hang eredményez. Profillal kapcsolatos részletes információkért sávszélességű, mintavételi arány, stb. Ez a készletet, vizsgálja meg az XML- vagy JSON lényegét az alábbiakban. Az egyes melyik minden elem azt jelenti, és az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard-séma](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Ha módosítja a `Width` és `Height` értékek különböző rétegek, győződjön meg arról, hogy az eredeti oldalarányok konzisztens marad. Például: 1920 × 1080 képpont, 1280 x 720 között, 1080 x 576, 640 x 360. Például ne használjon nézik, vegyesen: 1280 x 720, 720 x 480-as, 640 x 360.  
+>  Ha módosítja a `Width` és `Height` értékek különböző rétegek, győződjön meg arról, hogy az eredeti oldalarányok konzisztens marad. Példa: 1920x1080, 1280x720, 1080x576, 640x360. Vegyes nézik, például ne használja: 1280x720, 720x480, 640x360.  
   
  XML  
   

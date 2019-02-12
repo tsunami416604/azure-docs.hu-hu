@@ -8,22 +8,24 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 59b190065c678ef61b3e0dec8df13db4215a8229
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6fb49baf8ab58ae6cfe7639cedcc4466810c8b96
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486300"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003312"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure-ban riasztások áttekintése 
 
 Ez a cikk azt ismerteti, milyen riasztásokat, azok előnyeit, és hogyan lehet használatba vételükhöz.  
 
 
+
+
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Mik a figyelmeztetések a Microsoft Azure-ban?
 Proaktív módon kap értesítést, ha fontos feltételek a figyelési adatok találhatók. Lehetővé teszik, hogy azonosítsa és problémákat, mielőtt azokat a felhasználókat a rendszer figyelje meg. 
 
-Ez a cikk ismerteti az egyesített riasztási élmény az Azure monitorban, amely már tartalmazza a Log Analytics és az Application Insights. A [korábbi riasztási élmény](alerts-classic.overview.md) és riasztási típusok korábbi megnevezése **klasszikus riasztások**. Kattintva megtekintheti a régi felületet és a régebbi riasztástípus **klasszikus riasztások megtekintése** a riasztás oldalának tetején. 
+Ez a cikk ismerteti az Azure monitorban, amely mostantól tartalmazza a riasztások a Log Analytics és az Application Insights által kezelt egységes riasztási felületet. A [korábbi riasztási élmény](alerts-classic.overview.md) és riasztási típusok korábbi megnevezése **klasszikus riasztások**. Kattintva megtekintheti a régi felületet és a régebbi riasztástípus **klasszikus riasztások megtekintése** a riasztás oldalának tetején. 
 
 ## <a name="overview"></a>Áttekintés
 

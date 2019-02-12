@@ -1,5 +1,5 @@
 ---
-title: Keresés erőforrásoknak az Azure Log Analyticsszel |} A Microsoft Docs
+title: Lekérdezés erőforrásoknak az Azure Monitor szolgáltatással |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan végezhet lekérdezéseket erőforrásokat több munkaterületet és az App Insights-alkalmazás az előfizetésében.
 services: log-analytics
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 42191b21faec7bb1929a12e6bc1a724d269acb1d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: ccc9a74c4e238ebfcab0fc05a3bf825000917843
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298874"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998942"
 ---
-# <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Hajtsa végre az erőforrások közötti naplókeresések a Log Analyticsben  
+# <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Erőforrások közötti log-lekérdezések végrehajtása az Azure monitorban  
 
-Korábban az Azure Log Analytics, akkor csak elemezheti az aktuális munkaterületen belüli adatokat, és az előfizetésben megadott többi munkaterület lekérdezését, korlátozott.  Ezenkívül csak keressen telemetriai elem az Application insights segítségével közvetlenül az Application Insights webes alkalmazását a, vagy a Visual Studióból.  Ez is tette a natív módon elemezheti a működési probléma és az alkalmazásadatok együtt.   
+Korábban az Azure monitorral, csak elemezheti az aktuális munkaterületen belüli adatokat, és az előfizetésben megadott többi munkaterület lekérdezését, korlátozott.  Ezenkívül csak keressen telemetriai elem az Application insights segítségével közvetlenül az Application Insights webes alkalmazását a, vagy a Visual Studióból.  Ez is tette a natív módon elemezheti a működési probléma és az alkalmazásadatok együtt.   
 
-Most már lekérdezheti a nemcsak a több Log Analytics-munkaterületek, de is ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot, vagy egy másik előfizetést az adott Application Insights alkalmazásból származó adatok között. Ez biztosít a rendszerre kiterjedően megtekintheti az adatokat.  Ezek a lekérdezéstípusok a főadatbázisról csak [Log Analytics](portals.md#log-analytics-page). Az erőforrások (Log Analytics-munkaterületek és Application Insights-alkalmazás), amelyeket megadhat egyetlen lekérdezést számát 100-ra korlátozódik. 
+Most már lekérdezheti a nemcsak a több Log Analytics-munkaterületek, de is ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot, vagy egy másik előfizetést az adott Application Insights alkalmazásból származó adatok között. Ez biztosít a rendszerre kiterjedően megtekintheti az adatokat.  Ezek a lekérdezéstípusok a főadatbázisról csak [Log Analytics](portals.md). Az erőforrások (Log Analytics-munkaterületek és Application Insights-alkalmazás), amelyeket megadhat egyetlen lekérdezést számát 100-ra korlátozódik. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>A Log Analytics-munkaterületek között és az Application Insightsból
 Hivatkozhat egy másik munkaterületet, a lekérdezés, használja a [ *munkaterület* ](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) azonosítóját, és a egy alkalmazást az Application Insightsból, használja a [ *alkalmazás* ](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)azonosítója.  
@@ -101,9 +101,9 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ```
 
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Erőforrások közötti lekérdezéssel több erőforrás
-Erőforrások közötti lekérdezések korrelációját, ha több Log Analytics és az Application Insights-erőforrások adatainak használatakor a lekérdezés összetett és nehezen fenntartható válhat. Támaszkodjon [függvények a Log Analytics](../../azure-monitor/log-query/functions.md) hatókörére a lekérdezés erőforrásokat, amely egyszerűbbé teszi a lekérdezés szerkezete a lekérdezés logikai elkülönítése. A következő példa bemutatja, hogyan figyelheti több Application Insights-erőforrást, és jelenítheti meg a sikertelen kérelmek száma alkalmazásnév szerint. 
+Erőforrások közötti lekérdezések használatával több Log Analytics-munkaterületek és Application Insights-erőforrások adatait, amikor a lekérdezés összetett és nehezen fenntartható válhat. Támaszkodjon [funkciók az Azure monitorban lekérdezések naplózását](functions.md) hatókörére a lekérdezés erőforrásokat, amely egyszerűbbé teszi a lekérdezés szerkezete a lekérdezés logikai elkülönítése. A következő példa bemutatja, hogyan figyelheti több Application Insights-erőforrást, és jelenítheti meg a sikertelen kérelmek száma alkalmazásnév szerint. 
 
-Hozzon létre egy lekérdezést, például a következőképpen, hogy az Application Insights-erőforrások a következő hatókörre hivatkozik. A `withsource= SourceApp` parancs hozzáad egy oszlopot, amely az alkalmazás nevét jelöli meg a napló küldött. [A lekérdezés Mentés másként funkció](../../azure-monitor/log-query/functions.md#create-a-function) az aliasszal _applicationsScoping_.
+Hozzon létre egy lekérdezést, például a következőképpen, hogy az Application Insights-erőforrások a következő hatókörre hivatkozik. A `withsource= SourceApp` parancs hozzáad egy oszlopot, amely az alkalmazás nevét jelöli meg a napló küldött. [A lekérdezés Mentés másként funkció](functions.md#create-a-function) az aliasszal _applicationsScoping_.
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
@@ -131,4 +131,5 @@ applicationsScoping
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a [Log Analytics naplóbeli keresési referencia](https://docs.microsoft.com/azure/log-analytics/query-language/kusto) összes elérhető a Log Analytics lekérdezési szintaxis beállítások megtekintéséhez.    
+- Felülvizsgálat [naplóadatok elemzése az Azure monitorban](log-query-overview.md) naplólekérdezések, és hogyan épül fel az Azure Monitor naplóadatok áttekintését.
+- Felülvizsgálat [Azure Monitor log-lekérdezések](query-language.md) összes erőforrást az Azure Monitor log-lekérdezések megtekintése.

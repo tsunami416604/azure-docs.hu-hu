@@ -1,6 +1,6 @@
 ---
 title: Az Azure monitorban egyéni JSON-adatok gyűjtése |} A Microsoft Docs
-description: Egyéni JSON-adatforrások használata a Log Analytics-ügynök Linux Log analyticsbe lehessen gyűjteni.  Ezek az egyéni adatforrások JSON visszaadó curl vagy valamelyik, a FluentD mint 300 beépülő modulok például egyszerű parancsfájlokat is lehet. Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
+description: Egyéni JSON-adatforrások gyűjthetők be az Azure Monitor használatával a Log Analytics-ügynök Linux rendszeren.  Ezek az egyéni adatforrások JSON visszaadó curl vagy valamelyik, a FluentD mint 300 beépülő modulok például egyszerű parancsfájlokat is lehet. Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 36f914109d8d3879d23511cb37055d20db4d670c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8b03d6838e9d942da766e0c7aa4c2c2e161a6b14
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105219"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990121"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Egyéni JSON adatforrások az Azure monitorban Linuxhoz készült Log Analytics-ügynökkel rendelkező gyűjtése
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Egyéni JSON-adatforrások gyűjthetők be [Log Analytics](data-collection.md) a Log Analytics ügynökét használja a Linux rendszerre.  Ezek az egyéni adatforrások lehet például visszaadó JSON egyszerű parancsfájlokat [curl](https://curl.haxx.se/) vagy az egyik [FluentD a mint 300 beépülő modulok](http://www.fluentd.org/plugins/all). Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
+Egyéni JSON-adatforrások gyűjthetők be [Azure Monitor](data-collection.md) a Log Analytics ügynökét használja a Linux rendszerre.  Ezek az egyéni adatforrások lehet például visszaadó JSON egyszerű parancsfájlokat [curl](https://curl.haxx.se/) vagy az egyik [FluentD a mint 300 beépülő modulok](http://www.fluentd.org/plugins/all). Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
 
 
 > [!NOTE]
@@ -33,7 +33,7 @@ Egyéni JSON-adatforrások gyűjthetők be [Log Analytics](data-collection.md) a
 
 ### <a name="configure-input-plugin"></a>A bemeneti beépülő modul konfigurálása
 
-Adja hozzá a Log Analytics JSON-adatok gyűjtéséhez `oms.api.` egy FluentD címkét egy bemeneti beépülő modul elejére.
+Az Azure monitorban JSON-adatokat gyűjteni, adjon hozzá `oms.api.` egy FluentD címkét egy bemeneti beépülő modul elejére.
 
 Ha például az alábbiakban a különálló konfigurációs fájlt `exec-json.conf` a `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  Ez a FluentD beépülő modul használja `exec` 30 másodpercenként a curl-parancs futtatásához.  Ez a parancs kimenete a JSON-kimenet beépülő modul gyűjti.
 
@@ -87,9 +87,9 @@ Indítsa újra a Log Analytics-ügynök Linux-szolgáltatás a következő paran
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Kimenet
-A történjen az adatgyűjtés a Log Analytics típusú rekord `<FLUENTD_TAG>_CL`.
+Az adatgyűjtést az Azure monitorban típusú rekord `<FLUENTD_TAG>_CL`.
 
-Ha például az egyéni címke `tag oms.api.tomcat` a Log Analytics típusú rekord `tomcat_CL`.  A típus a következő naplófájl-lekérdezést az összes rekord beolvasása.
+Ha például az egyéni címke `tag oms.api.tomcat` az Azure monitorban típusú rekord `tomcat_CL`.  A típus a következő naplófájl-lekérdezést az összes rekord beolvasása.
 
     Type=tomcat_CL
 
@@ -106,4 +106,4 @@ Beágyazott JSON-adatok források támogatottak, de az indexelt minden szülő m
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [lekérdezések naplózását](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 

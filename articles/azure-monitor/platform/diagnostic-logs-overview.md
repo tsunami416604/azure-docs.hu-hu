@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 55c1bc18422bc2be5172aebcd46b76ac6051a8a4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: e9fcf36d6ece441c73e7d1224bd5918d2e74bf84
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885847"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001980"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások
 
@@ -40,7 +40,9 @@ Az alábbiakban néhány, a diagnosztikai naplók segítségével teheti:
 
 * Menti azokat egy [ **Tárfiók** ](../../azure-monitor/platform/archive-diagnostic-logs.md) naplózási vagy manuális ellenőrzést. A megőrzési ideje (nap) használatával is megadhat **erőforrás diagnosztikai beállításait**.
 * [Azokat a Stream **az Event Hubs** ](diagnostic-logs-stream-event-hubs.md) egy külső szolgáltatás vagy az egyéni elemzési megoldással, például a Power bi támogatunk.
-* Elemezheti a [Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md), ahol az adatok írása közvetlenül a Log Analytics és nincs szükség, először a tárolás az adatokat írni.  
+* Elemezheti a [Azure Monitor](../../azure-monitor/platform/collect-azure-metrics-logs.md), ahol az adatok írása közvetlenül az Azure monitornak és nincs szükség, először a tárolás az adatokat írni.  
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Használhatja a storage-fiók vagy az Event Hubs-névtér, amely nem ugyanabban az előfizetésben, mint a naplókat kibocsátó. A beállítást konfiguráló felhasználónak rendelkeznie kell a megfelelő RBAC-hozzáférés mindkét előfizetéshez.
 
@@ -56,7 +58,7 @@ Használhatja a storage-fiók vagy az Event Hubs-névtér, amely nem ugyanabban 
 
 Erőforrás-diagnosztikai naplók vannak konfigurálva az erőforrás diagnosztikai beállításait használja. Bérlő diagnosztikai naplók egy bérlő diagnosztikai beállítás használatával konfigurálhatók. **Diagnosztikai beállítások** szolgáltatás vezérlőelem:
 
-* Ha a diagnosztikai naplók és mérőszámok érkeznek (Storage-fiók, az Event Hubs, illetve a Log Analytics).
+* Ha a diagnosztikai naplók és mérőszámok érkeznek (Storage-fiók, az Event Hubs, illetve az Azure Monitor).
 * Melyik naplókategóriák küldik, és hogy metrikaadatok is elküldi a rendszer.
 * Mennyi ideig minden naplókategória megőrződjön-e a storage-fiókban
     - Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték lehet minden olyan 1 és 2147483647 között eltelt napok számát.
@@ -235,5 +237,4 @@ Diagnosztikai beállítás hozzáadása megjeleníti a diagnosztikai beállítá
 
 * [Az erőforrás-diagnosztikai naplók Stream **az Event Hubs**](diagnostic-logs-stream-event-hubs.md)
 * [Módosítsa az erőforrás diagnosztikai beállításait az Azure Monitor REST API használatával](https://docs.microsoft.com/rest/api/monitor/)
-* [A Log Analytics használatával az Azure storage-naplók elemzése](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-
+* [Az Azure Monitor szolgáltatással az Azure storage-naplók elemzése](collect-azure-metrics-logs.md)

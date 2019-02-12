@@ -4,17 +4,17 @@ description: Az Azure Blueprints az Azure egy szolgáltatása, amelynek használ
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 7803ed99a61a9b4ad819da882daf38cbfd6fffe9
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 29670b94450e9f145a96b737ef96970db40aeed8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563371"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998552"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -112,6 +112,12 @@ A fenti engedélyek mindegyikének birtokában szerepelnek a **tulajdonosa** sze
 
 > [!NOTE]
 > Az Azure Blueprints-tervek szolgáltatásnevének **Tulajdonos** szerepkörrel kell rendelkeznie a hozzárendelt előfizetésen ahhoz, hogy az üzembe helyezés engedélyezett legyen. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja.
+
+## <a name="video-overview"></a>Áttekintő videó
+
+A következő Azure tervek áttekintése az Azure fridays-re. Videó letöltése, látogasson el a [Azure fridays-re – Azure tervek áttekintése](https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints) Channel 9-on.
+
+> [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 
 ## <a name="next-steps"></a>További lépések
 

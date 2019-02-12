@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 4dbfd993a8464c569d30f11e305d4bae000a778f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 10e60076fe527e6e773e966ccdae52a7fe99c4b2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077708"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997200"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Állítsa be az Azure Key Vault kulcsforgatással és vizsgálattal
 
 ## <a name="introduction"></a>Bevezetés
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Miután egy kulcstartót, elkezdheti a kulcsok és titkos kulcsok tárolására használja. Az alkalmazások többé nem kell megőrizni a kulcsok vagy titkos adatait, de lehetőség igényelni azokat a tárolóból igény szerint. Ez lehetővé teszi, hogy frissítse a kulcsok és titkos kulcsok működésének megzavarása nélkül megtesztelheti az alkalmazás, amely nyit meg a kulcs és titkos kódok kezelése körül lehetőségeket szánt viselkedését.
 
@@ -45,7 +47,7 @@ Ez a cikk ismerteti:
 Ahhoz, hogy egy alkalmazás titkos Key vaultból, először kell létrehozni a titkos kulcsot és töltse fel azt a tárolót. Ez valósítható indítása az Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fiókjába a következő paranccsal:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. PowerShell ehhez a fiókhoz társított összes előfizetés fog kapni. PowerShell alapértelmezés szerint az első utótagcímkéjét használja.
@@ -53,19 +55,19 @@ Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét �
 Ha több előfizetéssel rendelkezik, akkor előfordulhat, hogy adja meg azt, amelyik a kulcstároló létrehozásához használt. Adja meg a fiókhoz tartozó előfizetések megtekintéséhez a következő:
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Ha az előfizetést, amelyhez a key vault követően a naplózandó van társítva, adja meg:
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscriptionID>
+Set-AzContext -SubscriptionId <subscriptionID>
 ```
 
 Ez a cikk bemutatja a tárfiókkulcs tárolására, egy titkos kulcsot, mert be kell szereznie a tárfiók kulcsára.
 
 ```powershell
-Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
+Get-AzStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
 (Ebben az esetben az a tárfiók kulcsának) a titkos kód beolvasása, után, amely egy biztonságos karakterláncra konvertálni és majd létrehoz egy titkos kulcsot, ezt az értéket a key vaultban lévő.
@@ -73,13 +75,13 @@ Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <stora
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 
-Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
+Set-AzKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
 
 Ezután szerezze be az URI-t a titkos kulcsot hozott létre. Ez szolgál egy későbbi lépésben, a titkos kód lekérése a key vault hívásakor. Futtassa a következő PowerShell-parancsot, és jegyezze fel az azonosító értékét, amely a titkos URI:
 
 ```powershell
-Get-AzureKeyVaultSecret –VaultName <vaultName>
+Get-AzKeyVaultSecret –VaultName <vaultName>
 ```
 
 ## <a name="set-up-the-application"></a>Az alkalmazás beállítása
@@ -110,7 +112,7 @@ Ezután akkor hozzon létre egy kulcsot az alkalmazás, így kommunikálhat az A
 Mielőtt bármilyen hívásokat az alkalmazásból a key vaultban történő létrehozásáról, a a key vault ossza meg az alkalmazást és annak engedélyeivel kapcsolatos. A következő parancsot a tároló nevére, és az Azure Active Directory-alkalmazás és a jogok Alkalmazásazonosítója veszi **első** az alkalmazás a key vaulthoz való hozzáférés.
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
 Ezen a ponton készen áll az alkalmazás hívások kiépítésének megkezdésére. Az alkalmazásban telepítenie kell a NuGet-csomagok az Azure Key Vault és az Azure Active Directory használata szükséges. A Visual Studio Csomagkezelő konzolról adja meg a következő parancsokat. A jelen cikk írásakor az aktuális az Azure Active Directory-csomag verziója 3.10.305231913, ezért előfordulhat, hogy erősítse meg a legújabb verzióra, és ennek megfelelően frissülnek.
@@ -188,7 +190,7 @@ A **eszközök**, válassza a **modulok**. A **modulok**, jelölje be **katalóg
 Miután az Azure Automation-kapcsolat a lekérdezés az Alkalmazásazonosítót, utasítsa a key vaultban, hogy az alkalmazás hozzáfér a tároló titkos kulcsainak frissítése. Ez a következő PowerShell-paranccsal végezhető el:
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
 Majd **Runbookok** az Azure Automation-példányt, és válassza ki a **forgatókönyv hozzáadása**. Kattintson a **Gyors létrehozás** gombra. Nevezze el a runbookot, és válassza ki **PowerShell** a runbook típusaként. Lehetősége van, adjon meg egy leírást. Végül kattintson **létrehozás**.
@@ -205,7 +207,7 @@ try
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -230,12 +232,12 @@ $VaultName = <keyVaultName>
 $SecretName = <keyVaultSecretName>
 
 #Key name. For example key1 or key2 for the storage account
-New-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
-$SAKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
+New-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
+$SAKeys = Get-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
 
 $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 
-$secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
+$secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
 A Lekérdezésszerkesztő panelén válassza a **teszt panel** tesztelni a parancsfájlt. Miután a parancsfájl hiba nélkül fut, kiválaszthatja **közzététel**, és a runbook vissza a runbook konfiguráció panelen ütemezés alkalmazhatja.
@@ -246,9 +248,9 @@ Ha beállította a key vault, a naplók összegyűjtése a kulcstartó hozzáfé
 Először engedélyeznie kell a key vault naplózásának. Ezt megteheti a következő PowerShell-parancsok (részletes információ megtekinthető [key vault-naplózás](key-vault-logging.md)):
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
-$kv = Get-AzureRmKeyVault -VaultName '<vaultName>'
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+$sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
+$kv = Get-AzKeyVault -VaultName '<vaultName>'
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
 Ennek engedélyezése után a naplók összegyűjtése a kijelölt tárfiókba kezdő. Ezek a naplók tartalmaz eseményeket hogyan és mikor érhetők el a kulcstartók, és ki használja őket.
@@ -429,7 +431,7 @@ Ezután létre kell hoznia, amely fogadja az eseményeket, hogy a függvény van
 
 A logikai alkalmazás létrehozása után keresse meg, és válassza a **szerkesztése**. A logic app-szerkesztő belül válassza **Service Bus-üzenetsor** , és adja meg a várólista csatlakozni a Service Bus hitelesítő adatait.
 
-![Az Azure Logic App Service Bus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
+![Azure Logic App Service Bus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
 Ezután válassza ki **feltétel hozzáadása**. A feltétel váltson a speciális szerkesztő, és írja be a következő kódra, és cserélje le a tényleges APP_ID a webalkalmazás APP_ID:
 

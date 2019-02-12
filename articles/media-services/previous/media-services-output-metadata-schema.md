@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 35b728793b81c41f0a81c5c7621b9e17edf1f22a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ec4b03629b56c09973c1ecc5c55930c33c24990b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994678"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997575"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
 ## <a name="overview"></a>Áttekintés
@@ -39,7 +39,7 @@ A kódolási feladat bejegyzéseket AssetFile gyűjteménye.
 ### <a name="child-elements"></a>Gyermekelemek
 | Name (Név) | Leírás |
 | --- | --- |
-| **AssetFile**<br/><br/> minOccurs = maxOccurs "0" = "1" |Egy [AssetFile elem](media-services-output-metadata-schema.md) a AssetFiles gyűjtemény részét képezi. |
+| **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |Egy [AssetFile elem](media-services-output-metadata-schema.md) a AssetFiles gyűjtemény részét képezi. |
 
 ## <a name="AssetFile "></a> AssetFile elem
 XML-példát talál [XML-példa](media-services-output-metadata-schema.md#xml).  
@@ -48,15 +48,15 @@ XML-példát talál [XML-példa](media-services-output-metadata-schema.md#xml).
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | **Name (Név)**<br/><br/> Szükséges |**xs:string** |A média az eszközintelligencia-fájl neve. |
-| **Méret**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:Long** |Mérete bájtban adategységfájlon. |
+| **Méret**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:Long** |Mérete bájtban adategységfájlon. |
 | **Időtartam**<br/><br/> Szükséges |**DURATION típusú** |Tartalom play vissza időtartama. |
 
 ### <a name="child-elements"></a>Gyermekelemek
 | Name (Név) | Leírás |
 | --- | --- |
 | **Adatforrások** |Gyűjtemény beviteli/forrás médiafájlok, annak érdekében, hogy ez AssetFile feldolgozott. További információkért lásd: [forrás elem](media-services-output-metadata-schema.md). |
-| **VideoTracks**<br/><br/> minOccurs = maxOccurs "0" = "1" |Minden egyes fizikai AssetFile tartalmazhat, nulla vagy több videók egy megfelelő tárolót formátumba közbeékeléses nyomon követi. További információkért lásd: [VideoTracks elem](media-services-output-metadata-schema.md). |
-| **AudioTracks**<br/><br/> minOccurs = maxOccurs "0" = "1" |Minden egyes fizikai AssetFile tartalmazhat, egy megfelelő tárolót formátumba közbeékeléses nulla vagy több hangsáv. Ez az összes ezeket hangsáv gyűjteménye. További információkért lásd: [AudioTracks elem](media-services-output-metadata-schema.md). |
+| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Minden egyes fizikai AssetFile tartalmazhat, nulla vagy több videók egy megfelelő tárolót formátumba közbeékeléses nyomon követi. További információkért lásd: [VideoTracks elem](media-services-output-metadata-schema.md). |
+| **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Minden egyes fizikai AssetFile tartalmazhat, egy megfelelő tárolót formátumba közbeékeléses nulla vagy több hangsáv. Ez az összes ezeket hangsáv gyűjteménye. További információkért lásd: [AudioTracks elem](media-services-output-metadata-schema.md). |
 
 ## <a name="Sources "></a> Források elem
 Gyűjtemény beviteli/forrás médiafájlok, annak érdekében, hogy ez AssetFile feldolgozott.  
@@ -96,19 +96,19 @@ XML-példát talál [XML-példa](media-services-output-metadata-schema.md#xml).
 ### <a name="attributes"></a>Attribútumok
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Azonosító**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:int** |A videó követése nulla alapú indexét. **Megjegyzés:** ez **azonosító** nem feltétlenül a TrackID a MP4-fájlokat. |
+| **Azonosító**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |A videó követése nulla alapú indexét. **Megjegyzés:**  Ez **azonosító** nem feltétlenül a TrackID a MP4-fájlokat. |
 | **FourCC**<br/><br/> Szükséges |**xs:string** |Videó kodek FourCC kódot. |
 | **Profil** |**xs:string** |H264 profil (H264 kodek csak érvényes). |
 | **Szint** |**xs:string** |H264 szintje (H264 kodek csak érvényes). |
-| **Szélesség**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:int** |A kódolt videó szélességét (képpontban). |
-| **Magasság**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:int** |A kódolt videó magasságát (képpontban). |
-| **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:Double** |Oldalarány számlálójának képmegjelenítő. |
-| **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:Double** |Oldalarány nevező képmegjelenítő. |
-| **Képkockasebesség**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:decimal** |Mért videó képkockasebessége .3f formátumban. |
-| **TargetFramerate**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:decimal** |Az előre beállított céloldali videó képkockasebessége .3f formátumban. |
-| **Átviteli sebesség**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:int** |Videó átlagos átviteli sebessége a kilobit / másodperc, a AssetFile a kiszámított módon. Csak a elemi stream hasznos számolja, és nem tartalmazza a csomagolási terhelését. |
-| **TargetBitrate**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:int** |A videó nyomon követése, az átlagos átviteli TARGET kért keresztül a kódolási beállításkészletet, a kilobit / másodperc. |
-| **MaxGOPBitrate**<br/><br/> minInclusive = "0" |**xs:int** |Maximális Képcsoporttal átlagos bitsebességű a a videó nyomon követése a kilobit / másodperc. |
+| **Szélesség**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |A kódolt videó szélességét (képpontban). |
+| **Magasság**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |A kódolt videó magasságát (képpontban). |
+| **DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:Double** |Oldalarány számlálójának képmegjelenítő. |
+| **DisplayAspectRatioDenominator**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:Double** |Oldalarány nevező képmegjelenítő. |
+| **Képkockasebesség**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:decimal** |Mért videó képkockasebessége .3f formátumban. |
+| **TargetFramerate**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:decimal** |Az előre beállított céloldali videó képkockasebessége .3f formátumban. |
+| **Átviteli sebesség**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Videó átlagos átviteli sebessége a kilobit / másodperc, a AssetFile a kiszámított módon. Csak a elemi stream hasznos számolja, és nem tartalmazza a csomagolási terhelését. |
+| **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |A videó nyomon követése, az átlagos átviteli TARGET kért keresztül a kódolási beállításkészletet, a kilobit / másodperc. |
+| **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Maximális Képcsoporttal átlagos bitsebességű a a videó nyomon követése a kilobit / másodperc. |
 
 ## <a name="AudioTracks "></a> AudioTracks elem
 Minden egyes fizikai AssetFile tartalmazhat, egy megfelelő tárolót formátumba közbeékeléses nulla vagy több hangsáv. A **AudioTracks** elem minden ezeket hangsáv egy gyűjteményét képviseli.  
@@ -128,18 +128,18 @@ XML-példát talál [XML-példa](media-services-output-metadata-schema.md#xml).
 ### <a name="attributes"></a>Attribútumok
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Azonosító**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:int** |Ez hangsávra nulla alapú indexét. **Megjegyzés:** ez nem feltétlenül a TrackID a MP4-fájlokat. |
+| **Azonosító**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Ez hangsávra nulla alapú indexét. **Megjegyzés:**  Ez nem feltétlenül a TrackID a MP4-fájlokat. |
 | **Kodek** |**xs:string** |Hangsávra kodek karakterlánc. |
 | **EncoderVersion** |**xs:string** |Nem kötelező kódoló verziószám-karakterlánc, EAC3 szükséges. |
-| **csatornák**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:int** |Hang csatornák száma. |
-| **Érvénytelen a SamplingRate**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:int** |Hang mintavételi ráta samples/mp vagy Hz. |
-| **Átviteli sebesség**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:int** |Bit / másodperc, a AssetFile a kiszámított hang átlagos átviteli sebessége. Csak a elemi stream hasznos számolja, és nem tartalmazza a csomagolási terhelését. |
-| **Bitspersample obsahuje neplatnou Hodnotu**<br/><br/> minInclusive = "0"<br/><br/> Szükséges |**xs:int** |Bit / minta wFormatTag formátumban írja be. |
+| **csatornák**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Hang csatornák száma. |
+| **Érvénytelen a SamplingRate**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Hang mintavételi ráta samples/mp vagy Hz. |
+| **Átviteli sebesség**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Bit / másodperc, a AssetFile a kiszámított hang átlagos átviteli sebessége. Csak a elemi stream hasznos számolja, és nem tartalmazza a csomagolási terhelését. |
+| **Bitspersample obsahuje neplatnou Hodnotu**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Bit / minta wFormatTag formátumban írja be. |
 
 ### <a name="child-elements"></a>Gyermekelemek
 | Name (Név) | Leírás |
 | --- | --- |
-| **LoudnessMeteringResultParameters**<br/><br/> minOccurs = maxOccurs "0" = "1" |Hangerő mérési eredmények paraméterek. További információkért lásd: [LoudnessMeteringResultParameters elem](media-services-output-metadata-schema.md). |
+| **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Hangerő mérési eredmények paraméterek. További információkért lásd: [LoudnessMeteringResultParameters elem](media-services-output-metadata-schema.md). |
 
 ## <a name="LoudnessMeteringResultParameters "></a> LoudnessMeteringResultParameters elem
 Hangerő mérési eredmények paraméterek.  
@@ -154,11 +154,11 @@ XML-példát talál [XML-példa](media-services-output-metadata-schema.md#xml).
 | **IntegratedLoudness**<br/><br/> minInclusive = "-70" maxInclusive "10" =<br/><br/> Szükséges |**xs:float** |Integrált hangerő |
 | **IntegratedLoudnessUnit**<br/><br/> Szükséges |**xs:string** |Integrált hangerő egység. |
 | **IntegratedLoudnessGatingMethod**<br/><br/> Szükséges |**xs:string** |Korhatáralapú hozzáférés-korlátozás azonosítója |
-| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive = "0" maxInclusive "100" = |**xs:float** |A program százalékos keresztül beszédtartalomból. |
+| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive ="0" maxInclusive="100" |**xs:float** |A program százalékos keresztül beszédtartalomból. |
 | **SamplePeak**<br/><br/> Szükséges |**xs:float** |Csúcsidőszak abszolút Mintaérték, alaphelyzetbe állítása óta, vagy utolsó óta nincs bejelölve, csatornánként.  Egységek dBFS. |
-| **SamplePeakUnit**<br/><br/> rögzített = "dBFS"<br/><br/> Szükséges |**xs:anySimpleType** |Minta csúcs egység. |
+| **SamplePeakUnit**<br/><br/> fixed="dBFS"<br/><br/> Szükséges |**xs:anySimpleType** |Minta csúcs egység. |
 | **TruePeak**<br/><br/> Szükséges |**xs:float** |Maximális valós Csúcsérték, megfelelően ITU-R BS.1770-2, alaphelyzetbe állítása óta, vagy utolsó óta nincs bejelölve, csatornánként. Egységek dBTP. |
-| **TruePeakUnit**<br/><br/> rögzített = "dBTP"<br/><br/> Szükséges |**xs:anySimpleType** |Igaz csúcs egység. |
+| **TruePeakUnit**<br/><br/> fixed="dBTP"<br/><br/> Szükséges |**xs:anySimpleType** |Igaz csúcs egység. |
 
 ## <a name="schema-code"></a>Séma kódjának
     <?xml version="1.0" encoding="utf-8"?>  

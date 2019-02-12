@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: c4fab22513e42013a9dacf0b24b2d4b322ae09b6
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883398"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990428"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -105,7 +105,7 @@ A legtöbb adat beállításainak kezelése a a a **speciális beállítások** 
 A megoldások kezelése az **megoldások** a munkaterület menüje. 
 
 ## <a name="how-do-i-install-and-remove-management-solutions"></a>Hogyan telepítése és eltávolítása a felügyeleti megoldások?
-Az OMS-portálon az eszközfelügyeleti megoldások telepítéséhez kövesse a megoldástárban, és eltávolítja azokat **beállítások**. Az Azure Portalon [felügyeleti megoldások telepítése](../insights/solutions.md#install-a-management-solution) az Azure Marketplace-ről. [Távolítsa el a megoldások](../insights/solutions.md#remove-a-management-solution) telepített megoldások listájából.
+Az OMS-portálon az eszközfelügyeleti megoldások telepítéséhez kövesse a megoldástárban, és eltávolítja azokat **beállítások**. Az Azure Portalon [felügyeleti megoldások telepítése](../insights/solutions.md#install-a-monitoring-solution) az Azure Marketplace-ről. [Távolítsa el a megoldások](../insights/solutions.md#remove-a-monitoring-solution) telepített megoldások listájából.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Hogyan hozzon létre és kezelheti a riasztásokat?
 Riasztási szabályok alapján a Log Analytics-lekérdezések már kezelhetők a [egységes felhasználói élményt riasztási](../../azure-monitor/platform/alerts-metric.md). Lásd: [bővítése a riasztások a Log Analytics az Azure Alerts](../../azure-monitor/platform/alerts-extend-tool.md) konfigurálása és riasztások használatával az Azure Portalon.

@@ -1,6 +1,6 @@
 ---
-title: Adatfolyamatok létrehozása az Azure Log Analytics Data Collector API |} A Microsoft Docs
-description: A Log Analytics HTTP-adatgyűjtő API segítségével POST JSON-adatok hozzáadása a Log Analytics-adattárban a bármely ügyfélnek, amely az REST API-t. Ez a cikk ismerteti, hogyan tölthetők fel fájlok automatikus módon átalakítson tárolt adatokat.
+title: Adatfolyamatok létrehozása az Azure az Azure Monitor adatgyűjtő API |} A Microsoft Docs
+description: Az Azure Monitor HTTP-adatgyűjtő API segítségével POST JSON-adatok hozzáadása a Log Analytics-munkaterület minden ügyfélről, amely az REST API-t. Ez a cikk ismerteti, hogyan tölthetők fel fájlok automatikus módon átalakítson tárolt adatokat.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 94d026ce1d055d18a615919df6ed5021b15bf108
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d2736e397827373949da1634a99056420dc13b8a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186072"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003856"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Adatfolyamatok létrehozása a Data Collector API-val
 
-A [Log Analytics Data Collector API](../../azure-monitor/platform/data-collector-api.md) lehetővé teszi, hogy egyéni az adatok importálása a Log analyticsbe. A csak követelmények, hogy az adatok JSON-formátumú, és 30 MB vagy kisebb szegmensek felosztása kell-e. Ez egy teljesen rugalmas mechanizmust, amely számos módon lehet csatlakoztatni az: közvetlenül az alkalmazásból küldött adatokból való egyszeri ad hoc ad hoc tölt fel. Ez a cikk néhány gyakori forgatókönyv esetén kiindulási pont lesz szerkezeti: töltse fel az adatok rendszeres, automatizált alapon-fájlban tárolt kell. Amíg a folyamat megjelenik itt nem lesz a legtöbb nagy teljesítményű, vagy ellenkező esetben optimalizált, célja, hogy saját éles folyamat felépítésével bajlódnia felé kiindulási pontként szolgál.
+A [Azure Monitor adatgyűjtő API](data-collector-api.md) lehetővé teszi, hogy minden olyan egyéni napló adatok importálása az Azure monitorban Log Analytics-munkaterület. A csak követelmények, hogy az adatok JSON-formátumú, és 30 MB vagy kisebb szegmensek felosztása kell-e. Ez egy teljesen rugalmas mechanizmust, amely számos módon lehet csatlakoztatni az: közvetlenül az alkalmazásból küldött adatokból való egyszeri ad hoc ad hoc tölt fel. Ez a cikk néhány gyakori forgatókönyv esetén kiindulási pont lesz szerkezeti: töltse fel az adatok rendszeres, automatizált alapon-fájlban tárolt kell. Amíg a folyamat megjelenik itt nem lesz a legtöbb nagy teljesítményű, vagy ellenkező esetben optimalizált, célja, hogy saját éles folyamat felépítésével bajlódnia felé kiindulási pontként szolgál.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>A példában a probléma
 Ez a cikk további részében hogy megvizsgálja a lapmegtekintések adatainak az Application insights szolgáltatásban. A képzeletbeli esetünkben korrelációját, ha a cél az azonosítása, ahol azt kell lennie költségkeret-beállítási a legtöbbet a világ minden ország népesség tartalmazó egyéni adatok alapértelmezés szerint az Application Insights SDK által gyűjtött földrajzi adatok szeretnénk marketing dollár. 
@@ -42,13 +44,13 @@ Ez a cikk nem fedezik adatok létrehozása vagy [töltse fel az Azure Blob Stora
 
 1. Egy folyamat észleli, hogy az új adatok fel lett töltve.  A példában egy [Azure Logic Apps](../../logic-apps/logic-apps-overview.md), amely rendelkezik elérhető új adatokat a blob feltöltése folyamatban észlelő eseményindító.
 
-2. A processzor olvassa be az új adatokat, és konvertálja JSON-t, a Log Analytics által megkívánt formátumban.  Ebben a példában használjuk egy [Azure-függvény](../../azure-functions/functions-overview.md) feldolgozási kód végrehajtásának egyszerű, költséghatékony módja. A függvény által ugyanolyan logikai alkalmazást, hogy annak észlelésére használnak, megkezdődik a az új adatokat.
+2. Processzor olvassa be az új adatokat, és konvertálja JSON formátumban szükséges Azure figyelő az ebben a példában, használjuk egy [Azure-függvény](../../azure-functions/functions-overview.md) feldolgozási kód végrehajtásának egyszerű, költséghatékony módja. A függvény által ugyanolyan logikai alkalmazást, hogy annak észlelésére használnak, megkezdődik a az új adatokat.
 
-3. Végül Miután érhető el a JSON-objektum, továbbítja a Log Analytics. Ugyanez a logikai alkalmazás elküldi az adatokat a Log Analytics használatával a beépített a Log Analytics Data Collector tevékenység.
+3. Végül Miután érhető el a JSON-objektum, továbbítja az Azure Monitor. Ugyanez a logikai alkalmazás elküldi az adatokat az Azure Monitor használatával, a beépített a Log Analytics Data Collector tevékenység.
 
 A blob storage, a logikai alkalmazásban vagy az Azure-függvény részletes beállítása nem a következő cikkben ismertetett, amíg az adott termékek oldalain részletes utasításokat érhetők el.
 
-Ez a folyamat monitorozásához figyelése az Azure-függvényt használjuk az Application Insights [részletesen Itt](../../azure-functions/functions-monitoring.md), és figyelheti a logikai alkalmazás Log Analytics [részletesen Itt](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md). 
+Ez a folyamat monitorozásához figyelése az Azure-függvényt használjuk az Application Insights [részletesen Itt](../../azure-functions/functions-monitoring.md), és a logikai alkalmazás figyelése az Azure Monitor [részletesen Itt](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md). 
 
 ## <a name="setting-up-the-pipeline"></a>A folyamat beállítása
 Beállítása a csővezetéket, először győződjön meg arról, hogy a blob-tároló létrehozása és konfigurálása. Hasonlóképpen győződjön meg arról, hogy létrejött-e a Log Analytics-munkaterületet, ahol szeretné elküldeni az adatokat.
@@ -136,10 +138,10 @@ Most meg kell visszalép és módosítja a logikai alkalmazást, hogy elkezdhess
 ![Logic Apps munkafolyamat teljes példát](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-02.png)
 
 ## <a name="testing-the-pipeline"></a>A folyamat tesztelése
-Most a korábban beállított blob feltöltése egy új fájlt, és azt a logikai alkalmazás által figyelt. Hamarosan kell tekintse meg a logikai alkalmazás indító ki egy új példányát, hívja az Azure-függvény a, és sikeresen elküldheti az adatokat a Log Analytics szolgáltatásba. 
+Most a korábban beállított blob feltöltése egy új fájlt, és azt a logikai alkalmazás által figyelt. Hamarosan meg kell tekintse meg a logikai alkalmazás indító ki egy új példányát, hívja az Azure-függvény, és sikeresen elküldheti az adatokat az Azure monitornak. 
 
 >[!NOTE]
->Az adatok jelennek meg egy új típusú adatokat küld a Log Analytics az első alkalommal akár 30 percet is igénybe vehet.
+>Az adatok megjelennek az Azure Monitor egy új típusú adatokat küld az első alkalommal akár 30 percet is igénybe vehet.
 
 
 ## <a name="correlating-with-other-data-in-log-analytics-and-application-insights"></a>Egyéb adatokkal, a Log Analytics és az Application Insights használatával történik
@@ -163,7 +165,7 @@ Ez a cikk egy működő prototípust, amely mögötti logika is alkalmazható fe
 
 * Adja hozzá a hibakezelést és újrapróbálkozási logika, a logikai alkalmazás és a függvény.
 * Adja hozzá a logikát, győződjön meg arról, hogy nem haladja-e a 30MB/egyetlen Log Analytics Adatbetöltési API-hívás korlátot. Az adatok ossza fel kisebb szegmensek szükség esetén.
-* A blob Storage-karbantartási szabályzat beállítása. Miután sikeresen Log Analytics felé küldött, kivéve, ha szeretné megtartani a rendelkezésre álló nyers adatok archiválási célokból, nem indokolt tárolva folytatja. 
+* A blob Storage-karbantartási szabályzat beállítása. Miután sikeresen elküldte a Log Analytics-munkaterületet, kivéve, ha szeretné megtartani a rendelkezésre álló nyers adatok archiválási célokból, nem indokolt tárolva folytatja. 
 * Ellenőrizze a figyelés engedélyezve van-e a teljes folyamat, és nyomkövetési pontok hozzáadása és riasztást küld a megfelelő módon.
 * Használja ki a verziókövetés kezelése a kódot a függvény és a logikai alkalmazás.
 * Győződjön meg arról, hogy a megfelelő módosítás-kezelési házirendek követik, úgy, hogy ha a séma módosul, a függvény és a Logic Apps ennek megfelelően módosítani.
@@ -171,4 +173,4 @@ Ez a cikk egy működő prototípust, amely mögötti logika is alkalmazható fe
 
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet a [adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.
+Tudjon meg többet a [adatgyűjtő API](data-collector-api.md) adatokat írni a Log Analytics-munkaterület bármely REST API-ügyfélből.

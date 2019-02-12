@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: bfc3ed5553802c8a87776dc1a5372bc27ac8d13d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 457f64b9ae9101628df5347c921bfa057a7cb754
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475186"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991429"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
@@ -493,7 +493,7 @@ ORDER BY <sort_specification>
 |-|-|-|  
 |**Aritmetikai**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Emellett.<br /><br /> Kivonás.<br /><br /> Szorzás.<br /><br /> Osztás.<br /><br /> Modulációs.|  
 |**Bitenkénti**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitenkénti vagy.<br /><br /> Bitenkénti és művelet<br /><br /> Bitenkénti kizáró vagy.<br /><br /> Balra Tolást.<br /><br /> Jobbra Tolást.<br /><br /> Jobbra Tolást nulla ki.|  
-|**Logikai**|**ÉS**<br /><br /> **VAGY**|Logikai és. Adja vissza **igaz** Ha mindkét argumentum **igaz**, adja vissza **hamis** más módon.<br /><br /> Logikai és. Adja vissza **igaz** Ha mindkét argumentum **igaz**, adja vissza **hamis** más módon.|  
+|**Logikai**|**ÉS**<br /><br /> **VAGY**|Logikai és. Adja vissza **igaz** Ha mindkét argumentum **igaz**, adja vissza **hamis** más módon.<br /><br /> Logikai vagy műveletet. Adja vissza **igaz** , ha bármely argumentuma **igaz**, adja vissza **hamis** más módon.|  
 |**Összehasonlítás**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Egyenlő. Adja vissza **igaz** , ha argumentumok egyenlő adja vissza **hamis** más módon.<br /><br /> Nem egyenlő. Adja vissza **igaz** argumentumok, amelyek nem egyeznek, ha függvény **hamis** ellenkező esetben.<br /><br /> Nagyobb, mint. Értéket ad vissza **igaz** első argumentum értéke nagyobb, mint a második, ha vissza **hamis** más módon.<br /><br /> Nagyobb vagy egyenlő. Értéket ad vissza **igaz** első argumentum értéke kisebb a másodiknál, ha vissza **hamis** más módon.<br /><br /> Kevesebb mint. Értéket ad vissza **igaz** Ha az első argumentum értéke kisebb, mint a második egy visszatérési **hamis** más módon.<br /><br /> Kisebb vagy egyenlő. Értéket ad vissza **igaz** első argumentum értéke kisebb vagy egyenlő, mint a második érték, ha vissza **hamis** más módon.<br /><br /> Coalesce. A második argumentum adja vissza, ha az első argumentum értéke egy **nem definiált** értéket.|  
 |**Karakterlánc**|**&#124;&#124;**|Összefűzés. Összefűzésével mindkét argumentumot adja vissza.|  
   
@@ -620,7 +620,7 @@ ORDER BY <sort_specification>
 |-|-|-|  
 |\\'|aposztróf (')|U+0027|  
 |\\"|idézőjel (")|U+0022|  
-|\\\|fordított solidus (\\)|U+005C|  
+|\\\ |fordított solidus (\\)|U+005C|  
 |\\/|solidus (/)|U+002F|  
 |\b|vissza|U+0008|  
 |\f|Lapdobás|U+000C|  

@@ -1,5 +1,5 @@
 ---
-title: Linux-alkalmazások teljesítménye, a Log Analytics gyűjtése |} A Microsoft Docs
+title: Linux-alkalmazások teljesítménye az Azure monitorban gyűjtése |} A Microsoft Docs
 description: Ez a cikk részletes adatokat biztosít a teljesítményszámlálók adatainak összegyűjtése, a MySQL és az Apache HTTP Server Linuxhoz készült Log Analytics-ügynök konfigurálása.
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: bf14e06f52f1b5a32ea3922083cc1f9bdbfb2aae
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 453e66934b93ab4368c4d3816d3db1a4588ae660
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104845"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001328"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Linux-alkalmazások a Log Analytics teljesítményszámlálók gyűjtése 
+# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Linux-alkalmazások az Azure Monitor teljesítményszámlálók gyűjtése 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Ez a cikk részletesen konfigurálásához a [Linuxhoz készült Log Analytics-ügynök](https://github.com/Microsoft/OMS-Agent-for-Linux) az adott alkalmazásokra vonatkozó teljesítményszámlálók gyűjtése a Log analyticsbe.  Az ebben a cikkben szereplő alkalmazások a következők:  
+Ez a cikk részletesen konfigurálásához a [Linuxhoz készült Log Analytics-ügynök](https://github.com/Microsoft/OMS-Agent-for-Linux) az adott alkalmazásokra vonatkozó teljesítményszámlálók gyűjtése az Azure Monitor szolgáltatásba.  Az ebben a cikkben szereplő alkalmazások a következők:  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
@@ -51,10 +51,10 @@ A bejegyzések a hitelesítési fájl az alábbi táblázat ismerteti.
 | Tulajdonság | Leírás |
 |:--|:--|
 | Port | Az aktuális port figyel a MySQL-példányt jelöli. Port 0 jelzi, hogy a következő tulajdonságok alapértelmezett példány. |
-| Kötés-cím| Aktuális MySQL bind-cím. |
+| Bind-Address| Aktuális MySQL bind-cím. |
 | felhasználónév| MySQL-felhasználó használata az MySQL server-példány figyeléséhez használt. |
 | Base64 kódolású jelszó| A Base64 kódolású figyelési MySQL-felhasználó jelszavát. |
-| Automatikus frissítés| Megadja, hogy a módosításokat a my.cnf fájl ismételt vizsgálata, és felülírja a MySQL OMI hitelesítési fájlt, a MySQL OMI szolgáltató frissítésekor. |
+| AutoUpdate| Megadja, hogy a módosításokat a my.cnf fájl ismételt vizsgálata, és felülírja a MySQL OMI hitelesítési fájlt, a MySQL OMI szolgáltató frissítésekor. |
 
 ### <a name="default-instance"></a>Alapértelmezett példány
 A MySQL OMI hitelesítési fájl definiálhat egy alapértelmezett példány és a port számát, hogy a Linux-gazdagépen egy egyszerűbb több MySQL-példányok felügyeletére.  Az alapértelmezett példány helyén port 0 rendelkező példány. Minden további példányokat adja meg az alapértelmezett példány, ha azok adja meg a különböző értékek tulajdonságok öröklik. Például "3308" porton MySQL-példányt ad hozzá, ha az alapértelmezett példány bind-cím, a felhasználónevet és jelszót Base64-kódolású használandó próbálja ki, és figyelheti a példány 3308 figyel. Ha a példány a 3308 kötve van egy másik címet, és MySQL felhasználónév és jelszó-pár csak a kötés-címre van szükség ahhoz, és a többi tulajdonság öröklődnek.
@@ -84,7 +84,7 @@ Az alábbi táblázat részletesen szintaxis mycimprovauth használatának.
 | Törlés *alapértelmezett vagy port_num* | mycimprovauth 3308 | Törli a megadott példány, vagy alapértelmezés szerint, vagy a port számát. |
 | help | mycimprov Súgó | A parancsok használatához felsorolása. |
 | Nyomtatás | nyomtatási mycimprov | Kinyomtatása könnyen olvasható MySQL OMI hitelesítési fájlt. |
-| Frissítse a port_num *bind-cím felhasználónév-jelszó* | mycimprov frissítés 3307 127.0.0.1 legfelső szintű pwd | Frissíti a megadott példány, vagy a példány ad, ha még nem létezik. |
+| update port_num *bind-address username password* | mycimprov frissítés 3307 127.0.0.1 legfelső szintű pwd | Frissíti a megadott példány, vagy a példány ad, ha még nem létezik. |
 
 A következő Példaparancsok egy alapértelmezett felhasználói fiókot a MySQL-kiszolgáló a localhost határozza meg.  A jelszó mezőt meg kell adni az egyszerű szöveg – a jelszót a MySQL OMI hitelesítési fájl Base-64 kódolású lesz.
 
@@ -114,7 +114,7 @@ Ezeket a jogosultságokat a következő grant-parancsok futtatásával is megadh
 
 ### <a name="define-performance-counters"></a>Teljesítményszámlálók definiálása
 
-Miután konfigurálta a Log Analytics szolgáltatásnak a Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](data-sources-performance-counters.md) az az alábbi táblázat a számlálókat.
+Ha megfelelően konfigurált adatokat küldeni az Azure Monitor Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [az Azure monitorban Windows és Linux rendszerű teljesítmény adatforrások](data-sources-performance-counters.md) az az alábbi táblázat a számlálókat.
 
 | Objektumnév | Számláló neve |
 |:--|:--|
@@ -150,7 +150,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Teljesítményszámlálók definiálása
 
-Miután konfigurálta a Log Analytics szolgáltatásnak a Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](data-sources-performance-counters.md) az az alábbi táblázat a számlálókat.
+Ha megfelelően konfigurált adatokat küldeni az Azure Monitor Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [az Azure monitorban Windows és Linux rendszerű teljesítmény adatforrások](data-sources-performance-counters.md) az az alábbi táblázat a számlálókat.
 
 | Objektumnév | Számláló neve |
 |:--|:--|
@@ -158,14 +158,14 @@ Miután konfigurálta a Log Analytics szolgáltatásnak a Linuxhoz készült Log
 | Apache HTTP Server | Inaktív feldolgozók |
 | Apache HTTP Server | A PCT foglalt feldolgozók |
 | Apache HTTP Server | A Pct CPU összesen |
-| Az Apache virtuális állomás | Hibák száma percenként – ügyfél |
-| Az Apache virtuális állomás | Hibák száma percenként - kiszolgáló |
-| Az Apache virtuális állomás | KB kérelmenként |
-| Az Apache virtuális állomás | KB-os kérések másodpercenként |
-| Az Apache virtuális állomás | Kérések másodpercenként |
+| Apache Virtual Host | Hibák száma percenként – ügyfél |
+| Apache Virtual Host | Hibák száma percenként - kiszolgáló |
+| Apache Virtual Host | KB kérelmenként |
+| Apache Virtual Host | KB-os kérések másodpercenként |
+| Apache Virtual Host | Kérések másodpercenként |
 
 
 
 ## <a name="next-steps"></a>További lépések
 * [Teljesítményszámlálók gyűjtése](data-sources-performance-counters.md) Linux-ügynököktől.
-* Ismerje meg [lekérdezések naplózását](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 

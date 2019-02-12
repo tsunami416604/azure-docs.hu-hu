@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 48180d4a9dcf7219815b5bc397647d7d97467cf7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: da43d1261b0ba9bd65998fbaa9fe9e364e686071
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961788"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992126"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Benefit és migrálása
 
@@ -29,7 +29,7 @@ A Virtuálismag-alapú vásárlási modell lehetővé teszi, hogy egymástól f�
 Gen4 hardver / virtuális mag lényegesen több memóriát biztosít. Azonban Gen5 hardver lehetővé teszi a vertikális felskálázása a számítási erőforrások sokkal magasabb.
 
 > [!NOTE]
-> További információ a DTU-alapú szolgáltatásszintek: [DTU-alapú szolgáltatásszintek](sql-database-service-tiers-dtu.md). További információ a DTU-alapú szolgáltatásszintek és a Virtuálismag-alapú szolgáltatásszintek sokoldalúbbá: [vásárlási modellek az Azure SQL Database](sql-database-service-tiers.md).
+> További információ a DTU-alapú szolgáltatásszintek: [DTU-alapú szolgáltatásszintek](sql-database-service-tiers-dtu.md). További információ a DTU-alapú szolgáltatásszintek és a Virtuálismag-alapú szolgáltatásszintek sokoldalúbbá: [vásárlási modellek az Azure SQL Database](sql-database-purchase-models.md).
 
 ## <a name="service-tier-characteristics"></a>Szolgáltatási szint tulajdonságok
 

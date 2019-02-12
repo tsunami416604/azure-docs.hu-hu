@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 9f717f0ae70c503d3527d5df2e6556c120146f3b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 430e3f0db2f053a2d5a6ea2a3e2a2d1c4418b501
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249318"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995135"
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával 
 
 Használhatja a Media Encoder Standard használatával hozzon létre egy vagy több miniatűrök a bemeneti videóhoz a [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), vagy [BMP](https://en.wikipedia.org/wiki/BMP_file_format) fájlformátumok kép. Elküldheti a feladatokat, amelyek csak képeket, vagy kombinálhatja miniatűrkészítés kódolással. Ez a cikk néhány minta XML és JSON miniatűr készletek ilyen esetekben. A cikk végén, van egy [mintakód](#code_sample) , amely bemutatja, hogyan használja a Media Services .NET SDK a kódolási feladatok.
 
@@ -551,15 +551,15 @@ A következő szempontokat kell figyelembe venni:
 * Kezdő/lépés/tartomány explicit időbélyegeket használatát feltételezi, hogy a bemeneti forrás legalább 1 percnek hosszú.
 * JPG vagy Png/BmpImage elemek elindítani, a lépésben és karakterlánc-attribútumok tartomány – ezeket úgy:
   
-  * Képkockaszám, ha azok nem negatív egész szám, például "Start": "120"
-  * Ha forrásidőtartamhoz %-a forrás időtartama, például "Start" relatív: "15 %", vagy
-  * Időbélyeg, ha óó kifejezett... formátum. Például "Start": "00: 01:00"
+  * Keret száma, ha azok nem negatív egész szám, például "a Start": "120",
+  * Ha forrásidőtartamhoz %-a forrás időtartama, például "Start" relatív: "15 %", VAGY
+  * Időbélyeg, ha óó kifejezett... formátum. Például "kezdő": "00:01:00"
     
     Ön szabadon kombinálhatók, jelölések meg.
     
-    Ezenkívül kezdő is támogatja a speciális makró: {ajánlott}, amely kísérli meg meghatározni a tartalom Megjegyzés: az első "érdekes" kép: (lépés, és a tartomány nem veszi figyelembe kezdő {legjobb} értékre van állítva)
-  * Alapértelmezett érték: Start: {ajánlott}
-* Kimeneti formátum kell minden egyes képformátum explicit módon megadott: Jpg vagy Png/BmpFormat. Jelenléte esetén MES felel meg JpgVideo JpgFormat, és így tovább. OutputFormat vezet be az új lemezkép-kodek adott makró: {Index}, mely kell lennie a jelen (egyszer és csak egyszer) rendszerkép kimeneti formátum.
+    Ezenkívül kezdő is támogatja a speciális makró: {ajánlott}, amely kísérli meg meghatározni a tartalom Megjegyzés: az első "érdekes" kép: (A lépés, és a tartomány nem veszi figyelembe kezdő {legjobb} értékre van állítva)
+  * Alapértelmezettek: Indítsa el: {ajánlott}
+* Minden egyes képformátum explicit módon megadott kimeneti formátum van szüksége: Jpg/Png/BmpFormat. Jelenléte esetén MES felel meg JpgVideo JpgFormat, és így tovább. OutputFormat vezet be az új lemezkép-kodek adott makró: {Index}, mely kell lennie a jelen (egyszer és csak egyszer) rendszerkép kimeneti formátum.
 
 ## <a name="next-steps"></a>További lépések
 

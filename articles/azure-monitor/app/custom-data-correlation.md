@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: d034bf130440fdb5b783db41161ab5a21a306478
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b7814ce2ae94216da691b9a54049d20a03aafdd9
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103112"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994816"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Vlastní zdroje dat az Application Insights-adatok korrelálásához
 
@@ -28,19 +28,19 @@ Bizonyos esetekben érdemes lehet egyéni adatok a következők:
 
 - Adatbővítés vagy -keresési adattáblák: például kiegészítik a tulajdonos, a kiszolgáló és a tesztkörnyezet helyét, amelyben megtalálhatók a kiszolgáló neve 
 - Az Application Insights-adatforrások korrelációs: például egy webes áruházi meghatározni, hogy pontos becslése a szállítási időt a beszerzési-teljesítési service adataival a vásárlás összevetését adatait is 
-- Teljesen egyéni adatok: számos ügyfelünk kedvelt a lekérdezési nyelvet és a Log Analytics data platform, amely az Application Insights teljesítményét, és azt szeretné használni, amely egyáltalán nem kapcsolódik az Application Insights adatokat lekérdezni. Ha például egy intelligens otthoni telepítés részeként a napkollektorok teljesítményének nyomon követéséhez vázolt [Itt]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/).
+- Teljesen egyéni adatok: számos ügyfelünk kedvelt a lekérdezési nyelv és az Azure Monitor log-platform, amely az Application Insights teljesítményét, és használja az Application Insights egyáltalán nem kapcsolódó adatokat lekérdezni. Ha például egy intelligens otthoni telepítés részeként a napkollektorok teljesítményének nyomon követéséhez vázolt [Itt]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/).
 
 ## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>Hogyan lehet egyéni adatait az Application Insights-adatok 
 
-Az Application Insights alapját a Log Analytics hatékony adatplatform, mivel tudjuk használja a teljes Log Analytics az adatok betöltését. Ezt követően írunk a lekérdezéseket a "Csatlakozás" operátor ezt az egyéni adatot, a rendelkezésre álló velünk a kapcsolatot a Log Analytics adatokat fog kapcsolható. 
+Az Application Insights az Azure Monitor log hatékony platform alapját, mivel tudjuk használja a teljes Azure Monitor az adatok betöltését. Ezt követően írunk a lekérdezéseket a "Csatlakozás" operátor ezt az egyéni adatot, a rendelkezésre álló velünk a kapcsolatot az Azure Monitor naplóira adatokat fog kapcsolható. 
 
 ## <a name="ingesting-data"></a>Adatok feldolgozása
 
-Ebben a szakaszban át fogjuk tekinteni az adatok lekérése a Log analyticsbe.
+Ebben a szakaszban át fogjuk tekinteni az adatok beszerzése az Azure Monitor naplóira.
 
-Ha még nem rendelkezik egy, üzembe helyezése egy új Log Analytics-munkaterület az alábbi [ezek az utasítások]( https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-collect-azurevm) keresztül és a "munkaterület létrehozása" lépésben.
+Ha még nem rendelkezik egy, üzembe helyezése egy új Log Analytics-munkaterület az alábbi [ezek az utasítások](../learn/quick-collect-azurevm.md) keresztül és a "munkaterület létrehozása" lépésben.
 
-Hogy adatokat küldjön a Log analyticsbe. Több lehetőség is létezik:
+Hogy napló adatokat küldjön az Azure Monitor szolgáltatásba. Több lehetőség is létezik:
 
 - A szinkron mechanizmust, vagy közvetlenül meghívhatja a [adatgyűjtő API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) vagy a logikai alkalmazás-összekötő használata – egyszerűen csak "Az Azure Log Analytics" keresse meg és válassza ki az "Adatok küldése" lehetőséget:
 
@@ -50,9 +50,9 @@ Hogy adatokat küldjön a Log analyticsbe. Több lehetőség is létezik:
 
 ## <a name="correlating-data"></a>Az adatok korrelálása
 
-Az Application Insights a Log Analytics data platform alapul. Ezért használhatunk [erőforrások közötti illesztések](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) korrelációját, hogy betöltődnek a Log Analytics az Application Insights-adatok az adatokat.
+Az Application Insights az Azure Monitor log-platformon alapul. Ezért használhatunk [erőforrások közötti illesztések](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) korrelációját, ha az Azure Monitor szolgáltatásba betöltött azt az Application Insights-adatok az adatokat.
 
-Például hogy betöltheti az a labor-készlet és a helyek "LabLocations_CL" nevű "myLA" nevű Log Analytics-munkaterületet a táblába. Ha ezután tekintse át a kérelmek nyomon követése "myAI" nevű Application Insights-alkalmazás, és vesse össze a számítógépek nevével, amely a kérelmeket a helyekre, ezek a gépek a korábban említett egyéni táblában tárolt kiszolgált szerettünk volna, futtassa a következő lekérdezést a az Application Insights vagy a Log Analytics-kontextus:
+Például hogy betöltheti az a labor-készlet és a helyek "LabLocations_CL" nevű "myLA" nevű Log Analytics-munkaterületet a táblába. Ha ezután tekintse át a kérelmek nyomon követése "myAI" nevű Application Insights-alkalmazás, és vesse össze a számítógépek nevével, amely a kérelmeket a helyekre, ezek a gépek a korábban említett egyéni táblában tárolt kiszolgált szerettünk volna, futtassa a következő lekérdezést a az Application Insights vagy a Azure Monitor környezet:
 
 ```
 app('myAI').requests

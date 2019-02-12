@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 5ddee0ca94535688a0634ef8575f3aedad649a43
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a863915ceef437957170d87ac4cc452d651a8dab
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037495"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994948"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure Queue storage használata .NET-keretrendszerrel történő Media Services feladatértesítések figyelése
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net-legacy"></a>Azure Queue storage használata a Media Services feladatértesítések figyelésére használt a .NET-tel (örökölt)
+
 Kódolási feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. Beállíthatja, hogy az értesítések a Media Services [Azure Queue storage](../../storage/storage-dotnet-how-to-use-queues.md). A feladat előrehaladásának figyelemmel értesítések fogadása a Queue storage-ból. 
 
 A Queue storage üzenetet elérhetők bárhol a világon. A Queue storage üzenetkezelési architektúra, megbízható és nagy mértékben skálázható. A Queue storage üzenetek lekérdezési ajánlott egyéb módszerekhez képest.
@@ -338,7 +339,7 @@ namespace JobNotification
 }
 ```
 
-Az előző példában a következő kimenet előállítása: az értékek változhatnak.
+Az előző példában a következő kimenet előállítása: Az értékek változhatnak.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

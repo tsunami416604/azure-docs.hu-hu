@@ -4,7 +4,7 @@ description: Ez a témakör bemutatja, hogyan konfigurálhatja a Flash Media Liv
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 3113f333-517a-47a1-a1b3-57e200c6b2a2
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/08/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 1a7cbd19b89663ab874fc5a7a86587e292b86f81
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 32bed77146284799faebdb8a44e2e610f49913cf
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665885"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003737"
 ---
-# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Használja az egyféle sávszélességű élő adatfolyamot küldeni FMLE kódoló
+# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream-legacy"></a>A FMLE kódoló használatával küldjön egy egyféle sávszélességű élő streamet (örökölt)
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a [Flash Media Live Encoder](http:/
 
 Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) az Azure Media Services Explorer (AMSE) eszközzel. Ez az eszköz csak akkor Windows-számítógépen fog futni. Ha Mac vagy Linux rendszeren, az Azure portal használatával hozzon létre [csatornák](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) és [programok](media-services-portal-creating-live-encoder-enabled-channel.md).
 
-Ebben az oktatóanyagban az AAC használatát ismerteti. Ugyanakkor az FMLE nem támogatja az AAC alapértelmezés szerint. Meg kell vásárolni egy AAC kódolás időszakhoz MainConcept például beépülő modult: [AAC beépülő modul](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+Ebben az oktatóanyagban az AAC használatát ismerteti. Ugyanakkor az FMLE nem támogatja az AAC alapértelmezés szerint. Meg kell vásárolni egy beépülő modult kiadottat AAC kódolással, például: [Az AAC-beépülő modul](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Az Azure Media Services-fiók létrehozása](media-services-portal-create-account.md)
@@ -77,14 +77,14 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
 **A videó**:
 
 * Kodek: H.264
-* Profil: High (4.0-s szint)
+* Profil: Nagy (4.0-s szint)
 * Átviteli sebesség: 5000 KB/s
 * Kulcsképkocka: 2 másodperc (60 másodperc)
-* Keret arány: 30
+* Képkockasebesség: 30
 
 **Hang**:
 
-* Kodekkel: Az AAC (LC)
+* Kodek: AAC (LC)
 * Átviteli sebesség: 192 Kb/s
 * Mintavételi gyakoriság: 44,1 kHz
 
@@ -93,8 +93,8 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
 
     A felület egy fő lapján, beállítások esetén. Jegyezze fel a következő ajánlott beállítások streamelési funkciójával FMLE használatának megkezdéséhez.
 
-   * Formátum: H.264 képkockasebessége: 30,00
-   * Bemeneti méret: 1280 x 720 között
+   * Formátum: Képkockasebesség H.264: 30.00
+   * Bemeneti méret: 1280 x 720
    * Átviteli sebesség: 5000 KB/s (módosítható hálózati korlátai alapján)  
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
@@ -102,8 +102,8 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
      Ha források segítségével váltakozó, kérjük, pipa az "összefűzés lehetőség" beállítás
 2. Válassza ki a formátumot melletti csavarkulcs ikont, a következő további beállításokat kell:
 
-   * Profil: Main
-   * Szint: 4.0-s verzióját
+   * Profil: Elsődleges
+   * Szint: 4.0
    * Kulcsképkocka gyakorisága: 2 másodperc
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle4.png)

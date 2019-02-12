@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: bb24fcddf9218db491e8c2e486e29446d5d9c0ed
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 25aeb1f0f82be2ad575164d78106fd799d59c96d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365621"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003625"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>A dinamikus titkosítás: a tartalomkulcs-hitelesítési szabályzat konfigurálása
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy-legacy"></a>A dinamikus titkosítás: Konfigurálja a tartalomkulcs-hitelesítési szabályzat (örökölt)
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Áttekintés
@@ -235,10 +235,10 @@ Amikor a jogkivonattal korlátozott szabályzatokat konfigurál, az elsődleges 
 
 Az alábbi példa egy token korlátozás hoz létre az engedélyezési házirend. Ebben a példában az ügyfél egy jogkivonatot, amely tartalmazza a szükséges jogcímek, az aláírási kulcs (VerificationKey) és egy jogkivonat kibocsátója e.
 
-### <a name="create-contentkeyauthorizationpolicies"></a>ContentKeyAuthorizationPolicies létrehozása
+### <a name="create-contentkeyauthorizationpolicies"></a>Create ContentKeyAuthorizationPolicies
 A szakaszban látható módon, hozzon létre egy token alkalmazáskorlátozási szabályzat "[létrehozás ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)."
 
-### <a name="create-contentkeyauthorizationpolicyoptions"></a>ContentKeyAuthorizationPolicyOptions létrehozása
+### <a name="create-contentkeyauthorizationpolicyoptions"></a>Create ContentKeyAuthorizationPolicyOptions
 Kérés:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicyOptions HTTP/1.1
@@ -327,7 +327,7 @@ Válasz:
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicies/@Element","Id":"nb:ckpid:UUID:cc3c64a8-e2fc-4e09-bf60-ac954251a387","Name":"Deliver Common Content Key"}
 
 
-#### <a name="create-contentkeyauthorizationpolicyoptions"></a>ContentKeyAuthorizationPolicyOptions létrehozása
+#### <a name="create-contentkeyauthorizationpolicyoptions"></a>Create ContentKeyAuthorizationPolicyOptions
 Kérés:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicyOptions HTTP/1.1
@@ -372,10 +372,10 @@ A szakaszban látható módon adjon hozzá AuthorizationPolicy ContentKey, "[a t
 ### <a name="token-restriction"></a>Token korlátozás
 A token korlátozás beállítás konfigurálásához szüksége XML a jogkivonat hitelesítési követelmények leírása. A token korlátozás konfigurációs XML meg kell felelnie az XML-séma a szakaszban látható "[jogkivonat korlátozás séma](#schema)."
 
-#### <a name="create-contentkeyauthorizationpolicies"></a>ContentKeyAuthorizationPolicies létrehozása
+#### <a name="create-contentkeyauthorizationpolicies"></a>Create ContentKeyAuthorizationPolicies
 Hozzon létre ContentKeyAuthorizationPolicies, ahogyan az a szakasz "[létrehozás ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies2)."
 
-#### <a name="create-contentkeyauthorizationpolicyoptions"></a>ContentKeyAuthorizationPolicyOptions létrehozása
+#### <a name="create-contentkeyauthorizationpolicyoptions"></a>Create ContentKeyAuthorizationPolicyOptions
 Kérés:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicyOptions HTTP/1.1

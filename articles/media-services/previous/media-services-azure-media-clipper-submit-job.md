@@ -6,17 +6,18 @@ keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 0894c3677b87fe48c130d648253dadd0d43429f4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 585cb88ca853954b23369c8e097583e7e8656355
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821447"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002139"
 ---
-# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Az Azure Media Clipperrel klipekkel kapcsolatos feladatok elküldése
+# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Az Azure Media Clipperrel klipekkel kapcsolatos feladatok elküldése 
+
 Az Azure Media Clipperrel van szükség egy **submitSubclipCallback** kapcsolást feladatküldéshez kezeléséhez végrehajtandó módszer. Ez a függvény végrehajtási egy HTTP POST webszolgáltatás Clipperrel kimenetre van. A webszolgáltatás, ahol elküldheti a kódolási feladat. A Clipperrel kimenete vagy a Media Encoder Standard renderelt feladatok készletet, vagy a REST API-val hasznos dinamikusjegyzék-szűrő hívások kódolás. Ez a csatlakoztatott modell szükség, mert a media services-fiók hitelesítő adatai nem biztonságosak, az ügyfél böngészőjében.
 
 A következő feladatütemezési ábra mutatja be a munkafolyamat a böngészőalapú ügyfél, a webszolgáltatás és az Azure Media Services között: ![Az Azure Media Clipperrel Szekvenciadiagram](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)

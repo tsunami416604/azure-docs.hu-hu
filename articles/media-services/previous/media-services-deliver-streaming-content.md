@@ -1,8 +1,8 @@
 ---
-title: Azure Media Services tartalmakat a .NET használatával közzététele |} Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre egy keresőt a streamelési URL-cím létrehozásához használt. Kódminták C# nyelven íródtak, és a Media Services SDK használata a .NET-hez.
+title: .NET-tel az Azure Media Services-tartalom közzététele |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre, amellyel streamelési lokátor. Kódminták nyelven írták C# , és használja a Media Services SDK a .NET-hez.
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 224c9cf5ef9925645de1d94dc5bc03c15ba91432
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8e34d8cfbcd655dbb49279a0cefd63818963652a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788514"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999181"
 ---
-# <a name="publish-azure-media-services-content-using-net"></a>Azure Media Services tartalmakat a .NET használatával közzététele
+# <a name="publish-media-services-content-using-net"></a>.NET-tel, a Media Services tartalom közzététele  
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -30,33 +30,33 @@ ms.locfileid: "33788514"
 > 
 
 ## <a name="overview"></a>Áttekintés
-Egy adaptív sávszélességű MP4 típusú beállításkészlettel egy adatfolyam-továbbítási OnDemand-kereső létrehozásával, és a streamelési URL-cím összeállítása is adatfolyam. A [egy eszköz kódolás](media-services-encode-asset.md) a témakör bemutatja, hogyan kódolása egy adaptív sávszélességű MP4 állítsa be. 
+Az adaptív sávszélességű MP4 típusú beállításkészlettel streamelési OnDemand-kereső létrehozásával, és a streamelési URL-cím létrehozásához streamelheti. A [adategység kódolása](media-services-encode-asset.md) a témakör bemutatja, hogyan kódolandó egy adaptív sávszélességű MP4-beállítása. 
 
 > [!NOTE]
-> Ha a tartalom titkosított, objektumtovábbítási szabályzat konfigurálása (leírtak szerint [ez](media-services-dotnet-configure-asset-delivery-policy.md) témakör) egy lokátor létrehozása előtt. 
+> Objektumtovábbítási szabályzat konfigurálása, ha a tartalom titkosított, (leírtak szerint [ez](media-services-dotnet-configure-asset-delivery-policy.md) témakör) egy lokátor létrehozása előtt. 
 > 
 > 
 
-OnDemand-lokátor segítségével is MP4-fájlokat fokozatosan letölthető mutató URL-címek létrehozása.  
+OnDemand-lokátor segítségével hozhat létre MP4-fájlokat fokozatosan letölthető mutató URL-címeket is.  
 
-Ez a témakör bemutatja, hogyan hozzon létre egy OnDemand-lokátor tegye közzé az adategységet, és egy Smooth, MPEG DASH vagy HLS streamelési URL-címek létrehozása. Azt is bemutatja, működés közbeni hozhat létre a progresszív letöltési URL-címeket. 
+Ez a témakör bemutatja, hogyan hozhat létre egy OnDemand-lokátor tegye közzé az adategységet, és a egy Smooth, MPEG DASH vagy HLS streamelési URL-címek hozhat létre. Azt is bemutatja, gyakori elérésű hozhat létre a progresszív letöltési URL-címeket. 
 
-## <a name="create-an-ondemand-streaming-locator"></a>Hozzon létre egy OnDemand-lokátor
-Az adatfolyam-továbbítási OnDemand-kereső létrehozása és URL-címek lekérése, meg kell tegye a következőket:
+## <a name="create-an-ondemand-streaming-locator"></a>OnDemand-lokátor létrehozása
+Az OnDemand a streamelési lokátorok létrehozásához, és URL-címek lekérése, tegye a következőket kell:
 
-1. Ha a tartalom titkosított, adja meg a hozzáférési házirendek.
-2. Hozzon létre egy OnDemand-lokátor.
-3. Ha azt tervezi, hogy adatfolyamként küldje el, beolvasása a folyamatos átviteli jegyzékfájl (.ism) az eszközt. 
+1. Ha a tartalom titkosított, adja meg a hozzáférési házirend.
+2. OnDemand-lokátor létrehozása.
+3. Ha azt tervezi, adatfolyam, lekérése a streamelési jegyzékfájl (.ism) az eszközben. 
    
-   Ha azt tervezi, fokozatosan letölteni, beolvasása az eszköz a MP4-fájlok nevét.  
-4. A jegyzékfájl vagy MP4-fájlok összeállítása a URL-címek. 
+   Ha azt tervezi, fokozatosan letölteni, első MP4-fájlok az eszközben nevei.  
+4. Hozhat létre az URL-címek az Alkalmazásjegyzék-fájl vagy MP4-fájlokat. 
 
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Az azonos házirend-azonosító akkor használja, ha mindig használja az ugyanazon nap / hozzáférési engedélyek. Például házirendek, amelyek célja, hogy továbbra is érvényben hosszú ideje (nem feltöltés házirendek) lokátorokat. További információ [ebben](media-services-dotnet-manage-entities.md#limit-access-policies) a témakörben érhető el.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Az ugyanazon házirend-azonosító akkor használja, ha Ön mindig ugyanazokat a napokat / hozzáférési engedélyeket. Ha például keresők szabályzatai, amelyek célja továbbra is helyben hosszú ideje (nem feltöltött szabályzatokat). További információ [ebben](media-services-dotnet-manage-entities.md#limit-access-policies) a témakörben érhető el.
 
 ### <a name="use-media-services-net-sdk"></a>Használja a Media Services .NET SDK-val
-Adatfolyam-továbbítási URL-címek létrehozása 
+Streamelési URL-ek létrehozása 
 
 ```csharp
     private static void BuildStreamingURLs(IAsset asset)
@@ -108,11 +108,11 @@ A kimenetek:
 
 
 > [!NOTE]
-> Is SSL-kapcsolaton keresztül adatfolyam formájában a tartalmat. Hajtsa végre ezt a módszert használja, ellenőrizze, hogy a HTTPS adatfolyam-továbbítási URL-címek kezdődik. Jelenleg az AMS nem támogatja az SSL az egyéni tartomány.
+> SSL-kapcsolaton keresztül is streamelheti a tartalmat. Hajtsa végre ezt a módszert, ellenőrizze, hogy a streamelési URL-címek kezdő a HTTPS. Jelenleg az AMS nem támogatja az SSL egyéni tartománnyal rendelkező.
 > 
 > 
 
-Progresszív letöltési URL-címeket összeállítása 
+A progresszív letöltési URL-címek létrehozása 
 
 ```csharp
     private static void BuildProgressiveDownloadURLs(IAsset asset)
@@ -152,8 +152,8 @@ A kimenetek:
 
     . . . 
 
-### <a name="use-media-services-net-sdk-extensions"></a>Media Services .NET SDK-bővítmények használata
-Az alábbi kód olyan, egy kereső létrehozása, és amelyek adaptív streameléshez a Smooth Streaming, HLS, és MPEG-DASH URL-címek létrehozása .NET SDK bővítmények módszereket hív meg.
+### <a name="use-media-services-net-sdk-extensions"></a>A Media Services .NET SDK-bővítmények használata
+Az alábbi kód meghívja a .NET SDK-val bővítmények módszerek lokátorok létrehozásához és a Smooth Streaming, HLS és MPEG-DASH URL-címeket létrehozni adaptív streameléshez.
 ```csharp
     // Create a loctor.
     _context.Locators.Create(
@@ -179,6 +179,6 @@ Az alábbi kód olyan, egy kereső létrehozása, és amelyek adaptív streamel�
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>További lépések
-* [Töltse le az eszközök](media-services-deliver-asset-download.md)
+* [Eszközök letöltése](media-services-deliver-asset-download.md)
 * [Objektumtovábbítási szabályzat konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md)
 

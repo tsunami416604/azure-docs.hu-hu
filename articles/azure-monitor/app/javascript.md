@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 55cbca97d369bea80ea9caece14754e81b5738a1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fee172eccd79fd28e281b2beece9702630ac39b5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661513"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001187"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
-Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](../../azure-monitor/app/app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
+Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
 
-Az Application Insights bármely weblappal használható – csak egy rövid JavaScript-kódot kell hozzáadnia. Ha a webszolgáltatása [Java](java-get-started.md) vagy [ASP.NET](../../azure-monitor/app/asp-net.md), telemetriát integrálhat a kiszolgálóról és az ügyfelekről.
+Az Application Insights bármely weblappal használható – csak egy rövid JavaScript-kódot kell hozzáadnia. Ha a webszolgáltatása [Java](java-get-started.md) vagy [ASP.NET](asp-net.md), telemetriát integrálhat a kiszolgálóról és az ügyfelekről.
 
-![A portal.azure.com címen nyissa meg az alkalmazás erőforrását, és kattintson a Böngésző elemre](./media/javascript/03.png)
+![A portal.azure.com címen nyissa meg az alkalmazás erőforrását, és kattintson a Böngésző elemre](media/javascript/03.png)
 
 Ehhez egy [Microsoft Azure](https://azure.com)-előfizetésre van szüksége. Ha a csapata szervezeti előfizetéssel rendelkezik, kérje meg a tulajdonost, hogy adjon hozzá Microsoft-fiókot.
 
@@ -38,13 +38,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 Ha már beállította a figyelést az alkalmazás kiszolgálói oldalára, már rendelkezik egy erőforrással:
 
-![Válassza a Tallózás, Fejlesztői szolgáltatások, Application Insights lehetőséget.](./media/javascript/01-find.png)
+![Válassza a Tallózás, Fejlesztői szolgáltatások, Application Insights lehetőséget.](media/javascript/01-find.png)
 
 Ha nincs erőforrása, hozza létre azt:
 
-![Válassza az Új, Fejlesztői szolgáltatások, Application Insights lehetőséget.](./media/javascript/01-create.png)
+![Válassza az Új, Fejlesztői szolgáltatások, Application Insights lehetőséget.](media/javascript/01-create.png)
 
-*Máris kérdései vannak?* [További információk erőforrások létrehozásáról](../../azure-monitor/app/create-new-resource.md ).
+*Máris kérdései vannak?* [További információk erőforrások létrehozásáról](create-new-resource.md ).
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Az SDK-szkript hozzáadása az alkalmazáshoz vagy weblapokhoz
 
@@ -70,7 +70,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 Szúrja be a szkriptet minden olyan lap `</head>` címkéje elé, amelyet nyomon szeretne követni. Ha a webhelye mesterlappal rendelkezik, ide helyezheti a szkriptet. Példa:
 
 * Egy ASP.NET MVC-projektben a következő helyre helyezné a szkriptet: `View\Shared\_Layout.cshtml`
-* Egy SharePoint-helyen, a vezérlőpulton nyissa meg a [Hely beállításai / Mesterlap](../../azure-monitor/app/sharepoint.md) elemet.
+* Egy SharePoint-helyen, a vezérlőpulton nyissa meg a [Hely beállításai / Mesterlap](sharepoint.md) elemet.
 
 A szkript tartalmazza a kialakítási kulcsot, amely az adatokat az Application Insights-erőforrásra irányítja. 
 
@@ -118,9 +118,9 @@ Nyissa meg a Böngésző panelt a felhasználók böngészőinek összesített t
 
 ![A portal.azure.com címen nyissa meg az alkalmazás erőforrását, és kattintson a Beállítások, Böngésző lehetőségre](./media/javascript/03.png)
 
-Még nincsenek adatok? Kattintson a **Frissítés** gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](../../azure-monitor/app/troubleshoot-faq.md).
+Még nincsenek adatok? Kattintson a **Frissítés** gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](troubleshoot-faq.md).
 
-A Böngésző panel [Metrikaböngésző panel](../../azure-monitor/app/metrics-explorer.md) előre beállított szűrőkkel és diagramkijelölésekkel. Ha szeretné, szerkesztheti az időtartomány, a szűrők és a diagram konfigurációját, és kedvencként mentheti az eredményt. Kattintson az **Alapértelmezések visszaállítása** gombra, hogy visszaállítsa az eredeti panelkonfigurációt.
+A Böngésző panel [Metrikaböngésző panel](metrics-explorer.md) előre beállított szűrőkkel és diagramkijelölésekkel. Ha szeretné, szerkesztheti az időtartomány, a szűrők és a diagram konfigurációját, és kedvencként mentheti az eredményt. Kattintson az **Alapértelmezések visszaállítása** gombra, hogy visszaállítsa az eredeti panelkonfigurációt.
 
 ## <a name="page-load-performance"></a>Lapbetöltés teljesítménye
 Felül található a lapbetöltési idők szegmentált diagramja. A diagram teljes magassága jelzi a lapok betöltésének és megjelenítésének átlagos idejét az alkalmazásából a felhasználók böngészőiben. Az idő mérése onnan kezdődik, amikor a böngésző elküldi a kezdeti HTTP-kérelmet, és addig tart, amíg az összes szinkron betöltési esemény fel lett dolgozva, beleértve az elrendezést és a futó szkripteket. Ebben nem tartoznak bele az aszinkron feladatok, például a kijelzők betöltése az AJAX hívásokból.
@@ -178,7 +178,6 @@ Kattintson valamelyik sorra a részletekért.
 
 ![](./media/javascript/37.png)
 
-
 Kattintson a `...` gombra az Ajax hívások teljes telemetriájáért.
 
 ### <a name="no-ajax-calls-reported"></a>Nincsenek Ajax hívások jelentve?
@@ -202,7 +201,7 @@ A Diagnosztikai keresés panelen állítsa a Szűrők elemet Lapmegtekintés ér
 Válassza ki valamelyik eseményt további részletek megtekintéséhez. A részletek lapján kattintson a „...” gombra további részletek megtekintéséhez.
 
 > [!NOTE]
-> Ha [keresési](../../azure-monitor/app/diagnostic-search.md), vegye figyelembe, hogy kell-e teljes szavakra: "Tudni" és "valók" nem felel meg a "Tudnivalók".
+> Ha [keresési](diagnostic-search.md), vegye figyelembe, hogy kell-e teljes szavakra: "Tudni" és "valók" nem felel meg a "Tudnivalók".
 > 
 > 
 
@@ -227,8 +226,8 @@ A lap neve ugyanazokat a karaktereket tartalmazhatja, mint egy URL-cím, de a re
 ## <a name="usage-tracking"></a>Használatkövetés
 Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 
-* [Ismerje meg a felhasználói viselkedés elemzési eszközök](../../azure-monitor/app/usage-overview.md)
-* [Információk az egyéni eseményekről és a mérőszám API-ról](../../azure-monitor/app/api-custom-events-metrics.md).
+* [Ismerje meg a felhasználói viselkedés elemzési eszközök](usage-overview.md)
+* [Információk az egyéni eseményekről és a mérőszám API-ról](api-custom-events-metrics.md).
 
 ## <a name="video"></a>Videó
 
@@ -238,7 +237,7 @@ Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 
 
 ## <a name="next"></a> Következő lépések
-* [Használat követése](../../azure-monitor/app/usage-overview.md)
-* [Egyéni események és a mérőszámok](../../azure-monitor/app/api-custom-events-metrics.md)
-* [Összeállítás, mérés, tanulás](../../azure-monitor/app/usage-overview.md)
+* [Használat követése](usage-overview.md)
+* [Egyéni események és a mérőszámok](api-custom-events-metrics.md)
+* [Összeállítás, mérés, tanulás](usage-overview.md)
 

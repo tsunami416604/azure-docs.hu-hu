@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 780fa37351ec590beff6fd2d9e80ec8f22afa84d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6e5e8597ef5f080f557e40d9f053f13daee1ffd0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228504"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989355"
 ---
 # <a name="media-services-playready-license-template-overview"></a>A Media Services PlayReady licencsablon áttekintése
 Az Azure Media Services PlayReady-licencek továbbításának szolgáltatást most biztosít. Amikor PlayReady-védelemmel ellátott tartalom lejátszása a Media player (például Silverlight) próbál, egy kérelem érkezik a szolgáltatásra vonatkozó licencet beszereznie. Ha a szolgáltatás jóváhagyja a kérést, a licenc van elküldhetők az ügyfélprogramnak, és a megadott tartalom lejátszása és visszafejtésére szolgál kapcsolatos problémák.
@@ -66,7 +66,7 @@ A következő osztályok a Media Services PlayReady-licenc sablonok konfigurál�
 A [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) osztály szerializálható és deszerializálható irányuló és onnan a Media Services-licencsablon XML szolgál.
 
 ### <a name="playreadylicenseresponsetemplate"></a>PlayReadyLicenseResponseTemplate
-[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx): Ez az osztály a sablon esetében a felhasználónak küldött választ jelenti. A licenckiszolgáló és az alkalmazás (amely lehet hasznos, ha egyéni alkalmazáslogika) között egy egyéni karakterláncot tartalmazó mezőt tartalmaz. Egy vagy több licenc sablonok listáját is tartalmaz.
+[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx): Ez az osztály a sablon esetében a felhasználónak küldött választ jelöl. A licenckiszolgáló és az alkalmazás (amely lehet hasznos, ha egyéni alkalmazáslogika) között egy egyéni karakterláncot tartalmazó mezőt tartalmaz. Egy vagy több licenc sablonok listáját is tartalmaz.
 
 A "legfelső szintű" osztályt, a sablon hierarchia, mint a válasz sablon tartalmazza a licenc sablonok listáját. A licenc-sablonok tartalmaznak (közvetlenül vagy közvetetten) más osztályokat, amelyek elérhetőbbé teszik a sablon adatok szerializálni kell.
 

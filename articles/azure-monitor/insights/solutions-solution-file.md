@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6511eb7a4651f0b95b7821e1959ba7e4130c2d6e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c84aedbdb306bbd7432c3c0b611e6e58243624e2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105797"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999368"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Hozzon létre egy felügyeleti megoldás fájlt az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -53,7 +53,7 @@ Az alapszintű struktúrát egy felügyeleti megoldás fájl pedig ugyanaz, mint
 ## <a name="parameters"></a>Paraméterek
 [Paraméterek](../../azure-resource-manager/resource-group-authoring-templates.md#parameters) értékek, amelyekre szüksége van a felhasználótól való telepítésekor a felügyeleti megoldás.  Standard paraméterei, amely az összes megoldáshoz fog rendelkezni, és az adott megoldáshoz szükség szerint további paramétereket is hozzáadhat.  Hogyan felhasználók fog adja meg a paraméterértékeket a megoldás telepítéskor függ az adott paraméter, és hogyan a megoldás telepítése folyamatban van.
 
-Ha egy felhasználó [telepíti a felügyeleti megoldás](solutions.md#install-a-management-solution) keresztül az Azure Marketplace-en vagy az Azure gyorsindítási sablonok kiválasztása bekapcsolják a [Log Analytics-munkaterületet és Automation-fiók](solutions.md#log-analytics-workspace-and-automation-account).  Ezek használhatók a standard szintű paraméterek értékeinek feltöltéséhez.  Közvetlenül a standard szintű paraméterek értékének megadására nem kéri a felhasználótól, de azokat a rendszer kéri a további paraméterek értékének megadására.
+Ha egy felhasználó [telepíti a felügyeleti megoldás](solutions.md#install-a-monitoring-solution) keresztül az Azure Marketplace-en vagy az Azure gyorsindítási sablonok kiválasztása bekapcsolják a [Log Analytics-munkaterületet és Automation-fiók](solutions.md#log-analytics-workspace-and-automation-account).  Ezek használhatók a standard szintű paraméterek értékeinek feltöltéséhez.  Közvetlenül a standard szintű paraméterek értékének megadására nem kéri a felhasználótól, de azokat a rendszer kéri a további paraméterek értékének megadására.
 
 
 Az alábbiakban látható egy példa a paraméter.  
@@ -83,9 +83,9 @@ Az alábbi táblázat felsorolja az összes felügyeleti megoldások szabványos
 >
 >
 
-| Paraméter | Típus | Leírás |
+| Paraméter | Typo | Leírás |
 |:--- |:--- |:--- |
-| Fióknév |sztring |Az Azure Automation-fiók nevét. |
+| accountName |sztring |Az Azure Automation-fiók nevét. |
 | pricingTier |sztring |Log Analytics-munkaterületet és az Azure Automation-fiók tarifacsomagját. |
 | regionId |sztring |Az Azure Automation-fiók régiója. |
 | megoldás neve |sztring |A megoldás nevére.  A megoldás gyorsindítási sablonok használatával helyez üzembe, majd meg kell határozni solutionName paraméterként így meghatározhatja, hogy inkább igénylő a felhasználó számára adjon meg egy karakterláncot. |

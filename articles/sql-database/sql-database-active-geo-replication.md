@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 0c574aab722cdce91cd5a2569c14c4f1710483ed
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/08/2019
+ms.openlocfilehash: b39967c071b21978324f205eb62d305011b65fb6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965222"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995057"
 ---
 # <a name="create-readable-secondary-databases-using-active-geo-replication"></a>Aktív georeplikáció használatával olvasható másodlagos adatbázis létrehozása
 
@@ -102,7 +102,7 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
 - **A másodlagos adatbázis konfigurálható számítási mérete**
 
-  Elsődleges és másodlagos adatbázisok ugyanazon a szolgáltatásszinten van szüksége. A másodlagos adatbázis jön létre a számítási mérete (dtu-k vagy virtuális magok) megegyezik az elsődleges is erősen ajánlott. A kisebb számítási méretű másodlagos fennáll a kockázata, egy nagyobb replikációs késés, a másodlagos lehetséges elérhetetlensége van, és ezért fennáll a kockázata, jelentős adatvesztés a feladatátvétel után. A közzétett RPO eredményeként = 5 mp nem garantálható. A többi kockázati, hogy a feladatátvételt követően az alkalmazás teljesítménye csökkenhet az új elsődleges számítási kapacitását hiánya miatt a nagyobb számítási méretre frissítéséig. A frissítés idején az adatbázis méretétől függ. Ezenkívül jelenleg ilyen szükségesek, hogy az elsődleges és másodlagos adatbázisok online és, ezért nem végezhető el, amíg a szolgáltatáskimaradás elhárítása után teljesítményköltségeket csökkenti. Ha úgy dönt, hogy a másodlagos létrehozása a kisebb számítási mérete, a napló i/o százalékos diagramra az Azure portal nyújt egy jó módszer a szükséges ahhoz, hogy a replikáció terhelés fenntartása másodlagos minimális számítási mérete. Például, ha az elsődleges adatbázis P6 (1000 DTU), és i/o-százalék naplót a másodlagos kell lennie legalább 50 %-a P4 (500 DTU). Is lekérhet használatával i/o-naplóadatok [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vagy [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) adatbázis-nézeteket.  Az SQL-adatbázis számítási méretek további információkért lásd: [Mik az SQL Database szolgáltatási szinteken](sql-database-service-tiers.md).
+  Elsődleges és másodlagos adatbázisok ugyanazon a szolgáltatásszinten van szüksége. A másodlagos adatbázis jön létre a számítási mérete (dtu-k vagy virtuális magok) megegyezik az elsődleges is erősen ajánlott. A kisebb számítási méretű másodlagos fennáll a kockázata, egy nagyobb replikációs késés, a másodlagos lehetséges elérhetetlensége van, és ezért fennáll a kockázata, jelentős adatvesztés a feladatátvétel után. A közzétett RPO eredményeként = 5 mp nem garantálható. A többi kockázati, hogy a feladatátvételt követően az alkalmazás teljesítménye csökkenhet az új elsődleges számítási kapacitását hiánya miatt a nagyobb számítási méretre frissítéséig. A frissítés idején az adatbázis méretétől függ. Ezenkívül jelenleg ilyen szükségesek, hogy az elsődleges és másodlagos adatbázisok online és, ezért nem végezhető el, amíg a szolgáltatáskimaradás elhárítása után teljesítményköltségeket csökkenti. Ha úgy dönt, hogy a másodlagos létrehozása a kisebb számítási mérete, a napló i/o százalékos diagramra az Azure portal nyújt egy jó módszer a szükséges ahhoz, hogy a replikáció terhelés fenntartása másodlagos minimális számítási mérete. Például, ha az elsődleges adatbázis P6 (1000 DTU), és i/o-százalék naplót a másodlagos kell lennie legalább 50 %-a P4 (500 DTU). Is lekérhet használatával i/o-naplóadatok [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vagy [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) adatbázis-nézeteket.  Az SQL-adatbázis számítási méretek további információkért lásd: [Mik az SQL Database szolgáltatási szinteken](sql-database-purchase-models.md).
 
 - **Felhasználó általi feladatátvétel és feladat-visszavétel**
 
@@ -130,7 +130,7 @@ A nagy kiterjedésű hálózaton magas késést, mert a folyamatos másolás has
 
 Korábban említett aktív georeplikáció is kezelhetők programozott módon az Azure PowerShell és a REST API használatával. Az alábbi táblázatok ismertetik az elérhető parancsok. Aktív georeplikáció tartalmaz egy, az Azure Resource Manager API-k Management, beleértve a [Azure SQL Database REST API-t](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview). Ezekkel az API-erőforráscsoportok használatát, és támogatja a szerepköralapú biztonság (RBAC). Szerepkörök hozzáférést megvalósításával további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
 
-### <a name="t-sql-manage-failover-of-standalone-and-pooled-databases"></a>T-SQL: Önálló és a készletezett adatbázisok feladatátvételét kezelése
+### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Egyetlen vagy készletezett adatbázisok feladatátvételét kezelése
 
 > [!IMPORTANT]
 > Ezeket a Transact-SQL-parancsokat csak aktív georeplikáció vonatkoznak, és nem vonatkoznak a feladatátvételi csoportok. Emiatt a is nem vonatkoznak a felügyelt példányok csak támogatják a feladatátvételi csoportok szerint.
@@ -146,7 +146,7 @@ Korábban említett aktív georeplikáció is kezelhetők programozott módon az
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |hatására végrehajtott tranzakciók lapblobokban replikálja, és arra vonatkozik, az aktív másodlagos adatbázis várnia, hogy az alkalmazás. |
 |  | |
 
-### <a name="powershell-manage-failover-of-standalone-and-pooled-databases"></a>PowerShell: Önálló és a készletezett adatbázisok feladatátvételét kezelése
+### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell: Egyetlen vagy készletezett adatbázisok feladatátvételét kezelése
 
 | Parancsmag | Leírás |
 | --- | --- |
@@ -160,7 +160,7 @@ Korábban említett aktív georeplikáció is kezelhetők programozott módon az
 > [!IMPORTANT]
 > Mintaszkriptek, lásd: [konfigurálása és a egy önálló adatbázis aktív georeplikációs feladatátvételi](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) és [konfigurálása és a egy készletezett adatbázis aktív georeplikációt használ feladatátvételi](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md).
 
-### <a name="rest-api-manage-failover-of-standalone-and-pooled-databases"></a>REST API: Önálló és a készletezett adatbázisok feladatátvételét kezelése
+### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: Egyetlen vagy készletezett adatbázisok feladatátvételét kezelése
 
 | API | Leírás |
 | --- | --- |

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 32f3f4fd3f4f299c9b084ab8604b56ea70e639a4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 49b763cba505a3423b47e5a2601db53b8e47a5fe
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368228"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993970"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>HLS-tartalmak az Apple fairplay által vagy a Microsoft PlayReady védelme
 Az Azure Media Services lehetővé teszi, hogy dinamikusan titkosítani a HTTP Live Streaming (HLS) használatával a következő formátumok:  
@@ -26,7 +26,7 @@ Az Azure Media Services lehetővé teszi, hogy dinamikusan titkosítani a HTTP L
 * **A boríték AES-128 titkosítatlan kulcs**
 
     A teljes adattömbök használatával titkosítja a **AES-128 CBC** mód. A titkosítást a Stream natív módon támogatott iOS és OS X lejátszási szerint. További információkért lásd: [használó AES-128, a dinamikus titkosítás és kulcstovábbítást](media-services-protect-with-aes128.md).
-* **Az Apple FairPlay**
+* **Apple FairPlay**
 
     Az egyes video- és minták segítségével lettek titkosítva a **AES-128 CBC** mód. **FairPlay Streaming** (FPS) integrálva van az eszköz operációs rendszerének támogatást biztosít az iOS és az Apple TV. OS x-en a Safari FPS az Encrypted Media Extensions (EME) felületen támogatási segítségével teszi lehetővé.
 * **A Microsoft PlayReady**
@@ -70,14 +70,14 @@ A Media Services kulcskézbesítési oldalon be kell állítani a az alábbiakat
 
         "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12-exportálás - FairPlay-out.pfx ki-inkey privatekey.pem – a FairPlay-out.pem - passin file:privatekey-pem-pass.txt
   * **Alkalmazás tanúsítvány jelszava**: A jelszót a .pfx-fájl létrehozásához.
-  * **Alkalmazás-Cert jelszó megadása**: fel kell töltenie a jelszót, és hogyan feltöltik más Media Services kulcs hasonló. Használja a **ContentKeyType.FairPlayPfxPassword** Felsorolásérték lekérni, a Media Services-azonosító. Ez az, hogy mit kell használniuk a kulcskézbesítési házirend-beállításként belül.
+  * **Alkalmazás-Cert jelszó megadása**: Fel kell tölteni a jelszót, és hogyan feltöltik más Media Services kulcs hasonló. Használja a **ContentKeyType.FairPlayPfxPassword** Felsorolásérték lekérni, a Media Services-azonosító. Ez az, hogy mit kell használniuk a kulcskézbesítési házirend-beállításként belül.
   * **IV**: Ez az 16 bájtos véletlenszerű értéket. Meg kell egyeznie a iv az adategység továbbítási házirendjét. Ön hozza létre a iv, és helyezze azt mindkét helyen: az adategység továbbítási házirendjét és a kulcskézbesítési házirend-beállításként.
-  * **Kérje meg**: ezt a kulcsot érkezik, amikor tanúsítványt generál az Apple fejlesztői portál használatával. Minden egyes fejlesztési csapat kap egy egyedi kérje meg. Másolat készítése a kérje meg a, és tárolja biztonságos helyen. Kérje meg FairPlayAsk később a Media Services-t konfigurálhatja kell.
-  * **Kérje meg azonosító**: Ez az azonosító kapjuk meg, kérje meg a Media Services szolgáltatásba való feltöltésekor. Fel kell töltenie használatával kérje meg a **ContentKeyType.FairPlayAsk** felsorolási érték. Ennek eredményeképpen a Media Services-Azonosítót ad vissza, és azt, hogy mit kell használni, amikor a kulcskézbesítési házirend beállítást.
+  * **KÉRJE MEG**: Ezt a kulcsot érkezik, amikor tanúsítványt generál az Apple fejlesztői portál használatával. Minden egyes fejlesztési csapat kap egy egyedi kérje meg. Másolat készítése a kérje meg a, és tárolja biztonságos helyen. Kérje meg FairPlayAsk később a Media Services-t konfigurálhatja kell.
+  * **KÉRJE MEG AZ AZONOSÍTÓ**: Ez az azonosító kapjuk meg, kérje meg a Media Services szolgáltatásba való feltöltésekor. Fel kell töltenie használatával kérje meg a **ContentKeyType.FairPlayAsk** felsorolási érték. Ennek eredményeképpen a Media Services-Azonosítót ad vissza, és azt, hogy mit kell használni, amikor a kulcskézbesítési házirend beállítást.
 
 A következőkre FPS ügyféloldali be kell állítania:
 
-  * **Alkalmazás-tanúsítvány (AC)**: egy.cer/.der-fájl, amely tartalmazza a nyilvános kulcsot, amely néhány hasznos titkosításához használja az operációs rendszer. A Media Services kell ismernem, mert a a Windows Media Player. A kulcstovábbítást visszafejti a megfelelő titkos kulccsal.
+  * **Alkalmazás-tanúsítvány (AC)**: Ez az egy.cer/.der fájlt, amely tartalmazza a nyilvános kulcsot, amely az operációs rendszer néhány hasznos adat titkosítására használja. A Media Services kell ismernem, mert a a Windows Media Player. A kulcstovábbítást visszafejti a megfelelő titkos kulccsal.
 
 A FairPlay titkosított stream lejátszás, első beolvasása egy valódi kérje meg, és ezután hozza létre a tanúsítványnak valódi. A folyamat hoz létre minden három részből áll:
 
@@ -85,7 +85,7 @@ A FairPlay titkosított stream lejátszás, első beolvasása egy valódi kérje
   * .pfx file
   * a .pfx jelszava
 
-A következő ügyfelek támogatja a HLS- **AES-128 CBC** titkosítási: az OS X, az Apple TV, iOS Safari böngésző.
+A következő ügyfelek támogatja a HLS- **AES-128 CBC** titkosítást: Az OS X, az Apple TV, iOS Safari.
 
 ## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>FairPlay a dinamikus titkosítás és a licenc licenctovábbítási szolgáltatások konfigurálása
 A következőkben általános lépéseket a FairPlay eszközök védelmére, a Media Services licenctovábbítási szolgáltatása használatával, valamint a dinamikus titkosítás segítségével.
@@ -138,9 +138,9 @@ A következő szempontokat kell figyelembe venni:
 * A titkosítási típus nem kell az URL-cím adható meg, ha csak az eszköz egy titkosítási lett alkalmazva.
 * A titkosítási típus megkülönbözteti a kis-és nagybetű nincs megkülönböztetve.
 * A következő titkosítási típusok adható meg:  
-  * **cenc**: általános titkosítás (PlayReady vagy Widevine)
+  * **cenc**:  Általános titkosítás (PlayReady vagy Widevine)
   * **cbcs-aapl**: FairPlay
-  * **CBC**: boríték AES-titkosítás
+  * **cbc**: AES boríték-titkosítást
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 

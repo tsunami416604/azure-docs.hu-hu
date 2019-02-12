@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: ce7892401b2b04565a00c33c5301b9c0cd05d5f5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: MT
+ms.date: 02/08/2019
+ms.openlocfilehash: 8127abf19c31b8a50079f416e73c98efebfd0983
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732753"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999419"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
@@ -47,7 +47,7 @@ Ha néhány jelentett problémák elhárítását, amelyek nem törlődnek a fel
 - Ha az operációs rendszer vagy a fájlrendszerben, például telepítés harmadik féltől származó és egyéni ugyanahhoz a virtuális géphez, az SQL Server-ügynökök közvetlen elérésére van szüksége.
 - Ha továbbra is nem támogatott funkciók, például a FileStream a szigorú függőségi / filetable objektum, a PolyBase és a kereszt-példány tranzakció.
 - Ha feltétlenül szükség maradjon az SQL Server egy adott verzióját (2012-példányhoz).
-- Ha a számítási követelményeket sokkal alacsonyabb, hogy a felügyelt példány kínál a nyilvános előzetes verzióban érhető el (1 virtuális magot, példányhoz) és adatbázis-konszolidáció nem elfogadható megoldás.
+- Ha a számítási követelményeket sokkal alacsonyabb, hogy a felügyelt példány kínál (1 virtuális magot, példányhoz) és adatbázis-konszolidáció nem elfogadható megoldás.
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Az optimálisan méretezett felügyelt példány üzembe helyezése
 

@@ -1,5 +1,5 @@
 ---
-title: Az Active Directory-környezetet az Azure Log Analytics optimalizálása |} A Microsoft Docs
+title: Az Azure monitorral az Active Directory-környezet optimalizálása |} A Microsoft Docs
 description: Az Active Directory állapotának ellenőrzése megoldás segítségével felmérheti a kockázatait és állapotát, a környezetek rendszeres időközönkénti.
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 063cedc679c3365e6352549e78c75ecff903cae7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8a1e08263790f1a04e672fd9d5a17c2bd1b45ce8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193008"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999028"
 ---
-# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optimalizálhatja a Active Directory környezetet az Active Directory állapotának ellenőrzése megoldás a Log Analyticsben
+# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Az Active Directory állapotának ellenőrzése megoldással az Azure monitorban az Active Directory-környezet optimalizálása
 
 ![AD állapotának ellenőrzése szimbólum](./media/ad-assessment/ad-assessment-symbol.png)
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Az Active Directory állapotának ellenőrzése megoldás segítségével felmérheti a kockázatokat és a kiszolgáló-környezetek állapotát rendszeres időközönkénti. Ez a cikk segítségével telepítheti és használhatja a megoldás, hogy a potenciális problémákat korrekciós műveleteket hajthatja végre.
 
@@ -40,22 +42,22 @@ Miután hozzáadta a megoldást, és egy ellenőrzés befejeződött, összefogl
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Active Directory állapotának ellenőrzése megoldás támogatott .NET-keretrendszer 4.5.2-es verziója szükséges, vagy a fent telepített minden olyan számítógépen, a Microsoft Monitoring Agent (MMA) telepítve van.  Az MMA-ügynök System Center 2016 – Operations Manager és az Operations Manager 2012 R2 és a Log Analytics szolgáltatás használatára szolgál.
+* Az Active Directory állapotának ellenőrzése megoldás támogatott .NET-keretrendszer 4.5.2-es verziója szükséges, vagy a fent telepített minden olyan számítógépen, a Microsoft Monitoring Agent (MMA) telepítve van.  Az MMA-ügynök System Center 2016 – Operations Manager és az Operations Manager 2012 R2 és az Azure Monitor használják.
 * A megoldás támogatja a Windows Server 2008 és 2008 R2, Windows Server 2012 és 2012 R2 és Windows Server 2016 rendszert futtató tartományvezérlő.
 * Az Active Directory állapotának ellenőrzése megoldás hozzáadása az Azure Portalon az Azure marketplace-ről a Log Analytics-munkaterületet.  Nincs szükség további konfigurációra.
 
   > [!NOTE]
-  > A megoldás hozzáadását követően a AdvisorAssessment.exe fájlt adnak hozzá, ügynökökkel kiszolgálókra. Konfigurációs adatok olvasása és feldolgozásához a felhőben a Log Analytics szolgáltatásnak küldi. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti.
+  > A megoldás hozzáadását követően a AdvisorAssessment.exe fájlt adnak hozzá, ügynökökkel kiszolgálókra. Konfigurációs adatok olvasása és feldolgozása a felhőben az Azure Monitor majd küldött. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti.
   >
   >
 
-Hajtsa végre az állapot-ellenőrzés a tartományvezérlők, amelyek ki kell értékelni a tartomány tagjai, szükségük van egy ügynök és a következő támogatott módszerek egyikének használatával a Log Analyticshez való kapcsolatot:
+Hajtsa végre az állapot-ellenőrzés a tartományvezérlők, amelyek ki kell értékelni a tartomány tagjai, szükségük van egy ügynök és a kapcsolatot az Azure monitornak a következő támogatott módszerek egyikének használatával:
 
 1. Telepítse a [a Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) , ha a tartományvezérlő már nem áll a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
-2. Ha figyelhető a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 és a felügyeleti csoport nincs integrálva a Log Analytics szolgáltatással, a tartományvezérlő is lehet, a Log Analytics adatokat gyűjtse és továbbítsa a többhelyű a szolgáltatást, és továbbra is az Operations Manager által figyelendő.  
+2. Ha figyelhető a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 és a felügyeleti csoport nincs integrálva az Azure Monitor szolgáltatással, a tartományvezérlő is lehet, és az Azure Monitor az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is többhelyű az Operations Manager által figyelendő.  
 3. Ellenkező esetben az Operations Manager felügyeleti csoport integrálva van a szolgáltatást, ha hozzá kell a tartományvezérlők, az adatgyűjtés a szolgáltatás a következő szakasz lépéseit [adja hozzá az ügynök által felügyelt számítógépek](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics) engedélyezése után a megoldás a munkaterületén.  
 
-Az ügynököt a tartományvezérlőn, az Operations Manager felügyeleti csoport jelentéseket gyűjti az adatokat, továbbítja a hozzárendelt felügyeleti kiszolgálónak, és majd a felügyeleti kiszolgálóról közvetlenül a Log Analytics szolgáltatásnak továbbítja.  Az adatok nem szerepel, az Operations Manager-adatbázisokról.  
+Az ügynököt a tartományvezérlőn, az Operations Manager felügyeleti csoport jelentéseket gyűjti az adatokat, továbbítja a hozzárendelt felügyeleti kiszolgálónak, és majd küld egy felügyeleti kiszolgálóról közvetlenül az Azure Monitor.  Az adatok nem szerepel, az Operations Manager-adatbázisokról.  
 
 ## <a name="active-directory-health-check-data-collection-details"></a>Az Active Directory állapotának ellenőrzése adatok gyűjtése részletei
 
@@ -73,7 +75,7 @@ Az Active Directory állapotának ellenőrzése gyűjti az adatokat, hogy enged�
 - Fájlreplikációs szolgáltatás (NTFRS) tartozó API
 - Egyéni C#-kód
 
-Adatokat gyűjti a tartományvezérlőn, és továbbítja a Log Analytics hét naponta.  
+Adatokat gyűjti a tartományvezérlőn, és továbbítja az Azure Monitor hét naponta.  
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>Hogyan kerülnek előrébb a javaslatok megértése
 Minden végrehajtott javaslat, amely azonosítja a relatív fontosságát az ajánlás súlyozási értéket kap. A 10 legfontosabb javaslatok láthatók.
@@ -107,30 +109,33 @@ A telepítés után megtekintheti a javaslatok összegzését a állapotának el
 Az összesített megfelelőségi értékeléseket az infrastruktúrát, és a-feltárás javaslatok megtekintése.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Egy fókuszterület javaslatok megtekintése, és korrekciós műveletek
-3. Kattintson a **áttekintése** csempére a Log Analytics-munkaterület az Azure Portalon.
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
 4. Az a **áttekintése** lap, kattintson a **Active Directory állapotának ellenőrzése** csempére.
 5. Az a **állapotának ellenőrzése** lapon. tekintse át az összefoglaló adatokat az egyik a fókusz terület paneleket, majd kattintson egy adott fókuszterület javaslatok megtekintése.
 6. A bármelyik, fókusz terület megtekintheti a rangsorolt javaslatok arról, hogy a környezetben. Alatt egy javaslatra kattint **érintett objektumok** Miért jön létre a javaslat részleteinek megtekintéséhez.<br><br> ![kép az ajánlások állapotának ellenőrzése](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 7. Az ajánlott javítási műveleteket hajthatja végre **javasolt műveletek**. Intéztek a cikket, ha újabb értékelések rekordokat, amelyek a javasolt műveleteket származnak, és a megfelelőségi pontszám növeli. Kijavított elemek jelennek meg **átadott objektumok**.
 
 ## <a name="ignore-recommendations"></a>Hagyja figyelmen kívül a javaslatok
-Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szövegfájlt, amelynek használatával a Log Analytics megakadályozása javaslatokat az értékelés eredményeinek parancsot.
+Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szövegfájlt, amely az Azure Monitor használatával fogja megakadályozása javaslatokat az értékelés eredményeinek parancsot.
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>Javaslatok, amelyek figyelmen kívül hagyja majd azonosításához
-1. Az Azure Portalon a kijelölt munkaterület a Log Analytics munkaterület oldalon, kattintson a **naplóbeli keresés** csempére.
-2. A következő lista ajánlásokat, amelyek nem tudták lekérdezés használata a környezetében.
+[!INCLUDE [azure-monitor-log-queries](../../../includes/azure-monitor-log-queries.md)]
 
-    ```
-    ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
-    ```
-    A következő bejelentkezéshez a Naplókeresési lekérdezésen:<br><br> ![nem sikerült javaslatokat](./media/ad-assessment/ad-failed-recommendations.png)
+A következő lista ajánlásokat, amelyek nem tudták lekérdezés használata a környezetében.
 
-3. Válassza ki a javaslatok, amelyek figyelmen kívül kívánja. Szeretné használni az értékeket a RecommendationId az alábbi eljárás írja le.
+```
+ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
+```
+
+A következő bejelentkezéshez a naplólekérdezés:<br><br> ![nem sikerült javaslatokat](media/ad-assessment/ad-failed-recommendations.png)
+
+Válassza ki a javaslatok, amelyek figyelmen kívül kívánja. Szeretné használni az értékeket a RecommendationId az alábbi eljárás írja le.
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Hozhat létre és használhat egy IgnoreRecommendations.txt szövegfájl
 1. Hozzon létre egy fájlt IgnoreRecommendations.txt.
-2. Illessze be, vagy írjon be minden egyes RecommendationId minden javaslat, amelyet a Log Analyticsben, hogy figyelmen kívül, külön sorban, majd mentse és zárja be a fájlt.
-3. Helyezze a fájlt a következő mappában minden olyan számítógépen a Log Analytics figyelmen kívül hagyja a javaslatok, ahová.
+2. Illessze be, vagy írjon be minden egyes RecommendationId minden javaslat, amelyet az Azure Monitor figyelmen kívül, külön sorban, majd mentse és zárja be a fájlt.
+3. Helyezni a fájlt a következő mappában minden olyan számítógépen, ahová szeretné az Azure Monitor figyelmen kívül hagyja a javaslatokat.
    * A Microsoft Monitoring Agent (közvetlenül vagy Operations Manager keresztül csatlakozik) – a számítógépeken *SystemDrive*: Monitoring Agent\Agent \Program Files\Microsoft
    * Az Operations Manager 2012 R2 felügyeleti kiszolgálón – *SystemDrive*: System Center 2012 R2\Operations Manager\Server \Program Files\Microsoft
    * Az Operations Manager 2016 felügyeleti kiszolgálón – *SystemDrive*: System Center 2016\Operations Manager\Server \Program Files\Microsoft
@@ -138,7 +143,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
 ### <a name="to-verify-that-recommendations-are-ignored"></a>Győződjön meg arról, hogy a javaslatok figyelmen kívül hagyja a
 A következő ütemezett egészségügyi ellenőrzés futtatásakor a szolgáltatás alapértelmezés szerint minden hét nap, miután a megadott javaslatok vannak megjelölve az *figyelmen kívül hagyva* és nem jelenik meg az irányítópulton.
 
-1. A következő naplófájl-keresési lekérdezések segítségével a figyelmen kívül hagyott javaslatok listája.
+1. A következő naplófájl-lekérdezéseket a figyelmen kívül hagyott javaslatok listázására használható.
 
     ```
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
@@ -177,11 +182,11 @@ A következő ütemezett egészségügyi ellenőrzés futtatásakor a szolgálta
 
 *Miért jelennek meg a csak az első 10-javaslatok?*
 
-* Helyett így elsöprő teljesnek feladatot, azt javasoljuk, hogy arra összpontosítunk, először azoknak a rangsorolt javaslatok. Oldja meg őket, miután további javaslatokat is elérhetőek lesznek. Ha inkább a részletes listát, összes ajánlás naplóbeli keresés használatával tekintheti meg.
+* Helyett így elsöprő teljesnek feladatot, azt javasoljuk, hogy arra összpontosítunk, először azoknak a rangsorolt javaslatok. Oldja meg őket, miután további javaslatokat is elérhetőek lesznek. Ha inkább a részletes listát, a napló lekérdezésekkel összes ajánlás tekintheti meg.
 
 *Van mód figyelmen kívül hagyja a javaslatot?*
 
 * Igen, tekintse meg [figyelmen kívül hagyja a javaslatok](#ignore-recommendations) című fenti szakaszban.
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](../../azure-monitor/log-query/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes adatokat AD állapotának ellenőrzése és javaslatok.
+* Használat [Azure Monitor log-lekérdezések](../log-query/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes adatokat AD állapotának ellenőrzése és javaslatok.

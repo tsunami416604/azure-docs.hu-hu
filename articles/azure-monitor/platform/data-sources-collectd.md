@@ -1,6 +1,6 @@
 ---
-title: A Log Analytics összegyűjtött adatokat gyűjteni |} A Microsoft Docs
-description: Összegyűjtött egy nyílt forráskódú Linux-démon, amely rendszeres időközönként alkalmazások és a rendszer szintű adatait gyűjti az adatokat.  Ez a cikk információkat biztosít a Log Analytics összegyűjtött adatok gyűjtését.
+title: Az Azure monitorban összegyűjtött adatokat gyűjteni |} A Microsoft Docs
+description: Összegyűjtött egy nyílt forráskódú Linux-démon, amely rendszeres időközönként alkalmazások és a rendszer szintű adatait gyűjti az adatokat.  Ez a cikk az adatok gyűjtését az Azure monitorban összegyűjtött információkat biztosít.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 3ccb307eb028170f2dc65fd7cf90edf3115ae9a7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b6785dc06107424344f0a6af775abe9b1c956f70
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102686"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999317"
 ---
-# <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Összegyűjtött adatok gyűjtésére a Linux-ügynökök a Log Analyticsben
-[Összegyűjtött](https://collectd.org/) van egy nyílt forráskódú Linux-démon rendszeres időközönként által gyűjtött teljesítmény-mérőszámok az alkalmazások és a rendszer szintű adatait. Példa alkalmazások közé tartozik, a Java virtuális gép (JVM), a MySQL-kiszolgáló és az nginx-et. Ez a cikk teljesítményadatok gyűjtése a Log Analytics az összegyűjtött információkat biztosít.
+# <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Összegyűjtött adatok gyűjtésére a Linux-ügynökök az Azure monitorban
+[Összegyűjtött](https://collectd.org/) van egy nyílt forráskódú Linux-démon rendszeres időközönként által gyűjtött teljesítmény-mérőszámok az alkalmazások és a rendszer szintű adatait. Példa alkalmazások közé tartozik, a Java virtuális gép (JVM), a MySQL-kiszolgáló és az nginx-et. Ez a cikk információkat biztosít az Azure monitorban összegyűjtött teljesítményadatok gyűjtését.
 
 Az elérhető beépülő modulok tartalmazó teljes listát található [beépülő modulok tábla](https://collectd.org/wiki/index.php/Table_of_Plugins).
 
@@ -57,7 +57,7 @@ Az összegyűjtött konfigurációs használja az alapértelmezett`write_http` 2
 > [!NOTE]
 > Ez a port beállítható úgy, hogy egy egyénileg meghatározott portot szükség esetén.
 
-A Linuxhoz készült Log Analytics-ügynököt is a összegyűjtött metrikák 26000 portot figyeli, és konvertálja azokat a Log Analytics-séma metrikák. Az alábbiakban található az a Log Analytics-ügynök Linux konfigurációs `collectd.conf`.
+A Linuxhoz készült Log Analytics-ügynököt is a összegyűjtött metrikák 26000 portot figyeli, és konvertálja azokat az Azure Monitor séma metrikák. Az alábbiakban található az a Log Analytics-ügynök Linux konfigurációs `collectd.conf`.
 
     <source>
       type http
@@ -71,12 +71,12 @@ A Linuxhoz készült Log Analytics-ügynököt is a összegyűjtött metrikák 2
 
 
 ## <a name="versions-supported"></a>Támogatott verziók
-- A log Analytics jelenleg támogatja az összegyűjtött 4.8 verzió vagy újabb verzió.
+- Az Azure Monitor jelenleg támogatja az összegyűjtött 4.8 verzió vagy újabb verzió.
 - Log Analytics-ügynök Linux v1.1.0-217 vagy újabb összegyűjtött metrika gyűjtemény szükség.
 
 
 ## <a name="configuration"></a>Konfiguráció
-Az alábbiakban az összegyűjtött adatok gyűjtésének konfigurálása a Log Analytics alapvető lépéseit.
+Az alábbiakban az összegyűjtött adatok gyűjtésének konfigurálása az Azure monitorban alapvető lépéseit.
 
 1. Állítsa be az összegyűjtött adatokat küldeni a Log Analytics-ügynököket a write_http beépülő moduljával Linux rendszeren.  
 2. Állítsa be az összegyűjtött adatokat a megfelelő port figyelésére a Linuxhoz készült Log Analytics-ügynököket.
@@ -107,10 +107,10 @@ Az alábbiakban az összegyűjtött adatok gyűjtésének konfigurálása a Log 
 
     sudo szolgáltatás összegyűjtött sudo /opt/microsoft/omsagent/bin/service_control újraindítás
 
-## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>A Log Analytics-séma átalakítását összegyűjtött metrikák
+## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Az Azure Monitor séma átalakítását összegyűjtött metrikák
 Egy jól ismert modell között már a Linuxhoz készült Log Analytics-ügynök által gyűjtött infrastruktúra-mérőszámok és az új metrikák, használja a következő séma-hozzárendelés összegyűjtött által gyűjtött karbantartásához:
 
-| Összegyűjtött metrika mező | Log Analytics mező |
+| Összegyűjtött metrika mező | Az Azure Monitor mező |
 |:--|:--|
 | gazdagép | Computer |
 | Beépülő modul | None |
@@ -119,8 +119,8 @@ Egy jól ismert modell között már a Linuxhoz készült Log Analytics-ügynök
 | type_instance | CounterName<br>Ha **type_instance** van *null* majd CounterName =**üres** |
 | dsnames] | CounterName |
 | dstypes | None |
-| értékek] | AVG |
+| értékek] | CounterValue |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [lekérdezések naplózását](../../log-analytics/log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
-* Használat [egyéni mezők](../../log-analytics/log-analytics-custom-fields.md) syslog-rekord származó adatok elemzése az egyes mezőket.
+* Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Használat [egyéni mezők](custom-fields.md) syslog-rekord származó adatok elemzése az egyes mezőket.

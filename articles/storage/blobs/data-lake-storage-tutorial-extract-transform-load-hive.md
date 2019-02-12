@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jamesbak
-ms.openlocfilehash: 977d3535ad6c06b5dacd786905585d27f6d3d996
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: cfe06720d0afa0f9f5cf22552ba7ab21d4e617c0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964270"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993146"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Oktatóanyag: A kinyerési, átalakítási és az Azure HDInsight segítségével a Apache Hive-adatok betöltése
 
@@ -42,28 +42,33 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 * **Az Azure CLI**: Ha még nem telepítette az Azure CLI-vel, tekintse meg [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* **Egy SSH-ügyfél**: További információkért lásd: [HDInsight (Hadoop) SSH használatával csatlakozhat](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* **A Secure Shell (SSH) ügyfél**: További információkért lásd: [HDInsight (Hadoop) SSH használatával csatlakozhat](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 > [!IMPORTANT]
 > A jelen cikkben ismertetett lépések szükség egy HDInsight-fürt által használt Linux. Linux az egyetlen operációs rendszer, amely arra szolgál, az Azure HDInsight 3.4-es vagy újabb verzió. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../../hdinsight/hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-### <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
+## <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
 Ebben az oktatóanyagban a bemutatják, hogyan végezhet ETL-műveletet, a szállítás Hivatala statisztikák repülési adatait használja. Ezeket az adatokat az oktatóanyag elvégzéséhez le kell töltenie.
 
 1. Lépjen a [kutatásáról és az innovatív technológia felügyeleti, a szállítás statisztikák Hivatala](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
-2. Válassza ki a **Prezipped fájl** jelölőnégyzet bejelölésével kijelölheti az összes adatmezőket.
+1. Az oldalon válassza ki a következő értékeket:
 
-3. Válassza ki a **letöltése** gombra, és az eredmények mentése a számítógépre. 
+   | Name (Név) | Érték |
+   | --- | --- |
+   | **Időszak szűrése** |January |
+   | **Mezők** |FlightDate, OriginCityName, WeatherDelay |
 
-4. Csomagolja ki a tömörített fájl tartalmát, és jegyezze fel a fájl nevét és a fájl elérési útját. Ez egy későbbi lépésben információra van szüksége.
+1. Az összes többi mező jelölését törölje.
+
+1. Válassza a **Download** (Letöltés) lehetőséget. A kiválasztott adatok mezőkkel .zip fájlt kap.
 
 ## <a name="extract-and-upload-the-data"></a>Csomagolja ki, és töltse fel az adatokat
 
-Ebben a szakaszban használhatja `scp` feltölteni az adatokat a HDInsight-fürthöz.
+Ebben a szakaszban fogja feltölteni az adatokat a HDInsight-fürthöz. 
 
-1. Nyisson meg egy parancssort, és a következő paranccsal töltse fel a .zip fájlt a HDInsight-fürt fejcsomópontjára:
+1. Nyisson meg egy parancssort, és a következő paranccsal biztonságos másolás (Scp) a .zip-fájlt tölthet fel a HDInsight-fürt fő csomópontjának:
 
    ```bash
    scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
@@ -73,7 +78,7 @@ Ebben a szakaszban használhatja `scp` feltölteni az adatokat a HDInsight-fürt
    * Cserélje le a `<ssh-user-name>` helyőrző a HDInsight-fürthöz az SSH-bejelentkezéskor.
    * Cserélje le a `<cluster-name>` helyőrzőt a HDInsight-fürt nevére.
 
-   Ha az SSH-bejelentkezést egy jelszóval hitelesíti, a rendszer bekéri a jelszót. 
+   Ha az SSH-bejelentkezést egy jelszóval hitelesíti, a rendszer bekéri a jelszót.
 
    Nyilvános kulcs használatakor lehetséges, hogy az `-i` paramétert kell használnia, és meg kell adnia a megfelelő titkos kulcs elérési útját. Például: `scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`.
 
@@ -96,7 +101,7 @@ Ebben a szakaszban használhatja `scp` feltölteni az adatokat a HDInsight-fürt
    ```bash
    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
    ```
-   
+
    Cserélje le a `<file-system-name>` kíván adni a fájlrendszer neve helyőrzőt.
 
    Cserélje le a `<storage-account-name>` helyőrzőt a tárfiók nevére.
@@ -132,28 +137,9 @@ Az Apache Hive-feladat részeként, az adatokat importálhat a .csv-fájlt nevű
    ```hiveql
    DROP TABLE delays_raw;
     CREATE EXTERNAL TABLE delays_raw (
-       YEAR string,
        FL_DATE string,
-       UNIQUE_CARRIER string,
-       CARRIER string,
-       FL_NUM string,
-       ORIGIN_AIRPORT_ID string,
-       ORIGIN string,
        ORIGIN_CITY_NAME string,
-       ORIGIN_CITY_NAME_TEMP string,
-       ORIGIN_STATE_ABR string,
-       DEST_AIRPORT_ID string,
-       DEST string,
-       DEST_CITY_NAME string,
-       DEST_CITY_NAME_TEMP string,
-       DEST_STATE_ABR string,
-       DEP_DELAY_NEW float,
-       ARR_DELAY_NEW float,
-       CARRIER_DELAY float,
-       WEATHER_DELAY float,
-       NAS_DELAY float,
-       SECURITY_DELAY float,
-      LATE_AIRCRAFT_DELAY float)
+       WEATHER_DELAY float)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
@@ -162,26 +148,9 @@ Az Apache Hive-feladat részeként, az adatokat importálhat a .csv-fájlt nevű
    CREATE TABLE delays
    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
    AS
-   SELECT YEAR AS Year,
-       FL_DATE AS FlightDate,
-       substring(UNIQUE_CARRIER, 2, length(UNIQUE_CARRIER) -1) AS Reporting_Airline,
-       substring(CARRIER, 2, length(CARRIER) -1) AS  IATA_CODE_Reporting_Airline,
-       substring(FL_NUM, 2, length(FL_NUM) -1) AS  Flight_Number_Reporting_Airline,
-       ORIGIN_AIRPORT_ID AS OriginAirportID,
-       substring(ORIGIN, 2, length(ORIGIN) -1) AS Origin,
+   SELECT FL_DATE AS FlightDate,
        substring(ORIGIN_CITY_NAME, 2) AS OriginCityName,
-       substring(ORIGIN_STATE_ABR, 2, length(ORIGIN_STATE_ABR) -1)  AS OriginStateName,
-       DEST_AIRPORT_ID AS DestAirportID,
-       substring(DEST, 2, length(DEST) -1) AS Dest,
-       substring(DEST_CITY_NAME,2) AS DestCityName,
-       substring(DEST_STATE_ABR, 2, length(DEST_STATE_ABR) -1) AS DestState,
-       DEP_DELAY_NEW AS DepDelay,
-       ARR_DELAY_NEW AS ArrDelay,
-       CARRIER_DELAY AS CarrierDelay,
        WEATHER_DELAY AS WeatherDelay
-       NAS_DELAY AS NASDelay,
-       SECURITY_DELAY AS SecurityDelay,
-       LATE_AIRCRAFT_DELAY AS LateAircraftDelay
    FROM delays_raw;
    ```
 

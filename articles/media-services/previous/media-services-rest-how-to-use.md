@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 7ea2a84daaa22e0fc7ff4dc90ca41dd906b808c8
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e0011d36ccff7b9d621679f15776bbdb15d0cbe4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159740"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005454"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>A Media Services REST API áttekintése
+# <a name="media-services-operations-rest-api-overview"></a>A Media Services REST API áttekintése 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
 
 A **Media Services Operations REST** API létrehozása a projektek, eszközök, élő csatornák és egyéb erőforrások a Media Services-fiók szolgál. További információkért lásd: [Media Services Operations REST API-referencia](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
@@ -55,12 +55,12 @@ A következő szempontokat kell figyelembe REST használata esetén.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>A Media Services által támogatott szabványos HTTP-kérelem fejlécek
 Minden hívás választja ki a Media Services szolgáltatásba szerepelnie kell a kérés szükséges fejlécek egy halmaza, és is választható fejlécek készletét érdemes felvenni. Az alábbi táblázat felsorolja a szükséges fejlécek:
 
-| Fejléc | Típus | Érték |
+| Fejléc | Typo | Érték |
 | --- | --- | --- |
 | Engedélyezés |Tulajdonosi |Tulajdonosi az egyetlen elfogadott engedélyezési mechanizmusa. Az értéket is tartalmaznia kell az Azure Active Directory által biztosított jogkivonat. |
-| x-ms-version |Tizedes tört |2.17 (vagy a legújabb verzió)|
-| Dataserviceversion s |Tizedes tört |3.0 |
-| MaxDataServiceVersion |Tizedes tört |3.0 |
+| x-ms-version |Decimal |2.17 (vagy a legújabb verzió)|
+| DataServiceVersion |Decimal |3.0 |
+| MaxDataServiceVersion |Decimal |3.0 |
 
 > [!NOTE]
 > A Media Services OData használatával teszi közzé a REST API-k, mert a dataserviceversion s és MaxDataServiceVersion fejlécek szerepelnie kell az összes kérelem; azonban ha nem, majd jelenleg a Media Services feltételezi, hogy a használati dataserviceversion s érték 3.0.
@@ -69,27 +69,27 @@ Minden hívás választja ki a Media Services szolgáltatásba szerepelnie kell 
 
 A következő olyan opcionális fejlécek:
 
-| Fejléc | Típus | Érték |
+| Fejléc | Typo | Érték |
 | --- | --- | --- |
 | Dátum |RFC 1123 dátuma |A kérelem időbélyege |
-| Elfogadás |Tartalom típusa |A kért tartalom típusa a válaszhoz, például a következő:<p> – az application/json; odata részletes =<p> – application/atom + xml<p> Válaszok különböző tartalom típusa, például egy blob fetch előfordulhat, ahol a sikeres válasz tartalmazza a blob adatfolyamot, a hasznos. |
-| Fogadja el-kódolás |A gzip, deflate |A GZIP- és a DEFLATE kódolást, ha alkalmazható. Megjegyzés: A nagyméretű erőforrásokra a Media Services figyelmen kívül hagyhatja ezt a fejlécet és noncompressed adatokat adja vissza. |
-| Fogadja el nyelv |"en", "es" és így tovább. |Adja meg a kívánt nyelvet a válaszhoz. |
+| Elfogadás |Tartalom típusa |A kért tartalom típusa a válaszhoz, például a következő:<p> -application/json;odata=verbose<p> - application/atom+xml<p> Válaszok különböző tartalom típusa, például egy blob fetch előfordulhat, ahol a sikeres válasz tartalmazza a blob adatfolyamot, a hasznos. |
+| Accept-Encoding |Gzip, deflate |A GZIP- és a DEFLATE kódolást, ha alkalmazható. Megjegyzés: A nagyméretű erőforrásokra a Media Services figyelmen kívül hagyhatja ezt a fejlécet és noncompressed adatokat adja vissza. |
+| Accept-Language |"en", "es" és így tovább. |Adja meg a kívánt nyelvet a válaszhoz. |
 | Fogadja el karakterkészlet |Például a "UTF-8" karakterkészlet típusa |Alapértelmezett érték az UTF-8. |
-| X-HTTP-metódus |HTTP-metódus |Lehetővé teszi az ügyfelek vagy a tűzfalakat, amelyek nem támogatják a HTTP-metódusok például PUT vagy DELETE ezen módszerek bújtatott keresztül egy GET hívást kell. |
+| X-HTTP-Method |HTTP-metódus |Lehetővé teszi az ügyfelek vagy a tűzfalakat, amelyek nem támogatják a HTTP-metódusok például PUT vagy DELETE ezen módszerek bújtatott keresztül egy GET hívást kell. |
 | Content-Type |Tartalom típusa |Tartalom típusa, a PUT vagy a POST kérelmeket a kérelem törzsében. |
-| Client-request-id |Karakterlánc |A hívó által megadott érték, amely azonosítja az adott kérelem. Ha meg van adva, ez az érték fog szerepelni a válaszüzenet arra, hogy a kérelem leképezése. <p><p>**Fontos**<p>Értékeket kell maximumon 2096b (2-k). |
+| client-request-id |String |A hívó által megadott érték, amely azonosítja az adott kérelem. Ha meg van adva, ez az érték fog szerepelni a válaszüzenet arra, hogy a kérelem leképezése. <p><p>**Fontos**<p>Értékeket kell maximumon 2096b (2-k). |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>A Media Services által támogatott szabványos HTTP-válaszfejléceket
 A következő olyan készlete, az erőforrás is kér, és a végrehajtani kívánt művelet attól függően, hogy visszaadott fejlécek.
 
-| Fejléc | Típus | Érték |
+| Fejléc | Typo | Érték |
 | --- | --- | --- |
-| kérelem azonosítója |Karakterlánc |Az aktuális művelethez létrehozott szolgáltatás egyedi azonosítója. |
-| Client-request-id |Karakterlánc |Ha az eredeti kérés esetén a hívó által megadott azonosítója. |
+| kérelem azonosítója |String |Az aktuális művelethez létrehozott szolgáltatás egyedi azonosítója. |
+| client-request-id |String |Ha az eredeti kérés esetén a hívó által megadott azonosítója. |
 | Dátum |RFC 1123 dátuma |A dátum/idő, amely a kérés lett feldolgozva. |
 | Content-Type |Változó |A válasz törzse tartalomtípusa. |
-| Tartalom kódolása |Változó |A gzip deflate vagy, ha szükséges. |
+| Content-Encoding |Változó |A gzip deflate vagy, ha szükséges. |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>A Media Services által támogatott szabványos HTTP-műveletek
 A következő egy is használható, ha így a HTTP-kérelmek, HTTP-műveletek teljes listáját:
@@ -106,7 +106,7 @@ A következő egy is használható, ha így a HTTP-kérelmek, HTTP-műveletek te
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>Fedezze fel, és keresse meg a Media Services-entitás modell
 Ahhoz, hogy könnyebben felfedezhetővé teheti a Media Services entitásokat, a $metadata művelet használható. Ez lehetővé teszi, hogy lekérheti az összes érvényes entitástípusok, entitás tulajdonságai, társítások, függvények, műveletek, és így tovább. A teljes körű, a Media Services REST API-végpont a $metadata művelet hozzáadásával a keresőszolgáltatás érheti el.
 
- /API/$ metaadatait.
+ /api/$metadata.
 
 Érdemes hozzáfűzése "? api-version=2.x", az URI Azonosítót, ha szeretné megtekinteni a metaadatokat egy böngészőben, vagy a kérelem nem tartalmazza az x-ms-version fejlécnek végén.
 

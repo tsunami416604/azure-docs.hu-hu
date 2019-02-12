@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: c60dded96df091b1a715fb7b972e9d7a23608d44
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6907382fccaa463fe305ac5049b3858e59b8631b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818821"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991395"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Kezelheti a DNS-rekordok és -rekordhalmazok az Azure DNS Azure powershellel
 
@@ -35,6 +35,8 @@ Ebben a cikkben szereplő példák feltételezik, hogy már [telepítette az Azu
 
 ## <a name="introduction"></a>Bevezetés
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Mielőtt létrehozná a DNS-rekordokat Azure DNS-ben, tisztában kell lennie azzal, hogyan rendezi az Azure DNS DNS-rekordhalmazokba a DNS-rekordokat.
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
@@ -48,41 +50,41 @@ Ha az új rekord tartalmazza-e az azonos neve és típusa megegyezik egy meglév
 
 ### <a name="create-a-records-in-a-new-record-set"></a>"A" rekordok létrehozása az új rekordhalmaz
 
-Rekordhalmazt a `New-AzureRmDnsRecordSet` parancsmag használatával hozhat létre. Egy rekordhalmaz létrehozásakor meg kell adnia a rekordhalmaz-neve, a zónát, az idő Élettartam (TTL), a rekordtípust és a rekordok létrehozását.
+Rekordhalmazt a `New-AzDnsRecordSet` parancsmag használatával hozhat létre. Egy rekordhalmaz létrehozásakor meg kell adnia a rekordhalmaz-neve, a zónát, az idő Élettartam (TTL), a rekordtípust és a rekordok létrehozását.
 
 A rekordok rekordhalmazhoz adásának paraméterei a rekordhalmaz típusától függően eltérnek. Például egy "A" típusú rekordhalmazok használata esetén szüksége adja meg az IP-címet a paraméter használatával `-IPv4Address`. Más rekordtípusok más paramétereket használják. Tekintse meg a további rekordtípusokra részleteiről.
 
 Az alábbi példa egy "contoso.com" DNS-zóna a "www" relatív nevű rekordot hoz létre. A beállított rekord teljes neve "www.contoso.com". A rekord típusa "A", akkor az Élettartama pedig 3600 másodperc. A rekordhalmaz egyetlen rekordot, az IP-címe "1.2.3.4" tartalmazza.
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
+New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
 Létrehozni egy rekordot a legfelső pontján:"zóna (ebben az esetben a" contoso.com"), a rekordhalmaz nevének használata"\@"(idézőjelek nélkül):
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
+New-AzDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-Ha szeretne létrehozni egy rekordot egynél több rekordot tartalmazó, először hozzon létre egy helyi tömb rekordok hozzáadásához, majd továbbítja a tömböt az `New-AzureRmDnsRecordSet` módon:
+Ha szeretne létrehozni egy rekordot egynél több rekordot tartalmazó, először hozzon létre egy helyi tömb rekordok hozzáadásához, majd továbbítja a tömböt az `New-AzDnsRecordSet` módon:
 
 ```powershell
 $aRecords = @()
-$aRecords += New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4"
-$aRecords += New-AzureRmDnsRecordConfig -IPv4Address "2.3.4.5"
-New-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName MyResourceGroup -Ttl 3600 -RecordType A -DnsRecords $aRecords
+$aRecords += New-AzDnsRecordConfig -IPv4Address "1.2.3.4"
+$aRecords += New-AzDnsRecordConfig -IPv4Address "2.3.4.5"
+New-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName MyResourceGroup -Ttl 3600 -RecordType A -DnsRecords $aRecords
 ```
 
 [A rekordhalmaz metaadatainak](dns-zones-records.md#tags-and-metadata) minden rekordhalmaz kulcs-érték párok, alkalmazás-specifikus adatok társítása is használható. Az alábbi példa bemutatja, hogyan hozhat létre a két metaadat-bejegyzéseket, "részleg = pénzügyi" és "környezet éles =".
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") -Metadata @{ dept="finance"; environment="production" } 
+New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") -Metadata @{ dept="finance"; environment="production" } 
 ```
 
 Az Azure DNS támogatja a "empty" rekordhalmazok, amelyek szolgálhatnak egy helyőrző lefoglalása egy DNS-nevet a DNS-rekordok létrehozása előtt is. Üres rekordhalmazok az Azure DNS vezérlősík láthatók, de jelenik meg az Azure DNS névkiszolgálóit. Az alábbi példa létrehoz egy üres rekordhalmaz:
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords @()
+New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords @()
 ```
 
 ## <a name="create-records-of-other-types"></a>Más típusú rekordok létrehozása
@@ -96,13 +98,13 @@ Nem biztosítunk lehet például egy SOA típusú rekordhalmaz létrehozása, mi
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>Egyetlen rekordot tartalmazó AAAA típusú rekordhalmaz létrehozása
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "test-aaaa" -RecordType AAAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Ipv6Address "2607:f8b0:4009:1803::1005") 
+New-AzDnsRecordSet -Name "test-aaaa" -RecordType AAAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ipv6Address "2607:f8b0:4009:1803::1005") 
 ```
 
 ### <a name="create-a-caa-record-set-with-a-single-record"></a>A CAA rekordhalmaz egyetlen rekordot tartalmazó létrehozása
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Caaflags 0 -CaaTag "issue" -CaaValue "ca1.contoso.com") 
+New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Caaflags 0 -CaaTag "issue" -CaaValue "ca1.contoso.com") 
 ```
 
 ### <a name="create-a-cname-record-set-with-a-single-record"></a>Egyetlen rekordot tartalmazó CNAME típusú rekordhalmaz létrehozása
@@ -114,7 +116,7 @@ New-AzureRmDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com"
 
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Cname "www.contoso.com") 
+New-AzDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Cname "www.contoso.com") 
 ```
 
 ### <a name="create-an-mx-record-set-with-a-single-record"></a>Egyetlen rekordot tartalmazó MX típusú rekordhalmaz létrehozása
@@ -123,13 +125,13 @@ Ebben a példában a rekordhalmaznevet használjuk "\@" hozhat létre az MX-reko
 
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "@" -RecordType MX -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Exchange "mail.contoso.com" -Preference 5) 
+New-AzDnsRecordSet -Name "@" -RecordType MX -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Exchange "mail.contoso.com" -Preference 5) 
 ```
 
 ### <a name="create-an-ns-record-set-with-a-single-record"></a>Egyetlen rekordot tartalmazó NS típusú rekordhalmaz létrehozása
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Nsdname "ns1.contoso.com") 
+New-AzDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Nsdname "ns1.contoso.com") 
 ```
 
 ### <a name="create-a-ptr-record-set-with-a-single-record"></a>Egyetlen rekordot tartalmazó PTR típusú rekordhalmaz létrehozása
@@ -137,7 +139,7 @@ New-AzureRmDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -
 Ebben az esetben "my-arpa-zone.com" az az IP-címtartományt képviselő ARPA-névkeresési zónát jelöli. A zóna minden PTR típusú rekordhalmaza az IP-címtartomány egyik IP-címének felel meg. A rekord neve "10" az utolsó oktettet IP-cím az IP-címtartomány, ez a bejegyzés által képviselt belül.
 
 ```powershell
-New-AzureRmDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Ptrdname "myservice.contoso.com") 
+New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "myservice.contoso.com") 
 ```
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>Egyetlen rekordot tartalmazó SRV típusú rekordhalmaz létrehozása
@@ -145,7 +147,7 @@ New-AzureRmDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -R
 Létrehozásakor egy [SRV rekordhalmaz](dns-zones-records.md#srv-records), adja meg a  *\_szolgáltatás* és  *\_protokoll* a rekordhalmaz-neve. Nem kell felvenni a(z)\@"a rekordhalmaz nevét, ha létrehozása egy SRV-rekordot a zóna legfelső pontján.
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
+New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
 ```
 
 
@@ -154,56 +156,56 @@ New-AzureRmDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com
 Az alábbi példa bemutatja, hogyan hozhat létre egy txt típusú rekordot. További információ a támogatott txt típusú rekordok a karakterlánc maximális hossza: [txt típusú rekordok](dns-zones-records.md#txt-records).
 
 ```powershell
-New-AzureRmDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Value "This is a TXT record") 
+New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Value "This is a TXT record") 
 ```
 
 
 ## <a name="get-a-record-set"></a>Rekordhalmaz beolvasása
 
-Egy meglévő rekordhalmaz kérheti `Get-AzureRmDnsRecordSet`. Ez a parancsmag egy helyi Azure DNS-ben a rekordot képviselő objektumot adja vissza.
+Egy meglévő rekordhalmaz kérheti `Get-AzDnsRecordSet`. Ez a parancsmag egy helyi Azure DNS-ben a rekordot képviselő objektumot adja vissza.
 
-A `New-AzureRmDnsRecordSet`, az adott rekordhalmaz nevének kell lennie egy *relatív* neve, ami azt jelenti, azt kell zárnia a zóna nevét. Is meg kell adnia a rekordtípust, és a rekordot tartalmazó zóna beállítása.
+A `New-AzDnsRecordSet`, az adott rekordhalmaz nevének kell lennie egy *relatív* neve, ami azt jelenti, azt kell zárnia a zóna nevét. Is meg kell adnia a rekordtípust, és a rekordot tartalmazó zóna beállítása.
 
 Az alábbi példa bemutatja, hogyan rekordhalmaz lekéréséhez. Ebben a példában a zóna van megadva a `-ZoneName` és `-ResourceGroupName` paramétereket.
 
 ```powershell
-$rs = Get-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
+$rs = Get-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 Másik lehetőségként azt is megadhatja a zóna egy zóna objektummal, az átadott használatával a `-Zone` paraméter.
 
 ```powershell
-$zone = Get-AzureRmDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
-$rs = Get-AzureRmDnsRecordSet -Name "www" -RecordType A -Zone $zone
+$zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
+$rs = Get-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
 ## <a name="list-record-sets"></a>Lista rekordhalmazok
 
-Is `Get-AzureRmDnsZone` a lista rekordhalmazok zónában, felsorolhatja az `-Name` és/vagy `-RecordType` paramétereket.
+Is `Get-AzDnsZone` a lista rekordhalmazok zónában, felsorolhatja az `-Name` és/vagy `-RecordType` paramétereket.
 
 Az alábbi példa adja vissza az összes rekordot a zónában állítja be:
 
 ```powershell
-$recordsets = Get-AzureRmDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
+$recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 Az alábbi példa bemutatja, hogyan összes rekordhalmazok egy adott típusú kérhető elhagyásával a bejegyzést csoportjának a neve, adja meg a rekord típusa:
 
 ```powershell
-$recordsets = Get-AzureRmDnsRecordSet -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
+$recordsets = Get-AzDnsRecordSet -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 Ezzel a névvel, minden rekordhalmazok különböző rekordtípusok lekéréséhez kell lekérni az összes rekordhalmazt, és szűrjön rá az eredmények:
 
 ```powershell
-$recordsets = Get-AzureRmDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | where {$_.Name.Equals("www")}
+$recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | where {$_.Name.Equals("www")}
 ```
 
 Az összes fenti példákban a zóna adható meg keresztül a `-ZoneName` és `-ResourceGroupName`paraméterek (szerint), vagy egy zóna objektum megadásával:
 
 ```powershell
-$zone = Get-AzureRmDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
-$recordsets = Get-AzureRmDnsRecordSet -Zone $zone
+$zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
+$recordsets = Get-AzDnsRecordSet -Zone $zone
 ```
 
 ## <a name="add-a-record-to-an-existing-record-set"></a>Adjon hozzá egy rekordot egy meglévő rekordhalmazhoz
@@ -213,30 +215,30 @@ Adjon hozzá egy rekordot egy meglévő rekordhalmazhoz, kövesse az alábbi há
 1. A meglévő rekordhalmazhoz beolvasása
 
     ```powershell
-    $rs = Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
+    $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
 2. A helyi rekordhalmazhoz adja hozzá az új rekordban. Ez a művelet végezze a rögzítést.
 
     ```powershell
-    Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
+    Add-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
 3. Véglegesítse a módosítást, térjen vissza az Azure DNS szolgáltatásban. 
 
     ```powershell
-    Set-AzureRmDnsRecordSet -RecordSet $rs
+    Set-AzDnsRecordSet -RecordSet $rs
     ```
 
-Használatával `Set-AzureRmDnsRecordSet` *váltja fel* a meglévő rekordhalmazt Azure DNS-ben (és a benne található összes rekord) a beállított rekord megadott. [Az ETag-ellenőrzések](dns-zones-records.md#etags) biztosítva a párhuzamos módosítások nem lettek felülírva. Használhatja a választható `-Overwrite` kapcsoló le ezeket az ellenőrzéseket.
+Használatával `Set-AzDnsRecordSet` *váltja fel* a meglévő rekordhalmazt Azure DNS-ben (és a benne található összes rekord) a beállított rekord megadott. [Az ETag-ellenőrzések](dns-zones-records.md#etags) biztosítva a párhuzamos módosítások nem lettek felülírva. Használhatja a választható `-Overwrite` kapcsoló le ezeket az ellenőrzéseket.
 
 Ez a feladatütemezési műveletek is lehet *parancsoknak*, ami azt jelenti, át kell adnia a rekordhalmaz objektum paraméterként való átadásával helyett használja a függőleges vonal:
 
 ```powershell
-Get-AzureRmDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
+Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-A fenti példák bemutatják az "A" rekord hozzáadása egy meglévő rekordhalmazhoz "A" típusú. A hasonló feladatütemezési műveletek segítségével adhatja hozzá a rekordhalmazokhoz rekordhalmazok más típusú, és cserélje le a `-Ipv4Address` paraméterében `Add-AzureRmDnsRecordConfig` adott, az egyes rekordtípusokra más paraméterekkel. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzureRmDnsRecordConfig` parancsmagot, a fenti további rekordtípus példákban szemléltetett módon.
+A fenti példák bemutatják az "A" rekord hozzáadása egy meglévő rekordhalmazhoz "A" típusú. A hasonló feladatütemezési műveletek segítségével adhatja hozzá a rekordhalmazokhoz rekordhalmazok más típusú, és cserélje le a `-Ipv4Address` paraméterében `Add-AzDnsRecordConfig` adott, az egyes rekordtípusokra más paraméterekkel. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzDnsRecordConfig` parancsmagot, ahogyan az [további rekordtípusokra](#additional-record-type-examples) felett.
 
 "CNAME" vagy "SOA" típusú rekordhalmazok nem tartalmazhat egynél több rekordot. Ezt a korlátozást a DNS-szabványok ered. Már nem az Azure DNS egy korlátozás.
 
@@ -247,19 +249,19 @@ A folyamat a bejegyzés eltávolítása a rekordhalmaz adjon hozzá egy rekordot
 1. A meglévő rekordhalmazhoz beolvasása
 
     ```powershell
-    $rs = Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
+    $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
 2. Távolítsa el a rekordot a helyi rekordhalmaz objektum. Ez a művelet végezze a rögzítést. Az eltávolítandó rekord minden paraméter egy létező rekord adataival pontos egyezésűnek kell lennie.
 
     ```powershell
-    Remove-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
+    Remove-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
 3. Véglegesítse a módosítást, térjen vissza az Azure DNS szolgáltatásban. A választható `-Overwrite` le kapcsoló [Etag ellenőrzi](dns-zones-records.md#etags) egyidejű módosításait.
 
     ```powershell
-    Set-AzureRmDnsRecordSet -RecordSet $Rs
+    Set-AzDnsRecordSet -RecordSet $Rs
     ```
 
 Az utolsó rekord rekordhalmaz eltávolítása a fenti feladatütemezés használatával nem törli a rekordhalmaz, inkább akkor hagyja, hogy egy üres rekordhalmaz. Távolítsa el teljesen egy rekordot, lásd: [egy rekordhalmaz törlése](#delete-a-record-set).
@@ -267,33 +269,33 @@ Az utolsó rekord rekordhalmaz eltávolítása a fenti feladatütemezés haszná
 Hasonlóképpen a rekordok rekordhalmazhoz ad, a rekordhalmaz eltávolítása műveletek sorrendjét is átadható olyan parancsoknak:
 
 ```powershell
-Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
+Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Különböző rekordtípusok támogatottak tartalmában való böngészéshez illessze a megfelelő típus-specifikus paramétereket `Remove-AzureRmDnsRecordSet`. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzureRmDnsRecordConfig` parancsmagot, a fenti további rekordtípus példákban szemléltetett módon.
+Különböző rekordtípusok támogatottak tartalmában való böngészéshez illessze a megfelelő típus-specifikus paramétereket `Remove-AzDnsRecordSet`. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzDnsRecordConfig` parancsmagot, ahogyan az [további rekordtípusokra](#additional-record-type-examples) felett.
 
 
 ## <a name="modify-an-existing-record-set"></a>Módosíthatja egy meglévő rekordhalmaz
 
 A lépéseket, amikor az hozzáadását és eltávolítását rekordok rekordhalmazhoz módosítja egy létező rekordhalmazhoz lépései hasonlók:
 
-1. Beolvasni a meglévő rekordhalmazt `Get-AzureRmDnsRecordSet`.
+1. Beolvasni a meglévő rekordhalmazt `Get-AzDnsRecordSet`.
 2. Módosítsa a helyi rekordhalmaz objektum által:
     * Hozzáadásával vagy eltávolításával rekordok
     * A paraméterek a meglévő rekordok módosítása
     * Élettartam (TTL) a metaadatok és az idő beállítása a rekord módosítása
-3. A változtatások véglegesítése a használatával a `Set-AzureRmDnsRecordSet` parancsmagot. Ez *váltja fel* a beállított rekord megadott Azure DNS-ben meglévő rekordhalmazt.
+3. A változtatások véglegesítése a használatával a `Set-AzDnsRecordSet` parancsmagot. Ez *váltja fel* a beállított rekord megadott Azure DNS-ben meglévő rekordhalmazt.
 
-Használata esetén `Set-AzureRmDnsRecordSet`, [Etag ellenőrzi](dns-zones-records.md#etags) biztosítva a párhuzamos módosítások nem lettek felülírva. Használhatja a választható `-Overwrite` kapcsoló le ezeket az ellenőrzéseket.
+Használata esetén `Set-AzDnsRecordSet`, [Etag ellenőrzi](dns-zones-records.md#etags) biztosítva a párhuzamos módosítások nem lettek felülírva. Használhatja a választható `-Overwrite` kapcsoló le ezeket az ellenőrzéseket.
 
 ### <a name="to-update-a-record-in-an-existing-record-set"></a>Egy rekord egy meglévő rekordhalmaz módosítása
 
 Ebben a példában egy meglévő "A" rekord IP-címének módosítása:
 
 ```powershell
-$rs = Get-AzureRmDnsRecordSet -name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
+$rs = Get-AzDnsRecordSet -name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 $rs.Records[0].Ipv4Address = "9.8.7.6"
-Set-AzureRmDnsRecordSet -RecordSet $rs
+Set-AzDnsRecordSet -RecordSet $rs
 ```
 
 ### <a name="to-modify-an-soa-record"></a>SOA-rekord módosítása
@@ -303,9 +305,9 @@ Nem adhat hozzá és rekordok eltávolítása az automatikusan létrehozott, ál
 A következő példa bemutatja, hogyan módosíthatja a *E-mail* a SOA típusú rekordját tulajdonságát:
 
 ```powershell
-$rs = Get-AzureRmDnsRecordSet -Name "@" -RecordType SOA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
+$rs = Get-AzDnsRecordSet -Name "@" -RecordType SOA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 $rs.Records[0].Email = "admin.contoso.com"
-Set-AzureRmDnsRecordSet -RecordSet $rs
+Set-AzDnsRecordSet -RecordSet $rs
 ```
 
 ### <a name="to-modify-ns-records-at-the-zone-apex"></a>Módosíthatja a Névkiszolgálói rekordokat a zóna legfelső pontján
@@ -319,9 +321,9 @@ Vegye figyelembe, hogy ez csak érvényes az NS-rekord a zóna legfelső pontjá
 Az alábbi példa bemutatja, hogyan az NS-rekord a zóna legfelső pontján állítsa be a további neve kiszolgáló hozzáadása:
 
 ```powershell
-$rs = Get-AzureRmDnsRecordSet -Name "@" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
-Add-AzureRmDnsRecordConfig -RecordSet $rs -Nsdname ns1.myotherdnsprovider.com
-Set-AzureRmDnsRecordSet -RecordSet $rs
+$rs = Get-AzDnsRecordSet -Name "@" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
+Add-AzDnsRecordConfig -RecordSet $rs -Nsdname ns1.myotherdnsprovider.com
+Set-AzDnsRecordSet -RecordSet $rs
 ```
 
 ### <a name="to-modify-record-set-metadata"></a>A rekordhalmaz metaadatainak módosítása
@@ -332,7 +334,7 @@ Az alábbi példa bemutatja, hogyan módosíthatja egy meglévő rekordhalmaz me
 
 ```powershell
 # Get the record set
-$rs = Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
+$rs = Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 
 # Add 'dept=finance' name-value pair
 $rs.Metadata.Add('dept', 'finance') 
@@ -341,13 +343,13 @@ $rs.Metadata.Add('dept', 'finance')
 $rs.Metadata.Remove('environment')  
 
 # Commit changes
-Set-AzureRmDnsRecordSet -RecordSet $rs
+Set-AzDnsRecordSet -RecordSet $rs
 ```
 
 
 ## <a name="delete-a-record-set"></a>A rekordhalmaz törlése
 
-Rekordhalmazok használatával törölhetők a `Remove-AzureRmDnsRecordSet` parancsmagot. Rekordhalmaz törlése is törli a beállított rekord összes rekordján.
+Rekordhalmazok használatával törölhetők a `Remove-AzDnsRecordSet` parancsmagot. Rekordhalmaz törlése is törli a beállított rekord összes rekordján.
 
 > [!NOTE]
 > Nem lehet törölni a SOA és NS-rekord zóna felső pontjánál állítja be (`-Name '@'`).  Az Azure DNS automatikusan létrehozza ezeket a beállítást, ha a zóna lett létrehozva, és automatikusan törli azokat a zóna törlésekor.
@@ -355,21 +357,21 @@ Rekordhalmazok használatával törölhetők a `Remove-AzureRmDnsRecordSet` para
 Az alábbi példa bemutatja, hogyan egy rekordhalmaz törlése. Ebben a példában a neve, rekordhalmaz típusa, zóna neve és erőforráscsoport minden egyes megadott explicit módon.
 
 ```powershell
-Remove-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
+Remove-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 Azt is megteheti a rekordhalmaz nevét és típusát és a egy objektummal megadott zóna szerint adható meg:
 
 ```powershell
-$zone = Get-AzureRmDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
-Remove-AzureRmDnsRecordSet -Name "www" -RecordType A -Zone $zone
+$zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
+Remove-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
 Harmadik lehetőségként rekordhalmaz magát adható meg a rekordhalmaz-objektummal:
 
 ```powershell
-$rs = Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
-Remove-AzureRmDnsRecordSet -RecordSet $rs
+$rs = Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
+Remove-AzDnsRecordSet -RecordSet $rs
 ```
 
 Amikor megad egy rekordhalmaz objektum használatával a törlendő rekordhalmaz [Etag ellenőrzi](dns-zones-records.md#etags) biztosítva a párhuzamos módosítások nem törlődnek. Használhatja a választható `-Overwrite` kapcsoló le ezeket az ellenőrzéseket.
@@ -377,12 +379,12 @@ Amikor megad egy rekordhalmaz objektum használatával a törlendő rekordhalmaz
 A rekordhalmaz objektum is átadható olyan parancsoknak, mint egy paraméter helyett:
 
 ```powershell
-Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | Remove-AzureRmDnsRecordSet
+Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | Remove-AzDnsRecordSet
 ```
 
 ## <a name="confirmation-prompts"></a>Megerősítési kérések
 
-A `New-AzureRmDnsRecordSet`, `Set-AzureRmDnsRecordSet` és `Remove-AzureRmDnsRecordSet` parancsmagok mind támogatják a megerősítési kérések használatát.
+A `New-AzDnsRecordSet`, `Set-AzDnsRecordSet` és `Remove-AzDnsRecordSet` parancsmagok mind támogatják a megerősítési kérések használatát.
 
 Minden parancsmag megerősítést kérni fogja, ha a `$ConfirmPreference` PowerShell-preferenciaváltozó értéke `Medium` vagy kisebb. Az alapértelmezett érték a óta `$ConfirmPreference` van `High`, ezek a felkérések nem adják meg az alapértelmezett PowerShell beállítások használatakor.
 

@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 320afdb1e4f71150680e9bed6a4c1c9955c99936
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b846e1fe4552c6cec356a7e7828135b0e1fdf315
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230624"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994101"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Hozzáférés az Azure Media Services API Azure AD-hitelesítés
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Hozzáférés az Azure Media Services API Azure AD-hitelesítés  
  
 Az Azure Media Services API egy olyan RESTful API. Használhatja az adathordozó-erőforrások műveletek végrehajtásához, egy REST API-val vagy a rendelkezésre álló ügyfél SDK-k használatával. Az Azure Media Services a Microsoft .NET-keretrendszerhez készült Media Services ügyféloldali SDK kínál. Azt, hogy a Media Services-erőforrások és a Media Services API eléréséhez, akkor először hitelesíteni kell. 
 
@@ -138,9 +138,9 @@ Ha a Media Services .NET client SDK nem használ, manuálisan kell létrehoznia 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Kivétel: "a távoli kiszolgáló hibát adott vissza: Unauthorized (401-es)."
+Kivétel: "A távoli kiszolgáló hibát adott vissza: (401) nem engedélyezett."
 
-Megoldás: A Media Services REST kérelem sikeres, a hívó felhasználónak kell lennie egy közreműködői vagy tulajdonosi szerepkört próbál hozzáférni a Media Services-fiókban. További információkért lásd: a [hozzáférés-vezérlés](media-services-use-aad-auth-to-access-ams-api.md#access-control) szakaszban.
+Megoldás: A Media Services REST kérelem sikeres a hívó felhasználó próbál hozzáférni a Media Services-fiók közreműködői vagy tulajdonosi szerepkörhöz kell lennie. További információkért lásd: a [hozzáférés-vezérlés](media-services-use-aad-auth-to-access-ams-api.md#access-control) szakaszban.
 
 ## <a name="resources"></a>További források
 

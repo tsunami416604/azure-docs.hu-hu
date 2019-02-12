@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 6fb7e3001ec1d1e4d530f289a2a445c76aa36dea
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9bf1b39e8cd0192a3d516bf64b32da4fcc500080
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247027"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003125"
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Több sávszélességű 4K hang 5.1
 `Media Encoder Standard` határozza meg a kódolási készletek is használhatja a kódolási feladat létrehozásakor. Használhatja egy `preset name` mely formátumba, amelyet szeretne kódolása a media-fájl megadásához. Vagy létrehozhat saját JSON vagy XML-alapú készletek (UTF-8 és UTF-16 kódolást használatával. Az egyéni készletet a kódoló majd kellene átadnia. Ez által támogatott összes előre definiált nevek a lista `Media Encoder Standard` kódoló, lásd: [feladat készletek Media Encoder standard](media-services-mes-presets-overview.md).  
@@ -32,7 +32,7 @@ ms.locfileid: "50247027"
 >  Szerezheti be a prémium szintű szolgáltatás számára fenntartott egység típussal rendelkező 4K kódolja. További információkért lásd: [How to Scale kódolás](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
   
 > [!NOTE]
->  Ha módosítja a `Width` és `Height` értékek különböző rétegek, győződjön meg arról, hogy az eredeti oldalarányok konzisztens marad. Például: 1920 × 1080 képpont, 1280 x 720 között, 1080 x 576, 640 x 360. Például ne használjon nézik, vegyesen: 1280 x 720, 720 x 480-as, 640 x 360.  
+>  Ha módosítja a `Width` és `Height` értékek különböző rétegek, győződjön meg arról, hogy az eredeti oldalarányok konzisztens marad. Példa: 1920x1080, 1280x720, 1080x576, 640x360. Vegyes nézik, például ne használja: 1280x720, 720x480, 640x360.  
   
  XML  
   

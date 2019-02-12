@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 208526b745a117c9ee14bab21f8a5ce05accd1fe
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 252aacfeb85f23699c6a2e2ac1f457f9e2b59b0e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382241"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997183"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>A távoli figyelési megoldásgyorsító helyileg – a Docker üzembe helyezése
 
@@ -54,6 +54,8 @@ set PCS
 A parancs által beállított környezeti változókat jeleníti meg a **start.cmd** parancsfájlt.
 
 Győződjön meg arról, hogy a Docker fut-e a helyi gépen.
+> [!NOTE]
+> Docker futnia kell [Linux-tárolók](https://docs.docker.com/docker-for-windows/) Windows rendszeren fut, ha.
 
 A helyi Docker-tárolókban futó mikroszolgáltatásokat az Azure cloud services eléréséhez szükséges. Az internetkapcsolat működését a Docker-környezet pingelni a tárolókon belül egy internet-címét a következő paranccsal tesztelheti:
 
@@ -66,6 +68,9 @@ A megoldásgyorsító futtatja, lépjen a **szolgáltatások\\parancsfájlok\\he
 ```cmd/sh
 docker-compose up
 ```
+
+> [!NOTE] 
+> Győződjön meg arról, hogy [egy helyi meghajtó megosztásához](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) docker futtatása előtt `docker-compose up`.
 
 Ez a parancs első futtatásakor Docker tölti le a mikroszolgáltatás-lemezképeket hozhat létre a helyi tárolókat a Docker hubból. A következő futtatásakor a Docker a tárolók a rendszer azonnal futtatja.
 

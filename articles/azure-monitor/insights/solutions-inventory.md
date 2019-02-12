@@ -13,34 +13,36 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 48f1789d4909a1c3af9e9ca01d0b9d0a8e6e09f8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: aac58cc0887c566c7377edf08f5a86e2d12cdf28
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299640"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993233"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Adatok gyűjtése részletei felügyeleti megoldások az Azure-ban
-Ez a cikk tartalma [felügyeleti megoldások](solutions.md) elérhető a Microsoft mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A módszer és a Log analyticsbe adatok gyűjtésének gyakorisága információkat is biztosít.  Használhatja az információkat ebben a cikkben, azonosíthatja a különféle elérhető megoldások és más felügyeleti megoldásokkal data flow és a kapcsolat követelményeinek megismeréséhez. 
+Ez a cikk tartalma [felügyeleti megoldások](solutions.md) elérhető a Microsoft mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A metódus és az Azure Monitor szolgáltatásba adatok gyűjtésének gyakorisága információkat is biztosít.  Használhatja az információkat ebben a cikkben, azonosíthatja a különféle elérhető megoldások és más felügyeleti megoldásokkal data flow és a kapcsolat követelményeinek megismeréséhez. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="list-of-management-solutions"></a>Felügyeleti megoldások listája
 
-A következő táblázat felsorolja a [felügyeleti megoldások](solutions.md) a Microsoft által biztosított Azure-ban. Egy bejegyzés az oszlopban azt jelenti, hogy, hogy a megoldás a Log Analytics az adatokat gyűjt a módszer használatával.  Ha a megoldás nem tartalmaz oszlopokat kiválasztva, majd ír közvetlenül a Log Analytics egy másik Azure szolgáltatás. A hivatkozásra vonatkozó további információ a részletes dokumentációt.
+A következő táblázat felsorolja a [felügyeleti megoldások](solutions.md) a Microsoft által biztosított Azure-ban. Egy bejegyzés az oszlopban azt jelenti, hogy, hogy a megoldás gyűjti az adatokat az Azure Monitor szolgáltatásba a módszer használatával.  Ha a megoldás nem tartalmaz oszlopokat kiválasztva, majd ír közvetlenül az Azure Monitor egy másik Azure szolgáltatás. A hivatkozásra vonatkozó további információ a részletes dokumentációt.
 
 Magyarázat az oszlopok a következők:
 
-- **A Microsoft-figyelőügynök** -ügynök futtatható a Management pack SCOM és felügyeleti megoldásokat az Azure-ból a Windows és Linux rendszereken használható. Ebben a konfigurációban az ügynök közvetlenül kapcsolódik a Log Analytics az Operations Manager felügyeleti csoporthoz való csatlakozás nélkül. 
-- **Az Operations Manager** -azonos a Microsoft monitoring agent ügynök. Ebben a konfigurációban van [egy Operations Manager felügyeleti csoporthoz csatlakoztatott](../../azure-monitor/platform/om-agents.md) a Log Analyticshez csatlakoztatva van. 
+- **A Microsoft-figyelőügynök** -ügynök futtatható a Management pack SCOM és felügyeleti megoldásokat az Azure-ból a Windows és Linux rendszereken használható. Ebben a konfigurációban az ügynök közvetlenül kapcsolódik az Azure Monitor az Operations Manager felügyeleti csoporthoz való csatlakozás nélkül. 
+- **Az Operations Manager** -azonos a Microsoft monitoring agent ügynök. Ebben a konfigurációban van [egy Operations Manager felügyeleti csoporthoz csatlakoztatott](../../azure-monitor/platform/om-agents.md) , amely csatlakozik az Azure Monitor. 
 -  **Az Azure Storage** -megoldás gyűjti az adatokat egy Azure storage-fiókot. 
 - **Az Operations Manager szükséges?** -Az Operations Manager csatlakoztatott felügyeleti csoport felügyeleti megoldás által adatgyűjtés szükség. 
-- **Felügyeleti csoport Operations Manager-ügynök adatok küldött** – Ha az ügynök [egy SCOM felügyeleti csoporthoz csatlakoztatott](../../azure-monitor/platform/om-agents.md), majd az adatokat küld a Log Analytics a felügyeleti kiszolgálóról. Ebben az esetben az ügynököt nem szükséges közvetlen csatlakoztatása a Log Analytics. Ha a jelölőnégyzet nincs bejelölve, tartó adatküldést követően az ügynök közvetlenül a Log Analytics akkor is, ha az ügynök csatlakozik egy SCOM felügyeleti csoport. El kell képesnek lennie kommunikálni a Log Analytics segítségével a [Log Analytics-átjáró](../../azure-monitor/platform/gateway.md).
+- **A felügyeleti csoport Operations Manager-ügynök adatok küldött** – Ha az ügynök [egy SCOM felügyeleti csoporthoz csatlakoztatott](../../azure-monitor/platform/om-agents.md), majd az adatokat az Azure monitornak is küld a felügyeleti kiszolgáló. Ebben az esetben az ügynök közvetlenül kapcsolódik az Azure Monitor nem szükséges. Ha a jelölőnégyzet nincs bejelölve, tartó adatküldést követően az ügynök közvetlenül az Azure Monitor akkor is, ha az ügynök csatlakozik egy SCOM felügyeleti csoport. El kell az Azure monitornak keresztül kommunikálnak a [Log Analytics-átjáró](../../azure-monitor/platform/gateway.md).
 - **Gyűjtés gyakorisága** – adja meg, hogy a felügyeleti megoldás által összegyűjtött adatok. 
 
 
 
 | **Felügyeleti megoldások** | **Platform** | **A Microsoft-figyelőügynököt** | **Operations Manager-ügynök** | **Azure Storage** | **Az Operations Manager szükséges?** | **A felügyeleti csoport Operations Manager-ügynök adatok küldött** | **Gyűjtés gyakorisága** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Activity Log Analytics](../../azure-monitor/platform/collect-activity-logs.md) | Azure | | | | | | az értesítés |
+| [A Log analytics tevékenység](../../azure-monitor/platform/collect-activity-logs.md) | Azure | | | | | | az értesítés |
 | [AD-elemzés](../../azure-monitor/insights/ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 nap |
 | [AD-replikáció állapota](../../azure-monitor/insights/ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 nap |
 | [Az ügynök állapota](solution-agenthealth.md) | Windows és Linux | &#8226; | &#8226; | | | &#8226; | 1 perc |

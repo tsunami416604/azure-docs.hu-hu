@@ -1,5 +1,5 @@
 ---
-title: Az Azure Log Analytics az Active Directory replikációs állapot figyelése |} A Microsoft Docs
+title: Az Active Directory replikációs állapot figyelése az Azure Monitor szolgáltatással |} A Microsoft Docs
 description: Az Active Directory replikációs állapota megoldáscsomag rendszeresen figyeli az Active Directory-környezetet a replikációs hibákat.
 services: log-analytics
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d597a3491f80bc09c3e0676d17971f2509ba47a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3b7aa932d24b7879ee3f46419afa2327ee48b403
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818736"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000993"
 ---
-# <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Log Analytics használatával az Active Directory-replikációs állapotának figyelése
+# <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Az Active Directory replikációs állapot figyelése az Azure Monitor szolgáltatással
 
 ![AD-replikáció állapotát szimbólum](./media/ad-replication-status/ad-replication-status-symbol.png)
 
@@ -28,11 +28,26 @@ Active Directory a vállalati IT-környezet legfontosabb összetevője. Annak é
 
 Az AD Replication Status megoldáscsomag rendszeresen figyeli az Active Directory-környezetet a replikációs hibákat.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
+
 ## <a name="installing-and-configuring-the-solution"></a>A megoldás telepítése és konfigurálása
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
-* Ügynököket kell telepítenie a tartományvezérlőkön, amelyek ki kell értékelni a tartomány tagjai. Vagy tag kiszolgálón telepíti az ügynökök és az ügynökök AD replikációs adatokat küldeni a Log Analytics konfigurálnia kell. Windows-számítógépek csatlakoztatása a Log Analytics ismertetése: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](../../azure-monitor/platform/agent-windows.md). Ha a tartományvezérlő már a Log Analyticshez való csatlakozáshoz, olvassa el a kívánt meglévő System Center Operations Manager környezet része [Operations Manager csatlakoztatása a Log Analytics](../../azure-monitor/platform/om-agents.md).
-* Az Active Directory replikációs állapota megoldás hozzáadása a Log Analytics-munkaterülethez ismertetett folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../../azure-monitor/insights/solutions.md).  Nincs szükség további konfigurációra.
+### <a name="install-agents-on-domain-controllers"></a>Ügynökök telepítése tartományvezérlőn
+Ügynököket kell telepítenie a tartományvezérlőkön, amelyek ki kell értékelni a tartomány tagjai. Vagy tag kiszolgálón telepíti az ügynökök és az ügynökök AD replikációs adatokat küldeni az Azure Monitor konfigurálnia kell. Windows-számítógépek csatlakoztatása az Azure monitornak ismertetése: [csatlakozás Windows számítógépek számára az Azure Monitor](../../azure-monitor/platform/agent-windows.md). Ha a tartományvezérlő már része egy meglévő System Center Operations Manager-környezettel, amelyet szeretne csatlakozni az Azure Monitor, lásd: [Operations Manager csatlakoztatása az Azure monitornak](../../azure-monitor/platform/om-agents.md).
+
+### <a name="enable-non-domain-controller"></a>Nem tartományvezérlő engedélyezése
+Ha nem szeretné a tartományvezérlők bármelyikét közvetlenül csatlakozhat az Azure Monitor, segítségével többi számítógép csatlakozik az Azure Monitor a tartományban az AD Replication Status megoldás Pack adatokat gyűjthet, és hogy az adatok küldése.
+
+1. Ellenőrizze, hogy a számítógép a tartományhoz, akinél szeretné figyelni az AD Replication Status megoldás használatával.
+2. [A Windows-számítógép csatlakozhat az Azure Monitor](../../azure-monitor/platform/om-agents.md) vagy [csatlakoztathatja azt a meglévő Operations Manager-környezetbe az Azure Monitor használatával](../../azure-monitor/platform/om-agents.md), ha nem kapcsolódik.
+3. Az adott számítógépen állítsa be a következő beállításkulcsot:<br>Kulcs: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**<br>Érték: **IsTarget**<br>Érték: **igaz**
+
+   > [!NOTE]
+   > Ezek a változások életbe csak az újraindítás a Microsoft Monitoring Agent szolgáltatása (HealthService.exe).
+### <a name="install-solution"></a>Megoldás telepítése
+Kövesse az ismertetett folyamatot [figyelési megoldás telepítése](solutions.md#install-a-monitoring-solution) hozzáadása a **Active Directory replikációs állapota** megoldás a Log Analytics-munkaterületre. Nincs szükség további konfigurációra.
+
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD replikációs állapot adatok gyűjtemény részletei
 Az alábbi táblázatban látható adatok gyűjtési módszerek és egyéb hogyan adatgyűjtés az AD Replication Status részleteit.
@@ -41,28 +56,15 @@ Az alábbi táblázatban látható adatok gyűjtési módszerek és egyéb hogya
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |öt naponta |
 
-## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Szükség esetén engedélyezze egy nem tartományvezérlő AD adatokat küldeni a Log Analytics
-Ha nem szeretne minden tartományvezérlő közvetlen csatlakoztatása a Log Analytics segítségével többi számítógép a tartományban, a Log Analyticshez csatlakoztatva a az AD Replication Status megoldáscsomag adatokat gyűjthet, és hogy az adatok küldése.
 
-### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Egy nem tartományvezérlő AD adatokat küldeni a Log Analytics engedélyezése
-1. Ellenőrizze, hogy a számítógép a tartományhoz, akinél szeretné figyelni az AD Replication Status megoldás használatával.
-2. [A Windows-számítógép csatlakoztatása a Log Analytics](../../azure-monitor/platform/om-agents.md) vagy [csatlakoztathatja azt a meglévő Operations Manager-környezetet a Log Analytics használatával](../../azure-monitor/platform/om-agents.md), ha nem kapcsolódik.
-3. Az adott számítógépen állítsa be a következő beállításkulcsot:
-
-   * Kulcs: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
-   * Érték: **IsTarget**
-   * Érték: **igaz**
-
-   > [!NOTE]
-   > Ezek a változások életbe csak az újraindítás a Microsoft Monitoring Agent szolgáltatása (HealthService.exe).
-   >
-   >
 
 ## <a name="understanding-replication-errors"></a>Replikációs hibák ismertetése
-Miután AD replikációs állapota adatok Log Analytics felé küldött, a csempe a Log Analytics jelenleg hány replikációs hibákat jelző alábbi képen láthatóhoz hasonló jelenik meg.  
-![AD-replikáció állapota csempe](./media/ad-replication-status/oms-ad-replication-tile.png)
 
-**Kritikus fontosságú replikációs hibák** hibák, amelyek legalább 75 %-a [szemétgyűjtési](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) számára az Active Directory-erdőben.
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
+Az AD Replication Status csempét jeleníti meg, hogy jelenleg hány replikációs hibák. **Kritikus fontosságú replikációs hibák** hibák, amelyek legalább 75 %-a [szemétgyűjtési](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) számára az Active Directory-erdőben.
+
+![AD-replikáció állapota csempe](./media/ad-replication-status/oms-ad-replication-tile.png)
 
 Ha a csempére kattint, megtekintheti a hibákkal kapcsolatos további információk.
 ![AD-replikáció állapota irányítópult](./media/ad-replication-status/oms-ad-replication-dash.png)
@@ -104,11 +106,11 @@ Feljegyzett korábban, az irányítópulton megjelenő csempén a az AD Replicat
 >
 
 ### <a name="ad-replication-status-details"></a>AD replikációs állapot részletei
-Ha egyik lista tetszőleges elemre kattint, láthatja naplóbeli keresés használatával további részleteit. Az eredmények csak az adott elem kapcsolódó hibák vannak szűrve. Például ha kattint az első tartományvezérlő alatt felsorolt **célkiszolgáló állapota (ADDC02)**, láthatja a szűrt találatokat show hibák az adott tartományvezérlő-listán a célkiszolgálón:
+Amikor egyik lista tetszőleges elemre kattint, láthatja, a napló lekérdezésekkel kapcsolatos további részletek. Az eredmények csak az adott elem kapcsolódó hibák vannak szűrve. Például, ha kattint az első tartományvezérlő alatt felsorolt **célkiszolgáló állapota (ADDC02)**, láthatja a szűrt lekérdezési eredmények megjelenítése hibák az adott tartományvezérlő-listán a célkiszolgálón:
 
-![Replikációs állapothibák AD keresési eredmények](./media/ad-replication-status/oms-ad-replication-search-details.png)
+![AD replikációs állapothibákat lekérdezés eredményei](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-Itt további szűréséhez, módosítsa a keresési lekérdezést, és így tovább. A naplóbeli keresés használatával kapcsolatos további információkért lásd: [Naplókereséseket](../../azure-monitor/log-query/log-query-overview.md).
+Itt további szűréséhez, módosítsa a napló lekérdezést, és így tovább. Az Azure monitorban log lekérdezésekkel kapcsolatos további információkért lásd: [naplóadatok elemzése az Azure monitorban](../../azure-monitor/log-query/log-query-overview.md).
 
 A **HelpLink** mezőben látható URL-címét a TechNet-oldal, további részletekkel a meghatározott hiba. Másolja, és ez a hivatkozás illessze be a böngészőablakot, hibaelhárítási és a hiba kijavítása információinak megtekintéséhez.
 
@@ -124,10 +126,11 @@ V: Az adatokat öt naponta frissül.
 V: Jelenleg nem.
 
 **K: Kell adja hozzá az összes saját tartományvezérlők, a Log Analytics-munkaterület ahhoz, hogy a replikációs állapot megtekintéséhez?**
-V: Nem, csak egyetlen tartományvezérlő hozzá kell adni. Ha rendelkezik több tartományvezérlő a Log Analytics-munkaterülethez, azokat az adatokat küld a Log Analytics.
+V: Nem, csak egyetlen tartományvezérlő hozzá kell adni. Ha rendelkezik több tartományvezérlő a Log Analytics-munkaterülethez, ezek mindegyike adatait az Azure monitornak küld.
 
 **K: Nem szeretnék a tartományvezérlők hozzáadni a Log Analytics-munkaterületet. Továbbra is használható az AD Replication Status megoldás?**
-V: Igen. Beállíthat egy beállításkulcs megadásával engedélyezze azt értékét. Tekintse meg az egy nem tartományvezérlő AD adatokat küldeni a Log Analytics engedélyezése.
+
+V: Igen. Beállíthat egy beállításkulcs megadásával engedélyezze azt értékét. Lásd: [engedélyezése nem tartományvezérlő](#enable-non-domain-controller).
 
 **K: Mi a neve, a folyamat, amely az adatgyűjtés?**
 V: AdvisorAssessment.exe
@@ -147,9 +150,9 @@ V: Az Active Directory normál felhasználói engedélyek elegendőek.
 ## <a name="troubleshoot-data-collection-problems"></a>Adatok gyűjtése kapcsolatos problémák elhárítása
 Annak érdekében, hogy az adatok gyűjtéséhez az AD Replication Status megoldáscsomag szükséges legalább egy tartományvezérlő, a Log Analytics-munkaterületre kell csatlakoztatni. Mindaddig, amíg a tartományvezérlő csatlakozott, megjelenik egy üzenet jelzi, hogy **adatok összegyűjtése még folyamatban van**.
 
-Csatlakozás a tartományvezérlők egyik segítségre van szüksége, ha megtekintheti a dokumentációban, [a Log Analyticshez való csatlakozáshoz Windows számítógépek](../../azure-monitor/platform/om-agents.md). Azt is megteheti, ha a tartományvezérlő már csatlakoztatva van egy meglévő System Center Operations Manager-környezetbe, megtekintheti dokumentációját a [System Center Operations Manager csatlakoztatása a Log Analytics](../../azure-monitor/platform/om-agents.md).
+Csatlakozás a tartományvezérlők egyik segítségre van szüksége, ha megtekintheti a dokumentációban, [csatlakozás Windows számítógépek számára az Azure Monitor](../../azure-monitor/platform/om-agents.md). Azt is megteheti, ha a tartományvezérlő már csatlakoztatva van egy meglévő System Center Operations Manager-környezetbe, megtekintheti dokumentációját a [System Center Operations Manager csatlakoztatása az Azure monitornak](../../azure-monitor/platform/om-agents.md).
 
-Ha nem szeretne csatlakozni a tartományvezérlők bármelyikét közvetlenül a Log Analytics vagy a System Center Operations Manager, lásd: egy nem tartományvezérlő AD adatokat küldeni a Log Analytics engedélyezéséhez.
+Ha nem szeretne csatlakozni a tartományvezérlők bármelyikét közvetlenül az Azure Monitor vagy a System Center Operations Manager, [engedélyezése nem tartományvezérlő](#enable-non-domain-controller).
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](../../azure-monitor/log-query/log-query-overview.md) Active Directory-replikáció állapota részletes adatainak megtekintéséhez.
+* Használat [lekérdezések jelentkezzen be az Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) Active Directory-replikáció állapota részletes adatainak megtekintéséhez.

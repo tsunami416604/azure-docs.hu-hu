@@ -1,6 +1,6 @@
 ---
-title: Az ügynök adatok forrásainak konfigurálása a Log Analytics |} A Microsoft Docs
-description: Adatforrások határozzák meg, hogy a Log Analytics gyűjti az ügynökök és más források csatlakozik a naplóadatokat.  Ez a cikk azt ismerteti, hogyan Log Analytics adatforrásokkal ismerteti konfigurálásuk módját részleteit és a különböző adatforrások elérhető összegzést tartalmaz a fogalmat.
+title: Az ügynök adatforrások konfigurálása az Azure Monitor |} A Microsoft Docs
+description: Adatforrások a naplózási adatokat, hogy az Azure Monitor gyűjti az ügynökök és az egyéb kapcsolódó források határozzák meg.  Ez a cikk azt ismerteti, hogyan Azure Monitor adatforrásokkal ismerteti konfigurálásuk módját részleteit és a különböző adatforrások elérhető összegzést tartalmaz a fogalmat.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,22 +11,22 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/07/2018
+ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: d9bedeeb2e354dab8bc6a7be56826f28914326be
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ad4270700712311d8bea2e2014701a99e44c735f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101530"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992445"
 ---
-# <a name="agent-data-sources-in-log-analytics"></a>Az ügynök az adatforrásokat a Log Analyticsben
-Az adatok, amelyek a Log Analytics gyűjti össze az ügynökök határozza meg azokat az adatforrásokat, konfigurálhat.  Az ügynököktől származó adatokat tárolja [adatok](data-collection.md) rekordok vannak beállítva.  Minden adatforrás egy adott típusú rekordot hoz létre a saját tulajdonságkészlettel minden típus.
+# <a name="agent-data-sources-in-azure-monitor"></a>Az ügynök adatforrások az Azure monitorban
+Az Azure Monitor az ügynökök által gyűjtött adatok határozza meg azokat az adatforrásokat, konfigurálhat.  Az ügynököktől származó adatokat tárolja [adatok](data-collection.md) rekordok vannak beállítva.  Minden adatforrás egy adott típusú rekordot hoz létre a saját tulajdonságkészlettel minden típus.
 
 ![Naplózási adatok gyűjtése](media/agent-data-sources/overview.png)
 
 ## <a name="summary-of-data-sources"></a>Adatforrások áttekintése
-A következő táblázat felsorolja az ügynök adatforrások, amelyek jelenleg a Log Analyticsben.  Mindegyik rendelkezik egy külön cikk tárgyalja részletesen biztosítása, hogy az adatforrás mutató hivatkozást.   A módszer és a gyűjtés gyakorisága információkat is biztosít. 
+Az alábbi táblázat az ügynök adatforrásokhoz, amelyek jelenleg az Azure Monitor érhető el.  Mindegyik rendelkezik egy külön cikk tárgyalja részletesen biztosítása, hogy az adatforrás mutató hivatkozást.   A módszer és a gyűjtés gyakorisága információkat is biztosít. 
 
 
 | Adatforrás | Platform | A Microsoft-figyelőügynököt | Operations Manager-ügynök | Azure Storage tárterület | Az Operations Manager szükséges? | A felügyeleti csoport Operations Manager-ügynök adatok küldött | A gyűjtés gyakorisága |
@@ -43,25 +43,25 @@ A következő táblázat felsorolja az ügynök adatforrások, amelyek jelenleg 
 ## <a name="configuring-data-sources"></a>Adatforrások konfigurálása
 Az adatforrásokat kell konfigurálnia a **adatok** menüjében **speciális beállítások** a munkaterület számára.  A munkaterület minden csatlakoztatott források érkeznek semmilyen konfigurálást.  Ez a konfiguráció jelenleg ügynököket nem lehet kizárni.
 
-![Windows-események konfigurálása](./media/agent-data-sources/configure-events.png)
+![Windows-események konfigurálása](media/agent-data-sources/configure-events.png)
 
-1. Az Azure Portalon válassza ki a **Log Analytics** > a munkaterület > **speciális beállítások**.
+1. Az Azure Portalon válassza ki a **Log Analytics-munkaterületek** > a munkaterület > **speciális beállítások**.
 2. Válassza ki **adatok**.
 3. Kattintson a konfigurálni kívánt adatforrás.
 4. Kövesse a hivatkozást a konfigurációjuk részleteiről a fenti táblázatban szereplő minden adatforrás a dokumentációban.
 
 
 ## <a name="data-collection"></a>Adatgyűjtés
-Az adatforrások konfigurációját az ügynököknek a Log Analytics közvetlenül csatlakoztatott néhány percen belül lépnek.  A megadott adat az ügynöktől gyűjtött és kézbesítése közvetlenül a Log Analytics minden adatforráshoz adott időközönként.  Az egyes adatforrások ezen bírálattal dokumentációjában talál.
+Az adatforrások konfigurációját az ügynökök, amelyek közvetlenül csatlakozik az Azure Monitor néhány percen belül lépnek.  A megadott adat az ügynöktől gyűjtött és kézbesítése közvetlenül az Azure Monitor minden adatforráshoz adott időközönként.  Az egyes adatforrások ezen bírálattal dokumentációjában talál.
 
-A System Center Operations Manager-ügynökök a csatlakoztatott felügyeleti csoport az adatforrások konfigurációját fordítja, a felügyeleti csomagok és a felügyeleti csoport 5 percenként által szállított alapértelmezett.  Az ügynök letölti a felügyeleti csomagban, mint minden más, és a megadott adatokat gyűjti össze. Az adatforrástól függően az adatok lesznek, vagy elküldi a felügyeleti kiszolgálóra, amely továbbítja az adatokat a Log Analytics vagy az ügynök az adatokat küld a Log Analytics a felügyeleti kiszolgáló áthaladás nélkül. Lásd: [adatok gyűjtemény adatait figyelési megoldások az Azure-ban](../../azure-monitor/insights/solutions-inventory.md) részleteiről.  Itt olvashat részleteket összekapcsolása az Operations Manager és a Log Analytics és a gyakoriság módosítása, hogy a konfigurációs érkeznek [integráció konfigurálása a System Center Operations Managerrel](../../log-analytics/log-analytics-om-agents.md).
+A System Center Operations Manager-ügynökök a csatlakoztatott felügyeleti csoport az adatforrások konfigurációját fordítja, a felügyeleti csomagok és a felügyeleti csoport 5 percenként által szállított alapértelmezett.  Az ügynök letölti a felügyeleti csomagban, mint minden más, és a megadott adatokat gyűjti össze. Az adatforrástól függően az adatok lesznek, vagy elküldi a felügyeleti kiszolgálóra, amely az Azure Monitor továbbítja az adatokat, vagy az ügynök az adatokat küld az Azure Monitor a felügyeleti kiszolgáló áthaladás nélkül. Lásd: [adatok gyűjtemény adatait figyelési megoldások az Azure-ban](../insights/solutions-inventory.md) részleteiről.  Itt olvashat részleteket összekapcsolása az Operations Manager és az Azure Monitor és a gyakoriság módosítása, hogy a konfigurációs érkeznek [integráció konfigurálása a System Center Operations Managerrel](om-agents.md).
 
-Ha az ügynök nem tud kapcsolódni a Log Analytics vagy az Operations Manager, továbbra is azt fog nyújtani, amikor kapcsolatot létesít, adatok gyűjtésére.  Ha az adatok mennyisége eléri a gyorsítótár maximális mérete az ügyfél, vagy ha az ügynök nem tud 24 órán belül kapcsolatot létesíteni a adat elveszhet.
+Ha az ügynök nem tud kapcsolódni az Azure Monitor vagy az Operations Manager, továbbra is azt fog nyújtani, amikor kapcsolatot létesít, adatok gyűjtésére.  Ha az adatok mennyisége eléri a gyorsítótár maximális mérete az ügyfél, vagy ha az ügynök nem tud 24 órán belül kapcsolatot létesíteni a adat elveszhet.
 
 ## <a name="log-records"></a>Rekordok naplózása
-Rekordokat a munkaterületet a Log Analytics által gyűjtött összes adat van tárolva.  Különböző adatforrások által összegyűjtött rekordokkal saját tulajdonságkészlettel fog rendelkezni, és azonosítja a **típus** tulajdonság.  A dokumentáció minden adatforráshoz, és a megoldás részletes típusához jelenik meg.
+Az Azure Monitor által gyűjtött összes naplóadatok rögzíti a munkaterület van tárolva.  Különböző adatforrások által összegyűjtött rekordokkal saját tulajdonságkészlettel fog rendelkezni, és azonosítja a **típus** tulajdonság.  A dokumentáció minden adatforráshoz, és a megoldás részletes típusához jelenik meg.
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [figyelési megoldások](../../azure-monitor/insights/solutions.md) , amelyek további funkciókkal bővítik a Azure Monitor és is gyűjthet adatokat a munkaterületre.
-* Ismerje meg [lekérdezések naplózását](../../log-analytics/log-analytics-queries.md) elemezheti az összegyűjtött adatok forrásból származó és figyelési megoldások.  
-* Konfigurálása [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) segítségével proaktívan kaphat értesítést gyűjtött adatforrások és megoldások monitorozása kritikus fontosságú adatok.
+* Ismerje meg [figyelési megoldások](../insights/solutions.md) , amelyek további funkciókkal bővítik a Azure Monitor és is gyűjthet adatokat a munkaterületre.
+* Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) elemezheti az összegyűjtött adatok forrásból származó és figyelési megoldások.  
+* Konfigurálása [riasztások](alerts-overview.md) segítségével proaktívan kaphat értesítést gyűjtött adatforrások és megoldások monitorozása kritikus fontosságú adatok.

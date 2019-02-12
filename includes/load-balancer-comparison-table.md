@@ -5,15 +5,15 @@ services: load balancer
 author: KumudD
 ms.service: load-balancer
 ms.topic: include
-ms.date: 01/09/2018
+ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: c4989016d31880e1c1990c0eb46091c8f50018bc
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 1d3ce900f7354b31e999c12b8e1eb0e23d391fcb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211852"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56078556"
 ---
 | | Standard termékváltozat | Alapszintű termékváltozat |
 | --- | --- | --- |
@@ -26,7 +26,7 @@ ms.locfileid: "54211852"
 | Magas rendelkezésre ÁLLÁS portok | Belső terheléselosztó | Nem érhető el. |
 | Alapértelmezés szerint biztonságossá tétele | Nyilvános IP-cím, nyilvános Load Balancer végpontok, a belső Load Balancer végpontok zárva a bejövő forgalom, kivéve, ha egy hálózati biztonsági csoport is szerepel az engedélyezési listán. | Nyissa meg alapértelmezettként, a hálózati biztonsági csoport nem kötelező. |
 | [Kimenő kapcsolatok](../articles/load-balancer/load-balancer-outbound-connections.md) | Explicit módon meghatározhatja a kimenő NAT-készlet alapú [kimenő szabályok](../articles/load-balancer/load-balancer-outbound-rules-overview.md). A betöltés terheléselosztási szabályt az elutasítás kiszolgálónként több előtérrendszer is használhatja. Egy kimenő forgatókönyv _kell_ explicit módon hozhatók létre a virtuális gép, rendelkezésre állási csoport, virtuálisgép-méretezési kimenő kapcsolat használatára.  Virtuális hálózati Szolgáltatásvégpontok kimenő kapcsolat definiálása nélkül érhető el, és nem számítanak bele a feldolgozott adatok felé.  Bármely nyilvános IP-címeket, beleértve a nem érhető el, mint a virtuális hálózati Szolgáltatásvégpontokkal az Azure PaaS-szolgáltatások keresztül kimenő kapcsolat és a feldolgozott adatok felé számát el kell érni. Ha csak egy belső terheléselosztó szolgálja ki a virtuális gépek, a rendelkezésre állási csoportot, vagy a virtuálisgép-méretezési csoportot, kimenő kapcsolatok alapértelmezett SNAT használatával nem érhetők el; használjon [kimenő szabályok](../articles/load-balancer/load-balancer-outbound-rules-overview.md) helyette. Kimenő SNAT programozás az átviteli protokoll adott protokoll, a bejövő terheléselosztási szabály alapján. | Egyetlen előtér véletlenszerűen kiválasztott, amikor több előtérrendszer jelen.  Belső Load Balancer szolgálja ki egy virtuális gépet, ha rendelkezésre állási csoportban, vagy virtuális gép méretezési, SNAT használt alapértelmezett. |
-| [Kimenő szabályok](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklaratív kimenő NAT-konfigurációt található, nyilvános IP-címeket vagy nyilvános IP-előtagjai vagy mindkettő használatával konfigurálható kimenő üresjárati időkorlát, egyéni SNAT portkiosztással | Nem érhető el. |
+| [Kimenő szabályok](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklaratív kimenő NAT-konfigurációt található, nyilvános IP-címeket vagy nyilvános IP-előtagjai vagy mindkettő használatával konfigurálható kimenő üresjárat időkorlátja (4 – 120 perc), egyéni SNAT portkiosztással | Nem érhető el. |
 |  [Az üresjárati TCP-visszaállítás](../articles/load-balancer/load-balancer-tcp-reset.md) | Engedélyezze a TCP üresjárati időtúllépés miatt (TCP ÜZE) alaphelyzetbe állítása a szabályok | Nem érhető el |
 | [Több előtérrendszer](../articles/load-balancer/load-balancer-multivip-overview.md) | Bejövő és [kimenő](../articles/load-balancer/load-balancer-outbound-connections.md) | Csak bejövő |
 | Kezelési műveletek | A legtöbb műveletek < 30 másodperc | 60 – 90 másodperc jellemző. |

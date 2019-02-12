@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: fecd5cf3b5a6aac1133f94b4dc220eec826392f6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f7133ed74c9862a7e3d496a9093faaf3959e0d78
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54057030"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993418"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Interaktív jelentések létrehozása az Azure Monitor-munkafüzetekkel
 
@@ -77,7 +77,7 @@ Lekérdezési szakaszokat rendkívül rugalmas, és hasonló kérdések megvála
 
 * Hány kivételek fejeződött a hely throw idő alatt, csökken a használat során?
 * Mi volt a lapbetöltési idők néhány lap megtekintésének felhasználók elosztását?
-* Hány felhasználó helyen tekinthetők meg néhány azon lapok készlete, de nem más lapok készlete? Ez akkor lehet hasznos megértéséhez, ha a felhasználók, akik használni a webhely funkciók részhalmazokat fürttel rendelkezik (használja a `join` az operátor a `kind=leftanti` módosító Log Analytics lekérdezési nyelven).
+* Hány felhasználó helyen tekinthetők meg néhány azon lapok készlete, de nem más lapok készlete? Ez akkor lehet hasznos megértéséhez, ha a felhasználók, akik használni a webhely funkciók részhalmazokat fürttel rendelkezik (használja a `join` az operátor a `kind=leftanti` módosító adatkezelő lekérdezési nyelven).
 
 Akkor is nem csak legfeljebb lekérdezése az alkalmazás a környezetből, elindul a munkafüzet. Több Application Insights figyelt alkalmazások, valamint a Log Analytics-munkaterületek között lekérdezés, amennyiben ezek az erőforrások hozzáférési jogosultsággal rendelkezik.
 

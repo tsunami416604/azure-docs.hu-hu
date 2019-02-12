@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell és CLI: Engedélyezze az SQL TDE - kulcs – Azure SQL Database |} A Microsoft Docs'
+title: 'PowerShell és CLI: Az SQL TDE - az Azure Key Vault engedélyezése – saját kulcs – Azure SQL Database használata |} A Microsoft Docs'
 description: Egy Azure SQL Database és az adatraktár használatához a transzparens adattitkosítás (TDE) az inaktív titkosítási konfigurálása a PowerShell vagy parancssori felület használatával.
 services: sql-database
 ms.service: sql-database
@@ -12,16 +12,16 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: be73f5cb7db232538f301b2eb56bf61267fce5d5
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: b6abfa24d790554de239171ffef1899cdc135d26
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566720"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996253"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell és CLI: A saját kulcs Azure Key vault használatával transzparens adattitkosítás engedélyezése
+# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és CLI: Transzparens adattitkosítás engedélyezése az Azure Key Vault az ügyfél által felügyelt kulccsal
 
-Ez a cikk végigvezeti a transzparens adattitkosítás (TDE) egy SQL-adatbázis vagy adatraktár Azure Key Vaultban lévő kulcsot használ. A TDE Bring Your Own Key (BYOK) támogatásával kapcsolatos további információkért látogasson el [TDE Bring Your Own Key az Azure SQL](transparent-data-encryption-byok-azure-sql.md). 
+Ez a cikk végigvezeti a transzparens adattitkosítás (TDE) egy SQL-adatbázis vagy adatraktár Azure Key Vaultban lévő kulcsot használ. További tudnivalók az Azure Key Vault-integráció - Bring Your Own Key (BYOK) támogatása, a TDE [ügyfél által felügyelt kulcsok Azure Key vaultban TDE](transparent-data-encryption-byok-azure-sql.md). 
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell előfeltételei
 

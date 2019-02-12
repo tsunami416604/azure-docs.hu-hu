@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: be52f5fbe6c7d282a50e53c4326478b937ea8081
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0275eb83feec46f21b55ca36e5d77c5b1fcd6f28
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488379"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997285"
 ---
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Oktatóanyag: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
 
@@ -329,9 +329,9 @@ Több modell összehasonlítására egyetlen kísérletben az [Azure AI katalóg
 
 [publish]: publish-a-machine-learning-web-service.md
 
-Szeretne többet megtudni? Ha szeretné részletesebben megismerni a modellek létrehozásához, tanításához, pontozásához és üzembe helyezéséhez használható folyamatot, olvassa el [a prediktív megoldások Azure Machine Learning segítségével való fejlesztését][walkthrough] ismertető cikket.
+Szeretne többet megtudni? A folyamat létrehozása, betanítási, pontozási és üzembe helyezéséhez, kiterjedt, és részletes leírását, lásd: [1. oktatóanyag: Hitelkockázat előrejelzése ] [ walkthrough].
 
-[walkthrough]: walkthrough-develop-predictive-solution.md
+[walkthrough]: tutorial-part1-credit-risk.md
 
 <!-- Images -->
 [sign-in-to-studio]: ./media/create-experiment/sign-in-to-studio.png

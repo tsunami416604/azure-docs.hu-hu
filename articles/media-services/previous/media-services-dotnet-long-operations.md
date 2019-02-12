@@ -1,10 +1,10 @@
 ---
-title: A hosszú ideig futó műveletek lekérdezési |} Microsoft Docs
-description: Ez a témakör bemutatja, hogyan, és kérdezze le a hosszú futású műveleteket.
+title: Ciklikus lekérdezés hosszú ideig futó műveletek |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan hosszú ideig futó műveletek lekérdezéséhez.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 9a68c4b1-6159-42fe-9439-a3661a90ae03
 ms.service: media-services
@@ -12,29 +12,29 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: fa456a2d0bb427af80d67a0b971fe8bd41bb7868
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f5098b2691f7c73be5df6b44479082bf25effde7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788423"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998042"
 ---
-# <a name="delivering-live-streaming-with-azure-media-services"></a>Az Azure Media Services élő adatfolyam továbbítása
+# <a name="delivering-live-streaming-with-azure-media-services"></a>Az Azure Media Services élő Stream továbbítása
 
 ## <a name="overview"></a>Áttekintés
 
-A Microsoft Azure Media Services kínál API-kérelmeket küldjön a Media Services operations indításához (például: hozzon létre, elindítása, leállítása vagy csatorna törlése). Ezek a műveletek olyan hosszan futó.
+A Microsoft Azure Media Services kínál kérést küld a műveletek indítása a Media Services API-k (például: létrehozása, indítása, leállítása, vagy törli a csatornát). Ezek a műveletek olyan hosszan futó.
 
-A Media Services .NET SDK API-t elküldeni a kérelmet, és várjon, amíg a művelet elvégzéséhez biztosít (belsőleg, az API-k vannak ciklikus lekérdezés a művelet folyamatban van bizonyos időközönként). Például, ha meghívja a csatorna. Start(), a metódus visszaadja a csatorna indítása után. Is használhatja az aszinkron: await csatorna. StartAsync() (feladatalapú aszinkron mintát kapcsolatos információkért lásd: [KOPPINTSON](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). API-k művelet kérelmet küldött, és majd kérdezze le az állapot addig, amíg a művelet be nem fejeződött "lekérdezési módszerek" nevezzük. Ezek a módszerek (különösen a aszinkron verzió) gazdagügyfél-alkalmazásokkal és/vagy állapotalapú szolgáltatások használata ajánlott.
+A Media Services .NET SDK biztosítja a kérelem elküldéséhez, és várjon, amíg a művelet végrehajtásához API-k (belsőleg, az API-k vannak lekérdezési művelet folyamatban van a bizonyos időközönként). Ha például meghívásakor csatorna. Start(), a metódus a csatorna indítása után adja vissza. Az aszinkron verziója is használhatja: await csatorna. StartAsync() (feladatalapú aszinkron minta kapcsolatos információkért lásd: [KOPPINTSON](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). Egy művelet kérelem küldése, és majd lekérdezi a állapotát, amíg a művelet be nem fejeződik API-k "lekérdezési módszerek" nevezzük. Ezek a metódusok (különösen az aszinkron verzió) használata akkor javasolt gazdagügyfél-alkalmazásokkal és/vagy állapotalapú szolgáltatások.
 
-Vannak esetek, amikor egy alkalmazás nem várja meg a hosszú ideig futó HTTP-kérelmek, így szeretné manuálisan kérdezze le az a művelet folyamatban van. Egy jellemző példa erre egy böngészőt, egy állapot nélküli webszolgáltatás való interakció: amikor a böngésző csatornát létrehozni, a webszolgáltatás indít el egy hosszú ideig futó művelet, és a böngésző a művelet-Azonosítót adja vissza. A böngésző sikerült majd kérje meg a webszolgáltatás számára, hogy az az azonosítója alapján műveleti állapotának beolvasása A Media Services .NET SDK API-k, melyek hasznosak lehetnek a forgatókönyv biztosítja. Ezen API-k "nem lekérdezési módszerek" nevezzük.
-A "nem lekérdezési módszerek" rendelkezik a következő elnevezési: küldése*OperationName*műveletet (például SendCreateOperation). Küldési*OperationName*művelet módszerek a **IOperation** objektum; a visszaadott objektumot információkat tartalmaznak, amelyek segítségével nyomon követheti a művelet. A Küldés*OperationName*OperationAsync módszerek **feladat<IOperation>**.
+Vannak helyzetek, ahol egy alkalmazás egy hosszú ideig futó http-kérelem nem várja meg, és kérdezzen le a műveleti folyamatot manuálisan szeretné. Például lehet egy böngészőben, egy állapot nélküli webes szolgáltatással való interakcióhoz: amikor a böngésző csatornát létrehozni, a webszolgáltatás kezdeményezi egy hosszú ideig futó művelet, és adja vissza a művelet azonosítója a böngészőben. A böngésző majd kérheti a webszolgáltatást a azonosító alapján műveleti állapotának beolvasása A Media Services .NET SDK API-k, melyek ebben a forgatókönyvben biztosít. Ezen API-k "nem lekérdezési módszerek" nevezzük.
+A "nem lekérdezési módszerek" rendelkezik a következő elnevezési mintának: Küldés*OperationName*műveletet (például SendCreateOperation). Küldés*OperationName*műveleti metódusoknál adja vissza a **IOperation** objektum; a visszaadott objektum tartalmaz információkat, amelyek segítségével nyomon követheti a műveletet. A Küldés*OperationName*OperationAsync módszerek is szolgálnak **feladat<IOperation>**.
 
-Jelenleg a következő osztályok támogatja-e a nem lekérdezési módszerek: **csatorna**, **StreamingEndpoint**, és **Program**.
+A következő osztályok jelenleg nem lekérdezési módszereket támogatja:  **Csatorna**, **Streamvégpontok**, és **Program**.
 
-Kérdezze le a műveletállapot, használja a **GetOperation** metódust a **OperationBaseCollection** osztály. A művelet állapotának ellenőrzéséhez a következő időszakok használja: a **csatorna** és **StreamingEndpoint** műveletei, pedig 30 másodperc; **Program** műveletei, pedig 10 másodperc.
+A műveleti állapotának lekérdezéséhez, használja a **GetOperation** metódust a **OperationBaseCollection** osztály. A következő időszakok használata a művelet állapotának: a **csatorna** és **Streamvégpontok** műveletei, pedig 30 másodperc; **Program** műveletei, pedig 10 másodperc.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
@@ -42,11 +42,11 @@ Kérdezze le a műveletállapot, használja a **GetOperation** metódust a **Ope
 
 ## <a name="example"></a>Példa
 
-Az alábbi példa meghatározza nevű osztály **ChannelOperations**. Ez az osztály definícióját a webszolgáltatás-osztály definíciójának kiindulási pontot lehet. Az egyszerűség kedvéért az alábbi példák a módszerek nem aszinkron verzióját használja.
+Az alábbi példa meghatározza nevű osztály **ChannelOperations**. Ez az osztály definícióját a web service osztálydefiníciót a kiindulási pont lehet. Az egyszerűség kedvéért az alábbi példák a módszerek nem aszinkron verzióját használja.
 
-A példa azt is bemutatja, hogyan használhatja az ügyfél a Ez az osztály.
+A példa azt is bemutatja, hogyan használja a az ügyfél lehet, hogy ez az osztály.
 
-### <a name="channeloperations-class-definition"></a>ChannelOperations osztálydefiníció
+### <a name="channeloperations-class-definition"></a>Az osztálykiterjesztések definíciója ChannelOperations
 
 ```csharp
 using Microsoft.WindowsAzure.MediaServices.Client;

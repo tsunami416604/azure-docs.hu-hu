@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: ec61b179627702af7f2c4bc0fc0989230f5eca84
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 02b4b2efb447e3ba8c45caa378268ec402b5c3e7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885796"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001981"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Az Azure monitorozási adatok felhasználásához
 
 Az Azure platformon keresztül azt is összevonhatja az Azure Monitor, egyetlen helyen lévő monitorozási adatok folyamat, de gyakorlatilag tudomásul veszi, hogy még ma, nem az összes monitorozási adat nem érhető el, hogy a folyamat még. Ebben a cikkben azt tartalmazza, figyelési adatok programozott módon érheti el az Azure-szolgáltatások különböző módjait.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="options-for-data-consumption"></a>Adathasználat lehetőségei
 
@@ -40,7 +42,7 @@ Az Azure platformon keresztül azt is összevonhatja az Azure Monitor, egyetlen 
 | Az Azure Monitor metrikákhoz kapcsolódó riasztások | Értesítések | [Itt a lista](metrics-supported.md) | <ul><li>**Webhook:** [Az Azure metrikákhoz kapcsolódó riasztások](alerts-webhooks.md)</li></ul> |
 | Azure Monitor tevékenységnapló-riasztások | Értesítések | Azure-szolgáltatásokhoz | <ul><li>**Webhook:** Azure tevékenységnapló-riasztások</li></ul> |
 | Automatikus méretezési értesítésekhez | Értesítések | [Itt a lista](autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [Automatikus skálázási értesítések adattartalom webhookséma](autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Keresési lekérdezés naplóriasztások | Értesítések | Log Analytics | <ul><li>**Webhook:** [Webhook művelettel a riasztási szabály](alerts-log-webhook.md)</li></ul> |
+| Keresési lekérdezés naplóriasztások | Értesítések | Az Azure Monitor naplóira | <ul><li>**Webhook:** [Webhook művelettel a riasztási szabály](alerts-log-webhook.md)</li></ul> |
 | Application Insights metrikákhoz kapcsolódó riasztások | Értesítések | Application Insights | <ul><li>**Webhook:** [Application Insights-riasztások](../../azure-monitor/app/alerts.md)</li></ul> |
 | Application Insights-webtesztek | Értesítések | Application Insights | <ul><li>**Webhook:** [Application Insights-riasztások](../../azure-monitor/app/alerts.md)</li></ul> |
 

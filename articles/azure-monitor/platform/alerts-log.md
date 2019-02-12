@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 7ff4a4d64b69809c53ad70edf1455880da24d52a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 29050be7587f88ce7a1f5370f50dcfa1ecd68306
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892507"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990445"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások
 
@@ -106,8 +106,7 @@ Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felület
 
     Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
 
-Felhasználók is fejeződik be, a saját elemzési lekérdezés [naplók elemzési lap az Azure Portalon](../../azure-monitor/log-query/portals.md#log-analytics-page
-) keresztül riasztás létrehozása, majd továbbítsa "+ Új riasztási szabály" gombra –, majd a következő utasításokat a 6. lépés és újabb verziók esetében a fenti oktatóanyagban.
+Felhasználók is fejeződik be, a saját elemzési lekérdezés [log analytics](../log-query/portals.md) és majd leküldeni a keresztül beállítva riasztás gomb - riasztás létrehozása, majd a következő utasításokat a 6. lépés és újabb verziók esetében a fenti oktatóanyagban.
 
  ![Log Analytics - riasztás beállítása](media/alerts-log/AlertsAnalyticsCreate.png)
 

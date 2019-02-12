@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 5f111fea8fa1ef9f6e07c01f507e487c992729d5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: fb6f492f465f6570afea911dfca8a92d4ed3dc7c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233531"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001409"
 ---
-# <a name="media-services-development-with-net"></a>.NET-keretrendszerrel történő Media Services-fejlesztés
+# <a name="media-services-development-with-net-legacy"></a>Media Services-fejlesztés a .NET-tel (örökölt)
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
 
 Ez a cikk leírja, hogyan elindításához a .NET használatával a Media Services-alkalmazások fejlesztéséhez használható.
@@ -30,7 +30,7 @@ A **Azure Media Services .NET SDK** kódtára lehetővé teszi, hogy a Media Ser
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Egy Media Services-fiók egy új vagy meglévő Azure-előfizetésben. Tekintse meg a cikket [Media Services-fiók létrehozása](media-services-portal-create-account.md).
-* Operációs rendszerek: Windows 10, Windows 7, Windows 2008 R2 vagy Windows 8-ban.
+* Operációs rendszerek: A Windows 10, Windows 7, Windows 2008 R2 vagy Windows 8-ban.
 * .NET-keretrendszer 4.5-ös vagy újabb.
 * Visual Studio.
 

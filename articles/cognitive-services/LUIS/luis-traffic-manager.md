@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: ba3ca363afe96c137a4a9eecdeda33e0f9129111
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 89778375c6362007a81eab72663f56492f4fe206
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868429"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997906"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A Microsoft Azure Traffic Manager használatával kezelheti a végpont kvóta kulcsok
 Language Understanding (LUIS) lehetővé teszi, hogy a végpont kérelmi kvótát egy kulcs kvóta túl kínál. További kulcsokat hoz létre a LUIS, és hozzáadni azokat a LUIS-alkalmazás az ehhez a **közzététel** lapját a **erőforrások és a kulcsok** szakaszban. 
@@ -362,6 +362,9 @@ A LUIS-végponttal a sikeres válasz a következő:
 ## <a name="use-the-traffic-manager-parent-profile"></a>A Traffic Manager szülő-profilja
 Végpontok közötti forgalom kezelésére, kell beszúrni egy hívás az a Traffic Manager DNS-LUIS végpontjának megtalálása érdekében. Ez a hívás jön létre minden egyes LUIS végpont kérés esetében, és a felhasználó az intelligens HANGFELISMERÉSI ügyfélalkalmazás a földrajzi helyet szimulálása kell. A DNS-válasz kódja a LUIS-ügyfélalkalmazást és a kérelem között hozzá LUIS végpont előrejelzésére. 
 
+## <a name="resolving-a-degraded-state"></a>A csökkentett feloldása
+
+Engedélyezése [diagnosztikai naplók](../../traffic-manager/traffic-manager-diagnostic-logs.md) a Traffic Manager miért csökkentett teljesítményű végpont állapotának megtekintéséhez.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 Távolítsa el a két LUIS végponthoz kulcsot, a három Traffic Manager-profilok és az öt ezeket az erőforrásokat tartalmazó erőforráscsoportot. Ez történik, az Azure Portalról. Az öt erőforrásokat törölnie az erőforrások listájában. Ezután törölje az erőforráscsoportot. 

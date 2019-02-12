@@ -4,17 +4,17 @@ description: Összetevők létrehozása, definiálása és üzembe helyezése az
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 02/04/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 78ce7c1063623e0c002bb6084d8c18139b3f889f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d7b2e6848c88d9c3ac61f2eaf059e0836dc19903
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566961"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989966"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Azure Blueprints-tervek definiálása és hozzárendelése a REST API használatával
 
@@ -329,6 +329,12 @@ A `{BlueprintVersion}` értéke egy betűket, számokat és kötőjeleket (szók
 
 Miután a REST API használatával közzétett egy tervet, az hozzárendelhető az előfizetésekhez. A létrehozott tervet a felügyeleti csoport hierarchiájában rendelheti hozzá az egyik előfizetéshez. Ha egy előfizetést a tervezet menti, csak rendelhető előfizetéshez. A **kérelemtörzs** megadja a hozzárendelni kívánt tervet, a tervdefinícióban lévő erőforráscsoportok nevét és helyét, valamint a terven definiált és egy vagy több csatolt összetevő által használt összes paramétert.
 
+Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie saját értékekre:
+
+- `{tenantId}` – Cserélje le a bérlő azonosítója
+- `{YourMG}` – Cserélje le a felügyeleti csoport azonosítója
+- `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
+
 1. Adja az Azure Blueprints-szolgáltatásnévnek a **Tulajdonos** szerepkört a célelőfizetésen. Az alkalmazásazonosító statikus (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), a szolgáltatásnév azonosítója azonban bérlőként eltérő. A bérlőre vonatkozó adatok a következő REST API használatával kérhetők le. Az [Azure Active Directory Graph API-t](../../active-directory/develop/active-directory-graph-api.md) használja, amely más engedélyekkel rendelkezik.
 
    - REST API URI
@@ -387,6 +393,25 @@ Miután a REST API használatával közzétett egy tervet, az hozzárendelhető 
          "location": "westus"
      }
      ```
+
+   - felhasználó által hozzárendelt felügyelt identitás
+
+     A tervezet-hozzárendelést is használhatja a [felhasználó által hozzárendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md). Ebben az esetben a **identitás** a kérelem törzsében része a következőképpen módosul.  Cserélje le `{yourRG}` és `{userIdentity}` az erőforrás-csoport és a nevét, a felhasználó által hozzárendelt felügyelt identitást, illetve.
+
+     ```json
+     "identity": {
+         "type": "userAssigned",
+         "tenantId": "{tenantId}",
+         "userAssignedIdentities": {
+             "/subscriptions/{subscriptionId}/resourceGroups/{yourRG}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{userIdentity}": {}
+         }
+     },
+     ```
+
+     A **felhasználó által hozzárendelt felügyelt identitás** minden előfizetésben is lehet, és a felhasználó hozzárendelése a tervezet erőforráscsoport rendelkezik engedélyekkel.
+
+     > [!IMPORTANT]
+     > Tervezetek nem felügyeli az felhasználóhoz felügyelt identitásnak. Felhasználók felelőssége megfelelő szerepkörök hozzárendelése és engedélyeket vagy a tervezet-hozzárendelés sikertelen lesz.
 
 ## <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 

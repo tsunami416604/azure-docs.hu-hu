@@ -10,17 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/08/2018
+ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: 24a911978d6c9f9a33c81254a5e2f5951029ff3a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c9392d910098e8a2dfadc4842dfcfe185f01fafc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120886"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004519"
 ---
 # <a name="analytics-in-application-insights"></a>Az Application Insights Analytics
-Analytics olyan hatékony keresést és lekérdezéseket eszközben [Application Insights](../../azure-monitor/app/app-insights-overview.md). Analytics egy olyan webes eszköz, ezért semmilyen beállítást nem szükséges. Ha már konfigurálta az Application Insights egy, az alkalmazások, akkor az alkalmazás adatait elemezheti az alkalmazásából származó Analytics megnyitásával [áttekintő paneljén](../../azure-monitor/app/app-insights-dashboards.md).
+Analytics olyan hatékony keresést és lekérdezéseket eszközben [Application Insights](app-insights-overview.md). Analytics egy olyan webes eszköz, ezért semmilyen beállítást nem szükséges.
+Ha már konfigurálta az Application Insights egy, az alkalmazások, akkor az alkalmazás adatait elemezheti az alkalmazásából származó Analytics megnyitásával [áttekintő paneljén](app-insights-dashboards.md).
 
 ![Portal.Azure.com címen nyissa meg, nyissa meg az Application Insights-erőforrást, és kattintson az Analytics.](./media/analytics/001.png)
 
@@ -28,6 +29,12 @@ Is használhatja a [Analytics playground](https://go.microsoft.com/fwlink/?linki
 <br>
 <br>
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
+
+## <a name="relation-to-azure-monitor-logs"></a>Kapcsolat az Azure Monitor naplóira
+Application Insights-elemzési alapján [Azure adatkezelő](/azure/data-explorer) , az Azure Monitor naplózza, és használja is a [adatkezelő lekérdezési nyelv](/azure/kusto/query). Használja ugyanazt [log analytics-portál](../log-query/get-started-portal.md) , az Azure Monitor naplózza, bár az adatok egy külön partíció tárolja.
+
+Az Application Insights analytics nem közvetlenül hozzáférni adatokat a Log Analytics-munkaterületen, és nem Ön közvetlenül hozzáférhet alkalmazásadatok a log analytics. Annak érdekében, hogy mindkét adatkészletet együtt lekérdezése, írhat egy [a log analytics lekérdezési](../log-query/log-query-overview.md) és használatát a [app() kifejezés](../log-query/app-expression.md) alkalmazás adatok elérését.
+
 
 ## <a name="query-data-in-analytics"></a>Elemzési adatok lekérdezése
 Egy tipikus lekérdezést egy táblázat neve, és a egy sorozatát kezdődik *operátorok* elválasztva `|`.

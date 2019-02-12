@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan hozhat létre, amelyek biztonságos hozzáfér�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 95e9322b-168e-4a9d-8d5d-d7c946103745
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 4e4d01371733a2292c69174e4cb135e995e5e935
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6ae0b534b64ac3c845c603061ee7e0b8e8467cf0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189098"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996219"
 ---
 # <a name="create-content-keys-with-rest"></a>Tartalomkulcs létrehozása a REST segítségével
 > [!div class="op_single_selector"]

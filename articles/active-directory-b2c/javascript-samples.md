@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fc4d09b59e568a693b7f7951e9e716d04a5a2a49
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d664c33c4535d25ec93fd1f36c990f2764a4e071
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729268"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000813"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-minták az Azure Active Directory B2C használata
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C-alkalmazásokat a saját ügyféloldali JavaScript-kódot adhat hozzá. Ez a cikk bemutatja, hogyan lehet módosítani a [egyéni házirendet](active-directory-b2c-overview-custom.md) parancsfájl végrehajtásának engedélyezéséhez.
+Az Azure Active Directory (Azure AD) B2C-alkalmazásokat a saját ügyféloldali JavaScript-kódot adhat hozzá. Ez a cikk bemutatja, hogyan lehet módosítani a [felhasználói folyamat](user-flow-javascript-overview.md) vagy [egyéni házirendet](active-directory-b2c-overview-custom.md) parancsfájl végrehajtásának engedélyezéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Válassza ki a [lap szerződés](page-contract.md) a felhasználói felületi elemek az alkalmazás számára. Ha szeretne használni a JavaScript, egy lap szerződés verziót a tartalom-definíciók minden definiálása az egyéni házirendek szeretné.
+Válassza ki a [lap szerződés](page-contract.md) a felhasználói felületi elemek az alkalmazás számára. Ha szeretne használni a JavaScript, adja meg egy oldal szerződés verziót a tartalom-definíciók minden a felhasználói folyamat vagy egyéni szabályzatot szeretne.
 
 ## <a name="add-the-scriptexecution-element"></a>Adja hozzá a ScriptExecution elemet
 

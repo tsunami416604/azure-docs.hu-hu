@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 93222129b80592ef5b4e1ed2e1420d975fe9f108
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: b4d760d8520f43b223665f17c85d3932761ebe17
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190728"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003108"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>Hozzon létre egy miniatűr sprite 
+# <a name="generate-a-thumbnail-sprite"></a>Hozzon létre egy miniatűr sprite  
 
 Media Encoder Standard használatával hozzon létre egy miniatűr sprite, amely egy JPEG-fájlt, amely több kis feloldási miniatűrök stitched együtt lemezképpel egy egyetlen (nagy), és a egy VTT fájlt tartalmazza. Ez a fájl VTT az időtartományt a bemeneti videó, amely az egyes miniatűrökre jelöli, és a méretét és a koordináták a miniatűr belül a nagyméretű JPEG-fájlok adja meg. Videolejátszók VTT fájl- és sprite rendszerképét használhatják a vizuális visszajelzést az megjelenítő számára, amikor újra a tisztítási egy "vizuális" seekbar megjelenítése, és továbbítsa a videó ütemtervét mentén.
 

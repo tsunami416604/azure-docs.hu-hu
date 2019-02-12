@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6bbb2bfa0fe3c157114d53b070d6c98e68099643
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 4da18fffc98367f24ec95bd27617e7638e3d5705
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464731"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003669"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Az SQL Database-ügyfélalkalmazások SQL hibakódok: Adatbázis-csatlakozási hibák és egyéb problémák
 
@@ -99,8 +99,8 @@ Kapcsolódó témakörök:
 
 | Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
-| 10928 |20 |Erőforrás-azonosító: %d. Az adatbázis %s maximális %d, és elérte az. További információkért lásd: [SQL Database erőforrás-korlátozások önálló és a készletezett adatbázisok](sql-database-resource-limits-database-server.md).<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosítója = 1. A munkamenetek, az erőforrás-azonosítója = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Azure SQL Database erőforrás-korlátozások](sql-database-service-tiers-dtu.md). |
-| 10929 |20 |Erőforrás-azonosító: %d. A %s minimális biztonsági: %d, maximális érték: %d, és az adatbázishoz a jelenlegi felhasználás: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. További információkért lásd: [SQL Database erőforrás-korlátozások önálló és a készletezett adatbázisok](sql-database-resource-limits-database-server.md). Ellenkező esetben próbálkozzon újra később.<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosítója = 1. A munkamenetek, az erőforrás-azonosítója = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Azure SQL Database erőforrás-korlátozások](sql-database-service-tiers-dtu.md). |
+| 10928 |20 |Erőforrás-azonosító: %d. Az adatbázis %s maximális %d, és elérte az. További információkért lásd: [SQL Database erőforrás egyetlen vagy készletezett adatbázisok korlátai](sql-database-resource-limits-database-server.md).<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosítója = 1. A munkamenetek, az erőforrás-azonosítója = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Azure SQL Database erőforrás-korlátozások](sql-database-service-tiers-dtu.md). |
+| 10929 |20 |Erőforrás-azonosító: %d. A %s minimális biztonsági: %d, maximális érték: %d, és az adatbázishoz a jelenlegi felhasználás: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. További információkért lásd: [SQL Database erőforrás egyetlen vagy készletezett adatbázisok korlátai](sql-database-resource-limits-database-server.md). Ellenkező esetben próbálkozzon újra később.<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosítója = 1. A munkamenetek, az erőforrás-azonosítója = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Azure SQL Database erőforrás-korlátozások](sql-database-service-tiers-dtu.md). |
 | 40544 |20 |Az adatbázis elérte a kvótáját méretét. Particionálhat vagy törölhet adatokat, dobjon el indexeket, vagy tekintse át a dokumentációt a lehetséges megoldások megismeréséhez. |
 | 40549 |16 |Munkamenet meg lett szakítva, mert egy hosszú ideig futó tranzakció rendelkezik. Próbálja lerövidíteni a tranzakciót. |
 | 40550 |16 |A munkamenet megszakadt, mert túl sok zárolást szerzett meg. Próbálja meg olvasó vagy egy tranzakción belül kevesebb sort módosítani. |

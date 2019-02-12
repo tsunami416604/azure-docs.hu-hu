@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d773d270b3b352bcaef189d201d824695b42bcef
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980142"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990070"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Az Azure SQL Database szószedet
 
@@ -30,7 +30,7 @@ ms.locfileid: "55980142"
 |Kiszolgálóobjektumok|SQL Database-kiszolgáló vagy adatbázis-kiszolgáló|[Adatbázis-kiszolgáló](sql-database-servers.md)|
 ||SQL Database felügyelt példány server, a felügyelt példány server vagy a server-példány|[Felügyelt példány](sql-database-managed-instance.md)|
 Adatbázis-objektumok|Azure SQL-adatbázis|Bármely Azure SQL Database-adatbázis|
-||Önálló adatbázis|Az önálló adatbázis rendszerbe állítási beállításának használata önálló adatbázisként létrehozott adatbázis|
+||Önálló adatbázis|Önálló adatbázis beállítás létrehozott adatbázis|
 ||Készletezett adatbázis|Egy adatbázis belül létrehozott vagy áthelyezése rugalmas készletbe|
 ||Példány adatbázisa|Felügyelt példány belül létrehozott adatbázis|
 ||Alapszintű adatbázis|Belül létrehozott egy adatbázist, vagy az alapszintű szolgáltatási szinten a DTU-alapú vásárlási modell helyezve|
@@ -39,7 +39,7 @@ Adatbázis-objektumok|Azure SQL-adatbázis|Bármely Azure SQL Database-adatbázi
 ||Általános célú adatbázis|Belül létrehozott egy adatbázist, vagy az általános célú szolgáltatáscsomagjától a Virtuálismag-alapú vásárlási modell helyezve|
 ||Nagy kapacitású adatbázis|Belül létrehozott egy adatbázist, vagy a nagy kapacitású szolgáltatási szinten a Virtuálismag-alapú vásárlási modell helyezve|
 ||Kritikus fontosságú üzleti adatbázis|Belül létrehozott egy adatbázist, vagy kritikus fontosságú üzleti szolgáltatáscsomagjától a Virtuálismag-alapú vásárlási modell helyezve|
-|[Vásárlási modellek és erőforrások](sql-database-service-tiers.md)|DTU-alapú vásárlási modell|[DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)|
+|[Vásárlási modellek és erőforrások](sql-database-purchase-models.md)|DTU-alapú vásárlási modell|[DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)|
 ||Virtuálismag-alapú vásárlási modell|[Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)|
 ||Virtuális mag|Egy alapszintű, a hipervizor a vendég operációs rendszer biztosítja.|
 ||Szolgáltatásszint|A beszerzési modell szolgáltatási szintet|

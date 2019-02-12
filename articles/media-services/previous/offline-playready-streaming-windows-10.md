@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/30/2018
+ms.date: 02/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 75ed9a3c2a9f2c5418af5d024cfcf979e3552035
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 9f5ccccaffbd11b482ed04875563fc33fb054d03
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812046"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995153"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady Windows 10-es Streaming
+# <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady Windows 10-es Streaming  
 
 Az Azure Media Services támogatja a DRM-védelemmel rendelkező offline letöltési/lejátszását. Ez a cikk ismerteti az Azure Media Services for Windows 10-es vagy PlayReady ügyfelek offline támogatást. IOS/FairPlay és Android/Widevine eszközökhöz az alábbi cikkekben olvashat bővebben az offline mód támogatása:
 

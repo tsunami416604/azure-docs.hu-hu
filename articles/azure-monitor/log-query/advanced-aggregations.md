@@ -1,6 +1,6 @@
 ---
-title: Speciális összesítések az Azure Log Analytics-lekérdezések |} A Microsoft Docs
-description: Egyes Log Analytics-lekérdezések számára elérhető speciális összesítési lehetőségeket ismerteti.
+title: Speciális összesítések az Azure Monitor log-lekérdezések |} A Microsoft Docs
+description: Az Azure Monitor log-lekérdezések számára elérhető speciális összesítési opciók egy része ismerteti.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 1116d03fc9c2328365b0bde29cf9ea900e58b7ed
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5e2152397a4a965e6d62f8fafc2a59bf318b4a5e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186361"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005420"
 ---
-# <a name="advanced-aggregations-in-log-analytics-queries"></a>A Log Analytics-lekérdezések speciális összesítések
+# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Speciális összesítések az Azure Monitor log-lekérdezések
 
 > [!NOTE]
-> Hajtsa végre [Log Analytics-lekérdezések összesítések](./aggregations.md) ebben a leckében befejezése előtt.
+> Hajtsa végre [összesítések az Azure Monitor lekérdezések](./aggregations.md) ebben a leckében befejezése előtt.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ez a cikk ismerteti az egyes Log Analytics-lekérdezések számára elérhető speciális összesítési lehetőségeket.
+Ez a cikk ismerteti az Azure Monitor lekérdezések számára elérhető fejlett összesítési opciók egy része.
 
 ## <a name="generating-lists-and-sets"></a>Listák és a csoportok létrehozása
 Használhat `makelist` pivot adatok egy adott oszlopban lévő értékek sorrendje. Például előfordulhat, hogy szeretné a leggyakrabban használt sorrend események kerül sor a gépeken. Az adatok sorrendje EventIDs az összes olyan számítógépen forgáspont lényegében azt is. 
@@ -40,8 +40,8 @@ Event
 ```
 |Computer|list_EventID|
 |---|---|
-| Számítógép1 | [704,701,1501,1500,1085,704,704,701] |
-| számítógép2 | [326,105,302,301,300,102] |
+| computer1 | [704,701,1501,1500,1085,704,704,701] |
+| computer2 | [326,105,302,301,300,102] |
 | ... | ... |
 
 `makelist` adatok bele lett átadva a sorrendben álló listát hoz létre. Rendezze az eseményeket a legrégebbitől a legújabbig, használja a `asc` helyett a rendelés utasításban `desc`. 
@@ -56,8 +56,8 @@ Event
 ```
 |Computer|list_EventID|
 |---|---|
-| Számítógép1 | [704,701,1501,1500,1085] |
-| számítógép2 | [326,105,302,301,300,102] |
+| computer1 | [704,701,1501,1500,1085] |
+| computer2 | [326,105,302,301,300,102] |
 | ... | ... |
 
 Például `makelist`, `makeset` is együttműködik rendezett adatok, és a diagrambeli a sorok bele átadott tömbök hoz létre.
@@ -73,9 +73,9 @@ Heartbeat
 
 | Computer | Megoldások | 
 |--------------|----------------------|
-| Számítógép1 | "security", "updates", "változáskövetési" |
-| számítógép2 | "security", "updates" |
-| számítógép3 | "kártevőirtó", "változáskövetési" |
+| computer1 | "security", "updates", "changeTracking" |
+| computer2 | "security", "updates" |
+| számítógép3 | "antiMalware", "changeTracking" |
 | ... | ... | ... |
 
 Használat `mvexpand` egy külön sorban helyett egy vesszővel tagolt lista minden egyes érték megjelenítése:
@@ -89,11 +89,11 @@ Heartbeat
 
 | Computer | Megoldások | 
 |--------------|----------------------|
-| Számítógép1 | "security" |
-| Számítógép1 | "updates" |
-| Számítógép1 | "Change tracking" |
-| számítógép2 | "security" |
-| számítógép2 | "updates" |
+| computer1 | "security" |
+| computer1 | "updates" |
+| computer1 | "Change tracking" |
+| computer2 | "security" |
+| computer2 | "updates" |
 | számítógép3 | "kártevőirtó" |
 | számítógép3 | "Change tracking" |
 | ... | ... | ... |
@@ -181,7 +181,7 @@ WindowsFirewall
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a Log Analytics lekérdezési nyelv segítségével a többi leckék:
+Tekintse meg a többi leckéket a [adatkezelő lekérdezési nyelv](/azure/kusto/query/) adatok naplózása az Azure Monitor szolgáltatással:
 
 - [Karakterlánc-műveletek](string-operations.md)
 - [Dátum és idő műveletek](datetime-operations.md)

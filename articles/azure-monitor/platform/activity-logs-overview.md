@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 3a1ffb3b7a0f154b1d74ca7a8789e5fdadadec31
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 2fc09ccdf68605e444ed4b196162df6205557272
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883772"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002103"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
@@ -83,7 +83,7 @@ Az Azure Portalon a Tevékenységnaplót, ezek a mezők szerint szűrheti:
 
 Miután beállított szűrők csoportja, mindig kövesse figyelemmel az adott események az Azure-irányítópulton való lekérdezés is rögzíthet.
 
-Még hatékonyabbá elemre a **naplók** ikont, mely megjeleníti a tevékenységnapló adatait a [Log Analytics Activity Log Analytics megoldás](../../azure-monitor/platform/collect-activity-logs.md). A tevékenységnapló panel kínál egy alapszintű szűrő/tallózási élménynek a naplók, de a Log Analytics lehetővé teszi, hogy forgáspont, lekérdezése és hatékonyabb módon jelenítheti meg az adatok.
+Még hatékonyabbá elemre a **naplók** ikont, mely megjeleníti a tevékenységnapló adatait a [összegyűjtheti és elemezheti a tevékenységeket tartalmazó naplók megoldás](../../azure-monitor/platform/collect-activity-logs.md). A tevékenységnapló panel kínál egy alapszintű szűrő/tallózási élménynek a naplókat, de az Azure Monitor naplók funkció lehetővé teszi, hogy forgáspont, lekérdezése és hatékonyabb módon jelenítheti meg az adatokat.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>A napló profillal tevékenységnapló exportálása
 A **Naplóprofil** a tevékenységnapló exportálása hogyan szabályozza. Napló profilt használ, konfigurálhatja:

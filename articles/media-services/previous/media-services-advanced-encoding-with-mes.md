@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 4601628fd0fbdbd80c2b159a4578e25cb4e3c4c5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: f2be733fc0f127288a86372adf54a547983285db
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250767"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998705"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Fejlett kódolás MES-beállításkészletek testreszabásával végrehajtása 
 
@@ -238,15 +238,15 @@ A következő szempontokat kell figyelembe venni:
 * Kezdő/lépés/tartomány explicit időbélyegeket használatát feltételezi, hogy a bemeneti forrás legalább 1 percnek hosszú.
 * JPG vagy Png/BmpImage elemek elindítani, a lépésben és karakterlánc-attribútumok tartomány – ezeket úgy:
 
-  * Képkockaszám, ha azok nem negatív egész szám, például "Start": "120"
-  * Ha forrásidőtartamhoz %-a forrás időtartama, például "Start" relatív: "15 %", vagy
-  * Időbélyeg, ha óó kifejezett... formátum, például "Start": "00: 01:00"
+  * Keret száma, ha azok nem negatív egész szám, például "a Start": "120",
+  * Ha forrásidőtartamhoz %-a forrás időtartama, például "Start" relatív: "15 %", VAGY
+  * Időbélyeg, ha óó kifejezett... formátum, "a Start" például: "00:01:00"
 
     Ön szabadon kombinálhatók, jelölések meg.
 
-    Ezenkívül kezdő is támogatja a speciális makró: {ajánlott}, amely kísérli meg meghatározni a tartalom Megjegyzés: az első "érdekes" kép: (lépés, és a tartomány nem veszi figyelembe kezdő {legjobb} értékre van állítva)
-  * Alapértelmezett érték: Start: {ajánlott}
-* Kimeneti formátum kell minden egyes képformátum explicit módon megadott: Jpg vagy Png/BmpFormat. Jelenléte esetén MES felel meg JpgVideo JpgFormat, és így tovább. OutputFormat vezet be az új lemezkép-kodek adott makró: {Index}, mely kell lennie a jelen (egyszer és csak egyszer) rendszerkép kimeneti formátum.
+    Ezenkívül kezdő is támogatja a speciális makró: {ajánlott}, amely kísérli meg meghatározni a tartalom Megjegyzés: az első "érdekes" kép: (A lépés, és a tartomány nem veszi figyelembe kezdő {legjobb} értékre van állítva)
+  * Alapértelmezettek: Indítsa el: {ajánlott}
+* Minden egyes képformátum explicit módon megadott kimeneti formátum van szüksége: Jpg/Png/BmpFormat. Jelenléte esetén MES felel meg JpgVideo JpgFormat, és így tovább. OutputFormat vezet be az új lemezkép-kodek adott makró: {Index}, mely kell lennie a jelen (egyszer és csak egyszer) rendszerkép kimeneti formátum.
 
 ## <a id="trim_video"></a>(A vágás) videó vágása
 Ez a szakasz ismerteti a kódoló készletek grafikus, vagy csökkentse a bemeneti videó, ahol a bemeneti egy úgynevezett mezzanine-fájlt vagy igény szerinti fájl módosítása. A kódoló is használható grafikus vagy egy eszköz, amely a rögzített vagy az élő stream archivált trim – a részleteket a [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
@@ -752,7 +752,7 @@ Kikapcsolhatja az automatikus megszüntetéséhez váltakozó. Ezt a beállítá
 
 
 ## <a id="audio_only"></a>Csak hangfájlt tartalmazó készletek
-Ez a szakasz azt ismerteti, két csak MES-beállításkészletek: AAC hang- és AAC jó minőségű hang.
+Ez a szakasz két csak MES-beállításkészletek mutat be: Az AAC hang- és AAC jó minőségű hang.
 
 ### <a name="aac-audio"></a>Az AAC-hang
     {

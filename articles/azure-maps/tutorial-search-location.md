@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 04ab94d8b0b8f012707bb88a52c44b91063cbe39
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: ce425278bfc0f9b95285c33e9863b508246d5e79
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402183"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992294"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Közeli hasznos helyek keresése az Azure Maps használatával
 
@@ -73,47 +73,47 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
 2. Adja a következő HTML-összetevőket a fájlhoz:
 
    ```HTML
-   <!DOCTYPE html>
-   <html>
-   <head>
-      <title>Map Search</title>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-      <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
-      <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
-
-      <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-      <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=1"></script>
-
-      <script>      
-         var map, datasource, client, popup;
-
-         function GetMap(){
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Map Search</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        
+        <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
+        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
+        
+        <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
+        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=1"></script>
+        
+        <script>        
+        var map, datasource, client, popup;
+        
+        function GetMap(){
             //Add Map Control JavaScript code here.
-         }
-      </script>
-      <style>
-      html,
-      body {
-         width: 100%;
-         height: 100%;
-         padding: 0;
-         margin: 0;
-      }
-
-      #myMap {
-         width: 100%;
-         height: 100%;
-      }
-      </style>
-   </head>
-   <body onload="GetMap()">
-      <div id="myMap"></div>
-   </body>
-   </html>
-   ```
+        }
+        </script>
+        <style>
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            
+            #map {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body onload="GetMap()">
+        <div id="myMap"></div>
+    </body>
+    </html>
+    ```
 
    Figyelje meg, hogy a HTML-fejléc tartalmazza az Azure Térkép vezérlőelem-kódtárban található CSS- és JavaScript-erőforrásfájlokat. Tekintse meg a laptörzs `onload` eseményét, amely a laptörzs betöltését követően meghívja a `GetMap` függvényt. Ez a függvény tartalmazza az Azure Maps API-k elérésére szolgáló beágyazott JavaScript-kódot.
 
@@ -228,8 +228,9 @@ A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszús
 2. A *script* címkében, a `GetMap` függvény után adja hozzá az alábbi kódot, amely megjeleníti a rámutatott eredmény adatait a felugró ablakban. 
 
    ```JavaScript
-   function showPopup(e) {
-        //Get the properties and coordinates of the first shape that the event occurred on.
+    function showPopup(e) {
+        //Get the properties and coordinates of the first shape that the event occured on.
+
         var p = e.shapes[0].getProperties();
         var position = e.shapes[0].getCoordinates();
 
@@ -246,7 +247,7 @@ A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszús
 
         //Open the popup.
         popup.open(map);
-   }
+    }
    ```
 
 2. Mentse a fájlt, és frissítse a böngészőt. A térkép most felugró információs ablakokat jelenít meg böngészőben, ha az egérmutatót valamelyik gombostű fölé viszi.

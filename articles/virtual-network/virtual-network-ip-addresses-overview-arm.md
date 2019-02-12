@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/30/2019
+ms.date: 02/08/2019
 ms.author: jdial
-ms.openlocfilehash: 5472878542078e2a2dbb900965b59844d6e3b4b3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e145642a12db941d52c55081032e247b6d65d38b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488093"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997329"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
 
@@ -71,7 +71,7 @@ A termékváltozatok bevezetése előtt létrehozott minden nyilvános IP-cím a
 A standard termékváltozatú nyilvános IP-címek jellemzői:
 
 - Mindig használjon statikus kiosztási módszerrel oszthatók ki.
-- Állítható bejövő származó és a kimenő országrész folyamat üresjárati időkorlátot 4 66 perc, az alapértelmezett érték 4 perces rendelkezik.
+- Állítható bejövő származó és a kimenő országrész folyamat üresjárati időkorlátot 4. 30 percet, az alapértelmezett érték 4 perces rendelkezik.
 - Alapértelmezés szerint biztonságosak és zártak a bejövő forgalommal szemben. Az engedélyezett bejövő forgalmat kifejezetten engedélyeznie kell egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups).
 - Hálózati adapterek, nyilvános standard szintű terheléselosztóhoz, Application Gateway átjárók vagy VPN-átjárók rendelve. A Standard Load Balancer kapcsolatos további információkért lásd: [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Zóna alapértelmezés szerint georedundáns és igény szerint zónaszintű (hozható létre zónásan, és egy adott rendelkezésre állási zónában). További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

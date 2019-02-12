@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
-ms.openlocfilehash: c97fd915e9022171125c7c0f687413e433f82871
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d601425ee5641c1bb07c47dcc0f9a1d94ff3dc87
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983838"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990377"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -37,7 +37,7 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
 * A karakterlánc-állandókat Ha egy fordított perjel (\) vagy az idézőjel (") a karakterláncban van szüksége, kell megjelölni a fordított perjel (\) szimbólum. Példa: "Cég neve: \\"Contoso\\""
 
 ## <a name="list-of-functions"></a>Függvények listája.
-[Hozzáfűzés](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [csatlakozzon](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [cseréje](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Kapcsoló](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
+[Hozzáfűzés](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [csatlakozzon](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [cseréje](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [ StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [kapcsoló](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
 
 - - -
 ### <a name="append"></a>Hozzáfűzés
@@ -128,7 +128,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 * Amikor **oldValue** és **helyettesítő értéke** biztosított:
   
-  * Összes előfordulását lecseréli **oldValue** a a **forrás** az *helyettesítő értéke**
+  * Lecseréli az összes előfordulását a forrás oldValue helyettesítő értéke
 * Amikor **oldValue** és **sablon** biztosított:
   
   * Összes előfordulását lecseréli a **oldValue** a a **sablon** együtt a **forrás** érték
@@ -183,6 +183,19 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | **[hozzárendeléseinek]** |Szükséges |Karakterlánc |**[hozzárendeléseinek]**  objektum. |
 
 - - -
+### <a name="split"></a>Megosztott
+**Függvény:**<br> Split (forrás, elválasztó karakter)
+
+**Leírás:**<br> Egy karakterlánc felosztja a mulit értékű tömb a megadott elválasztó karakter használatával.
+
+**Paraméterek:**<br> 
+
+| Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
+| --- | --- | --- | --- |
+| **source** |Szükséges |Karakterlánc |**forrás** érték frissítéséhez. |
+| **delimiter** |Szükséges |String |Adja meg a karakter, amely a sztring felosztásához használandó (Példa: ",") |
+
+- - -
 ### <a name="stripspaces"></a>StripSpaces
 **Függvény:**<br> StripSpaces(source)
 
@@ -219,7 +232,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc |Általában az attribútum neve, az adatforrás-objektum. |
+| **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
 | **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
 
 - - -
@@ -282,8 +295,18 @@ NormalizeDiacritics([givenName])
 * **BEMENETI** (givenName): "Zoë"
 * **KIMENETI**:  "Zoe"
 
-### <a name="output-date-as-a-string-in-a-certain-format"></a>Egy bizonyos formátumú karakterlánc formájában kimeneti dátum
+### <a name="split-a-string-into-a-multi-valued-array"></a>Egy sztring felosztása többértékű tömb
+Karakterláncok vesszővel tagolt listáját, illetve ossza fel őket egy tömb, amely egy többértékű attribútum, például a Salesforce PermissionSets attribútumot lehet csatlakoztatni kell. Ebben a példában egy engedélycsoportok listájában feltöltődtek az extensionAttribute5 az Azure ad-ben.
 
+**Kifejezés:** <br>
+Split ([extensionAttribute5], ",")
+
+**Bemeneti/kimeneti. példa:** <br>
+
+* **BEMENETI** (extensionAttribute5): "PermissionSetOne, PermisionSetTwo"
+* **KIMENETI**: ["PermissionSetOne", "PermissionSetTwo"]
+
+### <a name="output-date-as-a-string-in-a-certain-format"></a>Egy bizonyos formátumú karakterlánc formájában kimeneti dátum
 Egy SaaS-alkalmazás egy bizonyos formátumú dátumok küldeni szeretné. <br>
 Ha például szeretné formátumához servicenow-hoz készült.
 
@@ -302,7 +325,6 @@ Adja meg a felhasználó az Azure AD-ben tárolt kódja alapján az időzóna ke
 Ha az állapot-kód nem egyezik az előre definiált beállításokat, használja a "Ausztrália/Sydney" alapértelmezett értékét.
 
 **Kifejezés:** <br>
-
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
 **Bemeneti/kimeneti. példa:**
@@ -310,8 +332,19 @@ Ha az állapot-kód nem egyezik az előre definiált beállításokat, használj
 * **BEMENETI** (állapot): "QLD"
 * **KIMENETI**: "Ausztrália/Brisbane"
 
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Generált userPrincipalName (UPN) érték átalakítása kisbetű
+### <a name="replace-characters-using-a-regular-expression"></a>Cserélje le a karaktereket a reguláris kifejezés használata
+Meg kell keresnie a karakter, amely egy reguláris kifejezés érték egyezik, és távolítsa el őket.
 
+**Kifejezés:** <br>
+
+Cserélje le ([mailNickname,], "[a-zA-Z_] *", "",)
+
+**Bemeneti/kimeneti. példa:**
+
+* **BEMENETI** (mailNickname: "john_doe72"
+* **KIMENETI**: "72"
+
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Generált userPrincipalName (UPN) érték átalakítása kisbetű
 Az alábbi példában az egyszerű felhasználónevet a PreferredFirstName és PreferredLastName forrás mezők összefűzésével jön létre, és a ToLower függvény a létrehozott karakterlánc összes karakter átalakítása kisbetű működik. 
 
 `ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
@@ -323,7 +356,6 @@ Az alábbi példában az egyszerű felhasználónevet a PreferredFirstName és P
 * **KIMENETI**: "john.smith@contoso.com"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Egyedi érték a userPrincipalName (UPN) attribútum létrehozása
-
 Alapján a felhasználó utónevét, a középső név és vezetéknevét, létre kell hoznia az UPN attribútum értékét, és ellenőrizze az egyedi-e a cél az AD címtárban az UPN attribútum értéke hozzárendelése előtt.
 
 **Kifejezés:** <br>
@@ -349,4 +381,3 @@ Alapján a felhasználó utónevét, a középső név és vezetéknevét, létr
 * [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](use-scim-to-provision-users-and-groups.md)
 * [Alkalmazáskiépítési értesítések](user-provisioning.md)
 * [Az SaaS-alkalmazások integrálásával foglalkozó oktatóanyagok listája](../saas-apps/tutorial-list.md)
-

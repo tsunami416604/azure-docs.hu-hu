@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: a2e7c45615c1f9d07ef3392ee10579a1b5e3588f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 31005077c9c149f9aff055432d9577a63bac8e1c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477981"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992279"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Hogyan egy Machine Learning Studio modellek útja a kísérlettől kísérlet egy szolgáltatáscsomagot webszolgáltatáshoz
 Az Azure Machine Learning Studio biztosítja egy interaktív vászonra, amely lehetővé teszi a fejlesztést, futtassa, tesztelése és ismételt futtatásával egy ***kísérletezhet*** jelölő prediktív elemzési modellek. Nincsenek modulok érhető el, amelyek segítségével számos:
@@ -46,7 +46,7 @@ Az alábbiakban a tipikus-megoldások fejlesztése és üzembe helyezni a Machin
 *1. ábra – egy tipikus prediktív elemzési modellek fázisa*
 
 ### <a name="the-training-experiment"></a>A betanítási kísérlet
-A ***betanítási kísérlet*** fejlesztése a Machine Learning Studio webszolgáltatás első fázisa. A betanítási kísérlet célja, hogy egy helyen történő fejlesztéséhez, teszteléséhez, ismételt futtatásával, és végül a machine learning-modell betanításához. Akkor is még több-modellek betanításához egyszerre, a legjobb megoldást keres, de miután elkészült kísérletezés, ki kell választania egy betanított modell, és megszüntetheti a többi a kísérletből. Egy prediktív elemzési kísérletet fejlesztése egy példa: [a hitelkockázatok értékeléséhez az Azure Machine Learning prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md).
+A ***betanítási kísérlet*** fejlesztése a Machine Learning Studio webszolgáltatás első fázisa. A betanítási kísérlet célja, hogy egy helyen történő fejlesztéséhez, teszteléséhez, ismételt futtatásával, és végül a machine learning-modell betanításához. Akkor is még több-modellek betanításához egyszerre, a legjobb megoldást keres, de miután elkészült kísérletezés, ki kell választania egy betanított modell, és megszüntetheti a többi a kísérletből. Egy prediktív elemzési kísérletet fejlesztése egy példa: [a hitelkockázatok értékeléséhez az Azure Machine Learning prediktív elemzési megoldás fejlesztése](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>A prediktív kísérletté
 Miután a betanított modell a tanítási kísérlet során, kattintson a **webszolgáltatás beállítása** válassza **prediktív webszolgáltatás** a Machine Learning Studióban, elindítja a folyamatot a tanítási átalakítása kísérletezést egy ***prediktív kísérletté***. A prediktív kísérletté célja a betanított modell használata a cél az, hogy idővel egyre üzembe helyezte azt egy Azure-webszolgáltatásként, új adatok pontozása céljából.
@@ -114,5 +114,5 @@ Fejlesztés és a kísérlet a további részletekért tekintse meg a következ�
 A teljes folyamat példákért lásd:
 
 * [Machine learning-oktatóanyag: Az első kísérlet létrehozása az Azure Machine Learning Studióban](create-experiment.md)
-* [Forgatókönyv: Az Azure Machine Learning hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md)
+* [Forgatókönyv: Az Azure Machine Learning hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése](tutorial-part1-credit-risk.md)
 

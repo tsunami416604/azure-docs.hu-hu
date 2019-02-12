@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 395bf57b967ebeefe0a4168b53a4341c304e3d4f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/08/2019
+ms.openlocfilehash: 5f20fc6ac19e2c9d304f4ab429e485fedaa29f64
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729506"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001885"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Az Azure SQL Database fenyegetések észlelése
 
@@ -77,7 +77,7 @@ Kattintson a **fenyegetés-észlelési riasztás** , indítsa el az Azure Securi
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [fenyegetések észlelése az önálló és a készletezett adatbázisok](sql-database-threat-detection.md).
+- Tudjon meg többet [fenyegetésészlelés egyetlen vagy készletezett adatbázisok](sql-database-threat-detection.md).
 - Tudjon meg többet [fenyegetések észlelése a felügyelt példány](sql-database-managed-instance-threat-detection.md).
 - Tudjon meg többet [adatbiztonság speciális](sql-database-advanced-data-security.md).
 - Tudjon meg többet [Azure SQL Database naplózási szolgáltatásával](sql-database-auditing.md)

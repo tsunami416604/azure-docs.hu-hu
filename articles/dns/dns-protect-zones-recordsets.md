@@ -7,14 +7,16 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: 137d8e1c1477d5b9c88cecc39316d62a79a4cab8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9340a43eb88b4be03c0f0ccc0d07a32f22a9001c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873920"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997379"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zónák és -rekordok védelme
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 DNS-zónák és -rekordok a kiemelt fontosságú erőforrásait. A DNS-zónát, vagy csak egyetlen DNS-rekord törlése egy teljes szolgáltatás-kimaradás eredményezhet.  Ezért fontos, hogy kritikus DNS-zónák és rekordok védve legyenek a jogosulatlan vagy véletlen módosításokat.
 
@@ -38,7 +40,7 @@ Engedélyeket is lehet [kapnak az Azure PowerShell-lel](../role-based-access-con
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
 Az egyenértékű parancs egyben [az Azure CLI-n keresztül elérhető](../role-based-access-control/role-assignments-cli.md):
@@ -62,7 +64,7 @@ Engedélyeket is lehet [kapnak az Azure PowerShell-lel](../role-based-access-con
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
 Az egyenértékű parancs egyben [az Azure CLI-n keresztül elérhető](../role-based-access-control/role-assignments-cli.md):
@@ -84,7 +86,7 @@ A rekordhalmaz szintű RBAC-engedélyek is lehet [kapnak az Azure PowerShell-lel
 
 ```azurepowershell
 # Grant permissions to a specific record set
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
 Az egyenértékű parancs egyben [az Azure CLI-n keresztül elérhető](../role-based-access-control/role-assignments-cli.md):
@@ -140,7 +142,7 @@ Egyéni szerepkör-definíciók jelenleg nem lehet meghatározni, az Azure Porta
 
 ```azurepowershell
 # Create new role definition based on input file
-New-AzureRmRoleDefinition -InputFile <file path>
+New-AzRoleDefinition -InputFile <file path>
 ```
 
 Azt is létrehozhatók az Azure CLI-n keresztül:
@@ -158,7 +160,7 @@ A létrehozása, kezelése és egyéni szerepkörök hozzárendelése további i
 
 Mellett, az RBAC Azure Resource Manager támogatja a más típusú biztonsági ellenőrzést, nevezetesen erőforrások zárolása lehetővé teszi. Ahol RBAC-szabályok lehetővé teszik a vezérlőelem a műveletek adott felhasználók és csoportok, erőforrás-zárolások érvénybe lépnek az erőforrást, és hatékony összes felhasználók és szerepkörök. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](../azure-resource-manager/resource-group-lock-resources.md).
 
-Erőforrás-zárolás két típusa van: **védve** és **ReadOnly**. Ezek a DNS-zónát, vagy egy egyéni rekordhalmaz alkalmazhatók.  A következő szakaszokban számos gyakori forgatókönyv, és hogyan támogatja az erőforrás-zárolások használatával.
+Erőforrás-zárolás két típusa van: **Védve** és **ReadOnly**. Ezek a DNS-zónát, vagy egy egyéni rekordhalmaz alkalmazhatók.  A következő szakaszokban számos gyakori forgatókönyv, és hogyan támogatja az erőforrás-zárolások használatával.
 
 ### <a name="protecting-against-all-changes"></a>Minden módosítás ellen védelmet biztosító
 
@@ -172,7 +174,7 @@ Zónaszintű erőforrás-zárolások is létrehozhatók az Azure PowerShell-lel:
 
 ```azurepowershell
 # Lock a DNS zone
-New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
+New-AzResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
 ```
 
 Azure-erőforrászárolás konfigurálása jelenleg nem támogatott az Azure CLI-n keresztül.
@@ -188,7 +190,7 @@ Rekordhalmaz szintű erőforrás-zárolások is jelenleg csak konfigurált Azure
 
 ```azurepowershell
 # Lock a DNS record set
-New-AzureRmResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
 ```
 
 ### <a name="protecting-against-zone-deletion"></a>Védekezés a zóna törlése
@@ -203,7 +205,7 @@ A következő PowerShell-parancs létrehozza a SOA típusú rekordját az adott 
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
-New-AzureRmResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
 Zóna véletlen törlés megelőzése érdekében egy másik úgy, hogy egy egyéni szerepkör segítségével győződjön meg, hogy az operátor és a zónák kezelésére szolgáló szolgáltatásfiókok nem rendelkezik a zóna vonatkozó engedélyeinek törlése. Ha törölni szeretne egy zónát, kényszerítheti egy kétlépéses törlése, első próbáltak zóna törlési jogosultsággal (a hatókörben zóna, törölje a nem megfelelő zónát elkerülése érdekében), második törölje a zónát.

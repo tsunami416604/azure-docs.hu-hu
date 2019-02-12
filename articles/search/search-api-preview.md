@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 06/28/2018
 ms.author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: e496e4e2e7e2f66033d090a0534911bff4c53baa
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 524c1a6d083db02349c7dae9a0131228613dc170
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310273"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997610"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Az Azure Search szolgáltatás REST api-verzió 2017. 11. 11 – előzetes verzió
 Ez a cikk ismerteti a `api-version=2017-11-11-Preview` verzióját az Azure Search szolgáltatás REST API-t kínáló kísérleti funkciók nem általánosan érhetők el.
@@ -28,7 +28,7 @@ Ez a cikk ismerteti a `api-version=2017-11-11-Preview` verzióját az Azure Sear
 
 ## <a name="new-in-2017-11-11-preview"></a>2017. 11. 11 – előzetes verzió újdonságai
 
-[**Automatikus kitöltés** ](search-autocomplete-tutorial.md) összekapcsolja a meglévő [javaslatok API](https://docs.microsoft.com/rest/api/searchservice/suggestions) hozzáadni a kiegészítő gépelés közbeni során lép fel, a keresősávba. Automatikus kitöltés adja vissza jelölt felhasználó dönthet a lekérdezési karakterlánc egy későbbi kereséshez lekérdezési kifejezéseket. Javaslatok az tényleges dokumentumokból a részleges bemenetek válaszul adja vissza: keresési eredmények azonnali és dinamikusan változik, a keresési kifejezés bemeneti növekedésével és sajátlagossága figyelembe.
+[**az automatikus kiegészítés** ](search-autocomplete-tutorial.md) összekapcsolja a meglévő [javaslatok API](https://docs.microsoft.com/rest/api/searchservice/suggestions) hozzáadni a kiegészítő gépelés közbeni során lép fel, a keresősávba. az automatikus kiegészítés jelölt lekérdezési kifejezések a felhasználó választhat egy későbbi kereséshez lekérdezési karakterláncként adja vissza. Javaslatok az tényleges dokumentumokból a részleges bemenetek válaszul adja vissza: keresési eredmények azonnali és dinamikusan változik, a keresési kifejezés bemeneti növekedésével és sajátlagossága figyelembe.
 
 [**A kognitív keresés**](cognitive-search-concept-intro.md), az Azure Search új Adatbővítés funkció megkeresi segít a rejtett adatokat nem szöveges forrásokból és magánháztartás szöveg-, az Azure Search teljes szöveges kereshető tartalmakká átalakítja őket. A következő források vannak vagy módosított a REST API előzetes verzióban érhető el. Más REST API-k ugyanaz, akár hívja az általánosan elérhető az előzetes verzióval.
 

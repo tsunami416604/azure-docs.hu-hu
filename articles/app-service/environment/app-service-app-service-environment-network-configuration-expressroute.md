@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 23faf3b88584f8031b4a2fdbc6d94ac2ae861431
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cca3c69997865f22d22fc5b86565ae9f206b9aee
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104454"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990138"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Hálózati konfiguráció részletei az App Service-környezet a powerapps szolgáltatásra, az Azure ExpressRoute használatával
 
@@ -59,9 +59,9 @@ App Service Environment-környezet az alábbi hálózati kapcsolati beállítás
 
 * Engedélyezni kell az App Service Environment-környezet számára szükséges portok bejövő hálózati hozzáférést. További információkért lásd: [az App Service Environment-környezet bejövő forgalom szabályozása][requiredports].
 
-A DNS-követelmények teljesítéséhez, győződjön meg arról, hogy egy érvényes DNS-infrastruktúra van konfigurálva, és a virtuális hálózat karbantartása. Ha a DNS-konfigurációt az App Service Environment-környezet létrehozása után módosul, a fejlesztők kényszerítheti az App Service-környezet folytattuk a munkát az új DNS-konfiguráció. Működés közbeni környezet újraindítás használatával is aktiválhatja a **indítsa újra a** ikon mellett az App Service Environment-kezelés az [Azure Portalról] [NewPortal]. Az újraindítás a környezet átvételéhez az új DNS-konfiguráció okozza.
+A DNS-követelmények teljesítéséhez, győződjön meg arról, hogy egy érvényes DNS-infrastruktúra van konfigurálva, és a virtuális hálózat karbantartása. Ha a DNS-konfigurációt az App Service Environment-környezet létrehozása után módosul, a fejlesztők kényszerítheti az App Service-környezet folytattuk a munkát az új DNS-konfiguráció. Működés közbeni környezet újraindítás használatával is aktiválhatja a **indítsa újra a** ikonra az App Service Environment-környezet felügyelete alá a [az Azure portal][NewPortal]. Az újraindítás a környezet átvételéhez az új DNS-konfiguráció okozza.
 
-A bejövő hálózati hozzáférési követelmények teljesítéséhez, állítson be egy [hálózati biztonsági csoport (NSG)][NetworkSecurityGroups] App Service Environment-környezet az alhálózaton. Az NSG-t lehetővé teszi, hogy a szükséges hozzáféréssel [az App Service Environment-környezet bejövő forgalom szabályozása][requiredports].
+A bejövő hálózati hozzáférési követelmények teljesítéséhez, állítson be egy [hálózati biztonsági csoport (NSG)] [ NetworkSecurityGroups] App Service Environment-környezet az alhálózaton. Az NSG-t lehetővé teszi, hogy a szükséges hozzáféréssel [az App Service Environment-környezet bejövő forgalom szabályozása][requiredports].
 
 ## <a name="outbound-network-connectivity"></a>Kimenő hálózati kapcsolat
 
@@ -87,7 +87,7 @@ Ez a konfiguráció kombinált hatását, hogy az alhálózat-szintű UDR elsőb
 
 Felhasználó által megadott útvonalakkal kapcsolatos háttér-információkat lásd: [virtuális hálózat forgalmának útválasztása][UDROverview].  
 
-Ismerje meg, hogyan hozhat létre és konfigurálja a felhasználó által megadott útvonalakat, lásd: [hálózati forgalom továbbítása PowerShell-lel útválasztási táblázattal] [UDRHowTo].
+Megtudhatja, hogyan kell létrehozni és konfigurálni a felhasználó által megadott útvonalakat, lásd: [irányítható a hálózati forgalom útválasztási táblázattal PowerShell-lel][UDRHowTo].
 
 ## <a name="udr-configuration"></a>UDR-konfiguráció
 
@@ -95,7 +95,7 @@ Ez a szakasz bemutatja UDR konfiguráció például az App Service Environment-k
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Azure PowerShell telepítése az [Azure letöltések lapon] [AzureDownloads]. Válassza ki a letölteni egy dátummal June 2015 vagy újabb verzió. Alatt **parancssori eszközök** > **Windows PowerShell**válassza **telepítése** , telepítse a legújabb PowerShell-parancsmagokat.
+* Az Azure PowerShell telepítéséhez a [Azure letöltőoldala][AzureDownloads]. Válassza ki a letölteni egy dátummal June 2015 vagy újabb verzió. Alatt **parancssori eszközök** > **Windows PowerShell**válassza **telepítése** , telepítse a legújabb PowerShell-parancsmagokat.
 
 * Hozzon létre egy App Service Environment-környezet használja kizárólagos egyedi alhálózatot. Az egyedi alhálózati biztosítja, hogy a alkalmazni az alhálózat nyitott kimenő forgalom App Service-környezetben csak udr-EK.
 
@@ -118,7 +118,7 @@ Kimenő internet-hozzáférés konfigurálása. Adja meg egy útvonalat a 0.0.0.
 
 0.0.0.0/0 széles körű címtartomány. A tartomány címtartományok ExpressRoute hirdeti meg, hogy a rendszer felülbírálja. Egy udr-t a 0.0.0.0/0 útvonalat egy ExpressRoute-konfigurációt, amelynek segítségével meghirdetheti 0.0.0.0/0 csak együtt kell használni. 
 
-Alternatív megoldásként letöltheti a CIDR-tartományt használja az Azure aktuális, átfogó listáját. Az összes Azure IP-címtartományok esetében az XML-fájlt a [Microsoft Download Center] [DownloadCenterAddressRanges] érhető el.  
+Alternatív megoldásként letöltheti a CIDR-tartományt használja az Azure aktuális, átfogó listáját. Az XML-fájlt az összes Azure IP-címtartományok esetében érhető el a [Microsoft Download Center][DownloadCenterAddressRanges].  
 
 > [!NOTE]
 >
@@ -148,16 +148,23 @@ Most már üzembe helyezése az App Service Environment-környezet készen áll!
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedés az App Service Environment-környezet a PowerApps, lásd: [App Service Environment bemutatása] [IntroToAppServiceEnvironment].
+Ismerkedés az App Service Environment-környezet a PowerApps, lásd: [App Service Environment bemutatása][IntroToAppServiceEnvironment].
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/
 [ExpressRoute]: https://azure.microsoft.com/services/expressroute/
 [requiredports]: app-service-app-service-environment-control-inbound-traffic.md
-[networkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
-<!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ --> [UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell [HowToCreateAnAppServiceEnvironment]: [AzureDownloads] app-service-web-how-to-create-an-app-service-environment.md: https://azure.microsoft.com/downloads/ [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ [IntroToAppServiceEnvironment]: [NewPortal] app-service-app-service-environment-intro.md:  https://portal.azure.com
+<!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ -->
+
+[UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell
+[HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
+[AzureDownloads]: https://azure.microsoft.com/downloads/ 
+[DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
+[NewPortal]:  https://portal.azure.com
 
 
 <!-- IMAGES -->

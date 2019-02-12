@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 43e08298618f059ff706d11ce6bbb3d486642872
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 1515a026ae297a960f220a97449d2258c0b75e58
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292366"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004540"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>A Video Indexer-fiókot az Azure-hoz csatlakoztatott kezelése
 
@@ -75,6 +75,6 @@ Ha a fiók néhány van szüksége, lát kapcsolódó hibák és figyelmeztetés
 
 ## <a name="next-steps"></a>További lépések
 
-Programozott módon kezelheti a próbaverziós fiókjához és/vagy a Video Indexer-fiókokkal, amelyek köti össze az Azure-ban utasításait követve: [használható API-khoz](video-indexer-use-apis.md).
+Programozott módon kezelheti a próbaverziós fiókjához és/vagy a Video Indexer-fiókokkal, amelyek köti össze az Azure-ban utasításait követve: [Az API-kkal](video-indexer-use-apis.md).
 
 Az azonos Azure AD-felhasználót az Azure-ba való kapcsolódáskor használt kell használnia.

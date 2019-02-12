@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 37dd51a60d9ec6e018f58e2cfd593490d126670b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 3dac11ac4409ddde5264307439533bd583d75a9d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888651"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993053"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importálása és exportálása a DNS-zónafájl az Azure CLI használatával 
 
@@ -116,7 +116,7 @@ Ellenőrizze a DNS-zóna, a fájl importálása után, az alábbi módszerek bá
     az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
-* A PowerShell-parancsmag használatával listázhatja a rekordok `Get-AzureRmDnsRecordSet`.
+* Az Azure CLI-paranccsal listázhatja a rekordok `az network dns record-set ns list`.
 * Használhat `nslookup` a rekordok névfeloldás ellenőrzése. Mivel a zóna még nem delegálta, adja meg a megfelelő Azure DNS névkiszolgálóit, explicit módon kell. A következő minta bemutatja, hogyan kérheti le a zóna névkiszolgálóinak neveit. Ez is bemutatja, hogyan kérdezhet le a "www" rekordhalmazhoz a `nslookup`.
 
     ```azurecli
@@ -188,6 +188,6 @@ A zóna importálás, először kell bejelentkezni, válassza ki az előfizetés
 
 A meglévő Azure DNS-zóna exportálása **contoso.com** erőforráscsoportban **myresourcegroup** a fájl **contoso.com.txt** futtassa (az aktuális mappában), `azure network dns zone export`. Ez a parancs meghívja a rekordhalmazok zónában enumerálása, és exportálhatja az eredményeket egy zóna BIND-kompatibilis fájl, az Azure DNS szolgáltatásban.
 
-    ```
-    az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
-    ```
+```
+az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
+```

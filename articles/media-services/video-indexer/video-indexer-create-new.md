@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2f6ceeebd18a91472ee12f04c0ac8e602b05f269
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4a65e88e3f94f64a56bde882b535030968ae354d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197551"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991276"
 ---
 # <a name="create-highlights-from-existing-videos"></a>Kiemelt létrehozása meglévő videókból
 
@@ -27,17 +27,14 @@ Ez a témakör bemutatja, hogyan hozhat létre és tehet közzé videóelemzése
     Az oldal megjeleníti a videó összefoglalt elemzéseit. 
 
     ![Insights](./media/video-indexer-create-new/video-indexer-summarized-insights.png)
-
 3. Kattintson a **Szerkesztés** gombra.
 
     Ez az oldal megjeleníti egy videó teljes lebontását. A lebontás blokkokra van osztva. A blokkok megkönnyítik az adatok áttekintését. A blokkokat például aszerint lehet bontani, hogy mikor váltanak a beszélők, vagy hogy mikor tartanak hosszú szünetet. Létrehozhatja a saját lejátszási listáját, amely csak a kívánt sorokat tartalmazza. Ha csak a forrásvideó bizonyos részeit szeretné megjeleníteni, témakörök/kulcsszavak, hangulatok, személyek és beszélők alapján szűrhet. Dönthet úgy, hogy csak a videó átiratát vagy az OCR-t tekinti meg.    
 
     ![Insights](./media/video-indexer-create-new/video-indexer-create-new-playlist.png)
-
 4. Hozza létre a lejátszási listáját.
 
     A sorok lejátszási listához való hozzáadásához, illetve arról való eltávolításához kattintson a **+**/**-** gombra.
-
 5. Tekintse meg a lejátszási lista előnézetét.
 
     A lejátszási lista létrehozása után kattintson az **Előnézet** gombra.

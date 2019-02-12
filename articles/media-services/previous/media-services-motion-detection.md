@@ -4,21 +4,21 @@ description: Az Azure Media Motion detector használatával médiafeldolgozót. 
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/10/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: 12af87ab0a8b15528acbd9ce8a1bc92f478aba28
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 26090067923c468b7102ac5b7bb78b9d7b7960bb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820971"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995612"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Az Azure Media Analytics mozdulatok észlelése
 ## <a name="overview"></a>Áttekintés
@@ -103,7 +103,7 @@ A következő táblázat ismerteti a kimeneti JSON-fájl elemeinek.
 | Időtartam |Az esemény, a "órajel során végbemenő" hossza. |
 | Intervallum |Az időköz az egyes bejegyzések az eseményben szereplő "órajel során végbemenő". |
 | Események |Minden egyes esemény töredék idő töltött belül észlelt a mozgásban lévő adatoknak egyaránt tartalmazza. |
-| Típus |A jelenlegi verzióban ez a "2" általános mozgásban lévő adatoknak egyaránt. A címke ad Video API-k a rugalmasság kategorizálásának mozgási későbbi verziók. |
+| Typo |A jelenlegi verzióban ez a "2" általános mozgásban lévő adatoknak egyaránt. A címke ad Video API-k a rugalmasság kategorizálásának mozgási későbbi verziók. |
 | RegionID |Amint azt fent kifejtettük, ez mindig 0 lesz ebben a verzióban. Ez a címke rugalmasságot biztosít Video API a mozgásban lévő keresése a későbbi verziókban különböző régiókban. |
 | Régiók |A videó a terület, ahol konkrét mozgásban lévő adatoknak egyaránt vonatkozik. <br/><br/>– az "id" jelöli a régió terület – ebben a verzióban van csak egy, azonosító: 0. <br/>– "type" az Ön számára a mozgásban lévő adatoknak egyaránt régió az alakzat jelöli. Jelenleg a "téglalap" és "sokszög" támogatottak.<br/> "Téglalap" adott meg, ha a régió dimenziók rendelkezik X, Y szélessége és magassága. Az X és Y koordinátái a 0,0 és 1,0 normalizált méretezési régió felső bal XY koordináták képviseli. A szélesség és magasság képviselik a 0,0 és 1,0 a normalizált méretezési terület méretét. A jelenlegi verzió X, Y, szélesség és magasság mindig rögzíteni, 0, 0 és 1, 1. <br/>"Sokszög" adott meg, ha a régió dimenziók pontokat tartalmaz. <br/> |
 | Töredékek |A metaadatok nevű töredék különböző részekre van darabolásos fel. Minden töredék tartalmaz kezdési időpontot, időtartamot, intervallumszámot és esemény(eke)t. Egy kódrészletet az események nem azt jelenti, hogy semmilyen adott kezdő időpontja és időtartama során észlelt. |

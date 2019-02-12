@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: fe22a465c21e9522b70ba307e2ec9772674000f2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 67843efd87e0d1cdd1a392fdd24d29decae093e8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488543"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997005"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban modell eredményeinek értelmezése
 Ez a témakör bemutatja, hogyan jelenítheti meg, és az Azure Machine Learning Studióban az előrejelzés eredményét értelmezik. Miután a betanított modell, és végzett előrejelzések felett ("pontozását a modell"), és az előrejelzési eredmények értelmezése szüksége.
@@ -74,7 +74,7 @@ Nincsenek hat oszlopokat az eredmények táblázatában. A bal oldali négy oszl
 
 **Webes szolgáltatás-közzététel**
 
-Miután előrejelzési eredményeket megértését, és hang pályamű, a kísérlet tehetők közzé webszolgáltatásként üzembe helyezni a különféle alkalmazásokat, és azt osztály alapján, bármely új iris flower történő beszerzéséhez hívja meg. Betanítási kísérlet átalakítása egy pontozó kísérletet, és közzéteheti webszolgáltatásként kapcsolatban lásd: [az Azure Machine Learning webszolgáltatás közzététele](walkthrough-5-publish-web-service.md). Ez az eljárás ismerteti egy pontozó kísérletet a 3. ábrán látható módon.
+Miután előrejelzési eredményeket megértését, és hang pályamű, a kísérlet tehetők közzé webszolgáltatásként üzembe helyezni a különféle alkalmazásokat, és azt osztály alapján, bármely új iris flower történő beszerzéséhez hívja meg. Betanítási kísérlet átalakítása egy pontozó kísérletet, és közzéteheti webszolgáltatásként kapcsolatban lásd: [oktatóanyag 3: Kredit kockázati modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md). Ez az eljárás ismerteti egy pontozó kísérletet a 3. ábrán látható módon.
 
 ![Képernyőkép a pontozási kísérlet](./media/interpret-model-results/3.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Felügyeleti megoldások az Azure Monitor |} A Microsoft Docs
-description: Felügyeleti megoldások az Azure monitorban problémakörrel kapcsolatos egy adott területre metrikákat logikai, megjelenítési és adatgyűjtési szabályok gyűjteményei.  Ez a cikk információt nyújt a telepítését, és felügyeleti megoldásokkal.
+title: Figyelési megoldások az Azure Monitor |} A Microsoft Docs
+description: Monitorozás az Azure Monitor problémakörrel kapcsolatos egy adott területre metrikákat logikai, megjelenítési és adatgyűjtési szabályok gyűjteményei.  Ez a cikk telepítésével és figyelési megoldások használatával információkat biztosít.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,27 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 8a6a679aaf43e4a92eb380368f3d68704853d3a3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ff7d886d3f219d007f159167cacfed1b8ee13863
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816815"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001017"
 ---
-# <a name="management-solutions-in-azure-monitor"></a>Felügyeleti megoldások az Azure monitorban
-Felügyeleti megoldások használhatja a szolgáltatásokat nyújt további betekintést a művelet egy adott alkalmazás vagy szolgáltatás Azure-ban. Ez a cikk az Azure és a részletek megoldások rövid áttekintést nyújt a használatáról, és telepíteni kell őket.
+# <a name="monitoring-solutions-in-azure-monitor"></a>Monitorozás az Azure Monitor
+Figyelési megoldások használhatja a szolgáltatásokat nyújt további betekintést a művelet egy adott alkalmazás vagy szolgáltatás Azure-ban. Ez a cikk röviden bemutatja figyelési megoldások az Azure-ban és a részletek a használatával, és telepíteni kell őket.
 
-Felügyeleti megoldások általában naplóadatokat gyűjthet, és adja meg a lekérdezések és nézetek, elemezheti az összegyűjtött adatokat. Azure Automation és az alkalmazáshoz vagy szolgáltatáshoz kapcsolódó műveleteket, például más szolgáltatások is előfordulhat, hogy kihasználja.
+> [!NOTE]
+> Figyelési megoldások korábban hívtuk felügyeleti megoldások.
 
-Felügyeleti megoldások az Azure monitornak alkalmazások és szolgáltatások hozzáadása. Általában érhetők el, nem tudta meghívni a használati díjak költség azonban gyűjt adatokat. A Microsoft megoldásai mellett partnerei és ügyfelei is [felügyeleti megoldásokat hozhat létre](solutions-creating.md) saját környezetben használja, vagy szeretné elérhetővé tenni az ügyfelek számára, a közösségi.
+Figyelési megoldások általában a naplóadatokat gyűjthet, és adja meg a lekérdezések és nézetek, elemezheti az összegyűjtött adatokat. Azure Automation és az alkalmazáshoz vagy szolgáltatáshoz kapcsolódó műveleteket, például más szolgáltatások is előfordulhat, hogy kihasználja.
 
-## <a name="use-management-solutions"></a>Felügyeleti megoldások használata
-Nyissa meg a **áttekintése** a Log Analytics-munkaterület lapján jelennek meg az egyes megoldások a munkaterületen telepített egy csempét. 
+Figyelési megoldások az Azure monitornak alkalmazások és szolgáltatások hozzáadása. Általában érhetők el, nem tudta meghívni a használati díjak költség azonban gyűjt adatokat. A Microsoft megoldásai mellett partnerei és ügyfelei is [felügyeleti megoldásokat hozhat létre](solutions-creating.md) saját környezetben használja, vagy szeretné elérhetővé tenni az ügyfelek számára, a közösségi.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="use-monitoring-solutions"></a>Monitorozási megoldások használata
+Nyissa meg a **áttekintése** oldal az Azure monitorral az egyes megoldások a munkaterületen telepített-csempe megjelenítése. 
 
 1. Jelentkezzen be az Azure Portalra.
 1. Nyissa meg **minden szolgáltatás** , és keresse meg **figyelő**.
@@ -38,14 +43,14 @@ Nyissa meg a **áttekintése** a Log Analytics-munkaterület lapján jelennek me
 
 ![Áttekintés](media/solutions/overview.png)
 
-Felügyeleti megoldások Azure-erőforrások többféle adattípust tartalmazhat, és a egy megoldással, mint bármely más erőforrást tartalmaz minden olyan erőforrások megtekintéséhez. Például a megoldásban szereplő log lekérdezések vannak felsorolva **megoldás lekérdezések** a [lekérdezéskezelő](../log-query/get-started-portal.md#load-queries) is használhatja ezeket a lekérdezéseket, a Log Analytics alkalmi elemzések végrehajtása során.
+Figyelési megoldások Azure-erőforrások többféle adattípust tartalmazhat, és a egy megoldással, mint bármely más erőforrást tartalmaz minden olyan erőforrások megtekintéséhez. Például a megoldásban szereplő log lekérdezések vannak felsorolva **megoldás lekérdezések** a [lekérdezéskezelő](../log-query/get-started-portal.md#load-queries) is használhatja ezeket a lekérdezéseket, az alkalmi elemzések végrehajtása során [lekérdezések naplózását ](../log-query/log-query-overview.md).
 
-## <a name="list-installed-management-solutions"></a>Telepített felügyeleti megoldások listája 
-Az alábbi eljárás segítségével telepítve az előfizetésében felügyeleti megoldások listája.
+## <a name="list-installed-monitoring-solutions"></a>Figyelési megoldások telepített listázása 
+Az alábbi eljárás segítségével telepítve az előfizetésében a figyelési megoldások listája.
 
 1. Jelentkezzen be az Azure Portalra.
 1. Nyissa meg **minden szolgáltatás** , és keresse meg **megoldások**.
-4. Minden olyan a munkaterületen telepített megoldások jelennek meg. A megoldás nevére van telepítve a Log Analytics-munkaterület neve követi.
+4. Minden olyan a munkaterületen telepített megoldások jelennek meg. A megoldás nevére van telepítve a munkaterület neve követi.
 1. A képernyő tetején a legördülő mezőkben használatával vagy erőforráscsoportonként szűrés.
 
 
@@ -57,12 +62,12 @@ Kattintson az összefoglalás lapon nyissa meg a megoldás nevére. Ezen a lapon
 
 
 
-## <a name="install-a-management-solution"></a>Egy megoldás telepítése
-A Microsoft és partnerei felügyeleti megoldások érhetők el a [Azure Marketplace-en](https://azuremarketplace.microsoft.com). Keresés az elérhető megoldások, és telepítse őket a következő eljárás használatával. Amikor telepít egy megoldást, ki kell választania egy [Log Analytics-munkaterület](../platform/manage-access.md) , a megoldás telepítve lesz, és az adatok hova legyenek összegyűjtve.
+## <a name="install-a-monitoring-solution"></a>Figyelési megoldás telepítése
+A Microsoft és partnerei figyelési megoldások érhetők el a [Azure Marketplace-en](https://azuremarketplace.microsoft.com). Keresés az elérhető megoldások, és telepítse őket a következő eljárás használatával. Amikor telepít egy megoldást, ki kell választania egy [Log Analytics-munkaterület](../platform/manage-access.md) , a megoldás telepítve lesz, és az adatok hova legyenek összegyűjtve.
 
 1. Az a [az előfizetés-megoldások listája](#list-installed-management-solutions), kattintson a **Hozzáadás**. 
 1. Jobb oldalán **felügyeleti megoldások**, kattintson a **további**. 
-1. Keresse meg a felügyeleti megoldást szeretne, majd olvassa el a leírását.
+1. Keresse meg a figyelési megoldást szeretne, majd olvassa el a leírását.
 1. Kattintson a **létrehozás** a telepítési folyamat elindításához.
 1. Amikor a telepítési folyamat elindul, adja meg a szükséges konfigurációs működésmódja egyes megoldások kéri.
 
@@ -81,7 +86,7 @@ A Közösség tagjai küldhet az Azure gyorsindítási sablonok adatkezelési me
 
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-munkaterületet és Automation-fiók
-Az összes felügyeleti megoldások szükséges egy [Log Analytics-munkaterület](../platform/manage-access.md) a megoldás által összegyűjtött adatok tárolására, és a naplókereséseken és nézeteken üzemeltetéséhez. Egyes megoldások is megkövetelheti egy [Automation-fiók](../../automation/automation-security-overview.md#automation-account-overview) a runbookok és kapcsolódó erőforrásokat tartalmaznak. A munkaterületet és fiókot az alábbi követelményeknek kell megfelelnie.
+Figyelési megoldások összes szükséges egy [Log Analytics-munkaterület](../platform/manage-access.md) a megoldás által összegyűjtött adatok tárolására, és a naplókereséseken és nézeteken üzemeltetéséhez. Egyes megoldások is megkövetelheti egy [Automation-fiók](../../automation/automation-security-overview.md#automation-account-overview) a runbookok és kapcsolódó erőforrásokat tartalmaznak. A munkaterületet és fiókot az alábbi követelményeknek kell megfelelnie.
 
 * Minden egyes telepítéséhez, a megoldás csak egy Log Analytics-munkaterület és egy Automation-fiókot használhat. A megoldást külön-külön is telepítheti, több munkaterülettel.
 * Ha a megoldás egy Automation-fiókot igényel, majd a Log Analytics-munkaterületet és Automation-fiók össze kell kapcsolni egymással. Log Analytics-munkaterületet egy Automation-fiók csak lehetnek összekapcsolva, és a egy Automation-fiókot csak egy Log Analytics munkaterülettel lehetnek összekapcsolva.
@@ -100,13 +105,11 @@ Log Analytics-munkaterületet és Automation-fiók az alábbi eljárást követv
 1. Görgessen a **kapcsolódó erőforrások** a menü részét.
 1. Ha a **munkaterület** beállítás engedélyezve van, akkor ezt a fiókot egy Log Analytics-munkaterülethez van csatolva. Kattintson a **munkaterület** a munkaterület részleteinek megtekintéséhez.
 
-## <a name="remove-a-management-solution"></a>Egy megoldás eltávolítása
-Távolítsa el a telepített megoldás, keresse meg a telepített megoldások listáját. Kattintson az összefoglalás lapon megnyitásához, és kattintson a megoldás nevére a **törlése**.
-
-
+## <a name="remove-a-monitoring-solution"></a>Egy figyelési megoldás eltávolítása
+Keresse meg a telepített megoldás eltávolításához a [telepített megoldások listája](#list-installed-monitoring-solutions). Kattintson az összefoglalás lapon megnyitásához, és kattintson a megoldás nevére a **törlése**.
 
 
 ## <a name="next-steps"></a>További lépések
-* Get- [listán, megoldások a Microsoft](solutions-inventory.md).
-* Ismerje meg, hogyan [lekérdezések létrehozása](../../azure-monitor/log-query/log-query-overview.md) felügyeleti megoldások által gyűjtött adatok elemzéséhez.
+* Get- [figyelése a Microsoft megoldásai listája](solutions-inventory.md).
+* Ismerje meg, hogyan [lekérdezések létrehozása](../log-query/log-query-overview.md) figyelési megoldások által gyűjtött adatok elemzéséhez.
 

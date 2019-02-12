@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 3521f910ded2e24de9cfa7b1aa1d635843527ef5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2a9b84b20ab1480c9b0222980cb36c40e8017973
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878816"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989309"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Az Azure SQL Database szolgáltatási csomagjai
 
@@ -30,7 +30,7 @@ Az Azure SQL Database az SQL Server adatbázismotor architektúra, amely 99,99 %
 Ez a cikk ismerteti az általános célú és az üzletileg kritikus szolgáltatási csomagokra a Virtuálismag-alapú vásárlási modell a storage és a biztonsági másolat szempontjai.
 
 > [!NOTE]
-> A Virtuálismag-alapú vásárlási modell a nagy kapacitású szolgáltatásszintre vonatkozó részletekért lásd: [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md). A Virtuálismag-alapú vásárlási modell a DTU-alapú vásárlási modell összehasonlításáért lásd: [vásárlási modellek és az erőforrások az Azure SQL Database](sql-database-service-tiers.md).
+> A Virtuálismag-alapú vásárlási modell a nagy kapacitású szolgáltatásszintre vonatkozó részletekért lásd: [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md). A Virtuálismag-alapú vásárlási modell a DTU-alapú vásárlási modell összehasonlításáért lásd: [vásárlási modellek és az erőforrások az Azure SQL Database](sql-database-purchase-models.md).
 
 ## <a name="data-and-log-storage"></a>Adatok és a naplók tárolásához
 

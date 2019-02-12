@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 300673ffd62324de1207a29551694f12dd84ea93
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: bb64aff27aaacc3523552beb9eada12bdeb37ca8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366369"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995713"
 ---
-# <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>DRM-licencek és az AES-kulcsok az Azure Media Services használatával
+# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>DRM-licencek és az AES-kulcsok a Media Services használatával 
 
 Az Azure Media Services lehetővé teszi, hogy a betöltési, kódolás, adja hozzá a content protection és a tartalmak streamelésére. További információkért lásd: [használja a PlayReady és/vagy Widevine dynamic common Encryption titkosítás](media-services-protect-with-playready-widevine.md). Egyes ügyfeleknek érdemes használni a Media Services csak való kézbesítéséhez, licencek és/vagy a kulcsok és kódolása, titkosítása és adatfolyam-azok a helyszíni kiszolgálók használatával. Ez a cikk bemutatja, hogyan használhatja a Media Services PlayReady és/vagy Widevine-licencek, de a többi tegye a helyszíni kiszolgálókkal. 
 

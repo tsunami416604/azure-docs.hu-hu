@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan,moslake
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 189b6bc3de4cc17d16c18baf046c5ede9b6363a2
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 670ca1b8ba16122d4e969a41f8679e1a6d1b27c6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962656"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990104"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Az Azure SQL Database-kiszolgálóhoz tartozó SQL Database erőforráskorlátok
 
@@ -77,5 +77,5 @@ Amikor magas munkamenet vagy feldolgozói kihasználtság, kockázatcsökkentés
 ## <a name="next-steps"></a>További lépések
 
 - Azure – általános korlátozások kapcsolatos információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
-- További információ a dtu-król és edtu-k: [dtu-król és edtu-k](sql-database-service-tiers.md#dtu-based-purchasing-model).
+- További információ a dtu-król és edtu-k: [dtu-król és edtu-k](sql-database-purchase-models.md#dtu-based-purchasing-model).
 - A tempdb méretbeli korlátokat kapcsolatos információkért lásd: [Azure SQL Database-ben a TempDB](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

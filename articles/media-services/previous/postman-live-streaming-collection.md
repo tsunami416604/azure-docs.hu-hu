@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6e931e8c3696b53724d7893100bb1749856f04f9
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 98c687b620aea484a4ced1385d7a2301db55ce79
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976352"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998450"
 ---
-# <a name="import-a-postman-collection-with-live-streaming-operations-legacy"></a>Az élő adatfolyam-műveletek (örökölt) a Postman-gyűjtemény importálása
+# <a name="import-a-postman-collection-with-live-streaming-operations"></a>Az élő adatfolyam-műveletek a Postman-gyűjtemény importálása 
 
 Ez a cikk a definíciót tartalmaz a **Postman** gyűjteményt, amely tartalmazza a csoportosított HTTP-kérelmek Ez a meghívás **Live Streaming** Azure Media Services REST API-k. Konfigurálásával kapcsolatos információkat **Postman** így is használható a Media Services REST API-k meghívása, lásd: [Postman konfigurálása a Media Services REST API-hívások](media-rest-apis-with-postman.md) oktatóanyag.
 

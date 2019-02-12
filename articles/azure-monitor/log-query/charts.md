@@ -1,6 +1,6 @@
 ---
-title: Diagramok és ábrák létrehozása az Azure Log Analytics-lekérdezések |} A Microsoft Docs
-description: Az Azure Log Analytics az adatokat különböző módon megjeleníthető különböző Vizualizációk ismerteti.
+title: Diagramok és ábrák létrehozása az Azure Monitor log-lekérdezések |} A Microsoft Docs
+description: Az Azure monitort a naplózási adatokat különböző módon különböző Vizualizációk ismerteti.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 049e50f5800194c4126003f7e5ff7ae60b3de768
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 381e8361d31660d90eaee3f7a500139af1ef2a82
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186225"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992984"
 ---
-# <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Diagramok és ábrák hoz létre a Log Analytics-lekérdezések
+# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Diagramok és ábrák létrehozása az Azure Monitor log-lekérdezések
 
 > [!NOTE]
-> Hajtsa végre [speciális összesítések a Log Analytics-lekérdezések](advanced-aggregations.md) ebben a leckében befejezése előtt.
+> Hajtsa végre [speciális összesítések az Azure Monitor log-lekérdezések](advanced-aggregations.md) ebben a leckében befejezése előtt.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ez a cikk ismerteti az Azure Log Analytics az adatokat különböző módon megjeleníthető különféle vizualizációkat.
+Ez a cikk ismerteti az Azure monitort a naplózási adatokat különböző módon különféle vizualizációkat.
 
 ## <a name="charting-the-results"></a>Az eredmények diagramkészítési
 Indítsa el vannak egy operációs rendszer, az elmúlt órában hány számítógép áttekintésével:
@@ -93,7 +93,7 @@ Az az oszlop nevét a legördülő listára kattintva válthat között.
 ![Sávdiagram AccountType](media/charts/charts-and-diagrams-multiDimension2.png)
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a Log Analytics lekérdezési nyelv segítségével a többi leckék:
+Tekintse meg a többi leckéket a [adatkezelő lekérdezési nyelv](/azure/kusto/query/) adatok naplózása az Azure Monitor szolgáltatással:
 
 - [Karakterlánc-műveletek](string-operations.md)
 - [Dátum és idő műveletek](datetime-operations.md)

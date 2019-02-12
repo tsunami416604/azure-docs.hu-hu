@@ -16,18 +16,16 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7c9672f1692f8b632a72efbfa1ffadade2074af5
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3e54db65725c66f2b411cccfa5432cc82804c61f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975857"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001085"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>IIS-es virtuális gép létrehozása a PowerShell-lel
 
 Ez a szkript egy Windows Server 2016-ot futtató Azure-beli virtuális gépet hoz létre, majd az Azure Virtual Machine egyéni szkriptbővítménnyel telepíti az IIS-t. A szkript futtatása után az alapértelmezett IIS-webhelyet a virtuális gép nyilvános IP-címén érheti el.
-
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

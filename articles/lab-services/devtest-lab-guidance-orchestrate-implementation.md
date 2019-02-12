@@ -3,21 +3,23 @@ title: Koordinálhatja a megvalósítását az Azure DevTest Labs szolgáltatás
 description: Ez a cikk nyújt útmutatást a szervezet az Azure DevTest Labs vezénylésével végrehajtásához.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
-author: spelluru
+author: christianreddington
 manager: femila
+editor: spelluru
 ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
-ms.author: spelluru
-ms.openlocfilehash: 61ec9d0639f4bee950be69ee951492974ac95c64
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 02/11/2019
+ms.author: chredd
+ms.reviewer: anthdela,juselph
+ms.openlocfilehash: 1e657260eeb36dc813f856ab172882a396324450
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867474"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004434"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Koordinálhatja az Azure DevTest Labs megvalósítása
 Ebben a cikkben javasolt módszert biztosít a gyors üzembe helyezési és az Azure DevTest Labs megvalósítását. Az alábbi képen területdiagram általános eljárásait, előírásszerű útmutató a különböző iparági követelményeknek és forgatókönyveknek támogató rugalmasságot szem előtt tartásával.
@@ -27,11 +29,11 @@ Ebben a cikkben javasolt módszert biztosít a gyors üzembe helyezési és az A
 ## <a name="assumptions"></a>Előfeltételek
 Ez a cikk azt feltételezi, hogy már működik a következő elemeket a DevTest Labs irányító implementálása előtt:
 
-- **Azure-előfizetés**: A próbacsapat férhet hozzá az Azure-előfizetésben helyezi üzembe az erőforrásokat. Ha a számítási feladatok csak fejlesztési és tesztelési célra, azt javasoljuk, hogy válassza ki a vállalati DevTest-ajánlat elérhető további rendszerképeket és az alacsonyabb díjszabás, Windows virtuális gépeken.
+- **Azure-előfizetés**: A kísérleti csapat rendelkezik hozzáféréssel egy Azure-előfizetésben helyezi üzembe az erőforrásokat. Ha a számítási feladatok csak fejlesztési és tesztelési célra, azt javasoljuk, hogy válassza ki a vállalati DevTest-ajánlat elérhető további rendszerképeket és az alacsonyabb díjszabás, Windows virtuális gépeken.
 - **Helyszíni hozzáférés**: Ha szükséges, a helyszíni hozzáférés már konfigurálva van. A helyszíni hozzáférés Express Route vagy helyek közötti VPN-kapcsolat keresztül valósítható meg. Express Route kapcsolatok általában hetet is igénybe vehet számos létesíteni, azt javasoljuk, hogy az Expressroute rendelkeznek a projekt indítása előtt.
-- **Próbacsapat csapatok**: A kezdeti fejlesztéshez project nak DevTest Labs használó együtt a megfelelő fejlesztési és tesztelési tevékenységek lett azonosítva, és a követelmények/célok és célkitűzések ezeket csapatok létesíteni.
+- **Próbacsapat csapatok**: A kezdeti fejlesztéshez project nak DevTest Labs használó együtt a megfelelő fejlesztési és tesztelési tevékenységek lett azonosítva, és hozza létre a követelmények/célok és célkitűzések ezeket csapatok számára.
 
-## <a name="milestone-1-establish-initial-network-topology-and-design"></a>1. fázisú: Létesíteni a kezdeti hálózati topológia és kialakítás
+## <a name="milestone-1-establish-initial-network-topology-and-design"></a>1. fázisú: Kezdeti hálózati topológia és kialakítás
 Az Azure DevTest Labs-megoldás üzembe helyezésekor fókusz első területéhez, hogy a virtuális gépek tervezett kapcsolatot. A szükséges eljárások lépései:
 
 1. Definiálása **az első IP-címtartományok** az Azure DevTest Labs-előfizetéshez társított. Ez a lépés szükséges előrejelzés a várható használat, a virtuális gépek számát, így megadhatja egy elegendő nagyságú jövőbeli bővítés céljából.
@@ -50,7 +52,7 @@ Miután a hálózati topológia van beállítva, az első/próbaüzem tesztlabor
 6. Döntse el, a nyilvános vagy privát adattárak vagy mindkettőt. JSON-sablonok rendszerezésére központi telepítések és a hosszú távú sustainment.
 7. Ha szükséges, egyéni összetevők létrehozása. Ez a lépés nem kötelező. 
 
-## <a name="milestone-3-documentation-support-learn-and-improve"></a>3. fázisú: Dokumentáció, támogatás, ismerje meg, és javíthatja a
+## <a name="milestone-3-documentation-support-learn-and-improve"></a>3. fázisú: Dokumentáció, támogatási, ismerje meg, és javítása
 A kezdeti kísérleti csapatok első lépések részletes támogatást kérhet. Használjon személyre, vonatkozó dokumentáció és támogatás helyen az Azure DevTest Labs szolgáltatásban a folyamatos bevezetését.
 
 1. A kísérleti csapat bevezetése új DevTest Labs erőforrásaik (bemutatók, dokumentáció)
@@ -60,4 +62,4 @@ A kezdeti kísérleti csapatok első lépések részletes támogatást kérhet. 
 5. Győződjön meg, hogy a megfelelő megfelelőségi és biztonsági felülvizsgálat elvégzése után
 
 ## <a name="next-steps"></a>További lépések
-Ez a sorozat következő cikkében talál: [irányítás az Azure DevTest Labs-infrastruktúra](devtest-lab-guidance-governance-resources.md)
+Ez a sorozat következő cikkében talál: [Irányítás az Azure DevTest Labs-infrastruktúra](devtest-lab-guidance-governance-resources.md)

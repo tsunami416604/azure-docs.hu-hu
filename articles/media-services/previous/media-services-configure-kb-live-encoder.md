@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/04/2018
+ms.date: 02/08/2019
 ms.author: juliako;dbgeorge
-ms.openlocfilehash: f6d4fcf5e6ec8029bb0e7c303849fdceef5bace7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1672eb2ef0db36c9b30ca444fa4224eb1afbe828
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012088"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998484"
 ---
-# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Az élő Haivision KB kódoló használatával egy egyféle sávszélességű élő adatfolyamot küldeni
+# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Az élő Haivision KB kódoló használatával egy egyféle sávszélességű élő adatfolyamot küldeni  
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Haivision](media-services-configure-kb-live-encoder.md)
@@ -44,7 +44,7 @@ Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) az 
 * Jó tapasztalatok forrássávszélesség követelményeinek meghatározásakor, hogy a streamelési bitsebességre való átkódolása duplán. Bár ez nem kötelezők, segít a hálózati torlódás hatásainak mérséklése érdekében.
 * Szoftveralapú kódolók használatáról, amikor el minden felesleges programot zárja be.
 
-## <a name="create-a-channel"></a>Új csatorna létrehozása
+## <a name="create-a-channel"></a>Csatorna létrehozása
 1. Az AMSE eszköz navigáljon a **élő** lapra, majd kattintson a jobb gombbal a csatorna területen belül. Válassza ki **csatorna létrehozása...** a menüből.
 [Haivision](./media/media-services-configure-kb-live-encoder/channel.png)
 2. Adjon meg egy csatorna nevét, a Leírás mező kitöltése nem kötelező. Csatorna beállítások területén válassza ki a **Standard** a Live Encoding funkcióval beállítást is választja, a bemeneti protokoll beállítása **RTMP**. Hagyhatja, hogy a többi beállítás-jébe. Győződjön meg arról, hogy a **most indítsa el az új csatorna** van kiválasztva.
@@ -59,30 +59,30 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
 
 Videó:
 -   Kodek: H.264
--   Profil: High (4.0-s szint)
+-   Profil: Nagy (4.0-s szint)
 -   Átviteli sebesség: 5000 KB/s
 -   Kulcsképkocka: 2 másodperc (60 keretek)
--   Keret arány: 30
+-   Képkockasebesség: 30
 
 Hang:
--   Kodekkel: Az AAC (LC)
+-   Kodek: AAC (LC)
 -   Átviteli sebesség: 192 Kb/s
 -   Mintavételi gyakoriság: 44,1 kHz
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések
 1.  Jelentkezzen be a Haivision KB-os felhasználói felület.
 2.  Kattintson a a **menügombra** a csatorna vezérlőközpont, és válasszon **Add-csatorna**  
-    ![Kattintás a 2017-08-14: 9.15.09 AM.png](./media/media-services-configure-kb-live-encoder/step2.png)
+    ![Képernyőkép – 2017-08-14 9.15.09 kor:](./media/media-services-configure-kb-live-encoder/step2.png)
 3.  Írja be a **csatorna neve** nevét a mezőbe, és kattintson a Tovább gombra.  
-    ![Kattintás a 2017-08-14: 9.19.07 AM.png](./media/media-services-configure-kb-live-encoder/step3.png)
+    ![Képernyőkép – 2017-08-14 9.19.07 kor:](./media/media-services-configure-kb-live-encoder/step3.png)
 4.  Válassza ki a **csatorna bemeneti forrás** származó a **bemeneti forrás** listából, és kattintson a Tovább gombra.
-    ![Kattintás a 2017-08-14: 9.20.44 AM.png](./media/media-services-configure-kb-live-encoder/step4.png)
+    ![Képernyőkép – 2017-08-14 9.20.44 kor:](./media/media-services-configure-kb-live-encoder/step4.png)
 5.  Az a **kódoló sablon** listából válasszon **H264-720-AAC-192** , és kattintson a Tovább gombra.
-    ![Kattintás a 2017-08-14: 9.23.15 AM.png](./media/media-services-configure-kb-live-encoder/step5.png)
+    ![Képernyőkép – 2017-08-14 9.23.15 kor:](./media/media-services-configure-kb-live-encoder/step5.png)
 6.  Az a **válassza ki az új kimeneti** válassza a legördülő **RTMP** , és kattintson a Tovább gombra.  
-    ![Kattintás a 2017-08-14: 9.27.51 AM.png](./media/media-services-configure-kb-live-encoder/step6.png)
+    ![Képernyőkép – 2017-08-14 9.27.51 kor:](./media/media-services-configure-kb-live-encoder/step6.png)
 7.  Az a **csatorna kimeneti** ablakban töltse ki az Azure stream információkat. Illessze be a **RTMP** a kezdeti csatorna beállításai hivatkozásait a **kiszolgáló** területen. Az a **Kimenetnév** területen írja be a csatorna nevét. A Stream sablon területen a sablon RTMPStreamName_ video_bitrate % használatával nevezze el a streamet.
-    ![Kattintás a 2017-08-14: 9.33.17 AM.png](./media/media-services-configure-kb-live-encoder/step7.png)
+    ![Képernyőkép – 2017-08-14 9.33.17 kor:](./media/media-services-configure-kb-live-encoder/step7.png)
 8.  Kattintson a Tovább gombra, majd kattintson a Kész gombra.
 9.  Kattintson a **lejátszás gombra** a kódoló channel indítására.  
     ![Haivision KB.png](./media/media-services-configure-kb-live-encoder/step9.png)

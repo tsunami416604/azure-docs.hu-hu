@@ -1,5 +1,5 @@
 ---
-title: Az Azure Log Analytics Microsoft Flow-folyamatok automatizálása
+title: Az Azure Monitor log Microsoft Flow-folyamatok automatizálása
 description: Ismerje meg, hogyan használhatja fel a Microsoft Flow megismételhető folyamatok gyors automatizálása az Azure Log Analytics-összekötő használatával.
 services: log-analytics
 documentationcenter: ''
@@ -11,26 +11,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: 441064d6cbb5b3b2fae77caef3125c8db3467553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f38d9b40143391be34ce5f72627720e2f5119dc6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187449"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993775"
 ---
-# <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Az összekötő a Log Analytics folyamatok automatizálása a Microsoft Flow
-[Microsoft Flow](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletek használatával a különböző szolgáltatások, automatizált munkafolyamatokat hozhat létre. Egy művelet kimenete egy másik lehetővé teszi, hogy hozzon létre a különböző szolgáltatások közötti integráció bemeneteként használható.  Az Azure Log Analytics-összekötő a Microsoft Flow munkafolyamatok tartalmazó naplókeresések a Log Analytics által lekért adatok létrehozását teszik lehetővé.
+# <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Az összekötő az Azure Monitor log-folyamatok automatizálása a Microsoft Flow
+[Microsoft Flow](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletek használatával a különböző szolgáltatások, automatizált munkafolyamatokat hozhat létre. Egy művelet kimenete egy másik lehetővé teszi, hogy hozzon létre a különböző szolgáltatások közötti integráció bemeneteként használható.  Az Azure Log Analytics-összekötő a Microsoft Flow lehetővé teszi a Log Analytics-munkaterületet az Azure Monitor log-lekérdezések által beolvasott adatokat tartalmazó munkafolyamatokat építhet rájuk.
 
-Használhatja például a Microsoft Flow-Log Analytics-adatok használata az Office 365 e-mailben értesítést, hibajelentés létrehozása az Azure DevOps, vagy egy Slack-üzenet küldése.  Egy munkafolyamat olyan egyszerű ütemezés szerint vagy néhány művelet, például a levelezés, vagy a tweet érkezésekor egy csatlakoztatott szolgáltatásban is indíthat.  
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Ebben a cikkben az oktatóanyag bemutatja, hogyan hozhat létre egy folyamatot, amely automatikusan elküldi az e-mailhez, csupán egy példa, hogyan használhatja a Log Analytics a Microsoft Flow egy Log Analytics naplóbeli keresés eredményeit. 
+Használhatja például a Microsoft Flow LAzure figyelő naplóadatok használja az Office 365 e-mailben értesítést, hibajelentés létrehozása az Azure DevOps, vagy egy Slack-üzenet küldése.  Egy munkafolyamat olyan egyszerű ütemezés szerint vagy néhány művelet, például a levelezés, vagy a tweet érkezésekor egy csatlakoztatott szolgáltatásban is indíthat.  
+
+Ebben a cikkben az oktatóanyag bemutatja, hogyan hozhat létre egy folyamatot, amely automatikusan elküldi az e-mailhez, csupán egy példa, hogyan használhatja a Log Analytics-összekötő a Microsoft Flow az Azure Monitor log-lekérdezés eredményeit. 
 
 
 ## <a name="step-1-create-a-flow"></a>1. lépés: Folyamat létrehozása
 1. Jelentkezzen be a [Microsoft Flow](https://flow.microsoft.com), és válassza ki **saját folyamatok**.
 2. Kattintson a **+ üres folyamat létrehozása**.
 
-## <a name="step-2-create-a-trigger-for-your-flow"></a>2. lépés: A folyamat eseményindító létrehozása
+## <a name="step-2-create-a-trigger-for-your-flow"></a>2. lépés: A folyamat eseményindító létrehozása
 1. Kattintson a **keresés több száz összekötő és trigger között**.
 2. Típus **ütemezés** kifejezést a keresőmezőbe.
 3. Válassza ki **ütemezés**, majd válassza ki **ütemezés – ismétlődés**.
@@ -45,7 +47,7 @@ Ebben a cikkben az oktatóanyag bemutatja, hogyan hozhat létre egy folyamatot, 
 ## <a name="step-4-configure-the-log-analytics-action"></a>4. lépés: Konfigurálja a Log Analytics-műveletet
 
 1. Adja meg a munkaterület, beleértve az előfizetés Azonosítóját, erőforráscsoport, és a munkaterület neve.
-2. Adja hozzá a következő Log Analytics-lekérdezés a **lekérdezés** ablak.  Ez a mintalekérdezés, és lecserélheti bármely más, amely adatokat ad vissza.
+2. Adja hozzá a következő log lekérdezés a **lekérdezés** ablak.  Ez a mintalekérdezés, és lecserélheti bármely más, amely adatokat ad vissza.
 ```
     Event
     | where EventLevelName == "Error" 
@@ -77,7 +79,7 @@ Ebben a cikkben az oktatóanyag bemutatja, hogyan hozhat létre egy folyamatot, 
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [Log Analytics naplóbeli kereséseivel](../../azure-monitor/log-query/log-query-overview.md).
+- Tudjon meg többet [lekérdezések jelentkezzen be az Azure Monitor](../log-query/log-query-overview.md).
 - Tudjon meg többet [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

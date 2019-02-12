@@ -11,19 +11,19 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ea7f32a08a6a183bac21436e7d58afe10c4d7b20
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.date: 02/08/2019
+ms.openlocfilehash: d08deda0483516180b9923838104cfb6596e7495
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756648"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003295"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Az Azure SQL Database-kiszolgálók és azok kezelése
 
 ## <a name="what-is-an-azure-sql-database-server"></a>Mi az Azure SQL Database kiszolgáló
 
-Egy SQL Database-kiszolgáló egy logikai szerkezet, amely több önálló központi felügyeleti pontjaként működik vagy [készletezett](sql-database-elastic-pool.md) adatbázisok [bejelentkezések](sql-database-manage-logins.md), [tűzfalszabályok](sql-database-firewall-configure.md), [szabályok naplózás](sql-database-auditing.md), [fenyegetésészlelési szabályzatok](sql-database-threat-detection.md), és [feladatátvételi csoportok](sql-database-auto-failover-group.md) egy SQL Database-kiszolgáló lehet egy másik régióban, mint az erőforráscsoport. Az SQL Database-kiszolgálóhoz az Azure SQL database létrehozása előtt léteznie kell. Egy SQL Database-kiszolgáló által kezelt összes adatbázis belül és az SQL Database-kiszolgáló ugyanabban a régióban jönnek létre.
+Egy SQL Database-kiszolgáló egy logikai szerkezet, amely több egyetlen központi felügyeleti pontjaként működik vagy [készletezett](sql-database-elastic-pool.md) adatbázisok [bejelentkezések](sql-database-manage-logins.md), [tűzfalszabályok](sql-database-firewall-configure.md), [szabályok naplózás](sql-database-auditing.md), [fenyegetésészlelési szabályzatok](sql-database-threat-detection.md), és [feladatátvételi csoportok](sql-database-auto-failover-group.md) egy SQL Database-kiszolgáló lehet egy másik régióban, mint az erőforráscsoport. Az SQL Database-kiszolgálóhoz az Azure SQL database létrehozása előtt léteznie kell. Egy SQL Database-kiszolgáló által kezelt összes adatbázis belül és az SQL Database-kiszolgáló ugyanabban a régióban jönnek létre.
 
 Egy SQL Database-kiszolgáló SQL Server-példányt, akkor előfordulhat, hogy ismernie kell a helyszíni világ különbözik. Pontosabban az SQL Database szolgáltatás lehetővé teszi az adatbázisok az SQL Database-kiszolgáló kezeli őket, és nem példányszintű hozzáférést és funkciókat tesz elérhetővé viszonyítva helyére vonatkozó nincs garancia. Ezzel szemben a felügyelt példány példány adatbázisai minden közös elhelyezésű –, hogy Ön ismeri a helyszíni világ SQL Serverrel azonos módon.
 

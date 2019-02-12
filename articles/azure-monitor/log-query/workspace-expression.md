@@ -1,6 +1,6 @@
 ---
-title: az Azure Log Analytics lekérdezési Workspace() kifejezés |} A Microsoft Docs
-description: A munkaterület kifejezés szolgál a Log Analytics-lekérdezés-adatokat lekérni egy adott munkaterület ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot vagy egy másik előfizetést.
+title: az Azure Monitor naplólekérdezés Workspace() kifejezés |} A Microsoft Docs
+description: A munkaterület-kifejezés szerepel az Azure Monitor log-lekérdezés adatokat lekérni egy adott munkaterület ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot vagy egy másik előfizetést.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: 24a737a728b0a249fda76cbff481bea284ac24aa
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1d1bb3c99c82683dde9247da86e80d800fe06631
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53182944"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992983"
 ---
-# <a name="workspace-expression-in-log-analytics-query"></a>a Log Analytics-lekérdezés Workspace() kifejezés
+# <a name="workspace-expression-in-azure-monitor-log-query"></a>az Azure Monitor naplólekérdezés Workspace() kifejezés
 
-A `workspace` kifejezés szolgál a Log Analytics-lekérdezés adatokat lekérni egy adott munkaterület ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot vagy egy másik előfizetést. Ez akkor hasznos, foglalja több munkaterületről hajthat végre, a napló lekérdezésben Teljesítménynapló-adatok az Application Insights-lekérdezés, valamint a használatával adatokat lekérdezni.
+A `workspace` kifejezés szerepel az Azure Monitor lekérdezés adatokat lekérni egy adott munkaterület ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot vagy egy másik előfizetést. Ez akkor hasznos, foglalja több munkaterületről hajthat végre, a napló lekérdezésben Teljesítménynapló-adatok az Application Insights-lekérdezés, valamint a használatával adatokat lekérdezni.
 
 
 ## <a name="syntax"></a>Szintaxis
 
-`workspace(`*azonosító*`)`
+`workspace(`*Identifier*`)`
 
 ## <a name="arguments"></a>Argumentumok
 
@@ -36,9 +36,9 @@ A `workspace` kifejezés szolgál a Log Analytics-lekérdezés adatokat lekérni
 | Azonosító | Leírás | Példa
 |:---|:---|:---|
 | Erőforrás neve | A munkaterület (AVAGY "összetevő neve") emberi olvasható neve | Workspace("contosoretail") |
-| Minősített név | A munkaterület az űrlap a teljes név: "subscriptionName/resourceGroup/componentName" | Workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| ID (Azonosító) | A munkaterület GUID | Workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
-| Azure-erőforrás azonosítója | Az Azure-erőforrás azonosítója | Workspace("/Subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/Providers/Microsoft.OperationalInsights/Workspaces/contosoretail") |
+| Minősített név | A munkaterület az űrlap a teljes név: "subscriptionName/resourceGroup/componentName" | workspace('Contoso/ContosoResource/ContosoWorkspace') |
+| ID (Azonosító) | A munkaterület GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| Azure-erőforrás azonosítója | Az Azure-erőforrás azonosítója | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
 ## <a name="notes"></a>Megjegyzések
@@ -71,5 +71,6 @@ union
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a [alkalmazás kifejezés](workspace-expression.md) , tekintse meg az Application Insights alkalmazást.
-- Megtudhatja, hogyan lehet [Log Analytics-adatok](../../azure-monitor/log-query/log-query-overview.md) tárolja.
+- Tekintse meg a [alkalmazás kifejezés](app-expression.md) hivatkozik egy Application Insights alkalmazást.
+- Megtudhatja, hogyan lehet [Azure Monitor adatok](log-query-overview.md) tárolja.
+- A teljes dokumentációt eléréséhez a [adatkezelő lekérdezési nyelv](/azure/kusto/query/).

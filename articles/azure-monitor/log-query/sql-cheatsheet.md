@@ -1,6 +1,6 @@
 ---
-title: SQL-t az Azure Log Analytics-nyelvi segédletünkkel |} A Microsoft Docs
-description: Közös funkciók használata a Log Analytics-lekérdezéseket a különböző helyzetekhez.
+title: SQL-t az Azure Monitor log-lekérdezés Adatlap |} A Microsoft Docs
+description: Segít a jól ismert SQL-felhasználók számára az Azure Monitor log-lekérdezések írásának módját.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 35438644842d5280bd789efa135805ba9943cb8b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 121f9ff602907e64bba0c98342e38477109e9294
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183047"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993663"
 ---
-# <a name="sql-to-log-analytics-query-language-cheat-sheet"></a>SQL-t a Log Analytics lekérdezési nyelv – Adatlap 
+# <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL-t az Azure Monitor log-lekérdezés – Adatlap 
 
-Az alábbi táblázat segít a felhasználóknak, akik jól ismerik a Log Analytics lekérdezési nyelv tudnivalók az SQL. Rendelkezik egy pillantást egy gyakori forgatókönyvek és a Log Analytics használatával egyenértékű megoldására szolgáló a T-SQL paranccsal.
+Az alábbi táblázat segít a felhasználóknak, akik ismerik az SQL-napló lekérdezéseket írni az Azure monitorban adatkezelő lekérdezési nyelv tudnivalók. Rendelkezik egy pillantást a T-SQL parancsot egy olyan gyakori helyzetet és az Azure Monitor log-lekérdezést az azzal egyenértékű megoldására.
 
-## <a name="sql-to-log-analytics"></a>A Log Analyticshez való SQL
+## <a name="sql-to-azure-monitor"></a>SQL-t az Azure Monitor
 
-Leírás                             |SQL-lekérdezés                                                                                          |Az Azure Log Analytics-lekérdezés
+Leírás                             |SQL Query                                                                                          |Az Azure Monitor naplólekérdezés
 ----------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------
 Válassza ki az összes adat a táblázatból            |`SELECT * FROM dependencies`                                                                       |<code>dependencies</code>
 Válassza ki az adott oszlopok egy táblából    |`SELECT name, resultCode FROM dependencies`                                                        |<code>dependencies <br>&#124; project name, resultCode</code>
@@ -40,7 +40,7 @@ Dátum összehasonlítása: dátumtartománya             |`SELECT * FROM depend
 Logikai összehasonlítása                      |`SELECT * FROM dependencies WHERE !(success)`                                                      |<code>dependencies <br>&#124; where success == "False" </code>
 Rendezés                                    |`SELECT name, timestamp FROM dependencies ORDER BY timestamp asc`                                  |<code>dependencies <br>&#124; order by timestamp asc </code>
 Különböző                                |`SELECT DISTINCT name, type  FROM dependencies`                                                    |<code>dependencies <br>&#124; summarize by name, type </code>
-Csoportosítás, az összesítés                   |`SELECT name, AVG(duration) FROM dependencies GROUP BY name`                                       |<code>dependencies <br>&#124; summarize avg(duration) by name </code>
+Grouping, Aggregation                   |`SELECT name, AVG(duration) FROM dependencies GROUP BY name`                                       |<code>dependencies <br>&#124; summarize avg(duration) by name </code>
 Oszlopaliasnévként kiterjesztése                  |`SELECT operation_Name as Name, AVG(duration) as AvgD FROM dependencies GROUP BY name`             |<code>dependencies <br>&#124; summarize AvgD=avg(duration) by operation_Name <br>&#124; project Name=operation_Name, AvgD</code>
 Felső n recrods mérték által                |`SELECT TOP 100 name, COUNT(*) as Count FROM dependencies GROUP BY name ORDER BY Count asc`        |<code>dependencies <br>&#124; summarize Count=count() by name <br>&#124; top 100 by Count asc</code>
 Union                                   |`SELECT * FROM dependencies UNION SELECT * FROM exceptions`                                        |<code>union dependencies, exceptions</code>
@@ -50,4 +50,4 @@ Csatlakozás                                    |`SELECT * FROM dependencies JOI
 
 ## <a name="next-steps"></a>További lépések
 
-- A lecke meg a [lekérdezések írása a Log Analytics](get-started-queries.md).
+- A lecke meg a [log lekérdezések írásának módját az Azure monitorban](get-started-queries.md).

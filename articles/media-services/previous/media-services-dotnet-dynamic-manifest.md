@@ -1,10 +1,10 @@
 ---
 title: Szűrők létrehozása az Azure Media Services .NET SDK-val
-description: Ez a témakör ismerteti, az ügyfél használhassa őket adott szakaszaival adatfolyam adatfolyam-szűrők létrehozásához. A Media Services dinamikus jegyzékfájlokban eléréséhez a szelektív streaming hoz létre.
+description: Ez a témakör azt ismerteti, hogyan hozhatók létre szűrők, így az ügyfél használhatja őket stream konkrét szakaszokra datového proudu. A Media Services dinamikus jegyzékek érdekében, ami a szelektív hoz létre.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 2f6894ca-fb43-43c0-9151-ddbb2833cafd
 ms.service: media-services
@@ -12,40 +12,40 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 02/09/2019
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 04e6a1ac9b1fc94388580f03c6767da3da226c3a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2ee2e85188c4294060ef3effdc2d443f604aff61
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788542"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003329"
 ---
-# <a name="creating-filters-with-azure-media-services-net-sdk"></a>Szűrők létrehozása az Azure Media Services .NET SDK-val
+# <a name="creating-filters-with-media-services-net-sdk-legacy"></a>Szűrők létrehozása a Media Services .NET SDK-val (örökölt)
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-2.17 kiadástól kezdve a Media Services lehetővé teszi az eszközök szűrőit. Ezek a szűrők, amelyek lehetővé teszik a felhasználói számára többek között a megteheti a kiszolgálóoldali szabályok: lejátszás videó (és nem a teljes videó lejátszása) részt vagy a hang- és interpretációk, amelyet a felhasználói eszköz kezelni tud (ahelyett, hogy csak egy részét minden a interpretációk társított adategységet). Ez a szűrés a eszközök sorrendekben **dinamikus Manifest**khoz, az ügyfél kérésre videó adatfolyam jönnek létre a megadott szűrő alapján.
+2.17 kiadástól kezdve, a Media Services lehetővé teszi az eszközök szűrőket határozhat meg. Ezeket a szűrőket, amelyek lehetővé teszik az ügyfelek úgy dönteni, hogy többek között a kiszolgálóoldali szabályok: lejátszási csak egy részét (helyett egész videó lejátszásának), videó vagy hang- és verzió, amely a felhasználói eszköz képes kezelni (nem pedig csak egy részhalmazát adja meg az összes a beállításkészletben az eszközhöz társított). Ez a szűrés az eszközök a gazdafájlon keresztül **dinamikus Manifest**, amelyek létrejönnek a videó továbbításához a felhasználói kérésre megadott szűrő(k) alapján.
 
-Részletesebb szűrőket és dinamikus Manifest kapcsolatos adatokat, lásd: [dinamikus jelentkezik áttekintése](media-services-dynamic-manifest-overview.md).
+Részletesebb szűrők és dinamikus Manifest kapcsolatos információkért lásd: [dinamikus jegyzékfájlok áttekintése](media-services-dynamic-manifest-overview.md).
 
 Ez a cikk bemutatja, hogyan létrehozása, frissítése és törlése a szűrők a Media Services .NET SDK használatával. 
 
-Vegye figyelembe, ha frissíti a szűrőt, streamvégpontra frissítéséhez a szabályok akár két percet is igénybe vehet. Ha a tartalom állítása és kiszolgálása között szűrővel (és proxyk és a CDN a gyorsítótárba helyezett gyorsítótárak), player hibák frissítése a szűrő eredményezhet. A gyorsítótár tartalmának mindig a szűrő frissítése után. Ha ezt a beállítást nem lehetséges, érdemes lehet egy másik szűrőt. 
+Vegye figyelembe, ha frissíti a szűrőt, streamvégpont szabályok frissítése akár két percet is igénybe vehet. Ha a tartalom kiszolgálása szűrővel (és a proxyk és a CDN gyorsítótárazza a gyorsítótárak), player hibák frissítése ezzel a szűrővel eredményezhet. Mindig törölje a gyorsítótárat a szűrő frissítése után. Ha ezt a beállítást nem lehetséges, fontolja meg egy másik szűrővel. 
 
-## <a name="types-used-to-create-filters"></a>-Szűrők létrehozásához használt
-A következő típusok használhatók szűrők létrehozásakor: 
+## <a name="types-used-to-create-filters"></a>Szűrők létrehozásához használt típusok
+A következő típusok használhatók a szűrők létrehozásakor: 
 
-* **IStreamingFilter**.  Ez a típus alapján a következő REST API [szűrő](https://docs.microsoft.com/rest/api/media/operations/filter)
-* **IStreamingAssetFilter**. Ez a típus alapján a következő REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**. Ez a típus alapján a következő REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** és **IFilterTrackPropertyCondition**. Ezek a típusok a következő REST API-k alapuló [FilterTrackSelect és FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **IStreamingFilter**.  Ez a típus a következő REST API alapján [szűrő](https://docs.microsoft.com/rest/api/media/operations/filter)
+* **IStreamingAssetFilter**. Ez a típus a következő REST API alapján [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**. Ez a típus a következő REST API alapján [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** és **IFilterTrackPropertyCondition**. Ezek a típusok alapján a következő REST API-k [FilterTrackSelect és FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
-## <a name="createupdatereaddelete-global-filters"></a>Létrehozás/frissítés/olvasás/törlés globális szűrők
-A következő kód bemutatja, hogyan .NET segítségével létrehozhatja, frissítheti, olvassa el, és törli az eszköz szűrők.
+## <a name="createupdatereaddelete-global-filters"></a>Globális szűrők létrehozása/frissítése/olvasása/törlése
+A következő kód bemutatja, hogyan .NET létrehozása, frissítése, olvassa el, és törölni az eszközintelligencia szűrők.
 
 ```csharp
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
@@ -74,8 +74,8 @@ A következő kód bemutatja, hogyan .NET segítségével létrehozhatja, friss�
     filter.Delete();
 ```
 
-## <a name="createupdatereaddelete-asset-filters"></a>Létrehozás/frissítés/olvasás/törlés eszköz szűrők
-A következő kód bemutatja, hogyan .NET segítségével létrehozhatja, frissítheti, olvassa el, és törli az eszköz szűrők.
+## <a name="createupdatereaddelete-asset-filters"></a>Szűrők létrehozása/frissítése/olvasása és törlése eszköz
+A következő kód bemutatja, hogyan .NET létrehozása, frissítése, olvassa el, és törölni az eszközintelligencia szűrők.
 
 ```csharp
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
@@ -106,20 +106,20 @@ A következő kód bemutatja, hogyan .NET segítségével létrehozhatja, friss�
 ```
 
 
-## <a name="build-streaming-urls-that-use-filters"></a>Build a streaming URL-szűrők használata
-Információ közzétételére, és az eszközök: [ügyfelek áttekintés a tartalom továbbítása](media-services-deliver-content-overview.md).
+## <a name="build-streaming-urls-that-use-filters"></a>Build a streaming URL-címeket, a szűrők használata
+Hogyan tehet közzé, és az eszközök a további információkért lásd: [tartalom továbbítása az ügyfelek áttekintése](media-services-deliver-content-overview.md).
 
-A következő példák bemutatják, hogyan szűrők hozzáadása a streamelési URL-címeket.
+Az alábbi példák bemutatják, hogyan szűrők felvétele a streamelési URL-címeket.
 
 **MPEG DASH** 
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP élő adatfolyam-továbbítási (HLS) V4**
+**Apple HTTP Live Streaming (HLS) V4**
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
-**Apple HTTP élő adatfolyam-továbbítási (HLS) V3**
+**Apple HTTP Live Streaming (HLS) V3**
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
@@ -135,5 +135,5 @@ A következő példák bemutatják, hogyan szűrők hozzáadása a streamelési 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[Dinamikus jegyzékfájlokban áttekintése](media-services-dynamic-manifest-overview.md)
+[A dinamikus jegyzékek áttekintése](media-services-dynamic-manifest-overview.md)
 

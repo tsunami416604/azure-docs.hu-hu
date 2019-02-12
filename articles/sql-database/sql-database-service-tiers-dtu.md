@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database szolgáltatási szinteken - DTU |} A Microsoft Docs
-description: További tájékoztatás a szolgáltatáscsomagokról méretű számítási és tárolási méretek egyetlen vagy készletezett adatbázisok.
+title: Az Azure SQL Database szolgáltatási szinteken - DTU-alapú vásárlási modell |} A Microsoft Docs
+description: Ismerje meg a szolgáltatási szintekről az egyetlen vagy készletezett adatbázisok biztosít számítási és tárolási méretek esetében a DTU-alapú vásárlási modell.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -11,22 +11,22 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6319deb36088317cb289134b7068720e97cb10b7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/08/2019
+ms.openlocfilehash: b960e0f670b66ea1759da441e7b1cf53151de7f6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507654"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993602"
 ---
-# <a name="dtu-based-service-tiers"></a>DTU-alapú szolgáltatásszintek
+# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Szolgáltatási szinten a DTU-alapú vásárlási modell
 
-DTU-alapú szolgáltatásszintek különbözteti meg a belefoglalt tárterület, a megőrzési időszak a biztonsági mentések és a rögzített ár rögzített rögzített méretű számítási méretű által. Összes szolgáltatási szint módosításának számítási méretek állásidő nélkül rugalmasságot biztosítanak. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, a szolgáltatási szint és a számítási méret.
+Szolgáltatási szinten a DTU-alapú vásárlási modell által meghatározott memóriamennyiséggel rendelkeznek a csomagban foglalt tárhely, a megőrzési időszak a biztonsági mentések és a rögzített ár rögzített számítási méretű különbözteti meg. Minden szolgáltatási szinten a DTU-alapú vásárlási modell a számítási méret állásidő nélkül változó rugalmasságot biztosítanak. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, a szolgáltatási szint és a számítási méret.
 
 > [!IMPORTANT]
-> SQL Database felügyelt példányába, jelenleg nyilvános előzetes verziója nem támogatja a DTU-alapú vásárlási modell. További információkért lásd: [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md).
+> Az SQL Database felügyelt példány nem támogatja a DTU-alapú vásárlási modell. További információkért lásd: [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md).
 > [!NOTE]
-> További információ a Virtuálismag-alapú szolgáltatásszintek: [Virtuálismag-alapú szolgáltatásszintek](sql-database-service-tiers-vcore.md). További információ a DTU-alapú szolgáltatásszintek és a Virtuálismag-alapú szolgáltatásszintek sokoldalúbbá: [vásárlási modellek az Azure SQL Database](sql-database-service-tiers.md).
+> További információ a Virtuálismag-alapú szolgáltatásszintek: [Virtuálismag-alapú szolgáltatásszintek](sql-database-service-tiers-vcore.md). További információ a DTU-alapú szolgáltatásszintek és a Virtuálismag-alapú szolgáltatásszintek sokoldalúbbá: [vásárlási modellek az Azure SQL Database](sql-database-purchase-models.md).
 
 ## <a name="compare-the-dtu-based-service-tiers"></a>A DTU-alapú szolgáltatásszintek összehasonlítása
 
@@ -34,8 +34,8 @@ Szolgáltatásszint kiválasztása elsődlegesen az üzleti folytonosság, táro
 
 ||Alapszintű|Standard|Prémium|
 | :-- | --: |--:| --:| --:|
-|Egyes számítási feladatokhoz|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek||
-|SLA-ban garantált üzemidő|99.99%|99.99%|99.99%|Nincs előzetes verzióban|
+|Egyes számítási feladatokhoz|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek|
+|SLA-ban garantált üzemidő|99.99%|99.99%|99.99%|
 |Biztonsági mentés megőrzése|7 nap|35 napon belül|35 napon belül|
 |CPU|Alacsony|Alacsony, közepes, nagy|Közepes, nagy|
 |IO-átviteli sebesség (becsült) |2,5 dtu-k IOPS| 2,5 dtu-k IOPS | Dtu-k 48 IOPS|
@@ -49,12 +49,12 @@ Szolgáltatásszint kiválasztása elsődlegesen az üzleti folytonosság, táro
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Önálló adatbázis DTU- és tárterületi korlátozásai
 
-A számítási méret az önálló adatbázisok adatbázis-tranzakciós egységek (dtu-k) és a rugalmas Database Transaction Unitok (Edtu) rugalmas készletek vannak kifejezve. További információ a dtu-król és Edtu-: [DTU-alapú vásárlási modell](sql-database-service-tiers.md#dtu-based-purchasing-model)?
+A számítási méret az önálló adatbázisok adatbázis-tranzakciós egységek (dtu-k) és a rugalmas Database Transaction Unitok (Edtu) rugalmas készletek vannak kifejezve. További információ a dtu-król és Edtu-: [DTU-alapú vásárlási modell](sql-database-purchase-models.md#dtu-based-purchasing-model)?
 
 ||Alapszintű|Standard|Prémium|
 | :-- | --: | --: | --: | --: |
 | Maximális tárterület méretét | 2 GB | 1 TB | 4 TB  |
-| Maximális dtu-k | 5 | 3000 | 4000 | |
+| Maximális dtu-k | 5 | 3000 | 4000 | 
 ||||||
 
 > [!IMPORTANT]
@@ -88,7 +88,7 @@ A teljesítményteszt és a módszereket ismerteti részletesebben az alábbi.
 
 ### <a name="benchmark-summary"></a>Számításiteljesítmény-mérési összefoglaló
 
-ASDB többféle, az online tranzakciófeldolgozási (OLTP) munkaterhelések leggyakrabban előforduló alapszintű adatbázis-műveletek teljesítményének méri. Bár a teljesítményteszt a felhő-számítástechnika a szem előtt, az adatbázis-séma, az adatokkal való feltöltés célja, és a tranzakciók széles körben reprezentatívnak a leggyakrabban használt OLTP számítási feladatokat a alapszintű elemek is úgy lett kialakítva.
+A teljesítményteszt többféle, az online tranzakciófeldolgozási (OLTP) munkaterhelések leggyakrabban előforduló alapszintű adatbázis-műveletek teljesítményének méri. Bár a teljesítményteszt a felhő-számítástechnika a szem előtt, az adatbázis-séma, az adatokkal való feltöltés célja, és a tranzakciók széles körben reprezentatívnak a leggyakrabban használt OLTP számítási feladatokat a alapszintű elemek is úgy lett kialakítva.
 
 ### <a name="schema"></a>Séma
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2aabdc503a694de46796b7c3afeedfcdb2f39ca9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 810d1bf6a550539b402721d089d8b041cfb48634
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037864"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991453"
 ---
 # <a name="change-the-reserved-unit-type"></a>A fenntartott egység típusának módosítása
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "51037864"
 
 ## <a name="overview"></a>Áttekintés
 
-A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő Fenntartott egység típusok közül választhat: **S1**, **S2** vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett.
+A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: **S1**, **S2**, vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett.
 
 A Fenntartott egység típusának meghatározása mellett megadhatja, hogy ellátja-e a fiókot **Fenntartott egységekkel** (RU-kkal). A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát.
 
@@ -53,7 +53,7 @@ Ha módosítani szeretné a fenntartott egység típusának és a szolgáltatás
    
     A kijelölt fenntartott egység típusának számára fenntartott egységek számát módosításához használja a **Media kiszolgált egységek** a képernyő tetején lévő csúszkával.
    
-    Módosíthatja a **FENNTARTOTT egység TÍPUSSAL**, kattintson a a **fenntartott feldolgozási egységek sebessége** sáv. Ezután válassza ki a tarifacsomagot kell: S1, S2 vagy S3.
+    Módosíthatja a **FENNTARTOTT egység TÍPUSSAL**, kattintson a a **fenntartott feldolgozási egységek sebessége** sáv. Ezután válassza ki a tarifacsomagot van szüksége: S1, S2 vagy S3.
    
 3. A módosítások mentéséhez kattintson a SAVE (Mentés) gombra.
    

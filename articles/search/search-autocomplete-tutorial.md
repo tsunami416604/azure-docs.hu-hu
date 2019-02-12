@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az automatikus kiegészítés, a keresési mezőbe – Azure Search hozzáadása
-description: Az adatközpontú alkalmazások végfelhasználói élménye javításának példái az Azure Search automatikus kitöltésével és javaslati API-kkal.
+title: Az oktatóanyag, hogyan adhat hozzá a keresési mezőbe – Azure Search automatikus kiegészítési funkciója
+description: Példák az Azure Search automatikus kiegészítés és a javaslatok API-k használatával adatközpontú alkalmazások a végfelhasználói élmény javítása érdekében.
 manager: pablocas
 author: mrcarter8
 services: search
@@ -10,18 +10,23 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: a0b4301177fa1307244a784031ec890b9a20f01a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: de48f3129beba31f80f5bd4d0c131b28f2b1c91a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099108"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997164"
 ---
-# <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Oktatóanyag: Automatikus kiegészítés, a keresési mezőbe, használja az Azure Search hozzáadása
+# <a name="tutorial-add-autocomplete-to-your-search-box-using-azure-search"></a>Oktatóanyag: A keresőmezőbe, az Azure Search használatával ad hozzá az automatikus kiegészítés
 
-Ez az oktatóanyag ismerteti, hogyan használhatja a [javaslatokat](https://docs.microsoft.com/rest/api/searchservice/suggestions), az [automatikus kitöltést](https://docs.microsoft.com/rest/api/searchservice/autocomplete) és az [aspektusokat](search-faceted-navigation.md) az [Azure Search REST API-ban](https://docs.microsoft.com/rest/api/searchservice/) és a [.NET SDK-ban](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) egy hatékony keresőmező felépítéséhez. A *javaslatok* a tényleges találatokat ajánlanak annak alapján, amit a felhasználó eddig begépelt. Az *automatikus kitöltés*, amely az Azure Search [új előzetes verziójú funkciója](search-api-preview.md), kifejezéseket nyújt az indexből, amelyekkel kiegészíthető a felhasználó által jelenleg beírt kifejezés. Több módszert hasonlítunk össze a felhasználói termelékenység növelése és a keresett elemek gyors és könnyű megtalálása érdekében. Ehhez közvetlenül biztosítjuk a felhasználónak a beíráskor a keresés gazdag funkcióit.
+Ebben az oktatóanyagban, megtudhatja, hogyan használandó [javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggestions), [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) és [metszettel](search-faceted-navigation.md) a a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) és [.NET SDK-val](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) hozhat létre hatékony keresőmezőbe. 
 
-Ez az oktatóanyag végigvezeti egy ASP.NET MVC-alapú alkalmazáson, amely C# nyelven hívja meg az [Azure Search .NET-ügyfélkódtárakat](https://aka.ms/search-sdk), és JavaScript nyelven hívja meg közvetlenül az Azure Search REST API-t. Az alkalmazás ebben az oktatóanyagban [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) mintaadatokkal feltöltött indexet céloz. Használhatja az NYC Jobs bemutatóban már konfigurált indexet, vagy feltöltheti a saját indexét a NYCJobs mintamegoldásban található adatbetöltővel. A minta a [jQuery felhasználói felületet](https://jqueryui.com/autocomplete/) és az [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) JavaScript-kódtárakat használja az automatikus kitöltést támogató keresőmező felépítéséhez. Ezekkel az összetevőkkel és az Azure Search használatával több példát lát arra, hogyan támogathatja az automatikus kitöltést gépelés közbeni javaslatokkal a keresőmezőben.
++ A *javaslatok* a tényleges találatokat ajánlanak annak alapján, amit a felhasználó eddig begépelt. 
++ *Az automatikus kiegészítés*, [új előzetes verziójú funkció](search-api-preview.md) biztosít az Azure Search szolgáltatásban a feltételek végrehajtásához, mi a felhasználó van éppen írja be az indexből. 
+
+Beírása a keresési gazdagsága oldhatnak közvetlenül a felhasználó a felhasználói hatékonyság növelése érdekében több technikák fogjuk összehasonlítani.
+
+Ez az oktatóanyag végigvezeti egy ASP.NET MVC-alapú alkalmazáson, amely C# nyelven hívja meg az [Azure Search .NET-ügyfélkódtárakat](https://aka.ms/search-sdk), és JavaScript nyelven hívja meg közvetlenül az Azure Search REST API-t. Az alkalmazás ebben az oktatóanyagban [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) mintaadatokkal feltöltött indexet céloz. Használhatja az NYC Jobs bemutatóban már konfigurált indexet, vagy feltöltheti a saját indexét a NYCJobs mintamegoldásban található adatbetöltővel. A példa a [jQuery felhasználói felület](https://jqueryui.com/autocomplete/) és [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) hozhat létre egy keresőmező, amely támogatja az automatikus kiegészítés JavaScript-kódtárakat. Ezek az összetevők mellett az Azure Search használatával, láthatja a több példát bemutatja, hogyan támogatja az automatikus kiegészítés, a szövegkiegészítéses kifejezést a keresőmezőbe.
 
 A következő feladatokat fogja elvégezni:
 
@@ -29,8 +34,8 @@ A következő feladatokat fogja elvégezni:
 > * A megoldás letöltése és konfigurálása
 > * Keresési szolgáltatás információinak hozzáadása alkalmazásbeállításokhoz
 > * Keresésbeviteli mező megvalósítása
-> * Távoli forrásból lekérést végző automatikus kitöltési lista támogatásának hozzáadása 
-> * Javaslatok lekérése és automatikus kitöltés a .NET SDK és a REST API használatával
+> * Az automatikus kiegészítés lista, amely lekéri az távoli forrásból történő támogatása 
+> * Javaslatok és az automatikus kiegészítés használata a .net SDK-t és a REST API
 > * Ügyféloldali gyorsítótárazás támogatása a hatékonyabb működés érdekében 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -60,7 +65,7 @@ Kövesse a jelen szakasz lépéseit, ha a saját indexébe szeretné importálni
 
 ### <a name="running-the-sample"></a>A minta futtatása
 
-Most már készen áll az oktatóanyag mintaalkalmazásának futtatására.  Nyissa meg az AutocompleteTutorial.sln megoldásfájlt a Visual Studióban az oktatóanyag futtatásához.  A megoldás egy ASP.NET MVC-projektet tartalmaz.  A projekt futtatásához és az oldal kiválasztott böngészőbe való betöltéséhez nyomja le az F5 billentyűt.  A képernyő felső részén látni fogja a C# vagy JavaScript kiválasztásának lehetőségét.  A C# lehetőség meghívja a HomeController elemet a böngészőből, és az Azure Search .Net SDK-val lekéri az eredményeket.  A JavaScript lehetőség közvetlenül a böngészőből hívja be az Azure Search REST API-t.  Ezt a beállítást általában észrevehetően jobb teljesítmény érdekében fog rendelkezni, mivel a tartományvezérlő a folyamat nem vesz igénybe.  Kiválaszthatja az igényeinek és a nyelvi beállításainak megfelelő lehetőséget.  Az oldalon szerepel néhány automatikus kitöltési példa, mindegyikhez némi útmutatással.  Mindegyik példa javasolt mintaszöveggel rendelkezik, amelyet kipróbálhat.  Próbáljon meg beírni néhány betűt a keresőmezőkbe, és figyelje meg, mi történik.
+Most már készen áll az oktatóanyag mintaalkalmazásának futtatására.  Nyissa meg az AutocompleteTutorial.sln megoldásfájlt a Visual Studióban az oktatóanyag futtatásához.  A megoldás egy ASP.NET MVC-projektet tartalmaz.  A projekt futtatásához és az oldal kiválasztott böngészőbe való betöltéséhez nyomja le az F5 billentyűt.  A képernyő felső részén látni fogja a C# vagy JavaScript kiválasztásának lehetőségét.  A C# lehetőség meghívja a HomeController elemet a böngészőből, és az Azure Search .Net SDK-val lekéri az eredményeket.  A JavaScript lehetőség közvetlenül a böngészőből hívja be az Azure Search REST API-t.  Ezt a beállítást általában észrevehetően jobb teljesítmény érdekében fog rendelkezni, mivel a tartományvezérlő a folyamat nem vesz igénybe.  Kiválaszthatja az igényeinek és a nyelvi beállításainak megfelelő lehetőséget.  Nincs olyan automatikus kiegészítés néhány példa a lapon minden egyes útmutatása alapján.  Mindegyik példa javasolt mintaszöveggel rendelkezik, amelyet kipróbálhat.  Próbáljon meg beírni néhány betűt a keresőmezőkbe, és figyelje meg, mi történik.
 
 ## <a name="how-this-works-in-code"></a>Ennek működése kódban
 
@@ -78,7 +83,7 @@ Ez egy egyszerű beviteli szövegmező egy stilizálási osztállyal, egy azonos
 
 ### <a name="javascript-code-c"></a>JavaScript-kód (C#)
 
-A C# nyelven írt minta JavaScriptet használ az Index.cshtml fájlban, hogy kiaknázza a jQuery felhasználói felületi automatikus kitöltési kódtár előnyeit.  Ez a kódtár adja a keresőmező automatikus kitöltési felületét. Ehhez aszinkron hívásokat végez az MVC-vezérlőhöz a javaslatok lekéréséhez.  Lássuk az első példa JavaScript-kódját:
+A C# nyelven írt minta JavaScriptet használ az Index.cshtml fájlban, hogy kiaknázza a jQuery felhasználói felületi automatikus kitöltési kódtár előnyeit.  Ebben a könyvtárban azáltal, hogy az MVC-vezérlő asynchronní volání kanálu javaslatokat beolvasni az automatikus kiegészítés élmény hozzáadja a keresőmezőbe.  Lássuk az első példa JavaScript-kódját:
 
 ```javascript
 $(function () {
@@ -93,13 +98,13 @@ $(function () {
 });
 ```
 
-Ez a kód a böngészőben fut az oldal betöltésekor az „example1a” beviteli mező automatikus kitöltése konfigurálásának érdekében.  A `minLength: 3` biztosítja, hogy a javaslatok csak akkor legyenek láthatóak, amikor legalább három karakter van a keresőmezőben.  A forrásérték nagyon fontos:
+Ez a kód konfigurálása az automatikus kiegészítés az "example1a" beviteli mezőt a betöltés fut a böngészőben.  A `minLength: 3` biztosítja, hogy a javaslatok csak akkor legyenek láthatóak, amikor legalább három karakter van a keresőmezőben.  A forrásérték nagyon fontos:
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=false&",
 ```
 
-Ez a sor közli az automatikus kitöltési API-val, hogy hol találja a keresőmezőben megjelenítendő elemek listáját.  Mivel ez egy MVC-projekt, a Suggest függvényt hívja meg a HomeController.cs fájlban.  A következő szakaszban ezt részletesebben tárgyaljuk.  Néhány paramétert is továbbít a kiemelések, az intelligens egyeztetések és a kifejezés vezérléséhez.  Az automatikus kitöltés JavaScript API hozzáadja a kifejezés paraméterét.
+Ez a sor jelzi az automatikus kiegészítés API hová a keresőmező alatt megjelenítendő elemek listájának beolvasása.  Mivel ez egy MVC-projekt, a Suggest függvényt hívja meg a HomeController.cs fájlban.  A következő szakaszban ezt részletesebben tárgyaljuk.  Néhány paramétert is továbbít a kiemelések, az intelligens egyeztetések és a kifejezés vezérléséhez.  Az automatikus kiegészítés JavaScript API hozzáadása a kifejezés paramétert.
 
 #### <a name="extending-the-sample-to-support-fuzzy-matching"></a>A minta kibővítése az intelligens egyeztetés támogatása érdekében
 
@@ -164,7 +169,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 A Suggest függvény két paramétert vesz fel, amelyek meghatározzák, hogy a rendszer a találatok kiemeléseit adja vissza, vagy intelligens egyeztetést használ a keresési kifejezés bevitele mellett.  A metódus egy SuggestParameters objektumot hoz létre, amelyet azután a javaslati API-nak továbbít. A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 (Választható) Adjon hozzá egy töréspontot a Suggest függvény elejéhez, és lépegessen végig a kódon.  Figyelje meg az SDK által visszaadott választ, és hogy a rendszer hogyan alakítja át a metódusból visszaadott eredménnyé.
 
-Az oldalon lévő egyéb példák ugyanezt a mintát követik a találatok kiemeléséhez, az automatikus kitöltés javaslatainak előre begépelt szövegéhez és az aspektusokhoz, amelyek az automatikus kitöltési eredmények ügyféloldali gyorsítótárazását támogatják.  Nézze át ezeket, hogy megértse, hogyan működnek, és hogyan használhatók a keresés során.
+Az oldalon az egyéb példák hozzáadni kiemelését, gépelés közbeni automatikus kiegészítés javaslatokat, és értékkorlátozással támogatja az ügyféloldali gyorsítótárazást az automatikus kiegészítés eredmények, nyomja le az ugyanezt a mintát kövesse.  Nézze át ezeket, hogy megértse, hogyan működnek, és hogyan használhatók a keresés során.
 
 ### <a name="javascript-language-example"></a>JavaScript nyelvű példa
 
@@ -204,15 +209,15 @@ $(function () {
 });
 ```
 
-Ha összehasonlítja ezt a kezdőlapvezérlőt meghívó fenti példával, több hasonlóságot láthat.  A `minLength` és a `position` automatikus kitöltési konfigurációja pontosan ugyanolyan.  Itt a forrás a jelentős különbség.  A kezdőlapvezérlőben a Suggest metódus meghívása helyett egy REST-kérés jön létre egy JavaScript-függvényben, és a végrehajtása az ajax használatával történik.  A választ a rendszer ezután „sikeresen” feldolgozza, és a forrásként használja.
+Ha összehasonlítja ezt a kezdőlapvezérlőt meghívó fenti példával, több hasonlóságot láthat.  Az automatikus kiegészítés konfigurációja `minLength` és `position` ugyanazok, pontosan.  Itt a forrás a jelentős különbség.  A kezdőlapvezérlőben a Suggest metódus meghívása helyett egy REST-kérés jön létre egy JavaScript-függvényben, és a végrehajtása az ajax használatával történik.  A választ a rendszer ezután „sikeresen” feldolgozza, és a forrásként használja.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Ez az oktatóanyag az automatikus kitöltést és a javaslatokat támogató keresőmező felépítésének alapvető lépéseit ismerteti.  Látta, hogyan készíthet ASP.NET MVC-alkalmazást, és hogyan használhatja az Azure Search .Net SDK-t vagy a REST API-t a javaslatok lekéréséhez.
+Ez az oktatóanyag bemutatja az alapvető lépéseken, amellyel egy keresőmező, amely támogatja az automatikus kiegészítés és javaslatokat.  Látta, hogyan készíthet ASP.NET MVC-alkalmazást, és hogyan használhatja az Azure Search .Net SDK-t vagy a REST API-t a javaslatok lekéréséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-A javaslatok és az automatikus kitöltés integrálása a keresési felületre.  Annak megfontolása, hogy a .Net SDK vagy a REST API közvetlen használata hogyan segíthet abban, hogy gépelés közben biztosítsa az Azure Search funkcióit a felhasználóknak a hatékonyabb munka érdekében.
+Javaslatok és az automatikus kiegészítés integrálása a keresési funkciót.  Annak megfontolása, hogy a .Net SDK vagy a REST API közvetlen használata hogyan segíthet abban, hogy gépelés közben biztosítsa az Azure Search funkcióit a felhasználóknak a hatékonyabb munka érdekében.
 
 > [!div class="nextstepaction"]
 > [Automatikus kitöltés REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)

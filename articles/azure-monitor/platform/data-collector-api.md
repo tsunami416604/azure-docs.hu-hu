@@ -1,6 +1,6 @@
 ---
-title: Log Analytics HTTP adatgyűjtő API |} A Microsoft Docs
-description: A Log Analytics HTTP-adatgyűjtő API segítségével POST JSON-adatok hozzáadása a Log Analytics-adattárban a bármely ügyfélnek, amely az REST API-t. Ez a cikk azt ismerteti, hogyan használható az API, és rendelkezik az adatok közzététele a különböző programozási nyelvekhez példái.
+title: Az Azure Monitor HTTP adatgyűjtő API |} A Microsoft Docs
+description: Az Azure Monitor HTTP-adatgyűjtő API segítségével POST JSON-adatok hozzáadása a Log Analytics-munkaterület bármely ügyfélnek, amely az REST API-t. Ez a cikk azt ismerteti, hogyan használható az API, és rendelkezik az adatok közzététele a különböző programozási nyelvekhez példái.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,23 +13,25 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: bwren
-ms.openlocfilehash: 9fe25821d5a234326570b1681807c6f9dfd6ffc8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 918cfb36c3afb9fc5c9a3f2c25b7c14b04354db1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211100"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002199"
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analytics és a HTTP-adatgyűjtő API (nyilvános előzetes verzió)
-Ez a cikk bemutatja, hogyan adatokat küldeni a Log Analytics REST API-ügyfél-nak a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és rendelkezik a Log Analytics által engedélyezett kérelmet.  A példák a PowerShell, a C# és Python.
+# <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Napló adatokat küldeni a HTTP-adatgyűjtő API (nyilvános előzetes verzió) az Azure Monitor
+Ez a cikk bemutatja, hogyan Teljesítménynapló-adatok küldése az Azure monitornak a REST API-ügyfél a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és engedélyezte az Azure Monitor kérelmet.  A példák a PowerShell, a C# és Python.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 > [!NOTE]
-> A Log Analytics HTTP-adatgyűjtő API jelenleg nyilvános előzetes verzióban.
+> Az Azure Monitor HTTP-adatgyűjtő API jelenleg nyilvános előzetes verzióban.
 
 ## <a name="concepts"></a>Alapelvek
-A HTTP-adatgyűjtő API segítségével adatokat küldeni a Log Analytics minden ügyfélről, amely segítségével meghívhatja a REST API-t.  Ez lehet egy runbook az Azure Automationben, hogy a gyűjtő felügyeleti adatait az Azure vagy egy másik felhőt, vagy lehet egy másik felügyeleti rendszer, amely a konszolidálhatja és elemezheti a Log Analytics segítségével.
+A HTTP-adatgyűjtő API használhatja az Azure monitorban Log Analytics-munkaterület bármely ügyfélnek, amely segítségével meghívhatja a REST API-t a napló adatokat küldeni.  Ez lehet egy runbook az Azure Automationben, hogy a gyűjtő felügyeleti adatait az Azure vagy egy másik felhőt, vagy lehet egy másik felügyeleti rendszer, amely az Azure Monitor használatával konszolidálhatja és elemezheti a naplófájlok adatait.
 
-A Log Analytics-adattárban lévő összes adatot egy rekord, egy adott rekord típusa van tárolva.  Küldhet a HTTP-adatgyűjtő API több rekord JSON-fájlban, az adatok formázása.  Elküldi az adatokat, amikor egy adott rekord jön létre minden egyes rekord, a kérelem hasznos adatainak a tárházban.
+A Log Analytics-munkaterületen található összes adatot egy rekord, egy adott rekord típusa van tárolva.  Küldhet a HTTP-adatgyűjtő API több rekord JSON-fájlban, az adatok formázása.  Elküldi az adatokat, amikor egy adott rekord jön létre minden egyes rekord, a kérelem hasznos adatainak a tárházban.
 
 
 ![A HTTP adatgyűjtő áttekintése](media/data-collector-api/overview.png)
@@ -62,7 +64,7 @@ A HTTP-adatgyűjtő API használatához hozzon létre egy POST-kérelmet, amely 
 | time-generated-field |Az adatok, amely tartalmazza az időbélyeget, az elem egy mező nevét. Ha megad egy mezőt, akkor a tartalmát használt **TimeGenerated**. Ha ez a mező nincs megadva, alapértelmezett **TimeGenerated** az az idő, az üzenet betöltött. A mező tartalma követnie kell az ISO 8601 formátum éééé-hh-DDThh:mm:ssZ. |
 
 ## <a name="authorization"></a>Engedélyezés
-A Log Analytics HTTP-adatgyűjtő API minden kérelem engedélyeztetési fejléc tartalmaznia kell. Hitelesíteni a kérelmet, be kell jelentkeznie a kérelmet az elsődleges vagy másodlagos kulcsát a munkaterületet, amely a kérés küldője. Ezt követően adja át az aláírást a kérés részeként.   
+Bármely, az Azure Monitor HTTP-adatgyűjtő API-kérésnek tartalmaznia engedélyeztetési fejléc. Hitelesíteni a kérelmet, be kell jelentkeznie a kérelmet az elsődleges vagy másodlagos kulcsát a munkaterületet, amely a kérés küldője. Ezt követően adja át az aláírást a kérés részeként.   
 
 Az engedélyezési fejléc formátuma a következő:
 
@@ -130,24 +132,24 @@ Kötegelt együtt, egyetlen kérelem több rekord a következő formátum haszn�
 ```
 
 ## <a name="record-type-and-properties"></a>Typ záznamu és tulajdonságok
-Amikor küld adatokat a Log Analytics HTTP-adatgyűjtő API keresztül megadhat egy egyéni rekord típusa. Jelenleg nem ír adatokat a meglévő erőforrásrekord-típusok létrehozott egyéb adattípusok és a megoldások által. Log Analytics beolvassa a bejövő adatokat, és létrehozza a tulajdonságokat, amelyek megfelelnek a megadott értékekben adattípusát.
+Megadhat egy egyéni rekordtípus adatokat az Azure Monitor HTTP-adatgyűjtő API keresztül elküldésekor. Jelenleg nem ír adatokat a meglévő erőforrásrekord-típusok létrehozott egyéb adattípusok és a megoldások által. Az Azure Monitor beolvassa a bejövő adatokat, és ezután hoz létre, amelyek megfelelnek a megadott értékek adatok típusú tulajdonságok.
 
-A Log Analytics API minden kérésnek tartalmaznia kell egy **naplótípus** adattípus nevű fejléc. Az utótag **_CL** automatikusan a rendszer hozzáfűzi a nevét, adja meg, hogy megkülönböztesse a többi napló esetében, egy egyéni naplót. Például, ha a név megadása **MyNewRecordType**, a Log Analytics a típusú rekordot hoz létre **MyNewRecordType_CL**. Ezzel biztosíthatja, hogy nem lesznek ütközések a felhasználó által létrehozott típusnevek és mások által szállított aktuális vagy jövőbeli Microsoft-megoldások között.
+A Data Collector API minden kérésnek tartalmaznia kell egy **naplótípus** adattípus nevű fejléc. Az utótag **_CL** automatikusan a rendszer hozzáfűzi a nevét, adja meg, hogy megkülönböztesse a többi napló esetében, egy egyéni naplót. Például, ha a név megadása **MyNewRecordType**, az Azure Monitor típusú rekordot hoz létre **MyNewRecordType_CL**. Ezzel biztosíthatja, hogy nem lesznek ütközések a felhasználó által létrehozott típusnevek és mások által szállított aktuális vagy jövőbeli Microsoft-megoldások között.
 
-A tulajdonság adattípusát azonosításához, a Log Analytics hozzáadja egy utótagot a tulajdonság nevét. Ha egy tulajdonság null értéket tartalmaz, a tulajdonság nem szerepel az adott rekord. Ez a táblázat felsorolja a tulajdonságadat típusa és a megfelelő utótag:
+Azonosíthatja a tulajdonságadat típusa, az Azure Monitor utótag hozzáadása a tulajdonság nevét. Ha egy tulajdonság null értéket tartalmaz, a tulajdonság nem szerepel az adott rekord. Ez a táblázat felsorolja a tulajdonságadat típusa és a megfelelő utótag:
 
 | Tulajdonságadat típusa | Utótag |
 |:--- |:--- |
-| Karakterlánc |_s |
+| String |_s |
 | Logikai |_b |
-| Dupla |_d |
+| Double |_d |
 | Dátum és idő |_t |
 | GUID |_g |
 
-Az adattípus, amely a Log Analytics alkalmaz minden egyes tulajdonság attól függ, hogy typ záznamu az új rekord már létezik.
+Az adattípus, amely az Azure Monitor alkalmaz minden egyes tulajdonság attól függ, hogy typ záznamu az új rekord már létezik.
 
-* Ha a rekord típusa nem létezik, a Log Analytics egy új hoz létre. A log Analytics segítségével, hogy a JSON típusú következtetésekhez határozza meg, az új rekord minden egyes tulajdonság adattípusát.
-* Ha a rekord típusa létezik, a Log Analytics próbál meglévő tulajdonságok alapján új rekord létrehozása. Ha adattípusa nem felel meg egy tulajdonságot az új rekordban, és a meglévő típus nem konvertálható, vagy ha a rekord tartalmaz olyan tulajdonságot, amely nem létezik, a Log Analytics hoz létre egy új tulajdonság, amely rendelkezik a megfelelő utótagot.
+* Ha a rekord típusa nem létezik, az Azure Monitor egy újat az új rekord minden egyes tulajdonság adattípusát meghatározni a JSON típusú következtetésekhez használatával hoz létre.
+* Ha a rekord típusa létezik, az Azure Monitor próbál meg meglévő tulajdonságok alapján új rekord létrehozása. Ha adattípusa nem felel meg egy tulajdonságot az új rekordban, és a meglévő típus nem konvertálható, vagy ha a rekord tartalmaz olyan tulajdonságot, amely nem létezik, az Azure Monitor hoz létre egy új tulajdonság, amely rendelkezik a megfelelő utótagot.
 
 Például a beküldés bejegyzés lenne hozzon létre egy rekordot három tulajdonságot **number_d**, **boolean_b**, és **string_s**:
 
@@ -157,18 +159,18 @@ Majd küldte el a következő bejegyzés formájában karakterláncok értékekk
 
 ![2. példa rekord](media/data-collector-api/record-02.png)
 
-De, ekkor történik a következő beküldése, ha a Log Analytics hozna létre az új tulajdonságok **boolean_d** és **string_d**. Ezeket az értékeket nem lehet konvertálni:
+De, ekkor történik a következő beküldése, ha az Azure Monitor létrehoznia az új tulajdonságok **boolean_d** és **string_d**. Ezeket az értékeket nem lehet konvertálni:
 
 ![Minta rekord 3](media/data-collector-api/record-03.png)
 
-A következő bejegyzést, majd a rekord típusa létrehozása előtt elküldve, ha a Log Analytics lenne hozzon létre egy rekordot három tulajdonságot **sikeresek**, **boolean_s**, és **string_s**. Ebbe a bejegyzésbe a kezdeti értékekre vannak formázva, karakterlánc:
+A következő bejegyzést, majd a rekord típusa létrehozása előtt elküldve, ha az Azure Monitor lenne hozzon létre egy rekordot három tulajdonságot **sikeresek**, **boolean_s**, és **string_s**. Ebbe a bejegyzésbe a kezdeti értékekre vannak formázva, karakterlánc:
 
 ![4. példa rekord](media/data-collector-api/record-04.png)
 
 ## <a name="data-limits"></a>Adatkorlátok
-Vannak bizonyos korlátozások az adatok elküldése az a Log Analytics-adatok gyűjtési API körül.
+Vannak bizonyos korlátozások az adatok elküldése az az Azure Monitor adatgyűjtési API körül.
 
-* Közzététel a Log Analytics Data Collector API legfeljebb 30 MB-ot. Ez az egyedi közzétételek méretkorlátot. Ha az adatokat egyetlen közzététele, amely meghaladja a 30 MB-ot, a kell felosztani az adatokat, akár kisebb méretű adattömböket írnak és küldhet nekik egy időben.
+* Az Azure Monitor adatgyűjtő API bejegyzésenkénti 30 MB maximális. Ez az egyedi közzétételek méretkorlátot. Ha az adatokat egyetlen közzététele, amely meghaladja a 30 MB-ot, a kell felosztani az adatokat, akár kisebb méretű adattömböket írnak és küldhet nekik egy időben.
 * Legfeljebb 32 KB-os korlátot a mezőértékek. Ha a mező értéke 32 KB-nál nagyobb, az adatok csonkolva lesz.
 * Egy adott típusú mezők ajánlott maximális száma érték az 50. Ez a használhatóság és a keresési élmény szempontjából gyakorlati korlátozva.  
 
@@ -196,15 +198,10 @@ Ez a táblázat felsorolja, amely a szolgáltatás előfordulhat, hogy vissza á
 | 503 |Elérhetetlen szolgáltatás |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadására. Ismételje meg a kérelmet. |
 
 ## <a name="query-data"></a>Adatok lekérdezése
-A Log Analytics HTTP-adatgyűjtő API, a rekordok keresése által küldött adatokat lekérdezni **típus** , amely megegyezik a **LogType** meghatározott, értékkel kiegészítve **_CL**. Például, ha a használt **MyCustomLog**, akkor adna vissza, akkor az összes rekordot **típus = MyCustomLog_CL**.
-
->[!NOTE]
-> Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](../../azure-monitor/log-query/log-query-overview.md), akkor a fenti lekérdezés módosulnak az alábbiak.
-
-> `MyCustomLog_CL`
+Az Azure Monitor HTTP-adatgyűjtő API, a rekordok keresése által küldött adatokat lekérdezni **típus** , amely megegyezik a **LogType** meghatározott, értékkel kiegészítve **_CL**. Például, ha a használt **MyCustomLog**, akkor adna vissza, akkor az összes rekordot `MyCustomLog_CL`.
 
 ## <a name="sample-requests"></a>Minta kérelmek
-A következő szakaszokban találja a mintákat, hogyan lehet elküldeni az adatokat a Log Analytics HTTP-adatgyűjtő API különböző programozási nyelv használatával.
+A következő szakaszokban találja a mintákat, hogyan lehet elküldeni az adatokat az Azure Monitor HTTP-adatgyűjtő API különböző programozási nyelv használatával.
 
 Minden mintához tegye állíthatja be a változókat az engedélyezési fejléc a következő lépéseket:
 
@@ -226,7 +223,7 @@ $SharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 # Specify the name of the record type that you'll be creating
 $LogType = "MyRecordType"
 
-# You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+# You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
 $TimeStampField = ""
 
 
@@ -321,10 +318,10 @@ namespace OIAPIExample
         // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
         static string sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-        // LogName is name of the event type that is being submitted to Log Analytics
+        // LogName is name of the event type that is being submitted to Azure Monitor
         static string LogName = "DemoExample";
 
-        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
         static string TimeStampField = "";
 
         static void Main()
@@ -468,6 +465,6 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Használja a [Log Search API](../../azure-monitor/log-query/log-query-overview.md) adatokat lekérni a Log Analytics-adattárban.
+- Használja a [Log Search API](../log-query/log-query-overview.md) adatokat lekérni a Log Analytics-munkaterületet.
 
-- Tudjon meg többet [adatfolyamat létrehozása a Data Collector API-val](../../azure-monitor/platform/create-pipeline-datacollector-api.md) Logic Apps-munkafolyamatot a Log Analytics használatával.
+- Tudjon meg többet [adatfolyamat létrehozása a Data Collector API-val](create-pipeline-datacollector-api.md) Logic Apps munkafolyamat az Azure Monitor használatával.

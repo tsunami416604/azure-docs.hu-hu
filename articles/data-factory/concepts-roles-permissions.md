@@ -11,12 +11,12 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.openlocfilehash: e296606d219623c29bedca4fb0906a955a394b30
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ee35c7ae1b75c6fb4d656927d7e6e4384cd76836
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013417"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003941"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Szerepkörök és engedélyek az Azure Data Factoryhoz
 
@@ -78,7 +78,7 @@ Egyéni szerepkörök létrehozásával, és ezeket a szerepköröket a felhaszn
   Ebben a forgatókönyvben két szerepkör hozzárendelése szükséges.
 
   1. Rendelje hozzá a beépített **közreműködői** szerepkör a data factory szintjén.
-  2. Egyéni szerepkör létrehozása engedéllyel rendelkező * Microsoft.Resources/deployments/**. Az egyéni szerepkör hozzárendelése a felhasználóhoz erőforráscsoport szintjén.
+  2. Egyéni szerepkör létrehozása engedéllyel rendelkező **Microsoft.Resources/deployments/**. Az egyéni szerepkör hozzárendelése a felhasználóhoz erőforráscsoport szintjén.
 
 - A felhasználó frissítése a PowerShell vagy az SDK-t, de nem az Azure portal data factory segítségével.
 

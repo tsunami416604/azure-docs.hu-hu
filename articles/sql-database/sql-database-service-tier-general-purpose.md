@@ -12,17 +12,17 @@ ms.author: jovanpop-msft
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: d8a7ffd680ab38d78fa3675f49569dd79b91efe4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 83be636317299adf820a60716866aa35d318d6dc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895108"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997362"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Általános célú szolgáltatásszint – Azure SQL Database
 
 > [!NOTE]
-> Az általános célú szolgáltatási szinten a Virtuálismag-alapú vásárlási modell a standard szintű szolgáltatáscsomagban neve az a DTU-alapú vásárlási modell. A Virtuálismag-alapú vásárlási modell a DTU-alapú vásárlási modell összehasonlításáért lásd: [vásárlási modellek és az erőforrások az Azure SQL Database](sql-database-service-tiers.md).
+> Az általános célú szolgáltatási szinten a Virtuálismag-alapú vásárlási modell a standard szintű szolgáltatáscsomagban neve az a DTU-alapú vásárlási modell. A Virtuálismag-alapú vásárlási modell a DTU-alapú vásárlási modell összehasonlításáért lásd: [vásárlási modellek és az erőforrások az Azure SQL Database](sql-database-purchase-models.md).
 
 Az Azure SQL Database az SQL Server adatbázis-motor architektúra 99,99 %-os rendelkezésre állását, még akkor is, az infrastruktúra-hibák esetekben biztosítása érdekében a felhőalapú környezet átalakított alapul. Nincsenek az Azure SQL Database, amelyek mindegyike különböző architekturális modelleket által használt három szolgáltatásszinten. Szolgáltatási szintek a következők:
 

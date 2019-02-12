@@ -1,6 +1,6 @@
 ---
-title: Az Azure Log Analytics-függvények |} A Microsoft Docs
-description: Ez a cikk ismerteti a Log Analytics egy másik lekérdezést, hívja meg a lekérdezés a functions használatával.
+title: Functions az Azure Monitor log-lekérdezések |} A Microsoft Docs
+description: Ez a cikk ismerteti az Azure Monitor egy másik naplólekérdezés, hívja meg a lekérdezés a functions használatával.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 8f2855ed56d298ec4c6abee02dd59ce9471f0d2e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6c6bd31961022957ec1a09fef6058ad32476e1c7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882545"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005097"
 ---
-# <a name="using-functions-in-azure-monitor-log-analytics"></a>Functions az Azure Monitor Log Analytics használatával
+# <a name="using-functions-in-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezéseket a functions használatával
 
 > [!NOTE]
 > Hajtsa végre [az Analytics-portál – első lépések](get-started-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
@@ -28,11 +28,11 @@ ms.locfileid: "52882545"
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 
-Log Analytics-lekérdezés használata egy másik lekérdezést is mentheti függvényében. Ez lehetővé teszi, hogy az összetett lekérdezések egyszerűbbé használhatatlanná tévő őket részre, és újra felhasználhatja a közös kód, amely több lekérdezést.
+A naplólekérdezés használata egy másik lekérdezést is mentheti függvényében. Ez lehetővé teszi, hogy az összetett lekérdezések egyszerűbbé használhatatlanná tévő őket részre, és újra felhasználhatja a közös kód, amely több lekérdezést.
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
-Függvény létrehozása az Azure Portalon kattintva **mentése** , és ezután az alábbi táblázatban szereplő adatok.
+Függvény létrehozása a log analytics az Azure Portalon kattintva **mentése** , és ezután az alábbi táblázatban szereplő adatok.
 
 | Beállítás | Leírás |
 |:---|:---|
@@ -42,10 +42,10 @@ Függvény létrehozása az Azure Portalon kattintva **mentése** , és ezután 
 | Kategória       | Mentett lekérdezések és a functions rendszerezéséhez kategória **lekérdezéskezelő**. |
 
 > [!NOTE]
-> A Log Analytics függvény nem tartalmazhat egy másik függvényt.
+> Az Azure monitorban függvény nem tartalmazhat egy másik függvényt.
 
 > [!NOTE]
-> Függvény mentése a Log Analytics-lekérdezéseket, de jelenleg az Application Insights-lekérdezések esetében nem lehetséges.
+> Egy függvény mentése az Azure Monitor naplólekérdezések, de jelenleg az Application Insights-lekérdezések esetében nem lehetséges.
 
 
 
@@ -69,7 +69,7 @@ security_updates_last_day | where Title contains "SQL"
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a Log Analytics lekérdezési nyelv segítségével a többi leckék:
+Tekintse meg az Azure Monitor log-lekérdezések írására szolgáló egyéb leckék:
 
 - [Karakterlánc-műveletek](string-operations.md)
 - [Dátum és idő műveletek](datetime-operations.md)

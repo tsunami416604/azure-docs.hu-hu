@@ -4,7 +4,7 @@ description: Ez a témakör bemutatja, hogyan hirdetések ügyféloldali beilles
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 65c9c747-128e-497e-afe0-3f92d2bf7972
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: de084b2139bcc3ddef09b4438f8774df177b6f3c
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: cc5f3f729acca1f7aa23a7714300c1b581c6f7f8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53315938"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993894"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Hirdetések ügyféloldali beillesztése
 Ez a cikk különböző típusú hirdetések ügyféloldali beillesztése információt tartalmaz.
@@ -382,7 +382,7 @@ A Microsoft.PlayerFramework.Xaml.Samples megoldás megnyitásakor látni fogja a
 
 Ezek a minták minden egyes használja a Media Player osztály a player keretrendszer által meghatározott. A legtöbb minták használata, amely számos ad választ formátumú támogatása beépülő modulokat. A ProgrammaticAdPage minta programozott módon használja, ha a Media Player példánya.
 
-### <a name="adpodpage-sample"></a>AdPodPage minta
+### <a name="adpodpage-sample"></a>AdPodPage Sample
 Ebben a példában a AdSchedulerPlugin mikor jelenjenek meg az ad meg. Ebben a példában egy közepes összegző hirdetmény öt másodperc után lejátszandó van ütemezve. Az ad-pod (csoportja hirdetések megjelenítéséhez sorrendben) egy-egy ad-kiszolgáló által visszaadott HATALMAS fájlban van megadva. Az URI-t a HATALMAS fájl van megadva a <RemoteAdSource> elemet.
 
 ```xml

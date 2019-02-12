@@ -4,7 +4,7 @@ description: Ez a témakör ismerteti a médiafeladat a médiaelemzés médiafel
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: d8c3bb07c88dc96b7ca779ca0f4dfe09052ab290
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 02b972c0591bb05f72887e3e1c3d057d373ff48c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666170"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004870"
 ---
-# <a name="analyze-your-media-using-the-azure-portal"></a>Médiatartalmak elemzése az Azure Portal használatával
+# <a name="analyze-your-media-using-the-azure-portal-legacy"></a>Az Azure Portalon (örökölt) médiatartalmak elemzése
 > [!NOTE]
 > Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
 > 
@@ -53,7 +53,7 @@ A **Azure Media Indexer** médiafeldolgozót lehetővé teszi, hogy az adathordo
 ### <a name="language"></a>Nyelv
 A multimédiás fájlban ismeri fel a természetes nyelv. Például angol vagy spanyol. 
 
-### <a name="captions"></a>akadálymentes feliratok
+### <a name="captions"></a>Akadálymentes feliratok
 Kiválaszthatja egy a tartalomból generált felirat formátuma. Egy indexelési feladat feliratfájlok hozhat létre a következő formátumban:  
 
 * **SAMI**
@@ -65,7 +65,7 @@ Ezek a formátumok a fájlok használhatók elérhetővé a hang- és videofájl
 ### <a name="aib-file"></a>AIB-fájl
 Válassza ezt a lehetőséget, ha szeretné létrehozni a hang Index Blob fájlt, és az egyéni SQL Server ifilterrel való használatra. További információkért lásd: [ez](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) blog.
 
-### <a name="keywords"></a>a kulcsszavak
+### <a name="keywords"></a>Kulcsszavak
 Válassza ezt a lehetőséget, ha szeretne egy kulcsszavak XML-fájl létrehozásához. Ez a fájl tartalmazza, gyakorisági és eltérési információkkal együtt a beszédtartalomból kinyert kulcsszavakat.
 
 ### <a name="job-name"></a>Feladat neve
@@ -79,7 +79,7 @@ Az Azure Media Hyperlapse egy felügyeleti csomag, amely zökkenőmentes idő le
 
 ![Videók elemzése](./media/media-services-portal-analyze/media-services-portal-analyze004.png)
 
-### <a name="speed"></a>Gyorsaság
+### <a name="speed"></a>Sebesség
 Adja meg a sebesség, amellyel a bemeneti videó felgyorsítása érdekében. A bemeneti videó egy stabil és idő lejárt megjelenítés kimenete.
 
 ### <a name="job-name"></a>Feladat neve
@@ -108,7 +108,7 @@ A **Azure Media Face detector használatával** médiafeldolgozót. (pont) lehet
 ### <a name="detection-mode"></a>Észlelés üzemmód
 A következő módok egyikét használhatja a processzor:
 
-* arcfelismerés
+* Arcfelismerés
 * arconkénti érzelemfelismerő
 * összesített érzelemfelismerő
 
@@ -136,7 +136,7 @@ Egy rövid nevet, amely lehetővé teszi, hogy a művelet azonosítására. [Ez]
 ### <a name="output-file"></a>Kimeneti fájl
 Egy rövid nevet, amely lehetővé teszi a kimeneti tartalom megbízható azonosításához. 
 
-## <a name="azure-media-content-moderator"></a>Az Azure Media a Content Moderator
+## <a name="azure-media-content-moderator"></a>Azure Media Content Moderator
 A processzor segítségével észlelheti a potenciális felnőtt és szexuális tartalom videókat. A processzor automatikusan észleli helyességének és kulcsképek a videóban. A kulcskép pontszámmodell lehetséges felnőtt vagy pikáns tartalom, és értékelések alapértelmezett küszöbértékek alapján javasol. Részletes információkért és példákért lásd: [használata az Azure Media a Content Moderator közepes videók](media-services-content-moderation.md)
 
 ![Mérsékelt videók](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)

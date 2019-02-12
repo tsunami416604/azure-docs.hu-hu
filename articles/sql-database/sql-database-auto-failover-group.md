@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: d24f7ce20a9dfb8ede184e8f013c2d988a8a96c2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 2857b7f5347cf546a9745dcbea02f636a798f4a2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468699"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004247"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok segítségével átlátható és koordinált több adatbázis feladatátvételét engedélyezése
 
@@ -331,7 +331,7 @@ Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív
 | Switch-AzureRmSqlDatabaseInstanceFailoverGroup |A másodlagos kiszolgáló feladatátvételi csoport feladatátvétele eseményindítók|
 | Remove-AzureRmSqlDatabaseInstanceFailoverGroup | A feladatátvételi csoport eltávolítása|
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-standalone-and-pooled-databases"></a>REST API: Az SQL database feladatátvételi csoportok az önálló és a készletezett adatbázisok kezelése
+### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Az SQL database feladatátvételi csoportok egyetlen vagy készletezett adatbázisok kezelése
 
 | API | Leírás |
 | --- | --- |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 0733b4179793e88759ca1c3330880546650fbe09
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9a4c31df51f804d4738e3a2eb4ce904e793c3f1b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856375"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004995"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Mi az Azure Monitor-beli virtuális gépek (előzetes verzió)?
 
@@ -41,7 +41,7 @@ Az funkciók vannak szervezve három szempontok:
 >[!NOTE]
 >Jelenleg az állapotfigyelő szolgáltatás kínáljuk csak Azure-beli virtuális gépek és virtuálisgép-méretezési csoportok. A teljesítmény és a térkép funkciója a környezet vagy a más felhőszolgáltatók támogatja az Azure virtuális gépek és a futó virtuális gépekről.
 
-A Log Analytics-integráció biztosít hatékony összesítési és szűrés, és idővel elemezheti adatait trendeket. Az ilyen az átfogó munkaterhelés-figyelés nem érhető el az Azure Monitor, a Service Map vagy önálló Log Analytics.  
+Integráció az Azure Monitor naplóira biztosít hatékony összesítő és a szűrés, és idővel elemezheti adatait trendeket. Az ilyen az átfogó munkaterhelés-figyelés nem érhető el az Azure Monitor vagy a Service Map önmagában.  
 
 Megtekintheti az adatok közvetlenül a virtuális gép egyetlen virtuális gépen, vagy használhatja az Azure Monitor, hogy a virtuális gépek összesített nézete. Ebben a nézetben minden egyes szolgáltatás perspektíva alapul:
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 958c53108c024cb349922a1bd10b2cdc2dba41a3
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 90a94612248dead5b57ebff67562dda083d8669f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247282"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996134"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Adategység kódolása a Media Encoder Standard használatával az Azure Portalon
 
@@ -28,7 +28,7 @@ ms.locfileid: "50247282"
 > 
 > 
 
-A leggyakoribb forgatókönyvek az Azure Media Services az egyik forgatókönyve az adaptív sávszélességű streamelés az ügyfelek felé. Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming és dinamikus adaptív Streamelés (DASH, más néven MPEG-DASH) HTTP protokollon keresztül. Pedig előkészítheti a videók adaptív sávszélességű streamelés, először kódolnia a forrásvideókat többszörös sávszélességű MP4-fájlok formájában. Az Azure Media Encoder Standard használatával a videók kódolásához.  
+A leggyakoribb forgatókönyvek az Azure Media Services az egyik forgatókönyve az adaptív sávszélességű streamelés az ügyfelek felé. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: Az Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming és dinamikus adaptív Streamelés (DASH, is néven MPEG-DASH) HTTP protokollon keresztül. Pedig előkészítheti a videók adaptív sávszélességű streamelés, először kódolnia a forrásvideókat többszörös sávszélességű MP4-fájlok formájában. Az Azure Media Encoder Standard használatával a videók kódolásához.  
 
 A Media Services biztosítja a dinamikus csomagolás lehetőségét. A dinamikus csomagolás, a többszörös átviteli sebességű MP4-fájlnak a HLS, Smooth Streaming és MPEG-DASH, anélkül, hogy az ezekbe a formátumokba újracsomagolás juttathat el. Ha a dinamikus csomagolás használ, tárolja, és a fájlokat egyetlen tárolási formátumban kell fizetnie. A Media Services összeállítja és szolgálja ki a megfelelő választ az ügyfél által kért.
 

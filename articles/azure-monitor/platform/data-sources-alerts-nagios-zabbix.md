@@ -1,6 +1,6 @@
 ---
-title: Nagios- és Zabbix-riasztások a Log Analyticsben gyűjtése |} A Microsoft Docs
-description: Nagios- és Zabbix olyan nyílt forráskódú eszközök figyelését. Meg tud gyűjteni riasztások ezekkel az eszközökkel a Log Analytics annak érdekében, hogy együtt más forrásból származó riasztások elemezheti őket.  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
+title: Az Azure monitorban a Nagios- és Zabbix-riasztások összegyűjtése |} A Microsoft Docs
+description: Nagios- és Zabbix olyan nyílt forráskódú eszközök figyelését. Meg tud gyűjteni riasztások ezek az eszközök az Azure Monitor annak érdekében, hogy együtt más forrásból származó riasztások elemezheti őket.  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 1ae719237cb1afee6d2340e1734d008799da8a86
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ac8e214df6b6990e2b27b5897350c85e0a944e0c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107531"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997957"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Nagios-és Zabbix az Azure Monitor riasztások gyűjtése a Linuxhoz készült Log Analytics-ügynök 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezekkel az eszközökkel a Log Analytics annak érdekében, hogy a napló adatokat más forrásból származó adatokkal elemezheti őket.  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
+[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezeket az eszközöket az Azure Monitor annak érdekében, hogy a napló adatokat más forrásból származó adatokkal elemezheti őket.  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
 
 
 > [!NOTE]
-> [Az Azure Monitor által létrehozott riasztásokat](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) tárolt külön-külön származó naplóadatokat, és nem érhető el a naplólekérdezések.
+> [Az Azure Monitor által létrehozott riasztásokat](alerts-overview.md) tárolt külön-külön származó naplóadatokat, és nem érhető el a naplólekérdezések.
 
  
 ## <a name="prerequisites"></a>Előfeltételek
@@ -40,7 +40,7 @@ Riasztások gyűjtése, hajtsa végre az alábbi lépéseket a Nagios-kiszolgál
 
 1. Adja meg a felhasználónak **omsagent** olvasási hozzáférés a Nagios naplófájl `/var/log/nagios/nagios.log`. A csoport tulajdonosa feltéve, hogy a nagios.log fájl `nagios`, a felhasználó hozzáadhat **omsagent** , a **nagios** csoport. 
 
-    sudo felhasználó módosítási - a – G nagios omsagent
+    sudo usermod -a -G nagios omsagent
 
 2.  Módosítsa a konfigurációs fájlban a következő `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Ellenőrizze, hogy a következő bejegyzések jelen, és nem megjegyzésekkel ki:  
 
@@ -84,7 +84,7 @@ Riasztások gyűjtése a Nagios-kiszolgálón, hajtsa végre az alábbi lépése
 
 
 ## <a name="alert-records"></a>Riasztási rekordok
-Riasztási rekord lekérése Nagios- és Zabbix használatával [lekérdezések naplózását](../log-query/log-query-overview.md) a Log Analyticsben.
+Riasztási rekord lekérése Nagios- és Zabbix használatával [lekérdezések naplózását](../log-query/log-query-overview.md) az Azure monitorban.
 
 ### <a name="nagios-alert-records"></a>Nagios-riasztás rekordok
 
@@ -122,5 +122,5 @@ Riasztás Zabbix által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [riasztások](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) az Azure monitorban.
+* Ismerje meg [riasztások](alerts-overview.md) az Azure monitorban.
 * Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
