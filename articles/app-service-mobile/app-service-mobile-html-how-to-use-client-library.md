@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: ba2eb5a7f888e4cffcd798259afa8194b4021025
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 16871bdc59d141334bc2c95f26929f270d7971cf
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488892"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100533"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>A JavaScript ügyféloldali kódtár használata az Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "38488892"
 Ez az útmutató bemutatja, hogy a legújabb használatával általános forgatókönyveinek végrehajtásával [A JavaScript SDK for Azure Mobile Apps]. Ha most ismerkedik az Azure Mobile Apps, először végezzen [Azure Mobile Apps alkalmazások gyors üzembe helyezési] egy háttérrendszer létrehozása, és hozzon létre egy táblát. Ebben az útmutatóban koncentrálunk a mobil háttérszolgáltatásban használatával HTML/JavaScript webes alkalmazásokban.
 
 ## <a name="supported-platforms"></a>Támogatott platformok
-Böngésző támogatása, a jelenlegi és a legutóbbi verzióra a főbb böngésző modelljeként: Google Chrome, a Microsoft Edge, a Microsoft Internet Explorer és a Mozilla Firefox.  Várhatóan viszonylag modern böngészőkben függvényt az SDK-t.
+Böngésző támogatása, a jelenlegi és a legutóbbi verzióra a főbb böngésző modelljeként:  Google Chrome, Microsoft Edge, Microsoft Internet Explorer, and Mozilla Firefox.  Várhatóan viszonylag modern böngészőkben függvényt az SDK-t.
 
 A csomag terjesztése egy univerzális JavaScript-modult, így támogatja a globals, AMD, és CommonJS formázza.
 
@@ -42,10 +42,10 @@ npm install azure-mobile-apps-client --save
 
 Az erőforrástár-ES2015 modulként CommonJS környezetekben, például Browserify és a webpack használatával készült, valamint az AMD-tár is használható.  Példa:
 
-```
-# For ECMAScript 5.1 CommonJS
+```javascript
+// For ECMAScript 5.1 CommonJS
 var WindowsAzure = require('azure-mobile-apps-client');
-# For ES2015 modules
+// For ES2015 modules
 import * as WindowsAzure from 'azure-mobile-apps-client';
 ```
 
@@ -57,14 +57,14 @@ Egy előre elkészített verze sady SDK letöltésével közvetlenül a CDN-en i
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Hogyan: felhasználók hitelesítése
-Az Azure App Service támogatja a hitelesítés és engedélyezés az alkalmazás felhasználóinak különböző külső identitásszolgáltató használatával: Facebook, Google, Microsoft Account és Twitter. Beállíthatja, hogy a engedélyeit azokon a táblákon, az adott műveletek csak a hitelesített felhasználók a hozzáférés korlátozásához. Az engedélyezési szabályok megvalósításához a kiszolgálóoldali parancsprogramok is használhatja a hitelesített felhasználók identitását. További információkért lásd: a [hitelesítés első lépései] oktatóanyag.
+## <a name="auth"></a>kézikönyv: Felhasználók hitelesítése
+Az Azure App Service támogatja a hitelesítés és engedélyezés az alkalmazás felhasználóinak különböző külső identitásszolgáltató használatával: Facebook, Google, Microsoft-fiókjával, és a Twitter. Beállíthatja, hogy a engedélyeit azokon a táblákon, az adott műveletek csak a hitelesített felhasználók a hozzáférés korlátozásához. Az engedélyezési szabályok megvalósításához a kiszolgálóoldali parancsprogramok is használhatja a hitelesített felhasználók identitását. További információkért lásd: a [hitelesítés első lépései] oktatóanyag.
 
 Két hitelesítési folyamatok támogatottak: a server flow és a egy ügyfél folyamatot.  A server flow a legegyszerűbb felhasználói hitelesítés támaszkodik a szolgáltató webes hitelesítés felületet nyújt. A client flow lehetővé teszi, hogy az eszköz specifikus képességek mélyebb integrációjuk például single-sign-on, a szolgáltatóhoz tartozó SDK-k támaszkodik.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Útmutató: a Mobile App Service konfigurálása külső átirányítási URL-címek.
+### <a name="configure-external-redirect-urls"></a>kézikönyv: A Mobile App Service konfigurálása külső átirányítási URL-címek.
 Számos különböző típusú JavaScript-alkalmazások egy visszacsatolási képesség segítségével OAuth felhasználói felület folyamatok kezeléséhez.  Ilyen képességek:
 
 * A szolgáltatás helyben fut

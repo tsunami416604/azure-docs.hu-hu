@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan hozhat létre az Azure Media Services segítsé
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0fa5d8c5-3d5f-4886-ae55-fb6de4f5256d
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 9558a924ee151f47033178b0762a39e2d1e1f538
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 65625fcc12143a8ea53ff2ab7d1dfcb43a0def8d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828315"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992143"
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming-Windows Store-alkalmazás létrehozása
+# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming-Windows Store-alkalmazás létrehozása  
 
 A Smooth Streaming Client SDK for Windows 8 lehetővé teszi a fejlesztők számára a Windows Store-alkalmazások építéséhez igény szerinti és élő Smooth Streaming-tartalmat is próbálhatja. A Smooth Streaming-tartalmat alapszintű lejátszás, az SDK-t is nyújt gazdag funkciók, például a Microsoft PlayReady-védelmet, minőségi szintű korlátozás, élő DVR-, hang stream közötti váltás, a figyelő állapotának frissítése (például a minőségi szintű módosítások), és Hiba történt eseményeket, és így tovább. A támogatott szolgáltatások további információkért lásd: a [kibocsátási megjegyzések](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). További információkért lásd: [Player keretrendszer Windows 8](http://playerframework.codeplex.com/). 
 
