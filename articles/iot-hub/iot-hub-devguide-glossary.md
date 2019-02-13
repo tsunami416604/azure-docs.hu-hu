@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: dobett
-ms.openlocfilehash: 3725117b90ec2574737686881e47967f3d9a9e39
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: d815f980a0583058957b7d87b6c99df59e9a4821
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320090"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817380"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT Hub kifejezések jegyzéke
 Ez a cikk felsorolja az egyes az IoT Hub-cikkekben használt gyakori kifejezések.
@@ -82,7 +82,7 @@ Kapcsolati karakterláncok az alkalmazás kódjában, hogy magába foglalja a v�
 Létrehozhat egyéni [végpontok](iot-hub-devguide-endpoints.md) kézbesíti az által küldött üzeneteket egy IoT hubhoz a [útválasztási szabály](#routing-rules). Egyéni végpontok közvetlenül csatlakozhat egy eseményközpontba, a Service Bus-üzenetsor vagy Service Bus-témakörbe.
 
 ## <a name="custom-gateway"></a>Egyéni átjáró
-Az átjáró lehetővé teszi, hogy a kapcsolatok közvetlenül a nem csatlakozó eszközökön [az IoT Hub](#iot-hub). Használhat [Azure IoT Edge](#azure-iot-edge) kezelni az üzeneteket, egyéni protokoll átalakítások és más feldolgozási az Edge egyéni logikát megvalósító egyéni átjárók készíthetők.
+Az átjáró lehetővé teszi, hogy a kapcsolatok közvetlenül a nem csatlakozó eszközökön [az IoT Hub](#iot-hub). Az Azure IoT Edge segítségével képes kezelni az üzeneteket, egyéni protokoll átalakítások, más az Edge feldolgozás egyéni logikát megvalósító egyéni átjárók készíthetők.
 
 ## <a name="data-point-message"></a>Adatpont üzenet
 Adatpont üzenetet egy [eszközről a felhőbe](#device-to-cloud) tartalmazó üzenetet [telemetriai](#telemetry) adatok, például a szél sebessége vagy hőmérséklet.
@@ -224,7 +224,7 @@ Ez az újrapróbálkozási szabályzat kezeléséhez használja [átmeneti hibá
 Konfigurálja [útválasztási szabályok](iot-hub-devguide-messages-read-custom.md) irányíthatja az eszköz a felhőbe irányuló üzeneteket az IoT hub egy [beépített végpont](#built-in-endpoints) vagy [egyéni végpontok](#custom-endpoints) a megoldás háttérrendszerén általi feldolgozáshoz .
 
 ## <a name="sasl-plain"></a>SASL EGYSZERŰ
-EGYSZERŰ SASL protokoll, amely a [AMQP](#advanced-message-queue-protocol) protokollt használ a biztonsági jogkivonatokat átviteléhez.
+EGYSZERŰ SASL protokoll, amely az AMQP protokollt használ a biztonsági jogkivonatokat átviteléhez.
 
 ## <a name="service-rest-api"></a>Szolgáltatás REST API-ja
 Használhatja a [szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/iothub/service) a megoldás a háttéralkalmazás az eszközök kezeléséhez. Az API lehetővé teszi a lekérésére és frissítésére [ikereszköz](#device-twin) tulajdonságok meghívása [közvetlen metódusok](#direct-method), és az ütemezés [feladatok](#job). Jellemzően kell használni a magasabb szintű egyik [szolgáltatási SDK-k](#azure-iot-service-sdks) , ahogyan az az IoT Hub oktatóanyagok.
@@ -251,7 +251,7 @@ Kontextusában egy [ikereszköz](iot-hub-devguide-device-twins.md), Rendszertula
 Kontextusában egy [ikereszköz](iot-hub-devguide-device-twins.md), a címkék olyan eszköz metaadatait tárolja, és a megoldás háttérrendszere JSON-dokumentumok formájában által lekérése. Címkék nem láthatók el alkalmazásokat az eszközön.
 
 ## <a name="telemetry"></a>Telemetria
-Eszközök telemetriai adatokat, például a szél sebessége vagy a hőmérsékletet, gyűjtsön, és használjon [adatpont üzenetek](#data-point-messages) a telemetriai adatokat küldhet egy IoT hubra.
+Eszközök például a szél sebessége vagy a hőmérsékletet, a telemetriai adatok gyűjtése, és adatpont üzenetek segítségével a telemetriát küldjön az IoT hubra.
 
 ## <a name="token-service"></a>Jogkivonat-szolgáltatás
 Egy jogkivonat-szolgáltatás segítségével az eszközök hitelesítési mechanizmust. Használja az IoT Hub [megosztott hozzáférési szabályzat](#shared-access-policy) a **DeviceConnect** létrehozásához szükséges engedélyek *eszköz hatókörű* jogkivonatokat. Ezek a jogkivonatok csatlakozni az IoT hub eszköz engedélyezése. Egy eszköz egy egyéni hitelesítési mechanizmust használja a hitelesítéshez a jogkivonat-szolgáltatás. Ha az eszköz sikeresen hitelesíti magát, a jogkivonat-szolgáltatás kiad egy SAS-jogkivonatot az eszköz hozzáférhet az IoT hub.

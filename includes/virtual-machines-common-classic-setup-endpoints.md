@@ -9,11 +9,11 @@ ms.date: 10/23/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: e7dfd7d2a0363a95acb76a5dc214dbd4036de11d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50973819"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735892"
 ---
 Mindegyik végpontra egy *nyilvános port* és a egy *magánhálózati port*:
 
