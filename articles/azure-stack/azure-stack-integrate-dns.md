@@ -6,17 +6,17 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
 keywords: ''
-ms.openlocfilehash: dce59cf012a8c3bc5b6b3baf705b5619bdf43104
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 13525fffb7e6720fe81759876ffd0fe71559279c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252311"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182850"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Az Azure Stack adatközpont integrációja - DNS
 A érhetik el az Azure Stack-végpontok (**portál**, **adminportal**, **felügyeleti**, **adminmanagement**stb.)  a külső Azure Stack az Azure Stack DNS szolgáltatások integrálását a DNS-kiszolgálók, amelyek a DNS-zónák az Azure Stackben használni kívánt kell.
@@ -114,9 +114,9 @@ A minta értékeivel, a teljes tartományneveket, a DNS-kiszolgálók vannak:
 `azs-ns02.east.cloud.fabrikam.com`
 
 
-Ezt az információt is létrehoz egy fájlt a központi telepítések Azure Stack végén `AzureStackStampDeploymentInfo.json`. Ez a fájl a `C:\CloudDeployment\logs` mappát a telepítési virtuális gép. Ha nem biztos abban, hogy milyen értékeket használt az Azure Stack üzembe helyezéshez, itt beszerezheti az értékeket.
+Ezt az információt is létrehoz egy fájlt a központi telepítések Azure Stack végén `AzureStackStampInformation.json`. Ez a fájl a `C:\CloudDeployment\logs` mappát a telepítési virtuális gép. Ha nem biztos abban, hogy milyen értékeket használt az Azure Stack üzembe helyezéshez, itt beszerezheti az értékeket.
 
-Ha az üzembe helyezés virtuális gép már nem érhető el, vagy nem érhető el, úgy szerezhet az értékeket a kiemelt végponthoz csatlakozik, és fut a `Get-AzureStackInfo` PowerShell-parancsmagot. További információkért lásd: [kiemelt végponthoz](azure-stack-privileged-endpoint.md).
+Ha az üzembe helyezés virtuális gép már nem érhető el, vagy nem érhető el, úgy szerezhet az értékeket a kiemelt végponthoz csatlakozik, és fut a `Get-AzureStackStampInformation` PowerShell-parancsmagot. További információkért lásd: [kiemelt végponthoz](azure-stack-privileged-endpoint.md).
 
 ## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Feltételes továbbítás az Azure Stackhez beállítása
 

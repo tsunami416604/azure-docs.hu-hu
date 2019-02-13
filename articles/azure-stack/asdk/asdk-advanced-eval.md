@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 38b5ac475667013da463bbd1871bcd380e02a744
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d00eaf0ab24fbd754ba5ad2c79e9630d69d28eb7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245303"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200513"
 ---
 # <a name="advanced-azure-stack-development-kit-evaluation-tasks"></a>Az Azure Stack Development Kit értékelést speciális feladatok
 Után az Azure Stack Development Kit (ASDK) szolgáltatás alapszintű funkciók és képességek ismeretét, révén, akkor is mélyítheti a Tovább az Azure Stack által speciális forgatókönyvek tesztelését. Ezek összetettebb kiértékelése a feladatok teljes körűen vannak dokumentálva az Azure Stack operátori dokumentációja.

@@ -16,12 +16,13 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 74f071d91003c63fd8db590572a7c9dea1b8915b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: de9db7abe17fc41907582ec32d3e916d0536e543
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092752"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175096"
 ---
 # <a name="id-tokens"></a>Azonosító jogkivonatok
 
@@ -56,9 +57,9 @@ Megtekintheti a v2.0-minta lexikális elem szerepel az [jwt.ms](https://jwt.ms/#
 |Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
 |`typ` | Karakterlánc - mindig "JWT" | Azt jelzi, hogy a jogkivonat jwt-t.|
-|`alg` | Karakterlánc | Azt jelzi, hogy a jogkivonat aláírásához használt algoritmust. Példa: "RS256" |
-|`kid` | Karakterlánc | A nyilvános kulcsot, ez a token aláírásához használt ujjlenyomatát. Az 1.0-s verziója és a v2.0 kibocsátott `id_tokens`. |
-|`x5t` | Karakterlánc | Azonos (a használati és érték) `kid`. Ez azonban csak az 1.0-s verziójú kibocsátott örökölt jogcím `id_tokens` kompatibilitási célból. |
+|`alg` | String | Azt jelzi, hogy a jogkivonat aláírásához használt algoritmust. Példa: "RS256" |
+|`kid` | String | A nyilvános kulcsot, ez a token aláírásához használt ujjlenyomatát. Az 1.0-s verziója és a v2.0 kibocsátott `id_tokens`. |
+|`x5t` | String | Azonos (a használati és érték) `kid`. Ez azonban csak az 1.0-s verziójú kibocsátott örökölt jogcím `id_tokens` kompatibilitási célból. |
 
 ### <a name="payload-claims"></a>Hasznos adat jogcímek
 
@@ -70,18 +71,18 @@ Megtekintheti a v2.0-minta lexikális elem szerepel az [jwt.ms](https://jwt.ms/#
 |`idp`|Karakterlánc, általában egy STS URI | A jogkivonat alanyát hitelesítő identitásszolgáltatót adja meg. Ez az érték megegyezik a kiállító jogcím értékét, kivéve, ha a felhasználói fiók nem ugyanahhoz a bérlőhöz, a kibocsátó - Vendégek, például. Ha a jogcím nem található, azt jelenti, hogy értékét `iss` is lehet használni.  Személyes fiókok orgnizational környezetben (például egy személyes fiók meghívjuk az Azure AD-bérlő), használja a `idp` jogcím lehet "live.com" és a egy STS URI, amely tartalmazza a Microsoft-fiók bérlő `9188040d-6c67-4c5b-b112-36a304b66dad`. |
 |`nbf` |  int, a UNIX-időbélyege | Az "nbf" (előtte) jogcím azonosítja az idő előtt, amely a JWT kell nem lesznek elfogadva feldolgozásra.|
 |`exp` |  int, a UNIX-időbélyege | Az "exp" (lejárati ideje) jogcím azonosítja a lejárati időt, vagy azt követően, amely a JWT kell nem lesznek elfogadva feldolgozásra.  Fontos megjegyezni, hogy egy erőforrás elutasíthatja a jogkivonatot, valamint - megadott idő előtti Ha például szükség egy az megváltoztatására hitelesítést, vagy a tokenek visszavonása észlelt. |
-| `c_hash`| Karakterlánc |A kód kivonat csak akkor, ha az azonosító jogkivonat, az OAuth 2.0 engedélyezési kóddal kiadott azonosító-jogkivonatokat szerepel. Az engedélyezési kódot hitelességének ellenőrzéséhez használható. További ellenőrzés elvégzésével kapcsolatos információkért lásd: a [OpenID Connect specifikáció](https://openid.net/specs/openid-connect-core-1_0.html). |
-|`at_hash`| Karakterlánc |Jogkivonat kivonata azonosító szerepel a hozzáférési jogkivonatok, csak ha az azonosító jogkivonat kiadott egy OAuth 2.0 hozzáférési jogkivonatban. Hozzáférési jogkivonat hitelességének ellenőrzéséhez használható. További ellenőrzés elvégzésével kapcsolatos információkért lásd: a [OpenID Connect specifikáció](https://openid.net/specs/openid-connect-core-1_0.html). |
+| `c_hash`| String |A kód kivonat csak akkor, ha az azonosító jogkivonat, az OAuth 2.0 engedélyezési kóddal kiadott azonosító-jogkivonatokat szerepel. Az engedélyezési kódot hitelességének ellenőrzéséhez használható. További ellenőrzés elvégzésével kapcsolatos információkért lásd: a [OpenID Connect specifikáció](https://openid.net/specs/openid-connect-core-1_0.html). |
+|`at_hash`| String |Jogkivonat kivonata azonosító szerepel a hozzáférési jogkivonatok, csak ha az azonosító jogkivonat kiadott egy OAuth 2.0 hozzáférési jogkivonatban. Hozzáférési jogkivonat hitelességének ellenőrzéséhez használható. További ellenőrzés elvégzésével kapcsolatos információkért lásd: a [OpenID Connect specifikáció](https://openid.net/specs/openid-connect-core-1_0.html). |
 |`aio` | Átlátszatlan karakterlánc | Egy jogkivonat újrafelhasználásra erőforrásrekord-adatokat az Azure AD által használt belső jogcímet. Figyelmen kívül lehet hagyni.|
-|`preferred_username` | Karakterlánc | Az elsődleges felhasználónév, amely a felhasználó jelöli. Ez lehet egy e-mail-címet, telefonszámot vagy egy általános felhasználónév nélkül egy megadott formátumban. Az érték mutable és idővel változhatnak. Mivel ezekre kapott válaszokon, ez az érték nem használható az engedélyezési döntésekhez. A `profile` hatókör szükséges, ezt a kérelmet kap.|
-|`email` | Karakterlánc | A `email` nincs alapértelmezés szerint az e-mail-címmel rendelkező vendégfiókok.  Az alkalmazás kérheti a e-mail követelés, (amelyek az ugyanazon bérlőről erőforrásként) felügyelt felhasználók használatával a `email` [választható jogcím](active-directory-optional-claims.md).  A v2.0-végpont az alkalmazás is kérheti a `email` OpenID Connect hatókör - nem kell igényelnie a nem kötelező jogcím és a hatóköre a jogcím beolvasásához.  Az e-mail követelés csak a felhasználói profil adatait a megcímezhető mail támogatja. |
-|`name` | Karakterlánc | A `name` jogcím biztosítja az emberek számára olvasható érték, amely azonosítja a jogkivonat tárgyában. Az érték nem garantált, hogy egyedi legyen, ezekre kapott válaszokon, és úgy tervezték, hogy csak megjelenítési célokra használható. A `profile` hatókör szükséges, ezt a kérelmet kap. |
-|`nonce`| Karakterlánc | Az egyszeri megegyezik a paraméter tartalmazza az eredeti vagy az Identitásszolgáltató irányuló kérelem engedélyezéséhez. Ha nem egyezik, az alkalmazás a jogkivonatot kell utasítania. |
+|`preferred_username` | String | Az elsődleges felhasználónév, amely a felhasználó jelöli. Ez lehet egy e-mail-címet, telefonszámot vagy egy általános felhasználónév nélkül egy megadott formátumban. Az érték mutable és idővel változhatnak. Mivel ezekre kapott válaszokon, ez az érték nem használható az engedélyezési döntésekhez. A `profile` hatókör szükséges, ezt a kérelmet kap.|
+|`email` | String | A `email` nincs alapértelmezés szerint az e-mail-címmel rendelkező vendégfiókok.  Az alkalmazás kérheti a e-mail követelés, (amelyek az ugyanazon bérlőről erőforrásként) felügyelt felhasználók használatával a `email` [választható jogcím](active-directory-optional-claims.md).  A v2.0-végpont az alkalmazás is kérheti a `email` OpenID Connect hatókör - nem kell igényelnie a nem kötelező jogcím és a hatóköre a jogcím beolvasásához.  Az e-mail követelés csak a felhasználói profil adatait a megcímezhető mail támogatja. |
+|`name` | String | A `name` jogcím biztosítja az emberek számára olvasható érték, amely azonosítja a jogkivonat tárgyában. Az érték nem garantált, hogy egyedi legyen, ezekre kapott válaszokon, és úgy tervezték, hogy csak megjelenítési célokra használható. A `profile` hatókör szükséges, ezt a kérelmet kap. |
+|`nonce`| String | Az egyszeri megegyezik a paraméter tartalmazza az eredeti vagy az Identitásszolgáltató irányuló kérelem engedélyezéséhez. Ha nem egyezik, az alkalmazás a jogkivonatot kell utasítania. |
 |`oid` | Karakterlánc, egy GUID Azonosítót | A Microsoft identity rendszeren, ebben az esetben egy felhasználói fiókot egy objektum nem módosítható azonosítója. Alkalmazások közötti egyedileg azonosítja a felhasználó ezt az Azonosítót – ugyanaz a felhasználó bejelentkezik, két különböző alkalmazás ugyanazt az értéket a fog kapni a `oid` jogcím. A Microsoft Graph ezt az Azonosítót ad vissza a `id` tulajdonság egy adott felhasználói fiókhoz. Mivel a `oid` korrelációját, ha a felhasználók, több alkalmazás lehetővé teszi a `profile` hatókör szükséges, ezt a kérelmet kap. Vegye figyelembe, hogy ha egy felhasználó több bérlő már létezik, a felhasználó fogja tartalmazni az egyes bérlők egy másik objektum azonosítója – a különböző fiókok, annak ellenére, hogy a felhasználó bejelentkezik az egyes ugyanazokkal a hitelesítő adatokkal rendelkező fiók minősülnek. |
 |`rh` | Átlátszatlan karakterlánc |Egy belső jogcím kísérelje meg újra érvényesítését jogkivonatok Azure segítségével. Figyelmen kívül lehet hagyni. |
 |`sub` | Karakterlánc, egy GUID Azonosítót | Az egyszerű arról, hogy mely a token használjon esetleg imperatív állításokat információkat, például a felhasználó az alkalmazás. Ez az érték nem módosítható és nem hozzárendelni és újra felhasználható. A tulajdonos az páros azonosító – egyedi legyen egy adott alkalmazás azonosítója. Ezért ha egy felhasználó bejelentkezik a két különböző ügyfél-azonosító használatával két különböző alkalmazásokat, ezeket az alkalmazásokat két különböző értékeket, a tulajdonos jogcím fog kapni. Ez előfordulhat, hogy, vagy előfordulhat, hogy nem megfelelő az architektúra és adatvédelmi követelményeitől függően. |
 |`tid` | Karakterlánc, egy GUID Azonosítót | Egy GUID jelöli, hogy a felhasználó Azure AD-bérlővel. Munkahelyi és iskolai fiókok esetében a GUID azonosító a szervezet, amely a felhasználó tartozik Bérlőazonosítója nem módosítható. Személyes fiókok esetében az érték `9188040d-6c67-4c5b-b112-36a304b66dad`. A `profile` hatókör szükséges, ezt a kérelmet kap. |
-|`unique_name` | Karakterlánc | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantált egy bérlőn belül egyedinek kell lennie, és csak megjelenítési célokra használható. Csak az 1.0-s verziójú kiadott `id_tokens`. |
+|`unique_name` | String | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantált egy bérlőn belül egyedinek kell lennie, és csak megjelenítési célokra használható. Csak az 1.0-s verziójú kiadott `id_tokens`. |
 |`uti` | Átlátszatlan karakterlánc | Egy belső jogcím kísérelje meg újra érvényesítését jogkivonatok Azure segítségével. Figyelmen kívül lehet hagyni. |
 |`ver` | Karakterlánc, 1.0 vagy 2.0-s | Azt jelzi, hogy a id_token verzióját. |
 

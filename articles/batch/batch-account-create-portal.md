@@ -1,5 +1,5 @@
 ---
-title: Batch-fiók létrehozása az Azure Portalon | Microsoft Docs
+title: Az Azure Portal – Azure Batch-fiók létrehozása |} A Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az Azure Portalon nagyméretű párhuzamos számítási feladatok futtatásához a felhőben
 services: batch
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/18/2018
+ms.date: 01/25/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 89e41dc8e27cf39d9d0e6168dc7352267c321623
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 04631431c03f6fdd378bfa99edb9b67f8d6a0cad
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460522"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193917"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
@@ -58,9 +58,8 @@ További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók 
 
 1. A fiók létrehozásához kattintson a **Létrehozás** gombra.
 
-
-
 ## <a name="view-batch-account-properties"></a>Batch-fiók tulajdonságainak megtekintése
+
 A fiók létrehozása után jelölje ki azt a beállításai és tulajdonságai eléréséhez. Az összes fiókbeállítást és tulajdonságot elérheti a bal oldali menüből.
 
 ![A Batch-fiók lap az Azure Portalon][account_blade]
@@ -75,12 +74,12 @@ A fiók létrehozása után jelölje ki azt a beállításai és tulajdonságai 
 
 * A Batch-fiókra vonatkozó erőforráskvóták megtekintéséhez kattintson a **Kvóták** elemre. További részletek a [Batch szolgáltatás kvótáit és korlátozásait](batch-quota-limit.md) ismertető cikkben tekinthet meg.
 
-
 ## <a name="additional-configuration-for-user-subscription-mode"></a>További konfiguráció a felhasználói előfizetés módhoz
 
 Ha felhasználói előfizetési módban szeretne létrehozni Batch-fiókot, végezze el az alábbi kiegészítő lépéseket a fiók létrehozása előtt.
 
 ### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Az előfizetés elérésének engedélyezése az Azure Batch számára (egyszeri művelet)
+
 Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, regisztrálja az előfizetését a Batch szolgáltatásban. (Ha korábban már regisztrált, ugorjon a következő szakaszra.)
 
 1. Jelentkezzen be az [Azure Portalra][azure_portal].
@@ -98,13 +97,14 @@ Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, r
 1. Az a **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a **közreműködői** szerepkört, és keresse meg a Batch API-t. Keressen rá az egyes sztringekre, addig amíg meg nem találja az API-t:
     1. **MicrosoftAzureBatch**.
     1. **Microsoft Azure Batch**. Újabb Azure AD-bérlők ezt a nevet használhatják.
-    1. A **ddbf3205-c6bd-46ae-8127-60eb93363864** a Batch API azonosítója. 
+    1. A **ddbf3205-c6bd-46ae-8127-60eb93363864** a Batch API azonosítója.
 
 1. Miután megtalálta a Batch API-t, jelölje ki, majd kattintson a **Mentés** gombra.
 
     ![Batch-engedélyek hozzáadása][add_permission]
 
 ### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
+
 Felhasználói előfizetés módban olyan Azure Key Vault szükséges, amely ugyanahhoz az erőforráscsoporthoz tartozik, mint a létrehozandó Batch-fiók. Győződjön meg arról, hogy az erőforráscsoport olyan régióban található, amelyben [elérhető](https://azure.microsoft.com/regions/services/) a Batch szolgáltatás, és amelyet támogat az előfizetése.
 
 1. Az [Azure Portalon][azure_portal] válassza az **Új** > **Biztonság** > **Key Vault** lehetőséget.
@@ -113,7 +113,18 @@ Felhasználói előfizetés módban olyan Azure Key Vault szükséges, amely ugy
 
 A Batch-fiók felhasználói előfizetés módban való létrehozásakor használja a Key Vault erőforráscsoportját, adja meg a **Felhasználói előfizetés** értéket a készletlefoglalás módjaként, és válassza ki a Key Vaultot.
 
+### <a name="configure-subscription-quotas"></a>Előfizetési kvóták
+
+Magkvótája nincs megadva, alapértelmezés szerint a felhasználói előfizetés Batch-fiókok. Magkvótája kézzel állítható be, mert a tipikus Batch magkvótája nem vonatkoznak a fiókok felhasználói előfizetési módban.
+
+1. Az a [az Azure portal][azure_portal], válassza ki a felhasználói előfizetés módban Batch-fiók beállítások és tulajdonságok megjelenítéséhez.
+
+1. A bal oldali menüben válassza ki a **kvóták** megtekintéséhez és konfigurálásához a magkvótája, a Batch-fiókhoz társítva.
+
+Tekintse meg a [Batch szolgáltatás kvótái és korlátai](batch-quota-limit.md) felhasználói előfizetés mód magkvótája további tájékoztatást.
+
 ## <a name="other-batch-account-management-options"></a>Egyéb Batch-fiókkezelési lehetőségek
+
 Az Azure Portal használata mellett a többek között a következő eszközökkel is létrehozhat és kezelhet Batch-fiókokat:
 
 * [Batch – PowerShell-parancsmagok](batch-powershell-cmdlets-get-started.md)
@@ -121,6 +132,7 @@ Az Azure Portal használata mellett a többek között a következő eszközökk
 * [Batch Management .NET](batch-management-dotnet.md)
 
 ## <a name="next-steps"></a>További lépések
+
 * A Batch szolgáltatás fogalmairól és funkcióiról további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md) talál. A cikk az elsődleges Batch-erőforrásokat tárgyalja, például a készleteket, a számítási csomópontokat, a feladatokat, a tevékenységeket, és áttekintést nyújt a szolgáltatás nagyméretű számítási feladatokkal kapcsolatos funkcióiról.
 * Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](quick-run-dotnet.md) vagy [Python](quick-run-python.md) segítségével való fejlesztésének alapjait. Ezek a rövid útmutatók végigvezetik egy mintaalkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.
 
@@ -136,4 +148,3 @@ Az Azure Portal használata mellett a többek között a következő eszközökk
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png
 [register_provider]: ./media/batch-account-create-portal/register_provider.png
-

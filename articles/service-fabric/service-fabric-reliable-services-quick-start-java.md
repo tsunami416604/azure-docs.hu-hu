@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 84a495274ffadfe816ced21cd095f7a5e18d7f89
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0b044b15b41e2d74f08c4bc989e22b6a19949445
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199544"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170924"
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 > [!div class="op_single_selector"]
@@ -28,9 +28,7 @@ ms.locfileid: "54199544"
 >
 >
 
-Ez a cikk ismerteti az Azure Service Fabric Reliable Services alapjait, és végigvezeti a létrehozása és telepítése Java nyelven írt egyszerű Reliable Services-alkalmazás. A Microsoft Virtual Academy-videó is bemutatja, hogyan hozhat létre egy megbízható állapotmentes szolgáltatás: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
-<img src="./media/service-fabric-reliable-services-quick-start-java/ReliableServicesJavaVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
+Ez a cikk ismerteti az Azure Service Fabric Reliable Services alapjait, és végigvezeti a létrehozása és telepítése Java nyelven írt egyszerű Reliable Services-alkalmazás. 
 
 ## <a name="installation-and-setup"></a>Telepítés és beállítás
 Mielőtt elkezdené, győződjön meg arról, hogy telepítette a Service Fabric fejlesztési környezet beállítása a gépen.
@@ -96,7 +94,7 @@ public static void main(String[] args) throws Exception {
 
 ## <a name="implement-the-service"></a>A szolgáltatás megvalósítása
 
-Nyissa meg **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Ez az osztály a szolgáltatás típusa határozza meg, és bármely kódot futtathatja. A szolgáltatás API-t biztosít a kód két belépési pontok:
+Open **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Ez az osztály a szolgáltatás típusa határozza meg, és bármely kódot futtathatja. A szolgáltatás API-t biztosít a kód két belépési pontok:
 
 * Nevű egy nyílt belépési pont metódust `runAsync()`, megkezdheti a számítási feladatokat, beleértve a hosszú ideig futó számítási feladatok végrehajtása.
 

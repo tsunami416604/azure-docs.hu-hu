@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/08/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6c6553ace250aa9cbc06dfdfea77fc5e1637cd41
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 6810818e48329d883961c840fa83857d84b98fd4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384819"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112869"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge-preview"></a>Oktatóanyag: Adatok áthelyezése az Azure Data Box Edge (előzetes verzió)
 
@@ -135,14 +135,14 @@ A Linux-ügyfél a Data Box peremhálózati eszköz csatlakozik hajtsa végre az
 
 1. Az NFS-ügyfél telepítése után csatlakoztassa az NFS-megosztás, amely a következő parancs használatával hozta létre a Data Box Edge-eszközön:
 
-   `sudo mount <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
+   `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     > [!IMPORTANT]
     > Mielőtt csatlakoztatja a megosztást, ellenőrizze, hogy a rendszer már létrehozott a könyvtárakhoz, akkor a helyi számítógépen csatlakozási fog működni. Ezek a könyvtárak nem tartalmazhat bármilyen fájl vagy almappa.
 
     Az alábbi példa bemutatja az NFS-en keresztüli csatlakozást egy Data Box Edge-eszközön található megosztáshoz. Az eszköz IP-címe: `10.10.10.60`. A `mylinuxshare2` megosztás az ubuntuVM virtuális géphez csatlakozik. A megosztás csatlakoztatási pontja: `/home/databoxubuntuhost/edge`.
 
-    `sudo mount -t nfs 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
+    `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
 
 > [!NOTE] 
 > Az előzetes verzióra a következő kikötések vonatkoznak:

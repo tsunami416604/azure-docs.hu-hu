@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0903756ba7df34e7dba20301d45cbd4b6cc4d5ea
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fc818d2d7db60a8def99c2ad635580253dc795e0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992517"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109758"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Az Azure Cosmos DB magas rendelkezésre állás
 
@@ -58,7 +58,7 @@ Regionális üzemkimaradások utáni helyreállításon nem ritkák, és az Azur
 
 ## <a name="building-highly-available-applications"></a>Magas rendelkezésre állású alkalmazások létrehozása
 
-- Győződjön meg, hogy nagy írási és olvasási rendelkezésre állás, több írási régiók közül legalább két régió span Cosmos fiók beállítása. Ez a konfiguráció a rendelkezésre állás, a legkisebb késést biztosít, és a méretezhetőség is beolvassa, és SLA-k által. További tudnivalókért lásd: hogyan [több írási régiót a Cosmos-fiók beállítása](tutorial-global-distribution-sql-api.md).
+- Győződjön meg, hogy nagy írási és olvasási rendelkezésre állás, több írási régiók közül legalább két régió span Cosmos fiók beállítása. Ez a konfiguráció a rendelkezésre állás, a legkisebb késést biztosít, és a méretezhetőség is beolvassa, és SLA-k által. További tudnivalókért lásd: hogyan [több írási régiót a Cosmos-fiók beállítása](tutorial-global-distribution-sql-api.md). Az alkalmazások több főkiszolgálós beállítása: [konfigurálása több főkiszolgálós](how-to-multi-master.md).
 
 - Többrégiós Cosmos-fiókok, egy egyetlen-írási régió konfigurált [automatikus feladatátvétel engedélyezése az Azure CLI-vel vagy az Azure portal használatával](how-to-manage-database-account.md#automatic-failover). Miután engedélyezte az automatikus feladatátvételt egy regionális katasztrófa történik, Cosmos DB automatikusan feladatátvételt fiókját.  
 
@@ -86,3 +86,4 @@ Ezután megismerheti skálázása az átviteli sebesség a következő cikkben:
 * [Globálisan a kiosztott átviteli kapacitás méretezése](scaling-throughput.md)
 * [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
 * [Az Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md)
+* [Az alkalmazások több főkiszolgálós konfigurálása](how-to-multi-master.md)

@@ -10,22 +10,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 82a691c0e0b6280a168605d56ee628d81f10823f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: eca66bc2e737b0f9a9954cad21a446e82d753f84
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245650"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203811"
 ---
 # <a name="validate-azure-stack-system-state"></a>Azure Stack rendszerállapotának ellenőrzése
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az Azure Stack operátorait szerint lehetővé teszi az egészségügyi és állapotát, a rendszer igény szerinti kellene elengedhetetlen. Az Azure Stack érvényesítési eszköz (**Test-AzureStack**), amely lehetővé teszi egy PowerShell-parancsmag futtatása tesztek egy sorozatát hibák azonosítására, ha jelen van a rendszeren. Általában meg kell adnia az eszköz futtatásához a [kiemelt végpontját (EGP)](azure-stack-privileged-endpoint.md) amikor, forduljon a Microsoft támogatási (CSS) egy problémához. Rendszerszintű állapotát és állapotadatokat csak olyan mélységben CSS is gyűjthet és a részletes naplók elemzése, és összpontosítson a terület, ahol a hiba történt, és együttműködnek Önnel a probléma megoldásához.
+Az Azure Stack operátorait szerint képes arra, hogy meghatározza az egészségügyi és állapotát, a rendszer igény szerinti elengedhetetlen. Az Azure Stack érvényesítési eszköz (**Test-AzureStack**), amely lehetővé teszi egy PowerShell-parancsmag futtatása tesztek egy sorozatát hibák azonosítására, ha jelen van a rendszeren. Általában meg kell adnia az eszköz futtatásához a [kiemelt végpontját (EGP)](azure-stack-privileged-endpoint.md) amikor, forduljon a Microsoft támogatási (CSS) egy problémához. Rendszerszintű állapotát és állapotadatokat csak olyan mélységben CSS is gyűjthet és a részletes naplók elemzése, és összpontosítson a terület, ahol a hiba történt, és együttműködnek Önnel a probléma megoldásához.
 
 ## <a name="running-the-validation-tool-and-accessing-results"></a>A fürtérvényesítési eszköz futtatása és az eredmények elérése
 
@@ -93,7 +93,6 @@ Kis hatású tesztekhez a infrastruktúra szintjén működik, és különféle 
 
 A fenti infrastruktúra tesztek mellett funkciók ellenőrzéséhez infrastruktúra összetevői között felhőalapú forgatókönyv tesztek futtatására is rendelkezik. Ezek a tesztek futtatását, mert azok olyan erőforrások üzembe helyezésének felhőbeli rendszergazdai hitelesítő adatok szükségesek. 
     > [!NOTE]
-    >
     > Currently you cannot run cloud scenario tests using Active Directory Federated Services (AD FS) credentials. 
 
 A fürtérvényesítési eszköz kell megvizsgálni, a következő felhőt helyzetekben:

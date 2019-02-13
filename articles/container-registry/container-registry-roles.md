@@ -7,18 +7,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: e2ec1b7ad6d1489836937d30b89d0f0f681a9bfa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4b9b382755e73b6218432624c471346e9698752
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819586"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193390"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Az Azure Container Registry-szerepkörök és engedélyek
 
 Az Azure Container Registry szolgáltatás támogat egy Azure-szerepkörök, engedélyek és egy Azure container registry különböző szinteken biztosít. Az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) adott engedélyek hozzárendelése a felhasználókhoz vagy egyszerű szolgáltatások, amelyek a beállításjegyzék kommunikáljon.
 
-| Szerepkör vagy engedély       | Resource Manager elérése| Beállításjegyzék létrehozása/törlése | [Rendszerkép leküldése](#push-image) | [Rendszerkép lekérése](#pull-image) | Szabályzatok módosítása |   [Bejelentkezési képek](#sign-images)  |
+| Szerepkör vagy engedély       | [Resource Manager elérése](#access-resource-manager)| [Beállításjegyzék létrehozása/törlése](#create-and-delete-registry) | [Rendszerkép leküldése](#push-image) | [Rendszerkép lekérése](#pull-image) | [Szabályzatok módosítása](#change-policies) |   [Bejelentkezési képek](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- |
 | Tulajdonos | X | X | X | X | X |  |  
 | Közreműködő | X | X | X | X | X |  |  
@@ -45,19 +45,19 @@ Az eszközök, mint például a Visual Studio Code [Docker-bővítmény](https:/
 
 ## <a name="access-resource-manager"></a>Resource Manager elérése
 
-Az Azure Resource Manager-hozzáférésre szüksége az Azure Portalon, és [Azure CLI-vel](/cli/azure/). Például a beállításjegyzékek listájának lekérése a `az acr list` parancsot, erre az engedélyre van szüksége beállítása. 
+Az Azure Resource Manager-hozzáférésre szüksége az Azure portal és a beállításjegyzék kezelése a a [Azure CLI-vel](/cli/azure/). Például a beállításjegyzékek listájának lekérése a `az acr list` parancsot, erre az engedélyre van szüksége beállítása. 
 
-## <a name="createdelete-registry"></a>Beállításjegyzék létrehozása/törlése
+## <a name="create-and-delete-registry"></a>Hozzon létre, és a regisztrációs adatbázis törlése
 
 Hozzon létre vagy töröljön az Azure container registryk lehetővé teszi.
 
 ## <a name="push-image"></a>Rendszerkép leküldése
 
-Lehetővé teszi `docker push` képet, vagy egy másik támogatott összetevő, leküldése a beállításjegyzékbe. Szükséges [hitelesítési](container-registry-authentication.md) a beállításjegyzék használatával a meghatalmazott identitását. 
+Lehetővé teszi `docker push` képet, vagy egy másik leküldéses [összetevő támogatott](container-registry-image-formats.md) például egy Helm-diagram, egy regisztrációs adatbázisba. Szükséges [hitelesítési](container-registry-authentication.md) a beállításjegyzék használatával a meghatalmazott identitását. 
 
 ## <a name="pull-image"></a>Rendszerkép lekérése
 
-Lehetővé teszi `docker pull` egy nem-karanténba kép, vagy egy másik támogatott összetevő, lekérése a beállításjegyzékből. Szükséges [hitelesítési](container-registry-authentication.md) a beállításjegyzék használatával a meghatalmazott identitását.
+Lehetővé teszi `docker pull` egy nem-karanténba képfájl, illetve egy másik lekéréses [összetevő támogatott](container-registry-image-formats.md) például egy Helm-diagramot a beállításjegyzékből. Szükséges [hitelesítési](container-registry-authentication.md) a beállításjegyzék használatával a meghatalmazott identitását.
 
 ## <a name="change-policies"></a>Szabályzatok módosítása
 

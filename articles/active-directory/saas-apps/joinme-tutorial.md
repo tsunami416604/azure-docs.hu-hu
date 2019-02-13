@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az join.me |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező join.me |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és join.me között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: dc393b8701bd72ea7f9de543de33116ea3cb5653
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f61520994bdeeab75b6d26731dee9af15b4ccda6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48871607"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209540"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>Oktatóanyag: Azure Active Directory-integráció az join.me
+# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező join.me
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan join.me integrálása az Azure Active Directory (Azure AD).
 
@@ -148,7 +149,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
   
 ### <a name="create-a-joinme-test-user"></a>Join.me tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű join.me hoz létre. Együttműködve [join.me támogatási csapatának](https://help.join.me/s/?language) a felhasználók hozzáadása az join.me platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű join.me hoz létre. Együttműködve [join.me támogatási csapatának](https://help.join.me/s/?language) a felhasználók hozzáadása az join.me platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

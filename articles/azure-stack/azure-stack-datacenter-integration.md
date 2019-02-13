@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
-ms.openlocfilehash: afb4e634b7e255ef8f2cfc84319029af7412372e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5ececb2d3c52a1da8c1a537e6223f17a9b83921f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251877"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207534"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Azure Stack integrált rendszerek adatközpont integrációja szempontjai
-Ha érdeklik az Azure Stackkel integrált rendszereknél, tisztában kell lennie a főbb tervezési megfontolások körül a rendszerbe állítás és az hogyan illeszkedik a a rendszer az Adatközpont része. Ez a cikk segítséget nyújt az Azure Stack több csomópontos rendszerének fontos infrastruktúra döntéseket ezeket a szempontokat magas szintű áttekintést nyújt. A felsorolt szempontok megismerése segít az használatakor a számítógép-Gyártói hardver gyártójától, azok az Azure Stack üzembe helyezése a helyi adatközpontban.  
+Ha érdeklik az Azure Stackkel integrált rendszereknél, tisztában kell lennie a főbb tervezési megfontolások körül a rendszerbe állítás és az hogyan illeszkedik a a rendszer az adatközpontban. Ez a cikk segítséget nyújt az Azure Stack több csomópontos rendszerének fontos infrastruktúra döntéseket ezeket a szempontokat magas szintű áttekintést nyújt. A felsorolt szempontok megismerése segít az használatakor a számítógép-Gyártói hardver gyártójától, azok az Azure Stack üzembe helyezése a helyi adatközpontban.  
 
 > [!NOTE]
 > Az Azure Stack több csomópontos rendszerekhez csak a hitelesített hardveren szállítóktól vásárolható meg. 
@@ -53,8 +53,6 @@ Ha magasabb szintű hozzáférési problémák megoldásához, amelyek nem megol
 
 ### <a name="choose-identity-provider"></a>Identitásszolgáltató kiválasztása
 Fontolja meg az Azure AD vagy az AD FS, az Azure Stack központi telepítéshez használni kívánt melyik identitásszolgáltatóhoz kell. Identitás-szolgáltatóktól nem lehet átállítani a teljes rendszer újbóli üzembe helyezés nélküli üzembe helyezés után. Ha nem Ön a tulajdonosa az Azure AD-fiókot, és a Felhőszolgáltató által biztosított rendelkező fiókot használ, és ha úgy dönt, hogy a szolgáltató váltson, és használjon egy másik Azure AD-fiók, ezen a ponton kell forduljon annak érdekében, hogy a megoldás f újbóli üzembe helyezéséhez vagy, a költségek.
-
-
 
 Identitás-szolgáltató tetszőleges nem befolyásolta a bérlői virtuális gépeket, a identitásrendszer és fiókokat használnak, hogy azok csatlakozhassanak az Active Directory-tartományhoz, és így tovább. Ez a különálló.
 
@@ -110,9 +108,9 @@ Milyen nyilvános kulcsokra épülő infrastruktúra további információt tan�
 
 
 ## <a name="time-synchronization"></a>Időszinkronizálás
-Ki kell választania egy megadott idő a kiszolgáló szinkronizálása az Azure Stack segítségével.  Idő symbolization fontos az Azure Stacket és az infrastruktúra-szerepkörök, mivel ez belső szolgáltatások egymással hitelesítéséhez Kerberos-jegyekhez létrehozására szolgál.
+Ki kell választania egy megadott idő a kiszolgáló szinkronizálása az Azure Stack segítségével.  Időszinkronizálás az Azure Stacket és az infrastruktúra-szerepkörök, mivel ez belső szolgáltatások egymással hitelesítéséhez Kerberos-jegyekhez létrehozására szolgál.
 
-Meg kell adnia a szinkronizálási kiszolgálót, az IP-címet az infrastruktúra-összetevők a legtöbb fel tudja oldani az egy URL-CÍMÉT, bár egyes csak támogatja IP-címek. Ha Ön is a leválasztott rendszerbe állítási beállításának használata, meg kell adnia egy kiszolgálót, amelynek Ön a vállalati hálózatban arra is érhető el az infrastruktúra-hálózat az Azure Stackben.
+Meg kell adnia a szinkronizálási kiszolgálót, az IP-címet az infrastruktúra-összetevők a legtöbb fel tudja oldani az egy URL-CÍMÉT, bár egyes csak támogatja IP-címek. Ha a kapcsolat nélküli telepítési beállítást használja, meg kell adnia egy kiszolgálót, amelynek Ön a vállalati hálózatban arra is érhető el az Azure stack infrastruktúra-hálózat.
 
 ## <a name="connect-azure-stack-to-azure"></a>Csatlakozás az Azure Stack az Azure-bA
 

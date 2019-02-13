@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 0fa487e1ecd419780243b04a273110f3cf43761c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 03e15532d04a4c62796aad884c5e344688814672
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633963"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209234"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi az Apache Hive és az Azure HDInsight HiveQL?
 
@@ -191,7 +191,7 @@ Ezek az utasítások hajtsa végre a következő műveleteket:
 
 ## <a name="improve-hive-query-performance"></a>Hive-lekérdezések teljesítményének növelése
 
-### <a id="usetez"></a>Az Apache Tez
+### <a id="usetez"></a>Apache Tez
 
 [Az Apache Tez](https://tez.apache.org) egy keretrendszer, amely lehetővé teszi, hogy az adatok nagy számításigényű alkalmazásokat, például a Hive, sokkal hatékonyabban futtatásához ipari méretekben. Linux-alapú HDInsight-fürtök esetén alapértelmezés szerint engedélyezve van a tezben futtatja.
 
@@ -204,11 +204,7 @@ Ezek az utasítások hajtsa végre a következő műveleteket:
 
 A [Apache Hive Tez tervezési dokumentumok](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) megvalósítási és hangolási konfiguráció részleteit tartalmazza.
 
-A hibakeresés feladatok használata a Tez futott, HDInsight biztosítja a következő webes, amelyek lehetővé teszik, hogy a Tez-feladatok adatainak megtekintése:
-
-* [A Linux-alapú HDInsight az Apache Ambari Tez nézet használata](../hdinsight-debug-ambari-tez-view.md)
-
-* [A Windows-alapú HDInsight az Apache Tez felhasználói felület használata](../hdinsight-debug-tez-ui.md)
+A hibakeresés feladatok használata a Tez futott, HDInsight biztosítja a következő webes felhasználói felület, amely lehetővé teszi, hogy a Tez-feladatok adatainak megtekintése: [Az Apache Ambari Tez nézetben jelenítheti meg a Linux-alapú HDInsight](../hdinsight-debug-ambari-tez-view.md).
 
 ### <a name="low-latency-analytical-processing-llap"></a>Közel valós idejű analitikus feldolgozás (LLAP)
 
@@ -230,7 +226,7 @@ Az SQL Server Integration Services (SSIS) használatával egy Hive-feladat futta
 
 * [Az Azure HDInsight Hive-tevékenység][hivetask]
 
-* [Az Azure előfizetés Csatlakozáskezelő][connectionmanager]
+* [Azure Subscription Connection Manager][connectionmanager]
 
 További információkért lásd: a [Azure Feature Pack] [ ssispack] dokumentációját.
 

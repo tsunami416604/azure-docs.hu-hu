@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e3cf87ca49ae39966cffbb768dc1c191991d4036
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f3f8cf88268498d20651eab40eb655313180cadc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096908"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203199"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>A Service Fabric fürterőforrás-kezelő bemutatása
 Hagyományosan a IT-rendszereit és online szolgáltatások kezelésére hivatott adott fizikai vagy virtuális gépek dedikálni ezeket adott szolgáltatások vagy a rendszer. Szolgáltatások rétegek szerint lettek tervezésnek. A "webes" réteg és a egy "adatok" vagy "tároló" réteget lenne. Alkalmazások kellene egy üzenetkezelési szinttel, ahol kérelmek érkezett be és ki, valamint dedikált gyorsítótár-csoportokon. Minden szintet vagy a számítási feladat volt dedikált, meghatározott gépek: az adatbázis van kijelölve, a webkiszolgálók egy néhány néhány gépek. Ha egy adott típusú számítási feladatok miatt az volt a gépek futtassa túl gyakori elérésű, majd a további gépek ugyanazt a konfigurációt az adott réteg hozzáadott. Azonban nem minden munkaterhelésről így könnyen sikerült terjeszthető ki – különösen az adatréteg-cserélje általában a nagyobb gépek rendelkező gépek. Egyszerű. Ha egy gép elindítása nem sikerült, mindaddig, amíg a gép sikerült visszaállítani a kisebb kapacitással futott, hogy a teljes alkalmazás részét. Továbbra is könnyen (Ha ez nem feltétlenül szórakoztató).
@@ -43,10 +43,6 @@ A fürterőforrás-kezelő a rendszer összetevő, amely kezeli a Service Fabric
 1. Érvényesítési szabályok
 2. A környezet optimalizálása
 3. Útmutatás nyújtása a más folyamatokkal
-
-Ha szeretné látni a fürterőforrás-kezelő működését, tekintse meg az alábbi Microsoft Virtual Academy-videó: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
-<img src="./media/service-fabric-cluster-resource-manager-introduction/ConceptsAndDemoVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ### <a name="what-it-isnt"></a>Mit nem
 A hagyományos N szintű alkalmazás esetében mindig egy [terheléselosztó](https://en.wikipedia.org/wiki/Load_balancing_(computing)). Általában ez volt a hálózati terheléselosztó (NLB) vagy egy alkalmazás Load Balancer (ALB) attól függően, hol rövidítéssel lévő a hálózati vermet. Néhány terheléselosztók például F5 BigIP ajánlat hardveralapú, mások például a Microsoft szoftveralapú a hálózati Terheléselosztás. Más környezetekben előfordulhat, hogy valami hasonló HAProxy, nginx-et, Istio vagy az Envoy ebben a szerepkörben. Az architektúrák a terheléselosztás feladata, állapot nélküli munkaterhelés kap (körülbelül) munkahelyi ugyanannyi. Terheléselosztás stratégiák változatos betölteni. Néhány terheléselosztók küld el minden más hívási egy másik kiszolgálóra. Mások a megadott munkamenet rögzítés tartós használatát. Speciális terheléselosztók tényleges betöltést-becslésére vagy a jelentéskészítés segítségével egy hívás a várt költségeket és a gép aktuális terhelés alapján továbbítja.

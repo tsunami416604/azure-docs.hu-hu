@@ -9,18 +9,18 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: acae8076350c26e7a7157fd2063f64220b167771
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5c5615dcfc9d43016bdf995a22ae29a5c5dd2c6f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486061"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185383"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>A HDInsight vállalati biztonsági csomag használata
 
 A standard szintű Azure HDInsight-fürtöt, egy egyfelhasználós fürt. Ideális a legtöbb vállalatok számára, hogy kisebb alkalmazásfejlesztő csapatok dolgoznak, nagy mennyiségű adat számítási feladatok létrehozásához. Hozzon létre egy dedikált fürtöt igény szerinti és nincs többé szükség esetén semmisítse meg a minden felhasználónak. 
 
-Sok vállalat áthelyezett olyan modellre, ahol fürtök informatikai csapatok felügyelik, és több alkalmazásfejlesztő csapat ugyanazokon a fürtökön. Ezek a nagyobb cégek minden egyes fürt az Azure HDInsight többfelhasználós hozzá kell férniük.
+Sok vállalat olyan modellre, amelyben az informatikai csapatok-fürtök kezelése erőforrásfájljait áthelyezték, és több alkalmazásfejlesztő csapat ugyanazokon a fürtökön. Ezek a nagyobb cégek minden egyes fürt az Azure HDInsight többfelhasználós hozzá kell férniük.
 
 HDInsight a legnépszerűbb identitásszolgáltatóra, az Active Directory – az olyan felügyelt módon támaszkodik. A HDInsight integrálásával [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/active-directory-ds-overview.md), a fürtök a tartományi hitelesítő adataival érheti. 
 
@@ -28,18 +28,19 @@ A virtuális gépek (VM) a HDInsight tartományhoz csatlakoztatva, a megadott ta
 
 ## <a name="integrate-hdinsight-with-active-directory"></a>A HDInsight és az Active Directory integrálása
 
-A Kerberos hitelesítési és biztonsági nyílt forráskódú Apache Hadoop támaszkodik. HDInsight-fürtcsomópontok vállalati biztonsági csomag (ESP), ezért az Azure Active Directory tartományi szolgáltatások által felügyelt tartományhoz csatlakoznak. A Kerberos biztonsági konfigurálva van a Hadoop-összetevők a fürtön. 
+Nyílt forráskódú Apache Hadoop a Kerberos protokoll hitelesítési és biztonsági támaszkodik. HDInsight-fürtcsomópontok vállalati biztonsági csomag (ESP), ezért az Azure Active Directory tartományi szolgáltatások által felügyelt tartományhoz csatlakoznak. A Kerberos biztonsági konfigurálva van a Hadoop-összetevők a fürtön. 
 
 Automatikusan jönnek létre a következő műveleteket:
-- egy egyszerű szolgáltatást az egyes Hadoop-összetevők 
+
+- egy egyszerű szolgáltatást az egyes Hadoop-összetevők
 - az egyes gépek a tartományhoz csatlakozó számítógép rendszerbiztonsági tag
-- egy szervezeti egység (OU) minden egyes fürt ezen szolgáltatás és a gépi rendszerbiztonsági tagok tárolásához 
+- egy szervezeti egység (OU) minden egyes fürt ezen szolgáltatás és a gépi rendszerbiztonsági tagok tárolásához
 
 Összefoglalva, szüksége a környezet beállításához:
 
 - Active Directory-tartomány (az Azure Active Directory tartományi szolgáltatások által kezelt).
 - Biztonságos LDAP (LDAPS) engedélyezve van az Azure Active Directory tartományi szolgáltatásokban.
-- Megfelelő hálózati kapcsolat a HDInsight virtuális hálózat és az Azure Active Directory tartományi szolgáltatások virtuális hálózat, ha úgy dönt, különálló virtuális hálózatok az őket. A HDInsight virtuális hálózaton belüli virtuális gépek rendelkeznie kell egy virtuális hálózati társviszony-létesítésen keresztül az Azure Active Directory tartományi szolgáltatásokban üzemel. Ha a HDInsight és az Azure Active Directory tartományi szolgáltatások ugyanazon a virtuális hálózaton üzembe helyezett, a rendszer automatikusan létrehozza a kapcsolatot, és további semmit nem kell tennie.
+- Megfelelő hálózati kapcsolat a HDInsight virtuális hálózat és az Azure Active Directory tartományi szolgáltatások virtuális hálózat, ha úgy dönt, különálló virtuális hálózatok az őket. A HDInsight virtuális hálózaton belüli virtuális gépek rendelkeznie kell egy virtuális hálózati társviszony-létesítésen keresztül az Azure Active Directory tartományi szolgáltatásokban üzemel. Ha a HDInsight és az Azure Active Directory tartományi szolgáltatások vannak telepítve az azonos virtuális hálózatba, a rendszer automatikusan létrehozza a kapcsolatot, és további semmit nem kell tennie.
 
 ## <a name="set-up-different-domain-controllers"></a>Állítsa be a különféle tartományvezérlők
 HDInsight jelenleg csak az Azure AD DS támogatja a fő tartományvezérlő, a fürt által használt a Kerberos-kommunikációhoz. Azonban más összetett az Active Directory-beállításokat is lehetséges, mindaddig, amíg egy ilyen beállítás vezet, a HDInsight hozzáférést az Azure Active Directory tartományi szolgáltatások engedélyezése.
@@ -47,7 +48,7 @@ HDInsight jelenleg csak az Azure AD DS támogatja a fő tartományvezérlő, a f
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory tartományi szolgáltatások
 [Az Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/active-directory-ds-overview.md) biztosít, amely teljesen kompatibilis a Windows Server Active Directoryval felügyelt tartományhoz. A Microsoft gondoskodik kezelése, javításokat és a tartomány egy magas rendelkezésre állású (HA) beállítás figyelése. Telepítheti a fürt nem kell bajlódnunk a tartományvezérlők karbantartásához. 
 
-Felhasználók, csoportok és jelszavak szinkronizálódnak, az Azure Active Directory (Azure AD). Az Azure Active Directory tartományi szolgáltatások az Azure AD-példányt a egyirányú szinkronizálás lehetővé teszi, hogy a felhasználók által a vállalati hitelesítő adatokkal jelentkezhetnek be a fürt. 
+Felhasználók, csoportok és jelszavak szinkronizálódnak, az Azure ad-ből. Az Azure Active Directory tartományi szolgáltatások az Azure AD-példányt a egyirányú szinkronizálás lehetővé teszi, hogy a felhasználók által a vállalati hitelesítő adatokkal jelentkezhetnek be a fürt. 
 
 További információkért lásd: [konfigurálása HDInsight-fürtök az Azure AD DS segítségével ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -57,38 +58,38 @@ Ha egy helyszíni Active Directory-példányból vagy összetettebb Active Direc
 
 Mivel a Kerberos jelszókivonatokat alapul, meg kell [Jelszókivonat-szinkronizálás az Azure Active Directory tartományi szolgáltatások engedélyezése](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). 
 
-Ha összevonási használ az Active Directory összevonási szolgáltatások (ADFS), engedélyeznie kell a Jelszókivonat-szinkronizálás (egy ajánlott beállítani, lásd: [ez](https://youtu.be/qQruArbu2Ew)) ami is segít a vész-helyreállítási abban az esetben az AD FS-infrastruktúra sikertelen és a kiszivárgott hitelesítő adatok védelme. További információkért lásd: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás engedélyezése](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
+Ha az összevonási használja az Active Directory összevonási szolgáltatások (AD FS), engedélyeznie kell a Jelszókivonat-szinkronizálás. (Javasolt beállítás esetén lásd: [ebben a videóban](https://youtu.be/qQruArbu2Ew).) Jelszókivonat-szinkronizálás segít a vész-helyreállítási, abban az esetben az AD FS-infrastruktúra meghiúsul, és azt is védelmet nyújt a kiszivárgott hitelesítő adatok. További információkért lásd: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás engedélyezése](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
 
-A helyszíni Active Directory vagy az Active Directory IaaS-beli virtuális gépeken önmagában, az Azure AD és az Azure Active Directory tartományi Szolgáltatásokban, anélkül használata nem támogatott konfiguráció a HDInsight-fürtök ESP.
+Használatával a helyszíni Active Directory vagy az IaaS virtuális gépek önmagában, az Active Directory nélkül az Azure AD és az Azure Active Directory tartományi Szolgáltatásokban, nem egy támogatott konfigurációkra vonatkozó ESP HDInsight-fürtöket.
 
-Ha az összevonási használatban van, és jelszókivonatokat szinkronizált correcty, de hitelesítési hibák azért kapta,. Ellenőrizze, hogy a jelszó-hitelesítést használ a powershell egyszerű szolgáltatásnév felhő engedélyezve van, ha nem, be kell állítani egy [kezdőlap Kezdőtartomány felderítése (HRD ) a házirend](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) az AAD-bérlő. Státusz és beállítása a HRD-szabályzattal:
+Ha összevonási használatban van, és a jelszókivonatokat megfelelően szinkronizálva lesznek, de hitelesítési hibák azért kapta, ellenőrizze, ha felhőalapú jelszavas hitelesítés engedélyezve van a PowerShell szolgáltatás egyszerű. Ha nem, be kell állítani egy [kezdőlap Kezdőtartomány felderítése (HRD) házirend](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) az Azure AD-bérlője számára. Ellenőrizze és állítsa be a HRD-szabályzattal:
 
- 1. Azure ad powershell modul telepítése
-
- ```
-  Install-Module AzureAD
- ```
-
- 2. ```Connect-AzureAD``` egy globális rendszergazdai (bérlői rendszergazdai) hitelesítő adatok használatával
-
- 3. Ellenőrizze, hogy ha a "Microsoft Azure Powershell" szolgáltatásnév már létrejött
+ 1. Az Azure AD PowerShell modul telepítése.
 
  ```
-  $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+    Install-Module AzureAD
  ```
 
- 4. Ha még nem létezik (pl., ha ($powershellSPN - eq $null)) majd az egyszerű szolgáltatás létrehozása
+ 2. Adja meg `Connect-AzureAD` globális rendszergazdai (bérlői rendszergazdai) hitelesítő adatok használatával.
+
+ 3. Ellenőrizze, hogy ha a Microsoft Azure PowerShell szolgáltatásnév már létrejött.
 
  ```
-  $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+    $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
  ```
 
- 5. Hozzon létre, és a szabályzat csatolása ezt a szolgáltatásnevet: 
+ 4. Ha még nem létezik (azaz ha `($powershellSPN -eq $null)`), majd hozza létre a szolgáltatásnevet.
 
  ```
- $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+ ```
 
- Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
+ 5. Hozzon létre, és csatolja a szabályzatot a szolgáltatásnévnek.
+
+ ```
+    $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+
+    Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
  ```
 
 ## <a name="next-steps"></a>További lépések

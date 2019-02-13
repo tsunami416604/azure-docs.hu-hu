@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az mártás Labs - mobil- és webes tesztelése |} A Microsoft Docs'
+title: 'Oktatóanyag: Az mártás Labs - mobil- és webes tesztelése az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés mártás Labs - mobil- és webes tesztelése és Azure Active Directory között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 55d84256f408e80600308ede22dbaa903b070d90
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9c4e3d074ad241ec6add6fe43b77413ce283e389
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265695"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207007"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Oktatóanyag: Azure Active Directory-integráció az mártás Labs - mobil- és webalkalmazás tesztelése
+# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Oktatóanyag: Az Azure Active Directory-integráció az mártás Labs - mobil- és webalkalmazás tesztelése
 
 Ebben az oktatóanyagban megismerheti, hogyan integrálható a mártás Labs - mobil- és webes tesztelése az Azure Active Directoryval (Azure AD).
 
@@ -37,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása az mártás Labs - mobil- és webes tesztelése, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Mártás Labs - mobil és webes egyszeri bejelentkezés tesztelése előfizetés engedélyezve van.
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Konfigurálja az integrációt, mártás Labs -, mobil- és webes tesztelése az
 
 **Adja hozzá a mártás Labs - mobil- és webes tesztelése a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -175,7 +176,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ez a szakasz célja mártás Labs - mobil- és webes tesztelés Britta Simon nevű felhasználó létrehozásához. Mártás Labs - mobil és webes tesztelése támogatja a just-in-time-kiépítés, engedélyezve alapértelmezés szerint ez. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az mártás Labs - mobil- és webes tesztelése, ha még nem létezik elérésére tett kísérlet során.
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [mártás Labs - mobil- és webes tesztelés támogatási csoportjának](mailto:support@saucelabs.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [mártás Labs - mobil- és webes tesztelés támogatási csoportjának](mailto:support@saucelabs.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -207,7 +208,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

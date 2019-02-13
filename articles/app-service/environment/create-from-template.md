@@ -14,16 +14,19 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9056abdd57640026d04779a3c5c3a201095ea045
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: bdf722ffa7a7c499ff256392886e0f229f27c7a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277471"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109894"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Az ASE létrehozása Azure Resource Manager-sablon használatával
 
 ## <a name="overview"></a>Áttekintés
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Egy internethez csatlakozó végponttal vagy a végpont egy belső címet egy Azure virtuális hálózaton (VNet) az Azure App Service Environment (ASE) hozható létre. Egy belső végpont létrehozásakor, hogy a végpont kerül a Azure által az összetevő a belső terheléselosztó (ILB) nevű. A belső IP-cím az ASE ILB ASE nevezzük. Az ASE egy nyilvános végponttal rendelkező külső ASE nevezzük. 
 
 Az ASE az Azure Portalon vagy Azure Resource Manager-sablon segítségével hozható létre. Ez a cikk ismerteti a lépéseket és a egy külső ASE vagy ILB ASE Resource Manager-sablonokkal való létrehozásához szükséges szintaxist. Az ASE létrehozása az Azure Portalon kapcsolatban lásd: [győződjön meg arról, a külső ASE] [ MakeExternalASE] vagy [győződjön meg arról, az ILB ASE][MakeILBASE].
@@ -51,7 +54,7 @@ A Resource Manager-sablon, amely létrehoz egy ASE Környezethez és a kapcsoló
 Ha azt szeretné, hogy az ILB ASE környezetben, használja a Resource Manager-sablon [példák][quickstartilbasecreate]. Ezek méretformátumok figyelembe vétele, amely a kis-és nagybetűhasználattal. A paraméterek a legtöbb a *azuredeploy.parameters.json* fájl közösek az ILB ASE és a külső ASE létrehozását. Az alábbi lista felhívja paraméterek különösen fontos, vagy az egyedi, az ILB ASE létrehozásakor:
 
 * *internalLoadBalancingMode*: A legtöbb esetben az FTP-szolgáltatás, az ASE által figyelt ezt a 3, ami azt jelenti, hogy a HTTP/HTTPS-forgalmat a 80-as/443-as portokon, és a vezérlő/adatok portok beállítása társítani kívánt belső ILB-lefoglalt virtuális hálózati címhez. Ha ez a tulajdonság értéke 2, csak az FTP szolgáltatással kapcsolatos portok (egyaránt vezérlési és csatornák) ILB-címmel vannak kötve. A HTTP/HTTPS-forgalmat a nyilvános virtuális IP-cím nem marad.
-* *DNS-utótagja*: Ez a paraméter határozza meg az alapértelmezett legfelső szintű tartományt, amely az ASE van rendelve. Az Azure App Service-ben nyilvános változata, az alapértelmezett gyökértartomány esetében az összes webes alkalmazások van *azurewebsites.net*. Mivel az ILB ASE környezetben egy ügyfél virtuális hálózatán belüli, a nyilvános service alapértelmezett legfelső szintű tartományt használja, hogy nincs értelme. Ehelyett az ILB ASE rendelkeznie kell egy alapértelmezett legfelső szintű tartományt, amely logikus a használatra a vállalat belső virtuális hálózaton belül. Contoso Corporation például használhatja az alapértelmezett gyökértartomány *belső contoso.com* az alkalmazásokhoz, melyek nem oldható fel és csak a Contoso virtuális hálózaton belül elérhető. 
+* *dnsSuffix*: Ez a paraméter határozza meg az alapértelmezett legfelső szintű tartományt, amely az ASE van rendelve. Az Azure App Service-ben nyilvános változata, az alapértelmezett gyökértartomány esetében az összes webes alkalmazások van *azurewebsites.net*. Mivel az ILB ASE környezetben egy ügyfél virtuális hálózatán belüli, a nyilvános service alapértelmezett legfelső szintű tartományt használja, hogy nincs értelme. Ehelyett az ILB ASE rendelkeznie kell egy alapértelmezett legfelső szintű tartományt, amely logikus a használatra a vállalat belső virtuális hálózaton belül. Contoso Corporation például használhatja az alapértelmezett gyökértartomány *belső contoso.com* az alkalmazásokhoz, melyek nem oldható fel és csak a Contoso virtuális hálózaton belül elérhető. 
 * *ipSslAddressCount*: Ez a paraméter alapértelmezett értéke automatikusan a 0 értéket a *azuredeploy.json* fájlhoz, mert az ILB ASE egy ILB-címmel rendelkezik. Nincsenek explicit IP-SSL címek ILB ASE esetében. Ezért az ILB ASE IP SSL-címkészletet kell beállítani a nulla. Ellenkező esetben egy üzembe helyezési hiba történik. 
 
 Miután a *azuredeploy.parameters.json* fájl ki van töltve, az ASE létrehozása a PowerShell-kódrészlet használatával. A Resource Manager-sablonfájl helyek a gépen megfelelően a elérési útjának módosítása. Ne felejtse adja meg a saját a Resource Manager üzembe helyezési nevét és az erőforráscsoport neve:
@@ -60,7 +63,7 @@ Miután a *azuredeploy.parameters.json* fájl ki van töltve, az ASE létrehozá
 $templatePath="PATH\azuredeploy.json"
 $parameterPath="PATH\azuredeploy.parameters.json"
 
-New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
 Az ASE létrehozását egy órát vesz igénybe. Ezután az ASE megjelenik-e a listában, az ASE az előfizetés, amely kiváltotta az üzembe helyezés a portálon.
@@ -146,7 +149,7 @@ Miután a *azuredeploy.parameters.json* fájl ki van töltve, az alapértelmezet
 $templatePath="PATH\azuredeploy.json"
 $parameterPath="PATH\azuredeploy.parameters.json"
 
-New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
 A módosítás alkalmazása ASE előtér / körülbelül 40 percet vesz igénybe. Például két előtérrendszerek használó alapértelmezett méretű ASE a sablon körülbelül egy óra és 20 percet vesz igénybe végrehajtásához. A sablon futása közben az ASE nem skálázhatja.  

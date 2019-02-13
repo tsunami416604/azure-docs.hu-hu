@@ -11,23 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 3cf819ceb01e52b029e8654dddc355afd27a9b63
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 81139734d0eb7d15e78c465c06fc429de48480c3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982998"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182986"
 ---
-# <a name="azure-media-services-release-notes-legacy"></a>Az Azure Media Services kibocsátási megjegyzéseket (örökölt)
+# <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 
 Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója változásokat a korábbi kiadások és ismert problémáit.
 
 > [!NOTE]
-> Szívesen meghallgatnánk az ügyfeleink, így Ön érintő problémák kijavítása összpontosíthatunk. Probléma jelentéséhez vagy tegyen fel kérdéseket, küldje el a hozzászólás a [Az Azure Media Services MSDN-fórum].
-> 
-> 
+> A Media Services v2 jelennek meg semmilyen új szolgáltatásokat és funkciókat. 
+
+Szívesen meghallgatnánk az ügyfeleink, így Ön érintő problémák kijavítása összpontosíthatunk. Probléma jelentéséhez vagy tegyen fel kérdéseket, küldje el a hozzászólás a [Az Azure Media Services MSDN-fórum]. 
 
 ## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>Ismert problémák
 ### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>A Media Services általános problémák

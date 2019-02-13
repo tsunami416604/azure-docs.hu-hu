@@ -8,23 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 8/16/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7fd2a882dbda7f7dff2c5fb82c9e51b8ae0b46a9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0d20d147bc77698e97630ad3bd5e58348db45f5b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878561"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187474"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API és a Java használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Web Search API-hívását, majd hogyan fogadhatja a JSON-választ.  
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
-
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Java-alkalmazás egy keresési kérelmet küld az API-t, és a válasz megjeleníti. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
@@ -32,6 +28,8 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 * [JDK 7 vagy 8](https://aka.ms/azure-jdks)
 * [Gson-kódtár](https://github.com/google/gson)
 * Egy előfizetői azonosító
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-import-dependencies"></a>Projekt létrehozása és a függőségek importálása
 

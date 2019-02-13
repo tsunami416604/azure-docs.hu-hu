@@ -12,30 +12,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: eff526118f6fd127ba720d28296baf86abd01393
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 023201d221ee5d7ec884c6a760407e8da8340d3f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246434"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207122"
 ---
 # <a name="azure-stack-firewall-integration"></a>Az Azure Stack tűzfal integrációja
-Javasoljuk, hogy egy tűzfal eszköz segítségével biztonságos Azure Stack segítségével. Bár tűzfalak többek között elosztott-szolgáltatásmegtagadásos (DDOS) támadások, a behatolásérzékelési és a tartalomvizsgálat segíthet, azokat is az Azure storage-szolgáltatásokhoz hasonlóan a blobok, táblák és üzenetsorok átviteli szűk keresztmetszetté válhat.
+Javasoljuk, hogy egy tűzfal eszköz segítségével biztonságos Azure Stack segítségével. Tűzfalak segítségével többek között elosztott--szolgáltatásmegtagadásos (DDOS) támadások, behatolásérzékelési és a tartalomvizsgálat szemben. Azonban akkor is válhat az Azure storage-szolgáltatásokhoz hasonlóan a blobok, táblák és üzenetsorok átviteli szűk keresztmetszetté.
 
-Azure Active Directory (Azure AD) vagy a Windows Server Active Directory összevonási szolgáltatások (AD FS) identitás mintán alapuló, szükséges lehet közzétenni az Active Directory összevonási szolgáltatások végpont. Ha a kapcsolat nélküli telepítési módban használja, az AD FS-végpont közzé kell tennie. További információkért lásd: a [adatközpont integrációja identitás cikk](azure-stack-integrate-identity.md).
+ Ha a kapcsolat nélküli telepítési módban használja, az AD FS-végpont közzé kell tennie. További információkért lásd: a [adatközpont integrációja identitás cikk](azure-stack-integrate-identity.md).
 
-Az Azure Resource Manager (rendszergazda), a felügyeleti portál és a Key Vault (rendszergazda) végpontok nem feltétlenül szükséges külső közzétételét. Például egy szolgáltató, érdemes a számítógép támadható felületét, és csak felügyelheti az Azure Stack, a hálózaton belül, és nem az internetről.
+Az Azure Resource Manager (rendszergazda), a felügyeleti portál és a Key Vault (rendszergazda) végpontok nem feltétlenül szükséges külső közzétételét. Például szolgáltató, korlátozhatja a támadási felület által csak felügyelete az Azure Stack, a hálózaton belül, és nem az internetről.
 
-A vállalati szervezetek számára a külső hálózat lehet a meglévő vállalati hálózaton. Ilyen esetben közzé kell tennie azokat a végpontokat, Azure Stack működjön a vállalati hálózatról.
+A vállalati szervezetek számára a külső hálózat lehet a meglévő vállalati hálózaton. Ebben a forgatókönyvben közzé kell tennie a végpontok Azure Stack működjön a vállalati hálózatról.
 
 ### <a name="network-address-translation"></a>Hálózati címfordítás
-Hálózati címfordítás (NAT), hogy a központi telepítés a virtuális gép (DVM) a külső erőforrásokat és üzembe helyezése során az internet eléréséhez, valamint a válságkezelési helyreállítási konzol (ERCS) virtuális gépek vagy a kiemelt jogosultságú a végpontot (EGP) a során a javasolt módszer a regisztráció és a hibaelhárítás.
+Hálózati címfordítás (NAT), hogy a központi telepítés a virtuális gép (DVM) külső erőforrások hozzáféréséhez és üzembe helyezése során az interneten, valamint a válságkezelési helyreállítási konzol (ERCS) virtuális gépek vagy a kiemelt jogosultságú a végpontot (EGP) a során a javasolt módszer a regisztráció és a hibaelhárítás.
 
-NAT is lehet a külső hálózaton vagy a nyilvános virtuális IP-cím nyilvános IP-címek helyett. Azonban nem ajánlott, mert azt korlátozza a bérlő felhasználói élményt, és növeli az összetettséget. A két lehetőség közül választhat, hogy itt is szükség van egy nyilvános IP-cím / felhasználói IP-cím a készleten, vagy több 1:1 NAT a következő lesz: Egy NAT-szabályt, amely tartalmazza az összes port VIP felhasználónként igénylő 1 NAT a felhasználók használhatnak.
+NAT is lehet a külső hálózaton vagy a nyilvános virtuális IP-cím nyilvános IP-címek helyett. Azonban nem ajánlott, mert azt korlátozza a bérlő felhasználói élményt, és növeli az összetettséget. Az egyik lehetőség, amely itt is szükség van egy nyilvános IP-Címek száma a felhasználói IP-cím használatát a készletben egy az egyhez NAT lenne. Egy másik lehetőség, több-több NAT egy NAT-szabályt egy felhasználói virtuális IP-cím szükséges összes port, a felhasználó használhatja.
 
 A nyilvános virtuális IP-CÍMEK a NAT használatával több szempontból sem ajánlott a következők:
 - NAT többletterheléssel tűzfalszabályok kezelésekor, mert a felhasználók saját végpontokat és a saját közzététel szabályai a szoftveralapú hálózatkezelési (SDN) verem szabályozhatja. Felhasználók kapcsolatba kell lépnie a VIP-k közzététele, és a port listájának frissítése az Azure Stack-operátorokról.
@@ -48,7 +48,7 @@ Jelenleg javasoljuk, hogy az összes Azure Stack-forgalom SSL visszafejtési let
 ## <a name="edge-firewall-scenario"></a>Peremhálózati tűzfal forgatókönyv
 Az edge üzemelő példány, az Azure Stack közvetlenül a peremhálózati útválasztó vagy a tűzfal mögött van telepítve. Ezekben az esetekben támogatott meghaladta a szegély (1. forgatókönyv esetében), ahol támogatja mindkét aktív-aktív és az aktív-passzív Tűzfalkonfiguráció, vagy a szegély eszköz (2. forgatókönyv) átjáróként, csak a támogatott aktív-aktív tűzfal tűzfal függő a egyenlő költség több elérési út (ECMP) BGP vagy a statikus útválasztás feladatátvételi konfiguráció.
 
-Általában nyilvános irányítható IP-címek vannak megadva a nyilvános VIP-készletet a külső hálózatról üzembe helyezéskor. Az edge a forgatókönyvben nem ajánlott bármilyen más hálózati biztonsági okokból nyilvános irányítható IP-címek használatát. Ebben a forgatókönyvben lehetővé teszi, hogy a felhasználó élmény, mint például az Azure nyilvános felhő mint a teljes körű önálló felügyelt felhőbeli élményt.  
+Nyilvános irányítható IP-címek üzembe helyezéskor megváltozhatja a nyilvános VIP-készletet a külső hálózathoz vannak megadva. Az edge a forgatókönyvben nem ajánlott bármilyen más hálózati biztonsági okokból nyilvános irányítható IP-címek használatát. Ebben a forgatókönyvben lehetővé teszi, hogy a felhasználó élmény, mint például az Azure nyilvános felhő mint a teljes körű önálló felügyelt felhőbeli élményt.  
 
 ![Azure Stack peremhálózati tűzfal – példa](./media/azure-stack-firewall/firewallScenarios.png)
 

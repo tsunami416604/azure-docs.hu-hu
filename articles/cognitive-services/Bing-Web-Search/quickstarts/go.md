@@ -8,22 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 8/16/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 49bfcf7ea9758cc17d8e83ebf813e7334239e6d2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3c64841656f81f2f78c02c54f08ca24cccd78586
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856512"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186862"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API és a Go használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre 10 perc alatt az első Bing Web Search API-hívását, majd hogyan fogadhatja a JSON-választ.  
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
+Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Go-alkalmazást egy keresési kérelmet küld az API-t, és a válasz megjeleníti. Bár ez az alkalmazás Go nyelven van megírva, az API-t az szinte bármelyik programozási nyelvével kompatibilis webes RESTful szolgáltatás.
 
 Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
@@ -34,6 +32,8 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 * Egy előfizetői azonosító
 
 Ehhez a rövid útmutatóhoz csak az **alapvető** kódtárakra van szükség, nincsenek külső függőségek.  
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
 ## <a name="create-a-project-and-import-core-libraries"></a>Projekt létrehozása és alapvető kódtárak importálása
 

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: b542ca2876149b9a60e5c5b9e3fa17284477864f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: d94e2db66c8c5dac2b4d8551ae34a07cd68fd635
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241600"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106979"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Az Azure Data Box Gateway hibáinak elhárítása 
 
@@ -103,6 +103,7 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    Nem sikerült feltölteni az adatokat a fiókba, mert a fiók vagy a megosztás le van tiltva.                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    Nem sikerült csatlakozni a tárolóhoz, mert a fiók engedélyei helytelenek vagy elavultak. Ellenőrizze a hozzáférési engedélyeit.                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    Nem sikerült hozzáadni az új adatokat, mert a tároló megtelt. Az Azure-specifikációkban tekintse meg, hogy típusonként mely tárolóméretek támogatottak. Az Azure File például csak az 5 TB-os maximális fájlméret támogatja.                                     |
+    |    2997            |    ERROR_ITEM_CANCELED                                     |    Váratlan hiba történt. Ez az egy átmeneti hiba, magától megoldódik.                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    Váratlan hiba történt. Lehet, hogy a hiba magától megoldódik, de ha több mint 24 órán keresztül nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához.                                                                                                     |
     |    16000           |    RefreshException                                        |    A fájlt nem sikerült leállítani.                                                                                                                                                                                                        |
     |    16001           |    RefreshAlreadyExistsException                           |    Nem sikerült leállítani a fájlt, mert már létezik a helyi számítógépen.                                                                                                                                                         |
