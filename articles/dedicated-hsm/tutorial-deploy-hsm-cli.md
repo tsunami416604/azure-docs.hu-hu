@@ -4,7 +4,7 @@ description: 'Oktatóanyag: hogyan kell telepíteni a parancssori felület haszn
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: d8171a3c506ed53c986db6cddd959411f0a146aa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c8713c4d3f6bd7835fed8e668407ea9ee55cc712
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080316"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111832"
 ---
-# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Oktatóanyag: HSM-EK telepítése egy meglévő virtuális hálózatban, CLI-vel
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Oktatóanyag: HSM-ek üzembe helyezése meglévő virtuális hálózaton a parancssori felülettel
 
 Az Azure, a dedikált HSM biztosít egy fizikai eszköz az egyetlen ügyfél szolgáltatással, teljes körű rendszergazdai felügyeletet és a teljes felügyeleti feladata. Fizikai eszközök használata szükséges a Microsoft szabályozhatók az eszközök foglalási kapacitás hatékonyan felügyelt hoz létre. Ennek eredményeképpen egy Azure-előfizetésen belül a dedikált HSM-szolgáltatást nem általában lesz látható az erőforrás-kiépítés. A dedikált HSM szolgáltatáshoz való hozzáférést igénylő bármely Azure-ügyfél először kapcsolatba kell lépnie a kérelem regisztráció a Microsoft fiókért a dedikált HSM-szolgáltatás. Csak egyszer, a folyamat sikeresen befejeződött-kiépítés nem lehetséges. 
 
@@ -38,7 +38,7 @@ Ebben az oktatóanyagban a HSM-EK párjai összpontosít, és a szükséges Expr
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure, a dedikált HSM jelenleg nem áll rendelkezésre az Azure Portalon. A szolgáltatás való minden interakció parancssori vagy a Powershellen keresztül lesz. Ebben az oktatóanyagban a parancssori felület (CLI) az Azure Cloud Shell fogja használni. Ha most ismerkedik az Azure CLI, kövesse bevezetés utasításokat itt: [Azure CLI 2.0-s Ismerkedés](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+Az Azure, a dedikált HSM jelenleg nem áll rendelkezésre az Azure Portalon. A szolgáltatás való minden interakció parancssori vagy a Powershellen keresztül lesz. Ebben az oktatóanyagban a parancssori felület (CLI) az Azure Cloud Shell fogja használni. Ha most ismerkedik az Azure CLI, kövesse az első lépések az itt leírt utasításokat: [Ismerkedés az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
 Előfeltételek:
 
@@ -177,7 +177,7 @@ A telepítés körülbelül 25 – 30 percet az adott idő alatt a hardveres biz
 
 ![kiépítési állapot](media/tutorial-deploy-hsm-cli/progress-status.png)
 
-Amikor befejeződik az üzembe helyezés sikerült "provisioningState": "Sikeres" jelennek meg. Csatlakozás a meglévő virtuális géphez, és az SSH használata a HSM eszközt rendelkezésre állásának biztosításához.
+Amikor befejeződik az üzembe helyezés sikerült "provisioningState": "Sikeres" jelenik meg. Csatlakozás a meglévő virtuális géphez, és az SSH használata a HSM eszközt rendelkezésre állásának biztosításához.
 
 ## <a name="verifying-the-deployment"></a>A telepítés ellenőrzése
 

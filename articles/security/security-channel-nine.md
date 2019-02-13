@@ -1,10 +1,10 @@
 ---
-title: Az Azure biztonsági videók a Channel 9 |} Microsoft Docs
-description: Ez a cikk a Channel 9 Azure biztonsági bemutatók válogatott listáját tartalmazza. 9-es csatorna a személyek termékeink mögött termékeink személyekkel csatlakoztató közösségi.
+title: Az Azure-biztonsággal kapcsolatos videók a Channel 9-on |} A Microsoft Docs
+description: Ez a cikk az Azure security bemutatók rendszerezett listáját a Channel 9-on. A Channel 9 egy Közösség, amely összeköti akik termékeink használata a személyek termékeink mögött.
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 9e5e14aa-11d7-4242-8b7e-49fd0e79817a
 ms.service: security
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: b6e4539be76449093de0587e43b0e97243602967
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 148b26cc694abaa09bf5016f3c2f2fe3a1c12a70
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25540135"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109809"
 ---
-# <a name="azure-security-videos-on-channel-9"></a>Az Azure biztonsági videók a Channel 9
-[A Channel 9](https://channel9.msdn.com/) egy Közösség, amely előre számos lehetőséget kínál a személyek mögött termékeink és kapcsolódó ügyfelekkel.
+# <a name="azure-security-videos-on-channel-9"></a>Az Azure-biztonsággal kapcsolatos videók a Channel 9-on
+[A Channel 9](https://channel9.msdn.com/) egy Közösség, amely előre számos lehetőséget kínál a személyek termékeink mögött, és csatlakoztatja őket az ügyfelekkel.
 
-Ezek gondolja, hogy nincs a kiváló jövőbeli szoftverek és információk várakozással fontosságúak. A Channel 9 részt venni a folyamatban lévő beszélgetés közösségi.
+Ezek úgy gondolja, hogy szoftverfejlesztésben szoftvert, és azok izgatottak vagyunk. A Channel 9 egy Közösség a folyamatban lévő beszélgetésben részt.
 
-Az Azure biztonsági bemutatók a Channel 9 válogatott listáját a következő: Ellenőrizze, hogy ezt a lapot havi új videók.
+Az Azure security bemutatók a Channel 9 rendszerezett listáját a következő: Ellenőrizze, hogy ezt a lapot havonta új videókat.
 
-[Azure-használatát felgyorsítása Barracuda biztonság](https://channel9.msdn.com/events/Microsoft-Azure-Marketplace-ISV-Solutions-Webinar-Series/Webinar-1-Accelerating-Azure-Consumption-with-Barracuda-Security/Webinar-1-Accelerating-Azure-Consumption-with-Barracuda-Security)
+[A Barracuda biztonsági megszerzése felgyorsításával Azure Consumption](https://channel9.msdn.com/events/Microsoft-Azure-Marketplace-ISV-Solutions-Webinar-Series/Webinar-1-Accelerating-Azure-Consumption-with-Barracuda-Security/Webinar-1-Accelerating-Azure-Consumption-with-Barracuda-Security)
 
-Tekintse meg, hogyan használhatja Barracuda biztonsági biztonságossá tétele az Azure-környezetekhez.
+Tekintse meg, hogyan használhatja Barracuda biztonság az Azure-környezetek védelmét.
 
-[Az Azure Security Center - fenyegetések észlelése](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Security-Center-Threat-Detection)
+[Az Azure Security Center – Fenyegetésészlelés](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Security-Center-Threat-Detection)
 
-Az Azure Security Center kap egy központi nézet az összes Azure-erőforrások biztonsági állapotát. Egyetlen pillantással meggyőződhet arról, hogy a megfelelő biztonsági ellenőrzések megfelelően vannak konfigurálva, és működnek. Scott-kiszolgálóhoz csatlakozik Sarah Fender, akik azt ismerteti, hogyan integrálható az a Security Center a fenyegetések észlelése.
+Az Azure Security Center egy helyen jeleníti meg az Azure-erőforrások biztonsági állapotának beolvasása. Egyetlen pillantással meggyőződhet arról, hogy a megfelelő biztonsági ellenőrzések megfelelően vannak konfigurálva, és működnek. Scott, aki bemutatja, hogy a Security Center hogyan integrálható a Fenyegetésészlelés Sarah Fender ismerteti.
 
-[Az Azure Security Center áttekintése](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Security-Center-Overview)
+[Az Azure Security Center – áttekintés](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Security-Center-Overview)
 
-Az Azure Security Center kap egy központi nézet az összes Azure-erőforrások biztonsági állapotát. Egyetlen pillantással meggyőződhet arról, hogy a megfelelő biztonsági ellenőrzések megfelelően vannak konfigurálva, és működnek. Scott CFO Fender, akik az összes ismerteti a kiszolgálóhoz!
+Az Azure Security Center egy helyen jeleníti meg az Azure-erőforrások biztonsági állapotának beolvasása. Egyetlen pillantással meggyőződhet arról, hogy a megfelelő biztonsági ellenőrzések megfelelően vannak konfigurálva, és működnek. Scott műsorgazdája CFO Fender, aki elmagyarázza, minden!
 
-[Élő bemutató: Elleni védelem, észlelésére és válaszadás a fenyegetések](https://channel9.msdn.com/events/Virtual-Security-Summit/Virtual-Security-Summit-2016/Live-Demo-Protecting-against-Detecting-and-Responding-to-Threats)
+[Élő bemutató: Védekezés, észlelése és fenyegetések elhárítása](https://channel9.msdn.com/events/Virtual-Security-Summit/Virtual-Security-Summit-2016/Live-Demo-Protecting-against-Detecting-and-Responding-to-Threats)
 
-Ebben a munkamenetben, hogy a Microsoft biztonsági platform működés közben csatlakozik. Általános Manager felhő & vállalati, Ágnes fehér, a Windows 10, a Azure és az Office 365, amelyek segítségével a szervezet biztonsága funkciókat mutatja be.
+Csatlakozzon a munkamenet a Microsoft biztonsági platform a működés megtekintéséhez. A Cloud & Enterprise, Julia White, ügyvezető igazgató azt mutatja be, a biztonsági funkciói Windows 10-es, az Azure és az Office 365-höz, amelyek segítségével a szervezet biztonságának megőrzése.
 
-[Az SQL Server virtuális gépek Azure-ban titkosítási a fokozott biztonság](https://channel9.msdn.com/Shows/Azure-Friday/Encryption-in-SQL-Azure-for-better-security)
+[Nagyobb biztonság érdekében az SQL Server virtuális gépek az Azure-ban titkosítás](https://channel9.msdn.com/Shows/Azure-Friday/Encryption-in-SQL-Azure-for-better-security)
 
-Csatlakozó Richins útmutatást ad [Scott](https://channel9.msdn.com/Niners/Glucose) könnyen titkosítása saját SQL Server-adatbázisok, virtuális gépek Azure-példányokon. Könnyebb, mint lenne szüksége!
+Jack Richins megtanítja [Scott](https://channel9.msdn.com/Niners/Glucose) könnyen a saját SQL Server-adatbázisok, virtuális gépek Azure-példányokon futó titkosítása. Program könnyebb, mint gondolná!
 
-Ez a videó tartozó területeken:
+Ebben a videóban tárgyalt területeket:
 
-* Understanding titkosítási és az SQL Server
-* A Data Protection API, a főkulcs és a tanúsítványok ismertetése
-* SQL-parancsok segítségével hozza létre a fő oszlopkulcs és a tanúsítványokat, és az adatbázis titkosítása
+* Understanding titkosítás és az SQL Server
+* A Data Protection API, fő kulcsok és tanúsítványok ismertetése
+* SQL-parancsok segítségével hozza létre a master key és a tanúsítványokat, és az adatbázis titkosításához
 
 [Biztonság beállítása a DevTest Labs szolgáltatásban](https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab)
 
-A labor tulajdonos, biztonságossá teheti labor hozzáférésének által két labor szerepkörök: tulajdonos és a DevTest Labs felhasználó. A tulajdonosi szerepkört a személy teljes hozzáféréssel rendelkezik a labor mivel az a személy a DevTest Labs felhasználói szerepkör korlátozott hozzáféréssel rendelkezik. Ez a videó azt mutatja be a ezek szerepkörök valamelyikét egy személy labor hozzáadása.
+A labor tulajdonosként labor hozzáférés által két tesztlabor-szerepkörök használatával gondoskodhat: Tulajdonos és a DevTest Labs-felhasználó. Az a személy a tulajdonosi szerepkör teljes hozzáféréssel rendelkezik a labor létrehozása, mivel az a személy a DevTest Labs-felhasználó szerepkör korlátozott hozzáféréssel rendelkezik. Ez a videó azt bemutatják, hogyan személy hozzáadása egy laborhoz ezek a szerepkörök valamelyikében.
 
-[Titkos kulcsok kezelése az Azure-alkalmazások](https://channel9.msdn.com/events/Build/2016/P456)
+[Titkok kezelése az Azure-alkalmazások](https://channel9.msdn.com/events/Build/2016/P456)
 
-Minden súlyos alkalmazás központi telepítése az Azure-on kritikus titkok – kapcsolati karakterláncok, a tanúsítványokat, a kulcsok rendelkezik. Ezeknek a kulcsoknak felügyelni silly hibák súlyos következményekkel – kiszivárgásának, a kimaradások esetén, a megfelelőségi megsértésének eredménye. Több legutóbbi felmérések felhívja, mivel silly hibák miatt négy alkalommal további adatszivárgáshoz mint szemléltetik. Ebben a munkamenetben azt vizsgálni néhány ajánlott eljárás a fontos alkalmazások titkos kulcsok kezeléséhez. Az alábbi gyakorlati tanácsok józan tűnhet, de sok fejlesztők nem rendeli azokat. Azt is ismerteti azokat az ajánlott eljárások végrehajtásához az Azure Key Vault használatával. Igénybe, mint a következő ezen eljárások segítségével meg bemutatják, például szociális szabványoknak való megfelelés Az első 10 perc, a munkamenet 100-as szint, és bármely felhőalapú alkalmazás bármilyen platformon fejleszt vonatkoznak. A fennmaradó 200-300-as szint és alkalmazások létrehozása az Azure platformon összpontosít.
+Minden Azure-ban üzembe helyezett súlyos alkalmazás kritikus fontosságú titkos kulcsok – kapcsolati karakterláncok, tanúsítványok, kulcsok rendelkezik. A titkos adatokat felügyeletéhez silly hibákkal súlyos következményekkel – adatszivárgás, valamilyen okból kimaradás lép, szabálytalanságok vezet. Több legutóbbi felmérések pontot, ahogy silly hibák miatt, mint a támadók további négy alkalommal adatszivárgásokat. Ebben a munkamenetben meg is vagyunk keresztül néhány ajánlott eljárást a fontos alkalmazások titkos kulcsok kezeléséhez. Ajánlott eljárások józan tűnhet, de sok fejlesztő elmulasztják őket. Azt is felszámolunk megvalósítani a ezeket az ajánlott eljárások az Azure Key Vault használata. További előny ezen eljárások segítségével a következő, bemutatják, például a SOC. szabványoknak való megfelelés Az első 10 perc, a munkamenet 100. szint, és azok bármely felhőalapú alkalmazás fejlesztése, bármely platformra a alkalmazni. A többi szint 200 – 300, és az Azure platformon létrehozható alkalmazások összpontosít.
 
-[A hálózati biztonsági csoportok használata Narayan Annamalai Azure virtuális hálózat védelme](https://channel9.msdn.com/Shows/Azure-Friday/Sucruing-your-Azure-Virtual-Network-using-Network-ACLs-with-Narayan-Annamalai)
+[Az Azure Virtual Network, a hálózati biztonsági csoportok használata Narayan Annamalai biztonságossá tétele](https://channel9.msdn.com/Shows/Azure-Friday/Sucruing-your-Azure-Virtual-Network-using-Network-ACLs-with-Narayan-Annamalai)
 
-Kiemelt Programvezető Narayan Annamalai útmutatást ad a Scott egy Azure virtuális hálózaton belüli hálózati biztonsági csoportok használata. Az alhálózat és a hálózat az Azure objektumokhoz elérés hozhat létre! Megismerheti, hogyan hozza létre a csoportokat az Azure PowerShell használatával, és szabályozhatja a hozzáférést.
+Vezető Programmenedzsere Narayan Annamalai megtanítja Scott egy Azure virtuális hálózaton belüli hálózati biztonsági csoportok használata. Azure-on belüli objektumok alhálózat és hálózati hozzáférés-vezérlése hozhat létre! Megismerheti, hogyan szabályozhatja a hozzáférést, és hozzon létre a csoportokat az Azure PowerShell használatával.
 
-[Az Azure AD Privileged Identity Management: Biztonsági varázsló, riasztások, ellenőrzi, hogy](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews)
+[Az Azure AD Privileged Identity Management: Biztonsági varázslót, riasztások, értékelések](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews)
 
-Az Azure Active Directory (AD) Privileged Identity Management a prémium funkció, amely lehetővé teszi, hogy ismerje meg, korlátozza és figyelje a kiemelt jogosultságú identitások és azok erőforrásokhoz való hozzáférésének. A érvénybe lépteti az igény, csak a rendszergazdai hozzáférés időpontja szükség esetén is. További tudnivalók:
+Az Azure Active Directory (AD) Privileged Identity Management egy prémium szintű funkcióit, amely lehetővé teszi a felderítését, korlátozását és emelt szintű identitások és azok erőforrásokhoz való hozzáférésének figyelése. Emellett igény szerinti, csak az idő adminisztratív hozzáférés érvénybe lépteti. További információ:
 
-* Office 365 munkaterhelés-specifikus rendszergazdai szerepkörei védelmének kezelése
-* Azure multi-factor Authentication Authentication(MFA) konfigurálásához a kiemelt szerepkörű aktiváláshoz
-* Méri, és a bérlői biztonságot javítása
-* Figyelés és biztonsági megállapítások kijavítása
-* Kiemelt szerepkörhöz rendszeres tanúsításra munkafolyamatok maradni kell áttekintése
+* A védelem az Office 365 munkaterhelés-specifikus rendszergazdai szerepkörök kezelése
+* Az Azure multi-factor Authentication Authentication(MFA) konfigurálása az emelt szintű szerepkör-aktiválások
+* Mérési, és növeli a bérlő biztonsági helyzetét
+* Figyelés és biztonsági megállapításokat kijavítása
+* A kiemelt szerepkörű rendszeres tanúsításra munkafolyamatok továbbra is annak áttekintése
 
-[Az Azure Key Vault, Amit Bapat](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Key-Vault-with-Amit-Bapat)
+[Az Azure Key Vaulttal és a Amit Bapat](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Key-Vault-with-Amit-Bapat)
 
-Amit Bapat Scott az Azure Key Vaultba vezet be. Az Azure Key Vault lehetővé teszi, hogy a kulcsokat és a kisebb méretű titkokat – például jelszavakat – szigorúan ellenőrzött és felügyelt hardveres biztonsági modulok (HSM-ek) használatával titkosítsa. A Microsoft Azure felhőalapú, hardveralapú titkos felügyeleti!
+Amit Bapat Scott bemutatja az Azure Key Vaultba. Az Azure Key Vault lehetővé teszi, hogy a kulcsokat és a kisebb méretű titkokat – például jelszavakat – szigorúan ellenőrzött és felügyelt hardveres biztonsági modulok (HSM-ek) használatával titkosítsa. A Microsoft Azure felhőalapú, hardveralapú titkos kódok kezelése!

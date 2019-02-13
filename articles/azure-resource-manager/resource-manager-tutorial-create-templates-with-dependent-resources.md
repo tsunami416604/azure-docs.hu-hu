@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5cfda4ddbf51f51d76b4ede2e44f768bd3261780
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0e6ed559a8b07613a7c1c38b0d1386e808a94a61
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491756"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104873"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Oktatóanyag: Függő erőforrások létrehozása Azure Resource Manager-sablonok
 
@@ -113,6 +113,8 @@ A következő ábrán az erőforrások és az ehhez a sablonhoz tartozó függő
 A függőségek megadásával a Resource Manager már hatékonyan képes üzembe helyezni a megoldást. Mivel nincs közöttük függőség, a tárfiók, a nyilvános IP-cím és a virtuális hálózat párhuzamosan lesz létrehozva. A nyilvános IP-cím és a virtuális hálózat után a hálózati adapter üzembe helyezése következik. A Resource Manager azt követően helyezi üzembe helyezve, hogy az összes többi erőforrás üzembe helyezése megtörtént.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 A sablonok üzembe helyezésének számos módszere létezik.  Ebben az oktatóanyagban az Azure Portal Cloud Shelljét fogja használni.
 

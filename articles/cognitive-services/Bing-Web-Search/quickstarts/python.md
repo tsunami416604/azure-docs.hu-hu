@@ -8,28 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 8/16/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4535014dad75bd598b7e55877c447df4609e5902
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e191821c8e2c6e189e8d7f8befcb11009f2ed7d8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871405"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172365"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Gyors útmutató: A Python használatával a Bing Web Search API meghívása  
-A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre 10 perc alatt az első Bing Web Search API-hívását, majd hogyan fogadhatja a JSON-választ.  
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
-
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Python-alkalmazás egy keresési kérelmet küld az API-t, és a válasz megjeleníti. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 Ez a példa Jupyter-notebookként van futtatva a [MyBinderben](https://mybinder.org). Kattintson a Binder indítása jelvényre:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* [Python 2.x vagy 3.x](https://www.python.org/)
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="define-variables"></a>Változók meghatározása
 

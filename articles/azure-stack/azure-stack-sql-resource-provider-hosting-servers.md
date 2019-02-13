@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: f1b39601f0f6d254daadfafdd812549c6c95ed35
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1cef0010464671982109b8dc4bc94e6925eaf825
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239468"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210526"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az erőforrás-szolgáltató SQL üzemeltetési kiszolgáló hozzáadása
 
-Az egy virtuális gépet (VM) egy SQL-példányt is üzemeltethet [Azure Stack](azure-stack-poc.md), vagy egy virtuális Gépen az Azure Stack környezettel, amennyiben az erőforrás-szolgáltató SQL csatlakozhat a példány kívül.
+Létrehozhat egy virtuális gépen (VM) kiszolgálókat üzemeltető SQL Server-adatbázis [Azure Stack](azure-stack-poc.md), vagy egy virtuális Gépen az Azure Stack környezettel, amennyiben az erőforrás-szolgáltató SQL csatlakozhat a példány kívül.
 
 > [!NOTE]
-> SQL-adatbázisok az SQL-erőforrás-szolgáltató kiszolgáló kell létrehozni. Az erőforrás-szolgáltató SQL SQL üzemeltetési kiszolgáló számlázható, felhasználói előfizetés hozza létre az alapértelmezett szolgáltatója előfizetésben kell létrehozni. Az erőforrás-szolgáltató kiszolgáló nem használandó felhasználói adatbázisok üzemeltetéséhez.
+> Az erőforrás-szolgáltató SQL SQL üzemeltetési kiszolgáló számlázható, felhasználói előfizetés hozza létre az alapértelmezett szolgáltatója előfizetésben kell létrehozni. Az erőforrás-szolgáltató kiszolgáló nem használandó felhasználói adatbázisok üzemeltetéséhez.
 
 ## <a name="overview"></a>Áttekintés
 

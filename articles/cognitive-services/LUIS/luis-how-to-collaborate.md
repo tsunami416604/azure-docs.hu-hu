@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/12/2019
 ms.author: diberry
-ms.openlocfilehash: 4ccf703ffde0d4a5a0961135e81259519b0a0e41
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f23212a854fb37dda89fd2bf6b223cf0dc69526b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878969"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167570"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Szerzők és a közreműködők kezelése 
 
@@ -44,14 +44,13 @@ Közben a LUIS jelenleg nem támogatja a tulajdonjog átruházása, exportálhat
 
 ## <a name="azure-active-directory-resources"></a>Az Azure Active Directory-erőforrások
 
-Ha a szervezete Azure Active Directory (Azure AD) használja, a LUIS a LUIS használni szeretne a felhasználókra vonatkozó az adatok eléréséhez engedélyre van szüksége. A LUIS igénylő erőforrások minimálisak. 
+Ha [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) a szervezetben, Language Understanding (LUIS) engedélyre van szüksége a felhasználói hozzáférés információt szeretne LUIS használatát. A LUIS igénylő erőforrások minimálisak. 
 
 Amikor egy olyan fiókkal, amely rendelkezik rendszergazdai jóváhagyás, vagy nincs szükség rendszergazdai jóváhagyás, például a rendszergazdai jóváhagyást bejelentkezés jelenik meg a részletes leírása:
 
-* Lehetővé teszi, hogy jelentkezzen be az alkalmazásba a szervezeti fiókjával, és hogy az alkalmazás olvassa a profilját. Azt is lehetővé teszi, hogy az alkalmazásnak a főbb munkahelyi adatai olvasását.
-* Itt engedélyezheti az alkalmazásnak, és frissítheti az adatokat, akkor is, ha jelenleg nem használja az alkalmazást.
+* Lehetővé teszi, hogy jelentkezzen be az alkalmazásba a szervezeti fiókjával, és hogy az alkalmazás olvassa a profilját. Azt is lehetővé teszi, hogy az alkalmazásnak a főbb munkahelyi adatai olvasását. Ez a alapvető profiladatok, például a felhasználói azonosító, az e-mailt, a név olvasni a LUIS engedélyt ad
+* Itt engedélyezheti az alkalmazásnak, és frissítheti az adatokat, akkor is, ha jelenleg nem használja az alkalmazást. Az engedély szükséges a felhasználó a hozzáférési jogkivonat frissítéséhez.
 
-Az első engedély lehetővé teszi a LUIS alapvető profiladatok, például a felhasználói azonosító, az e-mailt, a név olvasási joga. A második engedély szükséges a felhasználó a hozzáférési jogkivonat frissítéséhez.
 
 ## <a name="azure-active-directory-tenant-user"></a>Az Azure Active Directory-bérlői felhasználó
 
@@ -59,11 +58,8 @@ A LUIS a standard szintű Azure Active Directory (Azure AD) jóváhagyási folya
 
 A bérlői rendszergazda közvetlenül a felhasználó, aki a LUIS használatát az Azure AD-ben biztosított hozzáférést kell működnie. 
 
-A felhasználó először jelentkezik be a LUIS, és megtekinti a rendszergazdai jóváhagyást igénylő felugró párbeszédpanel. A felhasználó felveszi a kapcsolatot a bérlői rendszergazda a folytatás előtt. 
-
-A bérlői rendszergazda második, LUIS bejelentkezik, és egy hozzájárulási folyamat felugró párbeszédpanel látja. Ez az a párbeszédpanelen, a rendszergazda engedélyt kell adnia a felhasználó számára. A rendszergazda fogad az engedélyt, ha a felhasználó nem tudja folytatni az intelligens hangfelismerési szolgáltatással.
-
-Ha a bérlői rendszergazda nem fog bejelentkezni a LUIS, a rendszergazda hozzáférhet [hozzájárulás](https://account.activedirectory.windowsazure.com/r#/applications) a LUIS. 
+* A felhasználó először jelentkezik be a LUIS, és megtekinti a rendszergazdai jóváhagyást igénylő felugró párbeszédpanel. A felhasználó felveszi a kapcsolatot a bérlői rendszergazda a folytatás előtt. 
+* A bérlői rendszergazda második, LUIS bejelentkezik, és egy hozzájárulási folyamat felugró párbeszédpanel látja. Ez az a párbeszédpanelen, a rendszergazda engedélyt kell adnia a felhasználó számára. A rendszergazda fogad az engedélyt, ha a felhasználó nem tudja folytatni az intelligens hangfelismerési szolgáltatással. Ha a bérlői rendszergazda nem fog bejelentkezni a LUIS, a rendszergazda hozzáférhet [hozzájárulás](https://account.activedirectory.windowsazure.com/r#/applications) a LUIS, az alábbi képernyőképen látható. Figyelje meg, hogy a lista nevét tartalmazó cikkek szűrt `LUIS`.
 
 ![Alkalmazás webhelye által az Azure active directory-engedély](./media/luis-how-to-collaborate/tenant-permissions.png)
 

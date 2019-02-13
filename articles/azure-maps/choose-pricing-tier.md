@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 366637274a8006455f05702f47c02f505a615820
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 56f9226f1bee630895725eb0b3806e294e9a5b51
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063233"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56218142"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>A jobb oldalon, az Azure Maps-tarifacsomag kiválasztása
 
@@ -34,15 +34,14 @@ Az S0 és S1 szintű tarifacsomagban is kapható különböző mennyiségű adat
 | Megjelenítés                                  |        ✓           |     ✓    |
 | Adatforgalom                                 |        ✓           |     ✓    |
 | Időzónák                              |        ✓           |     ✓    |
-| * A képeken és hibrid képeken (előzetes verzió)  |        ✓           |     ✓    |
-| * Az útválasztási tartomány (előzetes verzió)                  |        ✓           |     ✓    |
-| * 2. IP-helye (előzetes verzió)                |        ✓           |     ✓    |
-| * Poligonok keresés (előzetes verzió)         |        ✓           |     ✓    |
-| * Batch geokódolás (előzetes verzió)              |        ✓           |     ✓    |
-| * Batch-útválasztási (előzetes verzió)                |        ✓           |     ✓    |
-| * A mátrix útválasztás (előzetes verzió)               |        ✓           |     ✓    |
+| Képeken és hibrid képeken    |            |     ✓    |
+| Útválasztási tartomány                    |                   |     ✓    |
+| IP-2 helye (előzetes verzió)                |        ✓           |     ✓    |
+| Keresés a sokszög          |                   |     ✓    |
+| A Batch geokódolás (előzetes verzió)              |                   |     ✓    |
+| Batch-útválasztási (előzetes verzió)                |                   |     ✓    |
+| Mátrix útválasztás (előzetes verzió)               |                   |     ✓    |
 
-\* Ezek lehetőségekhez tarifacsomag az S0 a 2019. február 4 után elavulttá válnak.
 
 Ezek további adatpontokat mellett szóló érvek a következők:
 * Milyen típusú vállalati rendelkezik?

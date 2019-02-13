@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 21eec258b14bb0524170c9307d06fee7b7abc644
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8d9e59a11957e8d108ae86ebba157a06129efa58
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466642"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111543"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse használatával
 Ez az oktatóanyag azt mutatja be létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Data Warehouse (az SQL DW) egy nyilvánosan elérhető adatkészlethez – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított előrejelzi e tipp fizetős útnak és többosztályos osztályozási és regressziós modellek is taglalja, hogy a terjesztési előre fizetett összegek tipp.
@@ -881,7 +881,7 @@ Recap, amit eddig még ebben az oktatóanyagban a forgatókönyv, hogy létrehoz
 Ez a minta forgatókönyv és a kísérő parancsfájlok és IPython notebook(s) osztanak meg a Microsoft mellett az MIT-licenccel. Ellenőrizze a LICENSE.txt fájlt a könyvtárban mintakódot a Githubon további részletekért.
 
 ## <a name="references"></a>Referencia
-• [Andrés Monroy NYC Taxi lelassítja letöltési oldalát](http://www.andresmh.com/nyctaxitrips/) • [FOILing NYC Útadatok taxiköltség által Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/) • [NYC Taxi és Limousine Bizottság kutatási és a statisztika](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
+• [Andrés Monroy NYC Taxi lelassítja letöltési oldalát](http://www.andresmh.com/nyctaxitrips/) • [FOILing NYC Útadatok taxiköltség által Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/) • [NYC Taxi és Limousine Bizottság kutatási és a statisztika](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png

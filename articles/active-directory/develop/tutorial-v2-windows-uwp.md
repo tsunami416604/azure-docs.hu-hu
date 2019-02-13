@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: a0c2d13b2ac6715db047d56e998294688d9b65cf
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4f7d4e586dcb90153fb4d037c9c9821cd3ea3182
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097061"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176713"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>A Microsoft Graph API meghívása (XAML) az univerzális Windows Platform-alkalmazásból
 
@@ -360,7 +361,7 @@ A jogkivonat-n keresztül beszerzett alapvető adatait is megjelenik `AcquireTok
 |**Name (Név)** |A felhasználó teljes neve|A felhasználó vezetékneve és nevét.|
 |**Felhasználónév** |<span>user@domain.com</span> |A felhasználónév, amely azonosítja a felhasználót.|
 |**Jogkivonat lejár** |DateTime |Az az időpont, amikor a jogkivonat érvényessége lejár. Az MSAL szükség szerint a token megújítása kiterjeszti a lejárati dátumot.|
-|**Hozzáférési jogkivonat** |Sztring |A jogkivonat-karakterláncot, amelyet elküld a HTTP-kérelmek, amely esetében egy *engedélyeztetési fejléc*.|
+|**Hozzáférési jogkivonat** |String |A jogkivonat-karakterláncot, amelyet elküld a HTTP-kérelmek, amely esetében egy *engedélyeztetési fejléc*.|
 
 #### <a name="see-whats-in-the-access-token-optional"></a>Nézze meg, mi az a hozzáférési jogkivonat (nem kötelező)
 Szükség esetén másolja az értéket **Access Token** , és illessze be a https://jwt.ms dekódolni, és a jogcímek listája.

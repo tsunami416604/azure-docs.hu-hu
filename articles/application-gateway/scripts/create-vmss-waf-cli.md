@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 1eb42621ddd5f567c230053ea6e295d908888f35
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 68c0b1c01d79f591b5023d2e048d1788a3eaffd4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891147"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117374"
 ---
 # <a name="restrict-web-traffic-using-the-azure-cli"></a>Webes forgalom korlátozása az Azure CLI-vel
 
@@ -48,14 +48,14 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Virtuális hálózatot hoz létre. |
-| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnetwork_vnet_subnet_create) | Alhálózatot hoz létre egy virtuális hálózatban. |
+| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | Virtuális hálózatot hoz létre. |
+| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Alhálózatot hoz létre egy virtuális hálózatban. |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | Az alkalmazásátjáró nyilvános IP-címét hozza létre. |
 | [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | Egy alkalmazásátjárót hoz létre. |
 | [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az-vmss-create) | Létrehoz egy virtuálisgép-méretezési csoportot. |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy tárfiókot. |
 | [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) | Létrehoz egy tárfiókot. |
-| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ipwork_public_ip_show) | Beszerzi az alkalmazásátjáró nyilvános IP-címét. |
+| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show) | Beszerzi az alkalmazásátjáró nyilvános IP-címét. |
 
 ## <a name="next-steps"></a>További lépések
 

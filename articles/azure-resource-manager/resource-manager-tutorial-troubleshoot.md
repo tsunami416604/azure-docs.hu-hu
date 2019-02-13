@@ -13,14 +13,16 @@ ms.devlang: na
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ed2c4d657e7dbcc74991b20cf5c345da6166dda0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c917e37d48f2b26d9a1e4d13b76dde5539ce94ea
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492521"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116578"
 ---
 # <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Oktatóanyag: Resource Manager-sablon üzembe helyezés hibaelhárítása
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Útmutató Resource Manager-sablon üzembehelyezési hibák elhárítása. Ebben az oktatóanyagban két hibák egy sablont a beállítása, és a vizsgálati naplók és üzembe helyezési előzmények használata a problémák megoldásához.
 

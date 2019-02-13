@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ee1a2a75d6a003a6bc53c5216dd01d379193ea77
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 03cacda1aa405cb2d0ded579c8ddb5f6011ce3bb
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994940"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113787"
 ---
 # <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>(ELAVULT) Az Azure Container Service DC/OS-ügynökkészletek
 
@@ -23,11 +23,11 @@ ms.locfileid: "52994940"
 Az Azure Container Service DC/OS fürtök ügynökcsomópontok két készleteket, a nyilvános készlet és a egy privát készletet tartalmaz. Egy alkalmazás vagy a készlethez, ez hatással lenne a kisegítő lehetőségek között a gépek a container service-ben is telepíthető. A gépek lehetnek közzétéve az interneten (nyilvános) vagy tartani a belső (magánhálózati). Ez a cikk rövid áttekintést ad meg, miért azonban nyilvános és privát.
 
 
-* **Privát ügynökök**: privát ügynök csomópontok futtatása nem irányítható hálózaton keresztül. Ehhez a hálózathoz csak érhető el, a rendszergazda zónából, vagy a nyilvános zónákhoz peremhálózati útválasztó keresztül. Alapértelmezés szerint DC/OS elindítja az alkalmazások privát ügynök csomópontokon. 
+* **Privát ügynökök**: Privát ügynök csomópontok futtatása nem irányítható hálózaton keresztül. Ehhez a hálózathoz csak érhető el, a rendszergazda zónából, vagy a nyilvános zónákhoz peremhálózati útválasztó keresztül. Alapértelmezés szerint DC/OS elindítja az alkalmazások privát ügynök csomópontokon. 
 
-* **Nyilvános ügynökök**: nyilvános ügynökcsomópontok DC/OS-alkalmazások és szolgáltatások futtatása egy nyilvánosan elérhető-e a hálózaton keresztül. 
+* **Nyilvános ügynökök**: Nyilvános ügynök csomópontokon futnak a DC/OS-alkalmazások és szolgáltatások egy nyilvánosan elérhető-e a hálózaton keresztül. 
 
-További információ a DC/OS-hálózati biztonság: a [DC/OS dokumentációt](https://dcos.io/docs/1.8/administration/securing-your-cluster/).
+További információ a DC/OS-hálózati biztonság: a [DC/OS dokumentációt](https://docs.mesosphere.com/).
 
 ## <a name="deploy-agent-pools"></a>Ügynökkészletek üzembe helyezése
 

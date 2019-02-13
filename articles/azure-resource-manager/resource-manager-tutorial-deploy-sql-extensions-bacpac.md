@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 877fb6807cb8a2aafe634b53630eaa30c6d7697a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 78b37c467e40a9386c7501f1abedbf0460900668
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495530"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118343"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Oktatóanyag: Az Azure Resource Manager-sablonok SQL BACPAC-fájlok importálása
 
@@ -136,6 +136,8 @@ Adjon hozzá két további erőforrásokat a sablonhoz.
     * **administratorLoginPassword**: Az SQL-rendszergazda jelszava. Használni létrehozott jelszót. Lásd: [Előfeltételek](#prerequisites).
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Az üzembe helyezés folyamatát a [Sablon üzembe helyezése](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) szakaszban tekintheti meg. Ehelyett használja a következő PowerShell üzembehelyezési szkriptet:
 

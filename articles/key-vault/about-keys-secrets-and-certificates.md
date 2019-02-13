@@ -4,7 +4,7 @@ description: Az Azure Key Vault REST felületet és fejlesztői részletei kulcs
 services: key-vault
 documentationcenter: ''
 author: BryanLa
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 0dcfd1bd75fa54a1bbea93497a0cc872ad6d5184
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 49879d36937a0f0d7ccf1a82cf8b6ca09453894d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078371"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106971"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 
@@ -27,7 +27,7 @@ Az Azure Key Vault lehetővé teszi, hogy a Microsoft Azure-alkalmazások és fe
 - Titkosítási kulcsok: Több kulcstípusok és algoritmusokat támogatja, és lehetővé teszi az értékes kulcsok használható hardveres biztonsági modulok (HSM). 
 - Titkos kódok: Titkos adatait, például a jelszavak és adatbázis-kapcsolati karakterláncok biztonságos tárolást biztosít.
 - Tanúsítványok: Támogatja a tanúsítványok, amely a kulcsok és titkos kulcsok épülnek, és adja hozzá az automatikus megújítási funkciót.
-- Az Azure Storage: Kezelheti az Ön számára az Azure Storage-fiók kulcsok. Belsőleg, a Key Vault egy Azure Storage-fiók kulcsok (sync) listában, és (elforgatás) újragenerálja a kulcsokat rendszeres időközönként. 
+- Azure Storage: Kezelheti az Ön számára az Azure Storage-fiók kulcsok. Belsőleg, a Key Vault egy Azure Storage-fiók kulcsok (sync) listában, és (elforgatás) újragenerálja a kulcsokat rendszeres időközönként. 
 
 Tudnivalók a Key Vaultról további általános információkért lásd: [Mi az Azure Key Vault?](/azure/key-vault/key-vault-whatis)
 
@@ -41,7 +41,7 @@ A JavaScript Object Notation (JSON) és a JavaScript Object aláírás és titko
 
 -   [JSON webes kulcs (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [JSON webes titkosítás (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
--   [JSON webes algoritmusok (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
+-   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON webes aláírás (KMH)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
 
 ### <a name="data-types"></a>Adattípusok
@@ -96,9 +96,9 @@ Titkosítási kulcsok a Key Vaultban JSON webes kulcs [JWK] objektumként jelenn
 A Key Vault támogatja az RSA és az elliptikus görbe alapú kulcsok csak. 
 
 -   **EK**: "Soft" elliptikus görbe alapú kulcsot.
--   **HSM-EK**: "Rögzített" elliptikus görbe alapú kulcsot.
+-   **EC-HSM**: "Rögzített" elliptikus görbe alapú kulcsot.
 -   **RSA**: "Soft" RSA-kulcsot.
--   **AZ RSA-HSM**: "Rögzített" RSA-kulcsot.
+-   **RSA-HSM**: "Rögzített" RSA-kulcsot.
 
 A Key Vault támogatja a 2048, 3072 és 4096-méretek RSA-kulcsok. A Key Vault támogatja az elliptikus görbe alapú kulcs-típusok P-256, p-384, p-521 és P-256_K (SECP256K1).
 
@@ -128,12 +128,12 @@ A Key Vault használó titkosítási moduljait HSM, illetve szoftver –, hogy-e
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, TITKOSÍTÁSI/VISSZAFEJTÉSI
 
--   **RSA1_5** -RSAES-PKCS1-V1_5 [RFC3447] kulcsú titkosítás  
+-   **RSA1_5** - RSAES-PKCS1-V1_5 [RFC3447] key encryption  
 -   **Az RSA-OAEP** – RSAES optimális aszimmetrikus titkosítási Padding (OAEP) [RFC3447], szakasz A.2.1 az RFC 3447 által meghatározott alapértelmezett paraméterek használatával. Alapértelmezett paraméterek SHA-1 algoritmussal SHA-1 kivonatoló függvényt és a egy MGF1 maszk generációs funkcióját használja.  
 
 #### <a name="signverify"></a>BEJELENTKEZÉSI/ELLENŐRZÉSE
 
--   **RS256** – RSASSA-PKCS-v1_5 SHA-256 használatával. Az alkalmazás megadott kivonatoló érték SHA-256 használatával kell számolni, és 32 bájt hosszú lehet.  
+-   **RS256** - RSASSA-PKCS-v1_5 using SHA-256. Az alkalmazás megadott kivonatoló érték SHA-256 használatával kell számolni, és 32 bájt hosszú lehet.  
 -   **RS384** – RSASSA-PKCS-v1_5 SHA-384-et használ. Az alkalmazás megadott kivonatoló érték SHA-384-et használó kell számolni, és 48 bájt hosszú lehet.  
 -   **RS512** – RSASSA-PKCS-v1_5 SHA-512 használatával. Az alkalmazás megadott kivonatoló érték SHA-512 használatával kell számolni, és 64 bájt hosszú lehet.  
 -   **RSNULL** – lásd: [RFC2437], egy speciális használati bizonyos TLS forgatókönyvek engedélyezéséhez.  
@@ -173,12 +173,12 @@ JWK-objektumokra vonatkozó további információkért lásd: [JSON webes kulcs 
 A kulcs adatai mellett a következő attribútumok adható meg. Egy JSON-kérelem a attribútumok kulcsszót, és kapcsos zárójelek a(z) {' "}", szükség, akkor is, ha a megadott attribútum sem.  
 
 - *engedélyezett*: logikai érték, nem kötelező, alapértelmezett érték a **igaz**. Megadja, hogy a kulcs engedélyezve van, és a titkosítási műveletek gyakorlatot. A *engedélyezve* attribútum együtt használatos *nbf* és *exp*. Ha a művelet között történik *nbf* és *exp*, akkor lesz csak engedélyezett, ha *engedélyezve* értékre van állítva **igaz**. Műveletek kívül a *nbf* / *exp* ablak automatikusan engedélyezettek, kivéve a művelet bizonyos [adott feltételek](#date-time-controlled-operations).
-- *NBF*: Kötelező megadni, alapértelmezett IntDate, már. A *nbf* (nem előtt) attribútum azonosítja az idő, ameddig a kulcs nem használható a titkosítási műveletek, kivéve a művelet bizonyos [adott feltételek](#date-time-controlled-operations). A feldolgozása a *nbf* attribútumot igényel, hogy az aktuális dátum/idő után kell vagy a nem egyenlő-szereplő dátum/idő előtt a *nbf* attribútum. A Key Vault néhány kisebb eltérést rendelkezhetnek általában legfeljebb pár percet, hogy óra figyelembe döntés. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
+- *nbf*: Kötelező megadni, alapértelmezett IntDate, már. A *nbf* (nem előtt) attribútum azonosítja az idő, ameddig a kulcs nem használható a titkosítási műveletek, kivéve a művelet bizonyos [adott feltételek](#date-time-controlled-operations). A feldolgozása a *nbf* attribútumot igényel, hogy az aktuális dátum/idő után kell vagy a nem egyenlő-szereplő dátum/idő előtt a *nbf* attribútum. A Key Vault néhány kisebb eltérést rendelkezhetnek általában legfeljebb pár percet, hogy óra figyelembe döntés. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
 - *Exp*: IntDate, nem kötelező, alapértelmezett érték a "végtelen". A *exp* (lejárati ideje) attribútum azonosítja a lejárati időt, vagy azt követően, amely nem használja a rendszer kriptográfiai művelet, kivéve a művelet bizonyos [adott feltételek](#date-time-controlled-operations). A feldolgozása a *exp* attribútumot igényel, hogy az aktuális dátumot és időpontot kell-e, mielőtt a lejárati dátum/idő szerepel a *exp* attribútum. A Key Vault néhány kisebb eltérést rendelkezhetnek általában legfeljebb pár percet, hogy óra figyelembe döntés. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
 
 Nincsenek további csak olvasható attribútumokat választ, amely tartalmazza a kulcsattribútum részét képező:  
 
-- *létrehozott*: IntDate, nem kötelező. A *létrehozott* attribútum azt jelöli, ez a verzió, a kulcs létrehozásakor. Ez az attribútum hozzáadása előtt létrehozott kulcsok null érték. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
+- *created*: IntDate, nem kötelező. A *létrehozott* attribútum azt jelöli, ez a verzió, a kulcs létrehozásakor. Ez az attribútum hozzáadása előtt létrehozott kulcsok null érték. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
 - *frissített*: IntDate, nem kötelező. A *frissített* attribútum azt jelöli, amikor ez a kulcs verziója módosult. Az érték null, a kulcsokhoz, a legutóbb frissített Ez az attribútum hozzáadása előtt. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
 
 IntDate és más adatok további információkért lásd: [adattípusok](#data-types)  
@@ -243,12 +243,12 @@ A Key Vault titkos kódok contentType mező is támogatja. Ügyfelek, amelyek se
 A titkos adatok mellett a következő attribútumokkal lehet megadni:  
 
 - *Exp*: IntDate, nem kötelező, alapértelmezett érték a **örökre**. A *exp* (lejárati ideje) attribútum azonosítja a lejárati időt, vagy azt követően, amely a titkos adatokat kell nem olvashatók be, kivéve az [adott helyzetekben](#date-time-controlled-operations). Ez a mező **tájékoztató** célra használja, csak, hogy tájékoztatja a felhasználókat a key vault szolgáltatást, hogy egy adott titkos kód nem használható. Az érték egy IntDate értéket tartalmazó számnak kell lennie.   
-- *NBF*: IntDate, nem kötelező, alapértelmezett érték a **most**. A *nbf* (nem előtt) attribútum azonosítja az idő, ameddig a titkos adatokat kell nem olvashatók be, kivéve az [adott helyzetekben](#date-time-controlled-operations). Ez a mező **tájékoztató** csak célra használja. Az érték egy IntDate értéket tartalmazó számnak kell lennie. 
+- *nbf*: IntDate, nem kötelező, alapértelmezett érték a **most**. A *nbf* (nem előtt) attribútum azonosítja az idő, ameddig a titkos adatokat kell nem olvashatók be, kivéve az [adott helyzetekben](#date-time-controlled-operations). Ez a mező **tájékoztató** csak célra használja. Az érték egy IntDate értéket tartalmazó számnak kell lennie. 
 - *engedélyezett*: logikai érték, nem kötelező, alapértelmezett érték a **igaz**. Ez az attribútum meghatározza, hogy a titkos adatok lekérhetők. Az engedélyezett attribútum együtt használatos *nbf* és *exp* között-művelet bekövetkezésekor *nbf* és *exp*, csak akkor lesz engedélyezett, ha engedélyezve beállítva **igaz**. Műveletek kívül a *nbf* és *exp* ablak a program automatikusan nem megengedett, kivéve a [adott helyzetekben](#date-time-controlled-operations).  
 
 Nincsenek további csak olvasható attribútumok telepítésben lévő semmilyen választ, amely tartalmazza a titkos attribútumok:  
 
-- *létrehozott*: IntDate, nem kötelező. A létrehozott attribútum jelzi, hogy jelen verziója a titkos kulcs létrehozásakor. Ez például a következők Ez az attribútum hozzáadása előtt létrehozott null értékű. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
+- *created*: IntDate, nem kötelező. A létrehozott attribútum jelzi, hogy jelen verziója a titkos kulcs létrehozásakor. Ez például a következők Ez az attribútum hozzáadása előtt létrehozott null értékű. Az érték egy IntDate értéket tartalmazó számnak kell lennie.  
 - *frissített*: IntDate, nem kötelező. A frissített attribútum azt jelzi, hogy ez a verzió, a titkos kód frissítésekor. Ez az érték értéke null, például a következők a legutóbb frissített Ez az attribútum hozzáadása előtt. Az érték egy IntDate értéket tartalmazó számnak kell lennie.
 
 #### <a name="date-time-controlled-operations"></a>Dátum-idő ellenőrzött műveletek
@@ -326,10 +326,10 @@ Key Vault-tanúsítvánnyal rendelkezik a következő attribútumokat:
 
 Nincsenek a válaszban szereplő további csak olvasható attribútumok:
 
--   *létrehozott*: IntDate: azt jelzi, hogy ez a verzió, a tanúsítvány létrehozásakor.  
+-   *created*: IntDate: azt jelzi, hogy ez a verzió, a tanúsítvány létrehozásakor.  
 -   *frissített*: IntDate: azt jelzi, hogy ez a verzió, a tanúsítvány frissítésekor.  
 -   *Exp*: IntDate: tartalmazza az x509 lejárati idejét értékét tanúsítványt.  
--   *NBF*: IntDate: tartalmazza az érték a x509 számított tanúsítványt.  
+-   *nbf*: IntDate: tartalmazza az érték a x509 számított tanúsítványt.  
 
 > [!Note] 
 > Ha lejár a Key Vault-tanúsítvánnyal, címezhető kulcs és titkos kulcs működésképtelenné válhatnak.  
@@ -373,7 +373,7 @@ Az alábbi táblázat a Key Vault-tanúsítványok létrehozásának részeként
 |EncipherOnly|encrypt| – |
 |KeyCertSign|aláírása, ellenőrzése|–|
 |KeyEncipherment|wrapKey, unwrapKey| A Key Vault alapértelmezett egy tanúsítvány létrehozáskor használati megadása nélkül | 
-|A letagadhatatlanság|aláírása, ellenőrzése| – |
+|NonRepudiation|aláírása, ellenőrzése| – |
 |crlsign|aláírása, ellenőrzése| – |
 
 ### <a name="certificate-issuer"></a>Tanúsítvány kiállítója

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: d79e423dd617a498aee09cff6b774bbe90eeaa83
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 79f0e58ea11d8bdb8c30ca1e50fae2635f719681
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701772"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118020"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Egy SQL Database-ből a referenciaadatok használata az Azure Stream Analytics-feladat (előzetes verzió)
 
@@ -154,7 +154,7 @@ A különbözeti lekérdezés használatakor [az Azure SQL Database időbeli ver
 
 **Díjköteles az Azure Stream Analytics SQL referenciaadat-bemenetek használatával további költségek?**
 
-Nincsenek további nem [folyamatos átviteli egység költség](https://azure.microsoft.com/pricing/details/stream-analytics/) a Stream Analytics-feladatban. Azonban a Stream Analytics-feladat társított Azure storage-fiókkal kell rendelkeznie. A Stream Analytics-feladat lekérdezi az SQL DB (feladat indítása és a frissítési időköz) beolvasni a referencia-adatkészlet és a pillanatkép készítése a tárfiókban lévő tárolókat. Ezeket a pillanatképeket tároló többletköltségekkel jár a részletes a [díjszabását ismertető lapon](https://azure.microsoft.compricing/details/storage/) az Azure storage-fiók.
+Nincsenek további nem [folyamatos átviteli egység költség](https://azure.microsoft.com/pricing/details/stream-analytics/) a Stream Analytics-feladatban. Azonban a Stream Analytics-feladat társított Azure storage-fiókkal kell rendelkeznie. A Stream Analytics-feladat lekérdezi az SQL DB (feladat indítása és a frissítési időköz) beolvasni a referencia-adatkészlet és a pillanatkép készítése a tárfiókban lévő tárolókat. Ezeket a pillanatképeket tároló többletköltségekkel jár a részletes a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/storage/) az Azure storage-fiók.
 
 **Hogyan tudhatom meg, hogy folyamatban van a referencia-adatok pillanatkép, az SQL DB lekérdezhetők, és használja az Azure Stream Analytics-feladatot?**
 

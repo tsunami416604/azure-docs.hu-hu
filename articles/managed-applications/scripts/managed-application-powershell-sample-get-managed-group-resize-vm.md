@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: baad12379c01ac955f1b0e036398e5889f3681b2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9e8930c95495673c0082a82757ed6d8137900b6f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203198"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110897"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Felügyelt erőforráscsoport erőforrásainak lekérése és a PowerShell-lel virtuális gépek átméretezése
 
@@ -26,6 +26,8 @@ Ez a parancsfájl erőforrásokat kér le egy felügyelt erőforráscsoportból,
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>Példaszkript
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!code-powershell[main](../../../powershell_scripts/managed-applications/get-application/get-application.ps1 "Get application")]
 
@@ -36,9 +38,9 @@ Ez a szkript a következő parancsokat használja egy felügyelt alkalmazás üz
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzureRmManagedApplication](https://docs.microsoft.com/powershell/module/azurerm.resources/get-azurermmanagedapplication) | Listázza a felügyelt alkalmazásokat. Adja meg az erőforráscsoport-nevet az eredmények szűréséhez. |
-| [Get-AzureRmResource](https://docs.microsoft.com/powershell/module/azurerm.resources/get-azurermresource) | Listázza az erőforrásokat. Adjon meg egy erőforráscsoportot és az erőforrás típusa, az eredmények szűréséhez. |
-| [Update-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvm) | Frissíti egy virtuális gép méretét. |
+| [Get-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication) | Listázza a felügyelt alkalmazásokat. Adja meg az erőforráscsoport-nevet az eredmények szűréséhez. |
+| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Listázza az erőforrásokat. Adjon meg egy erőforráscsoportot és az erőforrás típusa, az eredmények szűréséhez. |
+| [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) | Frissíti egy virtuális gép méretét. |
 
 
 ## <a name="next-steps"></a>További lépések

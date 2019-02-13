@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció JDA felhővel |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció JDA felhővel |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a JDA felhő között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 371ff15121e3da0bec5be6159fea9c6764b0aeda
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 86f2dfaf281130115ff04ff84b413e224f54cfcf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703681"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168340"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jda-cloud"></a>Oktatóanyag: Azure Active Directory-integráció JDA felhővel
+# <a name="tutorial-azure-active-directory-integration-with-jda-cloud"></a>Oktatóanyag: Az Azure Active Directory-integráció JDA felhővel
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan JDA Felhőbeli integrálása az Azure Active Directory (Azure AD).
 
@@ -170,7 +171,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="create-a-jda-cloud-test-user"></a>JDA felhőalapú tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű JDA felhőbeli felhasználó hoz létre. Együttműködve [JDA felhőalapú támogatási csoport](https://support.jda.com/) a felhasználók hozzáadása az JDA Cloud platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű JDA felhőbeli felhasználó hoz létre. Együttműködve [JDA felhőalapú támogatási csoport](https://support.jda.com/) a felhasználók hozzáadása az JDA Cloud platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

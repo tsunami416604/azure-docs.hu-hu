@@ -3,7 +3,7 @@ title: 'Oktatóanyag: webalkalmazás létrehozása az Azure Cache redis, haszná
 description: 'Útmutató: webalkalmazás létrehozása az Azure Cache a redis által használt a gyorsítótár-feltöltési minta'
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.author: wesmc
-ms.openlocfilehash: da99d446da1451c2b05f6ecab8ba19eaa1e2bfa3
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: 72a986202376aa9a8105eef73352e8f576738dff
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104947"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118547"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Az ASP.NET egy gyorsítótár-feltöltési ranglista létrehozása
 

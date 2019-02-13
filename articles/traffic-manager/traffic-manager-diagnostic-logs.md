@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
-ms.openlocfilehash: d4d4420e2d38b1418a08ad1ca51dd0f75f3fe7b9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a7d6893c42028790ec565961f2a2cb54035aefa1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001102"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106461"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Az Azure Traffic Managerben diagnosztikai naplózás engedélyezése
 
@@ -40,14 +40,14 @@ A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.co
 
 2. **A Traffic Manager-profilhoz tartozó diagnosztikai naplózás engedélyezése:**
 
-    A Traffic Manager-profil használatával az előző lépésben beszerzett Azonosítóját a diagnosztikai naplózás engedélyezése [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.insights/set-azdiagnosticsetting?view=latest). A következő parancsot a Traffic Manager-profilhoz, a megadott Azure Storage-fiók részletes naplók tárolja. 
+    A Traffic Manager-profil használatával az előző lépésben beszerzett Azonosítóját a diagnosztikai naplózás engedélyezése [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest). A következő parancsot a Traffic Manager-profilhoz, a megadott Azure Storage-fiók részletes naplók tárolja. 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **Diagnosztikai beállítások ellenőrzése:**
 
-      Ellenőrizze a diagnosztikai beállításokat a Traffic Manager-profil [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.insights/get-azdiagnosticsetting?view=latest). A következő parancsot a kategóriák erőforrás esetében naplózójának jeleníti meg.
+      Ellenőrizze a diagnosztikai beállításokat a Traffic Manager-profil [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest). A következő parancsot a kategóriák erőforrás esetében naplózójának jeleníti meg.
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>

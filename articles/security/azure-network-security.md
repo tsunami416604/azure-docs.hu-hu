@@ -4,7 +4,7 @@ description: Ismerje meg a felhőalapú számítástechnikai szolgáltatások sz
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1d94ac5f799fc4bad13ab6a5e97a225a7499380d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405973"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111288"
 ---
 # <a name="azure-network-security"></a>Azure hálózati biztonság
 
@@ -88,11 +88,11 @@ A virtuális hálózatok Azure virtuális hálózatok hasonlítanak a helyszíni
 
 Kapcsolódás virtuális hálózatok egymáshoz, erőforrások kommunikálhassanak egymással virtuális hálózatokat vagy a vneten engedélyezése. Használhatja az alábbi beállítások egyikében vagy egymáshoz virtuális hálózatok csatlakoztatása:
 
-- **Társviszony-létesítés:** lehetővé teszik az erőforrások különböző Azure vnetekhez csatlakoztatni az azonos Azure-helyen belül kommunikálni egymással. A sávszélességet és a virtuális hálózatok közötti késés megegyezik, mintha az erőforrásokat ugyanabban a Vnetben csatlakoztatva. Társviszony-létesítés kapcsolatos további információkért olvassa el [virtuális hálózatok közötti társviszony](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+- **Társviszony-létesítés:** Lehetővé teszi az erőforrások különböző Azure vnetekhez csatlakoztatni az azonos Azure-helyen belül kommunikálni egymással. A sávszélességet és a virtuális hálózatok közötti késés megegyezik, mintha az erőforrásokat ugyanabban a Vnetben csatlakoztatva. Társviszony-létesítés kapcsolatos további információkért olvassa el [virtuális hálózatok közötti társviszony](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
  ![Társviszony-létesítés](media/azure-network-security/azure-network-security-fig-3.png)
 
-- **VNet – VNet kapcsolat:** lehetővé teszik az erőforrások különböző Azure a vneten belül az azonos vagy eltérő Azure-helyen. Társviszony-létesítéshez, ellentétben a sávszélesség azért virtuális hálózatok közötti adatforgalom kell egy Azure VPN Gatewayen keresztül.
+- **VNet – VNet kapcsolat:** Lehetővé teszi az erőforrások különböző Azure a vneten belül az azonos vagy eltérő Azure-helyen. Társviszony-létesítéshez, ellentétben a sávszélesség azért virtuális hálózatok közötti adatforgalom kell egy Azure VPN Gatewayen keresztül.
 
 ![A virtuális hálózatok közötti kapcsolat](media/azure-network-security/azure-network-security-fig-4.png)
 
@@ -151,9 +151,9 @@ Több Azure-erőforrások virtuális hálózathoz, például a virtuális gépek
 
 Kapcsolódás virtuális hálózatok egymáshoz, erőforrások kommunikálhassanak egymással virtuális hálózatokat vagy a vneten engedélyezése. Használhatja az alábbi beállítások egyikében vagy egymáshoz virtuális hálózatok csatlakoztatása:
 
-- **Társviszony-létesítés:** lehetővé teszik az erőforrások különböző Azure vnetekhez csatlakoztatni az azonos Azure-helyen belül kommunikálni egymással. A sávszélesség és a virtuális hálózatok közötti késés ugyanaz, mintha az erőforrásokat az azonos VNet.To csatlakoztatott tudjon meg többet a társviszony-létesítés, olvassa el a [virtuális hálózatok közötti társviszony](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+- **Társviszony-létesítés:** Lehetővé teszi az erőforrások különböző Azure vnetekhez csatlakoztatni az azonos Azure-helyen belül kommunikálni egymással. A sávszélesség és a virtuális hálózatok közötti késés ugyanaz, mintha az erőforrásokat az azonos VNet.To csatlakoztatott tudjon meg többet a társviszony-létesítés, olvassa el a [virtuális hálózatok közötti társviszony](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
-- **VNet – VNet kapcsolat:** lehetővé teszik az erőforrások különböző Azure a vneten belül az azonos vagy eltérő Azure-helyen. Társviszony-létesítéshez, ellentétben a sávszélesség azért virtuális hálózatok közötti adatforgalom kell egy Azure VPN Gatewayen keresztül. További információ a virtuális hálózatok csatlakoztatása a VNet – VNet kapcsolattal. További tudnivalókért olvassa el a [VNet – VNet kapcsolat konfigurálása](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json) .
+- **VNet – VNet kapcsolat:** Lehetővé teszi az erőforrások különböző Azure a vneten belül az azonos vagy eltérő Azure-helyen. Társviszony-létesítéshez, ellentétben a sávszélesség azért virtuális hálózatok közötti adatforgalom kell egy Azure VPN Gatewayen keresztül. További információ a virtuális hálózatok csatlakoztatása a VNet – VNet kapcsolattal. További tudnivalókért olvassa el a [VNet – VNet kapcsolat konfigurálása](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json) .
 
 **Helyszíni kapcsolatok**
 
@@ -161,11 +161,11 @@ Lehet csatlakoztatni virtuális hálózatok [helyszíni](https://docs.microsoft.
 
 A helyszíni hálózat csatlakozhat egy Vnethez a következő lehetőségek közül:
 
-- **Pont – hely virtuális magánhálózati (VPN):** egy egyetlen számítógép csatlakozik a hálózathoz és a VNet között létesített kapcsolat. Ez a kapcsolattípus remek választás, ha csak most ismerkedik az Azure szolgáltatással, illetve a fejlesztők számára, mert a meglévő hálózatot csak kis mértékben vagy egyáltalán nem kell módosítani. A kapcsolat az SSTP protokollt használja, titkosított kommunikációt biztosít a számítógép és a virtuális hálózat között az interneten keresztül. A késés, a pont – hely VPN-hez nem határozható meg előre, mivel az a forgalom az interneten halad át.
+- **Pont – hely virtuális magánhálózati (VPN):** Egyetlen számítógép csatlakozik a hálózathoz és a VNet között létesített kapcsolat. Ez a kapcsolattípus remek választás, ha csak most ismerkedik az Azure szolgáltatással, illetve a fejlesztők számára, mert a meglévő hálózatot csak kis mértékben vagy egyáltalán nem kell módosítani. A kapcsolat az SSTP protokollt használja, titkosított kommunikációt biztosít a számítógép és a virtuális hálózat között az interneten keresztül. A késés, a pont – hely VPN-hez nem határozható meg előre, mivel az a forgalom az interneten halad át.
 
-- **Helyek közötti VPN:** a VPN-eszköz és a egy Azure VPN Gateway átjáró között létesített kapcsolat. Ez a kapcsolattípus lehetővé teszi, hogy bármilyen helyszíni erőforráshoz is engedélyezni szeretné a VNet eléréséhez. A kapcsolat egy IPsec/IKE VPN, amely titkosított kommunikációt biztosít a helyszíni eszközök és az Azure VPN gateway között az interneten. A késés egy helyek közötti kapcsolat nem határozható meg előre, mivel az a forgalom az interneten halad át.
+- **Helyek közötti VPN:** A VPN-eszköz és a egy Azure VPN Gateway átjáró között létesített kapcsolat. Ez a kapcsolattípus lehetővé teszi, hogy bármilyen helyszíni erőforráshoz is engedélyezni szeretné a VNet eléréséhez. A kapcsolat egy IPsec/IKE VPN, amely titkosított kommunikációt biztosít a helyszíni eszközök és az Azure VPN gateway között az interneten. A késés egy helyek közötti kapcsolat nem határozható meg előre, mivel az a forgalom az interneten halad át.
 
-- **Azure ExpressRoute**: Saját hálózata és az Azure között egy ExpressRoute-partneren keresztül létesített kapcsolat. Ez a kapcsolat nem nyilvános. Forgalom sem halad át az interneten. A késés, az ExpressRoute-kapcsolatok az már előre jelezhető, mert a forgalom nem haladnak át az interneten. Az előző kapcsolat lehetőségekkel kapcsolatos további tudnivalókért olvassa el a [kapcsolati topológia-diagramok](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **Azure ExpressRoute:** Akkor jön létre a hálózat és az Azure között egy ExpressRoute-partneren keresztül. Ez a kapcsolat nem nyilvános. Forgalom sem halad át az interneten. A késés, az ExpressRoute-kapcsolatok az már előre jelezhető, mert a forgalom nem haladnak át az interneten. Az előző kapcsolat lehetőségekkel kapcsolatos további tudnivalókért olvassa el a [kapcsolati topológia-diagramok](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Forgalomszűrés**
 
@@ -173,9 +173,9 @@ Virtuális gép és a Felhőszolgáltatások szerepkörpéldányok [hálózati f
 
 A hálózati forgalom alhálózatok közötti szűrése az alábbi lehetőségek egyikével vagy akár mindkettővel elvégezhető:
 
-- **Hálózati biztonsági csoportok (NSG):** minden NSG-t tartalmazhat több bejövő és kimenő biztonsági szabály lehetővé teszi, hogy a forrás és cél IP-cím, port és protokoll forgalom szűrésére. Az NSG-KET a virtuális gép minden hálózati adapterhez is alkalmazhat. Az NSG-KET is alkalmazhat az alhálózat egy hálózati Adaptert, vagy más Azure-erőforrás csatlakoztatva van. NSG-kkel kapcsolatos további információkért olvassa el a [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- **Hálózati biztonsági csoportok (NSG):** Minden NSG tartalmazhat több bejövő és kimenő biztonsági szabály lehetővé teszi, hogy a forrás és cél IP-cím, port és protokoll szerint forgalom szűrésére. Az NSG-KET a virtuális gép minden hálózati adapterhez is alkalmazhat. Az NSG-KET is alkalmazhat az alhálózat egy hálózati Adaptert, vagy más Azure-erőforrás csatlakoztatva van. NSG-kkel kapcsolatos további információkért olvassa el a [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 
-- **Virtuális hálózati berendezések:** egy hálózati virtuális berendezés, amely hálózati funkciót, például tűzfal-szoftvereket futtató virtuális gép. Az Azure piactéren elérhető nva-k listájának megtekintéséhez. Az nva-k is elérhetők, amely a WAN-optimalizálás és az egyéb hálózati forgalom funkciókat biztosítanak. Jellemzően nva-k a felhasználó által megadott vagy BGP-útvonalak. Is használhatja az NVA virtuális hálózatok közötti forgalom szűrésére.
+- **Virtuális hálózati berendezések:** Egy hálózati virtuális berendezés, amely hálózati funkciót, például tűzfal-szoftvereket futtató virtuális gép. Az Azure piactéren elérhető nva-k listájának megtekintéséhez. Az nva-k is elérhetők, amely a WAN-optimalizálás és az egyéb hálózati forgalom funkciókat biztosítanak. Jellemzően nva-k a felhasználó által megadott vagy BGP-útvonalak. Is használhatja az NVA virtuális hálózatok közötti forgalom szűrésére.
 
 **Útválasztás**
 
@@ -183,11 +183,11 @@ Az Azure alapértelmezett útválasztás konfigurálása a saját útvonalakat, 
 
 Az Azure létrehozza az útválasztási táblázatokat, amelyek lehetővé teszik az erőforrások bármely kommunikálnak egymással, alapértelmezés szerint a virtuális hálózat egyetlen alhálózatának sem kapcsolódik. Az Azure által létrehozott alapértelmezett útvonalak felülírásához valósítsa meg az alábbi lehetőségek egyikét, vagy akár mindkettőt:
 
-- **Felhasználó által megadott útvonalak:** is létrehozhat egyéni útválasztási táblázatokat az útvonalakat a vezérlőelemre, hova érkezzen a forgalom az egyes alhálózatokon. Felhasználó által megadott útvonalakkal kapcsolatos további információkért olvassa el a [felhasználó által megadott útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
+- **Felhasználó által megadott útvonalakat:** Létrehozhat egyéni útválasztási táblázatokat az útvonalakat a vezérlőelemre, hova érkezzen a forgalom az egyes alhálózatokon. Felhasználó által megadott útvonalakkal kapcsolatos további információkért olvassa el a [felhasználó által megadott útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
 
-- **BGP-útvonalak:** Ha a helyszíni hálózathoz egy VPN-átjáró vagy ExpressRoute-kapcsolat használatával csatlakozni a virtuális hálózathoz, propagálhatja BGP-útvonalak a virtuális hálózatok.
+- **BGP-útvonalakat:** Ha a helyszíni hálózathoz egy VPN-átjáró vagy ExpressRoute-kapcsolat használatával csatlakoztatja a virtuális hálózat, a virtuális hálózatok propagálható BGP-útvonalak.
 
-### <a name="hybrid-internet-connectivity-connect-to-an-on-premises-network"></a>Hibrid internetkapcsolat: a helyszíni hálózat csatlakoztatása
+### <a name="hybrid-internet-connectivity-connect-to-an-on-premises-network"></a>Hibrid internetkapcsolat: A helyszíni hálózat csatlakoztatása
 A helyszíni hálózat csatlakozhat egy Vnethez a következő lehetőségek közül:
 
 -   Internetkapcsolat
@@ -282,13 +282,13 @@ Ez azt jelenti, hogy szabályozhatja a hozzáférést, egyetlen virtuális gép 
 
 Egy NSG-t, akkor célszerű tisztában lennie a beépített szabályokat tartalmaz. Ezek a következők:
 
--   **Egy adott virtuális hálózaton belüli összes forgalom:** összes virtuális gépet az azonos Azure Virtual Network kommunikálhatnak egymással.
+-   **Egy adott virtuális hálózaton belüli összes forgalom engedélyezése:** Az azonos Azure virtuális hálózatban lévő összes virtuális gép kommunikálhatnak egymással.
 
 -   **Lehetővé teszi a bejövő Azure terheléselosztási:** Ez a szabály lehetővé teszi, hogy a forgalmat bármilyen forrás-címről bármely címre az Azure load balancer számára.
 
 -   **Az összes bejövő megtagadása:** Ez a szabály az internetről, kifejezetten engedélyezett sourcing minden forgalmat blokkol.
 
--   **Engedélyezzen minden adatforgalmat kimenő internetkapcsolat:** Ez a szabály lehetővé teszi, hogy a virtuális gépek, az internetes kapcsolatok kezdeményezésének. Ha nem szeretné ezeket a kapcsolatokat kezdeményezni, hozzon létre egy szabályt, amely ezeket a kapcsolatokat letiltása vagy kényszerítése a kényszerített bújtatás szeretné.
+-   **Minden forgalmat az internetre kimenő engedélyezése:** Ez a szabály lehetővé teszi, hogy a virtuális gépek, az internetes kapcsolatok kezdeményezésének. Ha nem szeretné ezeket a kapcsolatokat kezdeményezni, hozzon létre egy szabályt, amely ezeket a kapcsolatokat letiltása vagy kényszerítése a kényszerített bújtatás szeretné.
 
 #### <a name="system-routes-and-user-defined-routes"></a>Rendszerútvonalakat és a felhasználó által megadott útvonalak
 
@@ -320,11 +320,11 @@ A következő szakaszban azok az Azure Virtual Network az útválasztási tábla
 
 -   Minden egyes virtuális hálózat alhálózatához rendelkezik egy beépített, rendszer-útválasztási táblázatához. A rendszer útválasztási tábla az útvonalak a következő három csoport rendelkezik:
 
- -  **Helyi VNet-útvonal:** közvetlenül és a cél virtuális gépek ugyanazon a virtuális hálózaton
+ -  **Helyi VNet-útvonal:** Közvetlenül az a cél virtuális gépek ugyanazon a virtuális hálózaton
 
- - **A helyi útvonalak:** , az Azure VPN-átjáró
+ - **A helyi útvonalak:** Az Azure VPN gatewayhez
 
- -  **Alapértelmezett útvonal:** közvetlenül az internethez való. Nem fedi le az előző két útvonalak privát IP-címekre irányuló csomagokat a rendszer elveti.
+ -  **Alapértelmezett útvonal:** Közvetlenül a az interneten. Nem fedi le az előző két útvonalak privát IP-címekre irányuló csomagokat a rendszer elveti.
 
 -   Felhasználó által megadott útvonalak kiadása hozzon létre egy útválasztási táblázatot, adjon hozzá egy alapértelmezett útvonalat, és majd társítsa az útválasztási táblázatban az ezekhez az alhálózatokhoz kényszerített bújtatás engedélyezése a virtuális hálózat alhálózatához.
 
@@ -609,7 +609,7 @@ A Network Watcher biztosít a diagnosztikai naplók megtekintése. Ez a nézet a
 
 A log Analytics a hálózatok figyelése a következő megoldásokat kínál:
 
--   A Network Performance Monitor (NPM)
+-   Network Performance Monitor (NPM)
 
 -   Az Azure Application Gateway analytics
 
@@ -645,9 +645,9 @@ A következő metrikákat az Application Gateway átjárók támogatottak:
 
 A következő naplók kapcsolódnak támogatottak [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log):
 
-- **NetworkSecurityGroupEvent:** melyik NSG szabályok virtuális gépekre érvényesek, és a MAC-cím alapján szerepkörök példány bejegyzést tartalmaz. Ezek a szabályok állapota gyűjtött minden 60 másodpercben.
+- **NetworkSecurityGroupEvent:** Melyik NSG szabályok érvényesek virtuális gépeket és példányszerepköröket MAC-cím alapján bejegyzést tartalmaz. Ezek a szabályok állapota gyűjtött minden 60 másodpercben.
 
-- **NetworkSecurityGroupRuleCounter:** hány alkalommal minden NSG tartalmaz bejegyzést a alkalmaznak-forgalom engedélyezése vagy megtagadása szabály.
+- **NetworkSecurityGroupRuleCounter:** Az egyes NSG-szabályokat alkalmaznak-forgalom engedélyezése vagy megtagadása hány alkalommal bejegyzést tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 További információ biztonságával kapcsolatban olvassa el részletes biztonsági témakörök el:

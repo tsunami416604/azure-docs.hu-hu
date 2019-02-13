@@ -14,12 +14,13 @@ ms.topic: reference
 ms.date: 11/02/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f15556596063a09f68f024346e9fbe08663436c9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 594fb736b8ec4b49cf1525047ff8a7ce5e5dc959
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497808"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194971"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
 
@@ -158,7 +159,7 @@ Annak ellenőrzéséhez, hogy melyik Azure AD Connect verziója van telepítve a
 A legújabb verzióra frissítésével kapcsolatban lásd: [az Azure AD Connect: Frissítés egy előző verzióról a legújabbra](how-to-upgrade-previous-version.md). 
 
 **K: A Microsoft már elvégezte az Azure AD Connect legújabb verziójára tavaly. Szükségünk ismét?**  
-Az Azure AD Connect csapata elvégzi a gyakori frissítések a szolgáltatáshoz. Hibajavítások és biztonsági frissítések, valamint az új funkciók kihasználhatják, fontos a kiszolgáló naprakészen tartása a legújabb verzióra. Ha engedélyezi az automatikus frissítés, a szoftver verziója automatikusan frissül. Az Azure AD Connect verziókiadások talál [az Azure AD Connect: Verziókiadások előzményei](reference-connect-version-history.md).
+Az Azure AD Connect csapata elvégzi a gyakori frissítések a szolgáltatáshoz. Hibajavítások és biztonsági frissítések, valamint az új funkciók kihasználhatják, fontos a kiszolgáló naprakészen tartása a legújabb verzióra. Ha engedélyezi az automatikus frissítés, a szoftver verziója automatikusan frissül. Az Azure AD Connect verziókiadások talál [az Azure AD Connect: verziókiadásainak előzményeit](reference-connect-version-history.md) ismertető cikket.
 
 **K: Mennyi időt vesz igénybe a frissítés végrehajtásához, és mi az a felhasználóim gyakorolt hatást?**  
 Frissítéséhez szükséges idő a bérlő méretétől függ. A nagyobb vállalatok a legjobb, ha a frissítés végrehajtásához az esténként vagy a hétvége folyamán érdemes lehet. A frissítés során nincs szinkronizálási tevékenység kerül sor.

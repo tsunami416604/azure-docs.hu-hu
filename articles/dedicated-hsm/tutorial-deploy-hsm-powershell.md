@@ -4,7 +4,7 @@ description: Történő üzembe helyezése meglévő virtuális hálózatban a P
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 3f165b5d372168ef3ce6fea75547513a0148ae5b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4fd701c92ea2cf1447f0c3ea14db6a968ac8910e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086307"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115674"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Oktatóanyag – üzembe helyezés HSM-EK virtuális hálózatban a meglévő PowerShell-lel
 
@@ -37,7 +37,7 @@ Ebben az oktatóanyagban a HSM-EK párjai koncentrál, és a szükséges Express
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure, a dedikált HSM jelenleg nem áll rendelkezésre az Azure Portalon, ezért összes kommunikációt a szolgáltatással parancssori vagy a Powershellen keresztül. Ez az oktatóanyag az Azure Cloud Shell PowerShell fogja használni. Ha még nem ismeri a powershellt, kövesse bevezetés utasításokat itt: [Azure PowerShell első lépései](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0).
+Az Azure, a dedikált HSM jelenleg nem áll rendelkezésre az Azure Portalon, ezért összes kommunikációt a szolgáltatással parancssori vagy a Powershellen keresztül. Ez az oktatóanyag az Azure Cloud Shell PowerShell fogja használni. Ha még nem ismeri a powershellt, kövesse az első lépések az itt leírt utasításokat: [Az Azure PowerShell Get Started](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0).
 
 Előfeltételek:
 
@@ -187,7 +187,7 @@ Ez a parancs körülbelül 20 percet vesz igénybe. A "-verbose" beállítás bi
 
 ![kiépítési állapot](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-Sikeresen befejeződött, ha látható a "provisioningState": "Sikeres", jelentkezzen be a meglévő virtuális gépet és SSH-val a HSM eszközt rendelkezésre állásának biztosításához.
+Ha sikeresen befejeződött "provisioningState" látható: "Sikeres", jelentkezzen be a meglévő virtuális gépet és SSH-val a HSM eszközt rendelkezésre állásának biztosításához.
 
 ## <a name="verifying-the-deployment"></a>A telepítés ellenőrzése
 

@@ -13,14 +13,16 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 37f6ad26fd0ad4a1ac6c3fd6c6707b5b9aaef331
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fbf94d0430685ea5791aaaa83669a730986e665c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770214"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111305"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Üzembehelyezési műveletek megtekintése az Azure Resource Managerrel
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 A műveletek esetében egy üzembe helyezést az Azure Portalon tekintheti meg. Előfordulhat, hogy iránt érdeklődnek a leginkább megtekintése a műveleteket, ha üzembe helyezés során a így ez a cikk foglalkozik, amelyek nem tudták műveletek megtekintése a hibaüzenetet kapott. A portál egy felületet kínál, amely lehetővé teszi a hibák megkereséséhez és esetleges javításokat határozza meg.
 
@@ -68,13 +70,13 @@ Az üzembe helyezési műveletek megtekintéséhez használja az alábbi lépés
   Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
-1. A korrelációs Azonosítót használja:
+2. A korrelációs Azonosítót használja:
 
   ```powershell
   (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
   ```
 
-1. Minden üzembe helyezés több műveleteit tartalmazza. Minden művelet egy lépése az üzembe helyezési folyamat jelöli. Fedezze fel Mi történt egy központi telepítést, általában kell az üzembe helyezési műveletek részleteinek megtekintéséhez. Láthatja, hogy a műveletek állapotának **Get-AzResourceGroupDeploymentOperation**.
+3. Minden üzembe helyezés több műveleteit tartalmazza. Minden művelet egy lépése az üzembe helyezési folyamat jelöli. Fedezze fel Mi történt egy központi telepítést, általában kell az üzembe helyezési műveletek részleteinek megtekintéséhez. Láthatja, hogy a műveletek állapotának **Get-AzResourceGroupDeploymentOperation**.
 
   ```powershell 
   Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
@@ -92,7 +94,7 @@ Az üzembe helyezési műveletek megtekintéséhez használja az alábbi lépés
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
   ```
 
-1. Sikertelen műveletek kapcsolatos további információért a műveletek a tulajdonságainak lekérése **sikertelen** állapota.
+4. Sikertelen műveletek kapcsolatos további információért a műveletek a tulajdonságainak lekérése **sikertelen** állapota.
 
   ```powershell
   (Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
@@ -115,7 +117,7 @@ Az üzembe helyezési műveletek megtekintéséhez használja az alábbi lépés
   ```
 
     Vegye figyelembe a serviceRequestId és a követési azonosítót a művelethez. A serviceRequestId az használata a technikai támogatáshoz a központi telepítés hibaelhárítása során lehet hasznos. Egy adott művelet összpontosíthat a következő lépésben fogja használni a követési azonosító.
-1. Az állapotüzenet egy adott sikertelen művelet lekéréséhez használja a következő parancsot:
+5. Az állapotüzenet egy adott sikertelen művelet lekéréséhez használja a következő parancsot:
 
   ```powershell
   ((Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -128,7 +130,7 @@ Az üzembe helyezési műveletek megtekintéséhez használja az alábbi lépés
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-1. Minden központi telepítési műveletet az Azure-ban a kérések és válaszok tartalmát tartalmazza. A kérelem tartalma az Ön által küldött az Azure-ban üzembe helyezés során (például hozzon létre egy virtuális gép operációsrendszer-lemez és az egyéb erőforrásokat). A válasz tartalma az Azure által küldött vissza a telepítési kérelemből. A telepítés során használhat **DeploymentDebugLogLevel** paraméterrel megadhatja, hogy a kérelem és/vagy a válasz megmaradnak a naplóban. 
+6. Minden központi telepítési műveletet az Azure-ban a kérések és válaszok tartalmát tartalmazza. A kérelem tartalma az Ön által küldött az Azure-ban üzembe helyezés során (például hozzon létre egy virtuális gép operációsrendszer-lemez és az egyéb erőforrásokat). A válasz tartalma az Azure által küldött vissza a telepítési kérelemből. A telepítés során használhat **DeploymentDebugLogLevel** paraméterrel megadhatja, hogy a kérelem és/vagy a válasz megmaradnak a naplóban. 
 
   Ezt az információt kérhet a naplót, és mentse helyileg a következő PowerShell-parancsok használatával:
 
@@ -146,13 +148,13 @@ Az üzembe helyezési műveletek megtekintéséhez használja az alábbi lépés
   az group deployment show -g ExampleGroup -n ExampleDeployment
   ```
   
-1. A visszaadott értékek egyike a **correlationId**. Ez az érték a kapcsolódó események nyomon követésére szolgál, és használata a technikai támogatáshoz a központi telepítés hibaelhárítása során lehet hasznos.
+2. A visszaadott értékek egyike a **correlationId**. Ez az érték a kapcsolódó események nyomon követésére szolgál, és használata a technikai támogatáshoz a központi telepítés hibaelhárítása során lehet hasznos.
 
   ```azurecli
   az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
   ```
 
-1. A műveletek esetében egy központi telepítést használja:
+3. A műveletek esetében egy központi telepítést használja:
 
   ```azurecli
   az group deployment operation list -g ExampleGroup -n ExampleDeployment

@@ -4,7 +4,7 @@ description: Ez az oktatóanyag bemutatja, hogyan konfigurálhat igény szerinti
 services: security-center
 documentationcenter: na
 author: monhaber
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: monhaber
-ms.openlocfilehash: df9e804e8b8f3a9b40a18873f61ec96edee1503d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 8662539257422289053e75beeadd07c63d8d3f4d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490257"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106630"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Oktatóanyag: Erőforrások védelme az Azure Security Centerben
 A Security Center korlátozza a fenyegetéseknek való kitettségét azzal, hogy hozzáférés- és alkalmazásvezérlőket használ a kártékony tevékenységek blokkolására. – Igény szerinti (JIT) virtuális gép (VM) hozzáférés engedélyezésével, hogy a virtuális gépek állandó hozzáférés letiltása csökkenti a támadásoknak való kitettség csökkentése. Az állandó hozzáférés helyett szabályozott és naplózott hozzáférést biztosít a virtuális gépekhez – csak akkor, ha szükség van rá. Az adaptív alkalmazásvezérlők segítenek felvértezni a virtuális gépeket a kártevők ellen azáltal, hogy szabályozzák, mely alkalmazások futhatnak rajtuk. A Security Center gépi tanulási módszerekkel elemzi a virtuális gépen futó folyamatokat, és az így szerzett információk alapján segít az engedélyezési szabályok alkalmazásában.

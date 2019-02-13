@@ -4,7 +4,7 @@ description: Ez a cikk áttekintést az Azure adatbázis biztonsági funkciók.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 984c74c44cb5149e0c4af83ea8ca4d88e67877ae
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f9297946b7e09bc8c516470515d0eee9885d5d38
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584774"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116320"
 ---
 # <a name="azure-database-security-overview"></a>Azure database biztonságának áttekintése
 
@@ -110,12 +110,12 @@ Az adatvédelem kezdődik az adatokhoz való hozzáférés szabályozása. Az ad
 
 Az Azure SQL Database szolgáltatás kizárólag a 1433-as TCP-porton keresztül érhető el. SQL-adatbázis eléréséhez a számítógépről, győződjön meg arról, hogy az ügyfél tűzfal engedélyezi-e a kimenő TCP-kommunikációt az 1433-as TCP-porton. Bejövő kapcsolatok esetén más alkalmazásokat nem szükséges, ha letiltja az 1433-as TCP-porton.
 
-#### <a name="authentication"></a>Hitelesítés
+#### <a name="authentication"></a>Authentication
 
 A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. Az SQL Database két hitelesítési típust támogat:
 
--   **SQL Server-hitelesítés**: egyetlen bejelentkezési fiók jön létre egy logikai SQL-példány létrehozását követően az SQL Database-előfizetői fiók neve. Ennek a fióknak a használatával kapcsolódik [SQL Server-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (felhasználónév és jelszó). Ez a fiók rendszergazdának számít a logikai kiszolgáló példányán és a példányhoz csatolt összes felhasználói adatbázisban. Az előfizetői fiók engedélyei nem korlátozhatók. Ilyen fiókból csak egy létezhet.
--   **Az Azure Active Directory-hitelesítés**: [Azure AD-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) olyan mechanizmus, az Azure SQL Database és az Azure SQL Data Warehouse csatlakozik az Azure AD-identitások használatával. Használhatja az adatbázis-felhasználók identitásainak központi kezelését.
+-   **SQL Server-hitelesítés**: Egyetlen bejelentkezési fiók jön létre a logikai SQL-példány létrehozásakor, az úgynevezett SQL Database-előfizetői fiók. Ennek a fióknak a használatával kapcsolódik [SQL Server-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (felhasználónév és jelszó). Ez a fiók rendszergazdának számít a logikai kiszolgáló példányán és a példányhoz csatolt összes felhasználói adatbázisban. Az előfizetői fiók engedélyei nem korlátozhatók. Ilyen fiókból csak egy létezhet.
+-   **Az Azure Active Directory-hitelesítés**: [Az Azure AD-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) olyan mechanizmus, az Azure SQL Database és az Azure SQL Data Warehouse csatlakozik az Azure AD-identitások használatával. Használhatja az adatbázis-felhasználók identitásainak központi kezelését.
 
 ![Az SQL Database az Azure AD-hitelesítés](./media/azure-databse-security-overview/azure-database-fig2.png)
 
@@ -176,8 +176,8 @@ Az SQL Database naplózását is használhatja:
 
 Két naplózási módszer van:
 
--   **A blobnaplózás**: az Azure Blob storage-naplók készültek. Ez a egy újabb naplózási mód. Ez nagyobb teljesítményt nyújt, támogatja a nagyobb részletességgel objektumszintű naplózást, és költséghatékonyabb.
--   **Táblanaplózás**: az Azure Table storage-naplók készültek.
+-   **A blobnaplózás**: A naplókat a rendszer az Azure Blob Storage-ba írja. Ez a egy újabb naplózási mód. Ez nagyobb teljesítményt nyújt, támogatja a nagyobb részletességgel objektumszintű naplózást, és költséghatékonyabb.
+-   **Táblanaplózás**: Naplók az Azure Table storage készültek.
 
 ### <a name="threat-detection"></a>Fenyegetések észlelése
 

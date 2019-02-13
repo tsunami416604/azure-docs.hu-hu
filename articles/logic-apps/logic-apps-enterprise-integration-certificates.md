@@ -11,12 +11,12 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 5ae69d365a183f7d2a219d853241e73c1e27212b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: fa2ae313ab18d6e474f1dd0953a3b0a0d094c7c3
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055317"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111809"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>A tanúsítványok biztonságos B2B-üzenetek
 
@@ -49,7 +49,7 @@ Használata egy *nyilvános tanúsítvány* a logic apps B2B-funkciói rendelkez
    |----------|-------|-------------|
    | **Name (Név)** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "publicCert" | 
    | **Tanúsítvány típusa** | Nyilvános | A tanúsítvány típusa |
-   | **Tanúsítvány** | <*tanúsítvány fájlneve*> | Keresse meg és válassza ki a feltöltendő tanúsítványfájlt, válassza a mappa ikont a a **tanúsítvány** mezőbe. |
+   | **Tanúsítvány** | <*certificate-file-name*> | Keresse meg és válassza ki a feltöltendő tanúsítványfájlt, válassza a mappa ikont a a **tanúsítvány** mezőbe. |
    ||||
 
    ![Válassza az "Add", adja meg a tanúsítvány részletei](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
@@ -60,14 +60,14 @@ Használata egy *nyilvános tanúsítvány* a logic apps B2B-funkciói rendelkez
 
 ## <a name="upload-a-private-certificate"></a>Privát tanúsítvány feltöltése
 
-Használata egy *személyes tanúsítvány* a logic apps B2B-funkciói rendelkező, akkor először fel kell töltenie a tanúsítvány az integrációs fiókba. Rendelkezik titkos kulccsal, amely először hozzá kell [Azure Key Vault](../key-vault/key-vault-get-started.md). 
+Használata egy *személyes tanúsítvány* a logic apps B2B-funkciói rendelkező, akkor először fel kell töltenie a tanúsítvány az integrációs fiókba. Rendelkezik titkos kulccsal, amely először hozzá kell [Azure Key Vault](../key-vault/key-vault-overview.md). 
 
 A tulajdonságok megadása után a [szerződések](logic-apps-enterprise-integration-agreements.md) , hogy hoz létre, a tanúsítványt, amellyel biztonságossá teheti a B2B-üzenetek érhető el.
 
 > [!NOTE]
 > Privát tanúsítványok esetén győződjön meg arról, hogy a megfelelő nyilvános tanúsítvány megjelenő hozzáadása a [AS2-egyezményt](logic-apps-enterprise-integration-as2.md) **küldési és fogadási** aláírása és titkosítása üzenetek beállításait.
 
-1. [Adja hozzá a titkos kulcsot az Azure Key Vaultba](../key-vault/key-vault-get-started.md#add) , és adja meg egy **kulcsnév**.
+1. [Adja hozzá a titkos kulcsot az Azure Key Vaultba](../key-vault/quick-create-cli.md#add-a-secret-to-key-vault) , és adja meg egy **kulcsnév**.
    
 2. Engedélyezze az Azure Logic Apps műveletek végrehajtása az Azure Key Vaultban. Hozzáférési jogot a Logic Apps szolgáltatás egyszerű, használja a PowerShell-paranccsal [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy), például:
 
@@ -88,10 +88,10 @@ A tulajdonságok megadása után a [szerződések](logic-apps-enterprise-integra
    |----------|-------|-------------|
    | **Name (Név)** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "privateCert" | 
    | **Tanúsítvány típusa** | Privát | A tanúsítvány típusa |
-   | **Tanúsítvány** | <*tanúsítvány fájlneve*> | Keresse meg és válassza ki a feltöltendő tanúsítványfájlt, válassza a mappa ikont a a **tanúsítvány** mezőbe. | 
-   | **Erőforráscsoport** | <*Integration-fiók-resource-group*> | Az integrációs fiók erőforráscsoportot, amely ebben a példában a "MyResourceGroup" | 
-   | **Key Vault** | <*kulcs-tároló-neve*> | Az Azure key vault neve |
-   | **Kulcsnév** | <*kulcs neve*> | A kulcs neve |
+   | **Tanúsítvány** | <*certificate-file-name*> | Keresse meg és válassza ki a feltöltendő tanúsítványfájlt, válassza a mappa ikont a a **tanúsítvány** mezőbe. | 
+   | **Erőforráscsoport** | <*integration-account-resource-group*> | Az integrációs fiók erőforráscsoportot, amely ebben a példában a "MyResourceGroup" | 
+   | **Key Vault** | <*key-vault-name*> | Az Azure key vault neve |
+   | **Kulcsnév** | <*key-name*> | A kulcs neve |
    ||||
 
    ![Válassza az "Add", adja meg a tanúsítvány részletei](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)

@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/10/2019
 ms.author: banders
-ms.openlocfilehash: 3ce6d37a1c9e3ebe1e1cd4546a70717674488b91
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: d3bdcc267c55434a71c915f7d4e575d47522986b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100502"
+ms.locfileid: "56110574"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Adja hozzá, vagy az Azure-előfizetések rendszergazdáinak módosításáról
 
 Az Azure-erőforrások hozzáférésének kezeléséhez megfelelő rendszergazdai szerepkörrel kell rendelkeznie. Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) nevű engedélyezési rendszert közül választhat, több beépített szerepkörrel rendelkező rendelkezik. Ezekkel a szerepkörökkel különféle hatókörökben, például a felügyeleti csoportban, előfizetéshez vagy erőforráscsoporthoz rendelhet hozzá.
 
-A Microsoft azt javasolja, hogy az RBAC-erőforrások hozzáférésének kezelése. Azonban ha Ön olyan továbbra is használja a klasszikus üzemi modell, kell használni egy hagyományos előfizetés-rendszergazda. További információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md) és [klasszikus Azure-előfizetés rendszergazdái](../role-based-access-control/classic-administrators.md).
+A Microsoft azt javasolja, hogy az RBAC-erőforrások hozzáférésének kezelése. Azonban ha továbbra is a klasszikus üzemi modellt használ, szüksége lesz egy hagyományos előfizetés-adminisztrátor használatára. További információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md) és [klasszikus Azure-előfizetés rendszergazdái](../role-based-access-control/classic-administrators.md).
 
 Ez a cikk azt ismerteti, hogyan hozzáadása vagy módosítása a rendszergazda szerepkör egy felhasználó az RBAC használatával az előfizetések szintjén.
 

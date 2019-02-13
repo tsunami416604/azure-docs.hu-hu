@@ -4,7 +4,7 @@ description: Ez a dokumentum címek javaslatok az Azure Security Centerben, amel
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: c44e000a60e4391faf38cb275f35ec512e19aea3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 55318f40918833688e0c516924642c781141438c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101685"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118003"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Az Azure Security Center hálózati erőforrások védelme
 Az Azure Security Center folyamatosan elemzi a hálózati biztonsági eljárások az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a erősíti, és az erőforrások védelme a szükséges vezérlők konfigurálásának folyamatán hoz létre.
@@ -39,7 +39,7 @@ A **hálózatkezelés** lap a szakaszok is részletes áttekintést nyújt a há
  
 ![Hálózat panel](./media/security-center-network-recommendations/networking-pane.png)
 
-## <a name="network-map"></a>Hálózati térkép létrehozásához
+## <a name="network-map"></a>Hálózati térkép
 A hálózati interaktív térkép segítségével grafikus leképezést kaphat a biztonsági lefedi a javaslatok és elemzések az biztosít a hálózati erőforrások korlátozására. A térkép segítségével megtekintheti a hálózati topológia az Azure számítási feladatok, a virtuális gépek és alhálózatok és a funkció részletesen elemezheti a térképen az adott erőforrásokat, és ezeket az erőforrásokat a javaslatok között kapcsolatok.
 
 A hálózati térkép megnyitásához:

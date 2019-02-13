@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 09bb74ead0ff52cc7a70170357ddc54a91bf00d9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4552249e7d7dd79edbe885b3d615f5071aa694ee
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239407"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116099"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Oktatóanyag: Az Azure Key Vault használatával a Microsoft Azure Storage blobok titkosítása és visszafejtése
 ## <a name="introduction"></a>Bevezetés
@@ -43,7 +43,7 @@ Itt látható egy rövid leírást ügyféloldali titkosítása működése:
 4. A titkosított adatok majd fel van töltve az Azure Storage szolgáltatásba.
 
 ## <a name="set-up-your-azure-key-vault"></a>Az Azure Key Vault beállítása
-Folytassa az oktatóanyagot, kövesse az alábbi lépéseket, amelyek az oktatóanyagban leírt kell [első lépései az Azure Key Vault](../../key-vault/key-vault-get-started.md):
+Folytassa az oktatóanyagot, kövesse az alábbi lépéseket, amelyek az oktatóanyagban leírt kell [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md):
 
 * Kulcstartó létrehozása.
 * Egy kulcs vagy titkos kód hozzáadása a key vaultban.

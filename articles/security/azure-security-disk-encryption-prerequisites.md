@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5e4a3a1fd450cf855e0ced142e6bc93d4536f2a8
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 24e757c80e23cecb50419a4855ec3ea9f94bcf3b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827720"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112124"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei
 
@@ -133,7 +133,7 @@ Ha már ismeri az Azure Disk Encryption Key Vault és az Azure AD szükséges el
 >Mielőtt törölné a key vault, győződjön meg arról, hogy olyan meglévő virtuális gépek, nem fejeződött titkosítja. A tároló védelmére véletlen törlés [helyreállítható Törlés engedélyezése](../key-vault/key-vault-soft-delete-powershell.md#enabling-soft-delete) és a egy [erőforrászárat](../azure-resource-manager/resource-group-lock-resources.md) a táron. 
  
 ## <a name="bkmk_KeyVault"></a> Kulcstartó létrehozása 
-Az Azure Disk Encryption integrálva van [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat a key vault-előfizetés. Hozzon létre egy kulcstartót, vagy használjon egy meglévőt az Azure Disk Encryption. Kulcstartók kapcsolatos további információkért lásd: [első lépései az Azure Key Vault](../key-vault/key-vault-get-started.md) és [kulcstartó védelme](../key-vault/key-vault-secure-your-key-vault.md). Resource Manager-sablonnal, az Azure PowerShell vagy az Azure CLI használatával hozzon létre egy kulcstartót. 
+Az Azure Disk Encryption integrálva van [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat a key vault-előfizetés. Hozzon létre egy kulcstartót, vagy használjon egy meglévőt az Azure Disk Encryption. Kulcstartók kapcsolatos további információkért lásd: [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md) és [kulcstartó védelme](../key-vault/key-vault-secure-your-key-vault.md). Resource Manager-sablonnal, az Azure PowerShell vagy az Azure CLI használatával hozzon létre egy kulcstartót. 
 
 
 >[!WARNING]

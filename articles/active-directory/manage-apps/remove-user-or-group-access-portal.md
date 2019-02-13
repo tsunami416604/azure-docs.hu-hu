@@ -15,12 +15,13 @@ ms.date: 02/14/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 7d9f0ed56acce59832af3c02f88746869163ce42
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7c622b95572a078d3f5a3e4791f959fd264eddc3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963696"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182170"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazásokat az Azure Active Directoryban
 Egy felhasználó vagy csoport eltávolítása folyamatban van hozzárendelve a hozzáférés a vállalati alkalmazások az Azure Active Directoryban (Azure AD) egyik könnyebbé vált. A vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie.

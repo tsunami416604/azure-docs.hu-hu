@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 0eb6e5d45b0e530bbc38a3a420e0419641f43c12
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eeac36ae28d3d780e1a1e190a0cc0cccda81382f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992109"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166929"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Envi MMIS
 

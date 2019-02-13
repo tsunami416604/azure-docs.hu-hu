@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 1e1316ef568cbc6409a8653022d9acff9837b59d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9cd5a63b5b1d7000605f90752be755356d40bb4a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279681"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56213069"
 ---
 >[!NOTE]
 >A nem rögzített erőforrások esetében kérvényezheti a kvóták emelését egy támogatási jegy megnyitásával. **Ne** hozzon létre további Azure Media Services-fiókokat csak azért, hogy megpróbálja tágítani a korlátokat.
@@ -27,7 +27,7 @@ ms.locfileid: "52279681"
 | Élő csatornák AMS-fiókonként |5|
 | Leállított állapotú programok csatornánként |50|
 | Futó állapotú programok csatornánként |3|
-| Futó állapotú streamvégpontok AMS-fiókonként|2|
+| Streamvégpontok (Leállítva vagy fut) a Media Services-fiókonként|2|
 | Streamelési egységek streamvégpontonként |10 |
 | Tárfiókok | 1000<sup>5</sup> (rögzített) |
 | Házirendek | 1,000,000<sup>(6)</sup> |

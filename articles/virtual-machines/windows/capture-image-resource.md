@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: a5e3fbc3369f19af8d93e23d669a4449ab3d414c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 48aa634ad28236564223c1a78a2e190cd2a0e668
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980584"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107464"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Az Azure-beli általánosított virtuális gép felügyelt rendszerképének létrehozása
 
@@ -87,7 +87,7 @@ A Windows virtuális gép általánosításához, kövesse az alábbi lépéseke
 Lemezkép létrehozása a virtuális gépről közvetlenül biztosítja, hogy a rendszerkép tartalmazza a virtuális Géphez, többek között az operációsrendszer-lemez és bármely adatlemez társított lemezeket. Ez a példa bemutatja, hogyan hozhat létre egy felügyelt rendszerképet, hogy a használt felügyelt lemezek virtuális gépből.
 
 
-Mielőtt elkezdené, győződjön meg arról, hogy a legújabb verzióját az AzureRM.Compute PowerShell-modul, amely 5.7.0 verziójúnak kell lennie, vagy később. A verzió megkereséséhez futtassa `Get-Module -ListAvailable AzureRM.Compute` a PowerShellben. Ha frissíteni szeretne, olvassa el [Azure PowerShell telepítése a Windows a Powershellgettel](/powershell/azure/azurerm/install-az-ps). Ha Ön helyileg futtatja a Powershellt, futtassa `Connect-AzAccount` kapcsolat létrehozása az Azure-ral.
+Mielőtt elkezdené, győződjön meg arról, hogy a legújabb verzióját az AzureRM.Compute PowerShell-modul, amely 5.7.0 verziójúnak kell lennie, vagy később. A verzió megkereséséhez futtassa `Get-Module -ListAvailable AzureRM.Compute` a PowerShellben. Ha frissíteni szeretne, olvassa el [Azure PowerShell telepítése a Windows a Powershellgettel](/powershell/azure/azurerm/install-azurerm-ps). Ha Ön helyileg futtatja a Powershellt, futtassa `Connect-AzAccount` kapcsolat létrehozása az Azure-ral.
 
 
 > [!NOTE]

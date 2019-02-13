@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f08f4cc74c37ccbbcab071b82f67f912e9fd9fd1
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b87fa166f82e4302b5430064d41c293731c60470
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065324"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107701"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Az Azure Maps-fiók tarifacsomagját kezelése
 
@@ -34,7 +34,7 @@ Az Azure Maps-fiók létrehozását követően frissítse, vagy az Azure Maps-fi
 ![Tarifacsomag módosítása](./media/how-to-manage-pricing-tier/change-pricing-tier.png)
 
 > [!NOTE]
-> Nem kell létrehozni új előfizetési kulcsok, ha be- és Visszaléptetés a a tarifacsomagot az Azure Maps-fiók.
+> Nem kell létrehozni új előfizetési kulcsok vagy ügyfél-Azonosítót (az Azure AD-hitelesítés), ha be- és Visszaléptetés a a tarifacsomagot az Azure Maps-fiók.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: geetha
-ms.openlocfilehash: 676c6a45f4a3930d350bbcbdcbb1a0fb47880407
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 004d35290d7bfa365d2e1d0ea605c14b03ffb4a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809997"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114756"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Biztonsági mentése és visszaállítása titkosított virtuális gépek az Azure Backup szolgáltatással
 Ez a cikk ismerteti a lépéseket, biztonsági mentése és visszaállítása a virtuális gépek (VM) az Azure Backup használatával. A következő többi hibaeseteket támogatott forgatókönyveket, előfeltételeket és hibaelhárítási lépéseket részletesen is ismerteti.
@@ -138,6 +138,6 @@ Egy titkosított virtuális gép visszaállításához a "Biztonsági másolat l
 | Művelet | A hiba részletei | Megoldás: |
 | --- | --- | --- |
 |Backup | Hibakód: UserErrorKeyVaultPermissionsNotConfigured<br><br>Hibaüzenet: Az Azure Backup szolgáltatás nem rendelkezik megfelelő engedélyekkel a Key Vault a biztonsági mentés a titkosított virtuális gépek. | Biztonsági mentés meg kell adni ezeket az engedélyeket az alábbi a [az előző szakaszban szereplő lépések](#provide-permissions-to-azure-backup). Vagy a PowerShell a cikk a "Védelem engedélyezése" című szakaszának lépéseit kövesse [PowerShell-lel történő biztonsági mentése és visszaállítása a virtuális gépek](backup-azure-vms-automation.md#enable-protection). |  
-| Visszaállítás | A titkosított virtuális gép nem állítható vissza, mert a virtuális Géphez társított kulcstartó nem létezik. |Hozzon létre egy kulcstartót használatával [első lépései az Azure Key Vault](../key-vault/key-vault-get-started.md). Lásd: [a key vault-kulcs és titkos kulcs visszaállítása az Azure Backup használatával](backup-azure-restore-key-secret.md) egy kulcsot és titkos kulcs visszaállítása, ha azok nincsenek jelen. |
+| Visszaállítás | A titkosított virtuális gép nem állítható vissza, mert a virtuális Géphez társított kulcstartó nem létezik. |Hozzon létre egy kulcstartót használatával [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md). Lásd: [a key vault-kulcs és titkos kulcs visszaállítása az Azure Backup használatával](backup-azure-restore-key-secret.md) egy kulcsot és titkos kulcs visszaállítása, ha azok nincsenek jelen. |
 | Visszaállítás | Hibakód: UserErrorKeyVaultKeyDoesNotExist<br><br> Hibaüzenet: A titkosított virtuális gép nem állítható vissza, mert a virtuális Géphez társított kulcs nem létezik. |Lásd: [a key vault-kulcs és titkos kulcs visszaállítása az Azure Backup használatával](backup-azure-restore-key-secret.md) egy kulcsot és titkos kulcs visszaállítása, ha azok nincsenek jelen. |
 | Visszaállítás | Hibakód: ProviderAuthorizationFailed/UserErrorProviderAuthorizationFailed<br><br>Hibaüzenet: A Backup szolgáltatás nem jogosult az Ön előfizetésében biztosított erőforrások elérésére. |Ahogy korábban említettük a lemezek visszaállítása először a "Biztonsági másolat lemezek visszaállítása" című szakaszának lépéseit követve [válasszon egy Virtuálisgép-konfiguráció visszaállítása](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration). Ezt követően használja a PowerShell-lel [hozzon létre egy virtuális gép helyreállított lemezekből](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). |

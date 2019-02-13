@@ -14,12 +14,13 @@ ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 1e2bdeeb8f2b59d69e761303176c36b26f47d4c8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3d81dc65274600359c3d886203b067b3a90b60cf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165489"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56160792"
 ---
 # <a name="complete-an-access-review-for-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat befejezése
 A kiemelt szerepkörű rendszergazdák tekintheti át az emelt szintű hozzáférés után egy [el lett indítva a hozzáférési felülvizsgálat](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) az Azure-erőforrások automatikus küld egy e-mailt, amely kéri a felhasználóktól, tekintse át a hozzáférésüket. Ha a felhasználó nem kap egy e-mailt, küldhet nekik az utasításokat [hozzáférési felülvizsgálat végrehajtása](pim-resource-roles-perform-access-review.md).

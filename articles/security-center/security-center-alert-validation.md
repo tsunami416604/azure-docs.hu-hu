@@ -4,7 +4,7 @@ description: Ez a dokumentum az Azure Security Center biztonsági riasztásainak
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f8f17a55-e672-4d86-8ba9-6c3ce2e71a57
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2c0bb2a68eaaa8183463efbdc2848567ab67d1b9
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 009f5fe7243b8ce597c2be9f9c6874cdb56d103c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619744"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108545"
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Riasztások érvényesítése az Azure Security Centerben
 A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően konfigurálva van-e az Azure Security Center riasztásaihoz.
@@ -32,7 +32,7 @@ Miután telepítette a számítógépére a Security Centert, kövesse az alább
 
 1. Másoljon egy végrehajtható fájlt (például calc.exe) a számítógép asztalára vagy egy másik tetszőleges könyvtárba.
 2. Nevezze át ezt a fájlt **ASC_AlertTest_662jfi039N.exe** névre.
-3. Nyissa meg a parancssort, és hajtsa végre a fájlt egy argumentummal (egy hamis argumentumnévvel), például: *ASC_AlertTest_662jfi039N.exe -foo*
+3. Nyissa meg a parancssort, és hajtsa végre a fájlt egy argumentummal (csak egy hamis argumentum nevét), például: *ASC_AlertTest_662jfi039N.exe -foo*
 4. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Ott az alábbihoz hasonló riasztást fog találni:
 
     ![Riasztások érvényesítése](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)

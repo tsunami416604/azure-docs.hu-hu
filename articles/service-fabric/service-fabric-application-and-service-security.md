@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: ryanwi
-ms.openlocfilehash: f83f7afa4173316f127c76f20967054bf13c9a6b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 91e7fdd215d246156f601d3b5e6e05b7f8f71f59
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097906"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116456"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric-alkalmazás és szolgáltatás biztonsága
 A mikroszolgáltatási architektúra is átviheti [számos előnnyel jár](service-fabric-overview-microservices.md). Viszont, mikroszolgáltatások, a biztonság kezelése, a kérdés, és eltér a hagyományos monolitikus alkalmazások biztonság kezelése. 
@@ -31,7 +31,7 @@ Ez a cikk nem mikroszolgáltatás-alapú biztonsági útmutatóját, számos for
 ## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 Gyakran szükség az erőforrások és a szolgáltatás által elérhetővé tett API csak bizonyos megbízható felhasználók vagy az ügyfelek számára. Hitelesítés az a folyamat megbízhatóan megismerjük a felhasználó identitását.  Engedély a folyamatot, amely lehetővé teszi az API-k vagy a szolgáltatások számára elérhető egyes hitelesített felhasználók, de nem más.
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 Az első lépés az API-szintű megbízhatóság döntéseket hitelesítésre. Hitelesítés az a folyamat megbízhatóan megismerjük a felhasználó identitását.  A mikroszolgáltatás-környezetben hitelesítési általában kezelése központilag. Ha egy API-átjárót használ, akkor [hitelesítési kiürítési](/azure/architecture/patterns/gateway-offloading) az átjáróhoz. Ha ezt a módszert használja, ügyeljen arra, hogy az egyes szolgáltatások nem érhető el közvetlenül (az API-átjáró) nélkül, kivéve, ha további biztonsági üzenetek hitelesítésére helyen e származnak az átjáró-e.
 
 Szolgáltatások közvetlenül is elérhetők, ha olyan hitelesítési szolgáltatás, például az Azure Active Directory vagy egy dedikált hitelesítési mikroszolgáltatások és a egy biztonsági jogkivonat-szolgáltatás (STS) segítségével hitelesítheti a felhasználókat. Megbízható döntéseket hozhat a biztonsági jogkivonatok vagy cookie-k szolgáltatások között vannak megosztva. 
@@ -110,7 +110,7 @@ TO DO: Encrypt disks on Linux clusters?-->
 * [Fürtbiztonság ismertetése](service-fabric-cluster-security.md)
 
 <!-- Links -->
-[key-vault-get-started]:../key-vault/key-vault-get-started.md
+[key-vault-get-started]:../key-vault/key-vault-overview.md
 [config-package]: service-fabric-application-and-service-manifests.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 

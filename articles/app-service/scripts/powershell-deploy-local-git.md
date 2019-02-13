@@ -15,20 +15,22 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: dcba93561f1f3488c8849ea419bd94765102f849
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8103777b85d8e11416811c694103c58755f1a23a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585068"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114433"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Webalkalmazás létrehozása és kód üzembe helyezése helyi Git-adattárból
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd üzembe helyezi a webalkalmazás kódját egy helyi Git-adattárból.
 
-Szükség esetén frissítsen az Azure PowerShell legújabb verziójára az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzureRmAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. Ezenkívül az alkalmazáskódot véglegesíteni kell egy helyi Git-adattárban.
+Szükség esetén frissítsen az Azure PowerShell legújabb verziójára az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. Ezenkívül az alkalmazáskódot véglegesíteni kell egy helyi Git-adattárban.
 
 ## <a name="sample-script"></a>Példaszkript
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/deploy-local-git/deploy-local-git.ps1?highlight=1 "Create a web app and deploy code from a local Git repository")]
 
@@ -37,7 +39,7 @@ Szükség esetén frissítsen az Azure PowerShell legújabb verziójára az [Azu
 A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport, a webalkalmazás és az összes kapcsolódó erőforrás.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $webappname -Force
+Remove-AzResourceGroup -Name $webappname -Force
 ```
 
 ## <a name="script-explanation"></a>Szkript ismertetése
@@ -46,7 +48,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Létrehoz egy webalkalmazást a szükséges erőforráscsoporttal és App Service-csoporttal. Ha az aktuális könyvtár tartalmaz egy Git-adattárat, egy távoli `azure`-mappát is adjon hozzá. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Létrehoz egy webalkalmazást a szükséges erőforráscsoporttal és App Service-csoporttal. Ha az aktuális könyvtár tartalmaz egy Git-adattárat, egy távoli `azure`-mappát is adjon hozzá. |
 
 ## <a name="next-steps"></a>További lépések
 

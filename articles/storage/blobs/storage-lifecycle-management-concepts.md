@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: dd74cac3000f6a280d5b8faa858c2143d17a7e55
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 284a590a484052fdb7da2f03c6155078268b2aac
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247799"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211444"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Az Azure Blob storage (előzetes verzió) életciklusának kezelése
 
@@ -37,7 +37,7 @@ Az életciklus-kezelési szabályzat érhető el mindkét General Purpose v2 (GP
 Az életciklus felügyeleti funkció ingyenesen elérhető előzetes verzióban érhető el. A normál művelet költsége díjszabásának a [Blobok listázása](https://docs.microsoft.com/rest/api/storageservices/list-blobs) és [Blobszint beállítása](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API-hívások. Díjszabással kapcsolatos további információkért lásd: [Blokkbob-díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="register-for-preview"></a>Regisztráljon az előzetes verzió 
-Nyilvános előzetes verzióban érhető el a regisztrációhoz kell igényelnie a szolgáltatás az előfizetéshez regisztrálnia. Kérelmek általában két héten belül hagyja jóvá. A jóváhagyást követően az összes meglévő és új GPv2- vagy Blob storage-fiókok az alábbi régiókban a szolgáltatás tartalmazza: 2. nyugati RÉGIÓJA, USA nyugati középső RÉGIÓJA, USA 2. keleti régiójában és Nyugat-Európa. Előzetes verzió csak a blokkblob típusú támogatja. Csakúgy, mint a legtöbb előzetes verziók, ne használja ezt a szolgáltatást éles számítási feladatokra addig általánosan elérhető
+Nyilvános előzetes verzióban érhető el a regisztrációhoz kell igényelnie a szolgáltatás az előfizetéshez regisztrálnia. Kérelmek 72 órán belül általában hagyja jóvá. A jóváhagyást követően az összes meglévő és új GPv2- vagy Blob storage-fiókok az alábbi régiókban a szolgáltatás tartalmazza: 2. nyugati RÉGIÓJA, USA nyugati középső RÉGIÓJA, USA 2. keleti régiójában és Nyugat-Európa. Előzetes verzió csak a blokkblob típusú támogatja. Csakúgy, mint a legtöbb előzetes verziók, ne használja ezt a szolgáltatást éles számítási feladatokra addig általánosan elérhető
 
 Kérést szeretne beküldeni, a következő parancsokat PowerShell vagy parancssori felület.
 
@@ -136,7 +136,7 @@ A házirend minden egyes szabály három paraméter szükséges:
 
 | Paraméter neve | Paraméter típusa | Megjegyzések |
 |----------------|----------------|-------|
-| Name (Név)           | Karakterlánc | Egy szabály neve tetszőleges kombinációját alfanumerikus karaktereket tartalmazhat. Szabály neve a kis-és nagybetűket. Egy házirend egyedinek kell lennie. |
+| Name (Név)           | String | Egy szabály neve tetszőleges kombinációját alfanumerikus karaktereket tartalmazhat. Szabály neve a kis-és nagybetűket. Egy házirend egyedinek kell lennie. |
 | type           | Enum érték | Előzetes verzió érvényes értéke `Lifecycle`. |
 | definíció     | Egy objektum, amely meghatározza az életciklus-szabály | Minden egyes definíció épül fel egy szűrő és egy műveletet. |
 

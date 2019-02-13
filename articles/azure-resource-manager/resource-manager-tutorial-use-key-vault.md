@@ -14,14 +14,16 @@ ms.date: 01/25/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 0e73177ca49a9a100b45712833b1310d54852680
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 521e6f35a9145c09aadcbb3f080f92c3dfdb0606
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498012"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115878"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Oktatóanyag: Integrálhatja az Azure Key Vault Resource Manager-sablon telepítése
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Ismerje meg, hogyan lehet beolvasni a titkos kulcsok Azure Key vault és a titkos kulcsok paraméterként átadni a Resource Manager üzembe helyezése során. Az érték sosem hagyja el, mert csak hivatkozhat a key vault azonosítója. További információért lásd azt a cikket, amely azzal foglalkozik, hogyan lehet [használni az Azure Key Vaultot biztonságos paraméterértékek megadásához az üzembe helyezés során](./resource-manager-keyvault-parameter.md).
 

@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.service: key-vault
 author: bryanla
 ms.author: bryanla
-manager: mbaldwin
+manager: barbkess
 ms.date: 11/28/2018
-ms.openlocfilehash: d6cb019ff01a1e6df5361c62629aa2e7b52523f7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3566f7514f10bc8fb1de417583c6db17bb4e091e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999283"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104975"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Az Azure Key Vaultban felügyelt tárfiók – PowerShell
 
@@ -157,4 +157,4 @@ Tags                :
 
 - [Storage-fiók kulcsok minták felügyelt](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)
-- [Key Vault PowerShell-referencia](/powershell/module/azurerm.keyvault/)
+- [Key Vault PowerShell-referencia](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

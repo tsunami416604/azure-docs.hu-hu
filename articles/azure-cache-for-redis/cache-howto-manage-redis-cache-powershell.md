@@ -3,7 +3,7 @@ title: Kezelheti az Azure Cache a Redis az Azure PowerShell-lel |} A Microsoft D
 description: Ismerje meg, hogyan hajthat végre felügyeleti feladatokat az Azure Cache redis az Azure PowerShell-lel.
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.author: wesmc
-ms.openlocfilehash: 2c2f76c967becc0e07f6b3c2d82507b759d0aaf2
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.author: yegu
+ms.openlocfilehash: d4ed374f12b14d70dce6bfa77dd3b8185b912ba6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099921"
+ms.locfileid: "56118156"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Kezelheti az Azure Cache a Redis az Azure PowerShell használatával
 > [!div class="op_single_selector"]

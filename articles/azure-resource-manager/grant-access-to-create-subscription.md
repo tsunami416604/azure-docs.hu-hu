@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
 ms.author: adpick
-ms.openlocfilehash: 3577edff19788ed9f0925876e3de737eb749b90e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 7a2397328f715dbf63246e8d4aaa789b5986b3b4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490923"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112563"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Hozzáférés engedélyezése az Azure Enterprise-előfizetések (előzetes verzió) létrehozása
 
@@ -63,6 +63,8 @@ A tulajdonosi szerepkör hozzárendelése sikeres volt a regisztrációs fiók h
 ```
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Használja a [New-AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) biztosíthat egy másik felhasználó tulajdonosi hozzáféréssel a regisztrációs fiókhoz.
 

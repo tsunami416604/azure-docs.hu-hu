@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: bb0c8dfd70027d3049e3b04e034d7e813e0c00f3
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 99d0939b30d04fbd5c0eb7a287105bb4cf27e9f4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890314"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116762"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>Webes forgalom kezelése az Azure CLI-vel
 
@@ -49,7 +49,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Virtuális hálózatot hoz létre. |
-| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnetwork) | Alhálózatot hoz létre egy virtuális hálózatban. |
+| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Alhálózatot hoz létre egy virtuális hálózatban. |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | Az alkalmazásátjáró nyilvános IP-címét hozza létre. |
 | [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | Egy alkalmazásátjárót hoz létre. |
 | [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | Létrehoz egy virtuálisgép-méretezési csoportot. |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7342849af63ef2f153a89418fbf87f60bd4c4833
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 82483d8d84349a929ef4892d5e9571ea65b9a88a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183288"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104838"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Egyoldalas alkalmazás jelentkezzen be az OAuth 2.0 implicit folyamat
 
@@ -30,7 +30,7 @@ Ezek az alkalmazások Azure Active Directory B2C-t támogató (az Azure AD B2C-v
 Az Azure AD B2C kiterjeszti a szabványos OAuth 2.0 implicit folyamat több, mint az egyszerű hitelesítés és engedélyezés. Az Azure AD B2C bevezeti a [szabályzatparaméter](active-directory-b2c-reference-policies.md). A házirend-paraméterrel, az OAuth 2.0 segítségével szabályzatokat adhat hozzá alkalmazásához, mint például regisztrációs, bejelentkezési, és a felhasználói folyamatok felügyeleti profil. Ebben a cikkben bemutatjuk, ezek a tapasztalatok mindegyike az egyoldalas alkalmazások megvalósításához az implicit folyamat és az Azure AD használatával. Segít megismerkedni, hogy vessen egy pillantást a [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) és [a Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) mintákat.
 
 Az ebben a cikkben példa HTTP-kérések, használjuk a mintául szolgáló Azure AD B2C-címtár **fabrikamb2c.onmicrosoft.com**. Azt is használhatja a saját minta és felhasználói folyamatokat. Próbálja meg a kérések saját maga az ezeket az értékeket, vagy is le kell cserélni a saját értékeire.
-Ismerje meg, hogyan [első saját Azure AD B2C directory, az alkalmazás és a felhasználói folyamatokat](#use-your-own-b2c-tenant).
+Ismerje meg, hogyan [első saját Azure AD B2C directory, az alkalmazás és a felhasználói folyamatokat](#use-your-own-azure-ad-b2c-tenant).
 
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja

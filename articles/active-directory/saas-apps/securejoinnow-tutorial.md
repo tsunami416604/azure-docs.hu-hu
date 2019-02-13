@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció SecureW2 JoinNow összekötővel |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció SecureW2 JoinNow összekötővel |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés SecureW2 JoinNow összekötő és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 283f8c935556006a21812578d0638b72adb6eed0
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5b367befb90ec28ece963d67b479749e1c8ad363
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908230"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175319"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-securew2-joinnow-connector"></a>Oktatóanyag: Azure Active Directory-integráció SecureW2 JoinNow összekötővel
+# <a name="tutorial-azure-active-directory-integration-with-securew2-joinnow-connector"></a>Oktatóanyag: Az Azure Active Directory-integráció SecureW2 JoinNow összekötővel
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan SecureW2 JoinNow összekötő integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása SecureW2 JoinNow összekötővel, a következő elemek szükségesek:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy SecureW2 JoinNow összekötő egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +60,7 @@ SecureW2 JoinNow összekötő integrálása az Azure AD beállításához szüks
 
 **SecureW2 JoinNow összekötő hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -158,7 +159,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-securew2-joinnow-connector-test-user"></a>Tesztfelhasználó SecureW2 JoinNow összekötő létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű SecureW2 JoinNow összekötőt hoz létre. Együttműködve [SecureW2 JoinNow összekötő ügyfél-támogatási csapatának](mailto:support@securew2.com) a felhasználók hozzáadása az SecureW2 JoinNow összekötő platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű SecureW2 JoinNow összekötőt hoz létre. Együttműködve [SecureW2 JoinNow összekötő ügyfél-támogatási csapatának](mailto:support@securew2.com) a felhasználók hozzáadása az SecureW2 JoinNow összekötő platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -190,7 +191,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 **Az alkalmazás teszteléséhez hajtsa végre az alábbi lépéseket:** 
 
@@ -203,7 +204,7 @@ c. A sikeres hitelesítést kell visszaadnia vissza a SecureW2 JoinNow Connector
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

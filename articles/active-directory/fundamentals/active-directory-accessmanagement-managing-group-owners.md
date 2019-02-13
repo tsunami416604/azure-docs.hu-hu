@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 887f376eafadfb556ce69611195301b25b24bbd5
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2541a1d76b56f92b250fb422951769db7877213e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104252"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181745"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Hozzáadása vagy eltávolítása a csoportok tulajdonosainak az Azure Active Directoryban
 Az Azure Active Directory (Azure AD-) csoportok tulajdonosai és kezeli a csoport tulajdonosai. Csoporttulajdonosok rendeli hozzá egy csoportot és annak tagjait kezelheti az erőforrás tulajdonosa (rendszergazda). Csoporttulajdonosok lehetnek a csoport tagjai, nem szükséges. Miután a csoport tulajdonosa hozzá lett rendelve, csak egy erőforrás tulajdonosa hozzáadhat vagy eltávolíthat tulajdonosai.

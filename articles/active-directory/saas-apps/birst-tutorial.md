@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d12fa11590d4cb028d3f10fd61b1379513f393e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 699b31c123d484b491891ced0138cb90c12d78d5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004672"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>Oktatóanyag: Az Azure Active Directory integrációja az Birst Agilis üzleti elemzés céljából
 

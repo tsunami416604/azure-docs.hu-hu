@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: d23110f341cdc76306c5cc4c78ab5d6afb5dd2b3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dcb235ab96ed8a85cbe44dd672dff004dd0a7310
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816271"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185316"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -229,7 +230,7 @@ Ez a lehetőség gyakori forgatókönyv az üzletági alkalmazások esetén.
 Ha azt szeretné, hogy az alkalmazás csak egy adott Azure AD-példányhoz tartozó fiókokról fogadja el a bejelentkezéseket (a példány *vendégfiókjait* is beleértve), kövesse az alábbi lépéseket:
 
 1. Cserélje le a `Common` *web.config* fájljában található `Tenant` paraméter értékét a szervezet bérlőnevére – például *contoso.onmicrosoft.com*.
-1. Állítsa az [*OWIN indítási osztályban*](#configure-the-authentication-pipeline) található `ValidateIssuer` argumentumot `true` értékre.
+1. Állítsa az [*OWIN indítási osztályban*](#step-4-configure-the-authentication-pipeline) található `ValidateIssuer` argumentumot `true` értékre.
 
 Ha csak a meghatározott szervezetek listáján szereplő szervezetekhez tartozó felhasználókat szeretné engedélyezni, kövesse az alábbi lépéseket:
 

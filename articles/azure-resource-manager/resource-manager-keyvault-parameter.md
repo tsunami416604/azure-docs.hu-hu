@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: cd45384bfd548cb73c10306dfee942cbcf7c8ca1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c78601d49dd6bb341570be08c5be491c7afc006f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491909"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112716"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Az Azure Key Vault segítségével biztonságos paraméter értéke továbbítása üzembe helyezés során
 
@@ -274,5 +274,5 @@ New-AzResourceGroupDeployment `
 
 ## <a name="next-steps"></a>További lépések
 
-- Kulcstartók kapcsolatos általános információkért lásd: [első lépései az Azure Key Vault](../key-vault/key-vault-get-started.md).
+- Kulcstartók kapcsolatos általános információkért lásd: [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md).
 - A hívóbetű titkos kulcsait hivatkozó teljes példákért lásd [Key Vault példák](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 69a0bde58a365ff124bc41b6039c606cb38f71fe
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 28f8300b83f55f4b083aa1e740dcbf1db0f1dc31
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768545"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168141"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Az Azure Stack VM update és kezelése
 A következő Azure Automation-megoldás funkciók segítségével kezelheti a Windows és Linux rendszerű virtuális gépek, amelyek az Azure Stack használatával helyezi üzembe:
@@ -100,4 +100,4 @@ Az Azure Stack-beli virtuális gépek és Azure virtuális gépeken ütemezett f
 Ha az Azure Stack virtuális gépek nagy számú, használhatja [ezen Azure Resource Manager-sablon](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) könnyebben üzembe helyezheti a megoldást, a virtuális gépeken. A sablon üzembe helyezi a Microsoft Monitoring Agent bővítményt egy meglévő Azure Stack virtuális Gépet, és hozzáadja azt a meglévő Azure LogAnalytics munkaterülethez.
  
 ## <a name="next-steps"></a>További lépések
-[Az SQL Server teljesítményének optimalizálásához](azure-stack-sql-server-vm-considerations.md)
+[Az SQL Server rendszerű virtuális gép teljesítményének optimalizálásához](azure-stack-sql-server-vm-considerations.md)

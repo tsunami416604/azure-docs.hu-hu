@@ -4,7 +4,7 @@ description: Ismerje meg a felhőalapú számítástechnikai szolgáltatások sz
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: fea499ea275dc65de1232840c24b5d62e3e6182d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c94a078e77f1e3e5b70d2d95016b8417fe2172d5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698036"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118479"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességek
 

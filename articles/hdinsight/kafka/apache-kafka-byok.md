@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8525b1450ae8b7badfe1c569c2040ecf1ab78070
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a3b719f4b2a19f4ea399d6a0858719a1709adc93
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314371"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109489"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>A saját kulcs használata: az Apache Kafka az Azure HDInsight (előzetes verzió)
 
@@ -39,7 +39,7 @@ Az Azure Portalon vagy az Azure CLI segítségével biztonságosan elforgatása 
 
    HDInsight csak az Azure Key Vault támogatja. Ha rendelkezik saját key vault, a kulcsok importálhatja az Azure Key Vaultban. Ne feledje, hogy a kulcsok "A helyreállítható törlés" és "Tegye nem végleges törlése" engedélyezve kell-e. Az "A helyreállítható törlés" és "Nem kiürítése" funkciók érhetők el a REST, .NET-en keresztül / C#, a PowerShell és az Azure CLI-felületeihez.
 
-   Hozzon létre egy új kulcstartót, hajtsa végre a [Azure Key Vault](../../key-vault/key-vault-get-started.md) rövid. Meglévő kulcsok importálása kapcsolatos további információkért látogasson el [kapcsolatos kulcsok, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md).
+   Hozzon létre egy új kulcstartót, hajtsa végre a [Azure Key Vault](../../key-vault/key-vault-overview.md) rövid. Meglévő kulcsok importálása kapcsolatos további információkért látogasson el [kapcsolatos kulcsok, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md).
 
    Hozzon létre egy új kulcsot, jelölje be **létrehozás/importálás** származó a **kulcsok** menüt **beállítások**.
 
@@ -120,4 +120,4 @@ Az Azure Portalon vagy az Azure CLI segítségével biztonságosan elforgatása 
 ## <a name="next-steps"></a>További lépések
 
 * Azure Key Vaulttal kapcsolatos további információkért lásd: [Mi az Azure Key Vault](../../key-vault/key-vault-whatis.md)?
-* Ismerkedés az Azure Key Vault, lásd: [Ismerkedés az Azure Key Vault](../../key-vault/key-vault-get-started.md).
+* Ismerkedés az Azure Key Vault, lásd: [Ismerkedés az Azure Key Vault](../../key-vault/key-vault-overview.md).

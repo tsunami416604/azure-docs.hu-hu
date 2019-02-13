@@ -4,7 +4,7 @@ description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Securit
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f53ed853-ffaf-4530-a019-1906ba6f341b
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f10365f4acf62ba4719e89932f18433e70925ebf
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 14b7cc8f8162574380ca21ac515af8b7d3d5ded9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341762"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111696"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Az Azure Security Center hálózati biztonsági csoportok engedélyezése
 Az Azure Security Center javasolja, hogy egy hálózati biztonsági csoport (NSG) engedélyezése, ha egy nem engedélyezett. NSG-k, amelyek engedélyezik vagy megtagadják a hálózati forgalmat a virtuális hálózatban futó Virtuálisgép-példányokat hozzáférés-vezérlési lista (ACL) szabályok listáját tartalmazzák. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett a forgalmat egy adott virtuális gépre is lehet korlátozni további korlátozásokat egy NSG-t közvetlenül a virtuális Gépre. További tudnivalókért tekintse meg [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/security-overview.md)

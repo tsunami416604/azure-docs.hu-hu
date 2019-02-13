@@ -4,7 +4,7 @@ description: Ez a cikk az Azure Service Fabric biztonsága áttekintést nyújt.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 629b6fba9ced5fa2ccf22f473fe25c87d1cc4818
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 3e7717d4ee07a1f3bfebb5e09b983af68aa4ea31
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436810"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116220"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Az Azure Service Fabric biztonsági áttekintése
 [Az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) egy elosztott rendszerplatform, amely megkönnyíti a csomagolását, üzembe helyezése és kezelése a skálázható és megbízható mikroszolgáltatások. A Service Fabric a felhőalapú alkalmazások fejlesztésének és kezelésének kihívásaira. A fejlesztők és rendszergazdák infrastruktúrával kapcsolatos összetett problémák elkerülése és összpontosíthat, amelyek a méretezhető és megbízható alapvető fontosságú, nagy erőforrás-igényű számítási feladatok megvalósítására.
@@ -47,8 +47,8 @@ Tanúsítvány biztonsági konfigurálja a fürt az Azure Portalon, az Azure Res
 
 A Service Fabric a Service Fabric-fürt csatlakozó ügyfelek access control kétféle támogatja:
 
--   **Rendszergazdai**: teljes hozzáférés az lehetőségekről, köztük az olvasási/írási képességeket.
--   **Felhasználói**: csak olvasási hozzáférés a felügyeleti funkciók (például a lekérdezési képességek), valamint az alkalmazások és szolgáltatások megoldásához.
+-   **Rendszergazdai**: Teljes hozzáférés lehetőségekről, köztük az olvasási/írási képességeket.
+-   **Felhasználói**: Csak olvasási hozzáférés-kezelési funkciókat (például a lekérdezési képességek), valamint az alkalmazások és szolgáltatások megoldásához.
 
 Hozzáférés-vezérlés használatával a fürt a rendszergazdák bizonyos típusú, a fürt működését hozzáférést korlátozhatja. Ez lehetővé teszi a fürt biztonságosabb.
 
@@ -83,11 +83,11 @@ Biztonsági szempontból a monitorozási és diagnosztikai fő céljai a követk
 
 A monitorozási és diagnosztikai munkafolyamat három lépésből áll:
 
-1.  **Az eseménygenerálás**: az eseménygenerálás események (naplókat, nyomkövetéseket, egyéni események) tartalmazza a (fürt) infrastruktúra-szintű és az alkalmazások vagy szolgáltatások szintjén egyaránt. Tudjon meg többet [infrastruktúra-szintű eseményeit](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra) és [alkalmazásszintű események](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) megtudhatja, hogy milyen áll rendelkezésre, és hogyan adhat hozzá további kialakítási.
+1.  **Az eseménygenerálás**: Az eseménygenerálás azokat az eseményeket (naplókat, nyomkövetéseket, egyéni események) tartalmazza a (fürt) infrastruktúra-szintű és az alkalmazások vagy szolgáltatások szintjén egyaránt. Tudjon meg többet [infrastruktúra-szintű eseményeit](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra) és [alkalmazásszintű események](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) megtudhatja, hogy milyen áll rendelkezésre, és hogyan adhat hozzá további kialakítási.
 
-2.  **Események összesítése**: létrehozott események kell gyűjteni és összesített előtt is megjeleníthetők. Általában javasoljuk [Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (az ügynök-alapú naplógyűjtés hasonló) vagy [eventflow segítségével](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (folyamaton belüli naplógyűjtés).
+2.  **Események összesítése**: Létrehozott események összegyűjtésének és összesített előtt megjelenhet is kell. Általában javasoljuk [Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (az ügynök-alapú naplógyűjtés hasonló) vagy [eventflow segítségével](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (folyamaton belüli naplógyűjtés).
 
-3.  **Elemzés**: események kell lennie a teszi és néhány formátumban, elemzési és megjelenítési elérhető. Nincsenek a elemzési és vizualizációs monitorozási és diagnosztikai adatok számos platformra. Javasoljuk, hogy [Azure Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) és [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) mert azok a Service Fabric integrálása.
+3.  **Elemzés**: Események kell teszi és néhány formátumban, elemzési és megjelenítési elérhető. Nincsenek a elemzési és vizualizációs monitorozási és diagnosztikai adatok számos platformra. Javasoljuk, hogy [Azure Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) és [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) mert azok a Service Fabric integrálása.
 
 Is [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) figyelése számos, az Azure-erőforrások, amelyen a Service Fabric-fürt épül.
 

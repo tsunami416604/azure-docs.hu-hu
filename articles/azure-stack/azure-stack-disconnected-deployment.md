@@ -12,21 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 05bf01e2b7c380f7bb79230885e247bd8c834d14
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4481bcf7a794423f98f45e4a21a139dbe4c32b4f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691167"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210781"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure leválasztott telepítés tervezési megfontolások az Azure Stack integrált rendszerek
-Miután döntött [hogyan fogja integrálja az Azure Stack a hibridfelhő-környezet](azure-stack-connection-models.md), majd az Azure Stack telepítési döntések is véglegesítése.
+Miután döntött [hogyan fogja integrálja az Azure Stack a hibridfelhő-környezet](azure-stack-connection-models.md), az Azure Stack telepítési döntések is véglegesítése.
 
-Telepítheti és használhatja az Azure Stack Internet kapcsolat nélkül. Azonban egy kapcsolat nélküli telepítés pedig csak az AD FS ügyfélidentitás-tárolóval, és a kapacitás-alapú számlázási modell. Több-bérlős módhoz az Azure AD használatát igényli, mert kapcsolat nélküli telepítés esetén nem támogatott több-bérlős módhoz. 
+Telepítheti és használhatja az Azure Stack Internet kapcsolat nélkül. Azonban egy kapcsolat nélküli telepítés pedig csak az AD FS ügyfélidentitás-tárolóval, és a kapacitás-alapú számlázási modell. Több-bérlős módhoz az Azure Active Directory (Azure AD) használatát igényli, mert kapcsolat nélküli telepítés esetén nem támogatott több-bérlős módhoz. 
 
 Válassza ezt a beállítást, ha Ön:
 - Biztonsági vagy egyéb korlátozásokat, amelyek megkövetelik olyan környezetben, amely nem csatlakozik az internethez az Azure Stack üzembe helyezése rendelkezik.
@@ -34,9 +34,9 @@ Válassza ezt a beállítást, ha Ön:
 - Szeretné használni az Azure Stack csak, egy magánfelhő-alapú megoldás, amely telepíti a vállalati intranethez, és nem érdeklik a hibrid környezetek.
 
 > [!TIP]
-> Egyes esetekben az ilyen típusú környezet is nevezik "tenger forgatókönyv".
+> Egyes esetekben az ilyen típusú környezetet is nevezik egy *tenger forgatókönyv*.
 
-Egy kapcsolat nélküli üzembe helyezés nem feltétlenül jelenti azt, hogy nem tudja később fogja összekapcsolni az Azure Stack-példány az Azure hibrid bérlői Virtuálisgép-forgatókönyvekhez. Az azt jelenti, hogy nincs kapcsolat az Azure-ban üzembe helyezés során, vagy nem szeretné használni az Azure Active Directory az ügyfélidentitás-tárolóval.
+Egy kapcsolat nélküli üzembe helyezés nem korlátozza az Ön később kapcsolódjon az Azure Stack-példány az Azure hibrid bérlői Virtuálisgép-forgatókönyvekhez. Az azt jelenti, hogy nincs kapcsolat az Azure-ban üzembe helyezés során, vagy nem kívánja az Azure AD használatára az ügyfélidentitás-tárolóval.
 
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>Az funkciók, amelyek korlátozott vagy nem érhető el a leválasztott környezetekhez 
 Az Azure Stack való csatlakozáskor az Azure-ba, ezért fontos megjegyezni, hogy egyes szolgáltatások és funkciók, amelyek korlátozott, vagy teljesen nem érhető el, a kapcsolat nélküli üzemmódban működnek a legjobban úgy lett kialakítva. 

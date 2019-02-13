@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
-ms.openlocfilehash: d601425ee5641c1bb07c47dcc0f9a1d94ff3dc87
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 83a0685f75111a5552645d487589734846b05968
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990377"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164634"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.

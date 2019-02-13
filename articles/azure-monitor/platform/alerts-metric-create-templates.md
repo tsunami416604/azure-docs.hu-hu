@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 0c7e0e539ca884739f5bf633946a4704d29b132b
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9f8d6488d12b5550c3390699b9c34380b51b60f9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448228"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112597"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
 Ez a cikk bemutatja, hogyan használhatja egy [Azure Resource Manager-sablon](../../azure-resource-manager/resource-group-authoring-templates.md) konfigurálása [újabb metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-metric-near-real-time.md) az Azure monitorban. Resource Manager-sablonok lehetővé teszik a programozott módon riasztások beállítása egy egységes és megismételhető módon, a környezetek között. Újabb metrikákhoz kapcsolódó riasztások jelenleg érhetők el a [erőforrástípusok készlete](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 > [!IMPORTANT]
-> Metrikariasztás megadott Resource Manager-sablon nem fog működni az erőforrás típusa: Microsoft.OperationalInsights/workspaces; támogatja az metrikák a Log Analytics szolgáltatás előzetes verzióban. A kapcsolatot az erőforrás-sablonnal, az előzetes verzió funkcióit használja az érdeklődő felhasználók [Azure riasztások visszajelzés](mailto:azurealertsfeedback@microsoft.com)
+> Erőforrás-sablon erőforrástípus metrikákhoz kapcsolódó riasztások létrehozásához: Az Azure Log Analytics-munkaterület (azaz) `Microsoft.OperationalInsights/workspaces`, további lépéseket igényel. További információkért lásd: a cikk a [naplók - Resource-sablon riasztási metrika](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 Az alapvető lépéseken az alábbiak szerint:
 

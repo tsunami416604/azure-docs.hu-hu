@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 6c45c7d70a1a091440d33ba76aa430c9a9252144
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b9a546cf4c822f63d9d07a1f23ec5f13285653af
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997991"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164125"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 A Microsoft Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. A Machine Learning Studio a modelleket webszolgáltatásként teszi közzé, amelyeket az egyéni alkalmazások vagy az Excel és más üzletiintelligencia-eszközök egyszerűen felhasználhatnak.
@@ -157,7 +157,7 @@ Ha elvégezte a modell betanítását, a fennmaradó tesztadatok segítségével
 * **minta**: Egy adatkészlet is reprezentatívnak tekinthető, az egész részét. A mintát kiválaszthatja véletlenszerűen vagy az adathalmaz konkrét jellemzői alapján.
 
 ## <a name="next-steps"></a>További lépések
-A prediktív elemzés és a gépi tanulás alapjainak megismeréséhez használja [részletes oktatóanyagainkat](create-experiment.md) vagy [bővíthető mintáinkat](sample-experiments.md).
+Alapismeretek a Mobilfunkciók prediktív elemzés, és a machine learning használatával egy [részletes rövid](create-experiment.md) , illetve [bővíthető mintáinkat](sample-experiments.md).
 
 
 <!-- Module References -->

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 403f1cee04da17086a55adfbaed28388afd24d29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 26268c892b0e900c410cd669454b8b6f02ee8886
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211853"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56102127"
 ---
 # <a name="azure-managed-disks-overview"></a>Az Azure Managed Disks – áttekintés
 
@@ -69,15 +69,15 @@ Vizsgáljuk meg közelebbről ezeket a beállításokat.
 
 Itt érhetők el a lemezméretek a prémium szintű felügyelt lemez, csillaggal szintben méretek jelenleg előzetes verzióban érhető el:
 
-| **Prémium szintű SSD felügyelt <br>lemez típusa** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **A P60*** | **P70*** | **P80*** |
+| **Prémium szintű SSD felügyelt <br>lemez típusa** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60*** | **P70*** | **P80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Lemezméret        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
 
 Itt érhető el, az egy standard SSD-Tárolóeszközön lemezméretek felügyelt lemez, csillaggal szintben méretek jelenleg előzetes verzióban érhető el:
 
-| **Standard SSD-felügyelt <br>lemez típusa** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
-|------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Lemezméret        | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
+| **Standard SSD-felügyelt <br>lemez típusa** | **E4** | **E6** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| Lemezméret        | 32 GiB | 64 GiB | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16384 giB (16 TiB) | – 32 767 giB (TiB) |
 
 Itt érhető el egy standard HDD lemezméretek felügyelt lemez, csillaggal szintben méretek jelenleg előzetes verzióban érhető el:
 
@@ -96,7 +96,7 @@ Nincs tranzakció a prémium szintű felügyelt lemez számára ingyenesen.
 A Managed Disks díjszabása a részletes információkért lásd: [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks).
 
 
-## <a name="managed-disk-snapshots"></a>Felügyelt lemez-pillanatképek
+## <a name="managed-disk-snapshots"></a>Managed Disk Snapshots
 
 Egy felügyelt pillanatkép alapértelmezés szerint egy standard szintű felügyelt lemezként tárolt felügyelt lemez csak olvasható teljes másolatát. Pillanatképek készíthető a felügyelt lemezek bármikor időben. Ezek a pillanatképek létezik a forráslemez független, és új felügyelt lemezek létrehozására használható. Azok a felhasznált mérete alapján számlázzuk. Például ha létrehoz egy felügyelt lemez pillanatképének 64 GB kiosztott kapacitással és 10 GB tényleges felhasznált adatok mérete, pillanatkép az csak a felhasznált adatok mérete 10 GB számítjuk.  
 

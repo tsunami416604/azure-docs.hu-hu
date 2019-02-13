@@ -4,7 +4,7 @@ description: Ez a cikk egy Azure Service Fabric biztonsági védelmének bevált
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: 718b6b38121981bdec1f677537f9cd1180dfdb08
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 8bafc4a95ca9af4567ed70c190a72f3b351da47c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391229"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114705"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárások
 Az Azure-alkalmazás üzembe helyezése a gyors, egyszerű és költséghatékony. Mielőtt telepítené a felhőbeli alkalmazások éles környezetben, szükséges és ajánlott megvalósításához ajánlott eljárások biztonságos fürtökhöz az alkalmazásban listájának áttekintése.
@@ -173,7 +173,7 @@ A key vault létrehozása két alapvető lépésből áll:
 
     A key vault engedélyezni kell a központi telepítés. A számítási erőforrás-szolgáltató ezután a tanúsítványok lekérése a tárolóból, és telepítse őket a Virtuálisgép-példányokon.
 
-Hogyan állítható be a key vaulttal kapcsolatos további információkért lásd: [első lépései az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started).
+Hogyan állítható be a key vaulttal kapcsolatos további információkért lásd: [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-get-started).
 
 ## <a name="assign-users-to-roles"></a>Felhasználók szerepkörökhöz rendelése
 Az alkalmazások, amelyek a fürt létrehozása után a felhasználók hozzárendelése a Service Fabric által támogatott szerepkörök: csak olvasható és a rendszergazdával. Ezeket a szerepköröket rendelhet az Azure portal használatával.

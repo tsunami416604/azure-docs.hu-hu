@@ -3,7 +3,7 @@ title: 'Gyors útmutató: Azure Cache redis használó Python-alkalmazás létre
 description: Ez a rövid útmutatóban megismerheti, hogyan hozhat létre egy Python-alkalmazás által használt Azure Cache redis
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: v-lincan
 ms.assetid: f186202c-fdad-4398-af8c-aee91ec96ba3
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/11/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e9faf30d591cab513695ece1d68704e5bef4ce9c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 4dc71add21ff1ef5c0124cf6eadef2905eca390f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019248"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114943"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Gyors útmutató: Az Azure Cache használata pythonnal Redis
 

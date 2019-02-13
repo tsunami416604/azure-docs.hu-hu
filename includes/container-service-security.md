@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: cc72fb39bf62915be10493a780538121f26ca835
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 39bb75a6f834789f91cb590ffebb72f45624eb25
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002271"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213060"
 ---
 # <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(ELAVULT) Az Azure Container Service Docker-tárolók védelme
 
@@ -60,9 +60,9 @@ Az egyes vezénylőkre vonatkozó további biztonsági információkat a követk
 
 * **Kubernetes**: [Ajánlott biztonsági eljárások a Kubernetes-telepítéshez](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
 
-* **DC/OS**: [A fürt védelmének biztosítása](https://dcos.io/docs/1.8/administration/securing-your-cluster/)
+* **DC/OS**: [A fürt védelmének biztosítása](http://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster)
 
-* **Docker Swarm**: [Docker-biztonság](https://www.docker.com/docker-security)
+* **A docker Swarm**: [Docker-biztonság](https://www.docker.com/docker-security)
 
 ## <a name="next-steps"></a>További lépések
 

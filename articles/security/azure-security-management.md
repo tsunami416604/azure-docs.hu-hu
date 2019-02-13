@@ -4,7 +4,7 @@ description: Ez a cikk a Microsoft Azure-környezetek, például a Cloud Service
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: c2b7935cc110b2ad05f4af2773158c2e1b658d4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2d6d1d121e41b0446e7f63b9aa530df89697ef67
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242007"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117922"
 ---
 # <a name="security-management-in-azure"></a>Biztonságkezelés az Azure-ban
 Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Egyes esetekben a felügyeleti feladatkörök ellátását olyan webalapú konzolok használatával végzik, mint például az [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service Management API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
@@ -117,7 +117,7 @@ A távoli asztali átjáró egy házirendalapú RDP-proxyszolgáltatás, amely k
 ## <a name="security-guidelines"></a>Biztonsági irányelvek
 A rendszergazdai munkaállomások felhőhasználatra való biztonságossá tétele általánosságban véve hasonlít bármilyen más, helyszíni munkaállomás esetében alkalmazott gyakorlathoz. Példa erre a minimalizált szerkezet és a korlátozó engedélyek. A felhőfelügyelet bizonyos egyedi aspektusai jobban hasonlítanak a távoli vagy izolált vállalatfelügyeletéihez. Ezek közé tartozik a hitelesítő adatok naplózása, a megnövelt biztonságú távelérés, valamint a fenyegetések észlelése és kezelése.
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 Használhat Azure bejelentkezési korlátozásokat az olyan forrás IP-címek korlátozására, amelyek jogosultak a felügyeleti eszközökhöz hozzáférni és naplózás-hozzáférési kérést küldeni. Annak érdekében, hogy az Azure könnyebben azonosíthassa a felügyeleti ügyfeleket (munkaállomásokat és/vagy alkalmazásokat), mind a SMAPI-t (olyan ügyfelek által fejlesztett eszközök segítségével, mint a Windows PowerShell-parancsmagok), mind az Azure Portalt beállíthatja úgy, hogy az SSL-tanúsítványok mellett ügyféloldali felügyeleti tanúsítványokat is igényeljenek. Javasolt a többtényezős hitelesítés bevezetése a rendszergazdai hozzáférés esetében is.
 
 Egyes Azure-ra telepített alkalmazások vagy szolgáltatások saját hitelesítési mechanizmusokkal rendelkezhetnek mind a végfelhasználói, mind a rendszergazdai hozzáféréshez, míg mások az Azure AD előnyeit használják ki. Attól függően, hogy hitelesítő adatokat von össze Active Directory összevonási szolgáltatások (AD FS) segítségével, címtár-szinkronizálást használ, vagy csak a felhőben kezeli a felhasználói fiókokat, a [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) használata segít az identitás-életciklusok erőforrások közötti kezelésében.

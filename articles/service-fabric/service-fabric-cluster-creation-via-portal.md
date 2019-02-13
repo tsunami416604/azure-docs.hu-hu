@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
 ms.author: aljo
-ms.openlocfilehash: f0c2108ee75f843e8285c5e2c5c55834643dc7da
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 71448125d7308ca28e7241fd4019aadba430214e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620540"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106137"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban az Azure portal használatával
 > [!div class="op_single_selector"]
@@ -46,8 +46,8 @@ Ha első alkalommal hoz létre egy service fabric-fürt, vagy a tesztelési fela
 #### <a name="cluster-and-server-certificate-required"></a>Fürt és a kiszolgálói tanúsítványt (kötelező)
 Fürt biztonságossá tétele és a jogosulatlan hozzáférés elkerülése érdekében, hogy ez a tanúsítvány szükséges. Fürtbiztonság néhány módon biztosít:
 
-* **Fürt hitelesítési:** hitelesíti a fürt összevonási csomópontok közötti kommunikációt. Csak a is igazolnia az identitását, ezt a tanúsítványt a csomópontok csatlakozhassanak a fürthöz.
-* **Kiszolgálói hitelesítés:** hitelesíti a fürtkezelési végpontoknak egy kezelési ügyfél, így az ügyfél felismeri, hogy ez a valódi fürtön beszél. Ezt a tanúsítványt is biztosít az SSL a HTTPS-felügyeleti API-hoz és a Service Fabric Explorert a HTTPS-kapcsolaton keresztül.
+* **Fürt-hitelesítés:** Csomópontok közötti kommunikáció a fürt összevonási hitelesíti. Csak a is igazolnia az identitását, ezt a tanúsítványt a csomópontok csatlakozhassanak a fürthöz.
+* **Kiszolgálói hitelesítés:** Hitelesíti a fürtkezelési végpontoknak egy kezelési ügyfél, így az ügyfél felismeri, hogy ez a valódi fürtön beszél. Ezt a tanúsítványt is biztosít az SSL a HTTPS-felügyeleti API-hoz és a Service Fabric Explorert a HTTPS-kapcsolaton keresztül.
 
 A tanúsítvány következő célokat, az alábbi követelményeknek kell megfelelnie:
 
@@ -216,7 +216,7 @@ Ezen a ponton rendelkezik egy biztonságos fürthöz, a felügyeleti hitelesít�
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [service-fabric-rp-helpers]: https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers
 [azure-portal]: https://portal.azure.com/
-[key-vault-get-started]: ../key-vault/key-vault-get-started.md
+[key-vault-get-started]: ../key-vault/key-vault-overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md

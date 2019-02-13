@@ -4,7 +4,7 @@ description: Ez a cikk segít erősítse meg biztonsági állapotát az Azure Se
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0bbf67f728f7090c89d379f7b63474788d70a46c
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 28b4667a9ceb4b3534d85ba28668f06c750e22c5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338600"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112257"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Erősítse meg biztonsági állapotát az Azure Security Centerrel
 Ez a cikk segít erősítse meg biztonsági állapotát. Az Azure Security Center figyelési funkcióknak használatához ellenőrizze, hogy az erőforrások biztonságának, szoros, lehetséges, és a figyelő szabályzatoknak való megfelelőségét.

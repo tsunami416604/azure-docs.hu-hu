@@ -4,7 +4,7 @@ description: Ez a dokumentum az Azure Security Center incidensmegoldási forgat�
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 8af12f1c-4dce-4212-8ac4-170d4313492d
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 684098dd2780e827ccc74b7fbbb16a2be75fa3e1
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 99bfab5a5f80fc0a49c7cc6405154394391f43e0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619877"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114297"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Az Azure Security Center használata incidensmegoldásra
 Sok szervezet csak akkor tanulja meg, hogyan reagáljon a biztonsági incidensekre, miután támadás érte. A költségek és a károk csökkentése érdekében fontos, hogy már a támadások bekövetkezte előtt létezzen egy incidensmegoldási terv. Az Azure Security Center az incidensmegoldás több szakaszában is alkalmazható.
@@ -84,7 +84,7 @@ Judit bejelentkezett az Azure Portalra, és a Security Center konzolján dolgozi
    > Ebben a forgatókönyvben Judit elvégez egy vizsgálatot a rosszindulatú SQL-tevékenységi riasztás alapján, ahogy az az előző ábrán is látható.
    >
    >
-2. A **rosszindulatú SQL-tevékenységhez** kapcsolódó riasztásra kattint, és áttekinti a megtámadott erőforrásokat a **rosszindulatú SQL-tevékenység** panelén: ![Incidens adatai](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. Kattintson a **rosszindulatú SQL-tevékenység** riasztás megjelenítése, és áttekinti a megtámadott erőforrásokat a **rosszindulatú SQL-tevékenység** panelen:  ![Incidens részletei](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
     Ezen a panelen Judit jegyzeteket készít a megtámadott erőforrásokkal, a támadások számával és az észlelés időpontjával kapcsolatban.
 3. Kattintson a **megtámadott erőforrásra**, hogy további információkat szerezzen a támadásról.

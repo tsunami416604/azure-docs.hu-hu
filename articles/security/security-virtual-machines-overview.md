@@ -4,7 +4,7 @@ description: Ez a cikk az alapvető áttekintést nyújt az Azure biztonsági fu
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: 5e024161b55db9662aa288a4d3ff6a7c2b7e6266
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 15ac70891f23d95709d1998bca1ce29ad735cb87
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969685"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109078"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure virtuális gépek biztonsági áttekintése
 
@@ -47,16 +47,16 @@ A Microsoft Antimalware az Azure az alkalmazások és a bérlői környezetek si
 
 Amikor telepíti és engedélyezi a Microsoft Antimalware az Azure-hoz, a következő alapvető funkciók érhetők el:
 
-* **Valós idejű védelem**: figyeli a tevékenységet, a Cloud Services és észleli és blokkolja a kártevő szoftver futtatása virtuális gépeken.
-* **Keresés ütemezett**: a Microsoft rendszeresen végez célzott vizsgálatának például aktívan futó programok észlelését.
-* **Kártevő szoftver eltávolításának**: automatikusan hajt végre műveletet a észlelt kártevőket, például törlése vagy rosszindulatú fájlok karanténba és rosszindulatú beállításjegyzék-bejegyzések törlése.
-* **Aláírás-frissítések**: automatikusan telepíti a legújabb aláírások (vírus-definíciók), hogy protection naprakész-e az előre meghatározott gyakoriságát.
-* **A kártevőirtó motor frissítéseit**: automatikusan frissíti a Microsoft Antimalware az Azure-motor.
-* **A kártevőirtó platform frissítések**: a Microsoft Antimalware az Azure platform automatikusan frissíti.
-* **Aktív védelem**: jelentések telemetriai metaadatait, az Azure-bA az észlelt fenyegetések és a gyanús erőforrások arról, hogy gyors választ. Lehetővé teszi a valós idejű szinkron aláírás kézbesítési keresztül a Microsoft Active Protection System (MAPS).
-* **Jelentéskészítés – minták**: biztosít, és a minták a jelentéseket a Microsoft Antimalware az Azure-szolgáltatás, pontosítsa a szolgáltatást, és hibaelhárítást.
-* **A kizárások**: lehetővé teszi az alkalmazás és szolgáltatás-rendszergazdák konfigurálása bizonyos fájlokat, a folyamatokat, és a kizárása védelmi és a teljesítmény és más okok miatt vizsgálatát meghajtókat.
-* **Kártevőirtó eseménygyűjtés**: kártevőirtó szolgáltatás állapotát, a gyanús tevékenységeket és a szervizelési műveletek venni az operációs rendszer-eseménynaplóban rögzíti, és gyűjti azokat az Azure storage-fiókban.
+* **Valós idejű védelem**: Figyeli a tevékenységet, a Cloud Services és észleli és blokkolja a kártevő szoftver futtatása virtuális gépeken.
+* **Keresés ütemezett**: A Microsoft rendszeresen végez célzott vizsgálatának például aktívan futó programok észlelését.
+* **Kártevő szoftver eltávolításának**: Automatikusan hajt végre műveletet a észlelt kártevőket, például törlése vagy rosszindulatú fájlok karanténba és rosszindulatú beállításjegyzék-bejegyzések törlése.
+* **Aláírás-frissítések**: Automatikusan telepíti a legújabb aláírások (vírus-definíciók), hogy protection naprakész-e az előre meghatározott gyakoriságát.
+* **A kártevőirtó motor frissítéseit**: Automatikusan frissíti a Microsoft Antimalware az Azure-motor.
+* **A kártevőirtó platform frissítések**: A Microsoft Antimalware az Azure platform automatikusan frissíti.
+* **Aktív védelem**: Jelentések telemetriai metaadatait, az Azure-bA az észlelt fenyegetések és a gyanús erőforrások arról, hogy gyors választ. Lehetővé teszi a valós idejű szinkron aláírás kézbesítési keresztül a Microsoft Active Protection System (MAPS).
+* **Jelentéskészítés – minták**: Biztosít, és a minták a jelentéseket a Microsoft Antimalware az Azure-szolgáltatás, pontosítsa a szolgáltatást, és hibaelhárítást.
+* **A kizárások**: Lehetővé teszi az alkalmazás és szolgáltatás-rendszergazdák konfigurálása bizonyos fájlokat, folyamatok és meghajtók őket kizárása a védelem és a teljesítmény- és más okok miatt keresése.
+* **Kártevőirtó eseménygyűjtés**: Kártevőirtó szolgáltatás állapotát, a gyanús tevékenységeket és a szervizelési műveletek venni az operációs rendszer-eseménynaplóban rögzíti, és gyűjti azokat az Azure storage-fiókban.
 
 További információ a kártevőirtó szoftver, a virtuális gépek védelme érdekében:
 
@@ -90,8 +90,7 @@ A Key Vault segítségével a kulcsokat a 2-es szintű FIPS 140-2 szabványnak m
 
 További információ:
 
-* [Mi az Azure Key Vault?](../key-vault/key-vault-whatis.md)
-* [Ismerkedés az Azure Key Vault](../key-vault/key-vault-get-started.md)
+* [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
 * [Az Azure Key Vault-blog](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Virtuális gép lemeztitkosítás
@@ -103,7 +102,7 @@ A megoldás integrálva van az Azure Key Vault segítségével vezérelheti és 
 További információ:
 
 * [Az Azure Disk Encryption IaaS virtuális gépekhez](../security/azure-security-disk-encryption-overview.md)
-* [Gyors útmutató: Az Azure PowerShell használatával Windows IaaS virtuális gép titkosítása](../security/quick-encrypt-vm-powershell.md)
+* [Rövid útmutató: Az Azure PowerShell használatával Windows IaaS virtuális gép titkosítása](../security/quick-encrypt-vm-powershell.md)
 
 ## <a name="virtual-machine-backup"></a>Virtuális gép biztonsági mentése
 
@@ -120,11 +119,11 @@ Fontos része annak a szervezete BCDR-stratégia van foglalkozhatunk azzal, hogy
 
 A Site Recovery:
 
-* **Egyszerűbbé teszi a BCDR-stratégia**: a Site Recovery megkönnyíti a replikáció, feladatátvétel és helyreállítás több üzleti számítási feladatok és alkalmazások egyetlen helyről kezelésére. A Site Recovery koordinálja a replikációt és a feladatátvételt, de nem az alkalmazásadatok intercept vagy nem rendelkezik semmilyen információval.
-* **Rugalmas replikáció biztosít**: a Site Recovery segítségével replikálhatja a Hyper-V virtuális gépek, VMware virtuális gépek és fizikai Windows/Linux-kiszolgálókon futó számítási feladatokat.
-* **Támogatja a feladatátvétel és helyreállítás**: a Site Recovery feladatátvételi teszteket a vészhelyreállítási próbák támogatására anélkül, hogy ez hatással lenne az éles környezetet biztosít. Nulla adatvesztéssel járó tervezett feladatátvételeket is futtathat várt leállások esetére, illetve (a replikáció gyakoriságától függően) minimális adatvesztéssel járó nem tervezett feladatátvételeket a váratlan vészhelyzetek esetére. A feladatátvételt követően is visszaadja a feladatokat az elsődleges helyeken. A Site Recovery olyan helyreállítási terveket biztosít, amelyek parancsfájlokat és Azure Automation-munkafüzeteket tartalmazhatnak, így testre szabhatja a többrétegű alkalmazások feladatátvételét és helyreállítását.
-* **Kiküszöböli a másodlagos adatközpontok**: egy másodlagos helyszíni helyre, vagy az Azure-bA replikálhatja. Az Azure-t egy cél vész-helyreállítási kiküszöböli a járó bonyodalmak és költségek fenntartása másodlagos helyre. A replikált adatokat az Azure Storage szolgáltatásban tárolt.
-* **A meglévő BCDR-technológiákkal integrálható**: Site Recovery együttműködik az egyéb alkalmazások általi BCDR-funkciókkal. A Site Recovery használatával például az SQL Server háttéralkalmazását vállalati számítási feladatok védelme érdekében. Ez magában foglalja a natív módon támogatja a SQL Server Always On rendelkezésre állási csoportok feladatátvételének kezelésében.
+* **Egyszerűbbé teszi a BCDR-stratégia**: A Site Recovery megkönnyíti a replikáció, feladatátvétel és helyreállítás több üzleti számítási feladatok és alkalmazások egyetlen helyről kezelésére. A Site Recovery koordinálja a replikációt és a feladatátvételt, de nem az alkalmazásadatok intercept vagy nem rendelkezik semmilyen információval.
+* **Rugalmas replikáció biztosít**: A Site Recovery segítségével replikálhatja a Hyper-V virtuális gépek, VMware virtuális gépek és fizikai Windows/Linux-kiszolgálókon futó számítási feladatok.
+* **Támogatja a feladatátvétel és helyreállítás**: A Site Recovery feladatátvételi teszteket a vészhelyreállítási próbák támogatására anélkül, hogy ez hatással lenne az éles környezetet biztosít. Nulla adatvesztéssel járó tervezett feladatátvételeket is futtathat várt leállások esetére, illetve (a replikáció gyakoriságától függően) minimális adatvesztéssel járó nem tervezett feladatátvételeket a váratlan vészhelyzetek esetére. A feladatátvételt követően is visszaadja a feladatokat az elsődleges helyeken. A Site Recovery olyan helyreállítási terveket biztosít, amelyek parancsfájlokat és Azure Automation-munkafüzeteket tartalmazhatnak, így testre szabhatja a többrétegű alkalmazások feladatátvételét és helyreállítását.
+* **Kiküszöböli a másodlagos adatközpontok**: Egy másodlagos helyszíni helyre, vagy az Azure-bA replikálhatja. Az Azure-t egy cél vész-helyreállítási kiküszöböli a járó bonyodalmak és költségek fenntartása másodlagos helyre. A replikált adatokat az Azure Storage szolgáltatásban tárolt.
+* **A meglévő BCDR-technológiákkal integrálható**: A Site Recovery-partnerek más alkalmazások BCDR-funkciókkal. A Site Recovery használatával például az SQL Server háttéralkalmazását vállalati számítási feladatok védelme érdekében. Ez magában foglalja a natív módon támogatja a SQL Server Always On rendelkezésre állási csoportok feladatátvételének kezelésében.
 
 További információ:
 
@@ -166,7 +165,7 @@ Az Azure Virtual Machines a FISMA, a FedRAMP, a HIPAA, a PCI DSS Level 1 és má
 További információ:
 
 * [A Microsoft adatvédelmi központ: megfelelőség](https://www.microsoft.com/en-us/trustcenter/compliance)
-* [A megbízható felhő: Microsoft Azure biztonsági, adatvédelmi és megfelelőségi](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+* [A megbízható felhő: A Microsoft Azure biztonsági, adatvédelmi és megfelelőségi](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 
 ## <a name="confidential-computing"></a>Bizalmas számítástechnika
 

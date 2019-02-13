@@ -3,7 +3,7 @@ title: Rövid Azure-útmutató – Titkos kulcs beállítása és lekérése a K
 description: Rövid útmutató, amely bemutatja a titkos kulcsok beállítását és lekérését az Azure Key Vaultból az Azure CLI használatával
 services: key-vault
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 4acc894f-fee0-4c2f-988e-bc0eceea5eda
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/08/2019
 ms.author: barclayn
-ms.openlocfilehash: a78cc79031a8dc9b0c98beddf759fbc8674c6dd1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8065f670da6614db8c3524fd351a31ad095f8257
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168260"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113039"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault Azure parancssori felületével
 
@@ -67,12 +67,12 @@ Az Azure-fiókja jelenleg az egyetlen, amelyik jogosult arra, hogy műveleteket 
 
 ## <a name="add-a-secret-to-key-vault"></a>Titkos kulcs hozzáadása a Key Vaulthoz
 
-Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést kell végrehajtania. Ezt a jelszót egy alkalmazás használhatja. A jelszó neve **ExamplePassword** lesz, és a **Pa$$w0rd** értékét fogja tárolni.
+Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést kell végrehajtania. Ezt a jelszót egy alkalmazás használhatja. A jelszó fogja meghívni **ExamplePassword** értékét fogja tárolni és **hVFkk965BuUv** benne.
 
-Írja be az alábbi parancsokat, ha a Key Vaultban titkos kódot szeretne létrehozni **ExamplePassword** névvel, amely tárolni fogja a **Pa$$w0rd** értékét:
+Írja be az alábbi parancsokat a Key Vaultban titkos kulcs létrehozása **ExamplePassword** , amely tárolni fogja a érték **hVFkk965BuUv** :
 
 ```azurecli
-az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "Pa$$w0rd"
+az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
 Az Azure Key Vaulthoz hozzáadott jelszóra ezután az URI használatával hivatkozhat. A jelenlegi verzió beszerzéséhez használja a következőt: **https://ContosoVault.vault.azure.net/secrets/ExamplePassword**. 

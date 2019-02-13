@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 2f66c6956c803979ee6717f7327379c7bc9e97bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 503e52266c1c6be71e60a751c40ef0a54f0d9b12
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181894"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112496"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>A felügyelt tartomány konfigurációja érvénytelen hálózati hibaelhárítása
 Ez a cikk segítséget nyújt a hibaelhárításához és megoldásához hálózati konfigurációs hibák, amelyek a következő figyelmeztető üzenet:
@@ -36,7 +36,7 @@ Ez a cikk segítséget nyújt a hibaelhárításához és megoldásához hálóz
 2. A táblából válasszon, amelyben a felügyelt tartomány engedélyezve van az alhálózathoz társított NSG-t.
 3. A **beállítások** kattintson a bal oldali panel **bejövő biztonsági szabályok**
 4. Tekintse át a szabályokat a helyen, és azonosítsa, mely szabályok forgalomszűrők blokkolják a hozzáférést [ezeket a portokat](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)
-5. Szerkessze az NSG-t a megfelelőség biztosítása a szabály törlése folyamatban van, szabály hozzáadása, vagy egy új NSG-t teljes mértékben létrehozása. A lépések [szabály hozzáadása](#add-a-rule-to-a-network-security-group-using-the-azure-portal) vagy [hozzon létre egy új, előírásoknak megfelelő NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell) az alábbi
+5. Szerkessze az NSG-t a megfelelőség biztosítása a szabály törlése folyamatban van, szabály hozzáadása, vagy egy új NSG-t teljes mértékben létrehozása. A lépések [adjon meg egy szabályt](#add-a-rule-to-a-network-security-group-using-the-azure-portal) vagy hozzon létre egy új, a megfelelő NSG alatt van
 
 ## <a name="sample-nsg"></a>Minta NSG-t
 Az alábbi táblázat mutatja be, hogy egy NSG-t, hogy az lenne a felügyelt tartomány secure miközben lehetővé teszi a figyelése, kezelése és adatok frissítése a Microsoft mintát.

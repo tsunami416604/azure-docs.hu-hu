@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7e9db85fb91dd0c9a33cc8205bdb30a648dfd38a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: dc86943924cd0c47c465e9d3bac4ca91b73a3ff5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438745"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112782"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Felügyelt alkalmazás definíciójának létrehozása és közzététele
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Létrehozhat és közzétehet a vállalat tagjainak szánt Azure-beli [felügyelt alkalmazásokat](overview.md). Az informatikai részleg közzétehet például olyan felügyelt alkalmazásokat, amelyek megfelelnek a vállalati szabványoknak. Ezeket a felügyelt alkalmazásokat a szolgáltatáskatalóguson keresztül lehet elérni az Azure Marketplace helyett.
 
@@ -30,7 +32,7 @@ A felügyelt alkalmazás szolgáltatáskatalógusban való közzétételéhez a 
 
 A jelen cikk esetében a felügyelt alkalmazás csak egy tárfiókot tartalmaz. Az a célja, hogy bemutassa a felügyelt alkalmazások közzétételéhez szükséges lépéseket. Átfogó példákat az [Azure-beli felügyelt alkalmazások mintaprojektjeit](sample-projects.md) ismertető témakörben talál.
 
-A cikkben szereplő PowerShell példák használatához az Azure PowerShell 6.2-es vagy újabb verziója szükséges. Ha szükséges, [frissítse a verziót](/powershell/azure/azurerm/install-azurerm-ps).
+A cikkben szereplő PowerShell példák használatához az Azure PowerShell 6.2-es vagy újabb verziója szükséges. Ha szükséges, [frissítse a verziót](/powershell/azure/install-Az-ps).
 
 ## <a name="create-the-resource-template"></a>Az erőforrássablon létrehozása
 
@@ -149,8 +151,8 @@ Adja hozzá a két fájlt az app.zip nevű .zip fájlhoz. A két fájlnak a .zip
 Töltse fel a csomagot egy elérhető helyre, ahonnan mások használhatják. 
 
 ```powershell
-New-AzureRmResourceGroup -Name storageGroup -Location eastus
-$storageAccount = New-AzureRmStorageAccount -ResourceGroupName storageGroup `
+New-AzResourceGroup -Name storageGroup -Location eastus
+$storageAccount = New-AzStorageAccount -ResourceGroupName storageGroup `
   -Name "mystorageaccount" `
   -Location eastus `
   -SkuName Standard_LRS `
@@ -158,9 +160,9 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName storageGroup `
 
 $ctx = $storageAccount.Context
 
-New-AzureStorageContainer -Name appcontainer -Context $ctx -Permission blob
+New-AzStorageContainer -Name appcontainer -Context $ctx -Permission blob
 
-Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
+Set-AzStorageBlobContent -File "D:\myapplications\app.zip" `
   -Container appcontainer `
   -Blob "app.zip" `
   -Context $ctx 
@@ -175,7 +177,7 @@ A következő lépés egy felhasználói csoport vagy alkalmazás kiválasztása
 Az erőforrások felügyeletéhez szüksége lesz a felhasználói csoport objektumazonosítójára. 
 
 ```powershell
-$groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
+$groupID=(Get-AzADGroup -DisplayName mygroup).Id
 ```
 
 ### <a name="get-the-role-definition-id"></a>A szerepkördefiníció-azonosító lekérése
@@ -183,7 +185,7 @@ $groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
 Ezután annak a beépített RBAC-szerepkörnek a szerepkördefiníció-azonosítójára van szükség, amelyhez hozzáférést szeretne biztosítani a felhasználó, a felhasználói csoport vagy az alkalmazás számára. Általában a Tulajdonos, a Közreműködő vagy az Olvasó szerepkört használják. Az alábbi parancs bemutatja, hogyan kérheti le a tulajdonos szerepkör szerepkördefiníció-azonosítóját:
 
 ```powershell
-$ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
+$ownerID=(Get-AzRoleDefinition -Name Owner).Id
 ```
 
 ### <a name="create-the-managed-application-definition"></a>A felügyelt alkalmazás definíciójának létrehozása
@@ -191,15 +193,15 @@ $ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
 Ha még nem rendelkezik erőforráscsoporttal a felügyelt alkalmazás definíciójának tárolásához, hozzon létre egyet:
 
 ```powershell
-New-AzureRmResourceGroup -Name appDefinitionGroup -Location westcentralus
+New-AzResourceGroup -Name appDefinitionGroup -Location westcentralus
 ```
 
 Most hozza létre a felügyelt alkalmazás definíciójához tartozó erőforrást.
 
 ```powershell
-$blob = Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $ctx
+$blob = Get-AzStorageBlob -Container appcontainer -Blob app.zip -Context $ctx
 
-New-AzureRmManagedApplicationDefinition `
+New-AzManagedApplicationDefinition `
   -Name "ManagedStorage" `
   -Location "westcentralus" `
   -ResourceGroupName appDefinitionGroup `

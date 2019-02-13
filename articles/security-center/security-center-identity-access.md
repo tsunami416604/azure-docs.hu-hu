@@ -4,7 +4,7 @@ description: Itt megtudhatja, hogyan használható az Azure Security Center iden
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 01c8f864d25a35d42abcd624e31728f4fee0d80c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 845227ea5e32d10eaed555cee80c8fc520a1771a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012071"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105552"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés az Azure Security Centerben (előzetes verzió) figyelése
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
@@ -81,7 +81,7 @@ A **előfizetések**, nincs az előfizetések listáját. Az első oszlop az el�
 
 ![Az előfizetéshez tartozó lap][4]
 
-1.  Válasszon előfizetést. Összegzési nézetet megnyílik a három lappal:
+1.  Válasszon egy előfizetést. Összegzési nézetet megnyílik a három lappal:
 
   - **Javaslatok**: nem sikerült, a Security Center által végzett alapján.
   - **Sikeres értékelések**: megfelelt a Security Center által végzett listája.
@@ -103,7 +103,7 @@ A **előfizetések**, nincs az előfizetések listáját. Az első oszlop az el�
 
   ![Sikeres értékelések][8]
 
-## <a name="recommendations"></a>Ajánlatok
+## <a name="recommendations"></a>Javaslatok
 Referenciaként az alábbi táblázat segítségével segítenek megérteni a rendelkezésre álló identitás és hozzáférés ajánlásokat, és mindegyik funkciója alkalmazásuk esetén.
 
 |Erőforrás típusa|Biztonsági pontszám|Ajánlás|Leírás|
@@ -118,8 +118,8 @@ Referenciaként az alábbi táblázat segítségével segítenek megérteni a re
 |Előfizetés|20|Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetésből|Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetések közül.|
 |Előfizetés|5|Elavult fiókok eltávolítása az előfizetésből|Elavult fiókok eltávolítása az csak az aktuális felhasználó hozzáférésének engedélyezése az előfizetések közül. |
 |Előfizetés|5|Az előfizetéshez legalább egy tulajdonos kijelölése|Több mint egy előfizetés-tulajdonost kijelölni a rendszergazdai hozzáférés redundanciájának biztosításához.|
-|Előfizetés|5|Az előfizetés legfeljebb 3 tulajdonos kijelölése|Kevesebb mint 3 előfizetés-tulajdonost kijelölni az esetleges illetéktelen behatolás feltört tulajdonosa.|
-|Kulcstartó|5|A Key Vault-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Előfizetés|5|Legfeljebb 3 előfizetéstulajdonos kijelölése|Kevesebb mint 3 előfizetés-tulajdonost kijelölni az esetleges illetéktelen behatolás feltört tulajdonosa.|
+|Key Vault|5|A Key Vault-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
 |Előfizetés|15|Olvasási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből|Az olvasási jogosultsággal rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.|
 |Előfizetés|1|Biztonsági kapcsolattartói adatok megadása|Biztonsági kapcsolattartó adatainak megadása minden egyes előfizetésnél. Kapcsolattartási adatok, e-mail címét és telefonszámát szám. Az adatok kapcsolatba lépni Önnel, ha a biztonsági csoportunk, hogy az erőforrások kerülnek veszélybe|
 

@@ -4,7 +4,7 @@ description: " Ismerje meg a biztonsági előnyöket, paas és más felhőalapú
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: techlake
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 6bc1df7acf7ce711e106983f8084f168152fc51e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e845adc3aad21e62009ee9b99dbd65bcff794bd9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488407"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117799"
 ---
 # <a name="securing-paas-deployments"></a>PaaS üzemelő példányainak biztonságossá tétele
 
@@ -111,7 +111,7 @@ Az alábbi táblázat STRIDE fenyegetések listázása, és bizonyos Azure-funkc
 
 | Fenyegetés | Biztonsági tulajdonság | Az Azure platform lehetséges kezelésükre |
 | --- | --- | --- |
-| Címek hamisítása | Hitelesítés | HTTPS-kapcsolatokat igényelnek. |
+| Címek hamisítása | Authentication | HTTPS-kapcsolatokat igényelnek. |
 | Illetéktelen módosítása | Integritás | SSL-tanúsítványok ellenőrzése. |
 | Letagadhatóság | Letagadhatatlanság | Engedélyezze az Azure [monitorozási és diagnosztikai](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). |
 | Információk felfedése | Bizalmas | Az inaktív bizalmas adatok titkosítása az [szolgáltatási tanúsítványok](https://docs.microsoft.com/rest/api/appservice/certificates). |

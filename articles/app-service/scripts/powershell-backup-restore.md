@@ -15,20 +15,22 @@ ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: caee00130efdea253ced16d090eafeee22c16ac3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: aca7f700dc7004f682430d0794f8bc9b024f41b3
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585080"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113498"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-azure-powershell"></a>Webalkalmazás visszaállítása biztonsági másolatból Azure PowerShell-lel
 
 Ez a példaszkript egy korábban elvégzett biztonsági mentés beolvassa egy meglévő web Apps, és annak tartalmára felülírásával visszaállítására. 
 
-Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzureRmAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. 
+Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. 
 
 ## <a name="sample-script"></a>Példaszkript
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/backup-restore/backup-restore.ps1?highlight=1-2 "Restore a web app from a backup")]
 
@@ -37,7 +39,7 @@ Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutat�
 Ha többé már nincs szüksége a webalkalmazást, a következő paranccsal törölheti az erőforráscsoportot, a webalkalmazás, és az összes kapcsolódó erőforrás.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+Remove-AzResourceGroup -Name $resourceGroupName -Force
 ```
 
 ## <a name="script-explanation"></a>Szkript ismertetése
@@ -46,8 +48,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzureRmWebAppBackupList](/powershell/module/azurerm.websites/get-azurermwebappbackuplist) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
-| [Visszaállítás – AzureRmWebAppBackup](/powershell/module/azurerm.websites/restore-azurermwebappbackup) | Webalkalmazás visszaállítása egy korábban elvégzett biztonsági másolatból. |
+| [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
+| [Restore-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | Webalkalmazás visszaállítása egy korábban elvégzett biztonsági másolatból. |
 
 ## <a name="next-steps"></a>További lépések
 

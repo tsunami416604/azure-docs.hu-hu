@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f83c05f4d1dcb93bd424a733866f85edf04bbd05
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 9a5e75b762c2ab0591212ce0bc3d7fac42132f8a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745266"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116915"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Az Update Management, Change Tracking és Inventory megoldások a több virtuális gépen
 
@@ -76,7 +76,6 @@ Az alábbi táblázat bemutatja a támogatott leképezések:
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
 |EastUS2EUAP|CentralUSEUAP|
-|USA nyugati régiója, 2.|USA nyugati régiója, 2.|
 
 Kapcsolja ki bármelyik virtuális gépet, amely nem szeretné engedélyezni, jelölőnégyzetét. Virtuális gépek, amelyek nem lehet engedélyezni a rendszer már sincs kijelölve.
 

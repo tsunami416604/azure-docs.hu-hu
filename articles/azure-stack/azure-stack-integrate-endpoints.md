@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 9a209aaf730b356c8c102eab7a8832ce670204cc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: fee5db2cde4e4056a8cb1fca80e09511d0ca0b53
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977747"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117274"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Az Azure Stack adatközpont integrációja – végpontok közzététele
 
@@ -66,7 +66,7 @@ Virtuális IP-címek nem jelennek meg, mert azok még nem szükséges a közzét
 Az Azure Stack csak transzparens proxy kiszolgálók támogatja. A központi telepítés, ha egy transzparens proxy kimenő portokhoz hagyományos proxykiszolgálónak engedélyeznie kell a következő portokat és URL-címek a kimenő kommunikáció:
 
 > [!Note]  
-> Az Azure Stack nem támogatja az Express Route használatával az alábbi táblázatban felsorolt Azure-szolgáltatások eléréséhez.
+> Az Azure Stack nem támogatja az alábbi táblázatban felsorolt Azure-szolgáltatások eléréséhez ExpressRoute-tal.
 
 |Cél|Destination URL|Protokoll|Portok|Forráshálózat|
 |---------|---------|---------|---------|---------|
@@ -75,7 +75,7 @@ Az Azure Stack csak transzparens proxy kiszolgálók támogatja. A központi tel
 |Javítás & frissítése|https://&#42;.azureedge.net|HTTPS|443|Nyilvános virtuális IP - / 27-eset|
 |Regisztráció|https://management.azure.com|HTTPS|443|Nyilvános virtuális IP - / 27-eset|
 |Használat|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|Nyilvános virtuális IP - / 27-eset|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. jövőben a Microsoft<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Nyilvános virtuális IP - / 27-eset<br>Nyilvános infrastruktúra hálózati|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. jövőben a Microsoft<br>https://msdl.microsoft.com/download/symbols<br>`https://www.microsoft.com/pkiops/crl`<br>`https://www.microsoft.com/pkiops/certs`<br>`https://crl.microsoft.com/pki/crl/products`<br>`https://www.microsoft.com/pki/certs`<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Nyilvános virtuális IP - / 27-eset<br>Nyilvános infrastruktúra hálózati|
 |NTP|(IP az NTP-kiszolgáló a megadott központi telepítés)|UDP|123|Nyilvános virtuális IP - / 27-eset|
 |DNS|(IP-megadott DNS-kiszolgáló üzembe helyezéshez)|TCP<br>UDP|53|Nyilvános virtuális IP - / 27-eset|
 |CRL|(A tanúsítvány CRL terjesztési pontok alapján URL)|HTTP|80|Nyilvános virtuális IP - / 27-eset|

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Shuccho Navi |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Shuccho Navi |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Shuccho Navi között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: jeedes
-ms.openlocfilehash: f90af5b57fcb9ed7f02bba0a184dacb17570136b
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1709abdf1d5e90cb253e67b29c0e48f6aa29a712
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312809"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209676"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>Oktatóanyag: Azure Active Directory-integráció az Shuccho Navi
+# <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Shuccho Navi
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Shuccho Navi integrálható az Azure Active Directory (Azure AD).
 
@@ -149,7 +150,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-shuccho-navi-test-user"></a>Shuccho Navi tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Shuccho Navi hoz létre. Együttműködve [Shuccho Navi támogatási csapatának](mailto:sys_ntabtm@nta.co.jp) a felhasználók hozzáadása az Shuccho Navi platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Shuccho Navi hoz létre. Együttműködve [Shuccho Navi támogatási csapatának](mailto:sys_ntabtm@nta.co.jp) a felhasználók hozzáadása az Shuccho Navi platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

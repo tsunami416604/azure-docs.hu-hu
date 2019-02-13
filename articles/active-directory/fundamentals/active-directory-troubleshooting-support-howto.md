@@ -14,12 +14,13 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 2063f9fcd3e001f4f8f175bd6031c9d31313f9e6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bb89d3eee87c0796bcd21914e719784756bc288e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092166"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165739"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Segítség keresése, és nyisson egy támogatási jegyet az Azure Active Directory
 A Microsoft globális műszaki, értékesítés előtti, számlázási és előfizetés-támogatás az Azure Active Directory (Azure AD) biztosít. Támogatás online és telefonon a fizetős Microsoft Azure és a próba-előfizetések is érhető el. Telefonos és online számlázási támogatás más nyelveken érhetők el. 

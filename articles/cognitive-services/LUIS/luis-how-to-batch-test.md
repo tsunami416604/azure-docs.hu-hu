@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: fddd54e7c4e88b85f6e6fa8f7319661db96e9524
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 973a82e97bc9770c30e791512b13e4c57a4c5bca
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877541"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116898"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>A Batch példa utterances vannak beállítva tesztelése
 
- A LUIS a teljesítmény méréséhez az aktuális betanított modell egy átfogó teszt Batch tesztelés. A batch-tesztelési célokra használható adatkészletek nem tartalmazhatja a leképezések vagy utterances utterances kapott az előrejelzési futásidejű végpont példa. 
+ A LUIS a teljesítmény méréséhez az aktuális betanított modell egy átfogó teszt Batch tesztelés. A batch-tesztelési célokra használható adatkészletek nem tartalmaznia kell példa kimondott szöveg a leképezések vagy az előrejelzési futásidejű végpontról érkezett kimondott szöveg. 
 
 <a name="batch-testing"></a>
 

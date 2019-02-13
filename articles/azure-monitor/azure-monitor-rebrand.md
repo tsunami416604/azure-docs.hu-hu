@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/07/2019
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: fb33f6006a1456669facd8baf80161ab115f2689
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 77a806d328a6dbac0e57c9d99e06debbb25e88b8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995082"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108381"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Az Azure Monitor elnevezési és terminológiát módosítások
 Jelentős módosultak az Azure monitornak nemrég, a különböző szolgáltatásokkal, konszolidált annak érdekében, hogy megkönnyítheti a figyelést az Azure-ügyfelek számára. Ez a cikk ismerteti a legutóbbi neve és az Azure Monitor dokumentációja terminológia változásait.
@@ -26,18 +26,15 @@ Jelentős módosultak az Azure monitornak nemrég, a különböző szolgáltatá
 Után az Azure Monitor különböző szolgáltatások összevonása azt még tart a következő lépés az általunk kiadott dokumentációról jobban írja le az Azure Monitor szolgáltatás és különböző összetevőjét terminológia módosításával. 
 
 ### <a name="log-analytics"></a>Log Analytics
-Az Azure Monitor log adatok nem a Log Analytics-munkaterületen tárolja, és továbbra is gyűjti, és az ugyanazon a Log Analytics szolgáltatás által elemzett, de az időszak azért módosítottuk _Log Analytics_ több helyen való _Azure Monitor-naplók_ . A jobb az Azure monitorban szerepét, és jobb konzisztencia [metrikák az Azure monitorban](platform/data-collection.md).
+Az Azure Monitor log adatok nem a Log Analytics-munkaterületen tárolja, és továbbra is gyűjti, és az ugyanazon a Log Analytics szolgáltatás által elemzett, de az időszak azért módosítottuk _Log Analytics_ több helyen való _Azure Monitor-naplók_ . Ez a kifejezés jobban az Azure monitorban szerepét, és biztosítja a hatékonyabb konzisztencia [metrikák az Azure monitorban](platform/data-collection.md).
 
-Az előfizetési időszak _log analytics_ elsődlegesen vonatkozik az oldal írható, és lekérdezéseket futtathat, és elemezheti a naplófájlok adatait az Azure Portalon. A működési egyenértékű [metrikaböngésző](platform/metrics-charts.md) Ez az oldal metrikai adatok elemzéséhez az Azure Portalon.
+Az előfizetési időszak _log analytics_ elsődlegesen vonatkozik az oldal írható, és lekérdezéseket futtathat, és elemezheti a naplófájlok adatait az Azure Portalon. A működési egyenértékű [metrikaböngésző](platform/metrics-charts.md), ez az oldal metrikai adatok elemzéséhez az Azure Portalon.
 
 ### <a name="log-analytics-workspaces"></a>Log Analytics-munkaterületek
 [Munkaterületek](platform/manage-access.md) , amely a naplóadatokat az Azure monitorban továbbra is nevezik Log Analytics-munkaterületek tartsa. A **Log Analytics** oldal az Azure Portalon kapott **Log Analytics-munkaterületek** és itt, [hozzon létre új munkaterületek](learn/quick-create-workspace.md) és adatforrások konfigurálása. A naplók és más monitorozási adatok elemzése **Azure Monitor** és konfigurálja a munkaterületek **Log Analytics-munkaterületek**.
 
-### <a name="log-query-language"></a>Napló lekérdezési nyelv
-Az Azure Monitor log-lekérdezések adatkezelő lekérdezési nyelvet használ. Azure Data Explorer fel lett oldva, mielőtt ezen a nyelven lett néven Kusto vagy az Azure Monitor lekérdezési nyelv. Azt most hivatkozunk, a neve megegyezik az adatkezelőt megerősítése, hogy ugyanazt a nyelvet használják. Az Azure Monitor íz leírt módon nyelv a kisebb különbségek vannak a [Azure Monitor log lekérdezési nyelv különbségek](log-query/data-explorer-difference.md).
-
 ### <a name="management-solutions"></a>Felügyeleti megoldások
-[Felügyeleti megoldások](insights/solutions.md) átnevezték _figyelési megoldások_ amely jobban funkcióit ismerteti.
+[Felügyeleti megoldások](insights/solutions.md) átnevezték _figyelési megoldások_, amely jobban funkcióit ismerteti.
 
 
 ## <a name="august-2018---consolidation-of-monitoring-services-into-azure-monitor"></a>2018 augusztus - szolgáltatások figyelése az Azure Monitor szolgáltatásba összevonása

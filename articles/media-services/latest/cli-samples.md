@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/08/2018
+ms.date: 02/11/2019
 ms.author: juliako
-ms.openlocfilehash: 9df9279a3922fa639385657660d6d0f4a55b5a4d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 919dbd057f2fa1d762775ed799505796a420864a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132772"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109248"
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Az Azure Media Services az Azure CLI-példák
 
@@ -27,17 +27,21 @@ A következő táblázat az Azure Media Services az Azure CLI-példákra mutató
 
 |  |  |
 |---|---|
+|**Méretezés**||
+| [Scale a Media szolgáltatás számára fenntartott egységek](media-reserved-units-cli-how-to.md)|A hangelemzés és videó elemzési feladatokat a Media Services v3 által aktivált vagy a Video Indexer azt javasoljuk 10 S3 szintű helyet a fiók kiépítése. <br/>A szkript bemutatja, hogyan skálázhatja a Media szolgáltatás számára fenntartott egységek (helyet) a parancssori felület használatával.|
 |**Fiók**||
 | [A Media Services-fiók létrehozása](./scripts/cli-create-account.md) | Létrehoz egy Azure Media Services-fiókot. Emellett létrehoz egy egyszerű szolgáltatást, amely API-k programozott módon kezelheti a fiók elérésére használható. |
 | [Fiók hitelesítő adatainak alaphelyzetbe állítása](./scripts/cli-reset-account-credentials.md)|Alaphelyzetbe állítja a fiók hitelesítő adatait, és megkapja az app.config beállításokat.|
 |**Eszközök**||
 | [Adategységek létrehozása](./scripts/cli-create-asset.md)|Létrehoz egy Media Services eszköz tartalmat feltölteni.|
 | [Fájl feltöltése](./scripts/cli-upload-file-asset.md)|Feltölt egy helyi fájlt egy storage-tárolóba.|
-| [Az objektum közzététele](./scripts/cli-publish-asset.md)| A Streamelési lokátor hoz létre, és megkapja Streamelési URL-címeket. |
 | **Átalakítások** és **feladatok**||
 | [Átalakítások létrehozása](./scripts/cli-create-transform.md)|Bemutatja, hogyan hozhat létre átalakításokat. Az átalakítások feladatokból álló egyszerű munkafolyamatot definiálnak a video- vagy hangfájlok feldolgozásához (ezek „recept” néven is ismertek).<br/> Mindig ellenőrizze, hogy létezik-e már adott nevű és „receptű” Átalakítás. Ha igen, újra felhasználhatja. |
 | [Feladatok létrehozása](./scripts/cli-create-jobs.md)|Elküld egy feladatot, amely egy egyszerű kódolási átalakító HTTPs URL-cím használatával.|
 | [EventGrid létrehozása](./scripts/cli-create-event-grid.md)|Egy fiók szintű Event Grid-előfizetést hoz létre feladat állapotváltozások.|
+| **Deliver**||
+| [Az objektum közzététele](./scripts/cli-publish-asset.md)| A Streamelési lokátor hoz létre, és megkapja Streamelési URL-címeket. |
+| [Szűrő](filters-dynamic-manifest-cli-howto.md)| Konfigurálja az igény szerinti videó eszköz szűrőt, és bemutatja, hogyan hozhat létre a parancssori felület használatával [Fiókszűrők](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) és [eszköz szűrők](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest). 
 
 ## <a name="see-also"></a>Lásd még
 

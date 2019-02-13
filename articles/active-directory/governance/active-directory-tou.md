@@ -14,12 +14,13 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 02/09/2019
 ms.author: rolyon
-ms.openlocfilehash: d063fd27d4de2fa37825294cd10f4f9a69731f63
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 987b2b1ca028b816ed6909781f56c0b5174541bd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099989"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163767"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.

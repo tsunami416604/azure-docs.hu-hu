@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: cec6da78ae47b509e2bb5f8ba0007208545062e7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 493f6f3380dee4ed70bb6e0bc9bba24f93071097
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478066"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165331"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Az Azure File Sync használatával regisztrált kiszolgálók kezelése
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt nem átalakításával keletkező a Windows-kiszolgálók az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -165,7 +165,10 @@ Mivel az Azure File Sync ritkán lesz a saját adatközpontjában futó egyetlen
 > Túl alacsony korlátok beállítása az Azure File Sync szinkronizálási és visszaírási teljesítményét negatív hatással lesz.
 
 ### <a name="set-azure-file-sync-network-limits"></a>Az Azure File Sync hálózati vonatkozó korlátok beállítása
-Képes szabályozni a a hálózati kihasználtság az Azure File Sync használatával a `StorageSyncNetworkLimit` parancsmagok. 
+Képes szabályozni a a hálózati kihasználtság az Azure File Sync használatával a `StorageSyncNetworkLimit` parancsmagok.
+
+> [!Note]  
+> Ha egy rétegzett fájlt érhető el, vagy használja az Invoke-StorageSyncFileRecall parancsmag hálózati korlátozások nem érvényesek.
 
 Például létrehozhat egy új szabályozási korlát, győződjön meg arról, hogy az Azure File Sync nem használja a több mint 10 MB/s közötti 9: 00 és 17: 00 (17:00 óra) a munkahét során: 
 

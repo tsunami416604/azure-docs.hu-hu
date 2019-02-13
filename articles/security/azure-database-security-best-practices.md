@@ -4,7 +4,7 @@ description: Ez a cikk egy Azure adatbázis biztonsági védelmének bevált gya
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: cceea9fa613d2a2428427bfe73eb50550db6c69a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3e244f89904ce9aca161ed1ea435f4137e42bc5d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281625"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117969"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure database ajánlott biztonsági eljárások
 Biztonsági adatbázis elsődleges szempont, és azt mindig az, hogy prioritást [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Az adatbázisok szorosan leköthetőek súgó megfelel a legtöbb szabályozási és biztonsági követelmények, többek között a HIPAA, az ISO 27001/27002 és a PCI DSS Level 1. Biztonsági megfelelőségi tanúsítványok aktuális listáját érhető el: a [Microsoft Trust Center webhely](https://azure.microsoft.com/support/trust-center/services/). Is kiválaszthatja, hogy az adott Azure-adatközpontok a szabályozási követelményeknek megfelelően az adatbázisok helyezze.
@@ -60,7 +60,7 @@ További információ az SQL Database tűzfalszabályaival kapcsolatban: [SQL Da
 ## <a name="enable-database-authentication"></a>Adatbázis-hitelesítés engedélyezése
 SQL Database két típusú hitelesítés, SQL Server-hitelesítés és Azure AD-hitelesítést támogatja.
 
-### <a name="sql-server-authentication"></a>*SQL Server-hitelesítés*
+### <a name="sql-server-authentication"></a>*SQL Server Authentication*
 
 Előnyei a következők:
 
@@ -77,7 +77,7 @@ Ha az SQL Server-hitelesítést használ, a következőket kell tennie:
 
 - Az erős hitelesítő adatok kezelése saját magának.
 - A kapcsolati karakterláncban a hitelesítő adatok védelmét.
-- A hitelesítő adatokat a hálózaton keresztül továbbított a webkiszolgáló az adatbázishoz (vélhetően) védelmét. További információkért lásd: [hogyan: Kapcsolódás az SQL Server használata az SQL-hitelesítés az ASP.NET 2.0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
+- A hitelesítő adatokat a hálózaton keresztül továbbított a webkiszolgáló az adatbázishoz (vélhetően) védelmét. További információkért lásd: [hogyan: Csatlakozás az SQL Serverhez SQL-hitelesítés használata az ASP.NET 2.0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Az Azure Active Directory (AD) hitelesítési*
 Az Azure AD-hitelesítés egy Azure SQL Database-adatbázishoz kapcsolódáskor mechanizmust és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) identitásokat az Azure AD-ben. Az Azure AD-hitelesítés az identitások, az adatbázis-felhasználók és más Microsoft-szolgáltatások egyetlen központi helyen kezelheti. Központi azonosítófelügyeleti biztosít egy helyen adatbázis-felhasználók kezelése és egyszerűsíti az engedélyek kezelését.
@@ -100,7 +100,7 @@ Előnyei a következők:
 A konfigurálás lépéseinek végrehajtásához konfigurálhatja és használhatja az Azure AD-hitelesítést a következő eljárásokat tartalmazzák:
 
 - Hozzon létre, és töltse fel az Azure ad-ben.
-- Választható lehetőség: Hozzárendelése, vagy módosítsa a jelenleg az Azure-előfizetéséhez társított Active Directory-példányból.
+- Nem kötelező: Társítsa, vagy módosítsa a jelenleg az Azure-előfizetéséhez társított Active Directory-példányból.
 - Hozzon létre egy Azure Active Directory-rendszergazda az Azure SQL Database vagy [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 - Konfigurálja az ügyfélszámítógépeken.
 - Hozzon létre tartalmazottadatbázis-felhasználók az Azure AD-identitások leképezett adatbázis.
@@ -150,18 +150,18 @@ Veszélyforrások elleni védelem túllép észlelése. Adatbázis veszélyforr�
 - Végrehajtási biztonságos konfigurációt az adatbázisban, ezért az adatbázis védheti.
 - Észlelés és reagálás a potenciális fenyegetésekre azok felmerülésekor, így gyorsan reagálhat, és javítása.
 
-**Ajánlott eljárás**: felderítésére, besorolására és címkézése a bizalmas adatokat az adatbázisban.   
-**Részletes**: az SQL database-ben az adatok besorolását engedélyezésével [Adatfelderítés és besorolás](../sql-database/sql-database-data-discovery-and-classification.md) Azure SQL Database-ben. Az Azure irányítópultján a bizalmas adatokhoz való hozzáférés figyelésére, vagy töltse le a jelentések.
+**Ajánlott eljárás**: Felderítésére, besorolására, és a bizalmas adatokat az adatbázisokban címkézését.   
+**Részletes**: Az SQL database-ben az adatok besorolását engedélyezésével [Adatfelderítés és besorolás](../sql-database/sql-database-data-discovery-and-classification.md) Azure SQL Database-ben. Az Azure irányítópultján a bizalmas adatokhoz való hozzáférés figyelésére, vagy töltse le a jelentések.
 
-**Ajánlott eljárás**: nyomon követheti az adatbázis biztonsági rések, így proaktív módon javíthatja az adatbázis biztonsági.   
-**Részletes**: az Azure SQL Database használata [biztonságirés-értékelési](../sql-database/sql-vulnerability-assessment.md) szolgáltatás, amely az adatbázis biztonsági réseinek keres. A szolgáltatás, amelyet a biztonsági rések jelzőt és gyakorlattól eltérő jelenségeket, például konfigurációs hibák, a túlságosan széleskörű engedélyeket és a nem védett, bizalmas adatok megjelenítése Tudásbázis alkalmaz.
+**Ajánlott eljárás**: Adatbázis biztonsági rések nyomon követheti, így proaktív módon javíthatja az adatbázis-biztonság.   
+**Részletes**: Az Azure SQL Database használata [biztonságirés-értékelési](../sql-database/sql-vulnerability-assessment.md) szolgáltatás, amely az adatbázis biztonsági réseinek keres. A szolgáltatás, amelyet a biztonsági rések jelzőt és gyakorlattól eltérő jelenségeket, például konfigurációs hibák, a túlságosan széleskörű engedélyeket és a nem védett, bizalmas adatok megjelenítése Tudásbázis alkalmaz.
 
 A szabályokat a Microsoft ajánlott eljárásai, így nyugodtan összpontosíthat a biztonsági problémákat, amelyek a legnagyobb kockázatot az adatbázis és az értékes adatok alapulnak. Fedhetik le az adatbázisszintű problémák és a kiszolgálói szintű biztonsági problémákat, például a kiszolgálói tűzfal beállításaiban, és a kiszolgálói szintű engedélyekkel. Ezek a szabályok jelentik azok megfelelőségi szabványainak való ellenőrző szervezetekkel, a követelmények többségének.
 
-**Ajánlott eljárás**: fenyegetésészlelés engedélyezése.  
-**Részletes**: engedélyezése az Azure SQL Database [Fenyegetésészlelés](../sql-database/sql-database-threat-detection.md) beolvasni a biztonsági riasztások és javaslatok vizsgálata és elhárítani a fenyegetéseket. Gyanús adatbázis-tevékenységekről, a potenciális biztonsági réseket, és a SQL-injektálásos támadásokról, valamint rendellenes adatbázis kapcsolatos értesítéseket kaphat hozzáférést és a lekérdezési minták.
+**Ajánlott eljárás**: Fenyegetésészlelés engedélyezése.  
+**Részletes**:  Engedélyezze az Azure SQL Database [Fenyegetésészlelés](../sql-database/sql-database-threat-detection.md) beolvasni a biztonsági riasztások és javaslatok vizsgálata és elhárítani a fenyegetéseket. Gyanús adatbázis-tevékenységekről, a potenciális biztonsági réseket, és a SQL-injektálásos támadásokról, valamint rendellenes adatbázis kapcsolatos értesítéseket kaphat hozzáférést és a lekérdezési minták.
 
-[Komplex veszélyforrások elleni védelem](../sql-database/sql-advanced-threat-protection.md) egységes csomag egy tapasztalt SQL biztonsági funkciók. Tartalmazza a korábban említett szolgáltatások: az Adatfelderítés és a besorolás, a sebezhetőségi felmérés és a Fenyegetésészlelés. Egyetlen helyen engedélyezése és kezelése ezeket a képességeket biztosítja.
+[Komplex veszélyforrások elleni védelem](../sql-database/sql-advanced-threat-protection.md) egységes csomag egy tapasztalt SQL biztonsági funkciók. A korábban említett szolgáltatások tartalmazza: Adatfelderítés és besorolás, a biztonságirés-értékelési és a Fenyegetésészlelés. Egyetlen helyen engedélyezése és kezelése ezeket a képességeket biztosítja.
 
 Engedélyezi ezeket a képességeket nyújt segítséget:
 

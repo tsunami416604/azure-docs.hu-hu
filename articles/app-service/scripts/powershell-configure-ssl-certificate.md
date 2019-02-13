@@ -15,24 +15,26 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c13feb22cc02d1a444de412e75e5555645f35b88
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 5de9890369b6f99cec3b271117fd4d0cfe70001d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584907"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104100"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>Egyéni SSL-tanúsítvány kötése egy webalkalmazáshoz, PowerShell-lel
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd hozzáköti egy egyéni tartománynév SSL-tanúsítványát. 
 
-Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzureRmAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. Emellett győződjön meg a következőkről is:
+Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. Emellett győződjön meg a következőkről is:
 
 - Ki lett építve kapcsolat az Azure-ral az `az login` parancs használatával.
 - Hozzáfér a tartományregisztrálója DNS-konfigurációs oldalához.
 - Rendelkezik egy érvényes .PFX-fájllal, valamint a kapcsolódó jelszóval a feltölteni és hozzákötni kívánt SSL-tanúsítványhoz.
 
 ## <a name="sample-script"></a>Példaszkript
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
@@ -41,7 +43,7 @@ Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutat�
 A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport, a webalkalmazás és az összes kapcsolódó erőforrás.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="script-explanation"></a>Szkript ismertetése
@@ -50,12 +52,12 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Létrehoz egy App Service-csomagot. |
-| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Webalkalmazást hoz létre. |
-| [Set-AzureRmAppServicePlan](/powershell/module/azurerm.websites/set-azurermappserviceplan) | Egy App Service-csomag tarifacsomagját módosítja. |
-| [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | Módosítja egy webalkalmazás konfigurációját. |
-| [New-AzureRmWebAppSSLBinding](/powershell/module/azurerm.websites/new-azurermwebappsslbinding) | Létrehoz egy SSL-tanúsítványkötést egy webalkalmazáshoz. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazást hoz létre. |
+| [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | Egy App Service-csomag tarifacsomagját módosítja. |
+| [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Módosítja egy webalkalmazás konfigurációját. |
+| [New-AzWebAppSSLBinding](/powershell/module/az.websites/new-azwebappsslbinding) | Létrehoz egy SSL-tanúsítványkötést egy webalkalmazáshoz. |
 
 ## <a name="next-steps"></a>További lépések
 

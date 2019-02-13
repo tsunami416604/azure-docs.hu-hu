@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a Cisco Spark |} A Microsoft Docs'
+title: 'Oktatóanyag: Felhasználók automatikus átadása az Azure Active Directory konfigurálása a Cisco Spark |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Cisco Spark felhasználói fiókokat.
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
-ms.openlocfilehash: aafbde6907e59be3b0ff1d5807ffe4a7d2fffaa4
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 03c45a19c8f6bbce2ffdfff0758eb3e57203b7cf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346104"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211206"
 ---
-# <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Cisco Spark konfigurálása
+# <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Oktatóanyag: Cisco Spark konfigurálása a felhasználók automatikus átadása
 
 
 Ez az oktatóanyag célja a lépéseket kell végrehajtania a Cisco Spark és az Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók Cisco-alapú Spark bemutatása.

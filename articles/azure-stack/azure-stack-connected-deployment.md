@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 491bdf121729d690784324051ff701f3ed2d2b7a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a39ab2eb6d08f478ed68aed2bc753e5225185fe3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243181"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175387"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure csatlakoztatott üzembe helyezési, tervezési megfontolások az Azure Stack integrált rendszerek
-Miután döntött [hogyan fogja integrálja az Azure Stack a hibridfelhő-környezet](azure-stack-connection-models.md), majd az Azure Stack telepítési döntések is véglegesítése.
+Miután döntött [hogyan fogja integrálja az Azure Stack a hibridfelhő-környezet](azure-stack-connection-models.md), az Azure Stack telepítési döntések is véglegesítése.
 
 Kapcsolódik az Azure üzembe helyezése az Azure Stack azt jelenti, hogy is vagy az Azure Active Directory (Azure AD), vagy az Active Directory összevonási szolgáltatások (AD FS) számára az ügyfélidentitás-tárolóval. Emellett vagy számlázási modell közül választhat: használatalapú mint-akkor-használható, vagy kapacitás-alapú. Egy csatlakoztatott központi telepítés az alapértelmezett beállítás, mert lehetővé teszi a felhasználóknak lekérése különösen a legnagyobb érték a tartományon kívül az Azure Stack, hibrid felhő forgatókönyvekről, az Azure és az Azure Stackben. 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Insight4GRC |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Insight4GRC |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Insight4GRC között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 256550dc6aaa832599747f6fe39c2ca77ed3f8d7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 08913fc2e12026d70976ea8e2169c190378f4054
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441581"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193730"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>Oktatóanyag: Azure Active Directory-integráció az Insight4GRC
+# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Insight4GRC
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Insight4GRC integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Insight4GRC az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Insight4GRC egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Az Azure AD integrálása a Insight4GRC konfigurálásához hozzá kell Insight4
 
 **Insight4GRC hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -167,7 +168,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja Insight4GRC Britta Simon nevű felhasználó létrehozásához. Insight4GRC támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Insight4GRC elérésére, ha még nem létezik tett kísérlet során.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Insight4GRC ügyfél-támogatási csapatának](mailto:support.ss@rsmuk.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Insight4GRC ügyfél-támogatási csapatának](mailto:support.ss@rsmuk.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -199,7 +200,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

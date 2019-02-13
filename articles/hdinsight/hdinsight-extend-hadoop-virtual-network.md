@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 2e986e26f22e41e1cbf7b8d1c1af694522a01d06
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dfcbbacc5df394e0d2a515d557d655af0ea44d11
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821575"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169972"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -253,11 +253,11 @@ Kényszerített bújtatás egy felhasználó által meghatározott útválasztá
 >
 > Ha nem használja a hálózati biztonsági csoportok vagy felhasználó által megadott útvonalak forgalom szabályozása, figyelmen kívül hagyhatja ebben a szakaszban.
 
-Ha a hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalakat, engedélyeznie kell a HDInsight eléréséhez Azure állapotát és a felügyeleti szolgáltatások érkező forgalmat. Az alhálózaton belüli virtuális gépek közötti forgalmat is engedélyeznie kell. Az alábbi lépések segítségével engedélyezni kell az IP-címek keresése:
+Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure állapota és a felügyeleti szolgáltatások elérni a HDInsight-fürtök 443-as porton érkező forgalmat. Az alhálózaton belüli virtuális gépek közötti forgalmat is engedélyeznie kell. Az alábbi lépések segítségével engedélyezni kell az IP-címek keresése:
 
 1. Mindig engedélyeznie kell a következő IP-címekről érkező forgalmat:
 
-    | IP-cím | Engedélyezett port | Irány |
+    | Forrás IP-címe | Célport | Irány |
     | ---- | ----- | ----- |
     | 168.61.49.99 | 443 | Bejövő |
     | 23.99.5.239 | 443 | Bejövő |
@@ -269,7 +269,7 @@ Ha a hálózati biztonsági csoportok vagy a felhasználó által megadott útvo
     > [!IMPORTANT]  
     > Ha nem szerepel az Azure-régiót használ, csak használja az 1. lépésben négy IP-címek.
 
-    | Ország | Régió | Engedélyezett IP-címek | Engedélyezett port | Irány |
+    | Ország | Régió | Engedélyezett forrás IP-címei | Engedélyezett a céloldali port | Irány |
     | ---- | ---- | ---- | ---- | ----- |
     | Ázsia | Kelet-Ázsia | 23.102.235.122</br>52.175.38.134 | 443 | Bejövő |
     | &nbsp; | Délkelet-Ázsia | 13.76.245.160</br>13.76.136.249 | 443 | Bejövő |
@@ -306,15 +306,13 @@ Ha a hálózati biztonsági csoportok vagy a felhasználó által megadott útvo
 
 További információkért lásd: a [hálózati forgalom szabályozása](#networktraffic) szakaszban.
 
+A kimenő NSG-szabályok a fenti címek IP-címekként"Desitnation" elérni a virtuális hálózaton belül bármilyen forrásból érkező adatforgalom engedélyezéséhez.
+
+Ha a felhasználó által definiált routes(UDRs) használ, adjon meg egy útvonalat, és engedélyezi a kimenő forgalmat a virtuális hálózatról a fenti IP-címek a következő ugrás "Internet" értékre.
+    
 ## <a id="hdinsight-ports"></a> Szükséges portok
 
-Ha a kíván használni egy **tűzfal** a virtuális hálózat védelme érdekében, és hozzáférhet a fürthöz a bizonyos portokat, engedélyeznie kell a forgalmat a forgatókönyvhöz szükséges portokon. Alapértelmezés szerint nem kell az engedélyezési listára ezeket a portokat:
-
-* 53
-* 443
-* 1433
-* 11000-11999
-* 14000-14999
+Ha a kíván használni egy **tűzfal** és hozzáférjen a fürthöz kívül bizonyos portokon kell, hogy előfordulhat, hogy engedélyezi a forgalmat az ezeket a portokat a forgatókönyvhöz szükséges. Alapértelmezés szerint a portok nincsenek különleges engedélyezési mindaddig, amíg az előző szakaszban ismertetett azure felügyeleti adatforgalmat engedélyezett 443-as portot a fürt eléréséhez szükséges.
 
 Adott szolgáltatások portok listáját lásd: a [HDInsight az Apache Hadoop-szolgáltatások által használt portok](hdinsight-hadoop-port-settings-for-services.md) dokumentumot.
 

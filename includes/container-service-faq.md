@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: b0bb45233aa34dce6794638e5d49fc2b47bef71d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53615195"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213059"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(ELAVULT) Container Service – gyakori kérdések
 
@@ -85,7 +85,7 @@ Kereshet gyakran használt URL-címeket a fürt számára az Azure Portalon, az 
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>Hogyan frissíthetem a vezénylőt az üzembe helyezést követően?
 
-Az Azure Container Service jelenleg nem biztosít eszközöket a fürtre telepített vezénylő verziófrissítéséhez. Ha a Container Service egy későbbi verziót támogat, üzembe helyezhet egy új fürtöt. Egy másik lehetőség a vezénylőspecifikus eszközök használata, amelyek segítségével a már beüzemelt fürtök frissíthetők. Lásd például a [DC/OS verziófrissítését](https://dcos.io/docs/1.8/administration/upgrading/) ismertető cikket.
+Az Azure Container Service jelenleg nem biztosít eszközöket a fürtre telepített vezénylő verziófrissítéséhez. Ha a Container Service egy későbbi verziót támogat, üzembe helyezhet egy új fürtöt. Egy másik lehetőség a vezénylőspecifikus eszközök használata, amelyek segítségével a már beüzemelt fürtök frissíthetők. Lásd például a [DC/OS verziófrissítését](http://docs.mesosphere.com/1.12/installing/production/upgrading) ismertető cikket.
  
 ### <a name="where-do-i-find-the-ssh-connection-string-to-my-cluster"></a>Hol találom a fürtömhöz tartozó SSH kapcsolati sztringet?
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 5ab47165118b68e91c1218be35c6f88aa55350e2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 88051c45f21bdf11807ffcc63d8248cba81ae70b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982607"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118445"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurálás és felügyelet – gyakori kérdések az Azure Web Apps
 
@@ -262,6 +262,8 @@ Egyéni tartománynév használata App Service-alkalmazások által használt Az
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Az App Service-tanúsítvány meg van jelölve, a csalások. Hogyan oldhatom fel ez?
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Egy App Service-tanúsítvány vásárolt előfizetést, a tartomány ellenőrzése közben a következő üzenetet láthatja:
 
 "A tanúsítvány meg lett jelölve lehetséges csalás. A kérelem jelenleg felülvizsgálat alatt áll. Ha a tanúsítvány nem válik használhatóvá 24 órán belül, forduljon az Azure ügyfélszolgálatához."
@@ -271,12 +273,12 @@ Az üzenet azt jelzi, az csalás ellenőrzési folyamat akár 24 óráig is elta
 Ha az App Service-tanúsítvány továbbra is jelenjen meg ez az üzenet 24 óra múlva, futtassa a következő PowerShell-parancsfájlt. A parancsfájl kapcsolatba lép a [tanúsítványszolgáltató](https://www.godaddy.com/) közvetlenül a probléma megoldása érdekében.
 
 ```powershell
-Connect-AzureRmAccount
-Set-AzureRmContext -SubscriptionId <subId>
+Connect-AzAccount
+Set-AzContext -SubscriptionId <subId>
 $actionProperties = @{
     "Name"= "<Customer Email Address>"
     };
-Invoke-AzureRmResourceAction -ResourceGroupName "<App Service Certificate Resource Group Name>" -ResourceType Microsoft.CertificateRegistration/certificateOrders -ResourceName "<App Service Certificate Resource Name>" -Action resendRequestEmails -Parameters $actionProperties -ApiVersion 2015-08-01 -Force   
+Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Group Name>" -ResourceType Microsoft.CertificateRegistration/certificateOrders -ResourceName "<App Service Certificate Resource Name>" -Action resendRequestEmails -Parameters $actionProperties -ApiVersion 2015-08-01 -Force   
 ```
 
 ## <a name="how-do-authentication-and-authorization-work-in-app-service"></a>Hogyan hitelesítési és engedélyezési működik az App Service szolgáltatásban?

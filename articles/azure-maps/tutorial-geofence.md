@@ -3,18 +3,18 @@ title: Hozzon létre egy Azure mapsszel geokerítésen |} A Microsoft Docs
 description: A telepítő a geokerítésen az Azure Maps használatával.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/08/2019
+ms.date: 02/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bddaad9bd85d85bd18e8084e2e7f0127b08a07ea
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a991fbde8ce1ae43f18be4f13ae7edc5f60044bf
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007991"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108704"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Az Azure Maps segítségével egy geokerítésen beállítása
 
@@ -25,7 +25,7 @@ Az Event Griddel kapcsolatos további információkért lásd: [Azure Event Grid
 Ebben az oktatóanyagban azt tekintjük át hogyan lehet:
 
 > [!div class="checklist"]
-* Töltse fel az Azure Maps Közösséghez, a térkép adatok feltöltése API-val térképadatok szolgáltatás geokerítésen terület
+* Töltse fel az Azure Maps, az adatok feltöltése API-val adatszolgáltatás geokerítésen területet.
 *   Állítsa be az Event Grid geokerítésen események kezeléséhez.
 *   A telepítő geokerítésen eseményeket kezelő.
 *   Riasztásokat állíthat be a Logic Apps használatával geokerítésen eseményeihez.
@@ -40,7 +40,7 @@ Ebben az oktatóanyagban a lépések elvégzéséhez szüksége lesz megtekinté
 
 ## <a name="upload-geofences"></a>Töltse fel a geokerítések
 
-Szeretne feltölteni a geokerítésen a konstrukció hely, a térkép adatok feltöltése API-val, a postman alkalmazást használjuk. Az ebben az oktatóanyagban feltételezzük, van egy általános konstrukció hely területet, amely egy rögzített paraméter, amely a konstrukció berendezés kell sérti. Az időkorlát megsértésének súlyos küzdelemben, és az Operations Manager jelentett. Egy további kerítések optimalizált készlet használható, amelyek nyomon követik a különböző szerkezeti területek belül az összes konstrukció terület ütemezés alapján. Feltételezzük, hogy rendelkezik-e a fő geokerítésen alwebhely1, amely rendelkezik egy készlet lejárati időt, és ezt követően lejár. Több beágyazott geokerítések igény szerint hozhat létre. Alwebhely1 lehet például, ha munkahelyi lefolyása 1 – 4 héten az ütemezés és alwebhely 2, ahol munka történik hétre esik-e 5 – 7. Az összes ilyen kerítések a projekt elején egyetlen adatkészletként betölthetők és szabályokat időt és hely alapján nyomon követésére szolgál. Lásd: [Geokerítésen GeoJSON adatok](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) geokerítésen adatformátum további tájékoztatást. Megtekintheti a [adatok – feltöltés API-dokumentáció](https://docs.microsoft.com/rest/api/maps/mapdata/uploadpreview) további tájékoztatást a térképadatok feltöltése az Azure Maps szolgáltatásban.
+Szeretne feltölteni a geokerítésen a konstrukció hely, az adatok feltöltése API-val, a postman alkalmazást használjuk. Az ebben az oktatóanyagban feltételezzük, van egy általános konstrukció hely területet, amely egy rögzített paraméter, amely a konstrukció berendezés kell sérti. Az időkorlát megsértésének súlyos küzdelemben, és az Operations Manager jelentett. Egy további kerítések optimalizált készlet használható, amelyek nyomon követik a különböző szerkezeti területek belül az összes konstrukció terület ütemezés alapján. Feltételezzük, hogy rendelkezik-e a fő geokerítésen alwebhely1, amely rendelkezik egy készlet lejárati időt, és ezt követően lejár. Több beágyazott geokerítések igény szerint hozhat létre. Alwebhely1 lehet például, ha munkahelyi lefolyása 1 – 4 héten az ütemezés és alwebhely 2, ahol munka történik hétre esik-e 5 – 7. Az összes ilyen kerítések a projekt elején egyetlen adatkészletként betölthetők és szabályokat időt és hely alapján nyomon követésére szolgál. Lásd: [Geokerítésen GeoJSON adatok](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) geokerítésen adatformátum további tájékoztatást. Megtekintheti a [adatok – feltöltés API-dokumentáció](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) további információ az adatok feltöltése az Azure Maps szolgáltatásban.
 
 Nyissa meg a Postman alkalmazást, és kövesse az alábbi lépések végrehajtásával töltse fel a konstrukció hely geokerítésen az Azure Maps-adatainak feltöltése API használatával.
 
@@ -258,8 +258,7 @@ Az alábbiakban öt HTTP GET Geokerítések API-kérelem a különböző megfele
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerte, hogyan állítható be a geokerítésen, fel kell töltenie azt az Azure Maps Közösséghez, a térképadatok service Map adatok feltöltése API használatával. Azt is megtanulta használata az Azure Maps események rács iratkozzon fel, és a geokerítésen események kezelésére. 
+Ebben az oktatóanyagban megismerte, hogyan állítható be a geokerítésen, fel kell töltenie azt az Azure Maps, az adatok feltöltése API-val Data service. Azt is megtanulta használata az Azure Maps események rács iratkozzon fel, és a geokerítésen események kezelésére. 
 
-> [!div class="checklist"]
 * Lásd: [tartalomtípusok kezelése az Azure Logic Appsben](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type), megtudhatja, hogyan hozhat létre egy összetettebb logika JSON elemzése a Logic Apps használatával.
 * Többet is megtudni az Event Gridben eseménykezelőket, lásd: [események kezelők támogat az Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers).

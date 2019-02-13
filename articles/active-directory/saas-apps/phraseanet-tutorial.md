@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Phraseanet |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Phraseanet |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Phraseanet között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2018
 ms.author: jeedes
-ms.openlocfilehash: cfeadbf1d46d9e36f8619cafe29d9dd69aad6eec
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 49a311b74fbc48f414f530e962af39d17a346353
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49118570"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175540"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-phraseanet"></a>Oktatóanyag: Azure Active Directory-integráció az Phraseanet
+# <a name="tutorial-azure-active-directory-integration-with-phraseanet"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Phraseanet
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Phraseanet integrálása az Azure Active Directory (Azure AD).
 
@@ -149,7 +150,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-phraseanet-test-user"></a>Phraseanet tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Phraseanet hoz létre. Együttműködve [Phraseanet támogatási csapatának](mailto:support@alchemy.fr) a felhasználók hozzáadása az Phraseanet platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Phraseanet hoz létre. Együttműködve [Phraseanet támogatási csapatának](mailto:support@alchemy.fr) a felhasználók hozzáadása az Phraseanet platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

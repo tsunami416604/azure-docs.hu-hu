@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b964da7060ab2c793d15981b21aba7190a7b2bde
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c6f51164904ca51e66b9ce112cf9aec4324812c9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977922"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113948"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Oktatóanyag: A Key Vaultban tárolt SSL-tanúsítványokkal az Azure-beli Windows virtuális gépen webkiszolgáló védelme
 
@@ -68,7 +68,7 @@ New-AzKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Tanúsítvány létrehozása és tárolása a Key Vaultban
-Éles környezetben importálnia kell egy megbízható szolgáltató által aláírt érvényes tanúsítványt az [Import-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azurekeyvaultcertificate) paranccsal. Ebben az oktatóanyagban a következő példa mutatja be, hogyan hozhat létre olyan önaláírt tanúsítványt az [Add-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azurekeyvaultcertificate) paranccsal, amely az alapértelmezett tanúsítványszabályzatot használja a [New-AzureKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azurekeyvaultcertificatepolicy) parancsból. 
+Éles környezetben importálnia kell egy megbízható szolgáltató által aláírt érvényes tanúsítványt az [Import-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate) paranccsal. Ebben az oktatóanyagban a következő példa mutatja be, hogyan hozhat létre olyan önaláírt tanúsítványt az [Add-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) paranccsal, amely az alapértelmezett tanúsítványszabályzatot használja a [New-AzureKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/new-azurekeyvaultcertificatepolicy) parancsból. 
 
 ```azurepowershell-interactive
 $policy = New-AzureKeyVaultCertificatePolicy `
@@ -121,7 +121,7 @@ A virtuális gép létrehozása néhány percig tart. Az utolsó lépés haszná
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Tanúsítvány hozzáadása egy virtuális géphez a Key Vaultból
-Ha a tanúsítványt a Key Vaultból egy virtuális géphez szeretné adni, szerezze be a tanúsítvány azonosítóját a [Get-AzureKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azurekeyvaultsecret) paranccsal. A tanúsítvány hozzáadása a virtuális géphez a [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
+Ha a tanúsítványt a Key Vaultból egy virtuális géphez szeretné adni, szerezze be a tanúsítvány azonosítóját a [Get-AzureKeyVaultSecret](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) paranccsal. A tanúsítvány hozzáadása a virtuális géphez a [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
 
 ```azurepowershell-interactive
 $certURL=(Get-AzureKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció módja végzünk az |} A Microsoft Docs'
+title: 'Oktatóanyag: Úgy tesszük az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a úgy tesszük között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: jeedes
-ms.openlocfilehash: bc415ec7c577e221a1ab5af585dff5b4fc9ab7dc
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5dc6d8e2cf7ac4786f30484325406a1fe696dff3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259892"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165127"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>Oktatóanyag: Az Azure Active Directory-integráció módja végzünk az
+# <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>Oktatóanyag: Úgy tesszük az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a úgy tesszük az Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Úgy tesszük az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A úgy, hogy egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Az Azure AD-be, így még a nem az integráció konfigurálásához hozzá kell 
 
 **Úgy tesszük hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -198,7 +199,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja úgy tesszük Britta Simon nevű felhasználó létrehozásához. Úgy tesszük támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó próbál hozzáférni a úgy tesszük, ha még nem létezik jön létre.
 
 > [!Note]
-> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [módon azt tegye ügyfél-támogatási csapatának](mailto:support@waywedo.com).
+> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [módon azt tegye ügyfél-támogatási csapatának](mailto:support@waywedo.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -230,7 +231,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

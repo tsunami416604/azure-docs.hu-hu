@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f336f6fdb5cde638fe62d1410a9f993492be21ed
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6f91ccc93dcd2ac9b96379c4aa94d1f430faaf66
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747560"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118292"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
 
@@ -961,7 +961,7 @@ Ebben az esetben azt szeretné, akár anélkül, az operációs rendszer VHD fel
 * Jelentkezzen be az előfizetéshez *az login*
 * Válassza ki az előfizetését *az fiók beállítása – előfizetés `<subscription name or id`>*
 * Töltse fel a virtuális Merevlemezt *az storage blob feltöltése* – lásd: [az Azure Storage az Azure CLI használatával][storage-azure-cli]
-* (Nem kötelező) Hozzon létre egy felügyelt lemezt a virtuális Merevlemezt a *az lemez létrehozása* – lásd: https://docs.microsoft.com/cli/azure/disk#az_disk_create
+* (Nem kötelező) Hozzon létre egy felügyelt lemezt a virtuális Merevlemezt a *az lemez létrehozása* – lásd: https://docs.microsoft.com/cli/azure/disk
 * Hozzon létre egy új virtuális Gépet a feltöltött virtuális merevlemez vagy a felügyelt lemez-t adja meg az operációsrendszer-lemez *az virtuális gép létrehozása* és paraméter *--csatolása operációsrendszer-lemez*
 * Adatlemez hozzáadása egy új virtuális Gépet *az vm disk attach* és paraméter *– új*
 
@@ -990,7 +990,7 @@ Egy meglévő virtuális Gépet vagy virtuális merevlemez feltöltéséhez a he
 * Jelentkezzen be az előfizetéshez *az login*
 * Válassza ki az előfizetését *az fiók beállítása – előfizetés `<subscription name or id`>*
 * Töltse fel a virtuális Merevlemezt *az storage blob feltöltése* – lásd: [az Azure Storage az Azure CLI használatával][storage-azure-cli]
-* (Nem kötelező) Felügyelt lemez rendszerképének létrehozása a VHD-vel rendelkező *az lemezkép létrehozása* – lásd: https://docs.microsoft.com/cli/azure/image#az_image_create
+* (Nem kötelező) Felügyelt lemez rendszerképének létrehozása a VHD-vel rendelkező *az lemezkép létrehozása* – lásd: https://docs.microsoft.com/cli/azure/image
 * Hozzon létre egy új virtuális Gépet a feltöltött virtuális merevlemez vagy a felügyelt lemez rendszerképének-t adja meg az operációsrendszer-lemez *az virtuális gép létrehozása* és paraméter *– kép*
 
 **Sablon**

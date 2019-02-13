@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb2d3bc128a3508f85ac349242d9a33f2a88424e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 73cba950a159bd1f70fc231f0923e55332af0199
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022750"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108806"
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Helyezze át az adatokat egy OData-Adatcsatornából forrás az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,7 +31,7 @@ ms.locfileid: "54022750"
 
 Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység használatával helyezheti át egy OData-forráshoz. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.
 
-Másolhat adatokat egy OData-forráshoz bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. A Data factory jelenleg csak helyez át adatokat egy OData-forráshoz pedig más adattárakban, de amely adatokat helyez át más adattárakban egy OData-forráshoz, a nem támogatja. 
+Másolhat adatokat egy OData-forráshoz bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. A Data factory jelenleg csak helyez át adatokat egy OData-forráshoz pedig más adattárakban, de amely adatokat helyez át más adattárakban egy OData-forráshoz, a nem támogatja.
 
 ## <a name="supported-versions-and-authentication-types"></a>Támogatott verziók és hitelesítési típusok
 Az OData-összekötő 3.0 és 4.0-s verzióját, és mindkét felhőalapú OData adatait és a helyszíni OData-források lehet másolni az OData-verzió támogatja. Az utóbbi esetében az adatkezelési átjárót telepítenie kell. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) adatkezelési átjáró részleteit ismertető cikket.
@@ -46,15 +46,15 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyez�
 
 A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
-Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani: 
+Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
 1. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához.
-2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
-3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
+2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli.
+3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként.
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy OData-forráshoz használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása az OData-erőforrás az Azure Blob](#json-example-copy-data-from-odata-source-to-azure-blob) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy OData-forráshoz használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása az OData-erőforrás az Azure Blob](#json-example-copy-data-from-odata-source-to-azure-blob) című szakaszát.
 
 A következő szakaszok az OData-forrásra adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
 
@@ -78,7 +78,7 @@ A következő táblázat a JSON-elemeket társított OData-szolgáltatás leír�
     "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "http://services.odata.org/OData/OData.svc",
             "authenticationType": "Basic",
@@ -93,7 +93,7 @@ A következő táblázat a JSON-elemeket társított OData-szolgáltatás leír�
 ```json
 {
     "name": "ODataLinkedService",
-        "properties":
+    "properties":
     {
         "type": "OData",
         "typeProperties":
@@ -112,7 +112,7 @@ A következő táblázat a JSON-elemeket társított OData-szolgáltatás leír�
     "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "<endpoint of on-premises OData source e.g. Dynamics CRM>",
             "authenticationType": "Windows",
@@ -159,7 +159,7 @@ Ha a forrás típusa van **RelationalSource** (amely tartalmazza az OData) typeP
 
 | Tulajdonság | Leírás | Példa | Szükséges |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |"? $select neve, leírása és $top = = 5" |Nem |
+| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |"?$select=Name, Description&$top=5" |Nem |
 
 ## <a name="type-mapping-for-odata"></a>OData-leképezés típusa
 Ahogy korábban már említettük, az a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) a cikkben a másolási tevékenység végzi az automatikus típuskonverziók a fogadó-típusokat az alábbi kétlépéses módszer a forrás-típusok közül.
@@ -169,22 +169,22 @@ Ahogy korábban már említettük, az a [adattovábbítási tevékenységek](dat
 
 OData-helyez át adatokat, amikor a következő hozzárendeléseket használják OData-típusok közül .NET típusa.
 
-| OData-adatok típusa | Typ .NET |
+| OData-adatok típusa | .NET Type |
 | --- | --- |
-| Edm.Binary |Byte] |
-| Edm.Boolean |Logikai |
-| Edm.Byte |Byte] |
+| Edm.Binary |Byte[] |
+| Edm.Boolean |Bool |
+| Edm.Byte |Byte[] |
 | Edm.DateTime |DateTime |
-| Edm.Decimal |Tizedes tört |
-| Edm.Double |Dupla |
-| Edm.Single |Önálló |
-| Edm.Guid |GUID |
+| Edm.Decimal |Decimal |
+| Edm.Double |Double |
+| Edm.Single |Single |
+| Edm.Guid |Guid |
 | Edm.Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
-| Edm.String |Sztring |
-| Edm.Time |Időtartam |
+| Edm.String |String |
+| Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]
@@ -206,15 +206,15 @@ A minta adatokat másol egy Azure-blobba OData-forráshoz óránként lekérdez�
 ```json
 {
     "name": "ODataLinkedService",
-        "properties":
+    "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "http://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
-            }
         }
+    }
 }
 ```
 
@@ -222,13 +222,13 @@ A minta adatokat másol egy Azure-blobba OData-forráshoz óránként lekérdez�
 
 ```json
 {
-        "name": "AzureStorageLinkedService",
+    "name": "AzureStorageLinkedService",
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         }
-        }
+    }
 }
 ```
 
@@ -244,7 +244,7 @@ Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásb
         "type": "ODataResource",
         "typeProperties":
         {
-                "path": "Products"
+            "path": "Products"
         },
         "linkedServiceName": "ODataLinkedService",
         "structure": [],
@@ -256,7 +256,7 @@ Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásb
         "policy": {
             "retryInterval": "00:01:00",
             "retryTimeout": "00:10:00",
-            "maximumRetry": 3                
+            "maximumRetry": 3
         }
     }
 }
@@ -266,7 +266,7 @@ Adjon meg **elérési út** az adatkészlet definíciója nem kötelező megadni
 
 **Azure blobkimeneti adatkészlet:**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```json
 {
@@ -324,7 +324,6 @@ Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A ma
 }
 ```
 
-
 **Másolási tevékenység az OData-erőforrás és a fogadó Blob egy folyamatban:**
 
 A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **RelationalSource** és **fogadó** típusa **BlobSink**. A megadott SQL-lekérdezést a **lekérdezés** tulajdonság kiválasztja a legújabb (legújabb) adatok OData-forráshoz.
@@ -376,7 +375,6 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
 ```
 
 Adjon meg **lekérdezés** a folyamat definíciója nem kötelező megadni. A **URL-cím** van, hogy a Data Factory szolgáltatás használ-e adatokat: + (Kötelező) a társított szolgáltatásban megadott URL-címet a adatkészletet (nem kötelező) és a lekérdezés (nem kötelező) a folyamat a megadott elérési út.
-
 
 ### <a name="type-mapping-for-odata"></a>OData-leképezés típusa
 Említetteknek megfelelően az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) a cikkben a másolási tevékenység végzi az automatikus típuskonverziók a fogadó-típusokat az alábbi 2. lépés – a módszert használja a forrás típusa:

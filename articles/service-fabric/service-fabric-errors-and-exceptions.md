@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/20/2018
 ms.author: ryanwi
-ms.openlocfilehash: d96da4cc53299d978f8f69acb6a92d957c4f693e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fae345530a28bc7fdb875570546b125b13a79310
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697568"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104032"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Gyakori kivételek és hibák a FabricClient API-k használatakor
 A [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API-k lehetővé teszik a felügyeleti feladatokat hajthat végre egy Service Fabric-alkalmazás, szolgáltatás vagy fürt a fürt és az alkalmazások rendszergazdák. Például alkalmazás központi telepítése, frissítése és eltávolítása, a fürt állapotának ellenőrzése, vagy egy szolgáltatás tesztelése. Az alkalmazásfejlesztők és a fürt rendszergazdái használhatják a FabricClient API-k fejlesztéshez a Service Fabric-fürt és az alkalmazások kezelésére szolgáló eszközök.
@@ -31,7 +31,7 @@ Nincsenek műveletek, amelyek a FabricClient használatával végezheti el szám
 | [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception) |A [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) objektum egy lezárt állapotban van. Tud megszabadulni a [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) objektum használ, és a egy új példányosítható [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) objektum. |
 | [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception) |A művelet túllépte az időkorlátot. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) adja vissza, ha a művelet több mint MaxOperationTimeout befejezéséhez. |
 | [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception) |A hozzáférés-ellenőrzés a művelet nem sikerült. E_ACCESSDENIED adja vissza. |
-| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) |Futási hiba történt a művelet végrehajtása közben. A FabricClient módszerekkel potenciálisan nagyvállalat [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception), a [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception_ErrorCode) tulajdonság azt jelzi, hogy a kivétel pontos okát. Hibakódok vannak definiálva a [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) enumerálása. |
+| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) |Futási hiba történt a művelet végrehajtása közben. A FabricClient módszerekkel potenciálisan nagyvállalat [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception), a [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception.ErrorCode) tulajdonság azt jelzi, hogy a kivétel pontos okát. Hibakódok vannak definiálva a [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) enumerálása. |
 | [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception) |A művelet valamilyen feltétel átmeneti hiba miatt nem sikerült. Például egy művelet meghiúsulhat, mert a kvórum replikák szolgáltatás átmenetileg nem érhető el. Sikertelen műveletek újrapróbálható átmeneti kivételek felelnek meg. |
 
 Néhány gyakori [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) hibák, a visszaadható egy [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception):

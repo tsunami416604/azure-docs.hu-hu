@@ -16,20 +16,22 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 4078bbed4c6621eae31e5238b4e8803d6b7df7dc
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 198968d0d8abfc42b977e41b5f59e3aebac66bcc
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584908"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107905"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>Manuálisan a PowerShell használatával webalkalmazások méretezése
 
 Ebben a forgatókönyvben megtanulja, hogyan lehet erőforráscsoportot, App Service-csomagot és webalkalmazást létrehozni. Ezután egy példányból több példányra skálázza az App Service-csomagot.
 
-Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzureRmAccount` futtatásával hozza létre a kapcsolatot az Azure-ral.
+Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral.
 
 ## <a name="sample-script"></a>Példaszkript
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/scale-manual/scale-manual.ps1 "Scale a web app manually")]
 
@@ -38,7 +40,7 @@ Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutat�
 A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport, a webalkalmazás és az összes kapcsolódó erőforrás.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="script-explanation"></a>Szkript ismertetése
@@ -47,10 +49,10 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Létrehoz egy App Service-csomagot. |
-| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Webalkalmazást hoz létre. |
-| [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | Módosítja egy webalkalmazás konfigurációját. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazást hoz létre. |
+| [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Módosítja egy webalkalmazás konfigurációját. |
 
 ## <a name="next-steps"></a>További lépések
 

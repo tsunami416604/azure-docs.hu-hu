@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az adaptív Insights |} A Microsoft Docs'
+title: 'Oktatóanyag: Az adaptív Insights az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az adaptív Insights között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 74f38ef3043cfa0e6df40c264b72cc5eae38544e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e334795a63ff298ff8f0695340f35fdff1ad03e0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430289"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166521"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>Oktatóanyag: Azure Active Directory-integráció az adaptív insights segítségével
+# <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>Oktatóanyag: Az adaptív Insights az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan adaptív Insights integrálása az Azure Active Directory (Azure AD).
 
@@ -128,7 +129,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
@@ -220,7 +221,7 @@ Ahhoz, hogy jelentkezzen be az adaptív Insights az Azure AD-felhasználók, akk
 
    b. Válassza ki a **szerepkör**.
 
-   c. Kattintson a **elküldése**.
+   c. Kattintson a **Submit** (Küldés) gombra.
 
 >[!NOTE]
 >Bármely más adaptív Insights felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését adaptív Insights által biztosított API-k.

@@ -1,5 +1,5 @@
 ---
-title: Virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure SQL Database és az SQL Data Warehouse |} A Microsoft Docs
+title: Virtuális hálózatok végpontok, valamint egyetlen vagy készletezett Azure SQL-adatbázisok szabályait |} A Microsoft Docs
 description: Egy alhálózat jelölhetnek egy virtuális hálózati szolgáltatásvégpontot. Ezután a végpontot, az ACL-t az Azure SQL Database virtuális hálózati szabály. SQL-adatbázist, majd az összes virtuális gép és az alhálózat más csomópontok érkező kommunikációt fogad.
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ccc97adadef43390d2b82e206adb60962d6e1fb2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/11/2019
+ms.openlocfilehash: 6fdcf0b5baf28aee931307b28e1f161fddaa4d8e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453927"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118377"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Az Azure SQL virtuális hálózati Szolgáltatásvégpontok és szabályok használata
+# <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Az adatbázis-kiszolgálók virtuális hálózati Szolgáltatásvégpontok és szabályok használata
 
-*A virtuális hálózati szabályok* van egy tűzfal biztonsági funkció, amely szabályozza-e az Azure [SQL Database](sql-database-technical-overview.md) vagy [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) kiszolgáló elfogadja az érkező kommunikációt virtuális hálózatok adott alhálózatain. Ez a cikk elmagyarázza, hogy miért a virtuális hálózati szabály szolgáltatást néha a legjobb megoldás az, hogy biztonságosan lehetővé teszi a kommunikációt az Azure SQL Database és az SQL Data Warehouse.
+*Virtuális hálózati szabályok* van egy tűzfal biztonsági funkció, amely szabályozza, hogy az adatbázis-kiszolgáló az önálló adatbázisok és rugalmas készlet az Azure-ban [SQL Database](sql-database-technical-overview.md) vagy az adatbázisok a [SQL Data Az adatraktár](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) virtuális hálózatok adott alhálózatain érkező kommunikációt fogad el. Ez a cikk elmagyarázza, hogy miért a virtuális hálózati szabály szolgáltatást néha a legjobb megoldás az, hogy biztonságosan lehetővé teszi a kommunikációt az Azure SQL Database és az SQL Data Warehouse.
 
 > [!IMPORTANT]
-> Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ebben a cikkben leírtak *nem* a alkalmazni **Azure SQL Database felügyelt példányába**.
+> Ez a cikk az Azure SQL-kiszolgálóhoz, és az SQL Database és az SQL Data Warehouse-adatbázisok az Azure SQL-kiszolgálón létrehozott vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ebben a cikkben leírtak *nem* a alkalmazni egy **felügyelt példány** üzembe helyezése az Azure SQL Database, mert nem rendelkezik egy hozzá társított végpontot.
 
 Hozzon létre egy virtuális hálózati szabályt, hogy először lennie kell egy [virtuális hálózati szolgáltatásvégpont] [ vm-virtual-network-service-endpoints-overview-649d] a szabályhoz való hivatkozáshoz.
 

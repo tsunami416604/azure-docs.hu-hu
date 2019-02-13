@@ -4,7 +4,7 @@ description: A cikk ismerteti, hogyan védi az Azure SQL Database a vásárlói 
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: cce1ff1102c42bd1627caeba7b2c86432b228607
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: cd2ad16f910f5d2b3b801c8d54e9df7660751462
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170854"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103948"
 ---
 # <a name="azure-sql-database-security-features"></a>Az Azure SQL Database biztonsági funkciók    
 Az Azure SQL Database relációsadatbázis-szolgáltatás az Azure-ban biztosít. Az ügyféladatok védelme, és adja meg az erős biztonsági funkciókat, amelyeket az ügyfelek várható relációsadatbázis-szolgáltatás, SQL-adatbázis rendelkezik a saját csoportok biztonsági képességeket. Ezeket a képességeket, amely az Azure-ból örökölt útmutatóra épül.
 
-## <a name="security-capabilities"></a>Biztonsági képességei
+## <a name="security-capabilities"></a>Biztonsági képességek
 
 ### <a name="usage-of-the-tds-protocol"></a>A TDS protokoll használatát
 Az Azure SQL Database támogatja a csak a tabulált adatfolyam (TDS) protokoll, amely szükséges az adatbázis keresztül csak az alapértelmezett a TCP/1433-as port elérhetők lesznek.
@@ -61,9 +61,9 @@ Mivel a hálóvezérlő (FC) központi az orchestrator, az Azure fabric, jelent�
 ### <a name="vlan-isolation"></a>VLAN elkülönítése
 Az Azure éles hálózati környezetben van logikailag elkülönítve három elsődleges VLAN-ok:
 
-- A fő VLAN: amellyel az ügyfél nem megbízható csomópontokon.
+- A fő virtuális helyi hálózat: Amellyel az ügyfél nem megbízható csomópontokon.
 - A Szálcsatornás virtuális helyi hálózat: Megbízható FCs és a támogató rendszerek tartalmazza.
-- Az eszköz VLAN: megbízható hálózatok és egyéb infrastrukturális eszközök tartalmazza.
+- Az eszköz VLAN: Megbízható hálózatok és egyéb infrastrukturális eszközök tartalmazza.
 
 ### <a name="packet-filtering"></a>Hálózaticsomag-szűrés
 A IPFilter és a szoftver-tűzfalak, amelyek a gyökér operációs rendszer és a vendég operációs rendszer a csomópontok kapcsolat kikényszerítheti, és megakadályozza a jogosulatlan forgalom a virtuális gépek között.

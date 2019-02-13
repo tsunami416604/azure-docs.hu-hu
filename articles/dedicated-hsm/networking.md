@@ -3,7 +3,7 @@ title: Hálózati megfontolások – Azure dedikált HSM-be |} A Microsoft Docs
 description: Hálózati Azure dedikált HSM központi telepítésekre vonatkozó szempontok áttekintése
 services: dedicated-hsm
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 46a4cc5e48a9fe239a3c62bd72cf6a99e9bf76d8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d872c4eff3d55ddf5d98243055e831a7a223a8ef
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092883"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115453"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Az Azure dedikált HSM-hálózatok
 
@@ -39,7 +39,7 @@ A dedikált HSM-eszköz kiépítése, mielőtt ügyfelek először egy virtuáli
 
 ### <a name="subnets"></a>Alhálózatok
 
-Alhálózatok, külön címterek használható a virtuális hálózat szegmentáljon az Azure-erőforrások bennük. Dedikált HSM-EK a rendszer üzembe helyezi a virtuális hálózat egyik alhálózata. Minden egyes dedikált HSM eszközt, amely az ügyfél alhálózaton van üzembe helyezve a magánhálózati IP-cím érkezik ezt az alhálózatot. Az alhálózatot, amelyben a HSM-eszközre van üzembe helyezve a szolgáltatás, explicit módon delegálható kell: Microsoft.HardwareSecurityModules/dedicatedHSMs. Ez bizonyos engedélyt a HSM szolgáltatást üzembe helyezését az alhálózathoz. Dedikált HSM delegálás bizonyos házirend-korlátozások az alhálózaton ír elő. Hálózati biztonsági csoportok (NSG-k) és a felhasználó által megadott útvonalakkal (Udr) jelenleg nem támogatottak a delegált alhálózatokon. Ennek eredményeképpen egy alhálózat delegált dedikált HSM-EK, miután csak használat a HSM-erőforrások üzembe helyezése. Az alhálózatban egyéb ügyfél-erőforrások üzembe helyezés sikertelen lesz.
+Alhálózatok, külön címterek használható a virtuális hálózat szegmentáljon az Azure-erőforrások bennük. Dedikált HSM-EK a rendszer üzembe helyezi a virtuális hálózat egyik alhálózata. Minden egyes dedikált HSM eszközt, amely az ügyfél alhálózaton van üzembe helyezve a magánhálózati IP-cím érkezik ezt az alhálózatot. Explicit módon delegálva van az a szolgáltatás, amelyben a HSM-eszközre van üzembe helyezve az alhálózaton van szüksége: Microsoft.HardwareSecurityModules/dedicatedHSMs. Ez bizonyos engedélyt a HSM szolgáltatást üzembe helyezését az alhálózathoz. Dedikált HSM delegálás bizonyos házirend-korlátozások az alhálózaton ír elő. Hálózati biztonsági csoportok (NSG-k) és a felhasználó által megadott útvonalakkal (Udr) jelenleg nem támogatottak a delegált alhálózatokon. Ennek eredményeképpen egy alhálózat delegált dedikált HSM-EK, miután csak használat a HSM-erőforrások üzembe helyezése. Az alhálózatban egyéb ügyfél-erőforrások üzembe helyezés sikertelen lesz.
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute-átjáró

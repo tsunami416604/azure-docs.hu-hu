@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: aa0d209cf3da65bb3d50a6458ecc33cfcd85eecb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 92914b26497634de1a0c61738c6aba37acb37c17
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240596"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109317"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric-fürtök biztonsági forgatókönyveit
 Azure Service Fabric-fürt saját erőforrás. A feladata biztonságossá tétele a-fürtök segítségével megakadályozhatja a jogosulatlan felhasználókat csatlakozik hozzájuk. Biztonságos fürt különösen fontos, ha a fürtön futtatnak éles számítási feladatokat. Bár lehetséges hozhat létre nem biztonságos fürtöt, ha a fürt elérhetővé teszi a nyilvános internetre felügyeleti végpontok, névtelen felhasználók csatlakozhatnak hozzá. Nem biztonságos fürtökhöz nem támogatottak a termelési számítási feladatokhoz. 
@@ -78,14 +78,14 @@ Azure fürtök esetén a csomópontok biztonság érdekében azt javasoljuk, hog
 Önálló Windows Server-fürtök Ha rendelkezik Windows Server 2012 R2 és Windows Active Directory, javasoljuk, hogy a csoportosan felügyelt szolgáltatásfiókok használatához Windows biztonsági. Ellenkező esetben használja a Windows biztonsági Windows-fiókokkal.
 
 ## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
-Hozzáférés-vezérlés használatával férjenek hozzá az egyes fürtműveletek a különböző felhasználói csoportokhoz. Ez segít a fürt biztonságát. Hozzáférés-vezérlési kétféle fürthöz csatlakozó ügyfelek támogatottak: rendszergazdai és felhasználói szerepkört.
+Hozzáférés-vezérlés használatával férjenek hozzá az egyes fürtműveletek a különböző felhasználói csoportokhoz. Ez segít a fürt biztonságát. Hozzáférés-vezérlési kétféle fürthöz csatlakozó ügyfelek támogatottak: Rendszergazdai szerepkör és a felhasználói szerepkör.
 
 A rendszergazda szerepkörrel felruházott felhasználók teljes hozzáférése kezelési funkciókat, például olvasási és írási képességeket. Alapértelmezés szerint a felhasználói szerepkörhöz hozzárendelt felhasználók felügyeleti képességeket (például a lekérdezési képességek) csak olvasási hozzáféréssel rendelkeznek. Akkor is fel tudja oldani alkalmazásokat és szolgáltatásokat.
 
 Klient rendszergazdai és felhasználói szerepkörök beállítása a fürt létrehozásakor. Szerepkörök hozzárendelése azáltal, hogy különálló (például úgy, hogy a tanúsítványok vagy Azure AD) minden egyes szerepkör-típushoz. Alapértelmezett hozzáférés-vezérlési beállításokkal és alapértelmezett beállítások módosításával kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés a Service Fabric-ügyfelek](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509-tanúsítványokat és a Service Fabric
-X.509 digitális tanúsítványok gyakran használják az ügyfelek és kiszolgálók hitelesítéséhez. Is használhatók titkosítására és digitális aláírására. Service Fabric-fürt biztonságossá tétele és adja meg az alkalmazás biztonsági funkciók X.509-tanúsítványokat használ. X.509 digitális tanúsítványokkal kapcsolatos további információkért lásd: [-tanúsítványok használata](https://msdn.microsoft.com/library/ms731899.aspx). Használhat [Key Vault](../key-vault/key-vault-get-started.md) kattintva kezelheti az Azure Service Fabric-fürtök tanúsítványait.
+X.509 digitális tanúsítványok gyakran használják az ügyfelek és kiszolgálók hitelesítéséhez. Is használhatók titkosítására és digitális aláírására. Service Fabric-fürt biztonságossá tétele és adja meg az alkalmazás biztonsági funkciók X.509-tanúsítványokat használ. X.509 digitális tanúsítványokkal kapcsolatos további információkért lásd: [-tanúsítványok használata](https://msdn.microsoft.com/library/ms731899.aspx). Használhat [Key Vault](../key-vault/key-vault-overview.md) kattintva kezelheti az Azure Service Fabric-fürtök tanúsítványait.
 
 Fontos szempontokat kell figyelembe venni:
 

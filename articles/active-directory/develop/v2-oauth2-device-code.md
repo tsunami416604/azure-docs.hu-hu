@@ -17,12 +17,13 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: df45ec1478314e0d60f2c66a42a48801f1ce0643
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 36b717bfd05a71639c5d1f467af8e9238474160d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093087"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170194"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Az Azure Active Directory 2.0-s verzió és az OAuth 2.0 eszköz kódfolyamat
 
@@ -72,13 +73,13 @@ A sikeres válasz, hogy a felhasználó jelentkezzen be a szükséges adatokat t
 
 | Paraméter | Formátum | Leírás |
 | ---              | --- | --- |
-|`device_code`     |Karakterlánc| Hosszú karakterlánc, amellyel az ügyfél és az engedélyezési kiszolgáló között a munkamenet ellenőrzése.  Ez szolgál az ügyfél által a hozzáférési jogkivonatot kér az engedélyezési kiszolgálón. |
-|`user_code`       |Karakterlánc| A felhasználó a munkamenet egy másodlagos eszközön azonosításához használt rövid karakterlánc.|
+|`device_code`     |String| Hosszú karakterlánc, amellyel az ügyfél és az engedélyezési kiszolgáló között a munkamenet ellenőrzése.  Ez szolgál az ügyfél által a hozzáférési jogkivonatot kér az engedélyezési kiszolgálón. |
+|`user_code`       |String| A felhasználó a munkamenet egy másodlagos eszközön azonosításához használt rövid karakterlánc.|
 |`verification_uri`|URI| A felhasználónak el kell küldeni az URI a `user_code` annak érdekében, hogy jelentkezzen be. |
 |`verification_uri_complete`|URI| Egy URI egyesítése a `user_code` és a `verification_uri`(például Bluetooth egy eszközre vagy QR-kód) használatával a felhasználó nem szöveges továbbítására szolgál.  |
 |`expires_in`      |int| Mielőtt másodpercben a `device_code` és `user_code` lejár. |
 |`interval`        |int| Az ügyfélnek várnia kell lekérdezési kérelmek közötti másodpercek számát. |
-| `message`        |Karakterlánc| A felhasználói utasításokat emberek számára olvasható karakterlánc.  Ez azzal kell honosított egy **lekérdezési paraméter** az űrlap a kérésben `?mkt=xx-XX`, a megfelelő nyelvi kulturális környezet kód töltését. |
+| `message`        |String| A felhasználói utasításokat emberek számára olvasható karakterlánc.  Ez azzal kell honosított egy **lekérdezési paraméter** az űrlap a kérésben `?mkt=xx-XX`, a megfelelő nyelvi kulturális környezet kód töltését. |
 
 ## <a name="authenticating-the-user"></a>A felhasználó hitelesítése
 
@@ -130,7 +131,7 @@ Token sikeres válasz fog kinézni:
 
 | Paraméter | Formátum | Leírás |
 | --------- | ------ | ----------- |
-|`token_type` | Karakterlánc| Mindig "tulajdonosi. |
+|`token_type` | String| Mindig "tulajdonosi. |
 |`scope` | Szóközzel elválasztva karakterláncok | Egy hozzáférési jogkivonatot adott vissza, ha ez a hozzáférési jogkivonat érvénytelen, a hatókörök sorolja fel. |
 |`expires_in`| int | A csomagban foglalt hozzáférési jogkivonat előtt eltelt másodpercek száma esetén érvényes. |
 |`access_token`| Átlátszatlan karakterlánc | Kiadva a [hatókörök](v2-permissions-and-consent.md) , amely lett kérve.  |

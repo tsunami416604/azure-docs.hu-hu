@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 15b389e2158cb3a2070cc09b20f79f4274fde5d9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 680e3990afa3ed08c69402e9e5403cb9a6f3266a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699125"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175455"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Hálózati kapcsolat és az Azure Kubernetes Service (AKS) biztonsági védelmének bevált gyakorlata
 
@@ -120,6 +120,34 @@ Webalkalmazási tűzfal (WAF) egy további biztonsági réteget nyújt a bejöv�
 
 Load balancer vagy a belépő erőforrások továbbra is fut tovább finomíthatja az adatforgalom eloszlása az AKS-fürt. Alkalmazásátjáró-bejövőforgalom-vezérlőt egy erőforrás-definícióval, központilag kezelhetők. Első lépésként [hozzon létre egy Application Gateway Bejövőforgalom-vezérlőjéhez][app-gateway-ingress].
 
+## <a name="control-traffic-flow-with-network-policies"></a>Átvitelvezérlés forgalom hálózati házirendekkel
+
+**Ajánlott eljárásokkal kapcsolatos útmutatás** – hálózati házirendek segítségével a podok adatforgalom engedélyezéséhez vagy letiltásához. Alapértelmezés szerint az összes forgalom fürtözött pods között engedélyezett. A fokozott biztonság céljából definiálása a szabályokat, amelyek a pod kommunikáció korlátozása.
+
+A hálózati házirend egy Kubernetes-szolgáltatás, amely lehetővé teszi a podok közötti adatforgalom szabályozásához. Ha szeretné, beállítások, például a hozzárendelt címkék, névtérre vagy forgalmat port alapján adatforgalom engedélyezéséhez vagy letiltásához. A hálózati házirendek használatát szabályozza a forgalom egy natív felhőalapú megoldást kínál. Podok dinamikusan az AKS-fürt létrehozásakor, a szükséges hálózati házirendeket a rendszer automatikusan elvégez. Ne használja az Azure-beli hálózati biztonsági csoportok a pod-pod-forgalom szabályozása hálózati házirendek használja.
+
+Hálózati házirend használatára, a funkciót engedélyezni kell egy AKS-fürt létrehozásakor. Nem engedélyezhető a hálózati házirend egy meglévő AKS-fürtre. Tervez, győződjön meg arról, hogy engedélyezze a hálózati házirend-fürtökön, és használhatja őket igény szerint.
+
+A hálózati házirend használatával egy YAML-jegyzékfájlt Kubernetes erőforrásként jön létre. A szabályzatokkal a megadott podok, majd a bejövő és kimenő szabályok határozzák meg, hogy az adatforgalom is. Az alábbi példa egy hálózati házirend vonatkozik a podok a *app: háttérrendszer* címkét alkalmazza őket. A bejövő szabály csak lehetővé teszi a podok érkező forgalmat a *app: előtérbeli* címkét:
+
+```yaml
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: backend-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+```
+
+Első lépések a házirendek, lásd: [podok hálózati házirendek segítségével az Azure Kubernetes Service (AKS) közötti adatforgalom biztonságossá][use-network-policies].
+
 ## <a name="securely-connect-to-nodes-through-a-bastion-host"></a>Biztonságosan csatlakozhat a csomópontok bástyagazdagép keresztül
 
 **Ajánlott eljárásokkal kapcsolatos útmutatás** – távoli kapcsolatot az AKS-csomópontok nem teszik elérhetővé. Hozzon létre egy bástyagazdagép, de a mezőben, és a felügyeleti virtuális hálózati ugorhat. A bástyagazdagép használatával biztonságosan irányítja a forgalmat az AKS-fürt távoli felügyeleti feladatok be.
@@ -155,5 +183,6 @@ Ez a cikk a hálózati kapcsolatot és a biztonsági összpontosít. Hálózati 
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [app-gateway]: ../application-gateway/overview.md
+[use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md

@@ -1,6 +1,6 @@
 ---
-title: Fájl címterület-kezelés az Azure SQL Database |} A Microsoft Docs
-description: Ezen a lapon azt ismerteti, hogyan kezelheti az Azure SQL Database területe, és miként állapítható meg, ha szeretné-e egy adatbázist, valamint csökkentheti, hogy hogyan végrehajtásához egy adatbázis tömörítése a művelet-mintakódot biztosít.
+title: Az Azure SQL Database egyetlen vagy készletezett adatbázisok fájlt a címterület-kezelés |} A Microsoft Docs
+description: Ezen a lapon azt ismerteti, hogyan kezelheti az Azure SQL Database-ben egyetlen vagy készletezett adatbázisok területe, és annak megállapítása, ha szeretné-e zsugorítani egyetlen vagy készletezett adatbázisként, valamint, hogy hogyan végrehajtásához egy adatbázis tömörítése a művelet-mintakódot biztosít.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,21 +11,24 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: cf73708682a8434ffabaff101d6d6928671af4b6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/11/2019
+ms.openlocfilehash: 32cfb108964d67f865b1d03ffa745eb468feeea7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003720"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110149"
 ---
-# <a name="manage-file-space-in-azure-sql-database"></a>Lapozófájl-terület az Azure SQL Database kezelése
+# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Az Azure SQL Database-ben egyetlen vagy készletezett adatbázisok területe kezelése
 
-Ez a cikk ismerteti a különböző típusú tárterület az Azure SQL Database és a lépések, amelyeket elvégezhet a fájlhely lefoglalt adatbázisok és rugalmas adatbáziskészletekhez explicit módon kell kezelnie.
+Ez a cikk ismerteti a különböző típusú egyetlen vagy készletezett adatbázisok az Azure SQL Database és a lépéseket, amelyek segítségével kell elvégezni, ha a fájl terület adatbázisok számára lefoglalt tárhely és rugalmas adatbáziskészletekhez explicit módon kell kezelnie.
+
+> [!NOTE]
+> Ez a cikk az Azure SQL Database felügyelt példány beállítás nem vonatkozik.
 
 ## <a name="overview"></a>Áttekintés
 
-Azure SQL Database-ben nincsenek munkaterhelési mintákat, az adatbázisok alapjául szolgáló adatfájlok elosztása nagyobb, mint a használt adatok oldalak mennyisége válhat. Ez akkor fordulhat elő, amikor növekszik a használt terület, majd később adatok törlődnek. Az az oka, mert lefoglalt terület fájl van nem igényli automatikusan vissza adatok törlésekor.
+Egyetlen vagy készletezett adatbázisok Azure SQL Database-ben nincsenek munkaterhelési mintákat, az adatbázisok alapjául szolgáló adatfájlok elosztása nagyobb, mint a használt adatok oldalak mennyisége válhat. Ez akkor fordulhat elő, amikor növekszik a használt terület, majd később adatok törlődnek. Az az oka, mert lefoglalt terület fájl van nem igényli automatikusan vissza adatok törlésekor.
 
 A következő esetekben szükség lehet a fájlterület használatának monitorozására és az adatfájlok zsugorítására:
 
@@ -47,7 +50,7 @@ Azonban a következő API-kat is mérheti az adatbázisok és rugalmas lefoglalt
 
 ### <a name="shrinking-data-files"></a>Adatok fájlok zsugorítása folyamatban
 
-Az SQL Database szolgáltatás automatikusan nem csökkentheti az adatfájlokat az adatbázis teljesítményét a lehetséges hatás miatt nem használt lefoglalt terület felszabadítását.  Azonban ügyfelek előfordulhat, hogy adatokat fájlok zsugorítása keresztül önkiszolgáló ismertetett lépéseket követve hozhatna egyszerre [visszaigénylési fel nem használt lefoglalt terület](#reclaim-unused-allocated-space). 
+Az SQL Database szolgáltatás automatikusan nem csökkentheti az adatfájlokat az adatbázis teljesítményét a lehetséges hatás miatt nem használt lefoglalt terület felszabadítását.  Azonban ügyfelek előfordulhat, hogy adatokat fájlok zsugorítása keresztül önkiszolgáló ismertetett lépéseket követve hozhatna egyszerre [visszaigénylési fel nem használt lefoglalt terület](#reclaim-unused-allocated-space).
 
 > [!NOTE]
 > Adatfájlok, ellentétben az SQL Database szolgáltatás automatikusan zsugorítja naplófájlok, mivel a művelet nem befolyásolja az adatbázis teljesítményét. 
@@ -68,9 +71,9 @@ A következő ábra szemlélteti a különböző típusú tárterület-adatbázi
 
 ![tárolási hely adattípusok és a kapcsolatok](./media/sql-database-file-space-management/storage-types.png)
 
-## <a name="query-a-database-for-storage-space-information"></a>Egy adatbázis a tárolási terület adatainak lekérdezése
+## <a name="query-a-single-database-for-storage-space-information"></a>Önálló adatbázis tárolási hely információk lekérdezése
 
-A következő lekérdezések segítségével határozza meg a tárolási terület mennyisége adatbázishoz.  
+A következő lekérdezések segítségével határozza meg a tárolási terület mennyisége egyetlen adatbázishoz.  
 
 ### <a name="database-data-space-used"></a>Használt adatbázis-adatterület
 
@@ -144,7 +147,7 @@ Módosítsa a következő PowerShell-parancsprogram lefoglalt terület felsorol�
 
 A lekérdezés eredményeit az egyes a készletben található adatbázisok számára lefoglalt terület is hozzáadhatók együtt a teljes lemezterület meghatározásához a rugalmas készlet számára lefoglalt meghatározásához. A rugalmas készlet lefoglalt terület nem haladhatja meg a rugalmas készlet maximális méretét.  
 
-A PowerShell-parancsprogram szükséges az SQL Server PowerShell-modul – lásd: [letöltése a PowerShell-modul](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module?view=sql-server-2017) telepítéséhez.
+A PowerShell-parancsprogram szükséges az SQL Server PowerShell-modul – lásd: [letöltése a PowerShell-modul](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) telepítéséhez.
 
 ```powershell
 # Resource group name
@@ -225,7 +228,7 @@ Ezzel a paranccsal kapcsolatos további információkért lásd: [SHRINKDATABASE
 
 ### <a name="auto-shrink"></a>Automatikus – zsugorítás
 
-Azt is megteheti az Automatikus zsugorítás adatbázis esetén is engedélyezhető.  Automatikus zsugorítás csökkenti a felügyelet összetettségét fájlt, és kevesebb hatásos, az adatbázis teljesítményét, mint a SHRINKDATABASE vagy SHRINKFILE.  Automatikus zsugorítás a rugalmas készletek kezelése a számos adatbázis különösen hasznos lehet.  Automatikus zsugorítás azonban kevésbé hatékonyak a címek újraigénylési funkcióját, mint a SHRINKDATABASE és SHRINKFILE területe lehet.
+Azt is megteheti az Automatikus zsugorítás adatbázis esetén is engedélyezhető.  Automatikus zsugorítás csökkenti a felügyelet összetettségét fájlt, és kevesebb hatásos adatbázis teljesítményét, mint `SHRINKDATABASE` vagy `SHRINKFILE`.  Automatikus zsugorítás a rugalmas készletek kezelése a számos adatbázis különösen hasznos lehet.  Azonban az Automatikus zsugorítás kevésbé hatékonyak a címek újraigénylési funkcióját, mint a fájlhely lehet `SHRINKDATABASE` és `SHRINKFILE`.
 Automatikus zsugorítás engedélyezéséhez módosítsa az alábbi parancsban az adatbázis nevét.
 
 

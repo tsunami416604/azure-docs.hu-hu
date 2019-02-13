@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: f417338205b17c8b949156a6d5a60ef609458fc1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 504436060a71847641635b12baa63c79c77251e6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088136"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112209"
 ---
 # <a name="management-in-azure"></a>Felügyelet az Azure-ban
 
@@ -24,7 +24,7 @@ A következő ábra azt illusztrálja, hogy milyen felügyeleti területekre van
 
 ![Szabályok kezelése](../monitoring/media/management-overview/management-capabilities.png)
 
-Nincs olyan Azure-szolgáltatás teljesen beírja egy adott felügyeleti területen követelményeinek. Ehelyett minden egyes van, hogy több szolgáltatás együttes használata által. Bizonyos szolgáltatásokhoz, például az Application Insights, adja meg a webes alkalmazásokhoz célzott figyelési funkciókat. Mások, például a Log Analytics felügyeleti adatok tárolása más szolgáltatásokhoz. Ez a funkció lehetővé teszi a különböző szolgáltatások által gyűjtött különböző típusú adatok elemzéséhez.
+Nincs olyan Azure-szolgáltatás teljesen beírja egy adott felügyeleti területen követelményeinek. Ehelyett minden egyes van, hogy több szolgáltatás együttes használata által. Bizonyos szolgáltatásokhoz, például az Application Insights, adja meg a webes alkalmazásokhoz célzott figyelési funkciókat. Mások, például az Azure Monitor naplóira, felügyeleti adatok tárolására más szolgáltatásokhoz. Ez a funkció lehetővé teszi a különböző szolgáltatások által gyűjtött különböző típusú adatok elemzéséhez.
 
 A következő szakaszok röviden ismertetik az egyes felügyeleti területeket, és az ezek kezelésére hivatott Azure-szolgáltatások részletes ismertetésére mutató hivatkozásokat adnak meg.
 

@@ -4,7 +4,7 @@ description: Hitelesítés az AD-hez a Key Vaulttal
 services: key-vault
 documentationcenter: ''
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 4d897512e5c53222cb77906200e1a33e2eeec78e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 57f04a79396cd286ea87e6a8cc7b37f5459fa14c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074053"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111526"
 ---
 # <a name="authentication-requests-and-responses"></a>Hitelesítés, kérelmek és válaszok
 
@@ -91,7 +91,7 @@ Ez a témakör ismerteti az Azure Key Vault szolgáltatás-adatait. Azure REST-f
 
 ```  
 
-## <a name="authentication"></a>Hitelesítés  
+## <a name="authentication"></a>Authentication  
  Minden kérést az Azure Key Vault kell hitelesíteni. Az Azure Key Vault támogatja az Azure Active Directory hozzáférési jogkivonatok, amelyek be lehet szerezni az OAuth2 használatával [[RFC6749](http://tools.ietf.org/html/rfc6749)]. 
  
  Az alkalmazás regisztrálása és használata az Azure Key Vault hitelesítésével további információkért lásd: [ügyfélalkalmazás regisztrálása az Azure AD-](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).

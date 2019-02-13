@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: celested
-ms.openlocfilehash: 1be695384ff6828561fe8e1e858d052cba302dc0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 14957a94dbe8330553a4090e22d80d6cc2ee06eb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982694"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217326"
 ---
 # <a name="managing-access-to-apps"></a>Alkalmazásokhoz való hozzáférés kezelése
 Folyamatban lévő hozzáférés-kezelés, használati értékelő és jelentéskészítési továbbra is kihívást jelenthet, miután az alkalmazás integrálva van a szervezet identitáskezelő rendszerbe. Sok esetben a rendszergazdák vagy a segélyszolgálat kell elvégeznie az alkalmazásokhoz való hozzáférés kezelése a folyamatban lévő aktív szerepet. Egyes esetekben hozzárendelést egy általános vagy részlegszintű informatikai csapat történik. Gyakran előfordul, a hozzárendelés döntést célja, hogy az üzleti döntéshozó, azok révén az informatikai előtt jóváhagyásra van szükség a delegálható a hozzárendelést.  Integráció a meglévő automatikus identitás- és hozzáférés felügyeleti rendszer, mint a szerepköralapú hozzáférés-vezérlés (RBAC) vagy attribútum-szerepköralapú hozzáférés-vezérlés (ABAC) más szervezetek befektetni. Az integráció és a szabály fejlesztés általában a speciális és költséges lehet. Monitoring, vagy mindkét felügyeleti megközelítés a reporting saját külön, költséges és bonyolult befektetése jelenti.

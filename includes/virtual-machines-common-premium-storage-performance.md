@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 40e0230e6a8e03aa53a24f2497fcd016909c0ada
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d16214bf08b0e0b5a95acae380f8d644fc4461ce
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55757548"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213057"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: Nagyteljesítményű rendszer tervezése
 
@@ -63,7 +63,7 @@ Ezért fontos meghatározni az optimális átviteli sebesség és az IOPS érté
 
 ## <a name="latency"></a>Késés
 
-Késés egy alkalmazás egyetlen kérést kap, küldje el a storage-lemez és az ügyfélnek a válasz elküldéséhez szükséges idő. Ez a kritikus fontosságú méri, IOPS és átviteli sebesség mellett az alkalmazás teljesítményét. Egy prémium szintű tárolólemez késései ideig tart egy kérés adatainak lekérése és a kommunikációhoz, az alkalmazásnak. A Premium Storage egységesen rövid késleltetésével – biztosít. Ha engedélyezi a csak olvasható állomás-gyorsítótárazás a prémium szintű tárolólemezeket, sokkal kisebb olvasási késés beszerezheti. Ismertetjük a lemezek gyorsítótárazása későbbi szakaszban olvashat részletesebben az *alkalmazások teljesítményének optimalizálása*.
+Késés egy alkalmazás egyetlen kérést kap, küldje el a storage-lemez és az ügyfélnek a válasz elküldéséhez szükséges idő. Ez a kritikus fontosságú méri, IOPS és átviteli sebesség mellett az alkalmazás teljesítményét. Egy prémium szintű tárolólemez késései ideig tart egy kérés adatainak lekérése és a kommunikációhoz, az alkalmazásnak. A Premium Storage egységesen rövid késleltetésével – biztosít. Prémium szintű lemezek egyszámjegyű ezredmásodperces késéseket nyújt a legtöbb i/o-műveletek készültek. Ha engedélyezi a csak olvasható állomás-gyorsítótárazás a prémium szintű tárolólemezeket, sokkal kisebb olvasási késés beszerezheti. Ismertetjük a lemezek gyorsítótárazása későbbi szakaszban olvashat részletesebben az *alkalmazások teljesítményének optimalizálása*.
 
 Ha az alkalmazás magasabb IOPS és átviteli sebesség optimalizálása, negatív hatással lesz a késés, az alkalmazás. Miután az alkalmazás teljesítményének hangolása, mindig értékelje ki a késés nagy késésű váratlan viselkedés elkerülése érdekében az alkalmazás.
 

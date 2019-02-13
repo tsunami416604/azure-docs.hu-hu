@@ -4,7 +4,7 @@ description: Ez az útmutató segítségével kulcsforgatással és figyelési a
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: ''
 ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 10e60076fe527e6e773e966ccdae52a7fe99c4b2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: deb50a71b179c3cb03d5da22e336c42b26fe0bfa
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997200"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106120"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Állítsa be az Azure Key Vault kulcsforgatással és vizsgálattal
 
@@ -38,7 +38,7 @@ Ez a cikk ismerteti:
 - Ez bemutatja, hogyan figyelheti a key vault-naplók és a riasztást, ha váratlan kérelmeket.
 
 > [!NOTE]
-> Ez az oktatóanyag részletesen elmagyarázza, a kezdeti beállítás a key vault nem javasolt. Ezekről a [Get started with Azure Key Vault](key-vault-get-started.md) (Bevezetés az Azure Key Vault használatába) című cikkben találhat információt. Platformfüggetlen parancssori felületre vonatkozó utasításokat, lásd: [kezelése a Key Vault parancssori felület használatával](key-vault-manage-with-cli2.md).
+> Ez az oktatóanyag részletesen elmagyarázza, a kezdeti beállítás a key vault nem javasolt. Ez az információ: [Mi az Azure Key Vault?](key-vault-overview.md). Platformfüggetlen parancssori felületre vonatkozó utasításokat, lásd: [kezelése a Key Vault parancssori felület használatával](key-vault-manage-with-cli2.md).
 >
 >
 

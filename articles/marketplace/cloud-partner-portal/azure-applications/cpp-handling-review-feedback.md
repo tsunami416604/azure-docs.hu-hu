@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 0d3102a269d41fded112b0704c28ca2cf5df71a6
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 98ab9b25c59af194a1a81c600c373b2180272e10
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101150"
+ms.locfileid: "56106953"
 ---
 # <a name="handling-review-feedback"></a>Felülvizsgálat visszajelzés kezelése
 
@@ -71,7 +71,7 @@ Az alábbi eljárás segítségével áttekintheti a lekéréses kérelemben sze
 4. Kattintson a bal oldali fában, keresse meg a megjegyzést a környezetben a környező kód minden megjegyzést csomópontján.  Javítsa ki a forráskódot a csapatprojektben leírtak szerint a megjegyzést a probléma.
 
 > [!Note]
-> Az ajánlat technikai eszközök belül nem lehet szerkeszteni az Azure DevOps-környezetben a felülvizsgálati csapat.  A kiadók Ez az egy csak olvasható környezetben a tartalmazott forráskódja számára.  Azonban a megjegyzéseket, a Microsoft csapatától innovációval-válaszok hagyhatja.
+> Az ajánlat technikai eszközök a felülvizsgálati csapat Azure DevOps-környezetben már nem szerkesztheti.  A kiadók Ez az egy csak olvasható környezetben a tartalmazott forráskódja számára.  Azonban a megjegyzéseket, a Microsoft csapatától innovációval-válaszok hagyhatja.
 
    A következő példában a közzétevő rendelkezik vizsgálni, javítani és válaszolt az első kiadás.
 

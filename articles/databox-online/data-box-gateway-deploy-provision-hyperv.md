@@ -8,14 +8,14 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 3187c516ef22a97d2af89e08d5b99ad7a00d875d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: cf47919ead890f0ad0e89646dde26276ebfb1127
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166457"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109741"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>Oktatóanyag: Az Azure Data Box Gateway üzembe helyezése a Hyper-V-ben
+# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>Oktatóanyag: Kiépítése az Azure Data Box-átjáró a Hyper-V (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -66,7 +66,7 @@ Az eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
 
 Előkészületek:
 
-- Tekintse át a Data Box Gateway üzembe helyezésére vonatkozó hálózati követelményeket, és azoknak megfelelően konfigurálja az adatközponti hálózatot. További információkért lásd [a Data Box Gateway hálózati követelményeit](data-box-gateway-system-requirements.md#networking-requirements) ismertető szakaszt.
+- Tekintse át a Data Box Gateway üzembe helyezésére vonatkozó hálózati követelményeket, és azoknak megfelelően konfigurálja az adatközponti hálózatot. További információkért lásd [a Data Box Gateway hálózati követelményeit](data-box-gateway-system-requirements.md#networking-port-requirements) ismertető szakaszt.
 - Az eszköz optimális működéséhez gondoskodjon róla, hogy legalább 20 Mb/s sebességű internetes sávszélesség rendelkezésre álljon.
 
 
@@ -97,7 +97,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. Az Új virtuális gép varázsló **Előkészületek** lapján kattintson a **Tovább** gombra.
-5. A **Név és hely megadása** lapon adja meg a virtuális eszköz **nevét**. Kattintson a **Tovább** gombra.
+5. A **Név és hely megadása** lapon adja meg a virtuális eszköz **nevét**. Kattintson a **tovább**.
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. A **Generáció beállítása** lapon válassza a **2. generáció** lehetőséget a .vhdx-eszköz rendszerképének típusaként, majd kattintson a **Tovább** gombra.    
@@ -131,15 +131,15 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 
     ![](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
 1. Az Új virtuális merevlemez varázsló **Előkészületek** lapján kattintson a **Tovább** gombra.
-2. A **Lemezformátum kiválasztása** lapon fogadja el az alapértelmezett **VHDX** formátumot. Kattintson a **Tovább** gombra.
+2. A **Lemezformátum kiválasztása** lapon fogadja el az alapértelmezett **VHDX** formátumot. Kattintson a **tovább**.
    
-17. A **Lemeztípus kiválasztása** lapon állítsa a virtuális merevlemez típusát a **Dinamikusan bővülő** típusra (ajánlott). A **Rögzített méretű** lemez is működhet, de előfordulhat, hogy túl sokat kellene várnia. Azt javasoljuk, hogy ne alkalmazza a **Különbség** beállítást. Kattintson a **Tovább** gombra. 
+17. A **Lemeztípus kiválasztása** lapon állítsa a virtuális merevlemez típusát a **Dinamikusan bővülő** típusra (ajánlott). A **Rögzített méretű** lemez is működhet, de előfordulhat, hogy túl sokat kellene várnia. Azt javasoljuk, hogy ne alkalmazza a **Különbség** beállítást. Kattintson a **tovább**. 
 
     ![](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
-18. A **Név és hely megadása** lapon adja meg az adatlemez **nevét** és **helyét** (ez utóbbit tallózva is megkeresheti). Kattintson a **Tovább** gombra.
+18. A **Név és hely megadása** lapon adja meg az adatlemez **nevét** és **helyét** (ez utóbbit tallózva is megkeresheti). Kattintson a **tovább**.
 
     ![](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. A **Lemez beállítása** lapon válassza az **Új üres virtuális merevlemez létrehozása** lehetőséget, és adjon meg legalább **2 TB** méretet. Bár a minimális méretkövetelmény a 2 TB, mindig megadhat ennél nagyobb méretű lemezt is. Vegye figyelembe, hogy a lemez mérete az üzembe helyezést követően nem csökkenthető,  egy adatlemez hozzáadásával azonban bővíteni lehet. Kattintson a **Tovább** gombra.
+19. A **Lemez beállítása** lapon válassza az **Új üres virtuális merevlemez létrehozása** lehetőséget, és adjon meg legalább **2 TB** méretet. Bár a minimális méretkövetelmény a 2 TB, mindig megadhat ennél nagyobb méretű lemezt is. Vegye figyelembe, hogy a lemez mérete az üzembe helyezést követően nem csökkenthető,  egy adatlemez hozzáadásával azonban bővíteni lehet. Kattintson a **tovább**.
 
     ![](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. Az **Összefoglalás** lapon tekintse át a virtuális adatlemez adatait, és ha elégedett, kattintson a **Befejezés** gombra a lemez létrehozásához. A varázsló bezáródik, és a rendszer hozzáadja a virtuális merevlemezt a géphez.

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: bb9277a9e8f5e8bacb6b7aab7b9a5b411c86edbd
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 3d7fd9b3e7ab8e5f193fd3b34a804b9ed0780d66
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55967630"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105688"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Adatok átalakítása a Databricks az Azure Data Factoryban való használatával
 
@@ -89,13 +89,13 @@ Ez a sablon egyszerű megőrzéséhez a sablon nem hoz létre ütemezett esemén
 
     1.  **Fogadó** – az adatok másolását.
 
-        Válassza ki a létrehozott egy tárfiókot a [előfeltétel 1](#prerequisite), az a fogadó társított szolgáltatás.
+        Válassza ki az Előfeltételek 1, a fogadó társított szolgáltatásban létrehozott egy tárfiókot.
 
         ![7](media/solution-template-Databricks-notebook/Databricks-tutorial-image07.png)
 
     1.  **Databricks** – a Databricks-fürtön való kapcsolódáshoz
 
-        Hozzon létre egy Databricks társított szolgáltatás hozzáférési kulccsal létrehozott [előfeltétel 2.c](#prerequisite). Ha rendelkezik egy *interaktív fürt*, előfordulhat, hogy válassza ki, amely. (Ez a példa a *új feladatfürt* beállítás.)
+        Hozzon létre egy Databricks társított szolgáltatást, az előfeltételként szükséges 2.c létrehozott hozzáférési kulccsal. Ha rendelkezik egy *interaktív fürt*, előfordulhat, hogy válassza ki, amely. (Ez a példa a *új feladatfürt* beállítás.)
 
         ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
 

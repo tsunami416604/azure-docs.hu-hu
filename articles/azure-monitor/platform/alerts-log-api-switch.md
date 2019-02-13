@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e4e935a9c78950517623acdf8196d51793fff18a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 879a91d7007057e577631e157dae71f1566acab6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462460"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118224"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Naplóriasztások kapcsoló API beállításait
 
@@ -30,6 +30,7 @@ Számos előnnyel jár, létrehozásának és kezelésének, használatával ria
 
 - Lehetővé teszi [közötti munkaterület naplóbeli keresés](../log-query/cross-workspace-query.md) a riasztási szabályok és a külső erőforrások, például a Log Analytics-munkaterületek, vagy akár az Application Insights-alkalmazások az időtartományt
 - Használata esetén több mező lekérdezésben használt csoporthoz, [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) felhasználó megadhatja, melyik mezőt összesítés az Azure Portalon
+- Naplóriasztások használatával létrehozott [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) is időszak meghatározott legfeljebb 48 óra és az adatok újbóli lekérésére korábbinál hosszabb ideig
 - Riasztási szabályok létrehozása egy képernyőkép-készítés nélkül hozhat létre erőforrásokat, a három szintje egyetlen erőforrásként [örökölt Log Analytics-riasztás API](api-alerts.md)
 - A lekérdezés alapú naplóriasztások az Azure-ban – új összes változatának egyetlen programozható felületet [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) szabályok kezelése a Log Analytics, valamint az Application Insights segítségével
 - Minden új naplófájlt riasztási funkciók és a jövőbeli fejlesztés csak az új keresztül elérhető lesz [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
@@ -57,6 +58,13 @@ A kérelem törzse, amely tartalmazza az alábbi JSON-ban.
 }
 ```
 
+Az API-t is elérhető lesz egy PowerShell parancssori használatával [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása. Alábbi képen szemléltetett módon a minta Put művelet meghívásával ARMclient eszközzel a kapcsoló összes riasztási szabályt társított adott Log Analytics-munkaterületen.
+
+```PowerShell
+$switchJSON = {'scheduledQueryRulesEnabled': 'true'}
+armclient PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $switchJSON
+```
+
 Ha minden riasztási szabályok az a Log Analytics-munkaterület használata az új kapcsoló [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) van sikeres, a következő választ fognak adni.
 
 ```json
@@ -70,6 +78,12 @@ Felhasználók is ellenőrizheti az aktuális állapotát a Log Analytics-munkat
 
 ```
 GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
+```
+
+Hajtsa végre a fenti PowerShell-parancssor használatával történő [ARMClient](https://github.com/projectkudu/ARMClient) eszközről, tekintse meg az alábbi mintát.
+
+```PowerShell
+armclient GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
 Ha a megadott Log Analytics-munkaterület használatára lett átadva [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) csak akkor a válasz JSON lesz az alább felsorolt.

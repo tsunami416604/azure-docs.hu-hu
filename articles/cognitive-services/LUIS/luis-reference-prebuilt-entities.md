@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/12/2019
 ms.author: diberry
-ms.openlocfilehash: 60acd381015a513873c4c414d6f1d9f3adc54b84
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 880c825ab8923dbdf17277a51378b6f4b624e091
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870316"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179896"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitás / kulturális környezetet a LUIS-modell
 
@@ -34,6 +34,7 @@ Language Understanding (LUIS) biztosít az előre összeállított entitások. H
 |koreai|[ko-KR](#korean-entity-support)|
 |portugál|[pt-BR (Brazília)](#portuguese-brazil-entity-support)|
 |spanyol|[es-ES (Spanyolország)](#spanish-spain-entity-support), [gen-MX (Mexikó)](#spanish-mexico-entity-support)|
+|török|[török](#turkish-entity-support)|
 
 ## <a name="chinese-entity-support"></a>Kínai entitás támogatása
 
@@ -51,7 +52,7 @@ Támogatottak a következő entitásokat:
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
-[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    ✔   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
 [URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |
@@ -169,7 +170,7 @@ Támogatottak a következő entitásokat:
 ------|:------:|
 [Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
 [Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    ✔   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    -   | 
 [Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -190,7 +191,7 @@ Támogatottak a következő entitásokat:
 ------|:------:|
 [Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    ✔   |
 [Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    ✔   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    -   | 
 [Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -290,6 +291,32 @@ Támogatottak a következő entitásokat:
 Tekintse meg a megjegyzéseit a [elavult előre összeállított entitások](luis-reference-prebuilt-deprecated.md)
 
 Nem áll rendelkezésre, portugál (brazíliai) – összes tápfolyadékok cseréjét KeyPhrase ```pt-BR```.
+
+## <a name="turkish-entity-support"></a>Török entitás támogatása
+
+Támogatottak a következő entitásokat:
+
+|Előre összeállított entitások|```tr-tr``` |
+------|:------:|
+[Kor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    -   |
+[Pénznem](luis-reference-prebuilt-currency.md):<br>dollár<br>törtrész (például: minisztere)  |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    -   | 
+[Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    -   | 
+[E-mail](luis-reference-prebuilt-email.md)   |    -   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   | 
+[Szám](luis-reference-prebuilt-number.md)   |    -   |  
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    -   |  
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    -   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    -   | 
+[Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    -   | 
+[URL-cím](luis-reference-prebuilt-url.md)   |    -   |
+
+Tekintse meg a megjegyzéseit a [elavult előre összeállított entitások](luis-reference-prebuilt-deprecated.md)
+
+KeyPhrase nem érhető el.
+
 
 ## <a name="contribute-to-prebuilt-entity-cultures"></a>Hozzájárul az előre összeállított entitások kulturális környezetek
 Az előre összeállított entitások lettek kifejlesztve, a felismerő szöveges nyílt forráskódú projekt. [Közreműködés](https://github.com/Microsoft/Recognizers-Text) a projekthez. Ez a projekt a kulturális környezet pénznem vonatkozó példákat tartalmaz. 

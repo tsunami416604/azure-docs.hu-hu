@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 7cbfb8ec55d79f47b4f0aa4ec1e95e01a44c5448
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 60296400c40a1e79758dc53d60d2f1c61d79fd88
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099309"
+ms.locfileid: "56108194"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -34,7 +34,7 @@ Ez a szolgáltatás a következő Azure-szolgáltatásokhoz és -régiókhoz ér
 - **[Azure Database for PostgreSQL-kiszolgáló](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Hol érhető el adatbázis-szolgáltatás Azure-régióban általánosan elérhető.
 - **[Azure Database for MySQL-kiszolgáló](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Hol érhető el adatbázis-szolgáltatás Azure-régióban általánosan elérhető.
 - **[Az Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Az Azure nyilvános felhő összes régióban általánosan elérhető.
-- **[Az Azure Key Vault](.../key-vault/key-vault-overview-vnet-service-endpoints)**: Az Azure nyilvános felhő összes régióban általánosan elérhető.
+- **[Az Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)**: Az Azure nyilvános felhő összes régióban általánosan elérhető.
 - **[Az Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Az Azure nyilvános felhő összes régióban általánosan elérhető.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Az Azure nyilvános felhő összes régióban általánosan elérhető.
 - **[Az Azure Data Lake Store 1. generációs gyűjtések](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Hol érhető el az ADLS Gen1 minden Azure-régióban általánosan elérhető.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: cb888367e3204d6750c533eb8952c80947f90c11
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e7d271ce37209a49e1c75d6114ed07b11558df44
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486809"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104992"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager és klasszikus üzembe helyezési: Üzembe helyezési modellek és az erőforrások állapotának ismertetése
 
@@ -48,6 +48,9 @@ Az Azure 2014-ben mutatta be a Resource Managert, amely bevezette az erőforrás
 A Resource Manager bevezetésekor az összes erőforrás visszamenőleg hozzá lett rendelve alapértelmezett erőforráscsoportokhoz. Ha most klasszikus üzembe helyezéssel létrehoz egy erőforrást, az automatikusan az adott szolgáltatás egy alapértelmezett erőforráscsoportjában jön létre, még ha az üzemebe helyezéskor nem is határozza meg a csoportot. Azonban csupán azáltal, hogy egy erőforráscsoportba tartozik, az erőforrás még nincs konvertálva a Resource Manager-alapú modellre.
 
 ## <a name="understand-support-for-the-models"></a>A modellek támogatásának bemutatása
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Három forgatókönyvről érdemes szót ejteni:
 
 1. A Cloud Services nem támogatja a Resource Manager-alapú üzemi modellt.

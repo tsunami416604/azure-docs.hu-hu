@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: f1e90e0499372f78b91f3e21284f37178aff70ff
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2bba14e37e811c941c9709eef6b6d8ffd8322643
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075635"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167133"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
@@ -30,7 +31,7 @@ A jelszóvisszaíró támogatják az olyan környezetekben, amelyek:
 > [!WARNING]
 > A jelszóvisszaíró régebbi során és az Azure AD Connect verziója 1.0.8641.0 használó ügyfeleink számára megszűnnek működni a [Azure Access Control service (ACS) 2018. November 7 kivonják](../develop/active-directory-acs-migration.md). Az Azure AD Connect verziója 1.0.8641.0 és a régebbi engedélyezi többé a jelszóvisszaíró adott időpontban, mert az a funkciók ACS függenek.
 >
-> A szolgáltatás, az Azure AD Connect egy korábbi verziójáról egy újabb verzióra frissítés elkerülése érdekében tekintse meg a cikket [az Azure AD Connect: Egy előző verzióról a legújabbra frissítése](../hybrid/how-to-upgrade-previous-version.md)
+> A szolgáltatás, az Azure AD Connect egy korábbi verziójáról egy újabb verzióra frissítés elkerülése érdekében tekintse meg a cikket [az Azure AD Connect: frissítés egy előző verzióról a legújabbra](../hybrid/how-to-upgrade-previous-version.md)
 >
 
 A jelszóvisszaíró biztosítja:

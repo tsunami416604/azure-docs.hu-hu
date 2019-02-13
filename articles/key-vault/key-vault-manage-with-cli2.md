@@ -4,7 +4,7 @@ description: Ez a cikk segítségével automatizálhatja a gyakori feladatok a K
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 11ace1b5cce742579256d08ecfe9d9a7412d3d7c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1679fbe0dedc88ca3e8293512f9a79bb7da69790
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822493"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115623"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Az Azure CLI használatával a Key Vault felügyelete 
 
@@ -145,18 +145,18 @@ Ha azt szeretné, hogy az Azure Key Vault létrehozása egy szoftveres védelemm
 az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --protection software
 ```
 
-Ha rendelkezik egy meglévő kulcs egy .pem fájlra, feltöltheti az Azure Key Vaultba. Kiválaszthatja, hogy a szoftver vagy a HSM-kulcs védelme. A kulcs importálása a .pem-fájlt, és védje a szoftver a következő használatával:
+Ha rendelkezik egy meglévő kulcs egy .pem fájlra, feltöltheti az Azure Key Vaultba. Kiválaszthatja, hogy a szoftver vagy a HSM-kulcs védelme. Ebben a példában a kulcs importál a .pem-fájlt, és szoftvert, "hVFkk965BuUv" jelszóval való védelmét:
 
 ```azurecli
-az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "Pa$$w0rd" --protection software
+az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
 A kulcs, amelyet létrehozott, vagy az Azure Key Vaultba feltöltött, az URI használatával hivatkozhat. Használat **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** , mindig letöltheti a legfrissebb verziót. Használat https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] lekérni ezt a verziót. Például: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
 
-Adja hozzá a tárolóhoz, amely egy SQLPassword nevű jelszót, és a Pa$ $w0rd az Azure Key vault-Kulcstartók értékkel rendelkezik, amely egy titkos kulcsot. 
+Titkos kód hozzáadása a tárolóhoz, amely egy SQLPassword nevű jelszót, és, amely az Azure Key vault-Kulcstartók "hVFkk965BuUv" érték szerepel-e. 
 
 ```azurecli
-az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "Pa$$w0rd"
+az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
 Az URI használatával hivatkozhat az ezt a jelszót. Használat **https://ContosoVault.vault.azure.net/secrets/SQLPassword** mindig lekérni az aktuális verzióra, és https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] lekérni ezt a verziót. Például: **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**.
@@ -164,7 +164,7 @@ Az URI használatával hivatkozhat az ezt a jelszót. Használat **https://Conto
 Tanúsítvány importálása a használatával egy .pem- vagy .pfx-tárolóba.
 
 ```azurecli
-az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "Pa$$w0rd"
+az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "hVFkk965BuUv"
 ```
 
 Most megtekintheti a kulcsot, a titkos kulcsot vagy a létrehozott tanúsítványt:
@@ -203,7 +203,7 @@ Az alkalmazások az Azure Active Directoryval való regisztrálásának részlet
 Alkalmazás regisztrálása az Azure Active Directoryban:
 
 ```azurecli
-az ad sp create-for-rbac -n "MyApp" --password "Pa$$w0rd" --skip-assignment
+az ad sp create-for-rbac -n "MyApp" --password "hVFkk965BuUv" --skip-assignment
 # If you don't specify a password, one will be created for you.
 ```
 

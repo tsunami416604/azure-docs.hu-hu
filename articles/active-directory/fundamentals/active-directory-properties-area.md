@@ -11,12 +11,13 @@ ms.date: 04/17/2018
 ms.author: lizross
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: bfbb9a035c3f7a00de1610f1240448ff7b0b4abf
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 98b4e3585f25a0b081e30c5524678a0f7bb27942
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452598"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187270"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Adja hozzá a szervezet adatvédelmi információ az Azure Active Directoryval
 Ez a cikk bemutatja, hogyan Bérlői rendszergazda adhat hozzá adatvédelemmel kapcsolatos adatokat a szervezet Azure Active Directory (Azure AD) bérlő az Azure Portalon keresztül.

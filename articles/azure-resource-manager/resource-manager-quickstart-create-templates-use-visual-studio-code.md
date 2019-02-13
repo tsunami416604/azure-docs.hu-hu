@@ -13,14 +13,16 @@ ms.devlang: na
 ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 1a815158e1d215fdb0427f7a263ac0bea43a3e3c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: fd61c1d14abc65928f451100f6b5c6d496c4ab9f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497859"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113056"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Gyors útmutató: Az Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Útmutató Azure Resource Manager-sablonok létrehozásához és szerkesztéséhez a Visual Studio Code és az Azure Resource Manager Tools bővítmény használatával. Resource Manager-sablonokat a Visual Studio Code-ban a bővítmény nélkül is létrehozhat, a bővítmény azonban rendelkezik olyan automatikus kiegészítési szolgáltatásokkal, amelyek megkönnyítik a sablonok fejlesztését. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md).
 

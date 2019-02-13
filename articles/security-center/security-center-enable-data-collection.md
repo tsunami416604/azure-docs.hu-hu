@@ -4,7 +4,7 @@ description: " Ismerje meg, hogyan lehet engedélyezni az adatgyűjtést az Azur
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5150f782d13e198c59e8d79f09ba0ffead5426d3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a11a72bf2121bb36203002b69f06c74ca3e8a2d0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100538"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107855"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterülethez.

@@ -15,20 +15,22 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1302626d553aac2adb4eb7a1c9c044121d5d2fd9
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: e4daa27fa7ea441e571adcf0e90dfcab8b5e3256
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584903"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110387"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-github"></a>Webalkalmazás létrehozása és kód üzembe helyezése a GitHubról
 
 Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd üzembe helyezi a webalkalmazás kódját egy nyilvános GitHub-adattárból (folyamatos üzembe helyezés nélkül). A GitHubról való folyamatos üzembe helyezésről lásd: [Webalkalmazás létrehozása a GitHubról történő folyamatos üzembe helyezéssel](powershell-continuous-deployment-github.md).
 
-Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzureRmAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. Emellett szüksége lesz egy hivatkozásra a webalkalmazás kódját tartalmazó GitHub-adattárhoz.
+Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. Emellett szüksége lesz egy hivatkozásra a webalkalmazás kódját tartalmazó GitHub-adattárhoz.
 
 ## <a name="sample-script"></a>Példaszkript
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/deploy-github/deploy-github.ps1?highlight=1-2 "Create a web app and deploy code from GitHub")]
 
@@ -37,7 +39,7 @@ Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutat�
 A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport, a webalkalmazás és az összes kapcsolódó erőforrás.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="script-explanation"></a>Szkript ismertetése
@@ -46,10 +48,10 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Létrehoz egy App Service-csomagot. |
-| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Webalkalmazást hoz létre. |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Módosít egy erőforrást egy erőforráscsoportban. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazást hoz létre. |
+| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Módosít egy erőforrást egy erőforráscsoportban. |
 
 ## <a name="next-steps"></a>További lépések
 

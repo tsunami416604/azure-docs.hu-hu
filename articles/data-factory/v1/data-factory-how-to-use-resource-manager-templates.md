@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e9a99fcbe161e0b6cdabf1363ab3121a77869df7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9fb63ae141665dbeb64ee7046427098d4482aa55
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024858"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111322"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>A sablonok segítségével az Azure Data Factory-entitások létrehozása
 > [!NOTE]
@@ -236,7 +236,7 @@ Ajánlott eljárások a paraméterezése, lásd: [ajánlott eljárások az Azure
 * Beállítások régiónként eltérő környezetben (Példa: a fejlesztési, tesztelési és éles)
 * Titkos kulcsokat (például jelszavak)
 
-Ha a titkos kódok lekérése kell [Azure Key Vault](../../key-vault/key-vault-get-started.md) sablonok használata az Azure Data Factory-entitások üzembe helyezésekor, adja meg a **a key vault** és **název tajného kódu** , ahogyan a Példa:
+Ha a titkos kódok lekérése kell [Azure Key Vault](../../key-vault/key-vault-overview.md) sablonok használata az Azure Data Factory-entitások üzembe helyezésekor, adja meg a **a key vault** és **název tajného kódu** , ahogyan a Példa:
 
 ```JSON
 "parameters": {

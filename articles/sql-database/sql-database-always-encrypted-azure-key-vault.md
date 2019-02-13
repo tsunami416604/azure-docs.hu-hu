@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: fa37a83799ec50c7a8a87a0ac8a3232035a49234
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 670bdd43a4a581f349ca84c17ead67975fa0232e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755662"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110166"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Bizalmas adatok védelmét, és tárolja a titkosítási kulcsokat az Azure Key Vaultban
 
@@ -53,7 +53,7 @@ Az első a *Alkalmazásazonosító* és *kulcs*, kövesse a [hozzon létre egy A
 ## <a name="create-a-key-vault-to-store-your-keys"></a>Hozzon létre egy kulcstartót, hogy a kulcsokat
 Most, hogy az ügyfélalkalmazás van konfigurálva, és rendelkezik az alkalmazás azonosítója, hozzon létre egy kulcstartót, és a hozzáférési szabályzat konfigurálása, hogy Ön és az alkalmazás hozzáférhessen a tárolóhoz, titkos kódok (az Always Encrypted kulcsok). A *létrehozása*, *első*, *lista*, *bejelentkezési*, *ellenőrzése*, *wrapKey*, és *unwrapKey* engedélyekre szükség, egy új oszlopfőkulcs létrehozásához és a titkosítás beállítása az SQL Server Management Studio.
 
-Gyorsan létrehozhat egy kulcstartót a következő szkript futtatásával. Ezeket a parancsmagokat és a további információ a létrehozása és konfigurálása a key vault részletes leírását lásd: [első lépései az Azure Key Vault](../key-vault/key-vault-get-started.md).
+Gyorsan létrehozhat egy kulcstartót a következő szkript futtatásával. Ezeket a parancsmagokat és a további információ a létrehozása és konfigurálása a key vault részletes leírását lásd: [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md).
 
 ```powershell
     $subscriptionName = '<your Azure subscription name>'

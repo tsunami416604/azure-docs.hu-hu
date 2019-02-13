@@ -16,20 +16,22 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 898d9affcd529b75a5be551b00ab2369ac03cd98
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: becec6881ccc5c061a0f0e93e697852645f9388f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585059"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115963"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>Webkiszolgáló-naplókkal-WebApp figyelése
 
 Ebben a forgatókönyvben létrehoz egy erőforráscsoportot, egy App Service-csomagot és egy webalkalmazást, továbbá a webalkalmazást a webkiszolgáló-naplók engedélyezésére konfigurálja. Ezután letölti a naplófájlokat áttekintésre.
 
-Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzureRmAccount` futtatásával hozza létre a kapcsolatot az Azure-ral.
+Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral.
 
 ## <a name="sample-script"></a>Példaszkript
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1 "Monitor a web app with web server logs")]
 
@@ -38,7 +40,7 @@ Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutat�
 A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport, a webalkalmazás és az összes kapcsolódó erőforrás.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="script-explanation"></a>Szkript ismertetése
@@ -47,11 +49,11 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Létrehoz egy App Service-csomagot. |
-| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Webalkalmazást hoz létre. |
-| [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | Módosítja egy webalkalmazás konfigurációját. |
-| [Get-AzureRmWebAppMetrics](/powershell/module/azurerm.websites/get-azurermwebappmetrics) | Lekéri egy webalkalmazás metrikáit. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazást hoz létre. |
+| [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Módosítja egy webalkalmazás konfigurációját. |
+| [Get-AzWebAppMetrics](/powershell/module/az.websites/get-azwebappmetrics) | Lekéri egy webalkalmazás metrikáit. |
 
 ## <a name="next-steps"></a>További lépések
 

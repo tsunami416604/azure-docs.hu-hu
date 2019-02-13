@@ -4,7 +4,7 @@ description: Ez a cikk számos ajánlott eljárások az Identitáskezelés és h
 services: security
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: 64d940552f2790c08e8087f279990d0a6c595bac
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bf5143c3c0c75bc37f6981c6d995339e41baa4c4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245727"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112104"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure identitáskezelési és hozzáférés-vezérlés ajánlott biztonsági eljárások
 
@@ -61,11 +61,11 @@ Az alábbi szakaszok az Azure AD identitás- és hozzáférés biztonsági véde
 Az egy [hibrid identitás](https://resources.office.com/ww-landing-M365E-EMS-IDAM-Hybrid-Identity-WhitePaper.html?) a forgatókönyvben javasoljuk, hogy integrálja a helyszíni és felhőbeli címtárakban. Integrációja lehetővé teszi az informatikai csapat fiókokat szeretne kezelni egy egyetlen helyről, függetlenül attól, amelyben egy új fiókot létrehozza. Integráció a felhasználók számára hatékonyabb munkavégzést felhő- és a helyszíni erőforrások eléréséhez közös identitás megadásával is segít.
 
 
-**Ajánlott eljárás**: a helyszíni címtárak integrálása az Azure ad-ben.  
-**Részletes**: használata [az Azure AD Connect](../active-directory/connect/active-directory-aadconnect.md) szinkronizálni szeretné a helyszíni címtárát a felhőalapú címtárral.
+**Ajánlott eljárás**: A helyszíni címtárak integrálása az Azure ad-ben.  
+**Részletes**: Használat [az Azure AD Connect](../active-directory/connect/active-directory-aadconnect.md) szinkronizálni szeretné a helyszíni címtárát a felhőalapú címtárral.
 
-**Ajánlott eljárás**: kapcsolja be a Jelszókivonat-szinkronizálást.  
-**Részletes**: a Jelszókivonat-szinkronizálás funkciója felhasználói jelszókivonatok egy helyszíni Active Directory-példányból egy felhőbeli Azure-bA a kivonatok szinkronizálását használt AD-példányt.
+**Ajánlott eljárás**: Kapcsolja be a Jelszókivonat-szinkronizálást.  
+**Részletes**: A Jelszókivonat-szinkronizálás funkciója felhasználói jelszókivonatok egy helyszíni Active Directory-példányból egy felhőbeli Azure-bA a kivonatok szinkronizálását használt AD-példányt.
 
 Akkor is, ha úgy dönt, hogy összevonási használata az Active Directory összevonási szolgáltatások (AD FS) vagy az egyéb identitás-szolgáltatóktól, igény szerint állíthat be a Jelszókivonat-szinkronizálás biztonsági abban az esetben a helyszíni kiszolgálók sikertelen, vagy ideiglenesen elérhetetlenné válnak. Ez lehetővé teszi a felhasználók számára, hogy jelentkezzen be a szolgáltatásba ugyanazzal a jelszóval jelentkezzen be a helyszíni Active Directory-példányból használnak. Azt is lehetővé teszi, hogy Identity Protection hitelesítő adatokkal való visszaélés észlelése ezen jelszókivonatokat az ismert, hogy sérült, ha a felhasználó rendelkezik az e-mail címet és jelszót más szolgáltatásokban használt nincs csatlakoztatva az Azure AD-jelszavakkal összehasonlításával.
 
@@ -79,8 +79,8 @@ Mobileszközök és a felhő-és felhőközpontú világában a szeretné enged�
 
 Az azonos identitáskezelési megoldás az alkalmazások és erőforrások használatával érheti el egyszeri Bejelentkezést. És a felhasználók ugyanazokat a hitelesítő adatok segítségével jelentkezzen be, és elérhessék az erőforrásokat, hogy kell, hogy az erőforrásokat a helyszínen legyenek-e, vagy a felhőben.
 
-**Ajánlott eljárás**: egyszeri bejelentkezés engedélyezése.  
-**Részletes**: Azure ad-ben [kiterjeszti a helyszíni Active Directory](../active-directory/connect/active-directory-aadconnect.md) a felhőbe. A tartományhoz csatlakoztatott eszközök a vállalati erőforrásokhoz és a web- és SaaS-alkalmazásokhoz, amelyek a munkájuk elvégzéséhez szükséges összes felhasználó az elsődleges munkahelyi vagy iskolai fiókkal használható. Felhasználóknak nem kell észben felhasználónevei és jelszavai között több példányban is, és az alkalmazás-hozzáférés is automatikusan üzembe helyezett (vagy eltávolítása) szervezet csoporttagságok és a egy alkalmazott állapotuk alapján. A katalógusban szereplő alkalmazások, illetve az [Azure AD-alkalmazásproxy](../active-directory/active-directory-application-proxy-get-started.md) használatával kifejlesztett és közzétett saját helyszíni alkalmazások hozzáférése is szabályozható.
+**Ajánlott eljárás**: Engedélyezze az egyszeri Bejelentkezést.  
+**Részletes**: Az Azure AD [kiterjeszti a helyszíni Active Directory](../active-directory/connect/active-directory-aadconnect.md) a felhőbe. A tartományhoz csatlakoztatott eszközök a vállalati erőforrásokhoz és a web- és SaaS-alkalmazásokhoz, amelyek a munkájuk elvégzéséhez szükséges összes felhasználó az elsődleges munkahelyi vagy iskolai fiókkal használható. Felhasználóknak nem kell észben felhasználónevei és jelszavai között több példányban is, és az alkalmazás-hozzáférés is automatikusan üzembe helyezett (vagy eltávolítása) szervezet csoporttagságok és a egy alkalmazott állapotuk alapján. A katalógusban szereplő alkalmazások, illetve az [Azure AD-alkalmazásproxy](../active-directory/active-directory-application-proxy-get-started.md) használatával kifejlesztett és közzétett saját helyszíni alkalmazások hozzáférése is szabályozható.
 
 Egyszeri bejelentkezés segítségével a felhasználók számára elérhetővé a [SaaS-alkalmazások](../active-directory/active-directory-appssoaccess-whatis.md) alapján a munkahelyi vagy iskolai fiókjával az Azure ad-ben. Ez akkor nem csupán a Microsoft SaaS-alkalmazások, hanem más alkalmazásoknál, mint például [Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) és [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Beállíthatja, hogy az alkalmazás használhatja az Azure ad-hez mint egy [SAML-alapú identitás](../active-directory/fundamentals-identity.md) szolgáltató. Az Azure AD biztonsági vezérlőként nem bocsát ki egy jogkivonatot, amely lehetővé teszi a felhasználóknak az alkalmazás bejelentkezni, kivéve, ha azok még kapott hozzáférést az Azure AD-n keresztül. Lehet hozzáférést biztosítani közvetlenül, vagy egy csoportot, hogy a felhasználó a tagja.
 
@@ -92,18 +92,18 @@ Felhasználók a szervezet erőforrásaihoz férhetnek hozzá az eszközök és 
 
 Biztonság és hatékonyság egyensúlyt kell hogyan erőforrás érhető el, mielőtt egy hozzáférés-vezérlő döntési gondolja. Az Azure AD feltételes hozzáférésével megfelelhet ennek a követelménynek. A feltételes hozzáférés automatikus döntést hozhasson a hozzáférésről vonatkozó feltételek alapuló a felhőalkalmazásokhoz hozzáférő teheti meg.
 
-**Ajánlott eljárás**: kezelése és a vállalati erőforrásokhoz való hozzáférés szabályozása.  
-**Részletes**: konfigurálja az Azure AD- [feltételes hozzáférési](../active-directory/active-directory-conditional-access-azure-portal.md) egy csoport, a hely és a SaaS-alkalmazások és az Azure AD-hez csatlakozó alkalmazásokat az alkalmazás bizalmassági szintje alapján.
+**Ajánlott eljárás**: Kezelheti, és a vállalati erőforrásokhoz való hozzáférés szabályozása.  
+**Részletes**: Konfigurálja az Azure AD- [feltételes hozzáférési](../active-directory/active-directory-conditional-access-azure-portal.md) egy csoport, a hely és a SaaS-alkalmazások és az Azure AD-hez csatlakozó alkalmazásokat az alkalmazás bizalmassági szintje alapján.
 
 ## <a name="enable-password-management"></a>Jelszókezelés engedélyezése
 
 Ha több bérlő vagy felhasználók számára engedélyezni kívánja [alaphelyzetbe állíthatja saját jelszavait](../active-directory/active-directory-passwords-update-your-own-password.md), fontos, hogy a megfelelő biztonsági házirendek visszaélés megakadályozására használja.
 
-**Ajánlott eljárás**: állítsa be az önkiszolgáló jelszó-visszaállítást (SSPR) a felhasználók számára.  
-**Részletes**: az Azure AD használata [önkiszolgáló jelszó-visszaállítási](../active-directory-b2c/active-directory-b2c-reference-sspr.md) funkció.
+**Ajánlott eljárás**: Állítsa be a felhasználók önkiszolgáló jelszó-visszaállítás (SSPR).  
+**Részletes**: Az Azure AD használata [önkiszolgáló jelszó-visszaállítási](../active-directory-b2c/active-directory-b2c-reference-sspr.md) funkció.
 
-**Ajánlott eljárás**: figyelő hogyan, vagy ha az SSPR igazán használatban van.  
-**Részletes**: figyelheti a felhasználókat, akik az Azure AD-vel regisztrálja [jelszó alaphelyzetbe állítása regisztrációs Tevékenységjelentés](../active-directory/active-directory-passwords-get-insights.md). Az Azure AD által nyújtott jelentéskészítési szolgáltatás segít előre elkészített jelentéseket a kérdésre. Ha a megfelelően licencelt, is létrehozhat egyéni lekérdezéseket.
+**Ajánlott eljárás**: A figyelő hogyan, vagy ha az SSPR igazán használatban van.  
+**Részletes**: Figyelheti a felhasználókat, akik az Azure AD-vel regisztrálja [jelszó alaphelyzetbe állítása regisztrációs Tevékenységjelentés](../active-directory/active-directory-passwords-get-insights.md). Az Azure AD által nyújtott jelentéskészítési szolgáltatás segít előre elkészített jelentéseket a kérdésre. Ha a megfelelően licencelt, is létrehozhat egyéni lekérdezéseket.
 
 ## <a name="enforce-multi-factor-verification-for-users"></a>A felhasználók számára a többtényezős ellenőrzési kényszerítése
 
@@ -113,16 +113,16 @@ A kétlépéses ellenőrzést igénylő több lehetőség van. Az Ön számára 
 
 Az alábbiakban lehetőségeket és előnyöket a kétlépéses ellenőrzés engedélyezése:
 
-**1. lehetőség**: [többtényezős hitelesítés engedélyezése felhasználói állapot módosításával](../active-directory/authentication/howto-mfa-userstates.md).   
+**1. lehetőség**: [Többtényezős hitelesítés engedélyezése felhasználói állapot módosításával](../active-directory/authentication/howto-mfa-userstates.md).   
 **Értékelemek**: Ez az a kétlépéses ellenőrzést igénylő hagyományos módszere. Mindkét együttműködik [Azure multi-factor Authentication a felhőben és az Azure multi-factor Authentication-kiszolgáló](../active-directory/authentication/concept-mfa-whichversion.md). Ezzel a módszerrel megköveteli a felhasználóktól a kétlépéses hitelesítés végrehajtására, minden alkalommal, amikor bejelentkeznek, és felülírja a feltételes hozzáférési szabályzatokat.
 
-**2. lehetőség**: [többtényezős hitelesítés engedélyezése a feltételes hozzáférési szabályzattal együtt](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access).   
+**2. lehetőség**: [Többtényezős hitelesítés engedélyezése a feltételes hozzáférési szabályzattal együtt](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access).   
 **Értékelemek**: Ez a beállítás lehetővé teszi a kétlépéses ellenőrzéshez meghatározott feltételek használatával kéri [feltételes hozzáférési](../active-directory/active-directory-conditional-access-azure-portal.md). Az egyes esetekben a felhasználó jelentkezzen be a különböző helyeken, nem megbízható eszközök vagy alkalmazások, amelyeket kockázatosnak lehet. Az egyes esetekben, ahol szükséges a kétlépéses ellenőrzés meghatározása lehetővé teszi, hogy ne állandó kérő üzenet, a felhasználók számára, amely lehet kellemetlen felhasználói felületet.
 
 Ez az a leginkább rugalmas módon engedélyezze a kétlépéses ellenőrzést, a felhasználók számára. Egy feltételes hozzáférési szabályzat engedélyezése csak az Azure multi-factor Authentication a felhőben működik, és az Azure AD prémium szintű funkció. Ez a módszer a további tájékoztatást talál [üzembe helyezése a felhőalapú Azure multi-factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md).
 
-**3. lehetőség**: többtényezős hitelesítés engedélyezése a feltételes hozzáférési szabályzatokat felhasználói és bejelentkezési kockázatát kiértékelésével [Azure AD Identity Protection](../active-directory/authentication/tutorial-risk-based-sspr-mfa.md).   
-**Értékelemek**: Ez a beállítás lehetővé teszi, hogy:
+**3 lehetőség**: Multi-factor Authentication szolgáltatás engedélyezése a feltételes hozzáférési szabályzatokat felhasználói és bejelentkezési kockázatát kiértékelésével [Azure AD Identity Protection](../active-directory/authentication/tutorial-risk-based-sspr-mfa.md).   
+**Értékelemek**: Ez a beállítás teszi lehetővé:
 
 - A szervezet identitásait érintő lehetséges biztonsági résekről észleli.
 - Konfigurálja az automatikus válaszok észlelt gyanús tevékenységeket, amelyek kapcsolódnak a szervezet identitásait.
@@ -151,11 +151,11 @@ Azt javasoljuk, hogy fejleszthet, és hajtsa végre az internetes támadók emel
 
 A következő található az ajánlott eljárásokat foglalja össze [az Azure AD felhőalapú és hibrid környezetekben eléréséhez Securing privileged](../active-directory/users-groups-roles/directory-admin-roles-secure.md):
 
-**Ajánlott eljárás**: kezelése, szabályozása és figyelése a kiemelt jogosultságú fiókok hozzáférést.   
-**Részletes**: kapcsolja be a [az Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/active-directory-securing-privileged-access.md). Privileged Identity Management bekapcsolása után értesítést kap e-mailek a privilegizált hozzáférés érdekében szerepkörök változása. Ezek az értesítések magas jogosultsági szintű szerepkörökhöz a címtárban további felhasználók hozzáadásakor adja meg a korai figyelmeztetéseket.
+**Ajánlott eljárás**: Kezelheti, irányíthatja, és figyelheti a kiemelt jogosultságú fiókok hozzáférést.   
+**Részletes**: Kapcsolja be a [az Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/active-directory-securing-privileged-access.md). Privileged Identity Management bekapcsolása után értesítést kap e-mailek a privilegizált hozzáférés érdekében szerepkörök változása. Ezek az értesítések magas jogosultsági szintű szerepkörökhöz a címtárban további felhasználók hozzáadásakor adja meg a korai figyelmeztetéseket.
 
-**Ajánlott eljárás**: azonosítsa és kategorizálhatja a fiókok, amelyek magas szintű jogosultsággal rendelkező szerepkörök.   
-**Részletes**: bekapcsolása az Azure AD Privileged Identity Management, után megtekintheti a felhasználók, akik a globális rendszergazdai, a kiemelt szerepkörű rendszergazda és egyéb magas jogosultsági szintű szerepköröket. Távolítsa el a fiókokat, amelyek már nincs szükség az ezeket a szerepköröket, és kategorizálja a megmaradt fiókokat hozzárendelt rendszergazdai szerepkörök:
+**Ajánlott eljárás**: Azonosítsa és kategorizálhatja a fiókok, amelyek magas szintű jogosultsággal rendelkező szerepkörök.   
+**Részletes**: Az Azure AD Privileged Identity Management bekapcsolása, után a felhasználók, akik a globális rendszergazda, a kiemelt szerepkörű rendszergazda és az egyéb magas jogosultsági szintű szerepkörök megtekintése. Távolítsa el a fiókokat, amelyek már nincs szükség az ezeket a szerepköröket, és kategorizálja a megmaradt fiókokat hozzárendelt rendszergazdai szerepkörök:
 
 - Külön-külön rendszergazdai jogosultságokkal rendelkező felhasználókhoz rendelt, és használhatja nem felügyeleti célú (például személyes e-mail-cím)
 - Külön-külön hozzárendelt rendszergazdai jogosultságokkal rendelkező felhasználókhoz és a kijelölt csak felügyeleti célokra
@@ -164,22 +164,22 @@ A következő található az ajánlott eljárásokat foglalja össze [az Azure A
 - Automatizált szkriptek esetében
 - Külső felhasználók számára
 
-**Ajánlott eljárás**: "csak az időben" megvalósítása (szerinti JIT) hozzáférési tovább a jogosultságok expozíciós idejének, és jobb áttekinthetősége a rendszerjogosultságú fiókok használatát.   
-**Részletes**: az Azure AD Privileged Identity Management lehetővé teszi:
+**Ajánlott eljárás**: "Csak az időben" megvalósítása (szerinti JIT) hozzáférési tovább a jogosultságok expozíciós idejének, és jobb áttekinthetősége a rendszerjogosultságú fiókok használatát.   
+**Részletes**: Az Azure AD Privileged Identity Management lehetővé teszi:
 
 - Korlátozza a felhasználók számára csak az igény szerinti jogosultságai véve.
 - Szerepkörök hozzárendelése egy rövidített időtartamának magabiztosan a jogosultságok automatikusan visszavonódnak.
 
-**Ajánlott eljárás**: legalább két vészelérési fiókok megadása.   
-**Részletes**: válságkezelési hozzáférési fiókok segítségével a szervezetek korlátozni a rendszerjogosultságú hozzáférést egy már létező Azure Active Directory-környezetben. Ezek a fiókok magas szintű jogosultságokkal a rendelkeznek, és nincsenek hozzárendelve a megadott személyeknek. A vészelérési fiókok korlátozva, ahol a szokásos rendszergazdai fiókok nem használható forgatókönyvek. Szervezetek csak a szükséges időn használatot a vészelérési fiókhoz kell korlátozni.
+**Ajánlott eljárás**: Adjon meg legalább két vészelérési fiókok.   
+**Részletes**: A vészelérési fiókok segítségével a szervezetek korlátozni a rendszerjogosultságú hozzáférést egy már létező Azure Active Directory-környezetben. Ezek a fiókok magas szintű jogosultságokkal a rendelkeznek, és nincsenek hozzárendelve a megadott személyeknek. A vészelérési fiókok korlátozva, ahol a szokásos rendszergazdai fiókok nem használható forgatókönyvek. Szervezetek csak a szükséges időn használatot a vészelérési fiókhoz kell korlátozni.
 
 Értékelje ki a fiókokat, amelyek hozzárendelt vagy jogosult a globális rendszergazdai szerepkörhöz. Ha nem lát olyan csak felhőalapú fiókok használatával a `*.onmicrosoft.com` tartomány (vészelérési szánt), hozza létre őket. További információkért tekintse meg a rendszergazdai fiókok vészhelyzeti hozzáférésének kezelése az Azure ad-ben.
 
-**Ajánlott eljárás**: kapcsolja be a multi-factor Authentication szolgáltatás, és Regisztráljon minden egyéb magas szintű jogosultságokkal rendelkeznek egyfelhasználós nem összevont felügyeleti fiókok.  
-**Részletes**: Azure multi-factor Authentication megkövetelése bejelentkezéskor véglegesen egy vagy több Azure AD felügyeleti szerepkörök rendelt minden egyes felhasználók számára: globális rendszergazda, a kiemelt szerepkörű rendszergazda, az Exchange Online rendszergazdai és a SharePoint online-ban rendszergazda. Az útmutató használatával engedélyezhető az [multi-factor Authentication a rendszergazdai fiókok](../active-directory/authentication/howto-mfa-userstates.md) , és győződjön meg arról, hogy ezek a felhasználók rendelkeznek-e [regisztrált](https://aka.ms/mfasetup).
+**Ajánlott eljárás**: A multi-factor Authentication bekapcsolása, és minden egyéb magas jogosultsági szintű egyfelhasználós nem összevont felügyeleti fiókok regisztrálása.  
+**Részletes**: Az Azure multi-factor Authentication megkövetelése bejelentkezéskor véglegesen egy vagy több Azure AD felügyeleti szerepkörök rendelt minden egyes felhasználók számára: globális rendszergazda, a kiemelt szerepkörű rendszergazda, az Exchange Online rendszergazdai és a SharePoint online-hoz rendszergazda. Az útmutató használatával engedélyezhető az [multi-factor Authentication a rendszergazdai fiókok](../active-directory/authentication/howto-mfa-userstates.md) , és győződjön meg arról, hogy ezek a felhasználók rendelkeznek-e [regisztrált](https://aka.ms/mfasetup).
 
-**Ajánlott eljárás**: hajtsa végre a megfelelő lépések segítségével csökkentheti a leggyakrabban használt megtámadott technikákat.  
-**Részletes**: [kíván állítani a munkahelyi vagy iskolai fiókok rendszergazdai szerepkör azonosítása Microsoft-fiókok](../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+**Ajánlott eljárás**: Tegyen lépéseket a leggyakrabban használt megtámadott taktikák kockázatának csökkentése érdekében.  
+**Részletes**: [Microsoft-fiókokat kíván állítani a munkahelyi vagy iskolai fiókok rendszergazdai szerepkör azonosítása](../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
 [Győződjön meg, hogy külön felhasználói fiókokat és a globális rendszergazdai fiókok levéltovábbítási](../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
 
@@ -218,7 +218,7 @@ Szervezetek számára, amelyek nem elsődlegesek hogyan jönnek létre az erőfo
 
 Az aktív identitást, megfigyelési rendszere gyorsan gyanús viselkedés észlelésében és egy riasztást, további vizsgálat. Az alábbi táblázatban a két Azure AD-képességekhez, amely megkönnyíti a szervezetek számára a személyes adataik figyelése:
 
-**Ajánlott eljárás**: áll rendelkezésére módszer azonosításához:
+**Ajánlott eljárás**: Áll rendelkezésére módszer azonosításához:
 
 - Megpróbál bejelentkezni [nélkül követett](../active-directory/active-directory-reporting-sign-ins-from-unknown-sources.md).
 - [Találgatásos támadás](../active-directory/active-directory-reporting-sign-ins-after-multiple-failures.md) egy bizonyos fiók elleni támadások.
@@ -226,10 +226,10 @@ Az aktív identitást, megfigyelési rendszere gyorsan gyanús viselkedés észl
 - Történő bejelentkezések [fertőzött eszközök](../active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices.md).
 - Gyanús IP-címeket.
 
-**Részletes**: használja az Azure AD Premium [anomáliadetektálási jelentések](../active-directory/active-directory-view-access-usage-reports.md). Folyamatok és eljárások vannak bevezetve rendszergazdáknak, hogy ezek a jelentések futtatása, naponta, vagy igény szerint (általában az incidensmegoldási forgatókönyvhöz).
+**Részletes**: Használja az Azure AD Premium [anomáliadetektálási jelentések](../active-directory/active-directory-view-access-usage-reports.md). Folyamatok és eljárások vannak bevezetve rendszergazdáknak, hogy ezek a jelentések futtatása, naponta, vagy igény szerint (általában az incidensmegoldási forgatókönyvhöz).
 
-**Ajánlott eljárás**: aktív monitorozási rendszer, amely értesíti, a kockázatok és kockázati szintet (magas, közepes vagy alacsony) a vállalati igényeknek megfelelően módosíthatja.   
-**Részletes**: használata [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md), amely észleli, ha az aktuális kockázatok, a saját irányítópulton és napi összefoglaló értesítéseket e-mailen keresztül küld. Segítséget nyújt a szervezet identitásait, konfigurálhatja a kockázatalapú szabályzatok, amelyek az automatikusan észlelt problémák reagálnak adott kockázati szint elérésekor.
+**Ajánlott eljárás**: Van egy aktív monitorozási rendszer értesítést küld a kockázatot és kockázati szintet (magas, közepes vagy alacsony) a vállalati igényeknek megfelelően módosíthatja.   
+**Részletes**: Használat [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md), amely észleli, ha az aktuális kockázatok, a saját irányítópulton és napi összefoglaló értesítéseket e-mailen keresztül küld. Segítséget nyújt a szervezet identitásait, konfigurálhatja a kockázatalapú szabályzatok, amelyek az automatikusan észlelt problémák reagálnak adott kockázati szint elérésekor.
 
 Szervezetek számára, amelyek nem aktívan figyeljük az identitáskezelési rendszerek számára, hogy a felhasználói hitelesítő adatok biztonsága sérült veszélyt. Anélkül, hogy gyanús tevékenységek feldolgozása zajlik, ezeket a hitelesítő adatokat keresztül ismeretek szervezetek nem csökkentheti a fenyegetés típusát.
 

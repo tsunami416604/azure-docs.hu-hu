@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2b442137f8e7ca8e5b01a03da81af6259ac8e03e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 37bb0dcc2b9848d3fd3d49c78b52adbcd2dcc046
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984749"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106396"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Windows rendszerű virtuális gépek áttekintése az Azure-ban
 
@@ -62,7 +62,7 @@ Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olva
 | --- | --- |
 | Azure Portal |Egy virtuális gép létrehozásakor válasszon egy helyet a listából. |
 | Azure PowerShell |Használja a [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) parancsot. |
-| REST API |Használja a [Helyek listázása](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations) műveletet. |
+| REST API |Használja a [Helyek listázása](https://docs.microsoft.com/rest/api/resources/subscriptions) műveletet. |
 | Azure CLI |Használja az [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) műveletet. |
 
 ### <a name="vm-size"></a>Virtuális gép mérete

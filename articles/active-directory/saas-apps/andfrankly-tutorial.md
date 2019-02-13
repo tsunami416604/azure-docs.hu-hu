@@ -4,228 +4,203 @@ description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 1d702060-1b89-4e9d-9f01-ede4f1171c73
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/09/2017
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 8b95459e00296950924c7837890e2313bbcb183d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c1a008b131cd373c379cf1abbd0b8870af292569
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173105"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183292"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Oktatóanyag: Az Azure Active Directory-integráció az & frankly
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a & frankly az Azure Active Directoryval (Azure AD).
-
 Integrálás & frankly az Azure ad-vel biztosít a következő előnyökkel jár:
 
-- Szabályozhatja, aki hozzáféréssel rendelkezik a & frankly Azure AD-ben
-- Engedélyezheti a felhasználók automatikusan el bejelentkezett, a & frankly (egyszeri bejelentkezés) az Azure AD-fiókjukat
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
+* Szabályozhatja, aki hozzáféréssel rendelkezik a & frankly Azure AD-ben.
+* Engedélyezheti a felhasználók automatikusan bejelentkezett a & frankly (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció & frankly, akkor kell a következő elemek:
 
-- Azure AD-előfizetés
-- A & frankly engedélyezett előfizetés egyszeri bejelentkezés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* & frankly egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Hozzáadás & frankly a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* & frankly támogatja **SP és IDP** által kezdeményezett egyszeri bejelentkezés
 
 ## <a name="adding-frankly-from-the-gallery"></a>Hozzáadás & frankly a katalógusból
+
 Konfigurálja az integrációt a & frankly az Azure AD-be, akkor hozzá kell adnia & frankly a felügyelt SaaS-alkalmazások listájára a katalógusból.
 
 **Adjon hozzá & frankly katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![Alkalmazások][2]
-    
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Alkalmazások][3]
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **& frankly**.
+4. A Keresés mezőbe írja be a **& frankly**válassza **& frankly** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/andfrankly-tutorial/tutorial_andfrankly_search.png)
+     ![& frankly a találatok listájában](common/search-new-app.png)
 
-5. Az eredmények panelen válassza ki a **& frankly**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/andfrankly-tutorial/tutorial_andfrankly_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés az & frankly egy "Britta Simon." nevű tesztelési felhasználó alapján
-
-Az egyszeri bejelentkezés működéséhez az Azure AD milyen megfelelőjére lévő felhasználó tudnia kell, & frankly, hogy egy felhasználó Azure AD-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó hivatkozás kapcsolata a & frankly kell hozható létre.
-
-A & frankly, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Ebben a szakaszban, konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés az & frankly alapján nevű tesztfelhasználó **Britta Simon**.
+Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat kapcsolat & frankly kell hozható létre.
 
 Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés az & frankly, meg kell hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Létrehozása egy & frankly tesztfelhasználó](#creating-a-frankly-test-user)**  szeretné, hogy egy megfelelője a Britta Simon – a felhasználó Azure ad-ben ábrázolása a & frankly legyen társított.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Konfigurálja és frankly egyszeri bejelentkezés](#configure-frankly-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[& Frankly tesztfelhasználó létrehozása](#create-frankly-test-user)**  szeretné, hogy egy megfelelője a Britta Simon – a felhasználó Azure ad-ben ábrázolása a & frankly legyen társított.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés az Azure Portalon engedélyezése és konfigurálása egyszeri bejelentkezéshez az a & frankly alkalmazáshoz.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Konfigurálhatja az Azure AD egyszeri bejelentkezés az & frankly, hajtsa végre az alábbi lépéseket:**
+Konfigurálhatja az Azure AD egyszeri bejelentkezés az & frankly, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **& frankly** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **& frankly** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/andfrankly-tutorial/tutorial_andfrankly_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-3. Az a **& frankly tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/andfrankly-tutorial/tutorial_andfrankly_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/saml2-acs.php/<tenant id>`
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
 
-4. Ellenőrizze **speciális URL-beállítások megjelenítése**. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+    ![& frankly tartomány és URL-címek egyszeri bejelentkezési adatait](common/idp-intiated.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/andfrankly-tutorial/tutorial_andfrankly_url1.png)
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>`
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://andfrankly.com/saml/okta/?saml_sso=<tenant id>`
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóval, bejelentkezést és a válasz URL-cím. Kapcsolattartó [andfrankly támogatási csapatának](mailto:help@andfrankly.com) beolvasni ezeket az értékeket.
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/saml2-acs.php/<tenant id>`
 
-5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/andfrankly-tutorial/tutorial_andfrankly_certificate.png) 
+    ![& frankly tartomány és URL-címek egyszeri bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
-6. Kattintson a **mentése** gombra.
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://andfrankly.com/saml/okta/?saml_sso=<tenant id>`
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/andfrankly-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [& frankly ügyfél-támogatási csapatának](mailto:help@andfrankly.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-7. Az egyszeri bejelentkezés konfigurálása **& frankly** oldalon kell küldenie a letöltött **metaadatainak XML** való [andfrankly támogatási csapatának](mailto:help@andfrankly.com). 
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+7. Az a **akár & frankly beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure Ad Identifier
+
+    c. Kijelentkezési URL
+
+### <a name="configure-frankly-single-sign-on"></a>Konfigurálja és frankly egyszeri bejelentkezés
+
+Az egyszeri bejelentkezés konfigurálása **& frankly** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [& frankly támogatási csoport ](mailto:help@andfrankly.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-![Az Azure AD-felhasználó létrehozása][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/andfrankly-tutorial/create_aaduser_01.png) 
+    ![Új felhasználó gomb](common/new-user.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/andfrankly-tutorial/create_aaduser_02.png) 
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/andfrankly-tutorial/create_aaduser_03.png) 
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/andfrankly-tutorial/create_aaduser_04.png) 
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="creating-a-frankly-test-user"></a>Létrehozás egy & frankly tesztfelhasználó számára
 
-Ebben a szakaszban egy Britta Simon nevű frankly és a felhasználó hoz létre. Együttműködve [andfrankly támogatási csapatának](mailto:help@andfrankly.com) tartozó felhasználók hozzáadása a & frankly platform.
-
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával a & frankly Azure egyszeri bejelentkezés használatára.
 
-![Felhasználó hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **& frankly**.
 
-**A & frankly Britta Simon hozzárendeléséhez végezze el az alábbi lépéseket:**
-
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201] 
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 2. Az alkalmazások listájában jelölje ki a **& frankly**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/andfrankly-tutorial/tutorial_andfrankly_app.png) 
+    ![A & frankly hivatkozásra az alkalmazások listáját](common/all-applications.png)
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][203]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-Ez a szakasz célja a a hozzáférési Panel használatával az Azure AD egyszeri bejelentkezési konfiguráció tesztelése.
+### <a name="create-frankly-test-user"></a>& Frankly tesztfelhasználó létrehozása
 
-Kattintás után a & frankly csempére a hozzáférési panelen, kapja meg automatikusan bejelentkezett, a & frankly alkalmazáshoz
+Ebben a szakaszban egy Britta Simon nevű frankly és a felhasználó hoz létre. Együttműködve [& frankly támogatási csoportjának](mailto:help@andfrankly.com) tartozó felhasználók hozzáadása a & frankly platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+
+Kattintva & frankly csempére a hozzáférési panelen, meg kell automatikusan jelentkeznie & frankly, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/andfrankly-tutorial/tutorial_general_01.png
-[2]: ./media/andfrankly-tutorial/tutorial_general_02.png
-[3]: ./media/andfrankly-tutorial/tutorial_general_03.png
-[4]: ./media/andfrankly-tutorial/tutorial_general_04.png
-
-[100]: ./media/andfrankly-tutorial/tutorial_general_100.png
-
-[200]: ./media/andfrankly-tutorial/tutorial_general_200.png
-[201]: ./media/andfrankly-tutorial/tutorial_general_201.png
-[202]: ./media/andfrankly-tutorial/tutorial_general_202.png
-[203]: ./media/andfrankly-tutorial/tutorial_general_203.png
-
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

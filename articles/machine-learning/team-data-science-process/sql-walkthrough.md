@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2e71cf90c6e894946a2f3a1c8bfce2179f214a29
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 953f2cdac41dcd610afbde39a318c0237b0b9099
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453651"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114739"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A csoportos adatelemzési folyamat működés közben: az SQL Server használata
 Ebben az oktatóanyagban vezeti végig a folyamat létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Server és a egy nyilvánosan elérhető adatkészlet használatával – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szokásos adatelemzési munkafolyamathoz: fogadni, és Fedezze fel az adatokat, Funkciók tervezése, tanulás egyszerűbbé tételével majd hozhat létre és helyezhet üzembe modelleket.
@@ -624,7 +624,7 @@ Ez a minta forgatókönyv és a kísérő parancsfájlok és IPython notebook(s)
 ### <a name="references"></a>Referencia
 • [Andrés Monroy NYC Taxi lelassítja letöltési oldala](http://www.andresmh.com/nyctaxitrips/)  
 • [FOILing NYC Útadatok taxiköltség Chris Whong szerint](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-• [NYC Taxi és Limousine Bizottság kutatási és a statisztika](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
+• [NYC Taxi és Limousine Bizottság kutatási és a statisztika](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sql-walkthrough/sql-walkthrough_28_1.png

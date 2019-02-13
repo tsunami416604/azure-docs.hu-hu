@@ -3,7 +3,7 @@ title: Key Vault .NET 2.x API kibocsátási megjegyzései |} A Microsoft Docs
 description: .NET-fejlesztők számára az Azure Key Vault fogja használni a kódot az API
 services: key-vault
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 editor: bryanla
 ms.assetid: 1cccf21b-5be9-4a49-8145-483b695124ba
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/02/2017
 ms.author: bryanla
-ms.openlocfilehash: 7bbe5a9dd7c085bc20092358ee9acabe9cf85542
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 486f31e79210aa67c8545d6bd56f6bedd9297e9c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296530"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105933"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Az Azure Key Vault .NET 2.0 – kibocsátási megjegyzések és a Migrálási útmutatót
 A következő információk segítséget nyújtanak a C# és a .NET 2.0-s verzióját az Azure Key Vault tár-ba való migrálás.  A korábbi verziók írt alkalmazásokat kell legújabb verzióját frissíti.  Ezek a változások szükségesek, teljes körűen támogatja az új és továbbfejlesztett funkciók, mint például **Key Vault tanúsítványokkal**.

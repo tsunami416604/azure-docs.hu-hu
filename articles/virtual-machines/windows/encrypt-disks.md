@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 56d637fd1aec05089e4f20c9205f648934594cc6
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4875464d7e7a7f49c1532871a69f4d2224b271a6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981247"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108245"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>A Windows virtuális gép virtuális lemezek titkosítása
 Bővített virtuális gép (VM) biztonsági és megfelelőségi virtuális lemezeket az Azure-ban is titkosítva. Lemezek kriptográfiai kulcsokat, egy Azure Key vaultban védett algoritmussal vannak titkosítva. Szabályozhatja a kriptográfiai kulcsokat és naplózhatja azok használatát. Ez a cikk ismerteti a Windows virtuális gép virtuális lemezek titkosítása az Azure PowerShell használatával. Emellett [Linux rendszerű virtuális gép titkosítása az Azure CLI-vel](../linux/encrypt-disks.md).
@@ -87,7 +87,7 @@ New-AzKeyVault -Location $location `
 
 Szoftver vagy hardver biztonsági modell (HSM) védelmi kriptográfiai kulcsokat tárolhat.  Egy standard Key Vault csak a szoftveres védelemmel ellátott kulcsokkal tárolja. Egy külön díj nélkül egy prémium szintű Key Vault HSM használata szükséges. Hozzon létre egy Key Vault premium, az előző lépésben adja hozzá a *- Sku "Prémium"* paraméter. Az alábbi példában használja a szoftveres védelemmel ellátott kulcsokkal, mivel hoztunk létre egy standard Key Vaultot. 
 
-Mindkét védelme esetében az Azure platform kell hozzáférést kérni a titkosítási kulcsok a virtuális gép indításakor a virtuális lemezek visszafejtéséhez. Hozzon létre egy titkosítási kulcsot a Key vaultban a [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azurekeyvaultkey). A következő példában létrehozunk egy kulcsot *myKey*:
+Mindkét védelme esetében az Azure platform kell hozzáférést kérni a titkosítási kulcsok a virtuális gép indításakor a virtuális lemezek visszafejtéséhez. Hozzon létre egy titkosítási kulcsot a Key vaultban a [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey). A következő példában létrehozunk egy kulcsot *myKey*:
 
 ```azurepowershell-interactive
 Add-AzureKeyVaultKey -VaultName $keyVaultName `

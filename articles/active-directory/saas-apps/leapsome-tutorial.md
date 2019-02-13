@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Leapsome |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Leapsome |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Leapsome között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 898d7cf6cdded08cd09c4b1f1f845473af1650a3
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 37549cc76e1490b0758de8e296523b0e70c98dbf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824003"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191231"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Oktatóanyag: Azure Active Directory-integráció az Leapsome
+# <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Leapsome
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Leapsome integrálása az Azure Active Directory (Azure AD).
 
@@ -128,8 +129,8 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     | Attribútum neve | Attribútum értéke | Névtér |
     | ---------------| --------------- | --------- |   
-    | Keresztnév | User.givenName | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Vezetéknév | User.surname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Keresztnév | user.givenname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Vezetéknév | user.surname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | cím | user.jobtitle | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | kép | Az alkalmazott kép URL-címe | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 

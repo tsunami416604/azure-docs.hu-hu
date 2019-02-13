@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az saját díj pontok felső Sub/felső csapata |} A Microsoft Docs'
+title: 'Oktatóanyag: A díjjal járó pontok felső Sub/felső csapatával az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a díjjal járó pontokat felső Sub/felső csoport között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 19ed1c12768eed0265f65388984a5859b8f0630b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247754"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210730"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Oktatóanyag: Azure Active Directory-integráció az saját díj pontok felső Sub/felső csapata
+# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Oktatóanyag: Az Azure Active Directory-integráció, a díjjal járó pontok felső Sub/felső csapatával
 
 Ebben az oktatóanyagban megismerheti, hogyan integrálható a saját díj pontok felső Sub/felső csapata az Azure Active Directory (Azure AD).
 
@@ -161,7 +162,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="create-a-my-award-points-top-subtop-team-test-user"></a>Saját díj pontok felső Sub/felső csapata tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy saját díjjal járó pontokat felső Sub/felső csapat Britta Simon nevű felhasználó hoz létre. Együttműködve [saját díj pontok felső Sub/felső csapata támogatási csapatának](mailto:myawardpoints@biworldwide.com) a felhasználók hozzáadása a saját díj pontok felső Sub/felső csapata platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy saját díjjal járó pontokat felső Sub/felső csapat Britta Simon nevű felhasználó hoz létre. Együttműködve [saját díj pontok felső Sub/felső csapata támogatási csapatának](mailto:myawardpoints@biworldwide.com) a felhasználók hozzáadása a saját díj pontok felső Sub/felső csapata platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

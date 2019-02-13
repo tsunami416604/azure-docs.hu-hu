@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: a1fadb098fdb4262ee73725ec96c3c9602b1b68d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 782869906f260fc8b47375f4d45f8558780a2aa8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734232"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108143"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Hozzon létre egy application gateway URL-cím-alapú útválasztási szabályok az Azure CLI használatával
 
@@ -99,7 +99,7 @@ az network application-gateway create \
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Kép- és videó-háttérkészletek, illetve port hozzáadása
 
-Hozzáadhat nevű háttérkészletek *imagesBackendPool* és *videoBackendPool* , az application gateway használatával [az network application-gateway-címkészlet létrehozása](/cli/azure/network/application-gatewaywork_application_gateway_address-pool_create). Az előtérbeli portot az [az network application-gateway frontend-port create](/cli/azure/network/application-gatewaywork_application_gateway_frontend_port_create) paranccsal adhatja hozzá a készletekhez. 
+Hozzáadhat nevű háttérkészletek *imagesBackendPool* és *videoBackendPool* , az application gateway használatával [az network application-gateway-címkészlet létrehozása](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create). Az előtérbeli portot az [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) paranccsal adhatja hozzá a készletekhez. 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -157,7 +157,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-routing-rule"></a>Útválasztási szabály hozzáadása
 
-Az útválasztási szabály az URL-címtérképeket a létrehozott figyelőhöz társítja. A nevű szabályt is hozzáadhat *felhasználóval a rule2* használatával [az network application-gateway-szabály létrehozása](/cli/azure/network/application-gatewaywork_application_gateway_rule_create).
+Az útválasztási szabály az URL-címtérképeket a létrehozott figyelőhöz társítja. A nevű szabályt is hozzáadhat *felhasználóval a rule2* használatával [az network application-gateway-szabály létrehozása](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
 
 ```azurecli-interactive
 az network application-gateway rule create \

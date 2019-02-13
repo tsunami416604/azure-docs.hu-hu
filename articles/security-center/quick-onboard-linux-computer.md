@@ -4,7 +4,7 @@ description: Ez a rövid útmutató bemutatja, hogyan vehet fel Linux rendszerű
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 48a04bbe77a6fe836c282556709e13bb9cd9a337
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e6d2404e6f509c03d2d3965f34d8229de25df4b7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848189"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114620"
 ---
-# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rövid útmutató: Linux rendszerű számítógépek felvétele a Security Centerbe
+# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Gyors útmutató: Linux rendszerű számítógépek felvétele az Azure Security Centerben
 Az Azure-előfizetései felvétele után a Linux-ügynök kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó Linux-erőforrások számára.
 
 Ez a rövid útmutató bemutatja, hogyan telepítheti a Linux-ügynököt egy Linux rendszerű számítógépre.

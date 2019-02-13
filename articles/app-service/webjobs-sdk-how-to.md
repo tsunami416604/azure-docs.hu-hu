@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/19/2019
 ms.author: glenga
-ms.openlocfilehash: b51bf448d49647bbe03529bfe8b184a2fbaf946a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ab502c25a632977065e55d2eeafd684203636b14
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005556"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109911"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata az eseményvezérelt háttérben történő feldolgozás
 
@@ -36,7 +36,7 @@ Ez a cikk útmutatást, hogy hogyan írhat kódot [az Azure WebJobs SDK](webjobs
 
 Ez a cikk feltételezi, hogy olvassa el és fejeződött be a feladatokat az [a WebJobs SDK használatának első lépései](webjobs-sdk-get-started.md).
 
-## <a name="webhobs-host"></a>WebHobs gazdagép
+## <a name="webjobs-host"></a>Webjobs-feladatok gazdagép
 
 A gazdagép az functions runtime tárolója.  Azt figyeli, a functions eseményindítók és a hívások. A verzió 3.x, a gazdagép megvalósítását `IHost`, és verzió 2.x verzióját használja a `JobHost` objektum. Gazdagép-példány létrehozása a kódban, és testre szabhatja annak viselkedését, kód írása.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c1718c5a2acfe49fba4974bcf7e580c45553113d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721563"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108738"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Alkalmazások teljesítményének – gyakori kérdések az Azure Web Apps esetében
 
@@ -43,7 +43,7 @@ Magas memória-felhasználás bizonyos esetekben az alkalmazás valóban szüks�
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Hogyan automatizálható az App Service web apps PowerShell-lel?
 
-PowerShell-parancsmagok segítségével kezeli és tartja karban az App Service web apps szolgáltatásban. Az ebben a blogbejegyzésben [automatizálása a PowerShell-lel az Azure App Service-ben üzemeltetett webalkalmazások](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/), megtudhatja, hogyan automatizálhatja a gyakori feladatokat az Azure Resource Manager-alapú PowerShell-parancsmagok használatával. A blogbejegyzést a web apps különböző felügyeleti feladatainak mintakód is tartalmaz. Leírások és minden App Service web apps parancsmagjainak szintaxisa: [AzureRM.Websites](https://docs.microsoft.com/powershell/module/azurerm.websites/?view=azurermps-4.0.0).
+PowerShell-parancsmagok segítségével kezeli és tartja karban az App Service web apps szolgáltatásban. Az ebben a blogbejegyzésben [automatizálása a PowerShell-lel az Azure App Service-ben üzemeltetett webalkalmazások](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/), megtudhatja, hogyan automatizálhatja a gyakori feladatokat az Azure Resource Manager-alapú PowerShell-parancsmagok használatával. A blogbejegyzést a web apps különböző felügyeleti feladatainak mintakód is tartalmaz. Leírások és minden App Service web apps parancsmagjainak szintaxisa: [Az.Websites](/powershell/module/az.websites).
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Hogyan tekinthetem meg a webes alkalmazás eseménynaplóit?
 

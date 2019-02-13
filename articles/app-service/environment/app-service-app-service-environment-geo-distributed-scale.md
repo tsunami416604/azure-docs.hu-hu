@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa9eb0b624df29f6fb86402c06436ed7349fa662
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2a2fafb5da50dbd26786284592cd330df7f5557a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273867"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113696"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Földrajzi alapú méretezés App Service-környezetekkel
 ## <a name="overview"></a>Áttekintés
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Rendkívül nagy skálázást igénylő alkalmazás-forgatókönyvek lépheti túl a számítási erőforrás-kapacitás üzembe helyezése egyetlen alkalmazás számára elérhető.  Szavazás alkalmazásokat, sportesemények és közvetített Szórakozás események példák összes rendkívül nagy méretezést igénylő forgatókönyvek. Vízszintes horizontális felskálázás alkalmazások esetében kerül sor egy adott régión belül, valamint a régióban, annak érdekében rendkívüli terhelést jelent, hogy több alkalmazást üzembe helyezés az nagy méretű követelmények is kielégíthetők.
 
 App Service Environment-környezetek horizontális felskálázás ideális platformmá is.  Egyszer App Service-környezet konfigurációs beállítás ki van választva, hogy egy ismert kérelmek arányának támogatja, a fejlesztők telepíthet további App Service-környezetek "cookie-k vágó" el a kívánt maximális betöltési kapacitás elérése érdekében.
@@ -52,9 +55,9 @@ Egy elosztott alkalmazás üzembe helyezésének előkészítése kialakításá
 ## <a name="setting-up-the-traffic-manager-profile"></a>A Traffic Manager-profil beállítása
 Ha egy alkalmazás több példánya telepítve vannak, több App Service Environment-környezetek, az egyes alkalmazás-példányok regisztrálható a Traffic Managerrel.  A mintaalkalmazás egy Traffic Manager profil van szükség a *méretezhető ase demo.trafficmanager.net* ügyfelek, amelyek is irányíthatja a következő telepített alkalmazás-példányra:
 
-* **webfrontend1.fe1ase.p.azurewebsites.NET:**  A mintaalkalmazás az első App Service-környezetben telepített példányát.
-* **webfrontend2.fe2ase.p.azurewebsites.NET:**  A mintaalkalmazás a második App Service-környezetben telepített példányát.
-* **webfrontend3.fe3ase.p.azurewebsites.NET:**  A mintaalkalmazás a harmadik App Service-környezetben telepített példányát.
+* **webfrontend1.fe1ase.p.azurewebsites.net:**  A mintaalkalmazás az első App Service-környezetben telepített példányát.
+* **webfrontend2.fe2ase.p.azurewebsites.net:**  A mintaalkalmazás a második App Service-környezetben telepített példányát.
+* **webfrontend3.fe3ase.p.azurewebsites.net:**  A mintaalkalmazás a harmadik App Service-környezetben telepített példányát.
 
 Több Azure App Service végpontot, az összes futó regisztrálja a legegyszerűbb módja a **ugyanazon** az PowerShell-lel az Azure-régióban, [Azure Resource Manager Traffic Manager-támogatás] [ ARMTrafficManager].  
 
@@ -68,13 +71,13 @@ A *TrafficRoutingMethod* paraméter határozza meg a terheléselosztási házire
 
 A létrehozott profilt, az összes alkalmazáspéldány profilhoz lesz hozzáadva a natív Azure-végpontként.  Az alábbi kód lekéri az egyes előtér-webalkalmazást egy hivatkozást, majd hozzáadja a minden alkalmazás, egy Traffic Manager-végpont úton a *targetresourceid azonosítója* paraméter.
 
-    $webapp1 = Get-AzureRMWebApp -Name webfrontend1
+    $webapp1 = Get-AzWebApp -Name webfrontend1
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend1 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp1.Id –EndpointStatus Enabled –Weight 10
 
-    $webapp2 = Get-AzureRMWebApp -Name webfrontend2
+    $webapp2 = Get-AzWebApp -Name webfrontend2
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend2 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp2.Id –EndpointStatus Enabled –Weight 10
 
-    $webapp3 = Get-AzureRMWebApp -Name webfrontend3
+    $webapp3 = Get-AzWebApp -Name webfrontend3
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend3 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp3.Id –EndpointStatus Enabled –Weight 10
 
     Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile
@@ -88,7 +91,7 @@ Az utolsó lépés szükséges, hogy az egyéni tartomány az alkalmazás, a Tra
 
 A regisztráló tartományi felügyeleti eszközök használatával, egy olyan CNAME REKORDOT kell létrehozni, amely az egyéni tartományt, a Traffic Manager-tartományra mutat rögzíti.  A következő ábrán látható egy példa a CNAME-konfiguráció néz ki:
 
-![Az egyéni tartományi CNAME][CNAMEforCustomDomain] 
+![CNAME for Custom Domain][CNAMEforCustomDomain] 
 
 Bár ez a témakör nem tárgyalja, ne feledje, hogy minden egyes alkalmazás-példány az egyéni tartományt is regisztrálni, hogy kell-e.  Ellenkező esetben egy kérelem teszi, hogy az alkalmazáspéldány, és az alkalmazás nem rendelkezik az egyéni tartomány az alkalmazás regisztrálva, a kérelem sikertelen lesz.  
 

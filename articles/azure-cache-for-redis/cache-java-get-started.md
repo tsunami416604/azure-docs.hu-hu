@@ -3,7 +3,7 @@ title: 'Gyors útmutató: Azure Cache használata javával redis |} A Microsoft 
 description: Ez a rövid útmutatóban létrehozhat egy új Java-alkalmazás által használt Azure Cache redis
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: 29275a5e-2e39-4ef2-804f-7ecc5161eab9
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/23/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: bd0bb1c967885aa5e74728156a073e9ccc0ca48f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 339d626d3e0d9e7c1742fdd3509e92f41347ff43
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105882"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106579"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>Gyors útmutató: Az Azure Cache használata javával redis
 

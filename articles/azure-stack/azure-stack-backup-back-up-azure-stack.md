@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: 0fed6751d326c5da4431e953f7ded9c12688871f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c42490b7d46df77bffd13fdda02884704fb13b67
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250044"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210303"
 ---
 # <a name="back-up-azure-stack"></a>Készítsen biztonsági másolatot az Azure Stackben
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Hajtsa végre az Azure Stacken egy igény szerinti biztonsági mentést a biztonsági mentési helyen. A PowerShell-környezet konfigurálása, lásd: [Azure Stack PowerShell telepítése ](azure-stack-powershell-install.md). Jelentkezzen be az Azure Stack, lásd: [a felügyeleti portál használatával az Azure Stackben](azure-stack-manage-portals.md).
+Hajtsa végre egy igény szerinti biztonsági mentést az Azure Stacken. A PowerShell-környezet konfigurálása, lásd: [Azure Stack PowerShell telepítése ](azure-stack-powershell-install.md). Jelentkezzen be az Azure Stack, lásd: [a felügyeleti portál használatával az Azure Stackben](azure-stack-manage-portals.md).
 
 ## <a name="start-azure-stack-backup"></a>Azure Stack biztonsági mentés indítása
 
@@ -121,4 +121,4 @@ Az Azure Stack felügyeleti portál használatával győződjön meg arról, hog
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a munkafolyamat adatvesztési esemény utáni helyreállításhoz. Lásd: [végzetes adatvesztés utáni helyreállítás](azure-stack-backup-recover-data.md).
+További információ a munkafolyamat [adatvesztési esemény utáni](azure-stack-backup-recover-data.md).

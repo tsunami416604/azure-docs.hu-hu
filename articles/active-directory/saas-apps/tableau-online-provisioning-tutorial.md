@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Konfigurálása Tableau Online, a felhasználók automatikus átadása az Azure Active Directoryban |} A Microsoft Docs'
+title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directory konfigurálása a Tableau Online |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének felhasználói fiókokat, a Tableau Online.
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 4f6297fa8477ff4794bee589737e047993427c06
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a81754b9b95c7cc6e257707aec188abf1dab58c3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345862"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194869"
 ---
-# <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálása Tableau Online, a felhasználók automatikus átadása
+# <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása Tableau Online konfigurálása
 
 Ez az oktatóanyag célja a lépéseket kell végrehajtania a Tableau Online és az Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók és csoportok, a Tableau Online bemutatásához.
 
@@ -115,9 +116,9 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 6. Miután bejelentkezett a rendszergazdai fiók a Tableau online-hoz, a tartozó értékeket **tartomány** és **tartalom URL-címe** kinyerésének URL-címét a felügyelet lapon.
 
-    *   A **tartomány** a Tableau online fiók másolható át ezt az URL-címben: ![Tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+    *   A **tartomány** a Tableau online fiók másolható át ezt az URL-címben: ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
 
-    *   A **tartalom URL-címe** a Tableau online fiókot lehet másolni az ebben a szakaszban, és a fiók beállítása során egy értéket számít. Ebben a példában az értéke "contoso": ![Tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
+    *   A **tartalom URL-címe** a Tableau online fiókot lehet másolni az ebben a szakaszban, és a fiók beállítása során egy értéket számít. Ebben a példában az értéke "contoso": ![Tableau Online Provisioning](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
         > A **tartomány** eltérhetnek az itt láthatótól. 

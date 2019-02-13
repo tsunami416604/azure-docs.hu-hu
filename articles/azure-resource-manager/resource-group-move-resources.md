@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 59322e303824d3a0db89e9e1252476d52106ba56
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1902d00bc69fd12e7d424a2c2ab3bea562ff4e79
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991344"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108772"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -28,7 +28,7 @@ Mind a forrás és a cél csoport írásvédett az áthelyezési művelet során
 Erőforrások áthelyezése csak áthelyezi egy új erőforráscsoportot. Az áthelyezési művelet az erőforrás helye nem módosítható. Az új erőforráscsoportot egy másik helyre azonban lehet, hogy az erőforrás helye nem változik.
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan helyezheti át egy meglévő Azure-erőforrások fiók ajánlatát. Ha valójában módosítani szeretné az Azure-fiókkal (például az ingyenes frissítése használatalapú fizetéses előfizetésre) kínál az előfizetés konvertálnia kell.
+> Ez a cikk ismerteti az erőforrások áthelyezése a meglévő Azure-előfizetések között. Ha valójában szeretné frissíteni (például a használatalapú fizetéses előfizetésre vált az ingyenes) Azure-előfizetése, az előfizetés konvertálnia kell.
 > * Ingyenes próbaverzió frissítése, lásd: [az ingyenes próba- vagy a Microsoft Imagine Azure-előfizetés frissítése használatalapú fizetésre](..//billing/billing-upgrade-azure-subscription.md).
 > * Ha módosítani szeretné egy használatalapú fizetéses fiókra, lásd: [az Azure használatalapú fizetéses előfizetésre váltani egy másik ajánlatra](../billing/billing-how-to-switch-azure-offer.md).
 > * Ha az előfizetést, nem konvertálhatóak [hozzon létre egy Azure-támogatáskérést](../azure-supportability/how-to-create-azure-support-request.md). Válassza ki **előfizetés-kezelési** issue type számára.
@@ -102,7 +102,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Portál irányítópultok
 * A Power BI - mind a Power BI Embedded és a Power BI-munkaterület-csoport
 * Nyilvános IP - áthelyezhetők az alapszintű Termékváltozat nyilvános IP-Címére. Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
-* A Recovery Services-tároló – regisztráljon egy [privát előzetes verzió](#recovery-services-limitations).
+* A Recovery Services-tároló – regisztráljon egy [előzetes](#recovery-services-limitations).
 * Az Azure Cache redis - Ha az Azure Cache Redis-példány van konfigurálva, és a virtuális hálózat, a példány nem helyezhető át másik előfizetésbe. Lásd: [virtuális hálózatok korlátozások](#virtual-networks-limitations).
 * Scheduler
 * Keresés –, erőforrások nem helyezhetők át több keresési különböző régiókban lévő több műveletet. Helyezze át őket a különböző műveletek.

@@ -14,12 +14,13 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fab27ba36e8d1fcf7931945d23e41244afcb4337
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7605a8cee265822f133b3f72ce5de90add5fc0d0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491773"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210543"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Az Azure AD Connect szinkronizálása: Understanding felhasználók, csoportok és partnerek
 Miért kell több Active Directory-erdők és számos különböző központi telepítési topológiák több különböző oka is van. Közös modellek között egy fiók-erőforrások üzembe helyezésének és GAL sync'ed erdők egy egyesülés & megszerzése után. De még akkor is, ha vannak tiszta modelleket, a hibrid modellek is. Az alapértelmezett konfiguráció az Azure AD Connect szinkronizálása nem feltételezi azt minden adott modell, de attól függően, hogyan egyező felhasználó kiválasztott a telepítési útmutatóban, másként figyelhető meg.

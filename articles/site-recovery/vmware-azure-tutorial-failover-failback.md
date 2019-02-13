@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e3687ac5941d4f4fda70f96fa9df1ec1904e102e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 783f8006ba19622761beef0ff931bcbb80edde46
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822476"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115895"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók feladatátvétele és feladat-visszavétele
 
@@ -98,7 +98,7 @@ Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépé
 > [!IMPORTANT]
 > Ha a helyszíni környezet és az Azure között VPN-kapcsolat van, az ismételt védelemhez és a feladat-visszavételhez be kell állítania egy Azure-beli virtuális gépet folyamatkiszolgálóként. A folyamatkiszolgálók Azure-ban való beállításához kövesse az [ebben a cikkben](vmware-azure-set-up-process-server-azure.md) szereplő utasításokat.
 
-Az ismételt védelemmel és a feladat-visszavétellel kapcsolatos további információért lásd ezt a [szakaszt] ](vmware-azure-reprotect.md##before-you-begin). 
+Ez talál további információt a védelem-újrabeállítást és a feladat-visszavétel előfeltételeinek [szakasz](vmware-azure-reprotect.md##before-you-begin). 
 
 ### <a name="configure-the-master-target-server"></a>A fő célkiszolgáló konfigurálása
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 07f4d170ec6f9d71ea3ecdabd88f4438fb7c1c69
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: cdc48cf278fdd68bacf74c2d6d762c8d731949e0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745589"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111561"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
 
@@ -217,7 +217,7 @@ A sablonon belül a saját funkciókat is létrehozhat. Ezek a függvények hasz
 A user függvény definiálásakor bizonyos korlátozások vonatkoznak:
 
 * A függvény nem tud hozzáférni a változókat.
-* A függvény nem tud hozzáférni a sablon paramétereit. Azt jelenti a [paraméterek függvény](resource-group-template-functions-deployment.md#parameters) függvény paraméterei korlátozódik.
+* A függvény csak használhatja a függvény a definiált paraméterek. Használatakor a [paraméterek függvény](resource-group-template-functions-deployment.md#parameters) belül a felhasználó által definiált függvény korlátozódnak, a függvény paramétereit.
 * A függvény nem hívható meg más felhasználó által definiált függvények.
 * A függvény nem használható a [függvényre](resource-group-template-functions-resource.md#reference).
 * A függvény paramétereit nem lehet alapértelmezett értékük van.
@@ -298,9 +298,23 @@ A kimeneti szakaszban adjon meg értékeket, amelyek a központi telepítés ren
 
 További információkért lásd: [kimenete az Azure Resource Manager-sablonok szakaszában](resource-manager-templates-outputs.md).
 
-## <a name="comments"></a>Megjegyzések
+<a id="comments" />
 
-Megjegyzések hozzáadása a sablonhoz, több lehetősége van.
+## <a name="comments-and-metadata"></a>Megjegyzések és metaadatok
+
+Pár megjegyzéseket és metaadatok hozzáadása a sablonhoz, lehetősége van.
+
+Hozzáadhat egy `metadata` objektum szinte bárhonnan a sablonban. Erőforrás-kezelő figyelmen kívül hagyja az objektum, de a JSON-szerkesztőt is figyelmezteti, hogy a tulajdonság nem érvényes. Az objektum határoz meg a szükséges tulajdonságokat.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "comments": "This template was developed for demonstration purposes.",
+        "author": "Example Name"
+    },
+```
 
 A **paraméterek**, adjon hozzá egy `metadata` rendelkező objektum egy `description` tulajdonság.
 
@@ -342,18 +356,6 @@ A **erőforrások**, adjon hozzá egy `comments` elem vagy metaadat-objektum. Az
     "properties": {}
   }
 ]
-```
-
-Hozzáadhat egy `metadata` objektum szinte bárhonnan a sablonban. Erőforrás-kezelő figyelmen kívül hagyja az objektum, de a JSON-szerkesztőt is figyelmezteti, hogy a tulajdonság nem érvényes. Az objektum határoz meg a szükséges tulajdonságokat.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "metadata": {
-        "comments": "This template was developed for demonstration purposes.",
-        "author": "Example Name"
-    },
 ```
 
 A **kimenete**, a kimeneti érték hozzáadása egy metaadat-objektum.

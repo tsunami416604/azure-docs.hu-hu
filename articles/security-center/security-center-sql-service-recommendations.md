@@ -4,7 +4,7 @@ description: Ez a dokumentum címek javaslatok az Azure Security Centerben, amel
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: f6267bd2d97dabd71c007bcb8112936093124f74
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d6121a0255b809deccb3c70d56585bab76935900
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267028"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110353"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Az Azure SQL-szolgáltatás és az Azure Security Center adatok védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre.  Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM), hálózati, SQL és az adatokhoz és alkalmazásokhoz.
@@ -53,19 +53,19 @@ A naplózás engedélyezéséhez módosítsa az **Auditing** (Naplózás) beáll
 
 |Erőforrás típusa|Biztonsági pontszám|Ajánlás|Leírás|
 |----|----|----|----|
-|Tárfiók|20|A storage-fiók biztonságos átvitel megkövetelése|Biztonságos átvitel, amely arra kényszeríti a storage-fiók csak a biztonságos kapcsolat (HTTPS) érkező kérések fogadására lehetőség. HTTPS használata biztosítja, hogy a kiszolgáló és a szolgáltatás közötti hitelesítéshez, és man-in-the-middle, lehallgatást, és a munkamenet-eltérítés – például a hálózati réteg támadások ellen védi a az átvitt adatokat.|
+|Tárfiók|20|Biztonságos átvitel megkövetelése a tárfiókba|Biztonságos átvitel, amely arra kényszeríti a storage-fiók csak a biztonságos kapcsolat (HTTPS) érkező kérések fogadására lehetőség. HTTPS használata biztosítja, hogy a kiszolgáló és a szolgáltatás közötti hitelesítéshez, és man-in-the-middle, lehallgatást, és a munkamenet-eltérítés – például a hálózati réteg támadások ellen védi a az átvitt adatokat.|
 |Redis|20|Az Azure Cache redis csak biztonságos kapcsolatok engedélyezése|Engedélyezi a Redis Azure Cache SSL-en keresztül csak kapcsolatokat. Biztonságos kapcsolatok használata biztosítja, hogy a kiszolgáló és a szolgáltatás közötti hitelesítéshez, és az átvitt adatokat védi a hálózati réteg támadásoktól, például a man-in-the-middle, lehallgatást, és munkamenet-eltérítés.|
 |SQL|15|Az SQL Database-adatbázisok transzparens adattitkosítás engedélyezése|Transzparens adattitkosítás engedélyezése az inaktív adatok védelméhez és a megfelelőségi követelmények betartásához.|
 |SQL|15|SQL Serverek naplózásának engedélyezése|Az Azure SQL-kiszolgáló naplózásának engedélyezése. (Csak az azure SQL-szolgáltatás esetében. Nem tartalmazza a virtuális gépeken futó SQL.)|
 |SQL|15|SQL-adatbázis naplózásának engedélyezése|Az Azure SQL-adatbázis naplózásának engedélyezése. (Csak az azure SQL-szolgáltatás esetében. Nem tartalmazza a virtuális gépeken futó SQL.)|
 |A Data lake analytics|15|Titkosítás inaktív állapotban, a Data Lake Analytics engedélyezése|A Data Lake Analytics az inaktív adatok védelme transzparens adattitkosítás engedélyezése. Titkosítás inaktív állapotban transzparens módon történik, ami azt jelenti, hogy a Data Lake Analytics automatikusan titkosítja az adatokat, és mindig visszafejti az adatokat lekérés előtt. Nem változtak, szükséges az alkalmazások és szolgáltatások, amelyek a titkosítás miatt a Data Lake Analytics interakciót. Titkosítás inaktív állapotban minimalizálja az adatvesztést a lopás veszélye, és emellett segít az előírt megfelelőségi követelmények.|
 |A Data lake store|15|Engedélyezze a titkosítást a Data Lake Store REST|A Data Lake Store az inaktív adatok védelme transzparens adattitkosítás engedélyezése. Titkosítás inaktív állapotban transzparens módon történik, ami azt jelenti, hogy a Data Lake Store automatikusan titkosítja az adatokat, és mindig visszafejti az adatokat lekérés előtt. Az alkalmazás- és titkosítási befogadásához Data Lake Store-ral kommunikáló szolgáltatások semmilyen módosítást nem kell. Titkosítás inaktív állapotban minimalizálja az adatvesztést a lopás veszélye, és emellett segít az előírt megfelelőségi követelmények.|
-|A Data lake analytics|5|A Data Lake Analytics diagnosztikai naplóinak engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
-|A Data lake store|5|Az Azure Data Lake Store diagnosztikai naplóinak engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
-|SQL|30|Az SQL-adatbázisok biztonsági rések|SQL-sebezhetőségi felmérés megvizsgálja az adatbázis a biztonsági kockázatokat, és elérhetővé teszi a bármely gyakorlattól eltérő jelenségeket, például a konfigurációs hibák, a túlságosan széleskörű engedélyeket és a bizalmas adatok nem védett. A biztonsági réseket talált feloldása nagy mértékben javíthatják a az adatbázis biztonsági helyzetében.|
-|SQL|20|Azure AD-rendszergazda az SQL server üzembe helyezése|Az Azure AD-hitelesítés engedélyezése az SQL Serverhez Azure AD-rendszergazda üzembe helyezhető. Az Azure AD-hitelesítés lehetővé teszi, hogy egyszerűsített engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központi identitáskezeléssel.|
-|Tárfiók|15|Tiltsa le a tárfiók nem korlátozott hálózati hozzáférést|A storage-fiók tűzfal beállításait a nem korlátozott hálózati hozzáférés naplózása. Konfigurálja a hálózati szabályok, az engedélyezett hálózatok csak alkalmazások férhetnek hozzá a tárfiók. Az adott internetről fogadjon kapcsolatokat, vagy egy helyszíni ügyfelek, a hozzáférés adható adott Azure virtuális hálózatok forgalmát, vagy nyilvános internetes IP-címtartományok.|
-|Tárfiók|1||Storage-fiókok új AzureRM-erőforrások áttelepítése|Használja az új Azure Resource Manager 2-es verzió, a storage-fiókokat adja meg például a biztonsági fejlesztések: erősebb hozzáférés-vezérlés (RBAC), a jobb naplózás, a Resource Manager-alapú üzembe helyezés és a cégirányítási, elérését a felügyelt identitások, a key vaulthoz való hozzáférés titkos kódok, az Azure AD-alapú hitelesítést és címkék támogatása és -erőforráscsoportok egyszerűbb biztonság kezelése.|
+|A Data lake analytics|5|Diagnosztikai naplók engedélyezése a Data Lake Analytics szolgáltatásban|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|A Data lake store|5|Diagnosztikai naplók engedélyezése az Azure Data Lake Store szolgáltatásban|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|SQL|30|SQL-adatbázisok biztonsági réseinek javítása|SQL-sebezhetőségi felmérés megvizsgálja az adatbázis a biztonsági kockázatokat, és elérhetővé teszi a bármely gyakorlattól eltérő jelenségeket, például a konfigurációs hibák, a túlságosan széleskörű engedélyeket és a bizalmas adatok nem védett. A biztonsági réseket talált feloldása nagy mértékben javíthatják a az adatbázis biztonsági helyzetében.|
+|SQL|20|Azure AD-rendszergazdai fiók kiépítése az SQL Serverhez|Az Azure AD-hitelesítés engedélyezése az SQL Serverhez Azure AD-rendszergazda üzembe helyezhető. Az Azure AD-hitelesítés lehetővé teszi, hogy egyszerűsített engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központi identitáskezeléssel.|
+|Tárfiók|15|Tárfiók korlátlan hálózati elérésének letiltása|A storage-fiók tűzfal beállításait a nem korlátozott hálózati hozzáférés naplózása. Konfigurálja a hálózati szabályok, az engedélyezett hálózatok csak alkalmazások férhetnek hozzá a tárfiók. Az adott internetről fogadjon kapcsolatokat, vagy egy helyszíni ügyfelek, a hozzáférés adható adott Azure virtuális hálózatok forgalmát, vagy nyilvános internetes IP-címtartományok.|
+|Tárfiók|1||Tárfiókok migrálása az új AzureRM-erőforrásokra|Használja az új Azure Resource Manager 2-es verzió, a storage-fiókokat adja meg például a biztonsági fejlesztések: erősebb hozzáférés-vezérlés (RBAC), a jobb naplózás, a Resource Manager-alapú üzembe helyezés és a cégirányítási, elérését a felügyelt identitások, a key vaulthoz való hozzáférés titkos kódok, az Azure AD-alapú hitelesítést és címkék támogatása és -erőforráscsoportok egyszerűbb biztonság kezelése.|
 
 
 

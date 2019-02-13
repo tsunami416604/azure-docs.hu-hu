@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 499ecc37150bd9b5335c54f2e99812121fe4b1bc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 574394000c45ca2c12c309c4536a6649bd3fcb76
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729676"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104049"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Egy application gateway létrehozása belső átirányítás, az Azure CLI használatával
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása 
 
-Hozza létre a *myVNet* nevű virtuális hálózatot és a *myAGSubnet* nevű alhálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. Ezután hozzáadhatja a nevű alhálózat *myBackendSubnet* -kiszolgálók háttérkészletéhez van szükség, amely [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet). Hozza létre a *myAGPublicIPAddress* elnevezésű nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ipwork_public_ip_create) paranccsal.
+Hozza létre a *myVNet* nevű virtuális hálózatot és a *myAGSubnet* nevű alhálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. Ezután hozzáadhatja a nevű alhálózat *myBackendSubnet* -kiszolgálók háttérkészletéhez van szükség, amely [az alhálózaton virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet). Hozza létre a *myAGPublicIPAddress* elnevezésű nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) paranccsal.
 
 ```azurecli-interactive
 az network vnet create \
@@ -103,7 +103,7 @@ Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmaz�
 
 A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben az oktatóanyagban két figyelőt hoz létre a két tartományhoz. Ebben a példában figyelői jönnek létre, a tartományra *www.contoso.com* és *www.contoso.org*.
 
-Adja hozzá a forgalom irányításához szükséges háttérfigyelőket az [az network application-gateway http-listener create](/cli/azure/network/application-gatewaywork_application_gateway_http_listener_create) paranccsal.
+Adja hozzá a forgalom irányításához szükséges háttérfigyelőket az [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) paranccsal.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -124,7 +124,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Az átirányítási konfiguráció hozzáadása
 
-Adja hozzá az átirányítási konfiguráció, amely érkező forgalmat küld *www.consoto.org* a figyelőhöz a *www.contoso.com* az application gateway-t a [az network application-gateway átirányítási konfiguráció létrehozása](/cli/azure/network/application-gateway/redirect-configwork_application_gateway_redirect_config_create).
+Adja hozzá az átirányítási konfiguráció, amely érkező forgalmat küld *www.consoto.org* a figyelőhöz a *www.contoso.com* az application gateway-t a [az network application-gateway átirányítási konfiguráció létrehozása](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -141,7 +141,7 @@ az network application-gateway redirect-config create \
 
 Szabályok létrehozása, amelyben a rendelés feldolgozása, és átirányítja a forgalmat az application gateway az első szabály, amely megfelel az URL-cím használatával küld. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
 
-Ebben a példában két új szabályokat hozhat létre, és törölje az alapértelmezett szabályt, amely lett létrehozva.  A szabályt az [az network application-gateway rule create](/cli/azure/network/application-gatewaywork_application_gateway_rule_create) paranccsal adhatja hozzá.
+Ebben a példában két új szabályokat hozhat létre, és törölje az alapértelmezett szabályt, amely lett létrehozva.  A szabályt az [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) paranccsal adhatja hozzá.
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -201,7 +201,7 @@ az vmss extension set \
 
 ## <a name="create-cname-record-in-your-domain"></a>CNAME rekord létrehozása a tartományban
 
-Az alkalmazásátjáró nyilvános IP-címmel történő létrehozása után lekérheti a DNS-címet, és a segítségével létrehozhat egy CNAME rekordot a tartományban. Az alkalmazásátjáró DNS-címét az [az network public-ip show](/cli/azure/network/public-ipwork_public_ip_show) paranccsal kérheti le. Másolja a DNSSettings *fqdn* értékét, és használja a létrehozandó CNAME rekord értékeként. Az A rekordok használata nem javasolt, mivel a virtuális IP-cím változhat az alkalmazásátjáró újraindításakor.
+Az alkalmazásátjáró nyilvános IP-címmel történő létrehozása után lekérheti a DNS-címet, és a segítségével létrehozhat egy CNAME rekordot a tartományban. Az alkalmazásátjáró DNS-címét az [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) paranccsal kérheti le. Másolja a DNSSettings *fqdn* értékét, és használja a létrehozandó CNAME rekord értékeként. Az A rekordok használata nem javasolt, mivel a virtuális IP-cím változhat az alkalmazásátjáró újraindításakor.
 
 ```azurecli-interactive
 az network public-ip show \

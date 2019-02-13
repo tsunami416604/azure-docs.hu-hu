@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: fd03a0b1cd3f0ab55377d597a0c6e6595bc876fc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 877393de20788b0aa1c76084b121a82f12715cd3
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004145"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118071"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Az Azure Maps térkép vezérlőelem használata
 
@@ -68,7 +68,7 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     </body>
     ```
 
-5. A térkép vezérlőelem inicializálása, új definiálására a html törzsében, és hozzon létre egy parancsfájlt. A saját Azure Maps-fiók kulcsára vagy Azure Active Directory (AAD) hitelesítő adatokat használja a térkép használatával történő hitelesítéshez [authOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authoptions). Ha hozzon létre egy fiókot, vagy keresse meg a, tekintse meg kell [az Azure Maps-fiók és kulcsok kezelése](how-to-manage-account-keys.md). A **nyelvi** beállítás megadja a térkép címkék és a vezérlők használt nyelv. A támogatott nyelvek további információkért lásd: [támogatott nyelvek](supported-languages.md). Ha egy előfizetési kulcsot használ a hitelesítéshez.
+5. A térkép vezérlőelem inicializálása, új definiálására a html törzsében, és hozzon létre egy parancsfájlt. A saját Azure Maps-fiók kulcsára vagy Azure Active Directory (AAD) hitelesítő adatokat használja a térkép használatával történő hitelesítéshez [hitelesítési beállítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.authenticationoptions). Ha hozzon létre egy fiókot, vagy keresse meg a, tekintse meg kell [az Azure Maps-fiók és kulcsok kezelése](how-to-manage-account-keys.md). A **nyelvi** beállítás megadja a térkép címkék és a vezérlők használt nyelv. A támogatott nyelvek további információkért lásd: [támogatott nyelvek](supported-languages.md). Ha egy előfizetési kulcsot használ a hitelesítéshez.
 
     ```html
     <script type='text/javascript'>

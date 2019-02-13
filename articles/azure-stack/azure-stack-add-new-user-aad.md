@@ -3,7 +3,7 @@ title: Adjon hozzá egy új Azure Stack-bérlői fiókkal az Azure Active Direct
 description: A Microsoft Azure Stack fejlesztői készletének telepítése, után kell legalább egy bérlői felhasználói fiók létrehozása, így megismerheti a bérlői portál.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: patricka
 manager: femila
 editor: ''
 ms.assetid: a75d5c88-5b9e-4e9a-a6e3-48bbfa7069a7
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
-ms.author: jeffgilb
+ms.date: 02/12/2019
+ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: c0f457955bd8df7fe07e2a96469fde0a751417bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c07288bbfbf70be62723f835192cf09d92166ab
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240319"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163223"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Adjon hozzá egy új Azure Stack-bérlői fiókkal az Azure Active Directoryban
 
@@ -56,14 +56,12 @@ Az Azure portal használata az Azure-előfizetéssel kell rendelkeznie.
 7. Jelentkezzen be az új fiókot a Microsoft Azure-portálra. Módosítsa a jelszót, amikor a rendszer kéri.
 8. Jelentkezzen be a `https://portal.local.azurestack.external` a bérlői portál új fiókkal.
 
-## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>Hozzon létre egy Azure Stack-bérlői fiókkal, PowerShell-lel
+## <a name="create-an-azure-stack-user-account-using-powershell"></a>PowerShell-lel az Azure Stack felhasználói fiók létrehozása
 
 Ha nem rendelkezik Azure-előfizetéssel, az Azure Portalon adjon hozzá egy bérlő felhasználót nem használhat. Ebben az esetben használhatja az Azure Active Directory modul a Windows PowerShell helyette.
 
 > [!NOTE]
 > Ha az Azure Stack fejlesztői készletének telepítése a Microsoft Account (Live ID) használ, a AAD PowerShell bérlői fiók létrehozása nem használhat. 
-> 
-> 
 
 1. Telepítse a [Microsoft Online Services bejelentkezési segéd az informatikusok RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950).
 2. Telepítse a [Azure Active Directory modul a Windows PowerShell (64 bites verzió)](https://go.microsoft.com/fwlink/p/?linkid=236297) , és nyissa meg azt.
@@ -85,3 +83,6 @@ Ha nem rendelkezik Azure-előfizetéssel, az Azure Portalon adjon hozzá egy bé
 1. Jelentkezzen be a Microsoft Azure-az új fiókot. Módosítsa a jelszót, amikor a rendszer kéri.
 2. Jelentkezzen be a `https://portal.local.azurestack.external` a bérlői portál új fiókkal.
 
+## <a name="next-steps"></a>További lépések
+
+[Azure Stack-felhasználók hozzáadása az AD FS-ben](azure-stack-add-users-adfs.md)

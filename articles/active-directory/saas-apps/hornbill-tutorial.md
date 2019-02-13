@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az szarvascsőrűmadár |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező szarvascsőrűmadár |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és szarvascsőrűmadár között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 30fdb55758d5fbac41452236ebaa9f96ab9bba6b
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 86f23a1520175827f775553e1ba949c62567cf83
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163969"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201924"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>Oktatóanyag: Azure Active Directory-integráció az szarvascsőrűmadár
+# <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező szarvascsőrűmadár
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan szarvascsőrűmadár integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Szarvascsőrűmadár az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy szarvascsőrűmadár egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Az Azure AD integrálása a szarvascsőrűmadár konfigurálásához hozzá kell
 
 **Szarvascsőrűmadár hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -195,7 +196,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja szarvascsőrűmadár Britta Simon nevű felhasználó létrehozásához. Szarvascsőrűmadár támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az szarvascsőrűmadár elérésére, ha még nem létezik tett kísérlet során.
 
 > [!Note]
-> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [szarvascsőrűmadár ügyfél-támogatási csapatának](https://www.hornbill.com/support/?request/).
+> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [szarvascsőrűmadár ügyfél-támogatási csapatának](https://www.hornbill.com/support/?request/).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -227,7 +228,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -237,7 +238,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

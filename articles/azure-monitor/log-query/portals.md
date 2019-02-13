@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/22/2018
 ms.author: bwren
-ms.openlocfilehash: 9567f8a6b581d7c246ebaa8eb8d72ad201bf2641
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6e84344e1c0229d15891bd15a512880da6e20cfe
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990411"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110762"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Az Azure Monitor log-adatok megtekintésére és elemzésére
 Log Analytics a Teljesítménynapló-adatok kezelése és a lekérdezések létrehozása az Azure monitorban elsődleges élményét. Nyissa meg a Log Analytics **naplók** a a **Azure Monitor** menü. Ismerkedjen meg ezen a portálon, és vizsgálja meg a szolgáltatásokat [Log Analytics első lépései az Azure Portalon](get-started-portal.md).
@@ -63,7 +63,7 @@ A böngészőben a következő címek eléréséhez a Log Analytics hozzáféré
 
 
 ## <a name="log-search-classic"></a>Naplókeresés (klasszikus)
-Naplóbeli keresés a korábbi architektúra az Azure Portalon az Azure Monitor a naplózási adatok lekérdezésére és elemzésére. Azt a rendszer hamarosan eltávolítjuk, de jelenleg továbbra is elérhető. Nyissa meg a naplóbeli keresés **naplók (klasszikus)** a Log Analytics menüben.
+Naplóbeli keresés a korábbi architektúra az Azure Portalon az Azure Monitor a naplózási adatok lekérdezésére és elemzésére. Azt hamarosan megszűnnek, de jelenleg továbbra is elérhető. Nyissa meg a naplóbeli keresés **naplók (klasszikus)** a Log Analytics menüben.
 
 
 

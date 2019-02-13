@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ebca3060e902c0a45619c2bd64240537cd95308d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b43e496323da75dfc63f889283257fac41f48abf
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811851"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117731"
 ---
 # <a name="administer-your-iot-central-application"></a>Az IoT-központ alkalmazás felügyelete
 
@@ -141,15 +141,15 @@ Az önkiszolgáló folyamat befejezéséhez kövesse az alábbi lépéseket:
 
 ## <a name="export-data"></a>Adatok exportálása
 
-Engedélyezheti a **folyamatos adatexportálás** mérések, eszközök és eszközadatok sablonok exportálása az Azure Blob storage-fiókot. Tudjon meg többet [az adatok exportálása](#howto-export-data).
+Engedélyezheti a **folyamatos adatexportálás** mérések, eszközök és eszközadatok sablonok exportálása az Azure Blob storage-fiókot. Ismerje meg, hogyan [exportálhatja az adatokat](#export-data).
 
 ## <a name="manage-device-connection"></a>Eszköz kapcsolat kezelése
 
-Csatlakozás az alkalmazásban, a kulcsok és tanúsítványok ide használatával nagy mennyiségű eszközt. Tudjon meg többet [eszközök csatlakoztatásáról](#concepts-connectivity).
+Csatlakozás az alkalmazásban, a kulcsok és tanúsítványok ide használatával nagy mennyiségű eszközt. Tudjon meg többet [eszközök csatlakoztatásáról](/azure/iot-central/concepts-connectivity-experimental?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
 
 ## <a name="use-access-tokens"></a>Hozzáférési kódok használata
 
-A fejlesztői eszközök használandó hozzáférési jogkivonatokat hoz létre. Jelenleg nincs egy fejlesztői eszköz, amely egyben az IoT-központ explorer figyeléshez az eszközre és változások a propreties és a beállítások. Tudjon meg többet a [IoT-központ explorer](#howto-use-iotc-explorer). 
+A fejlesztői eszközök használandó hozzáférési jogkivonatokat hoz létre. Jelenleg nincs egy fejlesztői eszköz, amely egyben az IoT-központ explorer figyeléshez az eszközre és változások a propreties és a beállítások. További információ az IoT-központ explorer. 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Az Azure SDK-k használata vezérlési síkjával végzett műveletek
 

@@ -4,7 +4,7 @@ description: Ismerje meg az Azure Storage biztonsági ajánlott eljárások a Pa
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: TomShinder
-ms.openlocfilehash: ac01aaca8c147b1f474b59ac57424f5cdc5f8a8d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 3ad97c7adb5901c1da1d174d12d5d6a91831cc74
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451867"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108925"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>PaaS web- és mobilalkalmazások az Azure Storage használatával biztonságossá tételének ajánlott eljárásait
 Ebben a cikkben bemutatjuk az Azure Storage biztonsági védelmének bevált gyakorlata a platform--szolgáltatásként (PaaS) webes és mobilalkalmazások védelme gyűjteménye. Ajánlott eljárások az funkciót az Azure-ral és a az ügyfelek, például a saját maga származik.
 
 Az Azure lehetővé teszi a tároló üzembe helyezése és módon könnyen elérhető helyi. Az Azure storage magas szintű méretezhetőség és rendelkezésre állása és viszonylag kis munkamennyiség érheti el. Nem csak az Azure Storage az alapítvány Windows és Linux Azure Virtual Machines esetén is alkalmas nagy méretű elosztott alkalmazások.
 
-Az Azure Storage a következő négy szolgáltatást biztosítja: Blob storage, Table storage, Queue storage és File storage. További tudnivalókért lásd: [a Microsoft Azure Storage bemutatása](../storage/storage-introduction.md).
+Az Azure Storage a következő négy szolgáltatást biztosítja: A BLOB storage, Table storage, Queue storage és File storage. További tudnivalókért lásd: [a Microsoft Azure Storage bemutatása](../storage/storage-introduction.md).
 
 A [Azure Storage biztonsági útmutatóját](../storage/common/storage-security-guide.md) remek módja az Azure Storage és a biztonság részletes információkat. Ez – gyakorlati tanácsok cikk címek magas szinten azokat a fogalmakat találhatók a biztonsági útmutató és a biztonsági útmutató, valamint a más forrásokból, további információt mutató hivatkozásokat.
 
@@ -64,7 +64,7 @@ Szervezetek számára, amelyek nem tesszük kötelezővé a hozzáférés-vezér
 További információ az RBAC lásd:
 
 - [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
-- [Az Azure-erőforrások beépített szerepkörök](../role-based-access-control/built-in-roles.md)
+- [Beépített szerepkörök Azure-erőforrásokhoz](../role-based-access-control/built-in-roles.md)
 - [Biztonsági útmutató az Azure Storage-hoz](../storage/common/storage-security-guide.md) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Ügyféloldali titkosítás értékes adatok használata

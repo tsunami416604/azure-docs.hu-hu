@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: caff4973515d3866b94dba2e89d089ff042de43b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a3851e4c35b333e862ead296ad1e8448c3317228
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813245"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210492"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.

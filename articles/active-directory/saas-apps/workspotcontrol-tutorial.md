@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Workspot vezérlőelemhez |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció Workspot vezérlővel |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Workspot vezérlő között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 520e625ba9689ebf35e985fe95609c62102e2493
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8716d018756d1e6eadcd6ebeeaf4f67ad0bc4741
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312810"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211155"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Oktatóanyag: Azure Active Directory-integráció az Workspot vezérlés
+# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Oktatóanyag: Az Azure Active Directory-integráció Workspot vezérlővel
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Workspot vezérlés integrálása az Azure Active Directory (Azure AD).
 
@@ -134,7 +135,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
@@ -142,7 +143,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 7. Egy másik böngészőablakban, bejelentkezési Workspot szabályozhatja a biztonság-rendszergazdájaként.
 
-8. Kattintson az eszköztáron az oldal tetején lévő **telepítő**, majd keresse meg a **SAML**.
+8. Kattintson az eszköztáron az oldal tetején lévő **telepítő**, majd keresse meg a **SAML**.
 
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
@@ -150,7 +151,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
  
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    a. A a **Entitásazonosító** szövegmezőjébe illessze be az értéket, **Azure Ad-azonosító** az Azure Portalról másolt.   
+    a. A a **Entitásazonosító** szövegmezőjébe illessze be az értéket, **Azure Ad-azonosító** az Azure Portalról másolt.   
 
     b.In a **URL-CÍMÉT nehézség** szövegmező, illessze be az értéket a **bejelentkezési URL-cím** az Azure Portalról másolt.
 
@@ -193,7 +194,7 @@ Ahhoz, hogy az Azure AD-felhasználók Workspot vezérlő jelentkezzen be, akkor
 
 1. Workspot vezérlőelem egy biztonsági-rendszergazdaként jelentkezzen be.
 
-2. Kattintson az eszköztáron az oldal tetején lévő **felhasználók**, majd keresse meg a **felhasználó hozzáadása**.
+2. Kattintson az eszköztáron az oldal tetején lévő **felhasználók**, majd keresse meg a **felhasználó hozzáadása**.
 
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 

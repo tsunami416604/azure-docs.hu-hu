@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: f7582f26eb65526ad392f2df29f5686e18262e40
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 6aba94aa083127c2300481dbc8e30c224a1813a3
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54069004"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109265"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Állítsa be a titkosítási tanúsítványt, és a kulcsok a Windows-fürtök titkosítása
 Ez a cikk bemutatja, hogyan állítsa be a titkosítási tanúsítványt, és a kulcsok a Windows-fürtök titkosíthatja. Linux-fürtöket, lásd: [beállítása beállítása egy titkosítási tanúsítványt, és titkosítani a titkos kulcsokat a Linux-fürtökön.][secret-management-linux-specific-link]
@@ -55,7 +55,7 @@ Az eredményül kapott base-64 kódolású karakterláncot tartalmazza a titkos 
 Ismerje meg, hogyan [adja meg a titkosított titkos kulcsok egy alkalmazásban.][secret-management-specify-encrypted-secrets-link]
 
 <!-- Links -->
-[key-vault-get-started]:../key-vault/key-vault-get-started.md
+[key-vault-get-started]:../key-vault/key-vault-overview.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md
 [environment-variables-link]: service-fabric-how-to-specify-environment-variables.md

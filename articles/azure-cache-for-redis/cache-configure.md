@@ -3,7 +3,7 @@ title: Azure Cache Redis konfigurálása |} A Microsoft Docs
 description: A Redis az Azure Cache Redis alapértelmezett konfigurációja ismertetése, és ismerje meg, hogyan konfigurálhatja az Azure Cache a Redis-példány
 services: azure-cache-for-redis
 documentationcenter: na
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: tysonn
 ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
-ms.author: wesmc
-ms.openlocfilehash: c9158eebb876f5c3349528ffb7707629791421ce
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.author: yegu
+ms.openlocfilehash: 37b2b740f850b2c3c1cc81049e81a153b5db9905
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099938"
+ms.locfileid: "56110863"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache Redis konfigurálása
 Ez a témakör ismerteti az Azure Cache a Redis-példány érhető el a konfigurációkat. Ez a témakör ismerteti a Redis server az alapértelmezett konfigurációjának for Azure Cache Redis-példány is.

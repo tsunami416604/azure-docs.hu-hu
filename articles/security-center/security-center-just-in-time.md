@@ -4,7 +4,7 @@ description: Ez a dokumentum bemutatja, hogyan just-in-time Virtuálisgép-hozz�
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/4/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5c42c0d5597e1e14bbb7814ad635abcd086db804
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 94364a54a5a0994cc3de3a2fe014b556d438b2c2
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339042"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114909"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-in-time virtuálisgép-hozzáférés kezelése
 
@@ -193,7 +193,7 @@ Kioszthatók *műveletek* a szerepkörhöz:
 
 Állítsa be ezeket a jogosultságokat, a felhasználót, hogy sikeresen megtörtént a virtuális gép igény szerinti hozzáférés kérése engedélyezése: Kioszthatók *műveletek* a felhasználó számára:
 -   Az egy előfizetésen vagy erőforráscsoporton hatóköre a virtuális gép társítva:
-   - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ kezdeményezése/művelet
+   - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ initiate/action
 -    Az egy előfizetést vagy erőforráscsoportot, vagy a virtuális gép hatóköre:
    - Microsoft.Compute/virtualMachines/read
 

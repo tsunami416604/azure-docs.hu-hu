@@ -4,7 +4,7 @@ description: Ez a cikk a Microsoft Azure-architektúra és a felügyeleti által
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: b2e8ef232e1b25c7d000f4683830ff2e188047fb
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186476"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118139"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Az Azure information rendszerösszetevők és határok
 Ez a cikk az Azure-architektúra és a felügyeleti általános leírása. A rendszer az Azure-környezet az alábbi hálózatok tevődik össze:
@@ -54,9 +54,9 @@ Az operációs rendszer csapat lemezképet, a képernyőn a virtuális merevleme
 
 Háló által felügyelt operációsrendszer-lemezképek három típusa van:
 
-- Gazdagép: Egy testreszabott operációs rendszert futtató virtuális gépek gazdagépen.
-- Natív: Egy natív operációs rendszert futtat, a bérlők számára (például Azure Storage). Ez az operációs rendszer nem rendelkezik minden olyan hipervizorra.
-- Vendég: A Vendég operációs rendszer, amely a Vendég virtuális gépeket.
+- Gazdagép: Testreszabott operációs rendszert futtató virtuális gépek gazdagépen.
+- Natív: Egy natív operációs rendszer, amely futtatja a bérlők számára (például Azure Storage). Ez az operációs rendszer nem rendelkezik minden olyan hipervizorra.
+- Vendég: A Vendég virtuális gépen futó vendég operációs rendszer.
 
 A gazdagép és a natív FC-felügyelt operációs rendszereket a felhőben való használatra készültek, és nem nyilvánosan elérhető-e.
 
@@ -81,7 +81,7 @@ A csoportok a következők:
 - Azure Compute
 - Az Azure-háló
 - Mérnöki csapathoz Felhőszolgáltatások
-- ISSD: biztonság
+- ISSD: Biztonság
 - Multifactor Authentication (Többtényezős hitelesítés)
 - SQL Database
 - Storage

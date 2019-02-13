@@ -1,10 +1,10 @@
 ---
-title: Az Azure éles hálózati környezetben
+title: Azure production network
 description: Ez a cikk az Azure éles hálózati környezetben általános leírása.
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 710792c890c3e48fc54507f93eeaee529ca839f8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: afae7cc6390ea4cd8c18c687e9d99400c8da9da4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114028"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116932"
 ---
 # <a name="the-azure-production-network"></a>Az Azure éles hálózati környezetben
 Az Azure éles hálózati környezetben, a felhasználók közé tartozik a mindkét külső ügyfelek esetében, aki a hozzáférést a saját Azure-alkalmazások és a belső Azure-támogatási személyzetnek kezelheti az éles hálózati környezetben. Ez a cikk ismerteti a biztonsági hozzáférési metódusokat és a védelmi mechanizmus az Azure éles környezetben való hálózati kapcsolatot lehessen létesíteni.
@@ -54,16 +54,16 @@ Az Azure nagy teljesítményű biztonsági és a különböző szinteken kikény
 ### <a name="azure-security-features"></a>Az Azure biztonsági funkciók
 Az Azure szoftveres állomásalapú tűzfal az éles hálózaton belül valósítja meg. Több alapvető biztonsági és a tűzfal-funkciók az alapvető Azure-környezetben található. Ezeket a biztonsági funkciókat az Azure környezetben jellegű defense stratégia tükrözik. Vásárlói adatok Azure-ban az alábbi tűzfal védi:
 
-**Hipervizor tűzfalat (csomagszűrőt)**: Ez a tűzfal a hipervizor megvalósítva, és a (FC) hálóvezérlő ügynök által konfigurált. Ez a tűzfal védi a bérlő, amely a virtuális gép fut, a jogosulatlan hozzáférés ellen. Alapesetben, amikor egy virtuális gép létrehozása, minden forgalmat blokkol, majd az FC-ügynök szabályok és kivételek hozzáadja-e meg a szűrő engedélyezett forgalom engedélyezéséhez.
+**Hipervizor tűzfalat (csomagszűrőt)**: Ez a tűzfal van megvalósítva a hipervizor, és a (FC) hálóvezérlő ügynök által konfigurált. Ez a tűzfal védi a bérlő, amely a virtuális gép fut, a jogosulatlan hozzáférés ellen. Alapesetben, amikor egy virtuális gép létrehozása, minden forgalmat blokkol, majd az FC-ügynök szabályok és kivételek hozzáadja-e meg a szűrő engedélyezett forgalom engedélyezéséhez.
 
 Itt programozott szabályok két kategóriába:
 
-- **A gép konfigurációs vagy infrastrukturális szabályok**: alapértelmezés szerint minden kommunikáció blokkolva van. Kivételek állnak fenn, amelyek lehetővé teszik egy virtuális Gépet, a Dynamic Host Configuration Protocol (DHCP) kommunikáció és a DNS-adatok küldése és fogadása és forgalom küldése, ha a "nyilvános" internetre kimenő az FC-fürt és az operációsrendszer-aktiválási kiszolgálóra belüli más virtuális gépekre. Mivel a virtuális gépek engedélyezett kimenő listája célok nem tartalmaz Azure útválasztó-alhálózatok és egyéb Microsoft-tulajdonságok, a szabályok azok szerepét egy védelmi réteget.
-- **Szerepkör-konfigurációs fájl szabályok**: a bejövő ACL-eket a bérlők szolgáltatási modellje alapján határozza meg. Például ha egy bérlőt egy web front end egy adott virtuális gép 80-as porton, 80-as port meg van nyitva az összes IP-címek. Ha a virtuális gépen futó feldolgozói szerepkör, a feldolgozói szerepkört csak az ugyanazon a bérlőn belül a virtuális gép van nyitva.
+- **A gép konfigurációs vagy infrastrukturális szabályok**: Alapértelmezés szerint minden kommunikáció blokkolva van. Kivételek állnak fenn, amelyek lehetővé teszik egy virtuális Gépet, a Dynamic Host Configuration Protocol (DHCP) kommunikáció és a DNS-adatok küldése és fogadása és forgalom küldése, ha a "nyilvános" internetre kimenő az FC-fürt és az operációsrendszer-aktiválási kiszolgálóra belüli más virtuális gépekre. Mivel a virtuális gépek engedélyezett kimenő listája célok nem tartalmaz Azure útválasztó-alhálózatok és egyéb Microsoft-tulajdonságok, a szabályok azok szerepét egy védelmi réteget.
+- **Szerepkör-konfigurációs fájl szabályok**: A bejövő ACL-eket a bérlők szolgáltatási modellje alapján határozza meg. Például ha egy bérlőt egy web front end egy adott virtuális gép 80-as porton, 80-as port meg van nyitva az összes IP-címek. Ha a virtuális gépen futó feldolgozói szerepkör, a feldolgozói szerepkört csak az ugyanazon a bérlőn belül a virtuális gép van nyitva.
 
-**Natív gazdagép tűzfala**: egy natív operációs rendszeren, amelynek nincs hipervizora futtatása az Azure Service Fabric és az Azure Storage, és ezért Windows tűzfalon konfigurálva van a fenti két szabálycsoport.
+**Natív gazdagép tűzfala**: Egy natív operációs rendszeren, amelynek nincs hipervizora futtatása az Azure Service Fabric és az Azure Storage, és ezért Windows tűzfalon konfigurálva van a fenti két szabálycsoport.
 
-**Gazdagép tűzfala**: A gazdagép tűzfal védi a gazdagép partíciójához, a hipervizort futtató. A szabályok úgy vannak programozva, csak az FC engedélyezéséhez, és ugorjon be a gazdagép partíciójához egy adott porton kommunikáljon. A kivételek, hogy a DHCP- és DNS-válaszok. Az Azure használ egy gép konfigurációs fájlját, amely tartalmazza a gazdagép partíciójához vonatkozó tűzfalszabályok sablonját. A gazdagép tűzfal-kivétel is létezik, amely lehetővé teszi a virtuális gépek gazdagép-összetevők, átviteli kiszolgálót és metaadat-kiszolgáló adott protokoll-porton keresztül kommunikáljon.
+**Gazdagép tűzfala**: A gazdagép tűzfala a hipervizort futtató állomás partíció védi. A szabályok úgy vannak programozva, csak az FC engedélyezéséhez, és ugorjon be a gazdagép partíciójához egy adott porton kommunikáljon. A kivételek, hogy a DHCP- és DNS-válaszok. Az Azure használ egy gép konfigurációs fájlját, amely tartalmazza a gazdagép partíciójához vonatkozó tűzfalszabályok sablonját. A gazdagép tűzfal-kivétel is létezik, amely lehetővé teszi a virtuális gépek gazdagép-összetevők, átviteli kiszolgálót és metaadat-kiszolgáló adott protokoll-porton keresztül kommunikáljon.
 
 **Vendég tűzfala**: A Windows tűzfalában a vendég operációs rendszer, amely ügyfél virtuális gépeken és a storage ügyfelek által konfigurálható.
 

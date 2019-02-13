@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: dc18a523ff7c275b249704fb3928f2ebde6c81a9
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 108b188b0bbb63a4c9faea936360cf2fa3edc806
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074889"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211614"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -105,7 +106,7 @@ Ez a lépés már valószínűleg a bérlő teljes, de, fontos ellenőrizni, hog
 2. Válassza ki **az Azure Active Directory** > **az Azure AD Connect**
 3. Győződjön meg arról, hogy a szinkronizálási állapota **engedélyezve** , és hogy a legutóbbi szinkronizálás kevesebb, mint egy órával ezelőtt történt.
 
-Ha elindít egy új ciklikus szinkronizálási, us utasításokat kell az [Azure AD Connect szinkronizálása: A Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
+Ha elindít egy új ciklikus szinkronizálási, us utasításokat kell az [Azure AD Connect szinkronizálása: Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
 
 ### <a name="determine-which-authentication-methods-your-users-can-use"></a>Határozza meg, mely a felhasználók használhatják a hitelesítési módszerek
 
@@ -247,7 +248,7 @@ Ez a hiba miatt számos oka lehet. Hibaelhárítás elősegítése érdekében t
 1. Indítsa újra az NPS-kiszolgálót.
 2. Győződjön meg arról, hogy az ügyféltanúsítvány a várt módon telepítve van.
 3. Győződjön meg arról, hogy a tanúsítvány az Azure AD-bérlője társítva.
-4. Ellenőrizze, hogy https://login.microsoftonline.com/ érhető el a bővítményt futtató kiszolgálóról.
+4. Ellenőrizze, hogy a https://login.microsoftonline.com/ elérhető-e a bővítményt futtató kiszolgálóról.
 
 -------------------------------------------------------------
 
@@ -259,7 +260,7 @@ Ellenőrizze, hogy az AD Connect fut, valamint, hogy a felhasználó megtalálha
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Miért látok HTTP-csatlakozási hibák a naplókban az összes saját hitelesítések sikertelenek?
 
-Ellenőrizze, hogy https://adnotifications.windowsazure.com elérhető-e az NPS-bővítményt futtató kiszolgálóról.
+Ellenőrizze, hogy a https://adnotifications.windowsazure.com elérhető-e az NPS-bővítményt futtató kiszolgálóról.
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>A TLS/SSL-protokollok és titkosítócsomagok kezelése
 

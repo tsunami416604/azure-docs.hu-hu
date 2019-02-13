@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 1cf3d29bd3d7af56f3e20c1d2344ed90095229bf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 33f2e3249d1b7ad0efc16dd0b9ced26379c3cae7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196667"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174469"
 ---
 # <a name="start-an-access-review-for-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó hozzáférési felülvizsgálat indítása
 Szerepkör-hozzárendelések "elavult" válnak, amikor a felhasználók a privilegizált hozzáférés, amelyekre már nincs szükségük. A régi szerepkör-hozzárendelések, a kiemelt szerepkörű a kockázatának csökkentése érdekében vagy globális rendszergazdái rendszeresen készítsen tehet fel és rendszergazdák számára, tekintse át a szerepkörök rendelkező felhasználók a hozzáférési felülvizsgálatok. Ez a dokumentum ismerteti a lépéseket a hozzáférési felülvizsgálat indítása az Azure AD Privileged Identity Management (PIM).

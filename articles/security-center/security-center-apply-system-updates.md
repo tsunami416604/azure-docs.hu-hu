@@ -4,7 +4,7 @@ description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Securit
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f3c055d55da06e6410520084a1c96baa78b91496
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: afd6ded48bc330032b77be4bc8cd186a6f71ee5f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341712"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105127"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Az Azure Security Center rendszerfrissítések alkalmazása
 Az Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeken (VM) és a hiányzó operációsrendszer-frissítések a számítógépeken. A Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját a Windows Update webhelyről vagy a Windows Server Update Services (WSUS), függően szolgáltatás van konfigurálva, egy Windows-számítógépen. A Security Center is ellenőrzi a legújabb frissítéseket Linux rendszerekben. Ha a virtuális gép vagy a számítógép egy rendszer frissítés hiányzik, a Security Center javasolni fogja, hogy a rendszerfrissítések alkalmazása.

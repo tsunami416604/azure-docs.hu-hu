@@ -3,7 +3,7 @@ title: Virtuális hálózat konfigurálása prémium szintű Azure redis Cache |
 description: Ismerje meg, hogyan hozhat létre, és a prémium szintű Azure Cache a Redis-példány támogatása virtuális hálózat kezelése
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: 8b1e43a0-a70e-41e6-8994-0ac246d8bf7f
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
-ms.author: wesmc
-ms.openlocfilehash: e71d92b2cf7888fd9e3c560beb6e0e7f18e7add0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.author: yegu
+ms.openlocfilehash: 399c6ef1d14137708ef37d4265517d41432e2dd2
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822646"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106489"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network támogatása a prémium szintű Azure Cache Redis konfigurálása
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatásait, beleértve a Prémiumszintű funkciókkal, például a fürtözés, az adatmegőrzés és a virtuálishálózat-támogatást is nyújt. Virtuális hálózat egy magánhálózat a felhőben. Ha az Azure Cache Redis-példányt a virtuális hálózathoz van konfigurálva, még nem nyilvánosan címezhető és a virtuális gépek és az alkalmazások a virtuális hálózaton belül csak érhetők el. Ez a cikk ismerteti, hogyan kell egy prémium szintű Azure Cache Redis-példányt a virtuális hálózat támogatásának konfigurálása.

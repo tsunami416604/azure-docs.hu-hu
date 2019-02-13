@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 564f78b28be96209012542fd0d2e4de94872e583
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: beec63eaba78302fd795fb757f9bee48bab60c3c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188076"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168935"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>Oktatóanyag: Az Azure Active Directory integrációja az Carlson Wagonlit utazás
 

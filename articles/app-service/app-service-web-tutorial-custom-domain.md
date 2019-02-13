@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 89852e30929cc26aa0cbe63ed4e334c4e878b90b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 88e55573e88a45d7733e12c3bb8751763a0ef901
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714338"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113362"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure App Service-ben
 
@@ -338,10 +338,12 @@ További információ: [Egyéni tartomány leképezése egy webalkalmazásra](sc
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 A következő parancs konfigurált egyéni DNS-nevet ad hozzá egy App Service-alkalmazáshoz. 
 
 ```PowerShell  
-Set-AzureRmWebApp `
+Set-AzWebApp `
     -Name <app_name> `
     -ResourceGroupName <resource_group_name> ` 
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
@@ -363,4 +365,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan köthet egyéni SSL-tanúsítványt webalkalmazásokhoz.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-ben](app-service-web-tutorial-custom-ssl.md)
+> [Meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-hez](app-service-web-tutorial-custom-ssl.md)

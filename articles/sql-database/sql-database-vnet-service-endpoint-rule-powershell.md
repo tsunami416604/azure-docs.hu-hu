@@ -1,5 +1,5 @@
 ---
-title: Virtuális hálózati Szolgáltatásvégpontok és szabályok az Azure SQL-ben készült PowerShell-lel |} A Microsoft Docs
+title: PowerShell a virtuális hálózatok végpontok és szabályok az Azure SQL-ben egyetlen vagy készletezett adatbázisok |} A Microsoft Docs
 description: PowerShell-szkripteket hozhat létre és virtuális végpontok kezelése az Azure SQL Database és az SQL Data Warehouse biztosít.
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: ae29fcfe39b5844ab948eb55ca314ae51dcae174
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/11/2019
+ms.openlocfilehash: b30240620e3a8d3dea1849e895ec021c96fc11c6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566177"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117612"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Az SQL virtuális szolgáltatásvégpont és VNet szabály létrehozása
 
-Mindkét Azure [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) virtuális Szolgáltatásvégpontok támogatja.
+*Virtuális hálózati szabályok* van egy tűzfal biztonsági funkció, amely szabályozza, hogy az adatbázis-kiszolgáló az önálló adatbázisok és rugalmas készlet az Azure-ban [SQL Database](sql-database-technical-overview.md) vagy az adatbázisok a [SQL Data Az adatraktár](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) virtuális hálózatok adott alhálózatain érkező kommunikációt fogad el.
 
-> [!NOTE]
-> Ez a cikk az Azure SQL-kiszolgálóhoz, és az SQL Database és az SQL Data Warehouse-adatbázisok az Azure SQL-kiszolgálón létrehozott vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ebben a cikkben leírtak *nem* a alkalmazni **Azure SQL Database felügyelt példányába** nincs egy felügyelt példány az alhálózatokhoz társított végpontot.
+> [!IMPORTANT]
+> Ez a cikk az Azure SQL-kiszolgálóhoz, és az SQL Database és az SQL Data Warehouse-adatbázisok az Azure SQL-kiszolgálón létrehozott vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ebben a cikkben leírtak *nem* a alkalmazni egy **felügyelt példány** üzembe helyezése az Azure SQL Database, mert nem rendelkezik egy hozzá társított végpontot.
 
 Ez a cikk biztosít, és elmagyarázza, egy PowerShell-parancsprogram, amely a következő műveleteket hajtja végre:
 

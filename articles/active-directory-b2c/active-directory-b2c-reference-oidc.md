@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 39a3164c27fa30250fe08e864db889eac844f646
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c27be7da2aceea8581fd4a5baef96103faa0c1d4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173003"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107310"
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: Webes bejelentkezés OpenID-kapcsolattal
 OpenID Connect hitelesítést egy olyan hitelesítési protokoll, OAuth 2.0, biztonságosan bejelentkezhetnek a felhasználók webes alkalmazásokhoz használt illesztőprogramra épül. Az Azure Active Directory B2C használatával OpenID Connect (Azure AD B2C-vel) megvalósítását, is kiszervezik a regisztrációt, bejelentkezést és egyéb identitáskezelési funkciókat használhat a a webalkalmazások Azure Active Directory (Azure AD). Ez az útmutató bemutatja, hogyan ehhez egy nyelvtől független módon. Azt ismerteti, hogyan küldhetők és fogadhatók HTTP-üzenetek a nyílt forráskódú könyvtáraink bármelyikének használata nélkül.
@@ -27,7 +27,7 @@ Kibővíti az OAuth 2.0, mivel lehetővé teszi alkalmazások biztonságosan bes
 Az Azure AD B2C ehhez több, mint az egyszerű hitelesítés és engedélyezés a szabványos OpenID Connect protokollt bővíti. Azt mutatja be a [felhasználói folyamat paraméter](active-directory-b2c-reference-policies.md), amely lehetővé teszi, hogy adja hozzá a felhasználói élményt – mint például az OpenID Connect segítségével regisztrációs, bejelentkezési és profilok kezelése – az alkalmazás. Itt hogy bemutatják, hogyan megvalósítása ezek a tapasztalatok mindegyike webalkalmazásait az OpenID Connect- és felhasználói folyamatokat használhat. Azt is megmutatjuk, hozzáférési tokenek beszerzése a webes API-k eléréséhez.
 
 A példa HTTP-kérelmek, a következő szakaszban használja, a minta a B2C-címtárat, fabrikamb2c.onmicrosoft.com, valamint a mintaalkalmazás https://aadb2cplayground.azurewebsites.net, és a felhasználói forgalmat. Ön kipróbálni a kérelmek saját maga, használja ezeket az értékeket, vagy is le kell cserélni a saját.
-Ismerje meg, hogyan [saját B2C-bérlő, az alkalmazás és a felhasználói folyamatok beolvasása](#use-your-own-b2c-directory).
+Ismerje meg, hogyan [saját B2C-bérlő, az alkalmazás és a felhasználói folyamatok beolvasása](#use-your-own-b2c-tenant).
 
 ## <a name="send-authentication-requests"></a>Hitelesítési kérelem küldése
 A webalkalmazás kell hitelesíteni a felhasználót, és hajtsa végre a felhasználói folyamat, ha azt a felhasználót, hogy irányíthatók a `/authorize` végpont. Ez az interaktív részének a folyamatot, ahol a felhasználó által készített művelet, attól függően, a felhasználói folyamatot.

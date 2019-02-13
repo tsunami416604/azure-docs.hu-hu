@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: a197a366d70958859eed47a9d66606adf80344e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: c2ef0d34897171e04d0982405909183634ebb696
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891272"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115402"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Az Active Directory összevont szolgáltatásokat az Azure Stack üzembe helyezése Kubernetes
 
@@ -43,13 +43,19 @@ Első lépésként ellenőrizze, hogy a megfelelő engedélyekkel rendelkezik, �
 
     A fürt nem telepíthető az Azure Stackkel **rendszergazda** előfizetés. Szüksége lesz egy **felhasználói** előfizetés. 
 
-1. Ha a Kubernetes-fürt nem rendelkezik a Marketplace-en, forduljon az Azure Stack rendszergazdai.
+1. Szüksége lesz a Key Vault szolgáltatásban az Azure Stack-előfizetés.
+
+1. Szüksége lesz a Kubernetes-fürt a Marketplace-en. 
+
+Ha a Key Vault szolgáltatásban és a Kubernetes-fürt marketplace-elem hiányzik, forduljon az Azure Stack rendszergazdai.
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
 Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgáltatás beállítása az Azure Stack rendszergazdával együttműködve kell. Egyszerű szolgáltatás Azure Stack-erőforrások az alkalmazás-hozzáférést biztosít.
 
-1. Az Azure Stack rendszergazdai biztosít egy tanúsítványt, és a szolgáltatásnév adatait. Ez az információ hasonlóan kell kinéznie:
+1. Az Azure Stack rendszergazdai biztosít egy tanúsítványt, és a szolgáltatásnév adatait.
+
+    - A szolgáltatásnév adatait hasonlóan kell kinéznie:
 
     ```Text  
         ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -60,9 +66,11 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
         RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
     ```
 
+    - A tanúsítvány lesz kiterjesztésű fájl `.pfx`. Egy titkos kulcsot, a tanúsítványt fogja tárolni egy kulcstartóban.
+
 2. Közreműködője szerepkör az új egyszerű szolgáltatás hozzárendelése az előfizetéshez. Útmutatásért lásd: [szerepkör hozzárendelése](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
-3. Központi telepítés a tanúsítvány tárolásához használandó key vault létrehozása.
+3. Központi telepítés a tanúsítvány tárolásához használandó key vault létrehozása. A portál helyett a következő PowerShell-parancsfájlokat használja.
 
     - Az alábbi adatokra lesz szüksége:
 
@@ -70,12 +78,12 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
         | ---   | ---         |
         | Az Azure Resource Manager-végpont | A Microsoft Azure Resource Manager-keretrendszert, amely lehetővé teszi a rendszergazdák üzembe helyezése, kezelése és monitorozása az Azure-erőforrások számára. Az Azure Resource Manager képes kezelni ezeket a feladatokat, csoportként, nem pedig külön-külön, egyetlen művelettel.<br>A végpont az Azure Stack Development Kit (ASDK) a következő: `https://management.local.azurestack.external/`<br>A végpont az integrált rendszerekről van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | Az előfizetés-azonosító | A [előfizetés-azonosító](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) van, hogy miként férhetnek hozzá az ajánlatok az Azure Stackben. |
-        | A felhasználónév | A felhasználó nevét. |
+        | A felhasználónév | Használja a felhasználónév helyett a tartománynév és a felhasználó nevét, például `username` helyett `azurestack\username`. |
         | Az erőforráscsoport neve  | Egy új erőforráscsoportot, vagy válasszon egy meglévő erőforráscsoport neve. Az erőforrás nevét kell lennie a alfanumerikus- és nagybetűket. |
         | Key Vault neve | A tároló nevére.<br> Reguláriskifejezés-minta: `^[a-zA-Z0-9-]{3,24}$` |
         | Erőforráscsoport helye | Az erőforráscsoport helyét. Ez az a régió úgy dönt, az Azure Stack-telepítés. |
 
-    - Nyisson meg egy rendszergazda jogú parancssorba PowerShell. Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
+    - Nyisson meg egy rendszergazda jogú parancssort, PowerShell és [csatlakozás az Azure Stack](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
 
     ```PowerShell  
         $armEndpoint="<Azure Resource Manager Endpoint>"
@@ -103,7 +111,7 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
         Set-AzureRmKeyVaultAccessPolicy -VaultName $key_vault_name -ResourceGroupName $resource_group_name -ObjectId $objectSID -BypassObjectIdValidation -PermissionsToKeys all -PermissionsToSecrets all
     ```
 
-4. Töltse fel a tanúsítványt a Key vaulthoz.
+4. Töltse fel a tanúsítványt a key vaulttal.
 
     - Az alábbi adatokra lesz szüksége:
 
@@ -111,12 +119,12 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
         | ---   | ---         |
         | Tanúsítvány elérési útja | A teljes tartománynév vagy a fájl elérési útja a tanúsítványt. |
         | Tanúsítványjelszó | A tanúsítvány jelszavát. |
-        | Název tajného kódu | A titkos kulcs az előző lépésben létrehozott. |
-        | Key Vault neve | A keyvault az előző lépésben tartományvezérlőnek a neve. |
+        | Název tajného kódu | A mutató hivatkozás a tanúsítvány a tárolóban tárolt titkos neve. |
+        | A Key vault neve | A key vault az előző lépésben létrehozott neve. |
         | Az Azure Resource Manager-végpont | A végpont az Azure Stack Development Kit (ASDK) a következő: `https://management.local.azurestack.external/`<br>A végpont az integrált rendszerekről van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | Az előfizetés-azonosító | A [előfizetés-azonosító](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) van, hogy miként férhetnek hozzá az ajánlatok az Azure Stackben. |
 
-    - Nyisson meg egy rendszergazda jogú parancssorba PowerShell. Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
+    - Nyisson meg egy rendszergazda jogú parancssort, PowerShell és [csatlakozás az Azure Stack](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
 
     ```PowerShell  
         
@@ -124,7 +132,7 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
     $tempPFXFilePath = "<certificate path>"
     $password = "<certificate password>"
     $keyVaultSecretName = "<secret name>"
-    $keyVaultName = "<keyvault name>"
+    $keyVaultName = "<key vault name>"
     $armEndpoint="<Azure Resource Manager Endpoint>"
     $subscriptionId="<Your Subscription ID>"
     # Login Azure Stack Environment
@@ -194,11 +202,11 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
 
 1. Adja meg a **szolgáltatásnév ClientId** ezt használja a Kubernetes Azure felhőszolgáltató. Az Alkalmazásazonosítót azonosította az eseményt az egyszerű szolgáltatás létrehozásakor az Azure Stack rendszergazdai ügyfél-azonosító.
 
-1. Adja meg a **Key Vault-erőforráscsoport**. 
+1. Adja meg a **Key Vault-erőforráscsoport** , amely adatforrásokat a kulcstartóhoz, amely tartalmazza a tanúsítványt.
 
-1. Adja meg a **Key Vault-névre**.
+1. Adja meg a **Key Vault-névre** a tanúsítványt a titkos kulcsot tartalmazó kulcstartó neve. 
 
-1. Adja meg a **Key Vault titkos kulcsából**.
+1. Adja meg a **Key Vault titkos kulcsából**. Název tajného kódu hivatkozik a tanúsítványt.
 
 1. Adja meg a **Kubernetes az Azure Cloud szolgáltató verziója**. Ez az a verzió a Kubernetes Azure-szolgáltatóhoz. Az Azure Stack kiad egy egyéni Kubernetes-build minden egyes Azure Stack-verzió.
 

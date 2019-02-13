@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az GetThere |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező GetThere |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és GetThere között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: jeedes
-ms.openlocfilehash: bcefa3966a6c854f02ce7b3a75306b3d1c888ecd
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b132da4a763490fa6c7a73c80f8e2e3a11b42e9b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430994"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173130"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Oktatóanyag: Azure Active Directory-integráció az GetThere
+# <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező GetThere
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan GetThere integrálása az Azure Active Directory (Azure AD).
 
@@ -162,7 +163,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Bejelentkezési URL
 
-    b. Az Azure Ad-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
@@ -197,7 +198,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-getthere-test-user"></a>GetThere tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű GetThere hoz létre. Együttműködve [GetThere ügyfél-támogatási csapatának](mailto:dataintegration@sabre.com) a felhasználók hozzáadása az GetThere platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű GetThere hoz létre. Együttműködve [GetThere ügyfél-támogatási csapatának](mailto:dataintegration@sabre.com) a felhasználók hozzáadása az GetThere platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

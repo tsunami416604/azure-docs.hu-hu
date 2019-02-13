@@ -4,7 +4,7 @@ description: A cikk ismerteti az ajánlott eljárások hálózati biztonsági a 
 services: security
 documentationcenter: na
 author: TomShinder
-manager: mbaldwin
+manager: barbkess
 editor: TomShinder
 ms.assetid: 7f6aa45f-138f-4fde-a611-aaf7e8fe56d1
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: TomSh
-ms.openlocfilehash: d89972ff0f7e3035fa20f8d9ee2863b68fa52e9f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 86246d3d580737837ec07ccdc89ed82914cde209
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124065"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118411"
 ---
 # <a name="azure-network-security-best-practices"></a>Azure-beli hálózati biztonsági eljárások
 A kapcsolódás [Azure-beli virtuális gépek (VM)](https://azure.microsoft.com/services/virtual-machines/) és más hálózati eszközök szerint áthelyezi őket-készülékek [Azure virtuális hálózatok](https://azure.microsoft.com/documentation/services/virtual-network/). Virtuális hálózati adapterek kapcsolódhatnak, hogy engedélyezik a hálózati eszközök közötti TCP/IP-alapú kommunikációt egy virtuális hálózathoz. Azure-beli virtuális hálózathoz csatlakozó virtuális gépek eszközök ugyanazon a virtuális hálózaton, különböző virtuális hálózatokban, az interneten vagy a saját helyszíni hálózatokhoz csatlakozhat.
@@ -43,11 +43,11 @@ Azure virtuális hálózatok hasonlítanak a helyszíni hálózaton egy LAN-on. 
 
 Ajánlott eljárások az alhálózatok logikailag szegmentálja a következők:
 
-**Ajánlott eljárás**: a nagyobb címtérrel oszthatja alhálózatokra.   
-**Részletes**: használata [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)-alapú alhálózatok alapelveket az alhálózatok létrehozására.
+**Ajánlott eljárás**: A nagyobb címtérrel oszthatja alhálózatokra.   
+**Részletes**: Használat [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)-alapú alhálózatok alapelveket az alhálózatok létrehozására.
 
-**Ajánlott eljárás**: hozzon létre a hálózati hozzáférés-vezérléssel alhálózatok között. Az alhálózatok közötti útválasztás automatikusan megtörténik, és nem kell manuálisan konfigurálnia a táblákat. Alapértelmezés szerint nincsenek nincs hálózati hozzáférés-vezérlést az alhálózatokat hoz létre az Azure virtuális hálózat között.   
-**Részletes**: használja a [hálózati biztonsági csoport](../virtual-network/virtual-networks-nsg.md) (NSG). Az NSG-k egyszerű, állapot-nyilvántartó csomag ellenőrzési az 5-ször több (a forrás IP-címe, forrásport, cél IP-címe, célport és 4. réteg protocol) használó eszközöket hozhat létre szabályokat engedélyezni vagy letiltani a hálózati forgalom megközelítést. Engedélyezi, vagy megtagadják a forgalmat, és a egy IP-címet, és több IP-címekről érkező vagy a és a teljes alhálózat.
+**Ajánlott eljárás**: Hozzon létre az alhálózatok közötti hálózati hozzáférés-vezérlést. Az alhálózatok közötti útválasztás automatikusan megtörténik, és nem kell manuálisan konfigurálnia a táblákat. Alapértelmezés szerint nincsenek nincs hálózati hozzáférés-vezérlést az alhálózatokat hoz létre az Azure virtuális hálózat között.   
+**Részletes**: Használja a [hálózati biztonsági csoport](../virtual-network/virtual-networks-nsg.md) (NSG). Az NSG-k egyszerű, állapot-nyilvántartó csomag ellenőrzési az 5-ször több (a forrás IP-címe, forrásport, cél IP-címe, célport és 4. réteg protocol) használó eszközöket hozhat létre szabályokat engedélyezni vagy letiltani a hálózati forgalom megközelítést. Engedélyezi, vagy megtagadják a forgalmat, és a egy IP-címet, és több IP-címekről érkező vagy a és a teljes alhálózat.
 
 Az NSG-ket az alhálózatok közötti hálózati hozzáférés-vezérlés használatakor helyezheti az azonos biztonsági zónában vagy szerepkör külön alhálózatokon tartozó erőforrásokhoz.
 
@@ -103,8 +103,8 @@ Számos szervezet választotta, a hibrid informatikai útvonalat. A hibrid infor
 
 A hibrid informatikai forgatókönyv van általában valamilyen típusú létesítmények közötti kapcsolat. Létesítmények közötti kapcsolat lehetővé teszi, hogy a vállalat a helyszíni hálózatokhoz csatlakozni az Azure virtuális hálózatok. Létesítmények közötti kapcsolat két megoldások érhetők el:
 
-* **Site-to-site VPN**: egy megbízható, megbízható és meglévő technológiai, de a kapcsolat az interneten keresztül történik. Egy legfeljebb körülbelül 200 MB/s sávszélesség korlátozza. Site-to-site VPN bizonyos esetekben célszerű megoldás, és tovább a következő cikkben szakaszában [tiltsa le az RDP/SSH-hozzáférés a virtuális gépek](#disable-rdpssh-access-to-virtual-machines).
-* **Az Azure ExpressRoute**: javasoljuk, hogy használjon [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) a létesítmények közötti kapcsolathoz. Az ExpressRoute dedikált WAN a helyszíni hely és a egy Exchange-szolgáltató közötti kapcsolat. Mivel ez egy telekommunikációs kapcsolatot, az adatok nem az interneten keresztül továbbítani, és ezért nem érhető el az internetes kommunikáció jelentette lehetséges kockázatokról.
+* **Site-to-site VPN**: Egy megbízható, megbízható és meglévő technológiai, de a kapcsolat az interneten keresztül történik. Egy legfeljebb körülbelül 200 MB/s sávszélesség korlátozza. Site-to-site VPN bizonyos esetekben célszerű megoldás, és tovább a következő cikkben szakaszában [tiltsa le az RDP/SSH-hozzáférés a virtuális gépek](#disable-rdpssh-access-to-virtual-machines).
+* **Azure ExpressRoute**: Javasoljuk, hogy használjon [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) a létesítmények közötti kapcsolathoz. Az ExpressRoute dedikált WAN a helyszíni hely és a egy Exchange-szolgáltató közötti kapcsolat. Mivel ez egy telekommunikációs kapcsolatot, az adatok nem az interneten keresztül továbbítani, és ezért nem érhető el az internetes kommunikáció jelentette lehetséges kockázatokról.
 
 ## <a name="optimize-uptime-and-performance"></a>Rendelkezésre állását és a teljesítmény optimalizálása
 Ha egy szolgáltatás nem működik, információt nem lehet hozzáférni. Ha a teljesítmény gyenge, hogy az adatok nem használható, érdemes lehet az adatok nem lesznek elérhetők. Biztonsági szempontból a kell tennie, bármi is győződjön meg róla, hogy a szolgáltatások optimális rendelkezésre állását és teljesítményét.
@@ -115,30 +115,30 @@ A forgalom elosztását növeli a rendelkezésre állási, mivel a webkiszolgál
 
 Azt javasoljuk, hogy felhasználások terheléselosztás amikor csak lehet, és a szolgáltatások megfelelő. Az alábbiakban forgatókönyveket is az az Azure virtuális hálózat szintjén, és a globális szinten, valamint az egyes terheléselosztási lehetőségek.
 
-**A forgatókönyv**: egy alkalmazást, amely:
+**A forgatókönyv**: Egy alkalmazást, amely:
 
 - Az azonos ügyfél-vagy felhasználói munkamenet kéréseket ugyanaz a háttérbeli virtuális gép eléréséhez szükséges. Erre vonatkozó példákat vannak vásárlás bevásárlókocsi-alkalmazások és a webes levelezőkiszolgálók.
 - Csak egy biztonságos kapcsolatot fogad el, így a kiszolgáló felé irányuló titkosítatlan kommunikáció nem elfogadható megoldás.
 - Szükséges, az azonos hosszú ideig futó TCP-kapcsolat átirányíthatók vagy betölteni a HTTP-kéréseit különböző háttérkiszolgálókra terheléselosztását.
 
-**Terheléselosztási beállítás**: használata [Azure Application Gateway](../application-gateway/application-gateway-introduction.md), egy HTTP webes forgalom load balancert. Az Application Gateway támogatja a teljes körű SSL-titkosítást és [SSL-lezárást](../application-gateway/application-gateway-introduction.md) az átjáróra. Webkiszolgálók is majd megszabaduljanak a titkosítási és visszafejtési üzemeltetési költségektől és a háttér-kiszolgálókon nem titkosított adatforgalom.
+**Terheléselosztási beállítás**: Használat [Azure Application Gateway](../application-gateway/application-gateway-introduction.md), egy HTTP webes forgalom load balancert. Az Application Gateway támogatja a teljes körű SSL-titkosítást és [SSL-lezárást](../application-gateway/application-gateway-introduction.md) az átjáróra. Webkiszolgálók is majd megszabaduljanak a titkosítási és visszafejtési üzemeltetési költségektől és a háttér-kiszolgálókon nem titkosított adatforgalom.
 
-**A forgatókönyv**: be kell tölteni az egyenleg a bejövő kapcsolatok az Azure virtuális hálózatban található kiszolgálók között az internetről. Forgatókönyvek, amikor Ön:
+**A forgatókönyv**: Be kell tölteni az egyenleg a bejövő kapcsolatok az Azure virtuális hálózatban található kiszolgálók között az internetről. Forgatókönyvek, amikor Ön:
 
 - Állapot nélküli alkalmazások, amelyek fogadják az internetről érkező bejövő kéréseket kell.
 - Nincs szükség a fix kiszolgálású munkameneteket vagy SSL-alapú kiszervezés. Fix kiszolgálású munkameneteket kell Application Load Balancing, a kiszolgáló-affinitási eléréséhez használt módszer.
 
-**Terheléselosztási beállítás**: az Azure Portallal való [hozzon létre egy külső terheléselosztó](../load-balancer/quickstart-create-basic-load-balancer-portal.md) , amely a bejövő kérések osztja el a magasabb szintű rendelkezésre állást biztosít több virtuális gép között.
+**Terheléselosztási beállítás**: Az Azure Portallal való [hozzon létre egy külső terheléselosztó](../load-balancer/quickstart-create-basic-load-balancer-portal.md) , amely a bejövő kérések osztja el a magasabb szintű rendelkezésre állást biztosít több virtuális gép között.
 
-**A forgatókönyv**: be kell tölteni az egyenleg kapcsolatok virtuális gépekről, amelyek nem az interneten. A legtöbb esetben egy Azure virtuális hálózaton, például az SQL Server-példányokat, vagy belső webkiszolgálók eszközök által kezdeményezett terheléselosztásra fogad kapcsolatokat.   
-**Terheléselosztási beállítás**: az Azure Portallal való [hozható létre belső terheléselosztó](../load-balancer/quickstart-create-basic-load-balancer-powershell.md) , amely a bejövő kérések osztja el a magasabb szintű rendelkezésre állást biztosít több virtuális gép között.
+**A forgatókönyv**: Be kell tölteni az egyenleg kapcsolatok virtuális gépekről, amelyek nem az interneten. A legtöbb esetben egy Azure virtuális hálózaton, például az SQL Server-példányokat, vagy belső webkiszolgálók eszközök által kezdeményezett terheléselosztásra fogad kapcsolatokat.   
+**Terheléselosztási beállítás**: Az Azure Portallal való [hozható létre belső terheléselosztó](../load-balancer/quickstart-create-basic-load-balancer-powershell.md) , amely a bejövő kérések osztja el a magasabb szintű rendelkezésre állást biztosít több virtuális gép között.
 
-**A forgatókönyv**: kell globális terheléselosztás mivel meg:
+**A forgatókönyv**: Kell globális terheléselosztás mivel meg:
 
 - Rendelkezik egy felhőalapú megoldás, amely széles körben legyen elosztva több régióban és a legmagasabb szintű üzemidő (elérhető) lehetőség van szükség.
 - Győződjön meg arról, hogy a szolgáltatás elérhető akkor is, ha a teljes adatközpont elérhetetlenné válik lehetővé kell a legmagasabb szintű rendelkezésre állását.
 
-**Terheléselosztási beállítás**: használja az Azure Traffic Manager. A TRAFFIC Manager lehetővé teszi a szolgáltatásokhoz, a felhasználó helye alapján egyenleg kapcsolatok betöltése.
+**Terheléselosztási beállítás**: Az Azure Traffic Manager használja. A TRAFFIC Manager lehetővé teszi a szolgáltatásokhoz, a felhasználó helye alapján egyenleg kapcsolatok betöltése.
 
 Például ha a felhasználó kérést küld a szolgáltatás az Európai Unióból, a kapcsolat van irányítva az EU-adatközpontban található szolgáltatások. Ez a rész a Traffic Manager globális betölteni a terheléselosztási segítséget nyújt a teljesítmény javítása, mert a legközelebbi adatközponthoz csatlakozó gyorsabban, adatközpontok, amelyek messze csatlakozik.
 
@@ -149,16 +149,16 @@ A potenciális biztonsági probléma merült fel ezeket a protokollokat használ
 
 Azt javasoljuk, hogy tiltsa le a közvetlen RDP és SSH-hozzáférés az Azure-beli virtuális gépek, az internetről. Az internetről érkező RDP és SSH közvetlen hozzáférés le van tiltva, után más lehetőségek eléréséhez ezek a virtuális gépek távoli felügyeletére használható.
 
-**A forgatókönyv**: az interneten keresztül csatlakozni az Azure virtuális hálózat egyetlen felhasználó engedélyezése.   
-**A beállítás**: [pont – hely VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) távelérési VPN-ügyfél-kiszolgáló kapcsolatot egy másik kifejezés. A pont – hely kapcsolat létrejötte után a felhasználó használhatja az RDP vagy SSH bármely, az Azure virtuális hálózat pont – hely VPN-en keresztül csatlakozó felhasználó található virtuális gépek csatlakozni. A parancs feltételezi, hogy a felhasználó jogosult virtuális gépek el azokat.
+**A forgatókönyv**: Az interneten keresztül csatlakozni az Azure virtuális hálózat egyetlen felhasználó engedélyezése.   
+**A beállítás**: [Pont – hely VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) távelérési VPN-ügyfél-kiszolgáló kapcsolatot egy másik kifejezés. A pont – hely kapcsolat létrejötte után a felhasználó használhatja az RDP vagy SSH bármely, az Azure virtuális hálózat pont – hely VPN-en keresztül csatlakozó felhasználó található virtuális gépek csatlakozni. A parancs feltételezi, hogy a felhasználó jogosult virtuális gépek el azokat.
 
 Pont – hely VPN nem biztonságosabb, mint a közvetlen RDP vagy SSH-kapcsolatok, mert a felhasználó rendelkezik a virtuális Géphez való csatlakozás előtt kétszer hitelesíteni. Első lépésként a felhasználónak kell hitelesíteni (és engedélyezhető) a pont – hely VPN-kapcsolat létrehozásához. A második, a felhasználónak kell hitelesíteni (és engedélyezhető) a RDP vagy SSH-munkamenet létrehozásához.
 
-**A forgatókönyv**: engedélyezése a felhasználók a helyszíni hálózat számára az Azure virtuális hálózat a Csatlakozás virtuális gépekhez.   
+**A forgatókönyv**: Engedélyezze a felhasználók a helyszíni hálózat az Azure virtuális hálózat a Csatlakozás virtuális gépekhez.   
 **A beállítás**: A [site-to-site VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) teljes hálózathoz csatlakozik egy másik hálózattal az interneten keresztül. A site-to-site VPN használatával a helyszíni hálózat csatlakoztatása az Azure-beli virtuális hálózathoz. Az a helyszíni hálózaton a helyek közötti VPN-kapcsolaton keresztül az RDP vagy SSH protokoll használatával kapcsolódnak. Nem kell, hogy a közvetlen RDP vagy SSH-hozzáférését az interneten keresztül.
 
-**A forgatókönyv**: egy dedikált WAN-kapcsolaton használja a site-to-site VPN-hez hasonló funkcionalitást biztosít.   
-**A beállítás**: használata [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/). A site-to-site VPN-hez hasonló funkciókat biztosít. A legfontosabb különbségek a következők:
+**A forgatókönyv**: Egy dedikált WAN-kapcsolat használatával a site-to-site VPN-hez hasonló funkciókat biztosít.   
+**A beállítás**: Használat [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/). A site-to-site VPN-hez hasonló funkciókat biztosít. A legfontosabb különbségek a következők:
 
 - A dedikált WAN-kapcsolat nem haladnak át az interneten.
 - Dedikált WAN-kapcsolatok általában több stabilak, és jobb teljesítményt.
@@ -169,11 +169,11 @@ Virtuális hálózati Szolgáltatásvégpontok használatával kiterjesztheti a 
 A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
 - **Nagyobb biztonság az Azure-szolgáltatások erőforrásai számára**: A szolgáltatásvégpontokkal az Azure-szolgáltatások erőforrásai leköthetőek a virtuális hálózathoz. Virtual Network szolgáltatás-erőforrások biztosítása biztosít továbbfejlesztett biztonsági teljes mértékben eltávolítja a nyilvános internetkapcsolaton keresztüli hozzáférés az erőforrásokhoz, és lehetővé teszi a csak a virtuális hálózatból érkező forgalmat.
-- **Optimális útválasztás az Azure szolgáltatás forgalmát a virtuális hálózatról**: a virtuális hálózat összes olyan esetleges útvonalat, amely az internetforgalmat a helyszíni és/vagy a virtuális készülékek nevén a kényszerített bújtatás, is kényszeríti az Azure szolgáltatás forgalmát az azonos útvonalat, mint az internetforgalmat. A szolgáltatásvégpontok optimális útválasztást biztosítanak az Azure-forgalom számára.
+- **Optimális útválasztás az Azure szolgáltatás forgalmát a virtuális hálózatról**: A virtuális hálózat összes olyan esetleges útvonalat, amely az internetforgalmat a helyszíni és/vagy a virtuális készülékek nevén a kényszerített bújtatást végez, az Azure-szolgáltatások forgalmára, mint az internetforgalmat a azonos útvonalon is kényszeríthető. A szolgáltatásvégpontok optimális útválasztást biztosítanak az Azure-forgalom számára.
 
   Végpontok szolgáltatás forgalmát közvetlenül a virtuális hálózatról a szolgáltatás mindig az Azure gerinchálózatán igénybe vehet. Az Azure gerinchálózatán tartja az adatforgalmat lehetővé teszi, hogy továbbra is naplózhatja és a virtuális hálózatok kimenő internetforgalmát figyelt számítógépekhez, kényszerített bújtatást végez, anélkül, hogy befolyásolná a szolgáltatás forgalmára. Tudjon meg többet [felhasználó által definiált útvonalak és a kényszerített bújtatás](../virtual-network/virtual-networks-udr-overview.md).
 
-- **Egyszerű beállítás kevesebb felügyeleti igénnyel**: már nincs szüksége lefoglalt, nyilvános IP-címek a virtuális hálózatok biztonságossá tétele Azure-erőforrások egy IP-tűzfalon keresztül. A szolgáltatásvégpontok beállításához nincs szükség NAT- és útválasztó eszközökre. A szolgáltatásvégpontok egy egyszerű kattintással konfigurálhatóak az alhálózatokon. Nincs szükség további erőforrásokra a végpontok kezelése.
+- **Egyszerű beállítás kevesebb felügyeleti igénnyel**: Lefoglalt, nyilvános IP-címek már nincs szüksége a virtuális hálózatok biztonságossá tétele Azure-erőforrások egy IP-tűzfalon keresztül. A szolgáltatásvégpontok beállításához nincs szükség NAT- és útválasztó eszközökre. A szolgáltatásvégpontok egy egyszerű kattintással konfigurálhatóak az alhálózatokon. Nincs szükség további erőforrásokra a végpontok kezelése.
 
 A Szolgáltatásvégpontok és az Azure-szolgáltatások és a Szolgáltatásvégpontok elérhetők régió kapcsolatos további információkért lásd: [virtuális hálózati Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
 

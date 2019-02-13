@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: eee58708d6aec717d0f79f5c79a0c879b52d56a5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9682611467311f06d60f6f393ebd7788f95f7f12
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176369"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177869"
 ---
 # <a name="what-is-the-myapps-portal"></a>Mi az a MyApps portálról?
 
@@ -49,7 +50,7 @@ Minden aktív vagy ellenőrzött tartomány nevét az Azure Portalon konfigurál
 
 Az URL-cím minden felhasználó számára jelentkezzen be az Azure ad-vel integrált alkalmazások terjesztése.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 A MyApps portál eléréséhez, hitelesíteni kell egy munkahelyi vagy iskolai fiókon keresztül az Azure ad-ben. Az Azure AD közvetlenül hitelesíthető. Azt is megteheti Ha egy szervezet összevonási konfigurált Active Directory összevonási szolgáltatások (AD FS) vagy egyéb technológiák használatával, hogy hitelesíteni tudja a Windows Server Active Directory.
 

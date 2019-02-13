@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: b6abfa24d790554de239171ffef1899cdc135d26
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f1cb99799e3aa5c0b37643112f8644d1aabfd666
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996253"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108092"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és CLI: Transzparens adattitkosítás engedélyezése az Azure Key Vault az ügyfél által felügyelt kulccsal
 
@@ -29,8 +29,8 @@ Ez a cikk végigvezeti a transzparens adattitkosítás (TDE) egy SQL-adatbázis 
 - [Opcionális de javasolt] Rendelkezik egy hardveres biztonsági modul (HSM) vagy a helyi kulcs létrehozásához a TDE-Védőhöz megosztottkulcs-anyag helyi másolatát tárolja.
 - Rendelkeznie kell Azure PowerShell 4.2.0-s verzió vagy újabb telepítése és futtatása. 
 - Hozzon létre egy Azure Key Vault és a kulcs TDE használatára.
-   - [Key vault PowerShell-utasítások](../key-vault/key-vault-get-started.md)
-   - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-get-started.md#HSM)
+   - [Key vault PowerShell-utasítások](../key-vault/key-vault-overview.md)
+   - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-hsm-protected-keys.md)
  - A key vaultban kell rendelkeznie a TDE használható a következő tulajdonság:
    - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
    - [A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel](../key-vault/key-vault-soft-delete-powershell.md) 
@@ -196,7 +196,7 @@ Ellenőrizze a következőket a probléma akkor fordul elő, ha:
 - Parancssori felület 2.0-s vagy újabb verziója. Telepítse a legújabb verziót, és csatlakozzon az Azure-előfizetéshez, lásd: [telepítése és konfigurálása az Azure többplatformos parancssori felület 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
 - Hozzon létre egy Azure Key Vault és a kulcs TDE használatára.
    - [CLI 2.0 használatával a Key Vault felügyelete](../key-vault/key-vault-manage-with-cli2.md)
-   - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-get-started.md#HSM)
+   - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-hsm-protected-keys.md)
  - A key vaultban kell rendelkeznie a TDE használható a következő tulajdonság:
    - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
    - [A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel](../key-vault/key-vault-soft-delete-cli.md) 

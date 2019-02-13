@@ -4,19 +4,19 @@ description: Ez a cikk tartalmazza a Marketplace-beli lemezképek vonatkozó jav
 services: security
 documentationcenter: na
 author: barclayn
-manager: MBaldwin
+manager: barbkess
 ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: 17372076f06cbaa833c437121a01f0dcaaf0e757
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: fa521b81c95f7c0556b082e5487848ef4d7ecaf7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243633"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111391"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Biztonsági javaslatok az Azure Marketplace-rendszerképek
 
@@ -39,7 +39,7 @@ Ezekkel az ajánlásokkal is hasznos lehet a szervezet számára, amelyek nem re
 | Biztonság                                                     | Javasoljuk, hogy az LVM nem kell-e használatban.                                                                                                                                                                                                                                            |
 | Biztonság                                                     | Szükséges kódtárak legújabb verzióit kell kiválasztani: </br> -OpenSSL 1.0-s verzió vagy újabb </br> -Python 2.5-ös vagy újabb (a Python 2.6 erősen ajánlott) </br> – Python pyasn1 csomag, ha még nem telepítette </br> -d.OpenSSL v 1.0-s vagy újabb                                                                |
 | Biztonság                                                     | Bash-rendszerhéjból triggerelőzmény-bejegyzések törölni kell.                                                                                                                                                                                                                                             |
-| Hálózat                                                   | SSH-kiszolgáló alapértelmezés szerint kell tartalmaznia. SSH életben tartási beállítása az sshd_config a következő beállítással: ClientAliveInterval 180.                                                                                                                                                        |
+| Hálózat                                                   | SSH-kiszolgáló alapértelmezés szerint kell tartalmaznia. SSH életben tartási beállítása az sshd_config a következő beállítással: ClientAliveInterval 180                                                                                                                                                        |
 | Hálózat                                                   | Lemezkép nem tartalmazhat bármilyen egyéni hálózati beállítások. A resolv.conf törlése: `rm /etc/resolv.conf`                                                                                                                                                                                |
 | Környezet                                                   | Legújabb Azure Linux-ügynök telepítve kell lennie </br> – Az ügynököt telepíteni kell az RPM- vagy Deb-csomag használatával.  </br> – Is használhatja a manuális telepítési folyamatot, de a telepítőcsomagokat ajánlott, és előnyben részesített. </br> – Ha az ügynök manuális telepítése a GitHub-adattárból, először másolja a `waagent` fájlt `/usr/sbin` és futtató (root): </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Az ügynök konfigurációs fájlját van elhelyezve `/etc/waagent.conf`.    |
 | Környezet                                                   | Biztosítja, hogy az Azure támogatási szolgálata megadhassa az partnereink a soros konzol kimenetét, ha szükséges, és elegendő időt biztosít az operációs rendszer lemez csatlakoztatása a felhőalapú tárból. Kép kell a következő paraméterek hozzáadta a rendszermag rendszerindítási sorához: `console=ttyS0 earlyprintk=ttyS0 rootdelay=300` |

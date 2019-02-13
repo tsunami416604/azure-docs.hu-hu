@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az SmartLPA |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SmartLPA |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és SmartLPA között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jeedes
-ms.openlocfilehash: eedec7de74f3bdd7ae43d1b1eb0decd5fe83ebf6
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 01d8a52d18bb3b6317f843eb6c30061e730ee3ab
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076104"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161081"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-smartlpa"></a>Oktatóanyag: Azure Active Directory-integráció az SmartLPA
+# <a name="tutorial-azure-active-directory-integration-with-smartlpa"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SmartLPA
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan SmartLPA integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 SmartLPA az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy SmartLPA egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Az Azure AD integrálása a SmartLPA konfigurálásához hozzá kell SmartLPA a 
 
 **SmartLPA hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -162,7 +163,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-smartlpa-test-user"></a>SmartLPA tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű SmartLPA hoz létre. Együttműködve [SmartLPA támogatási csapatának](mailto:support@smartlpa.com) a felhasználók hozzáadása az SmartLPA platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű SmartLPA hoz létre. Együttműködve [SmartLPA támogatási csapatának](mailto:support@smartlpa.com) a felhasználók hozzáadása az SmartLPA platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -194,7 +195,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -204,7 +205,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

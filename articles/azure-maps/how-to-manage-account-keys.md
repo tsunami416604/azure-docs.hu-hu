@@ -1,6 +1,6 @@
 ---
-title: Az Azure Maps-fiók és kulcsok kezelése |} A Microsoft Docs
-description: Az Azure portal segítségével az Azure Maps-fiók kezeléséhez, és kezelheti a hozzáférési kulcsait.
+title: Az Azure Maps-fiók kezelése |} A Microsoft Docs
+description: Az Azure portal segítségével az Azure Maps-fiók kezeléséhez.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/12/2018
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 81746279e935f9fa5b6ef00bc8d31e75f4d3bd20
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 488167b4893c314af99b354a2422204ebbf34c5e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103044"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113689"
 ---
-# <a name="manage-your-azure-maps-account-and-keys"></a>Az Azure Maps-fiók és kulcsok kezelése
+# <a name="manage-your-azure-maps-account"></a>Az Azure Maps-fiók kezelése
 
-Az Azure Maps-fiók és kulcsok az Azure Portalon kezelheti. Miután egy fiókot és a egy kulcsot, az API-k valósítható meg a webhely vagy mobilalkalmazás.
+Az Azure Maps-fiók az Azure Portalon kezelheti. Miután egy fiókot, az API-k valósítható meg a webhely vagy mobilalkalmazás.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -32,16 +32,6 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 4. Írja be az új fiók adatait.
 
 ![Írja be a fiók adatait a portálon](./media/how-to-manage-account-keys/new-account-portal.png)
-
-## <a name="manage-keys-on-the-account-page"></a>A fiók lapon kulcsok kezelése
-
-Miután létrehozott egy fiókot, kap két véletlenszerűen létrehozott kulcsot. Térképadatok lekérése, vagy hozzon létre egy új JavaScript map-példány, a kulcsok használata az Azure Maps API-k hitelesítése.
-
-A kulcsok az Azure Portalon találhatja meg. Keresse meg a fiókjához. Válassza ki **kulcsok** a menüből.
-
-![Kezelheti a fiókkulcsokat a portálon](./media/how-to-manage-account-keys/account-keys-portal.png)
-
-Ezen az oldalon másolja ki a kulcsokat, vagy hozzon létre újakat.
 
 ## <a name="delete-an-account"></a>-Fiók törlése
 

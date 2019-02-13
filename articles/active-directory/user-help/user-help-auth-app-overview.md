@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
-ms.openlocfilehash: 67265636b26a0eec3c40ee1f95872cc870099de7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3e1724454ff67f6cfe3646b59e8302a3dd099081
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809680"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217445"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Mi a Microsoft Authenticator alkalmazást?
 A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok kétfaktoros ellenőrzési használatakor. A kétfaktoros hitelesítési segítségével a fiókok biztonságosabb, hozzáférhet a különösen bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejtett is, amelyeket elloptak vagy feltört, kéttényezős hitelesítés végrehajtása egy további biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében.

@@ -4,7 +4,7 @@ description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Securit
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: a1677e2c5518fec4412adb87cd058571bd435dd4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b736bb5549b7d236e746ba7b161cde79209e927b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338488"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110523"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Az Azure Security Centerben az Internet felé néző végpontok hozzáférésének korlátozása
 Az Azure Security Center javasolni fogja, hogy az Internet felé néző végpontok hozzáférésének korlátozása, ha bármely a hálózati biztonsági csoportok (NSG) egy vagy több bejövő szabályt, amely engedélyezi a hozzáférést a "bármely" forrás IP-címről. Nyissa meg a "bármely" való hozzáférést lehetővé teheti a támadók számára az erőforrások eléréséhez. A Security Center javasolni fogja, hogy a forrás IP-címek, amelyek ténylegesen hozzá kell férniük való hozzáférés korlátozása a bejövő szabályok szerkesztése.

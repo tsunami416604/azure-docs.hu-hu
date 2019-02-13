@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0b419343829e7e7bbbd31260b9cd0c8d93cd255d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fce3c2975e4b82583aa09a3862f704f05a363828
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847815"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210594"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 
@@ -83,6 +83,9 @@ Más szolgáltatások az Azure-ban, a Service Bus adott kvótakészlet annak ér
 A Service Bus üzenetkezelési szolgáltatások (az üzenetsorok és üzenettémák, előfizetések) teszik lehetővé az alkalmazás méretű üzenetek küldése akár 256 KB-os (standard szintű) vagy 1 MB (prémium szintű). Ha 1 MB-nál nagyobb méretű üzenetek kezelése, használja a jogcím minta ismertetett [ebben a blogbejegyzésben](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Miért nem tudok-névtér létrehozása egy másik előfizetésből törlését követően? 
+Ha egy névtér töröl egy előfizetést, várjon, amíg 4 óra, mielőtt újra egy másik előfizetésben található ugyanazzal a névvel. Ellenkező esetben a következő hibaüzenet jelenhet: `Namespace already exists`. 
+
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Mik az Azure Service Bus API-k és a javasolt lépések által előállított kivételeket?
 Lehetséges a Service Bus-kivételek listáját lásd: [kivételek áttekintése][Exceptions overview].
 

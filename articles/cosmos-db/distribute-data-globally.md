@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
-ms.openlocfilehash: 28c945223d225d7e91df1041bcbe02ee87b93c6a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 75940f9c3c8022c5445eb998b133a156dacde9b5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475057"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106868"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globális terjesztés, az Azure Cosmos DB - áttekintés
 
@@ -22,6 +22,8 @@ Az Azure Cosmos DB egy globálisan elosztott adatbázis-szolgáltatás, amely k�
 Beállíthatja, hogy az adatbázisok, globálisan elosztott, és elérhető legyen bármelyik Azure-régiót. Csökkentheti a késést, helyezze el az adatok közelebb, ahol a felhasználók is. A szükséges régiók kiválasztása attól függ, hogy a globális jelenlétét, az alkalmazás- és hol találhatók a felhasználók számára. Az Azure Cosmos DB transzparensen replikálja az adatokat a fiókon belül a fiókjához társított összes régióba. A globálisan elosztott Azure Cosmos-adatbázis és a tárolók, amelyek az alkalmazás olvashat és írhat a helyi egyetlen rendszerképet biztosít. 
 
 Az Azure Cosmos DB adja hozzá, vagy távolítsa el a bármikor a fiókjához társított régiók. Az alkalmazás szüneteltetve vagy újratelepítése hozzáadni vagy eltávolítani egy régió nem szükséges. Továbbra is magas rendelkezésre állású folyamatosan miatt a többhelyűségével képességeket, amelyek a szolgáltatás biztosítja.
+
+![Magas rendelkezésre állású telepítés topológiája](./media/distribute-data-globally/deployment-topology.png)
 
 ## <a name="key-benefits-of-global-distribution"></a>Fő előnyei a globális terjesztés
 
@@ -50,6 +52,7 @@ Számos alkalmazás kihasználhatják a teljesítményt érintő továbbfejleszt
 További információ a globális terjesztés, az alábbi cikkeket:
 
 * [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
+* [Az alkalmazások több főkiszolgálós konfigurálása](how-to-multi-master.md)
 * [Ügynökönkénti ügyfelek konfigurálása](how-to-manage-database-account.md#configure-clients-for-multi-homing)
 * [Régiók hozzáadása vagy eltávolítása az Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Hozzon létre egy egyéni ütközésfeloldási házirend SQL API-fiókok](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

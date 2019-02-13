@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: d55cebf380c4ca5183e8ff15fd193e254b66c30b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9760e6b9cdcd6f03f4377277f3426189b1fe0a61
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246585"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182017"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Az Azure Stackkel integrált rendszerek kapcsolati modellek
-Ha érdeklik az Azure Stackkel integrált rendszereknél, kell megérteni [több adatközpont integrációja szempontok](azure-stack-datacenter-integration.md) való határozza meg, hogyan elférnek a rendszer a helyi adatközpontban Azure Stack üzembe helyezéshez. Emellett szüksége dönthet arról, hogy pontosan hogyan integrálja az Azure Stack a hibridfelhő-környezet be. Ez a cikk a főbb kérdései, többek között az Azure-kapcsolat, ügyfélidentitás-tárolóval, és a számlázási modell döntések áttekintést nyújt.
+Ha Ön a powerappsot, olvassa az Azure Stackkel integrált rendszer, kell megérteni [több adatközpont integrációja szempontok](azure-stack-datacenter-integration.md) való határozza meg, hogyan elférnek a rendszer a helyi adatközpontban Azure Stack üzembe helyezéshez. Emellett szüksége annak eldöntése, hogyan fogja integrálja az Azure Stack a hibridfelhő-környezet. Ez a cikk a főbb kérdései, többek között az Azure-kapcsolat, ügyfélidentitás-tárolóval, és a számlázási modell döntések áttekintést nyújt.
 
 Ha úgy dönt, hogy vásárol egy integrált rendszer, a számítógépgyártó (OEM) hardvergyártójához segítségével vezeti végig a tervezési folyamat további részleteket a jelentős részét. Azok a tényleges telepítési is elvégzi.
 

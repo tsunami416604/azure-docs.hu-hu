@@ -4,7 +4,7 @@ description: Ez a cikk segítségével tervezése, létrehozása, és utána a s
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 51abafa1-812b-460f-a129-d714fdc391da
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 928ed383c08dd87cb003d1f729bc3fecce0c6935
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 76943c89cd4c0a283dc36a2a0d28c907cef0ad28
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999232"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114688"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM-védelemmel ellátott és hogyan lehet az Azure Key Vault-kulcsok
 
@@ -32,7 +32,7 @@ Ez a funkció nem érhető el az Azure China.
 
 > [!NOTE]
 > Azure Key Vaulttal kapcsolatos további információkért lásd: [Mi az Azure Key Vault?](key-vault-whatis.md)  
-> Egy első lépéseket megkönnyítő oktatóanyagunkat, amely tartalmazza a key vault HSM által védett kulcsok létrehozása, lásd: [első lépései az Azure Key Vault](key-vault-get-started.md).
+> Egy első lépéseket megkönnyítő oktatóanyagunkat, amely tartalmazza a key vault HSM által védett kulcsok létrehozása, lásd: [Mi az Azure Key Vault?](key-vault-overview.md).
 
 További információ és a egy HSM által védett kulcs átvitele az interneten keresztül:
 
@@ -62,7 +62,7 @@ Tekintse meg az alábbi táblázat a saját kulcs használata (BYOK) for Azure K
 | Azure-előfizetéssel |Hozzon létre egy Azure Key Vaultban, Azure-előfizetés szükséges: [Regisztráljon az ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/) |
 | Az Azure Key Vault Premium szolgáltatási szinten a HSM-védelemmel ellátott kulcsok támogatására |Az Azure Key Vault a szolgáltatási szintek és a képességekkel kapcsolatos további információkért lásd: a [Azure Key Vault díjszabását ismertető](https://azure.microsoft.com/pricing/details/key-vault/) webhelyén. |
 | A Thales HSM, intelligens kártyák és támogatószoftver |A Thales hardveres biztonsági modul és a Thales HSM-EK alapvető ismeretekre hozzáféréssel kell rendelkeznie. Lásd: [Thales hardveres biztonsági modul](https://www.thales-esecurity.com/msrms/buy) kompatibilis modellek vagy HSM vásárlásához, ha nem rendelkezik egy listája. |
-| A következő hardverre és szoftverekre:<ol><li>Egy kapcsolat nélküli x64 munkaállomáson, egy minimális Windows operációs rendszer, legalább Windows 7 és a Thales nShield szoftver verziója 11.50.<br/><br/>Ha ez a munkaállomás Windows 7 fut, meg kell [Microsoft .NET-keretrendszer 4.5-ös verziójának telepítése](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Egy munkaállomás, amely csatlakozik az internethez, és legalább Windows operációs rendszert Windows 7 és [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **minimális 1.1.0-s** telepítve.</li><li>USB-meghajtóra vagy más hordozható tárolóeszköz, amelyen legalább 16 MB szabad tárhely.</li></ol> |Biztonsági okokból javasoljuk, hogy az első munkaállomás nincs csatlakoztatva a hálózathoz. Azonban ez a javaslat nem szoftveres követelmény.<br/><br/>Az alábbi utasításokat, az ezen a munkaállomáson nevezzük a kapcsolat nélküli munkaállomáson.</p></blockquote><br/>Ezenkívül ha a bérlői kulcsot egy éles hálózati környezetben, azt javasoljuk, hogy egy második, különálló munkaállomást használjon az eszközkészlet letöltése, és a bérlőkulcs feltöltésére. De tesztelési célokra használhatja munkaállomást az elsőt.<br/><br/>Az alábbi utasításokat, az erre a második munkaállomásra nevezzük az internetre kapcsolódó munkaállomásra.</p></blockquote><br/> |
+| A következő hardverre és szoftverekre:<ol><li>Egy kapcsolat nélküli x64 munkaállomáson, egy minimális Windows operációs rendszer, legalább Windows 7 és a Thales nShield szoftver verziója 11.50.<br/><br/>Ha ez a munkaállomás Windows 7 fut, meg kell [Microsoft .NET-keretrendszer 4.5-ös verziójának telepítése](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Egy munkaállomás, amely csatlakozik az internethez, és legalább Windows operációs rendszert Windows 7 és [Azure PowerShell-lel](/powershell/azure/overview?view=azps-1.2.0) **minimális 1.1.0-s** telepítve.</li><li>USB-meghajtóra vagy más hordozható tárolóeszköz, amelyen legalább 16 MB szabad tárhely.</li></ol> |Biztonsági okokból javasoljuk, hogy az első munkaállomás nincs csatlakoztatva a hálózathoz. Azonban ez a javaslat nem szoftveres követelmény.<br/><br/>Az alábbi utasításokat, az ezen a munkaállomáson nevezzük a kapcsolat nélküli munkaállomáson.</p></blockquote><br/>Ezenkívül ha a bérlői kulcsot egy éles hálózati környezetben, azt javasoljuk, hogy egy második, különálló munkaállomást használjon az eszközkészlet letöltése, és a bérlőkulcs feltöltésére. De tesztelési célokra használhatja munkaállomást az elsőt.<br/><br/>Az alábbi utasításokat, az erre a második munkaállomásra nevezzük az internetre kapcsolódó munkaállomásra.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Hozzon létre, és a kulcs átvitele az Azure Key Vault HSM-be
 
@@ -503,4 +503,4 @@ Sikeres feltöltés esetén, tekintse meg a tulajdonságait, a kulcs, amelyet az
 
 ## <a name="next-steps"></a>További lépések
 
-Mostantól használhatja ezt a HSM által védett kulcsot tárol a kulcstárolóban. További információkért lásd: a **Ha hardveres biztonsági modul (HSM) használni kívánt** című rész a [Ismerkedés az Azure Key Vault](key-vault-get-started.md) oktatóanyag.
+Mostantól használhatja ezt a HSM által védett kulcsot tárol a kulcstárolóban. További információkért lásd: a **Ha hardveres biztonsági modul (HSM) használni kívánt** című rész a [Ismerkedés az Azure Key Vault](key-vault-overview.md) oktatóanyag.

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 1431ba658a6eb898553804f0c81b3babb23f4fe2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 780d2134aa00f828a614af6938978e24df3534cd
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015202"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105111"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Útmutatás a webes alkalmazások üzembe helyezése Azure Resource Manager-sablonok használatával
 
@@ -113,12 +113,14 @@ A név a webalkalmazás globálisan egyedinek kell lennie. Használhat egy elnev
 
 ## <a name="deploy-web-app-certificate-from-key-vault"></a>Webalkalmazás-tanúsítvány a Key Vault üzembe helyezése
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ha a sablon tartalmaz egy [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) , amely SSL-kötés és a tanúsítvány a Key Vaultban tárolt, meg kell győződnie arról, hogy az App Service identity is hozzáférjen a tanúsítványhoz.
 
 A globális Azure-ban, az App Service-ben egyszerű szolgáltatás azonosítója rendelkezik **abfa0a7c-a6b6-4736-8310-5855508787cd**. A Key Vault hozzáférési jogot az App Service szolgáltatás egyszerű, használja:
 
 ```azurepowershell-interactive
-Set-AzureRmKeyVaultAccessPolicy `
+Set-AzKeyVaultAccessPolicy `
   -VaultName KEY_VAULT_NAME `
   -ServicePrincipalName abfa0a7c-a6b6-4736-8310-5855508787cd `
   -PermissionsToSecrets get `

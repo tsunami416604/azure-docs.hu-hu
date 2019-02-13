@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: bd85214efc3c8f67d41563e3ca46a1e2278c4868
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e10c42ee7d0d1c3ec7ade576fef6cb8053fdb633
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062673"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111357"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Az Azure storage táblakötések az Azure Functions szolgáltatáshoz
 
@@ -465,7 +465,7 @@ A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a kö
   }
   ```
 
-  Egy teljes példa: [bevitel – C#-példa](#input---c-example).
+  Egy teljes példa: a bemenet - C# példa.
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -504,7 +504,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**type** | n/a | Meg kell `table`. Ez a tulajdonság beállítása automatikusan történik, a kötés létrehozásakor az Azure Portalon.|
 |**direction** | n/a | Meg kell `in`. Ez a tulajdonság beállítása automatikusan történik, a kötés létrehozásakor az Azure Portalon. |
 |**name** | n/a | A tábla vagy a függvénykódot az entitást képviselő változó neve. | 
-|**Táblanév** | **Táblanév** | A tábla neve.| 
+|**Táblanév** | **TableName** | A tábla neve.| 
 |**partitionKey** | **PartitionKey** |Választható. A partíciókulcs a tábla entitás olvasni. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
 |**Rowkey tulajdonságok esetén** |**Rowkey tulajdonságok esetén** | Választható. A sorkulcs beolvasni a tábla entitás. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
 |**hajtsa végre a megfelelő** |**hajtsa végre a megfelelő** | Választható. Olvassa el a JavaScript entitások maximális számát. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
@@ -764,7 +764,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**type** | n/a | Meg kell `table`. Ez a tulajdonság beállítása automatikusan történik, a kötés létrehozásakor az Azure Portalon.|
 |**direction** | n/a | Meg kell `out`. Ez a tulajdonság beállítása automatikusan történik, a kötés létrehozásakor az Azure Portalon. |
 |**name** | n/a | A függvény kódját a táblával vagy entitással a használt változó neve. Állítsa be `$return` való hivatkozáshoz függvény visszatérési értéke.| 
-|**Táblanév** |**Táblanév** | A tábla neve.| 
+|**Táblanév** |**TableName** | A tábla neve.| 
 |**partitionKey** |**PartitionKey** | A partíciókulcs a tábla entitás írni. Tekintse meg a [szakaszban](#output---usage) hogyan használni ezt a tulajdonságot.| 
 |**Rowkey tulajdonságok esetén** |**Rowkey tulajdonságok esetén** | A tábla entitás írni a sorkulcs. Tekintse meg a [szakaszban](#output---usage) hogyan használni ezt a tulajdonságot.| 
 |**kapcsolat** |**kapcsolat** | A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
@@ -794,8 +794,8 @@ A Table storage kimeneti kötés támogatja a következő esetekben:
 | Kötés | Leírások |
 |---|---|
 | Tábla | [Tábla hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
-| BLOB, tábla, üzenetsor | [Storage-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| BLOB, tábla, üzenetsor | [hibaelhárítással](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Blob, Table, Queue | [Storage-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob, Table, Queue | [hibaelhárítással](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>További lépések
 

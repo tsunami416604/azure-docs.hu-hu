@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 45ecc1cbe2a9cf7d11d7b17a7a72887dcb7aa1e3
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: d6b0093e396e87b528bd8ccbdb8b5454c06dfac1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965409"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106290"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>A Log Analytics használat és költségek kezelése
 
@@ -131,7 +131,7 @@ Ha leállítja az adatgyűjtést, a OperationStatus figyelmeztetés. Amikor megk
 |OK gyűjtemény leáll| Megoldás| 
 |-----------------------|---------|
 |Elérte az örökölt az ingyenes tarifacsomag napi korlátot |Várja meg, amíg a gyűjtemény indítja újra automatikusan a következő napon, vagy módosítása fizetős tarifacsomagra.|
-|Elérte a napi korlát a munkaterület|Várja meg, indítsa újra automatikusan a gyűjtemény, vagy növelje a napi mennyiségi korlátot ismertetett [a maximális napi adatmennyiség kezelése](#manage-the-maximum-daily-volume). A napi korlát visszaállítási idő mutat be kapcsolva a **adatmennyiség-kezelés** lapot. |
+|Elérte a napi korlát a munkaterület|Várja meg, indítsa újra automatikusan a gyűjtemény, vagy növelje a napi mennyiségi korlátot ismertetett kezelése a maximális napi adatmennyiséget. A napi korlát visszaállítási idő mutat be kapcsolva a **adatmennyiség-kezelés** lapot. |
 |Azure-előfizetés miatt felfüggesztett állapotban van:<br> Ingyenes próbaidőszak véget ért<br> Az Azure pass lejárt<br> Havonta költségkeret elérése (például az MSDN vagy a Visual Studio előfizetési)|Fizetős előfizetéssé alakítani<br> Távolítsa el a korlátot, vagy várjon, amíg a korlát alaphelyzetbe állítása|
 
 Értesítés az adatgyűjtés leáll, használja a leírt lépéseket követve *létrehozás napi adatkorlátjának* , ami arról értesíti, ha leállítja az adatgyűjtést, és kövesse a lépéseket használja leírt lépéseket követve adja hozzá a műveletek a riasztási szabály konfigurálása egy e-mailt, webhook vagy runbook műveletet a riasztási szabály. 

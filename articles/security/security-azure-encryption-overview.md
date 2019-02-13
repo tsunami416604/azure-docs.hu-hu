@@ -4,7 +4,7 @@ description: További tudnivalók az Azure-ban különböző titkosítási beál
 services: security
 documentationcenter: na
 author: Barclayn
-manager: MBaldwin
+manager: barbkess
 editor: TomShinder
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: dc1ca62ce184ac290f289975ff609b8240351099
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 272cc843ab90eade06525f665d3cf2decf74a26f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035096"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114654"
 ---
 # <a name="azure-encryption-overview"></a>Azure-titkosítás áttekintése
 
@@ -50,11 +50,11 @@ Az Azure támogatja különböző titkosítási modellekhez, beleértve a szolg�
 
 A három kiszolgálóoldali titkosítás modellek ajánlat az igényeknek megfelelően választhat másik kulcskezelés jellemzők:
 
-- **Szolgáltatás által kezelt kulcsok**: vezérlés és kényelmi biztosít alacsony többletterhelést okoznak.
+- **Szolgáltatás által kezelt kulcsok**: Vezérlés és kényelmi biztosít alacsony többletterhelést okoznak.
 
-- **Felhasználó által kezelt kulcsokkal**: lehetővé teszi a kulcsok, beleértve a Bring Your Own kulcsokat (BYOK) támogatása, felett ellenőrzést, vagy lehetővé teszi, hogy hozzon létre újakat.
+- **Felhasználó által kezelt kulcsokkal**: Lehetővé teszi a kulcsok, beleértve a Bring Your Own kulcsokat (BYOK) támogatása, felett ellenőrzést, vagy lehetővé teszi, hogy hozzon létre újakat.
 
-- **Szolgáltatás által kezelt kulcsokat az ügyfél által felügyelt hardveres**: lehetővé teszi a szellemi tulajdont képező adattárban kívül a Microsoft ellenőrzési kulcsok kezelését. Ez a jellemző gazdagép Your Own Key (HYOK) nevezzük. Azonban konfigurációs összetett, és a legtöbb Azure-szolgáltatások nem támogatják ezt a modellt.
+- **Szolgáltatás által kezelt kulcsokat az ügyfél által felügyelt hardveres**: Lehetővé teszi a szellemi tulajdont képező adattárban kívül a Microsoft ellenőrzési kulcsok kezelését. Ez a jellemző gazdagép Your Own Key (HYOK) nevezzük. Azonban konfigurációs összetett, és a legtöbb Azure-szolgáltatások nem támogatják ezt a modellt.
 
 ### <a name="azure-disk-encryption"></a>Az Azure disk encryption
 
@@ -78,7 +78,7 @@ További információk és az Azure Storage ügyféloldali kódtárat for .NET N
 
 Ügyféloldali titkosítás a Key Vault használatakor az adatok titkosítását a rendszer egy egyszeri szimmetrikus tartalom titkosítási kulcs (CEK) az Azure Storage ügyféloldali SDK által létrehozott. A CEK titkosított használatát egy kulcs titkosítási kulcscserekulcs (KEK), ami az vagy egy szimmetrikus kulcsot, vagy aszimmetrikus kulcspárt alkotnak. Kezelheti, helyileg vagy a Key Vaultban tárolhatók is. A titkosított adatok majd fel van töltve az Azure Storage.
 
-További információ az ügyféloldali titkosítás a Key Vault és az első lépések útmutató utasításait [oktatóanyag: blobok titkosítása és visszafejtése az Azure Storage Key Vault használatával](../storage/storage-encrypt-decrypt-blobs-key-vault.md).
+További információ az ügyféloldali titkosítás a Key Vault és az első lépések útmutató utasításait [oktatóanyag: Blobok titkosítása és visszafejtése az Azure Storage Key Vault használatával](../storage/storage-encrypt-decrypt-blobs-key-vault.md).
 
 Végül is használhatja az Azure Storage ügyféloldali kódtára a Javához készült ügyféloldali titkosítás végrehajtásához, mielőtt az adatfeltöltés az Azure Storage és az adatok visszafejtéséhez, amikor az ügyfél letöltése. Ebben a könyvtárban is támogatja az integrációt [Key Vault](https://azure.microsoft.com/services/key-vault/) a tárfiókkulcs-kezelés.
 
@@ -170,7 +170,7 @@ Virtuális hálózat pont – hely VPN-kapcsolatot az Azure Portalon a Tanúsít
 
 Pont – hely VPN-kapcsolatok Azure virtuális hálózatokkal kapcsolatos további információkért lásd:
 
-[Egy virtuális hálózathoz pont – hely kapcsolat konfigurálása a Tanúsítványalapú hitelesítés használatával: Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
+[Egy virtuális hálózathoz pont – hely kapcsolat konfigurálása a Tanúsítványalapú hitelesítés használatával: Az Azure Portalon](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
 
 [Egy virtuális hálózathoz pont – hely kapcsolat konfigurálása a Tanúsítványalapú hitelesítés használatával: PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 

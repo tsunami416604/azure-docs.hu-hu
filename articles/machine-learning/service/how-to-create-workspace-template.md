@@ -1,7 +1,7 @@
 ---
 title: Hozzon létre egy munkaterületet egy sablon használatával
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan hozzon létre egy új Azure Machine Learning szolgáltatás munkaterületet egy Azure resource manager-sablon használatával.
+description: Ismerje meg, hogyan hozzon létre egy új Azure Machine Learning szolgáltatás munkaterületet egy Azure Resource Manager-sablon használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: haining
 author: hning86
 ms.date: 02/11/2019
-ms.openlocfilehash: 71513c91d83f54359e43a41e178d91fe97a4ce82
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: b9d05e8de01178fd8731e492d2aeefd28f3ef4cf
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101139"
+ms.locfileid: "56105705"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>Az Azure Machine Learning szolgáltatás munkaterület létrehozása sablon használatával
 

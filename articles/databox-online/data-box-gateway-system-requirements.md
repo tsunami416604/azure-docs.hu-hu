@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 81df0a776cd22490342230567deacb23097cd12e
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: be51e6c829c5f12d17c6302bb951039711f12075
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094189"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113226"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Az Azure Data Box Gateway rendszerkövetelményei (előzetes verzió)
 
@@ -42,22 +42,11 @@ A mögöttes gazdagép rendszere a Data Box átjáró viszont rendelnie a virtu�
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Az eszközhöz csatlakoztatott ügyfelek támogatott operációs rendszer
 
-Itt az ügyfelek vagy a Data Box gatewayhez csatlakozó gazdagépeknek a támogatott operációs rendszerek listája.
-
-| **Operációs rendszer és platformok** | **Verziók** |
-| --- | --- |
-| Windows Server |2012 R2 <br> 2016 <br> 2019 |
-| Windows |8, 10 |
-| SUSE Linux |Vállalati kiszolgáló (x86_64) 12|
-| Ubuntu |16.04.3 LTS|
-| CentOS | 7.0 |
+[!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-supported-client-os.md)]
 
 ## <a name="supported-protocols-for-clients-accessing-device"></a>Az eszközhöz hozzáférő ügyfelek támogatott protokollok
 
-|**Protocol (Protokoll)** |**Verziók**   |**Megjegyzések**  |
-|---------|---------|---------|
-|SMB    | 2.X, 3.X      | Az SMB-1 nem támogatott.|
-|NFS     | V3-as és a V4        |         |
+[!INCLUDE [Supported protocols for clients accessing device](../../includes/data-box-edge-gateway-supported-client-protocols.md)]
 
 ## <a name="supported-virtualization-platforms-for-device"></a>Eszköz támogatott virtualizációs platform
 
@@ -69,49 +58,22 @@ Itt az ügyfelek vagy a Data Box gatewayhez csatlakozó gazdagépeknek a támoga
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
-Íme a Data Box átjáró a támogatott tárfiókok listáját.
-
-| **Storage-fiók** | **Megjegyzések** |
-| --- | --- |
-| Klasszikus | Standard |
-| Általános rendeltetés  |Standard; a V1 és V2 is támogatja. A gyakori és ritka elérésű szint használata támogatott. |
+[!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 
 
 ## <a name="supported-storage-types"></a>Támogatott tárolási típus
 
-Ez egy lista a támogatott tárolási típusok, a Box Adatátjáróhoz.
-
-| **Fájlformátum** | **Megjegyzések** |
-| --- | --- |
-| Az Azure blokkblob | |
-| Oldala az Azure blob  | |
-| Azure Files | |
+[!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 
 ## <a name="supported-browsers-for-local-web-ui"></a>Helyi webes felhasználói felület által támogatott böngészők
 
-Itt látható a virtuális eszköz helyi webes felhasználói Felületét a támogatott böngészők listája.
+[!INCLUDE [Supported browsers for local web UI](../../includes/data-box-edge-gateway-supported-browsers.md)]
 
-|Böngésző  |Verziók  |További követelmények és megjegyzések  |
-|---------|---------|---------|
-|Google Chrome   |Legújabb verziója         |         |
-|Microsoft Edge    | Legújabb verziója        |         |
-|Internet Explorer     | Legújabb verziója        |         |
-|FireFox    |Legújabb verziója         |         |
-
-
-## <a name="networking-requirements"></a>Hálózati követelmények
+## <a name="networking-port-requirements"></a>Hálózatkezelési port követelményei
 
 Az alábbi táblázat felsorolja a portot, amelyet meg kell nyitni a tűzfalon az SMB, a felhőben és a felügyeleti forgalom engedélyezése. Ebben a táblázatban *a* vagy *bejövő* irányát hivatkozik, mely a bejövő kérések ügyfélelérési az eszközre. *Ki* vagy *kimenő* hivatkozik, amelyben a Data Box átjáróeszköz kívülről, adatokat küld a központi telepítés meghaladja a irány: például kimenő internetkapcsolattal.
 
-| Port nem.| És leskálázása | Port hatókör| Szükséges|   Megjegyzések                                                             |                                                                                     |
-|--------|---------|----------|--------------|----------------------|---------------|
-| TCP 80-AS (HTTP)|Ki|WAN |Nem|Kimenő port szolgál az Internet-hozzáférés frissítések lekéréséhez. <br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |                          
-| TCP 443 (HTTPS)|Ki|WAN|Igen|Kimenő port szolgál a felhőbeli adatok eléréséhez.<br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.|   
-| UDP 53 (DNS)|Ki|WAN|Bizonyos esetekben<br>Lásd: a megjegyzések|Csak akkor, ha egy internetes DNS-kiszolgálót használ, a port szükség.<br>Azt javasoljuk, hogy helyi DNS-kiszolgáló használatával. |
-| UDP 123 (NTP)|Ki|WAN|Bizonyos esetekben<br>Lásd: a megjegyzések|Csak akkor, ha egy internetes NTP-kiszolgálót használ, a port szükség.  |
-| UDP 67 (DHCP)|Ki|WAN|Bizonyos esetekben<br>Lásd: a megjegyzések|A port szükség, csak akkor, ha egy DHCP-kiszolgáló használ.  |
-| TCP 80-AS (HTTP)|Eleme ennek|LAN|Igen|Ez a helyi felhasználói felület az eszközön a helyi felügyeleti a bejövő portot. <br>A helyi felhasználói felület elérése HTTP protokollon keresztül automatikusan átirányítja a HTTPS.  | 
-| TCP 443 (HTTPS)|Eleme ennek|LAN|Igen|Ez a helyi felhasználói felület az eszközön a helyi felügyeleti a bejövő portot. | 
+[!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
 ## <a name="url-patterns-for-firewall-rules"></a>URL-mintákra vonatkozó tűzfalszabályok
 
@@ -123,26 +85,11 @@ Azt javasoljuk, hogy beállította-e a tűzfalszabályok alapján a Data Box Gat
 > - Az eszköz (forrás) IP-címek mindig a felhő-kompatibilis hálózati adaptereken értékre kell állítani.
 > - IP-címeket kell megadni a cél [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/confirmation.aspx?id=41653).
 
-|     Az URL-minta                                                                                                                                                                                                                                                                                                                                                                                                                                       |     Component/Functionality                                                                             |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-|    https://*.databoxedge.azure.com/*<br>https://*.servicebus.windows.net/*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                        |    Az Azure Data Box-átjáró szolgáltatás<br>Azure Service Bus<br>Hitelesítési szolgáltatás    |
-|    http://*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                   |    Eszköz aktiválása                                                                                    |
-|    http://crl.microsoft.com/pki/*   http://www.microsoft.com/pki/*                                                                                                                                                                                                                                                                                                                                                                                    |    Tanúsítvány-visszavonás                                                                               |
-|    https://*.core.windows.net/* https://*. data.microsoft.com http://*. msftncsi.com                                                                                                                                                                                                                                                                                                                                                                |    Az Azure storage-fiókok és figyelés                                                                |
-|    http://windowsupdate.microsoft.com<br>http://*.windowsupdate.microsoft.com<br>https://*.windowsupdate.microsoft.com<br>http://*.update.microsoft.com<br>https://*.update.microsoft.com<br>http://*.windowsupdate.com<br>http://download.microsoft.com<br>http://*.download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://*.ws.microsoft.com<br>https://*.ws.microsoft.com<br>http://*.mp.microsoft.com        |    A Microsoft Update-kiszolgálók                                                                             |
-|    http://*.deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                             |    Akamai CDN                                                                                           |
-|    https://*.partners.extranet.microsoft.com/*                                                                                                                                                                                                                                                                                                                                                                                                        |    Támogatási csomag                                                                                      |
-|    http://*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                        |    A Windows, a telemetriai szolgáltatás, tekintse meg a frissítést a felhasználói élmény és a telemetria diagnosztikája      |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                       |                                                                                                         |
-
-
+[!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
 ## <a name="internet-bandwidth"></a>Internetes sávszélesség
 
-Az alábbi követelmények vonatkoznak minimális internetes sávszélesség a Data Box Gateway eszközökön érhető el.
-
-- A Data Box Gateway számára folyamatosan (legalább) 20 Mbps sebességű dedikált internetes sávszélesség áll rendelkezésre. Ez a sávszélesség nem osztható meg más alkalmazásokkal. 
-- A Data Box Gateway rendelkezik egy dedikált 32 MB/s internetes sávszélesség (vagy még több) hálózati sávszélesség-szabályozás használatakor.
+[!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
 ## <a name="next-step"></a>Következő lépés
 

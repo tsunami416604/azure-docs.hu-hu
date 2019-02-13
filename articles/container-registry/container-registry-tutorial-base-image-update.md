@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 521d9f3e435e972d373f62619904f9fa478e0685
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e2dd02ada2c22fa8d6c2d79387ea01f3ec97dd7e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858637"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108126"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: Tároló rendszerképek létrehozásának automatizálása az Azure container registry alapképet frissítésekor 
 
@@ -89,7 +89,7 @@ Első lépésként állítsa össze az alapként szolgáló rendszerképet az AC
 az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Dockerfile-base .
 ```
 
-## <a name="create-a-task"></a>Feladat létrehozása
+## <a name="create-a-task"></a>Tevékenység létrehozása
 
 Ezután hozzon létre egy feladatot az [az acr task create][az-acr-task-create] paranccsal:
 
@@ -259,7 +259,7 @@ Ez az oktatóanyag azt mutatta be, hogyan használhatók a feladatok a tárolór
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-build]: /cli/azure/acr#az-acr-build-run
 [az-acr-task-create]: /cli/azure/acr
-[az-acr-task-run]: /cli/azure/acr-run
+[az-acr-task-run]: /cli/azure/acr#az-acr-run
 [az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-task-list-runs]: /cli/azure/acr
 [az-acr-task]: /cli/azure/acr

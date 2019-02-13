@@ -4,7 +4,7 @@ description: " Az áttelepítés az Azure IaaS munkaterhelések számos lehetős
 services: security
 documentationcenter: na
 author: barclayn
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 42958576a127fee5e0a275e53203edd4e4dee6f9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 45fb1cbf57f54f040f9dfbc522c22a2e0884d6db
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540280"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116499"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 
@@ -52,7 +52,7 @@ Ha a szervezet több előfizetéssel rendelkezik, szüksége lehet hatékonyan k
 - [Virtuális gépek Közreműködője](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): Felügyelheti a virtuális gépek, de nem a virtuális hálózati vagy tárolási fiók, amelyhez csatlakoznak.
 - [Virtuális gépek hagyományos Közreműködője](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): Kezelheti a klasszikus üzemi modellben, de nem a virtuális hálózati vagy tárolási fiók, amelyhez a virtuális gépek csatlakoznak használatával létrehozott virtuális gépek.
 - [Biztonsági rendszergazda](../role-based-access-control/built-in-roles.md#security-admin): A Security Center csak: Megtekintheti biztonsági házirendek, biztonsági állapotot, szerkessze a biztonsági szabályzatok, riasztások megtekintése és javaslatok, riasztások és javaslatok elvetése.
-- [DevTest Labs-felhasználó](../role-based-access-control/built-in-roles.md#devtest-labs-user): Megtekintheti minden és a csatlakozás, indítsa el, indítsa újra, és leállíthatja a virtuális gépeket.
+- [DevTest Labs User](../role-based-access-control/built-in-roles.md#devtest-labs-user): Megtekintheti minden és a csatlakozás, indítsa el, indítsa újra, és leállíthatja a virtuális gépeket.
 
 Az előfizetés-adminisztrátorok és a társrendszergazdákat módosíthatja ezt a beállítást, így azok egy adott előfizetés összes virtuális gép Rendszergazdák. Győződjön meg arról, hogy az összes előfizetés-adminisztrátorok és jelentkezzen be a gépek bármelyikét társrendszergazdákat megbízik.
 
