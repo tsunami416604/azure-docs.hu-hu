@@ -16,12 +16,13 @@ ms.date: 11/28/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6df19f8d20853b569a2bc357e6c1115976a7de2c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 716f48a5db437ef1dc865aca66fbac1c1d51aec3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097965"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207432"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-resource-owner-password-credential"></a>Az Azure Active Directory 2.0-s verzió és az OAuth 2.0-s erőforrás tulajdonos jelszavára vonatkozó hitelesítőadat
 
@@ -81,7 +82,7 @@ A következő token sikeres válasz egy példát mutat be:
 
 | Paraméter | Formátum | Leírás |
 | --------- | ------ | ----------- |
-| `token_type` | Karakterlánc | Mindig `Bearer`. |
+| `token_type` | String | Mindig `Bearer`. |
 | `scope` | Szóközzel elválasztva karakterláncok | Egy hozzáférési jogkivonatot adott vissza, ha ezt a paramétert a a hozzáférési jogkivonat érvénytelen, a hatókörök sorolja fel. |
 | `expires_in`| int | A csomagban foglalt hozzáférési jogkivonat érvénytelen, a másodpercek számát. |
 | `access_token`| Átlátszatlan karakterlánc | Kiadva a [hatókörök](v2-permissions-and-consent.md) , amely lett kérve. |

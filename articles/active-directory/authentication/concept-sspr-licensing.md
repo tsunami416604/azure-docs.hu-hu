@@ -10,16 +10,17 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: f7e539b2f444109e902f4b85d0a879183217f262
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 13f8d04a5e59092ee5173e8c1a446385b71faac2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076247"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201584"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Az Azure AD önkiszolgáló jelszó-licencelési követelményei alaphelyzetbe állítása
 
-Az Azure Active Directory (Azure AD) négy változatban érhető el: Ingyenes, alapszintű, prémium P1 és prémium P2 szintű. Számos különböző szolgáltatásokat, amelyek be új jelszó önkiszolgáló kérésének, módosítás, például alaphelyzetbe állítása, zárolásának feloldásához és a jelszóvisszaíró, az Azure AD különböző kiadásai által biztosított vannak. Ez a cikk próbál szemléltetik az eltéréseket. Mindegyik Azure AD-kiadás szolgáltatásait, további részletek találhatók a [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).
+Az Azure Active Directory (Azure AD) négyféle kiadásban érhető el: ingyenes, alapszintű, Prémium P1 és Prémium P2. Számos különböző szolgáltatásokat, amelyek be új jelszó önkiszolgáló kérésének, módosítás, például alaphelyzetbe állítása, zárolásának feloldásához és a jelszóvisszaíró, az Azure AD különböző kiadásai által biztosított vannak. Ez a cikk próbál szemléltetik az eltéréseket. Mindegyik Azure AD-kiadás szolgáltatásait, további részletek találhatók a [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="compare-editions-and-features"></a>Kiadások és szolgáltatások összehasonlítása
 

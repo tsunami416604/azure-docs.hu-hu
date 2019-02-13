@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció az egyes felügyeleti SSO |} A Microsoft Docs'
+title: 'Oktatóanyag: Az egyes rendszergazda egyszeri bejelentkezés az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az egyes felügyeleti SSO között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 40bdba8e7ce699f0fd6ca589c753f51b550fae05
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7d85e8dbac47bd41c759e9c225df5544c659cc05
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439453"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205528"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció az egyes rendszergazda egyszeri bejelentkezés
+# <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>Oktatóanyag: Az egyes rendszergazda egyszeri bejelentkezés az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan bizonyos rendszergazdai SSO integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása az egyes felügyeleti SSO-val, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy bizonyos rendszergazdai egyszeri bejelentkezés az egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Egyes felügyeleti SSO integrálása az Azure AD beállítása, hozzá kell bizo
 
 **Bizonyos rendszergazdai egyszeri bejelentkezés hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -162,7 +163,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-certain-admin-sso-test-user"></a>Bizonyos felügyeleti SSO tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű bizonyos rendszergazdai egyszeri Bejelentkezést a felhasználó hoz létre. Együttműködve [támogatási csoport egyes felügyeleti SSO](mailto:integrations@certain.com) a felhasználók hozzáadása az egyes felügyeleti SSO-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű bizonyos rendszergazdai egyszeri Bejelentkezést a felhasználó hoz létre. Együttműködve [támogatási csoport egyes felügyeleti SSO](mailto:integrations@certain.com) a felhasználók hozzáadása az egyes felügyeleti SSO-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -194,7 +195,7 @@ Ebben a szakaszban engedélyezze Britta Simon bizonyos rendszergazdai egyszeri B
 
 1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

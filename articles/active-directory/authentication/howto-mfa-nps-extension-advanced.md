@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 5d7b14825b8b34c2ab742febe463ea518209a82f
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b236cc799a4ff84c3833f181ebec6305f1ec6942
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075618"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171316"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Speciális konfigurációs beállításait a multi-factor Authentication NPS bővítményével
 
@@ -29,7 +30,7 @@ Az NPS-bővítményének belül az Azure multi-factor Authentication az egyszer�
 
 Másodlagos felhasználói azonosítók konfigurálásához lépjen a `HKLM\SOFTWARE\Microsoft\AzureMfa` , és szerkessze a következő beállításazonosítókat:
 
-| Name (Név) | Típus | Alapértelmezett érték | Leírás |
+| Name (Név) | Typo | Alapértelmezett érték | Leírás |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | sztring | Üres | Active Directory-attribútumot használja az egyszerű felhasználónév helyett kívánt nevének megadására. Ezt az attribútumot használja AlternateLoginId attribútumként. Ha ez a beállításazonosító értéke egy [érvényes Active Directory-attribútum](https://msdn.microsoft.com/library/ms675090.aspx) (az például e-mail vagy displayName), majd az attribútumérték szerepel helyett a felhasználó egyszerű Felhasználónevét a hitelesítéshez. Ha ez a beállításazonosító nem üres, vagy nincs konfigurálva, majd AlternateLoginId le van tiltva, és a felhasználó egyszerű Felhasználónevét ezt használja hitelesítéshez. |
 | LDAP_FORCE_GLOBAL_CATALOG | logikai | False (Hamis) | Ez a jelző használatával LDAP-keresések globális katalógus használatának kényszerítéséhez AlternateLoginId keresésekor. Konfiguráljon egy tartományvezérlőt globális katalógusként, adja hozzá a AlternateLoginId attribútumot a globális katalógusba, és engedélyeznie kell ezt a jelzőt. <br><br> Ha LDAP_LOOKUP_FORESTS van konfigurálva (nem üres) **ezt a jelzőt TRUE kényszerítve**, függetlenül attól, a beállításjegyzék-beállítás értékét. Ebben az esetben az NPS-bővítményt kell a globális katalógus az egyes erdőkhöz AlternateLoginId attribútummal kell konfigurálni. |
@@ -43,7 +44,7 @@ Ha szeretné figyelni a kiszolgáló rendelkezésre állása, például ha terhe
 
 Adja meg egy IP-engedélyezési lista, lépjen a `HKLM\SOFTWARE\Microsoft\AzureMfa` és konfigurálja a következő beállításazonosítót: 
 
-| Name (Név) | Típus | Alapértelmezett érték | Leírás |
+| Name (Név) | Typo | Alapértelmezett érték | Leírás |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | sztring | Üres | Adja meg az IP-címek pontosvesszővel elválasztott listáját. Gépek, ahol a szolgáltatáskérések származnak, például a NAS-/ VPN-kiszolgáló IP-címét tartalmazza. IP-címtartományok olyan alhálózatok nem támogatottak. <br><br> Ha például *10.0.0.1;10.0.0.2;10.0.0.3*.
 

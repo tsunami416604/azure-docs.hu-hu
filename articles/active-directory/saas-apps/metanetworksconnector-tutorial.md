@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Meta hálózatok összekötővel |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció Meta hálózatok összekötővel |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Meta hálózatok összekötő és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a3f40624e51ef287d70bed547eba7ec9e0882b0e
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3c4d702a33742da5501be208154cbdd593fa0524
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669195"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199711"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Oktatóanyag: Azure Active Directory-integráció az Adattisztítás hálózatok összekötő
+# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Oktatóanyag: Meta hálózatok összekötő az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Meta hálózatok összekötő integrálása az Azure Active Directory (Azure AD).
 
@@ -130,11 +131,11 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     | Attribútum neve | Attribútum értéke | NÉVTÉR|
     | ---------------| --------------- | -------- |
-    | Keresztnév | User.givenName | |
-    | Vezetéknév | User.surname | |
+    | Keresztnév | user.givenname | |
+    | Vezetéknév | user.surname | |
     | e-mail cím| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | név | User.userPrincipalName| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | telefon | User.telephoneNumber | |
+    | név | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | telefon | user.telephonenumber | |
 
     1. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -240,7 +241,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja egy Meta hálózatok összekötőben Britta Simon nevű felhasználó létrehozásához. Meta hálózatok összekötő támogatja az just-in-time-kiépítés, amely alapértelmezés szerint van engedélyezve. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Meta hálózatok összekötő elérésére, ha még nem létezik tett kísérlet során.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Meta hálózatokhoz csatlakozó ügyfél-támogatási csapatának](mailto:support@metanetworks.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Meta hálózatokhoz csatlakozó ügyfél-támogatási csapatának](mailto:support@metanetworks.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

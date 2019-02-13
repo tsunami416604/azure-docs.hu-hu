@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 376ebcbc17cc9f5c797c2985fe3c0784f5036600
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 52e0521217fb99bc5fac3fdde8f43f9c80f86ac7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752092"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194236"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -70,7 +70,7 @@ Reset-StorageSyncServer
 A probléma akkor fordul elő, amikor a **az Internet Explorer fokozott biztonsági** házirend engedélyezve van a kiszolgáló regisztrálása során. Megfelelően letiltásával kapcsolatos további információ a **az Internet Explorer fokozott biztonsági** házirend, lásd: [készítse elő a Windows Server használata az Azure File Sync](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) és [üzembe helyezése az Azure File Szinkronizálási](storage-sync-files-deployment-guide.md).
 
 ## <a name="sync-group-management"></a>Szinkronizálási csoportok kezelése
-<a id="cloud-endpoint-using-share"></a>**A felhőbeli végpont létrehozása sikertelen, hiba: "A megadott Azure-fájlmegosztás már használatban van egy másik CloudEndpoint"**  
+<a id="cloud-endpoint-using-share"></a>**A felhőbeli végpont létrehozása sikertelen, hiba: „A megadott Azure-fájlmegosztást már egy másik felhőbeli végpont használja”**  
 Ez a probléma akkor fordul elő, ha az Azure-fájlmegosztás már használja egy másik felhőbeli végpont. 
 
 Ha az üzenet és az Azure-fájlmegosztás jelenleg nem használja a felhőbeli végpont, a következő lépéseket az Azure File Sync metaadatokat az Azure-fájlmegosztás törlése:
@@ -145,12 +145,12 @@ Egy kiszolgálói végpont állapotának "Nincs tevékenység" azt jelenti, hogy
 
 A kiszolgálóvégpontok nem lehetséges, hogy jelentkezzen szinkronizálási tevékenység a következő okok miatt:
 
-- A kiszolgáló rendelkezik egy aktív VSS szinkronizálási munkamenet (SnapshotSync). Aktív a kiszolgálói végpont VSS szinkronizálási munkamenet esetén más kiszolgálói végpontot, ugyanazon a köteten a kezdő szinkronizálási munkamenet a VSS-szinkronizálási munkamenet befejezéséig nem lehet elindítani.
+- Ügynök verziója 4.3.0.0 vagy régebbi van telepítve, és a kiszolgáló rendelkezik egy aktív VSS szinkronizálási munkamenet (SnapshotSync). Aktív a kiszolgálói végpont VSS szinkronizálási munkamenet esetén más kiszolgálói végpontot, ugyanazon a köteten a kezdő szinkronizálási munkamenet a VSS-szinkronizálási munkamenet befejezéséig nem lehet elindítani. A probléma megoldásához telepítse a ügynökverzió 5.0.2.0 vagy újabb verzió szinkronizálása egy köteten, amikor a VSS szinkronizálása munkamenet több kiszolgálói végpontot támogató aktív.
 
     A kiszolgáló jelenlegi szinkronizálási tevékenység megtekintéséhez [hogyan szinkronizálási munkamenet jelenlegi állapotának figyelése?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
 - A kiszolgáló elérte az egyidejű szinkronizálási munkamenetek maximális számát. 
-    - Ügynök verziója 4.x-es és újabb verziók: Korlát rendelkezésre álló erőforrásoktól függ.
+    - Ügynök verziója 4.x-es és újabb: Korlát rendelkezésre álló erőforrásoktól függ.
     - Ügynök verziója 3.x: 2 active szinkronizálási munkamenetek processzor vagy server 8 active sync-munkamenetek maximális száma.
 
 > [!Note]  
@@ -538,7 +538,7 @@ Ez a hiba oka, hogy a módosítások vannak az Azure-fájlmegosztás közvetlen�
 | **Hibakarakterlánc** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Szervizelés szükséges** | Igen |
 
-Azokban az esetekben vannak sok fájl a szinkronizálási hibák száma, ahol szinkronizálási munkamenetek megkezdheti a sikertelen lesz. Ez az állapot hibaelhárítása: [/ fájl/címtár-szinkronizálási hibák elhárítása]().
+Azokban az esetekben vannak sok fájl a szinkronizálási hibák száma, ahol szinkronizálási munkamenetek megkezdheti a sikertelen lesz. <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
 
 > [!NOTE]
 > Az Azure File Sync naponta egyszer létrehoz egy ideiglenes VSS-pillanatkép megnyitott kezelőkkel rendelkező fájlok szinkronizálása a kiszolgálón.

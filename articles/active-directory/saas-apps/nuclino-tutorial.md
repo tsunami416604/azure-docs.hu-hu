@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Nuclino |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Nuclino |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Nuclino között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 1a5346b98de48b1a2f8928c3c2bf30730588e9c1
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 655ac490e528680f779eeca54899a022ddf3b89a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43145981"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189555"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>Oktatóanyag: Azure Active Directory-integráció az Nuclino
+# <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Nuclino
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Nuclino integrálása az Azure Active Directory (Azure AD).
 
@@ -133,8 +134,8 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     | Attribútum neve | Attribútum értéke |
     | ---------------| --------------- |
-    | first_name | User.givenName |
-    | last_name | User.surname |
+    | first_name | user.givenname |
+    | last_name | user.surname |
 
     a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -229,7 +230,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja Nuclino Britta Simon nevű felhasználó létrehozásához. Nuclino támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Nuclino elérésére, ha még nem létezik tett kísérlet során.
 
 > [!Note]
-> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Nuclino támogatási csapatának](mailto:contact@nuclino.com).
+> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Nuclino támogatási csapatának](mailto:contact@nuclino.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

@@ -16,12 +16,13 @@ ms.date: 05/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: f6e5ca57eaa4a4a1975c0295933fc91e5726ae4c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6d69ddbd38798d0667ce69fb7696597a972b5098
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487931"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166997"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Hibrid identitás-életciklus megtervezése
 Identitás a nagyvállalati mobilitás és az alkalmazás a hozzáférési stratégia alapjainak egyike. Mobileszköz vagy SaaS-alkalmazás aláírása, az identitás-e a kulcsot minden hozzáférjenek. A legmagasabb szintjén az identitáskezelési megoldás magában foglalja a egységes és az identitás-adattárak közötti szinkronizálása mely automatizálása, valamint a folyamat üzembe helyezésének erőforrások központosítása tartalmazza. Az identitáskezelési megoldás kell egy központi identitás kell a helyszíni és felhőben és a segítségével is identitás-összevonási valamilyen központosított hitelesítés kezelése és biztonságos megosztás és együttműködés a külső felhasználók és a vállalatok. Erőforrások között operációs rendszerek és alkalmazások számára, vagy fiókazonosítójával szervezetekben. Szervezeti felépítés is módosítható úgy, hogy megfeleljen a kiépítési irányelveinknek és eljárásainknak.

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az szürkével-Pe |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció a szürkével-Pe |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a szürkével Pe-között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 5e642cba3354f4f8589e44d975c0cecf5692c5b5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 02df0a5d13aeb90049383f61d743e8a11e93fc79
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431167"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188528"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Oktatóanyag: Azure Active Directory-integráció az szürkével-Pe
+# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Oktatóanyag: A szürke-Pe az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan szürkével-Pe integrálása az Azure Active Directory (Azure AD).
 
@@ -121,7 +122,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Bejelentkezési URL
 
-    b. Az Azure AD-azonosító
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
@@ -156,7 +157,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-gra-pe-test-user"></a>Szürkével-Pe tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy szürkével-PE Britta Simon nevű felhasználó hoz létre. Együttműködve [támogatási csoport szürkével-Pe](https://www.toppantravel.com/inquiry/) a felhasználók hozzáadása az szürkével Pe-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy szürkével-PE Britta Simon nevű felhasználó hoz létre. Együttműködve [támogatási csoport szürkével-Pe](https://www.toppantravel.com/inquiry/) a felhasználók hozzáadása az szürkével Pe-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
