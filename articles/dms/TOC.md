@@ -11,6 +11,7 @@
 ## [Az SQL Server migrálása az Azure SQL DB-be online módban](tutorial-sql-server-azure-sql-online.md)
 ## [SQL Server offline migrálása az Azure SQL DB felügyelt példányába](tutorial-sql-server-to-managed-instance.md)
 ## [SQL Server online migrálása az Azure SQL DB felügyelt példányába](tutorial-sql-server-managed-instance-online.md)
+## [RDS SQL Server online migrálása az Azure SQL DB-be vagy az Azure SQL DB felügyelt példányába](tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md)
 ## [MySQL online migrálása a MySQL-hez készült Azure DB-be](tutorial-mysql-azure-mysql-online.md)
 ## [PostgreSQL online migrálása a PostgreSQL-hez készült Azure DB-be](tutorial-postgresql-azure-postgresql-online.md)
 ## [MongoDB migrálása az Azure Cosmos DB Mongo API offline verziójára](tutorial-mongodb-cosmos-db.md)

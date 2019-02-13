@@ -1,5 +1,5 @@
 items:
-- name: SQL DB–dokumentáció
+- name: SQL Database-dokumentáció
   href: index.yml
 - name: SQL Database-szolgáltatás
   items:
@@ -67,23 +67,23 @@ items:
   expanded: true
 - name: Oktatóanyagok
   items:
-  - name: Azure SQL Database tervezése
+  - name: Adatbázis tervezése az SQL Database-ben
     items:
     - name: Adatbázis tervezése az SSMS használatával
       href: sql-database-design-first-database.md
     - name: Adatbázis tervezése a .NET használatával
       href: sql-database-design-first-database-csharp.md
-  - name: Migrálás az Azure SQL Database-be
+  - name: Migrálás az SQL Database-be
     items:
     - name: Migrálás önálló/készletezett adatbázisba DMS használatával
       href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
     - name: Migrálás felügyelt példányra DMS használatával
       href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-  - name: Biztonság az Azure SQL Database-ben
+  - name: Biztonság az SQL Database-ben
     items:
-    - name: Önálló adatbázis biztonsága
+    - name: Önálló és készletbe vont adatbázisok biztonsága
       href: sql-database-security-tutorial.md
-    - name: Felügyelt példányok biztonsága Azure AD-bejelentkezésekkel
+    - name: Felügyelt példányok biztonsága
       href: sql-database-managed-instance-aad-security-tutorial.md
   - name: Földrajzilag elosztott adatbázis implementálása
     href: sql-database-implement-geo-distributed-database.md
@@ -104,10 +104,10 @@ items:
   - name: Vásárlási modellek
     items:
     - name: Áttekintés
-      href: sql-database-service-tiers.md
+      href: sql-database-purchase-models.md
     - name: vCore-alapú modell
       href: sql-database-service-tiers-vcore.md
-    - name: DTU-modell
+    - name: DTU szolgáltatásszint
       href: sql-database-service-tiers-dtu.md
     - name: Előre fizetés fenntartott kapacitásért
       href: sql-database-reserved-capacity.md
@@ -351,8 +351,8 @@ items:
     items:
     - name: Áttekintés
       href: sql-database-howto-single-database.md
-    - name: Migrálás az SQL Database-be
-      href: sql-database-cloud-migrate.md
+    - name: Migrálás önálló/készletbe vont adatbázisba
+      href: sql-database-single-database-migrate.md
     - name: SQL-adatbázis kezelése migrálás után
       href: sql-database-manage-after-migration.md
     - name: Replikáció konfigurálása
@@ -405,7 +405,7 @@ items:
         href: sql-database-elastic-scale-add-a-shard.md
       - name: Szilánkleképezési problémák javítása
         href: sql-database-elastic-database-recovery-manager.md
-      - name: Szilánkokra osztott adatbázis migrálása
+      - name: Horizontálisan particionált adatbázis migrálása
         href: sql-database-elastic-convert-to-use-elastic-tools.md
       - name: Számlálók létrehozása
         href: sql-database-elastic-database-perf-counters.md
@@ -421,7 +421,7 @@ items:
         href: sql-database-elastic-query-horizontal-partitioning.md
       - name: Különböző sémákkal rendelkező táblákat lefedő lekérdezés
         href: sql-database-elastic-query-vertical-partitioning.md
-    - name: Rugalmas adatbázis-feladatok
+    - name: Rugalmas feladatok
       items:
       - name: Létrehozás és kezelés (PowerShell)
         href: elastic-jobs-powershell.md
@@ -461,9 +461,9 @@ items:
     items:
     - name: Adatbázis másolása az Azure-on belül
       href: sql-database-copy.md
-    - name: Adatbázis importálása BACPAC-ból
+    - name: Adatbázis importálása BACPAC-fájlból
       href: sql-database-import.md
-    - name: Adatbázis exportálása BACPAC-ba
+    - name: Adatbázis exportálása BACPAC-fájlba
       href: sql-database-export.md
     - name: Adatszinkronizálás
       items:
@@ -605,9 +605,9 @@ items:
             href: saas-tenancy-cross-tenant-reporting.md
           - name: Bérlőelemzés
             items:
-            - name: SQL DB-vel
+            - name: SQL Database-szel
               href: saas-tenancy-tenant-analytics.md
-            - name: SQL DW-vel
+            - name: SQL Data Warehouse-szal
               href: saas-tenancy-tenant-analytics-adf.md
         - name: Vészhelyreállítás georedundáns visszaállítással
           href: saas-dbpertenant-dr-geo-restore.md
@@ -714,9 +714,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Rugalmas feladat eltávolítása (elavult)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 9b11a1bd8cc68aabc8881636d5fcdfe5cbaec034
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: bf8a32ede6ce782bc0ff5ac58cd12ba70283289e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960547"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100040"

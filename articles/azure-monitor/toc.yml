@@ -5,7 +5,7 @@ items:
   items:
   - name: Mi az Azure Monitor?
     href: overview.md
-  - name: Védjegyzést érintő változások
+  - name: Terminológiai változások
     href: azure-monitor-rebrand.md
 - name: Gyors útmutatók
   items:
@@ -64,6 +64,12 @@ items:
     href: azure-management.md
   - name: Folyamatos monitorozás
     href: continuous-monitoring.md
+  - name: Naplóadatok elemzése
+    items:
+    - name: Naplólekérdezések
+      href: log-query/log-query-overview.md
+    - name: Naplólekérdezési portálok
+      href: log-query/portals.md
   - name: Adatok monitorozása
     items:
     - name: Metrikák és naplók
@@ -106,18 +112,6 @@ items:
       href: insights/vminsights-overview.md
     - name: Monitorozási megoldások
       href: insights/solutions-inventory.md
-  - name: Adatok elemzése
-    items:
-    - name: Log Analytics
-      href: log-query/log-query-overview.md
-    - name: Naplólekérdezési portálok
-      href: log-query/portals.md
-    - name: OMS-portálváltás
-      items:
-      - name: Áttekintés
-        href: platform/oms-portal-transition.md
-      - name: Gyakori kérdések
-        href: platform/oms-portal-faq.md
   - name: Reagálás incidensekre
     items:
     - name: Riasztások
@@ -138,6 +132,12 @@ items:
     href: visualizations.md
   - name: Partnerintegrációk
     href: platform/partners.md
+  - name: OMS-portálváltás
+    items:
+    - name: Áttekintés
+      href: platform/oms-portal-transition.md
+    - name: Gyakori kérdések
+      href: platform/oms-portal-faq.md
   - name: GYIK
     items:
     - name: Log Analytics
@@ -1023,9 +1023,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Kódminták
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 96f79397b16212fe0897e0d03f57ffb7248118c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: b1d837248f84eb3050788924f4bb0e0077845abe
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767122"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993571"

@@ -15,12 +15,13 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
-ms.openlocfilehash: 0cd3515c9df8cc5588523c51a82e16ee8ecf5e45
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8b7616eed4a17f33ad3b490c625c69cebb32a3f8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747628"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164533"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -49,7 +50,7 @@ Egyszeri jelszó-hitelesítés (OTP) jelentettük B2B vendégfelhasználó, aki 
 
 További információkért lásd: [e-mailben kapott egyszeri jelszót hitelesítés (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) és a blogon [Azure AD-ban megosztási és együttműködési zökkenőmentes bármely felhasználó bármilyen fiókkal](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-makes-sharing-and-collaboration-seamless-for-any-user/ba-p/325949).
 
-### <a name="new-azure-ad-application-proxy-cookie-settings"></a>Új Azure AD-alkalmazásproxy cookie beállításai
+### <a name="new-azure-ad-application-proxy-cookie-settings"></a>Új Application Proxyval kapcsolatos cookie-beállítások az Azure AD-ben
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Alkalmazásproxy  
@@ -67,7 +68,7 @@ Az új cookie-k kapcsolatos további információkért lásd: [cookie-k beállí
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2019"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény - 2019. január
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2019"></a>Új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában – 2019. január
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Vállalati alkalmazások  
@@ -81,7 +82,7 @@ Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrá
 
 ---
 
-### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>Az új Azure AD Identity Protection fejlesztések (nyilvános előzetes verzió)
+### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>Új Azure AD Identity Protection-funkciók (nyilvános előzetes verzió)
 
 **Írja be:** Megváltozott funkció  
 **Szolgáltatás kategóriája:** Identity Protection  
@@ -101,7 +102,7 @@ A fejlesztések kapcsolatos további információkért lásd: [Mi az Azure Activ
 
 ---
 
-### <a name="new-app-lock-feature-for-the-microsoft-authenticator-app-on-ios-and-android-devices"></a>Új alkalmazás-zárolási funkció az iOS és Android rendszerű eszközökön a Microsoft Authenticator alkalmazás
+### <a name="new-app-lock-feature-for-the-microsoft-authenticator-app-on-ios-and-android-devices"></a>Új alkalmazászárolási funkció az iOS-es és az androidos Microsoft Authenticator alkalmazásban
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** A Microsoft Authenticator alkalmazás  
@@ -113,7 +114,7 @@ További információkért lásd: a [– gyakori kérdések a Microsoft Authenti
 
 ---
 
-### <a name="enhanced-azure-ad-privileged-identity-management-pim-export-capabilities"></a>Továbbfejlesztett Azure AD Privileged Identity Management (PIM) képességeket exportálása
+### <a name="enhanced-azure-ad-privileged-identity-management-pim-export-capabilities"></a>Továbbfejlesztett exportálási funkciók az Azure AD Privileged Identity Management (PIM) szolgáltatásban
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Privileged Identity Management  
@@ -127,7 +128,7 @@ További információkért lásd: [PIM az Azure-erőforrások szerepköreihez ta
 
 ## <a name="novemberdecember-2018"></a>2018. november/December
 
-### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>Felhasználók eltávolítva szinkronizálási hatókör nem hosszabb kapcsoló csak felhőalapú fiókok
+### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>A szinkronizálási hatókörből eltávolított felhasználók már nem válthatnak felhőalapú fiókokra
 
 **Írja be:** Rögzített  
 **Szolgáltatás kategóriája:** Felhasználókezelés  
@@ -188,7 +189,7 @@ A séma kapcsolatos további információkért lásd: [értelmezése az Azure AD
 
 ---
 
-### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>A felügyelt machine learning-modell és a kockázati pontszám motor Identity Protection fejlesztései
+### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>A felügyelt gépi tanulási modell és a kockázatipontszám-motor új Identity Protectionfunkciókkal bővült
 
 **Írja be:** Megváltozott funkció  
 **Szolgáltatás kategóriája:** Identity Protection  
@@ -200,7 +201,7 @@ Kockázati észlelések most értékeli ki a felügyelt gépi tanulási modellt,
 
 ---
 
-### <a name="administrators-can-reset-their-own-password-using-the-microsoft-authenticator-app-public-preview"></a>Rendszergazdák állíthatják alaphelyzetbe a saját jelszavát a Microsoft Authenticator alkalmazással (nyilvános előzetes verzió)
+### <a name="administrators-can-reset-their-own-password-using-the-microsoft-authenticator-app-public-preview"></a>A rendszergazdák átállíthatják saját jelszavukat a Microsoft Authenticator alkalmazás használatával (nyilvános előzetes verzió)
 
 **Írja be:** Megváltozott funkció  
 **Szolgáltatás kategóriája:** Önkiszolgáló jelszóátállítás  
@@ -222,7 +223,7 @@ Az Azure AD-rendszergazdák mostantól alaphelyzetbe állíthatja a saját jelsz
 
 ---
 
-### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>Új Azure AD felhőalapú eszköz-rendszergazdai szerepkör (nyilvános előzetes verzió)
+### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>Új szerepkör az Azure AD-ben: Felhőbeli eszközrendszergazda (nyilvános előzetes verzió)
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Eszközregisztráció és -kezelés  
@@ -234,7 +235,7 @@ További információ a szerepkörökről és engedélyekről: [rendszergazdai s
 
 ---
 
-### <a name="manage-your-devices-using-the-new-activity-timestamp-in-azure-ad-public-preview"></a>Az új tevékenység időbélyeg használatával az Azure ad-ben (nyilvános előzetes verzió) az eszközök kezeléséhez
+### <a name="manage-your-devices-using-the-new-activity-timestamp-in-azure-ad-public-preview"></a>Az eszközök új tevékenység-időbélyeg használatával való kezelése az Azure AD-ben (nyilvános előzetes verzió)
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Eszközregisztráció és -kezelés  
@@ -246,7 +247,7 @@ Tisztában vagyunk vele, hogy idővel kell frissíteni, és a szervezet eszköz�
 
 ---
 
-### <a name="administrators-can-require-users-to-accept-a-terms-of-use-on-each-device"></a>A rendszergazdák kötelezhetik a felhasználók számára, hogy fogadja el a használati feltételeket minden eszközön
+### <a name="administrators-can-require-users-to-accept-a-terms-of-use-on-each-device"></a>A rendszergazdák minden eszközön megkövetelhetik a felhasználóktól a használati feltételek elfogadását
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Használati feltételek  
@@ -258,7 +259,7 @@ További információkért lásd: a [eszközszintű feltételek az Azure Active 
 
 ---
 
-### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-a-recurring-schedule"></a>A rendszergazdák konfigurálhatják a használati feltételek lejár egy ismétlődő ütemezés alapján
+### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-a-recurring-schedule"></a>A rendszergazdák ismétlődő ütemezés alapján konfigurálhatják a használati feltételek elévülését
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Használati feltételek  
@@ -283,7 +284,7 @@ További információkért lásd: a [feltételek hozzáadása az Azure Active Di
  
 ---
 
-### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>Új Azure AD Privileged Identity Management (PIM) e-mailt küld az Azure Active Directory-szerepkör
+### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>Új, Azure Active Directory-szerepkörökkel kapcsolatos e-mailek az Azure AD Privileged Identity Management (PIM) szolgáltatásban
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Privileged Identity Management  
@@ -305,7 +306,7 @@ A PIM és a rendelkezésre álló e-mail-értesítések kapcsolatos további inf
 
 ---
 
-### <a name="group-based-licensing-is-now-generally-available"></a>Csoportalapú licencelés már általánosan elérhető
+### <a name="group-based-licensing-is-now-generally-available"></a>A csoportalapú licencelés már általánosan elérhető
 
 **Írja be:** Megváltozott funkció  
 **Szolgáltatás kategóriája:** Egyéb  
@@ -317,7 +318,7 @@ Csoportalapú licenceléssel kapcsolatos további információkért lásd: [Mi a
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2018"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény – 2018. November
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2018"></a>Új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában – 2018. november
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Vállalati alkalmazások  

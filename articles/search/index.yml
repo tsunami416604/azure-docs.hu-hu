@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 88a657e30d3b30825a3fea21aa6e1162e8bc09b4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8caeb6ad79f82ecb86da313cca901cb3a16b6d5c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411152"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004706"
 documentType: LandingData
 title: Azure Search-dokumentáció
 metadata:
@@ -62,7 +62,7 @@ sections:
     - html: <a href="/azure/search/search-indexer-tutorial">Azure SQL Database-tartalom indexelése a .NET-tel</a>
     - html: <a href="/azure/search/search-semi-structured-data">Részben strukturált adatok indexelése az Azure Blob Storage-ban a REST-tel</a>
     - html: <a href="/azure/search/search-synonyms-tutorial-sdk">Szinonimák felvétele az egyenértékű kifejezések eredményeinek visszaadásához</a>
-    - html: <a href="/azure/search/search-autocomplete-tutorial">Automatikus kitöltés hozzáadása a keresőmezőhöz .NET-tel</a>
+    - html: <a href="/azure/search/search-autocomplete-tutorial">Automatikus kitöltés hozzáadása keresőmezőhöz .NET-tel</a>
     - html: <a href="/azure/search/search-get-started-portal">A portál használata indexeléshez és lekérdezésteszteléshez</a>
 - title: Referencia
   items:

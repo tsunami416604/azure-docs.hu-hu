@@ -55,22 +55,55 @@
 ### [Naplózási előzmények oldal](./cloud-partner-portal/portal-tour/cpp-history-page.md)
 ### [Megállapítások oldal](./cloud-partner-portal/portal-tour/cpp-insights-page.md)
 
+
 ## A portál kezelése
 ### [Fiók regisztrálása a Fejlesztői központban](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
-### [Titkos termékváltozatok](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
-### [Útmutatás a keresőmotor optimalizálásához](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
 ### [Közzétevő profil kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
 ### [Felhasználók kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+
+
+## Vállalatvezetés
+### [Útmutatás a keresőmotor optimalizálásához](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
 ### [GDPR-megfelelősége](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
+### [Titkos termékváltozatok](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
+<!--  Under development: 
+### Pricing considerations
+#### Simplified currency pricing
+#### Information on taxes and price
+#### Export-import pricing
+-->
+
+### Érdeklődők kezelése
+#### [Ügyfélérdeklődések konfigurálása](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
+#### [Azure-tábla](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
+#### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
+#### [HTTPS-végpont](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
+#### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
+#### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
+
+### Értékesítői elemzések
+#### [Első lépések](./cloud-partner-portal-orig/si-getting-started.md)
+#### [Újdonságok](./cloud-partner-portal-orig/si-changes.md)
+#### [Webes elemzés](./cloud-partner-portal-orig/web-analytics.md)
+#### [Meghatározások](./cloud-partner-portal-orig/si-insights-definitions-v4.md)
+#### [Elemzések – GYIK](./cloud-partner-portal-orig/si-faqs.md)
+
 
 ## [Ajánlatok a Marketplace-en](./cloud-partner-portal/cpp-marketplace-offers.md)
-
 ### [Ajánlatok kezelése](./cloud-partner-portal/manage-offers/cpp-manage-offers.md)
 #### [Ajánlat létrehozása](./cloud-partner-portal/manage-offers/cpp-create-offer.md)
 #### [Ajánlat közzététele](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) 
 #### [Ajánlat állapotának megtekintése](./cloud-partner-portal/manage-offers/cpp-view-status-offer.md)
 #### [Ajánlat frissítése](./cloud-partner-portal/manage-offers/cpp-update-offer.md)
 #### [Ajánlat törlése](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
+
+### Tesztverzió
+#### [Mi a Tesztverzió?](./cloud-partner-portal-orig/what-is-test-drive.md)
+#### [Azure Resource Manager – Tesztverzió](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
+#### [Szolgáltatott tesztverzió](./cloud-partner-portal-orig/hosted-test-drive.md)
+#### [Logikai alkalmazás – Tesztverzió](./cloud-partner-portal-orig/logic-app-test-drive.md)
+#### [Példák átalakítása a tesztverzióhoz](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
+#### [Marketing és ajánlott eljárások](./cloud-partner-portal-orig/marketing-and-best-practices.md)
 
 ### [Azure-alkalmazásajánlat](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 #### [Előfeltételek](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
@@ -82,6 +115,7 @@
 ##### [Támogatási lap](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
 #### [Technikai eszközök létrehozása](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md)
 #### [Azure-alkalmazásajánlat közzététele](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+#### [Értékelési visszajelzések kezelése](./cloud-partner-portal/azure-applications/cpp-handling-review-feedback.md)
 #### [Létező ajánlat frissítése](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 
 ### [Tanácsadói szolgáltatások](./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)
@@ -195,29 +229,6 @@
 #### [Virtuálisgép-ajánlat közzététele](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
 #### [Létező ajánlat frissítése](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md)
 
-
-## Tesztverzió
-### [Mi a Tesztverzió?](./cloud-partner-portal-orig/what-is-test-drive.md)
-### [Azure Resource Manager – Tesztverzió](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
-### [Szolgáltatott tesztverzió](./cloud-partner-portal-orig/hosted-test-drive.md)
-### [Logikai alkalmazás – Tesztverzió](./cloud-partner-portal-orig/logic-app-test-drive.md)
-### [Példák átalakítása a tesztverzióhoz](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
-### [Marketing és ajánlott eljárások](./cloud-partner-portal-orig/marketing-and-best-practices.md)
-
-## Érdeklődők kezelése
-### [Ügyfélérdeklődések konfigurálása](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
-### [Azure-tábla](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
-### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
-### [HTTPS-végpont](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
-### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
-### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
-
-## Értékesítői elemzések
-### [Első lépések](./cloud-partner-portal-orig/si-getting-started.md)
-### [Újdonságok](./cloud-partner-portal-orig/si-changes.md)
-### [Webes elemzés](./cloud-partner-portal-orig/web-analytics.md)
-### [Meghatározások](./cloud-partner-portal-orig/si-insights-definitions-v4.md)
-### [Elemzések – GYIK](./cloud-partner-portal-orig/si-faqs.md)
 
 ## API-hivatkozás
 ### [Áttekintés](./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md)
