@@ -12,11 +12,13 @@ items:
     displayName: FAQ
     href: faq.md
   expanded: true
-- name: Oktatóanyagok
+- name: Gyors útmutatók
   items:
   - name: Az első kísérlet létrehozása
     displayName: quickstart
     href: create-experiment.md
+- name: Oktatóanyagok
+  items:
   - name: Prediktív megoldás létrehozása
     items:
     - name: 1 – Kísérlet létrehozása
@@ -145,8 +147,6 @@ items:
       href: retrain-machine-learning-model.md
     - name: Programozott újratanítás
       href: retrain-models-programmatically.md
-    - name: Klasszikus webszolgáltatás újratanítása
-      href: retrain-a-classic-web-service.md
     - name: Újratanítás PowerShell-lel
       href: retrain-new-web-service-using-powershell.md
     - name: Meglévő webszolgáltatás újratanítása
@@ -203,9 +203,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Egyéni neurális hálózatok (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: 8835a25811afb9dbf18a1e76b0f8144d1b3b6b10
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ac8621773366d7e6dff26f053172e2831fa2d2a1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001783"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211478"
