@@ -10,20 +10,17 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: fe7825922d9333d058d9a33d5643850c368d3457
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 474355088a339741b8dd1917fb354d55df4990f6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511394"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189191"
 ---
 # <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>Az Azure Machine Learning Studio-modellek újbóli betanítása
 Ebben a forgatókönyvben megtudhatja, hogyan való programozott újratanítás PowerShell használatával az Azure Machine Learning Studio webes szolgáltatás C# és a Machine Learning Batch Execution service.
 
-Ha a modell rendelkezik retrained, a következő forgatókönyvek bemutatják, hogyan a prediktív webszolgáltatásait a modell frissítése:
-
-* Ha telepítette a Machine Learning Web Services portálon klasszikus webszolgáltatás, lásd: [klasszikus webszolgáltatás újratanítása](retrain-a-classic-web-service.md). 
-* Ha egy új webszolgáltatás üzembe helyezte, lásd: [a Machine Learning-kezelési parancsmagok használatával új webszolgáltatás újratanítása](retrain-new-web-service-using-powershell.md).
+Ha a modell rendelkezik retrained, tekintse meg a [a Machine Learning-kezelési parancsmagok használatával új webszolgáltatás újratanítása](retrain-new-web-service-using-powershell.md) megtekintéséhez a prediktív webszolgáltatás a modell frissítése:
 
 A megőrzési folyamat áttekintését lásd: [egy gépi tanulási modellek szoftveres Átképezése](retrain-machine-learning-model.md).
 
@@ -165,9 +162,8 @@ Vizsgálja meg az eredményeket megállapítani, hogy az újonnan betanított mo
 Másolás a *BaseLocation*, *RelativeLocation*, és *SasBlobToken* a kimeneti eredmények között használhatja őket a megőrzési folyamat során.
 
 ## <a name="next-steps"></a>További lépések
-Ha telepítette a prediktív webszolgáltatás kattintva **Web Service telepítése [klasszikus]**, lásd: [klasszikus webszolgáltatás újratanítása](retrain-a-classic-web-service.md).
 
-Ha telepítette a prediktív webszolgáltatás kattintva **[Új] Web Service telepítése**, lásd: [a Machine Learning-kezelési parancsmagok használatával új webszolgáltatás újratanítása](retrain-new-web-service-using-powershell.md).
+ [A Machine Learning-kezelési parancsmagok használatával új webszolgáltatás újratanítása](retrain-new-web-service-using-powershell.md).
 
 <!-- Retrain a New web service using the Machine Learning Management REST API -->
 

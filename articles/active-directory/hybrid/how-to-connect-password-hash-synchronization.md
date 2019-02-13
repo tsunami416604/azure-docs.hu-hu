@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f72cde01884bc5037fff7787af5ec67ec32b03b5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d6d0b3f3d53d6e8204e23ac9aaa8a428b25dc4dd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486869"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56195549"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása
 A cikk ismerteti, hogy az egy felhőalapú Azure Active Directory (Azure AD) példány egy helyszíni Active Directory-példányból származó felhasználói jelszavakat szinkronizálja szükséges információkat.

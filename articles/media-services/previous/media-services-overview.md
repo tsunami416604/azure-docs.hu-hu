@@ -13,22 +13,25 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: aaf2f400d9c620e8087015a9fa1529c3c1b4e633
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8a839d33d66ed434fe04b2c0df742606c11dff2c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003687"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217938"
 ---
-# <a name="azure-media-services-overview-legacy"></a>Az Azure Media Services áttekintése (örökölt)
+# <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
 
 > [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
-> * [2-es verzió](media-services-overview.md)
 > * [3-as verzió](../latest/media-services-overview.md)
+> * [2-es verzió](media-services-overview.md)
 
 Microsoft Azure Media Services (AMS) egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. A Media Services alapjai a REST API-k, amelyek lehetővé teszik különböző videó- és audiotartalmak feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő adatfolyamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 
 A Media Services használatával teljes, átfogó munkafolyamatokat hozhat létre. A munkafolyamatok bizonyos részeihez harmadik féltől származó összetevőket is szabadon felhasználhat. Például egy harmadik féltől származó kódolóval végezhet kódolást. Ezután a Media Services használatával intézheti a feltöltést, a védelmet, a csomagolást és a továbbítást. A tartalmakat továbbíthatja streamként, illetve az ügyfelek igénye szerint is. 
+
+> [!NOTE]
+> A Media Services v2 jelennek meg semmilyen új szolgáltatásokat és funkciókat. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

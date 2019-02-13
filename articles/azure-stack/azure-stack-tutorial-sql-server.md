@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 11/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 983e8b279261d3ff8e5d24c8e3a6f61c5a787e5b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: aba9014e74b8ba0cd1b528cf570d3651950c6d5f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240811"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207058"
 ---
 # <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>Oktatóanyag: SQL-adatbázisok számára elérhetővé az Azure Stack-felhasználók
 
@@ -35,7 +35,7 @@ Azure Stack a felhőalapú rendszergazdák ajánlatok, amelyek lehetővé teszik
 
 ## <a name="deploy-the-sql-server-resource-provider"></a>Az SQL Server erőforrás-szolgáltató üzembe helyezése
 
-A telepítési folyamat részletes leírása a [használata SQL-adatbázisok az Azure Stack-cikk](azure-stack-sql-resource-provider-deploy.md), és a következő fő lépésből áll:
+A telepítési folyamat részletes leírása a [SQL Database használata az Azure Stack-cikk](azure-stack-sql-resource-provider-deploy.md), és a következő fő lépésből áll:
 
 1. [Az SQL erőforrás-szolgáltató üzembe helyezése](azure-stack-sql-resource-provider-deploy.md).
 2. [A telepítés ellenőrzése](azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).

@@ -1,6 +1,6 @@
 ---
-title: A Blob storage adatok áthelyezése az AzCopy - csoportos adatelemzési folyamat
-description: Adatok áthelyezése Azure Blob Storage-tárolóba vagy onnan máshová az AzCopy használatával
+title: Másolja az AzCopy - csoportos adatelemzési folyamat Blob storage-adatokból
+description: Adatok másolása és az Azure Blob Storage, az AzCopy használatával
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3165aad326ad476eb5064f0b99acd8c3f5a036d8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6c0951eb6ad3b7651da97e1a49c5edf5ab55a199
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474700"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209574"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>Adatok importálására és az Azure Blob Storage, az AzCopy használatával
+# <a name="copy-data-to-and-from-azure-blob-storage-using-azcopy"></a>Adatok másolása és az Azure Blob Storage, az AzCopy használatával
 Az AzCopy parancssori segédprogram az feltöltése, letöltése és másolhatja az adatokat, és a Microsoft Azure blob, fájl és a table storage.
 
 Az AzCopy és a további adatokat telepítésével és az Azure platform az utasításokért lásd: [– első lépések az AzCopy parancssori segédprogrammal](../../storage/common/storage-use-azcopy.md).
@@ -65,10 +65,10 @@ Fájlok letöltéséhez egy Azure-blobból, használja a következő parancsot:
     AzCopy /Source:https://<your_account_name>.blob.core.windows.net/<your_container_name>/<your_sub_directory_at_blob>  /Dest:<your_local_directory> /SourceKey:<your_account_key> /Pattern:<file_pattern> /S
 
 
-## <a name="transfer-blobs-between-azure-containers"></a>Azure-tárolók közötti átvitel blobok
-Azure-tárolók közötti átviteléhez a BLOB, a következő paranccsal:
+## <a name="copy-blobs-between-azure-containers"></a>Azure-tárolók közötti blobok másolása
+A blobok Azure-tárolók közötti másolásához használja a következő parancsot:
 
-    # Transferring blobs between Azure containers
+    # Copying blobs between Azure containers
     AzCopy /Source:https://<your_account_name1>.blob.core.windows.net/<your_container_name1>/<your_sub_directory_at_blob1> /Dest:https://<your_account_name2>.blob.core.windows.net/<your_container_name2>/<your_sub_directory_at_blob2> /SourceKey:<your_account_key1> /DestKey:<your_account_key2> /Pattern:<file_pattern> /S
 
     <your_account_name>: your storage account name
@@ -76,7 +76,7 @@ Azure-tárolók közötti átviteléhez a BLOB, a következő paranccsal:
     <your_container_name>: your container name
     <your_sub_directory_at_blob>: the sub directory in the container
     <your_local_directory>: directory of local file system where files to be uploaded from or the directory of local file system files to be downloaded to
-    <file_pattern>: pattern of file names to be transferred. The standard wildcards are supported
+    <file_pattern>: pattern of file names to be copied. The standard wildcards are supported
 
 
 ## <a name="tips-for-using-azcopy"></a>Tippek az AzCopy használatával

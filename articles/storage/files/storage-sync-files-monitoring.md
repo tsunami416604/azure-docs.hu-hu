@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 032b39846d19e34f2eb87c1311feeb4bb890cb24
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a14b0f2b01a0566a47cbcb02ee4315adcba9a90f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467458"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200802"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
@@ -29,7 +29,7 @@ Az Azure Portalon megtekintheti a regisztrált kiszolgáló állapot, a kiszolg�
 
 ### <a name="storage-sync-service"></a>Társzinkronizálási szolgáltatás
 
-Regisztrált kiszolgáló és a kiszolgálói végpont állapotának megtekintéséhez nyissa meg a Storage Sync Service az Azure Portalon. Regisztrált kiszolgáló állapotának ellenőrzése a regisztrált kiszolgálók paneljén megtekinthető. A kiszolgáló végpont állapotának ellenőrzése a szinkronizálási csoportok paneljén megtekinthető.
+Regisztrált kiszolgáló állapota, a kiszolgáló végpontonkénti állapotot és a mérőszámok megtekintéséhez nyissa meg a Storage Sync Service az Azure Portalon. Regisztrált kiszolgáló állapotának ellenőrzése a regisztrált kiszolgálók paneljén megtekinthető. A kiszolgáló végpont állapotának ellenőrzése a szinkronizálási csoportok paneljén megtekinthető.
 
 Registered Server Health
 - Ha a regisztrált kiszolgáló állapota Online, a kiszolgáló sikeresen kommunikálnak a szolgáltatással.
@@ -38,6 +38,23 @@ Registered Server Health
 Server Endpoint Health
 - A kiszolgálói végpont állapota a portálon a szinkronizálási naplózott a telemetriai adatok eseménynaplójában a kiszolgálón (9102 és 9302-azonosító) alapul. A szinkronizálási munkamenet (például hiba megszakítva) egy átmeneti hiba miatt nem sikerül, ha a előfordulhat, hogy továbbra is megjelenítése kifogástalan állapotú, a portál szinkronizálási, mindaddig, amíg a jelenlegi szinkronizálási munkamenet, hogy így a folyamat (Event ID 9302 azt határozza meg, ha a fájlok vannak alkalmazva). További információ a következő dokumentációban tekintheti meg: [Rendszerállapot szinkronizálni](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) & [szinkronizálása folyamatban](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 - Ha a portálon láthatók onnan, és nincs folyamatban szinkronizálás szinkronizálási hibát, ellenőrizze a [hibaelhárítási dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) útmutatást.
+
+Mérőszámok
+- A következő metrikák teljesítményobjektumok a Storage Sync Service portálon:
+
+  | Metrika neve | Leírás | Portál blade(s) | 
+  |-|-|-|
+  | Szinkronizált bájt | Átvitt adatok (feltöltési és letöltési) mérete | Szinkronizálási csoport, a kiszolgálói végpont |
+  | A felhő rétegezési visszaírási | Idézni adatok mérete | Regisztrált kiszolgálók |
+  | Nem szinkronizált fájlok | Fájlok, amelyek nem szinkronizálása száma | Kiszolgálói végpont |
+  | Fájlok szinkronizálása | Fájlok száma (feltöltési és letöltési) átvitele | Szinkronizálási csoport, a kiszolgálói végpont |
+  | Kiszolgálói szívverés | A kiszolgálótól kapott szívverések száma | Regisztrált kiszolgálók |
+
+- További tudnivalókért lásd: [Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor) szakaszban. 
+
+  > [!Note]  
+  > A Storage Sync Service portálon diagramnak egy időtartomány 24 óra. Különböző időtartományok vagy méretek megtekintéséhez használja az Azure Monitor.
+
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
@@ -52,7 +69,7 @@ A következő metrikák az Azure File Sync az Azure monitorban érhetők el:
 | Szinkronizált bájt | Átvitt adatok (feltöltési és letöltési) mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
 | A felhő rétegezési visszaírási | Idézni adatok mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>A dimenzió alkalmazható: Kiszolgáló neve |
 | Nem szinkronizált fájlok | Fájlok, amelyek nem szinkronizálása száma.<br><br>Szervezeti egység: Darabszám<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
-| Fájlok szinkronizálása | Feltöltött és letöltött fájlok száma.<br><br>Szervezeti egység: Darabszám<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
+| Fájlok szinkronizálása | Fájlok száma (feltöltési és letöltési) át.<br><br>Szervezeti egység: Darabszám<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
 | Kiszolgálói szívverés | A kiszolgálótól kapott szívverések száma.<br><br>Szervezeti egység: Darabszám<br>Aggregation Type: Maximum<br>A dimenzió alkalmazható: Kiszolgáló neve |
 | Szinkronizálási munkamenet eredménye | Munkamenet eredmény szinkronizálása (1 = sikeres szinkronizálási munkamenet; 0 = sikertelen szinkronizálási munkamenet)<br><br>Szervezeti egység: Darabszám<br>Az összesítés típusa: Maximum<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
 

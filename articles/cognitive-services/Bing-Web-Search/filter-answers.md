@@ -9,18 +9,18 @@ ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 01/12/2017
+ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 945f89633060df7f57aa937be392149340acc21d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 26c38c34543683a3fc450d3a0ae932d8bd30dc98
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856002"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199493"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>A keresési válasz tartalmazza a válaszokat szűrése  
 
-Előfordulhat, hogy a webes, a Bing adja vissza, amelyek szerinte az összes tartalma fontos legyen a keresés. Például ha a keresési lekérdezés "dinghies induló utazó +", a válasz tartalmazhat a következő választ:
+Előfordulhat, hogy a webes, a Bing a keresés megtalálja az összes kapcsolódó tartalom adja vissza. Például ha a keresési lekérdezés "dinghies induló utazó +", a válasz tartalmazhat a következő választ:
 
 ```json
 {
@@ -44,8 +44,16 @@ Előfordulhat, hogy a webes, a Bing adja vissza, amelyek szerinte az összes tar
     }
 }    
 ```
+A tartalom (például képek, videók és hírek) esetén kap típusú használatával szűrheti a [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) lekérdezési paraméter. Ha a Bing kapcsolódó tartalmat a megadott válaszok talált, a lesz visszaadva. A válasz szűrő az válaszokat vesszővel tagolt listája. 
 
-Ha érdeklik az adott típusú tartalmat, például képek, videók és hírek, csak ezek a válaszok használatával kérheti a [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) lekérdezési paraméter. A Bing kapcsolódó tartalmat a megadott válaszok talált, ha a Bing visszaadja. A válasz szűrő az válaszokat vesszővel tagolt listája. A következő bemutatja, hogyan `responseFilter` a kérelem képek, videók és hírek, hajózási dinghies. A lekérdezési karakterláncot kódol, amikor a vesszők módosítani: %2, C.  
+Kizárandó konkrét típusú tartalmakra, például képeket, a válasz, hozzáadhat egy `-` karakter elejéhez a `responseFilter` értéket. Kizárt típusok elkülönítheti a vessző (`,`). Példa:
+
+```
+&responseFilter=-images,-videos
+```
+
+
+A következő bemutatja, hogyan `responseFilter` a kérelem képek, videók és hírek, hajózási dinghies. A lekérdezési karakterláncot kódol, amikor a vesszők módosítani: %2, C.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&responseFilter=images%2Cvideos%2Cnews&mkt=en-us HTTP/1.1  
@@ -57,7 +65,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Az alábbiakban az előző lekérdezésre adott válasz látható. Ahogy láthatjuk Bing nem található vonatkozó videó- és hírkeresési eredményeket, így a válasz nem tartalmazza azokat.
+Az alábbiakban az előző lekérdezésre adott válasz látható. A Bing nem található a releváns videókat és hírkeresési eredményeket, mert a válasz nem tartalmazza azokat.
 
 ```json
 {
@@ -80,12 +88,6 @@ Az alábbiakban az előző lekérdezésre adott válasz látható. Ahogy láthat
         }
     }
 }
-```
-
-A válaszban szereplő tartalmak, képek, például adott típusú kizárni kívánt, is kizárhat és a kötőjel (mínusz) előtag responseFilter értékre. Külön kizárt típusok vesszővel válasszon el:
-
-```
-&responseFilter=-images,-videos
 ```
 
 Bing nem adott vissza az előző válaszban kapott a video- és hírkeresési eredményeket, bár ez nem jelenti azt, hogy a videó és hír tartalom nem létezik. Egyszerűen azt jelenti, hogy az oldal nem tartalmazza azokat. Azonban ha Ön [oldal](./paging-webpages.md) keresztül további találatok, a következő oldalakhoz valószínűleg tartalmazhat őket. Is Ha felhívja a [Video Search API](../bing-video-search/search-the-web.md) és [News Search API](../bing-news-search/search-the-web.md) végpontok közvetlenül, a válasz valószínűleg tartalmazza egyrészt az eredményeket.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6e0641f2d9427133f951ef63720b4efdac4defe5
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 60bed4786b61bc96b918511b63ae89daa1cba1c4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409054"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217428"
 ---
 # <a name="use-apache-hive-with-apache-hadoop-on-hdinsight-with-remote-desktop"></a>Az Apache Hive használata a távoli asztalon keresztül a HDInsight az Apache Hadoop
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -103,10 +103,7 @@ Egyéb módjaival kapcsolatos további információk a HDInsight Hadoop-keretren
 * [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 * [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
 
-Ha Tez Hive-val használ, tekintse meg a hibakeresési információkat a következő dokumentumokat:
-
-* [A Windows-alapú HDInsight az Apache Tez felhasználói felület használata](../hdinsight-debug-tez-ui.md)
-* [A Linux-alapú HDInsight az Apache Ambari Tez nézet használata](../hdinsight-debug-ambari-tez-view.md)
+Tez Hive-val használja, ha a hibakeresési információkat a következő dokumentumban talál: [Az Apache Ambari Tez nézetben jelenítheti meg a Linux-alapú HDInsight](../hdinsight-debug-ambari-tez-view.md).
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 

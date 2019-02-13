@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az GlassFrog |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező GlassFrog |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és GlassFrog között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 1fdd1e8acf446ba3e409e2ff0bf9ca18f581c299
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d6bdc9f2214f8a23ffd1a126905faf00f2fc4264
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431013"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199633"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>Oktatóanyag: Azure Active Directory-integráció az GlassFrog
+# <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező GlassFrog
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan GlassFrog integrálása az Azure Active Directory (Azure AD).
 
@@ -149,7 +150,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-glassfrog-test-user"></a>GlassFrog tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű GlassFrog hoz létre. Együttműködve [GlassFrog támogatási csapatának](https://support.glassfrog.com/support/solutions/9000107654) a felhasználók hozzáadása az GlassFrog platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű GlassFrog hoz létre. Együttműködve [GlassFrog támogatási csapatának](https://support.glassfrog.com/support/solutions/9000107654) a felhasználók hozzáadása az GlassFrog platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

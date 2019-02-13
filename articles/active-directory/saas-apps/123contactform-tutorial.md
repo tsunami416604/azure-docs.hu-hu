@@ -4,251 +4,222 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 5211910a-ab96-4709-959a-524c4d57c43e
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/23/2017
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b91a3e2a100c9c355dd3e47851f95c4d3884b51a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2a91c5c67706c648af7eacedbc8093d5db8c6a55
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195324"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172348"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező 123ContactForm
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan 123ContactForm integrálása az Azure Active Directory (Azure AD).
-
 123ContactForm integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, hogy ki férhet hozzá 123ContactForm Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a 123ContactForm (egyszeri bejelentkezés) az Azure AD-fiókjukat
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
+* Szabályozhatja, ki férhet hozzá 123ContactForm Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve 123ContactForm (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 123ContactForm az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy 123ContactForm egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* 123ContactForm egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. 123ContactForm hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* Támogatja a 123ContactForm **SP és IDP** által kezdeményezett egyszeri bejelentkezés
+* Támogatja a 123ContactForm **igény szerinti** felhasználók átadása
 
 ## <a name="adding-123contactform-from-the-gallery"></a>123ContactForm hozzáadása a katalógusból
+
 Az Azure AD integrálása a 123ContactForm konfigurálásához hozzá kell 123ContactForm a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
 **123ContactForm hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![Alkalmazások][2]
-    
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Alkalmazások][3]
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **123ContactForm**.
+4. A Keresés mezőbe írja be a **123ContactForm**válassza **123ContactForm** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/123contactform-tutorial/tutorial_123contactform_search.png)
+     ![Az eredmények listájában 123ContactForm](common/search-new-app.png)
 
-5. Az eredmények panelen válassza ki a **123ContactForm**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/123contactform-tutorial/tutorial_123contactform_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban konfigurálja, és a teszt "Britta Simon." nevű felhasználó 123ContactForm az Azure AD egyszeri bejelentkezés tesztelése
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó 123ContactForm mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó 123ContactForm hivatkozás kapcsolata kell létrehozni.
-
-123ContactForm, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az 123ContactForm nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó 123ContactForm hivatkozás kapcsolata kell létrehozni.
 
 Az Azure AD egyszeri bejelentkezés az 123ContactForm tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[123ContactForm tesztfelhasználó létrehozása](#creating-a-123contactform-test-user)**  – egy megfelelője a Britta Simon a felhasználó Azure ad-ben reprezentációja kapcsolódó 123ContactForm rendelkeznie.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[123ContactForm egyszeri bejelentkezés konfigurálása](#configure-123contactform-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre 123ContactForm tesztfelhasználót](#create-123contactform-test-user)**  – egy megfelelője a Britta Simon a felhasználó Azure ad-ben reprezentációja kapcsolódó 123ContactForm rendelkeznie.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és 123ContactForm alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés 123ContactForm, hajtsa végre az alábbi lépéseket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés 123ContactForm, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **123ContactForm** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **123ContactForm** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/123contactform-tutorial/tutorial_123contactform_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-3. Az a **123ContactForm tartomány és URL-címek** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató által kezdeményezett mód**, hajtsa végre az alábbi lépéseket:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/123contactform-tutorial/url1.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
 
-4. Ha az alkalmazás a konfigurálni kívánt **SP által kezdeményezett mód**, hajtsa végre az alábbi lépéseket:
+    ![123ContactForm tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/123contactform-tutorial/url2.png)
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
 
-    a. Kattintson a **speciális URL-beállítások megjelenítése** lehetőség
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
 
-    b. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-cím: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
+5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    > [!NOTE] 
+    ![123ContactForm tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
+
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
+
+    > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse ezeket a tényleges URL-címek és az oktatóanyag későbbi részében ismertetett azonosító értékét kell.
-    
-5. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/123contactform-tutorial/tutorial_123contactform_certificate.png) 
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-6. Kattintson a **mentése** gombra.
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/123contactform-tutorial/tutorial_general_400.png)
+7. Az a **123ContactForm beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
-7. Az egyszeri bejelentkezés konfigurálása **123ContactForm** oldalán, lépjen a [ https://www.123contactform.com/form-2709121/ ](https://www.123contactform.com/form-2709121/) , és hajtsa végre az alábbi lépéseket:
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure Ad Identifier
+
+    c. Kijelentkezési URL
+
+### <a name="configure-123contactform-single-sign-on"></a>123ContactForm egyszeri bejelentkezés konfigurálása
+
+1. Az egyszeri bejelentkezés konfigurálása **123ContactForm** oldalán, lépjen a [ https://www.123contactform.com/form-2709121/ ](https://www.123contactform.com/form-2709121/) , és hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/123contactform-tutorial/submit.png) 
 
-    a. Az a **E-mail** szövegmezőbe írja be az e-mail-címe a felhasználói azaz **BrittaSimon@Contoso.com**.
+    a. Az a **E-mail** szövegmezőbe írja be az e-mail a felhasználó például **BrittaSimon@Contoso.com**.
 
-    b. Kattintson a **feltöltése** , és keresse meg a metaadatainak XML-fájl, amely már letöltötte az Azure Portalról.
+    b. Kattintson a **feltöltése** , és keresse meg a letöltött Azure Portalról letöltött metaadatainak XML-fájl.
 
     c. Kattintson a **KÜLDÉS űrlap**.
 
-8. Az a **Microsoft Azure AD egyszeri bejelentkezés – alkalmazás beállításainak konfigurálása** hajtsa végre az alábbi lépéseket:
-    
+2. Az a **Microsoft Azure AD egyszeri bejelentkezés – alkalmazás beállításainak konfigurálása** hajtsa végre az alábbi lépéseket:
+
     ![Egyszeri bejelentkezés konfigurálása](./media/123contactform-tutorial/url3.png)
 
-    a. Ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató által kezdeményezett mód**, másolása a **azonosító** a példány értékét, és illessze be a **azonosító** szövegmezőjébe  **123ContactForm tartomány és URL-címek** szakaszban az Azure Portalon.
-    
-    b. Ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató által kezdeményezett mód**, másolása a **válasz URL-cím** a példány értékét, és illessze be a **válasz URL-cím** szövegmezőjébe  **123ContactForm tartomány és URL-címek** szakaszban az Azure Portalon.
+    a. Ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató által kezdeményezett mód**, másolása a **azonosító** a példány értékét, és illessze be a **azonosító** szövegmezőjébe  **Alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-    c. Ha az alkalmazás a konfigurálni kívánt **SP által kezdeményezett mód**, másolása a **SIGN-ON URL** a példány értékét, és illessze be a **bejelentkezési URL-** szövegmezőjébe  **123ContactForm tartomány és URL-címek** szakaszban az Azure Portalon.
+    b. Ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató által kezdeményezett mód**, másolása a **válasz URL-cím** a példány értékét, és illessze be a **válasz URL-cím** szövegmezőjébe  **Alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    c. Ha az alkalmazás a konfigurálni kívánt **SP által kezdeményezett mód**, másolása a **SIGN-ON URL** a példány értékét, és illessze be a **bejelentkezési URL-** szövegmezőjébe  **Alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-![Az Azure AD-felhasználó létrehozása][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/123contactform-tutorial/create_aaduser_01.png) 
+    ![Új felhasználó gomb](common/new-user.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/123contactform-tutorial/create_aaduser_02.png) 
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/123contactform-tutorial/create_aaduser_03.png) 
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/123contactform-tutorial/create_aaduser_04.png) 
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="creating-a-123contactform-test-user"></a>123ContactForm tesztfelhasználó létrehozása
 
-Alkalmazás támogatja a csak az idő felhasználókiépítés, miután a felhasználók hitelesítésére, az alkalmazás automatikusan létrejön.
-
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejelentkezés 123ContactForm való hozzáférést.
 
-![Felhasználó hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **123ContactForm**.
 
-**Britta Simon rendel 123ContactForm, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201] 
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 2. Az alkalmazások listájában jelölje ki a **123ContactForm**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/123contactform-tutorial/tutorial_123contactform_app.png) 
+    ![Az alkalmazások listáját a 123ContactForm hivatkozásra](common/all-applications.png)
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][203]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+
+### <a name="create-123contactform-test-user"></a>123ContactForm tesztfelhasználó létrehozása
+
+Ebben a szakaszban egy Britta Simon nevű felhasználó 123ContactForm jön létre. 123ContactForm támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az 123ContactForm, egy új jön létre a hitelesítés után.
+
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a 123ContactForm csempére kattint, meg kell lekérése automatikusan bejelentkezett az 123ContactForm alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a 123ContactForm csempére kattint, meg kell lehet automatikusan bejelentkezett a 123ContactForm, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/123contactform-tutorial/tutorial_general_01.png
-[2]: ./media/123contactform-tutorial/tutorial_general_02.png
-[3]: ./media/123contactform-tutorial/tutorial_general_03.png
-[4]: ./media/123contactform-tutorial/tutorial_general_04.png
-
-[100]: ./media/123contactform-tutorial/tutorial_general_100.png
-
-[200]: ./media/123contactform-tutorial/tutorial_general_200.png
-[201]: ./media/123contactform-tutorial/tutorial_general_201.png
-[202]: ./media/123contactform-tutorial/tutorial_general_202.png
-[203]: ./media/123contactform-tutorial/tutorial_general_203.png
-
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
