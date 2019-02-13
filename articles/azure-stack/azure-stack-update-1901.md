@@ -16,12 +16,12 @@ ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 0865227a05d5cb25a44114fc053f61b8f70ffb94
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 616854e89a95eb83508e30099a663f0017e63784
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100091"
+ms.locfileid: "56115708"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 frissítése
 
@@ -89,7 +89,7 @@ A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az A
          Kompatibilitástörő változás: Ügyféltanúsítvány-alapú titkosítási mód biztonsági mentési módosításait. A szimmetrikus kulcsok támogatása elavult.  
    * **Azs.Fabric.Admin Module**  
          `Get-AzsInfrastructureVolume` elavult. Új parancsmag `Get-AzsVolume`.  
-         `Get-AzsStorageSystem` elavult.  Új parancsmag új `Get-AzsStorageSubSystem`.  
+         `Get-AzsStorageSystem` elavult.  Új parancsmag `Get-AzsStorageSubSystem`.  
          `Get-AzsStoragePool` elavult. A `StorageSubSystem` objektum tartalmazza a kapacitás tulajdonság.  
    * **Azs.Compute.Admin Module**  
          Hibajavítás – `Add-AzsPlatformImage`, `Get-AzsPlatformImage`: Hívó `ConvertTo-PlatformImageObject` csak az a sikerhez vezető utat.  
@@ -134,7 +134,7 @@ A frissített modulok referenciája áttekintéséhez lásd: [Azure Stack modulh
 - Kijavítva a Managed Disks kvóták értékének beállításakor [kvótatípusok számítási](azure-stack-quota-types.md#compute-quota-types) 0, egyenértékű, 2048 GiB alapértelmezett értéke. A nulla kvótaérték most tiszteletben tartását.
 
 <!-- 2724873 - IS --> 
-- Kijavítva a PowerShell-parancsmagok használata esetén **Start-AzsScaleUnitNode** vagy **Stop-AzsScaleunitNode** kezelheti a skálázási egység, amelyben indítása és leállítása a skálázási egység az első kísérlet sikertelen lehet.
+- Kijavítva a PowerShell-parancsmagok használata esetén **Start-AzsScaleUnitNode** vagy **Stop-AzsScaleUnitNode** kezelheti a skálázási egység, amelyben indítása és leállítása a skálázási egység az első kísérlet sikertelen lehet.
 
 <!-- 2724961- IS ASDK --> 
 - Javítva lett egy probléma, amely regisztrálva a **Microsoft.Insight** az előfizetés beállításait, az erőforrás-szolgáltató és a létrehozott Windows virtuális gép vendég operációs rendszer diagnosztikai engedélyezve van, de a virtuális gépek – áttekintés oldalra a processzorhasználat diagram találtak a mérőszámadatokat. Az adatok most már helyesen jelenik meg.

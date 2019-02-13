@@ -4,7 +4,7 @@ description: Ez a cikk az Azure operational security áttekintést nyújt.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 478228ccb12fbfe3ca527bf4d16af05735b7ba92
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238539"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116473"
 ---
 # <a name="azure-operational-security-overview"></a>Az Azure működési biztonság – áttekintés
 
@@ -139,15 +139,15 @@ A Network Watcher leegyszerűsíti, figyelése és diagnosztizálása az Azure-h
 
 A Network Watcher jelenleg a következő képességekkel rendelkezik:
 
-- [Topológia](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): csatlakozás és a egy erőforráscsoportba tartozó hálózati erőforrások egymáshoz rendelését különböző nézetét jeleníti meg.
-- [Változó csomagrögzítés](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): rögzíti a csomagadatok adataikkal egy virtuális gépet. A fejlett szűrési lehetőségek és finomhangolt vezérlők, mint például az idő- és méretkorlátok megadásának képessége, sokoldalúságot biztosít. A csomag adatok tárolhatók a blob-tárolóban, vagy a helyi lemezen .cap formátumban.
-- [IP-folyamat ellenőrzésével](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): 5-ször több csomag paramétereit az adatfolyam információit (cél IP-cím, forrásoldali IP-cím, Célport, forrásoldali portszám és protokoll) alapján ellenőrzi, hogy egy csomag engedélyezett vagy tiltott. Ha egy biztonsági csoportot a csomag megtagadja, a szabály és a csoportot, amely a csomagot adja vissza.
-- [Következő Ugrás](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): meghatározza, hogy a következő ugrás a csomagok irányítása a Azure-beli hálózati hálóban, így diagnosztizálhatja bármely helytelenül van konfigurálva, felhasználó által megadott útvonalakat.
-- [Biztonsági csoport nézet](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): beolvassa a hatékony és alkalmazott biztonsági szabályok, amelyek érvényesek a virtuális gép.
-- [Hálózati biztonsági csoportok folyamatnaplóit](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview): engedélyezi a forgalmat, engedélyezett vagy tiltott a biztonsági szabályok a csoportban található naplók rögzítését. Határozza meg a folyamat 5-ször több információt: forrás IP, cél IP-cím, forrásoldali portszám, céloldali port és protokoll.
-- [Virtuális hálózati átjáró és a kapcsolat hibaelhárítási](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): lehetővé teszi a virtuális hálózati átjárók és kapcsolatok hibaelhárítása.
-- [Hálózati előfizetési korlátozásait](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): lehetővé teszi a hálózati erőforrás-használati korlátozások megtekintését.
-- [Diagnosztikai naplók](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): egytáblás engedélyezheti vagy tilthatja le a hálózati erőforrásokat egy erőforráscsoportba tartozó diagnosztikai naplókat.
+- [Topológia](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): A különböző csatlakozás és a egy erőforráscsoportba tartozó hálózati erőforrások egymáshoz rendelését nézetét jeleníti meg.
+- [Változó csomagrögzítés](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): Rögzíti a csomagadatok adataikkal egy virtuális gépet. A fejlett szűrési lehetőségek és finomhangolt vezérlők, mint például az idő- és méretkorlátok megadásának képessége, sokoldalúságot biztosít. A csomag adatok tárolhatók a blob-tárolóban, vagy a helyi lemezen .cap formátumban.
+- [IP-folyamat ellenőrzésével](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): Ellenőrzi, hogy egy csomag engedélyezett vagy megtagadott forgalmi adatok (cél IP-cím, forrásoldali IP-cím, Célport, forrásoldali portszám és protokoll) 5-ször több csomag paraméterei alapján. Ha egy biztonsági csoportot a csomag megtagadja, a szabály és a csoportot, amely a csomagot adja vissza.
+- [A következő Ugrás](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Meghatározza, hogy a csomagok irányítása az Azure-beli hálózati hálóban, így bármely helytelenül konfigurált felhasználó által megadott útvonalak diagnosztizálhatja a következő ugrás.
+- [Biztonsági csoport nézet](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): A hatékony és alkalmazott biztonsági szabályok, amelyek érvényesek a virtuális gép beolvasása.
+- [Hálózati biztonsági csoportok folyamatnaplóit](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview): Engedélyezze a forgalmat, engedélyezett vagy tiltott a biztonsági szabályok a csoportban található naplók rögzítését. Határozza meg a folyamat 5-ször több információt: forrás IP, cél IP-cím, forrásoldali portszám, céloldali port és protokoll.
+- [Virtuális hálózati átjáró és a kapcsolat hibaelhárítási](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Lehetővé teszi a virtuális hálózati átjárók és kapcsolatok hibaelhárítása.
+- [Hálózati előfizetési korlátozásait](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Lehetővé teszi, hogy a hálózati erőforrás-használati korlátozások megtekintése.
+- [Diagnosztikai naplók](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Egytáblás, engedélyezheti vagy tilthatja le a hálózati erőforrásokat egy erőforráscsoportba tartozó diagnosztikai naplókat.
 
 További információkért lásd: [Network Watcher konfigurálása](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
 

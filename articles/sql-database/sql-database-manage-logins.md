@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 436dbccfe8d5b732bc64b58ff79dc772ac8b2bce
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 34c7d431815ae7a9452bb0703cde18050d38bdb7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964185"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164617"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Szabályozása és adatbázis-hozzáférés biztosítása az SQL Database és SQL Data warehouse-bA
 
@@ -87,7 +87,7 @@ A korábban már tárgyalt kiszolgálószintű rendszergazdai szerepkörökön k
 Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerepkör tagjai létrehozhatnak új adatbázisokat. A szerepkör használatához hozzon létre egy felhasználót az `master` adatbázisban, majd adja hozzá a felhasználót a **dbmanager** adatbázis-szerepkörhöz. Adatbázis létrehozásához a felhasználónak SQL Server-bejelentkezésen alapuló felhasználónak kell lennie a master adatbázisban, vagy Azure Active Directory-felhasználón alapuló tartalmazottadatbázis-felhasználónak kell lennie.
 
 1. Egy rendszergazdai fiókkal csatlakozzon a master adatbázishoz.
-2. Nem kötelező lépés: Hozzon létre egy SQL Server-hitelesítési bejelentkezést használ az [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) utasítást. Mintautasítás:
+2. Hozzon létre egy SQL Server-hitelesítési bejelentkezést használ az [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) utasítást. Mintautasítás:
 
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';

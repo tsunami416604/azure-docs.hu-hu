@@ -14,26 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 58db410fe5a6c2b081507eae2ccad3a258ec0864
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 226fea2df2b4a5d6dd428c1d28d8c09f47bca7de
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427590"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162288"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy támadási azonban és sok további.  Ez a cikk egy szinopszist, Service fabric biztosítja, és ismerteti az alapfogalmakat, programozási modelleket, alkalmazás-életciklus során, tesztelés, fürtök és az állapotmonitorozást. Olvassa el a [áttekintése](service-fabric-overview.md) és [Mik azok a mikroszolgáltatások?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk egy átfogó tartalmak listája nem tartalmaz, de a hivatkozások áttekintése és első lépéseket bemutató cikkekben a Service Fabric minden területéhez. 
 
 ## <a name="core-concepts"></a>Alapfogalmak
 [A Service Fabric terminológiája](service-fabric-technical-overview.md), [alkalmazásmodell](service-fabric-application-model.md), és [támogatott programozási modellek](service-fabric-choose-framework.md) további fogalmakat és leírások, de az alapokat az alábbiakban.
-
-<table><tr><th>Alapfogalmak</th><th>Tervezési idő</th><th>Futási idő</th></tr>
-<tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
-<img src="./media/service-fabric-content-roadmap/CoreConceptsVid.png" WIDTH="240" HEIGHT="162"></a></td>
-<td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tlkI046yC_2906218965"><img src="./media/service-fabric-content-roadmap/RunTimeVid.png" WIDTH="240" HEIGHT="162"></a></td>
-<td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=x7CVH56yC_1406218965">
-<img src="./media/service-fabric-content-roadmap/RunTimeVid.png" WIDTH="240" HEIGHT="162"></a></td></tr>
-</table>
 
 ### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>Tervezési idő: alkalmazástípus, szolgáltatástípus, virtuálisalkalmazás-csomag és a jegyzékfájl, szolgáltatáscsomag és manifest
 Az alkalmazástípus hozzárendeli egy gyűjteményhez típusú szolgáltatás neve/verziója. Van definiálva: egy *ApplicationManifest.xml* fájlt, amely egy alkalmazás-csomag könyvtárában van beágyazva. Az alkalmazáscsomag majd át lesznek másolva a Service Fabric-fürt lemezképtárolójába. Tento typ aplikace, majd futtatja a fürtön belül, amely ezután létrehozhat egy elnevezett alkalmazást. 
@@ -106,10 +98,6 @@ Mivel az eltérő platformokhoz való az alkalmazás a Service Fabric általába
 
 A teljes alkalmazás-életciklus felügyelhetők [PowerShell-parancsmagok](/powershell/module/ServiceFabric/), [CLI-parancsok](service-fabric-sfctl.md), [C# API-kat](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java API-k](/java/api/overview/azure/servicefabric), és [ REST API-k](/rest/api/servicefabric/). Is beállíthat eszközök használatával, mint például a folyamatos integráció/folyamatos üzembe helyezési folyamatok [Azure folyamatok](service-fabric-set-up-continuous-integration.md) vagy [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
 
-Az alábbi Microsoft Virtual Academy-videó ismerteti, hogyan lehet az alkalmazások életciklus-kezelése: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
-<img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
-
 ## <a name="test-applications-and-services"></a>Alkalmazások és szolgáltatások tesztelése
 Valóban felhőléptékű-szolgáltatások létrehozását, rendkívül fontos, hogy az alkalmazások és szolgáltatások képes elviselni valós hibák ellenőrzéséhez. A Fault Analysis Service tesztelése a Service Fabric beépített szolgáltatás lett tervezve. Az a [Fault Analysis Service](service-fabric-testability-overview.md), jelentéssel bíró hibák idéz elő, és futtassa a teljes teszt forgatókönyvek az alkalmazások ellen. Ezek a hibák és a forgatókönyvek gyakorolja, és ellenőrizze a számos állapotok és átmenetek, amely egy szolgáltatás teljes élettartamuk, az összes olyan ellenőrzött, megbízható és konzisztens módon fog tapasztalni.
 
@@ -129,10 +117,6 @@ Valóban felhőléptékű-szolgáltatások létrehozását, rendkívül fontos, 
 A [Service Fabric-fürt](service-fabric-deploy-anywhere.md) virtuális és fizikai gépek hálózaton keresztül csatlakozó készlete, amelyen mikroszolgáltatásokat helyezhet üzembe és felügyelhet. A fürtök több ezer gépre skálázhatók. Egy számítógép vagy virtuális Gépet, amely egy fürt része egy fürt csomópontja nevezzük. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzőkkel, például elhelyezési tulajdonságokkal rendelkeznek. Minden számítógép vagy virtuális gép rendelkezik egy automatikusan induló szolgáltatás `FabricHost.exe`, amelyek rendszerindítási követően elindul, és elindítja a két végrehajtható fájlok: Fabric.exe és FabricGateway.exe. E két végrehajtható fájlok a csomóponton alkotják. Tesztelési forgatókönyvek, több példányát futtatja egy egyetlen gépen vagy a virtuális gép több csomópont is üzemeltethet `Fabric.exe` és `FabricGateway.exe`.
 
 Service Fabric-fürtök a Windows Server vagy Linux rendszerű virtuális vagy fizikai gépeken hozható létre. Tudja üzembe helyezéséhez és a Service Fabric-alkalmazások futtatása minden környezetben, összekapcsolt Windows Server vagy Linux rendszerű számítógépek esetében: a helyszínen, a Microsoft Azure-ban, vagy bármely más szolgáltatónál.
-
-Az alábbi Microsoft Virtual Academy-videó ismerteti a Service Fabric-fürtök: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
-<img src="./media/service-fabric-content-roadmap/ClusterOverview.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ### <a name="clusters-on-azure"></a>Fürtök az Azure-on
 Azure-ban futó Service Fabric-fürtök integrációt biztosít az egyéb Azure-funkciók és szolgáltatások, ami lehetővé teszi a műveletek és a fürt felügyeletének egyszerűbb és megbízhatóbb. A fürt egy Azure Resource Manager-erőforrás, így a fürtök, mint bármely más az Azure-erőforrások modellezheti. A Resource Manager is biztosít könnyű kezelését egyetlen egységként a fürt által használt összes erőforrást. Az Azure-beli diagnosztikai és a Log Analytics integrált részei a fürtöket az Azure-ban. Fürt csomópont-típusok a következők [a virtual machine scale sets](/azure/virtual-machine-scale-sets/index), így az automatikus skálázási funkció jön létre.
@@ -187,10 +171,6 @@ A Service Fabric több módot is biztosít [rendszerállapot-jelentések megteki
 * [A Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) vagy más vizualizációs eszközökkel.
 * Állapotlekérdezések (keresztül [PowerShell](/powershell/module/ServiceFabric/), [CLI](service-fabric-sfctl.md), a [C# FabricClient API-k](/dotnet/api/system.fabric.fabricclient.healthclient) és [Java FabricClient API-k](/java/api/system.fabric), vagy [REST API-k](/rest/api/servicefabric)).
 * Általános lekérdezi, hogy visszatérési entitások listáját, amelyben állapota (a PowerShell, CLI, az API-k vagy REST) tulajdonságok egyike.
-
-Az alábbi Microsoft Virtual Academy-videó ismerteti a Service Fabric állapotközpontú modellről, és azok felhasználási módjáról: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
-<img src="./media/service-fabric-content-roadmap/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 [A monitoring and diagnostics](service-fabric-diagnostics-overview.md) különösen fontos fejlesztése, tesztelése és üzembe helyezése az alkalmazások és szolgáltatások bármilyen környezetben. A Service Fabric-megoldások akkor működnek a legjobban, ha megfigyelésének és megtervezése és diagnosztikai, amelyek segítségével győződjön meg arról, alkalmazások és szolgáltatások a helyi fejlesztői környezetben vagy éles környezetben a várt módon működnek.
