@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 9290026c1becc1ae32682fa173aae57dd7c47565
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eba77f79ad4625319a9b6e3eae46bf8470f43607
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773584"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203777"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>A személyes Microsoft-fiókok hozzáadása
 Adja hozzá a személyes Microsoft-fiókok esetében például Outlook.com-os és az Xbox LIVE, a Microsoft Authenticator alkalmazás a szokásos kétfaktoros ellenőrzési folyamata és a bejelentkezési módszer beállításának phone.

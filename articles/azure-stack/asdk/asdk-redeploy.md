@@ -13,16 +13,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 2139b4c9a26aba829a0bfbe5cb5a56f2a8918aa7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b52ac4ae2a02208e61aafebe883d33ed27309134
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239859"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194342"
 ---
 # <a name="redeploy-the-asdk"></a>Telepítse újra a ASDK
 Ebből a cikkből elsajátíthatja, hogyan ismételt üzembe helyezése az Azure Stack Development Kit (ASDK) egy nem éles környezetben. A ASDK frissítése nem támogatott, mivel teljesen ismételt üzembe helyezése áthelyezése egy újabb verzióra kell. Még csak át szeretné kezdje újra a folyamatot az alapoktól bármikor telepítse újra a ASDK.

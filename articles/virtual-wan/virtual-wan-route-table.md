@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 7d5cd8aab0f368ffec636e6dfcacf127c910dafc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 45e5c43cf5eb8df1df5b26ffae50d2881bb086e4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190170"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115198"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>A forgalom hálózati virtuális berendezésre figyelmeztetik virtuális központ útválasztási táblázat létrehozása
 
@@ -36,7 +36,7 @@ Győződjön meg arról, hogy a következő feltételek teljesüléséről:
 
 1. Egy hálózati virtuális készüléket (NVA) rendelkezik egy külső szoftver tetszőleges üzembe helyezett általában az Azure Marketplace (hivatkozás) a virtuális hálózatban.
 2. Rendelkezünk egy privát IP-címet hozzárendelni az NVA hálózati interfészhez. 
-3. Nva-t a virtuális központ nem telepíthetők. Egy külön virtuális hálózatban kell telepíteni. Ebben a cikkben a VNet nevezzük a szegélyhálózat (DMZ) VNet.
+3. Nva-t a virtuális központ nem telepíthetők. Egy külön virtuális hálózatban kell telepíteni. Ebben a cikkben az NVA virtuális hálózatok közötti nevezzük a szegélyhálózat (DMZ) VNet.
 4. A szegélyhálózat (DMZ) VNet előfordulhat, hogy rendelkezik egy, vagy túl sok virtuális hálózathoz csatlakozik hozzá. Ebben a cikkben a virtuális hálózat neve "Közvetett küllő virtuális hálózat". Ezek a virtuális hálózatok a DMZ-t virtuális hálózathoz virtuális hálózatok közötti társviszony segítségével csatlakoztathatók.
 5. Győződjön meg arról, hogy már létrehozott 2 virtuális hálózatok. Ezeket fogja használni, mint a küllő virtuális hálózatok. Ebben a cikkben a VNet-küllő címterek 10.0.2.0/24 és 10.0.3.0/24. Ha a virtuális hálózat létrehozása információra van szüksége, tekintse meg [hozzon létre egy virtuális hálózathoz a PowerShell használatával](../virtual-network/quick-create-powershell.md).
 6. Győződjön meg róla, minden olyan virtuális hálózatok nem virtuális hálózati átjárók vannak.

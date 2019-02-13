@@ -12,23 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: d35d3bb32f9afabb0e2b02f0d93fc60e0121e9ce
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4c9c4bce0b63bd6d45522e2e069d1ae884916e09
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247646"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172399"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Kiegészítő skálázási egység csomópontok hozzáadása az Azure Stackben
 
-Az Azure Stack-operátorok egy további fizikai számítógép hozzáadása egy meglévő méretezési egység teljes kapacitás növelheti. A fizikai számítógép is nevezzük a skálázási egység csomópont. Minden új méretezési egység csomópontot ad hozzá a CPU típusát, memória, és a lemez számát & azokra csomópontokra, amelyeken már léteznek a skálázási egység mérete homogén kell lennie.
-
-> [!NOTE]  
-Az Azure Stack 1807 vagy újabb verzió hozzáadása kiegészítő skálázási egység csomópontok kell futtatni.
+Az Azure Stack-operátorok egy további fizikai számítógép hozzáadása egy meglévő méretezési egység teljes kapacitás növelheti. A fizikai számítógép is nevezzük a skálázási egység csomópont. Minden új méretezési egység csomópontot ad hozzá a Processzor típusa, memória, és lemez számát és méretét a csomópontok, amelyek már megvannak a skálázási egységben homogén kell lennie.
 
 A skálázási egység csomópont hozzáadásához járnak el az Azure Stackben, és futtassa a hardvert gyártó (OEM) az eszközök. Az OEM azokat az eszközöket a gazdagépen hardver életciklus (HLH.) Győződjön meg arról, hogy az új fizikai számítógép megegyezik a meglévő csomópontok azonos belső vezérlőprogram szinten fut.
 

@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e47bb293d53df658641a50a1399ead85667e3225
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6ff09647dc3271c947b3037afcfacc33951ddb07
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692746"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117648"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Az RBAC-módosítások Tevékenységnaplók megtekintése
 
@@ -55,7 +55,7 @@ A Tevékenységnaplók kapcsolatos további információkért lásd: [események
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-Az Azure PowerShell-lel tevékenységeket tartalmazó naplók megtekintéséhez használja a [Get-AzLog](/powershell/module/az.insights/get-azlog) parancsot.
+Az Azure PowerShell-lel tevékenységeket tartalmazó naplók megtekintéséhez használja a [Get-AzLog](/powershell/module/Az.Monitor/Get-AzLog) parancsot.
 
 Ez a parancs felsorolja az összes szerepkör hozzárendelés változásait egy előfizetést az elmúlt hét nap:
 

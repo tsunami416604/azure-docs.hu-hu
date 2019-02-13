@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 1411d9b4a199685315587cb642842286da575c63
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fc60f3ac785bede0f3a2e4d83cc98980b46868e2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098527"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167065"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Gyors útmutató: Alkalmazás regisztrálása az Azure Active Directory 1.0-s verziójú végpontján
 

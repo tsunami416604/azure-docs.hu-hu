@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az RingCentral |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RingCentral |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és RingCentral között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 35033e52fb54177428f8869ebcc462bd9465ad4c
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e01b06b2031da20ee9349588bd4a7ee757fbc22c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48871630"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173300"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Oktatóanyag: Azure Active Directory-integráció az RingCentral
+# <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RingCentral
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan RingCentral integrálása az Azure Active Directory (Azure AD).
 
@@ -231,7 +232,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-ringcentral-test-user"></a>RingCentral tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű RingCentral hoz létre. Együttműködve [RingCentral ügyfél-támogatási csapatának](https://success.ringcentral.com/RCContactSupp) a felhasználók hozzáadása az RingCentral platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű RingCentral hoz létre. Együttműködve [RingCentral ügyfél-támogatási csapatának](https://success.ringcentral.com/RCContactSupp) a felhasználók hozzáadása az RingCentral platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

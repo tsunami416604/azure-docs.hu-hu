@@ -1,129 +1,85 @@
 ---
 title: Az Azure Kubernetes Service (AKS) fürt frissítése
-description: Az Azure Kubernetes Service (AKS) fürt frissítése
+description: 'Útmutató: Azure Kubernetes Service (AKS)-fürt frissítése'
 services: container-service
-author: gabrtv
-manager: jeconnoc
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 07/18/2018
-ms.author: gamonroy
-ms.custom: mvc
-ms.openlocfilehash: 4ff2b56afc4496b6344735b4e3c813b06cee17e3
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.date: 02/12/2019
+ms.author: iainfou
+ms.openlocfilehash: 59d52db8c3f5f8968eae1a544abe1e5c6bbaacca
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42059481"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185983"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Az Azure Kubernetes Service (AKS) fürt frissítése
 
-Az Azure Kubernetes Service (AKS) megkönnyíti a Kubernetes-fürtök frissítése például gyakori felügyeleti feladatok végrehajtása.
+AKS-fürt életciklusa részeként gyakran frissíteni szeretne a legújabb Kubernetes. Fontos a alkalmazni a legújabb Kubernetes biztonsági kiadások, vagy frissítsen a legújabb funkciók. Ez a cikk bemutatja, hogyan meglévő AKS-fürt frissítése.
 
-## <a name="upgrade-an-aks-cluster"></a>AKS-fürt frissítése
+## <a name="before-you-begin"></a>Előkészületek
 
-A fürtök frissítése előtt az `az aks get-upgrades` parancs használatával ellenőrizze, hogy mely Kubernetes-kiadások frissíthetők.
+Ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.56 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+
+## <a name="check-for-available-aks-cluster-upgrades"></a>AKS-fürtön elérhető verziófrissítésekről keresése
+
+Ellenőrizze, hogy mely Kubernetes-kiadások érhetők el a fürt számára, használja a [az aks get-frissítések] [ az-aks-get-upgrades] parancsot. Az alábbi példa ellenőrzi a fürthöz nevű elérhető verziófrissítésekről *myAKSCluster* az erőforráscsoport neve *myResourceGroup*:
 
 ```azurecli-interactive
-az aks get-upgrades --name myAKSCluster --resource-group myResourceGroup --output table
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Kimenet:
+> [!NOTE]
+> Amikor frissít egy AKS-fürtöt, Kubernetes alverziót nem hagyhatók ki. Például frissítése között *1.10.x* -> *1.11.x* vagy *1.11.x* -> *1.12.x* engedélyezettek, de *1.10.x* -> *1.12.x* nem.
+>
+> A frissítéshez a *1.10.x* -> *1.12.x*, először frissítés a *1.10.x* -> *1.11.x*, majd frissítsen a *1.11.x* -> *1.12.x*.
+
+Az alábbi példa kimenetében látható, hogy a fürt is frissíthető verzióra *1.11.5* vagy *1.11.6*:
 
 ```console
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  -------------------
-default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.6
+-------  ---------------  ---------------  -----------------  --------------
+default  myResourceGroup  1.10.12          1.10.12            1.11.5, 1.11.6
 ```
 
-Három verzió érhető el a frissítéshez: 1.9.1, 1.9.2-es és 1.9.6. Az `az aks upgrade` paranccsal frissíthetünk a legújabb elérhető verzióra.  A frissítési folyamat során az AKS lesz új csomópont hozzáadása a fürthöz, majd gondosan [Ez a három csomópontunk, és a kiürítési] [ kubernetes-drain] futó alkalmazások egyszerre egy csomóponton.
+## <a name="upgrade-an-aks-cluster"></a>AKS-fürt frissítése
 
-> [!NOTE]
-> AKS-fürt frissítésekor Kubernetes alverziót nem hagyhatók ki. Például frissítések között 1.8.x -> 1.9.x vagy 1.9.x -> 1.10.x engedélyezett, azonban az 1.8-as 1.10 -> nincs. Szeretné frissíteni, az 1.8-as 1.10 -> kell, hogy először frissítse az 1.8-as 1.9 -> és a egy másik hajtsa végre egy másik 1.9 verzióról 1.10 ->
+Az AKS-fürt számára elérhető verzió listáját, használja a [az aks frissítése] [ az-aks-upgrade] paranccsal frissíthetőek. A frissítési folyamat során az AKS ad hozzá új csomópontot a fürthöz, majd gondosan [fekvő terület és zuhan] [ kubernetes-drain] futó alkalmazások egyszerre egy csomóponton. Az alábbi példában a fürt frissíti a verzióra *1.11.6*:
 
 ```azurecli-interactive
-az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.6
 ```
 
-Kimenet:
+A fürt attól függően, hogy hány csomóponttal frissítése néhány percet vesz igénybe.
 
-```json
-{
-  "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "location": "eastus",
-  "name": "myAKSCluster",
-  "properties": {
-    "accessProfiles": {
-      "clusterAdmin": {
-        "kubeConfig": "..."
-      },
-      "clusterUser": {
-        "kubeConfig": "..."
-      }
-    },
-    "agentPoolProfiles": [
-      {
-        "count": 1,
-        "dnsPrefix": null,
-        "fqdn": null,
-        "name": "myAKSCluster",
-        "osDiskSizeGb": null,
-        "osType": "Linux",
-        "ports": null,
-        "storageProfile": "ManagedDisks",
-        "vmSize": "Standard_D2_v2",
-        "vnetSubnetId": null
-      }
-    ],
-    "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
-    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
-    "kubernetesVersion": "1.9.6",
-    "linuxProfile": {
-      "adminUsername": "azureuser",
-      "ssh": {
-        "publicKeys": [
-          {
-            "keyData": "..."
-          }
-        ]
-      }
-    },
-    "provisioningState": "Succeeded",
-    "servicePrincipalProfile": {
-      "clientId": "e70c1c1c-0ca4-4e0a-be5e-aea5225af017",
-      "keyVaultSecretRef": null,
-      "secret": null
-    }
-  },
-  "resourceGroup": "myResourceGroup",
-  "tags": null,
-  "type": "Microsoft.ContainerService/ManagedClusters"
-}
-```
-
-Az `az aks show` paranccsal ellenőrizze, hogy sikerült-e a frissítés.
+Győződjön meg arról, hogy a frissítés sikeres volt-e, használja a [az aks show] [ az-aks-show] parancsot:
 
 ```azurecli-interactive
-az aks show --name myAKSCluster --resource-group myResourceGroup --output table
+az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Kimenet:
+Az alábbi példa kimenetében látható, hogy fut-e már a fürt *1.11.6*:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
-------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus     myResourceGroup  1.9.6                 Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
+------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
+myAKSCluster  eastus      myResourceGroup  1.11.6               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-Az AKS üzembe helyezésével és kezelésével kapcsolatos további információkért lásd az AKS oktatóanyagait.
+Ez a cikk bemutatta a meglévő AKS-fürt frissítése. Üzembe helyezése és kezelése az AKS-fürtök kapcsolatos további információkért lásd: oktatóanyagok készletét.
 
 > [!div class="nextstepaction"]
-> [AKS-oktatóanyag][aks-tutorial-prepare-app]
+> [AKS-oktatóanyagok][aks-tutorial-prepare-app]
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[azure-cli-install]: /cli/azure/install-azure-cli
+[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
+[az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
+[az-aks-show]: /cli/azure/aks#az-aks-show

@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5bff36f17b407c95858924a2a88b133500c350b6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7b6a5a46e311fa54d6957c45d35ef20d94cf7632
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751412"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200496"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -115,7 +115,7 @@ Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
 
     | Verzió | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
     |---------|----------------|------------------------------|
-    | A Windows Server 2019 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
+    | Windows Server 2019 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
     | Windows Server 2016 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
     | Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
 
@@ -167,10 +167,14 @@ A Windows Server feladatátvételi fürtszolgáltatás támogatott az Azure File
 > Az Azure File Sync ügynök megfelelő működéséhez szinkronizálási egy feladatátvevő fürt minden csomópontján telepítve kell lennie.
 
 ### <a name="data-deduplication"></a>Az Adatdeduplikáció
-Olyan kötetek, amelyek nem rendelkeznek a felhőbeli rétegezés engedélyezve van, az Azure File Sync támogatja a Windows Server Adatdeduplikáció engedélyezése a köteten. Jelenleg nem támogatjuk együttműködés a felhőbeli rétegezés engedélyezve van az Azure File Sync és az Adatdeduplikáció között.
+**Ügynök verziója 5.0.2.0**   
+Az Adatdeduplikáció a felhőbeli rétegezés engedélyezve van a Windows Server 2016 és Windows Server 2019 kötetek esetében támogatott. Egy köteten, a deduplikáció engedélyezése a felhőbeli rétegezés engedélyezett lehetővé teszi további fájlok a helyi gyorsítótár több tároló üzembe helyezése nélkül.
+
+**A Windows Server 2012 R2 vagy az ügynök korábbi verzióival**  
+Olyan kötetek, amelyek nem rendelkeznek a felhőbeli rétegezés engedélyezve van, az Azure File Sync támogatja a Windows Server Adatdeduplikáció engedélyezése a köteten.
 
 ### <a name="distributed-file-system-dfs"></a>Az elosztott fájlrendszer (DFS)
-Az Azure File Sync támogatja az elosztott Fájlrendszerbeli névtereket (DFS-N) és az elosztott fájlrendszer replikációs szolgáltatása (DFS-R) kezdődő együttműködési [Azure File Sync ügynök 1.2](https://go.microsoft.com/fwlink/?linkid=864522).
+Az Azure File Sync kompatibilisek az elosztott Fájlrendszerbeli névtereket (DFS-N) és az elosztott fájlrendszer replikációs szolgáltatása (DFS-R) támogatja.
 
 **Az elosztott Fájlrendszerbeli névtereket (DFS-N)**: Az Azure File Sync teljes mértékben a DFS-N-kiszolgálókon támogatott. Egy vagy több DFS-N tagokat a kiszolgálói végpontot és a felhőbeli végpont közötti adatszinkronizálás az Azure File Sync ügynök telepíthető. További információkért lásd: [az elosztott Fájlrendszerbeli névterek áttekintése](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  

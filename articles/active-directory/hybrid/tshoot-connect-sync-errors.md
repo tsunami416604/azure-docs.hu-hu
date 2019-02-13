@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c48ffd92362fa19fc0abfb7ddc36eac378283938
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a43e84e97499010f36e3cd39c13bf61d281b66c7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156332"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193135"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Szinkronizálási hibák elhárítása
 Hibák fordulhatnak elő, amikor a azonosító adatok szinkronizálása a Windows Server Active Directory (AD DS) az Azure Active Directory (Azure AD). Ez a cikk szinkronizálási hibák, a lehetséges forgatókönyvek ezeket a hibákat és lehetséges módon javítsa a hibákat okozó némelyike különböző típusainak áttekintése. Ez a cikk a gyakori alkalmazáshiba-típusok tartalmazza, és a lehetséges hibák terjedhet ki.

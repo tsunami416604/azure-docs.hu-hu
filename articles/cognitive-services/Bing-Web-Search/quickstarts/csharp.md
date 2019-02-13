@@ -8,23 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 8/16/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4e6159bd28a6a405e3418e5433fcecf759c5cf45
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 08e2ef1b219ed66a39d38c08be80df89814afbaf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869483"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180487"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API használatával, ésC#
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Web Search API-hívását, majd hogyan fogadhatja a JSON-választ.  
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
-
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. Ez C# alkalmazás egy keresési kérelmet küld az API-t, és megjeleníti a választ. Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
@@ -34,6 +31,9 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 * Egy előfizetői azonosító
 
 A példaprogram csak a .NET Core osztályait használja.
+
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>Projekt létrehozása és a függőségek deklarálása
 

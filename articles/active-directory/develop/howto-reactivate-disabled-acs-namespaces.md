@@ -15,12 +15,13 @@ ms.date: 01/21/2019
 ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: a8e1d1b73d360b55375e5164670ff16268941ede
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d0078c260e09ec9fd31ecf2124bc4bf7ad7f92b0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092226"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173742"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Útmutató: Letiltott Access Control Service-névterek újraaktiválása
 
@@ -92,7 +93,7 @@ További bővítmények már nem lesz automatikusan jóváhagyja. Ha áttelepít
 1. Jelentkezzen be az Azure Portalon, és hozzon létre egy [új támogatási kérelem](https://portal.azure.com/#create/Microsoft.Support).
 1. Adja meg az új támogatási űrlap, az alábbi példában látható módon.
 
-    | Támogatási kérelem mező | Value |
+    | Támogatási kérelem mező | Érték |
     |-----------------------|--------------------|
     | **Probléma típusa** | `Technical` |
     | **Előfizetés** | Az előfizetés beállítása |

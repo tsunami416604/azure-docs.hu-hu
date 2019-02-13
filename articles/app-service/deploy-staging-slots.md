@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 2a5ff771064c860447427c9e3cc1345a03a69634
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7c12b34f6d735579326d4ccdd95e7831fbb777d6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893754"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181422"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
 <a name="Overview"></a>
@@ -205,6 +205,11 @@ Használata esetén [Auto-Swap](#Auto-Swap), bizonyos alkalmazásokhoz szükség
         </applicationInitialization>
     </system.webServer>
 
+Testre szabhatja a bemelegítési viselkedését egy vagy több, a következő [Alkalmazásbeállítások](https://github.com/MicrosoftDocs/azure-docs-pr/pull/web-sites-configure.md):
+
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: A ping paranccsal melegítési a hely elérési útja. Adja hozzá ennek az alkalmazásbeállításnak értékeként perjellel adnak meg egyéni elérési úttal, amely a kezdődik. Például: `/statuscheck`. Az alapértelmezett érték `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Érvényes HTTP-válaszkódot a bemelegítési művelethez. Adja hozzá ennek az alkalmazásbeállításnak a HTTP-kódok vesszővel tagolt listája. Például: `200,202` . A visszaadott állapotkód nem szerepel a listában, ha a melegítési és a Váltás műveletek le vannak állítva. Alapértelmezés szerint minden válaszkódot érvényesek.
+
 ## <a name="monitor-swap"></a>A figyelő swap
 
 Ha a címeket cserélő művelet egy hosszú ideig tart, a a felcserélési művelet információkat szerezhet a [tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
@@ -263,6 +268,8 @@ Keresse meg az alkalmazás erőforrás-lapon. Válassza ki **üzembe helyezési 
 
 ## <a name="automate-with-powershell"></a>Automatizálás a PowerShell használatával
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Az Azure PowerShell modul, amely Azure-t a Windows PowerShell-lel, beleértve az Azure App Service-ben üzembe helyezési pontok felügyeletének támogatását, így kezelheti-parancsmagokat kínál.
 
 Információk az telepítése és konfigurálása az Azure PowerShell-lel és az Azure PowerShell-lel hitelesítése az Azure-előfizetésében: [telepítése és konfigurálása a Microsoft Azure PowerShell](/powershell/azure/overview).  
@@ -270,44 +277,44 @@ Információk az telepítése és konfigurálása az Azure PowerShell-lel és az
 - - -
 ### <a name="create-web-app"></a>Webalkalmazás létrehozása
 ```PowerShell
-New-AzureRmWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
+New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="create-slot"></a>Tárhely létrehozása
 ```PowerShell
-New-AzureRmWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
+New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="initiate-swap-with-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>Felcserélés előnézettel (többfázisú lapozó) kezdeményezi, és a forrás célhelyre tárolóhely konfigurációjának alkalmazása
 ```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
-Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
+Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="cancel-pending-swap-swap-with-review-and-restore-source-slot-configuration"></a>Folyamatban lévő felcserélés, (tekintse át a lapozó) és a forrás tárolóhely konfiguráció visszaállítása
 ```PowerShell
-Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
+Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="swap-deployment-slots"></a>Üzembehelyezési pontok cseréje
 ```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
-Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
+Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 ### <a name="monitor-swap-events-in-the-activity-log"></a>A tevékenység Log lapozófájl-kapacitás-események figyelése
 ```PowerShell
-Get-AzureRmLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
+Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 - - -
 ### <a name="delete-slot"></a>Pont törlése
-```PowerShell
-Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
+```powershell
+Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
 - - -

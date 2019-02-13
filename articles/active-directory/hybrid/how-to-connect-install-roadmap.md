@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fe128e37103fc913b97f8ac8b9f0395ad74c4198
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1285a9262221dbd8e46d07e384697ddea853f9fc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496969"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163053"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Az Azure AD Connect és az Azure AD Connect Health telepítési ütemterve
 
@@ -100,7 +101,7 @@ A szinkronizálás során alkalmazott konfigurációs modell neve: [deklaratív 
 |Technikai kulcsfogalmak | [Az Azure AD Connect szinkronizálása: Műszaki fogalmak](how-to-connect-sync-technical-concepts.md)|
 |Az alapértelmezett konfiguráció ismertetése | [Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció ismertetése](concept-azure-ad-connect-sync-default-configuration.md)|
 |A felhasználók és a kapcsolattartók ismertetése | [Az Azure AD Connect szinkronizálása: Understanding felhasználók és a kapcsolattartók](concept-azure-ad-connect-sync-user-and-contacts.md)|
-|Deklaratív kiépítés | [Az Azure AD Connect szinkronizálása: Deklaratív kiépítés kifejezéseinek ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
+|Deklaratív kiépítés | [Az Azure AD Connect szinkronizálása: A deklaratív üzembehelyezési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
 |Az alapértelmezett konfiguráció módosítása | [Az alapértelmezett konfiguráció módosításának ajánlott eljárásai](how-to-connect-sync-best-practices-changing-default-configuration.md)|
 
 ## <a name="configure-federation-features"></a>Az összevonási funkciók konfigurálása

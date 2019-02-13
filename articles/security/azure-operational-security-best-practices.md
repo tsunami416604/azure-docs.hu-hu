@@ -4,7 +4,7 @@ description: Ez a cikk az Azure Operational Security ajánlott eljárásokat biz
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 7c6d373fd294645605815d8a8d380259982d90e7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e2678eb7d75921f43a1e51b6a8cefc9925a9adc1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118183"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104601"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure Operational Security – ajánlott eljárások
 Az Azure operational security hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelme érdekében az adatokat, alkalmazásokat és egyéb eszközök az Azure-ban. Az Azure operational security olyan keretrendszer, amely magában foglalja a Microsoft, egyedi képességek vizsgálatából épül, többek között a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl), a [Microsoft Security Response Center](https://www.microsoft.com/msrc?rtc=1) programot, és a kiberbiztonsági fenyegetések világának.

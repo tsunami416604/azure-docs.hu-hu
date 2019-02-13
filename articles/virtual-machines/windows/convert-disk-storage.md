@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 676adb05178097c1802c0ff5b3a5da1bbb7b188c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 94482666d0db3157b0c18c0b47f9937457172521
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978374"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115997"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>A tárolótípus felügyelt lemez frissítése
 
@@ -33,7 +33,7 @@ Az Azure Managed Disks három tárolási típus lehetőséget kínál: [Prémium
 
 * Az átalakításhoz újra kell indítani a virtuális gép (VM), mert a lemezek tároló áttelepítése egy már létező karbantartási időszakra ütemezze. 
 * Ha egy nem felügyelt lemez használata először [alakíthatja át egy felügyelt lemezt](convert-unmanaged-to-managed-disks.md) lehetővé teszi a tárolási típusok közötti váltani. 
-* Ebben a cikkben szereplő példák az Azure PowerShell-modul verzióját 6.0.0 megkövetelése vagy újabb. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-az-ps) ismertető cikket. Futtatás [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) kapcsolat létrehozása az Azure-ral.
+* Ebben a cikkben szereplő példák az Azure PowerShell-modul verzióját 6.0.0 megkövetelése vagy újabb. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Futtatás [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) kapcsolat létrehozása az Azure-ral.
 
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>A felügyelt lemezek, a virtuális gépek premium standard átalakítása

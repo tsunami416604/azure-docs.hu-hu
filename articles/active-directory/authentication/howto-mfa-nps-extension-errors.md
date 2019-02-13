@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: eb8bce76321bf596f7c51c3437dd2497c827e83f
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf2e1b97d228de47634e570a407ec03d7a13e540
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076910"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199640"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication az NPS-bővítményének hibaüzenetek feloldása
 
@@ -112,7 +113,7 @@ Támogatási diagnosztikai hibakeresési naplók összegyűjtése, használja a 
    logman update trace "NPSExtension" -p {EC2E6D3A-C958-4C76-8EA4-0262520886FF} 0xffffffffffffffff 0xff -ets
    ```
 
-3. A probléma újbóli előidézését
+3. Reprodukálja a hibát
 
 4. Állítsa le a nyomkövetést, a következő parancsokkal:
 

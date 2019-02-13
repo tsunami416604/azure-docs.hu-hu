@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 37f956606075cb21075d6f50bb53e04075936997
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: bc4e4c9137003dad9cfd96772b7ebe231cd6eace
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999033"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171723"
 ---
 # <a name="reliable-services-overview"></a>A Reliable Services áttekintése
 Azure Service Fabric megkönnyíti a írása és állapot nélküli és állapotalapú Reliable Services kezeléséhez. Ez a témakör ismerteti:
@@ -45,12 +45,6 @@ A Reliable Services egy egyszerű, hatékony, legfelső szintű programozási mo
 * Programozási modelleket, amellyel egy egyszerű modellt, amely a saját kód futtatásához tűnik. A kód jól definiált belépési pont és egyszerűen kezelhető életciklus rendelkezik.
 * Egy moduláris kommunikációs modellt. Használja a szállítás megírhatja, például HTTP- [webes API-t](service-fabric-reliable-services-communication-webapi.md), a websockets protokoll, egyéni TCP protokollt, vagy bármi más. A Reliable Services-a-beépített beállításokat használhatja, vagy megadhatja a saját néhány nagyszerű adja meg.
 * Az állapotalapú szolgáltatások esetében a Reliable Services programozási modell lehetővé teszi, hogy következetes és megbízható tárolását használatával közvetlenül a szolgáltatáson belül az állapot [a Reliable Collections](service-fabric-reliable-services-reliable-collections.md). A Reliable Collections olyan egyszerű, magas rendelkezésre állású és megbízható gyűjteményosztályok, amelyeket mindenki, aki már használt jól lesz C# gyűjteményeket. Hagyományosan szolgáltatások megbízható állapot felügyeletéhez szükséges külső rendszerekkel. Reliable Collections használata is tárolhatja az állapot mellett a számítási erőforrásokat az azonos magas rendelkezésre állás és a megbízhatóság jár várhatóan magas rendelkezésre állású külső áruházakból származó. Ez a modell is javítani tudja a késés, mert, amelyek közös helyen való elhelyezése a számítási és -állapot működéséhez.
-
-A Reliable services áttekintése a Microsoft Virtual Academy-videó megtekintése: <center>
-<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=HhD9566yC_4106218965">
-<img src="./media/service-fabric-reliable-services-introduction/ReliableServicesVid.png" WIDTH="360" HEIGHT="244" />
-</a>
-</center>
 
 ## <a name="what-makes-reliable-services-different"></a>A Reliable Services különböző teszi?
 A Service Fabric Reliable Services szolgáltatások előtt lehet, hogy írt eltérnek. A Service Fabric megbízhatóságát, rendelkezésre állást, konzisztencia és méretezhetőséget biztosít.

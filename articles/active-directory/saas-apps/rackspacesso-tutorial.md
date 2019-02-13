@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció Rackspace SSO-val |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integráció Rackspace SSO-val |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Rackspace SSO között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2018
 ms.author: jeedes
-ms.openlocfilehash: b825fb1d7f56aae923f6760c4fd6384e03274b7a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 24864fd1e21efaf37f846fc95b9dae39ffb19e5f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042057"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186835"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Oktatóanyag: Azure Active Directory-integráció Rackspace SSO-val
+# <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció Rackspace SSO-val
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Rackspace SSO integrálása az Azure Active Directory (Azure AD).
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az (által Inlogik) ProMaster |} A Microsoft Docs'
+title: 'Oktatóanyag: ProMaster (által Inlogik) az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és ProMaster (által Inlogik) között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 871abffc07ee29df388205395110e89a85dd7344
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 218f0c8a49d99c611219a43cc4b51214e4087012
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017654"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205239"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Oktatóanyag: Azure Active Directory-integráció az ProMaster (által Inlogik)
+# <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Oktatóanyag: Az Azure Active Directory integrációja az ProMaster (által Inlogik)
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan ProMaster (által Inlogik) integrálása az Azure Active Directory (Azure AD).
 

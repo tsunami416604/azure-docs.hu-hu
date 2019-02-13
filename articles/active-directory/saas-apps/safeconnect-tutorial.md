@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az SafeConnect |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SafeConnect |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és SafeConnect között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: jeedes
-ms.openlocfilehash: f011b9ef7229ba1e588e488be8b4fc5b098ee5ac
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cbb94c28d56b0492fe3488d7c9e2e1257a8b9388
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40024992"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183802"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-safeconnect"></a>Oktatóanyag: Azure Active Directory-integráció az SafeConnect
+# <a name="tutorial-azure-active-directory-integration-with-safeconnect"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SafeConnect
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan SafeConnect integrálása az Azure Active Directory (Azure AD).
 
@@ -59,7 +60,7 @@ Az Azure AD integrálása a SafeConnect konfigurálásához hozzá kell SafeConn
 
 **SafeConnect hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a ** [az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -83,11 +84,11 @@ Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felh
 
 Az Azure AD egyszeri bejelentkezés az SafeConnect tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ** – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) ** – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre egy SafeConnect tesztfelhasználót](#create-a-safeconnect-test-user) ** – egy megfelelője a Britta Simon SafeConnect, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) ** – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on) ** – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy SafeConnect tesztfelhasználót](#create-a-safeconnect-test-user)**  – egy megfelelője a Britta Simon SafeConnect, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -153,7 +154,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-safeconnect-test-user"></a>SafeConnect tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű SafeConnect hoz létre. Együttműködve [SafeConnect támogatási csapatának](mailto:support@impulse.com) a felhasználók hozzáadása az SafeConnect platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
+Ebben a szakaszban egy felhasználói Britta Simon nevű SafeConnect hoz létre. Együttműködve [SafeConnect támogatási csapatának](mailto:support@impulse.com) a felhasználók hozzáadása az SafeConnect platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -185,7 +186,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

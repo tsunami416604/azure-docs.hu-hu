@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: b2fc4b518ee0857014c59b84b89a0102b86f687a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6affa19c61ff4a824e390c42b7fd97554a30c9bb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820130"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176237"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazások az Azure Kubernetes Service (AKS) hálózati fogalmai
 
@@ -102,9 +102,17 @@ Bejövő forgalom egy másik gyakori funkcióját a TLS/SSL-lezárást. A HTTPS-
 
 ## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 
-Egy hálózati biztonsági csoport szűrő forgalmat a virtuális gépek esetében például az AKS-csomópontok. Szolgáltatások, például a terheléselosztó létrehozása az Azure platform automatikusan beállítja az minden olyan hálózati biztonsági csoport szabályait, amelyek szükségesek. Az AKS-fürt podok forgalom szűrése hálózati biztonsági csoport szabályokat manuálisan ne konfigurálja. A Kubernetes szolgáltatásjegyzékek részeként minden szükséges portok és a továbbítás határozzák meg, és lehetővé teszik az Azure platform létrehozni vagy frissíteni a megfelelő szabályokat.
+A hálózati biztonsági csoport szűri a forgalmat a virtuális gépek esetében például az AKS-csomópontok. Szolgáltatások, például a terheléselosztó létrehozása az Azure platform automatikusan beállítja az minden olyan hálózati biztonsági csoport szabályait, amelyek szükségesek. Az AKS-fürt podok forgalom szűrése hálózati biztonsági csoport szabályokat manuálisan ne konfigurálja. A Kubernetes szolgáltatásjegyzékek részeként minden szükséges portok és a továbbítás határozzák meg, és lehetővé teszik az Azure platform létrehozni vagy frissíteni a megfelelő szabályokat. Is használható hálózati házirendeket a következő szakaszban leírt módon a podok forgalmat szűrő szabályokkal automatikusan alkalmazni.
 
 Az alapértelmezett szabályok a forgalmat az SSH például tartoznak hálózati biztonsági csoport. Fürt kezelése és hozzáférés hibaelhárítása vonatkoznak az alapértelmezett szabályokat. Az alapértelmezett szabályokat törlése az AKS-kezelési problémákhoz vezethet, és működésképtelenné válik a szolgáltatási szint célkitűzés (SLO).
+
+## <a name="network-policies"></a>Hálózati házirendek
+
+Alapértelmezés szerint egy AKS-fürt összes podok küldhet és korlátozások nélkül forgalom fogadására. A nagyobb biztonság érdekében érdemes olyan szabályok, amelyek vezérlik a forgalmat. Háttéralkalmazásokhoz gyakran csak szükséges előtér-szolgáltatások érhetők el, vagy az adatbázis-összetevői csak elérhetők az alkalmazásrétegek, amely csatlakozni hozzájuk.
+
+A hálózati házirend egy Kubernetes-szolgáltatás, amely lehetővé teszi a podok közötti adatforgalom szabályozásához. Ha szeretné, beállítások, például a hozzárendelt címkék, névtérre vagy forgalmat port alapján adatforgalom engedélyezéséhez vagy letiltásához. Hálózati biztonsági csoportok további nem podok AKS-csomópontok számára. A hálózati házirendek használata egy megfelelőbbek, natív módon a forgalom szabályozásához. Podok dinamikusan az AKS-fürt létrehozásakor, a szükséges hálózati házirendeket a rendszer automatikusan elvégez.
+
+További információkért lásd: [podok hálózati házirendek segítségével az Azure Kubernetes Service (AKS) közötti adatforgalom biztonságossá][use-network-policies].
 
 ## <a name="next-steps"></a>További lépések
 
@@ -139,3 +147,4 @@ AKS-hálózatkezelés – első lépések, létrehozása és konfigurálása egy
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[use-network-policies]: use-network-policies.md

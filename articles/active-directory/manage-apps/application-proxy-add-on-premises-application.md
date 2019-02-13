@@ -11,12 +11,13 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: ad6487284084d40199aeaee1e1008c75ace49400
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f29b55b03d28728ad038f0071a7ba8a75a7acd2c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965120"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199442"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 

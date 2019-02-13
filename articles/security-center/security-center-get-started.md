@@ -4,7 +4,7 @@ description: Ez a rövid útmutató bemutatja, hogyan frissíthet a Security Cen
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8a0467a383e2c8e3efab685187c5a37d1549f664
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3442ced47e50485da1ffdd475d9649243b1c8583
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838159"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116694"
 ---
-# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rövid útmutató: Azure-előfizetés felvétele a Security Center Standard verziójába
+# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Gyors útmutató: Felvétele a Security Center Standard Azure-előfizetése
 Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Megpróbálhatja Security Center Standard költségek nélkül. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 Ebben a cikkben frissíteni fog a Standard szintre a további biztonság érdekében, és telepíteni fogja a Microsoft Monitoring Agentet a virtuális gépekre a biztonsági rések és fenyegetések monitorozásához.
@@ -107,7 +107,7 @@ Ha le szeretné tiltani az automatikus kiépítést:
 Ebben a rövid útmutatóban frissített a Standard szintre, és kiépítette a Microsoft Monitoring Agentet, hogy biztosítsa az egységes biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokon. Ha többet szeretne megtudni a Security Center használatáról, folytassa a helyszínen és egyéb felhőszolgáltatásokban található Windows rendszerű számítógépek felvételével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe](quick-onboard-windows-computer.md)
+> [Rövid útmutató: Az Azure Security Center Windows számítógépek felvétele](quick-onboard-windows-computer.md)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

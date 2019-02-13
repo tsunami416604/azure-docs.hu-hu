@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: e0e4331b245edcfcbe1529354e605e7505b81268
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6775f6e37a5b282afcfcdce7f93751e852923366
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494969"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168358"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Ha már rendelkezik meglévő bérlővel
 A témakörök használata az Azure AD Connect a legtöbb feltételezi, hogy először a egy új Azure AD-bérlővel, és hogy egyik felhasználó sem, vagy nincs más objektumokat. Ha már elindította az Azure AD-bérlővel, de fel kell töltenie azt a felhasználók és más objektumok, és most szeretné használni a csatlakozás, majd ez a témakör Önnek szól.

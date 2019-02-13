@@ -17,12 +17,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 03/27/18
 ms.author: cynthn
-ms.openlocfilehash: 7644940418b7322e5ec4b02b793219b44ae3aa97
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ed17d7cd887df6d8bd749ba4426d1a791b58d457
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885149"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171230"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Gyors útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure Portalon
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hoz létre az Azure Portalon.
@@ -46,11 +46,12 @@ Méretezési csoportokat Windows Server-rendszerképpel vagy Linux-rendszerképp
     - A **jelszónak** legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információkért lásd: [felhasználónév- és jelszókövetelmények](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
     - Ha a Linux operációsrendszer-lemezt választja, választhatja az **SSH nyilvános kulcs** lehetőséget is. Csak a nyilvános kulcsot adja meg, például: *~/.ssh/id_rsa.pub*. [SSH-kulcsok létrehozásához és használatához](../virtual-machines/linux/mac-create-ssh-keys.md) használhatja a portál Azure Cloud Shell szolgáltatását is.
 
-7. Adjon meg egy **nyilvános IP-cím nevet**, például *myPublicIP*.
-8. Adjon meg egy egyedi **tartománynév-címkét**, például *myuniquedns*. Ez a DNS-címke képezi a terheléselosztó FQDN alapját a méretezési csoport előtt.
-9. A méretezési csoport beállításainak megerősítéséhez, válassza a **Létrehozás** lehetőséget.
+    ![Alapvető adatait a virtuálisgép-méretezési csoport létrehozásához állítsa be az Azure Portalon](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
+1. Válassza ki egy terheléselosztási beállítás, például *Load balancer*alatt **válassza a beállítások terheléselosztás**. A terheléselosztási beállítás adja meg a fennmaradó részleteit. Például *terheléselosztó* meg kell adnia egy **nyilvános IP-cím neve** és **tartománynévcímke**.
+1. Adja meg, hogy virtuális hálózat alatt **virtuális hálózatok konfigurálása**. Például létrehozhat egy új virtuális hálózat *myVirtualNetwork*, és a egy új alhálózatot *alapértelmezett*.
+1. A méretezési csoport beállításainak megerősítéséhez, válassza a **Létrehozás** lehetőséget.
+    ![Egy virtuálisgép-méretezési csoport létrehozásához szükséges adatok Hálózatkezelés beállítása az Azure Portalon](./media/virtual-machine-scale-sets-create-portal/create-scale-set-networking-details.png)
 
-    ![Virtuálisgép-méretezési csoport létrehozása az Azure Portalon](./media/virtual-machine-scale-sets-create-portal/create-scale-set.png)
 
 
 ## <a name="connect-to-a-vm-in-the-scale-set"></a>Kapcsolódás a méretezési csoportban lévő virtuális géphez

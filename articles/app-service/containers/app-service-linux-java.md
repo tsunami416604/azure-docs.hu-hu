@@ -13,18 +13,29 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 61bbc65c543801b0f783d01dfb803f47dbcf8a07
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d6e8d943d14cfddc260ba502e724543c6dc9cf4f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215299"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110336"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
 Linuxon futó Azure App Service lehetővé teszi, hogy gyorsan elkészítheti, telepítheti és méretezheti a Tomcat a Java-fejlesztőknek vagy a Java Standard Edition (SE) egy teljes körűen felügyelt Linux-alapú szolgáltatás webes alkalmazások csomagolva. A parancssorból vagy a-szerkesztők, mint például az intellij-vel, az Eclipse vagy a Visual Studio Code Maven beépülő modulok az alkalmazások központi telepítése.
 
 Ez az útmutató a főbb fogalmakat és a Linux App Service-ben használata Java-fejlesztőknek készült utasításokat tartalmaz. Ha soha nem használta az Azure App Service Linux, olvassa végig a [Java rövid](quickstart-java.md) első. Általános kérdések linuxos App Service használatával kapcsolatban, amelyek nem a Java fejlesztési adott válaszok a [App Service Linux – gyakori kérdések](app-service-linux-faq.md).
+
+## <a name="deploying-your-app"></a>Az alkalmazás üzembe helyezése
+
+A Maven beépülő modul segítségével telepítheti a .jar és a .war-fájlok. Lásd: [ebben a dokumentációban](https://docs.microsoft.com/en-us/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable) bővebben a Maven bővítménnyel. 
+
+Ha nem használ Mavent, a telepítési módszertől függ az archív típusát:
+
+- Tomcat .war-fájlt telepíteni, használja a `/api/wardeploy/` az archív fájl közzé végpontot. Ez az API további információkért tekintse meg [ebben a dokumentációban](https://docs.microsoft.com/en-us/azure/app-service/deploy-zip#deploy-war-file).
+- A Java használata képek a .jar fájlokat üzembe helyezéséhez használja a `/api/zipdeploy/` végpont a Kudu-webhely. Ez az API további információkért tekintse meg [ebben a dokumentációban](https://docs.microsoft.com/en-us/azure/app-service/deploy-zip#rest).
+
+Ne telepítse a .war vagy a .jar FTP használatával. Az FTP-eszköz célja az indítási parancsfájlok, függőségek vagy más futtatási fájlokat feltölteni. Már nem az optimális választás a webalkalmazások üzembe helyezéséhez.
 
 ## <a name="logging-and-debugging-apps"></a>Bejelentkezés és hibakeresés alkalmazások
 

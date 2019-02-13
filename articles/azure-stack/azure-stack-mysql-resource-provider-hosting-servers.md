@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 3a80e3a95252b60dd39ad4ce20878922aeee5730
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e1a00ea36efa6af816c371f5498085fc2cf491b6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246882"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165025"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Üzemeltetési kiszolgáló hozzáadása a MySQL erőforrás-szolgáltató
 
-A virtuális gépen (VM) egy MySQL-példányt is üzemeltethet [Azure Stack](azure-stack-poc.md), vagy egy virtuális Gépen az Azure Stack környezettel, amennyiben a MySQL erőforrás-szolgáltató csatlakozhat a példány kívül.
+A MySQL server-példány egy virtuális gépen (VM) futtató üzemeltethet a [Azure Stack](azure-stack-poc.md), vagy egy virtuális Gépen az Azure Stack környezettel, amennyiben a MySQL erőforrás-szolgáltató csatlakozhat a példány kívül.
 
 > [!NOTE]
-> MySQL-adatbázisok a MySQL erőforrás-szolgáltató kiszolgálón kell létrehozni. A MySQL erőforrás-szolgáltató MySQL üzemeltetési kiszolgáló számlázható, felhasználói előfizetés hozza létre az alapértelmezett szolgáltatója előfizetésben kell létrehozni. Az erőforrás-szolgáltató kiszolgáló nem használandó felhasználói adatbázisok üzemeltetéséhez.
+> A MySQL erőforrás-szolgáltató MySQL üzemeltetési kiszolgáló számlázható, felhasználói előfizetések hozza létre az alapértelmezett szolgáltatója előfizetésben kell létrehozni. Az erőforrás-szolgáltató kiszolgáló nem használandó felhasználói adatbázisok üzemeltetéséhez.
 
 Az üzemeltetési kiszolgáló 5.6-os, 5.7-es és 8.0 MySQL verziók használhatók. A MySQL-RP nepodporuje caching_sha2_password hitelesítés; amely a következő kiadásban fog bővülni. MySQL 8.0 kiszolgálók mysql_native_password használatára kell konfigurálni. A MariaDB használata is támogatott.
 

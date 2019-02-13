@@ -8,29 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 9/26/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9a8c927eacf9bb42cdac5541958ce7cb4bb47947
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3233357d9013c2a1f9d77178c217ca9310a34ac4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878901"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198201"
 ---
 # <a name="search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Keresés a weben a Bing Web Search REST API és a Node.js használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre 10 perc alatt az első Bing Web Search API-hívását, majd hogyan fogadhatja a JSON-választ.
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
-
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Node.js-alkalmazás egy keresési kérelmet küld az API-t, és a válasz megjeleníti. Az alkalmazás JavaScript nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * A [Node.js 6-os](https://nodejs.org/en/download/) vagy újabb verziója
 * Egy előfizetői azonosító
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Projekt létrehozása és a szükséges modulok deklarálása
 

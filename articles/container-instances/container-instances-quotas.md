@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 12/17/2018
+ms.date: 02/08/2019
 ms.author: danlep
-ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 35e846aa5954e3714d301c9c75cf42b31961fdfe
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075498"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56160577"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure Container Instances-kvóták és -régiók rendelkezésre állása
 
@@ -28,13 +28,13 @@ Az Azure Container Instances a következő régiókban érhető el a megadott pr
 
 | Hely | Operációs rendszer | CPU | Memória (GB) |
 | -------- | -- | :---: | :-----------: |
-| Közép-Kanada | Linux | 4 | 16 |
+| Kanada középső régiója, USA középső RÉGIÓJA, USA keleti RÉGIÓJA 2 | Linux | 4 | 16 |
 | USA keleti régiója, Észak-Európa, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati régiója | Linux | 4 | 14 |
 | Kelet-Japán | Linux | 2 | 8 |
-| Kelet-Ausztrália, USA 2. keleti régiója, Délkelet-Ázsia | Linux | 2 | 7 |
+| Kelet-Ausztrália, Délkelet-Ázsia | Linux | 2 | 7 |
 | Közép-India, Kelet-Ázsia, USA északi középső RÉGIÓJA, USA déli középső RÉGIÓJA, Dél-India | Linux | 2 | 3.5 |
 | Kelet-Európa, Nyugat-Európa, USA nyugati régiója | Windows | 4 | 14 |
-| Kelet-Ausztrália, közép-Kanada, közép-India, Kelet-Ázsia, USA keleti RÉGIÓJA 2, kelet-japán, USA északi középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Dél-India, Délkelet-Ázsia, USA 2. nyugati | Windows | 2 | 3.5 |
+| Kelet-Ausztrália, közép-Kanada, közép-India, USA középső RÉGIÓJA, Kelet-Ázsia, USA keleti RÉGIÓJA 2, kelet-japán, USA északi középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Dél-India, Délkelet-Ázsia, USA 2. nyugati | Windows | 2 | 3.5 |
 
 Az ezen erőforráskorlátokon belül létrehozott tárolópéldányok az üzembe helyezés régiójában állnak rendelkezésre. Amikor egy régió nagy terhelés alatt áll, hibát észlelhet a példányok üzembe helyezésekor. Az ilyen üzembe helyezési hibák csillapítása érdekében próbálja meg alacsonyabb processzor- és memóriabeállításokkal üzembe helyezni a példányokat, vagy próbálja meg később az üzembe helyezést.
 

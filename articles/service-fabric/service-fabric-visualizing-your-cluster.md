@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 8a2a1b70290f48b3189bfae2f67dd19c5ef4c9f2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b97f2d3a015ebfd5f9c8771d3fc3edc1c074c839
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093257"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203709"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
@@ -62,17 +62,6 @@ A Service Fabric-fürthöz csatlakozik, szüksége van a fürt felügyeleti vég
 A Service Fabric-fürthöz, tanúsítványok vagy Azure Active Directory (AAD) használatával való ügyfél-hozzáférési szabályozhatja.
 
 Ha megpróbálja egy biztonságos fürthöz való csatlakozáshoz, majd a fürt konfigurációjától függően kell adnia ügyféltanúsítvány jelen, vagy jelentkezzen be aad-ben való.
-
-## <a name="video-tutorial"></a>Oktatóvideó
-
-Megtudhatja, hogyan használható a Service Fabric Explorer, az alábbi Microsoft Virtual Academy-videó megtekintése:
-
-> [!NOTE]
-> Ez a videó bemutatja a Service Fabric Explorer üzemeltetett Service Fabric-fürt, az asztali verziót.
->
->
-
-[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>A Service Fabric Explorer elrendezésének ismertetése
 A fa használatával a bal oldali navigációs sávja a Service Fabric Explorer. A fa gyökérmappájában a fürt irányítópultja áttekintést a fürtről, beleértve az alkalmazás és a csomópontok állapotának összefoglalását.

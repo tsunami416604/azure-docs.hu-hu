@@ -17,12 +17,13 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 82e11f9f4af8dfba28b56364ea5dce8eceaae5f1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 49a82e1452a4380920271f4fb4f7397208e32d78
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491484"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174452"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Kezelés és testreszabás Active Directory összevonási szolgáltatások az Azure AD Connect használatával
 Ez a cikk bemutatja, hogyan kezelheti, és testre szabhatja az Active Directory összevonási szolgáltatások (AD FS) Azure Active Directory (Azure AD) Connect használatával. Más általános az AD FS-feladatokat, amelyeket az AD FS-farm teljes konfiguráció megtenni, előfordulhat, hogy is tartalmaz.

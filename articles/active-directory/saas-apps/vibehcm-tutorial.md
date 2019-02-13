@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Vibe HCM |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Vibe HCM |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Vibe HCM között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 395f99c986e0a51e8dd2c440d258724e862f275c
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 79787045f0379e6b672350206740297000f298c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019807"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185570"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>Oktatóanyag: Azure Active Directory-integráció az Vibe HCM
+# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Vibe HCM
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Vibe HCM integrálható az Azure Active Directory (Azure AD).
 
@@ -160,7 +161,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-a-vibe-hcm-test-user"></a>Vibe HCM tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Vibe HCM hoz létre. Együttműködve [Vibe HCM támogatási csapatának](mailto:support@vibehcm.com) a felhasználók hozzáadása az Vibe HCM platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Vibe HCM hoz létre. Együttműködve [Vibe HCM támogatási csapatának](mailto:support@vibehcm.com) a felhasználók hozzáadása az Vibe HCM platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

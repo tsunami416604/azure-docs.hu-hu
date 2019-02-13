@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 988e72a20fdd80e41ce8fc1ef568d90d4283a848
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8b1c0d33a7d920f76bcbea6d8d6babc7390003bc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813500"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196586"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure AD) topológiákat, amelyek az Azure AD Connect-szinkronizálást használ, a főbb integrációs megoldása. Ez a cikk is támogatott, és nem támogatott konfigurációkat tartalmaz.

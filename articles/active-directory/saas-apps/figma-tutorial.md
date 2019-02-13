@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Figma |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Figma |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Figma között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: jeedes
-ms.openlocfilehash: b57fdb3f039a9395133854f8b4d4f2095e3a4f9b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3885f579e4543f25c409010c0aae970c26d2b9c4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095245"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183974"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-figma"></a>Oktatóanyag: Azure Active Directory-integráció az Figma
+# <a name="tutorial-azure-active-directory-integration-with-figma"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Figma
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Figma integrálása az Azure Active Directory (Azure AD).
 

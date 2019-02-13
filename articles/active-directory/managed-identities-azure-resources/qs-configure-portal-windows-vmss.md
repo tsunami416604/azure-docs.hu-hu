@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: priyamo
-ms.openlocfilehash: 18344ff6c2145f4be5fa79fa16f4e61a2a2386b1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 79ab1f046e5ab6c5b777e9253dd21e47fa9d593a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193369"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187933"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy virtuális gép méretezési csoportban az Azure portal használatával
 
@@ -72,7 +73,7 @@ Ha egy virtuális gép méretezési csoportot, amely egy rendszer által hozzár
 
    ![Konfiguráció lap képernyőképe](./media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)
 
-## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
 Ebben a szakaszban megismerheti, hogyan adhat hozzá, és a egy felhasználó által hozzárendelt felügyelt identitás eltávolítása egy virtuálisgép-méretezési csoportba, az Azure portal használatával.
 

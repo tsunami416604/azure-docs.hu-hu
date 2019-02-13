@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
-ms.openlocfilehash: eebc19f5bd14e835b8174695b2d0d87fe8ddc4bc
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d05f6006476cb17cbe751caf9c830fe3e10047c9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822051"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172688"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Felügyelt identitások használata az Azure-erőforrások egy Azure-beli virtuális gépen a hozzáférési jogkivonat beszerzése 
 
@@ -370,7 +371,7 @@ Ha hiba történik, a megfelelő HTTP-válasz törzsében JSON az a hiba részle
 
 Ez a szakasz a lehetséges hibaválaszok dokumentumok. A "200 OK" állapota sikeres válasz, és a hozzáférési jogkivonatot a válasz törzse JSON-t, a access_token elem szerepel.
 
-| Állapotkód | Hiba | Hiba leírása | Megoldás |
+| Állapotkód | Hiba | Hibaleírás | Megoldás |
 | ----------- | ----- | ----------------- | -------- |
 | 400 Hibás kérés | invalid_resource | AADSTS50001: Az alkalmazás nevű *\<URI\>* nem található az nevű bérlőben  *\<TENANT-ID\>*. Ez akkor fordulhat elő, ha az alkalmazás még nem a bérlő rendszergazdája telepítette vagy nem fogadta el a bérlő a egyetlen felhasználója sem. Előfordulhat, hogy a hitelesítési kérést részére elküldött rossz bérlőhöz. \ | (Csak Linux) |
 | 400 Hibás kérés | bad_request_102 | Nincs megadva a szükséges metaadat-fejléc | Vagy a `Metadata` kérelem fejléce mező hiányzik a kérelemből, vagy helytelenül van formázva. Az értéket kell megadni, `true`, csupa kisbetű szerepel. A "mintakérelem" jelenik meg az előző REST szakaszban példaként.|

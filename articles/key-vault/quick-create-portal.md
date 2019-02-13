@@ -3,7 +3,7 @@ title: Rövid Azure-útmutató – Titkos kulcs beállítása és lekérése a K
 description: Rövid útmutató, amely bemutatja a titkos kulcsok beállítását és lekérését az Azure Key Vaultból az Azure Portal használatával
 services: key-vault
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 98cf8387-34de-468e-ac8f-5c02c9e83e68
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: c3b605507c3878770db2c7dcb53a2ff9bb512b6b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 4dd81fd03c39dec3c34e614234a563ec8c2ced38
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078388"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117102"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault az Azure portal használatával
 
@@ -58,14 +58,14 @@ Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen a
 
 ## <a name="add-a-secret-to-key-vault"></a>Titkos kulcs hozzáadása a Key Vaulthoz
 
-Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést kell végrehajtania. Ebben az esetben egy alkalmazás által használható jelszót fogunk megadni. A jelszó neve **ExamplePassword** lesz, és a **Pa$$w0rd** értéket tároljuk benne.
+Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést kell végrehajtania. Ebben az esetben egy alkalmazás által használható jelszót fogunk megadni. A jelszó neve **ExamplePassword** és az értéket tároljuk **hVFkk965BuUv** benne.
 
 1. A Key Vault-tulajdonságok lapján válassza a **Titkos kódok** lehetőséget.
 2. Kattintson a **Létrehozás/Importálás** gombra.
 3. A **Titkos kód létrehozása** képernyőn válassza az alábbi értékeket:
     - **Feltöltési beállítások**: Manuális.
     - **Név**: ExamplePassword.
-    - **Érték**: Pa$ $w0rd.
+    - **Érték**: hVFkk965BuUv
     - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Create** (Létrehozás) gombra.
 
 Miután megérkezett az üzenet arról, hogy a titkos kulcs sikeresen létrejött, kattintson rá a listában. Ezután megjelenik néhány tulajdonság. Ha a jelenlegi verzióra kattint, láthatja az előző lépésben megadott értéket.

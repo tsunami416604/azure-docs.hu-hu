@@ -14,21 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 87081398e844f1e2b085a7e12c2b7aafce330ec9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194287"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193764"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy állapotmodell által biztosított a gazdag, rugalmas és bővíthető állapotának kiértékelését és a jelentéskészítés mutatja be. A modell lehetővé teszi, közel valós idejű figyelését a fürt és a benne lévő futó szolgáltatások állapotát. Egyszerűen egészségügyi információk beszerzéséhez, és kijavíthatja az esetleges problémák előtt alkalmazza, és a nagy leállások miatt. A tipikus modellben szolgáltatások küldeni a jelentéseket a saját helyi található nézetek alapján, és, hogy információt összesített értéket jelenít meg, adja meg a teljes fürt szintű megtekintése.
 
 A Service Fabric összetevői a gazdag állapotmodell használja a jelenlegi állapotuk jelentéséhez. Használhatja ugyanazt a mechanizmust jelentés állapotába le az alkalmazásokból. Fektet a magas színvonalú állapotfigyelő jelentési, amely rögzíti az egyéni feltételek, ha észleli, és sokkal egyszerűbben futó alkalmazás megoldásának.
-
-Az alábbi Microsoft Virtual Academy-videó is ismerteti a Service Fabric állapotközpontú modellről, és azok felhasználási módjáról: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
-<img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 > [!NOTE]
 > Az egészségügyi alrendszer megoldására figyelt frissítéseket kell azt elindult. A Service Fabric biztosít a figyelt alkalmazás és a fürt frissítések, amelyek a teljes rendelkezésre, leállás nélkül és minimális felhasználói beavatkozás nélküli. Ezen célok eléréséhez a frissítés állapota alapján a konfigurált frissítési szabályzatok ellenőrzi. Frissítés folytassa csak akkor, ha a health figyelembe veszi a kívánt küszöbértékeket. Ellenkező esetben a frissítés automatikusan vissza állítva vagy fel van függesztve, a segítségével a rendszergazdák és hárítsa el a problémákat. Alkalmazásfrissítések kapcsolatos további információkért lásd: [Ez a cikk](service-fabric-application-upgrade.md).

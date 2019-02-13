@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az ZenQMS |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ZenQMS |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és ZenQMS között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 57a8c698133b2b5516a1f5d352f28148afe6f3d2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f9804dee56e9f099654359e7c336f706cedbd1f7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42447408"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204865"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>Oktatóanyag: Azure Active Directory-integráció az ZenQMS
+# <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ZenQMS
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan ZenQMS integrálása az Azure Active Directory (Azure AD).
 
@@ -172,7 +173,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="create-a-zenqms-test-user"></a>ZenQMS tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű ZenQMS hoz létre. Együttműködve [ZenQMS támogatási csoportjának](mailto:help@zenqms.com) a felhasználók hozzáadása az ZenQMS platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű ZenQMS hoz létre. Együttműködve [ZenQMS támogatási csoportjának](mailto:help@zenqms.com) a felhasználók hozzáadása az ZenQMS platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: fa31397e0ecffbd245557a824bdd770724bbc91c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0ceff87cd3075d517ee1c0027e19dbf423e44f5c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249880"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108755"
 ---
-# <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>Oktatóanyag: Adatok átvitele az Azure Data Factory Gatewayjel (előzetes verzió)
+# <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>Oktatóanyag: Adatok áthelyezése az Azure Data Box Gateway (előzetes verzió)
 
 
 ## <a name="introduction"></a>Bevezetés
@@ -121,13 +121,13 @@ Végezze el az alábbi lépéseket a Data Box Edge-hez csatlakoztatott Linux-üg
 
 2. Az NFS-ügyfél telepítését követően az alábbi parancs használatával csatlakoztathatja a Data Box Gateway eszközön létrehozott NFS-fájlmegosztást:
 
-   `sudo mount <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
+   `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     A csatlakoztatás előtt ellenőrizze, hogy a könyvtárak, amelyek helyi számítógépen csatlakozási pontként fognak szolgálni, már létrejöttek-e, illetve hogy nem tartalmaznak-e fájlokat vagy almappákat.
 
     Az alábbi példa bemutatja az NFS-en keresztüli csatlakozást egy Gateway eszközön található megosztáshoz. A virtuális eszköz IP-címe `10.10.10.60`, a `mylinuxshare2` megosztás az ubuntuVM virtuális géphez csatlakozik, a csatlakozási pont pedig a `/home/databoxubuntuhost/gateway`.
 
-    `sudo mount -t nfs 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
+    `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
 
 > [!NOTE] 
 > Az előzetes verzióra a következő kikötések vonatkoznak:

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 4668ff23710121e5495395d71902b9ffa4c01238
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 90e01f39fa6b31095d76d0dfae2f700b4fa2ca3f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220348"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182867"
 ---
 # <a name="storage-accounts"></a>Tárfiókok
 
@@ -29,7 +29,7 @@ Egy **elsődleges** és tetszőleges számú **másodlagos** Storage-fiókot tá
 
 Javasoljuk a GPv2, használja, így kihasználhatja, gyakori elérésű közötti választáshoz, és lassú elérésű szinteket annak. Storage-fiókokkal kapcsolatos további tudnivalókért lásd: [Azure Storage-fiók áttekintése](../../storage/common/storage-account-overview.md). 
 
-A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez kell lennie. Javasoljuk, hogy a Media Services-fiók ugyanazon a helyen a storage-fiókok használatához.
+A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez kell lennie. Erősen ajánlott a storage-fiókok használatához a Media Services-fiók ugyanazon a helyen a további késleltetés és az adatok kimenő adatforgalmi költségek elkerülése érdekében
 
 ## <a name="assets-in-a-storage-account"></a>Storage-fiókban lévő eszközök
 

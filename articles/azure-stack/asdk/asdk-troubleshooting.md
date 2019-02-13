@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2111fe6a70f45559faeb3e0f8096548dcc7b48bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 40394409dfafa3ad6b3d6685f5c944fc78df813f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238941"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172216"
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>A Microsoft Azure Stack Development Kit (ASDK) hibáinak elhárítása
-Ez a dokumentum a ASDK általános hibaelhárítási információkat nyújt. Ha nem ismertetett problémát tapasztal, ellenőrizze, hogy ellenőrizze a [Azure Stack MSDN-fórumában](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) további segítséget és információt.  
+Ez a cikk a ASDK általános hibaelhárítási információkat nyújt. Ha nem ismertetett problémát tapasztal, ellenőrizze, hogy ellenőrizze a [Azure Stack MSDN-fórumában](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) további segítséget és információt.  
 
 > [!IMPORTANT]
 > Mivel a ASDK kiértékelési környezet, rendszer nem érhető el – a Microsoft támogatja a szolgáltatások (CSS) hivatalos támogatja.

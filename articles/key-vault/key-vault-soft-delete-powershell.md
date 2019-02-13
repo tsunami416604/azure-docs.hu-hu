@@ -2,17 +2,17 @@
 title: Az Azure Key Vault - helyreállítható törlés használata a PowerShell-lel
 description: Kis példák a helyreállítható törlés funkciójának használata PowerShell-kódrészletek
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: bryanla
-ms.openlocfilehash: 48c471e17fb28843bf61f1591faafc119eb8dec8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 70437403d3b78b7f8b9eef921c933a68793450da
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002331"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113583"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés használata a PowerShell-lel
 
@@ -236,5 +236,5 @@ Törölt key vault-objektumokon ajánlati is bemutatja, amikor még a Key Vault 
 ## <a name="other-resources"></a>Egyéb erőforrások
 
 - A Key Vault helyreállítható törlés funkciójának áttekintéséhez lásd: [Azure Key Vault helyreállítható törlés áttekintése](key-vault-ovw-soft-delete.md).
-- Az Azure Key Vault használatának általános áttekintéséért lásd: [első lépései az Azure Key Vault](key-vault-get-started.md).
+- Az Azure Key Vault használatának általános áttekintéséért lásd: [Mi az Azure Key Vault?](key-vault-overview.md).
 

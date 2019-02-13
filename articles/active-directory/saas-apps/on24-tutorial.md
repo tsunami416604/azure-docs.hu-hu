@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció ON24 virtuális környezet SAML-kapcsolattal rendelkező |} A Microsoft Docs'
+title: 'Oktatóanyag: ON24 virtuális környezet SAML-kapcsolattal az Azure Active Directory-integráció |} A Microsoft Docs'
 description: Ismerje meg, hogyan konfigurálása egyszeri bejelentkezéshez ON24 virtuális környezet SAML kapcsolat és az Azure Active Directory között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 1ec18f0013a7fa640395a8b8bedd9df8b0924c3a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0827895d58b0b7633ee4543495014c62b5394312
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071243"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209489"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Oktatóanyag: Azure Active Directory-integráció ON24 virtuális környezet SAML-kapcsolattal
+# <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Oktatóanyag: Az Azure Active Directory-integráció ON24 virtuális környezet SAML-kapcsolattal
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan ON24 virtuális környezet SAML kapcsolat integrálható az Azure Active Directory (Azure AD).
 
@@ -194,7 +195,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
  
 ### <a name="create-an-on24-virtual-environment-saml-connection-test-user"></a>Hozzon létre egy virtuális környezet SAML csatlakozási ON24 tesztfelhasználót
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű ON24 virtuális környezet SAML kapcsolatot hoz létre. Együttműködve [ON24 virtuális környezet SAML csatlakozási támogatási csapatának](https://www.on24.com/about-us/support/) a felhasználók hozzáadása a virtuális környezet SAML csatlakozási ON24 platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű ON24 virtuális környezet SAML kapcsolatot hoz létre. Együttműködve [ON24 virtuális környezet SAML csatlakozási támogatási csapatának](https://www.on24.com/about-us/support/) a felhasználók hozzáadása a virtuális környezet SAML csatlakozási ON24 platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

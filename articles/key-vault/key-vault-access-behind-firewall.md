@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan lehet elérni a tűzfal mögötti Azure Key Vau
 services: key-vault
 documentationcenter: ''
 author: amitbapat
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 50d21774-2ee1-4212-8995-570c9de603c5
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: cd5ecf60c76ec3db0bc0d867a8a807016eeea863
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 36b431d07ad517d495316963fd6710dafab6c297
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073727"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108636"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Az Azure Key Vault elérése tűzfal mögött
 
@@ -36,7 +36,7 @@ A konfigurációtól és a környezettől függően lehetnek bizonyos eltérése
 
 Mindhárom funkció (a hitelesítés, a felügyelet és az adatsíkhoz való hozzáférés) Key Vault felé irányuló összes forgalma a 443-as HTTPS-porton keresztül zajlik. A CRL használata esetén azonban alkalmanként HTTP-forgalom is előfordul (a 80-as porton keresztül). Az OCSP protokollhoz hozzáférő ügyfeleknek nem szabad elérniük a CRL-t, azonban alkalmanként elérhetik a [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl) címet.  
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 A Key Vault-ügyfélalkalmazásoknak a hitelesítés érdekében hozzá kell férniük az Azure Active Directory-végpontokhoz. A használt végpont függ az Azure AD bérlői konfigurációjától, valamint a név típusától (felhasználói név, szolgáltatásnév), illetve a fiók típusától (pl. Microsoft-fiók vagy munkahelyi/iskolai fiók).  
 

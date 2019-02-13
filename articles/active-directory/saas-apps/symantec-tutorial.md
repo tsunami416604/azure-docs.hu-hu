@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: adcf823879ee04c43d74743aa5d94184b63fd337
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf4d2d18971948e15cca2e1b91d9d55a73cefe4b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893289"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187916"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Oktatóanyag: Az Azure Active Directory-integráció Symantec webes biztonsági szolgáltatás (VSS)
 

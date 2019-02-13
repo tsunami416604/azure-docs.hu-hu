@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Workteam |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Workteam |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Workteam között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d6ca6395e4f5e1aca361c56e21afc4e6bd1fc0c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6a1022ce74fd5514b274f498a4d4f764393e6428
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132896"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185774"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Oktatóanyag: Azure Active Directory-integráció az Workteam
+# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Workteam
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Workteam integrálása az Azure Active Directory (Azure AD).
 
@@ -145,7 +146,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     c. A a **SAML Entitásazonosító** szövegmezőjébe illessze be az értéket, **SAML Entitásazonosító**, az Azure Portalról másolt.
 
-    d. A Jegyzettömbben, nyissa meg a **base-64 kódolású tanúsítvány** az Azure Portalról letöltött, másolja a tartalmat, és illessze be azt a **SAML aláíró tanúsítvány (Base64)** mezőbe.
+    d. A Jegyzettömbben, nyissa meg a **base-64 kódolású tanúsítvány** az Azure Portalról letöltött, másolja a tartalmat, és illessze be azt a **SAML aláíró tanúsítvány (Base64)** mezőbe.
 
     e. Kattintson az **OK** gombra.
 

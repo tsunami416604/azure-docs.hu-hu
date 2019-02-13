@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: be4549b8b9cca3f4aa48a21fb9377dbd203dde69
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 82e80b9dd4d20709fc8598e0fed3323046c21cfa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751123"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189412"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Egy Linux rendszerű virtuális gépen az Azure-ban a Jenkins, GitHub és Docker-fejlesztési infrastruktúra létrehozása
 
@@ -59,7 +59,7 @@ write_files:
         "hosts": ["fd://","tcp://127.0.0.1:2375"]
       }
 runcmd:
-  - apt install default-jre -y
+  - apt install openjdk-8-jre-headless -y
   - wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
   - sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
   - apt-get update && apt-get install jenkins -y
@@ -109,6 +109,21 @@ Biztonsági okokból a Jenkins telepítésének megkezdéséhez meg kell adnia a
 ssh azureuser@<publicIps>
 ```
 
+Ellenőrizze a Jenkins használatával fut-e a `service` parancsot:
+
+```bash
+$ service jenkins status
+● jenkins.service - LSB: Start Jenkins at boot time
+   Loaded: loaded (/etc/init.d/jenkins; generated)
+   Active: active (exited) since Tue 2019-02-12 16:16:11 UTC; 55s ago
+     Docs: man:systemd-sysv-generator(8)
+    Tasks: 0 (limit: 4103)
+   CGroup: /system.slice/jenkins.service
+
+Feb 12 16:16:10 myVM systemd[1]: Starting LSB: Start Jenkins at boot time...
+...
+```
+
 Tekintse meg a Jenkins-telepítéshez tartozó `initialAdminPassword` értéket és másolja a vágólapra:
 
 ```bash
@@ -125,7 +140,7 @@ Ezután indítson el egy webböngészőt és lépjen a `http://<publicIps>:8080`
 - Válassza a **Save and Finish** (Mentés és befejezés) elemet
 - Amint Jenkins készen áll, kattintson a **Start using Jenkins** (Jenkins használatának megkezdése) elemre
   - Ha a webböngésző Jenkins használatának megkezdésekor egy üres lapot jelenít meg, indítsa újra a Jenkins szolgáltatást. Az SSH-munkamenetben gépelje be a `sudo service jenkins restart` parancsot, majd frissítse a webböngészőt.
-- A létrehozott felhasználónév és jelszó segítségével jelentkezzen be a Jenkins szolgáltatásba.
+- Ha szükséges, jelentkezzen be a felhasználónevet és jelszót, amelyet a Jenkins.
 
 
 ## <a name="create-github-webhook"></a>GitHub-webhook létrehozása
@@ -133,11 +148,13 @@ A GitHubbal való integráció konfigurálásához nyissa meg a [Node.js „Hell
 
 Hozzon létre egy webhookot a létrehozott elágazásban:
 
-- Válassza a **Settings** (Beállítások) lehetőséget, majd az **Integrations & services** (Integrációk és szolgáltatások) lehetőséget a bal oldalon.
-- Válassza az **Add service** (Szolgáltatás hozzáadása) lehetőséget, majd a szűrőmezőbe írja be a *Jenkins* kifejezést.
-- Válassza ki a *Jenkins (GitHub plugin)* elemet.
-- A **Jenkins hook URL**-címének írja be: `http://<publicIps>:8080/github-webhook/`. Ügyeljen rá, hogy az URL-címből ne maradjon le a „/” záró karakter.
-- Válassza az **Add service** (Szolgáltatás hozzáadása) lehetőséget.
+- Válassza ki **beállítások**, majd **Webhookok** a bal oldalon.
+- Válasszon **webhook hozzáadása**, majd adja meg *Jenkins* a Szűrő mezőbe.
+- Az a **hasznos adat URL-cím**, adja meg `http://<publicIps>:8080/github-webhook/`. Ügyeljen rá, hogy az URL-címből ne maradjon le a „/” záró karakter.
+- A **tartalomtípus**válassza *application/x-www-form-urlencoded*.
+- A **mely eseményeket szeretné elindítani ezt a webhookot?** válassza *csak a leküldéses esemény.*
+- Állítsa be **aktív** az ellenőrzött.
+- Kattintson a **webhook hozzáadása**.
 
 ![A GitHub-webhook hozzáadása az elágaztatott adattárhoz](media/tutorial-jenkins-github-docker-cicd/github_webhook.png)
 
@@ -166,7 +183,7 @@ response.end("Hello World!");
 
 A módosítások véglegesítéséhez kattintson az alul lévő **Commit changes** (Módosítások véglegesítése) gombra.
 
-A Jenkinsben elindul egy új létrehozás a feladatoldal bal alsó sarkában található **Build history** (Létrehozási előzmények) szakaszban. Válassza ki a létrehozás számának hivatkozását, majd válassza a bal oldali **Console output** (Konzolkimenet) lehetőséget. Megtekintheti a Jenkins által végrehajtott lépéseket, ahogy az lehívja a kódot a GitHubról, a létrehozási művelet pedig a következő üzenetet jeleníti meg a konzolon: `Testing`. A GitHubon végzett minden egyes véglegesítéskor a webhook kapcsolatba lép a Jenkinsszel és aktivál egy új létrehozást.
+A Jenkinsben elindul egy új létrehozás a feladatoldal bal alsó sarkában található **Build history** (Létrehozási előzmények) szakaszban. Válassza ki a létrehozás számának hivatkozását, majd válassza a bal oldali **Console output** (Konzolkimenet) lehetőséget. Megtekintheti a Jenkins által végrehajtott lépéseket, ahogy az lehívja a kódot a GitHubról, a létrehozási művelet pedig a következő üzenetet jeleníti meg a konzolon: `Test`. A GitHubon végzett minden egyes véglegesítéskor a webhook kapcsolatba lép a Jenkinsszel és aktivál egy új létrehozást.
 
 
 ## <a name="define-docker-build-image"></a>Docker-létrehozási rendszerkép definiálása

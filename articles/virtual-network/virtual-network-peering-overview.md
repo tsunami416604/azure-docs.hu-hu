@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 6bb075857d67885d968b495cc8d545af9994eaf0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c91292bff22a76e4c15f031094809e20fdc43031
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169314"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175727"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -78,7 +78,7 @@ Megpróbálhatja a [virtuális hálózati társviszony-létesítési hibák elh�
 ## <a name="requirements-and-constraints"></a>Követelmények és korlátozások
 
 A virtuális hálózatok globális társviszonyaira a következő korlátozások érvényesek:
-- A virtuális hálózatok az Azure nyilvános felhő bármelyik régiójában lehetnek, az országos Azure-felhőkben azonban nem.
+- Minden olyan régióban az Azure nyilvános felhő és az Azure China felhő-régiók, de nem az Azure Government-felhőben lévő virtuális hálózatok létezhet.
 - Az egyes virtuális hálózatok erőforrásai nem kommunikálhatnak a globálisan társított virtuális hálózat belső, Azure-beli terheléselosztóinak előtérbeli IP-címével. A terheléselosztónak és a vele kommunikáló erőforrásoknak ugyanabban a régióban kell lenniük.
 - Nem használhat távoli átjárókat, és nem engedélyezheti az átjárói átvitelt. A távoli átjárók használatához vagy az átjárói átvitel engedélyezéséhez a társított virtuális hálózatoknak ugyanabban a régióban kell lenniük.
 

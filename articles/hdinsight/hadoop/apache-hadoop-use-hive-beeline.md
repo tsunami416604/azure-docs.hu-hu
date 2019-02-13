@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3470caec801c5be54f04fc09a5da734a973f0c82
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 23fa146b7bdaef0451984d0fbc638c57691cf259
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962162"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201720"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Hive az Apache a Beeline-ügyfél használata
 
@@ -280,10 +280,7 @@ További információ a más módokon használhatja a Hadoop on HDInsight az al�
 * [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md)
 * [A HDInsight az Apache Hadoop MapReduce használata](hdinsight-use-mapreduce.md)
 
-Tez Hive-val használja, ha az alábbi dokumentumokban talál:
-
-* [A Windows-alapú HDInsight az Apache Tez felhasználói felület használata](../hdinsight-debug-tez-ui.md)
-* [A Linux-alapú HDInsight az Apache Ambari Tez nézet használata](../hdinsight-debug-ambari-tez-view.md)
+Ha Tez Hive-val használ, tekintse meg a következő dokumentumot: [Az Apache Ambari Tez nézetben jelenítheti meg a Linux-alapú HDInsight](../hdinsight-debug-ambari-tez-view.md).
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/

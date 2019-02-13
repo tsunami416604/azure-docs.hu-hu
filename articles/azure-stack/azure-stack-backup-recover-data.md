@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 9dc023eedf0ddca4e760d9d066b019b75597fb69
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3fd91ef17415e2c6ebb735fdedb098f8aa319d8c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246483"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207415"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Végzetes adatvesztés utáni helyreállítás
 
 *Vonatkozik: Az Azure Stackkel integrált rendszerek.*
 
-Az Azure Stack Azure-szolgáltatások a helyi adatközpontban fut. Az Azure Stack négy csomópont az egyetlen állványon telepítve legyen a környezetben futtathatja. Ezzel szemben az Azure több mint 40 régióban több adatközpont és az egyes régiókban több zónában futtatja. Felhasználói erőforrásokat is kiterjedhetnek több kiszolgálók, állványokon, adatközpontok és régiók. Az Azure Stack jelenleg csak választhat, hogy a teljes felhőalapú üzembe egyetlen állványon. Ez elérhetővé teszi a felhőben, az adatközpontban vagy a hiba oka, hogy jelentős termékhibákat katasztrofális esemény kockázatát. Ha egy katasztrófa utáni feladatokat, az Azure Stack-példány offline állapotba kerül. Összes adat potenciálisan helyreállíthatatlan.
+Az Azure Stack Azure-szolgáltatások fut a helyi adatközpontban, és négy csomópont az egyetlen állványon telepítve legyen a környezetben futtatható. Ezzel szemben az Azure több mint 40 régióban több adatközpont és az egyes régiókban több zónában futtatja. Felhasználói erőforrásokat is kiterjedhetnek több kiszolgálók, állványokon, adatközpontok és régiók. Az Azure Stack jelenleg csak választhat, hogy a teljes felhőalapú üzembe egyetlen állványon. Ez elérhetővé teszi a felhőben, az adatközpontban vagy a hiba oka, hogy jelentős termékhibákat katasztrofális esemény kockázatát. Ha egy katasztrófa utáni feladatokat, az Azure Stack-példány offline állapotba kerül. Összes adat potenciálisan helyreállíthatatlan.
 
 Az adatvesztés kiváltó okának függően szükség lehet egy egyetlen infrastruktúra-szolgáltatás javítása, vagy állítsa vissza a teljes Azure Stack-példány. Akkor is szükség lehet ugyanazon a helyen, vagy egy másik helyen lévő másik hardverre visszaállítása.
 

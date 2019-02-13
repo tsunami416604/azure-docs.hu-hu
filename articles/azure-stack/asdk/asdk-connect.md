@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: knithinc
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 44f12c72716e98e2f28796359467685e0af579dd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 42b67ae9b715670f1a0c6e0fed004487a52817d3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238246"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206469"
 ---
 # <a name="connect-to-the-asdk"></a>Csatlakozás a ASDK
 
 Erőforrások kezelése, először csatlakoznia kell a az Azure Stack Development Kit (ASDK). Ez a cikk a szükséges lépéseket a következő kapcsolati lehetőségek használatával csatlakozni a ASDK is ismertetünk:
 
 * [A távoli asztali kapcsolat (RDP)](#connect-with-rdp). Ha távoli asztali kapcsolattal csatlakozik, egyetlen felhasználó gyorsan csatlakozhatnak a development Kitet.
-* [Virtuális magánhálózat (VPN)](#connect-with-vpn). Ha egy VPN-en keresztül csatlakozik, több felhasználó egyidejűleg csatlakozhatnak az Azure Stack-infrastruktúra kívüli ügyfelek számára. Egy VPN-kapcsolat néhány beállítás szükséges.
+* [Virtuális magánhálózat (VPN)](#connect-with-vpn). Ha egy VPN-en keresztül csatlakozik, több felhasználó egyidejűleg csatlakozhat az Azure Stack portálon kívül az Azure Stack-infrastruktúra-ügyfelekről. Egy VPN-kapcsolat néhány beállítás szükséges.
 
 <a name="connect-with-rdp"></a>
 ## <a name="connect-to-azure-stack-using-rdp"></a>Csatlakozás az Azure Stack RDP-vel

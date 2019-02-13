@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 70f53ed06daad8adf10ef5a88f0672f86d6a8b48
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5722db5be656641301299956172ee19249be7895
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004128"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106404"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Naplóriasztások az Azure monitorban
 Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](../platform/alerts-overview.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
@@ -99,14 +99,28 @@ Példaként vegyünk egy forgatókönyvet, ahol szeretett volna egy riasztás mi
 - **Lekérdezés:** Teljesítményoptimalizált |} ahol ObjectName == "Processzor" és a CounterName == "processzoridő" |} summarize AggregatedValue = avg(CounterValue) bin (TimeGenerated, 5m), a számítógép szerint<br>
 - **Időszak:** 30 perc<br>
 - **Riasztási időköz:** öt perc alatt<br>
-- **Összesített érték:** Nagyobb, mint 90<br>
+- **Riasztási logika - feltétel & küszöbértéke:** Nagyobb, mint 90<br>
+- **Csoport mező (Aggregate-a):** Computer
 - **Eseményindító riasztás alapja:** Teljes feltöri a 2-nél nagyobb<br>
 
-A lekérdezés minden olyan számítógépen átlagos értékét hozna létre, 5 perces időközönként.  Ez a lekérdezés szeretné futtatni át 5 percenként összegyűjtött adatokat az előző 30 perc.  Mintaadatok három számítógép az alább látható.
+A lekérdezés minden olyan számítógépen átlagos értékét hozna létre, 5 perces időközönként.  Ez a lekérdezés szeretné futtatni át 5 percenként összegyűjtött adatokat az előző 30 perc. Mivel a kiválasztott csoport mező (Aggregate-a) Oszlopalapú "számítógép" – az AggregatedValue "Számítógép" különböző értékkel van felosztva, és minden egyes számítógép az átlagos processzorhasználat 5 perc alatt egy idő doboz határozza meg.  Három számítógép, (például) lenne a mintául szolgáló lekérdezés eredménye látható.
+
+
+|TimeGenerated [UTC] |Computer  |AggregatedValue  |
+|---------|---------|---------|
+|20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
+|20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
+|20xx-xx-xxT01:00:00Z     |   srv03.contoso.com      |    83     |
+|...     |   ...      |    ...     |
+|20xx-xx-xxT01:30:00Z     |   srv01.contoso.com      |    88     |
+|20xx-xx-xxT01:30:00Z     |   srv02.contoso.com      |    84     |
+|20xx-xx-xxT01:30:00Z     |   srv03.contoso.com      |    92     |
+
+Ha a lekérdezés eredményének ábrázolható, azt néven jelenik meg.
 
 ![Mintául szolgáló lekérdezés eredményei](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
-Ebben a példában külön riasztások létrehozott srv02 és srv03 mivel ezek a 90 %-os küszöbértéket megsértették háromszor keresztül az adott időszakban.  Ha a **eseményindító riasztás alapján:** értékről **folyamatos** és a egy riasztás akkor hozhatók létre csak srv03 óta, a három egymást követő minták küszöbértéket megsértették.
+Ebben a példában látható bins 5 perc, az egyes három számítógép -, átlagos processzorhasználat 5 percnél létre. 1:25-kor srv01 csak egyszer által éppen megsértették 90 küszöbértéket bin. Ezzel szemben srv02 úgy meghaladja a küszöbértéket 90, legalább 1:10, 1:15 és 1:25-kor bins; srv03 meghaladja a küszöbértéket 90 legalább 1:10, 1:15., míg 1:20. és 1:30. Mivel riasztás úgy van konfigurálva, hogy az eseményindító összes incidens alapján meghaladja a kettőt, láthatjuk, hogy srv02 és srv03 csak a feltételeknek. Így külön riasztások lenne hozható létre srv02 és srv03 mivel ezek a 90 %-os küszöbértéket megsértették kétszer több idő bins között.  Ha a *eseményindító riasztás alapján:* paraméter inkább konfigurált *folyamatos megszegése* lehetőséget, majd riasztást szeretne fired **csak** srv03, mivel azt megsértették a a 1:20 1:10 három egymást követő alkalommal bins küszöbértékét. És **nem** srv02, számára, mert megsértették 1:15-re 1:10 két egymást követő alkalommal bins küszöbértéke.
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Keresés riasztási szabály - elsőre és állapota
 

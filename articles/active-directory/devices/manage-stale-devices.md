@@ -16,12 +16,13 @@ ms.topic: overview
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: bb2d1182d473203e045b85e25d7c7a90f45a3ac6
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c47b68cb173769eb677a5b1028d48c62f6edb4e9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894377"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201635"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>kézikönyv: Elavult eszközök kezelése az Azure ad-ben
 

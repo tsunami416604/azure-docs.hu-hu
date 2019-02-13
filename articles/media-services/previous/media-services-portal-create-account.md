@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 5e7fa81330c0f1f0e44a423f3e2fa42b1a91c119
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d5b3af2b950dd33c797af874d56806de8049b358
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990087"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210679"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Hozzon létre egy Media Services-fiókot az Azure portal használatával
 
@@ -27,7 +27,7 @@ Az Azure Portalon gyorsan létrehozhat egy Azure Media Services- (AMS-) fiókot.
 
 Az elsődleges tárfiók lehet általános célú v1 vagy általános célú v2. Az Azure Portal jelenleg csak a v1 kiválasztását támogatja, de hozzáadhatja a v2-t is, ha API-val vagy PowerShell-lel hoz létre fiókot. További információ a tárolási típusokról: [Tudnivalók az Azure Storage-fiókokról](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
-A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez kell lennie. Javasoljuk, hogy a Media Services-fiók ugyanazon a helyen a storage-fiókok használatához.
+A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez kell lennie. Erősen ajánlott a storage-fiókok használata a Media Services-fiók ugyanazon a helyen a további késleltetés és az adatok kimenő adatforgalmi költségek elkerülése érdekében.
 
 Ez a cikk bemutatja, hogyan hozhat létre a Media Services-fiókba az Azure portal használatával.
 

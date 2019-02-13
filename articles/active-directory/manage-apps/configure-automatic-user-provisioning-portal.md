@@ -14,12 +14,13 @@ ms.workload: identity
 ms.date: 11/13/2018
 ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: ae4f92d9dc1671ab32a2a309da5095d59b9b5212
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4239c07c73825f75dd39053e312ae731f6f0d7d1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961216"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162713"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Felhasználói fiók kiépítése az Azure Portalon a vállalati alkalmazások kezelése
 Ez a cikk ismerteti, hogyan használható a [az Azure portal](https://portal.azure.com) automatikus felhasználói fiók kiépítése, és az alkalmazásokat, amelyek támogatják ezt a megszüntetést kezeléséhez. Automatikus felhasználói fiók kiépítése, és hogyan működik kapcsolatos további tudnivalókért lásd: [automatizálhatja a Felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz az Azure Active Directoryval](user-provisioning.md).

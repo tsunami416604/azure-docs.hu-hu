@@ -1,21 +1,21 @@
 ---
-title: Egyéni szabályzat-definíció létrehozása
+title: Egyéni szabályzatdefiníció létrehozása
 description: Egyéni szabályzat-definíció egyéni üzleti szabályok érvényesítése az Azure Policy írhat.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/08/2019
+ms.date: 02/12/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bb9ead3dc10c7f3b5e561196624c4798775d5c3d
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: ddda2a8bf1fab4e4c48c647237617d8f705f0561
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962978"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112087"
 ---
-# <a name="create-a-custom-policy-definition"></a>Egyéni szabályzat-definíció létrehozása
+# <a name="create-a-custom-policy-definition"></a>Egyéni szabályzatdefiníció létrehozása
 
 Egyéni szabályzat-definíció lehetővé teszi a felhasználóknak a saját Azure használatára vonatkozó szabályok meghatározásához. Ezek a szabályok gyakran kényszerítése:
 
@@ -149,7 +149,7 @@ A [Azure gyorsindítási sablonok](https://github.com/Azure/azure-quickstart-tem
 #### <a name="resource-reference-docs"></a>Erőforrás útmutató dokumentumok
 
 Ellenőrzése **supportsHttpsTrafficOnly** , javítsa ki a tulajdonságot, akkor ellenőrizze a Resource Manager sablonreferenciája a [tárfiók típusú erőforrást](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) a tárolási szolgáltatót.
-A Tulajdonságok objektumnak érvényes paramétereinek listáját. Válassza a [StorageAccountPropertiesCreateParameters objektum](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters) hivatkozás elfogadható tulajdonságok táblázatát jeleníti meg. **supportsHttpsTrafficOnly** megtalálható és a leírás megegyezik, amit mi keres az üzleti szükségletek kielégítése céljából.
+A Tulajdonságok objektumnak érvényes paramétereinek listáját. Válassza a [StorageAccountPropertiesCreateParameters-objektum](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) hivatkozás elfogadható tulajdonságok táblázatát jeleníti meg. **supportsHttpsTrafficOnly** megtalálható és a leírás megegyezik, amit mi keres az üzleti szükségletek kielégítése céljából.
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 

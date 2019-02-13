@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
-ms.openlocfilehash: 3588496a2f41af0af273497ea3952d138385f0af
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a1e5643c9d5f6fc2492dd52ccd07606a47d21b2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100856"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190517"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Ismert problémák és megoldásaik az SCIM 2.0 protokoll megfelelőség az Azure AD-felhasználó kiépítési szolgáltatás
 

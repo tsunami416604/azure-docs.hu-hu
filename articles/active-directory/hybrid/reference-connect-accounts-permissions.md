@@ -16,12 +16,13 @@ ms.topic: reference
 ms.date: 01/24/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 539567634b940584c3bff47011e0891cc96ff0bd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7401a77e79ec42930c411856defd48a0ba3c3bf7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862071"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170241"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
@@ -79,7 +80,7 @@ Az AD DS-összekötő fiók jön létre olvasását és írását a Windows Serv
 | Olvasási/írási összes tulajdonságok iNetOrgPerson |Importálás és az Exchange hibrid |
 | Olvasási/írási csoportban az összes tulajdonság |Importálás és az Exchange hibrid |
 | Olvasási/írási forduljon az összes tulajdonság |Importálás és az Exchange hibrid |
-| Másik jelszó kérése |Felkészülés a jelszóvisszaírás engedélyezése |
+| Új jelszó létrehozása |Felkészülés a jelszóvisszaírás engedélyezése |
 
 ### <a name="express-installation-wizard-summary"></a>Az Expressz telepítés varázsló összefoglalás
 
@@ -128,7 +129,7 @@ A szükséges engedélyeket is kell rendelkeznie. A telepítővarázsló ellenő
 
 Engedélyezi a választható funkciókat függ, hogy milyen engedélyeket van szüksége. Ha több tartományom van, az erdőben lévő összes tartományban a engedélyt kell biztosítani. Ha nem engedélyezi az ezek a szolgáltatások, az alapértelmezett **tartományi felhasználó** elegendő.
 
-| Funkció | Engedélyek |
+| Szolgáltatás | Engedélyek |
 | --- | --- |
 | MS-DS-ConsistencyGuid funkció |Írási engedélyekkel az ms-DS-ConsistencyGuid attribútum dokumentált [tervezési alapelvei – az ms-DS-ConsistencyGuid használata sourceanchorként](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Jelszókivonat-szinkronizálás |<li>Címtárváltozások replikálása</li>  <li>Replikálás könyvtár összes változik |

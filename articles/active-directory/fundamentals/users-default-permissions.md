@@ -12,12 +12,13 @@ ms.date: 01/29/2019
 ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 5780090f155b3e09792aeb78c4e1d573808028ca
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f29331ccdde7db56639ed443e5dca7336f5e9dbd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299350"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181592"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználók hozzáférése a felhasználó típusát áll a [szerepkörtagságai](active-directory-users-assign-role-azure-portal.md), és az egyes objektumok tulajdonjogának. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait.

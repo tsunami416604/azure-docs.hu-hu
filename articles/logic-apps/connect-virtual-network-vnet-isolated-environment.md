@@ -8,30 +8,32 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 12/06/2018
-ms.openlocfilehash: 31f3cf9bd8f83c5da32569ed370de1ed35299749
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.date: 02/12/2019
+ms.openlocfilehash: 8d7fc6d8f581c3ad0e0f3266ea615acadcb7bc25
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062383"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176203"
 ---
-# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Azure virtuális hálózatok az Azure Logic Apps keresztül csatlakozhat egy integrációs service-környezet (ISE)
+# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás az Azure virtuális hálózatok az Azure Logic Apps integrációs service-környezet (ISE) használatával
 
 > [!NOTE]
-> Ez a funkció akkor a *privát előzetes verzió*. Hozzáférés igényléséhez [itt csatlakozni a kérelem létrehozása](https://aka.ms/iseprivatepreview).
+> Ez a funkció akkor a *privát előzetes verzió*. A privát előzetes verzióra, [Itt a kérelem létrehozása](https://aka.ms/iseprivatepreview).
 
-Forgatókönyvek, ahol a logic apps és az integrációs fiókok kell a hozzáférést egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md), hozzon létre egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Az ISE-ben egy dedikált tárolási használó magán- és elkülönített környezet és más erőforrások elkülönítve a nyilvános vagy "globális" Logic Apps szolgáltatást. Ez a fajta elkülönítés is csökkenti, amelyeket más Azure-bérlőt az alkalmazások teljesítményére hatással. Az ISE *beszúrta* be az Azure virtuális hálózathoz, amely azután telepíti a Logic Apps szolgáltatás a virtuális hálózatban. Amikor létrehoz egy logikai alkalmazásban vagy integrációs fiókot, válassza ki az ISE azok helyétől. A logikai alkalmazás vagy az integrációs fiók majd közvetlenül hozzáférhet a erőforrások, például a virtuális gépek (VM), kiszolgálók, rendszerek és szolgáltatások, a virtuális hálózaton. 
+Forgatókönyvek, ahol a logic apps és az integrációs fiókok kell a hozzáférést egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md), hozzon létre egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Az ISE-ben egy dedikált tárolási használó magán- és elkülönített környezet és más erőforrások elkülönítve a nyilvános vagy "globális" Logic Apps szolgáltatást. Ez a fajta elkülönítés is csökkenti, amelyeket más Azure-bérlőt az alkalmazások teljesítményére hatással. Az ISE *beszúrta* be az Azure virtuális hálózathoz, amely azután telepíti a Logic Apps szolgáltatás a virtuális hálózatban. Amikor létrehoz egy logikai alkalmazásban vagy integrációs fiókot, válassza ki az ISE azok helyétől. A logikai alkalmazás vagy az integrációs fiók majd közvetlenül hozzáférhet a erőforrások, például a virtuális gépek (VM), kiszolgálók, rendszerek és szolgáltatások, a virtuális hálózaton.
 
 ![Válassza ki az integrációs service-környezet](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
 Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
 
+* Állítsa be az Azure virtuális hálózat található portokat Forgalom utazhat az integrációs service-környezet (ISE) keresztül, a virtuális hálózat alhálózatai között.
+
 * Állítsa be az Azure virtuális hálózat engedélyeit, hogy a privát Logic Apps-példány hozzáférhessen a virtuális hálózat.
 
-* Az integrációs service-környezet (ISE) létrehozása. 
+* Az integrációs service-környezet (ISE) létrehozása.
 
-* Hozzon létre egy logikai alkalmazást, amely képes futni az ISE-ben. 
+* Hozzon létre egy logikai alkalmazást, amely képes futni az ISE-ben.
 
 * A logic apps integrációs fiók létrehozása az ISE-ben.
 
@@ -39,16 +41,40 @@ Integrációs service Environment-környezetekkel kapcsolatos további informác
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
 
   > [!IMPORTANT]
   > A Logic apps beépített műveleteket és az ISE-ben futó összekötők használja egy másik díjszabási csomagot, nem a fogyasztás alapú díjszabással. További információkért lásd: [Logic Apps díjszabási](../logic-apps/logic-apps-pricing.md).
 
-* Egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md). Ha nem rendelkezik virtuális hálózattal, megtudhatja, hogyan [egy Azure virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md). 
+* Egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md). Ha nem rendelkezik virtuális hálózattal, megtudhatja, hogyan [egy Azure virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md). A virtuális hálózaton üzembe helyezéséhez az ISE-ben alhálózat is szükséges. Előre hozzon létre ezen alhálózatok, vagy várjon, amíg hoz létre az ISE-ben, ahol létre alhálózatok egyszerre. Ezenkívül [győződjön meg arról, hogy a virtuális hálózat elérhetővé teszi ezeket a portokat](#ports) így megfelelően működik-e az ISE-ben, és elérhető marad.
 
-* Az Azure virtuális hálózat, a logic apps közvetlen hozzáférést biztosít a [állítsa be a szerepköralapú hozzáférés-vezérlés (RBAC) engedélyekkel](#vnet-access) , a Logic Apps szolgáltatás rendelkezik a virtuális hálózat eléréséhez szükséges engedélyekkel. 
+* Az Azure virtuális hálózat, a logic apps közvetlen hozzáférést biztosít a [állítsa be a hálózati szerepköralapú hozzáférés-vezérlés (RBAC) engedélyekkel](#vnet-access) , a Logic Apps szolgáltatás rendelkezik a virtuális hálózat eléréséhez szükséges engedélyekkel.
+
+* Egy vagy több egyéni DNS-kiszolgálók üzembe helyezése az Azure virtuális hálózat használandó [beállítása az adott kiszolgálókon, ez az útmutató következő](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) az ISE-ben a virtuális hálózat üzembe helyezése előtt. Ellenkező esetben minden alkalommal, amikor módosítja a DNS-kiszolgáló is újraindítani az ISE-ben, amely egy olyan funkció, amely az ISE-ben nyilvános előzetes verzióban érhető el.
 
 * Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+<a name="ports"></a>
+
+## <a name="set-up-network-ports"></a>Állítsa be a hálózati portok
+
+Megfelelően működjön, és elérhető-e, az integráció service-környezet (ISE) kell rendelkeznie az adott portokon a virtuális hálózaton rendelkezésre álló. Ezeket a portokat bármelyike nem érhető el, előfordulhat, hogy az ISE-ben, amelyek működése leáll, ellenkező esetben férhet hozzá. Az ISE-ben a virtuális hálózatban való használatakor gyakori telepítési problémát tapasztalja egy vagy több letiltott portot. Az ISE-ben és a cél rendszer közötti kapcsolatok esetén használja az összekötő is szükség lehet a saját port követelményei. Például ha az FTP-összekötő használatával kommunikálnak az FTP-rendszerek, győződjön meg arról, a portot használja, hogy elérhető legyen-e az FTP-rendszer 21-es porton, a Parancsküldés, például.
+
+A bejövő és kimenő forgalom szabályozása, amelyen központi telepítését az ISE-ben a virtuális hálózat alhálózatainak között, beállíthatja [hálózati biztonsági csoportok](../virtual-network/security-overview.md) az ezekhez az alhálózatokhoz tanulással [közötti hálózati forgalom szűrése alhálózatok](../virtual-network/tutorial-filter-network-traffic.md). Ezek a táblázatok ismertetik a portokat a virtuális hálózat, amely az ISE-ben, és ahol azokat a portokat használja beolvasása. A csillag (*) minden forgalomforrásokat jelöli. A [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) IP-címelőtagokat, amelyek segítenek a minimálisra összetettségét, amikor a biztonsági szabályok létrehozása egy csoportját jelöli.
+
+| Cél | Irány | Forrásport <br>Célport | Forrás-szolgáltatáscímke <br>Cél szolgáltatáscímkéje |
+|---------|-----------|---------------------------------|-----------------------------------------------|
+| Az Azure Logic Apps-kommunikációt <br>Az Azure Logic Apps-kommunikációt | Bejövő <br>Kimenő | * <br>80 & 443 | INTERNET <br>VIRTUAL_NETWORK |
+| Azure Active Directory | Kimenő | * <br>80 & 443 | VIRTUAL_NETWORK <br>AzureActiveDirectory |
+| Az Azure Storage-függőségek | Kimenő | * <br>80 & 443 | VIRTUAL_NETWORK <br>Storage |
+| Kapcsolat kezelése | Kimenő | * <br>443 | VIRTUAL_NETWORK <br>INTERNET |
+| Diagnosztikai naplók és mérőszámok közzététele | Kimenő | * <br>443 | VIRTUAL_NETWORK <br>AzureMonitor |
+| Logic Apps Designer – dinamikus tulajdonságai <br>A logikai alkalmazás futtatási előzmények <br>Összekötő üzembe helyezés <br>Eseményindító-végpont kérése | Bejövő | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
+| App Service Management-függőség | Bejövő | * <br>454 & 455 | AppServiceManagement <br>VIRTUAL_NETWORK |
+| Az API Management - felügyeleti végpont | Bejövő | * <br>3443 | APIManagement <br>VIRTUAL_NETWORK |
+| Eseményközpont-szabályzat és a monitorozási ügynök a napló függőséget | Kimenő | * <br>5672 | VIRTUAL_NETWORK <br>EventHub |
+| Az Azure Cache elérése a Redis-példány között szerepkör példányai | Bejövő <br>Kimenő | * <br>6381-6383 | VIRTUAL_NETWORK <br>VIRTUAL_NETWORK |
+|||||
 
 <a name="vnet-access"></a>
 
@@ -56,27 +82,27 @@ Integrációs service Environment-környezetekkel kapcsolatos további informác
 
 Amikor létrehoz egy integrációs service-környezet (ISE), hol válassza ki Azure-beli virtuális hálózathoz, *beszúrása* a környezetben. Azonban a környezet betöltése a virtuális hálózat kiválasztása előtt be kell állítania szerepköralapú hozzáférés-vezérlés (RBAC) engedélyekkel a virtuális hálózaton. Engedélyek beállításához, ezek a szerepkörök hozzárendelése az Azure Logic Apps szolgáltatás:
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg és válassza ki a virtuális hálózatot. 
+1. Az a [az Azure portal](https://portal.azure.com), keresse meg és válassza ki a virtuális hálózatot.
 
-1. Válassza ki a virtuális hálózat menü, **hozzáférés-vezérlés (IAM)**. 
+1. Válassza ki a virtuális hálózat menü, **hozzáférés-vezérlés (IAM)**.
 
-1. A **hozzáférés-vezérlés (IAM)**, válassza a **szerepkör-hozzárendelés hozzáadása**. 
+1. A **hozzáférés-vezérlés (IAM)**, válassza a **szerepkör-hozzárendelés hozzáadása**.
 
    ![Szerepkörök hozzáadása](./media/connect-virtual-network-vnet-isolated-environment/set-up-role-based-access-control-vnet.png)
 
-1. Az a **szerepkör-hozzárendelés hozzáadása** ablaktáblán, a szükséges szerepkör hozzáadása az Azure Logic Apps szolgáltatásba leírtak szerint. 
+1. Az a **szerepkör-hozzárendelés hozzáadása** ablaktáblán, a szükséges szerepkör hozzáadása az Azure Logic Apps szolgáltatásba leírtak szerint.
 
-   1. A **szerepkör**válassza **hálózati közreműködő**. 
-   
+   1. A **szerepkör**válassza **hálózati közreműködő**.
+
    1. Alatt **rendelhet hozzáféréseket**válassza **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
 
-   1. A **kiválasztása**, adja meg **Azure Logic Apps**. 
+   1. A **kiválasztása**, adja meg **Azure Logic Apps**.
 
-   1. Miután a tagok listája megjelenik, válassza ki **Azure Logic Apps**. 
+   1. Miután a tagok listája megjelenik, válassza ki **Azure Logic Apps**.
 
       > [!TIP]
-      > Ha ez a szolgáltatás nem találja, adja meg a Logic Apps szolgáltatás Alkalmazásazonosító: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` 
-   
+      > Ha ez a szolgáltatás nem találja, adja meg a Logic Apps szolgáltatás Alkalmazásazonosító: `7cd684f4-8a78-49b0-91ec-6a35d38739ba`
+
    1. Ha elkészült, kattintson a **Mentés** gombra.
 
    Példa:
@@ -106,15 +132,15 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
 
    ![Adja meg a környezet részletei](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Tulajdonság | Szükséges | Érték | Leírás |
+   | Tulajdonság | Szükséges | Value | Leírás |
    |----------|----------|-------|-------------|
-   | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | Az Azure-előfizetés a környezet használata | 
-   | **Erőforráscsoport** | Igen | <*Az Azure-erőforrás-csoport-neve*> | Az Azure erőforráscsoport, ahol szeretné létrehozni a környezetet |
-   | **Integráció Service-környezet neve** | Igen | <*környezet neve*> | A környezet nevét | 
-   | **Hely** | Igen | <*Az Azure-adatközpont-régió*> | Az Azure-adatközpontrégiót használhatják az üzembe helyezés a környezet | 
-   | **Ha extra kapacitásra** | Igen | 0, 1, 2, 3 | Az ISE-erőforrás használandó feldolgozási egységek száma | 
-   | **Virtuális hálózat** | Igen | <*Az Azure-virtuális hálózat neve*> | Az Azure virtuális hálózat, ahol szeretné a környezet betöltése, hogy a logic apps, a környezetben hozzáférhessen a virtuális hálózat. Ha nem rendelkezik olyan hálózattal, létrehozhat egy itt. <p>**Fontos**: Is *csak* észrevegye hajtható végre, ha a hoz létre az ISE-ben. Azonban ez a kapcsolat létrehozásához, győződjön meg arról, hogy már [beállítása szerepköralapú hozzáférés-vezérlés a virtuális hálózat az Azure Logic Apps](#vnet-access). | 
-   | **Alhálózatok** | Igen | <*alhálózat-resource-list*> | Az ISE-ben szükséges négy *üres* alhálózatok a környezetében az erőforrások létrehozásához. Ezért győződjön meg arról, ezen alhálózatok *nem meghatalmazott* bármely szolgáltatás. Ön *nem módosítható* a környezet létrehozása után ezeket alhálózati cím. <p><p>Minden egyes alhálózat létrehozásához [a táblázat alatti lépéseket követve](#create-subnet). Minden alhálózati ezeknek a feltételeknek kell megfelelnie: <p>-Kell megadni. <br>-Olyan nevet, amely nem kezdődik számmal vagy kötőjel használ. <br>– Használja az [Classless Inter-Domain Routing (CIDR) formátum](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) és a B osztály címtér. <br>-A tartalmaz legalább egy `/27` a címtérben, így az alhálózat legalább 32 címet lekéri. Kiszámítása a címek számát kapcsolatos további információkért lásd: [IPv4 CIDR-blokkok](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks). Példa: <p>- `10.0.0.0/24` 256-címmel rendelkezik, mert az 2<sup>(32-24)</sup> 2<sup>8</sup> vagy 256. <br>- `10.0.0.0/27` 32-címmel rendelkezik, mert az 2<sup>(32-27)</sup> 2<sup>5</sup> vagy 32. <br>- `10.0.0.0/28` csak 16-címmel rendelkezik, mert az 2<sup>(32-28)</sup> 2<sup>4</sup> vagy 16. |
+   | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | Az Azure-előfizetés a környezet használata |
+   | **Erőforráscsoport** | Igen | <*Azure-resource-group-name*> | Az Azure erőforráscsoport, ahol szeretné létrehozni a környezetet |
+   | **Integráció Service-környezet neve** | Igen | <*environment-name*> | A környezet nevét |
+   | **Hely** | Igen | <*Azure-datacenter-region*> | Az Azure-adatközpontrégiót használhatják az üzembe helyezés a környezet |
+   | **Ha extra kapacitásra** | Igen | 0, 1, 2, 3 | Az ISE-erőforrás használandó feldolgozási egységek száma |
+   | **Virtuális hálózat** | Igen | <*Azure-virtual-network-name*> | Az Azure virtuális hálózat, ahol szeretné a környezet betöltése, hogy a logic apps, a környezetben hozzáférhessen a virtuális hálózat. Ha nem rendelkezik olyan hálózattal, létrehozhat egy itt. <p>**Fontos**: Is *csak* észrevegye hajtható végre, ha a hoz létre az ISE-ben. Azonban ez a kapcsolat létrehozásához, győződjön meg arról, hogy már [beállítása szerepköralapú hozzáférés-vezérlés a virtuális hálózat az Azure Logic Apps](#vnet-access). |
+   | **Alhálózatok** | Igen | <*subnet-resource-list*> | Az ISE-ben szükséges négy *üres* alhálózatok a környezetében az erőforrások létrehozásához. Ezért győződjön meg arról, ezen alhálózatok *nem meghatalmazott* bármely szolgáltatás. Ön *nem módosítható* a környezet létrehozása után ezeket alhálózati cím. <p><p>Minden egyes alhálózat létrehozásához [a táblázat alatti lépéseket követve](#create-subnet). Minden alhálózati ezeknek a feltételeknek kell megfelelnie: <p>-Kell megadni. <br>-Olyan nevet, amely nem kezdődik számmal vagy kötőjel használ. <br>– Használja az [Classless Inter-Domain Routing (CIDR) formátum](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) és a B osztály címtér. <br>-A tartalmaz legalább egy `/27` a címtérben, így az alhálózat legalább 32 címet lekéri. Kiszámítása a címek számát kapcsolatos további információkért lásd: [IPv4 CIDR-blokkok](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks). Példa: <p>- `10.0.0.0/24` 256-címmel rendelkezik, mert az 2<sup>(32-24)</sup> 2<sup>8</sup> vagy 256. <br>- `10.0.0.0/27` 32-címmel rendelkezik, mert az 2<sup>(32-27)</sup> 2<sup>5</sup> vagy 32. <br>- `10.0.0.0/28` csak 16-címmel rendelkezik, mert az 2<sup>(32-28)</sup> 2<sup>4</sup> vagy 16. |
    |||||
 
    <a name="create-subnet"></a>

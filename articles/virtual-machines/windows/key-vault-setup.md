@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: f5aa04da40c6681385f0debc3999b94a1f507f05
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: bc83a2cde841e7d1e90cb46304c879fcc6cedb72
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978986"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105773"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>A virtuális gépek az Azure Resource Manager Key Vault beállítása
 
@@ -35,7 +35,7 @@ Azure Resource Manager veremben titkos kódok és tanúsítványok a Key vault e
 >
 
 ## <a name="use-powershell-to-set-up-key-vault"></a>Key Vault beállítása a PowerShell használatával
-Kulcstartó létrehozása PowerShell használatával, lásd: [első lépései az Azure Key Vault](../../key-vault/key-vault-get-started.md#vault).
+Kulcstartó létrehozása PowerShell használatával, lásd: [beállítása és lekérése egy titkos kulcsot az Azure Key vault PowerShell-lel](../../key-vault/quick-create-powershell.md).
 
 Új kulcstartó a PowerShell-parancsmagot is használhatja:
 

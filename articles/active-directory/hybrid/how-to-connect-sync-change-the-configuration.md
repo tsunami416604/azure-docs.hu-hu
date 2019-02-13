@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ebc32f59539e4e4e94f7f68d5d164cf2b04cc4c2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 17f832947e289933fb7cde9513bc6e091aec30ae
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488526"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206378"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: Módosítsa az alapértelmezett konfiguráció
 Ez a cikk az a célja, hogy végigvezetik az Azure Active Directory (Azure AD) Connect-szinkronizálás az alapértelmezett konfiguráció módosításához. Néhány gyakori helyzet biztosítja a lépéseket. A Tudásbázis a képes egyszerű módosítja a saját konfigurációjával, a saját üzleti szabályok alapján kell lennie.

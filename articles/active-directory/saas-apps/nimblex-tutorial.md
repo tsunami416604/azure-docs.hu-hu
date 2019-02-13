@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció az Nimblex |} A Microsoft Docs'
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Nimblex |} A Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Nimblex között.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 7b5dc6d892741f63596589a48ad5d45891b14c21
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d7801b5ea73cf94439ae2974f91d2032f9bf8a3b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040405"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166742"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>Oktatóanyag: Azure Active Directory-integráció az Nimblex
+# <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Nimblex
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Nimblex integrálása az Azure Active Directory (Azure AD).
 
@@ -37,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Nimblex az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Nimblex egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Az Azure AD integrálása a Nimblex konfigurálásához hozzá kell Nimblex a ka
 
 **Nimblex hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -148,7 +149,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Az a **leírás** szövegmezőbe írja be a példány nevét.
 
-    b. A Jegyzettömbben, nyissa meg az Azure Portalról letöltött base-64 kódolású tanúsítványt, másolja a tartalmat, és illessze be azt a **tanúsítvány** mezőbe.
+    b. A Jegyzettömbben, nyissa meg az Azure Portalról letöltött base-64 kódolású tanúsítványt, másolja a tartalmat, és illessze be azt a **tanúsítvány** mezőbe.
 
     c. A a **Identity Provider Sso cél URL-cím** szövegmezőjébe illessze be az értéket, **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
 
@@ -191,7 +192,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja Nimblex Britta Simon nevű felhasználó létrehozásához. Nimblex támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Nimblex elérésére, ha még nem létezik tett kísérlet során.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Nimblex ügyfél-támogatási csapatának](mailto:support@ebms.com.au).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Nimblex ügyfél-támogatási csapatának](mailto:support@ebms.com.au).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -223,7 +224,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -233,7 +234,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

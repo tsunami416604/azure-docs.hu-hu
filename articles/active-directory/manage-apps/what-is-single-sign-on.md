@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: celested
 ms.reviewer: arvindh
-ms.openlocfilehash: 2e70746de4b744daf7242e91c51a3ccc1b331878
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6984307dda58aeba840f2b6d08e84fb4f60cacc8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997302"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163070"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 Egyszeri bejelentkezés (SSO) ad hozzá biztonsági és kényelmet, amikor a felhasználók bejelentkezés az Azure Active Directoryban (Azure AD-) alkalmazások. Ez a cikk az egyszeri bejelentkezési módszereket írja le, és segítséget nyújt az alkalmazások konfigurálásakor, válassza ki a legmegfelelőbb egyszeri bejelentkezési módszert.

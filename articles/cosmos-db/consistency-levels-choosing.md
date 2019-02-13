@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 75aecd166d03b751f778221632fad68d279f63a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 11eb849567079bfb1293c3c1e8ce97c43b66d493
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468869"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116844"
 ---
-# <a name="choose-the-right-consistency-level"></a>Válassza ki a megfelelő konzisztenciaszint 
+# <a name="choose-the-right-consistency-level"></a>A megfelelő konzisztenciaszint kiválasztása 
 
 Elosztott adatbázisok hagyatkoznia a magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt, replikációs győződjön és a rendelkezésre állási, teljesítmény és késés az olvasás következetes alapvető magával. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázisok kérje meg a fejlesztők számára, hogy a két szélsőséges konzisztencia modell közül választhat: erős konzisztencia és a végleges konzisztencia. Az Azure Cosmos DB lehetővé teszi a fejlesztők számára, hogy az öt jól definiált konzisztenciamodellekkel közül választhat: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. Egyes ezek konzisztenciamodellt kínál jól definiált és könnyen kezelhető és bizonyos valós forgatókönyvek esetén is használható. Az öt konzisztenciamodell mindegyike biztosítanak [rendelkezésre állás és teljesítmény kompromisszumot kínál a](consistency-levels-tradeoffs.md) és átfogó SLA-k élvezik. Az alábbi egyszerű szempontok segítségével számos gyakori szituációhoz kínál végezze el a megfelelő választás.
 
@@ -33,6 +33,8 @@ Vegye figyelembe a következőket, ha az alkalmazást a Cosmos DB SQL API vagy a
 - Ha kevésbé szigorú konzisztenciagaranciákat munkamenet-konzisztencia által biztosított rétegében van szüksége, konzisztens előtag konzisztenciaszint használata ajánlott.
 
 - Ha a legmagasabb szintű rendelkezésre állásra és a legkisebb késés van szüksége, használja a végleges konzisztencia szintjét.
+
+- Ha még magasabb adatok tartóssága teljesítmény feláldozása nélkül, létrehozhat egy egyéni konzisztenciaszint az alkalmazásréteg szintjén. További információ: [útmutató egyéni-szinkronizálás megvalósítása az alkalmazásokban](how-to-custom-synchronization.md).
 
 ## <a name="cassandra-mongodb-and-gremlin-api"></a>Cassandra, mongodb-hez és a Gremlin API
 

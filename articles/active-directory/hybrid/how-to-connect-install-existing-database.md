@@ -16,12 +16,13 @@ ms.topic: conceptual
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2f1b6cec49507c5106434bf42743aadd1b3230aa
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8254766568c54748ee3646dd627a102ffc86e743
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894972"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191350"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect használatával a meglévő ADSync-adatbázis telepítése
 Az Azure AD Connect adatok tárolásához SQL Server-adatbázis szükséges. Az alapértelmezett Azure AD connecttel telepített SQL Server 2012 Express LocalDB használata, vagy használja a saját SQL teljes verziójával. Korábban amikor telepítette az Azure AD Connect, az egy új adatbázist ADSync mindig létrejött. Az Azure AD Connect verziója 1.1.613.0 (vagy után) lehetősége van az Azure AD Connect telepítése meglévő ADSync-adatbázis jelzésével.
@@ -95,7 +96,7 @@ Az Azure AD Connect 1.2.65.0 előtti verziójával létrehozott adatbázis bizto
 
 Az alábbi táblázat segítségével ellenőrizheti a további lépések szükségesek.
 
-|Funkció|Lépések|
+|Szolgáltatás|Lépések|
 |-----|-----|
 |Jelszókivonat-szinkronizálás| a Jelszókivonat-szinkronizálás és a jelszó-visszaírás beállításokat teljes mértékben visszaállnak az Azure AD Connect-verziók 1.2.65.0 kezdve.  Ha visszaállítása az Azure AD Connect egy régebbi verzióját használja, tekintse át a szinkronizálási beállítások a következő szolgáltatások biztosítására, hogy azok megfelelnek a aktív szinkronizálási kiszolgáló.  Lehet, hogy további konfigurációs lépések szükségesek.|
 |Összevonás az AD FS rendszerrel|Az Azure-hitelesítés továbbra is az aktív szinkronizálási kiszolgáló konfigurálása az AD FS-házirend használata.  Ha az Azure AD Connect használatával kezelheti az AD FS farmon, igény szerint módosíthatja a bejelentkezési módszer az aktív szinkronizálást példány váljon a készenléti kiszolgáló előkészítése az AD FS összevonási.   Ha eszközbeállítások az aktív szinkronizálást kiszolgálón engedélyezve vannak, állítsa be ezeket a beállításokat ezen a kiszolgálón a "Eszközbeállítások konfigurálása" feladat futtatásával.|

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 285f4f4aad18943399511cbcac711933f23f7cb2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9f5cf0e8be0529ce59edc9aa4cd33d470415c8a6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004791"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190959"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóták és korlátozások az Azure Media Services v3
 
@@ -37,7 +37,7 @@ Ez a cikk azt ismerteti, kvóták és korlátozások az Azure Media Services v3.
 | Egyetlen előfizetéshez Media Services-fiókok | 25 (rögzített) |
 | Futó állapotú videókhoz élő kimenetek |3|
 | Tárfiókok | 100<sup>(4)</sup> (fix) |
-| Streamvégpontok futó állapotban a Media Services-fiókonként|2|
+| Streamvégpontok (Leállítva vagy fut) a Media Services-fiókonként|2|
 | Streamelési szabályok | 100 <sup>(3)</sup> |
 | A Media Services-fiókonként átalakítások | 100 (fix)|
 | Egy eszköz egyszerre társított egyedi Streamelési Lokátorok | 100<sup>(5)</sup> (fix) |

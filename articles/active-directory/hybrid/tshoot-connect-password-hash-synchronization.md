@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5339b0c77a69a915e58118888f8b82d095a43e38
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 29cb7f6799556406c4c5def12b1367bfd581d06b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817784"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198660"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>A Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása
 Ez a témakör a Jelszókivonat-szinkronizálás hibáinak elhárítása a lépéseit ismerteti. Ha a jelszavak nem szinkronizál a várt módon, az összes felhasználó vagy felhasználók alcsoportjaihoz lehet.

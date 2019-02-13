@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 4fec32ac2d613486ee65416ccdfac70575ea9543
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: e691913daabb832b2a3b51dac5d4a5b0e1f53871
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509575"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165076"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Az Azure Machine Learning Studio-modell újratanítása
 A machine learning-modellek az Azure Machine Learning operacionalizálás folyamat részeként a modell betanított és mentve. Ezt követően használhatja azt egy prediktív webszolgáltatás létrehozására. A Web service a webhelyek, az irányítópultok és a mobile apps majd használhatók fel. 
@@ -63,8 +63,6 @@ Ha telepítette a klasszikus webszolgáltatások:
 * A prediktív webszolgáltatás az új végpont létrehozása
 * A JAVÍTÁSI URL-cím és a kód lekérése
 * Az új végpont mutassanak a retrained modell a JAVÍTÁSI URL-cím használatával 
-
-Az előző bemutató lépéseit, lásd: [klasszikus webszolgáltatás újratanítása](retrain-a-classic-web-service.md).
 
 Ha a klasszikus webszolgáltatások átképezési nehézségek tapasztal, tekintse meg a [hibaelhárítása az Azure Machine Learning klasszikus Web Service átképezési](troubleshooting-retraining-models.md).
 

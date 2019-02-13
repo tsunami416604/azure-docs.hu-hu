@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: priyamo
-ms.openlocfilehash: 6fff8890a32cd6c3f0aeb506425964edcc841c5e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0fc32e9e306149052df37cc24bc54e2aad902c50
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193471"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199425"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a sablon használatával az Azure virtuálisgép-méretezési csoportot
 
@@ -166,7 +167,7 @@ Ha egy virtuális gép méretezési csoportot, amely egy rendszer által hozzár
    }
    ```
 
-## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
 Ebben a szakaszban egy virtuálisgép-méretezési csoport Azure Resource Manager-sablon használatával rendelheti hozzá a felhasználó által hozzárendelt felügyelt identitás.
 

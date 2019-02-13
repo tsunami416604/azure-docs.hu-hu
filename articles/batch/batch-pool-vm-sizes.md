@@ -12,24 +12,24 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2019
+ms.date: 01/25/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 787c10ab75a3534a73e04f1bd60462ea02fcf42a
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 921dfc12a7353725d3f9e05d7aa3245ec8ba6084
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191717"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185995"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Az Azure Batch-készlet számítási csomópontok Virtuálisgép-méretének kiválasztása
 
-Az Azure Batch-készlet a csomópont méretének kiválasztásakor szinte valamennyi az elérhető Virtuálisgép-méretek az Azure-ban közül választhat. Az Azure számos szolgáltatást kínál méretek Linux és Windows virtuális gépek különböző számítási feladatokhoz. 
+Az Azure Batch-készlet a csomópont méretének kiválasztásakor szinte valamennyi az elérhető Virtuálisgép-méretek az Azure-ban közül választhat. Az Azure számos szolgáltatást kínál méretek Linux és Windows virtuális gépek különböző számítási feladatokhoz.
 
 Van néhány kivételeket és korlátozásokat a virtuális gép méretének kiválasztása:
+
 * Néhány Virtuálisgép-családok vagy Virtuálisgép-méretek nem támogatottak a Batch szolgáltatásban. 
 * Egyes Virtuálisgép-méretek korlátozva, és kifejezetten engedélyezni, mielőtt oszthat ki kell.
-
 
 ## <a name="supported-vm-families-and-sizes"></a>Támogatott VM-családban és méret
 
@@ -42,23 +42,23 @@ A virtuális gép konfigurációja a Batch-készleteket támogatja a Virtuálisg
 | Alapszintű A sorozat | Basic_A0 (A0) |
 | A-sorozat | Standard_A0 |
 | B sorozat | Összes |
-| DC sorozat | Összes | 
+| DC sorozat | Összes |
 | Szélsőséges memóriahasználatra optimalizált | Összes |
-| HB sorozat<sup>1</sup> | Összes | 
+| Hb-series<sup>1</sup> | Összes |
 | Hibrid kapcsolat sorozat<sup>1</sup> | Összes |
 | Lsv2 sorozat | Összes |
 | NDv2 sorozat<sup>1</sup> | Összes |
-| NVv2 sorozat<sup>1</sup> | Összes |
+| NVv2 sorozat | Összes |
 | SAP HANA | Összes |
 
-<sup>1</sup> jelenleg nem támogatott, de a jövőben támogatott.
+<sup>1</sup> használhatja a Batch-fiókok felhasználói előfizetési módban; a felhasználói előfizetés módban Batch-fiókkal kell rendelkeznie a magkvótáján állítsa be. Lásd: [konfigurálása a felhasználói előfizetés módhoz](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) további információt.
 
 A következő Virtuálisgép-méretek csak alacsony prioritású csomópontok támogatottak:
 
 | Család  | Támogatott méretek  |
 |---------|---------|
 | M sorozat | Standard_M64ms |
-| M sorozat | Standard m 128 s |
+| M sorozat | Standard_M128s |
 
 Az M-sorozatú más Virtuálisgép-méretek jelenleg nem támogatott.
 
@@ -74,6 +74,7 @@ A Felhőszolgáltatás konfigurációjában Batch-készleteket támogatja az ös
 ## <a name="restricted-vm-families"></a>Korlátozott Virtuálisgép-család
 
 A következő Virtuálisgép-családok kiosztható a Batch-készletekben, de egy adott kvótanövelést kell igényelnie (lásd: [Ez a cikk](batch-quota-limit.md#increase-a-quota)):
+
 * NCv2 sorozat
 * NCv3 sorozat
 * ND sorozat
@@ -82,7 +83,7 @@ Ezeket a méreteket csak a virtuális gép konfigurációja készletei használh
 
 ## <a name="size-considerations"></a>Méretére vonatkozó szempontok
 
-* **Alkalmazáskövetelmények** – vegye figyelembe a jellemzőit és követelményeit az alkalmazás fogja futtatni a csomópontokon. Az olyan szempontok, mint hogy az alkalmazás többszálú-e vagy mennyi memóriát fogyaszt, segíthetnek meghatározni a legmegfelelőbb és legköltséghatékonyabb csomópontméretet. A többpéldányos [MPI számítási feladatok](batch-mpi.md) vagy CUDA-alkalmazások, fontolja meg a speciális [HPC](../virtual-machines/linux/sizes-hpc.md) vagy [GPU-kompatibilis](../virtual-machines/linux/sizes-gpu.md) rendre a virtuális gép mérete. (Lásd: [használata RDMA-kompatibilis vagy a GPU-kompatibilis példányok a Batch-készletek](batch-pool-compute-intensive-sizes.md).) 
+* **Alkalmazáskövetelmények** – vegye figyelembe a jellemzőit és követelményeit az alkalmazás fogja futtatni a csomópontokon. Az olyan szempontok, mint hogy az alkalmazás többszálú-e vagy mennyi memóriát fogyaszt, segíthetnek meghatározni a legmegfelelőbb és legköltséghatékonyabb csomópontméretet. A többpéldányos [MPI számítási feladatok](batch-mpi.md) vagy CUDA-alkalmazások, fontolja meg a speciális [HPC](../virtual-machines/linux/sizes-hpc.md) vagy [GPU-kompatibilis](../virtual-machines/linux/sizes-gpu.md) rendre a virtuális gép mérete. (Lásd: [használata RDMA-kompatibilis vagy a GPU-kompatibilis példányok a Batch-készletek](batch-pool-compute-intensive-sizes.md).)
 
 * **Csomópontonkénti tevékenységek** – általában az válasszon egy csomópont mérete feltéve, hogy egy feladat egyszerre egy csomóponton futnak. Azonban érdemes lehet több tevékenységet (és így több alkalmazáspéldányt) előnyös [párhuzamos](batch-parallel-node-tasks.md) egy számítási csomóponton a feladat végrehajtása során. Ebben az esetben szokás válassza ki a Többmagos csomópont méretét a párhuzamos tevékenység-végrehajtás megnövekedett igényének befogadásához.
 
@@ -97,6 +98,4 @@ Ezeket a méreteket csak a virtuális gép konfigurációja készletei használh
 ## <a name="next-steps"></a>További lépések
 
 * A Batch részletesebb áttekintéséért lásd: [Develop nagy léptékű párhuzamos számítási megoldások Batch segítségével történő](batch-api-basics.md).
-* Nagy számítási igényű Virtuálisgép-méretek használatával kapcsolatos információkért lásd: [használata RDMA-kompatibilis vagy a GPU-kompatibilis példányok a Batch-készletek](batch-pool-compute-intensive-sizes.md). 
-
-
+* Nagy számítási igényű Virtuálisgép-méretek használatával kapcsolatos információkért lásd: [használata RDMA-kompatibilis vagy a GPU-kompatibilis példányok a Batch-készletek](batch-pool-compute-intensive-sizes.md).

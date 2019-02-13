@@ -1,10 +1,10 @@
 ---
-title: Dolgot ajánlott biztonsági eljárások az eszközök internetes |} Microsoft Docs
-description: A cikk a Microsoft Internet dolgot ajánlott biztonsági eljárások és általános javaslatok válogatott listáját tartalmazza.
+title: Dolgok ajánlott biztonsági eljárások az eszközök internetes |} A Microsoft Docs
+description: A cikk a Microsoft Internet dolgot ajánlott biztonsági eljárások és általános javaslatok rendszerezett listáját.
 services: security
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 2d5598c5-4c30-481d-b8f4-51ee024ea9a7
 ms.service: security
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 804dd6828931ca2801360ab18be938c8bacf2bfa
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9413c0503c1b78550776d1c2f6ab8239205a788b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32185340"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117867"
 ---
 # <a name="internet-of-things-security-best-practices"></a>Eszközök internetes dolgot ajánlott biztonsági eljárások
 
-A az eszközök internetes hálózatát (IoT) infrastruktúra védelmének biztosítása a felhasználók az IoT-megoldások szerepet játszó kritikus vállalkozás. Az érintett eszközök száma és az elosztott jellege ezeket az eszközöket biztonsági esemény kapcsolatos hibát okoz az IoT-eszközök millióira hatása nem triviális, és széleskörű hatással lehet.
+Egy kritikus fontosságú vállalkozás bárki érintett az IoT-megoldások az eszközök internetes hálózata (IoT) infrastruktúra biztonságossá tétele. Az érintett eszközök száma, és ezek az eszközök elosztott jellege miatt az akár több millió IoT-eszközök biztonsági sérüléséhez kapcsolódó biztonsági esemény hatását nem triviális, és széles körű hatással lehet.
 
-Emiatt az IoT biztonsági kell a biztonsági jellegű megközelítést. Biztonságos kell a felhőben és a privát és nyilvános hálózatokon átvitel során. Módszerek kell, hogy magukat az IoT-eszközök biztonságosan kiépítéséhez. Minden egyes rétegben, eszköz, a hálózathoz, a háttér-felhőbe erős biztonságot biztosítékok kell.
+IoT-biztonság, ezért egy biztonsági jellegű megközelítéssel kell rendelkeznie. Kell biztonságos a felhőben, és áthelyezi azt a privát és nyilvános hálózatokon keresztül. Módszer, amely biztonságosan kiépítése az IoT-eszközök maguknak kell. Minden egyes réteg, az eszközről, a hálózathoz, a háttér-felhőbe kell erős biztonsági intézkedésekkel.
 
-Az IoT-ajánlott eljárások a következő módon csoportosíthatók:
+IoT – ajánlott eljárások a következő módon csoportosíthatók:
 
-* Az IoT-hardvergyártó vagy integráló
-* Az IoT-megoldás fejlesztői
-* Az IoT-megoldás deployer
-* Az IoT-megoldás operátor
+* IoT-hardvergyártótól vagy rendszerintegrátor
+* IoT-megoldás fejlesztői
+* IoT-megoldás deployer
+* IoT-megoldás operátor
 
-Ez a cikk összefoglalja [Internet a dolgok ajánlott biztonsági eljárások](../iot-suite/iot-security-best-practices.md). Tekintse meg az adott cikkhez részletes információt.
+Ez a cikk összegzi [Internet a dolgok ajánlott biztonsági eljárások](../iot-suite/iot-security-best-practices.md). Tekintse meg, hogy a cikk további információt.
 
-## <a name="iot-hardware-manufacturer-or-integrator"></a>Az IoT-hardvergyártó vagy integráló
+## <a name="iot-hardware-manufacturer-or-integrator"></a>IoT-hardvergyártótól vagy rendszerintegrátor
 
-Ha Ön egy IoT hardver gyártás vagy egy hardveres integráló, kövesse az alábbi gyakorlati tanácsokra:
+Ha Ön egy IoT-hardver gyártójához vagy egy hardveres integráló, kövesse az alábbi gyakorlati tanácsokat:
 
-* **Hatókör hardvereszközeit úgy, hogy a minimális követelmények**: a hardver tervezési tartalmaznia kell a hardvert, és semmi további művelethez szükséges minimális funkciók. 
-* **Ellenőrizze a hardver igazolása védelmet**: build a mechanizmusok észleléséhez fizikai illetéktelen módosításának hardverek, például a megnyitása az eszköz borítóján eltávolítása egy részét az adott eszköz feloldásához, stb. 
-* **Biztonságos hardveren körül Build**: Ha [ELÁBÉ](https://en.wikipedia.org/wiki/Cost_of_goods_sold) lehetővé teszik, készíthetnek biztonsági funkciókat, például a biztonságos és titkosított tárolási és a platformmegbízhatósági modul TPM-alapú rendszerindítási funkcióit.
-* **Frissítések biztonságosabbá teheti**: előbb vagy utóbb elkerülhetetlenné belső vezérlőprogram frissítése az eszköz élettartama alatt.
+* **Minimális követelményeknek megfelelő hardver hatókör**: a hardvertervezést tartalmaznia kell a hardver, és semmi további művelethez szükséges minimális funkciók. 
+* **Hogy a koncepció meghamisítása hardveres**: hozhat létre a mechanizmus észleli a fizikai illetéktelen módosításának hardverek, például nyissa meg az eszköz cover, eltávolítás, egy részét az eszközön, stb. 
+* **Hozhat létre biztonságos hardver körül**: Ha [COGS](https://en.wikipedia.org/wiki/Cost_of_goods_sold) lehetővé teszik, biztonságos és titkosított tároló és a Platformmegbízhatósági modul-alapú rendszerindítás funkció biztonsági funkciókat hozhat létre.
+* **Győződjön meg, a frissítések biztonságos**: az eszköz teljes élettartama során belső vezérlőprogram frissítése az elkerülhetetlen.
 
-## <a name="iot-solution-developer"></a>Az IoT-megoldás fejlesztői
+## <a name="iot-solution-developer"></a>IoT-megoldás fejlesztői
 
-Az IoT-megoldás fejlesztők, kövesse az alábbi gyakorlati tanácsokat:
+Ha Ön egy IoT-megoldás fejlesztői, hajtsa végre az alábbi ajánlott eljárásokat:
 
-* **Hajtsa végre a biztonságos software development módszert**: ground felfelé továbbléphetnek a kezdetektől a projekt a biztonság egészen a végrehajtási, a tesztelés és a telepítése a biztonságos szoftver fejlesztése igényel.
-* **A kiválasztott nyílt forráskódú szoftver körültekintően**: gyorsan a megoldások fejlesztése lehetőséget kínál a nyílt forráskódú szoftvereket.
-* **Integrálható, így gondossággal járjanak**: a szoftver biztonsági hiányosságokat számos lehet létrehozni a határ könyvtárakat és API-k. 
+* **Hajtsa végre a szoftvert biztonságos fejlesztési módszertanába**: biztonságos szoftverfejlesztés földön felfelé szem előtt tartva egészen a megvalósítási kezelésére, tesztelésére és üzembe helyezés, a kezdetektől a projekt biztonsági igényel.
+* **Válassza ki a nyílt forráskódú szoftverek körültekintően**: megoldások gyors fejlesztése lehetőséget kínál a nyílt forráskódú szoftver.
+* **Körültekintően integrálása**: számos, a szoftver biztonsági hibára derült címen a határt, könyvtárakat és API-k léteznek. 
 
-## <a name="iot-solution-deployer"></a>Az IoT-megoldás deployer
+## <a name="iot-solution-deployer"></a>IoT-megoldás deployer
 
 Ha Ön egy IoT-megoldás deployer, kövesse az alábbi gyakorlati tanácsokat:
 
-* **Hardver biztonságos telepítése**: IoT központi telepítések szükség lehet a hardvert, hogy nem biztonságos helyen, például a nyilvános szóközt vagy felügyeletlen területi telepíthető.
-* **Hitelesítési kulcsok biztonsága**: a telepítés során minden egyes eszköz eszközazonosítókat igényel, és hozzárendelt hitelesítési kulcsokat, a felhőalapú szolgáltatás által létrehozott. Ezek a kulcsok fizikailag biztonságos tartsa a telepítés után is. Feltört kulcs segítségével egy rosszindulatú eszköz helyettesítő meglévő eszközként.
+* **Hardver biztonságos üzembe**: IoT-telepítések hardver nem biztonságos helyen, például nyilvános szóközöket vagy felügyeletlen területi telepíteni lehet szükség.
+* **Hitelesítési kulcsok biztonsága**: üzembe helyezés során az egyes eszközök megköveteli az eszköz azonosítóját, és hozzárendelt hitelesítési kulcsokat, a felhőalapú szolgáltatás által létrehozott. Biztonságban ezeket a kulcsokat fizikailag az üzembe helyezés után is. Feltört kulcs révén egy meglévő eszközt, hogy egy rosszindulatú eszköz is használható.
 
-## <a name="iot-solution-operator"></a>Az IoT-megoldás operátor
+## <a name="iot-solution-operator"></a>IoT-megoldás operátor
 
-Ha IoT-megoldás kezelőként, kövesse az alábbi gyakorlati tanácsokat:
+Ha Ön az IoT-megoldás operátor, kövesse az alábbi gyakorlati tanácsokat:
 
-* **Naprakészen rendszerek**: Győződjön meg arról, eszköz-operációsrendszerek és az összes eszközillesztőt frissítése a legújabb verzióra. 
-* **Rosszindulatú tevékenységhez elleni**: lehetővé teszi az operációs rendszer, ha minden eszköz operációs rendszere helyezze a legújabb kártevőirtó- és víruskereső-funkciókat. 
-* **Naplózási gyakran**: naplózás IoT infrastruktúra pedig biztonsági kapcsolatos problémák esetén kulcs-biztonsági incidensekre válaszol.
-* **Az IoT-infrastruktúra fizikailag védelme**: a legrosszabb biztonsági támadások ellen IoT infrastruktúra fizikai hozzáférés eszközökhöz indul el.
-* **Felhő hitelesítő adatok védelme**: Felhő hitelesítő adatok konfigurálása és az IoT központi telepítése operációs rendszer valószínűleg a hozzáférést és legegyszerűbben hibát okoz az IoT. 
+* **Rendszerek naprakészen**: Győződjön meg arról, eszköz-operációsrendszerek és az összes eszközillesztőt frissítve lett, a legújabb verzióra. 
+* **Kártékony tevékenységek ellen védelmet biztosító**: Ha engedélyezi az operációs rendszer, helyezze a legújabb víruskereső és kártevőirtó funkciókat, minden eszköz operációs rendszere. 
+* **Gyakran az audit**: naplózás IoT-infrastruktúrát, a kapcsolódó biztonsági problémák kulcs akkor, ha a biztonsági incidensekre való válaszadást.
+* **Az IoT-infrastruktúrájának védelme a fizikailag**: a legrosszabb biztonsági támadások ellen IoT-infrastruktúrát eszközökhöz való fizikai hozzáférés indul el.
+* **Felhőhöz tartozó hitelesítő adatok védelme**: felhőbeli hitelesítő adatok konfigurálása és a egy IoT-környezet működtetése is esetleg hozzáférést és IoT-rendszer veszélyeztetheti a legegyszerűbb módja. 
 
