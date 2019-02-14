@@ -17,12 +17,13 @@ ms.date: 02/07/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: cfc1ba6250a2d246c2dcf9a0128097b64896732d
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 94d0e469614204a7507ba666ac04e59774eebde7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098510"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204414"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Engedélyek és jóváhagyás az Azure Active Directory v2.0-végpont
 
@@ -58,13 +59,13 @@ OAuth 2.0, az engedélyeket az ilyen típusú nevezzük *hatókörök*. Ezek gya
 * A felhasználó naptár írni használatával `Calendars.ReadWrite`
 * E-mailek küldésére, egy felhasználó használatával `Mail.Send`
 
-Egy alkalmazás leggyakrabban kérelmek ezeket az engedélyeket a hatókörök megadásával a 2.0-s verziójú irányuló authorize végponton. Azonban bizonyos magas jogosultsági engedélyek csak akkor engedélyezhetők rendszergazdai jóváhagyást, és általában a kért és kapott használatával a [rendszergazdai jóváhagyás végpontja](v2-permissions-and-consent.md#admin-restricted-scopes). Látogasson el lapunkra további információért.
+Egy alkalmazás leggyakrabban kérelmek ezeket az engedélyeket a hatókörök megadásával a 2.0-s verziójú irányuló authorize végponton. Azonban bizonyos magas jogosultsági engedélyek csak akkor engedélyezhetők rendszergazdai jóváhagyást, és általában a kért és kapott használatával a [rendszergazdai jóváhagyás végpontja](v2-permissions-and-consent.md#admin-restricted-permissions). Látogasson el lapunkra további információért.
 
 ## <a name="permission-types"></a>Engedély típusa
 
 A Microsoft identity platform az engedélyek két típusát támogatja: **delegált engedélyek** és **Alkalmazásengedélyek**.
 
-* **Delegált engedélyek** használják az alkalmazásokat, amelyeket a bejelentkezett felhasználó található. Az ilyen alkalmazások esetében a felhasználó vagy rendszergazda járul hozzá a szükséges engedélyeket, hogy az alkalmazás kéréseket és az alkalmazás-e a célként megadott erőforrás hívása esetén a bejelentkezett felhasználó nevében eljárni delegált engedély. Az egyes delegált engedélyeket is beleegyezés a nem rendszergazda jogosultságú felhasználók, de néhány magasabb jogosultsági szintű engedélyeket igényel [rendszergazdai jóváhagyást](v2-permissions-and-consent.md#admin-restricted-scopes). Melyik rendszergazda szerepkörök jóváhagyhat delegált engedélyeket kapcsolatban lásd: [rendszergazdája szerepkör engedélyei az Azure ad-ben](../users-groups-roles/directory-assign-admin-roles.md).
+* **Delegált engedélyek** használják az alkalmazásokat, amelyeket a bejelentkezett felhasználó található. Az ilyen alkalmazások esetében a felhasználó vagy rendszergazda járul hozzá a szükséges engedélyeket, hogy az alkalmazás kéréseket és az alkalmazás-e a célként megadott erőforrás hívása esetén a bejelentkezett felhasználó nevében eljárni delegált engedély. Az egyes delegált engedélyeket is beleegyezés a nem rendszergazda jogosultságú felhasználók, de néhány magasabb jogosultsági szintű engedélyeket igényel [rendszergazdai jóváhagyást](v2-permissions-and-consent.md#admin-restricted-permissions). Melyik rendszergazda szerepkörök jóváhagyhat delegált engedélyeket kapcsolatban lásd: [rendszergazdája szerepkör engedélyei az Azure ad-ben](../users-groups-roles/directory-assign-admin-roles.md).
 
 * **Alkalmazásengedélyek** alkalmazások által használt futtató nincs bejelentkezett felhasználó található, például alkalmazások, amelyek futtatását háttérszolgáltatások vagy démonok.  Alkalmazásengedélyek csak akkor lehet [egy rendszergazda által jóváhagyott](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
