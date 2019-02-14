@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2ad525ee0e10064d4d606dc1f899ef813fe92ab5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 077202e65c9e63c8ca5ea1a555ccd70bf27028c6
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273501"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232603"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Event hubs szolgáltatással
 
@@ -29,14 +29,14 @@ Ez a privát és elkülönített kapcsolat, az az alhálózat és a megfelelő E
 >[!WARNING]
 > Virtuális hálózatok integráció megvalósítása megakadályozhatja az egyéb Azure-szolgáltatásokhoz az Event hubs szolgáltatással való interakcióhoz.
 >
-> A megbízható Microsoft-szolgáltatások nem támogatottak a virtuális hálózatok vannak megvalósítva, és a rendszer hamarosan közzétesszük.
+> A megbízható Microsoft-szolgáltatások nem támogatottak, amikor a virtuális hálózatok vannak megvalósítva.
 >
 > Gyakori Azure forgatókönyvek, amelyek nem használhatók a virtuális hálózatok (vegye figyelembe, hogy a lista **nem** teljes körű) –
 > - Azure Monitor
 > - Azure Stream Analytics
 > - Az Azure Event Grid-integráció
-> - Az Azure IoT Hub-útvonalak
-> - Az Azure IoT Device Explorer
+> - Azure IoT Hub Routes
+> - Azure IoT Device Explorer
 > - Azure Data Explorer
 >
 > Az alábbi Microsoft szolgáltatásokra van szükség a virtuális hálózaton

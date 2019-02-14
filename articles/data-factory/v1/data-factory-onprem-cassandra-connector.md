@@ -1,4 +1,4 @@
-﻿---
+---
 title: Adatok áthelyezése a Data Factory segítségével a Cassandra |} A Microsoft Docs
 description: Tudnivalók az adatok áthelyezése egy Azure Data Factory használatával a helyszíni Cassandra-adatbázisból.
 services: data-factory
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dd90834a2e112effbfd6876b84dfe8b3ca87fcf3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 38d5d469c920cafa33e0cc5b37846df2dc6d6ab9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015644"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236412"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával a helyszíni Cassandra-adatbázis
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](data-factory-onprem-cassandra-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-cassandra.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "54015644"
 
 Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység használatával helyezheti át egy helyszíni Cassandra-adatbázis. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.
 
-A helyszíni Cassandra adattárolókból adatokat másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. A Data factory jelenleg csak helyez át adatokat egy Cassandra-adattár pedig más adattárakban, de más adattárakból származó adatok áthelyezése a Cassandra adattár esetében nem támogatja. 
+A helyszíni Cassandra adattárolókból adatokat másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. A Data factory jelenleg csak helyez át adatokat egy Cassandra-adattár pedig más adattárakban, de más adattárakból származó adatok áthelyezése a Cassandra adattár esetében nem támogatja.
 
 ## <a name="supported-versions"></a>Támogatott verziók
 A Cassandra-összekötő Cassandra alábbi verzióit támogatja: 2.x és 3.x. A tevékenység fut a helyi Integration Runtime, IR 3.7-es verziója óta, vagy újabb támogatott 3.x Cassandra.
@@ -38,26 +38,26 @@ A Cassandra-összekötő Cassandra alábbi verzióit támogatja: 2.x és 3.x. A 
 ## <a name="prerequisites"></a>Előfeltételek
 Az Azure Data Factory szolgáltatás lehessen a helyszíni Cassandra-adatbázishoz való csatlakozáshoz telepítenie kell egy adatkezelési átjárón ugyanarra a gépre, amelyen az adatbázis vagy egy külön számítógépen az adatbázis-erőforrások versengő elkerülése érdekében. Az adatkezelési átjáró, egy összetevő, amely a helyszíni adatforrásokhoz csatlakozik a cloud services biztonságos és felügyelt módon. Lásd: [adatkezelési átjáró](data-factory-data-management-gateway.md) adatkezelési átjáró részleteit ismertető cikket. Lásd: [adatok áthelyezése a helyszínről a felhőbe](data-factory-move-data-between-onprem-and-cloud.md) a cikk a részletes adatok áthelyezése az adatfolyamatok az átjáró beállítása.
 
-Az átjáró csatlakozni egy Cassandra-adatbázis, akkor is, ha az adatbázis üzemel a felhőben, például az Azure IaaS virtuális gépen kell használnia. Y is van az átjáró a virtuális gépen ugyanazt az adatbázist futtató, vagy egy különálló virtuális gépen mindaddig, az átjáró képes kapcsolódni az adatbázishoz.  
+Az átjáró csatlakozni egy Cassandra-adatbázis, akkor is, ha az adatbázis üzemel a felhőben, például az Azure IaaS virtuális gépen kell használnia. Y is van az átjáró a virtuális gépen ugyanazt az adatbázist futtató, vagy egy különálló virtuális gépen mindaddig, az átjáró képes kapcsolódni az adatbázishoz.
 
-Az átjáró telepítésekor automatikusan telepíti a Cassandra-adatbázishoz való csatlakozáshoz használt Microsoft Cassandra ODBC-illesztőt. Így nem kell manuálisan telepítenie minden olyan illesztőprogram az átjárót tartalmazó számítógépen, amikor az adatok másolása a Cassandra-adatbázis. 
+Az átjáró telepítésekor automatikusan telepíti a Cassandra-adatbázishoz való csatlakozáshoz használt Microsoft Cassandra ODBC-illesztőt. Így nem kell manuálisan telepítenie minden olyan illesztőprogram az átjárót tartalmazó számítógépen, amikor az adatok másolása a Cassandra-adatbázis.
 
 > [!NOTE]
 > Lásd: [gateway hibáinak elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) kapcsolódási/átjáró hibaelhárítási tippek a kapcsolatos problémákat.
 
 ## <a name="getting-started"></a>Első lépések
-Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni Cassandra adattárolókból más eszközök/API-k használatával is létrehozhat. 
+Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni Cassandra adattárolókból más eszközök/API-k használatával is létrehozhat.
 
-- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
-- A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
+- A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
 Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
 1. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához.
-2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
-3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
+2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli.
+3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként.
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy helyszíni Cassandra adattár használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása az Azure Blob Cassandra](#json-example-copy-data-from-cassandra-to-azure-blob) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban. A Data Factory-entitások, amely adatokat másol egy helyszíni Cassandra adattár használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása az Azure Blob Cassandra](#json-example-copy-data-from-cassandra-to-azure-blob) című szakaszát.
 
 Az alábbi szakaszok nyújtanak egy Cassandra adattárba adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
 
@@ -66,8 +66,8 @@ Az alábbi táblázatban a JSON-elemeket Cassandra-beli társított szolgáltat�
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| type |A type tulajdonságot kell beállítani: **Az OnPremisesCassandra** |Igen |
-| gazdagép |Egy vagy több IP-címek vagy kiszolgálók Cassandra gazdagép nevét.<br/><br/>Adja meg az IP-címek vagy az összes kiszolgálóhoz csatlakozzon egyszerre állomásnevek vesszővel tagolt listája. |Igen |
+| type |A type tulajdonságot kell beállítani: **OnPremisesCassandra** |Igen |
+| gazdagép |One or more IP addresses or host names of Cassandra servers.<br/><br/>Adja meg az IP-címek vagy az összes kiszolgálóhoz csatlakozzon egyszerre állomásnevek vesszővel tagolt listája. |Igen |
 | port |A Cassandra-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP portra. |Nem, az alapértelmezett érték: 9042 |
 | authenticationType |Alapszintű vagy névtelen |Igen |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
@@ -116,7 +116,7 @@ A minta az alábbi data factory-entitások rendelkezik:
 
 **Cassandra-beli társított szolgáltatást:**
 
-Ez a példa a **Cassandra** társított szolgáltatást. Lásd: [Cassandra társított szolgáltatás](#linked-service-properties) a társított szolgáltatás által támogatott tulajdonságokról a következő szakaszban.  
+Ez a példa a **Cassandra** társított szolgáltatást. Lásd: [Cassandra társított szolgáltatás](#linked-service-properties) a társított szolgáltatás által támogatott tulajdonságokról a következő szakaszban.
 
 ```json
 {
@@ -143,7 +143,7 @@ Ez a példa a **Cassandra** társított szolgáltatást. Lásd: [Cassandra társ
 {
     "name": "AzureStorageLinkedService",
     "properties": {
-    "type": "AzureStorage",
+        "type": "AzureStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         }
@@ -183,7 +183,7 @@ Beállítás **külső** való **igaz** a Data Factory szolgáltatás tájékozt
 
 **Azure blobkimeneti adatkészlet:**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.).
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1).
 
 ```json
 {
@@ -212,13 +212,13 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
 Lásd: [RelationalSource tulajdonságait](#copy-activity-properties) a RelationalSource által támogatott tulajdonságok listáját.
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2016-06-01T18:00:00",
         "end":"2016-06-01T19:00:00",
         "description":"pipeline with copy activity",
-        "activities":[  
+        "activities":[
         {
             "name": "CassandraToAzureBlob",
             "description": "Copy from Cassandra to an Azure blob",
@@ -254,29 +254,29 @@ Lásd: [RelationalSource tulajdonságait](#copy-activity-properties) a Relationa
                 "timeout": "01:00:00"
             }
         }
-        ]    
+        ]
     }
 }
 ```
 
 ### <a name="type-mapping-for-cassandra"></a>Cassandra-leképezés típusa
-| Cassandra-típus | .NET-alapú típusa |
+| Cassandra Type | .NET-alapú típusa |
 | --- | --- |
-| ASCII |Sztring |
+| ASCII |String |
 | BIGINT |Int64 |
-| BLOB |Byte] |
+| BLOB |Byte[] |
 | LOGIKAI ÉRTÉK |Logikai |
-| TIZEDES TÖRT |Tizedes tört |
-| DUPLA |Dupla |
-| LEBEGŐPONTOS |Önálló |
-| INET |Sztring |
+| DECIMAL |Decimal |
+| DUPLA |Double |
+| LEBEGŐPONTOS |Single |
+| INET |String |
 | INT |Int32 |
-| SZÖVEG |Sztring |
+| SZÖVEG |String |
 | IDŐBÉLYEG |DateTime |
-| TIMEUUID |GUID |
-| UUID |GUID |
-| VARCHAR |Sztring |
-| VARINT |Tizedes tört |
+| TIMEUUID |Guid |
+| UUID |Guid |
+| VARCHAR |String |
+| VARINT |Decimal |
 
 > [!NOTE]
 > Gyűjtemény típusa (map, set, list, stb.), tekintse meg [használata virtuális tábla használatával Cassandra gyűjteménytípusai](#work-with-collections-using-virtual-table) szakaszban.
@@ -327,7 +327,7 @@ Az alábbi táblázatokban látható a listában, a térkép és StringSet oszlo
 | 3 |2 |102 |
 | 3 |3 |103 |
 
-#### <a name="table-exampletablevtmap"></a>"ExampleTable_vt_Map". tábla:
+#### <a name="table-exampletablevtmap"></a>Table “ExampleTable_vt_Map”:
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
 | 1 |S1 |A |

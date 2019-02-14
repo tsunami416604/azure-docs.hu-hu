@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6f0f9202a02acf5e6f7d6fe3fba2b68e8b266090
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: dd2bf11781a6dd013f033fc535b068d449dd04d4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882182"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238130"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>Gyors útmutató: A Bing kép Search SDK a Javához készült rendszerképek keresése
 
@@ -45,7 +45,7 @@ Telepítse a Bing Image Search SDK függőségeit a Maven, a Gradle vagy más f�
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében, és importálja az alábbi kódtárakat az osztályok implementációjába:
+1. Hozzon létre egy új Java-projektet a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és az osztály implementációját ad hozzá az alábbi importálásokat:
 
     ```java
     import com.microsoft.azure.cognitiveservices.search.imagesearch.BingImageSearchAPI;
@@ -63,9 +63,10 @@ Telepítse a Bing Image Search SDK függőségeit a Maven, a Gradle vagy más f�
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-bing-image-search-api"></a>Keresési kérelem küldése a Bing Image Search API-nak
+## <a name="send-a-search-request-to-the-api"></a>Egy keresési kérelmet küld az API-hoz
 
 1. A `bingImages().search()` használatával küldjön el egy HTTP-kérést a keresési lekérdezéssel. A választ mentse `ImagesModel` néven.
+
    ```java
     ImagesModel imageResults = client.bingImages().search()
                 .withQuery(searchTerm)
@@ -76,7 +77,7 @@ Telepítse a Bing Image Search SDK függőségeit a Maven, a Gradle vagy más f�
 ## <a name="parse-and-view-the-result"></a>Az eredmények elemzése és megjelenítése
 
 Elemezze a válaszban visszaadott képtalálatokat.
-Ha a válasz tartalmaz keresési eredményeket, tárolja az első találatot, és jelenítse meg annak részleteit, például a miniatűr URL-címét és az eredeti URL-címet a visszaadott képek teljes számával együtt.  
+A válasz tartalmazza a keresési eredmények, ha az első eredmény tárolja, és nyomtassa ki a részleteket, például a Miniatűr URL-cím, az eredeti URL-CÍMÉT, teljes számával együtt adja vissza a lemezképeket.  
 
 ```java
 if (imageResults != null && imageResults.value().size() > 0) {

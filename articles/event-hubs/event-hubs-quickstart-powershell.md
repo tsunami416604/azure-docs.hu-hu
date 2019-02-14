@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 786d6fe04ced719217f57a2d603dff810b7a4c20
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f16dde524e20863f5fe20d98f5c62f18e835f8c5
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430755"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234119"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Gyors útmutató: Létrehoz egy eseményközpontot, az Azure PowerShell-lel
 
@@ -26,6 +26,8 @@ Ebben a rövid útmutatóban az Azure PowerShell használatával hoz létre esem
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következőkkel:
 
 - Egy Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot][], mielőtt hozzákezd.
@@ -34,7 +36,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha helyileg használja a PowerShellt, a rövid útmutató elvégzéséhez a PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.7.0).
+Ha helyileg használja a PowerShellt, a rövid útmutató elvégzéséhez a PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -43,7 +45,7 @@ Az erőforráscsoport Azure-erőforrások logikai gyűjteménye. Az eseményköz
 A következő példa létrehoz egy erőforráscsoportot az USA keleti régiójában. Cserélje le a `myResourceGroup` elemet a használni kívánt erőforráscsoport nevére:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup –Name myResourceGroup –Location eastus
+New-AzResourceGroup –Name myResourceGroup –Location eastus
 ```
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
@@ -51,7 +53,7 @@ New-AzureRmResourceGroup –Name myResourceGroup –Location eastus
 Az erőforráscsoport létrehozása után hozzon létre egy Event Hubs-névteret az erőforráscsoportban. Az Event Hubs-névtér egyedi, teljes tartománynevet biztosít, amelyben létrehozhatja az eseményközpontot. Cserélje le a `namespace_name` elemet a névtér egyedi nevére:
 
 ```azurepowershell-interactive
-New-AzureRmEventHubNamespace -ResourceGroupName myResourceGroup -NamespaceName namespace_name -Location eastus
+New-AzEventHubNamespace -ResourceGroupName myResourceGroup -NamespaceName namespace_name -Location eastus
 ```
 
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
@@ -60,7 +62,7 @@ Most, hogy rendelkezik Event Hubs-névtérrel, hozzon létre egy eseményközpon
 Az időszak engedélyezett `MessageRetentionInDays` 1 és 7 nap közötti.
 
 ```azurepowershell-interactive
-New-AzureRmEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name -EventHubName eventhub_name -MessageRetentionInDays 3
+New-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name -EventHubName eventhub_name -MessageRetentionInDays 3
 ```
 
 Gratulálunk! Az Azure PowerShell segítségével létrehozott egy Event Hubs-névteret és egy eseményközpontot a névtéren belül. 
@@ -73,8 +75,8 @@ Ebben a cikkben egy Event Hubs-névteret hozott létre, és mintaalkalmazások h
 - **Események fogadása az event hub**: [.NET Core](event-hubs-dotnet-standard-getstarted-receive-eph.md), [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-receive-eph.md), [Java](event-hubs-java-get-started-receive-eph.md), [Python](event-hubs-python-get-started-receive.md), [Node.js ](event-hubs-node-get-started-receive.md), [Go](event-hubs-go-get-started-receive-eph.md), [Apache Storm](event-hubs-storm-getstarted-receive.md)
 
 [hozzon létre egy ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Install and Configure Azure PowerShell]: https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
-[New-AzureRmResourceGroup]: https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup
+[Install and Configure Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-az-ps
+[New-AzResourceGroup]: https://docs.microsoft.com/powershell/module/az.resources/new-Azresourcegroup
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [3]: ./media/event-hubs-quickstart-powershell/sender1.png
 [4]: ./media/event-hubs-quickstart-powershell/receiver1.png

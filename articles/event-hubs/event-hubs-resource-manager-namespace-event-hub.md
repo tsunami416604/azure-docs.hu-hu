@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 39c92c870991ce2398b27efd189f1219777afdd7
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8664b431239f7b288deccedeadff0806ab600bcd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425322"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232513"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>Gyors útmutató: Létrehoz egy eseményközpontot, az Azure Resource Manager-sablon használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -30,9 +30,12 @@ Ebben a rövid útmutatóban létrehozhat egy eseményközpontba, egy Azure Reso
 > A teljes sablont, tekintse meg a [Event hub és a fogyasztói csoport sablon] [ Event Hub and consumer group template] a Githubon. Ez a sablon mellett az event hub-névtér és eseményközpont fogyasztói csoportot hozott létre. A legújabb sablonokért keresse fel az [Azure-gyorssablonok][Azure Quickstart Templates] gyűjteményt, és keressen az Event Hubs kifejezésre.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
-Ha a használni kívánt **Azure PowerShell-lel** a Resource Manager-sablon üzembe helyezéséhez [Azure PowerShell telepítése](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.7.0).
+Ha a használni kívánt **Azure PowerShell-lel** a Resource Manager-sablon üzembe helyezéséhez [Azure PowerShell telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 Ha a használni kívánt **Azure CLI-vel** a Resource Manager-sablon üzembe helyezéséhez [Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -117,12 +120,12 @@ Hozzon létre egy Azure Resource Manager-sablonja paramétereket tartalmaz MyEve
 2. Az alábbi parancs futtatásával jelentkezzen be az Azure-ba:
 
    ```azurepowershell
-   Login-AzureRmAccount
+   Login-AzAccount
    ```
 3. Ha rendelkezik adja ki az alábbi parancsokat az aktuális előfizetési környezetet:
 
    ```azurepowershell
-   Select-AzureRmSubscription -SubscriptionName "<YourSubscriptionName>" 
+   Select-AzSubscription -SubscriptionName "<YourSubscriptionName>" 
    ```
 
 ### <a name="provision-resources"></a>Erőforrások kiosztása
@@ -135,10 +138,10 @@ Az Azure PowerShell-lel erőforrások üzembe helyezése/kiépítését, váltso
 $resourceGroupName = "<Specify a name for the Azure resource group>"
 
 # Create an Azure resource group
-New-AzureRmResourceGroup $resourceGroupName -location 'East US'
+New-AzResourceGroup $resourceGroupName -location 'East US'
 
 # Deploy the Resource Manager template. Specify the names of deployment itself, resource group, JSON file for the template, JSON file for parameters
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $resourceGroupName -TemplateFile MyEventHub.json -TemplateParameterFile MyEventHub-Parameters.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $resourceGroupName -TemplateFile MyEventHub.json -TemplateParameterFile MyEventHub-Parameters.json
 ```
 
 ## <a name="use-azure-cli-to-deploy-the-template"></a>A sablon üzembe helyezése az Azure CLI használatával

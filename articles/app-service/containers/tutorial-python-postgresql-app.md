@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c70c7e8b893c511aae36f122c5983fd0958eac8e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 161778c921026547c532b05474a60dd0d3e9fa7a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975389"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237800"
 ---
 # <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Az Azure App Service a Python és PostgreSQL alkalmazás készítése
 
@@ -33,6 +33,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az alkalmazás üzembe helyezése az Azure-ban
 > * Diagnosztikai naplók megtekintése
 > * Az alkalmazás kezelése az Azure Portalon
+
+> [!NOTE]
+> Mielőtt hoz létre egy Azure Database for postgresql-hez, ellenőrizze [Itt](https://docs.microsoft.com/en-us/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) megtekintéséhez, amely számítási generáció érhető el a régióban.
 
 A cikk lépései macOS rendszerre vonatkoznak. Linux és Windows rendszeren a legtöbb esetben ugyanezek az utasítások érvényesek, az oktatóanyag azonban nem tér ki az eltérésekkel kapcsolatos részletekre.
 

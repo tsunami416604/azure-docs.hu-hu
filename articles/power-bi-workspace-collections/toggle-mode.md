@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 9a12940f08a11b66a0d09937d5ab8fab7304734f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 892ea129a57e77c59f37b305b96b42aa85dba32b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754336"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232707"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Nézet közötti váltás és a szerkesztési mód a jelentések a Power BI-Munkaterületcsoportok
 
@@ -30,7 +30,7 @@ Szeretne létrehozni, amely megtekintéséhez és a egy jelentés szerkesztése 
 > [!NOTE]
 > Ez lehetővé teszi, hogy szerkesztheti, és mentse a módosításokat a meglévő jelentés. Ha szeretné is, a függvény az igazoló **Mentés másként**, meg kell adnia a további engedélyeket. További információkért lásd: [hatókörök](app-token-flow.md#scopes).
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -46,9 +46,10 @@ Meg kell adnia a engedélyeket és a egy viewMode megtekintve láthatja a Menté
 
 Ha például a JavaScript:
 
-```
+```html
    <div id="reportContainer"></div>
 
+    <script>
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
@@ -74,6 +75,7 @@ Ha például a JavaScript:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
+    </script>
 ```
 
 Ez azt jelzi, hogy a jelentés beágyazása a megtekintési üzemmódba alapján **viewMode** beállítása **modellek. ViewMode.View**.
@@ -82,7 +84,7 @@ Ez azt jelzi, hogy a jelentés beágyazása a megtekintési üzemmódba alapján
 
 A következő JavaScript használatával válthat a megtekintési üzemmódba, ha a szerkesztési módból.
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
@@ -98,7 +100,7 @@ report.switchMode("view");
 
 A következő JavaScript segítségével váltson szerkesztőmódra, ha a megtekintési módban.
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 

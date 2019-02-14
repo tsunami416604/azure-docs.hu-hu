@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: 8a5832433d1d8c81c22c828ec4659c10951f680a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c467c963a558f84a0a08887d3777dccf7cd8554d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103632"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234067"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Service busszal
 
@@ -29,7 +29,7 @@ Ez a privát és elkülönített kapcsolat, az az alhálózat és a megfelelő S
 >[!WARNING]
 > Virtuális hálózatok integráció megvalósítása megakadályozhatja az egyéb Azure-szolgáltatások Service Bus szolgáltatással való interakcióhoz.
 >
-> A megbízható Microsoft-szolgáltatások nem támogatottak a virtuális hálózatok vannak megvalósítva, és a rendszer hamarosan közzétesszük.
+> A megbízható Microsoft-szolgáltatások nem támogatottak, amikor a virtuális hálózatok vannak megvalósítva.
 >
 > Gyakori Azure forgatókönyvek, amelyek nem használhatók a virtuális hálózatok (vegye figyelembe, hogy a lista **nem** teljes körű) –
 > - Azure Monitor

@@ -10,17 +10,17 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: de809ef1455e4c8c4c2284c2139e962f1829770b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 55cf124baf7614813620602212856cc586b721df
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510170"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244334"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studió mintaadatkészleteinek használata
 [top]: #machine-learning-sample-datasets
 
-Amikor létrehoz egy új munkaterületet az Azure Machine Learning, a számos mintaadatkészletek és kísérletek alapértelmezés szerint szerepelnek. A mintául szolgáló modell által használt ezek mintaadatkészletek számos a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/). Mások, általában használt gépi tanulási adatokat különböző típusú példaként szerepelnek.
+Amikor létrehoz egy új munkaterületet az Azure Machine Learning, a számos mintaadatkészletek és kísérletek alapértelmezés szerint szerepelnek. A mintául szolgáló modell által használt ezek mintaadatkészletek számos a [Azure AI-katalógusban](http://gallery.azure.ai/). Mások, általában használt gépi tanulási adatokat különböző típusú példaként szerepelnek.
 
 Ezek az adatkészletek néhány elérhető az Azure Blob storage-ban. Ezen adatkészletek esetében a következő táblázat a közvetlen hivatkozást tartalmaz. Használatával a kísérletek az ezeket az adatkészleteket is használhatja a [adatok importálása] [ import-data] modul.
 

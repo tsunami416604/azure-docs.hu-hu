@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 6fca764c191c801cbca86c573339b397e61ead07
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2b73deb18b518f257e1de6125ef6d4e35eb0e7b7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700230"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236278"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -141,24 +141,26 @@ Naplózási adatok késések kapcsolatos további információkért lásd: [adat
 
 Az alábbi példa bemutatja, hogyan engedélyezze a diagnosztikát az Azure PowerShell-parancsmagok használatával.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>A storage-fiókban engedélyezése diagnosztikai naplók
 
 1. Jelentkezzen be, és válasszon ki egy előfizetést:
 
-    Connect-AzureRmAccount 
+    Connect-AzAccount 
 
     Select-AzureSubscription -SubscriptionId 
 
 2. Diagnosztikai naplók engedélyezése a Storage-fiókban, adja meg ezt a parancsot:
 
     ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
+    Set-AzDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
     ```
 
 3. Ahhoz, hogy a diagnosztikai naplók a Log Analytics-munkaterületen, adja meg ezt a parancsot:
 
     ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
+    Set-AzDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
     .<subscriptionName>" -WorkspaceId "/subscriptions/<workspaceId>.<workspaceName>" -Enabled $true -Categories CoreAnalytics 
     ```
 

@@ -12,12 +12,12 @@ ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 26e131ef598feae099e789bc51909c4eb249bd79
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d092b4e8096b311ba9ca9d3fbceea8fb57bf4aa9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001991"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234662"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -125,7 +125,7 @@ Ha úgy döntött, hogy auditnaplók írni a Log Analytics:
 Ha úgy döntött, hogy auditnaplók írni az Event Hubs:
 
 - Az Event Hubs naplózási adatok felhasználásához, szüksége lesz egy stream események felhasználásához, és a cél beállítása. További információkért lásd: [Azure Event Hubs – dokumentáció](https://docs.microsoft.com/azure/event-hubs/).
-- Törzsében rögzítve lesznek a naplók az Event Hub [Apache Avro](http://avro.apache.org/) események segítségével a JSON formázását az UTF-8 kódolást és tárolhatók. A vizsgálati naplók elolvasásához használja [Avro eszközök](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) vagy hasonló eszközt, amely ezt a formátumot.
+- Törzsében rögzítve lesznek a naplók az Event Hub [Apache Avro](http://avro.apache.org/) események segítségével a JSON formázását az UTF-8 kódolást és tárolhatók. A vizsgálati naplók elolvasásához használja [Avro eszközök](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) vagy hasonló eszközt, amely ezt a formátumot.
 
 Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon használhatja a naplók megtekintéséhez:
 

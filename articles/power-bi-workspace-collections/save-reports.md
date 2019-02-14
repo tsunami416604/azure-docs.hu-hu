@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 277667bb3b4e39acbb935285e984660a3b44993d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a66584aa1cd3f335111774ef1df37cddc630f69d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047956"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233370"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Jelentések mentése a Power BI munkaterületi gyűjteményekkel
 
@@ -34,7 +34,7 @@ Ahhoz, hogy a jelentést, először az adott jelentéshez token létrehozása a 
 
 Jelölik, és engedélyezze a jobb save/save gombként meg kell adnia a beágyazás konfigurációjában a megfelelő engedéllyel a jelentés beágyazása a Fájl menüben:
 
-* modellek. Permissions.ReadWrite
+* models.Permissions.ReadWrite
 * modellek. Permissions.Copy
 * modellek. Permissions.All
 
@@ -47,9 +47,10 @@ Tegyük fel, szeretne jelentést beágyazni az alkalmazásban, csak adja át a m
 
 Ha például a JavaScript:
 
-```
+```html
    <div id="reportContainer"></div>
 
+    <script>
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
@@ -75,6 +76,7 @@ Ha például a JavaScript:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
+    </script>
 ```
 
 Mostantól egy jelentés beágyazott szerkesztési módban az alkalmazásban.
@@ -83,7 +85,7 @@ Mostantól egy jelentés beágyazott szerkesztési módban az alkalmazásban.
 
 Szerkesztési mód a megfelelő jogkivonattal és engedélyekkel a jelentés beágyazása, miután a Fájl menüből vagy a JavaScript-alapú mentheti a jelentést:
 
-```
+```javascript
  // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
 
@@ -93,7 +95,7 @@ Szerkesztési mód a megfelelő jogkivonattal és engedélyekkel a jelentés be�
 
 ## <a name="save-as"></a>Mentés másként
 
-```
+```javascript
 // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
     
@@ -110,9 +112,9 @@ Szerkesztési mód a megfelelő jogkivonattal és engedélyekkel a jelentés be�
 
 Kell betölteni az új jelentés után egy *Mentés másként*. Az új jelentés betöltése hasonlít bármilyen jelentés beágyazásához.
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -124,6 +126,7 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
+</script>
 ```
 
 ## <a name="see-also"></a>Lásd még

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: 918cfb36c3afb9fc5c9a3f2c25b7c14b04354db1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d2bf55129465a607fdc3bce3bd1735642c64e428
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002199"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237926"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Napló adatokat küldeni a HTTP-adatgyűjtő API (nyilvános előzetes verzió) az Azure Monitor
 Ez a cikk bemutatja, hogyan Teljesítménynapló-adatok küldése az Azure monitornak a REST API-ügyfél a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és engedélyezte az Azure Monitor kérelmet.  A példák a PowerShell, a C# és Python.
@@ -173,6 +173,8 @@ Vannak bizonyos korlátozások az adatok elküldése az az Azure Monitor adatgy�
 * Az Azure Monitor adatgyűjtő API bejegyzésenkénti 30 MB maximális. Ez az egyedi közzétételek méretkorlátot. Ha az adatokat egyetlen közzététele, amely meghaladja a 30 MB-ot, a kell felosztani az adatokat, akár kisebb méretű adattömböket írnak és küldhet nekik egy időben.
 * Legfeljebb 32 KB-os korlátot a mezőértékek. Ha a mező értéke 32 KB-nál nagyobb, az adatok csonkolva lesz.
 * Egy adott típusú mezők ajánlott maximális száma érték az 50. Ez a használhatóság és a keresési élmény szempontjából gyakorlati korlátozva.  
+* Egy táblát a Log Analytics-munkaterület csak legfeljebb 500 oszlopok (mezőként ebben a cikkben említett) támogatja. 
+* Az oszlop nevét a maximális karakterszámot: 500.
 
 ## <a name="return-codes"></a>Visszatérési kódok
 A HTTP-állapotkód: 200, az azt jelenti, hogy a kérelem érkezett-e a feldolgozási. Ez azt jelzi, hogy a művelet sikeresen befejeződött-e.

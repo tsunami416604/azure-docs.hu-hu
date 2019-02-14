@@ -11,12 +11,12 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: fa2ae313ab18d6e474f1dd0953a3b0a0d094c7c3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111809"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244929"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>A tanúsítványok biztonságos B2B-üzenetek
 
@@ -30,6 +30,8 @@ Ezeket a tanúsítványokat a vállalati integrációs alkalmazásokban használ
 * [A nyilvános tanúsítványok](https://en.wikipedia.org/wiki/Public_key_certificate), amely a nyilvános interneten vásárolhatja meg kell [hitelesítésszolgáltatói (CA)](https://en.wikipedia.org/wiki/Certificate_authority) azonban nem igénylik bármilyen kulcsok. 
 
 * A privát tanúsítványok vagy [ *önaláírt tanúsítványokat*](https://en.wikipedia.org/wiki/Self-signed_certificate), amely létrehozása, és adja ki saját kezűleg de az is szükség van a titkos kulcsok. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="upload-a-public-certificate"></a>Nyilvános tanúsítvány feltöltése
 
@@ -60,18 +62,18 @@ Használata egy *nyilvános tanúsítvány* a logic apps B2B-funkciói rendelkez
 
 ## <a name="upload-a-private-certificate"></a>Privát tanúsítvány feltöltése
 
-Használata egy *személyes tanúsítvány* a logic apps B2B-funkciói rendelkező, akkor először fel kell töltenie a tanúsítvány az integrációs fiókba. Rendelkezik titkos kulccsal, amely először hozzá kell [Azure Key Vault](../key-vault/key-vault-overview.md). 
+Használata egy *személyes tanúsítvány* a logic apps B2B-funkciói rendelkező, akkor először fel kell töltenie a tanúsítvány az integrációs fiókba. Rendelkezik titkos kulccsal, amely először hozzá kell [Azure Key Vault](../key-vault/key-vault-get-started.md). 
 
 A tulajdonságok megadása után a [szerződések](logic-apps-enterprise-integration-agreements.md) , hogy hoz létre, a tanúsítványt, amellyel biztonságossá teheti a B2B-üzenetek érhető el.
 
 > [!NOTE]
 > Privát tanúsítványok esetén győződjön meg arról, hogy a megfelelő nyilvános tanúsítvány megjelenő hozzáadása a [AS2-egyezményt](logic-apps-enterprise-integration-as2.md) **küldési és fogadási** aláírása és titkosítása üzenetek beállításait.
 
-1. [Adja hozzá a titkos kulcsot az Azure Key Vaultba](../key-vault/quick-create-cli.md#add-a-secret-to-key-vault) , és adja meg egy **kulcsnév**.
+1. [Adja hozzá a titkos kulcsot az Azure Key Vaultba](../key-vault/certificate-scenarios.md#import-a-certificate) , és adja meg egy **kulcsnév**.
    
-2. Engedélyezze az Azure Logic Apps műveletek végrehajtása az Azure Key Vaultban. Hozzáférési jogot a Logic Apps szolgáltatás egyszerű, használja a PowerShell-paranccsal [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy), például:
+2. Engedélyezze az Azure Logic Apps műveletek végrehajtása az Azure Key Vaultban. Hozzáférési jogot a Logic Apps szolgáltatás egyszerű, használja a PowerShell-paranccsal [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy), például:
 
-   `Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
+   `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
 3. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Az Azure fő menüjéből válassza **összes erőforrás**. A keresőmezőbe adja meg az integrációs fiók nevét, és válassza ki a kívánt integrációs fiók.

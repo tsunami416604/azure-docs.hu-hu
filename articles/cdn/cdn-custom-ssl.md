@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f75b14ce2ca860ee894fe0a2ef501066b91f8e8a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c9fb24cd6bcfae273c5430eee8d1fa8df58c6202
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755645"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236311"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
 
@@ -45,6 +45,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > - HTTPS-protokoll letiltása az egyéni tartományon
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
 Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy CDN-profilt, és legalább egy CDN-végpontot. További információkért lásd: [a rövid útmutató: Azure CDN-profil és -végpont létrehozása](cdn-create-new-endpoint.md).
 
@@ -103,11 +105,11 @@ A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezé
 
 Regisztrálja az Azure CDN-t alkalmazásként az Azure Active Directoryjában PowerShellen keresztül.
 
-1. Ha szükséges, telepítse az [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) bővítményt a PowerShellhez a helyi számítógépen.
+1. Szükség esetén telepítse [Azure PowerShell-lel](/powershell/azure/install-az-ps) a helyi gépen.
 
 2. Futtassa a PowerShellben az alábbi parancsot:
 
-     `New-AzureRmADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
+     `New-AzADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
 
     ![Azure CDN regisztrálása PowerShellben](./media/cdn-custom-ssl/cdn-register-powershell.png)
               

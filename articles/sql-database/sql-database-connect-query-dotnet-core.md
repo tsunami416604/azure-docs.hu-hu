@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/21/2018
-ms.openlocfilehash: 0b6e5116a90c66852ac39f67f9f32c94470e5332
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/12/2019
+ms.openlocfilehash: 82b412d7fc9e54ca213fecde783a5e27f8ee93bc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565326"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233558"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Gyors útmutató: A .NET Core (C#) használata Azure SQL Database-adatbázisok lekérdezéséhez
 
@@ -27,19 +27,38 @@ Ez a rövid útmutatóban használni kívánt [.NET Core](https://www.microsoft.
 
 Ebben az oktatóanyagban szüksége lesz:
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
 
-- [.NET core, az operációs rendszerének](https://www.microsoft.com/net/core) telepítve. 
+  || Önálló adatbázis | Felügyelt példány |
+  |:--- |:--- |:---|
+  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) |
+  | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolat egy virtuális gépről](sql-database-managed-instance-configure-vm.md)|
+  |||[Helyszíni kapcsolat](sql-database-managed-instance-configure-p2s.md)
+  |Adatok betöltése|Az Adventure Works betöltött száma a rövid útmutató|[Állítsa vissza a Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |||Állítsa vissza vagy importálása az Adventure Works [BACPAC](sql-database-import.md) fájlt [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||
+
+  > [!IMPORTANT]
+  > Ebben a cikkben a parancsfájlok az Adventure Works adatbázisa használatához készültek. Felügyelt példánnyal Ha az Adventure Works adatbázisa importálása-példány adatbázis, vagy módosítsa a parancsfájlokat ebben a cikkben a Wide World Importers-adatbázis használatára.
+
+- [.NET core, az operációs rendszerének](https://www.microsoft.com/net/core) telepítve.
 
 > [!NOTE]
 > Ez a rövid útmutató használja a *mySampleDatabase* adatbázis. Ha egy másik adatbázishoz használni kívánt, kell módosítani az adatbázis-hivatkozásokat, és módosítsa a `SELECT` -lekérdezést a C# kódot.
 
-
 ## <a name="get-sql-server-connection-information"></a>Az SQL server-kapcsolati adatok lekéréséhez
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati információkat kaphat. A következő eljárások szüksége a kiszolgáló teljes nevét vagy a gazdagépnév, az adatbázis neve és a bejelentkezési adatait.
 
-#### <a name="get-adonet-connection-information-optional"></a>Az ADO.NET kapcsolati adatok lekéréséhez (nem kötelező)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
+2. Keresse meg a **SQL-adatbázisok** vagy **SQL felügyelt példányai** lapot.
+
+3. A a **áttekintése** lapon, tekintse át a teljes kiszolgálónevet melletti **kiszolgálónév** egy önálló adatbázis vagy a kiszolgáló teljes neve melletti **gazdagép** számára egy felügyelt a példány. Másolja ki a kiszolgáló nevét vagy az állomásnevet, rámutatnak, és válassza a **másolási** ikonra.
+
+## <a name="get-adonet-connection-information-optional"></a>Az ADO.NET kapcsolati adatok lekéréséhez (nem kötelező)
 
 1. Keresse meg a **mySampleDatabase** oldal és a **beállítások**válassza **kapcsolati karakterláncok**.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a04b25904f41da3e600e3d1e6fcea8cb760d7502
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a0a648665f607234d585bb2bde8f6adc10ffbfea
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163019"
+ms.locfileid: "56236397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Oktatóanyag: Az Azure Active Directory-integráció a Githubon
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az Azure AD-integráció konfigurálása a GitHub, a következőkre van szükség:
 
 * Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* GitHub egyszeri bejelentkezés engedélyezve van az előfizetés
+* Létrehozott egy GitHub-szervezethez [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise), ami megköveteli a [GitHub Enterprise-zal számlázási csomag](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 

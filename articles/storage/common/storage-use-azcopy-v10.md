@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: a4e115194d7e903edae4b4713c4f65eef9895cbf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c9009e898b00212dba4dec9bf38af2bfa057b8ea
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467118"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244606"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Adatátvitel az AzCopy v10 (előzetes verzió)
 
@@ -54,8 +54,11 @@ Az AzCopy v10 nem igényel a telepítés. Nyisson meg egy előnyben részesítet
 ## <a name="authentication-options"></a>A hitelesítési beállítások
 
 AzCopy v10 lehetővé teszi, hogy az Azure Storage hitelesítésekor a következő beállításokat:
-- **[A Blob és ADLS Gen2 támogatott] az Azure Active Directory**. Használat ```.\azcopy login``` bejelentkezni az Azure Active Directory használatával.  A felhasználóknak rendelkezniük kell ahhoz ["Storage-Blobadatok Közreműködője" szerepkörrel](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) írni a Blob storage, Azure Active Directory-hitelesítéssel.
-- **SAS-tokeneket [támogatott a Blobok és fájlok szolgáltatás]**. A SAS-jogkivonat hozzáfűzése a blob elérési útja a parancssorban a használatára. Az Azure-portált használja, SAS-jogkivonatot [Tártallózó](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), vagy más tetszőleges eszközökkel. További információkért lásd: [példák](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+- **Az Azure Active Directory [támogatott Blob és ADLS Gen2-szolgáltatásokhoz]**. Használat ```.\azcopy login``` bejelentkezni az Azure Active Directory használatával.  A felhasználóknak rendelkezniük kell ahhoz ["Storage-Blobadatok Közreműködője" szerepkörrel](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) írni a Blob storage, Azure Active Directory-hitelesítéssel.
+- **SAS-tokeneket [támogatott Blobok és fájlok szolgáltatások]**. A SAS-jogkivonat hozzáfűzése a blob elérési útja a parancssorban a használatára. Az Azure-portált használja, SAS-jogkivonatot [Tártallózó](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), vagy más tetszőleges eszközökkel. További információkért lásd: [példák](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+
+> [!IMPORTANT]
+> Ha a parancsot annak biztosítása érdekében a biztonsági Társítások végrehajtani kívánt kivonatosan verziója nem véletlenül közös bárkivel megosztás adjon beküld egy támogatási kérést Support (vagy a hiba elhárításához bármely 3. fél használata esetén). A kivont verzió elején. a naplófájl található. További részleteket a jelen cikk későbbi részében hibaelhárítási szakaszának áttekintése.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -206,11 +209,33 @@ set AZCOPY_CONCURRENCY_VALUE=<value>
 export AZCOPY_CONCURRENCY_VALUE=<value>
 # For MacOS
 export AZCOPY_CONCURRENCY_VALUE=<value>
+# To check the current value of the variable on all the platforms
+.\azcopy env
+# If the value is blank then the default value is currently in use
 ```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Az AzCopy v10 naplófájlokat és az összes feladat terv adatfájlokat hoz létre. A naplók segítségével megvizsgálhatja és az esetleges problémák elhárításában. A naplók tartalmazni fogja az állapotát, hiba (UPLOADFAILED COPYFAILED és DOWNLOADFAILED), a teljes elérési útja, és a hiba okát. A feladat-naplók és a terv fájlok találhatók, a % USERPROFILE\\.azcopy mappát.
+Az AzCopy v10 naplófájlokat és az összes feladat terv adatfájlokat hoz létre. A naplók segítségével megvizsgálhatja és az esetleges problémák elhárításában. A naplók tartalmazni fogja az állapotát, hiba (UPLOADFAILED COPYFAILED és DOWNLOADFAILED), a teljes elérési útja, és a hiba okát. A feladat-naplók és a terv fájlok találhatók, a % USERPROFILE\\Windows vagy $HOME .azcopy mappa\\.azcopy mappába a Mac és Linux rendszereken.
+
+> [!IMPORTANT]
+> Ha a parancsot annak biztosítása érdekében a biztonsági Társítások végrehajtani kívánt kivonatosan verziója nem véletlenül közös bárkivel megosztás adjon beküld egy támogatási kérést Support (vagy a hiba elhárításához bármely 3. fél használata esetén). A kivont verzió elején. a naplófájl található.
+
+### <a name="change-the-location-of-the-log-files"></a>A naplófájlok helyének módosítása
+
+Módosíthatja a helyet, a naplófájlok, ha szükséges, vagy az operációsrendszer-lemez betelőben elkerülése érdekében.
+
+```cmd
+# For Windows:
+set AZCOPY_LOG_LOCATION=<value>
+# For Linux:
+export AZCOPY_LOG_LOCATION=<value>
+# For MacOS
+export AZCOPY_LOG_LOCATION=<value>
+# To check the current value of the variable on all the platforms
+.\azcopy env
+# If the value is blank then the default value is currently in use
+```
 
 ### <a name="review-the-logs-for-errors"></a>Tekintse át a hibákat a naplók
 

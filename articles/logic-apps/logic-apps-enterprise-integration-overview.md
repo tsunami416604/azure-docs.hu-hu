@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.openlocfilehash: d37d5cb2b89b82bd9741dee0946b3a77d456b22a
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c9733346d091a6829bd5b42c80201df3a1357fe3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405752"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243110"
 ---
 # <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Áttekintés: B2B vállalati integrációs forgatókönyvek az Azure Logic Appsben és Enterprise Integration Pack
 
@@ -33,7 +33,7 @@ Tekintve az Enterprise Integration Pack "integrációs fiók" alapján történi
 
 ## <a name="how-to-get-started-with-enterprise-integration"></a>Ismerkedés a vállalati integrációs hogyan?
 
-Build és a B2B-alkalmazások és az Enterprise Integration Pack a Logikaialkalmazás-tervező segítségével kezelheti a **az Azure portal**. Emellett kezelheti a logic apps- [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp "Logic apps PowerShell").
+Build és a B2B-alkalmazások és az Enterprise Integration Pack a Logikaialkalmazás-tervező segítségével kezelheti a **az Azure portal**. Emellett kezelheti a logic apps- [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp).
 
 Az alábbiakban a magas szintű lépéseket kell tennie, mielőtt alkalmazásokat hozhat létre az Azure Portalon:
 

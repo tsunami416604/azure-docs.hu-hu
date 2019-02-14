@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 43d16c291391a3ffd94f404755e644dac0daf3a9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492827"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244298"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Studio-modellek és webszolgáltatás-végpontok létrehozása egy kísérletből a PowerShell használatával
 
@@ -35,7 +35,7 @@ Szerencsére a azt ennek segítségével végezheti a [Azure Machine Learning á
 > 
 
 ## <a name="set-up-the-training-experiment"></a>Állítsa be a tanítási kísérlet
-A példát követve [betanítási kísérlet](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1) , amely szerepel a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Ez a kísérlet megnyitásához a [Azure Machine Learning Studio](https://studio.azureml.net) munkaterületen.
+A példát követve [betanítási kísérlet](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1) , amely szerepel a [Cortana Intelligence Gallery](http://gallery.azure.ai). Ez a kísérlet megnyitásához a [Azure Machine Learning Studio](https://studio.azureml.net) munkaterületen.
 
 > [!NOTE]
 > Annak érdekében, hogy kövesse az ebben a példában együtt, érdemes inkább a standard munkaterületet, mint egy ingyenes munkaterületet. Egy végpontot hoz létre minden egyes ügyfél - összesen 10 végpont - és a standard munkaterületre igénylő, mivel az ingyenes munkaterületre legfeljebb 3 végpontok. Ha csak egy ingyenes munkaterületet, egyszerűen csak megváltoztatja a parancsfájlok csak th helyeket engedélyezéséhez.
@@ -63,7 +63,7 @@ Most meg kell a pontozási webszolgáltatás üzembe helyezéséhez.
 Ehhez kattintson **webszolgáltatás beállítása** a vásznon, majd válassza alább **prediktív webszolgáltatás**. Ez létrehoz egy pontozó kísérletet.
 Együttműködésre webszolgáltatásként néhány kisebb módosításokat kell. A címke oszlop "cnt" eltávolítása a bemeneti adatokat, és korlátozhatja a kimenet csak a-példány azonosítóját és a megfelelő előre jelzett érték.
 
-A munka mentéséhez saját magának, megnyithatja a [prediktív kísérletté](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1) , amely már elő lett készítve a katalógusban.
+A munka mentéséhez saját magának, megnyithatja a [prediktív kísérletté](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1) , amely már elő lett készítve a katalógusban.
 
 A webszolgáltatás üzembe helyezéséhez futtassa a prediktív kísérletet, majd kattintson a **webszolgáltatás üzembe helyezése** gombot a vászon alatti. A pontozási webszolgáltatás "Uci Kerékpárkölcsönzési pontozási" nevet.
 

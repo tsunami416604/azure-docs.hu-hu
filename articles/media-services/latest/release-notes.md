@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: a1d52e0c6f87b9075d73508c97bd270d67d3ecf5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8e2af866dcea3bd8ece29811b2cc8ccd4318ee54
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817622"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242805"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -34,6 +34,10 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 
 További információkért lásd: [Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="february-2019"></a>2019. február
+
+A Media Services v3 már upported Azure országos felhőkörnyezetekben. Nem minden funkciója érhető el az összes felhő még. További információkért lásd: [felhők és régiók, mely az Azure Media Services v3 létezik](azure-clouds-regions.md).
+
 ## <a name="january-2019"></a>2019. január
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard és a MPI-fájlok 
@@ -46,7 +50,7 @@ Ne módosítsa vagy távolítsa el az MPI-fájlt, és minden olyan függőséget
 
 Az általánosan elérhető kiadás V3 API-frissítések a következők:
        
-* A **PresentationTimeRange** tulajdonságai nem lesznek "szükséges" **AssetFilters** és **AccountFilters**. 
+* A **PresentationTimeRange** tulajdonságai nem lesznek "szükséges" **eszköz szűrők** és **Fiókszűrők**. 
 * A $skip és $top lekérdezési beállítások **feladatok** és **alakítja át** el lettek távolítva, és $orderby hozzá lett adva. Részeként az új rendezési funkció hozzáadása a rendszer észlelte, hogy a $skip és a $top beállításokat kellett véletlenül megnyílt korábban annak ellenére, hogy azok není implementována.
 * Enumerálás bővíthetőség újraengedélyezése. Ez a funkció az SDK előzetes verziók engedélyezve lett, és véletlenül az előfizetésemet letiltották a GA verzióban.
 * Két előre definiált adatfolyam-továbbítási szabályzat kaptak. **SecureStreaming** mostantól **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** mostantól **Predefined_MultiDrmStreaming**.
@@ -67,7 +71,7 @@ A CLI 2.0 modul már elérhető a [Azure Media Services v3 GA](https://docs.micr
 - [az ams élő kimenet](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [streamelési az ams-lokátor](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams-fiók legutóbbi](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) – lehetővé teszi a Media szolgáltatás számára fenntartott egységek kezelése
+- [az ams-fiók legutóbbi](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) – lehetővé teszi a Media szolgáltatás számára fenntartott egységek kezelését. További információkért lásd: [Scale a Media szolgáltatás számára fenntartott egységek](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Új funkciókat és jelentős módosításai
 
@@ -141,7 +145,7 @@ Az alábbi élő kódolás frissítések jelennek meg:
 - Továbbfejlesztett RMTP-támogatása (fokozott stabilitás és további forráskód kódoló).
 - Biztonságos RTMPS betöltését.
 
-    Amikor létrehoz egy videókhoz, akkor most get 4 betöltési URL-címeket. A 4 betöltési URL-címek olyan majdnem teljesen megegyezik, rendelkezik a azonos streamelési token (alkalmazásazonosító), csak a port száma rész nem egyezik. Az URL-címek kettő elsődleges és tartalék RTMPS számára. 
+    Amikor egy élő eseményt hoz létre, akkor most get 4 betöltési URL-címeket. A 4 betöltési URL-címek olyan majdnem teljesen megegyezik, rendelkezik a azonos streamelési token (alkalmazásazonosító), csak a port száma rész nem egyezik. Az URL-címek kettő elsődleges és tartalék RTMPS számára. 
 - átkódolása 24 órás támogatás. 
 - Továbbfejlesztett támogatást ad jelzés RTMP SCTE35 keresztül.
 
@@ -149,7 +153,7 @@ Az alábbi élő kódolás frissítések jelennek meg:
 
 A következő fejlesztéseket támogatja az Event Grid tekintheti meg:
 
-- Azure EventGrid-integráció a Logic Apps és az Azure Functions egyszerűbben fejlesztési. 
+- Az Azure Event Grid-integráció a Logic Apps és az Azure Functions egyszerűbben fejlesztési. 
 - Fizessen elő a kódolás, élő csatornák és egyéb eseményeket.
 
 ### <a name="cmaf-support"></a>CMAF támogatása
@@ -179,9 +183,9 @@ Ha a hozott eszközök vagy Fiókszűrők 09/28 és 10 közötti/12, a Media Ser
 A .net SDK-t a következő funkciók találhatók:
 
 * **Átalakítások** és **feladatok** kódolásához, vagy a médiatartalmak elemzése. Példák: [fájlok Stream](stream-files-tutorial-with-api.md) és [elemzés](analyze-videos-tutorial-with-api.md).
-* **StreamingLocators** közzétételéhez és a végfelhasználói eszközökön tartalmak online lejátszásához
-* **StreamingPolicies** és **ContentKeyPolicies** konfigurálása kulcskézbesítési és a tartalomvédelmi (DRM), amikor tartalmat továbbít.
-* **LiveEvents** és **LiveOutputs** betöltésre és élő adatfolyamok tartalmát archiválása konfigurálása.
+* **A streamelési Lokátorok** közzétételéhez és a végfelhasználói eszközökön tartalmak online lejátszásához
+* **Adatfolyam-házirendek** és **tartalom kulcs házirendjei** konfigurálása kulcskézbesítési és a tartalomvédelmi (DRM), amikor tartalmat továbbít.
+* **Élő események** és **élő kimenetek** betöltésre és élő adatfolyamok tartalmát archiválása konfigurálása.
 * **Eszközök** tárolására és médiatartalmak közzététele az Azure Storage-ban. 
 * **Streamvégpontok** konfigurálásához és a dinamikus csomagolás, titkosítási és folyamatos élő és igény szerinti médiatartalom méretezéséhez.
 

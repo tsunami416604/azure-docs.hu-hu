@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 3de675adf7364e8281a03a46c5eeeaa1b74249b5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4187557ef9a38f55465547f83d7bc4c3bcad9ba7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969284"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236929"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Az Azure PowerShell használata egy HDInsight-fürt létrehozása az Azure Data Lake Storage Gen1 (kiegészítő tárolóként)
 
@@ -50,6 +50,9 @@ HDInsight Data Lake Storage Gen1 dolgozhat konfigurálása, PowerShell-lel az al
 * A tesztfeladat futtatunk a fürtön
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
@@ -65,25 +68,25 @@ Kövesse az alábbi lépéseket egy Data Lake Storage Gen1-fiók létrehozásáh
 1. Az asztalon nyissa meg egy új Azure PowerShell-ablakot, és adja meg az alábbi kódrészletet. Amikor a rendszer kéri, jelentkezzen be, győződjön meg arról, hogy az előfizetés rendszergazdája vagy tulajdonosa egyik jelentkezzen be:
 
         # Log in to your Azure account
-        Connect-AzureRmAccount
+        Connect-AzAccount
 
         # List all the subscriptions associated to your account
-        Get-AzureRmSubscription
+        Get-AzSubscription
 
         # Select a subscription
-        Set-AzureRmContext -SubscriptionId <subscription ID>
+        Set-AzContext -SubscriptionId <subscription ID>
 
         # Register for Data Lake Storage Gen1
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
    > [!NOTE]
-   > Ha a következőhöz hasonló hibaüzenetet kap `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` a Data Lake Storage Gen1 erőforrás-szolgáltató regisztrálásakor a rendszer lehetséges, hogy az előfizetés nem áll-e a Data Lake Storage Gen1 szerepel az engedélyezési listán. Győződjön meg arról, hogy engedélyezi az Azure Data Lake Storage Gen1-előfizetést a következő [utasításokat](data-lake-store-get-started-portal.md).
+   > Ha a következőhöz hasonló hibaüzenetet kap `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` a Data Lake Storage Gen1 erőforrás-szolgáltató regisztrálásakor a rendszer lehetséges, hogy az előfizetés nem áll-e a Data Lake Storage Gen1 szerepel az engedélyezési listán. Győződjön meg arról, hogy engedélyezi az Azure Data Lake Storage Gen1-előfizetést a következő [utasításokat](data-lake-store-get-started-portal.md).
    >
    >
 2. Egy Data Lake Storage Gen1 fiókkal társítva az Azure-erőforráscsoport. Először hozzon létre egy Azure-erőforráscsoportot.
 
         $resourceGroupName = "<your new resource group name>"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
+        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     Egy a következőhöz hasonló kimenetnek kell megjelennie:
 
@@ -96,7 +99,7 @@ Kövesse az alábbi lépéseket egy Data Lake Storage Gen1-fiók létrehozásáh
 3. Hozzon létre egy Data Lake Storage Gen1 fiókot. A megadott fiók neve csak kisbetűket és számokat tartalmazhat.
 
         $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
-        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
 
     A következőhöz hasonló kimenetnek kell megjelennie:
 
@@ -118,7 +121,7 @@ Kövesse az alábbi lépéseket egy Data Lake Storage Gen1-fiók létrehozásáh
 5. Data Lake Storage Gen1 tölthet fel néhány adatot. Használjuk Ez a cikk későbbi részében annak ellenőrzéséhez, hogy az adatokat egy HDInsight-fürtön elérhető. Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát.
 
         $myrootdir = "/"
-        Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
+        Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Hitelesítés a Data Lake Storage Gen1 történő, szerepkörön alapuló hozzáférés beállítása
@@ -164,7 +167,7 @@ Ebben a szakaszban hajtsa végre a lépéseket az Azure Active Directory-alkalma
 
         $credential = [System.Convert]::ToBase64String($rawCertificateData)
 
-        $application = New-AzureRmADApplication `
+        $application = New-AzADApplication `
             -DisplayName "HDIADL" `
             -HomePage "https://contoso.com" `
             -IdentifierUris "https://mycontoso.com" `
@@ -175,13 +178,13 @@ Ebben a szakaszban hajtsa végre a lépéseket az Azure Active Directory-alkalma
         $applicationId = $application.ApplicationId
 2. Hozzon létre egy egyszerű szolgáltatás használatával az alkalmazás azonosítója.
 
-        $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
+        $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
 3. Adja meg a szolgáltatásnév hozzáférhessen a Data Lake Storage Gen1 mappa és a fájlt, amely a HDInsight-fürtből származó férhet hozzá. Az alábbi kódrészlet a Data Lake Storage Gen1 fiók (ahová másolta a mintaadatfájl), a legfelső szintű hozzáférést biztosít, és magát a fájlt.
 
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>HDInsight Linux-fürt létrehozása a Data Lake Storage Gen1 kiegészítő tárolóként
 
@@ -189,20 +192,20 @@ Ebben a szakaszban létrehozunk egy HDInsight Hadoop Linux-fürt a Data Lake Sto
 
 1. Kezdődhet beolvasása az előfizetés bérlő azonosítóját. Később szüksége lesz, amely.
 
-        $tenantID = (Get-AzureRmContext).Tenant.TenantId
+        $tenantID = (Get-AzContext).Tenant.TenantId
 2. Ebben a kiadásban egy Hadoop-fürtöt a Data Lake Storage Gen1 csak használható egy kiegészítő tárolóként a fürt számára. Az alapértelmezett tároló is az Azure storage-blobokat (WASB). Ezért először létre kell hoznunk a storage-fiók és a storage-tárolók, a fürt számára szükséges.
 
         # Create an Azure storage account
         $location = "East US 2"
         $storageAccountName = "<StorageAccountName>"   # Provide a Storage account name
 
-        New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
 
         # Create an Azure Blob Storage container
         $containerName = "<ContainerName>"              # Provide a container name
-        $storageAccountKey = (Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
-        $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
-        New-AzureStorageContainer -Name $containerName -Context $destContext
+        $storageAccountKey = (Get-AzStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
+        $destContext = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+        New-AzStorageContainer -Name $containerName -Context $destContext
 3. A HDInsight-fürt létrehozásához. Használja a következő parancsmagokat.
 
         # Set these variables
@@ -211,7 +214,7 @@ Ebben a szakaszban létrehozunk egy HDInsight Hadoop Linux-fürt a Data Lake Sto
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
 
-        New-AzureRmHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.4" -OSType Linux -SshCredential $sshCredentials -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
+        New-AzHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.4" -OSType Linux -SshCredential $sshCredentials -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
 
     A parancsmag sikeres befejezése után a fürt részletes adatai listázása egy kimenetnek kell megjelennie.
 

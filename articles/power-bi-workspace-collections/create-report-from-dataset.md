@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 38be6d0212f4676add76abacf9f18f0a73eb44be
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 78834f1f12d2c748cb885e437496f2acf11b69ee
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170419"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232761"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Új jelentés létrehozása adatkészletből a Power BI munkaterületi gyűjteményekkel
 
@@ -40,13 +40,13 @@ A *PowerBIToken osztály* kell telepíteni a [Power BI fő NuGut csomagot](https
 
 **NuGet-csomag telepítése**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.Core
 ```
 
 **C#-kód**
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -65,15 +65,16 @@ Annak érdekében, hogy létrehoz egy új jelentést, meg kell adni a konfigurá
 
 **NuGet-csomag telepítése**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.JavaScript
 ```
 
 **JavaScript-kódot**
 
-```
+```html
 <div id="reportContainer"></div>
-  
+
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -85,6 +86,7 @@ var embedCreateConfiguration = {
 
     // Create report
     var report = powerbi.createReport(reportContainer, embedCreateConfiguration);
+</script>
 ```
 
 Hívó *powerbi.createReport()* lehetővé teszi egy üres vászonból szerkesztési módban belül jelennek meg a *div* elemet.
@@ -95,7 +97,7 @@ Hívó *powerbi.createReport()* lehetővé teszi egy üres vászonból szerkeszt
 
 A jelentés nem jön létre, amíg meg nem hívja a **Mentés másként** műveletet. Ez a Fájl menüből, és a JavaScript-alapú elvégezhető.
 
-```
+```javascript
  // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
     
@@ -116,9 +118,9 @@ A jelentés nem jön létre, amíg meg nem hívja a **Mentés másként** művel
 
 Annak érdekében, hogy kommunikáljanak az új jelentést szeretne beágyazhatja a ugyanúgy, mint az alkalmazás beágyazása egy hagyományos jelentésben, ami azt jelenti, egy új jogkivonatot kell kiállítani. kifejezetten az új jelentést, és majd hívja meg a beágyazási metódust.
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -130,13 +132,14 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
+</script>
 ```
 
 ## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Mentés automatizálását és a "mentett" esemény használatával egy új jelentés betöltése
 
 Annak érdekében, hogy automatizálhatják a "Mentés másként" és az új jelentést, majd betöltéséhez használja az "mentett" esemény teheti. Ezt az eseményt a mentési művelet befejeződött, és adja vissza, egy Json-objektum, amely tartalmazza az új Jelentésazonosító, a jelentés neve, a régi Jelentésazonosító (ha volt ilyen), és ha a művelet volt a Mentés másként vagy menthet.
 
-```
+```json
 {
   "reportObjectId": "5dac7a4a-4452-46b3-99f6-a25915e0fe54",
   "reportName": "newReport",
@@ -147,9 +150,9 @@ Annak érdekében, hogy automatizálhatják a "Mentés másként" és az új jel
 
 Segítségével automatizálja a folyamatot a "mentett" eseményt figyelni, az új Jelentésazonosító igénybe, az új jogkivonat létrehozása és az új jelentés beágyazása.
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -192,6 +195,7 @@ var embedCreateConfiguration = {
    // report.off removes a given event handler if it exists.
    report.off("saved");
     });
+</script>
 ```
 
 ## <a name="see-also"></a>Lásd még

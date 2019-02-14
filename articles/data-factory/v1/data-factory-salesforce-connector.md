@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b4485344f0bb85cb5dd2a2d621833d0fed15a8e0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2364715bfeaea473db292baff2eb1e1cce3203b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022478"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233014"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Adatok áthelyezése a Salesforce-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,6 @@ ms.locfileid: "54022478"
 
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [Salesforce-összekötő a v2-ben](../connector-salesforce.md).
-
 
 Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység az Azure data factory bármely adattár, amely szerepel a fogadó oszlopában az másolhat adatokat a Salesforce-ból a [forrásként és fogadóként támogatott](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. Ez a cikk épül, amely a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) cikk, amelyen az adatok áthelyezését általános áttekintése a másolási tevékenység és a támogatott data store kombinációk.
 
@@ -53,17 +52,17 @@ Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyez�
 
 A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+A következő eszközök használatával hozzon létre egy folyamatot: **Az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és  **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
-Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani: 
+Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
 1. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához.
-2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
-3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
+2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli.
+3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként.
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások használatával adatait átmásolhatja a Salesforce-hoz használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása a Salesforce-ból az Azure-Blobba](#json-example-copy-data-from-salesforce-to-azure-blob) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban. A Data Factory-entitások használatával adatait átmásolhatja a Salesforce-hoz használt JSON-definíciói egy minta: [JSON-példa: Adatok másolása a Salesforce-ból az Azure-Blobba](#json-example-copy-data-from-salesforce-to-azure-blob) című szakaszát.
 
-A következő szakaszok a Salesforce-hoz adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért: 
+A következő szakaszok a Salesforce-hoz adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 Az alábbi táblázat ismerteti a Salesforce-beli társított szolgáltatás adott JSON-elemek.
@@ -125,7 +124,7 @@ Lekérdezés a helyreállíthatóan törölt rekordok a Salesforce Lomtárból, 
 * Lekérdezés az összes többek között a meglévő és a törölt a rekordokat, adja meg a "válassza * MyTable__c a **ahol IsDeleted = 0 vagy IsDeleted = 1**"
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON-példa: Adatok másolása a Salesforce-ból az Azure Blobba
-Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a Salesforce-ból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.   
+Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a Salesforce-ból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
 
 Az alábbiakban a Data Factory-összetevők, amelyek kell létrehozni a forgatókönyv megvalósításához. A listán a következő szakaszok ezeket a lépéseket részleteket nyújtanak.
 
@@ -137,7 +136,7 @@ Az alábbiakban a Data Factory-összetevők, amelyek kell létrehozni a forgató
 
 **A Salesforce-beli társított szolgáltatás**
 
-Ez a példa a **Salesforce** társított szolgáltatást. Tekintse meg a [Salesforce-beli társított szolgáltatást](#linked-service-properties) a tulajdonságokat, amelyeket a társított szolgáltatás által támogatott a következő szakaszban.  Lásd: [biztonsági jogkivonatának beszerzéséhez](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) alaphelyzetbe állítása/lekérése a biztonsági jogkivonat való létrehozásával kapcsolatos útmutatást.
+Ez a példa a **Salesforce** társított szolgáltatást. Tekintse meg a [Salesforce-beli társított szolgáltatást](#linked-service-properties) a tulajdonságokat, amelyeket a társított szolgáltatás által támogatott a következő szakaszban. Lásd: [biztonsági jogkivonatának beszerzéséhez](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) alaphelyzetbe állítása/lekérése a biztonsági jogkivonat való létrehozásával kapcsolatos útmutatást.
 
 ```json
 {
@@ -160,10 +159,10 @@ Ez a példa a **Salesforce** társított szolgáltatást. Tekintse meg a [Salesf
 {
     "name": "AzureStorageLinkedService",
     "properties": {
-    "type": "AzureStorage",
-    "typeProperties": {
-        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-    }
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+        }
     }
 }
 ```
@@ -176,7 +175,7 @@ Ez a példa a **Salesforce** társított szolgáltatást. Tekintse meg a [Salesf
         "linkedServiceName": "SalesforceLinkedService",
         "type": "RelationalTable",
         "typeProperties": {
-            "tableName": "AllDataType__c"  
+            "tableName": "AllDataType__c"
         },
         "availability": {
             "frequency": "Hour",
@@ -203,7 +202,7 @@ Beállítás **külső** való **igaz** a Data Factory szolgáltatás tájékozt
 
 **Azure blobkimeneti adatkészlet**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.).
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1).
 
 ```json
 {
@@ -232,13 +231,13 @@ A folyamat másolási tevékenység, amely a bemeneti és kimeneti adatkészlete
 Lásd: [RelationalSource tulajdonságait](#copy-activity-properties) a RelationalSource által támogatott tulajdonságok listáját.
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2016-06-01T18:00:00",
         "end":"2016-06-01T19:00:00",
         "description":"pipeline with copy activity",
-        "activities":[  
+        "activities":[
         {
             "name": "SalesforceToAzureBlob",
             "description": "Copy from Salesforce to an Azure blob",
@@ -256,7 +255,7 @@ Lásd: [RelationalSource tulajdonságait](#copy-activity-properties) a Relationa
             "typeProperties": {
                 "source": {
                     "type": "RelationalSource",
-                    "query": "SELECT Id, Col_AutoNumber__c, Col_Checkbox__c, Col_Currency__c, Col_Date__c, Col_DateTime__c, Col_Email__c, Col_Number__c, Col_Percent__c, Col_Phone__c, Col_Picklist__c, Col_Picklist_MultiSelect__c, Col_Text__c, Col_Text_Area__c, Col_Text_AreaLong__c, Col_Text_AreaRich__c, Col_URL__c, Col_Text_Encrypt__c, Col_Lookup__c FROM AllDataType__c"                
+                    "query": "SELECT Id, Col_AutoNumber__c, Col_Checkbox__c, Col_Currency__c, Col_Date__c, Col_DateTime__c, Col_Email__c, Col_Number__c, Col_Percent__c, Col_Phone__c, Col_Picklist__c, Col_Picklist_MultiSelect__c, Col_Text__c, Col_Text_Area__c, Col_Text_AreaLong__c, Col_Text_AreaRich__c, Col_URL__c, Col_Text_Encrypt__c, Col_Lookup__c FROM AllDataType__c"
                 },
                 "sink": {
                     "type": "BlobSink"
@@ -286,25 +285,25 @@ Lásd: [RelationalSource tulajdonságait](#copy-activity-properties) a Relationa
 ### <a name="type-mapping-for-salesforce"></a>Salesforce-leképezés típusa
 | Salesforce-típus | . NET-alapú típusa |
 | --- | --- |
-| Automatikus száma |Sztring |
+| Automatikus száma |String |
 | Jelölőnégyzet |Logikai |
-| Currency (Pénznem) |Tizedes tört |
+| Currency (Pénznem) |Decimal |
 | Dátum |DateTime |
 | Dátum/idő |DateTime |
-| E-mail |Sztring |
-| Azonosító |Sztring |
-| Keresési kapcsolat |Sztring |
-| Többszörös kijelöléses értéklista |Sztring |
-| Szám |Tizedes tört |
-| Százalék |Tizedes tört |
-| Telefonszám |Sztring |
-| Értéklista |Sztring |
-| Szöveg |Sztring |
-| Szövegterület |Sztring |
-| Szövegterület (hosszú) |Sztring |
-| Szövegterület (részletes) |Sztring |
-| Szöveg (titkosítva) |Sztring |
-| URL-cím |Sztring |
+| E-mail |String |
+| Azonosító |String |
+| Keresési kapcsolat |String |
+| Többszörös kijelöléses értéklista |String |
+| Szám |Decimal |
+| Százalék |Decimal |
+| Telefonszám |String |
+| Értéklista |String |
+| Szöveg |String |
+| Szövegterület |String |
+| Szövegterület (hosszú) |String |
+| Szövegterület (részletes) |String |
+| Szöveg (titkosítva) |String |
+| URL-cím |String |
 
 > [!NOTE]
 > Fogadó-adatkészlet az oszlopok a forrásadatkészlet oszlopok leképezésére, lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

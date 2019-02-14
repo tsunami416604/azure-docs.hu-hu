@@ -1,25 +1,25 @@
 ---
 title: Az Azure Cache Redis – GYIK |} A Microsoft Docs
 description: Ismerje meg a válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure Cache redis
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
-ms.openlocfilehash: 3a0fb06acd9fc798f1528a1487ae0682135187ca
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: ddeaec9adc28fa5037a0fc01363e3ad6b78ceeef
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402393"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234356"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg a válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure Cache redis.

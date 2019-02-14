@@ -15,12 +15,12 @@ ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427c8b35f66b9b17d3da917b632d41cba5ddc99f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4a8311e359b5afa84020227de309e8b153a7ccda
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171519"
+ms.locfileid: "56238062"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az Azure AD-alkalmazás és -erőforrások elérésére képes egyszerű szolgáltatás létrehozása a portál használatával
 
@@ -137,7 +137,7 @@ Rendelkezik megfelelő engedélyekkel alkalmazások regisztrációjához az Azur
 
    ![alkalmazásregisztrációk megtekintése](./media/howto-create-service-principal-portal/view-app-registrations.png)
 
-Ha az alkalmazásregisztrációk beállítás értéke **nem**, csak [globális rendszergazdák](../users-groups-roles/directory-assign-admin-roles.md) alkalmazások akkor regisztrálhatnak. Ha a fiók hozzá van rendelve a felhasználói szerepkörhöz, de az alkalmazás regisztrációs beállítás korlátozott rendszergazdai jogosultságú felhasználókhoz, kérje meg a rendszergazdát, hogy bármelyik, a globális rendszergazdai szerepkörrel, vagy rendelje hozzá engedélyezése a felhasználók számára alkalmazások regisztrálása.
+Ha az alkalmazásregisztrációk beállítás értéke **nem**, csak a rendszergazdai szerepkörrel rendelkező felhasználók regisztrálhatnak ilyen típusú alkalmazásokat. Lásd: [elérhető szerepkörök](../users-groups-roles/directory-assign-admin-roles.md#available-roles) és [szerepköri jogosultságok](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) elérhető rendszergazdai szerepköröket és engedélyeket az Azure ad-ben minden egyes szerepkörhöz megadott ismerteti. Ha a fiók hozzá van rendelve a felhasználói szerepkörhöz, de az alkalmazás regisztrációs beállítás korlátozott rendszergazdai jogosultságú felhasználókhoz, kérje meg a rendszergazdát, hogy akár hozzárendelése egy hozhat létre és kezelhet minden aspektusára alkalmazásregisztrációk vagy engedélyezése a felhasználók számára a rendszergazdai szerepköre alkalmazások regisztrálása.
 
 ### <a name="check-azure-subscription-permissions"></a>Azure-előfizetés engedélyek ellenőrzése
 

@@ -1,25 +1,25 @@
 ---
 title: Hogyan háríthatók el az Azure Cache redis |} A Microsoft Docs
 description: Ismerje meg az Azure Cache kapcsolatos gyakori problémák megoldása a redis.
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: 928b9b9c-d64f-4252-884f-af7ba8309af6
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 5df659a91e31069406c97664a869d9f9445104f4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 5a8542007d67cb76eaf615da6c5d1db1b1555ea3
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110625"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234917"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Hogyan háríthatók el az Azure Cache redis
 Ez a cikk nyújt útmutatást a következő kategóriákba tartozó Azure Cache Redis-hibák elhárítása.

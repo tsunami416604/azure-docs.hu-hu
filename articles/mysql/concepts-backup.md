@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: cefb0c5f578f109a8cce2555dd896f81d2f0f627
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6fe5aea9b8fa87efdfa7cc57716cf548a52e076b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821116"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237909"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és visszaállítás az Azure Database for MySQL-hez
 
@@ -50,7 +50,7 @@ Nincsenek elérhető visszaállítási két típusa:
 A becsült helyreállítási idő az adatbázis maximális mérete, a tranzakciós napló méretétől, a hálózati sávszélességet és az adatbázis helyreállítása zajlik egyidejűleg ugyanabban a régióban száma több tényezőtől függ. A helyreállítási idő általában a kevesebb mint 12 óra.
 
 > [!IMPORTANT]
-> Törölt kiszolgálók **nem** állítható vissza. Ha törli a kiszolgálót, akkor a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Kiszolgáló erőforrások megfelelő védelméhez a telepítés után, a véletlen törlés vagy a váratlan módosítások rendszergazdák kihasználhatják [felügyeleti zárolások](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources).
+> Törölt kiszolgálók **nem** állítható vissza. Ha törli a kiszolgálót, akkor a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Kiszolgáló erőforrások megfelelő védelméhez a telepítés után, a véletlen törlés vagy a váratlan módosítások rendszergazdák kihasználhatják [felügyeleti zárolások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
 ### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 

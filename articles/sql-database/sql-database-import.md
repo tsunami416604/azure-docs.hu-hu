@@ -12,44 +12,46 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: 7ea1de4719d171605a49727d6924cb4b617b04bc
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 754f2845911307cdd698bff4aa3e891f5c1bcdbd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097863"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234781"
 ---
-# <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Gyors útmutató: Az új Azure SQL-adatbázis BACPAC-fájl importálása
+# <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Gyors útmutató: BACPAC-fájl importálása az Azure SQL Database-adatbázishoz
 
-SQL Server-adatbázis is áttelepíthet egy Azure SQL database-adatbázishoz egy [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) fájlt (a zip-fájlt a egy `.bacpac` bővítmény, amely rendelkezik az adatbázis metaadatai és adatok). BACPAC-fájl (csak standard szintű tároló) Azure Blob storage-ból importálhatja, vagy a helyszíni helyen a helyi tárolóból. Importálás sebesség maximalizálása adjon meg egy magasabb szolgáltatási szintre, és a számítási méret (például P6). Majd vertikális sikeres importálása után. Az importált adatbázis kompatibilitási szintjét a forrás-adatbázis-kompatibilitási szint alapján történik.
+Az Azure SQL Database-adatbázis egy SQL Server-adatbázis importálhat egy [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) fájlt. Importálhatja az adatokat egy `BACPAC` fájl az Azure Blob storage (csak standard szintű storage) tárolt vagy a helyszíni helyen a helyi tárolóból. Azáltal, hogy gyorsabban, és további erőforrások importálása sebesség maximalizálása az adatbázis magasabb szolgáltatási szintre, és a számítási méret az importálási folyamat során. Majd vertikális sikeres importálása után. 
 
+> [!NOTE]
+> Az importált adatbázis kompatibilitási szintjét a forrás-adatbázis-kompatibilitási szint alapján történik.
 > [!IMPORTANT]
 > Az adatbázis az importálás után kiválaszthatja, működtetheti az adatbázist, a jelenlegi kompatibilitási szinten (100. szint az AdventureWorks2008R2 adatbázis), vagy egy magasabb szinten. Az adatbázis meghatározott kompatibilitási szinten való működtetésének következményeivel és lehetőségeivel kapcsolatos további információkért lásd: [ADATBÁZIS kompatibilitási szintjének MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). A kompatibilitási szintekkel kapcsolatos további adatbázisszintű beállításokról itt talál információt: [ADATBÁZISHOZ KÖTŐDŐ KONFIGURÁCIÓ MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).
 
 ## <a name="import-from-a-bacpac-file-in-the-azure-portal"></a>Az Azure Portalon BACPAC-fájlból való importálása
 
-Ez a szakasz bemutatja, hogyan, a a [az Azure portal](https://portal.azure.com), egy Azure SQL database létrehozása az Azure Blob storage szolgáltatásban tárolt BACPAC-fájlból. A portál *csak* támogatja a BACPAC-fájl importálása az Azure Blob storage-ból.
+Ez a szakasz bemutatja, hogyan, a a [az Azure portal](https://portal.azure.com), egy Azure SQL-adatbázis létrehozása egy `BACPAC` Azure Blob storage-fiókban tárolt fájlt. A portál *csak* támogatja a BACPAC-fájl importálása az Azure Blob storage-ból.
 
 > [!NOTE]
-> [Az Azure SQL Database felügyelt példányain](sql-database-managed-instance.md) támogatja az ebben a cikkben az egyéb módszerek használatával BACPAC-fájlból való importálása, de jelenleg nem támogatja az Azure Portalon való migrálás.
+> [Felügyelt példány](sql-database-managed-instance.md) jelenleg nem támogatja az egy példány adatbázisba-adatbázis áttelepítése egy `BACPAC` fájlt az Azure portal használatával.
 
-Importálását az Azure Portalon, nyissa meg a lapot fog üzemeltetni az importálás és az eszköztáron válassza az SQL Database-kiszolgáló **adatbázis importálása**.  
+Importál egy önálló adatbázis az Azure portal használatával, nyissa meg az az egyetlen adatbázis-kiszolgáló lapját, és majd az eszköztáron válassza **adatbázis importálása**.  
 
    ![adatbázis importálása](./media/sql-database-import/import.png)
 
-Válassza ki a tárfiókot, a tároló és a BACPAC-fájlba importálni kívánja. Adja meg az új adatbázis mérete (általában ugyanaz, mint forrás), és adja meg a cél SQL-kiszolgáló hitelesítő adatai. Egy új Azure SQL database a lehetséges értékek listáját lásd: [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
+Válassza ki a tárolási fiók, tároló, és `BACPAC` importálni kívánt fájlt. Adja meg az új adatbázis mérete (általában ugyanaz, mint forrás), és adja meg a cél SQL-kiszolgáló hitelesítő adatai. Egy új Azure SQL database a lehetséges értékek listáját lásd: [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
 
 ### <a name="monitor-imports-progress"></a>Az importálási folyamat figyelése
 
-Az importálási folyamat állapotának monitorozásához, nyissa meg az importált adatbázis-kiszolgáló lapon, majd a **beállítások**válassza **importálási/exportálási előzmények**. Ha sikeres, az importálás rendelkezik egy **befejezve** állapotát.
+Az importálás folyamat állapotának monitorozásához, nyissa meg a database-kiszolgáló oldalára, majd a **beállítások**válassza **importálási/exportálási előzmények**. Ha sikeres, az importálás rendelkezik egy **befejezve** állapotát.
 
-Annak ellenőrzéséhez, hogy az adatbázist a kiszolgálón az élő, válassza ki a **SQL-adatbázisok** és ellenőrizze, hogy az új adatbázis **Online**.
+Annak ellenőrzéséhez, hogy az adatbázis az adatbázis-kiszolgáló az élő, válassza ki a **SQL-adatbázisok** és ellenőrizze, hogy az új adatbázis **Online**.
 
 ## <a name="import-from-a-bacpac-file-using-sqlpackage"></a>SqlPackage használatával BACPAC-fájlból való importálása
 
-Importálása egy SQL database-adatbázishoz a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) parancssori segédprogram, lásd: [paramétereknek és tulajdonságoknak importálása](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage rendelkezik a legújabb [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) és [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Is letöltheti a legújabb [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) a Microsoft letöltőközpontból.
+Egy SQL Server adatbázis használatával importálhatja a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) parancssori segédprogram, lásd: [paramétereknek és tulajdonságoknak importálása](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage rendelkezik a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Is letöltheti a legújabb [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) a Microsoft letöltőközpontból.
 
-Méretezés és teljesítmény javasoljuk a legtöbb éles környezetben az SqlPackage használatával. További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+Méretezés és teljesítmény javasoljuk, hogy a legtöbb éles környezetben az SqlPackage használatával, ahelyett hogy az Azure portal használatával. Egy SQL Server Ügyféltanácsadói csapatának blogja használatával történő áttelepítésről a `BACPAC` fájlok, lásd: [migrálás SQL Serverről az Azure SQL Database BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
 A következő SqlPackage parancs importálja a **AdventureWorks2008R2** adatbázis a helyi tárolóból egy Azure SQL Database-kiszolgálóhoz nevű **mynewserver20170403**. Létrehoz egy új adatbázist nevű **myMigratedDatabase** az egy **prémium szintű** szolgáltatási szint és a egy **P6** szolgáltatási célt. Válasszon a környezetének megfelelő értékeket módosíthatja.
 
@@ -58,7 +60,7 @@ SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.
 ```
 
 > [!IMPORTANT]
-> Egy SQL Database server a 1433-as portot figyeli. A céges tűzfal mögül egy SQL Database-kiszolgálóhoz csatlakozni, a tűzfal nyissa meg ezt a portot kell rendelkeznie.
+> Szeretne csatlakozni egy SQL Database-kiszolgáló kezelése a céges tűzfal mögül önálló adatbázis, a tűzfal megnyitása a 1433-as portot kell rendelkeznie. Csatlakozás egy felügyelt példányra, rendelkeznie kell egy [pont – hely kapcsolat](/sql-database-managed-instance-configure-p2s.md) vagy express route-kapcsolathoz.
 >
 
 Ez a példa bemutatja, hogyan importálását az Active Directory univerzális hitelesítéssel az SqlPackage használatával.

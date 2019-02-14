@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: d83a27d87ffadd15a27196a11ae3f69d84232efa
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719598"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245949"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Az Azure Logic Apps egyéni API-k biztonságos hívások
 
@@ -94,13 +94,15 @@ A logikai alkalmazás hitelesítése az Azure ad-ben a az Azure AD alkalmazás-i
 
 **Az alkalmazásazonosító a logikai alkalmazás létrehozása a PowerShellben**
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ez a feladat Azure Resource Managerben a PowerShell használatával is elvégezheti. A PowerShellben futtassa a következő parancsokat:
 
-1. `Add-AzureRmAccount`
+1. `Add-AzAccount`
 
 2. `$SecurePassword = Read-Host -AsSecureString` (Adja meg a jelszót, és az enter)
 
-3. `New-AzureRmADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
+3. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
 
 4. Feltétlenül másolja az **Bérlőazonosító** (az Azure AD-bérlőhöz tartozó GUID), a **Alkalmazásazonosító**, és a használt jelszót.
 

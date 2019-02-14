@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6d47f22b4c7b29457de18593e38548aa818205a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205630"
+ms.locfileid: "56237869"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Egy Azure AD katalógusából származó alkalmazás hozzáadása során
 
@@ -28,13 +28,13 @@ Ez a cikk segítségével megismerheti a gyakori problémák személyek face hoz
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Szeretnék az "add" gombra való kattintás és az alkalmazásom hosszú időbe telt a jelennek meg
 
-Bizonyos körülmények között, 1-2 percbe is telhet (és egyes esetekben több) az alkalmazás számára a címtár felvett jelennek meg. Bár ez nem a szokásos várt teljesítmény, az alkalmazás hozzáadása folyamatban van, kattintson a láthatja a **értesítések** ikonra (harang) a jobb felső sarkában a [az Azure portal](https://portal.azure.com/) és az egy **folyamatban lévő** vagy **befejezve** feliratú értesítési **-alkalmazás létrehozása.**
+Bizonyos körülmények között, 1-2 percbe is telhet (és egyes esetekben több) az alkalmazás számára a címtár felvett jelennek meg. Bár ez nem a szokásos várt teljesítmény, az alkalmazás hozzáadása folyamatban van, kattintson a láthatja a **értesítések** ikonra (harang) a jobb felső sarkában a [az Azure portal](https://portal.azure.com/) és az egy **folyamatban lévő** vagy **befejezve** feliratú értesítési **alkalmazás hozzáadása.**
 
 Ha az alkalmazás soha nem kerül, vagy hibát tapasztal, amikor kattint a **Hozzáadás** gomb, látni fog egy **értesítési** a egy **hiba** állapota. Ha azt szeretné, hogy további részleteket a hibáról további információ a, vagy megoszthatja a támogatási szakértővel, láthatja a lépéseket követve a hibával kapcsolatos további információkat a [a portál értesítései részleteinek megtekintése](#how-to-see-the-details-of-a-portal-notification) szakaszban.
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Szeretnék az "add" gombra való kattintás és az alkalmazás nem jelenik meg
 
-Egyes esetekben átmeneti problémák okozzák hálózati problémák vagy hibát, hozzáadása egy kérelem sikertelen. Is megadhatja, hogy ez akkor fordul elő, amikor kattint a **értesítések** ikonra (harang) a jobb felső sarkában az Azure Portalon, és a egy piros (!) ikon látható a **-alkalmazás létrehozása** értesítést. Ez azt jelzi, hogy hiba történt az alkalmazás létrehozásakor.
+Egyes esetekben átmeneti problémák, a hálózati problémák vagy egy hiba miatt egy alkalmazás hozzáadása sikertelen lesz. Azt is megadhatja, hogy ez akkor fordul elő, amikor kattint a **értesítések** ikonra (harang) a jobb felső sarkában az Azure Portalon, és a egy piros (!) ikon látható a **alkalmazás hozzáadása** értesítés. Ez azt jelzi, hogy hiba történt az alkalmazás létrehozásakor.
 
 Ha hibát tapasztal, amikor kattint a **Hozzáadás** gomb, látni fog egy **értesítési** a egy **hiba** állapota. Ha azt szeretné, hogy további részleteket a hibáról további információ a, vagy megoszthatja a támogatási szakértővel, láthatja a lépéseket követve a hibával kapcsolatos további információkat a [a portál értesítései részleteinek megtekintése](#how-to-see-the-details-of-a-portal-notification) szakaszban.
 
@@ -42,13 +42,13 @@ Ha hibát tapasztal, amikor kattint a **Hozzáadás** gomb, látni fog egy **ér
 
 Ha alkalmazások megismerése segítségre van szüksége a [oktatóanyagok listája SaaS-alkalmazások integrálása az Azure Active Directoryval való](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) cikk egy nagyszerű hely az induláshoz.
 
-Emellett a [az Azure AD-alkalmazások dokumentumtár](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) segítséget nyújtanak további információt az egyszeri bejelentkezés az Azure ad-vel, és hogyan működik.
+Emellett a [az Azure AD-alkalmazások dokumentumtár](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) segítséget nyújt további információt az egyszeri bejelentkezés az Azure ad-vel, és hogyan működik.
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>A portál értesítései részleteinek megtekintése
 
 Bármilyen portál értesítési részleteit az alábbi lépéseket követve tekintheti meg:
 
-1.  Kattintson a **értesítések** ikonra (harang) a jobb felső sarkában az Azure Portalon
+1.  Válassza ki a **értesítések** ikonra (harang) a jobb felső sarkában az Azure Portalon
 
 2.  Válassza ki az értesítésekhez egy **hiba** állapota (amelyek mellettük a piros (!)).
 
@@ -61,7 +61,7 @@ Bármilyen portál értesítési részleteit az alábbi lépéseket követve tek
 
 5.  Ha segítségre van szüksége, a ezeket az információkat megosztani a támogatási szakember vagy a csoport, kérjen segítséget a probléma.
 
-6.  Kattintson a **másolási** **ikon** jobb oldalán a **hiba másolása** szövegmező másolása egy támogatási vagy a termékverzió csoport mérnök megosztása az összes értesítés részletei
+6.  Kattintson a **másolási** **ikon** jobb oldalán a **hiba másolása** megosztani egy támogatási vagy a termékverzió csoport szakértővel értesítési részleteinek másolása szövegmezőben.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Segítség kérése, ha a támogatási szakember küld értesítés részletei
 

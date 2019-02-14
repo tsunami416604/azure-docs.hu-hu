@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5574c64f32950121ea6ed738eff44d7b85ef0250
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6832047ebbe95938bc2902967714fb8d40301d36
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872271"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233506"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>Gyors útmutató: Képkeresés a Bing Image Search REST API és a Ruby használatával
 
@@ -88,7 +88,7 @@ puts "total number of returned matches: #{total_returned_images}"
 puts "Url to the thumbnail of the first returned search result: #{first_result}"
 ```
 
-## <a name="sample-json-response"></a>Példa JSON-válaszra
+## <a name="example-json-response"></a>Példa JSON-válasz
 
 A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.
 
@@ -132,7 +132,7 @@ A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintavá
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 

@@ -2,28 +2,27 @@
 title: Az Azure SQL Data Warehouse-kibocsátási megjegyzései |} A Microsoft Docs
 description: Kibocsátási megjegyzések az Azure SQL Data warehouse-hoz.
 services: sql-data-warehouse
-author: twounder
-manager: craigg
+author: mlee3gsd
+ms.author: anumjs
+ms.reviewer: jrasnick
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/11/2018
-ms.author: twounder
-ms.reviewer: twounder
-ms.openlocfilehash: 7a131429d8f70255e47efaac0c4b5fa99a6df7d6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/09/2019
+ms.openlocfilehash: 2ac60287c9d92ab6230e1dd6777504036e54492d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460811"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244674"
 ---
-# <a name="azure-sql-data-warehouse-release-notes"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései
+# <a name="azure-sql-data-warehouse-release-notes-and-documentation-updates"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései és a dokumentáció frissítéseiről
 
 Az Azure SQL Data Warehouse (az SQL DW) egy felhőalapú vállalati adattárház, amely ötvözi a nagymértékben párhuzamos feldolgozási (MPP) gyorsan összetett lekérdezések futtatása több petabájtnyi adat. Az SQL Data Warehouse a big data-megoldások egyik fő összetevőjeként használható. Importálja a big data-adatokat az SQL Data Warehouse-ba egyszerű PolyBase T-SQL lekérdezések használatával, majd az MPP nyújtotta lehetőségeket kiaknázva nagy teljesítményű elemzéseket futtathat. Az adatok integrálásával és elemzésével az adattárház válik azzá az egyetlen egységes forrássá, ahonnan a vállalat a valós adatokat és kielemzett eredményeket lekérheti.
 
 Kattintson az alábbi hivatkozásokra kattintva további információk az új funkciók és fejlesztések, amelyek az Azure SQL Data Warehouse legújabb verzióját. Ezek a szolgáltatásfrissítések fogadásához az azonosított karbantartási ütemezés során várható.
 
-- [Az SQL DW verzió 10.0.10106.0](./release-notes-10-0-10106-0.md)
+- [Az SQL Data Warehouse verzió 10.0.10106.0 (január)](./release-notes-10-0-10106-0.md)
 - [A 2018. december](./release-notes-december-2018.md)
 - [2018. október](./release-notes-october-2018.md)
 - [2018. szeptember](./release-notes-september-2018.md)

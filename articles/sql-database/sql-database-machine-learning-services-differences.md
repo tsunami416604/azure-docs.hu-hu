@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 01/31/2019
-ms.openlocfilehash: adc303e9b375aaa6f37e9e79ea5434675c75523d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4350fb0e75f140e120ba6cd2f074ffa1816a8fce
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824067"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237484"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-and-sql-server"></a>Machine Learning-szolgáltatások az Azure SQL Database és az SQL Server közötti fő különbségeket
 
@@ -25,7 +25,7 @@ Az Azure SQL Database-ben a Machine Learning Services (with R) funkciói hasonl�
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-Az SQL Server R és Python használatával támogatással rendelkezik a [bővíthetőségi keretrendszerét](https://docs.microsoft.com/en-us/sql/advanced-analytics/concepts/extensibility-framework). Az SQL Database nem támogatja a mindkét nyelven. A legfontosabb különbségek a következők:
+Az SQL Server R és Python használatával támogatással rendelkezik a [bővíthetőségi keretrendszerét](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework). Az SQL Database nem támogatja a mindkét nyelven. A legfontosabb különbségek a következők:
 
 - Az R a SQL Database-ben az egyetlen támogatott nyelv. A Python jelenleg nem támogatott.
 - Az R 3.4.4 verziószáma.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: e0e0c0654905245502fa4cf6647ee3a93d2e4833
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4ee36aaaeeda02025da6b01f4dd6c84afd72970f
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002193"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233353"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkciók és eszközök az Azure Cloud Shell
 
@@ -60,7 +60,7 @@ A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible
 |Kategória   |Name (Név)   |
 |---|---|
 |Linux rendszerű eszközök            |A bash<br> zsh<br> SH<br> tmux<br> tájékozódjon<br>               |
-|Azure-eszközök            |[Az Azure CLI](https://github.com/Azure/azure-cli) és [Azure klasszikus parancssori felület](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Azure-eszközök            |[Az Azure CLI](https://github.com/Azure/azure-cli) és [Azure klasszikus parancssori felület](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |Szövegszerkesztő           |kód (a Cloud Shell-szerkesztőben)<br> vim<br> a nano<br> emacs    |
 |Verziókövetés         |git                    |
 |Eszközök létrehozása            |Győződjön meg arról<br> maven<br> npm<br> a pip         |

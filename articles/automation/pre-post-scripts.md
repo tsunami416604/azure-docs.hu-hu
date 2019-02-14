@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/18/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c34c6c6e0a3f618cbd9337993aa6d176962fe6b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 90616544b1fddb8b6def04c30202035bec04d599
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428239"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236005"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Kezelése előtti és utáni parancsfájlokat (előzetes verzió)
 
@@ -26,7 +26,7 @@ Egy runbook előtti vagy utáni parancsfájl használható a runbook importálja
 
 ## <a name="using-a-prepost-script"></a>Előkészítő/utólagos parancsfájl használatával
 
-A frissítéstelepítés és előre, vagy utáni parancsfájl használata, a Frissítéstelepítések létrehozásával egyszerűen indítsa el. Válassza ki **előkészítő parancsfájljainak + utáni parancsfájlok (előzetes verzió)**. Ekkor megnyílik a **előkészítő parancsfájljainak kiválasztása + utáni parancsfájlok** lapot.  
+A előtti használja, és vagy post frissítéstelepítés szkriptet, először hozzon létre egy központi telepítést. Válassza ki **előkészítő parancsfájljainak + utáni parancsfájlok (előzetes verzió)**. Ez a művelet megnyitja a **előkészítő parancsfájljainak kiválasztása + utáni parancsfájlok** lapot.  
 
 ![Jelölje be a parancsfájlok](./media/pre-post-scripts/select-scripts.png)
 
@@ -42,17 +42,19 @@ A **kiválasztott cikkek** szakaszban most látható, mind a kiválasztott paran
 
 A frissítéstelepítés konfigurálásának befejezéséhez.
 
-A frissítéstelepítés befejeződése után nyissa meg **Frissítéstelepítések** az eredmények megtekintéséhez. Amint láthatja a szkript előtti és utáni azok állapotát a megadott.
+A frissítéstelepítés befejeződése után nyissa meg **Frissítéstelepítések** az eredmények megtekintéséhez. Amint láthatja, a szkript előtti és utáni állapota állnak rendelkezésre.
 
 ![Eredmények frissítése](./media/pre-post-scripts/update-results.png)
 
-A frissítéstelepítés, akkor futtassa tárolóiba kattintva további részleteket a előtti és utáni parancsfájlokat szeretne állnak rendelkezésre. A futtatás idején a parancsfájl forrás találhatóak.
+Futtassa a frissítéstelepítés tárolóiba kattintva, a előtti és utáni parancsfájlokat további információkat az Ön megadott. A futtatás idején a parancsfájl forrás találhatóak.
 
 ![Központi telepítés futtatási eredmények](./media/pre-post-scripts/deployment-run.png)
 
 ## <a name="passing-parameters"></a>Paraméterek átadása
 
-Konfigurálásakor például adhat át a paraméterek csak előtti és utáni parancsfájlokat a runbook ütemezése. Paraméterek vannak meghatározva a frissítés központi telepítés létrehozása idején. A standard szintű runbook paraméterek kívül egy további paraméter biztosítunk. Ez a paraméter **SoftwareUpdateConfigurationRunContext**. Ez a paraméter egy JSON-karakterlánc, és ha a előtti vagy utáni parancsfájl adja meg a paramétert, automatikusan átadott a frissítéstelepítés által. A paraméter tartalmazza a frissítések telepítését, amelynek része a információ által visszaadott információk a [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) az alábbi táblázat bemutatja, a tulajdonságok vannak megadva, a változóban:
+Ha előre konfigurál, és utáni parancsfájlokat, adhat át a paraméterek hasonlóan runbook ütemezése. Paraméterek vannak meghatározva a frissítés központi telepítés létrehozása idején. Előtti és utáni parancsfájlokat a típusú paramétereket igényel `String`. Ha egy másik objektum típusa, is szavazattal azt egy másik típus használatával `[System.Convert]` vagy kezelnie a saját logikája.
+
+A standard szintű runbook paraméterek kívül egy további paraméter biztosítunk. Ez a paraméter **SoftwareUpdateConfigurationRunContext**. Ez a paraméter egy JSON-karakterlánc, és ha a előtti vagy utáni parancsfájl adja meg a paramétert, automatikusan átadott a frissítéstelepítés által. A paraméter tartalmazza a frissítés központi telepítését, amelynek része a információ által visszaadott információk a [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) az alábbi táblázat bemutatja, a tulajdonságok vannak megadva, a változóban:
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext tulajdonságai
 
@@ -70,7 +72,7 @@ Konfigurálásakor például adhat át a paraméterek csak előtti és utáni pa
 |azureVirtualMachines     | Az Azure-beli virtuális gépek a frissítéstelepítés ResourceId listája        |
 |nonAzureComputerNames|A frissítéstelepítés nem Azure-beli számítógépek teljes tartománynevek listája|
 
-A következő függvénynek átadott JSON-karakterláncot példája a **SoftwareUpdateConfigurationRunContext** paramétert:
+Az alábbi példa a függvénynek átadott JSON-karakterláncot a **SoftwareUpdateConfigurationRunContext** paramétert:
 
 ```json
 "SoftwareUpdateConfigurationRunContext":{
@@ -119,7 +121,7 @@ Vagy Ön is megkeresheti azokat a szkript neve szerint a következő listában l
 > [!IMPORTANT]
 > Miután importálta a runbookokat, kell **közzététel** azok használhatók legyenek. Ehhez, keresse meg a runbook az Automation-fiókját, válassza ki a **szerkesztése**, és kattintson a **közzététel**.
 
-A minták a egyszerű sablon, amely a következő példában definiálva van a alapulnak. Ez a sablon előtti és utáni parancsfájlok használata a saját forgatókönyv létrehozására használható. A hitelesítés az Azure-ral, valamint a kezelési szükséges logikát a `SoftwareUpdateConfigurationRunContext` paraméter részét képezik.
+A minták a egyszerű sablon, amely a következő példában definiálva van a alapulnak. Ez a sablon előtti és utáni parancsfájlok használata a saját forgatókönyv létrehozására használható. A hitelesítés az Azure-ral és kezelési szükséges logikát a `SoftwareUpdateConfigurationRunContext` paraméter részét képezik.
 
 ```powershell
 <# 
@@ -174,14 +176,14 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="interacting-with-non-azure-machines"></a>Nem Azure-gépek használata
 
-Előtti és utáni feladatokat Azure környezetében futnak, és nem rendelkeznek hozzáféréssel a nem Azure-gépek. Annak érdekében, hogy a nem Azure-gépek kommunikáljanak az alábbiakkal kell rendelkeznie:
+Előtti és utáni feladatokat Azure környezetében futnak, és nem fér hozzá a nem Azure-beli gépek. Együttműködhet a nem Azure-gépeken, a következőkkel kell rendelkeznie:
 
 * Futtató fiók
 * Hibrid Runbook-feldolgozó telepítve a számítógépen
 * Helyileg futtatni kívánt runbook
 * Szülő runbook
 
-Együttműködhet a nem Azure-beli gépek a szülő runbook futott, az Azure környezetben. Ez a forgatókönyv a gyermek runbookot hívja a [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) parancsmagot. Meg kell adnia a `-RunOn` paramétert, és adja meg a parancsfájl futtatása hibrid Runbook-feldolgozó neve.
+Nem Azure-gépek kommunikál, a szülő runbook fut Azure környezetben. Ez a forgatókönyv a gyermek runbookot hívja a [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) parancsmagot. Meg kell adnia a `-RunOn` paramétert, és adja meg a parancsfájl futtatása hibrid Runbook-feldolgozó neve.
 
 ```powershell
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'

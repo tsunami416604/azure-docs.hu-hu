@@ -17,24 +17,24 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de9db7abe17fc41907582ec32d3e916d0536e543
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c92472d276b3f03e5a3855587de4ca8a045bfec2
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175096"
+ms.locfileid: "56234425"
 ---
 # <a name="id-tokens"></a>Azonosító jogkivonatok
 
-`id_tokens` az ügyfélalkalmazás részeként érkeznek egy [OpenID Connect](v1-protocols-openid-connect-code.md) folyamat. Elküldött egymás mellett vagy helyett egy hozzáférési jogkivonatot, és a felhasználó hitelesítéséhez az ügyfél által használt. 
+`id_tokens` az ügyfélalkalmazás részeként érkeznek egy [OpenID Connect](v1-protocols-openid-connect-code.md) folyamat. Elküldött egymás mellett vagy helyett egy hozzáférési jogkivonatot, és a felhasználó hitelesítéséhez az ügyfél által használt.
 
 ## <a name="using-the-idtoken"></a>A id_token használatával
 
-Ellenőrizze, hogy a felhasználó ki magukat kell, és a velük kapcsolatos további hasznos információk – nem használandó engedélyezési helyén használt azonosító-jogkivonatokat egy [hozzáférési jogkivonat](access-tokens.md). A jogcímeket biztosít UX az alkalmazást, kulcskezelő egy adatbázist, és az ügyfélalkalmazás való hozzáférés biztosítása belül használható. 
+Ellenőrizze, hogy a felhasználó ki magukat kell, és a velük kapcsolatos további hasznos információk – nem használandó engedélyezési helyén használt azonosító-jogkivonatokat egy [hozzáférési jogkivonat](access-tokens.md). A jogcímeket biztosít UX az alkalmazást, kulcskezelő egy adatbázist, és az ügyfélalkalmazás való hozzáférés biztosítása belül használható.
 
 ## <a name="claims-in-an-idtoken"></a>Id_tokent a jogcímeket
 
-`id_tokens` a Microsoft identity vannak [JWTs](https://tools.ietf.org/html/rfc7519), ami azt jelenti, fejléc, hasznos és aláírás feladatának állnak. Használhatja a fejlécének és adattartalmának bontása a token hitelességének ellenőrzése közben a hasznos adatok tartalmazzák a felhasználó, az ügyfél által kért információk. Nincs másként jelölve az itt felsorolt összes jogcímek 1.0-s verziója és a 2.0-s verziójú jogkivonatok jelennek meg.
+`id_tokens` a Microsoft identity vannak [JWTs](https://tools.ietf.org/html/rfc7519), ami azt jelenti, fejléc, hasznos és aláírás feladatának állnak. A jogkivonat hitelességének ellenőrzése közben a hasznos adatok tartalmazzák a felhasználó, az ügyfél által kért információk és a fejléc használhatja. Nincs másként jelölve az itt felsorolt összes jogcímek 1.0-s verziója és a 2.0-s verziójú jogkivonatok jelennek meg.
 
 ### <a name="v10"></a>1.0-s verzió
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 88618e5b9de9cb8ac46b9b167e6fa6dbccd73687
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 717b895696ca93444744955937c6de23626c7835
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732311"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234748"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
 
@@ -133,7 +133,7 @@ A repair-kezelő szolgáltatás engedélyezése:
 
 3. Ezeket a módosításokat, a frissített fürtjegyzék használatával frissítse a fürtjegyzék [hozzon létre egy új fürtöt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) vagy [a fürt konfigurációjának frissítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). Ha a fürt már fut a frissített fürtjegyzék, a javítási manager rendszer szolgáltatás fut a fürtben, amelynek a neve most már megtekintheti `fabric:/System/RepairManagerService`, a rendszer services szakaszban a Service Fabric Explorerben.
 
-### <a name="disable-automatic-windows-update-on-all-nodes"></a>Tiltsa le az összes csomóponton automatikus Windows-frissítés
+### <a name="configure-windows-updates-for-all-nodes"></a>Az összes csomópont Windows-frissítések konfigurálása
 
 Windows automatikus frissítések rendelkezésre állás elvesztése vezethet, mivel egyszerre több fürtcsomópont újraindíthatja. A patch orchestration alkalmazás alapértelmezés szerint próbálja meg a fürt minden csomópontján Windows automatikus frissítését letiltani. Javasoljuk azonban, ha a beállításokat egy rendszergazda vagy a csoportházirend által felügyelt, a Windows-frissítési szabályzat "Értesíti, mielőtt letöltéséhez" beállítás explicit módon.
 

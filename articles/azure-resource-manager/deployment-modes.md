@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: ba7ac806a74cd0b378c39eb3873e7d64435bcf4f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f3ca140fd8606f60a07b71db32cf2d3987ed7860
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105654"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233599"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Az Azure Resource Manager üzembe helyezési mód
 
 Az erőforrások üzembe helyezésekor, megadhatja, hogy az üzemelő példány-e a növekményes frissítés vagy a frissítés befejezéséhez.  A legfontosabb különbség a két módról, hogyan kezeli a Resource Manager a meglévő erőforrások az erőforráscsoportban, amelyek nem szerepelnek a sablonban. Az alapértelmezett mód növekményes.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Csak a legfelső szintű sablonok támogatja a teljes üzembe helyezési módot. A [sablonok beágyazott vagy kapcsolódó](resource-group-linked-templates.md), növekményes módot kell használnia. 
 
 ## <a name="incremental-and-complete-deployments"></a>A növekményes és teljes körű központi telepítések
 
@@ -63,8 +63,6 @@ Ha telepítve **teljes** módban erőforrás C törlődik. Az erőforráscsoport
 
 ## <a name="set-deployment-mode"></a>Üzembe helyezési mód beállítása
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 A PowerShell-lel üzembe helyezésekor az üzembe helyezési mód beállításához használja a `Mode` paraméter.
 
 ```azurepowershell-interactive
@@ -86,7 +84,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Használata esetén egy [társított vagy beágyazott sablon](resource-group-linked-templates.md), be kell állítani a `mode` tulajdonságot `Incremental`. Csak a legfelső szintű sablonok támogatja a teljes üzembe helyezési módot.
+Az alábbi példa bemutatja egy hivatkozott sablonnak növekményes üzembe helyezési mód beállítása:
 
 ```json
 "resources": [

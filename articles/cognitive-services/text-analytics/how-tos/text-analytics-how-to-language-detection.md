@@ -1,22 +1,22 @@
 ---
-title: A Text Analytics REST API (Microsoft vonatkozó Cognitive Services az Azure-ban) útmutató nyelvfelismerés |} A Microsoft Docs
-description: Hogyan észlelje a nyelvet a Text Analytics REST API használatával a Microsoft Cognitive Services, Azure-ban az bemutató oktatóanyag.
+title: A Text Analytics REST API-val nyelv észlelése |} A Microsoft Docs
+description: Hogyan észleli a nyelvet, az Azure Cognitive Services Text Analytics REST API használatával.
 services: cognitive-services
-author: HeidiSteen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: b32288876a617ec4c228af22170bdaf83c4eb87b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 549ef0d073a740edf700c54d02a0d9ef247db0b7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857516"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245087"
 ---
-# <a name="example-how-to-detect-language-in-text-analytics"></a>Példa: A Text Analytics nyelv észlelése
+# <a name="example-how-to-detect-language-with-text-analytics"></a>Példa: Szövegelemzés nyelv észlelése
 
 A [Nyelvfelismerés API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) minden dokumentumra kiértékeli a szöveges bemenetet és visszaadja a nyelv azonosítót az elemzés erősségét jelző pontszámmal együtt. A Text Analytics 120 nyelv felismerésére képes.
 
@@ -73,7 +73,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
+## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
 
 Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
 
