@@ -4,17 +4,19 @@ description: Látható, hogy melyik Azure-erőforrástípus támogatja a címké
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 1/24/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: d9892b158eae1a83ab1f8eed6c14224e1d4bca15
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: add222c024b5adde1ce81d6ed7f725d0a691c232
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509912"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246051"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkék támogatása
 Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource-group-using-tags.md).
+
+Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse le a [címke-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv).
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 | Erőforrás típusa | Támogatja a címkék |
@@ -1123,13 +1125,14 @@ Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource
 | servers/communicationLinks | Nem | 
 | kiszolgálók és adatbázisok | Igen (lásd az alábbi megjegyzést) | 
 | servers/encryptionProtector | Nem | 
+| servers/firewallRules | Nem | 
 | kiszolgálók és kulcs | Nem | 
 | servers/restorableDroppedDatabases | Nem | 
 | kiszolgálók/serviceobjectives | Nem | 
 | servers/tdeCertificates | Nem | 
 
 > [!NOTE]
-> A Master adatbázis nem támogatja a címkék, de más adatbázis támogatja a címkék.
+> A Master adatbázis nem támogatja a címkék, de más adatbázisok, beleértve az adatraktár-adatbázishoz, támogatja a címkék.
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

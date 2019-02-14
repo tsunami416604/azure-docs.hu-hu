@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 752be8270f3eb0bcc018cfcb7f87f30f5afbc60a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5f3d884720bce5777a358a27dc477eabd5263d0c
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753095"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245184"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -178,7 +178,7 @@ Ez a táblázat foglalja össze a Azure virtuális gép operációsrendszer-leme
 **Összetevő** | **Támogatás** | **Részletek**
 --- | --- | ---
 Az operációs rendszer lemez maximális mérete | 2048 GB | [További](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms) Virtuálisgép-lemezeket.
-Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva a replikációból.<br/><br/> Nem minden olyan állandó az ideiglenes lemezen lévő adatok. [További információk](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk).
+Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva a replikációból.<br/><br/> Állandó adatokat ne tároljon az ideiglenes lemezen. [További információk](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk).
 Adatlemez maximális mérete | 4095 GB |
 Adatok lemez maximális száma | Egy adott Azure-beli Virtuálisgép-méretet támogatása akár 64, összhangban | [További](../virtual-machines/windows/sizes.md) Virtuálisgép-méretekkel kapcsolatos.
 Lemez adatváltozási sebesség | 10 Mbps for a premium storage lemezenkénti maximális. Legfeljebb 2 MB/s Standard Storage lemezenkénti. | Ha az átlagos adatváltozási sebessége a a lemez folyamatosan magasabb, mint a maximális, replikálása nem történik meg.<br/><br/>  Azonban csak időnként túllépi a maximálisan engedélyezett, ha replikációs legérdekesebb részeit is, de előfordulhat, hogy kissé késleltetett helyreállítási pontok látható.

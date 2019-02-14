@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 56884f2299df35c1565804a92fc404b6ed9e2f9a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97fcfa20e474edb8108474ef02c6542688d627ff
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185009"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243485"
 ---
 # <a name="network-connectivity"></a>Hálózati kapcsolat
 Ez a cikk segít eldönteni, hogy a legjobb integrálása az Azure Stack a meglévő hálózati környezetbe az Azure Stack hálózati infrastruktúra információkat nyújt. 
@@ -67,9 +67,6 @@ Ez /24 (254 gazdagép IP-címek) hálózat magánjellegű (nem bővíti ki a sze
 
 ### <a name="azure-stack-infrastructure-network"></a>Az Azure Stack infrastruktúra-hálózathoz.
 Ez/24 hálózati Azure Stack belső összetevőkre van kijelölve, így kommunikál, és adatokat egymás között. Ez az alhálózat elérhető IP-címet igényel, de titokban a megoldás hozzáférés-vezérlési listák (ACL-ek) használatával. Legyen irányítva, / 27-es méretű egyenértékű kis számos kivételével a szegély kapcsolók túli várhatóan nem hálózati ezen szolgáltatások által használt fel, ha a külső erőforrásokat és/vagy az internethez való hozzáférést igényelnek. 
-
-### <a name="public-infrastructure-network"></a>Nyilvános infrastruktúra-hálózaton
-Ez/27-es hálózati a kis tartományt az Azure Stack infrastruktúra alhálózatról azt korábban említettük, nem igényel nyilvános IP-címek, de ehhez szükség NAT vagy a transzparens Proxy internet-hozzáféréssel. Ezt a hálózatot a válságkezelési helyreállítási konzol System (ERCS) számára lefoglalt, a ERCS virtuális gépek internet-hozzáférést igényel a regisztráció az Azure-bA és infrastruktúra biztonsági mentések során. A ERCS virtuális Géphez hibaelhárítás céljából a felügyeleti hálózathoz címeknek irányíthatóknak kell lenniük.
 
 ### <a name="public-vip-network"></a>Nyilvános VIP-hálózat
 A nyilvános VIP-hálózat van rendelve a hálózati vezérlő az Azure Stackben. Nem áll a logikai hálózatot, a kapcsolóhoz. A szoftveres Terheléselosztó használja a címkészletet, és hozzárendeli/32 hálózatok bérlői számítási feladatok esetében. A kapcsoló útválasztási tábla 32-címeket, BGP-n keresztül a rendelkezésre álló láncot hirdesse meg. Ehhez a hálózathoz külső elérhető vagy nyilvános IP-címeket tartalmazza. Az Azure Stack-infrastruktúra fenntartja az első 31 címeket a nyilvános VIP-hálózat, míg a többi bérlő virtuális gépek által használt. Az alhálózat hálózati mérete legalább/26-os (64 gazdagép) terjedhet maximális /22 (1022 gazdagép), azt javasoljuk, hogy egy/24 tervezi hálózati.

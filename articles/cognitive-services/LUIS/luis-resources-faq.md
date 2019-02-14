@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/12/2019
 ms.author: diberry
-ms.openlocfilehash: 1f13c5220eee19b6cf8b56e4b55922acc1b2c6b1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6b8bcdc57996e04b613a2196cb505c3f59edb953
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865029"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237280"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – gyakori kérdések (GYIK)
 
@@ -59,6 +59,15 @@ A példában szándéka kimondott szöveg szerint adja hozzá, a másik változa
 
 A Cortana előre elkészített alkalmazásokat is elavult 2017-ben. Már nem támogatottak.
 
+### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Hogyan ruházhatom át tulajdonjogát a LUIS-alkalmazások?
+LUIS-alkalmazásokon át egy másik Azure-előfizetést, a LUIS alkalmazás exportálása, és importálja egy új fiók használatával. Frissítse a LUIS alkalmazás azonosítója, amely meghívja ezt az ügyfélalkalmazásban. Az új alkalmazás adhat vissza eltérő LUIS pontszámokat az eredeti alkalmazásból.
+
+## <a name="luis-collaborating"></a>Együttműködés a LUIS
+
+### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Hogyan közreműködők kapnak hozzáférést adhat a LUIS az Azure Active Directory (Azure AD) vagy a szerepköralapú hozzáférés-vezérlés (RBAC)?
+
+Lásd: [Azure Active Directory-erőforrások](luis-how-to-collaborate.md#azure-active-directory-resources) és [Azure Active Directory-bérlő felhasználói](luis-how-to-collaborate.md#azure-active-directory-tenant-user) megtudhatja, hogyan közreműködők kapnak hozzáférést. 
+
 ## <a name="luis-endpoint"></a>A LUIS-végpont
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Végpont a lekérdezés váratlan eredményt adott vissza. Mit tegyek?
@@ -67,7 +76,7 @@ Váratlan lekérdezési előrejelzési eredményeket a közzétett modell állap
 
 A modell javításának kezdődik [aktív tanulás](luis-how-to-review-endoint-utt.md).
 
-Eltávolíthatja a nem determinisztikus képzési frissítésével a [alkalmazás verziója beállítások API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) összes betanítási adatok használatához. 
+Eltávolíthatja a nem determinisztikus képzési frissítésével a [alkalmazás verziója beállítások API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) összes betanítási adatok használatához.
 
 Tekintse át a [ajánlott eljárások](luis-concept-best-practices.md) más tippeket. 
 
@@ -152,10 +161,23 @@ Minden LUIS alkalmazás a szerzői műveletek/alapszintű kulcs rendelkezik a v�
 
 Ha az alkalmazás korábban létezett, előtt a LUIS általánosan elérhető (GA), automatikusan hozzárendelve LUIS végpont kulcsok az előfizetésében. Ez megtörtént, a végleges verzió áttelepítés egyszerűbbé. Minden olyan új LUIS végpont kulcsok az Azure Portalon _nem_ automatikusan hozzárendelve a LUIS.
 
-## <a name="app-management"></a>Alkalmazáskezelés
+## <a name="key-management"></a>Kulcskezelés
 
-### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Hogyan ruházhatom át tulajdonjogát a LUIS-alkalmazások?
-LUIS-alkalmazásokon át egy másik Azure-előfizetést, a LUIS alkalmazás exportálása, és importálja egy új fiók használatával. Frissítse a LUIS alkalmazás azonosítója, amely meghívja ezt az ügyfélalkalmazásban. Az új alkalmazás adhat vissza eltérő LUIS pontszámokat az eredeti alkalmazásból.
+### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Honnan tudhatom, hogy melyik kulcsot kell, ahol kapok, és mi elvégezni a segítségével? 
+
+Lásd: [szerzői műveletek és a lekérdezés előrejelzési végpont kulcsok a LUIS](luis-concept-keys.md) közötti különbségekről további információt a [kulcs létrehozási](luis-how-to-account-settings.md) és a [előrejelzési végpontkulcsának](luis-how-to-azure-subscription.md). 
+
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Arról, hogy kvótájából hibaüzenetet kapok. Hogyan javíthatom? 
+
+Látható, [out-az-kvóta hibák megoldása, ha a kulcs árképzési szint használat meghaladja](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage) további.
+
+### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Több végpont lekérdezés kezelni kell. Hogyan hajthatok végre, amely? 
+
+Látható, [out-az-kvóta hibák megoldása, ha a kulcs árképzési szint használat meghaladja](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage) további.
+
+
+
+## <a name="app-management"></a>Alkalmazáskezelés
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Hogyan töltse le a felhasználó utterances naplózása?
 Alapértelmezés szerint a LUIS-alkalmazás a felhasználók naplózza a kimondott szöveg. Töltse le, hogy a felhasználók küldeni a LUIS-alkalmazás megcímkézzen naplóját, lépjen a **saját alkalmazások**, és válassza ki az alkalmazást. Környezetfüggő eszköztárán válassza **végpont naplók exportálása**. A napló formátuma vesszővel tagolt (CSV) fájlként.

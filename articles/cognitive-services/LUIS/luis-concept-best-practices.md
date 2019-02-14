@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 02/13/2019
 ms.author: diberry
-ms.openlocfilehash: e307f258f4bf4c6aec6a0932f0787ef56f2b0d46
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ba51da8b71406cb1bf7446bd66818a6a74e61317
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859300"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243416"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Ajánlott eljárások a Cognitive Services language understanding alkalmazás létrehozásához
 Az alkalmazások használatával hozhat létre a LUIS-alkalmazás. 
@@ -59,6 +59,12 @@ Vegye figyelembe a következő példa kimondott szöveg:
 
 "Például book repülőjegyet" és a "egy szállodai Vendég például Book" használata a azonos szóhasználatát "könyv egy". Ez a formátum akkor ugyanaz, így azonos célja a flight és Szálloda különböző szóból álló kinyert entitásokként kell lennie. 
 
+További információk:
+* Fogalom: [A LUIS-alkalmazás a leképezések kapcsolatos fogalmak](luis-concept-intent.md)
+* Oktatóanyag: [Felhasználói céljaira meghatározni a LUIS-alkalmazás létrehozása](luis-quickstart-intents-only.md)
+* Útmutató: [Leképezések meghatározni a felhasználó szándékának beszédmódok hozzáadása](luis-how-to-add-intents.md)
+
+
 ## <a name="do-find-sweet-spot-for-intents"></a>Édes helyszíni keresése leképezések
 Előrejelzési adatokat a LUIS segítségével meghatározhatja, amennyiben a szándék átfedésben. Átfedésben lévő leképezések LUIS tévessze össze. Eredménye, hogy a leképezés pontozási felső túl van egy másik szándékot. LUIS oktatási minden alkalommal, amikor nem használja a pontos ugyanazt az elérési utat az adatok között, mert átfedő megjelölésű rendelkezik, hogy az első és második képzési lehetőséget. Azt szeretné, hogy minden egyes szándékát, hogy lehet távolabb egymástól, így nem fordulhat elő, a Tükrözés vagy oldalirányú fordítás pontszámának az utterance (kifejezés). A leképezések jó különbséget kell eredményeznie a várt felső célt minden alkalommal. 
  
@@ -67,6 +73,9 @@ Kimondott szöveg, amely nem egy külön készlete tartsa [példa utterances](lu
 
 Fejlesztők számára az adatok három különböző kell rendelkeznie. Az első példa megcímkézzen a modell létrehozásához az. A második pedig a modellt, a végpont tesztelése. A harmadik pedig a vakok Tesztadatok használt [batch tesztelés](luis-how-to-batch-test.md). Az utolsó beállítása nem szerepel az alkalmazás képzési sem küldött a végponton.  
 
+További információk:
+* Fogalom: [A LUIS-alkalmazás az Authoring Tool ciklus](luis-concept-app-iteration.md)
+
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Újabb iterációban kifejezés listák és a minták hozzáadása
 [Listák kifejezés](luis-concept-feature.md) alkalmazástartománya kapcsolódó szó szótárak meghatározhatja. A kifejezés néhány szó a listában, majd használja a javaslat funkciót, így az alkalmazás további szavak meghatározott szókészletet ismer LUIS kezdőérték. Minden szó nem fel, a szöveg szóhasználati, mert a kifejezéslista nem pontos egyezést. 
 
@@ -74,11 +83,22 @@ Valós felhasználói utterances a végpontról, nagyon hasonlít egymáshoz, fe
 
 Használja a minta [választható szintaxis](luis-concept-patterns.md) az absztrakt, ezért írásjelek figyelmen kívül hagyható. Használja a [explicit lista](luis-concept-patterns.md#explicit-lists) pattern.any szintaktikai problémák kiegyenlítése érdekében. 
 
-Ezek az eljárások nem érvényesek, mielőtt az alkalmazás kapott végpont kérelmek, mert, amely megdönti magabiztosan.  
+Ezek az eljárások nem vonatkoznak, az alkalmazáshoz kapott végpont kérelmek előtt. Ismerje meg az alkalmazás viselkedésének kifejezés listák és a minták hozzáadása előtt. Ha már megismerte, hogyan viselkedik az alkalmazás ezek hiányában, adja hozzá a ezeket a funkciókat alkalmazni kell az alkalmazást. 
+
+Nem árt hozzáadják őket a modell felépítésének elején, de egyszerűbb meg, hogyan alapdokumentációjában változik-e eredményeket, ha hozzáad ilyeneket után az alkalmazás használata a valódi forgalmat. 
+
+Nem kell ezeket a funkciókat minden egyes ismétléskor felvenni vagy módosítani a funkciók egyes verzióival. 
+
+További információk:
+* Fogalom: [A LUIS-alkalmazás az Authoring Tool ciklus](luis-concept-app-iteration.md)
+* Fogalom: [A LUIS-alkalmazás a kifejezés szolgáltatásai](luis-concept-feature.md)
+* Fogalom: [Minták előrejelzési pontosság növeléséhez.](luis-concept-patterns.md)
+* Útmutató: [Használja a kifejezés boost jelre a word lista sorolja fel](luis-how-to-add-features.md)
+* Útmutató: [Az előrejelzési pontosság növeléséhez minták hozzáadása](luis-how-to-model-intent-pattern.md)
 
 ## <a name="balance-your-utterances-across-all-intents"></a>Minden leképezések között a kimondott szöveg terheléselosztása
 
-Ahhoz, LUIS, előrejelzéseket, pontosak az egyes szándékot (kivéve a nincs szándék), például utterances mennyisége viszonylag egyenlőnek kell lennie. 
+Ahhoz, hogy pontosak, LUIS-előrejelzéseket az egyes szándékot (kivéve a nincs szándék), például utterances mennyisége viszonylag egyenlőnek kell lennie. 
 
 Ha rendelkezik a 100 példa utterances megjelölésű és a 20 példa utterances megjelölésű, 100-utterance (kifejezés) célja előrejelzési nagyobb mértékű kell.  
 
@@ -86,9 +106,17 @@ Ha rendelkezik a 100 példa utterances megjelölésű és a 20 példa utterances
 
 A célja a tartalék szándékkal, jelzett mindent az alkalmazáson kívül. Egy példa utterance (kifejezés) hozzáadása a nincs szándék, a többi része a LUIS-alkalmazás minden 10 példa kimondott szöveg.
 
+További információk:
+* Fogalom: [Jó utterances Mik a LUIS alkalmazás ismertetése](luis-concept-utterance.md)
+
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Kihasználhatja a javaslat funkciót aktív tanulás
 
 Használat [aktív tanulás](luis-how-to-review-endoint-utt.md)a **tekintse át a végpont utterances** rendszeres időközönként, szándék további példa beszédmódok hozzáadása helyett. Az alkalmazás végponti utterances folyamatosan fogad, mivel a lista egyre növekvő és módosítása.
+
+További információk:
+* Fogalom: [Aktív tanulás engedélyezésének végpont utterances áttekintésével kapcsolatos fogalmak](luis-concept-review-endpoint-utterances.md)
+* Oktatóanyag: [Oktatóanyag: Javítsa ki a nem tudja, hogy előrejelzéseket végpont utterances áttekintésével](luis-tutorial-review-endpoint-utterances.md)
+* Útmutató: [A LUIS-portál végpontja utterances felülvizsgálata](luis-how-to-review-endoint-utt.md)
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Az alkalmazás teljesítményének figyelése
 
@@ -133,6 +161,11 @@ Nem túl sok [minták](luis-concept-patterns.md). A LUIS ismerje meg gyorsan, ke
 ## <a name="do-use-versions-for-each-app-iteration"></a>Alkalmazás törzsének verziók használata
 
 Minden szerzői ciklust kell lennie egy új [verzió](luis-concept-version.md), klónozott egy meglévő verzióból. A LUIS-verziók korlátlan rendelkezik. A verziónév az API-útvonal részeként történik, ezért fontos, hogy válasszon ki egy URL-címet az engedélyezett, valamint a verziók a 10 karakterszám belül tartása karakter. Alakítson ki vannak rendszerezve a verzió megtartása verzió neve stratégiát. 
+
+További információk:
+* Fogalom: [Megismerheti, hogyan és mikor a LUIS-verzió használatához](luis-concept-version.md)
+* Útmutató: [Verziók segítségével módosíthatja, és átmeneti és éles alkalmazások befolyásolása nélkül tesztelése](luis-how-to-manage-versions.md)
+
 
 ## <a name="next-steps"></a>További lépések
 

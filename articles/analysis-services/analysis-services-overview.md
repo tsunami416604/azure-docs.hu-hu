@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 01/08/2019
+ms.date: 02/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3e192449858d6cbd2d054fa7c70276739cfe1143
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 427f3f498ac04c68ef0b335b50c60db46b46d042
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189479"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243854"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -140,19 +140,21 @@ A tároláshoz és a lekérdezések futtatásához a DirectQuery mód* a hátté
 
 \* A rendelkezésre álló funkciók köre a választott szinttől függ.
 
-## <a name="supported-datasources"></a>Támogatott adatforrások
+## <a name="supported-data-sources"></a>Támogatott adatforrások
 
 Az Azure Analysis Services táblázatos modelljei számos különféle adatforrást támogatnak, az egyszerű szöveges fájloktól kezdve az Azure Data Lake Store big data típusú adataiig. További információ: [Támogatott adatforrások az Azure Analysis Servicesben](analysis-services-datasource.md).
 
 ## <a name="your-data-is-secure"></a>Az adatok biztonságban vannak
 
-Az Azure Analysis Services többszintű biztonságot nyújt bizalmas adatai számára. A kiszolgáló szintjén: Tűzfal, az Azure hitelesítési, a kiszolgáló-rendszergazdai szerepkörök és a kiszolgálóoldali titkosítás. Az adatmodell szintjén felhasználói szerepkörök, valamint a sor- és objektumszintű biztonság garantálja az adatok védelmét, továbbá biztosítja, hogy azokhoz csak a jogosult felhasználók férhessenek hozzá.
+Az Azure Analysis Services többszintű biztonságot nyújt bizalmas adatai számára. Azure-szolgáltatásként az Analysis Services nyújt **alapszintű** szintű elosztott szolgáltatásmegtagadásos (DDoS) támadásoktól automatikusan engedélyezve van az Azure platform részeként. További tudnivalókért lásd: [Azure DDoS Protection Standard áttekintése](../virtual-network/ddos-protection-overview.md). 
+
+A kiszolgáló szintjén Analysis Services biztosítja a tűzfal, az Azure-hitelesítés, a kiszolgáló-rendszergazdai szerepkörök és a kiszolgálóoldali titkosítás. Adatok modell szinten, felhasználói szerepkörök, sorszintű és objektumszintű biztonsági az adatok biztonságos, és lekérdezi által látott, csak a felhasználók számára van kialakítva, hogy azt biztosítása érdekében.
 
 ### <a name="firewall"></a>Tűzfal
 
-Az Azure Analysis Services tűzfala minden olyan ügyfélkapcsolatot blokkol, amelyek IP-címe nincs megadva a szabályokban. Az engedélyezett IP-címeket meghatározó szabályok egyesével, ügyfél IP-címenként vagy tartományonként is konfigurálhatók. A Power BI- (szolgáltatási) kapcsolatok szintén engedélyezhetők vagy blokkolhatók. A tűzfalat és a szabályokat a portálon vagy a PowerShell használatával konfigurálhatja. További információ: [Kiszolgálószintű tűzfal konfigurálása](analysis-services-qs-firewall.md).
+Az Azure Analysis Services tűzfala minden olyan ügyfélkapcsolatot blokkol, amelyek IP-címe nincs megadva a szabályokban. Alapértelmezés szerint a tűzfal védelmének új kiszolgálók esetében nincs engedélyezve. Tűzfalas védelem engedélyezve van, és a szabályok részeként egy kiszolgáló-üzembehelyezési szkript vagy a portálon vannak konfigurálva, a kiszolgáló létrehozása után azonnal ajánlott. Az engedélyezett IP-címeket meghatározó szabályok egyesével, ügyfél IP-címenként vagy tartományonként is konfigurálhatók. A Power BI- (szolgáltatási) kapcsolatok szintén engedélyezhetők vagy blokkolhatók. A tűzfalat és a szabályokat a portálon vagy a PowerShell használatával konfigurálhatja. További információ: [Kiszolgálószintű tűzfal konfigurálása](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 A felhasználóhitelesítést az [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) kezeli. A bejelentkezéshez a felhasználók céges fiókidentitást használnak, amely szerepköralapú hozzáféréssel rendelkezik az adatbázishoz. A felhasználói identitásoknak a kiszolgálót tartalmazó előfizetés alapértelmezett Azure Active Directoryja tagjainak kell lenniük. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
 
@@ -251,7 +253,7 @@ Az Analysis Services felhasználói pezsgő közösséget alkotnak. Csatlakozzon
 > [Az Azure ingyenes próbaverziójának kipróbálása](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Kiszolgáló létrehozása – portál](analysis-services-create-server.md)   
+> [Rövid útmutató: Kiszolgáló létrehozása – portál](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)  
+> [Rövid útmutató: Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)  

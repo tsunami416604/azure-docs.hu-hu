@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: fff26406b036edeb48371b89f7e585160ddc58e0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 318f2b550e19f4b7f56a7b8cc592d34644dca644
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123317"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235602"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a PowerShell használata az Azure Data Lake Storage Gen1
 
 Ez a cikk felsorolja a tulajdonságokat, amelyek megfelelő hangolásával a jobb teljesítmény érdekében az Azure Data Lake Storage Gen1 dolgozhat a PowerShell használata során:
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="performance-related-properties"></a>Teljesítménnyel kapcsolatos tulajdonságok
 
@@ -33,13 +35,13 @@ Ez a cikk felsorolja a tulajdonságokat, amelyek megfelelő hangolásával a job
 
 Ez a parancs letölti fájlt a Data Lake Storage Gen1 fájl- és 100 egyidejű fájlt 20 szálat használ a felhasználó helyi lemezére.
 
-    Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
+    Export-AzDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
 
 ## <a name="how-do-i-determine-the-value-for-these-properties"></a>Hogyan állapítható meg ezek a tulajdonságok értékét?
 
 A következő kérdésben, lehetséges, hogy, hogyan határozza meg, milyen értéket adja meg a teljesítménnyel kapcsolatos tulajdonságok. Az alábbiakban olvashat némi útmutatást ezzel kapcsolatban.
 
-* **1. lépés: A teljes szálszám meghatározása** – Kezdje a használni kívánt szálak teljes számának kiszámításával. Vegye figyelembe 6 szálat használjon minden egyes fizikai maghoz.
+* **1. lépés: A teljes szálszám meghatározása** -webalkalmazásokba használandó szálak teljes számának kiszámításával. Vegye figyelembe 6 szálat használjon minden egyes fizikai maghoz.
 
         Total thread count = total physical cores * 6
 
@@ -50,7 +52,7 @@ A következő kérdésben, lehetséges, hogy, hogyan határozza meg, milyen ért
         Total thread count = 16 cores * 6 = 96 threads
 
 
-* **2. lépés: A PerFileThreadCount kiszámítása** – A PerFileThreadCount számítását fájlok mérete alapján végezzük. 2,5 GB-nál kisebb fájlok esetén hiba esetén nem kell módosítani ezt a paramétert, mert a rendszer az alapértelmezett 10 is elegendő. A 2,5 GB-nál nagyobb fájlok esetében 10 szálat használja alapként az első 2,5 GB és a fájlméret minden további 256 MB-os növekedést 1 szálat hozzáadása. Ha olyan mappát másol, amelyben nagyon eltérő méretű fájlok találhatók, érdemes hasonló fájlméret alapján csoportosítani a fájlokat. Az eltérő fájlméretek az optimálisnál kisebb teljesítménnyel járhatnak. Ha nem lehetséges a hasonló fájlméret alapján történő csoportosítás, akkor a PerFileThreadCount értékét a legnagyobb fájlméret alapján kell beállítani.
+* **2. lépés: PerFileThreadCount kiszámítása** – a perfilethreadcount értékét a fájlok mérete alapján kiszámítása. 2,5 GB-nál kisebb fájlok esetén hiba esetén nem kell módosítani ezt a paramétert, mert a rendszer az alapértelmezett 10 is elegendő. A 2,5 GB-nál nagyobb fájlok esetében 10 szálat használja alapként az első 2,5 GB és a fájlméret minden további 256 MB-os növekedést 1 szálat hozzáadása. Ha olyan mappát másol, amelyben nagyon eltérő méretű fájlok találhatók, érdemes hasonló fájlméret alapján csoportosítani a fájlokat. Az eltérő fájlméretek az optimálisnál kisebb teljesítménnyel járhatnak. Ha nem lehetséges a hasonló fájlméret alapján történő csoportosítás, akkor a PerFileThreadCount értékét a legnagyobb fájlméret alapján kell beállítani.
 
         PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size
 
@@ -84,13 +86,13 @@ A beállítások hangolását a **PerFileThreadCount** értékének növelésév
 
 ### <a name="limitation"></a>Korlátozás
 
-* **A fájlok száma kisebb, mint a ConcurrentFileCount értéke**: Ha a feltölteni kívánt fájlok száma kisebb a **ConcurrentFileCount** kiszámított értékének, akkor csökkentse a **ConcurrentFileCount** értékét úgy, hogy az egyenlő legyen a fájlok számával. A fennmaradó szálakat a **PerFileThreadCount** értékének a növelésére használhatja.
+* **Fájlok száma kisebb, mint a ConcurrentFileCount**: Ha a feltölteni kívánt fájlok száma kisebb, mint-e a **ConcurrentFileCount** , hogy ki, akkor csökkentse **ConcurrentFileCount** fájlok számának egyenlőnek kell lennie. A fennmaradó szálakat a **PerFileThreadCount** értékének a növelésére használhatja.
 
-* **Túl sok szál**: Ha túlságosan megnöveli a szálszámot a fürt méretének növelése nélkül, az rosszabb teljesítménnyel járhat. Versengési problémák adódhatnak, ha kontextusváltás történik a CPU-n.
+* **Túl sok szál**: Ha növeli a szálak száma túl nagy a fürt méretének növelése nélkül, akkor kockáztatja, az rosszabb teljesítménnyel. Versengési problémák adódhatnak, ha kontextusváltás történik a CPU-n.
 
-* **Elégtelen egyidejűség**: Ha az egyidejűség nem elégséges, lehet, hogy túl kicsi a fürt. Növelheti a csomópontok számát a fürtben, ami több egyidejűséget biztosít.
+* **Elégtelen egyidejűség**: Ha az egyidejűség nem elegendő, majd a fürt esetleg túl kicsi. Növelheti a csomópontok számát a fürtben, ami több egyidejűséget biztosít.
 
-* **Szabályozási hibák**: Elképzelhető, hogy szabályozási hibákat tapasztal, ha az egyidejűség túl magas. Ha szabályozás hibák merülnek fel, csökkentse az egyidejűséget vagy lépjen kapcsolatba velünk.
+* **Szabályozási hibák**: Láthatja, hogy szabályozási hibákat tapasztal, ha az egyidejűség túl magas. Ha szabályozás hibák merülnek fel, csökkentse az egyidejűséget vagy lépjen kapcsolatba velünk.
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Data Lake Storage Gen1 használata big data-követelményekhez](data-lake-store-data-scenarios.md) 

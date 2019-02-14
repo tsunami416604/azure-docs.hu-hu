@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 56f9226f1bee630895725eb0b3806e294e9a5b51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ac88bc95ac9ffe4c2f32307b0bee427829242add
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56218142"
+ms.locfileid: "56234679"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>A jobb oldalon, az Azure Maps-tarifacsomag kiválasztása
 
@@ -30,17 +30,21 @@ Az S0 és S1 szintű tarifacsomagban is kapható különböző mennyiségű adat
 | Képesség                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
 | Keresés                                  |        ✓           |     ✓    |
-| Útválasztás                                 |        ✓           |     ✓    |
-| Megjelenítés                                  |        ✓           |     ✓    |
-| Adatforgalom                                 |        ✓           |     ✓    |
-| Időzónák                              |        ✓           |     ✓    |
-| Képeken és hibrid képeken    |            |     ✓    |
-| Útválasztási tartomány                    |                   |     ✓    |
-| IP-2 helye (előzetes verzió)                |        ✓           |     ✓    |
-| Keresés a sokszög          |                   |     ✓    |
 | A Batch geokódolás (előzetes verzió)              |                   |     ✓    |
+| Keresés a sokszög          |                   |     ✓    |
+| Útválasztás                                 |        ✓           |     ✓    |
+| Útválasztási tartomány                    |                   |     ✓    |
 | Batch-útválasztási (előzetes verzió)                |                   |     ✓    |
 | Mátrix útválasztás (előzetes verzió)               |                   |     ✓    |
+| Megjelenítés                                  |        ✓           |     ✓    |
+| Képeken és hibrid képeken    |            |     ✓    |
+| Adatforgalom                                 |        ✓           |     ✓    |
+| Időzónák                              |        ✓           |     ✓    |
+| Földrajzi hely (előzetes verzió)                |        ✓           |     ✓    |
+| Adatok (előzetes verzió)               |                   |     ✓    |
+| Térbe (előzetes verzió)               |                   |     ✓    |
+| A Geokerítések (előzetes verzió)               |                   |     ✓    |
+
 
 
 Ezek további adatpontokat mellett szóló érvek a következők:

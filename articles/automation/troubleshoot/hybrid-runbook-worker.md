@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: ''
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/11/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0ec099e0f210fc267a0a34f76136a517e0ae6ccc
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: e3726037e16acdf1d6d624dbf8c2088a57b0bde6
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744517"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234541"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hibrid Runbook-feldolgozók hibaelhárítása
 
@@ -187,6 +187,26 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 
 Start-Service -Name HealthService
 ```
+
+### <a name="already-registered"></a>Forgatókönyv: Nem sikerült hozzáadni a hibrid Runbook-feldolgozók áll
+
+#### <a name="issue"></a>Probléma
+
+Az alábbi üzenetet kapja, adjon hozzá egy hibrid Runbook-feldolgozók használatával tett kísérlet során a `Add-HybridRunbookWorker` parancsmagot.
+
+```
+Machine is already registered to a different account
+```
+
+#### <a name="cause"></a>Ok
+
+Ez olyankor fordulhat elő, ha a gép már regisztrálva van egy másik Automation-fiókot, vagy adja hozzá újra a gépről az Eltávolítás után a hibrid Runbook-feldolgozó próbál.
+
+#### <a name="resolution"></a>Megoldás:
+
+A probléma megoldásához távolítsa el a következő beállításkulcsot, és próbálja meg a `Add-HybridRunbookWorker` újra a parancsmagot:
+
+`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 
 ## <a name="next-steps"></a>További lépések
 
