@@ -15,6 +15,7 @@
 ## [MySQL online migrálása a MySQL-hez készült Azure DB-be](tutorial-mysql-azure-mysql-online.md)
 ## [PostgreSQL online migrálása a PostgreSQL-hez készült Azure DB-be](tutorial-postgresql-azure-postgresql-online.md)
 ## [MongoDB migrálása az Azure Cosmos DB Mongo API offline verziójára](tutorial-mongodb-cosmos-db.md)
+## [MongoDB migrálása az Azure Cosmos DB Mongo API online verziójára](tutorial-mongodb-cosmos-db-online.md)
 
 # Útmutatók
 ## [A PowerShell használata SQL Server migrálásához az Azure SQL DB-be](howto-sql-server-to-azure-sql-powershell.md)

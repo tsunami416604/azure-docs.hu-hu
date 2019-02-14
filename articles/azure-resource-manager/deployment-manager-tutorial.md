@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fc32a56174cefc0b78f2e1e282e2d85d6927fca1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 5c88bf00ed1f68e4ddab6175e86a46560c802744
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106545"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238215"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok (privát előzetes verzió)
 
@@ -295,7 +295,6 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 1. Futtassa a szkriptet a szolgáltatástopológia üzembe helyezéséhez.
 
     ```azurepowershell-interactive
-    $deploymentName = "<Enter a Deployment Name>"
     $resourceGroupName = "<Enter a Resource Group Name>"
     $location = "Central US"  
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
@@ -305,7 +304,6 @@ A sablonok az Azure PowerShell használatával telepíthetők.
     
     # Create the service topology
     New-AzResourceGroupDeployment `
-        -Name $deploymentName `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
@@ -322,7 +320,6 @@ A sablonok az Azure PowerShell használatával telepíthetők.
     ```azurepowershell-interactive
     # Create the rollout
     New-AzResourceGroupDeployment `
-        -Name $deploymentName `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMRollout.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMRollout.Parameters.json"

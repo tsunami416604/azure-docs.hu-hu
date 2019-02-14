@@ -31,6 +31,8 @@ items:
     href: azure-maps-event-grid-integration.md
   - name: A megfelelő tarifacsomag kiválasztása
     href: choose-pricing-tier.md
+  - name: Hitelesítés az Azure Maps használatával
+    href: azure-maps-authentication.md
   - name: Lefedettség
     items:
     - name: Geokódolás lefedettsége
@@ -49,8 +51,10 @@ items:
   items:
   - name: Maps-fiókok kezelése
     items:
-    - name: Fiókok és kulcsok kezelése
+    - name: Fiókok kezelése
       href: how-to-manage-account-keys.md
+    - name: Hitelesítés kezelése
+      href: how-to-manage-authentication.md
     - name: Tarifacsomag kezelése
       href: how-to-manage-pricing-tier.md
     - name: Használati metrikák megtekintése
@@ -59,6 +63,8 @@ items:
     items:
     - name: Cím keresése
       href: how-to-search-for-address.md
+    - name: Egyéni adatok megjelenítése statikus térképen
+      href: how-to-render-custom-data.md
   - name: JavaScript-térképek létrehozása
     items:
     - name: A térkép vezérlőelem használata
@@ -99,6 +105,10 @@ items:
       href: map-events.md
     - name: Elérhető térképes alkalmazások
       href: map-accessibility.md
+  - name: Android-térképek létrehozása
+    items:
+    - name: Android-térképvezérlőelemek használata
+      href: how-to-use-android-map-control-library.md
 - name: Referencia
   items:
   - name: API- és paraméterbővítmények
@@ -183,9 +193,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videók
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: 0fb1d864dd18a781d0eeba4c8dea610e3ccb07f2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a657596cb266db20404d7f2ec1074834d181772
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999453"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111050"

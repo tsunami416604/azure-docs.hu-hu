@@ -5,49 +5,58 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 07/03/2018
+ms.date: 02/12/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 377ea6629223c365ef3d00c756929bf23ddffde5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: b38f66670ba29022713ae39824a190fcffb688c7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702651"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238714"
 ---
 A Service Bus-üzenetküldési entitások Azure-ban való használatának megkezdéséhez először létre kell hoznia egy, az Azure-ban egyedi névvel rendelkező névteret. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
 
 Névtér létrehozása:
 
-1. Jelentkezzen be az [Azure Portalra][Azure portal].
-2. A portál bal oldali navigációs paneljén kattintson a **+ Erőforrás létrehozása**, az **Integráció**, majd a **Service Bus** elemre.
-3. A **Névtér létrehozása** párbeszédpanelen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
-4. Miután ellenőrizte, hogy a névtér neve elérhető-e, válassza ki a tarifacsomagot (Basic, Standard vagy Prémium). A [témakörök és előfizetések](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) használatához válassza a standard vagy a prémium tarifacsomagot. A témakörök és az előfizetések nem támogatottak az alapszintű tarifacsomagban.
-5. Az **Előfizetés** mezőben válassza ki azt az Azure-előfizetést, amelyben a névteret létre kívánja hozni.
-6. Az **Erőforráscsoport** mezőben válasszon ki egy meglévő erőforráscsoportot, amelynek a névtér a része lesz, vagy hozzon létre egy újat.      
-7. A **Hely** mezőben válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
+2. A portál bal oldali navigációs panelén válassza **+ erőforrás létrehozása**válassza **integrációs**, majd válassza ki **a Service Bus**.
+
+    ![Erőforrás létrehozása integráció -> a Service Bus ->](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
+3. Az a **névtér létrehozása** párbeszédpanelen tegye a következőket: 
+    1. Adjon meg egy **a névtér neve**. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
+    2. Válassza ki a tarifacsomagot (Basic, Standard vagy prémium) a névtérhez. Ha a használni kívánt [üzenettémák és előfizetések](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions), válassza a Standard vagy Premium. A témakörök és az előfizetések nem támogatottak az alapszintű tarifacsomagban.
+    3. Ha bejelölte a **prémium** tarifacsomagban van, kövesse az alábbi lépéseket: 
+        1. Adja meg, hány **üzenetkezelési egységek**. A prémium szintű erőforrás-elkülönítést, a CPU és memória szintjén biztosít, így minden számítási feladata elkülönítve fut. Ez az erőforrás-tárolónak egy üzenetkezelési egység neve. Legalább egy üzenetkezelési egység van lefoglalva minden prémium névtérhez. Kiválaszthatja, 1, 2 vagy 4 üzenetkezelési egység minden prémium szintű Service Bus-névtér esetében. További információkért lásd: [Service Bus prémium szintű üzenetkezelés](../articles/service-bus-messaging/service-bus-premium-messaging.md).
+        2. Adja meg, hogy, hogy a névtér **zónaredundáns**. A zone redudancy fokozott rendelkezésre állást biztosítja a replikák terjesztésével további költségek nélkül egy régión belül a rendelkezésre állási zónák között. További információkért lásd: [az Azure-beli rendelkezésre állási zónák](../articles/availability-zones/az-overview.md).
+    4. A **előfizetés**, válassza ki az Azure-előfizetés, amelyben a névteret létre kívánja hozni.
+    5. A **erőforráscsoport**, válasszon ki egy meglévő erőforráscsoportot, amelyben a névtér lesz élő, vagy hozzon létre egy újat.      
+    6. A **hely**, válassza ki a régiót, amelyben a névtér üzemeltetve lesz.
+    7. Kattintson a **Létrehozás** gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
    
-    ![Névtér létrehozása][create-namespace]
-8. Kattintson a **Create** (Létrehozás) gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
+        ![Névtér létrehozása](./media/service-bus-create-namespace-portal/create-namespace.png)
+4. Győződjön meg arról, hogy a service bus-névtér sikeres üzembe helyezését. Az értesítések megtekintéséhez válassza ki a **harang ikonra (riasztások)** az eszköztáron. Válassza ki a **az erőforráscsoport neve** az értesítésben a képen látható módon. Az erőforráscsoport, amely tartalmazza a service bus-névtér megjelenik.
 
-### <a name="obtain-the-management-credentials"></a>A felügyeleti hitelesítő adatok beszerzése
+    ![Központi telepítési riasztás](./media/service-bus-create-namespace-portal/deployment-alert.png)
+5. Az a **erőforráscsoport** oldalon az erőforráscsoport, jelölje be a **service bus-névtér**. 
 
-Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös hozzáférésű jogosultságkódra (SAS) vonatkozó szabály egy elsődleges és egy másodlagos kulcsból álló kulcspárral, amelyek mindegyike teljes hozzáférést biztosít a névtér minden területéhez. A normál küldők és fogadók számára kialakítható, korlátozottabb jogokat biztosító további szabályok létrehozásával kapcsolatban lásd: [Service Bus-hitelesítés és -engedélyezés](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md). A kezdeti szabály másolásához kövesse az alábbi lépéseket: 
+    ![Erőforráscsoport oldala – válassza ki a service bus-névtér](./media/service-bus-create-namespace-portal/resource-group-select-service-bus.png)
+6. A service bus-névtér tekintse meg a kezdőlapján. 
+
+    ![A service bus-névtér kezdőlapja](./media/service-bus-create-namespace-portal/service-bus-namespace-home-page.png)
+
+### <a name="get-the-management-credentials"></a>A felügyeleti hitelesítő adatok lekérése
+Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös hozzáférésű jogosultságkódra (SAS) vonatkozó szabály egy elsődleges és egy másodlagos kulcsból álló kulcspárral, amelyek mindegyike teljes hozzáférést biztosít a névtér minden területéhez. Lásd: [Service Bus-hitelesítés és engedélyezés](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) a további szabályok létrehozásával kapcsolatos információkat, korlátozottabb jogokat a normál küldők és fogadók. Másolja az elsődleges és másodlagos kulcsot a névtérhez, kövesse az alábbi lépéseket: 
 
 1. Kattintson az **Összes erőforrás** elemre, majd az újonnan létrehozott névtér nevére.
 2. A névtér ablakában kattintson a **Megosztott elérési házirendek** elemre.
 3. A **Megosztott elérési házirendek** képernyőn kattintson a **RootManageSharedAccessKey** elemre.
    
-    ![connection-info][connection-info]
-4. A **Szabályzat: RootManageSharedAccessKey** ablakban az **Elsődleges kapcsolati sztring** melletti Másolás gombra kattintva másolja a kapcsolati sztringet a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
+    ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
+4. Az a **házirend: RootManageSharedAccessKey** ablakban, a Másolás gombra a következő gombra a **elsődleges kapcsolati karakterlánc**, hogy másolja a kapcsolati karakterláncot a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
    
-    ![connection-string][connection-string]
-
+    ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
 5. A későbbi használat érdekében ismételje meg az előző lépést, és másolja ki és illessze be az **Elsődleges kulcs** értékét egy ideiglenes helyre.
 
 <!--Image references-->
 
-[create-namespace]: ./media/service-bus-create-namespace-portal/create-namespace.png
-[connection-info]: ./media/service-bus-create-namespace-portal/connection-info.png
-[connection-string]: ./media/service-bus-create-namespace-portal/connection-string.png
-[Azure portal]: https://portal.azure.com

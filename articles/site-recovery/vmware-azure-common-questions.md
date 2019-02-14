@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 2/7/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: fb4add1194f7fe6d10859f76f244f027b35ad92d
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 83c9a0baa4d853c8afcb5afe1c4e5cc4ed1e0073
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960581"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235224"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -31,8 +31,6 @@ A replikáció során az adatok az Azure storage replikációja, és nem kell fi
 - **Vész-helyreállítási**: Beállíthat teljes vészhelyreállítás. Ebben a forgatókönyvben a helyszíni VMware virtuális gépeket az Azure storage-replikáció. Ezt követően a helyszíni infrastruktúra nem érhető el, ha is átadja a feladatokat az Azure-bA. Amikor feladatátvételt hajt végre, az Azure virtuális gépek jönnek létre a replikált adatok felhasználásával. Alkalmazások és számítási feladatok az Azure virtuális gépeken, amíg a helyszíni adatközpont újra elérhetővé hozzáférhet. Ezután Ön is nem az Azure-ból a helyszíni helyre.
 - **Áttelepítési**: A Site Recovery használatával a helyszíni VMware virtuális gépek áttelepítése az Azure-bA. Ebben a forgatókönyvben a helyszíni VMware virtuális gépeket az Azure storage-replikáció. Ezt követően átadja a feladatokat a helyszínről az Azure-bA. A feladatátvételt követően az alkalmazások és számítási feladatok rendelkezésre állnak és futó Azure virtuális gépeken.
 
-
-
 ## <a name="azure"></a>Azure
 ### <a name="what-do-i-need-in-azure"></a>Mi szükséges az Azure-ban?
 Azure-előfizetés, egy Recovery Services-tárolót, egy storage-fiókot és egy virtuális hálózaton van szüksége. A tároló, a storage-fiók és a hálózati ugyanabban a régióban kell lennie.
@@ -44,7 +42,33 @@ Az LRS vagy GRS tárfiókra van szükség. Mi a GRS használatát javasoljuk, mi
 Ha Ön olyan előfizetés rendszergazdája, akkor a replikációs szükséges engedélyekkel. Ha nem Ön, szüksége van egy Azure virtuális gép létrehozása az az erőforráscsoport és a Site Recovery konfigurálásakor megadott virtuális hálózat és a kiválasztott tárfiók írási engedélyekkel. [További információk](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Használható az Azure-ban a vendég operációs rendszer server-licence?
-Igen, a Microsoft frissítési garanciával rendelkező ügyfelek az Azure Hybrid Benefit megtakarítást a licencelési költségei **Windows Serveres gépek** , amely az Azure-ba, vagy használhatja az Azure-vész-helyreállítási lesznek áttelepítve.
+Igen, a Microsoft frissítési garanciával rendelkező ügyfelek használhatják a [Azure Hybrid Benefit](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/) menteni a licencelési költségei **Windows Serveres gépek** , amely az Azure-ba, vagy használhatja az Azure-vész-helyreállítási lesznek áttelepítve.
+
+## <a name="pricing"></a>Díjszabás
+
+### <a name="how-are-licensing-charges-handled-during-replication-after-failover"></a>Hogyan kezeli a feladatátvételt követően a replikáció során licencelési költségek?
+
+Tekintse meg a licenc Kérdésekben [Itt](https://aka.ms/asr_pricing_FAQ) további információt.
+
+### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Hogyan lehet becsült költségek kiszámítása a Site Recovery használata során?
+
+Használhat [díjkalkulátor](https://aka.ms/asr_pricing_calculator) alapján az Azure Site Recovery használata közben. A részletes becsült költségek, futtassa a deployment planner eszköz (https://aka.ms/siterecovery_deployment_planner) és elemzi a [költségbecslési jelentés költség](https://aka.ms/asr_DP_costreport).
+
+### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Már több mint egy hónapja Azure Site Recovery-felhasználó vagyok. Továbbra is minden egyes védett példány esetében vonatkozik rám a díjmentes első 31 nap?
+
+Igen. Nem számít, hogy mióta használja az Azure Site Recovery szolgáltatást. Az első 31 napra egyetlen védett példány tekintetében sem számítunk fel Azure Site Recovery-díjat. Ha például Ön az elmúlt 6 hónap során 10 példányt védett, majd pedig egy 11. példányt is az Azure Site Recovery szolgáltatáshoz kapcsol – a 11. példányra az első 31 nap során nem számítunk fel Azure Site Recovery-díjat. Az első 10 példányra továbbra is vonatkoznak az Azure Site Recovery-díjak, mivel védelmük meghaladja a 31 napot.
+
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Az első 31 nap során kell valamilyen más Azure-díjat fizetni?
+
+Igen. Bár az Azure Site Recovery szolgáltatás a védett példányok tekintetében díjmentes az első 31 nap során, az Azure Storage szolgáltatás, a tárolási tranzakciók és az adatforgalom díjkötelesek lehetnek. Továbbá a helyreállított virtuális gépekre is vonatkozhatnak Azure-díjak a számítási idő alapján.
+
+### <a name="what-charges-do-i-incur-while-using-azure-site-recovery"></a>Milyen díjakat számítanak fel az Azure Site Recovery használata esetén?
+
+Tekintse meg a [– gyakori kérdések a felmerülő költségek](https://aka.ms/asr_pricing_FAQ) részletes információkat.
+
+### <a name="is-there-a-cost-associated-to-perform-dr-drillstest-failover"></a>A DR működése során használt tesztelési feladatátvétel végrehajtásához kapcsolódó költségek van?
+
+Nincs a Vészhelyreállítás részletezési külön költség nélkül. Kell díjat fizetni tesztelési feladatátvétel után a virtuális gép létrehozása után.
 
 ## <a name="azure-site-recovery-components-upgrade"></a>Az Azure Site Recovery-összetevők frissítése
 
@@ -87,8 +111,12 @@ Az Azure storage replikálja az adatokat. Feladatátvétel futtatásakor a Site 
 
 ## <a name="replication"></a>Replikáció
 
-### <a name="what-apps-can-i-replicate"></a>Mely alkalmazások replikálhatok?
+### <a name="what-applications-can-i-replicate"></a>Milyen alkalmazásokat replikálhatok?
 Bármilyen alkalmazást vagy a VMware virtuális gép, amely megfelel az számítási feladatot replikálhat [replikációs követelményeit](vmware-physical-azure-support-matrix.md##replicated-machines). A Site Recovery támogatja az alkalmazásbarát replikációt, hogy az alkalmazások feladatátvételt, és újra működőképes állapotban nem sikerült. A Site Recovery integrálható a Microsoft-alkalmazások, például a SharePoint, Exchange, Dynamics, SQL Server és Active Directory, és szorosan együttműködik az olyan vezető szállítókkal, beleértve az Oracle, SAP, IBM és Red Hat. [További információk](site-recovery-workload.md) a számítási feladatok védelméről.
+
+### <a name="can-i-protect-a-virtual-machine-that-has-docker-disk-configuration"></a>Docker-lemez konfigurációval rendelkező virtuális gépek védhetők?
+
+Nem, ez a nem támogatott forgatókönyv.
 
 ### <a name="can-i-replicate-to-azure-with-a-site-to-site-vpn"></a>Replikálás az Azure site-to-site VPN-nel is?
 A Site Recovery replikálja az adatokat a helyszínről az Azure storage egy nyilvános végpontot, vagy használja az ExpressRoute nyilvános társviszony-létesítés. Site-to-site VPN hálózaton keresztül a replikáció nem támogatott.
@@ -96,11 +124,13 @@ A Site Recovery replikálja az adatokat a helyszínről az Azure storage egy nyi
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Replikálás az Azure ExpressRoute használatával is?
 Igen, az ExpressRoute segítségével virtuális gépek replikálása az Azure-bA. A Site Recovery replikálja az adatokat egy Azure Storage-fiókot, egy nyilvános végpontot keresztül. Be kell állítania [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) vagy [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) ExpressRoute használata a Site Recovery replikációjára. Microsoft társviszony-létesítés a replikáció ajánlott útválasztási tartományhoz. Ügyeljen arra, hogy a [hálózati követelmények](vmware-azure-configuration-server-requirements.md#network-requirements) is teljesülnek-e a replikáció. Miután a virtuális gépek átadja a feladatokat az Azure virtuális hálózat, elérheti azokat használó [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
+### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>Hogyan válthatok storage-fiók után a gép védelméhez?
+
+Storage-fiók csak a prémium szintű frissíthetők. Ha azt szeretné, egy másik tárfiók használatára, szüksége tiltsa le a forrásgép replikációját, és engedélyezze újra a védelmet az új tárfiókot. Szereplőkkel, ez nem egy más módon nem lehet módosítani a storage-fiók védelmének engedélyezése után.
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Miért nem tudja replikálni VPN-kapcsolaton keresztül?
 
 Az Azure-bA replikálja, amikor replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-fiók, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik.
-
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Mik azok a replikált virtuális gépek követelményeinek?
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: a0d697438c1265b8c4e6802dc2dad62a33f51855
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8d99a52b500377e02af339588fe7155e26cf588c
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548595"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233387"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
 Az Azure Functions megkönnyíti az alkalmazás üzembe helyezése a függvény használatával az App Service folyamatos integrációt. Functions integrálható a BitBucket, Dropbox, GitHub és az Azure DevOps. Ez lehetővé teszi egy munkafolyamatot, ahol frissíti a függvénykódot ezek integrált szolgáltatások eseményindító üzembe helyezés az Azure-bA egyikének használatával végzett. Ha most ismerkedik az Azure Functions, kezdje [Azure Functions áttekintése](functions-overview.md).
@@ -28,8 +28,8 @@ A folyamatos üzembe helyezés jó megoldás lehet olyan projektek esetén, amel
 * Külső tárház (a Git vagy Mercurial)
 * [Helyi Git-tárház](../app-service/deploy-local-git.md)
 * [GitHubon](https://github.com)
-* [Onedrive vállalati verzió](https://onedrive.live.com/)
-* [Az Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/team-services/)
+* [OneDrive](https://onedrive.live.com/)
+* [Az Azure DevOps](https://azure.microsoft.com/services/devops/)
 
 Központi telepítések függvény alkalmazás alapon vannak konfigurálva. Folyamatos üzembe helyezés engedélyezését követően a függvénykódot a portálon való hozzáférés értéke *csak olvasható*.
 
@@ -93,9 +93,9 @@ Ha rendelkezik meglévő funkciók, amelyek a létrehozott és karbantartott a p
 > [!NOTE]
 > Miután beállította a folyamatos integráció, már nem szerkesztheti a forrásfájlokat, a Functions portálján.
 
-- [kézikönyv: Üzembe helyezési hitelesítő adatok konfigurálása](#credentials)
-- [kézikönyv: Töltse le a fájlt FTP használatával](#downftp)
-- [kézikönyv: Töltse le a fájlt a helyi Git-tárház használatával](#downgit)
+- [Útmutató: Üzembe helyezési hitelesítő adatok konfigurálása](#credentials)
+- [Útmutató: Töltse le a fájlt FTP használatával](#downftp)
+- [Útmutató: Töltse le a fájlt a helyi Git-tárház használatával](#downgit)
 
 <a name="credentials"></a>
 #### <a name="how-to-configure-deployment-credentials"></a>Útmutató: Üzembe helyezési hitelesítő adatok konfigurálása
