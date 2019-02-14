@@ -1,20 +1,20 @@
 ---
 title: A Key Vault használatával tárolhatja és érheti el az Azure Cosmos DB-kulcsok
 description: Az Azure Key Vault használatával tárolhatja és érheti el az Azure Cosmos DB kapcsolati sztring, a kulcsokat, a végpontok.
-author: rafats
+author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: rafats
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 770e1e543a16bb54acc216aa550c44be26ab7a1a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 36b0a2f18cf2917251a87405456980811af1bc3d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858451"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242192"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Biztonságos Azure Key Vault használatával az Azure Cosmos-kulcsok 
 

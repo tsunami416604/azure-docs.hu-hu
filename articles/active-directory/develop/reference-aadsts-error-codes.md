@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/23/2019
+ms.date: 02/13/2019
 ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8807f3dd888e3bf53e58ec896f824e6ecbf6273b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d4ad41992b2ac0dfc98303601060ed299e75ddfc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163359"
+ms.locfileid: "56234288"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Hitelesítés és hitelesítési hibakódok
 
@@ -191,7 +191,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS90016 | MissingRequiredClaim – a hozzáférési jogkivonat nem érvényes. A szükséges jogcím nem található. |
 | AADSTS90019 | MissingTenantRealm - a az Azure AD nem tudta meghatározni a kérelemből a bérlőazonosító. |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat – az egyszerű nevének formátuma nem érvényes, vagy nem felel meg a várt `name[/host][@realm]` formátumban. Az egyszerű felhasználónév megadása kötelező, a gazdagép és a tartomány megadása nem kötelező, és lehet null értékű. |
-| AADSTS90023 | InvalidRequest |
+| AADSTS90023 | InvalidRequest – a hitelesítési szolgáltatási kérelem érvénytelen. |
 | AADSTS90024 | RequestBudgetExceededError – átmeneti hiba történt. Próbálja meg újra. |
 | AADSTS90033 | MsodsServiceUnavailable – nem érhető el a Microsoft Online Directory Service (MSODS). |
 | AADSTS90036 | MsodsServiceUnretryableFailure - MSODS üzemelteti a WCF szolgáltatás váratlan, – Újrapróbálkozást lehetővé nem tevő hiba történt. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez |

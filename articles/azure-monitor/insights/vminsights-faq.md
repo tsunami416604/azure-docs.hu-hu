@@ -2,24 +2,20 @@
 title: A virtuális gépek (előzetes verzió) gyakran ismételt kérdések az Azure Monitor |} A Microsoft Docs
 description: A virtuális gépek az Azure Monitor egy olyan megoldás, az Azure-ban, amely egyesíti az állapotának és teljesítményének figyelése az Azure virtuális gép operációs rendszerének, valamint alkalmazás-összetevők és az egyéb erőforrások függőségeinek automatikus felderítése, és feltérképezi a közötti kommunikációt őket. Ez a cikk gyakori kérdésekre ad választ.
 services: azure-monitor
-documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: f553a938c6329e21388ca68dea480b008e4e1363
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 32f2833b4c1ba77564d5388bc080a7cb32d90201
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191564"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243773"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Az Azure Monitor-beli virtuális gépek (előzetes verzió) gyakran ismételt kérdések
 A Microsoft FAQ az összetevővel kapcsolatos gyakori kérdésekre az Azure Monitor-beli virtuális gépek listája. Ha a megoldásról a további kérdése van, lépjen a [fórum](https://feedback.azure.com/forums/34192--general-feedback) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 85ac778a8b0beaf6ecee186e6904f4a2e5b36f45
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c4cb93e39a67e13646a339af6ac999a8fd96b383
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882896"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234815"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing egyéni keresés felhasználói beállítása
 
@@ -94,7 +94,7 @@ A portál lehetővé teszi a keresési rangsorolás, a tartalom tartományok, mi
 
 |            |                                                                                                                                                                      |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Letiltás      | A tartomány, Melléklap vagy weblap áthelyezi a letiltott listába. Bing ki fogja zárni a tartalom a kiválasztott hely megjelenjenek a keresési eredmények között.                    |
+| Blokk      | A tartomány, Melléklap vagy weblap áthelyezi a letiltott listába. Bing ki fogja zárni a tartalom a kiválasztott hely megjelenjenek a keresési eredmények között.                    |
 | Kiemelés      | Felgyorsíthatók a tartalom a tartomány vagy Melléklap magasabb a keresési eredmények között lehet.                                                                                        |
 | Lefokozása     | Értéksorrá minősíti vissza a tartományt vagy a keresési eredmények alsó Melléklap tartalmat. Akkor válassza ki, hogy fokozza le a tartalmat a tartományból vagy subpage, hogy a képernyőn látható weblapon tartozik. |
 | Rögzítse a tetejére | A tartomány, Melléklap vagy a weblap helyezi a **Pinned** listája. Ez kényszeríti a weblap jelenik meg, mint a felső keresési eredmény számára egy adott keresési lekérdezésnek.                   |
@@ -131,9 +131,9 @@ Alapértelmezés szerint weblapok csak rögzítve tetején a keresési eredmény
 
 | Érték | Leírás                                                                          |
 |---------------|----------------------------------------------------------------------------------|
-| Ezzel kezdődik | A PIN-kód egyezés, ha a lekérdezési karakterlánc a felhasználó a PIN-kód lekérdezési karakterlánccal kezdődik |
-| végződik   | A PIN-kód egyezés esetén a felhasználói lekérdezési karakterláncot a PIN-kód lekérdezési karakterlánccal végződik.  |
-| tartalmaz    | A PIN-kód egyezés esetén a felhasználói lekérdezési karakterláncot a PIN-kód lekérdezési karakterláncot tartalmaz.   |
+| Kezdete | A PIN-kód egyezés, ha a lekérdezési karakterlánc a felhasználó a PIN-kód lekérdezési karakterlánccal kezdődik |
+| Vége   | A PIN-kód egyezés esetén a felhasználói lekérdezési karakterláncot a PIN-kód lekérdezési karakterlánccal végződik.  |
+| Contains    | A PIN-kód egyezés esetén a felhasználói lekérdezési karakterláncot a PIN-kód lekérdezési karakterláncot tartalmaz.   |
 
 
 A PIN-kódot az egyezési feltétellel módosításához kattintson a Szerkesztés ikonra a PIN-kódot. Az a **lekérdezés az egyezési feltétellel** oszlopot, kattintson a legördülő listára, és válassza ki az új feltétel használatához. Ezután kattintson a Mentés ikonra a módosítás mentéséhez.

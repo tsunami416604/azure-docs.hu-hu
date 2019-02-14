@@ -11,14 +11,14 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 76943c89cd4c0a283dc36a2a0d28c907cef0ad28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cc7d9a8e0d2689be4a8beb5d42c43b9e18157472
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114688"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238113"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM-védelemmel ellátott és hogyan lehet az Azure Key Vault-kulcsok
 
@@ -246,7 +246,6 @@ Másolja a BYOK eszközkészletcsomagot az USB-meghajtóra vagy egyéb hordozhat
 
 A harmadik lépést hajtsa végre a következő eljárások a kapcsolat nélküli munkaállomáson. E lépés elvégzése után a HSM inicializálási módban kell lennie. 
 
-
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>3.1. lépés: A HSM mód megváltoztatása "I"
 
 Ha Edge, a Thales nShield módjának módosításához használja: 1. Jelölje ki a szükséges módot az üzemmód gomb használatával. 2. Néhány másodpercen belül tartsa lenyomva a Törlés gomb egy pár másodpercet. Ha módosítja a módot, az új mód LED villogó leállítja, és megvilágítottnak marad. Az állapot LED szabálytalan flash előfordulhat, hogy néhány másodpercet, és rendszeresen, amikor az eszköz készen áll majd tokenkódot. Ellenkező esetben az eszköz továbbra is az aktuális módban, a megfelelő módot LED bekapcsolásával.
@@ -256,13 +255,13 @@ Ha Edge, a Thales nShield módjának módosításához használja: 1. Jelölje k
 Indítson el egy parancssort, és futtassa a Thales új világot létrehozó programját.
 
    ```cmd
-    new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
+    new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
 Ez a program létrehoz egy **Biztonságivilág** fájlban a következő % NFAST_KMDATA%\local\world, amely a C:\ProgramData\nCipher\Key Management Data\local mappának felel meg. A kvórum különböző értékeket is használhat, de ebben a példában, meg kell adnia három üres kártyát és PIN-kód egyes. Ezután bármelyik két kártya teljes hozzáférést biztosít a biztonsági világhoz. Ezek a kártyák lesznek az **rendszergazdai Kártyakészlete** az új biztonsági világ számára.
 
 > [!NOTE]
-> Ha a HSM támogatja az újabb rejtjelzésben suite DLf3072s256mRijndael, lecserélheti ezen--titkosítócsomag DLf1024s160mRijndael = az--titkosítócsomag = DLf3072s256mRijndael
+> Ha a HSM nem támogatja az újabb rejtjelzésben suite DLf3072s256mRijndael, lecserélheti ezen--titkosítócsomag DLf3072s256mRijndael = az--titkosítócsomag = DLf1024s160mRijndael
 
 Ezután tegye a következőket:
 

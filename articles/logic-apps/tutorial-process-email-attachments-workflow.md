@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: 7efa2f19aedfbd00ccced8b755d3b02847b31444
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: f0d368097c72efccf5dc15fe15ec0b7d920279e5
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508606"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245882"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Oktatóanyag: Kezelési e-maileket és mellékleteket az Azure Logic Apps automatizálása
 
@@ -82,7 +82,7 @@ A bejövő e-mailek és mellékletek blobként menthetőek egy [Azure Storage-t�
 
       ![A tárfiók nevének és kulcsának másolása és mentése](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   A tárfiók hozzáférési kulcsát az [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccountkey) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) használatával is lekérheti. 
+   A tárfiók hozzáférési kulcsát az [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) használatával is lekérheti. 
 
 3. Hozzon létre egy Blob Storage-tárolót az e-mail-mellékletek számára.
    
@@ -100,7 +100,7 @@ A bejövő e-mailek és mellékletek blobként menthetőek egy [Azure Storage-t�
 
       ![Befejezett Storage-tároló](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   A tárfiók létrehozásához az [Azure PowerShellt](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) vagy az [Azure CLI-t](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) is használhatja. 
+   A tárfiók létrehozásához az [Azure PowerShellt](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontainer) vagy az [Azure CLI-t](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) is használhatja. 
 
 Ezután csatlakoztassa a Storage Explorert a tárfiókhoz.
 

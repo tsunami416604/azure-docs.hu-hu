@@ -15,18 +15,18 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 026c399af70a0c97446fba28b5dd7ca1ed82b89c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 0aae733f94ab4a217ca41ca3de6df2e5da47df50
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635493"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244351"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Tárfiók létrehozása és a hozzáférési kulcsainak rotálása
 
 Ez a szkript létrehoz egy Azure Storage-fiókot, megjeleníti az új tárfiók elsődleges hívóbetűjét, majd megújítja (rotálja) a kulcsot.
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,10 +49,10 @@ Ez a szkript a következő parancsokat használja, a storage-fiók létrehozása
 | Parancs | Megjegyzések |
 |---|---|
 | [Get-AzLocation](/powershell/module/az.resources/get-azlocation) | Minden hely és a támogatott erőforrás-szolgáltatók beolvasása minden helyen. |
-| [Új AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy Azure-erőforráscsoportot. |
-| [Új AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Létrehoz egy tárfiókot. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy Azure-erőforráscsoportot. |
+| [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Létrehoz egy tárfiókot. |
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Beszerzi egy Azure Storage-fiók hozzáférési kulcsait. |
-| [Új AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Az Azure Storage-fiókhoz tartozó hozzáférési kulcs újragenerálása. |
+| [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Az Azure Storage-fiókhoz tartozó hozzáférési kulcs újragenerálása. |
 
 ## <a name="next-steps"></a>További lépések
 

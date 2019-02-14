@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: ramamill
-ms.openlocfilehash: 4a8ab770eef1c8d95ea2fb6340480089ded0218b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b7454226b96ff2f6a76285d708a7ce2ad1c3a6de
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863142"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235886"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -130,44 +130,48 @@ Folyamatban lévő replikáció megszakítása a szükséges elkerülése érdek
 
 ## <a name="faq"></a>GYIK
 
-1. A virtuális gép, amelyen a konfigurációs kiszolgáló telepítve van, különböző célokra használható?
+1. Mennyi ideig tart a konfigurációs kiszolgáló OVF helyezzük a megadott engedély érvénytelen? Mi történik, ha szeretnék ne aktiválja újra a licenc?
+
+    Az OVA sablonnal megadott engedély egy értékelési engedély 180 napig érvényes. A lejárat előtt kell aktiválnia a licencet. Más esetben ez eredményez a konfigurációs kiszolgáló gyakori leállítása, és így a replikációs tevékenységek hinderance okozhat.
+
+2. A virtuális gép, amelyen a konfigurációs kiszolgáló telepítve van, különböző célokra használható?
 
     **Nem**, azt javasoljuk, hogy a virtuális gép konfigurációs kiszolgáló egyetlen célra használható. Mindenképpen kövesse a említett összes specifikációk [Előfeltételek](#prerequisites) vész-helyreállítási hatékony kezelését.
-2. Válthatok-e a tárolóban már regisztrálva van egy újonnan létrehozott tárolót a konfigurációs kiszolgálón?
+3. Válthatok-e a tárolóban már regisztrálva van egy újonnan létrehozott tárolót a konfigurációs kiszolgálón?
 
     **Nem**, miután a tároló konfigurációs kiszolgáló regisztrálva van, ezért nem módosítható.
-3. Használható fizikai és a virtuális gépek védelmére szolgáló ugyanarra a konfigurációs kiszolgálóra?
+4. Használható fizikai és a virtuális gépek védelmére szolgáló ugyanarra a konfigurációs kiszolgálóra?
 
     **Igen**, ugyanarra a konfigurációs kiszolgálóra replikálni a fizikai és virtuális gépeken is használható. Azonban a fizikai gép rendszer nem csak a VMware virtuális gép vissza.
-4. Mi az a célja a konfigurációs kiszolgáló, és amelyben a rendszer azt használja?
+5. Mi az a célja a konfigurációs kiszolgáló, és amelyben a rendszer azt használja?
 
     Tekintse meg [VMware-ből az Azure-bA architektúra](vmware-azure-architecture.md) tudhat meg többet a konfigurációs kiszolgáló és a számítást.
-5. Hol található a konfigurációs kiszolgáló legújabb verzióját?
+6. Hol található a konfigurációs kiszolgáló legújabb verzióját?
 
     A portálon keresztül a konfigurációs kiszolgáló frissítése lépéseiért lásd: [a konfigurációs kiszolgáló frissítése](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). A Site Recovery minden összetevőjét frissítése részletes utasításokért tekintse meg a [Itt](https://aka.ms/asr_how_to_upgrade).
-6. Honnan tölthetem le a konfigurációs kiszolgáló hozzáférési kódot?
+7. Honnan tölthetem le a konfigurációs kiszolgáló hozzáférési kódot?
 
     Tekintse meg [Ez a cikk](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) töltheti le a hozzáférési kódot.
-7. Módosíthatja a jelszavát?
+8. Módosíthatja a jelszavát?
 
     **Nem**, Ön **erősen javasoljuk, hogy módosítsa a jelszót** konfigurációs kiszolgáló. A jelszó módosítása működésképtelenné válik a védett gépek replikálását, és a kritikus állapot vezet.
-8. Honnan tölthetem le tároló regisztrációs kulcsokat?
+9. Honnan tölthetem le tároló regisztrációs kulcsokat?
 
     Az a **Recovery Services-tároló**, **kezelése** > **Site Recovery-infrastruktúra** > **konfigurációskiszolgálók**. Válassza ki a kiszolgálók **regisztrációs kulcs letöltése** töltheti le a tároló hitelesítőadat-fájlja.
-9. Klónozza a meglévő konfigurációs kiszolgáló és replikálás előkészítését használni?
+10. Klónozza a meglévő konfigurációs kiszolgáló és replikálás előkészítését használni?
 
     **Nem**, klónozott konfigurációs kiszolgáló összetevő nem támogatott.
 
-10. Módosíthatom a konfigurációs kiszolgáló IP-cím?
+11. Módosíthatom a konfigurációs kiszolgáló IP-cím?
 
     **Nem**, erősen ajánlott ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg, hogy minden IP-címet, és a konfigurációs kiszolgáló hozzárendelt statikus IP-címek és a nem DHCP IP-címek.
-11. Állítható be a konfigurációs kiszolgáló, az Azure-ban?
+12. Állítható be a konfigurációs kiszolgáló, az Azure-ban?
 
     A helyszíni környezetben, a közvetlen vonal-az-üzemel a Vcenter-kiszolgáló beállításához és adatok átvitel késések minimalizálása érdekében ajánlott. Konfigurációs kiszolgáló ütemezett biztonsági mentéseket elvégezhető [feladat-visszavétel célokra](vmware-azure-manage-configuration-server.md#failback-requirements).
 
 További gyakori kérdések a konfigurációs kiszolgálón, tekintse meg [dokumentációjában a konfigurációs kiszolgáló gyakori kérdésekre](vmware-azure-common-questions.md#configuration-server) .
 
-## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezés hibáinak elhárítása
+## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
 
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 

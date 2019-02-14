@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 9e257c14c952a9458bf6652ec20ef9216bcaaea4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ef044d5ccba706ebc0c7102414cb1e2b42b537cb
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091563"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242158"
 ---
 # <a name="apply-tag-and-its-default-value"></a>Címke és alapértelmezett címkeérték alkalmazása
 
@@ -51,10 +51,10 @@ A szabályzat paramétereit Azure CLI és Azure PowerShell segítségével megha
 
 [!code-json[parameters](../../../../policy-templates/samples/built-in-policy/apply-default-tag-value/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name (Név) |Típus |Mező |Leírás |
+|Name (Név) |Typo |Mező |Leírás |
 |---|---|---|---|
-|tagName |Karakterlánc |tags |A címke neve, például costCenter|
-|tagValue |Karakterlánc |tags |A címke értéke, például headquarter|
+|tagName |String |tags |A címke neve, például costCenter|
+|tagValue |String |tags |A címke értéke, például headquarter|
 
 Ha PowerShell vagy Azure CLI segítségével hoz létre egy hozzárendelést, a paraméterértékek átadhatók JSON-ként akár sztring formában, akár egy `-PolicyParameter` (PowerShell) vagy `--params` (Azure CLI) elemet használó fájlban.
 A PowerShell a `-PolicyParameterObject` elemet is támogatja, ehhez a parancsmagnak át kell adni egy Name/Value kivonattáblát, ahol **Name** a paraméter neve, **Value** pedig a hozzárendelés során átadott érték vagy értéktömb.
@@ -79,7 +79,7 @@ Ebben a példaparaméterben a _tagName_ a **costCenter**, a _tagValue_ pedig a *
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ### <a name="deploy-with-azure-powershell"></a>Üzembe helyezés az Azure PowerShell-lel
 

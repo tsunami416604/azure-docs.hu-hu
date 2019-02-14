@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/12/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5285e6d0aa6fe320ded729ad3b00389b27e0b9d9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: df69cb5cc2e369a5e1f372d49a821616bf624db9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859266"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237552"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és a kulcsok határok
 A LUIS több határ területeken rendelkezik. Az első a [modell határ](#model-boundaries), amely szabályozza a szándék fog vonatkozni, az entitások és az intelligens HANGFELISMERÉSI szolgáltatások. A második terület [kvótakorlát](#key-limits) kulcs típusa alapján. A határokat egy harmadik területe a [kombináció billentyűzet](#keyboard-controls) szabályozni a LUIS-webhelyet. A negyedik terület a [világ régió hozzárendelése](luis-reference-regions.md) webhely készítése a LUIS és a LUIS között [végpont](luis-glossary.md#endpoint) API-k. 
 
 
 ## <a name="model-boundaries"></a>Modell határok
+
+Ha az alkalmazás meghaladja a LUIS-modell korlátait és határokat, fontolja meg egy [LUIS dispatch](luis-concept-enterprise.md#dispatch-tool-and-model) alkalmazás vagy a használatával egy [LUIS tároló](luis-container-howto.md). 
 
 |Terület|Korlát|
 |--|:--|--|

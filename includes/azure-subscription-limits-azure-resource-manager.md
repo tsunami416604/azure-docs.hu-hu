@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: ef670c2dc701f888be3c7bb9a546c8a8a46f993a
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 4cc115d068736f61f9edb4ec609ac592607e7fa0
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458869"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246931"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ ms.locfileid: "49458869"
 
 <sup>2</sup>Ebbe a standard és a prémium szintű tárfiókok is beletartoznak. Ha több mint 200 tárfiókra van szüksége, nyújtson be egy kérést az [Azure ügyfélszolgálatán](https://azure.microsoft.com/support/faq/) keresztül. Az Azure Storage csapata kiértékeli az Ön vállalkozását, és jóváhagyhat legfeljebb 250 tárfiókot.
 
-<sup>3</sup>Az előfizetésenként alkalmazott címkék számának nincs korlátja. Az erőforrásonként vagy erőforráscsoportonként alkalmazható címkék száma legfeljebb 15 lehet. A Resource Manager csak akkor adja meg az előfizetésben használt [egyedi címkenevek és értékek listáját](/rest/api/resources/tags#Tags_List), ha a címkék száma nem több 10 000-nél. Ugyanakkor az erőforrásokat címke alapján akkor is meg lehet keresni, ha a címkék száma meghaladja a 10 000-et.  
+<sup>3</sup>Az előfizetésenként alkalmazott címkék számának nincs korlátja. Az erőforrásonként vagy erőforráscsoportonként alkalmazható címkék száma legfeljebb 15 lehet. A Resource Manager csak akkor adja meg az előfizetésben használt [egyedi címkenevek és értékek listáját](/rest/api/resources/tags), ha a címkék száma nem több 10 000-nél. Ugyanakkor az erőforrásokat címke alapján akkor is meg lehet keresni, ha a címkék száma meghaladja a 10 000-et.  
 
 <sup>4</sup>Ezek a funkciók már nem szükségesek az Azure-erőforráscsoportok és az Azure Resource Manager használatához.
 

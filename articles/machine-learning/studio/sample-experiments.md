@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 653b9aa0d6083436a394cf886f8c7d8d1ed2e2ab
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e62e5a1df2b5ad3099d2ef7e5dc33b0d11683988
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465520"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245932"
 ---
 # <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Az Azure Machine Learning Studio-kísérletek létrehozása munkapéldákból az Azure AI-katalógusban
 
-Ebből a cikkből megtudhatja, hogy teljesen új Machine Learning-kísérletek létrehozása helyett hogyan kezdhet hozzá a munkához az [Azure AI-katalógus](https://gallery.cortanaintelligence.com/) példakísérleteivel. A példák segítségével felépítheti saját Machine Learning-megoldását.
+Ebből a cikkből megtudhatja, hogy teljesen új Machine Learning-kísérletek létrehozása helyett hogyan kezdhet hozzá a munkához az [Azure AI-katalógus](https://gallery.azure.ai/) példakísérleteivel. A példák segítségével felépítheti saját Machine Learning-megoldását.
 
 A katalógusban szereplő példakísérleteket a Microsoft Azure Machine Learning csapata készítette, illetve a Machine Learning közösség osztotta meg. Továbbá kérdéseket tehet fel, illetve megjegyzéseket is fűzhet a kísérletekhez.
 
@@ -28,7 +28,7 @@ A katalógus használatának megismeréséhez tekintse meg az [Adatelemzés kezd
 
 
 ## <a name="find-an-experiment-to-copy-in-azure-ai-gallery"></a>Másolni kívánt kísérlet keresése az Azure AI-katalógusban
-Az elérhető kísérletek megtekintéséhez a [Gallery](https://gallery.cortanaintelligence.com/) megnyitása után kattintson az **Experiments** (Kísérletek) fülre az oldal tetején.
+Az elérhető kísérletek megtekintéséhez a [Gallery](https://gallery.azure.ai/) megnyitása után kattintson az **Experiments** (Kísérletek) fülre az oldal tetején.
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>A legújabb vagy a legnépszerűbb kísérletek megkeresése
 Ezen az oldalon megtekintheti a **Recently added** (Újonnan hozzáadott) kísérleteket, illetve lefelé görgetve a **What's popular** (Népszerű) kísérleteket vagy a legújabb **Popular Microsoft experiments** (Népszerű Microsoft kísérletek) kísérletek között böngészhet.

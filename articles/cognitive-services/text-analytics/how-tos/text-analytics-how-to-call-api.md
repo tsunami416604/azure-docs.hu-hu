@@ -3,19 +3,19 @@ title: Szövegelemzési API hívása
 titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan hívhat meg a Text Analytics REST API.
 services: cognitive-services
-author: ashmaka
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 60aa51e4dac796e034b7b0506be0e205951226de
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 52c5cb640bfb861fb2da52ee711fe3955a169bcf
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870775"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244028"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics REST API meghívása
 
@@ -30,9 +30,7 @@ Ne felejtse el, hogy Szövegelemzés állapotmentes-e így nincsenek adategység
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy **Text Analytics API-t** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. 
-
-Rendelkeznie kell a [végpontját és hozzáférési kulcsát](text-analytics-how-to-access-key.md) , amely jön létre, amikor regisztrál a Cognitive Services számára. 
+Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Text Analytics API-val és a [végpontját és hozzáférési kulcsát](text-analytics-how-to-access-key.md) , amely jön létre, amikor regisztrál a Cognitive Services számára. 
 
 <a name="json-schema"></a>
 

@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: ed6c21762fed331e2f11378ec9b6d91cba9bec11
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: 781a897c99a28fbd1b695876f477b140521068e3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251047"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244879"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Vertikális felskálázás az Azure DevTest Labs-infrastruktúra
 DevTest Labs megvalósítása nagyvállalati szintű, mielőtt nincsenek több fő döntési pontokat. A döntési pontokat magas szintű megismerése segít tervezési döntéseket a szervezete a jövőben. Azonban ezeket a pontokat kell tartalmaz vissza egy szervezet a koncepció igazolása elindítását. A kezdeti tervezésen növelheti az első három területek a következők:
@@ -66,4 +67,4 @@ A DevTest Labs megvalósíthatósági példa három elsődleges szerepkör megha
 - **DevTest Labs-felhasználó** – a DevTest Labs-felhasználó hozhat létre és felhasználását a virtuális gépek a tesztkörnyezetben. Ezek a személyek néhány minimális felügyeleti képességekkel rendelkeznek az általuk létrehozott virtuális gépeken (indítása/leállítása/delete/konfigurálja a virtuális gépek). A felhasználók nem tudja kezelni a más felhasználók virtuális gépeket.
 
 ## <a name="next-steps"></a>További lépések
-Ez a sorozat következő cikkében talál: [összehangolhatja a megvalósítását az Azure DevTest Labs szolgáltatásban](devtest-lab-guidance-orchestrate-implementation.md)
+Ez a sorozat következő cikkében talál: [Koordinálhatja az Azure DevTest Labs megvalósítása](devtest-lab-guidance-orchestrate-implementation.md)

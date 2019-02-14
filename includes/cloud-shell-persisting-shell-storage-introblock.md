@@ -4,12 +4,12 @@ ms.service: cloud-shell
 ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
-ms.openlocfilehash: a66f5ca9501d09f2ef89f421191f617c177e10eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e175f603e97ccf51e1e13d9c2fc42ba7ed1a475f
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52886251"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246921"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Az Azure Cloud Shellben fájlok megtartása
 A cloud Shell az Azure File storage segítségével a fájlok munkamenetek közötti megtartása használja. Az első indítás a Cloud Shell kéri, hogy társíthatja egy új vagy meglévő fájlmegosztást a fájlok munkamenetek közötti megtartása.
@@ -40,7 +40,7 @@ A speciális lehetőség használatával társíthatja a meglévő erőforrások
 A storage-telepítő használatával megjelenésekor válassza **speciális beállítások megjelenítése** további beállítások megtekintéséhez. A feltöltött tárolási lehetőségek szűrő helyileg redundáns tárolás (LRS), a georedundáns tárolás (GRS) és a zónaredundáns tárfiókok (ZRS). 
 
 > [!NOTE]
-> A GRS vagy ZRS tárfiókok használata akkor javasolt további rugalmasság a biztonsági fájlmegosztás. Milyen típusú redundancia a céljait és a díj szabályozó függ. [További információ az Azure-tárfiókok replikációjának lehetőségei](https://docs.microsoft.com/azure/storage/common/storage-redundancy#choosing-a-replication-option).
+> A GRS vagy ZRS tárfiókok használata akkor javasolt további rugalmasság a biztonsági fájlmegosztás. Milyen típusú redundancia a céljait és a díj szabályozó függ. [További információ az Azure-tárfiókok replikációjának lehetőségei](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
 
 ![Az erőforrás-csoport beállításai](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 

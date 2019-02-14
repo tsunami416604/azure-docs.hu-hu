@@ -11,12 +11,12 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 85d7286c1fd075da7034a2a43d46a158550d2fe9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: efdadd29c6fba4ed0a0f7f7df8d7956713d113ec
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247714"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245473"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Megtekintheti és terméken belüli felhasználói adatok törlése az Azure AI-katalógusban
 
@@ -45,7 +45,7 @@ A szerző azonosító az Azure AI-katalógusban való közzétételkor használt
 
 1.  Jelentkezzen be a [Azure AI katalógus](https://gallery.azure.ai/).
 2.  Kattintson a jobb felső sarokban, majd a fiók nevét a profillapján betölteni a profilképét.
-3.  Az URL-címet a címsorba jeleníti meg a alfanumerikus azonosító következő `authorId=`. Például ha az URL-címe: `https://gallery.cortanaintelligence.com/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+3.  Az URL-címet a címsorba jeleníti meg a alfanumerikus azonosító következő `authorId=`. Például ha az URL-címe: `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     Szerző azonosítója: `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 

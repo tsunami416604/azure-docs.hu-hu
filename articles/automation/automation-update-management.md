@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/28/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94171da3c60de3efc4e2a234494816899c3d2f05
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 0afb8a09fa9780755bcfeef678b76e176f11b348
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511853"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246034"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -600,6 +600,13 @@ Azonban az Update Management előfordulhat, hogy továbbra is jelenti, hogy a g�
 
 Frissítések besorolás szerint üzembe helyezése beépített a CentOS nem működik. Megfelelően telepíteni a frissítéseket a CentOS, válassza ki az összes besorolásokat frissítések alkalmazásához. A SUSE kiválasztásával *csak* más frissítéseket, a besorolás vonhat néhány biztonsági frissítések is, ha a biztonsági frissítések telepítve kapcsolódnak a zypper használatával (Csomagkezelő), vagy annak függőségeit először szükség. Ez a viselkedés zypper korlátozva. Bizonyos esetekben a szükséges futtassa újra a frissítések telepítését. Győződjön meg arról, hogy a frissítés naplóban.
 
+## <a name="remove-a-vm-for-update-management"></a>Az Update Management a virtuális gép eltávolítása
+
+Az Update Management egy virtuális gép eltávolítása:
+
+* A Log Analytics munkaterületén távolítsa el a virtuális gép számára a hatókör-konfigurációt a mentett keresés `MicrosoftDefaultScopeConfig-Updates`. Mentett keresések területen található **általános** a munkaterületén.
+* Távolítsa el a [Microsoft Monitoring agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a [Linuxhoz készült Log Analytics-ügynök](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+  
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
 Az Update Management hibaelhárítása kapcsolatban lásd: [az Update Management hibáinak elhárítása](troubleshoot/update-management.md)

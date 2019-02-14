@@ -1,25 +1,25 @@
 ---
 title: Managed Cache Service-alkalmazások a Redis - Azure-bA |} A Microsoft Docs
 description: Ismerje meg, hogyan telepítheti át a Managed Cache Service és a szerepköralapú gyorsítótár alkalmazások az Azure Cache redis
-services: azure-cache-for-redis
+services: cache
 documentationcenter: na
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: tysonn
 ms.assetid: 041f077b-8c8e-4d7c-a3fc-89d334ed70d6
 ms.service: cache
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: a98b6b426ee1bf9784394ce4a83dca83179f7c28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 116e54fd39af801cf8941a974da2b72c483097dc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110878"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237021"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Managed Cache Service szolgáltatásból át az Azure Cache redis
 Az alkalmazások, amelyek használják az Azure Managed Cache Service az Azure Cache redis migrálása az alkalmazását, az gyorsítótárazási alkalmazása által használt Managed Cache Service funkcióktól függően legfeljebb minimális változtatásokra is elvégezhető. Míg a API-k nem pontosan ugyanaz hasonló, és legfeljebb minimális változtatásokra nagy része a meglévő kódot, amely a gyorsítótár elérésére használja a Managed Cache Service szolgáltatáshoz felhasználhatók. Ez a cikk bemutatja, hogyan javíthatja a szükséges konfigurációs és alkalmazások áttelepítése a Managed Cache Service-alkalmazások Azure Cache a Redis használata módosítja, és bemutatja, hogyan Azure Cache redis funkcióit használható működésének megvalósítása a Managed Cache Service gyorsítótár.

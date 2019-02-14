@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 84860b5098e141bdfbd924d86836bc7b48b0ce8f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 97734ad6119e89c00634035b1646bc29ac6549bd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754217"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237857"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Az Azure-ban Linux rendszerű virtuális gépen a MongoDB, Express, AngularJS és Node.js (mean) készlet-verem létrehozása
 
@@ -134,7 +134,7 @@ A [MongoDB](http://www.mongodb.com) rugalmas, JSON-szerű dokumentumokban tárol
 
 6. Hozzon létre egy *Books* (Könyvek) nevű mappát, és adjon hozzá egy a webkiszolgáló konfigurációját tartalmazó, *server.js* nevű fájlt.
 
-    ```node.js
+    ```javascript
     var express = require('express');
     var bodyParser = require('body-parser');
     var app = express();
@@ -159,7 +159,7 @@ Az [Express](https://expressjs.com) egy minimális igényű és rugalmas Node.js
 
 2. A *Books* mappában hozzon létre egy *apps* (alkalmazások) nevű mappát, és adjon hozzá egy *routes.js* nevű fájlt, amelyben meg vannak határozva az Express-útvonalak.
 
-    ```node.js
+    ```javascript
     var Book = require('./models/book');
     module.exports = function(app) {
       app.get('/book', function(req, res) {
@@ -201,7 +201,7 @@ Az [Express](https://expressjs.com) egy minimális igényű és rugalmas Node.js
 
 3. Az *apps* mappában hozzon létre egy *models* (modellek) nevű mappát, és adjon hozzá egy *book.js* nevű fájlt, amelyben meg van határozva a könyvmodell.  
 
-    ```node.js
+    ```javascript
     var mongoose = require('mongoose');
     var dbHost = 'mongodb://localhost:27017/test';
     mongoose.connect(dbHost);
@@ -223,7 +223,7 @@ Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinam
 
 1. Módosítsa a könyvtár biztonsági mentésének helyét a *Books* (`cd ../..`) mappára, majd hozzon létre egy *public* (nyilvános) nevű mappát, és adjon hozzá egy *script.js* nevű fájlt, amelyben meg van határozva a vezérlő konfigurációja.
 
-    ```node.js
+    ```javascript
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http) {
       $http( {

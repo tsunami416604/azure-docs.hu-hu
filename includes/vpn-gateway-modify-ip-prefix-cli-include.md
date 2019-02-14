@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9b168231669c50c8f00d3527288fd03ab3bf9ce8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: HT
+ms.openlocfilehash: b381c5ad8fd81cd9b7411e1f4679b3f5214e6de9
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197516"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246173"
 ---
 ### <a name="noconnection"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása – nincs átjárókapcsolat
 
-Ha nincs átjárókapcsolata, és szeretne hozzáadni vagy eltávolítani IP-címelőtagokat, használja ugyanazt a parancsot, amellyel létrehozza a helyi hálózati átjárót: [az network local-gateway create](https://docs.microsoft.com/cli/azure/network/local-gateway#az_network_local_gateway_create). Ezzel a paranccsal emellett a VPN-eszközhöz tartozó átjárói IP-címet is frissítheti. Az aktuális beállítások felülírásakor a helyi hálózati átjáró meglévő nevét használja. Ha más nevet használ, új helyi hálózati átjárót hoz létre a meglévő felülírása helyett.
+Ha nincs átjárókapcsolata, és szeretne hozzáadni vagy eltávolítani IP-címelőtagokat, használja ugyanazt a parancsot, amellyel létrehozza a helyi hálózati átjárót: [az network local-gateway create](https://docs.microsoft.com/cli/azure/network/local-gateway). Ezzel a paranccsal emellett a VPN-eszközhöz tartozó átjárói IP-címet is frissítheti. Az aktuális beállítások felülírásakor a helyi hálózati átjáró meglévő nevét használja. Ha más nevet használ, új helyi hálózati átjárót hoz létre a meglévő felülírása helyett.
 
 Minden módosításkor az előtagok teljes listáját meg kell adnia, nem csak azokat, amelyeket módosítani kíván. Csak a megtartandó előtagokat adja meg. Ebben az esetben a 10.0.0.0/24 és a 20.0.0.0/24 előtagokat.
 
@@ -27,7 +27,7 @@ az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 
 
 ### <a name="withconnection"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása – létező átjárókapcsolat
 
-Ha van átjárókapcsolata és szeretne hozzáadni vagy eltávolítani IP-címelőtagokat, frissítheti az előtagokat az [az network local-gateway update](https://docs.microsoft.com/cli/azure/network/local-gateway#az_network_local_gateway_update) parancs használatával. Ez némi állásidőt jelent a VPN-kapcsolata számára. Mikor módosítja az IP-címelőtagokat, nem kell törölnie a VPN-átjárót.
+Ha van átjárókapcsolata és szeretne hozzáadni vagy eltávolítani IP-címelőtagokat, frissítheti az előtagokat az [az network local-gateway update](https://docs.microsoft.com/cli/azure/network/local-gateway) parancs használatával. Ez némi állásidőt jelent a VPN-kapcsolata számára. Mikor módosítja az IP-címelőtagokat, nem kell törölnie a VPN-átjárót.
 
 Minden módosításkor az előtagok teljes listáját meg kell adnia, nem csak azokat, amelyeket módosítani kíván. Ebben a példában a 10.0.0.0/24 és a 20.0.0.0/24 már léteznek, A 30.0.0.0/24 és a 40.0.0.0/24 előtagokat most adjuk hozzá, és frissítéskor megadjuk mind a 4 előtagot.
 

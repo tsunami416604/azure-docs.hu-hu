@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 8/13/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: db7ac84b5ce1f3ee2558bbc5ce14332aecd578c7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860643"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232892"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>A Bing Web Search API válasz struktúra és válasz típusa  
 
@@ -42,7 +42,7 @@ Ha egy keresési kérelmet küld a Bing Web Search, akkor adja vissza egy [ `Sea
 
 ## <a name="webpages-answer"></a>Weblapok válasz
 
-A [weblapok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) választ, amelyek a Bing webes keresés határozza meg, voltak-e a lekérdezés a mutató hivatkozások listáját tartalmazza. Minden egyes [weblap](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage) az a lista tartalmazza a lap neve, URL-címét, megjelenítési URL-címet, a tartalom és a Bing dátum rövid leírása a tartalom található.
+A [weblapok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) választ, amelyek a Bing webes keresés határozza meg, voltak-e a lekérdezés a mutató hivatkozások listáját tartalmazza. Minden egyes [weblap](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage) a lista tartalmazza: a lap neve, URL-címét, meg az URL-CÍMÉT, a tartalmat, és a Bing a tartalom található dátum rövid leírását.
 
 ```json
 {
@@ -91,7 +91,7 @@ A [lemezképek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-image
 }, ...
 ```
 
-A felhasználó eszközén, attól függően, általában jeleníti meg, a miniatűrök, a felhasználó megtekintheti a fennmaradó képek beállítással egy részét.
+A felhasználó eszközén, attól függően, általában jeleníti meg, a miniatűrök, melyre a felhasználó számára egy részhalmazát [oldalon keresztül](paging-webpages.md) a fennmaradó lemezképeket.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![List of thumbnail images](./media/cognitive-services-bing-web-api/bing-web-image-thumbnails.PNG)
@@ -314,7 +314,7 @@ Matematikai kifejezés tartalmazhatja a következő funkciókat:
 
 |Szimbólum|Leírás|
 |------------|-----------------|
-|Sqrt|Négyzetgyök|
+|Rendezés|Négyzetgyök|
 |Sin[x], Cos[x], Tan[x]<br />CSC [x], [x], mp Cot [x]|Trigonometriai függvények (argumentumokkal kifejezve)|
 |ArcSin[x], ArcCos[x], ArcTan[x]<br />ArcCsc [x], [x], ArcSec ArcCot [x]|Más néven inverz trigonometriai függvények (eredményt adó kifejezve)|
 |Exp [x], E ^ x|Exponenciális függvény|
@@ -428,6 +428,48 @@ Ha a Bing határozza meg, hogy a felhasználó lehet, hogy rendelkezik szánt m�
     }]
 }, ...
 ```
+
+A következő bemutatja, hogyan Bing használja-e a helyesírási javaslatot.
+
+![A Bing helyesírás-ellenőrzés javaslat példa](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
+
+## <a name="response-headers"></a>Válaszfejlécek
+
+A Bing Web Search API érkező válaszokat a következő fejléceket tartalmazza:
+
+|||
+|-|-|
+|`X-MSEdge-ClientID`|A Bing a felhasználó rendelkezik hozzárendelt egyedi azonosítója|
+|`BingAPIs-Market`|A piacon, amellyel a kérés teljesítéséhez|
+|`BingAPIs-TraceId`|A Bing API-kiszolgálón (a támogatási) a kérés a naplóbejegyzés|
+
+Különösen fontos megőrizni az ügyfél-Azonosítót, és küldje vissza a későbbi kérelmeket. Ha így tesz, a Keresés a környezetben, a keresési eredmények rangsorolása korábbi, és egységes felhasználói élmény is biztosítanak.
+
+Azonban amikor a Bing Web Search API hívása JavaScript, a böngésző beépített biztonsági funkciókat (CORS) előfordulhat, hogy megakadályozzák a fér hozzá a következő fejlécek értékeit.
+
+A fejlécek eléréséhez, hogy a Bing Web Search API-kérelem CORS proxyn keresztül. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+
+Egyszerű, hogy a CORS-proxy telepítéséhez a [oktatóanyag alkalmazása](tutorial-bing-web-search-single-page-app.md) eléréséhez a választható ügyféltanúsítvány-fejléceket. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Majd adja meg a következő parancsot a parancssorba.
+
+    npm install -g cors-proxy-server
+
+Ezután módosítsa a Bing Web Search API-végpont lévő a HTML-fájl:
+
+    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+
+Végül indítsa el a CORS-proxyt a következő paranccsal:
+
+    cors-proxy-server
+
+Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
+
+## <a name="response-headers-in-production"></a>Éles környezetben válaszfejlécek
+
+Az előző válasz leírt CORS proxy megközelítés a fejlesztés, tesztelés és tanulás a megfelelő.
+
+Éles környezetben egy kiszolgálóoldali parancsfájl ugyanabban a tartományban, mint a weblapot, a Bing Web Search API használó kell üzemelteti. Ez a szkript kell a weblap JavaScript-alapú kérésre API-hívásokat, és adja át az összes eredmény, beleértve a fejléceket, az ügyfélnek. A két erőforrás (oldal és parancsfájl) oszt meg egy eredeti adatforrást, mert a CORS nincs használatban, és a speciális fejlécek elérhetők a JavaScript a weblapon.
+
+Ez a megközelítés is védelmet nyújt az API-kulcsot a nyilvános való kitettség mivel csak a kiszolgálóoldali parancsprogram szükség van. A szkript egy másik módszer segítségével ellenőrizze, hogy a kérés engedélyezett.
 
 A következő bemutatja, hogyan Bing használja-e a helyesírási javaslatot.
 

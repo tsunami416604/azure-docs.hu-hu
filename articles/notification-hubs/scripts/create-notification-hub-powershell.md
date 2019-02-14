@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: f1408f7b6bdc0aa58d4e1ee43173a0bfbd02ab6a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d1d9628c073b298b6e01f044abfde8b1d40ece2d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120158"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245677"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>Az Azure notification hub létrehozása PowerShell használatával
 
 A PowerShell-példaszkript létrehoz egy minta Azure notification hub. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -38,7 +40,7 @@ A PowerShell-példaszkript létrehoz egy minta Azure notification hub.
 A példaszkript futtatása után a következő parancsot használhatja, ha az erőforráscsoport és az ahhoz kapcsolódó összes erőforrás eltávolítása:
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName
+Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>Szkript ismertetése
@@ -47,10 +49,10 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [Új-azurermnotificationhubsnamespace parancsmagok](/powershell/module//azurerm.notificationhubs/new-azurermnotificationhubsnamespace) | Az értesítési központ névterének hoz létre. |
-| [Új AzureRmNotificationHub](/powershell/module//azurerm.notificationhubs/new-azurermnotificationhubsnamespace) | Egy értesítési központ létrehozása. |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [New-AzNotificationHubsNamespace](/powershell/module//azurerm.notificationhubs/new-Aznotificationhubsnamespace) | Az értesítési központ névterének hoz létre. |
+| [New-AzNotificationHub](/powershell/module//azurerm.notificationhubs/new-Aznotificationhubsnamespace) | Egy értesítési központ létrehozása. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
 ## <a name="next-steps"></a>További lépések

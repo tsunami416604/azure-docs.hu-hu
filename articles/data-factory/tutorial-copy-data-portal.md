@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 5c7e6a4da9880677fbc4aad76b820ba596058bb6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1aca53c876b6cc982c141d74cdf727f9c966adfe
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025249"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233863"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Azure Data Factory segítségével
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének használatával hoz létre egy adat-előállítót. Az adat-előállító folyamata adatokat másol az Azure Blob Storage-ból egy SQL Database-be. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
@@ -36,7 +36,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 > * A folyamat és a tevékenységek futásának monitorozása
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * **Egy Azure Storage-fiók**. A Blob Storage lesz használatban *forrás*adattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-quickstart-create-account.md) lépéseit ismertető cikket.
 * **Azure SQL Database** Ezt az adatbázist használjuk *fogadó*adattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikket.
 
@@ -82,30 +82,30 @@ Készítse elő a Blob Storage-et és az SQL Database-t az oktatóanyaghoz a kö
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban. 
 
-1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza az **Új** > **Adatok + analitika** > **Adat-előállító** elemet. 
+1. Nyissa meg **Microsoft Edge** vagy **Google Chrome**. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
+2. A bal oldali menüben válassza ki a **erőforrás létrehozása** > **Analytics** > **adat-előállító**. 
   
    ![Új adat-előállító létrehozása](./media/tutorial-copy-data-portal/new-azure-data-factory-menu.png)
-1. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
+3. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
       
      ![Új adat-előállító](./media/tutorial-copy-data-portal/new-azure-data-factory.png)
  
    Az Azure data factory nevének *globálisan egyedinek* kell lennie. Ha a Név mezőnél az alábbi hibaüzenet jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialDataFactory). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
    ![Hibaüzenet](./media/tutorial-copy-data-portal/name-not-available-error.png)
-1. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
-1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
+4. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
+5. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
      
     a. Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot.
 
     b. Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét. 
          
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/resource-group-overview.md) ismertető cikket. 
-1. A **Verzió** résznél válassza a **V2** értéket.
-1. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (például az Azure Storage és az SQL Database) és számítási erőforrások (például az Azure HDInsight) más régiókban is lehetnek.
-1. Válassza a **Rögzítés az irányítópulton** lehetőséget. 
-1. Kattintson a **Létrehozás** gombra. 
-1. Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható: 
+6. A **Verzió** résznél válassza a **V2** értéket.
+7. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (például az Azure Storage és az SQL Database) és számítási erőforrások (például az Azure HDInsight) más régiókban is lehetnek.
+8. Válassza a **Rögzítés az irányítópulton** lehetőséget. 
+9. Kattintson a **Létrehozás** gombra. 
+10. Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható: 
 
     ![Adat-előállító üzembe helyezése csempe](media/tutorial-copy-data-portal/deploying-data-factory.png)
 1. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
@@ -127,7 +127,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
    ![Folyamat létrehozása](./media/tutorial-copy-data-portal/create-pipeline-tile.png)
 1. A folyamat **Általános** lapján, a **Név** részben adja a **CopyPipeline** nevet a folyamatnak.
 
-1. A **Tevékenységek** eszközkészletben bontsa ki az **Adatfolyam** kategóriát, majd húzza a **másolási** tevékenységet az eszközkészletből a folyamat tervezőfelületére. Adja meg a **CopyFromBlobToSql** értéket a **Név** mezőben.
+1. Az a **tevékenységek** eszköz bontsa ki a **andTransform áthelyezése** kategóriát, majd húzza a **adatok másolása** tevékenységet az eszközkészletből a folyamat tervezőfelületére. Adja meg a **CopyFromBlobToSql** értéket a **Név** mezőben.
 
     ![Másolási tevékenység](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
 

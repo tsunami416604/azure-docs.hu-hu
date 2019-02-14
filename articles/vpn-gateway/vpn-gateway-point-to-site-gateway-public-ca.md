@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: a5634054746d7e60aff154165f651f7c815c39a3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: ac1ae4125418a9c0b3e9587cd03a44e752ac8f82
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100822"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236957"
 ---
 # <a name="transition-from-self-signed-to-public-ca-certificates-for-p2s-gateways"></a>Áttérés a önaláírt a P2S-átjárók nyilvános hitelesítésszolgáltató tanúsítványai
 
@@ -23,7 +23,7 @@ Korábban az önaláírt tanúsítvány az átjáró szükséges minden 18 hóna
 Ez a változás által érintett csak a régebbi átjárók. Ha az átjáró tanúsítványt állítjuk át, kommunikációs vagy bejelentési kap az Azure Portalon. Ellenőrizheti, hogy ha az átjáró érinti ez a cikk lépéseit használva talál.
 
 >[!IMPORTANT]
->Az átállás van ütemezve. március 12,2019 kezdőár: 18:00 (UTC). Ha inkább egy másik időtartomány hozhat létre egy támogatási esetet. A következő windows kérhet:
+>Az átállás van ütemezve. március 12,2019 kezdőár: 18:00 (UTC). Ha inkább egy másik időtartomány hozhat létre egy támogatási esetet. Győződjön meg arról, és a kérés véglegesítése legalább 24 óra.  A következő windows kérhet:
 >
 >* A 25 február 06:00 (UTC)
 >* A 25 február 18:00 (UTC)

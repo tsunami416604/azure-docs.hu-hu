@@ -1,18 +1,18 @@
 ---
 title: Titkosítás inaktív állapotban, az Azure Cosmos DB-ben
 description: Ismerje meg, hogyan nyújt az Azure Cosmos DB a inaktív adatok titkosítását, és hogyan van megvalósítva.
-author: rafats
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 308e5f829425741b4fbef3eff6738f8c95dca97f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 07d5aa752d6613f6733a44c9b34e48f537eb67ae
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471266"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245235"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Adatok titkosítása az Azure Cosmos DB-ben 
 

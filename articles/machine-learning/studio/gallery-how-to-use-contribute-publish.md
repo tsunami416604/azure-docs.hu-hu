@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: b5a460f3449785721ac360ba398bc47d1945b954
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 48bb9b24901cd07891f3d52bcd916f95bc2801f4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497696"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244220"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Az Azure AI-katalógusban található erőforrások Fedezzen fel és
 
-**[Az Azure AI-katalógusban](http://gallery.cortanaintelligence.com)**  felderítéséhez közösségi helyet, és az Azure AI-megoldások megosztása beépített.
+**[Az Azure AI-katalógusban](http://gallery.azure.ai)**  felderítéséhez közösségi helyet, és az Azure AI-megoldások megosztása beépített.
 A gyűjtemény-erőforrások, amelyek segítségével a saját elemzési megoldásokat fejleszthet különböző rendelkezik.
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Mi található a katalógusban?

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: e691913daabb832b2a3b51dac5d4a5b0e1f53871
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f7558876391d25d2f6f3dd1fede4cb0d13d72bf0
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165076"
+ms.locfileid: "56236260"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Az Azure Machine Learning Studio-modell újratanítása
 A machine learning-modellek az Azure Machine Learning operacionalizálás folyamat részeként a modell betanított és mentve. Ezt követően használhatja azt egy prediktív webszolgáltatás létrehozására. A Web service a webhelyek, az irányítópultok és a mobile apps majd használhatók fel. 
@@ -53,8 +53,6 @@ A webszolgáltatás újratanítása:
 * A megőrzési webszolgáltatás üzembe helyezése
 * A kötegelt végrehajtási szolgáltatás kód használatával a modell újratanítása
 
-Az előző bemutató lépéseit, lásd: [Retrain Machine Learning-modellek](retrain-models-programmatically.md).
-
 > [!NOTE] 
 > Egy új webszolgáltatás üzembe helyezéséhez rendelkeznie megfelelő engedélyekkel, amelyhez az előfizetésben, a web Service szolgáltatásának telepítése. További információ: [egy webszolgáltatás, az Azure Machine Learning Web Services portál használata kezelheti](manage-new-webservice.md). 
 
@@ -74,8 +72,6 @@ Ha üzembe helyezte az új webszolgáltatások:
 * Frissítse a hivatkozást a `ilearner` a JSON-blob
 * A JSON importálhat egy webszolgáltatás-definíciójának
 * A Web service frissítése az új webszolgáltatás-definíciójának
-
-Az előző bemutató lépéseit, lásd: [a Machine Learning Management PowerShell-parancsmagok használatával új webszolgáltatás újratanítása](retrain-new-web-service-using-powershell.md).
 
 A folyamat a klasszikus webszolgáltatások átképezési beállításához az alábbi lépésekből áll:
 

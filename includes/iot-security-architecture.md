@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f2c7111373ac880d27298deb4fc919d797713f3e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 61fb8380bcad7a30d822ab610f52e8515477d683
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53995710"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56246915"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Eszközök internetes hálózata (IoT) biztonsági architektúra
 
@@ -224,7 +224,7 @@ Fenyegetések eszközöket és a helyszíni átjárók, valamint eszköz és a f
 
 | **Összetevő** | **Fenyegetés** | **Kockázatcsökkentés** | **Kockázat** | **Megvalósítása** |
 | --- | --- | --- | --- | --- |
-| Az IoT Hub eszköz |TID |(D) TLS (PSK/RSA) a forgalom titkosításához |Lehallgatást, vagy zavaró, az eszköz és az átjáró közötti kommunikáció |Biztonság, a protokoll szintjén. Egyéni protokollok, az kell, hogyan lehet megvédeni őket. A legtöbb esetben a kommunikáció történik az eszközről az IoT hub (eszköz kezdeményezi a kapcsolatot). |
+| Device IoT Hub |TID |(D) TLS (PSK/RSA) a forgalom titkosításához |Lehallgatást, vagy zavaró, az eszköz és az átjáró közötti kommunikáció |Biztonság, a protokoll szintjén. Egyéni protokollok, az kell, hogyan lehet megvédeni őket. A legtöbb esetben a kommunikáció történik az eszközről az IoT hub (eszköz kezdeményezi a kapcsolatot). |
 | Eszköz eszköz |TID |(D) TLS (PSK/RSA) a forgalom titkosításához. |Az eszközök között átvitt adatok olvasása. Az adatok illetéktelen módosítása. Az eszközt az új kapcsolatok terhelve. |Biztonsági a protokoll szintjén (mqtt-ről vagy AMQP vagy HTTP/CoAP. Egyéni protokollok, az kell, hogyan lehet megvédeni őket. A megoldás a szolgáltatásmegtagadási fenyegetések, hogy a felhő nebo Pole átjárón keresztül eszközök társviszonyt, azok csak act-ügyfélként a hálózat felé. A társviszony-létesítést követően kellene már felügyelt, az átjáró által a partnerek közötti közvetlen kapcsolat eredményezhet |
 | Külső entitás eszköz |TID |A külső entitás az eszköz erős párosítás |Az eszköz kapcsolat lehallgatást. Zavarja a folyamatot a kommunikációt az eszközzel |Biztonságosan párosítást a külső entitás az eszköz NFC/Bluetooth LE. A műveleti panelen az eszköz (fizikai) szabályozása |
 | Helyszíni átjáró felhőalapú átjáró |TID |TLS (PSK/RSA) a forgalom titkosításához. |Lehallgatást, vagy zavaró, az eszköz és az átjáró közötti kommunikáció |Biztonsági szint (mqtt-ről vagy AMQP vagy HTTP/CoAP) protokollt. Egyéni protokollok, az kell, hogyan lehet megvédeni őket. |

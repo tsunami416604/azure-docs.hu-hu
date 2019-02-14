@@ -12,13 +12,13 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/19/2018
-ms.openlocfilehash: d00909eed037e4d2d414ef3121ce11f5ca489736
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/12/2019
+ms.openlocfilehash: e16d68f8c30b54c24e091d1b0c7317bf74aadeba
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564765"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234577"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Gyors útmutató: Csatlakozás és adatok lekérdezése az Azure portal SQL-Lekérdezésszerkesztő használatával
 
@@ -28,7 +28,15 @@ Az SQL-Lekérdezésszerkesztő egy SQL-lekérdezések végrehajtása az Azure SQ
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+
+  || Önálló adatbázis |
+  |:--- |:--- |
+  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | 
+  || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | 
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
+  | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| 
+  |||
 
 > [!NOTE]
 > Győződjön meg arról, hogy a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás **ON** az SQL server Tűzfalbeállításaiban. Ezt a lehetőséget biztosít az SQL-lekérdezésszerkesztőnek az adatbázisokhoz és az adattárházakhoz.

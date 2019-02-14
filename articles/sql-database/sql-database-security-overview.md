@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: a3f47726b1776b260ff8cc5eac766c23053d4fd0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1a21ab5af8c0dc5fbbe2c1dbab8931bd903df4ff
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728402"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235988"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database biztonsági lehetőségeinek áttekintése
 
@@ -98,7 +98,7 @@ Fenyegetés-észlelési fokozza a naplózási szokatlan jelenség a vizsgálati 
 
 ### <a name="transport-layer-security-tls-encryption-in-transit"></a>Transport Layer Security (– az átvitel közbeni titkosítás) TLS
 
-Az SQL Database a mozgásban lévő adatok titkosításával védi a vásárlói adatokat [Transport Layer Security](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server).
+Az SQL Database a mozgásban lévő adatok titkosításával védi a vásárlói adatokat [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
 
 > [!IMPORTANT]
 > Az Azure SQL Database biztonsága ne sérüljön titkosítás (SSL/TLS) minden esetben minden kapcsolatot, amely biztosítja, hogy az összes adat titkosítva van "átvitel" az adatbázis és az ügyfél között. Ez történik, függetlenül a beállítás a **titkosítása** vagy **TrustServerCertificate** a kapcsolati karakterláncban.

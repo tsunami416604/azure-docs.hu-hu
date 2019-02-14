@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 43b482324f0244baf52edbb8989a56dd12833331
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 98cad0873c4ba687948dc404abc19655319bdc36
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104404"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232267"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 adatok offline másolásához az Azure Import/Export szolgáltatás használata
 Ebből a cikkből elsajátíthatja a hatalmas adatkészletek másolása (> 200 GB-os) az Azure Data Lake Storage Gen1 módszerrel offline másolásához, például a [Azure Import/Export szolgáltatás](../storage/common/storage-import-export-service.md). Pontosabban a fájl, használjuk példaként ebben a cikkben nem 339,420,860,416 bájt vagy a lemezen körülbelül 319 GB. Adjuk a fájl 319GB.tsv.
@@ -190,21 +190,24 @@ Ebben a szakaszban olyan biztosítunk, amelyek segítségével hozzon létre egy
 További információkért lásd: [adatok áthelyezése az Azure Storage-blobból az Azure Data Lake Storage Gen1 Azure Data Factory használatával](../data-factory/connector-azure-data-lake-store.md).
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>Hozza az adatfájlokat az Azure Data Lake Storage Gen1
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Hogy lépései egy fájlt, amely 319 GB volt, és úgy, hogy sikerült átvinni az Azure Import/Export szolgáltatás használatával érvénytelenítése azt le azokat a kisebb méretű fájlokat. Most, hogy az adatokat az Azure Data Lake Storage Gen1, hogy rekonstruálhassák a betűméretét az eredeti fájlt. Ehhez a következő Azure PowerShell-parancsmagok segítségével.
 
 ```
 # Login to our account
-Connect-AzureRmAccount
+Connect-AzAccount
 
 # List your subscriptions
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Switch to the subscription you want to work with
-Set-AzureRmContext -SubscriptionId
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+Set-AzContext -SubscriptionId
+Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
-Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
+Join-AzDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
 ```
 
 ## <a name="next-steps"></a>További lépések

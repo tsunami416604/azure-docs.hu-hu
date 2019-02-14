@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 7a136f34a7dd9fada23a4225b60223220c92c665
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a1a6b31c1500c51dbbc32683d9e0e911b60dcae4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440473"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246923"
 ---
 Szervezet rendelkezik a nagyméretű számítástechnikai igényeinek. Ezek a Big Compute számítási feladatok közé tartozik a mérnöki tervezés és elemzés, pénzügyi kockázatszámítások, képrenderelés, összetett modellezés, Monte Carlo-szimulációk és több. 
 
@@ -25,12 +25,12 @@ Az Azure-felhő használatával hatékonyan futtatni a nagy számítási igény�
     * Állítsa be a saját fürt környezetet az Azure-beli virtuális gépek vagy [a virtual machine scale sets](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). 
     * Átemelés és shift egy helyi fürtöt, vagy további kapacitás az Azure-ban új fürt üzembe helyezése. 
     * Vezető üzembe helyezése Azure Resource Manager-sablonok használatával [munkaterhelés kezelők](#workload-managers), infrastruktúra, és [alkalmazások](#hpc-applications). 
-    * Válasszon [HPC és GPU VM méretek](#hpc-and-gpu-sizes) , amelyek tartalmaznak speciális hardver- és hálózati kapcsolatok MPI vagy GPU számítási feladatokhoz. 
+    * Válasszon [HPC és GPU VM méretek](#hpc-and-gpu-vm-sizes) , amelyek tartalmaznak speciális hardver- és hálózati kapcsolatok MPI vagy GPU számítási feladatokhoz. 
     * Adjon hozzá [nagy teljesítményű tárolási](#hpc-storage) I/O-igényes számítási feladatokhoz.
 * **A hibrid megoldások**
     * Az Azure-infrastruktúrához ("adatlöket") csúcs számítási feladatok kiszervezéséhez a helyszíni megoldás bővítése
-    * A meglévő használata a felhőalapú számítási igény szerinti [munkaterhelés manager](#workload-manager).
-    * Kihasználhatja [HPC és GPU VM méretek](#hpc-and-gpu-sizes) MPI vagy GPU számítási feladatokhoz.
+    * A meglévő használata a felhőalapú számítási igény szerinti [munkaterhelés manager](#workload-managers).
+    * Kihasználhatja [HPC és GPU VM méretek](#hpc-and-gpu-vm-sizes) MPI vagy GPU számítási feladatokhoz.
 * **Big Compute-megoldások szolgáltatásként**
     * Fejleszthet egyéni Big Compute-megoldások és -munkafolyamatok [Azure CycleCloud](#azure-cyclecloud), [Azure Batch](#azure-batch), és a kapcsolódó [Azure-szolgáltatások](#related-azure-services).
     * A szállítókkal, mint az Azure-kompatibilis termékgondozó csoportja és a szimuláció megoldások futtatása [Altair](http://www.altair.com/), [átméretezése](https://www.rescale.com/azure/), és [Cycle Computing](https://cyclecomputing.com/) (mostantól [csatlakozott A Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).

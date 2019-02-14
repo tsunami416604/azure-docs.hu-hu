@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 69dd9374f32dbea7ab6f11beec0204ac26e299bc
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 92e5fb782eed3344a55178d6ba74dfd6d7b8cafd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104448"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235907"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok, az Azure-erőforrások üzembe helyezésekor
 
@@ -31,7 +31,9 @@ Kapcsolt sablonok használata esetén hozzon létre egy fő sablont, amely megka
 
 Foglalkozó oktatóanyagért lásd: [oktatóanyag: a csatolt Azure Resource Manager-sablonok létrehozása](./resource-manager-tutorial-create-linked-templates.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!NOTE]
+> Kapcsolt és beágyazott sablonok csak használhat [növekményes](deployment-modes.md) üzembe helyezési mód.
+>
 
 ## <a name="link-or-nest-a-template"></a>Hivatkozás, vagy egy sablon beágyazása
 
@@ -52,8 +54,6 @@ Egy másik sablonnal, vegyen fel egy **központi telepítések** erőforrás a f
 ```
 
 Ad meg a központi telepítési erőforrás tulajdonságainak függ attól, létrehozhatja, ha egy külső sablon akár egy beágyazott sablont, a fő sablont a beágyazási.
-
-Mindkét kapcsolt és beágyazott sablonok, csak használhat [növekményes](deployment-modes.md) üzembe helyezési mód.
 
 ### <a name="nested-template"></a>Beágyazott sablont
 

@@ -8,15 +8,15 @@ manager: pchoudh
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 35d447fb7024b8be0bd427305b9e43fa60b1a90d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 757ef07c1268cbf159ce98dfb8ba1980616e4a3a
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223187"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245133"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>A QnA Maker Tudásbázis megbízhatósági pontszám
 Ha egy felhasználó lekérdezése Tudásbázis van, a QnA Maker azokra adott válaszokat, és a egy magabiztossági pontszámot ad vissza. Ezt az értéket, hogy a válasz-e a megfelelő egyezik a megadott felhasználói lekérdezés magabiztosan jelzi. 
@@ -58,7 +58,7 @@ A küszöbérték kiválasztásakor tartsa szem előtt a pontosság és lefedett
 > A QnA Maker újabb verzióit közé tartozik a pontozási logikát, és hatással lehetnek a küszöbértéket. Frissíti a szolgáltatás bármikor ügyeljen arra, hogy tesztelése és finomhangolása a küszöbértéket, ha szükséges. Ellenőrizheti a kérdések és válaszok verziója [Itt](https://www.qnamaker.ai/UserSettings), és tekintse meg a legújabb frissítéseinek [Itt](../How-To/troubleshooting-runtime.md).
 
 ## <a name="improve-confidence-scores"></a>Megbízhatósági pontszámukat
-A megbízhatósági pontszám, egy felhasználó adott válaszban javítása érdekében adhat hozzá a felhasználó lekérdezése a Tudásbázis következő, egy másik kérdésre adott válasz. Is [word-átalakítások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) szinonimák hozzáadása a KB-ban keywords.
+A megbízhatósági pontszám, egy felhasználó adott válaszban javítása érdekében adhat hozzá a felhasználó lekérdezése a Tudásbázis következő, egy másik kérdésre adott válasz. Is használhatja kis-és [word-átalakítások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) szinonimák hozzáadása a KB-ban keywords.
 
 
 ## <a name="similar-confidence-scores"></a>Hasonló megbízhatósági pontszámok
@@ -66,8 +66,9 @@ Ha a többszöri válaszadást hasonló konfidencia-pontszám, valószínű, hog
 
 
 ## <a name="confidence-score-differences"></a>Megbízhatósági pontszám különbségek
-A megbízhatósági pontszám válasz változhatnak elhanyagolható mértékben a tesztelés és a Tudásbázis közzétett verziója között akkor is, ha a tartalom azonos. Ennek oka az, a teszt- és a közzétett Tudásbázis tartalmát a különböző Azure Search-indexek találhatók.
-Itt látható a [közzététele](../How-To/publish-knowledge-base.md) művelet működését.
+A megbízhatósági pontszám válasz változhatnak elhanyagolható mértékben a tesztelés és a Tudásbázis közzétett verziója között akkor is, ha a tartalom azonos. Ennek oka az, a teszt- és a közzétett Tudásbázis tartalmát a különböző Azure Search-indexek találhatók. Tudásbázis közzététele, amikor a Tudásbázis kérdés és válasz tartalma áthelyezi a teszt indexből egy éles indexet az Azure Search szolgáltatásban. Tekintse meg a [közzététele](../How-To/publish-knowledge-base.md) művelet működését.
+
+Ha például egy Tudásbázis különböző régiókban, minden régióban használja a saját Azure Search-index. Különböző indexekkel történik, mert a pontszámok nem pontosan ugyanaz lesz. 
 
 
 ## <a name="no-match-found"></a>Nincs találat.

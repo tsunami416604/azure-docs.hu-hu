@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 14c5a9a5d9e3bd71ca1fdaf3545af3e74b3973c2
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: aa334f88d04bb30ce01fe12fecb3aac3c9cd572d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100628"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237417"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -208,7 +208,7 @@ Logikai operátorok ágyazhatja be. A következő példa bemutatja egy **nem** m
 
 ### <a name="conditions"></a>Feltételek
 
-A feltétel-e egy **mező** megfelel bizonyos feltételeknek. A támogatott feltételek a következők:
+A feltétel-e egy **mező** vagy a **érték** hozzáférő megfelel bizonyos feltételeknek. A támogatott feltételek a következők:
 
 - `"equals": "value"`
 - `"notEquals": "value"`
@@ -252,7 +252,53 @@ A következő mezők támogatottak:
   - Ez a szintaxis szögletes zárójelet, amelyek adott időszakban tartalmaznak a címkenevek támogatja.
   - Ahol **\<tagName\>** feltételét ellenőrzése a címke neve.
   - Példa: `tags[Acct.CostCenter]` ahol **Acct.CostCenter** a címke neve.
+
 - vlastnost aliasok -, lásd: [aliasok](#aliases).
+
+### <a name="value"></a>Érték
+
+Feltételek is alakítható használatával **érték**. **érték** feltételek alapján ellenőrzi [paraméterek](#parameters), [sablonfüggvények támogatott](#policy-functions), vagy literálok lehetnek.
+**érték** van párosítva bármely támogatott [feltétel](#conditions).
+
+#### <a name="value-examples"></a>Érték példák
+
+Ez a házirend a szabály példa **érték** összehasonlítására eredményét a `resourceGroup()` függvény és a visszaadott **neve** tulajdonságát egy **például** feltétele`*netrg`. A szabály letiltja a nem az összes erőforrást a `Microsoft.Network/*` **típus** bármely kifejezésre végződő nevű erőforráscsoport `*netrg`.
+
+```json
+{
+    "if": {
+        "allOf": [{
+                "value": "[resourceGroup().name]",
+                "like": "*netrg"
+            },
+            {
+                "field": "type",
+                "notLike": "Microsoft.Network/*"
+            }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
+Ez a házirend a szabály példa **érték** ellenőrizheti, ha az eredmény több beágyazott függvények **egyenlő** `true`. A szabály letiltja a bármely erőforrás, amely nem rendelkezik legalább három címkék.
+
+```json
+{
+    "mode": "indexed",
+    "policyRule": {
+        "if": {
+            "value": "[less(length(field('tags')), 3)]",
+            "equals": true
+        },
+        "then": {
+            "effect": "deny"
+        }
+    }
+}
+```
 
 ### <a name="effect"></a>Következmény
 
@@ -295,12 +341,15 @@ Minden egyes hatás, értékelési, tulajdonságokat és példákat sorrendje a 
 
 ### <a name="policy-functions"></a>A házirend-funkciók
 
-Több [Resource Manager-sablonfüggvények](../../../azure-resource-manager/resource-group-template-functions.md) házirendszabály belül használható. A jelenleg támogatott funkciók a következők:
+Az alábbi üzembe helyezési és erőforrás-funkciók, kivéve az összes [Resource Manager-sablonfüggvények](../../../azure-resource-manager/resource-group-template-functions.md) házirendszabály belül használhatók:
 
-- [paraméterek](../../../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
-- [concat](../../../azure-resource-manager/resource-group-template-functions-array.md#concat)
-- [resourceGroup](../../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
-- [előfizetést](../../../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+- copyIndex()
+- Deployment()
+- list*
+- Providers()
+- Reference()
+- resourceId()
+- variables()
 
 Ezenkívül a `field` funkció érhető el a szabályzat előírásainak. `field` elsősorban az **AuditIfNotExists** és **DeployIfNotExists** referencia mezők, a rendszer kiértékelt erőforrás. Ezt használhatja például látható a [DeployIfNotExists példa](effects.md#deployifnotexists-example).
 

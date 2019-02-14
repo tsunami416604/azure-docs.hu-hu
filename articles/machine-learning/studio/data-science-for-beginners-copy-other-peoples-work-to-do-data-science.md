@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/05/2018
-ms.openlocfilehash: 69d3e02ca8d3f020a50b81785c58a3f5a42ce4b0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 194f92b84b17fc2f2c9bc8f3aca6f6ad05f65d30
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492997"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56241444"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Más emberek munkájának lemásolása az adatelemzéshez
 ## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Adatelemzés kezdőknek sorozat
@@ -52,7 +52,7 @@ A kereskedelmi titkok, az adatelemzés egyik hamarosan más személyeknek az Ön
 
 A Microsoft rendelkezik egy felhőalapú szolgáltatás nevű [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) , hogy nyugodtan meghívhatjuk ingyenesen kipróbálható. Is tartalmaz a munkaterület kísérletezhet a különböző gépi tanulási algoritmusok és azokat, ha a megoldás dolgozott ki van, webszolgáltatásként is elindíthatja.
 
-Ez a szolgáltatás részeként valami nevű a  **[Azure AI-katalógusban](https://gallery.cortanaintelligence.com/)**. Erőforrások, köztük az Azure Machine Learning-kísérletek, vagy a modellek, amelyek személyek beépített és mások számára is viszonyított gyűjteményét tartalmazza. Ezek a kísérletek módon egy nagyszerű gondolkodási és mások számára a saját megoldások a kezdéshez bonyolult feladatát. Mindenki az Üdvözöljük, böngésszen.
+Ez a szolgáltatás részeként valami nevű a  **[Azure AI-katalógusban](https://gallery.azure.ai/)**. Erőforrások, köztük az Azure Machine Learning-kísérletek, vagy a modellek, amelyek személyek beépített és mások számára is viszonyított gyűjteményét tartalmazza. Ezek a kísérletek módon egy nagyszerű gondolkodási és mások számára a saját megoldások a kezdéshez bonyolult feladatát. Mindenki az Üdvözöljük, böngésszen.
 
 ![Azure AI katalógus](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -82,11 +82,11 @@ Ide kattintva meg, amely és tart velem a megfelelő **Azure Machine Learning St
 És most már van egy kiindulási pont. Is cserélhetők fel, a saját adataikat, és hajtsa végre a saját a modell finomhangolása. Ezáltal me egy Futtatás kezdete, és lehetővé teszi számomra, akik igazán ismeri a mit tesznek a munkahelyi épülnek.
 
 ## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Bemutatják a machine learning-módszerekkel kísérletek keresése
-Vannak más, a kísérletek a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com) , amely kifejezetten az új, az adatelemzés számára gyakorlati példákat biztosítanak is biztosított. Például van egy kísérlet a katalógus, amely bemutatja, hogyan legyen kezelve a hiányzó értékeket ([hiányzó kezelésére vonatkozó metódusokat](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)). Üres értékek helyettesítik 15 különböző módokon végigvezeti, és Ryan crawcour az egyes módszerek és a használati esetek előnyeivel.
+Vannak más, a kísérletek a [Azure AI-katalógusban](https://gallery.azure.ai) , amely kifejezetten az új, az adatelemzés számára gyakorlati példákat biztosítanak is biztosított. Például van egy kísérlet a katalógus, amely bemutatja, hogyan legyen kezelve a hiányzó értékeket ([hiányzó kezelésére vonatkozó metódusokat](https://gallery.azure.ai/Experiment/Methods-for-handling-missing-values-1)). Üres értékek helyettesítik 15 különböző módokon végigvezeti, és Ryan crawcour az egyes módszerek és a használati esetek előnyeivel.
 
 ![Katalógus kísérletek nyissa meg a Machine Learning Studio - módszerek a hiányzó értékek](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-[Az Azure AI-katalógusban](https://gallery.cortanaintelligence.com) olyan hely, használhatja a saját megoldások kiindulási pontként működő kísérleteket szeretne keresni.
+[Az Azure AI-katalógusban](https://gallery.azure.ai) olyan hely, használhatja a saját megoldások kiindulási pontként működő kísérleteket szeretne keresni.
 
 Mindenképpen tekintse meg a "Data Science a kezdők" a Microsoft Azure Machine Learning más videókat.
 

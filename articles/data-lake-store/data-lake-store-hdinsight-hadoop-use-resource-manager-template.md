@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5b98513625a6179585601320d45996396fca7207
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e08e7ae0a97b206a692dd47e91c4c94847cb9833
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035903"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235172"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Hozzon létre egy HDInsight-fürtöt az Azure Data Lake Storage Gen1 Azure Resource Manager-sablon használatával
 > [!div class="op_single_selector"]
@@ -43,6 +43,9 @@ Az alábbiakban néhány HDInsight használata a Data Lake Storage Gen1 fontos s
 Ez a cikk a Data Lake Storage Gen1 Hadoop-fürt kiegészítő tárolóként kiépítve. A Hadoop-fürt létrehozása a Data Lake Storage Gen1 alapértelmezett tárolóként útmutatásért lásd: [egy HDInsight-fürt létrehozása a Data Lake Storage Gen1 az Azure Portal használatával](data-lake-store-hdinsight-hadoop-use-portal.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
@@ -58,13 +61,13 @@ A fent említett hivatkozás webhelyen található utasításokat a PowerShell s
 
 ```
 # Log in to your Azure account
-Connect-AzureRmAccount
+Connect-AzAccount
 
 # List all the subscriptions associated to your account
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Select a subscription
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 A sablon üzembe helyezi ezeket erőforrástípusok:

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 40a43fd8ea1f47b564d0c0ee2b5e67fd011f2ff9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7ad5f22b0604cb9de38f7990c88d760df97098d9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895975"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235835"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **VMware**: A virtuális gépek áttelepítését tervezi verziójú vCenter Servernek egy 5.5-ös, 6.0-s vagy 6.5-ös kell felügyelnie. Emellett szükség egy ESXi gazdagépet verziójú 5.5-ös vagy újabb, a gyűjtő virtuális gép üzembe helyezéséhez.
+- **VMware**: A virtuális gépek áttelepítését tervezi verziójú vCenter Servernek egy 5.5-ös, 6.0-s, 6.5-ös vagy 6.7 kell felügyelnie. Emellett szükség egy ESXi gazdagépet verziójú 5.5-ös vagy újabb, a gyűjtő virtuális gép üzembe helyezéséhez.
 - **vCenter Server-fiók**: A vCenter Server eléréséhez egy csak olvasható fiókra van szükség. Az Azure Migrate ezt a fiókot használja a helyszíni virtuális gépek felderítéséhez.
 - **Engedélyek**: A vCenter-kiszolgáló, a virtuális gép létrehozása a fájl importálásával engedélyre van szükségük. OVA formátumot.
 
@@ -270,10 +270,10 @@ A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virt
    **Az adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
    --- | ---
    0%–20% | 1 csillag
-   21%-40% | 2 csillag
-   41%-60% | 3 csillag
-   61%-80% | 4 csillag
-   81%-100% | 5 csillag
+   21%–40% | 2 csillag
+   41%–60% | 3 csillag
+   61%–80% | 4 csillag
+   81%–100% | 5 csillag
 
 Az értékelésekben a következő okok miatt nem lehet elérhető az összes adatpont:
 

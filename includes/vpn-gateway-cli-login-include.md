@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e3961878663a26d721478effc01d968e21e34c18
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 74d7bd087df4b00c0bafb5ec33fbbdfa5c57b379
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47020795"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246929"
 ---
-Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/#login) paranccsal, és kövesse a képernyőn látható utasításokat. Bejelentkezéssel kapcsolatos további információkért lásd: [Azure CLI használatának első lépései](/cli/azure/get-started-with-azure-cli).
+Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/) paranccsal, és kövesse a képernyőn látható utasításokat. További információt a bejelentkezésről az [Azure CLI használatának első lépéseit](/cli/azure/get-started-with-azure-cli) ismertető cikkben talál.
 
 ```azurecli
 az login

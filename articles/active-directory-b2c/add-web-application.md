@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: c20f455a0a325dadd3eeeb77dea7026de4834c56
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 4522914f249413300ffa5bb1545d840711777bff
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757653"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235914"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>A webes API-alkalmazás az Azure Active Directory B2C-bérlő hozzáadása
 
@@ -38,20 +38,20 @@ Hatókört biztosít a védett erőforrásokhoz való hozzáférés szabályozá
 
 1. Válassza ki **alkalmazások**, majd válassza ki *webapi1*.
 2. Válassza ki **közzétett hatókörök**.
-3. A **hatókör**, adja meg `Hello.Read`, és adja meg a leírást `Read access to hello`.
-4. A **hatókör**, adja meg `Hello.Write`, és adja meg a leírást `Write access to hello`.
+3. A **hatókör**, adja meg `Read`, és adja meg a leírást `Read access to the application`.
+4. A **hatókör**, adja meg `Write`, és adja meg a leírást `Write access to the application`.
 5. Kattintson a **Save** (Mentés) gombra.
 
 A közzétett hatókörök ügyfél megadására is használható alkalmazás számára a webes API-t.
 
 ## <a name="grant-permissions"></a>Engedélyek megadása
 
-Egy védett webes API hívása egy alkalmazásból, az alkalmazásengedélyeket az API-nak kell. Az előfeltételnek számító oktatóanyagot hozott létre egy webalkalmazást az Azure AD B2C nevű *webapp1*. Ez az alkalmazás használhatja a webes API meghívásához.
+Egy védett webes API hívása egy alkalmazásból, az alkalmazásengedélyeket az API-nak kell. Ha például a [oktatóanyag: Alkalmazás regisztrálása az Azure Active Directory B2C](tutorial-register-applications.md), egy webalkalmazás jön létre az Azure AD B2C nevű *webapp1*. Ez az alkalmazás használhatja a webes API meghívásához.
 
 1. Válassza ki **alkalmazások**, és válassza ki a webes alkalmazást.
 2. Válassza ki **API-hozzáférés**, majd válassza ki **Hozzáadás**.
 3. Az a **API kiválasztása** legördülő menüben válasszon ki *webapi1*.
-4. Az a **hatókörök kiválasztása** legördülő menüben válasszon ki a **Hello.Read** és **Hello.Write** , amelyet korábban megadott hatókörök.
+4. Az a **hatókörök kiválasztása** legördülő menüben válasszon ki a **olvasási** és **írási** , amelyet korábban megadott hatókörök.
 5. Kattintson az **OK** gombra.
 
 Az alkalmazás regisztrálva van a védett webes API meghívásához. Egy felhasználó hitelesíti magát, az Azure AD B2C használni az alkalmazást. Az alkalmazás Azure AD B2C-vel hozzáférni a védett webes API-engedélyek kapja.

@@ -1,22 +1,22 @@
 ---
-title: Útmutató a kulcsfontosságú kifejezések kinyerése a Text Analytics REST API (Microsoft vonatkozó Cognitive Services az Azure-ban) |} A Microsoft Docs
-description: Hogyan kinyerheti a kulcsfontosságú kifejezéseket, a Text Analytics REST API használatával a Microsoft Cognitive Services, Azure-ban az bemutató oktatóanyag.
+title: Kulcskifejezések kinyerése a Text Analytics REST API használatával |} A Microsoft Docs
+description: Hogyan kinyerheti a kulcsfontosságú kifejezéseket, az Azure Cognitive services Text Analytics REST API használatával.
 services: cognitive-services
-author: HeidiSteen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: d6e3223b4f7931f250e422f1f30edcb375407c8c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: bbf72847dd9d9a29bf1f2fa0574b83194d07a5c6
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865700"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245609"
 ---
-# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Példa: Hogyan kinyerheti a kulcsfontosságú kifejezéseket, a Szövegelemzés
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: Hogyan kinyerheti a kulcsfontosságú kifejezéseket, Szövegelemzés használata
 
 A [Key Phrase Extraction API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) strukturálatlan szöveget értékel ki és minden JSON-dokumentumra visszaadja a kulcsszavak listáját. 
 
@@ -29,13 +29,13 @@ Jelenleg a Key Phrase Extraction az angol, német, spanyol és japán nyelvet t�
 
 ## <a name="preparation"></a>Előkészítés
 
-A kulcsszókeresés akkor működik a legjobban, ha nagyobb méretű szövegen dolgozhat. Ez ellentétes a hangulatelemzéssel, amelyik pedig a kisebb szövegekre működik jobban. A legjobb eredmény elérése érdekében célszerű a bemenetet ennek megfelelően átszervezni.
+Kulcskifejezések kinyerése akkor működik a legjobban, amikor nagyobb mennyiségű dolgozhatnak szöveg engedélyezi azt. Ez a ellentétes a hangulatelemzés, melyik teljesít jobban a szöveg kisebb mennyiségű. A legjobb eredmény elérése érdekében célszerű a bemenetet ennek megfelelően átszervezni.
 
 A JSON-dokumentumnak ilyen formátumban kell lennie: azonosító, szöveg, nyelv
 
 A dokumentum méretének 5000 karakter alatt kell maradnia, és legfeljebb 1000 elem (azonosító) lehet egy kollekcióban. A kollekció elküldése a kérelem törzsében történik. A következő példa egy kulcsszókeresésre beküldhető szöveget mutat be.
 
-```
+```json
     {
         "documents": [
             {
@@ -82,7 +82,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
+## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
 
 Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
 
@@ -94,9 +94,9 @@ Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal �
 
 A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
-Egy példa a kulcsszókeresés eredményére a következő:
+Itt látható egy példa a kimenetre, a kulcsszókeresés:
 
-```
+```json
     "documents": [
         {
             "keyPhrases": [

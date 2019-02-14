@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: 7a25686ffa80b831e5d459a8795595a00f869fda
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997592"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234794"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók az Azure monitorban
 Az egyéni naplókat adatforrás az Azure Monitor lehetővé teszi, hogy események gyűjtését a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba. Követően az adatok elemzése az egyes mezők a lekérdezéseiben, vagy az adatokat nyerhet ki az egyes mezők a gyűjtés során.
@@ -43,7 +43,11 @@ A naplófájlok gyűjtendő egyeznie kell a következő feltételeknek.
 >
 
 >[!NOTE]
-> Legfeljebb 500 egyéni naplókat per Log Analytics-munkaterület is létrehozható. 
+> Log Analytics-munkaterület az alábbi korlátozások támogatja:
+> 
+> * Csak 500 egyéni naplók hozható létre.
+> * Egy táblázat csak legfeljebb 500 oszlopok támogatja. 
+> * Az oszlop nevét a maximális karakterszámot: 500. 
 >
 
 ## <a name="defining-a-custom-log"></a>Egyéni napló meghatározása

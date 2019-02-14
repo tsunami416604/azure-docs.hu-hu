@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 5eecd750642610737d346c5c270349e285106e95
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a73dab8a0df642e439e8519c404423c6689418f5
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820436"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236974"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -253,3 +253,6 @@ Törölje manuálisan a visszaállítási pontok gyűjteményt, amely miatt a z�
 
 5. Kattintson a **törlése**, megtisztítani a visszaállításipont-gyűjtemény.
 6. Próbálja megismételni a biztonsági mentési műveletet.
+
+> [!NOTE]
+ >Ha nagy az erőforrás (RP gyűjtéséről) a sikertelen, és visszaállítási pontokat, majd törlése ugyanaz a portálról száma előfordulhat, hogy az időtúllépés. Ez egy ismert CRP-hiba, ahol minden visszaállítási pont nem törlődnek a meghatározott idő alatt, a művelet időkorlátja lejár; a a törlési művelettel azonban általában sikeres 2 vagy 3 próbálkozás után.

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 6100a77d3c0bd1ac5e012651f1e7d359c4c67443
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 84bed7031307316545cc8e468196c6b12cde7bb7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954453"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237061"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight fürtök létrehozása az Azure Data Lake Storage Gen1 alapértelmezett tárolóként PowerShell-lel
 
@@ -39,12 +39,14 @@ HDInsight Data Lake Storage Gen1 dolgozhat a PowerShell-lel konfigurálásához 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ez az oktatóanyag elkezdéséhez győződjön meg arról, hogy megfelel-e az alábbi követelményeknek:
 
-* **Azure-előfizetés**: Ugrás [lekérése az Azure ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure PowerShell 1.0-ás vagy újabb**: lásd: [telepítése és konfigurálása PowerShell](/powershell/azure/overview).
-* **Windows Software Development Kit (SDK)**: telepítse a Windows SDK-t, lépjen a [letölti és a Windows 10-es eszközök](https://dev.windows.com/downloads). Az SDK segítségével hozzon létre egy biztonsági tanúsítványt.
-* **Az Azure Active Directory egyszerű szolgáltatás**: Ez az oktatóanyag leírja, hogyan hozhat létre egy egyszerű szolgáltatást az Azure Active Directoryban (Azure AD). Azonban egy szolgáltatásnév létrehozásához, hogy Azure AD-rendszergazda kell lennie. Ha Ön rendszergazda, kihagyhatja ezt az előfeltételt, és folytassa az oktatóanyagot.
+* **Azure-előfizetés**: Lépjen a [lekérése az Azure ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure PowerShell 1.0-ás vagy újabb**: Lásd: [telepítése és konfigurálása PowerShell](/powershell/azure/overview).
+* **Windows szoftverfejlesztői készlet (SDK)**: Telepítse a Windows SDK-t, lépjen a [letölti és a Windows 10-es eszközök](https://dev.windows.com/downloads). Az SDK segítségével hozzon létre egy biztonsági tanúsítványt.
+* **Az Azure Active Directory egyszerű szolgáltatás**: Ez az oktatóanyag leírja, hogyan hozhat létre egyszerű szolgáltatást az Azure Active Directoryban (Azure AD). Azonban egy szolgáltatásnév létrehozásához, hogy Azure AD-rendszergazda kell lennie. Ha Ön rendszergazda, kihagyhatja ezt az előfeltételt, és folytassa az oktatóanyagot.
 
     >[!NOTE]
     >Létrehozhat egy szolgáltatás egyszerű csak akkor, ha az Azure AD-rendszergazdaként. Az Azure AD-rendszergazda kell egy egyszerű szolgáltatás létrehozása a Data Lake Storage Gen1 egy HDInsight-fürt létrehozása előtt. Az egyszerű szolgáltatás léteznie kell egy tanúsítványt, az ismertetett módon [egyszerű szolgáltatás létrehozása tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).
@@ -57,25 +59,25 @@ Hozzon létre egy Data Lake Storage Gen1 fiókot, tegye a következőket:
 1. Az asztalon nyissa meg egy PowerShell-ablakot, és adja meg az alábbi kódrészletek. Amikor a rendszer kéri, jelentkezzen be, jelentkezzen be az előfizetés adminisztrátorainak vagy tulajdonosok egyikeként. 
 
         # Sign in to your Azure account
-        Connect-AzureRmAccount
+        Connect-AzAccount
 
         # List all the subscriptions associated to your account
-        Get-AzureRmSubscription
+        Get-AzSubscription
 
         # Select a subscription
-        Set-AzureRmContext -SubscriptionId <subscription ID>
+        Set-AzContext -SubscriptionId <subscription ID>
 
         # Register for Data Lake Storage Gen1
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Ha a Data Lake Storage Gen1 erőforrás-szolgáltató regisztrálása és az alábbihoz hasonló hibaüzenetet `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`, az előfizetés nem lehet a Data Lake Storage Gen1 szerepel az engedélyezési listán. Ahhoz, hogy az Azure-előfizetését a Data Lake Storage Gen1, kövesse a [használatának első lépései az Azure Data Lake Storage Gen1 az Azure Portalon](data-lake-store-get-started-portal.md).
+    > Ha a Data Lake Storage Gen1 erőforrás-szolgáltató regisztrálása és az alábbihoz hasonló hibaüzenetet `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`, az előfizetés nem lehet a Data Lake Storage Gen1 szerepel az engedélyezési listán. Ahhoz, hogy az Azure-előfizetését a Data Lake Storage Gen1, kövesse a [használatának első lépései az Azure Data Lake Storage Gen1 az Azure Portalon](data-lake-store-get-started-portal.md).
     >
 
 2. Egy Data Lake Storage Gen1 fiókkal társítva az Azure-erőforráscsoportot. Először hozzon létre egy erőforráscsoportot.
 
         $resourceGroupName = "<your new resource group name>"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
+        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     Egy a következőhöz hasonló kimenetnek kell megjelennie:
 
@@ -88,7 +90,7 @@ Hozzon létre egy Data Lake Storage Gen1 fiókot, tegye a következőket:
 3. Hozzon létre egy Data Lake Storage Gen1 fiókot. A megadott fiók neve csak kisbetűket és számokat kell tartalmaznia.
 
         $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 name>"
-        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
 
     A következőhöz hasonló kimenetnek kell megjelennie:
 
@@ -110,7 +112,7 @@ Hozzon létre egy Data Lake Storage Gen1 fiókot, tegye a következőket:
 4. Az alapértelmezett tároló használata a Data Lake Storage Gen1 megköveteli, hogy a gyökér elérési útját, amelyhez a fürtre jellemző fájlok másolását a fürt létrehozásakor adja meg. A gyökér elérési útját, amely létrehozása **/fürtök/hdiadlcluster** a kódrészletben használja a következő parancsmagokat:
 
         $myrootdir = "/"
-        New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/clusters/hdiadlcluster
+        New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/clusters/hdiadlcluster
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Hitelesítés a Data Lake Storage Gen1 történő, szerepkörön alapuló hozzáférés beállítása
@@ -152,7 +154,7 @@ Ebben a szakaszban egy egyszerű szolgáltatást az Azure AD-alkalmazás létreh
 
         $credential = [System.Convert]::ToBase64String($rawCertificateData)
 
-        $application = New-AzureRmADApplication `
+        $application = New-AzADApplication `
             -DisplayName "HDIADL" `
             -HomePage "https://contoso.com" `
             -IdentifierUris "https://mycontoso.com" `
@@ -163,14 +165,14 @@ Ebben a szakaszban egy egyszerű szolgáltatást az Azure AD-alkalmazás létreh
         $applicationId = $application.ApplicationId
 2. Az alkalmazás azonosítója. az egyszerű szolgáltatás létrehozása
 
-        $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
+        $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
 3. Adja meg a szolgáltatásnév hozzáférhessen a Data Lake Storage Gen1 legfelső szintű és a legfelső szintű korábban megadott elérési úton a mappához. Használja a következő parancsmagokat:
 
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-the-default-storage"></a>HDInsight Linux-fürt létrehozása a Data Lake Storage Gen1 az alapértelmezett tárolóként
 
@@ -178,7 +180,7 @@ Ebben a szakaszban egy HDInsight Hadoop Linux fürt létrehozása a Data Lake St
 
 1. A bérlő előfizetés-azonosító lekéréséhez, és a későbbi használat céljából tárolja.
 
-        $tenantID = (Get-AzureRmContext).Tenant.TenantId
+        $tenantID = (Get-AzContext).Tenant.TenantId
 
 2. A HDInsight-fürt létrehozása a következő parancsmag használatával:
 
@@ -192,7 +194,7 @@ Ebben a szakaszban egy HDInsight Hadoop Linux fürt létrehozása a Data Lake St
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
 
-        New-AzureRmHDInsightCluster `
+        New-AzHDInsightCluster `
                -ClusterType Hadoop `
                -OSType Linux `
                -ClusterSizeInNodes $clusterNodes `
@@ -253,7 +255,7 @@ Is használhatja a `hdfs dfs -put` parancsot néhány fájlok feltöltése a Dat
 
 ## <a name="see-also"></a>Lásd még
 * [Az Azure HDInsight-fürtök használata a Data Lake Storage Gen1](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [Az Azure portal: hozzon létre egy HDInsight-fürt használata a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Az Azure Portalon: Hozzon létre egy HDInsight-fürt használata a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

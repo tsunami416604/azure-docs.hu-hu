@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 0020d1a830932ffe77f7edc54e9e2e52e04dcb15
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7a0b679ef7a1a468c8a849b0a3fb9f744a392dd3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439102"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243603"
 ---
 # <a name="load-balancer-outbound-rules"></a>A terheléselosztó kimenő szabályok
 
@@ -34,7 +34,7 @@ Kimenő szabályok lehetővé teszik a vezérlőhöz:
 - virtuális gépek, amelyek nyilvános IP-címek kell fordítani. 
 - hogyan [kimenő SNAT-portok](load-balancer-outbound-connections.md#snat) kell kiosztani.
 - mely protokollok, adja meg a kimenő fordítását.
-- milyen kimenő kapcsolat üresjárati időkorlát használandó időtartama.
+- milyen kimenő kapcsolat üresjárati időkorlát (4 – 120 perc) használandó időtartama.
 - e elküldeni a egy új TCP üresjárati időkorlát (nyilvános előzetes verzió). 
 
 Bontsa ki a kimenő szabályok [2. forgatókönyv](load-balancer-outbound-connections.md#lb) a leírt a [kimenő kapcsolatok](load-balancer-outbound-connections.md) marad a cikk és a forgatókönyv elsőbbséget-van.
@@ -90,7 +90,7 @@ Térhet vissza a [háttérkiszolgáló-készlet mérete alapján automatikus SNA
 
 ### <a name="idletimeout"></a> Ellenőrző kimenő folyam üresjárat időkorlátja
 
-Kimenő szabályok adjon meg egy konfigurációs paraméter szabályozza a kimenő folyam üresjárati időkorlát és egyezteti az alkalmazás igényeinek.  4 perces üresjárati időtúllépés kimenő alapértelmezés szerint.  A paraméter egy adott Ez a szabály megfelelő folyamatok az üresjárati időkorlát percben 66 és 4 közötti értéket fogad el.
+Kimenő szabályok adjon meg egy konfigurációs paraméter szabályozza a kimenő folyam üresjárati időkorlát és egyezteti az alkalmazás igényeinek.  4 perces üresjárati időtúllépés kimenő alapértelmezés szerint.  A paraméter egy adott Ez a szabály megfelelő folyamatok az üresjárati időkorlát percben 120 és 4 közötti értéket fogad el.
 
 A következő paraméter segítségével állítsa be a kimenő üresjárati időkorlát 1 óra:
 
@@ -205,7 +205,7 @@ Egy belső Standard Load Balancer használatakor a kimenő NAT nem áll rendelke
 ## <a name="limitations"></a>Korlátozások
 
 - Az előtérbeli IP-címenként használható elmúló port maximális száma: 51,200.
-- A konfigurálható kimenő üresjárati időkorlát tartománya 4-66 perc (240 a 4000-es másodperc).
+- A konfigurálható kimenő üresjárati időkorlát tartománya 4 és 120 perc (240 a 7200 másodperc).
 - Terheléselosztó nem támogatja a ICMP kimenő helyezkedik el.
 - Portál konfigurálása, illetve megtekintheti a kimenő szabályok nem használható.  Ehelyett használja a sablonok, REST API-t, Az CLI 2.0-val vagy PowerShell.
 - Kimenő szabályok csak az elsődleges hálózati adapter és az elsődleges IP-konfiguráció alkalmazható.

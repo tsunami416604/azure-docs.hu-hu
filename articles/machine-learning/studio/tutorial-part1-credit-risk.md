@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 84b78dc65e4f2e859e5c8f1e92daa6dfbfd4cbcb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6789e1d6e514ce107ab96fddbaa582ccbe922bbb
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008171"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243722"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>1. oktatóanyag: Hitelkockázat - Azure Machine Learning Studio előrejelzése
 
@@ -47,7 +47,7 @@ Ha még nem használt **Azure Machine Learning Studio** előtt érdemes kezdeni 
 
 
 > [!TIP] 
-> Ebben az oktatóanyagban a fejleszt kísérlet működő példányát is megtalálhatja a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com). Lépjen a **[oktatóanyag – hitelkockázat-becslés](https://gallery.cortanaintelligence.com/Experiment/tutorial-Credit-risk-prediction-1)** kattintson **Megnyitás a Studióban** letöltéséhez a Machine Learning Studio munkaterületét kísérlettel másolatát.
+> Ebben az oktatóanyagban a fejleszt kísérlet működő példányát is megtalálhatja a [Azure AI-katalógusban](https://gallery.azure.ai). Lépjen a **[oktatóanyag – kredit előrejelzése kockázati](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** kattintson **Megnyitás a Studióban** Ha szeretné letölteni a kísérlet a Machine Learning Studio munkaterületre.
 > 
 
 

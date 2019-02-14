@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.openlocfilehash: add88a24da2e217d705065274f26382c1ffe8e17
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5f9af39616e45983a7ec592f33c3f2ffd34ea34f
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091679"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233404"
 ---
-# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
+# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag: Valós idejű események az Azure Event hubs szolgáltatásba küldött adatok protokollmegvalósításokat megjelenítése
 
 Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti a bejövő adatokat, és azonosíthatja az anomáliákat, amelyeket ezután megjeleníthet a Power BI-ban. Tegyük fel, hogy van több ezer eszköze, amelyek folyamatosan valós idejű adatokat küldenek egy eseményközpontba. Ez több millió eseményt jelent másodpercenként. Hogyan lehet anomáliákat vagy hibákat keresni ennyi adatban? Például mi van akkor, ha az eszközök hitelkártya-tranzakciókat küldenek, és rögzítenie kell, ha egy 5 másodperces időintervallumban több tranzakció is történik, több országban? Ez akkor történhet, ha valaki hitelkártyákat lop, majd a világ különböző pontjain több dolgot vásárol velük egyszerre. 
 
@@ -33,6 +33,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot][], mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -112,7 +114,7 @@ Azokhoz a változókhoz, amelyeknek globálisan egyedinek kell lenniük, a köve
 
 ```azurepowershell-interactive
 # Log in to Azure account.
-Login-AzureRMAccount
+Login-AzAccount
 
 # Set the values for the location and resource group.
 $location = "West US"
@@ -120,7 +122,7 @@ $resourceGroup = "ContosoResourcesEH"
 
 # Create the resource group to be used  
 #   for all resources for this tutorial.
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+New-AzResourceGroup -Name $resourceGroup -Location $location
 
 # The Event Hubs namespace name must be globally unique, so add a random number to the end.
 $eventHubNamespace = "contosoEHNamespace$(Get-Random)"
@@ -131,12 +133,12 @@ $eventHubName = "contosoEHhub$(Get-Random)"
 Write-Host "Event hub Name is " $eventHubName
 
 # Create the Event Hubs namespace.
-New-AzureRmEventHubNamespace -ResourceGroupName $resourceGroup `
+New-AzEventHubNamespace -ResourceGroupName $resourceGroup `
      -NamespaceName $eventHubNamespace `
      -Location $location
 
 # Create the event hub.
-$yourEventHub = New-AzureRmEventHub -ResourceGroupName $resourceGroup `
+$yourEventHub = New-AzEventHub -ResourceGroupName $resourceGroup `
     -NamespaceName $eventHubNamespace `
     -Name $eventHubName `
     -MessageRetentionInDays 3 `
@@ -144,7 +146,7 @@ $yourEventHub = New-AzureRmEventHub -ResourceGroupName $resourceGroup `
 
 # Get the event hub key, and retrieve the connection string from that object.
 # You need this to run the app that sends test messages to the event hub.
-$eventHubKey = Get-AzureRmEventHubKey -ResourceGroupName $resourceGroup `
+$eventHubKey = Get-AzEventHubKey -ResourceGroupName $resourceGroup `
     -Namespace $eventHubNamespace `
     -AuthorizationRuleName RootManageSharedAccessKey
 
@@ -174,13 +176,13 @@ Most már adatokat streamelhet az eseményközpontba. Az adatok Power BI-vizuali
 
 2. Adja meg a feladat alábbi adatait:
 
-   **Feladat neve**: Használja a **contosoEHjob** nevet. Ez a mező a feladat nevét tartalmazza, amelynek globálisan egyedinek kell lennie.
+   **Feladat neve**: Használat **contosoEHjob**. Ez a mező a feladat nevét tartalmazza, amelynek globálisan egyedinek kell lennie.
 
-   **Előfizetés**: Válassza ki az előfizetését.
+   **Előfizetés**: Válassza ki előfizetését.
 
-   **Erőforráscsoport**: Használja az eseményközpont által használt erőforráscsoportot (**ContosoResourcesEH**).
+   **Erőforráscsoport**: Az event hub által használt ugyanazt az erőforráscsoportot használja (**ContosoResourcesEH**).
 
-   **Hely**: Használja a beállítási szkriptnél használt helyet (**USA nyugati régiója**).
+   **Hely**: A telepítési parancsprogram használja ugyanazt a helyet (**USA nyugati RÉGIÓJA**).
 
    ![Új Azure Stream Analytics-feladat létrehozását bemutató képernyőkép.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
@@ -199,17 +201,17 @@ A Steam Analytics-feladat bemenetei az eseményközpontból származó hitelkár
 
 2. A **Bemenetek** panelen kattintson a **Streambemenet hozzáadása** elemre, és válassza az Event Hubsot. A megjelenő képernyőn töltse ki az alábbi mezőket:
 
-   **Bemeneti alias**: Használja a **contosoinputs** aliast. Ez a mező a bemeneti stream nevét tartalmazza, amelyet az adatlekérdezés meghatározásakor kell használni.
+   **Bemeneti áljel**: Használat **contosoinputs**. Ez a mező a bemeneti stream nevét tartalmazza, amelyet az adatlekérdezés meghatározásakor kell használni.
 
-   **Előfizetés**: Válassza ki az előfizetését.
+   **Előfizetés**: Válassza ki előfizetését.
 
-   **Event Hubs-névtér**: Válassza ki az Event Hubs-névterét ($**eventHubNamespace**). 
+   **Event Hubs-névtér**: Válassza ki az Event Hubs-névtér ($**eventHubNamespace**). 
 
-   **Eseményközpont neve**: Kattintson a **Meglévő használata** elemre, és válassza ki az eseményközpontját ($**eventHubName**).
+   **Eseményközpont neve**: Kattintson a **meglévő használata** és az event hubs kiválasztása ($**eventHubName**).
 
-   **Eseményközpont szabályzatának neve**: Válassza a **RootManageSharedAccessKey** lehetőséget.
+   **Event Hubs házirendnév**: Válassza ki **RootManageSharedAccessKey**.
 
-   **Eseményközpont fogyasztói csoportja**: Hagyja üresen ezt a mezőt az alapértelmezett fogyasztói csoport használatához.
+   **Event Hubs fogyasztói csoportot**: Ezt a mezőt hagyja üresen az alapértelmezett felhasználói csoport használja.
 
    A többi mezőnél fogadja el az alapértelmezett beállításokat.
 
@@ -223,11 +225,11 @@ A Steam Analytics-feladat bemenetei az eseményközpontból származó hitelkár
 
 2. A **Kimenetek** panelen kattintson a **Hozzáadás**, majd a **Power BI** elemre. A megjelenő képernyőn töltse ki az alábbi mezőket:
 
-   **Kimeneti alias**: Használja a **contosooutputs** aliast. Ez a mező a kimenet egyedi aliasát tartalmazza. 
+   **Kimeneti alias**: Használat **contosooutputs**. Ez a mező a kimenet egyedi aliasát tartalmazza. 
 
-   **Adatkészlet neve**: Használja a **contosoehdataset** nevet. Ez a mező a Power BI-ban használni kívánt adatkészlet nevét tartalmazza. 
+   **Adatkészlet neve**: Használat **contosoehdataset**. Ez a mező a Power BI-ban használni kívánt adatkészlet nevét tartalmazza. 
 
-   **Tábla neve**: Használja a **contosoehtable** nevet. Ez a mező a Power BI-ban használni kívánt tábla nevét tartalmazza. 
+   **Táblanév**: Használat **contosoehtable**. Ez a mező a Power BI-ban használni kívánt tábla nevét tartalmazza. 
 
    A többi mezőnél fogadja el az alapértelmezett beállításokat.
 
@@ -361,10 +363,10 @@ az group delete --name $resourceGroup
 
 ### <a name="clean-up-resources-using-powershell"></a>Az erőforrások eltávolítása a PowerShell használatával
 
-Az erőforráscsoport a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal távolítható el.
+Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>További lépések

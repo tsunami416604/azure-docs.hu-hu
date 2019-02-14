@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: b9a546cf4c822f63d9d07a1f23ec5f13285653af
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 77c69e7e655770ab912e6ee25183e760f972504d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164125"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243688"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 A Microsoft Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. A Machine Learning Studio a modelleket webszolgáltatásként teszi közzé, amelyeket az egyéni alkalmazások vagy az Excel és más üzletiintelligencia-eszközök egyszerűen felhasználhatnak.
@@ -61,7 +61,7 @@ Kattintson a **Studio** elemre, és megnyílik az **Azure Machine Learning Studi
 * **BEÁLLÍTÁSOK** – A fiók és az erőforrások konfigurálására szolgáló beállítások gyűjteménye
 
 ### <a name="gallery"></a>Katalógus
-Kattintson a **Katalógus** elemre, és megnyílik az **[Azure AI-katalógus](http://gallery.cortanaintelligence.com/)**. A Gallery olyan hely, ahol az adatelemzők és fejlesztők közössége megoszthatja a Cortana Intelligence Suite összetevői használatával létrehozott megoldásokat.
+Kattintson a **Katalógus** elemre, és megnyílik az **[Azure AI-katalógus](http://gallery.azure.ai/)**. A Gallery olyan hely, ahol az adatelemzők és fejlesztők közössége megoszthatja a Cortana Intelligence Suite összetevői használatával létrehozott megoldásokat.
 
 Erről további információkat a [Megoldások megosztása és felfedezése az Azure AI-katalógusban](gallery-how-to-use-contribute-publish.md) című cikkben talál.
 

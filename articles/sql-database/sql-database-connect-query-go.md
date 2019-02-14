@@ -11,13 +11,13 @@ author: David-Engel
 ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 12/21/2018
-ms.openlocfilehash: 6e2465927f748e5538935a87aaadc84b5c2b4d1f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/12/2019
+ms.openlocfilehash: 597a870f98d8218d86fa601fe83d524f3a370f05
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561931"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236515"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Gyors útmutató: Golang használata Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -27,17 +27,37 @@ Ez a rövid útmutatóban használni kívánt a [Golang](https://godoc.org/githu
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+
+  || Önálló adatbázis | Felügyelt példány |
+  |:--- |:--- |:---|
+  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) |
+  | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolat egy virtuális gépről](sql-database-managed-instance-configure-vm.md)|
+  |||[Helyszíni kapcsolat](sql-database-managed-instance-configure-p2s.md)
+  |Adatok betöltése|Az Adventure Works betöltött száma a rövid útmutató|[Állítsa vissza a Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |||Állítsa vissza vagy importálása az Adventure Works [BACPAC](sql-database-import.md) fájlt [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||
+
+  > [!IMPORTANT]
+  > Ebben a cikkben a parancsfájlok az Adventure Works adatbázisa használatához készültek. Felügyelt példánnyal Ha az Adventure Works adatbázisa importálása-példány adatbázis, vagy módosítsa a parancsfájlokat ebben a cikkben a Wide World Importers-adatbázis használatára.
 
 - Golang és az operációs rendszer telepítve van a kapcsolódó szoftvereket:
 
-    - **MacOS**: Telepítse a homebrew-val és a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-    - **Ubuntu**:  Telepítse a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
-    - **Windows**: Telepítse a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).    
+  - **MacOS**: Telepítse a homebrew-val és a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+  - **Ubuntu**:  Telepítse a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+  - **Windows**: Telepítse a Golangot. Lásd az [1.2. lépést](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
 
-## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
+## <a name="get-sql-server-connection-information"></a>Az SQL server-kapcsolati adatok lekéréséhez
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati információkat kaphat. A következő eljárások szüksége a kiszolgáló teljes nevét vagy a gazdagépnév, az adatbázis neve és a bejelentkezési adatait.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
+2. Keresse meg a **SQL-adatbázisok** vagy **SQL felügyelt példányai** lapot.
+
+3. A a **áttekintése** lapon, tekintse át a teljes kiszolgálónevet melletti **kiszolgálónév** egy önálló adatbázis vagy a kiszolgáló teljes neve melletti **gazdagép** számára egy felügyelt a példány. Másolja ki a kiszolgáló nevét vagy az állomásnevet, rámutatnak, és válassza a **másolási** ikonra.
 
 ## <a name="create-golang-project-and-dependencies"></a>Golang-projekt és függőségek létrehozása
 

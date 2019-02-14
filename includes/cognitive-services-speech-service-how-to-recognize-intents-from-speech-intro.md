@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 88cb9f18002f15ea926fe5ded3a5ac9af7a99cbe
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 80bf9247bbb07fa61b7153e321b1991b82a9d616
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716197"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246928"
 ---
 <!-- N.B. no header, language-agnostic -->
 
@@ -28,4 +28,4 @@ A Microsoft Cognitive Services [beszéd SDK](~/articles/cognitive-services/speec
 Tekintse meg az alábbi kódrészleteket szándékfelismerés forgatókönyvek, amelyek a beszéd SDK-val. A mintában szereplő értékeket cserélje le a saját LUIS előfizetési kulcs (végpont), a [régió az előfizetés](~/articles/cognitive-services/speech-service/regions.md#intent-recognition), és a **AppId** a szándék modell.
 
 > [!NOTE]
-> Más, a beszéd SDK által támogatott szolgáltatások, szakembereket szándékfelismerés szükséges egy adott előfizetési kulcsot (LUIS végponti kulcs). A szándékának felismerése technológiával kapcsolatos információkért lásd: a [LUIS webhely](https://www.luis.ai). Információt beszerezni a **végponti kulcs**, lásd: [LUIS végponti kulcs létrehozása](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-azure-subscription#create-luis-endpoint-key).
+> Más, a beszéd SDK által támogatott szolgáltatások, szakembereket szándékfelismerés szükséges egy adott előfizetési kulcsot (LUIS végponti kulcs). A szándékának felismerése technológiával kapcsolatos információkért lásd: a [LUIS webhely](https://www.luis.ai). Információt beszerezni a **végponti kulcs**, lásd: [LUIS végponti kulcs létrehozása](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-azure-subscription).

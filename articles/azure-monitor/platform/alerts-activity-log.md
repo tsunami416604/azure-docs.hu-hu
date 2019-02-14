@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 17a7b0e0ee76490ef43fb869260dceef83cbd124
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c88fe7051519440056fe85e7ff9172ae0239bd41
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984494"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234237"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor tevékenységnapló-riasztások kezelése  
 
@@ -224,7 +224,7 @@ Egy új tevékenység riasztási szabály létrehozásához használja az alább
 
 Egy tevékenység log riasztási szabály erőforrás, az Azure CLI-paranccsal lekérése [az monitor tevékenységnapló riasztás megjelenítése](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
 ) is használható. És minden tevékenység log riasztási szabály erőforrás egy erőforráscsoportba tartozó megtekintésre [az monitor tevékenységnapló riasztás lista](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
-Tevékenység log riasztási szabály erőforrásokat az Azure CLI-paranccsal eltávolítható [az monitor tevékenységnapló riasztás törlése](https://docs.microsoft.com/en-us/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete).
+Tevékenység log riasztási szabály erőforrásokat az Azure CLI-paranccsal eltávolítható [az monitor tevékenységnapló riasztás törlése](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete).
 
 ## <a name="next-steps"></a>További lépések
 

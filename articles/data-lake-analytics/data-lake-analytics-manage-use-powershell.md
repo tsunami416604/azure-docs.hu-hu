@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
-ms.openlocfilehash: 5bd8763234aa02d68b6e86b7259fcf10b4ef4ac5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684282"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233582"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -23,13 +23,15 @@ Ez a cikk ismerteti az Azure Data Lake Analytics-fiókok, adatforrások, felhasz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 A PowerShell használata a Data Lake Analytics, gyűjtse össze a következő információt: 
 
-* **Előfizetés-azonosító**: a Data Lake Analytics-fiókot tartalmazó Azure-előfizetés azonosítója.
-* **Erőforráscsoport**: az Azure-erőforráscsoportot, amely tartalmazza a Data Lake Analytics-fiók nevére.
-* **A Data Lake Analytics-fiók neve**: a Data Lake Analytics-fiók nevét.
-* **Alapértelmezett Data Lake Store-fiók neve**: minden Data Lake Analytics-fiók tartozik egy alapértelmezett Data Lake Store-fiók.
-* **Hely**: A hely a Data Lake Analytics-fiók, például az "USA keleti RÉGIÓJA 2" vagy egyéb támogatott helyeket.
+* **Előfizetés-azonosító**: A Data Lake Analytics-fiókot tartalmazó Azure-előfizetés azonosítója.
+* **Erőforráscsoport**: Az Azure-erőforráscsoportot, amely tartalmazza a Data Lake Analytics-fiók neve.
+* **A Data Lake Analytics-fiók neve**: A Data Lake Analytics-fiók neve.
+* **Alapértelmezett Data Lake Store-fiók neve**: Minden Data Lake Analytics-fiókhoz tartozik egy alapértelmezett Data Lake Store-fiók.
+* **Hely**: A hely, a Data Lake Analytics-fiók, például az "USA keleti RÉGIÓJA 2" vagy egyéb helyeken támogatott.
 
 A jelen oktatóanyagban szereplő PowerShell-kódrészletek ezeket a változókat használják adattárolásra
 
@@ -49,22 +51,22 @@ Jelentkezzen be egy előfizetés-azonosító vagy az előfizetés neve
 
 ```powershell
 # Using subscription id
-Connect-AzureRmAccount -SubscriptionId $subId
+Connect-AzAccount -SubscriptionId $subId
 
 # Using subscription name
-Connect-AzureRmAccount -SubscriptionName $subname 
+Connect-AzAccount -SubscriptionName $subname 
 ```
 
 ## <a name="saving-authentication-context"></a>Hitelesítési környezetet mentése
 
-A `Connect-AzureRmAccount` parancsmag minden esetben kéri a hitelesítő adatokat. Elkerülheti az alábbi parancsmagokkal erre kéri:
+A `Connect-AzAccount` parancsmag minden esetben kéri a hitelesítő adatokat. Elkerülheti az alábbi parancsmagokkal erre kéri:
 
 ```powershell
 # Save login session information
-Save-AzureRmProfile -Path D:\profile.json  
+Save-AzAccounts -Path D:\profile.json  
 
 # Load login session information
-Select-AzureRmProfile -Path D:\profile.json 
+Select-AzAccounts -Path D:\profile.json 
 ```
 
 ### <a name="log-in-using-a-service-principal-identity-spi"></a>Jelentkezzen be a szolgáltatás egyszerű identitás (ÜTI)
@@ -76,7 +78,7 @@ $spi_appid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 $spi_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
 
 $pscredential = New-Object System.Management.Automation.PSCredential ($spi_appid, (ConvertTo-SecureString $spi_secret -AsPlainText -Force))
-Login-AzureRmAccount -ServicePrincipal -TenantId $tenantid -Credential $pscredential -Subscription $subid
+Login-AzAccount -ServicePrincipal -TenantId $tenantid -Credential $pscredential -Subscription $subid
 ```
 
 ## <a name="manage-accounts"></a>Fiókok kezelése
@@ -336,7 +338,7 @@ $policies = Get-AdlAnalyticsComputePolicy -Account $adla
 A `New-AdlAnalyticsComputePolicy` parancsmag egy új Data Lake Analytics-fiók számítási szabályzatot hoz létre. Ebben a példában a maximális au-k érhető el a megadott felhasználó 50-re, és a minimális feladat prioritása a 250 állítja be.
 
 ```powershell
-$userObjectId = (Get-AzureRmAdUser -SearchString "garymcdaniel@contoso.com").Id
+$userObjectId = (Get-AzAdUser -SearchString "garymcdaniel@contoso.com").Id
 
 New-AdlAnalyticsComputePolicy -Account $adla -Name "GaryMcDaniel" -ObjectId $objectId -ObjectType User -MaxDegreeOfParallelismPerJob 50 -MinPriorityPerJob 250
 ```
@@ -481,10 +483,10 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 
 ## <a name="working-with-azure"></a>Az Azure-ral működő
 
-### <a name="get-details-of-azurerm-errors"></a>Get-AzureRm hibái
+### <a name="get-error-details"></a>Hiba részleteinek beolvasása
 
 ```powershell
-Resolve-AzureRmError -Last
+Resolve-AzError -Last
 ```
 
 ### <a name="verify-if-you-are-running-as-an-administrator-on-your-windows-machine"></a>Győződjön meg arról, ha futtatásakor rendszergazdaként a Windows-gépen
@@ -505,7 +507,7 @@ Forrás-előfizetés neve:
 ```powershell
 function Get-TenantIdFromSubscriptionName( [string] $subname )
 {
-    $sub = (Get-AzureRmSubscription -SubscriptionName $subname)
+    $sub = (Get-AzSubscription -SubscriptionName $subname)
     $sub.TenantId
 }
 
@@ -517,7 +519,7 @@ Az egy előfizetés azonosítója:
 ```powershell
 function Get-TenantIdFromSubscriptionId( [string] $subid )
 {
-    $sub = (Get-AzureRmSubscription -SubscriptionId $subid)
+    $sub = (Get-AzSubscription -SubscriptionId $subid)
     $sub.TenantId
 }
 
@@ -541,7 +543,7 @@ Get-TenantIdFromDomain $domain
 ### <a name="list-all-your-subscriptions-and-tenant-ids"></a>Összes előfizetés listázása és a bérlőazonosítók
 
 ```powershell
-$subs = Get-AzureRmSubscription
+$subs = Get-AzSubscription
 foreach ($sub in $subs)
 {
     Write-Host $sub.Name "("  $sub.Id ")"
@@ -551,7 +553,7 @@ foreach ($sub in $subs)
 
 ## <a name="create-a-data-lake-analytics-account-using-a-template"></a>Egy sablon használatával a Data Lake Analytics-fiók létrehozása
 
-Egy Azure erőforráscsoport-sablon a következő minta használatával is használhatja: [-sablon használatával a Data Lake Analytics-fiók létrehozása](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
+Egy Azure erőforráscsoport-sablon a következő minta használatával is használhatja: [Egy sablon használatával a Data Lake Analytics-fiók létrehozása](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
 
 ## <a name="next-steps"></a>További lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

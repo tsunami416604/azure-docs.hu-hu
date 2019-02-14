@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 0323738573969953628d7db687b0af0e6fa58fc4
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 5205ce86e7933b5c48df1e24e3714e988cedecc6
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31532481"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246272"
 ---
 Hozzon létre egy [webalkalmazást](../articles/app-service/containers/app-service-linux-intro.md) az `myAppServicePlan` App Service-csomagban. 
 
-A Cloud Shellben használhatja az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) parancsot. A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `NODE|6.9` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes) parancsot. 
+A Cloud Shellben használhatja az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) parancsot. A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `NODE|6.9` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) parancsot. 
 
 ```azurecli-interactive
 # Bash

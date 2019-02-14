@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: f9138ec06900f4a7f856cc90362d16496b7b4fed
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1dba84c686fbb873f044b4980990baa396a94c79
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766012"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237671"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Használja őket egységes előtérrendszerként több Azure Monitor az Application Insights-erőforrást 
 Ez a cikk bemutatja, hogyan lekérdezéséhez és az összes Application Insights alkalmazás log adatok megtekintése az egyik helyen, akkor is, ha azokat az Azure-előfizetések, az Application Insights-összekötő elavulása helyettesítője. Az Application Insights-erőforrások, amelyeket megadhat egyetlen lekérdezést erőforrások számát 100-ra korlátozódik.  
@@ -32,7 +32,7 @@ ApplicationInsights
 | summarize by ApplicationName
 ```
 
-Hozzon létre union operátor használata az elérhető alkalmazások listája egy függvényt, majd mentse a lekérdezés az aliasszal függvény *applicationsScoping*.  
+Hozzon létre union operátor használata az elérhető alkalmazások listája egy függvényt, majd mentse a lekérdezés a munkaterületén az aliasszal függvény *applicationsScoping*.  
 
 ```
 union withsource=SourceApp 
@@ -45,7 +45,7 @@ app('Contoso-app5').requests
 ```
 
 >[!NOTE]
->Módosíthatja a listán szereplő alkalmazások bármikor ellenőrizheti, hogy a naplók portálon és a függvény szerkesztése, vagy a Query explorer a `SavedSearch` PowerShell-parancsmagot. A `withsource= SourceApp` parancs hozzáadja az eredményeket egy oszlopot, amely az alkalmazás azt jelzi a napló küldött. 
+>Módosíthatja a listán szereplő alkalmazások a portálon bármikor ellenőrizheti, hogy a munkaterület lekérdezéskezelő, majd válassza a Szerkesztés és majd mentése, vagy használja a függvény a `SavedSearch` PowerShell-parancsmagot. A `withsource= SourceApp` parancs hozzáadja az eredményeket egy oszlopot, amely az alkalmazás azt jelzi a napló küldött. 
 >
 >A lekérdezés az Application Insights-sémát, használja, bár a lekérdezés végrehajtása a munkaterületen, mivel a applicationsScoping függvényt ad vissza az Application Insights-adatok struktúrája. 
 >

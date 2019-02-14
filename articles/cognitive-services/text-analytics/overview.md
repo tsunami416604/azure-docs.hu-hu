@@ -3,25 +3,25 @@ title: Mi a Text Analytics?
 titleSuffix: Azure Cognitive Services
 description: Az Azure Cognitive Services-beli Text Analytics a szövegek hangulatelemzéséhez, a kulcskifejezések kinyeréséhez, nyelvfelismeréshez és entitások összekapcsolásához használható.
 services: cognitive-services
-author: ashmaka
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 6e14d1b6d9bec4409ca2a1e57c7d2fb018ccce53
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869449"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242926"
 ---
 # <a name="what-is-text-analytics"></a>Mi a Text Analytics?
 
 A Text Analytics API egy felhőalapú eszköz, amely nyers szövegek fejlett természetes nyelvfeldogozását biztosítja, és négy fő funkciója van: a hangulatelemzés, a kulcsszókeresés, a nyelvfelismerés és az entitáskapcsolás.
 
-Az API a [Microsoft Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) erőforrásait használja, amely egy felhőalapú gépi tanulási és mesterséges intelligenciára épülő algoritmusokat biztosító, a fejlesztési projektekben szabadon használható gyűjtemény.
+Az API-t egy része [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), gépi tanulási és AI-algoritmusokat a felhőalapú fejlesztési projektjeit gyűjteménye.
 
 ## <a name="capabilities-in-text-analytics"></a>A Text Analytics funkciói
 

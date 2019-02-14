@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 7fb1712ee67ef6acfb7d8a059f9db8b88ce9ccac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9ea62d731cf0c16c17f3c2e4f3e1954661289934
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863330"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245541"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Ajánlott eljárások a QnA Maker Tudásbázis
 A [Tudásbázis fejlesztési életciklus](../Concepts/development-lifecycle-knowledge-base.md) végigvezeti Önt a a KB-os kezelése az elejétől a végéig. Ajánlott eljárások használatával növelheti a Tudásbázis, és jobb eredményeket nyújt az application/csevegőrobot a végfelhasználók számára.
@@ -74,7 +74,7 @@ Az alapértelmezett küszöbérték, amely megbízhatósági pontszám érték: 
 [Metaadatok](../How-To/edit-knowledge-base.md) lehetővé teszi az eredményeket a felhasználói lekérdezés alapján metaadat-címkéket. A Tudásbázis választ a metaadat-kódcímke alapján is eltérnek, akkor is, ha a lekérdezés nem ugyanaz. Például *"hol is található ideiglenes"* egy másik választ is rendelkezhet, ha az éttermi ág helye eltérő –, hogy a metaadatok van *helye: Seattle* és *helye: Redmond*.
 
 ### <a name="use-synonyms"></a>A szinonimák használata
-Van néhány támogatás angol nyelven szinonimák, bár [word-átalakítások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) szinonimák hozzáadása, amelyek különböző kulcsszavakat. Szinonimák kell adni a QnA Maker szolgáltatás szintű és a szolgáltatás minden tudásbázisok által megosztott.
+Míg néhány támogatás angol nyelven szinonimák, használja kis-és [word-átalakítások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) szinonimák hozzáadása, amelyek különböző kulcsszavakat. Szinonimák kell adni a QnA Maker szolgáltatás szintű és a szolgáltatás minden tudásbázisok által megosztott.
 
 |Eredeti word|Szinonimák|
 |--|--|

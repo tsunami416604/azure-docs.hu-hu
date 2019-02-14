@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ea60b774e4f3f61ecf715873c83198c2dad331f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ca0e2c0ce12edba504745e2783844db5109ee01a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166909"
+ms.locfileid: "56237705"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Oktatóanyag: Nagyítás az Azure Active Directory-integráció
 
@@ -128,7 +128,7 @@ A Nagyítás konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre 
     | szerepkör |    user.assignedrole |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role |
 
     > [!NOTE]
-    > Kattintson a [Itt](https://docs.microsoft.com/en-gb/azure/role-based-access-control/role-assignments-portal) tudni, hogy az Azure AD-szerepkör konfigurálása
+    > Kattintson a [Itt](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) tudni, hogy az Azure AD-szerepkör konfigurálása
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 

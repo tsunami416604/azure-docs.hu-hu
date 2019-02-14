@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 31220002f8529fd31407470e7650a4c97b62f2b4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ee4bd5d2acf1a029486f83ee721b9e1f72347958
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535274"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238147"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Az Event Hubs kapcsolati sztring lekérése
 
@@ -51,13 +51,16 @@ Adjon hozzá egy új SAS-szabályzatot, és kérje le a kapcsolati karakterlánc
 ![Az Event Hubs kapcsolati sztring lekérése](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>Bevezetés a kapcsolati karakterláncot az Azure PowerShell használatával
-A Get-AzureRmEventHubNamespaceKey segítségével a kapcsolati sztring lekérése az adott szabályzat/szabály neve alább látható módon:
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+A Get-AzEventHubNamespaceKey segítségével a kapcsolati sztring lekérése az adott szabályzat/szabály neve alább látható módon:
 
 ```azurepowershell-interactive
-Get-AzureRmEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
+Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
 ```
 
-Tekintse meg [Azure Event Hubs PowerShell-modul](https://docs.microsoft.com/powershell/module/azurerm.eventhub/get-azurermeventhubkey) további részletekért.
+Tekintse meg [Azure Event Hubs PowerShell-modul](https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey) további részletekért.
 
 ## <a name="getting-the-connection-string-with-azure-cli"></a>Az Azure CLI-vel a kapcsolati karakterlánc beolvasása
 A következő segítségével kérje le a kapcsolati karakterláncot a névtér:

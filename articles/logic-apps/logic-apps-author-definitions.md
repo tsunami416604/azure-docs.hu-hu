@@ -10,16 +10,16 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: d50f56fe0f4428186d18195f798633baefd6d125
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 5c51fe4e3d8b432e80a2d437c299b33af557d936
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732923"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245813"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Létrehozásához, szerkesztéséhez vagy JSON kiterjesztése a logikai alkalmazás definícióiról az Azure Logic Appsben
 
-A munkafolyamatok létrehozásakor enterprise integration-megoldások automatikus [Azure Logic Apps](../logic-apps/logic-apps-overview.md), az alapul szolgáló logikaialkalmazás-definíciók használata egyszerű, deklaratív JavaScript Object Notation (JSON) és a [ A munkafolyamat Definition Language (WDL) séma](../logic-apps/logic-apps-workflow-definition-language.md) azok leírását és az érvényesítés. Ezek a formátumok egyszerűbben logikai alkalmazás definícióiról Elolvastam és megértettem ismerné a kód nélkül. Ha szeretné automatizálni a létrehozása és telepítése a logic apps, hozzáadhatja a logikaialkalmazás-definíciók, [Azure-erőforrások](../azure-resource-manager/resource-group-overview.md) belül [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-overview.md#template-deployment). Létrehozása, kezelése és üzembe helyezése a logic apps esetében használhatja [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azurerm.logicapp), [Azure CLI-vel](../azure-resource-manager/resource-group-template-deploy-cli.md), vagy a [Azure Logic Apps – REST API-k](https://docs.microsoft.com/rest/api/logic/).
+A munkafolyamatok létrehozásakor enterprise integration-megoldások automatikus [Azure Logic Apps](../logic-apps/logic-apps-overview.md), az alapul szolgáló logikaialkalmazás-definíciók használata egyszerű, deklaratív JavaScript Object Notation (JSON) és a [ A munkafolyamat Definition Language (WDL) séma](../logic-apps/logic-apps-workflow-definition-language.md) azok leírását és az érvényesítés. Ezek a formátumok egyszerűbben logikai alkalmazás definícióiról Elolvastam és megértettem ismerné a kód nélkül. Ha szeretné automatizálni a létrehozása és telepítése a logic apps, hozzáadhatja a logikaialkalmazás-definíciók, [Azure-erőforrások](../azure-resource-manager/resource-group-overview.md) belül [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-overview.md#template-deployment). Létrehozása, kezelése és üzembe helyezése a logic apps esetében használhatja [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLI-vel](../azure-resource-manager/resource-group-template-deploy-cli.md), vagy a [Azure Logic Apps – REST API-k](https://docs.microsoft.com/rest/api/logic/).
 
 Logikaialkalmazás-definíciók JSON dolgozni, nyissa meg a Kódnézet szerkesztőt, ha az Azure Portalon vagy a Visual Studióban, vagy másolja a definíció bármilyen szerkesztőt, amelyeket szeretne. Ha most ismerkedik a logic apps, tekintse át [az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 

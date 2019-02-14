@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 7a465559bd4e46777f67121e9b3c7d2b0b8a0a22
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 54d6dec6b61e4042b12cba833f4adf5d1321d1f1
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986336"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237783"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Ismerkedés az Azure Data Lake Storage Gen1 Azure PowerShell-lel
 > [!div class="op_single_selector"]
@@ -31,41 +31,43 @@ Ismerje meg, hogyan használhatja az Azure Powershellt Azure Data Lake Storage G
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Az **Azure PowerShell 1.0-s vagy újabb verziója**. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Storage Gen1 ahol kéri, adja meg az Azure-fiók hitelesítő adatait. A Data Lake Storage Gen1 fiók- és rendszer a bejelentkezett felhasználó hozzáférési szintjét, majd szolgáltatás hozzáférési szintet. Előfordulhatnak azonban olyan egyéb megközelítések is lehet hitelesíteni a Data Lake Storage Gen1, amelyek **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Hozzon létre egy Data Lake Storage Gen1 fiókot
 1. Nyisson meg egy új Windows PowerShell-ablakot az asztalon. Adja meg a következő kódrészletet az Azure-fiókjába való bejelentkezéshez, az előfizetés beállításához és a Data Lake Storage Gen1-szolgáltató regisztrálásához. Amikor a rendszer kéri, jelentkezzen be, győződjön meg arról, hogy a rendszergazdák/tulajdonossal egyik jelentkezzen be:
 
         # Log in to your Azure account
-        Connect-AzureRmAccount
+        Connect-AzAccount
 
         # List all the subscriptions associated to your account
-        Get-AzureRmSubscription
+        Get-AzSubscription
 
         # Select a subscription
-        Set-AzureRmContext -SubscriptionId <subscription ID>
+        Set-AzContext -SubscriptionId <subscription ID>
 
         # Register for Azure Data Lake Storage Gen1
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 2. Egy Data Lake Storage Gen1 fiókkal társítva az Azure-erőforráscsoport. Először hozzon létre egy Azure-erőforráscsoportot.
 
         $resourceGroupName = "<your new resource group name>"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
+        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     ![Azure-erőforráscsoport létrehozása](./media/data-lake-store-get-started-powershell/ADL.PS.CreateResourceGroup.png "Azure-erőforráscsoport létrehozása")
 3. Hozzon létre egy Data Lake Storage Gen1 fiókot. A megadott név csak kisbetűket és számokat tartalmazhat.
 
         $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
-        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
 
     ![Hozzon létre egy Data Lake Storage Gen1 fiókot](./media/data-lake-store-get-started-powershell/ADL.PS.CreateADLAcc.png "hozzon létre egy Data Lake Storage Gen1 fiókot")
 4. Ellenőrizze, hogy a fiók létrehozása sikeres volt-e.
 
-        Test-AzureRmDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+        Test-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
 
     A parancsmag kimeneti értéke **True** (Igaz) kell, hogy legyen.
 
@@ -77,10 +79,10 @@ Könyvtárak a Data Lake Storage Gen1-fiókjában adatok kezelésére és tárol
         $myrootdir = "/"
 2. Hozzon létre egy új könyvtárat **mynewdirectory** néven a megadott gyökérkönyvtárban.
 
-        New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/mynewdirectory
+        New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/mynewdirectory
 3. Ellenőrizze, hogy az új könyvtár létrehozása sikeres volt-e.
 
-        Get-AzureRmDataLakeStoreChildItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir
+        Get-AzDataLakeStoreChildItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir
 
     A következő képernyőképen láthatóhoz hasonló kimenetnek kell megjelennie:
 
@@ -91,30 +93,30 @@ Feltöltheti az adatokat a Data Lake Storage Gen1 közvetlenül, gyökérszinten
 
 Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát. Töltse le a fájlt, és tárolja a számítógépén egy helyi könyvtárban (pl. C:\sampledata).
 
-    Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
+    Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
 
 
 ## <a name="rename-download-and-delete-data-from-your-data-lake-storage-gen1-account"></a>Átnevezése, letöltése és a Data Lake Storage Gen1 fiókból adatok törlése
 Fájlok átnevezéséhez használja a következő parancsot:
 
-    Move-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+    Move-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
 
 Fájlok letöltéséhez használja a következő parancsot:
 
-    Export-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv -Destination "C:\sampledata\vehicle1_09142014_Copy.csv"
+    Export-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv -Destination "C:\sampledata\vehicle1_09142014_Copy.csv"
 
 Fájlok törléséhez használja a következő parancsot:
 
-    Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+    Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
 
 Ha a rendszer rákérdez, írja be az **Y** karaktert az elem törléséhez. Ha több fájlt kíván törölni, megadhatja az összes elérési utat, vesszővel elválasztva.
 
-    Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
+    Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
 
 ## <a name="delete-your-data-lake-storage-gen1-account"></a>A Data Lake Storage Gen1 fiók törlése
 Az alábbi parancs segítségével törölheti a Data Lake Storage Gen1 fiók.
 
-    Remove-AzureRmDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+    Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
 
 Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 

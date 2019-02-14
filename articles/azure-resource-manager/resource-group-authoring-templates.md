@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: cdc48cf278fdd68bacf74c2d6d762c8d731949e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 509c9cbe3a4c2f930c9fdfda186d78118dbe4b80
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111561"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237841"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
 
@@ -46,7 +46,7 @@ A legegyszerűbb szerkezetét, a sablon a következő elemekből áll:
 | paraméterek |Nem |Üzembe helyezés testreszabásához erőforrások üzembe helyezésének végrehajtásakor biztosított értékeket. |
 | Változók |Nem |Egyszerűsítése érdekében a Sablonnyelv-kifejezések, JSON-töredék a sablonban használt értékeket. |
 | functions |Nem |Felhasználó által megadott funkciók érhetők el a sablonon belül. |
-| erőforrások |Igen |Erőforrástípusok, telepített vagy frissített egy erőforráscsoportban. |
+| erőforrások |Igen |Erőforrástípusok, telepített vagy egy erőforráscsoport vagy előfizetés frissített. |
 | kimenetek |Nem |Üzembe helyezés után visszaadott értékek. |
 
 Minden elem is megadhatja a tulajdonságokkal rendelkezik. Az alábbi példa bemutatja a teljes szintaxisra, sablon:

@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 5daedcc931732e916a47ab857f489ebff0184101
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5b24b21c4511b535509421aaa35ba3498e9f6a8
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204457"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246017"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Gyors útmutató: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
 
@@ -49,7 +49,7 @@ Nincsenek a Studio használható számos mintaadathalmazainak, vagy adatokat sz�
 Ebben az adathalmazban számos különböző autót bemutató bejegyzés szerepel. A bejegyzések számos adatot (például márka, típus, műszaki specifikációk, ár) tartalmaznak.
 
 > [!TIP]
-> Az [Azure AI katalógusban](https://gallery.cortanaintelligence.com) megtalálja az alábbi kísérlet egy működő példányát. Lépjen a **[Your first data science experiment - Automobile price prediction](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** (Az első adatelemzési kísérlet – Autó árának előrejelzése) lapra, és kattintson az **Open in Studio** (Megnyitás a Studióban) lehetőségre a kísérlet Machine Learning Studio munkaterületre való letöltéséhez.
+> Az [Azure AI katalógusban](https://gallery.azure.ai) megtalálja az alábbi kísérlet egy működő példányát. Lépjen a **[Your first data science experiment - Automobile price prediction](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** (Az első adatelemzési kísérlet – Autó árának előrejelzése) lapra, és kattintson az **Open in Studio** (Megnyitás a Studióban) lehetőségre a kísérlet Machine Learning Studio munkaterületre való letöltéséhez.
 
 A következőképpen vonhatja be az adathalmazt a kísérletbe.
 

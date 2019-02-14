@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8569b305e7f194812bfc3e12bd852334f221bd99
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 17b7f7fa4889742989a61f8cc076224d46f8eac2
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207114"
+ms.locfileid: "56234102"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory join megvalósítás megtervezése
 
@@ -146,7 +146,7 @@ Az 1.1.819.0-s verziótól kezdve az Azure AD Connectben egy varázsló segíti 
 - [A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz](hybrid-azuread-join-managed-domains.md)
 
 
- Ha a szükséges verzió az Azure AD Connect telepítésével lehetőség nem az Ön számára, lásd: [manuális konfigurálása az eszközregisztrációs](https://docs.microsoft.com/en-us/azure/active-directory/devices/hybrid-azuread-join-manual). 
+ Ha a szükséges verzió az Azure AD Connect telepítésével lehetőség nem az Ön számára, lásd: [manuális konfigurálása az eszközregisztrációs](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual). 
 
 
 ## <a name="on-premises-ad-upn-support-in-hybrid-azure-ad-join"></a>A helyszíni AD UPN támogatása a hibrid Azure AD-csatlakozás

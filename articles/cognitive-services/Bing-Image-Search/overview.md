@@ -9,28 +9,25 @@ ms.assetid: 1446AD8B-A685-4F5F-B4AA-74C8E9A40BE9
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: overview
-ms.date: 10/11/2017
+ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b5fc297850ef4b8bfbc0e4bdcf21877e1b94ffe1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fa1e2e6ac6e85c431a759d8eb1c22923e86e40d4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861734"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237314"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Mi az a Bing Image Search API?
 
-A Bing Image Search API segítségével használhatja a Bing kognitív képkeresési képességeit az alkalmazásában. A felhasználói lekérdezések az API-n keresztüli elküldésével releváns és jó minőségű képeket kérhet le és jeleníthet meg a [Bing Imageshez](https://www.bing.com/images) hasonlóan.
+A Bing Image Search API lehetővé teszi a Bing kép keresési lehetőségeket használhatja az alkalmazásban. Keresési lekérdezéseket küld az API-t, juthat magas minőségű képeket hasonló [bing.com/images](https://www.bing.com/images).
 
-Ne feledje, hogy a Bing Image Search API csak képtalálatokat hoz fel. A webes tartalmak egyéb típusainak kereséséhez használja a [Bing Web Search API-t](../bing-web-search/search-the-web.md), a [Video Search API-t](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search) és a [News Search API-t](https://review.docs.microsoft.com/azure/cognitive-services/bing-news-search).
+A Bing Image Search API a csak rendszerkép-keresési eredmények biztosít, miközben egyesítése, vagy használhatja az egyéb elérhető [Bing Search APIs](../bing-web-search/bing-api-comparison.md) számos különböző típusú tartalom keresése a weben.
 
 ## <a name="bing-image-search-features"></a>A Bing Image Search funkciói
 
-Ugyan a Bing Image Search elsősorban releváns képeket keres és ad vissza a keresési lekérdezésekben, a szolgáltatás emellett további funkciókat is biztosít a képek intelligens és fókuszált webes lekéréséhez.
-
-
-| Funkció                                                                                                                                                                                 | Leírás                                                                                                                                                            |
+| Szolgáltatás                                                                                                                                                                                 | Leírás                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Keresési kifejezések valós idejű felkínálása](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) | A [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) a begépelés során javaslatokat tesz a keresési kifejezésekre, így könnyebbé teszi az alkalmazások használatát. |
 | [Képtalálatok szűrése és korlátozása](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)                       | A Bing által visszaadott képek szűrése a lekérdezési paraméterek szerkesztésével.                                                                                                       |
@@ -51,7 +48,7 @@ A Bing Image Search API egy RESTful-webszolgáltatás, így bármely olyan progr
 Először próbálja ki a Bing Image Search API [interaktív bemutatóját](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/).
 Ez bemutatja, hogyan lehet gyorsan testre szabni a keresési lekérdezéseket és felkutatni a webes képeket.
 
-Amikor kész meghívni az API-t, hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+Ha már készen áll az API-t, hozzon létre egy [Cognitive services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
 Az első API-kérés gyors létrehozásához sajátítsa el a következőket:
 
@@ -60,10 +57,12 @@ Az első API-kérés gyors létrehozásához sajátítsa el a következőket:
 
 ## <a name="see-also"></a>Lásd még
 
-* A [Bing Image Search API 7-es verziójának](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) referenciáit bemutató szakasz a képalapú találatok lekérdezéséhez használható végpontokkal, fejlécekkel, API-válaszokkal és lekérdezési paraméterekkel kapcsolatos információkat és definíciókat tartalmazza.
+* [Díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) a Bing Search APIs. 
+
+* A [a Bing Image Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) referencia a szakasz ismerteti az API-k végpontok, fejlécek, API-válaszok és a lekérdezési paraméterek.
 
 * A [Bing használati és megjelenítési követelményei](./useanddisplayrequirements.md) a Bing Search API-k használatával kapott tartalmak és információk elfogadható használatát határozzák meg.
 
-* [A képek a Bing Image Search API használatával a webről való lekérését](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images) ismertető témakör a weben található képek keresését és lekérését mutatja be.
+* A [első képeket a weben a Bing Image Search API az](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images) cikk ismerteti, hogyan keresheti ki és képek bekérése a webről.
 
-* A [keresési lekérdezések küldését és használatát](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) ismertető témakör a keresési lekérdezések összeállítását, testreszabását és szegmentálását írja le.
+* A [Sending és a keresési lekérdezéseket](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) cikk teheti, testre szabhatja, és keresési lekérdezések forgáspont módját ismerteti.

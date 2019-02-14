@@ -3,19 +3,19 @@ title: Nyelvi támogatás – szövegelemzési API
 titleSuffix: Azure Cognitive Services
 description: 'A szövegelemzési API által támogatott természetes nyelvek listáját. Ez a cikk ismerteti az egyes műveletek támogatott nyelvek: vélemények elemzése, kulcsszókeresés, nyelvfelismerés és entitások felismerése.'
 services: cognitive-services
-author: ashmaka
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 421d891ea6c580cfbdd7cfc40755b43e1d4b207e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: a9f48c8cef8d977469bb6c583d0bc363e334f693
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871285"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245320"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>A Text Analytics API nyelvéhez és régiójához támogatása
 

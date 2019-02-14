@@ -12,20 +12,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40bae06fcb174e7beb2c9bb708fea4189014f316
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 68b0dba0280ce7875e797634a5dc2254cb889ad7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163887"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244981"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>Hagyja jóvá vagy utasítsa a PIM az Azure AD-címtárbeli szerepkörökhöz tartozó kérelmek
 
-Az Azure AD Privileged Identity Management (PIM) jóváhagyást kér az aktiválási szerepkörök konfigurálása, és válasszon egy vagy több felhasználót, vagy delegált jóváhagyók csoportot. Kövesse az ebben a cikkben jóváhagyja vagy elutasítja a kérelmeket az Azure AD-címtárbeli szerepkörökhöz tartozó lépéseket.
+Az Azure AD Privileged Identity Management (PIM) jóváhagyást kér az aktiválási szerepkörök konfigurálása, és válasszon egy vagy több felhasználót, vagy delegált jóváhagyók csoportot. Delegált jóváhagyók rendelkezik jóváhagyásra váró kérelmek 24 óra. Ha 24 órán belül nem jóváhagyják a kérését, majd a jogosult felhasználó újra egy új kérelmet kell benyújtania. A 24 órás jóváhagyási időtartomány érték nem módosítható.
+
+Kövesse az ebben a cikkben jóváhagyja vagy elutasítja a kérelmeket az Azure AD-címtárbeli szerepkörökhöz tartozó lépéseket.
 
 ## <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 158c2a8919bccea03f5c7b67aef23cd07022c259
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 5a72bfccd69a51aa6bafb34bb768b48640e554af
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900510"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243008"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Oktatóanyag: Vissza az Azure Data Box, és ellenőrizze az adatok feltöltése az Azure-bA
 
@@ -42,7 +42,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy:
 ## <a name="ship-data-box-back"></a>Data Box visszaküldése
 
 1. Ellenőrizze, hogy az eszköz ki van-e kapcsolva, és a kábelek el lettek-e távolítva. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
-2. Ha az eszközt az Egyesült Államokban postázza, győződjön meg arról, hogy a fuvarlevélcímke látható az E-ink kijelzőn, és egyeztesse a csomagfelvételt a szállítóval. Ha a címke megsérült vagy elveszett vagy nem jelenik meg az E-ink megjelenő, lépjen a **áttekintés > levélcímke letöltése** az Azure Portalon. Töltse le a szállítási címkét, és elhelyezi az eszközön.
+2. Ha az eszközt az Egyesült Államokban postázza, győződjön meg arról, hogy a fuvarlevélcímke látható az E-ink kijelzőn, és egyeztesse a csomagfelvételt a szállítóval. Ha a címke megsérült vagy elveszett vagy nem jelenik meg az E-ink megjelenő, majd lépjen kapcsolatba a Microsoft ügyfélszolgálatához. Csak akkor, ha a támogatási javasol lépjen **áttekintés > levélcímke letöltése** az Azure Portalon. Töltse le a szállítási címkét, és elhelyezi az eszközön.
 
     Ha az eszközt Európában postázza, az E-ink kijelző nem mutatja a fuvarlevélcímkét. Ehelyett a visszaküldési fuvarlevélcímkét a feladási fuvarlevélcímke alatti átlátszó zsebben találja. Távolítsa el a régi fuvarlevélcímkét, és győződjön meg arról, hogy a fuvarlevélcímke jól látható.
     

@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: Csatlakozás és adatlekérdezés az Azure SQL Database |} A Microsoft Docs'
+title: 'SSMS: Csatlakozás és adatlekérdezés egy Azure SQL database-ben |} A Microsoft Docs'
 description: Ebből a cikkből megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure-ban az SQL Server Management Studio (SSMS) használatával. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás sql database-hez,sql server management studio
 services: sql-database
@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 095d7cf43d071d3857160d05e721bf7ac165cba2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/12/2019
+ms.openlocfilehash: 5c5b32eaf3066abe4489d909e224d2aa65e884a7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756784"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238028"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: SQL Server Management Studio használatával csatlakozhat, és az Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -26,19 +26,35 @@ Ez a rövid útmutatóban használni kívánt [SQL Server Management Studio] [ s
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+  || Önálló adatbázis | Felügyelt példány |
+  |:--- |:--- |:---|
+  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) |
+  | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolat egy virtuális gépről](sql-database-managed-instance-configure-vm.md)|
+  |||[Helyszíni kapcsolat](sql-database-managed-instance-configure-p2s.md)
+  |Adatok betöltése|Az Adventure Works betöltött száma a rövid útmutató|[Állítsa vissza a Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |||Állítsa vissza vagy importálása az Adventure Works [BACPAC](sql-database-import.md) fájlt [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||
 
-* Egy konfigurált kiszolgálószintű tűzfalszabályt. További információkért lásd: [kiszolgálószintű tűzfalszabály létrehozása](sql-database-server-level-firewall-rule.md).
+  > [!IMPORTANT]
+  > Ebben a cikkben a parancsfájlok az Adventure Works adatbázisa használatához készültek. Felügyelt példánnyal Ha az Adventure Works adatbázisa importálása-példány adatbázis, vagy módosítsa a parancsfájlokat ebben a cikkben a Wide World Importers-adatbázis használatára.
 
 ## <a name="install-the-latest-ssms"></a>Az SSMS legújabb verziójának telepítése
 
 Mielőtt elkezdené, győződjön meg arról, hogy telepítette a legújabb [SSMS][ssms-install-latest-84g]. 
 
-## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
+## <a name="get-sql-server-connection-information"></a>Az SQL server-kapcsolati adatok lekéréséhez
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati információkat kaphat. A következő eljárások szüksége a kiszolgáló teljes nevét vagy a gazdagépnév, az adatbázis neve és a bejelentkezési adatait.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
+2. Keresse meg a **SQL-adatbázisok** vagy **SQL felügyelt példányai** lapot.
+
+3. A a **áttekintése** lapon, tekintse át a teljes kiszolgálónevet melletti **kiszolgálónév** egy önálló adatbázis vagy a kiszolgáló teljes neve melletti **gazdagép** számára egy felügyelt a példány. Másolja ki a kiszolgáló nevét vagy az állomásnevet, rámutatnak, és válassza a **másolási** ikonra.
 
 ## <a name="connect-to-your-database"></a>Csatlakozás az adatbázishoz
 

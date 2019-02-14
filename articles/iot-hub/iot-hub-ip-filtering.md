@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: cd382c0daff79b487f4ecae01ad852f6e57f3a25
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d549127b5cbdb3a94e435e753592f3227cb95f3a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734249"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232214"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -72,7 +72,7 @@ Az IP-szűrési szabály törléséhez válassza ki egy vagy több szabályt a r
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Lekérése és frissítése az Azure CLI-vel IP-szűrők
 
-Az IoT Hub IP-szűrők lekérje és frissíteni [Azure CLI-vel](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest). 
+Az IoT Hub IP-szűrők lekérje és frissíteni [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). 
 
 Az IoT hub az aktuális IP-szűrők lekéréséhez futtassa:
 
@@ -121,7 +121,7 @@ Vegye figyelembe, hogy `<ipFilterIndexToRemove>` meg kell felelnie az IP-szűrő
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>Lekérése és frissítése az Azure PowerShell-lel IP-szűrők
 
-Az IoT Hub IP-szűrők lekérje és beállítása keresztül [Azure PowerShell-lel](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.2.0). 
+Az IoT Hub IP-szűrők lekérje és beállítása keresztül [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0). 
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name
@@ -145,7 +145,7 @@ $iothubResource | Set-AzureRmResource -Force
 
 ## <a name="update-ip-filter-rules-using-rest"></a>Frissítse az IP-szűrési szabályok REST használatával
 
-Előfordulhat, hogy lekérni, és az IoT Hub használata az Azure erőforrás-szolgáltató REST-végpont IP-szűrő módosítása. Lásd: `properties.ipFilterRules` a [createorupdate metódust](https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource/createorupdate).
+Előfordulhat, hogy lekérni, és az IoT Hub használata az Azure erőforrás-szolgáltató REST-végpont IP-szűrő módosítása. Lásd: `properties.ipFilterRules` a [createorupdate metódust](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
 
 
 ## <a name="ip-filter-rule-evaluation"></a>IP-szűrési szabály értékelése

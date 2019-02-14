@@ -11,19 +11,19 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 18e786ba45e476df2ab223a47f1b77ef6b778d7f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 02/13/2019
+ms.openlocfilehash: 4ddeef417490b5b928f46dce428acc3e5febe159
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657773"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245983"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Aktív georeplikáció konfigurálása az Azure SQL Database az Azure portal és a feladatátvétel kezdeményezése
 
 Ez a cikk bemutatja, hogyan konfigurálhatja [aktív georeplikáció egyetlen vagy készletezett adatbázisok](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) az Azure SQL Database-adatbázishoz a [az Azure portal](http://portal.azure.com) és, hogy feladatátvételt kezdeményezzen.
 
-Egyetlen vagy készletezett adatbázisok automatikus feladatátvételi csoportok kapcsolatos információkért lásd: [ajánlott eljárások a feladatátvételi csoportok használatával egyetlen vagy készletezett adatbázisok](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Felügyelt példány (előzetes verzió) az automatikus feladatátvételi csoportok kapcsolatos információkért lásd: [ajánlott eljárások a feladatátvételi csoportok használatával egyetlen vagy készletezett adatbázisok](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
+Egyetlen vagy készletezett adatbázisok automatikus feladatátvételi csoportok kapcsolatos információkért lásd: [ajánlott eljárások a feladatátvételi csoportok használatával egyetlen vagy készletezett adatbázisok](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Felügyelt példány (előzetes verzió) az automatikus feladatátvételi csoportok kapcsolatos információkért lásd: [ajánlott eljárások a feladatátvételi csoportok használata a felügyelt példányok](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

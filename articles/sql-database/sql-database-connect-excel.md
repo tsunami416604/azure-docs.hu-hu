@@ -1,6 +1,6 @@
 ---
-title: Excel csatlakoztatása SQL Database adatbázishoz| Microsoft Docs
-description: Útmutató a Microsoft Excel Azure SQL adatbázishoz való csatlakoztatásához a felhőben. Adatok importálása Excelbe jelentésekhez és adatok áttekintéséhez.
+title: Excel csatlakoztatása egy Azure SQL Database-adatbázis |} A Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat egy Azure SQL Database-adatbázis a Microsoft Excel. Adatok importálása Excelbe jelentésekhez és adatok áttekintéséhez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,21 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 552293b402c697073587e887522d2daa3e33cdb6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/12/2019
+ms.openlocfilehash: c456954c3bf68fd87e51162ea6aab1d0a54b86ad
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754581"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237011"
 ---
-# <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Excel csatlakoztatása egy Azure SQL database és a egy jelentés létrehozása
+# <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Excel csatlakoztatása egy Azure SQL Database-adatbázis és a egy jelentés létrehozása
 
-Excel csatlakoztatása SQL-adatbázis, a felhőben, és importálja az adatokat, és létre táblázatokat és diagramokat az adatbázisban levő értékek alapján. Ebben az oktatóanyagban csatlakoztatjuk az Excelt az adatbázistáblához, elmentjük az adatokat tároló fájlt és az Excelre vonatkozó kapcsolatadatokat, és kimutatásdiagramot hozunk létre az adatbázis értékeiből.
+Excel csatlakoztatása egy Azure SQL Database-adatbázis és importálhat adatokat, és létre táblázatokat és diagramokat az adatbázisban levő értékek alapján. Ebben az oktatóanyagban csatlakoztatjuk az Excelt az adatbázistáblához, elmentjük az adatokat tároló fájlt és az Excelre vonatkozó kapcsolatadatokat, és kimutatásdiagramot hozunk létre az adatbázis értékeiből.
 
-Ezekhez a műveletekhez szükség van egy Azure SQL-adatbázisra. Ha nincs ilyen, az [Első SQL-adatbázis létrehozása](sql-database-single-database-get-started.md) alapján hozzon létre egy adatbázist mintaadatokkal, majd futtassa - ez csupán néhány percet vesz igénybe. Ebben a cikkben azt importálunk mintaadatokat az Excelbe az említett cikkből, de az adatainak Ön a tulajdonosa végrehajthatja a leírt lépéseket.
+Szüksége lesz egy önálló adatbázis használatának megkezdése előtt. Ha még nincs fiókja, [egy önálló adatbázis létrehozása](sql-database-single-database-get-started.md) és [kiszolgálószintű IP-tűzfalszabály létrehozása](sql-database-server-level-firewall-rule.md) beolvasni egy adatbázist mintaadatokkal, néhány perc alatt ütembe helyezheti.
+
+Ebben a cikkben azt importálunk mintaadatokat az Excelbe az említett cikkből, de az adatainak Ön a tulajdonosa végrehajthatja a leírt lépéseket.
 
 Az Excelnek is telepítve kell lennie. Ebben a cikkben a [Microsoft Excel 2016](https://products.office.com/) verziót vettük alapul.
 

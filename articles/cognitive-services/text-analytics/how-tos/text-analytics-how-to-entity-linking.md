@@ -3,19 +3,19 @@ title: Entitások felismerése használata a szövegelemzési API
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan ismerhetik fel a Text Analytics REST API használatával.
 services: cognitive-services
-author: ashmaka
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 5b8ebc76355d39c1e81217fd1f7af09f876838c9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: b2330d322c6939ba6d9581c125c512fcea9f924b
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862345"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242749"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Megnevezett entitások felismerése használata a Text Analytics (előzetes verzió)
 
@@ -62,8 +62,8 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 | DateTime      | Időtartam      | "1 perc 45 másodpercig"   | 
 | DateTime      | Beállítás           | "minden kedden"     | 
 | DateTime      | Időzóna      |    | 
-| URL-cím           | N/A\*         | "http://www.bing.com"    |
-| E-mail         | N/A\*         | "support@contoso.com" |
+| URL-cím           | N/A\*         | „http://www.bing.com”    |
+| E-mail         | N/A\*         | „support@contoso.com” |
 \* Attól függően, a bemeneti és a kinyert entitásokat, bizonyos entitások előfordulhat, hogy kihagyja a `SubType`.
 
 
@@ -104,7 +104,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
+## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
 
 Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
 

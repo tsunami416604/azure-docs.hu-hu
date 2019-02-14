@@ -1,36 +1,28 @@
 ---
-title: 'Tervezési és kialakítási létesítmények közötti kapcsolatok: Azure VPN Gateway |} Microsoft Docs'
-description: További tudnivalók a VPN-átjáró tervezése és kialakítása létesítmények közötti, hibrid és VNet – VNet kapcsolatokhoz
+title: 'Tervezési és kialakítási létesítmények közötti kapcsolatok: Azure VPN Gateway| Microsoft Docs'
+description: További tudnivalók a VPN Gateway tervezése és kialakítása cross-premises, hibrid és VNet – VNet kapcsolatokhoz
 services: vpn-gateway
-documentationcenter: na
-author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: d5aaab83-4e74-4484-8bf0-cc465811e757
+author: yushwang
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 07/27/2017
-ms.author: cherylmc
-ms.openlocfilehash: 0ebc3ef4a64432e993dd6ed69766bb64544fe433
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: yushwang
+ms.openlocfilehash: 7802061ba09a30ca34ed3804ace846118c5edb9b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23884383"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235363"
 ---
 # <a name="planning-and-design-for-vpn-gateway"></a>A VPN Gateway tervezése és kialakítása
 
-Megtervezéséről és kialakításáról a létesítmények közötti és VNet – VNet konfigurációkkal lehet egyszerű vagy összetett, hálózati igényeitől függően. Ez a cikk bemutatja, hogyan alapvető tervezési és kialakítási szempontjai.
+Tervezésekor és kialakításakor a létesítmények közötti és VNet – VNet konfigurációkkal lehet egyszerű vagy összetett, hálózati igényeitől függően. Ez a cikk végigvezeti alapvető tervezési és kialakítási szempontokat.
 
 ## <a name="planning"></a>Tervezése
 
 ### <a name="compare"></a>Létesítmények közötti kapcsolati lehetőségek
 
-Ha szeretné a helyszíni helyek biztonságos kapcsolódás egy virtuális hálózatot, ehhez három különböző módon van:-webhelyek, pont-pont és az ExpressRoute. Hasonlítsa össze a rendelkezésre álló különböző létesítmények közötti kapcsolatokat. A választott lehetőség függőségi viszonyban lehet különböző szempontok, például:
+Ha szeretné a helyszíni webhelyek biztonságos csatlakoztatása virtuális hálózathoz, akkor ehhez három különböző módon: Site-to-Site, pont – hely és az ExpressRoute. Hasonlítsa össze a rendelkezésre álló különböző létesítmények közötti kapcsolatok. A kiválasztott lehetőség például függ különféle szempontok:
 
 * Mekkora átviteli sebesség szükséges a megoldásához?
 * A nyilvános interneten kíván kommunikálni biztonságos VPN-en keresztül, vagy privát kapcsolatot szeretne használni?
@@ -38,11 +30,11 @@ Ha szeretné a helyszíni helyek biztonságos kapcsolódás egy virtuális hál�
 * Kíván VPN-eszközt használni? Ha igen, ez kompatibilis a rendszerrel?
 * Csak néhány számítógépet csatlakoztatna, vagy állandó kapcsolatra van szüksége a helyéhez?
 * Milyen típusú VPN-átjáró szükséges az Ön által létrehozni kívánt megoldáshoz?
-* Melyik átjárót SKU használja?
+* Melyik átjáró-Termékváltozatot kell használni?
 
 ### <a name="planningtable"></a>Tervezési táblázat
 
-Az alábbi táblázat segítségével eldöntheti, ajánlott a kapcsolódási beállítást választja, a megoldás.
+Az alábbi táblázat segíthet eldönteni, melyik az Ön megoldásához legmegfelelőbb kapcsolat.
 
 [!INCLUDE [vpn-gateway-cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
@@ -50,94 +42,94 @@ Az alábbi táblázat segítségével eldöntheti, ajánlott a kapcsolódási be
 
 [!INCLUDE [vpn-gateway-table-gwtype-aggtput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-### <a name="wf"></a>Munkafolyamat
+### <a name="wf"></a>A munkafolyamat
 
-Az alábbi lista ismerteti a gyakori munkafolyamat a felhő hálózati kapcsolatot:
+Az alábbi lista a felhővel általános munkafolyamatát ismerteti:
 
-1. Tervezése és a kapcsolat topológia megtervezése és listázza az összes hálózathoz szeretné csatlakoztatni-címterét.
+1. Tervezési és a kapcsolati topológia megtervezése és listázza az összes hálózat, amelyhez csatlakozni-címterét.
 2. Hozzon létre egy Azure virtuális hálózatra. 
-3. A virtuális hálózat VPN-átjáró létrehozásához.
-4. Hozzon létre, és konfigurálja a helyszíni hálózatokban vagy más virtuális hálózatok felé (szükség szerint).
-5. Létrehozhat és konfigurálhat egy pont – hely kapcsolat az Azure VPN gateway (szükség szerint).
+3. A virtuális hálózat VPN-átjáró létrehozása.
+4. Hozzon létre, és a helyszíni hálózatok vagy más virtuális hálózatokhoz való csatlakozásának konfigurálása, (igény szerint).
+5. Hozzon létre, és (igény szerint) az Azure VPN Gateway pont – hely kapcsolat konfigurálása.
 
-## <a name="design"></a>Tervezési
-### <a name="topologies"></a>Kapcsolat topológiák
+## <a name="design"></a>Tervezés
+### <a name="topologies"></a>Kapcsolódási topológiák
 
-Indítsa el a diagramok megnézi a [VPN-átjáró](vpn-gateway-about-vpngateways.md) cikk. Egyszerű diagramokat, az üzembe helyezési modellel minden topológia, és az elérhető eszközök segítségével telepítheti a configuration tartalmaz.
+Megnézzük a diagramokat az első lépésként a [információk a VPN Gateway](vpn-gateway-about-vpngateways.md) cikk. A cikk az alapszintű diagramokat, minden egyes topológiát, és az elérhető üzembe helyezési eszközök segítségével a konfiguráció üzembe helyezése az üzembe helyezési modellel tartalmaz.
 
-### <a name="designbasics"></a>Tervezési alapjai
+### <a name="designbasics"></a>Alapvető tervezési tudnivalók
 
-Az alábbi szakaszok ismertetik a VPN-átjáró alapjait. 
+A következő részekben bemutatjuk a VPN gateway alapjait. 
 
-#### <a name="servicelimits"></a>Hálózatkezelési szolgáltatások korlátok
+#### <a name="servicelimits"></a>Hálózati szolgáltatások korlátai
 
-A táblák görgetéséhez [hálózati szolgáltatási korlátok](../azure-subscription-service-limits.md#networking-limits). A felsorolt korlátai hatással lehet a tervező.
+A táblák megtekintéséhez végiggörgeti [hálózati szolgáltatási korlátok](../azure-subscription-service-limits.md#networking-limits). A felsorolt korlátok befolyásolhatják a tervezés.
 
-#### <a name="subnets"></a>Alhálózatok kapcsolatos
+#### <a name="subnets"></a>Alhálózatok kapcsolatban
 
-Kapcsolatok létrehozásakor meg kell fontolnia alhálózati tartományt. Nem lehet átfedésben lévő alhálózati címtartományt. Egy átfedő alhálózattal akkor, ha egy virtuális hálózat vagy a helyszíni hely tartalmazza ugyanazt a címtartományt, amely tartalmazza a másik helyre. Ez azt jelenti, hogy kell-e a hálózati szakemberek a helyi a helyszíni hálózatokhoz ki egy tartományt az Azure IP-cím használatára carve terület/alhálózatok címzést. Címterületek használatát, amelyek nem használják a helyszíni helyi hálózaton van szüksége.
+Amikor kapcsolatokat hoz létre, meg kell fontolnia az alhálózat-címtartományok. Alhálózati címtartomány átfedő rendelkezhet. Egy átfedő alhálózattal van, amikor egy virtuális hálózat vagy a helyszíni hely tartalmazza ugyanazt a címtartományt, amely tartalmazza a másik helyre. Ez azt jelenti, hogy kell-e a hálózati mérnökök hogy különítsen el egy kell használni az Azure IP-címtartományt a helyszíni hálózatok címzés terület/alhálózatokat. Nem használja a helyi hálózat a címtér van szüksége.
 
-Egymást átfedő alhálózatokat elkerülve az során is fontos dolgozik VNet – VNet kapcsolatokhoz. Ha az alhálózat átfedésben vannak, és egy IP-cím szerepel a küldő és a célmappa Vnetek, VNet – VNet kapcsolatokhoz sikertelen. Azure nem átirányíthatja az adatokat a virtuális hálózat, mert a cél címe a küldő virtuális hálózat része.
+Kerülje az átfedésben lévő alhálózatok akkor is fontos, ha dolgozik a VNet – VNet kapcsolatokhoz. Ha az alhálózat átfedésben vannak, és a egy IP-cím létezik a küldő és a cél virtuális hálózatok, virtuális hálózatok közötti kapcsolatok sikertelen. Az Azure nem továbbíthatják az adatokat a virtuális hálózathoz, mert a cél címe a küldő virtuális hálózat része.
 
-VPN-átjárók nevű egy átjáró-alhálózatot a megadott alhálózat szükséges. A megfelelő működéshez az összes átjáró-alhálózatnak a GatewaySubnet névvel kell rendelkeznie. Ne felejtse el nem nevet az átjáró alhálózatának egy másik nevet, és nem telepítendő virtuális gépek vagy bármi más az átjáró alhálózatának. Lásd: [átjáró alhálózatok](vpn-gateway-about-vpn-gateway-settings.md#gwsub).
+VPN-átjárókhoz szükséges egy átjáróalhálózat nevű alhálózatot. A megfelelő működéshez az összes átjáró-alhálózatnak a GatewaySubnet névvel kell rendelkeznie. Győződjön meg arról, hogy nem egy másik nevet az átjáróalhálózat neve, és ne helyezzen üzembe virtuális gépeket, vagy bármi más, az átjáró-alhálózat. Lásd: [Átjáróalhálózatok](vpn-gateway-about-vpn-gateway-settings.md#gwsub).
 
-#### <a name="local"></a>Tudnivalók a helyi hálózati átjáró
+#### <a name="local"></a>Helyi hálózati átjárókkal kapcsolatos
 
-A helyi hálózati átjáró általában a helyszínt jelenti. A klasszikus üzembe helyezési modellel a helyi hálózati átjáró nevezzük helyi hálózati helyet. A helyi hálózati átjáró konfigurálásakor ehhez adjon neki egy nevet, adja meg a helyszíni VPN-eszköz nyilvános IP-címét, és a címelőtagokat, amely a helyszíni a helyen. Azure ellenőrzi, hogy a hálózati forgalom cél címelőtagokat, a megadott konfigurációs tekint helyi hálózati átjáró, és ennek megfelelően irányítja a csomagokat. A címelőtagokat igény szerint módosíthatók. További információkért lásd: [helyi hálózati átjárók](vpn-gateway-about-vpn-gateway-settings.md#lng).
+A helyi hálózati átjáró általában a helyszínt jelenti. A klasszikus üzemi modellben a helyi hálózati átjáró neve egy helyi hálózati telephelyhez. A helyi hálózati átjáró konfigurálásakor, adjon meg egy nevet, adja meg a helyszíni VPN-eszköz nyilvános IP-címét és a helyszínen található címelőtagok. Azure a cél-címelőtagokat, a hálózati forgalmat megvizsgál, consults szintűre frissül az Ön által megadott konfigurációt a helyi hálózati átjáró, és ennek megfelelően irányítja a csomagokat. A címelőtagok szükség szerint módosíthatja. További információkért lásd: [helyi hálózati átjárók](vpn-gateway-about-vpn-gateway-settings.md#lng).
 
-#### <a name="gwtype"></a>Átjáró típusával kapcsolatban
+#### <a name="gwtype"></a>Információk az átjárótípusokról
 
-Jelölje ki a megfelelő átjáró a topológia fontos. Ha a megfelelő típusú választja, az átjáró nem fog megfelelően működni. Az átjáró típusa az átjáró kapcsolódási módját adja meg, és az Erőforrás-kezelő üzembe helyezési modelljének kötelező konfigurációs beállításai közé tartozik.
+A topológia a megfelelő átjárótípus kiválasztása, kritikus fontosságú. Ha a megfelelő típusú választja, az átjáró nem fog megfelelően működni. Az átjáró típusa az átjáró kapcsolódási módját adja meg, és az Erőforrás-kezelő üzembe helyezési modelljének kötelező konfigurációs beállításai közé tartozik.
 
-Az átjáró típusok a következők:
+Az átjáró-típusok a következők:
 
 * Vpn
 * ExpressRoute
 
-#### <a name="connectiontype"></a>Kapcsolattípusok kapcsolatos
+#### <a name="connectiontype"></a>Kapcsolattípusok kapcsolatban
 
-Minden egyes konfiguráció esetében egy adott kapcsolattípusra van szükség. A csatlakozási típusok a következők:
+Minden egyes konfiguráció esetében egy adott kapcsolattípusra van szükség. A kapcsolattípusok közül a következők:
 
 * IPsec
 * Vnet2Vnet
 * ExpressRoute
 * VPNClient
 
-#### <a name="vpntype"></a>Információ a VPN-típusai
+#### <a name="vpntype"></a>Tudnivalók a VPN-típusok
 
-Minden egyes konfiguráció szükséges egy adott VPN-típus. Kétféle konfiguráció kombinálásakor (például Helyek közötti és Pont–hely kapcsolat létesítésekor ugyanazon a virtuális hálózaton) olyan VPN-típust kell használni, amely mindkét kapcsolat követelményeit kielégíti.
+Az egyes konfigurációkhoz egy adott VPN-típus szükséges. Kétféle konfiguráció kombinálásakor (például Helyek közötti és Pont–hely kapcsolat létesítésekor ugyanazon a virtuális hálózaton) olyan VPN-típust kell használni, amely mindkét kapcsolat követelményeit kielégíti.
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
-Az alábbi táblázatok bemutatják a VPN-típus, akkor minden kapcsolat konfigurációs van leképezve. Győződjön meg arról, hogy az átjáró a VPN-típus megfelel a létrehozni kívánt konfigurációs. 
+Az alábbi táblázatok bemutatják a VPN-típust, mivel mindegyik kapcsolat konfigurációja vannak leképezve. Ellenőrizze, hogy az átjáró VPN-típust megegyezik a létrehozni kívánt beállításait. 
 
 [!INCLUDE [vpn-gateway-table-vpntype](../../includes/vpn-gateway-table-vpntype-include.md)]
 
-### <a name="devices"></a>A pont-pont kapcsolatok VPN-eszközök
+### <a name="devices"></a>Site-to-Site-kapcsolatok VPN-eszközök
 
-A pont-pont kapcsolat létrehozásakor, függetlenül a telepítési modell konfigurálásához a következőkre van szükség:
+Helyek közötti kapcsolat, függetlenül üzembe helyezési modellben konfigurálása a következőkre van szükség:
 
-* A VPN-eszköz, amely kompatibilis a Azure VPN gatewayek
-* Egy nyilvánosan elérhető IPv4 IP-címet, amely nincs NAT mögött.
+* Az Azure VPN-átjárókkal kompatibilis VPN-eszköz
+* Egy nyilvános IPv4 IP-címet, amely nem NAT mögött
 
-Felhasználói élmény beállítása a VPN-eszköz, vagy valaki meg az eszköz által konfigurált kell.
+A VPN-eszköz konfigurálása felhasználói élményt, vagy rendelkezik valaki az Ön számára az eszközök konfigurálása kell.
 
 [!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
-### <a name="forcedtunnel"></a>Fontolja meg kényszerített bújtatás Útválasztás
+### <a name="forcedtunnel"></a>Fontolja meg kényszerített bújtatásos Útválasztás
 
-A legtöbb konfigurációk esetén konfigurálhatja a kényszerített bújtatást. A kényszerített bújtatás lehetővé teszi az átirányítási vagy "kényszerített" minden internetre irányuló forgalomnak biztonsági másolatot a helyszíni helyre vizsgálati és naplózási pont-pont VPN-alagúton keresztül. Ez az kritikus fontosságú biztonsági előfeltétele annak, hogy a legtöbb vállalati informatikai házirendek. 
+A legtöbb konfiguráció esetében is kényszerített bújtatást konfigurál. Kényszerített bújtatás lehetővé teszi az átirányítási vagy "kényszerített" internetre irányuló összes forgalmat a helyszíni helyre biztonsági és vizsgálati és naplózási Site-to-Site VPN-alagúton keresztül. Ez a legtöbb vállalati informatikai kritikus fontosságú biztonsági követelményeket a szabályzatokat. 
 
-Kényszerített bújtatás nélkül internetre irányuló forgalomnak a virtuális gépek Azure-ban lesz mindig haladnak át Azure hálózati infrastruktúráról közvetlenül kimenő csatlakozik az internethez, a beállítás lehetővé teszi vizsgálja meg, vagy a forgalom naplózása nélkül. Jogosulatlan Internet-hozzáférés is eredményezhet, információfelfedés vagy más típusú biztonsági problémákat.
+Anélkül, hogy kényszerített bújtatást végez, internetre irányuló forgalmat a virtuális gépekről az Azure-ban fog mindig haladnak át az Azure hálózati infrastruktúráról közvetlenül meg az internethez, ezáltal lehetővé teszi a forgalmat, vagy vizsgálja meg a beállítás nélkül. Jogosulatlan Internet-hozzáférés potenciálisan vezethet információfelfedés vagy más biztonsági résekkel szemben.
 
-A kényszerített bújtatás kapcsolat két üzembe helyezési modell és a különböző eszközök használatával konfigurálható. További információkért lásd: [kényszerített bújtatás konfigurálása](vpn-gateway-forced-tunneling-rm.md).
+A kényszerített bújtatás kapcsolat konfigurálható mindkét üzemi modellben és a különböző eszközök használatával. További információkért lásd: [kényszerített bújtatás konfigurálása](vpn-gateway-forced-tunneling-rm.md).
 
-**A kényszerített bújtatás diagramja**
+**Kényszerített bújtatás diagramja**
 
 ![Az Azure VPN Gateway kényszerített bújtatás diagramja](./media/vpn-gateway-plan-design/forced-tunneling-diagram.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [VPN Gateway – gyakori kérdések](vpn-gateway-vpn-faq.md) és [VPN-átjáró](vpn-gateway-about-vpngateways.md) cikkek segítséget nyújtanak a tervező az további információt.
+Tekintse meg a [VPN Gateway – gyakori kérdések](vpn-gateway-vpn-faq.md) és [információk a VPN Gateway](vpn-gateway-about-vpngateways.md) cikkek segítséget nyújt a tervezés további információt.
 
-Adott átjáró beállításaival kapcsolatos további információkért lásd: [kapcsolatos VPN-átjáró beállítások](vpn-gateway-about-vpn-gateway-settings.md).
+Adott gateway beállításaival kapcsolatos további információkért lásd: [tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md).

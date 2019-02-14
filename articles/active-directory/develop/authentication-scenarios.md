@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39359bea7b6a04c86efa37b032d35dd2c2f0d651
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 58b0d2c12a4e2088964e397b1bc499fa4adfdff3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211104"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244555"
 ---
 # <a name="what-is-authentication"></a>Mi a hitelesítés?
 
@@ -48,7 +48,7 @@ Az ábrán lévő összetevőkről a következőket érdemes tudni:
 
 * Az Azure AD az identitásszolgáltató. Az identitásszolgáltató feladata a szervezet címtárában lévő felhasználók és alkalmazások identitásának ellenőrzése, majd a felhasználók és alkalmazások sikeres hitelesítését követően a biztonsági jogkivonatok kiadása.
 * A hitelesítést az Azure AD-vel végeztető alkalmazásokat regisztrálni kell az Azure AD-ben. Az Azure AD regisztrálja és egyedileg azonosítja az alkalmazást a címtárban.
-* A fejlesztők az Azure AD nyílt forrású hitelesítési kódtáraival egyszerűen valósíthatják meg a hitelesítést, mivel a protokolladatok kezelését az Azure AD végzi. További információkért lásd az Azure AD [2.0-s](reference-v2-libraries.md) és [1.0-s verziójú hitelesítési kódtárait](active-directory-authentication-libraries.md).
+* A fejlesztők az Azure AD nyílt forrású hitelesítési kódtáraival egyszerűen valósíthatják meg a hitelesítést, mivel a protokolladatok kezelését az Azure AD végzi. További információkért tekintse meg az Azure ad-ben [2.0-s verziójú hitelesítési tárak](reference-v2-libraries.md) és [1.0-s verziójú hitelesítési tárak](active-directory-authentication-libraries.md).
 * A felhasználó hitelesítését követően az alkalmazásnak ellenőriznie kell a felhasználó biztonsági jogkivonatát, hogy megbizonyosodhasson róla a hitelesítés sikeréről. A rövid útmutatók, oktatóanyagok és a különböző nyelvekhez és keretrendszerekhez elérhető kódminták mutatják be, hogy az alkalmazásnak mit kell tennie.
   * Az alkalmazások gyors felépítésével és a jogkivonatok beszerzését és frissítését, a felhasználók bejelentkeztetését és a felhasználóadatok megjelenítését végző funkcionalitás hozzáadásával kapcsolatban lásd a dokumentáció **Rövid útmutatók** szakaszát.
   * A hitelesítéssel kapcsolatos legfontosabb fejlesztői feladatok elvégzéséhez, például a hozzáférési jogkivonatok beszerzéséhez és azok Microsoft Graph API és egyéb API-k hívásaiban való használatához, a hagyományos böngészőalapú alkalmazásokon belüli, OpenID Connect használatával végzett Microsoft-bejelentkezések megvalósításához, valamint hasonló feladatokhoz használható részletes, forgatókönyv-alapú eljárásokat a dokumentáció **Oktatóanyagok** szakaszában találja.

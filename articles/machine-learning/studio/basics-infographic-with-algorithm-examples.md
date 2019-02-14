@@ -1,5 +1,5 @@
 ---
-title: Algoritmus példákkal
+title: Algoritmuspéldák
 titleSuffix: Azure Machine Learning Studio
 description: Könnyen érthető áttekintése machine learning alapjai algoritmus példákkal tartalmazza. A letölthető infografika kiterjed a legtöbb machine learning-kérdések.
 services: machine-learning
@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: 12af8cd2fb46bf61324ddfb8e9a396e53e308a6d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2db14056b6b5ccf16c8009c21bfcff00954a7802
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978612"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242894"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető Infografika: A Machine learning alapjai algoritmuspéldákkal
 
@@ -23,7 +23,7 @@ Töltse le a machine learning alapjait kapcsolatos gyakori machine learning kér
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Népszerű algoritmusok, Machine Learning studióban
 
-[Az Azure Machine Learning Studio](https://studio.azureml.net/) gazdag tára algoritmusokat kínál prediktív elemzőeszközöket tartalmaz. Szemléltető ábra négy népszerű családok - regressziós, rendellenességek észlelése, a fürtözést és besorolási - algoritmusok azonosítja, és hivatkozásokat tartalmaz a működő szereplő példák a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com/). A katalógus tartalmazza a példakísérletek és oktatóanyagok, amelyek bemutatják, hogyan ezeket az algoritmusokat a való életből vett számos megoldás alkalmazható.
+[Az Azure Machine Learning Studio](https://studio.azureml.net/) gazdag tára algoritmusokat kínál prediktív elemzőeszközöket tartalmaz. Szemléltető ábra négy népszerű családok - regressziós, rendellenességek észlelése, a fürtözést és besorolási - algoritmusok azonosítja, és hivatkozásokat tartalmaz a működő szereplő példák a [Azure AI-katalógusban](https://gallery.azure.ai/). A katalógus tartalmazza a példakísérletek és oktatóanyagok, amelyek bemutatják, hogyan ezeket az algoritmusokat a való életből vett számos megoldás alkalmazható.
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Töltse le a algoritmuspéldákkal szemléltető ábra
 

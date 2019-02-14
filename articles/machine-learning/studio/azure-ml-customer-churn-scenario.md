@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 47d267a2c4c122d8acbb2d3bf40e6858b4d6b77c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: dd65988146d3738d8540ddf4e54ed57813e10c16
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244181"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243536"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Az ügyfél az Azure Machine Learning Studio használatával változásainak elemzése
 ## <a name="overview"></a>Áttekintés
@@ -25,7 +25,7 @@ Ez a cikk bemutatja egy referenciaimplementációt, egy ügyfél lemorzsolódás
 Ez a kísérlet fejlesztette ki és Roger Barga, korábbi nevén Microsoft Azure Machine Learning Termékmenedzser, Serge Berger és egyszerű Adattudós, a Microsoft által tesztelt. Az Azure dokumentációs csapata köszönetet mondani a segítségükért összpontosíthassák nyugtázza, és Köszönjük Ez a tanulmány megosztása.
 
 > [!NOTE]
-> Ehhez a kísérlethez használt adatokat nem nyilvánosan érhető. Hogyan hozhat létre egy gépi tanulási modellt lemorzsolódásának elemzése a példát talál: [Kiskereskedelmi vásárlói lemorzsolódás folyamatmodell-sablont](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1) a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/)
+> Ehhez a kísérlethez használt adatokat nem nyilvánosan érhető. Hogyan hozhat létre egy gépi tanulási modellt lemorzsolódásának elemzése a példát talál: [Kiskereskedelmi vásárlói lemorzsolódás folyamatmodell-sablont](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) a [Azure AI-katalógusban](http://gallery.azure.ai/)
 > 
 > 
 
@@ -106,7 +106,7 @@ Az alábbi ábrák bemutatják a használt adatok.
  
 
 > Vegye figyelembe, hogy ezek az adatok személyes, és ezért a modell és az adatok nem oszthatók meg.
-> Azonban egy hasonló modell, nyilvánosan elérhető adatok használatával, lásd: Ez a minta Kísérletezgessen egy kicsit a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/): [Ügyfeleinek Lemorzsolódása](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Azonban egy hasonló modell, nyilvánosan elérhető adatok használatával, lásd: Ez a minta Kísérletezgessen egy kicsit a [Azure AI-katalógusban](http://gallery.azure.ai/): [Ügyfeleinek Lemorzsolódása](http://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Többet szeretne megtudni, hogyan implementálható a Cortana Intelligence Suite segítségével lemorzsolódási elemzési modell, azt is javasoljuk [ebben a videóban](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) vezető Programmenedzsere hétköznapon Hyong Tok szerint. 
 > 
@@ -219,7 +219,7 @@ Ez a tanulmány azt ismerteti, hogy észszerű megközelítése problémájának
 
 [4] [big Data típusú adatok Marketing: Az ügyfelek hatékonyabb megszólítása és a meghajtó érték](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [telekommunikációs churn folyamatmodell-sablont](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com/) 
+[5] [telekommunikációs churn folyamatmodell-sablont](http://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) a [Azure AI-katalógusban](http://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>Függelék

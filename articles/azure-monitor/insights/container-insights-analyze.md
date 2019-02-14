@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: f0f929e7caece9bea10dbe09e237bc987ad93d44
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5a72c0539cabec3bf4168280c85a2afb92569b25
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159655"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234000"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése 
 Az Azure monitorral tárolók segítségével a teljesítmény diagramokat és az állapot az Azure Kubernetes Service (AKS)-fürtök két perspektíva adatai, közvetlenül az AKS-fürt vagy az Azure-ból összes AKS-fürt az előfizetéshez, a számítási feladat figyeléséhez Ez a figyelő. Megtekintése az Azure Container Instances (ACI) esetén is lehetséges egy adott AKS-fürt monitorozására.
@@ -275,5 +275,5 @@ Gyakran hasznos hozhatók létre olyan lekérdezések, amelyek például vagy a 
 | **Válassza ki a megjelenítendő lehetőség**:<br> Perf<br> &#124;ahol ObjectName == "K8SContainer" és a CounterName == "cpuUsageNanoCores" &#124; AvgCPUUsageNanoCores összefoglalója avg(CounterValue) a bin (TimeGenerated, 30 millió), InstanceName = | Tároló CPU | 
 | **Válassza ki a megjelenítendő lehetőség**:<br> Perf<br> &#124;ahol ObjectName == "K8SContainer" és a CounterName == "memoryRssBytes" &#124; AvgUsedRssMemoryBytes összefoglalója avg(CounterValue) a bin (TimeGenerated, 30 millió), InstanceName = | Tároló memória |
 
-## <a name="alerting"></a>Riasztások kezelése
-Az Azure Monitor for containers szolgáltatásban nem tartalmazza a riasztásokat, amelyek másolhatja és módosíthatja a támogató folyamatok és eljárások alapján előre meghatározott. Addig is tekintse meg [riasztások létrehozása az Azure Monitor szolgáltatással](../../azure-monitor/platform/alerts-log.md?toc=/azure/azure-monitor/toc.json) , és ismerje meg, hogyan hozhat létre saját riasztások készlete.  
+## <a name="next-steps"></a>További lépések
+Az Azure Monitor for containers szolgáltatásban nem tartalmazza a riasztások másolása és módosítása a támogató folyamatok és eljárások alapján előre meghatározott. Tekintse át a [teljesítményével kapcsolatos riasztások létrehozása az Azure Monitor szolgáltatással tárolók](container-insights-alerts.md) megtudhatja, hogyan hozhat létre a magas CPU és memória kihasználtságáról ajánlott riasztásokat.  

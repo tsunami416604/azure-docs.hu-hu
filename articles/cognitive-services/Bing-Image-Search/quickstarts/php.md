@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 9/07/2018
+ms.date: 2/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5a6cdc5912936b4b73fb45f37e30958b30dbcf0f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cca6fba401d8673cf97897c24a9d6de2329f19a4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876623"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232489"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Gyors útmutató: Képkeresés a Bing Image Search REST API és a PHP használatával
 
@@ -49,9 +49,9 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket.
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-## <a name="construct-and-perform-a-http-request"></a>HTTP-kérés összeállítása és végrehajtása
+## <a name="construct-and-perform-an-http-request"></a>Hozza létre, és végezze el a HTTP-kérés
 
-1. Az előző lépés változóinak használatával készítse elő a HTTP-kérést, amelyet az Image Search API-nak küld majd el.
+1. Az utolsó lépésben a változók egy HTTP-kérelem Image Search API segítségével.
 
     ```php
     $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
@@ -59,7 +59,7 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket.
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
-2. Hajtsa végre a webes kérést, és kérje le a JSON-választ.
+2. A webes kérelem elküldéséhez, és a JSON-választ kaphat.
 
     ```php
     $context = stream_context_create($options);
@@ -81,7 +81,7 @@ Dolgozza fel és jelenítse meg a JSON-választ.
         return array($headers, $result);
     ```
 
-## <a name="sample-json-response"></a>Példa JSON-válaszra
+## <a name="example-json-response"></a>Példa JSON-válasz
 
 A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.
 
@@ -125,7 +125,7 @@ A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintavá
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 
@@ -137,7 +137,8 @@ A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintavá
 ## <a name="see-also"></a>Lásd még
 
 * [Mi a Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
+* [Díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) a Bing Search APIs. 
 * [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

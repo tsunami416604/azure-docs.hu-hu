@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 2e8b2753a441b0d7f27745fdf622b26dcee7784a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 125f1a2a041c8c05289c95bd12c10618bfc622a8
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572254"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246934"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez
 
@@ -51,7 +51,7 @@ További információ a meglévő virtuális gépek Premium Storage-ba való mig
 
 * **Prémium szintű tárolólemezeket**
 
-    A Premium Storage támogatja a Virtuálisgép-lemezek, amelyek adott méret-sorozat virtuális gépei csatolhatók. A Premium Storage számos különböző Azure virtuális gépeket támogatja. A nyolc GA lemezméretek megválaszthatja: P4 (32 GiB), P6 (64 GiB), P10 (128 GiB), p15-ös (256 GB), P20 (512 GiB), P30 (1 024 GB), P40 (2048 GiB), P50 (4095 GiB). Valamint három lemezméretek előzetes: a P60 8192 GiB (8 TiB), P70 16,348 GiB (16 TiB), P80 32 767 GiB (32 TiB). P4, P6, P15, P60, P70 és P80 lemezméretek jelenleg csak a Managed Disks esetében támogatott. Minden lemez méretét a saját teljesítmény specifikációi. Az alkalmazás követelményeitől függően egy vagy több lemez is csatlakoztatható a virtuális géphez. A specifikációk részletesebben leírjuk, hogy [prémium szintű Storage méretezhetőségi és teljesítménycéljai](#scalability-and-performance-targets).
+    A Premium Storage támogatja a Virtuálisgép-lemezek, amelyek adott méret-sorozat virtuális gépei csatolhatók. A Premium Storage számos különböző Azure virtuális gépeket támogatja. Van nyolc általánosan elérhető lemezek méretei közül választhat:  P4 (32 GiB), P6 (64 GiB), P10 (128 GiB), p15-ös (256 GB), P20 (512 GiB), P30 (1 024 GB), P40 (2048 GiB), P50 (4095 GiB). Valamint három előzetes lemezméretek: A P60 8192 GiB (8 TiB), P70 16,348 GiB (16 TiB), P80 32 767 GiB (32 TiB). P4, P6, P15, P60, P70 és P80 lemezméretek jelenleg csak a Managed Disks esetében támogatott. Minden lemez méretét a saját teljesítmény specifikációi. Az alkalmazás követelményeitől függően egy vagy több lemez is csatlakoztatható a virtuális géphez. A specifikációk részletesebben leírjuk, hogy [prémium szintű Storage méretezhetőségi és teljesítménycéljai](#scalability-and-performance-targets).
 
 * **Prémium szintű lapblobok**
 
@@ -67,7 +67,7 @@ További információ a meglévő virtuális gépek Premium Storage-ba való mig
     - [Az Azure CLI az Azure Storage szolgáltatáshoz](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
     - [Az Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (az Azure Resource Manageren alapuló üzemelő példányok) vagy az Azure Storage erőforrás-szolgáltatói ügyfélkódtárak valamelyik
 
-    Prémium szintű tárfiókok korlátai kapcsolatos további információkért lásd: [prémium szintű Storage méretezhetőségi és teljesítménycéljai](#premium-storage-scalability-and-performance-targets).
+    További információ a prémium szintű tárfiókok korlátairól, tekintse meg a Premium Storage méretezhetőségi és teljesítménycéljai.
 
 * **Helyileg redundáns Premium tárolóban**
 
@@ -101,7 +101,7 @@ További információt az Azure windowsos virtuálisgép-típusairól és -mére
     >
     > 
 
-* **Gyorsítótár**
+* **Cache**
 
     Amely támogatja a Premium Storage virtuális gépek (VM) rendelkezik egy egyedi gyorsítótárazási funkció magasabb szintű teljesítményt és kisebb késést eredményez. A gyorsítótárazási funkció meghaladja az alapul szolgáló prémium szintű tárolólemez-teljesítményt. Nem minden virtuális gépek támogatási gyorsítótárazás, ezért tekintse a Virtuálisgép-specifikációk a Virtuálisgép-méretek is érdeklik a további információt.  Virtuális gépek, amelyek támogatják a gyorsítótárazás jelzi, ez a "Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény" mérték azok specifikációja.  Közvetlenül a virtuális gép cím alatt is megadott.
     
@@ -138,7 +138,7 @@ Premium storage-fiókok a következő teljesítménycélokat rendelkezik:
 
 | Teljes számla kapacitás | Helyileg redundáns tárfiókok teljes sávszélesség |
 | --- | --- | 
-| Lemez kapacitása: 35 TB <br>Pillanatkép-kapacitás: 10 TB-os | Felfelé 50 Gigabit / másodperc a bejövő<sup>1</sup> + kimenő<sup>2</sup> |
+| Lemez kapacitása: 35 TB <br>Pillanatkép-kapacitás: 10 TB | Felfelé 50 Gigabit / másodperc a bejövő<sup>1</sup> + kimenő<sup>2</sup> |
 
 <sup>1</sup> tárfiók küldött összes adatot (kérést)
 
@@ -149,18 +149,18 @@ További információkért lásd: [Azure Storage méretezhetőségi és teljesí
 Ha a premium storage-fiókok nem felügyelt lemezeket használ, és az alkalmazás meghaladja a skálázhatósági célokat, az egy tárfiókban, érdemes migrálása felügyelt lemezekre. Ha nem szeretné migrálása felügyelt lemezekre, hozhat létre az alkalmazás több tárfiók használata. Ezt követően az adatok particionálása ezen a tárfiókon keresztül. Például, ha 51 TB-os lemezek csatolása több virtuális gép között elosztva őket két tárfiókot. 35 TB csak az egyetlen prémium szintű storage-fiókok. Győződjön meg arról, hogy egyetlen premium storage-fiók soha nem rendelkezik több mint 35 TB kiosztott lemezeket.
 
 ### <a name="premium-storage-disk-limits"></a>Prémium szintű Storage korlátok
-Egy prémium szintű tárolólemez üzembe helyezésekor, a lemez mérete határozza meg, a maximális IOPS és átviteli sebesség (sávszélesség). Prémium szintű tárolólemezek típusai nyolc általánosan elérhető az Azure kínál: P4 (Managed Disks csak) P6 (Managed Disks csak) P10, p15-ös (Managed Disks csak), P20, P30, P40 vagy P50. Valamint három lemezméretek előzetes: a P60 P70 és P80. Minden egyes prémium szintű tárolólemez-típusba IOPS és átviteli sebesség bizonyos korlátozások vonatkoznak. Az alábbi táblázat ismerteti a lemeztípusok korlátai:
+Egy prémium szintű tárolólemez üzembe helyezésekor, a lemez mérete határozza meg, a maximális IOPS és átviteli sebesség (sávszélesség). Az Azure prémium szintű tárolólemezek típusai nyolc GA kínál: P4 (csak felügyelt lemezeket tartalmazó) P6 (csak felügyelt lemezeket tartalmazó) P10, p15-ös (felügyelt lemezek csak), P20, P30, P40 vagy P50. Valamint három előzetes lemezméretek: A P60 P70 és P80. Minden egyes prémium szintű tárolólemez-típusba IOPS és átviteli sebesség bizonyos korlátozások vonatkoznak. Az alábbi táblázat ismerteti a lemeztípusok korlátai:
 
 Csillaggal szintben méretek jelenleg előzetes verzióban érhető el.
 
-| Prémium szintű lemezek típusa  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | A P60 *            | P70 *               | P80 *               |
+| Prémium szintű lemezek típusa  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60 *            | P70 *               | P80 *               |
 |---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
-| Lemezméret           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 GiB (1 TiB) | 2048 giB (2 Tib-ra)| 4095 GiB (4 TiB)| 8192 giB (8 TiB)| 16384 giB (16 TiB)| 32 767 giB (32 TiB)|
+| Lemezméret           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 GiB (1 TiB) | 2048 GiB (2 TiB)| 4095 GiB (4 TiB)| 8192 GiB (8 TiB)| 16384 giB (16 TiB)| 32 767 giB (32 TiB)|
 | IOPS-érték lemezenként       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12 500          | 15 000             | 20,000             |
 | Adattovábbítás lemezenként | 25 MB / s | 50 MB / s | 100 MB / s | 125 MB / s | 150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s | 480 MB / s | 750 MB / s | 750 MB / s |
 
 > [!NOTE]
-> Ellenőrizze, hogy elegendő sávszélesség érhető el a virtuális gép meghajtó lemez forgalomra, leírtak szerint [Premium Storage virtuális gépek](#premium-storage-supported-vms). Ellenkező esetben a lemez adatátviteli sebessége és IOPS je omezeno alacsonyabb értékeket. Maximális átviteli sebesség és iops-t a VM-korlátok, nem pedig az előző táblázatban ismertetett korlátok alapján.  
+> Ellenőrizze, hogy elegendő sávszélesség érhető el a virtuális gép meghajtó lemez forgalomra, leírtak szerint [Premium Storage virtuális gépek](). Ellenkező esetben a lemez adatátviteli sebessége és IOPS je omezeno alacsonyabb értékeket. Maximális átviteli sebesség és iops-t a VM-korlátok, nem pedig az előző táblázatban ismertetett korlátok alapján.  
 > Az Azure Premium Storage platform, amely a nagymértékben párhuzamos van kialakítva. Az alkalmazás több szálon futó tervezése segíteni fog a nagy teljesítményű cél vehető igénybe a nagyobb lemezméretet.
 
 Íme néhány fontos tudnivaló a Premium Storage méretezhetőségi és teljesítménycéljai kapcsolatban:
@@ -266,7 +266,7 @@ Az Azure Premium Storage a következő Linux-disztribúciók ellenőrzése. A jo
 | Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
 | Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
 | Debian | 7.x, 8.x | 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> SUSE-sles-12-v20150213 |
+| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
 | SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
 | CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
 | CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [Szükséges LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Vegye figyelembe a következő szakaszban talál.* |
@@ -294,7 +294,7 @@ A Premium Storage használata esetén az alábbi számlázási szempontok érvé
 
 * **Prémium szintű storage disk és a blob mérete**
 
-    Egy prémium szintű tárolólemez-vagy blob számlázása a lemez-vagy blob kiépített méretétől függ. Az Azure a legközelebbi prémium szintű tárlemezméretre kerekítünk képez le a kiépítési méret (kerekítve). További információkért lásd: a tábla [prémium szintű Storage méretezhetőségi és teljesítménycéljai](#premium-storage-scalability-and-performance-targets). Mindegyik lemez képez le egy támogatott kiosztott lemez méretét, és ennek megfelelően történik. Minden üzembe helyezett lemez használata óradíjas a Premium Storage-ajánlat a havi díjak használatával. Például ha üzembe helyezett egy P10 lemezt, és 20 óra múlva törli azt, számítjuk fel a P10 előfizetésért arányosan 20 óra. Ez a tényleges adatok írása a lemezt vagy az IOPS és a használt átviteli sebesség függetlenül.
+    Egy prémium szintű tárolólemez-vagy blob számlázása a lemez-vagy blob kiépített méretétől függ. Az Azure a legközelebbi prémium szintű tárlemezméretre kerekítünk képez le a kiépítési méret (kerekítve). További információkért lásd: a tábla [prémium szintű Storage méretezhetőségi és teljesítménycéljai](). Mindegyik lemez képez le egy támogatott kiosztott lemez méretét, és ennek megfelelően történik. Minden üzembe helyezett lemez használata óradíjas a Premium Storage-ajánlat a havi díjak használatával. Például ha üzembe helyezett egy P10 lemezt, és 20 óra múlva törli azt, számítjuk fel a P10 előfizetésért arányosan 20 óra. Ez a tényleges adatok írása a lemezt vagy az IOPS és a használt átviteli sebesség függetlenül.
 
 * **Nem felügyelt lemezek prémium szintű pillanatképek**
 

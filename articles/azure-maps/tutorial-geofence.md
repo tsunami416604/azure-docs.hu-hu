@@ -3,18 +3,18 @@ title: Hozzon létre egy Azure mapsszel geokerítésen |} A Microsoft Docs
 description: A telepítő a geokerítésen az Azure Maps használatával.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 02/14/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a991fbde8ce1ae43f18be4f13ae7edc5f60044bf
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 55dc0fa31398bcc04d9793c8cffc9258dc29e4c7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108704"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244453"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Az Azure Maps segítségével egy geokerítésen beállítása
 
@@ -40,9 +40,9 @@ Ebben az oktatóanyagban a lépések elvégzéséhez szüksége lesz megtekinté
 
 ## <a name="upload-geofences"></a>Töltse fel a geokerítések
 
-Szeretne feltölteni a geokerítésen a konstrukció hely, az adatok feltöltése API-val, a postman alkalmazást használjuk. Az ebben az oktatóanyagban feltételezzük, van egy általános konstrukció hely területet, amely egy rögzített paraméter, amely a konstrukció berendezés kell sérti. Az időkorlát megsértésének súlyos küzdelemben, és az Operations Manager jelentett. Egy további kerítések optimalizált készlet használható, amelyek nyomon követik a különböző szerkezeti területek belül az összes konstrukció terület ütemezés alapján. Feltételezzük, hogy rendelkezik-e a fő geokerítésen alwebhely1, amely rendelkezik egy készlet lejárati időt, és ezt követően lejár. Több beágyazott geokerítések igény szerint hozhat létre. Alwebhely1 lehet például, ha munkahelyi lefolyása 1 – 4 héten az ütemezés és alwebhely 2, ahol munka történik hétre esik-e 5 – 7. Az összes ilyen kerítések a projekt elején egyetlen adatkészletként betölthetők és szabályokat időt és hely alapján nyomon követésére szolgál. Lásd: [Geokerítésen GeoJSON adatok](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) geokerítésen adatformátum további tájékoztatást. Megtekintheti a [adatok – feltöltés API-dokumentáció](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) további információ az adatok feltöltése az Azure Maps szolgáltatásban.
+Szeretne feltölteni a geokerítésen a konstrukció hely, az adatok feltöltése API-val, a postman alkalmazást használjuk. Az ebben az oktatóanyagban feltételezzük, van egy általános konstrukció hely területet, amely egy rögzített paraméter, amely a konstrukció berendezés kell sérti. Az időkorlát megsértésének súlyos küzdelemben, és az Operations Manager jelentett. Egy további kerítések optimalizált készlet használható, amelyek nyomon követik a különböző szerkezeti területek belül az összes konstrukció terület ütemezés alapján. Feltételezzük, hogy rendelkezik-e a fő geokerítésen alwebhely1, amely rendelkezik egy készlet lejárati időt, és idő után jár le. Több beágyazott geokerítések igény szerint hozhat létre. Alwebhely1 lehet például, ha munkahelyi lefolyása 1 – 4 héten az ütemezés és alwebhely 2, ahol munka történik hétre esik-e 5 – 7. Az összes ilyen kerítések a projekt elején egyetlen adatkészletként betölthetők és szabályokat időt és hely alapján nyomon követésére szolgál. További információ a geokerítésen adatformátum: [Geokerítésen GeoJSON adatok](https://docs.microsoft.com/azure/azure-maps/geofence-geojson). További információ az adatok feltöltése az Azure Maps szolgáltatásban: [adatok feltöltése API-dokumentáció](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) .
 
-Nyissa meg a Postman alkalmazást, és kövesse az alábbi lépések végrehajtásával töltse fel a konstrukció hely geokerítésen az Azure Maps-adatainak feltöltése API használatával.
+Nyissa meg a Postman alkalmazást, és kövesse az alábbi lépések végrehajtásával töltse fel a konstrukció hely geokerítésen az Azure Maps, az adatok feltöltése API használatával.
 
 1. Nyissa meg a Postman alkalmazást, és kattintson új |} Új létrehozása, és válassza ki a kérelmet. Adja meg a kérelem feltöltési geokerítésen adatok nevét, válassza ki a gyűjtemény vagy a mappát, mentse, majd kattintson a mentés.
 
@@ -195,7 +195,7 @@ Egy esemény-előfizetés létrehozásához a geokerítésen események adja meg
 
 ## <a name="use-geofence-api"></a>A Geokerítésen API használata
 
-A Geokerítésen API segítségével ellenőrizze, hogy egy **eszköz** (a készülék állapota részét képezi) belül vagy kívül a geokerítésen történik. A jobb megértése a geokerítésen API beolvasása. Hogy lekérdezése különböző helyeken, amelybe át lett helyezve egy adott berendezés idővel ellen. Az alábbi ábra mutatja be egy adott szerkezeti berendezés egyedi öt helyek **eszközazonosító** megfigyelt időrendi sorrendben. Mindhárom öt segítségével felmérheti a geokerítésen állapotának változása szemben az korlátját kilép, és adja meg. Állapotváltozás esetén a geokerítésen szolgáltatás elindít egy eseményt, amely a logikai alkalmazás az Event Grid által küldött. Ennek eredményeképpen az Operations manager a megfelelő enter és fogad értesítési kilép egy e-mailen keresztül.
+A Geokerítésen API segítségével ellenőrizze, hogy egy **eszköz** (a készülék állapota részét képezi) belül vagy kívül a geokerítésen történik. Jobb megértése érdekében a geokerítésen API beolvasása. Hogy lekérdezése különböző helyeken, amelybe át lett helyezve egy adott berendezés idővel ellen. Az alábbi ábra mutatja be egy adott szerkezeti berendezés egyedi öt helyek **eszközazonosító** megfigyelt időrendi sorrendben. Mindhárom öt segítségével felmérheti a geokerítésen állapotának változása szemben az korlátját kilép, és adja meg. Állapotváltozás esetén a geokerítésen szolgáltatás elindít egy eseményt, amely a logikai alkalmazás az Event Grid által küldött. Ennek eredményeképpen az Operations manager a megfelelő enter és fogad értesítési kilép egy e-mailen keresztül.
 
 > [!Note]
 > A fenti forgatókönyv és viselkedése alapján azonos **eszközazonosító** úgy, hogy tükrözze a öt különböző helyeken az alábbi ábrán látható módon.

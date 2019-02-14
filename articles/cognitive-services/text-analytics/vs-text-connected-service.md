@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: Szövegelemzés aC#'
+title: 'Oktatóanyag: Csatlakozzon a Text Analytics szolgáltatáshoz a Visual Studio csatlakoztatott szolgáltatásai'
 titleSuffix: Azure Cognitive Services
-description: Text Analytics kapcsolat az ASP.NET Core-webalkalmazásból.
+description: Learn how to connect to Text Analytics from an ASP.NET Core web application.
 services: cognitive-services
-author: ghogen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: ghogen
-ms.openlocfilehash: bcd0d68119d141f02f77d4d8828d55b1d984be0e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: a37ea5fdad941e1559e470ccb22303a8e3c7ca3d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869806"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243892"
 ---
-# <a name="tutorial-connect-to-the-text-analytics-cognitive-service-by-using-connected-services-in-visual-studio"></a>Oktatóanyag: Csatlakozás a Text Analytics Cognitive Service a Visual Studio csatlakoztatott szolgáltatás használatával
+# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Oktatóanyag: Csatlakozzon a Text Analytics szolgáltatáshoz a Visual Studio csatlakoztatott szolgáltatásai
 
 A Text Analytics Service használatával részletes információkat nyerhet ki képekből a vizuális adatok kategorizálásához és feldolgozásához, a gépi támogatású képmoderálás segít őrködni a szolgáltatások felett.
 

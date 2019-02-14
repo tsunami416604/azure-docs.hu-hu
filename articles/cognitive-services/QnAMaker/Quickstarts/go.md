@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: bd3dfc9b2b0b169ebb27909812256dbee91e1dec
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f16909a9504b2868c1eecf849b9a1fd537cd6048
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883967"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244258"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>A QnA Maker REST API-t a Go használatával 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overvie
 - [Tudásbázis törlése.](#Delete)
 - [A jelenlegi végponti kulcsok lekérése.](#GetKeys)
 - [A jelenlegi végponti kulcsok újbóli létrehozása.](#PutKeys)
-- [A jelenlegi szóváltozatok készletének lekérése.](#GetAlterations)
-- [A jelenlegi szóváltozatok készletének cseréje.](#PutAlterations)
+- [Kis-és word változtatások az aktuális készletét beolvasása.](#GetAlterations)
+- [Cserélje le a kis-és word változtatások az aktuális készletét.](#PutAlterations)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
