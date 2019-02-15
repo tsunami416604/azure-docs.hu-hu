@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: 1d1bb3c99c82683dde9247da86e80d800fe06631
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 933d37f576d0b8507d2311a3e31e34182a0a2e69
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992983"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269835"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>az Azure Monitor naplólekérdezés Workspace() kifejezés
 
@@ -73,4 +73,4 @@ union
 
 - Tekintse meg a [alkalmazás kifejezés](app-expression.md) hivatkozik egy Application Insights alkalmazást.
 - Megtudhatja, hogyan lehet [Azure Monitor adatok](log-query-overview.md) tárolja.
-- A teljes dokumentációt eléréséhez a [adatkezelő lekérdezési nyelv](/azure/kusto/query/).
+- A teljes dokumentációt eléréséhez a [Kusto-lekérdezés nyelvi](/azure/kusto/query/).

@@ -6,17 +6,66 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/30/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ef2a782a19dd319de346f14d6189759d0a26686c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d8ef70088d904720a81ac558206a3140d7bbecd6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55666757"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269997"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>A gépek indítása/leállítása közben ki óra solution hibaelhárítása
+
+## <a name="deployment-failure"></a>Forgatókönyv: A VM indítása és leállítása a megoldás megfelelő telepítése nem sikerült
+
+### <a name="issue"></a>Probléma
+
+Üzembe helyezésekor a [indítása és leállítása a virtuális gépek ki óra solution](../automation-solution-vm-management.md), a következő hibák egyike jelentkezik:
+
+```
+Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
+```
+
+```
+Resource 'StartStop_VM_Notification' was disallowed by policy. Policy identifiers: '[{\\\"policyAssignment\\\":{\\\"name\\\":\\\"[MyPolicyName]”.
+```
+
+```
+The subscription is not registered to use namespace 'Microsoft.OperationsManagement'.
+```
+
+```
+The subscription is not registered to use namespace 'Microsoft.Insights'.
+```
+
+```
+The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
+```
+
+### <a name="cause"></a>Ok
+
+Az alábbi okok egyike miatt sikertelenek lehetnek a központi telepítések:
+
+1. Már van egy Automation-fiókot a kiválasztott régióban ugyanazzal a névvel.
+2. A házirend van érvényben, amely tiltja a megoldás üzembe helyezése a virtuális gépek indítása/leállítása.
+3. A `Microsoft.OperationsManagement`, `Microsoft.Insights`, vagy `Microsoft.Automation` erőforrástípus nincs regisztrálva.
+4. A Log Analytics-munkaterület-zárolással rendelkezik rajta.
+
+### <a name="resolution"></a>Megoldás:
+
+Tekintse át a problémával vagy helyek keresse meg a lehetséges megoldások a következők:
+
+1. Az Automation-fiókok kell egyedinek lennie az Azure-régióban, még akkor is, ha különböző erőforráscsoportokban vannak. Ellenőrizze a meglévő Automation-fiókok a célrégióban.
+2. Meglévő házirend megakadályozza, hogy egy erőforrás, amely szükséges a indítása és leállítása a Virtuálisgép-megoldás üzembe helyezni. Nyissa meg a szabályzat-hozzárendelések az Azure Portalon, és ellenőrizze, hogy rendelkezik-e a központi telepítés az erőforrás letiltó szabályzat-hozzárendelés. Ezzel kapcsolatos további információkért lásd: [RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md).
+3. A indítása és leállítása a VM-megoldás üzembe helyezéséhez, az előfizetés regisztrálva kell lennie a következő Azure-erőforrás-névterekhez:
+    * `Microsoft.OperationsManagement`
+    * `Microsoft.Insights`
+    * `Microsoft.Automation`
+
+   Látható, [ki a hibákat az erőforrás-szolgáltatói regisztrációt](../../azure-resource-manager/resource-manager-register-provider-errors.md) kapcsolatos további hibák szolgáltatók regisztrálása során.
+4. Ha a zárolást a Log Analytics-munkaterületen, nyissa meg a munkaterületet az Azure Portalon, és távolítsa el az erőforrás bármilyen zárolása.
 
 ## <a name="all-vms-fail-to-startstop"></a>Forgatókönyv: Minden virtuális gép indítása és leállítása nem sikerült
 

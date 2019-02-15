@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0bc53edb00ea13fdfcab3cfc398e122e6ecd7632
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e7bcfce4e9d23839c623be3b54e97d931e6454cb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106324"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268294"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Tevékenységnaplók megtekintése az erőforrásokon végzett műveletek naplózásához
 
@@ -34,9 +34,6 @@ A tevékenységnapló tartalmazza az erőforrásokon végrehajtott összes írá
 A Tevékenységnaplók 90 napig őrzi meg. Lekérdezheti, ha bármely dátumtartomány, mindaddig, amíg a kezdő dátum nem az elmúlt 90 napnál hosszabb.
 
 Információ a vizsgálati naplók a portálon keresztül, PowerShell, az Azure CLI-vel, az Insights REST API-t lehet lekérdezni vagy [Insights .NET-kódtár](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
-
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="the-azure-portal"></a>Az Azure Portal
 

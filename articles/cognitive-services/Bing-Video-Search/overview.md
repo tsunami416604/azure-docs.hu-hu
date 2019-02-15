@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: a7fbd9eb70c50f3bbd154726bdaa807c2bc41818
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f56893f830720c57c66eb4c17bb2771efbb73f6f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863958"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267172"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Mi az a Bing Video Search API?
 
@@ -23,13 +23,13 @@ A Bing Video Search API megkönnyíti a videó keresését-képességeket adhat 
 
 ## <a name="bing-video-search-api-features"></a>A Bing Video Search API-funkciók
 
-| Funkció                                                                                                                                                                                 | Leírás                                                                                                                                                            |
+| Szolgáltatás                                                                                                                                                                                 | Leírás                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Keresési kifejezések valós idejű felkínálása](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | A [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) a begépelés során javaslatokat tesz a keresési kifejezésekre, így könnyebbé teszi az alkalmazások használatát. |
 | [Szűrés és a videó korlátozása](concepts/get-videos.md#filtering-videos)                      | A videók szerkesztésével a lekérdezési paraméterek visszaadott szűrése.                                                                                                       |
 | [Miniatűrök körülvágása, átméretezése és megjelenítése](resize-and-crop-thumbnails.md)                                                | Szerkesztheti, és a Bing Videókeresési API által visszaadott videók a villámnézet megjelenítése.                                                                                      |
 | [Felkapott videók beolvasása](trending-videos.md) | A világ különböző pontjain található a felkapott videók keresése.                                                                                                          |
-| [Videó elemzések lekérése](video-insights.md) | Népszerű képek testre szabott keresése a világ minden tájáról.                                                                                                          |
+| [Videó elemzések lekérése](video-insights.md) | Felkapott videók, a világ különböző pontjain található a keresést tesztre szabhatja.                                                                                                          |
 
 ## <a name="workflow"></a>Munkafolyamat
 

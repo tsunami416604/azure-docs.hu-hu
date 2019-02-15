@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: add222c024b5adde1ce81d6ed7f725d0a691c232
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: dd6836ef4f859ce77c1a56095d32373d8e08f468
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246051"
+ms.locfileid: "56270386"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkék támogatása
 Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource-group-using-tags.md).
@@ -1132,7 +1132,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | servers/tdeCertificates | Nem | 
 
 > [!NOTE]
-> A Master adatbázis nem támogatja a címkék, de más adatbázisok, beleértve az adatraktár-adatbázishoz, támogatja a címkék.
+> A Master adatbázis nem támogatja a címkék, de más adatbázisok, beleértve az Azure SQL Data Warehouse, támogatja a címkék. Az Azure SQL Data Warehouse-adatbázist kell lennie az aktív (nem felfüggesztett) állapotba.
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

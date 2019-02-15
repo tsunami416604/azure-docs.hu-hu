@@ -10,25 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/11/2019
+ms.date: 02/14/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c2684c7373d9ee4536b248650c7012c261166b81
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 37d84206246e60ed16244d6172a5e22ca18524c9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235393"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270249"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Gyors útmutató: Az Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Útmutató Azure Resource Manager-sablonok létrehozásához és szerkesztéséhez a Visual Studio Code és az Azure Resource Manager Tools bővítmény használatával. Resource Manager-sablonokat a Visual Studio Code-ban a bővítmény nélkül is létrehozhat, a bővítmény azonban rendelkezik olyan automatikus kiegészítési szolgáltatásokkal, amelyek megkönnyítik a sablonok fejlesztését. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,6 +50,7 @@ Az ebben a rövid útmutatóban használt sablon neve a következő: [Standard s
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
+
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
 4. A **File** (Fájl) > **Save as** (Mentés másként) lehetőség kiválasztásával mentheti a fájlt a helyi számítógépre, **azuredeploy.json** néven.
 
@@ -94,6 +91,9 @@ Működik az szerkesztése a Visual Studio Code egy sablont, hozzá kell adnia e
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid útmutatóban az Azure Portal Azure Cloud Shellt fogja használni. A Cloud shell egy webalkalmazás, amihez nincs szükség semmilyen konfigurációs. Támogatja az Azure parancssori felület és Azure PowerShell-lel.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 1. Jelentkezzen be az [Azure Cloud Shellbe](https://shell.azure.com).
 
@@ -148,7 +148,10 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid ú
     
     ---
 
-    Ha a fájlt nem **azuredeploy.json** néven menti el, frissítse a sablonban a fájlnevet.
+    > [!NOTE]
+    > Van egy fájl i/o-probléma az Azure PowerShell használatával a Cloud shellben.  A hibaüzenet *dinamikus paramétereit a parancsmag nem olvashatók be. "Azure:/azuredeploy.json" elérési út nem található, mert nem létezik.*  Egy ideiglenes áthidaló megoldás lehet, hogy nem tartalmazza a **- TemplateFile** kapcsolóval a `New-AzResourceGroupDeploy` parancsot. A parancs felszólítja, írja be a fájl nevét.
+
+    Ha a fájlt nem **azuredeploy.json** néven menti el, frissítse a sablonban a fájlnevet. 
 
     A következő képernyőkép egy felületi üzembe helyezés mintáját mutatja be:
 

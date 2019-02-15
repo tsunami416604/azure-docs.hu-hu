@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 2f401290a4a9150d27685c06c2d4cd9dc2f06f0d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bbae6d4b727f3e3dc51bd57e8badbc6e87814a51
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730288"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267886"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>A betanítási adatok importálása az Azure Machine Learning Studióba különböző adatforrásokból
 
@@ -77,6 +77,29 @@ Adattábla eltérő formátumokban fogad modulok csendes átalakítja az adatokh
 
 Szükség esetén átválthat visszaimportálni CSV, TSV, ARFF adatok táblázatos formában vagy más átalakítási modulok SVMLight formátumú.
 Tekintse meg a **formátum Adatátalakítókat** a modulpaletta végre ezeket a funkciókat modulokba vonatkozó szakaszában.
+
+## <a name="data-capacities"></a>Adatkapacitással
+
+A Machine Learning Studióban található modulok 10 GB-nyi számadatot tartalmazó adatkészletet támogatnak a gyakori alkalmazási esetekben. Ha egy modul egynél több bemenetből fogad adatokat, a bemenet összesített mérete nem haladhatja meg a 10 GB-ot. Is mintát venni a nagyobb adatkészletekből a Hive vagy az Azure SQL Database lekérdezések használatával, vagy használhatja a Learning by Counts alkalmazásával feldolgozza azokat, mielőtt importálja az adatokat.  
+
+A szolgáltatásnormalizálás során a következő, 10 GB alá korlátozott adattípusok bővíthetők nagyobb adatkészletekké:
+
+* Ritka
+* Kategorikus
+* Sztringek
+* Bináris adatok
+
+A következő modulok 10 GB-nál kisebb adatkészletekre vannak korlátozva:
+
+* Ajánló modulok
+* SMOTE (Synthetic Minority Oversampling Technique) modul
+* Parancsfájlkezelési modulok: R, Python, SQL
+* Olyan modulok, amelyeknél a kimeneti adatok mérete meghaladhatja a bemeneti adatok méretét; például az egyesítés vagy a szolgáltatáskivonatolás
+* Kereszt-ellenőrzés, modell-hiperparaméterek beállítása, sorszámregresszió és multi-osztályú osztályozás nagyszámú ismétlés esetében
+
+A néhány GB-nál nagyobb adatkészletek esetében az adatfeltöltés az Azure Storage vagy az Azure SQL Database, vagy használja az Azure HDInsight ahelyett, hogy közvetlenül a helyi fájl feltöltése.
+
+Rendszerkép-adatok tájékoztatást talál a [képek importálása](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/import-images#bkmk_Notes) modul-hivatkozás.
 
 ## <a name="import-from-a-local-file"></a>Egy helyi fájlból importálása
 

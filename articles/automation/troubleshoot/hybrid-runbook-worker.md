@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e3726037e16acdf1d6d624dbf8c2088a57b0bde6
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 703f27dab6ca6252647ecb37d17d0f4faf045097
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234541"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268686"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hibrid Runbook-feldolgozók hibaelhárítása
 
@@ -204,7 +204,7 @@ Ez olyankor fordulhat elő, ha a gép már regisztrálva van egy másik Automati
 
 #### <a name="resolution"></a>Megoldás:
 
-A probléma megoldásához távolítsa el a következő beállításkulcsot, és próbálja meg a `Add-HybridRunbookWorker` újra a parancsmagot:
+A probléma megoldásához távolítsa el a következő beállításkulcsot, és indítsa újra a `HealthService` próbálja a `Add-HybridRunbookWorker` újra a parancsmagot:
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 

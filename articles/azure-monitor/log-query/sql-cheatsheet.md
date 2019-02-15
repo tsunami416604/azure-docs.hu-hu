@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 121f9ff602907e64bba0c98342e38477109e9294
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 76c9e143a4127807bfffa879103fca42d2d27e71
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993663"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268328"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL-t az Azure Monitor log-lekérdezés – Adatlap 
 
-Az alábbi táblázat segít a felhasználóknak, akik ismerik az SQL-napló lekérdezéseket írni az Azure monitorban adatkezelő lekérdezési nyelv tudnivalók. Rendelkezik egy pillantást a T-SQL parancsot egy olyan gyakori helyzetet és az Azure Monitor log-lekérdezést az azzal egyenértékű megoldására.
+Az alábbi táblázat segít a felhasználóknak, akik ismerik az SQL-napló lekérdezéseket írni az Azure monitorban Kusto lekérdezési nyelv tudnivalók. Rendelkezik egy pillantást a T-SQL parancsot egy olyan gyakori helyzetet és az Azure Monitor log-lekérdezést az azzal egyenértékű megoldására.
 
 ## <a name="sql-to-azure-monitor"></a>SQL-t az Azure Monitor
 

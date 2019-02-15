@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: c9392d910098e8a2dfadc4842dfcfe185f01fafc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4c3ecdd01106cc8d305764206bc75535fa4dac3a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004519"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268600"
 ---
 # <a name="analytics-in-application-insights"></a>Az Application Insights Analytics
 Analytics olyan hatékony keresést és lekérdezéseket eszközben [Application Insights](app-insights-overview.md). Analytics egy olyan webes eszköz, ezért semmilyen beállítást nem szükséges.
@@ -31,7 +31,7 @@ Is használhatja a [Analytics playground](https://go.microsoft.com/fwlink/?linki
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 ## <a name="relation-to-azure-monitor-logs"></a>Kapcsolat az Azure Monitor naplóira
-Application Insights-elemzési alapján [Azure adatkezelő](/azure/data-explorer) , az Azure Monitor naplózza, és használja is a [adatkezelő lekérdezési nyelv](/azure/kusto/query). Használja ugyanazt [log analytics-portál](../log-query/get-started-portal.md) , az Azure Monitor naplózza, bár az adatok egy külön partíció tárolja.
+Application Insights-elemzési alapján [Azure adatkezelő](/azure/data-explorer) , az Azure Monitor naplózza, és használja is a [Kusto-lekérdezés nyelvi](/azure/kusto/query). Használja ugyanazt [log analytics-portál](../log-query/get-started-portal.md) , az Azure Monitor naplózza, bár az adatok egy külön partíció tárolja.
 
 Az Application Insights analytics nem közvetlenül hozzáférni adatokat a Log Analytics-munkaterületen, és nem Ön közvetlenül hozzáférhet alkalmazásadatok a log analytics. Annak érdekében, hogy mindkét adatkészletet együtt lekérdezése, írhat egy [a log analytics lekérdezési](../log-query/log-query-overview.md) és használatát a [app() kifejezés](../log-query/app-expression.md) alkalmazás adatok elérését.
 

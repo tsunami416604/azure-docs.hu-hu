@@ -13,16 +13,14 @@ ms.devlang: na
 ms.date: 12/19/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 99d4f3b6cf42ee21c34809b5604c4603da784e7b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cf1894a218af35459e0d0dc432c5813169856cca
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107820"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267700"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group-or-subscription"></a>Oktatóanyag: Azure-erőforrások áthelyezése egy másik erőforráscsoportba vagy előfizetésbe
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Ismerje meg az Azure-erőforrások áthelyezése egyik erőforráscsoportból egy másik erőforráscsoportba. Egy másik Azure-előfizetéshez egy Azure-előfizetésből is áthelyezheti az Azure-erőforrásokat. Ebben az oktatóanyagban a resource manager-sablon üzembe helyezéséhez a két erőforráscsoport és a egy storage-fiók használhatja. Ezután helyez át a storage-fiók az egyik erőforráscsoportból a másik.
 
@@ -37,8 +35,6 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Erőforrások törlése.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-resources"></a>A-erőforrások előkészítése
 
@@ -98,6 +94,8 @@ Az érvényesítés áthelyezési művelet lehetővé teszi az áthelyezési for
 ## <a name="move-the-resource"></a>Helyezze át az erőforrást
 
 A tárfiók a forrásként szolgáló erőforráscsoportot (rg1) belül, futtassa a következő PowerShell parancsfájlt helyezze át az erőforrást a cél erőforráscsoport (rg2). Ellenőrizze, hogy ugyanazt a projekt nevet használja, akkor használhatja, amikor az erőforrásokat.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell-interactive
 $projectName = Read-Host -prompt "Enter a project name"

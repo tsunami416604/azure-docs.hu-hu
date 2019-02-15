@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ad6ea26535190d2fc5798e1223c2196d3d5a5d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1fde586563c142690078a693970a9a24bd5cacb4
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211138"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301995"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP netweaver megoldással
 
@@ -175,7 +175,14 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az SAP netweaver megoldással,
 
     ![SAP NetWeaver tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier-reply.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<your company instance of SAP NetWeaver>`
+    d. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<your company instance of SAP NetWeaver>`
+
+    > [!NOTE]
+    > Tapasztalataink szerint valamilyen hiba helytelen válasz URL-cím az áttelepített példány konfigurált jelentéskészítési néhány ügyfélnek. Ha bármely ilyen hibaüzenetet kapja, segítségével a következő PowerShell-parancsfájl, munkahelyi körülbelül állítsa be a helyes válasz URL-cím a példány.:
+    ```
+    Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
+    ``` 
+    > ServicePrincipal objektumot azonosító először be kell állítani a saját maga, vagy átadható, amely szintén itt.
 
 12. SAP NetWeaver alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
@@ -374,4 +381,3 @@ Ebben a szakaszban egy Britta Simon nevű SAP NetWeaver a felhasználó hoz lét
 - [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

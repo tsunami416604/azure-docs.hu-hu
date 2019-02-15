@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2dc9d72afd14547a091acf64cea2c8f0bad75914
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c5bf56482534a55d24d8ca043e36c39cec99b1f0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234407"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267529"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Oktatóanyag: Függő erőforrások létrehozása Azure Resource Manager-sablonok
 
@@ -34,8 +34,6 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A sablon üzembe helyezése
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -156,6 +154,9 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben az oktatóa
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile azuredeploy.json
     ```
+
+    > [!NOTE]
+    > Van egy fájl i/o-probléma az Azure PowerShell használatával a Cloud shellben.  A hibaüzenet *dinamikus paramétereit a parancsmag nem olvashatók be. "Azure:/azuredeploy.json" elérési út nem található, mert nem létezik.*  Egy ideiglenes áthidaló megoldás lehet, hogy nem tartalmazza a **- TemplateFile** kapcsolóval a `New-AzResourceGroupDeploy` parancsot. A parancs felszólítja, írja be a fájl nevét.
 
 8. Az alábbi PowerShell-parancs futtatásával megjelenítheti az újonnan létrehozott virtuális gépet:
 

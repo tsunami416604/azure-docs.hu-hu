@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c1718c5a2acfe49fba4974bcf7e580c45553113d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2bb6237e53f945b645f1ee757a53ef67270e2416
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108738"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268379"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Alkalmazások teljesítményének – gyakori kérdések az Azure Web Apps esetében
 
@@ -113,7 +113,7 @@ Sikertelen kérelmek nyomkövetése bekapcsolása:
 10. Válassza ki **Web.config**.
 11. System.webServer adja hozzá ezt a konfigurációt (a rögzítése egy adott URL-címe):
 
-    ```
+    ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
     <remove path="*api*" />
@@ -129,7 +129,7 @@ Sikertelen kérelmek nyomkövetése bekapcsolása:
     </tracing>
     ```
 12. Teljesítményével kapcsolatos problémák elhárításához, adja hozzá ezt a konfigurációt (Ha a rögzítés kérelem van véve a több mint 30 másodperc):
-    ```
+    ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
     <remove path="*" />

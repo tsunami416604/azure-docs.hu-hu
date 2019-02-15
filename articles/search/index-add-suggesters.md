@@ -1,7 +1,7 @@
 ---
 title: Azure Search-index javaslattevők hozzáadása
 description: Lehetővé teszi mezők gépelés közbeni lekérdezési műveletek végrehajtásához, ahol javasolt lekérdezések Azure Search-index mezőire szöveget alkotják.
-ms.date: 01/31/2019
+ms.date: 02/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 35025d69865aa6890e1cd921e31ac6c26c015789
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7128e4d3b0675775dc713451ef672b28a4991499
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008411"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269926"
 ---
 # <a name="add-suggesters-to-an-azure-search-index"></a>Azure Search-index javaslattevők hozzáadása
 
@@ -34,9 +34,12 @@ Bár egy **javaslattevő** néhány olyan tulajdonság tartozik, hogy az elsőso
 
 Csak egyet használhat **javaslattevő** erőforrás minden index (pontosabban az egyik **javaslattevő** a a **javaslattevők** gyűjtemény).
 
-Hozhat létre egy **javaslattevő** bármikor, de az index gyakorolt függően változik, a mező alapján. A javaslattevő hozzá ugyanazt a frissítést részeként új mezők a legkevésbé ahhoz, hogy nincs indexkészítés nem szükséges. Azonban meglévő mezők hozzáadása megváltoztatja a mező meghatározása, kialakulhat egy teljesen újra kell építenie az indexet.
+## <a name="creating-a-suggester"></a>A javaslattevő létrehozása 
 
-## <a name="usage"></a>Használat  
+Hozhat létre egy **javaslattevő** bármikor, de az index gyakorolt függően változik, a mező alapján. 
+
++ A javaslattevő hozzá ugyanazt a frissítést részeként új mezők a legkevésbé ahhoz, hogy nincs indexkészítés nem szükséges.
++ Meglévő azonban módosítja a javaslattevő hozzáadott mezők kialakulhat egy teljesen újra kell építenie az indexet a mező definíciójában.
 
  **Javaslattevők** leghatékonyabbak, ha annak alapján hozza létre a meghatározott dokumentumok helyett laza szavakat vagy kifejezéseket. A legjobb jelölt mezők, címek, nevek és más viszonylag rövid kifejezés, amely egy elem azonosíthatja. Kevésbé hatékony: ismétlődő mezőket, például a kategóriák és a címkéket, vagy nagyon hosszú mezők, például a leírásokat és megjegyzéseket mezőket.  
 

@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/15/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/10/2018
-ms.openlocfilehash: 45eadf5e049d56c8f558596eb197eb010b1fbb14
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eff27e296800f78303d085f471e4fda188b487ce
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196994"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301859"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK telepítés utáni konfigurációs feladatok
 
@@ -46,7 +46,18 @@ Telepítheti a legújabb Azure Stack PowerShell-modul vagy a ASDK gazdagépnek i
 
 - **Internetkapcsolattal rendelkező** ASDK állomásról. Futtassa a következő PowerShell-parancsfájlt a development kit telepítésen ezeket a modulokat telepíteni:
 
-  - Az Azure Stack 1811 vagy újabb verziója:
+- Az Azure Stack 1901 vagy újabb verziója:
+
+    ```PowerShell
+    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+    Install-Module AzureRM -RequiredVersion 2.4.0
+    Install-Module -Name AzureStack -RequiredVersion 1.7.0
+    ```
+
+    > [!Note]  
+    > Az Azure Stack modul 1.7.0-ás verzió használhatatlanná tévő változás történik. Migrálhat az Azure Stack 1.6.0-s tekintse meg a [áttelepítési útmutató](https://aka.ms/azspshmigration170).
+
+  - Az Azure Stack 1811:
 
     ``` PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
@@ -59,7 +70,7 @@ Telepítheti a legújabb Azure Stack PowerShell-modul vagy a ASDK gazdagépnek i
     Install-Module -Name AzureStack -RequiredVersion 1.6.0
     ```
 
-  - Az Azure Stack 1808 vagy újabb verziója:
+  - Az Azure Stack 1810 vagy korábbi:
 
     ``` PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 

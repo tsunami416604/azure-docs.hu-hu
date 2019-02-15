@@ -16,12 +16,12 @@ ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 616854e89a95eb83508e30099a663f0017e63784
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 94c7b5c81785c3d6fba31396f5812a1308817e33
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115708"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301111"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 frissítése
 
@@ -199,7 +199,9 @@ A frissített modulok referenciája áttekintéséhez lásd: [Azure Stack modulh
            "autoUpgradeMinorVersion": "true"
    ```
 
-- Nincs új veszi figyelembe a pontos megtervezése az Azure Stack kapacitását. A Microsoft rendelkezik korlátozhatjuk-, Azure Stack, hogy az összes belső szolgáltatásaink megfelelnek-e a méretezési csoport, amely ügyfelek futtassa a következő belül telepíthető virtuális gépek teljes száma. A határértéke gazdagépenként, amely a teljes bélyegző (Ha a 60-as gazdagép-korlát elérésekor) 700 legfeljebb 60 virtuális gépet. További információkért lásd: a [új kiadása a capacity planner](http://aka.ms/azstackcapacityplanner).
+- Nincs új veszi figyelembe a pontos megtervezése az Azure Stack kapacitását. A 1901 a frissítés most már rendelkezésre áll egy korlát a létrehozható virtuális gépek teljes száma.  Ez a korlátozás készült ideiglenes megoldás instabil elkerülése érdekében. A forrás, virtuális gépek magasabb adatpontértékek a stabilitás probléma javítása folyamatban van, de egy meghatározott ütemterv szervizelési még nem határozták meg. A 1901 a frissítés most már rendelkezésre áll egy kiszolgáló legfeljebb 60 virtuális gépek és a egy teljes megoldás korlátja 700 száma.  Például egy 8 Azure Stack virtuális gépek maximális lenne 480-as (8 * 60).  12 – 16 kiszolgálóhoz az Azure Stack megoldás a korlát 700 lehet. Ez a korlátozás létrehozása szem összes számítási kapacitás kihasználását például a rugalmasság tartalék és a CPU virtuális és fizikai arányt, az operátornak szeretne a blokkban karbantartása. További információkért tekintse meg a capacity planner új kiadása.  
+Abban az esetben, ha a rendszer elérte a Virtuálisgép-méretezési csoport megadott korlátot, ezért az alábbi hibakódok kellene visszaadnia: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded. 
+ 
 
 - A Compute API-verzió 2017-12-01 nőtt.
 

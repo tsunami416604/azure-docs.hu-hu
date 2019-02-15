@@ -9,17 +9,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
-ms.openlocfilehash: a28e3fb18f2c0b65557034e388d08918c622b8f4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14de0f632584ff5fb1a6b4395298e9cecfe455e6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255864"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268723"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>A Resource Manager-alapú Windows rendszerállapotának biztonsági mentése
 Ez a cikk bemutatja, hogyan biztonsági mentése a Windows Server rendszerállapotának az Azure-bA. Ez az oktatóanyag végigvezeti az alapokon.
 
-Ha többet szeretne megtudni az Azure Backupról, olvassa el ezt az [áttekintést](backup-introduction-to-azure-backup.md).
+Ha többet szeretne megtudni az Azure Backupról, olvassa el ezt az [áttekintést](backup-overview.md).
 
 Ha még nincs Azure-előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), amellyel bármely Azure-szolgáltatást elérhet.
 
@@ -131,7 +131,7 @@ Most, hogy létrehozott egy tárolót, konfigurálja Windows rendszerállapotán
 
     ![a tároló hitelesítő adatainak letöltése befejeződött](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
 > [!NOTE]
-> A tároló hitelesítő adatai csak az olyan helyre, amely a Windows Serveren, amelyen meg kívánja használni az ügynök helyi kell menteni. 
+> A tároló hitelesítő adatai csak az olyan helyre, amely a Windows Serveren, amelyen meg kívánja használni az ügynök helyi kell menteni.
 >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
@@ -163,7 +163,7 @@ Most, hogy létrehozott egy tárolót, konfigurálja Windows rendszerállapotán
 
 Az ügynök most telepítve van, és a gépe regisztrálva van a tárolóban. Készen áll a biztonsági mentés konfigurálására és ütemezésére.
 
-## <a name="back-up-windows-server-system-state"></a>A Windows Server rendszerállapotának biztonsági mentése 
+## <a name="back-up-windows-server-system-state"></a>A Windows Server rendszerállapotának biztonsági mentése
 A kezdeti biztonsági mentés két tevékenységet tartalmaz:
 
 * A biztonsági mentés ütemezése
@@ -192,9 +192,9 @@ A kezdeti biztonsági mentés végrehajtásához használja a Microsoft Azure Re
 
 5. Válassza ki **rendszerállapot** majd **OK**.
 
-6. Kattintson a **Tovább** gombra.
+6. Kattintson a **tovább**.
 
-7. Válassza ki a következő lapjain a biztonsági mentés szükséges gyakoriságát és a rendszerállapot biztonsági mentések esetén a megtartási házirendben. 
+7. Válassza ki a következő lapjain a biztonsági mentés szükséges gyakoriságát és a rendszerállapot biztonsági mentések esetén a megtartási házirendben.
 
 8. A Jóváhagyás lapon ellenőrizze az információkat, majd kattintson a **Befejezés** gombra.
 

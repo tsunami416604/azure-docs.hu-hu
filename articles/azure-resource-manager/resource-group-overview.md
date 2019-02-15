@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: fbfbb4e452032073d92e7c2b93f78669da0ceaf5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 1d576b24e96d6c4c88d6fbef86cb1c6cf7f7c61a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691557"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268130"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 
 Az Azure Resource Manager egy üzembe helyezési és kezelési szolgáltatás az Azure-hoz. Amely lehetővé teszi, hogy létrehozása, frissítése és törlése az Azure-előfizetésében erőforrások konzisztens felügyeleti réteget biztosít. Használhatja a hozzáférés-vezérlés, naplózási és címkézési szolgáltatásokat biztonságát, és az erőforrások rendszerezéséhez az üzembe helyezés után.
 
-A portal, PowerShell, Azure CLI-vel, REST API-k vagy ügyféloldali SDK-k segítségével műveleteket van szüksége, amikor az Azure Resource Manager API kezeli a kérést. Az összes kéréseket kezeli az azonos API-n keresztül, mert megjelenik konzisztens eredmények és a különböző eszközök funkciói.
+A portal, PowerShell, Azure CLI-vel, REST API-k vagy ügyféloldali SDK-k segítségével műveleteket van szüksége, amikor az Azure Resource Manager API kezeli a kérést. Az összes kéréseket kezeli az azonos API-n keresztül, mert megjelenik konzisztens eredmények és a különböző eszközök funkciói. A portálon elérhető összes funkciót is érhetők el a PowerShell, az Azure CLI-vel, a REST API-k és a ügyféloldali SDK-k segítségével. Az eredetileg API-kon keresztül kiadott funkciók a kezdeti kiadástól számított 180 napig jelennek meg a portálon.
 
 Az alábbi képen látható hogyan minden olyan eszközt az Azure Resource Manager API-val kezelheti. Az API továbbítja a kérelmeket a Resource Manager szolgáltatásnak, amely hitelesíti és engedélyezi azokat. Erőforrás-kezelő majd irányítja a kérelmeket a megfelelő szolgáltatásra.
 

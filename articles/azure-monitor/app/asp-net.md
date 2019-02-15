@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4a1ea364180d389ffdbfc7cedd740a0e493070b3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6b849ad72554af163d8ac3d5ff1248023dc71052
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998994"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268526"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -104,7 +104,7 @@ A portálon az egyik csempére vagy diagramra kattintva további részleteket te
 ## <a name="step-4-publish-your-app"></a>4. lépés: Az alkalmazás közzététele
 Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) ellenőrizheti, hogy minden rendben működik-e.
 
-A telemetria az Application Insights portálon épül fel, ahol figyelheti a mérőszámokat, kereshet a telemetriára és [irányítópultokat](../../azure-monitor/app/app-insights-dashboards.md) állíthat be. Is használhatja a nagy teljesítményű [adatkezelő lekérdezési nyelv](https://aka.ms/LogAnalyticsLanguage) a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához.
+A telemetria az Application Insights portálon épül fel, ahol figyelheti a mérőszámokat, kereshet a telemetriára és [irányítópultokat](../../azure-monitor/app/app-insights-dashboards.md) állíthat be. Is használhatja a nagy teljesítményű [Kusto-lekérdezés nyelvi](/azure/kusto/query/) a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához.
 
 Folytathatja a telemetria elemzését a [Visual Studióban](../../azure-monitor/app/visual-studio.md) olyan eszközökkel, mint például a diagnosztikai keresés és a [trendek](../../azure-monitor/app/visual-studio-trends.md).
 

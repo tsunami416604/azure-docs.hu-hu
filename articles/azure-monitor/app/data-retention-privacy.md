@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 511937fde859f47af2b7bc273daaab88bb8809c3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 1de12f2dd2e31c3f5413424793f3bf78fdc8ff27
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094529"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300261"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -41,7 +41,7 @@ Az Application Insights szolgáltatás tárolja, és elemzi a telemetriát. Az e
 
 Rendelkezhet például egy adatbázis vagy a külső eszközök az Application Insights szolgáltatás exportált adatok. Minden eszköz adnia, hogy a szolgáltatás speciális kulccsal. Szükség esetén visszavonhatja a kulcsot. 
 
-Application Insights SDK-k alkalmazástípusok közül érhetők el: a web services a saját j2ee-alapú vagy az ASP.NET-kiszolgálókon, vagy az Azure-ban; azt jelenti, webes ügyfél - weblapra; futtató kódnak asztali alkalmazások és szolgáltatások; eszköz alkalmazások, például a Windows Phone, iOS és Android. Ezek az összes telemetriát ugyanahhoz a szolgáltatáshoz.
+Application Insights SDK-k alkalmazástípusok közül érhetők el: a web services a saját Java EE-alapú vagy az ASP.NET-kiszolgálókon, vagy az Azure-ban; azt jelenti, webes ügyfél - weblapra; futtató kódnak asztali alkalmazások és szolgáltatások; eszköz alkalmazások, például a Windows Phone, iOS és Android. Ezek az összes telemetriát ugyanahhoz a szolgáltatáshoz.
 
 ## <a name="what-data-does-it-collect"></a>Milyen adatokat, gyűjt?
 ### <a name="how-is-the-data-is-collected"></a>Hogyan történik az adatok gyűjt?
@@ -51,7 +51,7 @@ Nincsenek adatok három forrásának:
   
   * Az SDK számos [modulok](../../azure-monitor/app/configuration-with-applicationinsights-config.md), amely különböző technikák használatával különféle telemetriai adatok gyűjtése.
   * Az SDK fejlesztési telepíti, ha az API segítségével, a globális modulok mellett a saját telemetriája küldésére. Az egyéni telemetriát is szeretne küldeni adatokat tartalmazhatnak.
-* Az egyes webkiszolgálók is találhatók ügynökök, amelyek mellett az alkalmazás futtatása és a Processzor, memória és a hálózat foglaltsága kapcsolatos telemetriai adatokat küldhet. Például az Azure virtuális gépek, Docker-gazdagépek és [j2ee-alapú kiszolgálók](../../azure-monitor/app/java-agent.md) ilyen ügynökök is rendelkezhet.
+* Az egyes webkiszolgálók is találhatók ügynökök, amelyek mellett az alkalmazás futtatása és a Processzor, memória és a hálózat foglaltsága kapcsolatos telemetriai adatokat küldhet. Például az Azure virtuális gépek, Docker-gazdagépek és [Java EE-alapú kiszolgálók](../../azure-monitor/app/java-agent.md) ilyen ügynökök is rendelkezhet.
 * [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) , amely rendszeres időközönként a webalkalmazás-kérelmeket küldjön a Microsoft által folyamatok futnak. Az eredmények érkeznek az Application Insights szolgáltatás.
 
 ### <a name="what-kinds-of-data-are-collected"></a>Milyen típusú adatok gyűjtött?

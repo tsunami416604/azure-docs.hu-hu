@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 6c7dd6ebaf7eebefcdcfa50bbd77ad80f4cda907
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b3d79f106554bf4a80df835ac880fbb7a72c8bfe
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077454"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268396"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
@@ -70,7 +70,7 @@ A.  Az Azure Data Box beszerzéséhez jelentkezzen be az Azure Portalon, majd ho
 ### <a name="q-i-was-not-able-to-create-a-data-box-order-in-the-azure-portal-why-would-this-be"></a>K. Nem sikerült létrehoznom egy Data Box-megrendelést az Azure Portalon. Mi lehet ennek az oka?
 A. Ha nem sikerült létrehoznia egy Data Box-megrendelést, akkor a probléma az előfizetési típusában vagy a hozzáférésében keresendő. 
 
-Ellenőrizze az előfizetését. A Data Box csak a Nagyvállalati Szerződés (EA), Felhőszolgáltató (CSP) vagy használatalapú fizetéses típusú előfizetés esetén érhető el. Ha az előfizetése nem az említett típusok egyikéhez tartozik, forduljon a Microsoft támogatási szolgálatához az előfizetése bővítése érdekében.
+Ellenőrizze az előfizetését. Data Box csak Nagyvállalati Szerződés (EA) és a Cloud solution provider (CSP) előfizetési ajánlatok érhető el. Ha az előfizetése nem az említett típusok egyikéhez tartozik, forduljon a Microsoft támogatási szolgálatához az előfizetése bővítése érdekében.
 
 Ha egy támogatott típusú előfizetéssel rendelkezik, ellenőrizze a hozzáférési szintjét. Megrendelés létrehozására csak az előfizetések közreműködői vagy tulajdonosai jogosultak.
 

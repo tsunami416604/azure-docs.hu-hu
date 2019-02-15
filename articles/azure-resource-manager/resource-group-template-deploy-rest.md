@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2018
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 058d6d398f6bb54e8569e727f118a325c338049d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f49b8ed592422927288e24b164a04645e2e37744
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154742"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301383"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val
 
@@ -81,8 +81,21 @@ Vagy megadhatja a sablon a kérelem törzsében vagy egy fájlra mutató hivatko
     Ha azt szeretné, válasz tartalma, a kérelem tartalma vagy mindkettő bejelentkezni, például **debugSetting** a kérésben.
 
   ```json
-  "debugSetting": {
-    "detailLevel": "requestContent, responseContent"
+  {
+    "properties": {
+      "templateLink": {
+        "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "mode": "Incremental",
+      "parametersLink": {
+        "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "debugSetting": {
+        "detailLevel": "requestContent, responseContent"
+      }
+    }
   }
   ```
 
@@ -159,22 +172,50 @@ Vagy megadhatja a sablon a kérelem törzsében vagy egy fájlra mutató hivatko
 
 ## <a name="redeploy-when-deployment-fails"></a>Telepítse újra a központi telepítésének hibája esetén
 
-Sikertelen telepítések esetén megadhatja, hogy a rendszer automatikusan újratelepítése egy korábbi üzemelő az üzembe helyezési előzményekből. Ez a beállítás használatához az üzemelő példányok egyedi névvel kell rendelkezniük az előzményekben található ellenőrizhető, hogy. Ha nem rendelkezik egyedi nevét, az aktuális telepítése sikertelen volt. a korábban sikeresen végrehajtott központi telepítés előzményei esetleg felülírhatja. Használhatja ezt a beállítást csak a legfelső szintű telepítések. Beágyazott sablonból üzemelő példányok nem újbóli üzembe helyezés érhetők el.
+Ha egy központi telepítés nem sikerül, automatikusan is újratelepítése egy korábbi, a sikeres telepítés az üzembe helyezési előzményekből. Újbóli üzembe helyezés megadásához használja a `onErrorDeployment` tulajdonságot a kérelem törzsében.
+
+Ez a beállítás használatához az üzemelő példányok egyedi névvel kell rendelkezniük az előzményekben található ellenőrizhető, hogy. Ha nem rendelkezik egyedi nevét, az aktuális telepítése sikertelen volt. a korábban sikeresen végrehajtott központi telepítés előzményei esetleg felülírhatja. Használhatja ezt a beállítást csak a legfelső szintű telepítések. Beágyazott sablonból üzemelő példányok nem újbóli üzembe helyezés érhetők el.
 
 Telepítse újra a legutóbbi sikeres üzembe helyezés, ha a jelenlegi üzemelő példány nem sikerül, használja:
 
 ```json
-"onErrorDeployment": {
-  "type": "LastSuccessful",
-},
+{
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "mode": "Incremental",
+    "parametersLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "onErrorDeployment": {
+      "type": "LastSuccessful",
+    }
+  }
+}
 ```
 
 Adott üzembe helyezés ismételt üzembe helyezése, ha a jelenlegi üzemelő példány nem sikerül, használja:
 
 ```json
-"onErrorDeployment": {
-  "type": "SpecificDeployment",
-  "deploymentName": "<deploymentname>"
+{
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "mode": "Incremental",
+    "parametersLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "onErrorDeployment": {
+      "type": "SpecificDeployment",
+      "deploymentName": "<deploymentname>"
+    }
+  }
 }
 ```
 

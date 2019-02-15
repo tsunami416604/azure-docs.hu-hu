@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 649fe5ebadf69a90b4794fcaf4519ea5bcc0c4a2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f1f4cb036f4df226d651f8f4d0f5c7492f453a0a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874182"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269740"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>A HDFS parancssori felület használatával a Data Lake Storage Gen2
 
@@ -26,17 +26,37 @@ A HDInsight hozzáférést nyújt a helyileg a számítási csomópontokhoz csat
 >[!IMPORTANT]
 >HDInsight-fürt számlázása elindul, amikor egy fürt jön létre, és leállítja a fürt törlésekor. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban. Ismerje meg, hogyan törölheti a fürtöt, tekintse meg a [foglalkozó témakör](../../hdinsight/hdinsight-delete-cluster.md). Azonban a Data Lake Storage Gen2 engedélyezve van a storage-fiókban tárolt adatok fenntartása, még akkor is egy HDInsight-fürt törlése után.
 
+### <a name="create-a-file-system"></a>Hozzon létre egy fájlrendszer
+
+    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+
+* Cserélje le a `<file-system-name>` kíván adni a fájlrendszer neve helyőrzőt.
+
+* Cserélje le a `<storage-account-name>` helyőrzőt a tárfiók nevére.
+
 ### <a name="get-a-list-of-files-or-directories"></a>Fájlok vagy könyvtárak listájának lekérése
 
-    hdfs dfs -ls <args>
+    hdfs dfs -ls <path>
+
+Cserélje le a `<path>` URI-ját a fájlrendszerből vagy fájlrendszermappán helyőrzőt.
+
+Például:`hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ### <a name="create-a-directory"></a>Könyvtár létrehozása
 
-    hdfs dfs -mkdir [-p] <paths>
+    hdfs dfs -mkdir [-p] <path>
 
-### <a name="delete-a-file-or-a-directory"></a>Egy fájl vagy könyvtár törlése
+Cserélje le a `<path>` helyőrzőt a legfelső szintű fájlrendszer neve vagy a fájlrendszer mappában.
 
-    hdfs dfs -rm [-skipTrash] URI [URI ...]
+Például:`hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
+
+### <a name="delete-a-file-or-directory"></a>Egy fájl vagy könyvtár törlése
+
+    hdfs dfs -rm <path>
+
+Cserélje le a `<path>` helyőrzőt az URI-ját a fájl vagy mappa, amelyet törölni szeretne.
+
+Például:`hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ### <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>A HDFS CLI használata egy HDInsight Hadoop-fürt Linux rendszeren
 
@@ -52,11 +72,15 @@ hdfs dfs -mkdir /samplefolder
 ```
 A kapcsolati karakterlánc található a "SSH + fürtbe bejelentkezési" szakaszában a HDInsight-fürt panelén, az Azure Portalon. Az SSH hitelesítő adatok a fürt létrehozása idején voltak megadva.
 
-A parancssori felület HDFS további információkért lásd: a [dokumentációs](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) és a [HDFS-engedélyek útmutatója](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html). A hozzáférés-vezérlési listák a Databricksben kapcsolatos további információkért tekintse meg a [titkos kulcsok parancssori felület](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#secrets-cli). 
+A parancssori felület HDFS további információkért lásd: a [dokumentációs](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) és a [HDFS-engedélyek útmutatója](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html). A hozzáférés-vezérlési listák a Databricksben kapcsolatos további információkért tekintse meg a [titkos kulcsok parancssori felület](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#secrets-cli).
 
 ## <a name="hdfs-cli-with-azure-databricks"></a>HDFS CLI-t az Azure Databricks
 
 A Databricks a Databricks REST API-ra épülő, egy könnyen használható parancssori felület biztosít. A nyílt forráskódú projekt lévő üzemeltetett [GitHub](https://github.com/databricks/databricks-cli). Az alábbiakban a gyakran használt parancsok.
+
+### <a name="create-a-file-system"></a>Hozzon létre egy fájlrendszer
+
+Itt adja meg az útmutatót.
 
 ### <a name="get-a-list-of-files-or-directories"></a>Fájlok vagy könyvtárak listájának lekérése
 

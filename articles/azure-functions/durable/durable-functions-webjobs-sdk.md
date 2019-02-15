@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c1a778a006c7743b6ea19062d79cff3cfeaba3d8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 282b07a384ac6db5bfbc144ca06440f3a8f01a6a
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713269"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301196"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Tartós függvények futtatása a webjobs-feladatok
 
@@ -208,7 +208,7 @@ Ez a szakasz futtatása áttekintést nyújt a [mintaprojektet](https://github.c
 
 1. Helyezze üzembe a Webjobs-feladatként.
 
-## <a name="webjobs-sdk-3x"></a>A WebJobs SDK 3.x
+## <a name="webjobs-sdk-3x"></a>WebJobs SDK 3.x
 
 A fő változás 3.x bevezetett, a .NET-keretrendszer helyett a .NET Core használata. 3.x projekt létrehozásához a ugyanezek az utasítások érvényesek, kivéve a következőket:
 

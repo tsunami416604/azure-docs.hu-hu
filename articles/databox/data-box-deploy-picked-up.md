@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 5a72bfccd69a51aa6bafb34bb768b48640e554af
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4398f16e0b8179242b6bcd9a69955460291310e7
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243008"
+ms.locfileid: "56267359"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Oktatóanyag: Vissza az Azure Data Box, és ellenőrizze az adatok feltöltése az Azure-bA
 
@@ -42,7 +42,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy:
 ## <a name="ship-data-box-back"></a>Data Box visszaküldése
 
 1. Ellenőrizze, hogy az eszköz ki van-e kapcsolva, és a kábelek el lettek-e távolítva. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
-2. Ha az eszközt az Egyesült Államokban postázza, győződjön meg arról, hogy a fuvarlevélcímke látható az E-ink kijelzőn, és egyeztesse a csomagfelvételt a szállítóval. Ha a címke megsérült vagy elveszett vagy nem jelenik meg az E-ink megjelenő, majd lépjen kapcsolatba a Microsoft ügyfélszolgálatához. Csak akkor, ha a támogatási javasol lépjen **áttekintés > levélcímke letöltése** az Azure Portalon. Töltse le a szállítási címkét, és elhelyezi az eszközön.
+2. Ha az eszközt az Egyesült Államokban postázza, győződjön meg arról, hogy a fuvarlevélcímke látható az E-ink kijelzőn, és egyeztesse a csomagfelvételt a szállítóval. Ha a címke megsérült vagy elveszett vagy nem jelenik meg az E-ink megjelenő, forduljon a Microsoft ügyfélszolgálatához. Ha támogatási javasolja, folytassa a **áttekintés > levélcímke letöltése** az Azure Portalon. Töltse le a szállítási címkét, és elhelyezi az eszközön.
 
     Ha az eszközt Európában postázza, az E-ink kijelző nem mutatja a fuvarlevélcímkét. Ehelyett a visszaküldési fuvarlevélcímkét a feladási fuvarlevélcímke alatti átlátszó zsebben találja. Távolítsa el a régi fuvarlevélcímkét, és győződjön meg arról, hogy a fuvarlevélcímke jól látható.
     

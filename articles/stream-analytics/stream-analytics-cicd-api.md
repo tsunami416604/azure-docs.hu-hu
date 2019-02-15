@@ -1,5 +1,5 @@
 ---
-title: CI/CD megvalósításához az Azure Stream Analytics – REST API-k használatával
+title: CI/CD megvalósításához az Azure Stream Analytics az IoT Edge-ben REST API-k használatával
 description: Ismerje meg, hogy egy folyamatos integrációt és üzembe helyezési folyamat megvalósítása az Azure Stream Analytics – REST API-k használatával.
 services: stream-analytics
 author: mamccrea
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: f22a4c4d0159efa2ac42d15ff6afdadc2d6755d0
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 40beb620e037061b189762a51e3c29d0fd251b27
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215048"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268499"
 ---
-# <a name="implement-cicd-for-stream-analytics-using-apis"></a>CI/CD megvalósításához a Stream Analytics API-k használatával
+# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD megvalósításához a Stream Analytics az IoT Edge-ben API-k használatával
 
 Folyamatos integráció és üzembe helyezés az Azure Stream Analytics-feladatok REST API-k használatával engedélyezheti. Ez a cikk példákat a melyik API-k használatát, és azok használatát. REST API-k nem támogatottak az Azure Cloud Shellben.
 

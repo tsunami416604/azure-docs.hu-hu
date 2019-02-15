@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/16/2018
+ms.date: 02/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2b26261fdbae07bf3eea793efe6ff0755ca3f577
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 1383c59ca88400868f83d30d04d9b0e5f5401282
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895992"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268957"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
@@ -400,7 +400,7 @@ Azonban az ajánlott módszer a kérelem telemetriát küldjön, ahol működik-
 
 ## <a name="operation-context"></a>Műveleti környezet
 
-Telemetriai együtt kapcsolhatja össze műveleti környezet alkalmazásával. A normál kérés-követési modult azért teszi ezt a kivételeket és eseményeket, amelyek nem érkeznek, míg a HTTP-kérés feldolgozása folyamatban van. A [keresési](../../azure-monitor/app/diagnostic-search.md) és [Analytics](analytics.md), megtalálhatja minden olyan események, kapcsolódó a kérést a művelet azonosítója.
+Telemetriai együtt kapcsolhatja össze műveleti környezet alkalmazásával. A normál kérés-követési modult azért teszi ezt a kivételeket és eseményeket, amelyek nem érkeznek, míg a HTTP-kérés feldolgozása folyamatban van. A [keresési](../../azure-monitor/app/diagnostic-search.md) és [Analytics](analytics.md), megtalálhatja a művelet azonosítójával a kéréshez társított eseményeket
 
 Lásd: [az Application Insights Telemetriai korreláció](../../azure-monitor/app/correlation.md) korrelációs további részleteiért.
 
@@ -508,7 +508,7 @@ catch (ex)
 Az SDK-k számos-komponensek kivételeinek kezelése automatikusan, így mindig nincs explicit módon hívja a TrackException.
 
 * ASP.NET: [-Komponensek kivételeinek kezelése kód írása](../../azure-monitor/app/asp-net-exceptions.md).
-* J2EE-KISZOLGÁLÓKON: [Kivételek automatikusan észlelt](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
+* Java EE-alapú: [Kivételek automatikusan észlelt](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
 * JavaScript: Kivételek automatikusan észlelt. Ha szeretné tiltani az automatikus gyűjtését, adjon hozzá egy sort a weblapok beillesztett kódrészlet:
 
 ```javascript
@@ -732,7 +732,7 @@ Thread.sleep(5000);
 telemetry.flush();
 ```
 
-Vegye figyelembe, hogy a függvény az aszinkron a [kiszolgáló telemetriai csatorna](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
+A függvény az aszinkron a [kiszolgáló telemetriai csatorna](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
 
 Ideális esetben az alkalmazás leállítása tevékenység flush() metódus használandó.
 
@@ -1141,7 +1141,7 @@ Ha megadta ezeket az értékeket saját magának, érdemes eltávolítani a megf
 
 * **Összetevő**: Az alkalmazás és annak verzióját.
 * **Eszköz**: Adatok az eszközről, ahol az alkalmazás fut-e. (A web apps szolgáltatásban, ez az a kiszolgáló vagy ügyfél eszköz által küldött telemetriát.)
-* **InstrumentationKey**: Az Application Insights-erőforrást az Azure-ban hol jelenjenek meg a telemetriát. Ez általában mértékének az applicationinsights.config fájlban.
+* **InstrumentationKey**: Az Application Insights-erőforrást az Azure-ban, a telemetria megjelenik. Ez általában mértékének az applicationinsights.config fájlban.
 * **Hely**: Az eszköz földrajzi helye.
 * **A művelet**: A web apps, a jelenlegi HTTP-kérelem. A más típusú alkalmazások beállíthatja ezt események együtt.
   * **ID**: Egy generált érték, amely a különböző események, így minden esetben a diagnosztikai keresés nézze meg, amikor kapcsolódó elemek találhatók.
@@ -1189,4 +1189,4 @@ Mennyi ideig meghatározásához adatért, lásd: [adatok megőrzésére és az 
 ## <a name="next"></a>Következő lépések
 
 * [Keresési események és naplók](../../azure-monitor/app/diagnostic-search.md)
-* [Hibaelhárítás](../../azure-monitor/app/troubleshoot-faq.md)
+* [hibaelhárítással](../../azure-monitor/app/troubleshoot-faq.md)

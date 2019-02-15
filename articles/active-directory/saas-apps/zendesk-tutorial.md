@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/11/2019
+ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a40597178a8267febfd6ad18277d6b865c084d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d656a72e681c8cc73fa8b660684b8c194df3ae48
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180164"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301213"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zendesk
 
@@ -109,12 +109,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Zendesk, hajtsa vég
 
     a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.zendesk.com`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím:
-    | |
-    |-|-|
-    | `<subdomain>.zendesk.com` |
-    | `https://<subdomain>.zendesk.com` |
-    | |
+  b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.zendesk.com`
 
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Zendesk-ügyfél-támogatási csapatának](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.

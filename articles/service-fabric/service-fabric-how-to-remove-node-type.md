@@ -1,9 +1,9 @@
 ---
-title: Hogyan távoli csomópont írja be az Azure Service Fabricben |} A Microsoft Docs
-description: Ismerje meg, az Azure Service Fabric-csomóponttípus eltávolítása
+title: Az Azure Service Fabric-csomóponttípus eltávolítása |} A Microsoft Docs
+description: Ismerje meg, hogy a csomópont típusa törlése az Azure-ban futó Service Fabric-fürtön.
 services: service-fabric
 documentationcenter: .net
-author: v-steg
+author: aljo-microsoft
 manager: JeanPaul.Connick
 editor: vturecek
 ms.assetid: ''
@@ -12,47 +12,64 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/26/2018
-ms.author: v-steg
-ms.openlocfilehash: 3704a356763b16a30285baee1aabffdd3aa3f8aa
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 02/14/2019
+ms.author: aljo
+ms.openlocfilehash: 63a18b6a24d922c48129df56045ec3e1d67bac53
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53980702"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300992"
 ---
 # <a name="remove-a-service-fabric-node-type"></a>Távolítsa el a Service Fabric-csomópont típusa
+Ez a cikk azt ismerteti, hogyan méretezzünk át egy Azure Service Fabric-fürtöt egy meglévő csomóponttípus eltávolítása egy fürtről. Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része csomópontoknak nevezzük. Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üzembe helyezése és kezelése a virtuális gépek gyűjteményét készletként használt. Minden csomópont-típus egy Azure-fürtön definiált [külön méretezési csoportként](service-fabric-cluster-nodetypes.md). Mindegyik csomóponttípus kezelhetők külön-külön. Egy Service Fabric-fürt létrehozását követően méretezheti a fürt vízszintesen csomópont típusa (virtuálisgép-méretezési) és az összes hozzá tartozó csomópont eltávolításával.  Méretezheti a fürt bármikor, még akkor is, ha a számítási feladatok a fürtön futnak.  A fürt skálázható, mivel az alkalmazások automatikus méretezése is.
 
 Használat [Remove-AzureRmServiceFabricNodeType](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) egy Service Fabric-csomóponttípus eltávolítása.
 
-A Remove-AzureRmServiceFabricNodeType meghívásakor előforduló két műveletek a következők:
-1.  A virtuális gép méretezési beállítása (VMSS) mögött typ uzlu törlődik.
-2.  Az összes csomóponthoz, hogy a csomópont típusa belül a csomóponthoz tartozó teljes állapot eltávolítani a rendszerből. Ha ezen a csomóponton szolgáltatásokat, majd a szolgáltatások először kerülnek egy másik csomópontra. A kezelőt nem található a csomópont a replika vagy szolgáltatások, a művelet, késleltetett/blokkolja-e.
+A Remove-AzureRmServiceFabricNodeType meghívásakor előforduló három műveletek a következők:
+1.  A csomóponttípus mögötti virtuálisgép-méretezési törlődik.
+2.  A csomóponttípus távolítja el a fürtöt.
+3.  Az adott csomóponttípus lévő összes csomópont a csomóponthoz tartozó teljes állapot eltávolítani a rendszerből. Ha ezen a csomóponton szolgáltatásokat, majd a szolgáltatások először kerülnek egy másik csomópontra. A kezelőt nem található a csomópont a replika vagy szolgáltatások, a művelet, késleltetett/blokkolja-e.
 
-> [!NOTE]
-> Typ uzlu eltávolítása egy éles fürtöt Remove-AzureRmServiceFabricNodeType használatával nem ajánlott a gyakran használható. Ebben az esetben ez megegyezik a nagyon súlyos parancs alapvetően törli a Virtual Machine Scale Set erőforrás mögött typ uzlu. Remove-AzureRmServiceFabricNodeType hívásakor a rendszer már nem lehet tudni, hogy ha az Eltávolítás folyamatban van a biztonságos konkrét. 
+> [!WARNING]
+> Typ uzlu eltávolítása egy éles fürtöt Remove-AzureRmServiceFabricNodeType használatával nem ajánlott a gyakran használható. Ez megegyezik a veszélyes parancs törli a virtuális gép méretezési csoport erőforrás mögött typ uzlu. 
 
 ## <a name="durability-characteristics"></a>Tartóssági jellemzői
-Biztonsági van szándék sebességét, Remove-AzureRmServiceFabricNodeType használatakor. Silver vagy Gold [tartóssági jellemzők](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) ajánlott, mert:
+Biztonsági van szándék sebességét, Remove-AzureRmServiceFabricNodeType használatakor. A csomópont típusúnak kell lennie Silver vagy Gold [tartóssági szint](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster), mert:
 - Bronz nem ad meg semmilyen garanciát kapcsolatos állapotinformációkat mentése.
-- Silver és Gold tartóssági trap módosításokat a vmss-hez.
-- Gold ad is szabályozhatja az Azure VMSS alá frissíti.
+- Silver és Gold tartóssági trap módosításokat a méretezési csoporthoz.
+- Gold ad is szabályozhatja az Azure frissíti a méretezési csoport alá.
 
 A Service Fabric "összehangolja" mögöttes módosításokat, és frissíti, hogy ne legyen adatvesztés. Amikor eltávolít egy csomópontot a bronz tartóssági, azonban előfordulhat, hogy állapot adat elvész. Ha szeretne eltávolítani egy elsődleges csomóponttípus, és az alkalmazás állapot nélküli, bronz fogadható el. Éles környezetben állapotalapú alkalmazások és szolgáltatások futtatásakor, a minimális konfigurációs Silver kell lennie. Hasonlóképpen a termelési forgatókönyvekhez az elsődleges csomóponttípushoz mindig lehet Silver vagy Gold.
 
 ### <a name="more-about-bronze-durability"></a>További információ a bronz tartóssági
 
-Egy csomópont típusa, amely bronz eltávolításakor a csomópontokon írja be a csomópont leáll azonnal. A Service Fabric nem trap bronz csomópontok VMSS frissítéseket, így minden virtuális gép leáll azonnal. Ha bármi állapot-nyilvántartó a csomópontokon, az adat elvész. Most, még akkor is, ha az állapot nélküli volt, a Service Fabric összes csomópontja részt a kört, így előfordulhat, hogy egy teljes hálózatok elvesztek, amely hatással lehet a fürt, másrészt.
-
-Eltérően eltávolítása egyetlen csomópont, mert kiszorulnak, egyszerre egy csomópont eltávolíthatja, várja meg, a replikákat és a szolgáltatások átvitele, a rendszer stabilizálását, egy másik csomópont eltávolítása előtt várja meg, és így tovább.  Azonban ha egyszerre egyszerre több csomópont eltávolítja, a fürt előfordulhat, hogy leáll (mivel a Service Fabric nem trap VMSS frissítéseket a bronz tartóssági).
+Egy csomópont típusa, amely bronz eltávolításakor a csomópontokon írja be a csomópont leáll azonnal. A Service Fabric nem trap bronz csomópontok scale set frissítéseket, így minden virtuális gép leáll azonnal. Ha bármi állapot-nyilvántartó a csomópontokon, az adat elvész. Most, még akkor is, ha az állapot nélküli volt, a Service Fabric összes csomópontja részt a kört, így előfordulhat, hogy egy teljes hálózatok elvesztek, amely instabillá teheti a fürthöz.
 
 ## <a name="recommended-node-type-removal-process"></a>Csomópont típusa eltávolítást javasolt
 
-A csomóponttípus eltávolítása a legtöbb biztonságos és gyors módon:
-1.  Ha a bronz tartóssági használ, vagy nem szeretné, a rendszer a csomópont típusa törlés, a csomópontok, amely befolyásolja a csomópont típusa eltávolításához első üres állapot-nyilvántartó adatait vesznek el állapotinformáció tartalmazó alkalmazások áthelyezését a.
-2.  Futtatás [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) egyes az eltávolítani kívánt csomópontokat.
-3.  Futtatás [Remove-AzureRmVmss](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#remove-vms-from-a-scale-set) virtuális gépek, amelyek hatással lesz a csomópont típusa eltávolításához.
-4. Futtatás [Remove-AzureRmServiceFabricNodeType](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) eltávolítása a csomópont típusa.
+A csomóponttípus eltávolításához futtassa a [Remove-AzureRmServiceFabricNodeType](/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) parancsmagot.  A parancsmag befejezése hosszabb időt vesz igénybe.  Ezután futtassa [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) egyes az eltávolítani kívánt csomópontokat.
+
+```powershell
+$groupname = "mynodetype"
+$nodetype = "nt2vm"
+$clustername = "mytestcluster"
+
+Remove-AzureRmServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+
+Connect-ServiceFabricCluster -ConnectionEndpoint mytestcluster.eastus.cloudapp.azure.com:19000 `
+          -KeepAliveIntervalInSec 10 `
+          -X509Credential -ServerCertThumbprint <thumbprint> `
+          -FindType FindByThumbprint -FindValue <thumbprint> `
+          -StoreLocation CurrentUser -StoreName My
+
+$nodes = Get-ServiceFabricNode | Where-Object {$_.NodeType -eq $nodetype} | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending
+
+Foreach($node in $nodes)
+{
+    Remove-ServiceFabricNodeState -NodeName $node.NodeName -TimeoutSec 300 -Force 
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 - További tudnivalók a fürt [tartóssági jellemzők](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).

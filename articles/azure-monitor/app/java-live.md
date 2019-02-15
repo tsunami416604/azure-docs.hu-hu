@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5d0866bdd96a1b0f626c369cfd646f6249a4da54
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: dbc16718358f86b02c6970ec42c4bc0ff68a951d
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121379"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301043"
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Application Insights Java-webalkalmazások, amelyek már az élő
 
-Ha egy webalkalmazást, amely a j2ee-alapú kiszolgálón már fut, megkezdheti a figyelést az [Application Insights](../../azure-monitor/app/app-insights-overview.md) anélkül, hogy módosítsa a kódokat, vagy a projekthez újrafordítottuk kellene. Ezzel a lehetőséggel, a kiszolgáló nem kezelt kivételek és teljesítményszámlálók küldött HTTP-kérések adatainak beolvasása.
+Ha egy webalkalmazást, amely a Java EE-alapú kiszolgálón már fut, megkezdheti a figyelést az [Application Insights](../../azure-monitor/app/app-insights-overview.md) anélkül, hogy módosítsa a kódokat, vagy a projekthez újrafordítottuk kellene. Ezzel a lehetőséggel, a kiszolgáló nem kezelt kivételek és teljesítményszámlálók küldött HTTP-kérések adatainak beolvasása.
 
 Ehhez egy [Microsoft Azure](https://azure.com)-előfizetésre van szüksége.
 

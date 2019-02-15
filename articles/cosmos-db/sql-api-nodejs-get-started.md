@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 9c0255382e2cfe09683931408d25ffb3f60419d1
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 4441797eb41dc909a98be3c42931140e71e36f80
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508895"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270351"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js-Konzolalkalmazás létrehozása az Azure Cosmos DB SQL API-adatok kezelése a JavaScript SDK-val
 
@@ -72,7 +72,10 @@ Az alkalmazás kódírás megkezdése előtt a keretrendszer hozhat létre az al
      * ```touch app.js```
      * ```touch config.js```
 
-4. Telepítse az @azure/cosmos modult az npm segítségével. Használja az alábbi parancsot:
+4. Létrehozni és inicializálni egy `package.json` fájlt. Használja az alábbi parancsot:
+   * ```npm init -y```
+
+5. Telepítse az @azure/cosmos modult az npm segítségével. Használja az alábbi parancsot:
    * ```npm install @azure/cosmos --save```
 
 ## <a id="Config"></a>Az alkalmazás konfigurációnak megadása
@@ -190,13 +193,12 @@ Most, hogy az alkalmazás már létezik, győződjön meg arról, hogy kommunik�
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
    ```
 
 1. Másolja és illessze be a kódot, ha az előzőleg mentett ```config.endpoint``` és ```config.primaryKey``` használatával szeretne létrehozni egy új CosmosClient-ügyfelet.
 
    ```javascript
-   const url = require('url');
+   const config = require('./config');
 
    // ADD THIS PART TO YOUR CODE
    const endpoint = config.endpoint;
@@ -280,7 +282,6 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
 
    const endpoint = config.endpoint;
    const masterKey = config.primaryKey;
@@ -382,7 +383,6 @@ Egy tároló használatával hozható létre a `createIfNotExists` , vagy hozzon
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
 
    const endpoint = config.endpoint;
    const masterKey = config.primaryKey;
@@ -695,7 +695,6 @@ A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerő
 const CosmosClient = require('@azure/cosmos').CosmosClient;
 
 const config = require('./config');
-const url = require('url');
 
 const endpoint = config.endpoint;
 const masterKey = config.primaryKey;
@@ -889,9 +888,9 @@ A kezdeti lépéseket ismertető elindítva megoldás, amely tartalmazza az ebbe
 * Egy [Azure Cosmos DB-fiók][create-account]. 
 * A GitHubon elérhető [Kezdeti lépések](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started) megoldás. 
 
-Telepítse a **@azure/cosmos** modult az npm segítségével. Használja az alábbi parancsot: 
+A projekt függőségeihez az npm telepítése. Használja az alábbi parancsot: 
 
-* ```npm install @azure/cosmos --save``` 
+* ```npm install``` 
 
 Ezután a ```config.js``` fájlt, frissítse a config.endpoint és config.primaryKey értékek leírtak szerint [3. lépés: Az alkalmazás konfigurációnak megadása](#Config).  
 

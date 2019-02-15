@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: b6a2ca70faa36b94ace8158f33e58b5e6688ece3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9897fbb3f5efe1f5255992e4894ea22041595263
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002200"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268192"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Az Azure Monitor naplóira szöveges adatok elemzése
 Bizonyos Azure Monitor által gyűjtött naplóadatok egyetlen tulajdonsággal több információt tartalmazza. Ezek az adatok elemzése több tulajdonságot be megkönnyíti a lekérdezések használata. Ilyenek például a [egyéni napló](../../log-analytics/log-analytics-data-sources-custom-logs.md) , amely egy teljes naplóbejegyzés több értékkel rendelkező gyűjti be egy-egy tulajdonság. Hozzon létre külön tulajdonságait a különböző értékeket, kereshet és az egyes összesített.
@@ -63,7 +63,7 @@ Ezt a módszert hátrányai a következők:
 Lásd: [egyéni mezőket hozhat létre az Azure monitorban](../platform/custom-fields.md) adatok elemzésekor, mivel a begyűjtésük részleteiért. Ez a tábla, csakúgy, mint minden más tulajdonság lekérdezések által használható egyéni tulajdonságok hoz létre.
 
 ## <a name="parse-data-in-query-using-patterns"></a>A minták használatával lekérdezés adatainak elemzése
-Elemezni kívánt adatokat a rekordok között ismétlődő minta segítségével azonosítható, ha a különböző operátorok használhatja a [adatkezelő lekérdezési nyelv](/azure/kusto/query/) be egy vagy több új tulajdonságok a konkrét adat kibontásához.
+Elemezni kívánt adatokat a rekordok között ismétlődő minta segítségével azonosítható, ha a különböző operátorok használhatja a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) be egy vagy több új tulajdonságok a konkrét adat kibontásához.
 
 ### <a name="simple-text-patterns"></a>Egyszerű szöveges mintákkal
 
@@ -139,7 +139,7 @@ MyCustomCSVLog_CL
 ```
 
 ## <a name="parse-predefined-structures-in-a-query"></a>A lekérdezésben előre meghatározott struktúrák elemzése
-Ha az adatok ismert szerkezetben vannak formázva, akkor lehet az a funkciók egyikét használhatják a [adatkezelő lekérdezési nyelv](/azure/kusto/query/) előre meghatározott struktúrák elemzéséhez:
+Ha az adatok ismert szerkezetben vannak formázva, akkor lehet az a funkciók egyikét használhatják a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) előre meghatározott struktúrák elemzéséhez:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)

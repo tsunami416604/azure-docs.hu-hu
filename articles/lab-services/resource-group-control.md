@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: spelluru
-ms.openlocfilehash: ddda9ef2b9bb716f7cdd33aa8fe9233f6c7d8e82
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 2903228a3257abe9c454c6e0720a1e228b905290
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749000"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300040"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Adjon meg egy erőforráscsoportot a virtuális gépeiről az Azure DevTest Labs szolgáltatásban
 Labortulajdonosként konfigurálhatja a labor virtuális gépek egy adott erőforráscsoportban kell létrehozni. A funkció használatához, hogy Ön nem érik el erőforrás Csoportkorlát az Azure-előfizetésében. Ez a funkció lehetővé teszi az egyetlen erőforráscsoporton belül minden laborerőforrások konszolidálhatja. Emellett leegyszerűsíti az erőforrások követésének és alkalmazásának [házirendek](../governance/policy/overview.md) kezelheti őket az erőforráscsoport szintjén.
@@ -32,7 +32,7 @@ Most nézzük meg a beállításokat, az API használatakor labortulajdonosként
 - Megadhat egy **új erőforráscsoport** minden virtuális gép neve.
 - A jelenlegi működését, folytathatja azt jelenti, egy erőforráscsoport jön létre az egyes virtuális Gépekhez a tesztkörnyezetben.
  
-Ez a beállítás a lab-ben létrehozott új virtuális gépekre vonatkozik. A régebbi létrehozott virtuális gépek a tesztkörnyezetében elérhető saját erőforráscsoport továbbra is változatlan marad. Azonban telepíthet át ezek a virtuális gépek az egyes erőforráscsoportok a közös erőforráscsoportot, hogy a labor virtuális gépek egy közös erőforráscsoportban. További információkért lásd: [erőforrások áthelyezése új erőforráscsoportot, amelybe](../azure-resource-manager/resource-group-move-resources.md). A lab-ben létrehozott környezetekben továbbra is továbbra is elérhető a saját erőforráscsoport.
+Ez a beállítás a lab-ben létrehozott új virtuális gépekre vonatkozik. A régebbi létrehozott virtuális gépek a tesztkörnyezetében elérhető saját erőforráscsoport továbbra is változatlan marad. A lab-ben létrehozott környezetekben továbbra is továbbra is elérhető a saját erőforráscsoport.
 
 ### <a name="how-to-use-this-api"></a>Útmutató az API-t használja:
 - Az API-verzió használata **2018_10_15_preview** az API használata során. 

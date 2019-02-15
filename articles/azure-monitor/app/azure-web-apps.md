@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4ec6e1288b34f04350a88697ca13ed044922ee50
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 19e0e5797e05589baa1e104f3e9ab8b4d9cc2d6c
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002242"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267291"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 Az a [az Azure portal](https://portal.azure.com) beállíthat alkalmazásteljesítmény-figyelés a web apps, mobile háttérrendszerek és API-alkalmazások a [Azure App Service](../../app-service/overview.md). Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) úgy alakítja ki az alkalmazást, hogy telemetriát küldjön tevékenységeiről az Application Insights szolgáltatásnak, amely tárolja és elemzi azokat. Itt metrikus diagramok és keresőeszközök segítségével diagnosztizálhat problémákat, javíthatja a teljesítményt, és felmérheti a használatot.
@@ -29,7 +29,7 @@ A figyelés konfigurálásához kétféle módon alakíthatja ki az alkalmazást
 * **Felépítési idő** – Telepíthet egy csomagot fejlesztés alatt álló alkalmazásába. Ez a lehetőség jóval sokoldalúbb. A standard csomagkészlet mellett kódolással testreszabhatja a telemetriát, vagy elküldheti saját telemetriáját. Naplózhat konkrét tevékenységeket vagy rögzíthet eseményeket alkalmazástartománya szemantikájának megfelelően. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Futási idő kialakítása az Application Insights segítségével
-Melyeket már használ egy app Service-ben az Azure-ban, ha már kap bizonyos figyelőket: kérés és a hibák gyakoriságát. Adja hozzá az Application Insights további, például a válaszidők, a függőségek hívásainak figyelése, intelligens észlelés és a hatékony adatkezelő lekérdezési nyelv. 
+Melyeket már használ egy app Service-ben az Azure-ban, ha már kap bizonyos figyelőket: kérés és a hibák gyakoriságát. Adja hozzá az Application Insights további, például a válaszidők, Kusto figyelési hívásokat a függőségek, intelligens észlelés és a nagy teljesítményű lekérdezési nyelv. 
 
 1. **Válassza az Application Insights** az app service az Azure Vezérlőpultján.
 

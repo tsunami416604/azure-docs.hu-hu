@@ -2,21 +2,21 @@
 title: Egyéni hibalapok Azure Application Gateway létrehozása
 description: Ez a cikk bemutatja, hogyan hozhat létre az Application Gateway vlastní chybové stránky.
 services: application-gateway
-author: amitsriva
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 2/14/2019
 ms.author: victorh
-ms.openlocfilehash: 2f76347105743538e9fc1d7588ecb949f2675696
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071224"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301604"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Egyéni hibalapok Application Gateway létrehozása
 
-Az Application Gateway lehetővé teszi, hogy hozzon létre egyéni hibalapok alapértelmezett hibák részleteiről szóló lap megjelenítése helyett. Saját arculat és elrendezés használatával egyéni hibalap is használhatja.
+Az Application Gatewayjel testreszabhatók a hibaoldalak. Az egyéni hibaoldalakon feltüntetheti saját védjegyeit, és egyéni elrendezést használhat.
 
 Például a saját karbantartás oldalon adhatja meg, ha a webalkalmazás nem érhető el. Vagy egy jogosulatlan hozzáférés oldalt hozhat létre, ha egy rosszindulatú kérelmet küld a webalkalmazást.
 
@@ -34,6 +34,7 @@ Egyéni hibalapok a globális szinten és a figyelő szintjén adható meg:
 - **Mindkét** – az egyéni hibalap, a figyelő szintjén definiált felülbírálások globális szinten az egy csoport.
 
 Hozzon létre egy egyéni Hibaoldal, kell rendelkeznie:
+
 - a válasz HTTP-állapotkódot.
 - a hibalaphoz tartozó megfelelő hely. 
 - a nyilvánosan elérhető Azure storage blob helyéhez.
@@ -59,5 +60,19 @@ Miután megadott egy hibalap, az application gateway a tárolási blob helyről,
 4. Egy adott hiba állapotkód egy nyilvánosan elérhető-e a blob URL-címet, és kattintson a **mentése**. Az Application Gateway mostantól az egyéni hibalap van konfigurálva.
 
    ![Application Gateway-hibakódok](media/custom-error/ag-error-codes.png)
+
+## <a name="azure-powershell-configuration"></a>Azure PowerShell-konfigurálás
+
+Azure PowerShell segítségével konfigurálhatja egy egyéni Hibaoldal. Ha például egy globális vlastní chybovou stránku:
+
+`$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+
+Vagy egy figyelő hibalap:
+
+`$updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+
+További információkért lásd: [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) és [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0).
+
 ## <a name="next-steps"></a>További lépések
+
 Application Gateway-diagnosztika kapcsolatos információkért lásd: [háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway](application-gateway-diagnostics.md).

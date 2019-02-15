@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41771db4ff674b2f0df941286358d3154034ea1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e6f1174351f0907ce2bef21324c7ba81c81498b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194359"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266713"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Mi az a feltételes hozzáférés az Azure Active Directoryban?
 
@@ -109,11 +109,7 @@ A feltételes hozzáférés használatához Azure AD Prémium szintű licenc sz�
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha többet szeretne megtudni:
-    - a feltételekről, olvassa el [az Azure Active Directory feltételes hozzáférések feltételeit ismertető cikket](conditions.md).
+Feltételes hozzáférés alkalmazása a környezetben, lásd: [az Azure Active Directoryban a feltételes hozzáférés üzembe helyezésének megtervezése](plan-conditional-access.md).
 
-    - a hozzáférés-vezérlésről, olvassa el [az Azure Active Directory feltételes hozzáférés-vezérlését ismertető cikket](controls.md).
 
-- Ha szeretne gyakorlatot szerezni a feltételes hozzáférési szabályzatok konfigurálásában, lásd: [Többtényezős hitelesítés megkövetelése adott alkalmazásokhoz az Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md).
 
-- Ha át szeretne tekinteni egy részletes üzembehelyezési tervet a javasolt szabályzatokkal, tekintse meg a [feltételes hozzáférés üzembe helyezésére vonatkozó tervet](https://aka.ms/conditionalaccessdeploymentplan).

@@ -1,7 +1,7 @@
 ---
 title: A Machine Learning Studio-munkaterület kezelése
 titleSuffix: Azure Machine Learning Studio
-description: Az Azure Machine Learning-munkaterületek, való hozzáférés kezelése és üzembe helyezése és gépi Tanulási API-webszolgáltatások kezelése
+description: Azure Machine Learning Studio-munkaterületek, való hozzáférés kezelése és üzembe helyezése és kezelése a Machine Learning API-webszolgáltatások
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: f1904552b6c43cadd611659ed544b9f4bafcb465
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f792c2b23c8d36225b4c05cf7a334721bd08272a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487275"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269025"
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>Az Azure Machine Learning Studio-munkaterület kezelése
 
@@ -24,16 +24,16 @@ ms.locfileid: "55487275"
 > 
 > 
 
-Machine Learning-munkaterületek az Azure Portalon kezelheti.
+A Machine Learning Studio-munkaterületek az Azure Portalon kezelheti.
 
 
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-A munkaterület az Azure Portalon kezelheti:
+A Studio-munkaterület az Azure Portalon kezelheti:
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy Azure-előfizetéshez rendszergazdai fiókkal.
-2. A keresőmezőbe, a lap tetején adja meg a "machine learning-munkaterületek", majd **Machine Learning-munkaterületek**.
+2. A keresőmezőbe, a lap tetején adja meg a "machine learning Studio-munkaterületek", és adja meg **a Machine Learning Studio-munkaterületek**.
 3. Kattintson a kezelni kívánt munkaterülethez.
 
 Standard erőforrásadatok felügyeleti és a rendelkezésre álló lehetőségek mellett a következő műveletek végezhetők el:
@@ -41,10 +41,10 @@ Standard erőforrásadatok felügyeleti és a rendelkezésre álló lehetősége
 - Nézet **tulajdonságok** – ezen a lapon látható a munkaterület és az erőforrás adatait, és módosíthatja az előfizetésben és erőforráscsoportban csoport, amely ehhez a munkaterülethez van csatlakoztatva.
 - **Tárkulcsok újraszinkronizálása** – a munkaterület fenntart a tárfiókhoz kulcsot. A storage-fiók kulcsok megváltozik, akkor kattintson **kulcsok újraszinkronizálása** a kulcsok szinkronizálása a munkaterületen.
 
-A webes szolgáltatások a munkaterülethez társított kezeléséhez használja a Machine Learning webszolgáltatások portálján. Lásd: [egy webszolgáltatás, az Azure Machine Learning Web Services portál használata kezelheti](manage-new-webservice.md) teljes körű információkat.
+A webes szolgáltatások a Studio-munkaterülethez társított kezeléséhez használja a Machine Learning webszolgáltatások portálján. Lásd: [egy webszolgáltatás, az Azure Machine Learning Web Services portál használata kezelheti](manage-new-webservice.md) teljes körű információkat.
 
 > [!NOTE]
-> Telepítenie és felügyelnie az új webszolgáltatások, hozzá kell rendelni egy közreműködőjének vagy rendszergazdájának szerepkört az előfizetésre, amelyre a web service telepítve van. A machine learning-munkaterület egy másik felhasználó meghívása akkor, ha kell rendelnie őket az előfizetés közreműködőjének vagy rendszergazdájának szerepkörhöz üzembe helyezése vagy webszolgáltatások kezelése előtt. 
+> Telepítenie és felügyelnie az új webszolgáltatások, hozzá kell rendelni egy közreműködőjének vagy rendszergazdájának szerepkört az előfizetésre, amelyre a web service telepítve van. A machine learning Studio-munkaterület egy másik felhasználó meghívása meg, ha kell rendelnie őket az előfizetés közreműködőjének vagy rendszergazdájának szerepkörhöz üzembe helyezése vagy webszolgáltatások kezelése előtt. 
 > 
 >Hozzáférési engedélyek beállítása a további információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
 

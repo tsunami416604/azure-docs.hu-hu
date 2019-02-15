@@ -1,21 +1,21 @@
 ---
 title: Azure portal – Azure Search használatával indexelést és lekérdezést a rövid útmutató
-description: Ez a rövid útmutató segítségével az Azure portal és a beépített mintaadatok indexet hozhat létre az Azure Search szolgáltatásban. Használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést, a geosearch funkciót és sok mást.
+description: Ismerje meg, hogyan hozhat létre, és az első beépített mintaadatok és az adatok importálása varázsló használata az Azure Portalon az Azure Search-index lekérdezése.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 53be1180f074c075ed2ca2d544b9b164a3a1bdd6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 260dfc829d0869b1fc4f58ae399351c5f68dd926
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991310"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270334"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Gyors útmutató: Az Azure Search-importálási, az indexelés és a lekérdezések beépített portal-eszközök használata
 
@@ -94,15 +94,17 @@ A mezők adattípusokkal és attribútumokkal rendelkeznek. A fent látható jel
 
 Tárolási követelmények változnak az eredményeként választását. Például, ha beállította a **lekérhető** attribútum több mező alapján tárolási követelmények lép fel.
 
-Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonosítókat keresve, amelyeket felhasználhat a kulcsmező alapjaként. A sztringek lekérhetőként és kereshetőként vannak megjelölve. Az egész számok lekérhetőként, szűrhetőként, rendezhetőként és kategorizálhatóként vannak megjelölve.
+Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonosítókat keresve, amelyeket felhasználhat a kulcsmező alapjaként. *Karakterláncok* vannak megjelölve **lekérhető** és **kereshető**. *Egész számok* vannak megjelölve **lekérhető**, **Filterable**, **Sortable**, és **kategorizálható**.
 
-1. Fogadja el az összes alapértelmezett beállítást.
+1. Fogadja el az alapértelmezett beállításokat. 
 
-  ![Létrehozott ingatlanindex](media/search-get-started-portal/realestateindex2.png)
+   Ha újra futtatja a varázsló használatával realestate meglévő adatforrás másodszor, az index nem lesz konfigurálva, az alapértelmezett attribútumok. Manuálisan válassza ki a jövőbeli import attribútumok kell.
+
+   ![Létrehozott ingatlanindex](media/search-get-started-portal/realestateindex2.png)
 
 2. Folytassa a következő lapra.
 
-  ![Következő oldal indexelő létrehozása](media/search-get-started-portal/next-button-create-indexer.png)
+   ![Következő oldal indexelő létrehozása](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>4. lépés – az indexelő konfigurálása
 

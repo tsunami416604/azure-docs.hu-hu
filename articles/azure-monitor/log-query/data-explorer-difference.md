@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor log lekérdezési nyelv különbségek |} A Microsoft Docs
-description: Referenciainformációk az adatkezelő lekérdezési nyelvet használják az Azure Monitor. Az Azure Monitor további elemeket és elemeket nem támogatott az Azure Monitor log-lekérdezéseket tartalmaz.
+description: Referenciainformációk az Azure Monitor által használt Kusto-lekérdezési nyelv. Az Azure Monitor további elemeket és elemeket nem támogatott az Azure Monitor log-lekérdezéseket tartalmaz.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: bwren
-ms.openlocfilehash: 9c58796fa19ffb6d38582c809f7bb6ca948bd92c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1185f3f96fd39f168d138d7dbf66e7780884b1fa
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003626"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266730"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor log lekérdezési nyelv különbségek
 
-Amíg [naplók az Azure Monitor](log-query-overview.md) épül [Azure adatkezelő](/azure/data-explorer) , és használja a [azonos lekérdezési nyelvet](/azure/kusto/query), a nyelvi verzióját van néhány különbség. Ez a cikk elemek, amelyek különböznek az adatkezelőt, és az Azure Monitor log-lekérdezésekben használt verzió használt nyelv verzióját azonosítja.
+Amíg [naplók az Azure Monitor](log-query-overview.md) épül [Azure adatkezelő](/azure/data-explorer) látható, ugyanazokkal [Kusto-lekérdezés nyelvi](/azure/kusto/query), a nyelvi verzióját van néhány különbség. Ez a cikk elemek, amelyek különböznek az adatkezelőt, és az Azure Monitor log-lekérdezésekben használt verzió használt nyelv verzióját azonosítja.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="data-explorer-elements-not-supported-in-azure-monitor"></a>Nem támogatott az Azure Monitor Explorer adatelem
-A következő szakaszok ismertetik az adatkezelő lekérdezési nyelv elemei, amelyek az Azure Monitor által nem támogatott.
+## <a name="kql-elements-not-supported-in-azure-monitor"></a>Nem támogatott az Azure Monitor KQL elemek
+A következő szakaszok ismertetik a Kusto-lekérdezés nyelvi elemei, amelyek az Azure Monitor által nem támogatott.
 
 ### <a name="statements-not-supported-in-azure-monitor"></a>Nem támogatott az Azure Monitor utasítások
 
@@ -64,4 +64,4 @@ Az alábbi műveleteket támogatják a Azure Monitor, és nem érhetők el az Az
 ## <a name="next-steps"></a>További lépések
 
 - Referenciák beszerzése különböző [erőforrásokat az Azure Monitor írásához jelentkezzen lekérdezések](query-language.md).
-- A teljes hozzáférési [adatkezelő lekérdezési nyelv referenciadokumentációjára](/azure/kusto/query/).
+- A teljes hozzáférési [Kusto-lekérdezés nyelvi referenciadokumentációjára](/azure/kusto/query/).

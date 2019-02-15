@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: d6065420b9081333fc257501ace868f64220ca63
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dafafa8ff5d721034b3b10bdeb1a2fc09cd32835
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005250"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267580"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Az Azure Monitor log-lekérdezéshez Splunk
 
-Ebből a cikkből segítséget nyújtanak a felhasználók, akik jól ismerik az adatkezelő lekérdezési nyelv segítségével log lekérdezéseket írni az Azure monitorban további Splunk. Közvetlen összehasonlítások meglévő ismereteit használhatja, a két legfontosabb különbségek megértéséhez, és hasonlóságokat között történik.
+Ebből a cikkből segítséget nyújtanak a felhasználók, akik jól ismerik a Kusto-lekérdezési nyelvet, amely log lekérdezéseket írni az Azure monitorban további Splunk. Közvetlen összehasonlítások meglévő ismereteit használhatja, a két legfontosabb különbségek megértéséhez, és hasonlóságokat között történik.
 
 ## <a name="structure-and-concepts"></a>Struktúra és fogalmak
 

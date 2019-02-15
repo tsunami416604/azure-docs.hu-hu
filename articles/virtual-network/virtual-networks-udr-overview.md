@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.openlocfilehash: f5c8880535d5b4b89ec3f13caa20051ae1709925
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 86e4720f001f05534bc9af703f0f98d7ca5d95e4
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812786"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268838"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -121,7 +121,7 @@ Egy helyszíni hálózati átjáró útvonalakat cserélhet egy Azure virtuális
 
 Amikor a BGP használatával útvonalakat cserél az Azure-ban, a rendszer minden meghirdetett előtag esetében külön útvonalat ad hozzá a virtuális hálózat összes alhálózatának útvonaltáblájához. Az útvonal forrásaként és következő ugrásának típusaként *Virtuális hálózati átjáró* van feltüntetve. 
 
-A BGP-útvonalpropagálás letiltható az alhálózaton az útválasztási táblázat tulajdonságának segítségével. Amikor a BGP használatával útvonalakat cserél az Azure-ban, az útvonalak nincsenek hozzáadva az összes alhálózat útválasztási táblázatához, amelyeknél a BGP-útvonalpropagálás le lett tiltva. A VPN-kapcsolatok következő ugrás típusú *virtuális hálózati átjáró* és [egyéni útvonalak](#custom-routes) használatával jönnek létre. Részletekért tekintse meg a [BGP-útvonalpropagálás letiltását](manage-route-table.md#create-a-route-table) ismertető cikket.
+ER- és VPN Gateway-útvonalpropagálás letiltható egy alhálózaton egy útválasztási táblázatot egy tulajdonság használatával. Amikor a BGP használatával útvonalakat cserél az Azure-ban, az útvonalak nincsenek hozzáadva az összes alhálózat útválasztási táblázatához, amelyeknél a BGP-útvonalpropagálás le lett tiltva. A VPN-kapcsolatok következő ugrás típusú *virtuális hálózati átjáró* és [egyéni útvonalak](#custom-routes) használatával jönnek létre. Részletekért tekintse meg a [BGP-útvonalpropagálás letiltását](manage-route-table.md#create-a-route-table) ismertető cikket.
 
 ## <a name="how-azure-selects-a-route"></a>Az Azure útvonalválasztásának módja
 

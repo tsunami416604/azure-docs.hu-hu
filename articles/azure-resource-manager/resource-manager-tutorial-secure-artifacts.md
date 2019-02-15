@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 12/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8be7a3d862e7b496a4e3b3077e4c53018bf97bb8
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: cd692442791f57e1560a97f09253ccd1a8264fb3
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233319"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269093"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Oktatóanyag: Az Azure Resource Manager-sablon-üzembehelyezések biztonságos összetevők
 
@@ -36,8 +36,6 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Az üzemelő példány ellenőrzése
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -218,6 +216,9 @@ New-AzResourceGroupDeployment `
     -bacpacFileName $bacpacFileName `
     -TemplateFile azuredeploy.json
 ```
+
+> [!NOTE]
+> Van egy fájl i/o-probléma az Azure PowerShell használatával a Cloud shellben.  A hibaüzenet *dinamikus paramétereit a parancsmag nem olvashatók be. "Azure:/azuredeploy.json" elérési út nem található, mert nem létezik.*  Egy ideiglenes áthidaló megoldás lehet, hogy nem tartalmazza a **- TemplateFile** kapcsolóval a `New-AzResourceGroupDeploy` parancsot. A parancs felszólítja, írja be a fájl nevét.
 
 Használni létrehozott jelszót. Lásd: [Előfeltételek](#prerequisites).
 Az értékek _artifactsLocation, _artifactsLocationSasToken és bacpacFileName, lásd: [hozzon létre egy SAS-token](#generate-a-sas-token).

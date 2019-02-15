@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: faeba611dfc55307f8f855ee45a1a8d37603f2f5
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0c7f248023a97bdad09c2c51e9e9a28073def086
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117384"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300125"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért kell Application Insights?
-Az Application Insights figyeli a futó webalkalmazás. Azt mutatja meg hibáiról és teljesítményproblémáiról, és segítségével elemezheti az ügyfelek hogyan használják az alkalmazást. Ez (j2ee-alapú, az ASP.NET, Node.js,...) számos platformon futó alkalmazásokkal működik, és a felhőben vagy a helyszínen üzemel. 
+Az Application Insights figyeli a futó webalkalmazás. Azt mutatja meg hibáiról és teljesítményproblémáiról, és segítségével elemezheti az ügyfelek hogyan használják az alkalmazást. Ez (az ASP.NET, Java EE-alapú, Node.js,...) számos platformon futó alkalmazásokkal működik, és a felhőben vagy a helyszínen üzemel. 
 
 ![A webes alkalmazások összetettsége aspektusa](./media/devops/010.png)
 
@@ -150,7 +150,7 @@ Fejlesztés és hibakeresés funkció, miközben tekintheti meg és keressen tel
 
 Hibakeresés során lehetősége van, hogy a telemetria a fejlesztői gépén való tekintse meg a Visual Studióban, de anélkül, hogy elküldené a portálon. Ezzel a beállítással helyi elkerülhető, hogy éles telemetriával végzett hibakereséssel keverése.
 
-### <a name="work-items"></a>Munkaelemek
+### <a name="work-items"></a>Munkatételek
 Riasztást hoz létre, amikor az Application Insights automatikusan létrehozhat az egy munkaelemet a nyomon követési rendszer munkáját.
 
 ## <a name="but-what-about"></a>De mi a helyzet...?

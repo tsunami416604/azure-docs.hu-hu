@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 01/09/2019
+ms.date: 02/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 68bc3302874849a69249a50dcecd46024ad939ef
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 007c63c163b6e972bd59189569c92c99d2718cbe
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448329"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301485"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
@@ -131,6 +131,9 @@ A. A Data Box-lemezek érhető el az eszközkészlet három eszközöket tartalm
 Az eszközkészlet Windows és Linux egyaránt érhető el. Az eszközkészlet Itt töltheti le:
  - [Data Box Disk eszközkészlet letöltése Windowsra](https://aka.ms/databoxdisktoolswin) 
  - [Data Box Disk eszközkészlet letöltése Linuxra](https://aka.ms/databoxdisktoolslinux)
+ 
+ ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>K. Használható az Azure Files adatátvitelt, majd az adatokat az Azure File Sync Data Box-lemezek? 
+ A. Az Azure Files Data Box-lemezek használata nem támogatott. Metaadatok is nem marad meg, ha a fájladatok később használja az Azure File Sync használatával.
 
 
 ## <a name="verify-and-upload"></a>Ellenőrzés és feltöltés

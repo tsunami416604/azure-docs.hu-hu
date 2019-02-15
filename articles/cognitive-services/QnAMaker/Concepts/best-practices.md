@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 9ea62d731cf0c16c17f3c2e4f3e1954661289934
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 038d41ae299076754a2f778ec67aac04e630d476
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245541"
+ms.locfileid: "56270181"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Ajánlott eljárások a QnA Maker Tudásbázis
 A [Tudásbázis fejlesztési életciklus](../Concepts/development-lifecycle-knowledge-base.md) végigvezeti Önt a a KB-os kezelése az elejétől a végéig. Ajánlott eljárások használatával növelheti a Tudásbázis, és jobb eredményeket nyújt az application/csevegőrobot a végfelhasználók számára.
@@ -25,6 +25,18 @@ A [Tudásbázis fejlesztési életciklus](../Concepts/development-lifecycle-know
 A QnA Maker szolgáltatást folyamatosan javul a algoritmusokat használnak a QnA-tudásbázisok kinyerése a tartalom és a támogatott fájl-és HTML formátumú bővítését. Kövesse a [irányelvek](../Concepts/data-sources-supported.md) az adatok kinyerése a dokumentum típusa alapján. 
 
 Gyakori kérdéseket tartalmazó oldalak általában az önálló és egyéb információkat a nem összevont kell lennie. Kézikönyvek egyértelmű címsorok és lehetőleg index lapot kell rendelkeznie. 
+
+## <a name="creating-good-questions-and-answers"></a>Jó kérdések és válaszok létrehozásával
+
+### <a name="good-questions"></a>Jó kérdések
+
+A legjobb kérdések egyszerűek. Fontolja meg a kulcs szót vagy kifejezést az összes kérdést, majd hozza létre az adott kulcsszót vagy kifejezést a kérdés. 
+
+Adjon hozzá annyi másodlagos kérdések van szükség, de egyszerű megtartani a módosításokat. További szavakat vagy szinonimákkal, amelyek nem szerepelnek a fő cél a kérdés hozzáadása nem működik a QnA Maker egyezést talál. 
+
+### <a name="good-answers"></a>Helyes válasz
+
+A legjobb válaszokat már az egyszerű, de nem túl egyszerű, például az Igen és a válaszok. Ha a válasz kell hivatkozni a más forrásokból, vagy egy gazdag felhasználói élményt biztosítson adathordozó és a hivatkozások, [címkézés](../how-to/metadata-generateanswer-usage.md) különbséget tenni a várt válasz típusát, majd küldje el a lekérdezést a helyes válasz verzió beszerzéséhez a címkével.
 
 ## <a name="chit-chat"></a>Csevegési Chit
 A robot, hogy a robot természetes nyelvi, és vonzó, chit csevegési hozzá-kis munkamennyiség. Egyszerűen adja hozzá a 3 előre definiált személyiséghez chit csevegési adatkészleteket a KB-os létrehozásakor, és bármikor módosíthatja őket. Ismerje meg, hogyan [chit csevegési ad hozzá a KB-os](../How-To/chit-chat-knowledge-base.md). 
@@ -58,7 +70,6 @@ Győződjön meg arról, amelyek a lehető legjobban kihasználják támogatja a
 ### <a name="choosing-a-threshold"></a>Egy küszöbértéket kiválasztása
 Az alapértelmezett küszöbérték, amely megbízhatósági pontszám érték: 50, azonban a KB, szükség szerint módosíthatja. Mivel minden KB különböző, teszteléséhez, és válassza ki a küszöbérték, amely a legjobb megoldás az olyan adatbázisoknál a KB. Tudjon meg többet a [megbízhatósági pontszám](../Concepts/confidence-score.md). 
 
-
 ### <a name="add-alternate-questions"></a>Alternatív kérdések hozzáadása
 [Kérdések az eredetitől eltérő](../How-To/edit-knowledge-base.md) felhasználói lekérdezés egyezést valószínűségének növelése. Alternatív kérdések akkor hasznos, ha több módon is ugyanezt a kérdést kérni. Ezek lehetnek a módosítások a mondatok és a word-stílusú.
 
@@ -81,17 +92,16 @@ Míg néhány támogatás angol nyelven szinonimák, használja kis-és [word-á
 |Vásárlás|vásároljon<br>netbanking<br>nettó banki|
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Önálló szavak használatával tesz különbséget a kérdések
-A QnA Maker egyezés rang algoritmusok, egy kérdést a Tudásbázis-egy felhasználói lekérdezésnek megfelelő, akkor működnek a legjobban, minden egyes kérdés-címek egy másik kell. Ismétlődő kérdések között ugyanazon szó csökkenti annak valószínűsége, hogy a helyes válasz egy adott felhasználó lekérdezés azokat a szavakat az van kiválasztva. 
+A QnA Maker rangsorolási algoritmust, egy felhasználói lekérdezés egy kérdést a Tudásbázis megfelelő akkor működik a legjobban, ha minden kérdés-címek egy másik szükséges. Ismétlődő kérdések között ugyanazon szó csökkenti annak valószínűsége, hogy a helyes válasz egy adott felhasználó lekérdezés azokat a szavakat az van kiválasztva. 
 
 Előfordulhat például, hogy két külön QnA-tudásbázisok az az alábbi kérdésekre:
 
 |QnA-tudásbázisok|
 |--|
 |hol található az ideiglenes *helye*|
-|hol található a atm *helye*|
+|hol található a ATM *helye*|
 
-E két QnA-tudásbázisok vannak phrased nagyon hasonló szavakat tartalmaznak, mivel a hasonlóság okozhat számos felhasználói lekérdezések, amelyek például a rendszer phrased nagyon hasonló pontszámok *"hol van a `<x>` helye"*. Ehelyett a lekérdezésekkel például jól megkülönböztethető próbál *"hol található az ideiglenes sok"* és *"hol található a atm"*, lehetőleg ne szavakat, például a "hely", amely csak a sok kérdések a KB-ban. 
-
+E két QnA-tudásbázisok vannak phrased nagyon hasonló szavakat tartalmaznak, mivel a hasonlóság okozhat számos felhasználói lekérdezések, amelyek például a rendszer phrased nagyon hasonló pontszámok *"hol van a `<x>` helye"*. Ehelyett a lekérdezésekkel például jól megkülönböztethető próbál *"hol található az ideiglenes sok"* és *"hol található a ATM"*, lehetőleg ne szavakat, például a "hely", amely csak a sok kérdések a KB-ban. 
 
 ## <a name="collaborate"></a>Együttműködés
 A QnA Maker lehetővé teszi a felhasználóknak [együttműködés](../How-to/collaborate-knowledge-base.md) a Tudásbázis. Felhasználók az Azure QnA Maker erőforráscsoport hozzá kell férniük ahhoz, hogy hozzáférhessen a tudásbázisok. Egyes szervezetek érdemes kiszervezik a Tudásbázis szerkesztéséhez és a karbantartás, és továbbra is felhasználhatják az Azure-erőforrásokhoz való hozzáférés védelme. Ez a szerkesztő, jóváhagyó modell végzi el beállítása két azonos [QnA Maker szolgáltatás](../How-to/set-up-qnamaker-service-azure.md) különböző előfizetésekben találhatóak, és ha kiválaszt egy, a Szerkesztés tesztelés ciklusig az újbóli. Tesztelés befejezése után a Tudásbázis-tartalmat a átkerülnek egy [az import-export](../Tutorials/migrate-knowledge-base.md) feldolgozása a QnA Maker szolgáltatás a jóváhagyó, végül pedig a Tudásbázis közzététele, és a végpont frissítéséhez.

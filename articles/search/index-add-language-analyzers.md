@@ -1,7 +1,7 @@
 ---
 title: Nyelvi elemzők – Azure Search hozzáadása
 description: Többnyelvű lexikai szöveg elemzése nem angol nyelvű lekérdezések és az indexek az Azure Search szolgáltatásban.
-ms.date: 01/31/2019
+ms.date: 02/14/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b5c562994c169a8c5d51ee31a9606c5c40162603
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: bb7fbdeea9c19b8a6fabe06687261296110b4064
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008334"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301804"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Nyelvi elemzők az Azure Search-index hozzáadása
 
-A *nyelvi elemző* adott összetevője egy [teljes szöveges keresés motor](https://docs.microsoft.com/azure/search/search-lucene-query-architecture) , amely végrehajtja a Célnyelv nyelvi szabályai lexikai elemzés. Minden kereshető mező egy `analyzer` tulajdonság. Az index tartalmazza a lefordított karakterláncokat, például az angol nyelvű és kínai szöveg, különálló mezőben megadhatja nyelvi elemzők mindegyik mező elérni ezeket az elemzők a gazdag nyelvi képességeit.  
+A *nyelvi elemző* egy adott típusú [szöveg analyzer](search-analyzers.md) , amely végrehajtja a Célnyelv nyelvi szabályai lexikai elemzés. Minden kereshető mező egy **analyzer** tulajdonság. Az index tartalmazza a lefordított karakterláncokat, például az angol nyelvű és kínai szöveg, különálló mezőben megadhatja nyelvi elemzők mindegyik mező elérni ezeket az elemzők a gazdag nyelvi képességeit.  
 
 Az Azure Search Lucene által támogatott 35 elemzők és a szellemi tulajdont képező Microsoft természetes nyelvi feldolgozási technológia, amellyel a Bing és az Office által támogatott 50 elemzők támogatja.
 
-## <a name="compare-language-analyzer-types"></a>Nyelvi elemző típusok összehasonlítása 
+## <a name="comparing-analyzers"></a>Elemzők összehasonlítása
 
 Néhány fejlesztő inkább Lucene több ismerős, egyszerű, nyílt forráskódú megoldás. Lucene nyelvi elemzők gyorsabb, de a Microsoft elemzők speciális képességek, például morfológiai, a word decompounding (például a német, dán, holland, svéd, norvég, észt, Befejezés, magyar, Szlovák nyelveken) és az entitás elismerés (URL-címek, e-mailek, dátumokat, számokat). Ha lehetséges futtassa a Microsoft és a Lucene-elemzőt eldönteni, melyik felel meg leginkább a összehasonlítását. 
 
@@ -49,15 +49,17 @@ Az alapértelmezett elemző a Standard Lucene, amely jól az angol nyelvű táj�
  > [!Tip]
  > A [keresési Analyzer bemutató](https://alice.unearth.ai/) biztosít a standard Lucene-elemzőt, a Lucene angol nyelvi elemző és a Microsoft természetes angol nyelvű processzor által előállított eredmények összehasonlítása egymás mellett. Az egyes keresési feltétele alapján ad meg, minden egyes analyzer eredményeinek szomszédos ablaktáblán jelennek meg.
 
-## <a name="analyzer-configuration"></a>Analyzer configuration
+## <a name="configuring-analyzers"></a>Elemzők konfigurálása
 
-Az index definícióját minden egyes mezőjéhez, beállíthatja a `analyzer` -elemző eszköz a neve, mely nyelvi és szállítói tulajdonságot. Az azonos elemző lépnek érvénybe, ha indexelés és keresés, ezt a mezőt. Például rendelkezhet külön mezőkben angol, francia és spanyol Szálloda panelelemek leírását, amely ugyanahhoz az indexhez egymás mellett szerepel.  
+Nyelvi elemzők használják-van. Az index definícióját minden egyes mezőjéhez, beállíthatja a **analyzer** -elemző eszköz a neve, mely nyelvi és szállítói tulajdonságot. Az azonos elemző lépnek érvénybe, ha indexelés és keresés, ezt a mezőt. Például rendelkezhet külön mezőkben angol, francia és spanyol Szálloda panelelemek leírását, amely ugyanahhoz az indexhez egymás mellett szerepel.  
 
 Használja a **searchFields** lekérdezési paramétert adja meg, melyik nyelvspecifikus mezővel rákereshet ellen a lekérdezésekben. Az elemző tulajdonság tartalmazza a dokumentumok keresése példák a lekérdezésekre tekintheti meg. 
 
 Index-tulajdonságokkal kapcsolatos további információkért lásd: [a Create Index &#40;Azure Search szolgáltatás REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). Az Azure Search elemzési kapcsolatos további információkért lásd: [elemzők az Azure Search](https://docs.microsoft.com/azure/search/search-analyzers).
 
-## <a name="analyzer-list"></a>Elemző listája  
+<a name="language-analyzer-list"></a>
+
+## <a name="language-analyzer-list"></a>Nyelvi elemző listája 
  Az alábbi, a lucene-től és Microsoft elemző nevek együtt támogatott nyelvek listáját.  
 
 |Nyelv|A Microsoft elemző neve|Lucene-elemzőt neve|  

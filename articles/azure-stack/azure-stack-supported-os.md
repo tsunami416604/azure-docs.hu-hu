@@ -16,12 +16,12 @@ ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 8f53bbd65053fe9ac2bf49478944dc99dac3acfd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 67022b1d00c8982d7b6e6eff77ffb648bfc557ec
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247850"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301281"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Vendég operációs rendszereket támogatják az Azure Stackben
 
@@ -53,7 +53,7 @@ Datacenter kiadások érhetők el le; a piactéren ügyfelek kihasználhatják a
 Linux-disztribúciók elérhetőként szerepel a Marketplace-en tartalmazza a szükséges Windows Azure Linux ügynök (WALA). Ha saját rendszerképet az Azure Stackhez, irányelvekhez [hozzáadása típusú Linux-rendszerképeket az Azure Stackhez](azure-stack-linux.md).
 
 > [!NOTE]
-> Egyéni rendszerképek nyilvános WALA legújabb verziójával kell építeni. Előfordulhat, hogy 2.2.18-nél régebbi verziók nem működik megfelelően az Azure Stacken.
+> Egyéni rendszerképek nyilvános WALA legújabb verziójával vagy 2.2.20 verzióval kell építeni. Előfordulhat, hogy a régebbi, mint 2.2.20 és 2.2.20 és 2.2.35 (exkluzív) közötti verziókat nem működik megfelelően az Azure Stacken. 
 >
 > [a cloud-init](https://cloud-init.io/) jelenleg nem támogatott az Azure Stacken.
 

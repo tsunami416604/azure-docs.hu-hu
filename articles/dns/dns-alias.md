@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 52b42e964e7abe207064aff49f7f8f27f8476ef4
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 52653252df3efd3e12fa974ed82cd2557eee93d0
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092842"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301247"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Az Azure DNS-alias a rekordok áttekintése
 
@@ -29,7 +29,7 @@ A következő rekordtípusokhoz, az Azure DNS-zóna egy aliast rekordhalmaz tám
 
 ## <a name="capabilities"></a>Funkciók
 
-- **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** Egy A vagy AAAA típusú rekordhalmaz létrehozása, és adja meg egy alias rekordhalmaz átirányítása nyilvános IP-erőforrást.
+- **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource.
 
 - **A DNS A/AAAA/CNAME-rekordhalmazok átirányítása a Traffic Manager-profil.** A CNAME REKORDOT a Traffic Manager-profil egy DNS CNAME rekord készletből is mutasson. Ez például akkor contoso.trafficmanager.net. Most is mutathat, amely rendelkezik egy DNS-zónáját A vagy AAAA típusú rekordot a külső végpontok Traffic Manager-profilhoz.
 
@@ -52,11 +52,11 @@ Alias rekordok távolítsa el az ebben a forgatókönyvben a összetettségét. 
 
 ### <a name="update-dns-zones-automatically-when-application-ips-change"></a>Az alkalmazás IP-címek változásakor automatikusan frissíti a DNS-zónák
 
-Ez a forgatókönyv hasonlít az előzőre. Például egy alkalmazás áthelyezése, vagy a mögöttes virtuális gép újraindul. Az alias rekord majd automatikusan frissíti az IP-cím változásának az alapul szolgáló nyilvános IP-erőforráshoz. Biztonsági kockázatok elkerülése érdekében közvetlenül a felhasználók számára, amely a régi IP-címmel rendelkezik egy másik alkalmazás.
+Ez a forgatókönyv hasonlít az előzőre. Például egy alkalmazás áthelyezése, vagy a mögöttes virtuális gép újraindul. Az alias rekord majd automatikusan frissíti az IP-cím változásának az alapul szolgáló nyilvános IP-erőforráshoz. Ezzel elkerülhető a potenciális biztonsági kockázatok irányítja a felhasználókat, hogy a régi IP-címmel rendelkezik egy másik alkalmazás.
 
 ### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Elosztott terhelésű alkalmazások üzemeltetését a zóna legfelső pontján
 
-A DNS protokoll megakadályozza, hogy az A vagy AAAA rekord a zóna legfelső pontján csakis a hozzárendelését. Például a contoso.com. Ez a korlátozás az elosztott terhelésű alkalmazások Forgalomkezelő mögé rendelkező alkalmazástulajdonosok problémát jelent. Nem lehet a zóna felső pontja rekordból a Traffic Manager-profil mutassanak. Ennek eredményeképpen alkalmazástulajdonosok áthidaló kell használnia. Az ügyfélalkalmazási rétegben átirányítási kell átirányítási a zóna felső pontja a egy másik tartományba. Ilyen például, egy irányítja át a contoso.com www.contoso.com. Ezzel az elrendezéssel fokozott megjelenít egy átirányítási függvényéhez meghibásodási pont.
+A DNS protokoll megakadályozza, hogy az A vagy AAAA rekord a zóna legfelső pontján csakis a hozzárendelését. Például: contoso.com. Ez a korlátozás az elosztott terhelésű alkalmazások Forgalomkezelő mögé rendelkező alkalmazástulajdonosok problémát jelent. Nem lehet a zóna felső pontja rekordból a Traffic Manager-profil mutassanak. Ennek eredményeképpen alkalmazástulajdonosok áthidaló kell használnia. Az ügyfélalkalmazási rétegben átirányítási kell átirányítási a zóna felső pontja a egy másik tartományba. Ilyen például, egy irányítja át a contoso.com www.contoso.com. Ezzel az elrendezéssel fokozott megjelenít egy átirányítási függvényéhez meghibásodási pont.
 
 Alias rekordokat a probléma már nem létezik. Alkalmazástulajdonos most már rendelkezik külső végpontok Traffic Manager-profil is mutat a zóna felső pontja rekord. Alkalmazástulajdonos más tartományban a DNS-zóna használt azonos Traffic Manager-profilt is mutat. Például a contoso.com és a www.contoso.com is mutasson a Traffic Manager-profilt. Ez a helyzet, amíg a Traffic Manager-profil csak külső végpontokkal konfigurálva van.
 
@@ -64,6 +64,6 @@ Alias rekordokat a probléma már nem létezik. Alkalmazástulajdonos most már 
 
 További információt az alias rekordok, tekintse meg a következő cikkeket:
 
-- [Oktatóanyag: Egy aliast rekord tekintse meg az Azure nyilvános IP-cím konfigurálása](tutorial-alias-pip.md)
-- [Oktatóanyag: Egy aliasrekordot támogatásához apex-tartománynevek a Traffic Manager konfigurálása](tutorial-alias-tm.md)
+- [Oktatóanyag: Tekintse meg az Azure nyilvános IP-cím egy aliast rekord konfigurálása](tutorial-alias-pip.md)
+- [Oktatóanyag: -Aliasrekordot támogatásához apex-tartománynevek a Traffic Manager konfigurálása](tutorial-alias-tm.md)
 - [DNS – gyakori kérdések](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)

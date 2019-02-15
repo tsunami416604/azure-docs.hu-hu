@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e3f7579324e1218cc2e2c3594889db776da6e529
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c1258ab619b165553c55481ad67d663be65ac832
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56143760"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269603"
 ---
 # <a name="how-to-use-azure-maps-android-sdk"></a>Azure Maps Android SDK használata
 
@@ -45,7 +45,7 @@ Lásd: [Android Studio-dokumentáció](https://developer.android.com/studio/intr
 
 ## <a name="set-up-a-virtual-device"></a>A virtuális eszköz beállítása
 
-Az Android Studio lehetővé teszi, hogy a számítógép egy virtuális Android-eszköz beállításához. Ami segít az alkalmazás teszteléséhez, fejlesztése során. Telepítés a virtuális eszköz kattintson a felső Android virtuális eszközt (AVD) Manager ikonra, a projekt képernyő jobb. Kattintson a **virtuális eszköz létrehozása** gombra. A Manager eszközök segítségével is beszerezheti > Android > AVD Manager, az eszköztáron. Az a **telefonok** kategória, jelölje be **Nexus 5 X** kattintson **tovább**.
+Az Android Studio lehetővé teszi, hogy a számítógép egy virtuális Android-eszköz beállításához. Ami segít az alkalmazás teszteléséhez, fejlesztése során. Állítsa be a virtuális eszköz kattintson az Android virtuális eszközt (AVD) Manager ikonra a felső, a projekt képernyő jobb. Kattintson a **virtuális eszköz létrehozása** gombra. A kezelő-n keresztül is elérhető, **eszközök > Android > AVD Manager** az eszköztáron. Az a **telefonok** kategória, jelölje be **Nexus 5 X** kattintson **tovább**.
 
 További információ az AVD a beállítása a [Android Studio-dokumentáció](https://developer.android.com/studio/run/managing-avds).
 
@@ -55,7 +55,7 @@ További információ az AVD a beállítása a [Android Studio-dokumentáció](h
 
 Mielőtt folytatná az alkalmazása létrehozásához felé, kövesse az Azure Maps Android SDK telepítése az alábbi lépéseket. 
 
-1. Adja hozzá a következőt a **allprojects**, tárházak letiltása a **build.gradle** fájlt.
+1. Adja hozzá a következőt a **minden projekt**, tárházak letiltása a **build.gradle** fájlt.
 
     ```
     maven {
@@ -79,7 +79,7 @@ Mielőtt folytatná az alkalmazása létrehozásához felé, kövesse az Azure M
         implementation "com.microsoft.azure.maps:mapcontrol:0.1"
         ```
 
-3. Adja hozzá a következőket az AndroidManifest.xml engedélyek beállítása
+3. Adja hozzá a következő engedélyek beállítása a **AndroidManifest.xml**
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -90,7 +90,7 @@ Mielőtt folytatná az alkalmazása létrehozásához felé, kövesse az Azure M
     </manifest>
     ```
 
-4. Szerkesztés **res > elrendezés > activity_main.xml**, ezért azt meg, például az alábbi XML:
+4. Szerkesztés **res > elrendezés > activity_main.xml**, ezért az alábbi XML hasonlóan néz ki:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -187,7 +187,7 @@ Mielőtt folytatná az alkalmazása létrehozásához felé, kövesse az Azure M
 
 ## <a name="import-classes"></a>Osztályok importálása
 
-A fenti lépések végrehajtását követően nagy valószínűséggel kap figyelmeztetést az Android Studio néhány, a szöveg a kódban. Ez bizonyos osztályokhoz a hivatkozott importálni kell kezelni `MainActivity.java`.
+A fenti lépések végrehajtását követően nagy valószínűséggel kap figyelmeztetést az Android Studio néhány, a szöveg a kódban. Ezek a figyelmeztetések megszüntetéséhez hivatkozik osztályok importálása `MainActivity.java`.
 
 Billentyű lenyomásával automatikusan importálhatja ezeket az osztályokat `Alt` + `Enter`(`Option` + `Return` Mac gépen). 
 

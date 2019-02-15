@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: 1f2defd2adb580aee71482a699c7987ca3fa7807
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: bb13e507e7992f4cd4d767a7a18850739b8dccf2
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301067"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270198"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Az Azure-ba, a System Center DPM-mel biztonsági másolatot előkészítése
 
-Ez a cikk bemutatja, hogyan készíti elő a System Center Data Protection Manager (DPM) biztonsági másolat az Azure, az Azure Backup szolgáltatással. 
+Ez a cikk bemutatja, hogyan készíti elő a System Center Data Protection Manager (DPM) biztonsági másolat az Azure, az Azure Backup szolgáltatással.
 
 A cikk tartalmazza:
 
@@ -25,7 +25,7 @@ A cikk tartalmazza:
 - Előfeltételek és korlátozások vonatkoznak az Azure Backup a dpm-mel.
 - Azure-ban, beleértve a Recovery Services Backup-tároló beállításához, és szükség esetén módosítása az Azure storage a tároló típusa előkészítésének lépéseit.
 - A DPM-kiszolgálón, beleértve a letöltés előkészítésének lépéseit a tár hitelesítő adatait, az Azure Backup ügynök telepítése, és regisztrálnia kell a DPM-kiszolgáló a tárolóban.
-- Hibaelhárítási tippek a gyakori hibák elhárításához. 
+- Hibaelhárítási tippek a gyakori hibák elhárításához.
 
 
 ## <a name="why-back-up-dpm-to-azure"></a>Miért érdemes a DPM biztonsági mentése az Azure-bA?
@@ -42,11 +42,11 @@ A DPM-kiszolgálók biztonsági másolatának az Azure-bA üzleti előnyei a kö
 
 ## <a name="prerequisites-and-limitations"></a>Előfeltételek és korlátozások
 
-**Beállítás** | **Követelmény** 
+**Beállítás** | **Követelmény**
 --- | ---
 A DPM egy Azure virtuális gépen | System Center 2012 R2 DPM 2012 R2 3. kumulatív frissítéssel vagy újabb.
-DPM fizikai kiszolgálón | A System Center 2012 SP1 vagy újabb, illetve A System Center 2012 R2. 
-A DPM a Hyper-V virtuális gépen | A System Center 2012 SP1 vagy újabb, illetve A System Center 2012 R2. 
+DPM fizikai kiszolgálón | A System Center 2012 SP1 vagy újabb, illetve A System Center 2012 R2.
+A DPM a Hyper-V virtuális gépen | A System Center 2012 SP1 vagy újabb, illetve A System Center 2012 R2.
 DPM VMware virtuális gépen | System Center 2012 R2 5. kumulatív frissítés vagy újabb.
 Összetevők | A DPM-kiszolgálóval kell rendelkeznie a Windows PowerShell és a .net keretrendszer 4.5-ös verzióját.
 Támogatott alkalmazások | [Ismerje meg,](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) milyen biztonsági mentéseket.
@@ -54,7 +54,7 @@ Támogatott fájltípusok | Az ilyen biztonsági másolat készíthető a Azure 
 Nem támogatott fájltípusok | A kis-és nagybetűket fájlrendszerek; kiszolgálók a rögzített hivatkozások (kimaradnak); újraelemzési pontok (kimaradnak); titkosított és tömörített (kimaradnak); titkosított és ritka (kimaradnak); Tömörített stream; elemezni az adatfolyamot.
 Helyi tárhely | Egyes gépek biztonsági helyi szabad tárhely, amely az adatokat, amelyek készül biztonsági másolat méretének legalább 5 %-át kell rendelkeznie.  Például 100 GB adat biztonsági mentésével legalább 5 GB szabad hely az ideiglenes hely szükséges.
 Tároló tárolási | Nem a biztonsági másolatot készíthet az Azure Backup-tároló adatok mennyisége korlátozott, de egy adatforráshoz (például egy virtuális gép vagy adatbázis) mérete nem haladhatja meg a 54400 GB.
-Az Azure Backup ügynöke | Ha a DPM a System Center 2012 SP1 rendszeren fut, telepítse a 2-es vagy újabb kumulatív DPM SP1. Ez az ügynök telepítéséhez szükséges.<br/><br/> Ez a cikk ismerteti, hogyan helyezhet üzembe az Azure Backup ügynököt, más néven a Microsoft Azure Recovery Service-(MARS-) ügynök legújabb verzióját. Ha egy korábbi verziója telepítve van, győződjön meg arról, hogy a biztonsági mentés a várt módon működik a legújabb verzióra frissíteni. 
+Az Azure Backup ügynöke | Ha a DPM a System Center 2012 SP1 rendszeren fut, telepítse a 2-es vagy újabb kumulatív DPM SP1. Ez az ügynök telepítéséhez szükséges.<br/><br/> Ez a cikk ismerteti, hogyan helyezhet üzembe az Azure Backup ügynököt, más néven a Microsoft Azure Recovery Service-(MARS-) ügynök legújabb verzióját. Ha egy korábbi verziója telepítve van, győződjön meg arról, hogy a biztonsági mentés a várt módon működik a legújabb verzióra frissíteni.
 
 
 Mielőtt elkezdené, egy Azure-fiókra van szüksége az Azure Backup szolgáltatás engedélyezve van. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ [Azure Backup árairól](https://azure.microsoft.com/pricing/details/backup/).
@@ -85,14 +85,14 @@ A tárreplikációs beállítás szerkesztése:
 
 ## <a name="download-vault-credentials"></a>A tároló hitelesítő adatainak letöltése
 
-A tároló hitelesítő adatainak használnia, ha a DPM-kiszolgálón regisztrálja a tárolóban. 
+A tároló hitelesítő adatainak használnia, ha a DPM-kiszolgálón regisztrálja a tárolóban.
 
 - A tároló hitelesítőadat-fájlja a portál által az egyes Backup-tárolókhoz létrehozott tanúsítvány.
 - A portál ezután feltölti a nyilvános kulcsot az Access Control Service (ACS) szolgáltatásba.
 - A gép regisztrációs munkafolyamat során a tanúsítvány titkos kulcsához szeretné elérhetővé tenni a felhasználónak, amely feljogosítja a gépet.
 - A hitelesítés alapján, az Azure Backup szolgáltatás adatokat küld az azonosított tárolóba.
 
- ### <a name="best-practices-for-vault-credentials"></a>Ajánlott eljárások a tároló hitelesítő adatai
+### <a name="best-practices-for-vault-credentials"></a>Ajánlott eljárások a tároló hitelesítő adatai
 
 Szerezze be a hitelesítő adatokat, töltse le a tároló hitelesítő adatait tartalmazó fájlt egy biztonságos csatornán keresztül az Azure Portalról:
 
@@ -102,7 +102,7 @@ Szerezze be a hitelesítő adatokat, töltse le a tároló hitelesítő adatait 
     - Biztonsági mentési adatok azonban van titkosítva, így a meglévő biztonsági mentési adatok biztonsága nem sérülhet az ügyfélhez tartozó jelszóval.
 - Győződjön meg arról, hogy a fájl mentése egy olyan helyre, amely a DPM-kiszolgáló elérhető lesz. Ha egy fájl megosztási/SMB tárolva van, ellenőrizze a hozzáférési engedélyeket.
 - A tároló hitelesítő adatai lejárnak 48 óra. Új tároló hitelesítő adatait annyiszor szükséges töltheti le. Azonban csak a legújabb tároló hitelesítőadat-fájlja a regisztrációs munkafolyamat során használható.
-- Az Azure Backup szolgáltatás nincs tisztában a tanúsítvány titkos kulcsához, és a titkos kulcs nem érhető el a portálon vagy a szolgáltatás. 
+- Az Azure Backup szolgáltatás nincs tisztában a tanúsítvány titkos kulcsához, és a titkos kulcs nem érhető el a portálon vagy a szolgáltatás.
 
 Töltse le a tároló hitelesítőadat-fájlja a helyi számítógépre a következőképpen:
 
@@ -121,7 +121,7 @@ Töltse le a tároló hitelesítőadat-fájlja a helyi számítógépre a követ
 
 ## <a name="install-the-backup-agent"></a>A biztonsági mentési ügynök telepítése
 
-Minden biztonsági másolatot készít az Azure Backup gépek telepítve van a biztonsági mentési ügynök (más néven a Microsoft Azure Recovery Service-(MARS-) ügynök) kell rendelkeznie. Telepítse az ügynököt a DPM-kiszolgálón a következő:
+Minden olyan gép, amely biztonsági másolatot készít az Azure Backup a Backup-ügynök (más néven a Microsoft Azure Recovery Service-(MARS-) ügynök) telepítve kell rendelkeznie. Telepítse az ügynököt a DPM-kiszolgálón a következő:
 
 1. Nyissa meg a tárolóban, amelyhez regisztrálja a DPM-kiszolgálót szeretne.
 2. A **beállítások**, kattintson a **tulajdonságok**.
@@ -132,7 +132,7 @@ Minden biztonsági másolatot készít az Azure Backup gépek telepítve van a b
     ![Letöltés](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
 
-4. A letöltés után futtassa a MARSAgentInstaller.exe. az ügynök telepítéséhez a DPM-gépen. 
+4. A letöltés után futtassa a MARSAgentInstaller.exe. az ügynök telepítéséhez a DPM-gépen.
 5. Válassza ki a telepítési mappát, és a gyorsítótár mappája az ügynök számára. A gyorsítótár helye szabad területet kell lennie a biztonsági mentési adatok legalább 5 %-át.
 6. Ha a proxykiszolgáló segítségével csatlakozzon az internethez, az a **proxykonfiguráció** képernyőn, adja meg a proxykiszolgáló adatai. Ha egy hitelesített proxyt használ, adja meg ezen a képernyőn a felhasználó felhasználónevének és jelszavának részleteit.
 7. Az Azure Backup ügynököt telepíti a .NET-keretrendszer 4.5 és Windows PowerShell (Ha még nincs telepítve) a telepítés befejezéséhez.
@@ -151,7 +151,7 @@ Minden biztonsági másolatot készít az Azure Backup gépek telepítve van a b
 
     ![A tároló hitelesítő adatai](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Credentials.jpg)
 
-10. A **sávszélesség-szabályozás beállítása**, engedélyezheti a sávszélesség-szabályozási biztonsági mentésekhez. Beállíthatja a sebességkorlátozás adja meg a munkaidőre és a nap. 
+10. A **sávszélesség-szabályozás beállítása**, engedélyezheti a sávszélesség-szabályozási biztonsági mentésekhez. Beállíthatja a sebességkorlátozás adja meg a munkaidőre és a nap.
 
     ![Sávszélesség-szabályozás beállítása](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Throttling.png)
 
@@ -168,12 +168,12 @@ Minden biztonsági másolatot készít az Azure Backup gépek telepítve van a b
     - A hozzáférési kódot a felhőbeli biztonsági mentések titkosításához használatos.
     - Adjon meg egy legalább 16 karakter.
     - Mentse a fájlt egy biztonságos helyre szükség esetén a helyreállítás.
-    
+
     ![Titkosítás](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Encryption.png)
 
     > [!WARNING]
     > A titkosítási jelszó a saját és a Microsoft nem rendelkezik, betekintést.
-    > Ha a jelszó elvesztése vagy elfelejtése; A Microsoft nem segít a biztonsági mentési adatok helyreállítása. 
+    > Ha a jelszó elvesztése vagy elfelejtése; A Microsoft nem segít a biztonsági mentési adatok helyreállítása.
 
 13. Kattintson a **regisztrálása** a DPM-kiszolgáló a tárolóban való regisztrálásához.  
 

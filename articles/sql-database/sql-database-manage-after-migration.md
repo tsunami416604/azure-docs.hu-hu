@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database – az áttelepítés után kezelése |} A Microsoft Docs
+title: Egyetlen vagy készletezett adatbázisok kezelése az Azure SQL Database – az áttelepítés után |} A Microsoft Docs
 description: Megtudhatja, hogyan kezelheti az adatbázis áttelepítése az Azure SQL Database után.
 services: sql-database
 ms.service: sql-database
@@ -11,28 +11,31 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 419ee13f88e63af9bebb6dda2d96530c54baa0d0
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.date: 02/13/2019
+ms.openlocfilehash: 8c0c4ac6ce09ce92851b532b226dadfd8b9f7e18
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099734"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270436"
 ---
-# <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database adatbázis
+# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database-ben az egyetlen vagy készletezett adatbázisok kezelése
 
-Való áttérés a hagyományos önállóan felügyelt, önálló ellenőrzött környezetben, egy PaaS-környezetben is kezdünk, egy kicsit először. Az alkalmazás fejlesztője vagy az adatbázis a platform, amely segít az, hogy az alkalmazás elérhető, nagy teljesítményű, biztonságos és rugalmas - legfontosabb funkcióit mindig tudni érdemes. Ez a cikk célja, hogy ezt pontosan. A cikk röviden rendezi az erőforrásokat, és a legjobb használatának legfontosabb funkciói az SQL Database kezelése és hatékonyan futtató alkalmazás megtartása és a felhőben az optimális eredmények elérése útmutatást biztosít. Ez a cikk tipikus közönségének lenne azokat, akik:
+Való áttérés a hagyományos önállóan felügyelt, önálló ellenőrzött környezetben, egy PaaS-környezetben is kezdünk, egy kicsit először. Az alkalmazás fejlesztője vagy az adatbázis a platform, amely segít az, hogy az alkalmazás elérhető, nagy teljesítményű, biztonságos és rugalmas - legfontosabb funkcióit mindig tudni érdemes. Ez a cikk célja, hogy ezt pontosan. A cikk röviden rendezi az erőforrásokat, és a legjobb használatát az SQL Database főbb képességei egyetlen vagy készletezett adatbázisok kezeléséhez, és hatékonyan futtató alkalmazás megtartása és a felhőben az optimális eredmények elérése útmutatást biztosít. Ez a cikk tipikus közönségének lenne azokat, akik:
 
-- Az Azure SQL DB – az alkalmazások korszerűsítése társított alkalmazásokban való migrálásának értékelése.
+- Az Azure SQL Database – az alkalmazás Modernizálhatja társított alkalmazásokban való migrálásának értékelése.
 - Saját alkalmazás – folyamatos áttelepítési forgatókönyvben való migrálása folyamatban van.
 - Nemrégiben fejeződtek be az áttelepítést az Azure SQL DB – új adatbázis a felhőben.
 
-Ez a cikk ismerteti az alapvető előrejelzéséhez, az Azure SQL DB platform, amely könnyen használhatja. Ezek a következők:
+Ez a cikk ismerteti az alapvető előrejelzéséhez, az Azure SQL Database platform, amely könnyen kihasználhatja használatakor az önálló adatbázisok és rugalmas készletek a készletezett adatbázisok. Ezek a következők:
 
 - Üzleti folytonosság és vészhelyreállítás helyreállítási (BCDR)
 - Biztonság és megfelelőség
 - Intelligens adatbázis figyelése és karbantartása
 - Adatáthelyezés
+
+> [!NOTE]
+> Ez a cikk vonatkozik az Azure SQL Database az alábbi üzembe helyezési lehetőségek: önálló adatbázisok és rugalmas készletek. Az SQL Database felügyelt példány üzembe helyezési beállítás nem vonatkozik.
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Üzleti folytonosság és vészhelyreállítás helyreállítási (BCDR)
 

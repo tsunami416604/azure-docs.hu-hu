@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 50f6f114a4d90f48218f751e1649e8694e664491
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.date: 02/13/2019
+ms.openlocfilehash: 748a9f4d7c2ec47a2ed9470789a4443bffdc0eba
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295746"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301740"
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>SQL-adatbázis aktív georeplikációt használ, a felhőalapú alkalmazások működés közbeni frissítések kezelése
 
@@ -47,7 +47,7 @@ Miután elvégezte a adatelőkészítési lépéseket, a tényleges frissítés 
 
 1. Állítsa be az elsődleges adatbázis csak olvasható módra (3). Ebben a módban garantálja, hogy az éles webalkalmazásra a webalkalmazás (V1) marad csak olvasható megelőzve a adateltérésekkel a V1 és v2-es adatbázis-példányok között a frissítés során.  
 2. Válassza le a másodlagos adatbázis, a tervezett lezárást mód (4). Az elsődleges adatbázis teljesen szinkronizált független másolatot hoz létre. Ez az adatbázis lesz frissítve.
-3. Kapcsolja be az elsődleges adatbázis írható-olvasható módba, és futtassa a frissítési parancsfájl (5).
+3. A másodlagos adatbázis írható-olvasható módba kapcsolni, és futtassa a frissítési parancsfájl (5).
 
 ![SQL-adatbázis georeplikációs konfiguráció. Felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option1-2.png)
 

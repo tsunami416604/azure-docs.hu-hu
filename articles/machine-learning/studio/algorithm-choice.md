@@ -10,16 +10,20 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 222891df5b54a8f2c3464fc3bddf9f6b32c28d36
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6442facf680c934d976e7fa8008f2f3c3551045f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244793"
+ms.locfileid: "56268084"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban az algoritmusok kiválasztása
 
 A "Milyen gépi tanulási algoritmus kell használnom?" kérdésre adott válasz mindig kapcsolva "Attól függ." Ez a méret, minőségi és az adatok természetétől függ. Ez attól függ, hogy mit szeretne tenni a választ az. Attól függ, hogyan helyett a számításokat, az algoritmus használ a számítógép utasításokat fordítja volt. Attól függ, és hogy mennyi idő alatt az rendelkezésre áll. Akár a legnagyobb tapasztalt adatszakértők nejde zjistit algoritmus ajánlott hajtja végre őket kísérlet előtt.
+
+A Machine Learning Studio a legkorszerűbb algoritmusokat biztosítja, többek között például a továbbfejlesztett méretezhető döntési fákat, a Bayes ajánlási rendszereket, a neurális hálózatokat és a Microsoft Research által fejlesztett Decision Jungle algoritmust. Az olyan méretezhető, nyílt forráskódú gépi tanulási csomagokat, mint a Vowpal Wabbit, szintén támogatja a Machine Learning Studio. A Machine Learning Studio támogatja a multiclass és bináris osztályzásra, a regresszióra és a fürtszolgáltatásra használt gépi tanulási algoritmusokat. A teljes listáját lásd: [Machine Learning-modulok](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index).
+A dokumentáció tartalmaz némi információt minden algoritmust és hangolása paramétereket az algoritmus optimalizált használata érdekében.  
+
 
 ## <a name="the-machine-learning-algorithm-cheat-sheet"></a>A Machine Learning algoritmus – Adatlap
 

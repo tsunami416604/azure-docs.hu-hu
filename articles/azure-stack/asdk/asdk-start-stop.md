@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/14/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 0073427028d20ab969b8d0135b1c831d7fdf8c73
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b821c5cfa0dd9ea605d0d0a73e0b98a64a7502b7
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191967"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268651"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Elindíthatja és leállíthatja a az Azure Stack Development Kit (ASDK)
 Egyszerűen indítsa újra a ASDK számítógép nem ajánlott. Ehelyett kövesse megfelelően állítsa le és indítsa újra a ASDK szolgáltatások ebben a cikkben szereplő eljárásokat. 
@@ -29,7 +29,7 @@ Egyszerűen indítsa újra a ASDK számítógép nem ajánlott. Ehelyett kövess
 ## <a name="stop-azure-stack"></a>Állítsa le az Azure Stack 
 Megfelelően állítsa le az Azure Stack-szolgáltatásokat, és a ASDK gazdaszámítógépet, használja a következő PowerShell-parancsokat:
 
-1. Jelentkezzen AzureStack\CloudAdmin ASDK a gazdagépen.
+1. Jelentkezzen AzureStack\AzureStackAdmin ASDK a gazdagépen.
 2. Nyissa meg a Powershellt rendszergazdaként (nem PowerShell ISE-ben).
 3. A következő parancsokat egy emelt szintű végpont (EGP)-munkamenetet létrehozni: 
 
@@ -49,7 +49,7 @@ ASDK szolgáltatások a gazdaszámítógép elkezdésének automatikusan elindul
 Függetlenül attól, hogy a ASDK le lett állítva és ellenőrizze, hogy az összes Azure Stack-szolgáltatás elindult, és teljesen működőképes után a számítógép be van-e kapcsolva a következő lépéseket kell használnia: 
 
 1. Energiagazdálkodási ASDK a gazdagépen. 
-2. Jelentkezzen AzureStack\CloudAdmin ASDK a gazdagépen.
+2. Jelentkezzen AzureStack\AzureStackAdmin ASDK a gazdagépen.
 3. Nyissa meg a Powershellt rendszergazdaként (nem PowerShell ISE-ben).
 4. A következő parancsokat egy emelt szintű végpont (EGP)-munkamenetet létrehozni:
 
@@ -68,7 +68,7 @@ Megfelelően állítsa le és indítsa újra az Azure Stack-szolgáltatások az 
 ## <a name="troubleshoot-startup-and-shutdown"></a>Indítási és leállítási hibaelhárítása 
 Hajtsa végre ezeket a lépéseket, ha az Azure Stack-szolgáltatások nem sikerült indul el a ASDK gazdaszámítógépen power két órán belül:
 
-1. Jelentkezzen AzureStack\CloudAdmin ASDK a gazdagépen.
+1. Jelentkezzen AzureStack\AzureStackAdmin ASDK a gazdagépen.
 2. Nyissa meg a Powershellt rendszergazdaként (nem PowerShell ISE-ben).
 3. A következő parancsokat egy emelt szintű végpont (EGP)-munkamenetet létrehozni:
 

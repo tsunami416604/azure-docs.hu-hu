@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8e2af866dcea3bd8ece29811b2cc8ccd4318ee54
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 71e88c06dcfe935f712af473c7f496d9165107a7
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242805"
+ms.locfileid: "56267546"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -37,6 +37,8 @@ További információkért lásd: [Migrálási útmutató segítséget nyújt a 
 ## <a name="february-2019"></a>2019. február
 
 A Media Services v3 már upported Azure országos felhőkörnyezetekben. Nem minden funkciója érhető el az összes felhő még. További információkért lásd: [felhők és régiók, mely az Azure Media Services v3 létezik](azure-clouds-regions.md).
+
+[Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) esemény került be az Azure Event Grid-sémák, a Media Services.
 
 ## <a name="january-2019"></a>2019. január
 

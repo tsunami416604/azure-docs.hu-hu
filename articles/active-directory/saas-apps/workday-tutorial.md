@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e3f60c3b0578647e68109a21ba7d57b083bea11
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae93cce7a26666383b609ac898a25fb84caee517
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184533"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Oktatóanyag: A workdayjel képes az Azure Active Directory-integráció
 
@@ -113,7 +113,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Munkanapi tartomány és URL-címek egyszeri bejelentkezési adatait](./media/workday-tutorial/tutorial_workday_url.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://impl.workday.com/<tenant>/login-saml2.htmld`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://impl.workday.com/<tenant>/login-saml2.flex`
 
     b. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `https://www.workday.com`
 
@@ -166,7 +166,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     >[!NOTE]
     > A környezet attribútum vannak kötve, a bérlői URL-cím értékét:  
-    >-Ha a tartomány neve a Workday-bérlői URL-cím kezdődik impl például: *https://impl.workday.com/\<tenant\>/login-saml2.htmld*), a **környezet** attribútum megvalósítási értékre kell állítani.  
+    >-Ha a tartomány neve a Workday-bérlői URL-cím kezdődik impl például: *https://impl.workday.com/\<tenant\>/login-saml2.flex*), a **környezet** attribútum megvalósítási értékre kell állítani.  
     >-Ha a tartománynév valami mást kezdődik, lépjen kapcsolatba kell [Workday ügyfél-támogatási csapatának](https://www.workday.com/en-us/partners-services/services/support.html) beolvasni a megfelelő **környezet** érték.
 
 12. Az a **SAML-telepítő** szakaszban, hajtsa végre az alábbi lépéseket:

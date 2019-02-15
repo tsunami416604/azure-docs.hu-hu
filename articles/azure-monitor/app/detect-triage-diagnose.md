@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: d5cba3b21ff6099a4132a7ebfab38d1ead9afded
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 91814579675882ba969f5903ebeddcebbcbd6616
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118082"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301536"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Az Application Insights áttekintése fejlesztők és üzemeltetők számára
 
@@ -230,6 +230,6 @@ Az alkalmazása tulajdonságaitól függően több módon is hozzáláthat. Vál
 * [ASP.NET-es webalkalmazás](../../azure-monitor/app/asp-net.md)
 * [Java-webalkalmazás](../../azure-monitor/app/java-get-started.md)
 * [Node.js-webalkalmazás](../../azure-monitor/app/nodejs.md)
-* Már üzembe helyezett, az [IIS](../../azure-monitor/app/monitor-web-app-availability.md)-ben, [J2EE](../../azure-monitor/app/java-live.md)-ben vagy [Azure](../../azure-monitor/app/app-insights-overview.md)-ban működő alkalmazások.
+* Már üzembe helyezte az alkalmazások, az üzemeltetett [IIS](../../azure-monitor/app/monitor-web-app-availability.md), [Java EE-alapú](../../azure-monitor/app/java-live.md), vagy [Azure](../../azure-monitor/app/app-insights-overview.md).
 * [Weblapok](../../azure-monitor/app/javascript.md) – Egylapos alkalmazás vagy átlagos weblap – önmagában vagy bármelyik kiszolgálói lehetőséggel együtt is használható.
 * [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) az alkalmazás nyilvános internetről való teszteléséhez.

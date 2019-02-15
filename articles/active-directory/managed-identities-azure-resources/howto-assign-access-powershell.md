@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a001cdafbd608aa2ad06976ec345c612197036d8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fc910ad51984204c8fc072ce49ebdfe4695be4a0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189956"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268006"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Egy felügyelt identitás hozzáférés hozzárendelése egy erőforrást PowerShell használatával
 
@@ -48,7 +48,7 @@ Miután engedélyezte az Azure-erőforrás, felügyelt identitás [például egy
 2. Ebben a példában azt egy Azure-beli Virtuálisgép-hozzáférés, hogy küldjön egy storage-fiókot. Először használjuk [Get-azvm parancsmag](/powershell/module/az.compute/get-azvm) beolvasni az egyszerű szolgáltatás nevű virtuális gép `myVM`, amely jött létre, amikor lehetővé tettük felügyelt identitás. Ezután használja [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) biztosíthat a virtuális gép **olvasó** nevű tárfiókot hozzáférést `myStorageAcct`:
 
     ```powershell
-    $spID = (Get-Az -ResourceGroupName myRG -Name myVM).identity.principalid
+    $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
     New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/<myStorageAcct>"
     ```
 

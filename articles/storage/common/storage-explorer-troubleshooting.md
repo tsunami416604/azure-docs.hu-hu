@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.subservice: common
-ms.openlocfilehash: 180780c3a3a644a8da0fa544c37bc8cd252c982f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 32c47233946dacf4e80a9ff3ba25388e1231d7c9
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469498"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301060"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer – hibaelhárítási útmutató
 
@@ -28,7 +28,7 @@ Tanúsítvánnyal kapcsolatos hiba okozza a két alábbi helyzetek bármelyike:
 1. Az alkalmazás egy "transzparens proxy", ami azt jelenti, hogy a kiszolgáló (például a vállalati kiszolgálónak) elfogja a HTTPS-forgalmat, visszafejti azt, és majd újra titkosítja egy önaláírt tanúsítvány használatával keresztül csatlakozik.
 2. Olyan alkalmazás, amely egy önaláírt SSL-tanúsítvány van injektálásra a fogadott HTTPS üzenetek futnak. Tanúsítványok beszúrása alkalmazások magában foglalja a víruskereső és a hálózati forgalom ellenőrzési szoftvereket.
 
-Amikor a Storage Explorer látja a saját aláírt vagy nem megbízható tanúsítványt, akkor már nem tudja, a fogadott HTTPS-üzenetet módosították-e. Ha az önaláírt tanúsítvány egy példányát, utasíthatja Storage Explorer megbízzon benne a következő lépések végrehajtásával:
+Storage Explorer egy önaláírt vagy nem megbízható tanúsítvánnyal látja, amikor azt már tudja, a fogadott HTTPS-üzenetet módosították-e. Ha az önaláírt tanúsítvány egy példányát, utasíthatja Storage Explorer megbízzon benne a következő lépések végrehajtásával:
 
 1. Szerezzen be egy Base-64 kódolású X.509 (.cer) a tanúsítvány másolatát
 2. Kattintson a **szerkesztése** > **SSL-tanúsítványok** > **tanúsítványok importálása**, majd a Fájlkereső segítségével keresse meg, válassza ki, nyissa meg a .cer fájlt
@@ -53,6 +53,18 @@ Ha bizonytalan, a tanúsítvány forrását, megpróbálhatja, megtalálhatja ez
 Ha nem talál önaláírt tanúsítványokat használ a fenti lépéseket, a visszajelzési eszközzel, további segítségért lépjen kapcsolatba velünk. Másik lehetőségként választhatja a parancssorból indítsa el a Storage Explorer a `--ignore-certificate-errors` jelzőt. Ez a jelző indításakor Storage Explorer tanúsítvánnyal kapcsolatos hiba figyelmen kívül.
 
 ## <a name="sign-in-issues"></a>Bejelentkezési problémák
+
+### <a name="blank-sign-in-dialog"></a>Üres bejelentkezési párbeszédpanel
+A párbeszédpanelek üres bejelentkezési leggyakrabban okozzák ADFS kéri a Storage Explorer egy átirányítási, amely nem támogatja a Electron végrehajtásához. A probléma megkerüléséhez megpróbálhatja eszköz kód Flow használni a bejelentkezéshez. Ehhez végezze el az alábbi lépéseket:
+1. "Ugrás a kísérleti" -> "Eszköz kód bejelentkezés használata".
+2. Nyissa meg a Csatlakozás párbeszédpanel (akár a Plug and ikonra a bal oldali függőleges vonal vagy a "Fiók hozzáadása" fiók panelen keresztül).
+3. Válassza ki, milyen környezetet, amelyre bejelentkezik.
+4. Kattintson a "bejelentkezés" gomb.
+5. Kövesse a következő panelen megjelenő utasításokat.
+
+Ha azt probléma jelentkezik be a fiók fel szeretné használni, mert az alapértelmezett böngészőben már bejelentkezett egy másik fiókot, a következőket teheti:
+1. Manuálisan másolja a hivatkozást és a kód egy privát a böngésző-munkamenetet.
+2. Manuálisan másolja a hivatkozást és a kód egy másik böngészőben.
 
 ### <a name="reauthentication-loop-or-upn-change"></a>Hurok újrahitelesítést vagy egyszerű felhasználónév módosítása
 Ha a hurok újrahitelesítést, vagy módosította az egyik a fiók egyszerű Felhasználóneve, megpróbálkozhat a következőkkel:
@@ -90,7 +102,7 @@ Ha ezen metódusok közül egyik sem működik [nyisson egy problémát a Github
 Ha nem tudja lekérni az előfizetéseit, miután sikeresen bejelentkezett, próbálja meg a következő hibaelhárítási módszerek:
 
 * Győződjön meg arról, hogy a fiók rendelkezik-e hozzáférése az előfizetésekhez várt. Ellenőrizheti, hogy rendelkezik-e hozzáféréssel a használni kívánt Azure-környezetre vonatkozó portálra való bejelentkezés révén.
-* Győződjön meg arról, hogy bejelentkezett, az a megfelelő Azure-környezet (Azure, Azure China, az Azure Germany, Azure US Government vagy egyéni környezet).
+* Győződjön meg arról, hogy bejelentkezett, az a megfelelő Azure-környezet (Azure, Azure China 21Vianet, Azure Germany, Azure US Government vagy egyéni környezet).
 * Ha proxy mögött található, győződjön meg arról, hogy a Storage Explorer-proxy megfelelően van konfigurálva.
 * Próbálja meg eltávolítani és újra hozzáadja a fiókot.
 * Ha a "További információ" hivatkozást, keresse meg, és tekintse meg, milyen hibaüzenetek a bérlők számára, amelyek nem jelentették. Ha nem biztos, hogy mi a hibaüzeneteket, tekintse meg, akkor nyugodtan [nyisson egy problémát a Githubon](https://github.com/Microsoft/AzureStorageExplorer/issues).
@@ -116,7 +128,7 @@ Először is győződjön meg arról, hogy minden helyesen-e a megadott a követ
 * A proxykiszolgáló URL-cím és port száma
 * Felhasználónév és jelszó, ha a proxy által igényelt
 
-Vegye figyelembe, hogy Storage Explorer nem támogatja a .pac fájl Proxybeállítások konfigurálása.
+Vegye figyelembe, hogy Storage Explorer nem támogatja a proxy automatikus konfiguráció fájlokat a Proxybeállítások konfigurálása.
 
 ### <a name="common-solutions"></a>Általános megoldások
 

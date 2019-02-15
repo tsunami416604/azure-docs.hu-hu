@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: e1eced2d00737a950ed441bd83614d9d6d0b9230
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1bfe0026e52107c85bf2c7e66414e937ad27f715
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731274"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267750"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Gyors útmutató: A SignalR Service csevegőszoba létrehozása
 
@@ -79,7 +79,7 @@ Ebben a szakaszban hozzáadja a [Secret Manager eszközt](https://docs.microsoft
 
 1. Adjon hozzá egy, a `Microsoft.Azure.SignalR` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
 
-        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-*
+        dotnet add package Microsoft.Azure.SignalR
 
 2. A projekt csomagjainak visszaállításához futtassa a következő parancsot.
 
@@ -92,7 +92,7 @@ Ebben a szakaszban hozzáadja a [Secret Manager eszközt](https://docs.microsoft
     Ezt a parancsot abban a könyvtárban kell végrehajtani, ahol a *.csproj* fájl található.
 
     ```
-    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
     A Secret Managerre csak addig van szükség a webalkalmazás teszteléséhez, amíg azt helyben futtatja. Egy későbbi oktatóanyagban a webes csevegőalkalmazást üzembe fogja helyezni az Azure-ban. Amikor a webalkalmazást az Azure-ban üzemelteti, a kapcsolati sztring Secret Managerben való tárolása helyett egy alkalmazásbeállítást fog használni.

@@ -8,12 +8,12 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 6b3bad4e4619f8909f5c6d71111b4fad9ddb3098
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 31b9405b7d4141890d786ab3d1cb70d11ef0c1b3
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813279"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267954"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az Azure Resource Graph
 
@@ -38,7 +38,7 @@ Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenként
 
 Most, hogy már jobban érti az Azure Resource Graph lényegét, ismerkedjünk meg közelebbről a lekérdezések összeállításával.
 
-Fontos tisztában lenni azzal, hogy az Azure Resource Graph lekérdezőnyelvének alapja az [Azure Data Explorer lekérdezési nyelv](../../data-explorer/data-explorer-overview.md).
+Fontos megérteni, hogy az Azure Resource Graph lekérdezési nyelv alapul a [Kusto-lekérdezés nyelvi](../../data-explorer/data-explorer-overview.md) Azure Data Explorer által használt.
 
 Első lépésként olvassa el az Azure Resource Graphfal használható műveleteket és funkciókat ismertető, [a Resource Graph lekérdezőnyelve](./concepts/query-language.md) című cikket. Az erőforrások tallózását az [erőforrások kezeléséről](./concepts/explore-resources.md) szóló cikk írja le.
 

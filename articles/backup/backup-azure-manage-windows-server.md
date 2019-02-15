@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 552ba28a9635cdd484ccd598726dcea0b3bcbc60
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261502"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268872"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
@@ -40,7 +40,7 @@ Riasztások figyelése, vagy megtekintheti a felügyeleti adatait egy Recovery S
 
     ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. A tárolók listájában kattintson az egy tároló megnyitása a **áttekintése** irányítópultot. 
+4. A tárolók listájában kattintson az egy tároló megnyitása a **áttekintése** irányítópultot.
 
     ![Recovery services-tároló irányítópult](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
@@ -75,7 +75,7 @@ A biztonsági mentési riasztások menü, a Recovery Services-tároló menüjéb
 
 ![Biztonsági mentési riasztások](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
-A biztonsági mentési riasztások jelentés felsorolja a riasztásokat a tárolóhoz. 
+A biztonsági mentési riasztások jelentés felsorolja a riasztásokat a tárolóhoz.
 
 ![Biztonsági mentési riasztások](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
@@ -124,7 +124,7 @@ Alapértelmezésben a részletekről kivételével **legutóbbi előfordulás id
 
 ### <a name="change-the-filter-in-alerts-report"></a>Módosítsa a szűrőt a riasztási jelentés
 
-Használja a **szűrő** módosíthatja a súlyosságot, állapotát, a kezdő és befejező időpontja a riasztások menüből. 
+Használja a **szűrő** módosíthatja a súlyosságot, állapotát, a kezdő és befejező időpontja a riasztások menüből.
 
 > [!NOTE]
 > A biztonsági mentési riasztások szerkesztési szűrő a kritikus vagy figyelmeztető riasztások, a tároló irányítópultjának nem változik.
@@ -184,7 +184,7 @@ A feladatokkal kapcsolatos további részletekért kattintson **folyamatban lév
 
 A **biztonsági mentési feladatok** menü az elem típusa, a művelet, állapot, Kezdés időpontja és időtartama információit jeleníti meg.  
 
-A tároló elemre a biztonsági mentési feladatok menü megnyitásához kattintson **biztonsági mentési feladatok**. 
+A tároló elemre a biztonsági mentési feladatok menü megnyitásához kattintson **biztonsági mentési feladatok**.
 
 ![A beállítások biztonsági másolati elemek](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
@@ -263,17 +263,14 @@ A biztonsági mentési tár irányítópult-csempét jeleníti meg az Azure-ban 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**Q1. Mennyi időt vesz igénybe az Azure backup-ügynök feladatot állapot tükrözik a portálon?**
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Mennyi időt vesz igénybe az Azure backup-ügynök feladatot állapot tükrözik a portálon?
+Az Azure Portalon az Azure Backup szolgáltatás ügynöke feladat állapotát tükröző legfeljebb 15 perc is eltarthat.
 
-1. válasz Az Azure Portalon az Azure Backup szolgáltatás ügynöke feladat állapotát tükröző legfeljebb 15 perc is eltarthat.
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Amikor egy biztonsági mentési feladat sikertelen volt, mennyi ideig tart kell riasztást küldenie?
+Riasztást hoz létre az Azure biztonsági mentési hiba 20 perc belül.
 
-**Q2. Amikor egy biztonsági mentési feladat sikertelen volt, mennyi ideig tart kell riasztást küldenie?**
-
-2. válasz Riasztást hoz létre az Azure biztonsági mentési hiba 20 perc belül.
-
-**Q3. Van egy esetet, ahol egy e-mailt nem küldhetők, ha értesítések be vannak állítva?**
-
-3. válasz Igen. Az alábbi esetekben nem kap értesítést.
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Van egy esetet, ahol egy e-mailt nem küldhetők, ha értesítések be vannak állítva?
+Igen. Az alábbi esetekben nem kap értesítést.
 
 * Ha az értesítések óránkénti vannak konfigurálva, és a egy riasztás kiadása és feloldása egy órán belül
 * Amikor egy feladat meg lett szakítva

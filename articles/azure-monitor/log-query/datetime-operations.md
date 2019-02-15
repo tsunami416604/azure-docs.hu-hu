@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 2465fdcc3bf7128d4813fa5f682ffda8f504f2b6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8350524e51d8ced45586d085fe1b49274aa6db9d
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999249"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269978"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Dátum idő értékek az Azure Monitor log-lekérdezések használata
 
@@ -31,7 +31,7 @@ Ez a cikk ismerteti a dátum és idő adatok használata az Azure Monitor log-le
 
 
 ## <a name="date-time-basics"></a>Dátum-idő alapjai
-Az adatkezelő lekérdezési nyelvre van dátumok és időpontok társított két fő adattípusok: datetime és időtartamhoz. Az összes dátum (UTC) kell megadni. Több datetime formátum támogatott, amíg az ISO8601 formátumot részesíti előnyben. 
+A Kusto-lekérdezés nyelvi rendelkezik hozzárendelt dátumok és időpontok két fő adattípusok: datetime és időtartamhoz. Az összes dátum (UTC) kell megadni. Több datetime formátum támogatott, amíg az ISO8601 formátumot részesíti előnyben. 
 
 Mérföldkövei időegységet követ tizedes fejezik ki:
 
@@ -45,7 +45,7 @@ Mérföldkövei időegységet követ tizedes fejezik ki:
 |mikroszekundumos | mikroszekundumos  |
 |osztásjelek        | nanoszekundumos   |
 
-Időpontok leadó egy karakterlánc használatával hozható létre a `todatetime` operátor. Például, tekintse át a virtuális gép szívveréseket küld egy adott időkereten, akkor is győződjön meg arról, használja a [közötti operátor](/azure/kusto/query/betweenoperator) vagyis a adjon meg egy időtartományt...
+Időpontok leadó egy karakterlánc használatával hozható létre a `todatetime` operátor. Például, tekintse át a virtuális gép szívveréseket küld egy adott időkereten, használja a `between` operátor számára adjon meg egy időtartományt.
 
 ```Kusto
 Heartbeat
@@ -82,7 +82,7 @@ Heartbeat
 ```
 
 ## <a name="converting-time-units"></a>Időegységek alakítása
-Egy dátum és idő vagy az alapértelmezett értéktől eltérő idő egységben timespan Express hasznos lehet. Például tegyük fel, hogy az elmúlt 30 percben hibaesemények lehetőséggel megtekintheti, és a egy számított oszlopot, amely bemutatja, hogyan olyan régen az esemény történt kell:
+Érdemes egy dátum és idő vagy a nem az alapértelmezett időegységet timespan express. Például, ha az elmúlt 30 percben hibaesemények lehetőséggel megtekintheti, és egy számított oszlopot megjelenítő hogyan régen az esemény történt:
 
 ```Kusto
 Event
@@ -91,7 +91,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-Megtekintheti a _timeAgo_ oszlop értékei például: "00:09:31.5118992", ami azt jelenti, azok hh:mm:ss.fffffff formázott. Ha ezekre az értékekre, formázhatja a _numver_ perc alatt a kezdési időpont óta, egyszerűen el kell osztani ezt az értéket "1 perces":
+A `timeAgo` oszlop értékei például: "00:09:31.5118992", ami azt jelenti, hh:mm:ss.fffffff formázás. Ha szeretné formázni ezekkel az értékekkel a `numver` perc alatt a kezdési időpont óta, el kell osztani ezt az értéket "1 perces":
 
 ```Kusto
 Event
@@ -103,7 +103,7 @@ Event
 
 
 ## <a name="aggregations-and-bucketing-by-time-intervals"></a>Összesítések és az időszakonkénti bucketing
-Egy másik nagyon gyakori forgatókönyv esetén a kell lekérni a statisztikát bizonyos idő alatt az egy adott időfelbontási szint. Ehhez egy `bin` operátor egy summarize záradék részeként is használható.
+Egy másik gyakori forgatókönyv esetén a kell lekérni a statisztikát bizonyos idő alatt az egy adott időfelbontási szint. Ebben a forgatókönyvben egy `bin` operátor egy summarize záradék részeként is használható.
 
 A számot 5 percenként az elmúlt fél óra során bekövetkezett események beolvasásához használja a következő lekérdezést:
 
@@ -113,7 +113,7 @@ Event
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
 ```
 
-Ez létrehozza a következő táblázat:  
+Ez a lekérdezés a következő táblázat hoz létre:  
 |TimeGenerated(UTC)|events_count|
 |--|--|
 |2018-08-01T09:30:00.000|54|
@@ -131,7 +131,7 @@ Event
 | summarize events_count=count() by startofday(TimeGenerated) 
 ```
 
-Ez a következő eredményt adja:
+Ez a lekérdezés eredménye a következő:
 
 |időbélyeg|count_|
 |--|--|
@@ -139,11 +139,11 @@ Ez a következő eredményt adja:
 |2018-07-29T00:00:00.000|12,315|
 |2018-07-30T00:00:00.000|16,847|
 |2018-07-31T00:00:00.000|12,616|
-|2018-08-01T00:00:00.000|5,416  |
+|2018-08-01T00:00:00.000|5,416|
 
 
 ## <a name="time-zones"></a>Időzónák
-Mivel minden dátum/idő érték (UTC) van kifejezve, legtöbbször hasznos, ha szeretné átalakítani ezek a helyi időzónában. Például a számítás használatával konvertálja PST idő (UTC):
+Mivel minden dátum/idő érték (UTC) van kifejezve, hasznos gyakran alakítható át ezeket az értékeket a helyi időzónában. Például a számítás használatával konvertálja PST idő (UTC):
 
 ```Kusto
 Event
@@ -158,10 +158,10 @@ Event
 | A dobozméretet kerek érték | [bin](/azure/kusto/query/binfunction) |
 | Adott dátum és idő lekérése | [ezelőtt](/azure/kusto/query/agofunction) [most](/azure/kusto/query/nowfunction)   |
 | Érték részének lekérése | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [év hónapja](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
-| Első érték dátum  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
+| A relatív értéket  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a többi leckéket a [adatkezelő lekérdezési nyelv](/azure/kusto/query/) adatok naplózása az Azure Monitor szolgáltatással:
+Tekintse meg a többi leckéket a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) adatok naplózása az Azure Monitor szolgáltatással:
 
 - [Karakterlánc-műveletek](string-operations.md)
 - [Összesítésfüggvények](aggregations.md)

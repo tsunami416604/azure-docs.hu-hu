@@ -1,7 +1,7 @@
 ---
 title: Egyéni elemzők – Azure Search hozzáadása
 description: Szöveg tokenizers és az Azure Search teljes szöveges keresési lekérdezésekben használt karakter szűrők módosítása.
-ms.date: 01/31/2019
+ms.date: 02/14/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,22 +19,24 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 150510ec09744b1350a93bde4e2a4dcb141867c0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 957c8033efc386d8e8cb13cbed921c597af4f11b
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008285"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302080"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Egyéni elemzők az Azure Search-index hozzáadása
 
-A *egyéni elemző* jogkivonatokat létrehozó és a search Engine szövegfeldolgozást testreszabásához használt választható szűrők a felhasználó által megadott kombinációja. Például létrehozhatja az egyéni elemző egy *char szűrő* HTML-kód eltávolítása előtt a bemeneti szöveg tokenekre vannak.
+A *egyéni elemző* egy adott típusú [szöveg analyzer](search-analyzers.md) , hogy egy felhasználó által definiált kombinációja meglévő jogkivonatokat létrehozó és a választható szűrők áll. Új módokon tokenizers és a szűrők kombinálásával testre szabhatja az adott eredmények elérése érdekében a keresőmotor szövegfeldolgozást. Például létrehozhatja az egyéni elemző egy *char szűrő* HTML-kód eltávolítása előtt a bemeneti szöveg tokenekre vannak.
+
+ Megadhat több egyéni elemzőket szűrők kombinációit eltérő, de minden mező csak használhat egy elemző indexelés, elemzési és a egy a search-elemzést. Egy ügyfél analyzer néz ki olyan bemutatásáért, lásd: [egyéni elemző példa](search-analyzers.md#Example1).
 
 ## <a name="overview"></a>Áttekintés
 
- Szerepe a [teljes szöveges keresés motor](search-lucene-query-architecture.md), egyszerűen fogalmazva a rendszer tárolás dokumentumok oly módon, amely lehetővé teszi a hatékony lekérdezésben és lekéréséhez. Magas szinten megkönnyíti fontos szavak kinyerését dokumentumok, helyezné azokat egy index és az index használatával, amelyek megfelelnek egy adott lekérdezésre vonatkozó szavakat dokumentumok keresése. A dokumentumok és a keresési lekérdezések szavak kinyerését folyamatán lexikai elemzés nevezzük. Hajtsa végre a lexikális elemzés összetevőket elemzők nevezzük.
+ Szerepe a [teljes szöveges keresés motor](search-lucene-query-architecture.md), egyszerűen fogalmazva a rendszer tárolás dokumentumok oly módon, amely lehetővé teszi a hatékony lekérdezésben és lekéréséhez. Magas szinten megkönnyíti fontos szavak kinyerését dokumentumok, helyezné azokat egy index és az index használatával, amelyek megfelelnek egy adott lekérdezésre vonatkozó szavakat dokumentumok keresése. Az a folyamat a szavak beolvasása a dokumentumok és a keresési lekérdezések *lexikai elemzés*. Hajtsa végre a lexikális elemzés összetevőket az úgynevezett *elemzők*.
 
- Az Azure Search szolgáltatásban az előre meghatározott nyelv független elemzők az készletét közül választhat a [elemzők](#AnalyzerTable) szereplő tábla- és nyelvi adott elemzők [nyelvi elemzők &#40;Azure Search szolgáltatás REST API&#41;](index-add-language-analyzers.md). Lehetősége is van a saját egyéni elemzőket meghatározásához.  
+ Az Azure Search szolgáltatásban közül választhat az előre meghatározott nyelvtől elemzők készletét a [elemzők](#AnalyzerTable) tábla vagy a felsorolt nyelvspecifikus elemzők [nyelvi elemzők &#40;Azure Search szolgáltatás REST API&#41;](index-add-language-analyzers.md). Lehetősége is van a saját egyéni elemzőket meghatározásához.  
 
  Egyéni elemző lehetővé teszi, hogy a szöveg átalakítása indexelhető és kereshető jogkivonatok folyamata felett. Egy egyetlen előre meghatározott tokenizer, egy vagy több jogkivonat szűrők és a egy vagy több karakter szűrő egy felhasználó által definiált konfigurációs. A jogkivonatokat létrehozó felelős szöveg ossza tokeneket, és a token szűrők a jogkivonatokat létrehozó által kibocsátott jogkivonatok módosítására. CHAR alkalmazza a rendszer a bemeneti szöveg előkészítése, mielőtt dolgoz fel a jogkivonatokat létrehozó. Char szűrő lecserélheti például bizonyos karakterek és szimbólumok.
 
@@ -50,22 +52,13 @@ A *egyéni elemző* jogkivonatokat létrehozó és a search Engine szövegfeldol
 
 -   ASCII-megfeleltetés. Adja hozzá a Standard ASCII modellrészeket a szűrőt például lumen vagy ê mellékjeleket optimalizálására a keresési feltételeket.  
 
- Megadhat több egyéni elemzőket szűrők kombinációit eltérő, de minden mező csak használhat egy elemző indexelés, elemzési és a egy a search-elemzést.  
-
- Ezen a lapon támogatott elemzők, tokenizers, tokent, és char szűrőket listáját tartalmazza. Az index definícióját egy példa a használatra a módosítások leírását is megtalálhatja. További ismereteket a az alapul szolgáló technológiát kihasználhatók a az Azure Search végrehajtására, lásd: [elemzés összegzése csomag (Lucene)](https://lucene.apache.org/core/4_10_0/core/org/apache/lucene/codecs/lucene410/package-summary.html). Az elemző konfigurációjának példák: [elemzők az Azure Search > Példák](https://docs.microsoft.com/azure/search/search-analyzers#examples).
-
-
-## <a name="default-analyzer"></a>Alapértelmezett elemző  
-
-Alapértelmezés szerint az Azure Search a kereshető mezőket a elemzi a [Apache Lucene Standard analyzer (standard lucene)](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) szöveg amely bontja a következő elemeket az ["Unicode szöveg Szegmentálás"](https://unicode.org/reports/tr29/) a szabályok. A standard szintű analyzer emellett a kisbetűs formában alakítja az összes karaktert. Indexelt dokumentumok és a keresési feltételek próbálja ki az elemzés az indexelés és a lekérdezés feldolgozása során.  
-
- Használható automatikusan az összes kereshető mezőt, ha Ön kifejezetten nyisson egy másik analyzer mező meghatározása. Alternatív elemzők lehet egyéni elemző vagy egy másik előre meghatározott analyzer elérhető listájából [elemzők](#AnalyzerTable) alatt.
+ Ezen a lapon támogatott elemzők, tokenizers, tokent, és char szűrőket listáját tartalmazza. Az index definícióját egy példa a használatra a módosítások leírását is megtalálhatja. További ismereteket a az alapul szolgáló technológiát kihasználhatók a az Azure Search végrehajtására, lásd: [elemzés összegzése csomag (Lucene)](https://lucene.apache.org/core/4_10_0/core/org/apache/lucene/codecs/lucene410/package-summary.html). Az elemző konfigurációjának példák: [elemzők hozzáadása az Azure Search](search-analyzers.md#examples).
 
 ## <a name="validation-rules"></a>Érvényesítési szabályok  
  Elemzők, tokenizers, jogkivonat-szűrők és char szűrők nevét kell egyedinek lennie, és nem lehet ugyanaz, mint bármelyik, az előre meghatározott elemzők, tokenizers, jogkivonat szűrők vagy char szűrőket. Tekintse meg a [tulajdonsághivatkozás](#PropertyReference) nevek már használatban van.
 
-## <a name="create-a-custom-analyzer"></a>Hozzon létre egy egyéni elemző eszköz
- Index létrehozáskor egyéni elemzőket adhatja meg. Ebben a szakaszban leírt egyéni elemző megadása esetén. Akkor is is Ismerkedjen meg a szintaxist a minta-definíciók áttekintésével [elemzők az Azure Search](https://docs.microsoft.com/azure/search/search-analyzers#examples).  
+## <a name="create-custom-analyzers"></a>Hozzon létre egyéni elemzők
+ Index létrehozáskor egyéni elemzőket adhatja meg. Ebben a szakaszban leírt egyéni elemző megadása esetén. Akkor is is Ismerkedjen meg a szintaxist a minta-definíciók áttekintésével [elemzők hozzáadása az Azure Search](search-analyzers.md#examples).  
 
  Egy elemző-definíció nevét, a típus, egy vagy több karakter szűrő, egy jogkivonatokat létrehozó legfeljebb és a jogkivonatok utáni feldolgozási jogkivonat egy vagy több szűrő tartalmazza. CHAR kiemelik előtt a jogkivonatok érvényesek. Token és char szűrőket lépnek balról jobbra.
 
@@ -148,12 +141,13 @@ Az elemző definíciója a nagyobb index része. Lásd: [Index API létrehozása
 Char, tokenizers, és token szűrőket definícióit kerülnek az index csak akkor, ha egyéni beállításokat határozza meg. Egy meglévő szűrő vagy jogkivonatokat létrehozó, mint-akkor adja meg azt az elemző definícióban található nevének.
 
 <a name="Testing custom analyzers"></a>
-## <a name="test-a-custom-analyzer"></a>Egyéni elemző tesztelése
+
+## <a name="test-custom-analyzers"></a>Egyéni elemzők tesztelése
 
 Használhatja a **teszt Analyzer művelet** a a [REST API-t](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) megtekintéséhez, hogyan egy elemző bontja a megadott szöveg jogkivonatokat.
 
 **Kérés**
-~~~~
+```
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
   Content-Type: application/json
     api-key: [admin key]
@@ -162,9 +156,9 @@ Használhatja a **teszt Analyzer művelet** a a [REST API-t](https://docs.micros
      "analyzer":"my_analyzer",
      "text": "Vis-à-vis means Opposite"
   }
-~~~~
+```
 **Válasz**
-~~~~
+```
   {
     "tokens": [
       {
@@ -193,21 +187,21 @@ Használhatja a **teszt Analyzer művelet** a a [REST API-t](https://docs.micros
       }
     ]
   }
- ~~~~
+```
 
- ## <a name="update-a-custom-analyzer"></a>Egyéni elemző frissítése
+ ## <a name="update-custom-analyzers"></a>Egyéni elemzők frissítése
 
 Miután egy elemző, egy tokenizer, egy jogkivonat szűrő vagy char szűrő van megadva, nem lehet módosítani. Új lehet hozzáadni egy meglévő index csak akkor, ha a `allowIndexDowntime` jelző értéke igaz található az indexben frissítésére vonatkozó kérelemben:
 
-~~~~
+```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
-~~~~
+```
 
 Ez a művelet az index offline legalább néhány másodpercet, így az indexelést és a lekérdezési kérelem sikertelen vesz igénybe. Az index teljesítmény és az írás rendelkezésre állásának néhány percen belül az index frissített, vagy hosszabb ideig nagyon nagy méretű indexek, de ezek gyakorolt ideiglenes, és végül a saját megoldásához korlátozott lehet.
 
  <a name="ReferenceIndexAttributes"></a>
 
-## <a name="index-attribute-reference"></a>Index attribútum hivatkozása
+## <a name="analyzer-reference"></a>Elemző referencia
 
 Az alábbi táblázat az elemzők, tokenizers, jogkivonat szűrők konfiguráció tulajdonságainak listában, és a egy indexdefiníciót szűrő szakaszában char. Ezek az attribútumok egy elemző, tokenizer vagy szűrő az index felépítését tevődik össze. Érték hozzárendelése információkért lásd: a [tulajdonsághivatkozás](#PropertyReference).
 
@@ -289,7 +283,7 @@ Ez a témakör az érvényes értékek egy egyéni elemző, tokenizer, char szű
 |[állj](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/StopAnalyzer.html)|StopAnalyzer|Szöveges értékekből nem a levelek osztja fel, a kisbetűk és a nem indexelendő szót token szűrőt alkalmazza.<br /><br /> **Beállítások**<br /><br /> áll (típus: karakterlánc-tömbben)-áll listáját. Az alapértelmezett érték az angol nyelvű tájékoztatáshoz egy előre meghatározott listában. |  
 |[elválasztó karakter](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html)|(írja be vonatkozik, csak ha lehetőségek érhetők el) |Egy elemző, amely az elválasztó karakterek jogkivonatokat létrehozó használja. Jogkivonatok, amelyek legfeljebb 255 karakter hosszúságú el vannak osztva.|  
 
- <sup>1</sup> analyzer típusok előtagja mindig a következő kódban a "#Microsoft.Azure.Search" úgy, hogy a "PatternAnalyzer" ténylegesen ezt kell megadni, mint "#Microsoft.Azure.Search.PatternAnalyzer". Az előtag kivonatosan eltávolítottuk a de előtag azért van szükség a kód. 
+ <sup>1</sup> analyzer típusok előtagja mindig a következő kódban a "#Microsoft.Azure.Search" úgy, hogy a "PatternAnalyzer" ténylegesen ezt kell megadni, mint "#Microsoft.Azure.Search.PatternAnalyzer". Az előtag kivonatosan eltávolítottuk, de az előtag azért van szükség a kód. 
  
 A analyzer_type csak testre szabható elemzők biztosítunk. Ha nem tartoznak, beállítások, hasonlóan az a kulcsszó-elemző, nincs társított #Microsoft.Azure.Search típus.
 
@@ -390,5 +384,5 @@ Az alábbi táblázat a token szűrők, amelyek Apache Lucene használata a Luce
 
 ## <a name="see-also"></a>Lásd még  
  [Azure Search Service REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [Az Azure Search szolgáltatásban elemzők > Példák](https://docs.microsoft.com/azure/search/search-analyzers#examples)    
+ [Az Azure Search szolgáltatásban elemzők > Példák](search-analyzers.md#examples)    
  [Index létrehozása &#40;az Azure Search szolgáltatás REST API-ja&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

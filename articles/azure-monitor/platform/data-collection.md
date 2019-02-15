@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: 6fc568546721511f6289600148919d28773058f4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9b3e35e8372e5488fd97da3f035c29940cb1f293
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002283"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269195"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -149,7 +149,7 @@ A naplók segítségével elvégezhető feladatok a következők:
 - Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) vagy [REST API-val](https://dev.loganalytics.io/).
 
 ### <a name="viewing-log-data"></a>Teljesítménynapló-adatok megtekintése
-Minden naplóadatokat az Azure Monitor használatával lekéri a [naplólekérdezés](../log-query/log-query-overview.md) -készült a [adatkezelő lekérdezési nyelv](../log-query/get-started-queries.md), amely lehetővé teszi, hogy gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat. Használat [Log Analytics](../log-query/portals.md) fejlesztésére és tesztelésére a lekérdezések az Azure Portalon. Eredmények interaktív használatához, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Naplók segítségével is lekérhet a [Azure REST API-val figyelési](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
+Minden naplóadatokat az Azure Monitor használatával lekéri a [naplólekérdezés](../log-query/log-query-overview.md) -készült a [Kusto-lekérdezés nyelvi](../log-query/get-started-queries.md), amely lehetővé teszi, hogy gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat. Használat [Log Analytics](../log-query/portals.md) fejlesztésére és tesztelésére a lekérdezések az Azure Portalon. Eredmények interaktív használatához, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Naplók segítségével is lekérhet a [Azure REST API-val figyelési](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 > [!IMPORTANT]
 > Az Application Insights adatait egy külön partíciót, mint a többi naplóadatokat az Azure monitorban tárolódik. Ez ugyanazokat a funkciókat, mint más naplóadatok támogatja, de kell használnia a [Application Insights-konzol](../app/analytics.md) vagy a [Application Insights API](https://dev.applicationinsights.io/) az adatok elérésére. Használhat egy [erőforrások közötti lekérdezési](../log-query/cross-workspace-query.md) alkalmazás adatok és más naplóadatok elemzéséhez.

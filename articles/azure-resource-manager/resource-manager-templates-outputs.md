@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2019
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: aadc92c232d32d827644caa52b3c362d9c8d4c9b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 92e5dd5190a76bd09e33ea4c40a5b5cc2d66bc7b
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691031"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301129"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonokban kimeneti szakasz
 
-A kimeneti szakaszban adjon meg értékeket, amelyek a központi telepítés rendszer adja vissza. Visszaadhatja például az URI-t üzembe helyezett erőforrások eléréséhez.
+A kimeneti szakaszban adjon meg értékeket, amelyek a központi telepítés rendszer adja vissza. Visszaadhatja például az URI-t üzembe helyezett erőforrások eléréséhez. A választható `condition` tulajdonságot adja meg, hogy a kimeneti értéket adja vissza.
 
 ## <a name="define-and-use-output-values"></a>Definiálja és kimeneti értékeket
 
@@ -31,6 +31,18 @@ Az alábbi példa bemutatja, hogyan állítható vissza a nyilvános IP-cím er�
 ```json
 "outputs": {
   "resourceID": {
+    "type": "string",
+    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
+  }
+}
+```
+
+A következő példa bemutatja, hogyan feltételesen a nyilvános IP-cím erőforrás-azonosító alapján egy új egyik telepítve lett-e vissza:
+
+```json
+"outputs": {
+  "resourceID": {
+    "condition": "[equals(parameters('publicIpNewOrExisting'), 'new')]",
     "type": "string",
     "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
   }
@@ -70,6 +82,7 @@ A következő példa egy kimeneti definíciót szerkezetét mutatja:
 ```json
 "outputs": {
     "<outputName>" : {
+        "condition": "<boolean-value-whether-to-output-value>",
         "type" : "<type-of-output-value>",
         "value": "<output-value-expression>"
     }
@@ -79,6 +92,7 @@ A következő példa egy kimeneti definíciót szerkezetét mutatja:
 | Elem neve | Szükséges | Leírás |
 |:--- |:--- |:--- |
 | outputName |Igen |A kimeneti érték neve. Érvényes JavaScript-azonosítónak kell lennie. |
+| feltétel |Nem | Logikai érték, amely azt jelzi, hogy ez a kimeneti értéket adja vissza. Amikor `true`, az érték szerepel a kimenet a központi telepítéshez. Amikor `false`, a rendszer kihagyta a kimeneti értéket ehhez a központi telepítéshez. Ha nincs megadva, az alapértelmezett értéke `true`. |
 | type |Igen |A kimeneti érték típusát. Sablon bemeneti paraméterként azonos kimeneti értékeket támogatásához. |
 | érték |Igen |Sablonnyelv-kifejezés, amely értékeli ki és adja vissza a kimeneti értéket. |
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: f0c9c06e953df16199acda5f821fdac35b86f07f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bbd73035993d3a981744eb5377fe0bf2c9d55b63
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477556"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268855"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatelemző virtuális gép kiépítése Linux (Ubuntu)
 
@@ -31,7 +31,7 @@ Az adatelemző virtuális gép Linux Ubuntu-alapú virtuálisgép-lemezkép, ame
   * [Caffe2](https://github.com/caffe2/caffe2): A Caffe többplatformos verziója
   * [A Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): A Microsoft Research szoftver eszközkészlet mélytanulási
   * [H2O](https://www.h2o.ai/): Egy nyílt forráskódú big data platform és a grafikus felhasználói felületen
-  * [Keras](https://keras.io/): Egy magas szintű Neurális hálózat API a Pythonban Theano és tensorflow-hoz
+  * [Keras](https://keras.io/): Egy magas szintű Neurális hálózat API TensorFlow, a Microsoft Cognitive Toolkit és Theano pythonban
   * [MXNet](http://mxnet.io/): Egy rugalmas, hatékony deep learning-kódtár számos nyelvi kötéseket az
   * [NVIDIA SZÁMJEGYEK](https://developer.nvidia.com/digits): Egy grafikus rendszer, amely leegyszerűsíti az általános mélytanulási feladatok
   * [PyTorch](http://pytorch.org/): Egy magas szintű Python-kódtár dinamikus hálózatok támogatása
@@ -177,7 +177,7 @@ Néhány példa notebookok JupyterHub érhető el.
 H2O egy gyors, a memóriában, elosztott gépi tanulással és prediktív elemzési platform. Egy Python-csomag telepítve van a gyökér- és a py35 Anaconda-környezetekben. Egy R-csomag is telepítve van. A H2O indításához futtassa `java -jar /dsvm/tools/h2o/current/h2o.jar`; vannak a különböző [parancssori kapcsolók](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , előfordulhat, hogy szeretne konfigurálni. A Flow webes felhasználói felületen navigáljon az elérhető http://localhost:54321 a kezdéshez. JupyterHub mintafüzetek is érhetők el.
 
 #### <a name="keras"></a>Keras
-Keras egy olyan magas szintű Neurális hálózati API, amely képes a tensorflow-hoz vagy a Theano futó Python nyelven. A legfelső szintű és py35 Python-környezetekben érhető el. 
+Keras egy olyan magas szintű Neurális hálózati API, amely képes a TensorFlow, a Microsoft Cognitive Toolkit vagy Theano futó Python nyelven. A legfelső szintű és py35 Python-környezetekben érhető el. 
 
 #### <a name="mxnet"></a>MXNet
 MXNet a teljesítmény és a rugalmasság a deep learning-keretrendszert. A dsvm-hez a tartalmazzák R és Python-kötések rendelkezik. Mintafüzetek JupyterHub szerepelnek, és a mintakódot /dsvm/samples/mxnet érhető el.

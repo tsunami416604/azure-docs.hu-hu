@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9517ccac4006edec473e25c5e6524ce62d4e1259
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 31e380379b5237f6b1a72b3427eb857f64d55c2e
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210102"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269059"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
@@ -157,7 +157,11 @@ Egy eszköz nem jelentkezzen be a korábban törölt vagy letiltott felhasznál�
 
 **VÁLASZ:** Előfordulhat, hogy a felhasználó csatlakozzon, vagy eszköz regisztrálása az Azure ad-vel a multi-factor Authentication szolgáltatás használatával. Maga az eszköz válik, hogy a felhasználó egy megbízható második tényező. Ha ugyanaz a felhasználó az eszköz bejelentkezik, és hozzáfér az alkalmazáshoz, az Azure AD az eszköz második tényezőként figyelembe veszi. Lehetővé teszi, hogy a felhasználó zökkenőmentes az alkalmazások további multi-factor Authentication-kérések nélküli eléréséhez. 
 
-Ez a viselkedés nem vonatkozik semmilyen más felhasználó, aki az adott eszközre bejelentkezik. Így minden egyéb eszköz hozzáféréssel rendelkező felhasználókat a multi-factor Authentication szolgáltatás kihívást beolvasása. Utána hozzáférhet a multi-factor Authentication hitelesítést igénylő alkalmazásokhoz.
+Ez a viselkedés:
+
+- Alkalmazható az Azure AD-tartományhoz csatlakozik, és az Azure ad-ben regisztrált eszközökön –, de nem a hibrid Azure AD-hez csatlakoztatott eszközök.
+
+- Nem alkalmazható az semmilyen más felhasználó, aki az adott eszközre bejelentkezik. Így minden egyéb eszköz hozzáféréssel rendelkező felhasználókat a multi-factor Authentication szolgáltatás kihívást beolvasása. Utána hozzáférhet a multi-factor Authentication hitelesítést igénylő alkalmazásokhoz.
 
 ---
 

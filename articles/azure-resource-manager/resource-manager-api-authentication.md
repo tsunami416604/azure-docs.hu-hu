@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: 40f7f15c85d5676fefe8daff0aa6a6fb5d95cf53
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117068"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266993"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Erőforrás-kezelő használata hitelesítési API az előfizetések hozzáféréséhez
 
@@ -75,8 +75,6 @@ Mielőtt elkezdené, kódolás, webes alkalmazás regisztrálása az Azure Activ
 Mivel az alkalmazás más előfizetésben hozzáfér, mint egy több-bérlős alkalmazást kell konfigurálnia. Érvényesítési átadni, adja meg egy társított az Azure Active Directory-tartományhoz. A tartományok az Azure Active Directory társított megtekintéséhez jelentkezzen be a portálra.
 
 Az alábbi példa bemutatja, hogyan regisztrálja az alkalmazás az Azure PowerShell-lel. A parancs működéséhez az Azure PowerShell legújabb (2016. augusztus) verzióját kell telepítenie.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell-interactive
 $app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true

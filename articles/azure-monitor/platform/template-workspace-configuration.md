@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
-ms.openlocfilehash: e948842a49e87df156eb59a7e25634772550d933
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 98a81d39f698e4ea9b2db0be1dfd2a22424941ba
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235495"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300567"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>A Log Analytics használatával az Azure Resource Manager-sablonok felügyelete
 Használhat [Azure Resource Manager-sablonok](../../azure-resource-manager/resource-group-authoring-templates.md) létrehozása és konfigurálása a Log Analytics-munkaterületeket. A feladatokat hajthat végre a sablonok közé:
@@ -56,7 +56,7 @@ A következő paraméterekkel állítsa be az alapértelmezett érték:
 
 > [!NOTE]
 >Ha létrehozása vagy konfigurálása a Log Analytics-munkaterület egy előfizetésben, amely rendelkezik az új 2018 áprilisi díjszabási modell jelentkezett, van-e a csak érvényes tarifacsomagban a Log Analytics **PerGB2018**.  
->Ha lehetséges, hogy bizonyos előfizetéseket a (2018 előtti-áprilisi díjszabási modell) [https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model], megadhatja a **önálló** tarifacsomag, és ez lesz sikeres, a 2018 előtti-április díjszabási modell, és mindkét előfizetéshez az új díjszabás az előfizetések. Az új proicing modell alkalmazó előfizetésekben munkaterületek, a tarifacsomag értékre lesz beállítva **PerGB2018**. 
+>Ha lehetséges, hogy bizonyos előfizetéseket a [2018 előtti-áprilisi díjszabási modell](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model), megadhatja a **önálló** tarifacsomag, és ez lesz sikeres, mindkét előfizetéshez 2018 előtti-áprilisi díjszabási modell és az új előfizetések díjszabása. Az új proicing modell alkalmazó előfizetésekben munkaterületek, a tarifacsomag értékre lesz beállítva **PerGB2018**. 
 
 ### <a name="create-and-deploy-template"></a>Hozzon létre, és a sablon üzembe helyezése
 

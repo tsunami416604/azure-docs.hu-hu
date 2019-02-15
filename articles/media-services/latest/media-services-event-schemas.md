@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 02/11/2019
+ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: f9748d61b1aa336c5300dd414d53388f48a41368
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8ad0efffc89a3c11f412d94b922401c23e84a3e5
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243985"
+ms.locfileid: "56268787"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>A Media Services-események Azure Event Grid-sémák
 
@@ -42,7 +42,7 @@ Regisztrálhat az események a JobStateChange esemény való feliratkozással. V
 | Microsoft.Media.JobCanceled| Első egy eseményt, amikor a feladat megszakítva állapotba értékre vált. Ez a végállapota feladatkimenetek tartalmazza.|
 | Microsoft.Media.JobErrored| Egy eseményt, amikor a feladat hibás állapotú átkerül beolvasása. Ez a végállapota feladatkimenetek tartalmazza.|
 
-[Séma példák](#event-schema-examples) kövesse.
+Lásd: [séma példák](#event-schema-examples) olvashat.
 
 ### <a name="monitoring-job-output-state-changes"></a>Figyelési feladat kimeneti állapotváltozások
 
@@ -56,7 +56,15 @@ Regisztrálhat az események a JobStateChange esemény való feliratkozással. V
 | Microsoft.Media.JobOutputCanceled| Egy eseményt, amikor a feladat kimeneti tér át, meg lett szakítva állapot beolvasása.|
 | Microsoft.Media.JobOutputErrored| Egy eseményt, amikor a feladat kimeneti tér át, a hibás állapotú beolvasása.|
 
-[Séma példák](#event-schema-examples) kövesse.
+Lásd: [séma példák](#event-schema-examples) olvashat.
+
+### <a name="monitoring-job-output-progress"></a>Figyelési feladat kimeneti folyamatban
+
+| Esemény típusa | Leírás |
+| ---------- | ----------- |
+| Microsoft.Media.JobOutputProgress| Ezt az eseményt a feladat feldolgozása folyamatban van, a 0 % és 100 % tükrözi. A szolgáltatás megkísérli elküldeni egy eseményt, ha 5 %-át lett, vagy a végrehajtási állapot, vagy nagyobb növekedése lett az utolsó esemény (szívverési) óta több mint 30 másodperc. A végrehajtási állapot nem garantált, 0 %-os elindításához, vagy a 100 %-os eléréséhez, és nem a garantált változatlan ütemben idővel megnövekszik. Ez az esemény nem használható kell meghatározni, hogy befejeződött-e a feldolgozási – Ehelyett használjon az állapotváltozási események.|
+
+Lásd: [séma példák](#event-schema-examples) olvashat.
 
 ## <a name="live-event-types"></a>Élő események típusai
 
@@ -72,7 +80,7 @@ Stream-szintű eseményeit stream vagy kapcsolat aktiválódnak. Minden egyes es
 | Microsoft.Media.LiveEventEncoderConnected | Kódoló az élő esemény kapcsolatot létesít. |
 | Microsoft.Media.LiveEventEncoderDisconnected | Kódoló leválasztása. |
 
-[Séma példák](#event-schema-examples) kövesse.
+Lásd: [séma példák](#event-schema-examples) olvashat.
 
 ### <a name="track-level-events"></a>Nyomon követheti-szintű eseményeit
 
@@ -87,7 +95,7 @@ Nyomon követheti-szintű eseményeit számonkénti aktiválódnak. A sledován�
 | Microsoft.Media.LiveEventIngestHeartbeat | Közzétett 20 másodpercenként minden egyes nyomon követése, az élő esemény futtatásakor. Itt állapotösszegzése betöltését. |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | Kiszolgáló kihagyást észleli a bejövő nyomon követése. |
 
-[Séma példák](#event-schema-examples) kövesse.
+Lásd: [séma példák](#event-schema-examples) olvashat.
 
 ## <a name="event-schema-examples"></a>Esemény séma példák
 
@@ -245,6 +253,29 @@ Az egyes JobOutput állapotváltozás a példa séma az alábbihoz hasonlóan n�
       "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+### <a name="joboutputprogress"></a>JobOutputProgress
+
+A példa séma a következőhöz hasonlít:
+
+ ```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/belohGroup/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/job-5AB6DE32",
+  "eventType": "Microsoft.Media.JobOutputProgress",
+  "eventTime": "2018-12-10T18:20:12.1514867",
+  "id": "00000000-0000-0000-0000-000000000000",
+  "data": {
+    "jobCorrelationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    },
+    "label": "VideoAnalyzerPreset_0",
+    "progress": 86
   },
   "dataVersion": "1.0",
   "metadataVersion": "1"

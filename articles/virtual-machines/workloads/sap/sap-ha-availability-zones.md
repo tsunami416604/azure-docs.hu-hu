@@ -1,6 +1,6 @@
 ---
 title: SAP munkaterhelés-konfigurációk az Azure-beli rendelkezésre állási zónák |} A Microsoft Docs
-description: Magas rendelkezésre állású architektúra és forgatókönyvek esetében az SAP NetWeaver az Azure rendelkezésre állási zónák használata
+description: Magas rendelkezésre állású architektúra és forgatókönyvek használatával az Azure-beli rendelkezésre állási zónák SAP NetWeaver
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: msjuergent
@@ -17,166 +17,165 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e319fb5bc1e0ed3354a09b685405656c7f3131bc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2d98a5ab13c2aecd3b3cef590526031f5bdee594
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858805"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268311"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP munkaterhelés-konfigurációk az Azure-beli rendelkezésre állási zónák
+[Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview) egyike az Azure által biztosított magas rendelkezésre állású funkciókat. Rendelkezésre állási zónák használatával javítja a rendelkezésre állás az SAP számítási feladatok Azure-ban. Ez a funkció már elérhető néhány [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/). A későbbiekben lesz elérhető több régióban.
 
-Az Azure-ajánlatok a magas rendelkezésre állású-funkciók egyikét [Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview). A rendelkezésre állási zónák használatával javítja a rendelkezésre állás az SAP számítási feladatok Azure-ban. A rendelkezésre állási zónák érhetők el több [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/) már. Több régió követi. 
+A kép SAP magas rendelkezésre állású alapvető architektúráját mutatja be:
 
-SAP magas rendelkezésre állású alapvető architektúrájának írható le ezt az ábrát a név jelenik meg:
+![Standard szintű magas rendelkezésre állású konfiguráció](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-![Standard szintű magas rendelkezésre ÁLLÁS konfigurálása](./media/sap-ha-availability-zones/standard-ha-config.png)
-
-Az SAP alkalmazásrétegre helyezünk üzembe egy Azure-ban [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). A magas rendelkezésre állás az SAP Central Services helyezzen üzembe egy külön rendelkezésre állási csoportban két virtuális gépet. Egy magas rendelkezésre állású keretrendszer infrastruktúra vagy szoftveres probléma esetén automatikus feladatátvétellel, az Windows feladatátvételi fürt szolgáltatások vagy a támasztja (Linux). Ilyen központi telepítések részletező dokumentumok itt találhatók:
+Az SAP alkalmazásrétegre helyezünk üzembe egy Azure-ban [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). Magas rendelkezésre állás az SAP Central Services érdekében külön rendelkezésre állási csoportban két virtuális gép üzembe helyezése. Egy magas rendelkezésre állású keretrendszer-infrastruktúra vagy szoftveres probléma esetén automatikus feladatátvétellel, az Windows Server feladatátvételi fürtszolgáltatás vagy a támasztja (Linux). Ezeket az üzemelő példányokat kapcsolatos további információkért lásd:
 
 - [Egy Windows rendszerű feladatátvevő fürtre a fürt megosztott lemezt használ a fürt egy SAP ASCS/SCS példányhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
 - [A fájlmegosztás Windows feladatátvevő fürt a fürt egy SAP ASCS/SCS példányhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
 - [Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure virtuális gépeken SAP-alkalmazások](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
 - [Az Azure virtuális gépek magas rendelkezésre állás az SAP NetWeaver a Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
 
-SAP NetWeaver, S/4HANA vagy Hybris rendszerek DBMS rétege hasonló architektúrával vonatkozik. Az adatbázis-kezelő réteg egy aktív/passzív módban egy Feladatátvevőfürt-megoldást infrastruktúrával vagy szoftverekkel hibákkal szembeni telepít. A Feladatátvevőfürt-megoldást vagy az adatbázis-kezelő feladatátvételi keretrendszer, a Windows feladatátvételi fürt szolgáltatások vagy támasztja lehet. 
+SAP NetWeaver, S/4HANA vagy Hybris rendszerek DBMS rétege hasonló architektúrával vonatkozik. Az adatbázis-kezelő réteg egy aktív/passzív módban egy Feladatátvevőfürt-megoldást infrastruktúrával vagy szoftverekkel hibákkal szembeni telepít. A Feladatátvevőfürt-megoldást egy DBMS-specifikus feladatátvételi keretrendszer, a Windows Server feladatátvételi fürtszolgáltatási vagy támasztja lehet.
 
-Az Azure rendelkezésre állási zónák használata azonos architektúra üzembe helyezéséhez, néhány módosítást a fent vázolt architektúra van szükség. Ez a dokumentum ismerteti ezeket a módosításokat.
+Az Azure-beli rendelkezésre állási zónák a azonos architektúra üzembe helyezéséhez kell néhány módosítást a korábban leírt architektúra. Ez a cikk azt ismerteti, hogy ezeket a módosításokat.
 
-## <a name="considerations-deploying-across-availability-zones"></a>Szempontok a rendelkezésre állási zónában üzembe helyezése
-
-A rendelkezésre állási zónák használata esetén néhány dolgot figyelembe venni:
-
-- Az Azure rendelkezésre állási zónák nem garantálja a bizonyos egy Azure-régióban a különböző zónák közötti távolság.
-- Az Azure rendelkezésre állási zónák nem állnak ideális DR-megoldásként. Természeti katasztrófák széles okozhat az egyes régiók, többek között power infrastruktúra nehéz kárt okoznának terjednek. Különböző zónák közötti távolság nem elég nagy ahhoz, hogy a megfelelő Vészhelyreállítási megoldás lehet, hogy lehet.
-- A hálózati késést, rendelkezésre állási zónák között változik, a különböző Azure-régióban. Előfordulhatnak olyan esetek, ahol telepítheti és az SAP alkalmazásrétegre futtatható különböző zónák között, mint a hálózati késés egy zóna aktív az adatbázis-kezelő virtuális gép egy folyamat az üzletmenetre, fogadható el. De az egyes Azure-régióban a aktív az adatbázis-kezelő virtuális gép és az SAP alkalmazáspéldány üzembe helyezett különböző zónák között késés túl zavaró és az SAP business folyamatok fogadható el. Ennek eredményeképpen az üzembe helyezési architektúra eltérőnek kell lennie az aktív/aktív architektúra az alkalmazás vagy az aktív/passzív architektúra, ahol a zónák közötti késés értéke túl magas.
-- Döntse el, melyik konfiguráció is használhat az Azure rendelkezésre állási zónák, a hálózati késéssel mérni a különböző zónák között. A hálózati késést a két területen fontos szerepet játszik:
-    - A két adatbázis-kezelő példányt, amely egy létre szinkron replikáció rendelkeznie kell a késés. Minél nagyobb a hálózati késés, a számítási feladatok hatását méretezhetőségét, annál nagyobb a lehetséges
-    - A hálózati késés közötti különbség egy virtuális Gépet egy SAP párbeszédpanel példány a-zónát az aktív az adatbázis-kezelő példányban való futtatása és a egy hasonló virtuális Gépet egy másik zónában. Minél nagyobb ez különbség, minél nagyobb az üzleti folyamatokat és kötegelt feladatok, függ, hogy fusson-e a futási idő gyakorolt a-zóna az adatbázis-kezelő vagy egy másik zónában.
+## <a name="considerations-for-deploying-across-availability-zones"></a>Szempontok a rendelkezésre állási zónában üzembe helyezésekor
 
 
-Bizonyos korlátozások vonatkoznak az Azure virtuális gépek rendelkezésre állási zónák és ugyanazon Azure-régióban feladatátvételi megoldásokat létrehozó telepítésekor. Ezek a korlátozások a következők terjed ki:
+A rendelkezésre állási zónák használata esetén, vegye figyelembe a következőket:
 
-- Használatával [Azure managed disks](https://azure.microsoft.com/services/managed-disks/) kötelező az Azure rendelkezésre állási zónában történő üzembe helyezéséhez 
-- Az Azure-előfizetés alapján leképezése a fizikai zóna zóna enumerálások rögzítve van. Különböző előfizetésekben használatakor az SAP-rendszerek telepítése a minden egyes előfizetés esetén ideális zónák meghatározásához szüksége.
-- Nem telepíthet egy Azure rendelkezésre állási zónán belüli Azure rendelkezésre állási csoportokat. Válasszon egy Azure rendelkezésre állási zónában vagy az Azure rendelkezésre állási csoport, a virtuális gépek deployment keretrendszer.
-- Nem használhat egy [Azure alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) megoldásokat hozhat létre feladatátvevő fürt feladatátvételi fürtszolgáltatások Windows vagy Linux rendszerű támasztja alapján. Ehelyett kell használnia a [Azure Standard Load Balancer Termékváltozat](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
+- Egy Azure-régión belüli különböző rendelkezésre állási zónák közötti vonatkozó garanciát nem jelentenek.
+- A rendelkezésre állási zónák nem állnak ideális DR-megoldásként. Természeti katasztrófák jelentős károkat régiók, többek között power infrastruktúrák (nagy erőforrásigényű) kárt okozhat. Előfordulhat, hogy a különböző zónák közötti távolságot nem elég nagy legyen a megfelelő Vészhelyreállítási megoldást jelent.
+- A hálózati késést, rendelkezésre állási zónák között nem azonos az összes Azure-régióban. Bizonyos esetekben telepítheti és az SAP alkalmazásrétegre futtatni különböző zónák között, mert az aktív az adatbázis-kezelő virtuális gép egyik zónából a hálózati késés fogadható el. Azonban az egyes Azure-régióban, az aktív az adatbázis-kezelő virtuális gép és az SAP alkalmazáspéldány között késés amikor különböző zónák telepítve, előfordulhat, hogy nem elfogadható az SAP business folyamatok. Ezekben az esetekben az üzembe helyezési architektúra eltérőnek kell lennie, az aktív/aktív architektúra az alkalmazás vagy az aktív/passzív architektúra, ahol a zónák közötti hálózati késés értéke túl magas.
+- Helyéről a rendelkezésre állási zónák használatára, ha a hálózati késést a zónák közötti a döntéseiben alapjául. Hálózati késés a két területen fontos szerepet játszik:
+    - A két adatbázis-kezelő példányt, amely a szinkron replikáció rendelkeznie kell a késés. Minél nagyobb a hálózati késés, nagyobb valószínűséggel a számítási feladat skálázhatóságát negatív hatással lesz.
+    - A hálózati késés közötti különbség egy virtuális Gépet egy SAP párbeszédpanel példány a-zónát az aktív az adatbázis-kezelő példányban való futtatása és a egy hasonló virtuális Gépet egy másik zónában. Ahogy ezt a különbséget növekszik, az üzleti folyamatokat és a batch futási ideje befolyásolja feladatok is nő, függ, hogy fusson-e a zóna az adatbázis-kezelő vagy egy másik zónában.
+
+Amikor üzembe helyezése az Azure virtuális gépek rendelkezésre állási zónák között, és ugyanazon Azure-régióban feladatátvételi megoldások létrehozására, bizonyos korlátozások vonatkoznak:
+
+- Használjon [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) telepítésekor meg kell adnia az Azure-beli rendelkezésre állási zónák. 
+- Az Azure-előfizetés alapján leképezése a fizikai zóna zóna enumerálások rögzítve van. Ha különböző előfizetésekhez használja az SAP-rendszerek központi telepítéséhez, szüksége definiálása az ideális zónák minden egyes előfizetés esetén.
+- Nem telepíthet egy Azure rendelkezésre állási zónában belüli Azure rendelkezésre állási csoportokat. Válassza ki az egyik vagy másik virtuális gépek üzembe helyezési keretét.
+- Nem használhat egy [Azure alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) megoldásokat hozhat létre feladatátvevő fürt Windows Server feladatátvételi fürtszolgáltatás vagy a Linux támasztja alapján. Ehelyett kell használnia a [Azure Standard Load Balancer Termékváltozat](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
 
 
 
-## <a name="ideal-availability-zones-combination"></a>Ideális a rendelkezésre állási zónák kombinációja
-Úgy dönt, hogy miként lehet hasznosítani a rendelkezésre állási zónák, mielőtt kell, amelyen vizsgálat végrehajtása:
+## <a name="the-ideal-availability-zones-combination"></a>Ideális megoldás a rendelkezésre állási zónák együttes használata
+A rendelkezésre állási zónák használata mellett dönt, meg kell határoznia:
 
-- A hálózati késést, egy Azure-régióhoz a három különböző zónák között. Tehát, hogy a zónák a legalacsonyabb hálózati késéssel a közötti hálózati forgalom zóna rendelkező választhat
-- A különbség az Ön által választott zónák telefonszámaira belüli virtuális gép virtuális gép késés és a hálózati késést a választott két zónák között
-- Hogy a virtuális gép típusokat, hogy telepíteni kell érhetők el a két zónák tetszőleges nyilatkozat. Különösen az M sorozat virtuális gépei fog olyan helyzetekben, ahol a különböző M sorozatú virtuális gépek Termékváltozatait gazdakiszolgálói lesznek csak a három zóna közül kettő a hibát
+- A hálózati késést a három zónák egy Azure-régió között. Ez lehetővé teszi, hogy válassza ki a zónák a zónák közötti hálózati forgalmat a legalacsonyabb hálózati késéssel rendelkező.
+- Virtuális gép virtuális gép késés egyikébe a zónák a kiválasztása, és a hálózati késés, Ön két zónákban közötti különbség.
+- E virtuális gép típusát, amely üzembe kell helyeznie érhetők el a két zónák kiválasztott meghatározását. Az egyes virtuális gépek, különösen M sorozatú virtuális gépek, előfordulhat, hogy helyzet előáll, amelyben egyes termékváltozatok a következők csak két a három zónából állnak rendelkezésre.
 
-### <a name="network-latency-between-zones-and-within-zone"></a>Zónán belül és a zónák közötti hálózati késés
-Ismerje meg, hogy a késés, a különböző zónák között van, akkor kell:
+## <a name="network-latency-between-and-within-zones"></a>Hálózati késés, illetve zónák között
+Annak megállapításához, a késés, a különböző zónák között, kell tennie:
 
-- Helyezze üzembe az összes három zónát a DBMS példány használni kívánt virtuális gép Termékváltozata. Győződjön meg arról, hogy [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) engedélyezve van ez a mérés végrehajtásakor.
-- A két zónákat a legalacsonyabb hálózati késéssel rendelkező megkereséséhez, üzembe helyezése egy másik három virtuális gépet a VM-termékváltozat használja, mint a három rendelkezésre állási zónák között a virtuális gép alkalmazási rétegre szeretne. A két különböző "DBMS" zónában a választott mérhetők a két "adatbázis-kezelő virtuális gép" a hálózati késést. 
-- Mérhető eszközként használni **niping**. Egy eszközt, a SAP, amely az SAP támogatási megjegyzések leírtak szerint működik [#500235](https://launchpad.support.sap.com/#/notes/500235) és [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). A parancsok késési mérések feljegyezni SAP koncentrálhat. Használatával **ping** nem ajánlott, mivel **ping** nem működik az Azure-on keresztül a gyorsított hálózati kódhoz tartozó elérési út.
+- Helyezze üzembe az összes három zónát a DBMS példány használni kívánt virtuális gép Termékváltozata. Győződjön meg arról, hogy [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) processzorfelhasználás, ha engedélyezve van.
+- Ha megtalálta a két zónákat a legalacsonyabb hálózati késéssel rendelkező, üzembe helyezése egy másik három virtuális gépet a VM-termékváltozat a három rendelkezésre állási zónák között az alkalmazásrétegre virtuális Géphez használni kívánt. A két adatbázis-kezelő virtuális gép, a két adatbázis-kezelő zónában kiválasztott mérhetők a hálózati késést. 
+- Használat **niping** mérési eszközként. Ez az eszköz, SAP, az SAP támogatási megjegyzések leírt [#500235](https://launchpad.support.sap.com/#/notes/500235) és [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). A késési mérések feljegyezni parancsok koncentrálhat. Mivel **ping** nem működik az Azure gyorsított hálózatkezelés kódhoz tartozó elérési út, keresztül nem ajánlott, hogy használjuk.
 
-A mértékek és a rendelkezésre állási zónában a VM-termékváltozatok rendelkezésre állásának alapján kell a döntéseket:
+A mértékek és a rendelkezésre állási zónában a VM-termékváltozatok rendelkezésre állásának alapján kell néhány döntéseket:
 
-- Az ideális zónák a DBMS-réteg megadása
-- Válasz a kérdésre Ha azt szeretné, az SAP aktív alkalmazásréteg szét egy, két vagy három zónát alapján különbségek a hálózati késés a-zóna és a zónák között
-- Ha egy aktív/passzív vagy egy aktív-aktív konfiguráció az alkalmazás szempontjából telepítendő, (tekintse meg később) kérdésre
+- Adja meg az adatbázis-kezelő réteg a ideális zónákat.
+- Határozza meg, hogy az SAP aktív alkalmazásréteg szét egy, kettő vagy három zónakészleten zónák közötti hálózati késés a-zóna és különbségek alapján.
+- Határozza meg, hogy szeretné-e üzembe helyezése egy aktív/passzív konfigurációt vagy egy aktív-aktív konfiguráció az alkalmazás szempontjából. (Ezek a beállítások magyarázatát a cikk későbbi részében.)
 
-Ezek a döntések meghozatalában is visszahívása SAP hálózati késés javaslatok SAP-jegyzetnek leírt [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E).
-
-### <a name="be-aware-of"></a>Vegye figyelembe
+Ezek a döntések meghozatalában, is figyelembe kell venni fiók SAP hálózati késés javaslatok, SAP-jegyzetnek leírt [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E).
 
 > [!IMPORTANT]
-> A mértékek és hozott döntések, így ezeknek a méréseknek használt Azure-előfizetéshez tartozó érvényesek. Ha más Azure-előfizetések használata esetén ismételje meg a mérés, mivel a leképezés sorszámozott zónák eltérőek lehetnek egy másik Azure-előfizetés szeretné.
+> A mértékek és hozott döntések megtette a mérések használt Azure-előfizetéshez tartozó érvényesek. Ha egy másik Azure-előfizetést használ, ismételje meg a mérési szeretne. A leképezés sorszámozott zónák más Azure-előfizetések eltérőek lehetnek.
 
 
 > [!IMPORTANT]
-> Valószínű, hogy a méreteket, ahogy a fenti megjelennek a különböző eredményeket minden Azure-régióban, amely támogatja a [rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview). Akkor is, ha a hálózati késés követelmények azonosak, szüksége lehet a különböző központi telepítési stratégiát különböző Azure-régióban fogad el, mivel a zónák közötti hálózati késés eltérő lehet. Az egyes Azure-régióban, a hálózati késést a három különböző zónák között, hogy a teljesen más várható. Mivel a más régiókban a hálózati késést a három különböző zónák között egységesebb. A jogcím, mivel **mindig** egy 1 ezredmásodpercre 2 ezredmásodperc, a zónák közötti hálózati késés **helytelen**. A hálózati késést, rendelkezésre állási zónában az Azure-régióban nem általánosíthatók.
-
+> Valószínű, hogy a korábban ismertetett mérések nyújt minden Azure-régióban, amely támogatja a különböző eredményt [rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview). Akkor is, ha a hálózati késés követelmények azonosak, szüksége lehet a különböző központi telepítési stratégiát különböző Azure-régióban fogad el, mert a zónák közötti hálózati késés eltérő lehet. Az egyes Azure-régióban teljesen más lehet a hálózati késést a három különböző zónák között. Más régiókban egységesebb lehet a hálózati késést a három különböző zónák között. A jogcímet, amely mindig van egy 1 – 2 ezredmásodperc közötti hálózati késés modul nem megfelelő. A hálózati késést, rendelkezésre állási zónában az Azure-régióban nem általánosíthatók.
 
 ## <a name="activeactive-deployment"></a>Aktív/aktív központi telepítés
-Az üzembe helyezési architektúra neve aktív/aktív, mert két vagy három zónák között az aktív SAP párbeszédpanel-példányok üzembe helyezésekor. A sorba replikációs SAP Central Services rendszer fog üzembe helyezni két zónák között. Ugyanez vonatkozik az adatbázis-kezelő szintje, amely telepíthető, mint az SAP Central szolgáltatás ugyanazon zónákban történik.
+Ez az üzembe helyezési architektúra aktív/aktív nevezik, mert a két vagy három zónák között az aktív SAP párbeszédpanel-példányok üzembe helyezésekor. Az SAP Central Services-példányhoz, sorba replikációt használ a két zónák közötti telepíti. Ugyanez vonatkozik az adatbázis-kezelő szintje, amely telepíti az SAP Central szolgáltatás ugyanazon zónák között.
 
-Az ilyen konfiguráció fontolóra, meg kell keresnie a két rendelkezésre állási zónák közötti zóna hálózati késés a szinkron replikációhoz az adatbázis-kezelő és a számítási feladatok számára elfogadható kínáló régiója. Továbbá azt szeretné, hogy a különbözeti közötti hálózati késés a kiválasztott zónák belül, és a különböző zóna hálózati késés nem túl nagy. Az utóbbi OK, hogy nem szeretné túl nagy változások, az üzleti folyamatok futtatási idejének vagy kötegelt feladatok, függ, hogy egy feladat fut a-zónát az adatbázis-kezelő kiszolgáló vagy zóna között. Különböző módszerekkel elfogadhatók, azonban nincs különbség a tényezők.
+Amikor kiválasztja ezt a konfigurációt, meg kell, hogy az ajánlat zónák közötti hálózati késés, amely a számítási feladatok és az adatbázis-kezelő a szinkron replikáció elfogadható keresnie a két rendelkezésre állási zónák a régióban. Azt is szeretné, hogy a különbözeti közötti hálózati késés a kiválasztott zónák belül, és a zónák közötti hálózati késés nem túl nagy. Ennek oka, hogy nem szeretné, hogy nagy változások, attól függően, hogy a feladat fut, a-zónát a DBMS-kiszolgálóval vagy a keresztben zónák, az üzleti folyamatokkal vagy kötegelt feladatok futtatása rendszerideje a. Különböző módszerekkel elfogadhatók, azonban nincs különbség a tényezők.
 
-Az aktív/aktív központi két zónában egy egyszerűsített séma nézhet:
+Az aktív/aktív központi két zónában egy egyszerűsített séma nézhet ki:
 
-![active_active_xone_deployment](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+![Aktív/aktív zóna üzembe helyezés](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
 
 A következő szempontokat kell figyelembe ehhez a konfigurációhoz:
 
-- Kezeli az Azure rendelkezésre állási zónák tartalék és frissítési tartományok az összes virtuális gép, mert a rendelkezésre állási csoportok nem telepíthetők az Azure rendelkezésre állási zónák
-- Az Azure load Balancer terheléselosztók használ a feladatátvevő fürtök, az SAP Central Services és az adatbázis-kezelő réteg kell lennie a [Standard Termékváltozatú terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Az alapszintű load balancer nem fog működni a zónák között
-- Az Azure virtuális hálózat és az alhálózatok, az SAP-rendszer üzemeltetéséhez telepített zónákban kiterjesztve tárolja. Ön **nem kell** külön az egyes zónák virtuális hálózatok
-- Minden virtuális gép központi telepítése, használata [Azure managed disks](https://azure.microsoft.com/services/managed-disks/). Nem felügyelt lemezek használata nem támogatott a zónaszintű központi telepítésekhez
-- Az Azure Premium storage vagy [Ultranagy SSD-tárolóval](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nem támogatnak bármilyen típusú tárreplikáció zónák között. Ennek eredményeképpen feladata az alkalmazás (adatbázis-kezelő vagy SAP Central Services) fontos adatok replikálása
-- Ugyanez vonatkozik a megosztott sapmnt könyvtár, amely egy megosztott lemezt (Windows), egy CIFS megosztáson (Windows), vagy az NFS-megosztások (Linux). Eljárás, amelyet a rendszer replikál egy megosztott lemez vagy fájlmegosztás a zónák közötti kell. Jelenleg a következő technológiákat támogatja:
-    - A Windows, egy adott megoldást, amely használja az SIOS Datakeeper leírtak szerint [egy SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürtre a fürt fürt megosztott lemez használatával az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk) támogatott zónák között
-    - SUSE Linux rendszeren az NFS-megosztási leírtak szerint beépített [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) támogatott
-    - Jelenleg a megoldás szolgáltatással Windows kibővített fájlkiszolgálókon (SOFS) leírtak szerint [előkészítése Azure-infrastruktúra az SAP az SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürt és a fájlmegosztást a magas rendelkezésre állású](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share) **zónák között nem támogatott**
-- A harmadik zónákban történik az SBD eszköz futtatására, abban az esetben létrehozhat egy [SUSE Linux-alapú támasztja fürt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) vagy további alkalmazáspéldányok
-- Futási idő-konzisztenciát a kritikus üzleti folyamatokat eléréséhez közvetlen egyes batch-feladatok és a felhasználók számára, amelyek a zónához alkalmazáspéldányok megpróbálhatja SAP Batch kiszolgálócsoportok, bejelentkezési vagy RFC csoportok használatával az aktív az adatbázis-kezelő példánnyal. Azonban a zónaszintű feladatátvétel kell ezeket a csoportokat manuálisan át futó virtuális gépek a-zónát az aktív DB Virtuálisgép-példányok.  
-- Döntse el, hogy szeretné-e inaktív párbeszédpanel példányaihoz kell helyeznie azonnal az előbbi erőforrás-kapacitása, ha egy részét az alkalmazáspéldányok által használt zóna nem működik a zónák mindegyikében üzembe helyezése
+- Akkor kezelje az Azure-beli rendelkezésre állási zónák tartalék és frissítési tartományok az összes virtuális gép, mert a rendelkezésre állási csoportok az Azure-beli rendelkezésre állási zónák nem telepíthető.
+- A terheléselosztók a feladatátvevő fürtök SAP Central Services és az adatbázis-kezelő rétegben kell használnia a [Standard Termékváltozat Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Az alapszintű Load Balancer több zónában nem fog működni.
+- Az Azure virtuális hálózat üzembe helyezett SAP-rendszerhez, és az alhálózatok, üzemeltetésére van nyújtva zónák között. Nem kell külön az egyes zónák virtuális hálózatok.
+- Az összes virtuális gépet telepít, meg kell használnia [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/). Nem felügyelt lemezek zónaszintű telepítések esetén nem támogatott.
+- Az Azure Premium Storage és [Ultranagy SSD-tárolóval](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nem támogatják a tárreplikáció bármilyen típusú zónák között. Az alkalmazás (adatbázis-kezelő vagy SAP Central Services) kell replikálni a fontos adatok.
+- Ugyanez igaz a megosztott sapmnt könyvtár, amely egy megosztott lemezt (Windows), egy CIFS megosztáson (Windows) vagy egy NFS-megosztás (Linux). Olyan technológia, amely replikálja ezeket olyan megosztott lemezzel vagy megosztások a zónák közötti használni kell. Ezek a technológiák támogatottak:
+    - A Windows, egy adott megoldást, amely használja az SIOS DataKeeper, dokumentált módon [egy SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürtre a fürt fürt megosztott lemez használatával az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
+    - SUSE Linux rendszeren az NFS-megosztási leírtak szerint beépített [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+    
+    Jelenleg a Microsoft Scale-Out File Server leírtak szerint használó megoldások [előkészítése Azure-infrastruktúra az SAP az SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürt és a fájlmegosztást a magas rendelkezésre állású](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nem támogatott zónák között.
+- A harmadik zónákban történik az SBD eszköz futtatására, abban az esetben létrehozhat egy [támasztja a SUSE Linux-fürt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) vagy további alkalmazáspéldányok.
+- Futási idő-konzisztenciát a kritikus üzleti folyamatokat eléréséhez közvetlen egyes batch-feladatok és a felhasználók számára, amelyek a zónához alkalmazáspéldányok megpróbálhatja az SAP DBMS aktív példányról a batch-kiszolgálócsoportok, bejelentkezési vagy RFC csoportok. Azonban a zónaszintű feladatátvétel esetén sem kell ezeket a csoportokat manuálisan át futó virtuális gépek, amelyek a zónához-példányok az aktív DB virtuális géppel.  
+- Előfordulhat, hogy szeretné az egyes zónák inaktív párbeszédpanel-példányok üzembe. Ez a engedélyezéséhez egy azonnali vissza a korábbi erőforrás-kapacitása, ha egy részét az alkalmazáspéldányok által használt zóna nem működik.
 
 
 ## <a name="activepassive-deployment"></a>Aktív/passzív üzembe helyezés
-Ha nem találja a hálózati késés belül egy zónát, és több zóna hálózati forgalom között egy elfogadható eltelt, telepítheti az architektúra van egy aktív/passzív karaktert, a SAP alkalmazás réteg szempontjából. Megadhat egy "aktív" zónában, amely a zóna, amelyen központi telepítését a teljes alkalmazás réteget, és ahol megkísérli futtatni a aktív az adatbázis-kezelő és az SAP Central Services példánynak egyaránt. Az ilyen konfiguráció akkor győződjön meg arról, extrém futási idő változata nem kell az üzleti tranzakciók és a kötegelt feladatok, függő, hogy a feladat fut-e a-zónát az aktív DBMS-példányt, vagy nem.
+Ha nem talál egy elfogadható különbözeti között egy zónán belül a hálózati késés és a zónák közötti hálózati forgalom késését, telepíthet egy olyan architektúra, amely rendelkezik egy aktív/passzív karaktert, a SAP alkalmazás réteg szempontjából. Megadhat egy *aktív* zónában a zóna kerül, ha a teljes alkalmazás réteg telepít, és megkísérli az aktív adatbázis-kezelő és az SAP Central Services-példányt is futtatni. Az ilyen konfiguráció kell, hogy nincs szélsőséges futási ideje változata létezik, attól függően, hogy a feladat fut, a zóna az aktív DBMS-példánnyal rendelkező vagy nem, az üzleti tranzakciók és a batch-feladatok.
 
-Az ilyen architektúra alapszintű elrendezését hasonlóan néz ki:
+Az alapszintű elrendezés az architektúra a következőhöz hasonló:
 
-![active_active_xone_deployment](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+![Aktív/passzív zónát üzembe helyezés](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
 
 A következő szempontokat kell figyelembe ehhez a konfigurációhoz:
 
-- A rendelkezésre állási csoportok nem telepíthető az Azure rendelkezésre állási zónákban. Ezért ebben az esetben tartozik egy frissítési és a tartalék tartomány az alkalmazásrétegre. Oka, hogy csak telepítik egy zónát. Ez a konfiguráció egy kis mértékben setback, a referencia-architektúra, amely úgy rendelkezik, hogy telepít-e az alkalmazási rétegre egy Azure rendelkezésre állási csoportban képest.
-- Az ilyen architektúra működő, kell végezzen alapos figyelést, és próbálja meg az aktív az adatbázis-kezelő és az SAP Central services-példányok az üzembe helyezett alkalmazás rétegként ugyanabban a zónában. SAP Central szolgáltatás vagy az adatbázis-kezelő példány feladatátvétel esetén győződjön meg arról, hogy manuálisan helyezésnél újra üzembe a zóna az SAP alkalmazásrétegre, amilyen hamar csak lehet telepítve a kívánt
-- Az Azure load Balancer terheléselosztók használ a feladatátvevő fürtök, az SAP Central Services és az adatbázis-kezelő réteg kell lennie a [Standard Termékváltozatú terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Az alapszintű load balancer nem fog működni a zónák között
-- Az Azure virtuális hálózat és az alhálózatok, az SAP-rendszer üzemeltetéséhez telepített zónákban kiterjesztve tárolja. Ön **nem kell** külön az egyes zónák virtuális hálózatok
-- Az összes virtuális gépet telepít, meg kell használnia [Azure managed disks](https://azure.microsoft.com/services/managed-disks/). Nem felügyelt lemezek használata nem támogatott a zónaszintű központi telepítésekhez
-- Az Azure Premium storage vagy [Ultranagy SSD-tárolóval](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nem támogatnak bármilyen típusú tárreplikáció zónák között. Ennek eredményeképpen feladata az alkalmazás (adatbázis-kezelő vagy SAP Central Services) fontos adatok replikálása
-- Ugyanez vonatkozik a megosztott sapmnt könyvtár, amely egy megosztott lemezt (Windows), egy CIFS megosztáson (Windows), vagy az NFS-megosztások (Linux). Eljárás, amelyet a rendszer replikál egy megosztott lemez vagy fájlmegosztás a zónák közötti kell. Jelenleg a következő technológiákat támogatja:
-    - A Windows, egy adott megoldást, amely használja az SIOS Datakeeper leírtak szerint [egy SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürtre a fürt fürt megosztott lemez használatával az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk) támogatott zónák között
-    - SUSE Linux rendszeren az NFS-megosztási leírtak szerint beépített [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) támogatott
-    - Jelenleg a megoldás szolgáltatással Windows kibővített fájlkiszolgálókon (SOFS) leírtak szerint [előkészítése Azure-infrastruktúra az SAP az SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürt és a fájlmegosztást a magas rendelkezésre állású](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share) **zónák között nem támogatott**
-- A harmadik zónákban történik az SBD eszköz futtatására, abban az esetben létrehozhat egy [SUSE Linux-alapú támasztja fürt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) vagy további alkalmazáspéldányok
-- A zóna hiba esetén az alkalmazás-erőforrások indul el (a egy adatbázis-kezelő szempontjából) a passzív zónát inaktív virtuális gépek üzembe helyezése
-    - Nem használhat [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) az aktív virtuális gépek replikálása az inaktív virtuális gépek zónák között. Nem sikerül teljesítéséhez egy adott függvény ezen a ponton a időben történő, Azure Site Recovery
-- Az automation, amely lehetővé teszi, hogy zóna meghibásodása, automatikus indítását a második zónában az SAP alkalmazásrétegre helyre költeni
+- A rendelkezésre állási csoportok az Azure-beli rendelkezésre állási zónák nem telepíthető. Tehát ebben az esetben tartozik egy frissítési és a tartalék tartomány az alkalmazásrétegre. Ennek oka az, egy zóna csak telepítik. Ez a konfiguráció, kívánatos valamivel kisebb, mint a referencia-architektúra, ami alapján, hogy telepít-e az alkalmazási rétegre egy Azure rendelkezésre állási csoportban.
+- Ez az architektúra használatakor kell szorosan állapotának figyelése és az aktív az adatbázis-kezelő és az SAP Central Services példány törekedjen az üzembe helyezett alkalmazás rétegként ugyanabban a zónában. SAP Central szolgáltatás vagy az adatbázis-kezelő példány feladatátvétel esetén érdemes győződjön meg arról, hogy manuálisan helyezésnél újra üzembe a zóna a SAP alkalmazás réteggel, a lehető leggyorsabban üzembe helyezve.
+- A terheléselosztók a feladatátvevő fürtök SAP Central Services és az adatbázis-kezelő rétegben kell használnia a [Standard Termékváltozat Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Az alapszintű Load Balancer több zónában nem fog működni.
+- Az Azure virtuális hálózat üzembe helyezett SAP-rendszerhez, és az alhálózatok, üzemeltetésére van nyújtva zónák között. Nem kell külön az egyes zónák virtuális hálózatok.
+- Az összes virtuális gépet telepít, meg kell használnia [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/). Nem felügyelt lemezek zónaszintű telepítések esetén nem támogatott.
+- Az Azure Premium Storage és [Ultranagy SSD-tárolóval](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nem támogatják a tárreplikáció bármilyen típusú zónák között. Az alkalmazás (adatbázis-kezelő vagy SAP Central Services) kell replikálni a fontos adatok.
+- Ugyanez igaz a megosztott sapmnt könyvtár, amely egy megosztott lemezt (Windows), egy CIFS megosztáson (Windows) vagy egy NFS-megosztás (Linux). Olyan technológia, amely replikálja ezeket olyan megosztott lemezzel vagy megosztások a zónák közötti használni kell. Ezek a technológiák támogatottak:
+    - A Windows, egy adott megoldást, amely használja az SIOS DataKeeper, dokumentált módon [egy SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürtre a fürt fürt megosztott lemez használatával az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
+    - SUSE Linux rendszeren az NFS-megosztási leírtak szerint beépített [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+    
+  Jelenleg a Microsoft Scale-Out File Server leírtak szerint használó megoldások [előkészítése Azure-infrastruktúra az SAP az SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürt és a fájlmegosztást a magas rendelkezésre állású](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nem támogatott zónák között.
+- A harmadik zónákban történik az SBD eszköz futtatására, abban az esetben létrehozhat egy [támasztja a SUSE Linux-fürt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) vagy további alkalmazáspéldányok.
+- Üzembe kell helyeznie a passzív inaktív virtuális gépeinek zóna (szempontból egy adatbázis-kezelő), így zóna hiba esetén az alkalmazás-erőforrások.
+    - [Az Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) jelenleg nem tudja aktív virtuális gépek replikálása az inaktív virtuális gépek zónák között. 
+- Az automation, amely lehetővé teszi, hogy zóna meghibásodása, automatikus indítását a második zónában az SAP alkalmazásrétegre kell fektet.
 
 ## <a name="combined-high-availability-and-disaster-recovery-configuration"></a>Magas rendelkezésre állású és vész-helyreállítási konfiguráció együttesen
-A Microsoft nem oszt meg semmilyen információt a létesítmények közötti földrajzi távolságtól a gazdagép másik Azure rendelkezésre állási zónák Azure-régióban. Annak ellenére, hogy ezt a tényt, az egyes ügyfelek egy kombinált magas rendelkezésre ÁLLÁS és Vészhelyreállítás konfigurációjához, amely szerint a zónák vannak kihasználva egy **R**helyreállítási **P**onthoz **O**bjective (RPO) értéke nulla. Ami azt jelenti, hogy kell nem vesznek el még akkor is, a vész-helyreállítási eset adatbázisban véglegesített tranzakciók. 
+A Microsoft a létesítmények közötti földrajzi távokat semmilyen információt nem osztja a gazdagép másik Azure rendelkezésre állási zónák egy Azure-régióban. Egyes ügyfeleink továbbra is, zónák egy kombinált magas rendelkezésre ÁLLÁS és Vészhelyreállítás konfigurációjához, amely szerint a nulla helyreállítási időkorlát (RPO) használ. Ez azt jelenti, hogy még katasztrófa utáni helyreállítás esetén adatbázisban véglegesített tranzakciók ne elvesznek. 
 
 > [!NOTE]
-> Ilyen konfiguráció ajánlott csak bizonyos körülmények között. Például esetekben, ahol adatok nem hagyhatják el az Azure-régió biztonsági és megfelelőségi okok miatt. 
+> Azt javasoljuk, hogy csak bizonyos körülmények között az ilyen konfiguráció használata. Például használhat, ha az adatok nem hagyhatják el az Azure-régióban a biztonsági vagy megfelelőségi okokból. 
 
-Milyen sebességgel nézhet például mutatják be ezt az ábrát:
+Íme egy példa milyen sebességgel nézhet ki:
 
-![combined_ha_dr_in_zones](./media/sap-ha-availability-zones/combined_ha_dr_in_zones.png)
+![A zónák a magas rendelkezésre állású DR kombinált](./media/sap-ha-availability-zones/combined_ha_dr_in_zones.png)
 
 A következő szempontokat kell figyelembe ehhez a konfigurációhoz:
 
-- Ön vagy feltételezve, hogy egy rendelkezésre állási zónát üzemeltető a létesítmények közötti jelentős távolságra van. Vagy egy bizonyos Azure-régióban maradjon, kényszerítve. A rendelkezésre állási csoportok nem telepíthető az Azure rendelkezésre állási zónákban. Ezért ebben az esetben befejezése esetén egy frissítési és a tartalék tartomány az alkalmazásréteg számára. Oka, hogy csak telepítik egy zónát. Ez az egy setback képest a referencia-architektúra, amely úgy rendelkezik, hogy telepít-e az alkalmazási rétegre egy Azure rendelkezésre állási csoportban.
-- Az ilyen architektúra működő, kell végezzen alapos figyelést, és próbálja meg az aktív az adatbázis-kezelő és az SAP Central services-példányok az üzembe helyezett alkalmazás rétegként ugyanabban a zónában. SAP Central szolgáltatás vagy az adatbázis-kezelő példány feladatátvétel esetén győződjön meg arról, hogy manuálisan helyezésnél újra üzembe a zóna az SAP alkalmazásrétegre, amilyen hamar csak lehet telepítve a kívánt
-- Éles környezetben az alkalmazáspéldányok a QA aktív alkalmazáspéldányok futtató virtuális gépek előre telepítve van.
-- A zónaszintű hiba esetén a QA alkalmazáspéldányok leállítja, majd indítsa el az éles példányokba helyette. Ne feledje, hogy együttműködik az alkalmazáspéldányok működnek virtuális nevét kell
-- Az Azure load Balancer terheléselosztók használ a feladatátvevő fürtök, az SAP Central Services és az adatbázis-kezelő réteg kell lennie a [Standard Termékváltozatú terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Az alapszintű load balancer nem fog működni a zónák között
-- Az Azure virtuális hálózat és az alhálózatok, az SAP-rendszer üzemeltetéséhez telepített zónákban kiterjesztve tárolja. Ön **nem kell** külön az egyes zónák virtuális hálózatok
-- Az összes virtuális gépet telepít, meg kell használnia [Azure managed disks](https://azure.microsoft.com/services/managed-disks/). Nem felügyelt lemezek használata nem támogatott a zónaszintű központi telepítésekhez
-- Az Azure Premium storage vagy [Ultranagy SSD-tárolóval](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nem támogatnak bármilyen típusú tárreplikáció zónák között. Ennek eredményeképpen feladata az alkalmazás (adatbázis-kezelő vagy SAP Central Services) fontos adatok replikálása
-- Ugyanez vonatkozik a megosztott sapmnt könyvtár, amely egy megosztott lemezt (Windows), egy CIFS megosztáson (Windows), vagy az NFS-megosztások (Linux). Eljárás, amelyet a rendszer replikál egy megosztott lemez vagy fájlmegosztás a zónák közötti kell. Jelenleg a következő technológiákat támogatja:
-    - A Windows, egy adott megoldást, amely használja az SIOS Datakeeper leírtak szerint [egy SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürtre a fürt fürt megosztott lemez használatával az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk) támogatott zónák között
-    - SUSE Linux rendszeren az NFS-megosztási leírtak szerint beépített [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) támogatott
-    - Ezen a ponton az időben, a szolgáltatással Windows kibővített fájlkiszolgálókon (SOFS) leírtak szerint megoldás [előkészítése Azure-infrastruktúra az SAP az SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürt és a fájlmegosztást a magas rendelkezésre állású](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share) **zónák között nem támogatott**
-- A harmadik zónákban történik az SBD eszköz futtatására, abban az esetben létrehozhat egy [SUSE Linux-alapú támasztja fürt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) vagy további alkalmazáspéldányok
+- Ön vagy feltételezi, hogy jelentős távolságra van egy rendelkezésre állási zónát üzemeltető a létesítmények közötti, vagy éppen kelljen egy bizonyos Azure-régióban maradjon. A rendelkezésre állási csoportok az Azure-beli rendelkezésre állási zónák nem telepíthető. Tehát ebben az esetben tartozik egy frissítési és a tartalék tartomány az alkalmazásrétegre. Ennek oka az, egy zóna csak telepítik. Ez a konfiguráció, kívánatos valamivel kisebb, mint a referencia-architektúra, ami alapján, hogy telepít-e az alkalmazási rétegre egy Azure rendelkezésre állási csoportban.
+- Ez az architektúra használatakor kell szorosan állapotának figyelése és az aktív az adatbázis-kezelő és az SAP Central Services példány törekedjen az üzembe helyezett alkalmazás rétegként ugyanabban a zónában. SAP Central szolgáltatás vagy az adatbázis-kezelő példány feladatátvétel esetén érdemes győződjön meg arról, hogy manuálisan helyezésnél újra üzembe a zóna a SAP alkalmazás réteggel, a lehető leggyorsabban üzembe helyezve.
+- Éles környezetben az alkalmazáspéldányok a QA aktív alkalmazáspéldányok futtató virtuális gépek előre telepítve kell lennie.
+- Egy zóna hiba esetén a QA alkalmazáspéldányok leállítja, majd indítsa el az éles példányokba helyette. Vegye figyelembe, hogy szeretné-e használni a virtuális nevét az alkalmazáspéldányok működnek.
+- A terheléselosztók a feladatátvevő fürtök SAP Central Services és az adatbázis-kezelő rétegben kell használnia a [Standard Termékváltozat Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Az alapszintű Load Balancer több zónában nem fog működni.
+- Az Azure virtuális hálózat üzembe helyezett SAP-rendszerhez, és az alhálózatok, üzemeltetésére van nyújtva zónák között. Nem kell külön az egyes zónák virtuális hálózatok.
+- Az összes virtuális gépet telepít, meg kell használnia [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/). Nem felügyelt lemezek zónaszintű telepítések esetén nem támogatott.
+- Az Azure Premium Storage és [Ultranagy SSD-tárolóval](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nem támogatják a tárreplikáció bármilyen típusú zónák között. Az alkalmazás (adatbázis-kezelő vagy SAP Central Services) kell replikálni a fontos adatok.
+- Ugyanez igaz a megosztott sapmnt könyvtár, amely egy megosztott lemezt (Windows), egy CIFS megosztáson (Windows) vagy egy NFS-megosztás (Linux). Olyan technológia, amely replikálja ezeket olyan megosztott lemezzel vagy megosztások a zónák közötti használni kell. Ezek a technológiák támogatottak:
+    - A Windows, egy adott megoldást, amely használja az SIOS DataKeeper, dokumentált módon [egy SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürtre a fürt fürt megosztott lemez használatával az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
+    - SUSE Linux rendszeren az NFS-megosztási leírtak szerint beépített [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+
+  Jelenleg a Microsoft Scale-Out File Server leírtak szerint használó megoldások [előkészítése Azure-infrastruktúra az SAP az SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürt és a fájlmegosztást a magas rendelkezésre állású](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nem támogatott zónák között.
+- A harmadik zónákban történik az SBD eszköz futtatására, abban az esetben létrehozhat egy [támasztja a SUSE Linux-fürt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) vagy további alkalmazáspéldányok.
 
 
 
 
 
 ## <a name="next-steps"></a>További lépések
-Ellenőrizze a következő lépések az Azure rendelkezésre állási zónában üzembe helyezéséhez:
+Az alábbiakban további lépések az Azure rendelkezésre állási zónában üzembe helyezéséhez:
 
 - [Egy Windows rendszerű feladatátvevő fürtre a fürt megosztott lemezt használ az Azure-ban a fürt egy SAP ASCS/SCS példányhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
 - [SAP magas rendelkezésre állás egy Windows feladatátvevő fürt és -fájlmegosztást az SAP ASCS/SCS-példányok Azure-infrastruktúra előkészítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)

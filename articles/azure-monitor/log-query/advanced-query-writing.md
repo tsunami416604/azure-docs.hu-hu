@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 4e5574fa5a615e43d94069a03716fa290b957342
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 401a8d527fc3a8d0430e7eff965b6f5e20db8dc0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993214"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268016"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Speciális lekérdezések az Azure monitorban írása
 
@@ -130,7 +130,7 @@ SecurityEvent
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a többi leckéket a [adatkezelő lekérdezési nyelv](/azure/kusto/query/) adatok naplózása az Azure Monitor szolgáltatással:
+Tekintse meg a többi leckéket a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) adatok naplózása az Azure Monitor szolgáltatással:
 
 - [Karakterlánc-műveletek](string-operations.md)
 - [Dátum és idő műveletek](datetime-operations.md)

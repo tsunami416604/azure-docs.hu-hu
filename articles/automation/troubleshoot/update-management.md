@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 01f72b8d41c1a973c7d187f519a43ce62929a23e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 0b92d36287646038d9195f7ba39352d8ced9a3b6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359357"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270266"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Az Update Management kapcsolatos hibák elhárítása
 
@@ -43,7 +43,11 @@ Ez a hiba oka lehet a következő okok miatt:
 #### <a name="resolution"></a>Megoldás:
 
 1. Látogasson el, [hálózattervezés](../automation-hybrid-runbook-worker.md#network-planning) további információt arról, hogy mely címeket és portokat engedélyezni kell, az Update Management működjön.
-2. Ha egy klónozott lemezképét, a sysprep lemezkép használatával először, és az MMA-ügynök telepítése után az a tény.
+2. Ha egy klónozott rendszerkép használatával:
+   1. A Log Analytics munkaterületén távolítsa el a virtuális gép számára a hatókör-konfigurációt a mentett keresés `MicrosoftDefaultScopeConfig-Updates`. Mentett keresések területen található **általános** a munkaterületén.
+   2. Futtassa a `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force` parancsot.
+   3. Futtatás `Restart-Service HealthService` újraindítani a `HealthService`. Ez hozza létre újra a kulcsot, és hozzon létre egy új UUID azonosítója.
+   4. Ha ez sem működik, a sysprep lemezkép az első és az MMA-ügynök telepítése után az a tény.
 
 ### <a name="multi-tenant"></a>Forgatókönyv: A társított előfizetés hibaüzenetet kapja, amikor a gépek a frissítéstelepítések létrehozásához egy másik Azure-bérlőhöz.
 

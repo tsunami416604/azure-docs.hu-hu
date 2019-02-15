@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 62f9d24204e734b7b5e2ed97f361ccf228ba89dc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5cddf69f700c971d22384dadb00d3becc4a8385f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005046"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300875"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Hogyan lehet lekérdezést adhat az Azure Search szolgáltatásban
 
@@ -22,14 +22,14 @@ Az Azure Search szolgáltatásban a lekérdezés egy oda-vissza művelet teljes 
 
 A lekérdezési kérést egy gazdag szerkezet, adja meg, melyik mezők a releváns, hogyan kereshet, melyik mezők adja vissza, hogy rendezésére és szűrésére, és így tovább. Nincs megadva, a lekérdezés fut kereshető mező alapján egy teljes szöveges keresési művelet egy tetszőleges sorrendben pontozás nélküli eredményhalmazt visszaadása.
 
-### <a name="apis-and-tools-for-testing"></a>API-k és tesztelési eszközök
+## <a name="apis-and-tools-for-testing"></a>API-k és tesztelési eszközök
 
 A következő táblázat felsorolja az API-k és a lekérdezések elküldése az eszköz-alapú megközelítéseken.
 
 | Módszer | Leírás |
 |-------------|-------------|
 | [A keresési ablak (portál)](search-explorer.md) | Itt egy keresősáv és a lehetőségek a kiválasztott index és api-verziót. A eredmény JSON-dokumentumok formájában. <br/>[Részletek](search-get-started-portal.md#query-index) | 
-| [Postman vagy más HTTP tesztelési eszköz](search-fiddler.md) | Azt ismerteti, hogyan állítható be egy HTTP-kérelem fejléce és a szervezet az Azure Search-lekérdezések küldési.  |
+| [Postman vagy a Fiddler](search-fiddler.md) | Webes tesztelési eszközök remek választásnak bizonyulnak az vonatkozókat REST-hívások. A REST API-t minden lehetséges művelet támogatja az Azure Search szolgáltatásban. Ebből a cikkből megtudhatja, hogyan állíthat be egy HTTP-kérelem fejléce és az Azure Search-küldési kérelmek törzsében.  |
 | [A SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Az Azure Search-index lekérdezése használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Dokumentumok keresése (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | GET vagy POST metódus az indexen, további bemeneti lekérdezési paraméterek használatával.  |
 
@@ -76,7 +76,7 @@ Egy mezőt az index attribútumainak az engedélyezett műveletek – állítsa 
 A fenti képernyőképen az index attribútumainak az ingatlan-mintához részleges listája. A teljes indexsémát a portálon is megtekintheti. Az index attribútumainak kapcsolatos további információkért lásd: [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 > [!Note]
-> Néhány lekérdezés funkció engedélyezve van, index kiterjedő helyett egy mezőnként könnyen. Ezek közé tartozik: [szinonimát térképek](https://docs.microsoft.com/rest/api/searchservice/synonym-map-operations), [egyéni elemzőket](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), [javaslattevő szerkezeteket (az automatikus kiegészítés és automatikus kiegészítés)](https://docs.microsoft.com/rest/api/searchservice/suggesters), [kiértékelési logika eredmények rangsorolása](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index).
+> Néhány lekérdezés funkció engedélyezve van, index kiterjedő helyett egy mezőnként könnyen. Ezek közé tartozik: [szinonimát térképek](search-synonyms.md), [egyéni elemzőket](index-add-custom-analyzers.md), [javaslattevő szerkezeteket (az automatikus kiegészítés és automatikus kiegészítés)](index-add-suggesters.md), [kiértékelési logika eredmények rangsorolása](index-add-scoring-profiles.md).
 
 ## <a name="elements-of-a-query-request"></a>A lekérdezési kérést elemei
 
@@ -94,9 +94,9 @@ Minden más keresési paraméterek nem kötelezők. Attribútumok teljes listáj
 
 ## <a name="choose-a-parser-simple--full"></a>Válasszon egy elemző: egyszerű |} teljes
 
-Az Azure Search helyezkedik el, az Apache Lucene felett, és annak eldöntésére, hogy két lekérdezést elemzők az általános és speciális lekérdezések között. Az egyszerű elemző-kérések dolgoznak ki használatával a [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search), a sebességet és a szabad formátumú szöveges lekérdezésekben hatékonyságának alapértelmezés szerint kijelölt. Ez a szintaxis számos gyakori keresési operátort, például az AND, OR, NOT, a kifejezés, utótag és prioritási operátorokat támogatja.
+Az Azure Search helyezkedik el, az Apache Lucene felett, és annak eldöntésére, hogy két lekérdezést elemzők az általános és speciális lekérdezések között. Az egyszerű elemző-kérések dolgoznak ki használatával a [egyszerű lekérdezési szintaxis](query-simple-syntax.md), a sebességet és a szabad formátumú szöveges lekérdezésekben hatékonyságának alapértelmezés szerint kijelölt. Ez a szintaxis számos gyakori keresési operátort, például az AND, OR, NOT, a kifejezés, utótag és prioritási operátorokat támogatja.
 
-A [teljes Lucene lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_syntax), engedélyezve van, amikor hozzáadja `queryType=full` a kérést, közzéteszi a részeként kifejlesztett, széles körben elfogadott, kifejező lekérdezési nyelv [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Teljes szintaxisra kiterjeszti az egyszerű szintaxis. Az egyszerű szintaxis írt minden lekérdezés a teljes Lucene-elemzőt alatt fut. 
+A [teljes Lucene lekérdezési szintaxis](query-Lucene-syntax.md#bkmk_syntax), engedélyezve van, amikor hozzáadja `queryType=full` a kérést, közzéteszi a részeként kifejlesztett, széles körben elfogadott, kifejező lekérdezési nyelv [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Teljes szintaxisra kiterjeszti az egyszerű szintaxis. Az egyszerű szintaxis írt minden lekérdezés a teljes Lucene-elemzőt alatt fut. 
 
 A következő példák bemutatják a pont: azonos lekérdezése, de különböző queryType beállítások, különböző eredményt adnak. Az első lekérdezés a `^3` a keresési kifejezés részeként kezeli.
 
@@ -118,16 +118,16 @@ Az Azure Search lekérdezési típusokra széles skáláját támogatja.
 
 | Lekérdezés típusa | Használat | Példák és további információ |
 |------------|--------|-------------------------------|
-| Szabad formátumú szöveges keresés | Keresési paramétert, és mindkét elemző| A teljes szöveges keresés megvizsgálja az összes egy vagy több feltételek *kereshető* az index, és a keresőmotor, például a Google vagy a Bing munka volna várt módon működik. A példában a bevezető a teljes szöveges keresés.<br/><br/>A teljes szöveges keresés épp szöveg elemzése, a standard Lucene-elemzőt használatával (alapértelmezés szerint) a kisbetűs összes feltételek, például az "a" remove-stopszavak. Felülbírálhatja az alapértelmezett [nem angol nyelvű elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support#analyzer-list) vagy [elemzők specializált](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable) szövegelemzés módosító. Például [kulcsszó](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , amely egy mező teljes tartalmát az egyes kezeli. Ez akkor hasznos, adatok, például a zip-kódok, azonosítók és bizonyos termékek neveit. | 
-| Szűrt keresése | [OData szűrési kifejezés](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search) és vagy elemző | Szűrő lekérdezés egy logikai kifejezés kiértékelése összes *szűrhető* index mezőire. Keres a szűrő-lekérdezés megegyezik a kisbetű/nagybetű megkülönböztetése a karakterlánc-mezők például mező pontos tartalmával kell. Egy másik különbség, hogy az OData-szűrőszintaxis ki, a szűrőlekérdezések. <br/>[Szűrési kifejezés példa](search-query-simple-examples.md#example-3-filter-queries) |
+| Szabad formátumú szöveges keresés | Keresési paramétert, és mindkét elemző| A teljes szöveges keresés megvizsgálja az összes egy vagy több feltételek *kereshető* az index, és a keresőmotor, például a Google vagy a Bing munka volna várt módon működik. A példában a bevezető a teljes szöveges keresés.<br/><br/>A teljes szöveges keresés épp szöveg elemzése, a standard Lucene-elemzőt használatával (alapértelmezés szerint) a kisbetűs összes feltételek, például az "a" remove-stopszavak. Felülbírálhatja az alapértelmezett [nem angol nyelvű elemzők](index-add-language-analyzers.md#language-analyzer-list) vagy [nyelvtől elemzők specializált](index-add-custom-analyzers.md#AnalyzerTable) szövegelemzés módosító. Például [kulcsszó](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , amely egy mező teljes tartalmát az egyes kezeli. Ez akkor hasznos, adatok, például a zip-kódok, azonosítók és bizonyos termékek neveit. | 
+| Szűrt keresése | [OData szűrési kifejezés](query-odata-filter-orderby-syntax.md) és vagy elemző | Szűrő lekérdezés egy logikai kifejezés kiértékelése összes *szűrhető* index mezőire. Keres a szűrő-lekérdezés megegyezik a kisbetű/nagybetű megkülönböztetése a karakterlánc-mezők például mező pontos tartalmával kell. Egy másik különbség, hogy az OData-szűrőszintaxis ki, a szűrőlekérdezések. <br/>[Szűrési kifejezés példa](search-query-simple-examples.md#example-3-filter-queries) |
 | Földrajzi keresés | [Edm.GeographyPoint típus](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a mezőt, a szűrőkifejezés és vagy elemző | Tároló-Edm.GeographyPoint kellene mezőt koordináták, a "Keresés a közelben" vagy a térképes keressen vezérlőket. <br/>[Földrajzi keresés példa](search-query-simple-examples.md#example-5-geo-search)|
 | Tartomány keresése | szűrési kifejezés, és egyszerű elemző | Az Azure Search szolgáltatásban lekérdezések beépített a szűrő paraméter használatával. <br/>[Példa a tartomány szűrő](search-query-simple-examples.md#example-4-range-filters) | 
-| [Mező-on belüli szűrése](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fields) | Keresési paramétert, és teljes elemző | Hozhat létre egy egyetlen mező célzó összetett lekérdezési kifejezésben. <br/>[Mező-on belüli szűrési példát](search-query-lucene-examples.md#example-2-intra-field-filtering) |
-| [intelligens keresést](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fuzzy) | Keresési paramétert, és teljes elemző | Megegyezik a hasonló konstrukció kellene vagy helyesírási feltételeket. <br/>[Intelligens keresést](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [közelségi keresésre](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_proximity) | Keresési paramétert, és teljes elemző | A dokumentum egymás közelében lévő keresése feltételek. <br/>[Közelségi keresés példa](search-query-lucene-examples.md#example-4-proximity-search) |
-| [kiemelési távú](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_termboost) | Keresési paramétert, és teljes elemző | Ha a gyorsított időszak alatt, viszonyítva, míg mások nem tartalmaz, rangsorolja a magasabb dokumentumot. <br/>[Kifejezés-kiemelés példa](search-query-lucene-examples.md#example-5-term-boosting) |
-| [reguláris kifejezés keresése](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_regex) | Keresési paramétert, és teljes elemző | Egyezés reguláris kifejezés tartalma alapján. <br/>[Reguláris kifejezés példa](search-query-lucene-examples.md#example-6-regex) |
-|  [helyettesítő karakteres vagy előtag keresése](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_wildcard) | Keresési paramétert, és teljes elemző | Egyezés alapján előtag és hullámos vonallal (`~`) vagy önálló karakter (`?`). <br/>[Helyettesítő karakteres keresés példa](search-query-lucene-examples.md#example-7-wildcard-search) |
+| [Mező-on belüli szűrése](query-lucene-syntax.md#bkmk_fields) | Keresési paramétert, és teljes elemző | Hozhat létre egy egyetlen mező célzó összetett lekérdezési kifejezésben. <br/>[Mező-on belüli szűrési példát](search-query-lucene-examples.md#example-2-intra-field-filtering) |
+| [intelligens keresést](query-lucene-syntax.md#bkmk_fuzzy) | Keresési paramétert, és teljes elemző | Megegyezik a hasonló konstrukció kellene vagy helyesírási feltételeket. <br/>[Intelligens keresést](search-query-lucene-examples.md#example-3-fuzzy-search) |
+| [közelségi keresésre](query-lucene-syntax.md#bkmk_proximity) | Keresési paramétert, és teljes elemző | A dokumentum egymás közelében lévő keresése feltételek. <br/>[Közelségi keresés példa](search-query-lucene-examples.md#example-4-proximity-search) |
+| [kiemelési távú](query-lucene-syntax.md#bkmk_termboost) | Keresési paramétert, és teljes elemző | Ha a gyorsított időszak alatt, viszonyítva, míg mások nem tartalmaz, rangsorolja a magasabb dokumentumot. <br/>[Kifejezés-kiemelés példa](search-query-lucene-examples.md#example-5-term-boosting) |
+| [reguláris kifejezés keresése](query-lucene-syntax.md#bkmk_regex) | Keresési paramétert, és teljes elemző | Egyezés reguláris kifejezés tartalma alapján. <br/>[Reguláris kifejezés példa](search-query-lucene-examples.md#example-6-regex) |
+|  [helyettesítő karakteres vagy előtag keresése](query-lucene-syntax.md#bkmk_wildcard) | Keresési paramétert, és teljes elemző | Egyezés alapján előtag és hullámos vonallal (`~`) vagy önálló karakter (`?`). <br/>[Helyettesítő karakteres keresés példa](search-query-lucene-examples.md#example-7-wildcard-search) |
 
 ## <a name="manage-search-results"></a>Keresési eredmények kezelése 
 
@@ -156,7 +156,7 @@ A keresési eredmények lapozásáról további információkat a [Keresési ere
 ### <a name="ordering-results"></a>Az eredmények rendezése
 A keresési lekérdezés eredményeinek fogadásakor kérheti, hogy az Azure Search az eredményeket egy adott mezőben lévő érték szerint rendezve szolgáltassa. Alapértelmezés szerint az Azure Search a keresési eredményeket az egyes dokumentumok keresési pontszáma szent rangsorolja, amelyet a [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) állományból származtat.
 
-Ha azt szeretné, hogy vissza a keresési pontszámtól eltérő érték szerint rendezve az eredményeket, használhatja az Azure Search a **`orderby`** keresési paramétert. Értékét megadhatja a **`orderby`** paraméter tartalmazza a mezőneveket és a hívások a [  **`geo.distance()` függvény** ](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search) térinformatikai értékek esetében. Minden egyes kifejezések után által `asc` jelzi, hogy eredményeket növekvő sorrendben az igényelt és **`desc`** jelzi, hogy az eredmények csökkenő sorrendben kérik. Alapértelmezés szerint a rangsorolás növekvő sorrendben történik.
+Ha azt szeretné, hogy vissza a keresési pontszámtól eltérő érték szerint rendezve az eredményeket, használhatja az Azure Search a **`orderby`** keresési paramétert. Értékét megadhatja a **`orderby`** paraméter tartalmazza a mezőneveket és a hívások a [  **`geo.distance()` függvény** ](query-odata-filter-orderby-syntax.md) térinformatikai értékek esetében. Minden egyes kifejezések után által `asc` jelzi, hogy eredményeket növekvő sorrendben az igényelt és **`desc`** jelzi, hogy az eredmények csökkenő sorrendben kérik. Alapértelmezés szerint a rangsorolás növekvő sorrendben történik.
 
 
 ### <a name="hit-highlighting"></a>Találatok kiemelése

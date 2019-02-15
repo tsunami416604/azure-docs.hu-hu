@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 04b3ebac6406f4a6e5ec07f1806b48e3b2062470
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 90431ea7649b38da6cbbd242b00c21278d8e8967
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235427"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268889"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Oktatóanyag: Feltétel használatához az Azure Resource Manager-sablonokban
 
@@ -35,8 +35,6 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Az erőforrások eltávolítása
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -154,6 +152,9 @@ New-AzResourceGroupDeployment `
     -newOrExisting $newOrExisting `
     -TemplateFile azuredeploy.json
 ```
+
+> [!NOTE]
+> Van egy fájl i/o-probléma az Azure PowerShell használatával a Cloud shellben.  A hibaüzenet *dinamikus paramétereit a parancsmag nem olvashatók be. "Azure:/azuredeploy.json" elérési út nem található, mert nem létezik.*  Egy ideiglenes áthidaló megoldás lehet, hogy nem tartalmazza a **- TemplateFile** kapcsolóval a `New-AzResourceGroupDeploy` parancsot. A parancs felszólítja, írja be a fájl nevét.
 
 > [!NOTE]
 > Az üzembe helyezés meghiúsul, ha a **newOrExisting** paraméter értéke **new**, de a megadott névvel rendelkező tárfiók már létezik.

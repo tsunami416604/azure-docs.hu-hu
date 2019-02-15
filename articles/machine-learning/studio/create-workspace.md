@@ -1,5 +1,5 @@
 ---
-title: Munkaterület létrehozása
+title: A Machine Learning Studio-munkaterület létrehozása
 titleSuffix: Azure Machine Learning Studio
 description: Azure Machine Learning Studio használatához kell rendelkeznie egy Machine Learning Studio-munkaterület. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
 services: machine-learning
@@ -10,24 +10,23 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 16c67c217c8ef33a360fd479a45317d6c42af494
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: bcd5b377f00ad43ff727c581471aad3ac651bdbb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486317"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270099"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Létrehozhat és megoszthat egy Azure Machine Learning Studio-munkaterület
 
 Azure Machine Learning Studio használatához kell rendelkeznie egy Machine Learning Studio-munkaterület. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
 
+## <a name="create-a-studio-workspace"></a>Studio-munkaterület létrehozása
 
-
-### <a name="to-create-a-workspace"></a>Munkaterület létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
     > [!NOTE]
-    > Jelentkezzen be, és hozzon létre egy munkaterületet, szüksége lehet az Azure-előfizetési rendszergazda. 
+    > Jelentkezzen be, és a Studio-munkaterület létrehozásához szüksége lehet az Azure-előfizetési rendszergazda. 
     >
     > 
 
@@ -40,9 +39,13 @@ Azure Machine Learning Studio használatához kell rendelkeznie egy Machine Lear
     - A *munkaterületnév* lehet, legfeljebb 260 karakternél, nem záró szóközzel. A neve nem tartalmazhatja a következő karaktereket: `< > * % & : \ ? + /`
     - A *webszolgáltatási csomag* , válasszon (vagy hozzon létre), valamint a társított *tarifacsomag* , válassza ki, akkor használatos, ha telepít webszolgáltatások erről a munkaterületről.
 
-    ![Új munkaterület létrehozása](./media/create-workspace/create-new-workspace.png)
+    ![Hozzon létre egy új Studio-munkaterülethez](./media/create-workspace/create-new-workspace.png)
 
 5. Kattintson a **Create** (Létrehozás) gombra.
+
+> [!NOTE]
+> A Machine Learning Studio menti a köztes adatokat, a munkafolyamat végrehajtása során biztosító Azure storage-fiókot használ. Után a munkaterület létrehozását, ha a tárfiókot törlik vagy módosítják a hívóbetűket, a munkaterület fog működni, és a munkaterület összes kísérletek sikertelenek lesznek.
+Ha véletlenül törli a storage-fiók, hozza létre újból a tárfiókot, a törölt tárfiókkal megegyező régióban ugyanazzal a névvel, és szinkronizálja újra a hívóbetűt. Ha módosította a tárfiók hozzáférési kulcsát, az Azure Portal használatával szinkronizálja újra a hozzáférési kulcsot a munkaterületen.
 
 A munkaterület üzembe helyezését követően nyissa meg azt a Machine Learning Studióban.
 
@@ -56,12 +59,12 @@ A munkaterület üzembe helyezését követően nyissa meg azt a Machine Learnin
 
     ![Nyissa meg kísérletek](./media/create-workspace/my-experiments.png)
 
-A munkaterület kezelésével kapcsolatos információkért lásd: [kezelése az Azure Machine Learning-munkaterület](manage-workspace.md).
-Ha a munkaterület létrehozása során hibát tapasztal, tekintse meg [hibaelhárítási útmutatója: Létrehozás és csatlakozás a Machine Learning-munkaterület](troubleshooting-creating-ml-workspace.md).
+Studio munkaterületét kezelésével kapcsolatos információkért lásd: [egy Azure Machine Learning Studio-munkaterület kezelése](manage-workspace.md).
+Ha a munkaterület létrehozása során hibát tapasztal, tekintse meg [hibaelhárítási útmutatója: Létrehozás és csatlakozás egy Machine Learning Studio-munkaterülethez](troubleshooting-creating-ml-workspace.md).
 
 
-## <a name="sharing-an-azure-machine-learning-workspace"></a>Az Azure Machine Learning-munkaterület megosztása
-Miután egy Machine Learning munkaterület létrehozása, felajánlhatja a felhasználóknak a munkaterületéhez megosztani a hozzáférést a munkaterület, és minden a kísérletek, adatkészletek, jegyzetfüzeteket stb. Hozzáadhat felhasználókat két szerepkör egyikében:
+## <a name="share-an-azure-machine-learning-studio-workspace"></a>Egy Azure Machine Learning Studio-munkaterület megosztása
+Miután egy Machine Learning Studio munkaterület jön létre, felajánlhatja a felhasználóknak a munkaterületéhez megosztani a hozzáférést a munkaterület, és minden a kísérletek, adatkészletek, jegyzetfüzeteket stb. Hozzáadhat felhasználókat két szerepkör egyikében:
 
 * **Felhasználói** -munkaterület felhasználó is létrehozni, nyissa meg a, módosításához és törléséhez kísérletek, adatkészletek, stb. a munkaterületen.
 * **Tulajdonos** – meghívhatja a tulajdonosa, és felhasználók eltávolítása a felhasználó milyen mellett a munkaterületen teheti meg.
@@ -71,7 +74,7 @@ Miután egy Machine Learning munkaterület létrehozása, felajánlhatja a felha
 > 
 > 
 
-### <a name="to-share-a-workspace"></a>A munkaterület megosztása
+### <a name="to-share-a-studio-workspace"></a>Studio-munkaterület megosztása
 
 1. Jelentkezzen be a Machine Learning Studióba [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 

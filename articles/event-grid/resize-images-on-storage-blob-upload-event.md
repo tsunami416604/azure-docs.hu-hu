@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: b3ddaf7667baf98d9d5daa93a3106e457d0aeacb
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0bd602ff6c6d42730439dac2b898899b07dcb2cc
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756869"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301451"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: Feltöltött képek átméretezésének automatizálása az Event Grid használatával
 
@@ -27,7 +27,19 @@ Ez az oktatóanyag a Storage oktatóanyag-sorozat második része. Kibővíti az
 
 Az Azure CLI és az Azure Portal segítségével hozzáadja az átméretezési funkciót egy meglévő képfeltöltő alkalmazáshoz.
 
-![Közzétett webalkalmazás az Microsoft Edge böngésző](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+
+![Közzétett webes alkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+
+![Közzétett webes alkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+![Közzétett webes alkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+
+---
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -46,10 +58,6 @@ El kell végeznie az előző Blob storage oktatóanyagot: [A felhőben az Azure 
 
 Ha korábban még nem regisztrálta az Event Grid erőforrás-szolgáltatót az előfizetésében, mindenképp regisztrálja.
 
-```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.EventGrid
-```
-
 ```azurecli-interactive
 az provider register --namespace Microsoft.EventGrid
 ```
@@ -62,33 +70,30 @@ Ha nem a Cloud Shellt használja, először be kell jelentkeznie a(z) `az login`
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
-Az Azure Functions szolgáltatásnak egy általános célú tárfiókra van szüksége. Az [az storage account create](/cli/azure/storage/account#az-storage-account-create) paranccsal hozzon létre egy külön, általános célú tárfiókot az erőforráscsoportban.
-
-A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. 
-
-A következő parancsban a `<general_storage_account>` helyőrző helyett írja be az általános célú tárfiók saját globálisan egyedi tárfióknevét. 
+Az Azure Functions szolgáltatásnak egy általános célú tárfiókra van szüksége. Mellett a Blob storage-fiókban az előző oktatóanyagban létrehozott egy különálló, általános célú tárfiók a használatával hozható létre az erőforráscsoportot a [az tárfiók létrehozása](/cli/azure/storage/account) parancsot. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. 
 
 1. Állítsa be egy változót, amely az előző oktatóanyagban létrehozott erőforráscsoport nevét tárolja. 
 
     ```azurecli-interactive
-    resourceGroupName=<Name of the resource group that you created in the previous tutorial>
+    resourceGroupName=myResourceGroup
     ```
-2. Állítson be egy változót, amely az Azure-függvény feltétele, hogy a tárfiók nevére. 
+2. Állítson be egy változót az Azure Functions igénylő új tárfiók nevére. 
 
     ```azurecli-interactive
-    functionstorage=<name of the storage account to be used by function>
+    functionstorage=<name of the storage account to be used by the function>
     ```
-3. A storage-fiókját az Azure-függvény létrehozása. Ez eltér a képeket tartalmazó a storage-ból. 
+3. A storage-fiókját az Azure-függvény létrehozása. 
 
     ```azurecli-interactive
-    az storage account create --name $functionstorage --location eastus --resource-group $resourceGroupName --sku Standard_LRS --kind storage
+    az storage account create --name $functionstorage --location southeastasia \
+    --resource-group $resourceGroupName --sku Standard_LRS --kind storage
     ```
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása  
 
-Rendelkeznie kell egy függvényalkalmazással a függvény végrehajtásának biztosításához. A függvényalkalmazás szolgáltat környezetet a függvénykód kiszolgáló nélküli végrehajtásához. Hozzon létre egy függvényalkalmazást az [az functionapp create](/cli/azure/functionapp#az-functionapp-create) parancs használatával. 
+Rendelkeznie kell egy függvényalkalmazással a függvény végrehajtásának biztosításához. A függvényalkalmazás szolgáltat környezetet a függvénykód kiszolgáló nélküli végrehajtásához. Hozzon létre egy függvényalkalmazást az [az functionapp create](/cli/azure/functionapp) parancs használatával. 
 
-A következő parancsban a `<function_app>` helyőrző helyett írja be a saját, egyedi függvényalkalmazás-nevét. A függvényalkalmazás nevét a rendszer a függvényalkalmazás alapértelmezett DNS-tartományának részeként használja, ezért egyedinek kell lennie az Azure összes alkalmazásában. `<general_storage_account>` esetében helyettesítse be a létrehozott általános tárfiók nevét.
+A következő parancsot adja meg a saját egyedi függvényalkalmazás-nevét. A függvényalkalmazás nevét a rendszer a függvényalkalmazás alapértelmezett DNS-tartományának részeként használja, ezért egyedinek kell lennie az Azure összes alkalmazásában. 
 
 1. Adjon meg egy nevet, a függvényalkalmazás, létre kell hozni. 
 
@@ -98,29 +103,62 @@ A következő parancsban a `<function_app>` helyőrző helyett írja be a saját
 2. Az Azure-függvény létrehozása. 
 
     ```azurecli-interactive
-    az functionapp create --name $functionapp --storage-account  $functionstorage --resource-group $resourceGroupName --consumption-plan-location eastus
+    az functionapp create --name $functionapp --storage-account $functionstorage \
+    --resource-group $resourceGroupName --consumption-plan-location southeastasia
     ```
 
 Most konfigurálnia kell a függvényalkalmazást, hogy csatlakozzon az [előző oktatóanyagban][previous-tutorial] létrehozott Blob Storage-fiókhoz.
 
 ## <a name="configure-the-function-app"></a>A függvényalkalmazás konfigurálása
 
-A függvénynek szüksége van arra, hogy a kapcsolati sztring csatlakozzon a Blob Storage-fiókhoz. A függvénykód, amelyet a következő lépésben helyez üzembe az Azure-ban, megkeresi a myblobstorage_STORAGE alkalmazás-beállításban lévő kapcsolati sztringet, és megkeresi a miniatűrtároló nevét a myContainerName alkalmazásbeállításban. Kérje le a kapcsolati sztringet az [az storage account show-connection-string](/cli/azure/storage/account) paranccsal. Adja meg az alkalmazásbeállításokat az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) paranccsal.
+A függvénynek szüksége van a hitelesítő adatokat a Blob storage-fiók, amelyre kerülnek, a függvény használatával az alkalmazás beállításait a [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) parancsot.
 
-Az alábbi parancssori felületi parancsokban a `<blob_storage_account>` az előző oktatóanyagban létrehozott Blob Storage-fiók neve.
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-1. A storage-fiók, amely tartalmazza a rendszerképek a kapcsolati sztring lekérése. 
+```azurecli-interactive
+blobStorageAccount=<name of the Blob storage account you created in the previous tutorial>
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
+--name $blobStorageAccount --query connectionString --output tsv)
 
-    ```azurecli-interactive
-    storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
-    ```
-2. A függvényalkalmazás konfigurálása. 
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName \
+--settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails \
+THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+```
 
-    ```azurecli-interactive
-    az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
-    ```
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
 
-    A `FUNCTIONS_EXTENSION_VERSION=~2` beállítással a függvényalkalmazás az Azure Functions futtatókörnyezet 2.x-es verzióján fut.
+```azurecli-interactive
+blobStorageAccount=<name of the Blob storage account you created in the previous tutorial>
+
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
+--name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName \
+--settings AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString \
+THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+```
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+```azurecli-interactive
+blobStorageAccount=<name of the Blob storage account you created in the previous tutorial>
+
+blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
+-n $blobStorageAccount --query [0].value --output tsv)
+
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
+--name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName \
+--settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails \
+AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
+AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey \
+AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+```
+
+---
+
+A `FUNCTIONS_EXTENSION_VERSION=~2` beállítással a függvényalkalmazás az Azure Functions futtatókörnyezet 2.x-es verzióján fut.
 
 Most már üzembe helyezhet egy függvénykód-projektet a függvényalkalmazásban.
 
@@ -128,23 +166,30 @@ Most már üzembe helyezhet egy függvénykód-projektet a függvényalkalmazás
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-A C#-szkript- (.csx) átméretezési minta elérhető a [GitHubon](https://github.com/Azure-Samples/function-image-upload-resize). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) paranccsal. 
-
-Az alábbi parancsban `<function_app>` a korábban létrehozott függvényalkalmazás neve.
+A minta C# átméretezési funkció érhető el a [GitHub](https://github.com/Azure-Samples/function-image-upload-resize). Ez a kód projekt telepítése a függvényalkalmazás használatával a [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) parancsot. 
 
 ```azurecli-interactive
 az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName --branch master --manual-integration --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+
 A minta Node.js-átméretezési függvény elérhető a [GitHubon](https://github.com/Azure-Samples/storage-blob-resize-function-node). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) paranccsal.
 
-Az alábbi parancsban `<function_app>` a korábban létrehozott függvényalkalmazás neve.
+```azurecli-interactive
+az functionapp deployment source config --name $functionapp \
+--resource-group $resourceGroupName --branch master --manual-integration \
+--repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node
+```
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+A minta Node.js-átméretezési függvény elérhető a [GitHubon](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) paranccsal.
 
 ```azurecli-interactive
-az functionapp deployment source config --name <function_app> \
---resource-group myResourceGroup --branch master --manual-integration \
---repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node
+az functionapp deployment source config --name $functionapp \
+--resource-group $resourceGroupName --branch master --manual-integration \
+--repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
 ---
 
@@ -152,10 +197,22 @@ A kép átméretezése függvényt az Event Grid szolgáltatásból küldött HT
 
 Az Event Grid-értesítésből a függvénynek átadott adatok között megtalálható a blob URL-címe. Ezt az URL-címet ezután az eseményindító átadja a bemeneti kötésnek a feltöltött kép Blob Storage-ból való lekéréséhez. A függvény létrehoz egy miniatűrt, és a Blob Storage egyik külön tárolójába írja az eredményül kapott streamet. 
 
-A projekt az `EventGridTrigger` típusú eseményindítót használja. Az általános HTTP-eseményindítók helyett az Event Grid eseményindító használata ajánlott. Az Event Grid automatikusan érvényesíti az Event Grid függvény eseményindítóit. Általános HTTP-eseményindítók esetén meg kell valósítani az [érvényesítési választ](security-authentication.md#webhook-event-delivery).
+A projekt az `EventGridTrigger` típusú eseményindítót használja. Az általános HTTP-eseményindítók helyett az Event Grid eseményindító használata ajánlott. Az Event Grid automatikusan érvényesíti az Event Grid függvény eseményindítóit. Általános HTTP-eseményindítók esetén meg kell valósítani az [érvényesítési választ](security-authentication.md).
 
-A függvénnyel kapcsolatos további tudnivalókért tekintse meg a [function.json és run.csx fájlt](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/imageresizerfunc).
- 
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+
+A függvénnyel kapcsolatos további tudnivalókért tekintse meg a [function.json és run.csx fájlt](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions).
+
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+
+A függvénnyel kapcsolatos további tudnivalókért lásd: a [function.json és az index.js fájlt](https://github.com/Azure-Samples/storage-blob-resize-function-node/tree/master/Thumbnail).
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+A függvénnyel kapcsolatos további tudnivalókért lásd: a [function.json és az index.js fájlt](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
+
+---
+
 A függvény projektkódját a rendszer közvetlenül a nyilvános mintaadattárból helyezi üzembe. További információk az Azure Functions üzembe helyezési lehetőségeiről: [Azure Functions – folyamatos üzembe helyezés](../azure-functions/functions-continuous-deployment.md).
 
 ## <a name="create-an-event-subscription"></a>Esemény-előfizetés létrehozása
@@ -197,11 +254,25 @@ Most, hogy konfigurálta a háttérszolgáltatásokat, tesztelni fogja a képát
 
 A képátméretezés webalkalmazásban való teszteléséhez nyissa meg a közzétett alkalmazás URL-címét. A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.
 
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+
 Kattintson a **Fényképek feltöltése** területre egy fájl kiválasztásához és feltöltéséhez. Fényképet is behúzhat a területre. 
 
 Figyelje meg, hogy miután a feltöltött kép eltűnik, a feltöltött kép másolata megjelenik a **Létrehozott miniatűrök** nevű forgó képválasztón. A függvény átméretezte a képet, hozzáadta a *miniatűrök* tárolóhoz, a webes ügyfél pedig letöltötte a képet.
 
-![Közzétett webalkalmazás az Microsoft Edge böngésző](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
+![Közzétett webes alkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+
+Kattintson a **fájl kiválasztása** jelöljön ki egy fájlt, majd kattintson a **kép feltöltése**. Ha a feltöltés sikeres volt, egy sikeres lapra navigál. Kattintson a hivatkozásra kattintva térjen vissza a kezdőlapon. A feltöltött kép másolata megjelenik a **létrehozott miniatűrök** területen. (Ha a kép nem jelenik meg először, próbálja meg újból az oldal.) A függvény átméretezte a képet, hozzáadta a *miniatűrök* tárolóhoz, a webes ügyfél pedig letöltötte a képet.
+
+![Közzétett webes alkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+Kattintson a **fájl kiválasztása** jelöljön ki egy fájlt, majd kattintson a **kép feltöltése**. Ha a feltöltés sikeres volt, egy sikeres lapra navigál. Kattintson a hivatkozásra kattintva térjen vissza a kezdőlapon. A feltöltött kép másolata megjelenik a **létrehozott miniatűrök** területen. (Ha a kép nem jelenik meg először, próbálja meg újból az oldal.) A függvény átméretezte a képet, hozzáadta a *miniatűrök* tárolóhoz, a webes ügyfél pedig letöltötte a képet.
+
+![Közzétett webes alkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 ## <a name="next-steps"></a>További lépések
 

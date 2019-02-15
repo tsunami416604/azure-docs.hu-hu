@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
 ms.author: sogup
-ms.openlocfilehash: d0fac3a075923b000c453480edbf18599f5fed3d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 118e32994ed6471c52726e826ecfd42620bd3a91
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994897"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269586"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése
 
@@ -216,4 +216,6 @@ Egy virtuális gépen, a biztonsági mentési adatok törlése a *biztonsági me
     Egy értesítési üzenet jelzi, a biztonsági mentési adatok törölve lett.
 
 ## <a name="next-steps"></a>További lépések
-Hozza létre újra a virtuális gép helyreállítási pontból információkért tekintse meg [visszaállítása az Azure virtuális gépek](backup-azure-arm-restore-vms.md). Ha a virtuális gépek védelme információra van szüksége, tekintse meg [első lépések: Recovery Services-tároló virtuális gépek biztonsági mentése](backup-azure-vms-first-look-arm.md). Események figyelésével kapcsolatos további információkért lásd: [Azure virtuális gépek biztonsági másolataival kapcsolatos riasztások figyelése](backup-azure-monitor-vms.md).
+* Hozza létre újra a virtuális gép helyreállítási pontból információkért tekintse meg [visszaállítása az Azure virtuális gépek](backup-azure-arm-restore-vms.md).
+* Ha a virtuális gépek védelme információra van szüksége, tekintse meg [első lépések: Recovery Services-tároló virtuális gépek biztonsági mentése](backup-azure-vms-first-look-arm.md).
+* Események figyelésével kapcsolatos további információkért lásd: [Azure virtuális gépek biztonsági másolataival kapcsolatos riasztások figyelése](backup-azure-monitor-vms.md).

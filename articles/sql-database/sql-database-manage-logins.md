@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 34c7d431815ae7a9452bb0703cde18050d38bdb7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b12fdcec32aca65b0c66f6a3fb14595453d36fdb
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164617"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301757"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Szabályozása és adatbázis-hozzáférés biztosítása az SQL Database és SQL Data warehouse-bA
 
@@ -84,9 +84,9 @@ A korábban már tárgyalt kiszolgálószintű rendszergazdai szerepkörökön k
 
 ### <a name="database-creators"></a>Adatbázis-létrehozók
 
-Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerepkör tagjai létrehozhatnak új adatbázisokat. A szerepkör használatához hozzon létre egy felhasználót az `master` adatbázisban, majd adja hozzá a felhasználót a **dbmanager** adatbázis-szerepkörhöz. Adatbázis létrehozásához a felhasználónak SQL Server-bejelentkezésen alapuló felhasználónak kell lennie a master adatbázisban, vagy Azure Active Directory-felhasználón alapuló tartalmazottadatbázis-felhasználónak kell lennie.
+Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerepkör tagjai létrehozhatnak új adatbázisokat. A szerepkör használatához hozzon létre egy felhasználót az `master` adatbázisban, majd adja hozzá a felhasználót a **dbmanager** adatbázis-szerepkörhöz. Hozzon létre egy adatbázist, hogy a felhasználónak kell lennie az SQL Server-bejelentkezésen alapuló felhasználó a `master` adatbázis vagy tartalmazottadatbázis-felhasználó egy Azure Active Directory-felhasználó alapján.
 
-1. Egy rendszergazdai fiókkal csatlakozzon a master adatbázishoz.
+1. Egy rendszergazdai fiókkal csatlakozik a `master` adatbázis.
 2. Hozzon létre egy SQL Server-hitelesítési bejelentkezést használ az [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) utasítást. Mintautasítás:
 
    ```sql
@@ -98,7 +98,7 @@ Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerep
 
    A teljesítmény javítása érdekében a bejelentkezéseket (a kiszolgálószintű elsődleges fiókokat) átmenetileg adatbázisszinten is gyorsítótárazza a rendszer. A hitelesítési gyorsítótár frissítésével kapcsolatban lásd a [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx) használatát ismertető cikket.
 
-3. A master adatbázisban hozzon létre egy felhasználót a [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) utasítással. A felhasználó Azure Active Directory-hitelesítésű tartalmazottadatbázis-felhasználó lehet (ha az Azure AD-hitelesítéshez konfigurálta a környezetét), vagy egy SQL Server-hitelesítésű tartalmazottadatbázis-felhasználó, illetve egy SQL Server-hitelesítésű felhasználó, az SQL Server-hitelesítési bejelentkezéstől függően (amelyet az előző lépésben hozott létre). Mintautasítások:
+3. Az a `master` adatbázisra, és hozzon létre egy felhasználót a használatával a [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) utasítást. A felhasználó Azure Active Directory-hitelesítésű tartalmazottadatbázis-felhasználó lehet (ha az Azure AD-hitelesítéshez konfigurálta a környezetét), vagy egy SQL Server-hitelesítésű tartalmazottadatbázis-felhasználó, illetve egy SQL Server-hitelesítésű felhasználó, az SQL Server-hitelesítési bejelentkezéstől függően (amelyet az előző lépésben hozott létre). Mintautasítások:
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -106,7 +106,7 @@ Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerep
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Adja az új felhasználót a **dbmanager** adatbázis-szerepkörhöz az [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx) utasítással. Mintautasítások:
+4. Az új felhasználó hozzáadása a a **dbmanager** szerepkörének `master` használatával a [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx) utasítást. Mintautasítások:
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary; 
@@ -118,7 +118,7 @@ Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerep
 
 5. Szükség esetén konfiguráljon egy tűzfalszabályt úgy, hogy az új felhasználó csatlakozhasson. (Előfordulhat, hogy az új felhasználóra már vonatkozik létező tűzfalszabály.)
 
-Most a felhasználó már csatlakozhat a master adatbázishoz, és létrehozhat új adatbázisokat. Az adatbázist létrehozó fiók az adatbázis tulajdonosává válik.
+Most a felhasználó csatlakozhat a `master` adatbázis, és létrehozhat új adatbázisokat. Az adatbázist létrehozó fiók az adatbázis tulajdonosává válik.
 
 ### <a name="login-managers"></a>Bejelentkezéskezelők
 
@@ -141,11 +141,19 @@ A kezdetekben csak a rendszergazdák vagy az adatbázis tulajdonosa hozhat létr
 GRANT ALTER ANY USER TO Mary;
 ```
 
-Ha további felhasználóknak szeretne teljes elérést biztosítani az adatbázishoz, tegye őket a **db_owner** rögzített adatbázis-szerepkör tagjává az `ALTER ROLE` utasítással.
+Az adatbázis teljes hozzáférést biztosít a további felhasználóknak, adja hozzá őket a **db_owner** rögzített adatbázis-szerepkör.
+
+Az Azure SQL Database használata a `ALTER ROLE` utasítást.
 
 ```sql
-ALTER ROLE db_owner ADD MEMBER Mary; 
+ALTER ROLE db_owner ADD MEMBER Mary;
 ```
+
+Az Azure SQL Data Warehouse használata [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
+```sql
+EXEC sp_addrolemember 'db_owner', 'Mary';
+```
+
 
 > [!NOTE]
 > Hozzon létre egy felhasználót egy SQL Database kiszolgálói bejelentkezésen alapuló egyik gyakori oka van, a felhasználók számára, akiknek több adatbázishoz kell hozzáférniük. Mivel a tartalmazott adatbázis-felhasználók önálló entitások, minden egyes adatbázis kezeli a saját felhasználó és a saját jelszavát. Ez terhelést okozhat, a felhasználó akkor ne feledje az egyes adatbázisokhoz minden jelszót, és válhat tarthatatlan során számos adatbázis több jelszó módosítani kellene. Azonban az SQL Server bejelentkezési és a magas rendelkezésre állású (aktív georeplikációs és feladatátvételi csoportok) használata esetén az SQL Server bejelentkezési állítson be manuálisan minden egyes kiszolgálón. Ellenkező esetben az adatbázis-felhasználó már nem kell hozzárendelni a kiszolgálói bejelentkezésen után feladatátvétel történik, és nem fogja tudni elérni az adatbázis-feladatátvétel után. Bejelentkezések a georeplikáció konfigurálásáról további információért tekintse meg [konfigurálása és kezelése az Azure SQL Database biztonsági geo-visszaállítás vagy a feladatátvételi](sql-database-geo-replication-security-config.md).

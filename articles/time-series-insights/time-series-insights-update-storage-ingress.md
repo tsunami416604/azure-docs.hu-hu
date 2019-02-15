@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: f0326e6f05f44b5f2c4416a1c1db09bc5816a297
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6f0002c6aa98aaaddf50e4aac8929e8ddd379fd8
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558311"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301672"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Az adattárolás és a bejövő forgalom az Azure Time Series Insights előzetes verziója
 
@@ -189,7 +189,7 @@ Time Series Insights előzetes verziója egy blob-méret optimalizálása strat�
 
 ### <a name="scale"></a>Méretezés
 
-Time Series Insights előzetes verziója támogatja a legfeljebb 6 megabit / másodperc (Mbps) környezetenként egy kezdeti bejövő méretezési csoporthoz. Továbbfejlesztett skálázási támogatást folyamatban. Tervezzük frissíteni, hogy ezek a fejlesztések dokumentációnkat.
+Time Series Insights előzetes verziója egy kezdeti bejövő forgalom mértéke legfeljebb 6 Mega bájt / másodperc (Mbps) környezetenként támogatja. Továbbfejlesztett skálázási támogatást folyamatban. Tervezzük frissíteni a dokumentációban, hogy ezek a fejlesztések
 
 ## <a name="next-steps"></a>További lépések
 

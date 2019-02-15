@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 98d2d3a54ff2f0c4ef326f8aae26e5ba8845d603
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 04d7bfcf0527b490bc18f6d85977d899823d5e69
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882337"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301876"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
@@ -41,19 +41,19 @@ Az alábbi listában szereplő V2 és V3 módszerek a v3-as módszerek és API-k
 
 | V2 API-metódus   | V3 API-kompatibilitás |
 |:----------- |:-------------|
-| Translate     | [Fordítása](reference/v3-0-translate.md)          |
-| TranslateArray      | [Fordítása](reference/v3-0-translate.md)        |
-| GetLanguageNames      | [Nyelvek](reference/v3-0-languages.md)         |
-| GetLanguagesForTranslate     | [Nyelvek](reference/v3-0-languages.md)       |
-| GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| Speak     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Detect     | [Észlelése](reference/v3-0-detect.md)         |
-| DetectArray     | [Észlelése](reference/v3-0-detect.md)         |
-| AddTranslation     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| AddTranslationArray    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
-| BreakSentences      | [BreakSentence](reference/v3-0-break-sentence.md)       |
-| GetTranslations      | A szolgáltatás már nem támogatott.         |
-| GetTranslationsArray      | A szolgáltatás már nem támogatott.         |
+| `Translate`     | [Fordítása](reference/v3-0-translate.md)          |
+| `TranslateArray`      | [Fordítása](reference/v3-0-translate.md)        |
+| `GetLanguageNames`      | [Nyelvek](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [Nyelvek](reference/v3-0-languages.md)       |
+| `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
+| `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `Detect`     | [Észlelése](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Észlelése](reference/v3-0-detect.md)         |
+| `AddTranslation`     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
+| `AddTranslationArray`    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
+| `GetTranslations`      | A szolgáltatás már nem támogatott.         |
+| `GetTranslationsArray`      | A szolgáltatás már nem támogatott.         |
 
 ## <a name="move-to-json-format"></a>Helyezze át, JSON-formátumban
 
@@ -75,12 +75,12 @@ A Microsoft Translator V3 V2 díjszabása volt; ugyanúgy díjszabása karaktere
 
 | V3 metódus   | Karakterek számlázásban is megjelenik |
 |:----------- |:-------------|
-| Languages     | Egyetlen elküldött karakter, nincs számításba, díjmentesen.          |
-| Translate     | Száma alapján hány karaktert elküldése fordítás, és hány nyelvek a karakterek fordítja. elküldött 50 karakter hosszú lehet, és 5 nyelvek kért 50 x 5.           |
-| Transliterate     | Számoljuk el átbetűzésű-karakterek száma.         |
-| Dictionary lookup &amp; example     | Számoljuk el szótár keresés és a példák-karakterek száma.         |
-| BreakSentence     | Díjmentes.       |
-| Detect     | Díjmentes.      |
+| `Languages`     | Egyetlen elküldött karakter, nincs számításba, díjmentesen.          |
+| `Translate`     | Száma alapján hány karaktert elküldése fordítás, és hány nyelvek a karakterek fordítja. elküldött 50 karakter hosszú lehet, és 5 nyelvek kért 50 x 5.           |
+| `Transliterate`     | Számoljuk el átbetűzésű-karakterek száma.         |
+| `Dictionary lookup & example`     | Számoljuk el szótár keresés és a példák-karakterek száma.         |
+| `BreakSentence`     | Díjmentes.       |
+| `Detect`     | Díjmentes.      |
 
 ## <a name="v3-end-points"></a>V3 végpontok
 
@@ -88,22 +88,21 @@ Globális
 
 * api.cognitive.microsofttranslator.com
 
-
 ## <a name="v3-api-text-translations-methods"></a>V3 API szöveg fordítások módszerek
 
-[Nyelvek](reference/v3-0-languages.md)
+[`Languages`](reference/v3-0-languages.md)
 
-[Fordítása](reference/v3-0-translate.md)
+[`Translate`](reference/v3-0-translate.md)
 
-[Átírás](reference/v3-0-transliterate.md)
+[`Transliterate`](reference/v3-0-transliterate.md)
 
-[BreakSentence](reference/v3-0-break-sentence.md)
+[`BreakSentence`](reference/v3-0-break-sentence.md)
 
-[Észlelése](reference/v3-0-detect.md)
+[`Detect`](reference/v3-0-detect.md)
 
-[Szótár/keresése](reference/v3-0-dictionary-lookup.md)
+[`Dictionary/lookup`](reference/v3-0-dictionary-lookup.md)
 
-[Szótár/példa](reference/v3-0-dictionary-examples.md)
+[`Dictionary/example`](reference/v3-0-dictionary-examples.md)
 
 ## <a name="compatibility-and-customization"></a>Kompatibilitási és testreszabás
 
@@ -132,7 +131,6 @@ A Translator Text API 3-as verziójához használja a api.cognitive.microsofttra
 * A Translator Text API 2-es verzióját használja a api.microsofttranslator.com végpont használata.
 
 Nincs a fordító API-verzió létrehoz egy rekordot a fordítások. A fordítások soha nem bárkivel vannak megosztva. További információ a [Translator nyomkövetés-mellőzési](http://www.aka.ms/NoTrace) weblapon.
-
 
 ## <a name="links"></a>Hivatkozások
 

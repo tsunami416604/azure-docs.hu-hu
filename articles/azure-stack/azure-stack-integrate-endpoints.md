@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: fee5db2cde4e4056a8cb1fca80e09511d0ca0b53
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c3b27291fc413310393cd0270ec750de14a4985b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117274"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270062"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Az Azure Stack adatközpont integrációja – végpontok közzététele
 
@@ -34,6 +34,9 @@ Virtuális IP-címek nem jelennek meg, mert azok még nem szükséges a közzét
 
 > [!Note]  
 > Felhasználói virtuális IP-címek dinamikusak, maguk a felhasználók számára nem az Azure Stack operátorait szerint határozza meg.
+
+> [!Note]
+> Kezdődően a 1811 frissítés 12495-30015 tartományán portok már nem szükséges miatt is nyitva a [bővítmény gazdagép](azure-stack-extension-host-prepare.md).
 
 |Endpoint (VIP)|DNS host A record|Protokoll|Portok|
 |---------|---------|---------|---------|

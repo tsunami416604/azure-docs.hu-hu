@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 433f99d72feb7dc697050049817478a8c8b679e6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6495a4e4da9330cba562c7fd6530369c09d180da
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820963"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302063"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage Table tervezési útmutatója: Tervezési méretezhető és Nagytejesítményű táblákat
 
@@ -721,6 +721,9 @@ Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalós
 
 ### <a name="log-tail-pattern"></a>Log tail minta
 Lekérni a *n* használatával a partíció legutóbb hozzáadott entitásokat egy **RowKey** érték, amely fordított dátum és idő sorrendben rendezi.  
+
+> [!NOTE]
+> Az Azure Table API az Azure Cosmso DB által visszaadott lekérdezések eredményeit a partíciókulcs és a sorkulcs szerint nem rendezi. Ezért ez a minta akkor alkalmas Azure Table Storage és Azure Cosmos DB. Szolgáltatások közötti különbségekről részletes listájáért lásd: [az Azure Cosmos DB Table API és az Azure Table Storage közötti különbségek](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 #### <a name="context-and-problem"></a>Kontextus és probléma
 Általános követelmény, hogy tudja lekérni a legutóbb létrehozott entitások, például a 10 legújabb kiadás egy alkalmazott által küldött jogcímek. Tábla lekérdezése támogatási egy **$top** visszaadjon az első lekérdezés *n* bizonyos entitások: az utolsó n entitások vissza egy készlet nincs egyenértékű lekérdezési művelet.  

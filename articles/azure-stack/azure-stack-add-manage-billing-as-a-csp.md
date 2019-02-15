@@ -11,47 +11,45 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/13/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 5fd4297cdd6edb048e213503124f5ecc08589552
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1ba3697b5c683ed2e892396db71328e0ed41fdce
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243800"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266917"
 ---
-# <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Használat és számlázás az Azure Stack felhő szolgáltató kezelése 
+# <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Használat és számlázás az Azure Stack felhő szolgáltató kezelése
 
 *Vonatkozik: Az Azure Stack integrált rendszerek*
 
 Ebben a cikkben bemutatjuk, hogyan regisztrálja az Azure Stack, egy Felhőbeli Felhőszolgáltató (CSP) és felhasználók hozzáadása.
 
-Mint egy CSP-hez használható különféle ügyfelek, az Azure Stack használatával. Minden ügyfél az Azure-ban rendelkezik a CSP-előfizetésekben. Minden felhasználói előfizetésben az Azure Stack használatának közvetlen kell.
+Mint egy CSP-hez használható különféle ügyfelek, az Azure Stack használatával. Minden ügyfél az Azure-ban rendelkezik a CSP-előfizetésekben. Az Azure Stack minden felhasználói előfizetésben kell közvetlen használat.
 
-Az alábbi ábrán látható, válassza ki a megosztott szolgáltatások fiókját, és regisztrálja az Azure-fiók az Azure Stack-fiókkal kell lépéseit. Regisztrált, segítségével készítheti elő a végfelhasználókat.
+Az alábbi ábra bemutatja a szükséges lépések végrehajtásával válassza ki a megosztott szolgáltatások fiókját, és az Azure-fiók regisztrálása az Azure Stack-fiókkal. Miután regisztrált, segítségével készítheti elő a végfelhasználók számára:
 
-**Lépések hozzáadása a használat nyomon követése egy CSP-hez**
-
-[ ![Engedélyezheti a használati és felügyelete megegyezik a Felhőszolgáltató](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png "engedélyezheti a használati és felügyelete megegyezik a Felhőszolgáltató") ](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png#lightbox)
+[![Engedélyezheti a használati és felügyelete megegyezik a Felhőszolgáltató](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png "engedélyezheti a használati és felügyelete megegyezik a Felhőszolgáltató")](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png#lightbox)
 
 ## <a name="create-a-csp-or-apss-subscription"></a>CSP vagy APSS előfizetés létrehozása
 
 ### <a name="cloud-service-provider-subscription-types"></a>Szolgáltatói előfizetés felhőtípusok
 
-Válassza ki az Azure Stackhez készült használt fióknak a megosztott szolgáltatások kell. Használható a regisztrációhoz egy több-bérlős Azure Stack-előfizetést a típusok a következők:
+Válassza ki az Azure Stackhez készült használt fióknak a megosztott szolgáltatások. Használható a regisztrációhoz egy több-bérlős Azure Stack-előfizetést a típusok a következők:
 
- - Felhőszolgáltató 
- - Megosztott szolgáltatások típusú partneri előfizetéshez 
+- Felhőszolgáltató
+- Megosztott szolgáltatások típusú partneri előfizetéshez
 
 #### <a name="azure-partner-shared-services"></a>Azure-partneri közös szolgáltatások
 
 Az Azure-partneri közös szolgáltatásokat (APSS) előfizetések a regisztráció során egy közvetlen CSP előnyben részesített választás vagy CSP terjesztő működik az Azure Stack.
 
-Megosztott szolgáltatások bérlő APSS előfizetések tartoznak. Ha regisztrálja az Azure Stack, meg kell adnia a hitelesítő adatokat, amely az előfizetés tulajdonosa. A fiókja, regisztrálhat az Azure Stack eltérhetnek az üzembe helyezéshez használt rendszergazdai fiók. Továbbá, hajtsa végre a két fiók *nem* kell tartozniuk ugyanabban a tartományban. Más szóval akkor előfordulhat, hogy az üzembe helyezés, amelyek már használják a bérlő. Például akkor lehet, hogy ContosoCSP.onmicrosoft.com használja, majd regisztráljon egy másik bérlőben, például IURContosoCSP.onmicrosoft.com. Ne feledje, hogy jelentkezzen be ContosoCSP.onmicrosoft.com nap-ne az Azure Stack felügyeleti ekkor kell. Amikor bejelentkezik az Azure-ban IURContosoCSP.onmicrosoft.com, amikor szüksége van regisztrációs műveletek végrehajtásához.
+Megosztott szolgáltatások bérlő APSS előfizetések tartoznak. Ha regisztrálja az Azure Stack, adja meg hitelesítő adatait, amely az előfizetés tulajdonosa. A fiókja, regisztrálhat az Azure Stack eltérhetnek az üzembe helyezéshez használt rendszergazdai fiók. Továbbá a két fiók nem kell ugyanabban a tartományban; tartozik telepíthet, amelyek már használják a bérlőnek a használatával. Használhatja például `ContosoCSP.onmicrosoft.com`, majd regisztrálja a használatával egy másik bérlőben; például `IURContosoCSP.onmicrosoft.com`. Jelentkezzen be a vágólapra kell `ContosoCSP.onmicrosoft.com` napi Azure Stack felügyeleti végrehajtásakor. Azure-bA bejelentkezik `IURContosoCSP.onmicrosoft.com` mikor kell tennie a regisztráció műveletek.
 
-Tekintse meg a következő útmutatást, valamint APSS előfizetés leírását előfizetés létrehozásával [hozzáadása az Azure partneri megosztott szolgáltatások](https://msdn.microsoft.com/partner-center/shared-services).
+APSS előfizetések, és hogyan hozhat létre, azok leírását lásd: [hozzáadása az Azure partneri megosztott szolgáltatások](https://msdn.microsoft.com/partner-center/shared-services).
 
 #### <a name="csp-subscriptions"></a>CSP-előfizetésekben
 
@@ -59,23 +57,24 @@ Cloud Service Provider (CSP) előfizetések a regisztráció során a CSP-viszon
 
 ## <a name="register-azure-stack"></a>Az Azure Stack regisztrálása
 
-Használja az információk az előző szakaszban létrehozott APSS előfizetés regisztrálása az Azure Stack az Azure-ral. További információkért lásd: [regisztrálása az Azure Stack az Azure-előfizetésében](azure-stack-registration.md).
+A létrehozott, az előző szakaszban szereplő információk segítségével regisztrálja az Azure Stack az Azure-ral APSS előfizetést használ. További információkért lásd: [regisztrálása az Azure Stack az Azure-előfizetésében](azure-stack-registration.md).
 
 ## <a name="add-end-customer"></a>Adja hozzá a végfelhasználó ügyfél
 
-Azure Stack beállítása úgy, hogy egy új bérlőt erőforrást használ, használatuk fog jelenteni lehet a Felhőszolgáltató (CSP) előfizetést: [hozzáadása bérlői használat és számlázás az Azure Stackhez](azure-stack-csp-howto-register-tenants.md).
+Azure Stack beállítása úgy, hogy amikor egy új bérlőt erőforrásokat használ, használatuk jelez. a Felhőszolgáltató (CSP) előfizetést: [hozzáadása bérlői használat és számlázás az Azure Stackhez](azure-stack-csp-howto-register-tenants.md).
 
 ## <a name="charge-the-right-subscriptions"></a>A megfelelő előfizetések díja szerint számítjuk fel
 
 Az Azure Stack regisztrációs nevű szolgáltatást használja. A regisztráció az Azure-ban tárolt objektum. A regisztrációs objektum dokumentumok mely Azure-előfizetés(ek) díja szerint számítjuk fel az egy adott Azure Stack használatával. Ez a szakasz azon regisztrációs fontosságát.
 
 Regisztráció az Azure Stack használatával:
- - Azure Stack-használati adatok továbbítása az Azure kereskedelmi és számlázás az Azure-előfizetéssel.
- - Minden ügyfél használati jelentést egy másik előfizetésben, az Azure Stack több-bérlős telepítésekben. Több-bérlős módhoz lehetővé teszi, hogy az Azure Stack használatával támogatja a különböző szervezetek ugyanazon az Azure Stack-példányon.
 
-Minden egyes Azure stack van egy alapértelmezett előfizetést, és számos bérlői előfizetések. Az alapértelmezett előfizetést az Azure-előfizetéssel, amely akkor kell fizetnie, ha bérlőspecifikus előfizetés nem létezik. Az első az előfizetés regisztrálva kell lennie. A jelentéskészítés működéséhez a több-bérlős használatot az előfizetés CSP vagy APSS előfizetést kell lennie.
+- Azure Stack-használati adatok továbbítása az Azure kereskedelmi és számlázás az Azure-előfizetéssel.
+- Minden egyes ügyfél jelentés: "% s használata az Azure Stack több-bérlős központi telepítés egy másik előfizetést. Több-bérlős módhoz lehetővé teszi, hogy az Azure Stack használatával támogatja a különböző szervezetek ugyanazon az Azure Stack-példányon.
 
-Ezt követően a regisztráció frissül az Azure-előfizetés minden bérlő, amelyet szeretne az Azure Stack használata. Bérlői előfizetések a CSP-típusúnak kell lennie, és a partnerrel, aki az alapértelmezett előfizetés tulajdonosa összesítő kell. Más szóval valaki más ügyfelek nem lehet regisztrálni.
+Minden egyes Azure stack van egy alapértelmezett előfizetést, és számos bérlői előfizetések. Az alapértelmezett előfizetést egy Azure-előfizetést, akkor kell fizetnie, ha nincs bérlőspecifikus előfizetése. Az első előfizetést regisztrálni kell lennie. A jelentéskészítés működéséhez a több-bérlős használatot az előfizetés CSP vagy APSS előfizetést kell lennie.
+
+Ezt követően a regisztráció frissül az Azure-előfizetés minden bérlő által használt Azure Stack. Bérlői előfizetések a CSP-típusúnak kell lennie, és a partnerrel, aki az alapértelmezett előfizetés tulajdonosa kell összesítő. Valaki más ügyfelek nem lehet regisztrálni.
 
 Azure Stack globális Azure-bA továbbítja a használati adatokat, amikor Azure egy szolgáltatása, consults szintűre frissül a regisztrációt, és minden bérlő használati leképezi a megfelelő bérlői előfizetéshez. Ha a bérlő nincs regisztrálva, az alapértelmezett előfizetést az Azure Stack-példányhoz jut, hogy használat kerül.
 
@@ -83,5 +82,5 @@ Mivel bérlői előfizetések CSP-előfizetésekben, számlán küld a CSP-partn
 
 ## <a name="next-steps"></a>További lépések
 
- - A CSP program kapcsolatos további információkért lásd: [Cloud Solution Provider program](https://partner.microsoft.com/solutions/microsoft-cloud-solutions).
- - Erőforrás-használati adatok lekérése az Azure Stack kapcsolatos további tudnivalókért lásd: [használat és számlázás az Azure Stackben](azure-stack-billing-and-chargeback.md).
+- A CSP program kapcsolatos további információkért lásd: [Cloud Solution Provider program](https://partner.microsoft.com/solutions/microsoft-cloud-solutions).
+- Erőforrás-használati adatok lekérése az Azure Stack kapcsolatos további tudnivalókért lásd: [használat és számlázás az Azure Stackben](azure-stack-billing-and-chargeback.md).

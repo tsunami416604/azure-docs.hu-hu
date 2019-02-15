@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: c94a078e77f1e3e5b70d2d95016b8417fe2172d5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e7f8eef2c3422084846462e2f6159a8b8be7167f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118479"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301825"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességek
 
@@ -462,7 +462,7 @@ A hálózati biztonsági naplózás létfontosságú a hálózati biztonsági r�
 
 ### <a name="application-insights"></a>Application Insights
 
-[Az Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Ez magában foglalja a nagy teljesítményű analitikai eszközök segítségével diagnosztizálhatja a problémákat, és megismerheti, mit a felhasználók az alkalmazását. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Sokféle platform alkalmazásaival együttműködik, ilyen többek között a .NET, a Node.js és a J2EE platform helyszíni vagy felhőbeli tárolás esetén is. A devOps folyamattal integrálható, és rendelkezik kapcsolódási ponttal a különböző fejlesztési eszközöket.
+[Az Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Ez magában foglalja a nagy teljesítményű analitikai eszközök segítségével diagnosztizálhatja a problémákat, és megismerheti, mit a felhasználók az alkalmazását. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Alkalmazásaival együttműködik a helyileg üzemeltetett számos különböző platformokon, beleértve a .NET, Node.js és Java EE-alapú, vagy a felhőben. A devOps folyamattal integrálható, és rendelkezik kapcsolódási ponttal a különböző fejlesztési eszközöket.
 
 A szolgáltatás az alábbiakat figyeli:
 

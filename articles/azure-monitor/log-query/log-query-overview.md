@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: 9aff955a2ae0f40785036c2fee22804785e6526a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4c428372868e3d3fac58bc851de8c59ad01d1d8f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002273"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269960"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Elemezheti a naplófájlok adatait az Azure monitorban
 
-Log Analytics-munkaterületet, amely alapján a tárolt naplóadatokat az Azure Monitor által gyűjtött [Azure adatkezelő](/azure/data-explorer). Különböző forrásokból származó telemetriai adatokat gyűjti és használja a [lekérdezési nyelv az adatkezelő](/azure/kusto/query) lekérése és elemzéséhez.
+Log Analytics-munkaterületet, amely alapján a tárolt naplóadatokat az Azure Monitor által gyűjtött [Azure adatkezelő](/azure/data-explorer). Különböző forrásokból származó telemetriai adatokat gyűjti és használja a [Kusto-lekérdezés nyelvi](/azure/kusto/query) beolvasni a és elemezhet adatokat az adatkezelő használják.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
-## <a name="log-queries"></a>Napló lekérdezések
+## <a name="log-queries"></a>Naplólekérdezések
 
 A napló lekérdezése bármely naplóadatokat az Azure Monitor van szüksége.  Van-e [adatelemzés a portálon](portals.md), [egy riasztási szabály konfigurálása](../platform/alerts-metric.md) egy adott feltétel, vagy lekérése során adatokat az értesítést a [Azure Monitor naplók API](https://dev.loganalytics.io/) , a lekérdezés használandó adja meg a kívánt adatokat.  Ez a cikk ismerteti az Azure Monitor log-lekérdezések használata, és biztosítja a fogalmakat, amelyek egy létrehozása előtt ismerje meg.
 
@@ -47,7 +47,7 @@ A különböző módon, hogy az Azure Monitor log-lekérdezések használja a k�
 ![Naplókeresések](media/log-query-overview/queries-overview.png)
 
 ## <a name="write-a-query"></a>A lekérdezés írása
-Használja az Azure Monitor [az adatkezelő lekérdezési nyelv egy verziója](get-started-queries.md) lekérésére és elemezheti a naplófájlok adatait egy számos különböző módon.  Általában megkezdi az alapvető lekérdezések, és majd a Speciális függvények igényeinek egyre összetettebb halad.
+Használja az Azure Monitor [egy a Kusto-lekérdezés nyelvi verzióját](get-started-queries.md) lekérésére és elemezheti a naplófájlok adatait egy számos különböző módon.  Általában megkezdi az alapvető lekérdezések, és majd a Speciális függvények igényeinek egyre összetettebb halad.
 
 Az alapszintű struktúrát egy lekérdezés az operátorok függőleges vonás karakterrel elválasztott sorozatát követ forrástábla `|`.  Láncolhatja össze több operátor pontosítsa az adatokat, és végezze el a speciális funkciók.
 

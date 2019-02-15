@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 841c65fd8420fdfe681cb99ee7054cb4edd5fcd3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2cf9a98a2f27c9088266a976118acdb56f8a65d7
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968988"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300822"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dinamikusan létrehozása, és a egy tartós kötet használata az Azure Files Azure Kubernetes Service (AKS)
 
@@ -26,32 +26,20 @@ Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre 
 
 Emellett az Azure CLI 2.0.46-os vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-class"></a>Hozzon létre egy storage-osztály
 
-Ha dinamikusan hozhat létre egy Azure-fájlmegosztást, egy Kubernetes-kötet, minden olyan storage-fiók is használható, mindaddig, amíg az AKS van **csomópont** erőforráscsoportot. Ez a csoport nincs a *MC_* előtagot, amely hozta létre az AKS-fürt erőforrásainak üzembe helyezése. Az erőforráscsoport nevét az első a [az aks show] [ az-aks-show] parancsot.
+Tárolási osztály hogyan jön létre egy Azure-fájlmegosztás meghatározására szolgál. Storage-fiók automatikusan létrejön a *_MC* erőforráscsoportot, amely tárolja az Azure-fájlmegosztások a tárolási osztály való használatra. Válassza ki a következő [Azure tárhely-redundancia] [ storage-skus] a *skuName*:
 
-```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
-
-MC_myResourceGroup_myAKSCluster_eastus
-```
-
-Használja a [az tárfiók létrehozása] [ az-storage-account-create] parancsot a tárfiók létrehozásához.
-
-Frissítés `--resource-group` az előző lépésben gyűjtött az erőforráscsoport nevére és `--name` egy Ön által választott nevére. Adja meg a saját egyedi tárfióknév:
-
-```azurecli
-az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --sku Standard_LRS
-```
+* *Standard_LRS* – standard helyileg redundáns tárolás (LRS)
+* *Standard_GRS* – standard georedundáns tárolás (GRS)
+* *Standard_RAGRS* – standard írásvédett georedundáns tárolás (RA-GRS)
 
 > [!NOTE]
 > Azure Files jelenleg csak a standard szintű storage használata. Ha Premium storage szolgáltatást használja, a kötet nem tudja üzembe helyezése.
 
-## <a name="create-a-storage-class"></a>Hozzon létre egy storage-osztály
+Az Azure Files számára a Kubernetes storage osztályai további információkért lásd: [Kubernetes Storage osztályai][kubernetes-storage-classes].
 
-Tárolási osztály hogyan jön létre egy Azure-fájlmegosztás meghatározására szolgál. Storage-fiók a osztály adható meg. Ha nincs megadva tárfiók, egy *skuName* és *hely* meg kell adni, és a társított erőforráscsoportokhoz összes storage-fiókok értékeli ki az egyezést. Az Azure Files számára a Kubernetes storage osztályai további információkért lásd: [Kubernetes Storage osztályai][kubernetes-storage-classes].
-
-Hozzon létre egy fájlt `azure-file-sc.yaml` , és másolja a következő példa jegyzékfájlban. Frissítés a *storageAccount* értékét az előző lépésben létrehozott storage-fiókja nevére. További információ a *mountOptions*, tekintse meg a [csatlakoztatási beállítások] [ mount-options] szakaszban.
+Hozzon létre egy fájlt `azure-file-sc.yaml` , és másolja a következő példa jegyzékfájlban. További információ a *mountOptions*, tekintse meg a [csatlakoztatási beállítások] [ mount-options] szakaszban.
 
 ```yaml
 kind: StorageClass
@@ -66,7 +54,6 @@ mountOptions:
   - gid=1000
 parameters:
   skuName: Standard_LRS
-  storageAccount: mystorageaccount
 ```
 
 Hozzon létre a storage osztályt a [a kubectl a alkalmazni] [ kubectl-apply] parancsot:
@@ -213,7 +200,7 @@ Alapértelmezett *fileMode* és *dirMode* érték azonos a szerepkörtárolók K
 
 | version | érték |
 | ---- | ---- |
-| V1.6.x, v1.7.x | 0777 |
+| v1.6.x, v1.7.x | 0777 |
 | v1.8.0-v1.8.5 | 0700 |
 | V1.8.6 vagy újabb | 0755 |
 | v1.9.0 | 0700 |
@@ -295,3 +282,4 @@ További tudnivalók a Kubernetes Azure Files használatával állandó kötetek
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
+[storage-skus]: ../storage/common/storage-redundancy.md

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: f2c4939436db5ae4c862cb311cc66a162ac716e3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c59ef72f6e836b9cdf6899d917701555fc5e1988
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989246"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268769"
 ---
 # <a name="azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések
-Az Azure Monitor naplóira Azure adatkezelő épül, és az Azure Monitor log-lekérdezéseket a lekérdezési nyelvre verzióját használja. A [Azure adatkezelő lekérdezési nyelvi dokumentáció](/azure/kusto/query) rendelkezik az összes részletes adat a nyelv és kell lennie az Azure Monitor log-lekérdezések írására szolgáló elsődleges erőforrás. Ez a lap egyéb forrásokra mutató hivatkozásokat biztosít, megtudhatja, hogyan kell lekérdezéseket írni és a különbség az Azure Monitor megvalósításra, a nyelv.
+Az Azure Monitor naplóira Azure adatkezelő épül, és az Azure Monitor log-lekérdezések használata az azonos Kusto-lekérdezési nyelv. A [Azure adatkezelő lekérdezési nyelvi dokumentáció](/azure/kusto/query) rendelkezik az összes részletes adat a nyelv és kell lennie az Azure Monitor log-lekérdezések írására szolgáló elsődleges erőforrás. Ez a lap egyéb forrásokra mutató hivatkozásokat biztosít, megtudhatja, hogyan kell lekérdezéseket írni és a különbség az Azure Monitor megvalósításra, a nyelv.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,8 +36,8 @@ Az Azure Monitor naplóira Azure adatkezelő épül, és az Azure Monitor log-le
 
 ## <a name="reference"></a>Leírások
 
-- [Lekérdezési nyelvi leírása](/azure/kusto/query) van a teljes nyelvi dokumentáció az adatkezelő lekérdezési nyelv.
-- [Azure Monitor log lekérdezési nyelv különbségek](data-explorer-difference.md) az adatkezelő lekérdezési nyelv verziói közötti különbségeket ismerteti.
+- [Lekérdezési nyelvi leírása](/azure/kusto/query) teljes nyelvi referenciaként szolgál a Kusto-lekérdezési nyelv.
+- [Azure Monitor log lekérdezési nyelv különbségek](data-explorer-difference.md) a Kusto-lekérdezés nyelvi verziók közötti különbségeket ismerteti.
 - [Az Azure monitorban alapvető tulajdonságainak naplórekordok](../../azure-monitor/platform/log-standard-properties.md) szabványos Azure Monitor log tárolt összes tulajdonságokat ismerteti.
 - [Erőforrások közötti log-lekérdezések végrehajtása az Azure monitorban](../../azure-monitor/log-query/cross-workspace-query.md) ismerteti, hogyan lehet több Log Analytics-munkaterületek és Application Insights-alkalmazások adatait használó log lekérdezéseket írni.
 
@@ -65,4 +65,4 @@ Az Azure Monitor naplóira Azure adatkezelő épül, és az Azure Monitor log-le
  
 ## <a name="next-steps"></a>További lépések
 
-- A teljes hozzáférési [referenciadokumentációt az adatkezelő lekérdezési nyelv](/azure/kusto/query/).
+- A teljes hozzáférési [referenciadokumentációt a Kusto-lekérdezés nyelv](/azure/kusto/query/).

@@ -12,86 +12,115 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: ff67474566737ca75206cd1237c89f873cb173a8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 18dc82880830b6f8d14a7fc01930f75e9e61e5b0
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489852"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300550"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel
 
-Ez a cikk ismerteti az Azure PowerShell használata a Resource Manager-sablonok, az erőforrások üzembe helyezése az Azure. Ha nem ismeri a fogalmait, üzembe helyezése és kezelése az Azure-megoldások, lásd: [Azure Resource Manager áttekintése](resource-group-overview.md).
+Útmutató az Azure PowerShell használatával a Resource Manager-sablonokkal helyezheti üzembe az erőforrásokat az Azure-bA. Az üzembe helyezése és kezelése az Azure-megoldások kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](resource-group-overview.md).
 
-A Resource Manager-sablon telepít egy helyi fájlt a gépén vagy egy külső amilyen a GitHub-tárházban található fájl lehet. A sablon üzembe helyezi az ebben a cikkben érhető el, [GitHub storage-fiók sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
+A sablon üzembe helyezéséhez két lépést általában kell:
 
-Ha szükséges, telepítse az Azure PowerShell-modult az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd futtassa a `Connect-AzAccount` parancsot az Azure-hoz való csatlakozáshoz.
+1. Hozzon létre egy erőforráscsoportot. A tároló üzembe helyezett erőforrások erőforráscsoport szolgál. Az erőforráscsoport neve csak alfanumerikus karaktereket, pontokat, aláhúzásjeleket, kötőjeleket és zárójelet tartalmazhat. Legfeljebb 90 karakter lehet. Nem végződhet ponttal.
+2. Sablon üzembe helyezése. A sablon határozza meg az erőforrás létrehozásához.  Az üzemelő példány a megadott erőforráscsoportban létrehozza az erőforrásokat.
+
+Ez a cikk a kétlépéses módszer használatos.  A másik lehetőség, hogy egyszerre egy erőforráscsoportot és az erőforrások üzembe.  További információkért lásd: [hozzon létre és helyezhet üzembe erőforrásokat](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ha nem használ a [Azure Cloud shell](#deploy-templates-from-azure-cloud-shell) sablonok üzembe helyezése az Azure PowerShell telepítése és csatlakozás az Azure szüksége:
+- **Azure PowerShell-parancsmagjainak telepítése a helyi számítógépen.** További információért lásd [az Azure PowerShell használatának első lépéseit](/powershell/azure/get-started-azureps).
+- **Csatlakozás az Azure használatával [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount.md)**. Ha több Azure-előfizetéssel rendelkezik, szükség lehet futtatni [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext.md). További információkért lásd: [használata több Azure-előfizetéssel](/powershell/azure/manage-subscriptions-azureps).
+- * Töltse le és mentse egy [gyorsindítási sablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) . A cikk ezt használja a helyi Fájlnév **c:\MyTemplates\azuredeploy.json**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-
-<a id="deploy-local-template" />
-
-## <a name="deploy-a-template-from-your-local-machine"></a>A helyi gépen-sablon üzembe helyezése
-
-Erőforrások üzembe helyezésekor az Azure-ba, hogy:
-
-1. Jelentkezzen be az Azure-fiókjába
-2. Hozzon létre egy erőforráscsoportot, amely a telepített erőforrások tárolójaként szolgál. Az erőforráscsoport neve csak alfanumerikus karaktereket, pontokat, aláhúzásjeleket, kötőjeleket és zárójelet tartalmazhat. Legfeljebb 90 karakter lehet. Nem végződhet ponttal.
-3. Az erőforráscsoport üzembe a sablont, amely meghatározza az erőforrások létrehozása
-
-A sablon paramétereit, amelyek lehetővé teszik az üzembe helyezés testreszabása tartalmazhat. Például megadhat értékeket, amelyek egy adott környezetben (például fejlesztési, tesztelési és éles környezetben). A mintasablon a tárfiók SKU paraméter határozza meg.
+## <a name="deploy-templates-stored-locally"></a>Helyileg tárolt sablonok üzembe helyezése
 
 Az alábbi példa létrehoz egy erőforráscsoportot, és üzembe helyezi a sablont a helyi gépen:
 
-```powershell
-Connect-AzAccount
+```azurepowershell
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 
-Select-AzSubscription -SubscriptionName <yourSubscriptionName>
- 
-New-AzResourceGroup -Name ExampleResourceGroup -Location "South Central US"
-New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+  -TemplateFile c:\MyTemplates\azuredeploy.json
 ```
 
-Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza az eredmény:
+Megjegyzés: *c:\MyTemplates\azuredeploy.json* gyorsindítási sablon van.  Lásd: [Előfeltételek](#prerequisites).
 
-```powershell
-ProvisioningState       : Succeeded
-```
+Az üzembe helyezés eltarthat néhány percig.
 
-## <a name="deploy-a-template-from-an-external-source"></a>Egy külső forrásból-sablon üzembe helyezése
+## <a name="deploy-templates-stored-externally"></a>Külsőleg tárolt sablonok üzembe helyezése
 
 Resource Manager-sablonok tárolása a helyi gépén, helyett érdemesebb lehet külső helyen tárolja őket. Sablonok verziókövetési adattár (például a GitHub) tárolhatja. Vagy tárolhatja őket az Azure storage-fiók, a közös hozzáférésű a szervezetben.
 
 Egy külső sablon üzembe helyezéséhez használja a **TemplateUri** paraméter. A példában az URI használatával helyezhet üzembe a mintául szolgáló sablont a Githubból.
 
-```powershell
-New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
-  -storageAccountType Standard_GRS
+```azurepowershell
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Az előző példában a sablon, amely a legtöbb esetben működik, mivel a sablon ne tartalmazza a bizalmas adatokat egy nyilvánosan elérhető-e URI-t igényel. Adja meg a bizalmas adatok (például egy rendszergazdai jelszót) van szüksége, ha biztonságos paraméterként adja át ezt az értéket. Azonban ha nem szeretné a sablon nyilvánosan hozzáférhető, segítségével megvédheti azokat a személyes tárolót tárolja őket. Egy közös hozzáférésű jogosultságkód (SAS) igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-powershell-sas-token.md).
+Az előző példában a sablon, amely a legtöbb esetben működik, mivel a sablon ne tartalmazza a bizalmas adatokat egy nyilvánosan elérhető-e URI-t igényel. Adja meg a bizalmas adatok (például egy rendszergazdai jelszót) van szüksége, ha biztonságos paraméterként adja át ezt az értéket. Azonban ha nem szeretné a sablon nyilvánosan hozzáférhető, segítségével megvédheti azokat a személyes tárolót tárolja őket. Egy közös hozzáférésű jogosultságkód (SAS) igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-powershell-sas-token.md). Go-oktatóanyagot, tekintse meg [oktatóanyag: Integrálhatja az Azure Key Vault Resource Manager-sablon üzembe helyezési](./resource-manager-tutorial-use-key-vault.md).
 
-[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
+## <a name="deploy-templates-from-azure-cloud-shell"></a>Az Azure Cloud shell sablonok üzembe helyezése
 
-A Cloud shellben használja az alábbi parancsokat:
+Használhatja a [Azure Cloud Shell](https://shell.azure.com) a sablon üzembe helyezéséhez. Egy külső sablon üzembe helyezéséhez, adja meg a sablon URI azonosítója. Egy helyi sablon üzembe helyezéséhez, először be kell töltenie a sablont a storage-fiókra a Cloud Shell. Fájlok feltöltése a rendszerhéj, válassza ki a **fájlok feltöltése/letöltése** menüikonra felület ablakából.
 
-```powershell
-New-AzResourceGroup -Name ExampleResourceGroup -Location "South Central US"
-New-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateUri <copied URL> `
-  -storageAccountType Standard_GRS
+A Cloud shell megnyitásához keresse meg a [ https://shell.azure.com ](https://shell.azure.com), vagy válasszon **Try-It** az alábbi kód szakaszban:
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Több erőforráscsoport vagy előfizetés üzembe helyezése
+Illessze be a kódot a rendszerhéjba van beépítve, kattintson a jobb gombbal a rendszerhéj belül, majd **illessze be**.
 
-Általában végzi az üzembe helyezést összes erőforrást a sablonhoz, amelyekkel egyetlen erőforráscsoportra. Vannak azonban forgatókönyvek, ahol szeretné erőforráscsoport telepítsen együtt, de különböző erőforráscsoport vagy előfizetés helyezze el őket. Telepíthet egy központi telepítésben csak öt erőforráscsoportokhoz. További információkért lásd: [üzembe helyezése Azure-erőforrásokat az egynél több előfizetésen vagy erőforráscsoporton](resource-manager-cross-resource-group-deployment.md).
+## <a name="deploy-to-multiple-resource-groups-or-subscriptions"></a>Üzembe helyezés több erőforráscsoporton vagy előfizetésben
 
-<a id="parameter-file" />
+Általában végzi az üzembe helyezést összes erőforrást a sablonhoz, amelyekkel egyetlen erőforráscsoportra. Vannak azonban forgatókönyvek, ahol szeretné erőforráscsoport telepítsen együtt, de különböző erőforráscsoport vagy előfizetés helyezze el őket. Telepíthet egy központi telepítésben csak öt erőforráscsoportokhoz. További információkért lásd: [üzembe helyezése Azure-erőforrásokat az erőforráscsoportok és -előfizetések több](resource-manager-cross-resource-group-deployment.md).
 
-## <a name="parameters"></a>Paraméterek
+## <a name="redeploy-when-deployment-fails"></a>Telepítse újra a központi telepítésének hibája esetén
+
+Ha egy központi telepítés nem sikerül, automatikusan is újratelepítése egy korábbi, a sikeres telepítés az üzembe helyezési előzményekből. Újbóli üzembe helyezés megadásához használja vagy a `-RollbackToLastDeployment` vagy `-RollBackDeploymentName` paramétert a üzembe helyezés parancsba.
+
+Ez a beállítás használatához az üzemelő példányok egyedi névvel kell rendelkezniük az előzményekben található ellenőrizhető, hogy. Ha nem rendelkezik egyedi nevét, az aktuális telepítése sikertelen volt. a korábban sikeresen végrehajtott központi telepítés előzményei esetleg felülírhatja. Használhatja ezt a beállítást csak a legfelső szintű telepítések. Beágyazott sablonból üzemelő példányok nem újbóli üzembe helyezés érhetők el.
+
+Telepítse újra a legutóbbi sikeres üzembe helyezés, adja hozzá a `-RollbackToLastDeployment` paramétert, azt a jelzőt.
+
+```azurepowershell-interactive
+New-AzResourceGroupDeployment -Name ExampleDeployment02 `
+  -ResourceGroupName $resourceGroupName `
+  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -RollbackToLastDeployment
+```
+
+Az újratelepítés egy adott, használja a `-RollBackDeploymentName` paramétert, és adja meg a központi telepítés nevét.
+
+```azurepowershell-interactive
+New-AzResourceGroupDeployment -Name ExampleDeployment02 `
+  -ResourceGroupName $resourceGroupName `
+  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -RollBackDeploymentName ExampleDeployment01
+```
+
+A megadott központi telepítés sikeres volt kell rendelkeznie.
+
+## <a name="pass-parameter-values"></a>Paraméterértékeket
 
 Paraméterértékek átadni, vagy a beágyazott paraméterek, vagy egy paraméterfájl használható. Az előző példák ebben a cikkben a beágyazott paraméterek megjelenítése.
 
@@ -137,7 +166,7 @@ A paraméterfájl a következő formátumban kell lennie:
 }
 ```
 
-Figyelje meg, hogy a paraméterek szakasz tartalmazza-e a paraméter neve, amely megegyezik a paraméter definiálva a sablonban (Tárfióktípus). A paraméterfájl a paraméter értékét tartalmazza. Ezt az értéket automatikusan kerülnek a sablon üzembe helyezése során. Hozzon létre több alkalmazásparaméter-fájlt, és akkor továbbítja a forgatókönyvnek megfelelő paraméterfájlban. 
+Figyelje meg, hogy a paraméterek szakasz tartalmazza-e a paraméter neve, amely megegyezik a paraméter definiálva a sablonban (Tárfióktípus). A paraméterfájl a paraméter értékét tartalmazza. Ezt az értéket automatikusan kerülnek a sablon üzembe helyezése során. Hozzon létre több alkalmazásparaméter-fájlt, és akkor továbbítja a forgatókönyvnek megfelelő paraméterfájlban.
 
 Másolja ki az előző példában, és mentse a fájlt `storage.parameters.json`.
 
@@ -145,7 +174,7 @@ Adja át a helyi alkalmazásparaméter-fájlt, használja a **TemplateParameterF
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\storage.json `
+  -TemplateFile c:\MyTemplates\azuredeploy.json `
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
@@ -167,20 +196,20 @@ Azonban ha egy külső alkalmazásparaméter-fájlt használ, nem adhatók át t
 
 A sablon tartalmazza a PowerShell-parancs olyan paraméterre, amelynek neve megegyezik a paraméterek egyikét, ha PowerShell be az a paraméter a sablonból a utótag **FromTemplate**. Például nevű paraméter **ResourceGroupName** a sablon ütközik a **ResourceGroupName** paramétert a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a parancsmag. Adjon meg egy értéket a kéri **ResourceGroupNameFromTemplate**. Általában ez zavart ne által nem elnevezési paraméterek az üzembe helyezési műveleteihez használt paraméterek azonos néven.
 
-## <a name="test-a-template-deployment"></a>Egy sablon üzemelő példány tesztelése
+## <a name="test-template-deployments"></a>Sablon-üzembehelyezések tesztelése
 
 A sablonnal és paraméterfájlokkal értékek teszteléséhez ténylegesen az olyan erőforrások telepítés nélkül használhatja a [Test-AzureRmResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). 
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
+  -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType Standard_GRS
 ```
 
 Ha nincsenek hibák észlelhetők, a parancs befejeződik, a válaszra. Ha hibát észlel, a parancs hibaüzenetet ad vissza. Például a tárfiók SKU, helytelen értéket átadja adja vissza a következő hibával:
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\storage.json -storageAccountType badSku
+  -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType badSku
 
 Code    : InvalidTemplate
 Message : Deployment template validation failed: 'The provided value 'badSku' for the template parameter 'storageAccountType'
@@ -197,9 +226,8 @@ Test-AzResourceGroupDeployment : After parsing a value an unexpected character w
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Ebben a cikkben szereplő példák erőforrások üzembe helyezése az erőforráscsoporthoz, az alapértelmezett előfizetést. Használjon másik előfizetést, lásd: [több Azure-előfizetések kezelése](/powershell/azure/manage-subscriptions-azureps).
-* Adja meg, hogyan legyen kezelve az erőforrásokat, az erőforráscsoportban létezik, de nincsenek definiálva a sablonban, lásd: [Azure Resource Manager üzembe helyezési mód](deployment-modes.md).
-* A sablonban szereplő paraméterekkel definiálása ismertetése: [struktúra és az Azure Resource Manager-sablonok szintaxisát](resource-group-authoring-templates.md).
-* Gyakori üzembehelyezési hibák elhárítása a tippek: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
-* SAS-token igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-powershell-sas-token.md).
-* Biztonságosan terjed ki a szolgáltatás több régióban, lásd: [Azure Deployment Manager](deployment-manager-overview.md).
+
+- Biztonságosan terjed ki a szolgáltatás több régióban, lásd: [Azure Deployment Manager](deployment-manager-overview.md).
+- Adja meg, hogyan legyen kezelve az erőforrásokat, az erőforráscsoportban létezik, de nincsenek definiálva a sablonban, lásd: [Azure Resource Manager üzembe helyezési mód](deployment-modes.md).
+- A sablonban szereplő paraméterekkel definiálása ismertetése: [struktúra és az Azure Resource Manager-sablonok szintaxisát](resource-group-authoring-templates.md).
+- SAS-token igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-powershell-sas-token.md).

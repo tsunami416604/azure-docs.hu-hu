@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: aa334f88d04bb30ce01fe12fecb3aac3c9cd572d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 5a16edcb702db21b357c437b920e870a65fb155a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237417"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270164"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -341,7 +341,7 @@ Minden egyes hatás, értékelési, tulajdonságokat és példákat sorrendje a 
 
 ### <a name="policy-functions"></a>A házirend-funkciók
 
-Az alábbi üzembe helyezési és erőforrás-funkciók, kivéve az összes [Resource Manager-sablonfüggvények](../../../azure-resource-manager/resource-group-template-functions.md) házirendszabály belül használhatók:
+Az összes [Resource Manager-sablonfüggvények](../../../azure-resource-manager/resource-group-template-functions.md) belül házirendszabály, kivéve a következő függvények használhatók:
 
 - copyIndex()
 - Deployment()

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 599e6b0cd615be7275df127b0b2f174bd8e6c290
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 52a441d5d8f3f44b35253e02786a033da5439597
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994886"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269856"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések használatának első lépései
 
@@ -43,7 +43,7 @@ Ebben az oktatóanyagban elsajátíthatja az Azure LMonitor log lekérdezéseket
 Lekérdezések megkezdheti a következők egyikével táblanév vagy a *keresési* parancsot. A tábla nevét, mert a lekérdezés törlése hatókör határozza meg, és javítja a lekérdezési teljesítmény és az eredmények relevancia alapján végzett kell kezdődnie.
 
 > [!NOTE]
-> Az adatkezelő lekérdezési nyelve, használja az Azure Monitor, kis-és nagybetűket. Vezérlőnyelvi kulcsszavak általában nyelven írták kisbetűs. Táblák vagy oszlopok nevei a lekérdezésben használatakor ügyeljen arra, hogy a megfelelő kis-és nagybetűhasználattal a séma ablaktáblán látható módon.
+> A Kusto-lekérdezési nyelve, használja az Azure Monitor, kis-és nagybetűket. Vezérlőnyelvi kulcsszavak általában nyelven írták kisbetűs. Táblák vagy oszlopok nevei a lekérdezésben használatakor ügyeljen arra, hogy a megfelelő kis-és nagybetűhasználattal a séma ablaktáblán látható módon.
 
 ### <a name="table-based-queries"></a>Tábla-alapú lekérdezések futtatása
 Az Azure Monitor rendszerezi a naplóadatok táblákban, minden egyes tevődik össze több oszlopot. A séma panelen az Analytics-portálon a Log Analytics összes táblák és oszlopok jelennek meg. Határozza meg, hogy érdeklő, és ezután tekintse meg az adatok egy kis, tábla:

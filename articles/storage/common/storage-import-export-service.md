@@ -5,21 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 02/14/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ccfc91e85196cbc8295bce71e512d9cf856a23c8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e2c770625cf92e0db269d14d2f63dc0c896cbe9c
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453382"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267512"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
 
 Az Azure Import/Export szolgáltatás segítségével biztonságosan importálása az Azure-adatközpont-meghajtókon szállításával az Azure Blob storage és az Azure Files nagy mennyiségű adat. Ez a szolgáltatás adatainak átvitelét az Azure Blob storage-ból a merevlemez-meghajtók, és küldje el a helyszíni hely a használatával is lehet. Egy vagy több lemezmeghajtót származó adatok importálhatók, vagy az Azure Blob storage vagy az Azure Files. 
 
-Adja meg, hogy saját lemezmeghajtókat, és adatátvitelt az Azure Import/Export szolgáltatással. A Microsoft által biztosított lemezmeghajtók is használhatja. 
+Adja meg a saját lemezmeghajtókat, és adatátvitelt az Azure Import/Export szolgáltatással. A Microsoft által biztosított lemezmeghajtók is használhatja. 
 
 Ha azt szeretné, a Microsoft által biztosított meghajtók használata az adatok átviteléhez használható [Azure Data Box-lemezek](../../databox/data-box-disk-overview.md) adatok importálása az Azure-bA. A Microsoft 40 TB-os kapacitásáig keresztül egy regionális szolgáltató adatközpontjában megrendelésenként legfeljebb 5 titkosított tartós állapotú meghajtók (SSD-kkel) tartalmaz. Gyorsan lemezmeghajtók konfigurálása, másolja az adatokat a lemezmeghajtók USB 3.0-kapcsolaton keresztül és szállíthat a lemezmeghajtók vissza az Azure-bA. További információért ugorjon [áttekintése az Azure Data Box-lemezek](../../databox/data-box-disk-overview.md).
 

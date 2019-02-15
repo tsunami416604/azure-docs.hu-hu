@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: b31bdacbaf1ab81223d2a99472233cd5024edced
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0c52a10aa806962ee54fe6058f236ea9bd86414b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300731"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268345"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Az Azure Backup – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -31,7 +31,7 @@ Legfeljebb 1000 Azure-beli virtuális gép tárolónként regisztrálhat. Ha a M
 Együtt a helyreállítani kívánt kiszolgálót adatok ugyanazt a jelszót használja, ha a biztonsági mentés beállítása. Ha el szeretné különíteni a helyreállítás az adott kiszolgálón vagy kiszolgálókon, vagy a kiszolgáló csak használni egy hozzáférési kódot. Például a humánerőforrás-kiszolgálók használhatnának egy titkosító hozzáférési kódot, a könyvelési kiszolgálók egy másikat és a tároló kiszolgálók egy harmadikat.
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>Is saját tárolót is áthelyezése előfizetések között?
-Nem. A tároló előfizetési szinten jön létre, és nem lehet hozzárendelni egy másik előfizetésbe.
+Igen. Helyezze át a Recovery Services-tároló tekintse meg ezt a [cikk](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>Biztonsági mentési adatok átvitele egy másik tárban?
 Nem. A tárolókban tárolt biztonsági mentési adatok nem helyezhető át egy másik tárban.
@@ -148,7 +148,6 @@ Nem. A biztonsági mentési feladat megszakításának pillanata előtt a tárol
 Ha megszakítja egy Azure virtuális gép valamely biztonsági mentését, a rendszer a már átvitt adatokat figyelmen kívül hagyja. A következő biztonsági mentési feladat az utolsó sikeres biztonsági mentéshez képest végzi el az adatok növekményes mentését.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Miért átkerülnek az adatok mérete kisebb, mint a biztonsági mentésre kijelölt adatokat a Recovery Services-tároló?
-
  Adatok biztonsági mentése az Azure Backup-ügynök, DPM, és az Azure Backup Server van tömörítve és titkosítva kerül az átvitel előtt. A tömörítés és a rendszer titkosítást alkalmaz, a tárolóban lévő adatok 30 – 40 százalékkal kisebbek.
 
 ### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vault"></a>Törölhetem-e az egyes fájlok a tárban lévő helyreállítási pontból?
@@ -156,8 +155,8 @@ Nem, az Azure Backup nem támogatja a törlését vagy végleges törlése az eg
 
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>Ha megszakítom biztonsági mentési feladatot, miután elindult, az átküldött adatok biztonsági másolata törlődik?
-
 Nem. A biztonsági mentési feladat előtt a tárolóba átvitt minden adat a tárolóban marad megszakítva.
+
 - Az Azure Backup egy ellenőrzőpont-alapú mechanizmust használ, így a biztonsági mentés közben esetenként ellenőrzőpontokat ad az adatok biztonsági másolatához.
 - Mivel ellenőrzőpontok vannak az adatok biztonsági másolatában, a következő biztonsági mentési folyamat ellenőrizni tudja a fájlok épségét.
 - A következő biztonsági mentési feladat a korábban már mentett adatokra épülő növekményes mentés lesz. A növekményes mentések csak az új vagy módosított adatok átvitelét jelentik, így a sávszélesség-használat optimalizálható.
@@ -177,7 +176,7 @@ Nem. Megtartási házirendeket csak biztonsági mentési pontokon lehet alkalmaz
 
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point-br"></a>A biztonsági másolatok hosszú ideje, ha nem, több időt vesz igénybe egy régebbi adatpont helyreállítása? <br/>
-Nem – a legrégebbi és a legújabb pont helyreállítási ideje azonos. Minden helyreállítási pont teljes pontként viselkedik.
+Nem. A legrégebbi helyreállítási ideje és a legújabb pont megegyezik. Minden helyreállítási pont teljes pontként viselkedik.
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Ha minden helyreállítási pont olyan, mint egy teljes pont, ez befolyásolja a teljes számlázandó biztonsági mentési tárolást?
 A tipikus hosszú távú megtartási pontok az adatok biztonsági másolatát teljes pontokként tárolják.
@@ -203,7 +202,7 @@ Nem. Helyreállítás az ingyenes és a kimenő forgalom nem kell fizetnie.
 Új szabályzat alkalmazásakor, ütemezése és megőrzése az új házirendet kell követni.
 
 - Ha növeli a megőrzési időtartamot, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak.
-- - Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve.
+- Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve.
 
 ## <a name="encryption"></a>Titkosítás
 

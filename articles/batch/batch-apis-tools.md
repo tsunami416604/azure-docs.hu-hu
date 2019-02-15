@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 0236947e578d12ff24e5993d253ec5597c53272a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 2a9c0cf36459a2d23b8af8f69937ab9ded7f9c04
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819824"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301502"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>A Batch API-k és eszközök áttekintése
 
@@ -69,7 +69,8 @@ Ezek a parancssori eszközök ugyanazt a funkcionalitást biztosítják, mint a 
 
 * [Az Azure portal][portal]: Létrehozása, figyelése, és törölje a Batch készletek, feladatok és tevékenységek az Azure Portalon. Megtekintheti ezen és más erőforrások állapotinformációit a feladatok futtatásakor, és fájlokat is letölthet a készletekben található számítási csomópontokról. Letöltheti például egy sikertelen feladat `stderr.txt` fájlját a hibaelhárítás során. Távoli asztali (RDP-) fájlokat is letölthet, amelyekkel bejelentkezhet a számítási csomópontokba.
 * [Az Azure Batch Explorer][batch_labs]: A Batch Explorer (korábbi nevén BatchLabs) egy ingyenes, számos funkcióval ellátott, különálló ügyféleszköz létrehozásához, hibakereséséhez és monitorozásához az Azure Batch-alkalmazások. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchExplorer/) Mac, Linux vagy Windows rendszerre.
-* [A Microsoft Azure Storage Explorer][storage_explorer]: Bár nem kimondottan Azure Batch-eszköz a Storage Explorer egy másik értékes eszköz kell számolnia, amíg a fejlesztés és hibakeresés a Batch-megoldások.
+* [Az Azure Batch hajógyárnak](https://github.com/Azure/batch-shipyard): A Batch hajógyárnak egy olyan eszköz kiépítése, hajtsa végre, és tároló-alapú kötegelt feldolgozások és a HPC számítási feladatok Azure Batch figyelésére.
+* [Az Azure Storage Explorer][storage_explorer]: Bár nem kimondottan Azure Batch-eszköz a Storage Explorer egy másik értékes eszköz kell számolnia, amíg a fejlesztés és hibakeresés a Batch-megoldások.
 
 ## <a name="additional-resources"></a>További források
 
@@ -81,7 +82,6 @@ Ezek a parancssori eszközök ugyanazt a funkcionalitást biztosítják, mint a 
 * Olvassa el [Az Azure Batch funkcióinak áttekintése](batch-api-basics.md) című témakört, amely hasznos információkkal szolgál a Batch használatára készülőknek. A cikk a Batch szolgáltatás erőforrásainak, például a készleteknek, csomópontoknak, feladatoknak, tevékenységeknek és sok olyan API funkciónak a részletesebb információit tartalmazza, amelyeket a Batch-alkalmazás kiépítésekor használhat.
 * [Ismerkedjen meg az Azure Batch .NET-es kódtárával](tutorial-parallel-dotnet.md), hogy megtudja, hogyan használhatja a C# nyelvet és a Batch .NET-es kódtárat egy egyszerű számítási feladat végrehajtásához egy általános Batch-munkafolyamattal. Egy [Python-verzió](tutorial-parallel-python.md) és egy [Node.js-oktatóanyag](batch-nodejs-get-started.md) is elérhető.
 * Töltse le a [GitHubon található kódmintákat][github_samples], hogy lássa, hogyan használható a C# és a Python a Batch eszközzel a mintául szolgáló számítási feladatok ütemezése és feldolgozása során.
-
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [api_java]: /java/api/overview/azure/batch

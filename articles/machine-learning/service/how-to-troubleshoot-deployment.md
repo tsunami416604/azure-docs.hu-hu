@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 83ee548befdc7ef0a4e7ed2d4b4e61b42a217f12
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 112fff011ebfedc1abf6981661da5fd4d97fc3d0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247068"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267140"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Az Azure Machine Learning szolgáltatás AKS és az aci Szolgáltatásban üzemelő példányainak hibaelhárítása
 
@@ -196,12 +196,15 @@ $ docker run -p 8000:5001 <image_id>
 Gyakran előfordul, a a `init()` függvényt a pontozó szkript `Model.get_model_path()` függvény egy modell fájlt vagy mappát a modell fájlok található a tároló neve. Ha ez a gyakran egy hiba forrását a modell fájl vagy mappa nem található. A legegyszerűbben úgy, hogy ez a hiba hibakeresési, hogy futtassa az alábbi a tároló shellben a Python-kód:
 
 ```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
 from azureml.core.model import Model
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
 Ez lenne nyomtassa ki a helyi elérési út (viszonyítva `/var/azureml-app`) a tárolóban, ahol a modell fájl vagy mappa megkereséséhez a pontozó szkript feltételez. Ezután már ellenőrizhető, ha a fájl vagy mappa valóban ahol azt kellene lennie.
 
+Naplózási beállítását a hibakeresési OK további információt tartalmaznak be kell jelentkeznie, amely lehet hasznos, ha a hiba azonosítása.
 
 ## <a name="function-fails-runinputdata"></a>Függvény futása: run(input_data)
 Ha a szolgáltatás sikeres üzembe helyezése, de azt meg ezeket az adatokat a pontozási végpontjához összeomlik, hiba, valamint rögzíti az utasítás is hozzáadhat a `run(input_data)` függvényt, hogy a részletes hibaüzenet Ehelyett adja vissza. Példa:

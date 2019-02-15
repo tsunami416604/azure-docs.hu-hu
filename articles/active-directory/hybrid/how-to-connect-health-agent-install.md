@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 565e33748d3a39c61c75313188980c51d5bea5b9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6c4a7239110e0d3e712c97007ecc858f104811cc
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203896"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301689"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Az Azure AD Connect Health-ügynök telepítése
 Ez a dokumentum végigvezeti az Azure AD Connect Health-ügynökök telepítésének és konfigurálásának folyamatán. Az ügynököt [innen](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent) töltheti le.
@@ -36,7 +36,7 @@ Az alábbi táblázat az Azure AD Connect Health használatának követelményei
 | Kimenő kapcsolódás az Azure szolgáltatásvégpontokra | A telepítés és a futásidő során az ügynöknek kapcsolódnia kell az Azure AD Connect Health szolgáltatás végpontjaihoz. Ha tűzfalakkal blokkolta a kimenő kapcsolatot, győződjön meg róla, hogy az alábbi végpontok fel vannak véve az engedélyezett listára. Lásd: [Kimenő kapcsolati végpontok](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) |
 |IP-címeken alapuló kimenő kapcsolatok | További információ az IP-cím-alapú tűzfalas szűrésről: [Azure-beli IP-tartományok](https://www.microsoft.com/download/details.aspx?id=41653).|
 | A kimenő forgalom SSL-vizsgálata le van tiltva, illetve a rendszer szűri | Az ügynök regisztrációja vagy adatfeltöltési műveletei meghiúsulhatnak, ha a hálózati rétegen SSL-ellenőrzés vagy megszakítás van érvényben a kimenő forgalomra. További információkat olvashat [az SSL-vizsgálat beállításáról](https://technet.microsoft.com/library/ee796230.aspx) |
-| Az ügynököt futtató kiszolgáló tűzfalportjai |Az ügynök a következőt tűzfalportok megnyitását igényli, hogy kommunikálhasson az Azure AD Health szolgáltatásvégpontjaival.<br /><br /><li>443-as TCP-port</li><li>5671-es TCP-port</li> <br />További információ a [tűzfalportok engedélyezéséről](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
+| Az ügynököt futtató kiszolgáló tűzfalportjai |Az ügynök a következőt tűzfalportok megnyitását igényli, hogy kommunikálhasson az Azure AD Health szolgáltatásvégpontjaival.<br /><br /><li>443-as TCP-port</li><li>5671-es TCP-port</li> <br />Vegye figyelembe, hogy 5671-es port már nem szükséges az ügynök legújabb verzióját. Frissítse a legújabb verzióra, így csak a 443-as portot kötelező megadni. További információ a [tűzfalportok engedélyezéséről](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
 | Az alábbi webhelyek engedélyezése, amennyiben az Internet Explorer - Fokozott biztonsági beállítások be van kapcsolva |Amennyiben az Internet Explorer – Fokozott biztonsági beállítások be van kapcsolva, az alábbi webhelyeket engedélyezni kell azon a kiszolgálón, amelyiken az ügynök telepítve lesz.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>A szervezet Azure Active Directory által megbízhatóként megjelölt összevonási kiszolgálója. Például: https:\//sts.contoso.com</li> Itt további információkat olvashat [az IE konfigurálásáról](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
 | Gondoskodjon arról, hogy a gépen a PowerShell 4.0-s vagy újabb verziója legyen telepítve | <li>A Windows Server 2008 R2 a PowerShell 2.0-t tartalmazza, amely nem megfelelő az ügynök számára. Információk a PowerShell frissítéséről: [Ügynökök telepítése Windows Server 2008 R2 kiszolgálókon](#agent-installation-on-windows-server-2008-r2-servers).</li><li>A Windows Server 2012 a PowerShell 3.0-t tartalmazza, amely nem megfelelő az ügynök számára.  [Frissítse](https://www.microsoft.com/download/details.aspx?id=40855) a Windows Management Framework keretrendszert.</li><li>A Windows Server 2012 R2 és az annál újabb változatok már a PowerShell megfelelően új verzióját tartalmazzák.</li>|
 |A FIPS letiltása|Az Azure AD Connect Health-ügynökök nem támogatják a FIPS-t.|

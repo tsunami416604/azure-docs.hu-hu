@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: bdd512972f1a684a3b76ae0323bbadd87bf0d659
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9ea9cc116a13aac2dca9edf8ba86c933310b5198
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238317"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269637"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliadetektálás az Azure Stream Analytics szolgáltatásban
 
-Az Azure Stream Analytics beépített machine learning-alapú anomáliadetektálás észlelési képességek, amelyek segítségével figyelheti a két leggyakrabban előforduló rendellenességek kínál: ideiglenes és állandó. Az a **AnomalyDetection_SpikeAndDip** és **AnomalyDetection_ChangePoint** funkciók, közvetlenül a Stream Analytics-feladatot a is végezhet rendellenesség-észlelést.
+Elérhető a felhőben és az Azure IoT Edge segítségével, az Azure Stream Analytics biztosít beépített machine learning-alapú anomáliadetektálás észlelési képességek, amelyek segítségével figyelheti a két leggyakrabban előforduló rendellenességek: ideiglenes és állandó. Az a **AnomalyDetection_SpikeAndDip** és **AnomalyDetection_ChangePoint** funkciók, közvetlenül a Stream Analytics-feladatot a is végezhet rendellenesség-észlelést.
 
 A machine learning-modellek tegyük fel, egységesen mintavételezett idősorozat. Ha az idősor nem egységes, beszúrhat egy összesítési lépés egy átfedésmentes ablak anomáliadetektálás hívása előtt.
 
@@ -36,13 +36,14 @@ A time series hiányosságok lehet a modell nem fogadott események bizonyos id�
 
 ## <a name="spike-and-dip"></a>Megnövekedett és dedikált IP-címmel
 
-Egy time series eseménystream ideiglenes protokollmegvalósításokat, csúcsok és süllyedések ismertek. Csúcsok és a DIP figyelhető a Machine Learning-alapú operátorral **AnomalyDetection_SpikeAndDip**.
+Egy time series eseménystream ideiglenes protokollmegvalósításokat, csúcsok és süllyedések ismertek. Csúcsok és a DIP figyelhető a Machine Learning-alapú operátorral [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+).
 
 ![Megnövekedett és a dip anomáliadetektálási – példa](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
 Az azonos csúszóablakban, a második ugrásszerű kisebb, mint az elsőt, ha a kiszámított pontszámot a kisebb kiugrást a nem elegendő az első kiugrás belül a megbízhatósági szint esetében a pontszámot képest megadott jelentős. A modell megbízhatósági szint beállítás ilyen rendellenességek olvasásra csökkenő próbálhatja ki. Azonban ha elkezdi túl sok értesítéseket kaphat, egy magasabb megbízhatósági intervallum használhatja.
 
-A következő példalekérdezés feltételezi, hogy egy 2 perces csúszóablakkal 120 eseményeit a másodpercenként 1 esemény bemeneti arány. A végső SELECT utasítás kibontása, és megjeleníti a pontszám és anomáliadetektálási 95 %-os megbízhatósági szint állapotát.
+A következő példalekérdezés feltételezi, hogy a bemeneti arány egy 2 perces csúszóablakban másodpercenként egy esemény-120 eseményeit. A végső SELECT utasítás kibontása, és megjeleníti a pontszám és anomáliadetektálási 95 %-os megbízhatósági szint állapotát.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -67,9 +68,9 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>Pont módosítása
 
-Egy time series eseménystream állandó rendellenességek olyan módosításokat az értékek eloszlását az eseménystream, például megváltozik, és trendeket. A Stream Analytics, az ilyen rendellenességek észlelése használata a Machine Learning-alapú **AnomalyDetection_ChangePoint** operátor.
+Egy time series eseménystream állandó rendellenességek olyan módosításokat az értékek eloszlását az eseménystream, például megváltozik, és trendeket. A Stream Analytics, az ilyen rendellenességek észlelése használata a Machine Learning-alapú [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) operátor.
 
-Állandó módosítások sokkal hosszabb ideig, mint a csúcsok és süllyedések és katasztrofális esemény arra utalhat. Állandó módosítások nem általában jól látható szemmel, de az észlelése a **AnomalyDetection_ChangePoint** operátor.
+Állandó módosítások sokkal hosszabb ideig, mint a csúcsok és süllyedések és katasztrofális esemény arra utalhat. Állandó módosítások nem láthatók általában szemmel, de az észlelése a **AnomalyDetection_ChangePoint** operátor.
 
 Az alábbi képen egy példa egy szint módosításának:
 
@@ -79,7 +80,7 @@ Az alábbi képen egy példa egy trend módosítása:
 
 ![Trend módosítás anomáliadetektálási – példa](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
 
-A következő példalekérdezés feltételezi, hogy egy 20 perces csúszóablakkal 1200-as események előzményei mérettel másodpercenként 1 esemény bemeneti arány. A végső SELECT utasítás kibontása, és megjeleníti a pontszám és anomáliadetektálási 80 %-os megbízhatósági szint állapotát.
+A következő példalekérdezés feltételezi, hogy a bemeneti arány egy esemény / másodperc egy 20 perces csúszóablakban 1200-as események előzményei mérettel. A végső SELECT utasítás kibontása, és megjeleníti a pontszám és anomáliadetektálási 80 %-os megbízhatósági szint állapotát.
 
 ```SQL
 WITH AnomalyDetectionStep AS

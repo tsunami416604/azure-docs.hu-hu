@@ -1,6 +1,6 @@
 ---
 title: Webalkalmazás-szolgáltatás-naplózás – Azure Machine Learning Studióban |} A Microsoft Docs
-description: Ismerje meg a Machine Learning webszolgáltatások naplózásának engedélyezése. Naplózás nyújt további információt talál az API-k hibaelhárítása.
+description: Ismerje meg, a Machine Learning Studio-webszolgáltatások naplózásának engedélyezése. Naplózás nyújt további információt talál az API-k hibaelhárítása.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -15,21 +15,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 80a5ec64a2afd2367acaedd6e44ffe1a21e9c622
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 53eedd4d00b212879389d29541c4ca55ea1bfde6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474385"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270092"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Az Azure Machine Learning Studio-webszolgáltatások naplózásának engedélyezése
-Ez a dokumentum információt nyújt a Machine Learning web Services naplózási képesség. Naplózás további információt, csak egy hiba száma és a egy üzenet, amely segíthet a hívásokat a Machine Learning API-k hibaelhárítása tartalmaz.  
+Ez a dokumentum információt nyújt a Machine Learning Studio-webszolgáltatások naplózási képesség. Naplózás további információt, csak egy hiba száma és a egy üzenet, amely segíthet a hívásokat a Machine Learning Studio API-k hibaelhárítása tartalmaz.  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Webszolgáltatások naplózásának engedélyezése
 
-A naplózás engedélyezése a [Azure Machine Learning webszolgáltatások](https://services.azureml.net) portálon. 
+A naplózás engedélyezése a [Azure Machine Learning Studio-webszolgáltatások](https://services.azureml.net) portálon. 
 
-1. Jelentkezzen be az Azure Machine Learning Web Services portálon, a [ https://services.azureml.net ](https://services.azureml.net). Klasszikus webszolgáltatás, akkor is használhatja a portál kattintva **új webes szolgáltatási környezetet biztosít** a Machine Learning webszolgáltatások lapon, a Machine Learning Studióban.
+1. Jelentkezzen be az Azure Machine Learning Studio-webszolgáltatások Portalra [ https://services.azureml.net ](https://services.azureml.net). Klasszikus webszolgáltatás, akkor is használhatja a portál kattintva **új webes szolgáltatási környezetet biztosít** a Machine Learning Studio-webszolgáltatások lapon, a Machine Learning Studióban.
 
    ![Új webes szolgáltatási környezetet biztosít hivatkozás](./media/web-services-logging/new-web-services-experience-link.png)
 

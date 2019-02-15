@@ -15,12 +15,12 @@ ms.date: 02/08/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 72c4bfc4151e8120f8641c743c0da3896bd71fe1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 89e75afd3b9001f7a0b8a027744ef71c8bb69690
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995030"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299564"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Az Azure Stack PowerShell telepítése
 
@@ -97,7 +97,7 @@ Telepítési három lépésből áll:
 
 Futtassa a következő PowerShell-parancsfájl ezeket a modulokat a fejlesztői munkaállomáson telepítendő:
 
-- Az Azure Stack 1901 vagy újabb verziója.
+- Az Azure Stack 1901 vagy újabb verziója:
 
     ```PowerShell
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
@@ -108,7 +108,7 @@ Futtassa a következő PowerShell-parancsfájl ezeket a modulokat a fejlesztői 
     > [!Note]  
     > Az Azure Stack modul 1.7.0-ás verzió használhatatlanná tévő változás történik. Migrálhat az Azure Stack 1.6.0-s tekintse meg a [áttelepítési útmutató](https://aka.ms/azspshmigration170).
 
-- Az Azure Stack 1811 vagy valamely korábbi rendszerrel.
+- Az Azure Stack 1811:
 
     ```PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
@@ -120,7 +120,7 @@ Futtassa a következő PowerShell-parancsfájl ezeket a modulokat a fejlesztői 
     Install-Module -Name AzureStack -RequiredVersion 1.6.0
     ```
 
-- Az Azure Stack 1809 vagy valamely korábbi rendszerrel.
+- Az Azure Stack 1810 vagy korábbi:
 
     ```PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet

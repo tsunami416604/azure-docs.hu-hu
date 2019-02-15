@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57c4f0595fdea3d266a56d125d6d86cba8b4f651
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 01cc85f7eba2aefd08192c4e3f4e5151e7645238
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195532"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269110"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Tervezési alapelvek
 A jelen dokumentum célja, hogy írja le, amely az Azure AD Connect megvalósítási tervezése során kell gondoltam területeket. Ez a dokumentum az egyes területeken egy részletes bemutatása, és ezek a fogalmak rövid leírását, valamint az egyéb dokumentumokat.
@@ -171,7 +171,7 @@ Ha az AD FS az Azure AD Connect-en kívül kezeli, vagy harmadik féltől szárm
 ![Harmadik féltől származó összevonási konfiguráció](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Új könyvtárak hozzáadása meglévő üzemelő példányt
-Tegyük fel, hogy telepítette az Azure AD Connect a ConsistencyGuid szolgáltatás engedélyezve van, és most szeretné a központi telepítés hozzáadása egy másik címtárban. Próbál meg hozzáadni a könyvtár, amikor az Azure AD Connect varázsló a címtárban az ms-DS-ConsistencyGuid attribútum állapotát ellenőrzi. Az attribútum konfigurálva van egy vagy több objektumot a címtárban, ha a varázsló azt állapítja meg az attribútum az egyéb alkalmazások használják, és hibát ad vissza, az alábbi ábrán szemléltetett módon. Ha biztos benne, hogy az attribútum nem használja meglévő alkalmazásokat, meg kell le a hiba részleteiért forduljon az ügyfélszolgálathoz.
+Tegyük fel, hogy telepítette az Azure AD Connect a ConsistencyGuid szolgáltatás engedélyezve van, és most szeretné a központi telepítés hozzáadása egy másik címtárban. Próbál meg hozzáadni a könyvtár, amikor az Azure AD Connect varázsló a címtárban az ms-DS-ConsistencyGuid attribútum állapotát ellenőrzi. Az attribútum konfigurálva van egy vagy több objektumot a címtárban, ha a varázsló azt állapítja meg az attribútum az egyéb alkalmazások használják, és hibát ad vissza, az alábbi ábrán szemléltetett módon. Ha biztos benne, hogy az attribútum nem használja meglévő alkalmazásokkal, tilthatja le a hiba az Azure AD Connect varázsló újraindításával a **/SkipLdapSearchcontact** megadva a fent leírtak szerint, vagy forduljon a További információ támogatása.
 
 ![Új könyvtárak hozzáadása meglévő üzemelő példányt](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 

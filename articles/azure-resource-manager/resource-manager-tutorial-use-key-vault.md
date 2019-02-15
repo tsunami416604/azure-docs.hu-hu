@@ -14,16 +14,14 @@ ms.date: 01/25/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 979867e7630c21b0bd724967dbc79c5f8155ca5e
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7371808db8d40948f501b051692172fd6a84e2ac
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237178"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270215"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Oktatóanyag: Integrálhatja az Azure Key Vault Resource Manager-sablon telepítése
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Ismerje meg, hogyan lehet beolvasni a titkos kulcsok Azure Key vault és a titkos kulcsok paraméterként átadni a Resource Manager üzembe helyezése során. Az érték sosem hagyja el, mert csak hivatkozhat a key vault azonosítója. További információért lásd azt a cikket, amely azzal foglalkozik, hogyan lehet [használni az Azure Key Vaultot biztonságos paraméterértékek megadásához az üzembe helyezés során](./resource-manager-keyvault-parameter.md).
 
@@ -192,6 +190,9 @@ New-AzResourceGroupDeployment `
     -TemplateFile azuredeploy.json `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
+
+> [!NOTE]
+> Van egy fájl i/o-probléma az Azure PowerShell használatával a Cloud shellben.  A hibaüzenet *dinamikus paramétereit a parancsmag nem olvashatók be. "Azure:/azuredeploy.json" elérési út nem található, mert nem létezik.*  Egy ideiglenes áthidaló megoldás lehet, hogy nem tartalmazza a **- TemplateFile** és **TemplateParameterFile** a kapcsolók a `New-AzResourceGroupDeploy` parancsot. A parancs felszólítja, írja be a fájl nevét.
 
 A sablon központi telepítése esetén használja a key vault ugyanabban az erőforráscsoportban. Ez egyszerűbbé teszi az erőforrások törlését. Kettő helyett csak egy erőforráscsoportot kell majd törölnie.
 

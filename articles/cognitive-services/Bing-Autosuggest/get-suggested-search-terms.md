@@ -10,54 +10,38 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 09/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: b5959e014b7e531b8f52fcbe6f6492576eedd61a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c7ac631ded5d781b2d2949d65f6197e194521055
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875671"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268923"
 ---
 # <a name="what-is-bing-autosuggest"></a>Mi a Bing Autosuggest?
 
-Ha lekérdezést küld valamelyik Bing Search API-nak, a Bing Autosuggest API használatával javíthatja a keresőmező-élményt. A Bing Autosuggest API visszaadja a javasolt lekérdezések egy listáját a felhasználó által a keresőmezőben megadott részleges lekérdezési sztring alapján. Jelenítse meg a javaslatokat a keresőmező legördülő listájában. A javasolt kifejezések más felhasználók kereséseinek javasolt lekérdezésein és a felhasználói szándékon alapulnak.
+Ha az alkalmazás lekérdezéseket küld a Bing Search APIs valamelyik, a Bing Autosuggest API segítségével a felhasználók keresési élmény javításához. A Bing Autosuggest API kifejezést a keresőmezőbe a részleges lekérdezési karakterlánc alapján javasolt lekérdezések listáját adja vissza. Megadott karakterek szöveget a keresőmezőbe, mivel javaslatok megjelenítheti egy legördülő listában.
 
-Általában ezt az API-t hívja meg minden alkalommal, amikor egy felhasználó beír egy új karaktert a keresőmezőbe. A lekérdezési sztring teljessége hatással van az API által visszaadott javasolt lekérdezési kifejezések relevanciájára. Minél teljesebb a lekérdezési sztring, annál relevánsabb lesz a javasolt lekérdezési kifejezések listája. Az *s* sztringre például az API valószínűleg kevésbé releváns javaslatokat fog visszaadni, mint a *sailing dinghies* (vitorlás csónakok) sztringre.
+## <a name="bing-autosuggest-api-features"></a>A Bing Autosuggest API-funkciók
 
-## <a name="getting-suggested-search-terms"></a>A javasolt keresési kifejezések lekérése
+| Szolgáltatás                                                                                                                                                                                 | Leírás                                                                                                                                                            |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Keresési kifejezések valós idejű felkínálása](concepts/get-suggestions.md) | Javíthatja az alkalmazás: az automatikus kiegészítés API használatával, éppen gépelt javasolt keresési kifejezéseket jeleníti meg. |
 
-A következő példa egy olyan kérést mutat be, amely a *sail* sztringre adja vissza a javasolt lekérdezési sztringeket. Ne felejtse el URL-címként kódolni a felhasználó részleges lekérdezési kifejezését a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#query) lekérdezési paraméter beállításakor. Ha például a felhasználó a *sailing les* sztringet adta meg, állítsa a `q` paramétert `sailing+les` vagy `sailing%20les` értékre.
+## <a name="workflow"></a>Munkafolyamat
 
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-X-MSEdge-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
+A Bing Autosuggest API egy olyan webes RESTful szolgáltatás, könnyen minden programozási nyelvet, amely HTTP-kérelmeket és JSON elemzése, hívja meg. 
 
-Az alábbi válasz [SearchAction](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#searchaction)-objektumok egy listáját tartalmazza, amelyek a javasolt lekérdezési kifejezéseket tartalmazzák.
+1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+2. A kérés küldése az API-t minden alkalommal, amikor a felhasználó beír egy új karaktert a keresőmezőbe az alkalmazás.
+3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
-```json
-{
-    "url" : "https:\/\/www.bing.com\/search?q=sailing+lessons+seattle&FORM=USBAPI",
-    "displayText" : "sailing lessons seattle",
-    "query" : "sailing lessons seattle",
-    "searchKind" : "WebSearch"
-}, ...
-```
+Általában akkor hívható meg az API-t minden alkalommal, amikor a felhasználó beír egy új karaktert a keresőmezőbe az alkalmazás. Több karakterből álló megadta, mivel az API több megfelelő ajánlott keresési lekérdezések adja vissza. Például előfordulhat, hogy visszaadni a javaslatok API egyetlen `s` valószínűleg kevésbé fontos, mint megjelennek a `sail`.
 
-Minden javaslat tartalmaz egy `displayText`, `query` és `url` mezőt. A `displayText` mező tartalmazza a javasolt lekérdezést, amelyet a keresőmező legördülő listájának feltöltéséhez használ. A válaszban szereplő összes javaslatot meg kell jelenítenie az adott sorrendben.
-
-Az alábbi példa egy legördülő keresőmezőt mutat a javasolt lekérdezési kifejezésekkel.
+Az alábbi példa bemutatja egy legördülő keresőmezőbe javasolt lekérdezés feltételeket, a Bing Autosuggest API.
 
 ![Autosuggest legördülő keresőmező-lista](./media/cognitive-services-bing-autosuggest-api/bing-autosuggest-drop-down-list.PNG)
 
-Ha a felhasználó kiválaszt egy javasolt lekérdezést a legördülő listából, használja a lekérdezési kifejezést a `query` mezőben a [Bing Web Search API](../bing-web-search/search-the-web.md) meghívásához és a találatok megjelenítéséhez. Használhatja az URL-címet is az `url` mezőben, ha a felhasználót inkább a Bing keresési eredményeinek oldalára szeretné küldeni.
-
-## <a name="throttling-requests"></a>Kérelmek szabályozása
-
-[!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
+Ha a felhasználó kiválaszt egy javaslatot a legördülő listából, kezdje a keresést egy, a Bing keresési API-k használatával, vagy lépjen közvetlenül a Bing keresési eredmények oldalát.
 
 ## <a name="next-steps"></a>További lépések
 

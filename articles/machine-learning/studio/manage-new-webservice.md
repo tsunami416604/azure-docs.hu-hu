@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: c682bca1f3d4f0e2659ed107a2b15e4e4e28b0d9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0ffa917aa6bcfb642cd672d0a51a70b13f041635
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492487"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267563"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Az Azure Machine Learning Studio webszolgáltatás-portál használatával webszolgáltatás kezelése
 A Machine Learning új és a klasszikus webszolgáltatások a Microsoft Azure Machine Learning Web Services portál használata kezelheti. A klasszikus webszolgáltatások és új Web services különböző mögöttes technológiák alapján, mivel mindegyikhez rendelkezik némileg eltérő felügyeleti képességeket.
@@ -28,7 +28,8 @@ A Machine Learning webszolgáltatások portál a következőket teheti:
 * Hozzon létre, delete vagy update számlázási csomagok (csak új).
 * Adja hozzá, és törölje a végpontot (csak Klasszikus modell)
 
-
+>[!NOTE]
+>A klasszikus webszolgáltatások is kezelheti [Machine Learning Studio](http://studio.azureml.net) a a **webszolgáltatások** fülre.
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Új erőforrás-kezelő kezeléséhez engedélyekkel-alapú webszolgáltatások
 

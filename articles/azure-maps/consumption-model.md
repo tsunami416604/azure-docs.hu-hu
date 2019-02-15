@@ -1,6 +1,6 @@
 ---
-title: A Maps-Azure felhasználási modell |} Microsoft Docs
-description: További tudnivalók a Maps-Azure felhasználási modell
+title: Az Azure Maps-felhasználási modellből |} A Microsoft Docs
+description: További tudnivalók az Azure Maps a használatalapú modell
 author: subbarayudukamma
 ms.author: skamma
 ms.date: 05/08/2018
@@ -8,38 +8,38 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: cf20c7dbfbf7cd3f09579b03b835148c1c295137
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f75f656312c11a4668ca9ef9fe7b2a61a7d13e8
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600629"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301139"
 ---
 # <a name="consumption-model"></a>Használatalapú modell
 
-Online útválasztás paraméterek biztosít részletes leírása a vehicle-specifikus fogyasztás modell.
-A **vehicleEngineType** értékétől függően két fő fogyasztási modell támogatott: _Combustion_ és _Electric_. Ha ugyanazon kérésben különböző modellekhez tartozó paramétereket ad meg, az hibát eredményez.
+Online útválasztás biztosít a különböző paraméterek jármű-specifikus használati modellre részletes leírását.
+Attól függően, értékét **vehicleEngineType**, két egyszerű felhasználás-modellek támogatottak: _Égésű_ és _Electric_. Ha ugyanazon kérésben különböző modellekhez tartozó paramétereket ad meg, az hibát eredményez.
 A fogyasztási modell nem használható, ha a **travelMode** értéke _bicycle_ vagy _pedestrian_.
 
-## <a name="parameter-constraints-for-consumption-model"></a>Felhasználás modell paraméteréhez kielégíthetetlen korlátozások tartoznak
+## <a name="parameter-constraints-for-consumption-model"></a>A használatalapú modell paraméter megkötései
 
-Mindkét fogyasztás modellek explicit megadása az egyes paraméterek meg kell más is. Ezeket a függőségeket a következők:
+Mindkét fogyasztási modell explicit módon adja meg az egyes paraméterek használatához szükséges megadása mások is. Ezeket a függőségeket a következők:
 
-* Minden paraméter szükséges **constantSpeedConsumption** a felhasználó által meghatározott. Bármely más fogyasztás modell paramétert meg a hiba **vehicleWeight**, ha **constantSpeedConsumption*** nincs megadva.
-* **accelerationEfficiency** és **decelerationEfficiency** (azaz mind "vagy" none) párban mindig meg kell adni.
-* Ha **accelerationEfficiency** és **decelerationEfficiency** van adva, az értékek szorzatát nem lehet nagyobb, mint 1 (az perpetual mozgásérzékelési elkerülése érdekében).
-* **uphillEfficiency** és **downhillEfficiency** (azaz mind "vagy" none) párban mindig meg kell adni.
-* Ha **uphillEfficiency** és **downhillEfficiency** van adva, az értékek szorzatát nem lehet nagyobb, mint 1 (az perpetual mozgásérzékelési elkerülése érdekében).
-* Ha a **felhasználó** megadja a hatékonysági paramétereket, akkor a \***vehicleWeight** értékét is meg kell adnia. a a **vehicleEngineType értéke** _combustion_, akkor a **fuelEnergyDensityInMJoulesPerLiter** értékét is meg kell adnia.
-* **maxChargeInkWh** és **currentChargeInkWh** (azaz mind "vagy" none) párban mindig meg kell adni.
+* Összes paraméter szükséges **constantSpeedConsumption** a felhasználó által meghatározott. Bármely más felhasználási modell paraméter megadásához, a hiba **vehicleWeight**, ha **constantSpeedConsumption** nincs megadva.
+* **accelerationEfficiency** és **decelerationEfficiency** (vagyis mindkét vagy nincs) párban mindig meg kell adni.
+* Ha **accelerationEfficiency** és **decelerationEfficiency** meg van adva, az értékek szorzatát nem lehet nagyobb, mint 1 (perpetual mozgásban lévő adatoknak egyaránt megakadályozására).
+* **uphillEfficiency** és **downhillEfficiency** (vagyis mindkét vagy nincs) párban mindig meg kell adni.
+* Ha **uphillEfficiency** és **downhillEfficiency** meg van adva, az értékek szorzatát nem lehet nagyobb, mint 1 (perpetual mozgásban lévő adatoknak egyaránt megakadályozására).
+* Ha a \* __hatékonyság__ paraméterek vannak a felhasználó által megadott, majd **vehicleWeight** is meg kell adni. a a **vehicleEngineType értéke** _combustion_, akkor a **fuelEnergyDensityInMJoulesPerLiter** értékét is meg kell adnia.
+* **maxChargeInkWh** és **currentChargeInkWh** (vagyis mindkét vagy nincs) párban mindig meg kell adni.
 
 > [!NOTE]
-> Ha csak **constantSpeedConsumption** van megadva, nincs más fogyasztás szempontokat lejtők és gyorsítása hasonlóan a fogyasztás számítások figyelembe kell venni.
+> Ha csak **constantSpeedConsumption** van megadva, nincs más felhasználási szempontokat például lejtők és gyorsítása fogyasztás számítások esetében figyelembe kell venni.
 
-## <a name="combustion-consumption-model"></a>Égésű fogyasztás modell
+## <a name="combustion-consumption-model"></a>Égésű fogyasztási modell
 
 A Belső égésű fogyasztási modellt akkor használja a rendszer, ha a **vehicleEngineType** értéke _combustion_.
-Ez a modell tartozó paraméterek listáját a rendszer alatt. Tekintse meg a Paraméterek szakaszban részletes leírását.
+Ez a modell tartoznak paraméterek listája az alábbiakban olvashatják. Tekintse meg a Paraméterek szakaszban részletes leírást.
 
 * constantSpeedConsumptionInLitersPerHundredkm
 * VehicleWeight
@@ -51,10 +51,10 @@ Ez a modell tartozó paraméterek listáját a rendszer alatt. Tekintse meg a Pa
 * uphillEfficiency
 * downhillEfficiency
 
-## <a name="electric-consumption-model"></a>Elektromos fogyasztás modell
+## <a name="electric-consumption-model"></a>Electric fogyasztási modell
 
 Az Elektromos fogyasztási modellt akkor használja a rendszer, ha a **vehicleEngineType** értéke _electric_.
-Ez a modell tartozó paraméterek listáját a rendszer alatt. Tekintse meg a Paraméterek szakaszban részletes leírását.
+Ez a modell tartoznak paraméterek listája az alábbiakban olvashatják. Tekintse meg a Paraméterek szakaszban részletes leírást.
 
 * constantSpeedConsumptionInkWhPerHundredkm
 * VehicleWeight
@@ -66,7 +66,7 @@ Ez a modell tartozó paraméterek listáját a rendszer alatt. Tekintse meg a Pa
 * uphillEfficiency
 * downhillEfficiency
 
-## <a name="sensible-values-of-consumption-parameters"></a>Felhasználás paraméterek nem ésszerű értékét
+## <a name="sensible-values-of-consumption-parameters"></a>Késleltetésnél paraméterek értékeit, használatalapú
 
-Egy meghatározott fogyasztás paraméterek el lehet utasítani, annak ellenére, akkor előfordulhat, hogy teljesíti explicit fent megadott. Akkor történik, ha egy adott paraméterről, vagy akár kombinálhatja is több paraméterek értékének minősül, előfordulhat, hogy ésszerűtlenül értékek felhasználása értékek. Ebben az esetben, ha azt valószínűleg jelzi bemeneti hiba, megfelelő ügyelni arra, hogy megfeleljen az összes ésszerű fogyasztás paraméterek értékét. Abban az esetben egy meghatározott fogyasztás paraméterek elutasítva, a hozzá tartozó hibaüzenet szöveges magyarázata a OK(ok) fogja tartalmazni.
-A részletes leírását, a paraméterek rendelkezik néhány lehetséges ésszerű érték mind a két modellben.
+Egy adott készletét fogyasztás paraméterek el lehet utasítani, annak ellenére, előfordulhat, hogy teljesíti a fent megadott összes explicit követelményeket. Ez történik, ha egy bizonyos paraméterét, vagy a paraméterek számos kombinációjából értékének kell tekinteni feldühítheti massively fogyasztás értékek vezetnek. Ha ez történik, azt valószínűleg azt jelzi, hogy bemeneti hiba, megfelelő ügyelni arra, hogy megfeleljen az összes késleltetésnél paraméterek értékeit, használatalapú. Abban az esetben, ha egy adott fogyasztás paraméterek készletét elutasítva, a hibaüzenetben a OK(ok) szöveges leírását tartalmazza.
+A részletes leírását a paramétereket, van néhány lehetséges késleltetésnél érték mind a két modellben.

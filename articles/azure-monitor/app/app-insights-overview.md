@@ -11,17 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/23/2019
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: b3ad10c62d393e2508d3ea04f0e49d3ffbf184cd
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d1c7340038731ebde10a7ffcb0ef2adcde18e901
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886365"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267495"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
-Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. A különböző platformokon, beleértve a .NET, Node.js és a j2ee-kiszolgálókon, számos olyan alkalmazásokkal működik a helyszíni, hibrid vagy bármely nyilvános felhőben üzemeltetett. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
+Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. A különböző platformokon, beleértve a .NET, Node.js és Java EE-alapú, számos olyan alkalmazásokkal működik a helyszíni, hibrid vagy bármely nyilvános felhőben üzemeltetett. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
 
 [Tekintse meg a bevezető animációt](https://www.youtube.com/watch?v=fX2NtGrh-Y0).
 
@@ -46,7 +46,7 @@ A fejlesztőcsapatoknak készült Application Insights segít az adott alkalmaz�
 
 * **Kérések sebessége, válaszidők és hibaarányok** – megtudhatja, hogy mely lapok, mely napszakokban a legnépszerűbbek, és hol találhatók a felhasználók. Megtekintheti, hogy mely lapok teljesítenek a legjobban. Ha több kérés esetén a válaszidők és a hibaarányok értéke megnő, valószínűleg erőforrás-gazdálkodási hibáról van szó. 
 * **Függőségi értékek, válaszidők és hibaarányok** – megtudhatja, hogy mely külső szolgáltatások okoznak lassulást.
-* **Kivételek** – elemezheti az összesített statisztikákat, vagy konkrét példányok kijelölése után részletesen tekintheti meg a hívásláncot és a kapcsolódó kéréseket. A kiszolgálói és a böngészői kivételekről egyaránt készül jelentés.
+* **Kivételek** – elemezheti az összesített statisztikákat, vagy konkrét példányok és részletesen a hívásláncot és a kapcsolódó kéréseket. A kiszolgálói és a böngészői kivételekről egyaránt készül jelentés.
 * **Lapmegtekintések és betöltési teljesítmény** – a felhasználói böngészők jelentése alapján készül.
 * Weblapokról származó **AJAX-hívások** – értékek, válaszidők és hibaarányok.
 * **Felhasználók és munkamenetek száma**.
@@ -89,7 +89,7 @@ Telepítse az Application Insightsot az alkalmazásba, állítsa be a [rendelkez
 Riasztások fogadásakor vagy problémák észlelésekor:
 
 * Felmérheti, hogy hány felhasználó érintett.
-* Elvégezheti a kivételek, a függőségi hívások és a nyomkövetési adatok korrelációját.
+* Hibák korrelálására kivételek, függőségi hívások és a nyomkövetéseket.
 * A profilkészítő, a pillanatképek, a veremkiíratások és a nyomkövetési naplók vizsgálata.
 
 ### <a name="build-measure-learn"></a>Fejlesztés, mérés, tapasztalatszerzés
@@ -107,13 +107,13 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
 * **Futtatáskor: webalkalmazás vizsgálata a kiszolgálón.** Elkerülheti a kódfrissítéseket. Adminisztrátori hozzáféréssel kell rendelkeznie a kiszolgálón.
   * [**IIS a helyszínen vagy egy virtuális gépen**](../../azure-monitor/app/monitor-performance-live-website-now.md)
   * [**Azure-webalkalmazás vagy virtuális gép**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-  * [**J2EE**](../../azure-monitor/app/java-live.md)
+  * [**Java EE**](../../azure-monitor/app/java-live.md)
 * **Fejlesztéskor: az Application Insights hozzáadása a kódhoz.** Egyéni telemetriai adatok használatát, valamint háttérbeli szolgáltatások és asztali alkalmazások vizsgálatát teszi lehetővé.
   * [Visual Studio](../../azure-monitor/app/asp-net.md) 2013 2. frissítés vagy újabb.
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
   * [Más platformok](../../azure-monitor/app/platforms.md)
-* **[Vizsgálhatja a weblapokat](../../azure-monitor/app/javascript.md)** lapmegtekintés, AJAX-használat és egyéb ügyféloldali telemetria tekintetében.
+* **[Alakítsa ki a weblapok](../../azure-monitor/app/javascript.md)**  oldal nézet, AJAX és más ügyféloldali telemetria.
 * **[Elemezheti a mobilalkalmazások használatát](../../azure-monitor/learn/mobile-center-quickstart.md)** a Visual Studio App Center integrálásával.
 * **[Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md)** – rendszeresen pingelheti webhelyét kiszolgálóinkról.
 
@@ -122,7 +122,7 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
 Első lépések futtatáskor:
 
 * [IIS-kiszolgáló](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [J2EE-kiszolgáló](../../azure-monitor/app/java-live.md)
+* [Java EE-alapú kiszolgálón](../../azure-monitor/app/java-live.md)
 
 Első lépések fejlesztéskor:
 

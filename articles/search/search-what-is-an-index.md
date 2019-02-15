@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 02/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 77f4b597ad4b87db7e720dd57191c6b192a4c93b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fd5f58a03ffd054e79f1ff4ea6d61c33c06b6e7c
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000950"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268549"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Hozzon létre egy alapszintű indexet az Azure Search szolgáltatásban
 
@@ -23,6 +23,12 @@ Az Azure Search- *index* állandó tárolója van *dokumentumok* és egyéb szer
 Hozzáadásakor, vagy töltse fel az indexet, az Azure Search fizikai struktúrák, adja meg a séma alapján hoz létre. Például ha egy mezőt az indexben lévő kereshető megjelölve, fordított index jön létre az adott mező. Később hozzáadásakor vagy dokumentumok feltöltése vagy keresési lekérdezéseknek az Azure Search küld kérelmeket az adott indexének a search szolgáltatás. Mezők értékekkel dokumentum betöltése nevezzük *indexelő* vagy adatfeltöltés.
 
 A portálon is létrehozhat egy indexet [REST API-val](search-create-index-rest-api.md), vagy [.NET SDK-val](search-create-index-dotnet.md).
+
+## <a name="recommended-workflow"></a>Ajánlott munkafolyamat
+
+Fizikai struktúrák indexelés során jönnek létre, mert szüksége lesz [dobja el és hozza létre újból az indexek](search-howto-reindex.md) minden alkalommal, amikor változtatásokat hajtunk egy meglévő mező definícióját. Ez azt jelenti, hogy, a fejlesztés során meg kell terveznie a gyakori újraépíteni. Érdemes lehet a győződjön meg arról, hogy az adatok egy részéből működő újraépíti go gyorsabban. 
+
+-Kód helyett a portál indexelő is ajánlott. Használ, a portálon az index definícióját, ha akkor adja meg az egyes készítse el az index definícióját. Alternatív megoldásként hasonló eszköz használatával [Postman és a REST API-val](search-fiddler.md) proof-of-concept tesztelési-fejlesztési projektek esetén továbbra is a korai szakaszában hasznosak. Végezhet a növekményes változásokat egy indexdefiníciót a kérelemtörzsbe az küldött kérelem küldése a szolgáltatás hozza létre újból az indexet egy frissített sémáját használja.
 
 ## <a name="components-of-an-index"></a>Az index összetevői
 
@@ -133,8 +139,20 @@ Részletesebb információkat az Azure Search által [támogatott adattípusokr�
 
 Részletesebb információkat az Azure Search [indexattribútumairól itt](https://docs.microsoft.com/rest/api/searchservice/Create-Index) talál.
 
+## <a name="storage-implications-of-index-attributes"></a>Storage – következmények indexattribútumokat
+
+A kiválasztott attribútumok hatással a storage. Az alábbi képernyőképen egy index tárolási minták származó különböző attribútumkombinációval ábrája. Az index alapján a [beépített realestate-minta](search-get-started-portal.md) indexelésére használhatja, adatforrás és lekérdezés a portálon.
+
+Szűrési és rendezési műveleteket lekérdezés a pontos egyezések így átvenni tárolt dokumentumok. Kereshető mezőket a teljes szöveges és az intelligens keresés engedélyezése. Fordított indexek kereshető mezők létrehozása és tokenekre adatokkal feltöltve. Jelölés mező lekérdezhetőként nem befolyásolja érzékelhető index mérete.
+
+![Index mérete alapján attribútum kiválasztása](./media/search-what-is-an-index/realestate-index-size.png "Index mérete alapján attribútum kiválasztása")
+
+Tárolás megvalósítása az Azure Search egy implementálási részlete minősülnek, és előzetes értesítés nélkül változhatnak. Nincs garancia arra, hogy a jelenlegi működése a jövőben megmaradnak.
+
 ## <a name="suggesters"></a>Javaslattevők
-A javaslattevő egy a sémát, amely meghatározza, hogy melyik index mezőinek automatikus kiegészítés vagy a szövegkiegészítéses lekérdezések támogatásához a keresésekben használt szakaszában. Általában részleges keresési karakterláncokat kell küldeni a javaslatok (Azure Search szolgáltatás REST API) a felhasználó éppen gépel egy keresési lekérdezést, majd azt az API-t a javasolt kifejezések készletét adja vissza. A javaslattevő, amelyeket az index határozza meg, melyik mezők vannak segítségével hozhatók létre a beírás közbeni keresési kifejezéseket. További információkért lásd: [adja hozzá a javaslattevők](index-add-suggesters.md) konfigurációját.
+A javaslattevő egy a sémát, amely meghatározza, hogy melyik index mezőinek automatikus kiegészítés vagy a szövegkiegészítéses lekérdezések támogatásához a keresésekben használt szakaszában. Általában részleges keresési karakterláncokat kell küldeni a javaslatok (Azure Search szolgáltatás REST API) a felhasználó éppen gépel egy keresési lekérdezést, majd azt az API-t a javasolt kifejezések készletét adja vissza. 
+
+A javaslattevő, amelyeket az index határozza meg, melyik mezők vannak segítségével hozhatók létre a beírás közbeni keresési kifejezéseket. További információkért lásd: [adja hozzá a javaslattevők](index-add-suggesters.md) konfigurációját.
 
 ## <a name="scoring-profiles"></a>Pontozási profilok
 

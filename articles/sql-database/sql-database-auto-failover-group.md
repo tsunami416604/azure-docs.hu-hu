@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 2857b7f5347cf546a9745dcbea02f636a798f4a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0cffb4fdff4bddc33c6938e27425035c929808b7
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004247"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301927"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok segítségével átlátható és koordinált több adatbázis feladatátvételét engedélyezése
 
@@ -60,14 +60,18 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
   Az SQL Database-kiszolgálóhoz vagy a felügyelt példányhoz, amelyen a másodlagos adatbázisok a feladatátvételi csoportban. A másodlagos és az elsődleges ugyanabban a régióban nem lehet.
 
-- **Adatbázisok hozzáadása SQL Database-kiszolgálón a feladatátvételi csoporthoz**
+- **Önálló adatbázisok hozzáadása a feladatátvételi csoporthoz**
 
-  Is elhelyezhető, számos önálló adatbázisok és az adatbázisok rugalmas készletben lévő SQL Database ugyanarra a kiszolgálóra ugyanabban a feladatátvételi csoportban. Ha egy önálló adatbázis ad hozzá a feladatátvételi csoporthoz, automatikusan létrehoz egy másodlagos adatbázist ugyanakkorák edition és a számítási. Ha az elsődleges adatbázis egy rugalmas készletben, a másodlagos automatikusan létrejön a rugalmas készlet ugyanazzal a névvel. Hozzáad egy adatbázist, amely már rendelkezik egy másodlagos adatbázist a másodlagos kiszolgálóra, ha, georeplikáció örökli a csoport. Amikor hozzáad egy adatbázist, amely már rendelkezik egy másodlagos adatbázis egy kiszolgálót, amely nem a feladatátvételi csoport része, egy új másodlagos jön létre a másodlagos kiszolgálón.
+  Is elhelyezhető, több különálló adatbázisok az SQL Database ugyanarra a kiszolgálóra ugyanabban a feladatátvételi csoportban. Ha egy adatbázist a feladatátvételi csoporthoz adja hozzá, automatikusan létrehoz egy másodlagos adatbázis ugyanakkorák edition és a számítási használata a másodlagos kiszolgálón.  A feladatátvételi csoport létrehozásakor megadott kiszolgálón. Ha hozzáad egy adatbázist, amely már rendelkezik egy másodlagos adatbázist a másodlagos kiszolgálón, a georeplikációs hivatkozás örökli a csoport. Amikor hozzáad egy adatbázist, amely már rendelkezik egy másodlagos adatbázis egy kiszolgálót, amely nem a feladatátvételi csoport része, egy új másodlagos jön létre a másodlagos kiszolgálón.
   
 > [!IMPORTANT]
   > Felügyelt példány, az összes felhasználói adatbázisban lesznek replikálva. A feladatátvételi csoport nem választhat replikációs felhasználói adatbázisokat egy részét.
 
-- **Feladatátvételi csoport olvasási és írási figyelője**
+- **A rugalmas készletben található adatbázisok hozzáadása a feladatátvételi csoport**
+
+  Is elhelyezhető, az összes vagy több adatbázis egy rugalmas készletben lévő azonos feladatátvételi csoport. Ha az elsődleges adatbázis egy rugalmas készletben, a másodlagos automatikusan létrejön a rugalmas készletben az azonos nevű (másodlagos készlet). Biztosítania kell, hogy a másodlagos kiszolgáló tartalmaz egy azonos pontos nevét és a másodlagos adatbázisok a feladatátvételi csoport által létrehozott üzemeltetésére elegendő szabad kapacitás tartalmazó rugalmas készlet. Ha hozzáadta az adatbázist a készlet, amely már rendelkezik egy másodlagos adatbázist a másodlagos készletben, a georeplikációs hivatkozás örökli a csoport. Amikor hozzáad egy adatbázist, amely már rendelkezik egy másodlagos adatbázis egy kiszolgálót, amely nem a feladatátvételi csoport része, egy új másodlagos a másodlagos készlet jön létre.
+  
+  - **Feladatátvételi csoport olvasási és írási figyelője**
 
   Egy DNS CNAME-rekordot, amely az aktuális elsődleges URL-cím formátumú. Lehetővé teszi az olvasási és írási SQL alkalmazásokat az elsődleges változásakor a feladatátvételt követően az elsődleges adatbázis transzparens módon csatlakoznak.
 
