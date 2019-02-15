@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 4f92860ac128bdb6e4e2e059592745285779688d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0ef11355d7a65bd2c9b7ddfb6c4db2ba02538062
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001977"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270368"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -42,7 +42,7 @@ Sok Azure-erőforrások látni fogja az áttekintő oldala az Azure Portalon az 
 
 Az Azure Monitor által gyűjtött naplóadatok elemezhetők a [lekérdezések](log-query/log-query-overview.md) gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat.  Hozhat létre és tesztelhet használatával [log analytics](log-query/portals.md) az Azure Portalon, majd vagy a közvetlenül elemezheti az adatokat ezekkel az eszközökkel, vagy mentheti a lekérdezéseket a segítségével [Vizualizációk](visualizations.md) vagy [riasztás szabályok](platform/alerts-overview.md).
 
-Az Azure Monitor-verzióját használja, a [adatkezelő lekérdezési nyelv](/azure/kusto/query/) , amely ideális választás a egyszerű napló kérdezi le, de tartoznak az olyan speciális funkciókat, például összesítés, illesztés és intelligens elemzés. Segítségével gyorsan megismerkedhet a lekérdezési nyelv használatával [több leckék](log-query/get-started-queries.md).  Azon felhasználók számára, akik már ismerik az [SQL](log-query/sql-cheatsheet.md) és [Splunk](log-query/splunk-cheatsheet.md) használatát, külön útmutató áll rendelkezésére.
+Az Azure Monitor-verzióját használja, a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) használják az Azure az adatkezelőt, amely lehetővé teszi egyszerű napló kérdezi le, de tartoznak az olyan speciális funkciókat, például összesítés, illesztés és intelligens elemzés. Segítségével gyorsan megismerkedhet a lekérdezési nyelv használatával [több leckék](log-query/get-started-queries.md).  Azon felhasználók számára, akik már ismerik az [SQL](log-query/sql-cheatsheet.md) és [Splunk](log-query/splunk-cheatsheet.md) használatát, külön útmutató áll rendelkezésére.
 
 ![Logs](media/overview/logs.png)
 

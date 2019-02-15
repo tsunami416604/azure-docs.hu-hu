@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: 1874473b3ad091ce1da0a48367548cd4432737a2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9918dd55181eb82257f23f8974159ed5e762fedd
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016494"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268081"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-usql-activity.md)
 > * [Aktuális verzió](transform-data-using-data-lake-analytics.md)
 
@@ -37,8 +37,8 @@ Az alábbi táblázat ismerteti a JSON-definíciójában használt általános t
 | Tulajdonság                 | Leírás                              | Szükséges                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **type**                 | A type tulajdonságot kell beállítani: **AzureDataLakeAnalytics**. | Igen                                      |
-| **Fióknév**          | Az Azure Data Lake Analytics-fiók neve.  | Igen                                      |
-| **dataLakeAnalyticsUri** | Az Azure Data Lake Analytics URI.           | Nem                                       |
+| **accountName**          | Azure Data Lake Analytics Account Name.  | Igen                                      |
+| **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI.           | Nem                                       |
 | **subscriptionId**       | Azure-előfizetés azonosítója                    | Nem                                       |
 | **resourceGroupName**    | Azure-erőforráscsoport neve                | Nem                                       |
 
@@ -131,7 +131,7 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 | runtimeVersion      | Futtatókörnyezet-verzióját a U-SQL-motort használja. | Nem       |
 | compilationMode     | <p>Fordítási mód az U-SQL. Ezek az értékek egyikének kell lennie: **Szemantikai:** Csak a szükséges megerősítések, és a szemantikai ellenőrzési végre **teljes:** Hajtsa végre a teljes fordítás, beleértve a szintaxis-ellenőrzés, optimalizálás, generování kódu, stb., **SingleBox:** Hajtsa végre a teljes fordítás SingleBox TargetType beállítással együtt. Ez a tulajdonság értékét nem adja meg, ha a kiszolgáló meghatározza, hogy az optimális fordítási mód. | Nem |
 
-A Data Factory elküldi a lásd [SearchLogProcessing.txt szkriptet definíciójának](#sample-u-sql-script) a parancsfájl-definíciójában. 
+Lásd: [SearchLogProcessing.txt](#sample-u-sql-script) a parancsfájl-definíciójában. 
 
 ## <a name="sample-u-sql-script"></a>Példa U-SQL parancsfájl
 

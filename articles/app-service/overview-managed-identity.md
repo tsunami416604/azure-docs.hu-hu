@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 68f640f6962802c45ca369786c4e5d0d4f785fa6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3f064769728d5d081c4a110e6c981c4b36aad384
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105077"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300584"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata az App Service-ben és az Azure Functions
 
@@ -280,8 +280,8 @@ Microsoft.Azure.Services.AppAuthentication és teszi elérhetővé a műveletek 
 
 Az alkalmazás felügyelt identitással rendelkezik definiált két környezeti változó:
 
-- MSI_ENDPOINT
-- MSI_SECRET
+- MSI_ENDPOINT – a jogkivonat-szolgáltatás URL-CÍMÉT.
+- MSI_SECRET - fejléc segítségével mérsékelhetik a kiszolgálóoldali kérések hamisítása (SSRF) használt. Az érték a platform rotálásakor.
 
 A **MSI_ENDPOINT** egy helyi URL-cím, amelyről az alkalmazás jogkivonatokat kérhetnek. Erőforrás egy token beszerzéséhez hajtsa végre egy HTTP GET kérés ehhez a végponthoz, többek között a következő paraméterekkel:
 
@@ -289,7 +289,7 @@ A **MSI_ENDPOINT** egy helyi URL-cím, amelyről az alkalmazás jogkivonatokat k
 > |-----|-----|-----|
 > |erőforrás|Lekérdezés|Az AAD erőforrás URI-t az erőforrás számára, ami egy token beszerzése. Ez lehet egy a [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) vagy bármely egyéb erőforrás URI-t.|
 > |API-verzió|Lekérdezés|A használt jogkivonat API-verzió. "2017-09-01" jelenleg az egyetlen támogatott verzió.|
-> |titkos kód|Fejléc|A MSI_SECRET környezeti változó értékét.|
+> |titkos kód|Fejléc|A MSI_SECRET környezeti változó értékét. Ez a fejléc segítségével mérsékelhetik a kiszolgálóoldali kérések hamisítása (SSRF) használatos.|
 > |ClientID|Lekérdezés|(Nem kötelező) A felhasználó által hozzárendelt identitás használt azonosítója. Ha nincs megadva, a rendszer által hozzárendelt identitás szolgál.|
 
 Sikeres 200 OK válasz tartalmaz egy JSON-törzse a következő tulajdonságokkal:
