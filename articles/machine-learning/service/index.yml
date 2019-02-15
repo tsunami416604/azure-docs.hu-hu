@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9c337f147eaebc376c7953e7f585b5b9f6a10f94
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f4b66f79e415be8f9598a0e6f5c875d8a2597514
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471684"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300023"
 documentType: LandingData
 title: Az Azure Machine Learning szolgáltatás dokumentációja
 metadata:
@@ -22,12 +22,17 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Az Azure Machine Learning szolgáltatás egy felhőalapú környezet gépi tanulási modellek fejlesztésére, betanítására, üzembe helyezésére, kezelésére és nyomon követésére. Ez a szolgáltatás teljes körűen támogatja az olyan nyílt forráskódú technológiákat, mint a Scikit-learn, a Tensorflow, a Pytorch vagy bármely egyéb Python-alapú keretrendszer. Rövid útmutatóinkból és oktatóanyagainkból megtudhatja, hogyan használhatja ezt a szolgáltatást a gépi tanulási munkafolyamatokhoz.
+  description: Az Azure Machine Learning szolgáltatás egy felhőalapú környezetet biztosít a gépi tanulási modellek gyors összeállításához, betanításához és üzembe helyezéséhez. Az automatikus gépi tanulás használatával gyorsabbá válik az algoritmusok azonosítása és a hiperparaméterek finomhangolása. A számítási erőforrások automatikus méretezésével és az Azure DevOps használatával növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind elérheti a Python-környezetéből az olyan nyílt forráskódú keretrendszerek használatával, mint a PyTorch, a TensorFlow és a scikit-learn, valamint a szolgáltatási SDK-k segítségével. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan teheti ezt meg.
 sections:
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: Első lépésként hozzon létre egy szolgáltatás-munkaterületet és erőforrásokat <a href="quickstart-get-started">az Azure Portalon</a> vagy <a href="quickstart-create-workspace-with-python">a Pythonban</a>.
+    text: 'A szolgáltatás használatához szüksége lesz egy munkaterületre és a kapcsolódó erőforrásokra.  Első lépések:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="quickstart-get-started">Használja az Azure Portal rövid útmutatóját</a> a munkaterület lekéréséhez, és futtasson egy kísérletet anélkül, hogy bármit is telepítene.
+    - html: <a href="quickstart-create-workspace-with-python">A Python rövid útmutatója segítségével</a> telepítse a fő SDK-t, hozzon létre egy munkaterületet, és futtasson kísérletet egy helyi notebookkiszolgálón.
 - title: Részletes útmutatók
   items:
   - type: paragraph
@@ -35,7 +40,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: Képbesorolási modellek <a href="tutorial-train-models-with-aml">betanítása</a> és <a href="tutorial-deploy-models-with-aml">üzembe helyezése</a> (<b>kétrészes sorozat</b>).<br>&nbsp;
+    - html: Képbesorolási modellek <a href="tutorial-train-models-with-aml">betanítása</a> és <a href="tutorial-deploy-models-with-aml">üzembe helyezése</a> (<b>kétrészes sorozat</b>).
     - html: <a href="tutorial-data-prep">Adatok előkészítése</a> és <a href="tutorial-auto-train-models">automatizált gépi tanulás használata</a> regressziós modellek betanításához és hangolásához (<b>kétrészes sorozat</b>).
 - title: Példák
   items:

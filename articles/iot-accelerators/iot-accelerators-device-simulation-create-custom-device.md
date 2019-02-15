@@ -11,14 +11,14 @@ ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
 ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/01/2018
 ms.locfileid: "50756788"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Oktatóanyag: Egyéni szimulált eszköz létrehozása
 
-Ebben az oktatóanyagban a szimulációkban való használathoz létrehozhat egy egyéni szimulált eszközt az Eszközszimuláció használatával. Az Eszközszimuláció megismeréséhez használhatja az egyik mellékelt szimulált mintaeszközt. Emellett egyéni szimulált eszközöket is létrehozhat a cikkben ismertetett módon. További testreszabási lehetőségekért tekintse meg a [Speciális eszközmodell létrehozását](iot-accelerators-device-simulation-advanced-device.md) ismertető cikket.
+Ebben az oktatóanyagban a szimulációkban való használathoz létrehozhat egy egyéni szimulált eszközt az Eszközszimuláció használatával. Az Eszközszimuláció megismeréséhez használhatja az egyik mellékelt szimulált mintaeszközt. Emellett egyéni szimulált eszközöket is létrehozhat a cikkben ismertetett módon. További testreszabási lehetőségekért tekintse meg a [speciális eszközmodell létrehozását](iot-accelerators-device-simulation-advanced-device.md) ismertető cikket.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
@@ -98,7 +98,7 @@ Bármelyik egyéni eszközmodellt törölheti. Egy eszközmodell törléséhez j
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerte, hogyan hozhat létre, klónozhat és törölhet egyéni eszközmodelleket. Az eszközmodellek kapcsolatos további információkért tekintse meg az alábbi útmutatót:
+Ebben az oktatóanyagban megismerte, hogyan hozhat létre, klónozhat és törölhet egyéni eszközmodelleket. Az eszközmodellekkel kapcsolatos további információkért tekintse meg az alábbi útmutatót:
 
 > [!div class="nextstepaction"]
 > [Speciális eszközmodell létrehozása](iot-accelerators-device-simulation-advanced-device.md)

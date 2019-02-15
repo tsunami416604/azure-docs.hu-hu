@@ -1,6 +1,6 @@
 ---
 title: Új IoT-szimuláció létrehozása – Azure | Microsoft Docs
-description: Ebben az oktatóanyagban létrehozhat és futtathat egy új szimulációt az Eszközszimuláció használatával.
+description: Ebben az oktatóanyagban létrehozhat és futtathat egy új szimulációt a Device Simulation használatával.
 author: troyhopwood
 manager: timlt
 ms.service: iot-accelerators
@@ -11,7 +11,7 @@ ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 268efa35f63ac8b9e0c6ea3f22a71242a2984726
 ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/01/2018
 ms.locfileid: "50756784"
@@ -42,7 +42,7 @@ Az Eszközszimuláció böngészőben történő futtatásához először lépje
 
 A rendszer arra kérheti, hogy lépjen be Azure-előfizetésének hitelesítő adataival.
 
-Ezután kattintson az **Indítás** elemre a [rövid útmutató](quickstart-device-simulation-deploy.md) során üzembe helyezett Eszközszimuláció csempéjén.
+Ezután kattintson az **Indítás** elemre a [gyorskonfigurálás](quickstart-device-simulation-deploy.md) során üzembe helyezett Device Simulation csempéjén.
 
 ## <a name="view-simulations"></a>Szimulációk megtekintése
 
