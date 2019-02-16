@@ -10,21 +10,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 2903228a3257abe9c454c6e0720a1e228b905290
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 94e5f5b29e93409df2373cf6c56e8185dc5373a2
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300040"
+ms.locfileid: "56312974"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Adjon meg egy erőforráscsoportot a virtuális gépeiről az Azure DevTest Labs szolgáltatásban
-Labortulajdonosként konfigurálhatja a labor virtuális gépek egy adott erőforráscsoportban kell létrehozni. A funkció használatához, hogy Ön nem érik el erőforrás Csoportkorlát az Azure-előfizetésében. Ez a funkció lehetővé teszi az egyetlen erőforráscsoporton belül minden laborerőforrások konszolidálhatja. Emellett leegyszerűsíti az erőforrások követésének és alkalmazásának [házirendek](../governance/policy/overview.md) kezelheti őket az erőforráscsoport szintjén.
+Labortulajdonosként konfigurálhatja a labor virtuális gépek egy adott erőforráscsoportban kell létrehozni. Ez a funkció segítségével a következő esetekben: 
+
+- Az előfizetésében labs által létrehozott kevesebb erőforrást csoportokkal rendelkezik.
+- A labs, az Ön által konfigurált erőforráscsoportok rögzített számú belüli működésre van
+- Korlátozások és az Azure-előfizetésen belüli erőforráscsoportok létrehozásához szükséges jóváhagyások megkerüléséhez.
+- A egyszerűsítése érdekében ezeket az erőforrásokat követésének és alkalmazásának egyetlen erőforráscsoporton belül minden laborerőforrások konszolidálhatja [házirendek](../governance/policy/overview.md) kezelheti őket az erőforráscsoport szintjén.
 
 Ezzel a funkcióval is használhat egy parancsfájl adja meg egy új vagy egy meglévő erőforráscsoportot az Azure-előfizetésen belül a labor virtuális gépeken. Jelenleg a DevTest Labs-API-n keresztül a szolgáltatás támogatja. 
 
-## <a name="api-to-configure-a-resource-group-for-labs-vms"></a>Konfiguráljon egy erőforráscsoportot a virtuális gépek labs API-val
+## <a name="api-to-configure-a-resource-group-for-lab-virtual-machines"></a>API-t konfiguráljon egy erőforráscsoportot a labor virtuális gépekhez
 Most nézzük meg a beállításokat, az API használatakor labortulajdonosként rendelkezik: 
 
 - Választhat a **tesztkörnyezet erőforráscsoport** minden virtuális gép.
@@ -86,7 +91,7 @@ Ha a labor létrehozása az Azure Resource Manager-sablont használ, használja 
                 "labStorageType": "Premium",
                 "premiumDataDisks": "Disabled",
                 "provisioningState": "Succeeded",
-                "uniqueIdentifier": "6e6f668f-992b-435c-bac3-d328b745cd25"
+                "uniqueIdentifier": "000000000f-0000-0000-0000-00000000000000"
             },
             "dependsOn": []
         },

@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: c9c336b9aed06095849f33060ff6969e8b7bfcaf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 815147abba444f0a55a8455c0a818aa048271b92
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881706"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309641"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Első lépések a Knowledge Exploration Service szolgáltatással
 
@@ -228,7 +228,7 @@ Ha a `kes.exe` futtatása Azure-n kívül történik, az index maximális méret
 
 Azure-fiók esetén a `kes.exe` hozzáférés engedélyezéséhez [töltse le az Azure közzétételi beállítások fájlt](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) az Azure portálról. Ha a rendszer kéri, jelentkezzen be a megfelelő Azure-fiókba. Mentse el a fájlt *AzurePublishSettings.xml* néven a munkakönyvtárba, ahonnan a `kes.exe` fut.
 
-Kétféleképpen hozhat létre és üzemeltethet nagy indexeket. Az első, hogy a séma és adatfájlokat az Azure-beli Windows virtuális gépen készíti elő. Ezután a [ `kes.exe build_index` ](#building-index) futtatásával helyileg felépítheti az indexet a virtuális gépen, mindenféle méretkorlátozás nélkül. Az eredményül kapott indexet üzemeltetheti helyileg a virtuális gépen a [ `kes.exe host_service` ](#hosting-service) használatával, ami gyors prototípuskészítést biztosít, ugyancsak bármiféle méretkorlátozás nélkül. Részletes lépések leírása: [Azure-beli Virtuálisgép-oktatóanyag](../../../articles/virtual-machines/windows/quick-create-portal.md).
+Kétféleképpen hozhat létre és üzemeltethet nagy indexeket. Az első, hogy a séma és adatfájlokat az Azure-beli Windows virtuális gépen készíti elő. Ezután futtassa `kes.exe build_index` helyileg hozhat létre az indexet a virtuális gép méretének korlátozása nélkül. Az eredményül kapott index on lehet üzemeltetni helyileg a virtuális gép használatával `kes.exe host_service` gyors prototípuskészítéséhez újra korlátozása nélkül. Részletes lépések leírása: [Azure-beli Virtuálisgép-oktatóanyag](../../../articles/virtual-machines/windows/quick-create-portal.md).
 
 A második módszer a távoli Azure fordítás, a [ `kes.exe build_index` ](CommandLine.md#build_index-command) használatával és a `--remote` paraméter megadásával. Ez megadja az Azure virtuális gép méretét. A `--remote` paraméter megadása esetén a parancs ekkora méretű ideiglenes Azure virtuális gépet hoz létre. Ezután felépíti az indexet a virtuális gépen, feltölti az indexet a cél blobtárolóba, majd a végén törli a virtuális gépet. Az Azure-előfizetés számára a virtuális gép költsége az index felépítési idejére kerül felszámításra.
 

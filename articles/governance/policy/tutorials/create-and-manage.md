@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: cb6f033c784832efab23c747057b1c0ef1b317fa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 911d6b5b6445d612654a7259d354cf1c7943c69d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730271"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330035"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából
 
@@ -354,7 +354,7 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
    ![Kezdeményezési definíciók](../media/create-and-manage/initiative-definition-2.png)
 
-1. Ha egy szabályzat-definíció a kezdeményezés hozzáadandó paraméterekkel rendelkezik, azok még alatt látható a házirend nevére a **szabályzatok és paraméterek** területen. Az _érték_ beállítható „Megadott érték” (nem módosítható érték az adott kezdeményezés minden hozzárendelésében) vagy „A kezdeményezési paraméter használata” (az egyes kezdeményezés-hozzárendelésekkor kell megadni az értéket) állapotra. Ha "Beállított érték" van megadva, a drown típusú-le, jobb oldalán _értékek_ lehetővé teszi, hogy a megadása, vagy a érték(ek) kiválasztása. Ha „A kezdeményezési paraméter használata” lehetőséget választja, megjelenik egy új, **Kezdeményezési paraméterek** szakasz, amelyben meghatározható a kezdeményezés hozzárendelésekor beállítandó paraméter. Az ebben a kezdeményezési paraméterben szereplő engedélyezett értékek tovább korlátozhatják, hogy mi adható meg a kezdeményezés hozzárendelésekor.
+1. Ha egy szabályzat-definíció a kezdeményezés hozzáadandó paraméterekkel rendelkezik, azok még alatt látható a házirend nevére a **szabályzatok és paraméterek** területen. Az _érték_ beállítható „Megadott érték” (nem módosítható érték az adott kezdeményezés minden hozzárendelésében) vagy „A kezdeményezési paraméter használata” (az egyes kezdeményezés-hozzárendelésekkor kell megadni az értéket) állapotra. Ha "Beállított érték" van kijelölve, jobbra található legördülő _értékek_ lehetővé teszi, hogy a megadása, vagy a érték(ek) kiválasztása. Ha „A kezdeményezési paraméter használata” lehetőséget választja, megjelenik egy új, **Kezdeményezési paraméterek** szakasz, amelyben meghatározható a kezdeményezés hozzárendelésekor beállítandó paraméter. Az ebben a kezdeményezési paraméterben szereplő engedélyezett értékek tovább korlátozhatják, hogy mi adható meg a kezdeményezés hozzárendelésekor.
 
    ![Kezdeményezési definíciós paraméterek](../media/create-and-manage/initiative-definition-3.png)
 

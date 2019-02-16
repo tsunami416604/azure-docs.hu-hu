@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 125f1a2a041c8c05289c95bd12c10618bfc622a8
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 9f0dbc549600ef2b931ee99a36c60cae57cc7a67
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246934"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56331280"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez
 
@@ -98,8 +98,6 @@ További információt az Azure windowsos virtuálisgép-típusairól és -mére
 
     > [!NOTE]
     > Ha a stripe-e adatokat prémium szintű tárolólemezeket [tárolóhelyek](https://technet.microsoft.com/library/hh831739.aspx), állítsa be a tárolóhelyek 1 oszlop az egyes lemezek, amelyet használhat. Ellenkező esetben a csíkozott kötet általános teljesítményét alacsonyabb, mint a lemezek között miatt a forgalom eloszlása egyenletlen várt lehet. A Kiszolgálókezelőben alapértelmezés szerint állíthat be legfeljebb 8 lemezek oszlopokat. Ha több mint 8 lemez, a PowerShell használatával létrehozni a kötetet. Adja meg manuálisan az oszlopok számát. Ellenkező esetben a Server Manager felhasználói felületén továbbra is használja 8 oszlopokat, ha már rendelkezik további lemezeket. Például ha 32 lemezek egy egyetlen stripe-készlet, adja meg az oszlopok 32. Adja meg a virtuális lemezt használ, az oszlopok számát, a [New-VirtualDisk](https://technet.microsoft.com/library/hh848643.aspx) PowerShell-parancsmagot használja a *NumberOfColumns* paraméter. További információkért lásd: [tárolóhelyek – áttekintés](https://technet.microsoft.com/library/hh831739.aspx) és [Storage Spaces – gyakori kérdések](https://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
-    >
-    > 
 
 * **Cache**
 

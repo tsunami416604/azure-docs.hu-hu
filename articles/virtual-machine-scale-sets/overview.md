@@ -16,12 +16,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: manayar
-ms.openlocfilehash: 23c04f85c994a8b300ffec23b4660d3d431ef69b
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: 5cd9593bba1e97f52bfa37467920959b1ef0f698
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740419"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329609"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Mik a virtuálisgép-méretezési csoportok?
 Az Azure-beli virtuálisgép-méretezési csoportok segítségével azonos, elosztott terhelésű virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-példányok száma automatikusan növelhető vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés szerint. A méretezési csoportok biztosítják az alkalmazások magas rendelkezésre állását, és lehetővé teszik nagy számú virtuális gép központi felügyeletét, konfigurálását és frissítését. A virtuálisgép-méretezési csoportokkal nagyobb léptékű szolgáltatások építhetők ki a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokhoz.
@@ -47,7 +47,7 @@ Az Azure-beli virtuálisgép-méretezési csoportok biztosítják a szükséges 
 
 - **Működtetés nagy léptékben**
     - A méretezési csoportok akár 1000 virtuálisgép-példányt is tartalmazhatnak. Ha saját VM-rendszerképeit hozza létre és tölti fel, legfeljebb 300 VM-példánya lehet.
-    - Az éles környezetben végzett számítási feladatokhoz a legjobb teljesítmény érdekében használja az [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) és a [Premium Storage](../virtual-machines/windows/premium-storage.md) szolgáltatást.
+    - A termelési számítási feladatokhoz a legjobb teljesítmény érdekében használjon [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Mi a különbség a virtuális gépek és a méretezési csoportok között?

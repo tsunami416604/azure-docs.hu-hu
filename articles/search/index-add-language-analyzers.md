@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: bb7fbdeea9c19b8a6fabe06687261296110b4064
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 20a8d9f5b575fca5471916af0183257f2a43d5cb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301804"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328293"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Nyelvi elemzők az Azure Search-index hozzáadása
 
@@ -51,9 +51,9 @@ Az alapértelmezett elemző a Standard Lucene, amely jól az angol nyelvű táj�
 
 ## <a name="configuring-analyzers"></a>Elemzők konfigurálása
 
-Nyelvi elemzők használják-van. Az index definícióját minden egyes mezőjéhez, beállíthatja a **analyzer** -elemző eszköz a neve, mely nyelvi és szállítói tulajdonságot. Az azonos elemző lépnek érvénybe, ha indexelés és keresés, ezt a mezőt. Például rendelkezhet külön mezőkben angol, francia és spanyol Szálloda panelelemek leírását, amely ugyanahhoz az indexhez egymás mellett szerepel.  
+Nyelvi elemzők használják-van. Az index definícióját minden egyes mezőjéhez, beállíthatja a **analyzer** -elemző eszköz a neve, a nyelv és a linguistics verem (Microsoft vagy Lucene) tulajdonságot. Az azonos elemző lépnek érvénybe, ha indexelés és keresés, ezt a mezőt. Például rendelkezhet külön mezőkben angol, francia és spanyol Szálloda panelelemek leírását, amely ugyanahhoz az indexhez egymás mellett szerepel. Azt is megteheti, nem pedig **analyzer**, használható **indexAnalyzer** és **searchAnalyzer** szeretné, hogy az indexelést és lekérdezést idő különböző elemző szabályok. 
 
-Használja a **searchFields** lekérdezési paramétert adja meg, melyik nyelvspecifikus mezővel rákereshet ellen a lekérdezésekben. Az elemző tulajdonság tartalmazza a dokumentumok keresése példák a lekérdezésekre tekintheti meg. 
+Használja a **searchFields** lekérdezési paramétert adja meg, melyik nyelvspecifikus mezővel rákereshet ellen a lekérdezésekben. Áttekintheti, hogy az elemző tulajdonság példák a lekérdezésekre [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
 Index-tulajdonságokkal kapcsolatos további információkért lásd: [a Create Index &#40;Azure Search szolgáltatás REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). Az Azure Search elemzési kapcsolatos további információkért lásd: [elemzők az Azure Search](https://docs.microsoft.com/azure/search/search-analyzers).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: ryanwi
-ms.openlocfilehash: 9c1f8507cfa1f21214428e852e6ffed4d7703254
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: e1a52aff0890e32ae739285c0380258939f29597
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564323"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312871"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>A tanúsítvány-ujjlenyomat fürt módosítása köznapi név
 Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltás vagy felügyeleti is rendelkezhet. Több tanúsítvány, azonban lehet a ugyanazzal a névvel vagy a tulajdonos.  Egy tanúsítvány-ujjlenyomatok a tanúsítvány köznapi nevek használatával üzembe helyezett fürt közötti váltás révén jóval egyszerűbb tanúsítványkezelés. Ez a cikk ismerteti a tanúsítvány köznapi nevét használja a tanúsítvány-ujjlenyomat helyett a futó Service Fabric-fürt frissítése.
@@ -96,7 +96,7 @@ Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
 ```
 
 >[!NOTE]
-> Kiszámítja a virtuális gép méretezési beállítása titkos kulcsok nem támogatják az erőforrás-azonosító a két külön titkos adatait, mivel minden titkos kulcsot egy verzióval ellátott egyedi erőforrást. 
+> Scale set titkos kódok támogatja ugyanazt az erőforrás-azonosító két külön titkos adatait, mivel minden titkos kulcsot egy verzióval ellátott, egyedi erőforrást. 
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>Töltse le és frissítse a sablont a portálról
 A tanúsítvány telepítve van a mögöttes méretezési csoportot, de is frissítenie kell a Service Fabric-fürt használatára, hogy a tanúsítvány és a közös név.  Most töltse le a sablont a fürt üzembe helyezéséhez.  Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az erőforráscsoport, a fürtöt.  A **beállítások**válassza **központi telepítések**.  Válassza ki a legutóbbi üzembe helyezés, és kattintson a **sablon megtekintése**.

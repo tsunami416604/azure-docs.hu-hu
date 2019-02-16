@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7919a84ffe948c9b6a8f68fc1372f1976c09bc79
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 91618b211fdd869daf74491b175d6359ffa3f30c
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864281"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312191"
 ---
 # <a name="describe-images-with-human-readable-language"></a>Képek az emberek számára olvasható nyelv leírása
 
-Számítógépes Látástechnológiai algoritmus elemezheti a tartalmat a képet. Ez az elemzés képezi a kép ember által olvasható, teljes mondatokban megfogalmazott „leírásának” alapját. A leírás összegzi mindazt, ami a képen látható. Számítógépes Látástechnológiai algoritmus alapuló a vizuális jellemzőket azonosítja a kép különböző leírások létrehozásához. Leírás ki lesz értékelve, és a egy megbízhatósági pontszám jönnek létre. A megbízhatósági pontszámok listája csökkenő sorrendbe rendezve érkezik vissza.
+Számítógépes Látástechnológia kép elemezheti és hozzon létre egy emberek számára olvasható mondatot, amely leírja annak tartalmát. Az algoritmus ténylegesen retruns több leírások alapján különböző vizuális jellemzőinek és a leírás egy magabiztossági pontszámot kap. A végső kimenetet az leírások legmagasabbtól a legalacsonyabb megbízhatósági rendezett listája.
 
 ## <a name="image-description-example"></a>Kép leírását bemutató példa
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: f6c629182fdcce83c566869860480d9c70488797
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 50feca90d375d6afd3b04afe019ad9f9025f19dc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53712746"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308571"
 ---
 # <a name="variables-section-of-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok a változók szakaszban
 A változók szakaszban, a sablon egész értékek, amelyek segítségével hozhatnak létre. Nem kell definiálnia a változókat, de azok összetett kifejezések csökkentésével gyakran egyszerűbb a sablont.
@@ -58,9 +58,7 @@ Az előző példa bemutatta, adjon meg egy változót az egyik lehetőség. Az a
             {
                 "name": "<name-of-array-property>",
                 "count": <number-of-iterations>,
-                "input": {
-                    <properties-to-repeat>
-                }
+                "input": <object-or-value-to-repeat>
             }
         ]
     },
@@ -68,9 +66,7 @@ Az előző példa bemutatta, adjon meg egy változót az egyik lehetőség. Az a
         {
             "name": "<variable-array-name>",
             "count": <number-of-iterations>,
-            "input": {
-                <properties-to-repeat>
-            }
+            "input": <object-or-value-to-repeat>
         }
     ]
 }
@@ -117,38 +113,45 @@ A jelenlegi beállítások kérheti le:
 
 ## <a name="use-copy-element-in-variable-definition"></a>A változó definícióját másolási eleme használata
 
-Használhatja a **másolási** szintaxis egy változó létrehozása a különböző elemek tömbjét. Egy szám elemek számát adja meg. Minden elem tartalmazza a tulajdonságokat a **bemeneti** objektum. Használhatja a másolás, vagy egy változóban, vagy hozza létre a változót. Adjon meg egy változót, és ha a használata **másolási** adott változóban, hozzon létre egy objektumot, amely rendelkezik vlastnost typu Pole. Használata esetén **másolási** legfelső szintjén, és hozzon létre egyet, vagy több változót a benne lévő, egy vagy több tömbök létrehozására. Mindkét módszerénél a következő példában látható:
+Egy változó több példány létrehozásához használja a `copy` tulajdonság a változók szakaszban. Létrehozhat értéke értékekből összeállított elemek tömbjét a `input` tulajdonság. Használhatja a `copy` tulajdonság egy változóban, vagy a változók szakaszban, a legfelső szinten. Használata esetén `copyIndex` egy változó iteráció belül meg kell adnia az iteráció nevét.
+
+Az alábbi példa bemutatja, hogyan használhatja a másolás:
 
 ```json
 "variables": {
-    "disk-array-on-object": {
-        "copy": [
-            {
-                "name": "disks",
-                "count": 3,
-                "input": {
-                    "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
-                    "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('disks')]"
-                }
-            }
-        ]
-    },
+  "disk-array-on-object": {
     "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
+      {
+        "name": "disks",
+        "count": 3,
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('disks')]"
         }
+      }
     ]
+  },
+  "copy": [
+    {
+      "name": "disks-top-level-array",
+      "count": 3,
+      "input": {
+        "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
+        "diskSizeGB": "1",
+        "diskIndex": "[copyIndex('disks-top-level-array')]"
+      }
+    },
+    {
+      "name": "top-level-string-array",
+      "count": 5,
+      "input": "[concat('myDataDisk', copyIndex('top-level-string-array', 1))]"
+    }
+  ]
 },
 ```
 
-A változó **lemez-tömb-a-objektum** tartalmazza a következő objektum nevű tömbben **lemezek**:
+A másolási kifejezés kiértékelése után a változó **lemez-tömb-a-objektum** tartalmazza a következő objektum nevű tömbben **lemezek**:
 
 ```json
 {
@@ -194,34 +197,19 @@ A változó **lemezek – legfelső-szintű-tömb** tartalmazza az alábbi tömb
 ]
 ```
 
-Egynél több objektumot megadhat változók példány használata esetén is. Az alábbi példa két tömbök változókként határozza meg. Az egyik neve **lemezek – legfelső-szintű-tömb** és öt elemmel rendelkezik. A másik nevű **egy másik-tömb** és három elemmel rendelkezik.
+A változó **top-szint – karakterlánc-tömbben** tartalmazza az alábbi tömböt:
 
 ```json
-"variables": {
-    "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 5,
-            "input": {
-                "name": "[concat('oneDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
-        },
-        {
-            "name": "a-different-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('twoDataDisk', copyIndex('a-different-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('a-different-array')]"
-            }
-        }
-    ]
-},
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
+]
 ```
 
-Ez a módszer jól működik, ha szüksége van a paraméter értékeit, és ellenőrizze, hogy a sablon értéket a megfelelő formátumban vannak. Az alábbi példa formázza a biztonsági szabályok definiálásához paraméterértékeket:
+Másolással működik jól, ha a paraméter értékeit, és megfeleltet az erőforrás-értékeket kell. Az alábbi példa formázza a biztonsági szabályok definiálásához paraméterértékeket:
 
 ```json
 {

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: dafa9f09b6aed1f61facf3737c7e03c81b2a0e7d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 15b7bae6116d05e7bf4cd76a1ba1b93bb127fef8
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238249"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313092"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network támogatása a prémium szintű Azure Cache Redis konfigurálása
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatásait, beleértve a Prémiumszintű funkciókkal, például a fürtözés, az adatmegőrzés és a virtuálishálózat-támogatást is nyújt. Virtuális hálózat egy magánhálózat a felhőben. Ha az Azure Cache Redis-példányt a virtuális hálózathoz van konfigurálva, még nem nyilvánosan címezhető és a virtuális gépek és az alkalmazások a virtuális hálózaton belül csak érhetők el. Ez a cikk ismerteti, hogyan kell egy prémium szintű Azure Cache Redis-példányt a virtuális hálózat támogatásának konfigurálása.
@@ -85,7 +85,7 @@ Az alábbi lista az Azure Cache Redis méretezéshez kapcsolatos gyakori kérdé
 
 * Mik az Azure Cache a Redis és a virtuális hálózatok Virtual Network szolgáltatás hibás gyakori problémákat?
 * [Hogyan ellenőrizhetem, hogy működik-e a gyorsítótár egy virtuális hálózaton?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
-* [Ha szeretne csatlakozni az Azure gyorsítótár egy virtuális hálózaton, miért jelenik meg a távoli tanúsítvány nem érvényes érvénytelenségét jelző hibaüzenet Redis?](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
+* Ha szeretne csatlakozni az Azure gyorsítótár egy virtuális hálózaton, miért jelenik meg a távoli tanúsítvány nem érvényes érvénytelenségét jelző hibaüzenet Redis?
 * [Használható a virtuális hálózatok a gyorsítótárat standard vagy alapszintűre?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * Miért nem az Azure Cache redis nem lehet létrehozni az egyes alhálózatok, de nem más?
 * [Mik azok az alhálózat címterekkel kapcsolatos követelmények?](#what-are-the-subnet-address-space-requirements)

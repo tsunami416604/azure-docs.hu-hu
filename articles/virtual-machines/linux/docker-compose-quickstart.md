@@ -1,6 +1,6 @@
 ---
 title: A Docker Compose használata az Azure-beli Linuxos virtuális gépre |} A Microsoft Docs
-description: Linux rendszerű virtuális gépek az Azure CLI-vel és a Docker Compose használatával
+description: Hogyan telepítheti és használhatja a Docker és a Compose Linux rendszerű virtuális gépek az Azure CLI-vel
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -13,86 +13,82 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2017
+ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 257083e1ae0c3c1cb3c5421882ffd0e06e2d1f5c
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 3aa3b29ef44d3efb21237dc0d82a1ee6e99e729b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752143"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328945"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Ismerkedés a Docker és a Compose megadásához és a egy többtárolós alkalmazást futtatni az Azure-ban
 A [összeállítás](http://github.com/docker/compose), alkalmazások több Docker-tároló feladatátvétele meghatározásához használhat egy egyszerű szöveges fájlt. Majd alkalmazás üzembe helyezése egyetlen paranccsal, amely a megadott környezet telepítéséhez. Tegyük fel ez a cikk bemutatja, hogyan gyorsan beállíthat egy WordPress-blogbejegyzés-háttérrendszer MariaDB SQL database Ubuntu rendszerű virtuális gépen. Összeállítás használatával állítsa be a összetettebb alkalmazásokat.
 
+Ez a cikk utolsó tesztelésének 2/14/2019 használatával a [Azure Cloud Shell](https://shell.azure.com/bash) és a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli) 2.0.58 verzió.
 
-## <a name="set-up-a-linux-vm-as-a-docker-host"></a>Állítsa be a Linux rendszerű virtuális gép Docker-gazdagépként
-Segítségével különböző Azure eljárásokat és az elérhető rendszerképek vagy Resource Manager-sablonok az Azure piactéren elérhető Linux virtuális gépet, és állítsa be a Docker-gazdagépként. Lásd a [a környezet üzembe helyezése a Docker VM bővítmény használatával](dockerextension.md) hozhat létre gyorsan egy Ubuntu virtuális gép az Azure Docker VM bővítmény használatával egy [gyorsindítási sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). 
-
-A Docker VM bővítmény használata esetén a virtuális gép automatikusan be van állítva a Docker-gazdagépként, és a Compose már telepítve van.
-
-
-### <a name="create-docker-host-with-azure-cli"></a>Docker-gazdagép létrehozása az Azure CLI-vel
+## <a name="create-docker-host-with-azure-cli"></a>Docker-gazdagép létrehozása az Azure CLI-vel
 Telepítse a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index).
 
 Először hozzon létre egy erőforráscsoportot a Docker-környezetben a [az csoport létrehozása](/cli/azure/group). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
-```azurecli
-az group create --name myResourceGroup --location eastus
+```azurecli-interactive
+az group create --name myDockerGroup --location eastus
 ```
 
-Ezután telepítse a virtuális gép [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment) , amely tartalmazza az Azure Docker VM-bővítmény [ezen Azure Resource Manager-sablon a Githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Amikor a rendszer kéri, adja meg a saját egyedi értékek *newStorageAccountName*, *adminUsername*, *adminPassword*, és *dnsNameForPublicIP*:
+Hozzon létre egy fájlt *cloud-init.txt* , és illessze be a következő konfigurációt. Írja be a `sensible-editor cloud-init.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. 
 
-```azurecli
-az group deployment create --resource-group myResourceGroup \
-    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+```yaml
+#include https://get.docker.com
 ```
 
-Az üzembe helyezés befejeződik néhány percet vesz igénybe.
+Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. A következő példában létrehozunk egy nevű virtuális Gépet *myDockerVM* , és megnyílik a webes forgalom 80-as port.
 
-
-## <a name="verify-that-compose-is-installed"></a>Győződjön meg arról, hogy telepítve van-e az összeállítás
-A virtuális gép, beleértve a DNS-név, a részletek megtekintéséhez használja a [az vm show](/cli/azure/vm):
-
-```azurecli
-az vm show \
-    --resource-group myResourceGroup \
+```azurecli-interactive
+az vm create \
+    --resource-group myDockerGroup \
     --name myDockerVM \
-    --show-details \
-    --query [fqdns] \
-    --output tsv
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt
+az vm open-port --port 80 \
+    --resource-group myDockerGroup \
+    --name myDockerVM
 ```
 
-Ssh-KAPCSOLATOT az új Docker-gazdagép. Adja meg a saját felhasználónevét és a DNS-nevet az előző lépésekből származó:
+A virtuális gép létrehozása, a csomagok telepítése és az alkalmazás elindítása néhány percig tart. Néhány háttérfeladat azután is tovább fut, hogy az Azure CLI visszairányítja Önt a parancssorhoz. A virtuális gép létrehozása után jegyezze fel az Azure CLI által megjelenített `publicIpAddress` értéket. 
+
+                 
+
+## <a name="install-compose"></a>Telepítés Compose
+
+
+Az új Docker-gazdagép virtuális gép ssh-KAPCSOLATOT. Adja meg a saját IP-címét.
 
 ```bash
-ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
+ssh azureuser@10.10.111.11
 ```
 
-Ellenőrizze, hogy az összeállítás telepítve van-e a virtuális gépen, futtassa a következő parancsot:
+Telepítés állítsa össze a virtuális gépen.
 
 ```bash
-docker-compose --version
+sudo apt install docker-compose
 ```
-
-Hasonló kimenet jelenik meg *1.6.2-es verzióján docker-compose, a 4d 72027 összeállítása*.
-
-> [!TIP]
-> Ha egy másik módszer, amellyel Docker-gazdagép létrehozása, és telepítenie kell a Compose saját magának, tekintse meg a [dokumentáció Compose](https://github.com/docker/compose/blob/882dc673ce84b0b29cd59b6815cb93f74a6c4134/docs/install.md).
 
 
 ## <a name="create-a-docker-composeyml-configuration-file"></a>Hozzon létre egy docker-compose.yml konfigurációs fájlt
-Következő lépésként létrehoz egy `docker-compose.yml` fájlt, amely csak egy szöveges-konfigurációs fájlt, adja meg a Docker-tárolók futtatásához a virtuális gépen. A fájl adja meg a kép a tárolók futtatását (vagy lehet, hogy készítsen egy Docker-fájlból) a szükséges környezeti változókat és a függőségek, a portok és a tárolók közötti hivatkozásokat. További részletek a yml file szintaxissal: [hivatkozást a Compose](https://docs.docker.com/compose/compose-file/).
+Hozzon létre egy `docker-compose.yml` konfigurációs fájlt, és adja meg a Docker-tárolók futtatásához a virtuális gépen. A fájl adja meg a futó tárolók közötti egyes tárolók, szükséges környezeti változókat és a függőségek, portokat és a hivatkozások a lemezképet. További részletek a yml file szintaxissal: [hivatkozást a Compose](https://docs.docker.com/compose/compose-file/).
 
-Hozzon létre egy *docker-compose.yml* fájlt. A kedvenc szövegszerkesztőjével segítségével adatokat adhat hozzá a fájlhoz. Az alábbi példában a fájlt hoz létre egy kérés `sensible-editor` választja ki a használni kívánt szerkesztővé:
+Hozzon létre egy *docker-compose.yml* fájlt. A kedvenc szövegszerkesztőjével segítségével adatokat adhat hozzá a fájlhoz. Az alábbi példában a fájlt hoz létre egy kérés `sensible-editor` választja ki egy szerkesztőt, amelyet használni kíván.
 
 ```bash
 sensible-editor docker-compose.yml
 ```
 
-Illessze be az alábbi példában a Docker Compose-fájlt. Ez a konfiguráció képeket használ a [DockerHub beállításjegyzék](https://registry.hub.docker.com/_/wordpress/) WordPress (a nyílt forráskódú blogplatform és a tartalom felügyeleti rendszer) és a egy csatolt háttérrendszer MariaDB SQL-adatbázis telepítése. Adja meg a saját *MYSQL_ROOT_PASSWORD* módon:
+Illessze be az alábbi példában a Docker Compose-fájlt. Ez a konfiguráció képeket használ a [DockerHub beállításjegyzék](https://registry.hub.docker.com/_/wordpress/) WordPress (a nyílt forráskódú blogplatform és a tartalom felügyeleti rendszer) és a egy csatolt háttérrendszer MariaDB SQL-adatbázis telepítése. Adja meg a saját *MYSQL_ROOT_PASSWORD*.
 
-```sh
+```yml
 wordpress:
   image: wordpress
   links:
@@ -110,40 +106,33 @@ db:
 Ugyanabban a címtárban a *docker-compose.yml* fájlt, az alábbi parancsot (a környezettől függően előfordulhat, hogy futtatni szeretné `docker-compose` használatával `sudo`):
 
 ```bash
-docker-compose up -d
+sudo docker-compose up -d
 ```
 
-Ez a parancs elindítja a Docker-tárolók megadott *docker-compose.yml*. Egy-a lépés végrehajtásához két percet vesz igénybe. Az alábbi példához hasonló kimenet jelenik meg:
+Ez a parancs elindítja a Docker-tárolók megadott *docker-compose.yml*. Egy-a lépés végrehajtásához két percet vesz igénybe. Az alábbihoz hasonló kimenet jelenik meg:
 
-```bash
+```
 Creating wordpress_db_1...
 Creating wordpress_wordpress_1...
 ...
 ```
 
-> [!NOTE]
-> Ügyeljen arra, hogy a **-d** indítási beállítást, hogy a tárolók folyamatosan fut a háttérben.
 
+Győződjön meg arról, hogy a tárolók fel-e, írja be a következőt `sudo docker-compose ps`. Hasonló üzenet jelenik meg:
 
-Győződjön meg arról, hogy a tárolók fel-e, írja be a következőt `docker-compose ps`. Hasonló üzenet jelenik meg:
-
-```bash
+```
         Name                       Command               State         Ports
 -----------------------------------------------------------------------------------
 azureuser_db_1          docker-entrypoint.sh mysqld      Up      3306/tcp
 azureuser_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:80->80/tcp
 ```
 
-Mostantól csatlakozhat közvetlenül a virtuális gép 80-as porton a WordPress. Nyisson meg egy webböngészőt, és adja meg a virtuális gép DNS-nevét (például `http://mypublicdns.eastus.cloudapp.azure.com`). Ekkor megjelenik a WordPress start képernyőre, ahol elvégezheti a telepítést, és az alkalmazás használatának első lépései.
+Mostantól csatlakozhat közvetlenül a virtuális gép 80-as porton a WordPress. Nyisson meg egy webböngészőt, és adja meg a virtuális gép IP-cím neve. Ekkor megjelenik a WordPress start képernyőre, ahol elvégezheti a telepítést, és az alkalmazás használatának első lépései.
 
-![A WordPress kezdőképernyője][wordpress_start]
+![A WordPress kezdőképernyője](./media/docker-compose-quickstart/wordpressstart.png)
 
 ## <a name="next-steps"></a>További lépések
-* Nyissa meg a [Docker VM bővítmény – használati útmutató](https://github.com/Azure/azure-docker-extension/blob/master/README.md) további lehetőségei a Docker-beli virtuális gépen a Docker és a Compose konfigurálása. Például egy lehetőség, hogy az összeállítás yml fájl (konvertálja JSON) közvetlenül a Docker VM-bővítmény a konfigurációban.
 * Tekintse meg a [összeállítása parancssori útmutatójának](http://docs.docker.com/compose/reference/) és [felhasználói útmutató](http://docs.docker.com/compose/) létrehozásának és többtárolós alkalmazások üzembe helyezésének további példákat.
 * Az Azure Resource Manager-sablon, vagy használja a saját vagy egy hozzájárult a a [közösségi](https://azure.microsoft.com/documentation/templates/), egy Azure virtuális Gépen a Docker és a egy alkalmazást, állítsa be a összeállítás telepítéséhez. Például a [üzembe helyezése a docker használatával egy WordPress-bloghoz](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) sablon használja a Docker és a Compose gyors üzembe helyezését a WordPress egy MySQL-háttérrendszerrel Ubuntu rendszerű virtuális gépen.
 * Próbálja ki a Docker Compose integrálása egy Docker Swarm-fürtöt. Lásd: [és a swarm együttes használatával Compose](https://docs.docker.com/compose/swarm/) forgatókönyvek esetén.
 
-<!--Image references-->
-
-[wordpress_start]: media/docker-compose-quickstart/WordPress.png

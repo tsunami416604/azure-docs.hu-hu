@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 73c61c62a84642b93ed96cdd80e258a1128fef6a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 79ba32f85c608d98b29b235bf1417e74f7e2a4d4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077471"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313483"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Egy Azure-beli virtuális hálózatban a tárolópéldányok üzembe helyezése
 
@@ -35,6 +35,7 @@ Bizonyos korlátozások érvényesek, amikor üzembe helyezi a tárolócsoportok
 
 * Tárolócsoportok telepíteni egy alhálózathoz, az alhálózat nem tartalmazhat más erőforrástípusok. Az összes meglévő erőforrások eltávolítása előtt tárolócsoportok hozzá egy meglévő alhálózatot, vagy hozzon létre egy új alhálózatot.
 * Tárolócsoportok üzembe helyezni egy virtuális hálózatban jelenleg nem támogatják nyilvános IP-címe vagy DNS-név címke.
+* Nem használhat egy [identitás](container-instances-managed-identity.md) egy tárolócsoport üzembe helyezett virtuális hálózathoz.
 * További hálózati erőforrás, mert egy tárolócsoport telepítése egy virtuális hálózathoz általában némileg lassabb, mint a standard szintű tárolópéldány üzembe helyezése.
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai

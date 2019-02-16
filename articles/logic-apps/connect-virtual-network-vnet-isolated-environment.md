@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/12/2019
-ms.openlocfilehash: 8d7fc6d8f581c3ad0e0f3266ea615acadcb7bc25
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.date: 02/15/2019
+ms.openlocfilehash: d67bc99a63242dd56d65d6bdac0448c7742a6b9d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176203"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311902"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás az Azure virtuális hálózatok az Azure Logic Apps integrációs service-környezet (ISE) használatával
 
@@ -67,9 +67,10 @@ A bejövő és kimenő forgalom szabályozása, amelyen központi telepítését
 | Az Azure Logic Apps-kommunikációt <br>Az Azure Logic Apps-kommunikációt | Bejövő <br>Kimenő | * <br>80 & 443 | INTERNET <br>VIRTUAL_NETWORK |
 | Azure Active Directory | Kimenő | * <br>80 & 443 | VIRTUAL_NETWORK <br>AzureActiveDirectory |
 | Az Azure Storage-függőségek | Kimenő | * <br>80 & 443 | VIRTUAL_NETWORK <br>Storage |
+| A logikai alkalmazás futtatási előzmények | Bejövő | * <br>443 | INTERNET <br>VIRTUAL_NETWORK |
 | Kapcsolat kezelése | Kimenő | * <br>443 | VIRTUAL_NETWORK <br>INTERNET |
 | Diagnosztikai naplók és mérőszámok közzététele | Kimenő | * <br>443 | VIRTUAL_NETWORK <br>AzureMonitor |
-| Logic Apps Designer – dinamikus tulajdonságai <br>A logikai alkalmazás futtatási előzmények <br>Összekötő üzembe helyezés <br>Eseményindító-végpont kérése | Bejövő | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
+| Logic Apps Designer – dinamikus tulajdonságai <br>Összekötő üzembe helyezés <br>Eseményindító-végpont kérése | Bejövő | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
 | App Service Management-függőség | Bejövő | * <br>454 & 455 | AppServiceManagement <br>VIRTUAL_NETWORK |
 | Az API Management - felügyeleti végpont | Bejövő | * <br>3443 | APIManagement <br>VIRTUAL_NETWORK |
 | Eseményközpont-szabályzat és a monitorozási ügynök a napló függőséget | Kimenő | * <br>5672 | VIRTUAL_NETWORK <br>EventHub |

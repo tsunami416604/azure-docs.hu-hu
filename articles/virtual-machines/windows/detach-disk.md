@@ -16,24 +16,21 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 750bb275ef936b3911503cd4c0f50674d3dff2d1
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: bd91607260d47d37bc3ce94ec63f700082416b6d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981145"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329899"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>A Windows virtuális gépről adatlemez leválasztása
 
 Ha már nincs szüksége egy virtuális géphez csatolt adatlemezre, könnyedén leválaszthatja. Ez eltávolítja a lemezt a virtuális gépről, de ez nem távolítja el a storage-ból.
 
 > [!WARNING]
-> Ha leválaszt egy lemezt, nem törlődnek automatikusan. Ha prémium szintű storage, amelyre Ön feliratkozott, továbbra is a lemez tárolási költségeket fizetni. További információkért lásd: [árak és számlázás a Premium Storage használatakor](premium-storage.md#pricing-and-billing).
->
->
+> Ha leválaszt egy lemezt, nem törlődnek automatikusan. Ha prémium szintű storage, amelyre Ön feliratkozott, továbbra is a lemez tárolási költségeket fizetni. További információkért lásd: [árak és számlázás a Premium Storage használatakor](disks-types.md#billing).
 
 Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ugyanahhoz vagy egy másik virtuális géphez.
-
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
@@ -51,11 +48,10 @@ Update-AzVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
 
 A lemez storage-ban marad, de már nincs csatolva egy virtuális géphez.
 
-
 ## <a name="detach-a-data-disk-using-the-portal"></a>Adatlemez leválasztása a portállal
 
 1. A bal oldali menüben válassza ki a **virtuális gépek**.
-2. Válassza ki a virtuális gépen, amelyen az adatlemezt, leválasztja, majd kattintson a kívánt **leállítása** felszabadítani a virtuális Gépet.
+2. Válassza ki a virtuális gépen, amelyen az adatlemezt, leválasztja, majd kattintson a kívánt **leállítása** a virtuális gép megszüntetése lefoglalni.
 3. A virtuális gép panelén válassza **lemezek**.
 4. Felső részén a **lemezek** ablaktáblán válassza előbb **szerkesztése**.
 5. Az a **lemezek** ablaktáblán az adatlemezt, amelyeket szeretne leválasztása, kattintson a jobb szélén a ![leválasztási gomb képe](./media/detach-disk/detach.png) Leválasztás gombra.
@@ -65,5 +61,5 @@ A lemez storage-ban marad, de már nincs csatolva egy virtuális géphez.
 A lemez storage-ban marad, de már nincs csatolva egy virtuális géphez.
 
 ## <a name="next-steps"></a>További lépések
-Ha szeretné újra felhasználhatja az adatlemezt, csak [csatlakoztassa azt egy másik virtuális Géphez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
+Ha szeretné újra felhasználhatja az adatlemezt, csak [csatlakoztassa azt egy másik virtuális Géphez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

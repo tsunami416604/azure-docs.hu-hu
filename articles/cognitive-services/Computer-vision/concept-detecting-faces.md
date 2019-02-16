@@ -8,23 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 81e846c6ffc0361b7154c962dbc047b9e5ae55e7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1056b8be113d56342aea8f83d5325737f7ecb93b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872985"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308451"
 ---
 # <a name="face-detection-with-computer-vision"></a>Arcfelismerés a Computer Vision
 
-Számítógépes Látástechnológia a képen látható emberi arcok észlelése, és az életkor, nemek és minden egyes észlelt face négyszöge generál. A Computer Vision a [Face](/azure/cognitive-services/face/) funkcióinak csak egy részét tartalmazza. A Face szolgáltatást részletesebb elemzések elvégzésére is használhatja, például az arc vagy a testtartás azonosítására.  
+Számítógépes Látástechnológiai is lemezképen belüli emberi arcok észlelése és létrehozása az életkor, nemek és minden egyes észlelt face négyszöge. 
+
+> [!NOTE]
+> Ez a szolgáltatás emellett az Azure által nyújtott [Face](/azure/cognitive-services/face/) szolgáltatás. Lásd: Ez a megoldás részletes elemzés, beleértve az arcfelismerés arc és észlelési jelentenek. 
 
 ## <a name="face-detection-examples"></a>Arcok észlelése példák
 
-Az első példa bemutatja egy egyetlen emberi arcok tartalmazó rendszerképek Computer Vision által visszaadott JSON-választ.
+A következő példa bemutatja egy egyetlen emberi arcok tartalmazó rendszerképek Computer Vision által visszaadott JSON-választ.
 
 ![Tetőn álló nő arcának vizuális elemzése](./Images/woman_roof_face.png)
 
@@ -51,7 +54,7 @@ Az első példa bemutatja egy egyetlen emberi arcok tartalmazó rendszerképek C
 }
 ```
 
-A második példa bemutatja a JSON-választ adott vissza képet tartalmazó több emberi arcok azonosítására.
+A következő példa bemutatja a JSON-választ adott vissza képet tartalmazó több emberi arcok azonosítására.
 
 ![Vizuális családi fénykép Face elemzése](./Images/family_photo_face.png)
 
@@ -110,4 +113,4 @@ A második példa bemutatja a JSON-választ adott vissza képet tartalmazó töb
 
 ## <a name="next-steps"></a>További lépések
 
-Tudnivalók a fogalmak [tartomány-specifikus tartalom észlelése](concept-detecting-domain-content.md).
+Tekintse meg a [kép elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) referenciadokumentációt további információ a face észlelési szolgáltatás használata.

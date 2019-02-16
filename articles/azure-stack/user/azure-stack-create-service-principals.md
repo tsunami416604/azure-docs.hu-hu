@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: da75d829ccb74f7be675501b601ad3e6375bfb70
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 00468ca62e55823b4706fc52d9793f676aebd368
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813160"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312854"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Alkalmazások hozzáférést biztosíthat az Azure Stack-erőforrások egyszerű szolgáltatások létrehozásával
 
@@ -50,7 +50,7 @@ Azure Stack konfigurált Active Directory módja határozza meg, hogyan hoz lét
 * Az egyszerű szolgáltatás létrehozása [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad).
 * Az egyszerű szolgáltatás létrehozása [Active Directory összevonási szolgáltatások (AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
 
-A lépéseket a hozzárendelése egy egyszerű szolgáltatást a szerepkör ugyanazt az Azure AD és az AD FS. Miután létrehozta az egyszerű szolgáltatás, [engedélyeket delegálhatnak](azure-stack-create-service-principals.md#assign-role-to-service-principal) , ha hozzárendeli egy szerepkörhöz.
+A lépéseket a hozzárendelése egy egyszerű szolgáltatást a szerepkör ugyanazt az Azure AD és az AD FS. Miután létrehozta az egyszerű szolgáltatás, [engedélyeket delegálhatnak](azure-stack-create-service-principals.md) , ha hozzárendeli egy szerepkörhöz.
 
 ## <a name="create-service-principal-for-azure-ad"></a>Az Azure ad egyszerű szolgáltatás létrehozása
 
@@ -85,7 +85,7 @@ A kulcs, a kulcs mentése után **érték** jelenik meg. Jegyezze fel ezt az ér
 
 ![Mentett kulcs figyelmeztetés kulcs értékét.](./media/azure-stack-create-service-principal/image15.png)
 
-Az utolsó lépés [az alkalmazás-szerepkör hozzárendelése](azure-stack-create-service-principals.md#assign-role-to-service-principal).
+Az utolsó lépés [az alkalmazás-szerepkör hozzárendelése](azure-stack-create-service-principals.md).
 
 ## <a name="create-service-principal-for-ad-fs"></a>Az AD FS egyszerű szolgáltatás létrehozása
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 0edb3441083a6eb6f95b3ca3ade2bf0b1582858d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 5e3ef7782f805e07e24783a987f2753e4e889946
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564952"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313033"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések listáját. Ha a Log Analytics szolgáltatásról további kérdése van, lépjen a [fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -26,11 +26,11 @@ A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések l
 
 ## <a name="new-logs-experience"></a>Az új naplók élmény
 
-### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>KÉRDÉS: Mi a különbség az új naplók élmény és a Log Analytics?
+### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>K: Mi a különbség az új naplók élmény és a Log Analytics?
 
 V: Azok a ugyanaz. [A log Analytics az Azure Monitor szolgáltatásban integráció](../../azure-monitor/azure-monitor-rebrand.md) biztosít egy egységes felügyeleti kezelőfelület. Az új naplók az Azure monitorban felhasználói felület pontosan ugyanaz, mint a Log Analytics-lekérdezéseket, amelyek a számos ügyfél már használt.
 
-### <a name="q-can-i-still-use-log-search"></a>KÉRDÉS: Továbbra is használható a naplóbeli keresés? 
+### <a name="q-can-i-still-use-log-search"></a>K: Továbbra is használható a naplóbeli keresés? 
 
 V: Naplóbeli keresés jelenleg továbbra is elérhető, az OMS-portálon, és a név alatt az Azure Portalon **naplók (klasszikus)**. Az OMS-portálon a 2019. január 15 hivatalosan megszűnik. Az Azure Portalon a klasszikus naplók élményt fokozatosan megszűnik, és az új naplók felület helyett. 
 
@@ -51,7 +51,7 @@ V: Lista nézet nem érhető el az új naplók. Az egyes rekordok az eredmények
 
 ### <a name="q-after-running-a-query-a-list-of-suggested-filters-are-available-how-can-i-see-filters"></a>K. A lekérdezés futtatása után javasolt szűrők listájának érhetők el. Hogyan tekinthetem meg szűrők? 
 
-V: "Szűrők" kattintson a bal oldali pan, megjelenik egy előnézet új szűrőket megvalósítása. Ez most már folyamatban van a felhasználói felület legfeljebb 10 000 rekordot korlátozza helyett a teljes eredményhalmaz alapul. Ez a funkció jelenleg a legnépszerűbb szűrőket és az egyes szűrők a 10 leggyakrabban használt értékek listáját. 
+V: A bal oldali ablaktáblán új szűrőket végrehajtása előzetes megtekintéséhez kattintson a "Szűrők" gombra. Ez most már folyamatban van a felhasználói felület legfeljebb 10 000 rekordot korlátozza helyett a teljes eredményhalmaz alapul. Ez a funkció jelenleg a legnépszerűbb szűrőket és az egyes szűrők a 10 leggyakrabban használt értékek listáját. 
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>K. Miért jelenik meg a hiba: "Erőforrás-szolgáltató" a Microsoft.Insights regisztrálása"ehhez az előfizetéshez ahhoz, hogy ez a lekérdezés" naplókat, a virtuális gépről a részletező elemzés után? 
 
@@ -104,7 +104,7 @@ V: Attól függően, melyik frissítési kumulatív Operations Manager a, látha
 
 A szöveges karakterlánc frissítésének *OMS* szerepel a felügyeleti csomag, amely manuálisan importálni kell. Tekintse meg a jelenlegi szöveg és a Funkciók, kövesse az utasításokat a legújabb System Center Operations Manager frissítési kumulatív KB cikk, és frissítse a konzolt.
 
-### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>KÉRDÉS: Van egy Log Analytics helyszíni verzióját?
+### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>K: Van egy Log Analytics helyszíni verzióját?
 
 V: Nem. A log Analytics egy méretezhető felhőalapú szolgáltatás, amely feldolgozza, és nagy mennyiségű adatot tárol a. 
 
@@ -174,14 +174,14 @@ Ez a változás is módosíthatók az Azure Portalon.
 
 Adatok áthelyezése egy Log Analytics-munkaterület között nem, vagy módosítsa a régiót, amelyben a Log Analytics-adatok tárolva van.
 
-### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>KÉRDÉS: Hogyan adhatok hozzá a Log Analytics a System Center Operations Manager?
+### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>K: Hogyan adhatok hozzá a Log Analytics a System Center Operations Manager?
 
 V:  A legújabb kumulatív frissítés és a felügyeleti csomagok importálása lehetővé teszi, hogy az Operations Manager csatlakoztatása a Log Analytics szolgáltatásba.
 
 >[!NOTE]
 >A Log Analytics az Operations Manager-kapcsolat csak akkor használható, a System Center Operations Manager 2012 SP1 és újabb verziók.
 
-### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>KÉRDÉS: Hogyan győződhet meg, hogy, hogy az ügynök képes kommunikálni a Log Analytics-e?
+### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>K: Hogyan győződhet meg, hogy, hogy az ügynök képes kommunikálni a Log Analytics-e?
 
 V: Annak érdekében, hogy az ügynök kommunikálni tudjon OMS, Ugrás: Szabályozhatja a panelen, a biztonság és a beállítások, **a Microsoft Monitoring Agent**.
 
@@ -189,19 +189,19 @@ Alatt a **Azure Log Analytics (OMS)** fülre, keressen egy zöld pipa. Egy zöld
 
 Egy sárga figyelmeztető ikon azt jelenti, hogy az ügynök a Log Analytics-szel kapcsolatos problémák kommunikációs tapasztalja. Egyik gyakori oka a Microsoft Monitoring Agent szolgáltatás leállt. Helyvezérlés-kezelő használatával indítsa újra a szolgáltatást.
 
-### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>KÉRDÉS: Hogyan állítsam le egy ügynök kommunikáljon a Log Analytics?
+### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>K: Hogyan állítsam le egy ügynök kommunikáljon a Log Analytics?
 
 V: A System Center Operations Manager távolítsa el a számítógépet az OMS a felügyelt számítógépek listája. Az Operations Manager már nem a jelentés a Log Analytics frissíti az ügynök konfigurációját. Közvetlenül csatlakozik a Log Analytics-ügynökök leállíthatja őket keresztül: Szabályozhatja a panelen, a biztonság és a beállítások, **a Microsoft Monitoring Agent**.
 A **Azure Log Analytics (OMS)**, felsorolva minden munkaterület eltávolítása.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>KÉRDÉS: Miért jelenik meg hibaüzenet jelenik meg a saját munkaterület áthelyezése egy Azure-előfizetés között?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>K: Miért jelenik meg hibaüzenet jelenik meg a saját munkaterület áthelyezése egy Azure-előfizetés között?
 
 V: Munkaterület áthelyezése egy másik előfizetést vagy az erőforráscsoport, először a munkaterület Automation-fiókot kell leválasztása. Ezek a megoldások eltávolítása leválasztása az Automation-fiók szükséges, ha a munkaterülethez lesznek telepítve: Frissítéskezelés, változáskövetés vagy virtuális gépek indítása/leállítása munkaidőn kívül el lesznek távolítva. Után ezeket a megoldásokat, az Automation-fiók leválasztása kiválasztásával **társított munkaterületek** a bal oldali panelen az Automation-fiók erőforrás, és kattintson a **munkaterület leválasztása** a menüszalagon.
  > Eltávolítja a megoldások kell újra kell telepíteni a munkaterületen, és a munkaterület Automation hivatkozásának meg kell állapítani az áthelyezés után.
 
 Győződjön meg arról, mind az Azure-előfizetések az Önnek megfelelő engedélye.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>KÉRDÉS: Miért jelenik meg hibaüzenet jelenik meg egy SavedSearch frissíteni?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>K: Miért jelenik meg hibaüzenet jelenik meg egy SavedSearch frissíteni?
 
 V: Az API-t, vagy az Azure Resource Manager-sablon tulajdonságainak törzsében "etag" hozzá kell:
 ```

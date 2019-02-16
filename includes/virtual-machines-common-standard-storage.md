@@ -9,11 +9,11 @@ ms.date: 01/08/2019
 ms.author: yuemlu
 ms.custom: include file
 ms.openlocfilehash: ad57d373422e0fc310e51ac31f2a2e76999abf22
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54193392"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56331227"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Költséghatékony Standard Storage és a nem felügyelt és felügyelt Azure-beli Virtuálisgép-lemezek
 
@@ -128,7 +128,7 @@ Csillaggal szintben méretek jelenleg előzetes verzióban érhető el.
 
 A standard szintű Storage, a virtuális gépek és a Managed Disks díjszabása részletes információkért lásd:
 
-* [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/)
+* [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/)
 * [Virtual Machines díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [A Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks)
 

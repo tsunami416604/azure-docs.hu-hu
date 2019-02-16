@@ -1,15 +1,16 @@
 ---
 author: PatrickFarley
 ms.service: cognitive-services
+ms.subservice: custom-vision
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: a5980352ee6720f903ee185bd70cf06522914378
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 44e38d2ea7c45b75cd1f59761a214c52f64497f8
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284421"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56323372"
 ---
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha saját képosztályozási projektet szeretne megvalósítani (vagy ehelyett egy [objektumészlelési](../csharp-tutorial-od.md) projektet szeretne kipróbálni), érdemes törölnie a példából a faazonosítási projektet. Az ingyenes próbaverzió két Custom Vision-projektet engedélyez.

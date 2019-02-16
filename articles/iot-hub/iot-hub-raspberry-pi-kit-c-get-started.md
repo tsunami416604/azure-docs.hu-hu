@@ -1,21 +1,19 @@
 ---
-title: Raspberry Pi felhőbe (C) – a Raspberry Pi csatlakoztatása Azure IoT hubra |} A Microsoft Docs
-description: Ismerje meg, hogyan beállítása és a Raspberry Pi csatlakoztatása az Azure IoT hubba a Raspberry Pi adatokat küldeni az Azure felhőalapú platformján ebben az oktatóanyagban.
+title: Raspberry Pi csatlakoztatása Azure IoT hubra C használatával |} A Microsoft Docs
+description: Ismerje meg, hogyan beállítása és a Raspberry Pi csatlakoztatása Azure IoT hubhoz Raspberry pi adatokat küldeni az Azure felhőalapú platformján
 author: rangv
-manager: ''
-keywords: az Azure iot raspberry pi, a raspberry pi az iot hub, a raspberry pi send adatait a felhőbe, a raspberry pi a felhőbe
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 04/11/2018
+ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: c8b254656dcd94fd846336e9c9de3ca823691904
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1e96029b75c8168189dacdc420117e82387228d9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053500"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327245"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Hub (C)
 
@@ -124,11 +122,11 @@ A BME280 érzékelő hőmérséklettel és páratartalommal kapcsolatos adatokat
 | LED VDD (5 g. PIN-kód)         | GPIO 4 (PIN-kód 7)         | Fehér kábel   |
 | LED GND (PIN-kód 6G)         | GND (6 PIN-kód)            | Fekete kábellel   |
 | VDD (18F PIN-kód)            | 3.3V PWR (17 PIN-kód)      | Fehér kábel   |
-| GND (20F PIN-kód)            | GND (20 PIN-kód)           | Fekete kábellel   |
+| GND (Pin 20F)            | GND (Pin 20)           | Fekete kábellel   |
 | SCK (21F PIN-kód)            | SPI0 SCLK (23 PIN-kód)     | Narancssárga kábel  |
-| SDO (22F PIN-kód)            | SPI0 MISO (21 PIN-kód)     | Sárga kábel  |
-| SDI (23F PIN-kód)            | SPI0 MOSI (19 PIN-kód)     | Zöld kábel   |
-| CS (24F PIN-kód)             | SPI0 CS (PIN-kód 24)       | Kék kábel    |
+| SDO (Pin 22F)            | SPI0 MISO (21 PIN-kód)     | Sárga kábel  |
+| SDI (Pin 23F)            | SPI0 MOSI (Pin 19)     | Zöld kábel   |
+| CS (Pin 24F)             | SPI0 CS (Pin 24)       | Kék kábel    |
 
 Kattintson ide a megtekintéshez [Raspberry Pi-2 és 3 PIN-kód-leképezések](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) referenciaként.
 
@@ -153,7 +151,7 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
    1. Töltse le és telepítse [PuTTY](http://www.putty.org/) Windows számára. 
    1. Másolja ki a gazdagép nevét (vagy IP-cím), a Pi szakasz IP-címét, és válassza ki az SSH a kapcsolat típusaként.
    
-   ![Putty-kapcsolaton keresztül](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
+   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
    **Mac- és Ubuntu-felhasználók**
    

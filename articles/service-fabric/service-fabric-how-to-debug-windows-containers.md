@@ -11,16 +11,16 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/14/2018
+ms.date: 02/14/2019
 ms.author: twhitney, mikhegn
-ms.openlocfilehash: b38946f813185a4821520b8591b7fd72a5f0cce0
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 9801db8a38a8c21aea26b42f4fe01bd4a43988c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300064"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311222"
 ---
-# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Útmutató: Windows-tárolókhoz az Azure Service Fabric használatával a Visual Studio 2017 hibakeresése
+# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Útmutató: Hibakeresés a Visual Studio 2017 használatával az Azure Service Fabric Windows-tárolók
 
 A Visual Studio 2017 Update 7 (15.7) a tárolókban lévő .NET-alkalmazások, a Service Fabric-szolgáltatások is hibakeresési. Ez a cikk bemutatja, hogyan konfigurálja a környezetet, és ezután hibakeresése egy helyi Service Fabric-fürtön futó tárolóban lévő .NET-alkalmazás.
 
@@ -37,10 +37,10 @@ A Visual Studio 2017 Update 7 (15.7) a tárolókban lévő .NET-alkalmazások, a
 1. Annak érdekében, hogy támogatja a DNS-feloldás tárolók között, akkor a helyi fejlesztési fürt beállításához a számítógépnevet használja. Ezeket a lépéseket is szükségesek, ha azt szeretné, a fordított proxyn keresztül cím szolgáltatásokhoz.
     1. Rendszergazdaként nyissa meg PowerShell
     2. Keresse meg a fürt SDK-telepítési mappa, általában `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
-    3. Futtassa a szkriptet `DevClusterSetup.ps1` paraméterrel `-UseMachineName`
+    3. A parancsfájl futtatása `DevClusterSetup.ps1`
 
        ``` PowerShell
-         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1 -UseMachineName
+         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
        ```
 
     > [!NOTE]
@@ -56,7 +56,7 @@ Alább az ismert korlátozások hibakeresési tárolók a Service Fabric és a l
 * Localhost ClusterFQDNorIP használatával nem támogatja DNS-feloldás tárolókban.
     * Megoldás: A gép nevét (lásd fent) használatával helyi fürt beállítása
 * Egy virtuális gépen futó Windows 10-es nem kap vissza a tárolót a DNS-válaszban.
-    * Megoldás: UDP ellenőrzőösszeg-kiszervezés IPv4 a virtuális gépek hálózati Adapteren tiltsa le
+    * Megoldás: Tiltsa le a virtuális gépek hálózati Adapteren IPv4 UDP ellenőrzőösszeg-kiszervezés
     * Ne feledje, ez csökkenti a hálózati teljesítmény a gépen.
     * https://github.com/Azure/service-fabric-issues/issues/1061
 * Feloldása szolgáltatások DNS-sel ugyanazt az alkalmazást a szolgáltatásnév nem működik a Windows 10-es, ha az alkalmazás üzemel, a Docker Compose használatával
@@ -81,4 +81,4 @@ Alább az ismert korlátozások hibakeresési tárolók a Service Fabric és a l
     A Visual Studio támogatja a .NET és .NET Core konzol és az ASP.NET-projekt típusa.
 
 ## <a name="next-steps"></a>További lépések
-További információ ezekről a képességekről, a Service Fabric és a tárolók, a hivatkozásra: [a Service Fabric-tárolók áttekintése](service-fabric-containers-overview.md).
+A Service Fabric és a tárolók képességeivel kapcsolatos további tudnivalókért kattintson ide: [A Service Fabric-tárolók áttekintése](service-fabric-containers-overview.md).

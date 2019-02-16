@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: 1aa9c6da2d59294c5791d65a0943bfce497f9be4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 434971e707cdca62c76ede9f295e7af20aa4cc3f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387046"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313534"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux diagnosztikai bővítmény használatával figyelheti a metrikák és naplók
 
@@ -316,7 +316,7 @@ type | A mérőszám a tényleges szolgáltató azonosítja.
 osztály | "Számláló", és azonosítja az adott metrika belül a szolgáltatói névteret.
 számláló | "Class", és azonosítja az adott metrika belül a szolgáltatói névteret.
 counterSpecifier | Azonosítja az adott metrika az Azure-mérőszámok névtérben.
-feltétel | (nem kötelező) Kiválaszt egy adott példányán, az objektumot, amelyhez a metrika vonatkozik, vagy az összesítés kiválasztja az adott objektum minden példányán. További információkért lásd: a [ `builtin` metrikadefinícióinak](#metrics-supported-by-builtin).
+feltétel | (nem kötelező) Kiválaszt egy adott példányán, az objektumot, amelyhez a metrika vonatkozik, vagy az összesítés kiválasztja az adott objektum minden példányán. További információkért lásd: a `builtin` metrikadefinícióinak beolvasása.
 sampleRate | VAN, amely beállítja a változási gyakoriság, amellyel ez a metrika-nyers minták gyűjtött 8601 időszak. Ha nincs megadva, az adatgyűjtési időköz értéke alapján [sampleRateInSeconds](#ladcfg). A legrövidebb támogatott mintavételi gyakoriság érték 15 másodperc (PT15S).
 egység | Ezek a karakterláncok egyike lehet: "Count", "Memória", "Másodperc", "Százaléka", "CountPerSecond", "BytesPerSecond", "Ezredmásodperces". A metrika az egység határozza meg. Az összegyűjtött adatok várhatóan ezt a kiegészítő egységet a gyűjtött adatok értékeit. LAD figyelmen kívül hagyja ezt a mezőt.
 displayName | A címke (a a kapcsolódó területi beállításban megadott nyelven) ezeket az adatokat az Azure-mérőszámok van csatlakoztatva. LAD figyelmen kívül hagyja ezt a mezőt.

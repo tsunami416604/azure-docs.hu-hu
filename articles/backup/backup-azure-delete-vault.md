@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: d514074e56ff37cc7af6a97ea86aa9e02e3763e0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d15e3773a9b6e3dceb0799d206070730675c211d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492283"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310966"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services-tároló törlése
 
@@ -31,7 +31,7 @@ Ha már rendelkezik nyissa meg a Recovery Services-tároló, hagyja ki a másodi
 
    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
 
-   A Recovery Services-tárolók listája megjelenik. 
+   A Recovery Services-tárolók listája megjelenik.
 
    ![tároló kiválasztása a listából](./media/backup-azure-delete-vault/choose-vault-to-delete-.png)
 
@@ -50,7 +50,7 @@ Ha már rendelkezik nyissa meg a Recovery Services-tároló, hagyja ki a másodi
 
 ## <a name="delete-the-recovery-services-vault-by-force"></a>Kényszeríti a Recovery Services-tároló törlése
 
-Kényszeríti a Recovery Services-tároló törlése a PowerShell használatával is. Kényszerített módon a Recovery Services-tárolót, és minden társított biztonsági mentési adatokat, az véglegesen törlődni fog. 
+Kényszeríti a Recovery Services-tároló törlése a PowerShell használatával is. Kényszerített módon a Recovery Services-tárolót, és minden társított biztonsági mentési adatokat, az véglegesen törlődni fog.
 
 > [!Warning]
 > Ha a Recovery Services-tároló törlése a PowerShell segítségével, gondolja át alaposan, hogy szeretné-e a tárolóban lévő összes biztonsági mentési adatok véglegesen törli.
@@ -95,7 +95,7 @@ Recovery Services-tároló törlése:
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
-   
+
 1. Jelentkezzen be az előfizetés az Azure Portalon, és ellenőrizze, hogy a tároló törlődik.
 
 
@@ -106,7 +106,6 @@ Manuálisan távolítsa el a tároló függőségeket, törölje a konfiguráci�
 * Az Azure Storage (Azure Files) biztonsági mentések
 * Az SQL Server Azure virtuális gép biztonsági mentéseinek
 * Azure-beli virtuális gépek biztonsági mentések
-* A Microsoft Azure Recovery Services agent biztonsági mentések
 
 Használja a **biztonsági mentési infrastruktúra** menü (lásd a kép) esetében:
 
@@ -125,7 +124,7 @@ Használja a **biztonsági mentési infrastruktúra** menü (lásd a kép) eset�
 
 1. Összes elemet a listában, kattintson jobb gombbal az elemre, és a helyi menüből válassza ki a **biztonsági mentés leállítása**.
 
-    ![Válassza ki a biztonsági mentés típusa](./media/backup-azure-delete-vault/stop-backup-item.png) 
+    ![Válassza ki a biztonsági mentés típusa](./media/backup-azure-delete-vault/stop-backup-item.png)
 
     Megnyílik a biztonsági mentés leállítása menü.
 
@@ -154,9 +153,9 @@ Használja a **biztonsági mentési infrastruktúra** menü (lásd a kép) eset�
 
 ## <a name="removing-azure-backup-server-or-dpm"></a>Az Azure Backup Server vagy a DPM eltávolítása
 
-1. A tároló irányítópultos menüjében görgessen le a kezelés szakaszhoz, és kattintson a **biztonsági mentési infrastruktúra**. 
+1. A tároló irányítópultos menüjében görgessen le a kezelés szakaszhoz, és kattintson a **biztonsági mentési infrastruktúra**.
 
-1. Az almenü kattintson **biztonságimásolat-felügyeleti kiszolgálók** megtekintése az Azure Backup-kiszolgálók és a System Center DPM-kiszolgáló. Állítsa le, és az Azure File Servers, SQL Server-kiszolgálók az Azure virtuális gép és az Azure-beli virtuális gépek törlése. 
+1. Az almenü kattintson **biztonságimásolat-felügyeleti kiszolgálók** megtekintése az Azure Backup-kiszolgálók és a System Center DPM-kiszolgáló. Állítsa le, és az Azure File Servers, SQL Server-kiszolgálók az Azure virtuális gép és az Azure-beli virtuális gépek törlése.
 
     ![Válassza ki a tárolót az irányítópult megnyitásához](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 

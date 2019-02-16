@@ -3,8 +3,8 @@ title: AWS-ről és más platformokra át az Azure Managed Disks |} A Microsoft 
 description: Virtuális gép létrehozása az Azure-ban a VHD-k más felhőkben, mint az AWS vagy más virtualizációs platformokról feltöltött, és kihasználhatja az Azure Managed Disks.
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2017
-ms.author: cynthn
+ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83e69cd488ab7e8b69895a25716350c8025c6c48
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 05e687ab31b6c19193076033e1350952549d26e0
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074903"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330749"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Az Amazon Web Services (AWS) és más platformokra át az Azure Managed Disks
 
@@ -46,11 +46,8 @@ Az Azure-bA hozhat létre virtuális gépeket, amelyek kihasználják a Managed 
 
 ## <a name="overview-of-managed-disks"></a>A felügyelt lemezek áttekintése
 
-Az Azure Managed Disks Virtuálisgép-kezelés felügyelnie tárfiókokat eltávolításával egyszerűbbé teszi. A Managed Disks emellett juttatás a rendelkezésre állási csoportban lévő virtuális gépek nagyobb megbízhatóságot. Ez biztosítja, hogy a rendelkezésre állási csoport különböző virtuális lemezek egy meghibásodási pont elkerülése érdekében hibapontok. A rendelkezésre állási csoport a különböző tárolási skálázási egységeket (stampek), amely korlátozza a egyetlen skálázási egységek hibáival oka a hardver és szoftver hibák különböző virtuális lemezek automatikusan helyezi. Igényei alapján választhat a két típusú tárolási lehetőségek: 
- 
-- [Prémium szintű Managed Disks](premium-storage.md) tartós állapot meghajtó (SSD) alapú tárolást kínál, amelyek nagy teljesítményű, kis késleltetésű lemeztámogatás I/O-igényes számítási feladatokat futtató virtuális gépekhez. A sebesség előnyeit, és ezek a lemezek teljesítményét is igénybe vehet a prémium szintű Managed Disks-ba való migrálás.  
-
-- [Standard szintű Managed Disks](standard-storage.md) merevlemez-meghajtó (HDD-) alapú tárolást kínál használja, és a leginkább kihasználni, fejlesztési, tesztelési és egyéb számítási feladatokat, amelyek kevésbé érzékenyek a teljesítményingadozásra.  
+Az Azure Managed Disks Virtuálisgép-kezelés felügyelnie tárfiókokat eltávolításával egyszerűbbé teszi. A Managed Disks emellett juttatás a rendelkezésre állási csoportban lévő virtuális gépek nagyobb megbízhatóságot. Ez biztosítja, hogy a rendelkezésre állási csoport különböző virtuális lemezek egy meghibásodási pont elkerülése érdekében hibapontok. A rendelkezésre állási csoport a különböző tárolási skálázási egységeket (stampek), amely korlátozza a egyetlen skálázási egységek hibáival oka a hardver és szoftver hibák különböző virtuális lemezek automatikusan helyezi.
+Igényei alapján választhat a négy típusú tárolási lehetőségeket. A rendelkezésre álló lemeztípusok kapcsolatos további információkért tekintse meg ezt a cikket [válassza ki a lemez típusát](disks-types.md).
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Tervezze meg a migrálás a Managed Disks szolgáltatásba
 
@@ -69,7 +66,7 @@ Tekintse át a teljesítményt nyújt, amely a Premium Storage működnek, és v
 
 ### <a name="disk-sizes"></a>Lemezméretek
 
-**Prémium szintű felügyelt lemezek**
+**Premium Managed Disks**
 
 Prémium szintű felügyelt lemezek, amelyek használhatók a virtuális gép hét típusa van, mindegyik adott IOPs és átviteli sebesség korlátok. Figyelembe ezeket a korlátokat a prémium szintű lemeztípus kiválasztása a virtuális gép kapacitását, teljesítmény, méretezhetőség tekintetében az alkalmazás igényeinek megfelelően, és csúcs tölti be.
 
@@ -91,7 +88,7 @@ Hét típusa, a standard szintű felügyelt lemezek, amelyek használhatók a vi
 
 ### <a name="disk-caching-policy"></a>Lemez gyorsítótárazási házirend 
 
-**Prémium szintű felügyelt lemezek**
+**Premium Managed Disks**
 
 Alapértelmezés szerint a lemez gyorsítótárazási házirend a *csak olvasható* minden a prémium szintű adatlemezek esetén és *olvasási és írási* a prémium szintű operációsrendszer-lemez a virtuális Géphez csatlakoztatva. Ezt a konfigurációs beállítást az optimális teljesítmény érdekében az alkalmazás IOs-hez javasolt. Írási vagy csak írási adatlemezek (például az SQL Server-naplófájlok) tiltsa le a lemezek gyorsítótárazása, így jobb alkalmazásteljesítményt érhet el.
 

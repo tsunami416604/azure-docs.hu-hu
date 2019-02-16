@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f0fe4bef436576bec90d1d770d262c2c22d280a3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: edd011509c9129e95bcf7ea49f5a84e17fffd176
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694584"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310550"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Az Azure storage-fiók egy egyéni tartománynév konfigurálása
 
@@ -56,7 +56,7 @@ A második módszer a CNAME-rekordokat is használ. Állásidő elkerülése ér
 
 Az egyéni tartomány leképezése egy blob végpontja okozhat állásidő rövid ideig, amíg a tartomány regisztrál a [az Azure portal](https://portal.azure.com). Ha a tartomány jelenleg támogatja az egy szolgáltatásiszint-szerződés (SLA) üzemkimaradás igénylő alkalmazás, használja az Azure *asverify* altartomány köztes regisztrációs lépésként. Ez a lépés biztosítja, hogy a felhasználók hozzáférhessenek a tartományban, a DNS-hozzárendelés végrehajtása közben.
 
-A közvetítő metódus foglalkozik [az egyéni tartomány regisztrálása a *asverify* altartomány](#register-a-custom-domain-using-the-asverify-subdomain).
+A közvetítő metódus tárgyalunk regisztrálni az egyéni tartomány használatával a *asverify* altartományt.
 
 ## <a name="register-a-custom-domain"></a>Egyéni tartomány regisztrálása
 A tartomány regisztrálása ebben a szakaszban az eljárás segítségével, ha a alkalmazni az alábbi utasításokat:
@@ -65,7 +65,7 @@ A tartomány regisztrálása ebben a szakaszban az eljárás segítségével, ha
 
 Azure DNS segítségével a konfigurálása az Azure Blob-tároló egyedi DNS-nevet. További információt az [egyéni tartománybeállítások egy Azure-szolgáltatáshoz az Azure DNS használatával történő megadását](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage) ismertető cikkben talál.
 
-Ha az egyéni tartomány jelenleg támogatja az olyan alkalmazás, amely nem rendelkezik az állásidő, eljárással [az egyéni tartomány regisztrálása a *asverify* altartomány](#register-a-custom-domain-using-the-asverify-subdomain).
+Az egyéni tartomány jelenleg támogatja az olyan alkalmazás, amely nem rendelkezik az állásidő, ha az eljárással regisztrálja az egyéni tartomány használatával a *asverify* altartományt.
 
 Egyéni tartománynév beállítása, hozzon létre egy új CNAME-rekordot a DNS-ben. The CNAME record specifies an alias for a domain name. Ebben a példában a tárfiók Blob storage-végpont vannak leképezve az egyéni tartomány a címet.
 

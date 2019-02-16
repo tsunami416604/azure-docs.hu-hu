@@ -4,17 +4,17 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c9c52c5cda258908ac8463dd06044e244c75ee2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 94f662cea5f20485659a7b93549b758fdd7770f6
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735899"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327925"
 ---
 Ha már nincs szüksége egy virtuális géphez (VM-hez) csatolt adatlemezre, könnyedén leválaszthatja. Amikor leválaszt egy lemezt a virtuális gépről, a lemezt nem távolítja el a tárolóból. Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ugyanahhoz vagy egy másik virtuális géphez.  
 
 > [!NOTE]
-> Az Azure-ban a virtuális gépek különböző lemeztípusokat használnak – operációsrendszer-lemezt, helyi ideiglenes lemezt és opcionális adatlemezeket. További információ: [A lemezek és virtuális merevlemezek ismertetése](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Az operációsrendszer-lemezeket csak akkor választhatja le, ha a virtuális gépet is törli.
+> Az Azure-ban a virtuális gépek különböző lemeztípusokat használnak – operációsrendszer-lemezt, helyi ideiglenes lemezt és opcionális adatlemezeket. További információ: [A lemezek és virtuális merevlemezek ismertetése](../articles/virtual-machines/linux/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Az operációsrendszer-lemezeket csak akkor választhatja le, ha a virtuális gépet is törli.
 
 ## <a name="find-the-disk"></a>A lemez megkeresése
 Mielőtt leválaszthatna egy lemezt egy virtuális gépről, meg kell keresnie a LUN számot, amely a leválasztani kívánt lemez azonosítója. Ehhez kövesse az alábbi lépéseket:

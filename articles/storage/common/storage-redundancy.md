@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0ba36042d02d0b4101f1e80c63af232717bcf4ca
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ea6d94ff1ee8c27c1642f24660a6ab4f276137a8
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506787"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330783"
 ---
 # <a name="azure-storage-redundancy"></a>Az Azure Storage-redundancia
 
@@ -48,7 +48,7 @@ Minden egyes adatredundáns tárolási mód díjszabásról lásd: [Azure Storag
 Információkat szeretne megtudni az Azure Storage tartóssági és rendelkezésre állási garanciák, lásd: a [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> A Premium Storage támogatja a csak a helyileg redundáns tárolás (LRS). Prémium szintű Storage szolgáltatással kapcsolatos további információkért lásd: [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md).
+> A Premium Storage támogatja a csak a helyileg redundáns tárolás (LRS).
 
 ## <a name="changing-replication-strategy"></a>Replikációs stratégia módosítása
 Módosíthatja a tárfiók replikációs stratégia használatával lehetővé tesszük a [az Azure portal](https://portal.azure.com/), [Azure Powershell](storage-powershell-guide-full.md), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), vagy egy a többhöz [ Azure-ügyfélkönyvtárak](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). A storage-fiók replikációs típusának módosítása eredményez leállás.

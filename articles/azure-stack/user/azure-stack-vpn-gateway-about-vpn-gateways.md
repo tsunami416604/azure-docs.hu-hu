@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/04/2019
+ms.date: 02/15/2019
 ms.author: sethm
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 62a0e763913ea1ca27edf88d7560c9400043bf27
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7bf7034d30a8aac187fb2eeae6569f2f495e4439
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251367"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327246"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Tudnivalók az Azure Stackhez VPN-átjáró
 
@@ -74,11 +74,11 @@ Az ábrák és leírások az alábbi szakaszok segítségével válassza ki az i
 
 ### <a name="site-to-site"></a>Helyek közötti kapcsolat
 
-A *site-to-site* (S2S) VPN gateway-kapcsolat IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztül kapcsolat. Ez a kapcsolattípus egy VPN-eszköz, amely a helyszínen található, és van rendelve egy nyilvános IP-címet igényel. Ez az eszköz nem található a NAT mögötti. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók.
+A *site-to-site* (S2S) VPN gateway-kapcsolat nem kapcsolat (IKEv2) IPsec/IKE VPN-alagúton keresztül. Ez a kapcsolattípus egy VPN-eszköz, amely a helyszínen található, és van rendelve egy nyilvános IP-címet igényel. Ez az eszköz nem található a NAT mögötti. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók.
 
 ![Site-to-site VPN kapcsolat konfigurációja – példa](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-site-connection-diagram.png)
 
-### <a name="multi-site"></a>Többhelyes kapcsolat
+### <a name="multi-site"></a>Többhelyes
 
 A *többhelyes* kapcsolat a helyek közötti kapcsolat egy változata. A virtuális hálózati átjáróról több VPN-kapcsolatot hoz létre, amelyek általában több helyszíni helyhez csatlakoznak. Ha több kapcsolattal dolgozik, egy útvonalalapú VPN-típust (más néven dinamikus átjáró klasszikus virtuális hálózatok használatakor) kell használnia. Mivel minden virtuális hálózat csak egy VPN-átjáróval rendelkezhet, az átjárón keresztüli összes kapcsolat osztozik a rendelkezésre álló sávszélességen.
 

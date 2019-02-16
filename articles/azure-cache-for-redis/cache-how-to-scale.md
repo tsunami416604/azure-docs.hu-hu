@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
-ms.openlocfilehash: 5f448c1c66520a5941ad867eaf3c89c22693cc45
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235572"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313432"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>A Redis az Azure Cache méretezése
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatások a kiválasztott biztosítanak. Gyorsítótár létrehozása után skálázhatja mérete és a gyorsítótár a tarifacsomagot, ha az alkalmazás a követelmények változnak. Ez a cikk bemutatja, hogyan méretezzünk át a gyorsítótár az Azure portal és az eszközök, például az Azure PowerShell-lel és az Azure CLI használatával.
@@ -115,7 +115,7 @@ Az alábbi lista Redis méretezése az Azure Cache kapcsolatos gyakori kérdése
 * [Elveszítek adatokat a gyorsítótárból való méretezése során?](#will-i-lose-data-from-my-cache-during-scaling)
 * [Az egyéni adatbázisok érintett beállítás méretezése során?](#is-my-custom-databases-setting-affected-during-scaling)
 * [A gyorsítótár lesz elérhető méretezése során?](#will-my-cache-be-available-during-scaling)
-* [A georeplikációval konfigurált, miért nem tudok méretezheti a gyorsítótár, vagy módosítsa a szegmensek fürtben?](#scaling-limitations-with-geo-relication)
+* A georeplikációval konfigurált, miért nem tudok méretezheti a gyorsítótár, vagy módosítsa a szegmensek fürtben?
 * [Nem támogatott műveletek](#operations-that-are-not-supported)
 * [Mennyi skálázás tart?](#how-long-does-scaling-take)
 * [Hogyan állapítható meg, amikor skálázás elkészült?](#how-can-i-tell-when-scaling-is-complete)

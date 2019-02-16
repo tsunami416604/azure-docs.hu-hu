@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2601f81b4abecd98d645af9bc0d368e52534a04e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 72a5946aa5b27d1c4d4bb2beaebde67d3e7a0f32
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487880"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328163"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -87,18 +87,18 @@ System Center DPM | Hyper-V és VMware virtuális gépek Linux rendszerű vendé
 Azure Backup Server | Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/><br/> Virtuális gép Hyper-V és VMWare Linux rendszerű Vendég virtuális gépek visszaállítása</br></br> Az Azure virtuális gépek nem érhető el fájlkonzisztens biztonsági mentés 
 Azure IaaS virtuális gép biztonsági mentése | Alkalmazáskonzisztens biztonsági mentés használatával a [szkript előtti és utáni keretrendszerrel](backup-azure-linux-app-consistent.md)<br/><br/> [A fájlszintű helyreállítási](backup-azure-restore-files-from-vm.md)<br/><br/> [Virtuális gép létrehozása a visszaállított lemezről](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Virtuális gép létrehozása egy helyreállítási pontból](backup-azure-arm-restore-vms.md#create-new-create-a-vm).
 
-## <a name="using-premium-storage-vms-with-azure-backup"></a>Premium Storage virtuális gépek használata az Azure Backup szolgáltatással
-Az Azure Backup szolgáltatás a Premium Storage virtuális gépek védelmét is biztosítja. Az Azure Premium Storage egy SSD-alapú tárolási szolgáltatás, amely a nagy I/O-igényű számítási feladatok ellátására készült. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. Prémium szintű Storage szolgáltatással kapcsolatos további információkért tekintse meg a cikket, [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../virtual-machines/windows/premium-storage.md).
+## <a name="using-premium-storage-vms-with-azure-backup"></a>Prémium szintű tárolós virtuális gépek használata az Azure Backup szolgáltatással
+Az Azure Backup védi a premium storage virtuális gépek. Az Azure premium storage szolgáltatás tartós állapotú meghajtót (SSD)-alapú tárolás, I/O-igényes számítási feladatok támogatására. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. A Premium Storage és más lemeztípusok kapcsolatos további információkért lásd: a cikk [válassza ki a lemez típusát](../virtual-machines/windows/disks-types.md).
 
-### <a name="back-up-premium-storage-vms"></a>A Premium Storage virtuális gépek biztonsági mentése
-Premium Storage virtuális gépek biztonsági mentésekor a Backup szolgáltatás átmeneti, „AzureBackup-” nevű előkészítési helyet hoz létre a Premium Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével. Győződjön meg arról, hogy megfelelő mennyiségű szabad hely áll rendelkezésre a Prémium szintű Storage-fiókban az átmeneti előkészítési hely számára. További információért tekintse meg a [Premium Storage korlátozásaival](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) foglalkozó témakört. A biztonsági mentési feladat befejezése után a rendszer törli az előkészítési helyet. Az előkészítési helyhez használt tároló ára megfelel a [Premium Storage díjszabásnak](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
+### <a name="back-up-premium-storage-vms"></a>Készítsen biztonsági másolatot a premium storage virtuális gépek
+A Premium Storage virtuális gépek, a Backup szolgáltatás biztonsági mentésével átmeneti előkészítési helyet hoz létre, míg a neve "AzureBackup-", a premium Storage-fiók. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével. Győződjön meg arról, hogy a premium Storage-fiók rendelkezik az átmeneti előkészítési hely elegendő szabad terület. További információkért lásd a cikk [az Azure storage skálázhatósági célértékét](../storage/common/storage-scalability-targets.md). A biztonsági mentési feladat befejezése után a rendszer törli az előkészítési helyet. Az előkészítési helyhez használt tároló ára megfelel a [Premium Storage díjszabásnak](../virtual-machines/windows/disks-types.md).
 
 > [!NOTE]
 > Ne módosítsa vagy szerkessze az előkészítési helyet.
 >
 >
 
-### <a name="restore-premium-storage-vms"></a>A Premium Storage virtuális gépek visszaállítása
+### <a name="restore-premium-storage-vms"></a>Prémium szintű tárolós virtuális gépek visszaállítása
 A Premium Storage virtuális gépek Premium vagy Standard szintű tárolókba is visszaállíthatók. A Premium Storage virtuális gép helyreállítási pontjának Premium Storage-ba való visszaállítása a tipikus folyamat. Ha azonban költséghatékony megoldást keres, érdemes lehet a Premium Storage virtuális gépek helyreállítási pontjait Standard szintű tárolóba visszaállítani, ha a virtuális gépről a fájlok egy alkészletére van szüksége.
 
 ## <a name="using-managed-disk-vms-with-azure-backup"></a>Felügyelt lemezes virtuális gépek használata az Azure Backuppal

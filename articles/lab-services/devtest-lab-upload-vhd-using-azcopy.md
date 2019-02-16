@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 482bfe41ebfec7353466f7e243e9e767caee7828
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8cd778762bebf4a9dda3688292ac0a3674e446e1
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228283"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330851"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>VHD-fájl feltöltése AzCopy használatával tesztkörnyezet tárfiókba
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Az Azure DevTest Labs szolgáltatásban a VHD-fájlok létrehozása az egyéni lemezképek, amelyek segítségével a virtuális gépek üzembe helyezése használható. A következő lépések végigvezetik az AzCopy parancssori segédprogram használatával töltse fel a VHD-fájl egy tesztkörnyezet egy tárfiókba. Miután feltöltötte a VHD-fájl a [további lépések szakaszt](#next-steps) felsorolja az egyes cikkeket, amelyek bemutatják, hogyan hozhat létre egy egyéni rendszerképet a feltöltött VHD-fájlból. Lemezek és virtuális merevlemezek, az Azure-ban kapcsolatos további információkért lásd: [lemezek és virtuális gépek virtuális merevlemezeinek ismertetése](../virtual-machines/linux/about-disks-and-vhds.md)
+Az Azure DevTest Labs szolgáltatásban a VHD-fájlok létrehozása az egyéni lemezképek, amelyek segítségével a virtuális gépek üzembe helyezése használható. A következő lépések végigvezetik az AzCopy parancssori segédprogram használatával töltse fel a VHD-fájl egy tesztkörnyezet egy tárfiókba. Miután feltöltötte a VHD-fájl a [további lépések szakaszt](#next-steps) felsorolja az egyes cikkeket, amelyek bemutatják, hogyan hozhat létre egy egyéni rendszerképet a feltöltött VHD-fájlból. Lemezek és virtuális merevlemezek, az Azure-ban kapcsolatos további információkért lásd: [Bevezetés a managed Disks szolgáltatásba](../virtual-machines/linux/managed-disks-overview.md)
 
 > [!NOTE] 
 >  

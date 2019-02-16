@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: c1d9047de814b7a80210fe2502d219921f5829a4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 561eff75ef4268acd3f737f7aaa92ccaacfda7f3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976902"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328716"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Gyors útmutató: Egypéldányos SAP HANA az Azure virtuális gépek manuális telepítése
 ## <a name="introduction"></a>Bevezetés
@@ -58,7 +58,7 @@ Azure virtuális gépeken SAP HANA-adatbázisok biztonsági mentésén kapcsolat
 * [Az SAP HANA az Azure Backup a fájlok szintjén](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
 * [Tárolási pillanatképeken alapuló SAP HANA biztonsági mentés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
 
-### <a name="sap-cloud-appliance-library"></a>Az SAP Cloud Appliance Library környezetbe
+### <a name="sap-cloud-appliance-library"></a>SAP Cloud Appliance Library
 Az üzembe helyezéséhez az S/4HANA, BW/4HANA vagy SAP Cloud Appliance Library használatával további információkért lásd: [üzembe helyezése az SAP S/4HANA vagy BW/4hana-t a Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h).
 
 ### <a name="sap-hana-supported-operating-systems"></a>Az SAP HANA által támogatott operációs rendszerek
@@ -151,7 +151,7 @@ Ez a szakasz felsorolja a fontos lépések az SAP HANA, Egypéldányos manuális
 17. Ossza meg a teszt virtuális gépek között a /sapmnt könyvtár NFS használatával. A virtuális gép kiszolgáló az NFS-kiszolgáló.
 18. Telepítse az adatbázispéldányt, HANA, beleértve a HANA-adatbázis-kiszolgáló virtuális gép SWPM használatával.
 19. Az elsődleges (szolgáltatói CÍMEI) kiszolgáló telepíthető az alkalmazás-kiszolgáló virtuális Géphez.
-20. Indítsa el az SAP minősítéssel, MC. SAP grafikus felhasználói felületének vagy a HANA Studio csatlakozhat.
+20. Start SAP MC. SAP grafikus felhasználói felületének vagy a HANA Studio csatlakozhat.
 
 ## <a name="preparing-azure-vms-for-a-manual-installation-of-sap-hana"></a>Manuális telepítés az SAP Hana az Azure virtuális gépek előkészítése
 Ez a szakasz témakörei a következők:
@@ -191,11 +191,11 @@ A legfelső szintű fájlrendszer, a Linux rendszerű virtuális gép az Azure-b
 
 Alapján a [SAP HANA TDI tárhellyel kapcsolatos követelmények](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html), a javaslat a következő Azure Premium Storage-konfiguráció: 
 
-| A VM-TERMÉKVÁLTOZATOK | RAM |  / hana/adat- és naplófájlok/hana / <br /> az LVM vagy MDADM csíkozott | / hana/megosztott | / root kötet | / usr/sap |
+| A VM-TERMÉKVÁLTOZATOK | RAM |  / hana/adat- és naplófájlok/hana / <br /> az LVM vagy MDADM csíkozott | / hana/megosztott | / root kötet | /usr/sap |
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-A javasolt lemez konfigurációját a HANA adatmennyiség és a naplózási kötet ugyanahhoz az adatkészlethez, a prémium szintű Azure storage-lemez LVM vagy MDADM csíkozott helyezni. Nem kell meghatározni a bármilyen RAID tárhelyredundancia-szint, mert az Azure Premium Storage tartja a redundancia biztosítása érdekében a lemezek három kép. Győződjön meg arról, hogy konfigurálja-e elegendő tárhely, tekintse meg a [SAP HANA TDI tárhellyel kapcsolatos követelmények](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) és [SAP HANA-kiszolgáló telepítési és frissítési útmutatójának](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Is vegye figyelembe a különböző Azure prémium szintű tárolólemezek különböző virtuális merevlemez (VHD) átviteli mennyiségű leírtak szerint [nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez](https://docs.microsoft.com/azure/storage/storage-premium-storage). 
+A javasolt lemez konfigurációját a HANA adatmennyiség és a naplózási kötet ugyanahhoz az adatkészlethez, a prémium szintű Azure storage-lemez LVM vagy MDADM csíkozott helyezni. Nem kell meghatározni a bármilyen RAID tárhelyredundancia-szint, mert az Azure Premium Storage tartja a redundancia biztosítása érdekében a lemezek három kép. Győződjön meg arról, hogy konfigurálja-e elegendő tárhely, tekintse meg a [SAP HANA TDI tárhellyel kapcsolatos követelmények](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) és [SAP HANA-kiszolgáló telepítési és frissítési útmutatójának](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Is vegye figyelembe a különböző Azure prémium szintű tárolólemezek különböző virtuális merevlemez (VHD) átviteli mennyiségű leírtak szerint [nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez](../../windows/disks-types.md). 
 
 Hozzáadhat további prémium szintű tárolólemezeket a HANA DBMS virtuális gépekhez, adatbázisban vagy tranzakciónaplóban naplóalapú biztonsági mentések tárolásához.
 
@@ -206,9 +206,7 @@ Csíkozást konfigurálásához használt két fő-eszközökkel kapcsolatos tov
 
 Lemezek csatolása egy vendég operációs rendszer, Linux rendszert futtató Azure virtuális gépekre vonatkozó további információkért lásd: [lemez hozzáadása Linux rendszerű virtuális gép](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Az Azure Premium Storage gyorsítótárazási mód definiálását teszi lehetővé. A csíkozott csoporton /hana/data és /hana/log a lemezek gyorsítótárazása le kell tiltani. A további kötetek (lemezek), a gyorsítótárazási mód kell megadni **ReadOnly**.
-
-További információkért lásd: [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../../windows/premium-storage.md).
+Az Azure prémium szintű SSD-k megadhatók gyorsítótárazási mód. A csíkozott csoporton /hana/data és /hana/log a lemezek gyorsítótárazása le kell tiltani. A további kötetek (lemezek), a gyorsítótárazási mód kell megadni **ReadOnly**.
 
 Példa JSON-sablonok találja a virtuális gépek létrehozásának, [Azure gyorsindítási sablonok](https://github.com/Azure/azure-quickstart-templates).
 A virtuálisgép-egyszerű – sles alapszintű sablon áll. Egy tároló rész alatt, egy további 100 GB-os adatlemezt tartalmaz. Ez a sablon alapján is használható. A sablon az adott konfigurációhoz tesztkörnyezetéhez igazíthatja.
@@ -312,7 +310,7 @@ Ha Windows háttér, a Firefox, SAPinst, SAP grafikus felhasználói Felülettel
 
    Keressen `xrdp.pid`. Ha megtalálta, távolítsa el, és indítsa újra.
 
-### <a name="starting-sap-mc"></a>SAP minősítéssel, MC indítása
+### <a name="starting-sap-mc"></a>Starting SAP MC
 Miután telepítette a GNOME asztali, Firefox az Azure SLES 12/SLES SAP alkalmazások 12 virtuális gép futtatása közben a grafikus Java-alapú SAP minősítéssel, MC kezdve előfordulhat, hogy hibát jelenít meg a hiányzó Java-böngészőbeli beépülő modul miatt.
 
 Az URL-cím, az SAP minősítéssel, MC elindításához `<server>:5<instance_number>13`.

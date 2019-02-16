@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05efbe3feb81b11d547cd50d8ba3f87c2ff0e5b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 52f8e20cb66fb9c516435dd40ff7e362567bb338
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164719"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310860"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>A hozzáférési panelen alkalmazáshoz való bejelentkezésnél
 
@@ -250,13 +250,13 @@ Az Azure ad-ből az alkalmazás metaadatait, vagy a tanúsítvány letöltéséh
 
 Konfigurálhatja egy katalógusban nem szereplő alkalmazást, szüksége lesz a prémium szintű Azure AD és az alkalmazás támogatja az SAML 2.0. Az Azure AD-verziókkal kapcsolatos további információkért látogasson el a [az Azure AD díjszabási](https://azure.microsoft.com/pricing/details/active-directory/).
 
--   [Az alkalmazás metaadatértékeket konfigurálása az Azure ad-ben (bejelentkezési URL-CÍMÉT, az azonosítója, válasz URL-cím)](#configuring-single-sign-on)
+-   Az alkalmazás metaadatértékeket konfigurálása az Azure ad-ben (bejelentkezési URL-CÍMÉT, az azonosítója, válasz URL-cím)
 
 -   [Válassza ki a felhasználói azonosító és az alkalmazásnak küldendő felhasználói attribútumok hozzáadása](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Az Azure AD-metaadatok és a tanúsítvány lekéréséhez](#download-the-azure-ad-metadata-or-certificate)
 
--   [Az Azure AD metaadatértékeket konfigurálása az alkalmazásban (bejelentkezési URL-címet, a kiállító, a kijelentkezési URL-címe és a tanúsítvány)](#configuring-single-sign-on)
+-   Az Azure AD metaadatértékeket konfigurálása az alkalmazásban (bejelentkezési URL-címet, a kiállító, a kijelentkezési URL-címe és a tanúsítvány)
 
 ### <a name="configure-the-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url"></a>Az alkalmazás metaadatértékeket konfigurálása az Azure ad-ben (bejelentkezési URL-CÍMÉT, az azonosítója, válasz URL-cím)
 

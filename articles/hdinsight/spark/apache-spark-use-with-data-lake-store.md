@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: e33ec52a2546100a043a78f66c2232c3c1ad264e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4f50cc46244a4fb205e0ccf60665ba892d3aa8fc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821362"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310040"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>HDInsight Spark-fürt használata a Data Lake Storage lévő adatok elemzéséhez
 
@@ -81,7 +81,7 @@ Ha során létrehozott egy HDInsight-fürt a Data Lake Storage további tárter�
 
 5. Mintaadatok betöltése az egy ideiglenes táblát használ a **HVAC.csv** fájlt másolta a Data Lake-tárfiókra. Elérheti az adatokat a Data Lake Storage-fiókban a következő URL-minta használatával.
 
-    * Ha az alapértelmezett tároló a Data Lake Storage, HVAC.csv lesz hasonló, a következő URL-elérési úton:
+    * Ha a Data Lake Storage Gen1 alapértelmezett tárolóként, HVAC.csv lesz hasonló, a következő URL-elérési úton:
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 

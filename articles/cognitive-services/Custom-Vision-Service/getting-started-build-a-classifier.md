@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 6b39d01266cdde0316d1a660429d5ccab546dac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cd6f533bcd32a307facc781c3b2207a337fc8a34
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873631"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309165"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>A Custom Vision besorolás létrehozása
 
@@ -95,6 +95,11 @@ Ebben a szakaszban töltse fel, és manuálisan címkézhet meg képeket érdek�
     ![A folyamatjelző mutatja a minden feladat befejeződött.](./media/getting-started-build-a-classifier/add-images04.png)
 
 Tölthet fel képeket egy másik készletét, visszatérek a tetejére, az ebben a szakaszban, és ismételje meg a lépéseket. A projekt valamely pontján, előfordulhat, hogy hozzá kell _minták negatív_ annak érdekében, pontosabb az osztályozó által igénybe vett. Negatív minták azokat, amelyek a nem megfelelő más címkék. Ezek a lemezképek feltöltésekor a alkalmazni a speciális **negatív** címke működnek.
+
+> [!NOTE]
+> A Custom Vision Service néhány automatikus negatív kép kezelését támogatja. Például és banán osztályozó szőlőmustnak épít, és a egy cipő előrejelzéshez kép küldése, ha az osztályozó által igénybe vett kell pontszám a lemezképet, 0 % közelében szőlőmust és banán is.
+
+> Másrészről azokban az esetekben, ahol a negatív rendszerképekkel képzés használt rendszerképek egy változata, akkor valószínű, hogy a modell lesz a negatív képek besorolása, a nagyszerű Hasonlóságok miatt címkézett osztály. Például ha grépfrút osztályozó és a egy narancssárga rendelkezik, és a egy clementine képe, csatorna, előfordulhat, hogy pontszám a clementine egy narancs számos funkcióját a clementine csúcsos narancs, mert. Ha a negatív képek az ilyen jellegű, azt javasoljuk, létrehozhat egy vagy több további címkéket (például **más**) és a negatív képek a címkével ellátott címkét, hogy ezeket az osztályokat jobban megkülönböztetni a modell betanítása közben .
 
 ## <a name="train-the-classifier"></a>Az osztályozó betanítása
 

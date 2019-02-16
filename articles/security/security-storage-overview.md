@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2019
 ms.author: terrylan
-ms.openlocfilehash: 5d8c9ae52152df6a0e016c12234afe4ae780b251
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ec0e8ae1bf657cda59f3d133db23106436e184e3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115436"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326756"
 ---
 # <a name="azure-storage-security-overview"></a>Az Azure Storage biztonsági áttekintése
 
@@ -79,7 +79,7 @@ A legtöbb szervezet számára [adattitkosítás inaktív](https://cloudblogs.mi
 
 További információk a Storage Service Encryption szolgáltatással:
 
-* [Az Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) érhető el [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/). További információ a más az Azure storage-típusok: [Azure Files](https://azure.microsoft.com/services/storage/files/), [lemez (prémium szintű Storage)](https://azure.microsoft.com/services/storage/premium-storage/), [Table storage](https://azure.microsoft.com/services/storage/tables/), és [Queue storage](https://azure.microsoft.com/services/storage/queues/).
+* [Az Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) érhető el [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/). További információ a más az Azure storage-típusok: [Azure Files](https://azure.microsoft.com/services/storage/files/), [Table storage](https://azure.microsoft.com/services/storage/tables/), és [Queue storage](https://azure.microsoft.com/services/storage/queues/).
 * [Az Azure Storage Service Encryption for Data at Rest](../storage/common/storage-service-encryption.md)
 
 ## <a name="azure-disk-encryption"></a>Azure Disk Encryption

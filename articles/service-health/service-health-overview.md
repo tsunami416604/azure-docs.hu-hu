@@ -9,12 +9,12 @@ ms.service: service-health
 ms.topic: article
 ms.workload: Supportability
 ms.date: 03/27/2018
-ms.openlocfilehash: b771e36344ff26c9a817a0314e0f223b6e809a17
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 465e8751d02692648234a7a90b84b68f41522cb2
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871699"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328265"
 ---
 # <a name="service-health"></a>Service Health
 A Service Health biztosít egy testreszabható irányítópulton, amely nyomon követi a régiókban, ahol használja azokat az Azure-szolgáltatások állapotát. Ezen az irányítópulton követheti a folyamatban lévő szolgáltatással kapcsolatos problémák, a közelgő tervezett karbantartáshoz vagy a megfelelő állapottanácsadási információk aktív események. Amikor események válnak inaktívvá, azok elhelyezett egészségügyi előzményekben legfeljebb 90 napig. Végül használhatja a Szolgáltatásállapot-irányítópult létrehozása és kezelése a service health-riasztásokat, amelyek proaktívan értesíti, amint a szolgáltatással kapcsolatos problémák hatással vannak.
@@ -24,6 +24,9 @@ A Service Health háromféle hatással lehet az erőforrások hálózatállapot-
 1. **Szolgáltatási problémák** -kapcsolatos problémák az Azure-szolgáltatások Önt érintő most. 
 2. **Tervezett karbantartás** –, amelyek hatással lehetnek a jövőben a szolgáltatások rendelkezésre állásának közelgő karbantartásokról.  
 3. **Állapottanácsadási információk** -változások az Azure-szolgáltatások, figyelmet igénylő problémák. Ilyenek például az Azure-szolgáltatások avultak el, vagy ha túllépi a használati kvótát.
+
+> [!NOTE]
+> Service Health-események megtekintése, felhasználók olvasói szerepkörrel kell rendelkeznie egy előfizetést.
 
 ## <a name="get-started-with-service-health"></a>A Service Health használatának első lépései
 Indítsa el a Service Health irányítópultján, válassza a szolgáltatás állapota csempe az irányítópulton. Ha korábban már eltávolította a csempére, vagy egyéni irányítópultot használ, keressen a "További szolgáltatások" a Service Health service (az irányítópult bal alsó).

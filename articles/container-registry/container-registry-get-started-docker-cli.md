@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: c27af57ce4fa80a4ae167ce1e27018d049923a3f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 164d705a16dd82a1c5f3ff6f5e6982f80eb40dab
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982845"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330868"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 
@@ -116,10 +116,10 @@ Ha már nincs szüksége az Nginx rendszerképet, törölheti a helyben a [docke
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Az Azure container registry rendszerképek eltávolításához használhatja az Azure CLI-paranccsal [az acr-adattár törlése](/cli/azure/acr/repository#az-acr-repository-delete). Például a következő parancs törli a címkét, kapcsolódó réteg adatokat és minden egyéb címkét, a jegyzékfájl hivatkozó által hivatkozott jegyzékfájl.
+Az Azure container registry rendszerképek eltávolításához használhatja az Azure CLI-paranccsal [az acr-adattár törlése](/cli/azure/acr/repository#az-acr-repository-delete). Például a következő parancs törli a hivatkozik a jegyzékfájlt a `samples/nginx:latest` címke, bármilyen egyedi rendszerképréteg-adatot és minden egyéb címkét hivatkozik a jegyzékfájl.
 
 ```azurecli
-az acr repository delete --name myregistry --repository samples/nginx --tag latest --manifest
+az acr repository delete --name myregistry --image samples/nginx:latest
 ```
 
 ## <a name="next-steps"></a>További lépések

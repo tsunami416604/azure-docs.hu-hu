@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 62d6dce4ccb5d4badbcf9b02cbbcda576ee63212
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: add526d8c09d2aa557ddd645e9016cb9c3b225a3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869245"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328197"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportálás és az ügyféladatokat, a Language Understanding (LUIS) a Cognitive Services törlése
 
@@ -30,7 +30,7 @@ Language Understanding Intelligent Service (LUIS) őrzi meg a szolgáltatás üg
 - Regisztráció során gyűjtött felhasználói fiók tartalom
 - Betanítási adatok (azaz szándékot & entitások) a modellek létrehozásához szükséges
 - Naplózza a felhasználói modellek javítása érdekében futásidőben felhasználói lekérdezések
-  - Bármikor kikapcsolhatják lekérdezések naplózása hozzáfűzésével `&log=false` a kérést, részletesen [Itt](luis-resources-faq.md#how-can-i-disable-the-logging-of-utterances)
+  - Bármikor kikapcsolhatják lekérdezések naplózása hozzáfűzésével `&log=false` a kérést, részletesen [Itt](troubleshooting.md#how-can-i-disable-the-logging-of-utterances)
 
 ## <a name="deleting-customer-data"></a>Vásárlói adatok törlése
 A LUIS felhasználók törli a felhasználó tartalma, legyen az a LUIS webes portálon vagy a LUIS programozható API-k teljes hozzáféréssel rendelkeznek. A következő táblázat mindkét segítő hivatkozásokat jeleníti meg:

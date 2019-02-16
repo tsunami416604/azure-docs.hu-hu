@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: b75a2faa2030fc343cbabb17eb37b63c9ea34f70
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d36f2851f9c4f30725c8f8057d61970b6560009e
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232381"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313211"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>A Redis Azure Cache felügyelete
 Ez a témakör ismerteti, hogyan lehet felügyeleti feladatok végrehajtásához [újraindítása](#reboot) és [frissítések ütemezése](#schedule-updates) az Azure Cache Redis-példány számára.
@@ -94,7 +94,7 @@ A **frissítések ütemezése** panel lehetővé teszi, hogy a prémium szintű 
 
 Adja meg a karbantartási időszak, ellenőrizze a kívánt napok és adja meg a karbantartási időszak kezdő órája minden nap, és kattintson **OK**. Vegye figyelembe, hogy a karbantartási ablak időpontja (UTC). 
 
-A frissítések az alapértelmezett és minimális karbantartási időszak 5 óra. Ez az érték nem konfigurálható az Azure Portalról, de a PowerShell használatával konfigurálhatja a `MaintenanceWindow` paraméterében a [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) parancsmagot. További információkért lásd: [felügyelhető a PowerShell, a parancssori felület vagy a más felügyeleti eszközök ütemezett frissítések?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
+A frissítések az alapértelmezett és minimális karbantartási időszak 5 óra. Ez az érték nem konfigurálható az Azure Portalról, de a PowerShell használatával konfigurálhatja a `MaintenanceWindow` paraméterében a [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) parancsmagot. További információkért lásd a címtáradatok kezelése a PowerShell, a parancssori felület vagy a más felügyeleti eszközök ütemezett frissítések?
 
 
 ## <a name="schedule-updates-faq"></a>Frissítések ütemezése – Gyakori kérdések

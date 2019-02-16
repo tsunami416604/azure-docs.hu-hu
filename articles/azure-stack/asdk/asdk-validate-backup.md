@@ -7,16 +7,16 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 02/15/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: 02ecb3cdec9ddb07bf48dfe77d1ed5fbf07975e0
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 02/15/2019
+ms.openlocfilehash: 6fdec992b19a5615a35955a46fd90102890cde16
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965324"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329353"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>A ASDK használata az Azure Stack biztonsági másolat ellenőrzése
 Azure Stack üzembe helyezése és felhasználói erőforrások, például az ajánlatok, tervek, kvóták és az előfizetések kiépítése, után kell [Azure Stack infrastruktúrájának biztonsági mentés engedélyezése](../azure-stack-backup-enable-backup-console.md). Az ütemezés és az infrastruktúra rendszeres biztonsági mentések futtatása biztosítja, hogy infrastruktúra felügyeleti ne legyen adatvesztés a katasztrofális hardver vagy szolgáltatás hibája esetén.
@@ -52,11 +52,11 @@ Mielőtt elkezdené a ASDK helyreállítási üzembe a felhőben, ellenőrizze, 
 
 |Előfeltétel|Leírás|
 |-----|-----|
-|Biztonsági mentési megosztás elérési útja.|Az UNC megosztást elérési útja a legújabb Azure Stack biztonsági másolat használatával állítsa helyre az Azure Stack-infrastruktúra információkat használandó. A helyi megosztás a felhőbeli helyreállítási üzembe helyezési folyamat során jön létre.|
-|Titkosítási kulcs biztonsági mentése.|A titkosítási kulcs használt infrastruktúra biztonsági mentés futtatása az Azure Stack felügyeleti portál használatával ütemezése.|
-|A visszaállítandó biztonsági mentési azonosítója.|A biztonsági mentési azonosító, ": xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", alfanumerikus formájában, amely azonosítja a biztonsági mentés felhőalapú helyreállítás során vissza kell állítani.|
-|Kiszolgáló IP-címe.|Egy érvényes idő kiszolgáló IP-címet, például 132.163.97.2, szükség az Azure Stack üzemelő példányához.|
-|Külső tanúsítvány jelszavát.|Az Azure Stack által használt külső tanúsítvány jelszava. A hitelesítésszolgáltató biztonsági mentésére kell állítani a jelszót külső tanúsítványok tartalmazza.|
+|Biztonsági mentési megosztás elérési útja|Az UNC megosztást elérési útja a legújabb Azure Stack biztonsági másolat használatával állítsa helyre az Azure Stack-infrastruktúra információkat használandó. A helyi megosztás a felhőbeli helyreállítási üzembe helyezési folyamat során jön létre.|
+|Titkosítási kulcs biztonsági mentése|Választható. Csak a kötelező Ha frissítette az Azure Stack 1901 vagy újabb verziójára lesz az Azure Stack egy korábbi verziójáról engedélyezett biztonsági mentéssel.|
+|A visszaállítandó biztonsági másolat azonosítója|A biztonsági mentési azonosító, ": xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", alfanumerikus formájában, amely azonosítja a biztonsági mentés felhőalapú helyreállítás során vissza kell állítani.|
+|Idő kiszolgáló IP-címe|Egy érvényes idő kiszolgáló IP-címet, például 132.163.97.2, szükség az Azure Stack üzemelő példányához.|
+|Külső tanúsítvány jelszava|Az önaláírt tanúsítvány titkos kulcsot (.pfx), amellyel a biztonsági mentés biztonságos jelszavát.|
 |     |     | 
 
 ## <a name="prepare-the-host-computer"></a>A számítógép előkészítése 
@@ -133,11 +133,12 @@ $certPass = Read-Host -AsSecureString
 ## <a name="restore-infrastructure-data-from-backup"></a>Infrastruktúra-adatok visszaállítása biztonsági másolatból
 Egy sikeres felhőbeli helyreállítási telepítése után hajtsa végre a visszaállítást használatával kell a **Restore-AzureStack** parancsmagot. 
 
-Az Azure Stack-operátorokról, mint a bejelentkezés után [Azure Stack PowerShell telepítésének](asdk-post-deploy.md#install-azure-stack-powershell) majd, és cserélje le a biztonsági mentés azonosítója és a `Name` paramétert, a következő parancsot:
+Az Azure Stack-operátorokról, mint a bejelentkezés után [Azure Stack PowerShell telepítésének](asdk-post-deploy.md#install-azure-stack-powershell) , és adja meg a tanúsítvány és jelszó használható, ha a biztonsági másolatból történő visszaállítását a következő parancsok futtatásával:
 
 ```powershell
 Restore-AzsBackup -Name "<BackupID>"
 ```
+
 Várjon, amíg 60 perc után indítsa el a biztonsági mentési adatok ellenőrzése a felhőben, a parancsmag meghívása ASDK helyreállítani.
 
 ## <a name="next-steps"></a>További lépések

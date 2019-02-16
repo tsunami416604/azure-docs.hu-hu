@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: pafarley
-ms.openlocfilehash: 7f27170a5e97d7860bcb059f16273b38757de747
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 01273ca241769c5e3bb7b7222355d32b29fd51b9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867035"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308502"
 ---
 # <a name="export-or-delete-user-data-in-custom-vision"></a>Exportálhatók és nem törli a felhasználói adatokat a Custom Vision
 
-Content Moderator gyűjti a felhasználói adatokat a szolgáltatás, de az ügyfelek teljes hozzáféréssel rendelkeznek megtekintése, exportálása és hogy az adatok törlése a Custom Vision Service segítségével [képzési API](https://go.microsoft.com/fwlink/?linkid=865446).
+A szolgáltatás felhasználói adatokat gyűjti össze a Custom Vision, de az ügyfél rendelkezik megtekintése, exportálása és törlése, hogy az adatok teljes hozzáféréssel a Custom Vision Service segítségével [képzési API](https://go.microsoft.com/fwlink/?linkid=865446).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 

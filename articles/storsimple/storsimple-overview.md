@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 946b5a568d98367daec0244968b962618f22ae76
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055291"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326926"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>A StorSimple 8000 sorozat: a hibrid felhőalapú tárolási megoldás
 ## <a name="overview"></a>Áttekintés
@@ -92,7 +92,7 @@ A felhőalapú berendezés a következő funkciókkal rendelkezik:
 * Felhőalapú berendezések korlátlan számú létrehozásához a felhőben, és kapcsolja be- és bekapcsolhatja őket szükség szerint.
 * Segíthet a helyszíni környezetekben a vész-helyreállítási, fejlesztési és tesztelési forgatókönyvek szimulálása, és segíthet a biztonsági mentésekből elemszintű előhívásokhoz.
 
-A StorSimple felhőalapú készülék két modellben érhető el: a 8010-es eszköz (korábbi nevén az 1100-as modell) és a 8020-as eszköz. A 8010-es eszköz 30 TB-os maximális kapacitása nem. A 8020-as eszközt, és kihasználja az Azure premium storage kapacitása maximum 64 TB-os. (Helyi szinten az Azure premium storage tárolja az adatokat az SSD-k, míg a standard szintű tárolóban tárolja az adatokat a HDD-k.) Vegye figyelembe, hogy prémium szintű storage használata az Azure premium storage-fiók kell rendelkeznie. Prémium szintű storage szolgáltatással kapcsolatos további információkért lépjen [Premium Storage: nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../virtual-machines/windows/premium-storage.md).
+A StorSimple felhőalapú készülék két modellben érhető el: a 8010-es eszköz (korábbi nevén az 1100-as modell) és a 8020-as eszköz. A 8010-es eszköz 30 TB-os maximális kapacitása nem. A 8020-as eszközt, és kihasználja az Azure premium storage kapacitása maximum 64 TB-os. (Helyi szinten az Azure premium storage tárolja az adatokat az SSD-k, míg a standard szintű tárolóban tárolja az adatokat a HDD-k.) Vegye figyelembe, hogy prémium szintű storage használata az Azure premium storage-fiók kell rendelkeznie.
 
 A StorSimple felhőalapú készülék kapcsolatos további információkért látogasson el [üzembe helyezése és kezelése az Azure StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).
 
@@ -283,7 +283,7 @@ A Microsoft Azure StorSimple megoldás üzembe helyezése előtt javasoljuk, hog
 | a hibrid felhőalapú tárolás |Egy tároló-architektúra, amely a helyi és a külső helyszínen lévő erőforrások, például a felhőalapú tárolást használ. |
 | Az Internet Small Computer System Interface (iSCSI) |Egy Internet Protocol IP-alapú tárolási hálózati szabvány kapcsolásának adatok tárolási berendezés vagy üzemeltetnek. |
 | az iSCSI-kezdeményező |A szoftverfrissítési összetevő, amely lehetővé teszi egy iSCSI-alapú tárolás külső hálózathoz való csatlakozáshoz Windows rendszerű gazdagépen. |
-| az iSCSI minősített nevét (IQN) |ISCSI-tároló vagy kezdeményező azonosító egyedi név. |
+| iSCSI Qualified Name (IQN) |ISCSI-tároló vagy kezdeményező azonosító egyedi név. |
 | iSCSI-tároló |A szoftverfrissítési összetevő központi iSCSI-tárolóhálózatok kialakítása a lemez-alrendszereket biztosító. |
 | élő archiválás |Egy adattárolási módszer, amely archív adatokhoz érhető el (a rendszer nem tárolja adathordozókra szalagon, például) folyamatosan. A Microsoft Azure StorSimple használ élő archiválás. |
 | helyileg rögzített kötet |olyan kötetre, amely az eszközön található, és soha nem lesz rétegzett, a felhőbe. |
@@ -302,7 +302,7 @@ A Microsoft Azure StorSimple megoldás üzembe helyezése előtt javasoljuk, hog
 | StorSimple-eszközkezelő szolgáltatás |Az Azure Portalon, amely lehetővé teszi, hogy az Azure StorSimple a helyi és virtuális eszközök kezelésére a kiterjesztése. |
 | StorSimple Snapshot Manager |A Microsoft Management Console (MMC) beépülő kezeléséhez a Microsoft Azure StorSimple biztonsági mentési és visszaállítási műveletek. |
 | biztonsági mentés |Ez a funkció lehetővé teszi, hogy a felhasználót, hogy a kötet egy interaktív biztonsági mentés. Manuális biztonsági másolat egy automatizált biztonsági másolat egy meghatározott szabályzat helyett egy kötet más módja. |
-| a dinamikus kiosztás |Módszer, amellyel a rendelkezésre álló lemezterület szerepel a tárolórendszerek hatékonyságának optimalizálása. A dinamikus kiosztást, a tároló lefoglalása egy adott időpontban minden felhasználó által igényelt terület alapján több felhasználó használ. Lásd még: *fat kiépítés*. |
+| A dinamikus kiosztás |Módszer, amellyel a rendelkezésre álló lemezterület szerepel a tárolórendszerek hatékonyságának optimalizálása. A dinamikus kiosztást, a tároló lefoglalása egy adott időpontban minden felhasználó által igényelt terület alapján több felhasználó használ. Lásd még: *fat kiépítés*. |
 | rétegezést |Aktuális használat életkor és más adatokhoz való kapcsolat alapuló logikai csoportok adatainak rendezése. A StorSimple automatikusan elrendezése adatok szinten. |
 | kötet |Logikai tárolási területek meghajtók formájában jelenik meg. StorSimple-köteteket a kötetek csatlakoztatva van a gazdagép, beleértve a felderített iSCSI és a egy StorSimple-eszköz felel meg. |
 | kötettároló |Csoportja, kötetek és a rájuk vonatkozó beállításokat. A StorSimple-eszköz minden kötet kötettárolók vannak csoportosítva. Kötet tároló beállítások közé tartozik a storage-fiókok, a titkosítási beállítások a kapcsolódó titkosítási kulcsokat a felhőbe küldött adatok és a felhőt érintő műveletek felhasznált sávszélesség. |

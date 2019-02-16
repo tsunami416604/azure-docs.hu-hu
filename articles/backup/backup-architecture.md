@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: raynew
-ms.openlocfilehash: 84890c0658970aa9f61a06764cf902a5e5ee4379
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4f26c805c42f027409127232fcfef9840939e8d9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812559"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329183"
 ---
 # <a name="azure-backup-architecture"></a>Az Azure Backup-architektúra
 
@@ -175,8 +175,8 @@ A deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><b
 
 További információk:
 
-- További információ a lemezes tárolás [Windows](../virtual-machines/windows/about-disks-and-vhds.md) és [Linux](../virtual-machines/linux/about-disks-and-vhds.md) virtuális gépeket.
-- Ismerje meg [standard](../virtual-machines/windows/standard-storage.md) és [prémium](../virtual-machines/windows/premium-storage.md) storage.
+- További információ a lemezes tárolás [Windows](../virtual-machines/windows/managed-disks-overview.md) és [Linux](../virtual-machines/linux/managed-disks-overview.md) virtuális gépeket.
+- További információ az elérhető [lemeztípusok](../virtual-machines/windows/disks-types.md) például a standard és prémium.
 
 
 ### <a name="backing-up-and-restoring-azure-vms-with-premium-storage"></a>Biztonsági mentése és visszaállítása az Azure virtuális gépek a premium storage 
@@ -184,9 +184,9 @@ További információk:
 Készíthet biztonsági másolatot az Azure virtuális gépek premium Storage tárolást használ az Azure Backup szolgáltatással:
 
 - Biztonsági mentésekor a premium storage virtuális gépek, a Backup szolgáltatás átmeneti előkészítési helyet, ennek a neve "AzureBackup-", a storage-fiókot hoz létre. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével.
-- Győződjön meg arról, hogy a premium storage-fiók rendelkezik-e elegendő szabad terület az átmeneti előkészítési hely. [További információk](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets). Ne módosítsa az előkészítési helyet.
+- Győződjön meg arról, hogy a premium storage-fiók rendelkezik-e elegendő szabad terület az átmeneti előkészítési hely. [További információk](../storage/common/storage-scalability-targets.md#premium-storage-account-scale-limits). Ne módosítsa az előkészítési helyet.
 - A biztonsági mentési feladat befejezése után a rendszer törli az előkészítési helyet.
-- Az előkészítési helyhez használt tároló ára összhangban az [premium storage szolgáltatás díjszabása](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
+- Az előkészítési helyhez használt tároló ára összhangban az [premium storage szolgáltatás díjszabása](../virtual-machines/windows/disks-types.md#billing).
 
 Azure virtuális gépek premium Storage tárolást használ visszaállításkor visszaállíthatja őket prémium vagy standard szintű storage. Költséghatékony standard visszaállítása, ha csak a virtuális gépről a fájlok egy alkészletére lehet, azonban általában akkor állítja vissza a prémium szintű.
 

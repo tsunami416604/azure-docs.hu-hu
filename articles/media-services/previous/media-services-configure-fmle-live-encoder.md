@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 32bed77146284799faebdb8a44e2e610f49913cf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 02adb36bec574719f3f6d7f1c1b66124f96ccae1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003737"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309233"
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream-legacy"></a>A FMLE kódoló használatával küldjön egy egyféle sávszélességű élő streamet (örökölt)
 > [!div class="op_single_selector"]
@@ -64,7 +64,7 @@ Ebben az oktatóanyagban az AAC használatát ismerteti. Ugyanakkor az FMLE nem 
 >
 >
 
-A csatorna indítása folyamatban van, amíg is [a kódoló](media-services-configure-fmle-live-encoder.md#configure_fmle_rtmp).
+A csatorna indítása folyamatban van, amíg is [a kódoló](media-services-configure-fmle-live-encoder.md).
 
 > [!IMPORTANT]
 > Vegye figyelembe, hogy a számlázási elindul, amint a csatorna üzemkész állapotba kerül. További információkért lásd: [csatorna állapotok](media-services-manage-live-encoder-enabled-channels.md#states).

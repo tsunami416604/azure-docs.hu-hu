@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 02/07/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6383a495ed3e3876e96b1249cb7b2286b240a481
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cc8cbc19f416e6e80d2d0fdfb4862536da7f0ce2
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884596"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312242"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Gyors útmutató: A nem kívánt tartalom szöveges tartalmakat elemezhetC# 
 
@@ -35,9 +35,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 1. Hozzon létre egy új **Console app (.NET Framework)** (Konzolalkalmazás- (.NET-keretrendszer)) projektet a Visual Studióban és adja neki a **TextModeration** nevet. 
 1. Ha más projektek is vannak a megoldásban, válassza ki ezt a projektet az egyedüli kezdőprojektként.
 1. Szerezze be a szükséges NuGet-csomagokat. A Solution Explorer (Megoldáskezelő) felületén kattintson a jobb gombbal a projektre és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget, majd keresse meg és telepítse a következő csomagokat:
-    - Microsoft.Azure.CognitiveServices.ContentModerator
-    - Microsoft.Rest.ClientRuntime
-    - Newtonsoft.Json
+    - `Microsoft.Azure.CognitiveServices.ContentModerator`
+    - `Microsoft.Rest.ClientRuntime`
+    - `Newtonsoft.Json`
 
 ## <a name="add-text-moderation-code"></a>Szövegmoderálási kód hozzáadása
 

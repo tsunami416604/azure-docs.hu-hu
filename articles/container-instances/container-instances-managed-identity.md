@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: bf807a4d24b72c948707ade28f06c4eb2a54c0a0
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 321dfaa1a58cc806394f4807c38cbdc599cfd7a0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657025"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311563"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Felügyelt identitások használata Azure Container Instances szolgáltatásban
 
@@ -27,6 +27,9 @@ Ebben a cikkben, tudjon meg többet az Azure Container Instances szolgáltatásb
 > * A futó tárolót a Key Vault elérése érdekében a felügyelt identitás használata
 
 Alkalmazkodjon a példákat, engedélyezése és használata az identitások az Azure Container Instances szolgáltatásban más Azure-szolgáltatások eléréséhez. Ezekben a példákban interaktívak. Azonban a gyakorlatban a tárolólemezképek kód futtatásával az Azure-szolgáltatásokhoz való hozzáférést.
+
+> [!NOTE]
+> Jelenleg egy felügyelt identitás nem használhat egy tárolócsoport üzembe helyezni egy virtuális hálózatban.
 
 ## <a name="why-use-a-managed-identity"></a>Miért érdemes használni egy felügyelt identitás?
 

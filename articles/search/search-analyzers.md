@@ -4,23 +4,23 @@ description: Az alapértelmezett egyéni, előre definiált vagy nyelvspecifikus
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 02/15/2019
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 5c3894b1f19a6baa65323391526ea5492d79f8a7
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: a3f782cdd34f2a45c58e6a98d013f949767589cb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301332"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328010"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Az Azure Search szövegfeldolgozást elemzők
 
-Egy *analyzer* összetevője a [teljes szöveges keresőmotorja](search-lucene-query-architecture.md) felelős a lekérdezési karakterláncok és az indexelt dokumentumok feldolgozásáért. Nincsenek nyelvi elemzőkkel és a szöveg adatkezelési elemzőket. Nyelvi elemzők a leggyakoribb, és az Azure Search-index minden karakterlánc típusú rendelt alapértelmezett nyelvi elemzőt.
+Egy *analyzer* összetevője a [teljes szöveges keresőmotorja](search-lucene-query-architecture.md) felelős a lekérdezési karakterláncok és az indexelt dokumentumok feldolgozásáért. Különböző elemzők módosíthatja a szöveget a forgatókönyvtől függően különböző módon. Nyelvi elemzők nyelvi szabályok használatával annak érdekében, hogy a keresési minőségét, javítja, bár egyéb elemzők végrehajtásához több alapszintű feladatokat, mint például átalakítás karakterek kisbetű, szöveges feldolgozni. 
 
-Szöveg elemzése során jellemzően a következő nyelvi átalakítások:
+Nyelvi elemzők a leggyakrabban használt, és nincs az alapértelmezett nyelvi elemző rendelt minden Azure Search-index kereshető mezőjében. Szöveg elemzése során jellemzően a következő nyelvi átalakítások:
 
 + Nem lényeges szavakat (áll), és írásjelek el lesznek távolítva.
 + Mondatok és elválasztható szavak bontásban összetevő részre.
@@ -46,7 +46,7 @@ Az alábbi lista ismerteti, hogy melyik elemzők az Azure Search szolgáltatásb
 | Előre definiált elemzők | Érhető el, ha egy kész termék kívánják használható – van. <br/>Két típusa van: speciális és a nyelvet. Miből őket "előre meghatározott" neve, konfigurálása és testreszabása nélkül hivatkozhat. <br/><br/>[Specializált (nyelvtől) elemzők](index-add-custom-analyzers.md#AnalyzerTable) használatosak, amikor a bemeneti szöveg speciális feldolgozó vagy a minimális feldolgozást igényelnek. Például nem előre definiált nyelvelemzők **Asciifolding**, **kulcsszó**, **minta**, **egyszerű**, **leállítása**, **Szóköz**.<br/><br/>[Nyelvi elemzők](index-add-language-analyzers.md) használatosak, amikor az egyes nyelveket a gazdag nyelvi támogatás szükséges. Az Azure Search 35 Lucene nyelvi elemzőkkel és a Microsoft természetes nyelvek feldolgozása 50 elemzők támogatja. |
 |[Egyéni elemzők](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Egy felhasználó által definiált konfigurációjának meglévő elemeket, egy jogkivonatokat létrehozó (kötelező) és a választható szűrők (char vagy token) kombinációja jelenti.|
 
-Néhány előre meghatározott elemzők, mint például **minta** vagy **leállítása**, támogatja a korlátozott számú konfigurációs beállításokat. Ezekkel a beállításokkal hatékonyan hozzon létre egy egyéni elemző eszköz, az előre meghatározott analzer álló és az alternatív lehetőségek közül dokumentált [előre meghatározott Analyzer referencia](index-add-custom-analyzers.md#AnalyzerTable). Mivel minden olyan egyéni konfigurációval, adja meg az új konfiguráció néven, például *myPatternAnalyzer* csatornától való megkülönböztetés a Lucene-minta analyzer.
+Néhány előre meghatározott elemzők, mint például **minta** vagy **leállítása**, támogatja a korlátozott számú konfigurációs beállításokat. Ezekkel a beállításokkal hatékonyan hozzon létre egy egyéni elemző eszköz, az előre definiált elemző álló és az alternatív lehetőségek közül dokumentált [előre meghatározott Analyzer referencia](index-add-custom-analyzers.md#AnalyzerTable). Mivel minden olyan egyéni konfigurációval, adja meg az új konfiguráció néven, például *myPatternAnalyzer* csatornától való megkülönböztetés a Lucene-minta analyzer.
 
 ## <a name="how-to-specify-analyzers"></a>Elemzők megadása
 
@@ -54,24 +54,26 @@ Néhány előre meghatározott elemzők, mint például **minta** vagy **leáll�
 
 2. Az egy [definíció mező](https://docs.microsoft.com/rest/api/searchservice/create-index) az indexben, állítsa be a mező **analyzer** tulajdonságát egy cél-elemző eszköz nevére (például `"analyzer" = "keyword"`. Az érvényes értékek egy előre meghatározott elemző, nyelvi elemző vagy az indexséma még definiált egyéni elemző neve. Tervezze meg az index definícióját fázisban a szolgáltatásban az index létrehozása előtt analyzer hozzárendelésével.
 
-3. Szükség esetén helyett **analyzer** tulajdonság, beállíthatja az indexelés és a lekérdezési a használatával különböző elemzők a **indexAnalyzer** és **searchAnalyzer** mező a paraméterek. 
+3. Szükség esetén helyett **analyzer** tulajdonság, beállíthatja az indexelés és a lekérdezési a használatával különböző elemzők a **indexAnalyzer** és **searchAnalyzer** mező a paraméterek. Ha egy adott tevékenységek egy átalakítási, nincs szükség a többi szükséges lenne használata különböző esetén a adat-előkészítési és lekéréséhez.
 
-3. Az index az írási művelet egy elemző ad hozzá egy mezőt definíció tekintetében. Ha hozzáad egy **analyzer** létező indexek, vegye figyelembe a következőket:
+Hozzárendelés **analyzer** vagy **indexAnalyzer** mezőre, amely már fizikailag létrehozása nem engedélyezett. Ha bármelyik ez nem egyértelmű, tekintse át a következő táblázat tartalmazza, amelyek műveletek van szükség egy bontása és miért.
  
  | Forgatókönyv | Hatás | Lépések |
  |----------|--------|-------|
- | Adjon hozzá egy új mezőt | Minimális | Ha a mező a séma még nem létezik, nem végezhet, mert a mező még nem rendelkezik egy fizikai jelenlét az index nem mező változat. Használat [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) új mező hozzáadása egy meglévő index.|
- | Egy elemző hozzáadása egy meglévő indexelt mező. | [Újraépítése](search-howto-reindex.md) | Ezt a mezőt fordított indexe létre kell hozni az alapoktól fel, és újra kell indexelni a tartalmat az adott mezők. <br/> <br/>Az aktív fejlesztés alatt indexek [törlése](https://docs.microsoft.com/rest/api/searchservice/delete-index) és [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) folytattuk a munkát az új mező definíció indexe. <br/> <br/>Az indexek éles környezetben újraépítési kiadásuktól hozzon létre egy új mezővel, adja meg a módosított meghatározása és vegye használatba a régit helyett. Használat [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) építhetnek be az új mező és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) itbet feltöltéséhez. Később, az index tervezett karbantartás részeként távolíthatja el az indexet elavult mezők eltávolítása. |
+ | Adjon hozzá egy új mezőt | Minimális | Ha a mező a séma még nem létezik, nem végezhet, mert a mező még nem rendelkezik egy fizikai jelenlét az index nem mező változat. Használhat [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) új mező hozzáadása egy meglévő index, és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) feltölti azt.|
+ | Adjon hozzá egy **analyzer** vagy **indexAnalyzer** meglévő indexelt mezőhöz. | [Újraépítése](search-howto-reindex.md) | Ezt a mezőt fordított indexe létre kell hozni az alapoktól, és újra kell indexelni a tartalmat az adott mezők. <br/> <br/>Az aktív fejlesztés alatt indexek [törlése](https://docs.microsoft.com/rest/api/searchservice/delete-index) és [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) folytattuk a munkát az új mező definíció indexe. <br/> <br/>Éles környezetben indexek, az újjáépítést kiadásuktól hozzon létre egy új mezővel, adja meg a módosított meghatározása és vegye használatba a régit helyett. Használat [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) építhetnek be az új mező és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) feltölti azt. Később, az index tervezett karbantartás részeként távolíthatja el az indexet elavult mezők eltávolítása. |
 
 ## <a name="when-to-add-analyzers"></a>Mikor érdemes hozzáadni az elemzők
 
-Megadhat több egyéni elemzőket szűrők kombinációit eltérő, de minden mező csak használhat egy elemző indexelés, elemzési és a egy a search-elemzést.  
+A legjobb hozzáadását és hozzárendelését az elemzők, aktív fejlesztés során amikor elvetését és az indexek újbóli létrehozását rutin.
 
-Konfigurálnia kell elemzők aktív fejlesztés során továbbra is a fluxus indexdefiníciót esetén. Egy elemző egy mezőben megadva a mező-definíció szerves részét képezi, így csak akkor adhat hozzá, ha a mező jön létre. Ha azt szeretné, elemzők hozzáadása a meglévő mezőket kell [dobja el, és építse újra](search-howto-reindex.md) az index.
+Az index definícióját megszilárdul, fűzze hozzá új elemzési szerkezetek az indexbe, de kell átadni a **allowIndexDowntime** jelzőt [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) Ha el szeretné kerülni ezt a hibát:
 
-Kivétel ez alól a searchAnalyzer változatot. Adja meg az elemzők három módja van: **analyzer**, **indexAnalyzer**, **searchAnalyzer**. Az első esetéhez **analyzer**, az indexelés és a lekérdezési kérelmek szolgál. A másik kettőt engedélyezése, hogy melyik elemzők szolgálnak az egyes kérelmek szabályozása.
+*Az index frissítése nem engedélyezett, mert leállást okozna. Egy meglévő indexhez új elemzők, tokenizers, jogkivonat szűrők vagy karakter szűrő hozzáadásához meg a "allowIndexDowntime" lekérdezési paraméter "true" az index frissítésére vonatkozó kérelemben. Vegye figyelembe, hogy ez a művelet kerül az index offline legalább pár másodpercet, így az indexelést és a lekérdezési kérelem sikertelen. Teljesítmény és az írás rendelkezésre állását az index korlátozott után az index frissítése több percig, vagy hosszabb ideig nagyon nagy méretű indexek lehetnek.*
 
-Mindkét **analyzer** és **indexAnalyzer** kell a mező kezdeti definíciója adható meg. A **searchAnalyzer** attribútum egy mezőt, amely már létezik, újraépítési követelmény nem lehet hozzáadni.
+Ugyanez érvényes mező egy elemző hozzárendelésekor. Egy elemző egy definíciót a mezőt, szerves részét képezi, így csak akkor adhat hozzá, ha a mező jön létre. Ha azt szeretné, elemzők hozzáadása a meglévő mezőket kell [dobja el, és építse újra](search-howto-reindex.md) az index, vagy adjon hozzá egy új mezőt a kívánt elemzőt.
+
+Feljegyzett, kivétel ez alól a **searchAnalyzer** változatot. Adja meg az elemzők a háromféleképpen (**analyzer**, **indexAnalyzer**, **searchAnalyzer**), csak a **searchAnalyzer** attribútum Meglévő mezőre is módosítható.
 
 ## <a name="recommendations-for-working-with-analyzers"></a>Javaslatok használata esetén
 

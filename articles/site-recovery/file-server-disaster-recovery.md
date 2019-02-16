@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 2f52b3d1a5aa5b934954da09d114dce1efb8ef32
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 64008a91033b1fdd9cb318e76db2b1958f2337e9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508368"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309319"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Fájlkiszolgálók védelmének biztosítása az Azure Site Recovery használatával 
 
@@ -58,7 +58,7 @@ Az alábbi ábra segít meghatározni, milyen stratégiát használjon a fájlki
 |---------|---------|---------|
 |Fájlkiszolgáló-környezet DFSR-rel vagy anélkül|   [A Site Recovery használata replikációhoz](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    A Site Recovery nem támogatja a megosztott lemezfürtöket és a hálózati tárolókat (NAS). Ha a környezet ezeket a konfigurációkat használja, alkalmazza az egyéb megközelítések valamelyikét igény szerint. <br> A Site Recovery nem támogatja az SMB 3.0-s verziót. A replikált virtuális gépen csak akkor jelennek meg a módosítások, ha a fájlok módosításait azok eredeti helyén is frissíti.
 |Fájlkiszolgáló-környezet DFSR-rel     |  [A DFSR kiterjesztése egy Azure IaaS virtuális gépre](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      A DFSR kiválóan működik a rendkívüli sávszélesség-terheltségű környezetekben. Ehhez egy folyamatosan működő Azure-beli virtuális gépre van szükség. A tervezés során a virtuális gép költségét is számításba kell venni.         |
-|Azure IaaS virtuális gép     |     [File Sync ](#use-azure-file-sync-service-to-replicate-your-files)   |     Ha a vészhelyreállítási forgatókönyvekhez a File Syncet használja, a feladatátvétel során manuális műveletekkel kell megoldania, hogy a fájlmegosztások átlátható módon legyenek elérhetők az ügyfélszámítógép számára. A File Sync működéséhez a 445-ös portot meg kell nyitni az ügyfélszámítógépen.     |
+|Azure IaaS virtuális gép     |     File Sync    |     Ha a vészhelyreállítási forgatókönyvekhez a File Syncet használja, a feladatátvétel során manuális műveletekkel kell megoldania, hogy a fájlmegosztások átlátható módon legyenek elérhetők az ügyfélszámítógép számára. A File Sync működéséhez a 445-ös portot meg kell nyitni az ügyfélszámítógépen.     |
 
 
 ### <a name="site-recovery-support"></a>Site Recovery támogatása

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 9c5f998470d3bf2a66d7de43bd54d5da4db57608
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a6be2fbbf946f13213f95b8876cfdddfa2ffbe67
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221752"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329217"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vészhelyreállítás az Azure-bA a helyszíni fizikai kiszolgálók beállítása
 
@@ -78,9 +78,6 @@ Ellenőrizze, hogy jogosult az Azure-fiókját az Azure virtuális gépek replik
 
 - A Site Recovery replikálja a helyszíni gépek az Azure-tárolóba. Az Azure virtuális gépek a tárolóból lesznek létrehozva, feladatátvételt követően.
 - A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
-- A tárfiók lehet standard vagy [prémium](../virtual-machines/windows/premium-storage.md).
-- Prémium szintű fiókot állít be, ha még szüksége lesz egy további standard szintű fiók naplóadatokat.
-
 
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Fiók előkészítése a mobilitási szolgáltatás telepítéséhez

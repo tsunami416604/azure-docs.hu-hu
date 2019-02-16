@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 11c5d44d44bf66bc7f50dac13c1c7cf0ae7acfff
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: aca64ce3d965d03ecc6fe6da0f372f355a48bed5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994385"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311868"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Hadoop megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight Apache Oozie használata
 
@@ -22,10 +22,10 @@ ms.locfileid: "53994385"
 
 Ismerje meg, hogyan lehet Apache Oozie használata Azure HDInsight az Apache Hadoop. Az Oozie egy rendszer munkafolyamat és összehangoláshoz, amely a Hadoop-feladatokat kezeli. Az Oozie integrálva van a Hadoop-veremmel, és támogatja a következő feladatokat:
 
-* Az Apache Hadoop MapReduce
+* Apache Hadoop MapReduce
 * Apache Pig
 * Apache Hive
-* Az Apache sqoop használatával
+* Apache Sqoop
 
 Az Oozie használatával a rendszer, például Java programok vagy héjparancsfájlok ütemezésére adott feladatok ütemezéséhez.
 
@@ -301,7 +301,7 @@ A feladat definíciója, hogy hol található a workflow.xml ismerteti. Azt is b
     ```
 
     > [!NOTE]  
-    > Ha a HDInsight-fürt az alapértelmezett tárolóként használja az Azure Storage a `<value>` elem tartalmát kezdődhet `wasb://`. Azure Data Lake Storage-használata esetén inkább kezdődik, `adl://`.
+    > Ha a HDInsight-fürt az alapértelmezett tárolóként használja az Azure Storage a `<value>` elem tartalmát kezdődhet `wasb://`. Ha az Azure Data Lake Storage Gen1 helyette használja, akkor kezdődik `adl://`.
 
     Mentse a tartalmát a `<value>` elem, ahogy a következő lépésben szolgál.
 
@@ -494,7 +494,7 @@ Az alábbi lépéseket az Oozie-munkafolyamatok a fürtön kezelheti és beküld
 
 Az Oozie parancs további információkért lásd: [Apache Oozie parancssori eszköz](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
 
-## <a name="oozie-rest-api"></a>Az Oozie REST API-val
+## <a name="oozie-rest-api"></a>Oozie REST API
 
 Az Oozie REST API-val hozhat létre a saját eszközök, amelyek együttműködnek az Oozie. A következő egy HDInsight-specifikus az Oozie REST API használatával kapcsolatos információt:
 
@@ -683,9 +683,9 @@ Az alábbiakban a találkozhat bizonyos hibákat és azok megoldását.
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**OK**: Az Azure Blob storage használt címek a **job.xml** fájl nem tartalmaz, a storage-tároló vagy tárfiók neve. A Blob storage-cím formátumú lehet `wasb://containername@storageaccountname.blob.core.windows.net`.
+**Ok**: Az Azure Blob storage használt címek a **job.xml** fájl nem tartalmaz, a storage-tároló vagy tárfiók neve. A Blob storage-cím formátumú lehet `wasb://containername@storageaccountname.blob.core.windows.net`.
 
-**Feloldási**: Módosítsa a Blob storage címeket, amelyek a feladat használ.
+**Megoldás**: Módosítsa a Blob storage címeket, amelyek a feladat használ.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Az Oozie nem engedélyezett a megszemélyesíteni &lt;felhasználó >
 
@@ -693,9 +693,9 @@ Az alábbiakban a találkozhat bizonyos hibákat és azok megoldását.
 
     JA002: User: oozie is not allowed to impersonate <USER>
 
-**OK**: Az aktuális engedély-beállítások a megadott felhasználói fiók megszemélyesítése Oozie tiltása.
+**Ok**: Az aktuális engedély-beállítások a megadott felhasználói fiók megszemélyesítése Oozie tiltása.
 
-**Feloldási**: Az Oozie tudja megszemélyesíteni a felhasználók a **felhasználók** csoport. Használja a `groups USERNAME` a csoportokat, amelyek a felhasználói fiók tagja megtekintheti. Ha a felhasználó nem tagja a **felhasználók** csoportjában adja hozzá a felhasználót a csoporthoz a következő paranccsal:
+**Megoldás**: Az Oozie tudja megszemélyesíteni a felhasználók a **felhasználók** csoport. Használja a `groups USERNAME` a csoportokat, amelyek a felhasználói fiók tagja megtekintheti. Ha a felhasználó nem tagja a **felhasználók** csoportjában adja hozzá a felhasználót a csoporthoz a következő paranccsal:
 
     sudo adduser USERNAME users
 
@@ -708,9 +708,9 @@ Az alábbiakban a találkozhat bizonyos hibákat és azok megoldását.
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 
-**OK**: Sqoop nem tudja betölteni az adatbázis eléréséhez szükséges adatbázis-illesztőprogramját.
+**Ok**: Sqoop nem tudja betölteni az adatbázis eléréséhez szükséges adatbázis-illesztőprogramját.
 
-**Feloldási**: Az Oozie-feladatok a Sqoop használata esetén meg kell adnia az adatbázis-illesztőt is a további erőforrások, például a workflow.xml, a feladat által használt. Az archívumot, amely tartalmazza az adatbázis-illesztőprogramot az is hivatkozhat a `<sqoop>...</sqoop>` a workflow.xml szakaszában.
+**Megoldás**: Az Oozie-feladatok a Sqoop használata esetén meg kell adnia az adatbázis-illesztőt is a további erőforrások, például a workflow.xml, a feladat által használt. Az archívumot, amely tartalmazza az adatbázis-illesztőprogramot az is hivatkozhat a `<sqoop>...</sqoop>` a workflow.xml szakaszában.
 
 Például a feladat ebben a dokumentumban, akkor használja az alábbi lépéseket:
 

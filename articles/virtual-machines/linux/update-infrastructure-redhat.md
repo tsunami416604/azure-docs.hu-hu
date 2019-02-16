@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 4505dcf5d9407a609bcf97c56835ff186607127d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c5e67e581d3fc370710528609bf94b1110416c33
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563734"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311375"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Az igény szerinti Red Hat Enterprise Linux virtuális gépek az Azure-beli Red Hat frissítési infrastruktúrája
  [Red Hat frissítési infrastruktúrához](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi a felhőszolgáltatók, például az Azure Red Hat-ban üzemeltetett tárház tartalmának tükrözik, az Azure-ra vonatkozó egyéni adattárak tartalom létrehozása és végfelhasználói virtuális gépek számára elérhető legyen.
@@ -103,10 +103,10 @@ Az új Azure RHUI kiszolgálókra telepítik [Azure Traffic Manager](https://azu
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Frissítés a virtuális gép RHUI ügyféltanúsítvány lejárt
 
-Ha egy régebbi RHEL Virtuálisgép-rendszerképet, például az RHEL-7.4 használja (a kép URN: `RedHat:RHEL:7.4:7.4.2018010506`), kapcsolódási problémák miatt lejárt SSL-ügyféltanúsítvány RHUI fog tapasztalni. A hibát látja nézhet _"SSL társ visszautasította a tanúsítvány lejárt,"_. A probléma megoldásához frissítse az RHUI ügyfélcsomag, a virtuális gépen a következő paranccsal:
+Ha egy régebbi RHEL Virtuálisgép-rendszerképet, például az RHEL-7.4 használja (a kép URN: `RedHat:RHEL:7.4:7.4.2018010506`), kapcsolódási problémák miatt lejárt SSL-ügyféltanúsítvány RHUI fog tapasztalni. A hibát látja nézhet _"SSL társ visszautasította a tanúsítvány lejárt,"_ vagy _"hiba: Nem sikerült beolvasni a tárház metaadatok (repomd.xml) tárház:... Ellenőrizze az elérési útját, és próbálkozzon újra"_. A probléma megoldásához frissítse az RHUI ügyfélcsomag, a virtuális gépen a következő paranccsal:
 
 ```bash
-sudo yum update -y --disablerepo='*' --enablerepo='*-microsoft-*'
+sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 ```
 
 Másik lehetőségként futó `sudo yum update` is frissítheti a ügyfél-csomag (függően az RHEL verzió), annak ellenére, hogy más tárházakban megjelenik "a SSL-tanúsítvány lejárt" hibák. Ha a frissítés sikeres, más RHUI tárházakban normál kapcsolatot kell visszaállítani, ezért lesz futtatható `sudo yum update` sikeresen megtörtént.

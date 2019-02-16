@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: f8227495d7ca2e1d43b74066d359d0d59e456263
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2f00b01bb07aafca847897f0c31d24d4add7cdbf
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451206"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328877"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-standard-storage-accounts"></a>Az Azure Storage méretezhetőségi és teljesítménycéljai standard storage-fiókok
 
-Ez a cikk részletesen, a méretezhetőségi és teljesítménycéljai standard szintű Azure storage-fiókok. Az itt felsorolt méretezhetőségi és teljesítménycéljai csúcskategóriás célozza, de elérhető. Minden esetben a kérések aránya és sávszélességet, hogy a tárolási fiók attól függ, hogy az objektumok tárolja, a használt fel, hozzáférési minták mérete és a munkaterhelés típusától az alkalmazás végrehajtja. 
+Ez a cikk ismerteti az Azure storage-fiókok a méretezhetőségi és teljesítménycéljai. Az itt felsorolt méretezhetőségi és teljesítménycéljai csúcskategóriás célozza, de elérhető. Minden esetben a kérések aránya és sávszélességet, hogy a tárolási fiók attól függ, hogy az objektumok tárolja, a használt fel, hozzáférési minták mérete és a munkaterhelés típusától az alkalmazás végrehajtja. 
 
 Győződjön meg arról, a szolgáltatást annak meghatározásához, hogy a teljesítmény megfelel-e a követelmények ellenőrzéséhez. Ha lehetséges kerülje a forgalom arányát hirtelen kiugrások és ellenőrizze, hogy forgalmat jól elosztott partíciók között.
 
@@ -26,7 +26,10 @@ Az alkalmazás eléri a korlátot, mi partíció képes kezelni a számítási f
 ## <a name="standard-storage-account-scale-limits"></a>Standard szintű storage-fiók méretkorlátai
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
-## <a name="storage-resource-provider-scale-limits"></a>Storage erőforrás-szolgáltató méretkorlátai 
+## <a name="premium-storage-account-scale-limits"></a>Prémium szintű storage-fiók méretkorlátai
+[!INCLUDE [azure-premium-limits](../../../includes/azure-storage-limits-premium.md)]
+
+## <a name="storage-resource-provider-scale-limits"></a>Storage erőforrás-szolgáltató méretkorlátai
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 

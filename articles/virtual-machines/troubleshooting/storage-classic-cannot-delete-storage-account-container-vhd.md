@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 72493c6bba556314c3652be5251463d1d1e005bd
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 5d4d74d4c3b5ec6779458e84da07c03033c37935
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383443"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330613"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Hagyományos tároló erőforrás törlésével kapcsolatos hibák elhárítása
 Ez a cikk nyújt hibaelhárítási útmutatót, ha hibák a következők egyike történik az Azure klasszikus tárfiókot, tárolót vagy *.vhd lapozófájl blob törlésének megkísérlésekor. 
@@ -21,10 +21,10 @@ Ez a cikk nyújt hibaelhárítási útmutatót, ha hibák a következők egyike 
 
 Ez a cikk csak a hagyományos tárolási erőforrásokhoz problémákkal foglalkozik. Ha a felhasználó töröl egy klasszikus virtuális gép az Azure portal használatával, a PowerShell vagy parancssori felület és a lemezek a rendszer nem automatikusan törli. A felhasználó élvezheti a "Lemez" erőforrás törlésének lehetőségét. Abban az esetben, ha a beállítás nincs bejelölve, a "Lemez" erőforrás megakadályozza, hogy a storage-fiók, tároló és a tényleges *.vhd lapozófájl blob törlését.
 
-További információ az Azure disks található [Itt](../../virtual-machines/windows/about-disks-and-vhds.md). Azure megakadályozza, hogy az egy lemezt, amely csatolva van egy virtuális gép meghibásodásának elkerülése érdekében törlését. Megakadályozza a tárolók és a storage-fiókok, amelyek rendelkeznek egy lapblob egy virtuális géphez csatolt törlését is. 
+További információ az Azure disks található [Itt](../../virtual-machines/windows/managed-disks-overview.md). Azure megakadályozza, hogy az egy lemezt, amely csatolva van egy virtuális gép meghibásodásának elkerülése érdekében törlését. Megakadályozza a tárolók és a storage-fiókok, amelyek rendelkeznek egy lapblob egy virtuális géphez csatolt törlését is. 
 
 ## <a name="what-is-a-disk"></a>Mit jelent a "Lemez"?
-A "Lemez" erőforrás-operációsrendszer-lemez és az adatlemez egy *.vhd page blob fájlt egy virtuális géphez csatlakoztatásához használatos. Az operációsrendszer-lemez vagy adatok lemezerőforrás, amíg nem törlik, továbbra is, amely tárolja a címbérlet *.vhd fájlon. Minden tárolási erőforrás elérési útján a fenti képen nem törölhető, ha a "Lemez" erőforrás mutat.
+A "Lemez" erőforrás-operációsrendszer-lemez és az adatlemez egy *.vhd page blob fájlt egy virtuális géphez csatlakoztatásához használatos. Az operációsrendszer-lemez vagy adatok lemezerőforrás, amíg nem törlik, továbbra is, amely tárolja a címbérlet *.vhd fájlon. Az alábbi képen látható elérési út minden tárolási erőforrás nem törölhető, ha a "Lemez" erőforrás mutat.
 
 ![Képernyőkép a portal, a lemez (klasszikus) "Property" ablaktábla megnyitása](./media/storage-classic-cannot-delete-storage-account-container-vhd/Disk_Lease_Illustration.jpg) 
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0d0009c833c313b5416998502601285e5b710a8d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1560dad31e00b00a2d27cf1675e05901e6611825
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112546"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309862"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -51,7 +51,7 @@ Virtuális gépek áthelyezése a következő lépésekből áll:
 > Jelenleg az Azure Site Recovery támogatja a virtuális gépek áthelyezése a régió egy másik, és nem támogatja a áthelyezése egy adott régión belül. 
 
 > [!NOTE]
-> Ezek a lépések részletes útmutatást szerepelnek a forgatókönyv dokumentációját itt említett
+> Ezek a lépések részletes útmutatást szerepelnek a forgatókönyv dokumentációjában leírtaknak [Itt](#next-steps)
 
 ## <a name="typical-architectures-for-a-multi-tier-deployment"></a>Többrétegű telepítések jellemző architektúrák
 Szakasz alatti bemutatja a leggyakoribb üzembe helyezési architektúrák ügyfelek fogad el, a többrétegű alkalmazások az Azure-ban. A példa megragadjuk itt nem egy nyilvános IP-Címmel rendelkező három a többrétegű alkalmazások. Minden, a rétegek – webes, alkalmazás és az adatbázis egyes 2 virtuális gépen van, és köti össze a többi szint egy terheléselosztót. Az adatbázis csomag esetében az SQL Always ON replikációt a magas rendelkezésre állású (HA) virtuális gépek között.

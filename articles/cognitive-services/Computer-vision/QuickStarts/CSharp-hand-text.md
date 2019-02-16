@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 160d42725abdb91af4f83696c2bceae38bbab67d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: dd9429ade750810138335c522d68df5cd595f320
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869330"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310983"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c35-in-computer-vision"></a>Gyors útmutató: A REST API-t és a C használatával kézzel írt szöveg kinyerése&#35; a Computer Vision
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c-in-computer-vision"></a>Gyors útmutató: A REST API használatával kézzel írt szöveg kinyerése és C# a Computer Vision
 
-Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision REST API-jának használatával. A [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) és a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metódussal kézzel írott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+Ebben a rövid útmutatóban a Computer Vision REST API-val kiveszi írt szöveg felismerése képekből egy rendszerképből. Az a [szöveg felismerése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) és a [első ismeri fel a szöveg művelet eredményének](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) módszerek írt szöveg felismerése képekből észleli a képet, és bontsa ki a felismert karaktereket karaktersorozattá be.
 
 > [!IMPORTANT]
 > Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódussal ellentétben a [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. A Recognize Text metódus ehelyett egy `Operation-Content` értékű URI-t eredményez a válasz fejlécmezőjében. Ezután meghívhatja ezt az URI-t, amely a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metódust képviseli, és ellenőrizheti a Recognize Text metódus állapotát, valamint lekérheti annak eredményeit.
@@ -425,7 +425,7 @@ Ha már nincs rá szükség, törölje a Visual Studio-megoldást. Ehhez nyissa 
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerjen meg egy alapszintű Windows-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-kkal való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Fedezze fel egy egyszerű Windows-alkalmazás által használt számítógépes Látástechnológiai optikai karakterfelismerés (OCR) végrehajtásához. Hozzon létre intelligens csonkolva miniatűrök; plusz észlelése, kategorizálását, címkét, és vizuális szolgáltatások, többek között az arcok, a kép ismertetik.
 
 > [!div class="nextstepaction"]
-> [Computer Vision API CC&#35;-oktatóanyag](../Tutorials/CSharpTutorial.md)
+> [Computer Vision API C# oktatóanyag](../Tutorials/CSharpTutorial.md)

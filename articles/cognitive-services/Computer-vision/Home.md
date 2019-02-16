@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/22/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4322b118268ee88235190f5672585d17ea365495
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ae421ac3f87a16fc6fd2e5f3e89c13fcae50dbf8
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872644"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311630"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
-Azure Computer Vision service a, hogy képeket dolgozzon és vracející információkat nyújt a fejlesztőknek korszerű algoritmusokat. A kép elemzéséhez feltöltheti a képet, vagy megadhatja a kép URL-címét. A képek algoritmusok elemezheti a tartalmat a különféle módokon, érdekli visual funkcióktól függően. Computer Vision meghatározhatja például, ha kép felnőtt vagy pikáns tartalom található, vagy azt találhatja mind az emberi arcok a képen.
+Azure Computer Vision service a fejlesztők számára, amely információkat ad vissza, és dolgozhassa korszerű algoritmusokat biztosít. A kép elemzéséhez feltöltheti a képet, vagy megadhatja a kép URL-címét. A képek algoritmusok elemezheti a tartalmat a különféle módokon, érdekli visual funkcióktól függően. Computer Vision meghatározhatja például, ha kép felnőtt vagy pikáns tartalom található, vagy azt találhatja mind az emberi arcok a képen.
 
 Használhatja Computer Vision az alkalmazás használatával egy natív SDK-t vagy a REST API közvetlen meghívása. Ezen a lapon széles körben ismerteti, mire képes a Computer Vision.
 

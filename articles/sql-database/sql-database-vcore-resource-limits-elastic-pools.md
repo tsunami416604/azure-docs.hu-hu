@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/072019
-ms.openlocfilehash: 1040c2018e7e18ed2d2bb401dd0052c6851fa544
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 02/15/2019
+ms.openlocfilehash: b0bd5c0ba8641bd287951168485be715a0b46224
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270470"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328673"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Rugalmas készletek használata a Virtuálismag-alapú vásárlási modell korlátok erőforráskorlátok
 
@@ -59,7 +59,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|–|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
-\* A maximális aktuális feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md)
+\* A maximális egyidejű feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md). Például ha Gen5 és a maximális virtuális mag értéke a rugalmas készlet használ, 2, a maximális egyidejű feldolgozók válik a 200-as.  Ha az adatbázisonkénti maximális virtuális mag 0,5, majd egyidejű feldolgozók maximális érték: 50 mivel a Gen5 legfeljebb 100 egyidejű feldolgozók száma virtuális mag.  Egyéb maximális virtuális mag beállítások, amelyek kevesebb 1 virtuális mag adatbázisonként vagy kevesebb, az egyidejű feldolgozók maximális száma a hasonlóképpen átméretezése.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Általános célú szolgáltatásszint: 4. generációs számítási platform (2. rész)
 
@@ -85,7 +85,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|–|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
-\* A maximális aktuális feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md)
+\* A maximális egyidejű feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md). Például ha Gen5 és a maximális virtuális mag értéke a rugalmas készlet használ, 2, a maximális egyidejű feldolgozók válik a 200-as.  Ha az adatbázisonkénti maximális virtuális mag 0,5, majd egyidejű feldolgozók maximális érték: 50 mivel a Gen5 legfeljebb 100 egyidejű feldolgozók száma virtuális mag.  Egyéb maximális virtuális mag beállítások, amelyek kevesebb 1 virtuális mag adatbázisonként vagy kevesebb, az egyidejű feldolgozók maximális száma a hasonlóképpen átméretezése.
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Általános célú szolgáltatásszint: 5. generáció számítási platform (1. rész)
 
@@ -111,7 +111,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|N/A|–|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
-\* A maximális aktuális feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md)
+\* A maximális egyidejű feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md). Például ha Gen5 és a maximális virtuális mag értéke a rugalmas készlet használ, 2, a maximális egyidejű feldolgozók válik a 200-as.  Ha az adatbázisonkénti maximális virtuális mag 0,5, majd egyidejű feldolgozók maximális érték: 50 mivel a Gen5 legfeljebb 100 egyidejű feldolgozók száma virtuális mag.  Egyéb maximális virtuális mag beállítások, amelyek kevesebb 1 virtuális mag adatbázisonként vagy kevesebb, az egyidejű feldolgozók maximális száma a hasonlóképpen átméretezése.
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Általános célú szolgáltatásszint: 5. generáció számítási platform (2. rész)
 
@@ -136,7 +136,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|N/A|–|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
-\* A maximális aktuális feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md)
+\* A maximális egyidejű feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md). Például ha Gen5 és a maximális virtuális mag értéke a rugalmas készlet használ, 2, a maximális egyidejű feldolgozók válik a 200-as.  Ha az adatbázisonkénti maximális virtuális mag 0,5, majd egyidejű feldolgozók maximális érték: 50 mivel a Gen5 legfeljebb 100 egyidejű feldolgozók száma virtuális mag.  Egyéb maximális virtuális mag beállítások, amelyek kevesebb 1 virtuális mag adatbázisonként vagy kevesebb, az egyidejű feldolgozók maximális száma a hasonlóképpen átméretezése.
 
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Üzleti kritikus fontosságú szolgáltatási szint: Tárterületet és számítási méretek
 
@@ -164,7 +164,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
-\* A maximális aktuális feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md)
+\* A maximális egyidejű feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md). Például ha Gen5 és a maximális virtuális mag értéke a rugalmas készlet használ, 2, a maximális egyidejű feldolgozók válik a 200-as.  Ha az adatbázisonkénti maximális virtuális mag 0,5, majd egyidejű feldolgozók maximális érték: 50 mivel a Gen5 legfeljebb 100 egyidejű feldolgozók száma virtuális mag.  Egyéb maximális virtuális mag beállítások, amelyek kevesebb 1 virtuális mag adatbázisonként vagy kevesebb, az egyidejű feldolgozók maximális száma a hasonlóképpen átméretezése.
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Üzleti kritikus fontosságú szolgáltatási szint: 4. generációs számítási platform (2. rész)
 
@@ -190,7 +190,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
-\* A maximális aktuális feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md)
+\* A maximális egyidejű feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md). Például ha Gen5 és a maximális virtuális mag értéke a rugalmas készlet használ, 2, a maximális egyidejű feldolgozók válik a 200-as.  Ha az adatbázisonkénti maximális virtuális mag 0,5, majd egyidejű feldolgozók maximális érték: 50 mivel a Gen5 legfeljebb 100 egyidejű feldolgozók száma virtuális mag.  Egyéb maximális virtuális mag beállítások, amelyek kevesebb 1 virtuális mag adatbázisonként vagy kevesebb, az egyidejű feldolgozók maximális száma a hasonlóképpen átméretezése.
 
 #### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Üzleti kritikus fontosságú szolgáltatási szint: 5. generáció számítási platform (1. rész)
 
@@ -216,7 +216,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
-\* A maximális aktuális feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md)
+\* A maximális egyidejű feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md). Például ha Gen5 és a maximális virtuális mag értéke a rugalmas készlet használ, 2, a maximális egyidejű feldolgozók válik a 200-as.  Ha az adatbázisonkénti maximális virtuális mag 0,5, majd egyidejű feldolgozók maximális érték: 50 mivel a Gen5 legfeljebb 100 egyidejű feldolgozók száma virtuális mag.  Egyéb maximális virtuális mag beállítások, amelyek kevesebb 1 virtuális mag adatbázisonként vagy kevesebb, az egyidejű feldolgozók maximális száma a hasonlóképpen átméretezése.
 
 #### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Üzleti kritikus fontosságú szolgáltatási szint: 5. generáció számítási platform (2. rész)
 
@@ -242,7 +242,7 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
-\* A maximális aktuális feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md)
+\* A maximális egyidejű feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md). Például ha Gen5 és a maximális virtuális mag értéke a rugalmas készlet használ, 2, a maximális egyidejű feldolgozók válik a 200-as.  Ha az adatbázisonkénti maximális virtuális mag 0,5, majd egyidejű feldolgozók maximális érték: 50 mivel a Gen5 legfeljebb 100 egyidejű feldolgozók száma virtuális mag.  Egyéb maximális virtuális mag beállítások, amelyek kevesebb 1 virtuális mag adatbázisonként vagy kevesebb, az egyidejű feldolgozók maximális száma a hasonlóképpen átméretezése.
 
 Ha az összes virtuális mag a rugalmas készlet foglalt, a készletben lévő minden adatbázis ugyanannyi számítási erőforrásokat, amelyek a lekérdezések feldolgozásához kap. Az SQL Database szolgáltatás egyenlő erőforrás-megosztást biztosít az adatbázisok között azáltal, hogy mindegyiküknek egyenlő szeleteket ad a számítási időből. Mennyiségéhez garantált erőforrások minden egyes adatbázishoz. Ha a vcore magok adatbázisonkénti minimális értéke nem nulla értékre van állítva, a rugalmas készlet erőforrás-elosztást megosztást.
 

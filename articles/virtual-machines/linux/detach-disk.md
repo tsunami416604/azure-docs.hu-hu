@@ -16,21 +16,19 @@ ms.topic: article
 ms.date: 07/18/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: df50f1ad4fc12926016b3e22669be474f4aa995f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b6fda5d16b3f694cb1d0a1a9407cda5c2a73fcbc
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461376"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330630"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>A Linux rendszerű virtuális gépről adatlemez leválasztása
 
 Ha már nincs szüksége egy virtuális géphez csatolt adatlemezre, könnyedén leválaszthatja. Ez eltávolítja a lemezt a virtuális gépről, de ez nem távolítja el a storage-ból. Ebben a cikkben egy Ubuntu LTS 16.04 elosztásáról dolgozunk. Ha egy másik terjesztési használ, a következő útmutatót: a lemez leválasztása ettől eltérő lehet.
 
 > [!WARNING]
-> Ha leválaszt egy lemezt, nem törlődnek automatikusan. Ha prémium szintű storage, amelyre Ön feliratkozott, továbbra is a lemez tárolási költségeket fizetni. További információkért lásd: [árak és számlázás a Premium Storage használatakor](../windows/premium-storage.md#pricing-and-billing). 
-> 
-> 
+> Ha leválaszt egy lemezt, nem törlődnek automatikusan. Ha prémium szintű storage, amelyre Ön feliratkozott, továbbra is a lemez tárolási költségeket fizetni. További információkért lásd: [árak és számlázás a Premium Storage használatakor](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
 Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ugyanahhoz vagy egy másik virtuális géphez.  
 

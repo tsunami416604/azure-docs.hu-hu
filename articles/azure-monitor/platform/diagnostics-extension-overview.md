@@ -1,23 +1,21 @@
 ---
 title: Az Azure Diagnostics bővítmény áttekintése
 description: Az Azure diagnosztikai eszköz használata a hibakeresés, a teljesítmény méréséhez, figyelés, a cloud services, virtual machines és a service fabric forgalomelemzés
-services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 5e3b42b1e1f72ccc4d1127f2926ee53c51d66291
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6c59b97a8deec78149775a147d6476e67f405d3f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470511"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310457"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Mi az Azure Diagnostics bővítmény
-Az Azure Diagnostics bővítmény az ügynök, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztikai adatgyűjtés Azure-ban. A diagnosztikai bővítmény számos különféle forrásból származó is használhatja. Jelenleg csak Azure-Felhőszolgáltatás (klasszikus) webes és feldolgozói szerepkörök, virtuális gépek, a virtuálisgép-méretezési csoportok és a Service Fabric. Más Azure-szolgáltatásokkal rendelkezik diagnosztikai különböző módszereket. Lásd: [áttekintése az Azure-ban figyelési](../../azure-monitor/overview.md).
+Az Azure Diagnostics bővítmény az ügynök, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztikai adatgyűjtés Azure-ban. A diagnosztikai bővítmény számos különféle forrásból származó is használhatja. Jelenleg csak Azure-Felhőszolgáltatás (klasszikus) webes és feldolgozói szerepkörök, virtuális gépek, virtuális gép méretezése a készletek és a Service Fabric. Más Azure-szolgáltatásokkal rendelkezik diagnosztikai különböző módszereket. Lásd: [áttekintése az Azure-ban figyelési](../../azure-monitor/overview.md).
 
 ## <a name="linux-agent"></a>Linux-ügynök
 A [a bővítmény verziója Linux](../../virtual-machines/extensions/diagnostics-linux.md) Linux rendszerű virtuális gépek számára elérhető. A gyűjtött és viselkedés érdekében eltérhetnek a Windows-verziót.
@@ -27,28 +25,29 @@ Az Azure Diagnostics bővítmény gyűjthet adatokat a következő típusú:
 
 | Adatforrás | Leírás |
 | --- | --- |
-| Teljesítményszámlálók |Operációs rendszer és az egyéni teljesítményszámlálók |
+| Teljesítmény-mérőszámon counter |Operációs rendszer és az egyéni teljesítményszámlálók |
 | Alkalmazásnaplók |Az alkalmazás által írt nyomkövetési üzenetek |
 | Windows-eseménynaplók |A Windows-esemény naplózása rendszer küldött adatok |
-| .NET-eseményforrás |Kód írása az események a .NET használatával [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) osztályban |
+| .NET EventSource naplók |Kód írása az események a .NET használatával [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) osztályban |
 | IIS-naplók |IIS-webhelyek kapcsolatos információk |
-| Jegyzékalapú ETW |Esemény-nyomkövetés a Windows események a folyamatok által generált. (1) |
-| összeomlási memóriaképek, |Egy alkalmazás összeomlása esetén a folyamat állapotával kapcsolatos információk |
+| [Jegyzékfájl alapú ETW-naplók](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Esemény-nyomkövetés a Windows események a folyamatok által generált. (1) |
+| Összeomlási memóriaképek (naplók) |Ha egy alkalmazás összeomlik a folyamat állapotával kapcsolatos információk |
 | egyéni hibanaplók, |Az alkalmazás vagy szolgáltatás által létrehozott naplók |
-| Az Azure diagnosztikai infrastruktúra naplói |Saját maga diagnosztikai információk |
+| Az Azure diagnosztikai infrastruktúra naplói |Maga az Azure diagnosztikai információk |
 
 (1) az ETW-szolgáltatók listájának lekéréséhez futtassa `c:\Windows\System32\logman.exe query providers` a konzolablakban a gépen, amelyet szeretne adatainak összegyűjtése.
 
 ## <a name="data-storage"></a>Adattárolás
 A bővítmény tárolja az adatait egy [Azure Storage-fiók](diagnostics-extension-to-storage.md) megadott.
 
-Emellett elküldheti az, hogy [Application Insights](../../azure-monitor/app/cloudservices.md). Egy másik lehetőség, hogy adatfolyamként való [Eseményközpont](../../event-hubs/event-hubs-about.md), amely azután lehetővé teszi, hogy küldje el a nem Azure-beli figyelés szolgáltatásokhoz.
+Emellett elküldheti az, hogy [Application Insights](../../azure-monitor/app/cloudservices.md). 
 
-### <a name="azure-monitor"></a>Azure Monitor
-Is választhat, hogy az Azure Monitor az adatok küldésére. Jelenleg ez a fogadó csak akkor érvényes, a teljesítményszámlálók. Lehetővé teszi, hogy a virtuális Gépen, VMSS, gyűjtött teljesítményszámlálók küldése vagy a felhőalapú szolgáltatás az Azure monitornak egyéni mérőszámokként. Az Azure Monitor-fogadó támogatja:
+Egy másik lehetőség, hogy adatfolyamként való [Eseményközpont](../../event-hubs/event-hubs-about.md), amely azután lehetővé teszi, hogy küldje el a nem Azure-beli figyelési szolgáltatásokat.
+
+Is választhat, hogy az adatokat küldeni az Azure Monitor-metrikák idősorozat-adatbázisokba. Jelenleg ez a fogadó csak akkor érvényes, a teljesítményszámlálók. Lehetővé teszi, hogy küldjön a teljesítményszámlálók egyéni mérőszámokként. Ez a funkció előzetes verzióban van. Az Azure Monitor-fogadó támogatja:
 * Az Azure Monitor használatával küldött összes teljesítményszámlálók beolvasása a [Azure Monitor-metrikák API-k.](https://docs.microsoft.com/rest/api/monitor/)
-* Az Azure Monitor használatával az új riasztást küld minden teljesítményszámlálót küldött [egységes riasztások kezelőfelület](../../azure-monitor/platform/alerts-overview.md) az Azure monitorban
-* Helyettesítő operátor kezelni a teljesítményszámlálók a metrika a "Példány" dimenzió.  Például ha összegyűjtött a "logikai lemez (\*) / DiskWrites/mp" számláló tudni szűrőt, és minden egyes logikai lemez (C:, d, stb.) a virtuális gépen a "Példány" dimenzión diagram vagy a Lemezírások/mp riasztások felosztása
+* Az Azure Monitor használatával küldött riasztást küld minden teljesítményszámlálót a [metrikákhoz kapcsolódó riasztások](../../azure-monitor/platform/alerts-overview.md) az Azure monitorban
+* Helyettesítő operátor kezelni a teljesítményszámlálók a metrika a "Példány" dimenzió.  Például ha összegyűjtött a "logikai lemez (\*) / DiskWrites/mp" számláló tudni szűrőt, és a "Példány" dimenzión diagram vagy a riasztások a Lemezírások/mp (például: C:) virtuális gépen az egyes logikai lemez felosztása
 
 A fogadó konfigurálásáról további tudnivalókért tekintse meg a [az Azure diagnostics-séma dokumentációját.](diagnostics-extension-schema-1dot3.md)
 
@@ -57,7 +56,7 @@ Lásd: [Azure Diagnostics-verzióelőzmények és séma](diagnostics-extension-s
 
 
 ## <a name="next-steps"></a>További lépések
-Válassza ki, melyik szolgáltatás próbált meg a diagnosztikai adatok gyűjtéséhez és a következő cikkek az első lépésekhez. Általános Azure diagnostics hivatkozásokkal az egyes feladatok referenciaként.
+Válassza ki, melyik szolgáltatás a diagnosztikai adatok gyűjtéséhez és a következő cikkek az első lépésekhez kívánt. Általános Azure diagnostics hivatkozásokkal az egyes feladatok referenciaként.
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>A cloud Services, Azure Diagnostics használatával
 * Ha a Visual Studiót használja, lásd: [nyomon követése a Cloud Services-alkalmazás használatát a Visual Studio](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) a kezdéshez. Egyéb esetben lásd:

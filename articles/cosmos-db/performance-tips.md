@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: f05935f73f385b076741d2e856af8316a74e9d2f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 68378342769618c2b0e1096fbf5a2d28d0cb4b0e
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042495"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309896"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB- és .NET
 
@@ -30,7 +30,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 
 1. **Csatlakozási házirend: Közvetlen kapcsolat mód használata**
 
-    Hogyan ügyfél csatlakozik-e az Azure Cosmos DB következményeket vonhat fontos a teljesítmény, különösen a megfigyelt ügyféloldali késés szempontjából. Nincsenek elérhető ügyfél kapcsolódási szabályzat – a kapcsolat konfigurálásához két fő konfigurációs beállítások *mód* és a [kapcsolat *protokoll*](#connection-protocol).  A két rendelkezésre álló beállításokat a következők:
+    Hogyan ügyfél csatlakozik-e az Azure Cosmos DB következményeket vonhat fontos a teljesítmény, különösen a megfigyelt ügyféloldali késés szempontjából. Nincsenek elérhető ügyfél kapcsolódási szabályzat – a kapcsolat konfigurálásához két fő konfigurációs beállítások *mód* és a kapcsolat *protokoll*.  A két rendelkezésre álló beállításokat a következők:
 
    * Átjáró mód (alapértelmezett)
       
@@ -47,8 +47,8 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 
     |Kapcsolat módja  |Támogatott protokollok  |Támogatott SDK-k  |API-szolgáltatás portja  |
     |---------|---------|---------|---------|
-    |Átjáró  |   HTTPS    |  Az összes SDK-k    |   SQL(443), Mongo (10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
-    |Közvetlen    |    HTTPS     |  .NET, a Java SDK    |    SQL(443)   |
+    |Átjáró  |   HTTPS    |  All SDKS    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
+    |Közvetlen    |    HTTPS     |  .Net and Java SDK    |    SQL(443)   |
     |Közvetlen    |     TCP    |  .NET SDK    | 10 000-20 000 tartományon belüli portok |
 
     Az Azure Cosmos DB egy egyszerű, és nyissa meg RESTful programozási modellt kínál a HTTPS-kapcsolaton keresztül. Ezenkívül kínál egy hatékony TCP protokoll, amely egyben a RESTful a kommunikációt a modellben, és a .NET ügyféloldali SDK keresztül érhető el. Közvetlen TCP és a HTTPS SSL használata a kezdeti hitelesítésre és a titkosított forgalmat. A legjobb teljesítmény érdekében használja a TCP protokollt, amikor csak lehetséges.

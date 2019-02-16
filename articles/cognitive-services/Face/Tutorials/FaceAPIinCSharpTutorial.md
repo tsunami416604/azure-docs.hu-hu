@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: ff3063193fa2a8f71f441aa64c8835fd7528ff4e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6a60afc45894518f92115976876ddd50efa1e410
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882624"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310185"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Face adatok megjelenítéséhez a képet a WPF-alkalmazás létrehozása
 
@@ -49,7 +49,7 @@ Kövesse az alábbi lépéseket egy új WPF-alkalmazás projekt létrehozásáho
 1. A Visual Studióban nyissa meg az új projekt párbeszédpanel. Bontsa ki a **telepített**, majd **Visual C#** , majd **WPF App (.NET Framework)**.
 1. Adja a **FaceTutorial** nevet az alkalmazásnak, majd kattintson az **OK** gombra.
 1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki **NuGet-csomagok kezelése**; majd keresse meg és telepítse a következő csomagot:
-    - Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview
+    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
 ## <a name="add-the-initial-code"></a>Kezdeti kód hozzáadása
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: 73074898c29a240e31b181025f8cc92f25de5061
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 006d47d397bab0869ae8a75d6c17d239e71608c3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382743"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310575"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Windows-kiszolgálóról vagy -ügyfél biztonsági mentése az Azure-ba a Resource Manager-alapú üzemi modell használatával
 Ez a cikk azt ismerteti, hogyan készíthet biztonsági másolatot a Windows Server (vagy a Windows-ügyfél) fájljairól és mappáiról az Azure az Azure Backuppal a Resource Manager üzemi modell használatával.
@@ -72,7 +72,7 @@ Amikor először hoz létre Recovery Services-tárolót, meghatározza a tárol�
 
     ![A Recovery Services-tárolók listájából válassza ki az új tárolót](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault.png)
 
-    Amikor kiválasztja a tárolót, a Recovery Services-tároló panel leszűkül, és a **áttekintése** panel (*az a tároló nevét, amelynek tetején*) a tároló részleteit nyitva a panelt.
+    Amikor kiválasztja a tárolót, a Recovery Services-tároló panel leszűkül, és a **áttekintése** panel (*az a tároló nevét, amelynek tetején*), és nyissa meg a tároló részleteit tartalmazó panel.
 
     ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-overview.png)
 

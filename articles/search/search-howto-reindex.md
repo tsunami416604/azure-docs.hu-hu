@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1d9dffe9d311674aeb043fcc4c35110775f420af
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 907ab5cd3272a3d3f64dcfd7c9628a609f4db2f4
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300805"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327646"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Hogyan lehet Azure Search-index újraépítése
 
@@ -29,22 +29,23 @@ A *újraépítése* elvetését és a egy index, beleértve az összes mező-ala
 | Állapot | Leírás |
 |-----------|-------------|
 | Egy mező definíció módosítása | A mező nevét, a adattípus vagy a specifikus indítják [indexattribútumok](https://docs.microsoft.com/rest/api/searchservice/create-index) (kereshető, szűrhető, rendezhető, kategorizálható) egy teljes Újraépítés igényel. |
-| Egy elemző ad hozzá egy mezőt | [Elemzők](search-analyzers.md) meghatározott index, és hozzárendeli az mezőket. Hozzáadhat egy elemző index bármikor, de hozzárendelhet egy elemző a mező létrehozásakor. Ez igaz mind a **analyzer** és **indexAnalyzer** tulajdonságait. A **searchAnalyzer** tulajdonság kivételt.
+| Egy elemző ad hozzá egy mezőt | [Elemzők](search-analyzers.md) meghatározott index, és hozzárendeli az mezőket. Adhat hozzá egy új analyzer index bármikor, de csak *hozzárendelése* egy elemző, ha a mező jön létre. Ez igaz mind a **analyzer** és **indexAnalyzer** tulajdonságait. A **searchAnalyzer** tulajdonság kivételt. |
+| Frissítés és a egy elemző szerkezet törlés | Nem lehet törölni, vagy módosítsa a meglévő analysis-összetevőkkel (elemző, tokenizer, jogkivonat-szűrő vagy char szűrő), ha a teljes index újraépítése. |
 | Egy mezőt ad hozzá egy javaslattevő | Ha a mező már létezik, és adja hozzá a kívánt egy [Javaslattevők](index-add-suggesters.md) hozhatnak létre, újra kell építenie az indexet. |
-| Mező törlése | Fizikailag távolítsa el az összes nyomkövetési egy mező, kell építenie az indexet. Ha egy azonnali rebuild nem ajánlott, a legtöbb fejlesztő módosítsa a "törölt" mezőben való hozzáférés letiltása az alkalmazás kódjában. Fizikailag a mező meghatározása és a tartalom marad az index a következő újraépítése, egy sémát, amely az áttekinthetőség kedvéért kihagyja a mező használatával az adott. |
+| Mező törlése | Fizikailag távolítsa el az összes nyomkövetési egy mező, kell építenie az indexet. Egy azonnali rebuild nem célszerű, ha a "törölt" mezőben való hozzáférés letiltása az alkalmazás kódjában módosíthatja. Fizikailag a mező meghatározása és a tartalom marad az index a következő újraépítése, egy sémát, amely az áttekinthetőség kedvéért kihagyja a mező használatával az adott. |
 | Rétegek közötti váltás | Ha nagyobb kapacitásra van szüksége, nem nem helyszíni frissítését. Egy új szolgáltatás létrehozása az új kapacitást pontján, és teljesen új indexek kell elkészíteni az új szolgáltatás a. |
 
-Minden egyéb módosítás lehet kapcsolódni a meglévő fizikai struktúrák befolyásolása nélkül. Pontosabban, hajtsa végre a következő módosításokat *nem* egy indexkészítés jelzi:
+Minden egyéb módosítás lehet kapcsolódni a meglévő fizikai struktúrák befolyásolása nélkül. Pontosabban, hajtsa végre a következő módosításokat *nem* egy indexkészítés megkövetelése:
 
 + Adjon hozzá egy új mezőt
 + Állítsa be a **lekérhető** existující Pole attribútum
 + Állítsa be a **searchAnalyzer** meglévő mezőre
-+ Hozzáadása, módosítása és a egy elemző szerkezet az index törlése
++ Adjon hozzá egy új analyzer szerkezet az index
 + Hozzáadása, frissítése vagy törlése a pontozási profilok
 + Hozzáadása, frissítése vagy törlése a CORS-beállítások
 + Hozzáadása, frissítése vagy törlése synonymMaps
 
-Amikor hozzáad egy új mezőt, a meglévő indexelt dokumentumok kapnak null értéket az új mező. Egy jövőbeli adatok frissítése a külső adatforrást értékeket cserélje le az Azure Search által hozzáadott null értékeket.
+Amikor hozzáad egy új mezőt, a meglévő indexelt dokumentumok kapnak null értéket az új mező. Egy jövőbeli adatok frissítése a külső adatforrást értékeket cserélje le az Azure Search által hozzáadott null értékeket. Tartalom indexelése frissítésével kapcsolatos további információkért lásd: [törlése dokumentumok hozzáadása, frissítése vagy](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
 ## <a name="partial-or-incremental-indexing"></a>Részleges vagy növekményes indexelése
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bb3c2a9cfc1bccf4656be83c6babbe9c7ec139fb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: f0e96b87e46872bebe7563e08f0eb7a33b11015f
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745350"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329848"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business egy on Azure Virtual machines szolgáltatásban
 Ez a dokumentum nyújt útmutatást, üzembe helyezéséhez SAP Business One az Azure Virtual machines szolgáltatásban. A dokumentáció nem helyettesíti a üzleti SAP-dokumentáció áll. A dokumentáció az Azure-infrastruktúra egy üzleti alkalmazások futtatásához az alapvető tervezési és telepítési irányelveket kell kiterjednie.
@@ -119,7 +119,7 @@ Ezeket a dokumentumokat kell segítségével eldöntheti, hogy a tárolási típ
 
 Alapvetően a következőket kell elvégeznie:
 
-- Használat [az Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) keresztül [az Azure standard szintű Storage](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
+- Használja a prémium szintű SSD-k szabványos HDD-en keresztül. A rendelkezésre álló szabad típusaival kapcsolatos további tudnivalókért tekintse meg ezt a cikket [lemez típusának kiválasztása](../../windows/disks-types.md)
 - Az Azure Managed disks használata keresztül nem felügyelt lemezek
 - Győződjön meg arról, hogy rendelkezik-e konfigurálva a lemezkonfigurációt elegendő IOPS és az i/o átviteli
 - Annak érdekében, hogy a költség-tárolási konfigurációt/hana/adatok és /hana/log kötet egyesítése
@@ -138,7 +138,6 @@ Az SQL Server adatbázis-kezelő oldalán hozzávetőleges méretezési becslés
 | legfeljebb 150 | 32 | 128 GB | D32s_v3, E32s_v3 |
 
 A fent felsorolt méretezési ötlet kell biztosítania, ahol a következővel kell kezdődnie. Elképzelhető, hogy nincs szüksége több vagy kevesebb erőforrásokat, ebben az esetben az azure-betanítás ördöngösség. A virtuális gépek típusai közötti változást minden lehetséges a csak a virtuális gép újraindítását.
-
 
 #### <a name="sap-hana-as-dbms"></a>Az SAP Hana-hoz, mint az adatbázis-kezelő
 SAP HANA használata, adatbázis-kezelő az alábbi szakaszok azt érdemes követnie a dokumentum a szempontok [SAP HANA az Azure-műveletek útmutatójában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).

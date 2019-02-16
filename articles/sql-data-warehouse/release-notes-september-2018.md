@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 00d29ac1938a1abb63fca50afe3d66253a1e29bf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bd6531bc950e006f15924bb9a0d6428f9e69d544
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460726"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330834"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Mi az új Azure SQL Data warehouse? 2018. szeptember
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 szeptember.
@@ -24,6 +24,9 @@ Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti 
 A 2018 április [Microsoft bejelentette](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Azure SQL Data Warehouse Gen2, amely a teljesítmény x 5, 5 x a számítási méret, 4 x Az egyidejűség és a korlátlan tárolási biztosít. Leírtaknak megfelelően a [Data Warehouse a felhőben a teljesítményteszt](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) által Gigaom, az SQL Data Warehouse Gen2 **Amazon Redshift outperforms 42 %-kal**.
 
 Gen2 már általánosan elérhető, egy alacsonyabb belépési pont a DWU500c így nyugodtan egy kisebb méretű adatok adatraktár-fejlesztési-tesztelési környezetre szeretné használni az összes szolgáltatás legújabb fejlesztései. Az új belépési pont megőrzi a Gen2 a funkciókat, beleértve a [adaptív gyorsítótárazást](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/), [világítás gyors adatok újbóli felosztás](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/), és támogatja a [valós idejű adatraktár](https://azure.microsoft.com/blog/enabling-real-time-data-warehousing-with-azure-sql-data-warehouse/).
+
+## <a name="sql-vulnerability-assessment"></a>SQL-sebezhetőségi felmérés
+[Az SQL biztonsági rés értékelése (VA)](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/25/sql-vulnerability-assessment-now-supports-azure-sql-data-warehouse-and-azure-sql-database-managed-instance/) könnyen használható szolgáltatás, amely folyamatosan figyeli az adattárházba. Ez segít biztosítani a magas biztonsági szintű mindig, és teljesülnek-e a szervezeti szabályzatok. Biztosítja a gyakorlatban hasznosítható javítási lépések együtt egy átfogó biztonsági jelentés az összes hiba található. Ez a jelentés megkönnyíti, hogy proaktív módon az adatbázis biztonsági helyzetében kezelése és beavatkozást összpontosíthat a legnagyobb hatással műveletek, még akkor is, ha még nem biztonsági szakértői. Hol tárolja a módosításokat a rendszer a gyakori és visszakövetését, hogy a dinamikus környezetekben sebezhetőség-Felmérési felbecsülhetetlen észlelhesse a beállításokat, amelyek a támadásokkal szemben sebezhető hagyhatja az adattárházba.
 
 ## <a name="improved-availability-with-query-restartability"></a>Lekérdezés restartability jobb rendelkezésre állás
 Lekérdezés-végrehajtás során problémák tetszőleges számú fordulhat elő, ami hibákat okozhat a lekérdezés sikertelen. A hálózati leállások, egy hardverhiba vagy egyéb leválasztásának szolgáltatáskimaradást okozhat. Az SQL Data Warehouse mostantól támogatja a lekérdezési restartability lépés vagy utasítás szintű SELECT lekérdezések. 

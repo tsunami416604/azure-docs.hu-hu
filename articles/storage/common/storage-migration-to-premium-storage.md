@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 36889fc6cb8dbec77136dc8cea08416e51837243
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: bb88bf7ddaa93336c812b1ddc9794dad8daa64b7
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564833"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330579"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>(Nem felügyelt lemezek) az Azure Premium Storage-ba való migrálás
 
@@ -32,7 +32,7 @@ A jelen útmutató célja, hogy új felhasználók az Azure Premium Storage nagy
 Más platformokon, a virtuális gépek áttelepítése az Azure Premium Storage, vagy meglévő Azure virtuális gépek migrálása Standard Storage prémium szintű Storage. Ez az útmutató mindkét két forgatókönyv lépéseit ismerteti. A forgatókönyvtől függően vonatkozó részében meghatározott lépésekkel.
 
 > [!NOTE]
-> A funkciók áttekintését és a prémium szintű tárterülettel, a prémium szintű Storage díjszabása találja: [Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md). Azt javasoljuk, hogy minden virtuálisgép-lemez magas iops-t az Azure Premium Storage igénylő a legjobb teljesítmény érdekében az alkalmazás migrálása. Ha a lemez nincs szükség a magas iops-érték, megőrizve a standard szintű tárolóban, amely tárolja a virtuális gép lemez adatait a (merevlemezes HDD) meghajtók helyett SSD-k korlátozhatja költségeket.
+> A funkciók áttekintését és a prémium szintű SSD díjszabás találja: [Válassza ki a lemez típusát az IaaS virtuális gépek](../../virtual-machines/windows/disks-types.md#premium-ssd). Azt javasoljuk, hogy minden virtuálisgép-lemez magas iops-t az Azure Premium Storage igénylő a legjobb teljesítmény érdekében az alkalmazás migrálása. Ha a lemez nincs szükség a magas iops-érték, megőrizve a standard szintű tárolóban, amely tárolja a virtuális gép lemez adatait a (merevlemezes HDD) meghajtók helyett SSD-k korlátozhatja költségeket.
 >
 
 Ebben az esetben az áttelepítési folyamat befejezése szükség lehet további műveletek előtt és után a jelen útmutatóban ismertetett lépéseket. Ilyenek például a virtuális hálózatok vagy végpontok konfigurálása vagy kódmódosítások belül magát az alkalmazást, amelyre szükség lehet némi állásidőt jelent az alkalmazásban. Ezek a műveletek minden alkalmazáshoz egyedi, és együtt a váltásban a teljes prémium szintű Storage, amennyire csak lehetséges, zökkenőmentes útmutatóban ismertetett lépéseket kell végeznie őket.
@@ -69,7 +69,7 @@ Premium Storage-fiókok rendelkezik a következő teljesítménycélokat mellett
 |:--- |:--- |
 | Lemez kapacitása: 35TB<br />Pillanatkép-kapacitás: 10 TB |Legfeljebb 50 Gigabit / másodperc bejövő + kimenő |
 
-A Premium Storage-specifikációk további információkért tekintse meg [méretezhetőségi és Teljesítménycéljai használatakor a prémium szintű Storage](../../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets).
+A Premium Storage-specifikációk további információkért tekintse meg [Azure Storage méretezhetőségi és teljesítménycéljai](storage-scalability-targets.md#premium-storage-account-scale-limits).
 
 #### <a name="disk-caching-policy"></a>Lemez gyorsítótárazási házirend
 Alapértelmezés szerint a lemez gyorsítótárazási házirend a *csak olvasható* minden a prémium szintű adatlemezek esetén és *olvasási és írási* a prémium szintű operációsrendszer-lemez a virtuális Géphez csatlakoztatva. Ezt a konfigurációs beállítást az optimális teljesítmény érdekében az alkalmazás IOs-hez javasolt. Írási vagy csak írási adatlemezek (például az SQL Server-naplófájlok) tiltsa le a lemezek gyorsítótárazása, így jobb alkalmazásteljesítményt érhet el. A gyorsítótár beállításait a meglévő adatlemezek paranccsal frissíthető [az Azure Portal](https://portal.azure.com) vagy a *- HostCaching* paraméterében a *Set-AzureDataDisk* parancsmagot.
@@ -748,7 +748,7 @@ Az aktuális virtuális gép konfigurációjának kifejezetten a jól működnek
 2. Jelentkezzen be a virtuális gép, másolja az adatokat az új lemezhez, amely leképezi a kötetet a jelenlegi kötetről. Ehhez le kell képeznie egy új lemezt az aktuális kötetek esetén.
 3. Ezután módosítsa az alkalmazás beállításait, váltson át az új lemezeket, és a régi kötetet leválasztani.
 
-Az alkalmazás nagyobb teljesítményű lemezeket a finomhangoláshoz, tekintse meg [alkalmazások teljesítményének optimalizálása](../../virtual-machines/windows/premium-storage-performance.md#optimizing-application-performance).
+Alkalmazás teljesítményének optimalizálása szakaszt az olvassa el az alkalmazást a nagyobb teljesítményű lemezeket finomhangoláshoz, a [magas teljesítmény-központú tervezés](../../virtual-machines/windows/premium-storage-performance.md) cikk.
 
 ### <a name="application-migrations"></a>Alkalmazások áttelepítése
 Adatbázisok és egyéb összetett alkalmazásokat lehet szükség különleges lépések szerint az alkalmazás szolgáltatója az áttelepítés. Olvassa el a megfelelő alkalmazás dokumentációban. Például általában adatbázisok biztonsági másolat használatával telepíthetők át, és állítsa vissza.
@@ -765,7 +765,7 @@ Azt is ellenőrizze, tudjon meg többet az Azure Storage és az Azure Virtual Ma
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md)
+* [Válassza ki a lemez típusát IaaS virtuális gépekhez](../../virtual-machines/windows/disks-types.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

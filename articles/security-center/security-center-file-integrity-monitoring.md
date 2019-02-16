@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 50f2c174f21243a70c830c1c30127e0629c81972
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c32dcbac8ebab5fb71839a4525163c0e6cf028ed
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110251"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310730"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritási monitorozás az Azure Security Centerben
 Ismerje meg a fájl fájlintegritási Monitorozás (FIM) konfigurálása az Azure Security Centerben, használja ezt a forgatókönyvet.
@@ -88,7 +88,7 @@ A munkaterülethez FIM engedélyezése:
 4. Válassza ki **alkalmazni a fájlintegritási monitorozás** FIM engedélyezéséhez.
 
 > [!NOTE]
-> A beállításokat bármikor módosíthatja. Lásd: [szerkesztési figyelt entitások](security-center-file-integrity-monitoring.md#edit-monitored-items) az alábbi további.
+> A beállításokat bármikor módosíthatja. Tekintse meg a szerkesztési figyelt az alábbi további entitásokat.
 >
 >
 

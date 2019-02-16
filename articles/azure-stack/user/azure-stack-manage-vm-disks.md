@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 5719d5c49d3061acd167f51f74aac109dc22ec49
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: e38612e0d4e0707525b313c79143018c74c4c77b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961397"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326510"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Lemezes tárolás virtuális gép létrehozása az Azure Stackben
 
@@ -32,9 +32,9 @@ Ez a cikk ismerteti, hogyan hozhat létre a virtuális gép lemezes tárolás az
 
 Azure Stack verziójától kezdve 1808, a virtuális gépek, az operációs rendszer (OS) és a egy adatlemezt is támogatja a felügyelt és a nem felügyelt lemezek használatát. A következőnél régebbi verziók 1808 csak a nem felügyelt lemezek támogatottak. 
 
-**[A Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)**  az Azure IaaS virtuális gépek lemezfelügyelet egyszerűsítése a virtuális gépek lemezeihez társított storage-fiókok kezelésével. Csak meg kell adnia a méretű lemez van szüksége, és az Azure Stack létrehozza és felügyeli a lemezt Ön helyett.
+**[A Managed disks](../../virtual-machines/windows/managed-disks-overview.md)**  az Azure IaaS virtuális gépek lemezfelügyelet egyszerűsítése a virtuális gépek lemezeihez társított storage-fiókok kezelésével. Csak meg kell adnia a méretű lemez van szüksége, és az Azure Stack létrehozza és felügyeli a lemezt Ön helyett.
 
-**[Nem felügyelt lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)**, szükséges, hogy hozzon létre egy [tárfiók](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) a lemezeinek tárolására. A lemezeket hoz létre Virtuálisgép-lemezeket nevezik, és a tárfiókban lévő tárolók vannak tárolva.
+Nem felügyelt lemezekre van szükség, hogy a lemezek tárolására tárfiók létrehozása. A lemezeket hoz létre Virtuálisgép-lemezeket nevezik, és a tárfiókban lévő tárolók vannak tárolva.
 
 ### <a name="best-practice-guidelines"></a>Gyakorlati előírásai
 
@@ -97,7 +97,7 @@ Minden nem felügyelt lemez hozzáadása egy külön tárolóban kell elhelyezni
 
     -  Válassza ki a **adatforrástípust**.
 
-       Lemez létrehozása pillanatképből egy másik lemez, egy blob storage-fiókban lévő, vagy hozzon létre egy üres lemez.
+       Lemez létrehozása egy másik lemez pillanatképéből vagy egy tárfiókbeli blobból, vagy üres lemez létrehozása.
 
         **Snapshot**  
         Válassza ki a pillanatképet, ha rendelkezésre áll. A pillanatkép kell lennie a virtuális gép előfizetésben és helyen érhető el.

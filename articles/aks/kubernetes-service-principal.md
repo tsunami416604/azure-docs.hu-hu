@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 2bc0579d3dd60d66a23a29dabff7e43ca8dfee76
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b8cbeacda98aec639724f30fe3a7e94346f05ba4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435395"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308754"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
@@ -128,11 +128,10 @@ AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a köv
 - A Kubernetes-fürt mester és csomópont virtuális gépein a szolgáltatásnév hitelesítő adatai az `/etc/kubernetes/azure.json` fájlban lesznek tárolva.
 - Ha az [az aks create][az-aks-create] parancsot használja a szolgáltatásnév automatikus létrehozásához, a szolgáltatásnév hitelesítő adatai a `~/.azure/aksServicePrincipal.json` fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
 - Az [az aks create][az-aks-create] használatával létrehozott AKS-fürt törlésekor az automatikusan létrehozott szolgáltatásnév nem törlődik.
-    - A szolgáltatásnév törléséhez először szerezze be annak azonosítóját az [az ad app list][az-ad-app-list] paranccsal. Az alábbi példa lekérdezi a *myAKSCluster* nevű fürtöt, majd törli az alkalmazásazonosítót az [az ad app delete][az-ad-app-delete] paranccsal. Helyettesítse ezeket a neveket a saját értékeivel:
+    - Az egyszerű szolgáltatás törléséhez lekérdezése a fürt *servicePrincipalProfile.clientId* , majd törölje a [az ad app delete][az-ad-app-delete]. Cserélje le a következő erőforrás csoport és a fürt nevét a saját értékeit:
 
         ```azurecli
-        az ad app list --query "[?displayName=='myAKSCluster'].{Name:displayName,Id:appId}" --output table
-        az ad app delete --id <appId>
+        az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
 ## <a name="next-steps"></a>További lépések

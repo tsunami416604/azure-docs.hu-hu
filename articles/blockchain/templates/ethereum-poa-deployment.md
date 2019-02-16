@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 47f9dfea24dc3134e6a2f476affaaff7e60efe8c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3edd70d3012840bd66460219c32135666619a3bf
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260380"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313568"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>A koncepció jogosultság consortium Ethereum
 
@@ -148,7 +148,7 @@ Bármilyen típusú keresztül a Cégirányítási DApp tranzakciók végrehajt�
 MetaMask telepítés után nyissa meg a böngészőben a Cégirányítási DApp.  Az üzembe helyezés megerősítő e-mailben vagy a központi telepítési kimenetében az Azure Portalon megkeresheti az URL-címet.  Ha nem rendelkezik egy telepített böngészőben wallet nem fogjuk tudni elvégezni a műveleteket; azonban Ön továbbra is képes lesz a rendszergazda állapotadatokat olvasni.  
 
 #### <a name="becoming-an-admin"></a>Egy rendszergazda neve
-Ha Ön az első olyan tag a hálózaton telepített, ezután automatikusan Ön lesz egy rendszergazda, és a paritásos csomópontok érvényesítők fog szerepelni.  Ha, amelyhez csatlakozik a hálózathoz, szüksége lesz első szavazó rendszergazdai többsége (több mint 50 %-a) a meglévő rendszergazda.  Ha úgy dönt, hogy nem rendszergazdai válik, akkor a csomópont továbbra is szinkronizálása, és nem a blockchain; ellenőrzése azonban ezek nem vesz részt a blokk létrehozását. Rendszergazdai lesz a szavazási folyamat elindításához kattintson __Nominate__ és az Ethereum-címet és egy alias.
+Ha Ön az első olyan tag a hálózaton telepített, ezután automatikusan Ön lesz egy rendszergazda, és a paritásos csomópontok érvényesítők fog szerepelni.  Ha, amelyhez csatlakozik a hálózathoz, kell első szavazó rendszergazdai többsége (50 %-nál nagyobb) a meglévő felügyeleti csoport.  Ha úgy dönt, hogy nem rendszergazdai válik, akkor a csomópont továbbra is szinkronizálása, és nem a blockchain; ellenőrzése azonban ezek nem vesz részt a blokk létrehozását. Rendszergazdai lesz a szavazási folyamat elindításához kattintson __Nominate__ és az Ethereum-címet és egy alias.
 
 ![Jelölés](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
@@ -258,9 +258,9 @@ Vegye figyelembe, hogy a virtuális gép és a tárolási réteget hatással les
 
   VM-Termékváltozat|Tárolási réteg|Ár|Teljesítmény|Késés
   ---|---|---|---|---
-  F1|Standard SSD|Alacsony|Alacsony|Magas
+  F1|Standard SSD|alacsony|alacsony|Magas
   D2_v3|Standard SSD|közepes|közepes|közepes
-  F16s|Prémium SSD|Magas|Magas|Alacsony
+  F16s|Prémium SSD|Magas|Magas|alacsony
 
 Üzembe helyezési minta az alább látható: ![hálózati mérete és a teljesítmény](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
@@ -359,7 +359,7 @@ A nyilvános IP-alapú üzemelő példány használatával az első lépésekén
 
     -  Válassza ki a többi taghoz valós ábrázolás biztosításához a hálózaton azonos számú érvényesítő csomópontok
 
-    -  A megadott ugyanazt Ethereum-címet használja a [előző lépésben](#step-1-add-the-new-admin)
+    -  A azonos az előző lépésben megadott Ethereum-cím használata
 
     -  Adja át a megadott *Consortium adatok URL-címének* a a *Ethereum-beállítások* lap
 

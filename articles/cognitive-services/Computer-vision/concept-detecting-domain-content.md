@@ -8,53 +8,132 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: df7e61bb9d064c4530c0212cc02fbdd849017612
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 66137f01672820584f97273ddca26a66ada781ba
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871999"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312532"
 ---
-# <a name="detecting-domain-specific-content"></a>Tartományspecifikus tartalom észlelése
+# <a name="detect-domain-specific-content"></a>Tartomány-specifikus tartalom észlelése
 
-Emellett a címkézési és a legfelső szintű kategorizálási, Computer Vision is támogatja a speciális (vagy tartomány-specifikus) információt. Speciális információk kinyerése önálló metódusként, vagy magas szintű kategorizálással is megvalósítható. A 86 kategóriára épülő besorolás további finomítására szolgál fogalomkör-specifikus modellek hozzáadásával.
+Emellett a címkézési és a magas szintű kategorizálási, Computer Vision is támogatja a további speciális adatokon, amely rendelkezik betanítva modellek használatával tartomány-specifikus elemzés. 
 
-A fogalomkör-specifikus modellek két módon használhatók:
+A tartományspecifikus modellek használata két módja van: magukat (hatókörön belüli elemzés), akár a kategorizálási funkció továbbfejlesztése.
 
-* Hatókörön belüli elemzés  
-  Csak a kiválasztott modell elemzése egy HTTP POST-hívás meghívásával. Ha tudja, melyik modellt érdemes használni, adja meg a modell neve. Csak kap információkat megfelelő ehhez a modellhez. Ezt a lehetőséget használhatja például akkor, ha a cél csak a hírességek felismerése. A válasz az esetleg felismert hírességek listáját adja vissza, a felismerésük megbízhatósági értékével együtt.
-* Fejlett elemzés  
-  Az elemzés további, a 86 besorolási kategóriához kapcsolódó részleteket szolgáltat. Ez a lehetőség olyan alkalmazásokban használható, amelyekben a felhasználó az egy vagy több fogalomkör-specifikus modellből származó részleteken kívül általános képelemzést is szeretne. Ennek a metódusnak a hívásakor először a 86 kategóriaelnevezést használó besorolás lesz meghíva. Az ismert vagy egyező modellek, amelyek egyeznek, kategóriákra az osztályozó által igénybe vett meghívásához egy második fázishoz a következő. Például ha a `details` paraméter a HTTP POST-hívás vagy értéke "all" vagy "hírességek" tartalmazza, a metódus meghívja a hírességek osztályozó után a 86-kategória osztályozó nevezzük. Ha a kép akkor minősül `people_` vagy egy kategóriát, majd a hírességek osztályozó alkategóriája nevezzük.
+### <a name="scoped-analysis"></a>Hatókörön belüli elemzés
 
-## <a name="listing-domain-specific-models"></a>Tartomány-specifikus modelleket listázása
+Csak a kiválasztott tartomány-specifikus modellt használó meghívásával kép elemezheti a [modellek /\<modell\>/elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API-t. 
 
-A Computer Vision által támogatott tartomány-specifikus modelleket listázhatja. Jelenleg a Computer Vision támogatja a következő tartomány-specifikus modelleket a tartomány-specifikus tartalom észlelése:
+Az alábbiakban a minta által visszaadott JSON-választ a **modellek, hírességek és elemzése** API a megadott lemezkép:
+
+![Satya Nadella helyzet](./images/satya.jpeg)
+
+```json
+{
+  "result": {
+    "celebrities": [{
+      "faceRectangle": {
+        "top": 391,
+        "left": 318,
+        "width": 184,
+        "height": 184
+      },
+      "name": "Satya Nadella",
+      "confidence": 0.99999856948852539
+    }]
+  },
+  "requestId": "8217262a-1a90-4498-a242-68376a4b956b",
+  "metadata": {
+    "width": 800,
+    "height": 1200,
+    "format": "Jpeg"
+  }
+}
+```
+
+### <a name="enhanced-categorization-analysis"></a>Továbbfejlesztett kategorizálási elemzése  
+
+Tartomány-specifikus modellek használatával általános képelemzés kiegészítésére. Részeként ehhez [magas szintű kategorizálási](concept-categorizing-images.md) adja meg a tartomány-specifikus modelleket a *részletek* paraméterében a [elemzés](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-hívás. 
+
+Ebben az esetben a 86 kategóriaelnevezési osztályozó először neve. Ha észlelt kategóriákra rendelkezik a megfelelő tartomány-specifikus modellek, a lemezkép átadott is a modell és az eredmények kerülnek. 
+
+A következő JSON-válasz bemutatja, hogyan tartomány-specifikus elemzését is meg lehet adni, mint a `detail` egy szélesebb körű kategorizálási elemzési csomópontja.
+
+```json
+"categories":[  
+  {  
+    "name":"abstract_",
+    "score":0.00390625
+  },
+  {  
+    "name":"people_",
+    "score":0.83984375,
+    "detail":{  
+      "celebrities":[  
+        {  
+          "name":"Satya Nadella",
+          "faceRectangle":{  
+            "left":597,
+            "top":162,
+            "width":248,
+            "height":248
+          },
+          "confidence":0.999028444
+        }
+      ],
+      "landmarks":[  
+        {  
+          "name":"Forbidden City",
+          "confidence":0.9978346
+        }
+      ]
+    }
+  }
+]
+```
+
+## <a name="list-the-domain-specific-models"></a>A tartományspecifikus modellek listáját
+
+Számítógépes Látástechnológia jelenleg a következő tartomány-specifikus modelleket támogatja:
 
 | Name (Név) | Leírás |
 |------|-------------|
 | hírességek | Hírességek felismerése, támogatja a lemezképek besorolni a `people_` kategória |
 | Arcrész | Tereptárgyak felismerése, támogatja a lemezképek besorolni a `outdoor_` vagy `building_` kategóriák |
 
-### <a name="domain-model-list-example"></a>Tartományi modell példa
-
-A következő JSON-választ a Computer Vision által támogatott tartomány-specifikus modelleket sorolja fel.
+Hívása a [modellek](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API ad vissza, ez az információ, amelyhez alkalmazhat az egyes kategóriák együtt:
 
 ```json
-{
-    "models": [
-        {
-            "name": "celebrities",
-            "categories": ["people_", "人_", "pessoas_", "gente_"]
-        },
-        {
-            "name": "landmarks",
-            "categories": ["outdoor_", "户外_", "屋外_", "aoarlivre_", "alairelibre_",
-                "building_", "建筑_", "建物_", "edifício_"]
-        }
-    ]
+{  
+  "models":[  
+    {  
+      "name":"celebrities",
+      "categories":[  
+        "people_",
+        "人_",
+        "pessoas_",
+        "gente_"
+      ]
+    },
+    {  
+      "name":"landmarks",
+      "categories":[  
+        "outdoor_",
+        "户外_",
+        "屋外_",
+        "aoarlivre_",
+        "alairelibre_",
+        "building_",
+        "建筑_",
+        "建物_",
+        "edifício_"
+      ]
+    }
+  ]
 }
 ```
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 81e0e89a8ad17c92a707bae001d2861404cd0d10
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cff8b8af4ca40d428edf7c6e35976bcb154a28f1
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238839"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328690"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 Az Azure Storage GPv2-fiókok lehetővé teszik statikus tartalom (HTML, CSS, JavaScript és képfájlok) nevű tárolót történő közvetlen *$web*. Kihasználhatja a üzemeltetése az Azure Storage lehetővé teszi, hogy például kiszolgáló nélküli architektúrák [Azure Functions](/azure/azure-functions/functions-overview) és egyéb PaaS-szolgáltatások.
@@ -109,7 +109,7 @@ Tartalom központi telepítése egy storage-tárolóba elérhető módszerek a k
 
 - [AzCopy](../common/storage-use-azcopy.md)
 - [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
-- [Az Azure-folyamatok](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
+- [Az Azure-folyamatok](https://azure.microsoft.com/services/devops/pipelines/)
 - [Visual Studio Code extension](https://code.visualstudio.com/tutorials/static-website/getting-started)
 
 Minden esetben ellenőrizze, hogy a fájlok másolása a *$web* tároló.

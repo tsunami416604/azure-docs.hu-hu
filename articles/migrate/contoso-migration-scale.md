@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: c36572230387ffc33a46913dbcc1259ea65f84f5
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: bd1761ecf16bbfb0d3fdc354ab1b9fa1f42f9c17
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104233"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328578"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso – méretezési csoport egy áttelepítés az Azure-bA
 
@@ -147,10 +147,10 @@ Műszaki adósságot | Egyik sem vagy néhány/súlyos | A leltári tétel futó
 Tűzfal következmények | I/N | Az alkalmazás az internettel/forgalom kívüli kommunikációhoz?  Integrálható a tűzfalat?
 Biztonsági problémák | I/N | Nincs biztonsági előforduló ismert problémákat olvashatja az alkalmazással?  Az alkalmazás a titkosítatlan adatok vagy elavult platformok használni?
 Migrálási stratégia | Újraépítés áthelyezési/újrabontása/újratervezése | Milyen típusú áttelepítési van szükség az alkalmazás? Hogyan fogja az alkalmazás telepítve az Azure-ban? [További információk](contoso-migration-overview.md#migration-strategies).
-Műszaki bonyolultsága | 1 – 5 | Milyen bonyolult az a migrálás? Ezt az értéket meg kell határozni a Contoso DevOps és a megfelelő partnerek által.
-Üzleti kritikusság | 1 – 5 | Mennyire fontos az alkalmazást a vállalati? Például egy kis munkacsoport-alkalmazást hozzárendelni egy pontszám egy, míg egy kritikus fontosságú alkalmazást használ, amelyek a szervezet egy pontszám öt. Ezt az értéket a migrálás prioritási szintet negatív hatással lesz.
+Műszaki bonyolultsága | 1-5 | Milyen bonyolult az a migrálás? Ezt az értéket meg kell határozni a Contoso DevOps és a megfelelő partnerek által.
+Üzleti kritikusság | 1-5 | Mennyire fontos az alkalmazást a vállalati? Például egy kis munkacsoport-alkalmazást hozzárendelni egy pontszám egy, míg egy kritikus fontosságú alkalmazást használ, amelyek a szervezet egy pontszám öt. Ezt az értéket a migrálás prioritási szintet negatív hatással lesz.
 Áttelepítési prioritás | 1/2/3 | Milyen áttelepítési prioritását az alkalmazást?
-Migrálás kockázata  | 1 – 5 | Mi az az alkalmazás migrálása a kockázati szintjét? Ezt az értéket kell egyeztetett Contoso DevOps és a megfelelő partnerek.
+Migrálás kockázata  | 1-5 | Mi az az alkalmazás migrálása a kockázati szintjét? Ezt az értéket kell egyeztetett Contoso DevOps és a megfelelő partnerek.
 
 
 
@@ -229,7 +229,7 @@ Nincsenek négy széles körű migrációs stratégiákat / Contoso figyelembe.
 
 **Stratégia** | **Részletek** | **Használat**
 --- | --- | ---
-**Áthelyezési**  | Gyakran nevezik "lift and shift" típusú migrálás, ez a beállítás kódot nem a áttelepítése a meglévő alkalmazások Azure-ban gyorsan.<br/><br/> Egy alkalmazás migrálása, mert a rendszer-, a kockázatokat és a kódmódosításokat társított költségek nélkül a felhő nyújtotta előnyök használatával. | Contoso áthelyezési is kevesebb stratégiai alkalmazások kódmódosítás nélkül megkövetelése.
+**Rehost**  | Gyakran nevezik "lift and shift" típusú migrálás, ez a beállítás kódot nem a áttelepítése a meglévő alkalmazások Azure-ban gyorsan.<br/><br/> Egy alkalmazás migrálása, mert a rendszer-, a kockázatokat és a kódmódosításokat társított költségek nélkül a felhő nyújtotta előnyök használatával. | Contoso áthelyezési is kevesebb stratégiai alkalmazások kódmódosítás nélkül megkövetelése.
 **Újrabontása** |  Más néven "újracsomagolás", ez a stratégia szükséges minimális alkalmazáskód vagy konfigurációs módosításokat kell az alkalmazás csatlakoztatása az Azure PaaS, és a felhőalapú képességek jobb kihasználásához. | Contoso újrabontása is megőrizheti az ugyanazon alapvető funkciókat, de helyezze át őket az Azure platformon, például az Azure App Services futtatásához stratégiai alkalmazásokat.<br/><br/> Ehhez szükséges minimális kód módosítása.<br/><br/> Másrészről Contoso kell egy virtuális Gépet platform karbantartása, mivel nem Microsoft által felügyelt ez.
 **Újratervezése** | Ez a stratégia módosítja vagy kibővíti az alkalmazás kódbázis optimalizálhatja a felhő képességeit és a méretezési csoport alkalmazásarchitektúra.<br/><br/> Egy alkalmazást, egy rugalmas, hatékonyan méretezhető, függetlenül üzembe helyezhető architektúra modernizálja azt.<br/><br/> Azure-szolgáltatások gyorsítsa fel a folyamatot, magabiztosan méretezhet az alkalmazásokat, és alkalmazások egyszerű kezelése.
 **Újraépítése** | Ez a stratégia natív felhőalapú technológiákat használó előzmények nélküli alkalmazást újraépíti.<br/><br/> Az Azure platformszolgáltatás (PaaS) kínál teljes körű fejlesztési és üzembehelyezési környezetet a felhőben. Néhány járó költségeket és bonyodalmakat szoftverlicencek kiküszöböli, és kiküszöböli az egy alkalmazás alapul szolgáló infrastruktúra, a közbenső szoftver és az egyéb erőforrások. | Contoso is írja át egészen az alapoktól kritikus fontosságú alkalmazások, például kiszolgáló nélküli számítógép vagy a mikroszolgáltatások a felhőalapú technológiák előnyeit.<br/><br/> Contoso fogja kezelni, az alkalmazás és a szolgáltatás által, és az Azure minden más kezeli.
@@ -292,11 +292,10 @@ Döntse el, hogyan helyezhet üzembe ezeket az összetevőket, a kapacitás szem
 **Konfigurációs kiszolgáló** | A Contoso 100 = 200 replikálása becslése alapján együtt, virtuális gépek és a [konfigurációs kiszolgáló méretezési követelmények](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server), Contoso-becslésére igényeinek megfelelően a konfigurációs kiszolgáló gép a következőképpen történik:<br/><br/> CPU: 16 vcpu-k (2 sockets * 8 mag, 2,5 GHz-es @)<br/><br/> Memória: 32 GB<br/><br/> Gyorsítótárlemez: 1 TB<br/><br/> A módosult adatok aránya: 1 TB-os 2 TB-ig.<br/><br/> A méretezési követelmények mellett Contoso kell ügyeljen arra, hogy a konfigurációs kiszolgáló optimális található, az ugyanazon a hálózaton és a LAN-szegmens, mert a virtuális gépek, amely át lesz telepítve.
 **Folyamatkiszolgáló** | Contoso 100 – 200 – virtuális gépek replikálhatók a különálló dedikált folyamatkiszolgáló üzembe helyezése:<br/><br/> CPU: 16 vcpu-k (2 sockets * 8 mag, 2,5 GHz-es @)<br/><br/> Memória: 32 GB<br/><br/> Gyorsítótárlemez: 1 TB<br/><br/> A módosult adatok aránya: 1 TB-os 2 TB-ig.<br/><br/> A folyamatkiszolgáló munkát nehéz lesz, és mint ilyen kell elhelyezni, az ESXi-gazdagépen, amely képes kezelni, a lemez i/o, a hálózati forgalom és a CPU, a replikációhoz szükséges. Contoso erre a célra egy dedikált gazdagéppel figyelembe veszi. 
 **Hálózat** | Contoso tekintse át az aktuális site-to-site VPN-infrastruktúrát, és úgy döntött, hogy az Azure ExpressRoute megvalósításához. A megvalósítás fontos, mivel csökkentheti a késést, és növelheti a sávszélességet a Contoso elsődleges East US 2 Azure-régió.<br/><br/> **Figyelés**: Contoso kell kísérje figyelemmel az adatoknak a folyamatkiszolgálóról. Ha az adatok beáll-e a hálózati sávszélesség figyelembe veszi a Contoso [a folyamat a kiszolgáló sávszélesség szabályozása](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
-**Azure Storage** | Az áttelepítéshez a Contoso azonosítani kell a megfelelő típusú és számú cél Azure-tárfiókot.  A Site Recovery az Azure storage virtuális gépek adatait replikálja.<br/><br/> A Site Recovery standard vagy prémium szintű (SSD) tárfiókok bA végezhet replikálást.<br/><br/> Annak eldöntéséhez, tárolás, a Contoso át kell néznie [tárhelykorlátok](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage), és idővel várható növekedésének és a használat során megnövekedett vennie. Adja meg a sebességet és áttelepítések prioritását, Contoso döntött, hogy prémium szintű storage-fiókok használatához.<br/><br/> Akkor hozzon létre, és több tárfiókot újra az áttelepítési folyamat során.
-Contoso hajtott végre a felügyelt lemezek használata az összes Azure-ban üzembe helyezett virtuális gép mellett.  A szükséges iops-érték határozza meg, ha a standard szintű (HDD) vagy a prémium (SSD) lemezeket lesz.<br/>.<br/>
+**Azure Storage** | Az áttelepítéshez a Contoso azonosítani kell a megfelelő típusú és számú cél Azure-tárfiókot.  A Site Recovery az Azure storage virtuális gépek adatait replikálja.<br/><br/> A Site Recovery standard vagy prémium szintű (SSD) tárfiókok bA végezhet replikálást.<br/><br/> Annak eldöntéséhez, tárolás, a Contoso át kell néznie [tárhelykorlátok](../virtual-machines/windows/disks-types.md), és idővel várható növekedésének és a használat során megnövekedett vennie. Adja meg a sebességet és áttelepítések prioritását, Contoso döntött, hogy prémium szintű SSD-k használata<br/><br/>
+Contoso hajtott végre a felügyelt lemezek használata az összes Azure-ban üzembe helyezett virtuális gép mellett.  A szükséges iops-érték határozza meg, ha a Standard HDD, a standard szintű SSD vagy a prémium (SSD) lemezek lesz.<br/><br/>
 
-
-#### <a name="data-migration-service"></a>Data Migration Service 
+#### <a name="data-migration-service"></a>Data Migration Service
 
 Az Azure Database Migration Service (DMS) egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi az Azure-beli adat-platformokra, minimális állásidővel adatbázis több forrásból származó zökkenőmentes áttelepítések.
 

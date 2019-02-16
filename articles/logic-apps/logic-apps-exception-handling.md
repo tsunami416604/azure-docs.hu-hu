@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 19a715812f1250523fd050ac8b80dee9ec664be4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 56f3573bbab059aed78608209cb2815413876bb0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686262"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308723"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és az Azure Logic Appsben kivételek kezelése
 
@@ -29,12 +29,12 @@ A legalapvetőbb kivétel és a hibakezelés, használhat egy *újrapróbálkoz�
 
 Az újrapróbálkozási szabályzat típusok a következők: 
 
-| Típus | Leírás | 
+| Typo | Leírás | 
 |------|-------------| 
-| [**Alapértelmezett**](#default-retry) | Ez a szabályzat legfeljebb négy újrapróbálkozás küld [ *ezzel exponenciálisan növelve* ](#exponential-retry) időközök, méretezhető, 7.5 másodperc, de 5 és 45 másodperc között vannak korlátozzuk. | 
-| [**Exponenciális időköz**](#exponential-retry)  | Ez a szabályzat kiválasztott exponenciálisan egyre bővülő tartományból a kérések elküldése előtt egy véletlenszerű időköz vár. | 
-| [**Rögzített időköz**](#fixed-retry)  | Ez a szabályzat a megadott időszak vár, a kérések elküldése előtt. | 
-| [**Egyik sem**](#no-retry)  | Ne küldje el újra a kérelmet. | 
+| **Alapértelmezett** | Ez a szabályzat legfeljebb négy újrapróbálkozás küld *ezzel exponenciálisan növelve* időközök, méretezhető, 7.5 másodperc, de 5 és 45 másodperc között vannak korlátozzuk. | 
+| **Exponenciális időköz**  | Ez a szabályzat kiválasztott exponenciálisan egyre bővülő tartományból a kérések elküldése előtt egy véletlenszerű időköz vár. | 
+| **Rögzített időköz**  | Ez a szabályzat a megadott időszak vár, a kérések elküldése előtt. | 
+| **Nincsenek**  | Ne küldje el újra a kérelmet. | 
 ||| 
 
 Újrapróbálkozási házirend korlát kapcsolatos információkért lásd: [Logic Apps-korlátozások és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
@@ -69,21 +69,21 @@ Vagy manuálisan is megadhatja az újrapróbálkozási szabályzat a `inputs` eg
 }
 ```
 
-*Szükséges*
+*Kötelező*
 
-| Érték | Típus | Leírás |
+| Érték | Typo | Leírás |
 |-------|------|-------------|
-| <*újrapróbálkozási házirendtípus*> | Karakterlánc | A használni kívánt újrapróbálkozási házirendtípus: `default`, `none`, `fixed`, vagy `exponential` | 
-| <*újrapróbálkozási-időköz*> | Karakterlánc | Az újrapróbálkozási időköz, ahol az értéket kell használnia [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Az alapértelmezett minimális gyakoriság `PT5S` és a maximális időköz `PT1D`. Az exponenciális időköz szabályzat használatakor különböző minimális és maximális értékeket is megadhat. | 
+| <*retry-policy-type*> | String | A használni kívánt újrapróbálkozási házirendtípus: `default`, `none`, `fixed`, vagy `exponential` | 
+| <*újrapróbálkozási-időköz*> | String | Az újrapróbálkozási időköz, ahol az értéket kell használnia [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Az alapértelmezett minimális gyakoriság `PT5S` és a maximális időköz `PT1D`. Az exponenciális időköz szabályzat használatakor különböző minimális és maximális értékeket is megadhat. | 
 | <*újrapróbálkozások*> | Egész szám | 1 és 90 között kell lennie újrapróbálkozások száma | 
 ||||
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás |
+| Érték | Typo | Leírás |
 |-------|------|-------------|
-| <*minimális-időköz*> | Karakterlánc | Az exponenciális időköz házirend, a legkisebb időköze a véletlenszerűen kiválasztott időköz [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
-| <*maximális-időköz*> | Karakterlánc | Az exponenciális időköz házirend, a véletlenszerűen kiválasztott időszakban a legnagyobb időközönként [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*minimum-interval*> | String | Az exponenciális időköz házirend, a legkisebb időköze a véletlenszerűen kiválasztott időköz [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*maximum-interval*> | String | Az exponenciális időköz házirend, a véletlenszerűen kiválasztott időszakban a legnagyobb időközönként [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
 |||| 
 
 Itt látható a különböző Házirendtípusok további információt.
@@ -153,10 +153,10 @@ Ez a táblázat bemutatja, hogyan Logic Apps a hoz létre egy egységes véletle
 
 | Ismételje meg a számot | Minimális időköz | Maximális időköz |
 |--------------|------------------|------------------|
-| 1 | Max (0, <*minimális-interval*>) | minimális (időközt <*maximális-interval*>) |
-| 2 | Max (időközt <*minimális-interval*>) | perc (2 * időközt <*maximális-interval*>) |
-| 3 | Max (2 * időközt <*minimális-interval*>) | minimális (4 * időközt <*maximális-interval*>) |
-| 4 | Max (4 * időközt <*minimális-interval*>) | minimális (8 * időközt <*maximális-interval*>) |
+| 1 | max(0, <*minimum-interval*>) | min(interval, <*maximum-interval*>) |
+| 2 | max(interval, <*minimum-interval*>) | min(2 * interval, <*maximum-interval*>) |
+| 3 | max(2 * interval, <*minimum-interval*>) | min(4 * interval, <*maximum-interval*>) |
+| 4 | max(4 * interval, <*minimum-interval*>) | min(8 * interval, <*maximum-interval*>) |
 | .... | .... | .... | 
 |||| 
 

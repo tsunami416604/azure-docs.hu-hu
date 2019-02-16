@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1967ba60088cae2b946cfcfe1467c2de5aebccdf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a85fb65ad971bfc70bdab0689e99921e616b56ac
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879951"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308859"
 ---
-# <a name="image-categorization-with-computer-vision"></a>Kép kategorizálási a Computer Vision
+# <a name="categorize-images"></a>Képek kategorizálása
 
-Címkézés és a leírások mellett a Computer Vision a korábbi verziókban meghatározott besorolás-alapú kategóriák adja vissza. Ezek a kategóriák öröklődő szülő/gyermek hierarchián alapuló elnevezésekkel vannak besorolva. Minden kategórianév angol nyelvű. Önállóan vagy az új modellek címkézést is használt.
+Címkék és a egy leírást, mellett a Computer Vision észlelt a képet a besorolás-alapú kategóriák adja vissza. Ellentétben a címkék és kategóriák örökletes szülő-gyermek hierarchiában vannak rendezve, és kevesebb ilyen (ellentétben a címkék ezer 86). Alkalmazáskategória-neveket angolul jelennek meg. Kategorizálási teheti meg saját maga, vagy az újabb címke-modell mellett.
 
 ## <a name="the-86-category-concept"></a>A 86 kategorizáló fogalom
 
-Az alábbi ábrán látható 86 fogalmak listája alapján, kép kategorizálhatók és a széles körű-specifikus. Az elnevezések teljes, szöveges listáját a [Kategóriák elnevezései](category-taxonomy.md) oldalon találja meg.
+Számítógépes látástechnológia is kategorizálása kép széles körben vagy kifejezetten, 86 categroies listáját használja az alábbi ábrán. Az elnevezések teljes, szöveges listáját a [Kategóriák elnevezései](category-taxonomy.md) oldalon találja meg.
 
 ![a kategória besorolás minden kategória csoportosított listája](./Images/analyze_categories-v2.png)
 

@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/27/2018
+ms.date: 02/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 76281113c0d1e7b3943e137accf7aa93c2863fe6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 13d741d97e90b4aca40614d09f67538c479f67e3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435379"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312259"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Windows-alapú Service Fabric-fürt üzembe helyezése Azure virtuális hálózatban
 
@@ -52,30 +52,9 @@ Az oktatóanyag elkezdése előtt:
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítse a [Service Fabric SDK-t és PowerShell-modult](service-fabric-get-started.md).
 * Telepítse az [Azure PowerShell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
+* Tekintse át a kapcsolatos főbb fogalmakat [Azure fürtök](service-fabric-azure-clusters-overview.md)
 
-Az alábbi eljárások egy ötcsomópontos Service Fabric-fürtöt hoznak létre. A Service Fabric-fürtök Azure-ban történő futtatásával járó költségek kiszámításához használja az [Azure-díjkalkulátort](https://azure.microsoft.com/pricing/calculator/).
-
-## <a name="key-concepts"></a>Fő fogalmak
-
-A [Service Fabric-fürt](service-fabric-deploy-anywhere.md) virtuális és fizikai gépek hálózaton keresztül csatlakozó készlete, amelyen mikroszolgáltatásokat helyezhet üzembe és felügyelhet. A fürtök több ezer gépre skálázhatók. A fürtök részét képező gépeket vagy virtuális gépeket csomópontoknak nevezzük. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzőkkel, például elhelyezési tulajdonságokkal rendelkeznek.
-
-A csomópont típusa meghatározza a fürt egyes virtuálisgép-készleteinek méretét, számát és tulajdonságait. Minden megadott csomóponttípus [virtuálisgép-méretezési csoportként](/azure/virtual-machine-scale-sets/) lesz beállítva, amely egy, a virtuális gépek gyűjteményének csoportként való üzembe helyezésére és felügyeletére használható Azure számítási erőforrás. Ezután mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy fel, eltérő nyitott portokkal rendelkezhet, és eltérő kapacitásmetrikái lehetnek. A csomóponttípusok a fürtcsomópontcsoportok szerepkörének (például „előtér” vagy „háttér”) meghatározására szolgálnak.  A fürt több csomóponttípussal is rendelkezhet, de éles fürtök esetében az elsődleges csomóponttípusnak legalább öt (vagy tesztfürtök esetében legalább három) virtuális géppel kell rendelkeznie.  [A Service Fabric-rendszerszolgáltatások](service-fabric-technical-overview.md#system-services) elhelyezése az elsődleges csomóponttípusra történik.
-
-A fürtöt egy fürttanúsítvány védi. A fürttanúsítvány egy X.509-tanúsítvány, amely a csomópontok közötti kommunikáció biztonságossá tételére, valamint a fürtkezelési végpontoknak egy kezelési ügyfél felé történő hitelesítésére szolgál.  A fürttanúsítvány egy SSL-tanúsítványt is biztosít a HTTPS-felügyeleti API, valamint a HTTPS protokollt használó Service Fabric Explorer számára. Az önaláírt tanúsítványok a tesztfürtök esetén hasznosak.  Éles fürtök esetén hitelesítésszolgáltatótól (CA) származó tanúsítványt használjon fürttanúsítványként.
-
-A fürttanúsítványnak a következő feltételeknek kell megfelelnie:
-
-* Tartalmaznia kell egy titkos kulcsot.
-* A létrehozásának kulcscserét kell szolgálnia, amely exportálható egy személyes információcsere (.pfx) fájlba.
-* Rendelkeznie kell tulajdonosnévvel, amely megegyezik a Service Fabric-fürt eléréséhez használt tartománnyal. Erre a megfeleltetésre azért van szükség, hogy a rendszer biztosíthassa az SSL-kapcsolatot a fürt HTTPS-felügyeleti végpontjai és a Service Fabric Explorer számára. Nem szerezhető be SSL-tanúsítvány hitelesítésszolgáltatótól (CA) a .cloudapp.azure.com tartomány számára. Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell felelnie a fürthöz használt egyéni tartománynévnek.
-
-Az Azure Key Vault használatával kezelheti a Service Fabric-fürtök tanúsítványait az Azure-ban.  Amikor egy fürtöt üzembe helyez az Azure-ban, Azure Service Fabric-fürtök létrehozásáért felelős erőforrás-szolgáltatója lekéri a tanúsítványokat a Key Vaultból, és telepíti őket a fürt virtuális gépein.
-
-A jelen oktatóanyag egy olyan fürtöt mutat be, amelyben öt csomópont van egyetlen csomóponttípusban. A [kapacitástervezés](service-fabric-cluster-capacity.md) azonban az éles fürttelepítések lényeges lépése. Az alábbiakban néhány dolog láthat, amelyet érdemes a folyamat részeként figyelembe vennie.
-
-* A fürt számára szükséges csomópontok és csomóponttípusok száma.
-* Az egyes csomóponttípusok tulajdonságai (például a virtuális gépek mérete, elsődlegessége, internetkapcsolata és száma).
-* A fürt megbízhatóságra és tartósságra vonatkozó jellemzői.
+Az alábbi eljárással létrehozunk egy hét csomópontos Service Fabric-fürtön. A Service Fabric-fürtök Azure-ban történő futtatásával járó költségek kiszámításához használja az [Azure-díjkalkulátort](https://azure.microsoft.com/pricing/calculator/).
 
 ## <a name="download-and-explore-the-template"></a>A sablon letöltése és megismerése
 
@@ -84,14 +63,14 @@ Töltse az alábbi Resource Manager-sablonfájlokat:
 * [azuredeploy.json][template]
 * [azuredeploy.parameters.json][parameters]
 
-Ez a sablon egy öt virtuális gépből álló biztonságos fürtöt és egyetlen csomóponttípust helyez üzembe egy virtuális hálózaton és egy hálózati biztonsági csoportban.  További mintasablonokat a [GitHubon](https://github.com/Azure-Samples/service-fabric-cluster-templates) talál.  Az [azuredeploy.json][template] több erőforrást is üzembe helyez, többek között az alábbiakat.
+Ez a sablon egy virtuális hálózatot és a egy hálózati biztonsági csoport hét virtuális gépek és a három csomóponttípusok biztonságos fürt üzembe helyezése.  További mintasablonokat a [GitHubon](https://github.com/Azure-Samples/service-fabric-cluster-templates) talál.  Az [azuredeploy.json][template] több erőforrást is üzembe helyez, többek között az alábbiakat.
 
 ### <a name="service-fabric-cluster"></a>Service Fabric-fürt
 
 A **Microsoft.ServiceFabric/clusters** erőforrásban egy Windows-fürt az alábbi jellemzőkkel lesz konfigurálva:
 
-* egyetlen csomóponttípus;
-* öt csomópont az elsődleges csomóponttípusban (a sablon paramétereiben konfigurálható);
+* három csomópont típusa
+* öt csomópont van az elsődleges csomóponttípusban (a sablon paramétereiben konfigurálható), az egyes csomópontok a két csomópont típusok
 * Operációs rendszer: A Windows Server 2016 Datacenter tárolókkal (a sablon paramétereiben konfigurálható)
 * tanúsítványon alapuló védelem (a sablon paramétereiben konfigurálható);
 * engedélyezve van a [fordított proxy](service-fabric-reverseproxy.md);
@@ -133,6 +112,35 @@ Az alábbi bejövő forgalmi szabályok vannak engedélyezve a **Microsoft.Netwo
 
 Ha további alkalmazásportokra van szükség, akkor módosítania kell a **Microsoft.Network/loadBalancers** és a **Microsoft.Network/networkSecurityGroups** erőforrást a forgalom beengedésére.
 
+### <a name="windows-defender"></a>Windows Defender
+Alapértelmezés szerint [Windows Defender víruskereső](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) telepítve és működőképes a Windows Server 2016-on. A felhasználói felület néhány termékváltozat alapértelmezés szerint telepítve van, de nem kötelező.  Minden egyes csomópont típusa vagy Virtuálisgép-méretezési deklarált a sablonban a [Azure virtuális gép az Antimaleware bővítmény](/azure/virtual-machines/extensions/iaas-antimalware-windows) szolgál a Service Fabric-könyvtárak és folyamatok kizárása:
+
+```json
+{
+"name": "[concat('VMIaaSAntimalware','_vmNodeType0Name')]",
+"properties": {
+        "publisher": "Microsoft.Azure.Security",
+        "type": "IaaSAntimalware",
+        "typeHandlerVersion": "1.5",
+        "settings": {
+        "AntimalwareEnabled": "true",
+        "Exclusions": {
+                "Paths": "D:\\SvcFab;D:\\SvcFab\\Log;C:\\Program Files\\Microsoft Service Fabric",
+                "Processes": "Fabric.exe;FabricHost.exe;FabricInstallerService.exe;FabricSetup.exe;FabricDeployer.exe;ImageBuilder.exe;FabricGateway.exe;FabricDCA.exe;FabricFAS.exe;FabricUOS.exe;FabricRM.exe;FileStoreService.exe"
+        },
+        "RealtimeProtectionEnabled": "true",
+        "ScheduledScanSettings": {
+                "isEnabled": "true",
+                "scanType": "Quick",
+                "day": "7",
+                "time": "120"
+        }
+        },
+        "protectedSettings": null
+}
+}
+```
+
 ## <a name="set-template-parameters"></a>Sablon paramétereinek megadása
 
 Az [azuredeploy.parameters.json][parameters] paraméterfájl számos, a fürt és a társított erőforrások üzembe helyezéséhez használt értéket meghatároz. Néhány paraméter, amelyeket lehet, hogy módosítani kell az üzembe helyezéshez:
@@ -152,6 +160,8 @@ Az [azuredeploy.parameters.json][parameters] paraméterfájl számos, a fürt é
 ## <a name="deploy-the-virtual-network-and-cluster"></a>A virtuális hálózat és a fürt üzembe helyezése
 
 Ezután állítsa be a hálózati topológiát, és helyezze üzembe a Service Fabric-fürtöt. Az [azuredeploy.json][template] Resource Manager-sablon egy virtuális hálózatot (VNET-et), továbbá egy alhálózatot és egy hálózati biztonsági csoportot (NSG-t) hoz létre a Service Fabric számára. A sablon emellett egy fürtöt is üzembe helyez engedélyezett tanúsítványalapú biztonsággal.  Éles fürtök esetén hitelesítésszolgáltatótól (CA) származó tanúsítványt használjon fürttanúsítványként. A tesztfürtök számára önaláírt tanúsítvánnyal is biztosítható védelem.
+
+Ez a cikk a sablon üzembe helyez egy fürtöt, amely a tanúsítvány ujjlenyomatát a fürttanúsítvány azonosítására használ.  Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a tanúsítványkezelés is rendelkezhet. Egy tanúsítvány-ujjlenyomatok a tanúsítvány köznapi nevek használatával üzembe helyezett fürt közötti váltás révén jóval egyszerűbb tanúsítványkezelés.  A tanúsítvány köznapi nevek a tanúsítványok kezeléséhez használja a fürt frissítése, olvassa el [fürt módosítása a tanúsítvány köznapi neve felügyeleti](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>Fürt létrehozása meglévő tanúsítvány használatával
 
@@ -264,5 +274,5 @@ Folytassa a következő oktatóanyaggal, amelyben megismerheti a fürtök skál�
 > [!div class="nextstepaction"]
 > [Fürt skálázása](service-fabric-tutorial-scale-cluster.md)
 
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/5-VM-Windows-1-NodeTypes-Secure-NSG/azuredeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/5-VM-Windows-1-NodeTypes-Secure-NSG/azuredeploy.parameters.json
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

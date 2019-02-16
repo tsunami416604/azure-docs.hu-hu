@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 433718c19e0df5fac87273f2b46f8ae090ed7510
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: e1a928711a596c159ac920f11c123b73b72d3aa2
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888566"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313415"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és az Azure Data Factoryban tömörítési kodek
 
-*Ez a témakör az alábbi csatlakozók vonatkozik: [Az Amazon S3](connector-amazon-simple-storage-service.md), [az Azure Blob](connector-azure-blob-storage.md), [az Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [az Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [az Azure File Storage](connector-azure-file-storage.md), [Fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), és [SFTP](connector-sftp.md).*
+*Ez a cikk az alábbi csatlakozók vonatkozik: [Az Amazon S3](connector-amazon-simple-storage-service.md), [az Azure Blob](connector-azure-blob-storage.md), [az Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [az Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [az Azure File Storage](connector-azure-file-storage.md), [Fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), és [ Az SFTP](connector-sftp.md).*
 
 Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. Ha azt szeretné, hogy **elemezni, vagy hozzon létre egy adott formátumú fájlok**, az Azure Data Factory formátuma a következő fájltípusokat támogatja:
 
@@ -427,6 +427,13 @@ Futó helyi IR a parquet eszközökben fájl szerializálás/deszerializálás m
 
 - **JRE használandó**: A 64 bites integrációs modul 64 bites JRE szükséges. Annak a [Itt](https://go.microsoft.com/fwlink/?LinkId=808605).
 - **Openjdk csomagját használandó**: IR 3.13 verziója óta támogatott. A jvm.dll, az összes többi csomagot annak megfelelően szükséges szerelvények openjdk csomagját, helyi integrációs modul gép és a rendszer környezeti változó beállítása JAVA_HOME.
+
+>[!TIP]
+>Ha másolja és a parquet vagy egyéb adatok formázása a helyi integrációs modul használatával, és hiba üzenettel találati "hiba történt a java meghívásakor üzenet: **java.lang.OutOfMemoryError:Java halommemória terület**", hozzáadhat egy környezeti változó `_JAVA_OPTIONS` a gépen, amelyen a helyi integrációs modul beállításához JVM megjelenő új ilyen példány a minimális/maximális halommemória mérete, majd futtassa újra a folyamatot. 
+
+![Állítsa be a JVM-halommemória mérete a helyi integrációs modul](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+
+Példa: set a változó `_JAVA_OPTIONS` értékkel `-Xms256m -Xmx16g`. A jelző `Xms` adja meg a hozzárendelés kezdeti memóriakészletben számára a Java virtuális gép (JVM), miközben `Xmx` megadja a maximális memóriát foglalási készletet. Ez azt jelenti, hogy a JVM fog elindulni `Xms` memória mennyiségét, és legfeljebb használható lesz `Xmx` memória mennyisége. Alapértelmezés szerint az ADF minimális 64 MB-ot használja, és legfeljebb 1G.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Adattípus-leképezés Parquet-fájlokat
 

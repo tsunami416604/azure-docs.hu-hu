@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: a8251881b114d7b102481476d3e77923b34d34c7
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 99647770df9a8ca194559863a1d7212faf1c83a1
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982386"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328214"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -358,5 +358,5 @@ Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és Language 
 ## <a name="next-steps"></a>További lépések
 
 * Felülvizsgálat [tárolók konfigurálása](luis-container-configuration.md) a konfigurációs beállítások
-* Tekintse meg [– gyakori kérdések (GYIK)](luis-resources-faq.md) LUIS funkció kapcsolatos problémák megoldásához.
+* Tekintse meg [hibaelhárítás](troubleshooting.md) LUIS funkció kapcsolatos problémák megoldásához.
 * Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)

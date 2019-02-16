@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: aschhab
-ms.openlocfilehash: f0c3aac95b1d19dc3f217cc146532254d8740ca0
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 23a0c731eea22a772d7423bc3047af1183d55b7f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853289"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312889"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>A Service Bus és az AMQP 1.0-t a Java Message Service (JMS) API használata
 A speciális Message Queuing AMQP protokoll 1.0-s egy hatékony, megbízható, alkalmazásszintű üzenetkezelő protokoll, amely nagy teherbírású, többplatformos üzenetkezelési alkalmazások létrehozásához használható.
@@ -44,7 +44,8 @@ Hozzá kell adnia a következő négy JAR-fájlok az Apache Qpid JMS AMQP 1.0-s 
 * geronimo-jms\_1.1\_spec-1.0.jar
 * qpid-jms - client-[version] .jar
 
-> ! [MEGJEGYZÉS] JMS JAR neve és verziója megváltozott. További információkért lásd: [Qpid JMS - AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
+> [!NOTE]
+> JMS JAR neve és verziója megváltozott. További információkért lásd: [Qpid JMS - AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
 
 ## <a name="coding-java-applications"></a>Kódolási Java-alkalmazások
 ### <a name="java-naming-and-directory-interface-jndi"></a>Java-kiosztási és a Directory Interface (JNDI)

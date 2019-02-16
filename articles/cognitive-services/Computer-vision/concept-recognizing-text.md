@@ -11,18 +11,21 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7908c29f3a48821588ea93ebe33ffb6b8de77520
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 48ce15a11c3e3282535420f3e1bb1915276d70f5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881175"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313177"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg felismerése
 
 Számítógépes Látástechnológia képesek észlelni és nyomtatott vagy kézzel írt szöveg kinyerése a különféle objektumokat a különféle felületekkel és hátterek, például a visszaigazolások, poszterek, névjegyek, betűket és hátterekkel képét.
 
-Szövegek felismerése időt és energiát takarít meg. Ön hatékonyabbak lehetnek véve a szöveg, kép, ahelyett hogy lefényképezheti azt. Szövegek felismerése digitalizálhatók a jegyzetek lehetővé teszi. A digitalizálás által gyors és egyszerű keresések végezhetők. Ezen kívül a papírfelhasználást is csökkenti.
+A szöveg szolgáltatás nagyon hasonlít [optikai karakterfelismerés (OCR)](concept-extracting-text-ocr.md), de eltérően optikai Karakterfelismerés, aszinkron, és használja a frissített modelleket.
+
+> [!NOTE]
+> Ez a technológia jelenleg előzetes verzióban és csak angol nyelvre érhető el.
 
 ## <a name="text-recognition-requirements"></a>Szöveg követelményei
 
@@ -32,9 +35,6 @@ Számítógépes Látástechnológia képesek felismerni a képeken az alábbi k
 - A fájlméret nem érheti el a 4 megabájtot (MB)
 - A kép mérete 50 x 50 és 4200 x 4200 képpontban kell esnie
 
-> [!NOTE]
-> Ez a technológia jelenleg előzetes verzióban és csak angol nyelvre érhető el.
-
 ## <a name="next-steps"></a>További lépések
 
-Tudnivalók a fogalmak [OCR-rel szöveg kibontása](concept-extracting-text-ocr.md).
+Tekintse meg a [ismeri fel a szöveg dokumentációja](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) további.

@@ -8,23 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0793f572e043248af409e65cca4fd854f1371900
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6b25da9b2569b0185d41684c45a22a3eb3377511
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880878"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313075"
 ---
 # <a name="detect-color-schemes-in-images"></a>Észlelheti a színsémákat képek
 
-Számítógépes Látástechnológia színek kigyűjti a képen. Ezután elemzi a színeket három kontextusban: az domináns előtérszín, a domináns háttérszín és a teljes lemezkép domináns színek. 12 domináns kiemelési színcsoportba rendezi vannak csoportosítva. Ezek a színek a következők: fekete, kék, barna, szürke, zöld, narancsszín, rózsaszín, lila, vörös, pávakék, fehér és sárga. Számítógépes Látástechnológia elemzi a kinyert kép egy Kiemelőszín domináns színek és színtelítettség együttes a nézők a legtöbb élénk szín a rendszerkép képviselő vissza színeket. Egy kép színösszeállításától függően az egyszerű fekete és fehér vagy más színek hexadecimális színkódokként lehetnek visszaadva. Számítógépes Látástechnológia is adja vissza egy logikai érték, amely azt jelzi, hogy egy kép fekete-fehér.
+Computer Vision elemzi a képen három különböző attribútumainak megadásához a színek: a domináns előtérszín, a domináns háttérszín és domináns színek a lemezkép teljes készletét. A készlethez tartozó színek visszaadott: fekete, kék, brown, szürke, zöld, orange, rózsaszínre, lila, vörös, pávakék, fehér és sárga. 
+
+Számítógépes Látástechnológia is az a képen domináns színek és színtelítettség kombinációja alapján a legtöbb élénk szín jelöli Kiemelőszín adja eredményül. A gombszöveg színét, egy HTML-színt hexadecimális kódot adja vissza. 
+
+Számítógépes Látástechnológia is egy logikai érték, amely a kép fekete-fehér e adja vissza.
 
 ## <a name="color-scheme-detection-examples"></a>Szín séma észlelési példák
 
-Az alábbi példában látható a JSON-választ adott vissza, Computer Vision által a példaképen színsémájának észlelése. Ebben az esetben a példaképen nem egy fekete-fehér-rendszerképet, de az előtérbeli és háttérbeli domináns színek feketék, és a domináns színek egészére a kép fekete-fehér.
+Az alábbi példában látható a JSON-választ adott vissza, Computer Vision által a példaképen színsémájának észlelése. Ebben az esetben a példaképen nem egy fekete-fehér-rendszerképet, de a domináns előtérbeli és a háttérszínek feketék, és a domináns színek egészére a kép fekete-fehér.
 
 ![Hegyvidéki tájkép](./Images/mountain_vista.png)
 
@@ -48,7 +52,7 @@ Az alábbi példában látható a JSON-választ adott vissza, Computer Vision á
 
 ### <a name="dominant-color-examples"></a>Színig példák
 
-A következő táblázat ismerteti a domináns előtér, háttér és lemezkép színeket az egyes példa-lemezképek, amelyet a Computer Vision.
+Az alábbi táblázat a visszaadott előtér, háttér és az egyes minta lemezképek lemezkép színeket.
 
 | Kép | Domináns színek |
 |-------|-----------------|
@@ -57,7 +61,7 @@ A következő táblázat ismerteti a domináns előtér, háttér és lemezkép 
 
 ### <a name="accent-color-examples"></a>Gombszöveg színét példák
 
- A következő táblázat ismerteti a Kiemelés színe hexadecimális értékként HTML szín, az egyes példa lemezképek Computer Vision által visszaadott.
+ Az alábbi táblázat a visszaadott Kiemelés színe hexadecimális értékként HTML szín, az egyes példa lemezképek.
 
 | Kép | Kiegészítő szín |
 |-------|--------------|
@@ -67,7 +71,7 @@ A következő táblázat ismerteti a domináns előtér, háttér és lemezkép 
 
 ### <a name="black--white-detection-examples"></a>Fekete-fehér észlelési példák
 
-Az alábbi táblázat azt jelzi, hogy valamennyi Példa kép fekete-fehér, amelyet a Computer Vision.
+Az alábbi táblázat számítógépes Látástechnológiai fekete-fehér kiértékelése a minta képeket.
 
 | Kép | Fekete-fehér? |
 |-------|----------------|

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 6a731750da4edfb4a71c00156c5ff527dee30941
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5597f3c017ccf2dbb58b7b6b046720c8f49803c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55823368"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312287"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Az Azure virtuális gépek áthelyezése a rendelkezésre állási zónában történő
 Az Azure-beli rendelkezésre állási zónák adatközpont meghibásodása ellen védi az alkalmazásait és adatait. Egyes rendelkezésre állási zónák épül fel egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található. Rugalmasság biztosítása érdekében legalább három különálló zónát, az összes engedélyezett régióban van. Egy adott régión belül a rendelkezésre állási zónák fizikai elválasztása adatközpont meghibásodása ellen védi az alkalmazásokat és adatokat. A rendelkezésre állási zónákban az Azure iparági ajánlott 99,99 %-os virtuális gép ÜZEMIDŐT biztosít. Rendelkezésre állási zónában a említett egyes régiókban támogatott [Itt](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones). 
@@ -95,7 +95,7 @@ Az alábbi lépéseket végigvezeti Önt az Azure Site Recovery használata az a
 2. Válassza ki a cél subscriptiom, a cél virtuális gép erőforráscsoportja és a virtuális hálózati helyénvalónak értékeit.
 3. Az a **rendelkezésre állási** területén válassza a globális zóna, amelybe át szeretné helyezni a virtuális gép. 
 > [!NOTE]
-> Ha nem látja a rendelkezésre állási csoport vagy a globális zóna lehetőséget, adjon snore, amely a [Előfeltételek](#prepare-the-source-vms) teljesülnek-e, és a [előkészítési](#prepare-the-source-vms) forrás virtuális gépek teljes.
+> Ha nem látja a rendelkezésre állási csoport vagy a globális zóna lehetőséget, győződjön meg arról, hogy a [Előfeltételek](#prepare-the-source-vms) teljesülnek-e, és a [előkészítési](#prepare-the-source-vms) forrás virtuális gépek teljes.
 
    ![enable-rep-2.PNG](media/azure-vms-to-zones/enable-rep-2.PNG)
 

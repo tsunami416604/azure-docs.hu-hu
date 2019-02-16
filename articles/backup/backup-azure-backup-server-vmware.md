@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: ee7ebb151653b611c652c072b8cb4c07754d9b68
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5e5a6f32eeac674a6527d333b981bbdac20a9958
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269702"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309761"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek az Azure Backup Server biztonsági mentése
 
@@ -39,7 +39,7 @@ Alapértelmezés szerint az Azure Backup Server kommunikál a VMware-kiszolgál�
 
 ### <a name="before-you-start"></a>Előkészületek
 
-- Ha nem szeretné HTTPS protokoll használatára is [tiltsa le az alapértelmezett beállítás](backup-azure-backup-server-vmware.md#disable-secure-communication-protocol).
+- Ha nem szeretné HTTPS protokoll használatára is [tiltsa le az alapértelmezett beállítás](backup-azure-backup-server-vmware.md).
 - Általában csatlakoztat egy böngészőből az Azure Backup Server gépet, a vCenter/ESXi-kiszolgálóhoz, a vSphere webes ügyfélben használatával. Először ezt megteheti a kapcsolat nem biztonságos, és a következőképpen fog megjelenni.
 - Fontos tudni, hogyan kezeli az Azure Backup Server a biztonsági mentéseket.
     - Első lépésként az Azure Backup Server biztonsági másolatot készít adatokat a helyi lemezes tárterületet. Az Azure Backup Server használ a tárolókészlethez, a lemezeket és köteteket, amelyeken az Azure Backup Server tárolja a védett adatokhoz tartozó lemez-helyreállítási pontok. A tárolókészlet közvetlenül csatlakoztatott tárolóval (DAS), a fiber channel SAN, vagy iSCSI-tárolóeszköz vagy TÁROLÓHÁLÓZAT is lehet. Fontos győződjön meg arról, hogy elegendő tárhely helyi biztonsági a VMware virtuális gép adatait.
@@ -141,7 +141,7 @@ Az Azure Backup Server van szüksége a Vcenter-kiszolgáló elérésére jogosu
     ![Szülő-gyermek jogosultság hierarchiát](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
 
 ### <a name="role-permissions"></a>Szerepkör-engedélyek
-**6.5-ös/6.0** | **5.5**
+**6.5/6.0** | **5.5**
 --- | ---
 Datastore.AllocateSpace | Datastore.AllocateSpace
 Global.ManageCustomFields | Global.ManageCustomFields
@@ -245,7 +245,7 @@ A vCenter-kiszolgáló hozzáadása az Azure Backup Server.
 
      ![Üzemi kiszolgáló felvétele varázsló](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
-3. A **számítógépek kiválasztása****kiszolgáló neve vagy IP-címének**, adja meg a VMware-kiszolgáló teljes Tartománynevét vagy IP-címét.   Ha minden ESXi-kiszolgáló eltérő vCenter által felügyelt, adja meg a vCenter nevét. Ellenkező esetben adja hozzá az ESXi-gazdagépen.
+3. A **számítógépek kiválasztása****kiszolgáló neve vagy IP-címének**, adja meg a VMware-kiszolgáló teljes Tartománynevét vagy IP-címét. Ha minden ESXi-kiszolgáló eltérő vCenter által felügyelt, adja meg a vCenter nevét. Ellenkező esetben adja hozzá az ESXi-gazdagépen.
 
     ![Adja meg a VMware-kiszolgáló](./media/backup-azure-backup-server-vmware/add-vmware-server-provide-server-name.png)
 

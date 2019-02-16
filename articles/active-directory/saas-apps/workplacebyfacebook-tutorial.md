@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6cdc7ef8ee991719153f6daed01fbb76f945a7a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e233de6f0909477e5033d2a0104f9165e86a9077
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194937"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311035"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Oktatóanyag: Az Azure Active Directory-integráció a Facebook által munkahelyi
 
@@ -143,31 +143,38 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Facebook a munkahely
 
 1. Egy másik böngészőablakban, jelentkezzen be rendszergazdaként Facebook vállalati hely által a munkahelyen.
   
-   > [!NOTE]
-   > Az SAML-hitelesítési folyamat részeként a munkahelyi előfordulhat, hogy kihasználhassák a lekérdezési karakterláncok legfeljebb 2,5 kilobájt méretű annak érdekében, hogy az Azure AD át a paramétereket.
+    > [!NOTE]
+    > Az SAML-hitelesítési folyamat részeként a munkahelyi előfordulhat, hogy kihasználhassák a lekérdezési karakterláncok legfeljebb 2,5 kilobájt méretű annak érdekében, hogy az Azure AD át a paramétereket.
 
-2. Az a **felügyeleti Panel**, nyissa meg a **biztonsági** lapot, majd **hitelesítési**.
+2. Az a **felügyeleti Panel**, nyissa meg a **biztonsági** fülre.
 
-3. A **SAML-hitelesítés**válassza **egyszeri bejelentkezés csak** a legördülő listából.
+    ![Felügyeleti Panel](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
-4. Adjon meg a másolt értékek **munkahelyi Facebook-konfigurációja** az Azure Portalon a megfelelő mezőkbe szakaszában:
+3. A **hitelesítési** lapon jelölje be **egyszeri bejelentkezést (SSO)** , és hajtsa végre az alábbi lépéseket:
 
-    * A **SAML URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
-    * A **SAML kiállítójának URL-címe szövegmezőbe**, illessze be az értéket a **Azure Ad-azonosító**, az Azure Portalról másolt.
-    * A **SAML kijelentkezési átirányítási** (nem kötelező), illessze be az értéket, **kijelentkezési URL-címe**, amely az Azure Portalról másolt.
-    * Nyissa meg a **base-64 kódolású tanúsítvány** a Jegyzettömbben az Azure-portálról letöltött, másolja a tartalmát a vágólapra, és illessze be azt a **SAML-tanúsítvány** szövegmezőbe.
+    ![Hitelesítés lap](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
 
-5. Előfordulhat, hogy meg kell adnia a célközönség URL-címe, címzett URL-CÍMÉT, és az ACS (helyességi feltétel fogyasztói szolgáltatás) URL-címet felsorolva a **alapszintű SAML-konfigurációja** szakaszban.
+    a. A **SAML URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
 
-6. A szakasz alján, és kattintson a **teszt SSO** gombra. Az eredmények egy felugró ablakban jelenik meg az Azure AD bejelentkezési oldal jelenik meg. Adja meg a hitelesítő adatait a hitelesítést a szokásos módon.
+    b. A **SAML kibocsátó URI szövegmező**, illessze be az értéket a **Azure Ad-azonosító**, az Azure Portalról másolt.
+
+    c. A **SAML kijelentkezési átirányítási** (nem kötelező), illessze be az értéket, **kijelentkezési URL-címe**, amely az Azure Portalról másolt.
+
+    d. Nyissa meg a **base-64 kódolású tanúsítvány** a Jegyzettömbben az Azure-portálról letöltött, másolja a tartalmát a vágólapra, és illessze be azt a **SAML-tanúsítvány** szövegmezőbe.
+
+    e. Másolás a **célközönség URL-cím** a példány, és illessze be a **azonosító (entityid)** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+
+    f. Másolás a **címzett URL-cím** a példány, és illessze be a **bejelentkezési URL-cím** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+
+    g. A szakasz alján, és kattintson a **teszt SSO** gombra. Az eredmények egy felugró ablakban jelenik meg az Azure AD bejelentkezési oldal jelenik meg. Adja meg a hitelesítő adatait a hitelesítést a szokásos módon.
 
     **Hibaelhárítás:** Győződjön meg arról, az Azure AD-ből vissza visszaadott e-mail-cím megegyezik a munkahelyi fiók van bejelentkezve a következővel.
 
-7. Ha a vizsgálat sikeresen befejeződött, görgessen a lap aljára, és kattintson a **mentése** gombra.
+    h. Ha a vizsgálat sikeresen befejeződött, görgessen a lap aljára, és kattintson a **mentése** gombra.
 
-8. Munkahelyi használó összes felhasználó most már megjelenik az Azure AD bejelentkezési oldal a hitelesítéshez.
+    i. Munkahelyi használó összes felhasználó most már megjelenik az Azure AD bejelentkezési oldal a hitelesítéshez.
 
-9. **SAML a kijelentkezési átirányítási (nem kötelező)** -
+4. **SAML a kijelentkezési átirányítási (nem kötelező)** -
 
     Ha szeretné, igény szerint állítsa be a SAML kijelentkezési URL-címe, amely használható az Azure AD kijelentkezési lapon mutasson. Ha ezt a beállítást engedélyezve és konfigurálva van, a felhasználó már nem irányítja a rendszer a munkahelyi kijelentkezési lapra. Ehelyett a felhasználót a rendszer átirányítja az URL-címet, a SAML kijelentkezési átirányítási beállítás hozzáadva.
 

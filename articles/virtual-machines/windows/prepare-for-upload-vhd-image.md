@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 74132c436670247f3eb84859216274d3e1363d07
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b5e3e84ce8f8b4b364b2fa69dda0b0091db25b6d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338702"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329779"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX feltöltése az Azure előkészítése
 Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja a **csak az 1. generációs virtuális gépeket** , amely a VHD formátumban, és rögzített méretű lemezt. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -200,11 +200,11 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
     
     | Cél                                     | Szabályzat                                                                                                                                                       | Érték                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-    | Az RDP engedélyezve van                           | Számítógép konfigurációja\Házirendek\A Settings\Administrative Templates\Components\Remote asztali szolgáltatások\Távoli asztali munkamenetgazda\Kapcsolatok         | Lehetővé teszi a felhasználók távolról kapcsolódni a távoli asztal használatával                                  |
-    | NLA csoportházirend                         | Settings\Administrative Templates\Components\Remote asztali szolgáltatások\Távoli asztali munkamenetgazda\Biztonság                                                    | Felhasználói hitelesítés szükséges a távoli kapcsolatokhoz hálózati szintű hitelesítéssel |
-    | Élő beállítások megtartása                      | Számítógép konfigurációja\Házirendek\A Settings\Administrative sablonok\Windows összetevők\Távoli asztali szolgáltatások\Távoli asztali munkamenetgazda\Kapcsolatok | Kapcsolat életben tartási intervallum                                                 |
-    | Újracsatlakozás a beállítások                       | Számítógép konfigurációja\Házirendek\A Settings\Administrative sablonok\Windows összetevők\Távoli asztali szolgáltatások\Távoli asztali munkamenetgazda\Kapcsolatok | Az automatikus újracsatlakozás                                                                   |
-    | Beállítások kapcsolatok számának korlátozása | Számítógép konfigurációja\Házirendek\A Settings\Administrative sablonok\Windows összetevők\Távoli asztali szolgáltatások\Távoli asztali munkamenetgazda\Kapcsolatok | A kapcsolatok száma                                                              |
+    | Az RDP engedélyezve van                           | Computer Configuration\Policies\Windows Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Connections         | Lehetővé teszi a felhasználók távolról kapcsolódni a távoli asztal használatával                                  |
+    | NLA csoportházirend                         | Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Security                                                    | Felhasználói hitelesítés szükséges a távoli kapcsolatokhoz hálózati szintű hitelesítéssel |
+    | Élő beállítások megtartása                      | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | Kapcsolat életben tartási intervallum                                                 |
+    | Újracsatlakozás a beállítások                       | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | Az automatikus újracsatlakozás                                                                   |
+    | Beállítások kapcsolatok számának korlátozása | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | A kapcsolatok száma                                                              |
 
 ## <a name="configure-windows-firewall-rules"></a>Windows tűzfal-szabályok konfigurálása
 1. A Windows tűzfal bekapcsolása a három profilt (a tartományhoz, a Standard és a nyilvános):
@@ -234,11 +234,11 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
 
     | Cél                                 | Szabályzat                                                                                                                                                  | Érték                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
-    | A Windows tűzfal-profilok engedélyezése | Számítógép konfigurációja\Házirendek\A Settings\Administrative sablonok\Hálózat\Hálózati Connection\Windows Firewall\Domain Profile\Windows tűzfal   | Az összes hálózati kapcsolatok védelme         |
-    | Engedélyezze az RDP-                           | Számítógép konfigurációja\Házirendek\A Settings\Administrative sablonok\Hálózat\Hálózati Connection\Windows Firewall\Domain Profile\Windows tűzfal   | A bejövő távoli asztali Kivételek tiltása |
-    |                                      | Számítógép konfigurációja\Házirendek\A Settings\Administrative sablonok\Hálózat\Hálózati Connection\Windows Firewall\Standard Profile\Windows tűzfal | A bejövő távoli asztali Kivételek tiltása |
-    | Engedélyezze az ICMP-V4                       | Számítógép konfigurációja\Házirendek\A Settings\Administrative sablonok\Hálózat\Hálózati Connection\Windows Firewall\Domain Profile\Windows tűzfal   | Az ICMP-kivételek engedélyezése                   |
-    |                                      | Számítógép konfigurációja\Házirendek\A Settings\Administrative sablonok\Hálózat\Hálózati Connection\Windows Firewall\Standard Profile\Windows tűzfal | Az ICMP-kivételek engedélyezése                   |
+    | A Windows tűzfal-profilok engedélyezése | Computer Configuration\Policies\Windows Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows Firewall   | Az összes hálózati kapcsolatok védelme         |
+    | Engedélyezze az RDP-                           | Computer Configuration\Policies\Windows Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows Firewall   | A bejövő távoli asztali Kivételek tiltása |
+    |                                      | Computer Configuration\Policies\Windows Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Standard Profile\Windows Firewall | A bejövő távoli asztali Kivételek tiltása |
+    | Engedélyezze az ICMP-V4                       | Computer Configuration\Policies\Windows Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows Firewall   | Az ICMP-kivételek engedélyezése                   |
+    |                                      | Computer Configuration\Policies\Windows Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Standard Profile\Windows Firewall | Az ICMP-kivételek engedélyezése                   |
 
 ## <a name="verify-vm-is-healthy-secure-and-accessible-with-rdp"></a>Ellenőrizze a virtuális gép a megfelelő, biztonságos és RDP-vel elérhető 
 1. Ahhoz, hogy a lemez nincs kifogástalan állapotú és egységes, futtassa a következő virtuális gép újraindítása egy ellenőrzési lemez művelet:
@@ -364,8 +364,8 @@ Az ideális konfiguráció **a javítási szintje a gép legkésőbb**. Ha ez ne
 |                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
 | Mag                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
 | Távoli asztali szolgáltatások | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
-|                         | TERMSRV.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850         | 10.0.14393.0 - KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
-|                         | Termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850         | 10.0.14393.0 - KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
+|                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | Win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |
 |                         | rdpdd.dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | Rdpwd.sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
@@ -406,6 +406,10 @@ Ez az általánosítás támogatja a nem minden szerepkör vagy alkalmazást, am
 5. Kattintson az **OK** gombra.
 6. A Sysprep befejezését követően a virtuális gép leállítására. Ne használjon **indítsa újra a** a virtuális gép leállítása.
 7. A VHD-t most már elkészült tölthető fel. A virtuális gép létrehozása általánosított lemezről kapcsolatos további információkért lásd: [általános VHD feltöltése és ezzel hozzon létre egy új virtuális gépeket az Azure-ban](sa-upload-generalized.md).
+
+
+>[!NOTE]
+> Egy egyéni unattend.xml nem támogatott. Támogatjuk a additionalUnattendContent tulajdonság, miközben, amely csak korlátozott támogatást biztosít hozzáadása [microsoft-windows-rendszerhéj – telepítő](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) be az Azure a kiépítési ügynök által az unattend.xml beállítások. Például  használhatnak [additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) FirstLogonCommands és LogonCommands adhat hozzá. Lásd még: [additionalUnattendContent FirstLogonCommands példa](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 
 ## <a name="complete-recommended-configurations"></a>Ajánlott beállításait

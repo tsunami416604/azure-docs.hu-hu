@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 5fbcfd102518dc231ad61c54e626c14381bf5a02
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 0ee3ff8bb1ebfc276550cba3570fdf4360aabf72
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321619"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327867"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Az Azure Site Recovery Deployment Planner jelentés elemzése
 Ez a cikk az Azure Site Recovery Deployment Planner Hyper-V – Azure forgatókönyvére vonatkozó Excel-jelentés táblázatait ismerteti.
@@ -179,7 +179,7 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben minden
 
 **Virtuális gép neve**: A jelentés létrehozásakor a VMListFile-ban használt virtuális gép nevét. Ez az oszlop a virtuális gépekhez csatolt lemezek (VHD-k) listáját is megjeleníti. A nevek tartalmazzák a Hyper-V kiszolgálóneveket, amelyeken az eszköz felfedezte a virtuális gépeket a profilkészítési időszakban.
 
-**VM Compatibility**: Értékek a következők **Igen** és **Igen**\*. A **Yes**\* (Igen) azon példányokra vonatkozik, ahol a virtuális gép megfelel az [Azure Premium Storage-nak](https://aka.ms/premium-storage-workload). A profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a lemezhez leképezett méretet meghaladó prémium lemezméretnek. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 
+**VM Compatibility**: Értékek a következők **Igen** és **Igen**\*. **Igen** \* a példányokra, amelyben a virtuális gép megfelel egy [prémium szintű SSD-k](../virtual-machines/windows/disks-types.md). A profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a lemezhez leképezett méretet meghaladó prémium lemezméretnek. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 
 * 128 GB alatt P10.
 * 128 GB és 256 GB között P15.
 * 256 GB és 512 GB között P20.

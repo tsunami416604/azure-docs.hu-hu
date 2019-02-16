@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f99fa8cbc211469185f2503718c84bc1b12db44c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 56c992b1cc0e8f1d9743ff8226ab48852afc1168
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178217"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313126"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Összevont egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálása
 
@@ -29,13 +29,13 @@ Egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurál�
 ## <a name="overview-of-steps-required"></a>Szükséges lépések áttekintése
 Az alábbi, a katalógusban nem szereplő (pl. egyéni) alkalmazásokhoz SAML 2.0-val összevont egyszeri bejelentkezés konfigurálásához szükséges lépéseket magas szintű áttekintése.
 
--   [Az alkalmazás metaadatértékeket konfigurálása az Azure ad-ben (bejelentkezési URL-CÍMÉT, az azonosítója, válasz URL-cím)](#_Configuring_single_sign-on)
+-   Az alkalmazás metaadatértékeket konfigurálása az Azure ad-ben (bejelentkezési URL-CÍMÉT, az azonosítója, válasz URL-cím)
 
 -   [Válassza ki a felhasználói azonosító és az alkalmazásnak küldendő felhasználói attribútumok hozzáadása](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Az Azure AD-metaadatok és a tanúsítvány lekéréséhez](#download-the-azure-ad-metadata-or-certificate)
 
--   [Az Azure AD metaadatértékeket konfigurálása az alkalmazásban (bejelentkezési URL-címet, a kiállító, a kijelentkezési URL-címe és a tanúsítvány)](#_Configuring_single_sign-on)
+-   Az Azure AD metaadatértékeket konfigurálása az alkalmazásban (bejelentkezési URL-címet, a kiállító, a kijelentkezési URL-címe és a tanúsítvány)
 
 -   Felhasználók hozzárendelése az alkalmazáshoz
 

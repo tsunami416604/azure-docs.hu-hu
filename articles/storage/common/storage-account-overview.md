@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 880ae672409704ddcd5597ae758f8c786c3c0720
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 430aa6e60efe63e6741436e53152126bc15798fc
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244487"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327850"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
@@ -78,7 +78,7 @@ Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 Általános célú tárfiókok esetében az alábbi teljesítményszintek valamelyike konfigurálható:
 
 * Standard teljesítményszint blobok, fájlok, táblák, üzenetsorok és Azure virtuális gépek lemezeinek tárolására.
-* A premium teljesítményszint csak Azure-beli virtuálisgép-lemezek tárolására. Lásd: [a Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../../virtual-machines/windows/premium-storage.md) for a Premium storage részletesebb áttekintéséért.
+* A premium teljesítményszint csak a nem felügyelt virtuálisgép-lemezek tárolására.
 
 ## <a name="access-tiers-for-block-blob-data"></a>A blokkblobok adataival elérési szint
 

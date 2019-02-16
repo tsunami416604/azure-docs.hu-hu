@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: f7536b5d0815351d2e6cb67705060d2e1046c970
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 445ddb3c580218e21410c961c614a8a9e29d21a0
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857872"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328333"
 ---
 # <a name="query-an-azure-cosmos-container"></a>A lekérdezés egy Azure Cosmos-tárolóhoz
 
@@ -31,6 +31,8 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 ## <a name="cross-partition-query"></a>Többpartíciós kiterjedő lekérdezés
 
 A következő lekérdezés nem tartalmaz egy szűrőt a partíciókulcs (`DeviceId`), és az összes partíciót, amelyen fut a partíció indexe alapján van rendezve. Több partícióra kiterjedő lekérdezések futtatása, állítsa be `EnableCrossPartitionQuery` igaz (vagy `x-ms-documentdb-query-enablecrosspartition`  a REST API-ban).
+
+Az EnablecrossPartitionQuery tulajdonság egy logikai értéket fogad el. Ha a beállítása igaz értékre, és ha a lekérdezés nem rendelkezik egy partíciókulcsot, az Azure Cosmos DB ventilátorok fel horizontálisan a lekérdezést a partíciók között. A ventilátor ki az összes partíciót az egyes lekérdezések alapján történik. A quey eredmények olvasni, az ügyfélalkalmazások kell a FeedResponse eredményeinek használják, és ellenőrizze a continuationtoken argumentumot használja tulajdonság. Olvassa el az összes eredmény, hagyja a léptetés az adatokon, mindaddig, amíg a continuationtoken argumentumot használja má hodnotu null. 
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading

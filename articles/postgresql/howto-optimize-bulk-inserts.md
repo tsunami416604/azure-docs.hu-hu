@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: fba109e04369c05f98e863b7dd0fa3d51f40d0ad
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a82984ce4c2a2e44306abaa63265e0c25cc6ace4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810238"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310291"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql-server"></a>Tömeges Beszúrások optimalizálása és a egy Azure Database for PostgreSQL-kiszolgálót átmeneti adatok használata 
 Ez a cikk bemutatja, hogyan tömeges beszúrási műveletek optimalizálása és átmeneti adatok használata az Azure Database for PostgreSQL-kiszolgálóhoz.
@@ -25,9 +25,9 @@ A PostgreSQL-nem naplózott táblázat azt jelenti, hogy beszúrása nem Beszúr
 
 Egy nem naplózott tábla létrehozásához használja a következő beállításokat:
 - Nem naplózott új tábla létrehozása a következő szintaxis segítségével `CREATE UNLOGGED TABLE <tableName>`.
-- A következő szintaxis segítségével egy meglévő Convert naplózza az nem naplózott táblához tábla `ALTER <tableName> SET UNLOGGED`.  
+- A következő szintaxis segítségével egy meglévő Convert naplózza az nem naplózott táblához tábla `ALTER TABLE <tableName> SET UNLOGGED`.  
 
-A folyamat visszafordítása, használja a szintaxist `ALTER <tableName> SET LOGGED`.
+A folyamat visszafordítása, használja a szintaxist `ALTER TABLE <tableName> SET LOGGED`.
 
 ## <a name="unlogged-table-tradeoff"></a>Nem naplózott tábla ára
 Nem naplózott táblák nem összeomlási szálbiztos. Egy nem naplózott tábla a rendszer automatikus rendszerösszeomlás után vagy egy tiszta leállítás csonkolja. Egy nem naplózott tábla tartalmát is a rendszer nem replikálja készenléti kiszolgáló. Létrehozott egy nem naplózott táblán indexekkel, valamint automatikusan nem naplózott. Művelet befejezése után a Beszúrás, konvertálja a táblában úgy, hogy a Beszúrás tartós naplózza.

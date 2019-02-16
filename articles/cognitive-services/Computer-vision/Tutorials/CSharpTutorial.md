@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Egy rendszerkép feldolgozási alkalmazás összeállítása –C#'
+title: 'Minta: Ismerje meg a lemezkép feldolgozási alkalmazásC#'
 titleSuffix: Computer Vision - Cognitive Services - Azure
 description: Egy egyszerű Windows-alkalmazást, amely a Computer Vision API a Microsoft Cognitive Services bemutatása. OCR végrehajtása, miniatűrök létrehozása és képek vizuális jellemzőinek használata.
 services: cognitive-services
@@ -7,18 +7,18 @@ author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: article
-ms.date: 08/28/2018
+ms.topic: sample
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b944325287593a028d28545731370dc9ea6a5ac2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a23e45cb1e75305f41c81077c90282352327b72d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224921"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310943"
 ---
-# <a name="tutorial-build-an-image-processing-app---c35"></a>Oktatóanyag: Állítson össze egy rendszerképet, alkalmazás - C feldolgozása&#35;
+# <a name="sample-explore-an-image-processing-app-with-c"></a>Minta: Ismerje meg a lemezkép feldolgozási alkalmazásC#
 
 Fedezze fel egy egyszerű Windows-alkalmazás, amely hajtsa végre az optikai karakterfelismerés (OCR), hozzon létre intelligens csonkolva miniatűröket készíthet, és észlelheti, kategorizálását, a címke használ a Computer Vision, és vizuális szolgáltatások, többek között az arcok, a kép ismertetik. Az alábbi példában elküldheti egy kép URL-címét vagy egy helyileg tárolt fájlt. A nyílt forráskódú példa sablonként használható a saját alkalmazást készít a Windows a Computer Vision API és a Windows megjelenítési Alaprendszeri (WPF), a .NET-keretrendszer részeként.
 

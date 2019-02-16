@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7b308f3298af436b6537234cff571759551a2d4e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7504d23cbaf8a497e6ea86b5a383413474c0d034
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221598"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329967"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>A VMware-vészhelyreállításhoz az Azure-bA az Azure Site Recovery Deployment Planner jelentés elemzése
 
@@ -177,7 +177,7 @@ Előfordulhat olyan helyzet, hogy legfeljebb x Mbps sávszélességet tud beáll
 
 **Virtuális gép neve**: A virtuális gép neve vagy a jelentés létrehozásakor a VMListFile-ban használt IP-címet. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. Az ismétlődő nevű vagy IP-című vCenter-beli virtuális gépek megkülönböztetésére a nevek tartalmazzák az ESXi-gazdagépnevet is. A feltüntetett ESXi-gazdagép az a számítógép, ahol a virtuális gép megtalálható volt, amikor az eszköz először felderítette azt a profilkészítés során.
 
-**VM Compatibility**: Értékek a következők **Igen** és **Igen**\*. A **Yes**\* (Igen) azon példányokra vonatkozik, ahol a virtuális gép megfelel az [Azure Premium Storage-nak](https://aka.ms/premium-storage-workload). Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Példa:
+**VM Compatibility**: Értékek a következők **Igen** és **Igen**\*. **Igen** \* a példányokra, amelyben a virtuális gép megfelel egy [prémium szintű SSD-k](../virtual-machines/windows/disks-types.md). Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Példa:
 * 128 GB alatt P10.
 * 128 GB és 256 GB között P15
 * 256 GB és 512 GB között P20.

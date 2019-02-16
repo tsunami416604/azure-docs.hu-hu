@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 5ab0a9a92297c46a4090583d41f22f2035bd310c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 19a0e7f3317a5c4a87b2622de170b0fc2cc137be
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816186"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326823"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Storage erőforrás törlésével kapcsolatos hibák elhárítása
 
@@ -28,7 +28,7 @@ Bizonyos esetekben merülhetnek fel az alábbi hibák, miközben a próbál egy 
 
 >**Nem sikerült törölni a # # blobok mimo:<br>BlobName.vhd: Jelenleg a címbérlet a blob és a kérésben megadott nincs bérlet azonosítója.**
 
-Az Azure-beli virtuális gépeken használt virtuális merevlemezek egy standard vagy prémium szintű storage-fiókot az Azure-ban lapblobként tárolt .vhd-fájlokat. Az Azure disks kapcsolatos további információkért lásd: [készül nem felügyelt és felügyelt lemezes tárolás a Microsoft Azure Linux rendszerű virtuális gépek](../linux/about-disks-and-vhds.md). 
+Az Azure-beli virtuális gépeken használt virtuális merevlemezek egy standard vagy prémium szintű storage-fiókot az Azure-ban lapblobként tárolt .vhd-fájlokat. Az Azure disks kapcsolatos további információkért lásd: a [Bevezetés a managed Disks szolgáltatásba](../linux/managed-disks-overview.md).
 
 Azure megakadályozza, hogy az egy lemezt, amely csatolva van egy virtuális gép meghibásodásának elkerülése érdekében törlését. Megakadályozza a tárolók és a storage-fiókok, amelyek egy lapblob egy virtuális géphez csatolt törlését is. 
 

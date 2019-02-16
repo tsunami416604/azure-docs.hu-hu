@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 17f6971cfa2dcd8c8988edc063c89859abec5367
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8164e2db064523fe648ec9ef0c72754be846dff6
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468835"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327561"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -34,7 +34,11 @@ A maximális podok száma csomópontonként értéke 110 alapértelmezés szerin
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize hibaüzenetet kapok speciális hálózatkezelés az AKS-fürt üzembe helyezése során. Mit tegyek?
 
-Az egyéni Azure Virtual Network beállítást hálózati AKS létrehozása során, az Azure Container hálózati adapter (CNI) IP-címkezelés (IPAM) használják. AKS-fürt a csomópontok száma 1 és 100 közötti bárhol lehet. Az előző szakaszban alapján, az alhálózat méretét nagyobbnak kell lennie a termék a csomópontok és a csomópontonkénti maximális podok számát. A kapcsolat ezzel a módszerrel lehet kifejezni: alhálózat méretét > a fürtben található csomópontok száma * csomópontonkénti maximális podok.
+Ha Azure CNI (speciális networking) használ, az AKS preallocates IP-Címének egyikét a "max-podok" konfigurálva csomópontonként alapján. AKS-fürt a csomópontok száma 1 és a 110-es közötti bárhol lehet. A beállított maximális podok száma csomópontonként alapján, az alhálózat méretét nagyobbnak kell lennie a "termék, a csomópontok száma és a csomópontonkénti maximális pod". A következő alapvető egyenlet Ez ismerteti:
+
+Alhálózat méretét > (figyelembe véve a jövőbeli méretezési követelmények) a fürtben található csomópontok száma * podok csomópontonkénti maximális száma.
+
+További információkért lásd: [megtervezése IP-címkezelés a fürt](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>A pod CrashLoopBackOff módban elakadt. Mit tegyek?
 

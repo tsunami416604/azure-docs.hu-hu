@@ -2,16 +2,17 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 11/08/2018
+ms.date: 02/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4ab9da996226b3f26fd30db1cd012c80253a85a5
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 69f77bf969c5d9adfb084682fbbc9eb9e762c8b4
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51333762"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56306867"
 ---
-Az alábbi követelmények vonatkoznak az eszközök számára szükséges minimális internetes sávszélesség.
+Az eszközök úgy tervezték, hogy megfelelően működjenek, amikor az internetkapcsolat lassú, vagy beolvasása megszakítva. Szokásos üzemi körülmények között azt javasoljuk, hogy használja: 
 
-- Az eszköz rendelkezik egy dedikált 20 MB/s internetes sávszélességet (vagy még több) mindenkor. A sávszélesség nem oszthatók meg más alkalmazásokkal.
-- Az eszköz rendelkezik egy dedikált 64 MB/s internetes sávszélességet (vagy még több) hálózati sávszélesség-szabályozás használatakor.
+- Legalább 10 MB/s sávszélesség és a frissített marad, az eszköz letöltéséhez.
+- Legalább 20 MB/s dedikált sávszélesség és a fájlok átvitelét le- és feltöltése.
+

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87d3a44b01dff81242f935c7737bd170fe744536
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 54511ac4dfdc05ec1880695b1ae2360f0b5e8162
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246874"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328367"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -61,9 +61,9 @@ A dokumentumban a következő kifejezéseket használjuk:
 * IaaS: Infrastruktúra-szolgáltatás.
 * PaaS: Szolgáltatásként nyújtott platformon.
 * SaaS: Szolgáltatott szoftver.
-* Az SAP-összetevő: Például az ECC, a BW, a megoldás Manager vagy a EP egyedi SAP alkalmazások Az SAP-összetevők hagyományos ABAP és Java-technológiák vagy egy nem NetWeaver-alapú alkalmazás, például az üzleti objektumok alapulhat.
+* SAP Component: Például az ECC, a BW, a megoldás Manager vagy a EP egyedi SAP alkalmazások Az SAP-összetevők hagyományos ABAP és Java-technológiák vagy egy nem NetWeaver-alapú alkalmazás, például az üzleti objektumok alapulhat.
 * Az SAP-környezet: egy vagy több SAP összetevő logikusan például fejlesztési, QAS, képzés, DR vagy éles üzleti függvény végrehajtásához.
-* SAP-rendszeren: Ez a kifejezés hivatkozik a teljes SAP-eszközök az ügyfél informatikai környezetét. Az SAP-rendszeren, tartalmazza az összes éles környezetben, és nem éles környezetekben.
+* SAP Landscape: Ez a kifejezés hivatkozik a teljes SAP-eszközök az ügyfél informatikai környezetét. Az SAP-rendszeren, tartalmazza az összes éles környezetben, és nem éles környezetekben.
 * SAP-rendszerhez: Az adatbázis-kezelő réteget és az alkalmazás réteget, például egy fejlesztőrendszerrel SAP ERP, SAP BW tesztgépen, SAP CRM-előállítási rendszerek stb kombinációja. Az Azure-környezetek nem támogatott ezen két réteg között a helyszíni és az Azure osztani. Ennek eredményeképpen az SAP-rendszer-e üzembe helyezett helyszíni vagy az Azure-ban központilag telepítették. Azonban telepíthet egy Azure-ban vagy a helyszíni SAP-rendszeren, a különböző rendszerek. Például sikerült telepíteni az SAP CRM fejlesztési és rendszerek tesztelése az Azure azonban az SAP CRM rendszert a helyi környezetben.
 * Létesítmények közötti: Ismerteti egy olyan forgatókönyvet, ahol a virtuális gépek Azure-előfizetéssel, amely rendelkezik a site-to-site, többhelyes vagy az ExpressRoute-kapcsolat a helyszíni kommunikálhassanak és az Azure közötti üzembe. A gyakori Azure dokumentációjában, az ilyen típusú központi telepítések is rendelkezésre állnak, létesítmények közötti forgatókönyvek leírtak szerint. A kapcsolat az az oka, hogy kiterjesztése a helyszíni tartományokra, a helyszíni Active Directory és a helyszíni DNS az Azure-bA. Az Azure-előfizetés objektumok kiterjed a helyszíni környezet változásaihoz. Ez a bővítmény kapcsolatban, a virtuális gépek a helyszíni tartomány része lehet. Tartományi felhasználókat a helyszíni tartomány férhet hozzá a kiszolgálókat, és futtathatja a szolgáltatások a virtuális gépeken (például adatbázis-kezelő szolgáltatások). Virtuális gépek közötti kommunikációt és a névfeloldás üzembe helyezte a helyszínen és az Azure-ban üzembe helyezett virtuális gépek lehetséges. Ebben a forgatókönyvben az a leggyakoribb forgatókönyv üzembe helyezéséhez SAP-eszközök az Azure-ban. További információkért lásd: [tervezéssel és kialakítással VPN-átjáró](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
@@ -79,7 +79,7 @@ Az SAP számítási feladatok Azure-ban található különböző cikkek nyilvá
 
 Az alábbi SAP-megjegyzések kapcsolódó Azure-beli SAP kapcsolatban a dokumentumban leírt terület:
 
-| Megjegyzés száma | Beosztás |
+| Megjegyzés száma | Cím |
 | --- | --- |
 | [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure virtuális gépek típusai |
 | [2015553] |A Microsoft Azure-beli SAP: Támogatás előfeltételei |
@@ -106,12 +106,12 @@ Témák megvitatásához IaaS, bár általában a Windows, Linux- és adatbázis
 
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>A virtuális gépek RDBMS központi telepítésekhez tárolószerkezet
-Annak érdekében, hogy kövesse az ebben a fejezetben, érdekében fontos megérteni, milyen a bemutatott [ez] [ deployment-guide-3] fejezete az [üzembe helyezési útmutató][deployment-guide]. A különböző Virtuálisgép-sorozat, és azok és különbségek az Azure standard kapcsolatos Tudásbázis és [prémium szintű Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) kell érteni, és ez a fejezet elolvasása előtt ismert.
+Annak érdekében, hogy kövesse az ebben a fejezetben, érdekében fontos megérteni, milyen a bemutatott [ez] [ deployment-guide-3] fejezete az [üzembe helyezési útmutató][deployment-guide]. Kapcsolatos tudnivalók a különböző Virtuálisgép-sorozat, és azok és különbségek standard storage és a prémium szintű storage kell értelmezni, és ez a fejezet elolvasása előtt ismert. Készült a következő alkalmazáshoz:
 
 Azure Storage az Azure virtuális gépek tekintetében, ismerkedjen meg a cikkek:
 
-- [Az Azure Windows virtuális gépek disks storage-ról](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds)
-- [Az Azure Linux virtuális gépek disks storage-ról](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds)
+- [Bevezetés a managed Disks szolgáltatásba az Azure Windows virtuális gépek](../../windows/managed-disks-overview.md)
+- [Bevezetés a managed Disks szolgáltatásba az Azure Linux virtuális gépek](../../linux/managed-disks-overview.md)
 
 Alapszintű konfiguráció esetén általában javasoljuk, hogy a struktúra a központi telepítés, ahol az operációs rendszer, az adatbázis-kezelő és végleges SAP bináris fájlokat nem azonosak az adatbázisfájlokat. Ezért azt javasoljuk, az Azure Virtual Machines telepítve az operációs rendszer, adatbázis-kezelési rendszer futtatható fájljainak és SAP végrehajtható fájlok alap virtuális merevlemez (vagy lemez) futó SAP-rendszereinket. Az adatbázis-kezelő adathoz és naplófájlhoz a különálló lemezek (Standard vagy prémium szintű tároló) Azure Storage-ban tárolt és az eredeti Azure operációs rendszer lemezképének virtuális gép logikai lemezként csatolt. Linux-környezetek, különösen a dokumentált különböző javaslatokat is lehet. Különös tekintettel az SAP HANA.
 
@@ -134,10 +134,8 @@ Azure-adatlemez IOPS kvóta kényszeríti. Az Azure Standard Storage és a Premi
 > [!NOTE]
 > Annak érdekében, hogy az Azure előnyeit a egyedi [egyetlen virtuális gép SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) csatolt összes lemezt kell lennie az Azure Premium Storage, beleértve az alap virtuális merevlemez típusú.
 
-
 > [!NOTE]
 > A gazdagép fő adatbázis fájlok (adat- és naplófájlok) SAP-adatbázisok az Azure-adatközpontokhoz szomszédos közös elhelyezésű harmadik féltől származó adatközpontokban található tárolóhardveres nem támogatott. Az SAP számítási feladatok csak tárolási natív Azure jelölt szolgáltatás az adatok és a tranzakciós naplófájlok az SAP-adatbázisok esetében támogatott.
-> 
 
 Az elhelyezési az adatbázisfájlokat és a napló vagy visszaállíthatja a fájlokat és a használt, az Azure Storage IOPS, késés és a teljesítménybeli követelmények lehet definiálni. Annak érdekében, hogy van elég iops-t, előfordulhat, hogy kényszerített több lemez használhatja, vagy használjon nagyobb prémium szintű Storage-lemez. Esetén több lemezt használ, a lemezeken, amelyeket az adatfájlokat tartalmaz, vagy a napló vagy visszaállíthatja a fájlokat szoftver teríti volna létre. Ezekben az esetekben az IOPS és az adatátviteli sebességet SLA-k az alapul szolgáló Premium Storage-lemez vagy a maximális elérhető iops-t az Azure standard szintű Storage-lemezeket is halmozódnak az eredményül kapott stripe-készlet.
 
@@ -210,7 +208,7 @@ Az Azure Premium Storage esetében a következő gyorsítótárazási lehetősé
 
 * None
 * Olvasás
-* Olvasási/írási
+* Olvasás/írás
 * Nincs + Írásgyorsító (csak az Azure M sorozatú virtuális gépek esetén)
 * Olvasás + Írásgyorsító (csak az Azure M sorozatú virtuális gépek esetén)
 

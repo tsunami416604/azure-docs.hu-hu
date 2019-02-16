@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f91ccc93dcd2ac9b96379c4aa94d1f430faaf66
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ac55d14f864698506610301ae46bd4b6573d4f92
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118292"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330664"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
 
@@ -248,7 +248,7 @@ ms.locfileid: "56118292"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
-[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -870,7 +870,7 @@ A saját Azure Virtuálisgép-lemez előkészítésekor követelmények a követ
 
 * Eredetileg az operációs rendszert tartalmazó virtuális merevlemez mérete 127GB csak rendelkezhet. Ez a korlátozás van kiküszöbölhetők a 2015. március végén. Most az operációs rendszert tartalmazó virtuális merevlemez lehet bármely más Azure Storage, valamint tárolt virtuális merevlemez mérete legfeljebb 1TB.
 * Kell lennie a rögzített méretű VHD formátumban. Dinamikus VHD vagy VHDx formátumú virtuális merevlemezeket még nem támogatottak az Azure-ban. Dinamikus VHD-k statikus virtuális merevlemezek alakul, amikor feltölti a VHD-t a PowerShell-parancsmagok vagy a parancssori felület
-* Virtuális merevlemezek, amelyek csatlakoztatva vannak a virtuális géphez, és kell csatlakoztatnia kell újra az Azure-ban, valamint egy rögzített VHD formátumú virtuális gép szükséges. Olvasási [ebben a cikkben (Linux)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) és [ebben a cikkben (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows) méretbeli korlátokat, adatlemez esetében. Dinamikus VHD-k statikus virtuális merevlemezek alakul, amikor feltölti a VHD-t a PowerShell-parancsmagok vagy a parancssori felület
+* Virtuális merevlemezek, amelyek csatlakoztatva vannak a virtuális géphez, és kell csatlakoztatnia kell újra az Azure-ban, valamint egy rögzített VHD formátumú virtuális gép szükséges. Olvassa el [ebben a cikkben (Linux)](../../linux/managed-disks-overview.md) és [ebben a cikkben (Windows)](../../windows/managed-disks-overview.md)) méretbeli korlátokat, adatlemez esetében. Dinamikus VHD-k statikus virtuális merevlemezek alakul, amikor feltölti a VHD-t a PowerShell-parancsmagok vagy a parancssori felület
 * Adjon hozzá egy másik helyi fiók rendszergazdai jogokkal, amely a Microsoft támogatási vagy helyi szolgáltatások és alkalmazások futtatásához, amíg a virtuális gép üzemel, amely lehet hozzárendelni, és jobban megfelelő felhasználók által használható használható.
 * Adja hozzá a többi helyi fiókok azokat, akkor lehet szükség, az adott központi telepítési forgatókönyv szerint.
 
@@ -897,7 +897,7 @@ A saját Azure Virtuálisgép-rendszerkép előkészítésekor követelmények a
 
 * Eredetileg az operációs rendszert tartalmazó virtuális merevlemez mérete 127GB csak rendelkezhet. Ez a korlátozás van kiküszöbölhetők a 2015. március végén. Most az operációs rendszert tartalmazó virtuális merevlemez lehet bármely más Azure Storage, valamint tárolt virtuális merevlemez mérete legfeljebb 1TB.
 * Kell lennie a rögzített méretű VHD formátumban. Dinamikus VHD vagy VHDx formátumú virtuális merevlemezeket még nem támogatottak az Azure-ban. Dinamikus VHD-k statikus virtuális merevlemezek alakul, amikor feltölti a VHD-t a PowerShell-parancsmagok vagy a parancssori felület
-* Virtuális merevlemezek, amelyek csatlakoztatva vannak a virtuális géphez, és kell csatlakoztatnia kell újra az Azure-ban, valamint egy rögzített VHD formátumú virtuális gép szükséges. Kérjük, olvassa el [ebben a cikkben (Linux)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) és [ebben a cikkben (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows) méretbeli korlátokat, adatlemez esetében. Dinamikus VHD-k statikus virtuális merevlemezek alakul, amikor feltölti a VHD-t a PowerShell-parancsmagok vagy a parancssori felület
+* Virtuális merevlemezek, amelyek csatlakoztatva vannak a virtuális géphez, és kell csatlakoztatnia kell újra az Azure-ban, valamint egy rögzített VHD formátumú virtuális gép szükséges. Kérjük, olvassa el [ebben a cikkben (Linux)](../../windows/managed-disks-overview.md) és [ebben a cikkben (Windows)](../../linux/managed-disks-overview.md) méretbeli korlátokat, adatlemez esetében. Dinamikus VHD-k statikus virtuális merevlemezek alakul, amikor feltölti a VHD-t a PowerShell-parancsmagok vagy a parancssori felület
 * Adja hozzá a többi helyi fiókok azokat, akkor lehet szükség, az adott központi telepítési forgatókönyv szerint.
 * Ha a rendszerkép tartalmazza, telepíteni kell az SAP NetWeaver és az állomás nevét az Azure üzembehelyezési ponton kell megadni az eredeti nevén átnevezése valószínű, javasoljuk, hogy a legfrissebb verzióit a SAP Software kiépítés Manager DVD másolja a sablont. Ez lehetővé teszi, hogy egyszerűen a megadott SAP átnevezése funkciójának használata a módosított állomásnév alkalmazkodnak és/vagy módosítsa a biztonsági AZONOSÍTÓT az SAP-rendszer belül az üzembe helyezett Virtuálisgép-rendszerképet, amint az új példány indítása.
 

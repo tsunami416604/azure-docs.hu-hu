@@ -8,47 +8,42 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 05/30/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: c75745452ee819dbda75f7420c93a5629cef4e08
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 93e3d9fa67cfb941abf97476e03f44a4b16e94e7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860390"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313160"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Gyors útmutató: Arcfelismerés a képet a REST API-t és a PHP használatával
 
-Ebben a rövid útmutatóban emberi arcokat fog felismerni egy képen a Face API segítségével.
+Ebben a rövid, használatával az Azure Face REST API a PHP emberi arcok észlelése a képet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A minta futtatásához előfizetési kulcs szükséges. Ingyenes próba előfizetési kulcsot itt szerezhet: [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
+- A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
+- Például egy Kódszerkesztő [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="face---detect-request"></a>Face - Detect kérés
+## <a name="initialize-the-html-file"></a>A HTML-fájl inicializálása
 
-A [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) metódussal arcokat ismerhet fel a képeken, és többek között a következő arcattribútumokat adhatja vissza:
+Hozzon létre egy új HTML-fájlt *detectFaces.html*, és adja hozzá a következő kódot.
 
-* Face ID: A Face API számos forgatókönyv használt egyedi azonosítója.
-* Négyszög meghatározása: A bal felső, szélessége és magassága jelzi az arcok a képen helyét.
-* Arcrész: A fontos pozíciók face összetevők mutató 27-es arcrészek tömbje.
-* Az arcattribútumok közé tartozik az életkor, a nem, a mosoly intenzitása, a fejtartás és az arcszőrzet.
+```html
+<html>
+    <head>
+        <title>Face Detect Sample</title>
+    </head>
+    <body></body>
+</html>
+```
 
-A minta futtatásához az alábbi lépéseket kell végrehajtania:
+## <a name="write-the-php-script"></a>A PHP-parancsfájlok írása
 
-1. Másolja az alábbi kódot egy szerkesztőbe.
-1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. Ha szükséges, változtassa meg az `uriBase` elem értékét arra a helyre, ahonnan az előfizetési kulcsot beszerezte.
-1. Az `imageUrl` elem értékét beállíthatja az elemezni kívánt kép elérési útjára.
-1. Mentse a fájlt `.php` kiterjesztéssel.
-1. Nyissa meg a fájlt egy PHP-támogatással rendelkező böngészőablakban.
+Adja hozzá a következő kódot a `body` elem a dokumentum. Állít be egy URL-cím mezőben, az alapszintű felhasználói felületet egy **face elemzése** gombra, a egy válasz panelre, és a egy kép megjelenítési ablaktáblán.
 
 ```php
-<html>
-<head>
-    <title>Face Detect Sample</title>
-</head>
-<body>
 <?php
 // Replace <Subscription Key> with a valid subscription key.
 $ocpApimSubscriptionKey = '<Subscription Key>';
@@ -102,13 +97,13 @@ catch (HttpException $ex)
     echo "<pre>" . $ex . "</pre>";
 }
 ?>
-</body>
-</html>
 ```
 
-## <a name="face---detect-response"></a>Face - Detect válasz
+Frissíteni kell a `subscriptionKey` mező értékét az előfizetési kulcs, és előfordulhat, hogy módosítania kell a `uriBase` úgy, hogy a megfelelő régióazonosító tartalmaz (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban listája végpontok). A `returnFaceAttributes` mező határozza meg, melyik face attribútumok lekéréséhez; előfordulhat, hogy szeretné ezt a karakterláncot, attól függően, a felhasználás céljának módosítása.
 
-A rendszer JSON formátumban adja vissza a sikeres választ, például:
+## <a name="run-the-script"></a>A szkript futtatása
+
+Nyissa meg a fájlt a PHP-kompatibilis webböngészővel. Az Arcfelismerési adatokat, az alábbihoz hasonló JSON-karakterláncot szerezheti be.
 
 ```json
 [

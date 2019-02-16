@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: 41a826304af338814666e80dfaf584021809dbb0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: efd069b90e2f085b7bacf4dfa72478e1232554bc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880046"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313360"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Egy Backup tároló frissítése Recovery Services-tároló
 
@@ -37,9 +37,9 @@ Tekintse meg a PowerShell parancsmagok referenciáit a [Resource Manager üzemi 
 
 Ellenőrizze a következő problémák, a Backup-tárolók frissítése Recovery Service-tárolókra előtt.
 
-- **Ügynök verziója**: a tár frissítése, ellenőrizze, hogy a Microsoft Azure Recovery Services-(MARS) ügynök legalább egy 2.0.9083.0 verzió. Ha a MARS-ügynök régebbi, mint 2.0.9083.0, frissítse az ügynököt a frissítési folyamat megkezdése előtt.
-- **Példány-alapú számlázási modell**: a helyreállítási szolgáltatás tárolók csak támogatják a példány-alapú számlázási modell. Ha rendelkezik egy biztonsági mentési tárat. a régebbi Storage-alapú számlázási modellt használ, konvertálja a számlázási modellt a frissítés során.
-- **Nincsenek folyamatban lévő biztonsági mentési konfiguráció műveletek**: a frissítés során, a felügyeleti sík hozzáférés korlátozva. Végezze el az összes felügyeleti sík műveleteket, és indítsa el a frissítést.
+- **Ügynök verziója**: A tár frissítése, ellenőrizze, hogy a Microsoft Azure Recovery Services-(MARS) ügynök legalább egy 2.0.9083.0 verzió. Ha a MARS-ügynök régebbi, mint 2.0.9083.0, frissítse az ügynököt a frissítési folyamat megkezdése előtt.
+- **Példány-alapú számlázási modell**: Csak a Recovery Service-tárolók támogatják a példány-alapú számlázási modell. Ha rendelkezik egy biztonsági mentési tárat. a régebbi Storage-alapú számlázási modellt használ, konvertálja a számlázási modellt a frissítés során.
+- **Nincsenek folyamatban lévő biztonsági mentési konfiguráció műveletek**: A frissítés során, a felügyeleti sík hozzáférés korlátozva. Végezze el az összes felügyeleti sík műveleteket, és indítsa el a frissítést.
 
 ## <a name="using-powershell-scripts-to-upgrade-your-vaults"></a>PowerShell-szkriptek használata a tárolók frissítése
 
@@ -53,7 +53,7 @@ PowerShell-parancsfájlok segítségével a Backup-tárolók frissítése Recove
 
 A következő parancsfájl használatával frissítse a tárolók. Az alábbi parancsprogram rendelkezik a paraméterek találja.
 
-RecoveryServicesVaultUpgrade-1.0.2.ps1 **- SubscriptionID** `<subscriptionID>` **- VaultName** `<vaultname>` **-hely** `<location>` **- ResourceType** `BackupVault` **- TargetResourceGroupName** `<rgname>`
+RecoveryServicesVaultUpgrade-1.0.2.ps1 **-SubscriptionID** `<subscriptionID>` **-VaultName** `<vaultname>` **-Location** `<location>` **-ResourceType** `BackupVault` **-TargetResourceGroupName** `<rgname>`
 
 **SubscriptionID** – a tároló, amely frissítés alatt áll előfizetési azonosító száma.<br/>
 **VaultName** -nevét a Backup-tároló, amely frissítés alatt áll.<br/>
@@ -81,7 +81,7 @@ A PowerShell-parancsfájlt a hitelesítő adatok megadását kéri. Kétszer adj
 Adta meg Azure hitelesítő adatait, ha a Azure ellenőrzi, hogy a környezet megfelel-e a következő előfeltételeknek:
 
 - **Ügynök verziója** – Backup-tárolók frissítése Recovery Services-tárolóra van szükség a MARS-ügynök nem lehet rövidebb 2.0.9083.0 verzió. Ha regisztrált egy Backup-tárolóba rendszernél korábbi 2.0.9083.0 ügynök elemeket tartalmaz, az előfeltétel-ellenőrzés sikertelen lesz. Ha az előfeltétel-ellenőrzés sikertelen, frissítse az ügynököt, és próbálja meg újra frissíteni a tárolóban. Az ügynököt a legújabb verzióját letöltheti [ http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
-- **A folyamatban lévő konfigurációs feladatok**: Ha valaki egy biztonsági mentési tárolót, állítsa be a frissíteni kívánt feladatot konfigurálja, vagy egy elemet felvette, az előfeltétel-ellenőrzés sikertelen lesz. A konfigurálás befejezéséhez, illetve befejezéséhez regisztrálja az elem, majd indítsa el a tároló frissítési folyamat.
+- **A folyamatban lévő konfigurációs feladatok**: Ha valaki frissítendő konfigurálása a Backup-tároló feladat beállítása, vagy egy elemet felvette, az előfeltétel-ellenőrzés sikertelen lesz. A konfigurálás befejezéséhez, illetve befejezéséhez regisztrálja az elem, majd indítsa el a tároló frissítési folyamat.
 - **Storage-alapú számlázási modell**: Recovery Services-tárolók támogatják a példány-alapú számlázási modell. Ha futtatja a tár verziófrissítése Backup-tároló, amely a Storage-alapú számlázási modellt használ, a számlázási modellt, valamint a tároló frissítésére kéri. Ellenkező esetben frissítheti a számlázási modellt, majd futtassa a tár frissítését.
 - Egy erőforráscsoport, a Recovery Services-tároló azonosítása. Kihasználhatja a Resource Manager üzembe helyezési szolgáltatások, egy Recovery Services-tárolót kell helyezzen egy erőforráscsoportban. Ha nem tudja használni, adjon meg egy nevet, hogy melyik erőforráscsoportot, és a frissítési folyamat az erőforráscsoport jön létre az Ön számára. A frissítési folyamat is társítja a tárolót az új erőforráscsoportot.
 
@@ -98,13 +98,13 @@ A második képernyőn látható a Súgó segíti a hivatkozások a Recovery Ser
 ![az első lépések panelen található hivatkozások segítségével](./media/backup-azure-upgrade-backup-to-recovery-services/quick-start-w-help-links.png)
 
 ## <a name="post-upgrade-steps"></a>A frissítés utáni lépések
-Recovery Services-tároló megadását időzóna-információk támogatja a biztonsági mentési szabályzat. Miután a tároló sikeresen frissítve van, nyissa meg a biztonsági mentési házirendek tároló beállítások menüjében, és minden a tároló konfigurált szabályzatok időzóna-információk frissítése. Ez a képernyő már mikor használják, helyi időzóna szerint létrehozott szabályzatot a megadott biztonsági mentési ütemezés időpontot jeleníti meg. 
+Recovery Services-tároló megadását időzóna-információk támogatja a biztonsági mentési szabályzat. Miután a tároló sikeresen frissítve van, nyissa meg a biztonsági mentési házirendek tároló beállítások menüjében, és minden a tároló konfigurált szabályzatok időzóna-információk frissítése. Ez a képernyő már mikor használják, helyi időzóna szerint létrehozott szabályzatot a megadott biztonsági mentési ütemezés időpontot jeleníti meg.
 
 ## <a name="enhanced-security"></a>Fokozott biztonság
 
-Backup-tároló frissítése Recovery Services-tárolóba, amikor a tár biztonsági beállításait a rendszer automatikusan bekapcsol. Ha a biztonsági beállításokat, bizonyos műveletek, például a biztonsági mentések törlésével, vagy módosítása egy hozzáférési kódot egy [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) PIN-kódot. A fokozott biztonság további információkért tekintse meg a cikket [biztonsági szolgáltatások hibrid biztonsági mentésekhez védelméhez](backup-azure-security-feature.md). 
+Backup-tároló frissítése Recovery Services-tárolóba, amikor a tár biztonsági beállításait a rendszer automatikusan bekapcsol. Ha a biztonsági beállításokat, bizonyos műveletek, például a biztonsági mentések törlésével, vagy módosítása egy hozzáférési kódot egy [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) PIN-kódot. A fokozott biztonság további információkért tekintse meg a cikket [biztonsági szolgáltatások hibrid biztonsági mentésekhez védelméhez](backup-azure-security-feature.md).
 
-Során a fokozott biztonságot be van kapcsolva, adatokat a rendszer másolatot 14 nap a helyreállítási pont adatainak törlése a tárolóból után megőrzi. Az ügyfeleknek a biztonsági adatok használatáért. Helyreállítási pontok esetében az Azure Backup agent, az Azure Backup Server és System Center Data Protection Manager biztonsági adatok megőrzésére vonatkozik. 
+Során a fokozott biztonságot be van kapcsolva, adatokat a rendszer másolatot 14 nap a helyreállítási pont adatainak törlése a tárolóból után megőrzi. Az ügyfeleknek a biztonsági adatok használatáért. Helyreállítási pontok esetében az Azure Backup agent, az Azure Backup Server és System Center Data Protection Manager biztonsági adatok megőrzésére vonatkozik.
 
 ## <a name="gather-data-on-your-vault"></a>Adatgyűjtés a tároló
 
@@ -112,38 +112,38 @@ Miután frissít egy Recovery Services-tárolót, a jelentések konfigurálása 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**A frissítési csomag befolyásolja a folyamatban lévő biztonsági másolatok?**</br>
+### <a name="does-the-upgrade-plan-affect-my-ongoing-backups"></a>A frissítési csomag befolyásolja a folyamatban lévő biztonsági másolatok?
 Nem. A folyamatban lévő biztonsági másolatok továbbra is megszakítás nélkül, során és a frissítés után.
 
-**Ha nem tervezek frissíteni leggyorsabban, mi történik a tárolóra?**</br>
+### <a name="if-i-dont-plan-on-upgrading-soon-what-happens-to-my-vaults"></a>Ha nem tervezek frissíteni leggyorsabban, mi történik a tárolóra?
 Mivel az összes új funkciót csak a Recovery Services-tárolókra vonatkoznak, nyomatékosan javasoljuk, hogy a tárolók frissítése. 2017. szeptember 1-én kezdve a Microsoft elkezdi az automatikus frissítése a backup-tárolók a Recovery Services-tárolókra. November után 30,2017, már nem Backup-tároló hozható létre PowerShell használatával. A tároló automatikusan frissíthetők a között bármikor. A Microsoft javasolja, hogy minél hamarabb frissítse a tárolót.
 
-**Mire frissítési jelent ez az meglévő eszközállományomra?**</br>
-Frissítse az eszközállomány a Resource Manager-alapú üzemi modellbe. A Recovery Services-tárolók létrehozott használata a Resource Manager-alapú üzemi modellben. A Resource Manager üzemi modell tervezési és a különbség a tárolókban elszámolása fontos. 
+### <a name="what-does-this-upgrade-mean-for-my-existing-tooling"></a>Mire frissítési jelent ez az meglévő eszközállományomra?
+Frissítse az eszközállomány a Resource Manager-alapú üzemi modellbe. A Recovery Services-tárolók létrehozott használata a Resource Manager-alapú üzemi modellben. A Resource Manager üzemi modell tervezési és a különbség a tárolókban elszámolása fontos.
 
-**A frissítés során van mennyi állásidő?**</br>
+### <a name="during-the-upgrade-is-there-much-downtime"></a>A frissítés során van mennyi állásidő?
 Attól függ, az erőforrások száma, frissít. Kisebb környezetekhez (néhány tucat védett példányok) a teljes frissítés kevesebb mint 20 percet vesz igénybe. Nagyobb telepítések esetén ez egy legfeljebb egy órát vesz igénybe.
 
-**Visszafordíthatom a frissítés után?**</br>
+### <a name="can-i-roll-back-after-upgrading"></a>Visszafordíthatom a frissítés után?
 Nem. Visszaállítás nem támogatott, miután az erőforrások sikeresen frissítette.
 
-**Az előfizetésem vagy megtekintéséhez, ha azok már képes a frissítés is ellenőrizni?**</br>
+### <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-upgrade"></a>Az előfizetésem vagy megtekintéséhez, ha azok már képes a frissítés is ellenőrizni?
 Igen. Az első lépés a frissítést azt ellenőrzi, hogy az erőforrások képesek a frissítés. Abban az esetben, ha az előfeltételeket az érvényesítés meghiúsul, értesítést kap a frissítés nem hajtható végre okok miatt.
 
-**Frissíthetem a CSP-alapú biztonsági mentési tár?**</br>
+### <a name="can-i-upgrade-my-csp-based-backup-vault"></a>Frissíthetem a CSP-alapú biztonsági mentési tár?
 Nem. Jelenleg nem tudja frissíteni a backup-tárolók CSP-alapú. Hozzáadjuk a CSP-alapú biztonsági mentési tárak a következő kiadásokban frissítésének támogatását.
 
-**Megtekintheti a saját utólagos frissítése klasszikus tárolóba?**</br>
+### <a name="can-i-view-my-classic-vault-post-upgrade"></a>Megtekintheti a saját utólagos frissítése klasszikus tárolóba?
 Nem. Nem tekinthetők meg és kezelheti a klasszikus tárolóba utólagos frissítése. Csak lesz az új Azure Portalon a tárolóban lévő összes felügyeleti műveletet használhatja.
 
-**A frissítés sikertelen volt, de a gép, amely az ügynök igénylő tárolt már frissíti, nem létezik. Mi a teendő ebben az esetben?**</br>
+### <a name="my-upgrade-failed-but-the-machine-that-held-the-agent-requiring-updating-doesnt-exist-anymore-what-do-i-do-in-such-a-case"></a>A frissítés sikertelen volt, de a gép, amely az ügynök igénylő tárolt már frissíti, nem létezik. Mi a teendő ebben az esetben?
 Ha szeretné használni a tárolóban, a biztonsági másolatok hosszú távú adatmegőrzés, majd a gépet nem lehet frissíteni a tárolóban. A későbbi kiadásokban hozzáadjuk az ilyen egy tárolót a frissítés támogatása.
 Ha nem kell többé a számítógép biztonsági másolatok tárolására, majd adjon regisztrációjának törlése a tárolóból a gép és próbálja újra a frissítést.
 
-**Miért nem látom a feladatok információkat az erőforrásoknak a frissítés után?**</br>
+### <a name="why-cant-i-see-the-jobs-information-for-my-resources-after-upgrade"></a>Miért nem látom a feladatok információkat az erőforrásoknak a frissítés után?
 A biztonsági mentésekhez (MARS-ügynök és IaaS) figyelési funkciója új esetén a Backup-tároló frissítése Recovery Services-tárolóba. A monitorozási információkhoz szinkronizálását a szolgáltatással akár 12 órát vesz igénybe.
 
-**Hogyan jelenthetem a problémát?**</br>
+### <a name="how-do-i-report-an-issue"></a>Hogyan jelenthetem be a hibákat?
 Ha bármely részének a tár frissítése nem sikerül, vegye figyelembe, az OperationId szerepel a hiba. Microsoft Support proaktív módon fog működni a probléma megoldásához. Forduljon támogatási szolgálatához, vagy küldjön e-mailben rsvaultupgrade@service.microsoft.com az előfizetés-azonosító, a tároló neve és OperationId. Megkíséreljük a lehető leggyorsabban a probléma megoldásához. Próbálja megismételni a műveletet nem, ha explicit módon utasította ehhez a Microsoft által.
 
 

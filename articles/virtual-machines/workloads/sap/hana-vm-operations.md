@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c85d405502890253bcdb80c652ed53f58546de9c
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 32c326ff7bef98f9d8f4f20664889109d291a6ea
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747050"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328843"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra konfigurálása és SAP HANA rendszereit az Azure-beli natív virtuális gépek (VM) üzembe helyezett működő. A dokumentum az SAP HANA kibővített M128s VM-termékváltozat konfigurációs információkat is tartalmaz. Ez a dokumentum nem célja, hogy cserélje le a standard szintű SAP dokumentációját, amely magában foglalja az alábbi tartalommal:
@@ -68,10 +68,10 @@ A termelési forgatókönyvekhez használható Azure-beli Virtuálisgép-típuso
 Az Azure virtuális gép Services révén teljes telepített SAP HANA-platform is telepítheti a [SAP-felhőplatform](https://cal.sap.com/). A telepítés menetét a [üzembe helyezése az SAP S/4HANA vagy BW/4hana-t az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) vagy az automation kiadott [Itt](https://github.com/AzureCAT-GSI/SAP-HANA-ARM).
 
 ### <a name="choose-azure-storage-type"></a>Azure Storage típusának kiválasztása
-Az Azure storage két típusú az SAP HANA futtató Azure virtuális gépek kiválóan alkalmasak kínál:
+Az Azure storage két típusú az SAP HANA futtató Azure virtuális gépek kiválóan alkalmasak kínál: Szabványos merevlemez-meghajtókon (HDD) és a prémium szintű tartós állapotú meghajtókkal (SSD). Ezek a lemeztípusok kapcsolatos további információkért tekintse meg ezt a cikket [lemez típusának kiválasztása](../../windows/disks-types.md)
 
-- [Azure Standard Storage](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
-- [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- Szabványos merevlemez-meghajtókon (HDD)
+- Prémium szintű tartós állapotú meghajtókkal (SSD)
 
 Az Azure két üzembe helyezési módszert kínál az Azure Standard és Premium Storage virtuális merevlemezek. Ha engedélyezi a teljes forgatókönyv, előnyeit [Azure felügyelt lemez](https://azure.microsoft.com/services/managed-disks/) központi telepítések.
 
@@ -408,7 +408,7 @@ Megfelelően DT 2.0 ajánlott eljárásokkal kapcsolatos útmutatás a lemez i/o
 
 Szükség van, több Azure-lemezek csatolása a DT 2.0-s virtuális gép, és hozzon létre egy szoftverfrissítési raid (csíkozást) az operációs rendszer szintjén adatátviteli sebességet maximális korlátját eléréséhez. Egyetlen Azure lemez nem biztosítja az átviteli sebesség érhető el ebben a tekintetben a virtuális gép maximumértéket. Az Azure Premium storage szolgáltatás kötelező DT 2.0-val. 
 
-- Elérhető Azure-lemeztípusokkal kapcsolatos információk találhatók [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- Elérhető Azure-lemeztípusokkal kapcsolatos információk találhatók [Itt](../../windows/disks-types.md)
 - Szoftver raid keresztül mdadm létrehozásával kapcsolatos információk találhatók [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)
 - Maximális átviteli sebesség találja a csíkozott kötetek létrehozásához LVM konfigurálása részleteit [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
 

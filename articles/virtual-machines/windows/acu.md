@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/05/2017
+ms.date: 12/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: baf49856f8f7480ece10e065b3ac002297f06617
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: ae1d6ddfb96d65a730fd1008f44c663d3b447b17
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "30918081"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326119"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure-beli számítási egység (ACU-k)
 
@@ -28,7 +28,7 @@ ms.locfileid: "30918081"
 
 
 Az alábbiakban a különböző méretekre vonatkozó további információkra mutató hivatkozásokat:
-- [Általános célú](sizes-general.md)
+- [General-purpose](sizes-general.md)
 - [Memóriaoptimalizált](../virtual-machines-windows-sizes-memory.md)
 - [Számításra optimalizált](sizes-compute.md)
 - [GPU-optimalizált](sizes-gpu.md)

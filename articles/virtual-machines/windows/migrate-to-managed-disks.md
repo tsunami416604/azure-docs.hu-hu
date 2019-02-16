@@ -16,21 +16,17 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 4aefc8c033383125a803eb0c8a38e2f3de119540
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e9c3e10f9b48bfe2efa5396c9e64d3d87be3d826
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467910"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330647"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Az Azure virtuális gépek migrálása felügyelt lemezekre az Azure-ban
 
 Az Azure Managed Disks leegyszerűsíti a tárolókezelési külön felügyelnie tárfiókokat eltávolításával.  Is áttelepítheti a meglévő Azure virtuális gépek számára, hogy nagyobb megbízhatóságot, rendelkezésre állási csoportban lévő virtuális gépek felügyelt lemezekre. Ez biztosítja, hogy a rendelkezésre állási csoport különböző virtuális lemezek hibaérzékeny pont hibák elkerülése érdekében hibapontok. A rendelkezésre állási csoport a különböző tárolási skálázási egységeket (stampek), amely korlátozza a egyetlen skálázási egységek hibáival oka a hardver és szoftver hibák különböző virtuális lemezek automatikusan helyezi.
-Igényei alapján választhat a két típusú tárolási lehetőségek:
-
-- [Prémium szintű Managed Disks](premium-storage.md) tartós állapot meghajtó (SSD) alapú tárolást kínál, amelyek nagy teljesítményű, kis késleltetésű lemeztámogatás I/O-igényes számítási feladatokat futtató virtuális gépekhez. A sebesség előnyeit, és ezek a lemezek teljesítményét is igénybe vehet a prémium szintű Managed Disks-ba való migrálás.
-
-- [Standard szintű Managed Disks](standard-storage.md) merevlemez-meghajtó (HDD-) alapú tárolást kínál használja, és a leginkább kihasználni, fejlesztési, tesztelési és egyéb számítási feladatokat, amelyek kevésbé érzékenyek a teljesítményingadozásra.
+Igényei alapján választhat a négy típusú tárolási lehetőségeket. A rendelkezésre álló lemeztípusok kapcsolatos további információkért tekintse meg ezt a cikket [lemez típusának kiválasztása](disks-types.md)
 
 Áttelepítheti a Managed Disks a következő esetekben:
 

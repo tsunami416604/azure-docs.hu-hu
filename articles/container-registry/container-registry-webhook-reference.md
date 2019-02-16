@@ -7,16 +7,16 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: danlep
-ms.openlocfilehash: 8bae44215cdc17e9f1617c909ef197f2757fc114
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 42790905509e2ea8bbba87587ed01b1929221db5
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857754"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329319"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Az Azure Container Registry webhookok leírása
 
-Is [webhookok konfigurálása](container-registry-webhook.md) a tároló-beállításjegyzékhez, amelyek létrehozzák az eseményeket, amikor bizonyos műveleteket alapján történik. Például engedélyezheti a webhookok, a tároló rendszerképét kiváltó `push` és `delete` műveleteket. Webhook akkor aktiválódik, amikor az Azure Container Registry bocsát ki, adja meg a végpont az eseménnyel kapcsolatos adatokat tartalmazó HTTP vagy HTTPS-kérést. A végpont ezután a webhook feldolgozni, és azoknak megfelelő cselekvést.
+Is [webhookok konfigurálása](container-registry-webhook.md) a tároló-beállításjegyzékhez, amelyek létrehozzák az eseményeket, amikor bizonyos műveleteket alapján történik. Például a tárolórendszerkép kiváltó webhookok engedélyezése `push` és `delete` műveleteket. Webhook akkor aktiválódik, amikor az Azure Container Registry bocsát ki, adja meg a végpont az eseménnyel kapcsolatos adatokat tartalmazó HTTP vagy HTTPS-kérést. A végpont ezután a webhook feldolgozni, és azoknak megfelelő cselekvést.
 
 Az alábbi szakaszok a séma támogatott események által webhook-kérelmet. Az esemény szakaszok az esemény típusa, egy példa kérelem hasznos adatai, és aktiválja a webhookot egy vagy több Példaparancsok tartalom sémáját.
 
@@ -40,33 +40,33 @@ A Webhook aktiválódik, ha egy adattár át lett helyezve egy tárolórendszerk
 
 ### <a name="push-event-payload"></a>Leküldéses eseménytartalom
 
-|Elem|Típus|Leírás|
+|Elem|Typo|Leírás|
 |-------------|----------|-----------|
-|`id`|Sztring|A webhook-esemény azonosítója.|
+|`id`|String|A webhook-esemény azonosítója.|
 |`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
-|`action`|Sztring|A művelet, amely kiváltotta a webhook-esemény.|
+|`action`|String|A művelet, amely kiváltotta a webhook-esemény.|
 |[Cél](#target)|Komplex típus|A webhook-esemény kiváltó esemény célját.|
 |[Kérelem](#request)|Komplex típus|A kérelem, ami a webhook-esemény jön létre.|
 
 ### <a name="target"></a>cél
 
-|Elem|Típus|Leírás|
+|Elem|Typo|Leírás|
 |------------------|----------|-----------|
-|`mediaType`|Sztring|A hivatkozott objektum MIME-típusát.|
+|`mediaType`|String|A hivatkozott objektum MIME-típusát.|
 |`size`|Int32|A tartalom bájtok száma. Ugyanaz, mint a Hossz mezőben.|
-|`digest`|Sztring|A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat.|
+|`digest`|String|A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat.|
 |`length`|Int32|A tartalom bájtok száma. Ugyanaz, mint mérete mező.|
-|`repository`|Sztring|A tárház nevét.|
-|`tag`|Sztring|A kép címke neve.|
+|`repository`|String|A tárház nevét.|
+|`tag`|String|A kép címke neve.|
 
 ### <a name="request"></a>kérelem
 
-|Elem|Típus|Leírás|
+|Elem|Typo|Leírás|
 |------------------|----------|-----------|
-|`id`|Sztring|Az esemény által kezdeményezett kérelem azonosítója.|
-|`host`|Sztring|A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem HTTP-állomásfejlécet által megadott.|
-|`method`|Sztring|A kérelmi metódust, ami az esemény jön létre.|
-|`useragent`|Sztring|A felhasználói ügynök fejléc a kérelem.|
+|`id`|String|Az esemény által kezdeményezett kérelem azonosítója.|
+|`host`|String|A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem HTTP-állomásfejlécet által megadott.|
+|`method`|String|A kérelmi metódust, ami az esemény jön létre.|
+|`useragent`|String|A felhasználói ügynök fejléc a kérelem.|
 
 ### <a name="payload-example-push-event"></a>Adattartalom-példa: leküldéses esemény
 
@@ -104,30 +104,30 @@ A Webhook aktiválódik, ha a tárház vagy az jegyzékfájl törlődik. Nem akt
 
 ### <a name="delete-event-payload"></a>Eseménytartalom törlése
 
-|Elem|Típus|Leírás|
+|Elem|Typo|Leírás|
 |-------------|----------|-----------|
-|`id`|Sztring|A webhook-esemény azonosítója.|
+|`id`|String|A webhook-esemény azonosítója.|
 |`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
-|`action`|Sztring|A művelet, amely kiváltotta a webhook-esemény.|
+|`action`|String|A művelet, amely kiváltotta a webhook-esemény.|
 |[Cél](#delete_target)|Komplex típus|A webhook-esemény kiváltó esemény célját.|
 |[Kérelem](#delete_request)|Komplex típus|A kérelem, ami a webhook-esemény jön létre.|
 
 ### <a name="delete_target"></a> Cél
 
-|Elem|Típus|Leírás|
+|Elem|Typo|Leírás|
 |------------------|----------|-----------|
-|`mediaType`|Sztring|A hivatkozott objektum MIME-típusát.|
-|`digest`|Sztring|A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat.|
-|`repository`|Sztring|A tárház nevét.|
+|`mediaType`|String|A hivatkozott objektum MIME-típusát.|
+|`digest`|String|A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat.|
+|`repository`|String|A tárház nevét.|
 
 ### <a name="delete_request"></a> Kérelem
 
-|Elem|Típus|Leírás|
+|Elem|Typo|Leírás|
 |------------------|----------|-----------|
-|`id`|Sztring|Az esemény által kezdeményezett kérelem azonosítója.|
-|`host`|Sztring|A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem HTTP-állomásfejlécet által megadott.|
-|`method`|Sztring|A kérelmi metódust, ami az esemény jön létre.|
-|`useragent`|Sztring|A felhasználói ügynök fejléc a kérelem.|
+|`id`|String|Az esemény által kezdeményezett kérelem azonosítója.|
+|`host`|String|A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem HTTP-állomásfejlécet által megadott.|
+|`method`|String|A kérelmi metódust, ami az esemény jön létre.|
+|`useragent`|String|A felhasználói ügynök fejléc a kérelem.|
 
 ### <a name="payload-example-delete-event"></a>Adattartalom-példa: esemény törlése
 
@@ -154,10 +154,10 @@ Példa [Azure CLI-vel](/cli/azure/acr) parancsok, az eseményindító egy **tör
 
 ```azurecli
 # Delete repository
-az acr repository delete -n MyRegistry --repository MyRepository
+az acr repository delete --name MyRegistry --repository MyRepository
 
-# Delete manifest
-az acr repository delete -n MyRegistry --repository MyRepository --tag MyTag --manifest
+# Delete image
+az acr repository delete --name MyRegistry --image MyRepository:MyTag
 ```
 
 ## <a name="next-steps"></a>További lépések

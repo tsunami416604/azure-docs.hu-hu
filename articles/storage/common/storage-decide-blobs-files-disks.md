@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 77c4377afaff20e77e76c0a7389c79dfdce703ca
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 869d2105ccf635a46a21e9b7f382ddbef713d68b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509133"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327010"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Annak eldöntése, mikor érdemes használni az Azure-Blobok, az Azure Files és az Azure-lemezek
 A Microsoft Azure tárolásához és eléréséhez, az adatok a felhőben az Azure Storage számos funkciót biztosít. Ez a cikk ismerteti az Azure-fájlok, Blobok és lemezek, és célja, hogy ezek a szolgáltatások közötti választás érdekében.
@@ -56,7 +56,7 @@ Az alábbi táblázat hasonlítja össze az Azure Files Azure-lemezek.
 |Hatókör|Csak egyetlen virtuális gép|Több virtuális gép között megosztott hozzáférés|  
 |A pillanatképek és másolása|Igen|Igen|  
 |Konfiguráció|A virtuális gép indításakor csatlakoztatva|Miután elindult a virtuális gép csatlakoztatva|  
-|Hitelesítés|Beépített|Net use beállítása|  
+|Authentication|Beépített|Net use beállítása|  
 |Adatelérési REST használatával|A virtuális merevlemez található fájl nem érhető el|Olyan megosztáson tárolt fájlok elérhetők|  
 |Max. méret|4 TiB-lemez|5 TiB fájlmegosztás és a megosztáson belüli 1 TiB-fájl|  
 |Maximális iops-érték|500 IOps|1000 IOps|  
@@ -67,4 +67,4 @@ Vonatkozó döntések meghozatalát hogyan adatait tárolják és érik el, ha a
   
 Egyes SMB-funkciók nem használhatók a felhőben. További információkért lásd: [az Azure File Storage-szolgáltatás által nem támogatott funkciók](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
   
-Lemezekkel kapcsolatos további információkért lásd: [lemezek és lemezképek kezelése](../../virtual-machines/windows/about-disks-and-vhds.md) és [bemutatja, hogyan csatlakoztathat adatlemezt egy Windows virtuális gép](../../virtual-machines/windows/attach-managed-disk-portal.md).
+Lemezekkel kapcsolatos további információkért lásd: a [Bevezetés a managed Disks szolgáltatásba](../../virtual-machines/windows/managed-disks-overview.md) és [bemutatja, hogyan csatlakoztathat adatlemezt egy Windows virtuális gép](../../virtual-machines/windows/attach-managed-disk-portal.md).

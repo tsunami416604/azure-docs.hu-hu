@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 023f0e560900aa582be1f28e553358adb0c87b1e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 36b49002a5e947f2803e00974f242e49eb26d45b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118472"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309250"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés az Application Insights
 
@@ -113,6 +113,32 @@ Ha azt szeretné, a felhasználó nem a címtárban, meghívhatja munkatársait,
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
 * [Szerepköralapú hozzáférés-vezérlés az Azure-ban](../../role-based-access-control/role-assignments-portal.md)
+
+## <a name="powershell-query-to-determine-role-membership"></a>PowerShell-lekérdezést szerepköri tagság meghatározása
+
+Mivel az egyes szerepkörök kapcsolhatók értesítések és e-mail-értesítések lehet hasznos lehet létrehozni egy adott szerepkörhöz tartozó felhasználók listáját. Az ilyen típusú listák létrehozása érdekében az alábbi mintalekérdezések, amely lehet beállítani az adott igényeknek kínálunk:
+
+### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>Rendszergazdai szerepkörök + közreműködői szerepkörrel teljes előfizetés lekérdezése
+
+```powershell
+(Get-AzureRmRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
+
+### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>A tulajdonos és közreműködő egy adott Application Insights-erőforrást kontextusában lekérdezése
+
+```powershell
+$resourceGroup = “RGNAME”
+$resourceName = “AppInsightsName”
+$resourceType = “microsoft.insights/components”
+(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
+
+### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>A tulajdonos és közreműködő egy adott erőforráscsoportban kontextusában lekérdezése
+
+```powershell
+$resourceGroup = “RGNAME”
+(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
 
 <!--Link references-->
 

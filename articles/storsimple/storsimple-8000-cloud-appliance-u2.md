@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 33be58ae3ac5fcc8d0b35b240f9f378ccce134cc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 70a109b9aee46e6b6b65a9a5c139abdf1aa9bab9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387684"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330596"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>A StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban (3. frissítés és újabb)
 
@@ -45,7 +45,7 @@ A StorSimple felhőalapú készülék két modellben érhető el: a hagyományos
 | **Maximális kapacitás** |30 TB |64 TB |
 | **Azure virtuális gép** |Standard_A3 (4 mag, 7 GB memória)| Standard_DS3 (4 mag, 14 GB memória)|
 | **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot támogató Azure-régiók és DS3 Azure-beli virtuális gépek<br></br>[Ebben a listában](https://azure.microsoft.com/regions/services/) ellenőrizheti, hogy a **Virtuális gépek &gt; DS-sorozat** és a **Storage &gt; Disk Storage** termékek egyaránt elérhetők-e az adott régióban. |
-| **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](../virtual-machines/windows/premium-storage.md) |
+| **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br> |
 | **Útmutató a számítási feladatokhoz** |A fájlok elemszintű lekérése a biztonsági másolatokból |Felhőalapú fejlesztési és tesztelési forgatókönyvek <br></br>Kis késés és nagyobb teljesítményű számítási feladatok<br></br>Másodlagos vészhelyreállítási eszköz |
 
 <sup>1</sup>*Korábbi nevén az 1100-as*.
@@ -63,7 +63,7 @@ Az alábbi táblázat a StorSimple felhőalapú készülék és a StorSimple fiz
 |  | Fizikai eszköz | Felhőalapú készülék |
 | --- | --- | --- |
 | **Hely** |Az adatközpontban található. |Az Azure-ban fut. |
-| **Hálózati illesztők** |Hat hálózati adapterrel rendelkezik: DATA 0-tól DATA 5 számozásig. |Csak egy hálózati adapterrel rendelkezik: DATA 0. |
+| **Hálózati illesztők** |Hat hálózati adapterrel rendelkezik: DATA 0 DATA 5 számozásig. |Csak egy hálózati adapterrel rendelkezik: AZ ADATOK 0. |
 | **Regisztráció** |A rendszer a kezdeti konfigurációs lépés során regisztrálja. |A regisztráció egy külön feladat. |
 | **Szolgáltatásadat-titkosítási kulcs** |Újra létrejön a fizikai eszközön, majd az új kulccsal frissíti a felhőalapú készüléket. |A felhőalapú készülékről nem tud újra létrejönni. |
 | **Támogatott kötettípusok** |A helyileg rögzített és a rétegzett köteteket is támogatja. |Csak a rétegzett köteteket támogatja. |
@@ -94,7 +94,7 @@ A felhőalapú készülék kiépítése előtt a következő előkészületekre 
 Hajtsa végre a következő frissítéseket a StorSimple-eszközkezelő szolgáltatáson a felhőalapú készülék létrehozása előtt:
 
 * Vegyen fel [hozzáférés-vezérlési rekordokat](storsimple-8000-manage-acrs.md) azokhoz a gépekhez, amelyek a felhőalapú készülék gazdakiszolgálói lesznek.
-* A felhőalapú készülékkel megegyező régióban lévő [tárfiókot](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A felhőalapú készülékkel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [Standard Storage-fiók](../storage/common/storage-create-storage-account.md), illetve a [Premium Storage-fiók ](../virtual-machines/windows/premium-storage.md) létrehozásáról
+* A felhőalapú készülékkel megegyező régióban lévő [tárfiókot](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A felhőalapú készülékkel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a létrehozása egy [standard szintű tárfiók](../storage/common/storage-create-storage-account.md).
 * A felhőalapú készülék létrehozásához ne használja ugyanazt a tárfiókot, amelyet az adataihoz is használ. Ugyanazon tárfiók használata esetén a teljesítmény gyenge lehet.
 
 Mielőtt hozzákezd, ellenőrizze az alábbi információk meglétét:
@@ -108,7 +108,7 @@ Az eljárások végrehajtása előtt ellenőrizze, hogy teljesülnek-e [a felhő
 
 Az alábbi lépések végrehajtásával hozhat létre StorSimple felhőalapú készüléket.
 
-### <a name="step-1-create-a-cloud-appliance"></a>1. lépés: Felhőalapú készülék létrehozása
+### <a name="step-1-create-a-cloud-appliance"></a>1. lépés: A felhőalapú berendezés létrehozása
 
 Az alábbi lépések végrehajtásával létrehozhatja a StorSimple felhőalapú készüléket.
 
@@ -116,7 +116,7 @@ Az alábbi lépések végrehajtásával létrehozhatja a StorSimple felhőalapú
 
 Ha a felhőalapú készülék létrehozása ebben a lépésben meghiúsul, lehet, hogy nem rendelkezik internetkapcsolattal. Felhőalapú készülék létrehozásakor olvassa el az [internetkapcsolat hibáinak elhárításával](#troubleshoot-internet-connectivity-errors) foglalkozó szakaszt a további információk megtekintéséhez.
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>2. lépés: A felhőalapú készülék konfigurálása és regisztrálása
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>2. lépés: Konfigurálása és regisztrálása a felhőalapú készülék
 
 Mielőtt hozzákezdene ehhez az eljáráshoz, ellenőrizze, hogy rendelkezik-e a szolgáltatásadat-titkosítási kulcs másolatával. A szolgáltatásadat-titkosítási kulcs akkor jött létre, amikor az első StorSimple fizikai eszközt regisztrálta a StorSimple-eszközkezelő szolgáltatásban. A kulcsot biztonságos helyre kellett mentenie. Ha nem rendelkezik a szolgáltatásadat-titkosítási kulcs másolatával, akkor a Microsoft támogatási szolgálat segítségét kell kérnie.
 
@@ -124,7 +124,7 @@ A StorSimple felhőalapú készülék konfigurálásához és regisztrálásáho
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-the-device-configuration-settings"></a>3. lépés: (opcionális) Az eszköz konfigurációs beállításainak módosítása
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>3. lépés: (Nem kötelező) Az eszköz konfigurációs beállításainak módosítása
 
 Az alábbi szakasz azokat az eszközkonfigurációs beállításokat ismerteti, amelyek a StorSimple felhőalapú készülék számára szükségesek, ha a CHAP protokollt vagy a StorSimple Snapshot Managert kívánja használni, vagy módosítani szeretné az eszköz rendszergazdai jelszavát.
 
@@ -160,13 +160,13 @@ A felhőalapú berendezés a Windows PowerShell felületéről való elérése a
 
 Az alábbi kétlépéses eljárás bemutatja, hogyan lehet távolról csatlakozni a felhőalapú berendezéshez.
 
-### <a name="step-1-configure-remote-management"></a>1. lépés: A távfelügyelet konfigurálása
+### <a name="step-1-configure-remote-management"></a>1. lépés: Távfelügyelet konfigurálása
 
 A StorSimple Cloud Appliance távfelügyeletének konfigurálásához hajtsa végre az alábbi lépéseket.
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-the-cloud-appliance"></a>2. lépés: A felhőalapú berendezés távoli elérése
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>2. lépés: A felhőalapú berendezés távoli elérése
 
 Miután engedélyezte távfelügyeletet a felhőalapú berendezésen, a Windows PowerShell távoli eljáráshívás segítségével egy ugyanazon virtuális hálózatban lévő másik virtuális gépről is csatlakozhat a berendezéshez. Ez lehet például az a virtuális gazdagép, amelyet az iSCSI csatlakoztatásához használt és konfigurált. A legtöbb üzemelő példányban ekkor megnyit egy nyilvános végpontot a virtuális gazdagépe elérésére, amelyet a felhőalapú berendezés eléréséhez használhat.
 

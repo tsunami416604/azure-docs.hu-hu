@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: hascipio; v-divte; v-miclar
-ms.openlocfilehash: 535a947f7a4b9c750d585ce854a14be80c4a135c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 381f88c4641417bceca0f988d4b1a187aedaa642
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639783"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327306"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Virtuális merevlemez létrehozása (GYIK) során felmerülő gyakori hibák
 
@@ -27,7 +27,7 @@ A következő gyakori kérdések (GYIK) virtuális merevlemezt (VHD) és a virtu
 
 ## <a name="how-do-you-create-a-vm-from-the-azure-portal-using-the-vhd-that-is-uploaded-to-premium-storage"></a>Hogyan virtuális gép létrehozása a prémium szintű tárolóba feltöltött virtuális merevlemez használata az Azure Portalról
 
-Az Azure Marketplace jelenleg nem támogatja a létrehozása VM-ajánlatok rendszerképeket a felügyelt tárfiókok elhelyezkedhet, vagy az Azure Premium Storage-ból.  További információ a tárolási lehetőségek: [Azure Managed Disks – áttekintés](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) és [nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).
+Az Azure Marketplace jelenleg nem támogatja a létrehozása VM-ajánlatok rendszerképeket a felügyelt tárfiókok elhelyezkedhet, vagy az Azure Premium Storage-ból.  További információ a tárolási lehetőségek: [Azure Managed Disks – áttekintés](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
 
 
 ## <a name="can-you-use-generation-2-vms-for-offers"></a>Használhatja a 2. generációs virtuális gépek, amelyek?
@@ -73,7 +73,7 @@ Igen, ha az Azure-ban üzemeltetett.  Az Azure hozzárendeli egy egyedi azonosí
 
 ## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>A virtuális gép hogyan kezelhetők az egyéni szkriptek bővítményét az indítási feladat?
 
-A következő cikk részletesen bemutatja az egyéni Szkriptbővítmény használatával, az Azure PowerShell-modul, az Azure Resource Manager-sablonok és hibaelhárítási lépéseket a Windows rendszerek adatainak használata: [Custom Script bővítmény a Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
+A következő cikkben részletesen az egyéni Szkriptbővítmény használatával, az Azure PowerShell-modul, az Azure Resource Manager-sablonok és hibaelhárítási lépéseket a Windows rendszerek adatainak használata: [A Windows egyéni szkriptek futtatására szolgáló bővítmény](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Azok a 32 bites alkalmazások és szolgáltatások támogatott az Azure piactéren?
@@ -83,7 +83,7 @@ A következő cikk részletesen bemutatja az egyéni Szkriptbővítmény haszná
 További információkért tekintse át a következő cikkeket:
 - [32 bites alkalmazások futtatása](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
 - [Az Azure-beli virtuális gépek 32 bites operációs rendszerek támogatása](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
-- [Microsoft kiszolgálószoftveres támogatás a Microsoft Azure virtuális gépekhez](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
+- [Microsoft kiszolgálószoftveres támogatás a Microsoft Azure Virtual Machines szolgáltatáshoz](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 
 
 ## <a name="every-time-i-try-to-create-an-image-from-my-vhds-i-get-the-error-vhd-is-already-registered-with-image-repository-as-the-resource-in-powershell-i-did-not-create-any-image-before-nor-did-i-find-any-image-with-this-name-in-azure-how-do-i-resolve-this-issue"></a>Minden alkalommal, amikor megpróbálom-lemezkép készítése saját virtuális merevlemezek, a hibaüzenetet kapom `.VHD is already registered with image repository as the resource` a PowerShellben. Nem tudok hozott létre bármilyen kép előtt sem volt található ilyen nevű képet az Azure-ban. Hogyan oldhatom fel probléma?

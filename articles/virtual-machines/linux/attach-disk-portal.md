@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d24dcc6f12347c66abc033f4c8b25c3b49870a44
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d5dd916f7e4434640db6dae6f8c5a73d1ff2d3e0
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895771"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327959"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Adatlemez csatlakoztatása Linux rendszerű virtuális gép a portál használatával 
 Ez a cikk bemutatja, hogyan új és meglévő lemez csatlakoztatása Linux rendszerű virtuális gép az Azure Portalon keresztül. Emellett [adatlemez csatolása az Azure Portalon Windows virtuális gép](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -29,8 +29,7 @@ Ez a cikk bemutatja, hogyan új és meglévő lemez csatlakoztatása Linux rends
 Előtt a virtuális Géphez csatolt lemezek, tekintse át a következő tippeket:
 
 * A virtuális gép méretét szabályozza, hány adatlemez csatolható. További információkért lásd: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* A Premium storage használatához van szüksége egy DS vagy GS sorozatú virtuális gépet. Ezek a virtuális gépek Premium és standard szintű lemezek is használható. A Premium storage bizonyos régiókban érhető el. További információkért lásd: [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* A virtuális gépekhez csatolt lemezek, valójában az Azure-ban tárolt .vhd fájlok. További információkért lásd: [lemezek és virtuális merevlemezek, virtuális gépek](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* A virtuális gépekhez csatolt lemezek, valójában az Azure-ban tárolt .vhd fájlok. További információkért lásd: a [Bevezetés a managed Disks szolgáltatásba](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * A lemez csatolása, miután kell [segítségével csatlakoztassa az új lemezt a Linux rendszerű virtuális gép csatlakozni](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 

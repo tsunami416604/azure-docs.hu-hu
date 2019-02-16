@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja, hogyan nyújt az Azure Cosmos DB a magas rende
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fc818d2d7db60a8def99c2ad635580253dc795e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b5e99b421e66f087a1793f5301736e192ef75c08
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109758"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311239"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Az Azure Cosmos DB magas rendelkezésre állás
 
@@ -64,19 +64,7 @@ Regionális üzemkimaradások utáni helyreállításon nem ritkák, és az Azur
 
 - Akkor is, ha a Cosmos-fiók magas rendelkezésre állású, az alkalmazás lehetséges, hogy nem helyesen kialakítani, hogy továbbra is magas rendelkezésre állású. A végpontok közötti magas rendelkezésre állás az alkalmazás teszteléséhez rendszeres időközönként meghívása a [manuális feladatátvételt az Azure CLI-vel vagy az Azure portal használatával](how-to-manage-database-account.md#manual-failover), az alkalmazás tesztelésének vagy a vészhelyreállítás (DR) részeként gyakorlatokat.
 
-
-Az üzletmenet folytonosságát biztosító terve kidolgozásakor kell tudni, mielőtt az alkalmazás a zavaró eseményeket követő teljes helyreállításának maximális elfogadható idő. Az alkalmazás teljes helyreállításához szükséges időt a helyreállítási időre vonatkozó célkitűzés (RTO) néven ismert. Emellett ismernie kell a leghosszabb az alkalmazás működését, Adatfrissítés elvesztése zavaró eseményeket követő helyreállítása során. Az adott időszakban, előfordulhat, hogy elfogadható frissítések helyreállításipont-célkitűzés (RPO) néven ismert.
-
-Az alábbi táblázat a leggyakoribb forgatókönyvekben az RPO és RTO jeleníti meg.
-
-|Régió(k) száma |Konfiguráció |Konzisztenciaszint|Helyreállítási időkorlát |RTO |
-|---------|---------|---------|-------|-------|
-|1    | *    |*   | < 240 perc | < 1 hét |
-|>1     | Egyetlen főkiszolgálós replikációs | Session, Consistent Prefix, Eventual | < 15 perc | < 15 perc |
-|>1     | Egyetlen főkiszolgálós replikációs | Kötött elavulás | K &AMP; T | < 15 perc |
-|>1     | Több főkiszolgálós replikációs | Session, Consistent Prefix, Eventual | < 15 perc | 0 |
-|>1     | Több főkiszolgálós replikációs | Kötött elavulás | K &AMP; T | 0 |
-|>1     | * | Erős | 0 | < 15 perc |
+- Egy globálisan elosztott adatbázis-környezeten belül nincs közvetlen kapcsolat folytonosságát egy régióra kiterjedő szolgáltatáskimaradás konzisztencia szint és az adatok tartósságának között. Az üzletmenet folytonosságát biztosító terve kidolgozásakor kell tudni, mielőtt az alkalmazás a zavaró eseményeket követő teljes helyreállításának maximális elfogadható idő. Az alkalmazás teljes helyreállításához szükséges időt a helyreállítási időre vonatkozó célkitűzés (RTO) néven ismert. Emellett ismernie kell a leghosszabb az alkalmazás működését, Adatfrissítés elvesztése zavaró eseményeket követő helyreállítása során. Az adott időszakban, előfordulhat, hogy elfogadható frissítések helyreállításipont-célkitűzés (RPO) néven ismert. Az Azure Cosmos DB az RPO és RTO megtekintéséhez lásd: [konzisztencia szinteket és az adatok tartóssága](consistency-levels-tradeoffs.md#rto)
 
 ## <a name="next-steps"></a>További lépések
 

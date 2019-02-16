@@ -10,18 +10,18 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 02/12/2019
+ms.date: 02/14/2019
 ms.author: juliako
-ms.openlocfilehash: ce022e22cc98dd218dff4840f686464233f99c72
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 20dbd0025828d5acf07227f8cced4e2d234db200
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176344"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308485"
 ---
 # <a name="create-an-azure-media-services-account"></a>Azure Media Services-fiók létrehozása
 
-Indítsa el a titkosítása, kódolás, elemzése, kezelése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. A időpontban hoz létre egy Media Services-fiók, emellett létrehoz egy társított storage-fiók (vagy használjon egy meglévőt).  
+Indítsa el a titkosítása, kódolás, elemzése, kezelése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. Amikor hoz létre egy Media Services-fiókot Ön is társított storage-fiók létrehozása (vagy használjon egy meglévőt).  
 
 > [!NOTE]
 > A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez kell lennie. Erősen ajánlott a storage-fiókok használata a Media Services-fiók ugyanazon a helyen a további késleltetés és az adatok kimenő adatforgalmi költségek elkerülése érdekében.

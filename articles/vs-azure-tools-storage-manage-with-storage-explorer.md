@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 77763765e75500d994235bba0a5c0c3bb3e3be70
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9917901146eb0a050531a66ab24fbd88c91c02c9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756818"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311205"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer használatának első lépései
 
@@ -221,7 +221,7 @@ E forgatókönyv szemléltetésére tegyük fel, hogy az „A” felhasználó v
 
 3. Tártallózó csatolni a fiókot, amely a megadott SAS használatával "a" felhasználó tartozik.
 
-### <a name="generate-a-sas-connection-string-for-the-account-you-want-to-share"></a>Hozzon létre egy SAS-kapcsolati karakterláncot a megosztani kívánt fiókhoz
+### <a name="generate-a-sas-query-string-for-the-account-you-want-to-share"></a>Hozzon létre egy SAS lekérdezési karakterláncot a megosztani kívánt fiókhoz
 
 1. A Storage Explorerben kattintson a jobb gombbal szeretné megosztani, és válassza ki a tárfiók **közös hozzáférésű Jogosultságkód beolvasása...** .
 
@@ -231,7 +231,7 @@ E forgatókönyv szemléltetésére tegyük fel, hogy az „A” felhasználó v
 
     ![SAS beszerzése párbeszédpanel][15]
 
-3. Mellett a **kapcsolati karakterlánc** szövegbeviteli mezőben válasszon ki **másolási** másolja a vágólapra, majd **Bezárás**.
+3. Mellett a **lekérdezési karakterlánc** szövegbeviteli mezőben válasszon ki **másolási** másolja a vágólapra, majd **Bezárás**.
 
 ### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>Tárfiók csatolása SAS kapcsolati karakterlánc használatával
 

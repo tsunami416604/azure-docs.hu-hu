@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 0bca7281c390388bd860219fb6f2eacb96b99df0
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: d6e1cc033416c90e27b5caf4bba310400e55b3a5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742388"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312280"
 ---
 # <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
 
@@ -38,6 +38,9 @@ A HTTP-kérelem útválasztási bővítmény engedélyezhető az Azure CLI-vel e
 ```azurecli
 az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addons http_application_routing
 ```
+
+> [!TIP]
+> Ha több bővítmények engedélyezni szeretné, adja meg őket egy vesszővel tagolt lista formájában. Például a HTTP-alkalmazások útválasztása és figyelés engedélyezéséhez használja a formátumot `--enable-addons http_application_routing,monitoring`.
 
 HTTP-útválasztás a meglévő AKS fürt használatával is engedélyezheti a [az aks enable-bővítmények] [ az-aks-enable-addons] parancsot. HTTP-útválasztás a meglévő fürt engedélyezéséhez vegye fel a `--addons` paramétert, és adja meg *http_application_routing* az alábbi példában látható módon:
 

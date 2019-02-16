@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f065a7c428f191e37449145e946b26c3133ede05
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cc8c10f8a3f515d3401dbb469a7e4a31c4fe3501
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700003"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329813"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics keresések referenciaadatok használata
 Referenciaadatok (más néven egy keresési táblázat) egy véges adatkészlet, amely statikus vagy lassan változó természetű, használja a keresés végrehajtásához vagy korrelációját, ha az adatfolyamban. Például egy IoT-forgatókönyvet, sikerült (amelyek nem változnak gyakran) vonatkozó metaadatokat tárolnak a referenciaadatok és csatlakozik azt a valós idejű IoT-adatfolyamaiból. Az Azure Stream Analytics közel valós idejű adatfolyam-feldolgozás eléréséhez a memóriában referenciaadatok tölti be. Győződjön meg arról, hogy az Azure Stream Analytics-feladat a referenciaadatok, az általában használhat egy [referencia-adatok csatlakozzon](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. 
@@ -74,7 +74,7 @@ Az Azure Stream Analytics automatikus vizsgálatokat végez a frissített a refe
 
 ## <a name="azure-sql-database-preview"></a>Az Azure SQL Database (előzetes verzió)
 
-Az Azure SQL Database referenciaadatok a Stream Analytics-feladat által beolvasott és pillanatképet készít a memóriában feldolgozáshoz tárolja. A referenciaadatok pillanatképe is egy tároló, amely a konfigurációs beállításaiban megadott tárfiókban tárolja. A tároló az automatikusan létrehozott a feladat indulásakor és automatikusan lekéri törlődik a feldolgozás leáll.
+Az Azure SQL Database referenciaadatok a Stream Analytics-feladat által beolvasott és pillanatképet készít a memóriában feldolgozáshoz tárolja. A referenciaadatok pillanatképe is egy tároló, amely a konfigurációs beállításaiban megadott tárfiókban tárolja. A tároló az automatikusan létrehozott a feladat indításakor. Ha a feladat leállt, vagy sikertelen állapotba kerül, az automatikusan létrehozott tárolókat a feladat újraindításakor törli.  
 
 Lassan változó adatkészlet a referenciaadatok esetén időközönként frissíti a pillanatképet, a feladat használt van szükség. Stream Analytics lehetővé teszi az Azure SQL Database bemeneti kapcsolat konfigurálásakor beállított egy frissítési gyakoriság. A Stream Analytics modul az Azure SQL Database lekérdezi a frissítési gyakoriság a megadott időközönként. A leggyorsabb támogatott frissítési gyakoriság percenként egyszer történik. Minden frissítés egy új pillanatkép Stream Analytics a megadott tárfiók tárolja.
 

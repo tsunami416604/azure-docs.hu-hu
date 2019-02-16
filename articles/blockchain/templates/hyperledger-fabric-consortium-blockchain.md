@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: 884f6a81796341e274027095691585212d5a3749
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: acbd41b7203e458a5ed60382354c862748863053
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830297"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328027"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric consortium network
 
@@ -113,7 +113,7 @@ A **Fabric konfigurációs**, hálózati méretének és teljesítményének meg
 | Paraméter neve | Leírás | Megengedett értékek |
 |---|---|---|
 **Lépték típusa**|A központi telepítési típus több tárolót egyetlen virtuális gép vagy egy több virtuális gép egy horizontális felskálázási modellben.|Egyetlen virtuális Gépet vagy virtuális gépre kiterjedő |
-**Virtuálisgép-lemez típusa**|A tárolás, a üzembe helyezett csomópontok biztonsági típusát. <br/> További storage-ról, látogasson el [a Microsoft Azure Storage bemutatása](https://docs.microsoft.com/azure/storage/common/storage-introduction) és [prémium szintű Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).|Standard SSD <br/> Prémium SSD |
+**Virtuálisgép-lemez típusa**|A tárolás, a üzembe helyezett csomópontok biztonsági típusát. <br/> A rendelkezésre álló szabad típusaival kapcsolatos további tudnivalókért látogasson el a [válassza ki a lemez típusát](../../virtual-machines/windows/disks-types.md).|Standard SSD <br/> Prémium SSD |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>Több virtuális gép üzembe helyezése (további beállításokat)
 

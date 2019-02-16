@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 94482666d0db3157b0c18c0b47f9937457172521
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 18258bf8ac9d241fd8a01957d903b1db882c2d36
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115997"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326874"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>A tárolótípus felügyelt lemez frissítése
 
-Az Azure Managed Disks három tárolási típus lehetőséget kínál: [Prémium szintű SSD](../windows/premium-storage.md), [Standard SSD](../windows/disks-standard-ssd.md), és [Standard HDD](../windows/standard-storage.md). Felügyelt lemez közötti tárolási teljesítmény igényei szerinti minimális állásidővel válthat. A tárolási típusok közötti váltás nem támogatott; a nem felügyelt lemez azonban egyszerűen [egy nem felügyelt lemez konvertálása felügyelt lemez](convert-unmanaged-to-managed-disks.md).
+Azure által felügyelt lemezek ajánlatok négy tárolási típus beállításai: Ultranagy tartós állapotú meghajtókkal (SSD), a prémium szintű SSD, a Standard SSD és a szabványos merevlemez-meghajtókon (HDD). Felügyelt lemez közötti tárolási teljesítmény igényei szerinti minimális állásidővel válthat. A tárolási típusok közötti váltás nem támogatott; a nem felügyelt lemez azonban egyszerűen [egy nem felügyelt lemez konvertálása felügyelt lemez](convert-unmanaged-to-managed-disks.md).
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
@@ -35,6 +35,7 @@ Az Azure Managed Disks három tárolási típus lehetőséget kínál: [Prémium
 * Ha egy nem felügyelt lemez használata először [alakíthatja át egy felügyelt lemezt](convert-unmanaged-to-managed-disks.md) lehetővé teszi a tárolási típusok közötti váltani. 
 * Ebben a cikkben szereplő példák az Azure PowerShell-modul verzióját 6.0.0 megkövetelése vagy újabb. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Futtatás [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) kapcsolat létrehozása az Azure-ral.
 
+* Ebben a cikkben szereplő példák az Azure PowerShell-modul verzióját 6.0.0 megkövetelése vagy újabb. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Futtatás [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) kapcsolat létrehozása az Azure-ral.
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>A felügyelt lemezek, a virtuális gépek premium standard átalakítása
 

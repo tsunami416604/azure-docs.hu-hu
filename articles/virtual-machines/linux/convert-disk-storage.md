@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 42b0b7a1ca2767a7051a6c57ef2aeac8cf2bb64c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 10dc7a2c7e4de44979ec72b1d292c69866e1faae
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477403"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326408"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Átalakítása az Azure disks storage felügyelt standardról prémium szintre, és fordítva
 
-A felügyelt lemezek ajánlatok három tárolási lehetőségek: [Prémium szintű SSD](../windows/premium-storage.md), Standard SSD és [Standard HDD](../windows/standard-storage.md). Lehetővé teszi a teljesítmény igények alapján minimális állásidővel lehetőségek közötti egyszerű váltást. Nem felügyelt lemezek esetén ez nem támogatott. De könnyen [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) egyszerűen a lemeztípusok közötti váltáshoz.
+A felügyelt lemezek kínál négy [lemeztípus](disks-types.md) beállítások: Ultranagy szemben – tartós állapotú meghajtót (SSD), a prémium szintű SSD, a szabványok SSD és a szabványos merevlemez-meghajtó (HDD). Lehetővé teszi a teljesítmény igények alapján minimális állásidővel lehetőségek közötti egyszerű váltást. Nem felügyelt lemezek esetén ez nem támogatott. De könnyen [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) egyszerűen a lemeztípusok közötti váltáshoz.
 
 Ez a cikk bemutatja a felügyelt lemezek konvertálása a standard, prémium szintű, és fordítva az Azure parancssori felület használatával. Ha szeretné telepíteni, vagy frissít a csomagon belül, lásd: [Azure CLI telepítése](/cli/azure/install-azure-cli). 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 * Az átalakításhoz újra kell indítani a virtuális gép, ezért ütemezze a lemezek tároló áttelepítése egy már létező karbantartási időszakra. 
-* Ha először használja a nem felügyelt lemezek [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) Ez a cikk használatával válthat a tárolási lehetőségek között. 
+* Ha először használja a nem felügyelt lemezek [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) Ez a cikk használatával válthat a tárolási lehetőségek között.
 
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>A felügyelt lemezek, a virtuális gépek konvertálása standard prémium szintre, és ez fordítva is igaz

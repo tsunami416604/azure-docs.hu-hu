@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c4a7239110e0d3e712c97007ecc858f104811cc
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 53f1e8edc4286c2afbdf3b6909499a2e3fccfa5d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301689"
+ms.locfileid: "56313262"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Az Azure AD Connect Health-ügynök telepítése
 Ez a dokumentum végigvezeti az Azure AD Connect Health-ügynökök telepítésének és konfigurálásának folyamatán. Az ügynököt [innen](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent) töltheti le.
@@ -42,7 +42,7 @@ Az alábbi táblázat az Azure AD Connect Health használatának követelményei
 |A FIPS letiltása|Az Azure AD Connect Health-ügynökök nem támogatják a FIPS-t.|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Kimenő kapcsolódás az Azure szolgáltatásvégpontokra
- A telepítés és a futásidő során az ügynöknek kapcsolódnia kell az Azure AD Connect Health szolgáltatás végpontjaihoz. Ha tűzfalakkal blokkolta a kimenő kapcsolatot, győződjön meg róla, hogy az alábbi végpontok fel vannak véve az engedélyezett listára. További információ a [kimenő kapcsolódás ellenőrzéséről](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
+ A telepítés és a futásidő során az ügynöknek kapcsolódnia kell az Azure AD Connect Health szolgáltatás végpontjaihoz. Amennyiben blokkolta a kimenő kapcsolatot tűzfalakat használ, győződjön meg arról, hogy az a következő URL-címek nem blokkolja-e alapértelmezett. Ne tiltsa le a biztonsági monitoringgal vagy az alábbi URL-címek vizsgálata, de a őket, mint más internetes forgalmat. Az Azure AD Connect Health szolgáltatás végpontjaihoz kommunikációt engedélyezze azokat. További információ a [kimenő kapcsolódás ellenőrzéséről](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
 
 | Tartománykörnyezet | Szükséges Azure-szolgáltatásvégpontok |
 | --- | --- |

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: f8b23533127b9798e5a677f646f94ae0a53fcde8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1ca2b032497298bab5bedbf8ddc73987fa08c7df
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822408"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313551"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL lekérdezési példák
 
@@ -1369,13 +1369,13 @@ A matematika függvényekkel hajtsa végre a számítási, amelyek argumentumké
 | CEILING (num_expr) | A legkisebb egész értéket ad vissza, nagyobb vagy egyenlő a megadott numerikus kifejezés. |
 | FLOOR (num_expr) | Visszaadja a legnagyobb egész szám kisebb vagy egyenlő a megadott numerikus kifejezés. |
 | EXP (num_expr) | A megadott numerikus kifejezés hatványát adja vissza. |
-| [NAPLÓ (num_expr [, Alap])](#bk_log) | A megadott numerikus kifejezés, vagy a megadott használatával logaritmus természetes alapú logaritmusát adja vissza |
+| NAPLÓ (num_expr, base) | A megadott numerikus kifejezés, vagy a megadott használatával logaritmus természetes alapú logaritmusát adja vissza |
 | LOG10 (num_expr) | A megadott numerikus kifejezés 10-es logaritmikus értékét adja vissza. |
 | ROUND (num_expr) | Egy numerikus értéket, kerekítve a legközelebbi egész értéket ad vissza. |
 | TRUNC (num_expr) | Egy numerikus érték, csonkolva, a legközelebbi egész értéket ad vissza. |
 | SQRT (num_expr) | A megadott numerikus kifejezés négyzetgyökét adja vissza. |
 | SQUARE (num_expr) | A megadott numerikus kifejezés négyzetét adja vissza. |
-| [ENERGIAGAZDÁLKODÁSI (num_expr, num_expr)](#bk_power) | A megadott numerikus kifejezés hatékonyságát megadott értéket adja vissza. |
+| POWER (num_expr, num_expr) | A megadott numerikus kifejezés hatékonyságát megadott értéket adja vissza. |
 | BEJELENTKEZÉS (num_expr) | A bejelentkezés (-1, 0, 1) a megadott numerikus kifejezés értékét adja vissza. |
 | ACOS (num_expr) | Adja vissza a szög radiánban, amelynek a koszinusza a megadott numerikus kifejezés; egy szám arkusz koszinusza néven is ismert. |
 | ASIN (num_expr) | Adja vissza a szög radiánban, amelynek szinusza a megadott numerikus kifejezés. Ez a függvény egy szám arkusz szinusza is nevezik. |

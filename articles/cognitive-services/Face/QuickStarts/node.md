@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 11/09/2018
+ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 9b30e9da523e564f531ec8e9cebe5b16653e579f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bbb5cf9a043f8f4ab4202b6113d1c1b915f3b8a0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858875"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312769"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Gyors útmutató: Arcfelismerés a képet, a Face REST API és a Node.js használatával
 
@@ -26,12 +26,21 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
+- Például egy Kódszerkesztő [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="create-the-nodejs-script"></a>A Node.js-parancsprogram létrehozása
+## <a name="set-up-the-node-environment"></a>A csomópont-környezet beállítása
 
-A következő kódot a Face API-t, és a egy rendszerképből face attribútum adatok lekérése. Először másolja be a kódot egy szövegszerkesztőbe&mdash;kell hajtania néhány módosítást, mielőtt is futtatható legyen.
+Keresse meg a mappát a projekt létrehozásához, és hozzon létre egy új fájlt, hova *facedetection.js*. Majd telepítse a `requests` modul ezen projekthez. Ez lehetővé teszi, hogy a HTTP-kéréseket a parancsfájlokat.
 
-```nodejs
+```shell
+npm install request --save
+```
+
+## <a name="write-the-nodejs-script"></a>A Node.js-parancsfájl írásához
+
+Illessze be az alábbi kódot *facedetection.js*. Ezek a mezők adja meg, hogyan csatlakozhat a Face szolgáltatás és a bemeneti adatok beszerzése. Frissíteni kell a `subscriptionKey` mező értékét az előfizetési kulcs, és előfordulhat, hogy módosítania kell a `uriBase` úgy, hogy a megfelelő régióazonosító tartalmaz (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban listája végpontok). Előfordulhat, hogy szeretné megváltoztatni a `imageUrl` mezőt, hogy a saját bemeneti kép mutasson.
+
+```javascript
 'use strict';
 
 const request = require('request');
@@ -46,7 +55,12 @@ const uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/det
 
 const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
+```
 
+Ezután adja hozzá a következő kódot a Face API-t és a face attribútum adatokat kérhet le a bemeneti kép. A `returnFaceAttributes` mező határozza meg, melyik face attribútumok lekéréséhez. Előfordulhat, hogy módosítani kívánja ezt a karakterláncot, a felhasználás céljának függően.
+
+
+```javascript
 // Request parameters.
 const params = {
     'returnFaceId': 'true',
@@ -76,26 +90,12 @@ request.post(options, (error, response, body) => {
 });
 ```
 
-### <a name="subscription-key"></a>Előfizetői azonosító
-Cserélje le `<Subscription Key>` az Arcfelismerés érvényes előfizetési kulccsal végzett.
-
-### <a name="face-endpoint-url"></a>Face végpont URL-címe
-
-Az URL-cím `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` azt jelzi, hogy a lekérdezés Azure Face végpontot. Előfordulhat, hogy módosítania az URL-címet, a régiót, amelyben felel meg az előfizetési kulcs megfelelő első része (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját).
-
-### <a name="url-query-string"></a>URL-cím lekérdezési karakterlánc
-
-A `returnFaceAttributes` mező határozza meg, melyik face attribútumok lekéréséhez. Előfordulhat, hogy módosítani kívánja ezt a karakterláncot, a felhasználás céljának függően.
-
-### <a name="image-source-url"></a>Forrás URL-címe
-A `imageUrl` bemeneteként használni kívánt lemezkép jelzi. Módosíthatja ezt a képet az elemezni kívánt mutasson.
-
 ## <a name="save-and-run-the-script"></a>Mentse és futtassa a parancsfájlt
 
-Miután végzett a módosításokat, mentse a fájlt egy JavaScript (.js) parancsfájlt. Ezután nyisson meg egy parancssort, és futtassa azt a `node` parancsot.
+Miután végzett a módosításokat, nyisson meg egy parancssort, és futtassa a fájlt a `node` parancsot.
 
 ```
-node myfile.js
+node facedetection.js
 ```
 
 Megtekintheti az arcfelismerési adatokat JSON-adatok a konzolablakban jelenik meg. Példa:
@@ -281,7 +281,7 @@ Megtekintheti az arcfelismerési adatokat JSON-adatok a konzolablakban jelenik m
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a rövid útmutatóban okkal készítette el a cURL-parancsot, amely meghívja ezt az Azure Face API a képet arcok észlelése és attribútumaik. Ezután megkezdheti a Face API dokumentációja további.
+Ez a rövid útmutatóban egy Node.js-parancsfájl, amely meghívja ezt az Azure Face API a képet arcok észlelése és attribútumaik megírt. Ezután megkezdheti a Face API dokumentációja további.
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: fd5f58a03ffd054e79f1ff4ea6d61c33c06b6e7c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9cd43172fc57443cc89f238e1d4ffaae45301936
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268549"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330562"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Hozzon létre egy alapszintű indexet az Azure Search szolgáltatásban
 
@@ -110,7 +110,10 @@ A [ *gyűjtemény mezők* ](#fields-collection) általában a legnagyobb része 
 }
 ```
 
-## <a name="fields-collection-and-attribution"></a>Mezők gyűjteménye és tesznek elérhetővé; ilyenek
+<a name="fields-collection"></a>
+
+## <a name="fields-collection-and-field-attributes"></a>Gyűjtemény- és mezőnevek attribútumok mezők
+
 A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és attribútumokat kell rendelni. Az adott mezőben található adatok osztályozása a mező típusa szerint történik. Az egyes mezők használati módjának megadásához attribútumokat állítunk be. Az itt megadható típusokat és attribútumokat az alábbi tábla sorolja fel.
 
 ### <a name="data-types"></a>Adattípusok
@@ -139,7 +142,7 @@ Részletesebb információkat az Azure Search által [támogatott adattípusokr�
 
 Részletesebb információkat az Azure Search [indexattribútumairól itt](https://docs.microsoft.com/rest/api/searchservice/Create-Index) talál.
 
-## <a name="storage-implications-of-index-attributes"></a>Storage – következmények indexattribútumokat
+## <a name="storage-implications"></a>Storage – következmények
 
 A kiválasztott attribútumok hatással a storage. Az alábbi képernyőképen egy index tárolási minták származó különböző attribútumkombinációval ábrája. Az index alapján a [beépített realestate-minta](search-get-started-portal.md) indexelésére használhatja, adatforrás és lekérdezés a portálon.
 
@@ -147,7 +150,9 @@ Szűrési és rendezési műveleteket lekérdezés a pontos egyezések így átv
 
 ![Index mérete alapján attribútum kiválasztása](./media/search-what-is-an-index/realestate-index-size.png "Index mérete alapján attribútum kiválasztása")
 
-Tárolás megvalósítása az Azure Search egy implementálási részlete minősülnek, és előzetes értesítés nélkül változhatnak. Nincs garancia arra, hogy a jelenlegi működése a jövőben megmaradnak.
+Számos, a következő billentyűkombinációk mesterséges, hasznos, ha egy pont átvilágított, de nem működőképes index eredményez. A gyakorlatban, lenne soha nem adja hozzá minden egyes mezőjéhez egy javaslattevő, vagy hozzon létre egy index, kereshető, de nem lekérdezhető.
+
+Tároló-architektúra az Azure Search egy implementálási részlete minősülnek, és előzetes értesítés nélkül változhatnak. Nincs garancia arra, hogy a jelenlegi működése a jövőben megmaradnak.
 
 ## <a name="suggesters"></a>Javaslattevők
 A javaslattevő egy a sémát, amely meghatározza, hogy melyik index mezőinek automatikus kiegészítés vagy a szövegkiegészítéses lekérdezések támogatásához a keresésekben használt szakaszában. Általában részleges keresési karakterláncokat kell küldeni a javaslatok (Azure Search szolgáltatás REST API) a felhasználó éppen gépel egy keresési lekérdezést, majd azt az API-t a javasolt kifejezések készletét adja vissza. 

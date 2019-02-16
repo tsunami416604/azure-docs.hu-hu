@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 6b5605a8e3a80d597a4a4a78d015fa556c282357
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 3a4304301b99369426aa985508d6cabd26ba2c9f
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465724"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326959"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás prémium szintű tárolóba az Azure Site Recovery használatával
 
-[Az Azure Premium Storage](premium-storage.md) lemeztámogatást biztosít nagy teljesítményű, kis késleltetésű I/O-igényes számítási feladatokat futtató virtuális gépek (VM). Az útmutató segítségével telepítheti át a VM-lemezeit, egy standard szintű storage-fiókból premium storage-fiók használatával [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
+[Az Azure prémium szintű SSD-k](disks-types.md) lemeztámogatást biztosít nagy teljesítményű, kis késleltetésű I/O-igényes számítási feladatokat futtató virtuális gépek (VM). Az útmutató segítségével telepítheti át a VM-lemezeit, egy standard szintű storage-fiókból premium storage-fiók használatával [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
 
 Site Recovery szolgáltatás egy Azure-szolgáltatás, amely replikálja a helyszíni fizikai kiszolgálóknak és virtuális gépek az Azure-felhőbe vagy egy másodlagos adatközpontba a üzletmenet-folytonossági és vészhelyreállítási stratégia megvalósításában. Amikor a leállások esetén az elsődleges helyen, átadja a feladatokat a másodlagos helynek, így az alkalmazások és számítási feladatok nem állnak. Visszaadja a feladatokat az elsődleges helyen amikor visszatér a normál működést. 
 
@@ -220,7 +220,7 @@ Azt is ellenőrizze, tudjon meg többet az Azure Storage és az Azure Virtual Ma
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](premium-storage.md)
+* [Válassza ki a lemez típusát IaaS virtuális gépekhez](disks-types.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

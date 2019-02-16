@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7b937158be39f9a1f7f9374611a150fd11837f02
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910266"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309117"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások Machine Learning-szolgáltatások az Azure HDInsight
 
@@ -119,9 +119,9 @@ Miután hozzon létre egy jelszót, és nevezze el az egyszerű szolgáltatás k
 
 Akkor is fürt hozzáférés hozzáadása a fürt létrehozása a következő egy vagy több Data Lake Storage fiókok. Nyissa meg az Azure portal bejegyzés egy Data Lake Storage számára, majd **adatkezelő > hozzáférés > Hozzáadás**. 
 
-### <a name="how-to-access-data-lake-storage-from-ml-services-on-hdinsight"></a>Machine Learning szolgáltatások a HDInsight a Data Lake Storage elérése
+### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>Machine Learning szolgáltatások a HDInsight a Data Lake Storage Gen1 elérése
 
-A Data Lake Storage hozzáférést adott, miután a storage használható a Machine Learning-szolgáltatások HDInsight-fürt egy másodlagos Azure-tárfiók ugyanúgy. Az egyetlen különbség, hogy az előtag **wasb: / /** vált **adl: / /** módon:
+A Data Lake Storage Gen1 hozzáférést adott, miután a storage használható a Machine Learning-szolgáltatások HDInsight-fürt egy másodlagos Azure-tárfiók ugyanúgy. Az egyetlen különbség, hogy az előtag **wasb: / /** vált **adl: / /** módon:
 
 
     # Point to the ADL Storage (e.g. ADLtest)
@@ -143,7 +143,7 @@ A Data Lake Storage hozzáférést adott, miután a storage használható a Mach
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-A következő parancsok segítségével konfigurálja a Data Lake-tárfiókra RevoShare címtárhoz, és adja hozzá a .csv-mintafájlt az előző példában:
+A következő parancsok segítségével konfigurálja a Data Lake Storage Gen1 fiókot RevoShare címtárhoz, és adja hozzá a .csv-mintafájlt az előző példában:
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user

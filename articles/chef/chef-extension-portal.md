@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 336ac6b81a56797ad1c1254322dbeec3e36914f3
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d7728dd5c025a88f8912dca708abc45ab519ce2c
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358150"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327544"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>A Chef-ügyfél telepítése az Azure Portalról
 A Chef ügyféloldali bővítmény közvetlenül be egy Linux vagy Windows gépen is hozzáadhat az Azure Portalról. Ez a cikk végigvezeti a folyamatot egy új Linux rendszerű virtuális gép használatával.
@@ -53,7 +53,7 @@ Ebben a szakaszban először hozhat létre Linux rendszerű gépen fogja haszná
 1. Az a **alapjai** lapot, adja meg a következő értékeket, majd **OK**.
 
     - **Név** – adja meg az új virtuális gép nevét.
-    - **Virtuális merevlemez típusa** -vagy **SSD** vagy **HDD** tartozó tárolólemez típusának. Azure-beli virtuális gép lemeztípusokkal kapcsolatos további információkért tekintse meg a cikket [nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez](/azure/virtual-machines/windows/premium-storage).
+    - **Virtuális merevlemez típusa** -vagy **SSD** vagy **HDD** tartozó tárolólemez típusának. Azure-beli virtuális gép lemeztípusokkal kapcsolatos további információkért tekintse meg a cikket [válassza ki a lemez típusát](../virtual-machines/windows/disks-types.md).
     - **Felhasználónév** – adja meg a virtuális gép rendszergazdai jogosultsággal rendelkező felhasználó nevét.
     - **Hitelesítési típus** – ki **jelszó**. Lehetőség kiválasztásával **nyilvános SSH-kulcs**, és adja meg az SSH nyilvános kulcs értékét. A bemutatóhoz (és a képernyőképeket), célokra **jelszó** van kiválasztva.
     - **Jelszó** és **jelszó megerősítése** – adjon meg egy jelszót a felhasználó számára.

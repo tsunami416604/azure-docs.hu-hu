@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea83d061f7160db04c847be66e79da60da78634d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d325cfd679c2a8b878ae9a7b483431aba32b2a5a
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662907"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313279"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Linux-alapú HDInsight-fürtök testreszabása szkriptműveletek használatával
 
@@ -55,7 +55,7 @@ Szkriptműveletet egy HDInsight-fürt csomópontjain futó Bash-szkript. Jellemz
 
     * Egy Azure Data Lake Storage-fiók, amely a HDInsight-fürt által elérhető. Az Azure Data Lake Storage használata a HDInsight további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-        Az URI-t Data Lake Storage-ban tárolt parancsfájlok formátuma `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
+        Az URI-t a Data Lake Storage Gen1 tárolt parancsfájlokat formátuma `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
 
         > [!NOTE]  
         > HDInsight Data Lake Storage elérésére használja a szolgáltatásnév a parancsfájl olvasási hozzáféréssel kell rendelkeznie.

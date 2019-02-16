@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3e7284932199a97fa5256e1deea09fadeb01f29b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7b3fe280ced4bfe397bcf168e529600417c62e57
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869500"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311417"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-python-in-computer-vision"></a>Gyors útmutató: A REST API-t és a Python használatával a Computer Vision kézzel írt szöveg kinyerése
 
@@ -405,10 +405,6 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely kiel
   }
 }
 ```
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha már nincs rá szükség, törölje a fájlt.
 
 ## <a name="next-steps"></a>További lépések
 

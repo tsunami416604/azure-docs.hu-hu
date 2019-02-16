@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 594ebb6a3c82c9b9dd3ee03a8083abf052d20f49
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991327"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310934"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor metrikaböngészőjének
 
@@ -100,20 +100,6 @@ Jeleníthetik meg egymással szembeni metrika összehasonlítási különböző 
    > [!NOTE]
    > Szűrés és a megosztás egyazon dimenzió használatával a szegmensek nem releváns, mivel a forgatókönyvhöz, és könnyebben olvashatóvá teszi a diagramok elrejtése.
 
-### <a name="new-alert-rule"></a>Új riasztási szabály
-
-A feltételeknek, a metrikák megjelenítése a metrika az alapul szolgáló logikai alapon alapuló riasztási szabály meg is használhatja. 
-
-Ha rákattint **Új riasztási szabály**
-
-![Vörös színnel Új riasztási szabály gomb](./media/metrics-charts/015.png)
-
-Megnyílik a riasztási szabály létrehozása panelre az alapul szolgáló metrika dimenziókkal létrehozni az egyéni riasztási szabályok könnyebb előre fel van töltve a diagram.
-
-![Riasztási szabály létrehozása](./media/metrics-charts/016.png)
-
-Tekintse meg ezt [cikk](alerts-metric.md) további metrikákhoz kapcsolódó riasztások beállításával kapcsolatban.
-
 ## <a name="lock-boundaries-of-chart-y-axis"></a>Zárolási határok diagram y tengely
 
 Az y tengely skáláját zárolás akkor válik fontossá, amikor a diagram bemutatja a nagyobb érték kisebb ingadozások által megkövetelt. 
@@ -138,6 +124,20 @@ Az irányítópult konfigurált diagram rögzítése:
 Miután a diagramot, kattintson a a **diagram műveletek** menüben kattintson a jobb felső sarokban, a diagram, és kattintson a **rögzítés az irányítópulton**.
 
 ![metrika kép](./media/metrics-charts/00013.png)
+
+## <a name="create-alert-rules"></a>Riasztási szabályok létrehozása
+
+A feltételeknek, a metrikák megjelenítéséhez metrika alapján alapuló riasztási szabály meg is használhatja. Az Új riasztási szabály a célként megadott erőforrás, metrika, felosztását és szűrő dimenziók a diagram tartalmazza. Fogja tudni módosítani ezeket a beállításokat később a riasztási szabály létrehozása panelen.
+
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Egy új riasztási szabály létrehozásához kattintson a **Új riasztási szabály**
+
+![Vörös színnel Új riasztási szabály gomb](./media/metrics-charts/015.png)
+
+Megnyílik a riasztási szabály létrehozása panelre az alapul szolgáló metrika dimenziókkal létrehozni az egyéni riasztási szabályok könnyebb előre fel van töltve a diagram.
+
+![Riasztási szabály létrehozása](./media/metrics-charts/016.png)
+
+Tekintse meg ezt [cikk](alerts-metric.md) további metrikákhoz kapcsolódó riasztások beállításával kapcsolatban.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

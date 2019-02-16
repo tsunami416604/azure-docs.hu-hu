@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 1/29/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 85c5947fa32751bd8381d6a1d59e91ba2026f5f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: be6823486490ca6bc414e89c62a22f996aa27089
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822782"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329948"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-bA VMware virtuális gépek replikálásának engedélyezése
 
@@ -88,7 +88,7 @@ Ezután ellenőrizheti a forrásgép tulajdonságait. Ne feledje, hogy az Azure 
 2. A **Tulajdonságok** résznél tekintheti meg a virtuális gép replikációs és feladatátvételi adatait.
 3. A **számítás és hálózat** > **számítási tulajdonságok**, több virtuális gép propoerties módosíthatja:
 * Az Azure virtuális gép neve – a nevét, hogy megfeleljenek az Azure követelményeinek, szükség esetén módosítása
-* Cél virtuális gép méretét vagy típusa – az alapértelmezett Virtuálisgép-méret van kiválasztva alapján a forrás virtuális gép méretét. Kiválaszthat egy másik Virtuálisgép-méretet, a feladatátvétel előtt bármikor igényei alapján. Vegye figyelembe, hogy a Virtuálisgép-lemez mérete a forráslemez mérete is alapul, és csak azok a feladatátvétel után módosult. További információ a [Standard](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets) és [prémium szintű](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) méretek és iops-t.
+* Cél virtuális gép méretét vagy típusa – az alapértelmezett Virtuálisgép-méret van kiválasztva alapján a forrás virtuális gép méretét. Kiválaszthat egy másik Virtuálisgép-méretet, a feladatátvétel előtt bármikor igényei alapján. Vegye figyelembe, hogy a Virtuálisgép-lemez mérete a forráslemez mérete is alapul, és csak azok a feladatátvétel után módosult. Ismerje meg, további, a lemezméretek és az iops-érték a [lemezek skálázási célértékei](../virtual-machines/windows/disk-scalability-targets.md) cikk.
 
     ![Számítás és hálózat tulajdonságai](./media/vmware-azure-enable-replication/vmproperties.png)
 

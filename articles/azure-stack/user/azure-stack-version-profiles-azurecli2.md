@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: b27dd1b9aec89f259649b313d3ba7f944ea647f1
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6d82410e07e725b13385f6ff2b57218c1146a80a
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765715"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329289"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>API-verzióprofilok használata az Azure CLI-vel az Azure Stackben
 
@@ -114,7 +114,12 @@ Virtuális gépek létrehozása CLI-vel, előtt kell lépjen kapcsolatba az Azur
 
 A következő lépések segítségével csatlakozhat az Azure Stack:
 
-1. Regisztrálja az Azure Stack környezettel futtatásával a `az cloud register` parancsot.
+1. Regisztrálja az Azure Stack környezettel futtatásával a `az cloud register` parancsot. Bizonyos esetekben közvetlen kimenő internetkapcsolattal áthalad egy proxy vagy tűzfal, amely érvényesíti az SSL-hozzáférés. Ezekben az esetekben a `az cloud register` parancs például a "Nem lehet lekérni végpontok a felhőben." hiba miatt sikertelen lehet Ez a hiba elkerüléséhez állíthatja be az alábbi környezeti változókat:
+
+   ```shell
+   set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
+   set ADAL_PYTHON_SSL_NO_VERIFY=1
+   ```
    
     a. Regisztrálja a *felhőalapú felügyeleti* környezet használja:
 

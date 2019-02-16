@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 2/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: effe6fa942ce0cabace08e72dba90baf8646680e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84c8e2921602bb653c0b1ef0adffd3d89e91bd78
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56119276"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312140"
 ---
-# <a name="how-to-configure-multi-master-in-your-applications-in-azure-cosmos-db"></a>Több főkiszolgálós konfigurálása az Azure Cosmos DB-ben az alkalmazások
+# <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Több főkiszolgálós konfigurálása az Azure Cosmos DB használó alkalmazásokban
 
-Több főkiszolgálós funkcióinak használatát az alkalmazásokban az alkalmazásban több naplórekordjait engedélyezheti és konfigurálhatja a többhelyűségével képességét az alkalmazás a jelenlegi régióban beállításával szüksége van üzembe helyezve.
+Több főkiszolgálós szolgáltatások használata az alkalmazások a szüksége több naplórekordjait engedélyezheti és konfigurálhatja a többhelyűségével funkció. Tagként az aktuális régióban, ahol az alkalmazás üzemel beállításával van konfigurálva.
 
 ## <a id="netv2"></a>.NET SDK-val v2
 
-Ahhoz, hogy az alkalmazások csoportban több főkiszolgálós `UseMultipleWriteLocations` igaz értékre, és konfigurálhatja `SetCurrentLocation` -régió, amelyben az alkalmazás üzembe helyezéséhez, és a Cosmos DB a rendszer replikálja.
+Ahhoz, hogy az alkalmazások csoportban több főkiszolgálós `UseMultipleWriteLocations` igaz értékre, és konfigurálhatja `SetCurrentLocation` , amelyben a rendszer telepíti az alkalmazást, és a rendszer replikálja az Azure Cosmos DB-régió.
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy

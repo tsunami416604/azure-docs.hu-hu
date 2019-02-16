@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/14/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3b6bb2ae0bcae869436eb54376b9792d8d4ccb0e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4af3e175c334c082e4520343d6c8ad3a62db431d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878272"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308995"
 ---
 # <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Gyors útmutató: A számítógép Látástechnológiai SDK-val kép elemzése ésC#
 
-Ebben a rövid útmutatóban egy helyi és egy távoli képet fog elemezni vizuális jellemzők kinyeréséhez a Computer Vision Windows-ügyfélkódtárával.
+Ez a rövid útmutatóban elemzi az a helyi és a egy távoli lemezképet kibontani a Computer Vision készült ügyféloldali kódtára segítségével vizuális jellemzőket C#. Ha szeretné, letöltheti a teljes minta alkalmazásként ebben az útmutatóban a kódot a [Cognitive Services-Csharp Látástechnológia](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) adattárat a Githubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,20 +28,7 @@ Ebben a rövid útmutatóban egy helyi és egy távoli képet fog elemezni vizu�
 * A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 * A [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) ügyfélkódtár NuGet-csomagja. A csomag letöltése nem szükséges. A telepítési utasításokat az alábbiakban találja.
 
-## <a name="analyzeimageasync-method"></a>AnalyzeImageAsync metódus
-
-> [!TIP]
-> Szerezze be a legújabb kódot Visual Studio-megoldásként a [GitHubról](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
-
-Az `AnalyzeImageAsync` és `AnalyzeImageInStreamAsync` metódus a [képelemző API-t](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) burkolja távoli, illetve helyi képekhez. Ezekkel a metódusokkal vizuális jellemzőket nyerhet ki a képek tartalma alapján, és kiválaszthatja, hogy mely jellemzőket adják vissza, többek között a következők közül:
-
-* a kép tartalmához kapcsolódó címkék részletes listája;
-* a kép tartalmának leírása teljes mondatban;
-* a képen szereplő arcok koordinátái, neme és kora;
-* a kép típusa (ClipArt vagy vonalrajz);
-* a domináns és a kiegészítő színek, vagy hogy a kép fekete-fehér;
-* az ebben a [taxonómiában](../Category-Taxonomy.md) meghatározott kategória;
-* tartalmaz-e a kép felnőtteknek szóló és szexuális tartalmat.
+## <a name="create-and-run-the-sample-application"></a>A mintaalkalmazás létrehozása és futtatása
 
 A minta futtatásához az alábbi lépéseket kell végrehajtania:
 
@@ -50,120 +37,121 @@ A minta futtatásához az alábbi lépéseket kell végrehajtania:
     1. A menüben kattintson a **Tools** (Eszközök) elemre, és válassza a **NuGet Package Manager** (NuGet-csomagkezelő), majd a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése a megoldáshoz) lehetőséget.
     1. Kattintson a **Browse** (Tallózás) lapra, majd írja be a **keresőmezőbe** a „Microsoft.Azure.CognitiveServices.Vision.ComputerVision” kifejezést.
     1. Válassza a megjelenő **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** lehetőséget, majd jelölje be a projektnév melletti jelölőnégyzetet, és kattintson az **Install** (Telepítés) gombra.
-1. Írja felül a `Program.cs` értékét az alábbi kóddal.
+1. Cserélje le a tartalmát *Program.cs* az alábbi kódra. A `AnalyzeImageAsync` és `AnalyzeImageInStreamAsync` módszerek burkolhatja a [elemzése Image REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) a helyi és távoli képek esetén jelölik. 
+
+    ```csharp
+    using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
+    using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
+
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Threading.Tasks;
+
+    namespace ImageAnalyze
+    {
+        class Program
+        {
+            // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
+            private const string subscriptionKey = "<SubscriptionKey>";
+
+            // localImagePath = @"C:\Documents\LocalImage.jpg"
+            private const string localImagePath = @"<LocalImage>";
+
+            private const string remoteImageUrl =
+                "http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg";
+
+            // Specify the features to return
+            private static readonly List<VisualFeatureTypes> features =
+                new List<VisualFeatureTypes>()
+            {
+                VisualFeatureTypes.Categories, VisualFeatureTypes.Description,
+                VisualFeatureTypes.Faces, VisualFeatureTypes.ImageType,
+                VisualFeatureTypes.Tags
+            };
+
+            static void Main(string[] args)
+            {
+                ComputerVisionClient computerVision = new ComputerVisionClient(
+                    new ApiKeyServiceClientCredentials(subscriptionKey),
+                    new System.Net.Http.DelegatingHandler[] { });
+
+                // You must use the same region as you used to get your subscription
+                // keys. For example, if you got your subscription keys from westus,
+                // replace "westcentralus" with "westus".
+                //
+                // Free trial subscription keys are generated in the "westus"
+                // region. If you use a free trial subscription key, you shouldn't
+                // need to change the region.
+
+                // Specify the Azure region
+                computerVision.Endpoint = "https://westcentralus.api.cognitive.microsoft.com";
+
+                Console.WriteLine("Images being analyzed ...");
+                var t1 = AnalyzeRemoteAsync(computerVision, remoteImageUrl);
+                var t2 = AnalyzeLocalAsync(computerVision, localImagePath);
+
+                Task.WhenAll(t1, t2).Wait(5000);
+                Console.WriteLine("Press ENTER to exit");
+                Console.ReadLine();
+            }
+
+            // Analyze a remote image
+            private static async Task AnalyzeRemoteAsync(
+                ComputerVisionClient computerVision, string imageUrl)
+            {
+                if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
+                {
+                    Console.WriteLine(
+                        "\nInvalid remoteImageUrl:\n{0} \n", imageUrl);
+                    return;
+                }
+
+                ImageAnalysis analysis =
+                    await computerVision.AnalyzeImageAsync(imageUrl, features);
+                DisplayResults(analysis, imageUrl);
+            }
+
+            // Analyze a local image
+            private static async Task AnalyzeLocalAsync(
+                ComputerVisionClient computerVision, string imagePath)
+            {
+                if (!File.Exists(imagePath))
+                {
+                    Console.WriteLine(
+                        "\nUnable to open or read localImagePath:\n{0} \n", imagePath);
+                    return;
+                }
+
+                using (Stream imageStream = File.OpenRead(imagePath))
+                {
+                    ImageAnalysis analysis = await computerVision.AnalyzeImageInStreamAsync(
+                        imageStream, features);
+                    DisplayResults(analysis, imagePath);
+                }
+            }
+
+            // Display the most relevant caption for the image
+            private static void DisplayResults(ImageAnalysis analysis, string imageUri)
+            {
+                Console.WriteLine(imageUri);
+                Console.WriteLine(analysis.Description.Captions[0].Text + "\n");
+            }
+        }
+    }
+    ```
+
 1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
 1. Ha szükséges, módosítsa a `computerVision.Endpoint` elem értékét arra az Azure-régióra, amelyhez az előfizetési kulcsai társítva vannak.
 1. A `<LocalImage>` helyére írja be a helyi kép elérési útját és fájlnevét.
-1. A `remoteImageUrl` értékét beállíthatja egy másik képre.
+1. Beállíthatja `remoteImageUrl` egy másik kép URL-címet.
 1. Futtassa a programot.
 
-```csharp
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
+## <a name="examine-the-response"></a>A válasz vizsgálata
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
+A sikeres válasz a legrelevánsabb feliratot jeleníti meg az egyes képekhez. Módosíthatja a `DisplayResults` módszer használatával jeleníti meg különböző data obrázku. Tekintse meg a [AnalyzeLocalAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions.analyzeimageinstreamasync?view=azure-dotnet) további módszer.
 
-namespace ImageAnalyze
-{
-    class Program
-    {
-        // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
-        private const string subscriptionKey = "<SubscriptionKey>";
-
-        // localImagePath = @"C:\Documents\LocalImage.jpg"
-        private const string localImagePath = @"<LocalImage>";
-
-        private const string remoteImageUrl =
-            "http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg";
-
-        // Specify the features to return
-        private static readonly List<VisualFeatureTypes> features =
-            new List<VisualFeatureTypes>()
-        {
-            VisualFeatureTypes.Categories, VisualFeatureTypes.Description,
-            VisualFeatureTypes.Faces, VisualFeatureTypes.ImageType,
-            VisualFeatureTypes.Tags
-        };
-
-        static void Main(string[] args)
-        {
-            ComputerVisionClient computerVision = new ComputerVisionClient(
-                new ApiKeyServiceClientCredentials(subscriptionKey),
-                new System.Net.Http.DelegatingHandler[] { });
-
-            // You must use the same region as you used to get your subscription
-            // keys. For example, if you got your subscription keys from westus,
-            // replace "westcentralus" with "westus".
-            //
-            // Free trial subscription keys are generated in the "westus"
-            // region. If you use a free trial subscription key, you shouldn't
-            // need to change the region.
-
-            // Specify the Azure region
-            computerVision.Endpoint = "https://westcentralus.api.cognitive.microsoft.com";
-
-            Console.WriteLine("Images being analyzed ...");
-            var t1 = AnalyzeRemoteAsync(computerVision, remoteImageUrl);
-            var t2 = AnalyzeLocalAsync(computerVision, localImagePath);
-
-            Task.WhenAll(t1, t2).Wait(5000);
-            Console.WriteLine("Press ENTER to exit");
-            Console.ReadLine();
-        }
-
-        // Analyze a remote image
-        private static async Task AnalyzeRemoteAsync(
-            ComputerVisionClient computerVision, string imageUrl)
-        {
-            if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
-            {
-                Console.WriteLine(
-                    "\nInvalid remoteImageUrl:\n{0} \n", imageUrl);
-                return;
-            }
-
-            ImageAnalysis analysis =
-                await computerVision.AnalyzeImageAsync(imageUrl, features);
-            DisplayResults(analysis, imageUrl);
-        }
-
-        // Analyze a local image
-        private static async Task AnalyzeLocalAsync(
-            ComputerVisionClient computerVision, string imagePath)
-        {
-            if (!File.Exists(imagePath))
-            {
-                Console.WriteLine(
-                    "\nUnable to open or read localImagePath:\n{0} \n", imagePath);
-                return;
-            }
-
-            using (Stream imageStream = File.OpenRead(imagePath))
-            {
-                ImageAnalysis analysis = await computerVision.AnalyzeImageInStreamAsync(
-                    imageStream, features);
-                DisplayResults(analysis, imagePath);
-            }
-        }
-
-        // Display the most relevant caption for the image
-        private static void DisplayResults(ImageAnalysis analysis, string imageUri)
-        {
-            Console.WriteLine(imageUri);
-            Console.WriteLine(analysis.Description.Captions[0].Text + "\n");
-        }
-    }
-}
-```
-
-## <a name="analyzeimageasync-response"></a>Az AnalyzeImageAsync válasza
-
-A sikeres válasz a legrelevánsabb feliratot jeleníti meg az egyes képekhez.
-
-Lásd: [API rövid útmutatók: Elemezheti a helyi rendszerképet a C# ](../QuickStarts/CSharp-analyze.md#examine-the-response) példa nyers JSON-kimenetét.
+Lásd: [API rövid útmutatók: Elemezheti a helyi rendszerképet a C# ](../QuickStarts/CSharp-analyze.md#examine-the-response) példa egy nyers JSON-kimenetét.
 
 ```
 http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg

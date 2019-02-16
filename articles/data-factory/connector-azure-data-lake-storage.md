@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása, vagy az Azure Data Lake Storage Gen2 előzetes verzió használatával a Data Factory (előzetes verzió) |} A Microsoft Docs
-description: Ismerje meg, hogyan másolhat adatokat, és az Azure Data Lake Storage Gen2 előzetes verziója Azure Data Factory használatával.
+title: Adatok másolása, illetve az Azure Data Lake Storage Gen2 a Data Factory használatával |} A Microsoft Docs
+description: Ismerje meg, hogyan másolhat adatokat, és az Azure Data Lake Storage Gen2 Azure Data Factory használatával.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -8,18 +8,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 5e8bc85a309a8c6755f1efae1ca702720cf01477
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7a01b4baa9dafba4f0193c7a73dc1ae44214f501
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662302"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311580"
 ---
-# <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen2 előzetes verzió használata az Azure Data Factory (előzetes verzió)
+# <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen2 Azure Data Factory használatával
 
-Az Azure Data Lake Storage Gen2 előzetes verzió egy olyan dedikált big data-analitika, beépített képességei [Azure Blob storage](../storage/blobs/storage-blobs-introduction.md). Lehetővé teszi az adatok használata mindkét fájl rendszer és a objektum tárolási paradigmákat csatoló.
+Az Azure Data Lake Storage Gen2 egy olyan dedikált big data-analitika, beépített képességei [Azure Blob storage](../storage/blobs/storage-blobs-introduction.md). Lehetővé teszi az adatok használata mindkét fájl rendszer és a objektum tárolási paradigmákat csatoló.
 
 Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban az adatok másolásához, és a Data Lake Storage Gen2. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 

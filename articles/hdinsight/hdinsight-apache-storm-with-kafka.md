@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: 44ad80732d1e874ccec4ecc376b9ce9b513a3aa9
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: a90546d97fbb42a0ee4ef2d8f26c1d4f189ef8d3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652371"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310338"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Kafka on HDInsight az Apache Storm használata
 
@@ -120,9 +120,9 @@ A dokumentumban használt kód a következő helyen található: [https://github
 
 Az oktatóanyagban két topológia szerepel:
 
-* A Kafka-író: Állít elő mondatokat véletlenszerű, és tárolja a Kafka.
+* Kafka-writer: Állít elő mondatokat véletlenszerű, és tárolja a Kafka.
 
-* A Kafka-olvasó: Adatokat olvas be a Kafka, és tárolják a Storm-fürt HDFS-kompatibilis fájl áruházzal.
+* Kafka-reader: Adatokat olvas be a Kafka, és tárolják a Storm-fürt HDFS-kompatibilis fájl áruházzal.
 
     > [!WARNING]  
     > Ahhoz, hogy a Storm működjön a HDInsight által használt HDFS-kompatibilis tárolóval, egy szkriptműveletre van szükség. A szkript több JAR-fájlt tölt fel a Storm `extlib` útvonalára. Az oktatóanyagban lévő sablon automatikusan használja a szkriptet a fürtök létrehozása során.
@@ -373,7 +373,7 @@ A projekt tartalmaz egy `dev.properties` nevű fájlt, amely a topológiák ált
 | `kafka.broker.hosts` | A Kafka-közvetítő gazdagépei (feldolgozó csomópontok). |
 | `kafka.topic` | A topológiák által használt Kafka-témakör. |
 | `hdfs.write.dir` | A könyvtár, amelybe a Kafka-olvasó topológia ír. |
-| `hdfs.url` | A Storm-fürt által használt fájlrendszer. Azure Storage-fiókok esetében használja a `wasb:///` értéket. Az Azure Data Lake Storage, az érték `adl:///`. |
+| `hdfs.url` | A Storm-fürt által használt fájlrendszer. Azure Storage-fiókok esetében használja a `wasb:///` értéket. Az Azure Data Lake Storage Gen1, az érték `adl:///`. |
 
 ## <a name="create-the-clusters"></a>A fürtök létrehozása
 

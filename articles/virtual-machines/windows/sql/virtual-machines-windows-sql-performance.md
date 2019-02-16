@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ce7b73afa150ef5fef58c5baf861da92c5203548
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6493da0cfc86560fac8e69f4329804c628942806
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980500"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328713"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Teljesítmény-irányelvek az SQL Server Azure Virtual Machines szolgáltatásban
 
@@ -41,8 +41,8 @@ A következő lista egy gyors ellenőrzés az optimális teljesítmény érdeké
 | Terület | Optimalizálási lehetőségek |
 | --- | --- |
 | [Virtuális gép mérete](#vm-size-guidance) | - [DS3_v2](../sizes-general.md) vagy újabb verziója az SQL Enterprise Edition.<br/><br/> - [DS2_v2](../sizes-general.md) vagy újabb SQL Standard és Web kiadások. |
-| [Tárolás](#storage-guidance) | – Használja [prémium szintű Storage](../premium-storage.md). Fejlesztési-tesztelési csak standard szintű storage ajánlott.<br/><br/> – Folyamatosan a [tárfiók](../../../storage/common/storage-create-storage-account.md) és az SQL Server rendszerű virtuális gép ugyanabban a régióban.<br/><br/> * Tiltsa le az Azure [georedundáns tárolás](../../../storage/common/storage-redundancy.md) (georeplikáció) a tárfiókban. |
-| [Lemezek](#disks-guidance) | – Használja legalább 2 [P30 lemez](../premium-storage.md#scalability-and-performance-targets) (1. a naplófájlok és 1-adatfájlok többek között a TempDB). Körülbelül 50 000 iops-t igénylő számítási feladatokhoz érdemes lehet egy Ultra SSD. <br/><br/> -Elkerülése érdekében használja az operációs rendszer vagy az ideiglenes lemezek adatbázistár vagy a naplózás.<br/><br/> -Enable olvasási gyorsítótárat üzemeltető, az adatok és a TempDB-adatfájlok (eke) t a.<br/><br/> – Ne engedélyezze a gyorsítótárazás üzemeltetési a naplófájl (eke) t.  **Fontos**: Állítsa le az SQL Server szolgáltatást, ha egy Azure-beli Virtuálisgép-lemez gyorsítótár beállításainak módosítása.<br/><br/> -Stripe-több Azure-adatlemezek a jobb i/o-átviteli sebesség lekérdezése.<br/><br/> -Formátumban, dokumentált foglalási mérettel. <br/><br/> -A kritikus fontosságú az SQL Server számítási feladatokhoz (Miután kiválasztotta a megfelelő virtuális gép mérete) helyi SSD hely a TempDB. |
+| [Tárolás](#storage-guidance) | – Használja [prémium szintű SSD-k](../disks-types.md). Fejlesztési-tesztelési csak standard szintű storage ajánlott.<br/><br/> – Folyamatosan a [tárfiók](../../../storage/common/storage-create-storage-account.md) és az SQL Server rendszerű virtuális gép ugyanabban a régióban.<br/><br/> * Tiltsa le az Azure [georedundáns tárolás](../../../storage/common/storage-redundancy.md) (georeplikáció) a tárfiókban. |
+| [Lemezek](#disks-guidance) | – Használja legalább 2 [P30 lemez](../disks-types.md#premium-ssd) (1. a naplófájlok és 1-adatfájlok többek között a TempDB). Körülbelül 50 000 iops-t igénylő számítási feladatokhoz érdemes lehet egy Ultra SSD. <br/><br/> -Elkerülése érdekében használja az operációs rendszer vagy az ideiglenes lemezek adatbázistár vagy a naplózás.<br/><br/> -Enable olvasási gyorsítótárat üzemeltető, az adatok és a TempDB-adatfájlok (eke) t a.<br/><br/> – Ne engedélyezze a gyorsítótárazás üzemeltetési a naplófájl (eke) t.  **Fontos**: Állítsa le az SQL Server szolgáltatást, ha egy Azure-beli Virtuálisgép-lemez gyorsítótár beállításainak módosítása.<br/><br/> -Stripe-több Azure-adatlemezek a jobb i/o-átviteli sebesség lekérdezése.<br/><br/> -Formátumban, dokumentált foglalási mérettel. <br/><br/> -A kritikus fontosságú az SQL Server számítási feladatokhoz (Miután kiválasztotta a megfelelő virtuális gép mérete) helyi SSD hely a TempDB. |
 | [I/O](#io-guidance) |-Adatbázis oldal tömörítésének engedélyezéséhez.<br/><br/> -Adatfájlok azonnali fájl inicializálása engedélyezése.<br/><br/> – Az adatbázis ejtésével korlátozza.<br/><br/> – Tiltsa le az adatbázis többletterheléshez.<br/><br/> -Összes adatbázis áthelyezése az adatlemezeket, beleértve a rendszeradatbázisokban.<br/><br/> – Helyezze át az SQL Server hiba napló- és nyomkövetési fájl könyvtárak adatlemezeket.<br/><br/> -Telepítés az alapértelmezett biztonsági mentés és adatbázis-fájlok helye.<br/><br/> -Engedélyezése zárolt lapok vannak.<br/><br/> -Érvényes SQL Server teljesítményének javításait. |
 | [A szolgáltatás-specifikus](#feature-specific-guidance) | – Biztonsági másolat készítése közvetlenül a blob storage-bA. |
 
@@ -59,10 +59,10 @@ További információ a *hogyan* és *miért* ahhoz, hogy ezek az optimalizáci�
 
 ## <a name="storage-guidance"></a>Storage útmutatója
 
-(Valamint a dsv2 és GS-sorozat) DS sorozatú virtuális gépek által támogatott [prémium szintű Storage](../premium-storage.md). Prémium szintű Storage ajánlott az összes éles számítási feladatokhoz.
+(Valamint a dsv2 és GS-sorozat) DS sorozatú virtuális gépek által támogatott [prémium szintű SSD-k](../disks-types.md). Prémium szintű SSD-k használata akkor javasolt az összes éles számítási feladatokhoz.
 
 > [!WARNING]
-> Standard szintű Storage különböző késéseket és a sávszélesség, és csak fejlesztési és tesztelési számítási feladatok esetében ajánlott. Ez magában foglalja az új Standard SSD-tárolóval. Éles számítási feladatokhoz a prémium szintű Storage kell használnia.
+> Standard HDD és SSD-k különböző késéseket és a sávszélesség, és csak fejlesztési és tesztelési számítási feladatok esetében ajánlott. Éles számítási feladatokhoz a prémium szintű SSD-k kell használnia.
 
 Emellett javasoljuk, hogy az Azure storage-fiók létrehozása az SQL Server virtuális gépek átviteli késések csökkentése érdekében az ugyanabban az adatközpontban. Storage-fiók létrehozásakor, tiltsa le a georeplikáció, több lemezre kiterjedő konzisztens írási sorrend nem garantált. Ehelyett érdemes konfigurálása egy SQL Server katasztrófa utáni helyreállítás technológia két Azure-beli adatközpontok között. További információkért lásd: [magas rendelkezésre állású és vész-helyreállítási az SQL Server az Azure Virtual machines gépeken](virtual-machines-windows-sql-high-availability-dr.md).
 
@@ -88,13 +88,15 @@ Az ideiglenes meghajtó, a következő címkét: a **D**: meghajtó, az Azure bl
 
 A D-sorozat, a Dv2 sorozat és a G sorozatú virtuális gépek az ideiglenes meghajtó ezeken a virtuális gépeken az SSD-alapú. Ha a számítási feladatok (például az ideiglenes objektumok vagy bonyolult illesztésekre), a TempDB (nagy erőforrásigényű) használatát a TempDB tárolja a **D** meghajtó sikerült nagyobb TempDB átviteli sebességet eredményez, és a TempDB késés csökkentése. Példaforgatókönyv tanulmányozza a TempDB a következő blogbejegyzésben található: [Tárolási konfiguráció irányelvek az SQL Server Azure virtuális Gépen futó](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm).
 
-A virtuális gépek, amelyek támogatják a Premium Storage (DS-sorozat, dsv2 és GS-sorozat) javasoljuk a TempDB tárolásához a lemezen, amely támogatja a Premium Storage olvasási gyorsítótár engedélyezve van. 
+<<<<<<< LÉPJEN a virtuális gépek, amelyek támogatják a prémium szintű SSD-k (DS-sorozat, dsv2 és GS-sorozat), javasoljuk, hogy a TempDB tárolja, amely támogatja a prémium szintű SSD-k engedélyezve van olvasási gyorsítótárazás lemezre vonatkozóan. Ez a javaslat; egyetlen kivétel van Ha a TempDB adatbázis használattal írási igényű, nagyobb teljesítményt érhet el, a TempDB tárolása a helyi **D** meghajtó, amely egyben ezen gépméretek az SSD-alapú.
+=== Virtuális gépek esetében, amelyek támogatják a Premium Storage (DS-sorozat, dsv2 és GS-sorozat) javasoljuk a TempDB tárolásához a lemezen, amely támogatja a Premium Storage olvasási gyorsítótár engedélyezve van. 
 
 Ez a javaslat egyetlen kivétel van: _írási-igényes a TempDB használat esetén nagyobb teljesítményt érhet el, a TempDB tárolása a helyi **D** meghajtó, amely egyben ezen gépméretek az SSD-alapú._ 
+>>>>>>> 4326ed494fad7ef7be29e2f4ba3301ec496acf76
 
 ### <a name="data-disks"></a>Adatlemezek
 
-* **Adatlemezek használata az adatok és a naplófájlok**: Ha a lemez csíkozást nem használ, két Premium Storage használata [P30 lemez](../premium-storage.md#scalability-and-performance-targets) ahol egy lemezt a naplófájlokon pedig a másik az adatok és a TempDB fájl tartalmaz. Minden egyes Premium Storage-lemez IOPs és sávszélesség (MB/s) annak méretétől függően számos biztosít, a cikkben leírtak szerint [lemezén prémium szintű tárolást használó](../premium-storage.md). Ha egy lemez csíkozást technika, például a tárolóhelyek használ, optimális teljesítményt kihozni létesíteni két készletek, egyet a naplófájlokhoz, a másik pedig az adatfájlokat. Azonban ha azt tervezi, az SQL Server feladatátvevő fürt példány (FCI) használni, konfigurálnia kell egy készletet.
+* **Adatlemezek használata az adatok és a naplófájlok**: Ha lemez csíkozást nem használ, használja a két prémium szintű SSD P30 lemez ahol egy lemezt a naplófájlokon pedig a másik az adatok és a TempDB fájl tartalmaz. Minden egyes prémium szintű SSD számos IOPs és sávszélesség (MB/s) annak méretétől függően a cikkben bemutatott [válassza ki a lemez típusát](../disks-types.md). Ha egy lemez csíkozást technika, például a tárolóhelyek használ, optimális teljesítményt kihozni létesíteni két készletek, egyet a naplófájlokhoz, a másik pedig az adatfájlokat. Azonban ha azt tervezi, az SQL Server feladatátvevő fürt példány (FCI) használni, konfigurálnia kell egy készletet.
 
    > [!TIP]
    > - A vizsgálati eredmények különböző lemez vagy a számítási feladatok konfigurációját tekintse meg a következő blogbejegyzésben található: [Tárolási konfiguráció irányelvek az SQL Server Azure virtuális Gépen futó](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/).
@@ -125,7 +127,7 @@ Ez a javaslat egyetlen kivétel van: _írási-igényes a TempDB használat eset�
 
   * A betöltés elvárásainak alapuló tárolókészlet társított lemezek számát határozza meg. Ne feledje, hogy a különböző méretű virtuális gépek lehetővé teszik a különböző számú csatlakoztatott adatlemezekkel. További információkért lásd: [virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-  * (Fejlesztési és tesztelési célra). a Premium Storage nem használ, ha a javaslat által támogatott az adatlemezek maximális száma hozzáadandó-e a [Virtuálisgép-méret](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és lemez szétosztottsága befolyásolhatja.
+  * Ha prémium szintű SSD-k (fejlesztési és tesztelési célra) nem használ, az ajánlás az, hogy adja hozzá az adatlemezek által támogatott maximális száma a [Virtuálisgép-méret](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és lemez szétosztottsága befolyásolhatja.
 
 * **Gyorsítótárazási házirend**: Vegye figyelembe a következő ajánlások gyorsítótárazási házirend a tároló-konfigurációtól függően.
 
@@ -133,7 +135,7 @@ Ez a javaslat egyetlen kivétel van: _írási-igényes a TempDB használat eset�
 
   * Ha lemez szétosztottsága befolyásolhatja az egyetlen tárolókészlet használ, a legtöbb számítási feladatok élvezheti olvasási gyorsítótárazás. Ha külön tárolókészleteket a napló- és fájlokat, az adatfájlok számára a tárolókészletben a csak olvasási gyorsítótárazás engedélyezése. Bizonyos nagy írási számítási feladatok, a jobb teljesítmény érdekében előfordulhat, hogy mondható nincs gyorsítótárazás. Ez csak lehet meghatározni tesztelés útján.
 
-  * A fenti javaslatok prémium szintű tárolólemezeket a alkalmazni. Ha a Premium Storage nem használ, ne engedélyezze a bármely gyorsítótárazást az adatlemezt.
+  * A fenti javaslatok vonatkozik a prémium szintű SSD-kkel. Ha prémium szintű SSD-k nem használ, ne engedélyezze a bármely gyorsítótárazást az adatlemezt.
 
   * A lemezek gyorsítótárazása konfigurálásával kapcsolatos útmutatásért lásd az alábbi cikkeket. A klasszikus (ASM) telepítési modell lásd: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) és [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Az Azure Resource Manager-alapú modell lásd: [Set-AzOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-4.4.1) és [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdatadisk?view=azurermps-4.4.1).
 
@@ -150,7 +152,7 @@ Ez a javaslat egyetlen kivétel van: _írási-igényes a TempDB használat eset�
 
 ## <a name="io-guidance"></a>I/o-útmutató
 
-* A legjobb eredmények elérése érdekében a Premium Storage segítségével végezheti el, ha az alkalmazás és a kérések párhuzamosíthatja. A Premium Storage olyan forgatókönyvekben, ahol az i/o-várólistájának mélysége meghaladja az 1, így soros kérelmek egyszálas alig vagy egyáltalán nem teljesítménynövekedést megjelenik (akkor is, ha nagy számításigényű storage) lett tervezve. Ide tartozhat például teljesítményét elemző eszközök, például az SQLIO egyszálas vizsgálat eredményeit.
+* A legjobb eredmények elérése érdekében a prémium szintű SSD-k érhetők el, ha az alkalmazás és a kérések párhuzamosíthatja. Prémium szintű SSD-k olyan forgatókönyvekben, ahol az i/o-várólistájának mélysége meghaladja az 1, így soros kérelmek egyszálas alig vagy egyáltalán nem teljesítménynövekedést megjelenik (akkor is, ha nagy számításigényű storage) lettek kialakítva. Ide tartozhat például teljesítményét elemző eszközök, például az SQLIO egyszálas vizsgálat eredményeit.
 
 * Fontolja meg [adatbázis-oldal tömörítési](https://msdn.microsoft.com/library/cc280449.aspx) is segít, i/o-igényes munkaterhelések teljesítményét. Azonban az adatok tömörítésének növelheti a CPU-használat a kiszolgálón.
 

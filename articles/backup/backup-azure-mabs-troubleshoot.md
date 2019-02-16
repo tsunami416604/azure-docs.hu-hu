@@ -8,24 +8,24 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/24/2017
 ms.author: kasinh
-ms.openlocfilehash: 830bf8603a495d1f2708f73cf090695f1b7a7c48
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f90650cc058697e4bf9e4a0710ada213fe3d9a1f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493932"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310831"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
 Az alábbi táblázatokban szereplő információk segítségével, amely az Azure Backup Server használata során előforduló hibák elhárítása.
 
-## <a name="invalid-vault-credentials-provided"></a>Megadott tárhitelesítő adatok érvénytelenek 
+## <a name="invalid-vault-credentials-provided"></a>Megadott tárhitelesítő adatok érvénytelenek
 
 A probléma megoldásához hajtsa végre a [ezeket a hibaelhárítási lépéseket](https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues).
 
-## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Az ügynök művelete sikertelen volt a DPM az ügynök koordinátor szolgáltatást a kiszolgálón kommunikációs hiba miatt 
+## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Az ügynök művelete sikertelen volt a DPM az ügynök koordinátor szolgáltatást a kiszolgálón kommunikációs hiba miatt
 
-A probléma megoldásához hajtsa végre a [ezeket a hibaelhárítási lépéseket](https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues). 
+A probléma megoldásához hajtsa végre a [ezeket a hibaelhárítási lépéseket](https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues).
 
 ## <a name="setup-could-not-update-registry-metadata"></a>A telepítő nem tudta frissíteni a beállításjegyzékbeli metaadatokat
 
@@ -34,7 +34,7 @@ A probléma megoldásához hajtsa végre a [ezeket a hibaelhárítási lépések
 
 
 
-## <a name="installation-issues"></a>Telepítési problémák
+## <a name="installation-issues"></a>Telepítéssel kapcsolatos problémák
 
 | Művelet | A hiba részletei | Áthidaló megoldás |
 |-----------|---------------|------------|
@@ -56,7 +56,7 @@ A probléma megoldásához hajtsa végre a [ezeket a hibaelhárítási lépések
 | Védelmi csoportok konfigurálása | A DPM nem tudta felsorolni az alkalmazás-összetevő, az a védett számítógép (védett számítógép neve). | Válassza ki **frissítése** a konfigurálás védelmi csoport felhasználói felület képernyőn a megfelelő adatforrás/összetevő szintjén. |
 | Védelmi csoportok konfigurálása | Nem sikerült beállítani a védelmet. | Ha egy SQL-kiszolgáló a védett kiszolgálón, győződjön meg arról, hogy a sysadmin (rendszergazda) szerepkör engedélyeket adtak meg a védett számítógépen a system fióknak (NTAuthority\System) leírtak szerint [Ez a cikk](https://technet.microsoft.com/library/hh757977(v=sc.12).aspx).
 | Védelmi csoportok konfigurálása | Nincs elegendő szabad terület a védelmi csoport számára a tárolókészletben. | A lemezeket a tárolókészlethez hozzáadott [nem tartalmazhat egy partíció](https://technet.microsoft.com/library/hh758075(v=sc.12).aspx). Törölje a meglévő köteteket a lemezeken. Adja hozzá a tárolókészlethez.|
-| Szabályzat módosítása |Nem sikerült módosítani a biztonsági mentési szabályzat. Hiba: Az aktuális művelet belső szolgáltatáshiba [0x29834] miatt nem sikerült. Némi várakozás után próbálkozzon újra a művelettel. Ha a probléma tartósan fennáll, forduljon a Microsoft ügyfélszolgálatához. |**OK:**<br/>Ez a hiba akkor fordul elő, a három feltétel: amikor biztonsági beállításai engedélyezve vannak, csökkenteni a megőrzési időtartam alatt a korábban megadott minimális értékek meg, és amikor a rendszer nem támogatott verzióját. (Nem támogatott verziók által alábbi 2.0.9052-es verzióját a Microsoft Azure Backup Server és az Azure Backup Server frissítése 1.) <br/>**Javasolt művelet:**<br/> -Házirendekkel kapcsolatos célgyűjteményét folytatásához, fent a minimális megőrzési időszak a megadott megőrzési idejének beállítása. (A minimális megőrzési időszak a hét nap a napi, heti, három hét szükséges 4 hetes havonta vagy egy év az éves.) <br><br>Ha szükséges, egy másik az előnyben részesített módszer az, hogy frissítse a backup-ügynök és az Azure Backup Server kihasználhatja a biztonsági frissítéseket. |
+| Szabályzat módosítása |Nem sikerült módosítani a biztonsági mentési szabályzat. Hiba: Az aktuális művelet belső szolgáltatáshiba [0x29834] miatt nem sikerült. Némi várakozás után próbálkozzon újra a művelettel. Ha a probléma tartósan fennáll, forduljon a Microsoft ügyfélszolgálatához. | **OK:**<br/>Ez a hiba akkor fordul elő, a három feltétel: amikor biztonsági beállításai engedélyezve vannak, csökkenteni a megőrzési időtartam alatt a korábban megadott minimális értékek meg, és amikor a rendszer nem támogatott verzióját. (Nem támogatott verziók által alábbi 2.0.9052-es verzióját a Microsoft Azure Backup Server és az Azure Backup Server frissítése 1.) <br/>**Javasolt művelet:**<br/> -Házirendekkel kapcsolatos célgyűjteményét folytatásához, fent a minimális megőrzési időszak a megadott megőrzési idejének beállítása. (A minimális megőrzési időszak a hét nap a napi, heti, három hét szükséges 4 hetes havonta vagy egy év az éves.) <br><br>Ha szükséges, egy másik az előnyben részesített módszer az, hogy frissítse a backup-ügynök és az Azure Backup Server kihasználhatja a biztonsági frissítéseket. |
 
 ## <a name="backup"></a>Backup
 | Művelet | A hiba részletei | Áthidaló megoldás |
@@ -71,6 +71,11 @@ A probléma megoldásához hajtsa végre a [ezeket a hibaelhárítási lépések
 | Backup | Egy új Microsoft Azure Backup Server a VMware virtuális gép védelmének újbóli beállításához a beállítás nem jelenik meg szerint adhatók hozzá. | VMware-tulajdonságok hivatkozott vannak a Microsoft Azure Backup Server régi, elavult példányát. A probléma megoldása:<br><ol><li>A VCenter (SC-VMM egyenértékű), nyissa meg a **összefoglalás** fülre, majd a **Vlastní Atributy**.</li>  <li>Törölje a régi, a Microsoft Azure Backup Server nevét a **DPMServer** értéket.</li>  <li>Lépjen vissza az új Microsoft Azure Backup Server, és módosítsa a old.  Miután kiválasztotta a **frissítése** gombra, a virtuális gép megjelenik egy jelölőnégyzet bejelölésével elérhető telepítésként, hozzáadja a védelemhez.</li></ol> |
 | Backup | Hiba történt a megosztott fájlok/mappák elérése | Próbálja meg módosítani a víruskereső beállításainak a TechNet-cikkben leírtak [víruskereső szoftver futtatása a DPM-kiszolgálón](https://technet.microsoft.com/library/hh757911.aspx).|
 | Backup | VMware virtuális gép online helyreállításipont-létrehozási feladatok sikertelenek. A DPM a VMware-ből hibát észlelt a változáskövetési információk beolvasása közben. ErrorCode - FileFaultFault (ID 33621 ) |  <ol><li> A VMware-en CTK alaphelyzetbe az érintett virtuális gépek számára.</li> <li>Ellenőrizze, hogy a független lemez nem VMware-en vannak érvényben.</li> <li>Állítsa le az érintett virtuális gépek védelmét, és az ismételt védelem a **frissítése** gombra. </li><li>Az érintett virtuális gépek futtatása egy másolatot kap.</li></ol>|
+
+## <a name="restore"></a>Visszaállítás
+| Művelet | A hiba részletei | Áthidaló megoldás |
+| --- | --- | --- |
+| Visszaállítás | **Hibakód:**: CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error: 100110 <br/> <br/>**Chybová zpráva**: A megadott tárhitelesítő adatok nem azonosak a tárolóban, a kiszolgáló regisztrálva van | **Ok**: Ez a probléma akkor fordul elő, ha visszaállítja a fájlokat a másodlagos kiszolgálóra az eredeti kiszolgáló külső DPM-helyreállítási lehetőséget a kívánt, és ha a kiszolgáló, amely a helyreállítás alatt áll, és az eredeti kiszolgálón, ahol az adatok-e készíteni a rendszer nem társítja azonos Recovery Services-tároló.<br/> <br/>**Megkerülő megoldás** feloldani a probléma győződjön meg arról, mind az eredeti és a másodlagos kiszolgáló ugyanahhoz a tárolóhoz van regisztrálva.|
 
 
 ## <a name="change-passphrase"></a>Jelszó módosítása

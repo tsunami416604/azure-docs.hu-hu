@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 61cad318dbbe55ef5ecf1b8167b6594ab6e57553
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 901afc8f28b617eb5bada2a0f58761ddb9f67607
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247537"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327408"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2-höz pureScale az Azure-ban
 
@@ -89,7 +89,7 @@ Ez az architektúra az alkalmazást, tárolás és adatok csomagok Azure-beli vi
 
 ### <a name="storage-considerations"></a>A tárterülettel kapcsolatos szempontok
 
-Oracle jogosultságifiók-tanúsítványok, például a DB2 pureScale egy nagy teljesítményű blokk i/o, horizontális felskálázás adatbázis. Javasoljuk, hogy használja a legnagyobb [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) igényeinek megfelelő beállítást. Kisebb méretű tárolási lehetőség lehet megfelelő, fejlesztési-tesztelési környezetet, míg az éles környezetben gyakran további tárolási kapacitásra van szüksége. A példa architektúrát használ [P30](https://azure.microsoft.com/pricing/details/managed-disks/) miatt az IOPS és a méretét és az ár aránya. Méret, függetlenül a Premium Storage használata a legjobb teljesítmény érdekében.
+Oracle jogosultságifiók-tanúsítványok, például a DB2 pureScale egy nagy teljesítményű blokk i/o, horizontális felskálázás adatbázis. Javasoljuk, hogy használja a legnagyobb [Azure prémium szintű SSD](disks-types.md) igényeinek megfelelő beállítást. Kisebb méretű tárolási lehetőség lehet megfelelő, fejlesztési-tesztelési környezetet, míg az éles környezetben gyakran további tárolási kapacitásra van szüksége. A példa architektúrát használ [P30](https://azure.microsoft.com/pricing/details/managed-disks/) miatt az IOPS és a méretét és az ár aránya. Méret, függetlenül a Premium Storage használata a legjobb teljesítmény érdekében.
 
 DB2-pureScale használ egy megosztott-mindent architektúra, ahol az összes adat érhető el a fürt összes csomópontján. A Premium storage-példányán, meg kell osztani, igény szerinti vagy dedikált példányon.
 
