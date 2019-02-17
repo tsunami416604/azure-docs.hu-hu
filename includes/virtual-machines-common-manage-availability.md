@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: aff3f47624fe21e1d0f020e8e5732e60b4b53657
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 42b6dde708e2a1dbda225fd95e3db964267ae48a
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54084055"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333980"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Azure-beli virtuális gép szolgáló három forgatókönyv: nem tervezett hardverkarbantartás, váratlan állásidő és tervezett karbantartás.
@@ -41,7 +41,7 @@ Az ilyen események okozta állásidő hatásainak csökkentése érdekében jav
 Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Ezt a konfigurációt egy adatközponton belül biztosítja, hogy vagy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép érhető el és megfeleljen a 99,95 %-os Azure SLA-t. További információkért lásd [a virtuális gépek esetében érvényes SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) részleteit.
 
 > [!IMPORTANT]
-> Ha lehet, önmagában ne helyezzen egyetlen különálló virtuális gépet egy rendelkezésre állási csoportba. Az így konfigurált virtuális gépek nem jogosultak az SLA-garanciára, és leállhatnak az Azure tervezett karbantartási eseményei során, hacsak az önálló virtuális gép nem [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) csomagot használ. A Prémium szintű tárfiókot használó virtuális gépekre az Azure SLA minden esetben vonatkozik.
+> Ha lehet, önmagában ne helyezzen egyetlen különálló virtuális gépet egy rendelkezésre állási csoportba. Ebben a konfigurációban a virtuális gépek nem tesz eleget az SLA-garanciára, és leállhatnak az Azure tervezett karbantartási események, kivéve, ha egyetlen virtuális gép által használt [Azure prémium szintű SSD-k](../articles/virtual-machines/windows/disks-types.md#premium-ssd). Prémium szintű SSD meghajtók használata önálló virtuális gépek az Azure garantált szolgáltatási SZINTJEI érvényesek.
 
 A mögöttes Azure platform a rendelkezésre állási csoportban lévő mindegyik virtuális gépnek kioszt egy **frissítési tartományt** és egy **tartalék tartományt**. Minden eges rendelkezésre állási csoportnak öt, felhasználó által nem konfigurálható frissítési tartományt oszt ki a rendszer alapértelmezés szerint (a Resource Manager-környezetek ezután akár 20 frissítési tartományig növelhetőek), és így kijelöli azokat a virtuális gépeket és mögöttes fizikai hardvereszközöket magukba foglaló csoportokat, amelyek egy időben újraindíthatóak. Ha egy rendelkezésre állási csoportba ötnél több virtuális gép van konfigurálva, a hatodik virtuális gép az elsővel azonos frissítési tartományba kerül, a hetedik a másodikkal és így tovább. A frissítési tartományok újraindítása nem haladhat szekvenciálisan a tervezett karbantartás során, hanem csak egyetlen frissítési tartományt lehet újraindítani egyszerre. Az újraindított frissítési tartománynak 30 perce van, hogy helyreálljon, mielőtt a karbantartás elkezdődik egy másik frissítési tartományon.
 
@@ -60,7 +60,7 @@ A [felügyelt lemezek](../articles/virtual-machines/windows/managed-disks-overvi
 
 [!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
-Ha a virtuális gépeit [nem felügyelt lemezeken](../articles/virtual-machines/windows/about-disks-and-vhds.md#types-of-disks) tervezi használni, alkalmazza az olyan Storage-fiókokra vonatkozó ajánlott eljárásokat, ahol a virtuális gépek virtuális merevlemezeinek (VHD) tárolása [lapblobokként](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) történik.
+Ha azt tervezi, nem felügyelt lemezekkel rendelkező virtuális gépekhez használja, kövesse az alábbi ajánlott eljárások a tárfiókok, virtuális merevlemezeket (VHD) virtuális gépek tárolására [lapblobokat](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 
 1. **Tárolja az egyazon virtuális géppel társított összes lemezt (operációsrendszer- és adatlemezt) ugyanabban a tárfiókban.**
 2. **Tekintse át a Storage-fiókokban lévő nem felügyelt lemezekre vonatkozó [korlátokat](../articles/storage/common/storage-scalability-targets.md),** mielőtt további virtuális merevlemezeket adna hozzá egy tárfiókhoz.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: include file
-ms.openlocfilehash: 231dcee1a9b330b2f8721283c39c71002a75fcac
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fb296236fb73823690175b12f4e07c05b60cdbcf
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49476285"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56334031"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek régiók szerinti csoportosítása és rendelkezésre állása
 Az Azure világszerte számos adatközpontban működik. Ezek az adatközpontok földrajzi régiók szerint vannak csoportosítva, ami kellő mozgásteret biztosít az alkalmazások létrehozási helyének megválasztásához. Fontos átlátni, hogy a virtuális gépek hol és hogyan működnek az Azure-ban, illetve hogy a teljesítmény, a rendelkezésre állás és a redundancia maximalizálása terén milyen lehetőségek vannak. Ez a cikk az Azure rendelkezésre állással és redundanciával kapcsolatos szolgáltatásairól nyújt áttekintést.
@@ -92,7 +92,7 @@ Az árak a választott tárolótípus és rendelkezésre állás függvényében
 A különböző tártípusokhoz és rendelkezésre állási lehetőségekhez tartozó díjszabásról lásd: [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
-Egy rendelkezésre állási csoportban, amely lehetővé teszi az Azure tudni, hogyan épül fel az alkalmazás a redundancia és rendelkezésre állás biztosításához adatközpontokon belüli virtuális gépek logikai csoportosítása. Azt javasoljuk, hogy két vagy több virtuális gépet hoz létre a rendszer egy rendelkezésre állási csoport nyújt a magas rendelkezésre állású alkalmazások, és megfelelnek a [99,95 %-os Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Van a rendelkezésre állási csoport számára ingyenesen magát, az Ön által létrehozott minden egyes Virtuálisgép-példány csak kell fizetnie. Ha az önálló virtuális gép [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) csomagot használ, az Azure SLA a nem tervezett karbantartási események során is érvényben van. 
+Egy rendelkezésre állási csoportban, amely lehetővé teszi az Azure tudni, hogyan épül fel az alkalmazás a redundancia és rendelkezésre állás biztosításához adatközpontokon belüli virtuális gépek logikai csoportosítása. Azt javasoljuk, hogy két vagy több virtuális gépet hoz létre a rendszer egy rendelkezésre állási csoport nyújt a magas rendelkezésre állású alkalmazások, és megfelelnek a [99,95 %-os Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Van a rendelkezésre állási csoport számára ingyenesen magát, az Ön által létrehozott minden egyes Virtuálisgép-példány csak kell fizetnie. Ha egyetlen virtuális gép által használt [Azure prémium szintű SSD-k](../articles/virtual-machines/windows/disks-types.md#premium-ssd), az Azure SLA vonatkozik, nem tervezett karbantartási események esetében.
 
 Rendelkezésre állási csoport két további csoportosítást is tartalmaz, amelyek hardverhibák ellen, és lehetővé teszik a frissítések biztonságosan kell alkalmazni – a tartalék tartományok és frissítési tartományok (frissítési) áll. Tudjon meg többet a [Linux-alapú virtuális gépek](../articles/virtual-machines/linux/manage-availability.md), illetve a [Windows-alapú virtuális gépek](../articles/virtual-machines/windows/manage-availability.md) rendelkezésre állásának kezeléséről.
 

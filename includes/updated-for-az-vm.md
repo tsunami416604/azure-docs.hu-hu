@@ -2,19 +2,16 @@
 author: cynthn
 ms.author: cynthn
 manager: jeconnoc
-ms.date: 02/04/2018
+ms.date: 02/15/2018
 ms.topic: include
-ms.openlocfilehash: 052bd610fd061504b8a4695fbb26df7ca062fbe8
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 731cb69bd719800fcf9bd0e611d538d602f48fc2
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984953"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56334050"
 ---
 > [!NOTE]
 >
-> Ez a cikk frissítve lett, hogy az új [Az Azure PowerShell modul](/powershell/azure/new-azureps-module-az). AzureRM továbbra is kritikus bugfix frissítéseket, de a modulban csak Az új funkciók lesz.
-> * A Az modul az már elérhető a Cloud Shellben az AzureRM-kompatibilitási engedélyezve van.
-> * Helyileg Az moduljának telepítése, lásd: [Azure PowerShell telepítése](/powershell/azure/install-az-ps).
-> * Ha telepíti a Az modul helyileg, az AzureRM-kompatibilitási futtatásával engedélyezheti `Enable-AzureRmAlias`.
+> Ez a cikk az Azure PowerShell-lel Az új modul használatára frissítve lett. Az új modul és AzureRM kompatibilitási kapcsolatos további tudnivalókért lásd: [az Azure PowerShell-lel Az új modul bevezetése](/powershell/azure/new-azureps-module-az). A telepítési utasításokért lásd: [Azure PowerShell telepítése](/powershell/azure/install-az-ps).
 

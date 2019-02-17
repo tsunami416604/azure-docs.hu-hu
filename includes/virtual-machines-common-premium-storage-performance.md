@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d16214bf08b0e0b5a95acae380f8d644fc4461ce
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e2dc82ee49b240fe562f02b38c4991c644c010d3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56213057"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333775"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: Nagyteljesítményű rendszer tervezése
+# <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure premium storage: nagy teljesítményű rendszer tervezése
 
 Ez a cikk az Azure Premium Storage nagy teljesítményű alkalmazások létrehozásához nyújt útmutatást. Ez a dokumentum az alkalmazása által használt technológiák alkalmazandó ajánlott eljárások teljesítményének kombinálva szereplő utasítások is használhatja. Az irányelvek mutatja be, ebben a dokumentumban példaként a Premium Storage futó SQL Server rendelkezik használtuk.
 
@@ -35,7 +35,7 @@ Adtunk ezeket az irányelveket kifejezetten a Premium Storage számára, mert a 
 > Egyes esetekben egy lemez teljesítményprobléma tűnik ténylegesen hálózati szűk keresztmetszeteket. Ezekben a helyzetekben, optimalizálja a [hálózati teljesítményt](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
 > Ha a virtuális gép támogatja a gyorsított hálózatkezelés, győződjön meg arról, hogy engedélyezve van. Ha nincs engedélyezve, engedélyezheti a már üzembe helyezett virtuális gépeken is [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) és [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-Mielőtt elkezdené, ha új prémium szintű Storage, először olvassa el a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) és [Azure Storage méretezhetőségi és Teljesítménycéljai](../articles/storage/common/storage-scalability-targets.md) cikkeket.
+Mielőtt elkezdené, ha új prémium szintű Storage, először olvassa el a [IaaS virtuális gépekhez egy Azure-lemez típusának kiválasztása](../articles/virtual-machines/windows/disks-types.md) és [Azure Storage méretezhetőségi és Teljesítménycéljai](../articles/storage/common/storage-scalability-targets.md) cikkeket.
 
 ## <a name="application-performance-indicators"></a>Alkalmazás teljesítménymutatók
 
@@ -45,21 +45,21 @@ Ebben a szakaszban ismertetjük az általános teljesítménymutatók Premium St
 
 ## <a name="iops"></a>IO
 
-IOPS érték szám, amely az alkalmazás egy második, a tárolólemezeket által küldött kérelmek. Egy bemeneti/kimeneti műveleti olvashatók vagy ír, egymást sorban követő vagy véletlenszerű. Egy online kereskedelmi webhelyen például OLTP alkalmazásokat kell számos egyidejű felhasználói kérések feldolgozása azonnal elkezdődik. A felhasználói kérések beszúrása és frissítése nagy számításigényű adatbázis-tranzakciók, amely az alkalmazás gyorsan kell feldolgozni. Ezért a OLTP alkalmazások nagyon magas iops-érték szükséges. Az ilyen alkalmazások több millió, a kis- és véletlenszerű i/o-kérelmek kezelésére. Ha van ilyen alkalmazás, az alkalmazás-infrastruktúrával való optimalizálásáról IOPS kell alakítja ki. A későbbi szakaszban *alkalmazások teljesítményének optimalizálása*, tárgyaljuk részletesen összes tényezőt kell figyelembe venni magas iops-érték beolvasása.
+Iops-t vagy a bemeneti/kimeneti műveletek másodpercenként, akkor az alkalmazás egy második, a tárolólemezeket által küldött kérelmek száma. Egy bemeneti/kimeneti műveleti olvashatók vagy ír, egymást sorban követő vagy véletlenszerű. Online tranzakciófeldolgozási (OLTP) olyan alkalmazások, mint egy online kereskedelmi webhelyen kell számos egyidejű felhasználói kérések feldolgozása azonnal elkezdődik. A felhasználói kérések beszúrása és frissítése nagy számításigényű adatbázis-tranzakciók, amely az alkalmazás gyorsan kell feldolgozni. Ezért a OLTP alkalmazások nagyon magas iops-érték szükséges. Az ilyen alkalmazások több millió, a kis- és véletlenszerű i/o-kérelmek kezelésére. Ha van ilyen alkalmazás, az alkalmazás-infrastruktúrával való optimalizálásáról IOPS kell alakítja ki. A későbbi szakaszban *alkalmazások teljesítményének optimalizálása*, tárgyaljuk részletesen összes tényezőt kell figyelembe venni magas iops-érték beolvasása.
 
 Ha csatlakoztat egy prémium szintű tárolólemez a nagy méretű virtuális Gépen, a lemez specifikációnak megfelelően IOPS garantált számos Azure rendelkezések. Ha például P50 lemez 7500 IOPS látja el. Minden egyes nagy méretű virtuális gép méretét is rendelkezik egy is kiálló tárolókkal IOPS-korlátját. Például egy Standard GS5 virtuális gép rendelkezik 80 000 iops-érték korlátozása.
 
 ## <a name="throughput"></a>Teljesítmény
 
-Átviteli sebesség vagy sávszélesség az alkalmazás egy megadott időszak, a tárolólemezeket által küldött adatok mennyisége. Ha az alkalmazás által végzett bemeneti/kimeneti műveletek nagy i/o-egység méretű, magas átviteli sebesség szükséges. Data warehouse-alkalmazások általában a probléma, amely egyszerre nagy részét az adatok eléréséhez, és gyakran a tömeges műveletek végrehajtása vizsgálat számításigényes műveletek. Más szóval az ilyen alkalmazásoknak nagyobb átviteli sebességet. Ha van ilyen alkalmazás, az átviteli sebesség optimalizálása az infrastruktúra kell alakítja ki. A következő szakaszban tárgyaljuk részletesen, ennek érdekében kell hangolása tényezőket.
+Átviteli sebesség vagy sávszélesség nem az alkalmazás egy megadott időszak, a tárolólemezeket által küldött adatok mennyisége. Ha az alkalmazás által végzett bemeneti/kimeneti műveletek nagy i/o-egység méretű, magas átviteli sebesség szükséges. Data warehouse-alkalmazások általában a probléma, amely egyszerre nagy részét az adatok eléréséhez, és gyakran a tömeges műveletek végrehajtása vizsgálat számításigényes műveletek. Más szóval az ilyen alkalmazásoknak nagyobb átviteli sebességet. Ha van ilyen alkalmazás, az átviteli sebesség optimalizálása az infrastruktúra kell alakítja ki. A következő szakaszban tárgyaljuk részletesen, ennek érdekében kell hangolása tényezőket.
 
-Ha csatlakoztat egy prémium szintű storage-lemez egy nagy méretű virtuális Gépet, az Azure rendelkezések átviteli sebességet, hogy a lemez specifikációnak megfelelően. Például P50 lemez átviteli második lemezenként 250 MB építi ki. Minden egyes nagy méretű virtuális gép méretét is rendelkezik az adott átviteli sebességhatár is kiálló tárolókkal, mint. Például Standard GS5 virtuális gép, amelynek maximális sebessége 2000 MB / másodperc. 
+Ha egy prémium szintű storage-lemez csatolása egy nagy méretű virtuális Gépet, az Azure rendelkezések átviteli sebesség, a lemez specifikációnak megfelelően. Például P50 lemez 250 MB / s lemezteljesítményt látja. Minden egyes nagy méretű virtuális gép méretét is rendelkezik az adott átviteli sebességhatár is kiálló tárolókkal, mint. Például Standard GS5 virtuális gép, amelynek maximális sebessége 2000 MB / másodperc.
 
 Nincs olyan adatátviteli sebessége és IOPS, ahogyan az alábbi képletet közötti kapcsolat.
 
-![](media/premium-storage-performance/image1.png)
+![Kapcsolat az IOPS és átviteli sebesség](../articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
 
-Ezért fontos meghatározni az optimális átviteli sebesség és az IOPS értékek, az alkalmazás számára szükséges. Próbálja ki az egyik optimalizálása, a másik lekérdezi eszköztípusokra is. Egy későbbi szakaszban olvashat *alkalmazások teljesítményének optimalizálása*, részletesebben ismertetjük IOPS és átviteli sebesség optimalizálása.
+Ezért fontos meghatározhatja az optimális átviteli sebesség és az alkalmazás számára szükséges IOPS-értékeket. Próbálja ki az egyik optimalizálása, a másik lekérdezi eszköztípusokra is. Egy későbbi szakaszban olvashat *alkalmazások teljesítményének optimalizálása*, részletesebben ismertetjük IOPS és átviteli sebesség optimalizálása.
 
 ## <a name="latency"></a>Késés
 
@@ -67,23 +67,15 @@ Késés egy alkalmazás egyetlen kérést kap, küldje el a storage-lemez és az
 
 Ha az alkalmazás magasabb IOPS és átviteli sebesség optimalizálása, negatív hatással lesz a késés, az alkalmazás. Miután az alkalmazás teljesítményének hangolása, mindig értékelje ki a késés nagy késésű váratlan viselkedés elkerülése érdekében az alkalmazás.
 
-A következő vezérlési síkjával végzett műveletek a Managed Disks is igénybe vehet a lemez tárolási egyik helyről egy másikra mozgása. Ez az előkészített keresztül háttér másolása az adatok, amelyek befejezéséhez, általában 24 óránál a lemezeken lévő adatok mennyiségétől függően több órát is igénybe vehet. Ebben az időszakban az alkalmazás tapasztalhatnak magasabb, mint a szokásos olvasási késés, valamint a bizonyos olvasási is első átirányítja az eredeti helyre is hosszabb időt vesz igénybe. Ez nincs hatással az írási késés ebben az időszakban.  
+# <a name="performance-application-checklist-for-disks"></a>Lemezek teljesítménye alkalmazás ellenőrzőlistája
 
-1.  [Frissítés a tárolási típust](../articles/virtual-machines/windows/convert-disk-storage.md)
-2.  [Válassza le és lemez csatolása egy virtuális gépről egy másikra](../articles/virtual-machines/windows/attach-disk-ps.md)
-3.  [Felügyelt lemez létrehozása VHD-fájlból](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md)
-4.  [Felügyelt lemez létrehozása pillanatképből](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)
-5.  [Nem felügyelt lemezek konvertálása a Managed Disks szolgáltatásba](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)
+Az első lépés fut az Azure Premium Storage nagy teljesítményű alkalmazások tervezésekor az alkalmazás teljesítmény-követelmények van ismertetése. Miután kigyűjtötte hálózatiteljesítmény-igények, optimalizálhatja az alkalmazás a legjobb teljesítmény elérése érdekében.
 
-## <a name="gather-application-performance-requirements"></a>Alkalmazás teljesítmény-követelmények összegyűjtése
+Az előző szakaszban tudjuk magyarázni a közös teljesítménymutatók, az IOPS, az átviteli sebesség és a késés. Meg kell adnia, hogy ezek teljesítménymutatók, amelyek létfontosságúak az alkalmazást, hogy a kívánt felhasználói élményt nyújthat. Ha például magas iops-érték szervezetünk számára legfontosabb OLTP alkalmazások másodpercenként több millió, a tranzakciók feldolgozása. Mivel a nagy átviteli sebességet, kritikus fontosságú, nagy mennyiségű adat feldolgozása másodpercenként Data Warehouse-alkalmazásokhoz. Valós idejű alkalmazások, mint a webhelyek élő videóstream rendkívül alacsony késésű létfontosságú.
 
-A futó Azure Premium Storage nagy teljesítményű alkalmazások tervezésének első lépése az, az alkalmazás teljesítmény-követelmények megértéséhez. Miután összegyűjtötte hálózatiteljesítmény-igények, optimalizálhatja az alkalmazás a legjobb teljesítmény elérése érdekében.
+Ezután mérje maximális teljesítmény-követelmények az alkalmazás teljes élettartama során. Használja az alábbi minta ellenőrzőlista kezdés. Jegyezze fel a legnagyobb teljesítményre vonatkozó követelmények során normális, maximális és munkaidőn kívül számítási feladatok pontokat. Összes számítási feladatok szintjére vonatkozó követelmények azonosításának elősegítése, akkor lesz képes meghatározni az alkalmazás az általános teljesítmény megkövetelését. Például egy e-kereskedelmi webhely a normál számítási feladatok lesz a tranzakciók, a legtöbb nap során szolgál. A maximális számítási feladatok a webhely a tranzakciók szolgál az ünnepi időszakban vagy speciális értékesítés események során lesz. Csúcsértéke általában tapasztalt korlátozott ideig, de megkövetelheti az alkalmazás méretezése két vagy több alkalommal a normál működés. Ismerje meg az 50. percentilis, 90 PERCENTILIS és 99. percentilis követelményeket. Hozzájárul a teljesítmény-követelmények kiugró adatokat kiszűréséhez, és meg is összpontosítsa figyelmét a megfelelő értékek optimalizálására.
 
-Az előző szakaszban tudjuk magyarázni a közös teljesítménymutatók, IOPS, az átviteli sebesség és a késleltetés. Meg kell adnia, hogy ezek teljesítménymutatók, amelyek létfontosságúak az alkalmazást, hogy a kívánt felhasználói élményt nyújthat. Ha például magas iops-érték szervezetünk számára legfontosabb OLTP alkalmazások másodpercenként több millió, a tranzakciók feldolgozása. Mivel a nagy átviteli sebességet, kritikus fontosságú, nagy mennyiségű adat feldolgozása másodpercenként Data Warehouse-alkalmazásokhoz. Valós idejű alkalmazások, mint a webhelyek élő videóstream rendkívül alacsony késésű létfontosságú.
-
-Ezután mérje maximális teljesítmény-követelmények az alkalmazás teljes élettartama során. Használja az alábbi minta ellenőrzőlista kezdés. Jegyezze fel a maximális teljesítmény-követelmények normál alatt, a csúcsidőre és a munkaidőn kívül munkaterhelés pontokat. Összes számítási feladatok szintjére vonatkozó követelmények azonosításának elősegítése, akkor lesz képes meghatározni az alkalmazás az általános teljesítmény megkövetelését. Például egy e-kereskedelmi webhely a normál számítási feladatok lesz a tranzakciók, a legtöbb nap során szolgál. A maximális számítási feladatok a webhely a tranzakciók szolgál az ünnepi időszakban vagy speciális értékesítés események során lesz. Csúcsértéke általában tapasztalt korlátozott ideig, de megkövetelheti az alkalmazás méretezése két vagy több alkalommal a normál működés. Ismerje meg az 50. percentilis, 90 PERCENTILIS 99. percentilis követelményeinek. Hozzájárul a teljesítmény-követelmények kiugró adatokat kiszűréséhez, és meg is összpontosítsa figyelmét a megfelelő értékek optimalizálására.
-
-### <a name="application-performance-requirements-checklist"></a>Alkalmazás teljesítményének követelmények ellenőrzőlista
+## <a name="application-performance-requirements-checklist"></a>Alkalmazás teljesítményének követelmények ellenőrzőlista
 
 | **Teljesítmény-követelmények** | **50. percentilis** | **90. percentilis** | **99. percentilis** |
 | --- | --- | --- | --- |
@@ -106,9 +98,7 @@ Ezután mérje maximális teljesítmény-követelmények az alkalmazás teljes �
 > [!NOTE]
 > Érdemes megfontolni a számok alapján az alkalmazás várható jövőbeli növekedésének megfelelően. Érdemes számoljon a növekedéssel előre, mert később a teljesítmény fokozása infrastruktúrájának módosításához nehezebb lehet.
 
-Ha egy meglévő alkalmazást, és szeretne áttérni a Premium Storage, először hozhat létre a meglévő alkalmazás a fenti feladatlista. Ezután hozhat létre az alkalmazás a Premium Storage egy prototípust, és az alkalmazás ismertetett irányelvek alapján *alkalmazások teljesítményének optimalizálása* Ez a dokumentum későbbi szakaszában. A következő szakasz segítségével gyűjtse össze a TELJESÍTMÉNYMÉRÉSEK eszközöket írja le.
-
-Ellenőrzőlista a meglévő alkalmazás a prototípus hasonló létrehozásához. Benchmarking eszközökkel a számítási feladatokat szimulálhat, és mérhetik a teljesítményt, a prototípus-alkalmazás. A szakaszban [Benchmarking](#benchmarking) további. Így megadhatja, hogy e Premium Storage felel meg, vagy az alkalmazás teljesítményének követelményeinek előremutató módon. Ezután az alkalmazás éles üzemét ugyanez az útmutató is alkalmazható.
+Ha egy meglévő alkalmazást, és szeretne áttérni a Premium Storage, először hozhat létre a meglévő alkalmazás a fenti feladatlista. Ezután hozhat létre az alkalmazás a Premium Storage egy prototípust, és az alkalmazás ismertetett irányelvek alapján *alkalmazások teljesítményének optimalizálása* Ez a dokumentum későbbi szakaszában. A következő cikk ismerteti az eszközök segítségével gyűjtse össze a teljesítmény mértékegysége.
 
 ### <a name="counters-to-measure-application-performance-requirements"></a>Alkalmazáskövetelmények teljesítmény mérésére számlálók
 
@@ -129,13 +119,15 @@ A teljesítményszámlálók processzor, memória, és minden egyes logikai leme
 
 Tudjon meg többet [iostat](https://linux.die.net/man/1/iostat) és [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx).
 
-## <a name="optimizing-application-performance"></a>Alkalmazások teljesítményének optimalizálása
+
+
+## <a name="optimize-application-performance"></a>Alkalmazások teljesítményének optimalizálása
 
 A Premium Storage futó alkalmazás teljesítményét befolyásoló főbb tényezőket jellegét, i/o kérések, Virtuálisgép-méretet, a lemez mérete, a lemezszám, a lemezek gyorsítótárazása, a többszálas végrehajtás és Várólistamélységének. A rendszer által biztosított belül ezek közül néhány tényező vezérelhető. A legtöbb alkalmazás nem kaphat közvetlenül módosítja az i/o-mérete és Várólistamélységének lehetőség. Ha az SQL Servert használ, például nem IO mérete és a várólista mélysége választható. Az SQL Server úgy dönt, hogy az optimális i/o mérete és a várólista mélysége értékeket a legtöbb teljesítmény. Fontos tudni, hogy az alkalmazás teljesítményre gyakorolt tényezők mindkét típusú, hogy kioszthatja a megfelelő erőforrásokon a teljesítményigények kielégítése érdekében.
 
 Ebben a szakaszban tekintse meg az alkalmazás követelményeinek ellenőrzőlista létrehozott, azonosíthatja, hogy mennyit kell az alkalmazás teljesítményének optimalizálásához. Ez alapján fogja meg tudja határozni, mely tényezők ebben a szakaszban lévő kell finomhangolásához. Az alkalmazás teljesítményre gyakorolt egyes tényező tanúsítsa, futtassa az Alkalmazásbeállítás teljesítménymérési eszközökről. Tekintse meg a [Benchmarking](#Benchmarking) szakasz lépések Windows és Linux rendszerű virtuális gépek közös teljesítménymérési eszközökről futtathatók a jelen cikk végén található.
 
-### <a name="optimizing-iops-throughput-and-latency-at-a-glance"></a>Egyetlen pillantással IOPS, az átviteli sebesség és a késleltetés optimalizálása
+### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>IOPS, az átviteli sebesség és a egy pillantással késleltetés optimalizálása
 
 Az alábbi táblázat összefoglalja a teljesítmény tényezők és az IOPS, az átviteli sebesség és a késleltetés optimalizálásához szükséges lépések. Fogja ezt az összefoglalót alatti részek ismertetik tényező sokkal részletesebben olvashat róluk.
 
@@ -268,7 +260,7 @@ BlobCache működésével kapcsolatos további tudnivalókért tekintse meg a be
 
 Fontos a megfelelő lemezek készlete, a gyorsítótár engedélyezése. E lehetővé kell tennie, a lemezek gyorsítótárazása a prémium szintű lemezt, vagy nem függ a számítási feladatok mintájának lemezen kezelése lesz. Az alábbi táblázat az alapértelmezett operációsrendszer- és adatlemezek gyorsítótárazási beállításai.
 
-| **Lemez típusa** | **Alapértelmezett az Ügyfélgyorsítótár beállítása** |
+| **Lemez típusa** | **Alapértelmezett az ügyfélgyorsítótár beállítása** |
 | --- | --- |
 | Operációsrendszer-lemez |ReadWrite |
 | Adatlemez |ReadOnly |
@@ -297,6 +289,46 @@ Tegyük fel, alkalmazhatja ezeket az irányelveket az SQL Server a Premium Stora
    b.  Szolgáltató olvasás a gyorsítótárból, azt jelenti, hogy további átviteli áll rendelkezésre a prémium szintű adatlemezeket. Az SQL Server is használja fel az adatok több lapot, és más műveletek, például a biztonsági mentési és visszaállítási beolvasása a további átviteli, a batch-terhelések és index újraépíti.  
 1. Konfigurálja a prémium szintű tárolólemezeket a naplófájlokat tároló "None" gyorsítótárazni.  
    a.  Naplófájlok elsősorban az írási műveletek rendelkezik. Ezért azok nem tudják igénybe a csak olvasható gyorsítótárának.
+
+### <a name="optimize-performance-on-linux-vms"></a>A Linux rendszerű virtuális gépek teljesítményének optimalizálása
+
+Minden prémium szintű SSD-k vagy állítsa be gyorsítótár-ultranagy lemezek **ReadOnly** vagy **None**, ha csatlakoztatja a fájlrendszer le kell tiltania "korlátok". Mivel a prémium szintű tárolólemezeket írási műveletek ezeket a gyorsítótár-beállításokat a tartós megszüntesse az ebben a forgatókönyvben nem szükséges. Ha az írási kérelem sikeresen befejeződik, adatok állandó tárolóján lett írva. "Korlátok" letiltásához használja a következő módszerek egyikét. A fájlrendszer közül választhat:
+  
+* A **reiserFS**, hogy tiltsa le a akadályozó tényezők, használja a `barrier=none` csatlakoztatási lehetőséget. (Korlátok engedélyezze az `barrier=flush`.)
+* A **ext3/ext4**, hogy tiltsa le a akadályozó tényezők, használja a `barrier=0` csatlakoztatási lehetőséget. (Korlátok engedélyezze az `barrier=1`.)
+* A **XFS**, hogy tiltsa le a akadályozó tényezők, használja a `nobarrier` csatlakoztatási lehetőséget. (Korlátok engedélyezze az `barrier`.)
+* A premium storage gyorsítótár-lemezek beállítása **ReadWrite**, engedélyezze a korlátok írási tartósságot biztosítanak.
+* A kötet címkéket a virtuális gép újraindítása után is fennállnak frissítenie kell az /etc/fstab a lemezek univerzálisan egyedi azonosítót (UUID) hivatkozik. További információkért lásd: [felügyelt lemez hozzáadása Linux rendszerű virtuális gép](../articles/virtual-machines/linux/add-disk.md).
+
+A következő Linux-disztribúciók ellenőrzése a prémium szintű SSD-kkel. A jobb teljesítmény és a prémium szintű SSD-k stabilitását azt javasoljuk, hogy a virtuális gépek frissít egy verzió vagy újabb. 
+
+A legújabb Linux Integration Services (LIS), 4.0, az Azure-hoz szükséges néhány verziójára. Töltse le, és a egy terjesztési telepítéséhez, az alábbi táblázatban szereplő hivatkozásra. Hogy képek hozzáadása a listához, hogy végezze el az érvényesítési. Az ellenőrzések bemutatják, hogy a teljesítmény változhat az egyes lemezképek. Teljesítmény függ a számítási feladatok jellemzői, és a lemezkép-beállításokat. Különböző képek amelyek ideálisak a különböző típusú számítási feladatokat.
+
+| Disztribúció | Verzió | Támogatott kernelverzióra | Részletek |
+| --- | --- | --- | --- |
+| Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
+| Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
+| Debian | 7.x, 8.x | 3.16.7-ckt4-1+ | &nbsp; |
+| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
+| SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
+| CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
+| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [Szükséges LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Vegye figyelembe a következő szakaszban talál.* |
+| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [Ajánlott LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Vegye figyelembe a következő szakaszban talál.* |
+| Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ | &nbsp; | &nbsp; |
+| Oracle | 6.0+, 7.2+ | &nbsp; | UEK4 vagy RHCK |
+| Oracle | 7.0-7.1 | &nbsp; | UEK4 vagy RHCK használatával[4.1 + LIS](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6.7 | &nbsp; | UEK4 vagy RHCK használatával[4.1 + LIS](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+
+## <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS típusú LIS illesztőprogramok
+
+Ha futtatja az OpenLogic CentOS-beli virtuális gépek legújabb illesztőprogramok telepítéséhez a következő parancsot:
+
+```
+sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
+sudo yum install microsoft-hyper-v
+```
+
+Aktiválja az új illesztőprogramok, indítsa újra a virtuális Gépet.
 
 ## <a name="disk-striping"></a>Lemez szétosztottsága befolyásolhatja.
 
@@ -363,249 +395,11 @@ Egy csíkozott kötet úgy, hogy minden lemezhez tartozik egy maximális váról
 
 Az Azure Premium Storage rendelkezések megadott IOPS és átviteli sebesség száma attól függően, a Virtuálisgép-méretek és úgy dönt, adatlemez-méretet. Bármikor az alkalmazás próbál IOPS és átviteli sebesség meghajtó felett ezeket a korlátokat, mi a virtuális gép vagy lemez képes kezelni, a Premium Storage szabályozás fogja azt. Ez akkor jelentkezik, az alkalmazás teljesítménycsökkenésért formájában. Ez is jelenti azt, hogy nagyobb késést, csökkentheti az átviteli sebesség vagy IOPS csökkentheti. Ha prémium szintű Storage nem szabályozás, az alkalmazás teljesen feladatátadáshoz által meghaladja a mi erőforrásainak képesek jövedelmezőbb munkát tesznek lehetővé. Tehát teljesítménnyel kapcsolatos problémák miatt szabályozás elkerülése érdekében mindig kiépítése az alkalmazás számára elegendő erőforrással. Figyelembe venni, mi beszéltünk a Virtuálisgép-méretek és a lemez méretét a fenti szakaszban. A teljesítménytesztek a legjobb módszer döntse el, milyen erőforrásokra lesz szüksége az alkalmazás futtatásához.
 
-## <a name="benchmarking"></a>A teljesítménytesztek
-
-A teljesítménytesztek az a folyamat számos különböző számítási feladatok az alkalmazás és az egyes munkaterhelésekhez tartozó az alkalmazás teljesítményének méréséhez. Egy korábbi szakasz lépéseit követve kigyűjtötte alkalmazás teljesítmény-követelmények. Teljesítménymérési eszközökről futtatja az alkalmazást futtató virtuális gépeken, megadhatja, hogy a teljesítményi szint, amely az alkalmazás a Premium Storage segítségével érheti el. Ebben a szakaszban biztosítunk egy Standard DS14 virtuális gép kiépítése az Azure Premium Storage-lemez teljesítményértékelési példákat.
-
-A Microsoft rendelkezik használt közös teljesítménymérési eszközökről Iometer és FIO, Windows és Linux rendszereken. Ezek az eszközök elindítanak egy éles számítási feladat például szimuláló több szálon, és a rendszer teljesítményének mérésére. Az eszközök használatával is konfigurálhatja blokk mérete és a várólista mélysége, amelyek normál esetben nem módosítható az alkalmazás paraméterek. Ez nagyobb rugalmasságot biztosít, prémium szintű lemezek a különböző típusú alkalmazások számítási feladatai együtt üzembe helyezett virtuális gépek nagy léptékű a maximális teljesítmény érdekében. Minden egyes teljesítménymérési eszköz olvashat további [Iometer](http://www.iometer.org/) és [FIO](http://freecode.com/projects/fio).
-
-Kövesse az alábbi példák, hozzon létre egy Standard DS14 virtuális Gépet, és 11 Premium Storage-lemez csatolása a virtuális gép. A 11 lemezek 10 lemez konfigurálása az állomás-gyorsítótárazás, "None", és stripe-NoCacheWrites nevű kötet be őket. Állomás-gyorsítótárazás "Csak olvasható", a fennmaradó lemez konfigurálása, és hozzon létre egy kötetet CacheReads nevű ezt a lemezt. Ezt a beállítást használja, akkor fogja tudni tekintse meg a maximális olvasási és írási teljesítményt, a Standard DS14 virtuális gépről. A prémium szintű lemezekkel rendelkező virtuális gép – DS14 létrehozásáról részletes lépéseket Ugrás [létrehozása és használata egy prémium szintű tárfiók a virtuálisgép-adatlemez](../articles/virtual-machines/windows/premium-storage.md).
-
-*A gyorsítótár Bemelegedés*  
-A lemezt a csak olvasható állomás-gyorsítótárazás lesz tudni visszajelzést adni magasabb iops-érték meghaladja a lemez maximális korlátot. A maximális olvasási teljesítmény eléréséhez a gazdagép-gyorsítótárból, először meg kell ízelítőt kapott a gyorsítótár a lemezről. Ez biztosítja, hogy az olvasási IOs mely teljesítménymérési eszköz vonják CacheReads köteten ténylegesen eléri a gyorsítótár és nem a lemezt közvetlenül. Az egyetlen gyorsítótár további IOPS gyorsítótár-találatok eredményez engedélyezve van a lemez.
-
-> **Fontos:**  
-> A gyorsítótár futtatása, a teljesítmény mérésére, minden alkalommal, amikor a virtuális gép újraindítása előtt kell ízelítőt.
-
-#### <a name="iometer"></a>Iometer
-
-[Töltse le a Iometer eszközt](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) a virtuális gépen.
-
-*Fájl tesztelése*  
-Iometer egy tesztfájlt a köteten, amelyen futtatni fogja a teljesítménymérési teszt tárolt használ. Ez olvasási meghajtók, és a fájl tesztelése és mérhető, a lemez írási IOPS és átviteli sebesség. Iometer a tesztfájlt hoz létre, ha nincs megadva, az egyik. Hozzon létre egy 200 GB-os tesztfájlt iobw.tst nevű CacheReads és NoCacheWrites kötetekre.
-
-*Access-leírások*  
-A specifikációk kérés i/o-mérete, % olvasási/írási, % véletlenszerű/soros konfigurált Iometer "Access specifikációi" lapján. Hozzon létre egy hozzáférési leírása az alábbiakban leírt forgatókönyveket. Hozzon létre hozzáférés előírásoknak és "Mentés" megfelelő nevezze hasonlóan – RandomWrites\_8K RandomReads\_8 K. Válassza ki a megfelelő specifikáció, ha a vizsgálati eset futtatása.
-
-Hozzáférés specifikációk maximális írási IOPS-forgatókönyvhöz példa az alábbi  
-    ![](media/premium-storage-performance/image8.png)
-
-*Maximális IOPS-teszt specifikációk*  
-Maximális IOPs mutatja be, használja a kérést kisebb méretet. Használja a 8K kérés méretét, és hozzon létre a véletlenszerű írások és olvasások specifikációk.
-
-| Hozzáférési leírása | Kérés mérete | Véletlenszerű % | Olvassa el a(z) % |
-| --- | --- | --- | --- |
-| RandomWrites\_8K |8K |100 |0 |
-| RandomReads\_8K |8K |100 |100 |
-
-*Maximális átviteli sebesség tesztelése specifikációk*  
-Maximális átviteli sebesség bemutatása érdekében használja a kérelem nagyobb méretű. 64K kérés mérete használja, és a véletlenszerű írások és olvasások leírások létrehozásához.
-
-| Hozzáférési leírása | Kérés mérete | Véletlenszerű % | Olvassa el a(z) % |
-| --- | --- | --- | --- |
-| RandomWrites\_64 K |64K |100 |0 |
-| RandomReads\_64K |64K |100 |100 |
-
-*A Iometer teszt futtatása*  
-Hajtsa végre a gyorsítótár ízelítőt az alábbi lépéseket
-
-1. Hozzon létre két hozzáférési specifikációk alább látható értékekkel
-
-   | Name (Név) | Kérés mérete | Véletlenszerű % | Olvassa el a(z) % |
-   | --- | --- | --- | --- |
-   | RandomWrites\_1 MB |1MB |100 |0 |
-   | RandomReads\_1 MB |1MB |100 |100 |
-1. Futtassa a következő paraméterekkel gyorsítótárlemez inicializálása Iometer tesztet. Három munkaszálak használata a célkötet és a egy várólistamélység 128. A teszt "Futási idő" időtartamának beállítása 2hrs, kattintson a "Teszt beállításai" lap.
-
-   | Forgatókönyv | Célkötet | Name (Név) | Időtartam |
-   | --- | --- | --- | --- |
-   | Gyorsítótárlemez inicializálása |CacheReads |RandomWrites\_1 MB |2hrs |
-1. Futtassa a következő paraméterekkel gyorsítótárlemez Bemelegedés Iometer tesztet. Három munkaszálak használata a célkötet és a egy várólistamélység 128. A teszt "Futási idő" időtartamának beállítása 2hrs, kattintson a "Teszt beállításai" lap.
-
-   | Forgatókönyv | Célkötet | Name (Név) | Időtartam |
-   | --- | --- | --- | --- |
-   | Meleg Gyorsítótárlemez mentése |CacheReads |RandomReads\_1 MB |2hrs |
-
-Után gyorsítótárlemez bemelegíteni van, folytassa az alább felsorolt tesztcélú forgatókönyveket. A Iometer teszt futtatásához használja legalább három feldolgozó szálak **egyes** mennyiségi cél. Az egyes munkavégző szál válassza ki a célkötet, várólistamélységének beállítása, és válasszon a mentett teszt előírások, ahogyan az az alábbi táblázat a megfelelő vizsgálati eset futtatása. Ezek a tesztek futtatása a táblázatban is látható várt eredmény IOPS és átviteli sebességet. Minden esetben egy kis méretű i/o 8 KB-os és a egy 128 magas várólistamélység szolgál.
-
-| Tesztkörnyezet | Célkötet | Name (Név) | Eredmény |
-| --- | --- | --- | --- |
-| Legfeljebb Olvasási iops-érték |CacheReads |RandomWrites\_8K |50 000 IOPS-ÉRTÉK |
-| Legfeljebb Az írási IOPS |NoCacheWrites |RandomReads\_8K |AKÁR 64 000 IOPS-ÉRTÉK |
-| Legfeljebb Kombinált IOPS |CacheReads |RandomWrites\_8K |100 000 IOPS-ÉRTÉK |
-| NoCacheWrites |RandomReads\_8K | &nbsp; | &nbsp; |
-| Legfeljebb Read MB/sec |CacheReads |RandomWrites\_64 K |524 MB/mp |
-| Legfeljebb MB/mp/írás |NoCacheWrites |RandomReads\_64K |524 MB/mp |
-| Kombinált MB/mp |CacheReads |RandomWrites\_64 K |1000 MB/mp |
-| NoCacheWrites |RandomReads\_64K | &nbsp; | &nbsp; |
-
-Az alábbiakban a Iometer pillanatképeiért teszteredmények kombinált IOPS és átviteli sebesség forgatókönyvekhez.
-
-*Egyesített írási és olvasási maximális iops-érték*  
-![](media/premium-storage-performance/image9.png)
-
-*Egyesített írási és olvasási maximális átviteli sebesség*  
-![](media/premium-storage-performance/image10.png)
-
-### <a name="fio"></a>FIO
-
-FIO egy olyan népszerű eszköz a teljesítményteszt storage a Linuxos virtuális gépeken. Azt a rugalmasságot, jelölje be a különböző IO méretű, egymást követő vagy véletlenszerű olvasást, és írja. Ez indít a munkaszálak vagy folyamatok a megadott i/o-műveletek végrehajtásához. Megadhatja az egyes munkavégző szál feladat fájlok használatával kell végrehajtania i/o-műveletek típusa. Létrehoztunk egy feladat-fájlt az alábbi példákban szemléltetett forgatókönyv szerint. A feladat fájlokban becslésére a Premium Storage futó különböző számítási feladatok specifikációit módosíthatja. Standard DS 14 virtuális gép futó használjuk a példákban **Ubuntu**. A elején leírt azonos telepítőjével a [szakasz teljesítménytesztek](#Benchmarking) és a meleg fel a gyorsítótárat a teljesítménymérési tesztek futtatása előtt.
-
-Mielőtt elkezdené, [FIO letöltése](https://github.com/axboe/fio) , és telepítse a virtuális gépen.
-
-Futtassa a következő parancsot az Ubuntu rendszeren
-
-```
-apt-get install fio
-```
-
-A lemezeken környezetbarát olvasási művelet használjuk az írási műveletek a négy munkaszálak és négy munkavégző szál. Az írási feldolgozók forgalmat a "nocache" az értéke "Nincs" cache 10 lemezzel rendelkezik köteten lévő fog kell vezetési. Az olvasási feldolgozók forgalom gyorsítótár beállítása "Csak olvasható" 1 lemezzel rendelkező "readcache" köteten fog kell vezetési.
-
-*Maximális írási iops-érték*  
-Hozzon létre következő előírásoknak írási IOPS maximális beolvasni a feladat-fájlt. Nevezze el "fiowrite.ini".
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=256
-ioengine=libaio
-bs=8k
-
-[writer1]
-rw=randwrite
-directory=/mnt/nocache
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-[writer4]
-rw=randwrite
-directory=/mnt/nocache
-```
-
-Vegye figyelembe a következő főbb dolog, amely a korábbi szakaszokban ismertetett tervezési útmutató összhangban legyenek. Ezek a specifikációk nélkülözhetetlenek maximális IOPS-meghajtó  
-
-* Egy 256 magas várólista mélységét.  
-* Kis blokkméret 8 KB-os.  
-* Véletlenszerű írások végrehajtása több szálon.
-
-Futtassa a következő parancsot a FIO teszt 30 másodpercig elindítson  
-
-```
-sudo fio --runtime 30 fiowrite.ini
-```
-
-A teszt végrehajtása közben lesz száma írási iops-t a virtuális gép és a prémium szintű lemezek kézbesítéséhez. Az alábbi példában látható módon a DS14 VM elkötelezett az írási iops-érték 50 000 IOPS-korlátját.  
-    ![](media/premium-storage-performance/image11.png)
-
-*Maximális olvasási iops-érték*  
-Hozzon létre a feladat-fájlt az alábbi előírások beolvasni a maximális olvasási iops-t. Nevezze el "fioread.ini".
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=256
-ioengine=libaio
-bs=8k
-
-[reader1]
-rw=randread
-directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
-rw=randread
-directory=/mnt/readcache
-```
-
-Vegye figyelembe a következő főbb dolog, amely a korábbi szakaszokban ismertetett tervezési útmutató összhangban legyenek. Ezek a specifikációk nélkülözhetetlenek maximális IOPS-meghajtó
-
-* Egy 256 magas várólista mélységét.  
-* Kis blokkméret 8 KB-os.  
-* Véletlenszerű írások végrehajtása több szálon.
-
-Futtassa a következő parancsot a FIO teszt 30 másodpercig elindítson
-
-```
-sudo fio --runtime 30 fioread.ini
-```
-
-A teszt végrehajtása közben lesz száma olvasási iops-t a virtuális gép és a prémium szintű lemezek kézbesítéséhez. Ahogy az alábbi példában is látható, a DS14 VM elkötelezett olvasási több mint 64 000 IOPS. Ez az a lemez és a gyorsítótár teljesítménye.  
-    ![](media/premium-storage-performance/image12.png)
-
-*Maximális olvasási és írási iops-érték*  
-A feladat-fájlt létrehozni a következő beolvasni a maximális előírások együttesen olvasási és írási iops-t. Nevezze el "fioreadwrite.ini".
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=128
-ioengine=libaio
-bs=4k
-
-[reader1]
-rw=randread
-directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
-rw=randread
-directory=/mnt/readcache
-
-[writer1]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer4]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-```
-
-Vegye figyelembe a következő főbb dolog, amely a korábbi szakaszokban ismertetett tervezési útmutató összhangban legyenek. Ezek a specifikációk nélkülözhetetlenek maximális IOPS-meghajtó
-
-* Magas várólista mélysége 128.  
-* Kis blokkméret 4 KB-os.  
-* Több szál végrehajtása véletlenszerű olvassa be és ír.
-
-Futtassa a következő parancsot a FIO teszt 30 másodpercig elindítson
-
-```
-sudo fio --runtime 30 fioreadwrite.ini
-```
-
-A teszt végrehajtása közben lesz tekintsük meg összesített olvasási és írási iops-t a virtuális gép, és a prémium szintű lemezek kézbesítéséhez. Ahogy az alábbi példában is látható, a DS14 VM elkötelezett kombinált több mint 100 000 olvasási és írási iops-érték. Ez az a lemez és a gyorsítótár teljesítménye.  
-    ![](media/premium-storage-performance/image13.png)
-
-*Maximális átviteli sebesség kombinált*  
-Beolvasni a maximális kombinált olvasási és írási teljesítményt, a nagyobb blokkméret és nagy várólistamélységének használata az olvasások és írások végrehajtása több szálon. A 64 KB-os blokkméret és 128 várólistamélység is használhatja.
-
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure Premium Storage:
+További tudnivalók a rendelkezésre álló szabad típusok:
 
-* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md)  
+* [Válassza ki a lemez típusát](../articles/virtual-machines/windows/disks-types.md)  
 
 Az SQL Server-felhasználók számára olvassa el az SQL Server ajánlott eljárások teljesítményének javításához cikkeket:
 
