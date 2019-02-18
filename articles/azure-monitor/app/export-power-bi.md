@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4f8929182995445ff0b327bc22a9cdf75ec5641b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 17c493568953265ac12ebccc680652ed5da6ae4d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262583"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312991"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
 [Power bi-ban](https://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -26,7 +26,7 @@ Az Application Insights-adatok exportálása Power bi-hoz három módszer van:
 
 * [**Exportálja az elemzési lekérdezések**](#export-analytics-queries). Ez az előnyben részesített módszere. Minden írási lekérdezés szeretne, majd exportálhatja, és a Power bi-ban. Ez a lekérdezés állíthat be egy irányítópultot, valamint minden egyéb adatot.
 * [**A folyamatos exportálás és az Azure Stream Analytics**](../../azure-monitor/app/export-stream-analytics.md). Ez a módszer akkor hasznos, ha azt szeretné, hogy hosszú ideig tárolja az adatait. Ha nem rendelkezik egy kibővített adatok megőrzési követelmény, exportálás analytics lekérdezési módszert használja. A folyamatos exportálás és a Stream Analytics magában foglalja a több munkahelyi beállításához és további indextárolási terheléssel jár.
-* [**A Power BI adapter**](#power-pi-adapter). A diagramok készletét parancspéldány előre definiált, de a más forrásokból is hozzáadhat a saját lekérdezéseket.
+* **A Power BI adapter**. A diagramok készletét parancspéldány előre definiált, de a más forrásokból is hozzáadhat a saját lekérdezéseket.
 
 > [!NOTE]
 > A Power BI-adaptert már **elavult**. Ez a megoldás az előre definiált diagramok statikus szakaszához lekérdezések fel van töltve. Nem rendelkezik a lekérdezések szerkesztése és az adatok bizonyos tulajdonságait függően lehetséges, a Power bi-ba, a sikeres kapcsolat, de nincs adat nem üres. Kizárási feltétel szoftveresen kötött a lekérdezés beállított okozza. Amíg ez a megoldás lehet, hogy továbbra is működni egyes ügyfelek számára, rugalmasságát az adapter hiánya miatt az ajánlott megoldás az, hogy használja a [ **exportálja az elemzési lekérdezés** ](#export-analytics-queries) funkciót.
