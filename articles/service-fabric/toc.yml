@@ -65,11 +65,7 @@ items:
   - name: Fürt létrehozása és felügyelete
     items:
     - name: 1 – Fürt létrehozása az Azure-ban
-      items:
-      - name: 1a – Windows rendszerű fürt létrehozása
-        href: service-fabric-tutorial-create-vnet-and-windows-cluster.md
-      - name: 1b – Linux rendszerű fürt létrehozása
-        href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
+      href: service-fabric-tutorial-create-vnet-and-windows-cluster.md
     - name: 2 – A fürt átméretezése
       href: service-fabric-tutorial-scale-cluster.md
     - name: 3 – A fürt futtatókörnyezetének frissítése
@@ -608,6 +604,8 @@ items:
           href: service-fabric-cluster-creation-via-arm.md
         - name: Létrehozás a tanúsítvány köznapi nevével
           href: service-fabric-create-cluster-using-cert-cn.md
+        - name: Linux rendszerű fürt létrehozása
+          href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
       - name: Méretezés
         items:
         - name: Horizontális felskálázás manuálisan
@@ -843,9 +841,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: ab29f0f543afe1c5d5bfc5c159f3bee7a8ac8c11
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: e46baa05ceda2bac38057c59411d8813de7607dd
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301655"
+ms.locfileid: "56309879"

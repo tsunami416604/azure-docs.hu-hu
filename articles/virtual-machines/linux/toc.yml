@@ -99,20 +99,13 @@ items:
   - name: Karbantartás és frissítések
     href: maintenance-and-updates.md
   - name: Lemezes tárolás
-    href: about-disks-and-vhds.md
     items:
-    - name: Felügyelt lemezek
+    - name: A felügyelt lemezek bemutatása
       href: managed-disks-overview.md
-    - name: Prémium szintű SSD-k
-      href: premium-storage.md
-    - name: Standard szintű SSD-k
-      href: disks-standard-ssd.md
-    - name: Ultra szintű SSD-k
-      href: disks-ultra-ssd.md
-    - name: Prémium szintű tárolási teljesítmény
+    - name: IaaS-alapú virtuális gépek lemeztípusának kiválasztása
+      href: disks-types.md
+    - name: Nagy teljesítményű rendszer tervezése
       href: premium-storage-performance.md
-    - name: Standard szintű Storage
-      href: standard-storage.md
     - name: Lemezek skálázási célértékei
       href: disk-scalability-targets.md
     - name: Lemezek biztonsági mentése és vészhelyreállítása
@@ -426,6 +419,8 @@ items:
         href: add-disk.md
       - name: Azure Portal
         href: attach-disk-portal.md
+    - name: Lemez teljesítménytesztelése
+      href: disks-benchmarks.md
     - name: Lemez leválasztása
       href: detach-disk.md
     - name: Lemez átméretezése
@@ -450,7 +445,7 @@ items:
       href: using-managed-disks-template-deployments.md
     - name: Az írásgyorsító használata
       href: how-to-enable-write-accelerator.md
-    - name: Ultra szintű SSD-k engedélyezése
+    - name: Ultra szintű lemezek engedélyezése
       href: disks-enable-ultra-ssd.md
     - name: Teljesítmény optimalizálása
       href: optimization.md
@@ -562,9 +557,9 @@ items:
     href: faq.md
 - name: Hibaelhárítás
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 5a154ba0022a73b8acf9ded071ccfb13e62b7509
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 3c7ef0b41167e396828063950a63574ad5b3a7c9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299144"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330800"

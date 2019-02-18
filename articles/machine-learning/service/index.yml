@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f4b66f79e415be8f9598a0e6f5c875d8a2597514
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 46457711c1611e614f89a813b1856687beb27ac7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300023"
+ms.locfileid: "56311438"
 documentType: LandingData
 title: Az Azure Machine Learning szolgáltatás dokumentációja
 metadata:
@@ -17,12 +17,12 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 1/30/2019
+  ms.date: 2/15/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Az Azure Machine Learning szolgáltatás egy felhőalapú környezetet biztosít a gépi tanulási modellek gyors összeállításához, betanításához és üzembe helyezéséhez. Az automatikus gépi tanulás használatával gyorsabbá válik az algoritmusok azonosítása és a hiperparaméterek finomhangolása. A számítási erőforrások automatikus méretezésével és az Azure DevOps használatával növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind elérheti a Python-környezetéből az olyan nyílt forráskódú keretrendszerek használatával, mint a PyTorch, a TensorFlow és a scikit-learn, valamint a szolgáltatási SDK-k segítségével. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan teheti ezt meg.
+  description: Az Azure Machine Learning szolgáltatás felhőalapú környezetet biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez, valamint az adatok előkészítéséhez. Az automatikus gépi tanulás használatával gyorsabbá válik az algoritmusok azonosítása és a hiperparaméterek finomhangolása. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind elérheti nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn, valamint a szolgáltatási SDK-k segítségével. Első lépések az útmutatókkal és oktatóanyagokkal.
 sections:
 - title: 5 perces gyors útmutatók
   items:
@@ -31,12 +31,12 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="quickstart-get-started">Használja az Azure Portal rövid útmutatóját</a> a munkaterület lekéréséhez, és futtasson egy kísérletet anélkül, hogy bármit is telepítene.
-    - html: <a href="quickstart-create-workspace-with-python">A Python rövid útmutatója segítségével</a> telepítse a fő SDK-t, hozzon létre egy munkaterületet, és futtasson kísérletet egy helyi notebookkiszolgálón.
+    - html: '<a href="quickstart-get-started">Az Azure Portal rövid útmutatója</a>: lekérhet egy munkaterületet, és futtathat egy kísérletet anélkül, hogy bármit is telepítene.'
+    - html: '<a href="quickstart-create-workspace-with-python">A Python rövid útmutatója</a>: telepítse a fő SDK-t, hozzon létre egy munkaterületet, és futtasson kísérletet egy helyi notebookkiszolgálón.'
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: 'Megtudhatja, hogyan készítheti elő adatait és kísérleteit, illetve hogyan működtetheti gépi tanulási modelljeit:'
+    text: 'Megtudhatja, hogyan készítheti elő adatait és kísérleteit, illetve hogyan taníthatja be és működtetheti gépi tanulási modelljeit:'
   - type: list
     style: unordered
     items:

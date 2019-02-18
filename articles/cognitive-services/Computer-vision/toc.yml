@@ -98,12 +98,12 @@ items:
       href: quickstarts-sdk/csharp-thumb-sdk.md
     - name: Szöveg kinyerése
       href: quickstarts-sdk/csharp-hand-text-sdk.md
+  - name: A Python SDK használata
+    href: quickstarts-sdk/python-sdk.md
 - name: Oktatóanyagok
   items:
   - name: Azure-rendszerképek metaadatainak lekérése
     href: Tutorials/storage-lab-tutorial.md
-  - name: Képfeldolgozó alkalmazás létrehozása
-    href: Tutorials/CSharpTutorial.md
 - name: Alapelvek
   items:
   - name: Képek címkézése
@@ -183,7 +183,11 @@ items:
 - name: További források
   items:
   - name: Példák
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
+    items:
+    - name: Képfeldolgozó alkalmazás felfedezése
+      href: Tutorials/CSharpTutorial.md
+    - name: Egyéb Computer Vision-minták
+      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
   - name: GYIK
     href: FAQ.md
   - name: Díjszabás és korlátok
@@ -198,9 +202,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: Régiónkénti rendelkezésre állás
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 700b14c16f1016a403fdf15972cc52021135c64a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 30b8a6937bafc469c4135a899af56277b4f3a9eb
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562351"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310712"
