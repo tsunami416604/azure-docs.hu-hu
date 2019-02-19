@@ -1,6 +1,6 @@
 ---
-title: Nézet megtagadása hozzárendelések, az Azure portal használatával |} A Microsoft Docs
-description: Ismerje meg, hogy a felhasználók, csoportok, a szolgáltatásnevek és felügyelt identitások, amelyek meghatározott műveleteket hajthat végre az Azure portal használatával adott hatókörben hozzáférése megtekintése.
+title: Megtekintése az Azure portal segítségével Azure-erőforrások hozzárendelések elutasítása |} A Microsoft Docs
+description: Ismerje meg, hogy a felhasználók, csoportok, a szolgáltatásnevek és felügyelt identitások, amelyek az adott Azure-erőforrás-műveleteket hajthat végre az Azure portal használatával adott hatókörben hozzáférése megtekintése.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5870ddbbb8be0ebbeae7656485521a327b86d5b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ec5e3daf1d4d799aab043f241548a3b4177f567c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642808"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343238"
 ---
-# <a name="view-deny-assignments-using-the-azure-portal"></a>Nézet megtagadása hozzárendelések, az Azure portal használatával
+# <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Megtekintése az Azure portal segítségével Azure-erőforrások hozzárendelések megtagadása
 
-[Hozzárendelések megtagadása](deny-assignments.md) meggátolja a felhasználókat adott műveletek végrehajtására, még akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Annak ellenére, hogy nem hozható létre a saját megtagadása hozzárendelések, továbbra is szeretné megtekintheti hozzárendelések megtagadja, mert hatással lehet az általános engedélyeit. A megtagadás-hozzárendelésekkel kapcsolatos információk lekéréséhez a `Microsoft.Authorization/denyAssignments/read` engedéllyel kell rendelkeznie, amelyet a legtöbb [beépített szerepkör](built-in-roles.md) tartalmaz.
+[Hozzárendelések megtagadása](deny-assignments.md) meggátolja a felhasználókat adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Annak ellenére, hogy nem hozható létre a saját megtagadása hozzárendelések, továbbra is szeretné megtekintheti hozzárendelések megtagadja, mert hatással lehet az általános engedélyeit. Egy megtagadási hozzárendelés adatainak beolvasása, rendelkeznie kell a `Microsoft.Authorization/denyAssignments/read` engedéllyel, amely tartalmazza a legtöbb [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
 
 Ez a cikk bemutatja, hogyan megtekintése az Azure portal segítségével hozzárendelések elutasítása.
 
@@ -105,5 +105,5 @@ Kövesse az alábbi lépéseket egy megtagadási hozzárendeléssel kapcsolatos 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megismerheti hozzárendelés elutasítása](deny-assignments.md)
-* [Listában elutasítása hozzárendelések rbac-RÓL és a REST API használatával](deny-assignments-rest.md)
+* [Megismerheti az Azure-erőforrások hozzárendelések megtagadása](deny-assignments.md)
+* [Listában elutasítása a REST API használatával az Azure erőforrás-hozzárendelések](deny-assignments-rest.md)

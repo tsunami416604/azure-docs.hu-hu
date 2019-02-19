@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: ef293b39d0e82cdd26e0c41af5d63d0459064017
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: acd7a88acb31b9d3bd3ba714387561e91b3524a6
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820793"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339516"
 ---
 # <a name="plan-virtual-networks"></a>Virtuális hálózatok tervezése
 
@@ -113,7 +113,7 @@ Használja az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-ac
 
 Az Azure Policy lehetővé teszi, hogy létre, rendelhet hozzá és kezelhet szabályzatdefiníciókat. Szabályzatdefiníciók különböző szabályokat kényszerítenek ki az erőforrásokat, így az erőforrások megfeleljenek a szervezeti szabványoknak és szolgáltatói szerződéseknek maradjon. Az Azure Policy futtatja az értékelést az erőforrások, amelyek nem felelnek meg a szabályzatdefiníciók rendelkezik erőforrások keresése. Például határozza meg, és a egy szabályzatot, amely lehetővé teszi, hogy csak egy adott erőforráscsoporthoz vagy régióban lévő virtuális hálózatok létrehozása a alkalmazni. Egy másik szabályzat megkövetelheti, hogy rendelkezik-e minden alhálózat egy hálózati biztonsági csoport társítva van hozzá. A házirendek majd kiértékelése során az erőforrások létrehozása és frissítése.
 
-A szabályzatokkal, a következő hierarchia: Előfizetés, a felügyeleti csoport és az erőforráscsoportot. Tudjon meg többet [az Azure policy](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy üzembe helyezhet egy virtuális hálózat [Házirendsablon](policy-samples.md) mintákat.
+A szabályzatokkal, a következő hierarchia: Előfizetés, a felügyeleti csoport és az erőforráscsoportot. Tudjon meg többet [az Azure policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy üzembe helyezhet egy virtuális hálózat [Házirendsablon](policy-samples.md) mintákat.
 
 ## <a name="next-steps"></a>További lépések
 

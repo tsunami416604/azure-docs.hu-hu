@@ -7,20 +7,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 795b8072bbd9b248f982d061d699f490b1b63b17
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 381dc2f9f6d3a074af00ba047472719c086f5811
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271867"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408408"
 ---
-# <a name="azure-data-factory-mapping-data-flow-sink-transformation"></a>Az Azure Data Factory-folyamat fogadó adatátalakítás leképezése
+# <a name="mapping-data-flow-sink-transformation"></a>Hozzárendelés fogadó folyamat átalakítását
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 ![Fogadó-beállítások](media/data-flow/windows1.png "fogadó 1")
 
-Az Adatátalakítási folyamat befejezése után az átalakított adatok is fogadó célkiszolgáló adatkészletekbe. A fogadó átalakítási választhatja ki, amely a cél kimeneti adatok használni kívánt adatkészlet-definícióban.
+Az Adatátalakítási folyamat befejezése után az átalakított adatok is fogadó célkiszolgáló adatkészletekbe. A fogadó átalakítási választhatja ki, amely a cél kimeneti adatok használni kívánt adatkészlet-definícióban. Előfordulhat, hogy annyi fogadó átalakítást, az adatfolyam igényel.
 
 Egy fiókra a bejövő adatok módosítása és a számla séma eltéréseket az általános gyakorlat, hogy a kimeneti adatokat fogadó egy mappába a kimeneti adatkészletben definiált séma nélkül. Meg is emellett a fiók az összes oszlop változáshoz a forrásokban "Engedélyezése séma eltéréseket" a forrásnál, és a automatikus hozzárendelés kijelölésével a fogadó található összes mezőhöz.
 
@@ -35,24 +35,7 @@ Az Azure Storage Blob vagy a Data Lake fogadó típusait az átalakított adatok
 
 ![Fogadó-beállítások](media/data-flow/opt001.png "fogadó-beállítások")
 
-## <a name="blob-storage-folder"></a>Blob Storage Folder
-Ha a adatátalakítások Elhelyezés a Blob Store, válassza a blob *mappa* , a célmappa elérési útja, nem fájl. ADF-adatfolyam létrehozza a kimeneti fájlok az Ön számára abban a mappában.
-
-![Mappa elérési útja](media/data-flow/folderpath.png "mappa elérési útja")
-
-## <a name="optional-azure-sql-data-warehouse-sink"></a>Nem kötelező az Azure SQL Data Warehouse fogadó
-
-Szeptemberben egy korai béta ADW Sink DataSet adatfolyam. Ez lehetővé teszi, hogy megnyitja az átalakított adatok közvetlenül az Azure SQL DW belül adatfolyam nincs szükség a másolási tevékenység hozzáadása a folyamatban.
-
-Először hozzon létre egy ADW adatkészlethez, ugyanúgy, mint bármely más ADF folyamat, és egy társított szolgáltatást, amely tartalmazza a ADW hitelesítő adatait, és válassza ki az adatbázist, amelyet csatlakozni kíván. A táblázat neve vagy válasszon egy meglévő táblát, vagy írja be a táblázat nevét, hogy milyen adatfolyam a bejövő mezőket, az automatikus létrehozásához.
-
-![Fogadó-beállítások](media/data-flow/adw3.png "fogadó 3")
-
-Jelentkezzen be a fogadó tranformation (ADW jelenleg csak a támogatott fogadóként) fog választani, az Ön által létrehozott és a Storage-fiókot szeretné használni az átmeneti a polybase az adatok betöltése az ADW ADW adatkészlet. Az elérési út mezőben a következő formátumban van: "containername/Mappanév".
-
-![Fogadó-beállítások](media/data-flow/adw1.png "fogadó 4")
-
-### <a name="save-policy"></a>Házirend mentése
+### <a name="output-settings"></a>Kimeneti beállításai
 
 Felülírással csonkolja a táblából, ha létezik, hozza létre újra, és betöltheti az adatokat. Fűzze hozzá a rendszer az új sor beszúrásához. Ha az adatkészlet-tábla neve a tábla nem létezik egyáltalán a célzott ADW, annak adatfolyam a tábla létrehozásához, majd az adatok betöltéséhez.
 
@@ -60,8 +43,46 @@ Ha törli az "Automatikus térkép", leképezheti a mezőket a céltábla manuá
 
 ![Fogadó ADW beállítások](media/data-flow/adw2.png "adw fogadó")
 
-### <a name="max-concurrent-connections"></a>Max. egyidejű kapcsolatok
+#### <a name="field-mapping"></a>Mezőleképezés
 
-A fogadó átalakításában szerepel az egyidejű kapcsolatok maximális száma állíthatja be az adatokat egy Azure adatbázis-kapcsolat írásakor.
+A fogadó átalakítást leképezés lapján a bejövő (bal oldal) oszlopok leképezheti a célhelyre (a jobb oldalon). Adatfolyam-gyűjteményre, fogadó-fájlokhoz, amikor ADF mindig írni új fájlokat egy mappában. Ha leképez egy adatbázis-adatkészletet, dönthet úgy, vagy létrehozhat egy új táblát a séma ("felülírása" mentési szabályzat beállítása), vagy új sor beszúrása egy meglévő táblát, és a mezők leképezése a meglévő sémák.
 
-![Csatlakozási lehetőségek](media/data-flow/maxcon.png "kapcsolatok")
+Válassza ki a hozzárendelési táblában használhatja a hivatkozás több oszlop egyetlen kattintással, több oszlop csatolásának megszüntetése vagy több sort leképezése oszlop nevével megegyező névre.
+
+![Mezőt leképező](media/data-flow/multi1.png "többféle lehetőség")
+
+Ha szeretne alaphelyzetbe állítani az oszlop-hozzárendelések, nyomja le az "Újramegfeleltetése" gombra a hozzárendelések visszaállítása.
+
+![Kapcsolatok](media/data-flow/maxcon.png "kapcsolatok")
+
+### <a name="updates-to-sink-transformation-for-adf-v2-ga-version"></a>A fogadó átalakításában szerepel az ADF V2 általánosan elérhető verziót frissíti
+
+![Fogadó-beállítások](media/data-flow/sink1.png "egy fogadó")
+
+![Fogadó-beállítások](media/data-flow/sink2.png "fogadók")
+
+* Lehetővé teszi a séma eltéréseket, és a séma érvényesítése, mostantól elérhetők fogadó. Ez lehetővé teszi, hogy teljes mértékben fogadja el a rugalmas sémadefiníciók (séma eltéréseket) vagy a fogadó sikertelen lesz, ha a séma módosul (séma érvényesítése) az ADF utasíthatja.
+
+* Törölje a mappát. Az ADF csonkolja a fogadó mappa tartalmának írása a cél-fájlokat a célmappában előtt.
+
+* Fájlnév beállításai
+
+   * Alapértelmezett: Fájlok elnevezésére rész alapértelmezett értékei szerinti Spark engedélyezése
+   * Pattern: Adja meg a kimeneti fájlok nevét
+   * Partíciónként: Írjon be egy fájlnevet partíciónként
+   * Oszlop adatként: Egy oszlop értékét állítsa a kimeneti fájl
+
+> [!NOTE]
+> Fájlműveletek csak akkor futnak, amikor az adatok folyamat végrehajtása tevékenység nem a Data Flow hibakeresési módban futtatja
+
+Az SQL-fogadó típusú állíthatja be:
+
+* Tábla csonkolása
+* Hozza létre újból táblában (hajt végre közvetlen/létrehozása)
+* Köteg mérete nagy mennyiségű adat terhelés. Adjon meg egy számot és gyűjtőbe írási adattömböket.
+
+![Mezőleképezés](media/data-flow/sql001.png "SQL-beállítások")
+
+## <a name="next-steps"></a>További lépések
+
+Most, hogy létrehozta az adatfolyamot, adjon hozzá egy [tevékenységet a folyamat végrehajtása az adatfolyam](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-overview).

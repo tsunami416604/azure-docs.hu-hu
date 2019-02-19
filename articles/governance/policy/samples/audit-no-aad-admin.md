@@ -1,6 +1,6 @@
 ---
 title: Minta - naplózása nem Azure AD-rendszergazda
-description: Ez a mintaszabályzat naplózza, ha nincs Azure Active Directory-rendszergazda hozzárendelve az SQL-kiszolgálóhoz.
+description: A szabályzatdefiníció-minta eseményeket, amikor nincs hozzárendelve az SQL server az Azure Active Directory-rendszergazda.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 96d659547a61969385b85591d79addf1c274b787
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6e793c44598a6acb7827936cbd4ed91dadf76596
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243393"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339651"
 ---
-# <a name="audit-no-azure-active-directory-administrator"></a>Azure Active Directory-rendszergazda hiányának naplózása
+# <a name="sample---audit-no-azure-active-directory-administrator"></a>Minta - naplózása nem az Azure Active Directory-rendszergazda
 
 Naplózza, ha nincs Azure Active Directory-rendszergazda hozzárendelve az SQL-kiszolgálóhoz.
 

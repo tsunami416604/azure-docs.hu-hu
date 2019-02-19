@@ -1,6 +1,6 @@
 ---
-title: Az RBAC-módosítások Tevékenységnaplók megtekintése az Azure-ban |} A Microsoft Docs
-description: A Tevékenységnaplók megtekintése a szerepköralapú hozzáférés-vezérlés (RBAC) módosításokat az elmúlt 90 nap.
+title: Tevékenységnaplók megtekintése az Azure-erőforrások módosul az RBAC |} A Microsoft Docs
+description: Szerepköralapú hozzáférés-vezérlés (RBAC) módosítások Azure-erőforrások Tevékenységnaplók megtekintése az elmúlt 90 nap.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ff09647dc3271c947b3037afcfacc33951ddb07
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 01ac309d333b6e2456c53e0352067471514198c9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117648"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338810"
 ---
-# <a name="view-activity-logs-for-rbac-changes"></a>Az RBAC-módosítások Tevékenységnaplók megtekintése
+# <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>A Tevékenységnaplók megtekintése az Azure-erőforrások RBAC módosítások
 
-Néha szüksége információ a szerepköralapú hozzáférés-vezérlés (RBAC) módosításokat, mint például a naplózás és hibaelhárítás céljából. A módosítások valaki módosít szerepkör-hozzárendeléseket vagy szerepkör-definíciók belül az előfizetések bármikor első bejelentkezve [Azure-tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md). Megtekintheti a vizsgálati naplók az elmúlt 90 napra vonatkozó összes RBAC-módosítások megtekintéséhez.
+Néha szüksége információ a szerepköralapú hozzáférés-vezérlés (RBAC) módosítások Azure-erőforrások, például a naplózás és hibaelhárítás céljából. A módosítások valaki módosít szerepkör-hozzárendeléseket vagy szerepkör-definíciók belül az előfizetések bármikor első bejelentkezve [Azure-tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md). Megtekintheti a vizsgálati naplók az elmúlt 90 napra vonatkozó összes RBAC-módosítások megtekintéséhez.
 
 ## <a name="operations-that-are-logged"></a>Naplózott műveletek
 

@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: vainolo
-ms.author: vainolo
+ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: d092b4e8096b311ba9ca9d3fbceea8fb57bf4aa9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 08c71ac1aba659a2e0fbb6655b6ee0a21576bf5d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234662"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339787"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -43,8 +43,11 @@ Használhatja az SQL database naplózási szolgáltatásán keresztül:
 > [!IMPORTANT]
 > Auditnaplók írt **hozzáfűző Blobok** az Azure Blob storage, Azure-előfizetésében.
 >
-> - **A Premium storage** jelenleg **nem támogatott** a hozzáfűző Blobok.
+> - Az összes tárolási típusú (v1, v2, blob) támogatottak.
+> - Az összes tárolási replikációs konfiguráció támogatott.
+> - **A Premium storage** jelenleg **nem támogatott**.
 > - **A virtuális hálózatok közötti tárolási** jelenleg **nem támogatott**.
+> - **Tűzfal mögött található tárolási** jelenleg **nem támogatott**
 
 ## <a id="subheading-8"></a>Adja meg a kiszolgálószintű és adatbázisszintű naplózási házirend
 

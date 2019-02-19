@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 1/14/2019
-ms.openlocfilehash: 8d5fc1c579fd09f1a71d63dce4d1673ef5a8652b
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 2/18/2019
+ms.openlocfilehash: 4fd0f0990163963fc0cc3c7caf221609da487909
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354620"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340178"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Az Azure Data Explorer adatbetöltés
 
@@ -39,15 +39,21 @@ Az Azure Data Explorer data management szolgáltatást, ami felelős az adatbet�
 
 Az Azure Data Explorer Adatbetöltési több módszert, mindegyiket a saját cél forgatókönyvek előnyeit és hátrányait támogatja. Az Azure Data Explorer folyamatok és a közös szolgáltatásokat, az SDK-k és közvetlen hozzáférést a motor feltárás célokra programozott Adatbetöltési összekötők érhetők el.
 
-### <a name="ingestion-using-pipelines"></a>Az adatfeldolgozási folyamatok használatával
+### <a name="ingestion-using-pipelines-connectors-and-plugins"></a>Betöltési folyamatok, összekötők és beépülő modulok használata
 
-Az Azure Data Explorer jelenleg támogatja az Event Hubs folyamatot, amely a felügyeleti varázslója használatával az Azure Portalon lehet kezelni. További információkért lásd: [a rövid útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md).
+Az Azure Data Explorer jelenleg támogatja:
 
-### <a name="ingestion-using-connectors-and-plugins"></a>Az összekötők és beépülő modulok feldolgozási
+* Event Grid folyamatot, amely a felügyeleti varázslója használatával az Azure Portalon lehet kezelni. További információkért lásd: [Azure-Blobok feldolgozása az Azure Data Explorer](ingest-data-event-grid.md).
 
-* Az Azure Data Explorer támogatja a Logstash beépülő modult. További információkért lásd: [Logstash kimeneti beépülő modul az Azure Data Explorer](https://github.com/Azure/logstash-output-kusto/blob/master/README.md).
+* Event Hub folyamatot, amely a felügyeleti varázslója használatával az Azure Portalon lehet kezelni. További információkért lásd: [betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md).
 
-* Az adatkezelő az Azure támogatja a Kafka-összekötő. További információkért lásd: [a rövid útmutató: Betölteni az adatokat a Kafkából az Azure Data Explorer](ingest-data-kafka.md)
+* Logstash beépülő modult, tekintse meg [kiolvasni az adatokat az Azure Adatkezelőbe Logstash](ingest-data-logstash.md).
+
+* A Kafka-összekötőt, lásd: [betölteni az adatokat a Kafkából az Azure Data Explorer](ingest-data-kafka.md).
+
+### <a name="ingestion-using-integration-services"></a>Adatbetöltési integrációs szolgáltatások használata
+
+* Az Azure Data Factory (ADF), egy teljes körűen felügyelt adatintegrációs szolgáltatás az Azure-ban, az adatok másolásához, és az Azure Data Explorer elemzési számítási feladatokhoz. További információkért lásd: [másolja az adatokat, vagy Azure Data Factory használatával az Azure Data Explorer](/azure/data-factory/connector-azure-data-explorer).
 
 ### <a name="programmatic-ingestion"></a>Programozott adatfeldolgozást
 
@@ -131,21 +137,27 @@ Az összes támogatunk módszerek nem betöltési lekérdezésből formázza az 
 Séma-hozzárendelés segít a céloldali tábla oszlopait forrás datová Pole kötni.
 
 * [CSV-leképezés](/azure/kusto/management/mappings?branch=master#csv-mapping) sorszámát-alapú eljuttathatók (nem kötelező) együttműködik. A Betöltés parancs paraméter használatával elvégezhető vagy [előre létrehozni a következő táblán](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) és a betöltés parancsparaméter hivatkozott.
-* [JSON-leképezés](/azure/kusto/management/mappings?branch=master#json-mapping) (kötelező) és [Avro leképezés](/azure/kusto/management/mappings?branch=master#avro-mapping) (kötelező) a betöltés parancssori paraméter segítségével hajtható végre, vagy [előre létrehozni a következő táblán](/azure/kusto/management/tables#create-ingestion-mapping) és a Betöltés parancs által hivatkozott a paraméter.
+* [JSON-leképezés](/azure/kusto/management/mappings?branch=master#json-mapping) (kötelező) és [Avro leképezés](/azure/kusto/management/mappings?branch=master#avro-mapping) (kötelező) a betöltés parancssori paraméter segítségével hajtható végre. Lehet is [előre létrehozni a következő táblán](/azure/kusto/management/tables#create-ingestion-mapping) és a betöltés parancsparaméter hivatkozott.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md)
+> [Betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Betölteni az adatokat a Kafkából az Azure Data Explorer](ingest-data-kafka.md)
+> [Az Adatkezelőben az Azure Event Grid-előfizetés használata az adatok betöltése](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése](python-ingest-data.md)
+> [Betölteni az adatokat a Kafkából az Azure Data Explorer](ingest-data-kafka.md)
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer csomópontja library használata az adatok betöltése](node-ingest-data.md)
+> [Az Azure Data Explorer Python-kódtár használata az adatok betöltése](python-ingest-data.md)
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)
+> [Az Azure Data Explorer csomópontja library használata az adatok betöltése](node-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Betöltési adat a Logstashből az Adatkezelőbe az Azure](ingest-data-logstash.md)

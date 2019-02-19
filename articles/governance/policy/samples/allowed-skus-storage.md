@@ -1,6 +1,6 @@
 ---
 title: Minta - engedélyezett termékváltozatok a storage-fiókok és a virtuális gépek
-description: Ez a mintaszabályzat megköveteli, hogy a tárfiókok és a virtuális gépek engedélyezett termékváltozatokat használjanak.
+description: A szabályzatdefiníció-minta megköveteli, hogy storage-fiókok és a virtuális gépek használata engedélyezett termékváltozatok.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4e194e70c13fe70702e700fcaafa7cdf981e0147
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: cb6ccf87cc14424801a06cc2e9749e2fc2f6ee4a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242073"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339906"
 ---
-# <a name="allowed-skus-for-storage-accounts-and-virtual-machines"></a>Tárfiókok és virtuális gépek engedélyezett termékváltozatai
+# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Minta - engedélyezett termékváltozatok a storage-fiókok és a virtuális gépek
 
 Ez a szabályzat megköveteli, hogy a tárfiókok és a virtuális gépek engedélyezett termékváltozatokat használjanak. Beépített szabályzatok használatával biztosítja az engedélyezett termékváltozatok alkalmazását. Megadhatja az engedélyezett virtuálisgép-termékváltozatok és az engedélyezett tárfiók-termékváltozatok tömbjét.
 

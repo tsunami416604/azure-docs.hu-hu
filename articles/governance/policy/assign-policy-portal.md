@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy házirendet a nem megfelelő erőforrások azonosításához
+title: Hozzon létre egy szabályzatot a nem megfelelő erőforrások
 description: Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat egy szabályzatdefiníciót a nem megfelelő erőforrások azonosítására.
 services: azure-policy
 author: DCtheGeek
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: ddf30f6a7bc00be9ac24952adf0ba41e6151bd10
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: af14b242ae7578e1f9797895bd18c37231959ac9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311167"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342711"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources"></a>Hozzon létre egy szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: cbc9fa5586b848de79c52142f75b22b744fdae38
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e83ff9f3bf02a134919d497662744028e1b9acda
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105950"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343017"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Az Azure Security Center által figyelt Azure biztonsági szabályzatok
 Ez a cikk az Azure szabályzat-definíciókat a Security Center által megfigyelt listáját. Biztonsági szabályzatok kapcsolatos további információkért lásd: [biztonsági házirendek használata](tutorial-security-policy.md).
@@ -96,4 +96,4 @@ Ebből a cikkből megismerhette a Security Center biztonsági szabályzatainak k
 * [Az Azure Security Center – gyakori kérdések](security-center-faq.md): Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
 * [Az Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
-További információk az Azure Policyról: [Mi az az Azure Policy?](../azure-policy/azure-policy-introduction.md)
+További információk az Azure Policyról: [Mi az az Azure Policy?](../governance/policy/overview.md)

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9711e9bf94619b8cd003972d74f3bca4c45894bf
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 6702bfabd27b56ce473fe8eb14aadc9dc6e8e7c9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312083"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338869"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájlművelet-alapú fejlesztés a HDInsight
 
@@ -142,7 +142,7 @@ A legtöbb műveletet nem kell megadnia a fájlrendszerben. Ha például a köve
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-Ebben a példában a `hdfs` parancs átlátható módon használja az alapértelmezett fürttárolóhoz. Egyes műveletek esetében szükség lehet az URI-t adja meg. Ha például `adl:///example/jars` a Data Lake Storage Gen1 vagy `wasb:///example/jars` Azure Storage-hoz.
+Ebben a példában a `hdfs` parancs átlátható módon használja az alapértelmezett fürttárolóhoz. Egyes műveletek esetében szükség lehet az URI-t adja meg. Ha például `adl:///example/jars` az Azure Data Lake Storage Gen1 `abfs:///example/jars` a Data Lake Storage Gen2 vagy `wasb:///example/jars` az Azure Storage.
 
 ### <a name="bPS7"></a>Az STDOUT és STDERR információ írása
 

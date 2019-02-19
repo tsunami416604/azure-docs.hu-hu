@@ -1,6 +1,6 @@
 ---
 title: Minta - engedélyezett Virtuálisgép-rendszerképek
-description: Ez a mintaszabályzat előírja, hogy csak jóváhagyott lemezképek legyenek telepítve a környezetben.
+description: A szabályzatdefiníció-minta megköveteli, hogy csak a jóváhagyott egyéni rendszerképek telepítve vannak-e a környezetben.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: e5b6b3e34f3c85d7fdc90f4f54acbbfac0d75061
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8134ca98fe190a161d940387926e6b3dfea2989c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243909"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337968"
 ---
-# <a name="approved-vm-images"></a>Jóváhagyott VM-lemezképek
+# <a name="sample---approved-vm-images"></a>Minta - engedélyezett Virtuálisgép-rendszerképek
 
 Ez a szabályzat előírja, hogy csak jóváhagyott lemezképek legyenek telepítve a környezetben. Meg kell adnia egy jóváhagyott lemezazonosítókat tartalmazó tömböt.
 

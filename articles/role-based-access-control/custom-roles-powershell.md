@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egyéni szerepkörök az Azure PowerShell-lel |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egyéni szerepköröket a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure PowerShell használatával. Ez magában foglalja a listában, létrehozása, frissítése és egyéni szerepkörök törlése.
+title: Hozzon létre egyéni szerepkörök az Azure-erőforrások Azure PowerShell-lel |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egyéni szerepköröket a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrások Azure PowerShell-lel. Ez magában foglalja a listában, létrehozása, frissítése és egyéni szerepkörök törlése.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 26e5b33504ff543e8442108e4368ce3b04f25df4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 92c061a7f854b46ab5aee07aa5e648ace8f9ae52
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696753"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343842"
 ---
-# <a name="create-custom-roles-using-azure-powershell"></a>Azure PowerShell-lel egyéni szerepkörök létrehozása
+# <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Hozzon létre egyéni szerepkörök az Azure-erőforrások Azure PowerShell-lel
 
-Ha a [beépített szerepkörök](built-in-roles.md) nem felelnek meg a cég vagy intézmény igényeinek, saját egyéni szerepköröket is létrehozhat. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet, egyéni szerepkörök az Azure PowerShell használatával.
+Ha a [beépített szerepkörök az Azure-erőforrások](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, saját egyéni szerepköröket is létrehozhat. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet, egyéni szerepkörök az Azure PowerShell használatával.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -296,6 +296,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Azure PowerShell-lel egyéni szerepkör létrehozása](tutorial-custom-role-powershell.md)
-- [Egyéni szerepkörök az Azure-ban](custom-roles.md)
+- [Oktatóanyag: Hozzon létre egy egyéni szerepkört az Azure-erőforrások Azure PowerShell-lel](tutorial-custom-role-powershell.md)
+- [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md)
 - [Az Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md)

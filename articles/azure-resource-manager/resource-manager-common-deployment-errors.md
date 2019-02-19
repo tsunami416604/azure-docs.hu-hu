@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/16/2018
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 600b79ec0b34d6b79b1b56719dd800bbe8ec803a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a5c08536614476de38c7bfde524a12163162bed4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487149"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339260"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli hibák az Azure Resource Manager hibaelhárítása
 
@@ -36,7 +36,7 @@ Ez a cikk ismerteti az Azure-beli leggyakoribb hibák, és információkat a hib
 | AccountPropertyCannotBeSet | Ellenőrizze a rendelkezésre álló tár fiók tulajdonságait. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | A fürt vagy a régiót nem rendelkezik elérhető erőforrásokat, vagy nem támogatja a kért Virtuálisgép-méretet. Próbálja megismételni a kérést később, vagy kérje meg egy másik Virtuálisgép-méretet. | [Kiépítés és foglalással kapcsolatos problémák Linux rendszerben](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [kiépítési és foglalással kapcsolatos problémák Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) és [foglalási hibák elhárítása](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Várjon, amíg a párhuzamos művelet végrehajtásához. | |
-| AuthorizationFailed | A fióknév vagy a szolgáltatásnév nem rendelkezik megfelelő hozzáférési jogosultsággal a telepítés befejezéséhez. Ellenőrizze a fiók tartozik a szerepkör és a hozzáférés az üzembe helyezés hatálya. | [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md) |
+| AuthorizationFailed | A fióknév vagy a szolgáltatásnév nem rendelkezik megfelelő hozzáférési jogosultsággal a telepítés befejezéséhez. Ellenőrizze a fiók tartozik a szerepkör és a hozzáférés az üzembe helyezés hatálya.<br><br>Ez a hiba jelenhet meg, ha egy szükséges erőforrás-szolgáltató nincs regisztrálva. | [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md)<br><br>[Oldja meg a regisztráció](resource-manager-register-provider-errors.md) |
 | Hibás kérés | Üzembe helyezés értékek nem egyezik a várt Resource Manager által küldött. Ellenőrizze a belső állapotüzenet a hibaelhárítás. | [Sablon hivatkozása](/azure/templates/) és [támogatott helyek](resource-manager-templates-resources.md#location) |
 | Ütközés | Ön a kért művelet nem megengedett az erőforrás jelenlegi állapotában. Ha például a lemezek átméretezése engedélyezett csak a virtuális gép létrehozásakor, vagy ha a virtuális gép fel van szabadítva. | |
 | DeploymentActive | Várjon, amíg befejeződik ez az erőforráscsoport párhuzamos üzembe helyezés. | |

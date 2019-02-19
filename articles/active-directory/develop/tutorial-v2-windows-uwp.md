@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2018
+ms.date: 02/18/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a0be784cdee0fd98a81c182f33dea987481aac3
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6e130da9bf12d25cc5c77c825512717bdf2ba5a1
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329132"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408816"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>A Microsoft Graph API meghívása (XAML) az univerzális Windows Platform-alkalmazásból
 
@@ -74,14 +74,11 @@ Ez az útmutató létrehoz egy alkalmazás, amely egy gomb megjeleníti a lekér
 2. Másolja és illessze be a következő parancsot a **Package Manager Console** ablakban:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
+    Install-Package Microsoft.Identity.Client
     ```
 
 > [!NOTE]
-> Ez a parancs telepíti [Microsoft-hitelesítési tár](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet). Az MSAL beszerzi, gyorsítótárazza, és frissíti a felhasználói jogkivonatokhoz, amelyek védi az Azure Active Directory 2.0-s verziójú API-k elérésére.
-
-> [!NOTE]
-> Ebben az oktatóanyagban viszont nem használható, de az MSAL.NET, legújabb verzióját, de azt frissítése folyamatban van.
+> Ez a parancs telepíti [Microsoft-hitelesítési tár](https://aka.ms/msal-net). Az MSAL beszerzi, gyorsítótárazza, és frissíti a felhasználói jogkivonatokhoz, amelyek védi az Azure Active Directory 2.0-s verziójú API-k elérésére.
 
 ## <a name="initialize-msal"></a>Initialize MSAL
 Ebben a lépésben segítségével hozhat létre egy osztályt, amely kezeli a interakció MSAL, például a jogkivonatok kezelése.
@@ -159,7 +156,8 @@ Ez a szakasz bemutatja, hogyan használható az MSAL egy token beszerzése a Mic
     
             try
             {
-                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, App.PublicClientApp.Users.FirstOrDefault());
+                var accounts = await App.PublicClientApp.GetAccountsAsync();
+                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault());
             }
             catch (MsalUiRequiredException ex)
             {
@@ -203,15 +201,15 @@ A `AcquireTokenSilentAsync` metódus kezeli a token beszerzését és a megújí
 
 Végül a `AcquireTokenSilentAsync` metódus sikertelen. A hiba oka lehet, hogy felhasználók rendelkezik-e vagy kijelentkeztetése, vagy módosítani a jelszavát egy másik eszközön. Ha az MSAL észleli, hogy a probléma megoldhatók egy interaktív intézkedést kér, akkor aktiválódik egy `MsalUiRequiredException` kivétel. Az alkalmazás ehhez a kivételhez, két módon tudják kezelni:
 
-* Azt is ellenőrizze, egy hívást kell végrehajtanunk `AcquireTokenAsync` azonnal. Ez a hívás eredménye kéri a felhasználót, hogy jelentkezzen be. Általában ez a minta az online alkalmazások használják, ha a felhasználó nem érhető el kapcsolat nélküli tartalom. A minta az interaktív telepítés által létrehozott mintát követi. A minta futtatása művelet az első alkalommal megjelenik. 
-    * Mivel a felhasználó nem használta az alkalmazás `PublicClientApp.Users.FirstOrDefault()` obsahuje hodnotu null, és a egy `MsalUiRequiredException` kivétel történt.
-    * A kód a minta ezután kezeli a kivételt meghívásával `AcquireTokenAsync`. Ez a hívás eredménye kéri a felhasználót, hogy jelentkezzen be.
+* Azt is ellenőrizze, egy hívást kell végrehajtanunk `AcquireTokenAsync` azonnal. Ez a hívás eredménye kéri a felhasználót, hogy jelentkezzen be. Általában ez a minta az online alkalmazások használják, ha a felhasználó nem érhető el kapcsolat nélküli tartalom. A minta az interaktív telepítés által létrehozott mintát követi. A minta futtatása művelet az első alkalommal megjelenik.
+  * Mivel a felhasználó nem használta az alkalmazás `accounts.FirstOrDefault()` obsahuje hodnotu null, és a egy `MsalUiRequiredException` kivétel történt.
+  * A kód a minta ezután kezeli a kivételt meghívásával `AcquireTokenAsync`. Ez a hívás eredménye kéri a felhasználót, hogy jelentkezzen be.
 
 * Vagy ehelyett megadja egy vizuális jelzés a felhasználók számára, hogy egy interaktív bejelentkezési megadása kötelező. Ezután és kiválaszthatja a megfelelő időben való bejelentkezéshez. Vagy az alkalmazás megpróbálhatja `AcquireTokenSilentAsync` később. Ezt a mintát gyakran, használatos, amikor a felhasználók használhatják a más megszakítása nélkül az alkalmazás funkciói. Ilyen például, ha offline tartalom érhető el, az alkalmazás. Ebben az esetben felhasználók megadhatja, hogy szeretne hozzáférni a védett erőforrásokhoz, vagy frissítse az elavult adatokat. Ellenkező esetben az alkalmazás dönt, hogy próbálkozzon újra, vagy `AcquireTokenSilentAsync` amikor a hálózat visszaállítása után, átmenetileg nem érhető el.
 
 ## <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>A Microsoft Graph API meghívása éppen megszerzett jogkivonattal használatával
 
-* Adja hozzá a következő új metódust **MainPage.xaml.cs**. Győződjön meg arról, hogy ezt a módszert használják egy `GET` kérelmet Graph API-[engedélyezés] fejléc használatával:
+* Adja hozzá a következő új metódust **MainPage.xaml.cs**. Győződjön meg arról, hogy ezt a módszert használják egy `GET` kérelmet Graph API használatával egy `Authorization` fejléc:
 
     ```csharp
     /// <summary>
@@ -255,11 +253,12 @@ A mintaalkalmazásban a `GetHttpContentWithToken` , hogy a HTTP módszert `GET` 
     /// </summary>
     private void SignOutButton_Click(object sender, RoutedEventArgs e)
     {
-        if (App.PublicClientApp.Users.Any())
+        var accounts = await App.PublicClientApp.GetAccountsAsync();
+        if (accounts.Any())
         {
             try
             {
-                App.PublicClientApp.Remove(App.PublicClientApp.Users.FirstOrDefault());
+                App.PublicClientApp.RemoveAsync(accounts.FirstOrDefault());
                 this.ResultText.Text = "User has signed-out";
                 this.CallGraphButton.Visibility = Visibility.Visible;
                 this.SignOutButton.Visibility = Visibility.Collapsed;
@@ -333,7 +332,7 @@ Integrált Windows-hitelesítés engedélyezéséhez az Azure Active Directory �
     ```
 
 > [!IMPORTANT]
-> Integrált Windows-hitelesítés nincs konfigurálva ehhez a mintához alapértelmezés szerint. Az alkalmazásokat, amelyek a kérelem *vállalati hitelesítési* vagy *megosztott felhasználói tanúsítványok* lehetőségekhez szükség magasabb szintű ellenőrzés a Windows Store. Emellett nem minden fejlesztő kíván végrehajtani, a magasabb szintű ellenőrzést. Engedélyezi ezt a beállítást csak akkor, ha Azure Active Directory összevont tartományt a integrált Windows-hitelesítés szükséges.
+> [Integrált Windows-hitelesítés](https://aka.ms/msal-net-iwa) nincs konfigurálva ehhez a mintához alapértelmezés szerint. Az alkalmazásokat, amelyek a kérelem *vállalati hitelesítési* vagy *megosztott felhasználói tanúsítványok* lehetőségekhez szükség magasabb szintű ellenőrzés a Windows Store. Emellett nem minden fejlesztő kíván végrehajtani, a magasabb szintű ellenőrzést. Engedélyezi ezt a beállítást csak akkor, ha Azure Active Directory összevont tartományt a integrált Windows-hitelesítés szükséges.
 
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 

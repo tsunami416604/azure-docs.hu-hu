@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccb593e198e4dff8f30bddfe26071523ea7a893d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a160c604050f567f3fc0f77ca20a22349f07fd9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179229"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341164"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Oktatóanyag: Az Adobe Creative Cloud az Azure Active Directory-integráció
 
@@ -45,7 +45,7 @@ Az Azure AD-integráció konfigurálása az Adobe Creative Cloud, a következők
 
 Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-* Támogatja az Adobe Creative Cloud **SP és IDP** által kezdeményezett egyszeri bejelentkezés
+* Támogatja az Adobe Creative Cloud **SP** által kezdeményezett egyszeri bejelentkezés
 
 ## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>Az Adobe Creative Cloud szolgáltatásban hozzáadása a katalógusból
 
@@ -67,7 +67,7 @@ Az Adobe Creative Cloud szolgáltatásban integrálása az Azure AD beállítás
 
 4. A Keresés mezőbe írja be a **Adobe Creative Cloud**, jelölje be **Adobe Creative Cloud** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Az Adobe Creative Cloud szolgáltatásban a találatok listájában](common/search-new-app.png)
+    ![Az Adobe Creative Cloud szolgáltatásban a találatok listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
@@ -101,29 +101,23 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az Adobe Creative Cloud, hajts
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha a konfigurálni kívánt **Identitásszolgáltató** intiated mód hajtsa végre a következő lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Az Adobe Creative Cloud tartomány és URL-címek egyszeri bejelentkezési adatait](common/idp-intiated.png)
+    ![Az Adobe Creative Cloud tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://www.okta.com/saml2/service-provider/<token>`
+    a. Az a **bejelentkezési URL-** szöveg írja be az értéket: `https://adobe.com`.
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<company name>.okta.com/auth/saml20/accauthlinktest`
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://www.okta.com/saml2/service-provider/<token>`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóval, válasz URL-cím. Kapcsolattartó [az Adobe Creative Cloud ügyfél-támogatási csapatának](https://www.adobe.com/au/creativecloud/business/teams/plans.html) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Az azonosító értéke nem valódi. Ez az érték frissítse a tényleges azonosítója. Kapcsolattartó [az Adobe Creative Cloud ügyfél-támogatási csapatának](https://www.adobe.com/au/creativecloud/business/teams/plans.html) lekérni ezt az értéket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
-
-    Az a **bejelentkezési URL-** szöveg írja be az értéket: `https://adobe.com`.
-
-    ![Az Adobe Creative Cloud tartomány és URL-címek egyszeri bejelentkezési adatait](common/metadata-upload-additional-signon.png)
-
-6. Az Adobe Creative Cloudba feltöltött alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+5. Az Adobe Creative Cloudba feltöltött alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 
-7. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
- 
+6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+
     | Name (Név) | Adatforrás-attribútum|
     |----- | --------- |
     | FirstName | user.givenname |
@@ -151,11 +145,11 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az Adobe Creative Cloud, hajts
     > [!NOTE]
     > Felhasználók kell licenccel kell rendelkeznie egy érvényes Office 365 ExO e-mailek jogcím értéke a SAML-válasz kell feltöltenie.
 
-8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-9. Az a **beállítása az Adobe Creative Cloud** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+8. Az a **beállítása az Adobe Creative Cloud** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 

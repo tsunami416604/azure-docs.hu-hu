@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 02/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 55558f1483a576e7ac3b9ce027588eceabd5db70
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c0f824e2be0215192ca4ca1a722e814cbf299b7a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311711"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342422"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Biztonsági és az adatvédelem az Azure Search szolgáltatásban
 
@@ -22,7 +22,7 @@ ms.locfileid: "53311711"
 
 Az Azure Search biztonsági architektúra kiterjedő fizikai biztonság, titkosított adatátvitel, titkosított tárolást és platform kiterjedő szabványoknak való megfelelés. Azure Search, csak hitelesített kéréseket fogad el. Szükség esetén – a biztonsági szűrők felhasználónkénti hozzáférés-vezérlést a tartalomhoz is hozzáadhat. Ez a cikk a biztonság minden egyes rétegben koppint, de elsősorban arra összpontosít, hogy milyen adatok és a műveletek biztonságosak az Azure Search.
 
-## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Szabványoknak való megfelelés: AZ ISO 27001, A SOC 2, A HIPAA
+## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Szabványoknak való megfelelés: ISO 27001, SOC 2, HIPAA
 
 Az Azure Search minősítéssel az alábbi előírásoknak, mint [2018 június bejelentett](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/):
 
@@ -42,7 +42,7 @@ Titkosítási terjeszti ki a teljes indexelési folyamat során: a kapcsolatok �
 
 | Biztonsági réteg | Leírás |
 |----------------|-------------|
-| Titkosítás az átvitel során <br>(HTTPS VAGY AZ SSL/TLS) | Az Azure Search a 443-as HTTPS-portot figyeli. A platform közötti kapcsolatok az Azure-szolgáltatások vannak titkosítva. <br/><br/>Az összes ügyfél – szolgáltatás Azure Search interakciók SSL/TLS 1.2-es képes.  Ügyeljen arra, TLSv1.2 az SSL-kapcsolatok a szolgáltatáshoz.|
+| Titkosítás az átvitel során <br>(HTTPS/SSL/TLS) | Az Azure Search a 443-as HTTPS-portot figyeli. A platform közötti kapcsolatok az Azure-szolgáltatások vannak titkosítva. <br/><br/>Az összes ügyfél – szolgáltatás Azure Search interakciók SSL/TLS 1.2-es képes.  Ügyeljen arra, TLSv1.2 az SSL-kapcsolatok a szolgáltatáshoz.|
 | Titkosítás inaktív állapotban | Titkosítási teljes internalized, az indexelő a folyamatban, az indexelési idő befejezésig való vagy index mérete nincs mérhető hatással. Azt automatikusan történik az összes indexelő, a növekményes frissítéseket az indexbe, amely nem teljes mértékben titkosított (2018. január előtt létrehozott) is.<br><br>Belsőleg, titkosítási alapján [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), 256 bites [AES-titkosítás](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).|
 
 Titkosítás a belső, az Azure Search, a tanúsítványok és titkosítási kulcsok belső célokra a Microsoft által felügyelt, és egységesen érvényesek. Nem titkosítás engedélyezése vagy letiltása, kezelése vagy helyettesítse be a saját maga, vagy megtekintheti a titkosítási beállítások a portálon vagy programozott módon. 
@@ -60,14 +60,16 @@ Minden Azure-szolgáltatás támogatja a szerepköralapú hozzáférés-vezérl�
 
 ## <a name="service-access-and-authentication"></a>Szolgáltatás-hozzáférés és hitelesítés
 
-Bár az Azure Search örökli a biztonsági ellenőrzése az Azure platform, a saját kulcs alapú hitelesítés is tartalmazza. Api-kulcsát: véletlenszerűen generált számokból és betűkből álló karakterlánc. (A rendszergazda vagy a lekérdezés) kulcs típusa határozza meg a hozzáférési szintet. Érvényes kulcs benyújtása számít, koncepció a kérés egy megbízható entitás származik. Kétféle típusú kulcsok a keresési szolgáltatás eléréséhez használt:
+Bár az Azure Search örökli a biztonsági ellenőrzése az Azure platform, a saját kulcs alapú hitelesítés is tartalmazza. Api-kulcsát: véletlenszerűen generált számokból és betűkből álló karakterlánc. (A rendszergazda vagy a lekérdezés) kulcs típusa határozza meg a hozzáférési szintet. Érvényes kulcs benyújtása számít, koncepció a kérés egy megbízható entitás származik. 
 
-* A rendszergazda (érvényes a szolgáltatás minden olvasási és írási művelet)
-* A lekérdezés (például a lekérdezéseket az index csak olvasható műveletekhez érvényes)
+Nincsenek a keresési szolgáltatás, kétféle típusú kulcsok által engedélyezett hozzáférési két szintet:
 
-A szolgáltatás ki van építve az adminisztrációs kulcsok hoz létre. Nincsenek kijelölt két adminisztrációs kulcsot *elsődleges* és *másodlagos* Újévi ugrik, de valójában azok felcserélhetők. Minden szolgáltatásnak van két adminisztrációs kulcsot, így lehet vonni az egyik a szolgáltatáshoz való hozzáférés elvesztése nélkül. Létrehozhatja vagy rendszergazdai kulcs, de a teljes rendszergazdai kulcsok száma nem lehet hozzáadni. Nincs legfeljebb két adminisztrációs kulcsot a keresési szolgáltatás esetében.
+* Rendszergazdai hozzáférés (érvényes a szolgáltatás minden olvasási és írási művelet)
+* Lekérdezési hozzáférési jogosultsággal (például a lekérdezéseket az index csak olvasható műveletekhez érvényes)
 
-Lekérdezési kulcsok igény szerint jönnek létre, és úgy tervezték, az ügyfélalkalmazások, amelyek keresési közvetlenül hívják. Legfeljebb 50 lekérdezési kulcsok hozhat létre. Az alkalmazás kódjában adja meg a keresési URL-CÍMÉT és a egy lekérdezési api-kulcs a szolgáltatás csak olvasható hozzáférést. Az alkalmazás kódja is megadja az indexet, az alkalmazása által használt. A végpont, a csak olvasási hozzáféréssel az api-kulcsát és a egy célindex együtt, a kapcsolat az ügyfélalkalmazás hatókörrel és a hozzáférési szintjének meghatározását.
+*Az adminisztrációs kulcsok* jön létre, amikor a szolgáltatást annak üzembe helyezése. Nincsenek kijelölt két adminisztrációs kulcsot *elsődleges* és *másodlagos* Újévi ugrik, de valójában azok felcserélhetők. Minden szolgáltatásnak van két adminisztrációs kulcsot, így lehet vonni az egyik a szolgáltatáshoz való hozzáférés elvesztése nélkül. Létrehozhatja vagy rendszergazdai kulcs, de a teljes rendszergazdai kulcsok száma nem lehet hozzáadni. Nincs legfeljebb két adminisztrációs kulcsot a keresési szolgáltatás esetében.
+
+*Lekérdezési kulcsokkal* igény szerint jönnek létre, és úgy tervezték, az ügyfélalkalmazások, amelyek keresési közvetlenül hívják. Legfeljebb 50 lekérdezési kulcsok hozhat létre. Az alkalmazás kódjában adja meg a keresési URL-CÍMÉT és a egy lekérdezési api-kulcs a szolgáltatás csak olvasható hozzáférést. Az alkalmazás kódja is megadja az indexet, az alkalmazása által használt. A végpont, a csak olvasási hozzáféréssel az api-kulcsát és a egy célindex együtt, a kapcsolat az ügyfélalkalmazás hatókörrel és a hozzáférési szintjének meghatározását.
 
 Hitelesítés minden kérelemnél, ahol minden egyes kérés áll, amelyek kötelező kulcs, a művelet és a egy objektum szükséges. Összeláncolt, ha a két jogosultsági szintek (teljes vagy csak olvasható) és a környezetben (például egy lekérdezési művelet indexen) elegendőek a teljes körű biztonsági megoldásai a szolgáltatási műveletek. Kulcsokkal kapcsolatos további információkért lásd: [létrehozása és kezelése az api-kulcsainak](search-security-api-keys.md).
 
@@ -93,7 +95,9 @@ Információ az Azure Search egy kérelem strukturálásáról: [Azure Search sz
 
 ## <a name="user-access-to-index-content"></a>Index tartalomhoz való hozzáférés
 
-Az index tartalmát felhasználónkénti hozzáférés biztonsági szűrőket a lekérdezések egy adott biztonsági identitáshoz tartozó dokumentumok visszaadó keresztül valósul meg. Előre definiált szerepkörök és szerepkör-hozzárendeléseket, helyett identitásalapú hozzáférés-vezérlés van megvalósítva egy szűrőt, hogy Trim találatok dokumentumok és a tartalom az identitások alapján. A következő táblázat ismerteti a tartalom jogosulatlan levágási keresési eredmények két módszer.
+Alapértelmezés szerint felhasználói hozzáférést az index határozza meg a hozzáférési kulcsot a lekérdezési kérésre. A legtöbb fejlesztő létrehozása és hozzárendelése [ *lekérdezési kulcsokkal* ](search-security-api-keys.md) a ügyféloldali keresési kéréseket. Lekérdezési kulcs olvasási hozzáférést biztosít az indexen belüli összes tartalom.
+
+Ha részletes van szüksége, felhasználónkénti szabályozhatóbbá tartalmat, létrehozhatja a biztonsági szűrők, a lekérdezések egy adott biztonsági identitáshoz tartozó dokumentumok visszaadása. Előre definiált szerepkörök és szerepkör-hozzárendeléseket, helyett identitásalapú hozzáférés-vezérlés megvalósítása a *szűrő* az identitások, hogy Trim találatok dokumentumok és a tartalom alapján. A következő táblázat ismerteti a tartalom jogosulatlan levágási keresési eredmények két módszer.
 
 | A módszer | Leírás |
 |----------|-------------|

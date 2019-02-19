@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: 79dbaf98f953a9cb72a7fa7cf9facc2b17fad504
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 02/18/2019
+ms.openlocfilehash: 640182b50492ed21cd604423fe1cef7301095941
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410064"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408799"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Azure-beli virtuális gép csatlakozni egy Azure SQL Database felügyelt példányába konfigurálása
 
@@ -97,7 +97,8 @@ Az ügyfél virtuális gép létrehozása az összes szükséges eszközökkel l
 4. Válassza ki **beszerzési** a hálózat az Azure virtuális gép üzembe helyezéséhez.
 5. Válassza ki a **értesítések** ikonra kattintva megtekintheti az üzembe helyezési állapotát.
 
-Nem folytatható, amíg az Azure virtuális gépen jön létre. 
+> [!IMPORTANT]
+> Ne folytassa a virtuális gép létrehozása az SQL Server Management Studio telepítése utáni létrehozási parancsfájlok ideje után körülbelül 15 perccel.
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 

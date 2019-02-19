@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Hozzáférés biztosítása egy csoport számára az RBAC és az Azure PowerShell használatával | Microsoft Docs
-description: A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével hozzáférést biztosíthat egy csoport számára, hogy mindent megtekinthessen az előfizetésben és mindent kezelhessen egy erőforráscsoportban az Azure PowerShell használatával.
+title: Oktatóanyag – csoport RBAC és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférés biztosítása |} A Microsoft Docs
+description: Megtudhatja, hogyan csoport szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférést.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: ad6884067a756412efe27ce275387ff5ceb1b298
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7f080682baf42c5852e167a20bfbad7f00fe8bd3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105671"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343689"
 ---
-# <a name="tutorial-grant-access-for-a-group-using-rbac-and-azure-powershell"></a>Oktatóanyag: Hozzáférést biztosít egy csoport RBAC és az Azure PowerShell használatával
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Oktatóanyag: Egy csoport hozzáférést biztosít az Azure-erőforrások RBAC és az Azure PowerShell használatával
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. Ebben az oktatóanyagban hozzáférést biztosít egy csoport számára, hogy mindent megtekinthessen az előfizetésben és mindent kezelhessen egy erőforráscsoportban az Azure PowerShell használatával.
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Ebben az oktatóanyagban hozzáférést biztosít egy csoport számára, hogy mindent megtekinthessen az előfizetésben és mindent kezelhessen egy erőforráscsoportban az Azure PowerShell használatával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -70,7 +70,7 @@ Szerepkör hozzárendeléséhez felhasználóra, csoportra vagy szolgáltatásn�
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-Ha nem rendelkezik csoportok létrehozása, megpróbálhatja a [oktatóanyag: Rbac-RÓL és az Azure PowerShell használatával egy felhasználó hozzáférést](tutorial-role-assignments-user-powershell.md) helyette.
+Ha nem rendelkezik csoportok létrehozása, megpróbálhatja a [oktatóanyag: Egy felhasználó hozzáférést RBAC és az Azure PowerShell használatával Azure-erőforrások](tutorial-role-assignments-user-powershell.md) helyette.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -294,4 +294,4 @@ Ha törölni szeretné a jelen oktatóanyag során létrehozott erőforrásokat,
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hozzáférés kezelése az RBAC és a PowerShell használatával](role-assignments-powershell.md)
+> [Rbac-RÓL és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférés kezelése](role-assignments-powershell.md)

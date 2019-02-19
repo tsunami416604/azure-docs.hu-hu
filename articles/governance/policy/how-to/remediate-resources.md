@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 054ce3d3483c3515e89c36eafc5d9a771e8e608d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 086ef9030451632ee4defa39a402e4d62c897f20
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844143"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342116"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Az Azure Policy segítségével a nem megfelelő erőforrások szervizelése
 
@@ -72,7 +72,7 @@ A portál használatával hozzárendelés létrehozásakor házirend állít el�
 Hozzon létre egy felügyelt identitás során a a szabályzat-hozzárendelés **hely** meg kell határozni és **AssignIdentity** használt. Az alábbi példa lekéri a beépített szabályzat definíciója **üzembe helyezése az SQL-Adatbázisok transzparens adattitkosításának**, és beállítja a célként megadott erőforráscsoportja, majd létrehozza a hozzárendelést.
 
 ```azurepowershell-interactive
-# Login first with Connect-Azccount if not using Cloud Shell
+# Login first with Connect-AzAccount if not using Cloud Shell
 
 # Get the built-in "Deploy SQL DB transparent data encryption" policy definition
 $policyDef = Get-AzPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
@@ -117,7 +117,7 @@ A hozzárendelés felügyelt identitás ad hozzá egy szerepkörhöz, kövesse a
 
 1. Keresse meg a **hozzárendelés azonosítója** tulajdonságot az edit oldalon. A hozzárendelés azonosítója lesz hasonló:
 
-   ```
+   ```output
    /subscriptions/{subscriptionId}/resourceGroups/PolicyTarget/providers/Microsoft.Authorization/policyAssignments/2802056bfc094dfb95d4d7a5
    ```
 

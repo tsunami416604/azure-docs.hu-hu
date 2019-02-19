@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: 90c508fb5ad3caf961747f2ac10bae42dd1f4c35
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c31510b0d5ca2afcd6a52cf4301e5e5eaae7da5b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114960"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343510"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
-Ez a cikk bemutatja, miként vannak konfigurálva a biztonsági szabályzatok és a Security Center ezeket is megtekintheti. Az Azure Security Center automatikusan hozzárendeli a [beépített biztonsági házirendek](security-center-policy-definitions.md) minden egyes előfizetés, amely regisztrálva van. Konfigurálhatja azokat a [Azure Policy](../azure-policy/azure-policy-introduction.md), amely lehetővé teszi szabályzatok beállítását a felügyeleti csoportokhoz, és több előfizetéshez.
+Ez a cikk bemutatja, miként vannak konfigurálva a biztonsági szabályzatok és a Security Center ezeket is megtekintheti. Az Azure Security Center automatikusan hozzárendeli a [beépített biztonsági házirendek](security-center-policy-definitions.md) minden egyes előfizetés, amely regisztrálva van. Konfigurálhatja azokat a [Azure Policy](../governance/policy/overview.md), amely lehetővé teszi szabályzatok beállítását a felügyeleti csoportokhoz, és több előfizetéshez.
 
-PowerShell-lel házirendek beállításával kapcsolatos utasításokért lásd: [a rövid útmutató: Az Azure RM PowerShell modullal a nem megfelelő erőforrások azonosítására a szabályzat-hozzárendelés létrehozása](../azure-policy/assign-policy-definition-ps.md).
+PowerShell-lel házirendek beállításával kapcsolatos utasításokért lásd: [a rövid útmutató: Az Azure PowerShell modullal a nem megfelelő erőforrások azonosítására a szabályzat-hozzárendelés létrehozása](../governance/policy/assign-policy-powershell.md).
 
 >[!NOTE]
 > A Security Center az Azure Policy segítségével az integráció elindult. Meglévő ügyfelek automatikusan átkerülnek az új beépített kezdeményezésére az Azure Policy, a Security Center az előző biztonsági házirendek helyett. Ez a változás nem érinti az erőforrások vagy az új kezdeményezés az Azure Policy-jelenléte kivételével környezettel.
 
 ## <a name="what-are-security-policies"></a>Mik azok a biztonsági szabályzatok?
-A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó kívánt konfigurációkat, és segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. Az Azure Policy az Azure-előfizetésekre vonatkozó szabályzatokat határozhat meg, és testre szabni azokat a számítási feladatok típusának vagy az adatok érzékenységéhez. A szabályozott adatokat, például személyazonosításra alkalmas adatokat használó alkalmazások például szükség lehet egy magasabb biztonsági szintet, mint a többi munkaterhelését. Házirend beállítása a felügyeleti csoportok vagy előfizetések között, állítsa őket a [Azure Policy](../azure-policy/azure-policy-introduction.md).
+A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó kívánt konfigurációkat, és segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. Az Azure Policy az Azure-előfizetésekre vonatkozó szabályzatokat határozhat meg, és testre szabni azokat a számítási feladatok típusának vagy az adatok érzékenységéhez. A szabályozott adatokat, például személyazonosításra alkalmas adatokat használó alkalmazások például szükség lehet egy magasabb biztonsági szintet, mint a többi munkaterhelését. Házirend beállítása a felügyeleti csoportok vagy előfizetések között, állítsa őket a [Azure Policy](../governance/policy/overview.md).
 
 A biztonsági szabályzatokat a biztonsági javaslatokkal kap az Azure Security Centerben. Segít azonosítani a potenciális biztonsági réseket és elhárítani a fenyegetéseket az azoknak való megfelelés figyelése Juthat az Önnek legmegfelelőbb lehetőség meghatározásával kapcsolatos további információkért lásd a [beépített biztonsági házirendek](security-center-policy-definitions.md).
 
@@ -52,7 +52,7 @@ A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szab�
 - Szabályzatok hozzárendelése felügyeleti csoportokhoz és előfizetésekhez, amelyek jelölhetnek egy teljes vállalatot, vagy egy adott üzleti egységet a vállalaton belül.
 - Szabályzatoknak való megfelelés figyelése.
 
-Az Azure Policyvel kapcsolatos további információkért olvassa el [a megfelelőség szabályzatok létrehozásával és kezelésével történő kikényszerítésével](../azure-policy/create-manage-policy.md) foglalkozó témakört.
+Az Azure Policyvel kapcsolatos további információkért olvassa el [a megfelelőség szabályzatok létrehozásával és kezelésével történő kikényszerítésével](../governance/policy/tutorials/create-and-manage.md) foglalkozó témakört.
 
 Egy Azure-szabályzat az alábbi összetevőkből áll:
 
@@ -236,4 +236,4 @@ Ebben a cikkben megismerkedhetett az Azure Policy biztonsági szabályzatok szer
 * [Az Azure Security Center – gyakori kérdések](security-center-faq.md): Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
 * [Az Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
-További információk az Azure Policyról: [Mi az az Azure Policy?](../azure-policy/azure-policy-introduction.md)
+További információk az Azure Policyról: [Mi az az Azure Policy?](../governance/policy/overview.md)

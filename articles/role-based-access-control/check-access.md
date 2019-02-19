@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – az Azure Portalon a felhasználóhoz rendelt szerepköreinek megtekintése |} A Microsoft Docs
-description: Ismerje meg, hogyan rendelve egy felhasználó, csoport, egyszerű szolgáltatás vagy az Azure portal használatával felügyelt identitás szerepköralapú hozzáférés-vezérlés (RBAC) vonatkozó engedélyeket.
+title: Rövid útmutató – Azure-erőforrások megtekintése a hozzáférés egy felhasználó rendelkezik |} A Microsoft Docs
+description: Ismerje meg, a hozzáférés egy felhasználó vagy az egyéb rendszerbiztonsági tag van szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure portal segítségével Azure-erőforrások megtekintése.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,20 +14,20 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b755dd6223c21084cafea82a1c8857f9f54b03b5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f388215b2829066906ee7faf41abb17307bf3fff
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638652"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337945"
 ---
-# <a name="quickstart-view-roles-assigned-to-a-user-using-the-azure-portal"></a>Gyors útmutató: Az Azure portal használatával egy felhasználóhoz hozzárendelt szerepkörök megtekintése
+# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Gyors útmutató: A felhasználó rendelkezik Azure-erőforrásokhoz való hozzáférés megtekintése
 
-Használhatja a **hozzáférés-vezérlés (IAM)** paneljén [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) megtekintéséhez a szerepkör-hozzárendeléseket több felhasználó csoportokra vonatkoznak, az egyszerű szolgáltatások, és a felügyelt identitásokból, de néha gyorsan megtekintheti a szerepkör-hozzárendeléseit egy egyetlen felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás csak kell. Ennek legegyszerűbb módja az, hogy használja a **hozzáférés ellenőrzése** funkció az Azure Portalon.
+Használhatja a **hozzáférés-vezérlés (IAM)** paneljén [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) a hozzáférés egy felhasználó, vagy a rendszerbiztonsági tag egy másik Azure-erőforrások megtekintéséhez. Azonban néha egyszerűen gyorsan megtekintheti az egy-egy felhasználóhoz vagy egy másik rendszerbiztonsági tagot a hozzáférést. Ennek legegyszerűbb módja az, hogy használja a **hozzáférés ellenőrzése** funkció az Azure Portalon.
 
 ## <a name="view-role-assignments"></a>Szerepkör-hozzárendelések megtekintése
 
-Kövesse az alábbi lépéseket a szerepkör-hozzárendeléseit egy egyetlen felhasználó, csoport, egyszerű szolgáltatás vagy az előfizetések szintjén felügyelt identitás megtekintéséhez.
+ Az, hogy megtekintheti a hozzáférés egy felhasználó úgy, hogy a szerepkör-hozzárendelések lista. Kövesse az alábbi lépéseket a szerepkör-hozzárendeléseit egy egyetlen felhasználó, csoport, egyszerű szolgáltatás vagy az előfizetések szintjén felügyelt identitás megtekintéséhez.
 
 1. Az Azure Portalon kattintson a **minden szolgáltatás** , majd **előfizetések**.
 
@@ -54,4 +54,4 @@ Kövesse az alábbi lépéseket a szerepkör-hozzárendeléseit egy egyetlen fel
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Hozzáférést egy felhasználó RBAC és az Azure portal használatával](quickstart-assign-role-user-portal.md)
+> [Oktatóanyag: Egy felhasználó hozzáférést rbac-RÓL és az Azure portal segítségével Azure-erőforrások](quickstart-assign-role-user-portal.md)

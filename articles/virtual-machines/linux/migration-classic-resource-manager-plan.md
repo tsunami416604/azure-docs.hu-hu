@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 40e0c8c91c44e67c2c409d2efb1e917fdbe0bf33
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ff3fdec2f427e095c748e4a47079d783fa83802d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562096"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341334"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Az IaaS-erőforrások klasszikusból Azure Resource Manager az áttelepítés tervezése
 Azure Resource Manager sok nagyszerű funkciókat biztosít, rendkívül fontos tervezze meg, hogy zökkenőmentességét sure dolgot a migrálási folyamat elkezdésekor. Tervezési idő kiadások biztosítja, hogy nem problémák merülnek fel migrálási tevékenységek végrehajtása közben. 
@@ -45,7 +45,7 @@ Attól függően, a műszaki követelményeknek méretű, földrajzi és működ
 5. A műveleti csapatoknak mostantól támogatja a alkalmazások vagy virtuális gépek a klasszikus és az Azure Resource Manager?
 6. Hogyan (ha egyáltalán) az Azure Resource Manager változik a virtuális gép üzembe helyezésének, kezelési, figyelési és jelentéskészítési folyamatainak?  Szükség van az üzembehelyezési szkriptek frissíteni?
 7. Mi a kommunikációs terv figyelmeztet az érdekelt felek (végfelhasználók számára, alkalmazások és infrastruktúrák tulajdonosai)?
-8. A környezet összetettségétől függően kell egy karbantartási időszakban, az alkalmazás nem érhető el, a végfelhasználók számára, és az alkalmazástulajdonosok?  Ha igen, mennyi ideig?
+8. A környezet összetettségétől függően kell egy karbantartási időszakban, az alkalmazás nem érhető el, a végfelhasználók számára, és az alkalmazástulajdonosok?  Ha igen, milyen hosszú ideig?
 9. Mi az a képzési terv az érintettek hozzáértő és az Azure Resource Manager jártassággal biztosítása érdekében?
 10. Mi a program felügyeleti vagy az áttelepítés projekt felügyeleti csomag?
 11. Mi az Azure Resource Manager-áttelepítést és egyéb megvizsgáltuk kapcsolódó technológia térképszolgáltatásokat?  Vonalban van-e azok optimális?
@@ -196,7 +196,7 @@ Lehet, mely szolgáltatásokat szeretné engedélyezni az Azure Resource Manager
 - [Egyszerűbb és több ellenőrzött üzembe Azure Resource Manager-sablonok](../../azure-resource-manager/resource-group-overview.md#template-deployment).
 - [A címkék](../../azure-resource-manager/resource-group-using-tags.md).
 - [Vezérlési tevékenység](../../azure-resource-manager/resource-group-audit.md)
-- [Az Azure-szabályzatok](../../azure-policy/azure-policy-introduction.md)
+- [Az Azure-szabályzatok](../../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>Nehézségek elkerülése érdekében
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1f71276c25e3ec1e5791d9b35f89aa95190c6afd
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770584"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341959"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Az Azure Policy használatával korlátozhatja a bővítmények telepítése Linux rendszerű virtuális gépeken
 
@@ -28,7 +28,7 @@ Ebben az oktatóanyagban a parancssori felület belül az Azure Cloud Shellt, am
 
 ## <a name="create-a-rules-file"></a>Hozzon létre egy szabályok fájlt
 
-Korlátozhatja a telepíthető bővítmények, rendelkeznie kell egy [szabály](/azure/azure-policy/policy-definition#policy-rule) azonosíthatja a bővítményt a logika biztosít.
+Korlátozhatja a telepíthető bővítmények, rendelkeznie kell egy [szabály](../../governance/policy/concepts/definition-structure.md#policy-rule) azonosíthatja a bővítményt a logika biztosít.
 
 Ez a példa bemutatja, hogyan megtagadási szabályokat fájl létrehozásával az Azure Cloud Shellben "Microsoft.OSTCExtensions" által közzétett bővítmények telepítése, de ha a parancssori felület helyileg dolgozik, is hozzon létre egy helyi fájlt és az elérési út (~/clouddrive) cserélje le a elérési útja a helyi fájlt a gépén.
 
@@ -69,7 +69,7 @@ Amikor végzett, nyomja le az **Esc** kulcsra, és írja be **: wq** mentse és 
 
 ## <a name="create-a-parameters-file"></a>A paraméterfájl létrehozása
 
-Is szükség van egy [paraméterek](/azure/azure-policy/policy-definition#parameters) fájlt, amely számára, hogy az blokkolja a kiterjesztések listája megadásának struktúrát hoz létre. 
+Is szükség van egy [paraméterek](../../governance/policy/concepts/definition-structure.md#parameters) fájlt, amely számára, hogy az blokkolja a kiterjesztések listája megadásának struktúrát hoz létre. 
 
 Ez a példa bemutatja, hogyan hozzon létre egy paraméterek fájlt a Cloud Shellben a Linux rendszerű virtuális gépekhez, de ha a parancssori felület helyileg dolgozik, is hozzon létre egy helyi fájlt és az elérési út (~/clouddrive) cserélje le a számítógépre a helyi fájl elérési útját.
 
@@ -171,6 +171,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-
 ## <a name="next-steps"></a>További lépések
-További információkért lásd: [Azure Policy](../../azure-policy/azure-policy-introduction.md).
+
+További információkért lásd: [Azure Policy](../../governance/policy/overview.md).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e8eeb83c267d7a669f46037c2c94d69107a5edd1
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: d05ec1835bc04be0ca0fc12f41322c14b5420213
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267308"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337816"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Az Azure erőforrás-szabályzat RequestDisallowedByPolicy hiba
 
@@ -66,5 +66,5 @@ A probléma megoldásához tekintse át az erőforrás-szabályzatok, és határ
 
 További információkért tekintse át a következő cikkeket:
 
-- [Mi az Azure Policy?](../azure-policy/azure-policy-introduction.md)
-- [Megfelelőség kikényszerítése céljából szabályzatok létrehozása és kezelése](../azure-policy/create-manage-policy.md)
+- [Mi az Azure Policy?](../governance/policy/overview.md)
+- [Megfelelőség kikényszerítése céljából szabályzatok létrehozása és kezelése](../governance/policy/tutorials/create-and-manage.md)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1c58574a96c07dcb4008682efdf96fba111d7b61
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6a43edc6e8bf0afe28f27f4be53315c5e807dc8d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810337"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338580"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A biztonsági mentési és visszaállítási funkciójának [Azure App Service](overview.md) könnyedén hozhat létre alkalmazást biztonsági mentések manuális vagy ütemezett teszi lehetővé. Az alkalmazás írja felül a meglévő alkalmazás vagy egy másik alkalmazásba való visszaállítása visszaállíthatja egy korábbi állapotáról pillanatképet. 
@@ -52,7 +52,7 @@ A következő adatbázis-megoldások biztonsági mentési szolgáltatás támoga
 ## <a name="requirements-and-restrictions"></a>Követelmények és korlátozások
 * A biztonsági mentési és visszaállítási funkció igényel az App Service-csomagot kell lennie a **Standard** szint vagy **prémium** szint. Az App Service-csomag magasabb szintre használandó méretezésével kapcsolatos további információkért lásd: [az Azure-beli alkalmazás vertikális felskálázása](web-sites-scale.md).  
   **Prémium szintű** csomaggal naponta nagyobb számú ups, mint biztonsági **Standard** szint.
-* Az Azure storage-fiók és tároló ugyanabban az előfizetésben, mint az alkalmazás biztonsági mentéséhez használni kívánt van szüksége. Az Azure storage-fiókokról további információért lásd: Ez a cikk végén található hivatkozásokat.
+* Az Azure storage-fiók és tároló ugyanabban az előfizetésben, mint az alkalmazás biztonsági mentéséhez használni kívánt van szüksége. Az Azure storage-fiókokról további információért lásd: [az Azure storage-fiók áttekintése](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview).
 * Biztonsági másolatok az alkalmazás- és tartalom legfeljebb 10 GB is lehet. Ha a biztonsági másolat mérete túllépi ezt a korlátot, hibaüzenetet kap.
 * Az SSL biztonsági mentések engedélyezve Azure Database MySQL nem támogatott. Ha egy biztonsági mentés van beállítva, a sikertelen biztonsági mentések kap.
 * SSL biztonsági másolatait engedélyezve az Azure-adatbázis PostgreSQL nem támogatott. Ha egy biztonsági mentés van beállítva, a sikertelen biztonsági mentések kap.

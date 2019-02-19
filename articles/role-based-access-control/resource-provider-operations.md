@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 71ede3d6eb35935e3fec32e8fd4bb71d6c698486
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5b9c0a71c8b01810474e4936fdd4a0852baf0ed7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697058"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343153"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -4153,7 +4153,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/migrate/action | Elem áttelepítése |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/migrationRecoveryPoints/read | Olvassa el áttelepítési helyreállítási pontot |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/read | Olvassa el áttelepítési elemek |
-> | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrate/action | Áttelepítési teszt |
+> | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrate/action | Teszt áttelepítése |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrateCleanup/action | Teszt karbantartása áttelepítése |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/write | Bármely áttelepítési cikkek létrehozása vagy frissítése |
 > | Műveletek | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | Védhető elemek olvasása |
@@ -5689,5 +5689,5 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egyéni szerepkörök](custom-roles.md)
-- [Beépített szerepkörök](built-in-roles.md)
+- [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md)
+- [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md)

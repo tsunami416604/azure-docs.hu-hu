@@ -8,12 +8,12 @@ ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 78e78bc019ab5f8be1cfd3448220b97b89cde6a5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ac11b1a2b625d1fc7b62130580d1f188ead21051
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228780"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342728"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Hibák elhárítása során megoldások bevezetése
 
@@ -73,7 +73,7 @@ A megoldás sikeresen üzembe kell figyelembe venni a jelzett szabályzat módos
   * Újra célzó a szabályzat egy adott erőforrás (például egy meghatározott Automation-fiók).
   * A készlet indítják az erőforrások az adott házirendnek megtagadásához lett konfigurálva.
 
-Ellenőrizze az értesítéseket az Azure Portal jobb felső sarokban lévő, vagy keresse meg az erőforráscsoportot, amely tartalmazza az automation-fiókot, és válassza **központi telepítések** alatt **beállítások** megtekintéséhez a sikertelen a központi telepítés. További információ az Azure Policy látogasson el: [Az Azure Policy áttekintése](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
+Ellenőrizze az értesítéseket az Azure Portal jobb felső sarokban lévő, vagy keresse meg az erőforráscsoportot, amely tartalmazza az automation-fiókot, és válassza **központi telepítések** alatt **beállítások** megtekintéséhez a sikertelen a központi telepítés. További információ az Azure Policy látogasson el: [Az Azure Policy áttekintése](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ## <a name="mma-extension-failures"></a>Az MMA-bővítményekkel kapcsolatos hibák
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90616544b1fddb8b6def04c30202035bec04d599
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3010f4ec86b25c51fae2ce8f64238ec8815adca8
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236005"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408680"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Kezelése előtti és utáni parancsfájlokat (előzetes verzió)
 
@@ -52,7 +52,19 @@ Futtassa a frissítéstelepítés tárolóiba kattintva, a előtti és utáni pa
 
 ## <a name="passing-parameters"></a>Paraméterek átadása
 
-Ha előre konfigurál, és utáni parancsfájlokat, adhat át a paraméterek hasonlóan runbook ütemezése. Paraméterek vannak meghatározva a frissítés központi telepítés létrehozása idején. Előtti és utáni parancsfájlokat a típusú paramétereket igényel `String`. Ha egy másik objektum típusa, is szavazattal azt egy másik típus használatával `[System.Convert]` vagy kezelnie a saját logikája.
+Ha előre konfigurál, és utáni parancsfájlokat, adhat át a paraméterek hasonlóan runbook ütemezése. Paraméterek vannak meghatározva a frissítés központi telepítés létrehozása idején. Előtti és utáni parancsfájlokat a következő típusokat támogatja:
+
+* [char]
+* [byte]
+* [int]
+* [long]
+* [decimális]
+* [egyetlen]
+* [dupla]
+* [DateTime]
+* [string]
+
+Ha egy másik objektum típusa, is szavazattal azt egy másik a saját a runbook logikája.
 
 A standard szintű runbook paraméterek kívül egy további paraméter biztosítunk. Ez a paraméter **SoftwareUpdateConfigurationRunContext**. Ez a paraméter egy JSON-karakterlánc, és ha a előtti vagy utáni parancsfájl adja meg a paramétert, automatikusan átadott a frissítéstelepítés által. A paraméter tartalmazza a frissítés központi telepítését, amelynek része a információ által visszaadott információk a [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) az alábbi táblázat bemutatja, a tulajdonságok vannak megadva, a változóban:
 

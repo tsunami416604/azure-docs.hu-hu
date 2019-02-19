@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 907ab5cd3272a3d3f64dcfd7c9628a609f4db2f4
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 2595912732389c8a415d1854a84a7b9c182e4dc7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327646"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341640"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Hogyan lehet Azure Search-index újraépítése
 
@@ -29,18 +29,18 @@ A *újraépítése* elvetését és a egy index, beleértve az összes mező-ala
 | Állapot | Leírás |
 |-----------|-------------|
 | Egy mező definíció módosítása | A mező nevét, a adattípus vagy a specifikus indítják [indexattribútumok](https://docs.microsoft.com/rest/api/searchservice/create-index) (kereshető, szűrhető, rendezhető, kategorizálható) egy teljes Újraépítés igényel. |
-| Egy elemző ad hozzá egy mezőt | [Elemzők](search-analyzers.md) meghatározott index, és hozzárendeli az mezőket. Adhat hozzá egy új analyzer index bármikor, de csak *hozzárendelése* egy elemző, ha a mező jön létre. Ez igaz mind a **analyzer** és **indexAnalyzer** tulajdonságait. A **searchAnalyzer** tulajdonság kivételt. |
-| Frissítés és a egy elemző szerkezet törlés | Nem lehet törölni, vagy módosítsa a meglévő analysis-összetevőkkel (elemző, tokenizer, jogkivonat-szűrő vagy char szűrő), ha a teljes index újraépítése. |
-| Egy mezőt ad hozzá egy javaslattevő | Ha a mező már létezik, és adja hozzá a kívánt egy [Javaslattevők](index-add-suggesters.md) hozhatnak létre, újra kell építenie az indexet. |
-| Mező törlése | Fizikailag távolítsa el az összes nyomkövetési egy mező, kell építenie az indexet. Egy azonnali rebuild nem célszerű, ha a "törölt" mezőben való hozzáférés letiltása az alkalmazás kódjában módosíthatja. Fizikailag a mező meghatározása és a tartalom marad az index a következő újraépítése, egy sémát, amely az áttekinthetőség kedvéért kihagyja a mező használatával az adott. |
-| Rétegek közötti váltás | Ha nagyobb kapacitásra van szüksége, nem nem helyszíni frissítését. Egy új szolgáltatás létrehozása az új kapacitást pontján, és teljesen új indexek kell elkészíteni az új szolgáltatás a. |
+| Egy elemző hozzárendelése egy mező | [Elemzők](search-analyzers.md) meghatározott index, és hozzárendeli az mezőket. Adhat hozzá egy új analyzer definíció index bármikor, de csak *hozzárendelése* egy elemző, ha a mező jön létre. Ez igaz mind a **analyzer** és **indexAnalyzer** tulajdonságait. A **searchAnalyzer** tulajdonság értéke (hozzárendelheti ezt a tulajdonságot existující Pole) kivételt. |
+| Frissítse vagy egy index elemző-definíció törlése | Nem lehet törölni, vagy egy meglévő elemző konfigurációjának módosítása (elemző, tokenizer, jogkivonat-szűrő vagy char szűrő) az indexben, kivéve, ha a teljes index újraépítése. |
+| Adjon hozzá egy mezőt a javaslattevő | Ha a mező már létezik, és adja hozzá a kívánt egy [Javaslattevők](index-add-suggesters.md) hozhatnak létre, újra kell építenie az indexet. |
+| Mező törlése | Fizikailag távolítsa el az összes nyomkövetési egy mező, kell építenie az indexet. Egy azonnali rebuild nem célszerű, ha a "törölt" mezőben való hozzáférés letiltása az alkalmazás kódjában módosíthatja. Fizikailag a mező definíciója és annak tartalmát marad az index a következő készítse el, amikor alkalmazza a mező az áttekinthetőség kedvéért kihagyja sémát az adott. |
+| Váltson a Rétegek | Ha nagyobb kapacitásra van szüksége, nem nem helyszíni frissítését. Egy új szolgáltatás létrehozása az új kapacitást pontján, és teljesen új indexek kell elkészíteni az új szolgáltatás a. |
 
 Minden egyéb módosítás lehet kapcsolódni a meglévő fizikai struktúrák befolyásolása nélkül. Pontosabban, hajtsa végre a következő módosításokat *nem* egy indexkészítés megkövetelése:
 
 + Adjon hozzá egy új mezőt
 + Állítsa be a **lekérhető** existující Pole attribútum
 + Állítsa be a **searchAnalyzer** meglévő mezőre
-+ Adjon hozzá egy új analyzer szerkezet az index
++ Adja hozzá az új analyzer definícióját egy indexben
 + Hozzáadása, frissítése vagy törlése a pontozási profilok
 + Hozzáadása, frissítése vagy törlése a CORS-beállítások
 + Hozzáadása, frissítése vagy törlése synonymMaps
@@ -65,23 +65,30 @@ Az indexelők kapcsolatos további információkért lásd: [indexelő áttekint
 
 A gyakori, teljes csomag újraépíti aktív fejlesztés során, amikor index sémák fluxus állapotban vannak. Alkalmazások már éles környezetben azt javasoljuk, amelyen egymás mellett egy meglévő index lekérdezés üzemszünet elkerülése érdekében új index létrehozását.
 
-Ha szigorúbb SLA követelményeinek, akkor érdemes kiépítési egy új szolgáltatás kimondottan a munkát, fejlesztési, és a teljes elkülönítést egy éles indexből előforduló indexelés. Egy különálló szolgáltatás fut, a saját hardveren, így kiküszöböli az erőforrás-versengés lehetőségét. Fejlesztési befejeződése után, vagy azt jelentené az új indexre helyen, a lekérdezések átirányítása az új végpont és az index, vagy futtatná a befejezett kód egy módosított indexe az eredeti Azure Search-szolgáltatás közzétételéhez. Jelenleg nincs olyan mechanizmus, egy használatra kész index áthelyezése egy másik szolgáltatásnak.
+A szolgáltatási szintű olvasási és írási engedélyek szükségesek index frissítéseit. 
 
-A szolgáltatási szintű olvasási és írási engedélyek szükségesek index frissítéseit. Programozott módon, meghívhatja [Update Index REST API-val](https://docs.microsoft.com/rest/api/searchservice/update-index) vagy teljesen újra kell építenie a .NET API-k. A kérés esetén nagyjából azonos az [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index), de van egy másik környezetben.
+A portálon az index nem hozható létre újra. Programozott módon, meghívhatja [Update Index REST API-val](https://docs.microsoft.com/rest/api/searchservice/update-index) vagy [egyenértékű .NET API-k](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexesoperations.createorupdatewithhttpmessagesasync?view=azure-dotnet) teljesen újra kell építenie a. Index frissítési kérelmet megegyezik az [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index), de van egy másik környezetben.
 
-1. Az index neve, amikor újból felhasznál [dobja el a meglévő index](https://docs.microsoft.com/rest/api/searchservice/delete-index). Újjáépítésére célzó lekérdezéseket a rendszer azonnal elveti. Index törlése nem vonható vissza, a mezők gyűjteménye és egyéb szerkezetek fizikai tároló megsemmisítése. Győződjön meg arról, hogy a következményekkel járhat az index törlése előtt dobja el, törölje. 
+Az alábbi munkafolyamat a REST API felé torzítatlan van, de a .NET SDK-t egyaránt érvényes.
 
-2. Adja meg az indexsémát megváltozott vagy módosított mező definíciókkal. A követelmények séma [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+1. Amikor szakember újból felhasználja az index nevét [dobja el a meglévő index](https://docs.microsoft.com/rest/api/searchservice/delete-index). 
 
-3. Adjon meg egy [adminisztrációs kulcsot](https://docs.microsoft.com/azure/search/search-security-api-keys) a kérésre.
+   Újjáépítésére célzó lekérdezéseket a rendszer azonnal elveti. Index törlése nem vonható vissza, a mezők gyűjteménye és egyéb szerkezetek fizikai tároló megsemmisítése. Győződjön meg arról, hogy a következményekkel járhat az index törlése előtt dobja el, törölje. 
 
-4. Küldjön egy [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) parancsot a fizikai kifejezést az Azure Search-index újraépítése. A kérés törzse tartalmazza az indexsémát, valamint létrehozza a pontozási profilok, elemzőket, javaslattevőket és CORS-beállítások.
+2. Állítson össze egy [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) a szolgáltatásvégpont-kérelem API-kulcsot, és a egy [adminisztrációs kulcsot](https://docs.microsoft.com/azure/search/search-security-api-keys). Egy rendszergazdai kulcsot kötelező megadni, az írási műveletek.
 
-5. [Az index-dokumentumok betöltése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) külső forrásból. Az API-t használhatja gombra egy meglévő, nem módosított indexsémát a frissített dokumentumokat is.
+3. A kérelem törzsében adja meg az indexsémát megváltozott vagy módosított mező definíciókkal. A kérés törzse tartalmazza az indexsémát, valamint létrehozza a pontozási profilok, elemzőket, javaslattevőket és CORS-beállítások. A követelmények séma [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+
+4. Küldjön egy [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) kérelem a fizikai kifejezést az Azure Search-index újraépítése. 
+
+5. [Az index-dokumentumok betöltése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) külső forrásból.
 
 Az index létrehozásakor fizikai tároló számára kíván lefoglalni az indexsémát az egyes mezők a fordított indexet létrehozni minden kereshető mező. Mezők, amelyek nem kereshető szűrők vagy kifejezéseket is használható, de nem rendelkezik fordított indexeket és a nem teljes szöveges vagy intelligens kereshető. Az index újraépítése a fordított indexekhez törölte és újra létrehozta, adja meg az indexsémát alapján.
 
 Az index betöltésekor minden mező fordított index feltöltése az összes, a megfelelő dokumentum azonosítók leképezést, egyes dokumentumok egyedi, tokenekre szó. Például ha egy "Hotels" adatkészlet indexelést, fordított indexet létrehozni egy város mezőhöz tartalmazhat feltételek a budapesti, Portland, és így tovább. Dokumentumok, amelyek tartalmazzák a Seattle vagy Portland az városa mező kellene a dokumentumazonosító mellett a kifejezés szerepel. Bármely [hozzáadása, frissítése és törlése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) műveletet, a feltételeket és a dokumentum Hálóazonosítóinak listája ennek megfelelően frissülnek.
+
+> [!NOTE]
+> Ha szigorúbb SLA követelményeinek, akkor érdemes kiépítési egy új szolgáltatás kimondottan a munkát, fejlesztési, és a teljes elkülönítést egy éles indexből előforduló indexelés. Egy különálló szolgáltatás fut, a saját hardveren, így kiküszöböli az erőforrás-versengés lehetőségét. Fejlesztési befejeződése után, vagy azt jelentené az új indexre helyen, a lekérdezések átirányítása az új végpont és az index, vagy futtatná a befejezett kód egy módosított indexe az eredeti Azure Search-szolgáltatás közzétételéhez. Jelenleg nincs olyan mechanizmus, egy használatra kész index áthelyezése egy másik szolgáltatásnak.
 
 ## <a name="view-updates"></a>Frissítések megtekintése
 

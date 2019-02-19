@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egyéni szerepkörök használatával a REST API – Azure |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egyéni szerepköröket a szerepköralapú hozzáférés-vezérlés (RBAC), a REST API használatával. Ez magában foglalja a listában, létrehozása, frissítése és egyéni szerepkörök törlése.
+title: Hozzon létre egyéni szerepkörök az Azure-erőforrások használatával a REST API – Azure |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egyéni szerepköröket a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz a REST API használatával. Ez magában foglalja a listában, létrehozása, frissítése és egyéni szerepkörök törlése.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8a1bbe8217e2d4a9846f56124e248e19cbe70b19
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: cfcb7ef2a4fc02932f9d03c277b105c4b1e0ff3a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436062"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338767"
 ---
-# <a name="create-custom-roles-using-the-rest-api"></a>A REST API-val egyéni szerepkörök létrehozása
+# <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Az Azure-erőforrásokhoz a REST API-val egyéni szerepkörök létrehozása
 
-Ha a [beépített szerepkörök](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, saját egyéni szerepköröket is létrehozhat. Ez a cikk ismerteti a REST API-val egyéni szerepkörök létrehozására és kezelésére.
+Ha a [beépített szerepkörök az Azure-erőforrások](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, saját egyéni szerepköröket is létrehozhat. Ez a cikk ismerteti a REST API-val egyéni szerepkörök létrehozására és kezelésére.
 
 ## <a name="list-roles"></a>Szerepkörök felsorolása
 
@@ -38,7 +38,7 @@ Az összes szerepkör listában, vagy a megjelenítési név megadásával egyet
 
 1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné össze a szerepkörök listáját.
 
-    | Hatókör | Típus |
+    | Hatókör | Typo |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
@@ -67,7 +67,7 @@ Egyetlen szerepkör a megjelenítési név megadásával kapcsolatos informáci�
 
 1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné össze a szerepkörök listáját.
 
-    | Hatókör | Típus |
+    | Hatókör | Typo |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
@@ -115,7 +115,7 @@ Egyéni szerepkör létrehozásához használja a [szerepkör-definíciók - lé
 
 1. Cserélje le az URI-belül *{hatókör}* – az első `assignableScopes` az egyéni szerepkör.
 
-    | Hatókör | Típus |
+    | Hatókör | Typo |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
@@ -165,7 +165,7 @@ Egyéni szerepkör létrehozásához használja a [szerepkör-definíciók - lé
     }
     ```
 
-## <a name="update-a-custom-role"></a>Egyéni szerepkör frissítése
+## <a name="update-a-custom-role"></a>Egyéni szerepkörök frissítése
 
 Egyéni szerepkör frissítéséhez használja a [szerepkör-definíciók – létrehozása vagy frissítése](/rest/api/authorization/roledefinitions/createorupdate) REST API-t. Az API meghívásához, hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleDefinitions/write` az összes műveletet a `assignableScopes`. A beépített szerepkörök, csak [tulajdonosa](built-in-roles.md#owner) és [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) , amelyekhez hozzáférést ezt a műveletet. 
 
@@ -179,7 +179,7 @@ Egyéni szerepkör frissítéséhez használja a [szerepkör-definíciók – l�
 
 1. Cserélje le az URI-belül *{hatókör}* – az első `assignableScopes` az egyéni szerepkör.
 
-    | Hatókör | Típus |
+    | Hatókör | Typo |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
@@ -248,7 +248,7 @@ Egyéni szerepkör frissítéséhez használja a [szerepkör-definíciók – l�
     }
     ```
 
-## <a name="delete-a-custom-role"></a>Egyéni szerepkör törlése
+## <a name="delete-a-custom-role"></a>Egyéni szerepkörök törlése
 
 Egyéni szerepkör törléséhez használja a [szerepkör-definíciók – Törlés](/rest/api/authorization/roledefinitions/delete) REST API-t. Az API meghívásához, hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleDefinitions/delete` az összes műveletet a `assignableScopes`. A beépített szerepkörök, csak [tulajdonosa](built-in-roles.md#owner) és [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) , amelyekhez hozzáférést ezt a műveletet. 
 
@@ -262,7 +262,7 @@ Egyéni szerepkör törléséhez használja a [szerepkör-definíciók – Törl
 
 1. Cserélje le az URI-belül *{hatókör}* törli az egyéni szerepkör a hatókörrel rendelkező.
 
-    | Hatókör | Típus |
+    | Hatókör | Typo |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
@@ -272,6 +272,6 @@ Egyéni szerepkör törléséhez használja a [szerepkör-definíciók – Törl
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egyéni szerepkörök az Azure-ban](custom-roles.md)
-- [Rbac-RÓL és a REST API-hozzáférés kezelése](role-assignments-rest.md)
-- [Az Azure REST API-referencia](/rest/api/azure/)
+- [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md)
+- [Rbac-RÓL és a REST API használatával Azure-erőforrásokhoz való hozzáférés kezelése](role-assignments-rest.md)
+- [Azure REST API-referencia](/rest/api/azure/)

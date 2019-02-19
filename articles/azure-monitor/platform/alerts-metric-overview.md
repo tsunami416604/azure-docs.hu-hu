@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 3c7feda32bf162499888720ce56edac55197abe4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005522"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342983"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Megismerheti, hogyan riasztást küld a metrika a munkát az Azure monitorban
 
-Az Azure monitorban metrikákhoz kapcsolódó riasztások felett többdimenziós metrikák működik. Ezek a metrikák lehet platform mérőszámokat, [egyéni metrikákat](../../azure-monitor/platform/metrics-custom-overview.md), [népszerű naplók az Azure Monitor alakítani a metrikák](../../azure-monitor/platform/alerts-metric-logs.md), standard mérőszámok az Application Insights. Metrikákhoz kapcsolódó riasztások kiértékelése annak ellenőrzéséhez, hogy rendszeres időközönként egy vagy több metrikát idősorozat-igaz, és értesíti, amint az értékelések teljesülnek a feltételek. Metrikákhoz kapcsolódó riasztások állapotalapúak, azaz csak küldenek értesítéseket állapot.
+Az Azure monitorban metrikákhoz kapcsolódó riasztások felett többdimenziós metrikák működik. Ezek a metrikák lehet [platform metrikák](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [egyéni metrikákat](../../azure-monitor/platform/metrics-custom-overview.md), [népszerű naplók az Azure Monitor alakítani a metrikák](../../azure-monitor/platform/alerts-metric-logs.md) és Application Insights-metrikák. Metrikákhoz kapcsolódó riasztások kiértékelése annak ellenőrzéséhez, hogy rendszeres időközönként egy vagy több metrikát idősorozat-igaz, és értesíti, amint az értékelések teljesülnek a feltételek. Metrikákhoz kapcsolódó riasztások állapotalapúak, azaz csak küldenek értesítéseket állapot.
 
 ## <a name="how-do-metric-alerts-work"></a>Hogyan működik a metrikákhoz kapcsolódó riasztások?
 
@@ -65,8 +65,6 @@ Tegyük fel a "myVM" használata a további ellenőrzések meghaladja a küszöb
 Egy kicsit, ha a használati "myVM" ismét le a normál, a küszöbérték alá csökken. A riasztási szabály a feltétel a megoldott értesítést küldjön a még két alkalommal figyeli. A riasztási szabály feloldva/inaktiválása üzenetet küld a három egymást követő pontot váltakozó feltételek esetén zaj csökkentésére a riasztási feltétel nem teljesülése esetén.
 
 A feloldott értesítés küldése webhook vagy e-mailben, mivel az Azure Portalon (figyelő állapota is nevezik) riasztási példány állapotát is értéke megoldott.
-
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások az Azure Monitor használatával nagy mennyiségű figyelése
 
 ### <a name="using-dimensions"></a>Méretek használatával
 
@@ -123,9 +121,9 @@ Ez a szabály figyeli, ha az átlagos CPU-használat az elmúlt 5 percig meghala
 
 Szabálysértések száma és a hely visszaírt növelése lehetővé teszi a jelentős eltérés-definícióban csak riasztásra a riasztások szűrése. [További információ a Speciális beállítások dinamikus küszöbértékek](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
-### <a name="monitoring-multiple-resources-using-metric-alerts"></a>Metrikákhoz kapcsolódó riasztások használatával több erőforrások figyelése
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások az Azure Monitor használatával nagy mennyiségű figyelése
 
-Ahogy az előző szakaszban láthatta, az lehetséges, hogy egyetlen a metrikaalapú riasztási szabály, amely minden egyes dimenzió kombináció (vagyis) metrika az idősor lépésközi). Azonban korábban, továbbra is korlátozva lett egyszerre csak egy erőforrás ezt. Az Azure Monitor is támogatja az egy a metrikaalapú riasztási szabály több erőforrások monitorozását. Ez a funkció jelenleg előzetes verzió, és csak a virtuális gépeket. Ezenkívül egyetlen metrikariasztás figyelheti az erőforrások egy Azure-régióban.
+Az eddigi látott hogyan egyetlen metrikariasztás használható egy vagy több metrika figyelése egyetlen Azure-erőforráshoz kapcsolódó idősoros. Sok esetben érdemes alkalmazandó az erőforrások száma azonos riasztási szabályt. Az Azure Monitor is támogatja az egy a metrikaalapú riasztási szabály több erőforrások monitorozását. Ez a funkció jelenleg csak virtuális gépeken támogatott. Ezenkívül egyetlen metrikariasztás figyelheti az erőforrások egy Azure-régióban.
 
 Megadhat egyetlen metrikariasztás három módszerrel a figyelés hatóköre:
 
@@ -133,7 +131,7 @@ Megadhat egyetlen metrikariasztás három módszerrel a figyelés hatóköre:
 - egy vagy több erőforráscsoport az előfizetéshez (egy Azure-régióban) található összes virtuális gép
 - egy adott előfizetéshez (egy Azure-régióban) található összes virtuális gép
 
-Metrikaalapú riasztási szabályok több erőforrást figyelő létrehozása jelenleg nem támogatott az Azure Portalon keresztül. Ezek a szabályok segítségével hozhat létre [Azure Resource Manager-sablonok](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Az egyes virtuális gépekhez egyedi értesítéseket fog kapni.
+Például a metrikaalapú riasztási szabályok több erőforrást figyelő létrehozása van [bármely más metrikariasztás létrehozása](alerts-metric.md) , amely figyeli egy erőforrást. Csak a különbség az, hogy kell választani a figyelni kívánt összes erőforrást. Ezek a szabályok használatával is létrehozhat [Azure Resource Manager-sablonok](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Az egyes virtuális gépekhez egyedi értesítéseket fog kapni.
 
 ## <a name="typical-latency"></a>Átlagos késés
 
@@ -149,7 +147,7 @@ Ha klasszikus metrikariasztásokat használatát még ma, és keres, ha metriká
 |-------------------------------------------------|----------------------------|
 | Microsoft.ApiManagement/service | Igen |
 | Microsoft.Batch/batchAccounts| Igen|
-|Microsoft.Cache/redis| Igen
+|Microsoft.Cache/redis| Igen |
 |Microsoft.ClassicCompute/virtualMachines | Nem |
 |Microsoft.ClassicCompute/domainNames/slots/roles | Nem|
 |Microsoft.CognitiveServices/accounts | Nem |
@@ -160,7 +158,7 @@ Ha klasszikus metrikariasztásokat használatát még ma, és keres, ha metriká
 |Microsoft.DBforMySQL/servers| Igen|
 |Microsoft.DBforPostgreSQL/servers| Igen|
 |Microsoft.Devices/IotHubs | Nem|
-|Microsoft.DocumentDB/databaseAccounts| Nem|
+|Microsoft.DocumentDB/databaseAccounts| Igen|
 |Microsoft.EventHub/namespaces | Igen|
 |Microsoft.Logic/workflows | Igen|
 |Microsoft.Network/loadBalancers |Igen|
@@ -168,16 +166,16 @@ Ha klasszikus metrikariasztásokat használatát még ma, és keres, ha metriká
 |Microsoft.Network/applicationGateways| Igen|
 |Microsoft.Network/expressRouteCircuits| Igen|
 |Microsoft.Network/trafficManagerProfiles | Igen|
-|Microsoft.Search/searchServices | Nem|
-|Microsoft.ServiceBus/namespaces| Nem|
+|Microsoft.Search/searchServices | Igen|
+|Microsoft.ServiceBus/namespaces| Igen |
 |Microsoft.Storage/storageAccounts | Igen|
 |Microsoft.StreamAnalytics/streamingjobs| Igen|
 |Microsoft.TimeSeriesInsights/environments | Igen|
 |Microsoft. Web/serverfarms | Igen |
 |Microsoft. Webhelyek / (kivéve a functions) | Igen|
 |Microsoft. Web/hostingEnvironments/multiRolePools | Nem|
-|Microsoft. Web/hostingEnvironments/workerPools| Nem
-|Microsoft.SQL/Servers | Nem|
+|Microsoft. Web/hostingEnvironments/workerPools| Nem |
+|Microsoft.SQL/Servers | Nem |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Annak módosításához, törléséhez vagy kezeléséhez az Azure-ban a felügyeleti csoportok
-description: Ismerje meg, hogyan kell karbantartani és frissíteni a felügyeleti csoport hierarchiában.
+title: Módosítása, törlése és az Azure-ban – Azure Cégirányítási felügyeleti csoportok kezelése
+description: Útmutató megtekintése, kezelése, frissítése és a felügyeleti csoport hierarchia törlése.
 author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 10dfa9812a0546f3a8c57e28227851b6f72657fc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: dbfb6ecb9f29a82a8871922982a64dbefc338969
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582416"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342582"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Az erőforrások kezelése a felügyeleti csoportokkal
 
@@ -39,11 +39,11 @@ A felügyeleti csoport nevét a portal, PowerShell vagy az Azure CLI használat�
 
 1. Válassza ki a **csoport átnevezése** lehetőséget az oldal tetején.
 
-   ![Csoport átnevezése](./media/detail_action_small.png)
+   ![Csoport átnevezése lehetőség](./media/detail_action_small.png)
 
 1. Amikor megnyílik a menüben, adja meg az új nevet, amelyet szeretne megjeleníteni.
 
-   ![Csoport átnevezése](./media/rename_context.png)
+   ![Csoport átnevezése panel](./media/rename_context.png)
 
 1. Kattintson a **Mentés** gombra.
 
@@ -87,11 +87,11 @@ A felügyeleti csoport törléséhez az alábbi követelményeknek kell teljesü
 
    - Ha az ikon le van tiltva, az egér választó egérmutatót az ikon bemutatja, okát.
 
-   ![Csoport törlése](./media/delete.png)
+   ![Csoport beállítása törlése](./media/delete.png)
 
 1. Nincs egy ablak, amely megerősíti, hogy törli a felügyeleti csoport megnyílik.
 
-   ![Csoport törlése](./media/delete_confirm.png)
+   ![Megerősítés ablakban csoport törlése](./media/delete_confirm.png)
 
 1. Válassza ki **Igen**.
 
@@ -195,13 +195,13 @@ Milyen engedélyek megtekintéséhez, rendelkezik, válassza ki a felügyeleti c
 
 1. Válassza ki az előfizetés a sor végén található három pontra szeretné helyezni a listában.
 
-   ![Áthelyezés](./media/move_small.png)
+   ![Elem áthelyezése](./media/move_small.png)
 
 1. Válassza ki **áthelyezése**.
 
 1. A megnyíló menüben válassza a **fölérendelt felügyeleti csoport**.
 
-   ![Áthelyezés](./media/move_small_context.png)
+   ![Ablak áthelyezése](./media/move_small_context.png)
 
 1. Kattintson a **Mentés** gombra.
 
@@ -272,19 +272,19 @@ A frissítés paranccsal helyezze át a felügyeleti csoport az Azure CLI haszn�
 az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
 ```
 
-## <a name="audit-management-groups-using-activity-logs"></a>Tevékenységnaplók segítségével naplózási felügyeleti csoportok
+## <a name="audit-management-groups-using-activity-logs"></a>Felügyeleti csoportok naplózása tevékenységnaplókkal
 
-Felügyeleti csoportok követése az API-n keresztül, használja a [bérlői tevékenység Log API](/rest/api/monitor/tenantactivitylogs). Ez jelenleg nem használható a PowerShell, CLI vagy az Azure portal felügyeleti csoportok tevékenységek követése érdekében.
+Ha ezzel az API-val szeretné nyomon követni a felügyeleti csoportokat, használja a [Tenant Activity Log API-t](/rest/api/monitor/tenantactivitylogs). A felügyeleti csoportok tevékenységének nyomon követéséhez jelenleg nem használható a PowerShell, a parancssori felület vagy az Azure Portal.
 
-1. Bérlői rendszergazdaként az Azure AD-bérlő [jogosultságszintjének emelése](../../role-based-access-control/elevate-access-global-admin.md) majd olvasó szerepkör hozzárendelése a naplózási felhasználó a hatókörben `/providers/microsoft.insights/eventtypes/management`.
-1. A naplózási felhasználóként hívja a [bérlői tevékenység Log API](/rest/api/monitor/tenantactivitylogs) felügyeleti csoport tevékenységek megtekintéséhez. Erőforrás-szolgáltató szűrés szeretné **Microsoft.Management** felügyeleti csoport összes tevékenységhez.  Példa:
+1. Az Azure AD-bérlő bérlői rendszergazdájaként [emelheti a jogosultságszintet](../../role-based-access-control/elevate-access-global-admin.md), majd Olvasó szerepkört rendelhet a naplózást végző felhasználóhoz a `/providers/microsoft.insights/eventtypes/management` hatókörben.
+1. Naplózási felhasználóként meghívhatja a [Tenant Activity Log API-t](/rest/api/monitor/tenantactivitylogs) a felügyeleti csoportok tevékenységének megtekintésére. Minden felügyeleticsoport-tevékenységnél érdemes a **Microsoft.Management** erőforrás-szolgáltató szerint szűrni.  Példa:
 
 ```xml
 GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
 ```
 
 > [!NOTE]
-> Az API meghívásához kényelmes számlázását a parancssorból, próbálja meg [ARMClient](https://github.com/projectkudu/ARMClient).
+> Az API-t kényelmesen meghívhatja a parancssorból az [ARMClient](https://github.com/projectkudu/ARMClient) segítségével.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -292,6 +292,6 @@ A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
 - [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](create.md)
 - [Felügyeleti csoportok módosítása, törlése és kezelése](manage.md)
-- [Tekintse át a felügyeleti csoportok az Azure PowerShell modul](https://aka.ms/mgPSdocs)
-- [Tekintse át a felügyeleti csoportok REST API-ban](https://aka.ms/mgAPIdocs)
-- [Tekintse át a felügyeleti csoportok az Azure CLI-vel](https://aka.ms/mgclidoc)
+- [Felügyeleti csoportok áttekintése az Azure PowerShell Erőforrások moduljában](https://aka.ms/mgPSdocs)
+- [Felügyeleti csoportok áttekintése a REST API-ban](https://aka.ms/mgAPIdocs)
+- [Felügyeleti csoportok áttekintése az Azure CLI-ben](https://aka.ms/mgclidoc)

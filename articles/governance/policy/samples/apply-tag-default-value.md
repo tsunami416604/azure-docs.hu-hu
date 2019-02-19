@@ -1,6 +1,6 @@
 ---
 title: Minta – címke és az alapértelmezett címkeérték alkalmazása
-description: Ez a-mintaszabályzat hozzáfűz egy megadott címkenevet és -értéket, ha a címke nem található.
+description: A szabályzatdefiníció-minta fűzi hozzá egy megadott tag nevét és értékét, ha a címke nem biztosított.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: ef044d5ccba706ebc0c7102414cb1e2b42b537cb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 989d09b3e4b576fa21156ec71485c54422c643b7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242158"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338224"
 ---
-# <a name="apply-tag-and-its-default-value"></a>Címke és alapértelmezett címkeérték alkalmazása
+# <a name="sample---apply-tag-and-its-default-value"></a>Minta – címke és az alapértelmezett címkeérték alkalmazása
 
 Ez a szabályzat hozzáfűz egy megadott címkenevet és -értéket, ha a címke nem található. Az alkalmazandó címkenevet és -értéket Ön határozza meg.
 

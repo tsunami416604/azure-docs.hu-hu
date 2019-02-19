@@ -1,6 +1,6 @@
 ---
-title: Rbac-RÓL és a REST API – Azure-hozzáférés kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és alkalmazások, a szerepköralapú hozzáférés-vezérlés (RBAC) és a REST API használatával hozzáférését. Ez magában foglalja a listázási hozzáférés, hozzáférést biztosít, és távolítsa el a hozzáférést.
+title: Az RBAC és a REST API – Azure Azure resoruces való hozzáférés kezelése |} A Microsoft Docs
+description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és szerepköralapú hozzáférés-vezérlés (RBAC) és a REST API-t használó alkalmazások Azure-erőforrásokhoz való hozzáférését. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,20 +15,20 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 859a410a4ff9204e8e52fbd2cc3b38823f4bb830
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: c2ef9b0070cc9ac190b773f023ffc18d1b251a41
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435218"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338410"
 ---
-# <a name="manage-access-using-rbac-and-the-rest-api"></a>Rbac-RÓL és a REST API-hozzáférés kezelése
+# <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Rbac-RÓL és a REST API használatával Azure-erőforrásokhoz való hozzáférés kezelése
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok és alkalmazások rbac-RÓL és a REST API használatával hozzáférését.
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok és alkalmazások rbac-RÓL és a REST API használatával hozzáférését.
 
 ## <a name="list-access"></a>Hozzáférések felsorolása
 
-Az RBAC lista hozzáférés listázása a szerepkör-hozzárendeléseket. Szerepkör-hozzárendelések felsorolásához használja következők egyikét a [szerepkör-hozzárendelések – lista](/rest/api/authorization/roleassignments/list) REST API-k. Az eredmények pontosításához használjon, megadhatja a hatókör és a egy nem kötelező szűrő. Az API meghívása, hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/read` művelet a megadott hatókörben. Több [beépített szerepkörök](built-in-roles.md) , amelyekhez hozzáférést ezt a műveletet.
+Az RBAC lista hozzáférés listázása a szerepkör-hozzárendeléseket. Szerepkör-hozzárendelések felsorolásához használja következők egyikét a [szerepkör-hozzárendelések – lista](/rest/api/authorization/roleassignments/list) REST API-k. Az eredmények pontosításához használjon, megadhatja a hatókör és a egy nem kötelező szűrő. Az API meghívása, hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/read` művelet a megadott hatókörben. Több [beépített szerepkörök az Azure-erőforrások](built-in-roles.md) , amelyekhez hozzáférést ezt a műveletet.
 
 1. Indítsa el a következő kérelmet:
 
@@ -38,7 +38,7 @@ Az RBAC lista hozzáférés listázása a szerepkör-hozzárendeléseket. Szerep
 
 1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné a szerepkör-hozzárendelések lista.
 
-    | Hatókör | Típus |
+    | Hatókör | Typo |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
@@ -77,7 +77,7 @@ Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létreh
     
 1. Cserélje le az URI-t, belül *{hatókör}* a hatókörben, a szerepkör-hozzárendelésre vonatkozó.
 
-    | Hatókör | Típus |
+    | Hatókör | Typo |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
@@ -105,7 +105,7 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 
 1. Belül az URI-t, cserélje le a *{hatókör}* a hatókörben, a szerepkör-hozzárendelés eltávolításához.
 
-    | Hatókör | Típus |
+    | Hatókör | Typo |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
@@ -116,5 +116,5 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 ## <a name="next-steps"></a>További lépések
 
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](../azure-resource-manager/resource-group-template-deploy-rest.md)
-- [Az Azure REST API-referencia](/rest/api/azure/)
-- [A REST API-val egyéni szerepkörök létrehozása](custom-roles-rest.md)
+- [Azure REST API-referencia](/rest/api/azure/)
+- [Az Azure-erőforrásokhoz a REST API-val egyéni szerepkörök létrehozása](custom-roles-rest.md)

@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd894b214366302af4651b5944e250086be14beb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bc08710909252c9bcade6177a105684128acc5bf
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183836"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339023"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Gyakori kérdések és (frissítve) az Azure Active Directory identity protection szolgáltatással kapcsolatos ismert problémák
 
@@ -33,6 +33,8 @@ ms.locfileid: "56183836"
 
 
 **Zárja be a felhasználói kockázat** (frissítve) Identity Protection úgy állítja be az aktor a felhasználó kockázati előzmények az Identity Protection (frissítve) való **\<a rendszergazda nevű felhasználóhoz tartozó panelt mutató hivatkozás\>**.
+
+A jelenlegi ismert probléma késéseket okoz a felhasználói kockázat elbocsátása folyamatban van. Ha rendelkezik egy "felhasználói kockázati házirend", ez a szabályzat alkalmazása az elbocsátott felhasználó percen belül elkészül, kattintson a "Elvetés felhasználói kockázat" le fog állni. Azonban vannak ismert késéseket és az "kockázati állapotot" elbocsátott felhasználó felhasználói. Áthidaló megoldásként frissítése a legújabb "Kockázat állapota" felhasználó megtekintéséhez a böngészőben szintjén az oldal.
 
 
 ## <a name="risky-users-report"></a>Kockázatos felhasználók jelentés

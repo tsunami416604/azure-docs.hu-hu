@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 68a652fe16162d96d4ec07e6690f10f0bd34f2c0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4dc68127f2d19426c372be027634bb2563dbfa6c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980873"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341657"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Az Azure Policy használatával korlátozhatja a bővítmények telepítése Windows virtuális gépeken
 
@@ -30,7 +30,7 @@ Ebben az oktatóanyagban az Azure PowerShell belül a Cloud Shell, amely folyama
 
 ## <a name="create-a-rules-file"></a>Hozzon létre egy szabályok fájlt
 
-Korlátozhatja a telepíthető bővítmények, rendelkeznie kell egy [szabály](/azure/azure-policy/policy-definition#policy-rule) azonosíthatja a bővítményt a logika biztosít.
+Korlátozhatja a telepíthető bővítmények, rendelkeznie kell egy [szabály](../../governance/policy/concepts/definition-structure.md#policy-rule) azonosíthatja a bővítményt a logika biztosít.
 
 Ez a példa bemutatja, hogyan szabályok fájl létrehozásával az Azure Cloud Shellben "Microsoft.Compute" által közzétett bővítmények megtagadása, de ha a PowerShell helyileg dolgozik, is hozzon létre egy helyi fájlt és az elérési út ($home/clouddrive) az elérési útját a helyi fájlt a gépén.
 
@@ -70,7 +70,7 @@ Amikor végzett, nyomja le az **Ctrl + O** , majd **Enter** szeretné menteni a 
 
 ## <a name="create-a-parameters-file"></a>A paraméterfájl létrehozása
 
-Is szükség van egy [paraméterek](/azure/azure-policy/policy-definition#parameters) fájlt, amely számára, hogy az blokkolja a kiterjesztések listája megadásának struktúrát hoz létre. 
+Is szükség van egy [paraméterek](../../governance/policy/concepts/definition-structure.md#parameters) fájlt, amely számára, hogy az blokkolja a kiterjesztések listája megadásának struktúrát hoz létre. 
 
 Ez a példa bemutatja, hogyan hozhat létre olyan paramétereket tartalmazó fájlt a Cloud Shell-beli virtuális gépek, de ha a PowerShell helyileg dolgozik, is hozzon létre egy helyi fájlt és az elérési út ($home/clouddrive) az a számítógépen a helyi fájl elérési útját.
 
@@ -166,4 +166,4 @@ Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows
 ```
     
 ## <a name="next-steps"></a>További lépések
-További információkért lásd: [Azure Policy](../../azure-policy/azure-policy-introduction.md).
+További információkért lásd: [Azure Policy](../../governance/policy/overview.md).

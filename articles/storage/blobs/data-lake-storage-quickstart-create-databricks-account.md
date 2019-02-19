@@ -7,13 +7,13 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/24/2019
-ms.openlocfilehash: 0ec682ea852f3c6da6248f3c16b539725ca18c0f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/15/2019
+ms.openlocfilehash: 83d1b4737e15239532f8b751d2018d5e6f783562
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895805"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342762"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Gyors útmutató: Adatok elemzése az Azure Data Lake Storage Gen2 Azure Databricks használatával
 
@@ -25,27 +25,17 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Data Lake Storage Gen2-kompatibilis tárfiók létrehozása](data-lake-storage-quickstart-create-account.md)
+* Hozzon létre egy Data Lake Gen2 tárfiókot. Lásd: [a rövid útmutató: Az Azure Data Lake Storage Gen2-storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
 
-<a id="config"/>
+  Illessze be a tárfiók nevét egy szövegfájlba. Szüksége lesz rá hamarosan.
 
-## <a name="get-the-name-of-your-storage-account"></a>A tárfiók nevét
+*  Hozzon létre egy egyszerű szolgáltatást. Lásd: [hogyan: A portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-A tárfiók nevének lekérése az Azure Portalon, válassza ki a **minden szolgáltatás** és a kifejezést a szűrő *tárolási*. Ezután válassza ki **tárfiókok** , és keresse meg a storage-fiókjában.
+   Van néhány adott tudnivaló, mivel ebben a cikkben hajtsa végre a lépéseket kell.
 
-Illessze be ezt a nevet egy szövegfájlba. Szüksége lesz rá hamarosan.
+   :heavy_check_mark: A lépések végrehajtásakor a [alkalmazások szerepkörhöz rendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszt a cikk, ügyeljen arra, hogy rendelje hozzá a **Blob Storage-közreműködői szerepkör** az egyszerű szolgáltatás a Data Lake-hatóköre Gen2 tárhelyszolgáltatás fiókja.
 
-<a id="service-principal"/>
-
-## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
-
-Ebben a témakörben található útmutatást követve hozzon létre egy egyszerű szolgáltatást: [Útmutató: A portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-Van néhány adott tudnivaló, mivel ebben a cikkben hajtsa végre a lépéseket kell.
-
-:heavy_check_mark: A lépések végrehajtásakor a [alkalmazások szerepkörhöz rendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszt a cikk, ügyeljen arra, hogy az alkalmazás hozzárendelése a **Blob Storage-közreműködői szerepkör**.
-
-:heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
+   :heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
@@ -126,11 +116,11 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
- 
+
     > [!NOTE]
     > A kódblokk közvetlenül hozzáfér a Data Lake Gen2 végpont OAuth használatával, de más módon való csatlakozáshoz a Data Lake Storage Gen2-fiókot a Databricks-munkaterület. Például sikerült csatlakoztathatja a fájlrendszert az OAuth használatával, vagy egy közvetlen hozzáférés használata a megosztott kulcsot. <br>Ezek a módszerek példák, olvassa el a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) a cikk az Azure Databricks webhelyén.
 
-5. A kódblokk, cserélje le a `storage-account-name`, `application-id`, `authentication-id`, és `tenant-id` lépéseinek végrehajtását összegyűjtött értékek a kódblokk a helyőrző értékeket az [a tárfiók nevét ](#config) és [egyszerű szolgáltatás létrehozása](#service-principal) Ez a cikk szakaszainak.  Állítsa be a `file-system-name` nevét bármilyen, a helyőrző értékét szeretné adni a fájlrendszerben.
+5. A kódblokk, cserélje le a `storage-account-name`, `application-id`, `authentication-id`, és `tenant-id` helyőrző értékeket az egyszerű szolgáltatás létrehozása során gyűjtött értékek a kód blokk. Állítsa be a `file-system-name` nevét bármilyen, a helyőrző értékét szeretné adni a fájlrendszerben.
 
 6. Nyomja le az **SHIFT + ENTER** kulcsok a kód futtatásához a blokk.
 

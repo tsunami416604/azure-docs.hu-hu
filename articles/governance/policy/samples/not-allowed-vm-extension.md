@@ -1,6 +1,6 @@
 ---
 title: Minta – nem engedélyezett a Virtuálisgép-bővítmények
-description: Ez a mintaszabályzat megtiltja a megadott bővítmények használatát.
+description: A szabályzatdefiníció-minta megakadályozza, hogy a megadott-bővítményt a virtuális gépek használatát.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 3c92acb72603812797b77a378cdd747147b942eb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c600b6d91260b892f9d2c09a21b14fe1b3f38886
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245337"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341438"
 ---
-# <a name="not-allowed-vm-extensions"></a>Tiltott virtuálisgép-bővítmények
+# <a name="sample---not-allowed-vm-extensions"></a>Minta – nem engedélyezett a Virtuálisgép-bővítmények
 
 Megtiltja a megadott bővítmények használatát. Meg kell adnia egy tiltott bővítménytípusokat tartalmazó tömböt.
 

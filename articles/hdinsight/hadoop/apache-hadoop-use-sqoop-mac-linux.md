@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: cf4895220c19e029952d5bf76aa9baa41250f692
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 02/15/2019
+ms.openlocfilehash: 2f16ba3fde73705d431ba97d65059b178020bb62
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309344"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340297"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Hadoop on HDInsight és az SQL Database közötti adatok importálása és exportálása az Apache Sqoop használatával
 
@@ -105,7 +105,7 @@ GO
     Az adatok a mezők tabulátorkarakter el egymástól, és a sorokat egy új sor karakter megszűnik.
 
     > [!IMPORTANT]  
-    > A `wasb:///` elérési út működik együtt az Azure Storage, az alapértelmezett fürttárolóhoz használó fürtök. Az Azure Data Lake Storage Gen1 használó fürtök esetén használjon `adl:///` helyette.
+    > A `wasb:///` elérési út működik együtt az Azure Storage, az alapértelmezett fürttárolóhoz használó fürtök. Az Azure Data Lake Storage Gen2 használó fürtök esetén használjon `abfs:///` helyette. Az Azure Data Lake Storage Gen1 használó fürtök esetén használjon `adl:///` helyette.
 
 2. Az importálás befejezése után használja az új címtárban adatok listája a következő parancsot:
 

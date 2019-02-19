@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: a9e5be3c1dcbf4461bd00b2b1ce530aa16e441ef
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c2cc1b5829f3bb530c01e2bfc3538006bb8663cb
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962128"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339311"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
@@ -40,7 +40,7 @@ Az Azure SQL Database felügyelt példánya is telepíthető a két hardver gene
 | Compute | 8, 16, 24 virtuális mag | 8, 16, 24, 32, 40, 64, 80 virtuális magok |
 | Memory (Memória) | 7 GB / virtuális mag | 5.1 GB / virtuális mag |
 | Memóriabeli OLTP memória | 3 GB / virtuális mag | 2.6-os GB / virtuális mag |
-| Maximális tárterület (általános célú) |  8 TB | 1 TB |
+| Maximális tárterület (általános célú) |  8 TB | 8 TB |
 | Maximális tárterület (üzletileg kritikus) | 1 TB | 1 TB-os, 2 TB vagy 4 TB-os attól függően, a magok számát |
 
 ### <a name="service-tier-characteristics"></a>Szolgáltatási szint tulajdonságok

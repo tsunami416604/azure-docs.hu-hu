@@ -12,44 +12,52 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/15/2018
+ms.date: 02/15/2019
 ms.author: aljo
-ms.openlocfilehash: 691995d0aa426766caed2f5e2458399b32332c9d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 15561969e27512c4882eccc10f75aa932bcf23df
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903502"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338988"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Az Azure Active Directory beállítása az ügyfél-hitelesítéshez
 
-Az Azure-ban futó fürtök az Azure Active Directory (Azure AD) ajánlott felügyeleti végpontok való biztonságos hozzáférést.  Ez a cikk bemutatja, hogyan és a Service Fabric-fürt-ügyfelek hitelesítésére az Azure AD beállítása, amely kell elvégezni, mielőtt [a fürt létrehozása](service-fabric-cluster-creation-via-arm.md).  Azure ad-ben alkalmazásokhoz való felhasználói hozzáférés kezelése lehetővé teszi a szervezetek (más néven bérlők). Alkalmazások vannak osztva a webalapú bejelentkezési felhasználói felület és a egy natív ügyfél felhasználói élményét. Ez a cikk feltételezzük, hogy már létrehozott egy bérlőt. Ha nem rendelkezik, először olvassa el [Azure Active Directory-bérlő beszerzése][active-directory-howto-tenant].
+Az Azure-ban futó fürtök az Azure Active Directory (Azure AD) ajánlott felügyeleti végpontok való biztonságos hozzáférést.  Ez a cikk bemutatja, hogyan és a Service Fabric-fürt-ügyfelek hitelesítésére az Azure AD beállítása, amely kell elvégezni, mielőtt [a fürt létrehozása](service-fabric-cluster-creation-via-arm.md).  Azure ad-ben alkalmazásokhoz való felhasználói hozzáférés kezelése lehetővé teszi a szervezetek (más néven bérlők). Alkalmazások vannak osztva a webalapú bejelentkezési felhasználói felület és a egy natív ügyfél felhasználói élményét. 
 
-## <a name="create-azure-ad-applications"></a>Az Azure AD-alkalmazások létrehozása
 Service Fabric-fürt kínál a különböző belépési pontok annak felügyeleti funkciójához, beleértve a webalapú [Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] és [Visual Studio] [ service-fabric-manage-application-in-visual-studio]. Ennek eredményeképpen hoz létre, ki férhet hozzá a fürt két Azure AD-alkalmazások: egy webalkalmazás és a egy natív alkalmazást.  Az alkalmazások létrehozása után felhasználók hozzárendelése csak olvasható, és rendszergazdai szerepkörök.
-
-Egyes lépéseit az Azure AD konfigurálása a Service Fabric-fürt leegyszerűsítése hoztunk létre egy Windows PowerShell-parancsprogramok halmaza.
 
 > [!NOTE]
 > A következő lépéseket kell elvégeznie, a fürt létrehozása előtt. A parancsfájlok várhatóan a fürt nevét és a végpontok, mert az értékeket meg kell tervezni, és nem az, hogy már létrehozott értékeket.
 
+## <a name="prerequisites"></a>Előfeltételek
+Ez a cikk feltételezzük, hogy már létrehozott egy bérlőt. Ha nem rendelkezik, először olvassa el [Azure Active Directory-bérlő beszerzése][active-directory-howto-tenant].
+
+Egyes lépéseit az Azure AD konfigurálása a Service Fabric-fürt leegyszerűsítése hoztunk létre egy Windows PowerShell-parancsprogramok halmaza.
+
 1. [Töltse le a parancsfájlok](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) a számítógépre.
 2. Kattintson a jobb gombbal a zip-fájlt, jelölje be **tulajdonságok**, jelölje be a **feloldása** jelölőnégyzetet, majd kattintson a **alkalmaz**.
 3. Csomagolja ki a tömörített fájlt.
-4. Futtatás `SetupApplications.ps1`, és adja meg a TenantId ClusterName és WebApplicationReplyUrl paraméterekként. Példa:
+
+## <a name="create-azure-ad-applications-and-asssign-users-to-roles"></a>Az Azure AD-alkalmazások és a felhasználók szerepkörökhöz asssign létrehozása
+Hozzon létre két Azure AD-alkalmazást a fürthöz való hozzáférés szabályozásához: egy webalkalmazás és a egy natív alkalmazást. Az alkalmazások, amelyek a fürt létrehozását követően rendelje hozzá a felhasználókat, hogy a [szerepkörök a Service Fabric által támogatott](service-fabric-cluster-security-roles.md): csak olvasható és a rendszergazdával.
+
+Futtatás `SetupApplications.ps1`, és meg paraméterekként a bérlő azonosítója, a fürt neve és a webes alkalmazás válasz URL-cím.  Felhasználónevek és jelszavak, a felhasználók számára is megadhatja.  Példa:
 
 ```PowerShell
-.\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
+$Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
+.\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestUser' -Password 'P@ssword!123'
+.\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestAdmin' -Password 'P@ssword!123' -IsAdmin
 ```
 
 > [!NOTE]
-> Az országos felhők (Azure Government, Azure China, az Azure Germany), meg kell adnia a `-Location` paraméter.
+> Az országos felhők (például az Azure Government, Azure China esetén az Azure Germany), meg kell adnia a `-Location` paraméter.
 
-A Bérlőazonosító találhatja meg a PowerShell-parancs végrehajtása `Get-AzureSubscription`. Ez a parancs végrehajtása a TenantId minden előfizetés jeleníti meg.
+Annak a *TenantId* a PowerShell-parancs végrehajtásával `Get-AzureSubscription`. Ez a parancs végrehajtása a TenantId minden előfizetés jeleníti meg.
 
-Az Azure AD-alkalmazások, a parancsfájl által létrehozott előtag ClusterName szolgál. Ez nem pontosan egyeznie kell a tényleges fürt neve. Célja, hogy csak az, hogy egyszerűbb legyen az Azure AD-összetevők leképezése, amelyet éppen használ a Service Fabric-fürthöz.
+*ClusterName* az Azure AD-alkalmazások, a parancsfájl által létrehozott előtagot használja. Ez nem pontosan egyeznie kell a tényleges fürt neve. Célja, hogy csak az, hogy egyszerűbb legyen az Azure AD-összetevők leképezése, amelyet éppen használ a Service Fabric-fürthöz.
 
-WebApplicationReplyUrl az alapértelmezett végpont, amely az Azure AD a felhasználóknak ad vissza, miután a bejelentkezés befejezéséhez. Állítsa be ezt a végpontot a Service Fabric Explorert a fürtben, amely alapértelmezés szerint az átemelt:
+*WebApplicationReplyUrl* van az alapértelmezett végpont, amely az Azure AD a felhasználóknak ad vissza, miután a bejelentkezés befejezéséhez. Állítsa be ezt a végpontot a Service Fabric Explorert a fürtben, amely alapértelmezés szerint az átemelt:
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
@@ -58,7 +66,7 @@ Jelentkezzen be az Azure AD-bérlői rendszergazdai jogosultságokkal rendelkez�
    * *ClusterName*\_fürt
    * *ClusterName*\_ügyfél
 
-A parancsfájl a JSON az Azure Resource Manager-sablon által igényelt, a fürt létrehozásakor a következő szakaszban, így célszerű, hogy ne zárja be a PowerShell-ablakot jelenít meg.
+A parancsfájl által az Azure Resource Manager-sablon szükséges JSON-fájl nyomtatása során, [a fürt létrehozása](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access), így érdemes hagyja megnyitva a PowerShell-ablakban.
 
 ```json
 "azureActiveDirectory": {
@@ -67,31 +75,6 @@ A parancsfájl a JSON az Azure Resource Manager-sablon által igényelt, a fürt
   "clientApplication":"<guid>"
 },
 ```
-
-<a name="assign-roles"></a>
-
-## <a name="assign-users-to-roles"></a>Felhasználók szerepkörökhöz rendelése
-Az alkalmazások, amelyek a fürt létrehozása után a felhasználók hozzárendelése a Service Fabric által támogatott szerepkörök: csak olvasható és a rendszergazdával. A szerepkörök használatával rendelhet a [az Azure portal][azure-portal].
-
-1. Az Azure Portalon válassza ki a bérlő, a jobb felső sarokban.
-
-    ![Válassza ki a bérlő gomb][select-tenant-button]
-2. Válassza ki **Azure Active Directory** a bal oldali lapon, és a "nagyvállalati alkalmazások" válassza.
-3. Válassza ki az "Összes alkalmazás", majd keresse meg és válassza ki a webalkalmazás, melynek neve például `myTestCluster_Cluster`.
-4. Kattintson a **felhasználók és csoportok** fülre.
-
-    ![Felhasználók és csoportok lapon][users-and-groups-tab]
-5. Kattintson a **felhasználó hozzáadása** az új oldalon gombra, válassza ki a felhasználó és a szerepkör hozzárendelése, és kattintson a **kiválasztása** gombra a lap alján.
-
-    ![Felhasználók hozzárendelése szerepkörök oldal][assign-users-to-roles-page]
-6. Kattintson a **hozzárendelése** gombra a lap alján.
-
-    ![Adja hozzá a megerősítési hozzárendelés][assign-users-to-roles-confirm]
-
-> [!NOTE]
-> További információ a Service Fabric-szerepkörök: [szerepköralapú hozzáférés-vezérlés a Service Fabric-ügyfelek](service-fabric-cluster-security-roles.md).
->
->
 
 ## <a name="troubleshooting-help-in-setting-up-azure-active-directory"></a>Elhárításában nyújtanak segítséget az Azure Active Directory beállítása
 Az Azure AD beállításához, és használja azt kihívást jelenthet, így az alábbiakban további információt a mi mindent a hibaelhárításhoz.
@@ -159,10 +142,6 @@ Miután beállította az Azure Active Directory-alkalmazások és a felhasznál�
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
 
 <!-- Images -->
-[select-tenant-button]: ./media/service-fabric-cluster-creation-setup-aad/select-tenant-button.png
-[users-and-groups-tab]: ./media/service-fabric-cluster-creation-setup-aad/users-and-groups-tab.png
-[assign-users-to-roles-page]: ./media/service-fabric-cluster-creation-setup-aad/assign-users-to-roles-page.png
-[assign-users-to-roles-confirm]: ./media/service-fabric-cluster-creation-setup-aad/assign-users-to-roles-confirm.png
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-setup-aad/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-setup-aad/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-setup-aad/web-application-reply-url.png

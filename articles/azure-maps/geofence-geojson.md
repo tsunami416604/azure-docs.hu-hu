@@ -3,21 +3,21 @@ title: Az Azure Maps a Geokerítésen GeoJSON adatformátum |} A Microsoft Docs
 description: További tudnivalók az Azure Maps a Geokerítésen GeoJSON adatformátum
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/08/2018
+ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: aa39661c8ecc4b594478def7d0cc9be3006294c4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5a654b7fdae341da62d94499830a5e1202dff921
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008250"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339634"
 ---
 # <a name="geofencing-geojson-data"></a>A Geokerítések GeoJSON-adatok
 
-Az Azure Maps [első Geokerítésen](https://docs.microsoft.com/rest/api/map/spatial/getgeofencepreview) és [POST Geokerítésen](https://docs.microsoft.com/rest/api/map/spatial/postgeofencepreview) az API-kkal könnyen elérhető viszonyítva megadott geokerítésen koordináta vagy kerítések készletét lekéréséhez. Ez a cikk részletesen, hogyan készíti elő az a geokerítésen adatokat, amelyek az Azure Maps szolgáltatással és a bejegyzés API is használható.
+Az Azure Maps [első Geokerítésen](https://docs.microsoft.com/rest/api/maps/spatial/getgeofencepreview) és [POST Geokerítésen](https://docs.microsoft.com/rest/api/maps/spatial/postgeofencepreview) az API-kkal könnyen elérhető viszonyítva megadott geokerítésen koordináta vagy kerítések készletét lekéréséhez. Ez a cikk részletesen, hogyan készíti elő az a geokerítésen adatokat, amelyek az Azure Maps szolgáltatással és a bejegyzés API is használható.
 
 Az adatok a geokerítésen vagy geokerítések készletét képviseli `Feature` objektum és `FeatureCollection` objektumának `GeoJSON` formátum, amelyet a [rfc7946](https://tools.ietf.org/html/rfc7946). Amellett, hogy:
 

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: a58c61287cfc7828fe0dc15beda9d54f02a694c3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4a3da9e2ad4d5ab83c1e906b3ab43540e819b48c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814146"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342001"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Használja a Java UDF-ben az Apache Hive a HDInsight
 
@@ -213,7 +213,7 @@ Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF
     ```
 
     > [!NOTE]
-    > Ez a példa feltételezi, hogy a fürt alapértelmezett tárolója az Azure Storage. Ha a fürt a Data Lake Storage; ezek helyett használja, módosítsa a `wasb:///` értéket a következőre `adl:///`.
+    > Ez a példa feltételezi, hogy a fürt alapértelmezett tárolója az Azure Storage. Ha a fürt a Data Lake Storage Gen2; ezek helyett használja, módosítsa a `wasb:///` értéket a következőre `abfs:///`. Ha a fürt a Data Lake Storage Gen1 használ, módosítsa a `wasb:///` értéket a következőre `adl:///`.
 
 3. Az UDF segítségével kisbetűs karakterláncokat tábla lekért értékek.
 

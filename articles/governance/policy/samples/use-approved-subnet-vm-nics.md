@@ -1,6 +1,6 @@
 ---
 title: Minta - használatra jóváhagyott alhálózatot a virtuális gép hálózati adapterek
-description: Ez a mintaszabályzat megköveteli egy jóváhagyott alhálózat használatát a hálózati adaptereken.
+description: A szabályzatdefiníció-minta megköveteli, hogy a hálózati adapterek egy jóváhagyott alhálózatot használja.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: d4f27b98581f7ea2adbbb69d6041e6ad190cc0e7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 854dbb6d3743c0e8af8a267a425286624453b688
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242736"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341113"
 ---
-# <a name="use-approved-subnet-for-vm-network-interfaces"></a>Jóváhagyott alhálózat megkövetelése a virtuális gépek hálózati adapterén
+# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Minta - használatra jóváhagyott alhálózatot a virtuális gép hálózati adapterek
 
 Ez a szabályzat megköveteli egy jóváhagyott alhálózat használatát a hálózati adaptereken. A jóváhagyott alhálózat azonosítóját Ön határozza meg.
 

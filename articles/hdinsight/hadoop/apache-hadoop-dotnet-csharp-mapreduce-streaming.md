@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/27/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 02821abd8769a89fc1c7ad9d0dd5cf4e5a245e5f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 130ca849b39336637f53b32043874b5d037a8f0d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435310"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342923"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# streamelési HDInsight az Apache hadoop MapReduce-
 
@@ -25,7 +25,7 @@ Ismerje meg, hogyan használhatja a C# MapReduce megoldás létrehozása a HDIns
 
 Az Apache Hadoop streamelési egy segédprogram, amely lehetővé teszi, hogy egy parancsfájl vagy végrehajtható fájl használatával MapReduce-feladatok futtatásához. Ebben a példában a .NET szolgál a teljesítményleképező és nyomáscsökkentő word-count megoldások megvalósításához.
 
-## <a name="net-on-hdinsight"></a>A HDInsight .NET
+## <a name="net-on-hdinsight"></a>.NET on HDInsight
 
 __Linux-alapú HDInsight__ -fürtök használata [Mono (https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 megtalálható a HDInsight 3.6-os verzióját. További információ a Mono HDInsight mellékelt verzióját, lásd: [HDInsight összetevő verziók](../hdinsight-component-versioning.md). Mono egy adott verzióját használja, tekintse meg a [telepítés vagy frissítés Mono](../hdinsight-hadoop-install-mono.md) dokumentumot.
 
@@ -175,7 +175,13 @@ Miután létrehozta az alkalmazást, építhet ki, hogy a `/bin/Debug/reducer.ex
 
 2. A MapReduce feladat indításához használja a következő parancsok egyikét:
 
-    * Ha használ __Data Lake Storage__ az alapértelmezett tároló:
+    * Ha használ __Data Lake Storage Gen2__ az alapértelmezett tároló:
+
+        ```bash
+        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+        ```
+
+    * Ha használ __Data Lake Storage Gen1__ az alapértelmezett tároló:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
@@ -190,7 +196,7 @@ Miután létrehozta az alkalmazást, építhet ki, hogy a `/bin/Debug/reducer.ex
     Az alábbi lista ismerteti, hogy minden paraméter leírása:
 
     * `hadoop-streaming.jar`: A jar-fájlt, amely tartalmazza a folyamatos átviteli MapReduce-szolgáltatásokat.
-    * `-files`: Hozzáadja a `mapper.exe` és `reducer.exe` fájlokat a feladatot. A `adl:///` vagy `wasb:///` előtt minden egyes fájl elérési útját a fürt alapértelmezett tárolója gyökerében.
+    * `-files`: Hozzáadja a `mapper.exe` és `reducer.exe` fájlokat a feladatot. A `abfs:///`,`adl:///` vagy `wasb:///` előtt minden egyes fájl elérési útját a fürt alapértelmezett tárolója gyökerében.
     * `-mapper`: Itt adhatja meg, melyik fájl leképezőjét valósítja meg.
     * `-reducer`: Itt adhatja meg, melyik fájlt a nyomáscsökkentő valósítja meg.
     * `-input`: A bemeneti adatok.

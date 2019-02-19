@@ -1,6 +1,6 @@
 ---
 title: Minta - címke-egyeztetési minta kényszerítése
-description: Ez a mintaszabályzat a címke értékéhez tartozó mintával való megegyezést követeli meg az erőforrásoktól.
+description: A szabályzatdefiníció-minta megköveteli, hogy az erőforrások megfelelnek az egyeztetési minta címke értéke.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f3e4246141a9d9de1a7d6451422e1e55a4c3545f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 9510bb147a8eb9687e074191e8fcc404c847dc0a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244419"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342660"
 ---
-# <a name="enforce-tag-match-pattern-for-tag-values"></a>Címkék mintaegyezésének kényszerítése címkeértékekhez
+# <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>Minta – kényszerítése a címkeértékeket címke-egyeztetési minta
 
 A mintával való megegyezést követeli meg a címkék értékétől. Az engedélyezett mintát a szabályzatban adhatja meg.
 

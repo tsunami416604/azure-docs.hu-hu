@@ -1,7 +1,7 @@
 ---
 title: Beszédszolgáltatások ingyenes kipróbálása
 titleSuffix: Azure Cognitive Services
-description: A Speech service használatbavétele egyszerű és megfizethető. Egy 30 napos ingyenes próbaverzió lehetővé teszi, hogy Ön mit a szolgáltatás tegye és eldönteni, hogy ez az alkalmazás igényeinek megfelelő felderítése.
+description: A Speech Services használatának első lépései egyszerűen és megfizethető. Egy 30 napos ingyenes próbaverzió lehetővé teszi, hogy Ön mit a szolgáltatás tegye és eldönteni, hogy ez az alkalmazás igényeinek megfelelő felderítése.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 203cb07c9450a590b45caa66092fe0199d985058
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d48ad97d50c413c4530e54f2538fda9cd0e31b8f
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978153"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342677"
 ---
-# <a name="try-the-speech-service-for-free"></a>Próbálja ki ingyenesen a Beszédszolgáltatást
+# <a name="try-speech-services-for-free"></a>Beszédszolgáltatások ingyenes kipróbálása
 
-A Speech service használatbavétele egyszerű és megfizethető. Egy 30 napos ingyenes próbaverzió lehetővé teszi, hogy Ön mit a szolgáltatás tegye és eldönteni, hogy ez az alkalmazás igényeinek megfelelő felderítése.
+A Speech Services használatának első lépései egyszerűen és megfizethető. Egy 30 napos ingyenes próbaverzió lehetővé teszi, hogy Ön mit a szolgáltatás tegye és eldönteni, hogy ez az alkalmazás igényeinek megfelelő felderítése.
 
-Ha több időre van szüksége, iratkozzon fel a Microsoft Azure-fiók – együttműködik a beszédfelismerési szolgáltatás fizetős legfeljebb 30 napig felé alkalmazható szolgáltatási jóváírás a 200 USD.
+Ha több időre van szüksége, iratkozzon fel a Microsoft Azure-fiók – együttműködik a 200 USD szolgáltatási kredit legfeljebb 30 napig beszédszolgáltatások fizetős felé alkalmazható.
 
-Végül a Speech service kínál egy ingyenes, az alacsony terheltségű szint, amely lehetővé teszi az alkalmazások fejlesztéséhez. Ez az ingyenes előfizetés még a szolgáltatási jóváírás lejárta után is megtarthatja.
+Végül a beszédszolgáltatások kínál egy ingyenes, az alacsony terheltségű szint, amely lehetővé teszi az alkalmazások fejlesztéséhez. Ez az ingyenes előfizetés még a szolgáltatási jóváírás lejárta után is megtarthatja.
 
 ## <a name="free-trial"></a>Ingyenes próbaidőszak
 
@@ -63,11 +63,11 @@ Regisztráljon egy új Azure-fiókkal, keresse fel a [oldala az Azure-előfizet�
 
 Regisztrálhat egy ingyenes Microsoft-fiókot a [Microsoft fiókportál](https://account.microsoft.com/account). Első lépésként kattintson **Bejelentkezés Microsoft-fiókkal** és, ha a rendszer kéri, hogy jelentkezzen be, kattintson a **hozzon létre egyet.** A lépésekkel hozhat létre, és ellenőrizze az új Microsoft-fiókjával.
 
-Miután létrehozta az Azure-fiókjával, kövesse a következő szakaszban a Speech service-előfizetés indítása.
+Miután létrehozta az Azure-fiókjával, kövesse a következő szakaszban a beszédszolgáltatások előfizetés indítása.
 
 ## <a name="create-a-speech-resource-in-azure"></a>Beszéd erőforrás létrehozása az Azure-ban
 
-A beszédfelismerési szolgáltatás-erőforrás (ingyenes vagy fizetős szint) hozzáadása az Azure-fiókjával:
+Az Azure-fiókjával (ingyenes vagy fizetős szint) beszédszolgáltatások erőforrás hozzáadása:
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) Microsoft-fiókjával.
 
@@ -89,7 +89,7 @@ A beszédfelismerési szolgáltatás-erőforrás (ingyenes vagy fizetős szint) 
 
     * Az új erőforrás neve. A név segítségével megkülönböztetésére, amelyek ugyanazt a szolgáltatást több előfizetést.
     * Válassza ki az Azure-előfizetést, amelyhez az új erőforrás a határozza meg, hogy a díjak számlázása van társítva.
-    * Válassza ki a régiót, ahol fogja használni az erőforrás. A beszédfelismerési szolgáltatás jelenleg elérhető az USA nyugati RÉGIÓJA, Kelet-Ázsia és Észak-Európa régióban.
+    * Válassza ki a régiót, ahol fogja használni az erőforrás. Jelenleg a beszédszolgáltatások érhető el az USA nyugati RÉGIÓJA, Kelet-Ázsia és Észak-Európa régióban.
     * Válassza ki, vagy egy ingyenes vagy fizetős tarifacsomagra. Kattintson a **díjszabási részletek megtekintése** kapcsolatban az egyes szintek díjszabását és a használati kvótákat.
     * Hozzon létre egy új erőforráscsoportot, beszéd ehhez az előfizetéshez, vagy az előfizetés hozzárendelése egy meglévő erőforráscsoportot. Erőforráscsoportokat tarthatja rendezve különböző Azure-előfizetéseit.
     * A jövőben az előfizetés hozzáférés kényelmes, válassza ki a **rögzítés az irányítópulton** jelölőnégyzetet.
@@ -114,7 +114,7 @@ Váltson egy előfizetésből egy másikba, például amikor az ingyenes próbav
 > Ingyenes próbaverziós kulcsok jönnek létre az USA nyugati RÉGIÓJA (`westus`) régióban. Az Azure-irányítópulton keresztül létrehozott előfizetés lehet néhány más régióban található, amennyiben így dönt.
 
 * Ha az alkalmazás egy [beszéd SDK](speech-sdk.md), például adja meg a régiókód `westus`, a beszéd-konfiguráció létrehozása során.
-* Ha az alkalmazás használja a beszédfelismerési szolgáltatás egyik [REST API-k](rest-apis.md), a régiót a végpont URI-kérelem indítására használ részét képezi.
+* Ha az alkalmazás használja a beszédszolgáltatások egyik [REST API-k](rest-apis.md), a régiót a végpont URI-kérelem indítására használ részét képezi.
 
 Régió létrehozott kulcsok csak az adott régióban érvényesek. Próbál használni őket a más régiókban hitelesítési hibákat eredményez.
 

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d99fcc9a8bb69926da7538edc06ae2b7533c86be
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 985f620caaa329b48b00d6ce586e7dcefbf5869d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507426"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341233"
 documentType: LandingData
 title: Az Azure felügyelete – Irányítás
 metadata:
@@ -39,21 +39,25 @@ sections:
     - href: ./management-groups/overview
       html: <p>Megismerheti az előfizetések logikai hierarchiába csoportosításának és szervezésének lehetőségeit, amellyel az egyéb irányítási szolgáltatások üzembe helyezését strukturált módon támogathatja.<br /></p>
       image:
+        alt: Felügyeleti csoportok
         src: ./media/management-groups-illustration.svg
       title: Felügyeleti csoportok
     - href: ./resource-graph/
       html: <p>Egy hatékony parancssori felületen (amely az Azure CLI és az Azure PowerShell felületet egyaránt támogatja) gyorsan lekérdezheti az Azure-erőforrásai összetett információit. Megkeresheti és megjelenítheti az olyan információkat, amelyekhez korábban összetett és többször futtatandó szkriptek kellettek, így nagy környezetekben is felderítheti az erőforrásokat.</p>
       image:
+        alt: Erőforrás-diagram
         src: ./media/resource-graph-illustration.svg
       title: Erőforrás-diagram
     - href: ./policy/
       html: <p>Standardokat határozhat meg és alkalmazhat az erőforrásokra a környezeten belül. Megakadályozhatja a nemkívánatos erőforrások létrehozását, új elemekkel gazdagíthatja az új erőforrásokat, valamint naplózhatja és szervizelheti a környezetben már működő erőforrásokat.</p>
       image:
+        alt: Szabályzat
         src: ./media/policy-illustration.svg
       title: Szabályzat
     - href: ./blueprints/
       html: <p>Natív Azure-csomagokat hozhat létre az <i>összetevőkből</i> (többek között erőforráscsoportokból, szabályzatokból, szerepkör-hozzárendelésekből, Resource Manager-sablonokból), amelyek dinamikusan üzembe helyezhetők az előfizetésekbe az egységes és megismételhető környezetek kialakításához.</p>
       image:
+        alt: Tervek
         src: ./media/blueprints-illustration.svg
       title: Tervek
 - title: Megvalósítások

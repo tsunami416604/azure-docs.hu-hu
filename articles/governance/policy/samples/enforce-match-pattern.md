@@ -1,6 +1,6 @@
 ---
 title: Minta – kényszerítése egyeztetési minta
-description: Ez a mintaszabályzat megköveteli, hogy az erőforrások megfeleljenek az elnevezési konvenciók egyezési mintáinak.
+description: A szabályzatdefiníció-minta megköveteli, hogy erőforrások megfelelnek-e az elnevezési konvenciói az egyeztetési minta.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,16 +8,16 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4a001316afb489c7147153b5a2de076a5a425c93
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8fdbd6bc319a85c240eddcc5513c8e900329870b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241809"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341385"
 ---
-# <a name="enforce-match-pattern-for-naming-conventions"></a>Mintaegyezés kényszerítése az elnevezési konvenciókhoz
+# <a name="sample---enforce-match-pattern-for-naming-conventions"></a>Minta – kényszerítése az elnevezési konvenciók egyeztetési minta
 
-Az elnevezési konvenciókhoz tartozó mintával való megegyezést követeli meg az erőforrások neveitől. Adja meg paraméterként a megengedett egyezési mintát.
+Megköveteli az erőforrásoktól, hogy feleljenek meg az elnevezési konvenciók LIKE mintájának. Adja meg paraméterként a megengedett egyezési mintát.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 

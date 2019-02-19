@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy házirendet a nem megfelelő erőforrások azonosításához az Azure CLI-vel
+title: A nem megfelelő erőforrások szabályzat létrehozása az Azure CLI-vel
 description: Azure CLI használatával létrehoz egy Azure szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához.
 services: azure-policy
 author: DCtheGeek
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 3b4f71e420c0d80594193f27739fd120881247d4
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1f80171e8987f92688d564713e29fbfe2e103335
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856230"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342184"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Hozzon létre egy szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához az Azure CLI-vel
 
@@ -73,7 +73,7 @@ További információ a szabályzat-hozzárendelés azonosítóiról: [Get-AzPol
 
 Ezután futtassa a következő parancsot a JSON-fájlba kerülő nem megfelelő erőforrások azonosítójának lekéréséhez:
 
-```
+```console
 armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
 ```
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: 95d8825b8359b0ba8649c4c4e145ef488a486b21
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c6763580a6693020c497c500342ff3ae4dc840d4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001923"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339228"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -55,7 +55,7 @@ Ez a parancs visszaadja a szolgáltatás leíró JSON-dokumentumok, és ezután 
 
 ## <a name="remote-access-to-services"></a>Távoli szolgáltatásokhoz való hozzáférés
 
-* **Az Ambari (web)** - https://&lt;clustername >. azurehdinsight.NET formátumban van
+* **Ambari (web)** - https://&lt;clustername>.azurehdinsight.net
 
     A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni, és az Ambari, majd jelentkezzen be.
 
@@ -92,7 +92,7 @@ További információkért lásd: a [HDInsight az Apache Hadoop-szolgáltatások
 Hadoop-kapcsolatos fájlok találhatók a fürtcsomópontokon, `/usr/hdp`. Ez a könyvtár a következő alkönyvtárakat tartalmaz:
 
 * **2.2.4.9-1**: A könyvtár neve a Hortonworks Data platform HDInsight által használt verziója. A szám a fürtön fut, az itt felsorolt eltérő lehet.
-* **aktuális**: Ez a könyvtár alkönyvtárat mutató hivatkozásokat tartalmaz a **2.2.4.9-1** könyvtár. Ez a könyvtár létezik-e, hogy ne felejtse el a verziószám nem kell.
+* **current**: Ez a könyvtár alkönyvtárat mutató hivatkozásokat tartalmaz a **2.2.4.9-1** könyvtár. Ez a könyvtár létezik-e, hogy ne felejtse el a verziószám nem kell.
 
 Hadoop elosztott fájlrendszer címen található példa adatok és a JAR-fájlok `/example` és `/HdiSamples`.
 
@@ -126,7 +126,15 @@ Használata esetén __Azure Storage__, a következő URI sémák egyikével:
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Egy nem alapértelmezett tárfiókhoz való kommunikáció során használt. Például ha rendelkezik egy tárfiókot, vagy ha nyilvánosan elérhető-e a storage-fiókban lévő adatok elérése tárolja.
 
-Használata esetén __Data Lake Storage__, a következő URI sémák egyikével:
+Használata esetén __Azure Data Lake Storage Gen2__, a következő URI sémák egyikével:
+
+* `abfs:///`: Alapértelmezett tárolók titkosítatlan kommunikáció használata.
+
+* `abfss:///`: Alapértelmezett tárolók használatával titkosított kommunikáció.  A abfss séma csak a HDInsight 3.6-os verziója és újabb verziók esetében támogatott.
+
+* `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Egy nem alapértelmezett tárfiókhoz való kommunikáció során használt. Például ha rendelkezik egy tárfiókot, vagy ha nyilvánosan elérhető-e a storage-fiókban lévő adatok elérése tárolja.
+
+Használata esetén __Azure Data Lake Storage Gen1__, a következő URI sémák egyikével:
 
 * `adl:///`: A fürt alapértelmezett Data Lake Storage eléréséhez.
 
@@ -177,7 +185,7 @@ A HDInsight-fürtön kívülről származó adatok eléréséhez a különböző
 Ha használ __Azure Storage__, tekintse meg a következő hivatkozások módon, hogy érheti el az adatokat:
 
 * [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Működik az Azure parancssori felületi parancsokkal. Telepítés után használja a `az storage` a Súgó a tároló, a parancs vagy `az storage blob` blob-specifikus parancsokhoz.
-* [blobxfer.PY](https://github.com/Azure/blobxfer): Az Azure Storage-blobokkal dolgozik a python-szkriptet.
+* [blobxfer.py](https://github.com/Azure/blobxfer): Az Azure Storage-blobokkal dolgozik a python-szkriptet.
 * Különböző SDK-k:
 
     * [Java](https://github.com/Azure/azure-sdk-for-java)
@@ -247,8 +255,8 @@ HDInsight egy olyan felügyelt szolgáltatás. Azure-hoz a fürt probléma, ha, 
 
 A Szkriptműveletek olyan Bash-szkriptek. A szkriptek a fürt létrehozásakor futtassa, és telepítse és konfigurálja a további összetevők szolgálnak. A következő összetevők telepítéséhez parancsfájlpéldákat biztosítja:
 
-* [Az Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-* [Az Apache Solr](hdinsight-hadoop-solr-install-linux.md)
+* [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
+* [Apache Solr](hdinsight-hadoop-solr-install-linux.md)
 
 Az egyéni parancsfájlművelet-fejlesztéssel kapcsolatos további információkért lásd: [Script Action development with HDInsight](hdinsight-hadoop-script-actions-linux.md) (Parancsfájlműveletek fejlesztése a HDInsighttal).
 

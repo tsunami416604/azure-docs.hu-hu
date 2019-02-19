@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – hozzáférés engedélyezése egy felhasználó RBAC és az Azure portal használatával |} A Microsoft Docs
-description: Szerepköralapú hozzáférés-vezérlés (RBAC) segítségével hozzáférést engedélyezhet a felhasználó számára az Azure Portalon szerepkör hozzárendelésével.
+title: Oktatóanyag – a felhasználó rbac-RÓL és az Azure portal segítségével Azure-erőforrásokhoz való hozzáférés biztosítása |} A Microsoft Docs
+description: Megtudhatja, hogyan felhasználó szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure Portalon az Azure-erőforrásokhoz való hozzáférést.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 8caa5c3b33ac1b483429251e0c1256636c4ece1a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 41f1c6dc8904f167f34ea72aeb9b3866504b7087
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634472"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341300"
 ---
-# <a name="tutorial-grant-access-for-a-user-using-rbac-and-the-azure-portal"></a>Oktatóanyag: Hozzáférést egy felhasználó RBAC és az Azure portal használatával
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Oktatóanyag: Egy felhasználó hozzáférést rbac-RÓL és az Azure portal segítségével Azure-erőforrások
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. Ebben az oktatóanyagban egy erőforráscsoportba tartozó virtuális gépek létrehozása és kezelése egy felhasználó hozzáférést ad.
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Ebben az oktatóanyagban egy erőforráscsoportba tartozó virtuális gépek létrehozása és kezelése egy felhasználó hozzáférést ad.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -113,5 +113,5 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Hozzáférés biztosítása egy felhasználó számára az RBAC és a PowerShell használatával](tutorial-role-assignments-user-powershell.md)
+> [Oktatóanyag: Egy felhasználó hozzáférést biztosítani Azure-erőforrások RBAC és az Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
 

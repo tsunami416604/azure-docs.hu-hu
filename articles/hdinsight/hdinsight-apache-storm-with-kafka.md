@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: a90546d97fbb42a0ee4ef2d8f26c1d4f189ef8d3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 341278237bc18bfbb8f4bb1e5d600e2cab894926
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310338"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343357"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Kafka on HDInsight az Apache Storm használata
 
@@ -373,7 +373,7 @@ A projekt tartalmaz egy `dev.properties` nevű fájlt, amely a topológiák ált
 | `kafka.broker.hosts` | A Kafka-közvetítő gazdagépei (feldolgozó csomópontok). |
 | `kafka.topic` | A topológiák által használt Kafka-témakör. |
 | `hdfs.write.dir` | A könyvtár, amelybe a Kafka-olvasó topológia ír. |
-| `hdfs.url` | A Storm-fürt által használt fájlrendszer. Azure Storage-fiókok esetében használja a `wasb:///` értéket. Az Azure Data Lake Storage Gen1, az érték `adl:///`. |
+| `hdfs.url` | A Storm-fürt által használt fájlrendszer. Azure Storage-fiókok esetében használja a `wasb:///` értéket. Az Azure Data Lake Storage Gen2, az érték `abfs:///`. Az Azure Data Lake Storage Gen1, az érték `adl:///`. |
 
 ## <a name="create-the-clusters"></a>A fürtök létrehozása
 

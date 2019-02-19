@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: ce2d69e26909231383f3538d51387f27d8202a43
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 5f304c36c2e7ec0ea61aa63a976942d0de1ca042
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332472"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343493"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Napló hálózati forgalmat, és a egy virtuális gépről az Azure portal használatával
 
@@ -36,9 +36,6 @@ A hálózati biztonsági csoportok (NSG-k) lehetővé teszik a virtuális gépek
 > * Naplózott adatok megtekintése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-> [!NOTE] 
-> Flow 2-es naplók verzió csak érhetők el az USA nyugati középső régiójában. 2-es verzió engedélyezése egy nem támogatott régióban naplókat eredményez 1-es verziójú naplókat, a storage-fiókhoz használt kimeneti adattípus.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 

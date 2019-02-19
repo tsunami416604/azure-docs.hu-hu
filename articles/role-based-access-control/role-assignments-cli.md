@@ -1,6 +1,6 @@
 ---
-title: Rbac-RÓL és az Azure CLI-hozzáférés kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és alkalmazások, a szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure CLI használatával hozzáférését. Ez magában foglalja a listázási hozzáférés, hozzáférést biztosít, és távolítsa el a hozzáférést.
+title: RBAC és az Azure CLI használatával Azure-erőforrásokhoz való hozzáférés kezelése |} A Microsoft Docs
+description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és alkalmazások szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure CLI használatával Azure-erőforrásokhoz való hozzáférését. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6d1e64c7630f3fd35124e6671476174ddfc16bb6
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 751f582e2cfc39b62194ec55efa5cd8580c001e3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437099"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341715"
 ---
-# <a name="manage-access-using-rbac-and-azure-cli"></a>Rbac-RÓL és az Azure CLI-hozzáférés kezelése
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>RBAC és az Azure CLI használatával Azure-erőforrásokhoz való hozzáférés kezelése
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok és alkalmazások RBAC és az Azure CLI használatával hozzáférését.
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok és alkalmazások RBAC és az Azure CLI használatával hozzáférését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -311,5 +311,5 @@ az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Azure CLI-vel egyéni szerepkör létrehozása](tutorial-custom-role-cli.md)
-- [Azure-erőforrások és -erőforráscsoportok kezelése az Azure CLI használatával](../azure-resource-manager/xplat-cli-azure-resource-manager.md)
+- [Oktatóanyag: Az Azure-erőforrások Azure CLI-vel egyéni szerepkör létrehozása](tutorial-custom-role-cli.md)
+- [Azure-erőforrások és -erőforráscsoportok kezelése az Azure CLI használatával](../azure-resource-manager/cli-azure-resource-manager.md)

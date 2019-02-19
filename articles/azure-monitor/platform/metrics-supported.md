@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: be2274b5d7a0e39733440379ce9678ab012d7d27
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8ee900554371644f374e4aeed51f1eeb0c18569e
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473826"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408867"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Az Azure monitorban támogatott mérőszámok
 Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül vagy a lekérdezési őket több módot nyújt a PowerShell vagy parancssori felület használatával. Alább érhető el minden metrika teljes listáját jelenleg az Azure Monitor metrika folyamattal. Más metrikák elérhető a portálon vagy az örökölt API-k használatával lehet. Az alábbi listán csak a metrikák elérhető az Azure Monitor konszolidált metrika folyamat használatával tartalmazza. És -lekérdezés számára, ezek a metrikák, használja a [2018-01-01-es api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -652,14 +652,52 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
-|---|---|---|---|---|---|
-|MetadataRequests|A metaadat-kérelmek|Darabszám|Darabszám|A metaadat-kérelmek száma. A cosmos DB tárolja a rendszer metaadat-gyűjtemény minden fiókhoz, amely lehetővé teszi, hogy számba venni a gyűjteményeket, adatbázisok és egyéb, és a konfigurációját, ingyenesen.|DatabaseName, CollectionName, Region, StatusCode|
-|MongoRequestCharge|Mongo-kérelem díja|Darabszám|Összes|Felhasznált Kérelemegységek mongo|DatabaseName, CollectionName, Region, CommandName, ErrorCode|
-|MongoRequests|Mongo-kérelmek|Darabszám|Darabszám|Mongo-kérelmek száma|DatabaseName, CollectionName, Region, CommandName, ErrorCode|
-|TotalRequestUnits|Teljes kérelemegység|Darabszám|Összes|Felhasznált egységek kérése|DatabaseName, CollectionName, Region, StatusCode|
-|TotalRequests|Összes kérelem|Darabszám|Darabszám|Kérelmek száma|DatabaseName, CollectionName, Region, StatusCode|
+### <a name="request-metrics"></a>Kérelem-metrikák
 
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók| Idő granularitással| Örökölt metrika leképezés | Használat |
+|---|---|---|---|---|---| ---| ---| ---|
+| TotalRequests |   Összes kérelem| Darabszám   | Darabszám | Kérelmek száma|  DatabaseName, CollectionName, Region, StatusCode|   Összes |   TotalRequests, Http 2xx, 3xx Http, a Http 400-as, a Http 401-es, belső kiszolgálóhiba szolgáltatás nem érhető el, a kérelmek szabályozva, másodpercenként átlagosan |    Kérések száma állapot kódja, gyűjtemény jelenleg egy perces pontossággal figyelésére használható. A kérelmek másodpercenkénti átlagos száma az összesítés használatát perc, és nullával való osztás 60. |
+| MetadataRequests |    A metaadat-kérelmek   |Darabszám| Darabszám   | A metaadat-kérelmek száma. Az Azure Cosmos DB tárolja a rendszer metaadat-gyűjtemény minden fiókhoz, amely lehetővé teszi, hogy számba venni a gyűjteményeket, adatbázisok és egyéb, és a konfigurációját, ingyenesen.    | DatabaseName, CollectionName, Region, StatusCode| Összes|  |A metaadat-kérelmek miatt szabályozások figyelésére használható.|
+| MongoRequests |   Mongo-kérelmek| Darabszám | Darabszám|  Mongo-kérelmek száma   | DatabaseName, CollectionName, Region, CommandName, ErrorCode| Összes |Mongo-lekérdezési kérelmek arányának, a Mongo-frissítési kérés arány, a Mongo kérelmek arányának törléséhez Mongo beszúrása a kérések aránya, Mongo száma kérelmek gyakorisága|   Mongo-kérelem hibák nyomon követésére, a tanúsítványalgoritmusok parancsonként írja be. |
+
+
+### <a name="request-unit-metrics"></a>Kérelem egységek metrikáit
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók| Idő granularitással| Örökölt metrika leképezés | Használat |
+|---|---|---|---|---|---| ---| ---| ---|
+| MongoRequestCharge|   Mongo-kérelem díja |  Darabszám   |Összes  |Felhasznált Kérelemegységek mongo|  DatabaseName, CollectionName, Region, CommandName, ErrorCode|   Összes |Mongo-lekérdezés kérelem díjmentes, a Mongo frissítési kérelem díjmentes, a Mongo törlése kérelem díja, Mongo beszúrása kérelem számolunk fel, Mongo száma kérelem díja| Egy perc alatt Mongo erőforrás RUs figyelésére használható.|
+| TotalRequestUnits |Teljes kérelemegység|   Darabszám|  Összes|  Felhasznált egységek kérése| DatabaseName, CollectionName, Region, StatusCode    |Összes|   TotalRequestUnits|  Jelenleg egy perces pontossággal teljes RU-használat figyelésére használható. Átlagos RU másodpercenként felhasznált perc teljes összesítést használ, és nullával való osztás 60.|
+| ProvisionedThroughput |Kiosztott átviteli kapacitás|    Darabszám|  Maximum |Kiosztott átviteli sebességet gyűjtemény részletessége|  DatabaseName, CollectionName|   5M| |   Kiosztott átviteli sebesség gyűjteményenként figyelésére használható.|
+
+### <a name="storage-metrics"></a>Storage-mérőszámok
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók| Idő granularitással| Örökölt metrika leképezés | Használat |
+|---|---|---|---|---|---| ---| ---| ---|
+| AvailableStorage| Rendelkezésre álló tár   |Bájt| Összes|  5 perces részletesség régiónként, jelentett összes elérhető tárhely|   DatabaseName, CollectionName, régió|   5M| Rendelkezésre álló tár|   Figyelhető a rendelkezésre álló tár kapacitása (csak a rögzített tároló gyűjtemények alkalmazható) minimális részletessége 5 percnek kell lennie.| 
+| DataUsage |Adatforgalom |Bájt| Összes   |5 perces részletesség régiónként, jelentett használati adatok összesen|    DatabaseName, CollectionName, régió|   5M  |Adatok mérete  | Gyűjtemény és a régió teljes adathasználat figyelésére használható, minimális részletessége 5 percnek kell lennie.|
+| IndexUsage|   Index használat|    Bájt|  Összes   |5 perces részletesség régiónként, jelentett teljes Index használata|    DatabaseName, CollectionName, régió|   5M| Index mérete| Gyűjtemény és a régió teljes adathasználat figyelésére használható, minimális részletessége 5 percnek kell lennie. |
+| DocumentQuota|    A dokumentum kvóta| Bájt|  Összes|  Teljes tárolási kvótája régiónként 5 perces részletesség jelenteni. A f vonatkozik| DatabaseName, CollectionName, régió|   5M  |Tárkapacitás|  Gyűjtemény és a régió teljes kvóta figyelésére használható, minimális részletessége 5 percnek kell lennie.|
+| DocumentCount|    Dokumentumok száma| Darabszám   |Összes  |5 perces részletesség régiónként, jelentett Totaldocument száma|  DatabaseName, CollectionName, régió|   5M  |Dokumentumok száma|Dokumentumok száma, gyűjtemény és a régió figyelésére használható, minimális részletessége 5 percnek kell lennie.|
+
+### <a name="latency-metrics"></a>Késés metrikák
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók| Idő granularitással| Használat |
+|---|---|---|---|---|---| ---| ---| ---|
+| ReplicationLatency    | Replikáció késése|  Ideje ezredmásodpercben|   Minimum,Maximum,Average | Fiók geo-kompatibilis a forrás- és régiók közötti P99 replikáció késése| SourceRegion, TargetRegion| Összes | Egy georeplikált fiók bármely két régió között P99 replikációs késésétől figyelésére használható. |
+
+### <a name="availability-metrics"></a>Rendelkezésre állási metrikák
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók| Idő granularitással| Örökölt metrika leképezés | Használat |
+|---|---|---|---|---|---| ---| ---| ---|
+| ServiceAvailability   | Szolgáltatás rendelkezésre állása| Százalék |Minimális, maximális|   Egy órás részletességgel fiók kérelmek rendelkezésre állásáról|  |   1H  | Szolgáltatás rendelkezésre állása  | Ez az összes sikeres kérelme százalékát. Rendszerhiba miatt kell végrehajtani, ha az állapotkód értéke 410, tekinthető a kérelem 500 vagy 503-as használható a fiókját órás részletességgel rendelkezésre állásának figyeléséhez. |
+
+### <a name="cassandra-api-metrics"></a>Cassandra API-metrikák
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók| Idő granularitással| Használat |
+|---|---|---|---|---|---| ---| ---| ---|
+| CassandraRequests | Cassandra Requests |  Darabszám|  Darabszám|  Cassandra API-kérelmek száma|  DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType|   Összes| Jelenleg egy perces pontossággal Cassandra kérelmek figyelésére használható. A kérelmek másodpercenkénti átlagos száma az összesítés használatát perc, és nullával való osztás 60.|
+| CassandraRequestCharges|  Cassandra-kérelem díjak| Darabszám|   Sum, Min, Max, Avg| Cassandra API-kérések által felhasznált kérelemegységek|   DatabaseName, CollectionName, Region, OperationType, ResourceType|  Összes| Kérelemegység / perc a Cassandra API-fiók által használt figyelésére használható.|
+| CassandraConnectionClosures   | Cassandra-kapcsolat szünnapok |Darabszám| Darabszám   |Lezárt Cassandra-kapcsolatok száma|    ClosureReason, régió|  Összes | Az ügyfélszámítógépek és az Azure Cosmos DB Cassandra API közötti kapcsolatok figyelésére használható.|
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 

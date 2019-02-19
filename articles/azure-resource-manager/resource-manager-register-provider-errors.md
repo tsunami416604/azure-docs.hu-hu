@@ -11,14 +11,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/10/2018
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: e87ff83470ac8d375b4eee3b69f8793e3e11c0f5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2f3db5e6260b065c83f0e337306d38dca6e5ff51
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497417"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341402"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Javítsa ki a hibákat az erőforrás-szolgáltatói regisztrációt
 
@@ -45,13 +45,21 @@ Message: The subscription is not registered to use namespace {resource-provider-
 
 A következő hibaüzenet jelenik a támogatott helyek és az API-verziók javaslatok adjon meg. A sablon a javasolt értékeket módosíthatja. A legtöbb szolgáltatók a következők: automatikusan, az Azure portal vagy a parancssori felület használata regisztrált, de nem minden. Ha még nem használta az egy adott erőforrás-szolgáltató előtt, szükség lehet, hogy a szolgáltató regisztrálásához.
 
+Vagy, ha letiltja a virtuális gépek automatikus leállítása, előfordulhat, hogy kap egy ehhez hasonló hibaüzenetet:
+
+```
+Code: AuthorizationFailed
+Message: The client '<identifier>' with object id '<identifier>' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/read' over scope ...
+```
+
 ## <a name="cause"></a>Ok
 
-Ezek a hibák három okok egyike jelenhet meg:
+Ezeket a hibákat az alábbi okok egyike jelenhet meg:
 
-* Az erőforrás-szolgáltató nem lett regisztrálva az előfizetéshez
+* A szükséges erőforrás-szolgáltató nem lett regisztrálva az előfizetéshez
 * Az erőforrástípus esetében nem támogatott API-verzió
 * Az erőforrástípus esetében nem támogatott helye
+* A virtuális gépek automatikus leállítása a Microsoft.DevTestLab erőforrás-szolgáltató regisztrálva kell lennie.
 
 ## <a name="solution-1---powershell"></a>Megoldás 1 – PowerShell
 

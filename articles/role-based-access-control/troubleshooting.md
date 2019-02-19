@@ -1,6 +1,6 @@
 ---
-title: Az Azure-beli RBAC hibaelhárítása |} A Microsoft Docs
-description: Azure szerepköralapú hozzáférés-vezérlés (RBAC) kapcsolatos hibaelhárítás.
+title: Az RBAC hibaelhárítása az Azure-erőforrások |} A Microsoft Docs
+description: Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrások kapcsolatos hibaelhárítás.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e204beea5bdf72c2ec5ebcf661d3c983a2e0e6b4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7b27c811214def7f5646f886b955d035a50c0725
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411237"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342473"
 ---
-# <a name="troubleshoot-rbac-in-azure"></a>Az Azure-beli RBAC hibaelhárítása
+# <a name="troubleshoot-rbac-for-azure-resources"></a>Az RBAC hibaelhárítása az Azure-erőforrásokhoz
 
-Ez a cikk szerepköralapú hozzáférés-vezérlést (RBAC), kapcsolatos általános kérdéseket válaszol meg, hogy tudja, mire számítson, ha használja a szerepkörök az Azure portal és a hozzáférési problémák elhárítása.
+Ez a cikk szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz, kapcsolatos általános kérdéseket válaszol, hogy tudja, mire számítson, ha használja a szerepkörök az Azure portal és a hozzáférési problémák elhárítása.
 
 ## <a name="problems-with-rbac-role-assignments"></a>Problémák az RBAC-beli szerepkör-hozzárendelésekkel
 
@@ -105,7 +105,7 @@ Ezeket az elemeket szükség **írási** való hozzáférést a **virtuális gé
 Ilyen esetekben **írási** elérését a **virtuális gép**, és a **erőforráscsoport** (valamint a tartomány nevét), hogy az informatikai van:  
 
 * Rendelkezésre állási csoport  
-* Elosztott terhelésű készlethez  
+* Elosztott terhelésű készlet  
 * Riasztási szabályok  
 
 Ha ezek a csempék nem sikerül elérnie, kérje meg a rendszergazdát a közreműködői hozzáférés az erőforráscsoporthoz.
@@ -119,6 +119,6 @@ Az egyes funkciói [Azure Functions](../azure-functions/functions-overview.md) �
 Kattintson egy olvasót a **platformfunkciók** fülre, majd **minden beállítás** bizonyos beállítások megtekintéséhez (a webalkalmazás hasonlóan) függvényalkalmazás kapcsolódó, de nem módosíthatják a beállítások.
 
 ## <a name="next-steps"></a>További lépések
-* [Hozzáférés kezelése az RBAC és az Azure Portal használatával](role-assignments-portal.md)
-* [Az RBAC-módosítások Tevékenységnaplók megtekintése](change-history-report.md)
+* [Rbac-RÓL és az Azure portal segítségével Azure-erőforrásokhoz való hozzáférés kezelése](role-assignments-portal.md)
+* [A Tevékenységnaplók megtekintése az Azure-erőforrások RBAC módosítások](change-history-report.md)
 

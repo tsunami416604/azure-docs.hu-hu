@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c1258ab619b165553c55481ad67d663be65ac832
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 57cc585d621c71872a4b7658c74f581c8998b245
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269603"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341079"
 ---
 # <a name="how-to-use-azure-maps-android-sdk"></a>Azure Maps Android SDK használata
 
@@ -128,7 +128,7 @@ Mielőtt folytatná az alkalmazása létrehozásához felé, kövesse az Azure M
 
     public class MainActivity extends AppCompatActivity {
         
-        static{
+        static {
             AzureMaps.setSubscriptionKey("{subscription-key}");
         }
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: 2e39aaae7b873174db032c5e1dda516c9a998d31
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 66d7a2ce5833729d601ae896f0903a17a40fc8a3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301910"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339493"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Az Azure Data Lake Storage Gen2 használata big data-követelményekhez
 
@@ -73,7 +73,7 @@ Ez a táblázat bemutatja, hogyan minden egyes Azure-szolgáltatás vagy eszköz
 |Apache DistCp | Szerepkör hozzárendelése felhasználóhoz felügyelt identitásnak | [Egy HDInsight-fürt létrehozása a Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2) |
 |Azure Data Factory| Szerepkör hozzárendelése egy felhasználó által hozzárendelt – felügyelt identitás<br>**vagy**<br> Egy egyszerű szolgáltatás szerepkör hozzárendelése<br>**vagy**<br> Használja a tárfiók kulcsa | [Társított szolgáltatás tulajdonságai](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
 |Azure HDInsight| Szerepkör hozzárendelése felhasználóhoz felügyelt identitásnak | [Egy HDInsight-fürt létrehozása a Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2)|
-|Azure Databricks| Szerepkör hozzárendelése a szolgáltatásnév | [Szolgáltatásnév létrehozása](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-service-principal)|
+|Azure Databricks| Szerepkör hozzárendelése a szolgáltatásnév | [Útmutató: Az Azure AD-alkalmazás és -erőforrások elérésére képes egyszerű szolgáltatás létrehozása a portál használatával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 Hozzáférést biztosít az adott fájlok és mappák, tanulmányozza a következő cikkeket.
 

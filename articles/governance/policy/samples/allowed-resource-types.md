@@ -1,6 +1,6 @@
 ---
 title: Minta - engedélyezett erőforrástípusok
-description: Ez a mintaszabályzat biztosítja, hogy csak jóváhagyott erőforrástípusok legyenek üzembe helyezve.
+description: A szabályzatdefiníció-minta biztosítja, hogy csak a jóváhagyott erőforrástípusok vannak telepítve.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 3d2f065f875cd012a808af985e36469c85532913
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 0dc58bb11d6415cb1003a8b505e337ab385f7d46
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243637"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339991"
 ---
-# <a name="allowed-resource-types"></a>Engedélyezett erőforrástípusok
+# <a name="sample---allowed-resource-types"></a>Minta - engedélyezett erőforrástípusok
 
 Ez a szabályzat biztosítja, hogy csak jóváhagyott erőforrástípusok legyenek üzembe helyezve. Az engedélyezett erőforrástípusok tömbjét Ön határozza meg.
 

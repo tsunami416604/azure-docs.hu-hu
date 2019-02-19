@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 92bbcf1285449ac21cd038e1a6d27d2e3d43430b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 55a9e373893f6f46e6c109dde947b25a36ee93ed
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259733"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343000"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Hálózati biztonsági csoport Flow naplók konfigurálása a PowerShell-lel
 
@@ -30,9 +30,6 @@ ms.locfileid: "54259733"
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
 Hálózati biztonsági csoportok folyamatnaplóit érhetők el a Network Watcher, amely lehetővé teszi a bejövő és kimenő IP-forgalom hálózati biztonsági csoport használatával kapcsolatos információk megtekintéséhez. A folyamat-naplók json formátumban íródtak, és a kimenő és bejövő folyamatok megjelenítése / szabály történik, a hálózati Adapterhez, a folyamat vonatkozik, a folyamat (a forrás és cél IP-cím, forrás és a cél-Port, protokoll), 5-ször több információt, és ha a forgalom engedélyezett vagy tiltott.
-
-> [!NOTE] 
-> Flow 2-es naplók verzió csak érhetők el az USA nyugati középső régiójában. 2-es verzió engedélyezése egy nem támogatott régióban naplók eredményezhet a tárfiókhoz használt kimeneti adattípus 1-es verziójú naplókat.
 
 ## <a name="register-insights-provider"></a>Insights-szolgáltató regisztrálása
 

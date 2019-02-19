@@ -3,17 +3,17 @@ title: Az Azure Backup Agent hibaelhárítása
 description: Telepítési és regisztrációs Azure Backup Agent hibaelhárítása
 services: backup
 author: saurabhsensharma
-manager: shreeshd
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/25/2018
+ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: 65eb6ef088c9baae67d65607ede771f3c9d11a41
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9180604b18224adace040c9eee5181b4cd4d8b92
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114143"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339005"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök hibaelhárítása
 
@@ -24,8 +24,13 @@ Oldja meg az esetlegesen előforduló hibák során konfigurációja, a regisztr
 | ---     | ---     | ---    |
 | **Hiba történt** </br> *A tároló megadott hitelesítő adatai érvénytelenek. A fájl sérült, vagy nem nem rendelkezik a legújabb hitelesítő adatok a helyreállítási szolgáltatáshoz hozzárendelt. (AZONOSÍTÓ: 34513)* | <ul><li> A tároló hitelesítő adatai érvénytelenek. (azt jelenti, azok letöltése megtörtént a regisztráció előtt legfeljebb 48 óra).<li>A MARS-ügynök nem tudja fájlok letöltése a Windows Temp könyvtárában. <li>A tároló hitelesítő adatai vannak egy hálózati helyre. <li>A TLS 1.0 le van tiltva.<li> Egy konfigurált proxykiszolgálón blokkolja a kapcsolatot. <br> |  <ul><li>Töltse le a tár új hitelesítő adatait. (**Megjegyzés**: Ha több tároló hitelesítő adatfájljait a korábban letöltött, csak a legújabb letöltött fájl nem érvényes 48 órán belül.) <li>Indítsa el a **IE** > **beállítás** > **Internetbeállítások** > **biztonsági**  >  **Internet**. Majd **Egyéni szint**, amíg meg nem látja a fájl letöltése szakasz görgessen. Válassza ki **engedélyezése**.<li>Akkor is lehet ezeken a webhelyeken hozzáadása az Internet Explorer [megbízható helyek](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins#network-and-connectivity-requirements).<li>Módosítsa a beállításokat, egy proxykiszolgáló használatára. Adja meg a proxy adatait. <li> A dátum és idő egyezik a gépen.<li>Ha hibaüzenet jelenik meg, hogy a fájlok letöltése nem engedélyezettek, valószínű, hogy nincsenek-e egy nagy mennyiségű fájlt a C:/Windows/Temp könyvtárba.<li>C:/Windows/Temp nyissa meg, és ellenőrizze, hogy vannak-e több mint 60 000 vagy 65,000 .tmp kiterjesztésű fájlt. Ha vannak, ezeket a fájlokat törli.<li>Győződjön meg arról, hogy a .NET-keretrendszer 4.6.2-es. <li>Ha PCI-megfelelőség miatt le van tiltva a TLS 1.0, tekintse meg a [hibaelhárítási lap](https://support.microsoft.com/help/4022913). <li>Ha a kiszolgálón telepített víruskereső szoftver, a következő fájlok kizárása a víruskeresés: <ul><li>CBengine.exe<li>CSC.exe, amely kapcsolódik a .NET-keretrendszer. A CSC.exe minden .NET-verzió, amely a kiszolgálón van telepítve van. Az érintett kiszolgálón .NET-keretrendszer összes verziójához kötött CSC.exe fájlok kizárása. <li>Ideiglenes mappa vagy a gyorsítótár helyét. <br>*Az ideiglenes mappát vagy a gyorsítótár elérési útjához alapértelmezett helye a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<br><li>A bin mappa: C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 
+## <a name="unable-to-download-vault-credential-file"></a>Nem sikerült letölteni a tároló hitelesítőadat-fájlja
 
-## <a name="the-mars-agent-was-unable-to-connect-to-azure-backup"></a>A MARS-ügynök nem tudott kapcsolódni az Azure Backup szolgáltatásban
+| A hiba részletei | Javasolt műveletek |
+| ---     | ---    |
+|Nem sikerült letölteni a tár hitelesítő adatait tartalmazó fájlt. (AZONOSÍTÓ: 403) | <ul><li> Próbálja meg letölteni a tároló hitelesítő adatait a másik böngészővel, vagy hajtsa végre az alábbi lépéseket: <ul><li> F12 billentyű IE, indítsa el. </li><li> Lépjen a **hálózati** fülre, és törölje az Internet Explorer cache és a cookie-k </li> <li> Frissítse a lapot<br>(OR)</li></ul> <li> Ellenőrizze, hogy az előfizetés le van tiltva vagy lejárt<br>(OR)</li> <li> Ellenőrizze, hogy ha bármilyen tűzfalszabály blokkolja a tároló hitelesítőadat-fájl letöltése <br>(OR)</li> <li> Győződjön meg arról, nem merül ki a korlátot, a tároló (tárolónként 50 gépet)<br>(OR)</li>  <li> Győződjön meg arról, felhasználói töltse le a tároló hitelesítő adatait, és regisztrálja a kiszolgálót a tárolóban, olvassa el az Azure Backup engedély szükséges [cikk](backup-rbac-rs-vault.md)</li></ul> | 
+
+## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>A Microsoft Azure Recovery Service-ügynök nem tudott kapcsolódni a Microsoft Azure Backuphoz
 
 | A hiba részletei | A lehetséges okok | Javasolt műveletek |
 | ---     | ---     | ---    |
@@ -54,6 +59,8 @@ Oldja meg az esetlegesen előforduló hibák során konfigurációja, a regisztr
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Biztonsági másolatok ne futtassa a megadott ütemezés szerint
 Ha ütemezett biztonsági mentések nem lekérése automatikusan, amíg a manuális biztonsági mentések problémamentesen működik, próbálja meg a következő műveleteket:
 
+- Lépjen a **vezérlőpultot** > **felügyeleti eszközök** > **Feladatütemező**. Bontsa ki a **Microsoft**, és válassza ki **Online biztonsági mentés**. Kattintson duplán a **Microsoft-OnlineBackup**, és nyissa meg a **eseményindítók** fülre. Győződjön meg arról, hogy az állapot értéke **engedélyezve**. Ha nem, válassza ki a **szerkesztése**, és válassza ki a **engedélyezve** jelölőnégyzetet. Az a **általános** lépjen **biztonsági beállítások**. Győződjön meg arról, hogy a feladat futtatásához a kiválasztott felhasználói fiók vagy **rendszer** vagy **a helyi Rendszergazdák csoport** a kiszolgálón.
+
 - Tekintse meg, ha a PowerShell 3.0-s vagy újabb verziója telepítve van-e a kiszolgálón. A PowerShell-verziójának ellenőrzéséhez futtassa a következő parancsot, és ellenőrizze, hogy a *fő* verziószáma 3-nál nagyobb vagy egyenlő.
 
   `$PSVersionTable.PSVersion`
@@ -67,9 +74,6 @@ Ha ütemezett biztonsági mentések nem lekérése automatikusan, amíg a manuá
   `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
 
   `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
-
-- Lépjen a **vezérlőpultot** > **felügyeleti eszközök** > **Feladatütemező**. Bontsa ki a **Microsoft**, és válassza ki **Online biztonsági mentés**. Kattintson duplán a **Microsoft-OnlineBackup**, és nyissa meg a **eseményindítók** fülre. Győződjön meg arról, hogy az állapot értéke **engedélyezve**. Ha nem, válassza ki a **szerkesztése**, és válassza ki a **engedélyezve** jelölőnégyzetet. Az a **általános** lépjen **biztonsági beállítások**. Győződjön meg arról, hogy a feladat futtatásához a kiválasztott felhasználói fiók vagy **rendszer** vagy **a helyi Rendszergazdák csoport** a kiszolgálón.
-
 
 > [!TIP]
 > Győződjön meg arról, hogy módosítások következetesek legyenek, hogy a fenti lépések végrehajtása után indítsa újra a kiszolgálót.
@@ -99,7 +103,7 @@ Az Azure Backup előfordulhat, hogy nem sikerült csatlakoztatni a helyreállít
 
 8.  Indítsa újra a Microsoft iSCSI-kezdeményező szolgáltatás. Ehhez kattintson a jobb gombbal a szolgáltatáshoz, válassza a **leállítása**, a jobb gombbal ismét, és válassza ki **Start**.
 
-9.  Próbálja meg újra a helyreállítást a **azonnali visszaállítása**.
+9.  Próbálja meg újra a helyreállítást a [ **azonnali visszaállítása**](backup-instant-restore-capability.md).
 
 Ha a helyreállítás is sikertelen, indítsa újra a kiszolgáló vagy ügyfél. Ha nem szeretne újraindítani, vagy a helyreállítás továbbra is a kiszolgáló újraindítása után is sikertelen, próbálkozzon egy másik számítógépre történő helyreállítás. Kövesse a [Ez a cikk](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 

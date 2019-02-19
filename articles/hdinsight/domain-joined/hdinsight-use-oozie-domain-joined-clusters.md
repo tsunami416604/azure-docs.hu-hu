@@ -8,21 +8,21 @@ ms.author: omidm
 ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 0ab225d3579ed6a56c753f0c581709408c65f358
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 02/15/2019
+ms.openlocfilehash: b0ec8bf52b0b41aef4ea4cc2bfb6ed8fdcd170ec
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436279"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343289"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Futtathat Apache Oozie a HDInsight Hadoop-fürtöket a vállalati biztonsági csomaggal
 
 Az Apache Oozie egy munkafolyamat és koordinációs rendszer, amely az Apache Hadoop-feladatokat kezeli. Az Oozie integrálva van a Hadoop-veremmel, és támogatja a következő feladatokat:
-- Az Apache MapReduce
+- Apache MapReduce
 - Apache Pig
 - Apache Hive
-- Az Apache sqoop használatával
+- Apache Sqoop
 
 Az Oozie használatával a rendszer, például Java programok vagy héjparancsfájlok ütemezésére adott feladatok ütemezéséhez.
 
@@ -217,11 +217,12 @@ nano workflow.xml
        hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
        hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
-  
-   a. Cserélje le `domainuser` a felhasználónevet használva a tartományhoz.  
-   b. Cserélje le `ClusterShortName` a fürt rövid nevét. Például, ha a fürt neve https:// *[példa hivatkozás]* sechadoopcontoso.azurehdisnight.net, a `clustershortname` az első hat karakter hosszú lehet a fürt: **sechad**.  
-   c. Cserélje le `jdbcurlvalue` a JDBC URL-címet a Hive-konfigurációból. Ilyen például, jdbc:hive2: / / headnodehost:10001 /; átviteli = http.      
-   d. Mentse a fájlt, jelölje ki a Ctrl + X, adja meg `Y`, majd válassza ki **Enter**.
+
+   * Használja a `adl://home` URI-JÁT a `nameNode` tulajdonságot, ha az Azure Data Lake Storage Gen1 rendelkezik az elsődleges fürt tárolóként. Ha az Azure Blob Storage használ, majd módosítsa ezt a `wasb://home`. Ha az Azure Data Lake Storage Gen2 használ, majd módosítsa ezt a `abfs://home`.
+   * Cserélje le `domainuser` a felhasználónevet használva a tartományhoz.  
+   * Cserélje le `ClusterShortName` a fürt rövid nevét. Például, ha a fürt neve https:// *[példa hivatkozás]* sechadoopcontoso.azurehdisnight.net, a `clustershortname` az első hat karakter hosszú lehet a fürt: **sechad**.  
+   * Cserélje le `jdbcurlvalue` a JDBC URL-címet a Hive-konfigurációból. Ilyen például, jdbc:hive2: / / headnodehost:10001 /; átviteli = http.      
+   * Mentse a fájlt, jelölje ki a Ctrl + X, adja meg `Y`, majd válassza ki **Enter**.
 
    Ez a fájl tulajdonságok megtalálhatónak kell lennie helyi Oozie feladatok futtatásakor.
 

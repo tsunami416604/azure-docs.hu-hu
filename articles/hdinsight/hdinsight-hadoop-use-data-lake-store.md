@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 9dabf3fd37c591525625969ac0af1873477b84d6
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: fe195ba485e6653cee4a45f4a33067bf536334ad
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311418"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338614"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtök használata a Data Lake Storage Gen1
 
@@ -56,11 +56,7 @@ Használatával a Data Lake Storage Gen1 egy tárfiókot, nem befolyásolja a te
 
 ## <a name="use-data-lake-storage-gen1-as-default-storage"></a>Data Lake Storage Gen1 használja alapértelmezett tárolóként
 
-Ha a HDInsight a Data Lake Storage Gen1 alapértelmezett tárolóként, a fürttel kapcsolatos fájlok találhatók a következő helyen:
-
-    adl://mydatalakestore/<cluster_root_path>/
-
-ahol `<cluster_root_path>` egy Data Lake Storage-ban létrehozott mappa neve. Megadja a gyökér elérési útját minden fürt számára, használhatja ugyanazt a Data Lake Storage-fiókot több fürthöz. Így olyan beállítással rendelkezhet, ahol:
+Ha a HDInsight a Data Lake Storage Gen1 alapértelmezett tárolóként, a fürttel kapcsolatos fájlok találhatók `adl://mydatalakestore/<cluster_root_path>/`, ahol `<cluster_root_path>` egy Data Lake Storage-ban létrehozott mappa neve. Megadja a gyökér elérési útját minden fürt számára, használhatja ugyanazt a Data Lake Storage-fiókot több fürthöz. Így olyan beállítással rendelkezhet, ahol:
 
 * Az 1. fürt a következő elérési utat használhatja: `adl://mydatalakestore/cluster1storage`
 * A 2. fürt a következő elérési utat használhatja: `adl://mydatalakestore/cluster2storage`

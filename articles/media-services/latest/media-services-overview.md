@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 02/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 1911b851e4e219ec4c6d2d4872b75e9c18706feb
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 0f4fd963ce3649c901a76f6677be059ba5be25af
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893323"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337561"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Az Azure Media Services v3 ismertetése
 
@@ -62,7 +62,7 @@ A Media Services-erőforrás neve nem tartalmazhatja a következőket: "<", ">",
 
 Azure Resource Manager elnevezésével kapcsolatos további információkért lásd: [Elnevezési követelményeknek](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) és [elnevezési konvenciók](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
-## <a name="media-services-v3-api-design-principles"></a>A Media Services v3 API tervezési alapelvei
+## <a name="v3-api-design-principles"></a>V3 API-tervezési alapelvek
 
 A v3 API egyik fő tervezési alapelve az API biztonságosabbá tétele. A v3 API-k nem adnak vissza titkos kulcsokat vagy hitelesítő adatokat a **lekérési** vagy **listázási** művelet során. A kulcsok mindig null értékűek, üresek vagy törölve vannak a válaszból. Egy különálló műveleti metódust kell meghívnia a titkos kulcsok vagy hitelesítő adatok lekéréséhez. A különálló műveletekkel különböző RBAC biztonsági engedélyeket állíthat be, ha esetleg valamely API mégis lekér/megjelenít titkos kulcsokat, míg más API-k nem. A hozzáférés RBAC használatával való kezeléséről további információt a [hozzáférés RBAC használatával való kezeléséről](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest) szóló szakaszban talál.
 
@@ -76,25 +76,20 @@ Tekintse meg a [beolvasni a tartalom a fő házirend - .NET](get-content-key-pol
 
 ## <a name="how-can-i-get-started-with-v3"></a>Hogyan kezdhetem meg a v3 használatát?
 
-A fejlesztők is használhatja a Media Services [REST API-val](https://go.microsoft.com/fwlink/p/?linkid=873030) vagy klienskódtárak, amelyek lehetővé teszik a REST API használatával hozhat létre egyszerűen, kezelésére és karbantartására használható egyéni multimédiás munkafolyamatokat. A Media Services v3 API alapján a [OpenAPI-specifikáció](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media) (korábbi nevén Swagger).
+Fejlesztési variuos eszközök és SDK-k használata a Media Services v3 API-val kapcsolatos további információkért lásd: [elkezdje](developers-guide.md).
 
-[Az Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) egy olyan eszköz, amely számára szeretne további tudnivalók a Media Services Windows-ügyfelek számára érhető el. AMSE egy Winforms /C# feltöltése, letöltése, kódolás, VOD-adatfolyam és tartalmat a Media Services élő alkalmazás. Az AMSE eszköz olyan ügyfelek, akik a Media Services teszteléséhez kód írása nélkül. Az AMSE kódot szeretne kifejleszteni a Media Services használatával ügyfeleink biztosítunk erőforrásként.
+## <a name="v3-content-map"></a>V3-tartalmak térképét
 
-AMSE, egy nyílt forráskódú projektje, a Közösség által biztosított támogatás (problémák jelenteni lehet https://github.com/Azure/Azure-Media-Services-Explorer/issues). A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információ: a [Gyakori](https://opensource.microsoft.com/codeofconduct/faq/) , vagy forduljon opencode@microsoft.com a további kérdéseit és észrevételeit.
- 
-Az Azure Media Services a következő ügyfélkódtárak támogatja: 
+A Media Services v3 tartalmat az alábbi struktúrával (a tartalomjegyzéket is megtalálható) szerint van rendezve:
 
-|API-referenciák|SDK-k/eszközök|Példák|
-|---|---|---|---|
-|[REST-referencia](https://aka.ms/ams-v3-rest-ref)|[REST SDK](https://aka.ms/ams-v3-rest-sdk)|[REST Postman-példák](https://github.com/Azure-Samples/media-services-v3-rest-postman)<br/>[Azure Resource Manager-alapú REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)|
-|[Azure CLI-referencia](https://aka.ms/ams-v3-cli-ref)|[Azure CLI](https://aka.ms/ams-v3-cli)|[Azure parancssori felületi (CLI) példák](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)||
-|[.NET-referencia](https://aka.ms/ams-v3-dotnet-ref)|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-példák](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)||
-||[.NET Core SDK](https://aka.ms/ams-v3-dotnet-sdk) (válassza a **.NET CLI** fület)|[.NET Core-példák](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)||
-|[Java-referencia](https://aka.ms/ams-v3-java-ref)|[Java SDK](https://aka.ms/ams-v3-java-sdk)||
-|[Node.js-referencia](https://aka.ms/ams-v3-nodejs-ref)|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk)|[Node.js-minták](https://github.com/Azure-Samples/media-services-v3-node-tutorials)||
-|[Python-referencia](https://aka.ms/ams-v3-python-ref)|[Python SDK](https://aka.ms/ams-v3-python-sdk)||
-|[Go-referencia](https://aka.ms/ams-v3-go-ref)|[Go SDK](https://aka.ms/ams-v3-go-sdk)||
-|Ruby|[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
+|Szakaszok| Leírás|
+|---|---|
+| Áttekintés | A Media Services és mit tehet a szolgáltatás funkcióit mutatja be.|
+| Gyors útmutatók | Az új ügyfelek gyorsan kipróbálhatja a Media Services alapvető nap-1 utasítások megjelenítése.|
+| Oktatóanyagok | A Media Services leggyakoribb feladatok egy részének megjelenítése forgatókönyv-alapú eljárásokat.|
+| Példák | Kódminták mutató hivatkozásokat tartalmaz. |
+| Alapelvek | Magyarázatra van szüksége, és a Media Services v3 funkcióinak és diagramokat tartalmaz. Az alábbi témakörök ismertetik az alapvető fogalmakkal fejlesztés megkezdése előtt át kell tekinteni.<br/><br/>* A felhő feltöltés és tárolás<br/>* Encoding<br/>* A médiaelemzés<br/>* Packaging, delivery, protection<br/>* Élő streaming<br/>* A folyamatos figyelése<br/>* Player ügyfelek<br/><br/>és továbbiakat. |
+| Útmutatók | Bemutatják, hogyan lehet egy adott feladat végrehajtásához.|
 
 ## <a name="next-steps"></a>További lépések
 

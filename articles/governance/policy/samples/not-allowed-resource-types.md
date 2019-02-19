@@ -1,6 +1,6 @@
 ---
 title: Minta – nem engedélyezett erőforrástípusok
-description: Ez a mintaszabályzat megtiltja bizonyos erőforrástípusok üzembe helyezését.
+description: A szabályzatdefiníció-minta megakadályozza, hogy a megadott erőforrás-típus telepítését.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: e310cba1db2816b9d87b211d455c03aafc6bb110
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 159cc4e33df6ed86d21a6ed362087163200720f8
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244589"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338155"
 ---
-# <a name="not-allowed-resource-types"></a>Nem engedélyezett erőforrástípusok
+# <a name="sample---not-allowed-resource-types"></a>Minta – nem engedélyezett erőforrástípusok
 
 Ez a szabályzat megtiltja bizonyos erőforrástípusok üzembe helyezését. A letiltandó erőforrástípusok tömbjét Ön határozza meg.
 

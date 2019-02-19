@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 71ddf1d70953b721911a7315ab6875dd41a9a4db
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 394efd023382f9153a6869944a8a3a815203f9dd
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894173"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338597"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Oktatóanyag: A Media Services v3 élő Stream .NET használatával
 
@@ -126,7 +126,7 @@ Létrehozás kimenetek start Live, és állítsa le a törlésekor. Az élő kim
 #### <a name="create-a-streaming-locator"></a>A Streamelési Lokátorok létrehozásához
 
 > [!NOTE]
-> A Media Services-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
+> A Media Services-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, és kihasználhatja [dinamikus csomagolási](dynamic-packaging-overview.md) és dinamikus titkosítást, a tartalomstreameléshez használt streamvégpont, ahonnan tartalomstreameléshez kell lennie a a **futó** állapota. 
 
 Az élő kimeneti objektum egy Streamelési lokátor segítségével történő közzétételekor az élő esemény (akár a DVR időszak hossza) továbbra is csak megtekinthető a Streamelési lokátor lejárati vagy törlés, amelyiket hamarabb.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 80d84fcede0d293b083ea75f24e9b0bd3125b265
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 82885c00557c85fefcf221789263632e21bd77da
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959672"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56344029"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
@@ -69,7 +69,7 @@ Az Azure integrációs modulok létrehozásáról és konfigurálásáról az Az
 Egy saját üzemeltetésű IR a következőkre képes:
 
 - Másolási tevékenység futtatása felhőalapú adattárak és egy magánhálózaton lévő adattár között.
-- Az alábbi átalakítási tevékenységek számítási erőforrásokon, a helyszíni vagy Azure Virtual Network zahájeno: HDInsight Hive-tevékenység (BYOC), HDInsight Pig-tevékenység (BYOC), HDInsight MapReduce-tevékenység (BYOC), HDInsight Spark-tevékenység (BYOC), HDInsight Streaming-tevékenység (BYOC), Machine Learning Batch Execution-tevékenység, Machine Learning Update Resource tevékenységek, Stored Procedure-tevékenység, Data Lake Analytics U-SQL-tevékenység, egyéni .net-tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
+- Az alábbi átalakítási tevékenységek számítási erőforrásokon, a helyszíni vagy Azure Virtual Network zahájeno: HDInsight Hive-tevékenység (BYOC Bring Your saját fürt), HDInsight Pig-tevékenység (BYOC), HDInsight MapReduce-tevékenység (BYOC), HDInsight Spark-tevékenység (BYOC), HDInsight Streaming-tevékenység (BYOC), Machine Learning Batch Execution-tevékenység, Machine Learning Update Resource-tevékenységek, Stored Procedure-tevékenység, Data Lake Analytics U-SQL-tevékenység, egyéni .net-tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
 
 > [!NOTE] 
 > Saját üzemeltetésű integrációs modullal támogathat saját illesztőt igénylő adattárakat (például SAP Hana, MySQL stb.).  További információk: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,6 +1,6 @@
 ---
-title: Való hozzáférés RBAC- és Azure Resource Manager-sablonok kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és alkalmazások szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure Resource Manager-sablonok használatával hozzáférését.
+title: Rbac-RÓL és az Azure Resource Manager-sablonok használatával Azure-erőforrásokhoz való hozzáférés kezelése |} A Microsoft Docs
+description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és alkalmazások szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure Resource Manager-sablonok használatával Azure-erőforrásokhoz való hozzáférését.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b8c6ac78447a4e4db79ed75100222eee8d528b58
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 537ee35e96a41cd02605319e244d39c6567c3bf1
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696897"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337203"
 ---
-# <a name="manage-access-using-rbac-and-azure-resource-manager-templates"></a>Való hozzáférés RBAC- és Azure Resource Manager-sablonok kezelése
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Rbac-RÓL és az Azure Resource Manager-sablonok használatával Azure-erőforrásokhoz való hozzáférés kezelése
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. Mellett az Azure PowerShell vagy az Azure parancssori felület használata esetén az RBAC használatával Azure-erőforrásokhoz való hozzáférést kezelheti és [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md). Sablonok akkor lehet hasznos, ha erőforrások telepítése konzisztens és ismétlődő van szüksége. Ez a cikk bemutatja, hogyan kezelheti a hozzáférés RBAC és sablonok használatával.
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Mellett az Azure PowerShell vagy az Azure parancssori felület használata esetén az RBAC használatával Azure-erőforrásokhoz való hozzáférést kezelheti és [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md). Sablonok akkor lehet hasznos, ha erőforrások telepítése konzisztens és ismétlődő van szüksége. Ez a cikk bemutatja, hogyan kezelheti a hozzáférés RBAC és sablonok használatával.
 
 ## <a name="example-template-to-create-a-role-assignment"></a>Példasablon szerepkör-hozzárendelés létrehozása
 
@@ -251,6 +251,6 @@ Az Azure CLI használatával az előző sablon üzembe helyezéséhez kövesse a
     
 ## <a name="next-steps"></a>További lépések
 
-- [Létre és helyezhet üzembe az első Azure Resource Manager-sablon](../azure-resource-manager/resource-manager-create-first-template.md)
+- [Rövid útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 - [Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/?term=rbac)

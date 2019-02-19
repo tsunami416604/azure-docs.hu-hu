@@ -1,6 +1,6 @@
 ---
-title: Az Azure-erőforrások rendszerezése felügyeleti csoportok létrehozása
-description: Ismerje meg, hogyan kezelhet több olyan erőforrást az Azure felügyeleti csoportok létrehozása.
+title: Az Azure-erőforrások – Azure Cégirányítási rendszerezése felügyeleti csoportok létrehozása
+description: Ismerje meg, hogyan kezelhet több olyan erőforrást, a portál, az Azure PowerShell-lel és az Azure CLI használatával az Azure felügyeleti csoportok létrehozása.
 author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 699a9b7a371a004213419567d0672f56b5365598
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 01bfd10b2f37a7990ab9a1badfcb09422baa391a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620114"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342201"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erőforrás-szervezet és felügyeleti felügyeleti csoportok létrehozása
 
@@ -78,6 +78,6 @@ A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
 - [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](create.md)
 - [Felügyeleti csoportok módosítása, törlése és kezelése](manage.md)
-- [Tekintse át a felügyeleti csoportok az Azure PowerShell modul](https://aka.ms/mgPSdocs)
-- [Tekintse át a felügyeleti csoportok REST API-ban](https://aka.ms/mgAPIdocs)
-- [Tekintse át a felügyeleti csoportok az Azure CLI-vel](https://aka.ms/mgclidoc)
+- [Felügyeleti csoportok áttekintése az Azure PowerShell Erőforrások moduljában](https://aka.ms/mgPSdocs)
+- [Felügyeleti csoportok áttekintése a REST API-ban](https://aka.ms/mgAPIdocs)
+- [Felügyeleti csoportok áttekintése az Azure CLI-ben](https://aka.ms/mgclidoc)

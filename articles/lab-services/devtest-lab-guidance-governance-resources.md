@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: aff57e58ffd247bcc697908f2f25cbf17ff9b91a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c5514a43602106cf045b575d289e02b591468359
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244130"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338461"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Irányítás az Azure DevTest Labs-infrastruktúra - erőforrások
 Ez a cikk foglalkozik az igazítási és erőforrások kezelését a DevTest Labs a szervezeten belül. 
@@ -56,7 +56,7 @@ Hogyan karbantartása egy elnevezési konvenciója a DevTest Labs-környezetben?
 ### <a name="answer"></a>Válasz
 Előfordulhat, hogy szeretné kiterjeszteni a jelenlegi vállalati elnevezési konvenciók Azure műveletekhez, és azokat konzisztens a DevTest Labs-környezetben.
 
-DevTest Labs, javasoljuk, hogy adott kezdési házirendek. Ezek a szabályzatok központi parancsfájlt és a JSON-sablonok, ha egységes telepít. Házirendek elnevezési implementálható az előfizetői szintre vonatkoznak az Azure szabályzatokkal. JSON-minták az Azure Policy, lásd: [Azure Policy minták](../azure-policy/json-samples.md).
+DevTest Labs, javasoljuk, hogy adott kezdési házirendek. Ezek a szabályzatok központi parancsfájlt és a JSON-sablonok, ha egységes telepít. Házirendek elnevezési implementálható az előfizetői szintre vonatkoznak az Azure szabályzatokkal. JSON-minták az Azure Policy, lásd: [Azure Policy minták](../governance/policy/samples/index.md).
 
 ## <a name="number-of-users-per-lab-and-labs-per-organization"></a>Labor és a szervezet labs felhasználók száma
 

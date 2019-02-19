@@ -1,6 +1,6 @@
 ---
-title: Mi az a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-ban? | Microsoft Docs
-description: Az Azure-beli szerepköralapú hozzáférés-vezérlés (RBAC) áttekintése. Az Azure-beli erőforrások elérését szerepkörök hozzárendelésével vezérelheti.
+title: Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrások? | Microsoft Docs
+description: Szerepköralapú hozzáférés-vezérlés (RBAC) áttekintést kaphat az Azure-erőforrásokhoz. Szerepkör-hozzárendelésekkel Azure-erőforrásokhoz való hozzáférés szabályozásához.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 01/14/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c614ae9d157c6e4121701cb22213706020ee20a7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 2d8f3ffb4f7d90b053c8a285d62007f5655d9adb
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303318"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338631"
 ---
-# <a name="what-is-role-based-access-control-rbac"></a>Mi az a szerepköralapú hozzáférés-vezérlés (RBAC)?
+# <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrások?
 
 A felhőbeli erőforrások hozzáférésének kezelése kritikus fontosságú a felhőt használó vállalatok számára. A szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi annak meghatározását, kik férhetnek hozzá az Azure-erőforrásokhoz, mire használhatják őket, és mely területekhez kapnak hozzáférést.
 
-Az RBAC az [Azure Resource Managerre](../azure-resource-manager/resource-group-overview.md) épülő engedélyezési rendszer, amely részletes hozzáférés-kezelési lehetőségeket nyújt az Azure-beli erőforrásokhoz.
+Az RBAC egy engedélyezési rendszer épülő [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) , amely Azure-erőforrások részletes hozzáférés-vezérlést biztosít.
 
 ## <a name="what-can-i-do-with-rbac"></a>Mire használhatom az RBAC-t?
 
@@ -72,15 +72,15 @@ Az Azure számos [beépített szerepkört](built-in-roles.md) biztosít, amelyek
 - [Olvasó](built-in-roles.md#reader) – megtekintheti a meglévő Azure-erőforrásokat.
 - [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) – kezelheti a felhasználók Azure-erőforrásokhoz való hozzáférését.
 
-A többi beépített szerepkör adott Azure-erőforrások kezelését teszi lehetővé. Például a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
+A többi beépített szerepkör adott Azure-erőforrások kezelését teszi lehetővé. Például a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [egyéni szerepkörök az Azure-erőforrások](custom-roles.md).
 
-Az Azure-ban bevezettünk különféle adatműveleteket (ezek jelenleg előzetes verzióban érhetők el), amelyek használatával az egyes objektumokban lévő adatokhoz biztosítható hozzáférés. Ha például egy felhasználó adatolvasási hozzáféréssel rendelkezik egy tárfiókhoz, akkor olvashatja az adott tárfiókban lévő blobokat vagy üzeneteket. További információt [a szerepkör-definíciókat ismertető](role-definitions.md) témakörben olvashat.
+Az Azure-ban bevezettünk különféle adatműveleteket (ezek jelenleg előzetes verzióban érhetők el), amelyek használatával az egyes objektumokban lévő adatokhoz biztosítható hozzáférés. Ha például egy felhasználó adatolvasási hozzáféréssel rendelkezik egy tárfiókhoz, akkor olvashatja az adott tárfiókban lévő blobokat vagy üzeneteket. További információkért lásd: [megismerheti az Azure-erőforrások szerepkör-definíciók](role-definitions.md).
 
 ### <a name="scope"></a>Hatókör
 
 *Hatókör* , amelyekre vonatkozik a hozzáférési erőforrások készlete. Szerepkörök hozzárendelésekor hatókör meghatározásával tovább korlátozhatja az engedélyezett műveletek körét. Ez hasznos lehet például, ha egy felhasználót [Webhelyek közreműködője](built-in-roles.md#website-contributor) szerepkörrel szeretne felruházni, de csak egyetlen erőforráscsoportra vonatkozóan.
 
-Az Azure-ban a hatókörök több szinten határozhatók meg: a [felügyeleti csoport](../azure-resource-manager/management-groups-overview.md), az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. A hatókörök szülő-gyermek (származtatott) kapcsolatokba vannak rendezve.
+Az Azure-ban a hatókörök több szinten határozhatók meg: a [felügyeleti csoport](../governance/management-groups/index.md), az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. A hatókörök szülő-gyermek (származtatott) kapcsolatokba vannak rendezve.
 
 ![Szerepkör-hozzárendelés hatóköre](./media/overview/rbac-scope.png)
 
@@ -108,7 +108,7 @@ Tehát mi történik, ha több átfedő szerepkör-hozzárendeléseket? RBAC-add
 
 ## <a name="deny-assignments"></a>Megtagadás-hozzárendelések
 
-Korábban az RBAC csak megengedő, megtagadás nélküli modell volt, de az RBAC jelenleg korlátozott módon támogatja a megtagadás-hozzárendeléseket. Szerepkör-hozzárendelés, hasonlóan egy *hozzárendelés megtagadása* rendeli egy sor megtagadási műveletek egy felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás céljából megtagadja a hozzáférést egy adott hatókörben. Szerepkör-hozzárendelés határozza meg azon műveletek, amelyek *engedélyezett*, míg egy megtagadási hozzárendelés határozza meg azon műveletek, amelyek *nem engedélyezett*. Vagyis a megtagadás-hozzárendelések akkor is meggátolják, hogy a felhasználók elvégezzék a megadott műveleteket, ha egy szerepkör-hozzárendelés hozzáférést nyújt azokhoz. A megtagadás-hozzárendelések elsőbbséget élveznek a szerepkör-hozzárendelésekkel szemben. Jelenleg a megtagadás-hozzárendelések **csak olvashatók**, és csak az Azure állíthatja be azokat. További információkért lásd: [Understand megtagadása hozzárendelések](deny-assignments.md) és [megtekintése az Azure portal használatával hozzárendelések megtagadása](deny-assignments-portal.md).
+Korábban az RBAC csak megengedő, megtagadás nélküli modell volt, de az RBAC jelenleg korlátozott módon támogatja a megtagadás-hozzárendeléseket. Szerepkör-hozzárendelés, hasonlóan egy *hozzárendelés megtagadása* rendeli egy sor megtagadási műveletek egy felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás céljából megtagadja a hozzáférést egy adott hatókörben. Szerepkör-hozzárendelés határozza meg azon műveletek, amelyek *engedélyezett*, míg egy megtagadási hozzárendelés határozza meg azon műveletek, amelyek *nem engedélyezett*. Vagyis a megtagadás-hozzárendelések akkor is meggátolják, hogy a felhasználók elvégezzék a megadott műveleteket, ha egy szerepkör-hozzárendelés hozzáférést nyújt azokhoz. A megtagadás-hozzárendelések elsőbbséget élveznek a szerepkör-hozzárendelésekkel szemben. Jelenleg a megtagadás-hozzárendelések **csak olvashatók**, és csak az Azure állíthatja be azokat. További információkért lásd: [megismerése az Azure-erőforrások hozzárendelések megtagadása](deny-assignments.md) és [megtekintése az Azure portal segítségével Azure-erőforrások hozzárendelések megtagadása](deny-assignments-portal.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Hogyan határozza meg az RBAC, hogy egy felhasználó rendelkezik-e hozzáféréssel egy erőforráshoz?
 
@@ -132,7 +132,7 @@ Az RBAC a következő főbb lépésekkel határozza meg, hogy Ön hozzáféréss
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rövid útmutató: Hozzáférés engedélyezése egy felhasználó RBAC és az Azure portal használatával](quickstart-assign-role-user-portal.md)
-- [Hozzáférés kezelése az RBAC és az Azure Portal használatával](role-assignments-portal.md)
+- [Rövid útmutató: Nézet a hozzáférést a felhasználó rendelkezik az Azure-erőforrásokat az Azure portal használatával](check-access.md)
+- [Rbac-RÓL és az Azure portal segítségével Azure-erőforrásokhoz való hozzáférés kezelése](role-assignments-portal.md)
 - [A különböző Azure-beli szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
 - [Enterprise Cloud Adoption: Erőforráshozzáférés-kezelés az Azure-ban](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A Cisco Spark az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Cisco Spark között.
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Cisco Webex |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Cisco Webex között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87161c79bc58387d97863581675bb49f1e09160f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a1460fba4d6897dfcc6bf40b6e02ab856ffe8456
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191554"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340469"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-spark"></a>Oktatóanyag: A Cisco Spark az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Oktatóanyag: Cisco Webex az Azure Active Directory-integráció
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a Cisco Spark az Azure Active Directory (Azure AD).
-Cisco Spark integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja, hogyan Cisco Webex integrálása az Azure Active Directory (Azure AD).
+Cisco Webex integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-* Szabályozhatja, ki férhet hozzá a Cisco Spark az Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezett a Cisco Spark (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Szabályozhatja, ki férhet hozzá a Cisco Webex Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezve Cisco Webex (egyszeri bejelentkezés) az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
 Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,22 +36,22 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Cisco Spark, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása a Cisco Webex, a következőkre van szükség:
 
 * Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Cisco Spark egyszeri bejelentkezés engedélyezve van az előfizetés
+* Cisco Webex egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-* Cisco Spark támogatja **SP** által kezdeményezett egyszeri bejelentkezés
+* Cisco Webex támogatja **SP** által kezdeményezett egyszeri bejelentkezés
 
-## <a name="adding-cisco-spark-from-the-gallery"></a>Cisco Spark hozzáadása a katalógusból
+## <a name="adding-cisco-webex-from-the-gallery"></a>Cisco Webex hozzáadása a katalógusból
 
-Cisco Spark integrálása az Azure AD beállítása, hozzá kell Cisco Spark a galériából a felügyelt SaaS-alkalmazások listájára.
+Az Azure AD integrálása a Cisco Webex konfigurálásához hozzá kell Cisco Webex a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Cisco Spark hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Cisco Webex hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
@@ -65,31 +65,31 @@ Cisco Spark integrálása az Azure AD beállítása, hozzá kell Cisco Spark a g
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Cisco Spark**válassza **Cisco Spark** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Cisco Webex**válassza **Cisco Webex** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Cisco Spark, a találatok listájában](common/search-new-app.png)
+     ![Cisco Webex a találatok listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a Cisco Spark nevű tesztfelhasználó alapján **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó a Cisco Spark hivatkozás kapcsolata kell hozható létre.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a Cisco Webex nevű tesztfelhasználó alapján **Britta Simon**.
+Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó a Cisco Webex hivatkozás kapcsolata kell hozható létre.
 
-Az Azure AD egyszeri bejelentkezés a Cisco Spark tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés a Cisco Webex tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Cisco Spark egyszeri bejelentkezés konfigurálása](#configure-cisco-spark-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **[Cisco Webex egyszeri bejelentkezés konfigurálása](#configure-cisco-webex-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre a Cisco Spark tesztfelhasználót](#create-cisco-spark-test-user)**  – egy megfelelője a Britta Simon Cisco Spark, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+5. **[Hozzon létre a Cisco Webex tesztfelhasználót](#create-cisco-webex-test-user)**  – egy megfelelője a Britta Simon Cisco Webex, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés konfigurálásához a Cisco Spark, hajtsa végre az alábbi lépéseket:
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Cisco Webex, hajtsa végre az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Cisco Spark** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **Cisco Webex** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -103,24 +103,24 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Cisco Spark, hajtsa v�
 
 4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Cisco Spark tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+    ![Cisco Webex tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
     a. Az a **bejelentkezési URL-cím** szövegmezőbe írjon be egy URL-cím: `https://web.ciscospark.com/#/signin`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://idbroker.webex.com/<companyname>`
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://idbroker.webex.com/<Org Id>`
 
     > [!NOTE]
-    > Az azonosító értéke nem valódi. Ez az érték frissítse a tényleges azonosítója. Kapcsolattartó [Cisco Spark ügyfél-támogatási csapatának](https://support.ciscospark.com/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Az azonosító értéke nem valódi. Ez az érték frissítse a tényleges azonosítója. Ha rendelkezik a Service Provider metaadatok, töltse fel a a **alapszintű SAML-konfigurációja** szakaszban, majd a **azonosító (entityid)** értéket automatikusan kitölti a rendszer automatikusan lekéri.
 
-5. Cisco Spark-alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+5. Cisco Webex-alkalmazásban a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva adja hozzá az attribútumokat.
 
     ![image](common/edit-attribute.png)
 
-6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+6. Emellett a fent Cisco Webex-alkalmazásban vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
     
     | Name (Név) |  Adatforrás-attribútum|
     | ---------------|--------- |
-    | egyedi azonosítója | user.userprincipalname |
+    | UID | user.userprincipalname |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -144,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Cisco Spark, hajtsa v�
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-8. Az a **beállításához a Cisco Spark** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+8. Az a **beállításához a Cisco Webex** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
@@ -154,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Cisco Spark, hajtsa v�
 
     c. Kijelentkezési URL
 
-### <a name="configure-cisco-spark-single-sign-on"></a>Cisco Spark egyszeri bejelentkezés konfigurálása
+### <a name="configure-cisco-webex-single-sign-on"></a>Cisco Webex egyszeri bejelentkezés konfigurálása
 
 1. Jelentkezzen be a [Cisco együttműködési Felhőfelügyelet](https://admin.ciscospark.com/) a teljes körű rendszergazdai hitelesítő adataival.
 
@@ -199,15 +199,15 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával Cisco Spark Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Cisco Webex Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Cisco Spark**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Cisco Webex**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Cisco Spark**.
+2. Az alkalmazások listájában jelölje ki a **Cisco Webex**.
 
-    ![Az alkalmazások listáját a Cisco Spark hivatkozás](common/all-applications.png)
+    ![Az alkalmazások listáját a Cisco Webex hivatkozás](common/all-applications.png)
 
 3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
@@ -223,9 +223,9 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-### <a name="create-cisco-spark-test-user"></a>Cisco Spark tesztfelhasználó létrehozása
+### <a name="create-cisco-webex-test-user"></a>Cisco Webex tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Cisco Spark Britta Simon nevű felhasználó létrehozásához. Ebben a szakaszban egy Cisco Spark Britta Simon nevű felhasználó létrehozásához.
+Ebben a szakaszban egy Cisco Webex Britta Simon nevű felhasználói hoz létre. Ebben a szakaszban egy Cisco Webex Britta Simon nevű felhasználói hoz létre.
 
 1. Nyissa meg a [Cisco együttműködési Felhőfelügyelet](https://admin.ciscospark.com/) a teljes körű rendszergazdai hitelesítő adataival.
 
@@ -253,7 +253,7 @@ Ebben a szakaszban egy Cisco Spark Britta Simon nevű felhasználó létrehozás
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Cisco Spark csempére kattint, akkor kell automatikusan megtörténik a a Cisco Spark, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Cisco Webex csempére kattint, meg kell lehet automatikusan bejelentkezett a Cisco Webex, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

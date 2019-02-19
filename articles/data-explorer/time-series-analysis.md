@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: dd9314b8c61a98e6bc080503bcdd6b5c6257bd49
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b7d498b34fa3e247d5d4688f8d87213e7707fd86
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750562"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408782"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Az Azure Data Explorer idősoros elemzés
 
@@ -224,9 +224,9 @@ demo_many_series1
 |   |   |
 | --- | --- |
 |   | Darabszám |
-|   | 23115 |
+|   | 18339 |
 
-Most fogunk olvasási száma mérőszám 23115 idősorozat csoportját hozhatja létre. Adjuk hozzá a `by` záradékot a márka sorozat utasítás lineáris regressziós érvényesek, és válassza a felső két idősorozat, akinek a legjelentősebb csökkenő trend:
+Most fogunk olvasási száma mérőszám 18339 idősorozat csoportját hozhatja létre. Adjuk hozzá a `by` záradékot a márka sorozat utasítás lineáris regressziós érvényesek, és válassza a felső két idősorozat, akinek a legjelentősebb csökkenő trend:
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -235,7 +235,7 @@ demo_many_series1
 | make-series reads=avg(DataRead) on TIMESTAMP in range(min_t, max_t, 1h) by Loc, Op, DB
 | extend (rsquare, slope) = series_fit_line(reads)
 | top 2 by slope asc 
-| render timechart with(title='Service Traffic Outage for 2 instances (out of 23115)')
+| render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
 ![A Time series az első két](media/time-series-analysis/time-series-top-2.png)
@@ -258,6 +258,6 @@ demo_many_series1
 |   | Hely 15 | 37 | 1151 | -102743.910227889 |
 |   | Hely 13 | 37 | 1249 | -86303.2334644601 |
 
-Kevesebb mint két perc alatt ADX elemzett több mint 20 000 idősorozat, és azt észlelte, amelyben az olvasási száma hirtelen eldobott két rendellenes idősorozat.
+Kevesebb mint két perc alatt ADX közel 20 000 idősorozat elemzett, és azt észlelte, amelyben az olvasási száma hirtelen eldobott két rendellenes idősorozat.
 
 Speciális képességek ADX gyors teljesítményt kombinálva adja meg a idősoros elemzés egyedi és hatékony megoldást.

@@ -1,6 +1,6 @@
 ---
-title: Listában elutasítása hozzárendelések RBAC és a REST API – Azure |} A Microsoft Docs
-description: Ismerje meg, hogyan listában elutasítása hozzárendeléseket felhasználók, csoportok és alkalmazások, a szerepköralapú hozzáférés-vezérlés (RBAC) és a REST API használatával.
+title: Listában elutasítása hozzárendelések Azure-erőforrások használatával a REST API – Azure |} A Microsoft Docs
+description: Megtudhatja, hogyan listában elutasítása a felhasználók, csoportok és alkalmazások, a szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure-erőforrások és a REST API-hozzárendeléseit.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 44c1d3b18bb9bdc63247379fe3f277cb6542f2da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 29b8e0953109238b724cc8df9f456706f71a041e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975584"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341623"
 ---
-# <a name="list-deny-assignments-using-rbac-and-the-rest-api"></a>Listában elutasítása hozzárendelések rbac-RÓL és a REST API használatával
+# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Listában elutasítása a REST API használatával az Azure erőforrás-hozzárendelések
 
-Jelenleg a hozzárendelés elutasítása **csak olvasható** és lze nastavit pouze az Azure-ban. Annak ellenére, hogy nem hozható létre a saját megtagadása hozzárendelések listázhatja hozzárendelések megtagadja, mert hatással lehet a hatályos engedélyek. Ez a cikk bemutatja, hogyan, hogy a listában elutasítása hozzárendelések rbac-RÓL és a REST API használatával.
+Jelenleg a megtagadás-hozzárendelések **csak olvashatók**, és csak az Azure állíthatja be azokat. Nem hozhat létre saját megtagadási hozzárendeléseket, azonban listázhatja a megtagadás-hozzárendeléseket, mert ezek hatással lehetnek a hatályos engedélyekre. Ez a cikk bemutatja, hogyan, hogy a listában elutasítása hozzárendelések rbac-RÓL és a REST API használatával.
 
 ## <a name="list-a-single-deny-assignment"></a>Egy listában elutasítása hozzárendelés
 
@@ -36,7 +36,7 @@ Jelenleg a hozzárendelés elutasítása **csak olvasható** és lze nastavit po
 
 1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné a Megtagadás hozzárendelések listázása.
 
-    | Hatókör | Típus |
+    | Hatókör | Typo |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
@@ -60,7 +60,7 @@ Jelenleg a hozzárendelés elutasítása **csak olvasható** és lze nastavit po
 
 1. Cserélje le az URI-belül *{hatókör}* a hatókörben, amelynek meg szeretné a Megtagadás hozzárendelések listázása.
 
-    | Hatókör | Típus |
+    | Hatókör | Typo |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Előfizetés |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
@@ -95,6 +95,6 @@ Jelenleg a hozzárendelés elutasítása **csak olvasható** és lze nastavit po
 
 ## <a name="next-steps"></a>További lépések
 
-- [Megismerheti hozzárendelés elutasítása](deny-assignments.md)
-- [Az Azure Active Directoryban egy globális rendszergazda hozzáférési szintjének emelése](elevate-access-global-admin.md)
+- [Megismerheti az Azure-erőforrások hozzárendelések megtagadása](deny-assignments.md)
+- [Globális rendszergazda jogosultságszintjének emelése az Azure Active Directoryban](elevate-access-global-admin.md)
 - [Azure REST API-referencia](/rest/api/azure/)

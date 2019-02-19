@@ -1,6 +1,6 @@
 ---
 title: A lekérdezési nyelv ismertetése
-description: A lekérdezési nyelv, az Azure-erőforrás Graph működését ismerteti.
+description: A Kusto lekérdezési nyelvet használják az Azure-erőforrás Graph működését ismerteti.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 62f61bfea3896fd3828253f5ec16cc38fe3ca007
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: cc792d27890b5d994b62784eaa511df990f9b5ec
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316672"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339974"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure-erőforrás Graph lekérdezési nyelv ismertetése
 
@@ -27,19 +27,19 @@ Erőforrás-grafikon által használt lekérdezési nyelvvel kapcsolatos legjobb
 A következő erőforrás Graph támogatott táblázatos szereplők listáját:
 
 - [count](/azure/kusto/query/countoperator)
-- [Különböző](/azure/kusto/query/distinctoperator)
-- [Kiterjesztése](/azure/kusto/query/extendoperator)
-- [Korlát](/azure/kusto/query/limitoperator)
+- [distinct](/azure/kusto/query/distinctoperator)
+- [extend](/azure/kusto/query/extendoperator)
+- [limit](/azure/kusto/query/limitoperator)
 - [rendezési](/azure/kusto/query/orderoperator)
-- [Projekt](/azure/kusto/query/projectoperator)
-- [Projekt kötelező](/azure/kusto/query/projectawayoperator)
+- [project](/azure/kusto/query/projectoperator)
+- [project-away](/azure/kusto/query/projectawayoperator)
 - [Minta](/azure/kusto/query/sampleoperator)
-- [minta – különálló](/azure/kusto/query/sampledistinctoperator)
+- [sample-distinct](/azure/kusto/query/sampledistinctoperator)
 - [Rendezés](/azure/kusto/query/sortoperator)
-- [Összegzés](/azure/kusto/query/summarizeoperator)
+- [summarize](/azure/kusto/query/summarizeoperator)
 - [hajtsa végre a megfelelő](/azure/kusto/query/takeoperator)
 - [felső](/azure/kusto/query/topoperator)
-- [felső – beágyazott](/azure/kusto/query/topnestedoperator)
+- [top-nested](/azure/kusto/query/topnestedoperator)
 - [TOP-hitters](/azure/kusto/query/tophittersoperator)
 - [ahol](/azure/kusto/query/whereoperator)
 
@@ -47,7 +47,7 @@ A következő erőforrás Graph támogatott táblázatos szereplők listáját:
 
 A következő erőforrás Graph támogatott funkciók listáját:
 
-- [Ago()](/azure/kusto/query/agofunction)
+- [ago()](/azure/kusto/query/agofunction)
 - [buildschema()](/azure/kusto/query/buildschema-aggfunction)
 - [strcat()](/azure/kusto/query/strcatfunction)
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)

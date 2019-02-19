@@ -1,6 +1,6 @@
 ---
 title: Minta - engedélyezett load balancer Termékváltozataival
-description: Ez a mintaszabályzat megköveteli egy jóváhagyott termékváltozat használatát a terheléselosztókban.
+description: A szabályzatdefiníció-minta megköveteli, hogy a load Balancer terheléselosztók egy jóváhagyott Termékváltozatot használja.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 6adebea6a6cce1844e413e460a06fd1a7eeb3a2a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: b65761d0c325f46a54fc64d39c20f9d1e10ec412
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241954"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341879"
 ---
-# <a name="allowed-load-balancer-skus"></a>Engedélyezett termékváltozatok terheléselosztókhoz
+# <a name="sample---allowed-load-balancer-skus"></a>Minta - engedélyezett load balancer Termékváltozataival
 
 Ez a szabályzat megköveteli egy jóváhagyott termékváltozat használatát a terheléselosztókban. Meg kell adnia egy engedélyezett termékváltozatokat tartalmazó tömböt.
 

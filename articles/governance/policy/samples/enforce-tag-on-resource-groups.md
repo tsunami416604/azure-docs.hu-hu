@@ -1,6 +1,6 @@
 ---
 title: Minta – címke és címke értékének az erőforráscsoportokkal kényszerítése
-description: Ez a mintaszabályzat előírja egy címke és egy érték használatát egy erőforráscsoporthoz.
+description: A szabályzatdefiníció-minta egy címke és a egy erőforráscsoportot egy érték szükséges.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8fd9ba2e6e5eae43476102c8928c67d6015ec2eb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 73990de30525dff4e3a0981ebca96368f56845fe
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245660"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339073"
 ---
-# <a name="enforce-tag-and-its-value-on-resource-groups"></a>Címke és címkeérték kényszerített használata erőforráscsoportokra
+# <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Minta – címke és címke értékének az erőforráscsoportokkal kényszerítése
 
 Ez a szabályzat előírja egy címke és egy érték használatát egy erőforráscsoporthoz. Ön adja meg a kötelező címkenevet és -értéket.
 

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: c59ef72f6e836b9cdf6899d917701555fc5e1988
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 01d452f97134093e9b40b6ec32f1c9fed41564aa
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268769"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343051"
 ---
 # <a name="azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések
-Az Azure Monitor naplóira Azure adatkezelő épül, és az Azure Monitor log-lekérdezések használata az azonos Kusto-lekérdezési nyelv. A [Azure adatkezelő lekérdezési nyelvi dokumentáció](/azure/kusto/query) rendelkezik az összes részletes adat a nyelv és kell lennie az Azure Monitor log-lekérdezések írására szolgáló elsődleges erőforrás. Ez a lap egyéb forrásokra mutató hivatkozásokat biztosít, megtudhatja, hogyan kell lekérdezéseket írni és a különbség az Azure Monitor megvalósításra, a nyelv.
+Az Azure Monitor naplóira Azure adatkezelő épül, és az Azure Monitor log-lekérdezések használata az azonos Kusto-lekérdezési nyelv. A [Kusto-lekérdezés nyelvi dokumentáció](/azure/kusto/query) rendelkezik az összes részletes adat a nyelv és kell lennie az Azure Monitor log-lekérdezések írására szolgáló elsődleges erőforrás. Ez a lap egyéb forrásokra mutató hivatkozásokat biztosít, megtudhatja, hogyan kell lekérdezéseket írni és a különbség az Azure Monitor megvalósításra, a nyelv.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 

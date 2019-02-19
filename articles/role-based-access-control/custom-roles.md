@@ -1,6 +1,6 @@
 ---
-title: Egyéni szerepkörök az Azure-ban |} A Microsoft Docs
-description: Ismerje meg, hogyan határozza meg az egyéni szerepkörök az Azure szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést, az Azure-erőforrások számára.
+title: Egyéni szerepkörök az Azure-erőforrások |} A Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre egyéni szerepköröket a szerepköralapú hozzáférés-vezérléssel (RBAC) részletes hozzáférés-vezérlést Azure-erőforrások számára.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d2e3dc989a44de0c7c091dfbe1254a0e204faae
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6307c57f32700c0c2dd2e5da15b98a2a54dbe9c4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697129"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339328"
 ---
-# <a name="custom-roles-in-azure"></a>Egyéni szerepkörök az Azure-ban
+# <a name="custom-roles-for-azure-resources"></a>Egyéni szerepkörök az Azure-erőforrásokhoz
 
-Ha a [beépített szerepkörök](built-in-roles.md) nem felelnek meg a cég vagy intézmény igényeinek, saját egyéni szerepköröket is létrehozhat. Csakúgy, mint a beépített szerepkörök felhasználók, csoportok és szolgáltatásnevek előfizetés, erőforráscsoport és erőforrás-hatókörök is egyéni szerepkörök hozzárendelése. Egyéni szerepkörök az Azure Active Directory (Azure AD) könyvtárban tárolja, és előfizetések között megoszthatók. Minden könyvtár legfeljebb 2000 egyéni szerepkörök is rendelkezhet. Egyéni szerepkörök az Azure PowerShell, az Azure CLI vagy a REST API használatával is létrehozható.
+Ha a [beépített szerepkörök az Azure-erőforrások](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, saját egyéni szerepköröket is létrehozhat. Csakúgy, mint a beépített szerepkörök felhasználók, csoportok és szolgáltatásnevek előfizetés, erőforráscsoport és erőforrás-hatókörök is egyéni szerepkörök hozzárendelése. Egyéni szerepkörök az Azure Active Directory (Azure AD) könyvtárban tárolja, és előfizetések között megoszthatók. Minden könyvtár legfeljebb 2000 egyéni szerepkörök is rendelkezhet. Egyéni szerepkörök az Azure PowerShell, az Azure CLI vagy a REST API használatával is létrehozható.
 
 ## <a name="custom-role-example"></a>Egyéni szerepkör-példa
 
@@ -107,7 +107,7 @@ Akárcsak a beépített szerepkörök a `AssignableScopes` tulajdonság határoz
 | Egyéni szerepkör megtekintése | `Microsoft.Authorization/ roleDefinition/read` | Ez a művelet egy hatókörben engedéllyel rendelkező felhasználók megtekinthetik az adott hatókörben hozzárendelés elérhető egyéni szerepkört. Összes beépített szerepkört engedélyezése egyéni szerepkörök hozzárendelés elérhető legyen. |
 
 ## <a name="next-steps"></a>További lépések
-- [Egyéni szerepkörök létrehozása az Azure PowerShell használatával](custom-roles-powershell.md)
-- [Egyéni szerepkörök létrehozása az Azure CLI használatával](custom-roles-cli.md)
-- [Szerepkör-definíciók ismertetése](role-definitions.md)
-- [Az Azure-beli RBAC hibaelhárítása](troubleshooting.md)
+- [Hozzon létre egyéni szerepkörök az Azure-erőforrások Azure PowerShell-lel](custom-roles-powershell.md)
+- [Egyéni szerepkörök az Azure CLI használatával Azure-erőforrások létrehozása](custom-roles-cli.md)
+- [Megismerheti az Azure-erőforrások szerepkör-definíciók](role-definitions.md)
+- [Az RBAC hibaelhárítása az Azure-erőforrásokhoz](troubleshooting.md)

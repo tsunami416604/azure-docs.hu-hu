@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: ade5a39273aa807f6c69f76342a0f715c7a96309
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 5e19f7cd2aa249e1c9587963e005e8114eacbdb0
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327160"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342049"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Podok hálózati házirendek segítségével az Azure Kubernetes Service (AKS) közötti adatforgalom védelme
 
@@ -242,6 +242,9 @@ spec:
           role: frontend
 ```
 
+> [!NOTE]
+> Használja a hálózati házirend- *namespaceSelector* és a egy *podSelector* elem a bejövő szabály. A YAML szintaxisa a következő fontos lehet a bejövő szabályok a additív vagy sem. Mindkét elem ebben a példában meg kell egyeznie a alkalmazni bejövő szabály. Kubernetes terméknél korábbi verziókat *1.12* előfordulhat, hogy ezek az elemek értelmezi helyesen és nem a hálózati forgalom korlátozására a várt módon. További információkért lásd: [viselkedését, és a választók][policy-rules].
+
 A frissített hálózati csoportházirend használatával alkalmazza az [a kubectl a alkalmazni] [ kubectl-apply] parancsot, majd adja meg a YAML-jegyzék nevét:
 
 ```azurecli-interactive
@@ -442,6 +445,7 @@ Szabályzatokkal kapcsolatos további információkért lásd: [Kubernetes hál�
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

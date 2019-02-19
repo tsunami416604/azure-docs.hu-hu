@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 04a923a8bc022aefb667489702c0e74493df94a8
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 5faea45a55d69cece56137d70862d80dfe335971
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652761"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342456"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Adatok tömeges betöltése az Apache Phoenixbe a psql használatával
 
@@ -115,7 +115,7 @@ Nagyobb átviteli sebességet betöltése elosztva a fürtben, a MapReduce betö
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
     ```
 
-8. A MapReduce-val való használatához ADLS keresse meg az ADLS gyökérkönyvtárban, amely a `hbase.rootdir` értékét `hbase-site.xml`. Az alábbi parancsban az ADLS gyökérkönyvtárában van `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. Ebben a parancsban adja meg az ADLS bemeneti és kimeneti paraméterként mappák:
+8. A MapReduce használata Azure Data Lake Storage, keresse meg a Data Lake Storage gyökérkönyvtár, amely a `hbase.rootdir` értékét `hbase-site.xml`. A következő parancsot a Data Lake Storage gyökérkönyvtár nem `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. Ebben a parancsban adja meg a Data Lake Storage bemeneti és kimeneti paraméterként mappák:
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -127,7 +127,7 @@ Nagyobb átviteli sebességet betöltése elosztva a fürtben, a MapReduce betö
 
 ## <a name="recommendations"></a>Javaslatok
 
-* A bejövő és kimenő mappákban WASB vagy az ADLS az azonos adattárolóra használja. Adatok átvitele WASB ADLS, használhatja a `distcp` parancsot:
+* Az azonos adattárolóra használja a bejövő és kimenő mappákban, vagy az Azure Storage (WASB), vagy az Azure Data Lake Storage (ADL). Adatok átviteléhez az Azure Storage-ból a Data Lake Storage, használhatja a `distcp` parancsot:
 
     ```bash
     hadoop distcp wasb://@.blob.core.windows.net/example/data/gutenberg adl://.azuredatalakestore.net:443/myfolder
@@ -144,4 +144,4 @@ Nagyobb átviteli sebességet betöltése elosztva a fürtben, a MapReduce betö
 * [Adatok kötegelt betöltése az Apache Phoenixhez](https://phoenix.apache.org/bulk_dataload.html)
 * [Az Apache HBase Linux-alapú Apache Phoenix használata a HDInsight-fürtök](../hbase/apache-hbase-phoenix-squirrel-linux.md)
 * [Sózott táblák](https://phoenix.apache.org/salted.html)
-* [Az Apache Phoenix szintaxis](https://phoenix.apache.org/language/index.html)
+* [Apache Phoenix Grammar](https://phoenix.apache.org/language/index.html)

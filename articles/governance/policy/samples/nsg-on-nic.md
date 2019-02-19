@@ -1,6 +1,6 @@
 ---
 title: Minta - NSG-szor minden hálózati adapter
-description: Ez a mintaszabályzat megköveteli, hogy minden egyes virtuális hálózati adapter egy bizonyos hálózati biztonsági csoportot használjon.
+description: A szabályzatdefiníció-minta szükséges szolgál, hogy egy adott hálózati biztonsági csoport minden virtuális hálózati adapterhez.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 37701a2240f5b017efdbd051972952c9f0449d69
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: d297d296f8b33122ce2b8079c5ee6c79705bcc55
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245966"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342558"
 ---
-# <a name="nsg-x-on-every-nic"></a>Hálózati biztonsági csoport minden hálózati adapteren
+# <a name="sample---network-security-group-x-on-every-nic"></a>Minta – a hálózati biztonsági csoport X minden hálózati adapter
 
 Ez a szabályzat megköveteli, hogy minden egyes virtuális hálózati adapter egy bizonyos hálózati biztonsági csoportot használjon. A használandó hálózati biztonsági csoport azonosítóját Ön határozza meg.
 

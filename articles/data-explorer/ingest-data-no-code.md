@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 2/5/2019
-ms.openlocfilehash: 39019c4b11d055aa8f550928bd677e4ce33d6252
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 11fab8b546bff4c990d75bac341bec645267caea
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885576"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408527"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Oktatóanyag: Az Azure Data Explorer adatokat egyetlen sor kód nélkül
 
@@ -210,8 +210,8 @@ Az adatok leképezése a tábla használja a következő lekérdezést:
             ResultType = tostring(events["resultType"]),
             ResultSignature = tostring(events["resultSignature"]),
             DurationMs = toint(events["durationMs"]),
-            IdentityAuthorization = events["identity.authorization"],
-            IdentityClaims = events["identity.claims"],
+            IdentityAuthorization = events.identity.authorization,
+            IdentityClaims = events.identity.claims,
             Location = tostring(events["location"]),
             Level = tostring(events["level"])
     }
@@ -340,7 +340,7 @@ Válasszon ki egy erőforrást, ahonnan a metrikák exportálása. Többféle er
     | Oszlopleképezés | *DiagnosticLogsRecordsMapping* | A létrehozott hozzárendelést *AzureMonitoring* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal *DiagnosticLogsRecords*.|
     | | |
 
-1. Kattintson a **Létrehozás** gombra.  
+1. Kattintson a **Create** (Létrehozás) gombra  
 
 ### <a name="activity-logs-data-connection"></a>Tevékenységnaplók adatkapcsolat
 
@@ -369,7 +369,7 @@ Ismételje meg a [diagnosztikai naplók adatkapcsolat](#diagnostic-logs-data-con
     | Oszlopleképezés | *ActivityLogsRawRecordsMapping* | A létrehozott hozzárendelést *AzureMonitoring* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal *ActivityLogsRawRecords*.|
     | | |
 
-1. Kattintson a **Létrehozás** gombra.  
+1. Kattintson a **Create** (Létrehozás) gombra  
 
 ## <a name="query-the-new-tables"></a>Az új táblák lekérdezése
 

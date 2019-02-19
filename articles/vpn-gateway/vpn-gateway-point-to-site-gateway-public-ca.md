@@ -5,20 +5,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: ac1ae4125418a9c0b3e9587cd03a44e752ac8f82
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b89ba054040229d9925b9dbbc64d27eed171613e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236957"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339872"
 ---
 # <a name="transition-from-self-signed-to-public-ca-certificates-for-p2s-gateways"></a>Áttérés a önaláírt a P2S-átjárók nyilvános hitelesítésszolgáltató tanúsítványai
 
-Az Azure VPN Gateway már nem átjárók P2S-kapcsolatok önaláírt tanúsítványokat állít. Kiállított tanúsítványok most már aláírt szerint egy nyilvános hitelesítésszolgáltató (CA). Azonban régebbi átjárók előfordulhat, hogy továbbra is az önaláírt tanúsítványokat. Önaláírt tanúsítványok közelében a lejárati dátumnak és nyilvános hitelesítésszolgáltató tanúsítványokat kell átmenet.
+Az Azure VPN Gateway már nem Azure-szintű önaláírt tanúsítványokat állít a P2S-kapcsolatokkal-átjárókat. Kiállított tanúsítványok most már aláírt szerint egy nyilvános hitelesítésszolgáltató (CA). Azonban a régebbi átjárók némelyike előfordulhat, hogy továbbra is az önaláírt tanúsítványokat. Önaláírt tanúsítványok közelében a lejárati dátumnak és nyilvános hitelesítésszolgáltató tanúsítványokat kell átmenet.
 
-Korábban az önaláírt tanúsítvány az átjáró szükséges minden 18 hónapban frissíteni kell. VPN-ügyfél konfigurációs fájljainak majd kellett jön létre, és áttelepült a P2S-ügyfelekhez. Áthelyezése a CA-tanúsítványok használata esetén nem ezt a korlátozást. A tanúsítványok váltást Ez a változás is nyújt platform fejlesztései jobb metrikák és továbbfejlesztett stabilitását.
+Ebben a környezetben a tanúsítványokat egy további Azure-szintű tanúsítványt is. Azok nem a tanúsítványláncok a saját önaláírt legfelső szintű tanúsítványok és az ügyfél-hitelesítési tanúsítványok létrehozásakor használt. Ezeknek a tanúsítványoknak érinti, és le fog járni a időpontokban generált őket, ennek a végrehajtására.
+
+Korábban az önaláírt tanúsítvány az átjáró (kiadott a színfalak mögött az Azure-ban) frissíteni kell minden 18 hónap szükséges. VPN-ügyfél konfigurációs fájljainak majd kellett jön létre, és áttelepült a P2S-ügyfelekhez. Áthelyezése a CA-tanúsítványok használata esetén nem ezt a korlátozást. A tanúsítványok váltást Ez a változás is nyújt platform fejlesztései jobb metrikák és továbbfejlesztett stabilitását.
 
 Ez a változás által érintett csak a régebbi átjárók. Ha az átjáró tanúsítványt állítjuk át, kommunikációs vagy bejelentési kap az Azure Portalon. Ellenőrizheti, hogy ha az átjáró érinti ez a cikk lépéseit használva talál.
 

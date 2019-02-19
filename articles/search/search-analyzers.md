@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: a3f782cdd34f2a45c58e6a98d013f949767589cb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 7306258b6a7eee66df0961b2b993d0bcc9de94b9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328010"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343272"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Az Azure Search szövegfeldolgozást elemzők
 
@@ -69,7 +69,7 @@ A legjobb hozzáadását és hozzárendelését az elemzők, aktív fejlesztés 
 
 Az index definícióját megszilárdul, fűzze hozzá új elemzési szerkezetek az indexbe, de kell átadni a **allowIndexDowntime** jelzőt [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) Ha el szeretné kerülni ezt a hibát:
 
-*Az index frissítése nem engedélyezett, mert leállást okozna. Egy meglévő indexhez új elemzők, tokenizers, jogkivonat szűrők vagy karakter szűrő hozzáadásához meg a "allowIndexDowntime" lekérdezési paraméter "true" az index frissítésére vonatkozó kérelemben. Vegye figyelembe, hogy ez a művelet kerül az index offline legalább pár másodpercet, így az indexelést és a lekérdezési kérelem sikertelen. Teljesítmény és az írás rendelkezésre állását az index korlátozott után az index frissítése több percig, vagy hosszabb ideig nagyon nagy méretű indexek lehetnek.*
+*"Az index frissítése nem engedélyezett, mert leállást okozna. Egy meglévő indexhez új elemzők, tokenizers, jogkivonat szűrők vagy karakter szűrő hozzáadásához meg a "allowIndexDowntime" lekérdezési paraméter "true" az index frissítésére vonatkozó kérelemben. Vegye figyelembe, hogy ez a művelet kerül az index offline legalább pár másodpercet, így az indexelést és a lekérdezési kérelem sikertelen. Teljesítmény és az írás rendelkezésre állását az index lehet kisebb az index frissítése után több percig, vagy hosszabb ideig nagyon nagy méretű indexek."*
 
 Ugyanez érvényes mező egy elemző hozzárendelésekor. Egy elemző egy definíciót a mezőt, szerves részét képezi, így csak akkor adhat hozzá, ha a mező jön létre. Ha azt szeretné, elemzők hozzáadása a meglévő mezőket kell [dobja el, és építse újra](search-howto-reindex.md) az index, vagy adjon hozzá egy új mezőt a kívánt elemzőt.
 

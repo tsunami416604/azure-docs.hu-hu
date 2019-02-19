@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 06651b06ae84934c16e9f1ac9f604abda8b65615
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c13ba8ab42d949e5752bfefd9b792b14a5a5ce59
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55648573"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56408214"
 ---
-## <a name="open-cli-shell"></a>Nyissa meg a parancssori felület
+## <a name="cli-shell"></a>Parancssori felület
 
 Javasoljuk, hogy használjon [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) hajtsa végre a CLI-parancsokat. **Cloud Shell** egy ingyenes, interaktív felület, amely ebben a cikkben található lépések futtatására használhatja. A gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak a Cloud Shellben a fiókjával történő használathoz. Biztosít munkamódszer leginkább megfelelő rendszerhéj-felületet válassza. A Linuxot használók választhatják a Basht, a Windows-használók pedig a PowerShellt.
 

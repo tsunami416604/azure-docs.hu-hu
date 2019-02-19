@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 45fb1cbf57f54f040f9dfbc522c22a2e0884d6db
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6bf73bcc691e2ab27f3ec379530a59d3b616a070
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116499"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341216"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 
@@ -39,7 +39,7 @@ Az ajánlott eljárások a vélemény konszenzus alapulnak, és dolgozhat az akt
 Az első lépés a virtuális gépek védelmére, győződjön meg arról, hogy csak jogosult felhasználók állítsa be új virtuális gépek és virtuális gépek hozzáférést.
 
 **Ajánlott eljárás**: Virtuálisgép-hozzáférés szabályozása.   
-**Részletes**: Használat [Azure házirendek](../azure-policy/azure-policy-introduction.md) egyezmények az erőforrások létrehozásához a szervezetben, és létrehozzon testreszabott házirendeket. Ezek a szabályzatok alkalmazása erőforrások, például [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md). Virtuális gépek egy erőforráscsoporthoz tartozó öröklik a rájuk vonatkozó szabályzatoknak.
+**Részletes**: Használat [Azure házirendek](../governance/policy/overview.md) egyezmények az erőforrások létrehozásához a szervezetben, és létrehozzon testreszabott házirendeket. Ezek a szabályzatok alkalmazása erőforrások, például [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md). Virtuális gépek egy erőforráscsoporthoz tartozó öröklik a rájuk vonatkozó szabályzatoknak.
 
 Ha a szervezet több előfizetéssel rendelkezik, szüksége lehet hatékonyan kezelheti a hozzáférést, a házirendek és a megfelelőségi ezen előfizetések esetében. [Az Azure felügyeleti csoportok](../azure-resource-manager/management-groups-overview.md) adja meg a fenti előfizetések hatókörének szintjét. Előfizetéseinek felügyeleti csoportokba való rendezésére (tárolók), és ezeket a csoportokat a szabályozási feltételek vonatkoznak. A felügyeleti csoporton belül az összes előfizetés automatikusan örökli a alkalmazni a csoport feltételeket. A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 67797f3bc5eadc126bad1051e793a8d3bc4590e5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 27db3327e296dafea3af2180eeaadd0ff4680b8d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800944"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341949"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
 
@@ -73,11 +73,11 @@ Ha az ügyfél törli a felügyelt alkalmazást, az erőforráscsoport is törl�
 
 ## <a name="azure-policy"></a>Azure Policy
 
-A felügyelt alkalmazásra [Azure-szabályzatot](../azure-policy/azure-policy-introduction.md) alkalmazhat. Szabályzatokat alkalmazhat annak érdekében, hogy a felügyelt alkalmazás üzembe helyezett példányai megfeleljenek a biztonsági és adatkövetelményeknek. Ha az alkalmazás bizalmas adatokkal lép interakcióba, mindenképpen értékelje ki, hogyan kell védeni az adatokat. Ha például az alkalmazás az Office 365-ből származó adatokat használ, alkalmazzon egy szabályzatot az adattitkosítás engedélyezése érdekében.
+A felügyelt alkalmazásra [Azure-szabályzatot](../governance/policy/overview.md) alkalmazhat. Szabályzatokat alkalmazhat annak érdekében, hogy a felügyelt alkalmazás üzembe helyezett példányai megfeleljenek a biztonsági és adatkövetelményeknek. Ha az alkalmazás bizalmas adatokkal lép interakcióba, mindenképpen értékelje ki, hogyan kell védeni az adatokat. Ha például az alkalmazás az Office 365-ből származó adatokat használ, alkalmazzon egy szabályzatot az adattitkosítás engedélyezése érdekében.
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megismerkedett a felügyelt alkalmazások használatának előnyeivel. A következő cikkben egy felügyelt alkalmazás definícióját hozza létre.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Azure-beli felügyelt alkalmazás definíciójának közzététele](publish-managed-app-definition-quickstart.md)
+> [Rövid útmutató: Azure-beli közzététel felügyeltalkalmazás-definíció](publish-managed-app-definition-quickstart.md)

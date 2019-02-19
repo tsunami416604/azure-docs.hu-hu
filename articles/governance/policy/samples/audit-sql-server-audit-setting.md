@@ -1,6 +1,6 @@
 ---
 title: Minta - naplózás az SQL Server naplózási beállítás
-description: Ez a mintaszabályzat naplózza az SQL-kiszolgáló naplózási beállításait, ha a beállítások eltérnek a megadott beállítástól.
+description: A szabályzatdefiníció-minta SQL server naplózási beállításai naplózza, ha ezek a beállítások nem egyezik a megadott értéket.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f23fd349a5e7c1016cc18f79cff408aefaa3fd35
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 90f91e46db9d25571bc34256ab1db737445ce3e6
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244164"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337475"
 ---
-# <a name="audit-sql-server-level-audit-setting"></a>SQL-kiszolgálói szintű naplózási beállítások naplózása
+# <a name="sample---audit-sql-server-level-audit-setting"></a>Minta - naplózás az SQL Server naplózási beállítás
 
 Ez a szabályzat naplózza az SQL-kiszolgáló naplózási beállításait, ha a beállítások eltérnek a megadott beállítástól. Meg kell adnia egy értéket annak meghatározásához, hogy a naplózási beállításnak engedélyezett vagy letiltott állapotúnak kell-e lennie.
 

@@ -10,17 +10,17 @@ keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 02/13/2019
+ms.custom: ''
+ms.date: 02/15/2019
 ms.author: juliako
-ms.openlocfilehash: 6de90e6be322d5bac008adc44a4b81dfa18eba0a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c0b1f3fb854f4ca553d24ed601749cf91c2b5f28
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331118"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339804"
 ---
-# <a name="quickstart-stream-video-files---cli"></a>Gyors útmutató: Stream-videó fájlok – CLI
+# <a name="quickstart-stream-video-files---cli"></a>Gyors útmutató: Videófájlok streamelése – parancssori felület
 
 Ez a rövid útmutató bemutatja, hogy milyen könnyen kezdheti meg a videók kódolását és streamelését számos különféle böngészőben és eszközön az Azure Media Services használatával. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
 A témakörben szereplő minta olyan tartalmakat kódol, amelyeket HTTPS URL-cím segítségével tehet elérhetővé. Az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
@@ -33,7 +33,9 @@ A rövid útmutató végére képes lesz videók streamelésére.
 
 ## <a name="create-a-media-services-account"></a>Media Services-fiók létrehozása
 
-A Media Services használatának megkezdéséhez szüksége a Media Services-fiók létrehozása. A időpontban hoz létre egy Media Services-fiók is létrehozhat egy kapcsolódó tárfiók.
+Indítsa el a titkosítása, kódolás, elemzése, kezelése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. A Media Services-fiókba kell lennie legalább egy storage-fiókokhoz kapcsolódik.
+
+A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez kell lennie. Erősen ajánlott a storage-fiókok használata a Media Services-fiók ugyanazon a helyen a további késleltetés és az adatok kimenő adatforgalmi költségek elkerülése érdekében.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

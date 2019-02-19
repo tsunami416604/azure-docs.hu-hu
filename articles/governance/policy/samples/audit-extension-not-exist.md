@@ -1,6 +1,6 @@
 ---
 title: Minta - naplózási, ha a bővítmény nem létezik.
-description: Ez a mintaszabályzat naplózza, ha egy bővítmény nincs telepítve egy virtuális gépen.
+description: A szabályzatdefiníció-minta naplózza, ha a bővítmény nincs telepítve a virtuális géppel.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7e5f396bb4acfdef0d49d38019b6c4d19661d9ae
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 0c0f41c01d33add81508d828259ddcdd48d0cbc8
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244181"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340875"
 ---
-# <a name="audit-if-extension-does-not-exist"></a>Naplózás hiányzó bővítmény esetén
+# <a name="sample---audit-if-extension-does-not-exist"></a>Minta - naplózási, ha a bővítmény nem létezik.
 
 Ez a szabályzat naplózza, ha egy bővítmény nincs telepítve egy virtuális gépen. Meg kell adnia a bővítmény kiadóját és típusát a bővítmény telepítési állapotának ellenőrzéséhez.
 

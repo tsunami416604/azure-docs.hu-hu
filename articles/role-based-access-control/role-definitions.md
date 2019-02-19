@@ -1,6 +1,6 @@
 ---
-title: Megismerheti az Azure RBAC szerepkör-definíciók |} A Microsoft Docs
-description: További információk a szerepkör-definíciók a szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést, az Azure-erőforrások.
+title: Megismerheti az Azure-erőforrások számára az RBAC szerepkör-definíciók |} A Microsoft Docs
+description: További információk a szerepköralapú hozzáférés-vezérlés (RBAC) szerepkör-definíciók az Azure-erőforrások részletes hozzáférés-vezérlést.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 8966eb337af07b90e7d9c697a4bfd14c543540aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b7f4ce9508928ccc6ab766e7164c674511bcaa37
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991361"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342779"
 ---
-# <a name="understand-role-definitions"></a>A szerepkör-definíciók ismertetése
+# <a name="understand-role-definitions-for-azure-resources"></a>Megismerheti az Azure-erőforrások szerepkör-definíciók
 
-Ha egy szerepkör működésének megismerése kívánt, vagy ha hoz létre a saját [egyéni szerepkör](custom-roles.md), hasznos lehet megérteni, milyen szerepkörök vannak definiálva. Ez a cikk a szerepkör-definíciók részleteit ismerteti, valamint példákat.
+Ha egy szerepkör működésének megismerése kívánt, vagy ha hoz létre a saját [egyéni szerepkört az Azure-erőforrások](custom-roles.md), hasznos lehet megérteni, milyen szerepkörök vannak definiálva. Ez a cikk a szerepkör-definíciók részleteit ismerteti, valamint példákat.
 
 ## <a name="role-definition-structure"></a>Szerepkör szabályzatdefiníciók struktúrája
 
@@ -151,6 +151,8 @@ Mivel Alice szerepel egy helyettesítő karakter (`*`) műveletet egy előfizet�
 
 Bob engedélyek korlátozódnak csupán a `Actions` és `DataActions` megadott a [Storage-Blobadatok Közreműködője (előzetes verzió)](built-in-roles.md#storage-blob-data-contributor-preview) szerepkör. A szerepkör alapján, Bob végrehajthat felügyeleti és az üzemeltetés is. Például Bálint olvasási, írási és törölheti a tárolókat a megadott tárfiók, és ő is olvasási, írási, és a blobok törlése.
 
+További információ a felügyeleti és az adatsík adatbiztonságot Storage: a [Azure Storage biztonsági útmutatóját](../storage/common/storage-security-guide.md).
+
 ### <a name="what-tools-support-using-rbac-for-data-operations"></a>Milyen eszközöket támogatja a műveletekhez az RBAC használatával?
 
 Megtekintheti és az üzemeltetés, az eszközök és SDK-kkal megfelelő verziójával kell rendelkeznie:
@@ -225,10 +227,10 @@ Beépített szerepkör rendelkezik `AssignableScopes` állítsa be a legfelső s
 | Szerepkör-hozzárendelés csak a hálózati erőforrás-csoport érhető el | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
 | Szerepkör-hozzárendelés az összes hatókör érhető el | `"/"` |
 
-További információ `AssignableScopes` tekintse meg az egyéni szerepkörökhöz [egyéni szerepkörök](custom-roles.md).
+További információ `AssignableScopes` tekintse meg az egyéni szerepkörökhöz [egyéni szerepkörök az Azure-erőforrások](custom-roles.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Beépített szerepkörök](built-in-roles.md)
-* [Egyéni szerepkörök](custom-roles.md)
+* [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md)
+* [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md)
 * [Az Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md)

@@ -1,6 +1,6 @@
 ---
-title: RBAC használata az Azure-ban külső felhasználók számára a hozzáférés kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure-beli szervezeten kívüli felhasználók hozzáférését.
+title: A külső felhasználók számára az RBAC használatával Azure-erőforrásokhoz való hozzáférés kezelése |} A Microsoft Docs
+description: Ismerje meg, hogyan kezelheti az Azure-erőforrásokhoz való hozzáférést szerepköralapú hozzáférés-vezérlés (RBAC) használatával egy szervezeten kívüli felhasználók számára.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,19 +16,19 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: aec12e6dc7d331b2610546d0b0c92fa6ce0789ee
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 770a5e61f549a10c8b313ed4d137f56dda45769e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284523"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343860"
 ---
-# <a name="manage-access-for-external-users-using-rbac"></a>A külső felhasználók számára az RBAC használatával-hozzáférés kezelése
+# <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>A külső felhasználók számára az RBAC használatával Azure-erőforrásokhoz való hozzáférés kezelése
 
 Szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi a nagy szervezetek számára, és az SMB-khez jobb biztonságkezelés külső közreműködők, a beszállítóknak meghatározott erőforrásoknak a környezetben, de nem feltétlenül a teljes hozzáférést igénylő freelancers használata infrastruktúra- vagy bármely számlázással kapcsolatos hatókörök. Az RBAC lehetővé teszi, hogy a rendszergazdai fiók (szolgáltatás-rendszergazda szerepkörrel előfizetés szintjén) által kezelt a rugalmas tulajdonos egy Azure-előfizetéssel, és több felhasználó meghívott egy előfizetésen belül, de bármilyen rendszergazdai jogosultságok nélkül működjenek .
 
 > [!NOTE]
-> Az Office 365-előfizetések vagy az Azure Active Directory-licencek (például: hozzáférés az Azure Active Directory) az Office 365 felügyeleti központ nem megfelelőek az RBAC használatával üzembe helyezett.
+> Az Office 365-előfizetések vagy az Azure Active Directory-licencek (például: Hozzáférés az Azure Active Directory) az Office 365 felügyeleti központ nem megfelelőek az RBAC használatával üzembe helyezett.
 
 ## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Rendeljen RBAC-szerepköröket egy előfizetésre
 
@@ -55,7 +55,7 @@ Az előfizetés kiválasztása után a rendszergazda felhasználónak kell katti
 
 ![Új felhasználó hozzáadása a hozzáférés-vezérlés IAM szolgáltatás az Azure Portalon](./media/role-assignments-external-users/2.png)
 
-A következő lépés, hogy válassza ki a szerepkör hozzárendelését és a felhasználó, akinek az RBAC-szerepkört rendel. Az a **szerepkör** legördülő menüben a rendszergazda felhasználó látja csak a beépített RBAC-szerepkör, amely elérhető az Azure-ban. További részletes magyarázatát minden szerepkör és a hozzárendelhető hatókörökkel,: [beépített szerepkörök](built-in-roles.md).
+A következő lépés, hogy válassza ki a szerepkör hozzárendelését és a felhasználó, akinek az RBAC-szerepkört rendel. Az a **szerepkör** legördülő menüben a rendszergazda felhasználó látja csak a beépített RBAC-szerepkör, amely elérhető az Azure-ban. További részletes magyarázatát minden szerepkör és a hozzárendelhető hatókörökkel,: [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
 
 A rendszergazdai felhasználót kell majd adja hozzá a külső felhasználó e-mail-címét. A várt működése a külső felhasználó számára nem jelenik meg a meglévő bérlőhöz. Után a külső felhasználó kapott meghívót, ő lesz látható a **előfizetések > hozzáférés-vezérlés (IAM)** az összes aktuális felhasználóval, amely már hozzá vannak rendelve az RBAC-szerepkör az előfizetések szintjén.
 

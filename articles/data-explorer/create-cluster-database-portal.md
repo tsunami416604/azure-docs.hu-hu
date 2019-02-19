@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Azure Data Explorer-fürt és -adatbázis létrehozása'
+title: 'Gyors útmutató: Az Azure Data Explorer fürt és adatbázis létrehozása'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Azure Data Explorer-fürtöt és -adatbázist, és töltheti fel adatokkal.
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 1ab6fe13df111b5f56da1f368fc0dacf0a6206fc
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214817"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408833"
 ---
-# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rövid útmutató: Azure Data Explorer-fürt és -adatbázis létrehozása
+# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Gyors útmutató: Az Azure Data Explorer fürt és adatbázis létrehozása
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer használatához először egy *fürtöt* hozunk létre, majd egy vagy több *adatbázist* a fürtben. Ezután adatokat *töltünk be* az adatbázisba, hogy lekérdezéseket futtathassunk rajta. Ebben a rövid útmutatóban egy fürtöt és egy adatbázist hozunk létre. A következő cikkekben mutatjuk majd be az adatok betöltését.
 
@@ -77,8 +77,8 @@ Most már készen áll a folyamat második lépésének, az adatbázis létrehoz
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Adatbázis neve | *TestDatabase* | Az adatbázis nevének egyedinek kell lennie a fürtön belül.
-    | Megőrzési időszak | *3650* | Az az időtartam, ameddig az adatok garantáltan lekérdezhetők maradnak. Az időtartam az adatok betöltésének időpontjával kezdődik.
-    | Gyorsítótárazási időszak | *31* | Az az időtartam, ameddig a gyakran lekérdezett adatok az SSD-tárolón vagy a RAM-ban maradnak elérhetők a hosszú távú tároló helyett.
+    | Megőrzési időszak | *3650* | Az időtartam (napban), amelynek azt garantálja, hogy az adatok lekérdezhetők tárolódik. Az időtartam az adatok betöltésének időpontjával kezdődik.
+    | Gyorsítótárazási időszak | *31* | Az idő span (napokban), amelynek meg szeretné tartani elérhető gyakran lekérdezett adatokat az SSD-tárolóeszköz vagy RAM, mint a hosszabb távú tárolására.
     | | | |
 
 1. Az adatbázis létrehozásához válassza a **Mentés** lehetőséget. Az adatbázis létrehozása általában kevesebb mint egy percet vesz igénybe. Amikor a folyamat befejeződött, a rendszer visszalép a fürt **Áttekintés** lapjára.
@@ -130,6 +130,6 @@ Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Adatok betöltése az Event Hubsból az Azure Data Explorerbe](ingest-data-event-hub.md)
+> [Rövid útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md)
 
 

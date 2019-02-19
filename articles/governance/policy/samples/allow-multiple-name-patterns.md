@@ -1,6 +1,6 @@
 ---
 title: Minta – több név-minták
-description: Ez a mintaszabályzat megköveteli, hogy az erőforrások feleljenek meg a megadott elnevezési minták egyikének.
+description: A szabályzatdefiníció-minta megköveteli a megfelelést kiváltó erőforrás a megadott név minták egyikét.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,16 +8,16 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2e424b7ff79aab36a50e9b44436295cf4ff3d447
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 2c77edfcb8dbf777a14e3a5ffa5b78a5689dbcbc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242974"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342524"
 ---
-# <a name="allow-multiple-name-patterns"></a>Több névminta egyikének megkövetelése
+# <a name="sample---allow-multiple-name-patterns"></a>Minta – lehetővé teszi több név-minták
 
-Megköveteli a megadott névminták egyikének használatát az erőforrásokban. Meg kell adnia a névmintákat, amelyeket a szabály engedélyez.
+Számos névminta egyike használatának engedélyezése az erőforrásokhoz. Meg kell adnia a névmintákat, amelyeket a szabály engedélyez.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 

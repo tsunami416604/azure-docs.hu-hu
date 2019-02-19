@@ -1,6 +1,6 @@
 ---
 title: Minta - diagnosztikai naplózás beállítása
-description: A mintaszabályzat naplózza, ha a diagnosztikai beállítások nincsenek engedélyezve egyes erőforrástípusokhoz.
+description: A szabályzatdefiníció-minta naplózza, ha a diagnosztikai beállítások nincs engedélyezve a megadott erőforrás-típus.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 77d430138ea1fe7f3a0e6e81031fb3a733f47b1c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: f5b3a5cfd8adb97918a727bd05133d6c1b9f8a42
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241461"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343723"
 ---
-# <a name="audit-diagnostic-setting"></a>Diagnosztikai beállítás naplózása
+# <a name="sample---audit-diagnostic-setting"></a>Minta - diagnosztikai naplózás beállítása
 
 Ez a beépített szabályzat naplózza, ha a diagnosztikai beállítások nincsenek engedélyezve egyes erőforrástípusokhoz. Adjon meg egy erőforrástípus-tömböt, amelyhez ellenőrizni szeretné, hogy engedélyezve vannak-e a diagnosztikai beállítások.
 

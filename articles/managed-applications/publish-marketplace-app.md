@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8f35bda8c6925bdc10097ac6d180f5998bd5cf1d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
-ms.translationtype: HT
+ms.openlocfilehash: d208d989fb9b84ae7bc94c6a1882754ed2bacb5d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989786"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343961"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Azure-beli felügyelt alkalmazások a Marketplace piactéren
 
@@ -64,9 +64,9 @@ A felügyelt alkalmazásra vonatkozó ajánlat a közzétevőtől származó ter
 
 Az **Offer Settings** (Ajánlatbeállítások) űrlap mezői a következők:
 
-* **Offer ID** (Ajánlat azonosítója): Ez az egyedi azonosító azonosítja az ajánlatot egy közzétevői profilban. Az azonosító a termék URL-címeiben, a Resource Manager-sablonokban és a számlázási jelentésekben látható. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel. Legfeljebb 50 karakterből állhat. Miután egy ajánlat elérhetővé válik, ezt a mezőt zárolja a rendszer.
-* **Publisher ID** (Közzétevő azonosítója): A legördülő listát használva válassza ki azt a közzétevői profilt, amelyben közzé szeretné tenni ezt az ajánlatot. Miután egy ajánlat elérhetővé válik, ezt a mezőt zárolja a rendszer.
-* **Name** (Név): Az ajánlat megjelenítendő neve a Marketplace piactéren és a portálon jelenik meg. Legfeljebb 50 karakterből állhat. A termék számára egy felismerhető márkanevet adjon meg. A vállalat nevét ne adja meg itt, kivéve, ha így forgalmazza a terméket. Ha az ajánlatot a saját webhelyén is forgalmazza, gondoskodjon arról, hogy a név pontosan úgy jelenik meg, mint a webhelyén.
+* **Ajánlat azonosítója**: Ez az egyedi azonosító azonosítja az ajánlatot a kiadó profilon belül. Az azonosító a termék URL-címeiben, a Resource Manager-sablonokban és a számlázási jelentésekben látható. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel. Legfeljebb 50 karakterből állhat. Miután egy ajánlat elérhetővé válik, ezt a mezőt zárolja a rendszer.
+* **Közzétevő-azonosító**: A legördülő lista segítségével válassza ki ezt az ajánlatot a közzétenni kívánt közzétevő-profilt. Miután egy ajánlat elérhetővé válik, ezt a mezőt zárolja a rendszer.
+* **Név**: Ez az ajánlat megjelenített neve jelenik meg, a Marketplace-en és a portálon. Legfeljebb 50 karakterből állhat. A termék számára egy felismerhető márkanevet adjon meg. A vállalat nevét ne adja meg itt, kivéve, ha így forgalmazza a terméket. Ha az ajánlatot a saját webhelyén is forgalmazza, gondoskodjon arról, hogy a név pontosan úgy jelenik meg, mint a webhelyén.
 
 Ha elkészült, válassza a **Save** (Mentés) elemet a megadott adatok mentéséhez.
 
@@ -90,22 +90,22 @@ Az SKU-k a fő ajánlat alatt jelennek meg a piactéren. Saját megvásárolhat�
 
    Töltse ki az alábbi mezőket:
 
-   * **Title** (Cím): Adja meg az SKU címét. Ez a cím jelenik meg a katalógusban ennél az elemnél.
-   * **Summary** (Összefoglalás): Adja meg az SKU rövid összefoglalását. Ez a szöveg a cím alatt jelenik meg.
-   * **Description** (Leírás): Adja meg az SKU részletes leírását.
-   * **SKU Type** (SKU típusa): A megengedett értékek: *Managed Application* (Felügyelt alkalmazás) és *Solution Templates* (Megoldássablonok). Ebben az esetben a *Managed Application* (Felügyelt alkalmazás) lehetőséget válassza.
-   * **Country/Region availability** (Országonkénti/régiónkénti elérhetőség): Válassza ki azokat az országokat, ahol a felügyelt alkalmazás elérhető.
-   * **Pricing** (Díjszabás): Adja meg az alkalmazás felügyeletének árát. Az ár beállítása előtt válassza ki az elérhető országokat.
+   * **Cím**: Adjon meg egy címet a Termékváltozat. Ez a cím jelenik meg a katalógusban ennél az elemnél.
+   * **Összefoglalás**: Ez a Termékváltozat adja meg egy rövid összefoglalása. Ez a szöveg a cím alatt jelenik meg.
+   * **Leírás**: Adja meg a Termékváltozat kapcsolatos részletes leírását.
+   * **Termékváltozatának típusa**: Az engedélyezett értékek a következők *felügyelt alkalmazás* és *Megoldássablonok*. Ebben az esetben a *Managed Application* (Felügyelt alkalmazás) lehetőséget válassza.
+   * **Ország/régió rendelkezésre állási**: Az országok, amennyiben rendelkezésre áll-e a felügyelt alkalmazás kiválasztása.
+   * **Díjszabás**: Adja meg az alkalmazás felügyelete egy díja. Az ár beállítása előtt válassza ki az elérhető országokat.
 
 1. Adjon hozzá egy új csomagot. Töltse ki a következő űrlapon található **Package Details** (Csomag részletei) szakaszt:
 
    Töltse ki az alábbi mezőket:
 
-   * **Verzió**: Adja a feltöltött csomag verzióját. A következő formátumban kell lennie: `{number}.{number}.{number}{number}`.
-   * **Csomagfájl (.zip)**: Ez a csomag két szükséges fájlt tartalmaz, amelyek egy .zip csomagba vannak tömörítve. Az egyik fájl a Resource Manager-sablon, amely a felügyelt alkalmazáshoz üzembe helyezendő erőforrásokat határozza meg. A másik fájl a [felhasználói felületet](create-uidefinition-overview.md) határozza meg a felügyelt alkalmazást a portálon keresztül üzembe helyező felhasználók számára. A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
-   * **PrincipalId** (Résztvevő-azonosító): Ez a tulajdonság egy olyan felhasználó, felhasználócsoport vagy alkalmazás Azure Active Directory- (Azure AD-) azonosítója, amely az ügyfél előfizetésén belüli erőforrásokhoz kap hozzáférést. A Role Definition (Szerepkör-definíció) az engedélyeket ismerteti.
-   * **Role Definition** (Szerepkör-definíció): Ez a tulajdonság a beépített szerepkör-alapú hozzáférés-vezérlési (RBAC) szerepkörök listája, amelyet az Azure AD biztosít. Kiválaszthatja az erőforrásoknak az ügyfél nevében történő felügyeletéhez leginkább megfelelőbb szerepkört.
-   * **Szabályzatbeállítások**: Alkalmazzon egy [Azure-szabályzatot](../azure-policy/azure-policy-introduction.md) a felügyelt alkalmazásokra az üzembe helyezett megoldások megfelelőségi követelményeinek megadásához. Válassza ki az alkalmazandó szabályzatokat az elérhető lehetőségek közül. **Szabályzatparaméterek** esetén adjon meg egy JSON-karakterláncot a paraméter értékeivel. A szabályzatdefiníciókról és a paraméterértékek formátumáról tekintse meg a következő dokumentumot: [Azure Policy-minták](../azure-policy/json-samples.md).
+   * **Verzió**: Adja meg a verziót a csomag feltöltése. A következő formátumban kell lennie: `{number}.{number}.{number}{number}`.
+   * **Csomagfájl (.zip)**: Ez a csomag tömörített .zip csomag két szükséges fájlokat tartalmazza. Az egyik fájl a Resource Manager-sablon, amely a felügyelt alkalmazáshoz üzembe helyezendő erőforrásokat határozza meg. A másik fájl a [felhasználói felületet](create-uidefinition-overview.md) határozza meg a felügyelt alkalmazást a portálon keresztül üzembe helyező felhasználók számára. A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
+   * **PrincipalId**: Ez a tulajdonság nem egy felhasználó, felhasználói csoport vagy alkalmazás számára biztosított Azure Active Directory (Azure AD) azonosítóját az ügyfél-előfizetés-erőforrásokhoz való hozzáférés. A Role Definition (Szerepkör-definíció) az engedélyeket ismerteti.
+   * **Szerepkör-definíció**: Ez a tulajdonság egy minden a beépített szerepkörök listájával, szerepköralapú hozzáférés-vezérlés (RBAC) az Azure AD által támogatott. Kiválaszthatja az erőforrásoknak az ügyfél nevében történő felügyeletéhez leginkább megfelelőbb szerepkört.
+   * **Házirend-beállítások**: Alkalmazza egy [Azure Policy](../governance/policy/overview.md) a felügyelt alkalmazást, hogy adja meg a megfelelőségi követelményei az üzembe helyezett megoldások. Válassza ki az alkalmazandó szabályzatokat az elérhető lehetőségek közül. **Szabályzatparaméterek** esetén adjon meg egy JSON-karakterláncot a paraméter értékeivel. A szabályzatdefiníciókról és a paraméterértékek formátumáról tekintse meg a következő dokumentumot: [Azure Policy-minták](../governance/policy/samples/index.md).
 
 Több engedélyt is hozzáadhat. Javasoljuk, hogy hozzon létre egy AD-felhasználócsoportot, és adja meg annak azonosítóját a **PrincipalId** (Résztvevő-azonosító) tulajdonságban. Így több felhasználót is hozzáadhat a felhasználócsoporthoz anélkül, hogy frissítenie kellene az SKU-t.
 

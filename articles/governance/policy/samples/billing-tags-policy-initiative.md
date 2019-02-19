@@ -1,6 +1,6 @@
 ---
 title: Példa – számlázási címkék szabályzatának kezdeményezése
-description: Ehhez a mintaszabályzathoz a költséghely és a terméknév címkének a megadott értékekkel kell rendelkeznie.
+description: A minta szabályzatkészlet-definíció költségek és a Terméknév neve címkének a megadott értékekkel kell rendelkeznie.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4592ac63561a59bfc0e4351cc5ad83f138955370
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: b659d6f681b980b956992f0d488995fd1a55de93
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242855"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337599"
 ---
-# <a name="billing-tags-policy-initiative"></a>Számlázási címkék szabályzatának kezdeményezése
+# <a name="sample---billing-tags-policy-initiative"></a>Példa – számlázási címkék szabályzatának kezdeményezése
 
 Ehhez a szabályzathoz a költséghely és a terméknév címkének a megadott értékekkel kell rendelkeznie. A példa beépített szabályzatokat használ a szükséges címkék hozzáadásához és előírásához. A címkék szükséges értékeit Ön adja meg.
 

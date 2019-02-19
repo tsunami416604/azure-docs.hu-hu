@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 02/04/2019
 ms.author: juliako
-ms.openlocfilehash: b05c174bf96e78efd66f2c673e46ab43700c09f9
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 4f67158c0de8cdd161bce269059af6d421bb68b5
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744167"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340348"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -45,11 +45,11 @@ Ha rendelkezik egy fejlett még ma a videószolgáltatás a [örökölt Media Se
 
 * Fájlalapú feladat feldolgozása egy HTTP (S) URL-címet a bemenetként is használhatja.<br/>Szeretné, hogy már az Azure-ban tárolt tartalmat nem kell, és nem kell objektumok létrehozásához.
 * Bemutatja a [alakítja át az](transforms-jobs-concept.md) fájlalapú feladat feldolgozása. Egy-egy átalakítási segítségével hozhat létre újrahasznosítható konfigurációk esetén az Azure Resource Manager-sablonok létrehozását és feldolgozási beállítások között több, ügyfelek vagy bérlők elkülönítésére.
-* Egy eszköz rendelkezhet több [Streamelési Lokátorok](streaming-locators-concept.md) rendelkező különböző dinamikus becsomagolást és a dinamikus titkosítás beállításai.
+* Egy eszköz rendelkezhet több [Streamelési Lokátorok](streaming-locators-concept.md) rendelkező különböző [dinamikus csomagolási](dynamic-packaging-overview.md) és a dinamikus titkosítás beállításai.
 * [Content protection szolgáltatása](content-key-policy-concept.md) támogatja a többszörös legfontosabb funkcióit.
 * Élő események, amelyek akár 24 órát hosszú egy kimeneti adatfolyamba, amely rendelkezik több bitsebességre való átkódolása átkódolása egyféle sávszélességű hozzájárulás a Media Services használatával hírcsatornaelem streamelheti.
 * Új alacsony késés élő adatfolyam támogatását a élő események. További információkért lásd: [késés](live-event-latency.md).
-* Élő esemény előzetes verziója támogatja a dinamikus csomagolás és a dinamikus titkosítás. Ez lehetővé teszi a content protection előzetes verzió, valamint a DASH vagy HLS csomagolásra.
+* Élő események előzetes támogatja [dinamikus csomagolási](dynamic-packaging-overview.md) és a dinamikus titkosítás. Ez lehetővé teszi a content protection előzetes verzió, valamint a DASH vagy HLS csomagolásra.
 * Élő kimenete egyszerűbb, mint a Program entitás az v2 API-k használatához. 
 * Továbbfejlesztett RMTP-támogatása (fokozott stabilitás és további forráskód kódoló).
 * Biztonságos RTMPS betöltését.<br/>Amikor egy élő eseményt hoz létre, 4 kap betöltési URL-címeket. A 4 betöltési URL-címek olyan majdnem teljesen megegyezik, rendelkezik a azonos streamelési token (alkalmazásazonosító), csak a port száma rész nem egyezik. Az URL-címek kettő elsődleges és tartalék RTMPS számára.   

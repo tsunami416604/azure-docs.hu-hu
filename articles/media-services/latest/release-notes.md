@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 71e88c06dcfe935f712af473c7f496d9165107a7
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 8f549c20480e3866725717aa054af6653ab5a913
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267546"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343995"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -44,7 +44,7 @@ A Media Services v3 már upported Azure országos felhőkörnyezetekben. Nem min
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard és a MPI-fájlok 
 
-Kódolás a Media Encoder Standard MP4-fájl létrehozására, ha .mpi új fájl jön létre, és hozzáadódik a kimeneti adategység. A MPI fájl akkor tekinthető, a dinamikus csomagolás és a streamelési forgatókönyvekhez teljesítmény javítása érdekében.
+Kódolás a Media Encoder Standard MP4-fájl létrehozására, ha .mpi új fájl jön létre, és hozzáadódik a kimeneti adategység. A MPI-fájl az célja, hogy a teljesítmény javítása [dinamikus csomagolási](dynamic-packaging-overview.md) és adatfolyam-forgatókönyvekhez.
 
 Ne módosítsa vagy távolítsa el az MPI-fájlt, és minden olyan függőséget is a létezik-e a service-ben (vagy sem) egy souboru.
 

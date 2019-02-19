@@ -1,6 +1,6 @@
 ---
 title: Minta – SQL Server 12.0-s verzió megkövetelése
-description: Ezzel a mintaszabályzattal megkövetelheti, hogy az SQL-kiszolgálók 12.0-s verziót használjanak.
+description: A szabályzatdefiníció-minta 12.0-s verziója fut az SQL-kiszolgálókat igényel.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: d00ff3554666ddbe6915882baa423da319b9f54a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 33fb78ed99bff0ccf035f68cfc2d23552a822df7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244207"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340620"
 ---
-# <a name="require-sql-server-version-120"></a>Az SQL Server 12.0-ás verziójának megkövetelése
+# <a name="sample---require-sql-server-version-120"></a>Minta – SQL Server 12.0-s verzió megkövetelése
 
 Ezzel a szabályzattal megkövetelheti, hogy az SQL-kiszolgálók 12.0-s verziót használjanak.
 

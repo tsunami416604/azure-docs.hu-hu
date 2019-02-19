@@ -12,12 +12,12 @@ ms.date: 02/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca8d75b4a8c0e7586b25cbfd53cd9eaa134d0ad3
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 7dfce660340654e98883ae6e696644175c005459
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56299581"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343085"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-üzembehelyezési tervek
 Átfogó útmutatót keres az Azure Active Directory (Azure AD) egyes képességeinek üzembe helyezéséhez? Az alábbi üzembehelyezési tervek végigvezetik az egyes gyakoribb Azure AD-képességek sikeres bevezetéséhez szükséges, az üzleti értékkel, a tervezési szempontokkal, a kialakítással és az üzemeltetéssel kapcsolatos eljárásokon. 
@@ -29,7 +29,7 @@ Kíváncsiak vagyunk a dokumentumokkal kapcsolatos visszajelzésére. Ennek a r�
 |Forgatókönyv |Leírás |
 |-|-|
 |[Többtényezős hitelesítés](https://aka.ms/MFADPDownload)|Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által engedélyezett hitelesítési módszerek használatával az Azure MFA segíti az adatok és alkalmazások védelmét az illetéktelen hozzáféréssel szemben, miközben lehetővé teszi az igényeknek megfelelő, egyszerű bejelentkezési folyamat használatát.|
-|Feltételes hozzáférés [letölthető terv](https://aka.ms/CADPDownload) vagy [online-előfizetéssel](https://aka.ms/caonlineplan)|A feltételes hozzáféréssel automatikus döntéshozatali képességeket valósíthat meg azzal kapcsolatban, hogy különféle feltételek alapján kik férhetnek hozzá felhőalkalmazásaihoz.|
+|Feltételes hozzáférés [letölthető terv](https://aka.ms/CADPDownload) vagy [online-előfizetéssel](https://aka.ms/deploymentplans/ca)|A feltételes hozzáféréssel automatikus döntéshozatali képességeket valósíthat meg azzal kapcsolatban, hogy különféle feltételek alapján kik férhetnek hozzá felhőalkalmazásaihoz.|
 |[Új jelszó önkiszolgáló kérése](https://aka.ms/SSPRDPDownload)|Az új jelszó önkiszolgáló kérésével a felhasználók a rendszergazda beavatkozása nélkül igényelhetnek új jelszót, ahol és amikor csak szükségük van rá.|
 |[Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)|Az Azure AD Privileged Identity Management (PIM) segít a kiemelt jogosultságú rendszergazdai szerepkörök kezelése az Azure ad-ben, Azure-erőforrások és más Microsoft Online Services. A PIM például igény szerinti elérése, a kérelem-jóváhagyási munkafolyamatokat és a teljes körűen integrált hozzáférési felülvizsgálatok így azonosíthatja, tárhat fel, és a valós idejű kiemelt szerepkörök rosszindulatú tevékenységek megakadályozása megoldásokat nyújt.|
 |[Egyszeri bejelentkezés](https://aka.ms/SSODPDownload)|Az egyszeri bejelentkezéssel mindössze egyetlen bejelentkezéssel és egyetlen felhasználói fiókkal elérheti az üzleti tevékenységeihez szükséges összes alkalmazást és erőforrást. Miután bejelentkezett, a Microsoft Office-ból anélkül léphet át a SalesForce-ba vagy a Boxba, hogy újfent el kellene végeznie a hitelesítést (például meg kellene adnia egy jelszót).|

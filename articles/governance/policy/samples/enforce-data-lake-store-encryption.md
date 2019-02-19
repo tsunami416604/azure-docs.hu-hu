@@ -1,6 +1,6 @@
 ---
 title: Minta – a Data Lake Store titkosításának megkövetelése
-description: Ez a mintaszabályzat megköveteli a titkosítást a Data Lake Store-hoz.
+description: A szabályzatdefiníció-minta a Data Lake Store-titkosítás engedélyezésének van szükség.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 557198fcdc2c191986cedf4b384e0bf117dfa86d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e4de4c78bec9f4ffa6c4e2711a2d4260279ca559
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241682"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340603"
 ---
-# <a name="require-data-lake-store-encryption"></a>Data Lake Store-titkosítás megkövetelése
+# <a name="sample---require-data-lake-store-encryption"></a>Minta – Data Lake Store titkosításának megkövetelése
 
 Ez a beépített szabályzat elutasít minden olyan Data Lake Store-fiókot, ahol nincs engedélyezve a titkosítás.
 

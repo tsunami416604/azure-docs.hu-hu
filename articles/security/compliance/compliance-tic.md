@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751922"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341716"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Megbízható internetes kapcsolatok útmutató
 
@@ -198,7 +198,7 @@ Az Azure biztosít natív eszközök segítségével, győződjön meg arról, h
 
 ### <a name="azure-policy"></a>Azure Policy
 
-[Az Azure Policy](https://azure.microsoft.com/services/azure-policy/) egy Azure-szolgáltatás, amely a szervezete biztosít jobb képes naplózási és megfelelőségi irányelveinek kényszerítése. Az Azure Policy jelenleg nyilvános előzetes verzióban elérhető az Azure-szolgáltatások, amelyek a kereskedelmi forgalomban kapható. Az Azure Policy még nem érhető el az Azure Government szolgáltatásban. Ügyfelek tervezése és jövőbeli TIC megfelelőség biztosítása érdekében mostantól az Azure Policy szabályok teszteléséhez. 
+[Az Azure Policy](../../governance/policy/overview.md) egy Azure-szolgáltatás, amely a szervezete biztosít jobb képes naplózási és megfelelőségi irányelveinek kényszerítése. Ügyfelek tervezése és jövőbeli TIC megfelelőség biztosítása érdekében mostantól az Azure Policy szabályok teszteléséhez.
 
 Az Azure Policy célja az előfizetés szintjén. A szolgáltatás kínál egy központi felület, ahol megfelelőségi feladatokat, beleértve a hajthatja végre:
 - Kezdeményezések kezelése
@@ -213,13 +213,13 @@ Az alábbi minta házirendek TIC megfelelőségi célokra használhatók:
 
 |Szabályzat  |Mintaforgatókönyv  |Sablon  |
 |---------|---------|---------|
-|Felhasználó által definiált útvonaltábla kényszerítése. | Győződjön meg arról, hogy az összes virtuális hálózatot az alapértelmezett útvonal egy engedélyezett virtuális hálózati átjárót a helyszíni útválasztási mutat.    | Ehhez [sablon](https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table). |
-|Ha a Network Watcher nincs engedélyezve egy régió naplózása.  | Győződjön meg arról, hogy a Network Watcher engedélyezve van, minden régióban használja.  | Ehhez [sablon](https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled). |
-|NSG-t minden alhálózaton található x.  | Győződjön meg arról, hogy minden virtuális hálózatban lévő összes alhálózat NSG-t (vagy egy jóváhagyott NSG-k) az internetes forgalom blokkolva van alkalmazva. | Ehhez [sablon](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet). |
-|NSG-t x az összes hálózati adapteren. | Győződjön meg arról, hogy egy NSG-t, az internetes forgalmat blokkolja az összes virtuális gép minden hálózati Adaptereihez van hozzárendelve. | Ehhez [sablon](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic). |
-|Jóváhagyott virtuális hálózat használata a virtuális géphez tartozó hálózati adapter.  | Győződjön meg arról, hogy az összes hálózati adapter egy engedélyezett virtuális hálózaton. | Ehhez [sablon](https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics). |
-|Engedélyezett helyek. | Győződjön meg arról, hogy az összes erőforrás telepítve vannak-e a megfelelő virtuális hálózatok és a Network Watcher-konfigurációt régióban.  | Ehhez [sablon](https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs). |
-|Nem engedélyezett az erőforrás-típus, például **Tartománycímkét**. | Tiltják a központi telepítését, amelyek nem rendelkeznek egy megfelelőségi terv erőforrástípusok. Ez a szabályzat használatával tiltják a nyilvános IP-cím-erőforrások központi telepítése. Bár az NSG-szabályok segítségével hatékonyan a bejövő internetes forgalom blokkolása, megakadályozza a további nyilvános IP-címek használatát csökkentve a támadási felületet.   | Ehhez [sablon](https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type).  |
+|Felhasználó által definiált útvonaltábla kényszerítése. | Győződjön meg arról, hogy az összes virtuális hálózatot az alapértelmezett útvonal egy engedélyezett virtuális hálózati átjárót a helyszíni útválasztási mutat.    | Ehhez [sablon](../../governance/policy/samples/no-user-defined-route-table.md). |
+|Ha a Network Watcher nincs engedélyezve egy régió naplózása.  | Győződjön meg arról, hogy a Network Watcher engedélyezve van, minden régióban használja.  | Ehhez [sablon](../../governance/policy/samples/network-watcher-not-enabled.md). |
+|NSG-t minden alhálózaton található x.  | Győződjön meg arról, hogy minden virtuális hálózatban lévő összes alhálózat NSG-t (vagy egy jóváhagyott NSG-k) az internetes forgalom blokkolva van alkalmazva. | Ehhez [sablon](../../governance/policy/samples/nsg-on-subnet.md). |
+|NSG-t x az összes hálózati adapteren. | Győződjön meg arról, hogy egy NSG-t, az internetes forgalmat blokkolja az összes virtuális gép minden hálózati Adaptereihez van hozzárendelve. | Ehhez [sablon](../../governance/policy/samples/nsg-on-nic.md). |
+|Jóváhagyott virtuális hálózat használata a virtuális géphez tartozó hálózati adapter.  | Győződjön meg arról, hogy az összes hálózati adapter egy engedélyezett virtuális hálózaton. | Ehhez [sablon](../../governance/policy/samples/use-approved-vnet-vm-nics.md). |
+|Engedélyezett helyek. | Győződjön meg arról, hogy az összes erőforrás telepítve vannak-e a megfelelő virtuális hálózatok és a Network Watcher-konfigurációt régióban.  | Ehhez [sablon](../../governance/policy/samples/allowed-locations.md). |
+|Nem engedélyezett az erőforrás-típus, például **Tartománycímkét**. | Tiltják a központi telepítését, amelyek nem rendelkeznek egy megfelelőségi terv erőforrástípusok. Ez a szabályzat használatával tiltják a nyilvános IP-cím-erőforrások központi telepítése. Bár az NSG-szabályok segítségével hatékonyan a bejövő internetes forgalom blokkolása, megakadályozza a további nyilvános IP-címek használatát csökkentve a támadási felületet.   | Ehhez [sablon](../../governance/policy/samples/not-allowed-resource-types.md).  |
 
 ### <a name="network-watcher-traffic-analytics"></a>Network Watcher a traffic analytics
 

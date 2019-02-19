@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: ab1b68b8ca8339389a27d1c09aa8752cfdaec0d5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1c99c680371d9d9601637ebeb52d9299de71b0ec
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851785"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338807"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
@@ -128,4 +128,4 @@ A Service Bus-üzenetküldéssel való megismerkedéshez tekintse meg a követke
 * [Azure üzenetküldő szolgáltatásainak összehasonlítása](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
 * További tudnivalók az Azure Service Bus [Standard és Prémium](https://azure.microsoft.com/pricing/details/service-bus/) szintjeiről és azok díjszabásáról
 * [Az Azure Service Bus Prémium szintű csomag teljesítménye és késése](https://blogs.msdn.microsoft.com/servicebus/2016/07/18/premium-messaging-how-fast-is-it/)
-* Próbálja ki a [.NET-hez](service-bus-quickstart-powershell.md), [Javához](service-bus-quickstart-powershell.md) vagy [JMS-hez](service-bus-quickstart-powershell.md) készült gyors útmutatókat
+* Próbálja ki a [.NET-hez](service-bus-dotnet-get-started-with-queues.md), [Javához](service-bus-java-how-to-use-queues.md) vagy [JMS-hez](service-bus-java-how-to-use-jms-api-amqp.md) készült gyors útmutatókat

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 982ed4533c34cd4a6613d289ef4712001977538f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d67c3e452da05c626721d4c3144e612e6f9e0af4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436218"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338444"
 ---
 # <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>Az Apache DataFu a Pig használata a HDInsight az Apache Pig
 
@@ -90,7 +90,9 @@ A jelen szakaszban ismertetett lépések feltételezik, hogy Ön ismeri a Pig é
 >
 > * Ha a fürt használja az Azure Storage, használjon egy `wasb://` elérési útja. Például: `register wasb:///example/jars/datafu-pig-1.4.0.jar`.
 >
-> * Ha a fürt az Azure Data Lake Store használ, egy `adl://` elérési útja. Például: `register adl://home/example/jars/datafu-pig-1.4.0.jar`.
+> * Ha a fürt az Azure Data Lake Store Gen2 használ, egy `abfs://` elérési útja. Például: `register abfs://home/example/jars/datafu-pig-1.4.0.jar`.
+>
+> * Ha a fürt az Azure Data Lake Store Gen1 használ, egy `adl://` elérési útja. Például: `register adl://home/example/jars/datafu-pig-1.4.0.jar`.
 
 Gyakran meghatározhat egy DataFu függvény aliasa. Az alábbi példa meghatározza az alias `SHA`:
 

@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 11/17/2018
+ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: 9a96edbc70eeda8acee792a71d84b4a2c6c4fef8
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 247d72396d1737d568a89656c544bbe699f11e30
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745384"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342388"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Video- és hangfájlok elemzése
 
 Azure Media Services v3 lehetővé teszi, hogy adatokat nyerhet ki a video- és a Video Indexer segítségével keresztül fájlokat AMS v3 analyzer készletek (ebben a cikkben ismertetett). Ha részletesebb megállapításokra van szüksége, használja közvetlenül a Video Indexert. Ha szeretne többet tudni arról, mikor érdemes a Video Indexer, illetve a Media Services-elemző előzetes beállításait használnia, tekintse meg az [összehasonlító dokumentumot](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
-Tartalom a Media Services v3 készletek elemzéséhez, hozzon létre egy **átalakítása** , és küldje el a **feladat** , hogy ezen készletek egyikét használja: **AudioAnalyzerPreset** vagy **VideoAnalyzerPreset**. A következő cikk azt ismerteti, hogyan használhatja **VideoAnalyzerPreset**: [Oktatóanyag: Az Azure Media Services videók elemzése](analyze-videos-tutorial-with-api.md).
+Tartalom a Media Services v3 készletek elemzéséhez, hozzon létre egy **átalakítása** , és küldje el a **feladat** , hogy ezen készletek egyikét használja: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) vagy **AudioAnalyzerPreset**. A következő cikk azt ismerteti, hogyan használhatja **VideoAnalyzerPreset**: [Oktatóanyag: Az Azure Media Services videók elemzése](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
 > Előzetes Video vagy Audio Analyzer-beállítások használata esetén állítsa be a fiókját 10 S3-as Media szolgáltatás számára fenntartott egységre az Azure Portalon. További információkért olvassa el a [médiafeldolgozás méretezését](../previous/media-services-scale-media-processing-overview.md) ismertető cikket.

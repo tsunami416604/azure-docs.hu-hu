@@ -1,6 +1,6 @@
 ---
 title: Minta - naplózási kiszolgálói szintű fenyegetések észlelése beállítás
-description: Ez a mintaszabályzat naplózza az SQL-adatbázis biztonsági riasztási szabályzatait, ha a szabályzatok nem a megadott állapotra vannak beállítva.
+description: A szabályzatdefiníció-minta SQL server biztonsági riasztás házirendek eseményeket, ha ezek a házirendek nincsenek-e a megadott állapot.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,16 +8,16 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 9e0ea3b65a4c442358c357e9603d607d8464c21b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ba694618bf86ef8e97241c955a40790960be2f0c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242175"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341368"
 ---
-# <a name="audit-server-level-threat-detection-setting"></a>Kiszolgálószintű fenyegetésészlelési beállítás naplózása
+# <a name="sample---audit-server-level-threat-detection-setting"></a>Minta - naplózási kiszolgálói szintű fenyegetések észlelése beállítás
 
-Ez a szabályzat naplózza az SQL-adatbázis biztonsági riasztási szabályzatait, ha a szabályzatok nem a megadott állapotra vannak beállítva. Meg kell adnia egy értéket annak meghatározásához, hogy a fenyegetésészlelésnek engedélyezett vagy letiltott állapotúnak kell-e lennie.
+Ez a szabályzat naplózza az SQL server biztonsági riasztás házirendeket, ha ezek a házirendek nincsenek-e a megadott állapot. Meg kell adnia egy értéket annak meghatározásához, hogy a fenyegetésészlelésnek engedélyezett vagy letiltott állapotúnak kell-e lennie.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 

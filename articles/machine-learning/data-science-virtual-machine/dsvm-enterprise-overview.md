@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: fca4b7cc59bf191094400892a37addf1023e2f85
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2e17ab5cfe51f3772148cc730c982671d602a79a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472949"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340478"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Adatok tudományos virtuálisgép-alapú csapat elemzési és AI-környezet 
 A [adatelemző virtuális gép](overview.md) (DSVM) az Azure platformon, a mesterséges intelligencia (AI) és a data analytics előre összeállított szoftver gazdag környezetet biztosít. 
@@ -47,7 +47,7 @@ A cikksorozat nyújt útmutatást és mutatók minden az előző elemek. A szemp
 * [Figyelés](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) és [kezelése](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [Naplózás](https://docs.microsoft.com/azure/security/azure-log-audit)
 * [Szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/overview)
-* [A házirend-beállítással és végrehajtás](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)
+* [A házirend-beállítással és végrehajtás](../../governance/policy/overview.md)
 * [Kártevőirtó](https://docs.microsoft.com/azure/security/azure-security-antimalware)
 * [Titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Adatfelderítés és irányítás](https://docs.microsoft.com/azure/data-catalog/)

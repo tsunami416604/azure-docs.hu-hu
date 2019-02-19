@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés kezelése az RBAC és az Azure Portal használatával | Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a hozzáférést a felhasználók, csoportok, a szolgáltatásnevek és felügyelt identitások, a szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure portal használatával. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
+title: Rbac-RÓL és az Azure portal segítségével Azure resoruces való hozzáférés kezelése |} A Microsoft Docs
+description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok, a szolgáltatásnevek és szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure portal használatával felügyelt identitások Azure-erőforrásokhoz való hozzáférését. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c339556353967db26f022384f2cf877962dc6d83
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 1e3057108ef179af2f4692c061091fbdf59f0af2
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412308"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342337"
 ---
-# <a name="manage-access-using-rbac-and-the-azure-portal"></a>Hozzáférés kezelése az RBAC és az Azure Portal használatával
+# <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Rbac-RÓL és az Azure portal segítségével Azure-erőforrásokhoz való hozzáférés kezelése
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok, a szolgáltatásnevek és RBAC és az Azure portal használatával felügyelt identitások hozzáférését.
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok, a szolgáltatásnevek és RBAC és az Azure portal használatával felügyelt identitások hozzáférését.
 
 ## <a name="open-access-control-iam"></a>Nyissa meg a hozzáférés-vezérlés (IAM)
 
@@ -41,7 +41,7 @@ A **hozzáférés-vezérlés (IAM)** panel, más néven identitás- és hozzáf�
 
 ## <a name="view-roles-and-permissions"></a>Szerepkörök és engedélyek megtekintése
 
-A szerepkör-definíció a szerepkör-hozzárendeléshez használható engedélyek gyűjteménye. Az Azure rendelkezik több mint 70 [beépített szerepkörök](built-in-roles.md). Kövesse az alábbi lépéseket a szerepköröket és engedélyeket, amelyek a felügyeleti síkra végrehajtható megtekintéséhez.
+A szerepkör-definíció a szerepkör-hozzárendeléshez használható engedélyek gyűjteménye. Az Azure rendelkezik több mint 70 [beépített szerepkörök az Azure-erőforrások](built-in-roles.md). Kövesse az alábbi lépéseket a szerepköröket és engedélyeket, amelyek a felügyeleti síkra végrehajtható megtekintéséhez.
 
 1. Nyissa meg **hozzáférés-vezérlés (IAM)** hatókörre, például a felügyeleti csoportban, előfizetés, erőforráscsoport vagy erőforrás, ahol szeretné megtekinteni a szerepköröket és engedélyeket.
 
@@ -165,7 +165,7 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: Hozzáférés engedélyezése egy felhasználó RBAC és az Azure portal használatával](quickstart-assign-role-user-portal.md)
-* [Oktatóanyag: Hozzáférés engedélyezése egy felhasználó RBAC és az Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
-* [Az Azure-beli RBAC hibaelhárítása](troubleshooting.md)
-* [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../azure-resource-manager/management-groups-overview.md)
+* [Oktatóanyag: Egy felhasználó hozzáférést rbac-RÓL és az Azure portal segítségével Azure-erőforrások](quickstart-assign-role-user-portal.md)
+* [Oktatóanyag: Egy felhasználó hozzáférést biztosítani Azure-erőforrások RBAC és az Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
+* [Az RBAC hibaelhárítása az Azure-erőforrásokhoz](troubleshooting.md)
+* [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../governance/management-groups/index.md)

@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Egyéni szerepkör létrehozása az Azure CLI használatával | Microsoft Docs
-description: Bevezetés az egyéni szerepkörök létrehozásába az Azure CLI használatával.
+title: Oktatóanyag – hozzon létre egy egyéni szerepkört az Azure-erőforrások Azure parancssori felületével |} A Microsoft Docs
+description: Ismerkedés az Azure-erőforrások Azure CLI-vel egyéni szerepkör létrehozásával.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
-ms.openlocfilehash: d2b34fa12836416f68d57f0147dd0364a1501c13
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9cd736272fce71f08006d32a169b88d092a48231
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698019"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340212"
 ---
-# <a name="tutorial-create-a-custom-role-using-azure-cli"></a>Oktatóanyag: Azure CLI-vel egyéni szerepkör létrehozása
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Oktatóanyag: Az Azure-erőforrások Azure CLI-vel egyéni szerepkör létrehozása
 
-Ha a [beépített szerepkörök](built-in-roles.md) nem felelnek meg a cég vagy intézmény igényeinek, saját egyéni szerepköröket is létrehozhat. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure CLI-vel. Ez az egyéni szerepkör lehetővé teszi a felhasználóknak, hogy az előfizetéshez tartozó minden adatot és tartalmat megtekinthessenek, valamint támogatási jegyeket nyithassanak.
+Ha a [beépített szerepkörök az Azure-erőforrások](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, saját egyéni szerepköröket is létrehozhat. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure CLI-vel. Ez az egyéni szerepkör lehetővé teszi a felhasználóknak, hogy az előfizetéshez tartozó minden adatot és tartalmat megtekinthessenek, valamint támogatási jegyeket nyithassanak.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -269,4 +269,4 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, majd frissítse a
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyéni szerepkörök létrehozása az Azure CLI használatával](custom-roles-cli.md)
+> [Egyéni szerepkörök az Azure CLI használatával Azure-erőforrások létrehozása](custom-roles-cli.md)

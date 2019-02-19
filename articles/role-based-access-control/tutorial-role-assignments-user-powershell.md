@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Hozzáférés biztosítása egy felhasználó számára az RBAC és az Azure PowerShell használatával | Microsoft Docs
-description: A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével hozzáférést biztosíthat egy felhasználó számára, hogy mindent megtekinthessen az előfizetésben és mindent kezelhessen egy erőforráscsoportban az Azure PowerShell használatával.
+title: Oktatóanyag – a felhasználó RBAC és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférés biztosítása |} A Microsoft Docs
+description: Útmutató a felhasználói szerepkör alapú hozzáférés-vezérlés (RBAC) és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférést.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 7f5e67edd2a5300ae1898e2620ee8ace80ac6d92
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b9aefc8eae733d9f43d1f5399c1464b40367f09e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109027"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343476"
 ---
-# <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>Oktatóanyag: Hozzáférés engedélyezése egy felhasználó RBAC és az Azure PowerShell használatával
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Oktatóanyag: Egy felhasználó hozzáférést biztosítani Azure-erőforrások RBAC és az Azure PowerShell használatával
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. Ebben az oktatóanyagban hozzáférést biztosít egy felhasználó számára, hogy mindent megtekinthessen az előfizetésben és mindent kezelhessen egy erőforráscsoportban az Azure PowerShell használatával.
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Ebben az oktatóanyagban hozzáférést biztosít egy felhasználó számára, hogy mindent megtekinthessen az előfizetésben és mindent kezelhessen egy erőforráscsoportban az Azure PowerShell használatával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -279,4 +279,4 @@ Ha törölni szeretné a jelen oktatóanyag során létrehozott erőforrásokat,
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hozzáférés kezelése az RBAC és a PowerShell használatával](role-assignments-powershell.md)
+> [Rbac-RÓL és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférés kezelése](role-assignments-powershell.md)

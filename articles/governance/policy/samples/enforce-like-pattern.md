@@ -1,6 +1,6 @@
 ---
 title: Minta – kényszerítése a like
-description: Ez a mintaszabályzat megköveteli az erőforrásoktól, hogy feleljenek meg az elnevezési konvenciók LIKE mintájának.
+description: A szabályzatdefiníció-minta megköveteli, hogy az erőforrások megfelelnek a hasonló elnevezési mintája.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7bc7624cdcc6676d3f622f30e9549a2e444c1d6f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6ff890773a045220b7e2f343d86434fe9109ef1a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243033"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338478"
 ---
-# <a name="enforce-like-pattern-for-naming-conventions"></a>Elnevezési konvenciók kényszerítése LIKE mintával
+# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>Példa – az elnevezési minta például kényszerítése
 
 Megköveteli az erőforrásoktól, hogy feleljenek meg az elnevezési konvenciók LIKE mintájának. Meg kell adnia az engedélyezett LIKE mintát paraméterként.
 

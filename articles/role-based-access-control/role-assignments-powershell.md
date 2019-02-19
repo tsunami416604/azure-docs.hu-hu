@@ -1,6 +1,6 @@
 ---
-title: Rbac-RÓL és az Azure PowerShell-hozzáférés kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és alkalmazások, a szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure PowerShell használatával hozzáférését. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
+title: Rbac-RÓL és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférés kezelése |} A Microsoft Docs
+description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és alkalmazások szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure PowerShell használatával Azure resoruces való hozzáférését. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4e4a920c47dc7f75dc4b6714f101d6cbda715a3a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84fd4262d3b64b369d6307a6a875e8a459324aaa
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106171"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343774"
 ---
-# <a name="manage-access-using-rbac-and-azure-powershell"></a>Rbac-RÓL és az Azure PowerShell-hozzáférés kezelése
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Rbac-RÓL és az Azure PowerShell használatával Azure-erőforrásokhoz való hozzáférés kezelése
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok és alkalmazások RBAC és az Azure PowerShell használatával hozzáférését.
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) van az Azure-erőforrásokhoz való hozzáférés kezelése ugyanúgy. Ez a cikk bemutatja, hogyan kezelheti a felhasználók, csoportok és alkalmazások RBAC és az Azure PowerShell használatával hozzáférését.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -326,6 +326,6 @@ PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionNam
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Hozzáférést biztosít egy csoport RBAC és az Azure PowerShell használatával](tutorial-role-assignments-group-powershell.md)
-- [Oktatóanyag: Azure PowerShell-lel egyéni szerepkör létrehozása](tutorial-custom-role-powershell.md)
+- [Oktatóanyag: Egy csoport hozzáférést biztosít az Azure-erőforrások RBAC és az Azure PowerShell használatával](tutorial-role-assignments-group-powershell.md)
+- [Oktatóanyag: Hozzon létre egy egyéni szerepkört az Azure-erőforrások Azure PowerShell-lel](tutorial-custom-role-powershell.md)
 - [Az Azure PowerShell-erőforrások kezelése](../azure-resource-manager/powershell-azure-resource-manager.md)

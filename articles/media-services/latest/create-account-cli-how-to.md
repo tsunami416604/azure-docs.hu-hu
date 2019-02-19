@@ -10,25 +10,23 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 02/14/2019
+ms.date: 02/15/2019
 ms.author: juliako
-ms.openlocfilehash: 20dbd0025828d5acf07227f8cced4e2d234db200
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: f4ce64599aad2b2eebbef6ca8d81acfca2a7a702
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308485"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342507"
 ---
 # <a name="create-an-azure-media-services-account"></a>Azure Media Services-fiók létrehozása
 
-Indítsa el a titkosítása, kódolás, elemzése, kezelése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. Amikor hoz létre egy Media Services-fiókot Ön is társított storage-fiók létrehozása (vagy használjon egy meglévőt).  
+Indítsa el a titkosítása, kódolás, elemzése, kezelése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. A Media Services-fiókba kell lennie legalább egy storage-fiókokhoz kapcsolódik.
 
 > [!NOTE]
 > A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez kell lennie. Erősen ajánlott a storage-fiókok használata a Media Services-fiók ugyanazon a helyen a további késleltetés és az adatok kimenő adatforgalmi költségek elkerülése érdekében.
 
 Ez a cikk ismerteti az Azure CLI használatával új Azure Media Services-fiók létrehozásának lépései.  
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 

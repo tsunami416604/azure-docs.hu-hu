@@ -8,13 +8,13 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.openlocfilehash: aca64ce3d965d03ecc6fe6da0f372f355a48bed5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 02/15/2019
+ms.openlocfilehash: b77f87ef922d2f759fd8d72505effa3d8e96c403
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311868"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339429"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Hadoop megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight Apache Oozie használata
 
@@ -301,7 +301,7 @@ A feladat definíciója, hogy hol található a workflow.xml ismerteti. Azt is b
     ```
 
     > [!NOTE]  
-    > Ha a HDInsight-fürt az alapértelmezett tárolóként használja az Azure Storage a `<value>` elem tartalmát kezdődhet `wasb://`. Ha az Azure Data Lake Storage Gen1 helyette használja, akkor kezdődik `adl://`.
+    > Ha a HDInsight-fürt az alapértelmezett tárolóként használja az Azure Storage a `<value>` elem tartalmát kezdődhet `wasb://`. Ha az Azure Data Lake Storage Gen1 helyette használja, akkor kezdődik `adl://`. Az Azure Data Lake Storage Gen2 használata esetén kezdődik, `abfs://`.
 
     Mentse a tartalmát a `<value>` elem, ahogy a következő lépésben szolgál.
 

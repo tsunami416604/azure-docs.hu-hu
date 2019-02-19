@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ef791bdfafbbd49cacad1a75c7171b9a030df2a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 701c5c175e22556aefa95d1ac3836d52cd19b845
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456221"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342304"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse naplózása
 
@@ -74,10 +74,13 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
     ![Navigációs ablaktábla][8]
 
     > [!IMPORTANT]
-    > Kiszolgálószintű auditnaplók írt **hozzáfűző Blobok** egy Azure Blob Storage, Azure-előfizetésében.
+    > Auditnaplók írt **hozzáfűző Blobok** az Azure Blob storage, Azure-előfizetésében.
     >
-    > * **A Premium Storage** jelenleg **nem támogatott** a hozzáfűző Blobok.
-    > * **A virtuális hálózatok közötti tárolási** jelenleg **nem támogatott**.
+    > - Az összes tárolási típusú (v1, v2, blob) támogatottak.
+    > - Az összes tárolási replikációs konfiguráció támogatott.
+    > - **A Premium storage** jelenleg **nem támogatott**.
+    > - **A virtuális hálózatok közötti tárolási** jelenleg **nem támogatott**.
+    > - **Tűzfal mögött található tárolási** jelenleg **nem támogatott**
 
 8. Kattintson a **Save** (Mentés) gombra.
 

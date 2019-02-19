@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5049a5a829ce8e94b62409c9d3b1439e8431fb1
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 3274d753d33c759efa06b899a5511daf53aa9ec9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101147"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338648"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
-A Microsoft azt javasolja, hogy a szerepköralapú hozzáférés-vezérlés (RBAC) erőforrások elérésének kezelése. Azonban ha továbbra is a klasszikus üzemi modellt használ, szüksége lesz egy hagyományos előfizetés-rendszergazda szerepkör használata: Szolgáltatás-rendszergazda és a társ-rendszergazdaként. További információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md).
+A Microsoft azt javasolja, hogy a szerepköralapú hozzáférés-vezérlés (RBAC) használata Azure-erőforrásokhoz való hozzáférés kezelésére. Azonban ha továbbra is a klasszikus üzemi modellt használ, szüksége lesz egy hagyományos előfizetés-rendszergazda szerepkör használata: Szolgáltatás-rendszergazda és a társ-rendszergazdaként. További információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md).
 
 Ez a cikk bemutatja, hogyan lehet a társ-rendszergazdaként, és a szolgáltatás-rendszergazdai szerepkörök felvétele vagy módosítása, és a fiók rendszergazdája megtekintése.
 
@@ -155,4 +155,4 @@ Kövesse az alábbi lépéseket a fiók rendszergazdája megtekintéséhez.
 ## <a name="next-steps"></a>További lépések
 
 * [A különböző Azure-beli szerepkörök ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
+* [Rbac-RÓL és az Azure portal segítségével Azure-erőforrásokhoz való hozzáférés kezelése](../role-based-access-control/role-assignments-portal.md)
