@@ -1,6 +1,6 @@
 ---
-title: Erőforrások rendszerezése az Azure Management Groups segítségével
-description: Megismerheti a felügyeleti csoportokat és azok használatának módját.
+title: Erőforrások rendszerezése az Azure Management Groups segítségével – Azure Governance
+description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
 author: rthorn17
 manager: rithorn
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
@@ -11,12 +11,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: ea34296e170d18a1d5636c50e7cae316b1d97948
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 9d606a46bd08ce3e999806bed2357968e5ffd914
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584605"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339287"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Erőforrások rendszerezése az Azure Management Groups segítségével
 
@@ -118,7 +118,7 @@ Ha ezzel az API-val szeretné nyomon követni a felügyeleti csoportokat, haszn�
 1. Az Azure AD-bérlő bérlői rendszergazdájaként [emelheti a jogosultságszintet](../../role-based-access-control/elevate-access-global-admin.md), majd Olvasó szerepkört rendelhet a naplózást végző felhasználóhoz a `/providers/microsoft.insights/eventtypes/management` hatókörben.
 1. Naplózási felhasználóként meghívhatja a [Tenant Activity Log API-t](/rest/api/monitor/tenantactivitylogs) a felügyeleti csoportok tevékenységének megtekintésére. Minden felügyeleticsoport-tevékenységnél érdemes a **Microsoft.Management** erőforrás-szolgáltató szerint szűrni.  Példa:
 
-```
+```http
 GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
 ```
 

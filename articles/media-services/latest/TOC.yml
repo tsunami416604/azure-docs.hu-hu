@@ -15,12 +15,15 @@ items:
 - name: Oktatóanyagok
   items:
   - name: Távoli fájl kódolása és videó streamelése – REST
+    displayName: encoding, job, transform
     href: stream-files-tutorial-with-rest.md
   - name: Feltöltött fájl kódolása és videó streamelése – .NET
+    displayName: encode, encoding, job, transform
     href: stream-files-tutorial-with-api.md
   - name: Élő stream – .NET
     href: stream-live-tutorial-with-api.md
   - name: Videó elemzése – .NET
+    displayName: job, transform
     href: analyze-videos-tutorial-with-api.md
   expanded: true
 - name: Példák
@@ -31,33 +34,55 @@ items:
     href: cli-samples.md
 - name: Alapelvek
   items:
-  - name: Betöltés
+  - name: Felhőbe történő feltöltés és tárolás
+    href: storage-account-concept.md
     items:
     - name: Objektumok
       href: assets-concept.md
-  - name: Kódolás
-    href: encoding-concept.md
+  - name: Encoding
     items:
+    - name: Áttekintés
+      displayName: Presets
+      href: encoding-concept.md
     - name: Átalakítások és feladatok
       href: transforms-jobs-concept.md
     - name: Media Encoder Standard-formátumok
       href: media-encoder-standard-formats.md
     - name: Adaptív sávszélességi skála automatikus létrehozása
       href: autogen-bitrate-ladder.md
-  - name: Elemzés
-    href: analyzing-video-audio-files-concept.md
+  - name: Media analytics (Médiaelemzés)
     items:
+    - name: Áttekintés
+      displayName: Presets
+      href: analyzing-video-audio-files-concept.md
     - name: Átalakítások és feladatok
       href: transforms-jobs-concept.md
-  - name: Stream
+  - name: Csomagolás, teljesítés, védelem
     items:
+    - name: Csomagolás
+      items:
+      - name: Dinamikus csomagolás
+        href: dynamic-packaging-overview.md
+      - name: Szűrők
+        href: filters-concept.md
+      - name: Dinamikus jegyzékek
+        href: filters-dynamic-manifest-overview.md
+    - name: Tartalomvédelem
+      href: content-protection-overview.md
+      items:
+      - name: Multi-DRM rendszer hozzáférés-vezérléssel
+        href: design-multi-drm-system-with-access-control.md
     - name: Streamvégpontok
+      displayName: Origins
       href: streaming-endpoint-concept.md
     - name: Streamelési lokátor
+      displayName: URLs
       href: streaming-locators-concept.md
     - name: Streamelési szabályok
       href: streaming-policy-concept.md
-  - name: Élő stream
+    - name: Tartalomkulcsszabályok
+      href: content-key-policy-concept.md
+  - name: Live streaming (Élő adatfolyam)
     href: live-streaming-overview.md
     items:
     - name: Élő események és élő kimenetek
@@ -72,36 +97,19 @@ items:
       href: live-event-states-billing.md
     - name: Késés
       href: live-event-latency.md
-  - name: Kézbesítés
-    items:
-    - name: Szűrők és dinamikus jegyzék
-      href: filters-dynamic-manifest-overview.md
   - name: Figyelés
     items:
-    - name: Event Grid
+    - name: Események az Event Griddel
       href: reacting-to-media-services-events.md
-  - name: Védelem
-    href: content-protection-overview.md
+  - name: Lejátszóügyfelek
     items:
-    - name: Tartalomkulcsszabályok
-      href: content-key-policy-concept.md
-    - name: Streamelési szabályok
-      href: streaming-policy-concept.md
-    - name: Streamelési lokátor
-      href: streaming-locators-concept.md
-    - name: Multi-DRM rendszer hozzáférés-vezérléssel
-      href: design-multi-drm-system-with-access-control.md
-  - name: Lejátszás
-    href: use-azure-media-player.md
-  - name: Fiókok
+    - name: Azure Media Player
+      href: use-azure-media-player.md
+  - name: Media Services-entitások
     items:
-    - name: Kvóták és korlátozások
-      href: limits-quotas-constraints.md
-    - name: Tárfiókok
-      href: storage-account-concept.md
-  - name: Szűrés, rendezés, oldalentitások
-    href: entities-overview.md
-  - name: Migrálás a 2-esről a 3-as verzióra
+    - name: Az entitások rendezése, szűrése és lapozása
+      href: entities-overview.md
+  - name: Útmutatás a 2-esről a 3-as verzióra való migráláshoz
     href: migrate-from-v2-to-v3.md
 - name: Útmutatók
   items:
@@ -113,19 +121,34 @@ items:
       href: access-api-cli-how-to.md
     - name: Fenntartott médiaegységek skálázása – parancssori felület
       href: media-reserved-units-cli-how-to.md
-  - name: Postman konfigurálása
-    href: media-rest-apis-with-postman.md
+    - name: A fejlesztés megkezdése
+      href: developers-guide.md
+    - name: Postman konfigurálása
+      href: media-rest-apis-with-postman.md
   - name: Tartalom feltöltése
     items:
-    - name: HTTP-forrásból – .NET
+    - name: HTTPS-forrásból – .NET
+      displayName: upload
       href: job-input-from-http-how-to.md
     - name: Egy helyi fájlból – .NET
+      displayName: upload
       href: job-input-from-local-file-how-to.md
     - name: Egy helyi fájlból – REST
+      displayName: upload
       href: upload-files-rest-how-to.md
   - name: Tartalom kódolása
     items:
-    - name: Előzetes átalakítási beállítások testreszabása – .NET
+    - name: HTTPS mint feladatbemenet – .NET
+      displayName: encode, encoding
+      href: job-input-from-http-how-to.md
+    - name: Helyi fájl mint feladatbemenet – .NET
+      displayName: encode, encoding
+      href: job-input-from-local-file-how-to.md
+    - name: Helyi fájl mint feladatbemenet – REST
+      displayName: encode
+      href: upload-files-rest-how-to.md
+    - name: Egyéni átalakítás használata – .NET
+      displayName: encode, encoding, tranform
       href: customize-encoder-presets-how-to.md
   - name: Az Event Grid használata
     items:
@@ -215,13 +238,15 @@ items:
     href: https://github.com/Azure/Azure-Media-Services-Explorer
   - name: Kibocsátási megjegyzések
     href: release-notes.md
+  - name: Kvóták és korlátozások
+    href: limits-quotas-constraints.md
   - name: GYIK
     href: frequently-asked-questions.md
   - name: Azure-felhők és -régiók
     href: azure-clouds-regions.md
-ms.openlocfilehash: 0ca98ea27a77418ee5a111a67bd013ab6ad40e55
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 05b20d905a5848cfcfd0f9c6d20e4addb5c776fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330018"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340433"

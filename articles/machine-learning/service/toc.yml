@@ -59,7 +59,11 @@ items:
 - name: Útmutatók
   items:
   - name: Munkaterületek kezelése
-    href: how-to-manage-workspace.md
+    items:
+    - name: Portál használata a munkaterületekhez
+      href: how-to-manage-workspace.md
+    - name: Resource Manager-sablon használata
+      href: how-to-create-workspace-template.md
   - name: Fejlesztési környezet beállítása 
     items:
     - name: Fejlesztési környezetek konfigurálása
@@ -119,8 +123,6 @@ items:
       href: how-to-deploy-fpga-web-service.md
     - name: Hibaelhárítás
       href: how-to-troubleshoot-deployment.md
-    - name: Webszolgáltatások biztonságossá tétele SSL használatával
-      href: how-to-secure-web-service.md
   - name: Webszolgáltatások felhasználása
     items:
     - name: Felhasználás valós időben
@@ -136,25 +138,27 @@ items:
       href: how-to-enable-data-collection.md
     - name: Monitorozás az Application Insights segítségével
       href: how-to-enable-app-insights.md
+  - name: Biztonság
+    items:
+    - name: Virtuális hálózatok használata
+      displayName: vnet
+      href: how-to-enable-virtual-network.md
+    - name: Webszolgáltatások biztonságossá tétele SSL használatával
+      href: how-to-secure-web-service.md
   - name: Az első folyamat létrehozása
     href: how-to-create-your-first-pipeline.md
+  - name: Naplózás engedélyezése
+    displayName: logging
+    href: how-to-enable-logging.md
   - name: Erőforráskvóták kezelése
     displayName: limits
     href: how-to-manage-quotas.md
-  - name: Védelem virtuális hálózatokkal
-    displayName: vnet
-    href: how-to-enable-virtual-network.md
   - name: A Machine Learning parancssori felület használata
     displayName: cli extension command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
   - name: Adatok exportálása és törlése
     displayName: gdpr
     href: how-to-export-delete-data.md
-  - name: Resource Manager-sablon használata
-    href: how-to-create-workspace-template.md
-  - name: Naplózás engedélyezése
-    displayName: logging
-    href: how-to-enable-logging.md
 - name: Referencia
   items:
   - name: Machine learning SDK
@@ -166,8 +170,6 @@ items:
   - name: Monitorozási SDK
     displayName: api package python monitor
     href: https://aka.ms/aml-monitoring-sdk
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.machinelearningservices/allversions
 - name: További források
   items:
   - name: Azure-ütemterv
@@ -183,9 +185,9 @@ items:
     href: support-for-aml-services.md
   - name: Machine Learning-termékeink összehasonlítása
     href: overview-more-machine-learning.md
-ms.openlocfilehash: eb803b44bbe72b80f4414a4de66bce519591dea7
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 041a4b0f3ebecdaedb041ceb25f426a6e1825292
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268821"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338093"

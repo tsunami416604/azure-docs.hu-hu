@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6972ad521ac5622086b5294dc6b49e35f10ba178
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 2f0465b954e48822470374abeadb13e90a03fa3a
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431481"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408731"
 documentType: LandingData
-title: Szerepköralapú hozzáférés-vezérlés dokumentációja
+title: RBAC az Azure-erőforrásokhoz – dokumentáció
 metadata:
   document_id: 
-  title: A szerepköralapú hozzáférés-vezérlés (RBAC) dokumentációja az Azure-ban | Microsoft Docs
+  title: Az Azure-erőforrásokhoz készült szerepköralapú hozzáférés-vezérlés (RBAC) dokumentációja | Microsoft Docs
   description: Megismerkedhet a szerepköralapú hozzáférés-vezérlés (RBAC) részleteivel, amely lehetővé teszi például annak meghatározását, hogy kik férhetnek hozzá az Azure-erőforrásokhoz, mire használhatják azokat fel, és mely területekhez nyerhetnek hozzáférést.
   services: active-directory
   author: rolyon
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 06/15/2018
+  ms.date: 02/16/2019
   ms.author: rolyon
 abstract:
   description: A szerepköralapú hozzáférés-vezérlés (role-based access control, RBAC) egy olyan rendszer, amely lehetőséget nyújt az Azure-erőforrások hozzáférés-kezelésének finomhangolására. Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szüksége van.
@@ -37,12 +37,13 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">Hozzáférés biztosítása felhasználó számára</a>
+    - html: <a href="/azure/role-based-access-control/check-access">Felhasználó hozzáférésének megtekintése</a>
 - title: Részletes útmutatók
   items:
   - type: list
     style: unordered
     items:
+    - html: <a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">Hozzáférés biztosítása felhasználó számára – Portal</a>
     - html: <a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">Hozzáférés biztosítása csoport számára – PowerShell</a>
     - html: <a href="/azure/role-based-access-control/tutorial-custom-role-powershell">Egyéni szerepkör létrehozása – PowerShell</a>
     - html: <a href="/azure/role-based-access-control/tutorial-custom-role-cli">Egyéni szerepkör létrehozása – parancssori felület</a>

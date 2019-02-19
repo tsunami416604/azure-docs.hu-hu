@@ -1,5 +1,5 @@
 items:
-- name: Szerepköralapú hozzáférés-vezérlés dokumentációja
+- name: RBAC az Azure-erőforrásokhoz – dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
@@ -9,7 +9,7 @@ items:
     href: rbac-and-directory-admin-roles.md
 - name: Gyors útmutatók
   items:
-  - name: Egy felhasználó szerepköreinek megtekintése
+  - name: Felhasználó hozzáférésének megtekintése
     href: check-access.md
 - name: Oktatóanyagok
   items:
@@ -29,7 +29,7 @@ items:
     href: role-definitions.md
   - name: A megtagadási hozzárendelések ismertetése
     href: deny-assignments.md
-  - name: Privileged Identity Management (PIM) RBAC-hez
+  - name: PIM Azure-erőforrásokhoz
     href: pim-azure-resource.md
   - name: Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz
     href: conditional-access-azure-management.md
@@ -96,9 +96,9 @@ items:
   items:
   - name: Fejlessze a készségeit a Microsoft Learnnel
     href: /learn/browse/?products=azure-active-directory
-ms.openlocfilehash: 46ff0e024e2c7dc466120054b4a8e69fa47c14cd
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 20500ad90e710b2c0e4359832a24a352c14ea0b2
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099207"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408765"
