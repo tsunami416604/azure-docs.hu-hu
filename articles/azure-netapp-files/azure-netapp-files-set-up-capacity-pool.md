@@ -12,26 +12,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/28/2018
+ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 55a1d16ce1617ecf7bc28c7c62de8557ceeea311
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: af3738849382317eeddf8bce3d2f87e38e0fb583
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412911"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427790"
 ---
 # <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
+
 A beállított kapacitáskészletekben hozhat létre majd köteteket.  
 
 ## <a name="before-you-begin"></a>Előkészületek 
+
 Már rendelkeznie kell egy létrehozott NetApp-fiókkal.   
 
 [NetApp-fiók létrehozása](azure-netapp-files-create-netapp-account.md)
 
 ## <a name="steps"></a>Lépések 
 
-1. Lépjen a NetApp-fiók felügyeleti paneljére, majd a navigációs ablaktáblán válassza a **Kapacitáskészletek** lehetőséget.
+1. A NetApp fiók felügyeleti paneljéről, és a navigációs ablaktáblán kattintson a **kapacitás készletek**.  
+    
+    ![Navigáljon a kapacitás-készlet](../media/azure-netapp-files/azure-netapp-files-navigate-to-capacity-pool.png)
 
 2. Új kapacitáskészlet létrehozásához kattintson a **+ Készletek hozzáadása** elemre.   
     Ekkor megjelenik az Új kapacitáskészlet ablak.
@@ -43,18 +47,18 @@ Már rendelkeznie kell egy létrehozott NetApp-fiókkal.
 
   * **Szolgáltatásszint**   
     Ez a mező a kapacitáskészlet célteljesítményét mutatja.  
-    Jelenleg csak a Prémium szolgáltatásszint érhető el. 
+    Adja meg a szolgáltatási szint a kapacitás-készlet: [**Prémium szintű** ](azure-netapp-files-service-levels.md#Premium) vagy [ **Standard**](azure-netapp-files-service-levels.md#Standard).
 
-  *  **Méret**     
-      Adja meg a megvásárolni kívánt kapacitáskészlet-méretet.        
-      A kapacitáskészletek minimális mérete 4 TiB. A létrehozott kapacitáskészlet méretének a 4 TiB egy szorzatának kell lennie.   
+  * **Méret**     
+    Adja meg a megvásárolni kívánt kapacitáskészlet-méretet.        
+    A kapacitáskészletek minimális mérete 4 TiB. A létrehozott kapacitáskészlet méretének a 4 TiB egy szorzatának kell lennie.   
       
-      ![Új kapacitáskészlet](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+    ![Új kapacitáskészlet](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
 4. Kattintson az **OK** gombra.
 
 ## <a name="next-steps"></a>További lépések 
 
-[Az Azure Files-NetApp alhálózat delegálása](azure-netapp-files-delegate-subnet.md)
-
-
+- [Szolgáltatási szintek a NetApp Azure-fájlok](azure-netapp-files-service-levels.md)
+- Tekintse meg a [Azure NetApp fájlok díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/storage/netapp/) az ár különböző szolgáltatási szintek
+- [Az Azure Files-NetApp alhálózat delegálása](azure-netapp-files-delegate-subnet.md)

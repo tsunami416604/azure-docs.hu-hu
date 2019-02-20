@@ -1,5 +1,5 @@
 ---
-title: Állítsa be regisztráció és bejelentkezés Facebook-fiókkal az Azure Active Directory B2C használatával |} A Microsoft Docs
+title: Regisztráció és bejelentkezés Facebook-fiók – Azure Active Directory B2C-beállítása |} A Microsoft Docs
 description: Adja meg a regisztráció és bejelentkezés Facebook az alkalmazások az Azure Active Directory B2C fiókkal rendelkező ügyfelek számára.
 services: active-directory-b2c
 author: davidmu1
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ea1afb83c3e381c33b1c29c224d1ce0cc1d3d080
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 56534589c89fefb38f206f1c57da7996ae43e81d
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163041"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428499"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Regisztráljon, és jelentkezzen be a Facebook-fiókkal az Azure Active Directory B2C beállítása
 
 ## <a name="create-a-facebook-application"></a>Egy Facebook-alkalmazás létrehozása
 
-Identitás-szolgáltatóként az Azure Active Directory (Azure AD) B2C egy Facebook-fiók használatához szüksége alkalmazás létrehozása a bérlőben, amely azt jelöli. Ha még nem rendelkezik egy Facebook-fiókban, beszerezheti a [ https://www.facebook.com/ ](https://www.facebook.com/).
+Használata egy Facebook-fiókban, mint egy [identitásszolgáltató](active-directory-b2c-reference-oauth-code.md) Azure Active Directory (Azure AD) B2C-vel, az alkalmazás létrehozása a bérlőben, hogy az azt jelölő szüksége. Ha még nem rendelkezik egy Facebook-fiókban, beszerezheti a [ https://www.facebook.com/ ](https://www.facebook.com/).
 
 1. Jelentkezzen be a [Facebook-fejlesztőknek](https://developers.facebook.com/) Facebook-fiókja hitelesítő adataival.
 2. Ha még nem tette meg, hogy Facebook-fejlesztőként regisztrálnia kell. Ehhez válassza ki a **regisztrálása** az oldal jobb felső sarkában, fogadja el a Facebook-szabályzatokat, és végezze el a regisztrációs lépéseket.

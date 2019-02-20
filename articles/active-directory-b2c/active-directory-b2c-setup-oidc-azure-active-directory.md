@@ -1,5 +1,5 @@
 ---
-title: Jelentkezzen be az Azure Active Directory B2C egy Azure Active Directory-szervezet beállítása |} A Microsoft Docs
+title: Jelentkezzen be egy Azure Active Directory-szervezet – Azure Active Directory B2C beállítása |} A Microsoft Docs
 description: Állítsa be jelentkezzen be az Azure Active Directory B2C egy adott Azure Active Directory szervezet számára.
 services: active-directory-b2c
 author: davidmu1
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9078cbfd14e61b2de0d513e513413ae3c79137e3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0da27c5ce872d1b4e1b4c63f6f4207bb5ca4d6ef
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166220"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428074"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Jelentkezzen be egy adott Azure Active Directory-szervezet az Azure Active Directory B2C beállítása
 
 >[!NOTE]
 > Ez a funkció nyilvános előzetes verzióban érhető el. Az éles környezetben ne használja a szolgáltatást.
 
-Ez a cikk bemutatja, hogyan való bejelentkezés engedélyezése a felhasználók számára egy adott Azure Active Directory (Azure AD) szervezet felhasználói folyamat használata az Azure Active Directory (Azure AD) B2C-ben.
+Az Azure Active Directory (Azure AD) használatára egy [identitásszolgáltató](active-directory-b2c-reference-oauth-code.md) az Azure AD B2C-kell hoznia egy alkalmazás, amely azt jelöli. Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók számára egy adott Azure AD-ből az Azure AD B2C flow cégen felhasználó.
 
 ## <a name="create-an-azure-ad-app"></a>Az Azure AD-alkalmazás létrehozása
 

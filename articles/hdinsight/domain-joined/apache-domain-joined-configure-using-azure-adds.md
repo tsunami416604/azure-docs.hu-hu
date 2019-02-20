@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: b6cc65d10fc8924686d01c02177a9cb76f7a9571
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 722a40dca0a64407a407ecad6d990d1651b0e998
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660918"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415731"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>HDInsight-fürt konfigurálása Enterprise Security Package-dzsel az Azure Active Directory Domain Services használatával
 
@@ -95,6 +95,10 @@ Meg kell győződnie arról, hogy minden a [szükséges portok](https://docs.mic
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>ESP-HDInsight-fürt létrehozása
 
 Az előző lépések megfelelően beállítása után a következő lépés az a HDInsight-fürt létrehozása a ESP engedélyezve van. Amikor létrehoz egy HDInsight-fürtöt, engedélyezheti a vállalati biztonsági csomag a **egyéni** fülre. Ha inkább egy Azure Resource Manager-sablon központi telepítéshez használni szeretne, egyszer használja a portál felülete, és töltse le az előre kitöltött sablon az utolsó "Összegzés" lapon későbbi felhasználásra.
+
+> [!NOTE]  
+> Az ESP fürt nevének első hat karakterét környezetében egyedinek kell lennie. Például ha több ESP fürt eltérő virtuális hálózatokba tartozó, válasszák egy elnevezési convension, amely biztosítja, hogy a fürt nevét az első hat karakterek egyedi.
+
 
 ![Az Azure HDInsight vállalati biztonsági csomag tartomány ellenőrzése](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
 

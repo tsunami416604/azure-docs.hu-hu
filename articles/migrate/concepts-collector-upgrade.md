@@ -4,15 +4,15 @@ description: Az Azure Migrate Collector berendezést verziófrissítések kapcso
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 02/19/2019
 ms.author: hamusa
 services: azure-migrate
-ms.openlocfilehash: 88077ac965b2abb69be145f29cbadca2ff1128d6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f29556c8f2a5aa727ce80632eaccf5e1ed6d7c1a
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836644"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415544"
 ---
 # <a name="collector-update-release-history"></a>Gyűjtő frissítés verziókiadások előzményei
 
@@ -20,11 +20,11 @@ Ez a cikk összefoglalja a gyűjtő berendezés a frissítési információk [Az
 
 Az Azure Migrate Collector egy egyszerűsített berendezés, amely az Azure-ba való migrálás előtt értékelés céljából a helyszíni vCenter environment felderítésére szolgál. [További információk](concepts-collector.md).
 
-## <a name="continuous-discovery-upgrade-versions"></a>Folyamatos felderítési:-verziók frissítésére
+## <a name="continuous-discovery-upgrade-versions"></a>Folyamatos felderítési: Frissítési verziók
 
 Nincs frissítés a folyamatos felderítési berendezés még nem érhető el.
 
-## <a name="one-time-discovery-deprecated-now-previous-upgrade-versions"></a>(Most már elavult a) felderítés egyszeri felderítés: előző frissítési verziók
+## <a name="one-time-discovery-deprecated-now-previous-upgrade-versions"></a>Egyszeri felderítés (most már elavult): Korábbi frissítési verziók
 
 > [!NOTE]
 > A felderítés egyszeri felderítés berendezés elavulttá vált, ez a módszer támaszkodtak a vCenter Server statisztikai beállításait teljesítmény adatok pont rendelkezésre állását és virtuális gépek áttelepítése az Azure-ba való korrigáljuk méretezésének eredményezett átlagos teljesítményszámlálók gyűjtése.

@@ -4,18 +4,18 @@ description: Modulok IoT Edge-eszköz üzembe helyezése az Azure portal haszná
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/03/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8b7327796cf29c8c234c0a750c90e0689f508f7e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9d7729dce5419c5813de3c4dfce55c40098f5988
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969403"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430114"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Az Azure Portalról az Azure IoT Edge-modulok telepítése
 
@@ -51,6 +51,7 @@ Az Azure Portalon rendelkezik egy varázslót, amely manifest nasazení, a JSON-
 
    * **IoT Edge-modul** – az alapértelmezett beállítás.
    * **Az Azure Stream Analytics modul** – csak a modulok által létrehozott egy Azure Stream Analytics számítási feladatot.
+   * **Az Azure Machine Learning modul** – csak modellezheti az Azure Machine Learning-munkaterület az a képeket.
 
 1. Válassza ki a **IoT Edge-modul**.
 
@@ -82,6 +83,29 @@ Tekintse át a telepítési adatokat, majd válassza a **küldés**.
 ## <a name="view-modules-on-your-device"></a>Modulok megjelenítése az eszközön
 
 Miután telepítette a modulokat az eszközön, megtekintheti azokat a **eszközadatok** a portál. Ezen a lapon minden egyes telepített modul, valamint a hasznos információk, például a központi telepítési állapot és a kilépési kód nevét jeleníti meg.
+
+## <a name="deploy-modules-from-azure-marketplace"></a>Azure Marketplace-ről modulok telepítése
+
+Az Azure Marketplace-en, tallózhat a vállalati alkalmazások és megoldások, hitelesített és optimalizált futtatásához az Azure-ban számos online alkalmazások és szolgáltatások piactérről köztük [IoT Edge-modulok](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Az Azure Marketplace-en is elérhető az Azure Portalon a **erőforrás létrehozása**.
+
+Azure Marketplace-en vagy az Azure Portalon lehet telepíteni az IoT Edge-modul:
+
+1. Keresse meg a modult, és a telepítési folyamat.
+
+   * Az Azure Portalon: Egy modul megkeresése és kiválasztása **létrehozás**.
+
+   * Az Azure Marketplace-en:
+
+     1. Egy modul megkeresése és kiválasztása **Letöltés most**.
+     1. Tudomásul veszi a szolgáltató használati feltételei és adatvédelmi szabályzat kiválasztásával **Folytatás**.
+
+1. Válassza ki az előfizetés és az IoT Hub, az eszköznek, amelyhez csatlakozik.
+
+1. Válasszon **üzembe helyezés az eszköz**.
+
+1. Adja meg a nevét, válassza ki vagy az **található eszköz** , keresse meg a központon regisztrált eszközök között.
+
+1. Válassza ki **létrehozás** konfigurálása a központi telepítési jegyzékfájl, beleértve a más modulok hozzáadása, ha szükséges, a standard szintű folyamat folytatásához. Lemezkép URI-ja, például az új modul részletei beállítások létrehozása, és kívánt tulajdonságok előre, de módosítható.
 
 ## <a name="next-steps"></a>További lépések
 

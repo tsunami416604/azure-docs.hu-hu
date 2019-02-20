@@ -15,12 +15,12 @@ ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 5daf60669d6e647fc1060bb5ac172b777c9559c5
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 23adf2903a50727d920e4a20b8a325313fa39e2a
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512295"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428007"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack-regisztráció
 Regisztrálhat az Azure Stack Development Kit (ASDK) telepítése az Azure marketplace-elemek letöltése az Azure-ból, és megkezdheti a Microsoft kereskedelmi adatok beállítása. Regisztráció teljes Azure Stack-funkciók, többek között a piactér tartalomtípus-gyűjtési támogatásához szükséges. Regisztráció szükséges ahhoz, hogy tesztelje fontos Azure Stack-funkciók, például a Marketplace-en tartalomtípus-gyűjtési és használati jelentések készítése. Miután regisztrálta Azure Stack, az Azure kereskedelmi jelentett használati. Láthatja a regisztráció során használt előfizetés alatt. Azonban ASDK felhasználók nem számítunk fel díjat minden használati jelentést.
@@ -48,7 +48,7 @@ Kövesse az alábbi lépéseket a ASDK regisztrálni az Azure-ral.
 
 1. Nyisson meg egy PowerShell-konzolt rendszergazdaként.  
 
-2. Futtassa a következő PowerShell-parancsokat a ASDK telepítési regisztrálni az Azure-ral. Jelentkezzen be az Azure-előfizetés és a helyi ASDK telepítési is kell. Ha nem rendelkezik Azure-előfizetéssel, még akkor is [ingyenes Azure-fiók létrehozása itt](https://azure.microsoft.com/free/?b=17.06). Az Azure-előfizetése ingyenes regisztrálása az Azure Stack tekintetében.<br><br>Állítsa be egy egyedi nevet a regisztráció futtatásakor a **Set-AzsRegistration** parancsmagot. A **RegistrationName** paraméterének alapértelmezett értéke **AzureStackRegistration**. Azonban, ha ugyanazzal a névvel egynél több Azure Stack-példányt használ, a parancsfájl futtatása sikertelen lesz.
+2. Futtassa a következő PowerShell-parancsokat a ASDK telepítési regisztrálni az Azure-ral. Jelentkezzen be az Azure számlázási előfizetés-Azonosítóját és a helyi ASDK telepítési is kell. Ha nem rendelkezik az Azure számlázási előfizetés-azonosító, még akkor is [ingyenes Azure-fiók létrehozása itt](https://azure.microsoft.com/free/?b=17.06). Az Azure-előfizetése ingyenes regisztrálása az Azure Stack tekintetében.<br><br>Állítsa be egy egyedi nevet a regisztráció futtatásakor a **Set-AzsRegistration** parancsmagot. A **RegistrationName** paraméterének alapértelmezett értéke **AzureStackRegistration**. Azonban, ha ugyanazzal a névvel egynél több Azure Stack-példányt használ, a parancsfájl futtatása sikertelen lesz.
 
     ```PowerShell  
     # Add the Azure cloud subscription environment name. 

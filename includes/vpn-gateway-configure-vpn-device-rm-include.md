@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b5aea9d7fe54402693be095350f7c095334fd4b5
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
-ms.translationtype: HT
+ms.openlocfilehash: 886fa6c088f2fbabb3d3ba1cd0b15bbc488784f3
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30198111"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418281"
 ---
 **VPN-eszközök konfigurációs szkriptjeinek letöltése:**
 
@@ -27,7 +27,7 @@ A meglévő VPN-eszköztől függően lehet, hogy letölthet egy VPN-eszközhöz
 
 - Az eszközkonfigurációs beállításokra mutató hivatkozásokért lásd: [Ellenőrzött VPN-eszközök](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable). Az eszközkonfigurációs hivatkozásokat képességeinkhez mérten biztosítjuk. Minden esetben célszerű az eszköz gyártójához fordulni a legfrissebb konfigurációs információért. A listán az általunk tesztelt verziók láthatók. Ha az operációs rendszere nem szerepel a listán, attól még lehetséges, hogy a verzió kompatibilis. Forduljon az eszköz gyártójához annak ellenőrzéséhez, hogy a VPN-eszköz operációs rendszerének verziója kompatibilis-e.
 
-- A VPN-eszközök konfigurációjának áttekintését lásd: [Külső gyártmányú VPN-eszközök konfigurációjának áttekintése](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md).
+- VPN-eszközök konfigurációjának áttekintését lásd: [VPN-eszközök konfigurálása – áttekintés](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md).
 
 - Az eszközök konfigurációs mintáinak szerkesztésével kapcsolatos információkért tekintse meg a [minták szerkesztésével](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#editing) kapcsolatos részt.
 

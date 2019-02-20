@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/17/2019
 ms.author: juliako
-ms.openlocfilehash: d93e0de48fd10677ad30e002390dc2e8177cf2eb
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: fd93b84c251a0b2346550c79bcb8796161cb9116
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408476"
+ms.locfileid: "56417871"
 ---
 # <a name="transforms-and-jobs"></a>Átalakítások és feladatok
  
@@ -52,6 +52,10 @@ Tegyük fel, hogy szeretne kinyerni a miniatűr képként – az összes videó 
     2. Hol lehet írni a kimeneti asztalnak a miniatűrjére. 
 
 A **átalakítása** hozhat létre a recept egyszer (1. lépés), és küldje el a feladatokat az adott recept (2. lépés).
+
+## <a name="job-error-codes"></a>Feladat-hibakódok
+
+Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="paging"></a>Lapozás
 

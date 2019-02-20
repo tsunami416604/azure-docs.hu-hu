@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: PowerShell, a runbook, json, az azure automation
-ms.openlocfilehash: d13f21da88ae3fb9dfa67b11285e0c3e984d5e5b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ef97d4e2fd0951e30a725e8f2f9603a73c61f1ca
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421811"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416116"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban
 
@@ -23,11 +23,11 @@ ms.locfileid: "54421811"
 
 Ezáltal a segítségével automatizálhatja az üzembe helyezés Azure-erőforrások. Akkor is fenntartható egy központi, biztonságos helyen – például az Azure Storage Resource Manager-sablonokkal.
 
-Ebben a témakörben egy PowerShell-forgatókönyvet, amely tárolja a Resource Manager-sablon létrehozunk [Azure Storage](../storage/common/storage-introduction.md) egy új Azure Storage-fiók üzembe helyezéséhez.
+Ebben a cikkben létrehozunk egy PowerShell-forgatókönyvet, amely tárolja a Resource Manager-sablonnal használ [Azure Storage](../storage/common/storage-introduction.md) egy új Azure Storage-fiók üzembe helyezéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+Az oktatóanyag elvégzéséhez szüksége van a következő elemek:
 
 * Egy Azure-előfizetés. Ha Ön még nem rendelkezik, akkor [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) vagy [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
 * [Automation-fiók](automation-sec-configure-azure-runas-account.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez.  Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
@@ -176,7 +176,7 @@ Mentse a fájlt helyileg `DeployTemplate.ps1`.
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>Importálása és a runbook közzététele az Azure Automation-fiókba
 
 Most már tudjuk a runbook importálása az Azure Automation-fiókját a PowerShell használatával, és tegye közzé a runbookot.
-Importálhatja és teheti közzé egy runbookot az Azure Portalon kapcsolatos információkért lásd: [létrehozása vagy importálása az Azure Automation-runbook](automation-creating-importing-runbook.md).
+Importálhatja és teheti közzé egy runbookot az Azure Portalon kapcsolatos információkért lásd: [kezelése az Azure Automation runbookjai](manage-runbooks.md).
 
 Az importálandó `DeployTemplate.ps1` az Automation-fiók, egy PowerShell-forgatókönyvet, futtassa a következő PowerShell-parancsokat:
 
