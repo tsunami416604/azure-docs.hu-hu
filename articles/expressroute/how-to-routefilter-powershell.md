@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft - társviszony-létesítés útvonalszűrőinek konfigurálása ExpressRoute: PowerShell: Azure |} A Microsoft Docs'
+title: 'Microsoft - társviszony-létesítés útvonalszűrőinek konfigurálása ExpressRoute: PowerShell: Azure | Microsoft Docs'
 description: Ez a cikk ismerteti a PowerShell használatával a Microsoft Peering útvonalszűrők konfigurálása
 documentationcenter: na
 services: expressroute
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 30388185c415346b298dbada715b17e631c66769
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fc2cfcce57ad15d2bbad3242351492e184e7fd33
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096296"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415296"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: PowerShell
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "53096296"
 
 Az útvonalszűrők lehetővé teszik a támogatott szolgáltatások egy részének felhasználását Microsoft-társviszony-létesítésen keresztül. A jelen cikkben ismertetett lépések segítségével konfigurálhatja és kezelheti az ExpressRoute-Kapcsolatcsoportok útvonalszűrőinek.
 
-Dynamics 365-szolgáltatások és az Office 365-szolgáltatások például az Exchange Online, SharePoint Online és Skype vállalati és a nyilvános Azure-szolgáltatások, például a storage és SQL DB a Microsoft társviszony-létesítésen keresztül érhetők el. Nyilvános Azure-szolgáltatások régió per alapon választható és nyilvános szolgáltatásonként nem definiálható. 
+Dynamics 365-szolgáltatások és az Office 365-szolgáltatások például az Exchange Online, SharePoint Online és Skype vállalati és a nyilvános Azure-szolgáltatások, például a storage és SQL DB a Microsoft társviszony-létesítésen keresztül érhetők el. Nyilvános Azure-szolgáltatások régió per alapon választható és nyilvános szolgáltatásonként nem definiálható.
 
 Az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítésre van konfigurálva, és a egy útvonalszűrőhöz van csatolva, amikor ezen szolgáltatások kiválasztott összes előtag keresztül létesített BGP-munkamenetek hirdesse meg. Minden előtaghoz egy BGP-közösségérték van csatolva, amely azonosítja az előtag keretében nyújtott szolgáltatást. A BGP-Közösség értékét, és a szolgáltatások leképezik a listáját lásd: [BGP-Közösségek](expressroute-routing.md#bgp).
 
@@ -99,7 +99,7 @@ Válassza ki a használni kívánt előfizetést.
 Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>1. lépés: Az előtagok és BGP-Közösség értékét listájának lekérése
+## <a name="prefixes"></a>1. lépés: Előtagok és BGP-Közösség értékét listájának lekérése
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. A BGP-Közösség értékét tartalmazó lista beolvasása
 
