@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: c161a2fd8d1be670435d2b1a749749cea7d82bcf
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268441"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416649"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Az Azure Monitor log lekérdezés példák
 Ez a cikk példákat különböző [lekérdezések](log-query-overview.md) használatával a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) lekérni a különböző típusú naplóadatokat az Azure Monitor. Különböző módszerek használhatók konszolidálhatja és az adatok elemzése, így ezek a minták segítségével azonosíthatja a különböző stratégiákat használhatja a saját igényeinek megfelelően.  
@@ -38,7 +38,7 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>Unmarshaling kapcsolatos események keresése
-Keresés a táblákban **esemény** és **SecurityEvents** a rögzíti, hogy Dicséretben _unmashaling_.
+Keresés a táblákban **esemény** és **SecurityEvents** a rögzíti, hogy Dicséretben _unmarshaling_.
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"

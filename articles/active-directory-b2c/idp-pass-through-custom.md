@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f21f835ea50563497b73fb6e4505f60411029406
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cd24d4ad026af7d8bce70902376c3a31d659a203
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882998"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427871"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Egyéni szabályzat használatával egy hozzáférési jogkivonatot át alkalmazását az Azure Active Directory B2C-vel
 
@@ -24,11 +24,11 @@ ms.locfileid: "55882998"
 
 A [egyéni házirendet](active-directory-b2c-get-started-custom.md) az Azure Active Directory (Azure AD) B2C lehetőséget kínál a felhasználók az alkalmazás regisztráljon vagy jelentkezzen be egy identitásszolgáltatóval. Ha ez történik, az Azure AD B2C-t kap egy [hozzáférési jogkivonat](active-directory-b2c-reference-tokens.md) az identitásszolgáltatótól. Az Azure AD B2C használja ezt a jogkivonatot a felhasználóval kapcsolatos információk lekéréséhez. Hozzáadhat egy jogcímtípust és a kimenő jogcímet a jogkivonat segítségével átadása az alkalmazásokat, amelyek az Azure AD B2C-ben regisztrálja az egyéni házirend. 
 
-Az Azure AD B2C jelenleg csak az támogatja a hozzáférési jogkivonatot az átadott [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) Identitásszolgáltatók, például a Facebook és [Google](active-directory-b2c-custom-setup-goog-idp.md). Minden egyéb identitás-szolgáltatóktól a jogcím vissza üres.
+Az Azure AD B2C támogatja a hozzáférési jogkivonatot az átadott [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) és [OpenID Connect](active-directory-b2c-reference-oidc.md) identitás-szolgáltatóktól. Minden egyéb identitás-szolgáltatóktól a jogcím vissza üres.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az egyéni házirend az OAuth 2.0 identitásszolgáltató van konfigurálva.
+- Az egyéni házirend úgy van konfigurálva, az OAuth 2.0 vagy OpenID Connect identitásszolgáltatóval.
 
 ## <a name="add-the-claim-elements"></a>Az igényt elemek hozzáadása 
 

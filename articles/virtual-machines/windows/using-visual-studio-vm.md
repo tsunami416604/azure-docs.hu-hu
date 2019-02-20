@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.prod: vs-devops-alm
-ms.date: 09/12/2018
+ms.date: 02/19/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 1582cc7e48adcf895dc7c07e7ab485790650ac14
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 7530545c3577a662ac0075b83b3eb7e4a8a40f89
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911911"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428567"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure Visual Studio-rendszerképek
-A Visual Studio használatával egy előre konfigurált Azure virtuális gépen (VM) módja a gyors és egyszerű nyissa meg a művelet egy felfelé és a futó fejlesztési környezetben. Visual Studio különböző konfigurációival rendszerképek érhetők el a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
+A Visual Studio használatával egy előre konfigurált Azure virtuális gépen (VM) módja a gyors és egyszerű nyissa meg a művelet egy felfelé és a futó fejlesztési környezetben. Visual Studio különböző konfigurációival rendszerképek érhetők el a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=visual%20studio&page=1).
 
 Most ismerkedik az Azure-ral? [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free).
 
@@ -34,8 +34,8 @@ A legutóbbi főbb verziók, Visual Studio 2017-et és a Visual Studio 2015-öt,
 
 | Verzió                                              | Kiadás                     |     Termék verziószáma      |
 |:------------------------------------------------------------:|:----------------------------:|:------------------------:|
-|    Visual Studio 2019: Előzetes (Preview 2)                   |           Enterprise         | 2. verzió 16.0.0 előzetes |
-| Visual Studio 2017: Legújabb (15.9 verzió)                    |    Enterprise, Community     |      Verzió 15.9.4      |
+|    Visual Studio 2019: Előzetes verzió (3 előzetes verzió)                   |           Enterprise         | 3 előzetes sémaverzióra 16.0.0 |
+| Visual Studio 2017: Legújabb (15.9 verzió)                    |    Enterprise, Community     |      Verzió 15.9.7      |
 |         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Verzió 15.0.20     |
 |   Visual Studio 2015: Legújabb (3. frissítés)                      |    Enterprise, Community     |  Verzió 14.0.25431.01   |
 |         Visual Studio 2015: RTW                              |             None             | (Karbantartási lejárt)  |

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 02/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3bf3dd325af48f99e109f651628883d8f946fdc8
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 24b08bb843b4f1a0eb9f2471cb17b81f2c8ac4d0
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512482"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417533"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Tudnivalók a VPN Gateway konfigurációs beállításairól
 
@@ -20,13 +20,15 @@ VPN-átjáró olyan virtuális hálózati átjáró, amely a virtuális hálóza
 
 VPN gateway-kapcsolat támaszkodik a konfiguráció több erőforrást, amelyek mindegyike tartalmazza a konfigurálható beállítások. Ez a cikk a szakaszok tárgyalják az erőforrások és a Resource Manager-alapú üzemi modellben létrehozott virtuális hálózat VPN-átjáró szoftverközponthoz kapcsolódó beállításokat. Leírások és topológia-diagramok megtalálhatja az összes kapcsolat-megoldás a [információk a VPN Gateway](vpn-gateway-about-vpngateways.md) cikk.
 
->[!NOTE]
-> Ebben a cikkben szereplő értékek érvényesek (a a - gatewaytype Vpn típust használó virtuális hálózati átjárók) VPN-átjárókkal. Ez a cikk nem fedi le átjárótípusok vagy a átjárók zónaredundáns.
->
->* A - GatewayType "ExpressRoute" vonatkozó értékek, tekintse meg a [az ExpressRoute virtuális hálózati átjárók](../expressroute/expressroute-about-virtual-network-gateways.md).
->* Átjárók zónaredundáns lásd [kapcsolatos átjárók zónaredundáns](about-zone-redundant-vnet-gateways.md).
->* Virtuális WAN lásd [kapcsolatos virtuális WAN](../virtual-wan/virtual-wan-about.md). 
->
+Ebben a cikkben szereplő értékek érvényesek (a a - gatewaytype Vpn típust használó virtuális hálózati átjárók) VPN-átjárókkal. Ez a cikk nem fedi le átjárótípusok vagy a átjárók zónaredundáns.
+
+* A - GatewayType "ExpressRoute" vonatkozó értékek, tekintse meg a [az ExpressRoute virtuális hálózati átjárók](../expressroute/expressroute-about-virtual-network-gateways.md).
+
+* Átjárók zónaredundáns lásd [kapcsolatos átjárók zónaredundáns](about-zone-redundant-vnet-gateways.md).
+
+* Virtuális WAN lásd [kapcsolatos virtuális WAN](../virtual-wan/virtual-wan-about.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="gwtype"></a>Átjárótípusok
 
@@ -42,7 +44,7 @@ VPN-átjáró szükséges a `-GatewayType` *Vpn*.
 Példa:
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased
 ```
@@ -62,7 +64,7 @@ Ha az Azure portal használatával a Resource Manager virtuális hálózati átj
 Az alábbi PowerShell-példa meghatározza az `-GatewaySku` VpnGw1. Ha-átjáró létrehozása a PowerShell segítségével, akkor először az IP-konfiguráció létrehozása, majd hivatkoznia kell rá a változók használata. Ebben a példában a konfigurációs változó $gwipconfig.
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
+New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -Location 'US East' -IpConfigurations $gwipconfig -GatewaySku VpnGw1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
@@ -101,7 +103,7 @@ A Resource Manager-alapú üzemi modellben az egyes konfigurációkhoz egy adott
 A következő PowerShell-példa hozunk létre, amely megköveteli a kapcsolat típusa S2S kapcsolat *IPsec*.
 
 ```powershell
-New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
+New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
 -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
 -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
@@ -119,7 +121,7 @@ A virtuális hálózati átjáró létrehozása után nem módosíthatja a VPN-t
 Az alábbi PowerShell-példa meghatározza az `-VpnType` , *RouteBased*. Egy átjáró létrehozásakor biztosítania kell, hogy -VpnType megfeleljen a konfigurációnak.
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig `
 -GatewayType Vpn -VpnType RouteBased
 ```
@@ -141,21 +143,21 @@ Az átjáróalhálózat létrehozásakor meg kell adnia, hogy hány IP-címet ta
 A következő Resource Manager PowerShell-példa bemutatja egy GatewaySubnet nevű átjáró-alhálózatot. Láthatja, hogy a CIDR-jelölésrendszer/27-es, amely lehetővé teszi, hogy elegendő IP-címet, amely a jelenleg létező legtöbb konfiguráció esetében.
 
 ```powershell
-Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 ```
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="lng"></a>Helyi hálózati átjárók
 
-Egy VPN-átjárókonfigurációtól létrehozásakor, az a helyi hálózati átjáró gyakran a helyszíni helyet jelöli. A klasszikus üzembe helyezési modellben a helyi hálózati átjárót a Helyi névvel illettük. 
+ A helyi hálózati átjáró a virtuális hálózati átjáró eltér. Egy VPN-átjárókonfigurációtól létrehozásakor, az a helyi hálózati átjáró általában a helyszíni helyet jelöli. A klasszikus üzembe helyezési modellben a helyi hálózati átjárót a Helyi névvel illettük.
 
 Nevezze el a helyi hálózati átjárót, a helyszíni VPN-eszköz nyilvános IP-címét, és a helyszínen található címelőtagok. Az Azure megvizsgálja a hálózati forgalmat a cél-címelőtagjainak, consults szintűre frissül, hogy a helyi hálózati átjáró a megadott konfigurációval, és ennek megfelelően irányítja a csomagokat. Helyi hálózati átjárókkal VPN gateway-kapcsolatot használó virtuális hálózatok közötti konfigurációkhoz is megad.
 
 A következő PowerShell-példa egy új helyi hálózati átjárót hoz létre:
 
 ```powershell
-New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
+New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
 
@@ -167,7 +169,7 @@ További technikai erőforrások és a megadott szintaxissal kapcsolatos követe
 
 | **Klasszikus** | **Resource Manager** |
 | --- | --- |
-| [PowerShell](/powershell/module/azurerm.network/#networking) |[PowerShell](/powershell/module/azurerm.network#vpn) |
+| [PowerShell](/powershell/module/azurerm.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | Nem támogatott | [Azure CLI](/cli/azure/network/vnet-gateway)|
 

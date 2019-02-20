@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/19/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 79e031226f11d45121827795c34b0103235d8d79
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9a07a829aac9659ac7ab8d04b64a1ea1a9a2de78
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248163"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428057"
 ---
 # <a name="asdk-administration-basics"></a>ASDK Adminisztráció alapjai 
 Több szempontot, ha most ismerkedik az Azure Stack Development Kit (ASDK) felügyeleti ismernie kell. Ez az útmutató a szerepkör, a kiértékelési környezet az Azure Stack operátorait áttekintést nyújt, és hogyan biztosítson a tesztfelhasználók gyorsan hatékony válhat.
@@ -37,7 +37,7 @@ Van néhány fiókokkal kapcsolatos megfontolások érdemes figyelembe vennie, a
 |-----|-----|-----|
 |Helyi rendszergazda (. \Administrator)|ASDK gazdagép-rendszergazda|ASDK gazdagép-rendszergazda|
 |AzureStack\AzureStackAdmin|ASDK gazdagép-rendszergazda<br><br>Jelentkezzen be az Azure Stack felügyeleti portál segítségével<br><br>Megtekintése és kezelése a Service Fabric körök való hozzáférés|ASDK gazdagép-rendszergazda<br><br>Nincs hozzáférés az Azure Stack felügyeleti portálon<br><br>Megtekintése és kezelése a Service Fabric körök való hozzáférés<br><br>Már nem tulajdonosa, az alapértelmezett szolgáltatója előfizetés (DPS)|
-|AzureStack\CloudAdmin|Majd futtassa a kiemelt végponthoz belül engedélyezett parancsokat is|Majd futtassa a kiemelt végponthoz belül engedélyezett parancsokat is<br><br>Nem jelentkezhet be a ASDK gazdagép<br><br>Az alapértelmezett szolgáltatója (DPS) előfizetés tulajdonosa|
+|AzureStack\CloudAdmin|Majd futtassa a kiemelt végponthoz belül engedélyezett parancsokat is|Majd futtassa a kiemelt végponthoz belül engedélyezett parancsokat is<br><br>A ASDK gazdagép nem tud bejelentkezni<br><br>Az alapértelmezett szolgáltatója (DPS) előfizetés tulajdonosa|
 |Az Azure AD globális rendszergazda|A telepítés során használt<br><br>Az alapértelmezett szolgáltatója (DPS) előfizetés tulajdonosa|Nem alkalmazható|
 |
 

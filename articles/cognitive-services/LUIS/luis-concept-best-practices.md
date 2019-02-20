@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: ba51da8b71406cb1bf7446bd66818a6a74e61317
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243416"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428907"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Ajánlott eljárások a Cognitive Services language understanding alkalmazás létrehozásához
 Az alkalmazások használatával hozhat létre a LUIS-alkalmazás. 
@@ -77,23 +77,32 @@ További információk:
 * Fogalom: [A LUIS-alkalmazás az Authoring Tool ciklus](luis-concept-app-iteration.md)
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Újabb iterációban kifejezés listák és a minták hozzáadása
-[Listák kifejezés](luis-concept-feature.md) alkalmazástartománya kapcsolódó szó szótárak meghatározhatja. A kifejezés néhány szó a listában, majd használja a javaslat funkciót, így az alkalmazás további szavak meghatározott szókészletet ismer LUIS kezdőérték. Minden szó nem fel, a szöveg szóhasználati, mert a kifejezéslista nem pontos egyezést. 
+
+Ajánlott eljárás, hogy ezek az eljárások nem alkalmaznia az alkalmazás tesztelve lett. Ismerje meg az alkalmazás viselkedésének kifejezés listák és a minták hozzáadása előtt. Ha már megismerte, hogyan viselkedik az alkalmazás ezek hiányában, adja hozzá a ezeket a funkciókat alkalmazni kell az alkalmazást. Nem kell hozzáadnia ezeket a funkciókat minden egyes [iteráció](luis-concept-app-iteration.md) vagy módosítsa a funkciók egyes verzióival. 
+
+Nem árt hozzáadják őket a modell felépítésének elején, de egyszerűbb meg, hogyan alapdokumentációjában változik-e eredmények után a szolgáltatás a modell tesztelése kimondott szöveg. 
+
+Ajánlott eljárás, hogy keresztül tesztelése a [végpont](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) annak érdekében, hogy a további előnnyel [aktív tanulás](luis-concept-review-endpoint-utterances.md). A [interaktív vizsgálati ablaktáblán](luis-interactive-test.md) érvényes tesztelési módszer is van. 
+ 
+
+### <a name="phrase-lists"></a>Kifejezéslisták
+
+[Listák kifejezés](luis-concept-feature.md) alkalmazástartománya kapcsolódó szó szótárak meghatározhatja. A kifejezés néhány szó a listában, majd használja a javaslat funkciót, így az alkalmazás további szavak meghatározott szókészletet ismer LUIS kezdőérték. Kifejezések listáját szándék észleléséhez és az entitás osztályozás növeli a szavakat vagy kifejezéseket, jelentős az alkalmazáshoz társított jel kiemelése. 
+
+Minden szó nem fel, a szöveg szóhasználati, mert a kifejezéslista nem pontos egyezést. 
+
+További információk:
+* Fogalom: [A LUIS-alkalmazás a kifejezés szolgáltatásai](luis-concept-feature.md)
+* Útmutató: [Használja a kifejezés boost jelre a word lista sorolja fel](luis-how-to-add-features.md)
+
+### <a name="patterns"></a>Minták
 
 Valós felhasználói utterances a végpontról, nagyon hasonlít egymáshoz, felfedheti az word választási lehetőséget és elhelyezési mintáinak. A [minta](luis-concept-patterns.md) funkció leveszi a word választási lehetőség és a reguláris kifejezések együtt elhelyezési az előrejelzési pontosság növeléséhez. A mintában egy reguláris kifejezést lehetővé teszi a szavak és írásjelek, miközben továbbra is a mintának megfelelő figyelmen kívül kívánja. 
 
 Használja a minta [választható szintaxis](luis-concept-patterns.md) az absztrakt, ezért írásjelek figyelmen kívül hagyható. Használja a [explicit lista](luis-concept-patterns.md#explicit-lists) pattern.any szintaktikai problémák kiegyenlítése érdekében. 
 
-Ezek az eljárások nem vonatkoznak, az alkalmazáshoz kapott végpont kérelmek előtt. Ismerje meg az alkalmazás viselkedésének kifejezés listák és a minták hozzáadása előtt. Ha már megismerte, hogyan viselkedik az alkalmazás ezek hiányában, adja hozzá a ezeket a funkciókat alkalmazni kell az alkalmazást. 
-
-Nem árt hozzáadják őket a modell felépítésének elején, de egyszerűbb meg, hogyan alapdokumentációjában változik-e eredményeket, ha hozzáad ilyeneket után az alkalmazás használata a valódi forgalmat. 
-
-Nem kell ezeket a funkciókat minden egyes ismétléskor felvenni vagy módosítani a funkciók egyes verzióival. 
-
 További információk:
-* Fogalom: [A LUIS-alkalmazás az Authoring Tool ciklus](luis-concept-app-iteration.md)
-* Fogalom: [A LUIS-alkalmazás a kifejezés szolgáltatásai](luis-concept-feature.md)
 * Fogalom: [Minták előrejelzési pontosság növeléséhez.](luis-concept-patterns.md)
-* Útmutató: [Használja a kifejezés boost jelre a word lista sorolja fel](luis-how-to-add-features.md)
 * Útmutató: [Az előrejelzési pontosság növeléséhez minták hozzáadása](luis-how-to-model-intent-pattern.md)
 
 ## <a name="balance-your-utterances-across-all-intents"></a>Minden leképezések között a kimondott szöveg terheléselosztása

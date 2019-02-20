@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: ac52e3b824efdbd5277982a7f1939e8aa0deeeb1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a7930ea86f7972a6e4abb939fb148d519ca924e9
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201788"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416717"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Infrastruktúra biztonsági mentési szolgáltatás leírása
 
@@ -108,6 +108,23 @@ Igény szerinti biztonsági mentést vezérlő infrastruktúra biztonsági máso
 > [!Note]  
 > Nincs bejövő portokat kell megnyitni.
 
+### <a name="encryption-requirements"></a>Adattitkosítási követelmények
+
+A 1901-től kezdődően a biztonsági mentési infrastruktúra-szolgáltatás ügyféltanúsítványt használ majd a nyilvános kulccsal (. CER) biztonsági mentési adatokat és a egy tanúsítvány titkosítani a titkos kulccsal (. PFX) felhőalapú helyreállítás során a biztonsági mentési adatok visszafejtéséhez.   
+ - A tanúsítvány kulcsok átviteli szolgál, és nem használható biztonságos és hitelesített kommunikáció létrehozására. Emiatt a tanúsítvány egy önaláírt tanúsítványt is lehet. Az Azure Stack nem kell ellenőrzi a legfelső szintű vagy a tanúsítvány megbízhatósági kapcsolat, ezért a külső internet-hozzáféréssel, nem szükséges.
+ 
+Az önaláírt tanúsítványt két részből áll, egy nyilvános kulccsal és egy, a titkos kulccsal rendelkezik:
+ - Biztonsági mentési adatok titkosítása: Tanúsítvány nyilvános kulcsával (exportált. Adatok biztonsági másolatának titkosításához használt CER-fájl)
+ - Biztonsági mentési adatok visszafejtéséhez: Tanúsítvány a titkos kulccsal (exportált. PFX-fájl) biztonsági mentési adatok visszafejtésére szolgál
+
+A tanúsítvány nyilvános kulcsával (. CER) belső titkos elforgatás nem kezeli. A tanúsítványok elforgatása, kell hozzon létre egy új önaláírt tanúsítványt, és frissítse a biztonsági mentés beállításai az új fájlt (. CER).  
+ - Az összes meglévő biztonsági másolatok továbbra is a korábbi nyilvános kulccsal titkosított. Új biztonsági másolatok az új nyilvános kulcsot fogja használni. 
+ 
+A titkos kulccsal rendelkező felhőalapú helyreállítás során használt tanúsítvány (. PFX) nincs megőrizve által az Azure Stack biztonsági okokból. Ezt a fájlt kell explicit módon megadni felhőalapú helyreállítás során.  
+
+**Visszamenőleges kompatibilitási módban** 1901 kezdődően titkosítási kulcs támogatása elavult és a egy későbbi kiadásban fog szerepelni. Ha már a titkosítási kulcs használatával engedélyezett biztonsági mentéssel 1811 a frissítésre, Azure Stack továbbra is a titkosítási kulcs használatára. Visszamenőleges kompatibilitási üzemmód is támogatott lesz legalább 3 kiadásban. Ezt követően a tanúsítvány lesz szükség. 
+ * A titkosítási kulcs frissítése a tanúsítvány egy egyirányú művelet.  
+ * Az összes meglévő biztonsági másolatok a titkosítási kulccsal titkosított marad. Új biztonsági másolatok a tanúsítványt fogja használni. 
 
 ## <a name="infrastructure-backup-limits"></a>Biztonsági mentési infrastruktúra-korlátok
 

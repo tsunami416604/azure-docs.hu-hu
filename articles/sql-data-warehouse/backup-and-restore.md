@@ -10,15 +10,15 @@ ms.subservice: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: c9435ba10d69130a634e56992179f11399604fae
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 254d1faf0d846cc6a0e165b68db11ac0314eab33
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747492"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430573"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az Azure SQL Data Warehouse
-Ismerje meg a biztonsági mentés és visszaállítás működését az Azure SQL Data Warehouse. Használati adatok adatraktár-helyreállítás pillanatképek, vagy másolja az adattárház egy korábbi visszaállítási pontot az elsődleges régióban. Használja az adatraktár-georedundáns biztonsági másolatokat állíthatja vissza egy másik földrajzi régióban. 
+Ismerje meg a biztonsági mentés és visszaállítás működését az Azure SQL Data Warehouse. Használja a data warehouse visszaállítási pontok helyre vagy az adattárház másolja az elsődleges régióban egy korábbi állapotba. Használja az adatraktár-georedundáns biztonsági másolatokat állíthatja vissza egy másik földrajzi régióban. 
 
 ## <a name="what-is-a-data-warehouse-snapshot"></a>Mi a data warehouse pillanatkép?
 A *data warehouse pillanatkép* visszaállítási pontot hoz létre, mellyel helyreállítása vagy másolása az adattárház korábbi állapotába.  Az SQL Data Warehouse egy elosztott rendszer, mivel számos olyan fájlok, az Azure storage-ban található data warehouse pillanatkép áll. Pillanatképek rögzítése az adatraktárban tárolt adatok a növekményes változásokat.

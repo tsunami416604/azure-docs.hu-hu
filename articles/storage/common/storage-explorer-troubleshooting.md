@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.subservice: common
-ms.openlocfilehash: 32c47233946dacf4e80a9ff3ba25388e1231d7c9
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: c192b3e995cacd3085f343d1f6b2c243f1531acc
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301060"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415510"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer – hibaelhárítási útmutató
 
@@ -61,6 +61,8 @@ A párbeszédpanelek üres bejelentkezési leggyakrabban okozzák ADFS kéri a S
 3. Válassza ki, milyen környezetet, amelyre bejelentkezik.
 4. Kattintson a "bejelentkezés" gomb.
 5. Kövesse a következő panelen megjelenő utasításokat.
+
+Megjegyzés: Ez a funkció jelenleg csak 1.7.0-ás elérhető előzetes verzió.
 
 Ha azt probléma jelentkezik be a fiók fel szeretné használni, mert az alapértelmezett böngészőben már bejelentkezett egy másik fiókot, a következőket teheti:
 1. Manuálisan másolja a hivatkozást és a kód egy privát a böngésző-munkamenetet.

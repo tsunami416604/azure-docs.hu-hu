@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása – egyszerre használható: PowerShell: Azure |} A Microsoft Docs'
+title: 'ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása – egyszerre használható: PowerShell: Azure | Microsoft Docs'
 description: Konfigurálja az ExpressRoute- és egy helyek közötti VPN-kapcsolat, amelyek párhuzamosan használhatók a PowerShell használatával a Resource Manager-modellben.
 services: expressroute
 author: charwen
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: a35bde6e89290fd2282ba6ec829f46cb4c6fc225
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5242f31ff35e367211d48157fd4953751d1bb148
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103315"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416292"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell-lel ExpressRoute- és helyek közötti egyidejű kapcsolatok konfigurálása
 > [!div class="op_single_selector"]
@@ -81,9 +81,9 @@ Két különböző eljáráscsoport közül választhat. A konfigurálás válas
 ## <a name="new"></a>Új virtuális hálózat és egyidejű kapcsolatok létrehozása
 Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és ExpressRoute-kapcsolatok létrehozásának módját ismerteti.
 
-1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióit. A parancsmagok telepítésével kapcsolatos információkért lásd: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja.
+1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióit. A parancsmagok telepítésével kapcsolatos információkért lásd: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/azurerm/overview). Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja.
 
-2. Jelentkezzen be a fiókjába, és állítsa be a környezetet.
+1. Jelentkezzen be a fiókjába, és állítsa be a környezetet.
 
   ```powershell
   Connect-AzureRmAccount

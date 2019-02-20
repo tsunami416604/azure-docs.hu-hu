@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/13/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0afb8a09fa9780755bcfeef678b76e176f11b348
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: df4ae4b0c3f230947e0b9a5885070049f32a4b2f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246034"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429862"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -188,6 +188,8 @@ Felügyelt Windows-számítógépek esetében naponta kétszer történik vizsg�
 Vizsgálat három óránként történik, az egyes által felügyelt Linux-számítógép.
 
 30 perc és a felügyelt számítógépekből származó frissített adatok megjelennek az irányítópulton 6 óráig is eltarthat.
+
+A Log Analytics-adatok használat az Update Management megoldással gép átlag körülbelül 25MB / hó. Ez az érték csak közelítés, és az adott környezet alapján változhatnak. Ajánlott a pontos használati, amely rendelkezik a környezet figyelését.
 
 ## <a name="viewing-update-assessments"></a>A frissítési felmérések megtekintése
 

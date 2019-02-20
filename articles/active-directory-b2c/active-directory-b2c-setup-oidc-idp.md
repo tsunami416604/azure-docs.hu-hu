@@ -1,5 +1,5 @@
 ---
-title: Állítsa be regisztráció és bejelentkezés OpenID-kapcsolattal az Azure Active Directory B2C használatával |} A Microsoft Docs
+title: Regisztráció és bejelentkezés OpenID Connect – Azure Active Directory B2C-beállítása |} A Microsoft Docs
 description: Állítsa be regisztráció és bejelentkezés OpenID-kapcsolattal az Azure Active Directory B2C használatával.
 services: active-directory-b2c
 author: davidmu1
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c609ac5ebb6c0516472f00a5625a26459f49d131
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: de0c866889f15f096bea26915f58cd4e268dfed3
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171694"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428755"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a OpenID-kapcsolattal az Azure Active Directory B2C beállítása
 
@@ -23,8 +23,7 @@ ms.locfileid: "55171694"
 > Ez a funkció nyilvános előzetes verzióban érhető el. Az éles környezetben ne használja a szolgáltatást.
 
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) , amelyek segítségével biztonságosan bejelentkezhetnek a felhasználók OAuth 2.0-ra épülő, hitelesítési protokoll. A legtöbb Identitásszolgáltatók, például ezt a protokollt használó [Azure ad-ben](active-directory-b2c-setup-oidc-azure-active-directory.md), az Azure AD B2C-ben támogatottak. Ez a cikk bemutatja, hogyan adhat hozzá egyéni OpenID Connect Identitásszolgáltatók be a felhasználói folyamatok.
-
+[OpenID Connect](active-directory-b2c-reference-oidc.md) , amelyek segítségével biztonságosan bejelentkezhetnek a felhasználók OAuth 2.0-ra épülő, hitelesítési protokoll. A legtöbb Identitásszolgáltatók, ezt a protokollt használó Azure AD B2C-ben támogatottak. Ez a cikk bemutatja, hogyan adhat hozzá egyéni OpenID Connect Identitásszolgáltatók be a felhasználói folyamatok.
 
 ## <a name="add-the-identity-provider"></a>Identitásszolgáltató hozzáadása
 

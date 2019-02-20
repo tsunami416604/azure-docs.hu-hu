@@ -1,6 +1,6 @@
 ---
-title: Az Azure API Management, az Event Hubs és a Runscope API-k figyelése |} A Microsoft Docs
-description: Kapcsolódó Azure API Management, Azure Event Hubs és a Runscope HTTP-naplózás és figyelés a log-eventhub házirend bemutatására mintaalkalmazás
+title: Az Azure API Management, az Event Hubs és Moesif API-k figyelése |} A Microsoft Docs
+description: A kapcsolódó Azure API Management, Azure Event Hubs és a HTTP-naplózás és figyelés Moesif log-eventhub házirend bemutatására mintaalkalmazás
 services: api-management
 documentationcenter: ''
 author: darrelmiller
@@ -14,14 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 3a868eb98121ff2e2a30657e301afba7b8618361
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 8358eceedbb9214e4adb73f055bcf0db7fecec76
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728471"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430386"
 ---
-# <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Az Azure API Management, az Event Hubs és a Runscope API-k monitorozása
+# <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Az Azure API Management, az Event Hubs és Moesif API-k monitorozása
 A [API Management-szolgáltatás](api-management-key-concepts.md) javíthatják a HTTP API-nak küldött HTTP-kérések feldolgozását számos funkciót kínál. Létezik-e a kérelmek és válaszok azonban csak átmeneti. A kérelmet, és biztosítani az API Management szolgáltatás számára a háttérrendszeri API segítségével. Az API-t feldolgozza a kérést és választ keresztüláramló vissza az API fogyasztó számára. Az API Management szolgáltatás tartja néhány Megjelenítés az API-k leíró fontos statisztikákat az Azure portal irányítópultján, de után eltűnnek róla, hogy a részletek.
 
 A napló eventhub házirend az API Management szolgáltatás használatával is elküldheti minden adatát a kérelem és válasz egy [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Nincsenek számos okból, miért érdemes eseményeket küld az API-k HTTP-üzenetek hoznak létre. Néhány példa: napló a frissítéseket, használatelemzési információkat, kivétel riasztási és külső Integrációk.
@@ -213,66 +213,99 @@ A `HttpMessage` példány tartalmaz egy `MessageId` GUID, amely lehetővé teszi
 A `HttpMessage` megvalósítását, majd továbbítja a példány `IHttpMessageProcessor`, azaz különítse el a forgalmat fogadó és az Azure Event Hubs az esemény értelmezését és a tényleges feldolgozását, létrehozott egy felületet.
 
 ## <a name="forwarding-the-http-message"></a>Forwarding the HTTP message
-Ehhez a mintához kifejezetten érdekes paranccsal küldje le a HTTP-kérelem keresztül lenne [Runscope](https://www.runscope.com). Runscope egy felhőalapú szolgáltatás, amely HTTP-hibakeresés, naplózás és figyelés. Egy ingyenes szinttel, így könnyen próbálja ki, és lehetővé teszi számunkra, hogy tekintse meg a HTTP-kérések valós időben az API Management szolgáltatáson keresztül áramló rendelkeznek.
+Ehhez a mintához kifejezetten érdekes paranccsal küldje le a HTTP-kérelem keresztül lenne [Moesif API Analytics](https://www.moesif.com). Moesif egy felhőalapú szolgáltatás, amely HTTP-elemzés és hibakeresés. Egy ingyenes szinttel, így könnyen próbálja ki, és lehetővé teszi számunkra, hogy tekintse meg a HTTP-kéréseket a valós idejű haladnak keresztül az API Management szolgáltatás rendelkeznek.
 
 A `IHttpMessageProcessor` megvalósítási néz ki,
 
 ```csharp
-public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
+public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 {
-    private HttpClient _HttpClient;
+    private readonly string RequestTimeName = "MoRequestTime";
+    private MoesifApiClient _MoesifClient;
     private ILogger _Logger;
-    private string _BucketKey;
-    public RunscopeHttpMessageProcessor(HttpClient httpClient, ILogger logger)
+    private string _SessionTokenKey;
+    private string _ApiVersion;
+    public MoesifHttpMessageProcessor(ILogger logger)
     {
-        _HttpClient = httpClient;
-        var key = Environment.GetEnvironmentVariable("APIMEVENTS-RUNSCOPE-KEY", EnvironmentVariableTarget.User);
-        _HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", key);
-        _HttpClient.BaseAddress = new Uri("https://api.runscope.com");
-        _BucketKey = Environment.GetEnvironmentVariable("APIMEVENTS-RUNSCOPE-BUCKET", EnvironmentVariableTarget.User);
+        var appId = Environment.GetEnvironmentVariable("APIMEVENTS-MOESIF-APP-ID", EnvironmentVariableTarget.Process);
+        _MoesifClient = new MoesifApiClient(appId);
+        _SessionTokenKey = Environment.GetEnvironmentVariable("APIMEVENTS-MOESIF-SESSION-TOKEN", EnvironmentVariableTarget.Process);
+        _ApiVersion = Environment.GetEnvironmentVariable("APIMEVENTS-MOESIF-API-VERSION", EnvironmentVariableTarget.Process);
         _Logger = logger;
     }
 
     public async Task ProcessHttpMessage(HttpMessage message)
     {
-        var runscopeMessage = new RunscopeMessage()
-        {
-            UniqueIdentifier = message.MessageId
-        };
-
         if (message.IsRequest)
         {
-            _Logger.LogInfo("Sending HTTP request " + message.MessageId.ToString());
-            runscopeMessage.Request = await RunscopeRequest.CreateFromAsync(message.HttpRequestMessage);
-        }
-        else
-        {
-            _Logger.LogInfo("Sending HTTP response " + message.MessageId.ToString());
-            runscopeMessage.Response = await RunscopeResponse.CreateFromAsync(message.HttpResponseMessage);
+            message.HttpRequestMessage.Properties.Add(RequestTimeName, DateTime.UtcNow);
+            return;
         }
 
-        var messagesLink = new MessagesLink() { Method = HttpMethod.Post };
-        messagesLink.BucketKey = _BucketKey;
-        messagesLink.RunscopeMessage = runscopeMessage;
-        var runscopeResponse = await _HttpClient.SendAsync(messagesLink.CreateRequest());
-        _Logger.LogDebug("Request sent to Runscope");
+        EventRequestModel moesifRequest = new EventRequestModel()
+        {
+            Time = (DateTime) message.HttpRequestMessage.Properties[RequestTimeName],
+            Uri = message.HttpRequestMessage.RequestUri.OriginalString,
+            Verb = message.HttpRequestMessage.Method.ToString(),
+            Headers = ToHeaders(message.HttpRequestMessage.Headers),
+            ApiVersion = _ApiVersion,
+            IpAddress = null,
+            Body = message.HttpRequestMessage.Content != null ? System.Convert.ToBase64String(await message.HttpRequestMessage.Content.ReadAsByteArrayAsync()) : null,
+            TransferEncoding = "base64"
+        };
+
+        EventResponseModel moesifResponse = new EventResponseModel()
+        {
+            Time = DateTime.UtcNow,
+            Status = (int) message.HttpResponseMessage.StatusCode,
+            IpAddress = Environment.MachineName,
+            Headers = ToHeaders(message.HttpResponseMessage.Headers),
+            Body = message.HttpResponseMessage.Content != null ? System.Convert.ToBase64String(await message.HttpResponseMessage.Content.ReadAsByteArrayAsync()) : null,
+            TransferEncoding = "base64"
+        };
+
+        Dictionary<string, string> metadata = new Dictionary<string, string>();
+        metadata.Add("ApimMessageId", message.MessageId.ToString());
+
+        EventModel moesifEvent = new EventModel()
+        {
+            Request = moesifRequest,
+            Response = moesifResponse,
+            SessionToken = _SessionTokenKey != null ? message.HttpRequestMessage.Headers.GetValues(_SessionTokenKey).FirstOrDefault() : null,
+            Tags = null,
+            UserId = null,
+            Metadata = metadata
+        };
+
+        Dictionary<string, string> response = await _MoesifClient.Api.CreateEventAsync(moesifEvent);
+
+        _Logger.LogDebug("Message forwarded to Moesif");
+    }
+
+    private static Dictionary<string, string> ToHeaders(HttpHeaders headers)
+    {
+        IEnumerable<KeyValuePair<string, IEnumerable<string>>> enumerable = headers.GetEnumerator().ToEnumerable();
+        return enumerable.ToDictionary(p => p.Key, p => p.Value.GetEnumerator()
+                                                         .ToEnumerable()
+                                                         .ToList()
+                                                         .Aggregate((i, j) => i + ", " + j));
     }
 }
 ```
 
-Képes kihasználni az voltam egy [meglévő ügyféloldali kódtára a Runscope](https://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha) , amely megkönnyíti leküldéses `HttpRequestMessage` és `HttpResponseMessage` példányok be a szolgáltatásba. A Runscope API eléréséhez szüksége egy fiókot és a egy API-kulcsot. Útmutató az első API-kulcs található a [hozzáférés Runscope API-alkalmazások létrehozása](https://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) képernyőfelvétel.
+A `MoesifHttpMessageProcessor` kihasználja a [ C# Moesif API könyvtárában](https://www.moesif.com/docs/api?csharp#events) , amely megkönnyíti az esemény adatok leküldéséhez HTTP a szolgáltatásba. HTTP-adatokat küldeni a Moesif adatgyűjtő API, kell egy fiókot és a egy alkalmazásazonosítót. Ön get Moesif alkalmazást azonosító beszerzése hozzon létre egy fiókot a [Moesif a webhely](https://www.moesif.com) majd lépjen a _felső jobb menü_ -> _alkalmazástelepítő_.
 
 ## <a name="complete-sample"></a>Teljes minta
-A [forráskódját](https://github.com/darrelmiller/ApimEventProcessor) és tesztek a minta a Githubon érhetők el. Kell egy [API Management szolgáltatás](get-started-create-service-instance.md), [a csatlakoztatott Eseményközpontot](api-management-howto-log-event-hubs.md), és a egy [Tárfiók](../storage/common/storage-create-storage-account.md) maga a minta futtatásához.   
+A [forráskódját](https://github.com/dgilling/ApimEventProcessor) és tesztek a minta a Githubon érhetők el. Kell egy [API Management szolgáltatás](get-started-create-service-instance.md), [a csatlakoztatott Eseményközpontot](api-management-howto-log-event-hubs.md), és a egy [Tárfiók](../storage/common/storage-create-storage-account.md) maga a minta futtatásához.   
 
-A minta akkor csak egy egyszerű konzolalkalmazást, amely figyeli az adott eseményközpontból érkező események alakítja át őket egy `HttpRequestMessage` és `HttpResponseMessage` objektumokat, és ezután továbbítja őket a Runscope API be.
+A minta akkor csupán egy egyszerű konzolalkalmazást, amely figyeli az adott eseményközpontból érkező események alakítja át őket egy Moesif `EventRequestModel` és `EventResponseModel` objektumokat, és ezután továbbítja őket a Moesif adatgyűjtő API be.
 
-A következő animált ábrán láthatja a webkiszolgálónak küldött a fejlesztői portál, az üzenet alatt érkezett, feldolgozott és továbbított Konzolalkalmazás majd a kérés és válasz jelenik meg a Runscope Traffic inspectorra API-kérelem.
+A következő animált ábrán láthatja a webkiszolgálónak küldött a fejlesztői portál, az üzenet alatt érkezett, feldolgozott és továbbított Konzolalkalmazás majd a kérés és válasz jelenik meg az eseménynaplóban Stream API-kérelem.
 
 ![A kérelem lesznek továbbítva a Runscope bemutatója](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
 ## <a name="summary"></a>Összegzés
-Az Azure API Management-szolgáltatás szempontokból ideális hely utazik, és az API-k HTTP-forgalom rögzítése biztosít. Az Azure Event Hubs egy rugalmasan méretezhető, költséghatékony megoldás, hogy a forgalom rögzítése és elágazó, naplózás, figyelés és más kifinomult elemzési rendszerek másodlagos feldolgozás. Csatlakozás a külső forgalmat, Runscope nem egyszerű: mindössze néhány tucat sornyi kóddal rendszerek figyelése.
+Az Azure API Management-szolgáltatás szempontokból ideális hely utazik, és az API-k HTTP-forgalom rögzítése biztosít. Az Azure Event Hubs egy rugalmasan méretezhető, költséghatékony megoldás, hogy a forgalom rögzítése és elágazó, naplózás, figyelés és más kifinomult elemzési rendszerek másodlagos feldolgozás. Csatlakozás a külső forgalmat, Moesif nem egyszerű: mindössze néhány tucat sornyi kóddal rendszerek figyelése.
 
 ## <a name="next-steps"></a>További lépések
 * További információ az Azure Event Hubs

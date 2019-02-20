@@ -4,14 +4,14 @@ description: Értékelési számítások az Azure Migrate szolgáltatás átteki
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: ab4af59b71dada84fd99df0299aeccfd5662d474
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 62683aaf7dda048b5828e9494ba8cafe6c8b8f9f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849173"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417939"
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -78,7 +78,7 @@ Ha nem szeretné, hogy Virtuálisgép-méretezési teljesítményelőzményeinek
 
 Teljesítményalapú méretezéshez az Azure Migrate kezdődik a lemezeket, a virtuális Géphez csatolt hálózati adapterek követ, és majd maps egy Azure virtuális gép számítási követelményei alapján a helyszíni virtuális gép.
 
-- **Tárolási**: az Azure Migrate megkísérli minden, a gép az Azure-ban lemez csatlakoztatott lemez.
+- **Tárolási**: Az Azure Migrate megkísérli minden, a gép az Azure-ban lemez csatlakoztatott lemez.
 
     > [!NOTE]
     > Az Azure Migrate támogatja a csak managed disks értékeléshez.
@@ -89,12 +89,12 @@ Teljesítményalapú méretezéshez az Azure Migrate kezdődik a lemezeket, a vi
     - Ha több jogosult lemezek vannak, a legalacsonyabb költséget rendelkezőt választja ki.
     - Ha a lemezek, a teljesítménnyel kapcsolatos adatai nem érhető el, az összes lemez vannak leképezve az Azure standard szintű lemezek.
 
-- **Hálózati**: az Azure Migrate megpróbálja megkeresni egy Azure virtuális Gépen, hogy a helyi géphez csatlakoztatott hálózati adapterek és a teljesítmény, ezek a hálózati adapterek által igényelt támogatja.
+- **Hálózati**: Az Azure Migrate megpróbálja megkeresni egy Azure virtuális Gépen, hogy a helyi géphez csatlakoztatott hálózati adapterek és a teljesítmény, ezek a hálózati adapterek által igényelt támogatja.
     - A helyszíni virtuális gép a tényleges hálózati teljesítmény eléréséhez, az Azure Migrate összesíti az összes hálózati adapteren másodpercenként (MBps) kívül a géphez (hálózati ki), továbbított adatokat, és a kompatibilitási faktor vonatkozik. Ez a szám egy Azure virtuális gép támogatására képes a szükséges hálózati teljesítménynek kereséséhez használt.
     - Hálózati teljesítmény, valamint azt is figyelembe veszi az Azure virtuális gép támogatják-e a szükséges hálózati adapterek száma.
     - Ha nincs hálózati teljesítménnyel adatai nem érhető el, a csak a hálózati adapterek száma a Virtuálisgép-méretezési számít.
 
-- **COMPUTE**: után tárolási és hálózati követelményeinek kiszámítása, Azure Migrate tekinti a Processzor- és követelmények található Virtuálisgép-méret az Azure-ban.
+- **COMPUTE**: Tárolási és hálózati követelményeinek kiszámítása, miután az Azure Migrate figyelembe veszi a Processzor- és követelmények található Virtuálisgép-méret az Azure-ban.
     - Az Azure Migrate megvizsgálja a túl magas kihasználtsággal rendelkező magok és a memória, és a hatékony magok és a memória a kompatibilitási faktor vonatkozik. Adott száma alapján, azt próbál meg megtalálni egy Virtuálisgép-méret az Azure-ban.
     - Ha nem megfelelő méretű található, a gép van megjelölve nem alkalmasak az Azure-hoz.
     - Ha egy megfelelő méretű található, a tárolási és hálózatkezelési számítások az Azure Migrate vonatkozik. Ezt követően végrehajtja, helyét és a tarifacsomag-beállításokat, a virtuális gép mérete végleges javaslatot.
@@ -131,8 +131,8 @@ A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virt
 
 Méretezési javaslatok befejezése után az Azure Migrate számítja ki az áttelepítés utáni számítási és tárolási költségeit.
 
-- **Számítási költségeit tartalmazza**: használja az Azure virtuális gép ajánlott mérete, Azure Migrate a számlázási API-t használja a virtuális gép a havi költségek kiszámításához. A kiszámítása az operációs rendszer, frissítési garanciával rendelkező, a fenntartott példányok, virtuális gép Üzemidő, helye és pénznem beállítások figyelembe vesz igénybe. A költségek gyűjti az összes gépen, a teljes havi számítási költség kiszámítása.
-- **Tárolási költségek**: A havi tárolási költségek, a gép összes lemezének havi költség összesítésével számítható a géphez csatlakozik. Az Azure Migrate a tárolási költségeket összes gép összesítésével számítja ki a teljes havi tárolási költségeket. A számítási jelenleg nem használ a felmérés beállításaiban figyelembe ajánlatok.
+- **Számítási költségeit tartalmazza**: Használja az Azure virtuális gép ajánlott mérete, az Azure Migrate használatával a számlázási API-t a havi költségek kiszámítása a virtuális gép. A kiszámítása az operációs rendszer, frissítési garanciával rendelkező, a fenntartott példányok, virtuális gép Üzemidő, helye és pénznem beállítások figyelembe vesz igénybe. A költségek gyűjti az összes gépen, a teljes havi számítási költség kiszámítása.
+- **Tárolási költségek**: A havi költségét a géphez csatlakoztatott összes lemez összevonása gép havi tárolási költségek kiszámításához. Az Azure Migrate a tárolási költségeket összes gép összesítésével számítja ki a teljes havi tárolási költségeket. A számítási jelenleg nem használ a felmérés beállításaiban figyelembe ajánlatok.
 
 Az értékelési beállítások megadott pénznem költségek jelenik meg.
 

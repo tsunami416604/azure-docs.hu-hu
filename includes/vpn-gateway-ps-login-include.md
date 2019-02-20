@@ -8,29 +8,29 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d4d370e6b76fcfc502366642842bfeb923a13991
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 188f70d17531a3a7da12444ce5f1c97385ea33bc
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38732674"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418041"
 ---
 Mielőtt hozzálát, jelentkezzen be Azure-fiókjába. A parancsmag kéri az Azure-fiók bejelentkezési hitelesítő adataival. Bejelentkezés után letölti a fiók beállításait így elérhetők legyenek az Azure PowerShell-lel. További információ: [A Windows PowerShell használata a Resource Managerrel](../articles/powershell-azure-resource-manager.md).
 
 Jelentkezzen be, nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Ha több Azure-előfizetéssel is rendelkezik, ellenőrizze a fiók előfizetéseit.
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Válassza ki a használni kívánt előfizetést.
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
  ```

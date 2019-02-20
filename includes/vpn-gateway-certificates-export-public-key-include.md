@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3c6485406c67bf84b9e0fdfb9f4683abe5062d6c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: afd4836229c60ebef1536d4fa1ca4206a492e56d
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444162"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418109"
 ---
 Önaláírt főtanúsítvány létrehozása után exportálja a főtanúsítvány nyilvános kulcsú .cer fájlját (ne a titkos kulcsot). Később fogja feltölteni ezt a fájlt az Azure-bA. A következő lépések segítségével exportálhatja a az önaláírt főtanúsítványhoz tartozó .cer fájlt:
 
-1. A .cer fájl tanúsítványból történő beszerzéséhez nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. Keresse meg az önaláírt főtanúsítványt. Ezt általában a „Tanúsítványok – aktuális felhasználó\Személyes\Tanúsítványok” útvonalon érheti el. Ha megtalálta, kattintson rá a jobb egérgombbal. Kattintson a **Minden feladat**, majd az **Exportálás** elemre. Megnyílik a **Tanúsítványexportáló varázsló**. Ha nem találja a tanúsítványt aktuális felhasználó\személyes\tanúsítványok útvonalon, megnyitni a tanúsítványkezelőben a helyi számítógép-tanúsítványok (a cím "Tanúsítványok – helyi számítógép", ne pedig a "Tanúsítványok – aktuális felhasználó" lesz) lehet. Tanúsítványokat kezelő megnyitásához az aktuális felhasználó hatóköre indítsa el, írja be a tanúsítványok létrehozott azonos powershellből ```certmgr```.
+1. A .cer fájl tanúsítványból történő beszerzéséhez nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. Keresse meg az önaláírt főtanúsítványt. Ezt általában a „Tanúsítványok – aktuális felhasználó\Személyes\Tanúsítványok” útvonalon érheti el. Ha megtalálta, kattintson rá a jobb egérgombbal. Kattintson a **Minden feladat**, majd az **Exportálás** elemre. Megnyílik a **Tanúsítványexportáló varázsló**. Ha nem találja a tanúsítványt aktuális felhasználó\személyes\tanúsítványok útvonalon, előfordulhat, hogy véletlenül nyitotta "Tanúsítványok – helyi számítógép", "Tanúsítványok – aktuális felhasználó" helyett). Ha meg szeretné nyitni a Certificate Manager PowerShell-lel, adja meg jelenlegi felhasználó hatókörében *certmgr* a konzolablakban.
 
    ![Exportálás](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. A varázslóban kattintson a **Tovább** gombra.

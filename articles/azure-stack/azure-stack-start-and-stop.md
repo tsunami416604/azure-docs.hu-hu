@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/19/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: b8d13377b2fb1545ecf88645a5e19bf5eab24c74
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6b14f5e8967567030ce854d05c53a8d26027e9a6
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238135"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428839"
 ---
 # <a name="start-and-stop-azure-stack"></a>Elindítása és leállítása az Azure Stackben
-Ez a cikk megfelelően állítsa le és indítsa újra az Azure Stack-szolgáltatásokat az eljárást kell követnie. Leállítás fizikailag a teljes Azure Stack-környezet lesz kikapcsolásához. Indítási összes infrastruktúra-szerepkörök bekapcsolását, és a leállítás előtt voltak energiaállapotát bérlői erőforrások visszaadja.
+Ez a cikk megfelelően állítsa le és indítsa újra az Azure Stack-szolgáltatásokat az eljárást kell követnie. Leállítás fizikailag a teljes Azure Stack-környezet lesz kikapcsolásához. Bekapcsolja az összes infrastruktúra-szerepkörök a indítsa el, és adja vissza a bérlői erőforrásokat az áramellátási állapot, leállítás előtt voltak.
 
 ## <a name="stop-azure-stack"></a>Állítsa le az Azure Stack 
 

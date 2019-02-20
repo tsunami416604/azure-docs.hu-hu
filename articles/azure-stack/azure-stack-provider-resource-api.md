@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2018
-ms.openlocfilehash: 9568ac58e646be03d367fe466ae972955f23488c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 47ba057091f0660bf1449f062edfacde710d2f1a
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252234"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428177"
 ---
 # <a name="provider-resource-usage-api"></a>Szolgáltatói erőforrás-használati API
 Az előfizetési időszak *szolgáltató* a szolgáltatás-rendszergazda, és minden olyan delegált szolgáltatók vonatkozik. Az Azure Stack-operátorok és a delegált szolgáltatók használhatják a szolgáltatói használati API közvetlen bérlők, a használati adatok megtekintéséhez. Például az ábrán látható módon csatlakoztatta, P0 teljesítményszintű meghívhatja a szolgáltató API-t a P1 a használati adatok lekérése, és P2 a közvetlen használatának és P1 meghívhatja P3 és P4 szintű használati információt.

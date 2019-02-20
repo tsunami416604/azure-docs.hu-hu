@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 1ad85a57762ae4fba30e1699b38eaa52d45ab26e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4195016bb029d2cf8f5042a853fa591609bd486e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447207"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428533"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
 Az Azure Cloud Shell egy interaktív, a böngésző által elérhető shell Azure-erőforrások kezeléséhez.
@@ -53,7 +53,7 @@ A cloud Shell Microsoft által kezelt, népszerű parancssori eszközökkel és 
 Megtekintheti az összes [a Cloud Shellben telepített eszközök listáját.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Integrált Cloud Shell-szerkesztő
-A cloud Shell biztosít egy integrált grafikus szövegszerkesztőben a nyílt forráskódú Monaco szerkesztő alapján. Egyszerűen hozzon létre, és szerkessze a konfigurációs fájlokat futtatásával `code .` a zökkenőmentes üzembe helyezése az Azure CLI 2.0-t vagy az Azure Powershellen keresztül.
+A cloud Shell biztosít egy integrált grafikus szövegszerkesztőben a nyílt forráskódú Monaco szerkesztő alapján. Egyszerűen hozzon létre, és szerkessze a konfigurációs fájlokat futtatásával `code .` a zökkenőmentes üzembe helyezése az Azure CLI-vel vagy az Azure Powershellen keresztül.
 
 [További információ a Cloud Shell-szerkesztő](using-cloud-shell-editor.md).
 
@@ -68,7 +68,7 @@ A cloud Shell rugalmas eszköz használható a következő:
 * [Az Azure CLI dokumentációja](https://docs.microsoft.com/cli/azure)
 * [Az Azure PowerShell-dokumentáció](https://docs.microsoft.com/powershell/azure/overview)
 * [Azure-mobilalkalmazás](https://azure.microsoft.com/features/azure-portal/mobile-app/)
-* [A VS Code Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
+* [Visual Studio Code az Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>A Microsoft Azure Files storage csatlakoztatása
 Cloud Shell gépek ideiglenes, és egy új vagy meglévő Azure-fájlmegosztási fürtkötetként való igényel `clouddrive` fájlmegtartás érdekében.

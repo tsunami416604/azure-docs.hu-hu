@@ -1,6 +1,6 @@
 ---
-title: Adatok elemzése az Azure Data Lake Storage Apache Spark használatával
-description: Az Azure Data Lake Storage-ban tárolt adatok elemzése a Spark-feladatok futtatása
+title: Adatok elemzése az Azure Data Lake Storage Gen1 Apache Spark használatával
+description: Az Azure Data Lake Storage Gen1 tárolt adatok elemzése a Spark-feladatok futtatása
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,22 +9,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 4f50cc46244a4fb205e0ccf60665ba892d3aa8fc
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: d4228091c52e65da70d91fffd8af2f2472fa8f43
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310040"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430556"
 ---
-# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>HDInsight Spark-fürt használata a Data Lake Storage lévő adatok elemzéséhez
+# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>A Data Lake Storage Gen1 adatok elemzése a HDInsight Spark-fürt használatával
 
 Ebben az oktatóanyagban használja [Jupyter Notebook](https://jupyter.org/) egy feladatot, amely adatokat olvas be egy Data Lake-tárfiókra futtatása HDInsight Spark-fürtön elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Data Lake Storage-fiók. Kövesse az utasításokat, [Ismerkedés az Azure Data Lake Storage az Azure portal használatával](../../data-lake-store/data-lake-store-get-started-portal.md).
+* Az Azure Data Lake Storage Gen1 fiók. Kövesse az utasításokat, [Azure Data Lake Storage Gen1 használatának első lépései az Azure portal használatával](../../data-lake-store/data-lake-store-get-started-portal.md).
 
-* Az Azure HDInsight Spark-fürt a Data Lake Storage tárolóként. Kövesse az utasításokat, [a rövid útmutató: A HDInsight-fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Az Azure HDInsight Spark-fürt a Data Lake Storage Gen1 tárolóként. Kövesse az utasításokat, [a rövid útmutató: A HDInsight-fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
@@ -45,7 +45,7 @@ Ha során létrehozott egy HDInsight-fürt a Data Lake Storage további tárter�
         AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
    > [!WARNING]  
-   > Ellenőrizze, hogy a fájl elérési útja és neve a tulajdonnévnek megfelelő szerepelnek.
+   > Győződjön meg arról, hogy a fájl elérési útja és neve a megfelelő kis-és nagybetűk.
 
 3. Adja meg a hitelesítő adatait az Azure-előfizetés alapján, amelyeket a Data Lake-tárfiókra van kéri. Az alábbi kódrészlethez hasonló kimenet jelenik meg:
 
@@ -56,7 +56,7 @@ Ha során létrehozott egy HDInsight-fürt a Data Lake Storage további tárter�
 
     Az adatfájl (**HVAC.csv**) gyermekmappát másolandó **/hvac** a Data Lake Storage-fiókban.
 
-## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage"></a>Egy HDInsight Spark-fürt használata a Data Lake Storage
+## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Egy HDInsight Spark-fürt használata a Data Lake Storage Gen1
 
 1. Az a [az Azure Portal](https://portal.azure.com/), kezdőpultján kattintson az Apache Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).
 
@@ -79,7 +79,7 @@ Ha során létrehozott egy HDInsight-fürt a Data Lake Storage további tárter�
 
      ![A Jupyter notebook feladat állapota](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "A Jupyter notebook feladat állapota")
 
-5. Mintaadatok betöltése az egy ideiglenes táblát használ a **HVAC.csv** fájlt másolta a Data Lake-tárfiókra. Elérheti az adatokat a Data Lake Storage-fiókban a következő URL-minta használatával.
+5. Mintaadatok betöltése az egy ideiglenes táblát használ a **HVAC.csv** a Data Lake Storage Gen1 fiók másolt fájl. Elérheti az adatokat a Data Lake Storage-fiókban a következő URL-minta használatával.
 
     * Ha a Data Lake Storage Gen1 alapértelmezett tárolóként, HVAC.csv lesz hasonló, a következő URL-elérési úton:
 

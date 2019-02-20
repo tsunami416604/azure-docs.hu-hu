@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/25/2018
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8cc253f751b209332ee890c0ebc9b6846d4feab5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f93d9eaefe18dd012a639cd26636b56b9eb09249
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749848"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427636"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Üzembe helyezés és monitorozás az Azure CLI használatával nagy mennyiségű IoT Edge-modulok
 
@@ -113,7 +113,6 @@ Azure CLI-vel modulok üzembe helyezéséhez mentése .txt fájlként helyi mani
    }
    ```
 
-
 ## <a name="identify-devices-using-tags"></a>Címkék használatával eszközök azonosítása
 
 Központi telepítés létrehozásához, akkor megadhatja, mely eszközöket szeretné befolyásolni. Az Azure IoT Edge használatával eszközök azonosítja **címkék** az ikereszközben. Minden eszköz rendelkezhet több címkét, és meghatározhatja azokat bármilyen módon, amely logikus a megoldáshoz. Például ha Ön kezeli a telephelyi intelligens épületek, előfordulhat, hogy hozzá a következő címkék eszköz:
@@ -155,10 +154,12 @@ A következő parancs használatával a központi telepítés tartalmát meg:
    ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
    ```
+
 * **– üzembe helyezési azonosító** – a központi telepítés, amely az IoT hub nevét.
 * **---központnév** -neve az IoT hub, amelyben az üzemelő példány található. A központ az aktuális előfizetésben kell lennie. Váltson át a kívánt előfizetés azonosítóértékét paranccsal `az account set -s [subscription name]`
 
 Vizsgálja meg az üzembe helyezés a parancssori ablakba. A **metrikák** tulajdonság mindegyik metrikát, amely kiértékeli a valamennyi elosztóhoz számát sorolja fel:
+
 * **targetedCount** -egy rendszer mérőszám, amely a célcsoport-kezelési feltételnek megfelelő IoT hub device twins számát adja meg.
 * **appliedCount** -rendszer metrika kellett volna a alkalmazni az IoT Hub az ikermodulokkal telepítési tartalmakhoz eszközök számát adja meg.
 * **reportedSuccessfulCount** -eszköz, amely a peremhálózati eszközök számát adja meg az üzembe helyezés sikeressége az IoT Edge-ügyfél futtatókörnyezet reporting metrikát.
@@ -179,6 +180,7 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 Amikor módosít egy központi telepítést, a módosítások azonnal replikálja az összes megcélzott eszközre. 
 
 A célfeltétel frissít, ha elő a következő frissítéseket:
+
 * Ha egy eszköz nem felelt meg a régi célfeltétel, de az új célfeltétel megfelel, és a központi telepítés rendszer a legmagasabb prioritású az eszközön, a központi telepítéshez az eszköz van alkalmazva. 
 * Ha már nem a központi telepítés aktuálisan futó eszköz megfelel-e a célfeltétel, eltávolítja a központi telepítés és veszi fel a következő legmagasabb prioritású üzembe helyezés. 
 * Ha már nem a központi telepítés aktuálisan futó eszköz megfelel-e a célként megadott feltétel, és nem felel meg a célfeltétel más központi telepítések, majd nincs változás történik az eszközön. Az eszköz addig a jelenlegi modulok fut, a jelenlegi állapotuk, de nem felügyelt már a központi telepítés részeként. Megfelel a célfeltétel, bármely más konfigurációért, miután eltávolítja a központi telepítés, és az új kiszolgálón vesz igénybe. 
@@ -188,12 +190,13 @@ A következő parancs segítségével frissítse a központi telepítés:
    ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
    ```
+
 * **– üzembe helyezési azonosító** – a központi telepítés, amely az IoT hub nevét.
 * **---központnév** -neve az IoT hub, amelyben az üzemelő példány található. A központ az aktuális előfizetésben kell lennie. Váltson át a kívánt előfizetés azonosítóértékét paranccsal `az account set -s [subscription name]`
 * **– Állítsa** – egy tulajdonság frissítése az üzemelő példányban. Az alábbi tulajdonságok frissíthetők:
-    * targetCondition – példa `targetCondition=tags.location.state='Oregon'`
-    * címkék 
-    * prioritás
+  * targetCondition – példa `targetCondition=tags.location.state='Oregon'`
+  * címkék 
+  * prioritás
 
 
 ## <a name="delete-a-deployment"></a>Üzemelő példányának törlése
@@ -205,6 +208,7 @@ A következő paranccsal üzemelő példányának törlése:
    ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name] 
    ```
+
 * **– üzembe helyezési azonosító** – a központi telepítés, amely az IoT hub nevét.
 * **---központnév** -neve az IoT hub, amelyben az üzemelő példány található. A központ az aktuális előfizetésben kell lennie. Váltson át a kívánt előfizetés azonosítóértékét paranccsal `az account set -s [subscription name]`
 

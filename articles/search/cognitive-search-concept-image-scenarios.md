@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b4829b0da656c648db732b2e7564de6db8fbf2eb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9e4b9d8cf3300f977824f95aeb14a614d8897abd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312612"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430267"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Hogyan dolgozza fel, és információt nyerhet ki képekből a kognitív keresés forgatókönyvek
 
@@ -34,7 +34,7 @@ Nem kapcsolhatja ki rendszerképet normalizálási. Képek ciklustevékenység k
 
 | Konfigurációs paraméter | Leírás |
 |--------------------|-------------|
-| imageAction   | Ha nem kell műveletet, ha a beágyazott képek vagy képek észlelt állítsa be a "nincs". <br/>Állítsa a "generateNormalizedImages" normalizált lemezképek tömbjét létrehozásához dokumentumleképezési részeként. Ezek a lemezképek a lesz közzétéve a *normalized_images* mező. <br/>Az alapértelmezett érték a "nincs." Ez a konfiguráció csak a tárolására blob az adatforrásokat, ha "dataToExtract" értéke "contentAndMetadata." |
+| imageAction   | Ha nem kell műveletet, ha a beágyazott képek vagy képek észlelt állítsa be a "nincs". <br/>Állítsa a "generateNormalizedImages" normalizált lemezképek tömbjét létrehozásához dokumentumleképezési részeként.<br/>Állítsa "generateNormalizedImagePerPage" normalizált lemezképek tömbjét létrehozni, PDF-fájlok az adatforrás, minden lapon jelenik meg egy kimeneti lemezképhez.  A funkció megegyezik a "generateNormalizedImages"-PDF fájl esetében.<br/>Minden olyan beállítás, amely nem "none", a képek lesz közzétéve a a *normalized_images* mező. <br/>Az alapértelmezett érték a "nincs." Ez a konfiguráció csak a tárolására blob az adatforrásokat, ha "dataToExtract" értéke "contentAndMetadata." |
 |  normalizedImageMaxWidth | A maximális szélességét (képpontban) normalizált a képeket. Az alapértelmezett érték 2000.|
 |  normalizedImageMaxHeight | A maximális magasságát (képpontban) normalizált a képeket. Az alapértelmezett érték 2000.|
 
@@ -62,7 +62,7 @@ Azt adja meg a imageAction a a [indexelő definíciója](https://docs.microsoft.
 }
 ```
 
-Ha a *imageAction* "generateNormalizedImages," értékre van állítva az új *normalized_images* mező tartalmazni fog a képek tömbjét. Minden egyes képe egy összetett típus, amely rendelkezik az alábbi tagokat:
+Ha a *imageAction* értékre van állítva egy másik majd "none", az új *normalized_images* mező tartalmazni fog a képek tömbjét. Minden egyes képe egy összetett típus, amely rendelkezik az alábbi tagokat:
 
 | Kép tag       | Leírás                             |
 |--------------------|-----------------------------------------|

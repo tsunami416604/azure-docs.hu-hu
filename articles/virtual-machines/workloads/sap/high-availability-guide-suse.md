@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 472041aaef0817aae278fed6ef632aadda3466a3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: f65a6a0f9564eafda36b8a8f4988e064e39a3bb1
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119033"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430607"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure virtuális gépeken SAP-alkalmazások
 
@@ -44,6 +44,7 @@ ms.locfileid: "54119033"
 
 [suse-ha-guide]:https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/
 [suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
+[suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
 [template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
@@ -76,6 +77,7 @@ Olvassa el először a következő SAP-megjegyzések és tanulmányok
 * [Az Azure virtuális gépek üzembe helyezése, az SAP, Linux rendszeren][deployment-guide]
 * [Az Azure Virtual Machines DBMS üzembe helyezése, az SAP, Linux rendszeren][dbms-guide]
 * [SUSE SAP magas rendelkezésre ÁLLÁS ajánlott eljárások gyűjteménye] [ suse-ha-guide] a útmutatókat tartalmaz minden szükséges információt a beállítása Netweaver magas rendelkezésre ÁLLÁS és a helyszíni SAP HANA-Rendszerreplikálást. Ezek az útmutatók használja általános kiindulópontként. Sokkal részletesebb információkat biztosítanak.
+* [SUSE magas rendelkezésre állású bővítmény 12 SP3 kibocsátási megjegyzései][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>Áttekintés
 
@@ -83,7 +85,7 @@ Magas rendelkezésre állás, az SAP NetWeaver NFS-kiszolgáló szükséges. Az 
 
 ![SAP NetWeaver magas rendelkezésre állás – Áttekintés](./media/high-availability-guide-suse/ha-suse.png)
 
-Az NFS-kiszolgáló, az SAP NetWeaver ascs rendszerbe fut be, az SAP NetWeaver SCS, az SAP NetWeaver SSZON és az SAP HANA-adatbázis virtuális állomásnevet és a virtuális IP-címek használata. Az Azure-ban a terheléselosztó virtuális IP-cím szükséges. Az alábbi lista tartalmazza (A) konfigurációjának SCS és SSZON terheléselosztó.
+The NFS server, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. Az Azure-ban a terheléselosztó virtuális IP-cím szükséges. Az alábbi lista tartalmazza (A) konfigurációjának SCS és SSZON terheléselosztó.
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -94,10 +96,10 @@ Az NFS-kiszolgáló, az SAP NetWeaver ascs rendszerbe fut be, az SAP NetWeaver S
 * Mintavételi Port
   * Port 620**&lt;nr&gt;**
 * Terheléselosztás szabályok
-  * 32**&lt;nr&gt;**  TCP
-  * 36**&lt;nr&gt;**  TCP
-  * 39**&lt;nr&gt;**  TCP
-  * 81-es**&lt;nr&gt;**  TCP
+  * 32**&lt;nr&gt;** TCP
+  * 36**&lt;nr&gt;** TCP
+  * 39**&lt;nr&gt;** TCP
+  * 81**&lt;nr&gt;** TCP
   * 5**&lt;nr&gt;** 13 TCP
   * 5**&lt;nr&gt;** 14 TCP
   * 5**&lt;nr&gt;** 16 TCP
@@ -111,7 +113,7 @@ Az NFS-kiszolgáló, az SAP NetWeaver ascs rendszerbe fut be, az SAP NetWeaver S
 * Mintavételi Port
   * Port 621**&lt;nr&gt;**
 * Terheléselosztás szabályok
-  * 33**&lt;nr&gt;**  TCP
+  * 33**&lt;nr&gt;** TCP
   * 5**&lt;nr&gt;** 13 TCP
   * 5**&lt;nr&gt;** 14 TCP
   * 5**&lt;nr&gt;** 16 TCP
@@ -146,7 +148,7 @@ Használhatja a gyorsindítási sablonok egyikét a Githubon üzembe helyezésé
       Az új rendszer biztosít SAP mennyisége. Ha nem, hogy a rendszer hány SAP, kérje meg, a SAP technológiai partnerek vagy a rendszerintegrátor
    8. Rendszer rendelkezésre állását  
       Válassza ki a magas rendelkezésre ÁLLÁS
-   9. Rendszergazdai felhasználónév és a rendszergazdai jelszó  
+   9. Admin Username and Admin Password  
       Egy új felhasználót hoz létre, amely segítségével jelentkezzen be a számítógépen.
    10. Alhálózati azonosító  
    Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/**&lt;előfizetés-azonosító&gt;**/resourceGroups/**&lt;erőforráscsoport-név&gt;**/szolgáltatók/ Microsoft.Network/virtualNetworks/**&lt;virtuálishálózat-nevet&gt;**/subnets/**&lt;alhálózat neve&gt;**

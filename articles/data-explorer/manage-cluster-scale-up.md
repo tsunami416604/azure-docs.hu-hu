@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 9d265ec7f0ce2030874f38b99b07343f1d4a3f4d
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: bc3f97c798f5e040908e8103c00d3f015f8c824d
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408646"
+ms.locfileid: "56415334"
 ---
 # <a name="manage-cluster-scale-up-to-accommodate-changing-demand"></a>Fürt vertikális felskálázása változó igényeket elégíthet kezelése
 
@@ -30,10 +30,7 @@ Fürt méretezése megfelelően, kritikus fontosságú a teljesítmény az Azure
 1. A Termékváltozat, jelölje ki a Termékváltozat szeretne, majd nyomja le az **kiválasztása** gombra.
 
 > [!NOTE]
-> A vertikális felskálázási folyamat néhány percet is igénybe vehet. Ez idő alatt a fürt felfüggesztjük.
->
-> Vertikális leskálázást a fürtteljesítmény kárt okozhatnak.
->
+> A vertikális felskálázási folyamat néhány percet is igénybe vehet, és ebben az időszakban a fürt felfüggesztjük. Vegye figyelembe, hogy a vertikális leskálázást károsíthatják a fürt teljesítményét.
 
 Most már az Azure Data Explorer fürt egy felfelé vagy lefelé műveletet végzett el. Azt is megteheti [fürt kibővített](manage-cluster-scale-out.md), más néven az automatikus méretezés, dinamikusan alapján Ön által megadott mérőszámok méretezését.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 92914b26497634de1a0c61738c6aba37acb37c17
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6a568fa724d0d403833e938ae8b01556fe96cf1f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109317"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428637"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric-fürtök biztonsági forgatókönyveit
 Azure Service Fabric-fürt saját erőforrás. A feladata biztonságossá tétele a-fürtök segítségével megakadályozhatja a jogosulatlan felhasználókat csatlakozik hozzájuk. Biztonságos fürt különösen fontos, ha a fürtön futtatnak éles számítási feladatokat. Bár lehetséges hozhat létre nem biztonságos fürtöt, ha a fürt elérhetővé teszi a nyilvános internetre felügyeleti végpontok, névtelen felhasználók csatlakozhatnak hozzá. Nem biztonságos fürtökhöz nem támogatottak a termelési számítási feladatokhoz. 
@@ -73,7 +73,12 @@ Service Fabric-fürt kínál a különböző belépési pontok annak felügyelet
 Az Azure-ban futó fürtök esetén is biztosíthatók felügyeleti végpontok elérését az Azure Active Directory (Azure AD) használatával. Megtudhatja, hogyan hozhat létre a szükséges Azure AD-összetevőket és hogyan tölthetők fel a fürt létrehozásakor: [állítsa be az Azure AD-ügyfelek hitelesítésére](service-fabric-cluster-creation-setup-aad.md).
 
 ## <a name="security-recommendations"></a>Biztonsági javaslatok
-Azure fürtök esetén a csomópontok biztonság érdekében azt javasoljuk, hogy Azure AD biztonsági tanúsítványok és az ügyfelek hitelesítéséhez használ.
+Service Fabric-fürtök az Azure-ban üzemeltetett nyilvános hálózaton üzembe helyezett az ügyfél és a csomópont közötti kölcsönös hitelesítés ajánlás van:
+*   Az ügyfelek identitását az Azure Active Directory használata
+*   Egy tanúsítványt a kiszolgáló identitását és a http-kommunikációhoz SSL-titkosítás
+
+Service Fabric-fürtök üzembe helyezett Azure-ban üzemeltetett nyilvános hálózaton a csomópontok közötti biztonsági javaslatot, hogy egy fürt tanúsítványt használják a hitelesítéshez a csomópontok. 
+
 
 Önálló Windows Server-fürtök Ha rendelkezik Windows Server 2012 R2 és Windows Active Directory, javasoljuk, hogy a csoportosan felügyelt szolgáltatásfiókok használatához Windows biztonsági. Ellenkező esetben használja a Windows biztonsági Windows-fiókokkal.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9779885869666ffd1198afcda944823b99d52e5b
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508334"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417973"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>A portál használatával különböző üzemi modellekből származó virtuális hálózatok összekapcsolása
 
@@ -30,6 +30,8 @@ Egy klasszikus virtuális hálózat csatlakoztatása virtuális hálózathoz a R
 Ha még nem rendelkezik a virtuális hálózati átjáró, és nem szeretne létrehozni egyet, érdemes inkább fontolja meg a virtuális hálózatok összekapcsolása a virtuális hálózatok közötti társviszony-létesítés. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="before"></a>Előkészületek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Ezek a lépések feltételezik, hogy mindkét virtuális hálózaton már korábban létrejött. Ha ez a cikk gyakorlatként használja, és nem rendelkezik a virtuális hálózatok, nincsenek kapcsolatok hozhat létre, azokat a lépéseket.
 * Győződjön meg arról, hogy a virtuális hálózat címtartományát nem lehetnek egymással átfedésben, vagy átfedésben más kapcsolatokat, az átjárók csatlakoznak előfordulhat, hogy azokat a tartományokat.
@@ -226,19 +228,19 @@ Ezeket a lépéseket a kapcsolat a klasszikus virtuális hálózat és a Resourc
 Nyissa meg a PowerShell-konzol emelt szintű jogosultságokkal rendelkeznek, és jelentkezzen be az Azure-fiókjával. A bejelentkezés után, hogy elérhetők legyenek az Azure PowerShell-lel a rendszer letölti a fiók beállításait. A következő parancsmagot a bejelentkezési hitelesítő adatokat kér a Resource Manager üzemi modell az Azure-fiók:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Olvassa be az Azure-előfizetések listáját.
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Ha több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést.
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+Select-AzSubscription -SubscriptionName "Name of subscription"
 ```
 
 Ezután jelentkezzen be a klasszikus PowerShell-parancsmag (szolgáltatásfelügyelet) használatával. A következő parancs használatával adja hozzá a klasszikus üzemi modellben az Azure-fiókjával:

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 976976bc3e1913c8c3edb55dfc268a8d93afcd9f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d1f1ec45e1d4fc2fc6091a2f946caf6bc59441a9
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185328"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417057"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Az Azure AD Graph API használata
 
@@ -62,7 +62,7 @@ Most, konfigurálnia kell az alkalmazás létrehozása, olvasása, frissítése 
 Most már olyan alkalmazás, amely jogosult arra, hogy létrehozása, olvasása és frissítése a B2C-bérlő felhasználóit.
 
 > [!NOTE]
-> Próbáltak engedélyek biztosítják, hogy teljesen feldolgozni pár percet is igénybe vehet.
+> Engedélyek megadása teljesen feldolgozni pár percet is igénybe vehet.
 > 
 > 
 

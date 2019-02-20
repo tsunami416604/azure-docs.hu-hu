@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 99b7b83ca2d7f6f19df137e6ecf5deaf411e9a5e
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 799a40d759dc5614bd43234638982d5275d9d325
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634744"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429196"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken
 
@@ -43,6 +43,7 @@ ms.locfileid: "45634744"
 
 [sles-hae-guides]:https://www.suse.com/documentation/sle-ha-12/
 [sles-for-sap-bp]:https://www.suse.com/documentation/sles-for-sap-12/
+[suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
 [template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
@@ -76,6 +77,7 @@ Olvassa el először a következő SAP-megjegyzések és tanulmányok
 * [SUSE Linux Enterprise magas rendelkezésre állási bővítmény 12 SP3 ajánlott eljárások][sles-hae-guides]
   * Az NFS magas rendelkezésre állású tárolási DRBD és támasztja
 * [SUSE Linux Enterprise Server SAP alkalmazások 12 SP3 ajánlott eljárások][sles-for-sap-bp]
+* [SUSE magas rendelkezésre állású bővítmény 12 SP3 kibocsátási megjegyzései][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>Áttekintés
 
@@ -110,13 +112,13 @@ Használhatja a gyorsindítási sablonok egyikét a Githubon üzembe helyezésé
 
 1. Nyissa meg a [SAP file server sablon] [ template-file-server] az Azure Portalon   
 1. Adja meg a következő paraméterek
-   1. Erőforrás-előtag  
+   1. Resource Prefix  
       Adja meg a használni kívánt előtagot. Az érték előtagjaként is szolgál az üzembe helyezett erőforrásokat.
    2. Az SAP-rendszer száma  
       Adja meg az SAP-rendszereit, hogy a fájlkiszolgáló fogja használni. Ez telepíti a szükséges méretű előtér-konfigurációk terheléselosztási szabályok, mintavételi port lemezek stb.
    3. Operációs rendszer típusa  
       Válasszon ki egy Linux-disztribúció. Ebben a példában válassza ki a SLES 12 rendszert
-   4. Rendszergazdai felhasználónév és a rendszergazdai jelszó  
+   4. Admin Username and Admin Password  
       Egy új felhasználót hoz létre, amely segítségével jelentkezzen be a számítógépen.
    5. Alhálózati azonosító  
       Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/**&lt;előfizetés-azonosító&gt;**/resourceGroups/**&lt;erőforráscsoport-név&gt;**/szolgáltatók/ Microsoft.Network/virtualNetworks/**&lt;virtuálishálózat-nevet&gt;**/subnets/**&lt;alhálózat neve&gt;**

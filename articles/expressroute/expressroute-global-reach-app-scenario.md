@@ -3,19 +3,19 @@ title: Az Azure ExpressRoute globális érhető el a forgatókönyvet |} A Micro
 description: Ezen a lapon globális elérhetőségű biztosít egy forgatókönyvet.
 documentationcenter: na
 services: networking
-author: rambk
+author: cherylmc
 manager: tracsman
 ms.service: expressroute,global reach
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/14/2019
-ms.author: rambala
-ms.openlocfilehash: 5174baae40d7f14720affe90f702c024541a5745
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.author: cherylmc
+ms.openlocfilehash: 2adb8debf641a9b3875c5c386df7a35273f2a258
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332871"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428238"
 ---
 # <a name="expressroute-global-reach-application-scenario"></a>Az ExpressRoute globális elérhetőségű alkalmazások forgatókönyv
 

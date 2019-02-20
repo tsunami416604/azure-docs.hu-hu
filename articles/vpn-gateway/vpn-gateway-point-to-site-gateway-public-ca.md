@@ -5,20 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 02/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: b89ba054040229d9925b9dbbc64d27eed171613e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: e5a75826730219adc643d7c6ca300a38c8640006
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339872"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428363"
 ---
-# <a name="transition-from-self-signed-to-public-ca-certificates-for-p2s-gateways"></a>Áttérés a önaláírt a P2S-átjárók nyilvános hitelesítésszolgáltató tanúsítványai
+# <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
 
 Az Azure VPN Gateway már nem Azure-szintű önaláírt tanúsítványokat állít a P2S-kapcsolatokkal-átjárókat. Kiállított tanúsítványok most már aláírt szerint egy nyilvános hitelesítésszolgáltató (CA). Azonban a régebbi átjárók némelyike előfordulhat, hogy továbbra is az önaláírt tanúsítványokat. Önaláírt tanúsítványok közelében a lejárati dátumnak és nyilvános hitelesítésszolgáltató tanúsítványokat kell átmenet.
 
 Ebben a környezetben a tanúsítványokat egy további Azure-szintű tanúsítványt is. Azok nem a tanúsítványláncok a saját önaláírt legfelső szintű tanúsítványok és az ügyfél-hitelesítési tanúsítványok létrehozásakor használt. Ezeknek a tanúsítványoknak érinti, és le fog járni a időpontokban generált őket, ennek a végrehajtására.
+
+>[!NOTE]
+> Az Azure-szintű tanúsítvány módosítása nem érinti a P2S ügyfél-hitelesítéshez használt önaláírt tanúsítványokat. Továbbra is ki, önaláírt tanúsítványokat használni a szokásos módon.
+>
 
 Korábban az önaláírt tanúsítvány az átjáró (kiadott a színfalak mögött az Azure-ban) frissíteni kell minden 18 hónap szükséges. VPN-ügyfél konfigurációs fájljainak majd kellett jön létre, és áttelepült a P2S-ügyfelekhez. Áthelyezése a CA-tanúsítványok használata esetén nem ezt a korlátozást. A tanúsítványok váltást Ez a változás is nyújt platform fejlesztései jobb metrikák és továbbfejlesztett stabilitását.
 

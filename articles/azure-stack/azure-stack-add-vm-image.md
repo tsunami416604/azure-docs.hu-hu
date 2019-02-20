@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 1/18/2019
+ms.date: 2/19/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: dce158e600d3bf5dbcc552aff82959208d7b47f8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0319445f946a53ace5718dce1ad593d0a8225ecc
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249061"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428516"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Egy virtuális gép rendszerképének elérhetővé az Azure Stackben
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az Azure Stackben akkor is elérhetővé virtuálisgép-rendszerképek a felhasználók számára. Ezek a lemezképek hivatkozhat az Azure Resource Manager-sablonokkal, vagy felveheti őket az Azure Marketplace felhasználói felületén, a Piactéri elem. Vagy egy lemezkép-űrlap használata a globális Azure Marketplace-en, vagy adja hozzá a saját egyéni rendszerképét. Hozzáadhat egy virtuális Gépet a portálon vagy a Windows PowerShell használatával.
+Az Azure Stackben akkor is elérhetővé virtuálisgép-rendszerképek a felhasználók számára. Ezek a lemezképek az Azure Resource Manager-sablonok által használható. Is felveheti őket az Azure Marketplace felhasználói felülete a Marketplace-en elemként. Egy rendszerkép űrlap a globális Azure Marketplace-en vagy saját egyéni rendszerképét használjuk. A kép a portál vagy a Windows PowerShell használatával is hozzáadhatók.
 
 ## <a name="add-a-vm-image-through-the-portal"></a>A portálon keresztül egy Virtuálisgép-rendszerkép hozzáadása
 

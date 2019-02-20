@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 074f090d295ef5eafad48e57f68dad019bf7eab9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 23618b545814e89a7343d2db4664405855051c1b
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470035"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415442"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Automatikus méretezés speciális konfigurálása Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok
 Horizontális le- és a Virtual Machine Scale Sets alapuló teljesítmény-mérőszám küszöbértékén, ismétlődő ütemezés szerint, vagy egy adott dátumot kibővített is. Skálázási műveletek értesítései e-mailt és webhookot is konfigurálhatja. Ez az útmutató bemutatja egy példa az összes ezeket az objektumokat a Virtuálisgép-méretezési Resource Manager-sablon használatával.
@@ -48,9 +48,9 @@ Ez az útmutató használjuk [Azure erőforrás-kezelő](https://resources.azure
 4. Íme egy elméleti méretezési forgatókönyv, amely ebben az útmutatóban a használjuk.
 
     * **A terhelés alapján** – azt szeretném, hogy méretezzen horizontálisan vagy a saját méretezési set.* lévő üzemeltetett alkalmazás terhelése alapján
-    * **Üzenet-várólista mérete** -egy Service Bus-üzenetsor bejövő üzenetekhez hozzáférek az alkalmazáshoz használni. E a várólista üzenetek száma és százalékos processzorhasználatról és a egy skálázási műveletet aktiválásához, ha bármelyik üzenetek száma vagy a Processzor eléri a threshold.* alapértelmezett profil beállítása
-    * **Heti és napi** -szeretnék egy "Hét napja reggel Hours" nevű hetente ismétlődő "idő a nap"-alapú profilt. A korábbi adatok alapján, tudom jobb bizonyos számú Virtuálisgép-példányok az alkalmazásom által terhelés kezeléséhez ez idő alatt
-    * **Speciális dátumok** -Hozzáadtam egy "Termék indítsa el a Day" profilt. Szeretném előre az adott dátumok az alkalmazásom marketing közlemények miatt, és elhelyezni egy új terméket a application.* a terhelés kezelésére készen álljon
+    * **Üzenet-várólista mérete** -egy Service Bus-üzenetsor bejövő üzenetekhez hozzáférek az alkalmazáshoz használni. Tudom a várólista üzenetek száma és százalékos processzorhasználatról, és konfigurálja a egy alapértelmezett profilt egy skálázási műveletet aktiválásához, ha bármelyik üzenetek száma vagy a Processzor eléri a küszöbértéket.\*
+    * **Heti és napi** -szeretnék egy "Hét napja reggel Hours" nevű hetente ismétlődő "idő a nap"-alapú profilt. A korábbi adatok alapján, tudom jobb bizonyos számú Virtuálisgép-példányok ebben az időszakban az alkalmazásom által terhelés kezeléséhez.\*
+    * **Speciális dátumok** -Hozzáadtam egy "Termék indítsa el a Day" profilt. Szeretném előre az adott dátumok az alkalmazásom kezelni a terhelés miatt marketing bejelentések és tárgyaljuk, egy új terméket az alkalmazás készen álljon.\*
     * *Az utolsó két profilt is lehet egyéb metrika alapján teljesítményszabályok rajtuk. Ebben az esetben kifejezetten nem rendelkezik ilyennel, és inkább az alapértelmezett teljesítmény-mérőszám támaszkodnia szabályok alapján. Szabályok megadása nem kötelező a ismétlődő és a dátum-alapú profilokhoz.*
 
     A profilok és a szabályok automatikus skálázási motor rangsorolási is bekerül az a [automatikus méretezés ajánlott eljárásai](autoscale-best-practices.md) cikk.

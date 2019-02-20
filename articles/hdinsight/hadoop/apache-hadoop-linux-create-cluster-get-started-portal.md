@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: dbae234739cd58278b1dc56c956a5fb058394681
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 003bd5ccae2b22dc411259226d84b11444694651
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913410"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417905"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-the-azure-portal"></a>Gyors útmutató: Ismerkedés az Apache Hadoop- és Apache Hive, az Azure HDInsight az Azure portal használatával
 
@@ -63,7 +63,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
     |Tulajdonság  |Leírás  |
     |---------|---------|
     |**Fürt típusa**     | Válassza a **Hadoop** lehetőséget. |
-    |**Operációs rendszer**     |  Válassza ki az Azure-előfizetését. |
+    |**Operációs rendszer**     | Válassza ki **Linux** |
     |**Verzió**     | Válassza a **Hadoop 2.7.3 (HDI 3.6)** lehetőséget.|
 
     Kattintson a **Kiválasztás**, majd a **Tovább** elemre.

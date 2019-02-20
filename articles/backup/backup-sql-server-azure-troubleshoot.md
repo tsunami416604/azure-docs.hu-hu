@@ -1,26 +1,19 @@
 ---
-title: Hibaelhárítási útmutató az SQL Server virtuális gépek az Azure Backup |} A Microsoft Docs
-description: Hibaelhárítási információkat tartalmaz az SQL Server virtuális gépek biztonsági mentésének az Azure-bA.
+title: Az SQL Server adatbázis biztonsági mentése az Azure Backup hibaelhárítása |} A Microsoft Docs
+description: Hibaelhárítási információk az Azure Backup szolgáltatással az Azure virtuális gépeken futó SQL Server-adatbázisok biztonsági mentése.
 services: backup
-documentationcenter: ''
-author: rayne-wiselman
-manager: carmonm
-editor: ''
-keywords: ''
-ms.assetid: ''
+author: anuragm
+manager: shivamg
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 02/19/2019
 ms.author: anuragm
-ms.custom: ''
-ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0beb65d6ef7c036c8a294f53eeb3db327457ea84
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296121"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428619"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Az Azure SQL Server biztonsági mentése – hibaelhárítás
 
@@ -28,11 +21,11 @@ Ez a cikk a hibaelhárítási információk védelme érdekében az SQL Server v
 
 ## <a name="public-preview-limitations"></a>Nyilvános előzetes verzió korlátozásai
 
-Megtekintheti a nyilvános előzetes verzió korlátozásai, tekintse meg a cikket [az Azure-beli SQL Server-adatbázis biztonsági mentése](backup-azure-sql-database.md#public-preview-limitations).
+Megtekintheti a nyilvános előzetes verzió korlátozásai, tekintse meg a cikket [az Azure-beli SQL Server-adatbázis biztonsági mentése](backup-azure-sql-database.md#preview-limitations).
 
 ## <a name="sql-server-permissions"></a>Az SQL Server engedélyei
 
-Az SQL Server-adatbázis védelme nem konfigurálható a virtuális gépen a **AzureBackupWindowsWorkload** bővítményt telepíteni kell, hogy a virtuális gép. Ha a hibaüzenetet kapja **UserErrorSQLNoSysadminMembership**, ez azt jelenti, hogy az SQL-példány nem rendelkezik a szükséges biztonsági engedélyeket. Ez a hiba elhárításához kövesse [állítsa be a marketplace-az SQL virtuális gépek](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms).
+Az SQL Server-adatbázis védelme nem konfigurálható a virtuális gépen a **AzureBackupWindowsWorkload** bővítményt telepíteni kell, hogy a virtuális gép. Ha a hibaüzenetet kapja **UserErrorSQLNoSysadminMembership**, ez azt jelenti, hogy az SQL-példány nem rendelkezik a szükséges biztonsági engedélyeket. Ez a hiba elhárításához kövesse [állítsa be a marketplace-az SQL virtuális gépek](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
 
 ## <a name="troubleshooting-errors"></a>Hibák elhárítása
 
@@ -56,13 +49,13 @@ Az alábbi táblázatok hibakód alapján vannak rendezve.
 | Hibaüzenet | A lehetséges okok | Javasolt művelet |
 |---|---|---|
 | Az SQL-adatbázis nem támogatja a kért biztonsági mentés típusát. | Akkor következik be, amikor az adatbázis helyreállítási modelljét nem teszi lehetővé a kért biztonsági mentési típust. A hiba a következő esetekben fordulhat elő: <br/><ul><li>Egy egyszerű helyreállítási modellt használó adatbázis nem engedélyezi a naplóalapú biztonsági mentés.</li><li>Különbségi és naplóalapú biztonsági mentések nem engedélyezettek a Master adatbázisban.</li></ul>További részletekért tekintse meg a [SQL helyreállítási modellek](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) dokumentációját. | Ha az adatbázis egyszerű helyreállítási modellben a naplóalapú biztonsági mentés sikertelen, próbálja meg az alábbi lehetőségek egyikét:<ul><li>Ha az adatbázis egyszerű helyreállítási módban van, tiltsa le a naplóalapú biztonsági mentések.</li><li>Használja a [SQL-dokumentáció](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) módosítása az adatbázis helyreállítási modelljét teljes vagy Tömegesen naplózott. </li><li> Ha nem szeretné módosítani a helyreállítási modellt, és a egy standard szintű szabályzatot, amely nem módosítható több adatbázisok biztonsági mentése, hagyja figyelmen kívül a hibát. A teljes és különbségi biztonsági mentés ütemezése szerint fog működni. A naplóalapú biztonsági mentések kimarad, amely ebben az esetben várt.</li></ul>Ha a Master adatbázisban, és konfigurálta különbségi vagy a napló biztonsági mentési, használja az alábbi műveletek közül:<ul><li>A portál a biztonsági mentési szabályzat ütemezését a Master adatbázis, teljes használja.</li><li>Ha egy standard szintű házirend, amely nem módosítható több adatbázisok biztonsági mentése, hagyja figyelmen kívül a hibát. A teljes biztonsági mentés ütemezése szerint fog működni. Különbségi vagy a napló biztonsági mentések nem történik meg, amely ebben az esetben várt.</li></ul> |
-| A művelet megszakadt, mert egy ütköző művelet már futott ugyanazon az adatbázison. | Tekintse meg a [blogbejegyzés kapcsolatos biztonsági mentésére és visszaállítására vonatkozó korlátozások](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database) , amelyek egyidejűleg futtathatók.| [Az SQL Server Management Studio (SSMS) használatával a biztonsági mentési feladatok monitorozása.](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms) Miután az ütköző művelet sikertelen, indítsa újra a műveletet.|
+| A művelet megszakadt, mert egy ütköző művelet már futott ugyanazon az adatbázison. | Tekintse meg a [blogbejegyzés kapcsolatos biztonsági mentésére és visszaállítására vonatkozó korlátozások](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database) , amelyek egyidejűleg futtathatók.| [Az SQL Server Management Studio (SSMS) használatával a biztonsági mentési feladatok monitorozása.](manage-monitor-sql-database-backup.md) Miután az ütköző művelet sikertelen, indítsa újra a műveletet.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
 | Hibaüzenet | A lehetséges okok | Javasolt művelet |
 |---|---|---|
-| SQL-adatbázis nem létezik. | Az adatbázist törölték vagy átnevezték. | <ul><li>Ellenőrizze, ha az adatbázis véletlenül törölték vagy átnevezték.</li><li>Ha véletlenül törölte az adatbázist, továbbra is a biztonsági másolatok, állítsa vissza az adatbázist az eredeti helyre.</li><li>Ha törli az adatbázist, és nem kell jövőbeli biztonsági mentések, majd a Recovery Services-tárolóba, az ["Törlés és adatok megőrzése" biztonsági mentés leállítása](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms).</li>|
+| SQL-adatbázis nem létezik. | Az adatbázist törölték vagy átnevezték. | Ellenőrizze, ha az adatbázis véletlenül törölték vagy átnevezték.<br/><br/> Ha véletlenül törölte az adatbázist, továbbra is a biztonsági másolatok, állítsa vissza az adatbázist az eredeti helyre.<br/><br/> Ha törli az adatbázist, és nem kell jövőbeli biztonsági mentések, majd a Recovery Services-tárolóba, az ["Törlés és adatok megőrzése" biztonsági mentés leállítása](manage-monitor-sql-database-backup.md).
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 

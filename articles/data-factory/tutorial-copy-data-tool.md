@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: a9ba02478b17b29343236a91fe637357c1414717
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ebc0f93055a014888d01fa9bffc7702b99380234
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015322"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417465"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Adatok másolása eszközzel
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -39,7 +39,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 * **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * **Az Azure storage-fiók**: Blob storage-ot használja a _forrás_ adattár. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikkben találja.
-* **Az Azure SQL Database**: Egy SQL database-t használja a _fogadó_ adattár. Ha még nem rendelkezik SQL-adatbázissal, a szükséges utasításokat az [SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikkben találja.
+* **Azure SQL Database**: Egy SQL database-t használja a _fogadó_ adattár. Ha még nem rendelkezik SQL-adatbázissal, a szükséges utasításokat az [SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikkben találja.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Blob és SQL-tábla létrehozása
 
@@ -152,7 +152,7 @@ Készítse elő a Blob Storage-ot és az SQL-adatbázist az oktatóanyaghoz a k�
 
     ![Új fogadó társított szolgáltatás](./media/tutorial-copy-data-tool/new-sink-linked-service.png)
 
-    b. Válassza a katalógusból az **Azure Blob Storage** elemet, majd válassza a **Tovább** lehetőséget.
+    b. Válassza ki **Azure SQL Database** a katalógusban, és válassza ki a **tovább**.
 
     ![Azure SQL-adatbázis kiválasztása](./media/tutorial-copy-data-tool/select-azure-sql-db.png)
 

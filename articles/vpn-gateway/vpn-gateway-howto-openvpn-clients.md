@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: cd84948b5895a628fc94cc2946156d9fa2284369
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 73f8b1323f6cd22ef215fba4ec45714f099032f6
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508674"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415833"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Azure VPN Gateway (előzetes verzió) OpenVPN ügyfelek konfigurálása
 
@@ -24,12 +24,14 @@ Ez a cikk segít OpenVPN ügyfelek konfigurálása.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-átjárót. További információkért lásd: [OpenVPN konfigurálása Azure VPN Gateway](vpn-gateway-howto-openvpn.md).
 
 ## <a name="windows"></a>Windows ügyfelek
 
 1. Töltse le és telepítse a hivatalos a OpenVPN ügyfél [OpenVPN webhely](https://openvpn.net/index.php/open-source/downloads.html).
-2. Töltse le az átjáró VPN-profilját. Ezt megteheti a pont – hely konfiguráció lapon az Azure Portalon vagy a "New-AzureRmVpnClientConfiguration" parancsot a PowerShellben.
+2. Töltse le az átjáró VPN-profilját. Ezt megteheti a pont – hely konfiguráció lapon az Azure Portalon vagy a "New-AzVpnClientConfiguration" parancsot a PowerShellben.
 3. Csomagolja ki a profilt. Ezután nyissa meg a *vpnconfig.ovpn* konfigurációs fájlt a Jegyzettömbben OpenVPN mappából.
 4. [Exportálás](vpn-gateway-certificates-point-to-site.md#clientexport) a P2S-ügyféltanúsítvány során létrehozott és feltöltött a P2S konfiguráció az átjárón.
 5. Bontsa ki a titkos kulcs és a base64 ujjlenyomatot a *.pfx*. Ezt többféleképpen megteheti. OpenSSL használatával a gépén az egyik módja. A *profileinfo.txt* fájl tartalmazza a hitelesítésszolgáltató és az ügyféltanúsítványt a titkos kulcs és az ujjlenyomat. Ügyeljen arra, használja az ügyféltanúsítvány ujjlenyomatát.
@@ -64,7 +66,7 @@ Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-át
 ## <a name="mac"></a>Mac-ügyfél
 
 1. Ügyfél letöltése és telepítése egy OpenVPN, mint például [TunnelBlik](https://tunnelblick.net/downloads.html). 
-2. Töltse le az átjáró VPN-profilját. Ezt megteheti a pont – hely konfiguráció lapon, az Azure Portalon, vagy a "New-AzureRmVpnClientConfiguration" a PowerShell használatával.
+2. Töltse le az átjáró VPN-profilját. Ezt megteheti a pont – hely konfiguráció lapon, az Azure Portalon, vagy a "New-AzVpnClientConfiguration" a PowerShell használatával.
 3. Csomagolja ki a profilt. Nyissa meg a vpnconfig.ovpn konfigurációs fájlt a Jegyzettömbben OpenVPN mappából.
 4. Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. Lásd: [nyilvános kulcs exportálása](vpn-gateway-certificates-point-to-site.md#cer) a tanúsítványt a kódolt nyilvános kulcs lekérésével kapcsolatos információk.
 5. Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. Lásd: [a titkos kulcs exportálását választom](https://openvpn.net/community-resources/how-to/#pki) hogyan lehet kigyűjteni a titkos kulccsal kapcsolatos információkat.

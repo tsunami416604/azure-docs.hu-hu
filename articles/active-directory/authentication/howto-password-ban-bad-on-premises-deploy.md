@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4a4b760652ce38e27e12e9eb73fbe7692eddbc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8d39b614c373c63cf1405c5db0f64581c481d1f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204372"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417202"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Előzetes verzió: Üzembe helyezése az Azure AD jelszóvédelem
 
@@ -53,15 +53,18 @@ Ez lehetőleg azáltal, hogy teljes mértékben kijavítja a gép Windows Update
     |`https://login.microsoftonline.com`|Hitelesítési kérelmek|
     |`https://enterpriseregistration.windows.net`|Az Azure AD jelszó-védelmi funkciók|
 
+* Az Azure AD-jelszó védelme Proxy szolgáltatást futtató összes gép kimenő TLS 1.2-es HTTP-forgalom engedélyezésére kell konfigurálni.
 * Egy globális rendszergazdai fiókkal az Azure AD-jelszó védelme Proxy szolgáltatás és az erdő regisztrálhat az Azure ad-ben.
 * Az Active Directory tartományi rendszergazdai jogosultságokkal az erdő gyökértartományában, a Windows Server Active Directory-erdő regisztrálni az Azure AD-fiók.
 * Minden olyan Active Directory-tartományban, a Tartományvezérlőn futó ügynök szolgáltatás szoftvert kell használnia elosztott fájlrendszer replikációs szolgáltatása a sysvol replikáció.
 
 ## <a name="single-forest-deployment"></a>Egyetlen erdő telepítés
 
-Az alábbi ábrán látható, hogyan az alapvető összetevők az Azure AD jelszóvédelem működik együtt a helyszíni Active Directory-környezetben.  
+Az alábbi ábrán látható, hogyan az alapvető összetevők az Azure AD jelszóvédelem működik együtt a helyszíni Active Directory-környezetben.
 
 ![Hogyan működik az Azure AD jelszóvédelem összetevők együtt](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
+
+Üzembe helyezés előtt, egy célszerű áttekinteni, hogyan működik a szoftvert; Lásd: [fogalmi áttekintése az Azure AD jelszóvédelem](concept-password-ban-bad-on-premises.md).
 
 ### <a name="download-the-software"></a>A szoftver letöltése
 

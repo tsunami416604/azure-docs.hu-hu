@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6493da0cfc86560fac8e69f4329804c628942806
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: bb9b90ca239ff03f44b76a7ee5754eb7872caa31
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328713"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415901"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Teljesítmény-irányelvek az SQL Server Azure Virtual Machines szolgáltatásban
 
@@ -88,11 +88,9 @@ Az ideiglenes meghajtó, a következő címkét: a **D**: meghajtó, az Azure bl
 
 A D-sorozat, a Dv2 sorozat és a G sorozatú virtuális gépek az ideiglenes meghajtó ezeken a virtuális gépeken az SSD-alapú. Ha a számítási feladatok (például az ideiglenes objektumok vagy bonyolult illesztésekre), a TempDB (nagy erőforrásigényű) használatát a TempDB tárolja a **D** meghajtó sikerült nagyobb TempDB átviteli sebességet eredményez, és a TempDB késés csökkentése. Példaforgatókönyv tanulmányozza a TempDB a következő blogbejegyzésben található: [Tárolási konfiguráció irányelvek az SQL Server Azure virtuális Gépen futó](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm).
 
-<<<<<<< LÉPJEN a virtuális gépek, amelyek támogatják a prémium szintű SSD-k (DS-sorozat, dsv2 és GS-sorozat), javasoljuk, hogy a TempDB tárolja, amely támogatja a prémium szintű SSD-k engedélyezve van olvasási gyorsítótárazás lemezre vonatkozóan. Ez a javaslat; egyetlen kivétel van Ha a TempDB adatbázis használattal írási igényű, nagyobb teljesítményt érhet el, a TempDB tárolása a helyi **D** meghajtó, amely egyben ezen gépméretek az SSD-alapú.
-=== Virtuális gépek esetében, amelyek támogatják a Premium Storage (DS-sorozat, dsv2 és GS-sorozat) javasoljuk a TempDB tárolásához a lemezen, amely támogatja a Premium Storage olvasási gyorsítótár engedélyezve van. 
+Virtuális gépek, amelyek támogatják a prémium szintű SSD-k (DS-sorozat, dsv2 és GS-sorozat) javasoljuk a TempDB tárolja, amely támogatja a prémium szintű SSD-k engedélyezve van olvasási gyorsítótárazás lemezre vonatkozóan.
 
-Ez a javaslat egyetlen kivétel van: _írási-igényes a TempDB használat esetén nagyobb teljesítményt érhet el, a TempDB tárolása a helyi **D** meghajtó, amely egyben ezen gépméretek az SSD-alapú._ 
->>>>>>> 4326ed494fad7ef7be29e2f4ba3301ec496acf76
+Ez a javaslat egyetlen kivétel van: _írási-igényes a TempDB használat esetén nagyobb teljesítményt érhet el, a TempDB tárolása a helyi **D** meghajtó, amely egyben ezen gépméretek az SSD-alapú._
 
 ### <a name="data-disks"></a>Adatlemezek
 

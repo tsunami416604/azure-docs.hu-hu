@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 2/8/2019
 ms.author: moderakh
-ms.openlocfilehash: 88fcfec903dac9d939d658e5d06a51ab8ff1aba9
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1a86ceefdc5c3b60dc4bca5a1ac659534653aa66
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979173"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416275"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Aszinkron Java az Azure Cosmos DB SQL API-hoz készült SDK: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -45,13 +45,12 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
-* Közvetlen általánosan elérhető
+* Közvetlen üzemmódban kapcsolat már általánosan Available(GA). A minta közvetlen üzemmódban kapcsolatot használó: [azure-cosmos DB-java](https://github.com/Azure/azure-cosmosdb-java) GitHub-adattárban.
 * Támogatás hozzáadva a QueryMetrics.
-* Az API-kat, amelynek sorrend fontos, hogy fogadják el java.util.List java.util.Collection elfogadásával módosítani.
-  Most már ConnectionPolicy#getPreferredLocations() JsonSerialization és PartitionKey(.) listában fogadja el.
+* Az API-kat, amelynek sorrend fontos, hogy fogadják el java.util.List java.util.Collection elfogadásával módosítani. Most már ConnectionPolicy#getPreferredLocations() JsonSerialization és PartitionKey(.) listában fogadja el.
 
 ### <a name="a-name240-beta-1240-beta-1"></a><a name="2.4.0-beta-1"/>2.4.0-beta-1
-* Közvetlen támogatása.
+* Közvetlen üzemmódban kapcsolat támogatása.
 * Az API-kat, amelynek sorrend fontos, hogy fogadják el java.util.List java.util.Collection elfogadásával módosítani.
   Most már ConnectionPolicy#getPreferredLocations() JsonSerialization és PartitionKey(.) listában fogadja el.
 * A dokumentum lekérdezés munkamenet hibája kijavítva átjáró módban.

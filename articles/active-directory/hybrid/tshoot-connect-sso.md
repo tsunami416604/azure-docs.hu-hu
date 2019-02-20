@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9eebd695cbbc1e29ea7d2647b5955bcc2e3cfe4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a86ce8c061450fd66b31a81ec00e51f98a39646
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175914"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415646"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibaelhárítása
 
@@ -82,8 +82,8 @@ A következő ellenőrzőlista segítségével zökkenőmentes egyszeri Bejelent
 - Győződjön meg arról, hogy a felhasználó fiókjának van az Active Directory-erdő, ahol a közvetlen egyszeri bejelentkezés lett beállítva.
 - Győződjön meg arról, hogy az eszköz a vállalati hálózathoz csatlakozik.
 - Győződjön meg arról, hogy az eszköz időt szinkronizálva van-e az idő az Active Directory és a tartományvezérlők, és megfelelően vannak-e egymáshoz képest öt percen belül.
-- Ügyeljen arra, hogy a `AZUREADSSOACCT` számítógépfiók jelen, és engedélyezve van minden AD-erdőben, amely azt szeretné, hogy közvetlen egyszeri bejelentkezés engedélyezve van. Ha a számítógépfiók törölve lett, vagy nincs megadva, akkor használhatja [PowerShell-parancsmagok](#manual-reset-of-the-feature) újra létre kell hoznia őket.
-- Az eszközön a meglévő Kerberos-jegyet lista használatával a `klist` parancsot egy parancssorból. Ellenőrizze, hogy a kiadott jegyek a `AZUREADSSOACCT` számítógépfiók találhatók. Felhasználók Kerberos-jegyekhez érvényesek általában 10 óra. Előfordulhat, hogy a különböző beállítások Active Directoryban.
+- Ügyeljen arra, hogy a `AZUREADSSOACC` számítógépfiók jelen, és engedélyezve van minden AD-erdőben, amely azt szeretné, hogy közvetlen egyszeri bejelentkezés engedélyezve van. Ha a számítógépfiók törölve lett, vagy nincs megadva, akkor használhatja [PowerShell-parancsmagok](#manual-reset-of-the-feature) újra létre kell hoznia őket.
+- Az eszközön a meglévő Kerberos-jegyet lista használatával a `klist` parancsot egy parancssorból. Ellenőrizze, hogy a kiadott jegyek a `AZUREADSSOACC` számítógépfiók találhatók. Felhasználók Kerberos-jegyekhez érvényesek általában 10 óra. Előfordulhat, hogy a különböző beállítások Active Directoryban.
 - Ha le van tiltva, és újra engedélyezni a bérlő közvetlen egyszeri bejelentkezés, felhasználó nem kap az egyszeri bejelentkezés használatát, amíg a gyorsítótárazott Kerberos-jegyek lejárt.
 - Meglévő Kerberos-jegyet az eszközről a végleges törlése a `klist purge` parancsot, és próbálkozzon újra.
 - Annak megállapításához, hogy vannak-e a JavaScript-problémákat, tekintse át az a böngésző-konzol naplói (a **fejlesztői eszközök**).
@@ -123,7 +123,7 @@ Hibaelhárítási oldották meg, ha manuálisan alaphelyzetbe állíthatja a fun
     >[!NOTE]
     >A tartományi rendszergazda felhasználónév, a felhasználó egyszerű neve (UPN) a megadott használjuk (johndoe@contoso.com) vagy a tartomány minősített sam-fiók neve (contoso\budaipeter vagy contoso.com\johndoe) formátumban, a megfelelő AD-erdőben található. Ha minősített sam-fiók tartománynevet használ, a felhasználónevet, tartományt jelölő része használjuk [keresse meg a tartományvezérlő, a tartományi rendszergazda DNS-sel](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Ha Ehelyett használjon egyszerű felhasználónév azt [lefordíthatja minősített sam-fiók tartománynevét](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) előtt a megfelelő tartományvezérlő keresésekor.
 
-2. Hívás `Disable-AzureADSSOForest -OnPremCredentials $creds`. Ezzel a paranccsal eltávolítható az `AZUREADSSOACCT` az adott erdő Active Directory a helyszíni tartományvezérlő számítógépfiókja.
+2. Hívás `Disable-AzureADSSOForest -OnPremCredentials $creds`. Ezzel a paranccsal eltávolítható az `AZUREADSSOACC` az adott erdő Active Directory a helyszíni tartományvezérlő számítógépfiókja.
 3. Ismételje meg a fenti lépéseket minden egyes Active Directory-erdőben, amennyiben beállította a szolgáltatást.
 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4. lépés: Közvetlen egyszeri bejelentkezés engedélyezése az Active Directory erdőhöz

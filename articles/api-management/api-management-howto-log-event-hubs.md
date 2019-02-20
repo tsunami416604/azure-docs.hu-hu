@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 77ada606412506e3d3d23189d8a5267e1f58a8f7
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 028b36cc442ccef8af4aa401846cbacdaaab35bf
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733076"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428482"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Eseménynaplózás az Azure Event Hubs az Azure API Management hogyan
 Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs úgy működik, mint a "bejárati ajtajának" egy eseményfolyamat számára, és az összegyűjtött adatokat egy eseményközpontba, átalakíthatók, és bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével tárolják. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.
@@ -119,7 +119,7 @@ Kattintson a **mentése** a frissített szabályzatot konfigurációjának ment�
 * További információ az API Management és az Event Hubs-integráció
   * [Naplózó entitások bemutatása](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
   * [napló eventhub házirend-referencia](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
-  * [Az Azure API Management, az Event Hubs és a Runscope API-k monitorozása](api-management-log-to-eventhub-sample.md)  
+  * [Az Azure API Management, az Event Hubs és Moesif API-k monitorozása](api-management-log-to-eventhub-sample.md)  
 * Tudjon meg többet [Azure Application Insights-integráció](api-management-howto-app-insights.md)
 
 [publisher-portal]: ./media/api-management-howto-log-event-hubs/publisher-portal.png

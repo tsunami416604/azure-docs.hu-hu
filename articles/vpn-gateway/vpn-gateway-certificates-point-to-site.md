@@ -1,5 +1,5 @@
 ---
-title: 'Tanúsítványok létrehozása és exportálása pont – hely számára: PowerShell: Azure |} A Microsoft Docs'
+title: 'Tanúsítványok létrehozása és exportálása pont – hely számára: PowerShell: Azure | Microsoft Docs'
 description: Hozzon létre egy önaláírt főtanúsítványt, exportálja a nyilvános kulcsot és PowerShell használatával a Windows 10-es vagy Windows Server 2016 ügyféltanúsítványokat.
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: e635eddabe239268829d3a907df10392c7e1b6a3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e574759ff8af172841db9fc94ee860a19dd14200
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850958"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415365"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Tanúsítványok létrehozása és exportálása pont – hely a PowerShell használatával
 
@@ -47,7 +47,7 @@ A példák a New-SelfSignedCertificate parancsmag segítségével hozzon létre 
 
 ### <a name="example-1"></a>1. példa
 
-Ez a példa az előző szakaszban a deklarált "$cert" változó használja. Ha az önaláírt főtanúsítvány létrehozása után a PowerShell-konzol lezárva, vagy egy új PowerShell-konzol munkamenetet ügyféloldali tanúsítványokat készíti, szereplő lépések segítségével [2. példa](#ex2).
+Ebben a példában használja, ha az önaláírt főtanúsítvány létrehozása után nem bezárta a PowerShell-konzolt. Ebben a példában az előző szakaszban továbbra is fennáll, és a deklarált "$cert" változó. Ha az önaláírt főtanúsítvány létrehozása után a PowerShell-konzol lezárva, vagy egy új PowerShell-konzol munkamenetet ügyféloldali tanúsítványokat készíti, szereplő lépések segítségével [2. példa](#ex2).
 
 Módosíthatja, és futtasson le az ügyféltanúsítvány létrehozása. Ha az alábbi példa azt módosítása nélkül futtatja, ez "P2SChildCert" nevű ügyféltanúsítványt.  Ha meg szeretné nevezi a tanúsítványt, módosítsa a CN-érték. Ne módosítsa a TextExtension ebben a példában futtatásakor. Az ügyféltanúsítvány, azt automatikusan települ a "Tanúsítványok – aktuális felhasználó\személyes\tanúsítványok" a számítógépre.
 

@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f1700e124d1f572d0bf0ca76ea7c465f1ecf96c1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 35367a9ebc9ff09f40defd444f6ceb8ff54efe07
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657416"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430284"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
 Nincs struktúráját, amely az Azure Automation runbookok és a egy hibrid Runbook-feldolgozó futó runbookok nincs különbség. Az egyes használt Runbookok valószínűleg jelentősen eltérnek. Ez a különbség az oka, hogy általában egy hibrid Runbook-feldolgozó célzó runbookok magát a helyi számítógépet vagy a helyi környezetben, ahol központilag telepítették az erőforrásokon-erőforrások kezeléséhez. Az Azure Automation Runbookjai általában kezelheti az erőforrásokat az Azure-felhőben.
 
-Runbookok futtatása hibrid Runbook-feldolgozón hoz létre, amikor szerkesztése, és tesztelje a runbookokat a gépen, amelyen a hibrid feldolgozó. A gazdagép rendelkezik az összes PowerShell-modulok és hálózati hozzáférés kezelése és a helyi erőforrások eléréséhez szükséges. Miután a hibrid feldolgozói gépen tesztelnek egy runbookot, majd feltöltheti az Azure Automation környezet, amelyben ez a hibrid feldolgozói futtatható. Fontos tudni, hogy a feladatok Windows és a egy speciális felhasználói fiók a helyi rendszerfiókból futtató **nxautomation** Linux rendszeren. Ez a viselkedés megjelentetni finom eltérések a hibrid Runbook-feldolgozók runbookok létrehozásakor. Ezeket a módosításokat át kell tekinteni, amikor a runbookok írása.
+Runbookok futtatása hibrid Runbook-feldolgozón hoz létre, amikor szerkesztése, és tesztelje a runbookokat a gépen, amelyen a hibrid feldolgozó. A gazdagép rendelkezik az összes PowerShell-modulok és hálózati hozzáférés kezelése és a helyi erőforrások eléréséhez szükséges. Miután a hibrid feldolgozói gépen tesztelnek egy runbookot, majd feltöltheti az Azure Automation környezet, amelyben ez a hibrid feldolgozói futtatható. Fontos tudni, hogy a feladatok Windows és a egy speciális felhasználói fiók a helyi rendszerfiókból futtató `nxautomation` Linux rendszeren. Ez a viselkedés megjelentetni finom eltérések a hibrid Runbook-feldolgozók runbookok létrehozásakor. Ezeket a módosításokat át kell tekinteni, amikor a runbookok írása.
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Runbook indítása a hibrid Runbook-feldolgozón
 
@@ -44,7 +44,7 @@ Runbookok futtatása hibrid Runbook-feldolgozón nem használhatja ugyanazt a m�
 
 ### <a name="runbook-authentication"></a>Runbook-hitelesítés
 
-Alapértelmezés szerint a runbookok futnak a helyi rendszerfiók környezetében a Windows és a egy speciális felhasználói fiók **nxautomation** Linux rendszeren a helyi számítógépen, így azok hitelesítő adatokat kell megadnia a saját erőforrásokhoz férnek hozzá .
+Alapértelmezés szerint a runbookok futnak a helyi rendszerfiók környezetében a Windows és a egy speciális felhasználói fiók `nxautomation` Linux rendszeren a helyi számítógépen, így azok hitelesítő adatokat kell megadnia a saját erőforrásokhoz férnek hozzá.
 
 Használható [Credential](automation-credentials.md) és [tanúsítvány](automation-certificates.md) eszközök a runbookban a parancsmagok, amelyek lehetővé teszik, hogy adja meg hitelesítő adatait, így a különböző erőforrások elvégezheti a hitelesítést. Az alábbi példa bemutatja, hogy újraindítja a számítógépet a runbook egy részét. Ez lekéri a hitelesítő adatokat a hitelesítőadat-eszköz és a egy változóeszköz a számítógép nevét, és használja majd ezeket az értékeket a Restart-Computer parancsmag.
 
@@ -59,7 +59,7 @@ Is [InlineScript](automation-powershell-workflow.md#inlinescript), amely lehető
 
 ### <a name="runas-account"></a>Futtató fiók
 
-Alapértelmezés szerint a hibrid Runbook-feldolgozó használja a helyi System for Windows és a egy speciális felhasználói fiók **nxautomation** runbookok végrehajtása linuxhoz. Adja meg a helyi erőforrások saját hitelesítési runbookok, helyett megadhat egy **RunAs** fiókra a hibrid feldolgozói csoportban. Adja meg, hogy egy [hitelesítőeszközt](automation-credentials.md) , amely rendelkezik a helyi erőforrásokhoz való hozzáférést, és minden runbook futni ezeket a hitelesítő adatokat, a csoport egy hibrid Runbook-feldolgozón futtatásakor.
+Alapértelmezés szerint a hibrid Runbook-feldolgozó használja a helyi System for Windows és a egy speciális felhasználói fiók `nxautomation` runbookok végrehajtása linuxhoz. Adja meg a helyi erőforrások saját hitelesítési runbookok, helyett megadhat egy **RunAs** fiókra a hibrid feldolgozói csoportban. Adja meg, hogy egy [hitelesítőeszközt](automation-credentials.md) , amely rendelkezik a helyi erőforrásokhoz való hozzáférést, és minden runbook futni ezeket a hitelesítő adatokat, a csoport egy hibrid Runbook-feldolgozón futtatásakor.
 
 A felhasználói nevet a hitelesítésnek kell lennie a következő formátumok egyikében:
 
@@ -247,7 +247,7 @@ $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprin
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-A runbook aláírt azt kell importálja az Automation-fiók, és közzéteheti az aláírásblokkot. Runbookok importálása kapcsolatban lásd: [runbook importálása egy fájlból az Azure Automationbe](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
+A runbook aláírt azt kell importálja az Automation-fiók, és közzéteheti az aláírásblokkot. Runbookok importálása kapcsolatban lásd: [runbook importálása egy fájlból az Azure Automationbe](manage-runbooks.md#import-a-runbook).
 
 ### <a name="linux-hybrid-runbook-worker"></a>A hibrid Runbook-feldolgozója Linuxra
 
@@ -257,7 +257,7 @@ A runbook aláírt azt kell importálja az Automation-fiók, és közzéteheti a
 
 Kulcstár és a hibrid Runbook-feldolgozó fiók használatára kell kulcspár létrehozásához `nxautomation`.
 
-Használat `sudo` , jelentkezzen be a `nxautomation` fiókot.
+Használat `sudo` jelentkezik be, hogy a `nxautomation` fiókot.
 
 ```bash
 sudo su – nxautomation
@@ -271,7 +271,7 @@ sudo gpg --generate-key
 
 GPG végigvezeti Önt a kulcspár létrehozásához szükséges lépéseket. Adjon meg egy nevet, egy e-mail címet, lejárati ideje, jelszót és elegendő vysokou várja meg, létrejön a kulcs a gépen kell.
 
-A GPG-könyvtár sudo lett létrehozva, mert a tulajdonos átállítása nxautomation szüksége. 
+A GPG-könyvtár sudo lett létrehozva, mert a tulajdonosát, hogy módosítani kell `nxautomation`. 
 
 A következő paranccsal módosíthatja a tulajdonost.
 
@@ -289,7 +289,7 @@ gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
 
 #### <a name="verify-signature-validation-is-on"></a>Aláírás-ellenőrzése-e a
 
-Aláírás-ellenőrzése a számítógépen le van tiltva, ha szüksége bekapcsolásához. Futtassa a következő parancsot az aláírás-ellenőrzés engedélyezése. Lecserélve `<LogAnalyticsworkspaceId>` a munkaterület azonosítóját.
+Aláírás-ellenőrzése a számítógépen le van tiltva, ha szüksége bekapcsolásához. Futtassa a következő parancsot az aláírás-ellenőrzés engedélyezése. Lecserélve `<LogAnalyticsworkspaceId>` munkaterület ID azonosítójával.
 
 ```bash
 sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>
@@ -300,7 +300,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 Aláírás-ellenőrzése van konfigurálva, ha a következő parancsot használhatja egy runbook aláírásához:
 
 ```bash
-gpg –clear-sign <runbook name>
+gpg –-clear-sign <runbook name>
 ```
 
 Az aláírt runbook neve lesz `<runbook name>.asc`.

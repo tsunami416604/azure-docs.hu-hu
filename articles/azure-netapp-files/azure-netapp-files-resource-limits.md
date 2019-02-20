@@ -1,6 +1,6 @@
 ---
 title: Erőforráskorlátok NetApp Azure-fájlok |} A Microsoft Docs
-description: A NetApp fájlokat az Azure-erőforrások, többek között a kapacitás-készletek, kötetek és a delegált alhálózat korlátai korlátozásait ismerteti.
+description: A NetApp fájlokat az Azure-erőforrások, többek között a NetApp fiókok, kapacitás készletek, kötetek, pillanatképeket és a delegált alhálózatra vonatkozó korlátok korlátozásait ismerteti.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -11,33 +11,29 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: reference
-ms.date: 01/03/2019
+ms.topic: concepts
+ms.date: 02/14/2019
 ms.author: b-juche
-ms.openlocfilehash: f34afb1df2ae38353f29a80bfb6798c16856dbeb
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 196d85917e0a9900e141d58bff171beeb8540409
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54057014"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430013"
 ---
-# <a name="resource-limits-for-azure-netapp-files"></a>Az Azure Files-NetApp erőforráskorlátok
+# <a name="resource-limits-for-azure-netapp-files"></a>Az Azure NetApp Files erőforráskorlátai
+
 Erőforráskorlátok ismertetése a NetApp Azure-fájlok segítségével kezelheti a köteteket.
 
-## <a name="capacity_pools"></a>Kapacitáskészletek
-
+- Minden Azure-előfizetés legfeljebb 10 NetApp fiókok.
+- Egyes NetApp fiókok legfeljebb 25 kapacitás-készletek.
+- Minden kapacitás címkészlet NetApp csak egy fiók is tartozik.  
 - Egyetlen kapacitás készlet minimális mérete 4 Tib-ra, és a maximális mérete 500 Tib-ra. 
-- Minden kapacitás címkészlet NetApp csak egy fiók is tartozik. Azonban akkor is több kapacitás készletek NetApp-fiókon belül.  
-
-## <a name="volumes"></a>Kötetek
-
+- Minden kapacitás készlet legfeljebb 500 kötetek.
 - Egy kötetet minimális mérete 100 GB, és a maximális méretet 92 Tib-ra.
-- Legfeljebb 100 kötetek Azure-előfizetésenként és régiónként rendelkezhet.  
+- Minden kötet legfeljebb 255 pillanatképek.
+- Minden Azure virtuális hálózat (Vnet) csak egy alhálózatot az Azure Files-NetApp delegált rendelkezhet.
 
-## <a name="delegated_subnet"></a>Delegált alhálózat 
-
-Az egyes Azure virtuális hálózatok (Vnet) csak egy alhálózatot az Azure Files-NetApp delegálható.
-
-## <a name="next-steps"></a>További lépések
+**Következő lépések**
 
 [Megismerheti a NetApp Azure-fájlok hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)

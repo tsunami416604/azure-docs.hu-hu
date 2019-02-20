@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 53f81a06a0a10d4526816b5117eb12f01d75e25a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 301de81fc9b8bdb8b295700de33065d988379334
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819161"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428794"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>A HDInsight Apache Storm írhat az Apache Hadoop HDFS-be
 
@@ -50,15 +50,18 @@ Az alábbi környezeti változók állíthatók be a Java és a JDK fejlesztői 
 A HdfsBolt megtudhatja, hogyan írni a HDFS biztosító fájl sémát használó. A HDInsight használja az alábbi rendszerek egyikét:
 
 * `wasb://`: Az Azure Storage-fiókot használni.
-* `adl://`: Az Azure Data Lake Storage használni.
+* `abfs://`: Az Azure Data Lake Storage Gen2 együtt használni.
+* `adl://`: Az Azure Data Lake Storage Gen1 használni.
 
 Az alábbi táblázatban a különböző helyzetekhez a fájl rendszer használatának példái:
 
 | Séma | Megjegyzések |
 | ----- | ----- |
 | `wasb:///` | Az alapértelmezett tárfiókot az Azure Storage-fiókban található blob-tárolóra |
-| `adl:///` | Az alapértelmezett tárfiókot az Azure Data Lake Storage-ban található. Fürt létrehozása során megadhatja a címtár Data Lake Storage, amely a fürt HDFS gyökere. Ha például a `/clusters/myclustername/` könyvtár. |
+| `abfs:///` | Az alapértelmezett tárfiók egy Azure Data Lake Storage Gen2-fiókban lévő könyvtár |
+| `adl:///` | Az alapértelmezett tárfiókot az Azure Data Lake Storage Gen1 könyvtár. Fürt létrehozása során megadhatja a címtár Data Lake Storage, amely a fürt HDFS gyökere. Ha például a `/clusters/myclustername/` könyvtár. |
 | `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Egy nem alapértelmezett (további) az Azure storage-fiók a fürthöz társított. |
+| `abfs://CONTAINER@ACCOUNT.dfs.core.windows.net/` | Egy nem alapértelmezett (további) az Azure storage-fiók a fürthöz társított. |
 | `adl://STORENAME/` | A fürt által használt Data Lake Storage gyökérmappájában. Ez a séma lehetővé teszi, hogy a könyvtár, amely tartalmazza a fürt fájlrendszer kívül található adatokhoz való hozzáférést. |
 
 További információkért lásd: a [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) referencia az Apache.org webhelyen.
@@ -180,7 +183,7 @@ Ez a szkript használatával a fürt további információkért lásd: a [testre
         hdfs.url: wasb:///
 
     > [!IMPORTANT]  
-    > Ez a példa feltételezi, hogy a fürt egy Azure Storage-fiókot használja az alapértelmezett tárolóként. Ha a fürt az Azure Data Lake Storage használ, használja a `hdfs.url: adl:///` helyette.
+    > Ez a példa feltételezi, hogy a fürt egy Azure Storage-fiókot használja az alapértelmezett tárolóként. Ha a fürt az Azure Data Lake Storage Gen2 használ, használja a `hdfs.url: abfs:///` helyette. Ha a fürt az Azure Data Lake Storage Gen1 használ, használja a `hdfs.url: adl:///` helyette.
     
     Mentse a fájlt, használja a __Ctrl + X__, majd __Y__, és végül __Enter__. Ez a fájl értékeinek beállítása a Data Lake Storage URL-címe és a könyvtár nevét, amely az adatok írása.
 

@@ -1,5 +1,5 @@
 ---
-title: Regisztráció és bejelentkezés a LinkedIn-fiókkal az Azure Active Directory B2C beállítása |} A Microsoft Docs
+title: Regisztráció és bejelentkezés a LinkedIn-fiók – Azure Active Directory B2C-beállítása |} A Microsoft Docs
 description: Adja meg a regisztráció és bejelentkezés az alkalmazásokban az Azure Active Directory B2C használatával LinkedIn-fiókkal rendelkező ügyfelek számára.
 services: active-directory-b2c
 author: davidmu1
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8388baf88f5bb723e5b0e47bc93b100d5ce8e3e2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6c340d6b410a289f8beca156f85472cb729b786a
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159798"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427819"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a LinkedIn-fiókkal az Azure Active Directory B2C beállítása
 
 ## <a name="create-a-linkedin-application"></a>A LinkedIn-alkalmazás létrehozása
 
-A LinkedIn-fiók használata Identitásszolgáltatóként az Azure Active Directory (Azure AD) B2C-ben, hozzon létre egy alkalmazást a bérlőben, hogy az azt jelölő kell. Ha a LinkedIn-fiók még nem rendelkezik, beszerezheti a [ https://www.linkedin.com/ ](https://www.linkedin.com/).
+Használatához a LinkedIn-fiók, mint egy [identitásszolgáltató](active-directory-b2c-reference-oauth-code.md) Azure Active Directory (Azure AD) B2C-vel, az alkalmazás létrehozása a bérlőben, hogy az azt jelölő szüksége. Ha a LinkedIn-fiók még nem rendelkezik, beszerezheti a [ https://www.linkedin.com/ ](https://www.linkedin.com/).
 
 1. Jelentkezzen be a [LinkedIn fejlesztők webhely](https://www.developer.linkedin.com/) LinkedIn-fiókja hitelesítő adataival.
 2. Válassza ki **saját alkalmazások**, és kattintson a **alkalmazás létrehozása**.

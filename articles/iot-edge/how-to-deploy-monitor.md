@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/25/2018
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 20f50e286e30e32f066fe3d214bfc4c1a155776e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 69ba0a882c0e52e7c0d063b8f77e7a0fe22526a1
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083920"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428777"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Üzembe helyezés és monitorozás az Azure portal használatával nagy mennyiségű IoT Edge-modulok
 
@@ -53,19 +53,20 @@ Vannak egy központi telepítést hozhat létre öt lépést. A következő szak
 ### <a name="step-1-name-and-label"></a>1. lépés: Név és címke
 
 1. Adjon meg egy egyedi nevet, amely legfeljebb 128 kisbetűk használata a központi telepítés. Kerülje a tárolóhelyek és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`.
-1. Adja hozzá a címkéket nyomon követéséhez az üzemelő példányok. Címkék **neve**, **érték** párok, melyek az üzemelő példány leírására. Ha például `HostPlatform, Linux` vagy `Version, 3.0.1`.
+1. Címkék, kulcs-érték párok nyomon követéséhez az üzemelő példányok is hozzáadhat. Például **HostPlatform** és **Linux**, vagy **verzió** és **3.0.1-es**.
 1. Válassza ki **tovább** áthelyezése két lépést. 
 
-### <a name="step-2-add-modules-optional"></a>2. lépés: (Nem kötelező) modulok hozzáadása
+### <a name="step-2-add-modules-optional"></a>2. lépés: (Nem kötelező) modulok hozzáadása
 
-Amelyek egy központi telepítést adhat hozzá két típusa van. Az első az minden olyan Azure-szolgáltatás, például a Storage-fiók vagy a Stream Analytics-alapú modul. A második pedig a saját kód engedményt alapú modul. Több modul mindkét központi telepítés is hozzáadhat. 
+Amelyek egy központi telepítést adhat hozzá két típusa van. Az első az alapján az Azure-szolgáltatások, például a Storage-fiók vagy a Stream Analytics modul. A második pedig a saját kód használata modul. Több modul mindkét központi telepítés is hozzáadhat. 
 
 Modulok nélküli egy központi telepítést hoz létre, ha az eszközök aktuális modulokat eltávolítása. 
 
 >[!NOTE]
->Az Azure Machine Learning és az Azure Functions automatizált Azure szolgáltatás üzembe helyezésének még nem támogatott. A modul egyéni központi telepítés segítségével manuálisan adja hozzá ezeket a szolgáltatásokat a központi telepítés. 
+>Az Azure Functions automatizált Azure szolgáltatás üzembe helyezésének még nem támogatja. A modul egyéni központi telepítés segítségével manuálisan adja hozzá a szolgáltatás a központi telepítés. 
 
 Az Azure Stream Analytics modul hozzáadásához kövesse az alábbi lépéseket:
+
 1. Az a **üzembe helyezési modulok** szakaszban kattintson az oldal **Hozzáadás**.
 1. Válassza ki **Azure Stream Analytics modul**.
 1. Válassza ki a **előfizetés** a legördülő menüből.
@@ -73,7 +74,8 @@ Az Azure Stream Analytics modul hozzáadásához kövesse az alábbi lépéseket
 1. Válassza ki **mentése** a modul hozzáadása a központi telepítést. 
 
 Egyéni kód hozzáadása modulként, vagy manuálisan adja hozzá az Azure-szolgáltatások modul, kövesse az alábbi lépéseket:
-1. Az a **beállításjegyzék-beállítások** szakasz az oldal, adja meg a neveket és a hitelesítő adatok bármelyik privát tárolójegyzékek, amelyek tartalmazzák a modul képek az üzembe helyezés. Az Edge Agent 500-as hiba tartozik, ha nem talál egy docker-rendszerkép a contrainer regisztrációs adatbázis hitelesítő adatait.
+
+1. Az a **tároló-beállításjegyzékek beállításai** szakasz az oldal, adja meg a neveket és a hitelesítő adatok bármelyik privát tárolójegyzékek, amelyek tartalmazzák a modul képek az üzembe helyezés. Az Edge Agent küld jelentést 500-as hiba, ha egy Docker-rendszerkép a container registry hitelesítő adat nem található.
 1. Az a **üzembe helyezési modulok** szakaszban kattintson az oldal **Hozzáadás**.
 1. Válassza ki **IoT Edge-modul**.
 1. A modul adjon egy **neve**.
@@ -87,7 +89,7 @@ Egyéni kód hozzáadása modulként, vagy manuálisan adja hozzá az Azure-szol
 1. A legördülő menü segítségével válassza ki a **kívánt állapot** modul. Az alábbi lehetőségek közül választhat:
    * **Futó** – Ez az alapértelmezett beállítás. A modul futtatása után azonnal parancsfájlműveletekkel elindul.
    * **Leállítva** -után üzembe helyezéséhez, a modul tétlen mindaddig, amíg Ön vagy egy másik modul első lépésként alapján kell marad.
-1. Válassza ki **engedélyezése** Ha bármely címkék vagy a kívánt tulajdonságok hozzáadása az ikermodul kívánt. 
+1. Válassza ki **Set ikermodul kívánt tulajdonságai** , ha a címkék vagy egyéb tulajdonságok hozzáadása az ikermodul kívánt.
 1. Adja meg **környezeti változók** a modulhoz. A környezeti változók a konfigurációs folyamat megkönnyítése modul supplement információt tartalmaznak.
 1. Válassza ki **mentése** a modul hozzáadása a központi telepítést. 
 
@@ -95,12 +97,26 @@ Ha már konfigurált összes modult, válassza ki a **tovább** szeretne váltan
 
 ### <a name="step-3-specify-routes-optional"></a>3. lépés: Adja meg az útvonalakat (nem kötelező)
 
-Útvonalak megadása, hogyan modulok kommunikálnak egymással egy telepítésben található. A varázsló lehetővé teszi, hogy alapértelmezés szerint egy útvonal neve **útvonal** és meghatározott, **FROM /\* be felső $**, ami azt jelenti, kimenetét kapcsolt modulok üzeneteket az IoT hubnak küldött.  
+Útvonalak megadása, hogyan modulok kommunikálnak egymással egy telepítésben található. A varázsló lehetővé teszi, hogy alapértelmezés szerint egy útvonal neve **útvonal** és meghatározott, **FROM /* be felső $**, ami azt jelenti, kimenetét kapcsolt modulok üzeneteket az IoT hubnak küldött.  
 
 Hozzáadása vagy frissítése az útvonalak származó adatokkal [útvonalak deklarálja](module-composition.md#declare-routes), majd **tovább** továbbra is a felülvizsgálati szakaszban.
 
+### <a name="step-4-specify-metrics-optional"></a>4. lépés: Adja meg a metrikák (nem kötelező)
 
-### <a name="step-4-target-devices"></a>4. lépés: A Céleszközök
+Metrikák adja meg az eszköz lehet, hogy jelentéseket küldhetnek vissza alkalmazása konfigurációjának tartalma eredményeként állapotait összesítő számát.
+
+1. Adjon meg egy nevet **metrika neve**.
+
+1. Adjon meg egy lekérdezést a **metrika feltételek**. A lekérdezés alapul IoT Edge hubot ikermodul [jelentett tulajdonságokként](module-edgeagent-edgehub.md#edgehub-reported-properties). A metrika a lekérdezés által visszaadott sorok számát jelöli.
+
+Példa:
+
+```sql
+SELECT deviceId FROM devices
+  WHERE properties.reported.lastDesiredStatus.code = 200
+```
+
+### <a name="step-5-target-devices"></a>5. lépés: Céleszközök
 
 Az eszközökről a tags tulajdonság használatával a kívánt eszközök, amelyek megkapják a központi telepítés céljaként. 
 
@@ -110,9 +126,32 @@ Több központi telepítést megcélozhatnak ugyanarra az eszközre, mivel egy p
 1. Adjon meg egy **feltétel cél** meghatározni, hogy mely eszközök érinteni fog a központi telepítés. A feltétel device twin címkék alapján vagy az ikereszköz jelentett tulajdonságait, és meg kell egyeznie a kifejezés formátuma. Ha például `tags.environment='test'` vagy `properties.reported.devicemodel='4000x'`. 
 1. Válassza ki **tovább** , továbbléphet az utolsó lépés.
 
-### <a name="step-5-review-template"></a>5. lépés: A sablon áttekintése
+### <a name="step-6-review-deployment"></a>6. lépés: Üzembe helyezés áttekintése
 
 Tekintse át a telepítési adatokat, majd válassza a **küldés**.
+
+## <a name="deploy-modules-from-azure-marketplace"></a>Azure Marketplace-ről modulok telepítése
+
+Az Azure Marketplace-en, tallózhat a vállalati alkalmazások és megoldások, hitelesített és optimalizált futtatásához az Azure-ban számos online alkalmazások és szolgáltatások piactérről köztük [IoT Edge-modulok](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Az Azure Marketplace-en is elérhető az Azure Portalon a **erőforrás létrehozása**.
+
+Azure Marketplace-en vagy az Azure Portalon lehet telepíteni az IoT Edge-modul:
+
+1. Keresse meg a modult, és a telepítési folyamat.
+
+   * Az Azure Portalon: Egy modul megkeresése és kiválasztása **létrehozás**.
+
+   * Az Azure Marketplace-en:
+
+     1. Egy modul megkeresése és kiválasztása **Letöltés most**.
+     1. Tudomásul veszi a szolgáltató használati feltételei és adatvédelmi szabályzat kiválasztásával **Folytatás**.
+
+1. Válassza ki az előfizetés és az IoT Hub, az eszköznek, amelyhez csatlakozik.
+
+1. Válasszon **üzembe helyezés**.
+
+1. Döntse el, hogy a modul hozzáadása egy új központi telepítést, vagy egy meglévő központi telepítése; klónja Ha a klónozás, válassza ki a listából a meglévő üzemelő példányt.
+
+1. Válassza ki **létrehozás** folytatja a központi telepítés ipari méretekben történő létrehozásának folyamatán. Fogja tudni adja meg azonos módon környezethez.
 
 ## <a name="monitor-a-deployment"></a>Egy központi telepítésének figyelése
 
@@ -130,15 +169,17 @@ A központi telepítés a részletek megtekintéséhez és az azt futtató eszk�
    * **Prioritás** – a prioritást az üzemelő példányhoz társítva.
    * **Rendszermérőszámokat** - **célzott** ikereszközök számát adja meg, amely a célcsoport-kezelési feltételnek megfelelő IoT hub és **alkalmazott** rendelkező eszközök számát adja meg a telepítési tartalom alkalmazza kellett az ikermodulokkal az IoT hubon. 
    * **Eszközmetrikák** – a központi telepítés sikeres vagy hibákat az IoT Edge-ügyfél futtatókörnyezet reporting Edge-eszközök számát.
+   * **Egyéni metrikák** – a központi telepítés minden mérőszámadatok, amelyet a központi telepítés megadott reporting Edge-eszközök számát.
    * **Létrehozás ideje** – a központi telepítés létrehozásakor időbélyege. Az időbélyegző ties megszüntetése, ha a két üzembe helyezés azonos prioritású szolgál. 
-2. Válassza ki a figyelni kívánt telepítést.  
-3. Vizsgálja meg az üzembe helyezés részleteiről. Lapok segítségével ellenőrizze az üzemelő példány részleteit.
+1. Válassza ki a figyelni kívánt telepítést.  
+1. Vizsgálja meg az üzembe helyezés részleteiről. Lapok segítségével ellenőrizze az üzemelő példány részleteit.
 
 ## <a name="modify-a-deployment"></a>Központi telepítés módosítása
 
 Amikor módosít egy központi telepítést, a módosítások azonnal replikálja az összes megcélzott eszközre. 
 
 A célfeltétel frissít, ha elő a következő frissítéseket:
+
 * Ha egy eszköz nem felelt meg a régi célfeltétel, de az új célfeltétel megfelel, és a központi telepítés rendszer a legmagasabb prioritású az eszközön, a központi telepítéshez az eszköz van alkalmazva. 
 * Ha már nem a központi telepítés aktuálisan futó eszköz megfelel-e a célfeltétel, eltávolítja a központi telepítés és veszi fel a következő legmagasabb prioritású üzembe helyezés. 
 * Ha már nem a központi telepítés aktuálisan futó eszköz megfelel-e a célként megadott feltétel, és nem felel meg a célfeltétel más központi telepítések, majd nincs változás történik az eszközön. Az eszköz addig a jelenlegi modulok fut, a jelenlegi állapotuk, de nem felügyelt már a központi telepítés részeként. Megfelel a célfeltétel, bármely más konfigurációért, miután eltávolítja a központi telepítés, és az új kiszolgálón vesz igénybe. 
@@ -153,9 +194,10 @@ Központi telepítés módosításához használja az alábbi lépéseket:
 
 1. Válassza ki a telepítést, amelyet módosítani szeretne. 
 1. Hajtsa végre a frissítéseket a következő mezőket: 
-   * Célfeltétel 
-   * Címkék 
-   * Prioritás 
+   * Célfeltétel
+   * Metrika -, módosíthatják vagy törölhetik metrikák meghatározta, vagy újakat vehet fel.
+   * Címkék
+   * Prioritás
 1. Kattintson a **Mentés** gombra.
 1. Kövesse a [központi telepítésének figyeléséről](#monitor-a-deployment) megkezdik a módosítások megtekintéséhez. 
 

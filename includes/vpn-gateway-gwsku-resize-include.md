@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c06e69dd9d1997500589659e936dc25ee01ed145
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 081352a23e6a0d8f9e2daa77eca1f8ac85172ff6
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "30196780"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418228"
 ---
-Az átjáró frissítése a hatékonyabb egy SKU átméretezése szeretné a jelenlegi termékváltozatok (VpnGw1 VpnGw2 és VPNGW3) is használhatja a `Resize-AzureRmVirtualNetworkGateway` PowerShell-parancsmagot. Az átjáró-Termékváltozat-méretét, ez a parancsmag segítségével is visszaminősítheti. Ha használja az alapszintű átjáró-Termékváltozat, [ehelyett kövesse ezeket az utasításokat](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize) átméretezése az átjárót.
+Az aktuális Termékváltozatai (VpnGw1, VpnGw2 és VPNGW3), szeretné méretezze át a Termékváltozat frissítése a nagyobb teljesítményű egy átjárót is használhat a `Resize-AzVirtualNetworkGateway` PowerShell-parancsmagot. Az átjáró SKU-méret, ez a parancsmag használatával is visszaminősítheti. Ha használja az alapszintű átjáró Termékváltozat, [inkább használja a következő utasításokat](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize) méretezze át az átjárót.
 
-A következő PowerShell-példa látható egy átjáró VpnGw2 az átméretezett Termékváltozat.
+A következő PowerShell-példa az átjárók Termékváltozatainak átméretezése, a VpnGw2 jeleníti meg.
 
 ```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
-Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku VpnGw2
+$gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
+Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku VpnGw2
 ```
 
-Az Azure portálon átjáró méretezze át a a **konfigurációs** lapon a virtuális hálózati átjáró és egy másik SKU kiválasztása a legördülő listából.
+Át is méretezheti egy átjárót, az Azure Portalon lépjen a **konfigurációs** lapon a virtuális hálózati átjáró és a egy másik Termékváltozatot kiválasztásával a legördülő listából.

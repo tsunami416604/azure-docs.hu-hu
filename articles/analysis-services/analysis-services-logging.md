@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4d5c7c592bae32586922531781803db6622e6515
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 9f9a6511d63e57c6cbfa5ee2453f8038bb259047
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310740"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428992"
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
 
@@ -158,7 +158,7 @@ A Log Analytics-munkaterületet a diagnosztikai adatok megtekintéséhez nyissa 
 
 ![Keresési beállítások jelentkezzen be az Azure Portalon](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-Bontsa ki a Lekérdezésszerkesztő **LogManagement** > **AzureDiagnostics**. AzureDiagnostics motor és a szolgáltatások eseményeinek tartalmazza. Figyelje meg, hogy a működés közbeni létrejön egy lekérdezés. A EventClass\_s mező tűnhet, hogy jól ismert, ha a helyszíni naplózás xevent típusú eseményekhez használt xEvent neveket tartalmaz. Kattintson a **EventClass\_s** vagy az esemény nevét és a Log Analytics egyik továbbra is hozhat létre, amely a lekérdezést. Mindenképpen mentse a lekérdezések későbbi használatra.
+Bontsa ki a Lekérdezésszerkesztő **LogManagement** > **AzureDiagnostics**. AzureDiagnostics motor és a szolgáltatások eseményeinek tartalmazza. Figyelje meg, hogy a működés közbeni létrejön egy lekérdezés. A EventClass\_s mező tűnhet, hogy jól ismert, ha a helyszíni naplózás xevent típusú eseményekhez használt xEvent neveket tartalmaz. Kattintson a **EventClass\_s** vagy egy, az a Eseménynapló nevét és a Log Analytics-munkaterület továbbra is hozhat létre, amely a lekérdezést. Mindenképpen mentse a lekérdezések későbbi használatra.
 
 ### <a name="example-query"></a>. Példalekérdezés
 Ez a lekérdezés számítja ki, és minden egyes lekérdezés vége/frissítés befejezi az eseményt a model adatbázis és a kiszolgáló Processzor adja vissza:

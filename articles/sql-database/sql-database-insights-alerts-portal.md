@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e53d77c4faea5b9461395a0098261866bdf6252f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156902"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430428"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Riasztások létrehozása az Azure SQL Database és a Data warehouse-bA az Azure portal használatával
 
@@ -106,7 +106,6 @@ Miután létrehozta a riasztást, is kiválaszthatja, és:
 ||||||               
 | SQL data warehouse | cpu_percent | Processzorhasználat (%) | Átlag | 10 perc |
 | SQL data warehouse | physical_data_read_percent | Adat IO kihasználtsága (%) | Átlag | 10 perc |
-| SQL data warehouse | tárterület | Adatbázis teljes mérete | Maximum | 10 perc |
 | SQL data warehouse | connection_successful | Sikeres kapcsolatok | Összes | 10 perc |
 | SQL data warehouse | connection_failed | Sikertelen kapcsolatok | Összes | 10 perc |
 | SQL data warehouse | blocked_by_firewall | Tűzfal által blokkolva | Összes | 10 perc |

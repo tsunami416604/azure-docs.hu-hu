@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cbe13c9167ebccdd55d54ddd99ba11c6d58b01e8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9c684e9d1bf6cec12024cedfb5360d10e400e139
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429933"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416004"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Az Azure Automationben szöveges runbookok szerkesztése
 
@@ -22,7 +22,7 @@ Az Azure Automationben a szöveges szerkesztő segítségével szerkesztése [Po
 
 A szöveges szerkesztő tartalmaz egy funkciót a parancsmagok, eszközök és gyermek runbookok kód beszúrása a runbookba. Ahelyett, hogy írja be a kódot, saját magának, elérhető erőforrások listájából válassza ki, és a megfelelő kódot szúr be a runbook rendelkezik.
 
-Az Azure Automationben minden runbook két verziója van, vázlat és egy közzétett. A runbook vázlatverzióját szerkesztése, és közzé kell tennie, is végrehajthatók. A közzétett verzió nem szerkeszthető. Lásd: [runbook közzététele](automation-creating-importing-runbook.md#publishing-a-runbook) további információt.
+Az Azure Automationben minden runbook két verziója van, vázlat és egy közzétett. A runbook vázlatverzióját szerkesztése, és közzé kell tennie, is végrehajthatók. A közzétett verzió nem szerkeszthető. További információkért lásd: [runbook közzététele](manage-runbooks.md#publish-a-runbook).
 
 Dolgozunk [grafikus Runbookok](automation-runbook-types.md#graphical-runbooks), lásd: [grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md).
 
@@ -33,7 +33,7 @@ A következő eljárással egy runbookot, szerkessze az a szöveges szerkesztő 
 1. Az Azure Portalon válassza ki az automation-fiók.
 2. A **FOLYAMATAUTOMATIZÁLÁS**válassza **Runbookok** forgatókönyvek listájának megnyitásához.
 3. Válassza ki a runbookot szeretne szerkessze, majd kattintson a **szerkesztése** gombra.
-4. Hajtsa végre a szükséges módosításokat.
+4. Szerkessze a runbookot.
 5. Kattintson a **mentése** amikor a módosítások befejeződtek.
 6. Kattintson a **közzététel** Ha azt szeretné, hogy közzé kell tenni a runbook legfrissebb vázlatverzióját.
 
@@ -59,12 +59,12 @@ A következő eljárással egy runbookot, szerkessze az a szöveges szerkesztő 
 1. A szöveges szerkesztő a vásznon vigye a kurzort, ahol a kódot, hogy a gyermekrunbook szeretné.
 2. Bontsa ki a **eszközök** csomópont a könyvtár vezérlőben.
 3. Bontsa ki a kívánt eszköz típusú csomópontot.
-4. Kattintson jobb gombbal a Beszúrás, és válassza ki az eszköz **adja hozzá a vászonhoz**. A [változó adategységek](automation-variables.md), válassza **hozzáadása "Változó beolvasása" vászonalapú** vagy **hozzáadása "Változó beállítása" vászonalapú** attól függően, hogy, vagy állítsa be a változót.
+4. Kattintson a jobb gombbal a Beszúrás, és válassza ki az eszköz **adja hozzá a vászonhoz**. A [változó adategységek](automation-variables.md), válassza **hozzáadása "Változó beolvasása" vászonalapú** vagy **hozzáadása "Változó beállítása" vászonalapú** attól függően, hogy, vagy állítsa be a változót.
 5. A kód az eszköz a rendszer beszúrta a runbookot.
 
 ## <a name="to-edit-an-azure-automation-runbook-using-windows-powershell"></a>Egy Windows PowerShell-lel az Azure Automation-runbook szerkesztése
 
-A Windows PowerShell-lel runbook szerkesztése a választott szerkesztővel, és mentse azt egy .ps1 kiterjesztésű fájlba. Használhatja a [Export-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Export-AzureRmAutomationRunbook) a runbook tartalmának beolvasásához, majd [Import-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/import-azurermautomationrunbook) parancsmaggal lecserélheti a meglévő runbook-vázlat a módosított egy.
+A Windows PowerShell-lel runbook szerkesztése a választott szerkesztővel, és mentse a egy `.ps1` fájlt. Használhatja a [Export-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Export-AzureRmAutomationRunbook) a runbook tartalmának beolvasásához, majd [Import-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/import-azurermautomationrunbook) parancsmaggal lecserélheti a meglévő runbook-vázlat a módosított egy.
 
 ### <a name="to-retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>A Windows PowerShell-lel Runbook tartalmának beolvasása
 
@@ -81,7 +81,7 @@ Export-AzureRmAutomationRunbook -Name $runbookName -AutomationAccountName $autom
 
 ### <a name="to-change-the-contents-of-a-runbook-using-windows-powershell"></a>A Windows PowerShell-lel Runbook tartalmának módosítása
 
-Az alábbi Példaparancsok szemléltetik egy runbook meglévő tartalma egy parancsfájl tartalmával. Vegye figyelembe, hogy ennek az eljárásnak minta [runbook importálása parancsfájlból a Windows PowerShell-lel](automation-creating-importing-runbook.md).
+Az alábbi Példaparancsok szemléltetik egy runbook meglévő tartalma egy parancsfájl tartalmával. Ez az, hogy az ugyanazon minta eljárás, mint a [runbook importálása parancsfájlból a Windows PowerShell-lel](manage-runbooks.md#import-a-runbook).
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"
@@ -95,7 +95,7 @@ Publish-AzureRmAutomationRunbook -Name $runbookName -AutomationAccountName $auto
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-* [Létrehozása vagy importálása az Azure Automation-runbook](automation-creating-importing-runbook.md)
+* [Az Azure Automation runbookjai kezelése](manage-runbooks.md)
 * [PowerShell-munkafolyamat megismerése](automation-powershell-workflow.md)
 * [Grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md)
 * [Tanúsítványok](automation-certificates.md)

@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan módosíthatja a tartományok delegálását é
 services: dns
 author: vhorne
 ms.service: dns
-ms.date: 1/22/2019
+ms.date: 2/19/2019
 ms.author: victorh
-ms.openlocfilehash: d1de1212280c6767862233f990c9fc5e0cf97473
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 85f7318ac584e324f58d2ad470dc896e79e416d5
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461026"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417888"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>DNS-zónák delegálása az Azure DNS-sel
 
@@ -27,7 +27,7 @@ A tartománynévrendszer tartományok hierarchiájából áll. A hierarchia els�
 
 **Tartományregisztráló** – A tartományregisztráló egy olyan cég, amely internetes tartományneveket biztosít. Ezek a cégek ellenőrzik, hogy a használni kívánt internetes tartomány elérhető-e, és ők engedélyezik azok megvásárlását. A tartománynév regisztrálása után Ön annak a jogos tulajdonosa. Ha már van internetes tartománya, az aktuális tartományregisztrálóval delegálhat az Azure DNS-be.
 
-További információt a tartománynevek tulajdonosairól, illetve a tartományok vásárlásáról az [Internet domain management in Azure AD](https://msdn.microsoft.com/library/azure/hh969248.aspx) (Internetes tartományok kezelése az Azure AD-ben) című cikkben talál.
+Az akkreditált tartomány regisztráló szervezetek kapcsolatos további információkért lásd: [ICANN-Accredited regisztráló szervezetek](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ### <a name="resolution-and-delegation"></a>Feloldás és delegálás
 

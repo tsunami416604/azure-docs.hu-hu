@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 921dfc12a7353725d3f9e05d7aa3245ec8ba6084
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 43094839c9da9b00c97d1dffd53f98a3acd119d5
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185995"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417142"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Az Azure Batch-készlet számítási csomópontok Virtuálisgép-méretének kiválasztása
 
@@ -44,14 +44,16 @@ A virtuális gép konfigurációja a Batch-készleteket támogatja a Virtuálisg
 | B sorozat | Összes |
 | DC sorozat | Összes |
 | Szélsőséges memóriahasználatra optimalizált | Összes |
-| Hb-series<sup>1</sup> | Összes |
-| Hibrid kapcsolat sorozat<sup>1</sup> | Összes |
+| Hb-series<sup>1,2</sup> | Összes |
+| Hibrid kapcsolat sorozat<sup>1,2</sup> | Összes |
 | Lsv2 sorozat | Összes |
-| NDv2 sorozat<sup>1</sup> | Összes |
-| NVv2 sorozat | Összes |
+| NDv2 sorozat<sup>1,2</sup> | Összes |
+| NVv2-series<sup>1</sup> | Összes |
 | SAP HANA | Összes |
 
-<sup>1</sup> használhatja a Batch-fiókok felhasználói előfizetési módban; a felhasználói előfizetés módban Batch-fiókkal kell rendelkeznie a magkvótáján állítsa be. Lásd: [konfigurálása a felhasználói előfizetés módhoz](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) további információt.
+
+<sup>1</sup> tervezett támogatása.  
+<sup>2</sup> használhatja a Batch-fiókok felhasználói előfizetési módban; a felhasználói előfizetés módban Batch-fiókkal kell rendelkeznie a magkvótáján állítsa be. Lásd: [konfigurálása a felhasználói előfizetés módhoz](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) további információt.
 
 A következő Virtuálisgép-méretek csak alacsony prioritású csomópontok támogatottak:
 

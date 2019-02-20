@@ -7,12 +7,12 @@ manager: jhubbard
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: af067cabf312ec3c2556b84dc4d739e41ec0aacc
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: aef55660d07c8923a82baf7f8b6320abf3ccdd1d
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535281"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430216"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata az Azure Database for MySQL-hez
 
@@ -24,6 +24,7 @@ Hozzon létre egy virtuális hálózati szabályt, hogy először lennie kell eg
 
 > [!NOTE]
 > Ez a funkció érhető el minden régióban az Azure, Azure Database for MySQL általános célú és memóriahasználatra optimalizált kiszolgálók telepítési helyét.
+> Virtuális hálózatok közötti társviszony-létesítés, esetén ha forgalmat áthaladnak a Szolgáltatásvégpontok közös virtuális hálózati átjáró és a társ áramlását kellene, hozzon létre egy ACL/VNet szabály engedélyezéséhez az Azure Virtual Machines az átjáró virtuális hálózatban az Azure Database for MySQL-kiszolgáló eléréséhez.
 
 <a name="anch-terminology-and-description-82f" />
 

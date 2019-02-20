@@ -1,5 +1,5 @@
 ---
-title: Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal Amazon beállítása |} A Microsoft Docs
+title: Regisztráció és bejelentkezés egy Amazon-fiók – Azure Active Directory B2C-beállítása |} A Microsoft Docs
 description: Adja meg a regisztráció és bejelentkezés az alkalmazásokban az Azure Active Directory B2C használatával Amazon-fiókkal rendelkező ügyfelek számára.
 services: active-directory-b2c
 author: davidmu1
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 207a33931d7be88355241ea8c282dc7c39c9971c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4f60db91a1fb667586287873245fd5face343713
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169960"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427734"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a az Azure Active Directory B2C fiókkal Amazon beállítása
 
 ## <a name="create-an-amazon-application"></a>Amazon-alkalmazás létrehozása
 
-Amazon fiók használatára az identitásszolgáltatójaként az Azure Active Directory (Azure AD) B2C-ben, hozzon létre egy alkalmazást a bérlőben, hogy az azt jelölő kell. Ha még nem rendelkezik egy Amazon-fiókkal beszerezheti a [ https://www.amazon.com/ ](https://www.amazon.com/).
+Mint az Amazon fiók használatára egy [identitásszolgáltató](active-directory-b2c-reference-oauth-code.md) Azure Active Directory (Azure AD) B2C-vel, az alkalmazás létrehozása a bérlőben, hogy az azt jelölő szüksége. Ha még nem rendelkezik egy Amazon-fiókkal beszerezheti a [ https://www.amazon.com/ ](https://www.amazon.com/).
 
 1. Jelentkezzen be a [Amazon fejlesztői központ](https://login.amazon.com/) Amazon-fiókja hitelesítő adataival.
 2. Ha még nem tette meg, kattintson a **regisztráció**, hajtsa végre a fejlesztői regisztrációs lépéseket, és fogadja el a szabályzatot.

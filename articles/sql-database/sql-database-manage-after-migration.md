@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 8c0c4ac6ce09ce92851b532b226dadfd8b9f7e18
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 148dff16d56755755f71e24e658e29c116ac5df1
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270436"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417635"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database-ben az egyetlen vagy készletezett adatbázisok kezelése
 
@@ -302,11 +302,11 @@ Az SQL Database egy intelligens technikákat, amelyek lehetővé teszik, hogy az
 
 - **Exportálás**: Exportálhatja az Azure SQL-adatbázis BACPAC-fájl, az Azure Portalról
 
-   ![adatbázis exportálása](./media/sql-database-export/database-export.png)
+   ![adatbázis exportálása](./media/sql-database-export/database-export1.png)
 
 - **Importálás**: Az adatbázisba, az Azure portal használatával egy BACPAC-fájlba is importálhat adatokat.
 
-   ![adatbázis importálása](./media/sql-database-import/import.png)
+   ![adatbázis importálása](./media/sql-database-import/import1.png)
 
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Az SQL Database és SQL Server közötti szinkronizálása
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: fdbae70718ad62f96dda85e2d9574c7ec2d5ef23
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: fd7355c342a075f7b0c2e1173717c0345f1f94ba
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561093"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428550"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Hozzon létre egy eseményindítót, amely futtatja a folyamatot az adott esemény
 
@@ -87,7 +87,7 @@ Ez a szakasz példákat eseményalapú eseményindító-beállítások.
 | **BLOB elérési útja kezdődik** | `/containername/blobs/foldername/` | Fogadja az eseményeket bármely lévő blobok esetében a `containername` tároló és `foldername` mappát. |
 | **BLOB elérési útja kezdődik** | `/containername/blobs/foldername/subfoldername/` | Egy almappát is hivatkozhat. |
 | **BLOB elérési útja kezdődik** | `/containername/blobs/foldername/file.txt` | Fogadja az eseményeket egy blobhoz nevű `file.txt` a a `foldername` mappát a `containername` tároló. |
-| **BLOB elérési útja végződik** | `file.txt` | Fogadja az eseményeket egy blobhoz nevű `file.txt` i bármilyen útvonalat. |
+| **BLOB elérési útja végződik** | `file.txt` | Fogadja az eseményeket egy blobhoz nevű `file.txt` tetszőleges elérési úton található. |
 | **BLOB elérési útja végződik** | `/containername/blobs/file.txt` | Fogadja az eseményeket egy blobhoz nevű `file.txt` tárolóban `containername`. |
 | **BLOB elérési útja végződik** | `foldername/file.txt` | Fogadja az eseményeket egy blobhoz nevű `file.txt` a `foldername` bármely tárolóban található mappa. |
 
