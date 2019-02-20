@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: bbd5058be502839f83db484136d1c97bac4a3d79
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 1b0e99998aaf29c366cce1926f930174686cfee6
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585951"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414898"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Üzenet útvonalak és az egyedi végpontok használata az eszköz a felhőbe irányuló üzenetek
 
@@ -34,7 +34,7 @@ Egy üzenet, amelyben az IoT Hub eset kézbesíti az üzenetet a végponthoz tá
 
 Az IoT hub tartalmaz egy alapértelmezett [beépített végpont](iot-hub-devguide-messages-read-builtin.md). Az előfizetés többi szolgáltatása a hub kapcsolásával üzeneteknek az egyedi végpontok is létrehozhat. Az IoT Hub jelenleg támogatja az Azure Storage-tárolók, az Event Hubs, Service Bus-üzenetsorok és Service Bus-üzenettémakörök egyéni Végpontokként.
 
-Útválasztási és egyéni végpontok használata esetén üzenetek jelenjenek meg csak a beépített végpont, ha minden lekérdezés nem egyeznek. A beépített végpont, valamint egy egyéni végpont esetleges szabályozási hiányosságok elhárítását kézbesíti az üzeneteket, adjon hozzá egy útvonalat, amely üzeneteket küld a **események** végpont.
+Útválasztási és egyéni végpontok használata esetén üzenetek jelenjenek meg csak a beépített végpont, ha minden lekérdezés nem egyeznek. A beépített végpont, valamint egy egyéni végpont esetleges szabályozási hiányosságok elhárítását kézbesíti az üzeneteket, adjon hozzá egy útvonalat, amely üzeneteket küld a beépített **események** végpont.
 
 > [!NOTE]
 > * Az IoT Hub csak akkor támogatja a Azure Storage-tárolók, blobok írja az adatokat.

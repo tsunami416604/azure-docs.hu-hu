@@ -1,131 +1,99 @@
 ---
-title: Azure-beli virtuális gépek az Azure Backup szolgáltatással visszaállításának előkészítése
-description: Ismerteti, hogyan készíti elő az Azure virtuális gépek biztonsági mentése az Azure Backup szolgáltatással a
+title: Azure virtuális gépek biztonsági mentése a Recovery Services-tárolót az Azure Backup szolgáltatással
+description: Ismerteti, hogyan lehet Azure virtuális gépek biztonsági mentése a Recovery Services-tárolót az Azure Backup szolgáltatással
 services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 65e4c6d66e410e8cd761128028b7a47e21db86eb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0f522897f3d3b3261045f1c14387af53ebf4ad9d
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354501"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429587"
 ---
-# <a name="prepare-to-back-up-azure-vms"></a>Felkészülés az Azure virtuális gépek biztonsági mentése
+# <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure virtuális gépek biztonsági mentése Recovery Services-tárolóban
 
-Ez a cikk bemutatja, hogyan készíti elő a biztonsági mentése az Azure virtuális gépet egy [Azure Backup](backup-introduction-to-azure-backup.md) Recovery Services-tároló. Felkészítése biztonsági mentésre tartalmazza:
+Ez a cikk bemutatja, hogyan készíthet biztonsági másolatot az Azure-beli Virtuálisgép- [Azure Backup](backup-overview.md) helyezheti üzembe, és amely lehetővé teszi a biztonsági mentés a Recovery Services-tároló. 
 
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * A Kezdés előtt tekintse át a támogatott forgatókönyvekkel és korlátozásokkal.
-> * Ellenőrizze az előfeltételeket, beleértve az Azure virtuális gépekre vonatkozó és a hálózati kapcsolatot.
+> * Ellenőrizze a támogatott forgatókönyveket és előfeltételek.
+> * Az Azure virtuális gépek előkészítése. Az Azure-beli Virtuálisgép-ügynök szükség esetén telepítse, és a virtuális gépek kimenő hozzáférésének ellenőrzése.
 > * Hozzon létre egy tárolót.
-> * Válassza ki, hogyan tárolás replikálja.
+> * A tároló tárolás beállítása
 > * Virtuális gépek felderítéséhez, a biztonsági mentési beállításokat és a szabályzat.
-> * A kiválasztott virtuális gépek biztonsági mentésének engedélyezése
+> * Az Azure virtuális gépek biztonsági mentésének engedélyezése
 
 
 > [!NOTE]
-   > Ez a cikk ismerteti az Azure virtuális gépek biztonsági mentése egy tároló beállításával, és válassza a virtuális gépek biztonsági mentése. Ez hasznos, ha azt szeretné, hogy több virtuális gépek biztonsági mentése. Is készíthető egy Azure virtuális gép közvetlenül a virtuális gép beállításait. [További információ](backup-azure-vms-first-look-arm.md)
+   > Ez a cikk ismerteti az Azure virtuális gépek biztonsági mentése egy tároló beállításával, és válassza a virtuális gépek biztonsági mentése. Ez hasznos, ha azt szeretné, hogy több virtuális gépek biztonsági mentése. Emellett [biztonsági mentése Azure virtuális gép](backup-azure-vms-first-look-arm.md) közvetlenül a a virtuális gép beállításait.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-1. [Áttekintés](backup-azure-vms-introduction.md) az Azure Backup szolgáltatás az Azure virtuális gépek.
-2. Tekintse át a támogatási részletek és az alábbi korlátozások.
+Az Azure Backup biztonsági másolatot készít az Azure virtuális gépek a gépen futó Azure-beli Virtuálisgép-ügynök bővítmény telepítésével.
 
-   **Támogatási/korlátozás** | **Részletek**
-   --- | ---
-   **Windows OS** | A Windows Server 2008 R2 64 bites vagy újabb verziója.<br/><br/> Windows-ügyfél 7 64-bit-es vagy újabb verziója.
-   **Linux OS** | Készíthet biztonsági mentést 64-bit-es Linux-disztribúciók [Azure által támogatott](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), a CoreOS Linux kivételével.<br/><br/> Tekintse át a Linux operációs rendszerek, amelyek [támogatja a fájl visszaállítása](backup-azure-restore-files-from-vm.md#for-linux-os).<br/><br/> Más Linux-disztribúciók működnek, mindaddig, amíg a Virtuálisgép-ügynök nem érhető el a virtuális gépen, és támogatja a pythont. Ezek a disztribúciók azonban nem támogatottak.
-   **Régió** | Biztonsági másolatot készíthet az Azure virtuális gépek összes [támogatott régiók](https://azure.microsoft.com/regions/#services). A régió nem támogatott, ha nem tudja választani a tároló létrehozásakor.<br/><br/> Biztonsági és visszaállítása az Azure-régióban. Csak belül egy adott régióban.
-   **Adatkorlát lemez** | Több mint 16 adatlemezekkel rendelkező virtuális gépek nem készíthető.
-   **Megosztott tároló** | Nem ajánlott virtuális gépek biztonsági mentésének CSV vagy a kibővített fájlkiszolgáló használatával. Fürt megosztott kötetei szolgáltatás író eséllyel lesz sikertelen.
-   **Linux-titkosítás** | A Linux egyesített kulcs beállítása (LUKS) titkosított Linux rendszerű virtuális gépek biztonsági mentésének nem támogatott.
-   **Virtuális gép konzisztencia** | Az Azure Backup nem támogatja a több virtuális gépre kiterjedő konzisztencia.
-   **Hálózat** | Biztonsági másolatba mentett adatok nem tartalmazza a virtuális Géphez csatolt csatlakoztatott hálózati meghajtókat.<br/><br/>
-   **Snapshots** | Pillanatképek készítése write accelerator-kompatibilis lemezen nem támogatott. Az Azure Backup egy alkalmazáskonzisztens pillanatképet az összes Virtuálisgép-lemezek felvételt blokkol.
-   **PowerShell** | Számos elérhető műveleteket, csak a PowerShell-lel:<br/><br/> – Belső és a külső terheléselosztók által, vagy több fenntartott IP-címek vagy adapter virtuális gépek visszaállítása kezeli. [További információ](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)<br/><br/> – Egy több tartományvezérlő konfigurációja a tartományvezérlő virtuális gép visszaállítása. [További információk](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
-   **Rendszer pontos ideje** | Az Azure Backup nem támogatja az Azure virtuális gép biztonsági mentéseinek a nyári időszámítás – mentés módosítása a óra automatikus illesztését. Biztonsági mentési szabályzatok manuálisan szükség szerint módosítsa.
-   **Tárfiókok** | Ha egy korlátozott hálózati tárfiókot használ, győződjön meg róla, hogy engedélyezze **engedélyezése megbízható Microsoft-szolgáltatások a tárfiók** úgy, hogy az Azure Backup szolgáltatás hozzáfér a fiókot. Az elemszintű helyreállítás nem támogatott, korlátozott hálózati tárfiókok esetében.<br/><br/> A storage-fiókban, ellenőrizze, hogy **tűzfalak és virtuális hálózatok** beállítások engedélyezze a hozzáférést **minden hálózatból elérhető**.
+1. [Felülvizsgálat](backup-architecture.md#architecture-direct-backup-of-azure-vms) Azure virtuális gép biztonsági mentési architektúra.
+[Ismerje meg](backup-azure-vms-introduction.md) Azure virtuális gépek biztonsági mentését, és a biztonsági mentési bővítményt.
+2. [Tekintse át a támogatási mátrix](backup-support-matrix-iaas.md) Azure VM backup esetében.
+3. Az Azure virtuális gépek előkészítése. Virtuálisgép-ügynök telepítése, ha nincs telepítve, és a készíteni kívánt virtuális gépek kimenő hozzáférésének ellenőrzése.
 
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prepare-azure-vms"></a>Az Azure virtuális gépek előkészítése
 
-- A tároló az Azure virtuális gépek biztonsági mentése szeretné ugyanabban a régióban kell létrehoznia.
-- Ellenőrizze az Azure-beli Virtuálisgép-régiók, megkezdése előtt.
-    - Ha több régióban rendelkezik virtuális gépeket, minden régióban hozzon létre egy tárolót.
-    - Nem kell megadnia a storage-fiókok a biztonsági mentési adatok tárolására. A tároló és az Azure Backup szolgáltatás, amely automatikusan kezeli.
-- Győződjön meg arról, hogy a Virtuálisgép-ügynök telepítve van-e az Azure virtuális gépekhez, amelyet szeretne készíteni.
+Szükség esetén Virtuálisgép-ügynök telepítése, és a virtuális gépek kimenő hozzáférésének ellenőrzése.
 
-### <a name="install-the-vm-agent"></a>Virtuálisgép-ügynök telepítése
-
-Ahhoz, hogy a biztonsági mentés, Azure Backup telepítése (a virtuális gép pillanatképét vagy pillanatkép Linux virtuális gép) egy biztonsági mentési bővítményt a Virtuálisgép-ügynök, amely az Azure virtuális gépen futtatja.
-    -  Az Azure Virtuálisgép-ügynök bármely Windows virtuális gépen az Azure Marketplace-lemezképből üzembe helyezett alapértelmezés szerint telepítve van. A portal, PowerShell, CLI vagy az Azure Resource Manager-sablonok az Azure Marketplace-rendszerképpel történő telepítésekor az Azure Virtuálisgép-ügynök is telepítve van.
-    - Ha a helyszíni virtuális Gépet telepített át, az ügynök nincs telepítve, és a virtuális gép biztonsági mentés engedélyezése előtt telepíteni kell.
-
+### <a name="install-the-vm-agent"></a>Virtuálisgép-ügynök telepítése 
 Szükség esetén telepítse az ügynököt a következőképpen.
 
 **VM** | **Részletek**
 --- | ---
-**Windows rendszerű virtuális gépek** | [Töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) rendszergazdai jogosultságokkal rendelkezik a számítógépen az ügynök.<br/><br/> A telepítés ellenőrzése a *C:\WindowsAzure\Packages* a virtuális gépen, kattintson a jobb gombbal a WaAppAgent.exe > **tulajdonságok**, > **részletei** fülre. **Termékverzió** kell 2.6.1198.718 vagy újabb verziója.
-**Linux rendszerű virtuális gépek** | A terjesztési csomag adattárból az RPM- vagy DEB-csomag telepítését a telepítése és frissítése az Azure Linux-ügynök előnyben részesített módszer. Az összes a [terjesztési szolgáltatók által támogatott](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálhatja az Azure-beli Linuxos ügynök csomag adattárak, valamint a lemezképek. Az ügynök nem érhető el a [GitHub](https://github.com/Azure/WALinuxAgent), de nem ajánlott, hogy ott telepítése.
-Ha rendelkezik az Azure virtuális gép biztonsági mentésével kapcsolatos problémák, a következő táblázat segítségével ellenőrizze, hogy az Azure-beli Virtuálisgép-ügynök megfelelően telepítve van a virtuális gépen. A táblázat a Virtuálisgép-ügynök további információt a Windows és Linux rendszerű virtuális gépekhez.
+**Windows rendszerű virtuális gépek** | [Töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlt. Telepítse a rendszergazdai engedélyekkel a gépen.<br/><br/> A telepítés ellenőrzése a *C:\WindowsAzure\Packages* a virtuális gépen, kattintson a jobb gombbal a WaAppAgent.exe > **tulajdonságok**, > **részletei** fülre. **Termékverzió** kell 2.6.1198.718 vagy újabb verziója.<br/><br/> Amikor az ügynököt frissít, ellenőrizze, hogy nincs biztonsági mentési műveletek futnak, és [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
+**Linux rendszerű virtuális gépek** | A terjesztési csomag adattárból az RPM- vagy DEB-csomag telepítését a telepítése és frissítése az Azure Linux-ügynök előnyben részesített módszer. Az összes a [terjesztési szolgáltatók által támogatott](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálhatja az Azure-beli Linuxos ügynök csomag adattárak, valamint a lemezképek. Az ügynök nem érhető el a [GitHub](https://github.com/Azure/WALinuxAgent), de nem ajánlott, hogy ott telepítése.<br/><br/> Amikor az ügynököt frissít, ellenőrizze, nincs biztonsági mentési művelet van folyamatban, és a bináris fájlok frissítése. 
+
 
 ### <a name="establish-network-connectivity"></a>Hálózati kapcsolatok létrehozása
 
 A biztonsági mentési bővítményt a virtuális gépen az Azure nyilvános IP-címek kimenő hozzáféréssel kell rendelkeznie.
 
-> [!NOTE]
-> Nincs explicit kimenő hálózati hozzáférés nem Azure-beli virtuális gép Azure Backup szolgáltatással folytatott kommunikációhoz szükséges. Azonban egyes régebbi virtuális gépek között problémák és a hiba miatt sikertelen **ExtensionSnapshotFailedNoNetwork**, a leküzdeni ezt a hibát, válasszon egyet az alábbiak közül, hogy a biztonsági mentési bővítményt való kommunikációhoz, az Azure-bA nyilvános IP-címek világos és egyértelmű utat nyújt a biztonsági mentések forgalmától.
+- Nincs explicit kimenő hálózati hozzáférés nem Azure-beli virtuális gép Azure Backup szolgáltatással folytatott kommunikációhoz szükséges.
+- Azonban egyes régebbi virtuális gépek között problémák és a hiba miatt sikertelen **ExtensionSnapshotFailedNoNetwork** csatlakozásra tett kísérlet közben. Ebben az esetben használja az alábbi lehetőségek közül, hogy a biztonsági mentési bővítményt kommunikálhassanak az Azure nyilvános IP-címeket, a biztonsági mentések forgalmától.
 
-- **Az NSG-szabályok**: Lehetővé teszi a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653). Hozzáadhat egy szabályt, amely engedélyezi a hozzáférést az Azure Backup szolgáltatás használata egy [szolgáltatáscímke](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure), külön-külön lehetővé teszi minden címtartományt, és idővel kezelésükre helyett. Szolgáltatáscímke további információért lásd ezt [cikk](../virtual-network/security-overview.md#service-tags).
-- **Proxy**: A forgalom útválasztási HTTP-proxy kiszolgáló telepítése.
-- **Az Azure tűzfal**: A virtuális gép, egy teljesen minősített tartománynév-címke az Azure Backup szolgáltatás a forgalom az Azure-tűzfalon keresztül
+   **Beállítás** | **a művelet** ** | **Előnyök** | **Disadvantages**
+   --- | --- | --- | ---
+   **Az NSG-szabályok beállítása** | Lehetővé teszi a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/>  Hozzáadhat egy szabályt, amely engedélyezi a hozzáférést az Azure Backup szolgáltatás használata egy [szolgáltatáscímke](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure), külön-külön lehetővé téve, és minden címtartományt kezelése helyett. [További](../virtual-network/security-overview.md#service-tags) szolgáltatáscímkék kapcsolatban. | További költségek nélkül. Egyszerű szolgáltatás címkék kezelése
+   **A proxy üzembe helyezése** | A forgalom útválasztási HTTP-proxy kiszolgáló telepítése. | Az Azure és a tároló nem csak a teljes hozzáférést biztosít. Szabályozható a tároló URL-címek használata engedélyezett.<br/><br/> A virtuális gépek internet egyetlen pont hozzáférést.<br/><br/> Proxy további költségekkel.<br/><br/> 
+   **Az Azure-tűzfal beállítása** | Az Azure-tűzfalon keresztül a forgalom engedélyezése a virtuális gép, egy teljesen minősített tartománynév-címke az Azure Backup szolgáltatás használatával.|  Könnyen használható, ha a virtuális hálózat alhálózatán beállítása Azure-tűzfal | Nem hozható létre a saját teljesen minősített Tartományneve címkéket, vagy teljes tartománynevek módosíthatja a címke.<br/><br/> Az Azure Managed Disks szolgáltatást, ha szüksége lehet egy további port megnyitása (port 8443) a tűzfalat.
 
-Beállítások közötti meghatározásakor vegye figyelembe a kompromisszumot.
-
-**Beállítás** | **Előnyök** | **Disadvantages**
---- | --- | ---
-**NSG** | További költségek nélkül. Egyszerű szolgáltatás címkék kezelése | Az Azure és a tároló nem csak a teljes hozzáférést biztosít. |
-**A HTTP-proxy** | Szabályozható a tároló URL-címek használata engedélyezett.<br/><br/> A virtuális gépek internet egyetlen pont hozzáférést.<br/><br/> Proxy további költségekkel.
-**Teljes tartománynév-címke** | Könnyen használható, ha a virtuális hálózat alhálózatán beállítása Azure-tűzfal | Nem hozható létre a saját teljesen minősített Tartományneve címkéket, vagy teljes tartománynevek módosíthatja a címke.
-
-Az Azure Managed Disks szolgáltatást, ha szüksége lehet egy további port megnyitása (port 8443) a tűzfalat.
-
-### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Az Azure kimenő hozzáférésének engedélyezéséhez egy NSG-szabály beállítása
+#### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Az Azure kimenő hozzáférésének engedélyezéséhez egy NSG-szabály beállítása
 
 Ha az Azure virtuális gép kezeli az NSG-KET hozzáférése van, engedélyezi a kimenő hozzáférést a szükséges tartományok és a portok a biztonságimásolat-tároláshoz.
 
 1. A virtuális gép > **hálózatkezelés**, kattintson a **porton keresztüli kimenő szabály felvétele**.
-
-  - Ha egy szabály megtagadja a hozzáférést, az új engedélyezése a szabály magasabbnak kell lennie. Ha például van egy **Deny_All** prioritással 1000, az új szabályra szabálykészlet 1000-nél kisebb értékre kell állítani.
 2. A **kimenő biztonsági szabály felvétele**, kattintson a **speciális**.
 3. A **forrás**válassza **VirtualNetwork**.
 4. A **alkalmazásport-tartományok forrás**, írjon be egy csillag (*) bármely porton a kimenő hozzáférésének engedélyezéséhez.
-5. A **cél**válassza **Szolgáltatáscímke**. A listából válassza ki a tároló. <region>. A régióban, a régiót, amelyben a tároló és a virtuális gépek biztonsági mentése, találhatók.
+5. A **cél**válassza **Szolgáltatáscímke**. Válassza ki a listából **Storage.region**. A régióban, a régiót, amelyben a tároló és a virtuális gépek biztonsági mentése, találhatók.
 6. A **Célporttartomány**, válassza ki azt a portot.
-
-    - Virtuális gép nem felügyelt lemezek és titkosítatlan tárfiókba: 80
-    - Virtuális gép a nem felügyelt lemezek titkosított tárfiókban: 443-as (alapértelmezett beállítás)
+    - Nem felügyelt virtuális gép nem titkosított storage-fiók: 80
+    - Nem felügyelt virtuális gép titkosított storage-fiók: 443-as (alapértelmezett beállítás)
     - A felügyelt virtuális gép: 8443.
 7. A **protokoll**válassza **TCP**.
-8. A **prioritású**, adjon meg egy prioritási érték kisebb, mint minden újabb megtagadási szabályoknak.
+8. A **prioritású**, adja meg a prioritás értéke kisebb, mint minden újabb megtagadási szabályoknak. Ha egy szabály megtagadja a hozzáférést, az új engedélyezése a szabály magasabbnak kell lennie. Ha például van egy **Deny_All** prioritással 1000, az új szabályra szabálykészlet 1000-nél kisebb értékre kell állítani.
 9. Adjon meg egy nevet és leírást a szabályhoz, és kattintson a **OK**.
 
-Az NSG-szabály engedélyezi a kimenő hozzáférést az Azure-bA az Azure Backup szolgáltatáshoz a több virtuális gép alkalmazhat.
+Az NSG-szabály több virtuális gép kimenő hozzáférésének engedélyezéséhez alkalmazhat.
 
 Ez a videó végigvezeti a folyamatot.
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
-> [!WARNING]
-> Tárolási szolgáltatáscímkék olyan előzetes verzióban érhető el. Elérhetők csak bizonyos régiókban. Régiók listáját lásd: [Szolgáltatáscímkéket Storage](../virtual-network/security-overview.md#service-tags).
 
-### <a name="route-backup-traffic-through-a-proxy"></a>Biztonsági mentési forgalomirányítást proxyn keresztül
+#### <a name="route-backup-traffic-through-a-proxy"></a>Biztonsági mentési forgalomirányítást proxyn keresztül
 
 Irányíthatja a biztonsági mentési forgalmat egy proxyn keresztül, és ezután a proxy hozzáférést biztosít a szükséges Azure-tartományokat.
 Konfigurálnia kell a virtuális Gépen a következő proxy:
@@ -134,12 +102,11 @@ Konfigurálnia kell a virtuális Gépen a következő proxy:
 - A proxy kell engedélyezik a bejövő forgalmat a virtuális gépek a megfelelő virtuális hálózaton (VNet).
 - Az NSG-t **Elégtelen-zárolási** szüksége van egy szabályt, amely lehetővé teszi, hogy a kimenő internetes forgalmat a virtuális gép érkezett.
 
-Itt látható, hogyan kell beállítani a proxyt. Példaértékek használjuk. Azok a saját kell cserélni.
-
-#### <a name="set-up-a-system-account-proxy"></a>A system fiók proxy beállítása.
+##### <a name="set-up-the-proxy"></a>A proxy beállítása.
 Ha nem rendelkezik a system fiók proxy, egyet az alábbiak szerint állíthatja:
 
 1. Töltse le [PsExec](https://technet.microsoft.com/sysinternals/bb897553).
+
 2. Futtatás **PsExec.exe -i -s cmd.exe** a parancssor a rendszerfiók alatt való futtatásához.
 3. A böngészőben a rendszerkörnyezetben fut. Példa: **ProgramFiles%\Internet Explorer\iexplore.exe** az Internet Explorerben.  
 4. A proxy-beállítások megadása.
@@ -160,7 +127,7 @@ Ha nem rendelkezik a system fiók proxy, egyet az alábbiak szerint állíthatja
 
         ```
 
-#### <a name="allow-incoming-connections-on-the-proxy"></a>A proxy bejövő kapcsolatok engedélyezése
+##### <a name="allow-incoming-connections-on-the-proxy"></a>A proxy bejövő kapcsolatok engedélyezése
 
 A bejövő kapcsolatok engedélyezése a proxybeállításokat.
 
@@ -171,7 +138,7 @@ A bejövő kapcsolatok engedélyezése a proxybeállításokat.
     - A **protokollok és portok** a típusa **TCP**, **helyi portok** való **adott**, és **távoli port**való **minden port**.
     - Fejezze be a varázslót, és adja meg a szabály nevét.
 
-#### <a name="add-an-exception-rule-to-the-nsg"></a>Vegyen fel egy kivételt az NSG-hez
+##### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Vegyen fel egy kivételt az NSG-hez a proxy
 
 Az NSG-t a **Elégtelen-zárolási**, bármely internetes címre a 80-as (HTTP) vagy a 443-as (HTTPS) porton a 10.0.0.5 bármely porton érkező adatforgalom engedélyezéséhez.
 
@@ -192,22 +159,19 @@ Az Azure-tűzfal engedélyezi a kimenő hozzáférést a hálózati forgalmat az
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-Biztonsági mentés a Recovery Services-tároló tárolja a biztonsági másolatok és az idők során létrehozott helyreállítási pontokat, és tárolja a biztonsági másolat gépek társított biztonsági mentési szabályzatok. Hozzon létre egy tárolót a következőképpen:
+A tároló tárolja a biztonsági másolatok és az idők során létrehozott helyreállítási pontokat, és tárolja a biztonsági másolat gépek társított biztonsági mentési szabályzatok. Hozzon létre egy tárolót a következőképpen:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Az a **Hub** menüjében válassza **Tallózás**, és írja be **Recovery Services**. Ahogy elkezd gépelni, a bemeneti szűri az erőforrások listájában. Válassza ki **Recovery Services-tárolók**.
+2. Az a **Hub** menüjében válassza **Tallózás**, és írja be **Recovery Services**. Válassza ki **Recovery Services-tárolók**.
 
     ![A mezőbe, majd válassza a "Helyreállítási tárak" a eredmények](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
 
-    A Recovery Services-tárolók listája megjelenik.
 3. Az a **Recovery Services-tárolók** menüjében válassza **Hozzáadás**.
 
     ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
-    A **Recovery Services-tárolók** panel nyílik meg. Akkor arra kéri, hogy a **neve**, **előfizetés**, **erőforráscsoport**, és **hely**.
-
     !["A recovery Services-tárolók" panel](./media/backup-azure-arm-vms-prepare/rs-vault-attributes.png)
-4. A **Név** mezőben adjon meg egy, a tárolót azonosító rövid nevet.
+4. A **Recovery Services-tárolók** >  **neve**, adjon meg egy, a tárolót azonosító rövid nevet.
     - A névnek egyedinek kell lennie az Azure-előfizetéshez.
     - 2 – 50 karaktert tartalmazhat.
     - Betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
@@ -234,7 +198,7 @@ Tárreplikáció módosítsa a következőképpen:
 2. A **biztonsági mentés konfigurációja**, kötelező, és válassza ki a storage redundancia módját módosítani **mentése**.
 
 
-## <a name="configure-backup"></a>Biztonsági mentés konfigurálása
+## <a name="configure-a-backup-policy"></a>Biztonsági mentési szabályzat konfigurálása
 
 Az előfizetésben található virtuális gépek felderítéséhez és a biztonsági mentés konfigurálása.
 
@@ -252,7 +216,8 @@ Az előfizetésben található virtuális gépek felderítéséhez és a biztons
 
 3. A **biztonsági mentési szabályzat**, válassza ki a tárolóval társítani kívánt házirendet. Ezután kattintson az **OK** gombra.
     - Az alapértelmezett házirend részletei megtalálhatók a legördülő menüben.
-    - Kattintson a **hozzon létre új** szabályzat létrehozásához. [További](backup-azure-vms-first-look-arm.md#defining-a-backup-policy) kapcsolatos házirend meghatározása.
+    - Kattintson a **hozzon létre új** szabályzat létrehozásához. [További](backup-azure-arm-vms-prepare.md#configure-a-backup-policy) kapcsolatos házirend meghatározása.
+    
 
     !["Mentés" és "Biztonsági mentési szabályzat" panel](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
 
@@ -272,11 +237,23 @@ Az előfizetésben található virtuális gépek felderítéséhez és a biztons
 
 Biztonsági mentés engedélyezése után:
 
-- A biztonsági mentési szabályzat a biztonsági mentés ütemezése szerint fut.
+- Egy kezdeti biztonsági mentést a biztonsági mentés ütemezése szerint fut.
 - A Backup szolgáltatás telepíti a biztonsági mentési bővítményt, a virtuális gép fut-e.
     - Egy futó virtuális gép adja a legnagyobb esélyt egy alkalmazással konzisztens helyreállítási pont létrehozásának.
     -  Azonban a virtuális gép biztonsági másolat még akkor is, ha ki van kapcsolva, és a bővítményt nem lehet telepíteni. Ez az úgynevezett *offline virtuális gép*. Ebben az esetben a helyreállítási pont az *összeomláshoz igazodik* lesz.
-- Ha szeretne egy igény szerinti biztonsági másolat készítése a virtuális gép, azonnal a **biztonsági másolati elemek**, kattintson a virtuális gép melletti három pontra (...) > **biztonsági mentés**.
+    Vegye figyelembe, hogy az Azure Backup nem támogatja az óra automatikus illesztését nyári időszámítás – mentés módosításait az Azure virtuális gép biztonsági mentéseinek. Biztonsági mentési szabályzatok manuálisan szükség szerint módosítsa.
+  
+ ## <a name="run-the-initial-backup"></a>A kezdeti biztonsági mentés futtatása
+
+A kezdeti biztonsági mentés beállított ütemezés fog futni, kivéve, ha manuálisan futtatja, azonnal. Futtassa manuálisan az alábbiak szerint:
+
+1. A tároló menüjében kattintson **biztonsági mentési elemek**.
+2. A **biztonsági másolati elemek** kattintson **Azure virtuális gép**.
+3. Az a **biztonsági másolati elemek** listában, kattintson a három pontra **...** .
+4. Kattintson a **biztonsági mentés**.
+5. A **biztonsági mentés**, használja a naptárvezérlőt annak, hogy megőrződjön-e a helyreállítási pont kiválasztására > **OK**.
+6. A portál feladatértesítések figyelésére. Figyelheti a feladat előrehaladását a tároló irányítópultján > **biztonsági mentési feladatok** > **folyamatban**. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
+
 
 
 ## <a name="next-steps"></a>További lépések

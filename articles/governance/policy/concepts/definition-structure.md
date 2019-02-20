@@ -4,17 +4,17 @@ description: 'Ismerteti, hogy a szabályzatdefiníció erőforrás az Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/11/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 5a16edcb702db21b357c437b920e870a65fb155a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9dc6407a222adb06f4139d9973c168911e0faca8
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270164"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429672"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -80,7 +80,7 @@ A **mód** meghatározza, hogy mely erőforrástípusokat szabályzat lesz kiér
 
 Azt javasoljuk, hogy állítsa **mód** való `all` a legtöbb esetben. A portál használatával létrehozott összes szabályzat-definíciókat a `all` mód. Ha a PowerShell vagy az Azure CLI-vel, megadhatja a **mód** paraméter manuálisan. Ha a szabályzat-definíció nem tartalmaz egy **mód** érték, a rendszer alapértelmezés szerint `all` az Azure PowerShell, az `null` Azure CLI-ben. A `null` módja megegyezik `indexed` visszamenőleges kompatibilitás támogatására.
 
-`indexed` lehet, amelyeket a címkék vagy a szabályzatok létrehozásakor használt. Bár nem kötelező, megakadályozza, hogy a címkék és a helyek való jelenik meg, nem kompatibilis a megfelelőségi eredmények nem támogató erőforrások. A kivétel **erőforráscsoportok**. Házirendeket kikényszerítő helyet vagy egy erőforráscsoportba tartozó címkéket kell beállítania **mód** való `all` és a kifejezetten a cél a `Microsoft.Resources/subscriptions/resourceGroup` típusa. Egy vonatkozó példáért lásd: [erőforráscímkék csoport kényszerítése](../samples/enforce-tag-rg.md).
+`indexed` lehet, amelyeket a címkék vagy a szabályzatok létrehozásakor használt. Bár nem kötelező, megakadályozza, hogy a címkék és a helyek való jelenik meg, nem kompatibilis a megfelelőségi eredmények nem támogató erőforrások. A kivétel **erőforráscsoportok**. Házirendeket kikényszerítő helyet vagy egy erőforráscsoportba tartozó címkéket kell beállítania **mód** való `all` és a kifejezetten a cél a `Microsoft.Resources/subscriptions/resourceGroups` típusa. Egy vonatkozó példáért lásd: [erőforráscímkék csoport kényszerítése](../samples/enforce-tag-rg.md).
 
 ## <a name="parameters"></a>Paraméterek
 
@@ -245,15 +245,41 @@ A következő mezők támogatottak:
 - `identity.type`
   - Típusát adja vissza [identitás](../../../active-directory/managed-identities-azure-resources/overview.md) engedélyezve van az erőforráson.
 - `tags`
-- `tags.<tagName>`
+- `tags['<tagName>']`
+  - A szögletes zárójelet szintaxist tartalmaznak a címkenevek írásjelek, például egy kötőjel, ponttal vagy szóközzel rendelkező támogatja.
   - Ahol **\<tagName\>** feltételét ellenőrzése a címke neve.
-  - Példa: `tags.CostCenter` ahol **CostCenter** a címke neve.
-- `tags[<tagName>]`
-  - Ez a szintaxis szögletes zárójelet, amelyek adott időszakban tartalmaznak a címkenevek támogatja.
-  - Ahol **\<tagName\>** feltételét ellenőrzése a címke neve.
-  - Példa: `tags[Acct.CostCenter]` ahol **Acct.CostCenter** a címke neve.
-
+  - Példák: `tags['Acct.CostCenter']` ahol **Acct.CostCenter** a címke neve.
+- `tags['''<tagName>''']`
+  - A szögletes zárójelet szintaxist tartalmaznak a címkenevek által a dupla aposztrófot escape-karaktersorozat rendelkező aposztrófot támogatja.
+  - Ahol **"\<tagName\>"** feltételét ellenőrzése a címke neve.
+  - Példa: `tags['''My.Apostrophe.Tag''']` ahol **"\<tagName\>"** a címke neve.
 - vlastnost aliasok -, lásd: [aliasok](#aliases).
+
+> [!NOTE]
+> `tags.<tagName>`, `tags[tagName]`, és `tags[tag.with.dots]` egy címkemező deklaráló továbbra is elfogadható módja.
+> Az előnyben részesített kifejezések azonban fent felsoroltak is.
+
+#### <a name="use-tags-with-parameters"></a>Címkék használata paraméterekkel
+
+A paraméter értékét a tag mező adható át. Paraméter átadása egy tag mező növeli a szabályzatdefiníció szabályzat-hozzárendelés során rugalmasságát.
+
+A következő példában `concat` a címkék a mező keresési értékét nevű címke létrehozására szolgáló a **tagName** paraméter. Ha a címke nem létezik, a **hozzáfűzése** érvénybe szolgál a rendszervizsgálati módban levő erőforrások szülő erőforráscsoporthoz használatával állítsa be a azonos nevű címke értékének használatával címke hozzáadása az `resourcegroup()` függvényhez.
+
+```json
+{
+    "if": {
+        "field": "[concat('tags[', parameters('tagName'), ']')]",
+        "exists": "false"
+    },
+    "then": {
+        "effect": "append",
+        "details": [{
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "value": "[resourcegroup().tags[parameters('tagName')]]"
+        }]
+    }
+}
+```
 
 ### <a name="value"></a>Érték
 
@@ -353,7 +379,7 @@ Az összes [Resource Manager-sablonfüggvények](../../../azure-resource-manager
 
 Ezenkívül a `field` funkció érhető el a szabályzat előírásainak. `field` elsősorban az **AuditIfNotExists** és **DeployIfNotExists** referencia mezők, a rendszer kiértékelt erőforrás. Ezt használhatja például látható a [DeployIfNotExists példa](effects.md#deployifnotexists-example).
 
-#### <a name="policy-function-examples"></a>A házirend függvény példák
+#### <a name="policy-function-example"></a>Függvény szabályzat – példa
 
 Ez a házirend a szabály a példa a `resourceGroup` erőforrás függvény a **neve** tulajdonság, kombinálva a `concat` tömb- és függvény hozhat létre egy `like` feltételt, amely érvényesíti az erőforrás neve indítása az az erőforráscsoport nevét.
 
@@ -367,24 +393,6 @@ Ez a házirend a szabály a példa a `resourceGroup` erőforrás függvény a **
     },
     "then": {
         "effect": "deny"
-    }
-}
-```
-
-Ez a házirend a szabály a példa a `resourceGroup` erőforrás függvény a **címkék** tulajdonság tömb értékét a **CostCenter** címkét a az erőforráscsoportot, és fűzze hozzá a a **költséghely**  címkét a az új erőforrás.
-
-```json
-{
-    "if": {
-        "field": "tags.CostCenter",
-        "exists": "false"
-    },
-    "then": {
-        "effect": "append",
-        "details": [{
-            "field": "tags.CostCenter",
-            "value": "[resourceGroup().tags.CostCenter]"
-        }]
     }
 }
 ```

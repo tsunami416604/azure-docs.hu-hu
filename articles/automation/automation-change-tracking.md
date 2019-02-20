@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/29/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e40cc3ac0fe17cd030717253f6093bbf8d63a5a2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 07fd8c41e7817e232513ed9a260c3722a1fdac11
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487234"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429264"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -180,6 +180,8 @@ Az alábbi táblázat bemutatja a gépek nyomon követett elemek vonatkozó korl
 |Linux-csomagok|1250||
 |Szolgáltatások|250||
 |Démon|250||
+
+A Log Analytics adathasználat a Change Tracking and Inventory használatával gép átlagos körülbelül 40MB / hó. Ez az érték csak közelítés, és az adott környezet alapján változhatnak. Ajánlott a pontos használati, amely rendelkezik a környezet figyelését.
 
 ### <a name="windows-service-tracking"></a>Windows-szolgáltatás nyomon követése
 

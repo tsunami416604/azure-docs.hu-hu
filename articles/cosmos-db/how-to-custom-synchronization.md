@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 2/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: 05432097ee80a01458a1f2e95c48123bf7f05d57
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 43cb73784806358bccb9758be2923d3df5e9badd
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309573"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414881"
 ---
 # <a name="how-to-implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Egyéni optimalizálása a magasabb rendelkezésre állás és teljesítmény-szinkronizálás megvalósítása
 
-Az Azure Cosmos DB öt jól meghatározott konzisztenciaszint közül választhat a konzisztencia, a teljesítmény és a rendelkezésre állási közötti elosztása érdekében a kínál. Erős konzisztencia biztosítja a rendszer szinkron módon replikálja az adatokat, és tartóssági megőrzött minden régióban, ahol érhető el az Azure Cosmos-fiók. Ez a konfiguráció azonban a legmagasabb szintű tartósságot biztosít megoldás teljesítmény és rendelkezésre állás. Ha egy alkalmazás igényeinek megfelelően kell application rendelkezésre állási veszélyeztetése nélkül az adatok tartós megőrzését vezérlő/enyhítése fájlvédelemre, ez azonban egyéni szinkronizálási az alkalmazási rétegben a kívánt tartóssági szint elérése érdekében.
+Az Azure Cosmos DB öt jól meghatározott konzisztenciaszint közül választhat a konzisztencia, a teljesítmény és a rendelkezésre állási közötti elosztása érdekében a kínál. Erős konzisztencia biztosítja az adatok szinkronban replikálva lettek, és minden régióban, ahol érhető el az Azure Cosmos-fiók tartósan tárolja. Ebben a konfigurációban a legnagyobb szintű tartósságot biztosítja, miközben cserébe teljesítmény és rendelkezésre állás érhető el. Ha egy alkalmazás igényeinek megfelelően kell application rendelkezésre állási veszélyeztetése nélkül az adatok tartós megőrzését vezérlő/enyhítése fájlvédelemre, ez azonban egyéni szinkronizálási az alkalmazási rétegben a kívánt tartóssági szint elérése érdekében.
 
 Az alábbi ábrán vizuálisan ábrázolja az egyéni szinkronizálási modell.
 

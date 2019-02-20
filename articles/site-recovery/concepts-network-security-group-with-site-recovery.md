@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 4885be7547d404505b50c563036f260166cbc2cc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6b980ae7539642e67609be802b2e31b287d09f72
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833822"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415268"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Hálózati biztonsági csoportok az Azure Site Recoveryvel
 
@@ -45,7 +45,7 @@ Nem biztos, hogy minden esetben tisztában lesz vele, ha a hálózati adapterrel
 
 Az Azure Site Recovery lehetővé teszi a vészhelyreállítást és migrálás az Azure-bA a helyszíni [Hyper-V virtuális gépek](hyper-v-azure-architecture.md), [VMware virtuális gépek](vmware-azure-architecture.md), és [fizikai kiszolgálók](physical-azure-architecture.md). Az összes helyszíni – Azure forgatókönyvek esetén, a replikációs adatokat fogadja és egy Azure Storage-fiókban tárolt. A replikáció során a virtuális gép díjakat nem kell fizetnie. Ha feladatátvételt végez az Azure-ba, a Site Recovery automatikusan létrehozza az Azure IaaS virtuális gépeket.
 
-Az Azure-bA a feladatátvételt követően létrehozása után a virtuális gépek, az NSG-ket a virtuális hálózat és a virtuális gépek hálózati forgalom korlátozásáról használható. A Site Recovery nem hoz létre NSG-ket a feladatátvételi művelet részeként. Azt javasoljuk, hogy a szükséges Azure NGSs létrehozását, mielőtt elindítaná a feladatátvételt. Ezután NSG-ket társíthat a virtuális gépek automatikus feladatátvétele a feladatátvétel során használatával automatizálási szkriptek a Site Recovery hatékony [helyreállítási tervek](site-recovery-create-recovery-plans.md).
+Az Azure-bA a feladatátvételt követően létrehozása után a virtuális gépek, az NSG-ket a virtuális hálózat és a virtuális gépek hálózati forgalom korlátozásáról használható. A Site Recovery nem hoz létre NSG-ket a feladatátvételi művelet részeként. Azt javasoljuk, hogy a szükséges Azure NSG-k létrehozását, mielőtt elindítaná a feladatátvételt. Ezután NSG-ket társíthat a virtuális gépek automatikus feladatátvétele a feladatátvétel során használatával automatizálási szkriptek a Site Recovery hatékony [helyreállítási tervek](site-recovery-create-recovery-plans.md).
 
 Például, ha a feladatátvételen átesett virtuális gép konfigurációjának hasonlít a [példaforgatókönyv](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) fenti Útmutató:
 -   Létrehozhat **Contoso virtuális hálózat** és **Contoso alhálózati** részeként a Vészhelyreállítás megtervezése a cél Azure-régióban.
@@ -61,7 +61,7 @@ Az Azure Site Recovery lehetővé teszi, hogy a vész-helyreállítási [Azure-b
 
 Azure virtuális gép replikációja, győződjön meg arról, hogy a forrás az Azure-régióban az NSG-szabályok engedélyezik-e [kimenő kapcsolat](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) a replikációs forgalmat. Is tesztelheti, és ellenőrizze a szükséges szabályok ezen [példa az NSG konfigurációs](azure-to-azure-about-networking.md#example-nsg-configuration).
 
-A Site Recovery nem hoz létre, vagy hálózati biztonsági csoportok replikálása a feladatátvételi művelet részeként. Azt javasoljuk, hogy a szükséges NGSs feladatátvétel kezdeményezése előtt a cél Azure-régióban hozza létre. Ezután NSG-ket társíthat a virtuális gépek automatikus feladatátvétele a feladatátvétel során használatával automatizálási szkriptek a Site Recovery hatékony [helyreállítási tervek](site-recovery-create-recovery-plans.md).
+A Site Recovery nem hoz létre, vagy hálózati biztonsági csoportok replikálása a feladatátvételi művelet részeként. Azt javasoljuk, hogy a szükséges NSG-k létrehozása a cél Azure-régióban, mielőtt elindítaná a feladatátvételt. Ezután NSG-ket társíthat a virtuális gépek automatikus feladatátvétele a feladatátvétel során használatával automatizálási szkriptek a Site Recovery hatékony [helyreállítási tervek](site-recovery-create-recovery-plans.md).
 
 Figyelembe véve a [példaforgatókönyv](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) fentebb leírt:
 -   A Site Recovery létre tudja hozni a replikákat a **Contoso virtuális hálózat** és **Contoso alhálózati** a cél Azure-régió, amikor a replikáció engedélyezve van a virtuális gép számára.

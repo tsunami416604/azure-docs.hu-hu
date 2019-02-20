@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: efce8379ecafe6e8e044b654a3c5b392ca8e9cea
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506362"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417312"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Virtuális hálózati átjáró Termékváltozatai (örökölt termékváltozatok) használata
 
@@ -40,6 +40,8 @@ Ez a cikk az örökölt (régi) virtuális hálózati átjáró-Termékváltozat
 
 ## <a name="resize"></a>Az átjáró átméretezése
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Az átjárók Termékváltozatainak belül az azonos Termékváltozat-család átjáró méretezheti. Például ha a Standard Termékváltozat, átméretezheti, a HighPerformance termékváltozatra. Azonban nem tudják átméretezni a régi termékváltozatokról az új Termékváltozat-családokra közötti VPN-átjárót. Ha például már nem válthat a Standard Termékváltozat VpnGw2 Termékváltozat vagy alapszintű Termékváltozat a VpnGw1.
 
 Méretezze át a klasszikus üzemi modell esetében egy átjárót, használja a következő parancsot:
@@ -51,8 +53,8 @@ Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerfor
 Méretezze át a Resource Manager üzemi modell PowerShell használatával egy átjárót, használja a következő parancsot:
 
 ```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
-Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+$gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
+Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
 Az Azure Portalon egy átjárót is méretezheti.
 

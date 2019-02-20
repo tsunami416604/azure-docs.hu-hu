@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 0c865b8bc129f4f2809f2dbb09a836efe4cee3d9
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.openlocfilehash: 1d8a9cf10bf9b4aab02dd5033ecdd4fdc1f9423e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093040"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429247"
 ---
-# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Két virtuális gép közötti hálózati kommunikáció monitorozása az Azure Portal használatával
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Az Azure portal használatával, két virtuális gép közötti hálózati kommunikáció monitorozása
 
 A virtuális gépek és a végpontok (pl. egy másik virtuális gép) közötti sikeres kommunikáció kulcsfontosságú lehet vállalata számára. Olykor előfordulhat, hogy egyes konfigurációs módosítások megszakítják a kommunikációt. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -73,11 +73,11 @@ Végezze el ismét [Az első virtuális gép létrehozása](#create-the-first-vm
 
 |Lépés|Beállítás|Érték|
 |---|---|---|
-| 1 | Válassza az **Ubuntu Server 17.10 VM** lehetőséget |                                                                         |
-| 3 | Name (Név)                              | myVm2                                                                   |
-| 3 | Hitelesítés típusa               | Illessze be SSH nyilvános kulcsát, vagy válassza a **Jelszó** lehetőséget és adjon meg egy jelszót. |
-| 3 | Erőforráscsoport                    | Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.                 |
-| 6 | Bővítmények                        | **Linuxhoz készült hálózati ügynök**                                             |
+| 1 | Válassza ki a verziót **Ubuntu Server** |                                                                         |
+| 3 | Name (Név)                                  | myVm2                                                                   |
+| 3 | Hitelesítés típusa                   | Illessze be SSH nyilvános kulcsát, vagy válassza a **Jelszó** lehetőséget és adjon meg egy jelszót. |
+| 3 | Erőforráscsoport                        | Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.                 |
+| 6 | Bővítmények                            | **Linuxhoz készült hálózati ügynök**                                             |
 
 A virtuális gép üzembe helyezése néhány percet vesz igénybe. Várjon, amíg a virtuális gép üzembe helyezése befejeződik, mielőtt folytatná a további lépésekkel.
 
@@ -160,7 +160,7 @@ Alapértelmezés szerint az Azure minden porton engedélyezi a kommunikációt k
 
     Egy piros felkiáltójel ikon látható a **myvm2529** hálózati adapter állapotoszlopában.
 
-6. Az állapotváltozás okának megismeréséhez válassza ki az előző képen látható 10.0.0.5-ös IP-címet. A kapcsolatfigyelő megmutatja, hogy a kommunikációs hiba oka a következő: *A forgalom blokkolva van a következő hálózati biztonsági csoport szabály miatt: UserRule_DenySshInbound*.
+6. Az állapotváltozás okának megismeréséhez válassza ki az előző képen látható 10.0.0.5-ös IP-címet. A kapcsolatfigyelő tájékoztatja, hogy a kommunikációs hiba oka: *Forgalomleállás miatt a következő hálózati biztonsági csoportra vonatkozó szabályt: UserRule_DenySshInbound*.
 
     Ha nem tudott róla, hogy valaki megvalósította a 4. lépésben létrehozott biztonsági szabályt, a kapcsolatfigyelőből megtudhatta, hogy ez a szabály okozza a kommunikációs problémát. Ezután módosíthatja, felülírhatja vagy eltávolíthatja a szabályt, és visszaállíthatja a virtuális gépek közötti kommunikációt.
 

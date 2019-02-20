@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 1dba84c686fbb873f044b4980990baa396a94c79
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237671"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429516"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Használja őket egységes előtérrendszerként több Azure Monitor az Application Insights-erőforrást 
 Ez a cikk bemutatja, hogyan lekérdezéséhez és az összes Application Insights alkalmazás log adatok megtekintése az egyik helyen, akkor is, ha azokat az Azure-előfizetések, az Application Insights-összekötő elavulása helyettesítője. Az Application Insights-erőforrások, amelyeket megadhat egyetlen lekérdezést erőforrások számát 100-ra korlátozódik.  
@@ -68,6 +68,9 @@ A függvény aliasa, a kérelmek unióját adja vissza a meghatározott alkalmaz
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Application Insights-erőforrások és a munkaterület adatainak lekérdezése 
 Amikor leállítja az összekötő, és meg kell keresztül, amely által az Application Insights-adatok megőrzése (90 nap) volt vágott időtartomány-lekérdezések végrehajtásához, kell elvégeznie [erőforrások közötti lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md) a munkaterület és Application Insights erőforrások egy köztes időszakban. Ez nem lesz, amíg a fent említett új Application Insights-adatmegőrzés / gyűlnek az alkalmazások adatokat. A lekérdezés néhány feldolgozás van szükség, mivel a sémák az Application Insights és a munkaterület különböző. Lásd a jelen szakasz későbbi kiemelése a séma különbségek a táblát. 
+
+>[!NOTE]
+>[Erőforrások közötti lekérdezési](../log-query/cross-workspace-query.md) naplóban riasztások az új támogatott [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Alapértelmezés szerint az Azure Monitor használja a [örökölt Log Analytics-riasztás API](../platform/api-alerts.md) új naplófájl riasztási szabályok létrehozását az Azure Portalról, kivéve, ha átvált a [örökölt Log riasztások API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). A váltás után az új API lesz az alapértelmezett új riasztási szabályok az Azure Portalon, és lehetővé teszi, hogy az erőforrások közötti lekérdezési napló riasztások, szabályok létrehozása. Létrehozhat [erőforrások közötti lekérdezési](../log-query/cross-workspace-query.md) riasztási szabályok jelentkezzen anélkül, hogy a kapcsoló használatával a [scheduledQueryRules API az ARM-sablon](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) –, de ez a riasztási szabály kezelhető azonban [ scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) és nem az Azure Portalról.
 
 Például ha az összekötő leállt a 2018-11-01, amikor, naplók az Application Insights-erőforrások és alkalmazások adatok lekérdezése a munkaterületen, a lekérdezés lenne kell kialakítani, az alábbi példához hasonlóan:
 

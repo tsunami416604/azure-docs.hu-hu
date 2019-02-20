@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 02/17/2019
 ms.author: juliako
-ms.openlocfilehash: fa64d24d74a71981e3273fbdf5fa96b386a34685
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 4127b6b2b2601b640a6fda4ccb60960d1762ee81
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342439"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414744"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -29,10 +29,10 @@ A cikk bemutatja, hogyan használhatja a [Videó feltöltése](https://api-porta
 A videó feltöltése után a Video Indexer, igény szerint kódolja a videó (a cikkben tárgyalt). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőséggel Ön létrehoz egy Video Indexer-fiókot, amely [össze van kapcsolva az Azure-előfizetésével és egy Azure Media Services-fiókkal](connect-to-azure.md). Ön az indexelt perceket és a Media Accounttal kapcsolatos díjakat fizeti ki. 
 
 ## <a name="uploading-considerations"></a>Feltöltési szempontok
-    
+
 - A videó URL-cím alapján történő feltöltésekor (előnyben részesített) a végpontot a TLS 1.2-es (vagy újabb) verziójával kell védeni
 - Az URL-cím beállítással feltöltési mérete legfeljebb 25GB
-- A feltöltés a byte tömb lehetőséggel mérete legfeljebb 2GB 
+- A feltöltés a byte tömb lehetőséggel mérete legfeljebb 2GB
 - A bájt tömb beállítás túllépi az időkorlátot 30 perc után
 - A `videoURL` paraméterben megadott URL-címet kódolni kell
 

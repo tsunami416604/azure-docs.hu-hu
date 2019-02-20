@@ -14,41 +14,41 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: pbutlerm
-ms.openlocfilehash: e0e1311276b858f1ac16fe6f17ccad49dd9901c9
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6a4f7daa337618278c3652fad3053c20557a9e28
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55666869"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414688"
 ---
-# <a name="create-a-power-bi-application-offer"></a>A Power BI alkalmazás ajánlat létrehozása
+# <a name="create-a-power-bi-app-offer"></a>A Power BI alkalmazás ajánlat létrehozása
 
-Ebben a szakaszban egy új Power BI alkalmazás ajánlat létrehozásához szükséges lépéseket tartalmazza [AppSource](https://appsource.microsoft.com). Minden ajánlat megjelenik az appsource-ban a saját entitásként.  Amikor létrehoz egy új ajánlatot a [Cloud Partner Portalon](https://cloudpartner.azure.com/), adja meg az eszközök az ajánlatban négy csoportba kell.
+Ez a cikk felsorolja a lépéseket követve hozzon létre egy új Power BI alkalmazás ajánlat [AppSource](https://appsource.microsoft.com). Minden ajánlat megjelenik az appsource-ban a saját entitásként. Amikor létrehoz egy új ajánlatunk, a a [Cloud Partner Portalon](https://cloudpartner.azure.com/), annak érdekében, hogy adja meg az eszközök az ajánlatban négy csoportba.
+
+Az eszközcsoportok a következő táblázat ismerteti:
 
 |   Eszközcsoport      | Leírás                                                                         |
 | ----------------   | ----------------                                                                    |
-| Ajánlat beállításai     | Elsődleges azonosítók és az ajánlat neve                                      |
-| Technikai információ     | Az alkalmazás a Power BI-munkaterület-ügyfél telepítéséhez használt URL-telepítő. További információ az URL-címet létrehozni, tekintse meg a [Power BI alkalmazás dokumentációja](https://go.microsoft.com/fwlink/?linkid=2028636).   |
-| Storefront részletei | Marketing, jogi és elégtelen felügyeleti eszközöket tartalmazza. Marketing eszközök közé tartozik az ajánlat leírása és emblémáinak.  Jogi eszközök például egy adatvédelmi szabályzatát, használati feltételeit és egyéb jogi dokumentáció.  Elégtelen felügyeleti házirend lehetővé teszi, hogy adja meg, hogyan legyen kezelve az appsource-ban a végfelhasználói portálon vezet. |
-| Kapcsolatok           | Támogatási kapcsolattartó és házirend információkat tartalmaz                                     |
-|    |     |
-
+| Ajánlat beállításai     | Elsődleges azonosítók és az ajánlat nevét.                                      |
+| Technikai információ     | A telepítő URL-cím, amellyel az alkalmazás telepítésekor az ügyfél a Power BI munkaterületén. Az URL-cím kapcsolatos további információkért lásd: [Power BI alkalmazás dokumentációja](https://go.microsoft.com/fwlink/?linkid=2028636). |
+| Storefront részletei | Marketing, jogi és elégtelen felügyeleti eszközöket tartalmazza. Marketing eszközök közé tartozik, az ajánlat leírásának és emblémáinak. Jogi eszközök például egy adatvédelmi szabályzatát, használati feltételeit és egyéb jogi dokumentáció. Az érdeklődő felügyeleti házirend lehetővé teszi, adja meg, hogyan legyen kezelve az appsource-ban felhasználói portálról vezet. |
+| Kapcsolatok           | Támogatási kapcsolattartó és házirend információkat tartalmaz.                                     |
 
 ## <a name="new-offer-form"></a>Új ajánlat űrlap
 
-Kattintson a Cloud Partner portálra, a bejelentkezés után a **+ új ajánlat** elemet a bal oldali menüsáv.  Az eredményül kapott menüben kattintson a **Power BI-alkalmazások** megjelenítéséhez a **új ajánlat** képezik, és indítsa el az eszközöket egy új alkalmazás ajánlat meghatározása.
+Bejelentkezés után a Cloud Partner portálra, válassza ki a **új ajánlat** a bal oldali panelen. Ezt követően az új ajánlat űrlap megjelenítéséhez és eszközöket egy új alkalmazás ajánlat meghatározása folyamatának elindításához válassza **Power BI-alkalmazások**.
 
 ![A Power BI-ajánlat menüpont](./media/new-offer-menu.png)
 
-> [!WARNING] 
-> Ha a **Power BI-alkalmazások** beállítás nem jelenik meg, vagy nincs engedélyezve, akkor a fiók nincs engedélye ezen ajánlat típus létrehozásához. Ellenőrizze, hogy teljesül-e az összes a [Előfeltételek](./cpp-prerequisites.md) ajánlat típus, beleértve a fejlesztői fiókot regisztrálni.
+> [!NOTE] 
+> Ha a **Power BI-alkalmazások** beállítás nem jelenik meg, vagy nincs engedélyezve, a fiókja nem rendelkezik a ajánlattípusra létrehozásához szükséges engedéllyel. Ellenőrizze, hogy, hogy teljesítette az összes a [Előfeltételek](./cpp-prerequisites.md) ajánlat típus, beleértve a fejlesztői fiókot regisztrálni.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a szakaszban a következő cikkek lapjait tükrözik a **új ajánlat** (a Power BI alkalmazás ajánlattípusra) lapot. Minden egyes cikk eszközcsoportok és a kiegészítő szolgáltatások az új alkalmazás ajánlatban határozhatja meg a kapcsolódó lapra használatát ismerteti.
+A következő cikkek ismertetik a lapok a a **új ajánlat** egy Power BI alkalmazás ajánlattípusra lapját. Eszközcsoportok és az új Power BI alkalmazás ajánlat segítő szolgáltatás minden egyes cikk ismerteti.
 
 -  [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
--  [Technikai információ lap](./cpp-technical-info-tab.md)
+-  [Technikai információs lap](./cpp-technical-info-tab.md)
 -  [Áruház részletei lap](./cpp-storefront-details-tab.md)
--  [Névjegyek](./cpp-contacts-tab.md)
+-  [Névjegyek lap](./cpp-contacts-tab.md)

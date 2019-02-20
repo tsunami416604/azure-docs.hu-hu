@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: erhopf
-ms.openlocfilehash: f724bba5acdda20d31d067b850634178a0650cf7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2f9b477e076b038a6a695952ee3f770b30ad179b
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859744"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429468"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Az Azure Cognitive Services-kérések hitelesítéséhez
 
@@ -58,7 +58,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-A következő videó bemutatja a Cognitive Services-kulcs használatával. 
+A következő videó bemutatja a Cognitive Services-kulcs használatával.
 
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Egy több szolgáltatásos előfizetési kulcsot a hitelesítéshez
 
@@ -127,16 +127,15 @@ Hitelesítési jogkivonatok szerepelnek egy kérelmet, mint a `Authorization` fe
 
 ### <a name="sample-requests"></a>Minta kérelmek
 
-Az URL-cím használatával egy egyszolgáltatásos előfizetési kulcsát egy hitelesítési tokent: `https://api.cognitive.microsoft.com/sts/v1.0/issueToken`.
+Az URL-cím használatával egy előfizetési kulcsot egy hitelesítési tokent: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 ```cURL
 curl -v -X POST \
-"https://api.cognitive.microsoft.com/sts/v1.0/issueToken" \
+"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
 -H "Content-type: application/x-www-form-urlencoded" \
+-H "Content-length: 0" \
 -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
-
-Egy több szolgáltatásos előfizetési kulcs használata esetén a jogkivonatcsere egy régió meghatározott végpontot kell használnia. Az URL-cím használatával egy több szolgáltatásos előfizetési kulcsát egy hitelesítési tokent: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 Ezekben a régiókban több szolgáltatásos jogkivonatcsere támogatják:
 
@@ -147,13 +146,6 @@ Ezekben a régiókban több szolgáltatásos jogkivonatcsere támogatják:
 | `japaneast` | `northeurope` | `southcentralus` |
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
-
-```cURL
-curl -v -X POST \
-"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
--H "Content-type: application/x-www-form-urlencoded" \
--H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
-```
 
 A hitelesítési jogkivonat beszerzése, miután kell adja át azt az egyes kérelmek, a `Authorization` fejléc. Ez a minta a Translator Text API hívását:
 

@@ -2,25 +2,17 @@
 title: IPsec-alagutak megszüntette az Azure VPN gateway alaphelyzetbe állítása |} A Microsoft Docs
 description: Ez a cikk bemutatja az Azure VPN Gateway IPsec-alagutak megszüntette alaphelyzetbe állításához. A cikk a VPN-átjárókhoz a klasszikus és a Resource Manager-alapú üzemi modellek vonatkozik.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 79d77cb8-d175-4273-93ac-712d7d45b1fe
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/24/2017
+ms.date: 02/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8db17b92208bd956bd5f9b855249f03ecd5e2c59
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6e57979e2c43cc47504495cce23947b93abb4020
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756699"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414933"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway alaphelyzetbe állítása
 
@@ -62,11 +54,13 @@ Alaphelyzetbe állíthatja a Resource Manager VPN-átjáró, az Azure portal has
 
 ### <a name="resource-manager-deployment-model"></a>Resource Manager-alapú üzemi modell
 
-Ha szeretne alaphelyzetbe állítani egy átjárót a parancsmag **Reset-AzureRmVirtualNetworkGateway**. A alaphelyzetbe állítása előtt, ellenőrizze, hogy a legújabb verzióját a [Resource Manager PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.0.0). A következő példa alaphelyzetbe állítja a virtuális hálózati átjáró nevű VNet1GW TestRG1 az erőforráscsoportban:
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Ha szeretne alaphelyzetbe állítani egy átjárót a parancsmag **alaphelyzetbe állítása – AzVirtualNetworkGateway**. A alaphelyzetbe állítása előtt, ellenőrizze, hogy a legújabb verzióját a [Resource Manager PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/azurerm/install-Az-ps?view=azurermps-4.0.0). A következő példa alaphelyzetbe állítja a virtuális hálózati átjáró nevű VNet1GW TestRG1 az erőforráscsoportban:
 
 ```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
-Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
+$gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
+Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
 Eredmény:

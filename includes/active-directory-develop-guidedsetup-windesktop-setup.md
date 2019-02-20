@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 022017015808d72f661f6764e8fa10fdc49e9f61
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 29b7893bbe813ece7cece9d1591dd574158f4482
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843404"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56409679"
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
@@ -39,11 +39,11 @@ Az alkalmazás létrehozásához tegye a következőket:
 
 ## <a name="add-msal-to-your-project"></a>Az MSAL hozzáadása a projekthez
 
-1. A Visual Studióban válassza ki a **eszközök** > **NuGet-Csomagkezelő**> **Package Manager Console**.
+1. A Visual Studióban válassza a **Tools** (Eszközök)  > **NuGet Package Manager** (NuGet-csomagkezelő)> **Package Manager Console** (Csomagkezelő konzol) elemet.
 2. A Package Manager Console ablakban illessze be a következő Azure PowerShell-parancsot:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre
+    Install-Package Microsoft.Identity.Client
     ```
 
     > [!NOTE] 

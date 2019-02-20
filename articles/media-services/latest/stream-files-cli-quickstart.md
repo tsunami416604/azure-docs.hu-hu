@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 02/15/2019
 ms.author: juliako
-ms.openlocfilehash: c0b1f3fb854f4ca553d24ed601749cf91c2b5f28
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: be1f65b291613997466d9c82782256dc28a5590f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339804"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417397"
 ---
 # <a name="quickstart-stream-video-files---cli"></a>Gyors útmutató: Videófájlok streamelése – parancssori felület
 
@@ -181,12 +181,15 @@ Ehhez hasonló kapott választ:
 
 A Media Services v3-as a videók feldolgozásához feladatok elküldésekor meg kell mondanunk a Media Services, hogy hol található a bemeneti videó. A beállításokat egyik HTTPS URL-címet adja meg a feladat bemeneti (ahogyan az ebben a példában látható). 
 
+Futtatásakor `az ams job start`, a feladat kimenetének állíthat be egy címkét. A címke később azonosíthatja, hogy a kimeneti adategység Mi az a használható. 
+
+- A címkét rendel egy értéket, ha "--kimeneti-objektumok," assetname = label "
+- A címke nem rendel egy értéket, ha "--kimeneti-objektumok," assetname = ".
+  Figyelje meg, hogy, adja hozzá a "=" való a `output-assets`. 
+
 ```azurecli
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
 ```
-
-> [!TIP]
-> Figyelje meg, hogy fel kell vennie "=" a kimeneti eszközök nevét, akkor is, ha a feladat nem lát a műveletfelirat tulajdonságra jelenít meg.
 
 Ehhez hasonló kapott választ:
 
@@ -318,7 +321,7 @@ Másolás a `hostName` értéket. Ebben az esetben: `amsaccount-usw22.streaming.
 
 `https://amsaccount-usw22.streaming.media.azure.net/7f19e783-927b-4e0a-a1c0-8a140c49856c/ignite.ism/manifest(format=m3u8-aapl)`
 
-## <a name="play-back-with-azure-media-player"></a>Az Azure Media Player lejátszása
+## <a name="test-playback-with-azure-media-player"></a>Az Azure Media Player lejátszás tesztelése
 
 Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez. 
 
@@ -327,6 +330,8 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 
 1. Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. Az a **URL-cím:** mezőbe illessze be az előző szakaszban létrehozott URL-CÍMÉT. 
+
+  A Dash, HLS, beillesztheti az URL-címet, vagy Smooth formátum és az Azure Media Player átvált egy megfelelő streamelési protokoll az eszközre lejátszás céljából automatikusan.
 3. Kattintson az **Update Player** (Lejátszó frissítése) elemre.
 
 Az Azure Media Player használható tesztelésre, az éles környezetben való használata azonban nem ajánlott. 
@@ -340,6 +345,11 @@ Hajtsa végre a következő CLI-parancsot:
 ```azurecli
 az group delete --name amsResourceGroup
 ```
+
+## <a name="see-also"></a>Lásd még
+
+Lásd: [hibakódok feladat](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+
 
 ## <a name="next-steps"></a>További lépések
 

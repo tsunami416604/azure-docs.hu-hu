@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: dfcbbacc5df394e0d2a515d557d655af0ea44d11
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dbb94e0dbcb1dccf8ecbc60bca47b2cc3533297c
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169972"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429740"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -220,8 +220,6 @@ Egy Azure-beli virtuális hálózatok hálózati forgalmához szabályozhatja a 
 * **Hálózati virtuális berendezések** replikálni, például a tűzfalak és az útválasztók eszközök működésével. További információkért lásd: a [hálózati berendezések](https://azure.microsoft.com/solutions/network-appliances) dokumentumot.
 
 Felügyelt szolgáltatásként HDInsight a HDinsight állapota nem korlátozott hozzáférésre van szüksége, és felügyeleti szolgáltatásokat, mind a bejövő és kimenő forgalmat a virtuális hálózatról. Az NSG-k és az udr-EK használata esetén győződjön meg róla, hogy ezek a szolgáltatások továbbra is kommunikál HDInsight-fürt.
-
-HDInsight szolgáltatásokat több portra tesz elérhetővé. Virtuális berendezés tűzfalat használ, amikor engedélyeznie kell a forgalom a portokon ezeket a szolgáltatásokat használni. További információkért tekintse meg a [szükséges portok] szakaszt.
 
 ### <a id="hdinsight-ip"></a> A hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight
 
