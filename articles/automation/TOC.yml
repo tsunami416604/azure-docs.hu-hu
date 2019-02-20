@@ -81,28 +81,49 @@ items:
     - name: Szerepköralapú hozzáférés-vezérlés kezelése
       displayName: RBAC
       href: automation-role-based-access-control.md
-  - name: Runbookok létrehozása
+  - name: Runbookok
     items:
+    - name: Runbookok kezelése
+      href: manage-runbooks.md
     - name: Runbook-típusok
       displayName: graphical, python, powershell, powershell workflow
       href: automation-runbook-types.md
-    - name: Runbookok létrehozása és importálása
-      href: automation-creating-importing-runbook.md
-    - name: Grafikus runbook létrehozása
-      href: automation-first-runbook-graphical.md
-    - name: PowerShell-runbook létrehozása
-      href: automation-first-runbook-textual-powershell.md
-    - name: PowerShell-alapú munkafolyamati runbook létrehozása
-      href: automation-first-runbook-textual.md
-    - name: Python-runbook létrehozása
-      href: automation-first-runbook-textual-python2.md
-    - name: Szöveges runbookok szerkesztése
-      displayName: powershell
-      href: automation-edit-textual-runbook.md
-    - name: Grafikus runbookok szerkesztése
-      href: automation-graphical-authoring-intro.md
-    - name: Runbook tesztelése
-      href: automation-testing-runbook.md
+    - name: Runbookok létrehozása
+      items:
+      - name: Grafikus runbook
+        href: automation-first-runbook-graphical.md
+      - name: PowerShell-alapú runbook
+        href: automation-first-runbook-textual-powershell.md
+      - name: PowerShell-alapú munkafolyamati runbook
+        href: automation-first-runbook-textual.md
+      - name: Python-runbook
+        href: automation-first-runbook-textual-python2.md
+      - name: Runbookok létrehozása a grafikus runbook SDK-val
+        href: graphical-runbook-sdk.md
+    - name: Runbookok szerkesztése
+      items:
+      - name: Szöveges runbookok szerkesztése
+        displayName: powershell
+        href: automation-edit-textual-runbook.md
+      - name: Grafikus runbookok szerkesztése
+        href: automation-graphical-authoring-intro.md
+    - name: Runbook indítása
+      href: start-runbooks.md
+    - name: Runbook indítása webhookból
+      href: automation-webhooks.md
+    - name: Runbook bemeneti paraméterei
+      displayName: input,json
+      href: runbook-input-parameters.md
+    - name: Hibakezelés grafikus runbookokban
+      href: automation-runbook-graphical-error-handling.md
+    - name: Runbook-feladat nyomon követése
+      displayName: fair share, activity log
+      href: automation-runbook-execution.md
+    - name: Azure Automation-adatok kezelése
+      displayName: backup
+      href: automation-managing-data.md
+    - name: Python 2-csomagok kezelése
+      href: python-packages.md
     - name: A PowerShell-munkafolyamat megismerése
       href: automation-powershell-workflow.md
     - name: Gyermek runbookok
@@ -116,28 +137,6 @@ items:
     - name: Verziókövetés integrálása – régi
       href: automation-source-control-integration-legacy.md
       displayname: github
-    - name: Runbookok létrehozása a grafikus runbook SDK-val
-      href: graphical-runbook-sdk.md
-  - name: Automatizálás
-    items:
-    - name: Runbook indítása
-      href: automation-starting-a-runbook.md
-    - name: Runbook indítása webhookból
-      href: automation-webhooks.md
-    - name: Runbook bemeneti paramétereinek konfigurálása
-      href: automation-runbook-input-parameters.md
-    - name: Hibakezelés grafikus runbookokban
-      href: automation-runbook-graphical-error-handling.md
-    - name: Runbook-feladat nyomon követése
-      displayName: fair share, activity log
-      href: automation-runbook-execution.md
-    - name: Azure Automation-adatok kezelése
-      displayName: backup
-      href: automation-managing-data.md
-    - name: JSON-objektum továbbítása Azure Automation-runbookba
-      href: automation-pass-json-string.md
-    - name: Python 2-csomagok kezelése
-      href: python-packages.md
   - name: hibrid runbook-feldolgozó
     items:
     - name: Hibrid runbook-feldolgozó – áttekintés
@@ -205,12 +204,6 @@ items:
       href: automation-create-alert-triggered-runbook.md
     - name: Amazon-webszolgáltatásbeli virtuális gép létrehozása
       href: automation-scenario-aws-deployment.md
-    - name: Forráskezelés integrálása a GitHub Enterprise-zal
-      displayName: CI, runbooks
-      href: automation-scenario-source-control-integration-with-github-ent.md
-    - name: Verziókövetés integrálása az Azure DevOpsszal
-      displayName: VSTS, CI, runbooks
-      href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban
       href: automation-deploy-template-runbook.md
     - name: Az Azure Automation integrálása az Event Grid és a Microsoft Teams szolgáltatással
@@ -292,9 +285,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-automation
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: a5886c5af9db6945fe33efd8198b5527f580d297
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e35c51bb1d82f2c5eda708ab8bce71c2bf5b69b7
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004572"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417023"

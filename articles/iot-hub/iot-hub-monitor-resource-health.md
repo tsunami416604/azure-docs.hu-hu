@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: 3b56097f8805b4c6d95256ae1753daf5ded266fb
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8c575c6d34543cbd8f692c64b43cf738b4c22617
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888396"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415629"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának monitorozásához és a problémák gyorsan diagnosztizálása
 
@@ -302,12 +302,118 @@ A közvetlen metódusok kategória nyomon követi a kérés-válasz interakciók
             "category": "DirectMethods",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"deviceId\":\"<deviceId>\", \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
+            "properties": "{\"deviceId\":<messageSize>, \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
             "location": "Resource location"
         }
     ]
 }
 ```
+
+#### <a name="distributed-tracing-preview"></a>Elosztott nyomkövetési (előzetes verzió)
+
+Kategória elosztott nyomkövetést korrelációs azonosítók, amelyek a nyomkövetési környezet fejléc üzenetek követi nyomon. Ezek a naplók teljes engedélyezéséhez ügyféloldali kóddal frissíteni kell a következő [elemzés és diagnosztizálhatja a IoT alkalmazások – teljes körű az IoT Hub elosztott nyomkövetést (előzetes verzió)](iot-hub-distributed-tracing.md).
+
+Vegye figyelembe, hogy `correlationId` , és megfelelnek a [W3C nyomkövetési környezet](https://github.com/w3c/trace-context) javaslatot, ha tartalmaz egy `trace-id` , valamint egy `span-id`. 
+
+##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C (device-to-cloud) logs
+
+Az IoT Hub tartalmaz tulajdonságokat érvényes nyomkövetési üzenet érkezik a IoT Hub ebbe a naplófájlba rögzíti. 
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubD2C",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Receive message success",
+            "durationMs": "",
+            "properties": "{\"messageSize\": 1, \"deviceId\":\"<deviceId>\", \"callerLocalTimeUtc\": : \"2017-02-22T03:27:28.633Z\", \"calleeLocalTimeUtc\": \"2017-02-22T03:27:28.687Z\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+Itt `durationMs` rendszer nem számítja ki, az IoT Hub órája nem lehet az eszköz órája szinkronban, és így egy időtartamának kiszámítása félrevezető lehet. Javasoljuk, hogy írás logic használatával a az időbélyegeket az a `properties` adatforgalmi csúcsokhoz rögzítheti az eszközről a felhőbe késés szakaszban.
+
+| Tulajdonság | Típus | Leírás |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **messageSize** | Egész szám | A mérete (bájt) eszköz – felhő üzenetek |
+| **deviceId** | ASCII 7 bites alfanumerikus karakterekből álló karakterlánc | Az eszköz identitásának |
+| **callerLocalTimeUtc** | UTC-időbélyeg | Az üzenet jelentése szerint az eszköz helyi órája létrehozásának idejét |
+| **calleeLocalTimeUtc** | UTC-időbélyeg | Az átjáró az IoT Hub, IoT Hub szolgáltatás oldali óra által jelentett üzenet érkezés időpontja |
+
+##### <a name="iot-hub-ingress-logs"></a>Az IoT Hub belépési naplók
+
+Az IoT Hub ebbe a naplófájlba rögzíti, amikor érvényes nyomkövetési tulajdonságait tartalmazó üzenetet ír a belső vagy beépített eseményközpontba.
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubIngress",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Ingress message success",
+            "durationMs": "10",
+            "properties": "{\"isRoutingEnabled\": \"true\", \"parentSpanId\":\"0144d2590aacd909\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+Az a `properties` szakaszban Ez a napló tartalmaz további információt a bejövő üzenet
+
+| Tulajdonság | Típus | Leírás |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **isRoutingEnabled** | String | IGAZ vagy hamis, azt jelzi, hogy üzenet-útválasztása engedélyezve van-e az IoT hubban |
+| **parentSpanId** | String | A [span-id](https://w3c.github.io/trace-context/#parent-id) a szülő üzenet, amely ebben az esetben lenne a D2C üzenet nyomkövetés |
+
+##### <a name="iot-hub-egress-logs"></a>Az IoT Hub kimenő forgalmi naplók
+
+IoT Hub rekordok naplózása Ez mikor [útválasztási](iot-hub-devguide-messages-d2c.md) engedélyezve van, és az üzenet egy [végpont](iot-hub-devguide-endpoints.md). Útválasztás nem engedélyezett, ha az IoT Hub ezt a naplót nem rögzíti.
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubEgress",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-98ac3578922acd26-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Egress message success",
+            "durationMs": "10",
+            "properties": "{\"endpointType\": \"EventHub\", \"endpointName\": \"myEventHub\", \"parentSpanId\":\"349810a9bbd28730\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+Az a `properties` szakaszban Ez a napló tartalmaz további információt a bejövő üzenet
+
+| Tulajdonság | Típus | Leírás |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **endpointName** | String | Az útválasztási végpont neve |
+| **EndpointType** | String | Az útválasztási végpont típusa |
+| **parentSpanId** | String | A [span-id](https://w3c.github.io/trace-context/#parent-id) a szülő üzenet, amely ebben az esetben lenne az IoT Hub bejövő üzenet nyomkövetési |
+
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Az Azure Event Hubs naplóinak olvasása
 

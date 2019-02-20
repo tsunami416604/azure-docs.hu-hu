@@ -7,71 +7,77 @@ items:
     href: introduction.md
 - name: Gyors útmutatók
   items:
-  - name: SQL
-    items:
-    - name: .NET
-      href: create-sql-api-dotnet.md
-    - name: .NET előzetes verzió
-      href: create-sql-api-dotnet-preview.md
-    - name: Java
-      href: create-sql-api-java.md
-    - name: Node.js
-      href: create-sql-api-nodejs.md
-    - name: Python
-      href: create-sql-api-python.md
-    - name: Xamarin
-      href: create-sql-api-xamarin-dotnet.md
-  - name: MongoDB-hez készült Azure Cosmos DB API
-    items:
-    - name: .NET
-      href: create-mongodb-dotnet.md
-    - name: Java
-      href: create-mongodb-java.md
-    - name: Node.js
-      href: create-mongodb-nodejs.md
-    - name: Python
-      href: create-mongodb-flask.md
-    - name: Xamarin
-      href: create-mongodb-xamarin.md
-    - name: Golang
-      href: create-mongodb-golang.md
-  - name: Gremlin
-    items:
-    - name: Gremlin-konzol
-      href: create-graph-gremlin-console.md
-    - name: .NET
-      href: create-graph-dotnet.md
-    - name: Java
-      href: create-graph-java.md
-    - name: Node.js
-      href: create-graph-nodejs.md
-    - name: Python
-      href: create-graph-python.md
-    - name: PHP
-      href: create-graph-php.md
-  - name: Cassandra
-    items:
-    - name: .NET
-      href: create-cassandra-dotnet.md
-    - name: Java
-      href: create-cassandra-java.md
-    - name: Node.js
-      href: create-cassandra-nodejs.md
-    - name: Python
-      href: create-cassandra-python.md
-  - name: Tábla
-    items:
-    - name: .NET
-      href: create-table-dotnet.md
-    - name: Java
-      href: create-table-java.md
-    - name: Node.js
-      href: create-table-nodejs.md
-    - name: Python
-      href: create-table-python.md
+  - name: .NET
+    href: create-sql-api-dotnet.md
+  - name: .NET előzetes verzió
+    href: create-sql-api-dotnet-preview.md
+  - name: Java
+    href: create-sql-api-java.md
+  - name: Node.js
+    href: create-sql-api-nodejs.md
+  - name: Python
+    href: create-sql-api-python.md
+  - name: Xamarin
+    href: create-sql-api-xamarin-dotnet.md
   expanded: true
+- name: Oktatóanyagok
+  items:
+  - name: 1 – Fiók létrehozása
+    items:
+    - name: Konzolalkalmazás létrehozása
+      items:
+      - name: .NET
+        href: sql-api-get-started.md
+      - name: .NET előzetes verzió
+        href: sql-api-dotnet-get-started-preview.md
+      - name: .NET Core
+        href: sql-api-dotnetcore-get-started.md
+      - name: .NET Core előzetes verzió
+        href: sql-api-dotnet-core-get-started-preview.md
+      - name: Java
+        href: sql-api-java-get-started.md
+      - name: Async Java
+        href: sql-api-async-java-get-started.md
+      - name: Node.js
+        href: sql-api-nodejs-get-started.md
+    - name: Webalkalmazás készítése
+      items:
+      - name: .NET
+        href: sql-api-dotnet-application.md
+      - name: .NET előzetes verzió
+        href: sql-api-dotnet-application-preview.md
+      - name: Java
+        href: sql-api-java-application.md
+      - name: Node.js
+        href: sql-api-nodejs-application.md
+      - name: Xamarin
+        href: mobile-apps-with-xamarin.md
+  - name: 2 – Adatok migrálása
+    href: import-data.md
+  - name: 3 – Adatok lekérdezése
+    href: tutorial-query-sql-api.md
+  - name: 4 – Adatok globális elosztása
+    href: tutorial-global-distribution-sql-api.md
+- name: Példák
+  items:
+  - name: .NET-minták
+    href: sql-api-dotnet-samples.md
+  - name: Java-példák
+    href: sql-api-java-samples.md
+  - name: Aszinkron Java-példák
+    href: sql-api-async-java-samples.md
+  - name: Node.js-példák
+    href: sql-api-nodejs-samples.md
+  - name: Python-példák
+    href: sql-api-python-samples.md
+  - name: PowerShell
+    href: powershell-samples.md
+  - name: Azure CLI
+    href: cli-samples.md
 - name: Alapelvek
   items:
+  - name: Dokumentumadatok modellezése
+    href: modeling-data.md
   - name: Globális terjesztés
     items:
     - name: Áttekintés
@@ -190,122 +196,28 @@ items:
       href: online-backup-and-restore.md
     - name: Megfelelőség
       href: compliance.md
-- name: Többmodelles API-k
+- name: Cassandra, MongoDB és egyéb API-k
   items:
-  - name: SQL API
-    items:
-    - name: Dokumentumadatok modellezése
-      href: modeling-data.md
-    - name: Oktatóanyagok
-      items:
-      - name: 1 – Fiók létrehozása
-        items:
-        - name: Konzolalkalmazás létrehozása
-          items:
-          - name: .NET
-            href: sql-api-get-started.md
-          - name: .NET előzetes verzió
-            href: sql-api-dotnet-get-started-preview.md
-          - name: .NET Core
-            href: sql-api-dotnetcore-get-started.md
-          - name: .NET Core előzetes verzió
-            href: sql-api-dotnet-core-get-started-preview.md
-          - name: Java
-            href: sql-api-java-get-started.md
-          - name: Async Java
-            href: sql-api-async-java-get-started.md
-          - name: Node.js
-            href: sql-api-nodejs-get-started.md
-        - name: Webalkalmazás készítése
-          items:
-          - name: .NET
-            href: sql-api-dotnet-application.md
-          - name: .NET előzetes verzió
-            href: sql-api-dotnet-application-preview.md
-          - name: Java
-            href: sql-api-java-application.md
-          - name: Node.js
-            href: sql-api-nodejs-application.md
-          - name: Xamarin
-            href: mobile-apps-with-xamarin.md
-      - name: 2 – Adatok migrálása
-        href: import-data.md
-      - name: 3 – Adatok lekérdezése
-        href: tutorial-query-sql-api.md
-      - name: 4 – Adatok globális elosztása
-        href: tutorial-global-distribution-sql-api.md
-    - name: Példák
-      items:
-      - name: .NET-minták
-        href: sql-api-dotnet-samples.md
-      - name: Java-példák
-        href: sql-api-java-samples.md
-      - name: Aszinkron Java-példák
-        href: sql-api-async-java-samples.md
-      - name: Node.js-példák
-        href: sql-api-nodejs-samples.md
-      - name: Python-példák
-        href: sql-api-python-samples.md
-      - name: PowerShell
-        href: powershell-samples.md
-      - name: Azure CLI
-        href: cli-samples.md
-    - name: Útmutatók
-      items:
-      - name: Lekérdezési teljesítmény hangolása
-        href: sql-api-query-metrics.md
-      - name: Adattípusok
-        items:
-        - name: DateTime
-          href: working-with-dates.md
-        - name: Térinformatikai
-          href: geospatial.md
-        - name: Tömeges végrehajtó – .NET-kódtár
-          href: bulk-executor-dot-net.md
-        - name: Tömeges végrehajtó – Java-kódtár
-          href: bulk-executor-java.md
-      - name: Java fejlesztése
-        items:
-        - name: A Spring Boot Starter használata
-          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
-        - name: A Spring Data Apache Cassandra API használata
-          href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
-        - name: A Spring Data Gremlin Starter használata
-          href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
-        - name: A Spring Data MongoDB API használata
-          href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-    - name: Referencia
-      items:
-      - name: .NET
-        href: sql-api-sdk-dotnet.md
-      - name: .NET Core
-        href: sql-api-sdk-dotnet-core.md
-      - name: .NET változáscsatorna-kódtár
-        href: sql-api-sdk-dotnet-changefeed.md
-      - name: .NET tömeges végrehajtói kódtár
-        href: sql-api-sdk-bulk-executor-dot-net.md
-      - name: Java
-        href: sql-api-sdk-java.md
-      - name: Java tömeges végrehajtói kódtár
-        href: sql-api-sdk-bulk-executor-java.md
-      - name: Async Java
-        href: sql-api-sdk-async-java.md
-      - name: Node.js
-        href: sql-api-sdk-node.md
-      - name: Python
-        href: sql-api-sdk-python.md
-      - name: REST
-        href: /rest/api/cosmos-db/
-      - name: REST erőforrás-szolgáltató
-        href: /rest/api/cosmos-db-resource-provider/
-      - name: Resource Manager-sablon
-        href: /azure/templates/microsoft.documentdb/databaseaccounts
   - name: MongoDB-hez készült Azure Cosmos DB API
     items:
     - name: Bevezetés
       href: mongodb-introduction.md
     - name: Vonalprotokoll-támogatás
       href: mongodb-feature-support.md
+    - name: Gyors útmutatók
+      items:
+      - name: .NET
+        href: create-mongodb-dotnet.md
+      - name: Java
+        href: create-mongodb-java.md
+      - name: Node.js
+        href: create-mongodb-nodejs.md
+      - name: Python
+        href: create-mongodb-flask.md
+      - name: Xamarin
+        href: create-mongodb-xamarin.md
+      - name: Golang
+        href: create-mongodb-golang.md
     - name: Oktatóanyagok
       items:
       - name: 1 – Fiók létrehozása
@@ -350,12 +262,29 @@ items:
         href: mongodb-time-to-live.md
       - name: Adatindexelés felügyelete
         href: mongodb-indexing.md
+      - name: A Spring Data tárolása és kezelése
+        href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
+        maintainContext: true
   - name: Gremlin API
     items:
     - name: Bevezetés
       href: graph-introduction.md
     - name: Vonalprotokoll-támogatás
       href: gremlin-support.md
+    - name: Gyors útmutatók
+      items:
+      - name: Gremlin-konzol
+        href: create-graph-gremlin-console.md
+      - name: .NET
+        href: create-graph-dotnet.md
+      - name: Java
+        href: create-graph-java.md
+      - name: Node.js
+        href: create-graph-nodejs.md
+      - name: Python
+        href: create-graph-python.md
+      - name: PHP
+        href: create-graph-php.md
     - name: Oktatóanyagok
       items:
       - name: 1 – Adatok lekérdezése
@@ -366,12 +295,25 @@ items:
         href: bulk-executor-graph-dotnet.md
       - name: Gráfadatok particionálása
         href: graph-partitioning.md
+      - name: A Spring Data tárolása és kezelése
+        href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
+        maintainContext: true
   - name: Cassandra API
     items:
     - name: Bevezetés
       href: cassandra-introduction.md
     - name: Vonalprotokoll-támogatás
       href: cassandra-support.md
+    - name: Gyors útmutatók
+      items:
+      - name: .NET
+        href: create-cassandra-dotnet.md
+      - name: Java
+        href: create-cassandra-java.md
+      - name: Node.js
+        href: create-cassandra-nodejs.md
+      - name: Python
+        href: create-cassandra-python.md
     - name: Oktatóanyagok
       items:
       - name: 1 – Fiók és adatbázis létrehozása
@@ -382,32 +324,47 @@ items:
         href: cassandra-api-query-data.md
       - name: 4 – Adatok migrálása
         href: cassandra-import-data.md
-    - name: Cassandra és Spark
+    - name: Útmutatók
       items:
-      - name: Bevezetés
-        href: cassandra-spark-generic.md
-      - name: Kapcsolódás Databricks használatával
-        href: cassandra-spark-databricks.md
-      - name: Kapcsolódás HDInsight használatával
-        href: cassandra-spark-hdinsight.md
-      - name: Kulcstér és tábla létrehozása
-        href: cassandra-spark-ddl-ops.md
-      - name: Adat beszúrása
-        href: cassandra-spark-create-ops.md
-      - name: Adatok olvasása
-        href: cassandra-spark-read-ops.md
-      - name: Adatok beszúrása és frissítése (upsert)
-        href: cassandra-spark-upsert-ops.md
-      - name: Adat törlése
-        href: cassandra-spark-delete-ops.md
-      - name: Összesítési műveletek
-        href: cassandra-spark-aggregation-ops.md
-      - name: Táblaadatok másolása
-        href: cassandra-spark-table-copy-ops.md
+      - name: A Spring Data tárolása és kezelése
+        href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
+        maintainContext: true
+      - name: Cassandra és Spark
+        items:
+        - name: Bevezetés
+          href: cassandra-spark-generic.md
+        - name: Kapcsolódás Databricks használatával
+          href: cassandra-spark-databricks.md
+        - name: Kapcsolódás HDInsight használatával
+          href: cassandra-spark-hdinsight.md
+        - name: Kulcstér és tábla létrehozása
+          href: cassandra-spark-ddl-ops.md
+        - name: Adat beszúrása
+          href: cassandra-spark-create-ops.md
+        - name: Adatok olvasása
+          href: cassandra-spark-read-ops.md
+        - name: Adatok beszúrása és frissítése (upsert)
+          href: cassandra-spark-upsert-ops.md
+        - name: Adat törlése
+          href: cassandra-spark-delete-ops.md
+        - name: Összesítési műveletek
+          href: cassandra-spark-aggregation-ops.md
+        - name: Táblaadatok másolása
+          href: cassandra-spark-table-copy-ops.md
   - name: Tábla API
     items:
     - name: Bevezetés
       href: table-introduction.md
+    - name: Gyors útmutatók
+      items:
+      - name: .NET
+        href: create-table-dotnet.md
+      - name: Java
+        href: create-table-java.md
+      - name: Node.js
+        href: create-table-nodejs.md
+      - name: Python
+        href: create-table-python.md
     - name: Oktatóanyagok
       items:
       - name: 1 – Fiók létrehozása
@@ -418,12 +375,6 @@ items:
         href: tutorial-query-table.md
       - name: 4 – Adatok globális elosztása
         href: tutorial-global-distribution-table.md
-    - name: Útmutatók
-      items:
-      - name: Alkalmazások létrehozása Table API használatával
-        href: table-support.md
-      - name: Tervezési útmutató a Table Storage-hoz
-        href: table-storage-design-guide.md
     - name: Példák
       items:
       - name: .NET
@@ -442,6 +393,12 @@ items:
         href: table-storage-how-to-use-ruby.md
       - name: F#
         href: https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
+    - name: Útmutatók
+      items:
+      - name: Alkalmazások létrehozása Table API használatával
+        href: table-support.md
+      - name: Tervezési útmutató a Table Storage-hoz
+        href: table-storage-design-guide.md
     - name: Referencia
       items:
       - name: .NET
@@ -543,10 +500,18 @@ items:
       href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
   - name: Az Azure DevOps CI-/CD-folyamat beállítása
     href: tutorial-setup-ci-cd.md
+  - name: Adattípusok
+    items:
+    - name: DateTime
+      href: working-with-dates.md
+    - name: Térinformatikai
+      href: geospatial.md
   - name: Ajánlott eljárások
     items:
     - name: Teljesítménnyel kapcsolatos tippek
       items:
+      - name: Lekérdezési teljesítmény hangolása
+        href: sql-api-query-metrics.md
       - name: Teljesítménnyel kapcsolatos tippek .NET SDK-hoz
         href: performance-tips.md
       - name: Teljesítménnyel kapcsolatos tippek Java SDK-hoz
@@ -586,7 +551,8 @@ items:
     - name: Az Azure Event Hubs és az Azure Storage
       href: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md
     - name: A Spring Boot Starter használata
-      href: https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json
+      href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
+      maintainContext: true
     - name: Lambda architektúra
       href: lambda-architecture.md
     - name: Azure Databricks(Spark-összekötő)
@@ -599,10 +565,40 @@ items:
     items:
     - name: A tömeges végrehajtói kódtár ismertetése
       href: bulk-executor-overview.md
+    - name: Tömeges végrehajtó – .NET-kódtár
+      href: bulk-executor-dot-net.md
+    - name: Tömeges végrehajtó – Java-kódtár
+      href: bulk-executor-java.md
   - name: Hibaelhárítás
     items:
     - name: Java Async SDK-hibák elhárítása
       href: troubleshoot-java-async-sdk.md
+- name: Referencia
+  items:
+  - name: .NET
+    href: sql-api-sdk-dotnet.md
+  - name: .NET Core
+    href: sql-api-sdk-dotnet-core.md
+  - name: .NET változáscsatorna-kódtár
+    href: sql-api-sdk-dotnet-changefeed.md
+  - name: .NET tömeges végrehajtói kódtár
+    href: sql-api-sdk-bulk-executor-dot-net.md
+  - name: Java
+    href: sql-api-sdk-java.md
+  - name: Java tömeges végrehajtói kódtár
+    href: sql-api-sdk-bulk-executor-java.md
+  - name: Async Java
+    href: sql-api-sdk-async-java.md
+  - name: Node.js
+    href: sql-api-sdk-node.md
+  - name: Python
+    href: sql-api-sdk-python.md
+  - name: REST
+    href: /rest/api/cosmos-db/
+  - name: REST erőforrás-szolgáltató
+    href: /rest/api/cosmos-db-resource-provider/
+  - name: Resource Manager-sablon
+    href: /azure/templates/microsoft.documentdb/databaseaccounts
 - name: További források
   items:
   - name: Fejlessze a készségeit a Microsoft Learnnel
@@ -631,9 +627,9 @@ items:
       href: use-cases.md
     - name: Közösségimédia-alkalmazások
       href: social-media-apps.md
-ms.openlocfilehash: 72a6dced29f09379453d0e33131f78e875b2c9f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f2f061aebd996f62f793ba515f574c8a3748b87f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163496"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429113"

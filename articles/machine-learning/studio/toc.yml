@@ -64,7 +64,7 @@ items:
     - name: Adatok használata helyszíni SQL-ből
       displayName: on-premises
       href: use-data-from-an-on-premises-sql-server.md
-  - name: Modellek létrehozása és betanítása
+  - name: Modellek betanítása
     items:
     - name: Életciklus-felügyelet kipróbálása
       href: version-control.md
@@ -87,6 +87,12 @@ items:
         href: interpret-model-results.md
       - name: Hibakeresés
         href: debug-models.md
+    - name: Modellek újratanítása
+      items:
+      - name: „Új” webszolgáltatások
+        href: retrain-machine-learning-model.md
+      - name: Klasszikus webszolgáltatások
+        href: retrain-classic-web-service.md
     - name: Az R és a Python használata
       items:
       - name: Bevezetés az R nyelv használatába
@@ -132,12 +138,6 @@ items:
     - name: Végpontok létrehozása
       displayName: scale, scaling
       href: create-endpoint.md
-  - name: Modellek újratanítása
-    items:
-    - name: Új webszolgáltatás újratanítása és üzembe helyezése
-      href: retrain-machine-learning-model.md
-    - name: Klasszikus webszolgáltatás újratanítása és üzembe helyezése
-      href: retrain-classic-web-service.md
   - name: Modellek felhasználása
     items:
     - name: Áttekintés
@@ -146,11 +146,9 @@ items:
       href: consuming-from-excel.md
     - name: Excel-bővítmény használata
       href: excel-add-in-for-web-services.md
-    - name: Webalkalmazás-sablon használata
-      href: consume-web-service-with-web-app-template.md
     - name: Batch-készlet használata
       href: dedicated-capacity-for-bes-jobs.md
-  - name: Példák
+  - name: Használati esetek
     items:
     - name: Ügyfélforgalom
       href: azure-ml-customer-churn-scenario.md
@@ -158,12 +156,14 @@ items:
       href: text-analytics-module-tutorial.md
     - name: Elemzések migrálása Excelből a Studióba
       href: linear-regression-in-azure.md
-  - name: Studio-adatok megtekintése és törlése
-    displayName: export
-    href: export-delete-personal-data-dsr.md
-  - name: Katalógusadatok megtekintése és törlése
-    displayName: export
-    href: ai-gallery-control-personal-data-dsr.md
+  - name: Ügyféladatok törlése és exportálása
+    items:
+    - name: Studio-adatok
+      displayName: export
+      href: export-delete-personal-data-dsr.md
+    - name: Katalógusadatok
+      displayName: export
+      href: ai-gallery-control-personal-data-dsr.md
 - name: Referencia
   items:
   - name: Algoritmusokra és modulokra vonatkozó referenciák
@@ -188,9 +188,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Egyéni neurális hálózatok (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: c6d072a6e032fb4059b422d0778eb78b01d3706e
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6649d1c39bdb0a66018feff73f9e9d2b39064155
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327680"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430233"

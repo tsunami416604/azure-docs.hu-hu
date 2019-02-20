@@ -34,20 +34,30 @@ items:
     href: backup-rm-template-samples.md
 - name: Alapelvek
   items:
+  - name: Támogatási mátrixok
+    items:
+    - name: Az Azure Backup támogatási mátrixa
+      href: backup-support-matrix.md
+    - name: Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
+      href: backup-support-matrix-iaas.md
+    - name: A DPM/Azure Backup Server (MABS) támogatási mátrixa
+      href: backup-support-matrix-mabs-dpm.md
+    - name: A MARS-ügynök támogatási mátrixa
+      href: backup-support-matrix-mars-agent.md
+  - name: Gyakori kérdések (GYIK)
+    items:
+    - name: GYIK – Recovery Services-tárak
+      href: backup-azure-backup-faq.md
+    - name: GYIK – Azure-beli virtuális gépek biztonsági mentése
+      href: backup-azure-vm-backup-faq.md
+    - name: GYIK – A MARS-ügynök
+      href: backup-azure-file-folder-backup-faq.md
+    - name: GYIK – Az Azure Files biztonsági mentése
+      href: backup-azure-files-faq.md
+    - name: GYIK – Azure-beli virtuális gépeken futó SQL Server-adatbázisok biztonsági mentése
+      href: faq-backup-sql-server.md
   - name: Biztonsági mentési architektúra
     href: backup-architecture.md
-  - name: A biztonsági mentés támogatási mátrixa
-    href: backup-support-matrix.md
-  - name: GYIK
-    items:
-    - name: A Recovery Services-tárolókkal kapcsolatos gyakori kérdések
-      href: backup-azure-backup-faq.md
-    - name: Az Azure-beli virtuális gépek biztonsági mentésével kapcsolatos gyakori kérdések
-      href: backup-azure-vm-backup-faq.md
-    - name: A fájlok és mappák Azure Backup-ügynökkel végzett biztonsági mentésével kapcsolatos gyakori kérdések
-      href: backup-azure-file-folder-backup-faq.md
-    - name: A biztonsági mentési tár automatikus frissítése – GYIK
-      href: backup-upgrade-backup-vault.md
   - name: Szerepköralapú hozzáférés-vezérlés
     href: backup-rbac-rs-vault.md
   - name: Biztonsági szolgáltatások hibrid biztonsági mentésekhez
@@ -104,45 +114,39 @@ items:
     items:
     - name: Azure-fájlmegosztások biztonsági mentése
       href: backup-azure-files.md
-    - name: Azure-fájlmegosztások biztonsági mentése – GYIK
-      href: backup-azure-files-faq.md
-  - name: Azure-beli virtuális gépek
+  - name: Azure-beli virtuális gépek biztonsági mentése
     items:
-    - name: A virtuális gép előkészítése
+    - name: Azure-beli virtuális gépek biztonsági mentése
+      href: backup-azure-vms-introduction.md
+    - name: Azure-beli virtuális gépek biztonsági mentése és visszaállítása az Azure Backup Instant Restore-ral
+      href: backup-instant-restore-capability.md
+    - name: Azure-beli virtuális gépek biztonsági mentése
       items:
-      - name: A Resource Manager által telepített virtuális gépek előkészítése
-        href: backup-azure-arm-vms-prepare.md
-      - name: Linuxos virtuális gépek alkalmazáskonzisztens biztonsági mentései
-        href: backup-azure-linux-app-consistent.md
-    - name: A környezet megtervezése
-      items:
-      - name: Virtuális gépek biztonsági mentési infrastruktúrájának tervezése
-        href: backup-azure-vms-introduction.md
-    - name: Virtuális gépek biztonsági mentése
-      items:
-      - name: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóba
-        href: backup-azure-vms-first-look-arm.md
-      - name: Titkosított virtuális gépek biztonsági mentése
-        href: backup-azure-vms-encryption.md
-      - name: Virtuális gép biztonsági mentésének engedélyezése a virtuális gépek létrehozása során
+      - name: Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
         href: backup-during-vm-creation.md
-    - name: Virtuális gépek kezelése és monitorozása
+      - name: Azure-beli virtuális gép biztonsági mentése a virtuális gép beállításaiból
+        href: backup-azure-vms-first-look-arm.md
+      - name: Tároló üzembe helyezése és Azure-beli virtuális gépek biztonsági mentésének engedélyezése
+        href: backup-azure-arm-vms-prepare.md
+      - name: Titkosított Azure-beli virtuális gépek biztonsági mentése
+        href: backup-azure-vms-encryption.md
+      - name: Linux rendszerű Azure-beli virtuális gépek alkalmazáskonzisztens biztonsági mentésének konfigurálása
+        href: backup-azure-linux-app-consistent.md
+    - name: Azure-beli virtuális gépek biztonsági mentésének kezelése és monitorozása
       items:
-      - name: Azure-beli virtuális gépek biztonsági másolatainak kezelése az Azure Portalon
+      - name: Azure-beli virtuális gépek biztonsági mentésének kezelése
         href: backup-azure-manage-vms.md
       - name: Azure-beli virtuális gépek biztonsági mentésével kapcsolatos riasztások monitorozása
         href: backup-azure-monitor-vms.md
-    - name: Virtuális gépek adatainak visszaállítása
+    - name: Azure-beli virtuális gépek visszaállítása
       items:
+      - name: Azure-beli virtuális gépek visszaállítása a portálon
+        href: backup-azure-arm-restore-vms.md
       - name: Fájlok helyreállítása Azure-beli virtuális gépek biztonsági másolataiból
         href: backup-azure-restore-files-from-vm.md
-      - name: Virtuális gépek visszaállítása az Azure Portalon
-        href: backup-azure-arm-restore-vms.md
-      - name: Azonnali visszaállítás képessége
-        href: backup-instant-restore-capability.md
       - name: Titkosított virtuális gépek visszaállítása
         href: backup-azure-vms-encryption.md
-      - name: A titkosított virtuális gépekhez tartozó Key Vault-kulcs és titkos kulcs visszaállítása
+      - name: Titkosított virtuális gépek kulcsainak és titkos kódjának visszaállítása
         href: backup-azure-restore-key-secret.md
   - name: Azure Backup-jelentések konfigurálása
     items:
@@ -188,10 +192,14 @@ items:
       href: backup-azure-arm-userestapi-restoreazurevms.md
     - name: Azure Backup-feladatok felügyelete
       href: backup-azure-arm-userestapi-managejobs.md
-  - name: SQL Azure-beli virtuális gépeken
+  - name: SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
     items:
-    - name: SQL Database-adatbázis biztonsági mentése az Azure-ban
+    - name: SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
       href: backup-azure-sql-database.md
+    - name: Biztonsági másolattal rendelkező SQL Server-adatbázisok visszaállítása
+      href: restore-sql-database-azure-vm.md
+    - name: Biztonsági másolattal rendelkező SQL Server-adatbázisok kezelése
+      href: manage-monitor-sql-database-backup.md
   - name: Windows Server
     items:
     - name: Windows Serveren lévő fájlok és mappák biztonsági mentése
@@ -262,9 +270,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: ce83f8b6b1a0c7ccd9f00672f9aaf9bb33152fa8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 77f6bf8c4dd12c31f7461b273322b4ce41e3c58d
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997234"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428295"
