@@ -23,26 +23,6 @@ items:
     href: active-directory-passwords-reset-register.md
   - name: Új jelszó kérése
     href: user-help-reset-password.md
-- name: Biztonsági adatok (előzetes verzió) súgója
-  items:
-  - name: Áttekintés
-    href: user-help-security-info-overview.md
-  - name: Hitelesítő alkalmazás beállítása
-    href: security-info-setup-auth-app.md
-  - name: Szöveges üzenetküldés beállítása
-    href: security-info-setup-text-msg.md
-  - name: Telefonhívások beállítása
-    href: security-info-setup-phone-number.md
-  - name: E-mailek beállítása
-    href: security-info-setup-email.md
-  - name: Biztonsági kérdések beállítása
-    href: security-info-setup-questions.md
-  - name: Alkalmazásjelszavak kezelése
-    href: security-info-app-passwords.md
-  - name: Biztonsági adatok kezelése
-    href: security-info-manage-settings.md
-  - name: A bejelentkezés menete
-    href: user-help-sign-in.md?toc=./toc.json
 - name: A Microsoft Authenticator alkalmazás súgója
   items:
   - name: Áttekintés
@@ -60,21 +40,49 @@ items:
       href: user-help-auth-app-add-non-ms-account.md
     - name: Fiók manuális hozzáadása
       href: user-help-auth-app-add-account-manual.md
-    expanded: true
   - name: Bejelentkezés a Microsoft Authenticator alkalmazással
     href: user-help-auth-app-sign-in.md
   - name: Fiókok biztonsági mentése és helyreállítása
     href: user-help-auth-app-backup-recovery.md
   - name: GYIK
     href: user-help-auth-app-faq.md
-- name: A Saját alkalmazások portál súgója
+- name: Saját profil (előzetes verzió) portál súgója
   items:
   - name: Áttekintés
-    href: user-help-my-apps-overview.md
-  - name: Mi az a Saját alkalmazások portál?
-    href: active-directory-saas-access-panel-introduction.md
-  - name: Problémák elhárítása
-    href: active-directory-saas-access-panel-user-help.md
+    href: myprofile-portal-overview.md
+  - name: Biztonsági adatok kezelése
+    href: user-help-security-info-overview.md
+  - name: Bejelentkezési tevékenység megtekintése
+    href: myprofile-portal-recent-activity-page.md
+  - name: Saját szervezetek kezelése
+    href: myprofile-portal-organizations-page.md
+  - name: Csatlakoztatott eszközök kezelése
+    href: myprofile-portal-devices-page.md
+  - name: Adatvédelemmel kapcsolatos információk megtekintése
+    href: myprofile-portal-privacy-page.md
+- name: Biztonsági adatok (előzetes verzió) súgója
+  items:
+  - name: Áttekintés
+    href: user-help-security-info-overview.md
+  - name: Biztonsági adatok hozzáadása bejelentkezéskor
+    href: security-info-setup-signin.md
+  - name: Biztonsági adatok hozzáadási vagy frissítési metódusainak áttekintése
+    href: security-info-add-update-methods-overview.md
+    items:
+    - name: Hitelesítő alkalmazás beállítása
+      href: security-info-setup-auth-app.md
+    - name: Szöveges üzenetküldés beállítása
+      href: security-info-setup-text-msg.md
+    - name: Telefonhívások beállítása
+      href: security-info-setup-phone-number.md
+    - name: E-mailek beállítása
+      href: security-info-setup-email.md
+    - name: Biztonsági kérdések beállítása
+      href: security-info-setup-questions.md
+  - name: Alkalmazásjelszavak kezelése
+    href: security-info-app-passwords.md
+  - name: A bejelentkezés menete
+    href: user-help-sign-in.md?toc=./toc.json
 - name: Eszközkezelés súgója
   items:
   - name: Áttekintés
@@ -85,9 +93,17 @@ items:
     href: user-help-register-device-on-network.md
   - name: Az „Innen nem érheti el” üzenet hibaelhárítása
     href: user-help-device-remediation.md
-ms.openlocfilehash: 604b2c204f893bf0abaaec86f85e2159c17a8656
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+- name: A Saját alkalmazások portál súgója
+  items:
+  - name: Áttekintés
+    href: user-help-my-apps-overview.md
+  - name: Mi az a Saját alkalmazások portál?
+    href: active-directory-saas-access-panel-introduction.md
+  - name: Problémák elhárítása
+    href: active-directory-saas-access-panel-user-help.md
+ms.openlocfilehash: b7d8c297559736c9f22b118d50423f980302018d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816050"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452574"

@@ -1,24 +1,19 @@
 ---
 layout: LandingPage
 title: Az Azure-számlázás és -költségkezelés dokumentációja | Microsoft Docs
-description: Ismerje meg az Azure számlázását, a használat és költségek kezelését és monitorozását, valamint a fiókja és előfizetései kezelését.
+description: 'Ismerje meg az Azure számlázását, a használat és költségek kezelését és monitorozását, valamint a fiókja és előfizetései kezelését.'
 services: billing
 author: cwatson-cat
 manager: dougeby
-ms.assetid: ''
+ms.assetid: null
 ms.service: billing
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 05/24/2018
-ms.author: cwatson
-ms.openlocfilehash: ed792b03a79d2dcbb77142a51ae2641c8d0bd3ad
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583328"
+ms.date: 02/19/2019
+ms.author: banders
 ---
+
 # <a name="azure-billing-and-cost-management-documentation"></a>Az Azure-számlázás és -költségkezelés dokumentációja
 
 Ismerje meg az Azure számlázását, a használat és költségek monitorozását, valamint a fiókja és előfizetései kezelését.
@@ -50,9 +45,9 @@ Ismerje meg az Azure számlázását, a használat és költségek monitorozás�
                         <p>
                         <a href="/azure/billing/billing-getting-started">Váratlan költségek megelőzése</a><br/>
                         <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">Erőforráscímkék használata</a><br/>
-                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">Költségelemzés indítása – csak EA esetén</a><br/>
-                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">Költségvetések létrehozása és kezelése – csak EA esetén</a><br/>
-                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">Javaslatok optimalizálása – csak EA esetén</a>
+                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">Költségelemzés indítása</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">Költségvetések létrehozása és kezelése</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">Javaslatok optimalizálása</a>
                         </p>
                     </div>
                 </div>
@@ -184,5 +179,5 @@ Ismerje meg az Azure számlázását, a használat és költségek monitorozás�
             </div>
         </div>
     </li>
-    
+
 </ul>

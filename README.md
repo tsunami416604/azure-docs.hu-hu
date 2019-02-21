@@ -1,5 +1,7 @@
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure-dokumentáció
 
+> 2019. március 5. és 9. között a MicrosoftDocs/azure-docs adattár a jelenlegi Markdown-motorból a [Markdig](https://github.com/lunet-io/markdig) Markdown-motorba való áttelepítése fog zajlani. Az áttelepítés végrehajtása érdekében erre az időszakra kikapcsoljuk a nyilvános lekéréses kérelmek egyesítése felfüggesztésének lehetőségét.
+
 Üdvözli a [Microsoft Azure](https://azure.microsoft.com) nyílt forráskódú [dokumentációja](https://docs.microsoft.com/azure). Az INFORMÁCIÓS fájl ismerteti, hogyan járulhat hozzá a Microsoft Azure dokumentációjának bővítéséhez.
 
 ## <a name="getting-started"></a>Első lépések

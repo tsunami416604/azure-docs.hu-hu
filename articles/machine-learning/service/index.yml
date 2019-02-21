@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 46457711c1611e614f89a813b1856687beb27ac7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 372d3d88c0a160c1f294f07e58c5e11dbf5eac5e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311438"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456605"
 documentType: LandingData
 title: Az Azure Machine Learning szolgáltatás dokumentációja
 metadata:
   title: Az Azure Machine Learning szolgáltatás dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: Az Azure Machine Learning szolgáltatás egy felhőalapú környezet gépi tanulási modellek fejlesztésére, betanítására, üzembe helyezésére, kezelésére és nyomon követésére. Az Azure Machine Learning service teljes körűen támogatja az olyan nyílt forráskódú technológiákat, mint a Scikit-learn, a Tensorflow, a Pytorch vagy bármely egyéb Python-alapú keretrendszer. Rövid útmutatóinkból és oktatóanyagainkból megtudhatja, hogyan használhatja az Azure Machine Learning service-t a gépi tanulási munkafolyamatokhoz.
+  description: Az Azure Machine Learning szolgáltatás SDK-kat és szolgáltatásokat biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez, valamint az adatok előkészítéséhez. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. Első lépések az útmutatókkal és oktatóanyagokkal.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -17,12 +17,21 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 2/15/2019
+  ms.date: 2/19/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Az Azure Machine Learning szolgáltatás felhőalapú környezetet biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez, valamint az adatok előkészítéséhez. Az automatikus gépi tanulás használatával gyorsabbá válik az algoritmusok azonosítása és a hiperparaméterek finomhangolása. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind elérheti nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn, valamint a szolgáltatási SDK-k segítségével. Első lépések az útmutatókkal és oktatóanyagokkal.
+  description: Az Azure Machine Learning szolgáltatás SDK-kat és szolgáltatásokat biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez, valamint az adatok előkészítéséhez. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. Első lépések az útmutatókkal és oktatóanyagokkal.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: Videó megtekintése (9:58)
+    href: https://www.youtube.com/watch?v=GBDSBInvz08
+    width: 250
 sections:
 - title: 5 perces gyors útmutatók
   items:
@@ -51,9 +60,9 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://aka.ms/aml-sdk">Fő SDK (Python)</a>
-    - html: <a href="https://aka.ms/data-prep-sdk">Adat-előkészítési SDK (Python)</a>
-    - html: <a href="https://aka.ms/aml-monitoring-sdk">Monitorozási SDK (Python)</a>
+    - html: '<a href="https://aka.ms/aml-sdk">Fő Python SDK</a>: többek között fő funkciók, automatizált gépi tanulás és folyamatok'
+    - html: '<a href="https://aka.ms/data-prep-sdk">Adatok előkészítése</a> a Python SDK-val: adatok előkészítése és átalakítása'
+    - html: '<a href="https://aka.ms/aml-monitoring-sdk">Monitorozás</a> a Python SDK-val: adatok gyűjtése üzembe helyezett webszolgáltatásokon'
 - title: Egyéb Azure Machine Learning-technológiák
   items:
   - type: list
