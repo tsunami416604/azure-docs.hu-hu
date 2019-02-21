@@ -1,28 +1,28 @@
 ---
 title: 'Gyors útmutató: Recognize speech, Java (Android) - Speech Services'
 titleSuffix: Azure Cognitive Services
-description: Megismerheti a beszédfelismerés használatát Androidon, Java nyelven a Speech Service SDK segítségével
+description: Ismerje meg, hogyan beszédfelismerést a Java Android rendszeren a Speech SDK-val
 services: cognitive-services
 author: fmegen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: ac5798d61ecd0a45f7939be928429ababdee406f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 938d48e5e13f73f584b91da03bab77ffc8814f35
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877456"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447616"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést a Java Android rendszeren a Speech SDK-val
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ebből a cikkből elsajátíthatja fogja, hogyan hozhat létre egy Java-alkalmazást az Android a Cognitive Services beszédfelismerő SDK a beszédfelismerés lefényképezze.
-Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK Maven csomag, az 1.2.0-s vagy annál újabb verzió és az Android Studio 3.1 alapul.
+Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK Maven csomag, a verzió 1.3.0 és az Android Studio 3.1 alapul.
 A Speech SDK jelenleg a 32/64 bites ARM, vagy Intel x86/x64 processzorokat használó Android-eszközökkel kompatibilis.
 
 > [!NOTE]
@@ -58,7 +58,7 @@ Az Android Studio előkészíti az új Android-projektet. Ezután úgy kell konf
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.2.0`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.3.0`.
 
 A beszédfelismerés SDK for Android van csomagolva, mint egy [AAR (Androidos függvénytár)](https://developer.android.com/studio/projects/android-library), amely tartalmazza a szükséges kódtárak és Android-engedélyek megadása kötelező.
 Egy Maven-adattárban üzemel, a következő helyen: https://csspeechstorage.blob.core.windows.net/maven/.
@@ -73,7 +73,7 @@ Készítse elő a projektet a Speech SDK használatára. A Project Structure (Pr
 
    ![A Project Structure (Projektstruktúra) ablak képernyőképe](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. A megnyíló ablakban adja meg az androidos Speech SDK nevét és verzióját: `com.microsoft.cognitiveservices.speech:client-sdk:1.2.0`. Ezután kattintson az **OK** gombra.
+1. A megnyíló ablakban adja meg az androidos Speech SDK nevét és verzióját: `com.microsoft.cognitiveservices.speech:client-sdk:1.3.0`. Ezután kattintson az **OK** gombra.
    A Speech SDK-nak ezek után meg kell jelennie a függőségek listáján, a következő módon:
 
    ![A Project Structure (Projektstruktúra) ablak képernyőképe](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

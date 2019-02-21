@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: c12c87524ac1b8d0be5b691d599510f8e4573317
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 7f0485221f0f29d08275f9508ba79e32c3f8924a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267325"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455438"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-workspace"></a>Hibaelhárítási útmutató: Létrehozás és csatlakozás az Azure Machine Learning Studio-munkaterülethez
 Ez az útmutató egyes megoldások gyakran közben kihívásokat állítja be az Azure Machine Learning Studio-munkaterületek.
@@ -39,31 +39,24 @@ A Machine Learning szolgáltatás egy storage-fiók adatok tárolására van sz�
 
 Az új Machine Learning Studio-munkaterület létrehozása után bejelentkezhet a Machine Learning Studio a munkaterület létrehozásához használt Microsoft-fiók használatával. Ha a hibaüzenetet tapasztal, "Munkaterület nem található" (az alábbi képernyőfelvételhez hasonlóan), használja a böngésző cookie-k törlése a következő lépéseket.
 
-![A munkaterület nem található][screen3]
+![A munkaterület nem található](media/troubleshooting-creating-ml-workspace/screen3.png)
 
 **Böngésző cookie-k törlése**
 
 1. Ha az Internet Explorer böngészőt használ, kattintson a **eszközök** gombra a jobb felső sarokban, majd **Internetbeállítások**.  
 
-   ![Internetbeállítások][screen4]
+   ![Internetbeállítások](media/troubleshooting-creating-ml-workspace/screen4.png)
 
 2. Alatt a **általános** lapra, majd **törlése...**
 
-   ![Általános lap][screen5]
+   ![Általános lap](media/troubleshooting-creating-ml-workspace/screen5.png)
 
 3. A a **böngészési előzmények törlése** párbeszédpanelen győződjön meg, hogy **cookie-k és webhelyadatok** van kiválasztva, majd kattintson **törlése**.
 
-   ![Törölje a cookie-k][screen6]
+   ![Törölje a cookie-k](media/troubleshooting-creating-ml-workspace/screen6.png)
 
-A cookie-kat a törlés után indítsa újra a böngészőt, és folytassa a a [Microsoft Azure Machine Learning](https://studio.azureml.net) lapot. Amikor a felhasználónevet és jelszót kéri, adja meg a Microsoft-fiók, amellyel a munkaterület létrehozása.
+A cookie-kat a törlés után indítsa újra a böngészőt, és folytassa a a [a Microsoft Azure Machine Learning Studio](https://studio.azureml.net) lapot. Amikor a felhasználónevet és jelszót kéri, adja meg a Microsoft-fiók, amellyel a munkaterület létrehozása.
 
 ## <a name="comments"></a>Megjegyzések
 
 Célunk, hogy a gépi tanulási élményt, zökkenőmentes, amennyire csak lehetséges. Tegye közzé a megjegyzések és a problémák a [Azure Machine Learning fórum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) kiszolgálhassuk, jobb.
-
-[screen1]:media/troubleshooting-creating-ml-workspace/screen1.png
-[screen2]:media/troubleshooting-creating-ml-workspace/screen2.png
-[screen3]:media/troubleshooting-creating-ml-workspace/screen3.png
-[screen4]:media/troubleshooting-creating-ml-workspace/screen4.png
-[screen5]:media/troubleshooting-creating-ml-workspace/screen5.png
-[screen6]:media/troubleshooting-creating-ml-workspace/screen6.png

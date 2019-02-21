@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: 8c575c6d34543cbd8f692c64b43cf738b4c22617
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 86e690e5ff437d924b9c548c2d75afb1866b14aa
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415629"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446783"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának monitorozásához és a problémák gyorsan diagnosztizálása
 
@@ -340,7 +340,7 @@ Az IoT Hub tartalmaz tulajdonságokat érvényes nyomkövetési üzenet érkezik
 }
 ```
 
-Itt `durationMs` rendszer nem számítja ki, az IoT Hub órája nem lehet az eszköz órája szinkronban, és így egy időtartamának kiszámítása félrevezető lehet. Javasoljuk, hogy írás logic használatával a az időbélyegeket az a `properties` adatforgalmi csúcsokhoz rögzítheti az eszközről a felhőbe késés szakaszban.
+Itt `durationMs` rendszer nem számítja ki, az IoT Hub órája nem lehet az eszköz órája szinkronban, és így egy időtartamának kiszámítása félrevezető lehet. Javasoljuk, hogy az időbélyegek használatával logika a `properties` adatforgalmi csúcsokhoz rögzítheti az eszközről a felhőbe késés szakaszban.
 
 | Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
