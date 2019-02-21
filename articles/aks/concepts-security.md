@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 2c6569d92913a3cff9ee51529dd381386ed2a792
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: df95329128c93f326b6f2c75fb7faef1a46029cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818991"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456503"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Biztonsággal kapcsolatos fogalmait, alkalmazások és-fürtök az Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja az alapfogalmakat, amelyek az aks-ben az alkalmazások bizto
 - [Csomópont-biztonság](#node-security)
 - [Fürt frissítése](#cluster-upgrades)
 - [Hálózati biztonság](#network-security)
-- Kubernetes titkos kulcsok
+- [Kubernetes titkos kulcsok](#kubernetes-secrets)
 
 ## <a name="master-security"></a>Fő biztonsági
 
@@ -36,9 +36,9 @@ Alapértelmezés szerint a Kubernetes API-kiszolgáló nyilvános IP-címet hasz
 
 AKS-csomópontok olyan Azure virtuális gépek kezelése és fenntartása. A csomópontok futtatni egy optimalizált Ubuntu Linux-disztribúció a Docker-tároló-futtatókörnyezet. AKS-fürt létrehozásakor vagy skálázható fel, a rendszer automatikusan telepíti a csomópontok a legújabb operációs rendszer biztonsági frissítéseit és konfigurációkat.
 
-Az Azure platform automatikusan alkalmazza az éjszakai történik a csomópontok operációs rendszer biztonsági javítások. Ha egy operációs rendszer biztonsági frissítést igényel a gazdagépet újra kell indítani, hogy újraindítás nem automatikusan történik. Manuálisan indítsa újra a csomópontokat, vagy egy általánosan használt megközelítés használandó [Kured][kured], egy nyílt forráskódú újraindítás démon a Kubernetes esetében. Kured egy [DaemonSet] [az aks-daemonset] fut, és a egy fájlt, amely jelzi, hogy szükség-e újraindítás meglétének minden csomópont figyeli. Újraindítások felügyelt ugyanazzal a fürtön [Ez a három csomópontunk, és a kiürítési folyamat](#cordon-and-drain) mint a fürtfrissítések.
+Az Azure platform automatikusan alkalmazza az éjszakai történik a csomópontok operációs rendszer biztonsági javítások. Ha egy operációs rendszer biztonsági frissítést igényel a gazdagépet újra kell indítani, hogy újraindítás nem automatikusan történik. Manuálisan indítsa újra a csomópontokat, vagy egy általánosan használt megközelítés használandó [Kured][kured], egy nyílt forráskódú újraindítás démon a Kubernetes esetében. Kured fut, mint egy [DaemonSet] [ aks-daemonsets] , és figyeli a-fájljának jelenlétét, arról, hogy a számítógép újraindítása nem szükséges minden egyes csomópont. Újraindítások felügyelt ugyanazzal a fürtön [Ez a három csomópontunk, és a kiürítési folyamat](#cordon-and-drain) mint a fürtfrissítések.
 
-Csomópontok nem hozzárendelt nyilvános IP-címeket a rendszer üzembe helyezi egy privát virtuális hálózat alhálózatához. Hibaelhárítás és kezelése céljából az SSH alapértelmezés szerint engedélyezve van. Az SSH-hozzáférés csak akkor használható a belső IP-cím használatával. Azure-beli hálózati biztonsági csoport szabályai segítségével további IP-címtartomány elérésének korlátozása az AKS-csomópontok. Az alapértelmezett hálózati biztonsági csoport SSH szabály törlése folyamatban van, és az SSH-szolgáltatást a csomópontokon letiltása megakadályozza, hogy az Azure platform karbantartási feladatok elvégzése.
+Csomópontok nem hozzárendelt nyilvános IP-címeket a rendszer üzembe helyezi egy privát virtuális hálózat alhálózatához. Hibaelhárítás és kezelése céljából az SSH alapértelmezés szerint engedélyezve van. Az SSH-hozzáférés csak akkor használható a belső IP-cím használatával.
 
 A tárolást, a csomópontok az Azure Managed Disks használata. A legtöbb Virtuálisgép-csomópontok méretét ezek a prémium szintű lemez nagy teljesítményű SSD-k által támogatott. A felügyelt lemezeken tárolt adatok automatikus titkosítása az Azure platformon. Javíthatja a redundancia, ezeket a lemezeket is biztonságosan replikálódnak az Azure-adatközpont.
 
@@ -46,7 +46,7 @@ Kubernetes-környezetekből AKS vagy máshol, jelenleg nem teljesen biztonságos
 
 ## <a name="cluster-upgrades"></a>Fürt frissítése
 
-Biztonsági és megfelelőségi, vagy a legújabb funkciók használatához az Azure biztosít, amellyel a frissítés az AKS-fürt és az összetevők eszközök. A frissítési vezénylési mind a Kubernetes fő- és összetevőket tartalmazza. Megtekintheti az elérhető Kubernetes-verziók listáját az AKS-fürt számára. A frissítési folyamat elindításához meg kell adni az egyik rendelkezésre álló verzió. Az Azure, majd biztonságosan cordons és kiüríti az AKS-csomópontok és hajtja végre a frissítést.
+Biztonsági és megfelelőségi, vagy a legújabb funkciók használatához az Azure biztosít, amellyel a frissítés az AKS-fürt és az összetevők eszközök. A frissítési vezénylési mind a Kubernetes fő- és összetevőket tartalmazza. Megtekintheti egy [elérhető Kubernetes-verziók listája](supported-kubernetes-versions.md) az AKS-fürt számára. A frissítési folyamat elindításához meg kell adni az egyik rendelkezésre álló verzió. Az Azure, majd biztonságosan cordons és kiüríti az AKS-csomópontok és hajtja végre a frissítést.
 
 ### <a name="cordon-and-drain"></a>Fekvő terület és kiürítési
 
@@ -57,7 +57,7 @@ A frissítés során így az új podok nem ütemezett rajtuk a AKS-csomópontok 
 - Podok ütemezett futtassa újra a rajtuk.
 - A fürt következő csomópontjára van szigetelve, és használja ugyanazt a folyamatot, amíg minden csomópont frissítése sikeresen ürítve.
 
-További információkért lásd: [frissítés és az AKS-fürt][aks-upgrade-cluster].
+További információkért lásd: [AKS-fürt frissítése][aks-upgrade-cluster].
 
 ## <a name="network-security"></a>Hálózati biztonság
 

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: af3a654010fa676096bfad895d5814b2cefa8e71
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7afc1170ba2503c8a8c97be9a19459c92e331449
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997125"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453579"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -85,6 +85,11 @@ Egyetlen vagy készletezett adatbázisok teljes biztonsági mentések konfigurá
 PITR, például az LTR biztonsági mentések rendszer georedundáns és által védett [Azure Storage-régiók közti replikációs](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
 
 További információkért lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md).
+
+## <a name="storage-costs"></a>Tárolási költségek
+Az adatbázisok 7 napi automatikus biztonsági másolata alapértelmezés szerint RA-GRS Standard blobtárolóra lesz másolva. A tárolót a heti teljes biztonsági mentésekhez, a napi differenciális biztonsági mentésekhez, illetve a tranzakciónaplók 5 percenként másolt biztonsági másolataihoz használja a rendszer. A tranzakciónapló mérete attól függ, hogy az adatbázis a változási gyakoriság. Az adatbázis méretének 100%-ával egyenlő minimális tárhelyet többletdíj felszámolása nélkül biztosítjuk. A biztonsági mentési tár ezt meghaladó használata GB/hó díjszabási alapon történik.
+
+Tárolási díjszabás kapcsolatos további információkért lásd: a [díjszabás](https://azure.microsoft.com/pricing/details/sql-database/single/) lapot. 
 
 ## <a name="are-backups-encrypted"></a>Titkosított biztonsági mentés
 

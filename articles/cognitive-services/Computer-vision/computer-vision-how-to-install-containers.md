@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 58a22253efb6928c87937e4aba852dd93a3e4422
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2a786d383d103f9b45ea7b13de24b8de9c9e9f5e
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978544"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445372"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
 
@@ -73,7 +73,7 @@ Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandl
 ### <a name="docker-pull-for-the-recognize-text-container"></a>A szöveg felismerése tároló docker pull
 
 ```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-rocognize-text:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]

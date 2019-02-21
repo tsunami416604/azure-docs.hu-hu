@@ -8,12 +8,12 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
-ms.openlocfilehash: 83d1b4737e15239532f8b751d2018d5e6f783562
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 9d00819143d9a8fc38bfc09844d55f088e732b46
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342762"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453026"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Gyors útmutató: Adatok elemzése az Azure Data Lake Storage Gen2 Azure Databricks használatával
 
@@ -33,7 +33,10 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
    Van néhány adott tudnivaló, mivel ebben a cikkben hajtsa végre a lépéseket kell.
 
-   :heavy_check_mark: A lépések végrehajtásakor a [alkalmazások szerepkörhöz rendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszt a cikk, ügyeljen arra, hogy rendelje hozzá a **Blob Storage-közreműködői szerepkör** az egyszerű szolgáltatás a Data Lake-hatóköre Gen2 tárhelyszolgáltatás fiókja.
+   :heavy_check_mark: A lépések végrehajtásakor a [alkalmazások szerepkörhöz rendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszt a cikk, ügyeljen arra, hogy rendelje hozzá a **Storage-Blobadatok Közreműködője** szerepkört a szolgáltatásnévhez.
+
+   > [!IMPORTANT]
+   > Ellenőrizze, hogy a szerepkört a Data Lake Storage Gen2 storage-fiók hatókörében. Szerepkör hozzárendelése a szülő erőforráscsoportba vagy előfizetésbe, de kap engedélyekkel kapcsolatos hibákat addig, amíg azokat a szerepkör-hozzárendeléseket a tárfiókhoz való propagálása.
 
    :heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
 

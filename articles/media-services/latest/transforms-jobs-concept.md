@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: fd93b84c251a0b2346550c79bcb8796161cb9116
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: d621afd682e6040179777f4cd6d991ff31acb5a3
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417871"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445491"
 ---
 # <a name="transforms-and-jobs"></a>Átalakítások és feladatok
  
@@ -61,6 +61,13 @@ Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorc
 
 Lásd: [szűrése, rendezése, a Media Services entitások lapozás](entities-overview.md).
 
+## <a name="configure-media-reserved-units"></a>Konfigurálja a Media szolgáltatás számára fenntartott egységek
+
+A hangelemzés és videó elemzési feladatokat a Media Services v3 által aktivált vagy a Video Indexer azt javasoljuk 10 S3 szintű Media szolgáltatás számára fenntartott egységek (helyet) fiókját kiépítéséhez. Ha több mint 10 S3-helyet, nyisson meg egy támogatási jegyet a a [az Azure portal](https://portal.azure.com/).
+
+További információkért lásd: [méretezhető médiafeldolgozás a parancssori felület segítségével](media-reserved-units-cli-how-to.md).
+
 ## <a name="next-steps"></a>További lépések
 
-[Feltöltése, kódolása és videofájlok streamelése](stream-files-tutorial-with-api.md)
+- [Oktatóanyag: Feltöltése, kódolása és streamelése a .NET használatával kíván videókat](stream-files-tutorial-with-api.md)
+- [Oktatóanyag: Elemezhet videókat a Media Services v3 .NET használatával](analyze-videos-tutorial-with-api.md)

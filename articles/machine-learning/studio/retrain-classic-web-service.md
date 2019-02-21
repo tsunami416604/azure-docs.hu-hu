@@ -1,5 +1,5 @@
 ---
-title: Újratanítás PowerShell és a klasszikus webszolgáltatások üzembe helyezése
+title: Klasszikus webszolgáltatás újratanítása és üzembe helyezése
 titleSuffix: Azure Machine Learning Studio
 description: Ismerje meg, hogyan modellek szoftveres átképezése, és frissítse a klasszikus webszolgáltatások használata az újonnan betanított modell az Azure Machine Learning Studióban.
 services: machine-learning
@@ -10,12 +10,12 @@ author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: e8fd3511eb7b718374bfbc608a35fb84740ed03c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4f3ca01ae44900e4d0ce22b79db44d7bfa84e56d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331239"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456554"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Újratanítás PowerShell és a egy klasszikus Studio-webszolgáltatás üzembe helyezése
 
@@ -60,7 +60,7 @@ URL beolvasása a megfelelő JAVÍTÁSI programozott módon, kövesse az alábbi
 1. Futtassa a [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) mintakódot.
 1. Az AddEndpoint kimenetében található a *HelpLocation* értékét, és másolja az URL-címet.
 
-   ![A kimenetben addEndpoint minta HelpLocation.][image2]
+   ![A kimenetben addEndpoint minta HelpLocation.](./media/troubleshooting-retraining-a-model/addEndpoint-output.png)
 1. Illessze be az URL-címet egy böngészőben nyissa meg egy lapot, amely biztosítja a webszolgáltatás súgóhivatkozások.
 1. Kattintson a **erőforrás frissítése** nyissa meg a patch Súgó hivatkozásra.
 
@@ -81,7 +81,7 @@ Kövesse az alábbi lépéseket a megfelelő JAVÍTÁSI URL-Címének lekérés�
 
 A PATCH súgóoldalt tartalmazza, a JAVÍTÁSI URL-címet kell használnia, és segítségével meghívására mintakódot biztosít.
 
-![Javítási URL-címe.][image5]
+![Javítási URL-címe.](./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png)
 
 ### <a name="update-the-endpoint"></a>A végpont frissítéséhez
 
@@ -149,6 +149,3 @@ Többet webszolgáltatások kezelése, vagy nyomon követheti, több kísérlete
 
 * [A Web Services portál felfedezése](manage-new-webservice.md)
 * [Kísérletismétlések kezelése](manage-experiment-iterations.md)
-
-[image2]: ./media/troubleshooting-retraining-a-model/addEndpoint-output.png
-[image5]: ./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png

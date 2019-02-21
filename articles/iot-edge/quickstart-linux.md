@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 65780252fe19ff1af3c37d25c7a65c2071961fb9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 455b0bb0cb6c53200edb7a0f3540006408329321
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994857"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453230"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Gyors útmutató: Az első IoT Edge-modul x64 Linux rendszerű eszközre telepítéséhez
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Gyors útmutató: Az első IoT Edge-modul üzembe egy Linux rendszerű eszközön
 
 Az Azure IoT Edge kiterjeszti a felhő képességeit IoT-eszközeire. Ebben a rövid útmutatóban megismerheti, hogyan helyezhet üzembe előre összeállított kódot távolról egy IoT Edge-eszközön a felhőalapú felület használatával.
 
@@ -29,7 +29,7 @@ Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 
 ![Diagram – rövid útmutató architektúra eszközhöz és a felhő](./media/quickstart-linux/install-edge-full.png)
 
-Ebben a rövid útmutatóban Linux rendszerű számítógépét vagy virtuális gépét IoT Edge-eszközzé alakíthatja. Ezután egy modult helyezhet üzembe az eszközén az Azure Portalról. A jelen rövid útmutatóban üzembe helyezett modul egy szimulált érzékelő, amely hőmérséklet-, páratartalom- és nyomásadatokat állít elő. A további Azure IoT Edge-oktatóanyagok az itt elvégzett munkára építkeznek olyan modulok üzembe helyezésével, amelyek a szimulált adatok elemzésével üzleti megállapításokat hoznak létre.
+Ez a rövid útmutató végigvezeti egy Azure virtuális gépen, amely úgy van konfigurálva, hogy IoT Edge-eszköz létrehozása. Ezután egy modult helyezhet üzembe az eszközén az Azure Portalról. A jelen rövid útmutatóban üzembe helyezett modul egy szimulált érzékelő, amely hőmérséklet-, páratartalom- és nyomásadatokat állít elő. A további Azure IoT Edge-oktatóanyagok az itt elvégzett munkára építkeznek olyan modulok üzembe helyezésével, amelyek a szimulált adatok elemzésével üzleti megállapításokat hoznak létre.
 
 Ha nem rendelkezik aktív Azure-előfizetéssel, kezdetnek hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
@@ -62,12 +62,12 @@ IoT Edge-eszköz:
    ```
 
    Hozzon létre, és az új virtuális gép elindítása néhány percig is eltarthat. 
+   
+   Előfordulhat, hogy kap egy `MarketplacePurchaseEligibilityFailed` ezen a ponton hiba. Ha ez történik, el kell fogadnia a feltételeket a [Ubuntu rendszeren az Azure IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) kattintva `Get It Now`. Jelentkezzen be, és mielőtt újra próbálkozna a parancs a feltételek elfogadása.
 
    Amikor létrehoz egy új virtuális gépet, jegyezze fel a a **publicIpAddress**, amely a create parancs kimenete részeként van megadva. A nyilvános IP-cím használatával fog csatlakozni a virtuális géphez az útmutató későbbi részében.
 
-* Ha inkább a helyi rendszeren az Azure IoT Edge-futtatókörnyezet futtatásához kövesse az utasításokat, [(x64) linuxon az Azure IoT Edge-futtatókörnyezet telepítéséhez](how-to-install-iot-edge-linux.md).
-
-* Ha szeretne egy alapú ARM32 az eszköz, például a Raspberry Pi-utasításai [(ARM32v7/armhf) Linux rendszeren telepítse az Azure IoT Edge-futtatókörnyezet](how-to-install-iot-edge-linux-arm.md).
+* Ha inkább a saját eszközön futtathatók az Azure IoT Edge-futtatókörnyezet, kövesse az utasításokat, [(x64) linuxon az Azure IoT Edge-futtatókörnyezet telepítéséhez](how-to-install-iot-edge-linux.md) vagy [(ARM32v7/armhf) Linux rendszeren telepítse az Azure IoT Edge-futtatókörnyezet](how-to-install-iot-edge-linux-arm.md).
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 

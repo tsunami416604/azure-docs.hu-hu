@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: c50c1a111f037b74176b5ca2cf8af518b2d3ffa0
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 53cd84d669a3f14d5ac028cc29ae483962860f72
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429383"
+ms.locfileid: "56447214"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Az Azure Monitor riasztási lekérdezések naplózása
 [Riasztási szabályok alapján az Azure Monitor naplóira](alerts-unified-log.md) futtatása rendszeres időközönként, ezért győződjön meg arról, hogy azok írt terhelést és a késés minimalizálása érdekében. Ez a cikk naplóriasztások hatékony lekérdezések és a egy folyamat alakítása a meglévő lekérdezések írásáról javaslatokat nyújt. 
@@ -31,16 +31,11 @@ Lekérdezések kezdődő `search` vagy `union` lehetővé teszi, hogy egyszerre 
 
 ```Kusto
 search "Memory"
-
 search * | where == "Memory"
-
 search ObjectName: "Memory"
-
 search ObjectName == "Memory"
-
 union * | where ObjectName == "Memory"
 ```
- 
 
 Bár a `search` és `union` is hasznosak során adatfeltárás keres a feltételek teljes adatmodellben kevésbé hatékony, mint egy tábla használata, mivel azok több különböző táblázat kell vizsgálnia. A riasztási szabályok lekérdezések rendszeres időközönként futnak, mivel ez túlzott többletterhelést késés ad hozzá a riasztás eredményezhet. Miatt a terhelés a lekérdezések az Azure-beli naplóriasztási szabály mindig kell kezdődnie, ami javítja a lekérdezési teljesítmény és az eredmények a relevancia alapján végzett egyértelmű hatókör meghatározása az tábla.
 

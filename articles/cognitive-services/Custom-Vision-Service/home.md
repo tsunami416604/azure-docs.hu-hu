@@ -3,40 +3,40 @@ title: Mi az az Azure Custom Vision?
 titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogy hozhat létre egyéni képosztályozókat az Azure-felhőben a Custom Vision Service használatával.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 01/10/2019
-ms.author: anroth
-ms.openlocfilehash: cc60166b4105cf38d3c1f73bdb558af7a9a7c831
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: pafarley
+ms.openlocfilehash: 6cbc6e351147ed5b4c31463b5cf319417f34da34
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857481"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456775"
 ---
 # <a name="what-is-azure-custom-vision"></a>Mi az az Azure Custom Vision?
 
-Az Azure Custom Vision API egy Cognitive Services-szolgáltatás, amellyel egyéni képosztályozóakt hozhat létre, helyezhet üzembe és javíthat. A képosztályozó egy AI-szolgáltatás, amely a képeket osztályokba rendezi (címkézi) bizonyos tulajdonságoknak megfelelően. A [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) szolgáltatástól eltérően a Custom Visionnel saját osztályozást is létrehozhat.
+Az Azure Custom Vision az cognitive szolgáltatás, amely lehetővé teszi elkészítheti, telepítheti, és javíthatja a saját rendszerkép osztályozó eszközökkel. Egy rendszerkép osztályozó egy AI-szolgáltatás, amely ellátja címkékkel (mely jelölik _osztályok_) a képek vizuális jellemzőinek megfelelően. Ellentétben a [számítógépes Látástechnológiai](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) , az egyéni vizuális lehetővé teszi, hogy a alkalmazni címkék meghatározásához.
 
 ## <a name="what-it-does"></a>Művelet
 
-A Custom Vision Service a képek osztályozásához egy gépi tanulási algoritmust használ. A fejlesztőnek be kell küldenie képek csoportjait, amelyek a szóban forgó osztályozás(oka)t tartalmazzák, illetve nem tartalmazzák. A képek megfelelő címkéit a küldéskor határozhatja meg. Ezután az algoritmus betanulja az adatokat, majd kiszámolja a saját pontosságát úgy, hogy teszteli magát ugyanezeken az adatokon. A modell betanítása után tesztelheti, újrataníthatja, és végül felhasználhatja azt új képek osztályozásához az alkalmazása igényeinek megfelelően. A modellt exportálhatja offline használatra is.
+A Custom Vision service címkék alkalmazásához képek gépi tanulási algoritmust használ. A fejlesztői kell küldenie, amellyel funkciót, és nem áll rendelkezésre az a szóban forgó jellemzőkkel csoportok. Ön címkét saját kezűleg küldésének idején. Ezután az algoritmus betanítja ezekhez az adatokhoz, és kiszámítja a saját pontossága azonos rendszerképeket maga tesztelésével. Az algoritmus be van tanítva, miután tesztelése, újratanítása, és végül használja az alkalmazás igényeinek megfelelően új képek osztályozásához. A modellt exportálhatja offline használatra is.
 
-### <a name="classification-and-object-detection"></a>Osztályozás és objektumészlelés
+## <a name="classification-and-object-detection"></a>Osztályozás és objektumészlelés
 
-A Custom Vision funkciói két szolgáltatásra oszlanak. A **Képosztályozás** az egyes képekhez egy osztályozáseloszlást rendel hozzá. Osztályú (képenként egy címke) és is multilabel (bármely képenként címkék száma) a besorolás modellek támogatottak. **Észlelési objektum** multilabel besorolás, hasonló, de azt is koordinátáit adja vissza a képen az alkalmazott címkék találhatók.
+A Custom Vision funkciói két szolgáltatásra oszlanak. **Kép besorolási** kép egy vagy több címke vonatkozik. **Észlelési objektum** hasonló, de azt is koordinátáit adja vissza a képen az alkalmazott címkék találhatók.
 
-### <a name="optimization"></a>Optimalizálás
+## <a name="optimization"></a>Optimalizálás
 
-A Custom Vision Service által használt módszerek általában a jelentős különbségeket érzékelik, így már kis mennyiségű adattal is neki lehet állni a prototípus készítésének. Címkénként 50 kép általában jó kiindulópont. Azonban ez azt jelenti, hogy a szolgáltatás nem optimális a képek közötti apró különbségek észlelésére (például kisebb repedések és horpadások észlelésére minőségbiztosítási célból).
+A Custom Vision service gyorsan felismerni a lemezképek közötti fő különbségeket van optimalizálva. Ez lehetővé teszi, hogy prototípus-készítés indítása a modell egy kisebb mennyiségű adatot. címke 50 képenként általában olyan remek kezdőpont. Azonban ez azt jelenti, hogy a szolgáltatás nem optimális a képek közötti apró különbségek észlelésére (például kisebb repedések és horpadások észlelésére minőségbiztosítási célból).
 
-Emellett a Custom Vision-algoritmus számos változata közül választhat, amelyek optimalizálva vannak bizonyos témakörökre – például nevezetességekre vagy kereskedelmi cikkekre. Az ezekkel kapcsolatos további információkért tekintse meg a [tartalomosztályozó létrehozását](getting-started-build-a-classifier.md) ismertető útmutatót.
+Ezenkívül közül választhat az egyéni Látástechnológiai algoritmus optimalizált bizonyos tulajdonos anyagokat tartalmazó lemezképeket számos fajtáinak&mdash;például arcrész vagy kereskedelmi elemek. Az ezekkel kapcsolatos további információkért tekintse meg a [tartalomosztályozó létrehozását](getting-started-build-a-classifier.md) ismertető útmutatót.
 
 ## <a name="what-it-includes"></a>Mit tartalmaz?
-A Custom Vision Service natív SDK-k készleteként is elérhető egy webalapú felületen a [Custom Vision kezdőlapján](https://customvision.ai/). Az egyik vagy mindkét felületen létrehozhat, tesztelhet és betaníthat egy modellt.
+A Custom Vision Service natív SDK-k készleteként is elérhető egy webalapú felületen a [Custom Vision kezdőlapján](https://customvision.ai/). Létrehozása, tesztelése, és mindkét felületen keresztül a modell betanítását vagy is együtt használja.
 
 ![Custom Vision-kezdőlap egy Chrome-böngészőablakban](media/browser-home.png)
 
@@ -46,4 +46,4 @@ Mint az összes, a Cognitive Services a Custom Vision service segítségével a 
 
 ## <a name="next-steps"></a>További lépések
 
-Kövesse a [tartalomosztályozó létrehozását](getting-started-build-a-classifier.md) ismertető útmutatót, hogy megismerje a Custom Vision webes használatának első lépéseit, vagy végezzen el egy [képosztályozási oktatóanyagot](csharp-tutorial.md) a forgatókönyv kódban történő megvalósításához.
+Kövesse a [Tartalombesoroló létrehozása](getting-started-build-a-classifier.md) útmutató az első lépések a Custom Vision segítségével a weben, vagy fejezze be egy [kép besorolási oktatóanyag](csharp-tutorial.md) programkódban implementálni egy egyszerű forgatókönyvet.

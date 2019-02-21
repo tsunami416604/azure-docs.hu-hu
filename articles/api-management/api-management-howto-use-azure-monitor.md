@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 8b95c311cd91ab6db84fb6640be5b6c1a6c0a9a5
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 3501284be2430941863bbae90f044df8ba5e7a2a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443117"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454804"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
@@ -40,8 +40,8 @@ A következő videó bemutatja, hogyan monitorozhatja az API Managementet az Azu
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
-+ Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
++ Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
++ Ezenkívül hajtsa végre a következő oktatóanyaggal: [Az első API importálása és közzététele](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -124,7 +124,7 @@ Diagnosztikai naplók konfigurálása:
 
     ![diagnosztikai naplók](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. Kattintson a **Diagnosztika bekapcsolása** elemre. Diagnosztikai naplókat és mérőszámokat archiválhat egy tárfiókba, majd egy eseményközpontba streamelheti vagy a Log Analyticsbe küldheti őket. 
+3. Kattintson a **Diagnosztika bekapcsolása** elemre. Diagnosztikai naplókat és mérőszámokat tárfiókba archiválhatja, azok streamelésére az Eseményközpontok felé, vagy küldhet nekik az Azure Monitor naplóira. 
 
 Az API Management jelenleg különálló API-kérelmekről kínál óránként kötegelt diagnosztikai naplókat, amelyek bejegyzései a következő mintát követik:
 
@@ -183,7 +183,7 @@ Az API Management jelenleg különálló API-kérelmekről kínál óránként k
 | callerIpAddress | sztring | Az átjáró közvetlen hívójának IP-címe (közvetítő is lehet) |
 | correlationId | sztring | Az API Management által hozzárendelt HTTP-kérelem egyedi azonosítója |
 | location | sztring | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
-| httpStatusCodeCategory | sztring | A HTTP-válasz állapotkódjának kategóriája: Sikeres (301 vagy alacsonyabb, 304 vagy 307), Jogosulatlan (401, 403, 429), Hibás (400, 500 és 600 között), Egyéb |
+| httpStatusCodeCategory | sztring | Http-válasz állapotkódjának kategóriája: Sikeres (301 vagy kevesebb 304 vagy 307), jogosulatlan (401, 403, 429), hibás (400, 500 és 600 között), egyéb |
 | resourceId | sztring | A /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<erőforráscsoport>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> API Management-erőforrás azonosítója |
 | properties | objektum | Az aktuális kérelem tulajdonságai |
 | method | sztring | A bejövő kérelem HTTP-metódusa |

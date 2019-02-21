@@ -7,34 +7,34 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: a8fefdf352507f0e0c0757625297f667907eb9bc
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 7e08076364cef87ec27ad34ee9af17242245bbc6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230594"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455993"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Engedélyezze, és tekintse át a Kubernetes Azure Kubernetes Service (AKS) naplózza a fő csomópont
 
-Az Azure Kubernetes Service (AKS), mint például a fő összetevőket a *kube-apiserver* és *kube-tartományvezérlő-manager* felügyelt szolgáltatásként biztosított. Létrehozásához és kezeléséhez a csomópontokat, amelyeken a *kubelet* és tároló-futtatókörnyezet, és a felügyelt Kubernetes API-kiszolgálón keresztül alkalmazások üzembe helyezése. Az alkalmazások és szolgáltatások hibáinak elhárítása érdekében szükség lehet a fő összetevői által létrehozott naplók megtekintése. Ez a cikk bemutatja, hogyan lehet engedélyezni, és a fő Kubernetes-összetevők naplóinak lekérdezése az Azure Log Analytics használatával.
+Az Azure Kubernetes Service (AKS), mint például a fő összetevőket a *kube-apiserver* és *kube-tartományvezérlő-manager* felügyelt szolgáltatásként biztosított. Létrehozásához és kezeléséhez a csomópontokat, amelyeken a *kubelet* és tároló-futtatókörnyezet, és a felügyelt Kubernetes API-kiszolgálón keresztül alkalmazások üzembe helyezése. Az alkalmazások és szolgáltatások hibáinak elhárítása érdekében szükség lehet a fő összetevői által létrehozott naplók megtekintése. Ez a cikk bemutatja, hogyan engedélyezése, és a fő Kubernetes-összetevők naplóinak lekérdezése az Azure Monitor naplóira használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk egy meglévő AKS-fürtöt az Azure-fiókban futó igényel. Ha Ön még nem rendelkezik egy AKS-fürtöt, hozzon létre egyet a [Azure CLI-vel] [ cli-quickstart] vagy [az Azure portal][portal-quickstart]. A log Analytics mindkét RBAC dolgozik, és nem RBAC engedélyezve van az AKS-fürt.
+Ez a cikk egy meglévő AKS-fürtöt az Azure-fiókban futó igényel. Ha Ön még nem rendelkezik egy AKS-fürtöt, hozzon létre egyet a [Azure CLI-vel] [ cli-quickstart] vagy [az Azure portal][portal-quickstart]. Az Azure Monitor works naplózza mindkét RBAC használata, és nem RBAC engedélyezve van az AKS-fürt.
 
 ## <a name="enable-diagnostics-logs"></a>Diagnosztikai naplók engedélyezése
 
-Könnyebben gyűjteni, és tekintse át a több forrásból származó adatokat, a Log Analytics biztosít egy lekérdezési nyelvet és elemzési motor, amely a környezet elemzéseket biztosít. A munkaterület szerinti rendezés és elemezheti az adatokat, és más Azure-szolgáltatások például az Application Insights és a Security Center integrálható. A különböző platform segítségével a naplók elemzéséhez, választhatja a diagnosztikai naplók küldése egy Azure storage-fiók vagy eseményközpont. További információkért lásd: [Mi az Azure Log Analytics?] [log-analytics-overview].
+Könnyebben gyűjteni, és tekintse át a több forrásból származó adatokat, az Azure Monitor naplóira biztosít egy lekérdezési nyelvet és elemzési motor, amely a környezet elemzéseket biztosít. A munkaterület szerinti rendezés és elemezheti az adatokat, és más Azure-szolgáltatások például az Application Insights és a Security Center integrálható. A különböző platform segítségével a naplók elemzéséhez, választhatja a diagnosztikai naplók küldése egy Azure storage-fiók vagy eseményközpont. További információkért lásd: [Mi az Azure Monitor naplóira?] [log-analytics-overview].
 
-A log Analytics engedélyezve van, és kezeli az Azure Portalon. Ahhoz, hogy a Kubernetes az AKS-fürt fő összetevőinek naplógyűjtés, egy webböngészőben nyissa meg az Azure Portalon, és kövesse az alábbi lépéseket:
+Az Azure Monitor naplóira engedélyezve van, és kezeli az Azure Portalon. Ahhoz, hogy a Kubernetes az AKS-fürt fő összetevőinek naplógyűjtés, egy webböngészőben nyissa meg az Azure Portalon, és kövesse az alábbi lépéseket:
 
 1. Válassza ki például az AKS-fürt erőforráscsoportjának *myResourceGroup*. Ne válassza ki az erőforráscsoport, amely tartalmaz az egyes AKS-fürt erőforrásokat, például *MC_myResourceGroup_myAKSCluster_eastus*.
 1. A bal oldalon válassza ki a **diagnosztikai beállítások**.
 1. Válassza ki például az AKS-fürt *myAKSCluster*, majd válassza a **diagnosztika bekapcsolása**.
-1. Adjon meg egy nevet, például *myAKSClusterLogs*, majd válassza a **Küldés a Log Analyticsnek**.
-    * Válassza ki a *konfigurálása* – Naplóelemzés, majd válassza ki a meglévő munkaterület vagy **új munkaterület létrehozása**.
+1. Adjon meg egy nevet, például *myAKSClusterLogs*, majd válassza a **küldeni a Log Analytics-munkaterület**.
+    * Válassza ki a *konfigurálása* Log Analytics-munkaterületet, és válasszon egy meglévő munkaterületet, vagy **új munkaterület létrehozása**.
     * Hozzon létre egy munkaterületet van szüksége, ha adjon meg egy nevet, egy erőforráscsoportot és egy helyen.
-1. Az elérhető naplóit, jelölje ki az engedélyezni kívánt naplók. Alapértelmezés szerint a *kube-apiserver*, *kube-tartományvezérlő-manager*, és *kube-ütemező* naplói engedélyezve vannak. Például engedélyezheti a további naplók *kube-naplózási* és *fürt-méretező*. Lépjen vissza, és az összegyűjtött naplók módosítani, ha a Log Analytics engedélyezve vannak.
+1. Az elérhető naplóit, jelölje ki az engedélyezni kívánt naplók. Alapértelmezés szerint a *kube-apiserver*, *kube-tartományvezérlő-manager*, és *kube-ütemező* naplói engedélyezve vannak. Például engedélyezheti a további naplók *kube-naplózási* és *fürt-méretező*. Lépjen vissza, és módosíthatja a gyűjtött naplók, ha engedélyezve vannak a Log Analytics-munkaterületek.
 1. Ha elkészült, válassza ki a **mentése** a kiválasztott naplók gyűjtésének engedélyezéséhez.
 
 > [!NOTE]
@@ -52,7 +52,7 @@ A log Analytics engedélyezve van, és kezeli az Azure Portalon. Ahhoz, hogy a K
 
 Az alábbi példában portál képernyőképe a *diagnosztikai beállítások* ablakban, majd létrehozhat egy Log Analytics-munkaterület:
 
-![Log Analytics-munkaterületet a Log Analytics az AKS-fürt engedélyezése](media/view-master-logs/enable-oms-log-analytics.png)
+![Log Analytics-munkaterületet az AKS-fürt az Azure Monitor-naplók engedélyezése](media/view-master-logs/enable-oms-log-analytics.png)
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Az AKS-fürtöt teszt podján ütemezése
 
@@ -111,11 +111,11 @@ AzureDiagnostics
 
 A meghatározott naplókban az NGINX-pod jelennek meg, a következő példaként szolgáló képernyőképen látható módon:
 
-![Log Analytics lekérdezési példa az NGINX-pod eredményei](media/view-master-logs/log-analytics-query-results.png)
+![Log analytics lekérdezési eredmények az NGINX-pod minta](media/view-master-logs/log-analytics-query-results.png)
 
 További a naplók megtekintéséhez, frissítheti a lekérdezést a *kategória* neve a *kube-tartományvezérlő-manager* vagy *kube-ütemező*, attól függően, hogy milyen további naplózza, Engedélyezze a. További *ahol* utasítások ezután felhasználhatók az eseményeket, Ön által keresett szűkítése céljából.
 
-Lekérdezése és szűrése a naplózási adatokat vonatkozó további információkért lásd: [megtekintése vagy elemzése a Log Analytics naplóbeli keresés gyűjtött adatok][analyze-log-analytics].
+A lekérdezés és szűrés a naplózási adatokat további információkért lásd: [megtekintése vagy elemzése a log analytics naplóbeli keresés gyűjtött adatok][analyze-log-analytics].
 
 ## <a name="log-event-schema"></a>Eseménysémája
 
@@ -127,9 +127,9 @@ Annak érdekében, hogy a naplóadatok elemzéséhez, az alábbi táblázat isme
 | *idő*                   | Időbélyeg, ha a napló feltöltése |
 | *kategória*               | A napló létrehozása tároló/összetevő neve |
 | *OperationName*          | Mindig *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
-| *Properties.log*         | A napló az összetevőtől teljes szövege |
-| *Properties.Stream*      | *stderr* vagy *stdout* |
-| *Properties.Pod*         | A napló tartalomcsomagokból származó podnév |
+| *properties.log*         | A napló az összetevőtől teljes szövege |
+| *properties.stream*      | *stderr* vagy *stdout* |
+| *properties.pod*         | A napló tartalomcsomagokból származó podnév |
 | *properties.containerID* | Ez a napló honnan származnak a docker-tároló azonosítója |
 
 ## <a name="next-steps"></a>További lépések

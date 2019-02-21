@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: cd6f533bcd32a307facc781c3b2207a337fc8a34
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: d91d62c387fc7bcaef8b7f2cb7e8d865c882aeed
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309165"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445457"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>A Custom Vision besorolás létrehozása
 
@@ -23,26 +23,28 @@ Képek besorolása a Custom Vision Service használatához először egy osztál
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy érvényes [Microsoft-fiók](https://account.microsoft.com/account) vagy egy Azure Active Directory (AAD) fiókot ("munkahelyi vagy iskolai fiók").
-
-    > [!IMPORTANT] 
-    > Az AAD-felhasználók esetében a bejelentkezés [Microsoft Felhőjét](https://www.microsoft.com/en-us/trustcenter/cloudservices/nationalcloud) jelenleg nem támogatott.
+- Egy érvényes Azure-előfizetés. [Hozzon létre egy fiókot](https://azure.microsoft.com/free/) ingyenes.
 - Képkészlet használandó betaníthatja az. Lásd az alábbi tippek a rendszerképek kiválasztásáról.
-- Igény szerint: Azure-előfizetéssel társított Microsoft-fiókjával vagy AAD-fiók. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt. Azure-előfizetés nélkül, csak fogja tudni hozzon létre két __próbaverzió korlátozott__ projektek.
+
+
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Egyéni vizuális erőforrások létrehozása az Azure Portalon
+A Custom Vision Service használatához szüksége lesz a Custom Vision betanítási és Predikciós erőforrások létrehozása a a a [az Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). Ezzel létrehoz egy tanítási és az előrejelzési erőforrás. 
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
-A böngészőben navigáljon a [Custom Vision weblap](https://customvision.ai) válassza __jelentkezzen be a__.
+A böngészőben navigáljon a [Custom Vision weblap](https://customvision.ai) válassza __jelentkezzen be a__. Jelentkezzen be ugyanazzal a fiókkal jelentkezzen be az Azure Portal segítségével.
 
 ![A bejelentkezési lap képe](./media/browser-home.png)
 
-Ha rendelkezik Azure-fiókkal, kéri a Custom Vision Service betanítási és Predikciós erőforrások létrehozása a [az Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) projekt létrehozása során.
 
 1. Az első-projekt létrehozásához válassza **új projekt**. A **új projekt létrehozása** párbeszédpanel fog megjelenni.
 
     ![Az új projekt párbeszédpanel mezőinek nevét, leírását és tartományok rendelkezik.](./media/getting-started-build-a-classifier/new-project.png)
 
-1. Adjon meg egy nevet és leírást a projekthez. Ezután válassza ki egy erőforráscsoportot. A bejelentkezett fiókban társítva az Azure-fiók, ha az erőforráscsoport legördülő megjeleníti az összes az Azure-erőforráscsoportok, amelyek tartalmazzák a Custom Vision Service erőforrás. Mindkét esetben választhatja __próbaverzió korlátozott__ lehetőséget a legördülő listából.
+1. Adjon meg egy nevet és leírást a projekthez. Ezután válassza ki egy erőforráscsoportot. A bejelentkezett fiókban társítva az Azure-fiók, ha az erőforráscsoport legördülő megjeleníti az összes az Azure-erőforráscsoportok, amelyek tartalmazzák a Custom Vision Service erőforrás. 
+
+> [!NOTE]
+> Ha nincs erőforráscsoport nem érhető el, ellenőrizze, hogy bejelentkezett [customvision.ai](https://customvision.ai) szolgáltatásba való bejelentkezéshez használt ugyanazzal a fiókkal, a [az Azure Portal](https://portal.azure.com/). Ezenkívül erősítse meg kiválasztott "Könyvtárába" a Custom Vision portálon az Azure Portalon, ahol a Custom Vision erőforrások találhatók könyvtárként. Mindkét hely, előfordulhat, hogy válassza ki a címtárat, a képernyő jobb felső menüjében a legördülő listából. 
 
 1. Válassza ki __besorolási__ alatt __projekttípusok__. Ezután a __besorolási típust__, válasszon **Multilabel** vagy **osztályú**, attól függően, a használati eset. Multilabel besorolás a címkékkel tetszőleges számú közben többosztályos osztályozási (minden egyes kép küld be lesznek rendezve az a legvalószínűbb címke) egyetlen kategóriákba rendezi a lemezképek kép (nulla vagy több), vonatkozik. A besorolás típusának később módosíthatja, ha szeretné tudni fogja.
 

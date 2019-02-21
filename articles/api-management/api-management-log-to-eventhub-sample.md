@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 8358eceedbb9214e4adb73f055bcf0db7fecec76
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: cdaaf5323543377d9c2b603ad7377d088710cde8
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430386"
+ms.locfileid: "56447745"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Az Azure API Management, az Event Hubs és Moesif API-k monitorozása
 A [API Management-szolgáltatás](api-management-key-concepts.md) javíthatják a HTTP API-nak küldött HTTP-kérések feldolgozását számos funkciót kínál. Létezik-e a kérelmek és válaszok azonban csak átmeneti. A kérelmet, és biztosítani az API Management szolgáltatás számára a háttérrendszeri API segítségével. Az API-t feldolgozza a kérést és választ keresztüláramló vissza az API fogyasztó számára. Az API Management szolgáltatás tartja néhány Megjelenítés az API-k leíró fontos statisztikákat az Azure portal irányítópultján, de után eltűnnek róla, hogy a részletek.
@@ -293,7 +293,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-A `MoesifHttpMessageProcessor` kihasználja a [ C# Moesif API könyvtárában](https://www.moesif.com/docs/api?csharp#events) , amely megkönnyíti az esemény adatok leküldéséhez HTTP a szolgáltatásba. HTTP-adatokat küldeni a Moesif adatgyűjtő API, kell egy fiókot és a egy alkalmazásazonosítót. Ön get Moesif alkalmazást azonosító beszerzése hozzon létre egy fiókot a [Moesif a webhely](https://www.moesif.com) majd lépjen a _felső jobb menü_ -> _alkalmazástelepítő_.
+A `MoesifHttpMessageProcessor` kihasználja a [ C# Moesif API könyvtárában](https://www.moesif.com/docs/api?csharp#events) , amely megkönnyíti az esemény adatok leküldéséhez HTTP a szolgáltatásba. HTTP-adatokat küldeni a Moesif adatgyűjtő API, kell egy fiókot és a egy alkalmazásazonosítót. Hozzon létre egy fiókot a kap egy Moesif alkalmazásazonosító [Moesif a webhely](https://www.moesif.com) majd lépjen a _felső jobb menü_ -> _alkalmazástelepítő_.
 
 ## <a name="complete-sample"></a>Teljes minta
 A [forráskódját](https://github.com/dgilling/ApimEventProcessor) és tesztek a minta a Githubon érhetők el. Kell egy [API Management szolgáltatás](get-started-create-service-instance.md), [a csatlakoztatott Eseményközpontot](api-management-howto-log-event-hubs.md), és a egy [Tárfiók](../storage/common/storage-create-storage-account.md) maga a minta futtatásához.   

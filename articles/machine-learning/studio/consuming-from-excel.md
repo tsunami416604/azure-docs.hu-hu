@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 2ac140e40ec1c70bf04c35512c28e84f59522bb8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1e8bb6deeb66b506e1342fceb725b1563b822dff
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989423"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453120"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Egy Azure Machine Learning Studio webszolgáltatás az Excelből felhasználása
 
@@ -34,7 +34,7 @@ Ha már rendelkezik egy webszolgáltatás, kattintson a a **WEBSZOLGÁLTATÁSOK*
 
 1. Az a **IRÁNYÍTÓPULT** lapon, a web service van egy sort a **KÉRÉS/válasz** szolgáltatás. Ha ezt a szolgáltatást egy kimeneti, megjelenik a **Excel-munkafüzet letöltése** hivatkozás abban a sorban.
    
-    ![][1]
+    ![](./media/consuming-from-excel/excellink.png)
 2. Kattintson a **Excel-munkafüzet letöltése**.
 
 **Új webszolgáltatás**
@@ -47,13 +47,13 @@ Ha már rendelkezik egy webszolgáltatás, kattintson a a **WEBSZOLGÁLTATÁSOK*
 1. Nyissa meg a munkafüzetet.
 2. Biztonsági figyelmeztetés jelenik meg; Kattintson a **Szerkesztés engedélyezése** gombra.
    
-    ![][2]
+    ![](./media/consuming-from-excel/enableeditting.png)
 3. Biztonsági figyelmeztetés jelenik meg. Kattintson a **tartalom engedélyezése** gomb makrók futtatását a munkalapon.
    
-    ![][3]
+    ![](./media/consuming-from-excel/enablecontent.png)
 4. Ha makrók engedélyezve vannak, egy tábla jön létre. Oszlopok kék is szükséges bemenetként az RRS webes szolgáltatás, vagy **paraméterek**. Vegye figyelembe a kimenet az RRS szolgáltatás **előre JELZETT értékek** zöld színnel. Amikor egy adott sorának az összes oszlop ki vannak töltve, a munkafüzet automatikusan a pontozási API- és a pontozott eredményeit jeleníti meg.
    
-    ![][4]
+    ![](./media/consuming-from-excel/sampletable.png)
 5. Pontszámot rendelni az egynél több sorral, adja meg a második sor az adatok és az előre jelzett értékek előállítása. Több sor egyszerre is beillesztheti.
 
 Használhatja az Excel-szolgáltatások (diagramokat, a power mappel, feltételes formázás, stb.) az előre jelzett értékek segítségével jelenítheti meg az adatokat.    
@@ -66,8 +66,3 @@ Az RRS kezdeményezték a két ezekben a helyzetekben:
 
 1. Először a sor nullértékkel rendelkezik, tartalom mindegyikét a **paraméterek**
 2. Bármikor, bármely a **paraméterek** kellett az összes sor változásai a **paraméterek** megadott.
-
-[1]: ./media/consuming-from-excel/excellink.png
-[2]: ./media/consuming-from-excel/enableeditting.png
-[3]: ./media/consuming-from-excel/enablecontent.png
-[4]: ./media/consuming-from-excel/sampletable.png

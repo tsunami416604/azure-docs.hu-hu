@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 714a78c436b7071717e2df12c2a65999920f8c63
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e6f94ba30c06fc6975ab212c895cecefe5d383fa
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192132"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453647"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>A nem Microsoft-fiókok hozzáadása
 Hozzáadása a nem Microsoft-fiókok, például Google, Facebook vagy a GitHub kétfaktoros ellenőrzéshez a Microsoft Authenticator alkalmazást. A Microsoft Authenticator alkalmazás együttműködik a kétfaktoros ellenőrzési használó alkalmazásokban, és olyan fiókot, amely támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
@@ -39,7 +39,7 @@ Adja hozzá a Google-fiók kétfaktoros ellenőrzési bekapcsolásával, és ezu
 
 ### <a name="turn-on-two-factor-verification"></a>A kétfaktoros ellenőrzés
 
-1. Lépjen a számítógépen, https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, jelölje be **Ismerkedés**, és majd a személyazonosságát.
+1. Lépjen a számítógép https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, jelölje be **Ismerkedés**, és majd a személyazonosságát.
 
 2. Kövesse az oldalon lépéseket a személyes Google-fiókját a kétlépéses ellenőrzés bekapcsolása.
 
@@ -62,7 +62,7 @@ Adja hozzá a Google-fiók kétfaktoros ellenőrzési bekapcsolásával, és ezu
 
     A fokozott biztonság érdekében az ellenőrző kód módosítása megakadályozza, hogy valaki a kód többször használatával 30 másodpercenként.
 
-6. Válassza ki **tovább** a a **állítsa be a hitelesítő** rendszerű számítógép lapon írja be a 6 jegyű ellenőrző kódot, a Google-fiókját az alkalmazásban megadott, és válassza ki **ellenőrizze**.
+6. Válassza ki **tovább** a a **állítsa be a hitelesítő** a számítógépen lapon írja be a 6 jegyű ellenőrző kódot, a Google-fiókját az alkalmazásban megadott, és válassza ki **ellenőrizze**.
 
 7. Fiókját visszaigazolta, és kiválaszthatja **kész** gombra kattintva zárja be a **állítsa be az Authenticator** lapot.
 
@@ -74,7 +74,7 @@ Adja hozzá a Facebook-fiókban kétfaktoros ellenőrzési bekapcsolásával, é
 
 ### <a name="turn-on-two-factor-verification"></a>A kétfaktoros ellenőrzés
 
-1. A számítógépen, nyissa meg a Facebook, a legördülő menüben válassza a jobb felső sarokban, és folytassa a **beállítások** > **biztonsági és a bejelentkezési**.
+1. A számítógépen nyissa meg a Facebook, a legördülő menüben válassza a jobb felső sarokban, és folytassa a **beállítások** > **biztonsági és a bejelentkezési**.
 
     A **biztonsági és a bejelentkezési** lap jelenik meg.
 
@@ -113,7 +113,7 @@ Adja hozzá a GitHub-fiók kétfaktoros ellenőrzési bekapcsolásával, és ezu
 
 ### <a name="turn-on-two-factor-verification"></a>A kétfaktoros ellenőrzés
 
-1. A számítógépen, nyissa meg a GitHub, a rendszerkép kiválasztása a jobb felső sarokban, és válassza **beállítások**.
+1. A számítógépen nyissa meg a GitHub, a rendszerkép kiválasztása a jobb felső sarokban, és válassza **beállítások**.
 
     A **kétfaktoros hitelesítés** lap jelenik meg.
 
@@ -121,7 +121,7 @@ Adja hozzá a GitHub-fiók kétfaktoros ellenőrzési bekapcsolásával, és ezu
 
 ### <a name="add-your-github-account-to-the-app"></a>A GitHub-fiók hozzáadása az alkalmazáshoz
 
-1. Az a **kétfaktoros hitelesítés** a számítógépen, válassza a lap **beállítása egy adott alkalmazás használatát**.
+1. Az a **kétfaktoros hitelesítés** a számítógépre, válassza a lap **beállítása egy adott alkalmazás használatát**.
 
 2. A helyreállítási kódokat mentéséhez, így vissza a fiókja visszaszerzéséhez Ha elveszíti a hozzáférést, és válassza ki **tovább**. 
 
@@ -137,7 +137,7 @@ Adja hozzá a GitHub-fiók kétfaktoros ellenőrzési bekapcsolásával, és ezu
 
 5. Adjon meg egy **fióknév** (például a GitHub), és írja be a **titkos kulcs** 4. lépés, és válassza ki a **Befejezés**.
 
-4. Az a **kéttényezős hitelesítő** rendszerű számítógép lapon írja be a GitHub-fiókját az alkalmazásban megadott 6 jegyű ellenőrző kódot, és válassza ki **engedélyezése**.
+4. Az a **kéttényezős hitelesítő** a számítógépen lapon írja be a GitHub-fiókját az alkalmazásban megadott 6 jegyű ellenőrző kódot, és válassza ki **engedélyezése**.
 
     A **fiókok** az oldal az alkalmazás megjeleníti a fióknevet és a egy 6 jegyű ellenőrző kódot. A fokozott biztonság érdekében az ellenőrző kód módosítása megakadályozza, hogy valaki a kód többször használatával 30 másodpercenként.
 
@@ -149,7 +149,7 @@ Adja hozzá az Amazon-fiókkal kétfaktoros ellenőrzési bekapcsolásával, és
 
 ### <a name="turn-on-two-factor-verification"></a>A kétfaktoros ellenőrzés
 
-1. A számítógépen, nyissa meg az Amazon, jelölje be a **fiók & listák** legördülő menüből, és válassza ki **fiók**.
+1. A számítógépen, nyissa meg az Amazon, válassza ki a **fiók & listák** legördülő menüből, és válassza ki **fiók**.
 
 2. Válassza ki **bejelentkezési és a biztonság**, jelentkezzen be az Amazon-fiókkal, és válassza **szerkesztése** a a **speciális biztonsági beállítások** területen.
 
@@ -172,13 +172,13 @@ Adja hozzá az Amazon-fiókkal kétfaktoros ellenőrzési bekapcsolásával, és
 
     A fokozott biztonság érdekében az ellenőrző kód módosítása megakadályozza, hogy valaki a kód többször használatával 30 másodpercenként.
 
-6. Az a **válassza ki, hogyan fog kapni a kódok** rendszerű számítógép lapon írja be az Amazon-fiókját az alkalmazásban megadott 6 jegyű ellenőrző kódot, és válassza ki **kód ellenőrzése, és továbbra is**.
+6. Az a **válassza ki, hogyan fog kapni a kódok** a számítógépen lapon írja be az Amazon-fiókját az alkalmazásban megadott 6 jegyű ellenőrző kódot, és válassza ki **kód ellenőrzése, és továbbra is**.
 
 7. Fejezze be a regisztrációs folyamat, beleértve a szöveges üzenetben, például a biztonsági másolat ellenőrzésének metódus hozzáadása, majd **kód küldése**.
 
-8. Az a **adjon hozzá egy biztonsági mentési ellenőrzési módszert** rendszerű számítógép lapon írja be a biztonsági mentési ellenőrzési módszert az Amazon fiók által biztosított hat számjegyű ellenőrzőkódot, és válassza ki **kód ellenőrzése, és továbbra is**.
+8. Az a **adjon hozzá egy biztonsági mentési ellenőrzési módszert** a számítógépen lapon írja be a biztonsági mentési ellenőrzési módszert az Amazon fiók által biztosított hat számjegyű ellenőrzőkódot, és válassza ki **kód ellenőrzése, és továbbra is**.
 
-9. A Almost lapon, győződjön meg a számítógép megbízható eszköz, és válassza ki kell-e **rendben. Kétlépéses ellenőrzés**.
+9. A a Almost lapon, hogy a számítógép megbízható eszköz, és válassza ki kell-e **rendben. Kétlépéses ellenőrzés**.
 
     A **speciális biztonsági beállítások** megjelenítő lap jelenik meg, a frissített kétfaktoros hitelesítési adatait.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: dbb94e0dbcb1dccf8ecbc60bca47b2cc3533297c
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 5862c6ef3c420c1722ddfbc1238be4e2bf43a507
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429740"
+ms.locfileid: "56447419"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -303,8 +303,6 @@ Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure ál
 3. Is engedélyeznie kell a hozzáférést a __168.63.129.16__. Ez a cím az Azure rekurzív feloldó. További információkért lásd: a [névfeloldás virtuális gépek és a szerepkör példányai](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentumot.
 
 További információkért lásd: a [hálózati forgalom szabályozása](#networktraffic) szakaszban.
-
-A kimenő NSG-szabályok a fenti címek IP-címekként"Desitnation" elérni a virtuális hálózaton belül bármilyen forrásból érkező adatforgalom engedélyezéséhez.
 
 Ha a felhasználó által definiált routes(UDRs) használ, adjon meg egy útvonalat, és engedélyezi a kimenő forgalmat a virtuális hálózatról a fenti IP-címek a következő ugrás "Internet" értékre.
     

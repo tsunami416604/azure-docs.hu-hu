@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 3571eb2471f9b3f06eb509937fd11866b4e0caa8
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 9b741f8562ae2e81d297357afd3b0e0e3976a248
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430807"
+ms.locfileid: "56445440"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Az Azure virtuális gépeken futó SQL Server-adatbázisok visszaállítása 
 
@@ -34,7 +34,7 @@ Ez a cikk ismerteti, hogyan állíthatja vissza az SQL Server-adatbázisok. Ha m
 Az Azure Backup a következő Azure virtuális gépeken futó SQL Server-adatbázisok is visszaállítása:
 
 - Állítsa vissza az adott dátum és idő (így a második) a tranzakciónapló biztonsági mentései használatával. Az Azure Backup automatikusan meghatározza, hogy a megfelelő teljes különbségi biztonsági másolat, és a kijelölt idő alapján a lánc naplók biztonsági másolatainak, visszaállításához szükséges.
-- Állítsa vissza egy adott teljes vagy különbözeti biztonsági állíthatja vissza egy adott helyreállítási pontot, nem pedig egy adott időpontban.
+- Egy adott teljes vagy különbözeti biztonsági másolat visszaállítása állíthatja vissza egy adott helyreállítási pontot, nem pedig egy adott időpontban.
 
 
 ### <a name="prerequisites"></a>Előfeltételek

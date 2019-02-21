@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/20/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 87331ed0d9e5a4ff51e3669390d1b40dea58574a
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: af6a32d7e32f23561b207c729402eaea7925f520
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389233"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453851"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service-környezet sémákra
 
@@ -75,18 +75,18 @@ Ez az Application Gateway használata csak egy példa bemutatja, hogyan konfigur
 
 ## <a name="logging"></a>Naplózás 
 
-Az Azure tűzfal a naplókat elküldheti az Azure Storage, az Event Hubs és a Log Analytics. Integrálhatja az alkalmazást bármely támogatott cél, nyissa meg a tűzfal az Azure portal > diagnosztikai naplók és a kívánt cél-naplók engedélyezésére. Ha integrálja a Log Analytics használatával, majd láthatja Azure tűzfal küldött összes forgalom naplózása. A forgalom megtagadásához megtekintéséhez nyissa meg a Log Analytics-portál > naplókat, és adja meg a lekérdezésben 
+Azure tűzfal naplókat elküldheti az Azure Storage, az Eseményközpontok felé, vagy az Azure Monitor naplózza. Integrálhatja az alkalmazást bármely támogatott cél, nyissa meg a tűzfal az Azure portal > diagnosztikai naplók és a kívánt cél-naplók engedélyezésére. Ha integrálja az Azure Monitor naplóira, majd megtekintheti az Azure-tűzfal küldött összes forgalom naplózása. A forgalom megtagadásához megtekintéséhez nyissa meg a Log Analytics-munkaterület portál > naplókat, és adja meg a lekérdezésben 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Az Azure-tűzfal integrálása a Log Analytics nagyon hasznos beolvasásakor először egy alkalmazás használata, ha Ön nem ismeri az összes alkalmazás függőségeit. További információ a Log Analytics [elemzése a Log Analytics-adatok az Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+Az Azure-tűzfal integrálása az Azure Monitor naplóira nagyon hasznos beolvasásakor először egy alkalmazás használata, ha Ön nem ismeri az összes alkalmazás függőségeit. További információ az Azure Monitor naplóinak [naplóadatok elemzése az Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
  
 ## <a name="dependencies"></a>Függőségek
 
 Az alábbi adatokat csak akkor szükséges, ha a nem Azure-tűzfalat készülékként egy tűzfalat konfigurálni szeretné. 
 
 - A Szolgáltatásvégpontok szolgáltatásvégpont kompatibilis szolgáltatások kell konfigurálni.
-- IP-cím függőségei vannak nem HTTP/Https-forgalom
+- IP-cím függőségei vannak nem HTTP/Https-forgalom (TCP és UDP-forgalom)
 - A tűzfal eszköz FQDN HTTP/HTTPS-végpontokat is kell elhelyezni.
 - Helyettesítő karaktert tartalmazó HTTP/HTTPS-végpontok függőségekkel rendelkező az ASE-t egy minősítők száma alapján változhat. 
 - Linux függőségek észrevétel csak olyan, az ASE-be helyez üzembe a Linux-alkalmazások. Ha Linux-alkalmazások, az ASE nem telepíti, majd ezek a címek nem kell hozzáadni a tűzfalhoz. 

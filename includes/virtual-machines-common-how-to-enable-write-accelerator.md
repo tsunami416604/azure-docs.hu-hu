@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 6/8/2018
+ms.date: 02/20/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 733d2896ef15d2e78073268e263a144ea25846ec
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 98231ab55ce66f06d591dc9c933e4790460625c8
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985437"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56458425"
 ---
 # <a name="enable-write-accelerator"></a>Írásgyorsító engedélyezése
 
@@ -42,17 +42,17 @@ Az operációsrendszer-lemezek Írásgyorsító engedélyezése nem lehet az SAP
 
 - A prémium szintű lemezek gyorsítótárazása állítsa "None" vagy "Csak Olvasás". Minden más gyorsítótárazási mód nem támogatott.
 - Pillanatkép jelenleg nem támogatottak Írásgyorsítót használó lemez. Biztonsági mentés során az Azure Backup szolgáltatás a virtuális Géphez csatolt Írásgyorsítót használó lemezt automatikusan kizárja.
-- Csak kisebb méretű i/o-méretek (< = 32 KiB) gyorsított elérési tart. Számítási helyzetekben, ahol adatok tömeges kezd betöltve, vagy ha a tranzakciós napló pufferek, a különböző DBMS előtt első megőrzi a a storage nagyobb mértékben van kitöltve, valószínűleg, amely az i/o írt lemez nem tart a gyorsított elérési útja.
+- Csak kisebb méretű i/o-méretek (< = 512 KiB) gyorsított elérési tart. Számítási helyzetekben, ahol adatok tömeges kezd betöltve, vagy ha a tranzakciós napló pufferek, a különböző DBMS előtt első megőrzi a a storage nagyobb mértékben van kitöltve, valószínűleg, amely az i/o írt lemez nem tart a gyorsított elérési útja.
 
 Az Azure Premium Storage virtuális merevlemezek Írásgyorsító támogató virtuális gépenként korlátozva van. A jelenlegi korlátok a következők:
 
 | A VM-TERMÉKVÁLTOZATOK | Írásgyorsító lemezek száma | Írható gyorsító lemez iops-t, virtuális gépenként |
 | --- | --- | --- |
-| M128ms, 128s | 16 | 8000 |
-| M64ms, M64ls, M64s | 8 | 4000 |
-| M32ms, M32ls, M32ts, M32s | 4 | 2000 |
-| M16ms, M16s | 2 | 1000 |
-| M8ms, M8s | 1 | 500 |
+| M128ms, 128s | 16 | 20000 |
+| M64ms, M64ls, M64s | 8 | 10000 |
+| M32ms, M32ls, M32ts, M32s | 4 | 5000 |
+| M16ms, M16s | 2 | 2500 |
+| M8ms, M8s | 1 | 1250 |
 
 Virtuális gépenként vannak az IOPS-korlátok és *nem* lemezenként. Az összes Írásgyorsító lemezek ossza meg a virtuális géphez ugyanazon IOPS-korlátját.
 

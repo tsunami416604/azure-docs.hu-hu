@@ -15,17 +15,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 18b37fd7c85fced4cc57b57320daf195f6f33e3e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a3c4bc741cef60576bec17cd3257914132b72666
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082381"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452626"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-core"></a>Az Event Processor Host-üzenetek fogadása a .NET Core – első lépések
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT). Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
-Ez az oktatóanyag ismerteti, hogyan írható olyan .NET Core-konzolalkalmazás, amely egy eseményközpontból fogad üzeneteket az [Event Processor Host](event-hubs-event-processor-host.md) használatával. Az [Event Processor Host](event-hubs-event-processor-host.md) egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs-eseményközpontokból. Az Event Processor Host használatával több fogadó között oszthatja el az eseményeket, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz. [A horizontálisan felskálázott eseményfeldolgozási][Az Event Hubst használó horizontálisan felskálázott eseményfeldolgozási] minta bemutatja, hogyan használható az Event Processor Host több fogadóval.
+Ez az oktatóanyag ismerteti, hogyan írható olyan .NET Core-konzolalkalmazás, amely egy eseményközpontból fogad üzeneteket az [Event Processor Host](event-hubs-event-processor-host.md) használatával. Az [Event Processor Host](event-hubs-event-processor-host.md) egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs-eseményközpontokból. Az Event Processor Host használatával több fogadó között oszthatja el az eseményeket, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz. A [horizontálisan felskálázott Eseményfeldolgozási](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) minta bemutatja, hogyan használhatja az Event Processor Host több fogadóval.
 
 > [!NOTE]
 > Letöltheti ezt a rövid útmutatót mintaként a [GitHubról](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), és miután lecserélte az `EventHubConnectionString`, `EventHubName`, `StorageAccountName`, `StorageAccountKey` és `StorageContainerName` sztringeket az eseményközpontja értékeire, futtathatja. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
@@ -208,6 +208,7 @@ Gratulálunk! Sikeresen fogadott üzeneteket egy eseményközpontból az Event P
 
 ## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban létrehozott .NET Core-alkalmazást, amely a fogadott üzeneteket egy eseményközpontból. Ismerje meg, hogyan küldhet eseményeket egy eseményközpontba, .NET Core használatával, lásd: [események küldése az event hubs - .NET Core](event-hubs-dotnet-standard-getstarted-send.md).
+
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png

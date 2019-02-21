@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9dc6407a222adb06f4139d9973c168911e0faca8
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 1c65ea47f7dd091ea326d9300a8ef09208a03951
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429672"
+ms.locfileid: "56447786"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -215,7 +215,9 @@ A feltétel-e egy **mező** vagy a **érték** hozzáférő megfelel bizonyos fe
 - `"like": "value"`
 - `"notLike": "value"`
 - `"match": "value"`
+- `"matchInsensitively": "value"`
 - `"notMatch": "value"`
+- `"notMatchInsensitively": "value"`
 - `"contains": "value"`
 - `"notContains": "value"`
 - `"in": ["value1","value2"]`
@@ -227,7 +229,8 @@ A feltétel-e egy **mező** vagy a **érték** hozzáférő megfelel bizonyos fe
 Használatakor a **például** és **notLike** , feltételek meg helyettesítő karakter `*` értéke.
 Az érték nem tartalmazhat egynél több helyettesítő `*`.
 
-Használatakor a **megfelelő** és **notMatch** adja meg a feltételeket, `#` számjegy, megfelelő `?` betűvel, a `.` megfelelően az összes karaktert, és bármely más karakter megfelelően a tényleges karakter. Példák: [lehetővé teszik több név minták](../samples/allow-multiple-name-patterns.md).
+Használatakor a **megfelelő** és **notMatch** adja meg a feltételeket, `#` számjegy, megfelelő `?` betűvel, a `.` megfelelően az összes karaktert, és bármely más karakter megfelelően a tényleges karakter.
+**megfelelő** és **notMatch** kis-és nagybetűket. Kis-és alternatív megoldások érhetők el a **matchInsensitively** és **notMatchInsensitively**. Példák: [lehetővé teszik több név minták](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Mezők
 

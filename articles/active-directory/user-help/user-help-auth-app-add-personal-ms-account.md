@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eba77f79ad4625319a9b6e3eae46bf8470f43607
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67cb3d049cc2d2f26be6d62270e677a5cbcd39cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203777"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455041"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>A személyes Microsoft-fiókok hozzáadása
 Adja hozzá a személyes Microsoft-fiókok esetében például Outlook.com-os és az Xbox LIVE, a Microsoft Authenticator alkalmazás a szokásos kétfaktoros ellenőrzési folyamata és a bejelentkezési módszer beállításának phone.
@@ -37,7 +37,7 @@ A személyes Microsoft-fiókjával is hozzáadhat, kétfaktoros ellenőrzési el
 
 ### <a name="turn-on-two-factor-verification"></a>A kétfaktoros ellenőrzés
 
-1. A számítógépen, nyissa meg a [biztonsággal kapcsolatos alapok](https://account.microsoft.com/security) lapon, és jelentkezzen be személyes Microsoft-fiókjával. Például: alain@outlook.com.
+1. A számítógépen nyissa meg a [biztonsággal kapcsolatos alapok](https://account.microsoft.com/security) lapon, és jelentkezzen be személyes Microsoft-fiókjával. Például: alain@outlook.com.
 
 2. Alsó részén a **biztonsággal kapcsolatos alapok** lappján válassza a **további biztonsági beállítások** hivatkozásra.
 

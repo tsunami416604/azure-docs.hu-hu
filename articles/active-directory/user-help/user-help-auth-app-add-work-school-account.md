@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 775e6968282c94abec64fb410f2cc720ba0913e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ad6dda9e41f1ea87439ffc315f020d4e3566e0c6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168435"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453545"
 ---
 # <a name="add-your-work-or-school-account"></a>A munkahelyi vagy iskolai fiók hozzáadása
 Ha a szervezet kétfaktoros ellenőrzési használja, beállíthatja a munkahelyi vagy iskolai fiók használata a Microsoft Authenticator alkalmazás egy, az ellenőrzési módszerek sorát.
@@ -27,7 +27,7 @@ Ha a szervezet kétfaktoros ellenőrzési használja, beállíthatja a munkahely
 
 ## <a name="add-your-work-or-school-account"></a>A munkahelyi vagy iskolai fiók hozzáadása
 
-1. A számítógépen, nyissa meg a [további biztonsági ellenőrzés](https://aka.ms/mfasetup) lapot.
+1. A számítógépen nyissa meg a [további biztonsági ellenőrzés](https://aka.ms/mfasetup) lapot.
 
     >[!Note]
     >Ha nem látja a **további biztonsági ellenőrzés** lap, akkor lehetséges, hogy a rendszergazda rendelkezik-e kapcsolva a security info (előzetes verzió) felhasználói élményt. Ha ez a helyzet, kövesse az utasításokat a [állítsa be a biztonsági adatok egy hitelesítő alkalmazást használandó](security-info-setup-auth-app.md) szakaszban. Ha nem, hogy az eset, szüksége lesz a szervezetben Help Desk kapcsolatba segítségért. További információ a biztonsági adatok: [a biztonsági adatok kezelése](security-info-manage-settings.md).

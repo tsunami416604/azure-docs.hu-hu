@@ -1,26 +1,26 @@
 ---
-title: SDK - beszédszolgáltatások beszédfelismerési szolgáltatásról
+title: SDK - Speech Services beszédszolgáltatások
 titleSuffix: Azure Cognitive Services
-description: A beszédfelismerési szolgáltatás Software Development Kit (SDK) hozzáférést biztosít az alkalmazások natív a funkciók a beszédfelismerési szolgáltatás, így könnyebben fejleszthet szoftvereket. Ez a cikk ismerteti az SDK-t a Windows, Linux- és Android további részleteit.
+description: A beszédfelismerő szoftver Development Kit (SDK) hozzáférést biztosít az alkalmazások natív a funkciók a beszédfelismerési szolgáltatás így könnyebben fejleszthet szoftvereket. Ez a cikk ismerteti az SDK-t a Windows, Linux- és Android további részleteit.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 5d98ae7fe4062ce88ee2a3df5f9bb4d992d4023c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 5abaf65e292783247597eaa271d8b3f67d20209e
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984681"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446681"
 ---
-# <a name="about-the-speech-service-sdk"></a>A beszédfelismerés Szolgáltatásoldali SDK-val kapcsolatos
+# <a name="about-the-speech-sdk"></a>Tudnivalók a Speech SDK
 
-A beszédfelismerési szolgáltatás Software Development Kit (SDK) hozzáférést biztosít az alkalmazások natív a funkciók a beszédfelismerési szolgáltatás, így könnyebben fejleszthet szoftvereket. Az SDK jelenleg hozzáférést biztosít **Speech to Text**, **beszédalapú fordítási**, és **szándékot felismerés**.
+A beszédfelismerő szoftver Development Kit (SDK) hozzáférést biztosít az alkalmazások natív a funkciók a beszédfelismerési szolgáltatás így könnyebben fejleszthet szoftvereket. Az SDK jelenleg hozzáférést biztosít **Speech to Text**, **beszédalapú fordítási**, és **szándékot felismerés**.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
@@ -34,27 +34,27 @@ Az Windows a következő nyelveket támogatja:
 
 * C#(UWP- és .NET), a C++: Hivatkoznak, és a legújabb verzióját használja, a beszéd SDK NuGet-csomagot. A csomag az 32 bites és 64 bites klienskódtárak és felügyelt (.NET) kódtárak tartalmazza. Az SDK-t a Visual Studio NuGet használatával telepíthető. Keresse meg **Microsoft.CognitiveServices.Speech**.
 
-* Java: Hivatkozhat, és a Speech SDK Maven-csomag, amely támogatja a csak a Windows x64 legújabb verzióját használja. A Maven-projektben vegye fel `https://csspeechstorage.blob.core.windows.net/maven/` referencia és további tárház `com.microsoft.cognitiveservices.speech:client-sdk:1.2.0` függőségként.
+* Java: Hivatkozhat, és a Speech SDK Maven-csomag, amely támogatja a csak a Windows x64 legújabb verzióját használja. A Maven-projektben vegye fel `https://csspeechstorage.blob.core.windows.net/maven/` referencia és további tárház `com.microsoft.cognitiveservices.speech:client-sdk:1.3.0` függőségként.
 
 ### <a name="linux"></a>Linux
 
 > [!NOTE]
-> Jelenleg csak az Ubuntu 16.04 és 18.04 (x86 vagy x64 C++ fejlesztési és a .NET Core- és Java x64) a számítógépen.
+> Jelenleg csak az Ubuntu 16.04 és 18.04 (x86 vagy x64 C++ fejlesztési és a .NET Core, Java és Python x64) a számítógépen.
 
 Győződjön meg arról, hogy Ön rendelkezik a szükséges fordító és kódtárak telepítése a következő rendszerhéj-parancsok futtatásával:
 
 ```sh
 sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
+sudo apt-get install build-essential libssl1.0.0 libasound2
 ```
 
 * C#: Hivatkoznak, és a legújabb verzióját használja, a beszéd SDK NuGet-csomagot. Az SDK-ra hivatkozik, adja hozzá a következő csomag hivatkozását a projekthez:
 
   ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.2.0" />
+  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.3.0" />
   ```
 
-* Java: Hivatkozhat, és a Speech SDK Maven csomag legújabb verzióját használja. A Maven-projektben vegye fel `https://csspeechstorage.blob.core.windows.net/maven/` referencia és további tárház `com.microsoft.cognitiveservices.speech:client-sdk:1.2.0` függőségként.
+* Java: Hivatkozhat, és a Speech SDK Maven csomag legújabb verzióját használja. A Maven-projektben vegye fel `https://csspeechstorage.blob.core.windows.net/maven/` referencia és további tárház `com.microsoft.cognitiveservices.speech:client-sdk:1.3.0` függőségként.
 
 * C++: Töltse le az SDK-t, mint egy [.tar-csomag](https://aka.ms/csspeech/linuxbinary) és csomagolja ki a fájlt egy tetszőleges könyvtárban. Az alábbi táblázat az SDK mappastruktúra:
 
@@ -70,7 +70,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 
 ### <a name="android"></a>Android
 
-Az Androidhoz készült Java SDK van csomagolva, mint egy [AAR (Androidos függvénytár)](https://developer.android.com/studio/projects/android-library), amely tartalmazza a szükséges kódtárak és Android-engedélyek megadása kötelező. A Maven adattárban található `https://csspeechstorage.blob.core.windows.net/maven/` csomagként `com.microsoft.cognitiveservices.speech:client-sdk:1.2.0`.
+Az Androidhoz készült Java SDK van csomagolva, mint egy [AAR (Androidos függvénytár)](https://developer.android.com/studio/projects/android-library), amely tartalmazza a szükséges kódtárak és Android-engedélyek megadása kötelező. A Maven adattárban található `https://csspeechstorage.blob.core.windows.net/maven/` csomagként `com.microsoft.cognitiveservices.speech:client-sdk:1.3.0`.
 
 Az Android Studio-projektek-csomagot használhat, a következő módosításokat:
 
@@ -83,7 +83,7 @@ Az Android Studio-projektek-csomagot használhat, a következő módosításokat
 * A modul szintű build.gradle fájlban adja hozzá a következőt a `dependencies` szakaszban:
 
   ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.2.0'
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.3.0'
   ```
 
 A Java SDK egyben része a [Speech Devices SDK-val](speech-devices-sdk.md).

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d4e0534a1f3068aba77496c02390a21d48c8e91
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: c1496653c319b4732614cd1c8148afb5c5b06215
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430471"
+ms.locfileid: "56456741"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -42,7 +42,7 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[Alkalmazás fejlesztője](#application-developer)**: A szerepkör felhasználói alkalmazásregisztrációkat hozhat létre. Ha a "Felhasználók regisztrálhatnak alkalmazásokat" beállítás értéke nem. Ez a szerepkör lehetővé teszi a saját nevükben jóváhagyást tagok amikor a "Felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek a céges adatok saját nevükben való" beállítás értéke nem. Ezen szerepkör tagjai tulajdonosként való hozzáadásakor új alkalmazásregisztráció vagy a vállalati alkalmazások létrehozásakor.
 
-* **[Hitelesítési rendszergazda](#authentication-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a jelenlegi hitelesítési módszerre vonatkozó adatok megtekintése és beállíthatja, vagy a jelszó-hitelesítő adatok alaphelyzetbe állítása. Hitelesítés a rendszergazdák kényszerítheti a felhasználókat, regisztrálja újra a meglévő jelszó-hitelesítő adat (pl. MFA, FIDO) ellen, és visszavonhatja a "MFA megjegyzése az eszközön", más felhasználók, akik nem rendszergazdák vagy a tagok a következő bejelentkezéshez a multi-factor Authentication kéri, a csak következő szerepköröket:
+* **[Hitelesítési rendszergazda](#authentication-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók beállíthatja vagy a jelszó-hitelesítő adatok alaphelyzetbe állítása. Hitelesítés a rendszergazdák kényszerítheti a felhasználókat, regisztrálja újra a meglévő jelszó-hitelesítő adat (pl. MFA, FIDO) ellen, és visszavonhatja a "MFA megjegyzése az eszközön", más felhasználók, akik nem rendszergazdák vagy a tagok a következő bejelentkezéshez a multi-factor Authentication kéri, a csak következő szerepköröket:
   * Hitelesítési rendszergazda
   * Directory-olvasók
   * Vendég meghívója

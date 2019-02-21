@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 7afdcc402840aede1fe9678bf5f4012213edf9fa
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 1eac1da2d8d9a289cb456fc08d7e7c2bc7784aa6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961346"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454021"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások skálázása az Azure SQL Database-ben
 
@@ -42,7 +42,7 @@ Miután kiválasztotta a virtuális magok száma, méretezhetők egy önálló a
 
 A szolgáltatás rétegbeli és/vagy számítási egy adatbázist hoz létre az eredeti adatbázis replikája új számítási méret és majd átáll a replikára. A folyamat során nem történik adatvesztés, de a replikára való átálláskor egy pillanatra az adatbázis felé irányuló kapcsolatok le lesznek tiltva, így lehet, hogy néhány folyamatban lévő tranzakció vissza lesz állítva. A hosszát a kapcsoló-több mint változik, de általában kisebb, mint 30 másodperc 99 %-ában. Ha nagy számú tranzakció van folyamatban a kapcsolatok pillanatában le vannak tiltva, akkor a hosszát a kapcsoló-több mint hosszabb lehet.
 
-A teljes felskálázási folyamat időtartama az adatbázis a módosítás előtti és utáni méretétől és szolgáltatásszintjétől függ. Ha például egy 250 GB-os adatbázis, amely a, a vagy általános célú szolgáltatási szinten belül módosul hat órán belül be kell fejeződnie. A vertikális felskálázás három órán belül, amely a számítási méret az üzletileg kritikus szolgáltatási szinten belül módosul az azonos méretű adatbázis esetén be kell fejeződnie.
+A teljes felskálázási folyamat időtartama általában attól függ, az adatbázis méretétől és szintjének előtt és után a változás. Például bármilyen méretű adatbázis, amely a számítási mérete a szolgáltatási rétegben kell elvégezni néhány percen belül, általános célú belül, másrészt a késést, módosíthatja a számítási méret az üzletileg kritikus szintű szolgáltatás általában 90 percen belül, vagy kevesebb / 100 GB.
 
 > [!TIP]
 > A folyamatban lévő műveletek monitorozására, tekintse meg: [SQL REST API használatával műveleteinek kezelésére](https://docs.microsoft.com/rest/api/sql/operations/list), [kezelése CLI használatával az operations](/cli/azure/sql/db/op), [T-SQL használatával végzett műveletek monitorozására](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) és a következő két PowerShell-parancsokat: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) and [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).

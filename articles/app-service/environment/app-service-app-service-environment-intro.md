@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 205e61634a902ef052f665c65f2b67a66e6fe598
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2bb1a9c3922f435b6be78614aacff6e85bf475ff
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728227"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454242"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Bevezetés az App Service környezet v1
 
 > [!NOTE]
 > Ez a cikk az App Service Environment-környezet v1 szól.  Nincs az App Service-környezet, amely egyszerűbb és nagyobb teljesítményű infrastruktúra fut egy újabb verziója. További információ az új verzió elindítása a [az App Service Environment bemutatása](intro.md).
-> 
 
 ## <a name="overview"></a>Áttekintés
+
 App Service-környezet van egy [prémium] [ PremiumTier] csomag lehetőséget a szolgáltatás [Azure App Service](../overview.md) biztonságos futtatása teljesen elkülönített és dedikált környezetet biztosít, amely Az Azure App Service-alkalmazások nagy méretben, beleértve a Web Apps, Mobile Apps és API-alkalmazások  
 
 App Service Environment-környezetek ideálisak igénylő alkalmazások és szolgáltatások:
@@ -46,16 +46,17 @@ Részletesen a horizontális skálázás használatával több App Service Envir
 
 Hogyan lett konfigurálva az AzureCon Deep Dive látható biztonsági architektúra, olvassa el a cikk a végrehajtási egy [szintekre épülő biztonsági architektúra](app-service-app-service-environment-layered-security.md) App Service Environment-környezetekkel.
 
-App Service-környezetekben futó alkalmazások elérhetik a felsőbb rétegbeli eszközök, például webalkalmazás-tűzfalak (WAF) engedi át.  A cikk a [a WAF konfigurálása az App Service Environment-környezetek](app-service-app-service-environment-web-application-firewall.md) ebben a forgatókönyvben ismerteti. 
+App Service-környezetekben futó alkalmazások elérhetik a felsőbb rétegbeli eszközök, például webalkalmazás-tűzfalak (WAF) engedi át.  A cikk a [a WAF konfigurálása az App Service Environment-környezetek](app-service-app-service-environment-web-application-firewall.md) ebben a forgatókönyvben ismerteti.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="dedicated-compute-resources"></a>Dedikált számítási erőforrások
+
 Kizárólag egyetlen előfizetéshez az dedikált App Service Environment-környezetben a számítási erőforrásokat, és a egy bizonyos alkalmazás az App Service Environment is konfigurálhatók, legfeljebb ötven (50) számítási erőforrások kizárólagos használatára.
 
-App Service-környezet egy előtér-számítási erőforráskészlethez, valamint egy, három feldolgozókészletek számítási erőforrás áll. 
+App Service-környezet egy előtér-számítási erőforráskészlethez, valamint egy, három feldolgozókészletek számítási erőforrás áll.
 
-Az előtérkészlet felelős alkalmazás kérelmek App Service-környezetben is automatikus terheléselosztást, SSL-lezárást számítási erőforrásokat tartalmaz. 
+Az előtérkészlet felelős alkalmazás kérelmek App Service-környezetben is automatikus terheléselosztást, SSL-lezárást számítási erőforrásokat tartalmaz.
 
 Minden feldolgozói készlethez hozzárendelt számítási erőforrások tartalmaz [App Service-csomagok][AppServicePlan], amelyek viszont egy vagy több Azure App Service-alkalmazások tartalmaznak.  Mivel az App Service-környezet legfeljebb három különböző feldolgozókészletek lehetnek, rugalmasan választhatja ki a különböző számítási erőforrásokhoz minden feldolgozói készlethez rendelkezik.  
 
@@ -66,6 +67,7 @@ Az előtér- és a feldolgozói készleteiben elérhető számítási erőforrá
 Az elérhető számítási erőforrás méretek támogatott az App Service-környezet részletes ismertetéséért tekintse meg a [App Service díjszabását] [ AppServicePricing] lapon, és tekintse át az App Service Environment-környezetek az elérhető lehetőségek a Prémium szintű tarifacsomag.
 
 ## <a name="virtual-network-support"></a>Virtuálishálózat-támogatást
+
 Az App Service-környezet hozható létre **vagy** egy Azure Resource Managerbeli virtuális hálózat **vagy** a klasszikus üzemi modellt használó virtuális hálózatokhoz ([további információ a virtuális hálózatok] [MoreInfoOnVirtualNetworks]).  Mivel az App Service-környezet mindig létezik a virtuális hálózatban, és pontosan egy virtuális hálózat alhálózatához belül, kihasználhatja mind a bejövő és kimenő hálózati kommunikáció szabályozhatja a virtuális hálózatok biztonsági funkciói.  
 
 App Service-környezet vagy az internetre irányuló nyilvános IP-címmel, vagy csak az Azure belső Load Balancer (ILB) címmel rendelkező belső is lehet.
@@ -77,6 +79,7 @@ Az alkalmazásoknak gyakran kell hozzáférniük vállalati erőforrásokhoz, p�
 Az App Service Environment-környezetek virtuális hálózatok és a helyszíni hálózatok működéséről további részleteiért tekintse meg a következő cikkeket a [hálózati architektúra][NetworkArchitectureOverview], [bejövő szabályozása Forgalom][ControllingInboundTraffic], és [biztonságosan kapcsolódó háttérkomponenseinek][SecurelyConnectingToBackends]. 
 
 ## <a name="getting-started"></a>Első lépések
+
 Első lépések az App Service Environment-környezetek, lásd: [hogyan, hozzon létre egy App Service-környezet][HowToCreateAnAppServiceEnvironment]
 
 Az App Service Environment-környezet hálózati architektúra áttekintését lásd: a [a hálózati architektúra áttekintése] [ NetworkArchitectureOverview] cikk.
@@ -104,5 +107,3 @@ Az App Service-környezet használata az expressroute-tal, részletek: a követk
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 
 <!-- IMAGES -->
-
-

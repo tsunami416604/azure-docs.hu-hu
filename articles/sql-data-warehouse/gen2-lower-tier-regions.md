@@ -9,20 +9,18 @@ ms.subservice: design
 ms.date: 12/03/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 22993395d60df23533b67ec48d0ea7f979d73e22
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: bd0ec4d334b581d86451e5e534e80c1fde1e33ac
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692462"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445237"
 ---
 # <a name="azure-sql-data-warehouse-gen2-support-for-lower-compute-tiers"></a>Azure SQL Data Warehouse Gen2-támogatás a kisebb számítási szintek
 
 A Microsoft lehetővé teszi, hogy képes legyen kezelni az erőforrás-igényes lekérdezéseket a villámgyors gyors Azure SQL Data Warehouse Gen2 a alacsonyabb számítási csomag hozzáadásával adattárház futtatásának belépő szintű díja végezhetőek. Ügyfelek élmény az Azure SQL Data Warehouse teljesítményt, rugalmasságot és biztonságot funkcióknak 100 cDWU (Adattárházegység) kezdve, és percek alatt 30 000 cDWU méretezhető. Ügyfelek Gen2 teljesítményt és rugalmasságot biztosít a kisebb számítási szint használata mellett is kihasználhatják. 
 
 A belépési pont a következő generációs adatraktározási elvetésével Microsoft kitárja a kapukat a érték adatvezérelt ügyfelek számára anélkül, hogy melyik próbaverziós környezet a legjobb őket a találgatás egy biztonságos, nagy teljesítményű data warehouse minden előnyét ki kell számítani.  Ügyfelek indul el akár 100 cDWU is le a jelenlegi 500 cDWU belépési pontról is.  Az SQL Data Warehouse Gen2 szüneteltetése és folytatása műveletek és goes túl csak a rugalmasságot, a számítási továbbra is.  Gen2 is támogatja az oszloptár korlátlan tárolási kapacitás 2,5-szer több memóriát lekérdezéseként, valamint akár 128 lekérdezést, és adaptív gyorsítótárazást szolgáltatásokat állapotba helyezése funkciók használatának meggátolása a azonos Adattárházegység képest az 5-ször nagyobb teljesítmény átlaga Gen1 ugyanazon az áron.  Georedundáns biztonsági mentés olyan Gen2 az beépített garantált adatvédelmi szabvány. Az Azure SQL Data Warehouse Gen2 készen áll a méretezhető, amikor áll.
-
-A portálon jelenleg nem támogatja a központi vagy a méretezési lehetőségek érhetők el az alsó szintű Gen2 példányainak. Dolgozunk az ezt a funkciót, addig engedélyezéshez [küldjön el egy jegyet](sql-data-warehouse-get-started-create-support-ticket.md) Ha szeretné kihasználni az új szint.
 
 ## <a name="getting-started-with-azure-sql-data-warehouse-gen2"></a>Ismerkedés az Azure SQL Data Warehouse Gen2 
 
@@ -34,22 +32,7 @@ Frissítés [Azure SQL Data Warehouse számítási optimalizált Gen1 Gen2-re](h
 
 ## <a name="supported-regions-for-lower-compute-tiers"></a>Támogatott régiók számítási alacsonyabb szinten
 
-- USA keleti US1 
-- USA 2. keleti régiója
-- Nyugat-Európa
-- Észak-Európa
-- USA 2. nyugati régiója
-- Délkelet-Ázsia
-- Déli RÉGIÓJA
-- USA középső régiója 
-- Kelet-Ázsia
-- Kelet-Japán
-- Közép-India
-- Kelet-Ausztrália
-- Délkelet-Ausztrália
-- Közép-Kanada
-- Nyugat-Japán 
-- Közép-Kanada
+[Támogatott régióban rendelkezésre állási tábla](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)
 
 ## <a name="next-steps"></a>További lépések
 

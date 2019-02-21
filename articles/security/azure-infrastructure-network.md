@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 02/20/2019
 ms.author: terrylan
-ms.openlocfilehash: af73225e08488d490e50456d235805af17ef0066
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 48a7e52d4284e5c2db1d77d24d91fd4701aad8d7
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112217"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455756"
 ---
 # <a name="azure-network-architecture"></a>Az Azure hálózati architektúra
 Az Azure-beli hálózati architektúra az iparági szabványos mag/terjesztési/hozzáférési modell hardver elkülönült rétege módosított változatát követi. A Rétegek a következők:
@@ -28,7 +28,7 @@ Az Azure-beli hálózati architektúra az iparági szabványos mag/terjesztési/
 - Terjesztési (hozzáférés útválasztók és L2 összesítési). A terjesztési réteg elválasztja az L3-útválasztás L2 váltásban.
 - Hozzáférés (L2 gazdagép kapcsolók)
 
-A hálózati architektúra van két szintje a 2. rétegbeli kapcsolók. A többi réteg egy réteg összesítések forgalmát. A második réteg hurkok redundancia révén. Ez egy olyan rugalmasabb VLAN erőforrás-igényű biztosít, és javítja a port méretezés. Az architektúra L2 és L3 darabszáma, amely engedélyezi a hardver a különböző rétegeket, a hálózat minden egyes, és minimálisra csökkenti a többi réteg(ek) befolyásolják egy rétegben tartalék megőrzi. Trönkölés használata lehetővé teszi, hogy az erőforrás-megosztás, például a kapcsolatot az L3-infrastruktúra.
+A hálózati architektúra van két szintje a 2. rétegbeli kapcsolók. A többi réteg egy réteg összesítések forgalmát. A második réteg hurkok redundancia révén. Az architektúra egy olyan rugalmasabb VLAN erőforrás-igényű biztosít, és javítja a port méretezés. Az architektúra L2 és L3 darabszáma, amely engedélyezi a hardver a különböző rétegeket, a hálózat minden egyes, és minimálisra csökkenti a többi réteg(ek) befolyásolják egy rétegben tartalék megőrzi. Trönkölés használata lehetővé teszi, hogy az erőforrás-megosztás, például a kapcsolatot az L3-infrastruktúra.
 
 ## <a name="network-configuration"></a>Hálózati konfiguráció
 A hálózati architektúra az adatközponton belül egy Azure-fürtön a következő eszközöket áll:
@@ -51,10 +51,10 @@ A Quantum 10 tervezési hajt végre a 3. rétegbeli váltása megállítását e
 A terjesztési/hozzáférési L3 útválasztók (ARs) az elsődleges útválasztási funkcióra a terjesztés és a hozzáférési rétegek végezze el. Ezek az eszközök egy pár üzemelnek, és az alapértelmezett átjáró alhálózatok. AR párjaihoz több L2 összesítési kapcsoló párt, attól függően, kapacitás képes támogatni. Maximális száma attól függ, hogy az eszközt, valamint a hiba tartományok kapacitását. Egy tipikus három L2 összesítési kapcsoló pár egy AR pár áll.
 
 ### <a name="l2-aggregation-switches"></a>2. összesítő kapcsolók  
-Ezek az eszközök egy összesítési pontra L2 forgalom szolgál. A terjesztési réteg a L2 hálóra, és képes kezelni a nagy mennyiségű forgalmat. Mivel ezek az eszközök összesített forgalmat, 802.1Q szükséges funkciókat, és nagy sávszélességű technológiák, például port összesítési és 10GE.
+Ezek az eszközök egy összesítési pontra L2 forgalom szolgál. A terjesztési réteg a L2 hálóra, és képes kezelni a nagy mennyiségű forgalmat. Mivel ezek az eszközök összesített forgalmat, 802.1Q szükséges funkciókat, és nagy sávszélességet igénylő technológiák, például port összesítési és 10GE.
 
 ### <a name="l2-host-switches"></a>L2 gazdagép kapcsolók
-Gazdagépek közvetlenül csatlakozhat a kapcsolók. Ezek lehetnek csatlakoztatott kapcsolók, vagy a váz központi telepítések. A 802.1Q szabvány lehetővé teszi, hogy a megjelölés egy VLAN a natív VLAN-t, mint a VLAN kezelésére, normál (címkézetlen) Ethernet keretező. Normál körülmények keretek a natív VLAN-on küldött és fogadott címkézetlen, a 802.1Q a trönkportjához. Ez a szolgáltatás úgy lett kialakítva, a 802.1Q és a nem kompatibilis az áttelepítéshez-802.1Q kompatibilis eszközökhöz. Ebben az architektúrában csak a hálózati infrastruktúra a natív VLAN-t használ.
+Gazdagépek közvetlenül csatlakozhat a kapcsolók. Ezek lehetnek kapcsolók állványra szerelt vagy váz központi telepítések. A 802.1Q szabvány lehetővé teszi, hogy a megjelölés egy VLAN a natív VLAN-t, mint a VLAN kezelésére, normál (címkézetlen) Ethernet keretező. Normál körülmények keretek a natív VLAN-on küldött és fogadott címkézetlen, a 802.1Q a trönkportjához. Ez a szolgáltatás úgy lett kialakítva, a 802.1Q és a nem kompatibilis az áttelepítéshez-802.1Q kompatibilis eszközökhöz. Ebben az architektúrában csak a hálózati infrastruktúra a natív VLAN-t használ.
 
 Ez az architektúra egy natív VLAN-kiválasztási szabvány meghatározza. A standard biztosítja, ahol lehetséges, hogy az AR eszközök minden trönk egy egyedi, a natív VLAN Hálózatot és a L2Aggregation L2Aggregation trönkölés való. A L2Aggregation L2Host kapcsoló trönkölés, van egy nem alapértelmezett natív VLAN-t.
 
@@ -64,7 +64,7 @@ Hivatkozás összesítési lehetővé teszi, hogy több egyes hivatkozások öss
 A számok az L2Agg L2Host kapcsolóhoz megadott L2Agg oldalán használt port-csatorna számok. Mivel a tartomány a számok korlátozottabb L2Host oldalán, a standard, hogy számok, 1. és 2 L2Host oldalán. Ezek tekintse meg a "a" oldalon és a "b" oldalon, a port-csatorna folyamatos jelölik.
 
 ### <a name="vlans"></a>VLAN-OK
-A hálózati architektúra használ VLAN-OK csoport kiszolgálókat együtt egy szórási tartományba. 802.1Q VLAN-számot felelnek meg szabványok, amely támogatja a VLAN-OK számozott 1 – 4094.
+A hálózati architektúra használ VLAN-OK csoport kiszolgálókat együtt egy szórási tartományba. Számok VLAN 802.1Q szabvány, amely támogatja a számozott 1 – 4094 VLAN-OK felelnek meg.
 
 ### <a name="customer-vlans"></a>Ügyfél VLAN-OK
 VLAN-implementáció számos lehetősége van a elkülönül az architektúra igényeinek, hogy a megoldás az Azure Portalon keresztül telepíthető. Ezek a megoldások segítségével virtuális gépeket telepít. Ügyfél referencia-architektúra példákért lásd [Azure-referenciaarchitektúrák](https://docs.microsoft.com/azure/architecture/reference-architectures/).
@@ -72,23 +72,15 @@ VLAN-implementáció számos lehetősége van a elkülönül az architektúra ig
 ### <a name="edge-architecture"></a>Edge-architektúra
 Az Azure-adatközpontok beépített magas redundáns és jól létesített hálózati infrastruktúrák esetén. A Microsoft valósítja meg az Azure-adatközpontban való "szükség plusz egy" hálózatok (N + 1) a redundancia architektúrák vagy jobb. Teljes feladatátvételi funkciók belül és az adatközpontok közötti segít a hálózat és szolgáltatás rendelkezésre állásának biztosításához. Külsőleg adatközpontok dedikált, nagy sávszélességű hálózati Kapcsolatcsoportok szolgálja. Ezek a Kapcsolatcsoportok globálisan időpontokban több társviszony-létesítés feletti 1200-as internetszolgáltatók redundantly találkozzon tulajdonságai. Ez itt ajánlatunkban 2000 GB/s a potenciális biztonsági kapacitás, a hálózaton keresztül.
 
-Az edge és a hozzáférési rétegben az Azure-hálózat szűrési útválasztó csomagszinten jól bevált biztonsági nyújt. Ez segít megakadályozni a jogosulatlan kísérel meg csatlakozni az Azure-bA. Az útválasztók, hogy a csomagokat a tényleges tartalmát a várt formátumú adatokat tartalmazhat, és felelnek meg a várt ügyfél/kiszolgáló kommunikációs rendszer segítségével. Az Azure egy többrétegű architektúra, a következő hálózati elkülönítési és hozzáférés-vezérlés összetevői valósít meg:
+Szűrés az edge és a hozzáférési rétegben az Azure-hálózat útválasztói csomagszinten jól bevált biztonságot nyújt, és segít meggátolni a jogosulatlan kísérel meg csatlakozni az Azure-bA. Az útválasztók, hogy a csomagokat a tényleges tartalmát a várt formátumú adatokat tartalmazhat, és felelnek meg a várt ügyfél/kiszolgáló kommunikációs rendszer segítségével. Az Azure egy többrétegű architektúra, a következő hálózati elkülönítési és hozzáférés-vezérlés összetevői valósít meg:
 
 - **Peremhálózati útválasztók.** Ezek elkülönítse az alkalmazás-környezet az internetről. Peremhálózati útválasztói megszemélyesítés elleni védelmet biztosíthat és a hozzáférés korlátozása a hozzáférés-vezérlési listák használatával lettek kialakítva.
 - **Az útválasztók terjesztési (hozzáférés).** Ezek csak a Microsoft a jóváhagyott IP-címek engedélyezése, biztosítása hamisításszűrés és hozzáférés-vezérlési listák használatával kapcsolatokat hozhat létre.
 
-### <a name="a10-ddos-mitigation-architecture"></a>A10-es DDOS kockázatcsökkentő architektúrája
-Továbbra is valódi fenyegetést jelenthetnek az online szolgáltatások megbízhatóságát szolgáltatásmegtagadási támadások ellen. Célzott és kifinomult támadások válik, és a szolgáltatások, a Microsoft biztosít több különböző, azonosítása és minimálisra csökkentik a ezeket a támadásokat a hatása a magas prioritású. Az alábbi részletek bemutatják, hogyan valósul meg az a10-es DDOS kockázatcsökkentési rendszer a hálózati architektúra szempontjából.
+### <a name="ddos-mitigation"></a>DDoS elleni védelem
+Az elosztott szolgáltatásmegtagadási (DDoS-) támadásokat továbbra is valódi fenyegetést jelenthetnek az online szolgáltatásainak megbízhatóságát. Célzott és kifinomult támadások válik, és a szolgáltatások, a Microsoft biztosít több különböző, azonosítása és minimálisra csökkentik a ezeket a támadásokat a hatása a magas prioritású.
 
-Az Azure az Adatközpont útválasztó (DCR), amelyek az automatikus észlelési és kockázatenyhítő a10-es hálózati eszközöket használja. Az a10-es megoldás Azure Hálózatfigyelésre használja minta folyamat csomagokat, és határozza meg, hogy van-e a támadás. A támadás észlelése esetén a10-es eszközök el kell távolítani a támadások számának csökkentése érdekében. Csak ezt követően a rendszer tiszta forgalom közvetlenül a a DCR be az Azure-adatközpont engedélyezett. A Microsoft az Azure hálózati infrastruktúra védelmét az a10-es megoldás használja.
-
-Az a10-es megoldásban a DDoS elleni védelmi a következők:
-
-- UDP-IPv4 és IPv6-kéréssekkel túlterhelheti a védelem
-- ICMP IPv4 és IPv6-kéréssekkel túlterhelheti a védelem
-- TCP IPv4 és IPv6-kéréssekkel túlterhelheti a védelem
-- Az IPv4 és IPv6-alapú TCP SZIN támadás elleni védelem
-- Töredezettség támadás
+[Az Azure DDoS Protection Standard](../virtual-network/ddos-protection-overview.md) DDoS-támadásokkal szembeni védelmet biztosít. Lásd: [Azure DDoS Protection szolgáltatás: Ajánlott eljárások és referenciaarchitektúrákat](azure-ddos-best-practices.md) további.
 
 > [!NOTE]
 > A Microsoft alapértelmezés szerint a DDoS protection biztosít az Azure-ügyfelekre.

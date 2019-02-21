@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 11/28/2018
+ms.date: 02/20/2019
 ms.author: douglasl
-ms.openlocfilehash: bb6c3281ffc434bd31f901b2b7f6e540f893ca76
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c3a9864a901d44d0c84c6946c55e5dc2c700cbac
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001902"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447599"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Hozzon létre egy Azure data factoryt az Azure Resource Manager-sablon használatával
 
@@ -135,7 +135,7 @@ Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFTutorial**
     },
     "resources": [{
         "name": "[parameters('dataFactoryName')]",
-        "apiVersion": "2017-09-01-preview",
+        "apiVersion": "2018-06-01",
         "type": "Microsoft.DataFactory/factories",
         "location": "[parameters('dataFactoryLocation')]",
         "identity": {
@@ -147,7 +147,7 @@ Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFTutorial**
                 "dependsOn": [
                     "[parameters('dataFactoryName')]"
                 ],
-                "apiVersion": "2017-09-01-preview",
+                "apiVersion": "2018-06-01",
                 "properties": {
                     "type": "AzureStorage",
                     "description": "Azure Storage linked service",
@@ -166,7 +166,7 @@ Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFTutorial**
                     "[parameters('dataFactoryName')]",
                     "[variables('azureStorageLinkedServiceName')]"
                 ],
-                "apiVersion": "2017-09-01-preview",
+                "apiVersion": "2018-06-01",
                 "properties": {
                     "type": "AzureBlob",
                     "typeProperties": {
@@ -186,7 +186,7 @@ Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFTutorial**
                     "[parameters('dataFactoryName')]",
                     "[variables('azureStorageLinkedServiceName')]"
                 ],
-                "apiVersion": "2017-09-01-preview",
+                "apiVersion": "2018-06-01",
                 "properties": {
                     "type": "AzureBlob",
                     "typeProperties": {
@@ -208,7 +208,7 @@ Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFTutorial**
                     "[variables('inputDatasetName')]",
                     "[variables('outputDatasetName')]"
                 ],
-                "apiVersion": "2017-09-01-preview",
+                "apiVersion": "2018-06-01",
                 "properties": {
                     "activities": [{
                         "type": "Copy",
@@ -242,7 +242,7 @@ Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFTutorial**
                     "[variables('outputDatasetName')]",
                     "[variables('pipelineName')]"
                 ],
-                "apiVersion": "2017-09-01-preview",
+                "apiVersion": "2018-06-01",
                 "properties": {
                     "type": "ScheduleTrigger",
                     "typeProperties": {
@@ -492,7 +492,7 @@ Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előál
     "dependsOn": [
         "[parameters('dataFactoryName')]"
     ],
-    "apiVersion": "2017-09-01-preview",
+    "apiVersion": "2018-06-01",
     "properties": {
         "type": "AzureStorage",
         "description": "Azure Storage linked service",
@@ -520,7 +520,7 @@ Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati szt
         "[parameters('dataFactoryName')]",
         "[variables('azureStorageLinkedServiceName')]"
     ],
-    "apiVersion": "2017-09-01-preview",
+    "apiVersion": "2018-06-01",
     "properties": {
         "type": "AzureBlob",
         "typeProperties": {
@@ -547,7 +547,7 @@ Megadhatja az Azure Blob Storage-ban található mappa nevét, amely a bemeneti 
         "[parameters('dataFactoryName')]",
         "[variables('azureStorageLinkedServiceName')]"
     ],
-    "apiVersion": "2017-09-01-preview",
+    "apiVersion": "2018-06-01",
     "properties": {
         "type": "AzureBlob",
         "typeProperties": {
@@ -576,7 +576,7 @@ Meghatározhat egy folyamatot, amely adatokat másol egy Azure Blob-adatkészlet
         "[variables('inputDatasetName')]",
         "[variables('outputDatasetName')]"
     ],
-    "apiVersion": "2017-09-01-preview",
+    "apiVersion": "2018-06-01",
     "properties": {
         "activities": [{
             "type": "Copy",
@@ -617,7 +617,7 @@ Meghatározhat egy eseményindítót, amely óránként egyszer futtatja a folya
         "[variables('outputDatasetName')]",
         "[variables('pipelineName')]"
     ],
-    "apiVersion": "2017-09-01-preview",
+    "apiVersion": "2018-06-01",
     "properties": {
         "type": "ScheduleTrigger",
         "typeProperties": {

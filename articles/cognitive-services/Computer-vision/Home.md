@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 02/08/2019
+ms.date: 02/20/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ae421ac3f87a16fc6fd2e5f3e89c13fcae50dbf8
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311630"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453052"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -45,17 +45,17 @@ Elemezheti a képek észlelése és azok vizuális jellemzőinek és jellemzők 
 
 ## <a name="extract-text-from-images"></a>Képek szöveg kinyerése
 
-A Computer Vision használatával a képből [szöveget nyerhet ki OCR használatával](concept-extracting-text-ocr.md), így egy gépek által olvasható karakterfolyamot hozhat létre. Szükség esetén az OCR a felismert szöveg dőlésszögét a kép vízszintes tengelyéhez igazítja, és az összes szó koordinátáit megadja. Az OCR 25 nyelvet támogat, és automatikusan felismeri az észlelt szöveg nyelvét.
+Használhatja a Computer Vision [optikai karakterfelismerés (OCR) segítségével szöveg kinyerése](concept-extracting-text-ocr.md) karaktersorozattá be egy rendszerképből. Ha szükséges, optikai Karakterfelismerés kijavítja a elforgatási szögét a felismert szöveget, és biztosítja a keret koordináták minden szó. Az optikai Karakterfelismeréssel 25 nyelveket támogatja, és automatikusan észleli a nyelvet a felismert szöveget.
 
-Emellett felismeri a [nyomtatott és kézzel írt szövegeket](concept-recognizing-text.md) is a képen. A Computer Vision észleli és kinyeri a nyomtatott és a kézzel írt szövegeket is a különböző tárgyakat, felületeket és háttereket ábrázoló képekről, például nyugtákról, plakátokról, névjegykártyákról, levelekről és táblákról. A nyomtatott és a kézzel írt szövegek felismerése jelenleg előzetes verzióban érhető el, és az egyetlen támogatott nyelv az angol.  
+Emellett [nyomtatott és kézzel írt szöveg felismerése](concept-recognizing-text.md) a képet. A Computer Vision észleli és kinyeri a nyomtatott és a kézzel írt szövegeket is a különböző tárgyakat, felületeket és háttereket ábrázoló képekről, például nyugtákról, plakátokról, névjegykártyákról, levelekről és táblákról. Jelenleg nyomtatott és kézzel írt szöveg felismerése előzetes verzióban érhető el, pedig angol nyelven az egyetlen támogatott nyelv. 
 
 ## <a name="moderate-content-in-images"></a>Mérsékelt tartalmú képeket
 
-A Computer Vision [észleli a képen a felnőtteknek szóló és kényes tartalmakat](concept-detecting-adult-content.md), majd egy megbízhatósági pontszámot hoz létre a képen szereplő felnőtt vagy kényes tartalmak valószínűsége alapján. A felnőtteknek szóló vagy kényes tartalom észlelésére vonatkozó szűrő érzékenységét egy csúszka segítségével állíthatja be igényei szerint.
+Használhatja a Computer Vision [észleli a felnőtt és szexuális tartalom](concept-detecting-adult-content.md) egy rendszerképet, és a egy megbízhatósági pontszám mind, lépjen vissza a. A felnőtteknek szóló vagy kényes tartalom észlelésére vonatkozó szűrő érzékenységét egy csúszka segítségével állíthatja be igényei szerint.
 
 ## <a name="use-containers"></a>Tárolók használata
 
-[Számítógépes Látástechnológia tárolókkal](computer-vision-how-to-install-containers.md) , helyileg, nyomtatott és kézzel írt szöveg felismerése szabványos Docker-tároló közelebb telepítse az adatokhoz.
+[Számítógépes Látástechnológia tárolókkal](computer-vision-how-to-install-containers.md) nyomtatott és kézzel írott szövegek helyileg felismerni az adatok szabványos Docker-tároló közelebb telepítésével.
 
 ## <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 

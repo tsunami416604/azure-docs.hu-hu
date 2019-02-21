@@ -1,28 +1,28 @@
 ---
 title: 'Gyors útmutató: Beszédfelismerést, JavaScript (böngésző) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan végezhet beszédfelismerést a JavaScripttel böngészőben a Speech Service SDK használatával
+description: Ismerje meg, hogyan beszédfelismerést a JavaScript egy böngészőben, a beszéd SDK-val
 services: cognitive-services
 author: fmegen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: d51624e5ae4d0e1052b562cd9142238828614597
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8e1f880c57b0db0a2f68fbe26e99679769fdee6c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872179"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56448041"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Gyors útmutató: A JavaScript beszédfelismerést a Speech Service SDK használatával
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Gyors útmutató: A JavaScript beszédfelismerést egy böngészőben, a beszéd SDK-val
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ez a cikk azt mutatja be, hogyan hozhat létre egy webhelyet, amely a Cognitive Services Speech SDK JavaScript-kötésével írja át a beszédet szöveggé.
-Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK alapul ([letöltési 1.2.0-s vagy annál újabb verziójú](https://aka.ms/csspeech/jsbrowserpackage)).
+Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK alapul ([letöltési verzióra 1.3.0](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

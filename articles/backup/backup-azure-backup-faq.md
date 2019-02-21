@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: e780a78bb2cc341ef6b2f682cd51fedad3f08494
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: bfc1c419d5d58b4528b76dbed6fd0060f6b2833d
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310849"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446664"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Az Azure Backup – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -39,7 +39,8 @@ Nem. A tárolókban tárolt biztonsági mentési adatok nem helyezhető át egy 
 Nem. Recovery Services-tárolót is csak tárolási beállításainak módosítása előtt minden biztonsági eltárolta
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Használhatom-e egy elem szintű visszaállítása (ILR) a virtuális gépek biztonsági mentése Recovery Services-tárolóra?
-Nem, ILR nem támogatott.
+- ILR támogatott Azure-beli virtuális gépek biztonsági mentése Azure virtuális gépek biztonsági mentését. További információ: [cikk](backup-azure-restore-files-from-vm.md)
+- ILR a helyszíni virtuális gépek biztonsági mentése az Azure backup Server vagy a System Center DPM által online helyreállítási pontok esetében nem támogatott.
 
 
 ## <a name="azure-backup-agent"></a>Az Azure Backup ügynöke
@@ -90,7 +91,6 @@ Igen.
 - Ön az Azure virtuális gépek biztonsági mentése naponta egyszer.
 
 ### <a name="what-operating-systems-are-supported-for-backup"></a>Milyen operációs rendszereket támogat a biztonsági mentés?
-
 Az Azure Backup biztonsági mentését a fájlok és mappák és az Azure Backup Server és a DPM által védett alkalmazások ezeket az operációs rendszereket támogatja.
 
 **OS**| **Termékváltozat** |**Részletek**
@@ -139,7 +139,7 @@ BMR/rendszerállapot |A biztonsági mentés alatt álló gép BMR vagy rendszer�
 Készíthet biztonsági mentést egy Recovery Services-tároló használatával adatok mennyisége nincs korlátozva van.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Miért átkerülnek az adatok mérete kisebb, mint a biztonsági mentésre kijelölt adatokat a Recovery Services-tároló?
- Adatok biztonsági mentése az Azure Backup-ügynök, DPM, és az Azure Backup Server van tömörítve és titkosítva kerül az átvitel előtt. A tömörítés és a rendszer titkosítást alkalmaz, a tárolóban lévő adatok 30 – 40 százalékkal kisebbek.
+Adatok biztonsági mentése az Azure Backup-ügynök, DPM, és az Azure Backup Server van tömörítve és titkosítva kerül az átvitel előtt. A tömörítés és a rendszer titkosítást alkalmaz, a tárolóban lévő adatok 30 – 40 százalékkal kisebbek.
 
 ### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vault"></a>Törölhetem-e az egyes fájlok a tárban lévő helyreállítási pontból?
 Nem, az Azure Backup nem támogatja a törlését vagy végleges törlése az egyes elemek tárolt biztonsági másolatokból.

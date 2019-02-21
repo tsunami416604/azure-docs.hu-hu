@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: b368ef3b5503d90b0eb928113e8154aabca9c04a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7a090a068984a71c917cf5c33761dd78ac1ad2c8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157139"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453256"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Az Azure portal használatával egy webalkalmazási tűzfallal rendelkező application gateway létrehozása
 
@@ -130,7 +130,7 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Ebben az oktatóanyagban az alkalmazásátjáró tárfiókban tárolja az adatokat észlelési és megelőzési célra. Az adatok rögzítésére használható a Log Analytics vagy az Event Hub is.
+Ebben az oktatóanyagban az alkalmazásátjáró tárfiókban tárolja az adatokat észlelési és megelőzési célra. Jegyezze fel az adatokat az Azure Monitor naplóira vagy akár Eseményközpontba is használhatja.
 
 1. Kattintson a **új** az Azure portal bal felső sarkában található.
 2. Válassza a **Storage** elemet, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget.

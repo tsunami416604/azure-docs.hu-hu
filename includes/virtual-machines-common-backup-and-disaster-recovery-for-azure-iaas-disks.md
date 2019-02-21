@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: luywang
 ms.custom: include file
-ms.openlocfilehash: 59a04ca5a546fff1043e1e157491b218f693d0f0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: efa43d7faf9d048ff963a74d8c69618ee535654c
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333910"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443352"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Biztonsági mentési és vész-helyreállítási Azure IaaS-lemezek
 
@@ -170,7 +170,7 @@ Ha kell javítania vagy építse újra a virtuális gép, visszaállíthatja a v
 
 További információkért tekintse meg az utasításokat követve [virtuális gépek visszaállítása az Azure portal használatával](../articles/backup/backup-azure-arm-restore-vms.md). Ez a dokumentum ismerteti a biztonsági másolatban szereplő virtuális gépek visszaállítása egy párosított adatközpontban, a georedundáns biztonsági mentési tár használatával, ha az elsődleges adatközpont katasztrófa lépései is. Ebben az esetben az Azure Backup a számítási szolgáltatást használja a másodlagos régióból a visszaállított virtuális gép létrehozásához.
 
-Is használhatja a PowerShell- [visszaállítása egy virtuális gép](../articles/backup/backup-azure-arm-restore-vms.md#restore-a-vm-during-an-azure-datacenter-disaster) vagy [az új virtuális gép létrehozása a lemezek visszaállítása](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+A PowerShell is használható [az új virtuális gép létrehozása a lemezek visszaállítása](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 
 ## <a name="alternative-solution-consistent-snapshots"></a>Alternatív megoldás: Alkalmazáskonzisztens pillanatképek
 

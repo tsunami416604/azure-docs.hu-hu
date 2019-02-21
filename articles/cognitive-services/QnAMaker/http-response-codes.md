@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/20/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d5b97f9c3b29732ba901f783ac04a3ada338ab69
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 319623487f37308b5b8fe3fd107b01733825184d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866440"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454718"
 ---
 # <a name="qna-maker-api-http-response-codes"></a>A QnA Maker API HTTP-válaszkódot
 A [felügyeleti](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) és az előrejelzési API-k HTTP-válaszkódot adja vissza. Parancsválasz-üzeneteket egy kérelem-re vonatkozó információk közé tartozik, míg a HTTP-válaszként kapott állapotkód általános. 
@@ -31,3 +31,4 @@ A [felügyeleti](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fc
 |401|Érvénytelen kulcs|
 |403|-Tiltott nem rendelkezik megfelelő engedélyekkel|
 |404|KB nem létezik.|
+|410|Ez az API elavult, és már nem érhető el|

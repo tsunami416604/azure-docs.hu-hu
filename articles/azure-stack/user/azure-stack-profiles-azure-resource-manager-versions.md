@@ -14,12 +14,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 6866c6d208468e53b04ede1b5e596f0ea625c49d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f7d82b8cb609b390275617509946d640720f2dda
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248470"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456945"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Erőforrás-szolgáltató API-ja verziókat támogatja az Azure Stackben profilok
 
@@ -57,28 +57,6 @@ Egy API-profilokat és verzió kiadási ütem az Azure Stack, ismertetését [ke
 | Előfizetések | 2016-10-01 |
 
 Több a szolgáltatók a API-profilban az egyes erőforrástípusok verzióját, lásd: [részleteit a 2018-03-01-hibrid](#details-for-the-2018-03-01-hybrid) profilt.
-
-## <a name="overview-of-2018-03-01-hybrid"></a>A 2018-03-01-hibrid áttekintése
-
-| Erőforrás-szolgáltató | Api-version |
-|------------------------------------------------|------------------------------|
-| Microsoft.Compute | 2016-03-30 |
-| Microsoft.Network | 2015-06-15 |
-| Microsoft.Storage (Data Plane) | 2015-04-05  |
-| Microsoft.Storage (Control Plane) | 2016-01-01   |
-| Microsoft.Websites | 2016-01-01 |
-| Microsoft.KeyVault | 2016-10-01<br>(Nem módosítása) |
-| Microsoft.Resources<br>(Az azure Resource Manager magát) | 2016-02-01 |
-| Microsoft.Authorization<Br>(a házirend műveletek) | 2015-11-01 |
-| Microsoft.Insights | 2015-11-01 |
-| Microsoft.Keyvault | 2016-10-01 |
-| Szabályzat | 2015-10-01-előzetes verzió |
-| További források | 2016-02-01 |
-| Resources_Links | 2016-09-01 |
-| Resources_Locks | 2016-09-01 |
-| Előfizetések | 2016-06-1 |
-
-A szolgáltatók a API-profilban az egyes erőforrástípusok verzióinak listájáért tekintse meg a következő szakaszban.
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>A 2018-03-01-hibrid részletei
 

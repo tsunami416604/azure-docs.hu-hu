@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: 2db14056b6b5ccf16c8009c21bfcff00954a7802
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 78daf4534334d56c962d97e7a9aac8a7910db34c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242894"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453596"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető Infografika: A Machine learning alapjai algoritmuspéldákkal
 
@@ -33,7 +33,7 @@ Töltse le a machine learning alapjait kapcsolatos gyakori machine learning kér
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>További segítség algoritmusokat a kezdő és haladó felhasználók
 
-* A különböző típusú gépi tanulási algoritmusok, használatuk és arról, hogy a megfelelőt a megoldáshoz válassza alaposabb ismertetéséhez lásd: [algoritmusok kiválasztása a Microsoft Azure Machine Learninghez](algorithm-choice.md).
+* A különböző típusú gépi tanulási algoritmusok, használatuk és arról, hogy a megfelelőt a megoldáshoz válassza alaposabb ismertetéséhez lásd: [algoritmusok kiválasztása a Microsoft Azure Machine Learning Studióban](algorithm-choice.md).
 * A Machine Learning Studióban elérhető összes gépi tanulási algoritmusok, kategória szerint, lásd: [modell inicializálása] [ initialize-model] a Machine Learning Studio algoritmus-és modul segítségével.
 * Betűrend szerinti rendezés listájáért algoritmusok és a Machine Learning Studióban modulok, lásd: [betűrend szerinti lista Machine Learning Studio-modulok] [ a-z-list] a Machine Learning Studio algoritmus- és modul segítségével.
 * Az Azure AI-katalógusban, és a Közösség által készített rendelkezésére álló számos forrás áttekintését, lásd: [megosztás és az Azure AI katalógusban erőforrások felderítéséhez](gallery-how-to-use-contribute-publish.md).

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 9475872c62849721e29b93e7cacdae9faecfee70
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a8327ecc8fd0018e14c91d21369a0ed65a7c01ef
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659133"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447905"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az SFTP-kiszolgáló
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +68,6 @@ Alapszintű hitelesítés használatához állítsa "authenticationType" tulajdo
 
 ```json
 {
-    "apiVersion": "2017-09-01-preview",
     "name": "SftpLinkedService",
     "type": "linkedservices",
     "properties": {
@@ -111,7 +110,6 @@ SSH nyilvános kulcsos hitelesítés használatához állítsa a "authentication
 
 ```json
 {
-    "apiVersion": "2017-09-01-preview",
     "name": "SftpLinkedService",
     "type": "Linkedservices",
     "properties": {
@@ -140,7 +138,6 @@ SSH nyilvános kulcsos hitelesítés használatához állítsa a "authentication
 
 ```json
 {
-    "apiVersion": "2017-09-01-preview",
     "name": "SftpLinkedService",
     "type": "Linkedservices",
     "properties": {
@@ -192,7 +189,6 @@ Adatok másolása az SFTP, állítsa be a type tulajdonság, az adatkészlet **F
 
 ```json
 {
-    "apiVersion": "2017-09-01-preview",
     "name": "SFTPDataset",
     "type": "Datasets",
     "properties": {

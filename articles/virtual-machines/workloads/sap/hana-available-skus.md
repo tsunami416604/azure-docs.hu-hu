@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a62c30235fdd262f0df5937b6a829382d2b45ef
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b80f872c82061c0cb87f4f1e2714183e71cf02cd
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866287"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56448126"
 ---
 # <a name="available-skus-for-hli"></a>Rendelkezésre álló termékváltozatok HLI
 
@@ -29,11 +29,11 @@ SAP HANA az Azure-ban (nagyméretű példányok) szolgáltatás több konfigurá
 
 | SAP-megoldás | CPU | Memory (Memória) | Storage | Rendelkezésre állás |
 | --- | --- | --- | --- | --- |
-| Az OLAP-optimalizálva: SAP BW, BW/4hana-t<br /> vagy az SAP HANA általános OLAP számítási feladatokhoz | SAP HANA az Azure S72<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> 36 processzormagot és 72 CPU szálak |  768 GB |  3 TB | Elérhető |
+| Optimalizált OLAP: SAP BW, BW/4HANA<br /> vagy az SAP HANA általános OLAP számítási feladatokhoz | SAP HANA az Azure S72<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> 36 processzormagot és 72 CPU szálak |  768 GB |  3 TB | Többé nem érhető el |
 | --- | SAP HANA az Azure S144<br /> – 4 x Intel® Xeon® Processor E7-8890 v3<br /> 72 processzormagot és 144 CPU szálak |  1,5 TB |  6 TB | Többé nem érhető el |
 | --- | SAP HANA az Azure S192<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 processzormagot és 192 CPU szálak |  2.0-S TB |  8 TB | Elérhető |
 | --- | SAP HANA az Azure S384<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 processzormagot és 384 CPU szálak |  4.0 TB |  16 TB | Elérhető |
-| OLTP-hez optimalizálva: SAP Business Suite<br /> az SAP HANA vagy az S/4hana-t (OLTP),<br /> általános OLTP | SAP HANA az Azure S72m<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> 36 processzormagot és 72 CPU szálak |  1,5 TB |  6 TB | Elérhető |
+| OLTP-hez optimalizálva: SAP Business Suite<br /> az SAP HANA vagy az S/4hana-t (OLTP),<br /> általános OLTP | SAP HANA az Azure S72m<br /> – 2 x Intel® Xeon® Processor E7-8890 v3<br /> 36 processzormagot és 72 CPU szálak |  1,5 TB |  6 TB | Többé nem érhető el |
 |---| SAP HANA az Azure S144m<br /> – 4 x Intel® Xeon® Processor E7-8890 v3<br /> 72 processzormagot és 144 CPU szálak |  3.0 TB |  12 TB | Többé nem érhető el |
 |---| SAP HANA az Azure S192m<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 processzormagot és 192 CPU szálak  |  4.0 TB |  16 TB | Elérhető |
 |---| SAP HANA az Azure S384m<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 processzormagot és 384 CPU szálak |  6.0 TB |  18 TB | Elérhető |
@@ -52,7 +52,7 @@ Sok esetben ügyfél-specifikus kiszolgáló konfigurációkról biztosítunk t�
 
 | SKU|CPU | Memory (Memória) | Storage | Rendelkezésre állás |
 | ---| --- | --- | --- | --- |
-| S96 | SAP HANA az Azure S96<br /> – 2-Intel® Xeon® Processor E7-8890 v4<br /> 48 processzormag és a szálak. CPU 96. |  768 GB |  3 TB | Elérhető |
+| S96 | SAP HANA az Azure S96<br /> – 2 x Intel® Xeon® Processor E7-8890 v4<br /> 48 processzormag és a szálak. CPU 96. |  768 GB |  3 TB | Elérhető |
 
 
 | Eredeti Termékváltozat, amely lehet <br /> a kiterjesztett memória | CPU | Memory (Memória) | Storage | Rendelkezésre állás |
@@ -76,9 +76,9 @@ A hardver, az ajánlatok, kivéve a projektek, a specifikus méretezési egység
 
 Egy teljes HANA nagyméretű szolgáltatáspéldányban kizárólag egyetlen ügyfél számára nem lefoglalt&#39;s használja. Emiatt a számítási és tárolási erőforrások, valamint az Azure-ban telepített hálózati háló keresztül csatlakozik a rackszekrények vonatkozik. Nagyméretű HANA-példány infrastruktúrát, mint például az Azure, helyez üzembe különböző ügyfél &quot;bérlők&quot; , amelyek elkülönülnek egymástól a következő három szinten:
 
-- **Hálózati**: a HANA nagyméretű szolgáltatáspéldányban belüli virtuális hálózatok elkülönítését.
-- **Tárolási**: storage virtuális gépek, amelyek hozzárendelt tárolóköteteket és bérlők között tárolóköteteket elkülönítése elkülönítését.
-- **COMPUTE**: egyetlen új bérlő dedikált kiszolgáló egységek hozzárendelését. Nem nehéz vagy helyreállítható particionálás server egységek. Megosztás nélkül egyetlen kiszolgáló vagy a gazdagép egység bérlők között. 
+- **Hálózati**: A HANA nagyméretű szolgáltatáspéldányban belüli virtuális hálózatok elkülönítését.
+- **Tárolási**: Storage virtuális gépek, amelyeken a tároló kötetek elkülönítését rendelve, és elkülönítheti a tárolóköteteket a bérlők között.
+- **COMPUTE**: Egyetlen új bérlő kiszolgáló egységek dedikált hozzárendelését. Nem nehéz vagy helyreállítható particionálás server egységek. Megosztás nélkül egyetlen kiszolgáló vagy a gazdagép egység bérlők között. 
 
 A központi telepítéseket, egységek nagyméretű HANA-példány a különböző bérlők között nem láthatók-e egymáshoz. Üzembe helyezett különböző bérlők HANA nagyméretű példányok egység nem tud közvetlenül kommunikálni egymással, nagyméretű HANA-példány stamp szintjén. Csak nagyméretű HANA-példány egység egy bérlőn belül a nagyméretű HANA-példány stamp szintjén is kommunikálhatnak egymással.
 

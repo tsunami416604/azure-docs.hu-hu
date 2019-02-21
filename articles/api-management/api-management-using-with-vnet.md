@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: d0af6c098f68c23bf9ef6161bd307afec518ead7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: cc4893837feeec6116750a7e37e7621af11ab0a4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011688"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453919"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
-Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az Azure-beli virtuális hálózatok Kezdje itt az adatokat további: [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
+Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az adatok itt az Azure-beli virtuális hálózatok kezdő: [Az Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
 
 Az Azure API Management is üzembe helyezhetők a virtuális hálózaton (VNET), hogy hozzá tudjon férni a háttérszolgáltatások a hálózaton belül. A fejlesztői portál és API-átjáró, konfigurálható vagy az internetről, vagy csak a virtuális hálózaton belül elérhetők lesznek.
 
@@ -85,9 +85,9 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
 ## <a name="enable-vnet-powershell"> </a>PowerShell-parancsmagok használatával virtuális hálózatok közötti kapcsolat engedélyezése
 Is engedélyezheti a PowerShell-parancsmagok használatával virtuális hálózatok közötti kapcsolat
 
-* **Hozzon létre egy virtuális hálózaton belül egy API Management szolgáltatás**: a parancsmag [New-azurermapimanagement parancsmagok](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) egy virtuális hálózaton belül az Azure API Management szolgáltatás létrehozása.
+* **Hozzon létre egy virtuális hálózaton belül egy API Management szolgáltatás**: A parancsmag [New-azurermapimanagement parancsmagok](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) egy virtuális hálózaton belül az Azure API Management szolgáltatás létrehozása.
 
-* **Egy meglévő, egy virtuális hálózaton belül az API Management szolgáltatás üzembe helyezése**: a parancsmag [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) áthelyezése egy meglévő Azure API Management szolgáltatást egy virtuális hálózaton belül.
+* **Egy meglévő, egy virtuális hálózaton belül az API Management szolgáltatás üzembe helyezése**: A parancsmag [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) áthelyezése egy meglévő Azure API Management szolgáltatást egy virtuális hálózaton belül.
 
 ## <a name="connect-vnet"> </a>Csatlakozás egy virtuális hálózatban lévő üzemeltetett webes szolgáltatáshoz
 Miután az API Management szolgáltatás a virtuális hálózathoz van csatlakoztatva, benne a háttérszolgáltatásokat fér hozzá semmiben nem különbözik nyilvános szolgáltatásokhoz való hozzáférését. Csak írja be a helyi IP-cím vagy a gazdagép neve (Ha a virtuális hálózat DNS-kiszolgáló van konfigurálva), a webszolgáltatás a **webszolgáltatás URL-címe** mezőt egy új API létrehozásakor, vagy egy meglévőt szerkeszt.
@@ -97,12 +97,12 @@ Miután az API Management szolgáltatás a virtuális hálózathoz van csatlakoz
 ## <a name="network-configuration-issues"> </a>Általános hálózati konfigurációs problémák
 Az alábbiakban olyan gyakori, egy virtuális hálózatban az API Management szolgáltatás központi telepítése során előforduló helytelen konfiguráció problémák.
 
-* **Az egyéni DNS-kiszolgáló telepítés**: az API Management szolgáltatás számos Azure-szolgáltatások függ. Az API Management egy egyéni DNS-kiszolgáló rendelkező virtuális hálózaton jöhet szóba, ha szükséges az adott Azure-szolgáltatások állomásnevét feloldani. Kövesse az [ez](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) egyéni DNS beállításával útmutatást. Tekintse meg az alábbi táblázat a portok és egyéb hálózati követelményeinek hivatkozást.
+* **Az egyéni DNS-kiszolgáló telepítés**: Az API Management szolgáltatás számos Azure-szolgáltatások függ. Az API Management egy egyéni DNS-kiszolgáló rendelkező virtuális hálózaton jöhet szóba, ha szükséges az adott Azure-szolgáltatások állomásnevét feloldani. Kövesse az [ez](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) egyéni DNS beállításával útmutatást. Tekintse meg az alábbi táblázat a portok és egyéb hálózati követelményeinek hivatkozást.
 
 > [!IMPORTANT]
 > Ha azt tervezi, egy egyéni DNS-kiszolgálók használata a virtuális hálózaton, akkor állítsa be **előtt** bele egy API Management szolgáltatás központi telepítése. Ellenkező esetben frissítenie kell az API Management szolgáltatás minden alkalommal, amikor a DNS-kiszolgálói módosításához futtassa a [alkalmazni a hálózati konfiguráció művelet](https://docs.microsoft.com/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)
 
-* **Az API Management számára szükséges portok**: bejövő és kimenő forgalmat az alhálózatban, amelyben az API Management üzembe van helyezve használatával lehet irányítani [hálózati biztonsági csoport][Network Security Group]. Ha bármelyik ezeket a portokat nem érhető el, az API Management esetleg nem működnek megfelelően, és nem elérhetők. Egy másik gyakori Virtual Network szolgáltatás hibás probléma egy vagy több letiltott portokon kellene akkor, ha az API Management használatával a virtuális hálózathoz.
+* **Az API Management számára szükséges portok**: Bejövő és kimenő forgalmat az alhálózatban, amelyben az API Management üzembe van helyezve használatával lehet irányítani [hálózati biztonsági csoport][Network Security Group]. Ha bármelyik ezeket a portokat nem érhető el, az API Management esetleg nem működnek megfelelően, és nem elérhetők. Egy másik gyakori Virtual Network szolgáltatás hibás probléma egy vagy több letiltott portokon kellene akkor, ha az API Management használatával a virtuális hálózathoz.
 
 Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szóba, ha a rendszer az alábbi táblázatban a portokat használja.
 
@@ -116,7 +116,7 @@ Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szó
 | * / 5672                     | Kimenő           | TCP                | VIRTUAL_NETWORK / EventHub            | Eseményközpont-szabályzat és a monitorozási ügynök a napló függőséget | Külső és belső  |
 | * / 445                      | Kimenő           | TCP                | VIRTUAL_NETWORK / Storage             | A git Azure-fájlmegosztás függőség                      | Külső és belső  |
 | * / 1886                     | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | A Resource Health állapot közzététele szükséges          | Külső és belső  |
-| * / 443-as                     | Kimenő           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | Közzététele a diagnosztikai naplók és mérőszámok                        | Külső és belső  |
+| * / 443                     | Kimenő           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | Közzététele a diagnosztikai naplók és mérőszámok                        | Külső és belső  |
 | * / 25                       | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | Az e-mailek küldéséhez SMTP-továbbítás használata csatlakozáshoz                    | Külső és belső  |
 | * / 587                      | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | Az e-mailek küldéséhez SMTP-továbbítás használata csatlakozáshoz                    | Külső és belső  |
 | * / 25028                    | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | Az e-mailek küldéséhez SMTP-továbbítás használata csatlakozáshoz                    | Külső és belső  |
@@ -126,46 +126,51 @@ Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szó
 >[!IMPORTANT]
 > A portok, amelynek a *célú* van **félkövér** szükségesek az API Management-szolgáltatás telepítése sikeresen. A más portok blokkolása azonban okoz teljesítménycsökkenést, illetve figyelheti a futó szolgáltatás lehetővé teszi a.
 
-* **SSL-funkciók**: ahhoz, hogy SSL-tanúsítvány láncot épület és az érvényesítés az API Management szolgáltatást kell ocsp.msocsp.com, mscrl.microsoft.com és crl.microsoft.com kimenő hálózati kapcsolat. Ezt a függőséget nem kötelező, ha bármely fel kell töltenie az API Management a tanúsítványnak tartalmaznia a teljes tanúsítványlánccal, a legfelső szintű.
++ **SSL-funkciók**: Ahhoz, hogy SSL-tanúsítvány láncot épület és az érvényesítés az API Management szolgáltatást kell ocsp.msocsp.com, mscrl.microsoft.com és crl.microsoft.com kimenő hálózati kapcsolat. Ezt a függőséget nem kötelező, ha bármely fel kell töltenie az API Management a tanúsítványnak tartalmaznia a teljes tanúsítványlánccal, a legfelső szintű.
 
-* **DNS-hozzáférési**: 53-as porton a kimenő hozzáférést a DNS-kiszolgálókkal való kommunikációhoz szükséges. Ha egyéni DNS-kiszolgálót a VPN-átjáró másik végén, a DNS-kiszolgáló elérhető, az alhálózatról, az API Management üzemeltető kell lennie.
++ **DNS-hozzáférési**: 53-as porton a kimenő hozzáférést a DNS-kiszolgálókkal való kommunikációhoz szükséges. Ha egyéni DNS-kiszolgálót a VPN-átjáró másik végén, a DNS-kiszolgáló elérhető, az alhálózatról, az API Management üzemeltető kell lennie.
 
-* **Metrikák és a Szolgáltatásállapot-figyelést**: az Azure figyelési végpontok, amely alatt a következő tartományok feloldani a kimenő hálózati kapcsolat: 
++ **Metrikák és a Szolgáltatásállapot-figyelést**: Kimenő hálózati kapcsolat az Azure figyelési végpontok, amely alatt a következő tartományok feloldása: 
 
     | Azure-környezet | Végpontok                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com ahol `East US 2` eastus2.warm.ingestion.msftcloudes.com van</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.NET</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China       | <ul><li>mooncake.warmpath.chinacloudapi.CN</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com ahol `East US 2` eastus2.warm.ingestion.msftcloudes.com van</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
-* **SMTP-továbbítás használata**: az SMTP-továbbítás használata, amely alatt a fogadó oldja fel a kimenő hálózati kapcsolat `ies.global.microsoft.com`.
++ **SMTP-továbbítás használata**: Az SMTP-továbbítás használata, amely alatt a fogadó oldja fel a kimenő hálózati kapcsolat `ies.global.microsoft.com`.
 
-* **Az Azure portal diagnosztikai**: a folyamatot az Azure Portalról a diagnosztikai naplók engedélyezése, ha a virtuális hálózatokban, kimenő hozzáférést az API Management-bővítmény használata `dc.services.visualstudio.com` 443-as porton szükség. Ez segít bővítmény használatakor előfordulhat, hogy között kapcsolatos hibák elhárítása.
++ **Fejlesztői portál CAPTCHA**: A fejlesztői portál CAPTCHA, amely alatt a fogadó oldja fel a kimenő hálózati kapcsolat `client.hip.live.com`.
 
-* **Express Route-telepítő**: egy közös ügyfél-konfigurációs a saját alapértelmezett útvonalat (0.0.0.0/0), amely arra kényszeríti a kimenő internetes forgalmat inkább a helyi meghatározásához. A forgalom áramlását tüntetnek működésképtelenné válik a kapcsolatot az Azure API Management szolgáltatással, mert a kimenő forgalmat a letiltott helyi vagy NAT-címek, amelyek többé nem működnek együtt a különböző Azure-beli felismerhetetlen készletéhez lenne. A megoldás az, hogy egy (vagy több) felhasználó által megadott útvonalak megadása ([udr-EK][UDRs]), amely tartalmazza az Azure API Management az alhálózaton. Egy UDR határozza meg az alhálózat-specifikus útvonalakat, amely az alapértelmezett útvonal helyett lesznek érvényesek.
-  Ha lehetséges javasoljuk, hogy az alábbi konfigurációt használja:
- * Az ExpressRoute-konfiguráció hirdet 0.0.0.0/0, és alapértelmezés szerint kényszerített alagutak minden kimenő forgalmat a helyszíni.
- * Az udr-t az alhálózathoz, amely tartalmazza az Azure API Management a alkalmazni a 0.0.0.0/0, Internet következő ugrási típusú az határozza meg.
- A rendszer ezeket a lépéseket a kombinált hatását, hogy az alhálózat-szintű UDR elsőbbséget élvez az ExpressRoute kényszerített bújtatást végez, ezáltal biztosítható a kimenő Internet-hozzáférést az Azure API Management által.
++ **Az Azure portal diagnosztikai**: A folyamatot az Azure Portalról a diagnosztikai naplók engedélyezése, ha a virtuális hálózatokban, kimenő hozzáférést az API Management-bővítmény használata `dc.services.visualstudio.com` 443-as porton szükség. Ez segít bővítmény használatakor előfordulhat, hogy között kapcsolatos hibák elhárítása.
 
-* **Hálózati virtuális berendezések keresztül útválasztási**: letiltja a konfigurációk, amelyek segítségével egy udr-t olyan alapértelmezett útvonalat (0.0.0.0/0) az API Management alhálózatból az internet felé irányuló forgalom irányítása az Azure-ban futó hálózati virtuális készüléken keresztül felügyeleti forgalom érkezik az Internet az API Management-szolgáltatáspéldány érvényesekre, amelyeket a virtuális hálózat alhálózatához. Ez a konfiguráció nem támogatott.
++ **Express Route-telepítő**: Egy közös ügyfél-konfigurációs a saját alapértelmezett útvonalat (0.0.0.0/0), amely arra kényszeríti a kimenő internetes forgalmat inkább a helyi meghatározásához. A forgalom áramlását tüntetnek működésképtelenné válik a kapcsolatot az Azure API Management szolgáltatással, mert a kimenő forgalmat a letiltott helyi vagy NAT-címek, amelyek többé nem működnek együtt a különböző Azure-beli felismerhetetlen készletéhez lenne. A megoldás az, hogy egy (vagy több) felhasználó által megadott útvonalak megadása ([udr-EK][UDRs]), amely tartalmazza az Azure API Management az alhálózaton. Egy UDR határozza meg az alhálózat-specifikus útvonalakat, amely az alapértelmezett útvonal helyett lesznek érvényesek.
+
+    Ha lehetséges javasoljuk, hogy az alábbi konfigurációt használja:
+
+     * Az ExpressRoute-konfiguráció hirdet 0.0.0.0/0, és alapértelmezés szerint kényszerített alagutak minden kimenő forgalmat a helyszíni.
+     * Az udr-t az alhálózathoz, amely tartalmazza az Azure API Management a alkalmazni a 0.0.0.0/0, Internet következő ugrási típusú az határozza meg.
+
+    A rendszer ezeket a lépéseket a kombinált hatását, hogy az alhálózat-szintű UDR elsőbbséget élvez az ExpressRoute kényszerített bújtatást végez, ezáltal biztosítható a kimenő Internet-hozzáférést az Azure API Management által.
+
++ **Hálózati virtuális berendezések keresztül útválasztási**: Konfigurációk, amelyek segítségével egy udr-t olyan alapértelmezett útvonalat (0.0.0.0/0) továbbítja az internet felé irányuló forgalom az alhálózat egy hálózati virtuális készüléken, Azure-ban futó letiltja a felügyeleti forgalom Internet érkező, az API Management szolgáltatás API Management által a példány érvényesekre, amelyeket a virtuális hálózat alhálózatához. Ez a konfiguráció nem támogatott.
 
 >[!WARNING]
 >Az Azure API Management nem támogatott olyan ExpressRoute-konfigurációk, amelyek **helytelenül keresztbe hirdetnek útvonalakat a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonal**. ExpressRoute-konfigurációk, amelyek rendelkeznek, a konfigurált nyilvános társviszonyt fog útvonalhirdetéseket kapnak a Microsoft számára a Microsoft Azure IP-címtartományok nagy készletét. Ha a címtartományokat helytelenül keresztbe hirdetik a privát társviszony-létesítési útvonal, a végeredmény, hogy az összes, az Azure API Management-példány alhálózatából származó kimenő hálózati csomag-e helytelenül kényszerített bújtatással jut el az ügyfél helyszíni hálózati infrastruktúra. A hálózati forgalom működésképtelenné válik az Azure API Management. A megoldás erre a problémára, ha leállítja az útvonalak keresztbe hirdetését a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési elérési utat.
 
 
 ## <a name="troubleshooting"> </a>Hibaelhárítás
-* **A kezdeti telepítés**: az API Management szolgáltatás egyik alhálózatában kezdeti telepítése nem sikerül, ha először helyezheti üzembe a virtuális gép ugyanazon az alhálózaton javasolt. Tovább a távoli asztal a virtuális géppel, és ellenőrizze, hogy nincs-e az egyes erőforrások alatt az azure-előfizetésében egyik kapcsolat
+* **A kezdeti telepítés**: Ha az API Management-szolgáltatás egyik alhálózatában kezdeti telepítése nem sikerül, célszerű először helyezheti üzembe a virtuális gép ugyanazon az alhálózaton. Tovább a távoli asztal a virtuális géppel, és ellenőrizze, hogy nincs-e az egyes erőforrások alatt az azure-előfizetésében egyik kapcsolat
     * Azure Storage blob
     * Azure SQL Database
-    * Az Azure Storage-táblából
+    * Azure Storage Table
 
  > [!IMPORTANT]
  > Miután ellenőrizte a kapcsolat, el kell távolítania az alhálózatban az API Management telepítése előtt üzembe helyezheti az alhálózaton, összes erőforrást.
 
 * **Növekményes frissítések**: Ha módosítja a hálózathoz, tekintse meg [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus), ellenőrizze, hogy az API Management szolgáltatás nem elvesztette a a kritikus fontosságú erőforrások függ, amely a hozzáférést. A kapcsolati állapot 15 percenként frissíteni kell.
 
-* **Erőforrás-navigációs hivatkozások**: Resource Manager-stílus virtuális hálózat alhálózatában telepítésekor az API Management az alhálózat fenntart egy erőforrás-navigációs hivatkozás létrehozásával. Ha az alhálózat már tartalmaz egy erőforrás más szolgáltatótól származó, központi telepítés rendszer **sikertelen**. Hasonlóképpen egy API Management szolgáltatás áthelyezése egy másik alhálózatot, vagy törölje azt, megszüntetjük, erőforrás-navigációs hivatkozást.
+* **Erőforrás-navigációs hivatkozások**: Resource Manager-stílus virtuális hálózat alhálózatában telepítésekor az API Management fenntartja az alhálózatot, hozzon létre egy erőforrás-navigációs hivatkozást. Ha az alhálózat már tartalmaz egy erőforrás más szolgáltatótól származó, központi telepítés rendszer **sikertelen**. Hasonlóképpen egy API Management szolgáltatás áthelyezése egy másik alhálózatot, vagy törölje azt, megszüntetjük, erőforrás-navigációs hivatkozást.
 
 ## <a name="subnet-size"> </a> Alhálózat Méretkövetelményt
 Az Azure lefoglalja minden egyes alhálózaton belül néhány IP-cím, és ezek a címek nem használható. Az alhálózatok első és utolsó IP-címét a protokollok megfelelősége érdekében, az Azure-szolgáltatásokhoz használt három további címek számára vannak fenntartva. További információkért lásd: [vannak ezen alhálózatok belüli IP-címek használatával korlátozások?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)

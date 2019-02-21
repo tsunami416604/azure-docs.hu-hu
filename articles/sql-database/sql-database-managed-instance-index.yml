@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c9d8b875d7e5a831af52eae8abc642632cb5f635
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 287e4d63ca60200340a88dd45d6b8912a62b74cd
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238385"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454692"
 documentType: LandingData
 title: Felügyelt Azure SQL Database-példány
 metadata:
@@ -75,7 +75,7 @@ sections:
     style: unordered
     items:
     - html: <a href="sql-database-managed-instance#business-critical-service-tier">Üzleti kritikus fontosságú szolgáltatási szint</a> már <a href="https://azure.microsoft.com/blog/migrate-mission-critical-sql-workloads-to-the-most-economical-cloud-destination/">általánosan elérhető (GA)</a>.
-    - html: (Előzetes verzió) Hozzon létre <a href="https://aka.ms/managed-instance-aadlogins">példányszintű az Azure AD-bejelentkezések</a> használatával <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">külső SZOLGÁLTATÓ a bejelentkezés létrehozása</a> .
+    - html: (Előzetes verzió) Hozzon létre <a href="https://aka.ms/managed-instance-aadlogins">példányszintű Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések)</a> használatával <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">külső SZOLGÁLTATÓ a bejelentkezés létrehozása</a> .
     - html: (Előzetes verzió) A példányok létrehozásához <a href="https://aka.ms/managed-instance-collation">a választott a kiszolgálói szintű rendezés</a>.
     - html: <a href="https://aka.ms/managed-instance-configurable-backup-retention">A biztonsági másolatok konfigurálása mentése 35 napon belül</a> időponthoz visszaállításhoz. Vegye figyelembe, hogy hosszú távú megőrzésének (legfeljebb 10 évre) még nincs engedélyezve, így használhatja <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">csak másolatot biztonsági mentések</a> alternatívájaként.
     - html: (Előzetes verzió) Használat <a href="https://aka.ms/managed-instance-failover-groups">földrajzilag elosztott feladatátvételi csoportok</a> adatpéldányok példány egy másik régióban, és győződjön meg arról, hogy az adatai akkor lesznek érhető el, még akkor is, a regionális vészhelyreállítási forgatókönyv.

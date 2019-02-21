@@ -10,19 +10,19 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 67843efd87e0d1cdd1a392fdd24d29decae093e8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0940cb9e42588990e2109d02fda462f343443876
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997005"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456078"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban modell eredményeinek értelmezése
 Ez a témakör bemutatja, hogyan jelenítheti meg, és az Azure Machine Learning Studióban az előrejelzés eredményét értelmezik. Miután a betanított modell, és végzett előrejelzések felett ("pontozását a modell"), és az előrejelzési eredmények értelmezése szüksége.
 
 
 
-Machine learning-modellek Azure Machine Learning négy fő típusú léteznek:
+Machine learning-modellek az Azure Machine Learning Studióban négy fő típusú léteznek:
 
 * Besorolás
 * Fürtözés
@@ -35,11 +35,11 @@ Az ezeken a modelleken előrejelzéshez használt modulokra:
 * [Fürtök hozzárendelése] [ assign-to-clusters] modul a fürtszolgáltatás
 * [Pontszám Matchbox ajánló] [ score-matchbox-recommender] a javaslattételi rendszerek
 
-Ez a dokumentum ismerteti az egyes modulok előrejelzési eredményeket értelmezése. Ezek a modulok áttekintését lásd: [kiválasztása az Azure Machine Learning termékben használt algoritmusok optimalizálására paraméterek](algorithm-parameters-optimize.md).
+Ez a dokumentum ismerteti az egyes modulok előrejelzési eredményeket értelmezése. Ezek a modulok áttekintését lásd: [kiválasztása az Azure Machine Learning Studióban az algoritmusok optimalizálása paraméterekkel](algorithm-parameters-optimize.md).
 
-Ez a témakör címek előrejelzési értelmezését, de nem a modell értékelése. A modell értékelése kapcsolatos további információkért lásd: [az Azure Machine Learning modellek teljesítményének kiértékelése](evaluate-model-performance.md).
+Ez a témakör címek előrejelzési értelmezését, de nem a modell értékelése. A modell értékelése kapcsolatos további információkért lásd: [hogyan modellek teljesítményének kiértékelése az Azure Machine Learning Studio](evaluate-model-performance.md).
 
-Ha segítségre van szüksége egy egyszerű kísérlet létrehozására első lépések, olvassa el és nem ismeri az Azure Machine Learning [egy egyszerű kísérlet létrehozása az Azure Machine Learning Studio](create-experiment.md) az Azure Machine Learning Studióban.
+Ha segítségre van szüksége egy egyszerű kísérlet létrehozására első lépések, olvassa el és nem ismeri az Azure Machine Learning Studio [egy egyszerű kísérlet létrehozása az Azure Machine Learning Studio](create-experiment.md) az Azure Machine Learning Studióban.
 
 ## <a name="classification"></a>Besorolás
 Két alkategóriái osztályozási problémák:
@@ -47,12 +47,12 @@ Két alkategóriái osztályozási problémák:
 * Csak két osztály (kétosztályos vagy bináris osztályozás) kapcsolatos problémák
 * Több mint két osztály (többcsoportos osztályozás) kapcsolatos problémák
 
-Az Azure Machine Learning rendelkezik különböző modulok besorolás az ilyen típusú foglalkozik, de az előrejelzési eredmények értelmezésében módszerei hasonlóak.
+Az Azure Machine Learning Studio tartalmaz eltérő modulok kezelésére az összes ilyen típusú besorolási, de az előrejelzési eredmények értelmezésében módszerei hasonlóak.
 
 ### <a name="two-class-classification"></a>Két osztályú osztályozás
 **Példakísérlet**
 
-Egy példa egy két osztályú osztályozási probléma a virágok iris besorolása. A feladat az Írisz osztályozása virágok a hozzájuk tartozó funkciók alapján. Az Azure Machine Learning biztosított az Írisz adatkészletet egy részét a népszerű [Írisz adatkészletet](http://en.wikipedia.org/wiki/Iris_flower_data_set) példányait tartalmazó csak két virágzik fajok (0 és 1. osztály). Nincsenek az egyes flower (csészelevél hossza, csészelevél szélessége, szirom hosszúsága és szirom szélessége) négy szolgáltatásai.
+Egy példa egy két osztályú osztályozási probléma a virágok iris besorolása. A feladat az Írisz osztályozása virágok a hozzájuk tartozó funkciók alapján. Az Írisz adatkészletet, az Azure Machine Learning Studióban megadott egy részét a népszerű [Írisz adatkészletet](http://en.wikipedia.org/wiki/Iris_flower_data_set) példányait tartalmazó csak két virágzik fajok (0 és 1. osztály). Nincsenek az egyes flower (csészelevél hossza, csészelevél szélessége, szirom hosszúsága és szirom szélessége) négy szolgáltatásai.
 
 ![Képernyőkép az iris kísérlet](./media/interpret-model-results/1.png)
 
@@ -226,7 +226,7 @@ Ajánló rendszerek esetén használhatja a éttermi javaslat probléma példa: 
 * A szolgáltatás ügyféladatok
 * Éttermek a szolgáltatás adatokat
 
-Számos dolgot mindent tehetünk a [Train Matchbox ajánló] [ train-matchbox-recommender] az Azure Machine Learning modul:
+Számos dolgot mindent tehetünk a [Train Matchbox ajánló] [ train-matchbox-recommender] modul az Azure Machine Learning Studio:
 
 * Egy adott felhasználó és az elem minősítését előrejelzése
 * Javasolhat egy adott felhasználó számára
@@ -237,7 +237,7 @@ Mit szeretne tenni kiválasztásával négy lehetőségei közül választhat a 
 
 ![Matchbox ajánló](./media/interpret-model-results/19_1.png)
 
-Egy tipikus Azure Machine Learning-kísérlet ajánló rendszer esetén 20. ábra tűnik. E ajánló rendszer modulok használatával kapcsolatos információkért lásd: [Train matchbox ajánló] [ train-matchbox-recommender] és [pontszám matchbox ajánló] [ score-matchbox-recommender].
+Egy tipikus Azure Machine Learning Studio kísérletet ajánló rendszer esetén 20. ábra tűnik. E ajánló rendszer modulok használatával kapcsolatos információkért lásd: [Train matchbox ajánló] [ train-matchbox-recommender] és [pontszám matchbox ajánló] [ score-matchbox-recommender].
 
 ![Ajánló rendszer kísérlet](./media/interpret-model-results/20.png)
 

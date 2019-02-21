@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 9/25/2018
+ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 52653252df3efd3e12fa974ed82cd2557eee93d0
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: d751d4898be3fd19f9e6f5d03e9313e9d98e9dd2
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301247"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446094"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Az Azure DNS-alias a rekordok áttekintése
 
@@ -25,40 +25,40 @@ A következő rekordtípusokhoz, az Azure DNS-zóna egy aliast rekordhalmaz tám
 - CNAME 
 
 > [!NOTE]
-> Alias-rekordjait a vagy AAAA típusú rekord típust az Azure Traffic Manager csak külső végpont típusok támogatottak. Meg kell adnia az IPv4 vagy IPv6-címet, ha a Traffic Manager külső végpontokat szükséges. Ideális esetben használjon statikus IP-címek a címet.
+> Ha szeretne használni a vagy AAAA típusú rekord típust-alias rekord átirányítása egy [Azure Traffic Manager-profil](../traffic-manager/quickstart-create-traffic-manager-profile.md) meg kell győződnie arról, hogy a Traffic Manager-profil csak rendelkezik [külső végpontokat](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints). Külső végpontok Traffic Managerben, meg kell adnia az IPv4 vagy IPv6-címet. Ideális esetben használjon statikus IP-címeket.
 
 ## <a name="capabilities"></a>Funkciók
 
-- **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource.
+- **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource. A DNS-rekordhalmaz automatikusan megtörténik, ha a nyilvános IP-cím megváltozik, vagy törölni. DNS értékhiányos rekordokat, amelyek nem megfelelő IP-címek kerülni a rendszer.
 
-- **A DNS A/AAAA/CNAME-rekordhalmazok átirányítása a Traffic Manager-profil.** A CNAME REKORDOT a Traffic Manager-profil egy DNS CNAME rekord készletből is mutasson. Ez például akkor contoso.trafficmanager.net. Most is mutathat, amely rendelkezik egy DNS-zónáját A vagy AAAA típusú rekordot a külső végpontok Traffic Manager-profilhoz.
+- **A DNS A/AAAA/CNAME-rekordhalmazok átirányítása a Traffic Manager-profil.** You can create an A/AAAA or CNAME record set and use alias records to point it to a Traffic Manager profile. Ez különösen hasznos ha kell irányíthatja a forgalmat a zóna legfelső pontján, mint a hagyományos CNAME-rekordokat a zóna felső pontja nem támogatottak. Tegyük fel például, hogy a Traffic Manager-profil myprofile.trafficmanager.net, és a vállalati DNS-zónát a contoso.com. Hozzon létre egy alias rekordhalmaz írja be A/AAAA contoso.com (a zóna felső pontja), és myprofile.trafficmanager.net mutasson.
 
-   > [!NOTE]
-   > Alias-rekordjait a vagy AAAA típusú rekord típust a Traffic Manager esetében csak a külső végpont típusok támogatottak. Meg kell adnia az IPv4 vagy IPv6-címet, ha a Traffic Manager külső végpontokat szükséges. Ideális esetben használjon statikus IP-címek a címet.
-   
-- **Egy másik DNS rekordhalmaz ugyanabban a zónában lévő mutasson.** Az aliasrekordok hivatkozhatnak más azonos típusú rekordhalmazokra. Például egy DNS CNAME-rekordhalmazt alias egy másik CNAME rekordhalmazhoz azonos típusú is lehet. Ezzel az elrendezéssel fokozott akkor hasznos, ha azt szeretné, hogy néhány rekordhalmazt kell aliasok és az egyes nem alias.
+- **Egy másik DNS rekordhalmaz ugyanabban a zónában lévő mutasson.** Az aliasrekordok hivatkozhatnak más azonos típusú rekordhalmazokra. Például egy DNS CNAME-rekordhalmazt lehet egy alias egy másik CNAME-rekordhalmazt. Ezzel az elrendezéssel fokozott akkor hasznos, ha azt szeretné, hogy néhány rekordhalmazt kell aliasok és az egyes nem alias.
 
 ## <a name="scenarios"></a>Forgatókönyvek
+
 Van néhány olyan gyakori helyzetet Alias rekordokat.
 
 ### <a name="prevent-dangling-dns-records"></a>Értékhiányos DNS-rekordok letiltása
- Az Azure DNS-zóna, belül alias rekordok szorosan nyomon követéséhez az Azure-erőforrások életciklus használható. Erőforrások közé tartoznak a nyilvános IP-cím vagy a Traffic Manager-profil. A hagyományos DNS-rekordok egyik általános problémája van értékhiányos rögzíti. Ez a probléma akkor fordul elő, különösen az A/AAAA vagy CNAME rekordtípusok. 
 
-A hagyományos DNS-zóna rekord ha a cél IP-címet vagy CNAME már nem létezik, a DNS-zóna rekord nem ismeri. Ennek eredményeképpen a bejegyzést manuálisan kell frissíteni. Egyes szervezetekben a manuális frissítés nem fordulhat elő, időben. Is lehet a problémás a szerepkörök és engedélyszintek társított elkülönítése miatt.
+A hagyományos DNS-rekordok egyik általános problémája van értékhiányos rögzíti. Ha például DNS-rekordok változásainak IP-címek nem lettek frissítve. A probléma akkor fordul elő, különösen az A/AAAA vagy CNAME rekordtípusok.
 
-Például egy szerepkör előfordulhat, hogy megvan a egy CNAME vagy IP-cím, amelyhez tartozik egy alkalmazás törléséhez. De nem rendelkezik elegendő szolgáltató ezen célok mutató DNS-rekordot frissíteni. Késleltetés között történik, ha az IP- vagy CNAME törlődik, és a rá mutató DNS-rekord törlődik. A késés a felhasználók számára egy szolgáltatáskimaradás okozhatja esetleg azt.
+A hagyományos DNS-zóna rekord ha a cél IP-címet vagy CNAME már nem létezik, a hozzá társított DNS-rekord manuálisan frissíteni kell. Egyes szervezetekben manuális frissítés nem fordulhat elő, a folyamat problémák miatt, vagy a szerepkörök és engedélyszintek társított elkülönítése miatt. Például egy szerepkör előfordulhat, hogy megvan a egy CNAME vagy IP-cím, amelyhez tartozik egy alkalmazás törléséhez. De nem rendelkezik elegendő szolgáltató ezen célok mutató DNS-rekordot frissíteni. Késés tapasztalható a DNS-rekord frissítése a felhasználók számára egy szolgáltatáskimaradás okozhatja esetleg azt.
 
-Alias rekordok távolítsa el az ebben a forgatókönyvben a összetettségét. Ezek segítségével megakadályozhatja a értékhiányos hivatkozik. Vegyük például, a nyilvános IP-cím vagy a Traffic Manager-profil átirányítása egy aliast rekordként minősített DNS-rekord. Ha a rendszer törli a mögöttes erőforrások, a DNS-aliasrekordot a egyszerre törlődik. Ez a folyamat gondoskodik arról, hogy a felhasználók soha nem szenvedett-e a kimaradás.
+Alias rekordok értékhiányos hivatkozások megakadályozása szorosan kapcsoló egy Azure-erőforrás a DNS-rekord teljes életciklusát. Például érdemes lehet nyilvános IP-cím vagy a Traffic Manager-profil átirányítása egy aliast rekordként minősített DNS-rekord. Ha a rendszer törli a mögöttes erőforrások, a DNS-aliasrekordot a egyszerre törlődik.
 
-### <a name="update-dns-zones-automatically-when-application-ips-change"></a>Az alkalmazás IP-címek változásakor automatikusan frissíti a DNS-zónák
+### <a name="update-dns-record-set-automatically-when-application-ip-addresses-change"></a>DNS-rekordkészletet, automatikusan frissíti az alkalmazás IP-címek változásakor
 
-Ez a forgatókönyv hasonlít az előzőre. Például egy alkalmazás áthelyezése, vagy a mögöttes virtuális gép újraindul. Az alias rekord majd automatikusan frissíti az IP-cím változásának az alapul szolgáló nyilvános IP-erőforráshoz. Ezzel elkerülhető a potenciális biztonsági kockázatok irányítja a felhasználókat, hogy a régi IP-címmel rendelkezik egy másik alkalmazás.
+Ez a forgatókönyv hasonlít az előzőre. Például egy alkalmazás áthelyezése, vagy a mögöttes virtuális gép újraindul. Az alias rekord majd automatikusan frissíti az IP-cím változásának az alapul szolgáló nyilvános IP-erőforráshoz. Ezzel elkerülhető a potenciális biztonsági kockázatok irányítani a felhasználók számára, amely a régi nyilvános IP-cím van rendelve egy másik alkalmazás.
 
 ### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Elosztott terhelésű alkalmazások üzemeltetését a zóna legfelső pontján
 
-A DNS protokoll megakadályozza, hogy az A vagy AAAA rekord a zóna legfelső pontján csakis a hozzárendelését. Például: contoso.com. Ez a korlátozás az elosztott terhelésű alkalmazások Forgalomkezelő mögé rendelkező alkalmazástulajdonosok problémát jelent. Nem lehet a zóna felső pontja rekordból a Traffic Manager-profil mutassanak. Ennek eredményeképpen alkalmazástulajdonosok áthidaló kell használnia. Az ügyfélalkalmazási rétegben átirányítási kell átirányítási a zóna felső pontja a egy másik tartományba. Ilyen például, egy irányítja át a contoso.com www.contoso.com. Ezzel az elrendezéssel fokozott megjelenít egy átirányítási függvényéhez meghibásodási pont.
+A DNS protokoll megakadályozza, hogy a CNAME-rekordokat a zóna legfelső pontján hozzárendelését. Például ha a tartománya a contoso.com; hozhat létre CNAME-rekordokat a somelable.contoso.com; azonban nem hozhat létre CNAME contoso.com magát.
+Ez a korlátozás problémát jelent, a kérelmek terheléselosztással rendelkező alkalmazástulajdonosok mögött [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Egy CNAME rekord létrehozása a Traffic Manager-profil használatával van szüksége, mivel nincs lehetőség a zóna felső pontja a Traffic Manager-profilt mutassanak.
 
-Alias rekordokat a probléma már nem létezik. Alkalmazástulajdonos most már rendelkezik külső végpontok Traffic Manager-profil is mutat a zóna felső pontja rekord. Alkalmazástulajdonos más tartományban a DNS-zóna használt azonos Traffic Manager-profilt is mutat. Például a contoso.com és a www.contoso.com is mutasson a Traffic Manager-profilt. Ez a helyzet, amíg a Traffic Manager-profil csak külső végpontokkal konfigurálva van.
+Ez a probléma alias rekordok használatával kell megoldani. Ellentétben a CNAME-rekordokat alias-rekord zóna felső pontjánál hozható létre, és alkalmazástulajdonosok használhatja a zóna felső pontja rekord átirányítása egy Traffic Manager-profil, amely rendelkezik a külső végpontokat. Alkalmazástulajdonos más tartományban a DNS-zóna használt azonos Traffic Manager-profilt is mutat.
+
+Például a contoso.com és a www.contoso.com is mutasson a Traffic Manager-profilt. További információt az Azure Traffic Manager-profilok alias rekordok használatával, tekintse meg a következő lépések szakasz.
 
 ## <a name="next-steps"></a>További lépések
 

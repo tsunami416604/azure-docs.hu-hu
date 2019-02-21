@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 784cb5248dab2b9554c67347e1b9b848e1a9e985
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 29e6215358eaf544f32f585744ed36f30822d134
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820784"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446749"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány
 
-Ez az oktatóanyag bemutatja, hogyan teheti biztonságossá webalkalmazását (beszerzés) létrehozásával az App Service-tanúsítvány [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) , és kösse az App Service-alkalmazás.
+Az oktatóanyag bemutatja, hogyan teheti biztonságossá a [App Service-alkalmazás](https://docs.microsoft.com/azure/app-service/) vagy [függvényalkalmazás](https://docs.microsoft.com/azure/azure-functions/) (beszerzés) létrehozásával az App Service-tanúsítvány [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) , és kösse azt egy App Service-alkalmazás.
 
 > [!TIP]
 > App Service-tanúsítványok bármilyen Azure és az Azure Services használható, és nem korlátozódik az App Services. Ehhez szüksége egy App Service-tanúsítvány, hogy ezzel bárhol felhasználható helyi PFX másolatának létrehozásához. További információkért lásd: [létrehozása egy App Service-tanúsítvány PFX helyi példányának](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
@@ -35,7 +35,7 @@ Ez az oktatóanyag bemutatja, hogyan teheti biztonságossá webalkalmazását (b
 Ez az útmutató követéséhez:
 
 - [Létre kell hoznia egy App Service-alkalmazást.](/azure/app-service/)
-- [A webalkalmazás egy tartománynév hozzárendelése](app-service-web-tutorial-custom-domain.md) vagy [vásárlása és konfigurálása, az Azure-ban](manage-custom-dns-buy-domain.md)
+- [Tartománynév hozzárendelése az alkalmazáshoz](app-service-web-tutorial-custom-domain.md) vagy [vásárlása és konfigurálása, az Azure-ban](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -75,7 +75,7 @@ Az a **Key Vault-állapot** kattintson **Key Vault-tárház** hozzon létre egy 
 | Hely | Válassza ki ugyanazt a helyet, az App Service-alkalmazást. |
 | Tarifacsomag | További információ: [Azure Key Vault díjszabását](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Hozzáférési szabályzatok| Határozza meg az alkalmazások és az engedélyezett hozzáférést a tároló-erőforrások. Beállíthatja, később ismertető [több alkalmazások hozzáférést key vault](../key-vault/key-vault-group-permissions-for-apps.md). |
-| Virtuális hálózati hozzáférés | Tároló hozzáférés korlátozása az egyes Azure virtuális hálózatokhoz. Beállíthatja, később ismertető [konfigurálása az Azure Key Vault tűzfalak és virtuális hálózatok](../key-vault/key-vault-network-security.md) |
+| Virtual Network Access | Tároló hozzáférés korlátozása az egyes Azure virtuális hálózatokhoz. Beállíthatja, később ismertető [konfigurálása az Azure Key Vault tűzfalak és virtuális hálózatok](../key-vault/key-vault-network-security.md) |
 
 Miután kiválasztotta a tárolót, zárja be a **Key Vault-tárház** lapot. A **Store** beállítás sikeres végrehajtás esetén egy zöld pipának kell megjelennie. Ne zárja be az oldal a következő lépéshez.
 

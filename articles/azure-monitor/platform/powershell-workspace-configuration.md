@@ -2,24 +2,18 @@
 title: A powershellel létrehozása és konfigurálása a Log Analytics-munkaterület |} A Microsoft Docs
 description: Log Analytics-adatait használja a helyszíni kiszolgálók, vagy a felhő-infrastruktúráról. Ha az Azure diagnostics által létrehozott Azure storage-ból is összegyűjtheti a számítógépadatok.
 services: log-analytics
-documentationcenter: ''
 author: richrundmsft
-manager: jochan
-editor: ''
-ms.assetid: 3b9b7ade-3374-4596-afb1-51b695f481c2
 ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: e34d45d2d7c81ec5f15a5441ce2bb0f082c65155
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 5b64ecbb82e88b43546946ef30bf3107874af170
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884112"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446477"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>A Log Analytics felügyelete PowerShell használatával
 Használhatja a [Log Analytics PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) parancssori vagy parancsfájl részeként különféle funkciók végrehajtásához a Log Analyticsben.  A PowerShell használatával is elvégezheti a feladatok közé:
@@ -63,7 +57,7 @@ Az alábbi parancsfájl a példa bemutatja, hogyan lehet:
 11. Windows-számítógépekről memória rendelkezésre álló memória (MB) teljesítményszámláló gyűjtése.
 12. Egyéni napló gyűjtése 
 
-```
+```PowerShell
 
 $ResourceGroup = "oms-example"
 $WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique - Get-Random helps with this for the example code
@@ -184,23 +178,22 @@ New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroup
 
 # Custom Logs
 New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
-
 ```
-A fenti példában regexDelimiter van definiálva "\\n" az új sor. A napló elválasztó karakter lehet egy időbélyeg is.  A támogatott formátumok a következők:
+A fenti példában regexDelimiter van definiálva "\\n" az új sor. A napló elválasztó egy időbélyeg is lehet.  A támogatott formátumok a következők:
 
 | Formátum | JSON RegEx formátumot használ, két \\ számára minden \ standard reguláris kifejezést az, ha a tesztelés RegEx alkalmazásban csökkentheti \\ való \ |
 | --- | --- |
-| ÉÉÉÉ-HH-NN ÓÓ | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
-| H/ÉÉÉÉ ÓÓ: PP: MP DE/DU | (([0-1]\\\\d)\|[0-9]) / (([0 – 3]\\\\d)\|(\\\\d)) / ((\\\\d{2})\|() \\ \\d{4}))\\\\s ((\\\\d)\|([0-1]\\\\d)\|(2[0-4])): [0 – 5] [0-9]: [ 0 – 5] [0-9]\\\\s (AM\|PM\|vagyok\|pm) |
-| nn/MMM/éééé óó | ((([0 – 3]\\\\d)\|(\\\\d)) / (Jan\|február\|március\|május\|Diagramhalmazban\|júliusban\|június\|Aug\|Oct\|Sep\|november\|DEC.\|jan\|február\|dát\|előfordulhat, hogy\|diagramhalmazban\|júliusban\|június\|aug\|oct\|sep\|november\|DEC.) / ((\\\\d{2})\|(\\\\d{4})) \\ \\s ((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]) |
-| MMM nn-éééé óó | (((?: Jan(?:uary)? \|Feb(?:ruary)? \|Mar(?:ch)? \|Apr(?:il)? \|Előfordulhat, hogy\|Jun(?:e)?\| JUL(?:y)? \|Aug(?:ust)? \|Sep(?:tember)? \|Szeptembertől\|Oct(?:o ismétlés)? \|Nov(?:ember)? \|Dec(?:ember)?)). *? ((?: (?: [0, 2]? \\ \\d{1})\|(?: [3] [01]{1}))) (?! [\\\\d]).* ? ((?: (?: [1]{1}\\\\d{1}\\\\d{1}\\\\d{1})\|(?: [2]{1} \\ \\d{3}))) (?! [\\\\d]). *? ((?: (?: [0-1][0-9])\|(?: [2][0-3])\|(?: [0-9])):(?:[0-5][0-9])(?::[0-5][0-9])? (?:\\\\s? (?: am\|AM\|pm\|PM))?)) |
-| ééhhnn óó | ([0-9]{2}([0][1-9]\|[1][0-2])([0-2][0-9]\|[3][0-1])\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9]) |
-| ddMMyy óó | (([0-2][0-9]\|[3][0-1])([0][1-9]\|[1][0-2])[0-9]{2}\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9]) |
-| MMM d óó | (Jan\|február\|március\|Diagramhalmazban\|előfordulhat, hogy\|június\|júliusban\|Aug\|Sep\|Oct\|november\|DEC.)\\ \\s\\\\s? () [0]? [1 – 9] \|[1 – 2] [0-9]\|[3][0-1])\\\\s ([0-1]? [ 0-9]\|[2][0-3]):([0-5][0-9]):([0-5][0-9]) |
-| MMM d óó<br> MMM után két szóköz | (Jan\|február\|március\|Diagramhalmazban\|előfordulhat, hogy\|június\|júliusban\|Aug\|Sep\|Oct\|november\|DEC.)\\ \\s\\\\s ([0]? [ 1 – 9]\|[1 – 2] [0-9]\|[3][0-1])\\\\s ([0] [0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9]) |
-| MMM d óó | (Jan\|február\|március\|Diagramhalmazban\|előfordulhat, hogy\|június\|júliusban\|Aug\|Sep\|Oct\|november\|DEC.)\\ \\s ([0]? [ 1 – 9]\|[1 – 2] [0-9]\|[3][0-1])\\\\s ([0] [0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9]) |
-| nn/MMM/yyyy:HH:mm:ss + zzzz<br> hol van + + vagy a -<br> ahol zzzz idő eltolása | (([0-2] [1 – 9]\|[3][0-1])\\\\/ (Jan\|február\|március\|Diagramhalmazban\|május\|június\|júliusban\|Aug\|Sep \|Oct\|november\|DEC.)\\\\/((19\|20) [0-9] [0-9]): ([0] [0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\ \\s [\\\\+\|\\\\-] [0-9]{4}) |
-| yyyy-MM-ddTHH:mm:ss<br> A T T szövegkonstans betűvel | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
+| `YYYY-MM-DD HH:MM:SS` | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
+| `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\\\d)\|[0-9])/(([0-3]\\\\d)\|(\\\\d))/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\\\s(AM\|PM\|am\|pm)` |
+| `dd/MMM/yyyy HH:MM:SS` | `((([0-3]\\\\d)\` |`(\\\\d))/(Jan\|Feb\|Mar\|May\|Apr\|Jul\|Jun\|Aug\|Oct\|Sep\|Nov\|Dec\|jan\|feb\|mar\|may\|apr\|jul\|jun\|aug\|oct\|sep\|nov\|dec)/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\` | `([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9])` |
+| `MMM dd yyyy HH:MM:SS` | `(((?:Jan(?:uary)?\|Feb(?:ruary)?\|Mar(?:ch)?\|Apr(?:il)?\|May\|Jun(?:e)?\|Jul(?:y)?\|Aug(?:ust)?\|Sep(?:tember)?\|Sept\|Oct(?:ober)?\|Nov(?:ember)?\|Dec(?:ember)?)).*?((?:(?:[0-2]?\\\\d{1})\|(?:[3][01]{1})))(?![\\\\d]).*?((?:(?:[1]{1}\\\\d{1}\\\\d{1}\\\\d{1})\|(?:[2]{1}\\\\d{3})))(?![\\\\d]).*?((?:(?:[0-1][0-9])\|(?:[2][0-3])\|(?:[0-9])):(?:[0-5][0-9])(?::[0-5][0-9])?(?:\\\\s?(?:am\|AM\|pm\|PM))?))` |
+| `yyMMdd HH:mm:ss` | `([0-9]{2}([0][1-9]\|[1][0-2])([0-2][0-9]\|[3][0-1])\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9])` |
+| `ddMMyy HH:mm:ss` | `(([0-2][0-9]\|[3][0-1])([0][1-9]\|[1][0-2])[0-9]{2}\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9])` |
+| `MMM d HH:mm:ss` | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s?([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0-1]?[0-9]\|[2][0-3]):([0-5][0-9]):([0-5][0-9])` |
+| `MMM  d HH:mm:ss` <br> MMM után két szóköz | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])` |
+| `MMM d HH:mm:ss` | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])` |
+| `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> hol van + + vagy a - <br> ahol zzzz idő eltolása | `(([0-2][1-9]\|[3][0-1])\\\\/(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\/((19\|20)[0-9][0-9]):([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\\\s[\\\\+\|\\\\-][0-9]{4})` |
+| `yyyy-MM-ddTHH:mm:ss` <br> A T T szövegkonstans betűvel | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
 
 ## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>A Log Analytics indexelése az Azure diagnostics konfigurálása
 Az ügynök nélküli figyelés az Azure-erőforrások, az erőforrásokat az Azure diagnostics engedélyezni és konfigurálni a Log Analytics-munkaterület írni rendelkeznie kell. Ez a megközelítés elküldi az adatokat közvetlenül a Log Analyticshez, és nem szükséges egy tárfiókba írható adat. Támogatott erőforrások közé tartoznak:
@@ -230,7 +223,7 @@ A rendelkezésre álló metrikák részleteit, tekintse meg a [az Azure monitorb
 
 A részletes naplók, tekintse meg [szolgáltatások és a séma támogatja a diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
-```
+```PowerShell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
 $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO" 
@@ -238,7 +231,7 @@ $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUP
 Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
-A fenti parancsmag használatával gyűjtsön naplókat azokról erőforrások különböző előfizetésekhez tartoznak. A parancsmag is képes működni előfizetések között, mivel meg van adva a naplók és a naplókat küld a munkaterület létrehozása egyaránt az erőforrás azonosítója.
+A fenti parancsmag használatával gyűjtsön naplókat azokról erőforrások különböző előfizetésekhez tartoznak. A parancsmag is képes működni előfizetések között, mivel biztosítani a, mind a naplók és a naplókat küld a munkaterület létrehozása erőforrás azonosítója.
 
 
 ## <a name="configuring-log-analytics-to-index-azure-diagnostics-from-storage"></a>A Log Analytics indexelése a storage-ból az Azure diagnostics konfigurálása
@@ -254,7 +247,7 @@ A következő példa bemutatja, hogyan:
 3. Frissítse az újonnan létrehozott konfigurációt index adatokat további helyekről
 4. Az újonnan létrehozott konfigurációjának törlése
 
-```
+```PowerShell
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable" 
 $workspace = (Get-AzureRmOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 

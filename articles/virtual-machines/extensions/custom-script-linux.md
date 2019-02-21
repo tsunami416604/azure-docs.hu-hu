@@ -15,24 +15,24 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 87d15f7b351f2b8b6a8c010651d82faa66b28918
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: f8b0955afa1705dd8e3c01a943cc5e5d885f9c71
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276465"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456962"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az Azure Custom Script bővítmény 2-es verzió használata Linux rendszerű virtuális gépek
 A Custom Script bővítmény 2-es verzió letölti és futtatja a parancsfájlokat, Azure-beli virtuális gépeken. A bővítmény az üzembe helyezés utáni konfigurációs, a szoftver telepítése vagy bármely egyéb konfigurációs/felügyeleti feladat hasznos. Parancsfájlokat tölthet le az Azure Storage vagy egy másik elérhető-e internet-helyre, vagy megadhatja azokat a bővítmény-futtatókörnyezet. 
 
-Az egyéni Szkriptbővítmény integrálható az Azure Resource Manager-sablonok. Is futtathatja, Azure CLI-vel, PowerShell, az Azure Portalon vagy az Azure Virtual Machines – REST API használatával.
+Az egyéni Szkriptbővítmény integrálható az Azure Resource Manager-sablonok. Is futtathatja, Azure CLI-vel, a PowerShell vagy az Azure Virtual Machines – REST API használatával.
 
 Ez a cikk részletezi, hogyan használhatja az egyéni szkriptek bővítménye az Azure CLI-vel, és a bővítmény futtatása az Azure Resource Manager-sablon használatával. Ez a cikk a Linux rendszerek hibaelhárítási lépéseket is nyújt.
 
 
 Nincsenek egyéni parancsfájl-kiterjesztés két Linux:
-* 1. verzió – Microsoft.OSTCExtensions.CustomScriptForLinux
-* 2. verzió – Microsoft.Azure.Extensions.CustomScript
+* Version 1 - Microsoft.OSTCExtensions.CustomScriptForLinux
+* Version 2 - Microsoft.Azure.Extensions.CustomScript
 
 Váltson a meglévő és újonnan üzembe helyezett, használja helyette a 2. új verziója. Az új verzióra van készült protokollkompatibilitását. Ezért az áttelepítés megírásához módosítása a neve és verziója, nem kell módosítani a bővítmény konfigurációját.
 
@@ -114,11 +114,11 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 | type | CustomScript | sztring |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (például:) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
-| commandToExecute (például:) | Python MyPythonScript.py < saját param1 > | sztring |
-| parancsfájl | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | sztring |
+| commandToExecute (például:) | python MyPythonScript.py <my-param1> | sztring |
+| parancsfájl | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | sztring |
 | skipDos2Unix (például:) | false | logikai |
 | időbélyegző (például:) | 123456789 | 32 bites egész szám |
-| storageAccountName (például:) | examplestorageacct | sztring |
+| storageAccountName (e.g) | examplestorageacct | sztring |
 | storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
 
 ### <a name="property-value-details"></a>A tulajdonság értéke részletei

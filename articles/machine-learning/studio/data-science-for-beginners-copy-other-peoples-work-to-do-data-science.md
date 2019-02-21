@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/05/2018
-ms.openlocfilehash: 194f92b84b17fc2f2c9bc8f3aca6f6ad05f65d30
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 821ee126350d18102ec92de04436a76050734dc4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241444"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456826"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Más emberek munkájának lemásolása az adatelemzéshez
 ## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Adatelemzés kezdőknek sorozat
@@ -52,7 +52,7 @@ A kereskedelmi titkok, az adatelemzés egyik hamarosan más személyeknek az Ön
 
 A Microsoft rendelkezik egy felhőalapú szolgáltatás nevű [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) , hogy nyugodtan meghívhatjuk ingyenesen kipróbálható. Is tartalmaz a munkaterület kísérletezhet a különböző gépi tanulási algoritmusok és azokat, ha a megoldás dolgozott ki van, webszolgáltatásként is elindíthatja.
 
-Ez a szolgáltatás részeként valami nevű a  **[Azure AI-katalógusban](https://gallery.azure.ai/)**. Erőforrások, köztük az Azure Machine Learning-kísérletek, vagy a modellek, amelyek személyek beépített és mások számára is viszonyított gyűjteményét tartalmazza. Ezek a kísérletek módon egy nagyszerű gondolkodási és mások számára a saját megoldások a kezdéshez bonyolult feladatát. Mindenki az Üdvözöljük, böngésszen.
+Ez a szolgáltatás részeként valami nevű a  **[Azure AI-katalógusban](https://gallery.azure.ai/)**. Erőforrások, köztük az Azure Machine Learning Studio-kísérletek, vagy a modellek, amelyek személyek beépített és mások számára is viszonyított gyűjteményét tartalmazza. Ezek a kísérletek módon egy nagyszerű gondolkodási és mások számára a saját megoldások a kezdéshez bonyolult feladatát. Mindenki az Üdvözöljük, böngésszen.
 
 ![Azure AI katalógus](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -88,8 +88,8 @@ Vannak más, a kísérletek a [Azure AI-katalógusban](https://gallery.azure.ai)
 
 [Az Azure AI-katalógusban](https://gallery.azure.ai) olyan hely, használhatja a saját megoldások kiindulási pontként működő kísérleteket szeretne keresni.
 
-Mindenképpen tekintse meg a "Data Science a kezdők" a Microsoft Azure Machine Learning más videókat.
+Mindenképpen tekintse meg a "Data Science a kezdők" a Microsoft Azure Machine Learning Studio más videókat.
 
 ## <a name="next-steps"></a>További lépések
-* [Az első adatelemzési kísérlet az Azure Machine Learning kipróbálása](create-experiment.md)
+* [Az első adatelemzési kísérlet az Azure Machine Learning Studio kipróbálása](create-experiment.md)
 * [Bevezetés a gépi tanulás a Microsoft Azure](what-is-machine-learning.md)

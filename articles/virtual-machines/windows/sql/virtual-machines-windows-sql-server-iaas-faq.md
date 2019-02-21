@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 53c22222682e2a017f55cbd5af89671edb3eddaf
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 46d51e787a388f0963788c6419a2d9e3af89bc4f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767338"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456656"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Gyakori kérdések az Azure-beli Windows virtuális gépeken futó SQL Serverhez
 
@@ -88,6 +88,9 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
    Igen. Könnyedén áthelyezheti áthelyezése a két licencelési modell között, ha eredetileg indult el, egy használatalapú fizetéses katalógus-lemezkép. Azonban nem tud váltani a licencét a használatalapú fizetéses, ha kezdetben lépések egy BYOL-lemezképet. További információkért lásd: [módosítása egy SQL Server rendszerű virtuális gép licencelési modelljét](virtual-machines-windows-sql-ahb.md).
 
+   > [!Note]
+   > Ez a lehetőség jelenleg csak a nyilvános felhőben ügyfelek számára érhető el.
+
 1. **BYOL-lemezképeknek vagy használjak SQL virtuális gép RP hozhat létre új SQL virtuális gép?**
 
    Bring-your-saját licenc (használata BYOL) lemezképek csak nagyvállalati szerződéssel rendelkező ügyfelek számára érhető el. Más ügyfelek, akik rendelkezik frissítési garanciával rendelkező SQL virtuális gép létrehozása kell használnia az SQL virtuális gép erőforrás-szolgáltató [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/licensing-faq/). 
@@ -142,11 +145,11 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
 1. **Hogyan frissíthetem az SQL Server egy Azure-beli virtuális gépen új verzióra vagy kiadásra?**
 
-   Jelenleg nincs Azure-beli virtuális gépen futó SQL Server helyszíni frissítését. Új Azure virtuális gép létrehozása a kívánt SQL Server verziójához/kiadásához, és ezután az adatbázisokat az új kiszolgálóra a standard [adatáttelepítési eljárásokkal](virtual-machines-windows-migrate-sql.md).
+   Jelenleg nincs helyszíni frissítés az Azure-beli virtuális gépeken futtatott SQL Serverhez. Új Azure virtuális gép létrehozása a kívánt SQL Server verziójához/kiadásához, és ezután az adatbázisokat az új kiszolgálóra a standard [adatáttelepítési eljárásokkal](virtual-machines-windows-migrate-sql.md).
 
 1. **Frissítések és szervizcsomagok alkalmazási módja egy SQL Server virtuális gépen?**
 
-   Virtuális gépek számára is kézben tarthatja a gazdagép frissítéséből, beleértve a mikor és hogyan alkalmazni a frissítéseket. Az operációs rendszer esetén manuálisan alkalmazhatja a windows-frissítéseket, vagy engedélyezheti a nevű ütemezési szolgáltatást [automatikus javítás](virtual-machines-windows-sql-automated-patching.md). Az Automatikus javítás minden fontosként megjelölt frissítést telepít, így az e kategóriába eső SQL Server-frissítéseket is. Az SQL Server egyéb nem kötelező frissítéseit manuálisan kell telepíteni.
+   A virtuális gépek lehetővé teszik a gazdagép vezérlését, például a frissítések alkalmazási időpontjának és módjának vezérlését. Az operációs rendszer esetén manuálisan alkalmazhatja a windows-frissítéseket, vagy engedélyezheti a nevű ütemezési szolgáltatást [automatikus javítás](virtual-machines-windows-sql-automated-patching.md). Az Automatikus javítás minden fontosként megjelölt frissítést telepít, így az e kategóriába eső SQL Server-frissítéseket is. Az SQL Server egyéb nem kötelező frissítéseit manuálisan kell telepíteni.
 
 ## <a name="general"></a>Általános kérdések
 

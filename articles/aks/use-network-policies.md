@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: ddc0f0f8cfd6c7d540d2a1de2f5ecb35cdfd234f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 250c4fc6e51bacc68c965394b9fd430b1b75a52c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417601"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447174"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Podok hálózati házirendek segítségével az Azure Kubernetes Service (AKS) közötti adatforgalom védelme
 
@@ -27,21 +27,7 @@ Ez a cikk bemutatja, hogyan hálózati házirendek használata az aks-ben podok 
 
 Az Azure CLI 2.0.56 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
-## <a name="overview-of-network-policy"></a>A hálózati házirend áttekintése
-
-Alapértelmezés szerint egy AKS-fürt összes podok küldhet és korlátozások nélkül forgalom fogadására. A biztonság növelése érdekében megadhatja a szabályokat, amelyek a forgalom szabályozására. Például a háttéralkalmazásokhoz gyakran csak szükséges előtér-szolgáltatások érhetők el, vagy adatbázis-összetevői csak elérhetők az alkalmazásrétegek, amely csatlakozni hozzájuk.
-
-Hálózati házirendek olyan Kubernetes-erőforrásokat, amelyekkel podok közötti adatforgalom szabályozásához. Ha szeretné, beállítások, például a hozzárendelt címkék, névtérre vagy forgalmat port alapján adatforgalom engedélyezéséhez vagy letiltásához. Hálózati házirendeket, egy YAML alkalmazásjegyzékeket, és a egy szélesebb körű jegyzékfájl, amely is létrehoz egy központi telepítés vagy a szolgáltatás része lehet.
-
-A művelet hálózati házirendek megtekintéséhez hozzunk létre, és bontsa ki a szabályzat, amely meghatározza a forgalmat a következő:
-
-* A pod minden forgalom tiltása.
-* Engedélyezi a forgalmat a pod címkék alapján.
-* Engedélyezi a forgalmat a névtér alapján.
-
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS-fürt létrehozása és a hálózati házirend engedélyezése
-
-A hálózati házirend csak a fürt létrehozásakor engedélyezhető. Nem engedélyezhető a hálózati házirend egy meglévő AKS-fürtre. Hozzon létre egy AKS a hálózati házirend, először engedélyeznie kell az előfizetés szolgáltatásjelzőre. Regisztrálja a *EnableNetworkPolicy* jelző funkciót, használja a [az a funkció regisztrálása] [ az-feature-register] parancsot az alábbi példában látható módon:
+Hozzon létre egy AKS a hálózati házirend, először engedélyeznie kell az előfizetés szolgáltatásjelzőre. Regisztrálja a *EnableNetworkPolicy* jelző funkciót, használja a [az a funkció regisztrálása] [ az-feature-register] parancsot az alábbi példában látható módon:
 
 ```azurecli-interactive
 az feature register --name EnableNetworkPolicy --namespace Microsoft.ContainerService
@@ -59,7 +45,25 @@ Ha elkészült, frissítse a regisztrációját a *Microsoft.ContainerService* e
 az provider register --namespace Microsoft.ContainerService
 ```
 
-A hálózati házirend-val való használatához egy AKS-fürtöt kell használnia a [Azure CNI beépülő modul] [ azure-cni] és a saját virtuális hálózat és alhálózatok megadása. Részletesebb információk tervezze meg a szükséges alhálózati tartományokat, lásd: [speciális hálózatkezelés konfigurálását][use-advanced-networking]. Az alábbi példa parancsfájl:
+## <a name="overview-of-network-policy"></a>A hálózati házirend áttekintése
+
+Alapértelmezés szerint egy AKS-fürt összes podok küldhet és korlátozások nélkül forgalom fogadására. A biztonság növelése érdekében megadhatja a szabályokat, amelyek a forgalom szabályozására. Például a háttéralkalmazásokhoz gyakran csak szükséges előtér-szolgáltatások érhetők el, vagy adatbázis-összetevői csak elérhetők az alkalmazásrétegek, amely csatlakozni hozzájuk.
+
+Hálózati házirendek olyan Kubernetes-erőforrásokat, amelyekkel podok közötti adatforgalom szabályozásához. Ha szeretné, beállítások, például a hozzárendelt címkék, névtérre vagy forgalmat port alapján adatforgalom engedélyezéséhez vagy letiltásához. Hálózati házirendeket, egy YAML alkalmazásjegyzékeket, és a egy szélesebb körű jegyzékfájl, amely is létrehoz egy központi telepítés vagy a szolgáltatás része lehet.
+
+A művelet hálózati házirendek megtekintéséhez hozzunk létre, és bontsa ki a szabályzat, amely meghatározza a forgalmat a következő:
+
+* A pod minden forgalom tiltása.
+* Engedélyezi a forgalmat a pod címkék alapján.
+* Engedélyezi a forgalmat a névtér alapján.
+
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS-fürt létrehozása és a hálózati házirend engedélyezése
+
+A hálózati házirend csak a fürt létrehozásakor engedélyezhető. Nem engedélyezhető a hálózati házirend egy meglévő AKS-fürtre. 
+
+A hálózati házirend-val való használatához egy AKS-fürtöt kell használnia a [Azure CNI beépülő modul] [ azure-cni] és a saját virtuális hálózat és alhálózatok megadása. Részletesebb információk tervezze meg a szükséges alhálózati tartományokat, lásd: [speciális hálózatkezelés konfigurálását][use-advanced-networking].
+
+Az alábbi példa parancsfájl:
 
 * Egy virtuális hálózatot és alhálózatot hoz létre.
 * Létrehoz egy Azure Active Directory (AD) használja az egyszerű szolgáltatást az AKS-fürtöt.
@@ -86,7 +90,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 
 # Create a service principal and read in the application ID
-read SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
+SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
 
 # Wait 15 seconds to make sure that service principal has propagated
 echo "Waiting for service principal to propagate..."

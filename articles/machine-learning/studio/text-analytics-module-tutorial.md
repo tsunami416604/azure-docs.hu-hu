@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 79882fc895262f0fb607ec048e7912ae5f2efdd7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e8e50aa49595addeab3369f74b618c31b7cf1625
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242668"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454378"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Vélemények elemzése modell létrehozása az Azure Machine Learning Studióban
 
-Az Azure Machine Learning segítségével hozhat létre és szövegelemzési modelleket. Ezek a modellek, például dokumentum besorolását vagy sentiment analysis problémák megoldásában is segítenek.
+Az Azure Machine Learning Studio használatával hozhat létre és szövegelemzési modelleket. Ezek a modellek, például dokumentum besorolását vagy sentiment analysis problémák megoldásában is segítenek.
 
 A text analytics kísérletben ugyanúgy általában:
 
@@ -66,7 +66,7 @@ Az N-Gram típusú szolgáltatások kinyerése egy másik módszert, mint a Szol
 ## <a name="step-3-train-classification-or-regression-model"></a>3. lépés: Tanítási osztályozási vagy regressziós modell
 Most már a szöveg átalakítása numerikus funkció oszlopaihoz. Az adatkészlet az előző lépésben, karakterlánc típusú oszlopokra továbbra is tartalmazza, így használjuk Select Columns in Dataset kizárja őket.
 
-Használjuk majd [Two-Class logisztikai regressziós](https://msdn.microsoft.com/library/azure/dn905994.aspx) előre, a célt: nagyon vagy kevésbé gyakori felülvizsgálati pontszámot. Ezen a ponton a text analytics probléma átalakítása egy rendszeres besorolás a problémát. Az Azure Machine Learningben elérhető eszközök segítségével a modell továbbfejlesztése. Például kísérletezhet a különböző osztályozó eszközökkel, ismerje meg, hogy pontos eredményeket biztosít, vagy használja a hiperparaméter finomhangolása a pontosságának növelése érdekében.
+Használjuk majd [Two-Class logisztikai regressziós](https://msdn.microsoft.com/library/azure/dn905994.aspx) előre, a célt: nagyon vagy kevésbé gyakori felülvizsgálati pontszámot. Ezen a ponton a text analytics probléma átalakítása egy rendszeres besorolás a problémát. Az Azure Machine Learning Studióban elérhető eszközök segítségével a modell továbbfejlesztése. Például kísérletezhet a különböző osztályozó eszközökkel, ismerje meg, hogy pontos eredményeket biztosít, vagy használja a hiperparaméter finomhangolása a pontosságának növelése érdekében.
 
 ![Tanítási és pontszám](./media/text-analytics-module-tutorial/scoring-text.png)
 

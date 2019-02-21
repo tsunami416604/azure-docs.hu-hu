@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: be6c04fe31aaa8d4b9081942b054575ff548cf5a
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 2051a14532f00f24be0c8cb0ca03a7b2b4078a45
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300370"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56457013"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Útmutató az Azure Machine Learning Studio Net # Neurális hálózati specifikációs nyelvhez
 
@@ -56,7 +56,7 @@ Ezenkívül Net # támogatja a következő négy típusú speciális kapcsolati 
 
 ## <a name="supported-customizations"></a>Támogatott testreszabások
 
-Az architektúra a Neurális hálózat modellek Azure Machine Learning szolgáltatásban létrehozott Net # használatával nagymértékben testre szabható. A következőket teheti:
+Az Azure Machine Learning studióban létrehozott modelleket Neurális hálózat architektúrája a Net # nagymértékben testre szabható. A következőket teheti:
 
 + Hozzon létre rejtett réteget, és minden egyes rétegben lévő csomópontok számát.
 + Adja meg, hogyan rétegek kapcsolódnia kell egymáshoz.

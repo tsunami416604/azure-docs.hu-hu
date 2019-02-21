@@ -8,17 +8,70 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: a5b8cd7da465bc2dc58c2b89852903669c18bf4b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0f5452e3abbde40c247ef7e000b84fc3eb00c943
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871795"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446834"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
+
+## <a name="speech-sdk-130-2019-february-release"></a>Speech SDK 1.3.0: A 2019-februári kiadással
+
+**Új funkciók**
+
+* A beszédfelismerés SDK támogatja a bemeneti mikrofon AudioConfig osztály keresztül. Ez lehetővé teszi hang adatok streamelése a beszédfelismerési szolgáltatás az alapértelmezettől eltérő mikrofon. További információ: a dokumentáció leíró [hangbemeneti eszköz kiválasztása](how-to-select-audio-input-devices.md). Ez még nem áll rendelkezésre a JavaScript.
+* A beszédfelismerés SDK mostantól támogatja a Unity béta verziójában. Adja meg a probléma szakaszában keresztül visszajelzést a [GitHub-mintaadattárból](https://aka.ms/csspeech/samples). Ez a kiadás támogatja a Unity a x86 és x64 (asztalon vagy univerzális Windows-Platformos alkalmazások), Windows és Android (ARM32/64, x86). További információkat a [Unity rövid](quickstart-csharp-unity.md).
+
+**Példák**
+
+A következő új tartalom érhető el a [mintaadattár](https://aka.ms/csspeech/samples):
+
+* További minták AudioConfig.FromMicrophoneInput.
+* További Python minták szándékának felismerése és a fordítás.
+* További minták az IOS-es a kapcsolat objektumot.
+* További Java-minták hangkimeneti fordítását.
+* Új minta használata a [Batch Beszédátírási REST API](batch-transcription.md).
+
+**Fejlesztések / módosítása**
+
+* Python
+  * Továbbfejlesztett paraméter-ellenőrzés és SpeechConfig hibaüzenetek.
+  * A kapcsolat objektumot támogatása.
+  * A Python 32 bites Windows a (x86) támogatása.
+  * A beszédfelismerés SDK Pythonhoz készült bétaverziós kívül esik.
+* iOS
+  * Az SDK-val most már az iOS SDK verziója 12.1 elleni épül.
+  * Az SDK-t mostantól támogatja az IOS-es 9.2 és újabb verziók.
+  * Segédanyagok javítása, és hárítsa el a tulajdonságnevek több.
+* JavaScript
+  * A kapcsolat objektumot támogatása.
+  * Csomagolt JavaScript-típus definíciós fájlok hozzáadása
+  * Kezdeti támogatás és kifejezés mutatók megvalósítása.
+  * Visszatérési tulajdonsággyűjteményében elismerési JSON szolgáltatással
+* Windows DLL-ek mostantól tartalmazza a verzió erőforrás.
+
+**Hibajavítások**
+
+* Üres proxykiszolgáló felhasználónév és a proxy jelszavát nem megfelelően kezelt. Ebben a kiadásban Ha proxy-felhasználónév és a proxy jelszavát egy üres karakterláncra, nem kerül sor a proxy való csatlakozáskor.
+* Munkamenet-azonosító által létrehozott az SDK nem volt mindig valóban véletlenszerű néhány nyelv esetében&nbsp;/ környezetekben. Hozzáadott véletlenszerű generátor inicializálása a probléma megoldásához.
+* Engedélyezési jogkivonat kezelésének javítása. Ha szeretné használni egy engedélyezési jogkivonatot, adja meg a SpeechConfig, és hagyja üresen az előfizetési kulcsot. Ezután hozzon létre a felismerő a szokásos módon.
+* Bizonyos esetekben a kapcsolat objektum nem szabadul fel megfelelően. Ez megoldottuk.
+* A JavaScript-minta a hangkimeneti támogatására is a Safari fordítási összefoglaló rendszerriasztások mechanizmusában.
+
+## <a name="speech-sdk-121"></a>Beszéd 1.2.1-es SDK
+
+Ez a kiadás csak a JavaScript. Nincsenek funkciók lettek hozzáadva. A következő javítások történtek:
+
+* Adatfolyam turn.end, nem pedig speech.end aktiválódik.
+* Javítva a hang szivattyú, hogy adott ütemezés nem ezután küldése, ha az aktuális a küldés nem sikerült.
+* Javítsa ki a folyamatos felismerése a hitelesítési tokent.
+* Hibajavítás a különböző felismerő / végpontok.
+* Dokumentáció fejlesztései.
 
 ## <a name="speech-sdk-120-2018-december-release"></a>Speech SDK 1.2.0: 2018. – December kiadás
 

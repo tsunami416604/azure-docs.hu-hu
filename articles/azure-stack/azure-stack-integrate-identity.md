@@ -10,12 +10,12 @@ ms.date: 01/23/19
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/23/19
-ms.openlocfilehash: a7753280c0b84b21f44e52c303b96f11cd4cd8af
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: a71362f4d6a69f2eaed36dd549437bb5857d555f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765790"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456996"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
@@ -73,7 +73,7 @@ A következő információkat szükség, mint a bemenetek az automatizálás par
 
 A több hellyel rendelkező Active Directory-környezetek konfigurálja a legközelebbi Active Directory-helyeket az Azure Stack üzemelő példány. A konfiguráció elkerülhető kellene az Azure Stack Graph szolgáltatás egy globális katalóguskiszolgáló használatával egy távoli helyről lekérdezéseket.
 
-Adja hozzá az Azure Stack [nyilvános VIP-hálózat](azure-stack-network.md#public-vip-network) az Azure Active Directory-hely legközelebbi Azure Stack-alhálózatot. Például ha az Active Directory két hely Budapest és az Azure Stack üzembe helyezve, a Seattle helyen Redmond, volna hozzá a az Azure Stack nyilvános VIP-hálózat alhálózatából az Azure Active Directory-hely Budapest számára.
+Adja hozzá az Azure Stack [nyilvános VIP-hálózat](azure-stack-network.md#public-vip-network) az Active Directory-hely legközelebbi Azure Stack-alhálózatot. Például ha az Active Directory két hely Budapest és az Azure Stack üzembe helyezve, a Seattle helyen Redmond, volna hozzá a az Azure Stack nyilvános VIP-hálózat alhálózatából az Active Directory-hely Budapest számára.
 
 További információ az Active Directory-helyek: [helytopológia megtervezése](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
 

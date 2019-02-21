@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: a040991ca4b3a08dec90f4fc6944b006ebea2135
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5f132dce2a0a868de8607581935325d48e1520a1
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487846"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456758"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>A Python Machine Learning parancsfájlok végrehajtása az Azure Machine Learning Studióban
 
-Ez a témakör ismerteti a tervezési alapelvek az alapul szolgáló az Azure Machine Learning Python-szkriptek jelenlegi támogatása. A megadott fő funkciói is leírása, beleértve:
+Ez a témakör ismerteti a tervezési alapelvek az alapul szolgáló Azure Machine Learning Studio Python-szkriptek jelenlegi támogatása. A megadott fő funkciói is leírása, beleértve:
 
 - hajtsa végre az alapvető használati forgatókönyvek
 - egy kísérlet pontszám a web service-ben
@@ -61,11 +61,11 @@ Az Azure Machine Learning Studio Python elsődleges felületén keresztül van a
 A [Python-szkript végrehajtására] [ execute-python-script] modul az Azure Machine Learning Studióban legfeljebb három bemenetek fogad, és legfeljebb két kimenetek (a következő szakaszban részletezett), például az R analóg elkészíti a [R végrehajtása Parancsfájl] [ execute-r-script] modul. A Python-kód végrehajtását is meg kell adni a paraméter mezőbe, mint egy külön elnevezett belépési ponttal a hívott függvény `azureml_main`. Ez a modul megvalósításához használt fő tervezési elvek a következők:
 
 1. *Python-felhasználók számára bármilyen kell lennie.* A felhasználók többsége Python kódját kéttényezős funkciókként modulok belül. Ezért üzembe egy legfelső szintű modulban végrehajtható utasítások sok viszonylag ritkán fordul elő. A parancsfájl mező, ezért is utasításokat egy sorozatát ellentétben kifejezetten elnevezett Python függvény vesz igénybe. Az objektumok között szerepelnek a függvényt is Python-kódtár alaptípusok például [Pandas](http://pandas.pydata.org/) adatkeretek és [NumPy](http://www.numpy.org/) tömböket.
-2. *Rendelkeznie kell a helyi közötti élethű és végrehajtásainak felhőbeli.* A háttérrendszer a Python-kód végrehajtására szolgáló alapján [Anaconda](https://store.continuum.io/cshop/anaconda/), a széles körben használt többplatformos tudományos Python elosztási. Közel 200-as, a leggyakoribb Python-csomagok együtt származik. Az adatszakértők, ezért hibakeresést, és a kódját az Azure Machine Learning-kompatibilis Anaconda helyi környezetben minősítéséhez. Majd használjon például egy már létező fejlesztési környezetben [IPython](http://ipython.org/) notebook vagy [Python Tools for Visual Studio](https://aka.ms/ptvs), egy Azure Machine Learning-kísérlet keretében futtatásához. A `azureml_main` belépési pontja pedig egy vanília Python-függvény, így x hozhatóak létre az Azure Machine Learning-specifikus kód vagy az SDK telepítése nélkül.
-3. *Zökkenőmentesen algyűjteményeinek összefüggő egyéb Azure Machine Learning-modulok kell lennie.* A [Python-szkript végrehajtására] [ execute-python-script] modul fogad, bemeneti és kimeneti, Standard szintű Azure Machine Learning-adatkészletek. Az alapul szolgáló keretrendszere átlátható módon és hatékonyan áthidalja az Azure gépi tanulás és a Python modulok. Ezért a Python meglévő Azure ML munkafolyamatok, például azokkal, amelyek hívásokat indítani olyan R- és SQLite együtt használható. Ennek eredményeként adattudós munkafolyamatok állítsa össze, amelyek:
+2. *Rendelkeznie kell a helyi közötti élethű és végrehajtásainak felhőbeli.* A háttérrendszer a Python-kód végrehajtására szolgáló alapján [Anaconda](https://store.continuum.io/cshop/anaconda/), a széles körben használt többplatformos tudományos Python elosztási. Közel 200-as, a leggyakoribb Python-csomagok együtt származik. Az adatszakértők, ezért hibakeresést, és a kódját az Azure Machine Learning Studio-kompatibilis Anaconda helyi környezetben minősítéséhez. Majd használjon például egy már létező fejlesztési környezetben [IPython](http://ipython.org/) notebook vagy [Python Tools for Visual Studio](https://aka.ms/ptvs), egy Azure Machine Learning-kísérlet keretében futtatásához. A `azureml_main` belépési pontja pedig egy vanília Python-függvény, így x hozhatóak létre az Azure Machine Learning-specifikus kód vagy az SDK telepítése nélkül.
+3. *Zökkenőmentesen algyűjteményeinek összefüggő egyéb Azure Machine Learning Studio-modulok kell lennie.* A [Python-szkript végrehajtására] [ execute-python-script] modul fogad, bemeneti és kimeneti, Standard szintű Azure Machine Learning Studio-adatkészletek. Az alapul szolgáló keretrendszere átlátható módon és hatékonyan áthidalja az Azure gépi tanulás és a Python modulok. Ezért a Python meglévő Azure ML munkafolyamatok, például azokkal, amelyek hívásokat indítani olyan R- és SQLite együtt használható. Ennek eredményeként adattudós munkafolyamatok állítsa össze, amelyek:
    * használható a Python és a Pandas adatok előzetesen feldolgozni és tisztítása
    * az adatok SQL átalakítást, több adatkészlet csatlakoztatása a szolgáltatások-hírcsatorna
-   * az algoritmusok használatával az Azure Machine Learning-modellek betanításához 
+   * az Azure Machine Learning Studióban az algoritmusok használatával modelleket taníthat be 
    * értékeli, és az eredmények r használatával az utófeldolgozási
 
 
@@ -149,7 +149,7 @@ A modul kimeneti jeleníti meg, hogy a zip-fájl becsomagolatlan lett-e, és hog
 
 ## <a name="working-with-visualizations"></a>Vizualizációk használata
 
-A böngészőben a MatplotLib, amely az alábbi ábra segítségével létrehozott grafikon által visszaadható a [Python-szkript végrehajtására][execute-python-script]. De a grafikon rendszer nem irányítja át lemezképek úgy, mint amikor az r segítségével Így a felhasználónak explicit módon menteni kell bármely grafikon PNG-fájlok, ha vissza kell vissza az Azure Machine Learning. 
+A böngészőben a MatplotLib, amely az alábbi ábra segítségével létrehozott grafikon által visszaadható a [Python-szkript végrehajtására][execute-python-script]. De a grafikon rendszer nem irányítja át lemezképek úgy, mint amikor az r segítségével Így a felhasználó explicit módon menteni kell bármely grafikon PNG-fájlok, ha azok visszaadandó vissza az Azure Machine Learning Studióban. 
 
 A rendszerképek készítése a MatplotLib, a következőképpen kell elvégeznie:
 
@@ -172,12 +172,12 @@ Ez a folyamat a következő 8. ábra, amely létrehoz egy pont diagram mátrix s
 
 9. ábra Python-kód által létrehozott grafikon megjelenítése.
 
-Lehetőség több adatok visszaadandó menti őket a különböző képek, az Azure Machine Learning modul összes lemezképet és egy naplóbejegyzésbe fűzi össze azokat a vizualizációt.
+Lehetőség több adatok visszaadandó menti őket a különböző képek, az Azure Machine Learning Studio modul összes lemezképet és egy naplóbejegyzésbe fűzi össze azokat a vizualizációt.
 
 
 ## <a name="advanced-examples"></a>Speciális példák
 
-A telepített Azure Machine Learning Anaconda környezet NumPy SciPy és Scikits – ismerje meg, például közös csomagot tartalmaz. Ezeket a csomagokat a machine learning-folyamat különféle adatfeldolgozási feladatok hatékonyan használható. Tegyük fel az alábbi kísérlet és parancsfájl használatát mutatják be ensemble tanulók Scikits további számítási szolgáltatás fontosság pontszámok egy adatkészlethez a. A pontszámok felügyelt szolgáltatás kiválasztása előtt folyamatban van egy másik gépi Tanulási modellt az adatkéréseket végrehajtásához használható.
+A telepített Azure Machine Learning Studio Anaconda környezet NumPy SciPy és Scikits – ismerje meg, például közös csomagot tartalmaz. Ezeket a csomagokat a machine learning-folyamat különféle adatfeldolgozási feladatok hatékonyan használható. Tegyük fel az alábbi kísérlet és parancsfájl használatát mutatják be ensemble tanulók Scikits további számítási szolgáltatás fontosság pontszámok egy adatkészlethez a. A pontszámok felügyelt szolgáltatás kiválasztása előtt folyamatban van egy másik gépi Tanulási modellt az adatkéréseket végrehajtásához használható.
 
 Íme a Python-függvény fontosság pontszámokat és a szolgáltatásokat a pontszámok alapján kiszámításához használt:
 
@@ -185,7 +185,7 @@ A telepített Azure Machine Learning Anaconda környezet NumPy SciPy és Scikits
 
 10. ábra Függvény által pontszámok rangsorolják funkciókat.
  
-Az alábbi kísérlet majd kiszámítja, és adja vissza a szolgáltatások fontossági pontszámokat az Azure Machine Learning "Pima indiai küzdő" adatkészlet:
+Az alábbi kísérlet majd kiszámítja, és adja vissza a szolgáltatások fontossági pontszámokat az Azure Machine Learning Studióban "Pima indiai küzdő" adatkészlet:
 
 ![image12](./media/execute-python-scripts/figure9a.png)
 ![image13](./media/execute-python-scripts/figure9b.png)    
@@ -197,11 +197,11 @@ A [Python-szkript végrehajtására] [ execute-python-script] jelenleg a követk
 
 1. *Elkülönített végrehajtását.* A Python-futtatókörnyezet jelenleg vendégünk, és ennek eredményeképpen nem engedélyezi a hozzáférést a hálózathoz, vagy a helyi fájlrendszerbe állandó módon. Minden fájl mentése helyileg elkülönített és törölni a modul befejeződése után. A Python-kód nem fér hozzá a legtöbb könyvtárak a gépen futtatott, az aktuális könyvtárban, illetve annak alkönyvtáraiba kivétel.
 2. *Kifinomult fejlesztés és hibakeresés támogatás hiánya.* A Python modul jelenleg nem támogatja az intellisense és hibakeresés IDE funkciókat. Emellett ha a modul sikertelen futásidőben, a Python teljes híváslánc érhető el. De a modul kimeneti naplóban lehet megtekinteni. Jelenleg javasoljuk, hogy, fejlesztés és hibakeresés Python-szkriptek, például az IPython-környezetben és a kód Ezután importálja a modult.
-3. *Keret kimeneti adatokat.* A Python belépési pont csak az ad vissza kimenetként egyetlen keret számára engedélyezett. Nincs jelenleg lehetővé tetszőleges Python objektumok, például közvetlenül a betanított modellek térjen vissza az Azure Machine Learning modul. Például [R-szkript végrehajtása][execute-r-script], amely rendelkezik, és ugyanez a helyzet, lehetséges, egy bájttömböt objektumok pickle és visszatér, amely adatkeretek belül sok esetben.
+3. *Keret kimeneti adatokat.* A Python belépési pont csak az ad vissza kimenetként egyetlen keret számára engedélyezett. Nincs jelenleg lehetővé tetszőleges Python objektumok, például közvetlenül a betanított modellek térjen vissza az Azure Machine Learning Studio modul. Például [R-szkript végrehajtása][execute-r-script], amely rendelkezik, és ugyanez a helyzet, lehetséges, egy bájttömböt objektumok pickle és visszatér, amely adatkeretek belül sok esetben.
 4. *Nem lehet a Python-telepítés testreszabása*. Adja hozzá az egyéni Python-modulok csak úgy jelenleg a zip-fájl a korábban ismertetett mechanizmus révén. Bár ez megvalósítható az kis modulok, a nagy modulok (különösen azokat a natív DLL-ek) és a modulok nagy számú nehézkes. 
 
 ## <a name="conclusions"></a>Következtetések
-A [Python-szkript végrehajtására] [ execute-python-script] modul lehetővé teszi, hogy a meglévő Python-kód zökkenőmentesen az Azure Machine Learning és a felhőben futó gépi tanulási munkafolyamatok építsen be adatszakértő üzembe helyezheti őket egy webszolgáltatás részeként. A Python-szkript modul természetes módon együttműködik más modulok az Azure Machine Learningben. A modul előzetes feldolgozása és kinyerése a szolgáltatás, és ezután értékelési adatfeltárás feladatok széles, és az eredmények utófeldolgozás használható. A háttérrendszer futásidejű végrehajtásához Anaconda, tesztelt és széles körben használt Python elosztási alapul. Ez a háttérmodul is egyszerűvé teszi az Ön számára fedélzeti meglévő kódot eszközök a felhőbe.
+A [Python-szkript végrehajtására] [ execute-python-script] modul lehetővé teszi, hogy a meglévő Python-kód zökkenőmentesen az Azure Machine Learning Studióban, és a felhőben futó gépi tanulási munkafolyamatok építsen be adatszakértő üzembe helyezheti őket egy webszolgáltatás részeként. A Python-szkript modul természetes módon együttműködik más modulok az Azure Machine Learning Studióban. A modul előzetes feldolgozása és kinyerése a szolgáltatás, és ezután értékelési adatfeltárás feladatok széles, és az eredmények utófeldolgozás használható. A háttérrendszer futásidejű végrehajtásához Anaconda, tesztelt és széles körben használt Python elosztási alapul. Ez a háttérmodul is egyszerűvé teszi az Ön számára fedélzeti meglévő kódot eszközök a felhőbe.
 
 A további funkciókat várhatóan a [Python-szkript végrehajtására] [ execute-python-script] modul betanítását és modelleket, a Python és a fejlesztési jobb támogatása érdekében például és az Azure Machine Learning Studio kód hibakereséséhez.
 

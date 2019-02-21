@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e56cc5a893c5a88a5b64466d6feceb20ccd8cdc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167847"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445542"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Zendesk konfigurálása
 
@@ -118,7 +118,8 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
     *   Az a **tartomány** mezőt, a Zendesk-bérlőjének altartomány feltöltéséhez.
     Példa: A bérlői URL-címet egy olyan fiók https://my-tenant.zendesk.com, az altartomány lenne **saját bérlő**.
 
-6. A **titkos jogkivonat** a Zendesk fiók találhatók **Admin > API > Beállítások**. 
+6. A **titkos jogkivonat** a Zendesk fiók találhatók **Admin > API > Beállítások**.
+   Ügyeljen arra, hogy **hozzáférés a jogkivonatokhoz** értékre van állítva **engedélyezve**.
 
     ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk4.png) ![Zendesk-kiépítés](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
 

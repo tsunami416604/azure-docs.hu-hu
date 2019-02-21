@@ -11,14 +11,14 @@ ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
 ms.custom: ''
-ms.date: 02/15/2019
+ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: be1f65b291613997466d9c82782256dc28a5590f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 8de004b0ca55cb46336a072dabb682f342c7d8dd
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417397"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446494"
 ---
 # <a name="quickstart-stream-video-files---cli"></a>Gyors útmutató: Videófájlok streamelése – parancssori felület
 
@@ -43,10 +43,14 @@ A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez ke
 az group create -n amsResourceGroup -l westus2
 ```
 
-### <a name="create-an-azure-storage-account-general-purpose-v2-standard-ragrs"></a>Hozzon létre egy azure storage-fiókot, általános célú v2, Standard-RAGRS
+### <a name="create-an-azure-storage-account"></a>Az azure storage-fiók létrehozása
 
+Ebben a példában létrehozunk egy általános célú v2, a standard szintű LRS-fiókra.
+
+Ha azt szeretné, kísérletezhet a storage-fiókok, `--sku Standard_LRS`. Azonban éles környezetben a Termékváltozat kiválasztásakor érdemes, `--sku Standard_RAGRS`, amely biztosítja az üzletmenet folytonosságának földrajzi replikáció. További információkért lásd: [tárfiókok](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
+ 
 ```azurecli
-az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_RAGRS -l westus2 -g amsResourceGroup
+az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
 ```
 
 ### <a name="create-an-azure-media-service-account"></a>Egy azure médiaszolgáltatási fiók létrehozása
@@ -54,6 +58,8 @@ az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_R
 ```azurecli
 az ams account create --n amsaccount -g amsResourceGroup --storage-account amsstorageaccount -l westus2
 ```
+
+Ehhez hasonló kapott választ:
 
 ```
 {
@@ -349,7 +355,6 @@ az group delete --name amsResourceGroup
 ## <a name="see-also"></a>Lásd még
 
 Lásd: [hibakódok feladat](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
-
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66d4dc7e6fc1545e1de1e3b50887585c4156b4c0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1923a34c5c49f16b32ed5b5d0913a65ce0b1ea21
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208782"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453371"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>A hiperkonvergens regisztráció önkiszolgáló jelszó-visszaállítás és az Azure multi-factor Authentication (nyilvános előzetes verzió)
 
@@ -78,7 +78,7 @@ Az új felületet tartozó auditnaplók az auditnapló hitelesítési módszerek
 
 **Alapértelmezett MFA módszer telefonhívás van beállítva, amikor egy felhasználó regisztrálja magát a telefonon, szöveges üzenet használatával**
 
-   * Néhány felhasználó előfordulhat, hogy figyelje meg, hogy az alapértelmezett MFA módszer beállítása telefonhívás után a szöveges üzenet segítségével regisztrálják telefonszámát. Felhasználók fel tudják oldani a problémát úgy módosítja az alapértelmezett módszer a cikk utasításait követve [kezelheti a biztonsági adatok (előzetes verzió)](../user-help/security-info-manage-settings.md#change-your-info).
+   * Néhány felhasználó előfordulhat, hogy figyelje meg, hogy az alapértelmezett MFA módszer beállítása telefonhívás után a szöveges üzenet segítségével regisztrálják telefonszámát. Felhasználók fel tudják oldani a problémát úgy módosítja az alapértelmezett módszer a következő által hivatkozott cikkekben lévő utasítások [áttekintése a biztonsági adatok (előzetes verzió) módosításával](../user-help/security-info-add-update-methods-overview.md).
 
 **Felhasználó nem tud hozzáférni az új regisztrációs felület, miután a rendszergazda kikapcsolja az alapértelmezett módszer**
 

@@ -9,12 +9,12 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 22cfdd22a8d2adacb5a5a5c817a628fe2c072755
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1d07ad7e60e1ee9ff3216767fcfc77405d557f44
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001697"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455109"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Hogyan készülhet fel a modell üzembe helyezése az Azure Machine Learning Studióban
 
@@ -50,11 +50,11 @@ A kísérlet futtatása után (kattintson **futtatása** a kísérlet vászon al
 
 Ha például az alábbi kísérlet betanítja népszámlálási mintaadatokkal kétosztályos gyorsított döntési fa modell:
 
-![Betanítási kísérlet][figure1]
+![Betanítási kísérlet](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
 
 A kísérletben a modulok alapvetően négy különböző funkciók hajtsa végre:
 
-![A modul funkciók][figure2]
+![A modul funkciók](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
 
 A betanítási kísérlet átalakítása prediktív kísérletté, ha ezeket a modulokat némelyike már nincs rá szükség, vagy már eltérő célra szolgál:
 
@@ -70,7 +70,7 @@ A betanítási kísérlet átalakítása prediktív kísérletté, ha ezeket a m
 
 Példánkban kinézetét kattintás után a következő **webszolgáltatás beállítása**:
 
-![A konvertált prediktív kísérletté][figure3]
+![A konvertált prediktív kísérletté](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
 Által végzett munka **webszolgáltatás beállítása** elegendő lehet, hogy készítse elő a kísérlethez webszolgáltatásként üzembe helyezni. Azonban érdemes néhány adott kísérletét, további munkát.
 
@@ -79,7 +79,7 @@ A betanítási kísérlet során használt betanítási adatok egy készletét, 
 
 Például alapértelmezés szerint **webszolgáltatás beállítása** helyezi a **bemenet webes** modul felső részén az adatfolyama, a fenti ábrán látható módon. Azt manuálisan is elhelyezheti, de a **bemenet webes** az adatfeldolgozás modulok korábbi:
 
-![A web service bemeneti áthelyezése][figure4]
+![A web service bemeneti áthelyezése](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
 A bemeneti adatokat a web service keresztül közvetlenül a Score Model-modul mostantól továbbítja a bármely előfeldolgozás nélkül.
 
@@ -88,14 +88,14 @@ Azonban, ha valami más vissza inkább, ezután adhatja csak hozzá további mod
 
 Például a csak a pontozási eredményeinek és a bemeneti adatok nem a teljes vektor visszaadása, adjon hozzá egy [Select Columns in Dataset] [ select-columns] modul összes oszlopot, kivéve a pontozási eredményeinek kizárása. Ezután lépjen a **webes szolgáltatás kimeneti** modul kimenete a [Select Columns in Dataset] [ select-columns] modul. A kísérlet így néz ki:
 
-![A web service kimeneti áthelyezése][figure5]
+![A web service kimeneti áthelyezése](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
 ### <a name="add-or-remove-additional-data-processing-modules"></a>Adja hozzá, vagy távolítsa el a további adatokat feldolgozó modulok
 Ha a kísérlet során, hogy ismeri a kiértékelés során nem szükséges további modulok, ezek távolíthatja el. Például mert egekbe szökött a **bemenet webes** modul után az adatok feldolgozása modulok pontra, törölhetjük az [Clean Missing Data] [ clean-missing-data] modulnak a a prediktív kísérletet.
 
 A prediktív kísérletet most néz ki:
 
-![További modul eltávolítása][figure6]
+![További modul eltávolítása](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
 
 
 ### <a name="add-optional-web-service-parameters"></a>Nem kötelező webszolgáltatás-paraméterek hozzáadása
@@ -116,16 +116,6 @@ Most, hogy a prediktív kísérletté megfelelően elő van készítve, telepít
 A teljes telepítési folyamatról további információkért lásd: [egy Azure Machine Learning webszolgáltatás üzembe helyezése][deploy]
 
 [deploy]: publish-a-machine-learning-web-service.md
-
-
-<!-- Images -->
-[figure1]:./media/convert-training-experiment-to-scoring-experiment/figure1.png
-[figure2]:./media/convert-training-experiment-to-scoring-experiment/figure2.png
-[figure3]:./media/convert-training-experiment-to-scoring-experiment/figure3.png
-[figure4]:./media/convert-training-experiment-to-scoring-experiment/figure4.png
-[figure5]:./media/convert-training-experiment-to-scoring-experiment/figure5.png
-[figure6]:./media/convert-training-experiment-to-scoring-experiment/figure6.png
-
 
 <!-- Module References -->
 [clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/

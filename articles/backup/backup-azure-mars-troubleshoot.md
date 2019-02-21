@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: 9180604b18224adace040c9eee5181b4cd4d8b92
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ce6293e63e672df9683ab607a304f8c7275911c5
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339005"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446613"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök hibaelhárítása
 
@@ -59,7 +59,8 @@ Oldja meg az esetlegesen előforduló hibák során konfigurációja, a regisztr
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Biztonsági másolatok ne futtassa a megadott ütemezés szerint
 Ha ütemezett biztonsági mentések nem lekérése automatikusan, amíg a manuális biztonsági mentések problémamentesen működik, próbálja meg a következő műveleteket:
 
-- Lépjen a **vezérlőpultot** > **felügyeleti eszközök** > **Feladatütemező**. Bontsa ki a **Microsoft**, és válassza ki **Online biztonsági mentés**. Kattintson duplán a **Microsoft-OnlineBackup**, és nyissa meg a **eseményindítók** fülre. Győződjön meg arról, hogy az állapot értéke **engedélyezve**. Ha nem, válassza ki a **szerkesztése**, és válassza ki a **engedélyezve** jelölőnégyzetet. Az a **általános** lépjen **biztonsági beállítások**. Győződjön meg arról, hogy a feladat futtatásához a kiválasztott felhasználói fiók vagy **rendszer** vagy **a helyi Rendszergazdák csoport** a kiszolgálón.
+- Győződjön meg arról, a Windows Server biztonsági mentés ütemezése nem ütközik az Azure-fájlok és mappák biztonsági mentés ütemezése.
+- Lépjen a **vezérlőpultot** > **felügyeleti eszközök** > **Feladatütemező**. Bontsa ki a **Microsoft**, és válassza ki **Online biztonsági mentés**. Kattintson duplán a **Microsoft-OnlineBackup**, és nyissa meg a **eseményindítók** fülre. Győződjön meg arról, hogy az állapot értéke **engedélyezve**. Ha nem, válassza ki a **szerkesztése**, és válassza ki a **engedélyezve** jelölőnégyzetet, majd kattintson **OK**. Az a **általános** lépjen **biztonsági beállítások** , és győződjön meg arról, hogy a feladat futtatásához a kiválasztott felhasználói fiók vagy **rendszer** vagy **helyi Rendszergazdák csoport** a kiszolgálón.
 
 - Tekintse meg, ha a PowerShell 3.0-s vagy újabb verziója telepítve van-e a kiszolgálón. A PowerShell-verziójának ellenőrzéséhez futtassa a következő parancsot, és ellenőrizze, hogy a *fő* verziószáma 3-nál nagyobb vagy egyenlő.
 

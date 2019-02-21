@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/18/2019
-ms.openlocfilehash: 0bb7c047f6bd03a45aa6c5c6d07b8022ee59bec9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/20/2019
+ms.openlocfilehash: 4f8ee5a3a72fc143822a71bcb933f34e2f371019
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217172"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453137"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>SQL-hitelesítéshez használandó Azure Active Directory-hitelesítéssel
 
@@ -101,16 +101,16 @@ Egy tartalmazottadatbázis-felhasználó létrehozása az Azure SQL Database fel
 
 ### <a name="manage-instances"></a>Példányok kezelése
 
-- Az Azure AD-bejelentkezések és felhasználók támogatottak az előzetes verziójú funkcióként [felügyelt példányok](sql-database-managed-instance.md).
-- Az Azure AD-csoportok leképezett adatbázis tulajdonosa nem támogatott az Azure AD-bejelentkezések beállítás [felügyelt példányok](sql-database-managed-instance.md).
+- Az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) és a felhasználók használata támogatott az előzetes verziójú funkcióként [felügyelt példányok](sql-database-managed-instance.md).
+- Az Azure AD-csoportok leképezett adatbázis tulajdonosa nem támogatott az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) beállítás [felügyelt példányok](sql-database-managed-instance.md).
     - Kiterjesztése, ez az, hogy ha egy csoport részeként hozzáadása a `dbcreator` kiszolgálói szerepkör, ez a csoport azonban a felhasználók csatlakozhat a felügyelt példányhoz, és hozzon létre új adatbázisokat, de nem fogja tudni elérni az adatbázist. Ez azért, mert az új adatbázis-tulajdonos SA, és nem az Azure AD-felhasználót. A probléma nem manifest, ha a felhasználót adnak hozzá a `dbcreator` kiszolgálói szerepkört.
-- Az SQL Agent felügyeleti és a feladatok végrehajtása az Azure AD-bejelentkezések esetén támogatott.
-- Adatbázis biztonsági mentési és visszaállítási műveleteket hajthat végre az Azure AD-bejelentkezések.
-- Az összes utasítást az Azure AD bejelentkezési és hitelesítési események naplózása használata támogatott.
-- Az Azure AD bejelentkezések, amelyek a sysadmin (rendszergazda) kiszolgálói szerepkör tagjai számára dedikált rendszergazdai kapcsolat használata támogatott.
+- Az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) SQL Agent felügyeleti és a feladatok végrehajtása támogatja.
+- Adatbázis biztonsági mentési és visszaállítási műveleteket hajthat végre az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések).
+- Az összes utasítást az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) és hitelesítési események naplózása használata támogatott.
+- Az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) mely SysAdmin (rendszergazda) kiszolgálói szerepkör tagjai a dedikált rendszergazdai kapcsolat használata támogatott.
     - Támogatott SQL Server Management Studio és az SQLCMD segédprogram használatával.
-- Az Azure AD-bejelentkezések érkező bejelentkezési események bejelentkezési eseményindítók támogatják.
-- Service Broker és a DB levelezés beállítása az Azure AD bejelentkezési használatával is lehet.
+- Bejelentkezési eseményindítók támogatják az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) érkező bejelentkezési eseményeket.
+- Service Broker és a DB mail lehet egy Azure ad-ben kiszolgálói tag (bejelentkezés) beállítását.
 
 
 ## <a name="connecting-using-azure-ad-identities"></a>Csatlakozás az Azure AD-identitások használatával
@@ -121,7 +121,7 @@ Az Azure Active Directory-hitelesítés használata az Azure AD-identitások-ada
 - Az Azure AD egyszerű felhasználónév és jelszó használatával
 - Alkalmazástoken-hitelesítésének használata
 
-A következő hitelesítési módszerek támogatottak az Azure AD-bejelentkezések (**nyilvános előzetes verzióban**):
+Az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) a következő hitelesítési módszerek támogatottak (**nyilvános előzetes verzióban**):
 
 - Az Azure Active Directory-jelszó
 - Az Azure Active Directory-integrációt
@@ -133,7 +133,7 @@ A következő hitelesítési módszerek támogatottak az Azure AD-bejelentkezés
 
 - Kezelhetőség javítása érdekében javasoljuk, hogy üzembe helyez egy dedikált Azure AD rendszergazdai csoporthoz.   
 - Csak egy Azure AD-rendszergazda (felhasználó vagy csoport) bármikor konfigurálhatja egy Azure SQL Database-kiszolgáló vagy az Azure SQL Data Warehouse számára.
-  - Az Azure AD-bejelentkezések felügyelt példányok hozzáadásával (**nyilvános előzetes verzióban**) lehetővé teszi, hogy a lehetősége, amely hozzáadható több Azure AD-bejelentkezések létrehozása a `sysadmin` szerepkör.
+  - Az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) felügyelt példányok hozzáadásával (**nyilvános előzetes verzióban**) lehetővé teszi, hogy lehetősége létrehozása több Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések), amely lehet hozzáadni a `sysadmin` szerepkör.
 - Csak Azure AD-rendszergazda az SQL Server kezdetben csatlakozhat az Azure SQL Database-kiszolgálóhoz, a felügyelt példányába vagy az Azure SQL Data Warehouse egy Azure Active Directory-fiókkal. Az Active Directory-rendszergazda konfigurálhatja az Azure AD további adatbázis-felhasználók.   
 - Azt javasoljuk, hogy a kapcsolat időtúllépése beállítás 30 másodperc.   
 - SQL Server 2016 Management Studio és az SQL Server Data Tools for Visual Studio 2015 (2016-os vagy újabb verzió 14.0.60311.1April) támogatja az Azure Active Directory-hitelesítés. (Azure AD-hitelesítést támogatja a **.NET Framework Data Provider Pro SqlServer**; legalább .NET Framework 4.6-os verzió). Ezért a legújabb verzióra a következő eszközök és -adatrétegbeli alkalmazások (DAC és. BACPAC) használhatja az Azure AD-hitelesítés.   
@@ -147,12 +147,12 @@ A következő hitelesítési módszerek támogatottak az Azure AD-bejelentkezés
 ## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan hozzon létre és töltse fel az Azure ad-ben, és adja meg a Azure ad-ben az Azure SQL Database vagy Azure SQL Data Warehouse, lásd: [konfigurálása és kezelése az Azure Active Directory-hitelesítés az SQL Database felügyelt példányába vagy az SQL Data warehouse-bA ](sql-database-aad-authentication-configure.md).
-- Az Azure AD bejelentkezési adatok használata a felügyelt példányok oktatóanyagért lásd: [felügyelt példányokkal az Azure AD-bejelentkezések](sql-database-managed-instance-aad-security-tutorial.md)
+- Az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) használata a felügyelt példányok oktatóanyagért lásd: [rendelkező felügyelt példányok az Azure AD-kiszolgáló egyszerű (Bejelentkezések)](sql-database-managed-instance-aad-security-tutorial.md)
 - Az SQL Database hozzáféréseinek és felügyeletének áttekintéséről az [SQL Database-hozzáférés és -felügyelet](sql-database-control-access.md) részben olvashat.
 - Az SQL Database bejelentkezéseinek, felhasználóinak és adatbázis-szerepköreinek áttekintését a [Bejelentkezések, felhasználók és adatbázis-szerepkörök](sql-database-manage-logins.md) részben találja.
 - További információ az adatbázis résztvevőivel kapcsolatban: [Résztvevők](https://msdn.microsoft.com/library/ms181127.aspx).
 - További információ az adatbázis-szerepkörökkel kapcsolatban: [Adatbázis-szerepkörök](https://msdn.microsoft.com/library/ms189121.aspx).
-- Találhat szintaxissal felügyelt példányok az Azure AD-bejelentkezés létrehozásával, [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+- A szintaxis az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) felügyelt példányok létrehozásával, tekintse meg a [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 - További információ az SQL Database tűzfalszabályaival kapcsolatban: [SQL Database tűzfalszabályok](sql-database-firewall-configure.md).
 
 <!--Image references-->

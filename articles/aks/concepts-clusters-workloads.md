@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7f964397b476d5a97ecdde0ae22bd6662a435e1a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998098"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456520"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>A Kubernetes alapvető fogalmainak Azure Kubernetes Service (AKS)
 
@@ -52,7 +52,7 @@ A fürt fő összetevői a következők core Kubernetes:
 
 Az AKS biztosít egy egybérlős fürt főkiszolgáló, egy dedikált API-kiszolgálóval, a Feladatütemező, stb. A csomópontok mérete és száma meghatározása, és az Azure platform konfigurálja a fürt mester és csomópont közötti biztonságos kommunikációhoz. A fürt fő való interakció akkor fordul elő, Kubernetes API-k segítségével, mint például `kubectl` vagy a Kubernetes irányítópultot.
 
-A felügyelt fürt fő azt jelenti, hogy nem kell konfigurálni az összetevők, például a magas rendelkezésre állású *etcd* tároló, de azt is jelenti, hogy a fürt fő közvetlenül nem lehet hozzáférni. A Kubernetes frissítése az Azure CLI-vel vagy az Azure Portalon, amely frissíti a fürt fő és a csomópontok Vezényel. A lehetséges hibák elhárításához, a fürt fő naplók az Azure Log Analytics segítségével tekintheti meg.
+A felügyelt fürt fő azt jelenti, hogy nem kell konfigurálni az összetevők, például a magas rendelkezésre állású *etcd* tároló, de azt is jelenti, hogy a fürt fő közvetlenül nem lehet hozzáférni. A Kubernetes frissítése az Azure CLI-vel vagy az Azure Portalon, amely frissíti a fürt fő és a csomópontok Vezényel. A lehetséges hibák elhárításához, a fürt fő naplók az Azure Monitor naplóira keresztül tekintheti meg.
 
 A fürt fő adott módon vagy hozzájuk a közvetlen hozzáférésre van szükségük van szüksége, ha a saját Kubernetes fürt használatával telepíthet [aks-motor][aks-engine].
 
@@ -70,13 +70,13 @@ Az Azure virtuális gép méretét a csomópontok határozza meg, hány processz
 
 Az aks-ben Ubuntu Linux esetében a fürtben található csomópontok a Virtuálisgép-lemezkép jelenleg alapján. AKS-fürt létrehozása vagy vertikális felskálázás a csomópontok számát, az Azure platform a kért számú virtuális gépeket hoz létre, és konfigurálja őket. Nem tartozik a végezhető el a manuális konfiguráció.
 
-Egyéni csomagok vagy egy másik gazdagép operációs Rendszeréhez, tároló-futtatókörnyezet, használni kell, ha a saját Kubernetes fürt használatával telepíthet [aks-motor][aks-engine]. A felsőbb rétegbeli `aks-engine` kiadott szolgáltatások és konfigurációs lehetőségeket nyújtanak, mielőtt hivatalosan támogatott az AKS-fürt. Például, ha szeretné használni a Windows-tárolók vagy egy eltérő Docker container modul, használhatja `aks-engine` konfigurálásához és üzembe helyezéséhez a Kubernetes-fürt, amely az aktuális igényeinek.
+Egyéni csomagok vagy egy másik gazdagép operációs Rendszeréhez, tároló-futtatókörnyezet, használni kell, ha a saját Kubernetes fürt használatával telepíthet [aks-motor][aks-engine]. A felsőbb rétegbeli `aks-engine` kiadott szolgáltatások és konfigurációs lehetőségeket talál, mielőtt hivatalosan támogatott AKS-fürtben. Például, ha szeretné használni a Windows-tárolók vagy egy eltérő Docker container modul, használhatja `aks-engine` konfigurálásához és üzembe helyezéséhez a Kubernetes-fürt, amely az aktuális igényeinek.
 
 ### <a name="resource-reservations"></a>Erőforrás-foglalások
 
 Nem kell minden egyes csomóponton Kubernetes alapösszetevők kezelhet, mint a *kubelet*, *kube-proxy*, és *kube-dns*, azonban néhány, a rendelkezésre álló igényelnek a számítási erőforrásokat. A csomópont teljesítményének és funkcionalitásának fenntartása a következő számítási erőforrások vannak lefoglalva minden egyes csomóponton:
 
-- **CPU** – 60ms
+- **CPU** – 60 ms
 - **Memória** – 4 GIB-ra legfeljebb 20 %-os
 
 Ezeket a fenntartásokat jelenti azt, hogy a rendelkezésre álló Processzor- és az alkalmazások memória mennyisége adatbázisénál kisebb, mint a csomópont önmaga tartalmaz. Ha korlátozott erőforrások miatt a futtatott alkalmazások számát, ezeket a fenntartásokat biztosítása a CPU és memória továbbra is elérhető, a Kubernetes alapvető összetevők. Az erőforrás-foglalások nem módosítható.
@@ -103,7 +103,7 @@ Méretezhető, vagy az AKS-fürt frissítése, a művelet végrehajtását az al
 
 Használja a Kubernetes *podok* egy példányt az alkalmazás futtatásához. A pod jelöli az alkalmazás egy példánya. Podok általában 1:1 leképezés egy tárolóval rendelkezik, bár van speciális forgatókönyvek ahol podot több tárolót is tartalmazhat. Ezek többtárolós podok ütemezett együtt ugyanazon a csomóponton, és engedélyezze a tárolók kapcsolódó erőforrások megosztását.
 
-A pod létrehozásakor definiálhat *erőforráskorlátok* CPU és memória-erőforrások egy bizonyos mennyiségű kéréséhez. A Kubernetes-ütemező próbál ütemezése a podok futni a csomóponton a rendelkezésre álló erőforrások a kérelem teljesítéséhez. Adja meg a maximális erőforráskorlátok, amely megakadályozza, hogy egy adott pod felhasználása túl sok számítási erőforrás az alapul szolgáló csomópontból is. Ajánlott eljárás az erőforráskorlátok a segítségével a Kubernetes-ütemező megérteni, milyen erőforrásokat engedélyezett és szükséges összes podok tartalmazza.
+A pod létrehozásakor definiálhat *erőforráskorlátok* CPU és memória-erőforrások egy bizonyos mennyiségű kéréséhez. A Kubernetes-ütemező próbál ütemezése a podok futni a csomóponton a rendelkezésre álló erőforrások a kérelem teljesítéséhez. Adja meg a maximális erőforráskorlátok, amely megakadályozza, hogy egy adott pod felhasználása túl sok számítási erőforrás az alapul szolgáló csomópontból is. Ajánlott eljárás az erőforráskorlátok a segítségével a Kubernetes a Scheduler ismertetése, mely erőforrásokat engedélyezett és szükséges összes podok tartalmazza.
 
 További információkért lásd: [Kubernetes-podok] [ kubernetes-pods] és [Kubernetes-podok életciklus][kubernetes-pod-lifecycle].
 
@@ -203,7 +203,7 @@ AKS-fürt létrehozásakor a következő névterek érhetők el:
 
 - *alapértelmezett* – Ez a névtér a, ahol podok és központi telepítések jönnek létre alapértelmezés szerint ha egyiket sem. Kisebb környezetekben közvetlenül az alapértelmezett névtér alkalmazásokat helyezhet üzembe további logikai elkülönülés létrehozása nélkül. Amikor dolgozhat a Kubernetes API-t, mint például a `kubectl get pods`, az alapértelmezett névtér használatos, ha nincs megadva.
 - *kube rendszer* – Ez a névtér a, ha alapvető erőforrások léteznek, például a hálózati szolgáltatások, mint például a DNS- és a proxy vagy a Kubernetes-irányítópult. Általában nem kell telepítenie a saját alkalmazásokat az ehhez a névtérhez.
-- *nyilvános kube* – általában nem használja ezt a névteret, de is használható erőforrások lesznek láthatók a teljes fürt között, és bármely felhasználó is megtekintheti.
+- *nyilvános kube* – általában nem használja ezt a névteret, de is lesznek láthatók a teljes fürt között az erőforrások használhatók, és bármely felhasználó tekinthet meg.
 
 További információkért lásd: [Kubernetes névterek][kubernetes-namespaces].
 

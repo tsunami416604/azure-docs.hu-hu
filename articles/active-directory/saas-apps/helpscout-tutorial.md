@@ -4,160 +4,161 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés seg
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 0aad9910-0bc1-4394-9f73-267cf39973ab
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/14/2017
+ms.topic: tutorial
+ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f999ff396a5573e6928fd8a25e1bb634f3615c0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 790176d6a9ad54357e90c0f68368038fb786bd0d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179281"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Oktatóanyag: A Scout segít az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan segít Scout integrálása az Azure Active Directory (Azure AD).
-
 Súgó Scout integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, ki férhet hozzá a Scout segít az Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a Scout Súgó (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja, ki férhet hozzá a Scout segít az Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett a Scout Súgó (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása a Scout segítségével, a következőkre van szükség:
 
-- Azure AD-előfizetés
-- A Scout súgó egyszeri bejelentkezéses engedélyezett előfizetés
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Súgó Scout egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Súgó Scout hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* Súgója támogatja a Scout **SP és IDP** által kezdeményezett egyszeri bejelentkezés
+* Súgója támogatja a Scout **igény szerinti** felhasználók átadása
 
 ## <a name="adding-help-scout-from-the-gallery"></a>Súgó Scout hozzáadása a katalógusból
+
 Konfigurálja a Scout súgó integrációja az Azure AD-be, szüksége súgó Scout hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
 
 **Súgó Scout hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Az új alkalmazás gomb][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. A Keresés mezőbe írja be a **súgó Scout**, jelölje be **súgó Scout** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Scout súgó az eredmények listájában](./media/helpscout-tutorial/tutorial_helpscout_addfromgallery.png)
+4. A Keresés mezőbe írja be a **súgó Scout**, jelölje be **súgó Scout** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+
+     ![Scout súgó az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a Súgó Scout egy "Britta Simon." nevű tesztelési felhasználó alapján
-
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a Súgó Scout tartozó felhasználó mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a Súgó Scout hivatkozás kapcsolatát kell létrehozni.
-
-Súgó Scout bejelentkezések e-mail-címeket használ, ezért a hivatkozást kapcsolat létrehozására, a azonos **e-mail-cím** , **felhasználónév** az Azure ad-ben.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés segítségével Scout nevű tesztfelhasználó alapján a **Britta Simon**.
+Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó a Súgó Scout hivatkozás kapcsolata kell hozható létre.
 
 Az Azure AD egyszeri bejelentkezés a Scout súgó tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy Súgó Scout tesztfelhasználót](#create-a-help-scout-test-user)**  - a-megfelelője a Britta Simon szerepel, amely kapcsolódik az Azure AD felhasználói ábrázolása érdekében Scout.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+2. **[Súgó Scout egyszeri bejelentkezés konfigurálása](#configure-help-scout-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre súgó Scout tesztfelhasználót](#create-help-scout-test-user)**  - a-megfelelője a Britta Simon szerepel, amely kapcsolódik az Azure AD felhasználói ábrázolása érdekében Scout.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és segítségével Scout alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés segítségével Scout, hajtsa végre az alábbi lépéseket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés segítségével Scout, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **súgó Scout** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **súgó Scout** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/helpscout-tutorial/tutorial_helpscout_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-1. Az a **súgó Scout tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Súgó a Scout tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/helpscout-tutorial/tutorial_helpscout_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. **Azonosító** van a **"Célközönség (Service Provider entitás azonosítója) URI"** a Scout súgó kezdődik `urn:`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. **Válasz URL-cím** van a **"Utáni visszahívási URL-címe (helyességi feltétel fogyasztói szolgáltatás URL-címe)"** a Scout súgó kezdődik `https://` 
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
 
-    > [!NOTE] 
+    ![Súgó a Scout tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+
+    a. **Azonosító** van a **célközönség URI-t (a Service Provider Entitásazonosító)** a Scout súgó kezdődik `urn:`
+
+    b. **Válasz URL-cím** van a **utáni vissza URL-címe (helyességi feltétel fogyasztói szolgáltatás URL-címe)** a Scout súgó kezdődik `https://` 
+
+    > [!NOTE]
     > Az alábbi URL-címek értékei csak bemutatásához. Ezeket az értékeket a tényleges válasz URL-cím és azonosító frissíteni szeretné. Ezeket az értéteket kap a **egyszeri bejelentkezés** hitelesítés szakaszban, az oktatóanyag későbbi részében ismertetett lapján.
 
-1. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód, a jelölőnégyzet **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést:
+5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Súgó a Scout tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/helpscout-tutorial/tutorial_helpscout_url1.png)
+    ![Súgó a Scout tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-cím: `https://secure.helpscout.net/members/login/`
-     
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/helpscout-tutorial/tutorial_helpscout_certificate.png) 
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-1. Kattintson a **mentése** gombra.
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/helpscout-tutorial/tutorial_general_400.png)
+7. Az a **súgó Scout beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-1. Az a **súgó Scout konfigurációs** területén kattintson **konfigurálja a Scout súgó** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban**.
+    a. Bejelentkezési URL
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/config.png) 
+    b. Azure Ad Identifier
+
+    c. Kijelentkezési URL
+
+### <a name="configure-help-scout-single-sign-on"></a>Súgó Scout egyszeri bejelentkezés konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a Scout súgó vállalati hely rendszergazdaként.
 
-1. Miután jelentkezett kattintson **"Kezelés"** a felső menüben, és válassza ki a **"Céges"** a legördülő menüből.
+2. Kattintson a **kezelés** a felső menüben, és válassza ki a **vállalati** a legördülő menüből.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings1.png) 
- 
-1. Válassza ki **"Hitelesítés"** elemet a bal oldali menüben. 
+    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings1.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings2.png) 
+3. Válassza ki **hitelesítési** a bal oldali navigációs ablaktáblán.
 
-1. Ezzel továbblép a SAML-beállítások szakaszban, és hajtsa végre az alábbi lépéseket:
+    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings2.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings3.png) 
- 
-    a. Másolás a **utáni vissza URL-címe (helyességi feltétel fogyasztói szolgáltatás URL-címe)** értékét, és illessze be az értéket a a **válasz URL-cím** mezőben az Azure Portalon, a Súgó Scout **tartomány és URL-címek** szakasz.
-    
-    b. Másolás a **célközönség-URI (Service Provider entitás azonosítója)** értékét, és illessze be az értéket a a **azonosító** mezőbe a Scout segít az Azure Portalon **tartomány és URL-címek** szakaszban.
+4. Ezzel továbblép a SAML-beállítások szakaszban, és hajtsa végre az alábbi lépéseket:
 
-1. Váltógomb **SAML engedélyezése** a, és hajtsa végre az alábbi lépéseket:
+    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings3.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings4.png) 
- 
-    a. A **egyszeri bejelentkezési URL-cím** szövegmező, illessze be az értéket a **egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
-    
+    a. Másolás a **utáni vissza URL-címe (helyességi feltétel fogyasztói szolgáltatás URL-címe)** értékét, és illessze be az értéket a a **válasz URL-cím** mezőt a **alapszintű SAML-konfigurációja** szakaszban az Azure-ban portál.
+
+    b. Másolás a **célközönség URI-t (a Service Provider Entitásazonosító)** értékét, és illessze be az értéket a a **azonosító** mezőt a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+
+5. Váltógomb **SAML engedélyezése** a, és hajtsa végre az alábbi lépéseket:
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings4.png)
+
+    a. A **egyszeri bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+
     b. Kattintson a **tanúsítvány feltöltése** feltölteni a **Certificate(Base64)** az Azure-portálról letöltött.
 
     c. Adja meg a szervezet e-mail tartomány(ok) például: - `contoso.com` a a **E-mail tartományokban** szövegmezőbe. Elkülönítheti a több tartomány vesszővel válasszon el. Bármikor súgó Scout felhasználó vagy rendszergazda, aki az adott tartomány ír a [súgó Scout bejelentkezési oldala](https://secure.helpscout.net/members/login/) identitásszolgáltató hitelesítő adataikkal hitelesítést lesznek átirányítva.
@@ -166,102 +167,71 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     e. Kattintson a **Save** (Mentés) gombra.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
-
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure Active Directory gomb](./media/helpscout-tutorial/create_aaduser_01.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/helpscout-tutorial/create_aaduser_02.png)
-
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
-
-    ![A Hozzáadás gombra.](./media/helpscout-tutorial/create_aaduser_03.png)
-
-1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/helpscout-tutorial/create_aaduser_04.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
-
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="create-a-help-scout-test-user"></a>Súgó Scout tesztfelhasználó létrehozása
-
-Ez a szakasz célja érdekében Scout Britta Simon nevű felhasználó létrehozásához. Súgó Scout támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van.
-
-Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a Scout súgó, egy új jön létre, a hozzáférés érdekében Scout megkísérlésekor.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés érdekében Scout Azure egyszeri bejelentkezés használatára.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **súgó Scout**.
 
-**Britta Simon hozzárendelése érdekében Scout, hajtsa végre az alábbi lépéseket:**
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+2. Az alkalmazások listájában jelölje ki a **súgó Scout**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![A Scout Súgó hivatkozásra az alkalmazások listáját](common/all-applications.png)
 
-1. Az alkalmazások listájában jelölje ki a **súgó Scout**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![A Scout Súgó hivatkozásra az alkalmazások listáját](./media/helpscout-tutorial/tutorial_helpscout_app.png)  
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![A hozzárendelés hozzáadása panel][203]
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+### <a name="create-help-scout-test-user"></a>Súgó Scout tesztfelhasználó létrehozása
 
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
+Ebben a szakaszban egy Britta Simon nevű felhasználó a Súgó Scout jön létre. Súgó Scout támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a Scout segítségével, a hitelesítés után egy új jön létre.
+
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Scout súgó csempére kattint, meg kell lekérése automatikusan bejelentkezett a Scout súgó alkalmazásba.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Scout súgó csempére kattint, akkor kell lehet automatikusan bejelentkezett, amelynek beállítása egyszeri bejelentkezés segítségével Scout. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/helpscout-tutorial/tutorial_general_01.png
-[2]: ./media/helpscout-tutorial/tutorial_general_02.png
-[3]: ./media/helpscout-tutorial/tutorial_general_03.png
-[4]: ./media/helpscout-tutorial/tutorial_general_04.png
-
-[100]: ./media/helpscout-tutorial/tutorial_general_100.png
-
-[200]: ./media/helpscout-tutorial/tutorial_general_200.png
-[201]: ./media/helpscout-tutorial/tutorial_general_201.png
-[202]: ./media/helpscout-tutorial/tutorial_general_202.png
-[203]: ./media/helpscout-tutorial/tutorial_general_203.png
-
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

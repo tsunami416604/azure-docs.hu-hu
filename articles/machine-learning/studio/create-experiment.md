@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: f5b24b21c4511b535509421aaa35ba3498e9f6a8
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 803a52994536d2d6f39a064f97af7831af0cebb6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246017"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453171"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Gyors útmutató: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
 
@@ -57,15 +57,15 @@ A következőképpen vonhatja be az adathalmazt a kísérletbe.
 
 1. A kísérlet kap egy alapértelmezett nevet, amelyet a vászon tetején láthat. Jelölje ki ezt a szöveget, és módosítsa valami értelmesebbre, például arra, hogy **Autó árának előrejelzése**. A névnek nem kell egyedinek lennie.
 
-    ![A kísérlet átnevezése][rename-experiment]
+    ![A kísérlet átnevezése](./media/create-experiment/rename-experiment.png)
 
 1. A kísérletvászontól balra az adathalmazokat és modulokat tartalmazó paletta látható. A paletta tetején található keresőmezőbe gépelje be, hogy **automobile**. A rendszer megjeleníti az **Automobile price data (Raw)** (Nyers autóáradatok) nevű adathalmazt. Húzza rá az adathalmazt a kísérletvászonra.
 
-    ![Az autókat tartalmazó adathalmaz megkeresése és a kísérleti vászonra húzása][type-automobile]
+    ![Az autókat tartalmazó adathalmaz megkeresése és a kísérleti vászonra húzása](./media/create-experiment/type-automobile.png)
 
 Tekintse meg, mi ezeket az adatokat úgy tűnik, kattintson az autókat tartalmazó adathalmaz alsó a kimeneti portra, majd válassza ki a **Visualize**.
 
-![Kattintson a kimeneti portra, és válassza a "Visualize"][select-visualize]
+![Kattintson a kimeneti portra, és válassza a "Visualize"](./media/create-experiment/select-visualize.png)
 
 > [!TIP]
 > Az adathalmazok és modulok kis körökkel jelölt bemeneti és kimeneti portokkal rendelkeznek – a bemeneti portok felül, a kimeneti portok alul találhatók.
@@ -74,7 +74,7 @@ Ha meg szeretné tekinteni, hogyan jelennek meg az adatok az adatfolyam egy adot
 
 Ez az adatkészlet minden sor egy autó jelöli, és az egyes autókhoz tartozó változók oszlopokként jelennek meg. Az ár a jobb szélső oszlopban (nevű oszlophoz 26., "price") egy adott autóhoz tartozó változók használatával fogjuk előre megbecsülni.
 
-![Az autókra vonatkozó adatok megtekintése az adatok ablakban][visualize-auto-data]
+![Az autókra vonatkozó adatok megtekintése az adatok ablakban](./media/create-experiment/visualize-auto-data.png)
 
 A jobb felső sarokban látható „**x**” gombra kattintva zárja be a képi megjelenítési ablakot.
 
@@ -89,9 +89,9 @@ Először hozzáadunk egy modult, amely eltávolítja a **normalized-losses** os
 
 1. Típus **Oszlopválasztás** kifejezést a keresőmezőbe, a modulpaletta tetején a [Select Columns in Dataset] [ select-columns] modul. Húzza a kísérletvászonra. Ezzel a modullal kiválaszthatjuk, hogy melyik adatoszlopokat szeretnénk bevonni a modellbe, vagy éppen kizárni a modellből.
 
-1. Kösse össze az **Automobile price data (Raw)** (Autóárak adatai (nyers)) című adathalmaz kimeneti portját a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modul bemeneti portjával.
+1. A kimeneti portjára, csatlakozzon a **Automobile price data (Raw)** adatkészlet a Select Columns in Dataset bemeneti portjával.
 
-    ![A "Kiválasztása oszlopok az adatkészlet" modul hozzáadása a kísérletvászonhoz, majd összekötése][type-select-columns]
+    ![A "Kiválasztása oszlopok az adatkészlet" modul hozzáadása a kísérletvászonhoz, majd összekötése](./media/create-experiment/type-select-columns.png)
 
 1. Kattintson a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulra, majd a **Properties** (Tulajdonságok) panelen kattintson a **Launch column selector** (Oszlopválasztó elindítása) elemre.
 
@@ -100,26 +100,26 @@ Először hozzáadunk egy modult, amely eltávolítja a **normalized-losses** os
     - A legördülő listákból válassza az **Exclude** (Kizárás) és a **column names** (oszlopnevek) lehetőséget, majd kattintson a szövegmezőbe. Megjelenik az oszlopnevek listája. Válassza a **normalized-losses** (normalizált veszteségek) lehetőséget, amely aztán bekerül a szövegdobozba.
     - Kattintson a pipa (OK) gombra (a jobb alsó) az Oszlopválasztó bezárásához.
 
-    ![Az Oszlopválasztó elindítása és a "normalized-losses" oszlop kizárása][launch-column-selector]
+    ![Az Oszlopválasztó elindítása és a "normalized-losses" oszlop kizárása](./media/create-experiment/launch-column-selector.png)
 
     Ekkor a **Select Columns in Dataset** (Adathalmaz oszlopainak kijelölése) modul Properties (Tulajdonságok) panelje jelzi, hogy a modul a **normalized-losses** ( normalizált veszteségek) kivételével az adathalmaz összes oszlopát fel fogja dolgozni.
 
-    ![A Tulajdonságok panelen látható, hogy a "normalized-losses" oszlop ki van zárva][showing-excluded-column]
+    ![A Tulajdonságok panelen látható, hogy a "normalized-losses" oszlop ki van zárva](./media/create-experiment/showing-excluded-column.png)
 
     > [!TIP] 
     > A modulokhoz megjegyzéseket adhat. Ehhez kattintson duplán a kívánt modulra, majd gépelje be a megjegyzés szövegét. Így egyetlen pillantással felmérheti, hogy mire szolgál az adott modul a kísérletben. A jelen esetben kattintson duplán a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulra, és írja be az „Exclude normalized losses” (A normalized-losses oszlop kizárása) szöveget.
 
-    ![Megjegyzés hozzáadása modulhoz dupla kattintással][add-comment]
+    ![Megjegyzés hozzáadása modulhoz dupla kattintással](./media/create-experiment/add-comment.png)
 
 1. Húzza a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modult a kísérletvászonra, és kösse össze a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modullal. A **Properties** (Tulajdonságok) panel **Cleaning mode** (Törlés módja) beállításánál válassza a **Remove entire row** (Teljes sor eltávolítása) lehetőséget. Ezeket a beállításokat a közvetlen [Clean Missing Data] [ clean-missing-data] , amely tartalmaz a hiányzó sort törölje. Kattintson duplán a modulra, és írja be a következő megjegyzést: „Hiányzó értéket tartalmazó sorok törlése”.
 
-    !["Remove entire row eltávolítása" a "Clean Missing Data" modul törlés módjának beállítása][set-remove-entire-row]
+    !["Remove entire row eltávolítása" a "Clean Missing Data" modul törlés módjának beállítása](./media/create-experiment/set-remove-entire-row.png)
 
 1. A kísérlet futtatásához kattintson a lap alján található **RUN** (Futtatás) parancsra.
 
     A kísérlet befejezését követően az összes modulnál megjelenik egy zöld pipa, amely jelzi, hogy az adott modul sikeresen lefutott. A jobb felső sarokban pedig megjelenik a **Finished running** (Futtatás befejeződött) állapot.
 
-    ![Futtatás után a kísérlet várható megjelenése a][early-experiment-run]
+    ![Futtatás után a kísérlet várható megjelenése a](./media/create-experiment/early-experiment-run.png)
 
 > [!TIP]
 > Miért futtattuk a kísérletet most? A kísérlet futtatásával biztosítható, hogy az adatokhoz tartozó oszlopdefiníciók az adatkészletből áthaladnak a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulon és a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modulon. Ez azt jelenti, hogy a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modulhoz kapcsolt modulok is megkapják ugyanezeket az adatokat.
@@ -140,7 +140,7 @@ Ideje, hogy létrehozzuk a modellt az adathalmaz jellemzőinek meghatározott r�
 
 1. Húzzon egy újabb [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modult a kísérletvászonra. Kösse össze a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modul bal oldali kimeneti portját a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modul bemenetével.
 
-    ![A "Kiválasztása oszlopok az adatkészlet" modul összekötése a "Clean Missing Data" modul][connect-clean-to-select]
+    ![A "Kiválasztása oszlopok az adatkészlet" modul összekötése a "Clean Missing Data" modul](./media/create-experiment/connect-clean-to-select.png)
 
 1. Kattintson duplán a modulra, és írja be: „Az előrejelzéshez használatos jellemzők kiválasztása”.
 
@@ -152,7 +152,7 @@ Ideje, hogy létrehozzuk a modellt az adathalmaz jellemzőinek meghatározott r�
 
 1. Kattintson a pipa (OK) gombra.
 
-    ![Az előrejelzésbe bevonni az (szolgáltatások) oszlopok][select-columns-to-include]
+    ![Az előrejelzésbe bevonni az (szolgáltatások) oszlopok](./media/create-experiment/select-columns-to-include.png)
 
 Ez a modul egy szűrt adathalmazt, amelyben csak a következő lépésben használunk tanulási algoritmusnak továbbítani kívánt eredményez. Később visszatérhet ide, és más jellemzőkkel is elvégezheti az előrejelzést.
 
@@ -174,7 +174,7 @@ Az adatok a modell betanítására és tesztelésére is használhatók. Ehhez k
 
 1. Kattintással jelölje ki a [Split Data][split] (Adatok felosztása) modult. Keresse meg a **Properties** (Tulajdonságok) panelen a vászontól jobbra a **Fraction of rows in the first output dataset** (Sorok hányadosa az első kimeneti adathalmazban) beállítást, és adja meg a 0,75 értéket. Így az adatok 75 százalékát a modell betanítására, 25 százalékát pedig a modell tesztelésére használhatjuk.
 
-    ![Felosztási értékének beállítása a "Split Data" modul meg a 0,75 értéket][set-split-data-percentage]
+    ![Felosztási értékének beállítása a "Split Data" modul meg a 0,75 értéket](./media/create-experiment/set-split-data-percentage.png)
 
     > [!TIP]
     > A **Random seed** (Véletlenszám-generálás kezdőértéke) paraméter módosításával különböző véletlenszerűen kiválasztott mintákat hozhat létre, amelyeket szintén felhasználhat a modell betanítására és tesztelésére. Ez a paraméter szabályozza a pszeudo-véletlenszám-generátor kezdőértékét.
@@ -185,19 +185,19 @@ Az adatok a modell betanítására és tesztelésére is használhatók. Ehhez k
 
 1. Keresse meg, majd húzza a kísérletvászonra a [Train Model][train-model] (Modell betanítása) modult. Kösse össze a [Linear Regression][linear-regression] (Lineáris regresszió) modul kimenetét a [Train Model][train-model] (Modell betanítása) modul bal oldali bemenetével, és kösse össze a [Split Data][split] (Adatok felosztása) modul adatbetanítási kimenetét (bal oldali port) a [Train Model][train-model] (Modell betanítása) modul jobb oldali bemenetével.
 
-    ![A "Train Model" modul összekötése a "Linear Regression" és a "Split Data" modulokkal][connect-train-model]
+    ![A "Train Model" modul összekötése a "Linear Regression" és a "Split Data" modulokkal](./media/create-experiment/connect-train-model.png)
 
 1. Kattintson a [Train Model][train-model] (Modell betanítása) modulra, kattintson a **Properties** (Tulajdonságok) panel **Launch column selector** (Oszlopválasztó indítása) elemére, és válassza ki a **price** (ár) oszlopot. **Ár** modellünk előre jelezni az értéket.
 
     Jelölje ki a **price** (ár) oszlopot az oszlopválasztóban. Ehhez helyezze át az **Available columns** (Elérhető oszlopok) listáról a **Selected columns** (Kiválasztott oszlopok) listára.
 
-    ![A "Train Model" modul az ár oszlop kiválasztása][select-price-column]
+    ![A "Train Model" modul az ár oszlop kiválasztása](./media/create-experiment/select-price-column.png)
 
 1. Futtassa a kísérletet.
 
 Ezzel kapunk egy betanított regressziós modellt, amely képes pontszámot rendelni az új autóadatokhoz, és így előre jelezni az árakat.
 
-![Futtatás után a kísérletet most hasonlóan kell kinéznie a][second-experiment-run]
+![Futtatás után a kísérletet most hasonlóan kell kinéznie a](./media/create-experiment/second-experiment-run.png)
 
 ## <a name="predict-new-automobile-prices"></a>Új autó árának előrejelzése
 
@@ -205,21 +205,21 @@ Most, hogy adataink 75 százalékával betanítottuk a modellt, a maradék 25 sz
 
 1. Keresse meg, majd húzza a kísérletvászonra a [Score Model][score-model] (Modell pontozása) modult. Kösse össze a [Train Model][train-model] (Modell betanítása) modul kimenetét a [Score Model][score-model] (Modell pontozása) modul bal oldali bemeneti portjával. Kösse össze a [Split Data][split] (Adatok felosztása) modul tesztelési adatokat tartalmazó kimenetét (jobb oldali portját) a [Score Model][score-model] (Modell pontozása) modul jobb oldali bemeneti portjával.
 
-    ![A "Score Model" modul összekötése a "Train Model" és a "Split Data" modulokkal][connect-score-model]
+    ![A "Score Model" modul összekötése a "Train Model" és a "Split Data" modulokkal](./media/create-experiment/connect-score-model.png)
 
 1. A kísérlet futtatásához és eredményének megtekintéséhez a [Score Model] [ score-model] modul kimeneti portjával kattintva [Score Model] [ score-model] Válasszaki **Megjelenítheti**. A modul megjeleníti az előre jelzett árat, valamint a tesztadatokból ismert tényleges értéket.  
 
-    ![A "Score Model" modul kimenete][score-model-output]
+    ![A "Score Model" modul kimenete](./media/create-experiment/score-model-output.png)
 
 1. Végül teszteljük az eredmény minőségét. Jelölje ki, majd húzza a kísérletvászonra az [Evaluate Model][evaluate-model] (Modell kiértékelése) modult, és kösse össze a [Score Model][score-model] (Modell pontozása) modul kimenetét az [Evaluate Model][evaluate-model] (Modell kiértékelése) bal oldali bemeneti portjával. Az elkészült kísérletnek a következőképpen kell kinéznie:
 
-    ![Az elkészült kísérlet][complete-linear-regression-experiment]
+    ![Az elkészült kísérlet](./media/create-experiment/complete-linear-regression-experiment.png)
 
 1. Futtassa a kísérletet.
 
 Az [Evaluate Model][evaluate-model] (Modell kiértékelése) modul eredményének megtekintéséhez kattintson a kimeneti portra, majd válassza a **Visualize** (Képi megjelenítés) lehetőséget.
 
-![A kísérlet kiértékelésének eredménye][evaluation-results]
+![A kísérlet kiértékelésének eredménye](./media/create-experiment/evaluation-results.png)
 
 A következő statisztikák tekinthetők meg:
 
@@ -241,35 +241,6 @@ Ebben a rövid útmutatóban létrehozott egy egyszerű kísérlet egy minta-ada
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: A Studio prediktív megoldás fejlesztése](tutorial-part1-credit-risk.md)
-
-<!-- Images -->
-[sign-in-to-studio]: ./media/create-experiment/sign-in-to-studio.png
-[rename-experiment]: ./media/create-experiment/rename-experiment.png
-[visualize-auto-data]:./media/create-experiment/visualize-auto-data.png
-[select-visualize]: ./media/create-experiment/select-visualize.png
-[showing-excluded-column]:./media/create-experiment/showing-excluded-column.png
-[set-remove-entire-row]:./media/create-experiment/set-remove-entire-row.png
-[early-experiment-run]:./media/create-experiment/early-experiment-run.png
-[select-columns-to-include]:./media/create-experiment/select-columns-to-include.png
-[second-experiment-run]:./media/create-experiment/second-experiment-run.png
-[connect-score-model]:./media/create-experiment/connect-score-model.png
-[evaluation-results]:./media/create-experiment/evaluation-results.png
-[complete-linear-regression-experiment]:./media/create-experiment/complete-linear-regression-experiment.png
-
-<!-- temporarily switching GIFs to PNGs to remove animation -->
-[type-automobile]:./media/create-experiment/type-automobile.png
-[type-select-columns]:./media/create-experiment/type-select-columns.png
-[launch-column-selector]:./media/create-experiment/launch-column-selector.png
-[add-comment]:./media/create-experiment/add-comment.png
-[connect-clean-to-select]:./media/create-experiment/connect-clean-to-select.png
-
-[set-split-data-percentage]:./media/create-experiment/set-split-data-percentage.png
-
-<!-- temporarily switching GIFs to PNGs to remove animation -->
-[connect-train-model]:./media/create-experiment/connect-train-model.png
-[select-price-column]:./media/create-experiment/select-price-column.png
-
-[score-model-output]:./media/create-experiment/score-model-output.png
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/

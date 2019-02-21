@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 02/19/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 72229a723247d6f0d68341771b073d0626ab2edb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 2ec2ddbac5d0368aaf1b46208c9ebb44bf12a622
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745996"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447310"
 ---
 # <a name="assets"></a>Objektumok
 
@@ -48,8 +48,7 @@ A gyakori munkafolyamatokat a Media Services egyik feltöltése, kódolása és 
 4. A Media Services v3 API-k használatával hozzon létre egy-egy átalakítási és a egy feladatot a "bemeneti" Eszközintelligencia feldolgozásához. További információkért lásd: [átalakítások és feladatok](transform-concept.md).
 5. A Stream a tartalom a "kimeneti" objektum.
 
-> [!TIP]
-> A teljes .NET-példa bemutatja, hogyan: hozható létre az eszköz, írható SAS URL-cím lekérése a storage-tárolóba az eszköz, a fájl feltöltése a tárolóba, a storage, az SAS URL-cím használatával, lásd: [hozzon létre egy feladat bemenete egy helyi fájlból](job-input-from-local-file-how-to.md).
+A teljes .NET-példa bemutatja, hogyan: hozható létre az eszköz, írható SAS URL-cím lekérése a storage-tárolóba az eszköz, a fájl feltöltése a tárolóba, a storage, az SAS URL-cím használatával, lásd: [hozzon létre egy feladat bemenete egy helyi fájlból](job-input-from-local-file-how-to.md).
 
 ### <a name="create-a-new-asset"></a>Új eszköz létrehozása
 

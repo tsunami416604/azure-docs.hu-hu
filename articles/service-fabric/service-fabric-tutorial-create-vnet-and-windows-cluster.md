@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/14/2019
+ms.date: 02/19/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 13d741d97e90b4aca40614d09f67538c479f67e3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 590e1e5853ccf4a525477f194c78f1fd8ce679ed
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312259"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453069"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Windows-alapú Service Fabric-fürt üzembe helyezése Azure virtuális hálózatban
 
@@ -33,6 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * VNET létrehozása a PowerShell használatával
 > * Kulcstartó létrehozása és tanúsítvány feltöltése
+> * Az Azure Active Directory-hitelesítés beállítása
 > * Biztonságos Service Fabric-fürt létrehozása az Azure PowerShellben
 > * A fürt védelme X.509-tanúsítvánnyal
 > * Csatlakozás a fürthöz PowerShell használatával
@@ -155,6 +156,116 @@ Az [azuredeploy.parameters.json][parameters] paraméterfájl számos, a fürt é
 |certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie. </p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Például: „https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346”.</p>|
 |sourceVaultValue||<p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a forrástároló értékét. For example, "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT".</p>|
 
+## <a name="set-up-azure-active-directory-client-authentication"></a>Azure Active Directory-ügyfél-hitelesítés beállítása
+Service Fabric-fürtök az Azure-ban üzemeltetett nyilvános hálózaton üzembe helyezett az ügyfél és a csomópont közötti kölcsönös hitelesítés ajánlás van:
+* Az ügyfelek identitását az Azure Active Directory használata
+* Egy tanúsítványt a kiszolgáló identitását és a http-kommunikációhoz SSL-titkosítás
+
+A Service Fabric-fürt előtt kell elvégezni az ügyfelek hitelesítéséhez az Azure AD beállításához [a fürt létrehozása](#createvaultandcert).  Azure ad-ben alkalmazásokhoz való felhasználói hozzáférés kezelése lehetővé teszi a szervezetek (más néven bérlők). 
+
+Service Fabric-fürt kínál a különböző belépési pontok annak felügyeleti funkciójához, beleértve a webalapú [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) és [Visual Studio](service-fabric-manage-application-in-visual-studio.md). Ennek eredményeképpen hoz létre, ki férhet hozzá a fürt két Azure AD-alkalmazások: egy webalkalmazás és a egy natív alkalmazást.  Az alkalmazások létrehozása után felhasználók hozzárendelése csak olvasható, és rendszergazdai szerepkörök.
+
+> [!NOTE]
+> A következő lépéseket kell elvégeznie, a fürt létrehozása előtt. A parancsfájlok várhatóan a fürt nevét és a végpontok, mert az értékeket meg kell tervezni, és nem az, hogy már létrehozott értékeket.
+
+Ez a cikk feltételezzük, hogy már létrehozott egy bérlőt. Ha nem rendelkezik, először olvassa el [Azure Active Directory-bérlő beszerzése](../active-directory/develop/quickstart-create-new-tenant.md).
+
+Egyes lépéseit az Azure AD konfigurálása a Service Fabric-fürt leegyszerűsítése hoztunk létre egy Windows PowerShell-parancsprogramok halmaza. [Töltse le a parancsfájlok](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) a számítógépre.
+
+### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Az Azure AD-alkalmazások létrehozása és a felhasználók szerepkörökhöz rendelése
+Hozzon létre két Azure AD-alkalmazást a fürthöz való hozzáférés szabályozásához: egy webalkalmazás és a egy natív alkalmazást. Az alkalmazások, amelyek a fürt létrehozását követően rendelje hozzá a felhasználókat, hogy a [szerepkörök a Service Fabric által támogatott](service-fabric-cluster-security-roles.md): csak olvasható és a rendszergazdával.
+
+Futtatás `SetupApplications.ps1`, és meg paraméterekként a bérlő azonosítója, a fürt neve és a webes alkalmazás válasz URL-cím.  Felhasználónevek és jelszavak, a felhasználók számára is megadhatja.  Példa:
+
+```PowerShell
+$Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
+.\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestUser' -Password 'P@ssword!123'
+.\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestAdmin' -Password 'P@ssword!123' -IsAdmin
+```
+
+> [!NOTE]
+> Az országos felhők (például az Azure Government, Azure China esetén az Azure Germany), meg kell adnia a `-Location` paraméter.
+
+Annak a *TenantId*, vagy a címtár-azonosító, az a [az Azure portal](https://portal.azure.com). Válassza ki **Azure Active Directory -> Tulajdonságok** , és másolja a a **címtár-azonosító** értéket.
+
+*ClusterName* az Azure AD-alkalmazások, a parancsfájl által létrehozott előtagot használja. Ez nem pontosan egyeznie kell a tényleges fürt neve. Célja, hogy csak az, hogy egyszerűbb legyen az Azure AD-összetevők leképezése, amelyet éppen használ a Service Fabric-fürthöz.
+
+*WebApplicationReplyUrl* van az alapértelmezett végpont, amely az Azure AD a felhasználóknak ad vissza, miután a bejelentkezés befejezéséhez. Állítsa be ezt a végpontot a Service Fabric Explorert a fürtben, amely alapértelmezés szerint az átemelt:
+
+https://&lt;cluster_domain&gt;:19080/Explorer
+
+Jelentkezzen be az Azure AD-bérlői rendszergazdai jogosultságokkal rendelkező fiók kéri. Miután bejelentkezett, a parancsfájl a webes és natív alkalmazások, amelyek a Service Fabric-fürtöt hoz létre. Ha megtekinti a bérlő alkalmazások a [az Azure portal](https://portal.azure.com), két új bejegyzést kell megjelennie:
+
+   * *ClusterName*\_fürt
+   * *ClusterName*\_ügyfél
+
+A parancsfájl jelenít meg, hogy legyen célszerű hagyja megnyitva a PowerShell-ablakot, hogy a fürt létrehozásakor az Azure Resource Manager-sablon által szükséges JSON-fájl.
+
+```json
+"azureActiveDirectory": {
+  "tenantId":"<guid>",
+  "clusterApplication":"<guid>",
+  "clientApplication":"<guid>"
+},
+```
+
+### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Azure AD használata az ügyfél hozzáférésének az Azure AD-konfiguráció hozzáadása
+Az a [azuredeploy.json][template], konfigurálja az Azure AD-t a **Microsoft.ServiceFabric/clusters** szakaszban.  Paraméterek hozzáadása a bérlő azonosítója, fürt Alkalmazásazonosító és ügyfél-alkalmazás azonosítója.  
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    ...
+
+    "aadTenantId": {
+      "type": "string",
+      "defaultValue": "0e3d2646-78b3-4711-b8be-74a381d9890c"
+    },
+    "aadClusterApplicationId": {
+      "type": "string",
+      "defaultValue": "cb147d34-b0b9-4e77-81d6-420fef0c4180"
+    },
+    "aadClientApplicationId": {
+      "type": "string",
+      "defaultValue": "7a8f3b37-cc40-45cc-9b8f-57b8919ea461"
+    }
+  },
+
+...
+
+{
+  "apiVersion": "2018-02-01",
+  "type": "Microsoft.ServiceFabric/clusters",
+  "name": "[parameters('clusterName')]",
+  ...
+  "properties": {
+    ...
+    "azureActiveDirectory": {
+      "tenantId": "[parameters('aadTenantId')]",
+      "clusterApplication": "[parameters('aadClusterApplicationId')]",
+      "clientApplication": "[parameters('aadClientApplicationId')]"
+    },
+    ...
+  }
+}
+```
+
+Adja hozzá a paraméter értékét a [azuredeploy.parameters.json] [ parameters] paramétereket tartalmazó fájlt.  Példa:
+
+```json
+"aadTenantId": {
+"value": "0e3d2646-78b3-4711-b8be-74a381d9890c"
+},
+"aadClusterApplicationId": {
+"value": "cb147d34-b0b9-4e77-81d6-420fef0c4180"
+},
+"aadClientApplicationId": {
+"value": "7a8f3b37-cc40-45cc-9b8f-57b8919ea461"
+}
+```
+
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>A virtuális hálózat és a fürt üzembe helyezése
@@ -240,6 +351,15 @@ Most már készen áll a biztonságos fürthöz való csatlakozásra.
 
 A **Service Fabric** PowerShell-modul számos parancsmagot biztosít a Service Fabric-fürtök, -alkalmazások és -szolgáltatások kezelésére.  A biztonságos fürthöz való kapcsolódáshoz használja a [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) parancsmagot. A tanúsítvány SHA1 ujjlenyomatával és kapcsolati végpontjával kapcsolatos részletek az előző lépés kimenetében találhatók.
 
+Ha korábban már beállított AAD ügyfél-hitelesítés, futtassa a következőt: 
+```powershell
+Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
+        -KeepAliveIntervalInSec 10 `
+        -AzureActiveDirectory `
+        -ServerCertThumbprint C4C1E541AD512B8065280292A8BA6079C3F26F10
+```
+
+Ha nem állított be AAD ügyfél-hitelesítés, futtassa a következő parancsot:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
@@ -265,6 +385,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * VNET létrehozása a PowerShell használatával
 > * Kulcstartó létrehozása és tanúsítvány feltöltése
+> * Az Azure Active Directory-hitelesítés beállítása
 > * Biztonságos Service Fabric-fürt létrehozása az Azure-ban PowerShell használatával
 > * A fürt védelme X.509-tanúsítvánnyal
 > * Csatlakozás a fürthöz PowerShell használatával

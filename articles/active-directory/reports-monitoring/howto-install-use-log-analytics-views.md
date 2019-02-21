@@ -1,6 +1,6 @@
 ---
-title: Telepítése és a Log Analytics-nézetek használata az Azure Active Directory (előzetes verzió) |} A Microsoft Docs
-description: Ismerje meg, hogyan telepítheti és használhatja a Log Analytics-nézetek az Azure Active Directory (előzetes verzió)
+title: Telepítse, és a log analytics-nézetek használata az Azure Active Directory (előzetes verzió) |} A Microsoft Docs
+description: Ismerje meg, hogyan telepítheti és használhatja a log analytics nézetei az Azure Active Directory (előzetes verzió)
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -17,37 +17,37 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de2aa262dff54f2b8e535aa646e9a8cac7719567
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7220fc6b239d20e9f1fc81e7d18b4d7ca6f0ded5
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165263"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453630"
 ---
-# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Telepítése és a Log Analytics-nézetek használata az Azure Active Directory
+# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Telepítése és a log analytics-nézetek használata az Azure Active Directory
 
-Az Azure Active Directory Log Analytics-nézetek segítségével elemezheti és keresés az Azure AD-Tevékenységnaplók az Azure AD-bérlőben. Azure AD-tevékenység a naplófájlokban:
+A Azure Active Directory log analytics nézetei segít elemez, és keresse az Azure AD-Tevékenységnaplók az Azure AD-bérlőben. Azure AD-tevékenység a naplófájlokban:
 
 * Naplófájlok: A [naplók Tevékenységjelentés](concept-audit-logs.md) teszi elérhetővé a bérlőben végrehajtott minden tevékenység előzményeit.
 * Bejelentkezési naplók: Az a [bejelentkezési tevékenységek jelentésének](concept-sign-ins.md), megadhatja, hogy ki hajtotta végre a jelentett feladatokat, a naplók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Log Analytics-nézetek használatához az alábbiak szükségesek:
+A log analytics nézetek használatához az alábbiak szükségesek:
 
 * Az Azure-előfizetés a Log Analytics-munkaterületet. Ismerje meg, hogyan [hozzon létre egy Log Analytics-munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 * Először a lépéseket követve [útvonal az Azure AD-Tevékenységnaplók Log Analytics-munkaterület az](howto-integrate-activity-logs-with-log-analytics.md).
 * Töltse le a nézeteket az [GitHub-adattár](https://aka.ms/AADLogAnalyticsviews) a helyi számítógépen.
 
-## <a name="install-the-log-analytics-views"></a>Telepítse a Log Analytics nézetei
+## <a name="install-the-log-analytics-views"></a>Telepítse a log analytics nézetei
 
-1. Keresse meg a Log Analytics-munkaterületre. Ehhez először keresse meg a [az Azure portal](https://portal.azure.com) válassza **minden szolgáltatás**. Típus **Log Analytics** a szövegmezőbe, és válassza a **Log Analytics**. Válassza ki a munkaterületet, akkor irányítja a tevékenységnaplókat, az Előfeltételek részeként.
+1. Keresse meg a Log Analytics-munkaterületre. Ehhez először keresse meg a [az Azure portal](https://portal.azure.com) válassza **minden szolgáltatás**. Típus **Log Analytics** a szövegmezőbe, és válassza a **Log Analytics-munkaterületek**. Válassza ki a munkaterületet, akkor irányítja a tevékenységnaplókat, az Előfeltételek részeként.
 2. Válassza ki **adatforrásnézet-tervezőből**, jelölje be **importálása** majd **fájl kiválasztása** a nézetek importálhatja a helyi számítógépről.
 3. Válassza ki az előfeltételeket, és válassza ki a letöltött nézeteket **mentése** az Importálás gombra. Tegye meg a **Azure AD-fiók kiépítési események** nézet és a **bejelentkezési események** megtekintése.
 
 ## <a name="use-the-views"></a>A nézetek használata
 
-1. Keresse meg a Log Analytics-munkaterületre. Ehhez először keresse meg a [az Azure portal](https://portal.azure.com) válassza **minden szolgáltatás**. Típus **Log Analytics** a szövegmezőbe, és válassza a **Log Analytics**. Válassza ki a munkaterületet, akkor irányítja a tevékenységnaplókat, az Előfeltételek részeként.
+1. Keresse meg a Log Analytics-munkaterületre. Ehhez először keresse meg a [az Azure portal](https://portal.azure.com) válassza **minden szolgáltatás**. Típus **Log Analytics** a szövegmezőbe, és válassza a **Log Analytics-munkaterületek**. Válassza ki a munkaterületet, akkor irányítja a tevékenységnaplókat, az Előfeltételek részeként.
 
 2. Ha egyszer már megkapta a munkaterületen, válassza ki a **munkaterület összefoglalás**. Az alábbi három nézet kell megjelennie:
 
@@ -73,5 +73,5 @@ A Log Analytics-nézetek használatához az alábbiak szükségesek:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tevékenység elemzése a Log Analytics-naplók](howto-analyze-activity-logs-log-analytics.md)
-* [Ismerkedés a Log Analytics használatával az Azure Portalon](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)
+* [Tevékenységnaplók az Azure Monitor-naplók elemzése](howto-analyze-activity-logs-log-analytics.md)
+* [Ismerkedés az Azure Monitor-naplók az Azure Portalon](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)

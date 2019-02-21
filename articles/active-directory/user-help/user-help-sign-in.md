@@ -12,19 +12,20 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d95f7eb971f7da229c7d66d586598697ab0a2d8b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2aca321ac0902d115f4fc7622992d29183c1d35c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209395"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452595"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Jelentkezzen be a kétlépéses ellenőrzés vagy a biztonsági adatok
-
 Miután beállította a kétlépéses ellenőrzés vagy a biztonsági adatok fogja jelentkezzen be a fiók a megadott hitelesítési módszerrel.
 
 >[!Note]
->Ha továbbra is használja a kétlépéses ellenőrzés élményt, kell állítsa be a hitelesítési módszereket a utasításait a [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md) cikk. Ha a rendszergazda bekapcsolta a biztonsági adatok élményt, meg kell beállítani a hitelesítési módszereket, ezek a részletes útmutatók segítségével:<ul><li>[Hitelesítési alkalmazást használhat a biztonsági adatok beállítása](security-info-setup-auth-app.md)</li><li>[A biztonsági adatok szöveges üzenetben történő hitelesítésének beállítása](security-info-setup-text-msg.md)</li><li>[Telefonhívás használandó biztonsági adatainak beállítása](security-info-setup-phone-number.md)</li></ul>
+>Ha továbbra is használja a kétlépéses ellenőrzés élményt, kell állítsa be a hitelesítési módszereket a utasításait a [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md) cikk.
+
+>Ha a rendszergazda a biztonsági adatok élmény van kapcsolva, meg kell beállítani a hitelesítési módszerek használatával a következő részletes cikkeket:<ul><li>[Hitelesítési alkalmazást használhat a biztonsági adatok beállítása](security-info-setup-auth-app.md)</li><li>[A biztonsági adatok szöveges üzenetben történő hitelesítésének beállítása](security-info-setup-text-msg.md)</li><li>[Telefonhívás használandó biztonsági adatainak beállítása](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Jelentkezzen be az authenticator alkalmazás értesítés a mobileszközén
 
@@ -55,9 +56,6 @@ Miután beállította a kétlépéses ellenőrzés vagy a biztonsági adatok fog
 
 
 ## <a name="next-steps"></a>További lépések
-
-- Hozzáadásához vagy módosításához az ellenőrzési módszerek sorát a biztonsági adatok módosítása a [a biztonsági adatok kezelése](security-info-manage-settings.md) cikk. 
-
 - Ismerje meg a biztonsági adatok a [Security info (előzetes verzió) – áttekintés](user-help-security-info-overview.md) cikk.
 
 - További tudnivalók a kétlépéses ellenőrzést a [kétlépéses ellenőrzési áttekintése](user-help-two-step-verification-overview.md) cikk. 

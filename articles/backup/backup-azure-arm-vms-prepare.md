@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 0f522897f3d3b3261045f1c14387af53ebf4ad9d
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: e782afb971f95a654119d9817edeef02642bee9e
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429587"
+ms.locfileid: "56447565"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure virtuális gépek biztonsági mentése Recovery Services-tárolóban
 
@@ -108,7 +108,7 @@ Ha nem rendelkezik a system fiók proxy, egyet az alábbiak szerint állíthatja
 1. Töltse le [PsExec](https://technet.microsoft.com/sysinternals/bb897553).
 
 2. Futtatás **PsExec.exe -i -s cmd.exe** a parancssor a rendszerfiók alatt való futtatásához.
-3. A böngészőben a rendszerkörnyezetben fut. Példa: **ProgramFiles%\Internet Explorer\iexplore.exe** az Internet Explorerben.  
+3. A böngészőben a rendszerkörnyezetben fut. Például: **%PROGRAMFILES%\Internet Explorer\iexplore.exe** az Internet Explorerben.  
 4. A proxy-beállítások megadása.
     - Linuxos gépeken:
         - Adja hozzá a sort, hogy a **/etc/környezet** fájlt:
@@ -117,7 +117,7 @@ Ha nem rendelkezik a system fiók proxy, egyet az alábbiak szerint állíthatja
             - **HttpProxy.Host=proxy IP address**
             - **HttpProxy.Port=proxy port**
     - Windows gépeken, a böngésző beállításait adja meg, hogy egy proxyt kell használni. Ha proxyt a felhasználói fiók jelenleg használ, ez a szkript használatával alkalmazza a beállítást, a fiók szintjén.
-        ```
+        ```powershell
        $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
        Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
        Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
@@ -145,7 +145,7 @@ Az NSG-t a **Elégtelen-zárolási**, bármely internetes címre a 80-as (HTTP) 
 - A következő PowerShell-parancsfájl egy példát biztosít forgalom engedélyezéséhez.
 - Ne hagyja a nyilvános internet-címeire irányuló kimenő, adjon meg egy IP-címtartomány (-DestinationPortRange), vagy használja a storage.region szolgáltatáscímke.   
 
-    ```
+    ```powershell
     Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
     Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
     ```
@@ -237,7 +237,7 @@ Az előfizetésben található virtuális gépek felderítéséhez és a biztons
 
 Biztonsági mentés engedélyezése után:
 
-- Egy kezdeti biztonsági mentést a biztonsági mentés ütemezése szerint fut.
+- Egy kezdeti biztonsági mentés a biztonsági mentés ütemezése szerint fut.
 - A Backup szolgáltatás telepíti a biztonsági mentési bővítményt, a virtuális gép fut-e.
     - Egy futó virtuális gép adja a legnagyobb esélyt egy alkalmazással konzisztens helyreállítási pont létrehozásának.
     -  Azonban a virtuális gép biztonsági másolat még akkor is, ha ki van kapcsolva, és a bővítményt nem lehet telepíteni. Ez az úgynevezett *offline virtuális gép*. Ebben az esetben a helyreállítási pont az *összeomláshoz igazodik* lesz.

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 40cb4b7969ec2272936d1361be8183db84f944d8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244298"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455058"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Studio-modellek és webszolgáltatás-végpontok létrehozása egy kísérletből a PowerShell használatával
 
@@ -25,9 +25,9 @@ Például tegyük fel, a saját egy globális uci kerékpárkölcsönzési névh
 
 A modell egyszer az összes adatkészlet egyesített verziót használ, az összes hely között lehetett betanításához. De a helyek mindegyike rendelkezik egy egyedi környezetben. Így jobb módszer lehet a külön-külön mindegyik helyen a az adatkészlet használatával regressziós modell betanításához. Ezzel a módszerrel minden betanított modell sikerült vegye figyelembe a különböző tároló méretek, kötet, földrajzi hely, population, kerékpár-barát forgalom környezet és egyéb.
 
-Amely lehet, hogy a legjobb módszer, de nem kívánja 1000 képzési kísérletek létrehozása az Azure Machine Learning mindegyike egy egyedi helyet jelölő. Amellett, hogy egy eleve bonyolult feladatnak, is úgy tűnik, nem hatékony, mivel minden kísérlet ugyanazokat a betanítási adatkészletet kivételével összetevők lenne.
+Amely lehet, hogy a legjobb módszer, de nem kívánja 1000 képzési kísérletek létrehozása az Azure Machine Learning Studio egyes egy egyedi helyet jelölő. Amellett, hogy egy eleve bonyolult feladatnak, is úgy tűnik, nem hatékony, mivel minden kísérlet ugyanazokat a betanítási adatkészletet kivételével összetevők lenne.
 
-Szerencsére a azt ennek segítségével végezheti a [Azure Machine Learning átképezési API](retrain-models-programmatically.md) és automatizálja a feladat [Azure Machine Learning PowerShell](powershell-module.md).
+Szerencsére, ennek segítségével végezheti a [Azure Machine Learning Studio átképezési API](retrain-models-programmatically.md) és automatizálja a feladat [Azure Machine Learning Studio PowerShell](powershell-module.md).
 
 > [!NOTE]
 > Ahhoz, hogy a minta gyorsabban futnak, a helyek való 1000 10 számának csökkentése. Azonban ugyanazon alapelveket és eljárásokat a alkalmazni 1000 helyekre. Azonban ha szeretné, hogy 1000 adatkészletekből származó betanításához célszerű párhuzamos az alábbi PowerShell-parancsfájlok futtatásához. Hogyan valósítható meg ez a cikk nem foglalkozik, de annak PowerShell példái többszálas az interneten.  

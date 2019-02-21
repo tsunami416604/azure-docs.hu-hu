@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: c3a737bdd9978e6cb02e3e8b7a34407eb1dd8fb6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: fd301967800f67d95c12f1689981b2dfd8eb2d80
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381026"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452763"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) az alkalmazások tárolási lehetőségeket
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja az alapfogalmakat, amelyek az aks-ben az alkalmazások táro
 
 ## <a name="volumes"></a>Kötetek
 
-Alkalmazások gyakran kell tudni adatok tárolására és lekérésére. Kubernetes általában rövid élettartamú, rendelkezésre álló erőforrások egyedi podok kezeli, ahogy a többféle alkalmazásokhoz használható, és szükség szerint adatok megőrzésére. A *kötet* jelenti oly módon való tárolása, lekérése és adatmegőrzésre podok és az alkalmazás-életciklus során.
+Alkalmazások gyakran kell tudni adatok tárolására és lekérésére. Kubernetes általában rövid élettartamú, rendelkezésre álló erőforrások egyedi podok kezeli, ahogy alkalmazásokhoz használhatja, és szükség szerint adatmegőrzésre többféle érhetők el. A *kötet* jelenti oly módon való tárolása, lekérése és adatmegőrzésre podok és az alkalmazás-életciklus során.
 
 Hagyományos kötetek adatok tárolására és lekérésére, az Azure Storage-alapú Kubernetes-erőforrások jönnek létre. Manuálisan hozzá kell rendelni podok közvetlenül ezen adatok köteteket hozhat létre, vagy rendelkezik a Kubernetes automatikusan létrehozza. Ezek az adatkötetek az Azure-lemezek vagy az Azure Files használhatja:
 
@@ -44,7 +44,7 @@ Kubernetes, a köteteket hozhat létre több, mint egy hagyományos lemez ahol i
 
 ## <a name="persistent-volumes"></a>Tartós kötet
 
-Kötetek meghatározva és létrehozni, mert a pod életciklusának csak léteznek, amíg nem törlik a pod. Podok gyakran várható maradnia, ha egy pod átütemezése egy másik gazdagépre a karbantartási események, különösen a StatefulSets táraknak. A *tartós kötet* (PV) egy olyan tárolási erőforrás, hozza létre és felügyeli a Kubernetes API-t, amely egy egyéni pod élettartama nem létezhet.
+Köteteket, és határozza meg a pod életciklusának létrehozott csak léteznek a pod törléséig. Podok gyakran várható maradnia, ha egy pod átütemezése egy másik gazdagépre a karbantartási események, különösen a StatefulSets táraknak. A *tartós kötet* (PV) egy olyan tárolási erőforrás, hozza létre és felügyeli a Kubernetes API-t, amely egy egyéni pod élettartama nem létezhet.
 
 Adja meg a PersistentVolume Azure-lemezek vagy fájlok használhatók. A kötetek az előző szakaszban feljegyzett a választás a fájlok és lemezek gyakran határozza meg az adatokat, vagy a teljesítményszint való egyidejű hozzáférés szükséges.
 

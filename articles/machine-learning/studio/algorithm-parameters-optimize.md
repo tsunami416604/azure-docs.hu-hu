@@ -10,20 +10,20 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0f324dec9349b44252a85b2f9334a1b6d847faae
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 870345148b55bc6026202fbd433d8575e421faba
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247136"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456010"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Válassza ki az Azure Machine Learning Studióban az algoritmusok optimalizálása paraméterekkel
 
-A témakör az megfelelő hiperparaméter beállítása az Azure Machine Learning algoritmus kiválasztása. A legtöbb gépi tanulási algoritmusok meg a paraméterek beállításához. Amikor egy modell betanításához e paraméterek értékének megadására van szükség. A betanított modell hatékonyságát a modell paraméterek, választott függ. Az optimális paraméterek készletét folyamata más néven *kijelölés modell*.
+Ez a témakör ismerteti a megfelelő hiperparaméter állítsa be az Azure Machine Learning Studióban az algoritmusok kiválasztása. A legtöbb gépi tanulási algoritmusok meg a paraméterek beállításához. Amikor egy modell betanításához e paraméterek értékének megadására van szükség. A betanított modell hatékonyságát a modell paraméterek, választott függ. Az optimális paraméterek készletét folyamata más néven *kijelölés modell*.
 
 
 
-Különböző módon modellezheti kiválasztása. A gépi tanulásban a kereszt-ellenőrzés a leggyakrabban használt módszerek egyikét a modell kiválasztása, és azt az alapértelmezett modell kijelölés mechanizmus az Azure Machine Learning. Mivel az Azure Machine Learning R- és Python támogatja, mindig is alkalmazható a saját modell kijelölés mechanizmusok R vagy Python.
+Különböző módon modellezheti kiválasztása. A gépi tanulásban a kereszt-ellenőrzés a leggyakrabban használt módszerek egyikét a modell kiválasztása, és azt az alapértelmezett modell kijelölés mechanizmus az Azure Machine Learning Studióban. Mivel az Azure Machine Learning Studio támogatja az R- és Python, mindig is alkalmazható a saját modell kijelölés mechanizmusok R vagy Python.
 
 A legjobb paraméterkészletet keresése folyamatban négy lépésben történik:
 
@@ -32,7 +32,7 @@ A legjobb paraméterkészletet keresése folyamatban négy lépésben történik
 3. **A mérőszám meghatározása**: Döntse el, milyen metrikát alkalmasak a legjobb paraméterkészlet, mint a pontossága, root mean-készlet négyzet hiba, a pontosság, a visszaírási vagy az f-pontszám.
 4. **Betanítását, kiértékelheti és hasonlítsa össze**: Minden egyéni kombinációja paraméter értékét, a kereszt-ellenőrzési által végzett és a határoz meg hiba-metrika alapján. Értékelés és összehasonlítása, után kiválaszthatja a legjobban teljesítő modell.
 
-Az alábbi ábrán látható, hogy ez elérhető az Azure Machine Learning.
+Az alábbi ábrán látható, hogy ez elérhető az Azure Machine Learning Studióban.
 
 ![A legjobb paraméterkészletet keresése](./media/algorithm-parameters-optimize/fig1.png)
 

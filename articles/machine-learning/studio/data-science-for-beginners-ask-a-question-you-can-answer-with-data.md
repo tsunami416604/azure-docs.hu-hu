@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/03/2018
-ms.openlocfilehash: bddb97083bd1d1538b9f60ec3c0798cf1e964b1e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 7134a22532622d7de25a23897f83dc453d8a4344
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498148"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454055"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Adatokkal megválaszolható kérdések megfogalmazása
 ## <a name="video-3-data-science-for-beginners-series"></a>3. Videó: Adatelemzés kezdőknek sorozat
@@ -89,7 +89,7 @@ De, legfontosabb kérje meg, hogy éles kérdést: – a kérdést, hogy meg tud
 
 Beszéltünk alapelveivel kérdéseket tehet fel az adatok a válasz.
 
-Mindenképpen tekintse meg a "Data Science a kezdők" a Microsoft Azure Machine Learning más videókat.
+Mindenképpen tekintse meg a "Data Science a kezdők" a Microsoft Azure Machine Learning Studio más videókat.
 
 ## <a name="next-steps"></a>További lépések
 * [Egy első adatelemzési kísérlet a Machine Learning Studio kipróbálása](create-experiment.md)

@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 4af7af6616b5415cd13abacd6aca13bd412d4ad8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4a05b99cf0e40e63c01aee27bd745dd165dc23b8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998083"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452695"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Az Azure Machine Learning Studio webszolgáltatás használata
 
-Miután telepít egy Azure Machine Learning prediktív modellt webszolgáltatásként, egy REST API segítségével küldje el az adatokat és kaphatnak előjelzéseket. Elküldheti az adatok valós idejű és kötegelt módban.
+Miután telepít egy Azure Machine Learning Studio prediktív modellt webszolgáltatásként, egy REST API segítségével küldje el az adatokat és kaphatnak előjelzéseket. Elküldheti az adatok valós idejű és kötegelt módban.
 
 További információ az hozhat létre és telepíthet egy Machine Learning Web service, a Machine Learning Studio IDE használatával találja meg:
 
@@ -32,14 +32,14 @@ További információ az hozhat létre és telepíthet egy Machine Learning Web 
 ## <a name="overview"></a>Áttekintés
 Az Azure Machine Learning Web Service egy külső alkalmazás a Machine Learning munkafolyamatának pontozási modelljével valós időben kommunikál. A Machine Learning webszolgáltatás-hívások visszaadják az előrejelzés eredményét a külső alkalmazásnak. Ahhoz, hogy egy Machine Learning webszolgáltatás felé irányuló hívások, amikor telepít egy előrejelzési API-kulcs adja át. A Machine Learning webszolgáltatás a webprogramozási projektekben népszerű architektúra választott REST alapul.
 
-Az Azure Machine Learning két különböző típusú szolgáltatást tud biztosítani:
+Az Azure Machine Learning Studio services két típusa van:
 
 * Kérés-válasz szolgáltatás (RRS) – egy alacsony késleltetésű, nagy mértékben skálázható szolgáltatás, amely a létrehozott és üzembe helyezett állapot nélküli modellekhez felületet biztosít a Machine Learning Studio.
 * Kötegelt végrehajtási szolgáltatás (BES) –-aszinkron szolgáltatás, amely adatrekordok pontozza.
 
 Machine Learning webszolgáltatásokkal kapcsolatos további információkért lásd: [egy Machine Learning Web Service szolgáltatásának telepítése](publish-a-machine-learning-web-service.md).
 
-## <a name="get-an-azure-machine-learning-authorization-key"></a>Az Azure Machine Learning hitelesítési kulcs beszerzése
+## <a name="get-an-azure-machine-learning-studio-authorization-key"></a>Az Azure Machine Learning Studio hitelesítési kulcs beszerzése
 A kísérlet során történő telepítésekor a webszolgáltatás API-kulcsok jönnek létre. A kulcsok több helyről lehet lekérdezni.
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>A Microsoft Azure Machine Learning Web Services portálon
@@ -103,7 +103,7 @@ Csatlakozás egy Machine Learning Web Service a **Microsoft.AspNet.WebApi.Client
 **A mintakód futtatásához**
 
 1. Közzététele "1 mintát: Töltse le a dataset igénybecslést Szemlélteti: Felnőtt tartalom 2 osztály adatkészlet"kísérlet, a Machine Learning minta gyűjtemény része.
-2. Rendelje hozzá a kulccsal apikey tulajdonsággal végzett tesztelése egy webszolgáltatásból. Lásd: **Azure Machine Learning hitelesítési kulcs beszerzése** felett.
+2. Rendelje hozzá a kulccsal apikey tulajdonsággal végzett tesztelése egy webszolgáltatásból. Lásd: **Azure Machine Learning Studio hitelesítési kulcs beszerzése** felett.
 3. Rendelje hozzá a kérelem URI-azonosítójú serviceUri.
 
 **Íme egy teljes kérést fog kinézni.**
@@ -199,7 +199,7 @@ A Machine Learning webszolgáltatás csatlakozni, használja a **urllib2** kódt
 **A mintakód futtatásához**
 
 1. Üzembe helyezése "1 mintát: Töltse le a dataset igénybecslést Szemlélteti: Felnőtt tartalom 2 osztály adatkészlet"kísérlet, a Machine Learning minta gyűjtemény része.
-2. Rendelje hozzá a kulccsal apikey tulajdonsággal végzett tesztelése egy webszolgáltatásból. Tekintse meg a **Azure Machine Learning hitelesítési kulcs beszerzése** mellékmondatokat című szakaszát.
+2. Rendelje hozzá a kulccsal apikey tulajdonsággal végzett tesztelése egy webszolgáltatásból. Tekintse meg a **Azure Machine Learning Studio hitelesítési kulcs beszerzése** mellékmondatokat című szakaszát.
 3. Rendelje hozzá a kérelem URI-azonosítójú serviceUri.
 
 **Íme egy teljes kérést fog kinézni.**

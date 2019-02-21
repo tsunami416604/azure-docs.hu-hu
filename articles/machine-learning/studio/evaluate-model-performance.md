@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b663177a07446b888bc7bf9e919bf180458d36bc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e5c85451ca48aab8f980b89de41ebf40f1f97ff3
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487008"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453953"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Hogyan modellek teljesítményének kiértékelése az Azure Machine Learning Studióban
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan lehet egy modellt az Azure Machine Learning Studiób
 
 Modellek teljesítményének kiértékelése az egyik fő szakaszai az adatelemzési folyamat. Ez azt jelzi, hogy hogyan sikeres adatkészlet pontozási (előrejelzés) lett egy betanított modell. 
 
-Modell értékelése keresztül két a fő machine learning-modulok az Azure Machine Learning támogatja: [Modell értékelése] [ evaluate-model] és [Halmazokra modell][cross-validate-model]. Ezek a modulok lehetővé teszik, láthatja, hogyan hajtja végre a modell szempontjából a gépi tanulás és statisztikai gyakran használt mérőszámokat.
+Az Azure Machine Learning Studióban modell értékelése két a fő machine learning-modulok keresztül támogatja: [Modell értékelése] [ evaluate-model] és [Halmazokra modell][cross-validate-model]. Ezek a modulok lehetővé teszik, láthatja, hogyan hajtja végre a modell szempontjából a gépi tanulás és statisztikai gyakran használt mérőszámokat.
 
 ## <a name="evaluation-vs-cross-validation"></a>Értékelés vs. Keresztellenőrzés
 Kiértékelési és a keresztellenőrzési a modell a teljesítmény méréséhez szokásos módon. Értékelési mérőszámok, vizsgálja meg, vagy más modellek az összehasonlításhoz mindkettő létre.
@@ -83,7 +83,7 @@ Miután a kísérletet, vizsgálhatja meg a kiértékelési eredményeket kattin
 4. ábra Kereszt-ellenőrzési eredmények a regressziós modell.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Egy bináris osztályozási modell értékelése
-A bináris osztályozási forgatókönyvekben a célváltozó rendelkezik csak két lehetséges kimenetek, például: {0, 1} vagy {FALSE (hamis), true}, {negatív, pozitív}. Tegyük fel, kapnak egy adatkészlet néhány felnőtt az alkalmazottak demográfiai és alkalmazási változók és, hogy a rendszer felkéri a bevétel szintjét, azokra az értékekre bináris változó előrejelzése {"< = 50 K", "> 50 K"}. Más szóval a negatív osztály jelöli a személyeket, akik győződjön meg, legfeljebb 50 k évenként, és a pozitív osztály minden alkalmazott jelöli. Hasonlóan a regressziós a forgatókönyvben azt lenne a modell betanítását, bizonyos adatok pontozása és eredmények értékelése. A fő különbség az, a kiválasztott metrikák kiszámítja az Azure Machine Learning és a kimeneti. A bevétel szintű előrejelzési forgatókönyvet mutatja be, ezzel a [felnőtt](http://archive.ics.uci.edu/ml/datasets/Adult) adathalmazt, amelyek az Azure Machine Learning-kísérlet létrehozása és a egy két osztályú logisztikai regressziós modell, egy gyakran használt bináris teljesítményének kiértékelése besorolás.
+A bináris osztályozási forgatókönyvekben a célváltozó rendelkezik csak két lehetséges kimenetek, például: {0, 1} vagy {FALSE (hamis), true}, {negatív, pozitív}. Tegyük fel, kapnak egy adatkészlet néhány felnőtt az alkalmazottak demográfiai és alkalmazási változók és, hogy a rendszer felkéri a bevétel szintjét, azokra az értékekre bináris változó előrejelzése {"< = 50 K", "> 50 K"}. Más szóval a negatív osztály jelöli a személyeket, akik győződjön meg, legfeljebb 50 k évenként, és a pozitív osztály minden alkalmazott jelöli. Hasonlóan a regressziós a forgatókönyvben azt lenne a modell betanítását, bizonyos adatok pontozása és eredmények értékelése. A fő különbség az, kiszámítja az Azure Machine Learning Studio metrikák és kimenetek kiválasztása. A bevétel szintű előrejelzési forgatókönyvet mutatja be, ezzel a [felnőtt](http://archive.ics.uci.edu/ml/datasets/Adult) adatkészlet Studio kísérlet létrehozása és a egy két osztályú logisztikai regressziós modell, egy gyakran használt bináris osztályozó teljesítményének értékeléséhez.
 
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
 Az Azure Machine Learning Studio-munkaterülethez adja hozzá a következő modulok:
@@ -103,9 +103,9 @@ Csatlakozás a portokat, 5. ábra az alábbiak szerint, és állítsa be a címk
 ### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
 Miután a kísérletet, kattintson a kimeneti portjára, a a [Evaluate Model] [ evaluate-model] modul, és válassza ki *Visualize* megtekintéséhez a kiértékelésének eredménye (7. ábra). A bináris osztályozási modell érhető el értékelési mérőszámok a következők: *Pontosság*, *pontosság*, *visszahívása*, *F1 pontszám*, és *AUC*. Emellett a modul adja vissza egy keveredési mátrixot azokról a valódi pozitívok, a téves negatív, a vakriasztások és a true negatív, valamint *ROC*, *pontosság/visszaírási*, és  *Átemelés* görbék.
 
-Pontosság egyszerűen az időarány, amíg megfelelően osztályozott példány. Ez általában a megtekinti egy osztályozó kiértékelésekor a első metrikát. Azonban, ha a Tesztadatok van kiegyensúlyozatlan (ahol a példányok a legtöbb tartozik az osztályok egyikét), vagy több érdekli az osztályok egyikét a teljesítmény, a pontosság nem igazán rögzíti egy osztályozó hatékonyságát. Bevétel szintű besorolási esetben néhány adatot, ahol a 99 %-a-példányok legfeljebb 50 k évenként megszerzésére személyek képviselik a tesztelt feltételezik. Lehetséges egy 0.99 pontosság alapján az osztály eléréséhez "< = 50K" minden példány esetében. Az osztályozó által igénybe vett ebben az esetben lehet előkészítésétől általános jó feladat jelenik meg, de a valóságban ez nem sikerül megfelelően besorolni bármelyik nagyjövedelmű felhasználók (1 %).
+Pontosság egyszerűen az időarány, amíg megfelelően osztályozott példány. Ez általában a megtekinti egy osztályozó kiértékelésekor a első metrikát. Azonban, ha a Tesztadatok van kiegyensúlyozatlan (ahol a példányok a legtöbb tartozik az osztályok egyikét), vagy több érdekli az osztályok egyikét a teljesítmény, a pontosság nem igazán rögzíti egy osztályozó hatékonyságát. Bevétel szintű besorolási esetben néhány adatot, ahol a 99 %-a-példányok legfeljebb 50 k évenként megszerzésére személyek képviselik a tesztelt feltételezik. Lehetséges egy 0.99 pontosság alapján az osztály eléréséhez "< = 50K" minden példány esetében. Az osztályozó által igénybe vett ebben az esetben lehet előkészítésétől általános jó feladat jelenik meg, de a valóságban ez nem sikerül besorolása bármelyik nagyjövedelmű felhasználók (1 %) megfelelően.
 
-Éppen ezért hasznos lehet a további metrikákat, a kiértékelés pontosabb aspektusait rögzítő számítási. Való elhelyezés előtt ilyen metrikák részleteit, fontos tudni, hogy a keveredési mátrix egy bináris osztályozási kiértékelési. Az osztály a gyakorlókészlethez feliratokat csak 2 lehetséges értékeket, amelyek általában nevezzük hajthatja végre, pozitív vagy negatív. A pozitív és negatív példányok, amely besorolás képes megfelelően nevezzük valódi pozitívok (TP), és IGAZ negatív (TN), illetve. Hasonlóképpen a hibásan besorolt példányok vakriasztások (pi) és a téves negatív (FN) nevezzük. A keveredési mátrix egyszerűen, amelyek minden ilyen 4 példányok megjelenítő táblázat. Az Azure Machine Learning automatikusan úgy dönt, hogy a két osztály az adatkészletben lévő Ez az a pozitív osztály. Ha az osztály címkék logikai érték, vagy az egész számok, majd a "true" vagy "1" címkével ellátott példányt rendel a pozitív osztály. Ha a címkék olyan karakterláncok, a bevétel adatkészlet is, a címkék betűrendben találhatók, és az első szinten van kiválasztva a negatív osztályt kell, míg a második szinthez a pozitív osztály.
+Éppen ezért hasznos lehet a további metrikákat, a kiértékelés pontosabb aspektusait rögzítő számítási. Való elhelyezés előtt ilyen metrikák részleteit, fontos tudni, hogy a keveredési mátrix egy bináris osztályozási kiértékelési. Az osztály a gyakorlókészlethez feliratokat csak 2 lehetséges értékeket, amelyek általában nevezzük hajthatja végre, pozitív vagy negatív. A pozitív és negatív példányok, amely besorolás képes megfelelően nevezzük valódi pozitívok (TP), és IGAZ negatív (TN), illetve. Hasonlóképpen a hibásan besorolt példányok vakriasztások (pi) és a téves negatív (FN) nevezzük. A keveredési mátrix egyszerűen, amelyek minden ilyen 4 példányok megjelenítő táblázat. Az Azure Machine Learning Studio automatikusan úgy dönt, hogy a két osztály az adatkészletben lévő Ez az a pozitív osztály. Ha az osztály címkék logikai érték, vagy az egész számok, majd a "true" vagy "1" címkével ellátott példányt rendel a pozitív osztály. Ha a címkék olyan karakterláncok, a bevétel adatkészlet is, a címkék betűrendben találhatók, és az első szinten van kiválasztva a negatív osztályt kell, míg a második szinthez a pozitív osztály.
 
 ![Bináris osztályozás keveredési mátrix](./media/evaluate-model-performance/6a.png)
 

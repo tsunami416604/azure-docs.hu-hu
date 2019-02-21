@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 72a5946aa5b27d1c4d4bb2beaebde67d3e7a0f32
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: e2b9d380b5e164bb8b730ec7037a6b2836c2af85
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328163"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447361"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -33,7 +33,7 @@ A hagyományos biztonsági mentési megoldások úgy fejlődtek, hogy a felhőt 
 
 * A helyileg redundáns tárolás (LRS) háromszor replikálja az adatokat (az adatok három másolatát hozza létre) egy adatközpontban lévő tárolóskálázási egységben. Az adatok összes másolata ugyanabban a régióban található. Az LRS egy alacsony költségű megoldás az adatok védelmére a helyi hardveres hibák esetén.
 
-* Az alapértelmezett és ajánlott replikációs lehetőség a georedundáns tárolás (GRS). A GRS az adatait egy másodlagos régióba replikálja (több száz kilométerre a forrásadatok elsődleges helyétől). A GRS módszer költségesebb, mint az LRS, de adatainak megőrzését magasabb szinten biztosítja, még regionális szolgáltatáskiesés esetére is.
+* Az alapértelmezett és ajánlott replikációs lehetőség a georedundáns tárolás (GRS). GRS replikálja az adatokat egy másodlagos régióba, amely [Azure párosított régióiról](../best-practices-availability-paired-regions.md) (több száz mérfölddel távolabb a forrásadatok elsődleges helyétől). A GRS módszer költségesebb, mint az LRS, de adatainak megőrzését magasabb szinten biztosítja, még regionális szolgáltatáskiesés esetére is.
 
 **Korlátlan adatátvitel** – Az Azure Backup nem korlátozza a bejövő vagy kimenő adatok mennyiségét. Az Azure Backup nem számol fel díjat sem az átvitt adatokért. Azonban, ha nagy mennyiségű adat importálására az Azure Import/Export szolgáltatást használja, a bejövő adatoknak van bizonyos költségvonzatuk. Ennek költségére vonatkozóan [az offline biztonsági mentésnek az Azure Backup szolgáltatásban alkalmazott munkafolyamatát](backup-azure-backup-import-export.md) ismertető cikkben talál bővebb információt. Kimenő adatokon a Recovery Services-tárolóból a visszaállítási művelet során átvitt adatok értendők.
 
@@ -44,7 +44,7 @@ A hagyományos biztonsági mentési megoldások úgy fejlődtek, hogy a felhőt 
 **Hosszú távú megőrzés** – A Recovery Services-tárolókat rövid távú és hosszú távú adatmegőrzéshez használhatja. Az Azure nem korlátozza az adatok megőrzési idejét a Recovery Services-tárolókban. Tetszőleges ideig őrizheti meg az adatokat a tárolókban. Az Azure Backup védett példányonként 9999 helyreállítási pontos felső határral rendelkezik. A cikk [Biztonsági mentés és megőrzés](backup-introduction-to-azure-backup.md#backup-and-retention) című részéből megtudhatja, milyen hatással lehet ez a korlát a biztonsági mentési igényeire.
 
 ## <a name="which-azure-backup-components-should-i-use"></a>Melyik Azure Backup-összetevőt használjam?
-Az alábbi táblázatból megtudhatja, hogy az egyes Azure Backup-összetevők minek a védelmét tudják biztosítani. 
+Az alábbi táblázatból megtudhatja, hogy az egyes Azure Backup-összetevők minek a védelmét tudják biztosítani.
 
 | Összetevő | Előnyök | Korlátok | Mi van védve? | Hol tárolja a biztonsági mentéseket? |
 | --- | --- | --- | --- | --- |
@@ -62,7 +62,7 @@ Az alábbi táblázatból megtudhatja, hogy az egyes Azure Backup-összetevők m
 | Azure IaaS virtuális gép biztonsági mentése |<p>**Igen**</p><p>Az Azure-háló része</p><p>Az [Azure szolgáltatásként kínált infrastruktúra (IaaS) rendszerű virtuális gépek biztonsági mentéséhez](backup-azure-vms-introduction.md) készült.</p> |<p>**Nem**</p> <p>A System Center DPM-mel biztonsági mentést készíthet az adatközpontban lévő virtuális gépekről.</p> |<p>Recovery Services-tároló</p> |
 
 ## <a name="which-applications-and-workloads-can-be-backed-up"></a>Melyik alkalmazásokról és számítási feladatokról készíthető biztonsági mentés?
-A következő táblázat az Azure Backup használatával védhető adatokat és számítási feladatokat tartalmazza. Az Azure Backup-megoldás oszlopban az adott megoldás telepítési dokumentációjára mutató hivatkozások szerepelnek. 
+A következő táblázat az Azure Backup használatával védhető adatokat és számítási feladatokat tartalmazza. Az Azure Backup-megoldás oszlopban az adott megoldás telepítési dokumentációjára mutató hivatkozások szerepelnek.
 
 | Adat vagy számítási feladat | Forráskörnyezet | Azure Backup-megoldás |
 | --- | --- | --- |
@@ -81,10 +81,10 @@ A következő táblázat az Azure Backup használatával védhető adatokat és 
 Az alábbi táblázat a Linux támogatott az Azure Backup-összetevőket.  
 
 **Összetevő** | **Linux (Azure által támogatott)**
---- | --- 
-Azure Backup (MARS) ügynöke | Nincs (Windows-alapú ügynök csak) 
+--- | ---
+Azure Backup (MARS) ügynöke | Nincs (Windows-alapú ügynök csak)
 System Center DPM | Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/><br/> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek visszaállítása</br></br> Az Azure virtuális gépek nem érhető el fájlkonzisztens biztonsági mentés
-Azure Backup Server | Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/><br/> Virtuális gép Hyper-V és VMWare Linux rendszerű Vendég virtuális gépek visszaállítása</br></br> Az Azure virtuális gépek nem érhető el fájlkonzisztens biztonsági mentés 
+Azure Backup Server | Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/><br/> Virtuális gép Hyper-V és VMWare Linux rendszerű Vendég virtuális gépek visszaállítása</br></br> Az Azure virtuális gépek nem érhető el fájlkonzisztens biztonsági mentés
 Azure IaaS virtuális gép biztonsági mentése | Alkalmazáskonzisztens biztonsági mentés használatával a [szkript előtti és utáni keretrendszerrel](backup-azure-linux-app-consistent.md)<br/><br/> [A fájlszintű helyreállítási](backup-azure-restore-files-from-vm.md)<br/><br/> [Virtuális gép létrehozása a visszaállított lemezről](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Virtuális gép létrehozása egy helyreállítási pontból](backup-azure-arm-restore-vms.md#create-new-create-a-vm).
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Prémium szintű tárolós virtuális gépek használata az Azure Backup szolgáltatással

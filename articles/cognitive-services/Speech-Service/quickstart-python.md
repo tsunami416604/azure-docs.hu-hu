@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 1/16/2019
+ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 43ae1339b2b6880656c68957a3d4ed2d2f13b559
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d3a6b8389d44d3ad92f9305124884d97fa293429
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859541"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447108"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Gyors útmutató: Pythonhoz készült beszédfelismerést a Speech SDK-val
 
@@ -26,16 +26,16 @@ Ez a cikk bemutatja, hogyan használhatja a beszédfelismerési szolgáltatás r
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
-* [Python 3.5-ös vagy újabb](https://www.python.org/downloads/), 64 bites.
+* [Python 3.5-ös vagy újabb](https://www.python.org/downloads/).
 * Az említett operációs rendszerektől a Python beszéd SDK-csomag érhető el: 
-    * Windows: x64.
+    * Windows: x64 és x86.
     * Mac: macOS X 10.12 vagy újabb verziója.
     * Linux: Ubuntu 16.04 vagy a x64 18.04.
 * Ubuntu rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
 
   ```sh
   sudo apt-get update
-  sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+  sudo apt-get install build-essential libssl1.0.0 libasound2 wget
   ```
 
 * A Windows, is szükség van a [Microsoft Visual C++ újraterjeszthető csomag a Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) a platformhoz.

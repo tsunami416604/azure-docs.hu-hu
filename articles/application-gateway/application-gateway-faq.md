@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 81a84e1ff4a9ed974a69762ce35075780e8d1f96
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 040aeda10410cc164c3f68b6615ebfb12d45541e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991531"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453487"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
 
@@ -346,7 +346,7 @@ A PowerShell-parancsmagot is használhatja `Get-AzureRmApplicationGatewayBackend
 
 ### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Mi a megőrzési házirend a diagnosztikai naplók?
 
-Diagnosztikai naplók folyamat ügyfelek storage-fiókba, és ügyfelek állíthatja be a megtartási házirend alapján választaniuk. Diagnosztikai naplók is lehet küldeni egy Eseményközpontba és a Log Analytics. Lásd: [Application Gateway-diagnosztika](application-gateway-diagnostics.md) további részletekért.
+Diagnosztikai naplók folyamat ügyfelek storage-fiókba, és ügyfelek állíthatja be a megtartási házirend alapján választaniuk. Diagnosztikai naplók is küldhetők Event Hub vagy az Azure Monitor-naplókat. Lásd: [Application Gateway-diagnosztika](application-gateway-diagnostics.md) további részletekért.
 
 ### <a name="how-do-i-get-audit-logs-for-application-gateway"></a>Hogyan kaphatok auditnaplók az Application Gateway?
 
@@ -358,7 +358,7 @@ Igen, az Application Gateway támogatja a riasztásokat. Riasztások a metrikák
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Hogyan elemezheti a forgalom statisztikák az Application Gateway?
 
-Megtekintheti, és több mechanizmust, például az Azure Log Analytics, az Excel, a Power BI stb keresztül hozzáférési naplók elemzése.
+Megtekintheti és elemezheti hozzáférési naplók segítségével több mechanizmust, például az Azure Monitor naplóira, Excel, a Power BI stb.
 
 A Resource Manager-sablon, amely telepíti és futtatja a népszerű Microsoft közzétette is [GoAccess](https://goaccess.io/) analyzer keresse meg a Application Gateway-hozzáférési naplók. GoAccess értékes olyan HTTP-forgalom statisztikáit, például egyedi látogatóinak, a kért fájlokat, a gazdagépek, a operációs rendszerek, a böngészők, HTTP-állapotkódok és egyéb biztosít. További részletekért tekintse meg a [a Resource Manager-sablon mappája a Githubon található információs fájlt](https://aka.ms/appgwgoaccessreadme).
 

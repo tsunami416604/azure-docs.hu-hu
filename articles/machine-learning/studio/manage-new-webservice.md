@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 0ffa917aa6bcfb642cd672d0a51a70b13f041635
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 1bf9889f601795c1ba70abdd17f6e8c9a01785f1
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267563"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453868"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Az Azure Machine Learning Studio webszolgáltatás-portál használatával webszolgáltatás kezelése
 A Machine Learning új és a klasszikus webszolgáltatások a Microsoft Azure Machine Learning Web Services portál használata kezelheti. A klasszikus webszolgáltatások és új Web services különböző mögöttes technológiák alapján, mivel mindegyikhez rendelkezik némileg eltérő felügyeleti képességeket.
@@ -39,7 +39,7 @@ Ha a felhasználó nem rendelkezik a megfelelő engedélyekkel ahhoz, hogy az Az
 
 *A webes szolgáltatás telepítése nem sikerült. Ez a fiók nem rendelkezik megfelelő hozzáférési jogosultsággal az Azure-előfizetést, amely tartalmazza a munkaterületen. Annak érdekében, hogy a webszolgáltatás üzembe helyezése az Azure-ba, ugyanazzal a fiókkal kell hívni a munkaterületet, és hozzáférést kell biztosítani az Azure-előfizetést, amely tartalmazza a munkaterületen.*
 
-Munkaterület létrehozásával kapcsolatos további információkért lásd: [létrehozása és megosztása az Azure Machine Learning-munkaterület](create-workspace.md).
+Munkaterület létrehozásával kapcsolatos további információkért lásd: [létrehozása és megosztása egy Azure Machine Learning Studio-munkaterület](create-workspace.md).
 
 Hozzáférési engedélyek beállítása a további információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
 
@@ -108,7 +108,7 @@ A terv irányítópultján a következő információkat biztosítja:
 
 ## <a name="manage-classic-web-services"></a>A klasszikus webszolgáltatások kezelése
 > [!NOTE]
-> Ebben a szakaszban a klasszikus webszolgáltatások esetében az Azure Machine Learning webszolgáltatások portálján kezelése történik. A Machine Learning Studio és az Azure Portalon a klasszikus webszolgáltatások kezelésével kapcsolatban további információkért lásd: [kezelése az Azure Machine Learning-munkaterület](manage-workspace.md).
+> Ebben a szakaszban a klasszikus webszolgáltatások esetében az Azure Machine Learning webszolgáltatások portálján kezelése történik. A Machine Learning Studio és az Azure Portalon a klasszikus webszolgáltatások kezelésével kapcsolatban további információkért lásd: [egy Azure Machine Learning Studio-munkaterület kezelése](manage-workspace.md).
 > 
 > 
 

@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e7cc1340a85e1d00c2f64abeb35a99052184c52
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f02a44f41eba8cc4298b9fc730354799ca0aad0c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100176"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446766"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -29,7 +29,7 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 ### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Az Azure Machine Learning SDK for Python v1.0.15
 
 + **Új funkciók**
-  + Az Azure Machine Learning-folyamatokat hozzáadott AzureBatchStep ([notebook](https://aka.ms/pl-azbatch)), HyperDriveStep ([notebook](https://aka.ms/pl-hyperdrive)) és ütemezési fuctionality időalapú ([notebook](https://aka.ms/pl-schedule)).
+  + Az Azure Machine Learning-folyamatokat hozzáadott AzureBatchStep ([notebook](https://aka.ms/pl-azbatch)), HyperDriveStep ([notebook](https://aka.ms/pl-hyperdrive)) és az időpont alapú ütemezés funkcióit ([notebook](https://aka.ms/pl-schedule)).
   +  DataTranferStep frissítve, hogy működik az Azure SQL Server és az Azure database for postgresql-hez ([notebook](https://aka.ms/pl-data-trans)).
 
 + **Módosítások**

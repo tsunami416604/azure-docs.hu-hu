@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/20/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: 29244c20bb4bbad8077788abbc29e6267f701d2e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/20/2019
+ms.openlocfilehash: 32e6e8ff4c37554a0c3fa50e243b241eed2953cf
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176349"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446001"
 ---
 # <a name="azure-stack-storage-capacity-planning"></a>Az Azure Stack tárolási kapacitásának megtervezése
 Az alábbi szakaszok az Azure Stack tárolókapacitást biztosítanak tervezési információkat a megoldások tárolási szükségletek segítség.
@@ -38,7 +38,9 @@ Kezelők vagy az összes flash, vagy egy hibrid tárolási konfiguráció közü
 
 ![Az Azure storage kapacitásának megtervezése](media/azure-stack-capacity-planning/storage.png)
 
-Az összes flash konfigurációjában a gyorsítótár nem NVMe SATA SSD vagy NVMe kapacitás közül választhat. A hibrid konfigurációban a gyorsítótár NVMe és SATA SSD közötti választást nem, kapacitása pedig HDD.
+Az összes flash konfigurációjában a konfiguráció lehet egy kétrétegű vagy egyrétegű konfigurációt.  Ha a konfiguráció egyrétegű, minden kapacitáseszközök azonos típusú (pl. NVMe vagy SATA SSD vagy SAS SSD) lesz, és gyorsítótárazó eszközöket nem használ. Egy kétrétegű minden flash konfiguráció, a tipikus konfigurációja NVMe, mint a gyorsítótár-eszközként, és ezután vagy SATA vagy a kapacitás eszközként SAS SSD-kkel.
+
+A hibrid, kétrétegű konfiguráció, a gyorsítótár, NVMe, a SATA vagy SAS SSD és a kapacitás választhat HDD. 
 
 Röviden összefoglalva a közvetlen tárolóhelyek és az Azure Stack tárolási konfigurációt a következőképpen történik:
 - Egy szóközt tárolókészlet skálázási egység (az összes tárolóeszköz egyetlen belül vannak konfigurálva)

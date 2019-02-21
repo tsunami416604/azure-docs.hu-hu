@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: eb344d6da15a8faf8f05720ae9b1fd49bd42db2f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d2086f02cc981ad944c030ad40083d153c520359
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808200"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447327"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Mi az Azure Search "cognitive search"?
 
@@ -96,18 +96,24 @@ Indexek jönnek létre az index sémájából, amely meghatározza a mezők és 
 
 + USA nyugati középső régiója
 + USA déli középső régiója
++ USA északi középső régiója
 + USA keleti régiója
 + USA 2. keleti régiója
 + USA nyugati régiója
 + USA nyugati régiója, 2.
++ USA középső régiója
 + Közép-Kanada
 + Nyugat-Európa
-+ Az Egyesült Királyság déli régiója
 + Észak-Európa
++ Az Egyesült Királyság déli régiója
++ Közép-Franciaország
 + Dél-Brazília
 + Kelet-Ázsia
 + Délkelet-Ázsia
 + Közép-India
++ Nyugat-Japán
++ Kelet-Japán
++ Korea középső régiója
 + Kelet-Ausztrália
 
 **2. lépés: Gyakorlati tapasztalatokat szakértőjévé válhat a munkafolyamat**

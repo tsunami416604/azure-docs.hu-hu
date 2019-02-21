@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 096f310b7c82718ea836d1b2048ca665a1e1e2f4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 49f045e8da5094f583c01c514bf92f6bf3fe1c09
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994951"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453358"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Exportálás és terméken belüli felhasználói adatok törlése az Azure Machine Learning Studióban
 
@@ -70,8 +70,8 @@ Felhasználók is törölheti a teljes munkaterület:
 ![A Machine Learning Studio ingyenes munkaterület törlése](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
 ## <a name="export-studio-data-with-powershell"></a>Studio-adatok exportálása a PowerShell-lel
-Minden információt az Azure Machine Learning Studio-parancsokkal egy hordozható formátumba exportálhat a PowerShell használatával. További információ: a [az Azure Machine Learning PowerShell-modul](powershell-module.md) cikk.
+Minden információt az Azure Machine Learning Studio-parancsokkal egy hordozható formátumba exportálhat a PowerShell használatával. További információ: a [PowerShell-modul az Azure Machine Learning Studio](powershell-module.md) cikk.
 
 ## <a name="next-steps"></a>További lépések
 
-Webszolgáltatások és számlázási kötelezettségvállalási csomag dokumentációjáért lásd: [Azure Machine Learning – REST API-referencia](https://docs.microsoft.com/rest/api/machinelearning/). 
+Webszolgáltatások és számlázási kötelezettségvállalási csomag dokumentációjáért lásd: [Azure Machine Learning Studio REST API-referencia](https://docs.microsoft.com/rest/api/machinelearning/). 

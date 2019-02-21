@@ -1,23 +1,23 @@
 ---
 title: 'Gyors útmutató: A beszédfelismerést, Objective-C – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan működik a beszédfelismerés Objective-C nyelven írt iOS-alkalmazásokban a Speech Service SDK használatával
+description: Ismerje meg, hogyan beszédfelismerést Objective-C nyelven a Speech SDK használatával iOS rendszeren
 services: cognitive-services
 author: chlandsi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: f92a5c5ea064d91eae065c96e656416b21714e98
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5f6a66b4005a0fa7106830d7e53950a9902cd078
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878102"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447242"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Gyors útmutató: Beszédfelismerést Objective-C nyelven a Speech Service SDK használatával iOS rendszeren
+# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK használatával iOS rendszeren beszédfelismerést Objective-C nyelven
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -35,7 +35,7 @@ Mielőtt elkezdené, a következő előfeltételek listáját:
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.2.0`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.3.0`.
 
 A Macre és iOS-re szánt Cognitive Services Speech SDK-t jelenleg Cocoa-keretrendszerként áll rendelkezésre.
 Innen tölthető le: https://aka.ms/csspeech/iosbinary. Töltse le a fájlt a kezdőkönyvtárába.

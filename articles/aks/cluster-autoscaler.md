@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: bfdea1d5380750ec23964cd8564db9b3a9539f15
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f8804a157c21f3c90c667646689eec0968bc9027
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754642"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453001"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Alkalmazás figyelembevételével Azure Kubernetes Service (AKS) egy fürt automatikus méretezése
 
@@ -27,7 +27,9 @@ Ez a cikk bemutatja, hogyan engedélyezheti és kezelheti a fürt méretező az 
 
 Ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.55 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
-AKS-fürtök, amelyek támogatják az automatikus méretező fürt kell használni a virtuálisgép-méretezési csoportok és futtatása a Kubernetes-verzió *1.12.4* vagy újabb. A méretezési csoport támogatni fogja az előzetes verzióban. Engedélyezve van a hibajelentések, és a méretezési csoportok használó fürtök létrehozásához telepítse a *aks előzetes* Azure CLI-bővítmény használata a [az bővítmény hozzáadása] [ az-extension-add] parancsot, az alábbi példában látható módon:
+### <a name="install-aks-preview-cli-extension"></a>Az aks előzetes CLI-bővítmény telepítése
+
+AKS-fürtök, amelyek támogatják az automatikus méretező fürt kell használni a virtuálisgép-méretezési csoportok és futtatása a Kubernetes-verzió *1.12.4* vagy újabb. A méretezési csoport támogatni fogja az előzetes verzióban. Részt, és a méretezési csoportok használó fürtök létrehozásához először telepítse a *aks előzetes* Azure CLI-bővítmény használata a [az bővítmény hozzáadása] [ az-extension-add] , ahogyan az alábbi paranccsal Példa:
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -35,6 +37,26 @@ az extension add --name aks-preview
 
 > [!NOTE]
 > Amikor telepíti a *aks előzetes* bővítményt, minden AKS-fürtöt hoz létre a méretezési csoport előzetes telepítési modellt használja. Kikapcsolhatja az újat, és rendszeres, teljes körűen támogatott fürtök létrehozását, távolítsa el a bővítmény használatával `az extension remove --name aks-preview`.
+
+### <a name="register-scale-set-feature-provider"></a>Méretezési csoport beállítása a szolgáltatás-szolgáltató regisztrálása
+
+Csoportok létrehozása méretezési használó egy AKS, is engedélyeznie kell a szolgáltatás azt a jelzőt az előfizetésén. Regisztrálja a *VMSSPreview* jelző funkciót, használja a [az a funkció regisztrálása] [ az-feature-register] parancsot az alábbi példában látható módon:
+
+```azurecli-interactive
+az feature register --name VMSSPreview --namespace Microsoft.ContainerService
+```
+
+Az állapot megjelenítése néhány percet vesz igénybe *regisztrált*. A regisztrációs állapot használatával ellenőrizheti a [az szolgáltatáslistát] [ az-feature-list] parancsot:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
+```
+
+Ha elkészült, frissítse a regisztrációját a *Microsoft.ContainerService* erőforrás-szolgáltató használatával a [az provider register] [ az-provider-register] parancsot:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
 
 ## <a name="about-the-cluster-autoscaler"></a>Fürt automatikus méretező kapcsolatban
 
@@ -149,6 +171,9 @@ Ez a cikk láthatta, hogyan skálázhatja automatikusan az AKS-csomópontok szá
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview

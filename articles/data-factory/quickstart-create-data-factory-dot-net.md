@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/28/2018
+ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 9846422405df491124a101a7898f356a1d9fb1d8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 780820f260657c2ca02572a3449802cf53a5e939
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998671"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446698"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Gyors útmutató: Adat-előállító és folyamat létrehozása a .NET SDK használatával
 
@@ -62,11 +62,11 @@ Hozzon létre egy, a C# nyelvet használó .NET-konzolalkalmazást a Visual Stud
 ## <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
 1. Kattintson a **Tools** (Eszközök)  -> **NuGet Package Manager** (NuGet-csomagkezelő) -> **Package Manager Console** (Csomagkezelő konzol) elemre.
-2. Csomagok telepítéséhez futtassa a következő parancsokat a **Csomagkezelő konzolon**:
+2. Az a **Package Manager Console**, csomagok telepítéséhez a következő parancsokat. Tekintse meg [Microsoft.Azure.Management.DataFactory nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) adatokkal.
 
     ```
-    Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
-    Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
+    Install-Package Microsoft.Azure.Management.DataFactory
+    Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 

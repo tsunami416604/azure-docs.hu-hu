@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/12/2019
+ms.date: 02/20/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5abc13a39db3f1061e3df76857645d8075feade5
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1a15600889a3c5a3c0ca587c78499f32be0ab8ed
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245752"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456707"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -49,7 +49,7 @@ Emellett szüksége annak érdekében, hogy a modul fejlesztése néhány továb
     pip install --upgrade --user cookiecutter
     ```
 
-- NODE.js: [Node.js](https://nodejs.org). Is szeretné telepíteni [Yeoman](https://www.npmjs.com/package/yo) és a [Azure IoT Edge Node.js modult generátor](https://www.npmjs.com/package/generator-azure-iot-edge-module).
+- Node.js: [Node.js](https://nodejs.org). Is szeretné telepíteni [Yeoman](https://www.npmjs.com/package/yo) és a [Azure IoT Edge Node.js modult generátor](https://www.npmjs.com/package/generator-azure-iot-edge-module).
 
 - Java: [Java SE Development Kit 10](https://aka.ms/azure-jdks) és [Maven](https://maven.apache.org/). Kell [állítsa be a `JAVA_HOME` környezeti változó](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) , hogy a JDK telepítési mutasson.
 
@@ -262,6 +262,7 @@ Ha hibakeresési modulok ezt a módszert használja, a modulok futnak az IoT Edg
       import ptvsd
       ptvsd.enable_attach(('0.0.0.0',  5678))
       ```
+
    - A következő egyetlen sor kód hozzáadása a visszahívás, amelyen hibakeresést végez:
 
       ```python
@@ -339,7 +340,7 @@ Kihagyhatja, ez a szakasz Ha ugyanarra a gépre, a Visual Studio Code-ban futtat
 
    - **Azure-függvény (C#)**: Adja hozzá a fájlhoz a töréspont `<your module name>.cs`.
    - **C#**: Adja hozzá a fájlhoz a töréspont `Program.cs`.
-   - **NODE.js**: Adja hozzá a fájlhoz a töréspont `app.js`.
+   - **Node.js**: Adja hozzá a fájlhoz a töréspont `app.js`.
    - **Java**: Adja hozzá a fájlhoz a töréspont `App.java`.
    - **Python**: Adja hozzá a fájlhoz a töréspont `main.py`a visszahívási metódus, amelyikhez hozzáadta a `ptvsd.break_into_debugger()` sor.
    - **C**: Adja hozzá a fájlhoz a töréspont `main.c`.
@@ -350,6 +351,12 @@ Kihagyhatja, ez a szakasz Ha ugyanarra a gépre, a Visual Studio Code-ban futtat
 
 > [!NOTE]
 > Az előző példa bemutatja, hogyan lehet hibákat keresni a tárolók IoT Edge-modulok. Ez a modul tárolóhoz adni elérhetővé tett port `createOptions` beállításait. Miután elvégezte a modulok hibakeresés, javasoljuk, hogy eltávolítja ezeket a közzétett éles használatra kész IoT Edge-modulok portokat.
+
+## <a name="build-and-debug-a-module-remotely"></a>Hozhat létre, és a egy modul távoli hibakeresés
+
+Az SSH-kapcsolatok támogatásához a Docker és a Moby motorok végrehajtott legutóbbi módosításoknak, és a egy új beállítás található, amely lehetővé teszi a környezeti beállítások a Visual Studio Code parancskatalógus, és az Azure IoT Edge terminálok injektálása Azure IoT-eszközök mostantól hozhat létre és hibakeresés modulok távoli eszközökön.
+
+Ez [IoT fejlesztői blogbejegyzés](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) további információk és részletes útmutatást.
 
 ## <a name="next-steps"></a>További lépések
 

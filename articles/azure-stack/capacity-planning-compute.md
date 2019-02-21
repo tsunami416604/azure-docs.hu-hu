@@ -17,12 +17,12 @@ ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
 ms.custom: mvc
-ms.openlocfilehash: ca0a6569dda89586c629cc46909862de4f27cf04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4ab04fc69d29d9bb5386261f6453b2f47bfd66bc
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56160911"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446324"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Az Azure Stack számítási kapacitásának megtervezése
 A [Virtuálisgép-méretek támogatott az Azure Stacken](./user/azure-stack-vm-sizes.md) részhalmazát alkotják, az Azure-ban támogatott. Az Azure erőforrások (helyi és a szolgáltatásiszint-kiszolgáló) overconsumption elkerülése érdekében számos vektorok mentén erőforráskorlátok ír elő. Nélkül betartatásához bérlői használat bizonyos korlátozások, a bérlő élményt, amikor más bérlők overconsume erőforrások romlani fog. Hálózati kimenő forgalom a virtuális gépről a sávszélesség a caps teljesülnek az Azure Stacken, amelyek megfelelnek az Azure korlátai vannak. Storage access-bérlők a tárolási erőforrások, az Azure Stack-erőforrások egyszerű overconsumption elkerülése érdekében történtek tárolási IOPs-korlátok.  
@@ -43,7 +43,7 @@ Ha egy kiszolgáló meghibásodik, a sikertelen kiszolgálón futtatott virtuál
 
 A következő számítási eredményezi a teljes, rendelkezésre álló memória, amely a bérlői virtuális gépek elhelyezése is használható. Ez a memória-kapacitás az Azure Stack skálázási egység teljes szól.
 
-  A Virtuálisgép-Elhelyezés a rendelkezésre álló memória teljes kiszolgálói memória – tartalék rugalmasság – az Azure Stack infrastruktúra terhelést = <sup>1</sup>
+  A Virtuálisgép-Elhelyezés a rendelkezésre álló memória = futtató virtuális gépek – az Azure Stack-infrastruktúra terhelését által használt összes kiszolgáló memória – tartalék rugalmasság – memória <sup>1</sup>
 
   Rugalmasság tartalék H + R = * (N-1) + V * (N-2)
 

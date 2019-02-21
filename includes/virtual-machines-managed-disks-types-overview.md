@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7f5583bfd6089362aef51285643f5fc920005242
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 8a067474fb172d4ff7a7fdf7eb6d24536bd2d017
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331232"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443275"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen lemeztípusok érhetők el az Azure-ban?
 
@@ -21,9 +21,9 @@ Azure managed disksbe jelenleg négy lemeztípusok, amelyek közül három álta
 
 ## <a name="disk-comparison"></a>Lemezek összehasonlítása
 
-Az alábbi táblázat összehasonlítja a ultranagy lemezek (előzetes verzió), premium solid-állam-meghajtók (SSD), standard SSD és a szabványos merevlemez-meghajtókon (HDD) felügyelt lemezek segít eldönteni, hogy melyiket érdemes használni.
+Az alábbi táblázat összehasonlítja a ultranagy solid-állam-meghajtók (SSD) (előzetes verzió), prémium szintű SSD, standard SSD és szabványos merevlemez-meghajtókon (HDD) a felügyelt lemezek segítségével eldöntheti, melyiket érdemes használni.
 
-|   | Ultranagy lemezek (előzetes verzió)   | Prémium SSD   | Standard SSD   | Standard HDD   |
+|   | Ultranagy SSD (előzetes verzió)   | Prémium SSD   | Standard SSD   | Standard HDD   |
 |---------|---------|---------|---------|---------|
 |Lemez típusa   |SSD   |SSD   |SSD   |HDD   |
 |Forgatókönyv   |I/o-igényes számítási feladatokhoz például az SAP HANA, felső szintű adatbázisok (például SQL, Oracle) és egyéb tranzakció – (nagy erőforrásigényű) számítási feladatokat.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, kisebb terhelésű vállalati alkalmazások és a fejlesztés + tesztelés   |Biztonsági mentés, nem kritikus fontosságú, alkalmi hozzáférést   |
@@ -31,19 +31,19 @@ Az alábbi táblázat összehasonlítja a ultranagy lemezek (előzetes verzió),
 |Maximális átviteli sebesség   |2000 MiB/s (előzetes verzió)   |250 (elérhetővé tétel GA) MiB/s, 750 MiB/s (előzetes verzió)   |60 MiB/s (GA), 500 MiB/s (előzetes verzió)   |60 Mib/s (GA), 500 MiB/s (előzetes verzió)   |
 |Maximális IOPS-érték   |160,000 (előzetes verzió)   |Elérhetővé tétel (GA), 7500 20 000 (előzetes verzió)   |500 (GA), a 2000 (előzetes verzió)   |500 (GA), a 2000 (előzetes verzió)   |
 
-## <a name="ultra-disks-preview"></a>Ultranagy lemezek (előzetes verzió)
+## <a name="ultra-ssd-preview"></a>Ultranagy SSD (előzetes verzió)
 
-Ultranagy Azure-lemezek (előzetes verzió) az Azure IaaS virtuális gépek nagy teljesítményű, magas iops-érték és egységes közel valós idejű lemezes tárolás biztosításához. Ultranagy lemezek előnyei többek között a teljesítmény és a számítási feladatok, a virtuális gépek újraindítása nélkül, a lemez dinamikusan módosíthatók. Ultranagy lemezek adatok-igényes számítási feladatokhoz, például az SAP HANA, a felső szintű adatbázisok és a tranzakciós adatokat használó munkaterhelések vannak kialakítva. Ultranagy lemezek csak akkor használható, az adatlemezeket. Operációsrendszer-lemezek, prémium szintű SSD-k használatát javasoljuk.
+Azure ultranagy SSD (előzetes verzió) az Azure IaaS virtuális gépek nagy teljesítményű, magas iops-érték és egységes közel valós idejű lemezes tárolás biztosításához. Néhány ultranagy SSD további előnyei a következők dinamikusan megváltoztathatja a teljesítmény, a lemez és a számítási feladatok, a virtuális gépek újraindítása nélkül. Ultranagy SSD adatok-igényes számítási feladatokhoz, például az SAP HANA, a felső szintű adatbázisok és a tranzakciós adatokat használó munkaterhelések vannak kialakítva. Ultranagy SSD csak akkor használható, az adatlemezeket. Operációsrendszer-lemezek, prémium szintű SSD-k használatát javasoljuk.
 
 ### <a name="performance"></a>Teljesítmény
 
-Az ultranagy lemez üzembe helyezésekor, a kapacitás és a teljesítmény, a lemez egymástól függetlenül beállíthatja. Ultranagy lemezek különféle rögzített méretű, és 4 GB, legfeljebb 64 Tib-ra, a következő, és rugalmas teljesítmény konfigurációs modell, amely lehetővé teszi, hogy külön konfigurálni az IOPS és átviteli sebesség funkciót.
+Az ultranagy lemez üzembe helyezésekor, a kapacitás és a teljesítmény, a lemez egymástól függetlenül beállíthatja. Ultranagy SSD különféle rögzített méretű, és 4 GB, legfeljebb 64 Tib-ra, a következő, és rugalmas teljesítmény konfigurációs modell, amely lehetővé teszi, hogy külön konfigurálni az IOPS és átviteli sebesség funkciót.
 
-Ultranagy lemezek néhány főbb funkciók a következők:
+Az Ultranagy SSD néhány főbb funkciók a következők:
 
-- Lemez kapacitása: Ultranagy lemezek kapacitás címtartományok 4 GiB akár 64 Tib-ra.
-- A lemez iops-érték: Ultranagy lemezeket támogatja a 300 IOPS/GIB-ra, egy 160 KB IOPS lemezenként maximum IOPS-korlátok. Elérése érdekében az Ön által üzembe helyezett iops-érték, győződjön meg arról, hogy a kiválasztott lemez iops-érték kisebb, mint a virtuális gépek iops-érték. A minimális IOPS lemez 100 IOPS.
-- Lemez átviteli sebesség: Ultranagy lemezek átviteli egyetlen határérték 256 KiB/s minden egyes üzembe helyezett IOPS, legfeljebb 2000 MB/s lemezenként (ahol MBps = 10 ^ 6 bájt / másodperc). A minimális átviteli sebesség 1 MiB.
+- Lemez kapacitása: Ultranagy SSD kapacitása címtartományok 4 GiB akár 64 Tib-ra.
+- A lemez iops-érték: Ultranagy SSD támogatja a 300 IOPS/GIB-ra, egy 160 KB IOPS lemezenként maximum IOPS-korlátok. Elérése érdekében az Ön által üzembe helyezett iops-érték, győződjön meg arról, hogy a kiválasztott lemez iops-érték kisebb, mint a virtuális gépek iops-érték. A minimális IOPS lemez 100 IOPS.
+- Lemez átviteli sebesség: Ultranagy SSD, az átviteli sebesség egyetlen határérték 256 KiB/s minden egyes üzembe helyezett IOPS, legfeljebb 2000 MB/s lemezenként (ahol MBps = 10 ^ 6 bájt / másodperc). A minimális átviteli sebesség 1 MiB.
 
 ### <a name="disk-size"></a>Lemezméret
 
@@ -61,7 +61,7 @@ Ultranagy lemezek néhány főbb funkciók a következők:
 
 ### <a name="preview-scope-and-limitations"></a>Előzetes verzió hatókör és korlátozások
 
-Előzetes verzióban az ultranagy lemezek:
+Előzetes verzióban az ultranagy SSD:
 
 - Támogatottak az USA keleti RÉGIÓJA 2, egyetlen rendelkezésre állási zónában  
 - Csak akkor használható a rendelkezésre állási zónák (rendelkezésre állási csoportok és egyetlen virtuális gépek üzembe helyezése zónák lesz kívül nem tudnak egy ultra lemezt)
@@ -81,7 +81,7 @@ Az Azure prémium szintű SSD-k révén a virtuális gépek (VM) a nagy teljesí
 
 A méret, egy csillaggal jelölve jelenleg előzetes verzióban érhető el.
 
-| Prémium szintű SSD-méretek  | P4               | P6               | P10             | P15 | P20              | S30              | P40              | P50              | P60*              | P70*              | P80*              |
+| Prémium szintű SSD-méretek  | P4               | P6               | P10             | P15 | P20              | P30              | P40              | P50              | P60*              | P70*              | P80*              |
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
 | Lemez mérete GiB-ban           | 32             | 64             | 128            | 256  | 512            | 1,024    | 2,048     | 4,095    | 8,192     | 16,384     | 32,767     |
 | IOPS-érték lemezenként       | Legfeljebb 120 | Legfeljebb 240              | Legfeljebb 500              | Akár 1100 | Akár 2,300              | Legfeljebb 5000              | Akár 7500             | Akár 7500              | Akár 12,500              | Legfeljebb 15 000              | Legfeljebb 20 000              |

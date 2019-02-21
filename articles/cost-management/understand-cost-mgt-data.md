@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 79cf839a23d41058e0d9583a378dc063cd220136
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1d7f58780819202eb02e3a48b4b5e0ac108a0432
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981757"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447463"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -61,6 +61,8 @@ Az alábbi táblázat az ajánlatok nem támogatott.
 | **Támogatási csomagok** | Standard szintű Azure Government-támogatás | MS-AZR-USGOV-0041P |
 | **Támogatási csomagok** | Az Azure Government Pro-Direct Support | MS-AZR-USGOV-0042P |
 | **Támogatási csomagok** | Az Azure Government fejlesztői támogatás | MS-AZR-USGOV-0043P |
+
+Használatalapú fizetés, az MSDN és a Visual Studio ajánlat kategóriák élvező vásárlók esetében az adatok a Cost Management 2018-10-02-től érhető el.
 
 Ha nem lát adatokat egy előfizetéshez, és meg szeretné határozni, ha az előfizetés a támogatott ajánlatok hatálya alá tartozik, ellenőrizheti, hogy az előfizetés támogatott. Ellenőrzése, hogy támogatott-e egy Azure-előfizetést, jelentkezzen be a [az Azure portal](https://portal.azure.com). Válassza ki **minden szolgáltatás** a bal oldali menü ablaktáblán. A szolgáltatások listájában jelölje ki **előfizetések**. Előfizetési lista menüjében kattintson az ellenőrizni kívánt előfizetést. Az előfizetés az Áttekintés lap jelenik meg, és láthatja a **ajánlat** és **Ajánlatazonosító**. Az alábbi képen egy példa látható.
 

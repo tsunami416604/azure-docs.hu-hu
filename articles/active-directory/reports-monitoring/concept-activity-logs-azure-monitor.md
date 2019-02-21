@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a995fd93fa8d538cd1a686ecc12fa69c718758c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: cb136391610035911af3614f88f5ea823f86922d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313500"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456324"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure AD-tevékenységnaplók az Azure Monitorban (előzetes verzió)
 
@@ -31,13 +31,13 @@ Az Azure Active Directory (Azure AD) tevékenységeket tartalmazó naplók mosta
 * A Tevékenységnaplók archiválása az Azure AD az Azure storage-fiókkal, megőrizni az adatokat hosszú ideig.
 * A Stream az Azure AD-Tevékenységnaplók az Azure event hub Analytics népszerű biztonságiadat- és eseménykezelés (SIEM) eszközökkel, például a Splunk és QRadar.
 * Az Azure AD integrálása tevékenységeket tartalmazó naplók a saját egyéni napló megoldásokkal folyamatos őket egy eseményközpontba.
-* Tevékenység naplók küldése az Azure AD a Log Analytics látványos vizualizációkkal, monitorozási és riasztási a csatlakoztatott adatok engedélyezéséhez.
+* Küldése az Azure AD-Tevékenységnaplók az Azure Monitor naplóira látványos vizualizációkkal, monitorozási és riasztási a csatlakoztatott adatok engedélyezése.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="supported-reports"></a>Támogatott jelentések
 
-Irányíthatja az Azure AD naplózási naplókat és az Azure storage-fiókot, event hub, a Log Analytics vagy egyéni megoldás bejelentkezési naplók a szolgáltatás használatával. 
+Irányíthatja az Azure AD naplózási naplókat és az Azure storage-fiókot, event hub, az Azure Monitor naplóira vagy egyéni megoldás bejelentkezési naplók a szolgáltatás használatával. 
 
 * **Auditnaplók**: A [naplók Tevékenységjelentés](concept-audit-logs.md) teszi elérhetővé a bérlőben végrehajtott minden tevékenység előzményeit.
 * **Bejelentkezési naplók**: Az a [bejelentkezési tevékenységek jelentésének](concept-sign-ins.md), megadhatja, hogy ki hajtotta végre a jelentett feladatokat, a naplók.
@@ -60,7 +60,7 @@ Attól függően, hogy hová szeretné irányítani a naplózási adatokat, a k�
 
 * Egy Azure Storage-fiók, amelyen *ListKeys* jogosultsággal rendelkezik. Azt javasoljuk, hogy általános tárfiókot használjon, ne Blob Storage-fiókot. A tárolás díjszabásával kapcsolatban lásd az [Azure Storage-díjkalkulátort](https://azure.microsoft.com/pricing/calculator/?service=storage). 
 * Azure Event Hubs-névtér a külső megoldásokkal való integrációhoz.
-* Az Azure Log Analytics-munkaterület naplók elküldése a Log Analytics szolgáltatásba.
+* Az Azure Log Analytics-munkaterület naplók elküldése az Azure Monitor naplóira.
 
 ## <a name="cost-considerations"></a>Költségekkel kapcsolatos szempontok
 
@@ -94,9 +94,9 @@ Az alábbi táblázat egy alapszintű eseményközpont becsült havi költségé
 | Naplózás | 1,000 | 0,1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
 | Bejelentkezések | 1,000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 dollár |  
 
-### <a name="log-analytics-cost-considerations"></a>A log Analytics költségvetési szempontok
+### <a name="azure-monitor-logs-cost-considerations"></a>Az Azure Monitor-naplók költség kapcsolatos szempontok
 
-A Log Analytics-munkaterület felügyeletével kapcsolatos költségek áttekintéséhez lásd: [költségek kezelése a Log Analytics és az adatmennyiség szabályozásával](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
+Az Azure Monitor naplóira felügyeletével kapcsolatos költségek áttekintéséhez lásd: [költségek kezelése adatmennyiség és megőrzés az Azure Monitor naplóira szabályozásával](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -177,4 +177,4 @@ Ez a szakasz az Azure AD-naplók az Azure Monitorban való kezelésével kapcsol
 
 * [Tevékenységnaplók archiválása egy Storage-fiókba](quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Tevékenységnaplók irányítása egy eseményközpontba](quickstart-azure-monitor-stream-logs-to-event-hub.md)
-* [Tevékenység-naplók integrálása a Log Analytics használatával](howto-integrate-activity-logs-with-log-analytics.md)
+* [Tevékenység-naplók integrálása az Azure Monitor szolgáltatással](howto-integrate-activity-logs-with-log-analytics.md)

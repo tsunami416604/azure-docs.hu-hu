@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 76db38a59d2239de79ebcdcfd454ac60a8f514be
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 9ce7a36f796716f48f6575b2391ac563eebf4530
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299881"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447820"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Az Adattárházegységek (Dwu) és számítási Adattárházegység (cDWUs)
 Javaslatok az adattárházegységek (dwu-k, cDWUs) ár és a teljesítmény-, és módosítása az egységek számát az ideális számot kiválasztása. 
@@ -37,7 +37,9 @@ A dwu-k növelése:
 - Növeli a párhuzamos lekérdezések és egyidejű hely maximális számát.
 
 ## <a name="service-level-objective"></a>Szolgáltatási szint célkitűzése
-A szolgáltatási szint célkitűzést (SLO) a méretezhetőség beállítása, amely meghatározza, hogy a költség- és az adatraktár szintjét. A szolgáltatási szintek, a Gen2 számítási kiosztása az adattárházegységekkel (cDWU), például DW2000c mérése történik. A dwu-k, például DW2000 Gen1 szolgáltatási szintek mérése történik. 
+A szolgáltatási szint célkitűzést (SLO) a méretezhetőség beállítása, amely meghatározza, hogy a költség- és az adatraktár szintjét. A szolgáltatási szintek, a Gen2 számítási kiosztása az adattárházegységekkel (cDWU), például DW2000c mérése történik. A dwu-k, például DW2000 Gen1 szolgáltatási szintek mérése történik.
+  > [!NOTE]
+  > Az Azure SQL Data Warehouse Gen2 nemrégiben kiegészítő skálázási lehetőségeket a compute csomag akár 100 cDWU is támogatja. A korábbi adattárházak jelenleg a Gen1 igénylő, az alacsonyabb rétegek számítási most már frissítheti a régióban jelenleg elérhető, további költségektől Gen2-re.  Ha még nem támogatott a régióban továbbra is frissíthet egy támogatott régióban. További információ: [frissítés Gen2-re](upgrade-to-latest-generation.md).
 
 A T-SQL a service_objective paraméter beállítás határozza meg, a szolgáltatási szint és az adatraktár teljesítményszintjét.
 

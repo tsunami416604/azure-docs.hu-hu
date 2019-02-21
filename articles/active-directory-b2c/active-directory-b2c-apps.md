@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7ea179ff7e4b525e86003faadfb92e090476bd81
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 116abd259d11e66be2dc158d833c569f06aaa923
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172646"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446375"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Az Active Directory B2C-ben használható alkalmazások típusok
 
@@ -91,10 +91,10 @@ Accept: application/json
 Webes API-k számos különböző típusú, beleértve a webalkalmazásokat, asztali és mobil alkalmazások, egyoldalas alkalmazások, kiszolgálóoldali démonok és más webes API-kat a képes jogkivonatokat fogadni. Íme egy példa, amely meghívja a webes API-k webalkalmazás teljes folyamatára:
 
 1. A webes alkalmazás végrehajt egy szabályzatot, és a felhasználó elvégzi a felhasználói élményt.
-2. Az Azure AD B2C visszaadja az `access_token` és a egy hozzáférési kóddal a böngészőben.
-3. A böngésző bejegyzések a `access_token` és az átirányítási URI-t az engedélyezési kód.
-4. A webalkalmazás-kiszolgáló ellenőrzi a `access token` és a egy munkamenetcookie-t állítja be.
-5. A `access_token` példáira Azure AD B2C az engedélyezési kódot, az alkalmazás ügyfél-Azonosítót és hitelesítő adatait.
+2. Az Azure AD B2C visszaadja az (OpenID Connect) `id_token` és a egy hozzáférési kóddal a böngészőben.
+3. A böngésző bejegyzések a `id_token` és az átirányítási URI-t az engedélyezési kód.
+4. A webalkalmazás-kiszolgáló ellenőrzi a `id_token` és a egy munkamenetcookie-t állítja be.
+5. A webalkalmazás-kiszolgáló kéri az Azure AD B2C- `access_token` az engedélyezési kódot, alkalmazás Ügyfélazonosítója és ügyfél-hitelesítő adatok megadásával.
 6. A `access_token` és `refresh_token` visszakerülnek a webkiszolgálón.
 7. A webes API-k hívása a `access_token` az engedélyeztetési fejléc.
 8. A webes API érvényesíti a jogkivonatot.

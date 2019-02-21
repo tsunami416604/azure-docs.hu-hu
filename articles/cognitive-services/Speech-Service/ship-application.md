@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 2e35afe996ec80411d2e0e339fd4d49adecd1239
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5c45918a2cdcdd0a848e392d125849953af976ea
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857940"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445117"
 ---
 # <a name="ship-an-application"></a>Szállítási alkalmazás
 
@@ -47,19 +47,19 @@ A szükséges beszéd SDK-fájlokat is telepíthető az alkalmazás könyvtárá
 
 ## <a name="linux"></a>Linux
 
+A beszédfelismerés SDK jelenleg támogatja az Ubuntu 16.04 és 18.04 disztribúciókat.
 Egy natív alkalmazást, a beszéd SDK-könyvtár szállításra való szüksége `libMicrosoft.CognitiveServices.Speech.core.so`.
 Jelölje ki, amely megfelel az alkalmazás verziója (x86, x64). A Linux verziójától függően is szüksége lehet a következő függőségeket tartalmaznak:
 
 * A megosztott szalagtárakkal GNU C-függvénytár (beleértve a POSIX szálak programozási könyvtár `libpthreads`)
 * Az OpenSSL kódtár (`libssl.so.1.0.0`)
-* A cURL-tár (`libcurl.so.4`)
 * A megosztott szalagtár ALSA alkalmazásokhoz (`libasound.so.2`)
 
-Ubuntu 16.04 vagy 18.04, például a GNU C-függvénytárak kell már alapértelmezés szerint telepítve. Az utolsó három is telepíthetők az alábbi parancsokkal:
+Ubuntu rendszeren a GNU C-függvénytárak már alapértelmezés szerint kell telepíteni. Az utolsó három is telepíthetők az alábbi parancsokkal:
 
 ```sh
 sudo apt-get update
-sudo apt-get install libssl1.0.0 libcurl3 libasound2 wget
+sudo apt-get install libssl1.0.0 libasound2 wget
 ```
 
 ## <a name="next-steps"></a>További lépések

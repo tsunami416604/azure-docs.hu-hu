@@ -10,21 +10,21 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/06/2017
-ms.openlocfilehash: 9fcdcc5f4e3e7a6aadb3749459562eb575deca2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d4e267915338e8043138be0ca1a4922ac84d8eab
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822374"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456265"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Gyors üzembe helyezési oktatóanyag az R programozási nyelv, az Azure Machine Learning Studióban
 
 <!-- Stephen F Elston, Ph.D. -->
 
 ## <a name="introduction"></a>Bevezetés
-Ez a rövid útmutató segítségével gyorsan elindíthatja az Azure Machine Learning kiterjesztése az R programozási nyelv használatával. Ez az oktatóanyag az R programozási hozhat létre, tesztelheti, és hajtsa végre az Azure Machine Learning R kódot. Végzett munka, az oktatóanyagokat, létrehozhat egy teljes előrejelzési megoldás az Azure Machine Learning R nyelv használatával.  
+Ez a rövid útmutató segítségével gyorsan elindíthatja az Azure Machine Learning Studio kiterjesztése az R programozási nyelv használatával. Ez az oktatóanyag az R programozási hozhat létre, tesztelheti és Studión belül R-kód végrehajtása. Végzett munka, az oktatóanyagokat, létrehozhat egy teljes előrejelzési megoldás a Studióban az R nyelv használatával.  
 
-A Microsoft Azure Machine Learning tartalmaz számos hatékony gépi tanulási és adatmanipulációs modulok. A hatékony R nyelvvel, a nyelv franca Analytics leírása. Boldogan elemzési és adatkezelési az Azure Machine Learning r használatával is kiterjeszthető Ebben együttes használata biztosít a méretezhetőség és a könnyű üzembe helyezés az Azure Machine Learning a rugalmasságot és részletes elemzést R.
+A Microsoft Azure Machine Learning Studio számos hatékony gépi tanulási és adatmanipulációs modulokat tartalmaz. A hatékony R nyelvvel, a nyelv franca Analytics leírása. Boldogan elemzési és adatkezelési a Studióban is kiterjeszthető az R. Ebben együttes használata biztosít a méretezhetőség és a könnyű telepíthetőségét a Studio rugalmasságával és részletes elemzést R.
 
 
 
@@ -38,23 +38,23 @@ A jelen rövid útmutatóban azt fogja California tejtermelésre használata és
 Ebben a cikkben R-szkriptek, együtt használt adatokat lehet [itt letöltött](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv). Ezeket az adatokat eredetileg synthesized volt a University of Wisconsin címen elérhető információk https://dairymarkets.com.
 
 ### <a name="organization"></a>Szervezet
-Számos lépést azt fogja halad, megtudhatja hogyan hozhat létre, tesztelheti és elemzési és adatkezelési R-kód végrehajtása az Azure Machine Learning-környezetben.  
+Számos lépést azt fogja halad, megtudhatja hogyan hozhat létre, tesztelheti és elemzési és adatkezelési R-kód végrehajtása az Azure Machine Learning Studio-környezetben.  
 
 * Először az Azure Machine Learning Studio-környezet az R nyelv használatával kapcsolatos alapfogalmakat fog tárgyaljuk.
-* Ezután azt halad megvizsgálja az üzemeltetés minőségének különböző szempontjait i/o-adatok, R-kód és a grafikai az Azure Machine Learning-környezetben.
+* Ezután azt halad megvizsgálja az üzemeltetés minőségének különböző szempontjait i/o-adatok, R-kód és a grafikai az Azure Machine Learning Studio-környezetben.
 * Azt fogja majd hozhatnak létre az első rész az előrejelzési megoldás adattisztítást és adatátalakítást kódjának létrehozásával.
 * Az előkészített adatok végezzük el a korrelációk között számos, a változókat az adathalmaz elemzése.
 * Végül létre fogunk hozni egy szezonális time series előrejelzési modell tejtermelésre.
 
 ## <a id="mlstudio"></a>Az R nyelvhez a Machine Learning Studio használatához
-Ez a szakasz végigvezeti néhány alapjait az R programozási nyelv, a Machine Learning Studio-környezet használata. Az R nyelv hozhat létre testreszabott analytics és data adatkezelési modulok az Azure Machine Learning-környezeten belül hatékony eszközt biztosít.
+Ez a szakasz végigvezeti néhány alapjait az R programozási nyelv, a Machine Learning Studio-környezet használata. Az R nyelv hozhat létre testreszabott analytics és data adatkezelési modulok az Azure Machine Learning Studio környezetből hatékony eszközt biztosít.
 
 Az RStudio fejlesztéséhez, teszteléséhez és kis léptékű R-kód hibaelhárítása a fogom használni. Ez a kód ezután Kivágás és beillesztés, egy [R-szkript végrehajtása] [ execute-r-script] modul a Machine Learning Studióban futtatható.  
 
 ### <a name="the-execute-r-script-module"></a>Az R-szkript végrehajtása modul
 Machine Learning studióban R-parancsfájlok futtathatók a [R-szkript végrehajtása] [ execute-r-script] modul. Példa a [R-szkript végrehajtása] [ execute-r-script] modul a Machine Learning Studióban az 1. ábrán látható.
 
- ![Az R programozási nyelv: Az R-szkript végrehajtása modul kiválasztva a Machine Learning Studióban][1]
+ ![Az R programozási nyelv: Az R-szkript végrehajtása modul kiválasztva a Machine Learning Studióban](./media/r-quickstart/fig1.png)
 
 *1. ábra A Machine Learning Studio környezet az R-szkript végrehajtása modul kiválasztva megjelenítése.*
 
@@ -66,20 +66,20 @@ Machine Learning studióban R-parancsfájlok futtathatók a [R-szkript végrehaj
 
 Hogy természetesen lesznek, megvizsgálni a [R-szkript végrehajtása] [ execute-r-script] Ez a dokumentum további részében részletesebben.
 
-Az összetett R funkciók használatakor javasolt, hogy szerkeszti, tesztelése és hibakeresése az RStudio. Csakúgy, mint bármely szoftverfejlesztői növekményes kiterjesztheti a kódot, és kis egyszerű vizsgálati eseteknél tesztelni. Majd kivágja és beilleszti a függvények a R szkriptablakba, a [R-szkript végrehajtása] [ execute-r-script] modul. Ez a megközelítés lehetővé teszi az RStudio integrált fejlesztőkörnyezet (IDE) és a teljesítmény az Azure Machine Learning is kihasználhatja.  
+Az összetett R funkciók használatakor javasolt, hogy szerkeszti, tesztelése és hibakeresése az RStudio. Csakúgy, mint bármely szoftverfejlesztői növekményes kiterjesztheti a kódot, és kis egyszerű vizsgálati eseteknél tesztelni. Majd kivágja és beilleszti a függvények a R szkriptablakba, a [R-szkript végrehajtása] [ execute-r-script] modul. Ez a megközelítés lehetővé teszi az RStudio integrált fejlesztőkörnyezet (IDE) és az Azure Machine Learning Studio hatékonyságát is kihasználhatja.  
 
 #### <a name="execute-r-code"></a>Hajtsa végre az R-kód
 Az összes R-kód a [R-szkript végrehajtása] [ execute-r-script] modul hajtja végre, amikor a kísérlet futtatásához kattintson a a **futtatása** gombra. Végrehajtás befejezése után egy pipa jelenik meg a [R-szkript végrehajtása] [ execute-r-script] ikonra.
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>Az Azure Machine Learning védelmi vonalként R programozási
-Tegyük fel, a webszolgáltatás az R-kód az Azure Machine Learning használatával fejleszt, mindenképp tervez módját a kód foglalkozni fog egy nem várt adatok bemeneti és a kivételeket. Érthetőség kedvéért I nem szereplő átszállítást megakadályozzák az ellenőrzési vagy kivételkezelés látható hitelesítésikód-példák a legtöbb nagy részét. Azonban, a Folytatás e kap funkciók számos példát R a kivételkezelő funkció használatával.  
+Tegyük fel, a webszolgáltatás az R-kód az Azure Machine Learning Studio használatával fejleszt, mindenképp tervez módját a kód foglalkozni fog egy nem várt adatok bemeneti és a kivételeket. Érthetőség kedvéért I nem szereplő átszállítást megakadályozzák az ellenőrzési vagy kivételkezelés látható hitelesítésikód-példák a legtöbb nagy részét. Azonban, a Folytatás e kap funkciók számos példát R a kivételkezelő funkció használatával.  
 
 A teljes R kivételkezelés kezelésére van szüksége, ha javasolni tudom olvassa el a alkalmazni szakaszait szereplő Wickham könyve [B függelék – további olvasási](#appendixb).
 
 #### <a name="debug-and-test-r-in-machine-learning-studio"></a>Hibakeresés és R tesztelése a Machine Learning Studióban
 Kifejezni, javasolni tudom a teszteléshez, és a hibakereséshez az R-kód az RStudio kis léptékű. Előfordulhatnak azonban olyan esetekben, ahol lesz nyomon követheti az R-kód jelentkező a [R-szkript végrehajtása] [ execute-r-script] magát. Ezenkívül mindig érdemes ellenőrizni az eredményeket a Machine Learning Studióban.
 
-Az R-kód és az Azure Machine Learning platformon a végrehajtás kimenetének elsősorban kimenetét található. További információkat error.log lesz látható.  
+Az R-kód és az Azure Machine Learning Studio platformon a végrehajtás kimenetének elsősorban kimenetét található. További információkat error.log lesz látható.  
 
 Ha hiba történik a Machine Learning Studióban az R-kód futtatása során, az első lépések error.log meg kell lennie. Ez a fájl tartalmazhat hasznos hibaüzenetek segítségével megismerheti, és javítsa ki a hibát. Error.log megtekintéséhez kattintson a **hiba napló megtekintése** a a **tulajdonságait tartalmazó ablaktáblán** számára a [R-szkript végrehajtása] [ execute-r-script] a hibát tartalmazó.
 
@@ -90,7 +90,7 @@ Például futtattam a következő R-kód egy nem definiált változó y a egy [R
 
 Ez a kód nem tud végrehajtani, hibát eredményez. Kattintson a **hiba napló megtekintése** a a **tulajdonságait tartalmazó ablaktáblán** hoz létre a megjelenítés, a 2. ábrán látható.
 
-  ![Chybová zpráva merül fel][2]
+  ![Chybová zpráva merül fel](./media/r-quickstart/fig2.png)
 
 *2. ábra Chybová zpráva előugró.*
 
@@ -109,12 +109,12 @@ Ez a hibaüzenet meglepetések tartalmaz, és egyértelműen azonosítja a probl
 Vizsgálja meg az érték minden R-objektum, kinyomtathatja ezeket az értékeket a kimenetét fájlt. Objektum értékek vizsgálata a szabályok a következők ugyanaz, mint az interaktív R-munkamenet. Például ha sorba írja be a változó nevét, az objektum értéke nyomtat a kimenetét fájlt.  
 
 #### <a name="packages-in-machine-learning-studio"></a>A Machine Learning Studio-csomagok
-Az Azure Machine Learning több mint 350 előre telepített R nyelvi csomagokat tartalmaz. A következő kódot használhatja a [R-szkript végrehajtása] [ execute-r-script] modul lekérni az előre telepített csomagok listáját.
+Studio több mint 350 előre telepített R nyelvi csomagokat tartalmaz. A következő kódot használhatja a [R-szkript végrehajtása] [ execute-r-script] modul lekérni az előre telepített csomagok listáját.
 
     data.set <- data.frame(installed.packages())
     maml.mapOutputPort("data.set")
 
-Ha ez a kód utolsó sora jelenleg nem ismeri, akkor Olvasson tovább. Ez a dokumentum többi nagymértékben ismertetik az Azure Machine Learning-környezet az r nyelv használatát.
+Ha ez a kód utolsó sora jelenleg nem ismeri, akkor Olvasson tovább. Ez a dokumentum többi nagymértékben ismertetik a Studio-környezet az r nyelv használatát.
 
 ### <a name="introduction-to-rstudio"></a>Az RStudio bemutatása
 Az RStudio egy széles körben használt IDE az r segítségével Az RStudio szerkesztését, teszteléséhez és a hibakeresés néhány rövid útmutatóban használt R-kód használok. Után az R-kód tesztelt, és készen áll a is egyszerűen kimásolni, majd illessze be a RStudio szerkesztőből egy Machine Learning studióba [R-szkript végrehajtása] [ execute-r-script] modul.  
@@ -157,14 +157,14 @@ Most, hogy bizonyos adatokat a Machine Learning Studióban, kell hozni egy kís�
 
 Ezen a ponton a kísérlet várható megjelenése a 3. ábra.
 
-![A hitelesítésszolgáltató tejtermék Analysis adatkészlet és R-szkript végrehajtása modul kísérletezhet][3]
+![A hitelesítésszolgáltató tejtermék Analysis adatkészlet és R-szkript végrehajtása modul kísérletezhet](./media/r-quickstart/fig3.png)
 
 *3. ábra A hitelesítésszolgáltató tejtermék Analysis adatkészlet és R-szkript végrehajtása modul kísérletezhet.*
 
 #### <a name="check-on-the-data"></a>Az adatok ellenőrzése
 Nézzük meg, az adatok betöltése a kísérletbe sikerült rendelkezik. A kísérletben, kattintson a kimenete a **cadairydata.csv adatkészlet** válassza **megjelenítése**. 4. ábra hasonló üzenet jelenik meg.  
 
-![A cadairydata.csv adatkészlet összefoglalása][4]
+![A cadairydata.csv adatkészlet összefoglalása](./media/r-quickstart/fig4.png)
 
 *4. ábra A cadairydata.csv adatkészlet összefoglalása.*
 
@@ -200,7 +200,7 @@ A parancsfájl csomagot adjon meg lehetővé teszi, hogy adja át a tartalmát e
     load("src/yourData.rdata") # Reads a zipped R data file
 
 > [!NOTE]
-> Az Azure Machine Learning fájlokat a zip-fájl kezeli, mintha azok az src / könyvtár, ezért a fájlneveket, a könyvtárnév a előtagot kell. Ha például a zip-fájl tartalmazza a fájlok `yourfile.R` és `yourData.rdata` a zip-fájl gyökerében szeretné megoldani ezeket az adatokat `src/yourfile.R` és `src/yourData.rdata` használatakor `source` és `load`.
+> Az Azure Machine Learning Studio fájlokat a zip-fájl kezeli, mintha azok az src / könyvtár, ezért a fájlneveket, a könyvtárnév a előtagot kell. Ha például a zip-fájl tartalmazza a fájlok `yourfile.R` és `yourData.rdata` a zip-fájl gyökerében szeretné megoldani ezeket az adatokat `src/yourfile.R` és `src/yourData.rdata` használatakor `source` és `load`.
 > 
 > 
 
@@ -227,7 +227,7 @@ Már beszéltünk betöltése adatkészleteket az [az adatkészlet betöltése](
 
 Ha befejeződött, ezeket a lépéseket a [R-szkript végrehajtása] [ execute-r-script] modul végrehajtja az R-szkriptet a zip-fájlban a kísérlet futtatásakor. Ezen a ponton a kísérlet várható megjelenése 5. ábra.
 
-![Kísérletezzen a tömörített R-szkript használatával][6]
+![Kísérletezzen a tömörített R-szkript használatával](./media/r-quickstart/fig6.png)
 
 *5. ábra A kísérlet tömörített R-parancsfájl használatával.*
 
@@ -289,7 +289,7 @@ Készíthető egy R-adathalmaz tartalmának a eredmény Dataset1 porton kereszt�
 
 Miután a kísérletet, kattintson az eredmény Dataset1 kimeneti portjára, és kattintson a **Visualize**. 6. ábra hasonló üzenet jelenik meg.
 
-![A kimenet a kaliforniai tejelő adatok a Vizualizáció][7]
+![A kimenet a kaliforniai tejelő adatok a Vizualizáció](./media/r-quickstart/fig7.png)
 
 *6. ábra A kimenet a kaliforniai tejelő adatok a Vizualizáció.*
 
@@ -300,13 +300,13 @@ Az eszköz kimenete a [R-szkript végrehajtása] [ execute-r-script] modul kimen
 
 Az R-eszköz kimenet megtekintéséhez kattintson a porton majd a **Visualize**. Láthatjuk, hogy a standard kimeneti és a standard hiba a 7. ábra az R-szkriptet.
 
-![Standard kimenet és az R-eszköz portról standard hiba][8]
+![Standard kimenet és az R-eszköz portról standard hiba](./media/r-quickstart/fig8.png)
 
 *7. ábra Standard kimenet és az R-eszköz portról standard hiba.*
 
 Görgetés lefelé, hogy az R-szkriptet a 8. ábrán a grafikus kimenetének megtekintése.  
 
-![Az R-eszköz port grafikus kimenete][9]
+![Az R-eszköz port grafikus kimenete](./media/r-quickstart/fig9.png)
 
 *8. ábra Az R-eszköz port kimenete grafikus.*  
 
@@ -689,7 +689,7 @@ Vizsgáljuk meg néhányat a változókat, ez az adatkészlet. Teszteredményekb
 
 Futtassa ezt a kódot, és lássuk, mi történik. A diagram R eszköz kikötő előállított 16. ábra hasonlóan kell kinéznie.
 
-![Kijelölt változók Teszteredményekből mátrix][17]
+![Kijelölt változók Teszteredményekből mátrix](./media/r-quickstart/fig17.png)
 
 *16. ábra. Kijelölt változók Teszteredményekből össze.*
 
@@ -753,7 +753,7 @@ Egyszer `ts.detrend()` van definiálva az adathalmaz iránt változókhoz alkalm
 
 A végső kódsort páros teszteredményekből hoz létre. Után futtatja az R-kód, a teszteredményekből eredményei láthatók 17. ábra.
 
-![Páros teszteredményekből megszüntetéséhez trendszerű és egységesített idősorok][18]
+![Páros teszteredményekből megszüntetéséhez trendszerű és egységesített idősorok](./media/r-quickstart/fig18.png)
 
 *17. ábra. Páros teszteredményekből megszüntetéséhez trendszerű és a szabványos sorozat harmadik része.*
 
@@ -856,7 +856,7 @@ A következő kódot a késés értékek kibontása FTB objektumok, amelyek magu
 
 
     ## WARNING!
-    ## The following line works only in Azure Machine Learning
+    ## The following line works only in Azure Machine Learning Studio
     ## When running in RStudio, this code will result in an error
     #maml.mapOutputPort('outframe')
 
@@ -870,7 +870,7 @@ Vegye figyelembe, hogy a sor neveket az adathalmaz oszlopában. Így megtartja e
 
 A kimenetet a 19. ábra jelenik meg a kódot futtató hoz létre. Ha e **Visualize** a kimenetet a az adatkészlet eredmény port. A sor nevek szerepelnek az első oszlop helyesen.
 
-![A korrelációs elemzési eredmények kimenete][20]
+![A korrelációs elemzési eredmények kimenete](./media/r-quickstart/fig20.png)
 
 *19. ábra. Kimenete a korrelációs elemzési eredményeket.*
 
@@ -884,7 +884,7 @@ Ez a szakasz a teljes R-kód a korábban letöltött zip-fájl szerepel.
 ### <a name="creating-the-dataframe-for-analysis"></a>Az adathalmaz elemzéshez létrehozása
 Első lépésként adjon hozzá egy **új** [R-szkript végrehajtása] [ execute-r-script] modult a kísérletvászonra. Csatlakozás a **eredmény adatkészlet** kimenete a meglévő [R-szkript végrehajtása] [ execute-r-script] modult a **Dataset1** az új modul bemeneti. Az eredmény hasonlóan kell kinéznie 20. ábra.
 
-![A kísérlet hozzáadott új R-szkript végrehajtása modullal][21]
+![A kísérlet hozzáadott új R-szkript végrehajtása modullal](./media/r-quickstart/fig21.png)
 
 *20. ábra. A kísérlet hozzáadott új R-szkript végrehajtása modullal.*
 
@@ -954,7 +954,7 @@ A time series jeleníti meg az R-eszköz kimenetében megjelennek a 22. ábra so
 ### <a name="a-trend-model"></a>A trend modell
 Miután létrehozta a egy time series objektumot, és hogy megtekintette az adatokat, először a kaliforniai tej éles adatok trend modell összeállításához. Mi a time series regressziós módszerrel történő teheti meg. Azt azonban nincs bejelölve, a diagram, amely a rendszer több mint egy görbét kell és pontos modellezésére a betanítási adatok megfigyelt trendje intercept.
 
-Adja meg a kis léptékű az adatok, e lesz a modell az RStudio trend és majd kivágja és beilleszti az eredményül kapott modell az Azure Machine Learningbe. Az RStudio biztosít egy interaktív környezetet az ilyen típusú interaktív elemzés céljából.
+Adja meg a kis léptékű az adatok, e lesz a modell az RStudio trend és majd kivágja és beilleszti az eredményül kapott modell Azure Machine Learning studióba. Az RStudio biztosít egy interaktív környezetet az ilyen típusú interaktív elemzés céljából.
 
 Első kísérlet alkalmával, mint a powers legfeljebb 3 polinom regresszió fogja meg. Nincs túlterhelt igyekeznek az ilyen típusú modellek valós veszélyt. Emiatt tanácsos magas rendelés feltételeit elkerülése érdekében. A `I()` függvény gátolja a tartalmának értelmezése (értelmezi a tartalma ","), és lehetővé teszi, hogy egy regressziós egyenlőségi szó szerint értelmezett függvény írhat.
 
@@ -1014,7 +1014,7 @@ Ez létrehozza a következő.
 
 Ez tűnik jobb. A feltételek mindegyike jelentős. (2E) – 16 értéke azonban az alapértelmezett érték, és nem kell túl komolyan venni.  
 
-Megerősítést tesztként tekintsük California tejtermelésre adatok idő sorozat rajzot a trend görbéjű látható. A következő kódot az Azure Machine Learning hozzáadott [R-szkript végrehajtása] [ execute-r-script] (nem az RStudio) modell a modell létrehozásához, és győződjön meg arról, egy diagram. 23. ábra jelenik meg az eredményt.
+Megerősítést tesztként tekintsük California tejtermelésre adatok idő sorozat rajzot a trend görbéjű látható. A következő kódot az Azure Machine Learning studióban hozzáadott [R-szkript végrehajtása] [ execute-r-script] (nem az RStudio) modell a modell létrehozásához, és győződjön meg arról, egy diagram. 23. ábra jelenik meg az eredményt.
 
     milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
 
@@ -1071,14 +1071,14 @@ Ez létrehozza a következő.
 
 Láthatjuk, hogy a modell már nem egy intercept szól, és rendelkezik a 12 hónap jelentős tényezők. Ez a pontosan, mi szerettünk megtekintéséhez.
 
-Tekintsük meg egy másik time series rajz California tejtermelésre adatok arról, hogy működik-e a szezonális modell. A következő kódot az Azure Machine Learning hozzáadott [R-szkript végrehajtása] [ execute-r-script] a modell létrehozásához, és győződjön meg arról, egy diagram.
+Tekintsük meg egy másik time series rajz California tejtermelésre adatok arról, hogy működik-e a szezonális modell. A következő kódot az Azure Machine Learning studióban hozzáadott [R-szkript végrehajtása] [ execute-r-script] a modell létrehozásához, és győződjön meg arról, egy diagram.
 
     milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
 
     plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Milk Production 1000s lb", type = "l")
     lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 
-A diagram látható 24. ábra ezt a kódot futtató az Azure Machine Learning eredményez.
+Ez a kód futtatása az Azure Machine Learning Studióban az ábrázolást. ábra 24 bemutatott hoz létre.
 
 ![Kaliforniai tejtermelés többek között a szezonális hatások modellel](./media/r-quickstart/unnamed-chunk-20.png)
 
@@ -1198,7 +1198,7 @@ Nézzük felszerelt függvény méréséhez az RMS-hiba, hozhat létre és az RM
 
 A kimenetben látható, az eredmény adathalmaz kimeneti portját 27. ábra ezt a kódot futtató eredményez.
 
-![Az RMS-hibák modellek összehasonlítása][26]
+![Az RMS-hibák modellek összehasonlítása](./media/r-quickstart/fig26.png)
 
 *27. ábra. A modellek RMS által jelzett hibákat összehasonlítása.*
 
@@ -1246,31 +1246,6 @@ Néhány nagyszerű internetes erőforrások:
 * R Tibor fekete Clarkson egyetemen által rövid oktatóanyagot http://www.cyclismo.org/tutorial/R/
 * Több mint 60 R felsorolt forrásokat: http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
 
-<!--Image references-->
-[1]: ./media/r-quickstart/fig1.png
-[2]: ./media/r-quickstart/fig2.png
-[3]: ./media/r-quickstart/fig3.png
-[4]: ./media/r-quickstart/fig4.png
-[5]: ./media/r-quickstart/fig5.png
-[6]: ./media/r-quickstart/fig6.png
-[7]: ./media/r-quickstart/fig7.png
-[8]: ./media/r-quickstart/fig8.png
-[9]: ./media/r-quickstart/fig9.png
-[10]: ./media/r-quickstart/fig10.png
-[11]: ./media/r-quickstart/fig11.png
-[12]: ./media/r-quickstart/fig12.png
-[13]: ./media/r-quickstart/fig13.png
-[14]: ./media/r-quickstart/fig14.png
-[15]: ./media/r-quickstart/fig15.png
-[16]: ./media/r-quickstart/fig16.png
-[17]: ./media/r-quickstart/fig17.png
-[18]: ./media/r-quickstart/fig18.png
-[19]: ./media/r-quickstart/fig19.png
-[20]: ./media/r-quickstart/fig20.png
-[21]: ./media/r-quickstart/fig21.png
-[22]: ./media/r-quickstart/fig22.png
-
-[26]: ./media/r-quickstart/fig26.png
 
 <!--links-->
 [appendixa]: #appendixa

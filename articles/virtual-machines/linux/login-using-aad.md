@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: f640ea2e8af8c8ae2bc8a6a1224adca17e897b81
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5ef84f6dbabbfed802a61306eeae09e0b0ccf36f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811324"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456165"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -50,7 +50,7 @@ A következő Linux-disztribúció jelenleg a szolgáltatás az előzetes verzi�
 | openSUSE | openSUSE Leap 42.3 |
 | RedHat Enterprise Linux | RHEL RHEL 7, 6 | 
 | SUSE Linux Enteprise Server | SLES 12 |
-| Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04, Ubuntu Server 17.10 és Ubuntu Server 18.04 |
+| Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04 és Ubuntu Server 18.04 |
 
 
 A következő Azure-régiók jelenleg a szolgáltatás az előzetes verzióban támogatja:

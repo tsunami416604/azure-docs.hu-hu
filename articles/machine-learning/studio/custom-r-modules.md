@@ -1,7 +1,7 @@
 ---
 title: Adja meg az egyéni R-modulok
 titleSuffix: Azure Machine Learning Studio
-description: Ez a témakör azt ismerteti, hogyan hozhat létre, és a egy egyéni R modult az Azure Machine Learning üzembe helyezése. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk.
+description: Ez a témakör ismerteti, hogyan hozhat létre, és üzembe helyezése az Azure Machine Learning Studióban, egy egyéni R modult. Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0da5456845b940ef88ac40ffed1f53e84fe54080
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 43691988e3f4f253c642702ad19272a5267c14cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488305"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56457030"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Adja meg az egyéni R-modulok az Azure Machine Learning Studióban
 
@@ -24,9 +24,9 @@ Ez a témakör ismerteti, hogyan hozhat létre, és üzembe helyezése az Azure 
 
 
 ## <a name="what-is-a-custom-r-module"></a>Mi az, hogy egy egyéni R modult?
-A **egyéni modult** egy felhasználó által definiált modul, amely feltölti a munkaterülethez, és egy Azure Machine Learning-kísérlet részeként végrehajtott. A **egyéni R modult** van egy egyéni modult, amely végrehajtja a felhasználó által definiált R függvény. **R** a egy programnyelv a statisztikai számítástechnika és a grafikai statisztikusok és az adatelemző szakemberek által algoritmusok megvalósításának széles körben használt. R jelenleg az egyetlen támogatott egyéni modulok, de támogatja a jövőbeli kiadásokban további nyelveket van ütemezve nyelv.
+A **egyéni modult** egy felhasználó által definiált modul, amely feltölti a munkaterülethez, és egy Azure Machine Learning Studio-kísérlet részeként végrehajtott. A **egyéni R modult** van egy egyéni modult, amely végrehajtja a felhasználó által definiált R függvény. **R** a egy programnyelv a statisztikai számítástechnika és a grafikai statisztikusok és az adatelemző szakemberek által algoritmusok megvalósításának széles körben használt. R jelenleg az egyetlen támogatott egyéni modulok, de támogatja a jövőbeli kiadásokban további nyelveket van ütemezve nyelv.
 
-Egyéni modulok rendelkezik **első osztályú állapot** az Azure Machine Learning abban az értelemben, hogy azokat bármely egyéb modult hasonlóan használhatók. Azokat más modulok, a közzétett kísérletek vagy a vizualizációkban szereplő hajthatók végre. Az algoritmus által a modul, a bemeneti és a használandó a kimeneti portok, a modellezési paramétereket és egyéb futásidejű működés megvalósított szabályozhatják. Egy kísérlet, amely tartalmazza az egyéni modulok is be az Azure AI-katalógusban az egyszerű tehetők közzé.
+Egyéni modulok rendelkezik **első osztályú állapot** az Azure Machine Learning Studióban abban az értelemben, hogy azokat bármely egyéb modult hasonlóan használhatók. Azokat más modulok, a közzétett kísérletek vagy a vizualizációkban szereplő hajthatók végre. Az algoritmus által a modul, a bemeneti és a használandó a kimeneti portok, a modellezési paramétereket és egyéb futásidejű működés megvalósított szabályozhatják. Egy kísérlet, amely tartalmazza az egyéni modulok is be az Azure AI-katalógusban az egyszerű tehetők közzé.
 
 ## <a name="files-in-a-custom-r-module"></a>Egy egyéni R modult lévő fájlok
 Egy egyéni R modult, legalább két fájlokat tartalmazó .zip fájl által van definiálva:
@@ -55,7 +55,7 @@ Vegyünk például egy **egyéni sorok hozzáadása** modul, amely módosítja a
     } 
 
 ### <a name="the-xml-definition-file"></a>Az XML-definíciós fájl
-Ez elérhetővé `CustomAddRows` funkciót az Azure Machine Learning modul, egy XML-definíciós fájlt kell létrehozni, adja meg a **egyéni sorok hozzáadása** modul kell megjelenését és működését. 
+Ez elérhetővé `CustomAddRows` funkciót az Azure Machine Learning Studio modul, egy XML-definíciós fájlt kell létrehozni, adja meg a **egyéni sorok hozzáadása** modul kell megjelenését és működését. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -105,7 +105,7 @@ A **egyéni sorok hozzáadása** modul elérhetők, a Machine Learning-kísérle
 
 ## <a name="elements-in-the-xml-definition-file"></a>Az XML-definíciós fájljának elemek
 ### <a name="module-elements"></a>A modul elemek
-A **modul** elem az XML-fájl egy egyéni modult meghatározására szolgál. Több modul lehet definiálni egy XML-fájlt több **modul** elemeket. A munkaterület minden modulja egyedi névvel kell rendelkeznie. Egy egyéni modult regisztrálni a neve megegyezik egy már létező egyéni modult, és felülírja a meglévő modul az újra. Egyedi modulokat, azonban lehet a neve megegyezik egy meglévő Azure Machine Learning modul regisztrálva. Ha így azok megjelennek a **egyéni** a modulpaletta kategóriáját.
+A **modul** elem az XML-fájl egy egyéni modult meghatározására szolgál. Több modul lehet definiálni egy XML-fájlt több **modul** elemeket. A munkaterület minden modulja egyedi névvel kell rendelkeznie. Egy egyéni modult regisztrálni a neve megegyezik egy már létező egyéni modult, és felülírja a meglévő modul az újra. Egyedi modulokat, azonban lehet a neve megegyezik egy meglévő Azure Machine Learning Studio-modul regisztrálva. Ha így azok megjelennek a **egyéni** a modulpaletta kategóriáját.
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
@@ -330,7 +330,7 @@ Egy modul paraméter használatával van definiálva a **Arg** gyermekeleme a **
   * **alapértelmezett** – az alapértelmezett tulajdonság értékét meg kell felelnie az egyik egy azonosítót tartalmazó a **elem** elemeket.
 
 ### <a name="auxiliary-files"></a>Külső fájlok
-Összes fájl, amely az egyéni modul ZIP-fájlja kerül lesz használható végrehajtási idő alatt. Jelen könyvtárstruktúrák megmaradnak. Ez azt jelenti, sourcing works fájl azonos helyileg és az Azure Machine Learning végrehajtását. 
+Összes fájl, amely az egyéni modul ZIP-fájlja kerül lesz használható végrehajtási idő alatt. Jelen könyvtárstruktúrák megmaradnak. Ez azt jelenti, sourcing works fájl azonos helyileg és az Azure Machine Learning Studio végrehajtását. 
 
 > [!NOTE]
 > Figyelje meg, hogy az összes fájlok kibontása "src" könyvtár, így az összes elérési utat kell "src /" előtaggal.

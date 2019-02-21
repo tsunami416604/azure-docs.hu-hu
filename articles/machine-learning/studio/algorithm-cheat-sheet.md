@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 83a8a7f927e78f3524128338d874334ebf0b3df1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 77cd485b7ca7f9965a8baf9026b68060067d6ebe
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884001"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453936"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Gépi tanulási algoritmus-Adatlap az Azure Machine Learning Studióban
 
-A **Azure Machine Learning algoritmus Adatlap lap** segítségével válassza ki a megfelelő algoritmus a prediktív elemzési modellek.
+A **Azure Machine Learning Studio algoritmus Adatlap lap** segítségével válassza ki a megfelelő algoritmus a prediktív elemzési modellek.
 
 [Az Azure Machine Learning Studio](https://studio.azureml.net/) rendelkezik egy nagy származó algoritmusok könyvtára a ***regressziós***, ***besorolási***, ***Fürtszolgáltatás***, és  ***anomáliadetektálás*** családhoz. Minden egyes célja egy más típusú machine learning a probléma megoldása érdekében.
 
@@ -27,14 +27,12 @@ A **Azure Machine Learning algoritmus Adatlap lap** segítségével válassza ki
 
 **A Adatlap letöltése: [A Machine Learning algoritmus-Adatlap (11 x 17)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
-![A Machine learning algoritmus-Adatlap: Ismerje meg, egy gépi tanulási algoritmus kiválasztása.][cheat-sheet]
-
-[cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
+![A Machine learning algoritmus-Adatlap: Ismerje meg, egy gépi tanulási algoritmus kiválasztása.](./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png)
 
 Töltse le, és a Machine Learning Studio algoritmus Adatlap lap nyomtatása tabloid méretben kéznél legyen, és kérjen segítséget az algoritmus kiválasztása.
 
 > [!NOTE]
-> Használatával a Adatlap döntöttek a megfelelő algoritmus, valamint a különböző típusú gépi tanulási algoritmusok és a használatuk mélyebb hatásának a megbeszélését lásd [algoritmusok kiválasztása a Microsoft Azure Machine Learninghez](algorithm-choice.md).
+> Használatával a Adatlap döntöttek a megfelelő algoritmus, valamint a különböző típusú gépi tanulási algoritmusok és a használatuk mélyebb hatásának a megbeszélését lásd [algoritmusok kiválasztása a Microsoft Azure Machine Learning Studióban](algorithm-choice.md).
 
 ## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>Megjegyzések és a Machine Learning Studio algoritmus terminológiai definíciók – Adatlap
 
@@ -44,7 +42,7 @@ Töltse le, és a Machine Learning Studio algoritmus Adatlap lap nyomtatása tab
 
 * A gépi tanulás három fő kategóriába sorolhatók: **felügyelt tanítással**, **tanítást**, és **megerősítő tanulást**.
 
-  * A **felügyelt tanítással**, az egyes van címkézett, illetve a társított egy kategóriát vagy az egyik fontos értékére.  Egy példa egy kategorikus címke van hozzárendelése "cat" vagy "kutya" kép.  Egy érték felirat egyik példája az olyan kapcsolattal társított eladási ár. A felügyelt tanítás célja, hogy ezeket, mint számos címkézett példák tanulmánya majd tudnak kapcsolatos jövőbeli adatpontok előrejelzéseket. Például új fényképet azonosítja a megfelelő szolgáltatást, vagy más használt autók pontos értékesítési árak hozzárendelése. Ez a machine learning egy népszerű és hasznos típusú. Az Azure Machine Learning összes felügyelt tanulási algoritmus kivételével [K-közép-Fürtszolgáltatás][k-means-clustering].
+  * A **felügyelt tanítással**, az egyes van címkézett, illetve a társított egy kategóriát vagy az egyik fontos értékére.  Egy példa egy kategorikus címke van hozzárendelése "cat" vagy "kutya" kép.  Egy érték felirat egyik példája az olyan kapcsolattal társított eladási ár. A felügyelt tanítás célja, hogy ezeket, mint számos címkézett példák tanulmánya majd tudnak kapcsolatos jövőbeli adatpontok előrejelzéseket. Például új fényképet azonosítja a megfelelő szolgáltatást, vagy más használt autók pontos értékesítési árak hozzárendelése. Ez a machine learning egy népszerű és hasznos típusú. Az Azure Machine Learning Studióban összes felügyelt tanulási algoritmus kivételével [K-közép-Fürtszolgáltatás][k-means-clustering].
 
   * A **tanítást**, adatpontok nem tartalmaz feliratokat társítva. Ehelyett egy felügyeletlen tanulási algoritmus célja valamilyen módon adatok rendezése, vagy a szerkezetét írja le. Ez azt csoportosítás, csoportosít, a K-közép hasonlóan, vagy különböző módszert is megnézzük az összetett, így egyszerűbb jelenik kereséséhez.
 

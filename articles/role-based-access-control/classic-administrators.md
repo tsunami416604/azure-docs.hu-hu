@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/10/2019
+ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3274d753d33c759efa06b899a5511daf53aa9ec9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f4838f688210f9017d691bd6a463217a75fc90d4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338648"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447514"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan lehet a társ-rendszergazdaként, és a szolgáltat�
 ## <a name="add-a-co-administrator"></a>Adja hozzá a társ-rendszergazda
 
 > [!TIP]
-> Csak kell hozzáadni a társ-rendszergazda, ha a felhasználónak szüksége van az Azure klasszikus üzembe helyezés kezelése. Azt javasoljuk, hogy az RBAC használatával más célokra.
+> Csak kell hozzáadni a társ-rendszergazda, ha a felhasználónak az Azure klasszikus üzembe helyezés kezelése használatával [Azure Service Management PowerShell-modul](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure). Ha a felhasználó csak használ az Azure Portalon a klasszikus erőforrások felügyeletére, nem kell a felhasználó a hagyományos adminisztrátor hozzáadása.
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) a szolgáltatás-rendszergazdájaként.
 

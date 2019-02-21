@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 73df93345cf73939f33afedfd655cef847d895dc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bd9e9d64849c90d23146b814d2d48a8400d069f0
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863567"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447956"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech áttelepít a beszédszolgáltatás
 
@@ -37,7 +37,7 @@ A [beszéd SDK](speech-sdk.md) a Bing Speech-klienskódtárakkal működési hel
 
 A beszédfelismerési szolgáltatás hasonlít nagyrészt a Bing Speech, a következő eltérésekkel.
 
-Funkció | Bing – Beszédfelismerés | Beszédszolgáltatás | Részletek
+Szolgáltatás | Bing – Beszédfelismerés | Beszédszolgáltatás | Részletek
 -|-|-|-
 C++ SDK | : heavy_minus_sign: | :heavy_check_mark: | Beszédszolgáltatás támogatja a Windows és Linux rendszereken.
 Java SDK | :heavy_check_mark: | :heavy_check_mark: | Beszédszolgáltatás támogatja az Android- és beszédfelismerés eszközök.
@@ -65,7 +65,7 @@ Ha Ön vagy a szervezet rendelkezik a Bing Speech API-t használó alkalmazások
 
 A beszédfelismerési szolgáltatás [REST API-k](rest-apis.md) kompatibilisek a Bing Speech API-kat. Ha jelenleg használja a Bing Speech REST API-k, kell csak módosítsa a REST-végponthoz, és váltson át egy Speech Service előfizetési kulcsot.
 
-A beszédfelismerési szolgáltatás WebSockets protokollt is használta a Bing Speech összhangban legyenek. Azt javasoljuk, hogy az új fejlesztési feladatokhoz, használja a websockets protokoll helyett a Speech Service SDK-t. Célszerű az SDK-hoz, valamint a meglévő kód áttelepítése. Azonban, a REST API-k, a meglévő kódot, amely használja a websockets protokoll használatával a Bing Speech csak változások szükségesek az végpontját és a egy frissített kulcsot.
+A beszédfelismerési szolgáltatás WebSockets protokollt is használta a Bing Speech összhangban legyenek. Azt javasoljuk, hogy az új fejlesztési feladatokhoz, használja a websockets protokoll helyett a Speech SDK. Célszerű az SDK-hoz, valamint a meglévő kód áttelepítése. Azonban, a REST API-k, a meglévő kódot, amely használja a websockets protokoll használatával a Bing Speech csak változások szükségesek az végpontját és a egy frissített kulcsot.
 
 Ha egy adott programozási nyelvhez használja a Bing Speech ügyféloldali kódtár,-ba való migrálás a [beszéd SDK](speech-sdk.md) az alkalmazás módosítását igényli, mivel az API-t nem egyezik. A beszédfelismerés SDK-t is egyszerűbbé teszik a kódját, közben is betekinthet a új szolgáltatások.
 

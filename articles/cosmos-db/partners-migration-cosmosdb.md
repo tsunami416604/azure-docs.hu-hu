@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: 25d2b9fac65525c56912e5daa7e5bcb4aa2cd5f4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 255182fe5e6c5576077dc97831628e4a13dfc026
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036001"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453521"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Az Azure Cosmos DB nosql-alapú áttelepítés és az alkalmazás fejlesztői-partnerek
 
@@ -38,7 +38,7 @@ A nosql-alapú áttelepítés alkalmazásfejlesztés közül választhat külön
 |![Coeo][7]     |   Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez |    Egyesült Királyság     |  [Webhely](http://www.coeo.com/)       |
 | ![Cognizant][15] | Nosql-alapú áttelepítés |Egyesült Államok, Kanada, Egyesült Királyság, Dánia, Hollandia, Svájc, Ausztrália, japán | [Webhely](https://www.cognizant.com/)|
 |![Infosys][8]     |  Nosql-alapú áttelepítés       |    Globális     |  [Webhely](http://www.infosys.com/)       |
-| ![Lagash][16] | Nosql-alapú áttelepítés <br/> Új alkalmazások fejlesztéséhez | Argentína, Chile, Kolumbia, Mexikó| [Webhely](https://lagash.com/)|
+| ![Lagash][16] | Nosql-alapú áttelepítés <br/> Új alkalmazások fejlesztéséhez | Argentína, Chile, Kolumbia, Mexikó| [Webhely](https://www.lagash.com/)|
 | ![Lambda3 Informatics][17] | Nosql-alapú áttelepítés <br/> Új alkalmazások fejlesztéséhez | Brazília| [Webhely](https://www.lambda3.com.br/)|
 |![Neal Analytics][9]     |     Alkalmazásfejlesztés (új alkalmazás)    |    USA     |  [Webhely](http://www.nealanalytics.com/)       |
 |![Pragmatic Works szoftver Inc vállalattól][10]    |   Nosql-alapú áttelepítés      |   USA      |  [Webhely](http://www.pragmaticworks.com/)       |

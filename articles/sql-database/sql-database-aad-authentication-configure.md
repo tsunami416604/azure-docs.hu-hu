@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 87c3633bb3ed3537d1e258b9d8d50fd6d6356d81
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 02/20/2019
+ms.openlocfilehash: ced83fc31e9e4944f7392169b703056dc5b4fd98
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960025"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454837"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL
 
@@ -39,7 +39,7 @@ További információk a következő témakörökben találhatók: [Helyszíni i
 1. Az Azure Active Directory Azure-előfizetés társítása azáltal, hogy a könyvtár az adatbázist üzemeltető Azure-előfizetéshez tartozó megbízható könyvtár. További információkért lásd: [kapcsolódnak az Azure AD-Azure-előfizetések](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 2. A címtárváltóval az Azure Portalon ahhoz az előfizetéshez társított tartományt váltani.
 
-   **További információ:** Azure AD-példányban megbízhatósági kapcsolattal rendelkezik minden Azure-előfizetésre. Ez azt jelenti, hogy megbízik ebben a címtárban a felhasználók, szolgáltatások és eszközök hitelesítéséhez. Több előfizetés is megbízhat ugyanabban a címtárban, de egy előfizetés csak egy címtárban bízhat meg. Ez az előfizetés és a címtár közötti bizalmi kapcsolat nem olyan, mint ami az előfizetés és az Azure összes többi erőforrása (webhelyek, adatbázisok stb.) között áll fenn, amelyek inkább az előfizetések gyermekerőforrásainak számítanak. Ha egy előfizetés lejár, akkor az előfizetéssel társított ilyen egyéb erőforrások hozzáférése is lejár. De a címtár az Azure-ban elérhető marad, és más előfizetéseket társíthat ezzel a címtárral, és folytathatja a címtár felhasználóinak kezelését. Erőforrásokkal kapcsolatos további információkért lásd: [az Azure-beli erőforrás-hozzáférésének megismerése](../active-directory/active-directory-b2b-admin-add-users.md). További tudnivalók ezzel kapcsolatban lásd: megbízható további [társításával vagy Azure-előfizetés hozzáadása az Azure Active Directoryhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+   **További információ:** Minden Azure-előfizetés bizalmi kapcsolattal rendelkezik egy Azure AD-példányhoz. Ez azt jelenti, hogy megbízik ebben a címtárban a felhasználók, szolgáltatások és eszközök hitelesítéséhez. Több előfizetés is megbízhat ugyanabban a címtárban, de egy előfizetés csak egy címtárban bízhat meg. Ez az előfizetés és a címtár közötti bizalmi kapcsolat nem olyan, mint ami az előfizetés és az Azure összes többi erőforrása (webhelyek, adatbázisok stb.) között áll fenn, amelyek inkább az előfizetések gyermekerőforrásainak számítanak. Ha egy előfizetés lejár, akkor az előfizetéssel társított ilyen egyéb erőforrások hozzáférése is lejár. De a címtár az Azure-ban elérhető marad, és más előfizetéseket társíthat ezzel a címtárral, és folytathatja a címtár felhasználóinak kezelését. Erőforrásokkal kapcsolatos további információkért lásd: [az Azure-beli erőforrás-hozzáférésének megismerése](../active-directory/active-directory-b2b-admin-add-users.md). További tudnivalók ezzel kapcsolatban lásd: megbízható további [társításával vagy Azure-előfizetés hozzáadása az Azure Active Directoryhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Hozzon létre egy Azure SQL Serverhez készült Azure AD-rendszergazda
 
@@ -135,7 +135,7 @@ A felügyelt példány sikeresen elvégezhető a feladatok, például a felhaszn
 
    Az Active Directory-rendszergazda lap megjeleníti az összes tag és Active Directory-csoportokat. Felhasználók vagy csoportok szürkén jelennek meg, nem választható, mert azokat az Azure AD-rendszergazdák nem támogatottak. A támogatott rendszergazdák listájának megtekintéséhez [az Azure AD-funkciók és korlátozások](sql-database-aad-authentication.md#azure-ad-features-and-limitations). Szerepköralapú hozzáférés-vezérlés (RBAC) csak azokra az Azure Portalon, és nem vonatkoznak az SQL Server.
 
-    ![rendszergazda hozzáadása](./media/sql-database-aad-authentication/add-admin.png)
+    ![add-admin](./media/sql-database-aad-authentication/add-admin.png)
 
 8. Az Active Directory-rendszergazda lap tetején válassza **mentése**.
 
@@ -143,7 +143,7 @@ A felügyelt példány sikeresen elvégezhető a feladatok, például a felhaszn
 
     A változó a rendszergazda a folyamat eltarthat néhány percig. Az új rendszergazda ezután az Active Directory felügyeleti mezőjében jelenik meg.
 
-Azure ad-ben bejelentkezéseket hozhasson létre megkezdése után üzembe helyezés az Azure AD-rendszergazdát a felügyelt példány esetében (**nyilvános előzetes verzióban**) az a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> szintaxist. További információkért lásd: [felügyelt példány áttekintése](sql-database-managed-instance.md#azure-active-directory-integration).
+Hozhat létre az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) megkezdése után üzembe helyezés az Azure AD-rendszergazdát a felügyelt példány esetében (**nyilvános előzetes verzióban**) az a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> szintaxist. További információkért lásd: [felügyelt példány áttekintése](sql-database-managed-instance.md#azure-active-directory-integration).
 
 > [!TIP]
 > Későbbi távolítsa el a rendszergazda az Active Directory-rendszergazda lap tetején válassza **rendszergazda eltávolítása**, majd válassza ki **mentése**.
@@ -241,7 +241,7 @@ Azure AD-rendszergazdát a következő CLI-parancsok meghívásával is kiépít
 | Parancs | Leírás |
 | --- | --- |
 |[az sql server-ad-rendszergazda létrehozása](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) |Az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data Warehouse kiépítése. (Kell lennie az aktuális előfizetésben.) |
-|[az sql server ad-rendszergazda törlése](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) |Eltávolítja az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data warehouse-bA. |
+|[az sql server ad-admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) |Eltávolítja az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data warehouse-bA. |
 |[az sql server ad-rendszergazdák listájának](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) |Az Azure SQL-kiszolgáló vagy az Azure SQL Data Warehouse jelenleg konfigurált Azure Active Directory-rendszergazda adatait adja vissza. |
 |[az sql server ad-rendszergazda frissítése](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) |Frissíti egy Azure SQL-kiszolgáló vagy az Azure SQL Data Warehouse számára az Active Directory-rendszergazda. |
 
@@ -264,7 +264,7 @@ Ezek a követelmények szerint teljesítheti:
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Hozzon létre tartalmazottadatbázis-felhasználók az Azure AD-identitások leképezett adatbázis
 
 >[!IMPORTANT]
->Felügyelt példány mostantól támogatja az Azure ad-ben bejelentkezések (**nyilvános előzetes verzióban**), amely lehetővé teszi a bejelentkezések létrehozása az Azure AD felhasználók, csoportok és alkalmazások. Az Azure AD-bejelentkezés lehetővé teszi a anélkül, hogy létrehozni egy tartalmazottadatbázis-felhasználó, az adatbázis-felhasználók a felügyelt példányokra való hitelesítéséhez. További információkért lásd: [felügyelt példány áttekintése](sql-database-managed-instance.md#azure-active-directory-integration). Az Azure AD-bejelentkezés létrehozásával szintaxis, lásd: <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>.
+>Felügyelt példány mostantól támogatja az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) (**nyilvános előzetes verzióban**), amely lehetővé teszi a bejelentkezések létrehozása az Azure AD felhasználók, csoportok és alkalmazások. Az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) lehetővé teszi a anélkül, hogy létrehozni egy tartalmazottadatbázis-felhasználó, az adatbázis-felhasználók a felügyelt példányokra való hitelesítéséhez. További információkért lásd: [felügyelt példány áttekintése](sql-database-managed-instance.md#azure-active-directory-integration). A szintaxis az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) létrehozásával, tekintse meg <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>.
 
 Az Azure Active Directory-hitelesítés szükséges, tartalmazottadatbázis-felhasználókat létrehozni az adatbázis-felhasználók. Egy Azure AD identity alapuló tartalmazottadatbázis-felhasználó egy adatbázis-felhasználót, amely nem rendelkezik bejelentkezési adatokat a master adatbázisban, és amely leképezi a az adatbázishoz társított Azure AD-címtárat az identitást. Az Azure AD identity lehet egyedi felhasználói fiók vagy csoport. Tartalmazottadatbázis-felhasználókkal kapcsolatos további információkért lásd: [tartalmazott adatbázis-felhasználók – így az adatbázis hordozható](https://msdn.microsoft.com/library/ff929188.aspx).
 
@@ -281,7 +281,7 @@ CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
 
 *Azure_AD_principal_name* lehet egy Azure AD-felhasználó egyszerű felhasználónevét vagy egy Azure AD-csoport megjelenítendő nevét.
 
-**Példák:** hozhat létre egy tartalmazott adatbázisban képviselő Azure AD felhasználói összevont vagy kezelt tartományi felhasználói:
+**Példák:** Hozzon létre egy tartalmazott adatbázisban felhasználó képviselő Azure AD összevont, vagy felügyelt tartományi felhasználó:
 
 ```sql
 CREATE USER [bob@contoso.com] FROM EXTERNAL PROVIDER;
@@ -323,14 +323,11 @@ Győződjön meg róla, az Azure AD-rendszergazda megfelelően beállíthassa, c
 Üzembe helyez egy Azure AD-alapú tartalmazott adatbázis-felhasználó (nem a kiszolgáló rendszergazdája, amely az adatbázis tulajdonosa), csatlakozzon az adatbázishoz az Azure AD identitás, amely hozzáféréssel rendelkezik az adatbázishoz.
 
 > [!IMPORTANT]
-> Az Azure Active Directory-hitelesítés támogatása érhető el a [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) és [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) a Visual Studio 2015. SSMS megjelenésével 2016 augusztusától az Active Directory univerzális hitelesítéssel, amely lehetővé teszi a rendszergazdák számára, hogy a többtényezős hitelesítést használ a telefonhívás, szöveges üzenetet, intelligens kártyák PIN-kód vagy mobilalkalmazásbeli értesítés támogatását is magában foglalja. Az Azure AD-bejelentkezések és felhasználók használata (**nyilvános előzetes verzióban**) és az SSDT együttes használata jelenleg nem támogatott.
+> Az Azure Active Directory-hitelesítés támogatása érhető el a [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) és [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) a Visual Studio 2015. SSMS megjelenésével 2016 augusztusától az Active Directory univerzális hitelesítéssel, amely lehetővé teszi a rendszergazdák számára, hogy a többtényezős hitelesítést használ a telefonhívás, szöveges üzenetet, intelligens kártyák PIN-kód vagy mobilalkalmazásbeli értesítés támogatását is magában foglalja.
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Az Azure AD-identitás segítségével SSMS és az SSDT-
 
 A következő eljárások bemutatják, hogyan csatlakozhat egy SQL-adatbázis egy SQL Server Management Studio vagy SQL Server adatbázis-eszközök használata az Azure AD-identitással.
-
->[!IMPORTANT]
->Az Azure AD-bejelentkezések és felhasználók használata (**nyilvános előzetes verzióban**) és az SSDT együttes használata jelenleg nem támogatott.
 
 ### <a name="active-directory-integrated-authentication"></a>Active Directory integrált hitelesítést
 

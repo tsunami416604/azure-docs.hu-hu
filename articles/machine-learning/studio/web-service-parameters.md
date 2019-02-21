@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 337e7a848b6aa141ecf4f96cd4f8f391be35a619
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5b216242b5c1c093c5f508adce04ef7b4bec4d1e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475533"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453188"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Az Azure Machine Learning Studio webszolgáltatás-paraméterek használata
 Az Azure Machine Learning webszolgáltatás tegye közzé konfigurálható paraméterek és modulokat tartalmazó kísérlet jön létre. Bizonyos esetekben előfordulhat, hogy módosítani szeretné a modul viselkedését a webszolgáltatás futtatása közben. *Webalkalmazás-paraméterek* lehetővé teszi, hogy a feladat végrehajtásához. 
@@ -57,7 +57,7 @@ Például tegyük fel, hogy kísérletezés az egy [adatok exportálása] [ writ
 
 3. Kattintson az ikonra a jobb oldalán a **blob-tároló paraméter kezdődő elérési útja**. Ez a következőhöz hasonló:
    
-   ![Webes szolgáltatás paraméter ikon][icon]
+   ![Webes szolgáltatás paraméter ikon](./media/web-service-parameters/icon.png)
    
    Válassza ki a "Webes szolgáltatás paraméter beállítása".
    
@@ -65,7 +65,7 @@ Például tegyük fel, hogy kísérletezés az egy [adatok exportálása] [ writ
 4. Nevezze át a webes paraméter, kattintson a nevére, adja meg a "Blob elérési útja", és nyomja le az **Enter** kulcsot. 
 5. Adja meg a webszolgáltatási paraméter alapértelmezett értékét, kattintson az ikonra a jobb oldalon a név, jelölje ki "Adja meg az alapértelmezett érték", adjon meg egy értéket (például "container1/output1.csv"), és nyomja le az **Enter** kulcs.
    
-   ![Webszolgáltatási paraméter][parameter]
+   ![Webszolgáltatási paraméter](./media/web-service-parameters/parameter.png)
 6. Kattintson a **Run** (Futtatás) parancsra. 
 7. Kattintson a **webszolgáltatás üzembe helyezése** válassza **Web Service telepítése [klasszikus]** vagy **[Új] Web Service telepítése** a webszolgáltatás üzembe helyezéséhez.
 
@@ -78,11 +78,6 @@ A felhasználó a webszolgáltatás most adjon meg egy új célhelyet a [adatok 
 Egy részletes példa: a [webszolgáltatás-paraméterek](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) bejegyzést a [Machine Learning blogon](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
 A Machine Learning webszolgáltatás eléréséhez további információkért lásd: [használata az Azure Machine Learning Web service](consume-web-services.md).
-
-<!-- Images -->
-[icon]: ./media/web-service-parameters/icon.png
-[parameter]: ./media/web-service-parameters/parameter.png
-
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

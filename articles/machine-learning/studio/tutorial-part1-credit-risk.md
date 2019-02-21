@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6789e1d6e514ce107ab96fddbaa582ccbe922bbb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243722"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453613"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>1. oktatóanyag: Hitelkockázat - Azure Machine Learning Studio előrejelzése
 
@@ -23,7 +23,7 @@ Ebben az oktatóanyagban a folyamat egy prediktív elemzési megoldás fejleszt�
 
 Tegyük fel, hogy előrejelzést kell készíteni egy személy hitelkockázatáról az általa kitöltött hitelkérelemben megadott adatok alapján.  
 
-A hitelkockázat értékelése összetett probléma, de ebben az oktatóanyagban leegyszerűsíti azt egy kicsit. Azt, hogyan hozhat létre a Microsoft Azure Machine Learning segítségével prediktív elemzési megoldások például fogja használni. Az Azure Machine Learning Studio és a egy Machine Learning webszolgáltatás ehhez a megoldáshoz fogja használni.  
+A hitelkockázat értékelése összetett probléma, de ebben az oktatóanyagban leegyszerűsíti azt egy kicsit. Ez a példa használatával a Microsoft Azure Machine Learning Studio prediktív elemzési megoldások létrehozásának módját fogja használni. Az Azure Machine Learning Studio és a egy Machine Learning webszolgáltatás ehhez a megoldáshoz fogja használni.  
 
 A háromrészes oktatóanyag megkezdése nyilvánosan elérhető hitelkockázati adatokkal.  Fejlesztés és betanítunk egy prediktív modellt.  Végül, a modell üzembe webszolgáltatásként.
 
@@ -55,7 +55,7 @@ Ha még nem használt **Azure Machine Learning Studio** előtt érdemes kezdeni 
 
 A Machine Learning Studio használatához szüksége van egy Microsoft Azure Machine Learning Studio-munkaterület. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.  
 
-Hozzon létre egy munkaterületet, lásd: [létrehozása és megosztása az Azure Machine Learning-munkaterület](create-workspace.md).
+Hozzon létre egy munkaterületet, lásd: [létrehozása és megosztása egy Azure Machine Learning Studio-munkaterület](create-workspace.md).
 
 A munkaterület létrehozását követően nyissa meg a Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Ha egynél több munkaterületet, akkor válassza ki a munkaterületet az eszköztáron az ablak jobb felső sarkában.
 

@@ -2,33 +2,36 @@
 title: Mi az a Face API?
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan használható az arcfelismerési szolgáltatás képeken szereplő arcok észlelésére és elemzésére.
-author: SteveMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 10/29/2018
-ms.author: sbowles
-ms.openlocfilehash: 655234bfec650ef027e325ff8df23fe91eecfd43
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: pafarley
+ms.openlocfilehash: 2f5f57f0978adbdf33ed4ce25ba9b32247ea0484
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861052"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455976"
 ---
 # <a name="what-is-the-azure-face-api"></a>Mi az Azure Face API?
 
 Az Azure Face API egy kognitív szolgáltatás, amely algoritmusokat biztosít a képeken szereplő emberi arcok észleléséhez, felismeréséhez és elemzéséhez. Az emberi arcokkal kapcsolatos információk feldolgozásának képessége számos különböző szoftveres forgatókönyvben lehet fontos, ilyenek például a biztonsági szolgáltatások, a természetes felhasználói felületek, a képtartalmak elemzése és kezelése, a mobilalkalmazások és a robotika.
 
-A Face API több különféle funkciót biztosít, amelyeket az alábbi szakaszok ismertetnek. A továbbiakban többet is megtudhat az egyes funkciókról, és eldöntheti, hogy megfelelnek-e az igényeinek.
+A Face API több különféle funkciót biztosít, amelyeket az alábbi szakaszok ismertetnek. Látogasson el lapunkra további információhoz.
 
 ## <a name="face-detection"></a>Arcfelismerés
 
-A Face API képes felismerni az emberi arcokat egy képen, és visszaadja a helyüket jelző téglalap koordinátáit. Az arcfelismerés igény szerint kinyerhet még egy sor, archoz kapcsolódó attribútumot, ilyen például a testtartás, nem, életkor, fejtartás, arcszőrzet és szemüveg.
+A Face API képes felismerni az emberi arcokat egy képen, és visszaadja a helyüket jelző téglalap koordinátáit. Szükség esetén arcfelismerés kibonthatja a face kapcsolódó attribútumok, például testtartás, fő testtartás, gender, kor, érzelem, arcfelismerési haj és szemüveg sorozata.
 
 ![Egy nő és egy férfi képe, téglalappal a személyek arca körül, amely alatt az életkoruk és a nemük látható](./Images/Face.detection.jpg)
 
-Az arcfelismerési szolgáltatás a [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) használatával is elérhető, ha azonban további műveleteket szeretne végezni az arcokhoz kapcsolódó adatokkal, a Face API-t (ezt a szolgáltatást) kell használnia. További információ az arcfelismeréssel kapcsolatban: [Detect API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+> [!NOTE] 
+> Az arcfelismerési szolgáltatás a [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) használatával is elérhető, ha azonban további műveleteket szeretne végezni az arcokhoz kapcsolódó adatokkal, a Face API-t (ezt a szolgáltatást) kell használnia. 
+
+További információ az arcfelismeréssel kapcsolatban: [Detect API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 ## <a name="face-verification"></a>Arcellenőrzés
 

@@ -13,20 +13,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2019
+ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: d3bdcc267c55434a71c915f7d4e575d47522986b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6cc965f8e775e02e9dec9f610516739a9a2c1936
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110574"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56448007"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Adja hozzá, vagy az Azure-előfizetések rendszergazdáinak módosításáról
 
 Az Azure-erőforrások hozzáférésének kezeléséhez megfelelő rendszergazdai szerepkörrel kell rendelkeznie. Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) nevű engedélyezési rendszert közül választhat, több beépített szerepkörrel rendelkező rendelkezik. Ezekkel a szerepkörökkel különféle hatókörökben, például a felügyeleti csoportban, előfizetéshez vagy erőforráscsoporthoz rendelhet hozzá.
 
-A Microsoft azt javasolja, hogy az RBAC-erőforrások hozzáférésének kezelése. Azonban ha továbbra is a klasszikus üzemi modellt használ, szüksége lesz egy hagyományos előfizetés-adminisztrátor használatára. További információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md) és [klasszikus Azure-előfizetés rendszergazdái](../role-based-access-control/classic-administrators.md).
+A Microsoft azt javasolja, hogy az RBAC-erőforrások hozzáférésének kezelése. Azonban ha továbbra is a klasszikus üzemi modellel és a klasszikus erőforrások kezelése [Azure Service Management PowerShell-modul](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure), használja a hagyományos adminisztrátor kell. 
+
+> [!TIP]
+> Használatakor csak az Azure Portalon a klasszikus erőforrásokat felügyelnie, akkor nincs szükség a hagyományos adminisztrátor.
+
+További információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md) és [klasszikus Azure-előfizetés rendszergazdái](../role-based-access-control/classic-administrators.md).
 
 Ez a cikk azt ismerteti, hogyan hozzáadása vagy módosítása a rendszergazda szerepkör egy felhasználó az RBAC használatával az előfizetések szintjén.
 

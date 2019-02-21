@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: yushwang
-ms.openlocfilehash: 2bf9a5f279c2b936cb7d7b84a00b4609d512f0b8
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 3d8a3297fba43004db817e6b077f7b292fb917cb
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416870"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454342"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Csatlakozás az Azure VPN-átjárók több helyszíni házirendalapú VPN-eszköz PowerShell-lel
 
@@ -150,10 +150,10 @@ New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Loc
 
 Az alábbi példában egy IPsec/IKE-házirendet hoz létre ezeket az algoritmusokat és paramétereket:
 * IKEv2: AES256, SHA384, DHGroup24
-* IPsec: AES256, SHA256, PFS24, 2048KB & SA-élettartam 3600 másodperc
+* IPsec: AES256, SHA256, PFS None, SA élettartama 14400 másodperc és 102400000KB
 
 ```azurepowershell-interactive
-$ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup PFS24 -SALifeTimeSeconds 3600 -SADataSizeKilobytes 2048
+$ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 ```
 
 #### <a name="2-create-the-s2s-vpn-connection-with-policy-based-traffic-selectors-and-ipsecike-policy"></a>2. Az S2S VPN-kapcsolat szabályzatalapú forgalomválasztóinak és IPsec/IKE-szabályzat létrehozása

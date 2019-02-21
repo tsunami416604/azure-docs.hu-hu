@@ -7,12 +7,12 @@ ms.service: batch-ai
 ms.topic: overview
 ms.date: 2/14/2019
 ms.author: garye
-ms.openlocfilehash: 44c0eec97f63897173ecde170ec4ed926db8bcaa
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 87dcf18a2517561e3166726f8f1f1a70c2ec7713
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342813"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447803"
 ---
 # <a name="whats-happening-to-azure-batch-ai"></a>Mi történik az Azure Batch AI?
 
@@ -121,7 +121,7 @@ Az Azure Machine Learning szolgáltatás lehetőségeit is elérhetővé teszi a
 
 ## <a name="how-do-i-migrate"></a>Hogyan kell áttelepíteni az adatokat?
 
-Akkor kövesse a lépéseket, amelyek segítenek a két szolgáltatás között térkép parancsokat az áttelepítési útmutatóban, azt javasoljuk, hogy ismeri az Azure Machine Learning szolgáltatás révén a hozzá tartozó dokumentáció első időt töltött] (.. / machine-learning/service/overview-what-is-azure-ml.md) többek között a [oktatóanyag a Python](../machine-learning/service/tutorial-train-models-with-aml.md).
+Akkor kövesse a lépéseket, amelyek segítenek a két szolgáltatás között térkép parancsokat az áttelepítési útmutatóban, azt javasoljuk, hogy első ismeri az Azure Machine Learning szolgáltatás segítségével időt töltött az [dokumentáció](../machine-learning/service/overview-what-is-azure-ml.md) többek között a [oktatóanyag a Python](../machine-learning/service/tutorial-train-models-with-aml.md).
 
 Az alkalmazások a fennakadások elkerülése érdekében, és kihasználhatják a legújabb funkciók, a következő lépésekkel 2019. március 31. előtt:
 
@@ -134,7 +134,7 @@ Az alkalmazások a fennakadások elkerülése érdekében, és kihasználhatják
 1. A parancsfájlok használata az Azure Machine Learning Compute frissítése.
 
 
-### <a name="sdk"></a>SDK
+### <a name="sdk-migration"></a>SDK-áttelepítés
 
 Aktuális SDK támogatja az Azure Machine Learning szolgáltatás több Python SDK keresztül történik. A fő SDK körülbelül kéthetente frissül, és a következő paranccsal PyPi telepíthető:
 
@@ -147,10 +147,10 @@ pip install --upgrade azureml-sdk[notebooks]
 A megnyitott egy jupyter notebookot a kernel a megfelelő conda-környezetre mutató, a következő hogyan képezze le a két szolgáltatás szereplő parancsok:
 
 
-### <a name="create-a-workspace"></a>Munkaterület létrehozása
+#### <a name="create-a-workspace"></a>Munkaterület létrehozása
 A használatával egy configuration.json BatchAI munkaterület inicializálása fogalmát hasonlóképpen leképez egy konfigurációs fájlban, az Azure ML használatával.
 
-Batch AI kész is ezzel a módszerrel:
+A **Batch AI**, így kész is:
 
 ```python
 sys.path.append('../../..')
@@ -163,7 +163,7 @@ utils.config.create_resource_group(cfg)
 _ = client.workspaces.create(cfg.resource_group, cfg.workspace, cfg.location).result()
 ```
 
-Azure Machine Learning service:
+**Az Azure Machine Learning szolgáltatás**, próbálja ki:
 
 ```python
 from azureml.core.workspace import Workspace
@@ -175,9 +175,10 @@ print('Workspace name: ' + ws.name,
       'Resource group: ' + ws.resource_group, sep = '\n')
 ```
 
-Emellett is létrehozhat munkaterület úgy közvetlenül a konfigurációs paramétereket, például a azureml.core munkaterület importálása
+Emellett is létrehozhat munkaterület közvetlenül a konfigurációs paraméterek megadásával
 
 ```python
+from azureml.core import Workspace
 # Create the workspace using the specified parameters
 ws = Workspace.create(name = workspace_name,
                       subscription_id = subscription_id,
@@ -191,13 +192,13 @@ ws.get_details()
 ws.write_config()
 ```
 
-A megfelelő függvényeket az AML-munkaterület osztályt a részletes dokumentációhoz érhető el.
+További információ az AML-munkaterület osztály a [SDK-forrásdokumentáció](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py).
 
 
 #### <a name="create-a-compute-cluster"></a>Számítási fürt létrehozása
-Az Azure Machine Learning támogatja több számítási célnak, amelyek némelyike kezeli a szolgáltatás és mások csatolható a munkaterülethez (például) Egy HDInsight-fürt vagy egy távoli virtuális Gépen, további információk érhetők el itt). A számítási fürt képezi le egy AmlCompute fürt létrehozása az Azure Machine Learning egy BatchAI létrehozásának lehetőségét. A Amlcompute létrehozása eltarthat hogyan adja át a paramétereket lévő BatchAI hasonló számítási konfigurációban. Megjegyzés: az egyik dolog, hogy az automatikus skálázás alapértelmezés szerint engedélyezve van a AmlCompute fürtön mivel ki van kapcsolva az BatchAI alapértelmezés szerint.
+Az Azure Machine Learning támogatja több számítási célnak, amelyek némelyike kezeli a szolgáltatás és mások csatolható a munkaterülethez (például) Egy HDInsight-fürtöt, vagy egy távoli virtuális Gépen. További információ a különböző [számítási céljainak](../machine-learning/service/how-to-set-up-training-targets.md). A számítási fürt képezi le egy AmlCompute fürt létrehozása az Azure Machine Learning egy BatchAI létrehozásának lehetőségét. A Amlcompute létrehozása eltarthat hogyan adja át a paramétereket lévő BatchAI hasonló számítási konfigurációban. Megjegyzés: az egyik dolog, hogy az automatikus skálázás alapértelmezés szerint engedélyezve van a AmlCompute fürtön mivel ki van kapcsolva az BatchAI alapértelmezés szerint.
 
-Batch AI kész is ezzel a módszerrel:
+A **Batch AI**, így kész is:
 
 ```python
 nodes_count = 2
@@ -217,7 +218,7 @@ parameters = models.ClusterCreateParameters(
 _ = client.clusters.create(cfg.resource_group, cfg.workspace, cluster_name, parameters).result()
 ```
 
-Az Azure Machine Learning szolgáltatás próbálja ki:
+A **Azure Machine Learning szolgáltatás**, próbálja ki:
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -244,20 +245,20 @@ except ComputeTargetException:
 gpu_cluster.wait_for_completion(show_output=True)
 ```
 
-A megfelelő függvényeket az AmlCompute osztályt a részletes dokumentációhoz érhető el. Vegye figyelembe, hogy a fenti konfigurációban csak vm_size és max_nodes kötelező, és a tulajdonságok, például a virtuális hálózatok a többi speciális konfiguráció.
+További tudnivalók a AMLCompute osztályt a [SDK-forrásdokumentáció](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py). Vegye figyelembe, hogy a fenti konfigurációban, csak vm_size és max_nodes kötelező, és a többi a tulajdonságok, például a virtuális hálózatok csak a speciális fürttelepítéshez.
 
 
-### <a name="monitoring-status-of-your-cluster"></a>A fürt állapotának figyelése
-Ez az egyszerűbb, az Azure Machine Learning, az alábbi.
+#### <a name="monitoring-status-of-your-cluster"></a>A fürt állapotának figyelése
+Ez az egyszerűbb az Azure ML módon lentebb látható.
 
-Batch AI kész is ezzel a módszerrel:
+A **Batch AI**, így kész is:
 
 ```python
 cluster = client.clusters.get(cfg.resource_group, cfg.workspace, cluster_name)
 utils.cluster.print_cluster_status(cluster)
 ```
 
-Az Azure Machine Learning szolgáltatás próbálja ki:
+A **Azure Machine Learning szolgáltatás**, próbálja ki:
 
 ```python
 gpu_cluster.get_status().serialize()
@@ -266,7 +267,7 @@ gpu_cluster.get_status().serialize()
 #### <a name="getting-reference-to-a-storage-account"></a>Bevezetés a hivatkozást a tárfiókra
 A blob, például egy adattárolási fogalmát lekérdezi egyszerűsített Azure ml használatával az adattár-objektumot. Alapértelmezés szerint az Azure gépi tanulás munkaterületet hoz létre egy storage-fiókot, de saját tárhely is is csatlakoztatható, munkaterület létrehozása során. 
 
-Batch AI kész is ezzel a módszerrel:
+A **Batch AI**, így kész is:
 
 ```python
 azure_blob_container_name = 'batchaisample'
@@ -274,20 +275,20 @@ blob_service = BlockBlobService(cfg.storage_account_name, cfg.storage_account_ke
 blob_service.create_container(azure_blob_container_name, fail_on_exist=False)
 ```
 
-Az Azure Machine Learning szolgáltatás próbálja ki:
+A **Azure Machine Learning szolgáltatás**, próbálja ki:
 
 ```python
 ds = ws.get_default_datastore()
 print(ds.datastore_type, ds.account_name, ds.container_name)
 ```
 
-További tárfiókok regisztrál, vagy egy másik regisztrált datastore-hivatkozás beszerzése bővebben itt található.
+További tudnivalók a további tárfiókok regisztrál, vagy egy másik regisztrált adattárolója a hivatkozás beszerzése a [Azure Machine Learning szolgáltatás dokumentációja](../machine-learning/service/how-to-access-data.md#create-a-datastore).
 
 
 #### <a name="downloading-and-uploading-data"></a>Töltsön le és az adatok feltöltése 
 Mindkét szolgáltatással a tárfiókba, a fent az adattárhoz hivatkozás használatával könnyedén tölthet fel az adatokat. A BatchAI azt is üzembe helyezheti a tanítási szkriptet a fájlmegosztáson részeként bár látni fogja, hogyan is megadhat, az Azure Machine Learning esetében a feladat konfiguráció részeként.
 
-Batch AI kész is ezzel a módszerrel:
+A **Batch AI**, így kész is:
 
 ```python
 mnist_dataset_directory = 'mnist_dataset'
@@ -303,7 +304,7 @@ blob_service.create_blob_from_path(azure_blob_container_name,
 ```
 
 
-Az Azure Machine Learning szolgáltatás próbálja ki:
+A **Azure Machine Learning szolgáltatás**, próbálja ki:
 
 ```python
 import os
@@ -320,14 +321,14 @@ path_on_datastore = ' mnist_dataset/mnist.npz' ds_data = ds.path(path_on_datasto
 #### <a name="create-an-experiment"></a>Kísérlet létrehozása
 Ahogy korábban említettük Azure ML rendelkezik egy hasonló BatchAI kísérlet fogalma. Minden kísérlet akkor is rendelkezik az egyes futtatások, hogyan már feladatok BatchAI hasonló. Az Azure Machine Learning lehetővé teszi, hogy a hierarchia minden szülő futtatja, az egyes gyermek futtatások alatt.
 
-Batch AI kész is ezzel a módszerrel:
+A **Batch AI**, így kész is:
 
 ```python
 experiment_name = 'tensorflow_experiment'
 experiment = client.experiments.create(cfg.resource_group, cfg.workspace, experiment_name).result()
 ```
 
-Az Azure Machine Learning szolgáltatás próbálja ki:
+A **Azure Machine Learning szolgáltatás**, próbálja ki:
 
 ```python
 from azureml.core import Experiment
@@ -338,9 +339,9 @@ experiment = Experiment(ws, name=experiment_name)
 
 
 #### <a name="submit-a-job"></a>Feladat elküldése
-Miután létrehozott egy kísérletet, rendelkezik egy Futtatás be néhány eltérő módot. Ebben a példában azt próbálja létrehozni a deep learning-modellben tensorflow-hoz és a egy Azure Machine Learning Estimator fogja használni ehhez. Egy Estimator az alapul szolgáló futtatási konfigurációs, amely megkönnyíti a futtatások elküldeni, és a jelenleg támogatott Pytorch és tensorflow-hoz csak egyszerűen használható burkoló funkció. Keresztül adattárainak fogalma, látni fogja emellett milyen egyszerű válik a csatlakoztatási elérési út megadása 
+Miután létrehozott egy kísérletet, rendelkezik egy Futtatás be néhány eltérő módot. Ebben a példában azt próbálja létrehozni a deep learning-modellben tensorflow-hoz és a egy Azure Machine Learning Estimator fogja használni ehhez. Egy [Estimator](../machine-learning/service/how-to-train-ml-models.md) az alapul szolgáló futtatási konfigurációs, amely megkönnyíti a futtatások elküldeni, és a jelenleg támogatott Pytorch és tensorflow-hoz csak egyszerűen csak egy burkoló funkció. Keresztül adattárainak fogalma, látni fogja emellett milyen egyszerű válik a csatlakoztatási elérési út megadása 
 
-Batch AI kész is ezzel a módszerrel:
+A **Batch AI**, így kész is:
 
 ```python
 azure_file_share = 'afs'
@@ -408,9 +409,9 @@ job = client.jobs.create(cfg.resource_group, cfg.workspace, experiment_name, job
 print('Created Job {0} in Experiment {1}'.format(job.name, experiment.name))
 ```
 
-A teljes adatait (beleértve a azt a fájlmegosztást a fenti kellett feltöltött mnist_replica.py fájlt) a betanítási kódrészlet az BatchAI notebook github mintatárból itt található.
+A teljes információkat a betanítási kódtöredék (beleértve a mnist_replica.py fájl azt a fenti fájlmegosztást kellett feltöltött) található a [BatchAI minta notebook github-adattárat](https://github.com/Azure/BatchAI/tree/2238607d5a028a0c5e037168aefca7d7bb165d5c/recipes/TensorFlow/TensorFlow-GPU-Distributed).
 
-Az Azure Machine Learning szolgáltatás próbálja ki:
+A **Azure Machine Learning szolgáltatás**, próbálja ki:
 
 ```python
 from azureml.train.dnn import TensorFlow
@@ -433,7 +434,7 @@ estimator = TensorFlow(source_directory=project_folder,
                        use_gpu=True)
 ```
 
-E képzési kódrészlet (beleértve a tf_mnist_replica.py fájlt) a teljes adatait az Azure Machine Learning minta notebook github-adattárat itt található. Maga az adattár vagy csatlakoztathatók az egyes csomópontokon, illetve magán a csomóponton a betanítási adatok tölthető le. További részleteket az adattárhoz, az a estimator hivatkozó jelenleg itt tart. 
+A teljes körű információkat a betanítási kódtöredék (beleértve a tf_mnist_replica.py fájl) megtalálható a [Azure ML sample notebook github-adattárat](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/distributed-tensorflow-with-parameter-server). Maga az adattár vagy csatlakoztathatók az egyes csomópontokon, illetve magán a csomóponton a betanítási adatok tölthető le. További részleteket az adattárhoz, az a estimator hivatkozó szerepel a [Azure Machine Learning szolgáltatás dokumentációja](../machine-learning/service/how-to-access-data.md#access-datastores-for-training). 
 
 Futtatás az Azure ML elküldése a küldés funkció keresztül történik.
 
@@ -442,12 +443,12 @@ run = experiment.submit(estimator)
 print(run)
 ```
 
-Egy másik módja, a Futtatás futtatási konfigurációs – különösen hasznos, ha egy egyéni oktatókörnyezet meghatározása használatával paramétereinek megadása. További részleteket a notebook példa Itt találhatja. 
+Egy másik módja, a Futtatás futtatási konfigurációs – különösen hasznos, ha egy egyéni oktatókörnyezet meghatározása használatával paramétereinek megadása. További részleteket talál a jelen [minta AmlCompute notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-amlcompute/train-on-amlcompute.ipynb). 
 
 #### <a name="monitor-your-run"></a>A Futtatás figyelése
 Miután egy futtatás, vagy megvárhatja, hogy végezze el, vagy az Azure Machine Learning mutatnak, amelyek közvetlenül a kódból hívhat Jupyter-widgetek használatával figyelheti. Bármely korábbi futtatás kontextusában kérje le a különböző a munkaterületen kísérletek ismétlése által és az egyes futó minden egyes kísérleten belülről.
 
-Batch AI kész is ezzel a módszerrel:
+A **Batch AI**, így kész is:
 
 ```python
 utils.job.wait_for_job_completion(client, cfg.resource_group, cfg.workspace, 
@@ -460,7 +461,7 @@ for f in list(files):
 ```
 
 
-Az Azure Machine Learning szolgáltatás próbálja ki:
+A **Azure Machine Learning szolgáltatás**, próbálja ki:
 
 ```python
 run.wait_for_completion(show_output=True)
@@ -473,15 +474,15 @@ Hogyan szeretné betölteni a widgeten a jegyzetfüzet, a naplók valós időben
 
 
 
-#### <a name="delete-a-cluster"></a>Fürt törlése
+#### <a name="editing-a-cluster"></a>A fürt szerkesztése
 Fürt törlése nagyon egyszerű. Emellett az Azure Machine Learning lehetővé teszi, hogy frissítse a fürtöt, a jegyzetfüzet belül abban az esetben, skálázza fel a nagyobb számú csomópontra, vagy növelje az inaktív várakozási idő előtt, hogy a fürt vertikális. A Microsoft nem engedélyezi, hogy a fürt, másrészt, Virtuálisgép-méretének módosítása ráfordítást igényel hatékonyan a háttérrendszer az új központi telepítést.
 
-Batch AI kész is ezzel a módszerrel:
+A **Batch AI**, így kész is:
 ```python
 _ = client.clusters.delete(cfg.resource_group, cfg.workspace, cluster_name)
 ```
 
-Az Azure Machine Learning szolgáltatás próbálja ki:
+A **Azure Machine Learning szolgáltatás**, próbálja ki:
 
 ```python
 gpu_cluster.delete()
@@ -491,13 +492,13 @@ gpu_cluster.update(min_nodes=2, max_nodes=4, idle_seconds_before_scaledown=600)
 
 ## <a name="support"></a>Támogatás
 
-BatchAI van nyár kivonása. március 31-én kerül piacra, és regisztráljon a szolgáltatáshoz, kivéve ha szerepel az engedélyezési listán által támogatásának kivételt hozna létre az új előfizetések már blokkolja.  Keresse fel az Azure Batch AI Training előzetes verziójának AzureBatchAITrainingPreview@service.microsoft.com , ha bármilyen kérdése van, vagy ha visszajelzést szeretne küldeni a migrálás az Azure Machine Learning szolgáltatáshoz.
+BatchAI van nyár kivonása. március 31-én kerül piacra, és regisztráljon a szolgáltatáshoz, kivéve ha szerepel az engedélyezési listán által támogatásának kivételt hozna létre az új előfizetések már blokkolja.  Fel velünk a kapcsolatot, [Azure Batch AI Training előzetes verziójának](mailto:AzureBatchAITrainingPreview@service.microsoft.com) , ha bármilyen kérdése van, vagy ha visszajelzést szeretne küldeni a migrálás az Azure Machine Learning szolgáltatáshoz.
 
-Az Azure Machine Learning szolgáltatás egy olyan általánosan elérhető szolgáltatás. Ez azt jelenti, hogy a vállalt szolgáltatásszint-szerződéssel és a különféle által támogatott csomagok közül választhat származik.
+Az Azure Machine Learning szolgáltatás egy olyan általánosan elérhető szolgáltatás. Ez azt jelenti, hogy a vállalt szolgáltatásszint-szerződéssel és különböző támogatási csomagok, amelyek közül választhatnak, származik.
 
 Azure-infrastruktúra a BatchAI szolgáltatás vagy az Azure Machine Learning szolgáltatás révén a díjszabás nem változhat, csak az ár mindkét esetben a mögöttes számítási díj szerint. További információkért lásd: a [díjkalkulátor](https://azure.microsoft.com/pricing/details/machine-learning-service/).
 
-Régiónkénti rendelkezésre állás, a két szolgáltatás között itt tekinthet meg: https://azure.microsoft.com/global-infrastructure/services/?products=batch-ai, machine-learning-szolgáltatás és régiók = all.
+A régiónkénti rendelkezésre állás, a két szolgáltatás között megtekintheti a [az Azure portal](https://azure.microsoft.com/global-infrastructure/services/?products=batch-ai,machine-learning-service&regions=all).
 
 
 ## <a name="next-steps"></a>További lépések

@@ -1,21 +1,21 @@
 ---
 title: 'Gyors útmutató: Ismeri fel a beszéd, a C++ (Linux) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
-description: Megismerheti a beszédfelismerés használatát Linuxon, C++ nyelven a Speech Service SDK segítségével.
+description: Hogyan ismerhetik fel a beszéd, a C++ Linux rendszeren a Speech SDK-val
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: fbd962d7a19969c88f539b0e21848fb01c6e88e4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9e1844320786fe8a2a856b06b3a8093ca49568eb
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874753"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446358"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést c++ Linux rendszeren a Speech SDK-val
 
@@ -31,7 +31,7 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.2.0`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.3.0`.
 
 A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges kódtárai és fejlécfájljai a tar-fájlként letölthető https://aka.ms/csspeech/linuxbinary.
 
@@ -41,7 +41,7 @@ Az SDK letöltése és telepítése a következőképpen történik:
 
    ```sh
    sudo apt-get update
-   sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+   sudo apt-get install build-essential libssl1.0.0 libasound2 wget
    ```
 
 1. Válasszon egy könyvtárat a Speech SDK fájljainak kicsomagolásához, majd állítsa be úgy a `SPEECHSDK_ROOT` környezeti változót, hogy erre a könyvtárra mutasson. Ez a változó megkönnyíti, hogy a későbbi parancsokban a könyvtárra hivatkozzon. Ha például a kezdőkönyvtárban található `speechsdk` könyvtárat szeretné használni, adjon meg egy, a következőhöz hasonló parancsot:
@@ -91,13 +91,13 @@ Az SDK letöltése és telepítése a következőképpen történik:
 * **x64** (64 bites) rendszeren az alkalmazás létrehozásához futtassa az alábbi parancsot.
 
   ```sh
-  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libasound.so.2
   ```
 
 * **x86** (32 bites) rendszeren az alkalmazás létrehozásához futtassa az alábbi parancsot.
 
   ```sh
-  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libasound.so.2
   ```
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása

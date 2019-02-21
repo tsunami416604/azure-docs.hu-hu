@@ -2,24 +2,24 @@
 title: NODE.js-szel – Azure Event Hubs használatával események küldése |} A Microsoft Docs
 description: Ez a cikk egy forgatókönyv Node.js-alkalmazás, amely az Azure Event Hubsból küldi az eseményeket létrehozásához.
 services: event-hubs
-author: ShubhaVijayasarathy
+author: spelluru
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 7281e6bb2dda5dc3fddb5f39bf271293ebb88a73
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/19/2019
+ms.author: spelluru
+ms.openlocfilehash: ec3182d11f1b2ffa31acd05fa1f2db695f3f2cf7
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732012"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447718"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>Események küldése az Azure Event Hubs Node.js használatával
 
-Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
+Az Azure Event Hubs szolgáltatás a egy Big Data-platform- és esemény-feldolgozó szolgáltatás, amely képes fogadni és másodpercenként több millió folyamatán. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
 Ez az oktatóanyag azt ismerteti, hogyan küldhet eseményeket egy eseményközpontba, a Node.js-ben írt alkalmazások.
 
@@ -34,7 +34,7 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
 - A Visual Studio Code-ot (ajánlott) vagy bármely más IDE
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
-Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az eseményközpont létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md) olvasható eljárást, majd folytassa a jelen oktatóanyag további lépéseivel.
+Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md), majd folytassa a következő lépéseket ebben az oktatóanyagban.
 
 A kapcsolati sztring lekérése az eseményközpont-névtér kövesse a cikkben szereplő: [Kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Az oktatóanyag későbbi részében használja a kapcsolati karakterláncot.
 
@@ -56,7 +56,7 @@ Az SDK-val rendelkeznie klónozta tartalmaz több minták azt mutatják be, hogy
 
 1. Nyissa meg a projekt a Visual Studio Code-ot. 
 2. Hozzon létre egy fájlt **.env** alatt a **ügyfél** mappát. Másolja és illessze be a minta környezeti változókat a **sample.env** a gyökérmappában.
-3. Az eseményközpont kapcsolati karakterláncával, a eseményközpont neve és a storage-végpont konfigurálása. Az eseményközpont a kapcsolati karakterlánc másolhatja **kapcsolati karakterlánc – elsődleges** kulcsot **RootManageSharedAccessKey** az Event Hub oldalon az Azure Portalon. Részletes lépéseiért lásd: [kapcsolati sztring lekérése](event-hubs-create.md#create-an-event-hubs-namespace).
+3. Az eseményközpont kapcsolati karakterláncával, a eseményközpont neve és a storage-végpont konfigurálása. Az eseményközpont kapcsolati karakterlánc beszerzésével kapcsolatban [kapcsolati sztring lekérése](event-hubs-create.md#create-an-event-hubs-namespace).
 4. Az Azure CLI-t, navigáljon a **ügyfél** mappa elérési útja. Csomópont-csomagok telepítéséhez, és állítsa össze a projektet a következő parancsok futtatásával:
 
     ```shell
@@ -71,29 +71,39 @@ Az SDK-val rendelkeznie klónozta tartalmaz több minták azt mutatják be, hogy
 
 
 ## <a name="review-the-sample-code"></a>Tekintse át a mintakódot 
-A következő mintakód segítségével eseményeket küld egy eseményközpontnak node.js használatával. Manuálisan hozzon létre egy sampleSender.js fájlt, majd futtassa eseményeket küld egy eseményközpontnak. 
-
+Tekintse át a mintakódot a simpleSender.js fájlban, az eseményeket küld egy eseményközpontnak.
 
 ```javascript
-const { EventHubClient, EventPosition } = require('@azure/event-hubs');
-
-const client = EventHubClient.createFromConnectionString(process.env["EVENTHUB_CONNECTION_STRING"], process.env["EVENTHUB_NAME"]);
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const lib_1 = require("../lib");
+const dotenv = require("dotenv");
+dotenv.config();
+const connectionString = "EVENTHUB_CONNECTION_STRING";
+const entityPath = "EVENTHUB_NAME";
+const str = process.env[connectionString] || "";
+const path = process.env[entityPath] || "";
 
 async function main() {
-    // NOTE: For receiving events from Azure Stream Analytics, please send Events to an EventHub where the body is a JSON object/array.
-    // const eventData = { body: { "message": "Hello World" } };
-    const data = { body: "Hello World 1" };
+    const client = lib_1.EventHubClient.createFromConnectionString(str, path);
+    const data = {
+        body: "Hello World!!"
+    };
     const delivery = await client.send(data);
-    console.log("message sent successfully.");
+    console.log(">>> Sent the message successfully: ", delivery.tag.toString());
+    console.log(delivery);
+    console.log("Calling rhea-promise sender close directly. This should result in sender getting reconnected.");
+    await Object.values(client._context.senders)[0]._sender.close();
+    // await client.close();
 }
 
 main().catch((err) => {
-    console.log(err);
+    console.log("error: ", err);
 });
 
 ```
 
-Fontos, hogy állítsa be a környezeti változókat a parancsfájl futtatása előtt. Ez a parancssorban a következő példában látható módon konfigurálhatja, vagy a [dotenv csomag](https://www.npmjs.com/package/dotenv#dotenv). 
+Fontos, hogy állítsa be a környezeti változókat a parancsfájl futtatása előtt. A parancssorban a következő példában látható módon konfigurálhatja őket, vagy a [dotenv csomag](https://www.npmjs.com/package/dotenv#dotenv). 
 
 ```shell
 // For windows

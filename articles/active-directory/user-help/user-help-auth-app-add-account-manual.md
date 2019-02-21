@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0d46fc8a152c4426832669ce22d4aa78ac640e6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e82e8f6caafb38b758f552913def234a92a0d83
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173942"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454650"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Fiók manuális hozzáadása az alkalmazáshoz
 Ha a kamera nem tudja rögzíteni a QR-kódot, manuálisan is hozzáadhat a fiók adatait a Microsoft Authenticator alkalmazást a kétfaktoros ellenőrzéshez. Ez a munkahelyi vagy iskolai fiókokat, és nem Microsoft-fiókok esetében működik.
@@ -55,7 +55,7 @@ A kódokat a fiókokhoz megadott nem a kis-és nagybetűket, és nem igényel sz
 
 3. Adjon meg egy **fióknév** (például Google), és írja be a **titkos kulcs** 1. lépés, és válassza ki a **Befejezés**.
 
-4. A a **Authenticator beállítása** rendszerű számítógép lapon írja be a 6 jegyű ellenőrző kódot, a Google-fiókját az alkalmazásban megadott, és válassza ki **ellenőrizze**.
+4. A a **Authenticator beállítása** a számítógépen lapon írja be a 6 jegyű ellenőrző kódot, a Google-fiókját az alkalmazásban megadott, és válassza ki **ellenőrizze**.
 
     A **fiókok** a képernyőn az alkalmazás megtekintheti a fiók nevét és a egy 6 jegyű ellenőrző kódot. A fokozott biztonság érdekében az ellenőrző kód módosítása megakadályozza, hogy valaki a kód többször használatával 30 másodpercenként.
 
@@ -70,7 +70,7 @@ A kódokat a fiókokhoz megadott nem a kis-és nagybetűket, és nem igényel sz
 
 3. Adjon meg egy **fióknév** (például a Facebookhoz), és írja be a **titkos kulcs** 1. lépés, és válassza ki a **Befejezés**.
 
-4. Az a **kéttényezős hitelesítő** rendszerű számítógép lapon írja be a Facebook-fiókját az alkalmazásban megadott 6 jegyű ellenőrző kódot, és válassza ki **ellenőrizze**.
+4. Az a **kéttényezős hitelesítő** a számítógépen lapon írja be a Facebook-fiókját az alkalmazásban megadott 6 jegyű ellenőrző kódot, és válassza ki **ellenőrizze**.
 
     A **fiókok** a képernyőn az alkalmazás megtekintheti a fiók nevét és a egy 6 jegyű ellenőrző kódot. A fokozott biztonság érdekében az ellenőrző kód módosítása megakadályozza, hogy valaki a kód többször használatával 30 másodpercenként.
 
@@ -90,9 +90,9 @@ Az Amazon-fiókkal kétfaktoros ellenőrzés bekapcsolásának és az alkalmazá
 
 4. Fejezze be a regisztrációs folyamat, beleértve a szöveges üzenetben, például a biztonsági másolat ellenőrzésének metódus hozzáadása, majd **kód küldése**.
 
-5. Az a **adjon hozzá egy biztonsági mentési ellenőrzési módszert** rendszerű számítógép lapon írja be a biztonsági mentési ellenőrzési módszert az Amazon fiók által biztosított hat számjegyű ellenőrzőkódot, és válassza ki **kód ellenőrzése, és továbbra is**.
+5. Az a **adjon hozzá egy biztonsági mentési ellenőrzési módszert** a számítógépen lapon írja be a biztonsági mentési ellenőrzési módszert az Amazon fiók által biztosított hat számjegyű ellenőrzőkódot, és válassza ki **kód ellenőrzése, és továbbra is**.
 
-6. A Almost lapon, győződjön meg a számítógép megbízható eszköz, és válassza ki kell-e **rendben. Kétlépéses ellenőrzés**.
+6. A a Almost lapon, hogy a számítógép megbízható eszköz, és válassza ki kell-e **rendben. Kétlépéses ellenőrzés**.
 
     A **speciális biztonsági beállítások** megjelenítő lap jelenik meg, a frissített kétfaktoros hitelesítési adatait.
 

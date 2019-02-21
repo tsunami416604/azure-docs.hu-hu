@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory-Tevékenységnaplók Log Analytics (előzetes verzió) használatával elemzése |} A Microsoft Docs
-description: Ismerje meg, hogyan elemezheti az Azure Active Directory-Tevékenységnaplók Log Analytics (előzetes verzió) használatával
+title: Az Azure Monitor-naplók (előzetes verzió) használatával az Azure Active Directory-Tevékenységnaplók elemzése |} A Microsoft Docs
+description: Az Azure Monitor-naplók (előzetes verzió) használatával az Azure Active Directory-Tevékenységnaplók elemzése
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ea13d08af924427b9e7dc5def72c19d560525b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2e565f5b9bcd9e3e79423c742b2c95c00abd97b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188256"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454758"
 ---
-# <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Elemezheti az Azure ad-ben tevékenységeket tartalmazó naplók a Log Analytics (előzetes verzió)
+# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>Elemezheti az Azure ad-ben tevékenységeket tartalmazó naplók az Azure Monitor naplóira (előzetes verzió)
 
-Miután [integrálni az Azure AD Tevékenységnaplók Log Analytics szolgáltatással](howto-integrate-activity-logs-with-log-analytics.md), a teljesítmény, a Log Analytics segítségével betekintést nyerhet a környezet. Emellett telepíthet a [nézeteket a Log Analytics az Azure Active Directory-naplók](howto-install-use-log-analytics-views.md) érheti el a naplózási és bejelentkezési események körül előre elkészített jelentéseket a környezetben.
+Miután [integrálása az Azure ad-ben tevékenységeket tartalmazó naplók az Azure Monitor naplóira](howto-integrate-activity-logs-with-log-analytics.md), a teljesítmény az Azure Monitor-naplók segítségével betekintést nyerhet a környezet. Emellett telepíthet a [Log analytics az Azure Active Directory lap megtekintései naplók](howto-install-use-log-analytics-views.md) érheti el a naplózási és bejelentkezési események körül előre elkészített jelentéseket a környezetben.
 
 Ebből a cikkből elsajátíthatja, hogyan elemezheti az Azure AD-Tevékenységnaplók a Log Analytics-munkaterület. 
 
@@ -78,10 +78,12 @@ AuditLogs
 
 Is állíthat be riasztásokat a lekérdezés. Például, konfigurálhat egy riasztást, ha több mint 10 alkalmazások használtak az elmúlt hét:
 
-1. A munkaterületen válassza **értesítés beállítása** megnyitásához a **létrehozás szabály** lapot. 
+1. A munkaterületen válassza **értesítés beállítása** megnyitásához a **létrehozás szabály** lapot.
+
     ![riasztás beállítása](./media/howto-analyze-activity-logs-log-analytics/setalert.png)
 
-2. Válassza az alapértelmezett **riasztási feltételek** frissítés és a riasztás jön létre a **küszöbérték** a 10-re az alapértelmezett metrikát. 
+2. Válassza az alapértelmezett **riasztási feltételek** frissítés és a riasztás jön létre a **küszöbérték** a 10-re az alapértelmezett metrikát.
+
     ![Riasztási feltételek](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
 
 3. Adjon meg egy nevet és leírást a riasztást, és válassza ki a súlyossági szintet. A példánkban mi beállíthatja a **tájékoztató**.
@@ -92,17 +94,17 @@ Is állíthat be riasztásokat a lekérdezés. Például, konfigurálhat egy ria
 
 ## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>Telepítse, és előre elkészített nézetek használata az Azure Active Directory naplói
 
-Az Azure Active Directory előre felépített Log Analytics nézeteket is letölthet naplókat. A nézetek adja meg a kapcsolódó gyakori helyzetek járó naplózási és bejelentkezési események több jelentést. Akkor is riasztja Önt bármely, a jelentések adatai az előző szakasz lépéseit követve.
+Is letöltheti az előre felépített log analytics az Azure Active Directory lap megtekintései naplókat. A nézetek adja meg a kapcsolódó gyakori helyzetek járó naplózási és bejelentkezési események több jelentést. Akkor is riasztja Önt bármely, a jelentések adatai az előző szakasz lépéseit követve.
 
 * **Azure AD-fiók kiépítése események**: Ebben a nézetben látható a kiépítési tevékenységgel, például egy üzembe helyezett új felhasználóknak a számát, naplózás kapcsolatos jelentéseket kiépítési hibákhoz, azon felhasználók száma, frissítik és frissítési hibák és a szolgáltatáskulcs felhasználók és a megfelelő hibák számát.    
 * **Bejelentkezési események**: Ebben a nézetben látható a leginkább releváns jelentések kapcsolódó bejelentkezési tevékenységeket, például az alkalmazás, felhasználó, eszköz, valamint nyomon követése a bejelentkezések száma idővel lemezkapacitásáról által bejelentkezések figyelése.
 * **A felhasználók beleegyezést**: Ebben a nézetben látható a kapcsolódó felhasználói beleegyezés, jelentések, mint például a jóváhagyás a felhasználó, a felhasználók számára nyújtott hozzájárulási bejelentkezések, valamint a bejelentkezések a jóváhagyás-alapú alkalmazások összes alkalmazás által biztosít. 
 
-További információ [a Log Analytics-nézetek Azure AD-tevékenységnaplókhoz való telepítéséről és használatáról](howto-install-use-log-analytics-views.md). 
+Ismerje meg, hogyan [telepítése és a log analytics-nézetek használata az Azure Active Directory naplóinak](howto-install-use-log-analytics-views.md). 
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Log Analytics lekérdezések használatának első lépései](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
+* [Az Azure Monitor naplóira lekérdezések használatának első lépései](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
 * [Az Azure Portalon riasztási csoportok létrehozása és kezelése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
-* [Telepítése és a Log Analytics-nézetek használata az Azure Active Directory](howto-install-use-log-analytics-views.md)
+* [Telepítése és a log analytics-nézetek használata az Azure Active Directory](howto-install-use-log-analytics-views.md)

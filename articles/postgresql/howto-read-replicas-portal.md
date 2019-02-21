@@ -1,166 +1,174 @@
 ---
-title: Olvasható replikák az Azure Portalon kezelése az Azure Database for postgresql-hez
-description: Ez a cikk ismerteti a kezelése, Azure Database for PostgreSQL, olvassa el a replikákat az Azure Portalon.
+title: Kezelése olvasható replikák az Azure Database for postgresql-hez az Azure Portalról
+description: Ismerje meg, hogyan kezelhető az Azure Database for PostgreSQL, olvassa el a replikákat az Azure Portalról.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 37150f67e29dae0357c978cfaea9abeebeef428c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 02/19/2019
+ms.openlocfilehash: b34b103d3b710b90fd7b396f2c8d0e7adc27aaca
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691405"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454667"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>Hogyan hozhat létre és kezelhet, olvassa el a replikákat az Azure Portalon
+# <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Hozzon létre, és olvasási replikák kezelése az Azure Portalról
+
+Ebből a cikkből megismerheti, hogyan hozhat létre és kezelése olvasható replikák az Azure Database for postgresql-hez az Azure Portalról. Olvasási replikák kapcsolatos további információkért tekintse meg a [áttekintése](concepts-read-replicas.md).
 
 > [!IMPORTANT]
 > Az olvasási replika funkció nyilvános előzetes verzióban érhető el.
 
-
-Ebben a cikkben, megtudhatja, hogyan hozhat létre és kezelhet az Azure Database for PostgreSQL szolgáltatás az Azure portal használatával olvasható replika. További információ olvasható replikák [a fogalmak dokumentáció](concepts-read-replicas.md).
-
 ## <a name="prerequisites"></a>Előfeltételek
-- Egy [, Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md) , amely a fölérendelt kiszolgáló lesz.
+Egy [, Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md) kell a fölérendelt kiszolgáló.
 
 ## <a name="prepare-the-master-server"></a>A fölérendelt kiszolgáló előkészítése
-Ez a fő előkészítési lépés csak általános célú és memóriahasználatra optimalizált kiszolgálókra vonatkozik.
+Az általános célú és memóriahasználatra optimalizált szinten főkiszolgálóvá előkészítése ezeket a lépéseket kell használni.
 
-A **azure.replication_support** REPLIKA értékre kell állítani a paraméter a fölérendelt kiszolgálón. Ez a paraméter módosítása érvénybe léptetéséhez kiszolgáló újraindítását igényli.
+A `azure.replication_support` paramétert állítsa **REPLIKA** a fölérendelt kiszolgálón. Amikor ez a paraméter módosul, a kiszolgáló újraindítására szükség a módosítás érvénybe léptetéséhez.
 
-1. Az Azure Portalon válassza ki a meglévő Azure Database for PostgreSQL-kiszolgálót, egy fő használni kívánt.
+1. Az Azure Portalon válassza ki a meglévő Azure Database for PostgreSQL-kiszolgálóhoz használandó masterként.
 
-2. Válassza ki **kiszolgáló paramétereinek** a bal oldali menüből.
+2. A bal oldali menüben válassza ki a **kiszolgáló paramétereinek**.
 
-3. Keresse meg **azure.replication_support**.
+3. Keresse meg a `azure.replication_support` paraméter.
 
-   ![Azure Database for PostgreSQL - azure.replication_support](./media/howto-read-replicas-portal/azure-replication-parameter.png)
+   ![Keresse meg a azure.replication_support paraméter](./media/howto-read-replicas-portal/azure-replication-parameter.png)
 
-4. Állítsa be **azure.replication_support** replikára. **Mentés** a módosítást.
+4. Állítsa be a `azure.replication_support` paraméterérték **REPLIKA**. Válassza ki **mentése** megtartja a módosításokat.
 
-   ![Azure Database for PostgreSQL - REPLIKA, és mentse](./media/howto-read-replicas-portal/save-parameter-replica.png)
+   ![A paraméter értéke REPLIKA, és mentse a módosításokat](./media/howto-read-replicas-portal/save-parameter-replica.png)
 
-5. Mentés befejezése után kapni fog egy értesítést.
+5. A módosítások mentése után értesítést kap:
 
-   ![Azure Database for PostgreSQL – értesítés mentése](./media/howto-read-replicas-portal/parameter-save-notification.png)
+   ![Értesítési mentése](./media/howto-read-replicas-portal/parameter-save-notification.png)
 
-6. Indítsa újra a kiszolgálót, a módosítás alkalmazása után a rendszer menti. Lásd: [az újraindítás dokumentáció](howto-restart-server-portal.md) megtudhatja, hogyan indítsa újra a kiszolgálót.
+6. Indítsa újra a kiszolgálót, a módosítások alkalmazásához. Ismerje meg, hogyan indítsa újra a kiszolgálót, tekintse meg [egy Azure Database for PostgreSQL-kiszolgáló újraindítása](howto-restart-server-portal.md).
 
 
 ## <a name="create-a-read-replica"></a>Hozzon létre egy olvasható replika
-Olvassa el a replikákat az alábbi lépésekkel hozhatók létre:
-1.  Válassza ki a meglévő Azure Database for PostgreSQL-kiszolgálót, egy fő használni kívánt. 
+Olvasási replika létrehozásához kövesse az alábbi lépéseket:
 
-2.  Válassza ki a replikációs beállítások alatt a menüből.
+1.  Válassza ki a meglévő Azure Database for PostgreSQL-kiszolgálót a fő kiszolgálóként használni. 
 
-   Ha nem állított be **azure.replication_support** replikára az általános célú vagy memóriahasználatra optimalizált fő és újraindítása sikeresen megtörtént a kiszolgálón, megjelenik egy üzenet, amely tartalmazza ennek a végrehajtására. Ehhez a létrehozás folytatása előtt.
+2.  A kiszolgáló menü alatt **beállítások**válassza **replikációs**.
 
-3.  Válassza a replika hozzáadása.
+   Ha nem állított be a `azure.replication_support` paramétert **REPLIKA** az általános célú vagy Memóriaoptimalizált kiszolgáló fő és a kiszolgáló újraindul, értesítést kap. Ezeket a lépéseket a replika létrehozása előtt.
 
-   ![Azure Database for PostgreSQL - replika hozzáadása](./media/howto-read-replicas-portal/add-replica.png)
+3.  Válassza ki **replika hozzáadása**.
 
-4.  Adja meg az adatbázisreplika-kiszolgáló nevét, és kattintson az OK gombra a replika létrehozásának megerősítése.
+   ![A replika hozzáadása](./media/howto-read-replicas-portal/add-replica.png)
 
-   ![Azure Database for PostgreSQL - replika nevét](./media/howto-read-replicas-portal/name-replica.png) 
+4.  Adja meg az olvasási-replika nevét. Válassza ki **OK** , a replika létrehozásának megerősítése.
+
+   ![A replika neve](./media/howto-read-replicas-portal/name-replica.png) 
+
+A kiszolgáló ugyanazt a konfigurációt a master létrehoztak egy replikát. Replika létrehozása után több beállítások egymástól függetlenül lehet módosítani a főkiszolgálóról: számítási generáció, virtuális maggal, tárolási és biztonsági másolat megőrzési ideje. A tarifacsomag egymástól függetlenül is módosítható, vagy az alapszintű csomag kivételével.
 
 > [!IMPORTANT]
-> A kiszolgáló konfigurációval megegyező a fő olvasható replikák jönnek létre. Replika létrehozása után, a tarifacsomag (kivéve a, illetve onnan alapszintű), számítási generáció, a virtuális magok, a storage és a biztonsági másolat megőrzési idejének módosítható egymástól függetlenül a fölérendelt kiszolgálótól.
+> Egy fölérendelt kiszolgáló konfigurációs frissül az új értékekre, mielőtt frissíteni a replikát konfigurációt egyenlő vagy nagyobb értékre. Ez a művelet biztosítja, hogy a replika továbbra is a fő végzett módosítások.
 
-> [!IMPORTANT]
-> Egy master kiszolgálókonfiguráció frissül az új értékekre, mielőtt a replikák konfigurációs egyenlő vagy nagyobb értékre kell frissíteni. Tegye próbál egyébként hibát jelez. Ez biztosítja, hogy a replikák meg tudják tartani a fő végzett módosításokat. 
+Az olvasási replika létrehozása után azt tekintheti meg a **replikációs** ablakban:
 
-
-Az adatbázisreplika-kiszolgáló létrehozása után azt a replikációs ablakból is megtekinthetők.
-
-![Azure Database for PostgreSQL – új replika](./media/howto-read-replicas-portal/list-replica.png)
+![Az új replikára megtekintése a replikációs ablakban](./media/howto-read-replicas-portal/list-replica.png)
  
 
 ## <a name="stop-replication"></a>Replikáció leállítása
+Egy fölérendelt kiszolgáló és a egy olvasási replika közötti replikációt is leállíthatja.
 
 > [!IMPORTANT]
-> A kiszolgáló replikációjának leállítása nem vonható vissza. Ha a replikáció leállt, a master és a replika között, nem lehet visszavonni. Az adatbázisreplika-kiszolgáló ezután lesz egy önálló kiszolgáló, és már támogatja az olvasási és írási műveletek. Ez a kiszolgáló nem hajtható végre egy replika be újra.
+> Miután leállította egy fölérendelt kiszolgáló és a egy olvasási replika-replikáció, nem lehet visszavonni. Az olvasási replika egy önálló kiszolgáló, amely támogatja az olvasásokat és az írásokat válik. Az önálló kiszolgáló nem hajtható végre egy replika be újra.
 
-A master és a egy replikát, az Azure Portalról közötti replikáció megszüntetéséhez használja az alábbi lépéseket:
-1.  Az Azure Portalon válassza ki a fő, Azure Database for PostgreSQL-kiszolgálóhoz.
-
-2.  Válassza ki a replikációs beállítások alatt a menüből.
-
-3.  Jelölje be szeretné állítani a replikáció az adatbázisreplika-kiszolgálón.
-
-   ![Azure Database for postgresql-hez - válassza replika](./media/howto-read-replicas-portal/select-replica.png)
- 
-4.  Válassza ki a replikáció leállítása.
-
-   ![Azure Database for PostgreSQL - replikáció válassza leállítása](./media/howto-read-replicas-portal/select-stop-replication.png)
- 
-5.  Erősítse meg az OK gombra kattintva állítsa le a replikációt.
-
-   ![Azure Database for PostgreSQL – győződjön meg róla replikáció leállítása](./media/howto-read-replicas-portal/confirm-stop-replication.png)
- 
-
-## <a name="delete-a-master"></a>A minta törlése
-
-> [!IMPORTANT]
-> Egy fölérendelt kiszolgáló törlése leállítja a replikáció az összes replika kiszolgálók. Replikakiszolgáló önálló kiszolgálók által mostantól támogatják az olvasási és írási műveletek válnak.
-Ugyanazokat a lépéseket, mint egy önálló Azure Database for PostgreSQL-kiszolgáló törlése a fő követi. Kiszolgáló törlése az Azure Portalról, tegye a következőket:
+Egy fölérendelt kiszolgáló és az Azure Portalról olvasható replika közötti replikáció megszüntetéséhez kövesse az alábbi lépéseket:
 
 1.  Az Azure Portalon válassza ki a fő, Azure Database for PostgreSQL-kiszolgálóhoz.
 
-2.  Az ismeretanyagot kattintson a törlés.
+2.  A kiszolgáló menü alatt **beállítások**válassza **replikációs**.
 
-   ![Azure Database for PostgreSQL - kiszolgáló törlése](./media/howto-read-replicas-portal/delete-server.png)
+3.  Válassza ki az adatbázisreplika-kiszolgáló, amelyhez a replikáció leállítása.
+
+   ![Válassza ki a replika](./media/howto-read-replicas-portal/select-replica.png)
  
-3.  Írja be a fölérendelt kiszolgáló nevét, és válassza a Törlés a fölérendelt kiszolgáló törlésének megerősítéséhez.
+4.  Válassza ki **replikáció leállítása**.
 
-   ![Azure Database for PostgreSQL - törlésének megerősítése](./media/howto-read-replicas-portal/confirm-delete.png)
+   ![Válassza ki a replikáció leállítása](./media/howto-read-replicas-portal/select-stop-replication.png)
+ 
+5.  Válassza ki **OK** replikációleállítási.
+
+   ![Replikációleállítási megerősítése](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+ 
+
+## <a name="delete-a-master-server"></a>Egy fölérendelt kiszolgáló törlése
+Egy fölérendelt kiszolgáló törléséhez használhatja ugyanazokat a lépéseket, hogy egy különálló Azure Database for PostgreSQL-kiszolgáló törlése. 
+
+> [!IMPORTANT]
+> Ha töröl egy fölérendelt kiszolgáló, a replikáció az összes olvasható replika le van állítva. Az olvasási replikák önálló kiszolgálók által mostantól támogatják az olvasásokat és az írásokat válnak.
+
+Kiszolgáló törlése az Azure Portalról, kövesse az alábbi lépéseket:
+
+1.  Az Azure Portalon válassza ki a fő, Azure Database for PostgreSQL-kiszolgálóhoz.
+
+2.  Nyissa meg a **áttekintése** a kiszolgálóhoz tartozó lapon. Válassza a **Törlés** elemet.
+
+   ![A kiszolgáló Áttekintés lapján válassza ki a fölérendelt kiszolgáló törlése](./media/howto-read-replicas-portal/delete-server.png)
+ 
+3.  Adja meg a főkiszolgáló törlése nevét. Válassza ki **törlése** a fölérendelt kiszolgáló törlésének megerősítéséhez.
+
+   ![Erősítse meg a főkiszolgáló törlését](./media/howto-read-replicas-portal/confirm-delete.png)
  
 
 ## <a name="delete-a-replica"></a>Replika törlése
-Olvasási replika törlése, kövesse a lépéseket csakúgy, mint a fenti fő kiszolgáló törlése. Először nyissa meg a replika – Áttekintés lapján, majd válassza a törlés.
+Hogyan törli egy fölérendelt kiszolgáló hasonló olvasható replika törölheti.
 
-   ![Azure Database for PostgreSQL - tárolt replika törlése](./media/howto-read-replicas-portal/delete-replica.png)
+- Az Azure Portalon nyissa meg a **áttekintése** lap olvasási replikára. Válassza a **Törlés** elemet.
+
+   ![A replika – Áttekintés lapon válassza ki a replika törlése](./media/howto-read-replicas-portal/delete-replica.png)
  
-Másik lehetőségként törölheti a replikációs ablakból.
+Törölheti is a olvasható replika kapacitástervező a **replikációs** ablakban az alábbi lépéseket:
+
 1.  Az Azure Portalon válassza ki a fő, Azure Database for PostgreSQL-kiszolgálóhoz.
 
-2.  Válassza ki a replikációs beállítások alatt a menüből.
+2.  A kiszolgáló menü alatt **beállítások**válassza **replikációs**.
 
-3.  Válassza ki, hogy törölni kívánja az adatbázisreplika-kiszolgálón. 
+3.  Válassza ki a olvasható replika törlése.
 
-   ![Azure Database for postgresql-hez - válassza replika](./media/howto-read-replicas-portal/select-replica.png)
+   ![Válassza ki a replika törlése](./media/howto-read-replicas-portal/select-replica.png)
  
-4.  Válassza ki a tárolt replika törlése.
+4.  Válassza ki **tárolt replika törlése**.
 
-   ![Azure Database for postgresql-hez - válassza replika törlése](./media/howto-read-replicas-portal/select-delete-replica.png)
+   ![Válassza ki a replika törlése](./media/howto-read-replicas-portal/select-delete-replica.png)
  
-5.  Adja meg a replikát a, és válassza a törlés megerősítéséhez, hogy a replika törlését.
+5.  Adja meg a nevét, a replika törlése. Válassza ki **törlése** a replika törlésének megerősítéséhez.
 
-   ![Azure Database for PostgreSQL – győződjön meg róla replika törlése](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   ![Győződjön meg arról, te replika törlése](./media/howto-read-replicas-portal/confirm-delete-replica.png)
  
 
 ## <a name="monitor-a-replica"></a>A figyelő egy replika
-### <a name="max-lag-across-replicas"></a>Maximális késés replika között
-A **replikák közötti maximális késésnek** metrika a késés mutatja bájtban a master és a legtöbb elmaradt replika között. 
+Két mérőszám olvasási replikák figyelése érhetők el.
 
-1.  Az Azure Portalon válassza ki a **fő** , Azure Database for PostgreSQL-kiszolgálóhoz.
+### <a name="max-lag-across-replicas-metric"></a>A metrika Lag között replikák maximális száma
+A **Lag között replikák maximális száma** metrika a fölérendelt kiszolgáló és a legtöbb elmaradt replika közötti jeleníti meg a késés. 
 
-2.  Kiválaszthatja a metrikákat. A metrikák ablakban válassza ki a **Lag között replikák maximális száma**.
+1.  Az Azure Portalon válassza ki a fő, Azure Database for PostgreSQL-kiszolgálóhoz.
 
-    ![Azure Database for PostgreSQL - figyelő maximális késésnek replika között](./media/howto-read-replicas-portal/select-max-lag.png)
+2.  Válassza a **Metrika** lehetőséget. Az a **metrikák** ablakban válassza **Lag között replikák maximális száma**.
+
+    ![A maximális késésnek figyelése replikák](./media/howto-read-replicas-portal/select-max-lag.png)
  
-3.  Válassza ki **maximális** , az összesítést. 
+3.  Az a **összesítési**válassza **maximális**.
 
-### <a name="replica-lag"></a>Replika késés
-A **replika Lag** metrika időpontot jeleníti meg, mert az utolsó játssza vissza a tranzakciót a replikán. Ha nem léteznek tranzakciók folyamatban lévő a master, a metrika az idő elteltével jeleníti meg.
 
-1.  Az Azure Portalon válassza ki a **replika** , Azure Database for PostgreSQL-kiszolgálóhoz.
+### <a name="replica-lag-metric"></a>Replika Lag metrika
+A **replika Lag** metrika időpontot jeleníti meg, mert az utolsó játssza vissza a tranzakciót egy replikát. Ha nem léteznek tranzakciók folyamatban lévő a master, a metrika az idő elteltével jeleníti meg.
 
-2.  Kiválaszthatja a metrikákat. A metrikák ablakban válassza ki a **replika Lag**.
+1.  Az Azure Portalon válassza ki az Azure Database for PostgreSQL, olvassa el a replika.
 
-   ![Azure Database for PostgreSQL - figyelő replika késés](./media/howto-read-replicas-portal/select-replica-lag.png)
+2.  Válassza a **Metrika** lehetőséget. Az a **metrikák** ablakban válassza **replika Lag**.
+
+   ![A replika lag figyelése](./media/howto-read-replicas-portal/select-replica-lag.png)
  
-3.  Válassza ki **maximális** , az összesítést. 
+3.  Az a **összesítési**válassza **maximális**. 
  
 ## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [olvassa el a replikákat az Azure Database for postgresql-hez](concepts-read-replicas.md).
+Tudjon meg többet [olvassa el a replikákat az Azure Database for postgresql-hez](concepts-read-replicas.md).

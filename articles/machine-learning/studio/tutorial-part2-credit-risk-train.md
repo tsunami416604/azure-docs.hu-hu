@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 8ffcfc86823d46e65e116eed86ef35fcba2a99bf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 45407e183c70fe67e6bd59e3fd86a50a31844c47
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008011"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453479"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio"></a>2. oktatóanyag: Kockázati kredit - modellek Azure Machine Learning Studióban
 
@@ -23,7 +23,7 @@ Ebben az oktatóanyagban a folyamat egy prediktív elemzési megoldás fejleszt�
 
 Tegyük fel, hogy előrejelzést kell készíteni egy személy hitelkockázatáról az általa kitöltött hitelkérelemben megadott adatok alapján.  
 
-A hitelkockázat értékelése összetett probléma, de ebben az oktatóanyagban leegyszerűsíti azt egy kicsit. Azt, hogyan hozhat létre a Microsoft Azure Machine Learning segítségével prediktív elemzési megoldások például fogja használni. Az Azure Machine Learning Studio és a egy Machine Learning webszolgáltatás ehhez a megoldáshoz fogja használni.  
+A hitelkockázat értékelése összetett probléma, de ebben az oktatóanyagban leegyszerűsíti azt egy kicsit. Ez a példa használatával a Microsoft Azure Machine Learning Studio prediktív elemzési megoldások létrehozásának módját fogja használni. Az Azure Machine Learning Studio és a egy Machine Learning webszolgáltatás ehhez a megoldáshoz fogja használni.  
 
 A háromrészes oktatóanyag megkezdése nyilvánosan elérhető hitelkockázati adatokkal.  Fejlesztés és betanítunk egy prediktív modellt.  Végül, a modell üzembe webszolgáltatásként.
 
@@ -191,9 +191,9 @@ A diagram jobb, kattintson a **Pontozását adatkészlet** vagy **Pontozását �
 Ezek az értékek megvizsgálásával eldöntheti, melyik modellben a legközelebbi a keresett eredményeket biztosít. Lépjen vissza, és a kísérlet iterálása a különböző modellek paraméter értékeinek módosításával. 
 
 Az adatelemzési és az eredmények értelmezésében és a modellek teljesítményének hangolása art ebben az oktatóanyagban hatókörén kívül esik. További segítségre van szüksége akkor előfordulhat, hogy olvassa el a következő cikkeket:
-- [Az Azure Machine Learning modellek teljesítményének kiértékelése](evaluate-model-performance.md)
-- [Az Azure Machine Learning termékben használt algoritmusok optimalizálására paraméterek kiválasztása](algorithm-parameters-optimize.md)
-- [Az Azure Machine Learning modell eredményeinek értelmezése](interpret-model-results.md)
+- [Hogyan modellek teljesítményének kiértékelése az Azure Machine Learning Studióban](evaluate-model-performance.md)
+- [Válassza ki az Azure Machine Learning Studióban az algoritmusok optimalizálása paraméterekkel](algorithm-parameters-optimize.md)
+- [Az Azure Machine Learning Studióban modell eredményeinek értelmezése](interpret-model-results.md)
 
 > [!TIP]
 > Minden alkalommal futtassa a kísérletet, ismétlés egy rekordot a futtatási előzmények maradjanak. Ezeket az ismétlések megtekintheti, és bármelyiket, kattintva térjen **FUTTATÁSI előzmények megtekintése** a vászon alatti. Is **előzetes futtatása** a a **tulajdonságok** panelre való visszatéréshez a közvetlenül megelőző egy iteráció meg van nyitva.

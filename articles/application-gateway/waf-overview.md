@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 71990244db859a61885968a502d9849a36d81dce
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9bccc9258a6bd9a6fef4956d0f32cb00dd3c542d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425162"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454259"
 ---
 # <a name="web-application-firewall-waf"></a>Webalkalmazási tűzfal (WAF)
 
@@ -51,11 +51,11 @@ Az alábbiak az Application Gateway és a webalkalmazási tűzfal használatána
 
 ## <a name="features"></a>Szolgáltatások
 
-- SQL-injektálás elleni védelem
+- SQL injection protection
 - Adatbázisközi hely webhelyközi védelme
 - Például parancsinjektálás, HTTP-kéréscsempészet, HTTP-válaszfelosztás és távolifájl-beszúrásos támadás gyakori webes támadások védelem
 - HTTP protokoll megsértése elleni védelem
-- Elleni HTTP protokollanomáliák például hiányzó gazdagép-felhasználói ügynök, és fogadja el a fejlécek
+- Protection against HTTP protocol anomalies such as missing host user-agent and accept headers
 - Robotprogramok, webbejárók és képolvasók elleni védelem
 - Gyakori alkalmazások konfigurációs hibáinak észlelése (például Apache, IIS, és így tovább)
 
@@ -78,11 +78,11 @@ Az Application Gateway a következő két szabálykészletet támogatja: CRS 3.0
 
 A webalkalmazási tűzfal alapértelmezés szerint a CRS 3.0-s verziójával van előre konfigurálva, de a 2.2.9-es verzió használata mellett is dönthet. A CRS 3.0-s verziója esetén kevesebb hibás riasztással kell számolnia, mint a 2.2.9-es verziónál. A [szabályok igény szerinti testreszabására](application-gateway-customize-waf-rules-portal.md) is lehetősége van. A webalkalmazási tűzfal többek között a következő gyakori internetes biztonsági rések ellen nyújt védelmet:
 
-- SQL-injektálás elleni védelem
+- SQL injection protection
 - Adatbázisközi hely webhelyközi védelme
 - Például parancsinjektálás, HTTP-kéréscsempészet, HTTP-válaszfelosztás és távolifájl-beszúrásos támadás gyakori webes támadások védelem
 - HTTP protokoll megsértése elleni védelem
-- Elleni HTTP protokollanomáliák például hiányzó gazdagép-felhasználói ügynök, és fogadja el a fejlécek
+- Protection against HTTP protocol anomalies such as missing host user-agent and accept headers
 - Robotprogramok, webbejárók és képolvasók elleni védelem
 - Gyakori alkalmazások konfigurációs hibáinak észlelése (például Apache, IIS stb.)
 
@@ -133,7 +133,7 @@ Az Application Gateway WAF az alábbi két üzemmódban való futtatásra konfig
 
 ### <a name="application-gateway-waf-reports"></a>WAF-figyelés
 
-Fontos az alkalmazásátjáró állapotának folyamatos figyelése. A webalkalmazás-tűzfal és az általa védett alkalmazások állapotát az Azure Monitorral, az Azure Security Centerrel és a Log Analytics naplózási és integrációs szolgáltatásaival monitorozhatja.
+Fontos az alkalmazásátjáró állapotának folyamatos figyelése. A állapotának monitorozása a webes tűzfal és az általa védett alkalmazások naplózási és integrációs az Azure monitorral, az Azure Security Center, ha az Azure Monitor naplózza.
 
 ![diagnosztika](./media/waf-overview/diagnostics.png)
 
@@ -149,7 +149,7 @@ Az Application Gateway-naplók integrálva vannak az [Azure Monitorral](../monit
 
 #### <a name="logging"></a>Naplózás
 
-Az Application Gateway WAF részletes jelentéseket biztosít az összes észlelt fenyegetésről. A naplózás integrálva van az Azure Diagnostics naplóival, a riasztások pedig JSON formátumban vannak rögzítve. Ezek a naplók integrálhatók a [Log Analytics-be](../azure-monitor/insights/azure-networking-analytics.md).
+Az Application Gateway WAF részletes jelentéseket biztosít az összes észlelt fenyegetésről. A naplózás integrálva van az Azure Diagnostics naplóival, a riasztások pedig JSON formátumban vannak rögzítve. Ezek a naplók integrálhatók az [naplózza az Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md).
 
 ![imageURLroute](./media/waf-overview/waf2.png)
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 28710ebfaef4c82212e0208c36f50a96f0dda083
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 764b5ebb73340d377250d39e20b17ed0daf18bbe
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892048"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447684"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Oktatóanyag: Az Azure Lab Services tesztkörnyezetfiók beállítása
 Az Azure Lab Services szolgáltatásban a tesztkörnyezetfiók központi fiókként szolgál a vállalat összes tesztkörnyezetének felügyeletéhez. A tesztkörnyezetfiókban engedélyeket adhat másoknak a tesztkörnyezetek létrehozására, és szabályzatokat állíthat be, amelyek a tesztkörnyezetfiók alá tartozó összes tesztkörnyezetben érvényesek. Ebben az oktatóanyagban megismerheti, hogyan hozhat létre tesztkörnyezetfiókot tesztkörnyezet-rendszergazdaként. 
@@ -48,7 +48,8 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt teszt
     2. Válassza ki azt az **Azure-előfizetést**, amelyben a tesztkörnyezetfiókot létre szeretné hozni.
     3. Az **Erőforráscsoport** esetében válassza az **Új létrehozása** lehetőséget, majd adjon nevet az új erőforráscsoportnak.
     4. A **Helyszín** esetében válassza ki a helyszínt/régiót, ahol létre szeretné hozni a tesztkörnyezetfiókot. 
-    5. Kattintson a **Létrehozás** gombra. 
+    5. Az a **engedélyezése tesztkörnyezet létrehozója, labor helyre** mezőben adja meg, hogy tesztlabor kiindulópontként szolgálhat ki egy helyet a tesztkörnyezethez. Alapértelmezés szerint a beállítás le van tiltva. Le van tiltva, ha a labor alkotói nem adható meg egy helyet a tesztkörnyezethez hoznak létre. A labs labor-fiókba az Önhöz legközelebbi földrajzi helyet jönnek létre. Ha engedélyezve van, egy tesztkörnyezet létrehozója lab létrehozása idején válasszon egy helyet is. 
+    6. Kattintson a **Létrehozás** gombra. 
 
         ![Tesztkörnyezetfiók létrehozása ablak](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. Válassza ki a **harang ikonra** eszköztár (**értesítések**), győződjön meg arról, hogy az üzembe helyezés sikeres volt-e, és válassza ki **erőforrás megnyitása**. 

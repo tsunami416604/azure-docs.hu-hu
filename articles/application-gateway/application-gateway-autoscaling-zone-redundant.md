@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: victorh
-ms.openlocfilehash: 880a6fc9d5636ff0ac67d24d0ef66c8f48ae22fb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: bc1176ea97d1c2d4fc17487c0589fb4235163b46
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743650"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446511"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatikus skálázás és zónaredundáns az Application Gateway (nyilvános előzetes verzió)
 
@@ -45,7 +45,7 @@ Az előzetes időszakban nem jár költségekkel. Alkalmazásátjáró, példáu
 |Probléma|Részletek|
 |--|--|
 |Hitelesítési tanúsítvány|Nem támogatott.<br>További információkért lásd: [az Application Gateway teljes körű SSL áttekintése](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózaton|Nem támogatott.<br>Ezenkívül az automatikus skálázás engedélyezve van, egy alhálózatot csak egy alkalmazás-átjáróval rendelkezhet.|
+|Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózaton|Nem támogatott|
 |Felhasználó által megadott útvonal (UDR) az Application Gateway-alhálózat|Nem támogatott|
 |NSG bejövő port-tartomány| -65200 – 65535 Standard_v2 Termékváltozat<br>-65503 65534 Standard Termékváltozat esetében.<br>További információkért lásd: a [– gyakori kérdések](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Teljesítmény az Azure-beli diagnosztikai naplók|Nem támogatott.<br>Az Azure-metrikák kell használni.|

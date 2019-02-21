@@ -1,5 +1,5 @@
 ---
-title: Azure virtuális gépek biztonsági mentéséről
+title: Azure-beli virtuális gépek biztonsági mentése
 description: További tudnivalók az Azure virtuális gépek biztonsági mentését, és jegyezze fel néhány ajánlott eljárást.
 services: backup
 author: rayne-wiselman
@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: c331c3617f421c913abbc3554aa5ba17e86cb978
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: c38c457bbf428d7252cf57168685201a2ca227ba
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429179"
+ms.locfileid: "56446800"
 ---
-# <a name="about-azure-vm-backup"></a>Azure virtuális gépek biztonsági mentéséről
+# <a name="about-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentése
 
 Ez a cikk azt ismerteti, hogyan a [Azure Backup szolgáltatás](backup-introduction-to-azure-backup.md) Azure virtuális gépek biztonsági mentését.
 
@@ -48,7 +48,7 @@ Ha Ön Azure virtuális gépek biztonsági mentése az Azure Backup szolgáltat�
 
 **Titkosítás** | **Részletek** | **Támogatás**
 --- | --- | ---
-**ADE** | ADE titkosítja az Azure virtuális gépek egyaránt operációsrendszer- és adatlemezek titkosítja.<br/><br/> ADE hogyan gondoskodik a védelmükről a kulcstartóban található titkos adatait, mint a BitLocker-titkosítási kulcsok (blokktitkosítási kulcsot), vagy az Azure Key Vault kulcstitkosítási kulcs-(KEK) integrálható. | Az Azure Backup támogatja a felügyelt és nem felügyelt Azure-beli virtuális csak a blokktitkosítási kulcsot, vagy rendelkeznek BEk-KEL és KEK titkosított biztonsági mentés.<br/><br/> Mindkét rendelkeznek BEk-KEL és és a biztonsági mentés és a titkosított.<br/><br/> Mivel KEK és rendelkeznek BEk-KEL készül biztonsági másolat, ha a szükséges engedélyekkel rendelkező felhasználók is visszaállítani kulcsok és titkos kulcsok a key vaultban, és a titkosított virtuális gép helyreállításához.<br/><br/> A titkosított kulcsokat és titkos kulcsokat jogosulatlan felhasználók vagy az Azure-ban nem olvasható.
+**ADE** | ADE mind az operációs rendszer és az adatlemezek titkosítja az Azure virtuális gépek.<br/><br/> ADE hogyan gondoskodik a védelmükről a kulcstartóban található titkos adatait, mint a BitLocker-titkosítási kulcsok (blokktitkosítási kulcsot), vagy az Azure Key Vault kulcstitkosítási kulcs-(KEK) integrálható. | Az Azure Backup támogatja a felügyelt és nem felügyelt Azure-beli virtuális csak a blokktitkosítási kulcsot, vagy rendelkeznek BEk-KEL és KEK titkosított biztonsági mentés.<br/><br/> Mindkét rendelkeznek BEk-KEL és a biztonsági mentés és a titkosított.<br/><br/> Mivel KEK és rendelkeznek BEk-KEL készül biztonsági másolat, ha a szükséges engedélyekkel rendelkező felhasználók is visszaállítani kulcsok és titkos kulcsok a key vaultban, és a titkosított virtuális gép helyreállításához.<br/><br/> A titkosított kulcsokat és titkos kulcsokat jogosulatlan felhasználók vagy az Azure-ban nem olvasható.
 **SSE** | Az SSE az Azure storage biztosítja, hogy a titkosítás inaktív adatok titkosítása automatikusan az tárolás előtt, és visszafejti őket a lekérés előtt. | Az Azure Backup SSE az inaktív adatok titkosítása az Azure-beli virtuális használ.
 
 - A BitLocker titkosítási kulcs (rendelkeznek BEk-KEL) csak és a Blokktitkosítási kulcs titkosítási Key(KEK) együtt titkosított virtuális gépek biztonsági mentése támogatott, felügyelt és nem felügyelt Azure-beli virtuális gépek.

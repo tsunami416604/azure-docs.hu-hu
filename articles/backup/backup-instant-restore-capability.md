@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: cc4f559efecec3f024ce995dcf8f8757eb9cb4fb
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 1a25a9c3e0d099349286476f0ae3791efee1642f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489689"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452814"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentés, és állítsa vissza a teljesítmény az Azure Backup azonnali visszaállítási képesség
 
@@ -23,10 +23,11 @@ ms.locfileid: "55489689"
 Az új modellre azonnali visszaállítása a következő szolgáltatás fejlesztéseket biztosítja:
 
 * Lehetővé teszi a biztonsági mentési feladatot, amely elérhető a helyreállítás befejezéséhez a tárolóban való adatátvitel várakozás nélkül részeként készített pillanatkép használata. Ez csökkenti a várakozási idő a pillanatképek visszaállításának előtt a tárolóba másolja.
-* Csökkenti a biztonsági mentés és visszaállítás idejét pillanatképek és a lemezek megőrzése a hét napja szerint.
+* Csökkenti a biztonsági mentési és helyreállítási idő szerint helyileg, a pillanatképek megőrzik alapértelmezés szerint két napig. Az alapértelmezett tároló nem 1 és 5 nap között bármilyen érték konfigurálható.
 * Támogatja a lemez mérete 4 TB-ig.
 * Standard SSD-lemezeket támogatja.
-* Használhat egy nem felügyelt virtuális gép eredeti tárfiókokban (lemezenként) visszaállítása során. Ez a lehetőség létezik, akkor is, ha a virtuális gép lemezei tárfiókokban vannak elosztva. Ez felgyorsítja a visszaállítási műveletek számos különböző Virtuálisgép-konfigurációk esetében.
+*   Használhat egy nem felügyelt virtuális gép eredeti tárfiókokban (lemezenként) visszaállítása során. Ez a lehetőség létezik, akkor is, ha a virtuális gép lemezei tárfiókokban vannak elosztva. Felgyorsítja a visszaállítási műveletek számos különböző Virtuálisgép-konfigurációk
+
 
 
 ## <a name="whats-new-in-this-feature"></a>Ez a szolgáltatás újdonságai
@@ -47,6 +48,12 @@ Pillanatfelvételek megmaradnak a hét napja. Ez a funkció lehetővé teszi a v
 * A pillanatképek és a lemezek a helyreállítási pont létrehozása növelése érdekében, és visszaállítási műveletek felgyorsítása érdekében tárolja. Ennek eredményeképpen látni fogja, amelyek megfelelnek a pillanatképekhez, ebben az időszakban végrehajtott tárolási költségeket.
 * Növekményes pillanatképek lapblobként tárolt. Nem felügyelt lemezeket használó összes felhasználó a saját helyi tárfiókban tárolt pillanatképek díjat számítunk fel. Mivel a visszaállítási pont gyűjtemények által felügyelt virtuális gép biztonsági mentéseinek használt blobpillanatképeket használja az alapul szolgáló tárolási szinten, a felügyelt lemezek látni fogja a blob-pillanatkép díjszabás megfelelő költségeket és a növekményes.
 * Prémium szintű tárfiókok esetén az azonnali helyreállítási pontok száma legfeljebb 10 TB-os felé készített pillanatképeket lefoglalt terület.
+* Lehetővé teszi a visszaállítási igényeinek megfelelően pillanatképek megőrzésének konfigurálása kap. A követelmény, attól függően beállíthatja a pillanatkép megőrzési legalább egy napot a biztonsági mentési házirend panel, kövesse az alábbi utasításokat. Ez segíthet csökkenthetők a költségek pillanatképek megőrzésének, ha nem végezhet helyreállítást gyakran.
+
+
+>[!NOTE]
+>Ez azonnali és visszaállítását a frissítés minden ügyfélnél pillanatkép megőrzési időtartama (**új és meglévő is megtalálható a**) két nap alapértelmezett értékre állítja. Azonban meg az időtartamot a követelmény 1-5 nap között bármilyen érték alapján.
+
 
 ## <a name="cost-impact"></a>A Cost gyakorolt hatás
 
@@ -56,10 +63,11 @@ A növekményes pillanatképek vannak a virtuális gép tárfiókban tárolja, a
 ## <a name="upgrading-to-instant-restore"></a>Az azonnali helyreállítás frissítése
 
 Ha használja az Azure Portalon, látni fogja értesítést a tároló irányítópultjának. Ezt az értesítést a nagyméretű lemezek támogatása és a biztonsági mentés és visszaállítás sebességének fejlesztései vonatkozik.
+Azonnali visszaállítani a frissítéskor képernyő megnyitásához, válassza ki a szalagcímet.
 
 ![A virtuális gép biztonsági másolat verem Resource Manager üzemi modell – értesítés a támogatás megszűnéséről biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-banner.png)
 
-Azonnali visszaállítani a frissítéskor képernyő megnyitásához, válassza ki a szalagcímet.
+Kattintson a **frissítése** az alábbi képernyőképen látható módon:
 
 ![A virtuális gép biztonsági másolat verem Resource Manager üzemi modell – biztonsági mentési feladat frissítése](./media/backup-azure-vms/instant-rp.png)
 
@@ -67,6 +75,13 @@ Másik lehetőségként megnyithatja **tulajdonságok** beolvasni a tároló old
 
 ![Biztonsági mentési feladat, a virtuális gép biztonsági másolat verem – Tulajdonságok lap](./media/backup-azure-vms/instant-restore-capability-properties.png)
 
+
+## <a name="configure-snapshot-retention-using-azure-portal"></a>Az Azure portal használatával pillanatképek megőrzésének konfigurálása
+Ez a beállítás érhető el jelenleg az USA nyugati középső Régiója, Dél-India és Kelet-Ausztrália.
+
+A frissített felhasználókhoz, az Azure Portalon látható egy új funkció a mezőt a **virtuális gép biztonsági mentési szabályzat** panel a **azonnali visszaállítása** szakaszban. Módosíthatja a pillanatkép megőrzési időtartamot a **virtuális gép biztonsági mentési szabályzat** panel az összes virtuális gép az adott biztonsági mentési szabályzathoz társított.
+
+![Azonnali visszaállítási képesség](./media/backup-azure-vms/instant-restore-capability.png)
 
 ## <a name="upgrade-to-instant-restore-using-powershell"></a>Frissítse az azonnali helyreállításához PowerShell-lel
 
@@ -145,13 +160,13 @@ Minden nap egy új pillanatképet készít, majd öt egyéni növekményes pilla
 Az azonnali helyreállítás funkció részeként készített pillanatkép növekményes pillanatképek.
 
 ### <a name="how-can-i-calculate-the-approximate-cost-increase-due-to-instant-restore-feature"></a>Hogyan kiszámíthatja a hozzávetőleges növekedése miatt az azonnali helyreállítás funkció?
-Ez a forgalom a virtuális gép függ. Stabil állapotú, akkor feltételezheti, költség növekedése = van a pillanatkép megőrzési idő * napi adatváltozás virtuális gépenként * GB-onkénti tárolási költség.
+Ez a forgalom a virtuális gép függ. Egy stabil állapotot is feltételezik, költség növekedése van = pillanatkép megőrzési időtartam napi adatváltozással GB-onként VM tárolási költségeket.
 
 ### <a name="if-the-recovery-type-for-a-restore-point-is-snapshot-and-vault-and-i-perform-a-restore-operation-which-recovery-type-will-be-used"></a>Ha a helyreállítás típusának visszaállítási pont "Pillanatkép és tár" és a visszaállítási művelet elvégezzem, melyik helyreállítási típust használja?
 Ha a helyreállítás típusának "pillanatkép és tár", a helyi pillanatkép, amely lesz sokkal gyorsabban összehasonlítva a tárolóból végzett visszaállítási automatikusan végezhető visszaállítás.
 
 ### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>Mi történik, ha kiválasztom a megőrzési időszak visszaállítási pont (2. szint) kisebb, mint a pillanatkép (1. szint) megőrzési időszak?
-Az új modell nem engedélyezi a törlése a visszaállítási pont (– 2. szint), kivéve, ha a rendszer törli a pillanatképét, (1. szint). Jelenleg hétnapos megőrzési ideje (1. szint) pillanatkép törlésre támogatjuk, ezért a visszaállítási pont (– 2. szint) megőrzési ideje kevesebb, mint hét napja nem figyelembe véve. Ajánlott ütemezés visszaállítási pont (– 2. szint) megőrzési idő nagyobb, mint hét nap.
+Az új modell nem engedélyezi a törlése a visszaállítási pont (– 2. szint), kivéve, ha a rendszer törli a pillanatképét, (1. szint). Azt javasoljuk, hogy visszaállítási pont (– 2. szint) megőrzési idő nagyobb, mint a pillanatkép megőrzési időtartam ütemezése.
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Miért van a pillanatkép meglévő után megőrizni a biztonsági mentési szabályzat időszak?
-Ha a helyreállítási pont van állítva a pillanatkép és a legújabb helyreállítási pont Védettként érhető el, amíg a következő sikeres biztonsági mentés megtartására. Ez a a tervezett GC szabályzatának megfelelően még ma, hogy a jelen kell lennie minden esetben abban az esetben az összes biztonsági mentés további a sikertelen a virtuális gép probléma miatt legalább egy legújabb helyreállítási pont Védettként építjük. A normál esetben RPs törlődnek a legfeljebb 48 óra lejártuk után.
+Ha a helyreállítási pont van állítva a pillanatkép és a legújabb helyreállítási pont Védettként érhető el, amíg a következő sikeres biztonsági mentés megtartására. Ez a a tervezett GC szabályzatának megfelelően még ma, hogy a jelen kell lennie minden esetben abban az esetben az összes biztonsági mentés további a sikertelen a virtuális gép probléma miatt legalább egy legújabb helyreállítási pont Védettként építjük. A normál esetben RPs törlődnek a legfeljebb 24 órán át lejártuk után.

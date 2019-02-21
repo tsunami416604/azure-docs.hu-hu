@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: a6708a1c414277cd4ee9b90851e19a94ea86c55b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2810a059bebc3fa89aef8f75b27250328d81e678
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491671"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455279"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studio a modell hibáinak keresése
 
@@ -33,7 +33,7 @@ Ez a cikk azt ismerteti, ezek a hibák lehetséges okát.
 
 A [tanítási modell] [ train-model] modul két bemenetet vár:
 
-1. A gyűjtemény biztosítja az Azure Machine Learning-modellek gépi tanulási modell típusa.
+1. A gyűjtemény-modellek Azure Machine Learning Studióban által biztosított gépi tanulási modell típusa.
 2. A betanítási adatok, amely meghatározza a változó előre meghatározott címke oszlop (a többi oszlopot is azt feltételezi, hogy funkciók).
 
 Ez a modul hozhatnak, egy hibaüzenet a következő esetekben:

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 12c82d440613078e9f0593ddb9fb6c7fe7b8c362
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5db8c4be9317706fcc8a31b916cff72fd13596d6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488356"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453297"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Az Excel analytics áttelepíteni az Azure Machine Learning Studióban
 
@@ -102,11 +102,11 @@ A megoldás volt, a Machine Learning regressziós modell üzembe helyezése a we
 
 A *Web Services-irányítópult* szakasz tartalmaz egy letölthető Excel-munkafüzet. A munkafüzet tartalmaz a webes API-t és a séma adatait beágyazott előre formázott. Amikor rákattint *Excel-munkafüzet letöltése*, megnyitja a munkafüzetet, és mentheti a helyi számítógépen. 
 
-![][1]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 Nyissa meg a munkafüzetet, és másolja az előre meghatározott paraméterek a kék paraméter szakasz alább látható módon. Miután megadta a paramétereket, az Excel hívja a Machine Learning web Service és az előre jelzett értékek zöld szakaszban megjeleníti az előre jelzett pontozott címkék. A munkafüzet továbbra is előrejelzéseket paraméterek alapján az összes sor elemek a megadott paraméterek alapján a betanított modell létrehozásához. Ez a funkció használatáról további információkért lásd: [használ az Azure Machine Learning Web Service az Excelből](consuming-from-excel.md). 
 
-![][2]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optimalizálás és további kísérletek
 Most, hogy az alapterv kellett az Excel-modell, költöztünk előre a Machine Learning lineáris regressziós modell optimalizálása. A modul használtuk [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] javítása a kezdeti adatok a kijelölt elemeket, és azt kommunikációnkhoz érhet el a teljesítmény fokozása 4.6 %-os Mean Absolute Error. A későbbi projektek használjuk ezt a szolgáltatást, amely menthető USA hét iterálás adatattribútumokat található a megfelelő bizonyos használandó modellezési funkcióit a. 

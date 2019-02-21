@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 87360d49892698458a021287d88240d98ba2ee19
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 83d6c430d0973d4b45fcfc40bbb93ae283d1133d
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881505"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447582"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK for Java felismerése
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech Service SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a Speech SDK Maven-csomag és az Eclipse a Java IDE (v4.8) a Windows 64 bites vagy 64 bites Ubuntu Linux 16.04 létrehozása / 18.04. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
+Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a Speech SDK Maven-csomag és az Eclipse a Java IDE (v4.8) a Windows 64 bites vagy 64 bites Ubuntu Linux 16.04 létrehozása / 18.04. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 > [!NOTE]
 > A Speech Devices SDK-ról és a Roobo eszközről lásd: [Speech Devices SDK](speech-devices-sdk.md).
@@ -39,7 +39,7 @@ Ha Ubuntu 16.04/18.04 rendszert használ, győződjön meg arról, ezek a függ�
 
 ```console
 sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
 
 Ha Windows (64 bites) ellenőrizze, hogy telepítve van a Microsoft Visual C++ újraterjeszthető csomag a platform.

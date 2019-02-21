@@ -1,25 +1,22 @@
 ---
-title: Hozzon létre egy application gateway, amelyen több webhely – Azure portal |} A Microsoft Docs
+title: Tároló több web sites – az Azure portal application gateway létrehozása
 description: Ismerje meg, hogyan hozhat létre egy application gateway, amelyen az Azure portal használatával több webhely.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/28/2017
+ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: fc418f58b299dcba08fda65000c5356c51f471e6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 09bb81b0382f18c9cb94e5e4d0932dc6597ae73c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993309"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454297"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Hozzon létre, és több webhely üzemeltetése az Azure Portalon az application gateway konfigurálása
 
-Használhatja az Azure Portalon [konfigurálása a több webhely üzemeltetése](multiple-site-overview.md) létrehozásakor egy [az application gateway](overview.md). Ebben az oktatóanyagban a virtual machines használatával háttércímkészletek határozhatók meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez az oktatóanyag feltételezi, hogy Ön több tartománnyal rendelkezik. Példaként a *www.contoso.com* és a *www.fabrikam.com* tartományt használja.
+Használhatja az Azure Portalon [konfigurálása a több webhely üzemeltetése](multiple-site-overview.md) létrehozásakor egy [az application gateway](overview.md). Ez a cikk a háttér-címkészletet a virtuális gépek határozhatók meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez a cikk feltételezi, hogy a saját több tartományok és felhasználási mintái *www.contoso.com* és *www.fabrikam.com*.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -35,9 +32,9 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
@@ -141,6 +138,8 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
 3. Kattintson az **OK** gombra.
 4. Hozzon létre egy második figyelő neve használatával *fabrikamListener* és használja a második tartomány nevét. Ebben a példában *www.fabrikam.com* szolgál.
 
+![mult – hely figyelője](media/create-multiple-sites-portal/be-listeners.png)
+
 ## <a name="create-routing-rules"></a>Útválasztási szabályok létrehozása
 
 A szabályok a felsorolásuk sorrendjében vannak feldolgozva, és a forgalom az első egyező szabály alapján lesz átirányítva, függetlenül annak sajátlagosságától. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
@@ -180,12 +179,4 @@ Az alkalmazásátjáró nyilvános IP-címmel történő létrehozása után lek
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan lehet:
-
-> [!div class="checklist"]
-> * Application Gateway létrehozása
-> * Virtuális gépek a háttérkiszolgálók létrehozása
-> * Háttérkészletek a háttérkiszolgálók létrehozása
-> * Háttérbeli figyelők létrehozása
-> * Útválasztási szabályok létrehozása
-> * CNAME rekord létrehozása a tartományban
+[Az App Service az Application Gateway konfigurálása](create-web-app.md)

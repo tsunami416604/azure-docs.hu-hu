@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: d8959e25280a9d1dd62549c698f7b2b6b98d6154
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/20/2019
+ms.openlocfilehash: d19dabb4e74e7a108ae769f55cd65ef108019fdc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964151"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454741"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Speciális biztonsági adatokat, a virtuális hálózatok és a közel 100 %-os kompatibilitást SQL Database használata
 
@@ -47,7 +47,7 @@ A felügyelt példány ötvözi a legjobb funkciókat, Azure SQL Database és SQ
 | --- | --- |
 |Hardver megvásárlása és kezelése <br>Nincs felügyeleti többletterhelést okoz az alapul szolgáló infrastruktúra kezelése <br>Gyors kiépítés és a szolgáltatás méretezése <br>Automatikus javítás és -verzió frissítése <br>Egyéb PaaS data services-integráció |99,99 %-os SLA-t  <br>A beépített [magas rendelkezésre állás](sql-database-high-availability.md) <br>A védett adatok [automatizált biztonsági mentések](sql-database-automated-backups.md) <br>Ügyfél konfigurálható biztonsági másolatainak megőrzési ideje <br>Felhasználó által kezdeményezett [biztonsági mentések](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Időponthoz kötött adatbázis-visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore) képesség |
 |**Biztonság és megfelelőség** | **Felügyeleti**|
-|Izolált környezet ([VNet-integráció](sql-database-managed-instance-connectivity-architecture.md), egyetlen dedikált számítási és a storage szolgáltatás bérlői) <br>[Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Az Azure AD-hitelesítés](sql-database-aad-authentication.md), egyszeri bejelentkezésének támogatása <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Az Azure AD-bejelentkezések</a> (**nyilvános előzetes verzióban**) <br>Megfelelőségi szabványoknak megfelelő ugyanaz, mint az Azure SQL database <br>[SQL-naplózás](sql-database-managed-instance-auditing.md) <br>[Fenyegetések észlelése](sql-database-managed-instance-threat-detection.md) |Automatizálhatja a szolgáltatás üzembe helyezését és skálázás az Azure Resource Manager API <br>Az Azure portal funkciók manuális szolgáltatáshoz kiépítés és méretezés <br>Data Migration Service
+|Izolált környezet ([VNet-integráció](sql-database-managed-instance-connectivity-architecture.md), egyetlen dedikált számítási és a storage szolgáltatás bérlői) <br>[Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Az Azure AD-hitelesítés](sql-database-aad-authentication.md), egyszeri bejelentkezésének támogatása <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések)</a> (**nyilvános előzetes verzióban**) <br>Megfelelőségi szabványoknak megfelelő ugyanaz, mint az Azure SQL database <br>[SQL-naplózás](sql-database-managed-instance-auditing.md) <br>[Fenyegetések észlelése](sql-database-managed-instance-threat-detection.md) |Automatizálhatja a szolgáltatás üzembe helyezését és skálázás az Azure Resource Manager API <br>Az Azure portal funkciók manuális szolgáltatáshoz kiépítés és méretezés <br>Data Migration Service
 
 A felügyelt példányok legfontosabb funkcióit az alábbi táblázatban láthatók:
 
@@ -150,9 +150,9 @@ Egy felügyelt példányra titkosított adatbázis áttelepítése az Azure Data
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory-integráció
 
-A felügyelt példány üzembe helyezési lehetőség támogatja a hagyományos SQL server Database engine bejelentkezések és az Azure Active Directory (AAD) integrált bejelentkezések. AAD-bejelentkezések (**nyilvános előzetes verzióban**) vannak az Azure-felhőalapú változata, a helyszíni adatbázis bejelentkezések, amelyek a helyszíni környezetben használja. AAD-bejelentkezések lehetővé teszi, hogy adja meg a felhasználók és csoportok az Azure Active Directory-bérlőben értékét igazként példány hatókörébe tartozó rendszerbiztonsági tagok, képes bármilyen példányszintű művelet, beleértve a felügyelt példányt belül adatbázisközi lekérdezések végrehajtása.
+A felügyelt példány üzembe helyezési lehetőség támogatja a hagyományos SQL server Database engine bejelentkezések és az Azure Active Directory (AAD) integrált bejelentkezések. Az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) (**nyilvános előzetes verzióban**) vannak az Azure-felhőalapú változata, a helyszíni adatbázis bejelentkezések, amelyek a helyszíni környezetben használja. Az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) lehetővé teszi, hogy adja meg a felhasználók és csoportok az Azure Active Directory-bérlőben értékét igazként példány hatókörébe tartozó rendszerbiztonsági tagok, képes bármilyen példányszintű művelet, beleértve az előfizetésen belül adatbázisközi lekérdezések végrehajtása felügyelt példány.
 
-AAD-bejelentkezéseket hozhasson létre bevezetett egy új szintaxis (**nyilvános előzetes verzióban**), **az EXTERNAL PROVIDER**. A szintaxist további információkért lásd: <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>, és tekintse át a [üzembe helyezése az Azure Active Directory-rendszergazda, a felügyelt példány](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) cikk.
+Egy új szintaxis létrehozása az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) jelenik meg (**nyilvános előzetes verzióban**), **az EXTERNAL PROVIDER**. A szintaxist további információkért lásd: <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>, és tekintse át a [üzembe helyezése az Azure Active Directory-rendszergazda, a felügyelt példány](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) cikk.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 

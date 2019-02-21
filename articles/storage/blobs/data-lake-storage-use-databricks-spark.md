@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: e448ef0de9ef5560c1b4ea0df5c02e8efd8c0ea9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: b5d7be25ba18e256352d8793689bcb63a013e20b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891657"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452602"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Data Lake Storage Gen2-adatok elérhetők az Azure Databricks Spark használatával
 
@@ -38,6 +38,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 * Az AzCopy v10 telepítse. Lásd: [adatok áthelyezése az AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
+*  Hozzon létre egy egyszerű szolgáltatást. Lásd: [hogyan: A portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+   Van néhány adott tudnivaló, mivel ebben a cikkben hajtsa végre a lépéseket kell.
+
+   :heavy_check_mark: A lépések végrehajtásakor a [alkalmazások szerepkörhöz rendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszt a cikk, ügyeljen arra, hogy rendelje hozzá a **Storage-Blobadatok Közreműködője** szerepkört a szolgáltatásnévhez.
+
+   > [!IMPORTANT]
+   > Ellenőrizze, hogy a szerepkört a Data Lake Storage Gen2 storage-fiók hatókörében. Szerepkör hozzárendelése a szülő erőforráscsoportba vagy előfizetésbe, de kap engedélyekkel kapcsolatos hibákat addig, amíg azokat a szerepkör-hozzárendeléseket a tárfiókhoz való propagálása.
+
+   :heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
+
 ### <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
 Ebben az oktatóanyagban a bemutatják, hogyan végezhet ETL-műveletet, a szállítás Hivatala statisztikák repülési adatait használja. Ezeket az adatokat az oktatóanyag elvégzéséhez le kell töltenie.
@@ -49,24 +60,6 @@ Ebben az oktatóanyagban a bemutatják, hogyan végezhet ETL-műveletet, a szál
 3. Válassza ki a **letöltése** gombra, és az eredmények mentése a számítógépre. 
 
 4. Csomagolja ki a tömörített fájl tartalmát, és jegyezze fel a fájl nevét és a fájl elérési útját. Ez egy későbbi lépésben információra van szüksége.
-
-## <a name="get-your-storage-account-name"></a>A tárfiók nevét beolvasása
-
-Szüksége lesz a tárfiók nevére. Letöltés, jelentkezzen be a [az Azure portal](https://portal.azure.com/), válassza a **minden szolgáltatás** és a kifejezést a szűrő *tárolási*. Ezután válassza ki **tárfiókok** , és keresse meg a storage-fiókjában.
-
-Illessze be a nevet egy szövegfájlba. Szüksége lesz rá hamarosan.
-
-<a id="service-principal"/>
-
-## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
-
-Ebben a témakörben található útmutatást követve hozzon létre egy egyszerű szolgáltatást: [Útmutató: A portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-Van néhány dolgot, mivel ebben a cikkben hajtsa végre a lépéseket kell.
-
-:heavy_check_mark: A lépések végrehajtásakor a [alkalmazások szerepkörhöz rendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszt a cikk, ügyeljen arra, hogy az alkalmazás hozzárendelése a **Blob Storage-közreműködői szerepkör**.
-
-:heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
 
 ## <a name="create-an-azure-databricks-service"></a>Hozzon létre egy Azure Databricks szolgáltatás
 
@@ -145,9 +138,16 @@ Ebben a szakaszban fog létrehozni egy fájlrendszert és a egy mappát a storag
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
-18. A kódblokk, cserélje le a `storage-account-name`, `application-id`, `authentication-id`, és `tenant-id` helyőrző értékeket az értékeket, ha végrehajtotta a lépéseket, a Set feltöltési tárfiók konfigurálása és összegyűjtöttakódblokk[Egyszerű szolgáltatás létrehozása](#service-principal) Ez a cikk szakaszainak. Cserélje le a `file-system-name` bármilyen nevet kíván rendelni a fájlrendszer helyőrzőt.
 
-19. Nyomja le az **SHIFT + ENTER** kulcsok a kód futtatásához a blokk. 
+18. A kódblokk, cserélje le a `application-id`, `authentication-id`, `tenant-id`, és `storage-account-name` helyőrző értékeket az előfeltételeket a jelen oktatóanyag végrehajtása során gyűjtött értékek a kód blokk. Cserélje le a `file-system-name` nevét bármilyen, a helyőrző értékét szeretné adni a fájlrendszer.
+
+   * A `application-id`, és `authentication-id` a regisztrált alkalmazást, és az active directory egyszerű szolgáltatás létrehozása során a rendszer.
+
+   * A `tenant-id` az előfizetésből van.
+
+   * A `storage-account-name` az Azure Data Lake Storage Gen2 storage-fiók neve.
+
+19. Nyomja le az **SHIFT + ENTER** kulcsok a kód futtatásához a blokk.
 
     Ez a jegyzetfüzet tartsa nyitva, mivel a hozzáadandó parancs azt később.
 

@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 0d11f42ab8194b9d451f9d21e88db001e189e974
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 17ec7723044cec391ebe390bbcfba3aa6f2f29ca
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429451"
+ms.locfileid: "56446851"
 ---
-# <a name="back-up-sql-server-databases-on-azure-vms"></a>Adatbázisok biztonsági mentése az SQL Server Azure virtuális gépeken 
+# <a name="back-up-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken 
 
 Az SQL Server-adatbázisok olyan alacsony a helyreállításipont-célkitűzés (RPO) és hosszú távú megőrzés igénylő kritikus fontosságú számítási feladatokhoz. Használata Azure virtuális gépeken futó SQL Server-adatbázisok biztonsági mentését végezheti [Azure Backup](backup-overview.md). 
 
@@ -45,7 +45,7 @@ Mielőtt elkezdené, ellenőrizze a következőket:
 A nyilvános előzetes verziója számos korlátozás tartozik.
 
 - Az SQL Server rendszerű virtuális Gépet az Azure nyilvános IP-címek eléréséhez internetkapcsolatra van szükség. 
-- Legfeljebb 2000 SQL Server-adatbázisok a tárolóban készíthető. Ha több, hozzon létre egy másik tárolót. 
+- Egy tároló legfeljebb 2000 SQL Server-adatbázisok biztonsági. Ha több, hozzon létre egy másik tárolót. 
 - A biztonsági mentések [elosztott rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017) nem teljesen működnek.
 - SQL Server mindig a Feladatátvevőfürt-példányokat (példányoktól) biztonsági mentés esetén nem támogatott.
 - Az SQL Server biztonsági másolat a portálon kell konfigurálni. Biztonsági mentés jelenleg nem konfigurálhatja az Azure PowerShell, CLI vagy a REST API-k.
@@ -58,7 +58,7 @@ Tekintse meg [gyakori kérdésekkel foglalkozó szakaszban](https://docs.microso
 
 **Támogatás** | **Részletek**
 --- | ---
-**Támogatott központi telepítések** | SQL-piactér Azure virtuális gépek és a-Marketplace (SQL Server telepített manuallly) virtuális gépek támogatottak.
+**Támogatott központi telepítések** | SQL piactér Azure-beli és nem Marketplace (manuálisan telepített SQL Server) virtuális gépek támogatottak.
 **Támogatott helyeken** | Délkelet-Ausztrália (ASE); Dél-Brazília (BRS); Közép-Kanada (CNC); Kelet-Kanada (CE); USA középső RÉGIÓJA (CUS); Kelet-Ázsia (EA); Kelet-Ausztrália (AE); USA keleti RÉGIÓJA (EUS); USA keleti RÉGIÓJA (EUS2); 2 Közép-India (INC); Dél-India (INS); Kelet-japán (JPE); Nyugat-japán (JPW); Korea középső régiója (KRC); Korea déli régiója (KRS); USA északi középső RÉGIÓJA (NCUS); Észak-Európa (NE); USA déli középső RÉGIÓJA (SCUS); Délkelet-Ázsia (SEA); Egyesült Királyság déli régiója (UKS); Egyesült Királyság nyugati régiója (UKW); USA nyugati középső RÉGIÓJA (WCUS); Nyugat-Európa (WE); USA nyugati RÉGIÓJA (WUS); USA nyugati RÉGIÓJA (WUS 2) 2
 **Támogatott operációs rendszerek** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux jelenleg nem támogatott.
 **Támogatott SQL Server-verziók** | Az SQL Server 2017; SQL Server 2016-ban, SQL Server 2014, SQL Server 2012-ben.<br/><br/> Enterprise, Standard, Web, Developer, Express.
@@ -147,8 +147,8 @@ Fedezze fel a virtuális gépen futó adatbázisok.
     - Az Azure Backup regisztrálja a virtuális Gépet a tárolóval, a számítási feladatok biztonsági mentéshez. Ebben a tárolóban csak készíthető a regisztrált virtuális gép összes adatbázist.
     - Az Azure Backup telepíti a **AzureBackupWindowsWorkload** bővítményt a virtuális gépen. Nincs ügynök telepítve van az SQL-adatbázis.
     - Az Azure Backup a szolgáltatás-fiókot hoz létre **NT Service\AzureWLBackupPluginSvc** a virtuális gépen.
-        - Minden biztonsági mentési és visszaállítási műveletek service fiókot használja.
-        - **NT Service\AzureWLBackupPluginSvc** SQL-rendszergazdai engedélyekre van szüksége. Az összes SQL Server virtuális gépek az Azure MArkplace létrehozott kapható a **SqlIaaSExtension** telepítve. A **AzureBackupWindowsWorkload** kiterjesztést használja a **SQLIaaSExtension** a szükséges engedélyek automatikus beszerzéséhez.
+      - Minden biztonsági mentési és visszaállítási műveletek service fiókot használja.
+      - **NT Service\AzureWLBackupPluginSvc** SQL-rendszergazdai engedélyekre van szüksége. Az összes SQL Server virtuális gépek létrehozása az Azure Marketplace-en kapható a **SqlIaaSExtension** telepítve. A **AzureBackupWindowsWorkload** kiterjesztést használja a **SQLIaaSExtension** a szükséges engedélyek automatikus beszerzéséhez.
     - Ha nem hozott létre a virtuális gép a piactérről, akkor a virtuális gép nem rendelkezik a **SqlIaaSExtension** telepítve van, és a felderítési művelet meghiúsul, a hibaüzenet **UserErrorSQLNoSysAdminMembership**. Kövesse az utasításokat a [# – sql-rendszergazdai-engedélyek fix] a probléma megoldásához.
 
         ![Válassza ki a virtuális gép és az adatbázis](./media/backup-azure-sql-database/registration-errors.png)
@@ -160,7 +160,7 @@ Fedezze fel a virtuális gépen futó adatbázisok.
 Biztonsági mentési terhelés optimalizálása érdekében az Azure Backup beállítása adatbázisok maximális száma 50-re egy biztonsági mentési feladat.
 
 - Több mint 50 adatbázisok védelméhez, több biztonsági mentések konfigurálása.
-- Automatikus védelem alternatily, engedélyezheti. Automatikus védelem védi, lépjen egy meglévő adatbázist, és automatikusan megvédi a rendelkezésre állási csoport példányához hozzáadott új adatbázisokat.
+- Azt is megteheti engedélyezheti a automatikus védelmét. Automatikus védelem védi, lépjen egy meglévő adatbázist, és automatikusan megvédi a rendelkezésre állási csoport példányához hozzáadott új adatbázisokat.
 
 
 Biztonsági mentés a következőképpen konfigurálja:
@@ -278,7 +278,7 @@ Biztonsági mentési szabályzat létrehozása:
 
 Engedélyezze az automatikus védelem automatikusan biztonsági másolatot az összes meglévő adatbázisok és a jövőben egy önálló SQL Server-példány és a egy SQL Server mindig a rendelkezésre állási csoport hozzáadott adatbázisok. 
 
-- Automatikus védelem bekapcsolása és a egy házirendet választ ki, ha a védett pexisting adatbázisokat továbbra is az előző szabályzatot.
+- Amikor az automatikus védelem bekapcsolása és a egy házirendet választ ki, a meglévő védett adatbázisok továbbra is az előző szabályzatot.
 - Egy, lépjen az automatikus védelemhez választhat adatbázisok száma nincs korlátozva van.
 
 A következő engedélyezze az automatikus védelem:

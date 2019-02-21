@@ -4,14 +4,14 @@ description: Ez a dokumentum ismerteti, hogy hogyan telepíthet át adatokat az 
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 02/19/2019
 ms.author: dech
-ms.openlocfilehash: 82c34f3dcc606ccf7103b557518cd7a54a153183
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 972602bb6c5fc80433c2479516f8d0a5d885e4dd
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034120"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446936"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Használja az adatok migrálása eszközt az adatok Azure Cosmos DB-be történő migrálásához
 
@@ -58,7 +58,7 @@ Az importálási eszköz tartalmaz egy grafikus felhasználói felületet (dtui.
 
 ## <a id="Install"></a>Telepítés
 
-Az áttelepítési eszköz forráskódját elérheti [ebben a GitHub-adattárban](https://github.com/azure/azure-documentdb-datamigrationtool). Letöltheti a forráskódot, és lefordíthatja helyben a megoldást, vagy [letöltheti az előre lefordított bináris fájlokat is](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip). Ezután futtathatja az alábbiak egyikét:
+Az áttelepítési eszköz forráskódját elérheti [ebben a GitHub-adattárban](https://github.com/azure/azure-documentdb-datamigrationtool). Letöltheti a forráskódot, és lefordíthatja helyben a megoldást, vagy [letöltheti az előre lefordított bináris fájlokat is](https://cosmosdbtools.blob.core.windows.net/datamigrationtool/2019.02.19-1.8.2/dt-1.8.2.zip). Ezután futtathatja az alábbiak egyikét:
 
 * **Dtui.exe**: Az eszköz grafikus felület verziója
 * **DT.exe**: Az eszköz parancssori verziója
@@ -171,7 +171,7 @@ Mely az alábbi (részleges) eredményt adja vissza:
 
 Megfigyelheti az Address.AddressType és az Address.Location.StateProvinceName áljelet. A „.” beágyazási elválasztó megadása miatt az importáló eszköz létrehozza az Address és az Address.Location aldokumentumot az importálás során. Ez például az alábbi Azure Cosmos DB-beli végleges dokumentumot eredményezheti:
 
-*{"id": "956", "Name": "Kifinomultabb Sales, Service", "cím": {"AddressType": "Főiroda", "AddressLine1": "#500 – 75 O'Connor Street", "Hely": {"City": "Ottawai", "StateProvinceName": "Ontario"}, "PostalCode": "K4B 1S2", "CountryRegionName": "Kanada"}}*
+*{"id": "956", "Name": "Kifinomultabb Sales, Service", "cím": {"AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario"}, "PostalCode": "K4B 1S2", "CountryRegionName": "Kanada"}}*
 
 Néhány parancssori példa SQL Server-adatbázisból való importáláshoz:
 
@@ -195,7 +195,7 @@ Az SQL forráshoz hasonlóan itt is használhatja a beágyazási elválasztó tu
 
 Megfigyelheti a DomainInfo.Domain_Name és a RedirectInfo.Redirecting áljelet. A „.” beágyazási elválasztó megadása miatt az importáló eszköz létrehozza a DomainInfo és a RedirectInfo aldokumentumot az importálás során. Ez például az alábbi Azure Cosmos DB-beli végleges dokumentumot eredményezheti:
 
-*{"DomainInfo": {"Tartomány_neve": "ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV"}, "Szövetségi közigazgatási szerv": "Az Amerikai Egyesült Államok közigazgatási konferencia", "RedirectInfo": {"Átirányítása": "0", "Redirect_Destination": ""}, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
+*{"DomainInfo": {"Tartomány_neve": "ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV" }, "Federal Agency": "Az Amerikai Egyesült Államok közigazgatási konferencia", "RedirectInfo": {"Átirányítása": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
 Az importálási eszköz próbál kikövetkeztetni informace o typu jegyzett értékek CSV-fájlok (határolójeles értékek mindig számít karakterláncok).  A típusokat a következő sorrendben azonosítja: szám, datetime, boolean.  
 
@@ -388,7 +388,7 @@ Emellett dátum típusú értékek importálásakor (például SQL Serverből va
 
 * Karakterlánc: Egy karakterláncértéket, megőrzése
 * Alapidőpont: Egy érték szám alapidőpont szerint megőrzése
-* Mindkettő: Továbbra is fennáll, mind a karakterlánc, és a alapidőpont számértékeit számértékekké. Ezzel a beállítással létrehoz aldokumentum, például: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Alapidőpont": 1382390245}
+* Mindkettő: Továbbra is fennáll, mind a karakterlánc, és a alapidőpont számértékeit számértékekké. Ezzel a beállítással létrehoz aldokumentum, például: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
 Az Azure Cosmos DB tömeges importálási eszköze a következő speciális beállításokat támogatja:
 
@@ -443,7 +443,7 @@ Elérhető néhány speciális beállítás is importáláskor. Dátum típusú 
 
 * Karakterlánc: Egy karakterláncértéket, megőrzése
 * Alapidőpont: Egy érték szám alapidőpont szerint megőrzése
-* Mindkettő: Továbbra is fennáll, mind a karakterlánc, és a alapidőpont számértékeit számértékekké. Ezzel a beállítással létrehoz aldokumentum, például: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Alapidőpont": 1382390245}
+* Mindkettő: Továbbra is fennáll, mind a karakterlánc, és a alapidőpont számértékeit számértékekké. Ezzel a beállítással létrehoz aldokumentum, például: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
 Az Azure Cosmos DB szekvenciális rekordimportáló eszköze a következő speciális beállításokat támogatja:
 

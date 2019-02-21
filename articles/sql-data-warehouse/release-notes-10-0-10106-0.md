@@ -10,12 +10,12 @@ author: mlee3gsd
 ms.author: anumjs
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 0b1c4c728c23d8bdfe439b3a3db69b06065dad8a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 2de7c335e56117f2a99db5150575ed94616467e9
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266951"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455585"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései
 Ez a cikk összefoglalja a új funkciókat és fejlesztéseket a legutóbbi kiadásaiban [Azure SQL Data Warehouse](sql-data-warehouse-overview-what-is.md). A cikk nem közvetlenül kapcsolódó kiadására, de az időkeretből közzétett jelentős tartalomfrissítéseket is megjeleníti. Más Azure-szolgáltatások fejlesztései, lásd: [szolgáltatási hírek](https://azure.microsoft.com/updates)
@@ -28,6 +28,7 @@ Ez a cikk összefoglalja a új funkciókat és fejlesztéseket a legutóbbi kiad
 | --- | --- |
 |**Optimalizálás által visszaadott sorrend**|VÁLASSZON... Az ORDER BY lekérdezések get teljesítménynek ebben a kiadásban.   Most számítási csomópontok küldése az eredményeiket egyetlen számítási csomópont, amely egyesíti, valamint rendezi az eredményeket, amely a rendszer visszairányítja a felhasználót a számítási csomóponton keresztül.  Egyesítése egy egyetlen számítási csomópont eredményeket jelentős teljesítménybeli nyereség keresztül, ha a lekérdezés eredményhalmazában nagy számú sort tartalmaz. Korábban a lekérdezést végrehajtó motor lenne rendelési eredmények minden számítási csomópont, majd azok streamelésére az a vezérlő csomópont, amely kellene majd egyesítse az eredményeket.|
 |**Adatok áthelyezése fejlesztések PartitionMove és BroadcastMove**|Az Azure SQL Data Warehouse Gen2, adatok mozgását lépéseket típusú ShuffleMove, használja a azonnali data módszerekkel történő leírt a [teljesítményének fejlesztései blog](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/). Ebben a kiadásban az adatáthelyezési adattípusok PartitionMove és BroadcastMove most is működteti az azonos azonnali data módszerekkel történő. Felhasználói lekérdezések, amelyek ténylegesen használják az ilyen típusú adatok mozgását lépéseket javult teljesítményű fog futni. A teljesítménnyel kapcsolatos fejlesztések kihasználása kód változatlan van szükség.|
+|**Jelentős hibák**|Azure SQL Data Warehouse verziója nem kompatibilis - ' @ VÁLASSZA@VERSION"a megfelelő verziót, 10.0.9999.0 adhatnak vissza. A jelenlegi kiadásban helyes verziószáma 10.0.10106.0. Ezt a hibát jelentett és felülvizsgálat alatt áll.
 
 ### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
 

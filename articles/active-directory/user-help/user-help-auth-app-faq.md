@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84a1fd3efb9eac30e70fea9622716a54769369e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78fc7441b109c87f1ab9ff5b56ed8e055c152d10
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184125"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456061"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>A Microsoft Authenticator alkalmazás – gyakori kérdések
 
@@ -49,7 +49,7 @@ A Microsoft Authenticator alkalmazás helyett az Azure Authenticator alkalmazás
 |Miért nem a Microsoft Authenticator companion alkalmazás az Apple Watch szinkronizálása vagy saját watchra készült jelenik meg?|Ha az alkalmazás nem jelennek meg megtekinthesse, megpróbálkozhat a következőkkel: <ol><li>Ellenőrizze, hogy a figyelési futtató watchOS 4.0-s vagy újabb verziója.</li><li>A Watch újból szinkronizálódnak.</li></ol>|
 |Apple Watch kiegészítő alkalmazásom összeomlott. Küldhetek be saját összeomlási naplókat segítségével megvizsgálhatja, hogy? |Először azt kell, hogy kiválasztotta az elemzéseket megoszthatja velünk a kapcsolatot. Ha Ön a testflighthoz való felhasználó, még jelentkezett. Ellenkező esetben léphet **beállítások > adatvédelmi > Analytics** , és válassza ki mindkét a **megosztása iPhone & Watch analytics** és a **alkalmazásfejlesztők rendelkező megosztási** beállítások.<br><br>Miután regisztrált, próbálja meg reprodukálni az összeomlás, az összeomlási naplókat a rendszer automatikusan elküldje velünk a kapcsolatot a vizsgálat. Azonban ha az összeomlás nem lehet reprodukálni, manuálisan is a naplófájlok másolása, majd küldje el azokat velünk a kapcsolatot.<ol><li>Nyissa meg az órára készült alkalmazás a telefonján nyissa meg **beállítások > Általános**, és kattintson a **másolási Watch Analytics**.</li><li>Keresse meg a megfelelő összeomlási alatt **beállítások > Adatvédelem > Analytics > elemzési adatok**, majd manuálisan másolja a teljes szöveg.</li><li>Nyissa meg a Microsoft Authenticator alkalmazást a telefonján és a beillesztési, a vágólapra másolt szöveget a **alkalmazásfejlesztők rendelkező megosztási** szövegmezőbe írja be a **naplók küldése** lapot.</li></ol>|
 |Mi az az alkalmazás-zárolási szolgáltatás, és hogyan nyújt segítséget a biztonságosabb maradni?|Az egyszeri PIN-kódok, alkalmazás- és Alkalmazásbeállítások nagyobb biztonságban, bekapcsolhatja a Microsoft Authenticator alkalmazást az App Lock funkciót. Az alkalmazás-zárolási bekapcsolása a **beállítások** a Microsoft Authenticator alkalmazás képernyőjén jelenti, hogy a rendszer minden alkalommal, amikor a Microsoft Authenticator alkalmazás használatával a a PIN-kód vagy a biometrikus hitelesítést. Ez a szolgáltatás további védelmet nyújt, az értesítések a Microsoft Authenticator alkalmazásban jóvá kell hagynia módja nem változik.<br><br>**Megjegyzés**<br>Ha visszatér a Microsoft Authenticator alkalmazást, kevesebb mint 30 másodperc múlva Android-eszközön fut, nem kap felszólítást újbóli.|
-|Miért jelenik meg értesítés saját fiók tevékenységgel kapcsolatos?|Annak érdekében, hogy akkor megalapozottabb, hogy mi történik személyes Microsoft-fiókkal kapcsolatos, a Microsoft Authenticator alkalmazásnak tevékenység értesítéseket küldünk. Ezek az értesítések jelennek meg azonnal valami megváltozik, segítve a folyamatos védelmében. Azt korábban elküldi ezeket az értesítéseket e-mailek és SMS keresztül, és tartalmazza az alkalmazás most már kiterjesztettük. Tevékenység az értesítések kapcsolatos további információkért lásd: [mi történik, ha van egy szokatlan bejelentkezési fiókjához](https://support.microsoft.com/en-us/help/13967/microsoft-account-unusual-sign-in). Szeretné módosítani, amikor értesítést kap, jelentkezzen be https://account.live.com/SecurityNotifications/Update.|
+|Miért jelenik meg értesítés saját fiók tevékenységgel kapcsolatos?|Annak érdekében, hogy akkor megalapozottabb, hogy mi történik személyes Microsoft-fiókkal kapcsolatos, a Microsoft Authenticator alkalmazásnak tevékenység értesítéseket küldünk. Ezek az értesítések jelennek meg azonnal valami megváltozik, segítve a folyamatos védelmében. Azt korábban elküldi ezeket az értesítéseket e-mailek és SMS keresztül, és tartalmazza az alkalmazás most már kiterjesztettük. Tevékenység az értesítések kapcsolatos további információkért lásd: [mi történik, ha van egy szokatlan bejelentkezési fiókjához](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Szeretné módosítani, amikor értesítést kap, jelentkezzen be https://account.live.com/SecurityNotifications/Update.|
 
 
 ## <a name="next-steps"></a>További lépések
@@ -58,4 +58,4 @@ A Microsoft Authenticator alkalmazás helyett az Azure Authenticator alkalmazás
 
 -   Ha azt szeretné, hogy további információ a biztonsági adatait, tekintse meg [a biztonsági adatok kezelése](security-info-manage-settings.md)
 
-- Ha a kérdését itt nem válaszolt, szeretnénk meghallgatnánk a véleményét. Nyissa meg a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) tegye fel a kérdéseit, és segítséget kérhet a Közösség, vagy szóljon hozzá ezen a lapon.
+- Ha a kérdését itt nem válaszolt, szeretnénk meghallgatnánk a véleményét. Nyissa meg a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp) tegye fel a kérdéseit, és segítséget kérhet a Közösség, vagy szóljon hozzá ezen a lapon.

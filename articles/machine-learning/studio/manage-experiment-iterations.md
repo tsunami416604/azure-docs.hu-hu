@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 503a93064b81e0db35c0477a11f2ee525680c854
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e41a669e3dcd14952077cbd21e7387184546de80
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488434"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454288"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Kísérlet ismétléseinek kezelése az Azure Machine Learning Studióban
 Prediktív elemzési modellek fejlesztése iteratív folyamat - módosítása a különböző függvényeket és paramétereket a kísérlet, az eredmények közelítjük, amíg olyan nem egy betanított, hatékony modellel rendelkezünk. Ez a folyamat kulcs a kísérlet paraméterek és konfigurációkkal különböző ismétlésének nyomon követéséhez.
@@ -48,7 +48,7 @@ Tegyük fel például, egy kísérlet létrehozása a [lineáris regressziós] [
 
 Ha rákattint **FUTTATÁSI előzmények megtekintése**, minden Futtatás listájának megtekintéséhez:
 
-![A példában a futtatási előzmények][runhistory]
+![A példában a futtatási előzmények](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
 Kattintson bármelyik ezek futtatások megtekintése a kísérlet azt futtatta időben pillanatképét. A konfiguráció, paraméterértékeket, megjegyzések és eredmények összes megmaradnak, hogy a Futtatás a kísérlet egy teljes rekord.
 
@@ -73,10 +73,6 @@ Tegyük fel például, a futtatási előzmények az előző szakaszban látható
 5. Kattintson a **futtatása**.
 
 Most már továbbra is módosíthatja, és ez a kísérlet, a verzió fut egy új futtatási előzmények jegyezze fel a munkahelyi létrehozásához.
-
-<!-- Images -->
-[runhistory]:./media/manage-experiment-iterations/viewrunhistory.jpg
-
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
