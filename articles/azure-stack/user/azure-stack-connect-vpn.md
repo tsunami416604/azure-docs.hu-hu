@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: 882724c5f45cc2c5b3debb8fa80538239a98b749
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: aa467910cfa2dad84af3905db3592657cae85be9
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240692"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594355"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Azure Stack csatlakozni az Azure VPN használatával
 
@@ -56,7 +56,7 @@ A hálózati konfiguráció példák táblázatban példák ebben a cikkben hasz
 
 ## <a name="create-the-network-resources-in-azure"></a>A hálózati erőforrások létrehozása az Azure-ban
 
-Először is, a hálózati erőforrások létrehozása az Azure-hoz. A következőkben megtudhatja, hogyan hozhat létre az erőforrások használatával a [az Azure portal](https://portal.azure.com/).
+Először hozza létre a hálózati erőforrások az Azure-hoz. A következőkben megtudhatja, hogyan hozhat létre az erőforrások használatával a [az Azure portal](https://portal.azure.com/).
 
 ### <a name="create-the-virtual-network-and-virtual-machine-vm-subnet"></a>A virtuális hálózatot és alhálózatot a virtuális gép (VM) létrehozása
 
@@ -70,7 +70,7 @@ Először is, a hálózati erőforrások létrehozása az Azure-hoz. A következ
 8. Válassza a **Rögzítés az irányítópulton** lehetőséget.
 9. Kattintson a **Létrehozás** gombra.
 
-### <a name="create-the-gateway-subnet"></a>Hozza létre az átjáró-alhálózatot.
+### <a name="create-the-gateway-subnet"></a>Az átjáró-alhálózat létrehozása
 
 1. Nyissa meg a létrehozott virtuális hálózati erőforrást (**AzureVNet**) az irányítópultról.
 2. Az a **beállítások** szakaszban jelölje be **alhálózatok**.
@@ -305,4 +305,4 @@ Ha szeretné tudni, hogy mennyi adatot továbbítja a helyek közötti kapcsolat
 
 ## <a name="next-steps"></a>További lépések
 
-[Alkalmazások üzembe helyezése az Azure és az Azure Stackben](azure-stack-solution-pipeline.md)
+* [Alkalmazások üzembe helyezése az Azure és az Azure Stackben](azure-stack-solution-pipeline.md)

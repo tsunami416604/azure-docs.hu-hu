@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: fcd1d8c4dd1f9684db85514a80fea7022f52b0fa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0cc85425742fbf3ee4825e13349d2b8b2c9ca6c4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817087"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649322"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy egy virtuális hálózati társviszony törlése
 
@@ -28,11 +28,13 @@ Ismerje meg, hogyan létrehozása, módosítása vagy egy virtuális hálózati 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ez a cikk bármely szakaszban ismertetett lépések elvégzése előtt hajtsa végre a következőket:
 
 - Ha még nincs Azure-fiókkal, regisztráljon egy [ingyenes próbafiókot](https://azure.microsoft.com/free).
 - A portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](#permissions) társviszonyok dolgozhat.
-- Ha a PowerShell-parancsokkal cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha futtatja a Powershellt helyileg, is futtatni szeretné `Connect-AzureRmAccount` egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](#permissions) társviszony-létesítéshez, dolgozhat kapcsolat létrehozása az Azure-ral.
+- Ha a PowerShell-parancsokkal cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ehhez az oktatóanyaghoz az Azure PowerShell-modul verzióját 1.0.0 vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha futtatja a Powershellt helyileg, is futtatni szeretné `Connect-AzAccount` egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](#permissions) társviszony-létesítéshez, dolgozhat kapcsolat létrehozása az Azure-ral.
 - Ha használja az Azure parancssori felület (CLI) parancsai cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/bash), vagy a parancssori felület futtatásával a számítógépről. Ehhez az oktatóanyaghoz az Azure CLI 2.0.31-es verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](#permissions) társviszony-létesítéshez, dolgozhat kapcsolat létrehozása az Azure-ral.
 
 Jelentkezzen be, vagy csatlakozhat az Azure-ban, a fiókot hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepel a megfelelő műveleteket rendelt [engedélyek ](#permissions).
@@ -55,23 +57,22 @@ Mielőtt létrehozná a társviszonyt, ismerkedjen meg a követelményeket és k
     - **Virtuális hálózati hozzáférés engedélyezése:** Válassza ki **engedélyezve** (alapértelmezett), ha azt szeretné, a két virtuális hálózat közötti kommunikáció engedélyezése. Virtuális hálózatok közötti kommunikáció lehetővé teszi, hogy bármelyik virtuális hálózatban kommunikálnak egymással sávszélességgel és a késés, mintha ugyanahhoz a virtuális hálózathoz kapcsolódnak kapcsolódó erőforrásokhoz. A két virtuális hálózat-erőforrások közötti minden kommunikáció van az Azure privát hálózaton keresztül. A **VirtualNetwork** szolgáltatáscímke hálózati biztonsági csoportok magában foglalja a virtuális hálózat és a virtuális társhálózatban működő. Hálózati biztonsági csoport szolgáltatáscímkék kapcsolatos további információkért lásd: [hálózati biztonsági csoportok áttekintése](security-overview.md#service-tags). Válassza ki **letiltott** Ha nem szeretné, hogy a virtuális társhálózatba tartozó virtuális hálózat bejövő forgalmat. Választhat **letiltott** Ha egy virtuális hálózatot és egy másik virtuális hálózat már társviszonyban álló, de alkalmanként le kívánja tiltani a virtuális hálózatok közötti adatforgalmat. Azt tapasztalhatja, engedélyezése vagy letiltása sokkal kényelmesebb, mint törlésével és ismételt létrehozásával a társviszony-létesítéseket. Ha ez a beállítás le van tiltva, adatforgalom ugyanis nem a virtuális társhálózatok között.
     - **Továbbított forgalom engedélyezése:** Ezt a jelölőnégyzetet, hogy a forgalom *továbbított* egy hálózati virtuális készüléket egy virtuális hálózaton (amely a virtuális hálózat nem származik) a flow, a virtuális hálózaton, egy társviszony-létesítésen keresztül. Vegyük példaként a három virtuális hálózatok Spoke1 Spoke2 és Eseményközpont neve. Minden küllő virtuális hálózat és a központi virtuális hálózaton között társviszonyt létezik, de a társviszonyok nem léteznek a küllő virtuális hálózatok között. Egy hálózati virtuális készüléket a központi virtuális hálózaton van üzembe helyezve, és a felhasználó által megadott útvonalak érvényesek minden küllő virtuális hálózat, amely a hálózati virtuális készüléken keresztül az alhálózatok közötti forgalom irányítására. Ha a jelölőnégyzet nincs bejelölve, minden küllő virtuális hálózat és az eseményközpont virtuális hálózat között társviszony-létesítéshez, adatforgalom ugyanis nem a küllő virtuális hálózatok között, mert a virtuális hálózatok közötti forgalom a hub továbbító. Ez a funkció lehetővé teszi, hogy a továbbított forgalom a társviszony-létesítésen keresztül, míg azt nem hoz létre minden olyan felhasználó által megadott útvonalakat vagy a hálózati virtuális berendezések. Felhasználó által definiált útvonalak és hálózati virtuális berendezések külön kell létrehozni. Ismerje meg [felhasználó által megadott útvonalak](virtual-networks-udr-overview.md#user-defined). Nem kell ellenőrizze ezt a beállítást, ha a forgalmat továbbítja az Azure VPN-átjárón keresztül a virtuális hálózatok között.
     - **Átjárótranzit engedélyezése:** Jelölje be ezt a jelölőnégyzetet, ha rendelkezik a virtuális hálózathoz csatlakozó virtuális hálózati átjáró, és szeretné engedélyezni az átjárón keresztül a virtuális társhálózatba tartozó virtuális hálózatból a forgalmat. Például a virtuális hálózathoz csatlakoztatható egy virtuális hálózati átjárón keresztül a helyszíni hálózathoz. Az átjáró egy expressroute-on vagy VPN-átjáró lehet. A jelölőnégyzet bejelölésével lehetővé teszi, hogy a virtuális társhálózatban működő az átjáró csatlakozik a helyi hálózatot a virtuális hálózaton keresztül érkező forgalmat. Ha bejelöli ezt a jelölőnégyzetet, a virtuális társhálózatban működő nem lehet beállítva átjáró. A virtuális Társhálózat kell rendelkeznie a **távoli átjárók használata** jelölőnégyzet be van jelölve, a társviszonyt a másik virtuális hálózatra a virtuális hálózat beállítása során. Ha üresen hagyja ezt a jelölőnégyzetet bejelölve (alapértelmezett), a virtuális társhálózatban működő szolgáltatásból továbbra is a forgalmat a virtuális hálózat, de nem flow, a virtuális hálózathoz csatlakoztatott virtuális hálózati átjárón keresztül. Ha a társviszony-létesítés egy virtuális hálózat (Resource Manager) és a egy virtuális hálózat (klasszikus), az átjáró a virtuális hálózatban (Resource Manager) kell lennie. Ez a beállítás nem engedélyezhető, ha Ön már társviszony-létesítés különböző régiókban található virtuális hálózatok.
-    
-        Felül, továbbítja a forgalmat a helyszíni hálózathoz, a VPN-átjáró a virtuális hálózatot az átjáró nem található, anélkül, hogy hozható egymással társviszonyba kellene a virtuális hálózatok társviszonyba virtuális hálózatok közötti hálózati forgalom is továbbíthatja. Továbbítsa a forgalmat a VPN-átjáró használata akkor hasznos, ha egy VPN-átjárót használ a hubon szeretne (a küllős ismertetett példa **továbbított forgalom engedélyezése**), amelyek nem küllő virtuális hálózatok közötti forgalom irányítása a virtuális hálózat társviszonyban állnak egymással. Lehetővé teszi az átjáró használatának átvitel kapcsolatos további információkért lásd: [átvitel VPN-átjáró konfigurálása a virtuális hálózatok közötti társviszony](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ehhez a forgatókönyvhöz szükséges implementálása a felhasználó által definiált útvonalak, adja meg a virtuális hálózati átjáró a következő ugrás típusa. Ismerje meg [felhasználó által megadott útvonalak](virtual-networks-udr-overview.md#user-defined). Csak egy VPN-átjáró megadhatja egy felhasználó által definiált útvonal következő ugrási típussal, a következő ugrástípusra terelve egy felhasználó által megadott útvonal nem adható meg egy ExpressRoute-átjárót. Ez a beállítás nem engedélyezhető, ha Ön már társviszony-létesítés különböző régiókban található virtuális hálózatok.
 
-    - **Távoli átjárók használata:** Ezt a jelölőnégyzetet a virtuális hálózati társviszony-létesítés még a virtuális hálózathoz csatlakozó virtuális hálózati átjáró funkción keresztül érkező adatforgalom engedélyezéséhez. Például a virtuális hálózati társviszony-létesítés már rendelkezik csatlakoztatott VPN-átjáró, amely lehetővé teszi a kommunikációt a helyszíni hálózathoz.  A jelölőnégyzet bejelölésével engedélyezi a forgalmat ezen keresztül a VPN-átjáró csatlakozik a virtuális társhálózatban működő virtuális hálózat. Ha bejelöli ezt a jelölőnégyzetet, a virtuális társhálózatban működő rendelkeznie kell egy virtuális hálózati átjáró csatlakozik, és rendelkeznie kell a **átjárótranzit engedélyezése** jelölőnégyzet be van jelölve. Ha üresen hagyja a nem ellenőrzött (alapértelmezett), a virtuális társhálózatba tartozó virtuális hálózatból is továbbra is adatforgalom a virtuális hálózaton, de nem a folyamat egy virtuális hálózati átjárón keresztül csatlakozik a virtuális hálózathoz. 
+       Felül, továbbítja a forgalmat a helyszíni hálózathoz, a VPN-átjáró a virtuális hálózatot az átjáró nem található, anélkül, hogy hozható egymással társviszonyba kellene a virtuális hálózatok társviszonyba virtuális hálózatok közötti hálózati forgalom is továbbíthatja. Továbbítsa a forgalmat a VPN-átjáró használata akkor hasznos, ha egy VPN-átjárót használ a hubon szeretne (a küllős ismertetett példa **továbbított forgalom engedélyezése**), amelyek nem küllő virtuális hálózatok közötti forgalom irányítása a virtuális hálózat társviszonyban állnak egymással. Lehetővé teszi az átjáró használatának átvitel kapcsolatos további információkért lásd: [átvitel VPN-átjáró konfigurálása a virtuális hálózatok közötti társviszony](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ehhez a forgatókönyvhöz szükséges implementálása a felhasználó által definiált útvonalak, adja meg a virtuális hálózati átjáró a következő ugrás típusa. Ismerje meg [felhasználó által megadott útvonalak](virtual-networks-udr-overview.md#user-defined). Csak egy VPN-átjáró megadhatja egy felhasználó által definiált útvonal következő ugrási típussal, a következő ugrástípusra terelve egy felhasználó által megadott útvonal nem adható meg egy ExpressRoute-átjárót. Ez a beállítás nem engedélyezhető, ha Ön már társviszony-létesítés különböző régiókban található virtuális hálózatok.
+
+    - **Távoli átjárók használata:** Ezt a jelölőnégyzetet a virtuális hálózati társviszony-létesítés még a virtuális hálózathoz csatlakozó virtuális hálózati átjáró funkción keresztül érkező adatforgalom engedélyezéséhez. Például a virtuális hálózati társviszony-létesítés már rendelkezik csatlakoztatott VPN-átjáró, amely lehetővé teszi a kommunikációt a helyszíni hálózathoz.  A jelölőnégyzet bejelölésével engedélyezi a forgalmat ezen keresztül a VPN-átjáró csatlakozik a virtuális társhálózatban működő virtuális hálózat. Ha bejelöli ezt a jelölőnégyzetet, a virtuális társhálózatban működő rendelkeznie kell egy virtuális hálózati átjáró csatlakozik, és rendelkeznie kell a **átjárótranzit engedélyezése** jelölőnégyzet be van jelölve. Ha üresen hagyja a nem ellenőrzött (alapértelmezett), a virtuális társhálózatba tartozó virtuális hálózatból is továbbra is adatforgalom a virtuális hálózaton, de nem a folyamat egy virtuális hálózati átjárón keresztül csatlakozik a virtuális hálózathoz.
     A virtuális hálózatnak csak egy társviszonynál lehet ez a beállítás engedélyezve van.
 
         Ha már van beállítva a virtuális hálózati átjáró nem használható távoli átjárókat. Ez a beállítás nem engedélyezhető, ha Ön már társviszony-létesítés különböző régiókban található virtuális hálózatok. Az átvitel során az átjáró használatával kapcsolatos további tudnivalókért lásd: [átvitel VPN-átjáró konfigurálása a virtuális hálózatok közötti társviszony](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 7. Válassza ki **OK** felvenni a kiválasztott virtuális hálózati társviszonyt.
 
-Társviszony-létesítés virtuális hálózatok különböző előfizetésekben és üzemi modellek között megvalósításának lépésenkénti útmutatójáért lásd: [lépések](#next-steps). 
-
+Társviszony-létesítés virtuális hálózatok különböző előfizetésekben és üzemi modellek között megvalósításának lépésenkénti útmutatójáért lásd: [lépések](#next-steps).
 
 ### <a name="commands"></a>Parancsok
 
-- **Az Azure CLI**: [az hálózat virtuális hálózatok közötti társviszony létrehozása](/cli/azure/network/vnet/peering)
-- **PowerShell**: [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
+- **Az Azure CLI**: [az hálózat virtuális hálózatok közötti társviszony létrehozása](/cli/azure/network/vnet/peering#create)
+- **PowerShell**: [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)
 
 ## <a name="view-or-change-peering-settings"></a>Társviszony-létesítési beállításainak megtekintése vagy módosítása
 
@@ -82,19 +83,19 @@ Mielőtt módosítja a társviszonyt, ismerkedjen meg a követelményeket és ko
 3. A virtuális hálózatok listájában jelölje ki a virtuális hálózati társviszony-létesítési beállításait módosítani szeretné.
 4. A **beállítások**válassza **Társviszonyok**.
 5. Válassza ki a társviszony-létesítés szeretné megtekinteni vagy módosítani a beállításokat.
-6. Módosítsa a megfelelő beállítást. Olvassa el a beállításokat az egyes beállítások a [6. lépés](#add-peering) Create társviszonyt. 
+6. Módosítsa a megfelelő beállítást. Olvassa el a beállításokat az egyes beállítások a [6. lépés](#add-peering) Create társviszonyt.
 7. Kattintson a **Mentés** gombra.
 
 **Parancsok**
 
-- **Az Azure CLI**: [az hálózat virtuális hálózatok közötti társviszony-létesítési lista](/cli/azure/network/vnet/peering) lista társviszonyok egy virtuális hálózathoz, hogy [az network vnet peering show](/cli/azure/network/vnet/peering) egy adott társviszony-létesítéshez beállítások megjelenítéséhez és [az hálózati virtuális hálózatok közötti társviszony-létesítési frissítés](/cli/azure/network/vnet/peering) társviszony-létesítési beállítások módosításához. |}
-- **PowerShell**: [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) lekérdezni a társviszony-létesítési beállítások megtekintése és [Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) beállítások módosításához.
+- **Az Azure CLI**: [az hálózat virtuális hálózatok közötti társviszony-létesítési lista](/cli/azure/network/vnet/peering) lista társviszonyok egy virtuális hálózathoz, hogy [az network vnet peering show](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) egy adott társviszony-létesítéshez beállítások megjelenítéséhez és [az hálózati virtuális hálózatok közötti társviszony-létesítési frissítés](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) társviszony-létesítési beállítások módosításához. |}
+- **PowerShell**: [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) lekérdezni a társviszony-létesítési beállítások megtekintése és [Set-AzVirtualNetworkPeering](/powershell/module/az.network/set-azvirtualnetworkpeering) beállítások módosításához.
 
 ## <a name="delete-a-peering"></a>A társviszony-létesítés törlése
 
 Mielőtt törölné a társviszonyt, győződjön meg, hogy a fiók rendelkezik-e a [szükséges engedélyek](#permissions).
 
-A társviszony-létesítés törlése esetén a virtuális hálózat közötti forgalom már nem elkezdenek beérkezni a virtuális társhálózatban működő. Resource Managerrel üzembe helyezett virtuális hálózatok társviszonyban állnak, ha minden virtuális hálózathoz tartozik, a más virtuális hálózati társviszonyt. Egy virtuális hálózati társviszony törlése letiltja a virtuális hálózatok közötti kommunikációt, de nem törli a többi virtuális hálózati társviszonyt. A társviszony-létesítés állapota a társviszony-létesítéshez, hogy megtalálható-e a virtuális hálózat **leválasztott**. Ön nem tudja újra létrehozni a társviszony-létesítés mindaddig, amíg újra létrehozza a társviszonyt az első virtuális hálózat és a társviszony-létesítés állapota mindkét virtuális hálózat módosításainak *csatlakoztatva*. 
+A társviszony-létesítés törlése esetén a virtuális hálózat közötti forgalom már nem elkezdenek beérkezni a virtuális társhálózatban működő. Resource Managerrel üzembe helyezett virtuális hálózatok társviszonyban állnak, ha minden virtuális hálózathoz tartozik, a más virtuális hálózati társviszonyt. Egy virtuális hálózati társviszony törlése letiltja a virtuális hálózatok közötti kommunikációt, de nem törli a többi virtuális hálózati társviszonyt. A társviszony-létesítés állapota a társviszony-létesítéshez, hogy megtalálható-e a virtuális hálózat **leválasztott**. Ön nem tudja újra létrehozni a társviszony-létesítés mindaddig, amíg újra létrehozza a társviszonyt az első virtuális hálózat és a társviszony-létesítés állapota mindkét virtuális hálózat módosításainak *csatlakoztatva*.
 
 Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációhoz, de nem mindig, ahelyett, hogy a társviszony törlése, beállíthatja a **virtuális hálózati hozzáférés engedélyezése** beállítást **letiltott** helyette. További információ a 6. lépését a [társviszony-létesítés](#create-a-peering) című szakaszát. Előfordulhat, hogy letiltása és engedélyezése a hálózati hozzáférés könnyebb, mint a társviszonyok újbóli létrehozása és törlése.
 
@@ -108,11 +109,11 @@ Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációhoz, de nem 
 **Parancsok**
 
 - **Az Azure CLI**: [az hálózat virtuális hálózatok közötti társviszony-létesítés törlése](/cli/azure/network/vnet/peering)
-- **PowerShell**: [Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering)
+- **PowerShell**: [Remove-AzVirtualNetworkPeering](/powershell/module/az.network/remove-azvirtualnetworkpeering)
 
-## <a name="requirements-and-constraints"></a>Követelmények és korlátozások 
+## <a name="requirements-and-constraints"></a>Követelmények és korlátozások
 
-- <a name="cross-region"></a>Az ugyanabban a régióban, vagy eltérő régiókban lévő virtuális hálózatok társviszonyt. Társviszony-létesítés virtuális hálózatok különböző régiókban is nevezik *globális társviszony-létesítés*. 
+- <a name="cross-region"></a>Az ugyanabban a régióban, vagy eltérő régiókban lévő virtuális hálózatok társviszonyt. Társviszony-létesítés virtuális hálózatok különböző régiókban is nevezik *globális társviszony-létesítés*.
 - Amikor hoz létre, globális társviszonyt, a társviszonyban álló virtuális hálózatba is bármely Azure nyilvános felhő régió vagy a China cloud régiók, de nem a Government cloud régiók. Csak társviszony létesítése virtuális hálózat ugyanabban a régióban, az Azure Government cloud régióban is.
 - Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő Azure belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. A load balancer és a vele kommunikáló erőforrások a virtuális hálózat ugyanabban a régióban kell lennie. A társviszonyban lévő virtuális hálózatok azonban találhatók ugyanabban a régióban, szükség esetén bármelyik virtuális hálózatban lévő erőforrások kommunikálni tudnak bármelyik virtuális hálózatban a társviszony-létesítést az Azure belső terheléselosztó előtérbeli IP-címét.
 - Nem lehet távoli átjárók használata, vagy a globális virtuális társhálózatok átjárótranzit engedélyezése. A távoli átjárók használata, vagy átjárótranzit engedélyezése, a társviszonyban lévő virtuális hálózatok ugyanabban a régióban kell lennie.
@@ -121,12 +122,12 @@ Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációhoz, de nem 
 - Adja hozzá a címtartományok nem, vagy törlése címtartományokat egy virtuális hálózat címtere egy virtuális hálózatot és egy másik virtuális hálózat társviszonyba. Hozzáadása vagy törlése címtartományokat, a társviszony-létesítés törlése, hozzáadása vagy eltávolítása a címtartományt, majd újra létrehozza a társviszonyt. Adja hozzá a-címtartományokat, vagy távolítsa el a címtartomány a virtuális hálózatok, lásd: [virtuális hálózatok kezelése](manage-virtual-network.md).
 - Erőforrás-kezelő vagy a Resource Managerrel üzembe helyezett egy virtuális hálózathoz a klasszikus üzemi modellel üzembe helyezett virtuális hálózaton üzembe helyezett két virtuális hálózat társviszonyt. A klasszikus üzemi modellel létrehozott két virtuális hálózat nem társviszonyt. Ha még nem ismeri az Azure üzembe helyezési modellel, olvassa el a [Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) cikk. A [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) használatával összeköthető két, a klasszikus üzembehelyezési modellel létrehozott virtuális hálózat.
 - Két, Resource Managerrel létrehozott virtuális hálózat közötti társviszony létrehozása esetén mindkét érintett virtuális hálózathoz konfigurálni kell egy társítást. A társviszony-létesítés állapota a következők egyikét látja: 
-    - *A kezdeményezett:* Az első virtuális hálózatról a második virtuális hálózati társviszony létrehozásakor van-e a társviszony-létesítés állapota *kezdeményezve*. 
-    - *Csatlakoztatva:* A társviszonyt a második virtuális hálózatról az első virtuális hálózat létrehozásakor a társviszony-létesítés állapota *csatlakoztatva*. Ha megtekinti az első virtuális hálózat társítási állapota, láthatja a állapota megváltozott *kezdeményezve* való *csatlakoztatva*. A társviszony-létesítés nem sikerült jön létre, amíg a társviszony-létesítés állapota mindkét virtuális hálózati társviszony-létesítéshez *csatlakoztatva*.
+  - *A kezdeményezett:* Az első virtuális hálózatról a második virtuális hálózati társviszony létrehozásakor van-e a társviszony-létesítés állapota *kezdeményezve*. 
+  - *Csatlakoztatva:* A társviszonyt a második virtuális hálózatról az első virtuális hálózat létrehozásakor a társviszony-létesítés állapota *csatlakoztatva*. Ha megtekinti az első virtuális hálózat társítási állapota, láthatja a állapota megváltozott *kezdeményezve* való *csatlakoztatva*. A társviszony-létesítés nem sikerült jön létre, amíg a társviszony-létesítés állapota mindkét virtuális hálózati társviszony-létesítéshez *csatlakoztatva*.
 - Ha a társviszony a klasszikus üzemi modellel létrehozott virtuális hálózat a Resource Managerrel létrehozott virtuális hálózatban, csak konfigurálja a Resource Managerrel üzembe helyezett virtuális hálózat társviszonyt. Egy virtuális hálózat (klasszikus) vagy a klasszikus üzemi modellel üzembe helyezett virtuális hálózatok közötti társviszony nem konfigurálható. Amikor létrehozza a társítást a virtuális hálózatról (Resource Manager) a virtuális hálózat (klasszikus), a társviszony-létesítés állapota van *frissítés*, majd hamarosan vált *csatlakoztatva*.
 - A társviszony jön létre két virtuális hálózat között. Társviszonyok nem tranzitív el. Ha közötti társviszonyok hoz létre:
-    - VirtualNetwork1 & VirtualNetwork2
-    - VirtualNetwork2 & VirtualNetwork3
+  - VirtualNetwork1 & VirtualNetwork2
+  - VirtualNetwork2 & VirtualNetwork3
 
   Nincs nem, nincs társviszony-létesítés VirtualNetwork1 és keresztül VirtualNetwork2 VirtualNetwork3 között. Ha szeretne létrehozni egy virtuális hálózati társviszony-létesítés VirtualNetwork1 és VirtualNetwork3 között, akkor egy VirtualNetwork1 és VirtualNetwork3 közötti társviszony-létesítés.
 - Nevek használatával Azure névfeloldási szolgáltatása alapértelmezett virtuális társhálózatok nem oldható fel. Más virtuális hálózatok neveinek feloldásához, használjon [Azure DNS használata saját tartományok esetében](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy egy egyéni DNS-kiszolgálót. Megtudhatja, hogyan állítható be a saját DNS-kiszolgálót, tekintse meg a [névfeloldás saját DNS-kiszolgáló használatával](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
@@ -144,25 +145,25 @@ A fiókok, akkor használható a virtuális hálózatok közötti társviszony h
 
 Ha a fiókjához nincs hozzárendelve egy előző szerepköröket, akkor hozzá kell rendelni egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rendelt a szükséges lépéseket a következő táblázatból:
 
-| Műveletek | Name (Név) |
-|---|---|
-| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Szükséges egy társviszony-létesítés létrehozása A virtuális hálózatról virtuális hálózatra b virtuális hálózat egy virtuális hálózatot (Resource Manager) kell lennie                            |
-| Microsoft.Network/virtualNetworks/peer/action                   | A virtuális hálózathoz a B (Resource Manager) virtuális hálózati társviszony-létesítés szükséges                                                                                |
-| Microsoft.ClassicNetwork/virtualNetworks/peer                   | A virtuális hálózathoz a B (klasszikus) virtuális hálózati társviszony-létesítés szükséges                                                                                    |
+| Műveletek                                                          | Name (Név) |
+|---                                                              |---   |
+| Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Szükséges egy társviszony-létesítés létrehozása A virtuális hálózatról virtuális hálózatra b virtuális hálózat egy virtuális hálózatot (Resource Manager) kell lennie          |
+| Microsoft.Network/virtualNetworks/peer/action                   | A virtuális hálózathoz a B (Resource Manager) virtuális hálózati társviszony-létesítés szükséges                                                       |
+| Microsoft.ClassicNetwork/virtualNetworks/peer                   | A virtuális hálózathoz a B (klasszikus) virtuális hálózati társviszony-létesítés szükséges                                                                |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read   | Olvassa el a virtuális hálózatok közötti társviszony   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | Egy virtuális hálózati társviszony törlése |
 
 ## <a name="next-steps"></a>További lépések
 
-* A virtuális hálózatok közötti társviszony az azonos vagy eltérő előfizetésekben lévő, azonos vagy eltérő üzembehelyezési modelleken keresztül létrehozott virtuális hálózatok között jön létre. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
+- A virtuális hálózatok közötti társviszony az azonos vagy eltérő előfizetésekben lévő, azonos vagy eltérő üzembehelyezési modelleken keresztül létrehozott virtuális hálózatok között jön létre. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 
-    |Azure üzembehelyezési modell             | Előfizetés  |
-    |---------                          |---------|
-    |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
-    |                                   |[Különböző](create-peering-different-subscriptions.md)|
-    |Egy Resource Manager, egy klasszikus  |[Ugyanaz](create-peering-different-deployment-models.md)|
-    |                                   |[Különböző](create-peering-different-deployment-models-subscriptions.md)|
+  |Azure üzembehelyezési modell             | Előfizetés  |
+  |---------                          |---------|
+  |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
+  |                                   |[Különböző](create-peering-different-subscriptions.md)|
+  |Egy Resource Manager, egy klasszikus  |[Ugyanaz](create-peering-different-deployment-models.md)|
+  |                                   |[Különböző](create-peering-different-deployment-models-subscriptions.md)|
 
-* További információ a [küllős hálózati topológiák](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json) létrehozásáról
-* Hozzon létre egy virtuális hálózati társviszony segítségével [PowerShell](powershell-samples.md) vagy [Azure CLI-vel](cli-samples.md) parancsfájlokat, vagy az Azure-minta [Resource Manager-sablonok](template-samples.md)
-* Hozzon létre, és a alkalmazni [az Azure policy](policy-samples.md) virtuális hálózatok
+- További információ a [küllős hálózati topológiák](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json) létrehozásáról
+- Hozzon létre egy virtuális hálózati társviszony segítségével [PowerShell](powershell-samples.md) vagy [Azure CLI-vel](cli-samples.md) parancsfájlokat, vagy az Azure-minta [Resource Manager-sablonok](template-samples.md)
+- Hozzon létre, és a alkalmazni [az Azure policy](policy-samples.md) virtuális hálózatok

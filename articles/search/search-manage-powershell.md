@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c05a2ceb7cc515691af91652c968b73c72029db4
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 86f8eebb8e174b4a4d4dbdc9def516e23b79a131
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313462"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591649"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>A PowerShell-lel az Azure Search szolgáltatás kezelése
 > [!div class="op_single_selector"]
@@ -29,12 +29,15 @@ Ez a témakör ismerteti a PowerShell-parancsok az Azure Search-szolgáltatás a
 Ezek a parancsok párhuzamos az elérhető lehetőségek a [Azure Search felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure PowerShell 1.0-ás vagy újabb kell rendelkeznie. Útmutatásért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+* Azure PowerShell-lel kell rendelkeznie. A telepítési utasításokért lásd: [Azure PowerShell telepítése](/powershell/azure/overview).
 * Az Azure-előfizetéshez a PowerShell az alább ismertetett kell bejelentkeznie.
 
 Először be kell bejelentkezés az Azure a következő paranccsal:
 
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
 Adja meg az e-mail-címét az Azure-fiókjával, és a hozzá tartozó jelszót a Microsoft Azure bejelentkezési párbeszédpanel.
 
@@ -42,28 +45,28 @@ Másik megoldásként is [egy egyszerű szolgáltatást a nem interaktív bejele
 
 Ha több Azure-előfizetéssel rendelkezik, állítsa be az Azure-előfizetéshez szeretne. Az aktuális előfizetések listájának megtekintéséhez futtassa ezt a parancsot.
 
-    Get-AzureRmSubscription | sort SubscriptionName | Select SubscriptionName
+    Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 
 Válassza ki az előfizetést, futtassa a következő parancsot. A következő példában, az előfizetés nevét a `ContosoSubscription`.
 
-    Select-AzureRmSubscription -SubscriptionName ContosoSubscription
+    Select-AzSubscription -SubscriptionName ContosoSubscription
 
 ## <a name="commands-to-help-you-get-started"></a>Parancsok segítségével első lépései
     $serviceName = "your-service-name-lowercase-with-dashes"
     $sku = "free" # or "basic" or "standard" for paid services
     $location = "West US"
     # You can get a list of potential locations with
-    # (Get-AzureRmResourceProvider -ListAvailable | Where-Object {$_.ProviderNamespace -eq 'Microsoft.Search'}).Locations
+    # (Get-AzResourceProvider -ListAvailable | Where-Object {$_.ProviderNamespace -eq 'Microsoft.Search'}).Locations
     $resourceGroupName = "YourResourceGroup" 
     # If you don't already have this resource group, you can create it with 
-    # New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    # New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Register the ARM provider idempotently. This must be done once per subscription
-    Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Search"
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.Search"
 
     # Create a new search service
     # This command will return once the service is fully created
-    New-AzureRmResourceGroupDeployment `
+    New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateUri "https://gallery.azure.com/artifact/20151001/Microsoft.Search.1.0.9/DeploymentTemplates/searchServiceDefaultTemplate.json" `
         -NameFromTemplate $serviceName `
@@ -73,7 +76,7 @@ Válassza ki az előfizetést, futtassa a következő parancsot. A következő p
         -ReplicaCount 1
 
     # Get information about your new service and store it in $resource
-    $resource = Get-AzureRmResource `
+    $resource = Get-AzResource `
         -ResourceType "Microsoft.Search/searchServices" `
         -ResourceGroupName $resourceGroupName `
         -ResourceName $serviceName `
@@ -83,13 +86,13 @@ Válassza ki az előfizetést, futtassa a következő parancsot. A következő p
     $resource
 
     # Get the primary admin API key
-    $primaryKey = (Invoke-AzureRmResourceAction `
+    $primaryKey = (Invoke-AzResourceAction `
         -Action listAdminKeys `
         -ResourceId $resource.ResourceId `
         -ApiVersion 2015-08-19).PrimaryKey
 
     # Regenerate the secondary admin API Key
-    $secondaryKey = (Invoke-AzureRmResourceAction `
+    $secondaryKey = (Invoke-AzResourceAction `
         -ResourceType "Microsoft.Search/searchServices/regenerateAdminKey" `
         -ResourceGroupName $resourceGroupName `
         -ResourceName $serviceName `
@@ -98,7 +101,7 @@ Válassza ki az előfizetést, futtassa a következő parancsot. A következő p
 
     # Create a query key for read only access to your indexes
     $queryKeyDescription = "query-key-created-from-powershell"
-    $queryKey = (Invoke-AzureRmResourceAction `
+    $queryKey = (Invoke-AzResourceAction `
         -ResourceType "Microsoft.Search/searchServices/createQueryKey" `
         -ResourceGroupName $resourceGroupName `
         -ResourceName $serviceName `
@@ -109,7 +112,7 @@ Válassza ki az előfizetést, futtassa a következő parancsot. A következő p
     $queryKey
 
     # Delete query key
-    Remove-AzureRmResource `
+    Remove-AzResource `
         -ResourceType "Microsoft.Search/searchServices/deleteQueryKey/$($queryKey)" `
         -ResourceGroupName $resourceGroupName `
         -ResourceName $serviceName `
@@ -120,11 +123,11 @@ Válassza ki az előfizetést, futtassa a következő parancsot. A következő p
     # This command will not return until the operation is finished
     # It can take 15 minutes or more to provision the additional resources
     $resource.Properties.ReplicaCount = 2
-    $resource | Set-AzureRmResource
+    $resource | Set-AzResource
 
     # Delete your service
     # Deleting your service will delete all indexes and data in the service
-    $resource | Remove-AzureRmResource
+    $resource | Remove-AzResource
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy a szolgáltatás létrejött, a következő lépésekkel lehet: hozhat létre egy [index](search-what-is-an-index.md), [-index lekérdezése](search-query-overview.md), és végül hozzon létre és kezelheti saját keresőalkalmazást, amely az Azure Search használja.

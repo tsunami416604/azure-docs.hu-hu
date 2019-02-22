@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/4/2019
-ms.author: rkarlin
-ms.openlocfilehash: c31510b0d5ca2afcd6a52cf4301e5e5eaae7da5b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 2/17/2019
+ms.author: monhaber
+ms.openlocfilehash: 7931caa985bc5dea98ca36bd15e0e634855ab2c5
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343510"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650631"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -99,6 +99,20 @@ Az Azure-előfizetések és a felügyeleti csoportok az egyes szerkesztheti az a
 Egy biztonsági szabályzatot az Azure Policy szerkesztésére vonatkozó utasításokért lásd: és [létrehozása és a megfelelőség kikényszerítése céljából házirendek kezelése](../governance/policy/tutorials/create-and-manage.md).
 
 Biztonsági szabályzatok az Azure Policy portálján keresztül REST API vagy a Windows PowerShell használatával szerkesztheti. Az alábbi példa a REST API-val szerkesztésére vonatkozó utasításokat tartalmaz.
+
+
+## <a name="disable-security-policies"></a>Biztonsági szabályzatok letiltása
+Ha az alapértelmezett biztonsági szabályzatban egy javaslat, amely nem kapcsolódik az adott környezetben hoz létre, állíthatja le, tiltsa le a szabályzatdefiníció, amely elküldi az ajánlást. Itt leírtak Ez azért történik az Azure Policy portal (és nem a Security Center portál) keresztül.
+Javaslatok kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése](security-center-recommendations.md). 
+1. Nyissa meg az Azure Policy, és kattintson a **hozzárendelések**.
+2. Az a **ASC alapértelmezés** sort, kattintson a három pontra, és kattintson a **megtekintheti a definíció**. A **Kezdeményezésdefiníció** lap megnyitásakor.
+   ![definíció megtekintése](./media/tutorial-security-policy/view-definition.png)
+3. Kattintson a **intitiative szerkesztése**. A **Kezdeményezésdefiníció szerkesztése** lap megnyitásakor.
+   ![kezdeményezés szerkesztése](./media/tutorial-security-policy/edit-initiative.png)
+4. Az a **szabályzatok és paraméterek** szakaszban, keresési, amely meghívja a javaslatot, hogy le kívánja tiltani a szabályzatot, és a legördülő listából válassza ki **letiltott**.
+   ![Szabályzat letiltása](./media/tutorial-security-policy/disable-policy.png)
+1. Kattintson a **mentése** (a lap alján található).
+
 
 ### <a name="configure-a-security-policy-using-the-rest-api"></a>A REST API-val biztonsági szabályzat konfigurálása
 

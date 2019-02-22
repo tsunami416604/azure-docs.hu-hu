@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: a3ec74d0b22bfafb4353eca400b389b07a58ba39
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8dbe282b919c988d5cb997a66914d81ce1981f88
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246349"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592417"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
 A Microsoft lehetővé teszi, hogy képes legyen kezelni az erőforrás-igényes lekérdezéseket az Azure SQL Data Warehouse a számítási alacsonyabb rétegek hozzáadásával adattárház futtatásának belépő szintű díja végezhetőek kapcsolatban olvassa el a teljes bejelentés [alacsonyabb szintű támogatás Gen2 számítási](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Az új ajánlat már régiókban érhető el az alábbi táblázatban feltüntetett. A támogatott régiók Gen1 a korábbi adattárházak Gen2-re keresztül frissíthető vagy:
@@ -29,8 +29,6 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 
 | **Régió** | **Alacsonyabb Gen2 érhető el** | **Az automatikus frissítések megkezdése** |
 |:--- |:--- |:--- |
-| Ausztrália 1. középső régiója |2019. március 1. |2019. június 15. |
-| Ausztrália 2. középső régiója |2019. március 1. |2019. június 15. |
 | Kelet-Ausztrália |Elérhető |2019. május 1. |
 | Délkelet-Ausztrália |2019. március 1. |2019. június 15. |
 | Dél-Brazília |\* |\* |

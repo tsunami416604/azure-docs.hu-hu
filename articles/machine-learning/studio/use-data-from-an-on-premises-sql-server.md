@@ -10,18 +10,18 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 61feb1365a5007a55d18f0f4366bd5c69148e88d
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 0d7b7ce4d79b078b389ff80727f2b233afe0da5a
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511156"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587293"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Hajtsa végre az analytics az Azure Machine Learning Studiót egy helyszíni SQL Server-adatbázisból
 
-Gyakran olyan vállalatok, amelyek a helyszíni adatok használata, ha a méretezési csoport és a gépi tanulási célú számítási feladatokhoz a felhő rugalmasságát. De azok nem szeretné, hogy megszakítja az aktuális üzleti és munkafolyamatok által a helyszíni adatok áthelyezése a felhőbe. Az Azure Machine Learning mostantól támogatja az adatok beolvasása helyszíni SQL Server-adatbázisból, és ezután képzés, és ezeket az adatokat a modell pontozása. Már nem kell manuálisan másolja, és szinkronizálja az adatokat a felhőben és a helyszíni kiszolgáló között. Ehelyett a **adatok importálása** modul az Azure Machine Learning Studióban elolvashatja közvetlenül a helyszíni SQL Server-adatbázisát a tanítási és pontozási feladatok.
+Gyakran olyan vállalatok, amelyek a helyszíni adatok használata, ha a méretezési csoport és a gépi tanulási célú számítási feladatokhoz a felhő rugalmasságát. De azok nem szeretné, hogy megszakítja az aktuális üzleti és munkafolyamatok által a helyszíni adatok áthelyezése a felhőbe. Az Azure Machine Learning Studio mostantól támogatja az adatok beolvasása helyszíni SQL Server-adatbázisból, és ezután képzés, és ezeket az adatokat a modell pontozása. Már nem kell manuálisan másolja, és szinkronizálja az adatokat a felhőben és a helyszíni kiszolgáló között. Ehelyett a **adatok importálása** modul az Azure Machine Learning Studióban elolvashatja közvetlenül a helyszíni SQL Server-adatbázisát a tanítási és pontozási feladatok.
 
-Ez a cikk áttekintést a bejövő forgalom a helyszíni SQL server-adatok Azure Machine Learning studióba. Feltételezi, hogy ismeri a munkaterületek, a modulok, az adatkészletek, a kísérletek, például az Azure Machine Learning-fogalmak *stb.*.
+Ez a cikk áttekintést a bejövő forgalom a helyszíni SQL server-adatok Azure Machine Learning studióba. Feltételezi, hogy ismeri a Studio fogalmakat, mint a munkaterületek, a modulok, az adatkészletek, a kísérletek, *stb.*.
 
 > [!NOTE]
 > Ez a funkció nem érhető el a munkaterületek. További információ a Machine Learning díjszabás és szint: [Azure Machine Learning szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/machine-learning/).
@@ -33,7 +33,7 @@ Ez a cikk áttekintést a bejövő forgalom a helyszíni SQL server-adatok Azure
 
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>A Data Factory saját üzemeltetésű integrációs modul telepítése
-Az Azure Machine Learning egy helyszíni SQL Server-adatbázis eléréséhez meg kell töltse le és telepítse a Data Factory helyi Integration Runtime, korábbi nevén az adatkezelési átjárót. Amikor a kapcsolat a Machine Learning Studióban konfigurálja, lehetősége van, töltse le és telepítse az Integration Runtime (IR) használatával a **töltse le és register data gatewayt** párbeszédpanel az alábbiakban.
+Az Azure Machine Learning Studio egy helyszíni SQL Server-adatbázis eléréséhez szüksége töltse le és telepítse a Data Factory helyi Integration Runtime, korábbi nevén az adatkezelési átjárót. Amikor a kapcsolat a Machine Learning Studióban konfigurálja, lehetősége van, töltse le és telepítse az Integration Runtime (IR) használatával a **töltse le és register data gatewayt** párbeszédpanel az alábbiakban.
 
 
 Is telepítheti a kívánt időben integrációs modul letöltésével és futtatásával az MSI-telepítő csomag az a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Az MSI is használható egy már meglévő integrációs modul frissítése a legújabb verzióra, az összes beállítás megőrzi.
@@ -54,13 +54,13 @@ Vegye figyelembe a következőket, amikor beállításával és használatával 
 * Egyszerre csak egy munkaterülethez egy IRs konfigurálja. Integrációs modulok jelenleg nem oszthatók meg munkaterületek között.
 * Egyetlen munkaterület több IRs konfigurálhatja. Például előfordulhat, hogy használni kívánt egy integrációs Modult, amely az adatforrásokhoz kapcsolódik, a teszt során fejlesztési és a egy éles integrációs modul Ha készen áll az üzembe helyezés.
 * Az integrációs modul nem kell ugyanarra a gépre, az adatforrással kell. De az adatforrás közelebb tartózkodó lerövidíti az átjáró csatlakozik az adatforráshoz. Azt javasoljuk, hogy az integrációs modul telepítését olyan számítógépen, amelyen eltér, amely üzemelteti a helyszíni adatforrás úgy, hogy az erőforrások az átjáró és az adatforrás nem vagyunk versenyképesek.
-* Ha már rendelkezik egy Power bi-ban vagy az Azure Data Factory forgatókönyvek szolgáló számítógépre telepített integrációs modul, telepítse külön IR az Azure Machine Learning egy másik számítógépen.
+* Ha már rendelkezik egy Power bi-ban vagy az Azure Data Factory forgatókönyvek szolgáló számítógépre telepített integrációs modul, telepítse külön IR az Azure Machine Learning Studio egy másik számítógépen.
 
   > [!NOTE]
   > Data Factory helyi integrációs modul és a Power BI Gateway ugyanazon a számítógépen nem futtatható.
   >
   >
-* Szeretné használni a Data Factory helyi integrációs modul az Azure Machine Learning, még akkor is, ha az Azure ExpressRoute használ az egyéb adatokat. Kezelje az adatforrás egy helyszíni adatforráshoz (Ez egy tűzfal mögé), még akkor is az ExpressRoute használatakor. A Data Factory helyi integrációs modul használatával Machine Learning és az adatforrás közötti kapcsolatot.
+* Szeretné használni a Data Factory helyi integrációs modul az Azure Machine Learning Studio, még akkor is, ha az Azure ExpressRoute használ az egyéb adatokat. Kezelje az adatforrás egy helyszíni adatforráshoz (Ez egy tűzfal mögé), még akkor is az ExpressRoute használatakor. A Data Factory helyi integrációs modul használatával Machine Learning és az adatforrás közötti kapcsolatot.
 
 A cikk részletes információkat a telepítési előfeltételek, telepítés lépéseit, hibaelhárítási tippekkel szolgál találhatja [a Data Factory saját üzemeltetésű integrációs](../../data-factory/concepts-integration-runtime.md).
 
@@ -115,17 +115,17 @@ Az első lépéseként hozhat létre, és állítsa be az átjáró a helyszíni
 
     ![Részletes naplózás engedélyezése](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
-Ezzel befejezte az Azure Machine Learning, az átjáró telepítési folyamat.
+Ezzel befejezte az átjáró telepítési folyamat az Azure Machine Learning Studióban.
 Most már készen áll a helyszíni adatok használatát.
 
-Hozzon létre, és állítsa be a Studióban minden munkaterülethez több átjárót. Például előfordulhat, hogy szeretne csatlakozni a fejlesztés során, a teszt adatforrások átjáró és a egy másik átjáró a termelési adatforrások. Az Azure Machine Learning lehetővé teszi több átjáró attól függően, hogy a vállalati környezet beállításához. Jelenleg nem oszthat meg egy átjárót a munkaterületek között, és csak egy átjáró telepíthető ugyanazon a számítógépen. További információkért lásd: [adatok áthelyezése a felhőbe az adatkezelési átjáróval és a egy helyszíni forrásra](../../data-factory/tutorial-hybrid-copy-portal.md).
+Hozzon létre, és állítsa be a Studióban minden munkaterülethez több átjárót. Például előfordulhat, hogy szeretne csatlakozni a fejlesztés során, a teszt adatforrások átjáró és a egy másik átjáró a termelési adatforrások. Az Azure Machine Learning Studio rugalmasságot biztosít, attól függően, hogy a vállalati környezethez több átjáró beállításához. Jelenleg nem oszthat meg egy átjárót a munkaterületek között, és csak egy átjáró telepíthető ugyanazon a számítógépen. További információkért lásd: [adatok áthelyezése a felhőbe az adatkezelési átjáróval és a egy helyszíni forrásra](../../data-factory/tutorial-hybrid-copy-portal.md).
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>2. lépés: Az átjáró használatára egy helyszíni adatforrásból származó adatokat olvasni.
 Az átjáró beállítása után hozzáadhat egy **adatok importálása** modult egy, amely bemenetként az adatokat a helyszíni SQL Server-adatbázisból.
 
 1. A Machine Learning Studióban, válassza ki a **kísérletek** lapra, majd **+ új** a bal alsó sarokban, és válassza a **üres kísérlet** (vagy válassza ki az egyik több minta kísérletek érhető el).
 2. Keresse meg és húzza a **adatok importálása** modult a kísérletvászonra.
-3. Kattintson a **Mentés másként** a vászon alatti. Adja meg az "Azure Machine Learning a helyszíni SQL Server-oktatóanyag" kísérlet nevét, válassza ki a munkaterületet, majd kattintson a **OK** pipa jelre.
+3. Kattintson a **Mentés másként** a vászon alatti. Adja meg az "Azure Machine Learning Studio a helyszíni SQL Server-oktatóanyag" kísérlet nevét, válassza ki a munkaterületet, majd kattintson a **OK** pipa jelre.
 
    ![Kísérlet mentése új néven](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
 4. Kattintson a **adatok importálása** modult, válassza ki, majd a **tulajdonságok** panelen a vászontól jobbra a "Helyi SQL Database" Válassza ki a **adatforrás** legördülő listában.
@@ -137,7 +137,7 @@ Az átjáró beállítása után hozzáadhat egy **adatok importálása** modult
 
    ![Adja meg az adatbázis-hitelesítő adatok](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
-   A "értékek set", egy zöld pipának üzenet "értékeket a kötelező" megváltozik. Csak meg kell a hitelesítő adatok egyszer, kivéve, ha az adatbázis-információ vagy jelszavának megváltozása után. Az Azure Machine Learning a felhőben a hitelesítő adatok titkosításához az átjáró telepítésekor megadott tanúsítványt használja. Az Azure soha nem tárolja a helyszíni hitelesítő adatok titkosítás nélkül.
+   A "értékek set", egy zöld pipának üzenet "értékeket a kötelező" megváltozik. Csak meg kell a hitelesítő adatok egyszer, kivéve, ha az adatbázis-információ vagy jelszavának megváltozása után. Az Azure Machine Learning Studio a felhőben a hitelesítő adatok titkosításához az átjáró telepítésekor megadott tanúsítványt használja. Az Azure soha nem tárolja a helyszíni hitelesítő adatok titkosítás nélkül.
 
    ![Adattulajdonságok modul importálása](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. Kattintson a **futtatása** a kísérlet futtatásához.

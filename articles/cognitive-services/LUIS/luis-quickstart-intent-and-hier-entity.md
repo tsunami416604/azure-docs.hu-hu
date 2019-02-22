@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: dea623684454d4b14a370251df10599eb03bbb34
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 14d1b5b7113e8a4bd71aa89a246fa375adb03a14
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856920"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593998"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Oktatóanyag: De kapcsolódó adatok kinyerése az utterance (kifejezés)
 
@@ -91,7 +91,7 @@ Ha egy hierarchikus entitásnak csak az egyik gyermeke (az indulás vagy az érk
 
 1. A(z) `move John W. Smith leaving Seattle headed to Dallas` kimondott szövegben válassza ki a következő szót: `Seattle`. Megjelenik egy legördülő menü egy szövegmezővel a tetején. Adja meg az entitás nevét (`Location`) a szövegmezőben, majd a legördülő menüben válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. 
 
-    [![Képernyőkép az új entitás létrehozása a szándék lapon](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png "szándék oldalon új entitás létrehozása képernyőképe")](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png#lightbox)
+    [![Képernyőkép az új entitás létrehozása a szándék lapon](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-1.png "szándék oldalon új entitás létrehozása képernyőképe")](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-1.png#lightbox)
 
 1. Az előugró ablakban válassza a **Hierarchikus** entitástípust, gyermekentitásokként a következőkkel: `Origin` és `Destination`. Válassza a **Done** (Kész) lehetőséget.
 
@@ -99,7 +99,7 @@ Ha egy hierarchikus entitásnak csak az egyik gyermeke (az indulás vagy az érk
 
 1. A `Seattle` címkéje `Location`, mivel a LUIS nem tudja, hogy a kifejezés a kiindulási vagy az érkezési hely-e, vagy egyik sem. Válassza ki `Seattle`, majd **hely**, majd hajtsa végre a menü a jobb oldalon, és válassza ki `Origin`.
 
-    [![Képernyőkép a felugró párbeszédpanel címkézés entitás módosítani az entitás gyermek helyeken](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png "módosítani az entitás gyermek helyeken entitás címkézés felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png#lightbox)
+    [![Képernyőkép a felugró párbeszédpanel címkézés entitás módosítani az entitás gyermek helyeken](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-2.png "módosítani az entitás gyermek helyeken entitás címkézés felugró párbeszédpanel képernyőképe")](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-2.png#lightbox)
 
 1. A címke az összes többi megcímkézzen más helyeiről. Az összes hely vannak megjelölve, a kimondott szöveg kezdje a következő egy minta módon. 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: monhaber
-ms.openlocfilehash: 8dcaa9b98292e66d81daf3d115159b0c0c1124af
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0b548acc92ab1efedab963e9bd3318e8525ffee4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106724"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649560"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
@@ -159,6 +159,24 @@ A listában szereplő ikon három típusa van:
  -  Válassza ki a átadott értékelés listájából az értékelés leírását, a nem megfelelő állapotú és kifogástalan állapotú erőforrások listájának és a nem vizsgált erőforrások listáját. Nem megfelelő állapotú erőforrások lapja, de a lista mindig üres lesz, mivel az értékelés átadott.
 
     ![App Service-ben szervizelés](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
+
+## <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
+A Security Center automatikusan felderíti az e csoportok skálázását követve rugalmasan méretezhető, és azt javasolja, hogy a Microsoft Monitoring Agent a méretezési csoportokon. 
+
+A Microsoft Monitoring Agent telepítése: 
+
+1. Válassza ki a javaslat **a monitorozási ügynök telepítése virtuálisgép-méretezési**. Nem figyelt méretezési csoportok listájának lekérése.
+2. Válasszon egy nem megfelelő állapotú méretezési csoportot. Kövesse az utasításokat követve telepítse a monitorozási ügynök használatával összeállított meglévő munkaterület, vagy hozzon létre egy újat. Állítsa be a munkaterület [tarifacsomag](security-center-pricing.md) Ha nincs beállítva.
+
+ ![MMS telepítése](./media/security-center-virtual-machine-recommendations/install-mms.png)
+
+Ha szeretné állítani, új méretezési csoportok, automatikusan telepíteni a Microsoft Monitoring Agent:
+1. Nyissa meg az Azure Policy, és kattintson a **definíciók**.
+2. Keresse meg a szabályzat **Windows Virtuálisgép-méretezési csoportok üzembe helyezése a Log Analytics ügynök** , és kattintson rá.
+3. Kattintson a **Hozzárendelés** gombra.
+4. Állítsa be a **hatókör** és **Log Analytics-munkaterület** kattintson **hozzárendelése**.
+
+Ha beállítja az összes meglévő méretezési csoportok a Microsoft Monitoring Agent telepítése az Azure Policy, Ugrás **szervizelési** és a meglévő házirend alkalmazása a meglévő méretezési csoportok.
 
 
 ## <a name="compute-and-app-recommendations"></a>Számítási és az alkalmazás vonatkozó javaslatok

@@ -10,12 +10,12 @@ author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 4f3ca01ae44900e4d0ce22b79db44d7bfa84e56d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 73ab816c7043c7fb0f572677c6ceeb722653dec1
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456554"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650770"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Újratanítás PowerShell és a egy klasszikus Studio-webszolgáltatás üzembe helyezése
 
@@ -60,7 +60,7 @@ URL beolvasása a megfelelő JAVÍTÁSI programozott módon, kövesse az alábbi
 1. Futtassa a [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) mintakódot.
 1. Az AddEndpoint kimenetében található a *HelpLocation* értékét, és másolja az URL-címet.
 
-   ![A kimenetben addEndpoint minta HelpLocation.](./media/troubleshooting-retraining-a-model/addEndpoint-output.png)
+   ![A kimenetben addEndpoint minta HelpLocation.](./media/retrain-classic/addEndpoint-output.png)
 1. Illessze be az URL-címet egy böngészőben nyissa meg egy lapot, amely biztosítja a webszolgáltatás súgóhivatkozások.
 1. Kattintson a **erőforrás frissítése** nyissa meg a patch Súgó hivatkozásra.
 
@@ -81,7 +81,7 @@ Kövesse az alábbi lépéseket a megfelelő JAVÍTÁSI URL-Címének lekérés�
 
 A PATCH súgóoldalt tartalmazza, a JAVÍTÁSI URL-címet kell használnia, és segítségével meghívására mintakódot biztosít.
 
-![Javítási URL-címe.](./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png)
+![Javítási URL-címe.](./media/retrain-classic/ml-help-page-patch-url.png)
 
 ### <a name="update-the-endpoint"></a>A végpont frissítéséhez
 

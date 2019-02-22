@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: magattus
-ms.openlocfilehash: 45b3698dd77bda815218b43405d64819c3e4789f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ef713c954d6eab05259547a277db12a1e9036bcf
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091266"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650546"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Az Azure CDN használati mintáinak elemzése
 
@@ -27,7 +27,7 @@ Miután engedélyezte a CDN-t az alkalmazáshoz, a CDN használatának figyelés
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Egyszerűsített analitika keresztül az Azure diagnosztikai naplók
 
-Egyszerűsített analitika CDN-végpontok minden árképzési szint esetében érhető el. Azure-beli diagnosztikai naplók exportálását az Azure storage, az event hubs vagy Azure Log Analytics alapvető analytics engedélyezése. Az Azure Log Analytics-diagramok, amelyek a felhasználó által konfigurálható, és testre szabható megoldást kínál. Az Azure diagnosztikai naplók kapcsolatos további információkért lásd: [Azure diagnosztikai naplók](cdn-azure-diagnostic-logs.md).
+Egyszerűsített analitika CDN-végpontok minden árképzési szint esetében érhető el. Azure-beli diagnosztikai naplók engedélyezése exportálhatók az Azure storage, az event hubs, a core analytics, vagy az Azure Monitor naplózza. Az Azure Monitor naplóira a diagramok, amelyek a felhasználó által konfigurálható, és testre szabható megoldást kínál. Az Azure diagnosztikai naplók kapcsolatos további információkért lásd: [Azure diagnosztikai naplók](cdn-azure-diagnostic-logs.md).
 
 ## <a name="verizon-core-reports"></a>Verizon alapvető jelentések
 

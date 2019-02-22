@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 8cc7d7d93f483289ab7faa3f5a7193fc218b57bc
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0df36f4c939ed9bd7bb6a134a356b37d699abc1d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695027"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586343"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for postgresql-hez tarifacsomagok
 
@@ -43,6 +43,9 @@ A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló 
 
 > [!IMPORTANT]
 > 2018. December 12., kezdve új ügyfeleket nem helyezhetik üzembe a számítási generáció 4 kiszolgálók Dél-Brazília, közép-Kanada, kelet-Kanada, Kelet-Ázsia, USA 2. keleti régiója, közép-India, Nyugat-India, Nyugat-japán, USA északi középső Régiója, USA nyugati RÉGIÓJA. Korábban létrehozott számítási generáció 4 kiszolgáló számítási generáció 5-től 2019. február 1. ezekben a régiókban migrálása.
+>
+> [!IMPORTANT]
+> 2019. február 19., kezdve új ügyfelek nem tudják üzembe a számítási generáció 4 kiszolgálókat az USA középső RÉGIÓJA, USA keleti RÉGIÓJA, kelet-japán, Észak-Európa, USA déli középső Régiója, Délkelet-Ázsia, Nyugat-Európa. Korábban létrehozott számítási generáció 4 kiszolgáló számítási generáció 5-től 2019. április 1. ezekben a régiókban migrálása.
 
 | **Az Azure-régió** | **A gen 4** | **A gen 5** |
 |:---|:----------:|:--------------------:|

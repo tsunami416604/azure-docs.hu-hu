@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/30/2019
+ms.date: 02/15/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 855b9db645721c63abae34422ae6461cea3daab2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5622c179b6eb767f4c608e8c36c2ba154aac0906
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189820"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594695"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Útmutató: Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -47,6 +47,9 @@ ms.locfileid: "56189820"
 - A jelszavas egyszeri Bejelentkezést győződjön meg arról, hogy az alkalmazás támogatja-e a űrlap-hitelesítést, így a jelszótárolást egyszeri bejelentkezés munkahelyi megszerezni a várt módon teheti meg.
 
 - Az automatikus felhasználó-átadási kérelem alkalmazás szerepelnie kell a katalógusban az egyszeri bejelentkezés funkció engedélyezve van a SAML 2.0 vagy WS-Fed használatával. Egyszeri Bejelentkezéssel és Felhasználókiépítés együtt a portálon, ha az még nem szereplő igényelhet.
+
+>[!NOTE]
+>Futtatjuk az SCIM-összekötő kérések, nagy számú, hogy leállt a Portal új kérések véve. . Kis türelmet, a kérelmek további értesítésig. Hogy Sajnáljuk, ez a késleltetés és az okozott kellemetlenségekért.
 
 ## <a name="submit-the-request-in-the-portal"></a>Küldje el a kérelmet a portálon
 
@@ -108,6 +111,16 @@ Frissítse vagy távolítsa el a meglévő alkalmazások az Azure AD-alkalmazás
     * Ha el kívánja távolítani a meglévő alkalmazások az Azure AD katalógusából, válassza ki a **távolítsa el a meglévő alkalmazás listaelem**.
     * Ha rendelkezik hozzáféréssel kapcsolatos problémákat, lépjen kapcsolatba a [Azure AD SSO integrációs csapat](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
+## <a name="listing-requests-by-customers"></a>Listázás a kérelmek felhasználók szerint
+
+Ügyfelek kattintva egy alkalmazás listázása a kérést küldhet, **App ügyfelek kérései** -> **új kérés elküldése**.
+
+![Ügyfél kért alkalmazások csempére](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+Az alábbi, a folyamat az ügyfél kért alkalmazások –
+
+![Ügyfél kért alkalmazások folyamat](./media/howto-app-gallery-listing/customer-request.png)
+
 ## <a name="timelines"></a>Idősorok
 
 A folyamat a tőzsdei a SAML 2.0 vagy WS-Fed alkalmazás a katalógus ütemtervét 7 – 10 munkanapon.
@@ -117,10 +130,6 @@ A folyamat a tőzsdei a SAML 2.0 vagy WS-Fed alkalmazás a katalógus ütemterv�
 A folyamat a tőzsdei a katalógusban OpenID Connect alkalmazás ütemtervét 2 – 5 munkanapon.
 
    ![Idősor listázása a katalógusban a saml-kérelem](./media/howto-app-gallery-listing/timeline2.png)
-
-A folyamat a tőzsdei az alkalmazást a katalógusban a felhasználókiépítés támogatási ütemtervét 40-45 munkanapon belül.
-
-   ![Idősor listázása a katalógusban a saml-kérelem](./media/howto-app-gallery-listing/provisioningtimeline.png)
 
 ## <a name="escalations"></a>Eszkalálást
 

@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 2/15/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 415cdecc33b7360d482d37a3cb9d4f1bce528ab1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cc2d19bec91998116143058d2bc4313fd192db38
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251792"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592973"
 ---
 # <a name="create-an-oem-package"></a>OEM-csomag létrehozása
 
@@ -30,11 +30,10 @@ Az Azure Stack OEM-kiterjesztési csomag olyan mechanizmusok, mely OEM által me
 
 ## <a name="creating-the-package"></a>A csomag létrehozása
 
-Miután létrehozott és érvényesítve, az OEM-kiterjesztés csomagjának VaaS is használható.  A folytatás előtt győződjön meg arról, hogy végrehajtotta a lépéseket a [az OEM-csomag létrehozása](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true). A csomag majd együtt VaaS terhelésiteszt-eredményei jelentkezik be a megoldás Szűrőérvényesítési munkafolyamat elküldése a Microsoftnak. A következő lépések bemutatják, hogyan szeretné a létrehozott fájlokat, amelyet felhasználhat VaaS egyetlen zip-fájlban.
+Miután létrehozott és érvényesítve, az OEM-kiterjesztés csomagjának VaaS is használható.  A folytatás előtt győződjön meg arról, hogy végrehajtotta a lépéseket a [az OEM-csomag létrehozása](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true). A csomag majd együtt VaaS terhelésiteszt-eredményei jelentkezik be a csomag érvényesítése munkafolyamat elküldése a Microsoftnak. A következő lépések bemutatják, hogyan szeretné a létrehozott fájlokat, amelyet felhasználhat VaaS egyetlen zip-fájlban.
 
 1. Határozza meg a csomag a következő tartalommal:
-    - Egy végrehajtható fájl neve `<Publisher>-<Model>-<Version>.exe`
-    - Egy vagy több fájl nevű bináris fájlok `<Publisher><Model>-<Version>-#.bin`, ahol # egy 1-től induló egymást követő számot. Bináris fájlok száma érték a csomagtartalmat amelyek összméretén függ.
+    - A csomag tartalma tartalmazó zip-fájlt
     - A jegyzékfájlt nevű `oemMetadata.xml`, amely meg kell egyezniük a tartalmat a gyökérkönyvtárában található a csomag tartalmát a metadata.xml fájlt.
 
 2. Válassza ki azokat a tartalomfájlokat, és létrehozhat egy zip-fájl tartalma:
@@ -51,7 +50,7 @@ A zip-fájl szerkezete ellenőrzéséhez azt vizsgálja, és ellenőrizheti, hog
 
 ![Megfelelően tömörített csomag tartalma](media/vaas-create-oem-package-3.png)
 
-A zip-fájl most VaaS feltöltött és a megoldás Szűrőérvényesítési munkafolyamat a Microsoft által aláírt.
+A zip-fájl most VaaS feltöltött és a csomag érvényesítése munkafolyamat a Microsoft aláírásával.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,7 +3,7 @@ title: Bevezetés az Azure Security Center Standard a fokozott biztonság |} A M
 description: " Ismerje meg, hogyan való előkészítése az Azure Security Center Standard a fokozott biztonság. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: 9d95503e4b17124d1d027a90a21869ef65831654
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 19/02/2019
+ms.author: monhaber
+ms.openlocfilehash: ab99116cabc14c70698a962c803adb87394e1796
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114416"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651104"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Bevezetés az Azure Security Center Standard a fokozott biztonság
 Frissítse a Security Center Standard kihasználásához fokozott biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokhoz.  Ingyenes Standard próbálhatja ki. Tekintse meg a Security Center [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/) további információt.
@@ -33,7 +33,7 @@ A Security Center a következőket tartalmazza:
 ## <a name="detecting-unprotected-resources"></a>Nem védett erőforrásokra észlelése     
 A Security Center automatikusan észleli azokat az Azure-előfizetéseket vagy munkaterületeket, amelyeken nincs engedélyezve a Security Center Standard. Ez a Security Center ingyenes verzióját használó Azure-előfizetéseket és az olyan munkaterületeket is magában foglalja, amelyeken nincs engedélyezve a biztonsági megoldás.
 
-A Standard szintre, amely örökli az előfizetés összes erőforrásának, frissítheti a teljes Azure-előfizetéssel, vagy megadhatja a frissítésére csak egy adott erőforráscsoportban egyedi házirendet. Ha az erőforráscsoport szabályzatbeállítások egyediek, a Security Center nem bírálja felül az árképzési házirendek az előfizetés Standard csomagra frissítésekor. Alkalmazása a Standard szint egy előfizetéshez csak a virtuális gépek az előfizetés a Security Center által létrehozott munkaterületeknek jelentő vonatkozik. Alkalmazása a Standard szint a munkaterületet a munkaterületre jelentő valamennyi erőforrására vonatkozik.
+A Standard szintre, amely örökli az előfizetés összes erőforrásának, frissítheti a teljes Azure-előfizetéssel, vagy megadhatja a frissítésére csak egy adott erőforráscsoportban egyedi házirendet. Ha az erőforráscsoport szabályzatbeállítások egyediek, a Security Center nem bírálja felül az árképzési házirendek az előfizetés Standard csomagra frissítésekor. Alkalmazása a Standard szintű előfizetésre vonatkozik az összes támogatott erőforrásokhoz az előfizetésben. Alkalmazása a Standard szintű munkaterületre a munkaterületre jelentő valamennyi erőforrására vonatkozik.
 
 > [!NOTE]
 > Érdemes a költségek kezelése és az ügynökök egy adott készletét korlátozásával megoldás összegyűjtött adatok mennyisége korlátozza. [Megoldás célcsoportjának](../operations-management-suite/operations-management-suite-solution-targeting.md) lehetővé teszi, hogy a megoldás hatókör vonatkozik, és célozhat meg a munkaterület számítógépek egy részének.  Célcsoport-kezelési megoldást használ, ha a Security Center a munkaterület a megoldás nem tartalmazóként sorolja fel.
@@ -53,7 +53,7 @@ Standard egy előfizetést, vagy a munkaterület frissítése:
 
 
    > [!NOTE]
-   > A Security Center ingyenes képességek csak az Azure virtuális gépekre érvényesek. Az ingyenes funkciókat a rendszer nem alkalmazza a nem Azure-beli számítógépeket. Ha standard szintű, a standard szintű funkciók lépnek minden Azure-beli és nem Azure-beli számítógépek hardverhibái a munkaterület. Azt javasoljuk, hogy a speciális biztonsági biztosít az Azure- és -Azure erőforrások Standard vonatkoznak.
+   > A Security Center ingyenes képességek csak az Azure virtuális gépek és a VMSS érvényesek. Az ingyenes funkciókat a rendszer nem alkalmazza a nem Azure-beli számítógépeket. Ha a Standard lehetőséget választja, a Standard képességekre minden Azure virtuális gépekhez, Virtuálisgép-méretezési csoportok és a-munkaterületre jelentő nem Azure-beli számítógépek lépnek. Azt javasoljuk, hogy a speciális biztonsági biztosít az Azure- és -Azure erőforrások Standard vonatkoznak.
    >
    >
 

@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 460edc7f092764cce3584c81371db4801fbd69bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c866bb1ff5603f08377ed96ddd81eedf71e243bf
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240012"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593234"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Oktatóanyag: A szolgáltatás érvényesítése erőforrások beállítása
 
@@ -92,7 +92,7 @@ Az Azure AD-rendszergazdaként a szükséges engedélyek nevében a bérlő az A
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
-Teszt végrehajtása VaaS jelenít meg a diagnosztikai naplók egy Azure Storage-fiókhoz. Vizsgálati naplókat, valamint a tárfiók is használhatók, a feltöltési az OEM bővítménycsomagok a megoldás Szűrőérvényesítési munkafolyamat.
+Teszt végrehajtása VaaS jelenít meg a diagnosztikai naplók egy Azure Storage-fiókhoz. Vizsgálati naplókat, valamint a tárfiók lehet, hogy is használható, a feltöltési az OEM bővítménycsomagok a csomag érvényesítése munkafolyamat.
 
 Az Azure Storage-fiókot az Azure nyilvános felhő, nem pedig az Azure Stack-környezet üzemel.
 

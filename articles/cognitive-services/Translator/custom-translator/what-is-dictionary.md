@@ -9,18 +9,18 @@ ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: bc297fd4cdda8cdb3dc618b73e91d2f4e31e8b6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 87ea4edd9bb548701d6bcf63dd542ed6e35d9f7f
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212409"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585544"
 ---
 # <a name="what-is-a-dictionary"></a>Mi az, hogy egy szótárban?
 
 Egy szótárban igazított párjának dokumentumok, amely felsorolja a kifejezések vagy mondatok és a kapcsolódó fordítások. Használja egy szótárban a tanítási, ha azt szeretné, a Microsoft Translator mindig lefordítani a forrás kifejezés vagy mondat, példányai a fordítás a megadott a szótár segítségével. A szótárak szószedeteket vagy kifejezés bázisok is nevezik. A szótár, egy találgatásos "másolása és cserélje le a" minden használati lista is felfoghatók.
 
-Szótárak csak működik, amely egy teljes körűen támogatott a Microsoft Neurális gépi fordítás (NMT) rendszer mögöttük nyelvi címpárral projektekhez. Lásd: http://www.aka.ms/translatorlanguages nyelvek teljes listáját.
+Szótárak csak működik, amely egy teljes körűen támogatott a Microsoft Neurális gépi fordítás (NMT) rendszer mögöttük nyelvi címpárral projektekhez. [A nyelvek teljes listáját megtekintheti](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="phrase-dictionary"></a>A kifejezés szótár 
 Amikor egy kifejezést szótár szerepel a modell tanítása, szót vagy kifejezést, megjelenik a megadott módon le. A többi a mondat a szokásos módon van lefordítva. Egy kifejezés szótár segítségével adja meg a kifejezések, amelyek azáltal, hogy a forrás és cél fájlban a szótár azonos jelez a nem konvertált kifejezés nem fordítható.

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 3edd70d3012840bd66460219c32135666619a3bf
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 42e5fd713f6353a2a939236f34463e9ba4195e29
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313568"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650206"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>A koncepció jogosultság consortium Ethereum
 
@@ -285,14 +285,14 @@ Tranzakció engedély szerződés (Speciális beállítások = engedélyezés)|A
 
 #### <a name="monitoring"></a>Figyelés
 
-A figyelés panel egy Log Analytics-erőforrás, a hálózat konfigurálását teszi lehetővé. A monitorozási ügynök összegyűjti, és a surface hasznos metrikákat és naplókat a hálózatról, így gyorsan ellenőrizheti, hogy a hálózati állapotfigyelő vagy hibakeresési lehetővé teszi problémák.
+A figyelés panel az Azure Monitor naplók erőforrás a hálózat konfigurálását teszi lehetővé. A monitorozási ügynök összegyűjti, és a surface hasznos metrikákat és naplókat a hálózatról, így gyorsan ellenőrizheti, hogy a hálózati állapotfigyelő vagy hibakeresési lehetővé teszi problémák.
 
   Paraméter neve|Leírás|Megengedett értékek|Alapértelmezett értékek
   ---|---|---|---
 Figyelés|A beállítás figyelés engedélyezése|Engedélyezése vagy letiltása|Bekapcsolás
-Csatlakozás a meglévő Log Analytics szolgáltatásba|Hozzon létre egy új Log Analytics-példányt, vagy egy meglévő példányát csatlakoztatása|Új létrehozása vagy csatlakozás meglévő|Új létrehozása
-Hely figyelése (Kapcsolódás a meglévő Log Analytics = új létrehozása)|A régió, ahol az új Log Analytics-példány üzembe helyezve|Minden Log Analytics-régió|NA
-Meglévő Log Analytics-munkaterület azonosítójára (Kapcsolódás a meglévő Log Analytics = csatlakozás meglévő)|Munkaterület-Azonosítót a meglévő Log Analytics-példány||NA
+Kapcsolódás a meglévő Azure Monitor naplóira|Az Azure Monitor naplók új példány létrehozása vagy csatlakozás meglévő példányt|Új létrehozása vagy csatlakozás meglévő|Új létrehozása
+Hely figyelése (Kapcsolódás a meglévő Azure Monitor naplóira = új létrehozása)|A régió, ahol az új Azure Monitor-naplók példány telepítve lesz|Az összes Azure Monitor-naplók régiók|NA
+Meglévő Log Analytics-munkaterület azonosítójára (Kapcsolódás a meglévő Azure Monitor naplóira = csatlakozás meglévő)|Munkaterület-Azonosítót a meglévő Azure monitor-példány naplók||NA
 Meglévő Log Analytics elsődleges kulcs (Kapcsolódás a meglévő Log Analytics = csatlakozás meglévő)|A meglévő Log Analytics-példányhoz való csatlakozáshoz használt elsődleges kulcs||NA
 
 
@@ -425,7 +425,7 @@ Kiválasztásával **hálózati Stats** közvetlen, Ethereum hálózati statiszt
 
 ![hálózati statisztika](./media/ethereum-poa-deployment/network-stats.png)
 
-#### <a name="sample-log-analytics-queries"></a>Mintául szolgáló Log Analytics-lekérdezések
+#### <a name="sample-kusto-queries"></a>Kusto mintalekérdezések
 
 Ezek az irányítópultok mögött egy olyan lekérdezhető nyers naplókat. A nyers naplók segítségével az irányítópultokat személyre szabott, hibavizsgálat vagy riasztási küszöbérték beállítása. Az alábbiakban találja, amely lehet például lekérdezések futtatásakor a naplók keresése eszközt:
 

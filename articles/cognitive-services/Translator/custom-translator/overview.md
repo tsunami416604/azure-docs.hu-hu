@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: e613f660d4d1abfd45b11d71c2abfda53331cc31
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 852a16f14466d91a0ebfaadb83c674253d0ea15e
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211204"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587752"
 ---
 # <a name="what-is-custom-translator"></a>Mi a Custom Translator?
 
@@ -22,7 +22,7 @@ ms.locfileid: "55211204"
 
 A használatával létrehozott fordítási rendszerek [egyéni a fordítót](https://portal.customtranslator.azure.ai) ugyanaz a felhő alapú keresztül elérhető [biztonságos](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), nagy teljesítményű, nagy mértékben skálázható Microsoft Translator [Text API v3-as](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl), amely működteti fordítások milliárd minden nap. 
 
-Egyéni Translator több mint három tucat nyelveket támogatja, és a NMT közvetlenül elérhető nyelvek rendeli. Teljes listáját lásd: [Microsoft Translator nyelvek]( https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Egyéni Translator több mint három tucat nyelveket támogatja, és a NMT közvetlenül elérhető nyelvek rendeli. Teljes listáját lásd: [Microsoft Translator nyelvek](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="features"></a>Szolgáltatások
 

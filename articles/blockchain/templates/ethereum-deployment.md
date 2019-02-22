@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 266e2be2775a6f9b74c714bd9112e38837bb6a6c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 6530e86f59124e324953e4ca082c247ebec3bc91
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098338"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650920"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Ethereum proof of work consortium megoldássablon
 
@@ -43,9 +43,9 @@ Consortium tagja is rendelkezik egy elosztott terhelésű tranzakció csomópont
 
 Tranzakció-csomópontok használata kiegyenlített terhelésű belül egy rendelkezésre állási csoportot a magas rendelkezésre állás fenntartása érdekében. A sablon támogatja a legfeljebb öt tranzakció-csomópontokat a virtual machine scale sets használatával építettek ki.
 
-### <a name="log-analytics-details"></a>Log analytics részletei
+### <a name="azure-monitor-logs-details"></a>Az Azure Monitor-naplók részletei
 
-Minden egyes üzembe helyezési is létrehoz egy új Log analytics-példányt, vagy csatlakozhat meglévő példányt. A log analytics lehetővé teszi, hogy az egyes virtuális gépek az üzembe helyezett hálózati alkotó különböző teljesítmény-mérőszámait figyelését.
+Minden egyes központi telepítés is létrehoz egy új Azure Monitor-naplók példányt, vagy csatlakozhat egy meglévő példányát. Az Azure Monitor naplóira lehetővé teszi, hogy az egyes virtuális gépek az üzembe helyezett hálózati alkotó különböző teljesítmény-mérőszámait figyelését.
 
 ## <a name="deployment-architecture"></a>Üzembe helyezési architektúrája
 
@@ -96,7 +96,7 @@ Az Operations Management Suite (OMS) lehetővé teszi egy OMS-erőforrást, a h�
 
 Paraméter neve|Leírás| Megengedett értékek|Alapértelmezett értékek
 ---|---|---|---
-Meglévő OMS-csatlakozás|Hozzon létre egy új Log Analytics-példányt, vagy egy meglévő példányát csatlakoztatása|Hozzon létre új való csatlakozás meglévő|Új Log Analytics-hely létrehozása|A régió, ahol szeretné telepíteni az új Log Analytics (látható if *új létrehozása* van kiválasztva)
+Meglévő OMS-csatlakozás|Az Azure Monitor naplók új példány létrehozása vagy csatlakozás meglévő példányt|Hozzon létre új való csatlakozás meglévő|Hozzon létre új Azure Monitor naplófájl helye|A régió, ahol szeretné telepíteni az új Azure Monitor-naplók (ha látható *új létrehozása* van kiválasztva)
 Meglévő OMS-munkaterület azonosítója|Munkaterület-Azonosítót a meglévő példány (látható if *csatlakozás meglévő* van kiválasztva) OMS szolgáltatásszint|Válassza ki a tarifacsomagot az új példány. További információ: https://azure.microsoft.com/pricing/details/log-analytics/ (látható if *csatlakozás meglévő* van kiválasztva)|Ingyenes önálló csomópontonként|Ingyenes
 Meglévő OMS elsődleges kulcs|A meglévő OMS-példányhoz való csatlakozáshoz használt elsődleges kulcs (látható if *csatlakozás meglévő* van kiválasztva)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7763807fdb5fcff7e93d54bf5a851cd4443427d3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8b2e42759ba2bffef28e1bf74e07bc149027ab7a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107191"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651763"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Incidensek és riasztások vizsgálata az Azure Security Centerben (előzetes verzió)
 Ez a dokumentum segítséget nyújt a biztonsági incidensek és riasztások vizsgálatához az Azure Security Center vizsgálati funkciójának használatával.
@@ -29,8 +29,10 @@ A Security Center Vizsgálat szolgáltatásával osztályozhatja a potenciális 
 
 A szolgáltatás célja, hogy megkönnyítse a vizsgálati eljárást a vizsgált incidensben érintett összes entitás ([biztonsági riasztások](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), felhasználók, számítógépek és incidensek) összekapcsolásával.  A Security Center ezt azáltal éri el, hogy összegyűjti és egymáshoz viszonyítja az összes érintett entitásra vonatkozó adatokat, és ezeket a kölcsönviszonyokat megjeleníti egy élő gráfon, amelynek segítéségével eligazodhat az egyes objektumok között, és megjelenítheti a vonatkozó információkat.
 
+
 > [!NOTE]
-> [Egyéni riasztások](security-center-custom-alert.md) a Security Center vizsgálati funkciójáról nem támogatottak.
+    > * [Egyéni riasztások](security-center-custom-alert.md) a Security Center vizsgálati funkciójáról nem támogatottak.
+    > * Vizsgálat csak a támogatott Windows kiszolgálókról összegyűjtött adatokon alapuló riasztások.
 >
 >
 

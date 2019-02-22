@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: e782afb971f95a654119d9817edeef02642bee9e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: effb00a4ebde857e06e34e5f83ca01fc5d74017b
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447565"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594185"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure virtuális gépek biztonsági mentése Recovery Services-tárolóban
 
@@ -63,7 +63,7 @@ A biztonsági mentési bővítményt a virtuális gépen az Azure nyilvános IP-
 - Nincs explicit kimenő hálózati hozzáférés nem Azure-beli virtuális gép Azure Backup szolgáltatással folytatott kommunikációhoz szükséges.
 - Azonban egyes régebbi virtuális gépek között problémák és a hiba miatt sikertelen **ExtensionSnapshotFailedNoNetwork** csatlakozásra tett kísérlet közben. Ebben az esetben használja az alábbi lehetőségek közül, hogy a biztonsági mentési bővítményt kommunikálhassanak az Azure nyilvános IP-címeket, a biztonsági mentések forgalmától.
 
-   **Beállítás** | **a művelet** ** | **Előnyök** | **Disadvantages**
+   **Beállítás** | **Művelet** | **Előnyök** | **Disadvantages**
    --- | --- | --- | ---
    **Az NSG-szabályok beállítása** | Lehetővé teszi a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/>  Hozzáadhat egy szabályt, amely engedélyezi a hozzáférést az Azure Backup szolgáltatás használata egy [szolgáltatáscímke](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure), külön-külön lehetővé téve, és minden címtartományt kezelése helyett. [További](../virtual-network/security-overview.md#service-tags) szolgáltatáscímkék kapcsolatban. | További költségek nélkül. Egyszerű szolgáltatás címkék kezelése
    **A proxy üzembe helyezése** | A forgalom útválasztási HTTP-proxy kiszolgáló telepítése. | Az Azure és a tároló nem csak a teljes hozzáférést biztosít. Szabályozható a tároló URL-címek használata engedélyezett.<br/><br/> A virtuális gépek internet egyetlen pont hozzáférést.<br/><br/> Proxy további költségekkel.<br/><br/> 

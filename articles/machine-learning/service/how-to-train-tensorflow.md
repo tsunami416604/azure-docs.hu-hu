@@ -1,7 +1,7 @@
 ---
-title: A TensorFlow-modellek betanításához
+title: A TensorFlow & Keras-modellek betanításához
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan futtathat egy csomópontos és elosztott modellek TensorFlow-betanítás a TensorFlow estimator
+description: Ismerje meg, hogyan futtathat egy csomópontos és elosztott tensorflow-hoz és a Keras modellek-betanítás a tensorflow-hoz és a Keras estimators
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.date: 02/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: c76a94695114888ca8946106528fe179ff81c811
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b1ee41c6d543ac4f52b537ebc8054f2986c4217c
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244725"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649583"
 ---
-# <a name="train-tensorflow-models-with-azure-machine-learning-service"></a>TensorFlow-modellek Azure Machine Learning szolgáltatással
+# <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Tensorflow-hoz és a Keras modellek Azure Machine Learning szolgáltatással
 
 Neurális hálózat (DNN) képzést nyújt tensorflow-hoz, az Azure Machine Learning biztosít egyéni `TensorFlow` osztályát az `Estimator`. Az Azure SDK `TensorFlow` estimator (, nem kell a conflated a [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) osztály) lehetővé teszi, hogy egyszerűen a tensorflow-hoz is egyetlen csomópontot, és elosztott futtatások az Azure-beli számítási feladatok elküldéséhez.
 
@@ -39,7 +39,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
                     script_params=script_params,
                     compute_target=compute_target,
                     entry_script='train.py',
-                    conda_packages=['scikit-learn'],
+                    conda_packages=['scikit-learn'], # in case you need scikit-learn in train.py
                     use_gpu=True)
 ```
 
@@ -60,6 +60,21 @@ Ezután küldje el a TensorFlow-feladatot:
 ```Python
 run = exp.submit(tf_est)
 ```
+
+## <a name="keras-support"></a>Keras-támogatás
+[Keras](https://keras.io/) egy népszerű magas szintű DNN Python API, amely támogatja a TensorFlow, CNTK vagy Theano háttérrendszerek szerint. TensorFlow-háttérrendszer-t használja, ha egyszerűen használhatja a TensFlow estimator Keras modell betanításához. Íme egy példa egy TensorFlow estimator hozzáadott Keras:
+
+```Python
+from azureml.train.dnn import TensorFlow
+
+keras_est = TensorFlow(source_directory='./my-keras-proj',
+                       script_params=script_params,
+                       compute_target=compute_target,
+                       entry_script='keras_train.py',
+                       conda_packages=['keras'], # just add keras through conda
+                       use_gpu=True)
+```
+A fenti TensorFlow estimator konstruktor arra utasítja az Azure Machine Learning szolgáltatás a végrehajtási környezetben keresztül Conda Keras telepíteni. És a `keras_train.py` importálhatja a Keras API egy Keras-modell betanításához. Egy teljes példát felfedezése [a Jupyter notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb).
 
 ## <a name="distributed-training"></a>Elosztott betanítás
 A TensorFlow Estimator emellett lehetővé teszi különböző Azure-beli virtuális Processzor és GPU fürtök ipari méretekben a modellek betanítása. Könnyedén futtathat elosztott TensorFlow-betanítás néhány API-hívások, amíg az Azure Machine Learning fogja kezelni a háttérben, az infrastruktúra és a vezénylési ilyen számítási feladat végrehajtásához szükséges.
@@ -92,11 +107,11 @@ Paraméter | Leírás | Alapértelmezett
 --|--|--
 `node_count` | A betanítási feladathoz használandó csomópontok száma. | `1`
 `process_count_per_node` | Minden egyes csomóponton futtatandó folyamatok (vagy "dolgozó szakemberek") száma.|`1`
-`distributed_backend` | Háttérbeli indításakor elosztott képzés, így az a Estimator MPI-n keresztül. Ha szeretné-e a párhuzamos és elosztott képzési végez (például `node_count`> 1 vagy `process_count_per_node`> 1 vagy mindkét) beállítása MPI (és Horovod), `distributed_backend='mpi'`. Az Azure Machine Learning által használt MPI végrehajtása [nyílt MPI](https://www.open-mpi.org/). | `None`
+`distributed_backend` | Háttérbeli indításakor elosztott képzés, így az a Estimator MPI-n keresztül. Ha szeretné-e a párhuzamos és elosztott képzési végez (például `node_count`> 1 vagy `process_count_per_node`> 1 vagy mindkét) beállítása MPI (és Horovod) `distributed_backend='mpi'`. Az Azure Machine Learning által használt MPI végrehajtása [nyílt MPI](https://www.open-mpi.org/). | `None`
 
 A fenti példában fognak futni az elosztott képzési két feldolgozó egy feldolgozó csomópontonkénti.
 
-Horovod és annak függőségeit lesz telepítve, így egyszerűen importálhatja azt a tanítási szkriptet a `train.py` módon:
+Horovod és annak függőségeit lesz telepítve, így importálhat a tanítási szkriptet `train.py` módon:
 
 ```Python
 import tensorflow as tf
@@ -173,8 +188,7 @@ run = exp.submit(tf_est)
 
 ## <a name="examples"></a>Példák
 
-Notebooks az elosztott deep learninget tekintse meg:
-* [How-to-use-azureml/Training-with-deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
+Ismerje meg a különböző [notebooks az elosztott mély tanulás a Githubon](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

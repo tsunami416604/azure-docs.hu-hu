@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: b4ac0ccb249bac7149014861056c10f9093d6759
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878160"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593913"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Oktatóanyag: Felhasználói céljaira meghatározni a LUIS-alkalmazás létrehozása
 
@@ -165,9 +165,13 @@ Térjen vissza a LUIS-portálra, és hozzon létre egy új célja annak megálla
     |Önéletrajz beadása a mérnöki pozícióra|
     |Ez az önéletrajzom a bejegyzés a Tampai 234123.|
 
-    [![Képernyőkép ApplyForJob szándékot az új utterances megadásáról](media/luis-quickstart-intents-only/utterance-applyforjob.png "képernyőkép megadásáról ApplyForJob szándékot az új kimondott szöveg")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+<!--
 
-    A címkézett szándék piros színnel van bekeretezve, mert LUIS nem biztos a szándék helyességében. Az alkalmazás betanítása megtanítja LUIS-t arra, hogy a kimondott szövegek a megfelelő szándékhoz tartoznak. 
+    [![Screenshot of entering new utterances for ApplyForJob intent](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot of entering new utterances for ApplyForJob intent")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+
+    The labeled intent is outlined in red because LUIS is currently uncertain the intent is correct. Training the app tells LUIS the utterances are on the correct intent. 
+
+-->
 
 ## <a name="train-again"></a>Betanítás újra
 

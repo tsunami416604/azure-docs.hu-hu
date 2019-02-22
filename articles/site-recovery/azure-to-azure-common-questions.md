@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 555c8b0b4046fd20583597ae4f0215a815806b8e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c251a159ec28d7fb03009ebcdc84056da739f937
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860407"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587429"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Gyakori kérdések: Azure – Azure replikálás
 
@@ -59,7 +59,7 @@ Igen, akkor is [. zóna – rögzíthetők a virtuális gépek replikálása](ht
 
 ### <a name="can-i-exclude-disks"></a>Kizárhatok egyes lemezek?
 
-Igen, olyan lemezeket zárhat a védelem idején PowerShell használatával. További információkért lásd: a [PowerShell-útmutató](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine).
+Igen, olyan lemezeket zárhat a védelem idején PowerShell használatával. További információkért tekintse meg [cikk](azure-to-azure-exclude-disks.md)
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Milyen gyakran replikálhatja az Azure-bA?
 Replikációs akkor folyamatos, ha az Azure virtuális gépeket replikál egy másik Azure-régióba. További információkért lásd: a [Azure – Azure replikációs architektúra](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process).

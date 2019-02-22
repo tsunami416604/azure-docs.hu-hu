@@ -8,39 +8,39 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: e499a0f7bec47e672c599c729a15cc3e3d04a28a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 38ba8ccad63120d33ce06faf39439bb58706e78d
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471626"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56660116"
 ---
 ## <a name="create-a-storage-account-for-event-processor-host"></a>Tárfiók létrehozása az Event Processor Host számára
 Az Event Processor Host egy intelligens ügynök, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat. Az ellenőrzőpontok használatához az Event Processor Hostnak tárfiókra van szüksége. Az alábbi példa bemutatja, hogyan hozhat létre tárfiókot és hogyan szerezheti be a hozzáférési kulcsokat:
 
-1. Az Azure portálra, és kattintson a **erőforrás létrehozása** , a képernyő bal felső.
+1. Az Azure Portalon kattintson az **Erőforrás létrehozása** gombra a képernyő bal felső részén.
 
 2. Válassza a **Storage** elemet, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget.
    
-    ![Tárolási fiók kiválasztása](./media/event-hubs-create-storage/create-storage1.png)
+    ![Tárfiók kiválasztása](./media/event-hubs-create-storage/create-storage1.png)
 
-3. Az a **storage-fiók létrehozása** lapon, tegye a következőket: 
+3. A **Tárfiók létrehozása** oldalon hajtsa végre az alábbi lépéseket: 
 
     1. Adja meg a tárfiók nevét. 
-    2. Válassza ki az Azure-előfizetéssel, amely tartalmazza az eseményközpontba.
-    3. Válassza ki az erőforráscsoportot, amely az event hubs rendelkezik.
-    4. Válasszon egy helyet, ahol az erőforrás létrehozásához. 
-    5. Kattintson a **felülvizsgálat + létrehozása**.
+    2. Válassza ki az eseményközpontot tartalmazó Azure-előfizetést.
+    3. Válassza ki az eseményközpontot tartalmazó erőforráscsoportot.
+    4. Válasszon ki egy helyet az erőforrás létrehozásához. 
+    5. Ezután kattintson a **Felülvizsgálat + létrehozás** elemre.
    
-    ![Storage-fiók létrehozása – lapon](./media/event-hubs-create-storage/create-storage2.png)
+    ![Tárfiók létrehozása – oldal](./media/event-hubs-create-storage/create-storage2.png)
 
-4. Az a **tekintse át + létrehozása** lapon tekintse át az értékeket, és válassza ki **létrehozás**. 
+4. A **Felülvizsgálat + létrehozás** oldalon tekintse át az értékeket, majd kattintson a **Létrehozás** lehetőségre. 
 
-    ![Tekintse át a storage-fiók beállításait, és hozzon létre](./media/event-hubs-create-storage/review-create-storage-account.png)
-5. Miután látta, a **üzembe helyezések sikerültek** üzenetben válassza **erőforráshoz van** az oldal tetején. A Storage-fiók lap az erőforrások listájából válassza ki a tárfiók is elindíthatja.  
+    ![A tárfiók beállításainak áttekintése és létrehozás](./media/event-hubs-create-storage/review-create-storage-account.png)
+5. Miután látta, a **üzembe helyezések sikerültek** üzenetben válassza **erőforrás megnyitása** az oldal tetején. A Storage-fiók lap az erőforrások listájából válassza ki a tárfiók is elindíthatja.  
 
-    ![Válassza ki a tárfiókot az üzembe helyezés](./media/event-hubs-create-storage/select-storage-deployment.png) 
-7. Az a **Essentials** ablakban válassza **Blobok**. 
+    ![A tárfiók kiválasztása az üzemelő példányból](./media/event-hubs-create-storage/select-storage-deployment.png) 
+7. Az **Alapvető erőforrások** ablakban kattintson a **Blobok** elemre. 
 
     ![Válassza ki a Blobok szolgáltatást](./media/event-hubs-create-storage/select-blobs-service.png)
 1. Válassza ki **+ tároló** a lap tetején adja meg egy **neve** a tárolót, és válassza a **OK**. 

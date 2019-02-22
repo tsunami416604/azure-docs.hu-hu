@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d49ab32ace1ad0900c4867a41aba56900ef2bcaa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f2c6f45081b78d330033570ff322f90cd06e50dd
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423408"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594270"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Az Azure Automation konfiguráló DSC-konfigurációk fordítása
 
@@ -284,6 +284,14 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 > [!NOTE]
 > Fordítás befejeződése jelenhet meg egy hiba szerint: **A "Microsoft.PowerShell.Management" modul nem lett importálva, mert a "Microsoft.PowerShell.Management" beépülő modul már importálták.** Ez az üzenet biztonságosan figyelmen kívül hagyhatja.
+
+## <a name="partial-configuration"></a>Részleges konfiguráció
+
+Azure Automation állapota a konfiguráció támogatja a használati [részleges konfigurációk](https://docs.microsoft.com/en-us/powershell/dsc/pull-server/partialconfigs).
+Ebben a forgatókönyvben DSC egymástól függetlenül kezelheti a több-konfiguráció van konfigurálva, és minden egyes konfigurációs az Azure Automation retreieved.
+Azonban csak egy konfigurációs egy automation-fiókot egy csomóponthoz rendelhető.
+Ez azt jelenti, hogy ha két csomópont használ két automation-fiókra lesz szükség.
+További információ a teams működését is együtt dolgozzanak a kiszolgálók kezelése konfigurációs kódként való használatával lásd: [a CI/CD-folyamat ismertetése DSC szerepkör](https://docs.microsoft.com/en-us/powershell/dsc/overview/authoringadvanced).
 
 ## <a name="importing-node-configurations"></a>Csomópont-konfigurációk importálása
 

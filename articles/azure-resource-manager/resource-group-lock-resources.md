@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6d2ae1d1846506424aa14cca0f597c8888eb903d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 83518825c91cdd727b3d4fb9ecc86d51dea8fc26
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341028"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649169"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében 
 
@@ -36,7 +36,7 @@ Amikor alkalmazza a zárolást, egy szülő hatókörben, a hatókörön belüli
 
 Szerepköralapú hozzáférés-vezérlés, ellentétben a felügyeleti zárolások összes felhasználók és szerepkörök korlátozások alkalmazásához használhat. A felhasználók és szerepkörök engedélyeinek beállításával kapcsolatos tudnivalókért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md).
 
-Erőforrás-kezelő zárolások csak vonatkozik, amelyek a felügyeleti sík, olyan küldött műveleteket tartalmaz, amely egy operations `https://management.azure.com`. A zárolás, erőforrások hogyan hajthat végre a saját függvények nem korlátozzák. Erőforrás-módosítások korlátozva, de az erőforrás-műveletek nem korlátozódnak. Például egy SQL-adatbázis írásvédett zárolásának meggátolja, hogy általi törlését vagy módosítását az adatbázist, de nem akadályozza meg, létrehozása, frissítése vagy törölni az adatbázisban található adatok. Adatok tranzakciója engedélyezettek, mert az nem kap meg ezek a műveletek `https://management.azure.com`.
+Erőforrás-kezelő zárolások csak vonatkozik, amelyek a felügyeleti sík, olyan küldött műveleteket tartalmaz, amely egy operations `https://management.azure.com`. A zárolása nem korlátozza, erőforrások hogyan hajthat végre a saját funkciók. Erőforrás-módosítások korlátozva, de az erőforrás-műveletek nem korlátozott. Például egy SQL-adatbázis írásvédett zárolásának meggátolja, hogy általi törlését vagy módosítását az adatbázist, de ez nem akadályozza meg létrehozása, frissítése vagy törlése az adatbázisban található adatok. Adatok tranzakciója engedélyezettek, mert ezek a műveletek nem küldött `https://management.azure.com`.
 
 Alkalmazása **ReadOnly** váratlan eredményekhez vezethet, mivel bizonyos műveletek, amelyek úgy tűnik, például olvasási műveletekhez ténylegesen szükséges további műveleteket. Például elhelyezése egy **ReadOnly** a storage-fiók zárolása megakadályozza, hogy minden felhasználó a kulcsok listázása. A lista kulcsok művelet POST-kérés történik, mert a visszaadott kulcsok érhetők el írási műveletek. A példában egy másik elhelyezése egy **ReadOnly** egy App Service erőforrás zárolása megakadályozza, hogy a Visual Studio Server Explorer fájl az erőforrás jelenik meg, mert a kapcsolati írási hozzáférésre van szüksége.
 
@@ -47,6 +47,19 @@ Hozzon létre vagy felügyeleti zárolások törlése, hozzáféréssel kell ren
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>Sablon
+
+Resource Manager-sablon üzembe helyezéséhez a zárolás használatakor különböző értékek használhat nevet és a zárolás típusától függően.
+
+Egy zárolást alkalmazásakor a **erőforrás**, használja a következő formátumok:
+
+* név – `{resourceName}/Microsoft.Authorization/{lockName}`
+* Írja be a- `{resourceProviderNamespace}/{resourceType}/providers/locks`
+
+Egy zárolást alkalmazásakor a **erőforráscsoport** vagy **előfizetés**, használja a következő formátumok:
+
+* név – `{lockName}`
+* Írja be a- `Microsoft.Authorization/locks`
+
 Az alábbi példa bemutatja egy sablont, amely a webhely app service-csomag, a webhely és a egy zárolási hoz létre. Az erőforrás típusa, a zárolás pedig az erőforrás típusa, az erőforrás zárolása és **/Providers/ zárolások**. A zárolás nevét jön létre elkülönített változó összefűzésével előállítjuk az erőforrás nevét **/Microsoft.Authorization/** és a zárolás nevét.
 
 ```json
@@ -104,19 +117,7 @@ Az alábbi példa bemutatja egy sablont, amely a webhely app service-csomag, a w
 }
 ```
 
-Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
-
-```azurepowershell-interactive
-New-AzResourceGroup -Name sitegroup -Location southcentralus
-New-AzResourceGroupDeployment -ResourceGroupName sitegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/lock.json -hostingPlanName plan0103
-```
-
-Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
-
-```azurecli
-az group create --name sitegroup --location southcentralus
-az group deployment create --resource-group sitegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/lock.json --parameters hostingPlanName=plan0103
-```
+Zárolást beállítást egy erőforráscsoportot egy példa: [hozzon létre egy erőforráscsoportot, majd zárolja](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
 
 ## <a name="powershell"></a>PowerShell
 Zárolás használatával üzembe helyezett erőforrásokat az Azure PowerShell használatával a [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) parancsot.
@@ -206,7 +207,7 @@ Egy zárolás létrehozásához futtassa:
 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-A hatókör egy előfizetés, erőforráscsoport vagy erőforrás lehet. A zárolás neve akármilyen területen is fel kívánja hívni a zárolást. Api-Version paraméter használata **2015-01-01**.
+A hatókör egy előfizetés, erőforráscsoport vagy erőforrás lehet. A zárolás neve akármilyen területen is fel kívánja hívni a zárolást. Api-Version paraméter használata **2016-09-01**.
 
 A kérelem tartalmazza a JSON-objektum, amely meghatározza a tulajdonságait, a zárolás.
 
@@ -219,7 +220,6 @@ A kérelem tartalmazza a JSON-objektum, amely meghatározza a tulajdonságait, a
 
 ## <a name="next-steps"></a>További lépések
 * Logikailag a az erőforrások rendszerezéséhez kapcsolatos további információkért lásd: [az erőforrások rendszerezése címkék használatával](resource-group-using-tags.md)
-* Melyik erőforrás található az erőforráscsoport módosításához lásd [erőforrások áthelyezése új erőforráscsoportba](resource-group-move-resources.md)
 * Korlátozások és konvenciói alkalmazhat testreszabott házirendekkel az előfizetésében. További információ: [Mi az az Azure Policy?](../governance/policy/overview.md)
 * Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
 

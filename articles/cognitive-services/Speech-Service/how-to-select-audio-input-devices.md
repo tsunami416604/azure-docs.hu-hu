@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 359606c6dfe75d9910565cffa555b1e52d29267d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e02c99edcc1774510f9d10a5d19f49c4fc0530a9
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448619"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594083"
 ---
-# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>A beszédfelismerés SDK-val egy hangbemeneti eszköz kiválasztása 
+# <a name="select-an-audio-input-device-with-the-speech-sdk"></a>A beszédfelismerés SDK-val egy hangbemeneti eszköz kiválasztása
 
 1.3.0 a Speech SDK tartalmazza az API-t, jelölje be a hangbemenet, ez a cikk bemutatja, hogyan juthat hozzá a rendszerhez csatlakoztatott eszközök azonosítói.
 Ezek ezután a Speech SDK által használható keresztül az eszköz konfigurálása a `AudioConfig` objektum:
@@ -367,3 +367,13 @@ Ha például a utasítás
 ```
 
 Bluetooth-mikrofonos egy beszéd-kompatibilis alkalmazások használatát teszi lehetővé.
+
+## <a name="next-steps"></a>További lépések
+
+> [!div class="nextstepaction"]
+> [Ismerje meg a minták a Githubon](https://aka.ms/csspeech/samples)
+
+## <a name="see-also"></a>Lásd még
+
+- [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
+- [Nyelvi modellek testreszabása](how-to-customize-language-model.md)

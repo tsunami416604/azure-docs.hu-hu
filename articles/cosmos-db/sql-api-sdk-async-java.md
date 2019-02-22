@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 2/8/2019
+ms.date: 2/20/2019
 ms.author: moderakh
-ms.openlocfilehash: 1a86ceefdc5c3b60dc4bca5a1ac659534653aa66
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: a090f40bcbc0dab1f685c02308243aff8fbac9fd
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416275"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588466"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Aszinkron Java az Azure Cosmos DB SQL API-hoz készült SDK: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -43,6 +43,11 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 | **Minimális támogatott futtatókörnyezet**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+* Bizonyos hibák rögzített közvetlen módban.
+* A továbbfejlesztett naplózás közvetlen módban.
+* Továbbfejlesztett kapcsolat kezelése.
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 * Közvetlen üzemmódban kapcsolat már általánosan Available(GA). A minta közvetlen üzemmódban kapcsolatot használó: [azure-cosmos DB-java](https://github.com/Azure/azure-cosmosdb-java) GitHub-adattárban.
@@ -135,6 +140,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.4.1](#2.4.1) |2019. február 20.|--- |
 | [2.4.0](#2.4.0) |2019. február 8.|--- |
 | [2.4.0-beta-1](#2.4.0-beta-1) |2019. február 4.|--- |
 | [2.3.1](#2.3.1) |2019. január 15.|--- |

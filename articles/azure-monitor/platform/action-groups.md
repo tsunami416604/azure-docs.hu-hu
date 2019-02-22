@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 5717074d53e267018b7697aeed21ea00d246592e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a817e3681f6b94b1b9ad7d5a2d2a1369935ee064
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252217"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651765"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
 Műveletcsoport gyűjteménye, Azure-előfizetés tulajdonosa által megadott értesítési beállításokat. Azure Monitor és a Service Health-riasztások Műveletcsoportok használatával értesítheti a felhasználókat, hogy egy riasztás aktiválódott-e. Az azonos műveletcsoport vagy a felhasználó követelményeitől függően különböző Műveletcsoportok különböző riasztások használhatja. Az előfizetéshez legfeljebb 2000 Műveletcsoportok konfigurálásával.
 
-Amikor egy művelet a konfigurációja szerint egy személy értesítése e-mailben vagy SMS személy kap egy megerősítő, amely azt jelzi, hogy, és ő a műveletcsoport hozzá.
+Egy olyan műveletet, kapnak egy megerősítő jelző műveleti csoporthoz hozzáadott egy személy e-mailben vagy SMS-értesítés megadása
 
 Ez a cikk bemutatja, hogyan hozhat létre és kezelheti az Azure Portalon Műveletcsoportok.
 
 Minden művelet a következő tulajdonságok tevődik össze:
 
 * **Név**: A műveletcsoport belül egyedi azonosítója.  
-* **Művelet típusa**: A művelet végrehajtásához. Ilyenek például a voice hívás, SMS, e-mailt küld; vagy automatizált műveletek különböző típusú elindítása. Tekintse meg a cikk későbbi részében típusokat. 
-* **Részletek**: A megfelelő részleteket, amely régiónként eltérő *művelettípus*. 
+* **Művelet típusa**: A művelet végre. Ilyenek például a voice hívás, SMS, e-mailt küld; vagy automatizált műveletek különböző típusú elindítása. Tekintse meg a cikk későbbi részében típusokat. 
+* **Részletek**: A vonatkozó részletekkel, végezhet *művelettípus*. 
 
 Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatáról további információért lásd: [műveleti csoport Resource Manager-sablonok](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Műveletcsoport létrehozása az Azure portal használatával ##
-1. Az a [portál](https://portal.azure.com)válassza **figyelő**. A **figyelő** panel összesíti az összes figyelési beállítást és adatokat egyetlen nézetben.
+1. Az a [portál](https://portal.azure.com)válassza **figyelő**. A **figyelő** ablaktábla összesíti az összes figyelési beállítást és adatokat egyetlen nézetben.
 
     ![A "Figyelés" szolgáltatás](./media/action-groups/home-monitor.png)
 1. Válassza ki **riasztások** majd **Műveletcsoportok kezelése**.
@@ -49,7 +49,7 @@ Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatár�
 
 1. Válassza ki a **erőforráscsoport** a a műveletcsoport mentve.
 
-1. Adja meg a műveleteknek a listája, azáltal, hogy minden egyes művelethez:
+1. Műveletek listájának meghatározását. Adja meg a következő műveletek:
 
     a. **Név**: Adja meg egy egyedi azonosítót ehhez a művelethez.
 
@@ -60,51 +60,53 @@ Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatár�
 1. Válassza ki **OK** a műveletcsoport létrehozásához.
 
 ## <a name="manage-your-action-groups"></a>A műveleti csoportok kezelése ##
-Miután létrehozta a műveletcsoport, is látható, az a **Műveletcsoportok** szakaszában a **figyelő** panelen. Válassza ki a kezelni kívánt műveletcsoport:
+Miután létrehozta a műveletcsoport, is látható, az a **Műveletcsoportok** szakaszában a **figyelő** ablaktáblán. Válassza ki a kezelni kívánt műveletcsoport:
 
 * Adja hozzá, szerkeszthet és eltávolíthat műveleteket.
 * A műveletcsoport törlése.
 
 ## <a name="action-specific-information"></a>A művelet adott információk
-**Azure-alkalmazás leküldéses** -műveletcsoport az Azure app-műveletek legfeljebb 10 lehet. Jelenleg az Azure-alkalmazás a művelet csak ServiceHealth riasztások támogatja. Más riasztási bármikor figyelmen kívül lesz hagyva. Lásd: [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+> [!NOTE]
+> Lásd: [előfizetési szolgáltatási korlátok a figyelés](https://docs.microsoft.com/azure/azure-subscription-service-limits#monitor-limits) numerikus korlátait az alábbi elemek mindegyike számára.  
+
+**Azure-alkalmazás leküldéses** – az Azure app-műveletek csak korlátozott számú műveletcsoport használhat. Jelenleg az Azure-alkalmazás a művelet csak ServiceHealth riasztások támogatja. Más riasztási bármikor figyelmen kívül lesz hagyva. Lásd: [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 **E-mailek** -e-mailt küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mailek szűrése megfelelően vannak konfigurálva
    - azure-noreply@microsoft.com
    - azureemail-noreply@microsoft.com
    - alerts-noreply@mail.windowsazure.com
 
-Műveletcsoport e-mailes műveletek akár 1000 is lehet. Tekintse meg a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) cikk
+Előfordulhat, hogy e-mailes műveletek csak korlátozott számú tartalmaz műveletcsoport. Tekintse meg a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) cikk
 
-**ITSM** – előfordulhat, hogy legfeljebb 10 műveleti csoport ITSM művelet az ITSM-műveletek egy ITSM-kapcsolatot igényel. Ismerje meg, hogyan hozhat létre egy [ITSM-kapcsolat](../../azure-monitor/platform/itsmc-overview.md).
+**ITSM** -műveletcsoport ITSM-műveletek korlátozott számú korlátozott számú lehet. ITSM-művelethez egy ITSM-kapcsolat szükséges. Ismerje meg, hogyan hozhat létre egy [ITSM-kapcsolat](../../azure-monitor/platform/itsmc-overview.md).
 
-**Logikai alkalmazás** – előfordulhat, hogy legfeljebb 10 Logic App-műveletek tartalmaz műveletcsoportot
+**Logikai alkalmazás** -Logic App-műveletek csak korlátozott számú műveletcsoport lehet.
 
-**Alkalmazás függvény** -műveletek a Functions API-val, amelyhez jelenleg szükség van a függvényalkalmazások v2 "AzureWebJobsSecretStorageType" beállítást "fájlok" az alkalmazás konfigurálásához, olvasható konfigurált alkalmazások esetében a funkcióbillentyűket lásd [ Kulcskezelés a Functions V2 vált]( https://aka.ms/funcsecrets) további információt.
+**Alkalmazás függvény** – a Functions API-val, amelyhez jelenleg a függvényalkalmazások v2 "AzureWebJobsSecretStorageType" beállítást az alkalmazás konfigurálásához szükséges műveletek olvasnak konfigurált alkalmazások esetében a "fájlok" kulcsok a függvény. További információkért lásd: [kulcskezelés a Functions V2 vált]( https://aka.ms/funcsecrets).
 
-**Runbook** – előfordulhat, hogy legfeljebb 10 Runbook műveleteket tartalmaz egy művelet csoport hivatkozik, amely a [az Azure-előfizetési szolgáltatási korlátok](../../azure-subscription-service-limits.md) a korlátok a Runbook is észleltünk adattartalmakat.
+**Runbook** – előfordulhat, hogy a Runbook-műveletek csak korlátozott számú tartalmaz műveletcsoport. Tekintse meg a [az Azure-előfizetési szolgáltatási korlátok](../../azure-subscription-service-limits.md) a korlátok a Runbook is észleltünk adattartalmakat.
 
-**SMS** – előfordulhat, hogy legfeljebb 10 SMS műveleteket tartalmaz egy művelet csoport tekintse meg a [sebessége korlátozza az adatokat](./../../azure-monitor/platform/alerts-rate-limiting.md) lásd a cikk a [SMS-riasztás viselkedése](../../azure-monitor/platform/alerts-sms-behavior.md) cikk
+**SMS** – előfordulhat, hogy az SMS-műveletek csak korlátozott számú tartalmaz műveletcsoport. Is megtekintheti a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) és [SMS-riasztás viselkedése](../../azure-monitor/platform/alerts-sms-behavior.md) további fontos információkat. 
 
-**Beszédfelismerési** – előfordulhat, hogy legfeljebb 10 hangalapú műveleteket tartalmaz műveletcsoportot</dd>
-Tekintse meg a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) cikk</dd>
+**Beszédfelismerési** -Voice-műveletek csak korlátozott számú műveletcsoport lehet. Tekintse meg a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) cikk.
 
-**Webhook** -műveletcsoport Webhook-műveletek legfeljebb 10 lehet.
-Újrapróbálkozási logika – az időkorlát választ érték 10 másodperc. A webhook hívása lesz újból legfeljebb 2 idők esetén a következő HTTP-állapotkódok adja vissza: 408, 429-es, 503-as, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozási 100 másodperc múlva történik. Két hiba után a végpont nem lesz meghívva, 30 percig bármilyen művelet csoportból.
+**Webhook** -Webhook-műveletek csak korlátozott számú műveletcsoport lehet. Webhookok a rendszer újra próbálkozik a következő szabályok alkalmazásával. A webhook hívása rendszer legfeljebb 2 idők esetén a következő HTTP-állapotkódok adja vissza: 408, 429-es, 503-as, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozási 100 másodperc múlva történik. Két hiba után nincs műveletcsoport meghívja a végpont 30 percig. 
 
 Forrás IP-címtartományok
-    - 13.72.19.232
-    - 13.106.57.181
-    - 13.106.54.3
-    - 13.106.54.19
-    - 13.106.38.142
-    - 13.106.38.148
-    - 13.106.57.196
-    - 52.244.68.117
+ - 13.72.19.232
+ - 13.106.57.181
+ - 13.106.54.3
+ - 13.106.54.19
+ - 13.106.38.142
+ - 13.106.38.148
+ - 13.106.57.196
+ - 52.244.68.117
 
-A érintő változásokról ezen IP-címek, javasoljuk, hogy konfigurálja a frissítések fogadásához egy [szolgáltatásállapot-riasztás](./../../azure-monitor/platform/service-notifications.md) amely figyeli a Műveletcsoportok szolgáltatással kapcsolatos tájékoztató értesítések.
+Fogadni ezen IP-címek, azt javasoljuk, hogy a változásokat frissítések konfigurálása [Service állapotriasztás, amely figyeli a Műveletcsoportok szolgáltatással kapcsolatos tájékoztató értesítések.
 
 
 ## <a name="next-steps"></a>További lépések ##
+
 * Tudjon meg többet [SMS-riasztás viselkedése](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Szerezzen egy [megértése a tevékenység log riasztási webhookséma](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
 * Tudjon meg többet [ITSM-összekötő](../../azure-monitor/platform/itsmc-overview.md)

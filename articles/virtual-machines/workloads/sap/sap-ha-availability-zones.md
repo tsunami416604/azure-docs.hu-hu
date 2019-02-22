@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d98a5ab13c2aecd3b3cef590526031f5bdee594
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: a8e20d617da12aea857308f4020fbd0cfe711430
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268311"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651311"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP munkaterhelés-konfigurációk az Azure-beli rendelkezésre állási zónák
 [Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview) egyike az Azure által biztosított magas rendelkezésre állású funkciókat. Rendelkezésre állási zónák használatával javítja a rendelkezésre állás az SAP számítási feladatok Azure-ban. Ez a funkció már elérhető néhány [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/). A későbbiekben lesz elérhető több régióban.
@@ -123,7 +123,7 @@ Ha nem talál egy elfogadható különbözeti között egy zónán belül a hál
 
 Az alapszintű elrendezés az architektúra a következőhöz hasonló:
 
-![Aktív/passzív zónát üzembe helyezés](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+![Aktív/passzív zónát üzembe helyezés](./media/sap-ha-availability-zones/active_passive_zones_deployment.png)
 
 A következő szempontokat kell figyelembe ehhez a konfigurációhoz:
 

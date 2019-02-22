@@ -1,5 +1,5 @@
 ---
-title: Összetett entitást"
+title: Összetett entitást oktatóanyag
 titleSuffix: Azure Cognitive Services
 description: Adjon hozzá egy összetett entitást szeretné a különböző típusú kinyert adatok egyetlen tartalmazó entitásba. A kötegelés az adatokat, az ügyfélalkalmazás is könnyen kinyerheti az különböző adattípusok kapcsolódó adatokat.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0d78c365b171ea80d208c447f4746fe80b965ef2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2da007d0e97f55432282fbc52c38ef3f50a2e5f4
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883304"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593573"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Oktatóanyag: Kapcsolódó adatok csoportosítása és kinyerése
 Ebben az oktatóanyagban egy összetett entitás szeretné a kinyert adatokkal történő tartalmazó egyetlen entitás hozzáadása. A kötegelés az adatokat, az ügyfélalkalmazás is könnyen kinyerheti az különböző adattípusok kapcsolódó adatokat.
@@ -85,18 +85,19 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
 
 1. Válassza ki **TransferEmployeeToDepartment** leképezések listájából.
 
-1. Az első utterance (kifejezés), válassza ki a personName entitást `John Jackson`, majd **Start összetett entitást alkalmazásburkoló** a legördülő menü listája a következő utterance (kifejezés):
+1. Az utterance (kifejezés) a `place John Jackson in engineering`, adja meg a personName entitást `John Jackson`, majd **Zabalit do összetett entitást** a legördülő menü listája a következő utterance (kifejezés). 
 
-    `place John Jackson in engineering`
+    ![Képernyőkép a sortörés összetett kiválasztása párbeszédpanel legördülő](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
 1. Azonnal válassza ki az utolsó entitás `engineering` az utterance (kifejezés) található. Zöld sáv megjelenítése a kiválasztott szavakat jelző egy összetett entitás alapján. Az előugró menüben adja meg az összetett név `TransferEmployeeInfo` majd válassza ki az Entert. 
 
-1. A **milyen típusú entitást szeretne létrehozni?**, minden kötelező mezőt a listában szerepelnek: `personName` és `Department`. Válassza a **Done** (Kész) lehetőséget. 
+    ![Összetett név beírásakor legördülő lista párbeszédpanel képernyőképe](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-    Figyelje meg, az összetett entitás hozzáadásának personName, előre létrehozott entitást. Ha egy előre összeállított entitások jelennek meg a kezdő és záró jogkivonatok összetett entitás között lehetnek, az összetett entitás ezeket előre összeállított entitások kell tartalmaznia. Ha az előre összeállított entitások nem szerepelnek, az összetett entitás nem jelzett megfelelően, de az egyes elemeket.
+1. A **milyen típusú entitást szeretne létrehozni?**, minden kötelező mezőt a listában szerepelnek: `personName` és `Department`. Válassza a **Done** (Kész) lehetőséget. Figyelje meg, az összetett entitás hozzáadásának personName, előre létrehozott entitást. Ha egy előre összeállított entitások jelennek meg a kezdő és záró jogkivonatok összetett entitás között lehetnek, az összetett entitás ezeket előre összeállított entitások kell tartalmaznia. Ha az előre összeállított entitások nem szerepelnek, az összetett entitás nem jelzett megfelelően, de az egyes elemeket.
+
+    ![Összetett név beírásakor legördülő lista párbeszédpanel képernyőképe](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
 ## <a name="label-example-utterances-with-composite-entity"></a>Az összetett entitás címke példa kimondott szöveg
-
 
 1. Valamennyi példa utterance (kifejezés) válassza ki a bal szélső entitást, amely az összetett kell lennie. Válassza ki **Zabalit do összetett entitást**.
 

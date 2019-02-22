@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 3043067f326f782c51be38382070ae0db0e90f4d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: afe8081032e0358e8e0653e9a2b6aad30ad496a9
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56314157"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651226"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Az Azure Cognitive Services számítógépes Látástechnológiai SDK a Pythonhoz
 
@@ -281,17 +281,16 @@ except HTTPFailure as e:
 
 A munka során a [ComputerVisionAPI] [ ref_computervisionclient] ügyfél, akkor léphetnek fel átmeneti hibák által okozott [sebességhatárok] [ computervision_request_units] kényszerítve a szolgáltatás, vagy más átmeneti problémák, például a hálózati kimaradások. További információ az ilyen típusú hibák kezelése: [újrapróbálkozási minta] [ azure_pattern_retry] útmutató a tervezési minták Felhőkhöz, és a kapcsolódó [áramkör-megszakító minta] [azure_pattern_circuit_breaker].
 
-## <a name="next-steps"></a>További lépések
-
 ### <a name="more-sample-code"></a>További mintakód
 
 Több számítógép Vision Python SDK-minták lesznek elérhetők az SDK-k GitHub-adattárában. Ezek a minták kódpéldákat gyakran történt a Computer Vision használata további forgatókönyvek adja meg:
 
 * [recognize_text][recognize-text]
 
-### <a name="additional-documentation"></a>További dokumentáció
+## <a name="next-steps"></a>További lépések
 
-A Computer Vision Service szélesebb körű dokumentációjáért lásd: a [Azure számítógépes Látástechnológiai dokumentáció] [ computervision_docs] a docs.microsoft.com webhelyen.
+> [!div class="nextstepaction"]
+> [Képek tartalmának címkékkel](../concept-tagging-images.md)
 
 <!-- LINKS -->
 [pip]: https://pypi.org/project/pip/

@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ba23e9b8ac79a0a2a3899332bfc373665cf561af
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b4c484f3dd118a19291741b071432b09894e836c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841163"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593301"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Linux rendszerű virtuális gépek monitorozásához
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Linux rendszerű virtuális gépek figyelése céljából
 
 Az Azure Security Center segítségével áttekintheti az Azure-erőforrása biztonsági intézkedéseit. A Security Center integrált biztonsági monitorozást biztosít. Képes egyébként észrevétlenül maradó fenyegetések észlelésére. Ebben az oktatóanyagban megismeri az Azure Security Centert, és a következőket sajátíthatja el:
  
@@ -65,7 +65,7 @@ Ha biztonsági szabályzatot szeretne beállítani a teljes előfizetéshez:
 
 1. A Security Center irányítópultján válassza a **Biztonsági szabályzat** lehetőséget, és válassza ki az előfizetését.
 2. A **Biztonsági szabályzat** panelen válassza a **Biztonsági szabályzat** elemet. 
-3. A ** Biztonsági szabályzat – Biztonsági szabályzat ** panelen kapcsolja be vagy ki az előfizetésre alkalmazni kívánt szabályzatelemeket.
+3. Az a **biztonsági házirend - biztonsági házirend** panelen kapcsolja be, vagy kapcsolja ki az előfizetést a alkalmazni kívánt szabályzatelemeket.
 4. Ha végzett a beállítások megadásával, kattintson a panel tetején lévő **Mentés** elemre. 
 
 ![Egyedi szabályzat](./media/tutorial-azure-security/unique-policy.png)

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e9240949c589717303fe00205c5374b5e3a6a791
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c3f46e40dfaf0d1ba2ab393b593cdd479c48c45d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008257"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585062"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Házirendmodul-támogatás az Azure automationben
 
@@ -31,7 +31,7 @@ Importálása egy `Az` modulban, az Automation-fiókját a PowerShell-munkamenet
 * Egy másik modul attól függően, a modul PowerShell-munkamenetbe való importálás után
 
 > [!IMPORTANT]
-> Fontos győződjön meg arról, hogy a runbookok az Automation-fiók csak importálása `Az` vagy `AzureRM` modulok azokat a runbookokat és nem is által használt PowerShell-munkameneteket. Ha `Az` importálása előtt `AzureRM` egy runbook a runbook fog befejeződni, de egy [get_SerializationSettings mód hiba](/troubleshoot/runbooks.md#get-serializationsettings) fogja megjeleníteni a feladatstreamek és parancsmagok előfordulhat, hogy nem lettek megfelelően hajtott végre. Importálásakor `AzureRM` , majd `Az` a runbook végez, továbbra is teljes körű, látni fogja a feladatstreamek arról, hogy a hiba, de mindkét `Az` és `AzureRM` importálhatók ugyanabban a munkamenetben vagy ugyanazon a runbookon belül használt.
+> Fontos győződjön meg arról, hogy a runbookok az Automation-fiók csak importálása `Az` vagy `AzureRM` modulok azokat a runbookokat és nem is által használt PowerShell-munkameneteket. Ha `Az` importálása előtt `AzureRM` egy runbook a runbook fog befejeződni, de egy [get_SerializationSettings mód hiba](troubleshoot/runbooks.md#get-serializationsettings) fogja megjeleníteni a feladatstreamek és parancsmagok előfordulhat, hogy nem lettek megfelelően hajtott végre. Importálásakor `AzureRM` , majd `Az` a runbook végez, továbbra is teljes körű, látni fogja a feladatstreamek arról, hogy a hiba, de mindkét `Az` és `AzureRM` importálhatók ugyanabban a munkamenetben vagy ugyanazon a runbookon belül használt.
 
 ## <a name="migrating-to-az-modules"></a>Áttelepítés Az modulok
 

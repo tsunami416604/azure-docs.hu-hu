@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
 ms.subservice: files
-ms.openlocfilehash: e73a11d7849d6e304be0844a55ddad46e6966f6e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fe363bd6d16d7beea1c8f1e6ec17710975a80924
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470450"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652560"
 ---
 # <a name="cloud-tiering-overview"></a>A cloud rétegezési áttekintése
 Felhőbeli rétegezés egy olyan opcionális szolgáltatás, az Azure File Sync, amelyben gyakran használt gyorsítótárba helyileg a kiszolgálón, míg minden más fájlnál számítógépen rétegzett az Azure Files házirend-beállításai alapján. A rétegzett egy fájlt, az Azure File Sync fájlrendszerszűrő (StorageSync.sys) helyettesíti a fájlt helyileg egy mutatót, vagy az újraelemzési pont. Az újraelemzési pontot az Azure Files-fájlra mutató URL-címet jelöli. Egy rétegzett fájlt a "offline" attribútum és a beállítása az NTFS, harmadik féltől származó alkalmazások biztonságosan azonosíthassa a rétegzett fájlok FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútum is rendelkezik.
@@ -21,9 +21,12 @@ Felhőbeli rétegezés egy olyan opcionális szolgáltatás, az Azure File Sync,
 Amikor egy felhasználó megnyit egy rétegzett fájlt, az Azure File Sync zökkenőmentesen visszaírja a fájl adatait a az Azure Files a felhasználót, hogy a fájl valójában az Azure-ban tárolt ismerete nélkül. 
  
  > [!Important]  
-    > Fontos: Felhőbeli rétegezés esetén nem támogatott a Windows rendszer köteteken kiszolgálói végpontot, és csak 64 KiB-nál nagyobb fájlok helyezhető el az Azure Files.
+ > Felhőbeli rétegezés esetén nem támogatott a Windows rendszer köteteken kiszolgálói végpontot, és csak 64 KiB-nál nagyobb fájlok helyezhető el az Azure Files.
     
 Az Azure File Sync nem támogatja a rétegzési fájlok kisebb, mint 64 KiB, a teljesítménybeli terhelést rétegezést és az ilyen kisméretű fájlok visszahívása felülmúlják a lemezterület-megtakarítás.
+
+ > [!Important]  
+ > Megtörtént a rétegzett fájlok visszahívásához a hálózati sávszélesség legalább 1 MB/s kell lennie. Ha hálózati sávszélessége kevesebb mint 1 MB/s, fájlok visszahívja időtúllépési hiba miatt sikertelen lehet.
 
 ## <a name="cloud-tiering-faq"></a>A felhő rétegezési – gyakori kérdések
 

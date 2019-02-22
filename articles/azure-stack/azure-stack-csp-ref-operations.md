@@ -15,12 +15,12 @@ ms.date: 01/23/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: aca051dd20ceaeb608baa144a81e0584043a1c52
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6f2a2eb9902e8567b5fa27ed93dd8be2fe3a01b3
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002047"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587072"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Az Azure Stack bérlő regisztrációs kezelése
 
@@ -60,7 +60,7 @@ Az Azure Stacket és API-profilokkal kapcsolatos további információkért lás
 
 ### <a name="powershell"></a>PowerShell
 
-A New-AzureRmResource-parancsmag segítségével adjon hozzá egy bérlőt. [Csatlakozás az Azure Stack](/azure-stack-powershell-configure-admin.md), és a egy rendszergazda jogú parancssorból a következő parancsmag használatával:
+A New-AzureRmResource-parancsmag segítségével adjon hozzá egy bérlőt. [Csatlakozás az Azure Stack](azure-stack-powershell-configure-admin.md), és a egy rendszergazda jogú parancssorból a következő parancsmag használatával:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -91,7 +91,7 @@ Egyetlen bérlő számára, amely egy regisztrációs lettek hozzáadva listáj�
 
 ### <a name="powershell"></a>PowerShell
 
-A Get-AzureRmResource parancsmaggal listázhatja az összes regisztrált bérlők. [Csatlakozás az Azure Stack](/azure-stack-powershell-configure-admin.md), és a egy rendszergazda jogú parancssorból a következő parancsmag használatával:
+A Get-AzureRmResource parancsmaggal listázhatja az összes regisztrált bérlők. [Csatlakozás az Azure Stack](azure-stack-powershell-configure-admin.md), és a egy rendszergazda jogú parancssorból a következő parancsmag használatával:
 
 ```powershell
   Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
@@ -142,7 +142,7 @@ Egy bérlő, amely hozzá van adva egy regisztrációs távolíthatja el. A bér
 
 ### <a name="powershell"></a>PowerShell
 
-A Remove-AzureRmResource-parancsmag segítségével távolítsa el a bérlőt. [Csatlakozás az Azure Stack](/azure-stack-powershell-configure-admin.md), és a egy rendszergazda jogú parancssorból a következő parancsmag használatával:
+A Remove-AzureRmResource-parancsmag segítségével távolítsa el a bérlőt. [Csatlakozás az Azure Stack](azure-stack-powershell-configure-admin.md), és a egy rendszergazda jogú parancssorból a következő parancsmag használatával:
 
 ```powershell
   Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 02/21/2019
 ms.author: magoedte
-ms.openlocfilehash: 46be596cbd2641b9ecd3206f44a6e7de7beed255
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: d6933d5fd72a3a6c945d3afc3fdd3512be5b28d1
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417505"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591601"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>A Log Analytics használatával az Azure Resource Manager-sablonok felügyelete
 Használhat [Azure Resource Manager-sablonok](../../azure-resource-manager/resource-group-authoring-templates.md) létrehozása és konfigurálása a Log Analytics-munkaterületeket. A feladatokat hajthat végre a sablonok közé:
@@ -42,7 +42,7 @@ Az alábbi táblázat az ebben a példában használt erőforrások API-verzió.
 | Erőforrás | Erőforrás típusa | API-verzió |
 |:---|:---|:---|:---|
 | Munkaterület   | munkaterületek    | 2017-03-15-preview |
-| Keresés      | savedSearches | 2017-03-15-preview |
+| Keresés      | savedSearches | 2015-03-20 |
 | Adatforrás | adatforrások   | 2015. 11. 01-előzetes verzió |
 | Megoldás    | megoldások     | 2015. 11. 01-előzetes verzió |
 
@@ -101,7 +101,7 @@ A következő paraméterekkel állítsa be az alapértelmezett érték:
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2015-11-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
@@ -218,7 +218,7 @@ Az alábbi sablont a példa bemutatja, hogyan lehet:
   },
   "resources": [
     {
-      "apiVersion": "2017-03-15-preview",
+      "apiVersion": "2015-11-01-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -230,7 +230,7 @@ Az alábbi sablont a példa bemutatja, hogyan lehet:
       },
       "resources": [
         {
-          "apiVersion": "2017-03-15-preview",
+          "apiVersion": "2015-03-20",
           "name": "VMSS Queries2",
           "type": "savedSearches",
           "dependsOn": [
@@ -379,7 +379,7 @@ Az alábbi sablont a példa bemutatja, hogyan lehet:
           }
         },
         {
-          "apiVersion": "2015-11-01-preview",
+          "apiVersion": "2015-03-20",
           "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('workspaceName'))]",
           "type": "storageinsightconfigs",
           "dependsOn": [

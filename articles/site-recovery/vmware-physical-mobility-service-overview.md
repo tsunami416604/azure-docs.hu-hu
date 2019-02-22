@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 02/19/2019
 ms.author: ramamill
-ms.openlocfilehash: 6319ef908b5b040bf61285451448c08bb3960fe2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d8b009d47a7fd0057c71ff3fc120a4443fc262d7
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215010"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593658"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a mobilitási szolgáltatás VMware virtuális gépek és fizikai kiszolgálókhoz
 
@@ -50,7 +50,7 @@ Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
 
 Ha replikálni kívánt gépek aktív víruskereső szoftvert, ellenőrizze, hogy a mobilitási szolgáltatás telepítési mappa kizárása víruskereső operations (*C:\ProgramData\ASR\agent*). Ez biztosítja, hogy a replikáció megfelelően működik-e.
 
-## <a name="update-the-mobility-service"></a>A mobilitási szolgáltatás frissítése
+## <a name="update-mobility-service-from-azure-portal"></a>Mobilitási szolgáltatás frissítése az Azure Portalról
 
 1. Megkezdése előtt győződjön meg arról, hogy a konfigurációs kiszolgáló, horizontális felskálázási folyamatkiszolgáló, és bármely fő célkiszolgálókat, amelyek a központi telepítés részei frissítve lett, mielőtt frissítené a mobilitási szolgáltatás a védett gépek.
 2. A portálon nyissa meg a tároló > **replikált elemek**.
@@ -63,6 +63,14 @@ Ha replikálni kívánt gépek aktív víruskereső szoftvert, ellenőrizze, hog
      ![Replikált elemek Virtuálisgép-lista](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 5. A mobilitási szolgáltatás frissítése feladat elindul, a kiválasztott gépek mindegyikéhez.
+
+## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Mobilitási szolgáltatás frissítése a Windows server powershell-parancsfájl segítségével
+
+Az alábbi parancsfájl power shell parancsmag segítségével a kiszolgálón a mobilitási szolgáltatás frissítése
+
+```azurepowershell
+Update-AzureRmRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
+```
 
 ## <a name="update-the-account-used-for-push-installation-of-the-mobility-service"></a>Frissítse a mobilitási szolgáltatás leküldéses telepítéséhez használt fiók
 

@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 7612e9d6444b61210da5d642530d99423220c0a4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 753c5312987cc541456b2f7415bb7dc9d4770d05
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076840"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593352"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Apache Kafka for Event Hubs-események feldolgozása Stream Analytics használatával 
 Ez a cikk bemutatja, hogyan adatok streamelése az Event Hubs Kafka-kompatibilis, és az Azure Stream Analyticsszel dolgozza fel. Végigvezeti az alábbi lépéseket: 
@@ -133,7 +133,7 @@ A lekérdezést a Stream Analytics-feladat az áthalad az adatokat bármely elem
 
 ### <a name="configure-job-input"></a>Feladatbemenet konfigurálása
 
-1. Válassza ki az értesítési üzenet ** Ugrás erőforrás ** megtekintéséhez a **Stream Analytics-feladat** lapot. 
+1. Válassza ki az értesítési üzenet **erőforrás megnyitása** megtekintéséhez a **Stream Analytics-feladat** lapot. 
 2. Válassza ki **bemenetek** a a **FELADATTOPOLÓGIA** szakaszban a bal oldali menüben.
 3. Válassza ki **streambemenet hozzáadása**, majd válassza ki **Eseményközpont**. 
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/14/2018
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: c1a9b526f08f330d62c30dd1d676e95460aee6c2
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: eb4b87a008b9e43de7e7a5f7895449303f1e44a6
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712347"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593981"
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>Az Azure Blockchain Workbench REST API-jának használata
 
@@ -210,8 +210,8 @@ Content-type: application/json
 
 Miután egy felhasználó úgy dönt, hogy részletes ismertetése a szerződés, a blockchain-ügyfél ezután megjelenítheti a rendelkezésre álló felhasználói műveleteket a szerződés állapota. Ebben a példában a felhasználó megtekinti egy frissen létrehozott intelligens szerződés összes elérhető műveletét:
 
-* Módosítás: A felhasználó módosíthatja egy objektum leírását és árát.
-* Leállítása: Lehetővé teszi, hogy a felhasználó az eszköz a szerződés befejezéséhez.
+* Módosítása: A felhasználó módosíthatja a leírást és a egy eszköz árát.
+* Megszüntetheti: A felhasználó az eszköz a szerződés befejezéséhez.
 
 Használja a [Contract Action GET API-t](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget):
 
@@ -277,8 +277,8 @@ Content-type: application/json
 
 A felhasználó ezután eldöntheti, hogy milyen műveletet kíván végezni az adott intelligensszerződés-példányon. Ebben az esetben fontolja meg a forgatókönyvet, ahol a felhasználó módosítani szeretné a leírását és árát az eszköz a következő műveletet:
 
-* Leírás: „Az én frissített autóm”
-* Ár: 543210
+* Leírás: "A frissített autó"
+* Ár: 54321
 
 Használja a [Contract Action POST API-t](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost):
 

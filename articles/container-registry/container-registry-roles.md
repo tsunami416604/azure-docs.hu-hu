@@ -5,27 +5,27 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 02/20/2019
 ms.author: danlep
-ms.openlocfilehash: a4b9b382755e73b6218432624c471346e9698752
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0148894bb013dc9f8cce595f14919f87d6292df8
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193390"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593624"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Az Azure Container Registry-szerepkörök és engedélyek
 
 Az Azure Container Registry szolgáltatás támogat egy Azure-szerepkörök, engedélyek és egy Azure container registry különböző szinteken biztosít. Az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) adott engedélyek hozzárendelése a felhasználókhoz vagy egyszerű szolgáltatások, amelyek a beállításjegyzék kommunikáljon.
 
-| Szerepkör vagy engedély       | [Resource Manager elérése](#access-resource-manager)| [Beállításjegyzék létrehozása/törlése](#create-and-delete-registry) | [Rendszerkép leküldése](#push-image) | [Rendszerkép lekérése](#pull-image) | [Szabályzatok módosítása](#change-policies) |   [Bejelentkezési képek](#sign-images)  |
-| ---------| --------- | --------- | --------- | --------- | --------- | --------- |
-| Tulajdonos | X | X | X | X | X |  |  
-| Közreműködő | X | X | X | X | X |  |  
-| Olvasó | X |  |  | X |  |  | 
-| AcrPush |  |  | X | X |  |  |  
-| AcrPull |  |  |  | X |  |  |  
-| ACR-lemezképaláíró |  |  |  |  |  | X |
+| Szerepkör vagy engedély       | [Resource Manager elérése](#access-resource-manager) | [Beállításjegyzék létrehozása/törlése](#create-and-delete-registry) | [Rendszerkép leküldése](#push-image) | [Rendszerkép lekérése](#pull-image) | [Rendszerkép-adatok törlése](#delete-image-data) | [Szabályzatok módosítása](#change-policies) |   [Bejelentkezési képek](#sign-images)  |
+| ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| Tulajdonos | X | X | X | X | X | X |  |  
+| Közreműködő | X | X | X |  X | X | X |  |  
+| Olvasó | X |  |  | X |  |  |  |
+| AcrPush |  |  | X | X | X |  |  |  
+| AcrPull |  |  |  | X |  |  |  |  
+| ACR-lemezképaláíró |  |  |  |  |  |  | X |
 
 ## <a name="differentiate-users-and-services"></a>Különbséget tenni a felhasználók és szolgáltatások
 
@@ -58,6 +58,10 @@ Lehetővé teszi `docker push` képet, vagy egy másik leküldéses [összetevő
 ## <a name="pull-image"></a>Rendszerkép lekérése
 
 Lehetővé teszi `docker pull` egy nem-karanténba képfájl, illetve egy másik lekéréses [összetevő támogatott](container-registry-image-formats.md) például egy Helm-diagramot a beállításjegyzékből. Szükséges [hitelesítési](container-registry-authentication.md) a beállításjegyzék használatával a meghatalmazott identitását.
+
+## <a name="delete-image-data"></a>Rendszerkép-adatok törlése
+
+Lehetővé teszi [tárolórendszerképek vagy tárházak törlése](container-registry-delete.md).
 
 ## <a name="change-policies"></a>Szabályzatok módosítása
 

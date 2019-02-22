@@ -15,12 +15,12 @@ ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 44cf5b2cc7547a4e85c65215fdc1e4fe2cb585a9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ac4366a2e90ea239c650e611b7c4e8dddf5d5106
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243640"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649662"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Piactéri termék létrehozása és közzététele
 
@@ -131,19 +131,19 @@ ms.locfileid: "55243640"
 
 | Name (Név) | Szükséges | Typo | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Name (Név) |X |Karakterlánc |[A-Za-z0-9]+ | |
-| Közzétevő |X |Karakterlánc |[A-Za-z0-9]+ | |
-| Verzió |X |Karakterlánc |[SemVer v2](https://semver.org/) | |
+| Name (Név) |X |String |[A-Za-z0-9]+ | |
+| Közzétevő |X |String |[A-Za-z0-9]+ | |
+| Verzió |X |String |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Metaadatok
 
 | Name (Név) | Szükséges | Typo | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Megjelenítendő név |X |Karakterlánc |Az ajánlás 80 karakter |A portál nem jelenítik meg a konfigurációelem nevét szabályosan Ha hosszabb 80 karakternél. |
-| PublisherDisplayName |X |Karakterlánc |Az ajánlás 30 karakter |A portál nem jelenítik meg a közzétevő neve szabályosan ha 30 karakternél hosszabb. |
-| PublisherLegalName |X |Karakterlánc |Legfeljebb 256 karakter hosszú lehet | |
-| Összegzés |X |Karakterlánc |60 és 100 karakter | |
-| LongSummary |X |Karakterlánc |140 és 256 karakter |Még alkalmazhatók az Azure Stackben. |
+| Megjelenítendő név |X |String |Az ajánlás 80 karakter |A portál nem jelenítik meg a konfigurációelem nevét szabályosan Ha hosszabb 80 karakternél. |
+| PublisherDisplayName |X |String |Az ajánlás 30 karakter |A portál nem jelenítik meg a közzétevő neve szabályosan ha 30 karakternél hosszabb. |
+| PublisherLegalName |X |String |Legfeljebb 256 karakter hosszú lehet | |
+| Összegzés |X |String |60 és 100 karakter | |
+| LongSummary |X |String |140 és 256 karakter |Még alkalmazhatók az Azure Stackben. |
 | Leírás |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500-as és 5000 karakternél | |
 
 ### <a name="images"></a>Képek
@@ -168,7 +168,7 @@ Minden Marketplace-elem lehetnek különböző további tartalmakra is hivatkozi
 
 | Name (Név) | Szükséges | Typo | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Megjelenítendő név |X |Karakterlánc |Legfeljebb 64 karakter hosszú lehet | |
+| Megjelenítendő név |X |String |Legfeljebb 64 karakter hosszú lehet | |
 | URI |X |URI | | |
 
 ### <a name="additional-properties"></a>További tulajdonságok
@@ -177,8 +177,8 @@ Mellett az előző metaadatok Marketplace szerzők megadhat egyéni kulcs/érté
 
 | Name (Név) | Szükséges | Typo | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Megjelenítendő név |X |Karakterlánc |Legfeljebb 25 karakterből álló | |
-| Value |X |Karakterlánc |Legfeljebb 30 karakter hosszú lehet | |
+| Megjelenítendő név |X |String |Legfeljebb 25 karakterből álló | |
+| Érték |X |String |Legfeljebb 30 karakter hosszú lehet | |
 
 ### <a name="html-sanitization"></a>HTML-tisztító
 
@@ -192,8 +192,8 @@ Ikonok és a szöveg a Marketplace-elemek az Azure Stack portálon látható mó
 
 ### <a name="create-blade"></a>A Create (Létrehozás) panel
 
-![A Create (Létrehozás) panel](media/azure-stack-marketplace-item-ui-reference/image1.png)
+![A Create (Létrehozás) panel](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### <a name="marketplace-item-details-blade"></a>Piactéri elem részletei panel
 
-![Piactéri elem részletei panel](media/azure-stack-marketplace-item-ui-reference/image3.png)
+![Piactéri elem részletei panel](media/azure-stack-create-and-publish-marketplace-item/image3.png)

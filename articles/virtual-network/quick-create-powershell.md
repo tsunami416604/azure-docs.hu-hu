@@ -14,14 +14,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: ade8329e6e42fae9f3232617488a6d4a69f8ef1f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 20639296767c45cb1e7ae854e6ad9494c34fc0ed
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437385"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650597"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Gyors útmutató: Hozzon létre egy virtuális hálózathoz a PowerShell használatával
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Virtuális hálózat lehetővé teszi, hogy az Azure-erőforrások, például virtuális gépeket (VM), a privát módon kommunikáljanak egymással, és az interneten. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatokat. A létrehozott virtuális hálózatban két virtuális gépet fog üzembe helyezni. Ezután csatlakozhat a virtuális gépekhez az internetről, és privát módon kommunikáljanak a virtuális hálózaton keresztül.
 
@@ -29,9 +31,9 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
 
-Ha úgy dönt, hogy a helyi telepítése és használata PowerShell helyette, ehhez a rövid útmutatóhoz kell használnia az AzureRM PowerShell-modul 5.4.1-es vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Lásd: [Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) telepítési és frissítési adatai.
+Ha úgy dönt, hogy a helyi telepítése és használata PowerShell helyette, ebben a rövid útmutatóban előírja, hogy az Azure PowerShell-modul verzióját 1.0.0 vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) telepítési és frissítési adatai.
 
-Végül, ha futtatja a Powershellt helyileg, is kell futtatni `Connect-AzureRmAccount`. Ez a parancs létrehoz egy kapcsolatot az Azure-ral.
+Végül, ha futtatja a Powershellt helyileg, is kell futtatni `Connect-AzAccount`. Ez a parancs létrehoz egy kapcsolatot az Azure-ral.
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Hozzon létre egy erőforráscsoportot és a egy virtuális hálózatot
 
@@ -39,18 +41,18 @@ Nincsenek minősített lépések végigvezetik a erőforráscsoportot és a virt
 
 ### <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
-Mielőtt létrehozhatna egy virtuális hálózatot, akkor hozzon létre egy erőforráscsoportot a virtuális hálózat üzemeltetéséhez. Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) paranccsal. Ez a példa létrehoz egy erőforráscsoportot, nevű *myResourceGroup* a a *eastus* helye:
+Mielőtt létrehozhatna egy virtuális hálózatot, akkor hozzon létre egy erőforráscsoportot a virtuális hálózat üzemeltetéséhez. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Ez a példa létrehoz egy erőforráscsoportot, nevű *myResourceGroup* a a *eastus* helye:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
 ### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) paranccsal. Ez a példa létrehoz egy alapértelmezett nevű virtuális hálózatot *myVirtualNetwork* a a *EastUS* helye:
+A virtuális hálózat létrehozása [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Ez a példa létrehoz egy alapértelmezett nevű virtuális hálózatot *myVirtualNetwork* a a *EastUS* helye:
 
 ```azurepowershell-interactive
-$virtualNetwork = New-AzureRmVirtualNetwork `
+$virtualNetwork = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork `
@@ -59,10 +61,10 @@ $virtualNetwork = New-AzureRmVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>Alhálózat hozzáadása
 
-Így hozzon létre egy alhálózatot kell az Azure erőforrások egy alhálózatot egy virtuális hálózaton belül üzembe helyezi. Hozzon létre egy alhálózati konfigurációt nevű *alapértelmezett* a [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig):
+Így hozzon létre egy alhálózatot kell az Azure erőforrások egy alhálózatot egy virtuális hálózaton belül üzembe helyezi. Hozzon létre egy alhálózati konfigurációt nevű *alapértelmezett* a [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig):
 
 ```azurepowershell-interactive
-$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -Name default `
   -AddressPrefix 10.0.0.0/24 `
   -VirtualNetwork $virtualNetwork
@@ -70,10 +72,10 @@ $subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>A virtuális hálózatot az alhálózat társítása
 
-Az alhálózati konfigurációt a virtuális hálózatba a írhat [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork). Ez a parancs létrehozza az alhálózatot:
+Az alhálózati konfigurációt a virtuális hálózatba a írhat [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork). Ez a parancs létrehozza az alhálózatot:
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
@@ -82,10 +84,10 @@ Hozzon létre két virtuális gépet a virtuális hálózaton.
 
 ### <a name="create-the-first-vm"></a>Az első virtuális gép létrehozása
 
-Az első virtuális gép létrehozása [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). A következő parancs futtatásakor kéri a hitelesítő adatokat. Adjon meg egy felhasználónevet és jelszót a virtuális gép számára:
+Az első virtuális gép létrehozása [New-azvm parancsmag](/powershell/module/az.compute/new-azvm). A következő parancs futtatásakor kéri a hitelesítő adatokat. Adjon meg egy felhasználónevet és jelszót a virtuális gép számára:
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Location "East US" `
     -VirtualNetworkName "myVirtualNetwork" `
@@ -101,7 +103,7 @@ Amikor Azure elindul, a virtuális gép létrehozása a háttérben, fog kapni e
 ```powershell
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
 --     ----            -------------   -----         -----------     --------             -------
-1      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmVM
+1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
 ### <a name="create-the-second-vm"></a>A második virtuális gép létrehozása
@@ -109,7 +111,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 A második virtuális gép létrehozása a következő paranccsal:
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -VirtualNetworkName "myVirtualNetwork" `
   -SubnetName "default" `
@@ -123,10 +125,10 @@ Hozzon létre egy másik felhasználó és a jelszót kell. Azure virtuális gé
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
-Egy virtuális gép nyilvános IP-címének visszaadásához használja a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) parancsot. Ebben a példában a nyilvános IP-címét adja vissza a *myVm1* virtuális Géphez:
+Használat [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) , egy virtuális gép nyilvános IP-címének visszaadásához. Ebben a példában a nyilvános IP-címét adja vissza a *myVm1* virtuális Géphez:
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVm1 `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress
@@ -135,7 +137,7 @@ Get-AzureRmPublicIpAddress `
 Nyisson meg egy parancssort a helyi számítógépen. Futtassa a következő parancsot: `mstsc`. Cserélje le `<publicIpAddress>` az utolsó lépés által visszaadott nyilvános IP-címét:
 
 > [!NOTE]
-> Ha futtatja, egy PowerShell-parancssort a helyi számítógépen, és ezek a parancsok az AzureRM PowerShell-modul 5.4.1-es vagy később folytathatja a felületen.
+> Ha futtatja, ezeket a parancsokat a PowerShell használatával a helyi számítógépen, és a Az PowerShell-modul verzióját 1.0-s vagy újabb verzióját használja, továbbra is az adott kapcsolat.
 
 ```cmd
 mstsc /v:<publicIpAddress>
@@ -165,7 +167,7 @@ Egy Remote Desktop Protocol (*.rdp*) fájlt a számítógép letölti és a egy 
     ```powershell
     PS C:\Users\myVm1> ping myVm2
 
-    Pinging myVm2.ovvzzdcazhbu5iczfvonhg2zrb.bx.internal.cloudap
+    Pinging myVm2.ovvzzdcazhbu5iczfvonhg2zrb.bx.internal.cloudapp.net
     Request timed out.
     Request timed out.
     Request timed out.
@@ -214,10 +216,10 @@ Egy Remote Desktop Protocol (*.rdp*) fájlt a számítógép letölti és a egy 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor elkészült, a virtuális hálózat és a virtuális gépek, [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) , távolítsa el az erőforráscsoportot és az összes rendelkezik:
+Amikor elkészült, a virtuális hálózat és a virtuális gépek, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) , távolítsa el az erőforráscsoportot és az összes rendelkezik:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>További lépések

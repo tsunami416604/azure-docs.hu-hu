@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: d0ab683ac59c17cbae1e0947cd2acd785b0365d3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c0e024281782ede67aa3092d7af05a54113b0d68
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884977"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587531"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
@@ -106,7 +106,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 
 A Transliterate módszer a következő nyelveket támogatja. A "/", a "<> –" azt jelzi, hogy a nyelvi átírt, vagy az a felsorolt parancsfájlok közül választhat. A "-->" azt jelzi, hogy a nyelvi is csak át kell írni egy parancsfájlból származó a másikba.
 
-| Nyelv    | Nyelvkód | Parancsfájl | És-tárolókról | Parancsfájl|
+| Nyelv    | Nyelvkód | Szkript | És-tárolókról | Szkript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | arab | `ar` | arab `Arab` | <--> | Latin `Latn` |
 |Bengáli  | `bn` | bengáli `Beng` | <--> | Latin `Latn` |
@@ -268,7 +268,7 @@ A Translator Text API 3.0 a nyelvek metódussal a támogatott nyelvek listáját
 
 ## <a name="customization"></a>Testreszabás
 
-A következő nyelveket is rendelkezésre áll-e a testreszabási [egyéni a fordítót](http://aka.ms/CustomTranslator).
+Az alábbi nyelveken érhetők el, vagy az angol nyelvű testreszabási [egyéni a fordítót](http://aka.ms/CustomTranslator).
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|

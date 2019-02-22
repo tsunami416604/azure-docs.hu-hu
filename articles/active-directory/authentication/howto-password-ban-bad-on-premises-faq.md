@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d3b0f7cdacfb781ba7925be8146c10919c5269b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: adbfb0e42bc7057313c7652402fce2b2ede47735
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455534"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592502"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Előzetes verzió: Az Azure AD jelszóvédelem helyszíni – gyakori kérdések
 
@@ -44,6 +44,14 @@ A helyszíni Azure AD jelszóvédelem nem – csak akkor támogatott a nyilváno
 **K: Hogyan használhatom az Azure AD jelszóvédelem előnyeit a helyszíni felhasználók egy alhalmazára?**
 
 Nem támogatott. Miután üzembe helyezte, és engedélyezve van, az Azure AD jelszóvédelem nem tesz különbséget – az összes felhasználó megkapja egyenlő biztonsági funkcióit.
+
+**K: Mi a különbség a jelszómódosítás és a egy jelszóbeállítási (vagy alaphelyzetbe állítása) között?**
+
+A jelszó módosítása esetén a felhasználó általi új jelszó után igazolására, a régi jelszó rendelkeznek. Ez a példa, mi történik, ha a felhasználó bejelentkezik a Windows kéri majd, hogy egy új jelszót.
+
+A jelszóbeállítási (más néven a jelszó alaphelyzetbe állítása) esetén, hogy egy rendszergazda cseréli a jelszót a fiókhoz egy új jelszót, például az Active Directory – felhasználók és számítógépek felügyeleti eszköz használatával. Ehhez a művelethez szükséges egy magas szintű jogosultságokra (általában a tartományi rendszergazda), és a művelet általában végző személy nem rendelkezik a régi jelszó ismerete. Ügyfélszolgálati forgatókönyvekhez gyakran ehhez, például amikor egy felhasználó elfelejtette a jelszavát, akinek támogatást nyújtanak. Jelszó beállítása eseményeket, amikor egy új felhasználói fiók létrehozása folyamatban van egy jelszóval először is megjelenik.
+
+A jelszóházirend-ellenőrzés ugyanúgy működik, függetlenül attól, hogy a jelszó módosítása vagy a set történik-e. Az Azure AD-jelszó DC védelmi ügynök szolgáltatás különböző eseménynaplózás tájékoztatja, hogy a jelszó módosítása vagy a set művelet volt.  Lásd: [Azure AD jelszó-védelmi figyelés és naplózás](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
 **K: Támogatja az Azure AD-jelszó Protection tartalomcsomagjai egyéb jelszó-szűrő-alapú termékek telepítése?**
 

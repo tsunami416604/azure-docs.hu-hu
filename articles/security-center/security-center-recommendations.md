@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: a5ca8efd43244825eef412cf3c05c8df20094112
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8535a77c9f44a4dafca34ef24414f90741a9133e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109539"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652730"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok kezelése az Azure Security Centerben
 Ez a dokumentum végigvezeti javaslatok használatát az Azure Security Centerben az Azure-erőforrások védelmére.
@@ -53,21 +53,25 @@ Minden javaslat részleteinek megtekintéséhez válassza ki a **csempére a jav
 
 Javaslatok szűrheti. A javaslatok szűréséhez válasszon **szűrő** a a **javaslatok** panelen. A **szűrő** panel megnyílik, és szeretne látni a fontossága és állapota értékek választja.
 
-A javaslatok egy tábla formájában jelennek meg, amelyben minden egyes sor egy adott javaslatot tartalmaz. Ez a tábla oszlopait a következők:
 
-* **LEÍRÁS**: Ismerteti a javaslat, és mit kell végrehajtani, e-mail-címeit.
+* **JAVASLATOK**: A javaslat.
+* **PONTSZÁM HATÁS BIZTONSÁGOS**:
 * **ERŐFORRÁS**: Listázza az erőforrásokat, amelyekre ez a javaslat vonatkozik.
-* **ÁLLAPOT**: Ismerteti a javaslat aktuális állapota:
-  * **Nyissa meg**: Az javaslattal egyelőre még nem foglalkoztak.
-  * **Folyamatban lévő**: Az ajánlás jelenleg alkalmaznak az erőforrásokhoz, és ilyenkor Ön nem szükséges.
-  * **Megoldott**: Az ajánlás már befejeződött (ebben az esetben a sor szürkén jelenik meg).
-* **SÚLYOSSÁG**: Ismerteti, hogy az adott javaslat súlyosságát:
-  * **Magas**: Biztonsági rés fontos erőforrásnál (például egy alkalmazást, a virtuális gép vagy a hálózati biztonsági csoport) létezik, és beavatkozást igényel.
-  * **Közepes**: A biztonsági rés, és nem kritikus vagy kiegészítő lépések szükségesek egy folyamat befejezéséhez vagy ezt meg kell szüntetni.
-  * **Alacsony**: A biztonsági rés, amelyek beavatkozást igényel, de nem igényel azonnali beavatkozást. (Alapértelmezés szerint alacsony súlyosságú javaslatok nem jelennek meg, de Ön is szűrővel bekapcsolhatja, ha meg szeretné tekinteni azokat.)
+* **ÁLLAPOTSORAIRÓL**:  Ismerteti, hogy az adott javaslat súlyosságát:
+   * **Nagy (piros)**: Biztonsági rés fontos erőforrásnál (például egy alkalmazást, a virtuális gép vagy a hálózati biztonsági csoport) létezik, és beavatkozást igényel.
+   * **Közepes (narancs)**: A biztonsági rés, és nem kritikus vagy kiegészítő lépések szükségesek egy folyamat befejezéséhez vagy ezt meg kell szüntetni.
+   * **Alacsony (kék)**: A biztonsági rés, amelyek beavatkozást igényel, de nem igényel azonnali beavatkozást. (Alapértelmezés szerint alacsony súlyosságú javaslatok nem jelennek meg, de Ön is szűrővel bekapcsolhatja, ha meg szeretné tekinteni azokat.) 
+   * **Kifogástalan (zöld)**:
+   * **Nem érhető el (szürke)**:
+ <!-- * **DESCRIPTION**: Explains the recommendation and what needs to be done to address it.
+**STATE**: Describes the current state of the recommendation:
+   * **Open**: The recommendation hasn't been addressed yet.
+    * **In Progress**: The recommendation is currently being applied to the resources, and no action is required by you.
+   * **Resolved**: The recommendation has already been completed (in this case, the line is grayed out).
+    -->
 
 Referenciaként az alábbi táblázat segítségével segítenek megérteni a rendelkezésre álló ajánlásokat, és mindegyik funkciója alkalmazásuk esetén.
-
+<!-- There is no table below -->
 > [!NOTE]
 > Érdemes tudni a [klasszikus és Resource Manager üzembe helyezési modellek](../azure-classic-rm.md) az Azure-erőforrásokhoz.
 >

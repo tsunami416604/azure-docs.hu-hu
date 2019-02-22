@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7fb382c6c57972484eff80c0d7355319a1f9178a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7b5b82e80ab4998f7cd106f469bf7ac8e271285d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893551"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588364"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Útvonal keresése egy hasznos helyhez az Azure Mapsszel
 
@@ -202,7 +202,7 @@ Ez a szakasz bemutatja, hogyan kereshet egy kiindulási és célpont között ú
         endPoint.geometry.coordinates[0];
     ```
 
-3. Az útvonal lekéréséhez adja hozzá az alábbi kódot a szkripthez. A kód a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) metódussal lekérdezést küld az Azure Maps útválasztási szolgáltatásnak, a kapott választ pedig a [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) metódussal elemzi, és GeoJSON-formátumban adja ki. A kód ezután hozzáadja a válaszban található útvonalat az adatforráshoz, amely pedig automatikusan megjeleníti azt a térképen.
+3. Az útvonal lekéréséhez adja hozzá az alábbi kódot a szkripthez. A kód a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) metódussal lekérdezést küld az Azure Maps útválasztási szolgáltatásnak, a kapott választ pedig a [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routegeojson?view=azure-iot-typescript-latest) metódussal elemzi, és GeoJSON-formátumban adja ki. A kód ezután hozzáadja a válaszban található útvonalat az adatforráshoz, amely pedig automatikusan megjeleníti azt a térképen.
 
     ```JavaScript
     //Execute the car route query then add the route to the map once a response is received.

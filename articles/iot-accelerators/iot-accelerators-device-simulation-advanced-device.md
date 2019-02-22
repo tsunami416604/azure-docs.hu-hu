@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 7e680e3cd8a3d7056141814c5e7d4539b72073b4
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: a97afe64992db6b48558561ba958b513c8416494
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50757222"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592825"
 ---
 # <a name="create-an-advanced-device-model"></a>Hozzon létre egy speciális eszköz modellje
 
@@ -26,17 +26,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ez az Útmutató lépéseit, szükség Eszközszimuláció telepített példányát az Azure-előfizetésében.
 
-Ha nem léptetett életbe Eszközszimuláció, még, hajtsa végre a [üzembe helyezése és futtatása az IoT eszköz szimulálása az Azure-ban](quickstart-device-simulation-deploy.md) rövid.
+Ha még nem helyezte üzembe az Eszközszimulációt, végezze el az [Azure-beli IoT-eszközszimuláció üzembe helyezését és futtatását](quickstart-device-simulation-deploy.md) ismertető rövid útmutatóban leírt lépéseket.
 
-### <a name="open-device-simulation"></a>Nyissa meg az eszköz szimulálása
+### <a name="open-device-simulation"></a>Eszközszimuláció megnyitása
 
-Eszközszimuláció futtatását a böngészőben, először navigáljon [a Microsoft Azure IoT-Megoldásgyorsítók](https://www.azureiotsolutions.com).
+Az Eszközszimuláció böngészőben történő futtatásához először lépjen a [Microsoft Azure IoT-megoldásgyorsítók](https://www.azureiotsolutions.com) területre.
 
 A rendszer arra kérheti, hogy lépjen be Azure-előfizetésének hitelesítő adataival.
 
 Kattintson a **indítsa el a** az Eszközszimuláció központilag a csempére a [üzembe helyezése és futtatása az IoT eszköz szimulálása az Azure-ban](quickstart-device-simulation-deploy.md) rövid.
 
-## <a name="device-models"></a>Eszközmodell
+## <a name="device-models"></a>Eszközmodellek
 
 Mindegyik szimulált eszköz tartozik egy adott eszköz modellje, amely meghatározza a szimuláció viselkedését. Ez a viselkedés gyakori, hogy telemetriát küldjön módját, milyen típusú üzenetek küldése és a támogatott módszerek tartalmazza.
 
@@ -56,7 +56,7 @@ Egy tipikus eszközmodell rendelkezik:
 Minden egyes eszköz csomagdefiníciós fájl részleteit egy szimulált eszköz modellje, többek között a következő információkat tartalmazza:
 
 * Eszköz modell neve: karakterlánc.
-* Protokoll: AMQP |} MQTT-RŐL |} HTTP.
+* Protokoll: AMQP | MQTT | HTTP.
 * A kezdeti állapota.
 * Hogyan gyakran frissítheti az eszköz állapotát.
 * Melyik JavaScript-fájl az állapot frissítéséhez.
@@ -164,7 +164,7 @@ A séma szereplő mezőket a következő típusú lehet:
 * Szöveg
 * Logikai
 * Egész szám
-* Dupla
+* Double
 * DateTime
 
 ### <a name="supported-methods"></a>Támogatott módszerek
@@ -494,17 +494,17 @@ function main(context, state) {
 
 A speciális eszköz-modell üzembe helyezéséhez a fájlok feltöltése az Eszközszimuláció példány:
 
-Válassza ki **eszközmodellt** a menüsávon. A **eszközmodellt** lap felsorolja az eszköz érhető el ebben a példányban az Eszközszimuláció modellek:
+A menüsávon válassza az **Eszközmodellek** gombot. A **eszközmodellt** lap felsorolja az eszköz érhető el ebben a példányban az Eszközszimuláció modellek:
 
-![Eszközmodell](media/iot-accelerators-device-simulation-advanced-device/devicemodelnav.png)
+![Eszközmodellek](media/iot-accelerators-device-simulation-advanced-device/devicemodelnav.png)
 
-Kattintson a **+ eszközök hozzáadása** az oldal jobb felső sarkában található:
+Kattintson az **+ Eszközmodellek hozzáadása** elemre a lap jobb felső sarkában:
 
-![Adja hozzá az eszköz modellje](media/iot-accelerators-device-simulation-advanced-device/devicemodels.png)
+![Eszközmodell hozzáadása](media/iot-accelerators-device-simulation-advanced-device/devicemodels.png)
 
 Kattintson a **speciális** a speciális eszköz-modell lap megnyitása:
 
-![Speciális lap](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
+![Advanced Tab](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
 
 Kattintson a **Tallózás** , és válassza ki a létrehozott JSON- és JavaScript-fájlokat. Győződjön meg arról, mindhárom fájlt kiválasztásához. Ha bármely fájl hiányzik, az érvényesítés sikertelen:
 
@@ -516,4 +516,4 @@ Ha a fájlok érvényesíteni, kattintson a **mentése** , és az eszköz modell
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az útmutató megismerkedett az Eszközszimuláció és a egy speciális eszközmodell létrehozása használt eszköz modell-fájlokat. Ezt követően előfordulhat, hogy szeretné hogyan [az Eszközszimuláció megoldásgyorsító által küldött telemetriai adatok megjelenítéséhez használja a Time Series Insights](about-iot-accelerators.md).
+Ez az útmutató megismerkedett az Eszközszimuláció és a egy speciális eszközmodell létrehozása használt eszköz modell-fájlokat. Ezt követően előfordulhat, hogy szeretné hogyan [az Eszközszimuláció megoldásgyorsító által küldött telemetriai adatok megjelenítéséhez használja a Time Series Insights](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights).

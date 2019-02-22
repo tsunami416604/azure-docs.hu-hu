@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 29e6215358eaf544f32f585744ed36f30822d134
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: b569165153ce713846be5e836a26f48e500be1fc
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446749"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594134"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány
 
@@ -54,7 +54,7 @@ Használja az alábbi táblázat segítségével konfigurálja a tanúsítványt
 | Előfizetés | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
 | Erőforráscsoport | Az erőforráscsoport, amely tartalmazza a tanúsítványt. Egy új erőforráscsoport használata, vagy válassza ki ugyanazt az erőforráscsoportot, az App Service-alkalmazást. |
 | Tanúsítványváltozat | Határozza meg a tanúsítványt szeretne létrehozni, hogy egy normál tanúsítványt, vagy [helyettesítő tanúsítvány](https://wikipedia.org/wiki/Wildcard_certificate). |
-| Jogi feltételek | Ide kattintva erősítse meg, hogy elfogadja a jogi feltételeket. |
+| Jogi feltételek | Ide kattintva erősítse meg, hogy elfogadja a jogi feltételeket. A tanúsítványokat a rendszer a godaddytől tölti le. |
 
 ## <a name="store-in-azure-key-vault"></a>Az Azure Key Vaultban Store
 
@@ -75,7 +75,7 @@ Az a **Key Vault-állapot** kattintson **Key Vault-tárház** hozzon létre egy 
 | Hely | Válassza ki ugyanazt a helyet, az App Service-alkalmazást. |
 | Tarifacsomag | További információ: [Azure Key Vault díjszabását](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Hozzáférési szabályzatok| Határozza meg az alkalmazások és az engedélyezett hozzáférést a tároló-erőforrások. Beállíthatja, később ismertető [több alkalmazások hozzáférést key vault](../key-vault/key-vault-group-permissions-for-apps.md). |
-| Virtual Network Access | Tároló hozzáférés korlátozása az egyes Azure virtuális hálózatokhoz. Beállíthatja, később ismertető [konfigurálása az Azure Key Vault tűzfalak és virtuális hálózatok](../key-vault/key-vault-network-security.md) |
+| Virtuális hálózati hozzáférés | Tároló hozzáférés korlátozása az egyes Azure virtuális hálózatokhoz. Beállíthatja, később ismertető [konfigurálása az Azure Key Vault tűzfalak és virtuális hálózatok](../key-vault/key-vault-network-security.md) |
 
 Miután kiválasztotta a tárolót, zárja be a **Key Vault-tárház** lapot. A **Store** beállítás sikeres végrehajtás esetén egy zöld pipának kell megjelennie. Ne zárja be az oldal a következő lépéshez.
 

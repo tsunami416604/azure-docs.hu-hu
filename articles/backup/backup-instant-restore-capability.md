@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 1a25a9c3e0d099349286476f0ae3791efee1642f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 566faaef4e91237bd0a0f915ea39f4bd389120d8
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452814"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593080"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentés, és állítsa vissza a teljesítmény az Azure Backup azonnali visszaállítási képesség
 
@@ -37,11 +37,11 @@ A biztonsági mentési feladat jelenleg két fázisból áll:
 1.  Virtuális gép pillanatképének elkészítése.
 2.  Átvitele az Azure Recovery Services-tárolót egy virtuális gép pillanatképét.
 
-Helyreállítási pont számít jönnek létre csak azt követően végezhető el az 1. és 2 fázisait. Ez a frissítés részeként egy helyreállítási pont jön létre, amint elkészült a pillanatkép és a helyreállítási pont pillanatkép típusa visszaállítási folyamatot használja a visszaállítás végrehajtásához használható. A helyreállítási pont típusa "pillanatkép" segítségével azonosíthatja a helyreállítási pont, az Azure Portalon, és a pillanatkép átkerülnek a tárolóba, miután a helyreállítási pont típusa változik "pillanatkép és tár."
+Helyreállítási pont számít jönnek létre csak azt követően végezhető el az 1. és 2 fázisait. Ez a frissítés részeként egy helyreállítási pont jön létre, amint elkészült a pillanatkép és a helyreállítási pont pillanatkép típusa visszaállítási folyamatot használja a visszaállítás végrehajtásához használható. A helyreállítási pont típusa "pillanatkép" segítségével azonosíthatja a helyreállítási pont, az Azure Portalon, és miután a pillanatkép átkerülnek a tárolóba, a helyreállítási pont típusa "pillanatkép és tár" változik.
 
 ![Virtuális gép biztonsági másolat verem Resource Manager üzemi modell – tárolási és a tárolóban lévő biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-flow.png)
 
-Pillanatfelvételek megmaradnak a hét napja. Ez a funkció lehetővé teszi a visszaállítások művelet van ezeket a pillanatképeket cutting le a helyreállítási időt. Ez csökkenti az idő átalakításához, és adatokat másol vissza a tárolót a storage-fiókját a felhasználó nem felügyelt lemez forgatókönyvek felügyelt lemez számára szükséges, a biztonsági mentési adatok nem felügyelt lemezeket hoz létre.
+Alapértelmezés szerint a pillanatfelvételek megmaradnak két napig. Ez a funkció lehetővé teszi a visszaállítások művelet van ezeket a pillanatképeket cutting le a helyreállítási időt. Ez csökkenti az idő átalakításához, és adatokat másol vissza a tárolót a storage-fiókját a felhasználó nem felügyelt lemez forgatókönyvek felügyelt lemez számára szükséges, a Recovery Services-adatok nem felügyelt lemezeket hoz létre.
 
 ## <a name="feature-considerations"></a>Funkciók kapcsolatos megfontolások
 

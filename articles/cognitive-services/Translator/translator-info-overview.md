@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: df0f1570b4f876cbfb542a5571c8bec7e80e6895
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cadcd369f9cadf0fc7eb8728f83e8d6345ed2574
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857720"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587769"
 ---
 # <a name="what-is-translator-text-api"></a>Mi a Translator Text API?
 
@@ -34,14 +34,6 @@ A Translator Text API által kiszolgált beszédfordítás a [Microsoft Speech S
 
 A Microsoft Translator többnyelvű támogatást nyújt a fordításhoz, az átíráshoz, a nyelvfelismeréshez és a szótárakhoz. A teljes listát a [nyelvi támogatást](language-support.md) ismertető szakaszban, vagy programozott módon a [REST API-t](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) megnyitva találja.  
 
-## <a name="language-customization"></a>Nyelvi testreszabás
-
-Az alap Microsoft Translator szolgáltatás kiterjesztéseként a Custom Translator a Translator Text API-val együtt alkalmazva segít testre szabni a neurális fordítási rendszert, illetve feljavítani a fordításokat a fejlesztő egyedi terminológiájával és stílusával.
-
-A Custom Translator használatával olyan fordítási rendszereket állíthat össze, amelyek kezelik a vállalkozásában vagy az iparágban alkalmazott terminológiát. A testre szabott fordítási rendszer ezután könnyen integrálható a meglévő alkalmazásaiba, munkafolyamataiba és webhelyeibe több eszköztípuson is, a rendes Microsoft Translator Text API-n keresztül, a „category” (kategória) paraméter használatával.
-
-További információk [a nyelvi testreszabásról](customization.md).
-
 ## <a name="microsoft-translator-neural-machine-translation"></a>Microsoft Translator – neurális gépi fordítás
 
 A neurális gépi fordítás (Neural Machine Translation, NMT) az új etalon a minőségi, mesterséges intelligencián alapuló gépi fordítások területén. A korábbi statisztikai gépi fordítási (Statistical Machine Translation, SMT) technológia helyébe lép, amely a 2010-es évek közepére elérte a minősége felső korlátját.
@@ -51,6 +43,14 @@ Az NMT nem csupán a nyers fordítások pontozását tekintve biztosít jobb for
 Az NMT-modellek az API magját képezik, és a végfelhasználók számára nem láthatók. Ami észrevehető, az a fordítás minőségének javulása, különösen az olyan nyelvek esetében, mint a kínai, a japán vagy az arab.
 
 További információ [az NMT működéséről](https://www.microsoft.com/en-us/translator/mt.aspx#nnt).
+
+## <a name="language-customization"></a>Nyelvi testreszabás
+
+Az alap Microsoft Translator szolgáltatás kiterjesztéseként a Custom Translator a Translator Text API-val együtt alkalmazva segít testre szabni a neurális fordítási rendszert, illetve feljavítani a fordításokat a fejlesztő egyedi terminológiájával és stílusával.
+
+A Custom Translator használatával olyan fordítási rendszereket állíthat össze, amelyek kezelik a vállalkozásában vagy az iparágban alkalmazott terminológiát. A testre szabott fordítási rendszer ezután könnyen integrálható a meglévő alkalmazásaiba, munkafolyamataiba és webhelyeibe több eszköztípuson is, a rendes Microsoft Translator Text API-n keresztül, a „category” (kategória) paraméter használatával.
+
+További információk [a nyelvi testreszabásról](customization.md).
 
 ## <a name="next-steps"></a>További lépések
 

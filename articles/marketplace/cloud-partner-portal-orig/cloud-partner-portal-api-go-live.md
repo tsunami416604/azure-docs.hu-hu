@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7d643f0c7885e64636a107d22ce332b1ba9371c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ea3f26d70c4a4ce07c988612890687504a4cf5ac
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809712"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594678"
 ---
 <a name="go-live"></a>Go Live
 =======
@@ -33,8 +33,8 @@ Ez az API elindítja a folyamatot az éles alkalmazások leküldésének. Ez a m
 
 |  **Name (Név)**      |   **Leírás**                                                           | **Adattípus** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | Közzétevő-azonosító lekéréséhez, például az ajánlat `contoso`       |  Sztring       |
-| OfferId        | Ajánlat azonosítója, az ajánlat lekéréséhez                                   |  Sztring       |
+| publisherId    | Közzétevő-azonosító lekéréséhez, például az ajánlat `contoso`       |  String       |
+| offerId        | Ajánlat azonosítója, az ajánlat lekéréséhez                                   |  String       |
 | API-verzió    | Az API legújabb verziója                                                   |  Dátum         |
 |  |  |  |
 
@@ -67,7 +67,7 @@ Ez az API elindítja a folyamatot az éles alkalmazások leküldésének. Ez a m
 
 ### <a name="response-status-codes"></a>Állapotkódok
 
-| **Kód** |  ** Leírás **                                                                        |
+| **Kód** |  **Leírás**                                                                        |
 | -------- |  ----------------                                                                        |
 |  202     | `Accepted` – A kérelem sikeresen elfogadva. A válasz tartalmazza azt a helyet, a művelet állapotának nyomon követését. |
 |  400     | `Bad/Malformed request` – A válasz törzsében található további információ a hibáról. |

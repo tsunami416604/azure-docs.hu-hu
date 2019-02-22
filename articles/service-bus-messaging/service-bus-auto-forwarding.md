@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 8b51a4b8690d2184223bf33c7e863287de431d62
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 85ab5e3bb963ee692e5b70af3eb90cc68cec361f
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853153"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593386"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus-entitások autoforwarding láncolás
 
-A Service Bus *autoforwarding* funkció lehetővé teszi az üzenetsor vagy egy másik üzenetsor vagy témakör, amely az azonos névtérhez tartozik előfizetés hozzákapcsolva. Autoforwarding engedélyezve van, a Service Bus automatikusan eltávolítja az üzeneteket, amelyek az első üzenetsorban vagy előfizetésben (forrás) kerülnek, és a második üzenetsor vagy témakör (cél) helyezi őket. Az üzenet küldése közvetlenül a célentitás továbbra is lehetőség. Ezenkívül nincs lehetőség összekapcsolja alüzenetsor, például egy, a kézbesítetlen levelek várólistájára, egy másik üzenetsorba vagy témakörbe.
+A Service Bus *autoforwarding* funkció lehetővé teszi az üzenetsor vagy egy másik üzenetsor vagy témakör, amely az azonos névtérhez tartozik előfizetés hozzákapcsolva. Autoforwarding engedélyezve van, a Service Bus automatikusan eltávolítja az üzeneteket, amelyek az első üzenetsorban vagy előfizetésben (forrás) kerülnek, és a második üzenetsor vagy témakör (cél) helyezi őket. Az üzenet küldése közvetlenül a célentitás továbbra is lehetőség.
 
 ## <a name="using-autoforwarding"></a>Autoforwarding használatával
 

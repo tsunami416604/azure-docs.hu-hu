@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: c76c7bdb398184cc297831c9395063e7bf0f6bdc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: cc5c4310d5f9886518bee6612113fba174130bec
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492538"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56648716"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Az Azure Advisor használatával szolgáltatás költségek csökkentése
 
@@ -21,7 +21,7 @@ Az Advisor segít optimalizálni, és csökkentheti a teljes Azure felhőkölté
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizálhatja a virtuális gép felhőköltéseiket kihasználatlan példányok leállítása és átméretezése 
 
-Egyes alkalmazás-forgatókönyvek elvárt eredményezhetnek alacsony kihasználtságot, bár gyakran pénzt takaríthat, mivel kezeli az méretét és a virtuális gépek száma. Az Advisor 14 nap a virtuális gép használatát figyeli, és alacsony-kihasználtság virtuális gépek azonosítja. Virtuális gépek, amelyek CPU-kihasználtság csak 5 % vagy kevesebb és a hálózati forgalom 7 MB vagy belül a négy vagy több napot számítanak a kis-kihasználtság virtuális gépeket.
+Egyes alkalmazás-forgatókönyvek elvárt eredményezhetnek alacsony kihasználtságot, bár gyakran pénzt takaríthat, mivel kezeli az méretét és a virtuális gépek száma. Az Advisor 7 napig a virtuális gép használatát figyeli, és alacsony-kihasználtság virtuális gépek azonosítja. Virtuális gépek számítanak a kis-kihasználtsága a CPU-kihasználtság esetén 5 % vagy kevesebb és a hálózathasználat kevesebb mint 2 %, vagy ha a jelenlegi terhelés is elhelyezkedhetnek, a kisebb méretű virtuális gépet.
 
 Az Advisor továbbra is a virtuális gép fut, így dönthet úgy, hogy állítsa le vagy méretezze át a becsült költségeit mutatja.
 

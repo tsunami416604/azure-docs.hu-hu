@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 69c9a6d2d059ffbac5fe3e0ddb103eaec51123c3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 5e8eb6239de73b0095a912ad6baca7c090872755
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264020"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585433"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Gyors útmutató: A Service Bus-üzenetsor létrehozása az Azure portal használatával
 A Microsoft Azure Service Bus egy vállalati integrációs üzenetközvetítő, amely biztonságos üzenetküldést és teljes mértékben megbízható szolgáltatást nyújt. Egy jellemző Service Bus-forgatókönyv általában két vagy több alkalmazás, szolgáltatás vagy folyamat egymástól való szétválasztását, továbbá az állapot- vagy adatváltozások továbbítását foglalja magában. Ilyen esetekben előfordulhat, hogy több kötegelt feladatokat kell üzemeznie más alkalmazásokban vagy szolgáltatásokban, vagy pedig ki kell váltani a megrendelések teljesítését. Például egy kereskedelmi vállalat elküldheti az értékesítési pontokra vonatkozó adatait egy háttérrendszernek vagy egy regionális terjesztőközpontnak feltöltés vagy leltárfrissítés céljából. Ebben a forgatókönyvben az ügyfélalkalmazás üzeneteket küld és fogad egy Service Bus-üzenetsorból.  
@@ -33,46 +33,9 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 - [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb.
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
 
-## <a name="log-on-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-Először nyissa meg az [Azure Portalt][Azure portal], és jelentkezzen be Azure-előfizetésével. Az első lépés egy **Üzenetkezelés** típusú Service Bus-névtér létrehozása.
-
-## <a name="create-a-service-bus-namespace"></a>Service Bus-névtér létrehozása
-
-A Service Bus üzenetküldési névtere egyedi hatókörkezelési tárolót biztosít, amelyre a [teljes tartománynevével][] lehet hivatkozni, és ebben a tárolóban egy vagy több üzenetsort, témakört és előfizetést is létrehozhat. Az alábbi példa egy Service Bus-üzenetküldési névteret hoz létre egy új vagy meglévő [erőforráscsoportban](/azure/azure-resource-manager/resource-group-portal):
-
-1. A portál bal oldali navigációs paneljén kattintson a **+ Erőforrás létrehozása**, a **Vállalati integráció**, majd a **Service Bus** elemre.
-2. A **Névtér létrehozása** párbeszédpanelen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
-3. Miután meggyőződött arról, hogy a névtér neve elérhető, válassza ki a tarifacsomagot (Standard vagy Prémium).
-4. Az **Előfizetés** mezőben válassza ki azt az Azure-előfizetést, amelyben a névteret létre kívánja hozni.
-5. Az **Erőforráscsoport** mezőben válasszon ki egy meglévő erőforráscsoportot, amelynek a névtér a része lesz, vagy hozzon létre egy újat.      
-6. A **Hely** mezőben válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz.
-7. Kattintson a **Create** (Létrehozás) gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
-
-![névtér](./media/service-bus-quickstart-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>A felügyeleti hitelesítő adatok beszerzése
-
-Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös hozzáférésű jogosultságkódra (SAS) vonatkozó szabály egy elsődleges és egy másodlagos kulcsból álló kulcspárral, amelyek mindegyike teljes hozzáférést biztosít a névtér minden területéhez. A kezdeti szabály másolásához kövesse az alábbi lépéseket: 
-
-1.  Kattintson az **Összes erőforrás** elemre, majd az újonnan létrehozott névtér nevére.
-2. A névtér ablakában kattintson a **Megosztott elérési házirendek** elemre.
-3. A **Megosztott elérési házirendek** képernyőn kattintson a **RootManageSharedAccessKey** elemre.
-4. Az a **házirend: RootManageSharedAccessKey** ablakban kattintson a **másolási** megjelenítő gombra **elsődleges kapcsolati karakterlánc**, hogy másolja a kapcsolati karakterláncot a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre. 
-
-    ![connection-string][connection-string]
-5. A későbbi használat érdekében ismételje meg az előző lépést, és másolja ki és illessze be az **Elsődleges kulcs** értékét egy ideiglenes helyre.
-
-## <a name="create-a-queue"></a>Üzenetsor létrehozása
-
-Adja meg a névteret, amelyben létre kívánja hozni a Service Bus-üzenetsort. Az alábbi példa bemutatja, hogyan hozhat létre üzenetsort a portálon:
-
-1. A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre (ha nem lát **Service Bus** elemet, kattintson a **További szolgáltatások** lehetőségre).
-2. Kattintson a névtérre, amelyben az üzenetsort létre kívánja hozni.
-3. A névtér ablakban kattintson az **Üzenetsorok** lehetőségre, majd a **Üzenetsorok** ablakban kattintson a **+ Üzenetsor** lehetőségre.
-4. Adjon meg egy nevet az üzenetsor **Név** mezőjében, a többi érték alapértelmezését pedig ne módosítsa.
-5. Az ablak alján kattintson a **Létrehozás** elemre.
-6. Jegyezze fel az üzenetsor nevét.
+[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
 ## <a name="send-and-receive-messages"></a>Üzenetek küldése és fogadása
 
@@ -82,28 +45,22 @@ A kód futtatásához tegye a következőt:
 
 1. Klónozza a [Service Bus GitHub-adattárát](https://github.com/Azure/azure-service-bus/) a következő paranccsal:
 
-   ```shell
+   ```
    git clone https://github.com/Azure/azure-service-bus.git
    ```
-
 3. Lépjen a következő mintamappához: `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
-
 4. Másolja be [A felügyeleti hitelesítő adatok beszerzése](#obtain-the-management-credentials) című szakaszban beszerzett kapcsolati sztringet és üzenetsor-nevet.
-
 5.  Írja be a parancssorba a következő parancsot:
 
-   ```shell
-   dotnet build
-   ```
-
+    ```
+    dotnet build
+    ```
 6.  Navigáljon a `bin\Debug\netcoreapp2.0` mappához.
-
 7.  Írja be a következő parancsot a program futtatásához. Ne felejtse el kicserélni a `myConnectionString` kifejezést az előzőleg beszerzett értékre, a `myQueueName` kifejezést pedig az imént létrehozott üzenetsor nevére:
 
-   ```shell
-   dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
-   ``` 
-
+    ```shell
+    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
+    ``` 
 8. Figyeljen meg 10 üzenetet, amelyeket a rendszer elküld az üzenetsornak, majd onnan fogadja őket:
 
    ![a program kimenete](./media/service-bus-quickstart-portal/dotnet.png)
@@ -254,8 +211,7 @@ Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenet
 
 
 [ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[teljes tartománynevével]: https://wikipedia.org/wiki/Fully_qualified_domain_name
+[fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
-[connection-string]: ./media/service-bus-quickstart-portal/connection-string.png
 [service-bus-flow]: ./media/service-bus-quickstart-portal/service-bus-flow.png

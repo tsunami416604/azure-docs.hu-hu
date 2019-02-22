@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: jdial
-ms.openlocfilehash: ee807387b5fc7c8a9d42564cdb6cee7d59db2508
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6864e282319bc5a0539c4c94f3062dcab7315970
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819790"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652246"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Virtuális gép útválasztási problémáinak diagnosztizálása
 
@@ -54,12 +54,14 @@ A következő lépések azt feltételezik, hogy rendelkezik egy meglévő virtu�
 
 ## <a name="diagnose-using-powershell"></a>Diagnosztizálhatja a PowerShell használatával
 
-A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.0.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha Ön helyileg futtatja a Powershellt, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-bA egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az érvényes útvonalak beolvasása a hálózati adapter [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable). Az alábbi példa lekéri nevű hálózati adapter érvényes útvonalaihoz *myVMVMNic*, azaz egy erőforráscsoportba tartozó nevű *myResourceGroup*:
+A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a számítógépről futtatja a PowerShell, szüksége van-e az Azure PowerShell-modult, 1.0.0-s verziójának vagy újabb. Futtatás `Get-Module -ListAvailable Az` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha Ön helyileg futtatja a Powershellt, is futtatni szeretné `Connect-AzAccount` bejelentkezni az Azure-bA egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions).
+
+Az érvényes útvonalak beolvasása a hálózati adapter [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable). Az alábbi példa lekéri nevű hálózati adapter érvényes útvonalaihoz *myVMVMNic*, azaz egy erőforráscsoportba tartozó nevű *myResourceGroup*:
 
 ```azurepowershell-interactive
-Get-AzureRmEffectiveRouteTable `
+Get-AzEffectiveRouteTable `
   -NetworkInterfaceName myVMVMNic `
   -ResourceGroupName myResourceGroup `
   | Format-Table
@@ -70,7 +72,7 @@ A parancs kimenetében található információk megismeréséhez tekintse meg [
 Ha nem ismeri a hálózati adapter nevét, de tudja a nevét, a virtuális gép a hálózati adapter csatlakoztatva van, az alábbi parancsokat a virtuális Géphez csatlakoztatott összes hálózati adapter azonosítóit adja vissza:
 
 ```azurepowershell-interactive
-$VM = Get-AzureRmVM -Name myVM `
+$VM = Get-AzVM -Name myVM `
   -ResourceGroupName myResourceGroup
 $VM.NetworkProfile
 ```

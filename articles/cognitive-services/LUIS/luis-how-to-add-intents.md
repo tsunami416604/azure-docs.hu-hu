@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/19/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: e6ab51d568c950ca7fd503150557df288d84174f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0d6813c11b5b9ed4aef666f5eb3dc75d8c9de770
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867732"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593422"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések meghatározni a felhasználó szándékának beszédmódok hozzáadása
 
@@ -50,21 +50,14 @@ Előfordulhat, hogy az utterance (kifejezés) megjelölésű a egy leképezési 
 
 Válassza ki a felső navigációs **Train**. Az előrejelzés eltérés van most szűnt.
 
+> [!Note]
+> Ha egy piros vonal alatt egy szót vagy kifejezést a példa utterance (kifejezés), a egy [entitás előrejelzési hiba](luis-how-to-add-example-utterances.md#entity-status-predictions) történt. Javítsa ki kell. 
+
 ## <a name="add-a-custom-entity"></a>Egyéni entitás hozzáadása
 
 Az utterance (kifejezés) megjelölésű ad hozzá, miután kiválaszthatja az utterance (kifejezés) hozhat létre egyéni entitásokat származó szöveg. Egyéni entitás módja a kinyerési, és a megfelelő leképezés címke szövegét. 
 
-1. Válassza ki a word-, `Seattle`, az az utterance (kifejezés). Hranaté závorky dolgozzák a szöveget, és megjelenik egy legördülő menü. 
-
-    ![Képernyőkép a leképezések részletező lapján, az egyéni entitások](./media/luis-how-to-add-intents/create-custom-entity.png) 
-
-    Ebben a példában egy entitás megjelölése egyetlen szó választja ki. Egyetlen működik és kifejezések entitásokként jelölheti meg.
-
-1. A felső szöveg-, a menü, adja meg `Location`, majd **új entitás létrehozása**. 
-
-    ![Képernyőkép a leképezések Részletek lapján nevű egyéni entitás létrehozása](./media/luis-how-to-add-intents/create-custom-entity-name.png) 
-
-1. Az a **milyen típusú entitást szeretne létrehozni?** előugró ablak az entitás létrehozását, ellenőrizze, hogy a **entitás neve** van _hely_, és a **entitás típusa**  van _egyszerű_. Válassza a **Done** (Kész) lehetőséget.
+Lásd: [entitás hozzáadása az utterance (kifejezés)](luis-how-to-add-example-utterances.md) további.
 
 ## <a name="entity-prediction-discrepancy-errors"></a>Entitás előrejelzési eltérést észlelt hibák 
 
@@ -80,7 +73,7 @@ További információ: [előre összeállított entitások](luis-how-to-add-enti
 
 ## <a name="using-the-contextual-toolbar"></a>A környezetfüggő eszköztár
 
-Ha a bal oldalán az utterance (kifejezés) négyzet bejelölésével, egy vagy több példa utterances a listában, az eszköztáron az utterance (kifejezés) lista fölött lehetővé teszi hajtsa végre a következő műveleteket:
+Ha egy vagy több példa kimondott szöveg van kijelölve a listában az utterance (kifejezés) balra a négyzet bejelölésével az eszköztár fölött az utterance (kifejezés) lista lehetővé teszi a következő műveletek végrehajtásához:
 
 * Leképezés ismételt hozzárendelése: utterance(s) áthelyezése másik leképezés
 * Utterance(s) törlése

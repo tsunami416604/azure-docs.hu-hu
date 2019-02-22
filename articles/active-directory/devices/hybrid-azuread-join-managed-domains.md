@@ -17,12 +17,12 @@ ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6618c5f2ab26c70325ef65c84527c7a5c3734bb9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c8a22b2fe7da22365c6414da9babe73488a499fb
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166179"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651855"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: Hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása
 
@@ -55,8 +55,6 @@ Az oktatóanyag feltételezi, hogy Ön járatos az alábbi témakörökben:
   
 
 Ez a cikk a forgatókönyv konfigurálásához lesz szüksége:
-
-- A helyszíni Active Directory (AD) egy séma szintű 85 vagy újabb verzió. További információkért lásd: [frissítése az Active Directory-séma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema).
 
 - A [az Azure AD Connect legújabb verziójának](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 vagy újabb) kell telepíteni. 
 

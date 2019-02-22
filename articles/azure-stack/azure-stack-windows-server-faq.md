@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/12/2018
-ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b498283ee117935438c55e5162e92acdb0f5ebfe
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249680"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649900"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>A Windows Server az Azure Stack piactéren – gyakori kérdések
 
@@ -38,7 +38,7 @@ Ezután ha bármely Virtual Machine Scale Sets egy meghatározott verzióra vona
 
 A Microsoft kínál a Windows Server-rendszerképeket az Azure Stack piactéren két verziója:
 
-- **Használja, a felhasznált**: Ezek a lemezképek futtassa a teljes díj Windows mérőszámok. 
+- **Használja, a felhasznált**: Ezek a lemezképek futtassa a teljes díj Windows mérőszámok.
    Ki kell használnia: Nagyvállalati Szerződés (EA) használók a *Használatalapú számlázási modell*; CSP-k számára nem szeretne a SPLA-licenc.
 - **Hozott licences (BYOL)**: Ezek a lemezképek alapvető mérőszámok futtassa.
    Ki kell használnia: Nagyvállalati szerződéssel rendelkező ügyfelek a Windows Server-licenc; CSP-k számára a SPLA-licenc.
@@ -74,23 +74,23 @@ Egy Windows Server virtuális gépet az Azure Stacken aktiválásához a követk
 
 ### <a name="how-can-i-verify-that-my-virtual-machine-is-activated"></a>Hogyan ellenőrizhetem, hogy aktiválva van-e a virtuális gépem?
 
-Futtassa a következő parancsot egy rendszergazda jogú parancssorból: 
+Futtassa a következő parancsot egy rendszergazda jogú parancssorból:
 
 ```shell
 slmgr /dlv
-``` 
+```
 
 Ha megfelelően aktiválva van, ezt fogja látni a világosan jelezni, és a gazdagép neve megjelenik a `slmgr` kimeneti. Nem függ a Megjelenítés a vízjelek nem naprakész, vagy egy másik virtuális gépéről mögött Öné láthatók.
 
 ### <a name="my-vm-is-not-set-up-to-use-avma-how-can-i-fix-it"></a>Virtuális gép nincs beállítva az AVMA, hogyan javíthatom azt használni?
 
-Futtassa a következő parancsot egy rendszergazda jogú parancssorból: 
+Futtassa a következő parancsot egy rendszergazda jogú parancssorból:
 
 ```shell
-slmgr /ipk <AVMA key> 
+slmgr /ipk <AVMA key>
 ```
 
-Tekintse meg a cikket [virtuális gépek automatikus aktiválása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)) a rendszerkép használatához szükséges kulcsokat.
+Tekintse meg a [virtuális gépek automatikus aktiválása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)) a kulcsokat a rendszerkép használata című cikket.
 
 ### <a name="i-create-my-own-windows-server-images-how-can-i-make-sure-they-use-avma"></a>Hozhatok létre saját Windows Server-rendszerképeket, hogyan biztosítható az AVMA használata?
 

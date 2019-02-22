@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 4d5b98ab001bcb30091590880954c7075701e53b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 06b7fb678bc79203589cfa75e8afb457d6ed344f
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607353"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594321"
 ---
 # <a name="database-views-in-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench alkalmazásban adatbázisnézeteivel
 
-Az Azure Blockchain Workbench érkező, elosztott főkönyvek továbbítja az adatokat egy *láncon kívüli* SQL DB-adatbázist. Ez lehetővé teszi az SQL és a meglévő eszközökkel, például a használandó [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), blockchain-adatok kezeléséhez.
+Az Azure Blockchain Workbench érkező, elosztott főkönyvek továbbítja az adatokat egy *láncon kívüli* SQL DB-adatbázist. A láncon kívüli adatbázis lehetővé teszi a használ SQL és a meglévő eszközökkel, mint [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), blockchain-adatok kezeléséhez.
 
 Az Azure Blockchain Workbench biztosít, amely a lekérdezések végrehajtásakor lesz hasznos adatokhoz hozzáférést biztosító adatbázis-nézetek. Ezek a nézetek fokozottan denormalizált megkönnyíti gyorsan máris jelentések, elemzések, és egyéb felhasználását blockchain meglévő eszközeivel, és szoftveres átképezése adatbázis személyzet nélkül.
 
@@ -33,7 +33,7 @@ Ez a szakasz az adatbázis-nézetek és a rajtuk tárolt adatok áttekintését 
 
 Ez a nézet részletesen **alkalmazások** , amely fel lett töltve az Azure Blockchain Workbench használatával.
 
-| Name (Név)                             | Típus          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                   |
+| Name (Név)                             | Typo          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                   |
 |----------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alkalmazásazonosító                    | int           | Nem          | Az alkalmazás egyedi azonosítója |
 | Alkalmazásnév                  | nvarchar(50)  | Nem          | Az alkalmazás neve |
@@ -42,7 +42,7 @@ Ez a nézet részletesen **alkalmazások** , amely fel lett töltve az Azure Blo
 | ApplicationEnabled               | bit           | Nem          | Annak jelzése, hogy az alkalmazás jelenleg engedélyezve van<br /> **Megjegyzés:** Annak ellenére, hogy egy alkalmazás is megjelennek, mert az adatbázis le van tiltva, kapcsolódó szerződések blokkláncon maradnak, és a említett szerződések vonatkozó adatokat az adatbázisban maradnak. |
 | UploadedDtTm                     | datetime2(7)  | Nem          | A dátum és idő szerződés lett feltöltve. |
 | UploadedByUserId                 | int           | Nem          | A felhasználó, aki feltölteni az alkalmazás azonosítója |
-| UploadedByUserExternalId         | nvarchar(255) | Nem          | A felhasználó számára az alkalmazás feltöltése külső azonosító. Alapértelmezés szerint ez az az Azure consortium az Active Directoryból a felhasználó azonosítója.                                                                                                |
+| UploadedByUserExternalId         | nvarchar(255) | Nem          | A felhasználó számára az alkalmazás feltöltése külső azonosító. Alapértelmezés szerint ezt az Azonosítót a a felhasználó az Azure consortium az Active Directoryból.                                                                                                |
 | UploadedByUserProvisioningStatus | int           | Nem          | Azonosítja a kiépítési folyamat a felhasználó aktuális állapotát. Lehetséges értékek: <br />0 – felhasználó által létrehozott az API-hoz<br />1 – a kulcs társítva a felhasználó az adatbázisban<br />2 – a felhasználó teljes kiépítése                         |
 | UploadedByUserFirstName          | nvarchar(50)  | Igen         | A felhasználó, aki a szerződés feltöltött utóneve |
 | UploadedByUserLastName           | nvarchar(50)  | Igen         | A felhasználó, aki a szerződés feltöltött vezetékneve |
@@ -54,13 +54,13 @@ Ez a nézet az Azure Blockchain Workbench alkalmazásban definiált szerepkörö
 
 Az egy *eszköz Transfer* alkalmazás, például szerepkörökben, például *vevő* és *értékesítői* szerepkörök is definiálva lehet.
 
-| Name (Név)                   | Típus             | NULL értékű lehet | Leírás                                       |
+| Name (Név)                   | Typo             | NULL értékű lehet | Leírás                                       |
 |------------------------|------------------|-------------|---------------------------------------------------|
 | Alkalmazásazonosító          | int              | Nem          | Az alkalmazás egyedi azonosítója           |
 | Alkalmazásnév        | nvarchar(50)     | Nem          | Az alkalmazás neve                       |
 | ApplicationDescription | nvarchar(255)    | Igen         | Az alkalmazás leírása                  |
 | ApplicationDisplayName | nvarchar(255)    | Nem          | A felhasználói felületen megjelenítendő neve      |
-| Szerepkör azonosítója                 | int              | Nem          | Az alkalmazás-szerepkör egyedi azonosítója |
+| RoleId                 | int              | Nem          | Az alkalmazás-szerepkör egyedi azonosítója |
 | RoleName               | nvarchar50)      | Nem          | A szerepkör neve                              |
 | RoleDescription        | Description(255) | Igen         | A szerepkör leírása                         |
 
@@ -70,7 +70,7 @@ Ez a nézet a szerepkörök az Azure Blockchain Workbench alkalmazás és a hozz
 
 Az egy *eszköz Transfer* alkalmazás, például *Kovács János* lehet társítva a *vásárló* szerepkör.
 
-| Name (Név)                       | Típus          | NULL értékű lehet | Leírás                                                                                                                                                                                                                           |
+| Name (Név)                       | Typo          | NULL értékű lehet | Leírás                                                                                                                                                                                                                           |
 |----------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alkalmazásazonosító              | int           | Nem          | Az alkalmazás egyedi azonosítója                                                                                                                                                                                               |
 | Alkalmazásnév            | nvarchar(50)  | Nem          | Az alkalmazás neve                                                                                                                                                                                                           |
@@ -80,7 +80,7 @@ Az egy *eszköz Transfer* alkalmazás, például *Kovács János* lehet társít
 | ApplicationRoleName        | nvarchar50)   | Nem          | A szerepkör neve                                                                                                                                                                                                                  |
 | ApplicationRoleDescription | nvarchar(255) | Igen         | A szerepkör leírása                                                                                                                                                                                                             |
 | Felhasználói azonosító                     | int           | Nem          | A felhasználó a szerepkörhöz társított azonosítója. |
-| UserExternalId             | nvarchar(255) | Nem          | A felhasználó, aki a szerepkörhöz társított külső azonosítója. Alapértelmezés szerint ez az az Azure consortium az Active Directoryból a felhasználó azonosítója.                                                                     |
+| UserExternalId             | nvarchar(255) | Nem          | A felhasználó, aki a szerepkörhöz társított külső azonosítója. Alapértelmezés szerint ezt az Azonosítót a a felhasználó az Azure consortium az Active Directoryból.                                                                     |
 | UserProvisioningStatus     | int           | Nem          | Azonosítja a kiépítési folyamat a felhasználó aktuális állapotát. Lehetséges értékek: <br />0 – felhasználó által létrehozott az API-hoz<br />1 – a kulcs társítva a felhasználó az adatbázisban<br />2 – a felhasználó teljes kiépítése |
 | UserFirstName              | nvarchar(50)  | Igen         | A szerepkörhöz társított felhasználó utóneve |
 | UserLastName               | nvarchar(255) | Igen         | A szerepkörhöz társított felhasználó vezetékneve |
@@ -93,7 +93,7 @@ Ez a nézet részletesen a kapcsolatokat, az Azure Blockchain Workbench alkalmaz
 -   Társított főkönyvi részletei
 -   Kapcsolódó felhasználói adatok
 
-| Name (Név)                     | Típus          | NULL értékű lehet | Leírás                                                                                                                                                                                                                           |
+| Name (Név)                     | Typo          | NULL értékű lehet | Leírás                                                                                                                                                                                                                           |
 |--------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId             | int           | Nem          | Az Azure Blockchain Workbench alkalmazásban egy kapcsolat egyedi azonosítója |
 | ConnectionEndpointUrl    | nvarchar(50)  | Nem          | A kapcsolati végpont URL-címe |
@@ -102,7 +102,7 @@ Ez a nézet részletesen a kapcsolatokat, az Azure Blockchain Workbench alkalmaz
 | LedgerName               | nvarchar(50)  | Nem          | A Főkönyv neve |
 | LedgerDisplayName        | nvarchar(255) | Nem          | A Főkönyv a felhasználói felületen megjelenítendő neve |
 | Felhasználói azonosító                   | int           | Nem          | A kapcsolat társított felhasználó azonosítója |
-| UserExternalId           | nvarchar(255) | Nem          | A felhasználó van társítva a kapcsolat külső azonosítója. Alapértelmezés szerint ez az az Azure consortium az Active Directoryból a felhasználó azonosítója. |
+| UserExternalId           | nvarchar(255) | Nem          | A felhasználó van társítva a kapcsolat külső azonosítója. Alapértelmezés szerint ezt az Azonosítót a a felhasználó az Azure consortium az Active Directoryból. |
 | UserProvisioningStatus   | int           | Nem          |Azonosítja a kiépítési folyamat a felhasználó aktuális állapotát. Lehetséges értékek: <br />0 – felhasználó által létrehozott az API-hoz<br />1 – a kulcs társítva a felhasználó az adatbázisban<br />2 – a felhasználó teljes kiépítése |
 | UserFirstName            | nvarchar(50)  | Igen         | A kapcsolat társított felhasználó utóneve |
 | UserLastName             | nvarchar(255) | Igen         | A kapcsolat társított felhasználó vezetékneve |
@@ -118,7 +118,7 @@ Ez a nézet az üzembe helyezett szerződések részletesen ismerteti. Ebben a n
 -   A felhasználó által kezdeményezett művelet részletei
 -   A blockchain letiltása és a tranzakció kapcsolatos részleteket
 
-| Name (Név)                                     | Típus           | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                   |
+| Name (Név)                                     | Typo           | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                   |
 |------------------------------------------|----------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId                             | int            | Nem          | Az Azure Blockchain Workbench alkalmazásban egy kapcsolat egyedi azonosítója.                                                                                                                                                                                         |
 | ConnectionEndpointUrl                    | nvarchar(50)   | Nem          | A kapcsolati végpont URL-címe |
@@ -140,8 +140,8 @@ Ez a nézet az üzembe helyezett szerződések részletesen ismerteti. Ebben a n
 | ContractId                               | int            | Nem          | A szerződés egyedi azonosítója |
 | ContractProvisioningStatus               | int            | Nem          | Azonosítja a kiépítési folyamat a szerződés aktuális állapotát. Lehetséges értékek: <br />0 – a szerződés által az API-t az adatbázis létrejött<br />1 – a szerződés el lett küldve a Főkönyv<br />2 – a szerződés rendelkezik sikerült üzembe helyezni a Főkönyv<br />3-as vagy 4 – a szerződés nem sikerült üzembe helyezni a Főkönyv<br />5 – a szerződés sikeresen települt a Főkönyv <br /><br />1.5-ös verziójának kezdve az értékek 0 – 5 támogatottak. A visszamenőleges kompatibilitás a jelenlegi kiadásban, a nézet **vwContractV0** érhető el, hogy csak értékek 0 és 2. |
 | ContractLedgerIdentifier                 | nvarchar (255) |             | A felhasználó, aki a szerződés telepített e-mail-címe |
-| ContractDeployedByUserId                 | int            | Nem          | A felhasználó, aki a szerződés telepített külső azonosítója. Alapértelmezés szerint ez a jelölő, az Azure Active Directory azonosító a felhasználó GUID azonosítója.                                                                                                          |
-| ContractDeployedByUserExternalId         | nvarchar(255)  | Nem          | A szerződés központilag telepített a felhasználó külső azonosítója. Alapértelmezés szerint ez a jelölő, az Azure Active Directory azonosító a felhasználó GUID azonosítója.                                                                                                         |
+| ContractDeployedByUserId                 | int            | Nem          | A felhasználó, aki a szerződés telepített külső azonosítója. Alapértelmezés szerint ezt az Azonosítót a jelölő, az Azure Active Directory azonosító a felhasználó GUID azonosítója.                                                                                                          |
+| ContractDeployedByUserExternalId         | nvarchar(255)  | Nem          | A szerződés központilag telepített a felhasználó külső azonosítója. Alapértelmezés szerint ezt az Azonosítót a jelölő, az Azure Active Directory azonosító a felhasználó GUID azonosítója.                                                                                                         |
 | ContractDeployedByUserProvisioningStatus | int            | Nem          | Azonosítja a kiépítési folyamat a felhasználó aktuális állapotát. Lehetséges értékek: <br />0 – felhasználó által létrehozott az API-hoz<br />1 – a kulcs társítva a felhasználó az adatbázisban <br />2 – a felhasználó teljes kiépítése                     |
 | ContractDeployedByUserFirstName          | nvarchar(50)   | Igen         | A szerződés telepített a felhasználó utóneve |
 | ContractDeployedByUserLastName           | nvarchar(255)  | Igen         | A szerződés telepített a felhasználó vezetékneve |
@@ -159,7 +159,7 @@ Ez a nézet a legtöbb szerződések végzett műveleteket kapcsolatos adatokat 
 -   A felhasználó által kezdeményezett művelet részletei
 -   A blockchain letiltása és a tranzakció kapcsolatos részleteket
 
-| Name (Név)                                     | Típus          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                                                                    |
+| Name (Név)                                     | Typo          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                                                                    |
 |------------------------------------------|---------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alkalmazásazonosító                            | int           | Nem          | Az alkalmazás egyedi azonosítója |
 | Alkalmazásnév                          | nvarchar(50)  | Nem          | Az alkalmazás neve |
@@ -176,7 +176,7 @@ Ez a nézet a legtöbb szerződések végzett műveleteket kapcsolatos adatokat 
 | ContractDeployedByUserId                 | int           | Nem          | A szerződés központilag telepített a felhasználó egyedi azonosítója |
 | ContractDeployedByUserFirstName          | nvarchar(50)  | Igen         | A szerződés telepített a felhasználó utóneve |
 | ContractDeployedByUserLastName           | nvarchar(255) | Igen         | A szerződés telepített a felhasználó vezetékneve |
-| ContractDeployedByUserExternalId         | nvarchar(255) | Nem          | A szerződés telepített a felhasználó külső azonosítója. Alapértelmezés szerint ez a guid-azonosítót fog kérni a az Azure Active Directory konzorcium képviselő.                                                                                                                                                |
+| ContractDeployedByUserExternalId         | nvarchar(255) | Nem          | A szerződés telepített a felhasználó külső azonosítója. Alapértelmezés szerint ezt az Azonosítót a guid-azonosítót fog kérni a az Azure Active Directory konzorcium képviselő.                                                                                                                                                |
 | ContractDeployedByUserEmailAddress       | nvarchar(255) | Igen         | A felhasználó, aki a szerződés telepített e-mail-címe |
 | WorkflowFunctionId                       | int           | Nem          | Egy munkafolyamat-funkció egyedi azonosítója |
 | WorkflowFunctionName                     | nvarchar(50)  | Nem          | A függvény neve |
@@ -188,7 +188,7 @@ Ez a nézet a legtöbb szerződések végzett műveleteket kapcsolatos adatokat 
 | ContractActionExecutedByUserId           | int           | Nem          | A felhasználót, hogy a szerződés művelet végrehajtása egyedi azonosítója |
 | ContractActionExecutedByUserFirstName    | int           | Igen         | A szerződés műveletet végrehajtó felhasználó utóneve |
 | ContractActionExecutedByUserLastName     | nvarchar(50)  | Igen         | A szerződés műveletet végrehajtó felhasználó vezetékneve |
-| ContractActionExecutedByUserExternalId   | nvarchar(255) | Igen         | A szerződés műveletet végrehajtó felhasználó külső azonosítója. Alapértelmezés szerint ez a guid-azonosítót fog kérni a az Azure Active Directory konzorcium képviselő. |
+| ContractActionExecutedByUserExternalId   | nvarchar(255) | Igen         | A szerződés műveletet végrehajtó felhasználó külső azonosítója. Alapértelmezés szerint ezt az Azonosítót a guid-azonosítót fog kérni a az Azure Active Directory konzorcium képviselő. |
 | ContractActionExecutedByUserEmailAddress | nvarchar(255) | Igen         | A szerződés műveletet végrehajtó felhasználó e-mail-címe |
 | WorkflowFunctionParameterId              | int           | Nem          | A függvény egy paramétert egyedi azonosítója |
 | WorkflowFunctionParameterName            | nvarchar(50)  | Nem          | A függvénynek egy paraméter neve |
@@ -199,11 +199,11 @@ Ez a nézet a legtöbb szerződések végzett műveleteket kapcsolatos adatokat 
 | BlockHash                                | nvarchar(255) | Igen         | A blokk kivonata |
 | BlockNumber                              | int           | Igen         | A Főkönyv a blokkok száma |
 | BlockTimestamp                           | datetime(2,7) | Igen         | A blokk időbélyege |
-| Tranzakcióazonosító                            | int           | Nem          | A tranzakció egyedi azonosítója |
+| TransactionId                            | int           | Nem          | A tranzakció egyedi azonosítója |
 | TransactionFrom                          | nvarchar(255) | Igen         | A felet, adja meg a tranzakció |
 | TransactionTo                            | nvarchar(255) | Igen         | Az entitás, amely lett a tranzakció |
 | TransactionHash                          | nvarchar(255) | Igen         | Egy tranzakció kivonata |
-| TransactionIsWorkbenchTransaction        | bit           | Igen         | Egy kis, amely azonosítja, ha a tranzakció egy az Azure Blockchain Workbench-tranzakció |
+| TransactionIsWorkbenchTransaction        | bit           | Igen         | Egy kis, amely azonosítja, ha a tranzakció az Azure Blockchain Workbench-tranzakció |
 | TransactionProvisioningStatus            | int           | Igen         | Azonosítja a tranzakció a kiépítési folyamat az aktuális állapotát. Lehetséges értékek: <br />0 – a tranzakció az adatbázis az API által létrehozva<br />1 – a tranzakció el lett küldve a Főkönyv<br />2 – a tranzakció már sikeresen alkalmazva van a Főkönyv                 |
 | TransactionValue                         | Decimal(32,2) | Igen         | Az érték a tranzakció |
 
@@ -218,7 +218,7 @@ Ez a nézet a legtöbb olyan szerződés társított tulajdonságok kapcsolatos 
 -   Tulajdonságok értékeit példány
 -   Az Eszközállapot-tulajdonságot a szerződés részletei
 
-| Name (Név)                               | Típus          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                                        |
+| Name (Név)                               | Typo          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alkalmazásazonosító                      | int           | Nem          | Az alkalmazás egyedi azonosítója |
 | Alkalmazásnév                    | nvarchar(50)  | Nem          | Az alkalmazás neve |
@@ -235,7 +235,7 @@ Ez a nézet a legtöbb olyan szerződés társított tulajdonságok kapcsolatos 
 | ContractDeployedByUserId           | int           | Nem          | A szerződés központilag telepített a felhasználó egyedi azonosítója |
 | ContractDeployedByUserFirstName    | nvarchar(50)  | Igen         | A szerződés telepített a felhasználó utóneve |
 | ContractDeployedByUserLastName     | nvarchar(255) | Igen         | A szerződés telepített a felhasználó vezetékneve |
-| ContractDeployedByUserExternalId   | nvarchar(255) | Nem          | A szerződés telepített a felhasználó külső azonosítója. Alapértelmezés szerint ez a guid-azonosítót fog kérni a az Azure Active Directory konzorcium jelölő |
+| ContractDeployedByUserExternalId   | nvarchar(255) | Nem          | A szerződés telepített a felhasználó külső azonosítója. Alapértelmezés szerint ezt az Azonosítót a guid-azonosítót fog kérni a az Azure Active Directory konzorcium jelölő |
 | ContractDeployedByUserEmailAddress | nvarchar(255) | Igen         | A felhasználó, aki a szerződés telepített e-mail-címe |
 | WorkflowPropertyId                 | int           |             | A munkafolyamatok tulajdonság egyedi azonosítója |
 | WorkflowPropertyDataTypeId         | int           | Nem          | A tulajdonság adattípusát azonosítója |
@@ -244,9 +244,9 @@ Ez a nézet a legtöbb olyan szerződés társított tulajdonságok kapcsolatos 
 | WorkflowPropertyDisplayName        | nvarchar(255) | Nem          | A munkafolyamat tulajdonság megjelenített neve |
 | WorkflowPropertyDescription        | nvarchar(255) | Igen         | A tulajdonság leírása |
 | ContractPropertyValue              | nvarchar(255) | Nem          | A szerződés egy tulajdonság értéke |
-| StateName                          | nvarchar(50)  | Igen         | Ha ez a tulajdonság tartalmazza a szerződés állapotát, akkor az állapot nevét. Ha nem az állapot társítva, értéke null értékű lesz. |
-| StateDisplayName                   | nvarchar(255) | Nem          | Ha ez a tulajdonság tartalmazza az állapot, akkor az állapot nevét. Ha nem az állapot társítva, értéke null értékű lesz. |
-| StateValue                         | nvarchar(255) | Igen         | Ez a tulajdonság tartalmazza az állapot, ha ez az az állapot érték. Ha nem az állapot társítva, értéke null értékű lesz. |
+| StateName                          | nvarchar(50)  | Igen         | Ez a tulajdonság tartalmazza a szerződés állapotát, hogy az állapot nevét. Ha nem az állapot társítva, értéke null értékű lesz. |
+| StateDisplayName                   | nvarchar(255) | Nem          | Ez a tulajdonság tartalmazza az állapot, hogy az állapot nevét. Ha nem az állapot társítva, értéke null értékű lesz. |
+| StateValue                         | nvarchar(255) | Igen         | Ez a tulajdonság tartalmazza az állapot, ha az értéke állapota. Ha nem az állapot társítva, értéke null értékű lesz. |
 
 ## <a name="vwcontractstate"></a>vwContractState
 
@@ -258,7 +258,7 @@ Ez a nézet egy adott szerződés állapotát kapcsolatos adatokat a legtöbb je
 -   Társított intelligens szerződés tulajdonság meghatározása
 -   Az Eszközállapot-tulajdonságot a szerződés részletei
 
-| Name (Név)                               | Típus          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                                        |
+| Name (Név)                               | Typo          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alkalmazásazonosító                      | int           | Nem          | Az alkalmazás egyedi azonosítója |
 | Alkalmazásnév                    | nvarchar(50)  | Nem          | Az alkalmazás neve |
@@ -274,7 +274,7 @@ Ez a nézet egy adott szerződés állapotát kapcsolatos adatokat a legtöbb je
 | ConnectionId                       | int           | Nem          | A munkafolyamat van telepítve a blockchain-példány egyedi azonosítója |
 | ContractCodeId                     | int           | Nem          | A kód végrehajtását a szerződés egyedi azonosítója |
 | ContractDeployedByUserId           | int           | Nem          | A szerződés központilag telepített a felhasználó egyedi azonosítója |
-| ContractDeployedByUserExternalId   | nvarchar(255) | Nem          | A szerződés telepített a felhasználó külső azonosítója. Alapértelmezés szerint ez a guid-azonosítót fog kérni a az Azure Active Directory konzorcium képviselő. |
+| ContractDeployedByUserExternalId   | nvarchar(255) | Nem          | A szerződés telepített a felhasználó külső azonosítója. Alapértelmezés szerint ezt az Azonosítót a guid-azonosítót fog kérni a az Azure Active Directory konzorcium képviselő. |
 | ContractDeployedByUserFirstName    | nvarchar(50)  | Igen         | A szerződés telepített a felhasználó utóneve |
 | ContractDeployedByUserLastName     | nvarchar(255) | Igen         | A szerződés telepített a felhasználó vezetékneve |
 | ContractDeployedByUserEmailAddress | nvarchar(255) | Igen         | A felhasználó, aki a szerződés telepített e-mail-címe |
@@ -285,18 +285,18 @@ Ez a nézet egy adott szerződés állapotát kapcsolatos adatokat a legtöbb je
 | WorkflowPropertyDisplayName        | nvarchar(255) | Nem          | A tulajdonságát a felhasználói felületen megjelenített neve |
 | WorkflowPropertyDescription        | nvarchar(255) | Igen         | A tulajdonság leírása |
 | ContractPropertyValue              | nvarchar(255) | Nem          | A szerződés tárolja egy tulajdonság értéke |
-| StateName                          | nvarchar(50)  | Igen         | Ha ez a tulajdonság tartalmazza az állapot, akkor az állapot nevét. Ha nem az állapot társítva, értéke null értékű lesz. |
-| StateDisplayName                   | nvarchar(255) | Nem          | Ha ez a tulajdonság tartalmazza az állapot, akkor az állapot nevét. Ha nem az állapot társítva, értéke null értékű lesz. |
-| StateValue                         | nvarchar(255) | Igen         | Ez a tulajdonság tartalmazza az állapot, ha ez az az állapot érték. Ha nem az állapot társítva, értéke null értékű lesz. |
+| StateName                          | nvarchar(50)  | Igen         | Ez a tulajdonság tartalmazza az állapot, ha azt a megjelenítési nevet az állapot. Ha nem az állapot társítva, értéke null értékű lesz. |
+| StateDisplayName                   | nvarchar(255) | Nem          | Ez a tulajdonság tartalmazza az állapot, hogy az állapot nevét. Ha nem az állapot társítva, értéke null értékű lesz. |
+| StateValue                         | nvarchar(255) | Igen         | Ez a tulajdonság tartalmazza az állapot, ha az értéke állapota. Ha nem az állapot társítva, értéke null értékű lesz. |
 
 ## <a name="vwuser"></a>vwUser
 
 Ez a nézet az Azure Blockchain Workbench használatával üzembe helyezett consortium tagok részletesen. Alapértelmezés szerint a adatainak kitöltése a felhasználó a kezdeti kiépítés keresztül.
 
-| Name (Név)               | Típus          | NULL értékű lehet | Leírás                                                                                                                                                                                                                               |
+| Name (Név)               | Typo          | NULL értékű lehet | Leírás                                                                                                                                                                                                                               |
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID (Azonosító)                 | int           | Nem          | A felhasználó egyedi azonosítója |
-| externalID         | nvarchar(255) | Nem          | A felhasználó külső azonosítója. Alapértelmezés szerint ez a jelölő, az Azure Active Directory azonosító a felhasználó GUID azonosítója. |
+| ExternalID         | nvarchar(255) | Nem          | A felhasználó külső azonosítója. Alapértelmezés szerint ezt az Azonosítót a jelölő, az Azure Active Directory azonosító a felhasználó GUID azonosítója. |
 | ProvisioningStatus | int           | Nem          |Azonosítja a kiépítési folyamat a felhasználó aktuális állapotát. Lehetséges értékek: <br />0 – felhasználó által létrehozott az API-hoz<br />1 – a kulcs társítva a felhasználó az adatbázisban<br />2 – a felhasználó teljes kiépítése |
 | FirstName          | nvarchar(50)  | Igen         | A felhasználó utóneve |
 | LastName           | nvarchar(50)  | Igen         | A felhasználó vezetékneve |
@@ -304,13 +304,13 @@ Ez a nézet az Azure Blockchain Workbench használatával üzembe helyezett cons
 
 ## <a name="vwworkflow"></a>vwWorkflow
 
-Ez a nézet a részletek alapvető munkafolyamat metaadatait, valamint a munkafolyamat funkciók és paraméterek jelöli. Reporting számára kifejlesztett is tartalmazza az alkalmazás a munkafolyamathoz társított metaadatokat. Ez a nézet a munkafolyamatokat a jelentéskészítés megkönnyítése érdekében több alapul szolgáló tábla adatait tartalmazza. Minden egyes munkafolyamat esetében ez a nézet tartalmazza a következő adatokat:
+Ez a nézet a részletek alapvető munkafolyamat metaadatait, valamint a munkafolyamat funkciók és paraméterek jelöli. Reporting számára kifejlesztett is tartalmaz, az alkalmazás a munkafolyamathoz társított metaadatokat. Ez a nézet a munkafolyamatokat a jelentéskészítés megkönnyítése érdekében több alapul szolgáló tábla adatait tartalmazza. Minden egyes munkafolyamat esetében ez a nézet tartalmazza a következő adatokat:
 
 -   Társított felügyeltalkalmazás-definíció
 -   Társított munkafolyamat-definíció
 -   Kapcsolódó adatok munkafolyamat állapota
 
-| Name (Név)                              | Típus          | NULL értékű lehet | Leírás                                                                                                                                |
+| Name (Név)                              | Typo          | NULL értékű lehet | Leírás                                                                                                                                |
 |-----------------------------------|---------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | Alkalmazásazonosító                     | int           | Nem          | Az alkalmazás egyedi azonosítója |
 | Alkalmazásnév                   | nvarchar(50)  | Nem          | Az alkalmazás neve |
@@ -326,18 +326,18 @@ Ez a nézet a részletek alapvető munkafolyamat metaadatait, valamint a munkafo
 | WorkflowStartStateDisplayName     | nvarchar(255) | Nem          | Az állapot a felhasználói felületen megjelenítendő neve |
 | WorkflowStartStateDescription     | nvarchar(255) | Igen         | A munkafolyamat-állapot leírása |
 | WorkflowStartStateStyle           | nvarchar(50)  | Igen         | Ez az érték azonosítja, hogy a munkafolyamat van ebben az állapotban lévő teljes százalékos |
-| WorkflowStartStateValue           | int           | Nem          | Ez az állapot értéke |
+| WorkflowStartStateValue           | int           | Nem          | Az állapot értékét |
 | WorkflowStartStatePercentComplete | int           | Nem          | Egy szöveges leírása, hogyan jelennek meg a felhasználói felületén ebben az állapotban lévő ügyfelek mutatót. Támogatott állapotok a következők: *sikeres* és *hiba* |
 
 ## <a name="vwworkflowfunction"></a>vwWorkflowFunction
 
-Ez a nézet a részletek alapvető munkafolyamat metaadatait, valamint a munkafolyamat funkciók és paraméterek jelöli. Reporting számára kifejlesztett is tartalmazza az alkalmazás a munkafolyamathoz társított metaadatokat. Ez a nézet a munkafolyamatokat a jelentéskészítés megkönnyítése érdekében több alapul szolgáló tábla adatait tartalmazza. Ez a nézet az egyes munkafolyamat-funkció, a következő adatokat tartalmazza:
+Ez a nézet a részletek alapvető munkafolyamat metaadatait, valamint a munkafolyamat funkciók és paraméterek jelöli. Reporting számára kifejlesztett is tartalmaz, az alkalmazás a munkafolyamathoz társított metaadatokat. Ez a nézet a munkafolyamatokat a jelentéskészítés megkönnyítése érdekében több alapul szolgáló tábla adatait tartalmazza. Ez a nézet az egyes munkafolyamat-funkció, a következő adatokat tartalmazza:
 
 -   Társított felügyeltalkalmazás-definíció
 -   Társított munkafolyamat-definíció
 -   A munkafolyamat függvény részletei
 
-| Name (Név)                                 | Típus          | NULL értékű lehet | Leírás                                                                          |
+| Name (Név)                                 | Typo          | NULL értékű lehet | Leírás                                                                          |
 |--------------------------------------|---------------|-------------|--------------------------------------------------------------------------------------|
 | Alkalmazásazonosító                        | int           | Nem          | Az alkalmazás egyedi azonosítója |
 | Alkalmazásnév                      | nvarchar(50)  | Nem          | Az alkalmazás neve |
@@ -351,7 +351,7 @@ Ez a nézet a részletek alapvető munkafolyamat metaadatait, valamint a munkafo
 | WorkflowFunctionName                 | nvarchar(50)  | Igen         | A függvény neve |
 | WorkflowFunctionDisplayName          | nvarchar(255) | Nem          | Egy függvény a felhasználói felületen megjelenítendő neve |
 | WorkflowFunctionDescription          | nvarchar(255) | Igen         | A munkafolyamat-funkció leírása |
-| WorkflowFunctionIsConstructor        | bit           | Nem          | Ez alapján azonosíthatják, ha a munkafolyamat-funkció a konstruktor a munkafolyamat |
+| WorkflowFunctionIsConstructor        | bit           | Nem          | Ha a munkafolyamat-funkció a konstruktor a munkafolyamat azonosítja |
 | WorkflowFunctionParameterId          | int           | Nem          | A függvény egy paramétert egyedi azonosítója |
 | WorkflowFunctionParameterName        | nvarchar(50)  | Nem          | A függvénynek egy paraméter neve |
 | WorkflowFunctionParameterDisplayName | nvarchar(255) | Nem          | Egy függvény paramétere a felhasználói felületen megjelenítendő neve |
@@ -366,7 +366,7 @@ Ez a nézet a munkafolyamat megadott tulajdonságok jelöli. Ebben a nézetben m
 -   Társított munkafolyamat-definíció
 -   A munkafolyamat tulajdonságainak részleteit
 
-| Name (Név)                         | Típus          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                   |
+| Name (Név)                         | Typo          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alkalmazásazonosító                | int           | Nem          | Az alkalmazás egyedi azonosítója |
 | Alkalmazásnév              | nvarchar(50)  | Nem          | Az alkalmazás neve |
@@ -393,7 +393,7 @@ Ez a nézet egy munkafolyamathoz társított tulajdonságokat jelöli. Ebben a n
 -   Társított munkafolyamat-definíció
 -   Munkafolyamat-állapot adatainak
 
-| Name (Név)                         | Típus          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                   |
+| Name (Név)                         | Typo          | NULL értékű lehet | Leírás                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alkalmazásazonosító                | int           | Nem          | Az alkalmazás egyedi azonosítója |
 | Alkalmazásnév              | nvarchar(50)  | Nem          | Az alkalmazás neve |
@@ -408,5 +408,5 @@ Ez a nézet egy munkafolyamathoz társított tulajdonságokat jelöli. Ebben a n
 | WorkflowStateDisplayName     | nvarchar(255) | Nem          | Az állapot a felhasználói felületen megjelenítendő neve |
 | WorkflowStateDescription     | nvarchar(255) | Igen         | A munkafolyamat-állapot leírása |
 | WorkflowStatePercentComplete | int           | Nem          | Ez az érték azonosítja, hogy a munkafolyamat van ebben az állapotban lévő teljes százalékos |
-| WorkflowStateValue           | nvarchar(50)  | Nem          | Ez az állapot értéke |
+| WorkflowStateValue           | nvarchar(50)  | Nem          | Az állapot értékét |
 | WorkflowStateStyle           | nvarchar(50)  | Nem          | Egy szöveges leírása, hogyan jelennek meg a felhasználói felületén ebben az állapotban lévő ügyfelek mutatót. Támogatott állapotok a következők: *sikeres* és *hiba* |

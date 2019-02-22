@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 527562a1013691ae76b108031be35aa3f0d6ed54
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608357"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649271"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Gyors útmutató: Próbálja ki a felhő alapú távoli figyelési megoldáshoz
 
@@ -45,7 +45,7 @@ Adjon meg egy egyedi **megoldásnevet** a távoli monitorozási megoldásgyorsí
 Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Ebben a rövid útmutatóban használjuk **USA keleti Régiójában**.
 Választhat **Visual Studio Enterprise**, kell lennie, de egy [globális rendszergazda vagy felhasználó](iot-accelerators-permissions.md) ennek a végrehajtására.
 
-Kattintson a **Megoldás létrehozása** gombra az üzembe helyezés elkezdéséhez. A folyamat legalább öt percig tart:
+A telepítés megkezdéséhez kattintson a **létrehozás**. A folyamat legalább öt percig tart:
 
 ![A távoli monitorozási megoldás részletei](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -57,7 +57,7 @@ A **Kiépített megoldások** lapon kattintson az új távoli monitorozási mego
 
 ![Új megoldás kiválasztása](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-A megjelenő panelen megtekintheti a távoli monitorozási megoldásgyorsítóra vonatkozó információkat. Válassza ki a **Megoldások irányítópultja** elemet a távoli monitorozási megoldásgyorsító megjelenítéséhez:
+A megjelenő panelen megtekintheti a távoli monitorozási megoldásgyorsítóra vonatkozó információkat. Válasszon **nyissa meg a megoldásgyorsító** a távoli figyelési megoldásgyorsító megtekintése:
 
 ![Megoldás panel](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 
@@ -134,6 +134,9 @@ Ha tovább kíván lépni a további oktatóanyagokra, ne kapcsolja ki a távoli
 Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról. Ehhez jelölje ki, majd kattintson a **Megoldás törlése** gombra:
 
 ![Megoldás törlése](media/quickstart-remote-monitoring-deploy/deletesolution.png)
+
+
+![Megoldás törlése](media/quickstart-remote-monitoring-deploy/deletesolution-provision.png)
 
 ## <a name="next-steps"></a>További lépések
 

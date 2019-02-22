@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 88e55573e88a45d7733e12c3bb8751763a0ef901
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0885671d777d79c6f8a9fc993aa1224312705bce
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113362"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650903"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure App Service-ben
 
@@ -199,6 +199,15 @@ Az `contoso.com` tartomány példájában a következő táblának megfelelően 
 | - | - | - |
 | A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
+
+> [!NOTE]
+> Altartomány hozzáadása (például `www.contoso.com`) helyett egy ajánlott rekordok használatával [CNAME-rekordot](#map-a-cname-record), a és egy txt típusú rekord hasonlóan kell kinéznie a következő táblázat helyett:
+>
+> | Rekordtípus | Gazdagép | Érték |
+> | - | - | - |
+> | A | `www` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
+> | TXT | `www` | `<app_name>.azurewebsites.net` |
+>
 
 A rekordok hozzáadása után a DNS-rekordok oldala a következő példához hasonlóan jelenik meg:
 

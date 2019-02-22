@@ -10,17 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 04d7bfcf0527b490bc18f6d85977d899823d5e69
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: a6aab8fda2459804b38afc113be58db7c31b54c5
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301876"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586851"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
 > [!NOTE]
 > V2 elavulttá 2018. április 30., és a 2019. április 30. ezt megszüntetjük.
+
+> A Microsoft Translator Hub jén kivonjuk a forgalomból 2019. április 30. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).  
 
 A Microsoft Translator csapat kiadott 3-as verziójú (V3), a Translator Text API. Ebben a kiadásban új funkciók, a elavult módszerek és a egy új formátum küld és fogad adatokat a Microsoft Translator szolgáltatás tartalmaz. Ez a dokumentum módosítása alkalmazások általi használatát a v3-as információkat szolgáltat. 
 
@@ -49,8 +51,8 @@ Az alábbi listában szereplő V2 és V3 módszerek a v3-as módszerek és API-k
 | `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
 | `Detect`     | [Észlelése](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Észlelése](reference/v3-0-detect.md)         |
-| `AddTranslation`     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| `AddTranslationArray`    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| `AddTranslation`     | A szolgáltatás már nem támogatott.       |
+| `AddTranslationArray`    | A szolgáltatás már nem támogatott.          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | `GetTranslations`      | A szolgáltatás már nem támogatott.         |
 | `GetTranslationsArray`      | A szolgáltatás már nem támogatott.         |
@@ -105,6 +107,10 @@ Globális
 [`Dictionary/example`](reference/v3-0-dictionary-examples.md)
 
 ## <a name="compatibility-and-customization"></a>Kompatibilitási és testreszabás
+
+> [!NOTE] 
+
+> A Microsoft Translator Hub jén kivonjuk a forgalomból 2019. április 30. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).   
 
 A Microsoft Translator V3 Neurális gépi fordítás alapértelmezés szerint használ. Ezért nem használható a Microsoft Translator hubbal. A Translator Hub csak az örökölt statisztikai gépi fordítási támogatja. Neurális fordítással testreszabásának már elérhető az egyéni translatorral. [További tudnivalók a Neurális gépi fordítás testreszabása](custom-translator/overview.md)
 

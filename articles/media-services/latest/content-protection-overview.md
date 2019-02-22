@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: bce28a2498793b7a1edb8aa0437a7d7c75a45ae9
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 02c786209c81e755b05cc3875778f98faf8a1ae1
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911948"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650937"
 ---
 # <a name="content-protection-overview"></a>A Content protection áttekintése
 
@@ -33,23 +33,36 @@ Az alábbi ábrán a Media Services content protection munkafolyamat:
 
 Ez a cikk ismerteti az alapelvek és fogalmak ismertetése a Media Services content protection kapcsolódik. A cikk is rendelkezik a [– gyakori kérdések](#faq) szakaszt, és cikkeket, amelyek bemutatják a tartalmak védelméhez mutató hivatkozásokat tartalmaz. 
 
-## <a name="main-components-of-the-content-protection-system"></a>A content protection rendszer fő összetevői
+## <a name="main-components-of-a-content-protection-system"></a>A rendszer a content protection fő összetevőinek
 
 Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes ismertetése az részéről az erőfeszítés hatókörének kell. Az alábbi lista áttekintést ad végrehajtására kellene három részből áll. 
 
 1. Az Azure Media Services-kódot
   
-  * Licenc sablonok PlayReady, Widevine és/vagy FairPlay konfigurálása. A sablonok segítségével beállíthatja, hogy jogosultságai és engedélyei a használt DRMs mindegyikéhez.
-  * Adja meg a licenc kézbesítési engedélyezési, adja meg a JWT jogcímszolgáltatói alapján jogosultsági ellenőrzés logikáját.
-  * DRM-titkosítás konfigurálja a tartalomkulcs megadásával, és a streamelési protokollok használandó.
+  A [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) minta bemutatja, hogyan multi-DRM-rendszer a Media Services v3 megvalósítása, és a Media Services/licenckulcs-továbbítási szolgáltatást is használhatja. Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). A [streamelési protokollokkal és a titkosítási típusokkal](#streaming-protocols-and-encryption-types) kapcsolatos szakaszban megtekintheti, hogy mit mivel érdemes kombinálni.
+  
+  A példa bemutatja, hogyan:
 
-  > [!NOTE]
-  > Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). A [streamelési protokollokkal és a titkosítási típusokkal](#streaming-protocols-and-encryption-types) kapcsolatos szakaszban megtekintheti, hogy mit mivel érdemes kombinálni.
-  
-  A következő cikkek az AES és/vagy DRM tartalmak megjelenítése az titkosításához lépéseket: 
-  
-  * [Az AES-titkosítással védeni](protect-with-aes128.md)
-  * [DRM védelme](protect-with-drm.md)
+  1. Létrehozhat és konfigurálhat ContentKeyPolicies.
+
+    * Adja meg a licenc kézbesítési engedélyezési, adja meg a JWT jogcímszolgáltatói alapján jogosultsági ellenőrzés logikáját.
+    * DRM-titkosítás konfigurálja a tartalomkulcs megadásával.
+    * Konfigurálása [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), és [FairPlay](fairplay-license-overview.md) licenceket. A sablonok segítségével beállíthatja, hogy jogosultságai és engedélyei a használt DRMs mindegyikéhez.
+
+        ```
+        ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
+        ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
+        ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
+        ```
+  2. Hozzon létre egy StreamingLocator adatfolyam egy titkosított eszköz van konfigurálva. 
+
+    Beállíthatja például, a StreamingLocator.StreamingPolicyName "Predefined_MultiDrmCencStreaming" szabályzat. Ez a szabályzat jelzi, hogy két tartalomkulcsot (envelope és CENC) szeretne létrehozni és beállítani a lokátoron. Így az envelope, a PlayReady és a Widevine titkosítások lesznek alkalmazva (a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszást végző ügyfelének). Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
+  3. A test-token létrehozásához.
+
+    A **GetTokenAsync** módszer bemutatja, hogyan hozzon létre egy tesztet token.
+  4. A streamelési URL-cím összeállítását.
+
+    A **GetDASHStreamingUrlAsync** metódus azt mutatja be, hogyan hozhat létre a streamelési URL-CÍMÉT. Ebben az esetben az URL-cím Streamek a **DASH** tartalmat.
 
 2. A Player AES vagy DRM-ügyféllel. Egy videolejátszó alkalmazást, a lejátszó SDK-t (natív vagy böngészőalapú) alapján kell az alábbi követelményeknek:
   * A lejátszó SDK támogatja a szükséges DRM-ügyfelek
@@ -128,71 +141,11 @@ A jogkivonattal korlátozott tartalom kulcs szabályzattal a tartalomkulcs van c
 
 A tokennel korlátozott szabályzatokhoz konfigurálásakor adjon meg, hogy az elsődleges ellenőrzőkulcs, a kibocsátó és a célközönség paramétereket. Az elsődleges ellenőrzőkulcs tartalmazza a kulcsot, a jogkivonat írták-e. A kibocsátó a biztonságos jogkivonat-szolgáltatás, amely a jogkivonatot. A célközönség, más néven a hatókör, ismerteti a token szándéka, vagy az erőforrás a token engedélyezi a hozzáférést. A Media Services kulcstovábbítást ellenőrzi, hogy ezeket az értékeket a jogkivonat egyezik a sablonban szereplő értékeket.
 
-## <a name="a-idfaqfrequently-asked-questions"></a><a id="faq"/>Gyakori kérdések
-
-### <a name="question"></a>Kérdés
-
-Hogyan valósíthat meg az Azure Media Services (AMS) v3-as, és használja az AMS licenckulcs/kézbesítési szolgáltatás használatával többplatformos DRM (PlayReady, Widevine és FairPlay) rendszer?
-
-### <a name="answer"></a>Válasz
-
-Teljes körű, olvassa az [alábbi kódpéldát](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs). 
-
-A példa bemutatja, hogyan:
-
-1. Létrehozhat és konfigurálhat ContentKeyPolicies.
-
-  A mintául szolgáló függvényeket tartalmaz, amelyek konfigurálása [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), és [FairPlay](fairplay-license-overview.md) licenceket.
-
-    ```
-    ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
-    ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
-    ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
-    ```
-
-2. Hozzon létre egy StreamingLocator adatfolyam egy titkosított eszköz van konfigurálva. 
-
-  Beállíthatja például, a StreamingLocator.StreamingPolicyName "Predefined_MultiDrmCencStreaming" szabályzat. Ez a szabályzat jelzi, hogy két tartalomkulcsot (envelope és CENC) szeretne létrehozni és beállítani a lokátoron. Így az envelope, a PlayReady és a Widevine titkosítások lesznek alkalmazva (a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszást végző ügyfelének). Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
-
-3. A test-token létrehozásához.
-
-  A **GetTokenAsync** módszer bemutatja, hogyan hozzon létre egy tesztet token.
-  
-4. A streamelési URL-cím összeállítását.
-
-  A **GetDASHStreamingUrlAsync** metódus azt mutatja be, hogyan hozhat létre a streamelési URL-CÍMÉT. Ebben az esetben az URL-cím Streamek a **DASH** tartalmat.
-
-### <a name="question"></a>Kérdés
-
-Hogyan és hol érdemes a JWT jogkivonat beszerzése és a kérés licenc- vagy kulcs?
-
-### <a name="answer"></a>Válasz
-
-1. Éles környezetben szüksége lesz egy Secure Token szolgáltatások (STS) (webszolgáltatás) amely JWT jogkivonatot egy HTTPS-kérés esetén. Tesztelési, használhatja a kód látható **GetTokenAsync** meghatározott metódus [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
-2. Indítson egy, az STS-re, például egy jogkivonatot a felhasználó hitelesítése után, és rendelje hozzá a token értékeként Player kell. Használhatja a [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/).
-
-* Példa STS, futtatása vagy szimmetrikus vagy aszimmetrikus kulccsal, tekintse meg [ http://aka.ms/jwt ](https://aka.ms/jwt). 
-* Egy ilyen JWT-jogkivonat használatával az Azure Media Player-alapú Media Player egy példa: [ http://aka.ms/amtest ](https://aka.ms/amtest) (bontsa ki a "player_settings" hivatkozásra kattintva megtekintheti a token bemeneti).
-
-### <a name="question"></a>Kérdés
-
-Hogyan engedélyezi, hogy kérelmeket a Videóknak az AES-titkosítás?
-
-### <a name="answer"></a>Válasz
-
-A megfelelő módszer, hogy kihasználja az STS (Secure Token Service):
-
-STS attól függően, felhasználói profil hozzá más jogcímeket (például a "Prémium szintű felhasználó", "Alapszintű felhasználó", "Ingyenes próbaverzió felhasználó"). A különböző jogcímek a jwt-t a felhasználó megtekintheti a különböző tartalmát. Természetesen különböző tartalom eszköz, a ContentKeyPolicyRestriction rendelkezik a megfelelő RequiredClaims.
-
-Használja az Azure Media Services API-k konfigurálása/licenckulcs kézbesítési és az eszközök titkosítása (ahogyan az [ezt a mintát](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs).
-
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a következő cikkeket:
-
-  * [Az AES-titkosítással védeni](protect-with-aes128.md)
-  * [DRM védelme](protect-with-drm.md)
-
-További információ található a [a hozzáférés-vezérléssel drm-mel a content protection rendszer tervezése](design-multi-drm-system-with-access-control.md)
+* [Az AES-titkosítással védeni](protect-with-aes128.md)
+* [DRM védelme](protect-with-drm.md)
+* [A hozzáférés-vezérléssel drm-mel a content protection rendszer tervezése](design-multi-drm-system-with-access-control.md)
+* [Gyakori kérdések](frequently-asked-questions.md)
 
 

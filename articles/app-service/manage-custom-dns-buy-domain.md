@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d47c560515a13efa8346974e828f14f9a15f0e4a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c2bee4d35fe857d5ad3bf26dc1145b8721c85df4
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731050"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594236"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Az Azure App Service egyéni tartománynév vásárlása
 
@@ -126,7 +126,7 @@ Ezután válassza ki a kívánt beállításokat a tartomány. Tekintse meg az a
 Kattintson a **jogi feltételek** tekintse át a feltételeket és a költségek, majd kattintson a **vásárlása**.
 
 > [!NOTE]
-> App Service-tartományok Azure DNS segítségével a tartományok. A tartomány regisztrációs díj mellett az Azure DNS számára a használati díjak érvényesek. További információ: [Azure DNS díjszabási](https://azure.microsoft.com/pricing/details/dns/).
+> App Service-tartományok GoDaddy tartomány regisztráció és az Azure DNS segítségével a tartományok. A tartomány regisztrációs díj mellett az Azure DNS számára a használati díjak érvényesek. További információ: [Azure DNS díjszabási](https://azure.microsoft.com/pricing/details/dns/).
 >
 >
 

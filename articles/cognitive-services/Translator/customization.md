@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: c2ff97c61cee1f2f773710103ac422fc6f1d8714
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3fcc8f0c2c0ed897b1c5296eea694cd56144498b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876062"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585848"
 ---
 # <a name="customize-your-text-translations"></a>A szöveg fordítások testreszabása
 
@@ -42,7 +42,8 @@ További információt a rendelkezésre álló adatok alapján testreszabási k�
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
-A Microsoft Translator örökölt Hub statisztikai gépi fordítási lefordítani használható. [További információ](https://www.microsoft.com/en-us/translator/hub.aspx)
+> [!NOTE]
+> A régebbi Microsoft Translator Hub a 2019. április 30-án megszűnik. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).  
 
 ## <a name="custom-translator-versus-hub"></a>Eseményközpont és egyéni fordító
 

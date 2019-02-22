@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: b57dd40c8610953563a3d5b8861e144d775b4eb7
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9a43a382c1f45f0bf0fb7e93322fcbeef58cb99d
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330511"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651175"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Újratanítás PowerShell és a egy gépi tanulási modell üzembe helyezése
 
@@ -42,7 +42,7 @@ Használja az alábbi lépéseket egy megőrzési webszolgáltatás üzembe hely
 
     Miután is futtathatja a kísérletet, az eredményül kapott munkafolyamat az alábbi képhez hasonló lesz:
 
-    ![Eredményül kapott munkafolyamat](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE04.png)
+    ![Eredményül kapott munkafolyamat](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE04.png)
 
     Most már telepítheti a tanítási kísérlet megőrzési webszolgáltatásként, amely megjeleníti a betanított modell és a modell kiértékelésének eredménye.
 
@@ -68,7 +68,7 @@ Adja hozzá a NuGet-csomag Microsoft.AspNet.WebApi.Client, teljesítjük, a megj
 
 Az alábbi képernyőfelvételen a **felhasználás** oldal az Azure Machine Learning Web Services portálon.
 
-![Oldal használata](media/retrain-existing-arm-web-service/machine-learning-retrain-models-consume-page.png)
+![Oldal használata](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
 ### <a name="update-the-apikey-declaration"></a>Frissítés a apikey tulajdonsággal végzett tesztelése nyilatkozat
 
@@ -114,7 +114,7 @@ Ha a kimeneti helyet ad meg a kérelem hasznos adatainak, a megadott fájl kiter
 
 Íme egy példa kimenet megőrzési:
 
-![Kimeneti átképezési](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE06.png)
+![Kimeneti átképezési](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
 
 ### <a name="evaluate-the-retraining-results"></a>Megőrzési eredmények értékelése
 

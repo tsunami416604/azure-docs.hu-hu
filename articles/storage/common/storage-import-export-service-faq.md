@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e52d5f3b30490227541e99e067c096a7df6dd911
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6706da978195cff65a3454e6b2d71dfea3b414c4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566188"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651413"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Az Azure Import/Export szolgáltatás: gyakori kérdések 
 Az alábbiakban a kérdések és válaszok, amelyek az adatok átviteléhez az Azure storage-bA az Azure Import/Export szolgáltatás használatakor előfordulhat, hogy rendelkezik. A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosítottuk:
@@ -87,8 +87,18 @@ Az Azure-adatközpontban semmilyen ismert szolgáltatója FedEx, DHL, UPS vagy U
 - Az USA és Európa, a fiók FedEx számnak vagy
 - Az ázsiai és Ausztrália régiókban DHL fiók szám.
 
+> [!NOTE]
+> Az indiai adatközpontokban a (tartalomkézbesítési challan) fejléc vissza a meghajtók deklarace betűvel van szükség. Rendezze el a szükséges bejegyzés fázis, is kell a kivételezést repülőjáratra a kiválasztott szolgáltató, és a részleteit megoszthatja az adatközpontban.
+
 ### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Vannak az Egyesült Államokon kívül is a meghajtó szállítási korlátozások?
 Vegye figyelembe, hogy valóban a fizikai adathordozón kell adatbázisközi nemzetközi határokon. Ön felelős azért, hogy a fizikai adathordozók és az adatok vannak importálva és/vagy a hatályos törvényeknek megfelelően exportált. A fizikai adathordozó hordozás előtt ellenőrizze a tanácsadók, győződjön meg arról, hogy az adathordozó és az adatok is jogilag szállítása az azonosított adatközpont. Ez segít annak érdekében, hogy a Microsoft időben éri el.
+
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Vannak-e a saját lemezek kézbesítése az egy kínai adatközpont speciális kapcsolatos követelmények?
+
+A függenek konkrét Azure-adatközpont korlátozások.
+- Néhány C osztályú helyek (például Frankfurt), egy Microsoft adatközpontba azonosítószámát bejövő biztonsági okokból a csomagonkénti írandó igénylő vannak. Előtt a meghajtók vagy lemezek az adatközpontba, lépjen kapcsolatba az Azure DataBox Operations (adbops@microsoft.com) a probléma száma. Ez a szám nélkül a csomagot a rendszer elutasítja.
+- Az indiai adatközpontokban a személyes adatait, például a kormányzati személyi igazolvány vagy a koncepció nem. az illesztőprogram megkövetelése (például PAN, AADHAR, a terjesztési listához) a neve, a kapcsolattartó és az autó szám egy kapu bejegyzés pass adattáblán. Kézbesítési késések elkerülése érdekében tájékoztatja a szolgáltató ezeket a követelményeket.
+
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Egy feladat létrehozásakor, a szállítási cím egy olyan hely, a tárfiók helye eltérő. Mit tegyek?
 

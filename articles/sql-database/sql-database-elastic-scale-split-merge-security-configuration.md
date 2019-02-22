@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a3ba80ce7b5abcb2f112880c4fef5ed3f067f691
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 051aa6b6ca8571fe948fa30e1e4a4320bb564a52
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563218"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593318"
 ---
 # <a name="split-merge-security-configuration"></a>Biztonság szétválasztás és egyesítés konfiguráció
 
@@ -121,24 +121,29 @@ Az alapértelmezett konfiguráció összes megtagadja végpontjához. Ez az az a
 Az alapértelmezett konfiguráció lehetővé teszi, hogy a HTTPS-végpont az elérésére. Ez a beállítás további korlátozott lehet.
 
 ### <a name="changing-the-configuration"></a>A konfiguráció módosítása
-A alkalmazni a hozzáférés-vezérlési szabályok és a végpont csoport konfigurált a **<EndpointAcls>** című rész a **szolgáltatás konfigurációs fájlja**.
+A alkalmazni a hozzáférés-vezérlési szabályok és a végpont csoport konfigurált a  **\<EndpointAcls >** című rész a **szolgáltatás konfigurációs fájlja**.
 
-    <EndpointAcls>
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
-    </EndpointAcls>
+```xml
+<EndpointAcls>
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
+</EndpointAcls>
+```
 
-A hozzáférés-vezérlési csoportban szabályok úgy vannak konfigurálva, az egy <AccessControl name=""> szakaszában a szolgáltatás konfigurációs fájlja. 
+Hozzáférés-vezérlési csoportban a szabályok úgy vannak konfigurálva, az egy \<AccessControl name = "" > a szolgáltatás konfigurációs fájlja szakaszában. 
 
 A formátum ismertetését a hálózati hozzáférés-vezérlési listák dokumentációját.
 Például ahhoz, hogy csak IP-címek 100.100.0.0 való 100.100.255.255 a HTTPS-végpontot a tartományban, a szabályok kellene kinéznie:
 
-    <AccessControl name="Retricted">
-      <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
-      <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
-    </AccessControl>
-    <EndpointAcls>
+```xml
+<AccessControl name="Retricted">
+    <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
+    <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
+</AccessControl>
+<EndpointAcls>
     <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="Restricted" />
+</EndpointAcls>
+```
 
 ## <a name="denial-of-service-prevention"></a>Szolgáltatás megelőzési szolgáltatásmegtagadás
 Van két különböző mechanizmus támogatott észlelése és a szolgáltatásmegtagadásos támadások megelőzése érdekében:
@@ -154,22 +159,29 @@ Ezek a funkciók további részletes ismertetését lásd: az IIS-ben a dinamiku
 ## <a name="restricting-number-of-concurrent-accesses"></a>Egyidejű hozzáférések számának korlátozása
 Az ezt a viselkedést konfiguráló beállítások a következők:
 
-    <Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
-    <Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
+<Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```
 
 Ez a védelem engedélyezéséhez a true DynamicIpRestrictionDenyByConcurrentRequests módosítsa.
 
 ## <a name="restricting-rate-of-access"></a>Hozzáférési sebesség korlátozása
 Az ezt a viselkedést konfiguráló beállítások a következők:
 
-    <Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
-    <Setting name="DynamicIpRestrictionMaxRequests" value="100" />
-    <Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
+<Setting name="DynamicIpRestrictionMaxRequests" value="100" />
+<Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```
 
 ## <a name="configuring-the-response-to-a-denied-request"></a>A letiltott irányuló kérelemre adott válasz konfigurálása
 A következő beállítást konfigurálja a megtagadott irányuló kérelemre adott válasz:
 
-    <Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```xml
+<Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```
+
 Tekintse meg a dokumentációt más támogatott értékei a dinamikus IP-biztonság az IIS-ben.
 
 ## <a name="operations-for-configuring-service-certificates"></a>Operations for service-tanúsítványok konfigurálása
@@ -232,12 +244,16 @@ Csak az ügyfél tanúsítványalapú hitelesítést is támogatja, és letiltá
 
 Ezek a beállítások módosítása a konfigurációs fájlban a szolgáltatás kikapcsolásához hamis értékre:
 
-    <Setting name="SetupWebAppForClientCertificates" value="false" />
-    <Setting name="SetupWebserverForClientCertificates" value="false" />
+```xml
+<Setting name="SetupWebAppForClientCertificates" value="false" />
+<Setting name="SetupWebserverForClientCertificates" value="false" />
+```
 
 Majd másolja a Hitelesítésszolgáltatói tanúsítvány beállítás SSL-tanúsítványt ugyanazzal az ujjlenyomattal:
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="create-a-self-signed-certification-authority"></a>Hozzon létre egy önaláírt hitelesítésszolgáltató
 Hajtsa végre az alábbi lépéseket egy hitelesítésszolgáltató segítségével önaláírt tanúsítvány létrehozása:
@@ -280,11 +296,15 @@ Feltöltés a a meglévő tanúsítványt, vagy jön létre. CER-fájlt a hitele
 ## <a name="update-ca-certificate-in-service-configuration-file"></a>Frissítés Hitelesítésszolgáltatói tanúsítvány szolgáltatáskonfigurációs fájlban
 Frissítse a konfigurációs fájlban a következő beállítást ujjlenyomat értékét az a felhőszolgáltatásba a tanúsítvány ujjlenyomata:
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 Frissítse az alábbi beállítás értéke az azonos ujjlenyomattal rendelkező:
 
-    <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```xml
+<Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```
 
 ## <a name="issue-client-certificates"></a>Ügyfél-tanúsítványok kiállítása
 Minden egyes jogosult hozzáférni a szolgáltatáshoz kizárólagos használatú ügyféltanúsítvánnyal kell rendelkeznie, és a saját erős jelszót a titkos kulcs védelme érdekében érdemes választania. 
@@ -338,17 +358,23 @@ Minden egyes személy, akinek ügyféltanúsítvány adtak ki annak érdekében,
 * A tanúsítvány a megnyíló párbeszédpanelen válassza a részleteket tartalmazó lapot
 * Ellenőrizze, hogy megjelenítése az összes megjelenítése
 * Válassza ki a listában ujjlenyomat nevű mező
-* Másolja az értéket az ujjlenyomat ** törlése előtt az első számot nem látható Unicode-karaktereket ** minden szóközt törlése
+* Másolja az értéket az ujjlenyomat
+  * Nem látható, az első számjegy elé Unicode-karaktereket törlése
+  * Minden szóközt törlése
 
 ## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>A konfigurációs fájlban engedélyezett ügyfelek konfigurálása
 Frissítse a konfigurációs fájlban a következő beállítás értékét az hozzáférhessen-e a szolgáltatás ügyfél-tanúsítványok ujjlenyomatai vesszővel tagolt listája:
 
-    <Setting name="AllowedClientCertificateThumbprints" value="" />
+```xml
+<Setting name="AllowedClientCertificateThumbprints" value="" />
+```
 
 ## <a name="configure-client-certificate-revocation-check"></a>Konfigurálja az ügyfél tanúsítvány visszavonási ellenőrzése
 Az alapértelmezett beállítás nem ellenőrzi az ügyfél tanúsítvány visszavonási állapotának a hitelesítésszolgáltatóhoz. Az ellenőrzések bekapcsolása, ha a hitelesítésszolgáltató által kibocsátott tanúsítványok az ügyfél támogatja az ilyen ellenőrzéseket, módosítsa a következő beállítást egy, a X509RevocationMode enumerálása a megadott:
 
-    <Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```xml
+<Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```
 
 ## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>PFX-fájlt a titkosítási önaláírt tanúsítványok létrehozása
 A titkosítási tanúsítványt hajtsa végre:
@@ -381,7 +407,9 @@ Feltöltés a a meglévő tanúsítványt, vagy jön létre. A titkosítási kul
 ## <a name="update-encryption-certificate-in-service-configuration-file"></a>Titkosítási tanúsítvány frissítése a szolgáltatáskonfigurációs fájlban
 Az ujjlenyomat értékét az alábbi beállítások a konfigurációs fájlban frissítse a felhőszolgáltatásba a tanúsítvány ujjlenyomata:
 
-    <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="common-certificate-operations"></a>Tanúsítvány-műveletek
 * Az SSL-tanúsítvány konfigurálása
@@ -452,7 +480,9 @@ Az [Azure Portalon](https://portal.azure.com/)
 ## <a name="other-security-considerations"></a>Más biztonsági szempontok
 A jelen dokumentumban ismertetett SSL-beállítások a szolgáltatás és az ügyfelek közötti kommunikáció titkosításához, ha a HTTPS-végpontokat használják. Ez azért fontos óta adatbázis-hozzáférési hitelesítő adatokat, és lehetséges, hogy más bizalmas információ található a kommunikációt. Ne feledje, hogy a szolgáltatás továbbra is fennáll belső állapot, a belső táblát is a Microsoft Azure SQL Database a Microsoft Azure-előfizetésében a metaadat-tároló megadott hitelesítő adatokat, beleértve. Az adatbázishoz a szolgáltatáskonfigurációs fájlban a következő beállítás részeként lett definiálva (. CSCFG-fájl): 
 
-    <Setting name="ElasticScaleMetadata" value="Server=…" />
+```xml
+<Setting name="ElasticScaleMetadata" value="Server=…" />
+```
 
 Ebben az adatbázisban tárolt hitelesítő adatok titkosítása. Azonban ajánlott eljárásként, győződjön meg arról, hogy a webes és feldolgozói szerepkörök a szolgáltatástelepítések a rendszer mindig naprakész és biztonságos, mint azok is rendelkezik hozzáféréssel a metaadatokat tároló adatbázis és az tárolt hitelesítő adatok titkosításához és visszafejtéséhez használt tanúsítvány. 
 

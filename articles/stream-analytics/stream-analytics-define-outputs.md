@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8ae55028bbc44a9383be6723f9bc6d39787cca45
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 01aa3d45d3b168c67603861a0a947026d4f2e08c
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767303"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650886"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat.
@@ -56,7 +56,7 @@ A Stream Analytics az Azure Data Lake Store-kimenet jelenleg nem érhető el az 
 | Formátum | Csak a JSON-szerializálás alkalmazható. Sorral elválasztott beállítás megadja, hogy a formázott megadásával minden JSON-objektum sortöréssel elválasztva. Tömb Megadja, hogy a kimenet JSON-objektumok tömbjeként van formázva. A tömb le van zárva, csak akkor, ha a feladat leáll vagy a Stream Analytics át lett helyezve a következő alkalommal időszakban. Általában célszerű, használhatja a parancssorban elválasztott JSON-t, mivel nincs szükség semmilyen különleges kezelést továbbra is van a kimeneti fájl írása közben.|
 
 ### <a name="renew-data-lake-store-authorization"></a>Data Lake Store engedély megújítása
-A Data Lake Store-fiók hitelesítse magát újra, ha a jelszó megváltozott, mivel a feladat létrehozásának vagy utolsó hitelesített kell. Ha Ön nem újrahitelesítéséhez, a feladat nem állít elő a kimeneti eredmények, és akkor jelez hibát jelezve a műveletnaplók a reauthorization van szükség. Jelenleg korlátozott, a hitelesítési jogkivonat kell manuálisan frissíteni kell a Data Lake Store-kimenet az összes feladat 90 naponta.
+A Data Lake Store-fiók hitelesítse magát újra, ha a jelszó megváltozott, mivel a feladat létrehozásának vagy utolsó hitelesített kell. Ha Ön nem újrahitelesítéséhez, a feladat nem állít elő a kimeneti eredmények, és akkor jelez hibát jelezve a műveletnaplók a reauthorization van szükség. Jelenleg korlátozott, a hitelesítési jogkivonat kell manuálisan frissíteni kell a Data Lake Store-kimenet az összes feladat 90 naponta. Azonban ez a korlátozás, által is áthidalható [identitás (előzetes verzió) segítségével történő hitelesítésről felügyelt](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-managed-identities-adls).
 
 Engedély megújítása **leállítása** a feladat > Nyissa meg a Data Lake Store-Kimenet > kattintson a **engedély megújítása** hivatkozásra, és a egy rövid ideig lap felugró jelző **átirányítása engedélyezési...** . A lap automatikusan bezárja, és jelzi, ha ez sikeres, **engedélyezési sikeresen megújítva**. Szeretne kattintson **mentése** a lap alján, és folytathatja a feladatot újraindítja a **leállt utoljára** adatvesztés elkerülése érdekében.
 

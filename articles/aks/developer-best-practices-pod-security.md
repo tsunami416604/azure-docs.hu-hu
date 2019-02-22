@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 412f27c572953b3f44ddca54a99f75895f438f21
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d48a1a1c9e220690649bbf60e9909a38d575c156
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559076"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651958"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) pod biztonsági védelmének bevált gyakorlata
 
@@ -70,7 +70,7 @@ Milyen biztonsági környezet beállításokat kell meghatározni a fürt operá
 
 És a kockázatok hitelesítő adatok elérhetővé váljon az alkalmazás kódjában, kerülje a rögzített vagy megosztott hitelesítő adatokat használjanak. Hitelesítő adatokhoz vagy kulcsokhoz nem tartalmaz közvetlenül a kódba. Ezek a hitelesítő adatok érhetők el, ha az alkalmazásnak kell frissíteni, és áttelepült. Jobb módszer, hogy adjon a podok saját identitás- és hitelesíteni magukat, vagy automatikusan lekérni egy digitális tárolót a hitelesítő adatokat.
 
-Az AKS podok vagy a kérelem hitelesítő adatok és a egy digitális vault-kulcsok automatikusan hitelesítést két módon tartalmazza:
+A következő [társított AKS nyílt forráskódú projektek] [ aks-associated-projects] lehetővé teszik a podok vagy a kérelem hitelesítő adatok és a egy digitális vault-kulcsok automatikusan hitelesítéséhez:
 
 * Felügyelt identitások az Azure-erőforrásokhoz, és
 * Az Azure Key Vault FlexVol illesztőprogram
@@ -83,7 +83,7 @@ Az Azure-erőforrások egy felügyelt identitás lehetővé teszi, hogy hiteles�
 
 Felügyelt identitással az alkalmazás kódja nem kell tartalmaznia egy szolgáltatáshoz, például az Azure Storage eléréséhez szükséges hitelesítő adatokat. Mivel minden egyes pod hitelesíti magát a saját identitással, így is naplózása és hozzáférés felülvizsgálata. Ha az alkalmazás kapcsolódik az Azure-szolgáltatásokat, használja a felügyelt identitásokból korlát hitelesítő adatok újrafelhasználása és kitettség.
 
-Podok identitások kapcsolatos további információkért lásd: [konfigurálni az AKS-fürt használatára pod felügyelt identitások] [ aad-pod-identity] és [hozzárendelése és pod által felügyelt identitásokat használ a kódban] [ aad-pod-identity].
+A pod identitások kapcsolatos további információkért lásd: [pod által felügyelt identitásokat használ egy AKS-fürt konfigurálása és az alkalmazásokkal][aad-pod-identity]
 
 ### <a name="use-azure-key-vault-with-flexvol"></a>Az Azure Key Vault használata FlexVol
 
@@ -107,6 +107,7 @@ Ez a cikk a podok biztonságossá összpontosít. Néhány ilyen területet vég
 [aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
+[aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects
 
 <!-- INTERNAL LINKS -->
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md

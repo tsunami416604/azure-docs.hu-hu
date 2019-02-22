@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/14/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 62fde78cce05e62489931868da3d21c8b2e16928
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.lastreviewed: 02/14/2019
+ms.openlocfilehash: ebf8066139df93aefe1cfa21f2dc80ab57ca84bb
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430337"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652450"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -53,11 +53,13 @@ Mielőtt regisztrálná az Azure Stack az Azure-ral, a következőkkel kell rend
 
 - A felhasználónév és jelszó, amely az előfizetés tulajdonosa.
 
-- A felhasználói fiók rendelkezik hozzáféréssel az Azure-előfizetés, és rendelkezik a címtárban, az adott előfizetéshez tartozó identitást használó alkalmazások és az egyszerű szolgáltatások létrehozásához szükséges engedélyek kell. Azt javasoljuk, hogy regisztrálja az Azure Stack az Azure által a minimális jogosultságon alapuló felügyeleti [regisztrációs használandó szolgáltatásfiók létrehozására](azure-stack-registration-role.md) globális rendszergazdai hitelesítő adatok használata helyett.
+- A felhasználói fiók rendelkezik hozzáféréssel az Azure-előfizetés, és rendelkezik a címtárban, az adott előfizetéshez tartozó identitást használó alkalmazások és az egyszerű szolgáltatások létrehozásához szükséges engedélyek kell. Azt javasoljuk, hogy regisztrálja az Azure Stack az Azure-ral jogosultságon alapuló felügyeleti. Egy egyéni szerepkör-definíció, amely korlátozza a hozzáférést az előfizetés regisztrációs létrehozásáról további információkért lásd: [regisztrációs szerepkör létrehozása az Azure Stack](azure-stack-registration-role.md).
 
 - Az Azure Stack erőforrás-szolgáltató regisztrálva (lásd a következő regisztrálása az Azure Stack erőforrás-szolgáltató részletekért).
 
 A regisztrációt követően az Azure Active Directory globális rendszergazdának, nem szükséges. Egyes műveletek azonban szükség lehet a globális rendszergazdai hitelesítő adatok. Például egy erőforrás-szolgáltató szoftvertelepítő parancsfájl vagy egy új szolgáltatást igénylő engedélyt kell adni. Ideiglenesen érvényességének visszaállítása a fiók globális rendszergazdai jogosultságokkal, vagy használjon egy külön globális rendszergazdai fiókkal, amely a tulajdonosa a *szolgáltatói előfizetés alapértelmezett*.
+
+A felhasználó, aki regisztrál az Azure Stack az Azure Active Directory egyszerű szolgáltatás tulajdonosa. Csak a felhasználó, aki regisztrált az Azure Stack az Azure Stack-regisztráció módosíthatja. Ha egy nem rendszergazdai felhasználó, aki nem tulajdonosa, a regisztrációs szolgáltatás egyszerű próbál meg regisztrálni, illetve regisztrálja újra az Azure Stack, azok tapasztalhat a 403-as választ. A 403-as válasz azt jelzi, hogy a felhasználó nem rendelkezik megfelelő engedélyekkel a művelet végrehajtásához.
 
 Ha nem rendelkezik Azure-előfizetéssel, amely megfelel ezeknek a követelményeknek, [ingyenes Azure-fiók létrehozása itt](https://azure.microsoft.com/free/?b=17.06). Az Azure-előfizetése ingyenes regisztrálása az Azure Stack tekintetében.
 
@@ -479,6 +481,13 @@ Get-AzsRegistrationToken egy regisztrációs jogkivonatot hoz létre a bemeneti 
 | UsageReportingEnabled | Igaz/hamis | Az Azure Stack használati metrikai jelentések alapértelmezés szerint. Kapacitás használt vagy leválasztott környezetben támogató kezelők kell kikapcsolni a használati jelentések készítése. Ez a paraméter megengedett értékei a következők: IGAZ, hamis. |
 | AgreementNumber | String |  |
 
+## <a name="registration-failures"></a>Regisztrációs hibák
+
+Az alábbi hibák egyike az Azure Stack-regisztráció során jelenhet meg:
+1. Nem sikerült beolvasni $hostName kötelező hardver adatait. Ellenőrizze a fizikai gazdagép és a kapcsolatot, majd próbálja meg újra futtatni a regisztrációs.
+2. Nem lehet csatlakozni a hardver adatainak beolvasása –. Ellenőrizze a fizikai gazdagép és a kapcsolatot, majd próbálja meg újra futtatni a regisztrációs $hostName.
+
+OK: Ennek oka általában azt próbálja meg beszerezni a hardveradatokat, például UUID azonosító, a BIOS-ban és a Processzor próbálják végrehajtani az aktiválást a gazdagépekről, és nem sikerült a nem lehet kapcsolódni a a fizikai gazdagép miatt.
 
 ## <a name="next-steps"></a>További lépések
 

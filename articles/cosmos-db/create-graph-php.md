@@ -8,14 +8,14 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: f13f8878f24309330db8143eb0f5cf3ae890d2fe
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e7ca026d47952721c7aa28de401738ef50b697c6
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039146"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586716"
 ---
-# <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Az Azure Cosmos DB: Hozzon létre egy gráfadatbázist php-t és az Azure portal használatával
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Gyors útmutató: Gráfadatbázis létrehozása a PHP és az Azure portal segítségével Azure Cosmos DB-ben
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 2b73deb18b518f257e1de6125ef6d4e35eb0e7b7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 6ce10cd9947acbb74807a5288fc1753e794e69c7
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236278"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652297"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -35,7 +35,7 @@ Azure-beli diagnosztikai naplók alapvető használati metrikák exportálhat a 
 
 - A blob storage-, csv-fájlba exportálása és diagramjait létrehozni az Excel adatok exportálása.
 - Adatok exportálása az Event hubs szolgáltatásba, és az egyéb Azure-szolgáltatásokból származó adatokkal.
-- Adatok exportálása a saját Log Analytics-munkaterület az adatok Log Analytics és megtekintése
+- Adatok exportálása az Azure Monitor naplóira és adatok megtekintése a saját Log Analytics-munkaterület
 
 A következő ábrán egy tipikus CDN core analytics adatok nézetét.
 
@@ -85,15 +85,15 @@ A naplók tárolásához egy storage-fiók használatához kövesse az alábbi l
 
 5. Miután befejezte a diagnosztikai napló beállításait, válassza ki a **mentése**.
 
-### <a name="logging-with-log-analytics"></a>A Log Analytics-naplózás
+### <a name="logging-with-azure-monitor"></a>Naplózás az Azure monitorral
 
-A naplók tárolására a Log Analytics használatához kövesse az alábbi lépéseket:
+A naplók tárolására az Azure Monitor használatához kövesse az alábbi lépéseket:
 
 1. Az a **diagnosztikai naplók** lapon jelölje be **Küldés a Log Analyticsnek**. 
 
     ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. Válassza ki **konfigurálása** Log Analytics naplózási. 
+2. Válassza ki **konfigurálása** konfigurálása az Azure Monitor-naplózás. 
 
    A **Log Analytics-munkaterületek** lap jelenik meg.
 
@@ -133,7 +133,7 @@ A naplók tárolására a Log Analytics használatához kövesse az alábbi lép
 
     ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
-    A Log Analytics-munkaterülethez már készen áll az adatok. Annak érdekében, hogy felhasználhatják az adatokat, használjon egy [Log Analytics megoldás](#consuming-diagnostics-logs-from-a-log-analytics-workspace), az érintett a cikk későbbi részében.
+    A Log Analytics-munkaterülethez már készen áll az adatok. Felhasználhatják az adatokat, akkor kell használnia egy [Azure Monitor-naplók megoldás](#consuming-diagnostics-logs-from-a-log-analytics-workspace), az érintett a cikk későbbi részében.
 
 Naplózási adatok késések kapcsolatos további információkért lásd: [adatok késések jelentkezzen](#log-data-delays).
 
@@ -211,9 +211,9 @@ Itt látható, hogyan használhatja az eszközt:
 5.  Az eredményül kapott CSV-fájl az elemzési adatok bemutatja egy egyszerű, egybesimított hierarchiában.
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>A Log Analytics-munkaterület fogyasztó diagnosztikai naplók
-Log Analytics az Azure-szolgáltatás figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson. 
+Az Azure Monitor egy Azure-szolgáltatás, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson. 
 
-A Log Analytics használatához be kell [naplózás engedélyezése](#enable-logging-with-azure-storage) a Azure Log Analytics-munkaterületet, amely a következő cikkben a cikk korábbi részében.
+Az Azure Monitor használatával kell [naplózás engedélyezése](#enable-logging-with-azure-storage) a Azure Log Analytics-munkaterületet, amely a következő cikkben a cikk korábbi részében.
 
 ### <a name="using-the-log-analytics-workspace"></a>A Log Analytics munkaterület használata
 
@@ -227,9 +227,9 @@ Felügyeleti megoldások használatával egy számos különböző módon képes
 
 Telepítheti az eszközfelügyeleti megoldások Azure marketplace-ről kiválasztásával a **Letöltés most** hivatkozás az egyes megoldások a lap alján.
 
-### <a name="add-a-log-analytics-cdn-management-solution"></a>Log Analytics CDN felügyeleti megoldás hozzáadása
+### <a name="add-a-azure-monitor-cdn-management-solution"></a>Az Azure Monitor CDN felügyeleti megoldás hozzáadása
 
-Adja hozzá a Log Analytics felügyeleti megoldás az alábbi lépéseket követve:
+Kövesse az alábbi lépéseket egy Azure Monitor megoldás hozzáadása:
 
 1.   Az Azure Portalon az Azure-előfizetés használatával jelentkezzen be, és nyissa meg az irányítópultot.
     ![Azure-irányítópulton](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
@@ -443,7 +443,7 @@ Példa tulajdonságai:
 
 * [Az Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Egyszerűsített analitika az Azure CDN-t kiegészítő portálon keresztül](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Az Azure Monitor naplóira](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Az Azure Log Analytics REST API-val](https://docs.microsoft.com/rest/api/loganalytics)
 
 

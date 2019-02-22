@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 9da2f8fa345ad3447d7c3344772458c451cf427e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 78c9eaaf1dad0ae596bad13ac40a9df2dc4d2f3c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867239"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594729"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: Az egyszerű entitás és egy kifejezés lista nevének kinyerése
 
@@ -233,7 +233,9 @@ Nyissa meg a [feladatok-kifejezés-list.csv](https://github.com/Azure-Samples/co
 
     [![Képernyőkép a hozzon létre új kifejezést tartalmazó párbeszédpanelen előugró](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Képernyőkép az új kifejezést tartalmazó párbeszédpanelen előugró létrehozása")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Ha több szót szeretne hozzáadni a kifejezéslistához, tekintse át **Related Values** (Kapcsolódó értékek) listáját, és adja hozzá a relevánsakat. 
+    Ha több olyan szót, kifejezést listájához hozzáadni, jelölje be **Recommand** tekintse át az új **kapcsolódó értékek** , és adja hozzá bármelyik szempontjából releváns. 
+
+    Győződjön meg arról, hogy a **ezeket az értékeket felcserélhetők** be van jelölve, mert ezeket az értékeket minden kell kezelni a szinonimák feladatok. További tudnivalók a cserélhető és noninterchangeable [kifejezést a lista fogalmak](luis-concept-feature.md#how-to-use-phrase-lists).
 
 1. A kifejezéslista aktiválásához kattintson a **Save** (Mentés) gombra.
 

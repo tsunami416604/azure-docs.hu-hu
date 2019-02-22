@@ -8,15 +8,15 @@ manager: pchoudh
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 757ef07c1268cbf159ce98dfb8ba1980616e4a3a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: f144262f43396ac5d4f37939d35fca2645acc4bd
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245133"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650172"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>A QnA Maker Tudásbázis megbízhatósági pontszám
 Ha egy felhasználó lekérdezése Tudásbázis van, a QnA Maker azokra adott válaszokat, és a egy magabiztossági pontszámot ad vissza. Ezt az értéket, hogy a válasz-e a megfelelő egyezik a megadott felhasználói lekérdezés magabiztosan jelzi. 
@@ -72,9 +72,9 @@ Ha például egy Tudásbázis különböző régiókban, minden régióban haszn
 
 
 ## <a name="no-match-found"></a>Nincs találat.
-Nem megfelelő talál egyezést szerint a rangsorolás, amikor a 0,0 vagy "None" megbízhatósági pontszámot ad vissza, és az alapértelmezett válasz "nem szerepel jó a KB-ban található". Ez a robot vagy alkalmazás kód, a végpontot hív-e alapértelmezett válasz felül lehet bírálni. Azt is megteheti a felülbírálás válasz állítsa be az Azure-ban, és a egy adott QnA Maker szolgáltatást üzembe helyezett összes tudásbázisok az alapértelmezett értékre változik.
+Nem megfelelő talál egyezést szerint a rangsorolás, amikor a 0,0 vagy "None" megbízhatósági pontszámot ad vissza, és az alapértelmezett válasz "nem szerepel jó a KB-ban található". Ez felülírható [alapértelmezett válasz](#change-default-answer) a kódban a robot vagy alkalmazás a végpontot hív-e. Azt is megteheti a felülbírálás válasz állítsa be az Azure-ban, és a egy adott QnA Maker szolgáltatást üzembe helyezett összes tudásbázisok az alapértelmezett értékre változik.
 
-### <a name="change-default-answer"></a>Alapértelmezett válasz módosítása
+## <a name="change-default-answer"></a>Alapértelmezett válasz módosítása
 
 1. Nyissa meg a [az Azure portal](https://portal.azure.com) , és keresse meg az erőforráscsoport, amely a QnA Maker szolgáltatást létrehozott jelöli.
 
@@ -94,5 +94,4 @@ Nem megfelelő talál egyezést szerint a rangsorolás, amikor a 0,0 vagy "None"
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Támogatott adatforrások](./data-sources-supported.md)
-## <a name="see-also"></a>Lásd még 
-[A QnA Maker áttekintése](../Overview/overview.md)
+

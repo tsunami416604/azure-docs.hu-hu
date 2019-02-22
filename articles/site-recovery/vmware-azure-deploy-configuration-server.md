@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: ramamill
-ms.openlocfilehash: b7454226b96ff2f6a76285d708a7ce2ad1c3a6de
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 4260aaf814b344c1a30106651959d4e4e9ad2335
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235886"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594219"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -31,6 +31,25 @@ Konfigurációs kiszolgáló, az egyes minimális hardver- és méretezési köv
 Minimális hardverkövetelmények a konfigurációs kiszolgáló az alábbi táblázat foglalja össze.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
+
+## <a name="azure-active-directory-permission-requirements"></a>Az Azure Active Directory szükséges jogosultságok
+
+Szüksége van a felhasználó **a következők egyikét** konfigurációs kiszolgálót regisztrálja az Azure Site Recovery szolgáltatással az aad-ben (Azure Active Directory) beállított engedélyeket.
+
+1. Felhasználói "Alkalmazásfejlesztő" szerepkörrel hozhat létre alkalmazást kell rendelkeznie.
+   1. Győződjön meg arról, hogy jelentkezzen be az Azure Portalra</br>
+   1. Keresse meg az Azure Active Directory > szerepkörök és a rendszergazdák</br>
+   1. Győződjön meg arról, ha a "Alkalmazásfejlesztő" szerepkört a felhasználóhoz rendelt. Ha nem, akkor ezzel az engedéllyel rendelkező felhasználó használhatja, vagy forduljon [rendszergazdáját, hogy engedélyezze az engedély](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
+    
+1. Ha az "Alkalmazás fejlesztője" szerepkör nem rendelhető hozzá, győződjön meg arról, hogy igaz a felhasználói identitás létrehozása "A felhasználó alkalmazás regisztrálhatja" jelző van beállítva. Engedélyek, fent engedélyezése
+   1. Bejelentkezés az Azure portálra
+   1. Keresse meg az Azure Active Directory > felhasználói beállítások
+   1. A ** alkalmazásregisztrációk ","Felhasználók regisztrálhatnak alkalmazásokat"ki kell választani a"Yes"-t.
+
+    ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
+
+> [!NOTE]
+> Az Active Directory összevonási Services(ADFS) **nem támogatott**. Használjon egy szolgáltatáson keresztül felügyelt fiókot [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
 
 ## <a name="capacity-planning"></a>Kapacitástervezés
 
@@ -94,31 +113,35 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
 3. A telepítés befejezése után jelentkezzen be rendszergazdaként a virtuális gépre.
 4. Az első alkalommal bejelentkezik, néhány másodpercen belül az Azure Site Recovery Configuration Tool elindul.
 5. Adjon meg egy nevet, amelyen a konfigurációs kiszolgálót regisztrálja a Site Recovery szolgáltatásban. Ezután kattintson a **Tovább** gombra.
-6. Az eszköz ellenőrzi, hogy a virtuális gép tud-e csatlakozni az Azure-hoz. A kapcsolat létrejötte után a **Sign in** (Bejelentkezés) gombra kattintva jelentkezzen be az Azure-előfizetésbe. Olyan hitelesítő adatokra van szükség, amelyekkel hozzá lehet férni a tárolóhoz, amelyben regisztrálni kívánja a konfigurációs kiszolgálót.
+6. Az eszköz ellenőrzi, hogy a virtuális gép tud-e csatlakozni az Azure-hoz. A kapcsolat létrejötte után a **Sign in** (Bejelentkezés) gombra kattintva jelentkezzen be az Azure-előfizetésbe.
+    a. Olyan hitelesítő adatokra van szükség, amelyekkel hozzá lehet férni a tárolóhoz, amelyben regisztrálni kívánja a konfigurációs kiszolgálót.
+    b. Győződjön meg arról, hogy kiválasztott felhasználói fiók rendelkezik-e engedélyekkel alkalmazás létrehozása az Azure-ban. Ahhoz, hogy a szükséges engedélyekkel, hajtsa végre a megadott irányelveket [Itt](#azure-active-directory-permission-requirements).
 7. Az eszköz végrehajt néhány konfigurációs feladatot, majd újraindul.
 8. Jelentkezzen be újra a gépre. Elindul a konfigurációs kiszolgáló felügyeleti varázslójában **automatikusan** néhány másodperc múlva.
 
 ### <a name="configure-settings"></a>Beállítások konfigurálása
 
 1. A konfigurációs kiszolgáló felügyeleti varázslójában válassza a **Setup connectivity** (Kapcsolat beállítása) gombot, majd válassza ki a folyamatkiszolgáló által a virtuális gépekről érkező replikációs forgalom fogadására használt hálózati adaptert. Ezután válassza a **Save** (Mentés) lehetőséget. Ez a beállítás konfigurálását követően nem módosítható. Javasoljuk, hogy ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg arról, a konfigurációs kiszolgálóhoz rendelt IP-cím statikus és nem a DHCP IP-Címek.
-2. A **helyreállítási tár kiválasztása**, jelentkezzen be a Microsoft Azure-ba, válassza ki az Azure-előfizetés és a megfelelő erőforráscsoportot és tárolót.
+2. A **helyreállítási tár kiválasztása**, jelentkezzen be a Microsoft Azure-során használt hitelesítő adatok **6. lépés** az "[regisztrálása konfigurációs kiszolgálóhoz az Azure Site Recovery Services](#register-the-configuration-server-with-azure-site-recovery-services)" .
+3. Után jelentkezzen be válassza ki az Azure-előfizetés és a megfelelő erőforráscsoportot és tárolót.
 
     > [!NOTE]
     > Miután regisztrált, nincs nincs rugalmasan módosíthatja a recovery services-tároló.
+    > Változó recovery services-tároló aktuális tárolóból a konfigurációs kiszolgáló társításának lenne szükség, és az a konfigurációs kiszolgáló területén az összes védett virtuális gép replikációja leáll. További [információ](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault).
 
-3. A **harmadik féltől származó szoftverek telepítése**,
+4. A **harmadik féltől származó szoftverek telepítése**,
 
     |Forgatókönyv   |Végrehajtandó lépések  |
     |---------|---------|
     |Töltse le és telepítse manuálisan a MySQL?     |  Igen. Töltse le a MySQL-alkalmazás és a mappában **C:\Temp\ASRSetup**, majd telepítse manuálisan. Most, ha elfogadja a szerződés > kattintson a **töltse le és telepítse**, a portál szerint *már telepítve van*. A következő lépéssel folytathatja.       |
     |Elkerülheti a MySQL letöltése online?     |   Igen. A MySQL-telepítő alkalmazás a mappába helyezett **C:\Temp\ASRSetup**. Fogadja el a használati > kattintson a **töltse le és telepítse**, a portálon az Ön által hozzáadott telepítő fogja használni, és telepíti az alkalmazást. Folytassa a következő lépés utáni telepítése.    |
     |Szeretném, ha letöltése és telepítése az Azure Site Recovery MySQL     |  Fogadja el a licencszerződést, és kattintson a **töltse le és telepítse**. Majd folytassa a következő lépés utáni telepítése.       |
-4. A **Berendezés konfigurációjának ellenőrzése** területen a rendszer ellenőrzi az előfeltételeket, mielőtt továbblépne.
-5. A **VCenter-kiszolgáló vagy vSphere ESXi-kiszolgáló hitelesítő adatainak konfigurálása** területen adja meg azon vCenter-kiszolgáló vagy VSphere-gazdagép teljes tartománynevét vagy IP-címét, ahol a replikálni kívánt virtuális gépek találhatók. Adja meg a portot, amelyen a kiszolgáló figyel. Adja meg a VMware-kiszolgáló rövid nevét, amelyet a tárolóban használni fog.
-6. Adja meg a konfigurációs kiszolgáló által a VMware-kiszolgálóhoz való csatlakozáshoz használt hitelesítő adatokat. A Site Recovery ezeknek a hitelesítő adatoknak a használatával automatikusan deríti fel a replikáláshoz elérhető VMware virtuális gépeket. Válassza ki **hozzáadása**, majd **továbbra is**. Az itt megadott hitelesítő adatok helyben menti.
-7. A **virtuális gép hitelesítő adatainak konfigurálása**, adja meg a felhasználónevet és jelszót a virtuális gépek, automatikusan telepíteni a mobilitási szolgáltatást a replikáció során. A **Windows** gépek, a fióknak rendelkeznie kell a helyi rendszergazdai jogosultságokkal a replikálni kívánt gépeken. A **Linux**, adja meg a rendszergazdai fiók adatait.
-8. Válassza a **Konfiguráció véglegesítése** elemet a regisztráció befejezéséhez.
-9. Regisztráció befejezését követően nyissa meg az Azure Portalon, ellenőrizze, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel-e **Recovery Services-tároló** > **kezelés**  >  **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
+5. A **Berendezés konfigurációjának ellenőrzése** területen a rendszer ellenőrzi az előfeltételeket, mielőtt továbblépne.
+6. A **VCenter-kiszolgáló vagy vSphere ESXi-kiszolgáló hitelesítő adatainak konfigurálása** területen adja meg azon vCenter-kiszolgáló vagy VSphere-gazdagép teljes tartománynevét vagy IP-címét, ahol a replikálni kívánt virtuális gépek találhatók. Adja meg a portot, amelyen a kiszolgáló figyel. Adja meg a VMware-kiszolgáló rövid nevét, amelyet a tárolóban használni fog.
+7. Adja meg a konfigurációs kiszolgáló által a VMware-kiszolgálóhoz való csatlakozáshoz használt hitelesítő adatokat. A Site Recovery ezeknek a hitelesítő adatoknak a használatával automatikusan deríti fel a replikáláshoz elérhető VMware virtuális gépeket. Válassza ki **hozzáadása**, majd **továbbra is**. Az itt megadott hitelesítő adatok helyben menti.
+8. A **virtuális gép hitelesítő adatainak konfigurálása**, adja meg a felhasználónevet és jelszót a virtuális gépek, automatikusan telepíteni a mobilitási szolgáltatást a replikáció során. A **Windows** gépek, a fióknak rendelkeznie kell a helyi rendszergazdai jogosultságokkal a replikálni kívánt gépeken. A **Linux**, adja meg a rendszergazdai fiók adatait.
+9. Válassza a **Konfiguráció véglegesítése** elemet a regisztráció befejezéséhez.
+10. Regisztráció befejezését követően nyissa meg az Azure Portalon, ellenőrizze, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel-e **Recovery Services-tároló** > **kezelés**  >  **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
 
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 

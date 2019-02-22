@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 535dd04efd9f150365b24ae175ee90fbb247305f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 28b15e950aa4ebbfcb1b04bfd495b3accf13528e
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846676"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586902"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
 
@@ -41,40 +41,11 @@ Ez az oktatóanyag a következő lépéseken vezet végig:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Névtér létrehozása az Azure Portal használatával
-
-> [!NOTE] 
-> A [PowerShell](/powershell/azure/get-started-azureps) használatával Service Bus-névtér és üzenetküldési entitások létrehozására is lehetőség van. További információkért lásd [a Service Bus-erőforrások PowerShell-lel történő kezelésével](service-bus-manage-with-ps.md) foglalkozó témakört.
-
-Ha már létrehozta a Service Bus Messaging-névteret, lépjen a [Üzenettéma létrehozása az Azure Portal használatával](#2-create-a-topic-using-the-azure-portal) szakaszra.
-
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-topic-using-the-azure-portal"></a>2. Üzenettéma létrehozása az Azure Portal használatával
+[!INCLUDE [service-bus-create-topics-subscriptions-portal](../../includes/service-bus-create-topics-subscriptions-portal.md)]
 
-1. Jelentkezzen be az [Azure Portalra][azure-portal].
-2. A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre (ha nem látja a **Service Bus** elemet, kattintson a **Minden szolgáltatás** lehetőségre, vagy kattintson a **Minden erőforrás** lehetőségre). Kattintson a névtérre, amelyben az üzenettémát létre kívánja hozni. 
-3. Megnyílik a névtér áttekintési ablaka. Kattintson a **Témakörök** elemre:
-   
-    ![Üzenettémakör létrehozása][createtopic1]
-4. Kattintson a **+ Témakör** elemre.
-   
-    ![Üzenettéma kiválasztása][createtopic2]
-5. Adja meg a témakör nevét. A többi beállítást hagyja az alapértelmezett értékükön.
-   
-    ![Új kiválasztása][createtopic3]
-6. Kattintson a párbeszédpanel alján található **Létrehozás** gombra.
-
-## <a name="3-create-a-subscription-to-the-topic"></a>3. Előfizetés létrehozása az üzenettémához
-
-1. A portálon, az erőforrások panelen kattintson az 1. lépésben létrehozott névtérre, majd a **Témakörök** elemre, végül pedig a 2. lépésben létrehozott üzenettéma nevére.
-2. Ha egy előfizetést szeretne hozzáadni az üzenettémához, kattintson az áttekintő panel tetején a **+ Előfizetés** elemre.
-
-    ![Előfizetés létrehozása][createtopic4]
-
-3. Adjon egy nevet az előfizetésnek. A többi beállítást hagyja az alapértelmezett értékükön.
-
-## <a name="4-send-messages-to-the-topic"></a>4. Üzenet küldése az üzenettémához
+## <a name="send-messages-to-the-topic"></a>Üzenet küldése az üzenettémához
 
 A Visual Studio használatával írjon C# konzolalkalmazást az üzenetek üzenettémához való elküldéséhez.
 
@@ -231,7 +202,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
    
       ![Üzenet mérete][topic-message]
 
-## <a name="5-receive-messages-from-the-subscription"></a>5. Üzenet fogadása az előfizetéstől
+## <a name="receive-messages-from-the-subscription"></a>Üzenet fogadása az előfizetéstől
 
 Az imént elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzolalkalmazást, majd telepítse a **Microsoft.Azure.ServiceBus** NuGet-csomagot, az előző küldő alkalmazáshoz hasonlóan.
 

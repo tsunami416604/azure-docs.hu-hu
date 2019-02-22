@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 01/07/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1f5c47dd3453c0c8f02f1b0a87e5f2fff123f8be
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: dd2d8c0e277bca844160fc0017d350d5aa183679
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242807"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593165"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>Mint szolgáltatásra kulcs érvényesítése
 
@@ -46,7 +46,7 @@ A munkafolyamatok kategorizálta a forgatókönyv típusát a teszteléshez. A m
 ![VaaS munkafolyamat csempék](media/tile_all-workflows.png)
 
 > [!NOTE]
-> A **megoldás érvényesítési** munkafolyamat jelenleg két forgatókönyvet támogatja: [OEM-csomagok érvényesítése](azure-stack-vaas-validate-oem-package.md) és [ellenőrzése a Microsoft szoftverfrissítések](azure-stack-vaas-validate-microsoft-updates.md).
+> A **csomag** munkafolyamat jelenleg két forgatókönyvet támogatja: [OEM-csomagok érvényesítése](azure-stack-vaas-validate-oem-package.md) és [ellenőrzése a Microsoft szoftverfrissítések](azure-stack-vaas-validate-microsoft-updates.md).
 
 További információ a munkafolyamat-típusok: [szolgáltatását az Azure Stack érvényesítési mi?](azure-stack-vaas-overview.md).
 
@@ -56,8 +56,8 @@ További információ a munkafolyamat-típusok: [szolgáltatását az Azure Stac
 2. Új munkafolyamat létrehozásához válassza a **Start** bármely csempén. Minden egyes munkafolyamat vonatkozó információkért lásd: a következő cikkeket:
     - Tesztmenetek: [Rövid útmutató: Az érvényesítés használja egy portált, az első vizsgálat ütemezése](azure-stack-vaas-schedule-test-pass.md)
     - Megoldás-érvényesítés: [Egy új Azure Stack megoldás ellenőrzése](azure-stack-vaas-validate-solution-new.md)
-    - Megoldás-érvényesítés: [A Microsoft szoftverfrissítések ellenőrzése](azure-stack-vaas-validate-microsoft-updates.md)
-    - Megoldás-érvényesítés: [OEM-csomagok érvényesítése](azure-stack-vaas-validate-oem-package.md)
+    - Csomag érvényességének ellenőrzése (havi frissítésében): [A Microsoft szoftverfrissítések ellenőrzése](azure-stack-vaas-validate-microsoft-updates.md)
+    - Csomag érvényesítése (a csomag aláírása): [OEM-csomagok érvényesítése](azure-stack-vaas-validate-oem-package.md)
 
 3. Felügyelheti és figyelheti a meglévő munkafolyamatok, válassza ki a **kezelés** a munkafolyamat csempére. Válassza ki a nevét, a munkafolyamat és a **szerkesztése** tulajdonságainak megtekintése és módosítása a közös tesztparaméterekre gombra.
 

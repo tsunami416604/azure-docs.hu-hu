@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: f0b2e1afdc42d8aaa0ab8d3af76f51fb6ded24e0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bacfb5fed4d72a7be2239ba97a68f15766b3ff59
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857766"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650445"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>A QnA Maker Tudásbázis életciklusa
 A QnA Maker legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések. 
@@ -27,9 +27,15 @@ A QnA Maker legjobb megtanulja az iteratív ciklusának adatmodell változásain
 A QnA Maker Tudásbázis (KB) végpontja biztosítja a legjobb-match válasz tartalma a KB-os felhasználói lekérdezés. Tudásbázis létrehozása egy egyszeri művelet egy content tárház kérdések, válaszok és kapcsolódó metaadatok beállítására. Tudásbázis például gyakori kérdéseket tartalmazó oldalak, kézikönyvek vagy strukturált Q-A-párokat már meglévő tartalmak bejárásához hozható létre. Ismerje meg, hogyan [Tudásbázis létrehozása](../How-To/create-knowledge-base.md).
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>Tesztelése és frissítése a Tudásbázis
-A Tudásbázis készen áll a tesztelésre, a rendszer kitölti tartalmat, besorolást vagy automatikus kivonása után. Tesztelés végezhető el a **teszt** panel gyakori felhasználói lekérdezések beírásával, és annak ellenőrzése, hogy a visszaadott válaszokat várt módon, és a rendszer megfelelő magabiztossági pontszámot. Alacsony megbízhatósági pontszámok újraindított alternatív kérdéseket adhat hozzá. Hozzáadhat új válaszok is, ha a lekérdezés visszaadja a "nincs egyezés a KB-ban" alapértelmezett válasz. Ez a teszt-frissítés szoros ciklus továbbra is fennáll, addig, amíg az eredmények elégedett. Ismerje meg, hogyan [a Tudásbázis tesztelése](../How-To/test-knowledge-base.md).
 
-A nagy Tudásbázis a tesztelés automatizálható generateAnswer API-k használatával. 
+A Tudásbázis készen áll a tesztelésre, a rendszer kitölti tartalmat, besorolást vagy automatikus kivonása után. A QnA Maker portálon keresztül végezhető interaktív tesztelése a **teszt** panel gyakori felhasználói lekérdezések beírásával, és annak ellenőrzésére, hogy a válaszokat a helyes választ, és elegendő magabiztossági pontszámot ad vissza. 
+
+* **Alacsony megbízhatósági pontszámok megoldásához**: alternatív kérdések hozzáadása. 
+* **Ha a lekérdezés nem megfelelően adja vissza a [alapértelmezett válasz](confidence-score.md#change-default-answer)**: Adja hozzá a megfelelő kérdésekre adott válaszok új. 
+
+Ez a teszt-frissítés szoros ciklus továbbra is fennáll, addig, amíg az eredmények elégedett. Ismerje meg, hogyan [a Tudásbázis tesztelése](../How-To/test-knowledge-base.md).
+
+A nagy Tudásbázis használata automatizált teszteléshez a a [generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) és a `isTest=true` lekérdezési karakterlánc paraméter azokat a lekérdezéseket a `test` Tudásbázis a közzétett Tudásbázis helyett. 
 
 ## <a name="publish-the-knowledge-base"></a>A tudásbázis közzététele
 Ha elkészült a Tudásbázis tesztelése, közzéteheti azt. A legújabb verzióra a tesztelt Tudásbázis egy dedikált Azure Search-index jelölő leküldések közzététele a **közzétett** Tudásbázis. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.

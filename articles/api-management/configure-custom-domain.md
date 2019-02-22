@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: f613995dbdd787d0a031cb2c24d67c682b2d7cec
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: cb7ccc665cdf9867232580fd8b687b344e43116d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446372"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587276"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása 
 
@@ -42,9 +42,9 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Egyéni tartománynév beállítása az Azure portal használatával
 
 1. Keresse meg az APIM-példányra, az a [az Azure portal](https://portal.azure.com/).
-2. Válassza ki **egyéni tartományok és SSL**.
+1. Válassza ki **egyéni tartományok és SSL**.
     
-    Nincs számos végpontot, amelyhez hozzárendelhet egy egyéni tartomány nevét. Jelenleg az alábbi végpontok érhetők el: 
+    Nincsenek számos végpontot, amelyhez hozzárendelhet egy egyéni tartomány nevét. Jelenleg az alábbi végpontok érhetők el: 
     + **Proxy** (alapértelmezett érték: `<apim-service-name>.azure-api.net`), 
     + **Portál** (alapértelmezett érték: `<apim-service-name>.portal.azure-api.net`),     
     + **Felügyeleti** (alapértelmezett érték: `<apim-service-name>.management.azure-api.net`), 
@@ -52,12 +52,16 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
 
     >[!NOTE]
     > A végpontok egy része vagy azokat frissítheti. Gyakran, az ügyfelek frissítéséhez **Proxy** (az URL-cím segítségével az API Management szolgáltatáson keresztül közzétett API-t) és **portál** (a fejlesztői portál URL-cím). **Felügyeleti** és **SCM** végpontok belsőleg az APIM-ügyfelek, és így kevésbé gyakran hozzárendelt egy egyéni tartomány nevét.
-3. Válassza ki a frissíteni kívánt végpontot. 
-4. Kattintson a jobb oldali ablakban **egyéni**.
 
-    + Az a **egyéni tartománynév**, adja meg a használni kívánt nevét. Például: `api.contoso.com`. <br/>Helyettesítő karaktereket tartalmazó tartománynevek (például *. tartomány.com) is támogatottak.
-    + Az a **tanúsítvány**, adjon meg egy érvényes. Feltölteni kívánt PFX-fájlt. 
-    + Ha a tanúsítvány jelszava, írja be a a **jelszó** mező.
+1. Válassza ki a frissíteni kívánt végpontot. 
+1. Kattintson a jobb oldali ablakban **egyéni**.
+
+    + Az a **egyéni tartománynév**, adja meg a használni kívánt nevét. Például: `api.contoso.com`. Helyettesítő karaktereket tartalmazó tartománynevek (például *. tartomány.com) is támogatottak.
+    + Az a **tanúsítvány**, válasszon ki egy tanúsítványt a Key Vaultból. Emellett feltölthet egy érvényes. PFX fájlt, és adja meg a **jelszó**, ha a tanúsítvány jelszóval védett.
+
+    > [!TIP]
+    > Ha az Azure Key Vault használatával kezelheti az egyéni tartomány SSL-tanúsítványt, ellenőrizze, hogy a tanúsítvány szúr be a Key Vault [, egy *tanúsítvány*](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nem egy *titkos*. A tanúsítvány autorotate értékre van állítva, ha az API Management automatikusan felveszi a legújabb verzióra.
+
 1. Kattintson a alkalmazni.
 
     >[!NOTE]

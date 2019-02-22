@@ -14,12 +14,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 602517f13b762f5dd7a13e652a5e8bf5de56e403
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9d358c021f795172e7ced0ba2a2f309a0a0dab6e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245633"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649727"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Az Azure Stack-tanúsítványok aláíró kérés létrehozása
 
@@ -27,48 +27,49 @@ Az Azure Stack készültségi ellenőrző eszköz segítségével létre tanús�
 
 Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) segítségével a következő tanúsítványt igényelni:
 
- - **Standard szintű Eszköztanúsítvány-igénylések** szerint [PKI-tanúsítványok létrehozása az Azure Stack üzembe helyezéséhez](azure-stack-get-pki-certs.md).
- - **Platform-as-a-Service**  
-    Platform--szolgáltatásként (PaaS) nevek a megadott tanúsítványok is kérhető [Azure Stack a nyilvános kulcsú infrastruktúra tanúsítványkövetelmények – nem kötelező PaaS-tanúsítványok](azure-stack-pki-certs.md#optional-paas-certificates).
+- **Standard szintű Eszköztanúsítvány-igénylések** szerint [PKI-tanúsítványok létrehozása az Azure Stack üzembe helyezéséhez](azure-stack-get-pki-certs.md).
+- **Platform-as-a-Service**: Platform--szolgáltatásként (PaaS) nevek a megadott tanúsítványok is kérhető [Azure Stack a nyilvános kulcsú infrastruktúra tanúsítványkövetelmények – nem kötelező PaaS-tanúsítványok](azure-stack-pki-certs.md#optional-paas-certificates).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rendszer a PKI-tanúsítványai az Azure Stack üzemelő példányához tartozó CSR(s) létrehozása előtt kell felelnie a következő előfeltételek vonatkoznak:
 
- - A Microsoft Azure Stack készültség ellenőrzése
- - Tanúsítvány attribútumai:
-    - Régió neve
-    - Külső, teljesen minősített tartománynevét (FQDN)
-    - Tárgy
- - Windows 10 vagy Windows Server 2016
- 
+- A Microsoft Azure Stack készültség ellenőrzése
+- Tanúsítvány attribútumai:
+  - Régió neve
+  - Külső, teljesen minősített tartománynevét (FQDN)
+  - Tárgy
+- Windows 10 vagy Windows Server 2016
+
   > [!NOTE]  
   > Ha megkapta a tanúsítványok biztonsági a hitelesítésszolgáltatótól származó lépéseit [előkészítése az Azure Stack PKI-tanúsítványokat](azure-stack-prepare-pki-certs.md) hajtható végre, ugyanazon a rendszeren kell!
 
 ## <a name="generate-certificate-signing-requests"></a>A tanúsítvány-aláírási kérelem (kérelmek) létrehozása
 
-Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok ellenőrzése: 
+Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok ellenőrzése:
 
-1.  Telepítse a AzsReadinessChecker PowerShell parancssorból (5.1-es vagy újabb), a következő parancsmagot:
+1. Telepítse a AzsReadinessChecker PowerShell parancssorból (5.1-es vagy újabb), a következő parancsmagot:
 
     ```PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ```
 
-2.  Deklarálja a **tulajdonos** , egy rendezett szótárban. Példa: 
+2. Deklarálja a **tulajdonos** , egy rendezett szótárban. Példa:
 
     ```PowerShell  
-    $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"} 
+    $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"}
     ```
+
     > [!note]  
     > Ha egy köznapi név (CN) meg van adva ez felülírja az első DNS-nevét a tanúsítványkérelemben.
 
-3.  Deklaráljon egy már létező kimeneti könyvtárat. Példa:
+3. Deklaráljon egy már létező kimeneti könyvtárat. Példa:
 
     ```PowerShell  
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ```
-4.  Deklarálja a identitásrendszer
+
+4. Deklarálja a identitásrendszer
 
     Azure Active Directory
 
@@ -107,12 +108,12 @@ Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok elle
     ```
 
     Tartalmazza a PaaS-szolgáltatások, adja meg a kapcsoló ```-IncludePaaS```
-    
+
 8. Tekintse át a kimenetet:
 
     ```PowerShell  
     New-AzsCertificateSigningRequest v1.1809.1005.1 started.
-    
+
     CSR generating for following SAN(s): dns=*.east.azurestack.contoso.com&dns=*.blob.east.azurestack.contoso.com&dns=*.queue.east.azurestack.contoso.com&dns=*.table.east.azurestack.cont
     oso.com&dns=*.vault.east.azurestack.contoso.com&dns=*.adminvault.east.azurestack.contoso.com&dns=portal.east.azurestack.contoso.com&dns=adminportal.east.azurestack.contoso.com&dns=ma
     nagement.east.azurestack.contoso.com&dns=adminmanagement.east.azurestack.contoso.com*dn2=*.adminhosting.east.azurestack.contoso.com@dns=*.hosting.east.azurestack.contoso.com
@@ -123,7 +124,7 @@ Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok elle
     New-AzsCertificateSigningRequest Completed
     ```
 
-9.  Küldje el a **. KÉRÉS** fájlt hoz létre, a hitelesítésszolgáltató (belső vagy nyilvános).  A kimeneti könyvtárba, **New-AzsCertificateSigningRequest** egy hitelesítésszolgáltatónak elküldéséhez szükséges CSR(s) tartalmazza.  A könyvtár tartalmaz, referenciaként egy gyermek könyvtárra, amelyben a tanúsítvány-kérelem létrehozása során használt INF fájlt vagy fájlokat. Győződjön meg, hogy a a hitelesítésszolgáltató tanúsítványokat a generált kérést a megfelelő állít elő a [Azure Stack nyilvános kulcsokra épülő infrastruktúra követelményei](azure-stack-pki-certs.md).
+9. Küldje el a **. KÉRÉS** fájlt hoz létre, a hitelesítésszolgáltató (belső vagy nyilvános).  A kimeneti könyvtárba, **New-AzsCertificateSigningRequest** egy hitelesítésszolgáltatónak elküldéséhez szükséges CSR(s) tartalmazza.  A könyvtár tartalmaz, referenciaként egy gyermek könyvtárra, amelyben a tanúsítvány-kérelem létrehozása során használt INF fájlt vagy fájlokat. Győződjön meg, hogy a a hitelesítésszolgáltató tanúsítványokat a generált kérést a megfelelő állít elő a [Azure Stack nyilvános kulcsokra épülő infrastruktúra követelményei](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>További lépések
 

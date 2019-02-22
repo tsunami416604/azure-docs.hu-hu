@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
-ms.openlocfilehash: 5252eed66018cd2028545567dfe62ca7ba17be7e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/19/2019
+ms.openlocfilehash: 884c87501a54a582177cba99596fe6f0b4cccf36
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247816"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593335"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Kibocsátási megjegyzések a szolgáltatás érvényesítése
 
@@ -28,14 +28,13 @@ ms.locfileid: "55247816"
 Ez a cikk a kibocsátási megjegyzéseket tartalmaz az Azure Stack érvényesítési szolgáltatásként.
 
 ## <a name="version-405"></a>Verzió 4.0.5
+
 2019 17. január
 
--  Lemez azonosítása teszt cím tárolási készlet inkonzisztenciához frissítése. Verzió: 5.1.14.0  -> 5.1.15.0
--  Az Azure Stack havi frissítés ellenőrzés címet a frissített jóváhagyott szoftvereket és tartalmakat érvényesítési inkonzisztenciát. Verzió: 5.1.14.0  -> 5.1.15.0
--  OEM kiterjesztésű csomag ellenőrzési frissítése a szükséges ellenőrzések elvégzéséhez *előtt* az Azure Stack frissítési lépést. Verzió: 5.1.14.0  -> 5.1.15.0
--  Belső hibajavítások
-
-
+- Lemez azonosítása teszt cím tárolási készlet inkonzisztenciához frissítése. Verzió: 5.1.14.0 -> 5.1.15.0
+- Az Azure Stack havi frissítés ellenőrzés címet a frissített jóváhagyott szoftvereket és tartalmakat érvényesítési inkonzisztenciát. Verzió: 5.1.14.0 -> 5.1.17.0
+- OEM kiterjesztésű csomag ellenőrzési frissítése előtt az Azure Stack-frissítés lépés szükséges ellenőrzések elvégzéséhez. Verzió: 5.1.14.0 -> 5.1.16.0
+- Belső hibajavítások
 
 ## <a name="version-402"></a>Verzió 4.0.2
 
@@ -77,7 +76,7 @@ Ha az Azure Stack havi frissítése ellenőrzési Munkafolyamat futtatja, és az
 
 - VaaS Előfeltételek és a VHD-frissítések
 
-    `Install-VaaSPrerequisites` Mostantól csak felhőalapú rendszergazdai hitelesítő adatok a probléma megoldására megoldás érvényesítése során. A dokumentációban a [töltse le és telepítse az ügynököt](azure-stack-vaas-local-agent.md#download-and-install-the-agent) a következőre frissült:
+    `Install-VaaSPrerequisites` Mostantól csak felhőalapú rendszergazdai hitelesítő adatok a probléma megoldására csomag érvényesítése során. A dokumentációban a [töltse le és telepítse az ügynököt](azure-stack-vaas-local-agent.md#download-and-install-the-agent) a következőre frissült:
 
     ```PowerShell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -104,7 +103,7 @@ Ha az Azure Stack havi frissítése ellenőrzési Munkafolyamat futtatja, és az
 
   - Csomagaláíró értesítések
 
-    A megoldás Szűrőérvényesítési munkafolyamat részeként egy számítógép-Gyártói testreszabási csomag elküldésekor a csomag formátuma érvényesíti annak érdekében, hogy követi-e a közzétett specifikációnak. Ha a csomag nem felel meg, a futtatás sikertelen lesz. A bérlő regisztrált az Azure Active Directory kapcsolattartó e-mail-címre a e-mail értesítéseket küldeni szeretné.
+    A csomag érvényesítése munkafolyamat részeként egy számítógép-Gyártói testreszabási csomag elküldésekor a csomag formátuma érvényesíti annak érdekében, hogy követi-e a közzétett specifikációnak. Ha a csomag nem felel meg, a futtatás sikertelen lesz. A bérlő regisztrált az Azure Active Directory kapcsolattartó e-mail-címre a e-mail értesítéseket küldeni szeretné.
 
   - Interaktív vizsgálati kategória
 

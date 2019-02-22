@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/20/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: c96fdbfb56fe5274de941c0f9ab1a12cbcc241b6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 9ce21a6b01dc4f4a99e5c70faf1e004bf7918dad
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658419"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594117"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Az Azure Stack üzembe helyezése Kubernetes
 
@@ -39,7 +39,7 @@ A Kubernetes használhatja:
 
 - Rugalmasan méretezhető, bővíthető, másodpercek alatt telepíthető alkalmazásokat fejleszthet. 
 - Leegyszerűsítheti az alkalmazást, és a megbízhatóság javításához különböző Helm-alkalmazások. [Helm](https://github.com/kubernetes/helm) egy nyílt forráskódú csomagolás eszköz, amely segít telepítése és a Kubernetes-alkalmazások életciklusának kezelését.
-- Könnyedén figyelheti és diagnosztizálhatja a révén az alkalmazások állapotát, és frissítés funkcióit.
+- Könnyedén figyelheti és diagnosztizálhatja az alkalmazások állapotát.
 
 Ön csak kell fizetnie a számítási feladatok használatáért támogatása a fürt csomópontjai által igényelt. További információkért lásd: [használat és számlázás az Azure Stackben](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback).
 
@@ -53,7 +53,7 @@ A fürtön telepíteni, ha az Azure AD-vel kapcsolatos utasításokért lásd: [
 - **Az Active Directory összevont szolgáltatások (AD FS)**  
 A fürtön telepíteni, ha az AD FS használatával, lásd: [Kubernetes üzembe helyezése az Azure Stackhez az Active Directory összevont szolgáltatásokat (AD FS)](azure-stack-solution-template-kubernetes-adfs.md).
 
-## <a name="connect-to-your-cluster"></a>Csatlakozás a fürthöz
+## <a name="connect-to-your-cluster"></a>Csatlakozás saját fürthöz
 
 Most már készen áll a fürthöz való csatlakozáshoz. A fő tekintheti meg az erőforráscsoportot, és nevű `k8s-master-<sequence-of-numbers>`. Használja az SSH-ügyfelet a főcsomóponthoz való kapcsolódáshoz. A fő használhatja **kubectl**, a fürt kezeléséhez a Kubernetes parancssori ügyfelét. Útmutatásért lásd: [Kubernetes.io](https://kubernetes.io/docs/reference/kubectl/overview).
 

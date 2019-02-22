@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 3d2f07a2a5f660a6f22256fa528c2a308fde81ad
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 20c103c19de203d7598484b8f1d160256cb253e9
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435362"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56648863"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>A hálózati biztonsági csoport diagnosztikai naplózás
 
@@ -40,8 +40,8 @@ Használhatja a [az Azure Portal](#azure-portal), [PowerShell](#powershell), vag
 2. Válassza ki **minden szolgáltatás**, majd írja be a *hálózati biztonsági csoportok*. Amikor **hálózati biztonsági csoportok** jelennek meg a keresési eredmények közül válassza ki azt.
 3. Válassza ki a kívánt naplózásának engedélyezése az NSG.
 4. Alatt **figyelés**válassza **diagnosztikai naplók**, majd válassza ki **diagnosztika bekapcsolása**, ahogy az alábbi képen is látható:
- 
-    ![Diagnosztika bekapcsolása](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
+
+   ![Diagnosztika bekapcsolása](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
 
 5. A **diagnosztikai beállítások**, adja meg, vagy válassza ki a következő adatokat, és válassza **mentése**:
 
@@ -54,32 +54,34 @@ Használhatja a [az Azure Portal](#azure-portal), [PowerShell](#powershell), vag
 
 ### <a name="powershell"></a>PowerShell
 
-A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.1.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha futtatja a Powershellt helyileg, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions)].
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Diagnosztikai naplózás engedélyezése kell egy létező NSG azonosítója. Ha nem rendelkezik egy létező NSG-t, létrehozhat egyet a [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup).
+A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a számítógépről futtatja a PowerShell, szüksége van-e az Azure PowerShell-modult, 1.0.0-s verziójának vagy újabb. Futtatás `Get-Module -ListAvailable Az` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha futtatja a Powershellt helyileg, is futtatni szeretné `Connect-AzAccount` bejelentkezni az Azure-fiókkal, amely rendelkezik a [szükséges engedélyek](virtual-network-network-interface.md#permissions).
 
-Engedélyezni szeretné a diagnosztikai naplózás a hálózati biztonsági csoport lekérése [Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup). Például egy NSG-t lekéréséhez nevű *myNsg* nevű erőforráscsoportot, amely létezik *myResourceGroup*, adja meg a következő parancsot:
+Diagnosztikai naplózás engedélyezése kell egy létező NSG azonosítója. Ha nem rendelkezik egy létező NSG-t, létrehozhat egyet a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
+
+Engedélyezni szeretné a diagnosztikai naplózás a hálózati biztonsági csoport lekérése [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup). Például egy NSG-t lekéréséhez nevű *myNsg* nevű erőforráscsoportot, amely létezik *myResourceGroup*, adja meg a következő parancsot:
 
 ```azurepowershell-interactive
-$Nsg=Get-AzureRmNetworkSecurityGroup `
+$Nsg=Get-AzNetworkSecurityGroup `
   -Name myNsg `
   -ResourceGroupName myResourceGroup
 ```
 
-Diagnosztikai naplók háromféle cél írhatja. További információkért lásd: [destinations jelentkezzen](#log-destinations). Ebben a cikkben naplókat küld a *Log Analytics* cél példaként. Egy meglévő Log Analytics-munkaterülethez való lekéréséhez [Get-azurermoperationalinsightsworkspace parancsmagok](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace). Például egy meglévő munkaterületet lekéréséhez nevű *myWorkspace* nevű erőforráscsoportból *myWorkspaces*, adja meg a következő parancsot:
+Diagnosztikai naplók háromféle cél írhatja. További információkért lásd: [destinations jelentkezzen](#log-destinations). Ebben a cikkben naplókat küld a *Log Analytics* cél példaként. Egy meglévő Log Analytics-munkaterülethez való lekéréséhez [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace). Például egy meglévő munkaterületet lekéréséhez nevű *myWorkspace* nevű erőforráscsoportból *myWorkspaces*, adja meg a következő parancsot:
 
 ```azurepowershell-interactive
-$Oms=Get-AzureRmOperationalInsightsWorkspace `
+$Oms=Get-AzOperationalInsightsWorkspace `
   -ResourceGroupName myWorkspaces `
   -Name myWorkspace
 ```
 
-Ha nem rendelkezik egy meglévő munkaterületet, létrehozhat egyet a [New-AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace).
+Ha nem rendelkezik egy meglévő munkaterületet, létrehozhat egyet a [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace).
 
-Két kategóriába sorolhatók a naplózási engedélyezheti a naplókat. További információkért lásd: [kategóriába jelentkezzen](#log-categories). Az NSG-t a diagnosztikai naplózás engedélyezése [Set-azurermdiagnosticsetting parancshoz](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting). Az alábbi példában a munkaterület esemény- és számláló kategória-adatokat egy NSG-t az azonosítók használata az NSG-t és a munkaterület korábban lekért jelentkezik:
+Két kategóriába sorolhatók a naplózási engedélyezheti a naplókat. További információkért lásd: [kategóriába jelentkezzen](#log-categories). Az NSG-t a diagnosztikai naplózás engedélyezése [Set-AzDiagnosticSetting](/powershell/module/az.insights/set-azdiagnosticsetting). Az alábbi példában a munkaterület esemény- és számláló kategória-adatokat egy NSG-t az azonosítók használata az NSG-t és a munkaterület korábban lekért jelentkezik:
 
 ```azurepowershell-interactive
-Set-AzureRmDiagnosticSetting `
+Set-AzDiagnosticSetting `
   -ResourceId $Nsg.Id `
   -WorkspaceId $Oms.ResourceId `
   -Enabled $true
@@ -105,7 +107,7 @@ nsgId=$(az network nsg show \
   --output tsv)
 ```
 
-Diagnosztikai naplók háromféle cél írhatja. További információkért lásd: [destinations jelentkezzen](#log-destinations). Ebben a cikkben naplókat küld a *Log Analytics* cél példaként. További információkért lásd: [kategóriába jelentkezzen](#log-categories). 
+Diagnosztikai naplók háromféle cél írhatja. További információkért lásd: [destinations jelentkezzen](#log-destinations). Ebben a cikkben naplókat küld a *Log Analytics* cél példaként. További információkért lásd: [kategóriába jelentkezzen](#log-categories).
 
 Az NSG-t a diagnosztikai naplózás engedélyezése [az monitor diagnostic-settings létrehozása](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create). Az alábbi példa esemény- és számláló kategória adatokat naplózza nevű meglévő munkaterülethez *myWorkspace*, amely létezik a nevű erőforráscsoport *myWorkspaces*, és az NSG-t lekért azonosítója korábban:
 
@@ -118,7 +120,7 @@ az monitor diagnostic-settings create \
   --resource-group myWorkspaces
 ```
 
-Ha nem rendelkezik egy meglévő munkaterületet, is létrehozhat egyet a [az Azure portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [PowerShell](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace). Két kategóriába sorolhatók a naplózási engedélyezheti a naplókat. 
+Ha nem rendelkezik egy meglévő munkaterületet, is létrehozhat egyet a [az Azure portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace). Két kategóriába sorolhatók a naplózási engedélyezheti a naplókat. 
 
 Ha csak egy kategória vagy egyéb adatok, távolítsa el a kategória nem szeretne adatokat jelentkezzen be az előző parancs. Ha szeretne bejelentkezni egy másik [cél](#log-destinations) , mint a Log Analytics-munkaterületet, használja a megfelelő paramétereket az Azure-beli [tárfiók](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Eseményközpont](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -199,14 +201,14 @@ Diagnosztikai naplóadatokat megtekintése kapcsolatban lásd: [Azure diagnoszti
 - **Log Analytics**: Használhatja a [hálózati biztonsági csoport elemzési](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-log-analytics
 ) megoldást kínál a bővített lehetőségeket. A megoldás biztosítja a Vizualizációk az NSG-szabályok, amelyek engedélyezik vagy megtagadják a forgalmat, egy MAC-címét, a hálózati adaptert egy virtuális gépen.
 - **Az Azure Storage-fiók**: Adat íródik a PT1H.json fájlt. Annak a:
-    - Eseménynapló a következő elérési úton: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
-    - A szabály a számláló napló a következő elérési úton: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Eseménynapló a következő elérési úton: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - A szabály a számláló napló a következő elérési úton: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
 ## <a name="next-steps"></a>További lépések
 
 - Tudjon meg többet [naplózása](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), aggregated, korábban naplózási vagy a műveleti naplókban. Tevékenység naplózása alapértelmezés szerint engedélyezve van a hálózati biztonsági csoportok vagy Azure üzemi modellel lett létrehozva. Annak megállapításához, hogy mely műveletek a tevékenységnaplóban az NSG-k befejeződött, keresse meg a következő erőforrástípusok tartalmazó bejegyzéseket:
-    - Microsoft.ClassicNetwork/networkSecurityGroups
-    - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
-    - Microsoft.Network/networkSecurityGroups
-    - Microsoft.Network/networkSecurityGroups/securityRules
+  - Microsoft.ClassicNetwork/networkSecurityGroups
+  - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
+  - Microsoft.Network/networkSecurityGroups
+  - Microsoft.Network/networkSecurityGroups/securityRules
 - További diagnosztikai adatokat, a forrás IP-cím az egyes folyamatok bejelentkezéshez: [NSG csoportforgalom naplózása](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

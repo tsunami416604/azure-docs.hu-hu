@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 7d8047e569d3506f9ebb798b4f8c31ff94204fa4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 98b2c0bc27336e9ee5fe9aaf6332d9854e9af4de
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694057"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650291"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -221,7 +221,7 @@ Igen. A virtuális hálózatok, a REST API-k is használhatja a [Azure Resource 
 ### <a name="is-there-tooling-support-for-vnets"></a>Van-e a virtuális hálózatok eszközös támogatást?
 Igen. További információ:
 - Az Azure Portalon keresztül a virtuális hálózatok üzembe helyezéséhez a [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) és [klasszikus](virtual-networks-create-vnet-classic-pportal.md) üzembe helyezési modellel.
-- A PowerShell használatával telepített virtuális hálózatok kezelése a [Resource Manager](/powershell/module/azurerm.network) és [klasszikus](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) üzembe helyezési modellel.
+- A PowerShell használatával telepített virtuális hálózatok kezelése a [Resource Manager](/powershell/module/az.network) és [klasszikus](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) üzembe helyezési modellel.
 - Az Azure parancssori felület (CLI) üzembe helyezése és kezelése a virtuális hálózatok használatával telepített a [Resource Manager](/cli/azure/network/vnet) és [klasszikus](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) üzembe helyezési modellel.  
 
 ## <a name="vnet-peering"></a>Társviszony létesítése virtuális hálózatok között

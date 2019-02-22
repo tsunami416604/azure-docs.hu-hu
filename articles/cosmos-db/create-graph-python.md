@@ -8,14 +8,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: ede17bed12188141b9fd37e280d21dd6e85aec7f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5116cea15b30c4248e5942447261f0bc5c375520
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033774"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585944"
 ---
-# <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Az Azure Cosmos DB: Hozzon létre egy gráfadatbázist Python és az Azure portal használatával
+# <a name="quickstart-create-a-graph-database-in-azure-cosmso-db-using-python-and-the-azure-portal"></a>Gyors útmutató: A gráfadatbázis létrehozásához az Azure Cosmso DB Python és az Azure portal használatával
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)

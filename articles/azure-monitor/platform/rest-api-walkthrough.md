@@ -8,21 +8,23 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
-ms.openlocfilehash: 91b4d96caf59a8be67381aa6b420a3f759220025
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 707c04c22e54220f3020b5897c364318b427267b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472959"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586593"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Az Azure Monitoring REST API-forgatókönyv
-Ez a cikk bemutatja, hogyan végezhet hitelesítést, így a kód használatával is a [a Microsoft Azure Monitor REST API-referencia](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
+
+Ez a cikk bemutatja, hogyan végezhet hitelesítést, így a kód használatával is a [a Microsoft Azure Monitor REST API-referencia](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 
 Az Azure Monitor API lehetővé teszi az elérhető alapértelmezett metrikadefinícióinak granularitási és metrikaértékek programozott módon lekéréséhez. Az adatok menthetők egy külön, például Azure SQL Database, Azure Cosmos DB-hez vagy az Azure Data Lake adattárban. Itt további elemzés végezhető igény szerint.
 
 Mellett számos metrika adatpontok dolgozik, a API is lehetővé teszi a listában a riasztási szabályok Tevékenységnaplók megtekintése és még sok más. Használható műveletek teljes listáját lásd: a [a Microsoft Azure Monitor REST API-referencia](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 
 ## <a name="authenticating-azure-monitor-requests"></a>Hitelesítő Azure Monitor-kérelmek
+
 Az első lépéseként fel kell hitelesíteni a kérelmet.
 
 Az Azure Monitor API ellen végrehajtott összes feladatot használja az Azure Resource Manager-hitelesítési modellre. Ezért minden kérelmet hitelesíteni kell az Azure Active Directoryval (Azure AD). Az ügyfélalkalmazás hitelesítés egyik módja, hogy az Azure AD egyszerű szolgáltatás létrehozása és a hitelesítéshez (JWT-) token lekérése. Az alábbi parancsprogram azt ismerteti, hogy az Azure AD PowerShell-lel egyszerű szolgáltatásnév létrehozása. A részletes lépésenkénti útmutatóért tekintse meg a dokumentációt a [erőforrások eléréséhez az egyszerű szolgáltatás létrehozása az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). Emellett lehetőség [hozzon létre egy egyszerű szolgáltatást az Azure Portalon keresztül](../../active-directory/develop/howto-create-service-principal-portal.md).
@@ -66,9 +68,9 @@ $tenantId = $subscription.TenantId
 $authUrl = "https://login.microsoftonline.com/${tenantId}"
 
 $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]$authUrl
-$cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($clientId, $secureStringPassword)
+$cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($clientId, $pwd)
 
-$result = $AuthContext.AcquireToken("https://management.core.windows.net/", $cred)
+$result = $AuthContext.AcquireTokenAsync("https://management.core.windows.net/", $cred).GetAwaiter().GetResult()
 
 # Build an array of HTTP header values
 $authHeader = @{
@@ -82,6 +84,11 @@ Miután hitelesítése, lekérdezések majd ellen az Azure Monitor REST API hajt
 
 1. A metrikadefiníciók erőforrás listázása
 2. A metrikaértékek beolvasása
+
+> [!NOTE]
+> Az Azure REST API-val történő hitelesítésről további információkért tekintse meg a [Azure REST API-referencia](https://docs.microsoft.com/rest/api/azure/).
+>
+>
 
 ## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>(API-t többdimenziós) Metrikadefinícióinak beolvasása
 
@@ -103,6 +110,7 @@ Invoke-RestMethod -Uri $request `
                   -Verbose
 
 ```
+
 > [!NOTE]
 > A többdimenziós metrikák az Azure Monitor REST API használatával metrikadefinícióinak lekéréséhez használja "2018-01-01" az API-verziót.
 >
@@ -220,6 +228,7 @@ Az eredményül kapott JSON-válasz törzse a következő példához hasonló le
 ```
 
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>Dimenzió értékei (API-t többdimenziós) beolvasása
+
 A rendelkezésre álló metrikadefinícióinak ismertek, miután lehetnek, amelyek rendelkeznek a dimenziók bizonyos metrikák. A metrika, előfordulhat, hogy szeretné felderíteni, hogy milyen értékek tartományán lekérdezése előtt a dimenziónál. Ezeket a dimenzió értékeket ezután választhatja szűrése vagy szegmens a metrikák lekérdezése közben dimenzió értékei alapján a metrikák alapján.  Használja a [Azure Monitor-metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) ennek eléréséhez.
 
 A metrika neve "értéke" (nem a "localizedValue") használja a szűrési kérelmeket. Ha nincs szűrő meg van adva, a rendszer visszaadja az alapértelmezett metrikát. Ez az API használatát csak egy helyettesítő karaktert tartalmazó szűrő egy dimenziót teszi lehetővé.
@@ -244,6 +253,7 @@ Invoke-RestMethod -Uri $request `
     -OutFile ".\contosostorage-dimension-values.json" `
     -Verbose
 ```
+
 Az eredményül kapott JSON-válasz törzse a következő példához hasonló lesz:
 
 ```JSON
@@ -282,7 +292,7 @@ Az eredményül kapott JSON-válasz törzse a következő példához hasonló le
           ]
         },
         ...
-      ]    
+      ]
     }
   ],
   "namespace": "Microsoft.Storage/storageAccounts",
@@ -291,6 +301,7 @@ Az eredményül kapott JSON-válasz törzse a következő példához hasonló le
 ```
 
 ## <a name="retrieve-metric-values-multi-dimensional-api"></a>Metrikaértékek (API-t többdimenziós) beolvasása
+
 Ha a rendelkezésre álló metrikadefinícióinak beolvasása és a lehetséges dimenzióértékek ismert, ezt követően lehetősége a kapcsolódó metrikaértékek lekéréséhez.  Használja a [Azure Monitor-metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) ennek eléréséhez.
 
 A metrika neve "értéke" (nem a "localizedValue") használja a szűrési kérelmeket. Ha a dimenzió egyetlen szűrő sincs megadva, az összesített összesített metrikája adja vissza. Ha egy metrika lekérdezést több időrendben ad vissza, majd segítségével a "Felső" és "OrderBy" lekérdezési paraméter időrendben korlátozott rendezett listáját adja vissza.
@@ -315,6 +326,7 @@ Invoke-RestMethod -Uri $request `
     -OutFile ".\contosostorage-metric-values.json" `
     -Verbose
 ```
+
 Az eredményül kapott JSON-válasz törzse a következő példához hasonló lesz:
 
 ```JSON
@@ -375,6 +387,7 @@ Az eredményül kapott JSON-válasz törzse a következő példához hasonló le
 ```
 
 ## <a name="retrieve-metric-definitions"></a>Metrikadefiníciók beolvasása
+
 Használja a [Azure Monitor metrikadefiníciók REST API-val](https://msdn.microsoft.com/library/mt743621.aspx) metrikák elérhető szolgáltatás listájának eléréséhez.
 
 **Módszer**: GET
@@ -392,12 +405,14 @@ Invoke-RestMethod -Uri $request `
                   -OutFile ".\contosotweets-metricdef-results.json" `
                   -Verbose
 ```
+
 > [!NOTE]
 > Az Azure Monitor REST API használatával metrikadefinícióinak lekéréséhez használja "2016-03-01", az API-verziót.
 >
 >
 
 Az eredményül kapott JSON-válasz törzse a következő példához hasonló lesz:
+
 ```JSON
 {
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricdefinitions",
@@ -440,6 +455,7 @@ Az eredményül kapott JSON-válasz törzse a következő példához hasonló le
 További információkért lásd: a [listázása az Azure Monitor REST API az erőforráshoz tartozó metrikadefiníciók](https://msdn.microsoft.com/library/azure/mt743621.aspx) dokumentációját.
 
 ## <a name="retrieve-metric-values"></a>Metrikaértékek beolvasása
+
 Miután a rendelkezésre álló metrikadefinícióinak ismertek, ezt követően lehetősége a kapcsolódó metrikaértékek lekéréséhez. A metrika neve "értéke" (nem a "localizedValue") használata a szűrési kérések eredményéről (például lekérni a "CpuTime" és "Kérések" metrika adatpontok). Ha nincs szűrő meg van adva, a rendszer visszaadja az alapértelmezett metrikát.
 
 > [!NOTE]
@@ -510,6 +526,7 @@ Invoke-RestMethod -Uri $request `
     -OutFile ".\contosotweets-metrics-multiple-results.json" `
     -Verbose
 ```
+
 Az eredményül kapott JSON-válasz törzse a következő példához hasonló lesz:
 
 ```JSON
@@ -562,6 +579,7 @@ Az eredményül kapott JSON-válasz törzse a következő példához hasonló le
 ```
 
 ### <a name="use-armclient"></a>ARMClient használata
+
 Egy további módszer az, hogy használjon [ARMClient](https://github.com/projectkudu/armclient) a Windows-gépen. ARMClient automatikusan kezeli az Azure AD-hitelesítés (és az eredményül kapott JWT jogkivonat). A felhasznált ARMClient metrikaadatok beolvasása lépései:
 
 1. Telepítés [Chocolatey](https://chocolatey.org/) és [ARMClient](https://github.com/projectkudu/armclient).
@@ -570,12 +588,13 @@ Egy további módszer az, hogy használjon [ARMClient](https://github.com/projec
 4. Típus *armclient [your_resource_id]/providers/microsoft.insights/metrics?api-version=2016-09-01 GET*
 
 Annak érdekében, hogy egy adott logikai alkalmazás metrikadefinícióinak beolvasása, például a következő parancs kiadásával:
+
 ```
 armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01
 ```
 
-
 ## <a name="retrieve-the-resource-id"></a>Az erőforrás-azonosító lekéréséhez
+
 A REST API-val valóban segítségével értheti meg elérhető metrikai meghatározások, a részletesség és a kapcsolódó értékeket. Hogy információ hasznos, amikor használatával a [Azure Management Library](https://msdn.microsoft.com/library/azure/mt417623.aspx).
 
 A fenti kóddal, a használandó erőforrás-azonosító a kívánt Azure-erőforrások teljes elérési útja. Például a lekérdezéseket az Azure Web Apps, az erőforrás-azonosítója a következő lesz:
@@ -595,16 +614,19 @@ Az alábbi listában néhány példa az erőforrás azonosítója formátumokat 
 Számos megközelítés lehetséges a beolvasása az erőforrás-azonosító, beleértve az Azure erőforrás-kezelő, a kívánt erőforrást megtekintése az Azure Portalon, és a PowerShell vagy az Azure CLI használatával.
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
+
 Az erőforrás-azonosítója egy kívánt erőforrás megkereséséhez az egy hasznos megközelítés, hogy használja a [Azure erőforrás-kezelő](https://resources.azure.com) eszköz. Keresse meg a kívánt erőforrást, és tekintse meg az azonosító is látható, ahogy az alábbi képernyőfelvételen is látható:
 
 !["Az Azure Resource Explorer" ALT](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
 ### <a name="azure-portal"></a>Azure Portal
+
 Az erőforrás-azonosító az Azure Portalon is szerezhető be. Ehhez keresse meg a kívánt erőforrást, és válassza ki a tulajdonságokat. Az erőforrás-azonosítója a Tulajdonságok szakaszának jelenik meg az alábbi képernyőképen látható módon:
 
 ![ALT "erőforrás-azonosító az Azure Portalon a Tulajdonságok panelen megjelenő"](./media/rest-api-walkthrough/resourceid_azure_portal.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
+
 Az erőforrás-azonosítója, valamint az Azure PowerShell-parancsmagok használatával lehet beolvasni. Az erőforrás-azonosító beszerzése az Azure Logic Apps, például futtassa a Get-AzureLogicApp parancsmag az alábbi példában látható módon:
 
 ```PowerShell
@@ -612,6 +634,7 @@ Get-AzureRmLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosot
 ```
 
 Az eredmény a következő példához hasonló lesz:
+
 ```
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets
 Name           : ContosoTweets
@@ -630,8 +653,8 @@ PlanId         :
 Version        : 08586982649483762729
 ```
 
-
 ### <a name="azure-cli"></a>Azure CLI
+
 Az erőforrás-azonosító az Azure Storage-fiókot az Azure CLI használatával lekérdezheti, hajtsa végre a "az storage account show" parancsot az alábbi példában látható módon:
 
 ```
@@ -639,6 +662,7 @@ az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 ```
 
 Az eredmény a következő példához hasonló lesz:
+
 ```JSON
 {
   "accessTier": null,
@@ -681,6 +705,7 @@ Az eredmény a következő példához hasonló lesz:
 >
 
 ## <a name="retrieve-activity-log-data"></a>Tevékenységnapló adatainak beolvasása
+
 Metrikadefiníciók és a kapcsolódó értékeket kívül is is lehet az Azure Monitor REST API használatával lekérheti az Azure-erőforrások kapcsolatos további érdekes elemzést. Tegyük fel, akkor lehet lekérdezés [tevékenységnapló](https://msdn.microsoft.com/library/azure/dn931934.aspx) adatokat. A következő minta azt mutatja be, egy Azure-előfizetés lekérdezési tevékenységnapló adatainak adott időtartományon belül, az Azure Monitor REST API használatával:
 
 ```PowerShell
@@ -694,8 +719,8 @@ Invoke-RestMethod -Uri $request `
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 * Tekintse át a [figyelőeszközök](../../azure-monitor/overview.md).
 * Nézet a [az Azure monitorban támogatott mérőszámok](metrics-supported.md).
 * Tekintse át a [Microsoft Azure REST API-referencia figyelése](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 * Tekintse át a [Azure Management Library](https://msdn.microsoft.com/library/azure/mt417623.aspx).
-

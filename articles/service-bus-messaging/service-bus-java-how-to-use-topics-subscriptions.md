@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: aschhab
-ms.openlocfilehash: cd2d5812d1b61e1d8fcc00fbc824be8ceac696de
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1cdd0a3bd7e0d647e2f67d4c92b5a2167d5d21ad
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849957"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585219"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Service Bus-üzenettémák és előfizetések használata javával
 
@@ -46,46 +46,9 @@ Ellentétben a Service Bus-üzenetsorok, amelyben minden üzenetet dolgoz fel eg
 
 Service Bus-üzenettémák és előfizetések lehetővé teszi nagy mennyiségű üzenetet feldolgozni a felhasználók és alkalmazások nagy számú skálázhatja.
 
-## <a name="create-a-service-bus-namespace"></a>Service Bus-névtér létrehozása
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-A Service Bus üzenetküldési névtere egyedi hatókörkezelési tárolót biztosít, amelyre a [teljes tartománynevével](https://wikipedia.org/wiki/Fully_qualified_domain_name) lehet hivatkozni, és ebben a tárolóban egy vagy több üzenetsort, témakört és előfizetést is létrehozhat. Az alábbi példa egy Service Bus-üzenetküldési névteret hoz létre egy új vagy meglévő [erőforráscsoportban](/azure/azure-resource-manager/resource-group-portal):
-
-1. A portál bal oldali navigációs paneljén kattintson a **+ Erőforrás létrehozása**, a **Vállalati integráció**, majd a **Service Bus** elemre.
-2. A **Névtér létrehozása** párbeszédpanelen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
-3. Miután meggyőződött arról, hogy a névtér neve elérhető, válassza ki a tarifacsomagot (Standard vagy Prémium).
-4. Az **Előfizetés** mezőben válassza ki azt az Azure-előfizetést, amelyben a névteret létre kívánja hozni.
-5. Az a **erőforráscsoport** mezőben válasszon ki egy meglévő erőforráscsoportot, ahol a névtérben található, vagy hozzon létre egy újat.      
-6. A **Hely** mezőben válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz.
-7. Kattintson a **Create** (Létrehozás) gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
-
-  ![névtér](./media/service-bus-tutorial-topics-subscriptions-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>A felügyeleti hitelesítő adatok beszerzése
-
-Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös hozzáférésű jogosultságkódra (SAS) vonatkozó szabály egy elsődleges és egy másodlagos kulcsból álló kulcspárral, amelyek mindegyike teljes hozzáférést biztosít a névtér minden területéhez. A kezdeti szabály másolásához kövesse az alábbi lépéseket:
-
-1. Kattintson az **Összes erőforrás** elemre, majd az újonnan létrehozott névtér nevére.
-2. A névtér ablakában kattintson a **Megosztott elérési házirendek** elemre.
-3. A **Megosztott elérési házirendek** képernyőn kattintson a **RootManageSharedAccessKey** elemre.
-4. Az a **házirend: RootManageSharedAccessKey** ablakban kattintson a **másolási** megjelenítő gombra **elsődleges kapcsolati karakterlánc**, hogy másolja a kapcsolati karakterláncot a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
-
-    ![connection-string](./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png)
-5. A későbbi használat érdekében ismételje meg az előző lépést, és másolja ki és illessze be az **Elsődleges kulcs** értékét egy ideiglenes helyre.
-
-## <a name="create-a-topic"></a>Üzenettémakör létrehozása 
-Adja meg a névteret, amelyben létre kívánja hozni a Service Bus-témakört. Az alábbi példa bemutatja, hogyan hozhat létre témakört a portálon:
-
-1. A portál bal oldali navigációs panelén kattintson a **Service Bus** (ha a **Service Bus** nem látható, akkor a **Minden szolgáltatás**) elemre.
-2. Kattintson a névtérre, amelyben a témakört létre kívánja hozni.
-3. A névtér ablakában kattintson a **Témakörök** elemre, majd a **Témakörök** ablakban kattintson a **+ Témakörök** elemre.
-4. Adja meg **BasicTopic** a témakör **neve**, és a többi érték alapértelmezését.
-5. Az ablak alján kattintson a **Létrehozás** elemre.
-
-
-## <a name="create-subscriptions-for-the-topic"></a>A témakör-előfizetések létrehozása
-1. Válassza ki a **témakör** létrehozott.
-2. Kattintson a **+ előfizetés**, adja meg azt az előfizetésnevet **Subscription1**, és az összes többi érték alapértelmezését.
-3. Ismételje meg az előző lépésben kétszer, nevű előfizetés-létrehozási **Subscription2** és **Subscription3**.
+[!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>A Service Bus-alkalmazás konfigurálása

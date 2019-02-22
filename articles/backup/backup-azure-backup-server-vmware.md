@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: 5e5a6f32eeac674a6527d333b981bbdac20a9958
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 8a660de0502a6ab215d3a23615f6a53813f1695e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309761"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649203"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek az Azure Backup Server biztonsági mentése
 
-Ez a cikk bemutatja, hogyan készíthet biztonsági másolatot a VMware virtuális gépek, VMware ESXi-gazdagépek/vCenter Server futó Azure-bA az Azure Backup Server használatával. 
+Ez a cikk bemutatja, hogyan készíthet biztonsági másolatot a VMware virtuális gépek, VMware ESXi-gazdagépek/vCenter Server futó Azure-bA az Azure Backup Server használatával.
 
 Ez a cikk azt ismerteti, hogyan lehet:
 
@@ -28,13 +28,13 @@ Ez a cikk azt ismerteti, hogyan lehet:
 - Állítsa be egy védelmi csoportot, amely tartalmazza a VMware virtuális gépeket szeretne biztonsági másolatot készíteni, adja meg a biztonsági mentés beállításait és a biztonsági mentés ütemezése.
 
 ## <a name="before-you-start"></a>Előkészületek
-- Győződjön meg arról, hogy a vCenter/ESXi backup - 6.5-ös, 6.0-s és a egy 5.5-ös verziók által támogatott verzióját futtatja-e. 
+- Győződjön meg arról, hogy a vCenter/ESXi backup - 6.5-ös, 6.0-s és a egy 5.5-ös verziók által támogatott verzióját futtatja-e.
 - Győződjön meg arról, hogy beállította az Azure Backup Server. Ha még nem, [ehhez](backup-azure-microsoft-azure-backup.md) megkezdése előtt. Kell futtatni az Azure Backup Server a legújabb frissítésekkel.
 
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>A vCenter-kiszolgáló biztonságos kapcsolat létrehozása
 
-Alapértelmezés szerint az Azure Backup Server kommunikál a VMware-kiszolgálók HTTPS-kapcsolaton keresztül. A HTTPS-kapcsolat beállításához, a VMware hitelesítésszolgáltató (CA) tanúsítvány letöltéséhez, és importálja az Azure Backup Server. 
+Alapértelmezés szerint az Azure Backup Server kommunikál a VMware-kiszolgálók HTTPS-kapcsolaton keresztül. A HTTPS-kapcsolat beállításához, a VMware hitelesítésszolgáltató (CA) tanúsítvány letöltéséhez, és importálja az Azure Backup Server.
 
 
 ### <a name="before-you-start"></a>Előkészületek
@@ -46,7 +46,7 @@ Alapértelmezés szerint az Azure Backup Server kommunikál a VMware-kiszolgál�
     - Az Azure Backup Server majd biztonsági másolatot készít a helyi lemezes tárhely az Azure-bA.
     - [Segítség kérése](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need) döntse el, hogy mekkora tárolási helyek, akkor van szükség. Információk a DPM azonban túl használható az Azure Backup Server.
 
-### <a name="set-up-the-certificate"></a>A tanúsítvány beállítása 
+### <a name="set-up-the-certificate"></a>A tanúsítvány beállítása
 
 Az alábbiak szerint állíthatja biztonságos csatorna:
 
@@ -54,7 +54,7 @@ Az alábbiak szerint állíthatja biztonságos csatorna:
 
     ![vSphere webes ügyfélben](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
 
-2. A vSphere webes ügyfél bejelentkezési oldalon kattintson a **letöltése megbízható legfelső szintű Hitelesítésszolgáltatói tanúsítványok**. 
+2. A vSphere webes ügyfél bejelentkezési oldalon kattintson a **letöltése megbízható legfelső szintű Hitelesítésszolgáltatói tanúsítványok**.
 
     ![Megbízható legfelső szintű Hitelesítésszolgáltatói tanúsítvány letöltése](./media/backup-azure-backup-server-vmware/vmware-download-ca-cert-prompt.png)
 
@@ -76,12 +76,12 @@ Az alábbiak szerint állíthatja biztonságos csatorna:
 
 6. Állítsa a legfelső szintű tanúsítvány bővítmény .crt, majd erősítse meg. A fájl ikon módosul, hogy a legfelső szintű tanúsítvány jelöli.
 
-7. Kattintson a jobb gombbal a legfelső szintű tanúsítvány és a legördülő menüből válassza ki a **tanúsítvány telepítése**. 
+7. Kattintson a jobb gombbal a legfelső szintű tanúsítvány és a legördülő menüből válassza ki a **tanúsítvány telepítése**.
 
 8. A **Tanúsítványimportáló varázsló**válassza **helyi gép** kell a tanúsítványt, és kattintson a célként **tovább**. Győződjön meg arról, ha azt kéri, hogy szeretné-e a számítógép-engedélyezése.
 
     ![Üdvözli a varázsló](./media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
- 
+
 
 9. Az a **tanúsítvány Store** lapon jelölje be **minden tanúsítvány tárolása ebben a tárolóban**, és kattintson a **Tallózás** a tanúsítványtároló kiválasztása.
 
@@ -95,11 +95,11 @@ Az alábbiak szerint állíthatja biztonságos csatorna:
 
     ![Ellenőrizze a tanúsítvány nem a megfelelő mappát](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
-    
+
 12. A tanúsítvány importálása ellenőrzése után jelentkezzen be a vcenter-kiszolgáló győződjön meg arról, hogy a kapcsolat nem biztonságos.
 
 
-  
+
 
 ### <a name="disable-default-https"></a>Alapértelmezett HTTPS letiltása
 
@@ -130,7 +130,7 @@ Az Azure Backup Server van szüksége a Vcenter-kiszolgáló elérésére jogosu
 
     ![Szerepkör hozzáadása](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-    
+
 4. A **szerepkör létrehozása** > **szerepkörnév**, adja meg *BackupAdminRole*. A szerepkör neve lehet bármire átnevezhető, de felismerhető a szerepkör célra kell lennie.
 
 5. Válassza ki a jogosultságokat, az alábbi táblázat foglalja össze, és kattintson a **OK**.  Az új szerepkör megjelenik a listán szereplő a **szerepkörök** panel.
@@ -145,22 +145,22 @@ Az Azure Backup Server van szüksége a Vcenter-kiszolgáló elérésére jogosu
 --- | ---
 Datastore.AllocateSpace | Datastore.AllocateSpace
 Global.ManageCustomFields | Global.ManageCustomFields
-Global.SetCustomField | 
-Host.Local.CreateVM | Network.Assign 
-Network.Assign | 
-Resource.AssignVMToPool | 
+Global.SetCustomField |
+Host.Local.CreateVM | Network.Assign
+Network.Assign |
+Resource.AssignVMToPool |
 VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk   
 VirtualMachine.Config.AdvancedConfig| VirtualMachine.Config.AdvancedConfig
-VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking 
-VirtualMachine.Config.HostUSBDevice | 
-VirtualMachine.Config.QueryUnownedFiles | 
-VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement 
-VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff 
-VirtualMachine.Inventory.Create| VirtualMachine.Inventory.Create 
-VirtualMachine.Provisioning.DiskRandomAccess | 
+VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
+VirtualMachine.Config.HostUSBDevice |
+VirtualMachine.Config.QueryUnownedFiles |
+VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
+VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
+VirtualMachine.Inventory.Create| VirtualMachine.Inventory.Create
+VirtualMachine.Provisioning.DiskRandomAccess |
 VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
 VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
-VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot 
+VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 
 
@@ -231,7 +231,7 @@ Az a **kezelés** lapján a **globális engedélyek** panelen, az új felhaszná
     ![Az Azure Backup Server hitelesítő adatok kezelése párbeszédpanel](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 
-## <a name="add-the-vcenter-server"></a>A vCenter-kiszolgáló hozzáadása 
+## <a name="add-the-vcenter-server"></a>A vCenter-kiszolgáló hozzáadása
 
 A vCenter-kiszolgáló hozzáadása az Azure Backup Server.
 
@@ -239,7 +239,7 @@ A vCenter-kiszolgáló hozzáadása az Azure Backup Server.
 1. Az Azure Backup Server konzolon kattintson a **felügyeleti** > **éles kiszolgálók** > **Hozzáadás**.
 
     ![Nyissa meg az üzemi kiszolgáló felvétele varázsló](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
-   
+
 
 2. A **üzemi kiszolgáló felvétele varázsló** > **válassza ki az üzemi kiszolgáló típusának** lapra, jelölje be **VMware-kiszolgálók**, és kattintson a **következő**.
 
@@ -267,14 +267,14 @@ A vCenter-kiszolgáló hozzáadása az Azure Backup Server.
 
   ![A Befejezés lapon](./media/backup-azure-backup-server-vmware/summary-screen.png)
 
-Ha nem a vCenter-kiszolgáló által felügyelt több ESXi-gazdagép rendelkezik, vagy ha a vCenter-kiszolgáló több példányát, futtassa újra a varázslót, a kiszolgálók hozzáadása szeretné. 
+Ha nem a vCenter-kiszolgáló által felügyelt több ESXi-gazdagép rendelkezik, vagy ha a vCenter-kiszolgáló több példányát, futtassa újra a varázslót, a kiszolgálók hozzáadása szeretné.
 
 
 
 
 ## <a name="configure-a-protection-group"></a>Védelmi csoportok beállítása
 
-Adja hozzá a VMware virtuális gépek biztonsági mentésének. Védelmi csoportok gyűjtse össze a több virtuális gépet, és a alkalmazni az azonos adatok megőrzése és a biztonsági mentési beállítások a csoportban lévő összes virtuális gép. 
+Adja hozzá a VMware virtuális gépek biztonsági mentésének. Védelmi csoportok gyűjtse össze a több virtuális gépet, és a alkalmazni az azonos adatok megőrzése és a biztonsági mentési beállítások a csoportban lévő összes virtuális gép.
 
 
 1. Az Azure Backup Server konzolon kattintson a **védelmi**, > **új**.
@@ -300,7 +300,7 @@ Adja hozzá a VMware virtuális gépek biztonsági mentésének. Védelmi csopor
     ![Adatvédelmi módszer kiválasztása](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 5. A **rövid távú célok megadása**, adja meg, hogy mennyi ideig szeretné megőrizni a adatok biztonsági mentése lemezre.
-    - A **megőrzési**, adja meg, hány napig lemez-helyreállítási pontok kell tárolni. 
+    - A **megőrzési**, adja meg, hány napig lemez-helyreállítási pontok kell tárolni.
     - A **szinkronizálási gyakoriság**, adja meg, hogy milyen gyakran lemez-helyreállítási pontok.
         - Ha nem szeretné beállítani a biztonsági mentés időköz ellenőrizheti **közvetlenül egy helyreállítási pont előtt** , hogy egy biztonsági mentése fut, minden egyes helyreállítási pontok ütemezése előtt.
         - Rövid távú biztonsági mentések teljes biztonsági mentések, és nem fokozatos.
@@ -337,8 +337,8 @@ Adja hozzá a VMware virtuális gépek biztonsági mentésének. Védelmi csopor
 10. Az a **Online biztonsági mentési ütemezés megadása** csoportjában adja meg, hogy milyen gyakran kívánja a biztonsági másolatokat a helyi tárolóból az Azure-bA.
 
     - Felhőbeli helyreállítási pontok az adatok jön létre, az ütemezés szerint. Ezután kattintson a **Next** (Tovább) gombra.
-    - Miután a helyreállítási pont jön létre, a Recovery Services-tárolót az Azure-ban való átvitelig. 
-    
+    - Miután a helyreállítási pont jön létre, a Recovery Services-tárolót az Azure-ban való átvitelig.
+
     ![Online biztonsági mentés ütemezésének megadása](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
 11. Az a **Online adatmegőrzési szabály megadása** lap, adja meg, mennyi ideig szeretné megőrizni a az Azure-bA a napi/heti/havi/évi biztonsági mentésekből létrehozott helyreállítási pontokat. Kattintson a **tovább**.
@@ -348,10 +348,31 @@ Adja hozzá a VMware virtuális gépek biztonsági mentésének. Védelmi csopor
 
     ![Online megőrzési szabály megadása](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
-   
+
 12. Az a **összefoglalás** lapon tekintse át a beállításokat, és kattintson a **csoport létrehozása**.
 
     ![A védelmi csoport tagja, és a beállítás összegzése](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+
+## <a name="vmware-vsphere-67"></a>A VMWare vSphere 6.7
+
+A biztonsági mentési vSphere 6.7 hajtsa végre a következő:
+
+- Engedélyezze a TLS 1.2-es DPM-kiszolgálón
+  >[!Note]
+  >VMWare 6.7 és újabb verziók esetében volt engedélyezett TLS kommunikációs protokollként.
+
+- Állítsa be a beállításkulcsokat a következő:  
+
+  Windows beállításjegyzék-szerkesztő, 5.00
+
+  [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft.NETFramework\v2.0.50727] "SystemDefaultTlsVersions" = dword: 00000001 "SchUseStrongCrypto" = dword: 00000001
+
+  [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:00000001
+
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft.NETFramework\v2.0.50727] "SystemDefaultTlsVersions" = dword: 00000001 "SchUseStrongCrypto" = dword: 00000001
+
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft.NETFramework\v4.0.30319] "SystemDefaultTlsVersions" = dword: 00000001 s "SchUseStrongCrypto" = dword: 00000001
+
 
 ## <a name="next-steps"></a>További lépések
 

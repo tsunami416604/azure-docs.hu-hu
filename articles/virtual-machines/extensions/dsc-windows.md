@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 1d65238115ca57a3fcc8047a27c8161aaa144ce4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 26b083069380d7bf107cd3be54cb2e4786789e11
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407707"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593863"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC bővítmény
 
@@ -33,11 +33,11 @@ A Windows PowerShell DSC bővítmény közzétett és a Microsoft támogatja. A 
 
 A DSC-bővítmény támogatja a következő operációs rendszer
 
-A Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1, Windows ügyfél 7/8.1
+A Windows Server 2019, a Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1, Windows ügyfél 7/8.1/10
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A Windows a DSC-bővítmény szükséges, hogy a céloldali virtuális gép csatlakozik az internethez. 
+A DSC-bővítmény, a Windows kell lennie, hogy az Azure és a konfigurációs csomag (.zip kiterjesztésű fájl) helyének kommunikálhat az Azure-on kívül egy helyen tárolt, ha a cél virtuális gépen. 
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -47,12 +47,12 @@ A következő JSON Azure Resource Manager-sablon a DSC-bővítmény beállítás
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "Microsoft.Powershell.DSC",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-10-01",
   "location": "<location>",
   "properties": {
     "publisher": "Microsoft.Powershell",
     "type": "DSC",
-    "typeHandlerVersion": "2.73",
+    "typeHandlerVersion": "2.77",
     "autoUpgradeMinorVersion": true,
     "settings": {
         "wmfVersion": "latest",
@@ -100,10 +100,10 @@ A következő JSON Azure Resource Manager-sablon a DSC-bővítmény beállítás
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | dátum |
+| apiVersion | 2018-10-01 | dátum |
 | publisher | Microsoft.Powershell.DSC | sztring |
 | type | DSC | sztring |
-| typeHandlerVersion | 2,73 | int |
+| typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Beállítási tulajdonság értékei
 
@@ -116,7 +116,7 @@ A következő JSON Azure Resource Manager-sablon a DSC-bővítmény beállítás
 | settings.configurationArguments | Gyűjtemény | Határozza meg a paramétereket, adja át szeretné a DSC-konfiguráció. Ez a tulajdonság nem lesznek titkosítva.
 | settings.configurationData.url | sztring | Adja meg az URL-cím, ahonnan letölthető a konfigurációs adatfájl (.pds1) való használatra a DSC-konfiguráció bemenetként. Ha a megadott URL-cím egy SAS-token hozzáférést igényel, szüksége lesz a protectedSettings.configurationDataUrlSasToken tulajdonsága az SAS-token értékét.
 | settings.privacy.dataEnabled | sztring | Engedélyezheti vagy letilthatja a telemetriai adatok gyűjtése. Ez a tulajdonság csak lehetséges értékei a következők "Engedélyezése", "Letiltás", ", vagy $null. És ez a tulajdonság üres vagy null értékű lesz telemetria engedélyezése
-| settings.advancedOptions.forcePullAndApply | Logikai | Lehetővé teszi a DSC-bővítmény frissítése és a DSC-konfigurációk kihirdeti, amikor a frissítési mód lekéréses.
+| settings.advancedOptions.forcePullAndApply | Bool | Lehetővé teszi a DSC-bővítmény frissítése és a DSC-konfigurációk kihirdeti, amikor a frissítési mód lekéréses.
 | settings.advancedOptions.downloadMappings | Gyűjtemény | Határozza meg a másodlagos helyek függőségeit, például a .NET és a WMF letöltése
 
 ### <a name="protected-settings-property-values"></a>Védett beállításainak Vlastnost értékek
@@ -130,26 +130,9 @@ A következő JSON Azure Resource Manager-sablon a DSC-bővítmény beállítás
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Sablonok ideálisak, egy vagy több üzembe helyezés utáni konfigurálásra igénylő virtuális gépek üzembe helyezésekor. Egy mintául szolgáló Resource Manager-sablon, amely tartalmazza a Log Analytics ügynök Virtuálisgép-bővítmény találhatók a [Azure gyors üzembe helyezési katalógus](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm). 
-
-Virtuálisgép-bővítmények JSON konfigurációjának a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON konfigurációs elhelyezését hatással van az erőforrás nevét, és írja be az értékét. 
-
-A bővítmény erőforrás beágyazása, ha a JSON az kerül a `"resources": []` objektum a virtuális gép. Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőforrás neve a szülő virtuális gép egy hivatkozást tartalmaz, és a típus a beágyazott konfigurációját tükrözi.  
-
-
-## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
-
-Az Azure CLI segítségével a Log Analytics ügynök Virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez. Cserélje le a Log Analytics-kulcsot és a Log Analytics-Azonosítójára azokat a Log Analytics-munkaterület. 
-
-```azurecli
-az vm extension set \
-  --resource-group myResourceGroup \
-  --vm-name myVM \
-  --name Microsoft.Powershell.DSC \
-  --publisher Microsoft.Powershell \
-  --version 2.73 --protected-settings '{}' \
-  --settings '{}'
-```
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok.
+Sablonok ideálisak, egy vagy több üzembe helyezés utáni konfigurálásra igénylő virtuális gépek üzembe helyezésekor.
+Egy mintául szolgáló Resource Manager-sablon, amely tartalmazza a DSC-bővítmény Windows találhatók a [Azure gyors üzembe helyezési katalógus](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91).
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 

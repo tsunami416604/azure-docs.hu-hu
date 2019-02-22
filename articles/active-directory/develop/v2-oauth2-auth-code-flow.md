@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e2115ad1a88c819e0ee1da34d9d332a0b013b96
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb2329a2a67e2e54084d2289cb8cb1a18663b329
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174350"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593675"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési kódfolyamat
 
@@ -319,6 +319,6 @@ Token sikeres válasz fog kinézni:
 | `error_codes` |A diagnosztikát segítő STS-specifikus hibakódok listáját. |
 | `timestamp` | Az idő, a hiba történt. |
 | `trace_id` | A kérelem, amelyek segítik a diagnosztikai egyedi azonosítója. |
-| c`orrelation_id` | A különböző összetevők a diagnosztikát segítő kérelem egyedi azonosítója. |
+| `correlation_id` | A különböző összetevők a diagnosztikát segítő kérelem egyedi azonosítója. |
 
 A hibakódok és a javasolt művelet leírását, [hibakódok a jogkivonat-végpont hibákat](#error-codes-for-token-endpoint-errors).

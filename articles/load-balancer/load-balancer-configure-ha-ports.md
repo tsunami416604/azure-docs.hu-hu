@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: d4464f6188efb479f21a23bf936a8222061d9987
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ec43b79109181457f8ef8e214e296969db5dcb26
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244137"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593403"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Magas rendelkezésre állású portok konfigurálása belső terheléselosztó
 
@@ -38,9 +38,9 @@ Az ábrán látható az ebben a cikkben leírt üzembe helyezési példában a k
 
 ![Magas rendelkezésre állású portok a központi telepítési példa](./media/load-balancer-configure-ha-ports/haports.png)
 
-
-
 ## <a name="configure-high-availability-ports"></a>Magas rendelkezésre állású portok konfigurálása
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Magas rendelkezésre állású portok konfigurálása, állítsa be az nva-k a belső terheléselosztó a háttér-készletben. Állítsa be a megfelelő terheléselosztó egészségügyi mintavétel konfigurálásához NVA állapotát és a terheléselosztó-szabályt magas rendelkezésre állású portok az észleléséhez. Az általános terhelésétől konfigurációs foglalkozik [Ismerkedés](load-balancer-get-started-ilb-arm-portal.md). Ez a cikk a magas rendelkezésre állású portok konfigurációs emeli ki.
 
@@ -51,7 +51,6 @@ A konfigurációt igényli az előtérbeli portot és a háttér-port értékén
 Magas rendelkezésre állású portok konfigurálása az Azure portal használatával, válassza ki a **magas rendelkezésre ÁLLÁSÚ portok** jelölőnégyzetet. Kiválasztásakor a rendszer automatikusan kitölti a port és protokoll konfigurációs. 
 
 ![Magas rendelkezésre állású portok konfigurálása az Azure Portalon](./media/load-balancer-configure-ha-ports/haports-portal.png)
-
 
 ### <a name="configure-a-high-availability-ports-load-balancing-rule-via-the-resource-manager-template"></a>A Resource Manager-sablon használatával magas rendelkezésre állású portok terheléselosztási szabály konfigurálása
 
@@ -91,7 +90,7 @@ Konfigurálhatja magas rendelkezésre állású portok a 2017-08-01-es API-verzi
 A következő paranccsal hozzon létre a magas rendelkezésre állású portok terheléselosztási szabályt, amíg a belső terheléselosztó létrehozása a PowerShell használatával:
 
 ```powershell
-lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
+lbrule = New-AzLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
 ```
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli"></a>Magas rendelkezésre állású portok terheléselosztási szabály konfigurálása az Azure CLI-vel

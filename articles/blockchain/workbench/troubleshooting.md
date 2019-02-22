@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 9f0f32bc1fb6b88dc85f09e13aebc60ff74ec723
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: df0e3e0b8d5ce8b0e35ac7a30df94b3c6a1c2f8b
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329735"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56648745"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Hibaelhárítás az Azure Blockchain Workbench használatával
 
@@ -24,7 +24,7 @@ Egy PowerShell-parancsprogram érhető el, amelyek segítik a hibakeresést fejl
 * Hálózati Blockchain, Ethereum például
 * Blockchain Workbenchet mikroszolgáltatások
 * Application Insights
-* Azure Monitorozási (a Log Analytics)
+* Az Azure Monitoring (az Azure Monitor naplóira)
 
 Az információk segítségével határozza meg a következő lépések és a problémák kiváltó okának meghatározásához.
 
@@ -52,9 +52,9 @@ A szkript a következő paramétereket fogadja:
 | ResourceGroupName | Ahol Blockchain Workbench üzembe helyezésüket az Azure-erőforráscsoport nevére. | Igen |
 | OutputDirectory | A kimenet létrehozása elérési útja. ZIP-fájlt. Ha nincs megadva, az alapértelmezett az aktuális könyvtár. | Nem |
 | LookbackHours | Telemetriai adatok lekérése során használandó órák száma. Alapértelmezett érték: 24 óra. Maximális értéke 90 óra | Nem |
-| OmsSubscriptionId | Az előfizetés-azonosító a Log Analytics telepítési helyét. Csak adja át ezt a paramétert, ha a Log Analytics a blockchain-hálózat Blockchain Workbenchet erőforráscsoport kívül van telepítve.| Nem |
-| OmsResourceGroup |Az erőforráscsoport, a Log Analytics telepítési helyét. Csak adja át ezt a paramétert, ha a Log Analytics a blockchain-hálózat Blockchain Workbenchet erőforráscsoport kívül van telepítve.| Nem |
-| OmsWorkspaceName | A Log Analytics-munkaterület nevét. Csak ezt a paramétert átadhatja, ha a Log Analytics a blockchain-hálózat Blockchain Workbenchet erőforráscsoport kívül van telepítve. | Nem |
+| OmsSubscriptionId | Az előfizetés-azonosító, ahol az Azure Monitor-naplók van üzembe helyezve. Csak adja át ezt a paramétert, ha az Azure Monitor-naplókat a blockchain-hálózat Blockchain Workbenchet erőforráscsoport kívül van telepítve.| Nem |
+| OmsResourceGroup |Az erőforráscsoport, ahol az Azure Monitor-naplók van üzembe helyezve. Csak adja át ezt a paramétert, ha az Azure Monitor-naplókat a blockchain-hálózat Blockchain Workbenchet erőforráscsoport kívül van telepítve.| Nem |
+| OmsWorkspaceName | A Log Analytics-munkaterület nevét. Csak ezt a paramétert átadhatja, ha az Azure Monitor-naplókat a blockchain-hálózat Blockchain Workbenchet erőforráscsoport kívül van telepítve. | Nem |
 
 ## <a name="what-is-collected"></a>Gyűjtött adatok?
 

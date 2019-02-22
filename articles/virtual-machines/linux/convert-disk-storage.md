@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 10dc7a2c7e4de44979ec72b1d292c69866e1faae
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6b78027191d72c10b20c9d09a92c82be4a9e3e05
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326408"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650801"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Átalakítása az Azure disks storage felügyelt standardról prémium szintre, és fordítva
 
@@ -134,17 +134,20 @@ az disk update --sku $sku --name $diskName --resource-group $rgName
 az vm start --ids $vmId 
 ```
 
-## <a name="convert-using-the-azure-portal"></a>Konvertálja az Azure portal használatával
+## <a name="convert-managed-disks-between-standard-and-premium-in-azure-portal"></a>Standard és prémium szintű Azure-portálon között a felügyelt lemezek konvertálása
 
-Nem felügyelt lemezek is konvertálása felügyelt lemezeket az Azure portal használatával.
+Átalakíthatja a felügyelt lemezek közötti standard és prémium szintű, az Azure Portalon.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A portál virtuális gépek listájából válassza ki a virtuális gép.
+2. Válassza ki a virtuális Gépet a listából **virtuális gépek** a portálon.
+3. Ha a virtuális gép nem áll le, kattintson a **leállítása** felső részén a virtuális gépek áttekintése panelre, és várja meg a virtuális gép leállításához.
 3. Válassza ki a virtuális gép paneljén **lemezek** a menüből.
-4. Felső részén a **lemezek** panelen válassza ki **áttelepítése a managed Disks szolgáltatásba**.
-5. Ha a virtuális gép egy rendelkezésre állási csoportban van, lesz egy figyelmeztetés a a **áttelepítése a managed Disks szolgáltatásba** panel, amelyen a rendelkezésre állási csoportot, először konvertálnia kell. A figyelmeztetés rendelkeznie kell egy hivatkozást is kattinthat a rendelkezésre állási csoport konvertálásához. Miután dátumformátumra alakítja át a rendelkezésre állási csoport, vagy ha a virtuális gép nem egy rendelkezésre állási csoportban, kattintson a **áttelepítése** a lemezek a managed Disks szolgáltatásba való migrálásának a folyamat elindításához. 
+4. Válassza ki az átalakítani kívánt lemez.
+5. Válassza ki **konfigurációs** a menüből.
+6. Módosítsa a **fiók típusa** a **Standard HDD** a **prémium szintű SSD**, és fordítva.
+7. Kattintson a **mentése** és a lemez panel bezárásához.
 
-A virtuális gép leáll és újraindul a migrálás befejezése után.
+A lemez típusát, a frissítés azonnali. Az átalakítás után újraindíthatja a virtuális gép.
 
 ## <a name="next-steps"></a>További lépések
 

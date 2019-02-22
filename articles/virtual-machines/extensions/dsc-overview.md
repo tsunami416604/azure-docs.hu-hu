@@ -16,20 +16,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: e5e134fa7dd08bad4220866dd4f5bd9b788e624e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2bdd3cd05f78503962461abfcc85320c25350e69
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980601"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593131"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Az Azure Desired State Configuration bővítmény kezelő bemutatása
 
 Az Azure Virtuálisgép-ügynök és a kapcsolódó bővítmények a Microsoft Azure infrastruktúra-szolgáltatások részét képezik. Virtuálisgép-bővítmények olyan szoftverösszetevők, amelyek a virtuális gép funkciójának bővítésére, és különböző Virtuálisgép-felügyeleti műveletek egyszerűsítését.
 
-Az elsődleges használati eset az Azure Desired State Configuration (DSC) bővítmény elindíthat egy virtuális gép van a [Azure Automation DSC szolgáltatás](../../automation/automation-dsc-overview.md). Biztosít egy virtuális gép rendszerindításra [előnyöket](/powershell/dsc/metaconfig#pull-service) , amely tartalmazza a Virtuálisgép-konfiguráció és egyéb üzemeltetési eszközök, például az Azure Monitoring-integráció folyamatos felügyeletét.
+Az elsődleges használati eset az Azure Desired State Configuration (DSC) bővítmény elindíthat egy virtuális gép van a [Azure Automation állapot Configuration (DSC) szolgáltatás](../../automation/automation-dsc-overview.md).
+A szolgáltatás [előnyöket](/powershell/dsc/metaconfig#pull-service) , amely tartalmazza a Virtuálisgép-konfiguráció és egyéb üzemeltetési eszközök, például az Azure Monitoring-integráció folyamatos felügyeletét.
+A bővítmény használata a virtuális gép regisztrálása a szolgáltatáshoz egy rugalmas megoldást biztosít, amely több Azure-előfizetés akkor is működik.
 
-A DSC-bővítmény, az Automation DSC szolgáltatás függetlenül is használhat. Azonban ebbe beletartozik egy egyetlen művelet, amely központi telepítése során megy végbe. Nincs folyamatban lévő jelentésben vagy a konfigurációkezelés nem érhető el, nem helyileg a virtuális gép.
+A DSC-bővítmény, az Automation DSC szolgáltatás függetlenül is használhat.
+Azonban ez csak leküldi a konfiguráció a virtuális géphez.
+Nincs folyamatban lévő reporting nem érhető el, nem helyileg a virtuális gép található.
 
 Ez a cikk ismerteti, mindkét forgatókönyv: a DSC-bővítmény használata az Automation bevezetése, és a DSC-bővítmény használata eszközként konfigurációk hozzárendelése a virtuális gépek az Azure SDK-val.
 
@@ -120,6 +124,34 @@ $storageName = 'demostorage'
 Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
 Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
+```
+
+## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
+
+Az Azure CLI segítségével a DSC-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez.
+
+Windows rendszerű virtuális gépek:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name Microsoft.Powershell.DSC \
+  --publisher Microsoft.Powershell \
+  --version 2.77 --protected-settings '{}' \
+  --settings '{}'
+```
+
+A Linux rendszerű virtuális mchine:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name DSCForLinux \
+  --publisher Microsoft.OSTCExtensions \
+  --version 2.7 --protected-settings '{}' \
+  --settings '{}'
 ```
 
 ## <a name="azure-portal-functionality"></a>Az Azure portal-funkciók

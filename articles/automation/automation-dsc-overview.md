@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca7a1913e94242af46e777be308ef92fc5a5abb3
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a63155e65460f9e2193c121bb49849940104eff1
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427066"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649228"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation konfiguráló áttekintése
 
@@ -41,9 +41,41 @@ Az Azure Portalról, vagy a Powershellből kezelheti az összes a DSC konfigurá
 
 Az Azure Automation Állapotkonfiguráció felügyelt csomópontok részletes jelentési állapot adatokat küldeni a a beépített lekéréses kiszolgálón. Azure Automation konfigurációs adatokat lehet küldeni a Log Analytics-munkaterület is beállíthatja. Konfigurációs állapot adatokat küldeni a Log Analytics-munkaterület kezelésével kapcsolatos információkért lásd: [továbbítása Azure Automation Állapotkonfiguráció Log Analytics számára](automation-dsc-diagnostics.md).
 
-## <a name="network-planning"></a>A hálózat konfigurálása
+## <a name="prerequisites"></a>Előfeltételek
 
-A következő portot és az URL-címek szükségesek az állapot Configuration (DSC) való kommunikációhoz az Automation szolgáltatással:
+Azure Automation állapot Configuration (DSC) használata esetén fontolja meg az alábbi követelményeknek.
+
+### <a name="operating-system-requirements"></a>Operációs rendszerre vonatkozó követelmények
+
+A Windows rendszert futtató csomópontot a következő verziók támogatottak:
+
+- Windows Server 2019
+- Windows Server 2016
+- Windows Server 2012R2
+- Windows Server 2012
+- Windows Server 2008 R2 SP1
+- Windows 10
+- Windows 8.1
+- Windows 7
+
+A Linux operációs rendszert futtató csomópontok esetében a következő disztribúciók és verziók támogatottak:
+
+A DSC Linux-bővítmény támogatja a Linux-disztribúciók [által támogatott Azure-beli](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) kivételével:
+
+Disztribúció | Verzió
+-|-
+Debian  | Az összes verzió
+Ubuntu  | 18.04
+
+### <a name="dsc-requirements"></a>DSC-követelmények
+
+Az Azure-ban futó összes Windows csomópont [a WMF 5.1](https://docs.microsoft.com/powershell/wmf/5.1/install-configure) előkészítés során telepítve lesz.  A Windows Server 2012 és Windows 7 rendszert futtató csomópontot [a Rendszerfelügyeleti webszolgáltatások engedélyezve lesz](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
+
+Az összes Azure-ban futó Linux-csomópontok [PowerShell DSC Linux-](https://github.com/Microsoft/PowerShell-DSC-for-Linux) előkészítés során telepítve lesz.
+
+### <a name="network-planning"></a>Magánhálózat konfigurálása
+
+Ha a csomópontok egy magánhálózaton belül található, a következő portot és az URL-címek szükség az állapot Configuration (DSC) való kommunikációhoz az Automation szolgáltatással:
 
 * Port: Csak a TCP 443-as kimenő internet-hozzáférés szükség.
 * Global URL: *.azure-automation.net
@@ -85,7 +117,7 @@ Inkább néz videót olvasás helyett? Tekintse meg a következő videó a 2015 
 > [!NOTE]
 > A fogalmakat és a videóban tárgyalt életciklusának helyesek, amíg a konfiguráció az Azure Automation sokat fejlődött a videó rögzítése óta. Azt már általánosan elérhető, van egy sokkal felhasználói felülete az Azure Portalon, és számos további képességeket is támogat.
 
-[!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
+<iframe src="https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="next-steps"></a>További lépések
 

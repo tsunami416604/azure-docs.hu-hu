@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 02/01/2019
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: fd723304e2219c457e982cbe54529d00afe526f4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 02a6cbabaeb7d9c6f764eec5dd86226e37aa6c2b
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896009"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593522"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Az Azure Blockchain Workbench integrációs üzenetkezelés
 
@@ -375,7 +375,7 @@ Service Bus-témakörök Blockchain Workbenchet bekövetkező eseményeket a fel
 
 ## <a name="notification-message-reference"></a>Értesítési üzenet leírása
 
-Attól függően, a **OperationName**, az értesítési üzenetek, a következő üzenet típusok egyikével rendelkeznek.
+Attól függően, a **messageName**, az értesítési üzenetek, a következő üzenet típusok egyikével rendelkeznek.
 
 ### <a name="block-message"></a>Blokkolási üzenet
 
@@ -408,7 +408,7 @@ Az egyes blokkok kapcsolatos információt tartalmazza. A *BlockMessage* tartalm
 | TransactionHash    | A tranzakció a Főkönyv a kivonata |
 | forrás:               | A tranzakció forrás a Főkönyv az egyedi azonosítója |
 | erre:                 | A tranzakció célgépre a Főkönyv egyedi azonosítója |
-| provisioningStatus | Azonosítja a tranzakció a kiépítési folyamat az aktuális állapotát. Lehetséges értékek a következők: </br>0 – a tranzakció az adatbázis az API által létrehozva</br>1 – a tranzakció el lett küldve a Főkönyv</br>2 – a tranzakció főkönyvi sikeresen véglegesítve lett</br>3-as vagy 4 – a tranzakció nem sikerült megerősíteni a Főkönyv</br>5 – a tranzakció sikeresen véglegesítve, főkönyvi |
+| provisioningStatus | Azonosítja a tranzakció a kiépítési folyamat az aktuális állapotát. Lehetséges értékek: </br>0 – a tranzakció az adatbázis az API által létrehozva</br>1 – a tranzakció el lett küldve a Főkönyv</br>2 – a tranzakció főkönyvi sikeresen véglegesítve lett</br>3-as vagy 4 – a tranzakció nem sikerült megerősíteni a Főkönyv</br>5 – a tranzakció sikeresen véglegesítve, főkönyvi |
 
 Példa egy *BlockMessage* a Blockchain Workbenchet:
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 6affa19c61ff4a824e390c42b7fd97554a30c9bb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7de97097e9678410537895c3bafc48d67809331e
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176237"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594168"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazások az Azure Kubernetes Service (AKS) hálózati fogalmai
 
@@ -102,7 +102,7 @@ Bejövő forgalom egy másik gyakori funkcióját a TLS/SSL-lezárást. A HTTPS-
 
 ## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 
-A hálózati biztonsági csoport szűri a forgalmat a virtuális gépek esetében például az AKS-csomópontok. Szolgáltatások, például a terheléselosztó létrehozása az Azure platform automatikusan beállítja az minden olyan hálózati biztonsági csoport szabályait, amelyek szükségesek. Az AKS-fürt podok forgalom szűrése hálózati biztonsági csoport szabályokat manuálisan ne konfigurálja. A Kubernetes szolgáltatásjegyzékek részeként minden szükséges portok és a továbbítás határozzák meg, és lehetővé teszik az Azure platform létrehozni vagy frissíteni a megfelelő szabályokat. Is használható hálózati házirendeket a következő szakaszban leírt módon a podok forgalmat szűrő szabályokkal automatikusan alkalmazni.
+A hálózati biztonsági csoport szűri a forgalmat a virtuális gépek esetében például az AKS-csomópontok. Szolgáltatások, például a terheléselosztó létrehozása az Azure platform automatikusan beállítja az minden olyan hálózati biztonsági csoport szabályait, amelyek szükségesek. Az AKS-fürt podok forgalom szűrése hálózati biztonsági csoport szabályokat manuálisan ne konfigurálja. A Kubernetes szolgáltatásjegyzékek részeként minden szükséges portok és a továbbítás határozzák meg, és lehetővé teszik az Azure platform létrehozni vagy frissíteni a megfelelő szabályokat. Is használhatja hálózati házirendeket a következő szakaszban leírt módon podok forgalmat szűrő szabályokkal alkalmazhatja.
 
 Az alapértelmezett szabályok a forgalmat az SSH például tartoznak hálózati biztonsági csoport. Fürt kezelése és hozzáférés hibaelhárítása vonatkoznak az alapértelmezett szabályokat. Az alapértelmezett szabályokat törlése az AKS-kezelési problémákhoz vezethet, és működésképtelenné válik a szolgáltatási szint célkitűzés (SLO).
 

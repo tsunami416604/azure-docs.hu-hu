@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 6a652b3fa834c2f29f5063f9ba72a3e3d4e75f58
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: cd0493d4fd126175acafce050394e65a47e9bda9
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512448"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650019"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - másik üzembe helyezési modellek és -előfizetések
 
@@ -180,7 +180,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
 
 Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindkét előfizetés engedéllyel rendelkező fiók használata, használja ugyanazt a fiókot az összes lépést, hagyja ki a lépéseket a naplózás az Azure-ból és a sorok szkript által létrehozott felhasználói szerepkör-hozzárendelések eltávolításához. Cserélje le UserA@azure.com és UserB@azure.com az alábbi parancsfájlok a Felhasználóa és Felhasználób használata a felhasználónevek mindegyikét. 
 
-1. Telepítse a PowerShell legújabb verzióját [Azure](https://www.powershellgallery.com/packages/Azure) és [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) modulok. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
+1. Telepítse a PowerShell legújabb verzióját [Azure](https://www.powershellgallery.com/packages/Azure) és [Az](https://www.powershellgallery.com/packages/Az) modulok. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Indítsa el egy PowerShell-munkamenetet.
 3. A PowerShellben jelentkezzen be a Felhasználób előfizetésbe Felhasználób, írja be a `Add-AzureAccount` parancsot. A bejelentkezés a következővel fiók jogosult arra, hogy a virtuális hálózati társviszony-létesítés kell rendelkeznie. Engedélyek listáját lásd: [virtuális hálózatok közötti társviszonyra vonatkozó engedélyek](virtual-network-manage-peering.md#permissions).
 4. Virtuális hálózat (klasszikus) létrehozása a PowerShell használatával, hozzon létre egy új, vagy módosítsa egy meglévő, hálózati konfigurációs fájlt. Ismerje meg, hogyan [exportálása, frissítése és importálása a hálózati konfigurációs fájlokban](virtual-networks-using-network-configuration-file.md). A fájl tartalmaznia kell a következő **VirtualNetworkSite** elem a virtuális hálózat, a jelen oktatóanyagban használt:
@@ -201,17 +201,17 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
     > [!WARNING]
     > Megváltozott hálózati konfigurációs fájl importálása okozhat a módosításokat a meglévő virtuális hálózatok (klasszikus) az előfizetésében. Győződjön meg arról, csak adja hozzá a korábbi virtuális hálózat és az, hogy ne módosítsa vagy bármely meglévő virtuális hálózatok eltávolítása az előfizetésből. 
 
-5. Jelentkezzen be a Felhasználób előfizetésen Felhasználób használata a Resource Manager-parancsok beírásával a `Connect-AzureRmAccount` parancsot.
-6. "A" felhasználó engedélyek hozzárendelése a virtuális hálózat b másolása a következő parancsfájl egy szövegszerkesztőbe, a Számítógépről, majd cserélje le a `<SubscriptionB-id>` a b előfizetés azonosítója Ha az előfizetés-azonosítója nem ismeri, adja meg a `Get-AzureRmSubscription` paranccsal megtekintheti azokat. Az érték **azonosító** visszaadott kimenet van az előfizetés-azonosítójára. Azure a virtuális hálózat (klasszikus), a 4. lépésben az erőforráscsoport neve hozott létre *alapértelmezett hálózati*. A szkript végrehajtásához másolja a módosított szkripttel, illessze be a powershellt, majd nyomja le `Enter`.
+5. Jelentkezzen be a Felhasználób előfizetésen Felhasználób használata a Resource Manager-parancsok beírásával a `Connect-AzAccount` parancsot.
+6. "A" felhasználó engedélyek hozzárendelése a virtuális hálózat b másolása a következő parancsfájl egy szövegszerkesztőbe, a Számítógépről, majd cserélje le a `<SubscriptionB-id>` a b előfizetés azonosítója Ha az előfizetés-azonosítója nem ismeri, adja meg a `Get-AzSubscription` paranccsal megtekintheti azokat. Az érték **azonosító** visszaadott kimenet van az előfizetés-azonosítójára. Azure a virtuális hálózat (klasszikus), a 4. lépésben az erőforráscsoport neve hozott létre *alapértelmezett hálózati*. A szkript végrehajtásához másolja a módosított szkripttel, illessze be a powershellt, majd nyomja le `Enter`.
     
     ```powershell 
-    New-AzureRmRoleAssignment `
+    New-AzRoleAssignment `
       -SignInName UserA@azure.com `
       -RoleDefinitionName "Classic Network Contributor" `
       -Scope /subscriptions/<SubscriptionB-id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
     ```
 
-7. Jelentkezzen ki az Azure-t a Felhasználób, és írja be "a" felhasználó az előfizetés Felhasználóa felhasználóként jelentkezzen be a `Connect-AzureRmAccount` parancsot. A bejelentkezés a következővel fiók jogosult arra, hogy a virtuális hálózati társviszony-létesítés kell rendelkeznie. Engedélyek listáját lásd: [virtuális hálózatok közötti társviszonyra vonatkozó engedélyek](virtual-network-manage-peering.md#permissions).
+7. Jelentkezzen ki az Azure-t a Felhasználób, és írja be "a" felhasználó az előfizetés Felhasználóa felhasználóként jelentkezzen be a `Connect-AzAccount` parancsot. A bejelentkezés a következővel fiók jogosult arra, hogy a virtuális hálózati társviszony-létesítés kell rendelkeznie. Engedélyek listáját lásd: [virtuális hálózatok közötti társviszonyra vonatkozó engedélyek](virtual-network-manage-peering.md#permissions).
 8. A virtuális hálózat (Resource Manager) létrehozása a következő parancsfájl másolása, beillesztése a powershellt, és nyomja `Enter`:
 
     ```powershell
@@ -220,22 +220,22 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
       $location='eastus'
 
     # Create a resource group.
-    New-AzureRmResourceGroup `
+    New-AzResourceGroup `
       -Name $rgName `
       -Location $location
 
     # Create virtual network A.
-    $vnetA = New-AzureRmVirtualNetwork `
+    $vnetA = New-AzVirtualNetwork `
       -ResourceGroupName $rgName `
       -Name 'myVnetA' `
       -AddressPrefix '10.0.0.0/16' `
       -Location $location
     ```
 
-9. Rendeljen myVnetA Felhasználób engedélyeket. Másolja a következő parancsfájl egy szövegszerkesztőbe, a Számítógépről, majd cserélje le a `<SubscriptionA-Id>` az a oszlopba. előfizetés azonosítója Ha az előfizetés-azonosítója nem ismeri, adja meg a `Get-AzureRmSubscription` paranccsal megtekintheti azokat. Az érték **azonosító** visszaadott kimenet van az előfizetés-azonosítójára. Illessze be a PowerShell a parancsfájl módosított változatát, majd nyomja le `Enter` végrehajtásra.
+9. Rendeljen myVnetA Felhasználób engedélyeket. Másolja a következő parancsfájl egy szövegszerkesztőbe, a Számítógépről, majd cserélje le a `<SubscriptionA-Id>` az a oszlopba. előfizetés azonosítója Ha az előfizetés-azonosítója nem ismeri, adja meg a `Get-AzSubscription` paranccsal megtekintheti azokat. Az érték **azonosító** visszaadott kimenet van az előfizetés-azonosítójára. Illessze be a PowerShell a parancsfájl módosított változatát, majd nyomja le `Enter` végrehajtásra.
 
     ```powershell
-    New-AzureRmRoleAssignment `
+    New-AzRoleAssignment `
       -SignInName UserB@azure.com `
       -RoleDefinitionName "Network Contributor" `
       -Scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
@@ -244,7 +244,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
 10. Másolja a következő parancsfájl egy szövegszerkesztőbe, a számítógépen, és cserélje le `<SubscriptionB-id>` a b előfizetés azonosítója MyVnetA myVNetB a társviszonyt, másolja a módosított szkripttel, illessze be a PowerShell, és nyomja le az `Enter`.
 
     ```powershell
-    Add-AzureRmVirtualNetworkPeering `
+    Add-AzVirtualNetworkPeering `
       -Name 'myVnetAToMyVnetB' `
       -VirtualNetwork $vnetA `
       -RemoteVirtualNetworkId /subscriptions/<SubscriptionB-id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
@@ -253,7 +253,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
 11. MyVnetA társviszony állapotának megtekintéséhez a következő parancsfájl másolása, illessze be azt a PowerShell rendszerbe, majd nyomja le `Enter`.
 
     ```powershell
-    Get-AzureRmVirtualNetworkPeering `
+    Get-AzVirtualNetworkPeering `
       -ResourceGroupName $rgName `
       -VirtualNetworkName myVnetA `
       | Format-Table VirtualNetworkName, PeeringState
@@ -299,7 +299,7 @@ Ez az oktatóanyag befejezése után érdemes törölni, így nem használati d�
 1. A PowerShell parancssorába írja be a törölni a virtuális hálózatot (Resource Manager) a következő parancsot:
 
    ```powershell
-   Remove-AzureRmResourceGroup -Name myResourceGroupA -Force
+   Remove-AzResourceGroup -Name myResourceGroupA -Force
    ```
 
 2. A virtuális hálózat törlése a PowerShell (klasszikus modell) kell módosítani egy meglévő hálózati konfigurációs fájlt. Ismerje meg, hogyan [exportálása, frissítése és importálása a hálózati konfigurációs fájlokban](virtual-networks-using-network-configuration-file.md). Távolítsa el a virtuális hálózat, a jelen oktatóanyagban használt VirtualNetworkSite a következő elemet:

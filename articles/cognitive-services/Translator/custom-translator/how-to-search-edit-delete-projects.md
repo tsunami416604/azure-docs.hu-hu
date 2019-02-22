@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 922f64f3e9588b3bfcfeedf7602df781c8ee6172
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f91ac8e8a6a71f2a5eb5c686aa5bc5b83be36545
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226604"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586610"
 ---
 # <a name="search-edit-and-delete-projects"></a>Keresés, szerkesztése és törlése a projektek
 
@@ -39,7 +39,7 @@ A szűrő eszköz lehetővé teszi a különböző szűrési feltételek projekt
 
 ## <a name="edit-a-project"></a>Projekt szerkesztése
 
-Egyéni a fordítót nevének és a egy projekt leírásának szerkesztése lehetőséget biztosít. Más projekt metaadatokat, például a kategória, a forrás, a Célnyelv nem érhetők el szerkesztésre. Az alábbi lépéseket ismertetik egy projekt szerkesztése.
+Egyéni a fordítót lehetővé teszi a nevét és leírását a projekt módosítása. Más projekt metaadatokat, például a kategória, Forrásnyelv és Célnyelv nem érhetők el a szerkesztése. Az alábbi lépések ismertetik a projekt szerkesztése.
 
 1.  Kattintson a ceruza ikonra, amely akkor jelenik meg, ha az egérmutatót egy projektet.
 

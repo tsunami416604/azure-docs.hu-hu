@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 194f43a0005f17a22b3a60d6decd049444e56c20
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 02d3cd3688f3b34c92422168b79cb4da5a93d970
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745776"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587990"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Hitelesítés a Stream Analytics használatával az Azure Data Lake Storage Gen1 felügyelt identitások (előzetes verzió) használatával
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-
 
    ![Stream Analytics felügyelt identitás előzetes konfigurálása](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. Válassza ki **használható rendszer által hozzárendelt felügyelt identitás (előzetes verzió)** a jobb oldalon megjelenő ablakban. Kattintson a **mentése** identitását a Stream Analytics-feladat, az egyszerű szolgáltatás létrehozása az Azure Active Directoryban. Az újonnan létrehozott identitás életciklusának fogja felügyelni az Azure-ban. A Stream Analytics-feladat törlése esetén a rendszer automatikusan törli a társított identitás (azaz a szolgáltatásnév) az Azure-ban.
+2. Válassza ki **használható rendszer által hozzárendelt felügyelt identitás (előzetes verzió)** a jobb oldalon megjelenő ablakban. Kattintson a **mentése** identitását a Stream Analytics-feladat az Azure Active Directoryban egy egyszerű szolgáltatás. Az újonnan létrehozott identitás életciklusának fogja felügyelni az Azure-ban. A Stream Analytics-feladat törlése esetén a rendszer automatikusan törli a társított identitás (azaz a szolgáltatásnév) az Azure-ban.
 
    A konfiguráció mentésekor az objektumazonosító (OID) egyszerű szolgáltatás szerepel a résztvevő-azonosítóval alább látható módon:
 
@@ -171,6 +171,14 @@ Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-
    ```
 
    A fenti PowerShell-paranccsal kapcsolatos további információkért tekintse meg a [Set-AzureRmDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreitemaclentry?view=azurermps-6.8.1&viewFallbackFrom=azurermps-4.2.0#optional-parameters) dokumentációját.
+
+## <a name="limitations"></a>Korlátozások
+Ez a funkció nem támogatja a következőket:
+
+1.  **Több-bérlős hozzáférés**: Az egyszerű szolgáltatás egy adott Stream Analytics-feladat létrehozása az Azure Active Directory-bérlővel, amelyen a feladat lett létrehozva, és nem használható olyan erőforrások, amelyek egy másik Azure Active Directory-bérlőben található találhatók. Ezért csak használhatja MSI ADLS általános 1 erőforrást, amely az Azure Stream Analytics-feladat, ugyanazon az Azure Active Directory a bérlőn belül. 
+
+2.  **[Felhasználói hozzárendelt identitás](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka/)**: nem támogatott ez azt jelenti, hogy a felhasználó nem sikerül a saját a Stream Analytics-feladat által használt egyszerű szolgáltatásának megadása. Az egyszerű szolgáltatás Azure Stream Analytics hozza létre. 
+
 
 ## <a name="next-steps"></a>További lépések
 

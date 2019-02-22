@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6307c57f32700c0c2dd2e5da15b98a2a54dbe9c4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 71d49edc3fa52cce5d128b94d42098150aa5f3a3
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339328"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585083"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Egyéni szerepkörök az Azure-erőforrásokhoz
 
@@ -43,6 +43,7 @@ Az alábbiakban látható egy egyéni szerepkör néz JSON formátumban jelenik 
     "Microsoft.Compute/virtualMachines/start/action",
     "Microsoft.Compute/virtualMachines/restart/action",
     "Microsoft.Authorization/*/read",
+    "Microsoft.ResourceHealth/availabilityStatuses/read",
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Insights/alertRules/*",
     "Microsoft.Insights/diagnosticSettings/*",
@@ -65,16 +66,20 @@ Amikor létrehoz egy egyéni biztonsági szerepkört, az Azure Portalon egy nara
 
 ## <a name="steps-to-create-a-custom-role"></a>Egyéni szerepkör létrehozásának lépései
 
+1. Annak eldöntése, hogyan szeretné az egyéni szerepkör létrehozása
+
+    Egyéni szerepkörök használatával hozhat létre [Azure PowerShell-lel](custom-roles-powershell.md), [Azure CLI-vel](custom-roles-cli.md), vagy a [REST API-val](custom-roles-rest.md).
+
 1. Határozza meg a szükséges engedélyekkel
 
     Amikor létrehoz egy egyéni biztonsági szerepkört, az erőforrás-szolgáltatói műveletek elérhető engedélyek meghatározásához ismernie kell. A műveletek listájának megtekintéséhez használja a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) vagy [az művelet lista](/cli/azure/provider/operation#az-provider-operation-list) parancsokat.
-    Az egyéni szerepkör engedélyeinek megadásához adja hozzá a műveletek a `Actions` vagy `NotActions` tulajdonságait a [szerepkör-definíció](role-definitions.md). Ha az üzemeltetés, ezeket az hozzáadása a `DataActions` vagy `NotDataActions` tulajdonságait.
+    A művelet hozzáadja a `Actions` vagy `NotActions` tulajdonságait a [szerepkör-definíció](role-definitions.md). Ha az üzemeltetés, hozzáadja ezeket az a `DataActions` vagy `NotDataActions` tulajdonságait.
 
-2. Az egyéni szerepkör létrehozása
+1. Az egyéni szerepkör létrehozása
 
-    Azure PowerShell vagy az Azure CLI használatával az egyéni szerepkör létrehozása. Általában, indítsa el a meglévő beépített szerepkör, és módosítsa az igényeinek. Akkor használja a [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) vagy [az szerepkör-definíció létrehozására](/cli/azure/role/definition#az-role-definition-create) parancsokat az egyéni szerepkör létrehozása. Egyéni szerepkör létrehozása, rendelkeznie kell a `Microsoft.Authorization/roleDefinitions/write` engedély az összes `AssignableScopes`, mint például [tulajdonosa](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator).
+    Általában, indítsa el a meglévő beépített szerepkör, és módosítsa az igényeinek. Akkor használja a [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) vagy [az szerepkör-definíció létrehozására](/cli/azure/role/definition#az-role-definition-create) parancsokat az egyéni szerepkör létrehozása. Egyéni szerepkör létrehozása, rendelkeznie kell a `Microsoft.Authorization/roleDefinitions/write` engedély az összes `AssignableScopes`, mint például [tulajdonosa](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator).
 
-3. Az egyéni szerepkör tesztelése
+1. Az egyéni szerepkör tesztelése
 
     Miután az egyéni szerepkör, győződjön meg arról, hogy várakozásainak megfelelően működik-e, hogy tesztelni kell. Ha később módosításokra lesz szüksége, frissítheti az egyéni szerepkör.
 

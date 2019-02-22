@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 845d47af75495a158e56312126c8e246b43f789f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e8879b67b79523cc35fb28a707a6c77f3efb75c0
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112768"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56584979"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>Webalkalmazás visszaállítása biztonsági másolatból egy másik előfizetésben, PowerShell-lel
 
@@ -48,7 +48,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Add-AzAccount](/powershell/module/az.profile/add-azaccount) | Az Azure Resource Manager parancsmag-kérelmek egy hitelesített fiók hozzáadása.  |
+| [Add-AzAccount](/powershell/module/az.accounts/connect-azaccount) | Az Azure Resource Manager parancsmag-kérelmek egy hitelesített fiók hozzáadása.  |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Egy webalkalmazást hoz létre |
 | [Restore-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | Webalkalmazás visszaállítása egy korábban elvégzett biztonsági másolatból. |

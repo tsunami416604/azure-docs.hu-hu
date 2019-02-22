@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 3f08e2b2fab03ed7f2cccfe251e125033d55b30a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 16bff038b21658d29f3ab5a4b135af7f8a9e640c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860626"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593930"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Entitás hozzáadása a példa kimondott szöveg 
 
@@ -35,21 +35,17 @@ Bizonyos entitástípusok, előre összeállított entitások és a reguláris k
 A következő eljárással hozzon létre, és egy egyéni entitást belül a következő utterance (kifejezés) címke a szándék oldalon:
 
 ```text
-Does John Smith work in Seattle?
+Are there any SQL server jobs?
 ```
 
-1. Válassza ki `Seattle` az utterance (kifejezés), a felirat szövegét egy egyszerű entitásként a.
+1. Válassza ki `SQL server` az utterance (kifejezés), a felirat szövegét egy egyszerű entitásként a. Az entitás legördülő mezőben, amely akkor jelenik meg válasszon egy meglévő entitásra, vagy adjon hozzá egy új entitást. Új entitások hozzáadásához írja be annak nevét `Job` a szövegmezőbe, és válassza ki a **új entitás létrehozása**.
 
-    [![Képernyőkép az utterance (kifejezés) egyszerű entitás szöveg kijelölése](./media/luis-how-to-add-example-utterances/hr-create-simple-1.png)](./media/luis-how-to-add-example-utterances/hr-create-simple-1.png)
+    ![Képernyőkép az entitás nevének megadása](./media/luis-how-to-add-example-utterances/create-simple-entity.png)
 
     > [!NOTE]
     > Amikor kiválasztja a címke a keresett szavakat entitásokként:
     > * Egyetlen szó csak adja meg azt. 
     > * Két vagy több szóból készletének válassza ki a elején és végén található a készletet.
-
-1. Az entitás legördülő mezőben, amely akkor jelenik meg válasszon egy meglévő entitásra, vagy adjon hozzá egy új entitást. Új entitások hozzáadásához írja be annak nevét a szövegmezőbe, és válassza **új entitás létrehozása**. 
-
-    ![Képernyőkép az entitás nevének megadása](./media/luis-how-to-add-example-utterances/hr-create-simple-2.png)
 
 1. Az a **milyen típusú entitást szeretne létrehozni?** egy előugró, ellenőrizze az entitás nevét, és válassza ki a **egyszerű** entitástípus, és válassza ki **kész**.
 
@@ -57,14 +53,11 @@ Does John Smith work in Seattle?
 
 ## <a name="add-a-list-entity"></a>Egy lista entitás hozzáadása
 
-Lista entitások rögzített, lezárt csoportját képviselik (pontos egyezés megegyezik) kapcsolódó szavakat a rendszerben. 
+Lista entitásokat a rendszer pontos szöveg egyezések kapcsolódó szó csoportját képviselik. 
 
 A vállalat részleg listát, akkor is rendelkezik normalized értékek: `Accounting` és `Human Resources`. Minden egyes normalizált név szinonimák rendelkezik. A részleg számára ezeket a szinonimákat bármelyik részleg betűszavakat, számok és szleng tartalmazhatnak. Nem kell tudnia értékek az entitás létrehozásakor. Hozzáadhat további valós felhasználói utterances a szinonimák áttekintése után.
 
-1. A példa utterance (kifejezés) egy adott utterance (kifejezés), a listában válassza ki a szó vagy kifejezés, amelyet szeretne az új lista. A felső szövegmezőben adja meg a lista nevét, majd válassza ki **új entitás létrehozása**.   
-
-    ![Képernyőkép az entitás listanév megadása](./media/luis-how-to-add-example-utterances/hr-create-list-1.png)
-
+1. Az egy példa utterance (kifejezés) az a **leképezések** lapon, válassza ki a szó vagy kifejezés, amelyeket szeretne az új lista. Amikor megjelenik az entitás legördülő, adja meg az új lista entitás nevét a felső szövegmezőbe, majd válassza **új entitás létrehozása**.   
 
 1. Az a **milyen típusú entitást szeretne létrehozni?** egy előugró, az entitás nevét, és válassza **lista** típusaként. Ez a listaelem szinonimák felvétele, majd válassza ki **kész**. 
 
@@ -76,21 +69,15 @@ A vállalat részleg listát, akkor is rendelkezik normalized értékek: `Accoun
 
 Összetett entitások jönnek létre a meglévő **entitások** egy fölérendelt entitásba. 
 
-Az utterance (kifejezés), feltéve, hogy `Does John Smith work in Seattle?`, egy összetett utterance (kifejezés) adhat vissza az alkalmazott nevét és helyét az Entitásadatok egyetlen szülőhöz objektumban. 
+Az utterance (kifejezés), feltéve, hogy `Does John Smith work in Seattle?`, egy összetett utterance (kifejezés) térhet vissza az alkalmazott nevét, az Entitásadatok `John Smith`, és a hely `Seattle` összetett entitásokban. A gyermekentitások már léteznie kell az alkalmazást, és a példa utterance (kifejezés) az összetett entitás létrehozása előtt kell megjelölni.
 
-Az alkalmazott nevét, a John Smith, egy előre elkészített [personName](luis-reference-prebuilt-person.md) entitás. A hely, Seattle, egy egyéni egyszerű entitás. Miután ezen a két entitás létrehozása és a egy példa utterance (kifejezés) címkével ellátott, ezeket az entitásokat is zárójelezhető összetett entitásokban. 
+1. A gyermekentitások burkolása egy összetett entitásba, válassza ki a **első** entitás (bal szélső) az utterance (kifejezés), az összetett entitás a címkével. A legördülő listából válassza ki az ezzel a választással a választási lehetőségek megjelenítése jelenik meg.
 
-1. Wrap az egyes entitások összetett be, válassza a **első** entitás (bal szélső) az utterance (kifejezés), az összetett entitás a címkével. Egy legördülő lista megjelenik ez a beállítás az egyik lehetőséget.
+1. Válassza ki **Zabalit do összetett entitást** a legördülő listából. 
 
-1. Válassza ki **összetett entitást burkolása** a legördülő listából. 
-
-    ![Képernyőkép az "Újraindulás összetett entitást a" kiválasztása](./media/luis-how-to-add-example-utterances/hr-create-composite-1.png)
-
-1. Válassza ki az utolsó szót az összetett entitás (jobb szélső). Figyelje meg, egy zöld vonal követi az összetett entitást.
+1. Válassza ki az utolsó szót az összetett entitás (jobb szélső). Figyelje meg, egy zöld vonal követi az összetett entitást. Az összetett entitást láthatja, és minden szót az összetett entitás a bal szélső gyermek entitásból, a jobb szélső gyermek entitásnak kell tartozniuk.
 
 1. Adja meg az összetett entitás nevét a legördülő listában.
-
-    ![Képernyőkép az összetett entitás nevét a legördülő listában adja meg.](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
 
     Az entitások megfelelően be zöld vonal esetén a teljes kifejezés alapján.
 
@@ -110,15 +97,11 @@ Az utterance (kifejezés) a `Move John Smith from Seattle to Cairo`, Seattle a f
 
 1. Az utterance (kifejezés), a szándék oldalán válassza `Seattle`, írja be az entitás nevét `Location`, majd válassza ki az Enter billentyűt.
 
-    ![Képernyőkép az létrehozása hierarchikus entitás címkézés párbeszédpanel](./media/luis-how-to-add-example-utterances/hr-hier-1.png)
-
 1. Az a **milyen típusú entitást szeretne létrehozni?** előugró jelölje ki _hierarchikus_ a **entitástípus**, majd adja hozzá `Origin` és `Destination` gyermekként, majd **kész**.
 
     ![Képernyőkép a leképezések részletei oldala, amelyen kiemelve ToLocation entitás](./media/luis-how-to-add-example-utterances/create-location-hierarchical-entity.png)
 
 1. A word, az utterance (kifejezés) a következő címkét kapta a szülő hierarchikus entitással. A word hozzárendelése egy gyermek entitásnak kell. Térjen vissza az utterance (kifejezés) a szándék részletek lapon. Válassza ki a word-, majd a legördülő listából válassza ki a létrehozott entitás nevét, és hajtsa végre a menüben válassza ki a megfelelő gyermek entitásnak jobb.
-
-    ![Képernyőkép a leképezések Részletek lap, ahol, hozzá kell rendelni a szó egy gyermek entitásnak](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
 
     >[!CAUTION]
     >Gyermek entitásnévnek egyedinek kell lennie minden entitás egyetlen alkalmazásban. Két különböző hierarchikus entitások nem tartalmazhat gyermekentitások ugyanazzal a névvel. 
@@ -135,7 +118,7 @@ Válassza ki az aláhúzott szavakra vörös színnel az utterance (kifejezés).
 
 Az entitás mezőben jelenik meg a **entitás állapota** egy piros felkiáltójel, ha az előrejelzés eltérés van az. Az entitás állapot címkézett és előrejelzett entitások közötti különbségekkel kapcsolatos információk megtekintéséhez válasszon **entitás állapota** válassza ki az elemet a jobb oldalon.
 
-![Képernyőkép a helyes, javítsa ki az előrejelzés eltérés kívánt elem kiválasztása](./media/luis-how-to-add-example-utterances/entity-status.png)
+![Képernyőkép az entitás állapot kiválasztása](./media/luis-how-to-add-example-utterances/entity-prediction-error-correction.png)
 
 A piros vonal bármelyik a következő alkalommal jelenhetnek meg:
 
@@ -153,6 +136,9 @@ A következő megoldásokkal oldhatja meg az entitás előrejelzés eltérés:
 |Megfelelően címkével ellátott szöveg|kék entitás kiemelése, piros aláhúzás|Helytelen előrejelzése|Adja meg a különböző helyeken a tanúsítványalgoritmusok és használatuk megfelelően címkézett entitással további kimondott szöveg. Az aktuális kimondott szöveg, hogy ez a LUIS, akik nem elegendő az entitás vagy hasonló entitások jelennek meg, ugyanabban a környezetben. Hasonló entitás kell kombinálni egyetlen entitást, LUIS nem összetéveszteni őket. Egy másik megoldás, hogy a szavakat vételének növelése érdekében kifejezés lista hozzáadása. |
 |Helytelenül címkével ellátott szöveg|kék entitás kiemelése, piros aláhúzás|Megfelelő előrejelzése| Adja meg a különböző helyeken a tanúsítványalgoritmusok és használatuk megfelelően címkézett entitással további kimondott szöveg. 
 
+> [!Note]
+> Ha egy piros mező körül a címkézett szándékát sorában a példa utterance (kifejezés), egy [szándék előrejelzési hiba](luis-how-to-add-intents.md#intent-prediction-discrepancy-errors) történt. Javítsa ki kell. 
+
 ## <a name="other-actions"></a>Egyéb műveletek
 
 Elvégezhető műveletek a példa kimondott szöveg, a kiválasztott csoporthoz vagy egy egyéni elemet. Kiválasztott példa utterances csoportjait módosítsa a helyi menü az eszközlista feletti. Egyetlen elem mindkét környezetfüggő feletti menüben a listában, és egyes környezetfüggő három felhasználhatja az egyes utterance (kifejezés) sor végén található. 
@@ -162,8 +148,6 @@ Elvégezhető műveletek a példa kimondott szöveg, a kiválasztott csoporthoz 
 Gép megismert entitások címkék eltávolíthatók az utterance (kifejezés), a szándék oldalon. Ha a gép megismerte az entitás nem áll, akkor nem lehet eltávolítani az utterance (kifejezés). Ha egy nem gép megismert entitások eltávolítása az utterance (kifejezés) van szüksége, kell törölni az entitást a teljes alkalmazásban. 
 
 Egy entitás gép megtanult címke eltávolítása az utterance (kifejezés), válassza ki az entitást az utterance (kifejezés). Válassza ki **címke eltávolítása** az entitás legördülő mezőben, amely akkor jelenik meg.
-
-![Képernyőkép a leképezések Részletek lap, távolítsa el a kiemelt címkével ellátott](./media/luis-how-to-add-example-utterances/remove-label.png) 
 
 ### <a name="add-prebuilt-entity-label"></a>Előre összeállított entitások címke hozzáadása
 

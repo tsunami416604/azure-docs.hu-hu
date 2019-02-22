@@ -2,7 +2,6 @@
 title: Mi az
 titleSuffix: Azure Machine Learning Studio
 description: Az Azure Machine Learning Studio egy olyan fogd és vidd eszköz gyorsan felépíthetők a modellek egy használatra kész algoritmusok és a modulok könyvtárból.
-keywords: azure machine learning,azure ml, ml studio
 services: machine-learning
 documentationcenter: ''
 author: garyericson
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 4f69de744be3a9926e1c5d3e674966e24c3020dc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: e454420c014460fbf44c01cb9f620d0f3273c602
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455653"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586018"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 A Microsoft Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. A Machine Learning Studio a modelleket webszolgáltatásként teszi közzé, amelyeket az egyéni alkalmazások vagy az Excel és más üzletiintelligencia-eszközök egyszerűen felhasználhatnak.
@@ -78,7 +77,7 @@ A kísérleteket létrehozhatja nulláról, vagy egy meglévő mintakísérletet
 
 Egy egyszerű kísérlet létrehozására láthat példát az [Egyszerű kísérlet létrehozása az Azure Machine Learning Studio eszközben](create-experiment.md) című cikkben.
 
-A prediktív elemzési megoldások létrehozásának részletesebb leírásáért tekintse meg a [Prediktív megoldás kifejlesztése az Azure Machine Learning segítségével](tutorial-part1-credit-risk.md) című cikket.
+Prediktív elemzési megoldások létrehozásának további részletes útmutatást lásd: [prediktív megoldás fejlesztése az Azure Machine Learning Studio](tutorial-part1-credit-risk.md).
 
 ### <a name="datasets"></a>Adathalmazok
 Az adathalmaz olyan adatokból áll, amelyeket feltöltöttek a Machine Learning Studio eszközben, hogy fel lehessen őket használni a modellezési folyamatban. A Machine Learning Studio tartalmaz néhány mintaadathalmazt, amelyekkel kísérletezhet, és szükség esetén további adathalmazokat is feltölthet. Néhány példa a mintaadathalmazokra:
@@ -103,7 +102,7 @@ A kísérlet létrehozása során a vászon bal oldalán megjelenő modullistáb
 
 A modul rendelkezhet a belső algoritmusok konfigurálásához használható paraméterek készletével. Amikor kiválaszt egy modult a vásznon, a modul paraméterei megjelennek a **Tulajdonságok** panelen a vászontól jobbra. A modell hangolásához módosíthatja a paramétereket a panelen.
 
-A rendelkezésre álló gépi tanulási algoritmusok hatalmas katalógusában való eligazodást segíti az [Algoritmusok kiválasztása a Microsoft Azure Machine Learning szolgáltatáshoz](algorithm-choice.md) című fejezet.
+Való eligazodást segíti gépi tanulási algoritmusok rendelkezésre álló, lásd: [algoritmusok kiválasztása a Microsoft Azure Machine Learning Studióban](algorithm-choice.md).
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>A prediktív elemzési webszolgáltatások telepítése
 Ha elkészült a prediktív elemzési modell, közvetlenül a Machine Learning Studio eszközből üzembe helyezheti webszolgáltatásként. A folyamattal kapcsolatos további információkért tekintse meg az [Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md) című cikket.
@@ -131,7 +130,7 @@ Az **adatbányászat** kifejezés az adatfeltárás automatizált formájára ut
 A gépi tanulási modell a megválaszolandó kérdések vagy az előre jelezni kívánt eredmények absztrakciója. A modellek tanítását és kiértékelését meglévő adatok alapján lehet elvégezni.
 
 #### <a name="training-data"></a>Betanítási adatok
-A modellek adatokból történő betanításakor használhat egy már ismert adatkészletet, majd a legpontosabb válaszok érdekében az adatjellemzők alapján módosíthatja a modellt. Az Azure Machine Learning szolgáltatásban egy, a tanítási adatokat feldolgozó algoritmusmodul, illetve funkcionális modulok, például pontozási modulok szükségek a modell létrehozásához.
+A modellek adatokból történő betanításakor használhat egy már ismert adatkészletet, majd a legpontosabb válaszok érdekében az adatjellemzők alapján módosíthatja a modellt. Az Azure Machine Learning Studio a modell a tanítási adatokat feldolgozó algoritmusmodul, illetve funkcionális modulok, például pontozási modul épül fel.
 
 Felügyelt tanítás során, például a csalásészlelő modell tanítása esetén egy tranzakciókat tartalmazó halmazt fog használni, amelyben minden tranzakciónál meg van jelölve, hogy az csalási célú vagy érvényes. Az adathalmazt ilyenkor véletlenszerűen fel kell darabolni: az egyik rész a modell betanítására, a másik a modell kiértékelésére való.
 
@@ -143,7 +142,7 @@ Ha elvégezte a modell betanítását, a fennmaradó tesztadatok segítségével
 * **anomáliadetektálás**: Egy modellt, amely észleli, ha szokatlan események vagy értékek, és segít a problémák észlelését. A rosszindulatú bankkártyahasználat észlelése során például a rendszer szokatlan vásárlásokat keres.
 * **kategorikus adatok**: Amely kategóriák szerint vannak rendszerezve, és, amely csoportokra osztható adatok. Egy gépjárműveket tartalmazó kategorizált adathalmazban például meg van adva a gyártás éve, a márka, a típus és az ár.
 * **Besorolási**: Az adatpontok egy adatkészlet, amely csoportosításokat már ismert alapján kategóriákba sorolására használható modell.
-* **jellemzőkiemelés**: A folyamat, vagy kiválasztunk annak érdekében, hogy növelje az adatkészlet, és javíthatja az eredményeket egy adatkészlet kapcsolódó szolgáltatások. A repülőjegyárakra vonatkozó adatokat például a hét napjainak és a munkaszüneti napoknak a kiemelésével lehet javítani. További információk: [Feature selection and engineering in Azure Machine Learning](../team-data-science-process/create-features.md) (Jellemzőkiválasztás és -kiemelés az Azure Machine Learngingben).
+* **jellemzőkiemelés**: A folyamat, vagy kiválasztunk annak érdekében, hogy növelje az adatkészlet, és javíthatja az eredményeket egy adatkészlet kapcsolódó szolgáltatások. A repülőjegyárakra vonatkozó adatokat például a hét napjainak és a munkaszüneti napoknak a kiemelésével lehet javítani. Lásd: [kiválasztása és az Azure Machine Learning Studio a mérnöki csapathoz](../team-data-science-process/create-features.md).
 * **a modul**: A Machine Learning Studio modellben, például az adatbevitel modul, amely lehetővé teszi a bevitelét és szerkesztését a kis adatkészletekhez funkcionális része. A Machine Learning Studióban az algoritmusok is a modulok egyik típusának számítanak.
 * **Modell**: Felügyelt tanítási modell, amely az a machine learning-kísérletből a betanítási adatok, algoritmusmodul és funkcionális modulok, például a Score Model-modul áll.
 * **numerikus adatok**: Adatok, amelyek mérésekként (folytonos adatok), vagy megszámlálják (a diszkrét adatok). A numerikus adatokat *kvantitatív adatoknak* is nevezzük.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 9d11a34c499029550de12e8a47f7de0b1beac7b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 596ac871067886ee3124c0f21beb35cb3b8fe1ae
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235037"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593811"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Az Azure Resource Manager-támogatás használata az Azure Load Balancer
 
@@ -32,7 +32,7 @@ A Resource Manager Azure Load Balancer következő gyermek erőforrásokat tarta
 * Háttér címkészletet – ezek az a virtuális gép hálózati kártya (NIC), amelyhez a terhelés eloszlik társított IP-a.
 * Terheléselosztási szabályok – olyan szabálytulajdonság leképezi egy adott előtérbeli IP és port kombinációját háttérbeli IP-címek készletét és port kombinációját. Egyetlen terheléselosztó több terheléselosztási szabállyal is rendelkezhet. Minden egyes szabály egy előtérbeli IP és port és a háttérbeli IP és port virtuális gépekhez társított kombinációja.
 * Mintavételezők – mintavételek lehetővé teszik a Virtuálisgép-példányok állapotát nyomon követéséhez. Ha az állapotfigyelő mintavételező nem sikerül, a Virtuálisgép-példány a rotációból automatikusan.
-* Bejövő NAT-szabályok – NAT-szabályok definiálása a bejövő forgalom áramolnak át az előtérbeli IP-címet, és ossza el a háttérbeli IP-Címmel.
+* Bejövő NAT-szabályok – NAT-szabályok definiálása a bejövő forgalmát az előtérbeli IP-címet, és ossza el a háttér-IP-cím.
 
 ![](./media/load-balancer-arm/load-balancer-arm.png)
 
@@ -58,7 +58,7 @@ Példákat láthat sablonokra:
 
 Ismerkedés az Azure Resource Manager parancsmagok, a parancssori eszközöket és a REST API-k
 
-* [Azure-hálózat parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.network#networking) hozzon létre egy terheléselosztó használható.
+* [Azure-hálózat parancsmagok](https://docs.microsoft.com/powershell/module/az.network#networking) hozzon létre egy terheléselosztó használható.
 * [Az Azure Resource Manager terheléselosztó létrehozása](load-balancer-get-started-ilb-arm-ps.md)
 * [Az Azure CLI használatával az Azure Resource Managerrel](../xplat-cli-azure-resource-manager.md)
 * [Load Balancer – REST API-k](https://msdn.microsoft.com/library/azure/mt163651.aspx)

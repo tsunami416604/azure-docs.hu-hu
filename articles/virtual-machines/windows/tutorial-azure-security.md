@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ebb1a3fba95ed5794b3737d75c4ec182163a32fb
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4c54383df74d9cfd7941dc52d26856bc8da51457
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984426"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594712"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Windows virtuális gépek figyelése céljából
 
@@ -65,7 +65,7 @@ Ha biztonsági szabályzatot szeretne beállítani a teljes előfizetéshez:
 
 1. A Security Center irányítópultján válassza a **Biztonsági szabályzat** lehetőséget, és válassza ki az előfizetését.
 2. A **Biztonsági szabályzat** panelen válassza a **Biztonsági szabályzat** elemet. 
-3. A ** Biztonsági szabályzat – Biztonsági szabályzat ** panelen kapcsolja be vagy ki az előfizetésre alkalmazni kívánt szabályzatelemeket.
+3. Az a **biztonsági házirend - biztonsági házirend** panelen kapcsolja be, vagy kapcsolja ki az előfizetést a alkalmazni kívánt szabályzatelemeket.
 4. Ha végzett a beállítások megadásával, kattintson a panel tetején lévő **Mentés** elemre. 
 
 

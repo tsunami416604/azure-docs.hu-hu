@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 18e5e9ff299cb645e2b5b47d327ee93e27da82df
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fabec317370f5a45b16ac3e6dd3422eceb9621c3
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700001"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592792"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Standard Load Balancer létrehozása az Azure CLI-vel zónaszintű frontend
 
@@ -51,7 +51,7 @@ az group create \
 ## <a name="create-a-zonal-public-ip-standard"></a>Create a zonal public IP Standard
 Az alkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. A megadott zónában mindig létrehozott nyilvános IP-cím csak a zóna létezik. Nem alkalmas a zóna nyilvános IP-cím módosításához.
 
-Hozzon létre egy nyilvános IP-címet a [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) paranccsal. A következő példában létrehozunk egy zónaszintű nyilvános IP-címet *myPublicIP* a a *myResourceGroupLoadBalancer* 1. zóna erőforráscsoportban.
+Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) paranccsal. A következő példában létrehozunk egy zónaszintű nyilvános IP-címet *myPublicIP* a a *myResourceGroupLoadBalancer* 1. zóna erőforráscsoportban.
 
 ```azurecli-interactive
 az network public-ip create \

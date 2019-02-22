@@ -1,6 +1,6 @@
 ---
 title: Azure erőforráscsoportokkal kapcsolatos Visual Studio-projektek | Microsoft Docs
-description: A Visual Studio használatával Azure erőforráscsoport-projekteket hozhat létre, és telepítheti az erőforrásokat az Azure rendszerbe.
+description: Az erőforrások üzembe helyezése az Azure és a egy Azure erőforráscsoport-projekt létrehozása a Visual Studio használatával.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,22 +11,20 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0b00bff2b32ac9dd16d4d38ee35be006c0247bb8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 246ee5f8360869c1b0f901ee54d56e017ac8aeb7
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493438"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649679"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
 A Visual Studio alkalmazással olyan projekteket hozhat létre, amelyekkel telepíthető az infrastruktúra és kód az Azure rendszerébe. Meghatározhatja például az alkalmazás webállomását, webhelyét és adatbázisát, továbbá telepítheti az infrastruktúrát a kóddal együtt. A Visual Studio számos különböző kezdősablont kínál a gyakori forgatókönyvek telepítéséhez. Ebben a cikkben egy webapp és egy SQL Database üzembe helyezésének módját ismerheti meg.  
 
 Ez a cikk bemutatja, hogyan használhatja a [Visual Studio 2017-et az Azure-fejlesztéssel és telepített ASP.NET számítási feladatokkal](/dotnet/azure/dotnet-tools). Amennyiben a Visual Studio 2015 2. frissítését és a Microsoft Azure SDK for .NET 2.9-et használja vagy a Visual Studio 2013-as verzióját Azure SDK 2.9-cel, a tapasztalt működés nagyjából azonos lesz.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-azure-resource-group-project"></a>Azure erőforráscsoport-projekt létrehozása
 
@@ -101,7 +99,7 @@ A **storageType** paraméter előre meg van határozva az engedélyezett típuso
 }
 ```
 
-A Visual Studio intellisense szolgáltatása segítségével megtudhatja, milyen tulajdonságok érhetőek el a sablon szerkesztése során. Például az App Service-csomag tulajdonságainak szerkesztéséhez lépjen a **HostingPlan** erőforrásra, és adjon meg egy értéket a **properties** elemnél. Figyelje meg, hogy az intellisense megjeleníti az elérhető értékeket, valamint az adott értékek leírását.
+A Visual Studio IntelliSense szolgáltatása segítségével megismerheti az elérhető tulajdonságok köre a sablon szerkesztése során. Például az App Service-csomag tulajdonságainak szerkesztéséhez lépjen a **HostingPlan** erőforrásra, és adjon meg egy értéket a **properties** elemnél. Figyelje meg, hogy az intellisense megjeleníti az elérhető értékeket, valamint az adott értékek leírását.
 
 ![intellisense megjelenítése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-intellisense.png)
 
@@ -148,7 +146,9 @@ Készen áll a projekt üzembe helyezésére. Az Azure Erőforráscsoport-projek
 5. Kattintson a **Telepítés** gombra a projekt telepítéséhez az Azure szolgáltatásban. Megnyílik egy PowerShell-konzol a Visual Studio-példányon kívül. Amikor a rendszer kéri, adja meg az SQL Server rendszergazdai jelszavát a PowerShell-konzolon. **Lehetséges, hogy a PowerShell-konzolt egyéb elemek eltakarják, vagy kis méretben fut a tálcán.** Keresse meg és nyissa meg a konzolt a jelszó megadásához.
    
    > [!NOTE]
-   > Előfordulhat, hogy a Visual Studio megkéri, hogy telepítse az Azure PowerShell-parancsmagokat. Az erőforráscsoportok sikeres üzembe helyezéséhez szükség van az Azure PowerShell-parancsmagokra. Ha a program kéri, telepítse őket. További információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-az-ps).
+   > Előfordulhat, hogy a Visual Studio megkéri, hogy telepítse az Azure PowerShell-parancsmagokat. Ha a program kéri, telepítse őket. Az Azure PowerShell-modulok az erőforráscsoportok sikeres üzembe helyezéséhez szükséges. A projekt a PowerShell-parancsprogram nem működik az új [Az Azure PowerShell modul](/powershell/azure/new-azureps-module-az). 
+   >
+   > További információkért lásd: [telepítése és konfigurálása az Azure PowerShell-modulok](/powershell/azure/azurerm/install-azurerm-ps).
    > 
    > 
 6. Az üzembe helyezés eltarthat néhány percig. A **Kimenet** ablakban követhető az üzembe helyezés állapota. Az üzembe helyezés befejeztével az utolsó üzenet jelzi az üzembe helyezés sikerességét, a következőhöz hasonló módon:

@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 12/20/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: c0694a3839ae6b843abd1ddc8b67d1f3e3322e0e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6126bacf50d47029c29772b35f6dc1d552d47029
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246041"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592638"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack"></a>Mit jelent a szolgáltatását az Azure Stack érvényesítési?
 
@@ -43,19 +43,19 @@ További információkért lásd: [érvényesíteni egy új Azure Stack megoldá
 
 ## <a name="validate-changes-to-the-azure-stack-software"></a>Az Azure Stack szoftver ellenőrzése
 
-Partnerek használata a **megoldás érvényesítési** ellenőrizze, hogy a megoldás az Azure Stack legújabb szoftverfrissítésekkel működik-e a munkafolyamatot. A megoldás Szűrőérvényesítési munkafolyamat kell futtatni a Microsoft által ajánlott Hardverkörnyezet, javítási és frissítési (P & U) lett megadva a frissítés alkalmazásához. A munkafolyamat is futtathatók a referenciakonfiguráció build ajánlott.
+Partnerek használata a **csomag** ellenőrizze, hogy a megoldás az Azure Stack legújabb szoftverfrissítésekkel működik-e a munkafolyamatot. A csomag érvényesítése munkafolyamat kell futtatni a Microsoft által ajánlott Hardverkörnyezet, javítási és frissítési (P & U) lett megadva a frissítés alkalmazásához. A munkafolyamat is futtathatók a referenciakonfiguráció build ajánlott.
 
 További információkért lásd: [ellenőrzése a Microsoft szoftverfrissítések](azure-stack-vaas-validate-microsoft-updates.md).
 
 ## <a name="get-digitally-signed-solution-partner-packages"></a>A digitálisan aláírt megoldás partner csomagok beszerzése
 
-Mellett az Azure Stack-frissítések ellenőrzése, a partnerek használata a **megoldás érvényesítési** munkafolyamat számítógép-Gyártói testreszabási csomagokhoz, többek között az Azure Stack-partner-specifikus illesztőprogramokat, a belső vezérlőprogram és az egyéb szoftvereket frissítések ellenőrzése az Azure Stack szoftver központi telepítése során használt. Telepítse a csomagot, a jelenlegi verziója legalább a minimális méretű megoldást használni, amely támogatni fogja az Azure Stack szoftver vannak ellenőrzése. A csomag elküldve a VaaS tesztek végrehajtása előtt. Ha a vizsgálatok sikeresek, [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) , hogy a csomag vizsgálat befejeződött, és a digitális aláírással kell lennie az Azure Stack digitális aláírásával. A Microsoft aláírja a csomagot, és értesíti az Azure Stack-partner, hogy a csomag letölthető a VaaS portálon.
+Mellett az Azure Stack-frissítések ellenőrzése, a partnerek használata a **csomag** munkafolyamat számítógép-Gyártói testreszabási csomagokhoz, többek között az Azure Stack-partner-specifikus illesztőprogramokat, a belső vezérlőprogram és az egyéb szoftvereket frissítések ellenőrzése az Azure Stack szoftver központi telepítése során használt. Telepítse a csomagot, a jelenlegi verziója legalább a minimális méretű megoldást használni, amely támogatni fogja az Azure Stack szoftver vannak ellenőrzése. A csomag elküldve a VaaS tesztek végrehajtása előtt. Ha a vizsgálatok sikeresek, [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) , hogy a csomag vizsgálat befejeződött, és a digitális aláírással kell lennie az Azure Stack digitális aláírásával. A Microsoft aláírja a csomagot, és értesíti az Azure Stack-partner, hogy a csomag letölthető a VaaS portálon.
 
 További információkért lásd: [ellenőrzése OEM csomagok](azure-stack-vaas-validate-oem-package.md).
 
 ## <a name="preview-vaas-test-collateral"></a>Előzetes verzió VaaS biztosíték tesztelése
 
-A Microsoft rendszeresen elérhetővé új funkciókat az Azure Stackben. Ezek a funkciók kidolgozását piacra a fejlesztési folyamat részeként a új teszt biztosíték szeretné elérhetővé tenni az a **Tesztmenetek** munkafolyamat. A tesztelési fázis munkafolyamat a munkafolyamatok lehetővé teszik a munkaköröket külsős informatikusok szoftvertesztek végrehajtása a teszt biztosíték tartalmaz. Ne használja a Tesztmenetek munkafolyamat elküldése jóváhagyásra eredményeket. A megoldás érvényesítése és a megoldás érvényesítési munkafolyamatok használatával a megoldás hivatalos jóváhagyást kérhet.
+A Microsoft rendszeresen elérhetővé új funkciókat az Azure Stackben. Ezek a funkciók kidolgozását piacra a fejlesztési folyamat részeként a új teszt biztosíték szeretné elérhetővé tenni az a **Tesztmenetek** munkafolyamat. A tesztelési fázis munkafolyamat a munkafolyamatok lehetővé teszik a munkaköröket külsős informatikusok szoftvertesztek végrehajtása a teszt biztosíték tartalmaz. Ne használja a Tesztmenetek munkafolyamat elküldése jóváhagyásra eredményeket. A megoldás érvényesítési és a csomag munkafolyamatok segítségével a megoldás hivatalos jóváhagyást kérhet.
 
 További információkért lásd: [a rövid útmutató: Az első vizsgálat ütemezése a portálon az érvényesítés használja](azure-stack-vaas-schedule-test-pass.md).
 

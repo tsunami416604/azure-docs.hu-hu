@@ -16,12 +16,12 @@ ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31e380379b5237f6b1a72b3427eb857f64d55c2e
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 5618d9cc14819a15a0396b0dd4fcbf1d0319bbbf
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269059"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651158"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
@@ -86,6 +86,12 @@ A régebbi verziójú Windows operációs rendszerekről, amelyek a helyszíni A
 -   A régebbi verziójú Windows operációs rendszerekről, amelyek a helyszíni Azure Directory-tartományhoz csatlakoztatott automatikus regisztráció az egyes tartományi felhasználók, akik az eszköz bejelentkezik ilyen eszköz nevű új eszközrekordot hoz létre. 
 
 -   Az Azure ad-ben csatlakozó számítógépeken, törlése, telepíteni és ugyanazzal a névvel újracsatlakozik megjelenik-e az azonos nevű eszköz egy másik rekord formájában.
+
+---
+
+**K: Windows 10-es eszközregisztráció az Azure ad-ben támogatja a TPM FIPS-módban?**
+
+**VÁLASZ:** Nem, jelenleg eszközregisztráció – hibrid Azure AD-csatlakozás, Azure AD-csatlakozás és az Azure AD-ban regisztrálva – összes eszköz állapotának a Windows 10-es nem támogatja TPM FIPS-módban. Sikeresen csatlakozzon, vagy regisztráljon az Azure ad-hez, a FIPS-módban kell ki kell kapcsolni a TPM-EK ezeken az eszközökön
 
 ---
 

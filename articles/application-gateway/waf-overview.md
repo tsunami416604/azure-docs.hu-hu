@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 9bccc9258a6bd9a6fef4956d0f32cb00dd3c542d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 014353bafa31b1c4e924cba8335dbd30a48c2d11
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454259"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651430"
 ---
 # <a name="web-application-firewall-waf"></a>Webalkalmazási tűzfal (WAF)
 
@@ -130,6 +130,16 @@ Az Application Gateway WAF az alábbi két üzemmódban való futtatásra konfig
 
 * **Észlelés üzemmód** – amikor egy naplófájlt használ az észlelési módot, az Application Gateway WAF figyelők és a naplók minden veszélyforrás-riasztást futtatása van konfigurálva. A **Diagnosztika** szakaszban be kell kapcsolni az Application Gateway naplózási diagnosztikáját. Emellett ellenőrizze, hogy a WAF-napló ki van-e választva és be van-e kapcsolva. Az észlelési üzemmódban futtatott webalkalmazási tűzfal nem blokkolja a bejövő kéréseket.
 * **Megelőzés üzemmód** – Amikor az Application Gateway WAF megelőzés üzemmódban való futtatásra van konfigurálva, aktívan blokkolja a szabályok által észlelt behatolásokat és támadásokat. A támadó egy 403-as jogosulatlan hozzáférési kivételt kap, és a kapcsolat megszakad. A megelőzés üzemmód továbbra is naplózza az ilyen támadásokat a WAF-naplókban.
+
+### <a name="anomaly-scoring-mode"></a>Anomáliadetektálási pontozási mód 
+ 
+OWASP rendelkezik kétféle vegye alapul annak eldöntéséhez, hogy blokkolja a forgalmat, vagy nem. A hagyományos, és a egy Anomáliadetektálási pontozási módról van. A hagyományos módban az összes forgalom megfelelő szabály függetlenül, hogy más szabályokkal rendelkezik matched túl számít. Könnyebb átlátni, míg a hány szabályok rendszer aktivált egy adott kérés az információ az egyik ebben a módban vonatkozó korlátozások. Ezért az Anomáliadetektálási pontozási módot jelent, elérhetetlenné válik, amely az alapértelmezett az OWASP 3.x. 
+
+Anomáliadetektálási pontozási módban a tény, hogy az az előző szakaszban leírt szabályok egyikének megegyezik a forgalom nem azonnal jelenti, hogy az történik, letiltása, feltéve, hogy a tűzfal megelőzés üzemmódban van. Szabályok rendelkezik egy bizonyos súlyossági (kritikus, hiba, figyelmeztetés és figyelje meg), és attól függően, hogy a súlyosság nő az Anomáliadetektálási pontszám neve a kérés által használt számérték. Például egy egyező figyelmeztetési szabály is hozzájárul értéke 3, de egy megfelelő kritikus szabállyal 5-öt is hozzájárul. 
+
+A küszöbérték, a Anomáliadetektálási pontszám, amely alatt forgalom között nem szakad meg, a küszöbérték beállítása 5. Ez azt jelenti, egy megfelelő kritikus szabályt, hogy az Azure WAF megelőzés üzemmódban kérelem letiltja a (mivel a kritikus fontosságú szabály növeli az anomáliadetektálás pontszámot 5-megfelelően az előző bekezdésben) is elegendő. Azonban több egyező szabály egy figyelmeztetés fog csak növelését az anomáliadetektálási szintű pontszám a 3. Mivel a 3 még kisebb a küszöbértéknél 5, nincs forgalom nem lesz letiltva, akkor is, ha a WAF megelőzés üzemmódban. 
+
+Vegye figyelembe, hogy az üzenet naplózza a WAF szabályok egyezések forgalmat tartalmazza a "Letiltott", a mező action_s, de, amely nem feltétlenül jelenti azt, hogy a forgalom valóban le lett tiltva. Az anomáliadetektálási pontszámát 5-ös vagy újabb szükséges ténylegesen blokkolja a forgalmat.  
 
 ### <a name="application-gateway-waf-reports"></a>WAF-figyelés
 

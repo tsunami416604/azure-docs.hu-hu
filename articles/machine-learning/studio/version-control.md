@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.date: 10/27/2016
-ms.openlocfilehash: 26e469076e16f57300cf3e385620a723ddf51a4c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 1b57fefad726f8fb21f23fa9eef9e71643a3f51b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510724"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588398"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Alkalmazáséletciklus-kezelés az Azure Machine Learning Studióban
 Az Azure Machine Learning Studio egy olyan eszköz, amely a rendszer üzembe helyezte azt az Azure-felhőplatformon a machine learning-kísérletek fejlesztéséhez. Például a Visual Studio IDE, és a méretezhető felhőalapú szolgáltatás Egyesítés egyetlen platformban. Beépítheti a verziókezelés standard Application Lifecycle Management (ALM) eljárásait különböző eszközök automatikus végrehajtás és üzembe helyezés, Azure Machine Learning studióba. Ez a cikk ismerteti az egyes beállítások és módszerek.
@@ -42,7 +42,7 @@ A futtatási előzményeket pillanatképeknek a kísérlet egy nem módosíthat�
 A JSON-fájlt a kísérlet diagram, többek között előfordulhat, hogy eszközökhöz való hivatkozást a munkaterületen, például egy adatkészletet és betanított modell képviselő szöveges alakot. A szerializált verzió az eszköz nem tartalmaz. Kísérel meg importálni a JSON-dokumentum vissza a munkaterületre, ha a hivatkozott eszközök már léteznie kell az adott objektum azonosítóját, amely a kísérletben hivatkozott. Ellenkező esetben nem férhet hozzá az importált kísérletet.
 
 ## <a name="versioning-trained-model"></a>Verziókezelés betanított modell
-Az Azure Machine Learning betanított modell szerializált olyan formátumra, más néven iLearner-fájlt (`.iLearner`), és tárolja a munkaterülethez társított Azure Blob storage-fiók. Egyik módja a iLearner-fájlt egy példánya, a megőrzési API-n keresztül. [Ez a cikk](retrain-models-programmatically.md) ismerteti a megőrzési API működése. A magas szintű lépéseket:
+Az Azure Machine Learning Studióban betanított modell szerializált olyan formátumra, más néven iLearner-fájlt (`.iLearner`), és tárolja a munkaterülethez társított Azure Blob storage-fiók. Egyik módja a iLearner-fájlt egy példánya, a megőrzési API-n keresztül. [Ez a cikk](retrain-models-programmatically.md) ismerteti a megőrzési API működése. A magas szintű lépéseket:
 
 1. Állítsa be a betanítási kísérlet.
 2. Adja hozzá a web service kimeneti portját a tanítási modell modulhoz, vagy a modul, amely a betanított modell, például a modell Hiperparaméter finomhangolása vagy az R-modell létrehozása.
@@ -57,7 +57,7 @@ Miután a betanított modellt tartalmazó iLearner-fájlt, majd a saját verzió
 A mentett iLearner-fájlt majd keresztül üzembe helyezett webszolgáltatások pontozó használható.
 
 ## <a name="versioning-web-service"></a>Verziókezelés webszolgáltatás
-Az Azure Machine Learning-kísérletből webszolgáltatások kétféle telepítheti. A klasszikus webszolgáltatás szorosan összekapcsolt, a kísérletet, valamint a munkaterületen. Az új webszolgáltatás használja az Azure Resource Manager-keretrendszert, és azt már nem az eredeti kísérlet vagy a munkaterület együtt használja.
+Kétféle típusú webes szolgáltatás közül az Azure Machine Learning Studio kísérletezéshez telepítheti. A klasszikus webszolgáltatás szorosan összekapcsolt, a kísérletet, valamint a munkaterületen. Az új webszolgáltatás használja az Azure Resource Manager-keretrendszert, és azt már nem az eredeti kísérlet vagy a munkaterület együtt használja.
 
 ### <a name="classic-web-service"></a>Klasszikus webszolgáltatás
 Klasszikus webszolgáltatások verzióra akkor kihasználhatja a web service végpont szerkezet. A következő jellemzően a következő folyamatot:
@@ -79,7 +79,7 @@ Ha létrehoz egy új Azure Resource Manager-alapú webes szolgáltatás, a végp
 Miután az exportált WSD-fájlt, és szabályozhatja azt a verziót, is telepítheti a WSD új webszolgáltatásként egy másik web service-csomag egy másik Azure-régióban. Csak ellenőrizze, hogy a megfelelő storage-fiók konfigurációját, valamint az új webes szolgáltatási csomag. Adjon meg Javítása a különböző iLearner-fájlt, módosítsa a WSD-fájlt, és a hely hivatkozás a betanított modell frissítése, és új webszolgáltatásként üzembe helyezni.
 
 ## <a name="automate-experiment-execution-and-deployment"></a>Kísérlet-végrehajtás és üzembe helyezésének automatizálása
-Fontos szempont a ALM, hogy tudni végrehajtási és az alkalmazás központi telepítési folyamat automatizálása. Az Azure Machine Learning, ennek segítségével végezheti a [PowerShell-modul](https://aka.ms/amlps). Íme egy példa, amely a standard szintű alkalmazások teljes körű lépések automatikus végrehajtás és üzembe helyezési folyamat használatával a [Azure Machine Learning Studio PowerShell modul](https://aka.ms/amlps). Az egyes lépések, amelyek segítségével a lépés elvégzéséhez legalább egy PowerShell-parancsmagok van csatolva.
+Fontos szempont a ALM, hogy tudni végrehajtási és az alkalmazás központi telepítési folyamat automatizálása. Az Azure Machine Learning Studióban, akkor ez segítségével végezheti a [PowerShell-modul](https://aka.ms/amlps). Íme egy példa, amely a standard szintű alkalmazások teljes körű lépések automatikus végrehajtás és üzembe helyezési folyamat használatával a [Azure Machine Learning Studio PowerShell modul](https://aka.ms/amlps). Az egyes lépések, amelyek segítségével a lépés elvégzéséhez legalább egy PowerShell-parancsmagok van csatolva.
 
 1. [Töltse fel az adatkészlet](https://github.com/hning86/azuremlps#upload-amldataset).
 2. Betanítási kísérlet másolja be a munkaterületet egy [munkaterület](https://github.com/hning86/azuremlps#copy-amlexperiment) vagy [katalógus](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), vagy [importálása](https://github.com/hning86/azuremlps#import-amlexperimentgraph) egy [exportált](https://github.com/hning86/azuremlps#export-amlexperimentgraph) helyi kísérlet a lemez.

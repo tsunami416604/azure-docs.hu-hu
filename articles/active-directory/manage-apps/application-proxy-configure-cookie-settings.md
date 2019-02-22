@@ -12,12 +12,12 @@ ms.date: 01/16/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d97e2542200703201b1c20738581a938ba209e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dfcd7f10952a883552cd30d6cacf03095492dd38
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165994"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649747"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-k beállításairól a helyszíni alkalmazások az Azure Active Directory eléréséhez
 
@@ -43,19 +43,17 @@ A cookie-k beállításairól az Azure portal használatával beállítása:
 5. A **további beállítás**, állítsa be a cookie-k **Igen** vagy **nem**.
 6. Kattintson a **mentése** alkalmazza a módosításokat. 
 
-<!---
+## <a name="view-current-cookie-settings---powershell"></a>Megtekintheti az aktuális cookie beállításai – PowerShell
 
-## View current cookie settings - PowerShell
-
-To see the current cookie settings for the application, use this PowerShell command:  
+Az alkalmazás aktuális cookie-k beállításainak megtekintéséhez használja a PowerShell-parancsot:  
 
 ```PowerShell
 Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl * 
 ```
 
-## Set cookie settings - PowerShell
+## <a name="set-cookie-settings---powershell"></a>Állítsa be a cookie-beállítások – PowerShell
 
-In the following PowerShell commands, ```<ObjectId>``` is the ObjectId of the application. 
+A következő PowerShell-parancsokat a ```<ObjectId>``` objectid azonosítóját, az alkalmazás van. 
 
 **Http-Only Cookie** 
 
@@ -64,18 +62,16 @@ Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEna
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $false 
 ```
 
-**Secure Cookie**
+**Biztonságos cookie-k**
 
 ```PowerShell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $false 
 ```
 
-**Persistent Cookies**
+**Maradandó cookie-k**
 
 ```PowerShell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsPersistentCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsPersistentCookieEnabled $false 
 ```
-
--->

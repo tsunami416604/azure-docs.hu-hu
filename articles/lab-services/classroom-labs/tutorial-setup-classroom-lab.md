@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4abec80df4aeeb4c20d56b43ba122ee7266905a6
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998518"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649586"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -69,10 +69,8 @@ A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet
 
     ![Sablon konfigurálása oldal a folyamat befejeződése után](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Az a **konfigurálása sablon** lapon, tegye a következőket: Ezeknek a lépéseknek **választható** -t az oktatóanyaghoz.
-    1. Az **Indítás** gomb kiválasztásával indítsa el a virtuálisgép-sablont.
     2. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. 
-    3. Telepítsen és konfiguráljon szoftvert a virtuálisgép-sablonon. 
-    4. **Állítsa le** a virtuális gépet.  
+    3. Telepítsen és konfiguráljon szoftvert a virtuálisgép-sablonon.     
     5. Adja meg a sablon **leírását**.
 9. Válassza ki a **Tovább** gombot a sablon oldalán. 
 10. A **Sablon közzététele** oldalon tegye az alábbiakat. 

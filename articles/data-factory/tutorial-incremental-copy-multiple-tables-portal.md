@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 686e008a83924460b1f85212b5c06796b6bc8217
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e6a24bfe25513b1b4eacd8bc192caa5518c896c6
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354212"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593199"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL Database-be.    
@@ -270,7 +270,7 @@ Mialatt adatokat helyez át egy magánhálózaton (helyszínen) lévő adattárb
 1. Az **Integration Runtime Setup** (Integrációs modul beállítása) ablakban válassza a **Perform data movement and dispatch activities to external computes** (Adatáthelyezés és tevékenységek kiosztása külső számításokhoz) lehetőséget, majd kattintson a **Next** (Tovább) gombra. 
 
    ![Az integrációsmodul-típus kiválasztása](./media/tutorial-incremental-copy-multiple-tables-portal/select-integration-runtime-type.png)
-1. Válassza a ** Private Network ** (Magánhálózat) lehetőséget, majd kattintson a **Next** (Tovább) gombra. 
+1. Válassza a **Private Network** (Magánhálózat) lehetőséget, majd kattintson a **Next** (Tovább) gombra. 
 
    ![Magánhálózat kiválasztása](./media/tutorial-incremental-copy-multiple-tables-portal/select-private-network.png)
 1. Írja be a **MySelfHostedIR** nevet a **név** mezőjébe, és kattintson a **Next** (Tovább) gombra. 
@@ -511,7 +511,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
         | Name (Név) | Típus | Érték | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | Karakterlánc | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. A bal oldali panelen kattintson a **Publish** (Közzététel) elemre. Ez a művelet közzéteszi a Data Factory szolgáltatásban a létrehozott entitásokat. 

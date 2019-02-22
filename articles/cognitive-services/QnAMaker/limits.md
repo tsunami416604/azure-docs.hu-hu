@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 6f36000eb5a17e58d1450a064897dd9caef89bad
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 424aa7038fecba7a11c1ccaa07053cf2e1606835
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859351"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651130"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>A QnA Maker Tudásbázis korlátok és határok
 A QnA Maker között korlátok átfogó listáját.
@@ -71,6 +71,6 @@ Ezek képviselik a frissítési műveletek; korlátai azt jelenti, kattintson a 
 
 Ismerje meg, mikor és hogyan szolgáltatásszintek módosítása:
 
-* [A QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): amikor szüksége van további kérdések és válaszok a Tudásbázisban, az aktuális szint feletti a QnA Maker szolgáltatást a tarifacsomag frissítése.
-* [Keresés](how-to/upgrade-qnamaker-service.md#upgrade-app-service) – Ha az ügyfél alkalmazásából további kérések kiszolgálására, frissítse az app service-tarifacsomag kell a Tudásbázis.
-* [App Service-ben](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): Ha azt tervezi, számos tudásbázisok rendelkezik, az Azure Search szolgáltatás tarifacsomag frissítése.
+* [A QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): Ha további fájlokra van szüksége, vagy a Tudásbázis, az aktuális szint feletti nagyobb méretű dokumentumokat a QnA Maker szolgáltatást a tarifacsomag frissítése.
+* [App Service-ben](how-to/upgrade-qnamaker-service.md#upgrade-app-service): Ha az ügyfél alkalmazásából további kérések kiszolgálására kell a Tudásbázis, frissítse az app service-tarifacsomag.
+* [Az Azure Search](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): Ha azt tervezi, szeretné, hogy sok tudásbázisok, frissítse az Azure Search szolgáltatás tarifacsomag.

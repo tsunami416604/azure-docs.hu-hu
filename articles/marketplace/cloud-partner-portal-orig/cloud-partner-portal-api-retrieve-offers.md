@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cf6e2fa296d3d9f152edf22685b930586b4de524
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: de9261548ec79e206b0db87caabc1fa4c9ad6771
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024812"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591550"
 ---
 <a name="retrieve-offers"></a>Ajánlatok lekérése
 ===============
@@ -32,9 +32,9 @@ A közzétevő névtérben ajánlatok összesített listájának beolvasása.
 <a name="uri-parameters"></a>URI-paraméterek
 --------------
 
-| ** Neve **        |  **Leírás**                         |  **Adattípus** |
+| **Name (Név)**         |  **Leírás**                         |  **Adattípus** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | Például a közzétevő azonosítója `contoso` |   Sztring    |
+|  publisherId     | Például a közzétevő azonosítója `contoso` |   String    |
 |  API-verzió     | API legújabb verziója                    |    Dátum        |
 |  |  |
 

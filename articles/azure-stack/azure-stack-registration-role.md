@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 02/13/2019
 ms.author: patricka
 ms.reviewer: rtiberiu
-ms.lastreviewed: 01/10/2019
-ms.openlocfilehash: 80caa470675a78a9c2e3d4c055333719f54fe64a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/13/2019
+ms.openlocfilehash: 4858e33023ff0f94bb9fb879b01846184df2491e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247884"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652144"
 ---
 # <a name="create-a-registration-role-for-azure-stack"></a>Azure stack-regisztráció szerepkör létrehozása
 
@@ -33,7 +33,7 @@ Forgatókönyvek, ahol nem szeretnénk az Azure-előfizetés tulajdonosa engedé
 
 Regisztrálás az Azure Stack, a regisztrációs fiókhoz kell rendelkeznie a következő Azure Active Directory-engedélyek és az Azure-előfizetés engedélyeket:
 
-* **Az Azure Active Directory-bérlőben alkalmazás a regisztrációs engedélyeket:** Rendszergazdák rendelkeznek az alkalmazás regisztrációs engedélyeket. A felhasználóknak engedélyt egy globális beállítás, a bérlő összes felhasználója. Megtekinteni vagy módosítani a beállítás további [hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+* **Az Azure Active Directory-bérlőben alkalmazás a regisztrációs engedélyeket:** Rendszergazdák rendelkeznek az alkalmazás regisztrációs engedélyeket. A felhasználóknak engedélyt egy globális beállítás, a bérlő összes felhasználója. Megtekintéséhez, vagy módosítsa a beállítást, lásd: [hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
     A *felhasználók regisztrálhatnak alkalmazásokat* értékűre kell állítani **Igen** , hogy regisztrálja az Azure Stack felhasználói fiók engedélyezése. Ha az alkalmazásregisztrációk beállítás értéke **nem**, egy felhasználói fiók nem használható, és regisztrálja az Azure Stack egy globális rendszergazdai fiókot kell használnia.
 

@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: b8347a8c34cf5a0585e9bb6c247102207a70015a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 11cf66d9335315048fd505b3cd9e4c73b244e95a
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225618"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586273"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Egyéni a fordítót Hub munkaterületet és projektek áttelepítése
 
@@ -125,7 +125,7 @@ Ha azt szeretné, hogy a projektek, betanítások és dokumentumok. áttelepít�
 ## <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 * Áttelepítés egy projektet Hub egyéni a fordítót a nem fog a Hub betanítások vagy projektekhez hatást. Nem töröljük projektek vagy dokumentumok hubról áttelepítés során, és azt nem megszüntetheti a modellek.
 * Csak egyszer áttelepítése projektenként engedélyezettek. Ha ismételje meg a projekt áttelepítés van szüksége, lépjen kapcsolatba velünk a következő címen.
-* Jelenleg az egyéni a fordítót a kezdő és a angol fordítása 36 nyelveket támogatja, és folyamatosan dolgozunk további nyelvek hozzáadása. Hub nem igényel kiindulási modelleket, és ezért a több ezer nyelveket támogatja. Nem támogatott nyelvet párjának, azonban a rendszer csak a dokumentumok az áttelepítéshez és a projekt definíciók áttelepítheti. A Microsoft nem fogja tudni az új modell betanításához. Továbbá ezeket a dokumentumokat és projektek jelenik meg inaktívként annak a megállapítására, hogy nem tudja használni őket most. Támogatás bevezetése esetén ezek projektek és/vagy a dokumentumok, aktív és trainable válnak.
+* Egyéni a fordítót NMT nyelvi párok, illetve onnan angol támogatja. [Támogatott langauges teljes listájának megtekintéséhez](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Hub nem igényel kiindulási modelleket, és ezért a több ezer nyelveket támogatja. Nem támogatott nyelvet párjának, azonban a rendszer csak a dokumentumok az áttelepítéshez és a projekt definíciók áttelepítheti. A Microsoft nem fogja tudni az új modell betanításához. Továbbá ezeket a dokumentumokat és projektek jelenik meg inaktívként annak a megállapítására, hogy nem tudja használni őket most. Támogatás bevezetése esetén ezek projektek és/vagy a dokumentumok, aktív és trainable válnak.
 * Egyéni a fordítót jelenleg nem támogatja a monolingual betanítási adatok. Nem támogatott nyelvet párok, például áttelepítheti monolingual dokumentumok, de azok megjelenítése inaktívként, amíg nem támogatott monolingual adatok.
 * Egyéni a fordítót 10 k párhuzamos mondatokat igényel a betanításához. A Microsoft Hub egy kisebb adatkészletet a sikerült betanításához. Képzési telepít át, amely nem felel meg ennek a követelménynek, ha azt nem kell betanítani.
 

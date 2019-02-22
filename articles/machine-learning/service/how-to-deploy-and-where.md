@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: c83342e5eb0e6c1f45daa54ea3c4f3c602ff7a39
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7d5bfba10fe68c4d29a66fe39a386aec975b978f
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878612"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651532"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -29,10 +29,11 @@ A következő számítási célnak modellek helyezhető üzembe:
 
 | Számítási célt | Üzemelő példány típusa | Leírás |
 | ----- | ----- | ----- |
-| [Az Azure Container Instances (aci Szolgáltatásban)](#aci) | Webszolgáltatás | Gyors üzembe helyezés. Jó fejlesztési vagy tesztelési célokra. |
-| [Az Azure Kubernetes Service (AKS)](#aks) | Webszolgáltatás | Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít. |
-| [Azure IoT Edge](#iotedge) | IoT-modul | Az IoT-eszközökön a modellek üzembe helyezése. Következtetési történik az eszközön. |
-| [A mező-programmable gate array (FPGA)](#fpga) | Webszolgáltatás | Valós idejű következtetési ultraalacsony késése. |
+| [Az Azure Kubernetes Service (AKS)](#aks) | Valós idejű következtetésekhez | Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít. |
+| [Az Azure ML Compute](#amlcompute) | A Batch következtetésekhez | Kiszolgáló nélküli számítási batch előrejelzési futtassa. A normál és alacsony prioritású virtuális gépeket támogatja. |
+| [Az Azure Container Instances (aci Szolgáltatásban)](#aci) | Tesztelés | Jó fejlesztési vagy tesztelési célokra. **Nem megfelelő az éles számítási feladatokhoz.** |
+| [Azure IoT Edge](#iotedge) | (Előzetes verzió) IoT-modul | Az IoT-eszközökön a modellek üzembe helyezése. Következtetési történik az eszközön. |
+| [A mező-programmable gate array (FPGA)](#fpga) | (Előzetes verzió) Webszolgáltatás | Valós idejű következtetési ultraalacsony késése. |
 
 A modell üzembe helyezését a minden számítási célokhoz hasonlít:
 
@@ -225,7 +226,7 @@ Központi telepítés kap, a folyamat esetén úgy, hogy a számítási célnak 
 >
 > A példák a jelen dokumentum-használat `deploy_from_image`.
 
-### <a id="aci"></a> Az Azure Container Instances szolgáltatásban való üzembe helyezése
+### <a id="aci"></a> Helyezze üzembe az Azure Container Instances (DEVTEST)
 
 A modellek üzembe helyezéséhez a egy webszolgáltatás, ha egy vagy több, a következő feltételek használata Azure Container Instances szolgáltatásban teljesül:
 
@@ -246,7 +247,7 @@ Azure Container Instancesben való üzembe helyezéséhez használja az alábbi 
 
 További információkért lásd: a dokumentáció a a [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) osztályokat.
 
-### <a id="aks"></a> Az Azure Kubernetes Service üzembe helyezése
+### <a id="aks"></a> Helyezze üzembe az Azure Kubernetes Service (ÉLES)
 
 Az Azure Kubernetes Service (AKS) használatával a modellt webszolgáltatásként, amely nagy méretű éles üzembe helyezéséhez. Használjon egy meglévő AKS-fürtöt, vagy hozzon létre egy újat az Azure Machine Learning SDK-t, a parancssori felület vagy az Azure portal használatával.
 
@@ -332,6 +333,13 @@ print(service.state)
 **Becsült időtartam**: Körülbelül 3 perc.
 
 További információkért lásd: a dokumentáció a a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) osztályokat.
+
+### <a id="fpga"></a> Az Azure ML Compute következtetésekhez
+
+Az Azure Machine Learning számítási célnak létrehozása és felügyelete az Azure Machine Learning szolgáltatás által. A batch-előrejelzés az Azure gépi Tanulási folyamatok használható.
+
+Az Azure ML Compute batch következtetésekhez leírását, olvassa el a [futtatása a Batch-előrejelzések hogyan](how-to-run-batch-predictions.md) dokumentumot.
+
 
 ### <a id="fpga"></a> A mező-programmable gate arrays (FPGA) üzembe helyezése
 

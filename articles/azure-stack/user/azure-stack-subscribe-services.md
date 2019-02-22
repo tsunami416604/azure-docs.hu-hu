@@ -13,23 +13,23 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 66c462dee3a2940a7a090101ffb9cec7e4ff1e7c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 431c31b39103e5ef21cb83b388167cab57e0c129
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981283"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649084"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>Oktatóanyag: létrehozása és tesztelése egy előfizetést
 
 Ez az oktatóanyag bemutatja, hogyan hozzon létre egy ajánlatot tartalmazó előfizetést, és tesztelje azt. A teszthez jelentkezzen be az Azure Stack felhasználói portál a felhő-rendszergazdák előfizetnek az ajánlatra, és hozzon létre egy virtuális gépet.
 
 > [!TIP]
-> További speciális értékelési élményt, is [hozzon létre egy előfizetést, egy adott felhasználó](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) majd jelentkezzen be a felhasználó a felhasználói portálon. 
+> További speciális értékelési élményt, is [hozzon létre egy előfizetést, egy adott felhasználó](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) majd jelentkezzen be a felhasználó a felhasználói portálon.
 
 Ez az oktatóanyag bemutatja, hogyan fizethet elő az Azure Stack-ajánlat.
 
@@ -60,10 +60,10 @@ Az előfizetés egy ajánlatra felhasználóként, bejelentkezik az Azure Stack 
 
 ## <a name="test-the-offer"></a>Az ajánlat tesztelése
 
-Miközben be van jelentkezve a felhasználói portálra, az ajánlat letesztelheti az új előfizetési lehetőségek használatával virtuális gép üzembe helyezésének. 
+Miközben be van jelentkezve a felhasználói portálra, az ajánlat letesztelheti az új előfizetési lehetőségek használatával virtuális gép üzembe helyezésének.
 
 > [!NOTE]
-> Ez a vizsgálat szükséges, hogy egy Windows Server 2016 Datacenter virtuális Gépet az Azure Stack piactéren először bővült. 
+> Ez a vizsgálat szükséges, hogy egy Windows Server 2016 Datacenter virtuális Gépet az Azure Stack piactéren először bővült.
 
 1. Jelentkezzen be a felhasználói portálra.
 
@@ -84,7 +84,6 @@ Miközben be van jelentkezve a felhasználói portálra, az ajánlat letesztelhe
 > [!NOTE]
 > A virtuális gépek üzembe helyezése néhány percet vesz igénybe.
 
-
 ## <a name="next-steps"></a>További lépések
 
 Ismerte meg ebben az oktatóanyagban:
@@ -92,7 +91,6 @@ Ismerte meg ebben az oktatóanyagban:
 > [!div class="checklist"]
 > * Előfizetés egy ajánlatra 
 > * Az ajánlat tesztelése
-
 
 > [!div class="nextstepaction"]
 > [Virtuális gép létrehozása egy közösségi sablon](azure-stack-create-vm-template.md)

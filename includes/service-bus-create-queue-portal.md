@@ -5,34 +5,21 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 06/29/2018
+ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7ed298fc8f13685c4872c4c54ba1e447debea79f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: 17f27ac36ed5c0f348495b5364ef37e3f1632243
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702636"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588692"
 ---
-Győződjön meg róla, hogy már létrehozott egy Service Bus-névteret az [itt][namespace-how-to] ismertetettek szerint.
+## <a name="create-a-queue-in-the-azure-portal"></a>Üzenetsor létrehozása az Azure Portalon
+4. Az a **Service Bus-Namespace** lapon jelölje be **üzenetsorok** a bal oldali navigációs menüben.
+5. Az a **üzenetsorok** lapon jelölje be **+ üzenetsor** az eszköztáron.
+5. Adjon meg egy **neve** az üzenetsor, és hagyja a többi alapértelmezett értéket.
+6. Most válassza ki **létrehozás**.
+ 
+    ![Queues -> + Queue -> Enter name -> Create](./media/service-bus-create-queue-portal/create-queue3.png)
 
-1. Jelentkezzen be az [Azure Portalra][azure-portal].
-2. A portál bal oldali navigációs panelén kattintson a **Service Bus** (ha a **Service Bus** nem látható, akkor a **Minden szolgáltatás**) elemre.
-3. Kattintson a névtérre, amelyben az üzenetsort létre kívánja hozni. Ebben az esetben ez az **sbnstest1**.
-   
-    ![Üzenetsor létrehozása][createqueue1]
-4. A névtér ablakban kattintson az **Üzenetsorok** lehetőségre, majd a **Üzenetsorok** ablakban kattintson a **+ Üzenetsor** lehetőségre.
-   
-    ![Üzenetsorok kiválasztása][createqueue2]
-5. Adjon meg egy nevet az üzenetsor **Név** mezőjében, a többi érték alapértelmezését pedig ne módosítsa.
-   
-    ![Új kiválasztása][createqueue3]
-6. Az ablak alján kattintson a **Létrehozás** elemre.
-
-[createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
-[createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png
-[createqueue3]: ./media/service-bus-create-queue-portal/create-queue3.png
-
-[namespace-how-to]: ../articles/service-bus-messaging/service-bus-create-namespace-portal.md
-[azure-portal]: https://portal.azure.com

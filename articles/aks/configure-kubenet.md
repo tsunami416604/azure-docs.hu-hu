@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6d2b6ce2804fce35af9c184c4a7c72c0b332f6fb
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 7975516e80576a9d79b35da816d049f47ebc7d3a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701756"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650189"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Hálózatkezelés a saját IP-címtartományok Azure Kubernetes Service (AKS) kubenet használata
 
@@ -126,7 +126,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Most már az AKS-fürthöz tartozó egyszerű szolgáltatás hozzárendelése *közreműködői* engedélyeket a virtuális hálózat használatával a [az szerepkör-hozzárendelés létrehozása] [ az-role-assignment-create] parancsot. Adja meg a saját */ <appId/>* , ahogyan az egyszerű szolgáltatás létrehozása az előző parancs kimenete:
+Most már az AKS-fürthöz tartozó egyszerű szolgáltatás hozzárendelése *közreműködői* engedélyeket a virtuális hálózat használatával a [az szerepkör-hozzárendelés létrehozása] [ az-role-assignment-create] parancsot. Adja meg a saját  *\<appId >* , ahogyan az egyszerű szolgáltatás létrehozása az előző parancs kimenete:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -134,7 +134,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>AKS-fürt létrehozása a virtuális hálózatban
 
-Sikeresen létrehozott egy virtuális hálózatot és alhálózatot, és a létrehozott és hozzárendelt egy egyszerű szolgáltatás engedélyeit a hálózati erőforrások használata. Most hozzon létre egy AKS-fürt a virtuális hálózat és alhálózat használatával a [az aks létrehozása] [ az-aks-create] parancsot. Adja meg a saját szolgáltatásnév */ <appId/>* és */ <password/>*, ahogyan az egyszerű szolgáltatás létrehozása az előző parancs kimenetében.
+Sikeresen létrehozott egy virtuális hálózatot és alhálózatot, és a létrehozott és hozzárendelt egy egyszerű szolgáltatás engedélyeit a hálózati erőforrások használata. Most hozzon létre egy AKS-fürt a virtuális hálózat és alhálózat használatával a [az aks létrehozása] [ az-aks-create] parancsot. Adja meg a saját szolgáltatásnév  *\<appId >* és  *\<jelszó >*, ahogyan az egyszerű szolgáltatás létrehozása az előző parancs kimenetében.
 
 A következő IP-címtartományok is vannak meghatározva, a fürt létrehozása a folyamat:
 
