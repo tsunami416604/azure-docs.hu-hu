@@ -6,15 +6,9 @@ items:
   - name: Mi az Azure Machine Learning szolgáltatás?
     displayName: AML services overview
     href: overview-what-is-azure-ml.md
-  - name: A szolgáltatás működése
-    displayName: architecture concepts definitions
-    href: concept-azure-machine-learning-architecture.md
   - name: Mi történt a Workbenchcsel?
     displayName: desktop ui Workbench upgrade update transfer
     href: overview-what-happened-to-workbench.md
-  - name: Kibocsátási megjegyzések
-    displayName: what's new issues bugs
-    href: azure-machine-learning-release-notes.md
   expanded: true
 - name: Gyors útmutatók
   items:
@@ -46,6 +40,9 @@ items:
   href: samples-notebooks.md
 - name: Alapelvek
   items:
+  - name: A szolgáltatás működése
+    displayName: architecture concepts definitions
+    href: concept-azure-machine-learning-architecture.md
   - name: Automatizált gépi tanulás
     displayName: automl, auto ml
     href: concept-automated-ml.md
@@ -64,6 +61,8 @@ items:
       href: how-to-manage-workspace.md
     - name: Resource Manager-sablon használata
       href: how-to-create-workspace-template.md
+    - name: Felhasználók és szerepkörök kezelése
+      href: how-to-assign-roles.md
   - name: Fejlesztési környezet beállítása 
     items:
     - name: Fejlesztési környezetek konfigurálása
@@ -97,7 +96,7 @@ items:
       href: how-to-train-ml-models.md
     - name: A PyTorch használata
       href: how-to-train-pytorch.md
-    - name: A TensorFlow használata
+    - name: A TensorFlow és a Keras használata
       href: how-to-train-tensorflow.md
     - name: Hiperparaméterek hangolása
       displayName: parameter
@@ -172,6 +171,9 @@ items:
     href: https://aka.ms/aml-monitoring-sdk
 - name: További források
   items:
+  - name: Kibocsátási megjegyzések
+    displayName: what's new issues bugs
+    href: azure-machine-learning-release-notes.md
   - name: Azure-ütemterv
     href: https://azure.microsoft.com/roadmap/
   - name: Díjszabás
@@ -185,9 +187,9 @@ items:
     href: support-for-aml-services.md
   - name: Machine Learning-termékeink összehasonlítása
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 041a4b0f3ebecdaedb041ceb25f426a6e1825292
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 5743da7a23f53fee32f1fe81ecc09212fccab7c5
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338093"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650087"

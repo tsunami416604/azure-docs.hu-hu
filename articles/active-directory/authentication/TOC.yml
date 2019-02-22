@@ -25,8 +25,8 @@ items:
   items:
   - name: Hitelesítési módszerek
     href: concept-authentication-methods.md
-  - name: Konvergens regisztráció
-    href: concept-registration-mfa-sspr-converged.md
+  - name: Kombinált regisztráció
+    href: concept-registration-mfa-sspr-combined.md
   - name: Új jelszó létrehozása
     items:
     - name: Új jelszó kérésének módja
@@ -104,6 +104,12 @@ items:
         href: howto-mfa-nps-extension-rdg.md
       - name: VPN
         href: howto-mfa-nps-extension-vpn.md
+  - name: Kombinált regisztráció
+    items:
+    - name: A kombinált regisztráció engedélyezése
+      href: howto-registration-mfa-sspr-combined.md
+    - name: Kombinált regisztráció hibaelhárítása
+      href: howto-registration-mfa-sspr-combined-troubleshoot.md
   - name: Azure AD jelszóvédelem
     items:
     - name: A tiltott jelszavak listájának konfigurálása
@@ -191,8 +197,6 @@ items:
         href: howto-mfa-nps-extension-errors.md
   - name: Hibaelhárítás
     items:
-    - name: Konvergens regisztráció letiltása
-      href: howto-registration-mfa-sspr-converged-troubleshoot.md
     - name: SSPR hibaelhárítása
       href: active-directory-passwords-troubleshoot.md
     - name: SSPR – GYIK
@@ -225,9 +229,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: d834bcd12f4f8af44c467233230744571dd9b23c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 99d21cd59b7281dbb6a34c2e3cdc9026c9955622
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660051"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585984"
