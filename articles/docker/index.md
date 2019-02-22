@@ -11,12 +11,6 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: fa2cce2314b3df0d9d32d9d8d6ede5a70520a7d4
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647244"
 ---
 <div class="content">
    <h1>Docker az Azure rendszeren</h1>   
@@ -28,7 +22,7 @@ A Docker egy népszerű tárolókezelő és képalkotó platform, amely lehetőv
     </div>
 <h2>5 perces gyors útmutatók</h2>
 <p>Ismerje meg, hogyan telepíthető a Docker az Azure-ban:</p>
-<a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS">A Docker üzembe helyezése az Ubuntu gyorsindítási sablonjának használatával</a><br/>
+<a href="https://azure.microsoft.com/resources/templates/docker-simple-on-ubuntu/">A Docker üzembe helyezése az Ubuntu gyorsindítási sablonjának használatával</a><br/>
 <h2>Részletes útmutatók</h2>
 <p>Ismerje meg, hogyan használható a Docker az alkalmazásában, valamint a CI/CD-folyamatának részeként:</p>
 <ol>

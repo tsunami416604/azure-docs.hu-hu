@@ -53,6 +53,7 @@ items:
       - name: Xamarin
         href: mobile-apps-with-xamarin.md
   - name: 2 – Adatok migrálása
+    displayName: import
     href: import-data.md
   - name: 3 – Adatok lekérdezése
     href: tutorial-query-sql-api.md
@@ -76,15 +77,16 @@ items:
     href: cli-samples.md
 - name: Alapelvek
   items:
-  - name: Dokumentumadatok modellezése
-    href: modeling-data.md
   - name: Globális terjesztés
     items:
     - name: Áttekintés
+      displayName: replication, replicate, geo distribution
       href: distribute-data-globally.md
     - name: Konzisztenciaszintek
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: consistency-levels.md
     - name: A megfelelő konzisztenciaszint kiválasztása
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: consistency-levels-choosing.md
     - name: Konzisztenciaszintek és Azure Cosmos DB API-k
       href: consistency-levels-across-apis.md
@@ -93,8 +95,10 @@ items:
     - name: Magas rendelkezésre állás
       href: high-availability.md
     - name: Kiosztott átviteli sebesség globális skálázása
+      displayName: request units, RUs, RU
       href: scaling-throughput.md
     - name: Ütközéstípusok és -feloldási szabályzatok
+      displayName: last write wins, custom
       href: conflict-resolution-policies.md
     - name: Globális terjesztés – technikai részletek
       href: global-dist-under-the-hood.md
@@ -111,26 +115,36 @@ items:
   - name: Kiosztott átviteli sebesség
     items:
     - name: Kérelemegységek
+      displayName: RUs, RU
       href: request-units.md
     - name: Átviteli sebesség kiosztása tárolókra és adatbázisokra
+      displayName: request units, RUs, RU, limits, database throughput, shared throughput, container throughput
       href: set-throughput.md
   - name: Azure Cosmos-fiók használata
     href: account-overview.md
   - name: Tárolók és elemek
     items:
     - name: Adatbázisok, tárolók és elemek használata
+      displayName: collection, document
       href: databases-containers-items.md
     - name: SQL-nyelvi referencia
+      displayName: collection, document
       href: sql-api-query-reference.md
     - name: Példák SQL-lekérdezésekre
+      displayName: collection, document, order by, where, top, value, aggregate, between, scalar, join, count, contains
       href: how-to-sql-query.md
+    - name: Dokumentumadatok modellezése
+      displayName: document
+      href: modeling-data.md
     - name: Indexelés
       items:
       - name: Áttekintés
         href: index-overview.md
       - name: Indexszabályzat
+        displayName: consistent, none
         href: index-policy.md
       - name: Indextípusok
+        displayName: hash, range, spatial
         href: index-types.md
       - name: Indexek elérési útjai
         href: index-paths.md
@@ -143,8 +157,10 @@ items:
       - name: Változáscsatorna feldolgozója
         href: change-feed-processor.md
       - name: Az Azure Functions aktiválása
+        displayName: change feed
         href: change-feed-functions.md
     - name: Élettartam
+      displayName: delete, delete data, ttl
       href: time-to-live.md
     - name: Egyedi kulcskorlátozások
       href: unique-keys.md
@@ -165,6 +181,7 @@ items:
     - name: A számla értelmezése
       href: understand-your-bill.md
     - name: A kiosztott átviteli sebesség költségeinek optimalizálása
+      displayName: request units, RUs, RU
       href: optimize-cost-throughput.md
     - name: A lekérdezési költségek optimalizálása
       href: optimize-cost-queries.md
@@ -185,6 +202,7 @@ items:
     - name: Adattitkosítás
       href: database-encryption-at-rest.md
     - name: Biztonságos hozzáférés az adatokhoz
+      displayName: master key, resource token, users, roles
       href: secure-access-to-data.md
     - name: IP-tűzfal
       href: firewall-support.md
@@ -241,6 +259,7 @@ items:
         - name: A Node.js és a React alkalmazás
           href: tutorial-develop-mongodb-react.md
       - name: 2 – Adatok migrálása
+        displayName: import
         href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
       - name: 3 – Adatok lekérdezése
         href: tutorial-query-mongodb.md
@@ -257,6 +276,7 @@ items:
       - name: Csatlakozás a Mongoose használatával
         href: mongodb-mongoose.md
       - name: Az olvasások globális elosztása
+        displayName: read preference
         href: mongodb-readpreference.md
       - name: Élettartam – MongoDB
         href: mongodb-time-to-live.md
@@ -266,6 +286,7 @@ items:
         href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
         maintainContext: true
   - name: Gremlin API
+    displayName: graph, graph database
     items:
     - name: Bevezetés
       href: graph-introduction.md
@@ -323,6 +344,7 @@ items:
       - name: 3 – Adatok lekérdezése
         href: cassandra-api-query-data.md
       - name: 4 – Adatok migrálása
+        displayName: import
         href: cassandra-import-data.md
     - name: Útmutatók
       items:
@@ -370,6 +392,7 @@ items:
       - name: 1 – Fiók létrehozása
         href: tutorial-develop-table-dotnet.md
       - name: 2 – Adatok migrálása
+        displayName: import
         href: table-import.md
       - name: 3 – Adatok lekérdezése
         href: tutorial-query-table.md
@@ -423,6 +446,7 @@ items:
     - name: Több főkiszolgálós telepítés konfigurálása
       href: how-to-multi-master.md
     - name: Konzisztenciaszintek kezelése
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: how-to-manage-consistency.md
     - name: Egyéni szinkronizálás implementálása
       href: how-to-custom-synchronization.md
@@ -431,8 +455,10 @@ items:
   - name: Kiosztott átviteli sebesség
     items:
     - name: Átviteli sebesség kiosztása tárolók számára
+      displayName: request units, RUs, RU, collection level
       href: how-to-provision-container-throughput.md
     - name: Átviteli sebesség kiosztása adatbázisok számára
+      displayName: request units, RUs, RU, shared throughput, database level
       href: how-to-provision-database-throughput.md
   - name: A tárolók és elemek használata
     items:
@@ -441,6 +467,7 @@ items:
     - name: Tároló lekérdezése
       href: how-to-query-container.md
     - name: Élettartam konfigurálása
+      displayName: delete, delete data, ttl
       href: how-to-time-to-live.md
     - name: Adatok kezelése az Azure Storage Explorerrel
       href: storage-explorer.md
@@ -627,9 +654,9 @@ items:
       href: use-cases.md
     - name: Közösségimédia-alkalmazások
       href: social-media-apps.md
-ms.openlocfilehash: f2f061aebd996f62f793ba515f574c8a3748b87f
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: f1f36d86466f93c0acac30364ba648391fb03095
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429113"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652518"

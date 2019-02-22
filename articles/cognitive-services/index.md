@@ -1,21 +1,16 @@
 ---
 layout: HubPage
 title: Az Azure Cognitive Services dokumentációja
-description: Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, webhelyeket és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg, hogyan használhatja az API-kat.
+description: 'Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, webhelyeket és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg, hogyan használhatja az API-kat.'
 services: cognitive-services
 author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 02/15/2019
+ms.date: 02/21/2019
 ms.topic: hub-page
-ms.openlocfilehash: 12957121d386afdc911bb0be954c0066d580e83e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338036"
 ---
+
 <h1>Az Azure Cognitive Services dokumentációja</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.</p>
 
@@ -77,7 +72,6 @@ ms.locfileid: "56338036"
                 </div>
             </a>
         </li>
-
         <li>
             <a href="/azure/cognitive-services/language-support/">
                 <div class="cardSize">
@@ -133,7 +127,7 @@ ms.locfileid: "56338036"
                         <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/csharp-analyze-sdk">A C# használata</a></p>
                         <p><a href="/azure/cognitive-services/bing-visual-search/quickstarts/java">A Java használata</a></p>
                         <p><a href="/azure/cognitive-services/Computer-vision/Quickstarts/node-analyze">A Node.js használata</a></p>
-                        <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk#analyze-an-image">A Python használata</a></p>
+                        <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk">A Python használata</a></p>
                     </div>
                 </div>
             </div>
@@ -151,10 +145,9 @@ ms.locfileid: "56338036"
                     <div class="cardText">
                         <h3>Beszédfelismerés a Speech Service használatával</h3>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-csharp-windows/">A C# használata</a></p>
-                        <p><a href="/azure/cognitive-services/speech-service/quickstart-java-jre">A Java használata</a></p>
-                        <p><a href="/azure/cognitive-services/speech-service/quickstart-objectivec-ios">Az Objective-C használata</a></p>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-js-browser">A JavaScript használata</a></p>
-                        <p><a href="/azure/cognitive-services/speech-service/quickstart-cpp-windows">A C++ használata</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service/quickstart-python">A Python használata</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service/quickstart-java-jre">A Java használata</a></p>
                     </div>
                 </div>
             </div>
@@ -214,7 +207,7 @@ ms.locfileid: "56338036"
                         <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/csharp">A C# használata</a></p>
                         <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/java">A Java használata</a></p>
                         <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/nodejs">A Node.js használata</a></p>
-                        <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/python">A Python használata</a></p>
+                        <p><a href="/azure/cognitive-services/bing-web-search/web-sdk-python-quickstart">A Python használata</a></p>
                     </div>
                 </div>
             </div>
@@ -234,7 +227,7 @@ ms.locfileid: "56338036"
                         <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/csharp">A C# használata</a></p>
                         <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/java">A Java használata</a></p>
                         <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/nodejs">A Node.js használata</a></p>
-                        <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/python">A Python használata</a></p>
+                        <p><a href="/azure/cognitive-services/bing-image-search/image-sdk-python-quickstart">A Python használata</a></p>
                     </div>
                 </div>
             </div>
