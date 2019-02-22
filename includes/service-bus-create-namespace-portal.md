@@ -5,16 +5,17 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 02/12/2019
+ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b38f66670ba29022713ae39824a190fcffb688c7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d976a1c5e9366069b82cff718593ce72d7ad8a08
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238714"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588942"
 ---
+## <a name="create-a-namespace-in-the-azure-portal"></a>Névtér létrehozása az Azure Portalon
 A Service Bus-üzenetküldési entitások Azure-ban való használatának megkezdéséhez először létre kell hoznia egy, az Azure-ban egyedi névvel rendelkező névteret. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
 
 Névtér létrehozása:
@@ -27,7 +28,7 @@ Névtér létrehozása:
     1. Adjon meg egy **a névtér neve**. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
     2. Válassza ki a tarifacsomagot (Basic, Standard vagy prémium) a névtérhez. Ha a használni kívánt [üzenettémák és előfizetések](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions), válassza a Standard vagy Premium. A témakörök és az előfizetések nem támogatottak az alapszintű tarifacsomagban.
     3. Ha bejelölte a **prémium** tarifacsomagban van, kövesse az alábbi lépéseket: 
-        1. Adja meg, hány **üzenetkezelési egységek**. A prémium szintű erőforrás-elkülönítést, a CPU és memória szintjén biztosít, így minden számítási feladata elkülönítve fut. Ez az erőforrás-tárolónak egy üzenetkezelési egység neve. Legalább egy üzenetkezelési egység van lefoglalva minden prémium névtérhez. Kiválaszthatja, 1, 2 vagy 4 üzenetkezelési egység minden prémium szintű Service Bus-névtér esetében. További információkért lásd: [Service Bus prémium szintű üzenetkezelés](../articles/service-bus-messaging/service-bus-premium-messaging.md).
+        1. Adja meg, hány **üzenetkezelési egységek**. A prémium szintű erőforrás-elkülönítést, a CPU és memória szintjén biztosít, így minden számítási feladata elkülönítve fut. Ez az erőforrás-tárolónak egy üzenetkezelési egység neve. Egy prémium szintű névtér legalább egy üzenetkezelési egység van. Kiválaszthatja, 1, 2 vagy 4 üzenetkezelési egység minden prémium szintű Service Bus-névtér esetében. További információkért lásd: [Service Bus prémium szintű üzenetkezelés](../articles/service-bus-messaging/service-bus-premium-messaging.md).
         2. Adja meg, hogy, hogy a névtér **zónaredundáns**. A zone redudancy fokozott rendelkezésre állást biztosítja a replikák terjesztésével további költségek nélkül egy régión belül a rendelkezésre állási zónák között. További információkért lásd: [az Azure-beli rendelkezésre állási zónák](../articles/availability-zones/az-overview.md).
     4. A **előfizetés**, válassza ki az Azure-előfizetés, amelyben a névteret létre kívánja hozni.
     5. A **erőforráscsoport**, válasszon ki egy meglévő erőforráscsoportot, amelyben a névtér lesz élő, vagy hozzon létre egy újat.      
@@ -45,7 +46,7 @@ Névtér létrehozása:
 
     ![A service bus-névtér kezdőlapja](./media/service-bus-create-namespace-portal/service-bus-namespace-home-page.png)
 
-### <a name="get-the-management-credentials"></a>A felügyeleti hitelesítő adatok lekérése
+## <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése 
 Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös hozzáférésű jogosultságkódra (SAS) vonatkozó szabály egy elsődleges és egy másodlagos kulcsból álló kulcspárral, amelyek mindegyike teljes hozzáférést biztosít a névtér minden területéhez. Lásd: [Service Bus-hitelesítés és engedélyezés](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) a további szabályok létrehozásával kapcsolatos információkat, korlátozottabb jogokat a normál küldők és fogadók. Másolja az elsődleges és másodlagos kulcsot a névtérhez, kövesse az alábbi lépéseket: 
 
 1. Kattintson az **Összes erőforrás** elemre, majd az újonnan létrehozott névtér nevére.

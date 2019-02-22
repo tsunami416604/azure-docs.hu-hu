@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: dfdabed95d89e02b5a4b23ba23949cd0aaf838f3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 56c5e0582afe55dcd63aa056817898d3d4942419
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959395"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594066"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>A Mobile Apps és Mobile Services ügyfél- és szerveroldali verziószámozás
 Az Azure Mobile Services legújabb verziója a **Mobile Apps** Azure App Service szolgáltatásával.
@@ -38,7 +38,7 @@ Példa:
 
 GET https://service.azurewebsites.net/tables/TodoItem
 
-FEJLÉCEK: ZUMO-API-VERZIÓ: 2.0.0-S
+HEADERS: ZUMO-API-VERZIÓ: 2.0.0
 
 POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
@@ -80,7 +80,7 @@ Megjegyzés: a Mobile Services ügyféloldali SDK-k *nem* elküldeni egy fejléc
 ### <a name="mobile-services-server-sdks"></a>A Mobile *szolgáltatások* server SDK-k
 | Kiszolgálóplatform | Verzió | Elfogadott verzió fejléce |
 | --- | --- | --- |
-| .NET |[WindowsAzure.MobileServices.Backend.* Version 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |** Nincs verziófejlécben ** |
+| .NET |[WindowsAzure.MobileServices.Backend.* Version 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |**Nincs verzió fejléce** |
 | Node.js |(hamarosan elérhető) |**Nincs verzió fejléce** |
 
 <!-- TODO: add Node npm version -->

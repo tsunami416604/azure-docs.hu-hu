@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/20/2018
 ms.author: aschhab
-ms.openlocfilehash: 280901c4b7af9cc65163ebc453a54fb7ec5d5111
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 4726143559a91c1b8b911d8538efa32c6bf19c2e
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849396"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587582"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Service Bus-üzenettémák és előfizetések használata pythonnal
 
@@ -31,6 +31,8 @@ Ez a cikk a Service Bus-üzenettémakörök és -előfizetések használatát is
 
 > [!NOTE] 
 > Ha Python telepítenie kell, vagy a [Azure Python-csomag][Azure Python package], tekintse meg a [Python-telepítési útmutató](../python-how-to-install.md).
+
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-topic"></a>Üzenettémakör létrehozása
 

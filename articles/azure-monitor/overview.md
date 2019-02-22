@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 0ef11355d7a65bd2c9b7ddfb6c4db2ba02538062
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: f18a1c90d3378831824542fabb884d36d12bddd4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270368"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652110"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -130,7 +130,7 @@ Az automatikus méretezés lehetővé teszi a megfelelő mennyiségű erőforrá
 Milyen gyakran kell a követelmény az Azure Monitor integrálható más rendszerekkel és figyelési adatait használó egyéni megoldásokat hozhat létre. Más Azure-szolgáltatások ezt az integrációt biztosít az Azure Monitor szolgáltatással működik.
 
 ### <a name="event-hub"></a>Eseményközpont
-[Az Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) van egy streamelési platform és Eseményfeldolgozási szolgáltatás, amely képes adatokat átalakíthatja és tárolhatja bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével. Az Event Hubs platformot használni [az Azure Monitor log-adatok streamelése az](platform/stream-monitoring-data-event-hubs.md) partnerré SIEM feladatütemezési és figyelési eszközöket.
+[Az Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) van egy streamelési platform és Eseményfeldolgozási szolgáltatás, amely képes adatokat átalakíthatja és tárolhatja bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével. Az Event Hubs használata [Azure Monitor-adatok streamelése az](platform/stream-monitoring-data-event-hubs.md) partnerré SIEM feladatütemezési és figyelési eszközöket.
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 

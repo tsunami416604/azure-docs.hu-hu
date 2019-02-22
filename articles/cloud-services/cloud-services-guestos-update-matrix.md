@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/5/2019
+ms.date: 2/20/2019
 ms.author: raiye
-ms.openlocfilehash: 76009115f855a840c81e79d0c864187c8410aa23
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 063834af9b56e9959883c00bb58c70f0d333c455
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751514"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588568"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrixot
 Itt, a legújabb Azure vendég operációs rendszer naprakész információkat és a Cloud Services-kiadások. Ez az információ segít a frissítési útvonal megtervezéséhez, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissítése leírtak szerint [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], már nem létfontosságú, hogy elolvasta-e ezen a lapon.
@@ -77,6 +77,15 @@ A július vendég operációs rendszer jelent meg.
 > [!NOTE]
 > A Windows Azure SDK for .NET - 3.0 letölthető [Itt][Windows Azure SDK].
 >
+>Telepítési lépéseket:
+>1. Távolítsa el a MicrosoftAzureAuthoringTools*.msi minden régebbi verzióját
+>2. Telepítse a [Azure SDK for .NET - 3.0][Windows Azure SDK]
+>3. A gép újraindítása
+>4. Új Felhőszolgáltatás-projekt létrehozása és a egy feldolgozói szerepkör hozzáadása
+>5. Módosítsa az operációsrendszer-család 6 és a csomag létrehozása
+>6. A csomag telepítése az Azure-bA az Azure portal vagy a Visual Studio használatával
+>
+
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
@@ -92,6 +101,7 @@ A július vendég operációs rendszer jelent meg.
 > [!NOTE]
 > Az operációsrendszer-család 5 RDP-jelszónak legalább 10 karakterből kell lennie.
 >
+
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |

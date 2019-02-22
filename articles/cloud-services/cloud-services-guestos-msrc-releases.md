@@ -11,17 +11,72 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/5/2019
+ms.date: 2/20/2019
 ms.author: raiye
-ms.openlocfilehash: 4c1b1b376493c77ae0f197d800ee0d00434b19c6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b39a365e077f8c51b322f0849b373b500cb2d905
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752109"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594287"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
+
+## <a name="february-2019-guest-os"></a>2019. február vendég operációs rendszer
+
+>[!NOTE]
+>A február vendég operációs rendszer jelenleg tesszük elérhetővé a megtörténik az automatikus frissítések, a Cloud Service virtuális gépeken. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A február vendég operációs rendszer a következő javításokat tartalmazza. Ez a lista a változhat.
+
+| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| 19-02-rel | [4486474] | Internet Explorer | 2.83, 3.70, 4.63 | 2019. február 12. |
+| 19-02-rel | [4487038] | Flash | 3.70, 4.63, 5.28, 6.4 | 2019. február 12. |
+| 19-02-rel | [4486564] | Windows biztonsági | 2.83 | 2019. február 12. |
+| 19-02-rel | [4483483] | .NET 3.5.1-et biztonsági | 2.83 | 2019. február 12. |
+| 19-02-rel | [4483474] | A .NET 4.5.2-es biztonsági | 2.83 | 2019. február 12. |
+| 19-02-rel | [4486993] | Windows biztonsági | 3.70 | 2019. február 12. |
+| 19-02-rel | [4483481] | A .NET 3.5 biztonsági | 3.70 | 2019. február 12. |
+| 19-02-rel | [4483473] | A .NET 4.5.2-es biztonsági | 3.70 | 2019. február 12. |
+| 19-02-rel | [4487028] | Windows biztonsági | 4.63 | 2019. február 12. |
+| 19-02-rel | [4483484] | A .NET 3.5 biztonsági | 4.63 | 2019. február 12. |
+| 19-02-rel | [4483472] | A .NET 4.5.2-es biztonsági | 4.63 | 2019. február 12. |
+| 19-02-rel | [4487026] | Windows biztonsági | 5.28 | 2019. február 12. |
+| 19-02-rel | [4487044] | Windows biztonsági | 6.4 | 2019. február 12. |
+| 19-02-rel | [4483452] | A .NET 3.5, 4.7.2 biztonsági | 6.4 | 2019. február 12. |
+| – | [4480970] | Január nem – a biztonság összegzése | 2.83 | 2019. január 8. |
+| – | [4483483] | Január nem biztonsági kumulatív .NET 3.5.1 összetevőt  | 2.83 | 2019. január 8. |
+| – | [4480059] | Január nem biztonsági kumulatív .NET 4.5.2.  | 2.83 | 2019. január 8. |
+| – | [4480975] | Január nem – a biztonság összegzése | 3.70 | 2019. január 8. |
+| – | [4480061] | Január nem biztonsági kumulatív .NET 3.5 | 3.70 | 2019. január 8. |
+| – | [4480058] | Január nem biztonsági kumulatív .NET 4.5.2. | 3.70 | 2019. január 8. |
+| – | [4480963] | Január nem – a biztonság összegzése | 4.63 | 2019. január 8. |
+| – | [4480064] | Január nem biztonsági kumulatív .NET 3.5 | 4.63 | 2019. január 8. |
+| – | [4480057] | Január nem biztonsági kumulatív .NET 4.5.2. | 4.63 | 2019. január 8. |
+
+[4486474]: http://support.microsoft.com/kb/4486474
+[4487038]: http://support.microsoft.com/kb/4487038
+[4486564]: http://support.microsoft.com/kb/4486564
+[4483483]: http://support.microsoft.com/kb/4483483
+[4483474]: http://support.microsoft.com/kb/4483474
+[4486993]: http://support.microsoft.com/kb/4486993
+[4483481]: http://support.microsoft.com/kb/4483481
+[4483473]: http://support.microsoft.com/kb/4483473
+[4487028]: http://support.microsoft.com/kb/4487028
+[4483484]: http://support.microsoft.com/kb/4483484
+[4483472]: http://support.microsoft.com/kb/4483472
+[4487026]: http://support.microsoft.com/kb/4487026
+[4487044]: http://support.microsoft.com/kb/4487044
+[4483452]: http://support.microsoft.com/kb/4483452
+[4480970]: http://support.microsoft.com/kb/4480970
+[4483483]: http://support.microsoft.com/kb/4483483
+[4480059]: http://support.microsoft.com/kb/4480059
+[4480975]: http://support.microsoft.com/kb/4480975
+[4480061]: http://support.microsoft.com/kb/4480061
+[4480058]: http://support.microsoft.com/kb/4480058
+[4480963]: http://support.microsoft.com/kb/4480963
+[4480064]: http://support.microsoft.com/kb/4480064
+[4480057]: http://support.microsoft.com/kb/4480057
 
 ## <a name="january-2019-guest-os"></a>Január 2019 vendég operációs rendszer
 
