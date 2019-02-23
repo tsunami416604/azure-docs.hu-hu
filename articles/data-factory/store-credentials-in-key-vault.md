@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: ff070adbda2a36261ca24eb0cc993ca22eada1c7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fcd3af6c000debb8da6200205a9aa2ae61feac58
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661241"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675415"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok Store az Azure Key Vaultban
 
@@ -26,14 +26,14 @@ Egyéni tevékenység kivételével minden tevékenység típus jelenleg ez a fu
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a funkció a data factory-szolgáltatásidentitás támaszkodik. Megtudhatja, hogyan használható a [Data factory-szolgáltatásidentitás](data-factory-service-identity.md) , és győződjön meg, hogy az adat-előállítóhoz társított egy.
+Ez a funkció a data factory felügyelt identitás támaszkodik. Megtudhatja, hogyan használható a [a Data factory-identitás](data-factory-service-identity.md) , és győződjön meg, hogy az adat-előállítóhoz társított egy.
 
 ## <a name="steps"></a>Lépések
 
 Az Azure Key Vaultban tárolt hitelesítő adatokat, hivatkozni kell tennie:
 
-1. **Beolvasni a data factory-szolgáltatásidentitás** másolásával "SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója" az előállító együtt létrehozott értékét. Ha az ADF-létrehozási felhasználói felületen, a felügyeltszolgáltatás-identitás azonosítója megjelenik az Azure Key Vault társított szolgáltatás létrehozása ablak; is lekérheti az Azure Portalról, tekintse meg [beolvasni a data factory-szolgáltatásidentitás](data-factory-service-identity.md#retrieve-service-identity).
-2. **A szolgáltatás identitás-hozzáférési jogot az Azure Key Vaultban.** A kulcstartó-hozzáférési házirendek -> > Új -> keresési megadását azonosító a szolgáltatásalkalmazás-identitás hozzáadása **első** engedély titkos kód engedélyei legördülő listában. Lehetővé teszi a kijelölt factory eléréséhez a key vaultban titkos kulcsot.
+1. **Beolvasni a data factory által felügyelt identitás** másolásával "SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója" az előállító együtt létrehozott értékét. Szerzői felhasználói felület ADF használatakor a felügyelt identitás Alkalmazásazonosítója jeleníthető meg az Azure Key Vault társított szolgáltatás létrehozása ablak;. is lekérheti az Azure Portalról, tekintse meg [beolvasása a data factory által felügyelt identitás](data-factory-service-identity.md#retrieve-managed-identity).
+2. **A felügyelt identitás hozzáférést az Azure Key Vaultban.** A kulcstartó-hozzáférési házirendek -> > Új -> Ez felügyelt identitás Alkalmazásazonosítója megadását keresés hozzáadása **első** engedély titkos kód engedélyei legördülő listában. Lehetővé teszi a kijelölt factory eléréséhez a key vaultban titkos kulcsot.
 3. **Az Azure Key Vaultban mutató társított szolgáltatás létrehozása.** Tekintse meg [Azure Key Vault-beli társított szolgáltatást](#azure-key-vault-linked-service).
 4. **Adattár társított szolgáltatását, belül mely hivatkozás a megfelelő titkos tárolja a kulcsot tároló létrehozása.** Tekintse meg [referencia titkos kulcsot a key vaultban tárolt](#reference-secret-stored-in-key-vault).
 

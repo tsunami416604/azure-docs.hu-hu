@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: c2c23b6709552d053ca8db5e32a045b416c1acfc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 642353218960e2e995d717260ae82b6dbd7c2612
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733416"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727060"
 ---
 # <a name="managing-azure-api-management-using-azure-automation"></a>Kezelés az Azure API Management az Azure Automationnel
 Ez az útmutató bemutatja, hogyan használható az Azure API Management kezelésének egyszerűsítéséhez, és az Azure Automation szolgáltatást.
@@ -32,7 +32,7 @@ Az Azure Automation segítségével egy rendkívül megbízható, magas rendelke
 Csökkentheti üzemeltetési terheit és szabadítson fel informatikai és a fejlesztési és üzemeltetési csapatának, amely üzleti értéket hozzáadja a felhőfelügyeleti feladatokat automatikusan Azure Automation által futtatandó váltással munkára.
 
 ## <a name="how-can-azure-automation-help-manage-azure-api-management"></a>Hogyan segít az Azure Automation kezelheti az Azure API Management?
-Az API Management segítségével kezelhetők az Azure Automationben a [Windows PowerShell-parancsmagok az Azure API Management API](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/?view=azurermps-5.5.0). Az Azure Automation PowerShell-munkafolyamat parancsfájlokat hajtsa végre az API Management-feladatok a parancsmagok használatával írhat. Ezek a parancsmagok az Azure Automation parancsmagjaival más Azure-szolgáltatások, az összetett feladatok automatizálása Azure-szolgáltatások és a 3. fél rendszerek párosítása is történik.
+Az API Management segítségével kezelhetők az Azure Automationben a [Windows PowerShell-parancsmagok az Azure API Management API](https://docs.microsoft.com/powershell/module/az.apimanagement). Az Azure Automation PowerShell-munkafolyamat parancsfájlokat hajtsa végre az API Management-feladatok a parancsmagok használatával írhat. Ezek a parancsmagok az Azure Automation parancsmagjaival más Azure-szolgáltatások, az összetett feladatok automatizálása Azure-szolgáltatások és a 3. fél rendszerek párosítása is történik.
 
 Íme néhány példa az API Management a PowerShell-lel:
 

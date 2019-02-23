@@ -8,12 +8,12 @@ ms.author: viviali
 ms.date: 12/4/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 9c774a463264a3df859ac097dce4aa21df1c1dd8
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 6133a7441459072d0c7da1841161da563a28aa31
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163361"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730324"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Az IoT-központ eszköz híd egyéb IoT-felhők csatlakozni az IoT-központ létrehozása
 
@@ -26,7 +26,9 @@ Az IoT-központ eszköz bridge, amely egy nyílt forráskódú megoldás a Githu
 -   Azure-függvényalkalmazás
 -   Azure Storage-tárfiók neve
 -   Használatalapú csomag
--   Az Azure Key Vault a függvényalkalmazás az eszköz híd kritikus részeihez. HTTP POST-kérelmet kap más IoT platformok vagy bármilyen egyéni platformon egy egyszerű webhook-integrációt. Példák azt mutatják be, hogyan csatlakozhat Sigfox Particle és TTN felhők adtunk meg. Ez a megoldás az egyéni IoT-felhőbe csatlakozni, ha a platform HTTP POST kéréseket küldhetnek a függvényalkalmazás könnyen kiterjesztheti.
+-   Azure Key Vault
+
+A függvényalkalmazás az eszköz híd kritikus részeihez. HTTP POST-kérelmet kap más IoT platformok vagy bármilyen egyéni platformon egy egyszerű webhook-integrációt. Példák azt mutatják be, hogyan csatlakozhat Sigfox Particle és TTN felhők adtunk meg. Ez a megoldás az egyéni IoT-felhőbe csatlakozni, ha a platform HTTP POST kéréseket küldhetnek a függvényalkalmazás könnyen kiterjesztheti.
 A függvényalkalmazás alakítja át az adatokat olyan formátumra, fogadja el az IoT-központ, majd továbbítja azt mentén DPS API-kon keresztül.
 
 ![Az Azure functions képernyőképe](media/howto-build-iotc-device-bridge/azfunctions.png)

@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató vendégfelhasználó felvételéhez PowerShell használatával az Azure Active Directory B2B együttműködéshez | Microsoft Docs
+title: A rövid útmutatóban a PowerShell használatával – az Azure Active Directory vendégfelhasználó felvétele |} A Microsoft Docs
 description: Ebben a rövid útmutatóban megismerheti, hogyan küldhet az Azure AD B2B együttműködés külső felhasználó számára meghívót a PowerShell használatával.
 services: active-directory
 ms.service: active-directory
@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cb34fa0552eaa8f0d567ff85843e4b7df3fa967
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8417e2118de01d00e8b0450374a9b10bff40221f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205375"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675143"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Gyors útmutató: Vendégfelhasználó hozzáadása PowerShell-lel
 

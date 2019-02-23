@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 28d1ed43ecdb1ff853e066567f331b8c302ce7aa
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103072"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730443"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
@@ -93,7 +93,7 @@ A betegek kartonjai nincs hozzáféréssel rendelkeznek.
 
 -   Hatály: ResourceGroup
 
- ### <a name="data-scientist"></a>Adatelemzési szakértő
+### <a name="data-scientist"></a>Adatelemzési szakértő
 
 
 Az adatszakértő működik, az Azure Machine Learning Studio. Ezek is importálása, exportálása, adatok kezelése és jelentések futtatása. Az adatszakértő férhet hozzá a betegek adatai, de nem rendelkezik rendszergazdai jogosultságokkal.

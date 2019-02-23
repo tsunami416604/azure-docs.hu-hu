@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: b5e6853653bab96cd11196ba03fbeadbdc6b337f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: c114c726bea34465972a282acac6b8acbbf9a80f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816212"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670420"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak
 
@@ -198,7 +199,7 @@ A `detailed` tartalmaz [legjobb N értéket](#n-best-values), mellett `Recogniti
 
 ### <a name="n-best-values"></a>Legjobb N értéket
 
-Figyelők, akár emberi, akár gépi, soha nem lehet abban, hogy azok meghallgatni *pontosan* mi volt a beszélt. Egy figyelő is hozzárendelhet egy *valószínűségi* csak az egy adott értelmezése az utterance (kifejezés). 
+Figyelők, akár emberi, akár gépi, soha nem lehet abban, hogy azok meghallgatni *pontosan* mi volt a beszélt. Egy figyelő is hozzárendelhet egy *valószínűségi* csak az egy adott értelmezése az utterance (kifejezés).
 
 Normál körülmények között, amikor mások számára, akikkel gyakran használják, és beszéljen a felhasználók nagy valószínűséggel ismeri fel lettek kimondott szavakat is. Számítógép-alapú beszédfelismerési figyelői arra törekszik, hogy hasonló pontossági szint elérése és a megfelelő feltételek mellett [emberek való elérésének](https://blogs.microsoft.com/next/2016/10/18/historic-achievement-microsoft-researchers-reach-human-parity-conversational-speech-recognition/#sm.001ykosqs14zte8qyxj2k9o28oz5v).
 
@@ -308,7 +309,7 @@ A Microsoft Speech Service felismeri az emberi beszéd átalakítás, beleértve
 
 | *Káromkodás* érték | Leírás |
 | - | - |
-| `masked` | Maszkok cenzúrázása szószűrő. Ez a viselkedés az alapértelmezett érték. | 
+| `masked` | Maszkok cenzúrázása szószűrő. Ez a viselkedés az alapértelmezett érték. |
 | `removed` | Káromkodás eltávolít minden eredmény. |
 | `raw` | Felismeri és cenzúrázása összes eredményt adja vissza. |
 
@@ -322,7 +323,7 @@ Ha a *cenzúrázása* lekérdezési paraméter értéke *eltávolított*, a szol
 
 #### <a name="profanity-only-utterances"></a>Csak cenzúrázása kimondott szöveg
 
-A felhasználó előfordulhat, hogy beszéd *csak* cenzúrázása egy alkalmazást a szolgáltatás eltávolítja a vulgáris konfigurálásakor. Ebben a forgatókönyvben, ha a felismerés mód *Diktálás* vagy *beszélgetés*, a szolgáltatás nem ad vissza egy *speech.result*. Ha a felismerés mód *interaktív*, a szolgáltatás által visszaadott egy *speech.result* állapotkódú *NoMatch*. 
+A felhasználó előfordulhat, hogy beszéd *csak* cenzúrázása egy alkalmazást a szolgáltatás eltávolítja a vulgáris konfigurálásakor. Ebben a forgatókönyvben, ha a felismerés mód *Diktálás* vagy *beszélgetés*, a szolgáltatás nem ad vissza egy *speech.result*. Ha a felismerés mód *interaktív*, a szolgáltatás által visszaadott egy *speech.result* állapotkódú *NoMatch*.
 
 ### <a name="profanity-value-raw"></a>Káromkodás érték `Raw`
 

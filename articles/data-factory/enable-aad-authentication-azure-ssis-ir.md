@@ -12,18 +12,18 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 2/19/2019
 ms.author: douglasl
-ms.openlocfilehash: b672264e1cb3cd415532cf4bcfbbd268afffa70d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 77ee2a0649d5c815fb68a4a40106455839030695
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415937"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671522"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Az Azure-SSIS integrációs modul az Azure Active Directory-hitelesítés engedélyezése
 
 Ez a cikk bemutatja, hogyan azokat a felügyelt identitáshoz az Azure Data Factory (ADF) az Azure Active Directory (Azure AD-) hitelesítés engedélyezése, és ezzel az SQL-hitelesítés helyett hozzon létre egy Azure-SSIS integrációs modul (IR), amely ezután hozza létre az SSIS katalógusadatbázist (SSISDB) az Azure SQL Database server/Managed Instance az Ön nevében.
 
-A felügyelt identitást az ADF használatával kapcsolatos további információkért lásd: [Azure Data Factory-szolgáltatásidentitás](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
+A felügyelt identitást az ADF használatával kapcsolatos további információkért lásd: [felügyelt identiy adat-előállító](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
 > Ha már létrehozott egy Azure-SSIS integrációs modul SQL-hitelesítéssel, újrakonfigurálhatja az integrációs modul az Azure AD-hitelesítés használatához a PowerShell-lel jelenleg nem, de ehhez az Azure portal/ADF-alkalmazásban. 
@@ -57,7 +57,7 @@ Egy meglévő Azure AD-csoportot, vagy hozzon létre egy új Azure AD PowerShell
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  A felügyelt identitás számára az ADF hozzáadása a csoporthoz. Kövesse a cikk [Azure Data Factory-szolgáltatásidentitás](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) beolvasni az egyszerű SZOLGÁLTATÁSIDENTITÁS azonosítója (pl. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, de erre a célra ne használja a SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója).
+3.  A felügyelt identitás számára az ADF hozzáadása a csoporthoz. Kövesse a cikk [felügyelt identiy adat-előállító](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) beolvasni az egyszerű SZOLGÁLTATÁSIDENTITÁS azonosítója (pl. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, de erre a célra ne használja a SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -167,7 +167,7 @@ A következő lépéshez szükséges [Microsoft SQL Server Management Studio](h
 
 4.  Kattintson a jobb gombbal a **fő** adatbázisra, majd válassza **új lekérdezés**.
 
-5.  Szerezze be a felügyelt identitás az ADF. Kövesse a cikk [Azure Data Factory-szolgáltatásidentitás](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) való lekérése az egyszerű szolgáltatás IDENTITÁS Alkalmazásazonosítója (de ne használja erre a célra SZOLGÁLTATÁSIDENTITÁS azonosítója).
+5.  Szerezze be a felügyelt identitás az ADF. Kövesse a cikk [felügyelt identiy adat-előállító](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) való lekérése az egyszerű szolgáltatás IDENTITÁS Alkalmazásazonosítója (de ne használja erre a célra SZOLGÁLTATÁSIDENTITÁS azonosítója).
 
 6.  A lekérdezési ablakban hajtsa végre a következő T-SQL parancsfájl konvertálása a felügyelt identitás a bináris típusú, az ADF:
 

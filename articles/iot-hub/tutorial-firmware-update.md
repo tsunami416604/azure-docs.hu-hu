@@ -9,15 +9,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
+ms.date: 02/22/2019
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: 20891b0d73783c9b68a42ecfed130e377b6f8eab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: c387a7c10b962cfd27a7563c00ce58f58e97b9d5
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729812"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671828"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Oktatóanyag: Egy eszköz belső vezérlőprogram frissítési folyamata megvalósítása
 
@@ -94,7 +94,8 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ```
 
-Ha ezeket a parancsokat Windows-parancssorban vagy PowerShell-parancssorban futtatja, tekintse meg az [azure-iot-cli-extension tippek](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
+> [!TIP]
+> Ha ezeket a parancsokat Windows-parancssorban vagy PowerShell-parancssorban futtatja, tekintse meg az [azure-iot-cli-extension tippek](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
 ) oldalt a JSON-sztringek idézésével kapcsolatos tudnivalókért.
 
 ## <a name="start-the-firmware-update"></a>A belsővezérlőprogram-frissítés elindítása
@@ -205,7 +206,7 @@ az group delete --name tutorial-iot-hub-rg
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan implementálható a csatlakoztatott eszközök belsővezérlőprogram-frissítési folyamata. Folytassa a következő oktatóanyaggal, amelyből megismerheti, hogyan használhatja az Azure IoT Hub portál eszközeit és az Azure CLI parancsait az eszközkapcsolatok tesztelésére.
+Ez az oktatóanyag bemutatta, hogyan implementálható a csatlakoztatott eszközök belsővezérlőprogram-frissítési folyamata. Folytassa a következő oktatóanyaggal, portal-eszközök Azure IoT Hub és az Azure CLI-parancsok használata az eszköz kapcsolat teszteléséhez.
 
 > [!div class="nextstepaction"]
 [Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez](tutorial-connectivity.md)

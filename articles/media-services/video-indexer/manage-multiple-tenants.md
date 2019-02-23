@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/10/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 3b6daa60e8c8945d49170a00da5bd3ffb57b48ac
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e98cf44db01de1f99836e247066ba01006eac97b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000114"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733299"
 ---
 # <a name="manage-multiple-tenants"></a>Több bérlő kezelése
 
@@ -56,7 +56,7 @@ Ezzel a beállítással testreszabási modellek (személy, nyelv és márkákat)
 
 Amikor [megkezdené a videófeltöltést](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), bérlőnként egy másik partíció attribútumot is megadhat. Ez lehetővé teszi az elkülönítés a [search API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Megadja a partíció attribútum a search API csak a megadott partíció eredményeket fog kapni. 
 
- ### <a name="considerations"></a>Megfontolandó szempontok
+### <a name="considerations"></a>Megfontolandó szempontok
 
 * Tartalom és a Testreszabás modellek bérlők között megosztásának lehetősége.
 * Egyetlen bérlő teljesítményére hatással van a többi bérlőtől.

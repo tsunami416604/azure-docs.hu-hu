@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0f9e889a15933953af275460ba12906db6f3adec
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bf4f7e8f5837aaa56745e60df5a4960a93097a92
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106532"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729627"
 ---
 # <a name="set-up-and-run-analytics-jobs-using-azure-stream-analytics-api-for-net"></a>Állítsa be, és a .NET-hez készült Azure Stream Analytics API használatával az analytics-feladatok futtatása
 Megtudhatja, hogyan állíthatja be, és a Stream Analytics API használatával a felügyeleti .NET SDK-val .NET-keretrendszerhez készült elemzési feladatok futtatásához. Projekt beállítása, hozzon létre bemeneti és kimeneti források átalakítások és kezdő, és állítsa le a feladatok. Az analytics-feladatokhoz streamelheti a Blob storage-ból, vagy az eseményközpontok adatait.
@@ -38,8 +38,8 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
    Add-AzureAccount
    # Select the Azure subscription you want to use to create the resource group
    Select-AzureSubscription -SubscriptionName <subscription name>
-       # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the    Register-AzureRMProvider cmdlet to register the provider namespace
-       #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
+       # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the    Register-AzProvider cmdlet to register the provider namespace
+       #Register-AzProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
    # Create an Azure resource group
    New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
    ```

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: e8f37adc07bffb8a1e770085ecee6f813d3c2932
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7d63cc4e57ba3c1b962c893bf8c8bd03664dac6f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425611"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729254"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurálja az IoT Hub fájlfeltöltések PowerShell-lel
 
@@ -20,36 +20,38 @@ ms.locfileid: "54425611"
 
 Használatához a [fájlba feltöltésének működését az IoT Hub](iot-hub-devguide-file-upload.md), először társítania kell egy Azure storage-fiókot az IoT hubbal. Használjon egy meglévő tárfiókot, vagy hozzon létre egy újat.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.
 
-* [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
+* [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-* Az Azure IoT hubra. Ha nem rendelkezik egy IoT hubot, használhatja a [New-AzureRmIoTHub parancsmag](https://docs.microsoft.com/powershell/module/azurerm.iothub/new-azurermiothub) hozzon létre egyet, vagy a portál használata [hozzon létre egy IoT hubot](iot-hub-create-through-portal.md).
+* Az Azure IoT hubra. Ha nem rendelkezik egy IoT hubot, használhatja a [New-AzIoTHub parancsmag](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) hozzon létre egyet, vagy a portál használata [hozzon létre egy IoT hubot](iot-hub-create-through-portal.md).
 
-* Egy Azure-tárfiók. Ha nem rendelkezik Azure storage-fiókkal, használhatja a [Azure Storage PowerShell parancsmagjainak](https://docs.microsoft.com/powershell/module/azurerm.storage/) hozzon létre egyet, vagy a portál használata [storage-fiók létrehozása](../storage/common/storage-create-storage-account.md)
+* Egy Azure-tárfiók. Ha nem rendelkezik Azure storage-fiókkal, használhatja a [Azure Storage PowerShell parancsmagjainak](https://docs.microsoft.com/powershell/module/az.storage/) hozzon létre egyet, vagy a portál használata [storage-fiók létrehozása](../storage/common/storage-create-storage-account.md)
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Jelentkezzen be, és állítsa be az Azure-fiókkal
 
 Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
-1. A PowerShell-parancssorban futtassa a következő a **Connect-AzureRmAccount** parancsmagot:
+1. A PowerShell-parancssorban futtassa a következő a **Connect-AzAccount** parancsmagot:
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 2. Ha több Azure-előfizetéssel rendelkezik, az Azure-bA bejelentkezik hozzáférést, az összes Azure-előfizetések a hitelesítő adatokhoz tartozó. Használja a következő parancs használható elérhető Azure-előfizetések listázásához:
 
     ```powershell
-    Get-AzureRMSubscription
+    Get-AzSubscription
     ```
 
     A következő parancs használata kezelheti az IoT hub-parancsok futtatásához használni kívánt előfizetés kiválasztásához. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
 
     ```powershell
-    Select-AzureRMSubscription `
+    Select-AzSubscription `
         -SubscriptionName "{your subscription name}"
     ```
 
@@ -60,7 +62,7 @@ A következő lépések azt feltételezik, hogy a tárfiók tárfiókkulcsait l�
 Fájlfeltöltés az eszközökről származó konfigurálásához szükség van a kapcsolati karakterláncot egy Azure storage-fiókot. A storage-fiókot az IoT hub az azonos előfizetésben kell lennie. A storage-fiókban található blob-tárolóra nevét is szükséges. A következő parancsot használja a storage-fiók kulcsok lekéréséhez:
 
 ```powershell
-Get-AzureRmStorageAccountKey `
+Get-AzStorageAccountKey `
   -Name {your storage account name} `
   -ResourceGroupName {your storage account resource group}
 ```
@@ -72,19 +74,19 @@ Meglévő blob tároló használata a fájlfeltöltési, vagy hozzon létre úja
 * A meglévő, a tárfiókban található blob-tárolók listájában, használja a következő parancsokat:
 
     ```powershell
-    $ctx = New-AzureStorageContext `
+    $ctx = New-AzStorageContext `
         -StorageAccountName {your storage account name} `
         -StorageAccountKey {your storage account key}
-    Get-AzureStorageContainer -Context $ctx
+    Get-AzStorageContainer -Context $ctx
     ```
 
 * Hozzon létre egy blobtárolót a tárfiókban található, használja a következő parancsokat:
 
     ```powershell
-    $ctx = New-AzureStorageContext `
+    $ctx = New-AzStorageContext `
         -StorageAccountName {your storage account name} `
         -StorageAccountKey {your storage account key}
-    New-AzureStorageContainer `
+    New-AzStorageContainer `
         -Name {your new container name} `
         -Permission Off `
         -Context $ctx
@@ -109,7 +111,7 @@ A konfigurációs van szükség a következő értékeket:
 Használja az alábbi PowerShell-parancsmagot a fájl konfigurálása töltse fel az IoT hub beállításai:
 
 ```powershell
-Set-AzureRmIotHub `
+Set-AzIotHub `
     -ResourceGroupName "{your iot hub resource group}" `
     -Name "{your iot hub name}" `
     -FileUploadNotificationTtl "01:00:00" `

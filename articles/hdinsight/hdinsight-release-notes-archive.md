@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 19a842eacb00e877d31712febeeebc72cbdd25a0
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ed7f18d1a40e0b766a2f10cce99aa735d51b4110
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743170"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672552"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Az Azure HDInsight archivált kibocsátási megjegyzései
 
@@ -40,9 +40,9 @@ Az alábbiakban a fontosabb eseményeket. A részletes kibocsátási megjegyzés
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>HDInsight kiadása 08/01/2017 megjegyzései
 
-| Beosztás | Leírás | Érintett terület  | Fürt típusa  | 
+| Cím | Leírás | Impacted Area  | Fürt típusa  | 
 | --- | --- | --- | --- | --- |
-| A HDInsight, az a Microsoft R Server 9.1 kiadása |HDInsight R Server 9.1 kiépítési fürtök mostantól támogatja a HDInsight. A Microsoft R Server 9.1-kiadás további információkért lásd: [ebben a blogbejegyzésben](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/). |Szolgáltatás |R Server |
+| A HDInsight, az a Microsoft R Server 9.1 kiadása |HDInsight R Server 9.1 kiépítési fürtök mostantól támogatja a HDInsight. |Szolgáltatás |R Server |
 | HDInsight 3.6-os mostantól tartalmazza a Hadoop-veremmel újabb verzióiban|<ul><li>Frissített verzió részletes listáját lásd: [HDInsight elérhető az Apache Hadoop összetevő verziók](hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).</li><li>A Hadoop-veremmel legújabb verziójában javított hibák listáját lásd: [Apache javítás információk](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html).</li><li>Parancsban történt használhatatlanná tévő HDP 2.6.1 (amely már elérhető a HDInsight 3.6) közötti listáját lásd: [ https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html ](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html).</li><li>Ismert problémák a HDP 2.6.1 listáját lásd: [ismert problémák](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html).</li></ul> |Szolgáltatás |Összes |– |
 | Frissítések-fürtök interaktív Hive (előzetes verzió) |<ul><li><b>A szolgáltatás javítására.</b> Gyorsítótárazott metaadattár SQL háttérbeli a metaadatok gyorsítótárazásával csökkenti, és növeli a teljesítményt az összes metaadat-műveletek végrehajtása.  Ennek a fejlesztésnek már az összes Apache interaktív Hive-fürt alapértelmezett. Tovább információ: [https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520).</li><li><b>A szolgáltatás javítására.</b> A dinamikus partíció betöltése optimalizáltuk. Tovább információ: [https://issues.apache.org/jira/browse/HIVE-14204](https://issues.apache.org/jira/browse/HIVE-14204).</li><li><b>A szolgáltatás javítására.</b> HDInsight Linux rendszeren konfigurációs optimalizálását.</li><li><b>Hibajavítás.</b> `CredentialProviderFactory$getProviders` nem szálbiztos. Most ezt a problémát megoldottuk. Tovább információ: [https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195).</li><li><b>Hibajavítás.</b> Magas CPU-használat WASB-illesztőprogrammal `liststatus` API hibás ATS teljesítményt eredményez. Most ezt a problémát megoldottuk. Tovább információ: [https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154).</li></ul> |Szolgáltatás |Interaktív Hive (előzetes verzió) |
 | Hadoop-fürtök frissítéseinek |Javult templeton eszközön keresztül végzett feladat művelet megbízhatóság. További információkért lásd: [https://issues.apache.org/jira/browse/HIVE-15947](https://issues.apache.org/jira/browse/HIVE-15947) |Szolgáltatás |Hadoop |

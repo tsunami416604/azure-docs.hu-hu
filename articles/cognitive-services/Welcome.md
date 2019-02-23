@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: nitinme
-ms.openlocfilehash: d9271b32f6254b032fab9e93aaf82ab39e7f1932
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 38ad921c7c4b2fef9d325c2e2c9eea25bd3c913b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876283"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734676"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mik az Azure Cognitive Services?
 
@@ -22,7 +22,7 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 
 ## <a name="vision-apis"></a>Vision APIs
 
-|Szolgáltatás neve|A szolgáltatás leírása|
+|Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[Számítógépes Látástechnológia](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|A Computer Vision service képek feldolgozása és információk korszerű algoritmusokat hozzáférést biztosít.|
 |[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service") (előzetes verzió)|A Custom Vision Service lehetővé teszi, hogy egyéni rendszerképet deklarációkkal hozhat létre.|
@@ -33,7 +33,7 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 
 ## <a name="speech-apis"></a>Beszédfelismerő API-k
 
-|Szolgáltatás neve|A szolgáltatás leírása|
+|Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[Beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "beszédszolgáltatás") (előzetes verzió)|Beszédszolgáltatás beszédfeldolgozó funkciókat ad hozzá alkalmazásokat.|
 |[Custom Speech Service](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home "Custom Speech Service") (előzetes verzió)|A Custom Speech Service-szel alkalmazására és felhasználóira szabott nyelvi modelleket és akusztikai modelleket hozhat létre.|
@@ -43,7 +43,7 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 
 ## <a name="language-apis"></a>Nyelvi API-k
 
-|Szolgáltatás neve|A szolgáltatás leírása|
+|Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[A Bing Spell Check](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Bing helyesírás-ellenőrzés")|A Bing helyesírás-ellenőrzés lehetővé teszi a környezetfüggő nyelvtani végez, és helyesírás-ellenőrzés.|
 |[Language Understanding, LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "hangfelismerés")|Hangfelismerési szolgáltatás (LUIS) lehetővé teszi, hogy az alkalmazás tudja, hogy ember szándékának megértésére a saját szavaival.|
@@ -54,7 +54,7 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 
 ## <a name="search-apis"></a>Keresési API-k
 
-|Szolgáltatás neve|A szolgáltatás leírása|
+|Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[Bing – Hírkeresés](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Bing – Hírkeresés")|Bing – Hírkeresés határozza meg a felhasználó lekérdezése fontos hírek listáját adja vissza.|
 |[Bing – Videókeresés](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing – Videókeresés")|A Bing Video Search minősül, a felhasználó lekérdezése a videók listáját adja vissza.|
@@ -67,7 +67,7 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 
 ## <a name="knowledge-apis"></a>Információs API-k
 
-|Szolgáltatás neve|A szolgáltatás leírása|
+|Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
 | [A Custom Decision Service](https://docs.microsoft.com/azure/cognitive-services/custom-decision-service/ "a Custom Decision keresési") (előzetes verzió)|A Custom Decision Service segítségével hozzon létre intelligens rendszereket környezetfüggő döntéshozó személyre szabásához, és a felhasználói élmény optimalizálására.|
 |[A QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "a QnA Maker")|A QnA Maker egy kérdést és választ a szolgáltatás a szolgáltatásban tárolt részben strukturált tartalomból teszi lehetővé.|
@@ -94,7 +94,7 @@ Keres egy régió nem támogatjuk a még? Ossza meg velünk az ügyfélszolgála
 
  A cognitive Services szolgáltatási szintű kulturális nyelvek széles skáláját támogatja. Minden API-hoz, a rendelkezésre állási nyelv is megtalálhatja a [támogatott nyelvek listája](language-support.md).
 
- ## <a name="container-support"></a>Tárolótámogatás
+## <a name="container-support"></a>Tárolótámogatás
 
  A cognitive Services tárolók biztosít az Azure-felhőben vagy helyszíni üzemelő példány számára. Tudjon meg többet [Cognitive Services-tárolók](cognitive-services-container-support.md).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: f7d7b7f470f43d8a7a1cd94b4b1ce79503f0dfca
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 66410a0586fcdd10f7c350bd4bad5211be61a79a
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301026"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669346"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Eszköz webalkalmazások az Application Insights Állapotfigyelőt futásidejű
 
@@ -27,7 +27,7 @@ Egy élő webalkalmazást a kód módosítása vagy ismételt telepítése nélk
 
 - Ha az alkalmazást helyezünk üzembe az Azure app services, hajtsa végre a [ezek az utasítások](azure-web-apps.md).
 - Ha az alkalmazás egy Azure virtuális Gépen van üzembe helyezve, az Application Insights-figyelést az Azure Vezérlőpultján válthat.
-- (Külön cikkek kialakításáról [élő Java EE-alapú webalkalmazások](java-live.md) és [Azure Cloud Services](../../azure-monitor/app/cloudservices.md).)
+- (Külön cikkek kialakításáról [Azure Cloud Services](../../azure-monitor/app/cloudservices.md).)
 
 
 ![Képernyőkép az App Insights áttekintése gráfok sikertelen kérelmek, a kiszolgáló válaszidejét és a kiszolgálói kérelmekre vonatkozó információkat tartalmazó](./media/monitor-performance-live-website-now/overview-graphs.png)

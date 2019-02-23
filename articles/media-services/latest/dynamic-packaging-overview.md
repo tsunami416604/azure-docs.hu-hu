@@ -11,39 +11,43 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 02/22/2019
 ms.author: juliako
-ms.openlocfilehash: d1d07402bca5f01cf63d0b039c085e46bb0f0d62
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 02af95de3793f1d56204b17b0a3d91efbb285e55
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447922"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726414"
 ---
 # <a name="dynamic-packaging"></a>Dinamikus csomagolás
 
-A Microsoft Azure Media Services is használható, hogy sok adatforrás fájl médiaformátumok, adatfolyam-továbbítási formátumokba, media, és a content protection formátumok számos különböző ügyfél-technológiák (például iOS- és XBOX). Ezek az ügyfelek különböző protokollok ismertetése, például iOS-HTTP Live Streaming (HLS) formátumban és Xbox igényelnek, Smooth Streaming igényel-e. Ha rendelkezik egy adaptív sávszélességű (többszörös sávszélességű MP4) készletét MP4 (ISO alap 14496-12) médiafájlok vagy egy adaptív sávszélességű Smooth Streaming-fájlsorozattá szolgálja ki, hogy ismerje a HLS, MPEG DASH és Smooth Streaming-ügyfelek kívánt, érdemes előnyeit adathordozó A dinamikus csomagolás szolgáltatásokat.
+A Microsoft Azure Media Services is használható, hogy sok adatforrás fájl médiaformátumok, adatfolyam-továbbítási formátumokba, media, és a content protection formátumok számos különböző ügyfél-technológiák (például iOS- és XBOX). Ezek az ügyfelek különböző protokollok ismertetése, például iOS-HTTP Live Streaming (HLS) formátumban és Xbox igényelnek, Smooth Streaming igényel-e. Ha rendelkezik egy adaptív sávszélességű (többszörös sávszélességű MP4) készletét MP4 (ISO alap 14496-12) médiafájlok vagy egy adaptív sávszélességű Smooth Streaming-fájlsorozattá szolgálja ki, hogy ismerje a HLS, MPEG DASH és Smooth Streaming-ügyfelek kívánt, igénybe veheti a dinamikus Csomag. A csomagolási képernyőfelbontást független, SD/HD/UHD - 4K támogatottak.
 
-A dinamikus csomagolás használatával szüksége, hozzon létre egy objektumot az adaptív sávszélességű MP4-fájlokat tartalmazó. Ezt követően a jegyzék vagy töredékrész kérelem, az Igényalapú Streamelési megadott formátumnak megfelelően kiszolgáló biztosítja, hogy Önnek a streamet a kiválasztott protokollal. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
+[Streamvégpontok](streaming-endpoint-concept.md) a médiatartalmak eredményjelző ügyfél lejátszók Media Services dinamikus csomagolási szolgáltatás. A dinamikus csomagolás funkciója, amely az összes Streamelési végpontokkal (Standard vagy prémium szintű) standard származik. Részeként van ennek a funkciónak a Media Services v3 kapcsolódó költségek. A dinamikus csomagolás használatával szüksége az Alkalmazásjegyzék-fájl az adaptív sávszélességű MP4-fájlokat tartalmazó objektumot. Ezt követően a jegyzék vagy töredékrész kérelemben megadott formátumnak megfelelően, Önnek a streamet a kiválasztott protokollal. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
 
-Az alábbi ábrán látható, a hagyományos kódolás és a statikus csomagolás munkafolyamat.
-
-![Statikus kódolás](./media/dynamic-packaging-overview/media-services-static-packaging.png)
+A Media Services szolgáltatásban a dinamikus csomagolás e igény szerinti vagy élő folyamatos átviteli szolgál.
 
 Az alábbi ábrán látható, a dinamikus csomagolás munkafolyamat.
 
-![A dinamikus kódolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![A dinamikus kódolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-## <a name="dynamic-packaging-workflow"></a>A dinamikus csomagolás munkafolyamat
+## <a name="common-video-on-demand-workflow"></a>Közös videó igény szerinti munkafolyamat
+
+Az alábbiakban látható egy közös Media Services adatfolyam-továbbítási munkafolyamat, a dinamikus csomagolás szolgál.
 
 1. Töltse fel egy bemeneti fájlt (úgynevezett mezzanine-fájlt). Ha például H.264, MP4 vagy WMV (a támogatott formátumok listáját lásd: [a Media Encoder Standard által támogatott formátumok](media-encoder-standard-formats.md).
 2. Kódolja a mezzanine-fájlt a H.264 MP4 adaptív sávszélességű csoportok.
 3. Tegye közzé az adategységet, amely tartalmazza az adaptív sávszélességű MP4 típusú beállításkészlettel.
-4. A streamelési URL-címek elérését, és a tartalmak streamelésére hozhat létre.
+4. Hozhat létre, amelyek különböző formátumokban (HLS, Dash és Smooth Streaming) cél URL-címeket. A folyamatos átviteli végponton lenne gondoskodik a megfelelő jegyzékfájlban és a kérelmek ezeket különböző formátumokban kiszolgáló.
+ 
+## <a name="video-codecs-supported-by-dynamic-packaging"></a>A dinamikus becsomagolás által támogatott videókodekek
+
+Támogatja a dinamikus csomagolás MP4-fájlokat, amelyek tartalmazzák a videó kódolású [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC vagy AVC1), [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 vagy hvc1).
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>A dinamikus becsomagolás által támogatott hangkodekek
 
-A dinamikus csomagolás támogatja az MP4-fájlokat tartalmazó hang a kódolt [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1, v2 az AAC-HE), [Dolby digitális Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 vagy E-AC3), vagy [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) (DTS Express, DTS LBR, DTS HD, veszteségmentes DTS HD).
+A dinamikus csomagolás támogatja az MP4-fájlokat, amelyek tartalmazzák a hang a kódolt [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1, v2 az AAC-HE), [Dolby digitális Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 vagy E-AC3), vagy [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) (DTS Express, DTS LBR, DTS HD, veszteségmentes DTS HD).
 
 > [!NOTE]
 > A dinamikus csomagolás nepodporuje tartalmazó fájlokat [Dolby digitális](https://en.wikipedia.org/wiki/Dolby_Digital) (nem örökölt kodekkel) (AC3) hang.
@@ -51,3 +55,4 @@ A dinamikus csomagolás támogatja az MP4-fájlokat tartalmazó hang a kódolt [
 ## <a name="next-steps"></a>További lépések
 
 [Feltöltés, kódolás, stream-videók](stream-files-tutorial-with-api.md)
+

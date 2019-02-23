@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: cd80adaa5d8bb05ce3494966cabbaf076785425c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: e8a94fdae74c5a30ba75e9143b298c3372b886d7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56647502"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733010"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban létrehozott tesztkörnyezet egy összetevőtárban hozzáadása
 DevTest Labs lehetővé teszi, hogy adjon meg egy időben, a virtuális gép létrehozása, vagy a virtuális gép létrehozása után egy virtuális Gépet hozzáadni kívánt összetevőt. Az összetevő egy eszköz és a egy virtuális Gépre telepíteni kívánt alkalmazás lehet. Összetevők egy JSON-fájlt a betöltött GitHub vagy a VSTS Git-adattárból vannak definiálva. 
@@ -26,6 +26,8 @@ DevTest Labs lehetővé teszi, hogy adjon meg egy időben, a virtuális gép lé
 A [nyilvános összetevőtárral](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), DevTest Labs által karbantartott, számos gyakori eszközöket biztosít a Windows és Linux is. Ez a tárház mutató hivatkozás automatikusan hozzáadódik a labor. Az eszközöket, amelyek nem érhetők el a nyilvános összetevőtárral hozhat létre saját összetevőtárban. Egyéni összetevők létrehozásával kapcsolatos további információkért lásd: [egyéni összetevők létrehozása](devtest-lab-artifact-author.md).
 
 Ez a cikk információt nyújt az egyéni az összetevőtárban hozzáadása az Azure portal, az Azure Resource Management-sablonokat és az Azure PowerShell használatával. Automatizálhatja az összetevőtárban hozzáadása egy laborhoz PowerShell vagy parancssori felület parancsfájlok írásával. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 A labor ad hozzá egy adattár, először kérje le kulcsfontosságú adatokat az adattárból. Az alábbi szakaszok ismertetik a szükséges adatok lévő üzemeltetett tárházakhoz készült **GitHub** vagy **Azure DevOps**.
@@ -170,25 +172,25 @@ A sablon üzembe helyezése az Azure és az erőforrás hozta létre, ha még ne
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
-Lépjen tovább, és tekintse meg a PowerShell-sablon üzembe helyezése. A sablon üzembe helyezéséhez használt parancsmagok környezetfüggő,, így az aktuális bérlő és a jelenlegi előfizetésében. Használat [Set-AzureRMContext](/powershell/module/azurerm.profile/set-azurermcontext?view=azurermps-6.13.0) a sablon üzembe helyezése, ha szükséges, módosíthatja a környezet előtt.
+Lépjen tovább, és tekintse meg a PowerShell-sablon üzembe helyezése. A sablon üzembe helyezéséhez használt parancsmagok környezetfüggő,, így az aktuális bérlő és a jelenlegi előfizetésében. Használat [Set-AzContext](/powershell/module/az.profile/set-azcontext) a sablon üzembe helyezése, ha szükséges, módosíthatja a környezet előtt.
 
-Először is hozzon létre egy erőforrás csoport [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.13.0). Ha az már a használni kívánt erőforráscsoport már létezik, hagyja ki ezt a lépést.
+Először is hozzon létre egy erőforrás csoport [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Ha az már a használni kívánt erőforráscsoport már létezik, hagyja ki ezt a lépést.
 
 ```powershell
-New-AzureRmResourceGroup -Name MyLabResourceGroup1 -Location westus
+New-AzResourceGroup -Name MyLabResourceGroup1 -Location westus
 ```
 
-Ezután hozza létre a központi telepítést, az erőforrás csoport használatával [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0). Ez a parancsmag az erőforrás-módosítások vonatkozik az Azure-bA. Több erőforráscsoport központi telepítések lehet tenni bármely adott erőforráscsoportban. Ha többször ugyanabban az erőforráscsoportban végzi, győződjön meg arról, minden egyes központi telepítés neve nem egyedi.
+Ezután hozza létre a központi telepítést, az erőforrás csoport használatával [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Ez a parancsmag az erőforrás-módosítások vonatkozik az Azure-bA. Több erőforráscsoport központi telepítések lehet tenni bármely adott erőforráscsoportban. Ha többször ugyanabban az erőforráscsoportban végzi, győződjön meg arról, minden egyes központi telepítés neve nem egyedi.
 
 ```powershell
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
     -Name MyLabResourceGroup-Deployment1 `
     -ResourceGroupName MyLabResourceGroup1 `
     -TemplateFile azuredeploy.json `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
 
-New-AzureRmResourceGroupDeployment sikeres futtatása után a parancs kimenete a fontos információkat, például a kiépítési állapota (sikeres volt a kell lennie), és a sablon kimeneteit.
+New-AzResourceGroupDeployment sikeres futtatása után a parancs kimenete a fontos információkat, például a kiépítési állapota (sikeres volt a kell lennie), és a sablon kimeneteit.
  
 ## <a name="use-azure-powershell"></a>Azure PowerShell használatával 
 Ez a szakasz egy minta PowerShell-parancsfájlt, amely segítségével az összetevőtárban hozzáadása egy laborhoz biztosít. Ha nem rendelkezik Azure PowerShell-lel, tekintse meg [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview?view=azps-1.2.0) részletes útmutatást a telepítéshez.
@@ -236,11 +238,11 @@ See https://azure.microsoft.com/en-us/documentation/articles/devtest-lab-add-art
 Whether artifact is VSOGit or GitHub repository.
 
 .EXAMPLE
-Set-AzureRMContext -SubscriptionId 11111111-1111-1111-1111-111111111111
+Set-AzContext -SubscriptionId 11111111-1111-1111-1111-111111111111
 .\New-DevTestLabArtifactRepository.ps1 -LabName "mydevtestlab" -LabResourceGroupName "mydtlrg" -ArtifactRepositoryName "MyTeam Repository" -RepositoryUri "https://github.com/<myteam>/<nameofrepo>.git" -PersonalAccessToken "1111...." -SourceType "GitHub"
 
 .NOTES
-Script uses the current AzureRm context. To set the context, use the Set-AzureRMContext cmdlet
+Script uses the current Az context. To set the context, use the Set-AzContext cmdlet
 
 #>
 
@@ -278,11 +280,11 @@ if ($ArtifactRepositoryName -eq $null){
 }
 
 # Sign in to Azure
-Connect-AzureRmAccount
+Connect-AzAccount
 
 
 #Get Lab Resource
-$LabResource = Get-AzureRmResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceName $LabName -ResourceGroupName $LabResourceGroupName
+$LabResource = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceName $LabName -ResourceGroupName $LabResourceGroupName
 
 Write-Verbose "Lab Name: $($LabResource.Name)"
 Write-Verbose "Lab Resource Group Name: $($LabResource.ResourceGroupName)"
@@ -290,7 +292,7 @@ Write-Verbose "Lab Resource Location: $($LabResource.Location)"
 
 Write-Verbose "Artifact Repository Internal Name: $ArtifactRepositoryName"
 
-#Prepare properties object for call to New-AzureRMResource
+#Prepare properties object for call to New-AzResource
 $propertiesObject = @{
     uri = $RepositoryUri;
     folderPath = $FolderPath;
@@ -301,24 +303,24 @@ $propertiesObject = @{
     status = 'Enabled'
 }
 
-Write-Verbose @"Properties to be passed to New-AzureRMResource:$($propertiesObject | Out-String)"@
+Write-Verbose @"Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"@
 
 #Resource will be added to current subscription.
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'
 $resourceName = $LabName + '/' + $ArtifactRepositoryName
-Write-Verbose "AzureRM ResourceType: $resourcetype"
-Write-Verbose "AzureRM ResourceName: $resourceName"
+Write-Verbose "Az ResourceType: $resourcetype"
+Write-Verbose "Az ResourceName: $resourceName"
  
 Write-Verbose "Creating artifact repository '$ArtifactRepositoryDisplayName'..."
-$result = New-AzureRmResource -Location $LabResource.Location -ResourceGroupName $LabResource.ResourceGroupName -properties $propertiesObject -ResourceType $resourcetype -ResourceName $resourceName -ApiVersion 2016-05-15 -Force
+$result = New-AzResource -Location $LabResource.Location -ResourceGroupName $LabResource.ResourceGroupName -properties $propertiesObject -ResourceType $resourcetype -ResourceName $resourceName -ApiVersion 2016-05-15 -Force
 
 
 #Alternate implementation:
 # Use resourceId rather than resourcetype and resourcename parameters.
 # Using resourceId allows you to specify the $SubscriptionId rather than using the
-# subscription id of Get-AzureRmContext.
+# subscription id of Get-AzContext.
 #$resourceId = "/subscriptions/$SubscriptionId/resourceGroups/$($LabResource.ResourceGroupName)/providers/Microsoft.DevTestLab/labs/$LabName/artifactSources/$ArtifactRepositoryName"
-#$result = New-AzureRmResource -properties $propertiesObject -ResourceId $resourceId -ApiVersion 2016-05-15 -Force
+#$result = New-AzResource -properties $propertiesObject -ResourceId $resourceId -ApiVersion 2016-05-15 -Force
 
 
 # Check the result
@@ -337,7 +339,7 @@ return $result
 Az alábbi példa bemutatja, hogyan a parancsfájl futtatásához: 
 
 ```powershell
-Set-AzureRMContext -SubscriptionId <Your Azure subscription ID>
+Set-AzContext -SubscriptionId <Your Azure subscription ID>
 
 .\New-DevTestLabArtifactRepository.ps1 -LabName "mydevtestlab" -LabResourceGroupName "mydtlrg" -ArtifactRepositoryName "MyTeam Repository" -RepositoryUri "https://github.com/<myteam>/<nameofrepo>.git" -PersonalAccessToken "1111...." -SourceType "GitHub"
 ```
@@ -357,7 +359,7 @@ Ez a cikk a minta PowerShell-parancsprogram a következő paramétereket fogadja
 | PersonalAccessToken | Biztonsági jogkivonatot a GitHub vagy VSOGit tárház eléréséhez. Az Előfeltételek című útmutatást személyes hozzáférési jogkivonat beszerzése |
 | forrás típusa | Összetevő-e VSOGit vagy a GitHub-adattárban. |
 
-A tárház magának kell egy belső nevet azonosítása, amely eltér, hogy a megjelenített név, amely az Azure Portalon látható. Nem látja a belső nevét az Azure portal használatával, de látja az Azure REST API-k vagy az AzureRM PowerShell-parancsmagok használata esetén. A parancsfájl ad meg egy nevet, ha nincs megadva a parancsfájl a felhasználó által.
+A tárház magának kell egy belső nevet azonosítása, amely eltér, hogy a megjelenített név, amely az Azure Portalon látható. Nem látja a belső nevét az Azure portal használatával, de látja az Azure REST API-k vagy az Azure PowerShell használata esetén. A parancsfájl ad meg egy nevet, ha nincs megadva a parancsfájl a felhasználó által.
 
 ```powershell
 #Set artifact repository name, if not set by user
@@ -370,10 +372,10 @@ if ($ArtifactRepositoryName -eq $null){
 
 | PowerShell-paranccsal | Megjegyzések |
 | ------------------ | ----- |
-| [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource?view=azurermps-6.13.0) | Ez a parancs segítségével például a helyét a tesztlabor kaphasson. |
-| [New-AzureRMResource](/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-6.13.0) | Nem tartozik a megadott parancs összetevő tárházak hozzáadásához. Az általános [New-AzureRMResource](/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-5.7.0) parancsmag does a feladatot. Ez a parancsmag van szüksége, vagy a **ResourceId** vagy a **ResourceName** és **ResourceType** pár tudni, hogy a létrehozni kívánt erőforrás típusát. Ez a példaszkript használja az erőforrás nevét és az erőforrás típusának pár. <br/><br/>Figyelje meg, hogy létrehozásakor összetevő tárház forrásának ugyanazon a helyen, és ugyanazt az erőforráscsoportot, a labor létrehozása alatt.|
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Ez a parancs segítségével például a helyét a tesztlabor kaphasson. |
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | Nem tartozik a megadott parancs összetevő tárházak hozzáadásához. Az általános [New-AzResource](/powershell/module/az.resources/new-azresource) parancsmag does a feladatot. Ez a parancsmag van szüksége, vagy a **ResourceId** vagy a **ResourceName** és **ResourceType** pár tudni, hogy a létrehozni kívánt erőforrás típusát. Ez a példaszkript használja az erőforrás nevét és az erőforrás típusának pár. <br/><br/>Figyelje meg, hogy létrehozásakor összetevő tárház forrásának ugyanazon a helyen, és ugyanazt az erőforráscsoportot, a labor létrehozása alatt.|
 
-A parancsfájl hozzáad egy új erőforrást az aktuális előfizetéshez. Használat [Get-AzureRMContext](/powershell/module/azurerm.profile/get-azurermcontext?view=azurermps-6.13.0) ezek az információk megtekintéséhez. Használat [Set-AzureRMContext](/powershell/module/azurerm.profile/set-azurermcontext?view=azurermps-6.13.0) az aktuális bérlő és az előfizetés beállításához.
+A parancsfájl hozzáad egy új erőforrást az aktuális előfizetéshez. Használat [Get-AzContext](/powershell/module/az.profile/get-azcontext) ezek az információk megtekintéséhez. Használat [Set-AzContext](/powershell/module/az.profile/set-azcontext) az aktuális bérlő és az előfizetés beállításához.
 
 A legjobb módja az erőforrás nevét és az erőforrás típussal kapcsolatos információk felderítésére az [Test Drive Azure REST API-k](https://azure.github.io/projects/apis/) webhelyén. Tekintse meg a [DevTest Labs – a 2016-05-15](http://aka.ms/dtlrestapis) -szolgáltatót, az elérhető REST API-kat a DevTest Labs-szolgáltatóhoz. A parancsfájl-felhasználók a következő erőforrás-azonosítója. 
 

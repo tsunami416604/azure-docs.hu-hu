@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: magattus
 ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309277"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735800"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Az Azure CDN számlázásának ismertetése
 
@@ -30,7 +30,7 @@ A számlázási régióban egy földrajzi területen határozza meg, milyen díj
 
 - 1. zóna: Észak-Amerika, Európa, Közel-Kelet és Afrika
 
-- 2. zóna: Ázsia Csendes-óceáni (és japán)
+- Zone 2: (2. zóna) Ázsia Csendes-óceáni (és japán)
 
 - 3. zóna: Dél-Amerika
 

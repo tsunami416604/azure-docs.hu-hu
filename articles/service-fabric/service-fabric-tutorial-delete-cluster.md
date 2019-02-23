@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5174bb696b456a66cfc0666ac5c475437e441d82
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d4f530e38b6fd69d814765f4133201dd12a87f22
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848852"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668582"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Oktatóanyag: Távolítsa el az Azure-ban futó Service Fabric-fürt
 
@@ -34,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) létrehozása az Azure-ban sablon használatával
+> * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban sablon használatával
 > * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
 > * [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
 > * Fürt törlése
@@ -45,7 +45,7 @@ Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítse az [Azure PowerShell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps), vagy az [Azure CLI-t](/cli/azure/install-azure-cli).
-* Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) létrehozása az Azure-ban
+* Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>A Service Fabric-fürtöt tartalmazó erőforráscsoport törlése
 A fürt és az összes általa használt erőforrás törlésének legegyszerűbb módja az erőforráscsoport törlése.
@@ -115,5 +115,5 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 Most, hogy elvégezte az oktatóanyagot, tekintse át a következőket:
 * Ismerje meg, hogyan vizsgálhat meg és kezelhet egy Service Fabric-fürtöt a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) használatával.
-* Ismerje meg, hogyan kell [javítani a Windows](service-fabric-patch-orchestration-application.md) vagy [javítani a Linux operációs rendszert](service-fabric-patch-orchestration-application-linux.md) a fürtcsomópontokon.
-* Ismerje meg, hogyan lehet összesíteni és összegyűjteni [Windows-fürtök](service-fabric-diagnostics-event-aggregation-wad.md) vagy [Linux-fürtök](service-fabric-diagnostics-event-aggregation-lad.md) eseményeit, és [beállítani a Log Analytics szolgáltatást](service-fabric-diagnostics-oms-setup.md) a fürtesemények monitorozására.
+* Ismerje meg, hogyan [a Windows operációs rendszer](service-fabric-patch-orchestration-application.md) a fürtcsomópontokat.
+* Ismerje meg, hogyan összesítheti és eseményeket gyűjtő [Windows-fürtök](service-fabric-diagnostics-event-aggregation-wad.md) és [Log Analytics beállítása](service-fabric-diagnostics-oms-setup.md) fürthöz kapcsolódó események figyelésére.

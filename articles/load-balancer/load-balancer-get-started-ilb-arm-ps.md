@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 36543bf50cb015993841267fdac61ed42297d27e
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 17753ba374475c19fee1a213654caf4a624088f8
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594372"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669907"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Belső terheléselosztó létrehozása az Azure PowerShell-modullal
 
@@ -60,7 +60,7 @@ Győződjön meg arról, hogy az Azure PowerShell-modul legújabb üzemi verzió
 
 Indítsa el az Azure Resource Manager PowerShell-modulját.
 
-```powershell
+```azurepowershell-interactive
 Connect-AzAccount
 ```
 
@@ -68,7 +68,7 @@ Connect-AzAccount
 
 Ellenőrizze az elérhető Azure-előfizetéseket.
 
-```powershell
+```azurepowershell-interactive
 Get-AzSubscription
 ```
 
@@ -78,7 +78,7 @@ Amikor a rendszer a hitelesítést kéri, adja meg a hitelesítő adatait.
 
 Válassza ki, hogy melyik Azure-előfizetését használja a terheléselosztó üzembe helyezéséhez.
 
-```powershell
+```azurepowershell-interactive
 Select-AzSubscription -Subscriptionid "GUID of subscription"
 ```
 
@@ -86,7 +86,7 @@ Select-AzSubscription -Subscriptionid "GUID of subscription"
 
 Hozzon létre egy új erőforráscsoportot a terheléselosztóhoz. Hagyja ki ezt a lépést, ha meglévő erőforráscsoportot használ.
 
-```powershell
+```azurepowershell-interactive
 New-AzResourceGroup -Name NRP-RG -location "West US"
 ```
 
@@ -98,13 +98,13 @@ Az előző példában létrehoztunk egy **NRP-RG** nevű erőforráscsoportot, a
 
 Hozzon létre egy alhálózatot a virtuális hálózat számára, és rendelje hozzá a **$backendSubnet** változóhoz.
 
-```powershell
+```azurepowershell-interactive
 $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
 ```
 
 Hozzon létre egy virtuális hálózatot.
 
-```powershell
+```azurepowershell-interactive
 $vnet= New-AzVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
 ```
 
@@ -118,7 +118,7 @@ Hozzon létre egy előtérbeli IP-címkészletet a bejövő forgalomhoz és egy 
 
 Hozzon létre egy előtérbeli IP-címkészletet a 10.0.2.5 magánhálózati IP-címmel a 10.0.2.0/24 alhálózathoz. Ez a cím a bejövő hálózati forgalom végpontja.
 
-```powershell
+```azurepowershell-interactive
 $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name LB-Frontend -PrivateIpAddress 10.0.2.5 -SubnetId $vnet.subnets[0].Id
 ```
 
@@ -143,7 +143,7 @@ A példa a következő négy szabályobjektumot hozza létre:
 * Állapotminta-szabály: A HealthProbe.aspx elérési út állapotát ellenőrzi.
 * Egy terheléselosztó-szabályt: Elosztja a nyilvános 80-as portra 80-as helyi porton a háttér-címkészletben levő összes bejövő forgalmat.
 
-```powershell
+```azurepowershell-interactive
 $inboundNATRule1= New-AzLoadBalancerInboundNatRuleConfig -Name "RDP1" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
 
 $inboundNATRule2= New-AzLoadBalancerInboundNatRuleConfig -Name "RDP2" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3442 -BackendPort 3389
@@ -157,7 +157,7 @@ $lbrule = New-AzLoadBalancerRuleConfig -Name "HTTP" -FrontendIpConfiguration $fr
 
 Hozza létre a terheléselosztót, és kombinálja a szabályobjektumokat (bejövő NAT RDP-hez, terheléselosztó és állapotminta):
 
-```powershell
+```azurepowershell-interactive
 $NRPLB = New-AzLoadBalancer -ResourceGroupName "NRP-RG" -Name "NRP-LB" -Location "West US" -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule1,$inboundNatRule2 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
 ```
 
@@ -169,7 +169,7 @@ Miután létrehozta a belső terheléselosztót, határozza meg azokat a hálóz
 
 Kérje le az erőforrásul szolgáló virtuális hálózatot és alhálózatot. Ezekkel az értékekkel hozhatók létre a hálózati adapterek:
 
-```powershell
+```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
 
 $backendSubnet = Get-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
@@ -177,7 +177,7 @@ $backendSubnet = Get-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNet
 
 Hozza létre az első hálózati adaptert **lb-nic1-be** néven. Rendelje az adaptert a terheléselosztó háttérkészletéhez. Társítsa az RDP első NAT-szabályát ezzel az NIC-vel:
 
-```powershell
+```azurepowershell-interactive
 $backendnic1= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic1-be -Location "West US" -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
 ```
 
@@ -185,7 +185,7 @@ $backendnic1= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic1-b
 
 Hozza létre a második hálózati adaptert **lb-nic2-be** néven. Rendelje a második adaptert ugyanahhoz a terheléselosztó háttérkészlethez, amelyhez az első adaptert rendelte. Társítsa a második NIC-t az RDP második NAT-szabályával:
 
-```powershell
+```azurepowershell-interactive
 $backendnic2= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-be -Location "West US" -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
 ```
 
@@ -253,7 +253,7 @@ A virtuális gép létrehozása után adja hozzá a hálózati adaptert.
 
 Tárolja a terheléselosztó-erőforrást egy változóban (ha még nem tette meg). Az **$lb** nevű változót használjuk. A szkriptben lévő attribútumértékekhez használja az előző lépésben létrehozott terheléselosztó-erőforrások neveit.
 
-```powershell
+```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
 ```
 
@@ -261,7 +261,7 @@ $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
 
 Tárolja a háttér-konfigurációt a **$backend** változóban.
 
-```powershell
+```azurepowershell-interactive
 $backend = Get-AzLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBalancer $lb
 ```
 
@@ -269,7 +269,7 @@ $backend = Get-AzLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBala
 
 Tárolja a hálózati adaptert egy másik változóban. Ez az adapter „A hálózati adapterek létrehozása, 1. lépés” című szakaszban jött létre. A **$nic1** nevű változót használjuk. Az előző példában használt hálózatiadapter-nevet használja.
 
-```powershell
+```azurepowershell-interactive
 $nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
 ```
 
@@ -277,7 +277,7 @@ $nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
 
 Módosítsa a hálózati adapter háttér-konfigurációját.
 
-```powershell
+```azurepowershell-interactive
 $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 ```
 
@@ -285,7 +285,7 @@ $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 
 Mentse a hálózati adapter objektumot.
 
-```powershell
+```azurepowershell-interactive
 Set-AzNetworkInterface -NetworkInterface $nic
 ```
 
@@ -297,7 +297,7 @@ Miután hozzáadta az adaptert a háttérkészlethez, a hálózati forgalom terh
 
 Rendelje hozzá a terheléselosztó objektumot (az előző példából) az **$slb** változóhoz a `Get-AzLoadBalancer` paranccsal:
 
-```powershell
+```azurepowershell-interactive
 $slb = Get-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 
@@ -305,7 +305,7 @@ $slb = Get-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 
 Adjon egy új bejövő NAT-szabályt egy meglévő terheléselosztóhoz. Az előtérkészlet 81-es portját és a háttérkészlet 8181-es portját használja:
 
-```powershell
+```azurepowershell-interactive
 $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81  -BackendPort 8181 -Protocol Tcp
 ```
 
@@ -313,7 +313,7 @@ $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfigura
 
 Mentse az új konfigurációt a `Set-AzureLoadBalancer` paranccsal:
 
-```powershell
+```azurepowershell-interactive
 $slb | Set-AzLoadBalancer
 ```
 
@@ -321,7 +321,7 @@ $slb | Set-AzLoadBalancer
 
 Törölje az **NRP-LB** terheléselosztót az **NRP-RG** erőforráscsoportból a `Remove-AzLoadBalancer` paranccsal:
 
-```powershell
+```azurepowershell-interactive
 Remove-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 

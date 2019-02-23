@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 7c12b34f6d735579326d4ccdd95e7831fbb777d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 17b1adae9b369df53d69949e8183cf31daf7e35f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181422"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674684"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
 <a name="Overview"></a>
@@ -205,7 +205,9 @@ Használata esetén [Auto-Swap](#Auto-Swap), bizonyos alkalmazásokhoz szükség
         </applicationInitialization>
     </system.webServer>
 
-Testre szabhatja a bemelegítési viselkedését egy vagy több, a következő [Alkalmazásbeállítások](https://github.com/MicrosoftDocs/azure-docs-pr/pull/web-sites-configure.md):
+Testreszabásáról további információkat a `applicationInitialization` elem, lásd: [leggyakoribb slot swap sikertelen, és hogyan javíthatók](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+
+Testre szabhatja a bemelegítési viselkedését egy vagy több, a következő [Alkalmazásbeállítások](web-sites-configure.md):
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: A ping paranccsal melegítési a hely elérési útja. Adja hozzá ennek az alkalmazásbeállításnak értékeként perjellel adnak meg egyéni elérési úttal, amely a kezdődik. Például: `/statuscheck`. Az alapértelmezett érték `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Érvényes HTTP-válaszkódot a bemelegítési művelethez. Adja hozzá ennek az alkalmazásbeállításnak a HTTP-kódok vesszővel tagolt listája. Például: `200,202` . A visszaadott állapotkód nem szerepel a listában, ha a melegítési és a Váltás műveletek le vannak állítva. Alapértelmezés szerint minden válaszkódot érvényesek.

@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 34d397412a6d461325465ccc5dd41a62d91c6fc5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 9a6afc4dfb25a2a5f6e778fbda877a93269a96eb
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872050"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673275"
 ---
 # <a name="quickstart-translator-speech-api-with-python"></a>Gyors útmutató: Translator Speech API a Pythonnal
 <a name="HOLTop"></a>
@@ -30,7 +31,7 @@ A kód futtatásához [Python 3.x](https://www.python.org/downloads/) szüksége
 
 Telepítenie kell a [websocket-client csomagot](https://pypi.python.org/pypi/websocket-client) a Pythonhoz.
 
-A „speak.wav” fájlnak ugyanabban a mappában kell lennie, mint az alábbi kódból fordított végrehajtható fájlnak. Ennek a .wav fájlnak standard PCM, 16 bites, 16 kHz-es, mono formátumúnak kell lennie. 
+A „speak.wav” fájlnak ugyanabban a mappában kell lennie, mint az alábbi kódból fordított végrehajtható fájlnak. Ennek a .wav fájlnak standard PCM, 16 bites, 16 kHz-es, mono formátumúnak kell lennie.
 
 Rendelkeznie kell egy [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) és a **Microsoft Translator Speech API-val**. Egy fizetős előfizetői kulcsra van szüksége az [Azure-irányítópultról](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
@@ -132,7 +133,7 @@ A „speak2.wav” fájl létrejötte sikeres eredményt jelent. Ez a fájl tart
 > [!div class="nextstepaction"]
 > [Translator Speech – oktatóanyag](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még
 
 [A Translator Speech áttekintése](../overview.md)
 [API-referencia](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

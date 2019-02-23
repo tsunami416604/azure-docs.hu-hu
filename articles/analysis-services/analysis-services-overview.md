@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 114dac10592213d3b2fdfff909913039b3dba344
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 53ce82a6e1180d4493e2d4014bf6e26e9bde2466
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429434"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731395"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -132,7 +132,7 @@ A teljes költség számos tényezőtől (például a választott régiótól, s
 
 ## <a name="built-on-sql-server-analysis-services"></a>Az SQL Server Analysis Servicesre épül
 
-Az Azure Analysis Services kompatibilis az SQL Server Analysis Services Enterprise Editionben már meglévő számos nagyszerű funkcióval. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és az ennél magasabb [kompatibilitási szinteken](analysis-services-compat-level.md). A táblázatos modellek olyan relációs modellezési szerkezetek (modell, táblák, oszlopok), amelyek táblázatos metaadatok objektumdefinícióiban vannak meghatározva a táblázatos modell parancsnyelvén (TMSL) és a táblázatos objektummodell (TOM) kódjában. Támogatja a partíciókat, a perspektívákat, a sorszintű biztonságot, a kétirányú kapcsolatokat és a fordításokat.* Többdimenziós modellek és a SharePoint rendszerhez készült PowerPivot *nem* támogatott az Azure Analysis Servicesben.
+Az Azure Analysis Services kompatibilis az SQL Server Analysis Services Enterprise Editionben már meglévő számos nagyszerű funkcióval. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és az ennél magasabb [kompatibilitási szinteken](analysis-services-compat-level.md). A táblázatos modellek olyan relációs modellezési szerkezetek (modell, táblák, oszlopok), amelyek táblázatos metaadatok objektumdefinícióiban vannak meghatározva a táblázatos modell parancsnyelvén (TMSL) és a táblázatos objektummodell (TOM) kódjában. Támogatja a partíciók, a perspektívák, a sorszintű biztonság, a kétirányú kapcsolatokat és a fordítások\*. Többdimenziós modellek és a SharePoint rendszerhez készült PowerPivot *nem* támogatott az Azure Analysis Servicesben.
 
 A táblázatos modelleket a memóriában tárolt és a DirectQuery módok egyaránt támogatják. A memóriában tárolt mód (alapértelmezett) táblázatos modelljei több adatforrás használatát is támogatják. Nagy mennyiségű adatok esetében ez a mód biztosítja a leggyorsabb lekérdezési választ, mivel a modell adatai nagymértékben tömörítettek, és a memóriában vannak gyorsítótárazva. Összetett adatkészletek és lekérdezések esetében szintén ez a mód biztosítja a legnagyobb rugalmasságot. A particionálás révén elérhetővé válik a növekményes betöltés, növelhető a párhuzamos folyamatkezelés mértéke, és csökkenthető a memóriahasználat. Ezen kívül olyan speciális adatmodellezési funkciók is támogatottak, mint például a számított táblázatok és az összes DAX-függvény. Az adatforrásokból származó, gyorsítótárazott adatok frissítéséhez a memóriában tárolt modelleket frissíteni kell (fel kell dolgozni). Az Azure egyszerű szolgáltatás támogatja, a felügyelet nélküli frissítési műveleteket a PowerShell-lel, TOM, a TMSL és a többi rugalmasabbá gondoskodik róla, hogy a modell adatait mindig naprakész. 
 
@@ -203,7 +203,7 @@ Felügyelheti kiszolgálóit és modelladatbázisait az [SQL Server Management S
 
 ### <a name="powershell"></a>PowerShell
 
-Az olyan kiszolgálóerőforrás-kezelési feladatok, mint például a kiszolgálói erőforrások létrehozása, a kiszolgálói műveletek felfüggesztése vagy folytatása, illetve a szolgáltatásszint módosítása Azure Resource Manager- (AzureRM-) parancsmagokkal történik. Az olyan egyéb adatbázis-kezelési feladatok, mint például a szerepkörtagok hozzáadása vagy eltávolítása, illetve a TMSL-szkriptek feldolgozása vagy futtatása az SqlServer modul parancsmagjait használják. További információ: [Az Azure Analysis Services kezelése a PowerShell-lel](analysis-services-powershell.md).
+Kiszolgáló erőforrás felügyeleti feladatokat, mint a kiszolgáló erőforrásainak létrehozása, felfüggesztése vagy folytatása kiszolgálói műveletek vagy módosítása a szolgáltatási szint (réteg) az Azure PowerShell-parancsmag használatával. Az olyan egyéb adatbázis-kezelési feladatok, mint például a szerepkörtagok hozzáadása vagy eltávolítása, illetve a TMSL-szkriptek feldolgozása vagy futtatása az SqlServer modul parancsmagjait használják. További információ: [Az Azure Analysis Services kezelése a PowerShell-lel](analysis-services-powershell.md).
 
 ### <a name="object-model-and-scripting"></a>Objektummodell és parancsprogramok használata
 

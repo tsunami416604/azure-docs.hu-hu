@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: cc4893837feeec6116750a7e37e7621af11ab0a4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 2770c6a31f0117b96e08eb8a03986f37ebdb7098
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453919"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733741"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az adatok itt az Azure-beli virtuális hálózatok kezdő: [Az Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -27,6 +27,8 @@ Az Azure API Management is üzembe helyezhetők a virtuális hálózaton (VNET),
 
 > [!NOTE]
 > Az Azure API Management támogatja a klasszikus és Azure Resource Manager virtuális hálózatok.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
@@ -85,9 +87,9 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
 ## <a name="enable-vnet-powershell"> </a>PowerShell-parancsmagok használatával virtuális hálózatok közötti kapcsolat engedélyezése
 Is engedélyezheti a PowerShell-parancsmagok használatával virtuális hálózatok közötti kapcsolat
 
-* **Hozzon létre egy virtuális hálózaton belül egy API Management szolgáltatás**: A parancsmag [New-azurermapimanagement parancsmagok](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) egy virtuális hálózaton belül az Azure API Management szolgáltatás létrehozása.
+* **Hozzon létre egy virtuális hálózaton belül egy API Management szolgáltatás**: A parancsmag [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) egy virtuális hálózaton belül az Azure API Management szolgáltatás létrehozása.
 
-* **Egy meglévő, egy virtuális hálózaton belül az API Management szolgáltatás üzembe helyezése**: A parancsmag [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) áthelyezése egy meglévő Azure API Management szolgáltatást egy virtuális hálózaton belül.
+* **Egy meglévő, egy virtuális hálózaton belül az API Management szolgáltatás üzembe helyezése**: A parancsmag [Update-AzApiManagementDeployment](/powershell/module/az.apimanagement/update-azapimanagementdeployment) áthelyezése egy meglévő Azure API Management szolgáltatást egy virtuális hálózaton belül.
 
 ## <a name="connect-vnet"> </a>Csatlakozás egy virtuális hálózatban lévő üzemeltetett webes szolgáltatáshoz
 Miután az API Management szolgáltatás a virtuális hálózathoz van csatlakoztatva, benne a háttérszolgáltatásokat fér hozzá semmiben nem különbözik nyilvános szolgáltatásokhoz való hozzáférését. Csak írja be a helyi IP-cím vagy a gazdagép neve (Ha a virtuális hálózat DNS-kiszolgáló van konfigurálva), a webszolgáltatás a **webszolgáltatás URL-címe** mezőt egy új API létrehozásakor, vagy egy meglévőt szerkeszt.

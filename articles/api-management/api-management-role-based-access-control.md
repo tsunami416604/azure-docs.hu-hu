@@ -1,6 +1,6 @@
 ---
-title: Szerepköralapú hozzáférés-vezérlés használata az Azure API Management |} Microsoft Docs
-description: 'Útmutató: a beépített szerepkörök használatával, és hozzon létre egyéni szerepkörök az Azure API Management'
+title: Szerepköralapú hozzáférés-vezérlés használata az Azure API Management |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja a beépített szerepkörök, és egyéni szerepkörök létrehozása az Azure API Management szolgáltatásban
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,42 +14,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: b16bd5b93eda0fcb0c0c9ff96f86efc866abf798
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: d2d62dea683d3e42411d526fe002596e6473b4a9
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294479"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736668"
 ---
-# <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Szerepköralapú hozzáférés-vezérlés használata az Azure API Management
-Az Azure API Management támaszkodik a átruházásához hozzáférés-vezérlés (RBAC) engedélyezéséhez a részletes hozzáféréskezelést az API Management-szolgáltatások és entitások (például API-k és házirendek). Ez a cikk áttekintést nyújt a beépített és egyéni szerepkörök az API Management. További információ a hozzáférés-kezelés az Azure-portálon: [Ismerkedés az Azure-portálon kezelési](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
+# <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Szerepköralapú hozzáférés-vezérlés használata az Azure API Management szolgáltatásban
+Az Azure API Management az Azure szerepköralapú hozzáférés vezérlése (RBAC) ahhoz, hogy az API Management-szolgáltatások és entitások (például API-k és házirendek) részletes hozzáférés-vezérlést támaszkodik. Ez a cikk áttekintést, a beépített és egyéni szerepkörök az API Management szolgáltatásban. A hozzáférés-kezelés az Azure Portalon további információkért lásd: [hozzáférés-kezelés az Azure portal – első lépések](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="built-in-roles"></a>Beépített szerepkörök
-Az API Management jelenleg három beépített szerepkörök biztosít, és felveszi a közeljövőben két további szerepköröket. Ezeket a szerepköröket, különböző hatókör, beleértve a előfizetés, erőforráscsoport és az egyes API Management-példány rendelhetők hozzá. Például, ha az "Azure API Management szolgáltatás olvasó" szerepkör hozzárendelése egy felhasználóhoz, az erőforráscsoport szintjén, majd a felhasználó rendelkezik olvasási hozzáférés belül az erőforráscsoport összes API Management-példányt. 
+Az API Management jelenleg három beépített szerepkört biztosít, és felveszi a közeljövőben két további szerepkört. Ezekkel a szerepkörökkel különféle hatókörökben, beleértve az előfizetés, erőforráscsoport és az API Management-példány is hozzárendelhető. Például ha a "Az Azure API Management szolgáltatás olvasói" szerepkört rendel egy felhasználó, az erőforráscsoport-szinten, majd a felhasználó rendelkezik olvasási hozzáférést minden API Management-példány az erőforráscsoportban. 
 
-A következő táblázat a beépített szerepkörök rövid leírása. Ezeket a szerepköröket rendelhet az Azure-portálon vagy más eszközeit, beleértve az Azure használatával [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli), és [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). További beépített szerepkörök társításával kapcsolatos információkért lásd: [az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése a szerepkör-hozzárendelések segítségével](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+A következő táblázat a beépített szerepkörök rövid leírása. Ezeket a szerepköröket rendelhet az Azure Portalon vagy más eszközök, köztük az Azure használatával [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [Azure CLI-vel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli), és [REST API-val](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Beépített szerepkörök hozzárendelése kapcsolatos részletekért lásd: [az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése a szerepkör-hozzárendelésekkel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
-| Szerepkör          | Olvasási hozzáférés<sup>[1]</sup> | Írási<sup>[2]</sup> | Szolgáltatás létrehozása, törlés, a méretezés, a VPN- és az egyéni tartomány beállítása | Az örökölt publisher portálhoz való hozzáférés | Leírás
+| Szerepkör          | Olvasási hozzáférés<sup>[1]</sup> | Írási hozzáférés<sup>: [2]</sup> | Service creation, deletion, scaling, VPN, and custom domain configuration | Az örökölt publisher Portalon való hozzáférés | Leírás
 | ------------- | ---- | ---- | ---- | ---- | ---- | ---- |
-| Az Azure API Management szolgáltatás közreműködő | ✓ | ✓ | ✓ | ✓ | Felügyelői. Az API Management-szolgáltatások és entitások (például API-k és házirendek) teljes CRUD hozzáféréssel rendelkezik. Az örökölt publisher portal hozzáférése van. |
-| Az Azure API Management szolgáltatás olvasó | ✓ | | || Az API Management-szolgáltatások és entitások olvasási hozzáférése van. |
-| Az Azure API Management szolgáltatást üzemeltető | ✓ | | ✓ | | Kezelheti az API Management-szolgáltatások, de nem entitás.|
-| Az Azure API Management Service-szerkesztő<sup>*</sup> | ✓ | ✓ | |  | Az API Management entitások, de nem szolgáltatások kezelheti.|
-| Az Azure API Management tartalomkezelő<sup>*</sup> | ✓ | | | ✓ | Kezelheti a fejlesztői portálján. Csak olvasási hozzáféréssel szolgáltatásokhoz és entitások.|
+| Az Azure API Management szolgáltatás Közreműködője | ✓ | ✓ | ✓ | ✓ | Felügyelői. Entitások (például API-k és házirendek) és az API Management szolgáltatásainak teljes CRUD-hozzáféréssel rendelkezik. Az örökölt közzétevői portálon hozzáféréssel rendelkezik. |
+| Az Azure API Management szolgáltatás olvasói | ✓ | | || API Management-szolgáltatások és entitásokat csak olvasási hozzáféréssel rendelkezik. |
+| Az Azure API Management szolgáltatás operátori | ✓ | | ✓ | | API Management-szolgáltatások, de nem entitások kezelheti.|
+| Az Azure API Management szolgáltatás szerkesztő<sup>*</sup> | ✓ | ✓ | |  | Felügyelheti az API Management entitásokat, de nem szolgáltatások.|
+| Az Azure API Management tartalomkezelő<sup>*</sup> | ✓ | | | ✓ | A fejlesztői portálon kezelheti. Csak olvasási hozzáféréssel a szolgáltatásokhoz és entitások.|
 
 <sup>[1] olvasási hozzáférés az API Management-szolgáltatások és entitások (például API-k és házirendek).</sup>
 
-<sup>[2] írási hozzáféréssel az API Management-szolgáltatások és entitások, kivéve a következő műveleteket: példány létrehozása, törlése és a méretezés; VPN-konfiguráció; és egyéni tartomány beállítása.</sup>
+<sup>[2] írási hozzáférés az API Management-szolgáltatások és entitások kivételével a következő műveleteket:-példány létrehozását, törlését és skálázásával; VPN-konfiguráció; és az egyéni tartomány beállítása.</sup>
 
-<sup>\* A szolgáltatás szerkesztő szerepkör után azt át a rendszergazda felhasználói felület a meglévő publisher portálon az Azure-portálon lesz elérhető. Tartalomkezelő szerepkör az csak magában foglalja a fejlesztői portálján felügyeletével kapcsolatos funkciók átkerült a közzétevő portal után lesz elérhető.</sup>  
+<sup>\* A Service Editor szerepkör után telepítjük át a rendszergazdai felhasználói felület a meglévő közzétevő portálról az Azure Portalra lesz elérhető. Tartalomkezelő szerepkör után a kiadói portál van újratervezhetők csak tartalmazza a fejlesztői portál felügyeletével kapcsolatos funkciók lesz elérhető.</sup>  
 
 ## <a name="custom-roles"></a>Egyéni szerepkörök
-Ha az adott igényeknek a beépített szerepkörök egyike, egyéni szerepkörök arra, hogy részletesebb access management az API Management entitásokat is létrehozható. Például létrehozhat egy egyéni biztonsági szerepkört, amely az API Management szolgáltatásnak olvasási hozzáféréssel rendelkezik, de csak egy adott API írási hozzáféréssel. Egyéni szerepkörök kapcsolatos további információkért lásd: [egyéni szerepkörök az Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
+Ha a beépített szerepkörök egyik sem felel meg a saját különleges igényei, egyéni szerepkörök biztosít az API Management-entitások a részletes hozzáférés-kezelés hozható létre. Ha például egy egyéni biztonsági szerepkört, amely egy API Management-szolgáltatás csak olvasási hozzáféréssel rendelkezik, de csak egy adott API írási hozzáféréssel is létrehozhat. Egyéni szerepkörökkel kapcsolatos további információkért lásd: [egyéni szerepkörök az Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
 
-Amikor létrehoz egy egyéni biztonsági szerepkört, célszerűbb a beépített szerepkörök egyikével. Adja hozzá az attribútumok szerkesztése **műveletek**, **NotActions**, vagy **AssignableScopes**, és mentse a módosításokat egy új szerepkörként. Az alábbi példában az "Azure API Management szolgáltatás olvasó" szerepkör kezdődik, és létrehoz egy egyéni biztonsági szerepkört nevű "Számológép API szerkesztő." Az egyéni biztonsági szerepkört rendelhet egy adott API-t. Ezért ezt a szerepkört csak az adott API hozzáférése van. 
+Amikor létrehoz egy egyéni biztonsági szerepkört, célszerűbb a kezdéshez válasszon egyet a beépített szerepkörök. Adja hozzá az attribútumok szerkesztéséhez **műveletek**, **NotActions**, vagy **AssignableScopes**, és mentse a módosításokat, egy új szerepkör. Az alábbi példa az "Azure API Management szolgáltatás olvasói" szerepkörrel rendelkező kezdődik, és létrehoz egy egyéni szerepkört, úgynevezett "Számológép API-szerkesztő." Az egyéni szerepkör rendelhet egy adott API-t. Ennek következtében ezt a szerepkört csak az API hozzáféréssel rendelkezik. 
 
 ```
-$role = Get-AzureRmRoleDefinition "API Management Service Reader Role"
+$role = Get-AzRoleDefinition "API Management Service Reader Role"
 $role.Id = $null
 $role.Name = 'Calculator API Contributor'
 $role.Description = 'Has read access to Contoso APIM instance and write access to the Calculator API.'
@@ -57,11 +59,11 @@ $role.Actions.Add('Microsoft.ApiManagement/service/apis/write')
 $role.Actions.Add('Microsoft.ApiManagement/service/apis/*/write')
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add('/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.ApiManagement/service/<service name>/apis/<api ID>')
-New-AzureRmRoleDefinition -Role $role
-New-AzureRmRoleAssignment -ObjectId <object ID of the user account> -RoleDefinitionName 'Calculator API Contributor' -Scope '/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.ApiManagement/service/<service name>/apis/<api ID>'
+New-AzRoleDefinition -Role $role
+New-AzRoleAssignment -ObjectId <object ID of the user account> -RoleDefinitionName 'Calculator API Contributor' -Scope '/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.ApiManagement/service/<service name>/apis/<api ID>'
 ```
 
-A [Azure Resource Manager erőforrás-szolgáltatói műveletekhez](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement) a cikk az engedélyeket, az API-felügyeleti szinten engedélyezhetők listáját tartalmazza.
+A [Azure Resource Manager erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement) cikk, amely az API Management szinten is megadható engedélyeket listáját tartalmazza.
 
 ## <a name="video"></a>Videó
 
@@ -72,9 +74,9 @@ A [Azure Resource Manager erőforrás-szolgáltatói műveletekhez](../role-base
 
 ## <a name="next-steps"></a>További lépések
 
-Szerepköralapú hozzáférés-vezérlés az Azure-ban kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Szerepköralapú hozzáférés-vezérlés az Azure-ban kapcsolatos további információkért tekintse meg a következő cikkeket:
   * [Bevezetés a hozzáférés-kezelés Azure Portalon történő használatába](../role-based-access-control/overview.md)
   * [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../role-based-access-control/role-assignments-portal.md)
-  * [Egyéni szerepkörök az Azure RBAC](../role-based-access-control/custom-roles.md)
-  * [Az Azure Resource Manager erőforrás-szolgáltatói műveletekhez](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)
+  * [Egyéni szerepkörök az Azure RBAC-ben](../role-based-access-control/custom-roles.md)
+  * [Az Azure Resource Manager erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)
 

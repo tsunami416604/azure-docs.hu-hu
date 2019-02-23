@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: a919d10bbb7def8f81e68d95c03d95309483df59
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c8cfa0174d3e3300bdc3cfbc68ca416d9b736300
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210383"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674905"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti a Service Fabric-fürtöt, amely testre szabható a különböző fabric beállításait. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. További információkért lásd: [egy Azure-fürtön konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén, testre szabható beállítások frissítése a *ClusterConfig.json* fájl- és a egy konfigurálási frissítse a fürtön. További információkért lásd: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -122,13 +122,13 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |AppDiagnosticStoreAccessRequiresImpersonation |Bool, alapértelmezett érték az IGAZ | Dinamikus |E megszemélyesítést akkor fér hozzá a diagnosztikai tárolja az alkalmazás nevében szükség. |
 |AppEtwTraceDeletionAgeInDays |Int, alapértelmezett érték 3 | Dinamikus |Ennyi nap elteltével töröljük a régi tartalmazó alkalmazás ETW-nyomkövetések ETL-fájlok. |
 |ApplicationLogsFormatVersion |int, alapértelmezett érték 0 | Dinamikus |Alkalmazás verzióját naplók formátuma. Támogatott értékei a következők: 0 és 1. 1-es verzió fut, 0 az ETW-esemény rekordjára további mezőket tartalmaz. |
-|ClusterId |Karakterlánc | Dinamikus |A fürt egyedi azonosítója. Ez a fürt létrehozásakor jön létre. |
-|ConsumerInstances |Karakterlánc | Dinamikus |A közvetlen gyorsítótár-ELÉRÉS fogyasztói példányok listáját. |
+|ClusterId |String | Dinamikus |A fürt egyedi azonosítója. Ez a fürt létrehozásakor jön létre. |
+|ConsumerInstances |String | Dinamikus |A közvetlen gyorsítótár-ELÉRÉS fogyasztói példányok listáját. |
 |DiskFullSafetySpaceInMB |Int, alapértelmezett érték az 1024 | Dinamikus |Fennmaradó szabad lemezterület (MB) megvédeni a közvetlen gyorsítótár-ELÉRÉS használja. |
 |EnableCircularTraceSession |Bool, alapértelmezett érték a False (hamis) | Statikus |A jelző azt jelzi, hogy használják-e körkörös nyomkövetési munkamenetek. |
 |EnableTelemetry |Bool, alapértelmezett érték az IGAZ | Dinamikus |Ez történik, engedélyezni vagy letiltani a telemetriai adatokat. |
 |MaxDiskQuotaInMB |Int, az alapértelmezett érték 65536 értékű | Dinamikus |Disková kvóta v MB-ot a Windows Fabric naplófájlokat. |
-|ProducerInstances |Karakterlánc | Dinamikus |A közvetlen gyorsítótár-ELÉRÉS előállító példányok listáját. |
+|ProducerInstances |String | Dinamikus |A közvetlen gyorsítótár-ELÉRÉS előállító példányok listáját. |
 
 ## <a name="dnsservice"></a>Nincs
 | **A paraméter** | **Megengedett értékek** |**Szabályzat frissítése**| **Útmutató vagy rövid leírása** |
@@ -280,7 +280,8 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="healthmanager"></a>HealthManager
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-| EnableApplicationTypeHealthEvaluation |Bool, alapértelmezett érték a False (hamis) |Statikus|A fürt állapotának kiértékelési házirend: engedélyezése egy alkalmazás típus állapotának kiértékelését. |
+|EnableApplicationTypeHealthEvaluation |Bool, alapértelmezett érték a False (hamis) |Statikus|A fürt állapotának kiértékelési házirend: engedélyezése egy alkalmazás típus állapotának kiértékelését. |
+|MaxSuggestedNumberOfEntityHealthReports|Int, alapértelmezett érték 500 |Dinamikus|Egészségügyi maximális számának jelentések, egy entitás aggodalmai vannak a figyelő állapota reporting logikai kiváltása előtt rendelkezhet. Minden egyes állapotfigyelő entitás kellene rendszerállapot-jelentések viszonylag kis számú. Ha ez a szám; túllépik a jelentések száma Előfordulhat, hogy a figyelő megvalósítási problémái. Az entitás túl sok jelentéseket meg van jelölve egy figyelmeztetés állapotjelentés keresztül az entitás kiértékelésekor. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
@@ -451,7 +452,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|Számlálók |Karakterlánc | Dinamikus |Gyűjtendő teljesítményszámlálókat vesszővel tagolt listája. |
+|Számlálók |String | Dinamikus |Gyűjtendő teljesítményszámlálókat vesszővel tagolt listája. |
 |IsEnabled |Bool, alapértelmezett érték az IGAZ | Dinamikus |Jelző azt jelzi, hogy engedélyezve van-e a helyi csomóponton számláló teljesítménygyűjtés. |
 |MaxCounterBinaryFileSizeInMB |int, alapértelmezett értéke 1 | Dinamikus |Maximális mérete (MB) számláló teljesítménye bináris fájl esetében. |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int, alapértelmezett érték 10 | Dinamikus |Maximális időköz (másodperc) után, amely egy új teljesítmény számláló bináris fájl jön létre. |
@@ -756,10 +757,10 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 | --- | --- | --- | --- |
 |ContainerNetworkName|sztring, alapértelmezett érték a ""| Statikus |A hálózat nevét, amikor a tároló hálózat beállítása.|
 |ContainerNetworkSetup|bool, alapértelmezett érték a hamis| Statikus |Hozza létre a tároló hálózatot kell-e.|
-|FabricDataRoot |Karakterlánc | Nem engedélyezett |A Service Fabric-adatok gyökérkönyvtára. Alapértelmezett Azure d:\svcfab érték |
-|FabricLogRoot |Karakterlánc | Nem engedélyezett |Service fabric log gyökérkönyvtára. Ez az, ahol SF naplók és nyomkövetések kerülnek. |
+|FabricDataRoot |String | Nem engedélyezett |A Service Fabric-adatok gyökérkönyvtára. Alapértelmezett Azure d:\svcfab érték |
+|FabricLogRoot |String | Nem engedélyezett |Service fabric log gyökérkönyvtára. Ez az, ahol SF naplók és nyomkövetések kerülnek. |
 |NodesToBeRemoved|sztring, alapértelmezett érték a ""| Dinamikus |A csomópontok, amely konfigurációs frissítés részeként el kell távolítani. (Csak az önálló verziója telepítéseinek)|
-|ServiceRunAsAccountName |Karakterlánc | Nem engedélyezett |A fiók neve, a fabric host szolgáltatás futtatására. |
+|ServiceRunAsAccountName |String | Nem engedélyezett |A fiók neve, a fabric host szolgáltatás futtatására. |
 |SkipContainerNetworkResetOnReboot|bool, alapértelmezett érték a hamis|Nem engedélyezett|Hogy elmaradjon-e visszaállítása folyamatban; tároló hálózati újraindításkor.|
 |SkipFirewallConfiguration |Bool, alapértelmezett érték a False (hamis) | Nem engedélyezett |Itt adhatja meg, ha a tűzfal beállításainak meg kell adnia, a rendszer, vagy nem. Ez vonatkozik, csak akkor, ha a windows tűzfalat használja. Ha külső gyártótól származó tűzfalak használ, majd nyissa meg a portokat, a rendszer és alkalmazások általi használatát |
 

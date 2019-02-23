@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 02/22/2019
 ms.author: shlo
-ms.openlocfilehash: 4188fb413cc1001b6e4813fe69518a016c8c0656
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ca77fa092e41534e0f18323014c9cea583c19758
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354263"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671658"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység az Azure Data Factoryban
 GetMetadata tevékenység is lehet lekérni **metaadatok** minden adat, az Azure Data Factoryban. Ez a tevékenység a következő esetekben használhatók:
@@ -45,14 +45,15 @@ A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, é
 | Összekötő/metaadatok | Elemnév<br>(fájlok/mappák) | itemType<br>(fájlok/mappák) | méret<br>(fájl) | létrehozva<br>(fájlok/mappák) | módosítás dátuma<br>(fájlok/mappák) |childItems<br>(mappa) |contentMD5<br>(fájl) | struktúra<br/>(fájl) | Oszlopszám<br>(fájl) | Létezik<br>(fájlok/mappák) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| Google Cloud Storage | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | Azure-blob | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
-| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| 1. generációs Azure Data Lake Storage | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | Fájlrendszer | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- Az Amazon S3 a `lastModified` bucket és a kulcs, de nem virtuális mappában; vonatkozik; és a `exists` bucket és a kulcsot, de nem előtag vagy virtuális mappa vonatkozik.
+- Az Amazon S3 és a Google Sloud Storage a `lastModified` bucket és a kulcs, de nem virtuális mappában; vonatkozik; és a `exists` bucket és a kulcsot, de nem előtag vagy virtuális mappa vonatkozik.
 - Az Azure Blob a `lastModified` tároló és a blob, de nem virtuális mappa vonatkozik.
 
 **Relációs adatbázis:**

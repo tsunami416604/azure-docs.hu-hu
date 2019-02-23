@@ -1,5 +1,5 @@
 ---
-title: Adja hozzá a Google identitásszolgáltatójaként az Azure Active Directory B2B |} A Microsoft Docs
+title: Google hozzáadása a B2B - Azure Active Directory egy identitás-szolgáltatóként |} A Microsoft Docs
 description: A Google-lel, jelentkezzen be a saját Gmail-fiókba az Azure AD-alkalmazások vendég felhasználók összevonása
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d565d2215ac84d42b6682f4c4a52dd87278a70a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 283cf8d13260531a12fa6c860d1a4e7b6207d22e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206837"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674616"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Adja hozzá a Google B2B vendégfelhasználó Identitásszolgáltatóként
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 0b033121890ea8c347642f64922113505f39efc9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 474360bfa874298b35b1e7c754545ff576013d50
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436535"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734744"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Hozzon létre egy IoT hubon az Azure Resource Manager-sablon (PowerShell)
 
@@ -23,6 +23,8 @@ Használhatja az Azure Resource Manager hozhat létre, és az Azure IoT hubs pro
 
 > [!NOTE]
 > Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Az Azure Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti az Azure Resource Manager üzemi modell használatával.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
@@ -37,33 +39,33 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 Adja meg egy PowerShell-parancssort, jelentkezzen be az Azure-előfizetéshez az alábbi parancsot:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Ha több Azure-előfizetéssel rendelkezik, az Azure-bA bejelentkezik hozzáférést, az összes Azure-előfizetések a hitelesítő adatokhoz tartozó. Használja a következő parancs használható elérhető Azure-előfizetések listázásához:
 
 ```powershell
-Get-AzureRMSubscription
+Get-AzSubscription
 ```
 
 Az alábbi parancs segítségével válassza ki azt az előfizetést, amelyet az IoT Hub létrehozásához szükséges parancsok futtatásához kíván használni. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
 
 ```powershell
-Select-AzureRMSubscription `
+Select-AzSubscription `
     -SubscriptionName "{your subscription name}"
 ```
 
 A következő parancsok segítségével Fedezze fel, ahol üzembe egy IoT hubot és a jelenleg támogatott API-verzió:
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).Locations
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).ApiVersions
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).Locations
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).ApiVersions
 ```
 
 Hozzon létre egy erőforráscsoportot, amelybe az IoT hub az IoT hub a támogatott helyek a következő paranccsal tartalmaz. Ez a példa létrehoz egy nevű erőforráscsoportot **MyIoTRG1**:
 
 ```powershell
-New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
+New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
 ## <a name="submit-a-template-to-create-an-iot-hub"></a>IoT hub létrehozása sablon beküldése
@@ -127,16 +129,16 @@ Egy JSON-sablon használatával hozzon létre egy IoT hubot az erőforráscsopor
 3. Futtassa a következő parancsot az új IoT hub, az IoT hub nevére átadott paraméterként üzembe helyezéséhez. Ebben a példában az IoT hub nevére van `abcmyiothub`. Az IoT hub nevére globálisan egyedinek kell lennie:
 
     ```powershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName abcmyiothub
+    New-AzResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName abcmyiothub
     ```
   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 4. A kimenet megjeleníti a kulcsokat a létrehozott IoT hub.
 
-5. Annak ellenőrzéséhez, hogy az alkalmazás hozzá az új IoT hubot, látogasson el a [az Azure portal] [ lnk-azure-portal] és erőforrások listájának megtekintése. Másik megoldásként használhatja a **Get-AzureRmResource** PowerShell-parancsmagot.
+5. Annak ellenőrzéséhez, hogy az alkalmazás hozzá az új IoT hubot, látogasson el a [az Azure portal] [ lnk-azure-portal] és erőforrások listájának megtekintése. Másik megoldásként használhatja a **Get-AzResource** PowerShell-parancsmagot.
 
 > [!NOTE]
-> Ez a példa az alkalmazás hozzáadása egy S1 Standard IoT hubot, amelyhez számítunk fel díjat. Törölheti az IoT hubon keresztül a [az Azure portal] [ lnk-azure-portal] vagy a **Remove-AzureRmResource** PowerShell-parancsmagot, ha elkészült.
+> Ez a példa az alkalmazás hozzáadása egy S1 Standard IoT hubot, amelyhez számítunk fel díjat. Törölheti az IoT hubon keresztül a [az Azure portal] [ lnk-azure-portal] vagy a **Remove-AzResource** PowerShell-parancsmagot, ha elkészült.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -159,7 +161,7 @@ Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: /powershell/azure/azurerm/install-azurerm-ps
+[lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
 [lnk-powershell-arm]: ../azure-resource-manager/powershell-azure-resource-manager.md

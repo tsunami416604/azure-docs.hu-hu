@@ -1,6 +1,6 @@
 ---
-title: Kezelheti a programok és vezérlők az Azure ad hozzáférési felülvizsgálatokkal |} A Microsoft Docs
-description: A szervezet Azure Active Directory hozzáférési felülvizsgálatok vezérlőket, és minden egyes szabályozási, kockázatkezelési és megfelelőségi-kezdeményezéshez az további programokat hozhat létre.
+title: Programok és vezérlők kezelése az Azure AD hozzáférési felülvizsgálatokkal |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre minden egyes szabályozási, kockázatkezelési és megfelelőségi-kezdeményezéshez az további programokat a szervezet Azure Active Directory hozzáférési felülvizsgálatok másként vezérlőinek vizualizációkká.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78f4c978a04a7589e71ba39676e06ca5cc37f579
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0ea210c79833ad9e070253a9511cae539730a8d5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170669"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731412"
 ---
-# <a name="manage-programs-and-their-controls"></a>Programok és vezérlőik kezelése 
+# <a name="manage-programs-and-controls-for-azure-ad-access-reviews"></a>Programok és vezérlők kezelése az Azure AD hozzáférési felülvizsgálatok
 
 Az Azure Active Directory (Azure AD) csoport tagjai és alkalmazás-hozzáférés hozzáférési felülvizsgálatai tartalmazza. Ezekben a példákban a vezérlőelemek győződjön meg arról, ki férhet hozzá a szervezet csoporttagságot és az alkalmazások a felügyeletet. Szervezet ezek a vezérlők segítségével hatékonyan oldja meg a szabályozási, kockázatkezelési és megfelelőségi követelmények.
 
@@ -38,5 +38,5 @@ Ha már nincs szüksége egy programot, és nem kell minden olyan vezérlőeleme
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hozzáférési felülvizsgálat létrehozása egy csoport tagjai számára vagy egy alkalmazáshoz való hozzáférés céljából](create-access-review.md)
-- [Hozzáférési felülvizsgálat eredményeinek beolvasása](retrieve-access-review.md)
+- [Csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat létrehozása](create-access-review.md)
+- [A csoportok és alkalmazások a hozzáférési felülvizsgálatok eredményeinek beolvasása](retrieve-access-review.md)

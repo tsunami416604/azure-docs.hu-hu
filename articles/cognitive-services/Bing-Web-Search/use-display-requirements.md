@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 25636cad514df18a289c9c81ea95bc53e6ec203c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861323"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738725"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API – követelmények használata és megjelenítése
 
@@ -34,7 +34,7 @@ Bármely megvalósítása a tartalom és a kapcsolódó információkat a követ
 ## <a name="definitions"></a>Meghatározások
 
 
-|Kifejezés  |Leírás  |
+|Időtartam  |Leírás  |
 |---------|---------|
 |Válasz     | Az eredmények kategória választ adja vissza. Például a Bing Web Search API válaszára belefoglalhatja válaszokat a weblap eredményeket, kép, videó, vizualizációt és hírek kategóriáit. |
 |Válasz     | Bármely és minden válaszokat és kapcsolódó adatait egyetlen keresési API-hívással adott válaszként kapott. |
@@ -143,7 +143,7 @@ Hogy előfordulhat, hogy biztonságosan szabályozhatja kiszolgálón egy felhas
 
 Minden alkalommal, amikor őrzi, eredményeket egy adott felhasználó nem commingled az eredmények egy másik felhasználó. Azt jelenti az eredményeket a minden felhasználó őrződnek meg kell, és külön-külön tartalmazott.
 
-### <a name="general"></a>Általános 
+### <a name="general"></a>Általános kérdések 
 
 A megőrzött eredmények összes bemutatása:
 

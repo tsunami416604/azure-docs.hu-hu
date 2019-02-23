@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f3f8cf88268498d20651eab40eb655313180cadc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a5499826c06f5f8f5e5db91badf134befa44c9d0
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203199"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738232"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>A Service Fabric fürterőforrás-kezelő bemutatása
 Hagyományosan a IT-rendszereit és online szolgáltatások kezelésére hivatott adott fizikai vagy virtuális gépek dedikálni ezeket adott szolgáltatások vagy a rendszer. Szolgáltatások rétegek szerint lettek tervezésnek. A "webes" réteg és a egy "adatok" vagy "tároló" réteget lenne. Alkalmazások kellene egy üzenetkezelési szinttel, ahol kérelmek érkezett be és ki, valamint dedikált gyorsítótár-csoportokon. Minden szintet vagy a számítási feladat volt dedikált, meghatározott gépek: az adatbázis van kijelölve, a webkiszolgálók egy néhány néhány gépek. Ha egy adott típusú számítási feladatok miatt az volt a gépek futtassa túl gyakori elérésű, majd a további gépek ugyanazt a konfigurációt az adott réteg hozzáadott. Azonban nem minden munkaterhelésről így könnyen sikerült terjeszthető ki – különösen az adatréteg-cserélje általában a nagyobb gépek rendelkező gépek. Egyszerű. Ha egy gép elindítása nem sikerült, mindaddig, amíg a gép sikerült visszaállítani a kisebb kapacitással futott, hogy a teljes alkalmazás részét. Továbbra is könnyen (Ha ez nem feltétlenül szórakoztató).

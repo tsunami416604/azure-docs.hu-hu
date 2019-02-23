@@ -7,19 +7,19 @@ author: tylermsft
 manager: jeanpaul.connock
 editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/12/2019
+ms.date: 02/22/2019
 ms.author: twhitney
-ms.openlocfilehash: e7f0219919fe0569633cc85b89a1a91b1704b269
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9e542143810745712fb148e0b5ebe126cc8a93bf
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114824"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727880"
 ---
 # <a name="working-with-reliable-collections"></a>A Reliable Collections használata
 A Service Fabric a .NET-fejlesztők számára a Reliable Collections-n keresztül elérhető állapot-nyilvántartó programozási modellt biztosít. Pontosabban a Service Fabric megbízható szótárban és megbízható várólista osztályokat biztosít. Ha használja ezeket az osztályokat, az állapot van particionálva (a méretezhetőség érdekében), replikálni (a rendelkezésre állás érdekében), és (az ACID szemantika) egy partíción belül. Most egy megbízható szótárban objektum egy tipikus használati tekintse meg, és tekintse meg az aktuális ténylegesen műveletet.
@@ -207,8 +207,7 @@ Ezenkívül a szolgáltatás kódja: frissített több frissítési tartományt 
 
 > [!WARNING]
 > Bár a kulcs a séma módosításához biztosítania kell, hogy a kulcs a kivonatkód egyenlő algoritmusok és stabil. Ha módosítja a hogyan működnek ezek az algoritmusok közül választhat, nem tud keresse ki a kulcsot a megbízható szótárban belül bármikor újra.
->
->
+> Egy kulcs, de maga a karakterlánc, a kulcs – használata nem használnak String.GetHashCode eredményét kulcsként .NET karakterláncokat is használhatók.
 
 Másik lehetőségként hajthat végre, mi van általában úgy nevezik két frissítés. Egy kétfázisú frissítést frissítse a szolgáltatás V1-től a v2: V2 tartalmazza a kódot, amely képes az új sémaváltozás foglalkozik, de ez a kód nem hajtja végre. A V2 kód V1 adatokat olvas be, amikor azt rajta működik, és V1 adatokat ír. Ezt követően a frissítés befejezése után minden frissítési tartományok között, akkor is valamilyen módon jelezze futó V2 példányok, hogy a frissítés befejeződött. (Jel egyik módja a vezethet be a konfiguráció frissítése, ez az egy kétfázisú frissítés teszi ezt.) Most a V2-példányokat is V1-adatok olvasása, alakíthatja át a V2-adatok, a művelethez, és írható ki V2 adatként. További példányok V2-adatok olvasási, nem kell konvertálni, azok csak működik rajta, és kiírja a V2-adatok.
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 17ec7723044cec391ebe390bbcfba3aa6f2f29ca
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: dc92c806a67869e1cc894a8ee9f4d287b5b3b1f2
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446851"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670230"
 ---
 # <a name="back-up-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken 
 
@@ -52,8 +52,7 @@ A nyilvános előzetes verziója számos korlátozás tartozik.
 - Az FCI tükrözött adatbázisokat, adatbázis-pillanatképeket és adatbázisok biztonsági mentési és visszaállítási műveletek nem támogatottak.
 - Adatbázisok nagy számú fájl esetén nem biztosítható. Támogatott fájlok maximális száma nem determinisztikus. Azt nem csak a fájlok száma attól függ, de is függ, a fájlok elérési út hossza. 
 
-Tekintse meg [gyakori kérdésekkel foglalkozó szakaszban](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq) további részleteket a támogatás/nem támogatott forgatókönyvek.
-
+Felülvizsgálat [– gyakori kérdések](faq-backup-sql-server.md) SQL Server-adatbázisok biztonsági mentésével kapcsolatos.
 ## <a name="scenario-support"></a>A forgatókönyv támogatása
 
 **Támogatás** | **Részletek**
@@ -197,7 +196,7 @@ Biztonsági mentés a következőképpen konfigurálja:
 
     - Válassza ki az alapértelmezett házirend: **HourlyLogBackup**.
     - Válassza ki a korábban létrehozott SQL meglévő biztonsági mentési házirend.
-    - [Adja meg egy új házirendet](backup-azure-sql-database.md#define-a-backup-policy) a helyreállítási Időkorlát és a megőrzési tartomány alapján.
+    - [Adja meg egy új házirendet](backup-azure-sql-database.md#configure-a-backup-policy) a helyreállítási Időkorlát és a megőrzési tartomány alapján.
     - Az előzetes verzióban már nem szerkesztheti a meglévő biztonsági mentési házirend.
     
 9. A **biztonsági mentés menü**válassza **biztonsági mentés engedélyezése**.
@@ -326,7 +325,7 @@ Ha szeretné javítani az engedélyek miatt egy **UserErrorSQLNoSysadminMembersh
 
     ![Üzembe helyezés a sikert jelző üzenet](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-Engedélyezheti azt is megteheti, [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) a teljes példánya vagy mindig a rendelkezésre állási csoport kiválasztásával a **ON** a megfelelő legördülő listában, a beállítás a **AUTOPROTECT**  oszlop. A [automatikus védelem](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) szolgáltatás nem csak lehetővé teszi, hogy egy nyissa meg az összes meglévő adatbázis védelmét, de automatikusan is védi a hozzáadni kívánt példányát, vagy a rendelkezésre állási csoport a jövőben az új adatbázisok.  
+Engedélyezheti azt is megteheti, [automatikus védelem](backup-azure-sql-database.md#enable-auto-protection) a teljes példánya vagy mindig a rendelkezésre állási csoport kiválasztásával a **ON** a megfelelő legördülő listában, a beállítás a **AUTOPROTECT**  oszlop. A [automatikus védelem](backup-azure-sql-database.md#enable-auto-protection) szolgáltatás nem csak lehetővé teszi, hogy egy nyissa meg az összes meglévő adatbázis védelmét, de automatikusan is védi a hozzáadni kívánt példányát, vagy a rendelkezésre állási csoport a jövőben az új adatbázisok.  
 
    ![Az Always On rendelkezésre állási csoport automatikus védelmének engedélyezése](./media/backup-azure-sql-database/enable-auto-protection.png)
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/19/2019
 ms.author: glenga
-ms.openlocfilehash: ab502c25a632977065e55d2eeafd684203636b14
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a2e07f9022d7404d037903fda627649918134cb7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109911"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732738"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata az eseményvezérelt háttérben történő feldolgozás
 
@@ -212,7 +212,7 @@ static void Main(string[] args)
 
 Bemeneti adatok az Azure-ban vagy külső szolgáltatások számára elérhetővé szeretné tenni a kód deklaratív módszert biztosítanak. Kimeneti kötések lehetővé teszik egy frissítheti az adatokat. A [Get lépéseket bemutató cikkben](webjobs-sdk-get-started.md) egyes egy példát mutat be.
 
-A metódus visszatérési értékek használható egy kimeneti kötést az attribútum a metódus visszatérési érték alkalmazásával. A példa az Azure Functions szolgáltatásban [eseményindítók és kötések](../azure-functions/functions-triggers-bindings.md#using-the-function-return-value) cikk.
+A metódus visszatérési értékek használható egy kimeneti kötést az attribútum a metódus visszatérési érték alkalmazásával. A példa az Azure Functions szolgáltatásban [eseményindítók és kötések](../azure-functions/functions-bindings-return-value.md) cikk.
 
 ## <a name="binding-types"></a>Kötési típus
 
@@ -445,13 +445,13 @@ public static void CreateThumbnail(
 }
 ```
 
-Kötési kifejezésekben kapcsolatos további információkért lásd: [kifejezések és a minták](../azure-functions/functions-triggers-bindings.md#binding-expressions-and-patterns) az Azure Functions dokumentációjában.
+Kötési kifejezésekben kapcsolatos további információkért lásd: [kifejezések és a minták](../azure-functions/functions-bindings-expressions-patterns.md) az Azure Functions dokumentációjában.
 
 ### <a name="custom-binding-expressions"></a>Egyéni kötési kifejezésekben
 
 Néha szeretne hozzáadni egy üzenetsor neve, a blob nevét vagy a tároló, vagy egy Táblanév rögzítse szoftveresen helyett a kód azt. Például érdemes a várólista nevét adja meg a `QueueTrigger` attribútum egy konfigurációs fájlban vagy környezeti változóban.
 
-Úgy teheti meg, amely megadásának egy `NameResolver` az objektum a `JobHostConfiguration` objektum. A trigger vagy kötési attribútum konstruktor paraméterek helyőrzőket tartalmaznak, és a `NameResolver` kódot biztosít a tényleges értékek ezeket a helyőrzők helyett használható. A helyőrzők azonosítja téve őket a százalék (%) jelentkezik, az alábbi példában látható módon:
+Úgy teheti meg, amely megadásának egy `NameResolver` az objektum a `JobHostConfiguration` objektum. A trigger vagy kötési attribútum konstruktor paraméterek helyőrzőket tartalmaznak, és a `NameResolver` kódot biztosít a tényleges értékek ezeket a helyőrzők helyett használható. A helyőrzők azonosítja a környező őket a százalék (%) jelentkezik, az alábbi példában látható módon:
 
 ```cs
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)

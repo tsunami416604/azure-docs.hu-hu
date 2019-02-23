@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 11/19/2018
+ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 338ae760aae90131a7353f990e1014aa714faa0f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 419a07ff6d423f363d6973da3df00fd4aa3f6278
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177903"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727264"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik az Azure AD hozzáférési felülvizsgálatok?
 
@@ -88,23 +88,25 @@ A hozzáférési felülvizsgálatok engedélyezéséhez kövesse az alábbi lép
 
 1. Kattintson a **minden szolgáltatás** és keresse meg a hozzáférési felülvizsgálatok szolgáltatás.
 
-    ![Minden szolgáltatás - hozzáférési felülvizsgálatok](./media/access-reviews-overview/all-services-access-reviews.png)
-
 1. Kattintson a **hozzáférési felülvizsgálatokkal**.
 
-    ![A hozzáférési felülvizsgálatok előkészítése](./media/access-reviews-overview/onboard-button.png)
+    ![Minden szolgáltatás - hozzáférési felülvizsgálatok](./media/access-reviews-overview/all-services-access-reviews.png)
 
 1. Kattintson a navigációs lista **verziójába való felvételével** megnyitásához a **a hozzáférési felülvizsgálatok előkészítése** lap.
 
+    ![A hozzáférési felülvizsgálatok előkészítése](./media/access-reviews-overview/onboard-button.png)
+
+1. Kattintson a **létrehozás** hozzáférésének engedélyezésére ellenőrzi az aktuális könyvtárban található.
+
     ![A hozzáférési felülvizsgálatok előkészítése](./media/access-reviews-overview/onboard-access-reviews.png)
 
-1. Kattintson a **létrehozás** hozzáférésének engedélyezésére ellenőrzi az aktuális könyvtárban található. A hozzáférési felülvizsgálatok, a következő indításakor a beállítások engedélyezve lesz.
+    A következő indításakor hozzáférési felülvizsgálatok, a hozzáférési felülvizsgálati beállítások engedélyezve lesz.
 
     ![A hozzáférési felülvizsgálatok engedélyezve](./media/access-reviews-overview/access-reviews-enabled.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hozzáférési felülvizsgálat létrehozása egy csoport tagjai számára vagy egy alkalmazáshoz való hozzáférés céljából](create-access-review.md)
+- [Csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat létrehozása](create-access-review.md)
 - [Hozzáférési felülvizsgálat létrehozása Azure AD rendszergazdai szerepkörrel rendelkező felhasználókhoz](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)
-- [Az Azure AD hozzáférési felülvizsgálatokkal hozzáférési felülvizsgálat végrehajtása](perform-access-review.md)
-- [Tagok egy csoport vagy az Azure AD-alkalmazásokhoz való felhasználói hozzáférés hozzáférési felülvizsgálat befejezése](complete-access-review.md)
+- [A csoportokat vagy alkalmazásokat hozzáférés felülvizsgálata](perform-access-review.md)
+- [Csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat befejezése](complete-access-review.md)

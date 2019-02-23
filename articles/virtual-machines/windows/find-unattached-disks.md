@@ -4,7 +4,7 @@ description: Hogyan keresheti meg és nem csatlakoztatott Azure felügyelt és n
 services: virtual-machines-windows
 documentationcenter: ''
 author: ramankumarlive
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 02/22/2019
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 15b82455813c75ca14903f019a17828156638569
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 705706b011464f9e1f437db7b608b3a73e7c3655
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983559"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727383"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Keresse meg és törölje a nem csatlakoztatott Azure felügyelt és nem felügyelt lemezek
-Ha töröl egy virtuális gépet (VM) az Azure-ban alapértelmezés szerint a rendszer nem törli a virtuális géphez csatolt összes lemezt. Ez a szolgáltatás segít megakadályozni az adatvesztést miatt a virtuális gépet a véletlen törlés. Virtuális gép törlését követően továbbra is fizetnie a leválasztott lemezeket. Ez a cikk bemutatja, hogyan kereshet és a felesleges költségek csökkentéséhez és minden nem csatlakoztatott lemezek törlése. 
 
+Ha töröl egy virtuális gépet (VM) az Azure-ban alapértelmezés szerint a rendszer nem törli a virtuális géphez csatolt összes lemezt. Ez a szolgáltatás segít megakadályozni az adatvesztést miatt a virtuális gépet a véletlen törlés. Virtuális gép törlését követően továbbra is fizetnie a leválasztott lemezeket. Ez a cikk bemutatja, hogyan kereshet és a felesleges költségek csökkentéséhez és minden nem csatlakoztatott lemezek törlése.
 
-## <a name="managed-disks-find-and-delete-unattached-disks"></a>Felügyelt lemezek: Keresse meg és nem csatlakoztatott lemezek törlése 
+## <a name="managed-disks-find-and-delete-unattached-disks"></a>Felügyelt lemezek: Keresse meg és nem csatlakoztatott lemezek törlése
 
 A következő parancsfájl keres nem csatolt [felügyelt lemezek](managed-disks-overview.md) értékét megvizsgálásával a **ManagedBy** tulajdonság. Ha egy felügyelt lemezt egy virtuális géphez van csatolva a **ManagedBy** tulajdonság tartalmazza a virtuális gép erőforrás-Azonosítóját. Ha egy felügyelt lemez nincs csatlakoztatva, a **ManagedBy** tulajdonság null értékű. A parancsfájl megvizsgálja a felügyelt lemezeket az Azure-előfizetéssel. Ha a parancsfájl megkeresi a felügyelt lemezzel a **ManagedBy** tulajdonság értéke null, a parancsfájl meghatározza, hogy a lemez nincs csatlakoztatva.
 
@@ -92,13 +92,13 @@ foreach($storageAccount in $storageAccounts){
 
     $storageKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccount.ResourceGroupName -Name $storageAccount.StorageAccountName)[0].Value
 
-    $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $storageKey
+    $context = New-AzStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $storageKey
 
-    $containers = Get-AzureStorageContainer -Context $context
+    $containers = Get-AzStorageContainer -Context $context
 
     foreach($container in $containers){
 
-        $blobs = Get-AzureStorageBlob -Container $container.Name -Context $context
+        $blobs = Get-AzStorageBlob -Container $container.Name -Context $context
 
         #Fetch all the Page blobs with extension .vhd as only Page blobs can be attached as disk to Azure VMs
         $blobs | Where-Object {$_.BlobType -eq 'PageBlob' -and $_.Name.EndsWith('.vhd')} | ForEach-Object { 
@@ -110,7 +110,7 @@ foreach($storageAccount in $storageAccounts){
 
                         Write-Host "Deleting unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"
 
-                        $_ | Remove-AzureStorageBlob -Force
+                        $_ | Remove-AzStorageBlob -Force
 
                         Write-Host "Deleted unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"
                   }
@@ -132,6 +132,3 @@ foreach($storageAccount in $storageAccounts){
 ## <a name="next-steps"></a>További lépések
 
 További információkért lásd: [tárfiók törlése](../../storage/common/storage-create-storage-account.md) és [azonosítása árva lemezek PowerShell használatával](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)
-
-
-

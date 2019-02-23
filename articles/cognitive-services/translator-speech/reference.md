@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: c68d9c3d40ffa3d4a5a5ae635fbc0ea0a010239c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874736"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675109"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 
@@ -90,7 +91,7 @@ Figyelje meg, hogy a teljes fájlméret (bájt 4-7) és a "data" (40-43 bájt) m
 A WAV (RIFF) fejléc elküldése, után az ügyfél elküldi az audio adatok adattömböket. Az ügyfél általában fog adatfolyam egy meghatározott időtartamra (például stream 100 MS egyszerre hanganyagra) jelölő rögzített méretű adattömbökre.
 
 ### <a name="signal-the-end-of-the-utterance"></a>Az utterance (kifejezés) vége jelzés
-A Translator Speech API adja vissza a szöveges és a fordítás a hang Stream, a hanganyag küldése folyamatban van. A végleges átiratok, a végső fordítás és a lefordított hang visszatér, csak az utterance (kifejezés) vége után. Bizonyos esetekben előfordulhat, hogy kényszeríteni kívánja az utterance (kifejezés) végén. Kérjük, küldjön 2,5 másodperc csend végén az utterance (kifejezés) kényszerítése. 
+A Translator Speech API adja vissza a szöveges és a fordítás a hang Stream, a hanganyag küldése folyamatban van. A végleges átiratok, a végső fordítás és a lefordított hang visszatér, csak az utterance (kifejezés) vége után. Bizonyos esetekben előfordulhat, hogy kényszeríteni kívánja az utterance (kifejezés) végén. Kérjük, küldjön 2,5 másodperc csend végén az utterance (kifejezés) kényszerítése.
 
 ### <a name="final-result"></a>Végső eredményt
 Végső speech recognition eredményeképpen jön létre az utterance (kifejezés) végén. Egy eredményt a szolgáltatásból átkerülnek a szöveg típusú WebSocket üzenetben az ügyfelet. Az üzenet tartalma a következő tulajdonságokkal rendelkező objektum JSON-szerializálás:
@@ -112,7 +113,7 @@ A minta végeredmény a következőképpen történik:
 {
   type: "final"
   id: "23",
-  recognition: "what was said", 
+  recognition: "what was said",
   translation: "translation of what was said",
   audioStreamPosition: 319680,
   audioSizeBytes: 35840,
@@ -143,7 +144,7 @@ A minta végeredmény a következőképpen történik:
 {
   type: "partial"
   id: "23.2",
-  recognition: "what was", 
+  recognition: "what was",
   translation: "translation of what was",
   audioStreamPosition: 319680,
   audioSizeBytes: 25840,
@@ -167,72 +168,29 @@ Amikor egy ügyfélalkalmazás hang streamelés befejeződött, és az utolsó v
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:---|:---|:---|:---|:---|
-|API-verzió|1.0|Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés   |Karakterlánc|
-|forrás:|(üres)   |Meghatározza a bejövő beszéd nyelvét. Az érték a nyelv azonosítók egyike a `speech` hatókörhöz. a válasz a nyelvek API.|lekérdezés|Karakterlánc|
-|erre:|(üres)|Meghatározza az átírt szöveget a lefordítandó nyelvét. Az érték a nyelv azonosítók egyike a `text` hatókörhöz. a válasz a nyelvek API.|lekérdezés|Karakterlánc|
-|funkciókkal|(üres)   |Az ügyfél által kiválasztott funkciók vesszővel elválasztott készletét. Elérhető funkciók:<ul><li>`TextToSpeech`: Megadja, hogy a szolgáltatás kell a lefordított hang, a végső lefordított mondatra.</li><li>`Partial`: Itt adhatja meg, hogy a szolgáltatás köztes felismerési eredményeket kell visszaadnia, míg a hanganyag adatfolyam-e a szolgáltatáshoz.</li><li>`TimingInfo`: Itt adhatja meg, hogy a szolgáltatás a társított minden egyes felismerés időzítési információkkal kell visszaadnia.</li></ul>Például egy ügyfél kellene megadnia `features=partial,texttospeech` részleges eredményeket, és a szöveg-hang transzformációs, de nincs időadatokat fogadásához. Vegye figyelembe, hogy a végső eredmények mindig továbbított az ügyfélnek.|lekérdezés|Karakterlánc|
-|Hang|(üres)|Milyen hangalapú használatához a fordítást, szöveg-hang transzformációs rendereléshez azonosítja. Értéke a válaszban a nyelvek API szövegfelolvasás hatókörből hangalapú azonosítók közül. Ha egy hang nincs megadva a rendszer automatikusan az válasszon egy Ha a szöveg-hang transzformációs szolgáltatás engedélyezve van.|lekérdezés|Karakterlánc|
-|Formátum|(üres)|Itt adhatja meg a szolgáltatás által visszaadott szöveg-hang transzformációs audio-adatfolyam formátuma. Az elérhető lehetőségek:<ul><li>`audio/wav`: Hullám audio-adatfolyam. Ügyfél használja a WAV-fejléc hangformátum megfelelően értelmezni. WAV hang-szöveg-hang transzformációs a 16 bites, egyetlen csatorna PCM 24kHz vagy 16kHz mintavételi arány.</li><li>`audio/mp3`: Audio MP3-adatfolyam.</li></ul>Az alapértelmezett szint a `audio/wav`.|lekérdezés|Karakterlánc|
-|ProfanityAction    |(üres)    |Itt adhatja meg, hogyan kezelje a szolgáltatás a profanities ismeri el a speech. Érvényes műveletek a következők:<ul><li>`NoAction`: Mivel profanities marad.</li><li>`Marked`: A jelölő profanities helyén. Lásd: `ProfanityMarker` paramétert.</li><li>`Deleted`: Profanities törlődnek. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a .".`</li></ul>Alapértelmezés szerint meg van jelölve.|lekérdezés|Karakterlánc|
-|ProfanityMarker|(üres)    |Megadja, hogy észlelt profanities mikor kezeli `ProfanityAction` értékre van állítva `Marked`. Az érvényes beállítások a következők:<ul><li>`Asterisk`: Profanities cserélése karakterlánc `***`. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a ***.".`</li><li>`Tag`: Káromkodás egy cenzúrázása XML-címke veszi körül. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a <profanity>jackass</profanity>."`.</li></ul>A mező alapértelmezett értéke: `Asterisk`.|lekérdezés|Karakterlánc|
-|Engedélyezés|(üres)  |Az ügyfél tulajdonosi jogkivonat értékét adja meg. Használja az előtag `Bearer` értékét követi a `access_token` a hitelesítési jogkivonat-szolgáltatás által visszaadott értéket.|header   |Karakterlánc|
-|OCP-Apim-Subscription-Key|(üres)|Kötelező, ha a `Authorization` fejléc nincs megadva.|header|Karakterlánc|
-|access_token|(üres)   |Alternatív módja átadni egy érvényes OAuth-jogkivonatot. A tulajdonosi jogkivonatot általában biztosított fejléccel `Authorization`. Websocket könyvtárak Ügyfélkód fejlécek beállítása nem teszik lehetővé. Ebben az esetben az ügyfél használhatja a `access_token` lekérdezési paraméter érvényes token át. Ha a hozzáférési token használatával hitelesíteni, ha `Authorization` fejléc nincs beállítva, majd `access_token` be kell állítani. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja. Az ügyfelek csak egy módszert használja a jogkivonat.|lekérdezés|Karakterlánc|
-|Előfizetés-kulcs|(üres)   |Az előfizetői át másik módszere. Websocket könyvtárak Ügyfélkód fejlécek beállítása nem teszik lehetővé. Ebben az esetben az ügyfél használhatja a `subscription-key` lekérdezési paraméter, át kell adnia egy érvényes előfizetési kulcsot. Ha egy előfizetési kulcsot használja a hitelesítéshez, ha `Ocp-Apim-Subscription-Key` fejléc nincs beállítva, akkor az előfizetői be kell állítani. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja. Az ügyfelek csak használja a több módszert adja át a `subscription key`.|lekérdezés|Karakterlánc|
-|X-ClientTraceId    |(üres)    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megfelelő hibaelhárítási problémák, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-ClientTraceId`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|Karakterlánc|
-|X-CorrelationId|(üres)    |Egy ügyfél által generált azonosítójának korrelációját, ha több csatornán beszélgetés során használt. Beszéd fordítási több munkamenet engedélyezése a felhasználók közötti beszélgetések hozható létre. Ilyen esetben az összes speech fordítási munkamenetek segítségével az azonos korrelációs Azonosítót a csatornák összekapcsolása. Ez elősegíti a nyomkövetés és diagnosztika. Az azonosítót meg kell felelnie: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-CorrelationId`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|Karakterlánc|
-|X-ClientVersion|(üres)    |Az ügyfélalkalmazás verzióját azonosítja. Példa: "2.1.0.123".<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-ClientVersion`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|Karakterlánc|
-|X-OsPlatform|(üres)   |A nevét és az ügyfélalkalmazás fut, az operációs rendszer verzióját azonosítja. Példák: "Android 5.0-s", "iOs 8.1.3", "a Windows 8.1".<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-OsPlatform`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|Karakterlánc|
+|API-verzió|1.0|Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés   |sztring|
+|forrás:|(üres)   |Meghatározza a bejövő beszéd nyelvét. Az érték a nyelv azonosítók egyike a `speech` hatókörhöz. a válasz a nyelvek API.|lekérdezés|sztring|
+|erre:|(üres)|Meghatározza az átírt szöveget a lefordítandó nyelvét. Az érték a nyelv azonosítók egyike a `text` hatókörhöz. a válasz a nyelvek API.|lekérdezés|sztring|
+|funkciókkal|(üres)   |Az ügyfél által kiválasztott funkciók vesszővel elválasztott készletét. Elérhető funkciók:<ul><li>`TextToSpeech`: Megadja, hogy a szolgáltatás kell a lefordított hang, a végső lefordított mondatra.</li><li>`Partial`: Itt adhatja meg, hogy a szolgáltatás köztes felismerési eredményeket kell visszaadnia, míg a hanganyag adatfolyam-e a szolgáltatáshoz.</li><li>`TimingInfo`: Itt adhatja meg, hogy a szolgáltatás a társított minden egyes felismerés időzítési információkkal kell visszaadnia.</li></ul>Például egy ügyfél kellene megadnia `features=partial,texttospeech` részleges eredményeket, és a szöveg-hang transzformációs, de nincs időadatokat fogadásához. Vegye figyelembe, hogy a végső eredmények mindig továbbított az ügyfélnek.|lekérdezés|sztring|
+|Hang|(üres)|Milyen hangalapú használatához a fordítást, szöveg-hang transzformációs rendereléshez azonosítja. Értéke a válaszban a nyelvek API szövegfelolvasás hatókörből hangalapú azonosítók közül. Ha egy hang nincs megadva a rendszer automatikusan az válasszon egy Ha a szöveg-hang transzformációs szolgáltatás engedélyezve van.|lekérdezés|sztring|
+|Formátum|(üres)|Itt adhatja meg a szolgáltatás által visszaadott szöveg-hang transzformációs audio-adatfolyam formátuma. Az elérhető lehetőségek:<ul><li>`audio/wav`: Hullám audio-adatfolyam. Ügyfél használja a WAV-fejléc hangformátum megfelelően értelmezni. WAV hang-szöveg-hang transzformációs a 16 bites, egyetlen csatorna PCM 24kHz vagy 16kHz mintavételi arány.</li><li>`audio/mp3`: Audio MP3-adatfolyam.</li></ul>Az alapértelmezett szint a `audio/wav`.|lekérdezés|sztring|
+|ProfanityAction    |(üres)    |Itt adhatja meg, hogyan kezelje a szolgáltatás a profanities ismeri el a speech. Érvényes műveletek a következők:<ul><li>`NoAction`: Mivel profanities marad.</li><li>`Marked`: A jelölő profanities helyén. Lásd: `ProfanityMarker` paramétert.</li><li>`Deleted`: Profanities törlődnek. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a .".`</li></ul>Alapértelmezés szerint meg van jelölve.|lekérdezés|sztring|
+|ProfanityMarker|(üres)    |Megadja, hogy észlelt profanities mikor kezeli `ProfanityAction` értékre van állítva `Marked`. Az érvényes beállítások a következők:<ul><li>`Asterisk`: Profanities cserélése karakterlánc `***`. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a ***.".`</li><li>`Tag`: Káromkodás egy cenzúrázása XML-címke veszi körül. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a <profanity>jackass</profanity>."`.</li></ul>A mező alapértelmezett értéke: `Asterisk`.|lekérdezés|sztring|
+|Engedélyezés|(üres)  |Az ügyfél tulajdonosi jogkivonat értékét adja meg. Használja az előtag `Bearer` értékét követi a `access_token` a hitelesítési jogkivonat-szolgáltatás által visszaadott értéket.|header   |sztring|
+|OCP-Apim-Subscription-Key|(üres)|Kötelező, ha a `Authorization` fejléc nincs megadva.|header|sztring|
+|access_token|(üres)   |Alternatív módja átadni egy érvényes OAuth-jogkivonatot. A tulajdonosi jogkivonatot általában biztosított fejléccel `Authorization`. Websocket könyvtárak Ügyfélkód fejlécek beállítása nem teszik lehetővé. Ebben az esetben az ügyfél használhatja a `access_token` lekérdezési paraméter érvényes token át. Ha a hozzáférési token használatával hitelesíteni, ha `Authorization` fejléc nincs beállítva, majd `access_token` be kell állítani. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja. Az ügyfelek csak egy módszert használja a jogkivonat.|lekérdezés|sztring|
+|Előfizetés-kulcs|(üres)   |Az előfizetői át másik módszere. Websocket könyvtárak Ügyfélkód fejlécek beállítása nem teszik lehetővé. Ebben az esetben az ügyfél használhatja a `subscription-key` lekérdezési paraméter, át kell adnia egy érvényes előfizetési kulcsot. Ha egy előfizetési kulcsot használja a hitelesítéshez, ha `Ocp-Apim-Subscription-Key` fejléc nincs beállítva, akkor az előfizetői be kell állítani. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja. Az ügyfelek csak használja a több módszert adja át a `subscription key`.|lekérdezés|sztring|
+|X-ClientTraceId    |(üres)    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megfelelő hibaelhárítási problémák, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-ClientTraceId`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
+|X-CorrelationId|(üres)    |Egy ügyfél által generált azonosítójának korrelációját, ha több csatornán beszélgetés során használt. Beszéd fordítási több munkamenet engedélyezése a felhasználók közötti beszélgetések hozható létre. Ilyen esetben az összes speech fordítási munkamenetek segítségével az azonos korrelációs Azonosítót a csatornák összekapcsolása. Ez elősegíti a nyomkövetés és diagnosztika. Az azonosítót meg kell felelnie: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-CorrelationId`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
+|X-ClientVersion|(üres)    |Az ügyfélalkalmazás verzióját azonosítja. Példa: "2.1.0.123".<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-ClientVersion`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
+|X-OsPlatform|(üres)   |A nevét és az ügyfélalkalmazás fut, az operációs rendszer verzióját azonosítja. Példák: "Android 5.0-s", "iOs 8.1.3", "a Windows 8.1".<br/>Fejléc helyett ez az érték lekérdezési paraméterrel átadott `X-OsPlatform`. Ha vannak beállítva, fejléc és a lekérdezési paraméter, a lekérdezési paraméter figyelmen kívül hagyja.|header|sztring|
 
 ### <a name="response-messages"></a>Parancsválasz-üzeneteket
 
 |HTTP-állapotkód|Ok|Válaszmodellje|Fejlécek|
 |:--|:--|:--|:--|
-|101    |WebSocket-frissítés.|Modell Példaérték <br/> Objektum {}|X-RequestId<br/>Hibaelhárítás céljából a kérelem azonosító érték.<br/>Karakterlánc|
+|101    |WebSocket-frissítés.|Modell Példaérték <br/> Objektum {}|X-RequestId<br/>Hibaelhárítás céljából a kérelem azonosító érték.<br/>sztring|
 |400    |Hibás kérés. Ellenőrizze, hogy biztosítsa azok érvényes bemeneti paramétereket. A válasz objektum tartalmazza a hiba részletes leírását.|||
 |401    |Nem engedélyezett. Győződjön meg arról, hogy hitelesítő adatok vannak beállítva, akkor érvényesek, és, hogy van-e az Azure Data piaci előfizetés egy elérhető egyenlegű jó minősítésének.|||
 |500    |Hiba történt. Ha a hiba továbbra is fennáll, jelentse az ügyfél nyomkövetési azonosító (X-ClientTraceId), vagy kérelemazonosító (X-kérelemazonosító).|||
 |503    |A kiszolgáló átmenetileg nem érhető el. Ismételje meg a kérelmet. Ha a hiba továbbra is fennáll, jelentse az ügyfél nyomkövetési azonosító (X-ClientTraceId), vagy kérelemazonosító (X-kérelemazonosító).|||
-
-    
-
-
-    
-
-
-
-
-
-    
-    
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-    
-
-            
-
-
-
-
-        
-
-
-
-
-
-
-
-
-

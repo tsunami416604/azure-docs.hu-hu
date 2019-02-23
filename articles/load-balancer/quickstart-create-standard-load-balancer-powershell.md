@@ -10,18 +10,18 @@ Customer intent: I want to create a Standard Load balancer so that I can load ba
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: qucikstart
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: b2da2092c71d109081f05f3e4f12d7d11de37397
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 56fc3942b82d43273ea39f6075382bcb255fc0f7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593947"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673819"
 ---
 # <a name="get-started"></a>Gyors útmutató: Azure PowerShell-lel Standard Load Balancer létrehozása
 
@@ -58,7 +58,7 @@ $publicIP = New-AzPublicIpAddress `
 
 ## <a name="create-standard-load-balancer"></a>Standard Load Balancer létrehozása
 
-Ebben a szakaszban az előtérbeli IP-címet és a háttér-címkészletet a load Balancer konfigurálása, és az alapszintű Load Balancer létrehozása a majd.
+Ebben a szakaszban az előtérbeli IP-címet és a háttér-címkészletet a load Balancer konfigurálása, és a Standard Load Balancer létrehozása a majd.
 
 ### <a name="create-front-end-ip"></a>Előtérbeli IP-cím létrehozása
 
@@ -133,7 +133,7 @@ $natrule2 = New-AzLoadBalancerInboundNatRuleConfig `
 
 ### <a name="create-load-balancer"></a>Terheléselosztó létrehozása
 
-A Standard Load Balancer-létrehozása [új AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). A következő példában létrehozunk egy alapszintű nyilvános Load Balancer használatával az előtérbeli IP-konfigurációhoz, háttérkészlet, állapotadat-mintavétel, a terheléselosztási szabály és NAT-szabályok, amelyek az előző lépésekben létrehozott myLoadBalancer nevű:
+A Standard Load Balancer-létrehozása [új AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Az alábbi példa létrehoz egy nyilvános Standard Load Balancer használatával az előtérbeli IP-konfigurációhoz, háttérkészlet, állapotadat-mintavétel, a terheléselosztási szabály és NAT-szabályok, amelyek az előző lépésekben létrehozott myLoadBalancer nevű:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
@@ -347,7 +347,7 @@ Remove-AzResourceGroup -Name myResourceGroupLB
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy alapszintű terheléselosztót, virtuális gépeket csatolt hozzá, konfigurálta a terheléselosztó forgalmi szabályát és az állapot-mintavételt, majd tesztelte a terheléselosztót. Ha bővebb információra van szüksége az Azure Load Balancerrel kapcsolatban, folytassa az Azure Load Balancerről szóló oktatóanyagokkal.
+Ebben a rövid útmutatóban létrehozott egy standard terheléselosztót, virtuális gépeket csatolt hozzá, konfigurálta a terheléselosztó forgalmi szabályát és az állapot-mintavételt, majd tesztelte a terheléselosztót. Ha bővebb információra van szüksége az Azure Load Balancerrel kapcsolatban, folytassa az Azure Load Balancerről szóló oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer-oktatóanyagok](tutorial-load-balancer-basic-internal-portal.md)

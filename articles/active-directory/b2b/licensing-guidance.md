@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory B2B-együttműködés licencelése útmutató |} A Microsoft Docs
+title: Licencelési útmutató – Azure Active Directory B2B-együttműködés |} A Microsoft Docs
 description: A fizetős Azure AD-licenceket az Azure Active Directory B2B együttműködés nem igényel, de Ön is is első díjkötelessé B2B vendégfelhasználó
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0032eb1e6b92abb130521945f64fda3133d9b7fc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7fa01a6bf522061e54e9622cb9201f81c699a8ec
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198881"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668452"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Útmutató az Azure Active Directory vállalatközi együttműködés licenceléséhez
 

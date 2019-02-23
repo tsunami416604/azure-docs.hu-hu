@@ -1,506 +1,217 @@
 ---
 title: Csatlakozás az Apache Spark az Azure Cosmos DB
-description: További információ az Azure Cosmos DB Spark-összekötő, amely lehetővé teszi az Apache Spark az Azure Cosmos DB-hez kapcsolódni. A több-bérlős, globálisan elosztott adatbázisrendszerként a Microsoft elosztott összesítések végezheti el.
+description: További információ az Azure Cosmos DB Spark-összekötő, amely lehetővé teszi az Apache Spark az Azure Cosmos DB-hez kapcsolódni.
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 02/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 6d80de23f815d96ba78f023f46a530561d5ec39d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 99c0675f8dc7f392e6c98abbe43b84eb14dbddbc
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034641"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675347"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel a big data-elemzés az Azure Cosmos DB-összekötő az Apache Spark használatával
- 
-Az Apache Spark és az Azure Cosmos DB közötti összekötő lehetővé teszi, hogy az Azure Cosmos DB legyen az Apache Spark-feladatok bemenete vagy kimenete. Csatlakozás [Spark](https://spark.apache.org//) való [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gyorsítja megítélnie gyors ütemben data science kapcsolatos problémák megoldásához. Azure Cosmos DB segítségével gyorsan továbbra is fennáll, illetve adatokat kérdezhet le. Az összekötő hatékonyan használja az Azure Cosmos DB által felügyelt natív indexeket. Az indexek lehetővé teszik a frissíthető oszlopok használatát, amikor elemzéseket és leküldéses predikátumszűréseket végez gyorsan változó, globálisan elosztott adatokon. Az ilyen típusú adatok között lehet Internet of Things (IoT) adatok adatelemzési és analitikai feladatokhoz.
 
-## <a name="connector-components"></a>Összekötő-összetevők
+Futtathat [Spark](https://spark.apache.org/) feladatok a Cosmos DB Spark-összekötő segítségével Azure Cosmos DB-ben tárolt adatokat. Cosmos használható a batch- és adatfolyam-feldolgozó és a egy kiszolgálórétegbe, a közel valós idejű hozzáféréshez.
 
-A Spark az Azure Cosmos DB-összekötő a következő összetevőket tartalmazza:
-
-* [Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) kiépítése és rugalmasan méretezhető átviteli sebesség és a storage, tetszőleges számú földrajzi régió között.  
-
-* [Az Apache Spark](https://spark.apache.org/) egy hatékony nyílt forráskódú motor, sebessége, a könnyű használat és a kifinomult elemzési épülnek.  
-
-* [Apache Spark-fürt az Azure databricks szolgáltatásban](https://docs.azuredatabricks.net/getting-started/index.html) lehetővé teszi, hogy a Spark-feladatokat futtathat a Spark-fürtön.
-
-## <a name="connect-apache-spark-to-azure-cosmos-db"></a>Csatlakozás az Apache Spark az Azure Cosmos DB
-
-Csatlakozás az Apache Spark és az Azure Cosmos DB kétféleképpen történhet:
-
-- [Az Azure Cosmos DB SQL Python SDK](https://github.com/Azure/azure-documentdb-python), egy Python-alapú összekötőt, amely is nevezik *pyDocumentDB*.  
-
-- [Az Azure Cosmos DB SQL Java SDK](https://github.com/Azure/azure-documentdb-java), egy Java-alapú összekötőt.
-
-
-**Támogatott verziók**
+Használhatja az összekötőnél a [Azure Databricks](https://azure.microsoft.com/services/databricks) vagy az [Azure HDInsight, amelyekben felügyelt Spark-fürtök az Azure-ban. Az alábbi táblázat a Spark támogatott verzió.
 
 | Összetevő | Verzió |
 |---------|-------|
-|Apache Spark| 2.1.x, 2.2.x, 2.3.x |
-| Scala|2.11|
+| Apache Spark | 2.4.x, 2.3.x, 2.2.x és 2.1.x |
+| Scala | 2.11 |
 | Az Azure Databricks futtatókörnyezet-verziója | > 3.4 |
-| Azure Cosmos DB SQL Java SDK | 1.16.2 |
 
-## <a name="connect-by-using-python-or-pydocumentdb-sdk"></a>Csatlakozás Python vagy a pyDocumentDB SDK használatával
+> [!WARNING]
+> Ez az összekötő támogatja az Azure Cosmos DB core (SQL) API-t.
+> A Cosmos DB MongoDB API-hoz, használja a [MongoDB Spark-összekötő](https://docs.mongodb.com/spark-connector/master/).
+> A Cosmos DB Cassandra API-t használja a [Cassandra Spark-összekötő](https://github.com/datastax/spark-cassandra-connector).
+>
 
-Az alábbi ábrán a pyDocumentDB SDK megvalósítása architektúráját mutatja be:
+## <a name="quickstart"></a>Első lépések
 
-![A Spark a pyDocumentDB DB-n keresztül az Azure Cosmos DB adatfolyam ábrája](./media/spark-connector/spark-pydocumentdb.png)
+* Kövesse a lépéseket [a Java SDK használatának első lépései](sql-api-async-java-get-started.md) egy Cosmos DB-fiók beállítását, és töltse ki az egyes adatokat.
+* Kövesse a lépéseket [első lépései az Azure Databricks](https://docs.azuredatabricks.net/getting-started/index.html) egy Azure Databricks-munkaterület és egy fürt beállításához.
+* Most hozzon létre új jegyzetfüzet, és importálása a Cosmos DB-összekötő könyvtár. Ugrás a [a Cosmos DB-összekötő használata](#bk_working_with_connector) megtudhatja, hogyan állíthatja be a munkaterület számára.
+* Az alábbi szakasz kódrészletek való olvasása és írása az összekötővel rendelkezik.
 
+### <a name="reading-from-cosmos-db"></a>A Cosmos DB olvasásakor
 
-### <a name="data-flow"></a>Az adatfolyam
-
-Az adatfolyam pyDocumentDB megvalósítása a következőképpen történik:
-
-* A fő csomóponttal, a Spark az Azure Cosmos DB átjárócsomópont pyDocumentDB keresztül csatlakozik. Csak a Spark és az Azure Cosmos DB kapcsolatok adhatja meg. A megfelelő csomópontok főkiszolgáló és az átjáró kapcsolatot átláthatóak.  
-
-* Az átjárócsomópont lehetővé teszi az Azure Cosmos DB, ahol a lekérdezést később fut a gyűjtemény partícióihoz az adatcsomópontok a lekérdezést. A válasz ezeket a lekérdezéseket küld vissza az átjárócsomópontnak, és adott eredményhalmaz adja vissza a Spark fő csomóponttal.  
-
-* További (például egy Spark-adatkeretbe) ellen küldi el a Spark munkavégző csomópontokhoz feldolgozásra.  
-
-Spark és az Azure Cosmos DB közötti kommunikáció a Spark-főcsomóponttal és az Azure Cosmos DB az átjárócsomópontok korlátozódik. A szállítási réteg a két csomópont között lehetővé teszi, hogy minél gyorsabban nyissa meg a lekérdezéseket.
-
-Futtassa az alábbi lépéseket a csatlakozás a Spark az Azure Cosmos DB pyDocumentDB SDK használatával:
-
-1. Hozzon létre egy [Azure Databricks-munkaterület](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-an-azure-databricks-workspace) és a egy [Spark-fürt](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-a-spark-cluster-in-databricks). Az Azure Databricks-modul 4.0-s verziója tartalmazza az Apache Spark 2.3.0-át és Scala 2.11-et azon belül.  
-
-2. Ha a fürt létrejött, és fut-e, lépjen a **munkaterület** > **létrehozás** > **könyvtár**.  
-3. Az új szalagtár párbeszédpanelen válasszon **Python tojás feltöltése vagy PyPi** forrásaként. Adja meg **pydocumentdb** nevét, és válassza ki, **telepítése kódtár**. pyDocumentdb SDK már közzé van téve a pip-csomagoknak, így megkeresheti és telepítheti. 
-
-   ![Az új könyvtár párbeszédpanel képernyőképe](./media/spark-connector/create-library.png)
-
-4. A kódtár telepítését követően csatlakoztat a fürthöz, a korábban létrehozott.  
-
-5. Lépjen a **munkaterület** > **létrehozása** > **Notebook**.  
-
-6. Az a **jegyzetfüzet létrehozása** párbeszédpanelen adjon meg egy felhasználóbarát nevet, és válassza a **Python** nyelve. A legördülő listából válassza ki a korábban létrehozott fürt, és válassza ki **létrehozás**.  
-
-7. A Futtatás néhány Spark lekérdezések futtatása a repülés mintaadatok üzemeltetett "doctorwho" az Azure Cosmos DB-fiókot. Ez egy nyilvánosan elérhető-e. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-tárház gazdagépek a [Read_Batch_PyDocumentDB](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Batch_PyDocumentDB.ipynb) notebookot. A notebook importálása az Azure Databricks-fiókjába, és futtathatja. Az alábbi szakasz részletesen ismertetjük a kódblokkok funkcióit mutatja be.
-
-A következő kódrészletet bemutatja, hogyan importálhatja a pyDocumentDB SDK-t, és a egy lekérdezés futtatása a Spark környezet. A kódtöredék feljegyzett a pyDocumentDB SDK tartalmazza az Azure Cosmos DB-fiókhoz való csatlakozáshoz szükséges kapcsolati paraméterek. Importálja a szükséges kódtárak, és konfigurálja a főkulcs és a gazdagép, az Azure Cosmos DB-ügyfél (pydocumentdb.document_client) létrehozása.
-
+Az alábbi kódrészlet bemutatja, hogyan hozhat létre a Spark DataFrame olvasni a Cosmos DB a PySpark.
 
 ```python
-# Import Necessary Libraries
-import pydocumentdb
-from pydocumentdb import document_client
-from pydocumentdb import documents
-import datetime
+# Read Configuration
+readConfig = {
+  "Endpoint" : "https://doctorwho.documents.azure.com:443/",
+  "Masterkey" : "YOUR-KEY-HERE",
+  "Database" : "DepartureDelays",
+  "Collection" : "flights_pcoll",
+  "query_custom" : "SELECT c.date, c.delay, c.distance, c.origin, c.destination FROM c WHERE c.origin = 'SEA'" // Optional
+}
 
-# Configuring the connection policy (allowing for endpoint discovery)
-connectionPolicy = documents.ConnectionPolicy()
-connectionPolicy.EnableEndpointDiscovery
-connectionPolicy.PreferredLocations = ["Central US", "East US 2", "Southeast Asia", "Western Europe","Canada Central"]
+# Connect via azure-cosmosdb-spark to create Spark DataFrame
+flights = spark.read.format("com.microsoft.azure.cosmosdb.spark").options(**readConfig).load()
+flights.count()
+```
 
-# Set keys to connect to Azure Cosmos DB
-masterKey = 'le1n99i1w5l7uvokJs3RT5ZAH8dc3ql7lx2CG0h0kK4lVWPkQnwpRLyAN0nwS1z4Cyd1lJgvGUfMWR3v8vkXKA=='
-host = 'https://doctorwho.documents.azure.com:443/'
-client = document_client.DocumentClient(host, {'masterKey': masterKey}, connectionPolicy)
+És a Scala azonos kódrészlet:
+
+```scala
+// Import Necessary Libraries
+import com.microsoft.azure.cosmosdb.spark.schema._
+import com.microsoft.azure.cosmosdb.spark._
+import com.microsoft.azure.cosmosdb.spark.config.Config
+
+// Configure connection to your collection
+val readConfig = Config(Map(
+  "Endpoint" -> "https://doctorwho.documents.azure.com:443/",
+  "Masterkey" -> "YOUR-KEY-HERE",
+  "Database" -> "DepartureDelays",
+  "Collection" -> "flights_pcoll",
+  "query_custom" -> "SELECT c.date, c.delay, c.distance, c.origin, c.destination FROM c WHERE c.origin = 'SEA'" // Optional
+))
+
+// Connect via azure-cosmosdb-spark to create Spark DataFrame
+val flights = spark.read.cosmosDB(readConfig)
+flights.count()
+```
+
+### <a name="writing-to-cosmos-db"></a>A Cosmos DB írása
+
+Az alábbi kódrészlet bemutatja, hogyan írhat adatkeretek PySpark a Cosmos DB-hez.
+
+```python
+# Write configuration
+writeConfig = {
+ "Endpoint" : "https://doctorwho.documents.azure.com:443/",
+ "Masterkey" : "YOUR-KEY-HERE",
+ "Database" : "DepartureDelays",
+ "Collection" : "flights_fromsea",
+ "Upsert" : "true"
+}
+
+# Write to Cosmos DB from the flights DataFrame
+flights.write.format("com.microsoft.azure.cosmosdb.spark").options(**writeConfig).save()
+```
+
+És a Scala azonos kódrészlet:
+
+```scala
+// Configure connection to the sink collection
+val writeConfig = Config(Map(
+  "Endpoint" -> "https://doctorwho.documents.azure.com:443/",
+  "Masterkey" -> "YOUR-KEY-HERE",
+  "Database" -> "DepartureDelays",
+  "Collection" -> "flights_fromsea",
+  "Upsert" : "true"
+))
+
+// Upsert the dataframe to Cosmos DB
+import org.apache.spark.sql.SaveMode
+flights.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
+```
+
+Kódrészletek és a teljes körű kódmintákat, több további: [Jupyter](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/notebooks).
+
+## <a name="bk_working_with_connector"></a> Az összekötő használata
+
+Az összekötők a Github forrás, vagy töltse le az uber JAR-fájlok kivételével a Mavenből a lenti hivatkozásokra kattintva.
+
+| Spark | Scala | Legújabb verziója |
+|---|---|---|
+| 2.4.0 | 2.11 | [azure-cosmosdb-spark_2.4.0_2.11_1.3.5](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.5/jar)
+| 2.3.0 | 2.11 | [azure-cosmosdb-spark_2.3.0_2.11_1.3.3](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.3.0_2.11/1.3.3/jar)
+| 2.2.0 | 2.11 | [azure-cosmosdb-spark_2.2.0_2.11_1.1.1](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-cosmosdb-spark_2.2.0_2.11%7C1.1.1%7Cjar)
+| 2.1.0 | 2.11 | [azure-cosmosdb-spark_2.1.0_2.11_1.2.2](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.2)
+
+### <a name="using-databricks-notebooks"></a>Databricks-jegyzetfüzetek használata
+
+Hozzon létre egy könyvtár a Databricks-munkaterület belül belül az Azure Databricks útmutató útmutatása alapján > [az Azure Cosmos DB Spark-összekötő használatára](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)
+
+> [!NOTE]
+> Vegye figyelembe, hogy a **használata az Azure Cosmos DB Spark-összekötő** lap jelenleg nem naprakész. Hanem a hat különálló JAR-fájlok kivételével, hat különböző szalagtárat, letöltheti az uber jar a mavenben https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.5/jar) és a egy jar kódtár telepítését.
+> 
+
+### <a name="using-spark-cli"></a>Spark – parancssori felület használatával
+
+A parancssori felületről spark-összekötő működéséhez (azt jelenti, `spark-shell`, `pyspark`, `spark-submit`), használhatja a `--packages` paraméter az összekötővel [maven-koordináták](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11).
+
+```sh
+spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.3.5"
 
 ```
 
-Ezután lekérdezéseket is futtathat. A következő kódrészletet a airports.codes gyűjtemény a doctorwho fiókban csatlakozik, és a egy lekérdezést a Washington állambeli repülőtér városok kibontásához. 
+### <a name="using-jupyter-notebooks"></a>Jupyter notebook használatával
+
+HDInsight belül Jupyter notebookok használata spark-Magic Quadrant használhatja `%%configure` cella az összekötő maven-koordináták megadása.
 
 ```python
-# Configure Database and Collections
-databaseId = 'airports'
-collectionId = 'codes'
-
-# Configurations the Azure Cosmos DB client will use to connect to the database and collection
-dbLink = 'dbs/' + databaseId
-collLink = dbLink + '/colls/' + collectionId
-
-# Set query parameter
-querystr = "SELECT c.City FROM c WHERE c.State='WA'"
-
-```
-
-A lekérdezés futtatása után az eredmény egy "query_iterable. QueryIterable", amely egy Python-lista alakítja át. Ebben a listában, alakítja át egy Spark-adatkeretbe. 
-
-```python
-# Query documents
-query = client.QueryDocuments(collLink, querystr, options=None, partition_key=None)
-
-# Query for partitioned collections
-# query = client.QueryDocuments(collLink, query, options= { 'enableCrossPartitionQuery': True }, partition_key=None)
-
-# Create `df` Spark DataFrame from `elements` Python list
-df = spark.createDataFrame(list(query))
-
-# Show data
-df.show()
-```
-
-### <a name="considerations-when-using-pydocumentdb-sdk"></a>A pyDocumentDB SDK használatának szempontjai
-A Spark csatlakoztathatók az Azure Cosmos DB SDK-t a következő esetekben ajánlott pyDocumentDB használatával:
-
-* Python használni kívánt.  
-
-* Állítsa be az Azure Cosmos DB-alapú Spark viszonylag kis eredményt vannak visszaadása. Vegye figyelembe, hogy az Azure Cosmos DB az alapul szolgáló adatkészlet Igen tekintélyes lehet, és szűrők alkalmazása vagy predikátum szűrők futtat az Azure Cosmos DB-forrás.
-
-## <a name="connect-by-using-the-java-sdk"></a>Csatlakozás a Java SDK használatával
-
-Az alábbi ábra az Azure Cosmos DB SQL Java SDK megvalósítása architektúráját mutatja be, és adatokat helyez át, a Spark munkavégző csomópontok között:
-
-![A Spark az Azure Cosmos DB-összekötő adatfolyamot ábrája](./media/spark-connector/spark-connector.png)
-
-### <a name="data-flow"></a>Az adatfolyam
-
-A Java SDK-t végrehajtása az adatfolyam a következőképpen történik:
-
-* A Spark-főkiszolgáló csomópont csatlakozik a partíciótérképen beszerzése az Azure Cosmos DB átjárócsomópontnak. Csak a Spark és az Azure Cosmos DB-kapcsolatok adhatja meg. A megfelelő csomópontok főkiszolgáló és az átjáró kapcsolatot átláthatóak.  
-
-* Ezt az információt Spark fő csomópont van megadva. Ezen a ponton meg kell tudni a lekérdezés határozza meg a partíciók és az Azure Cosmos DB, hozzá kell férnie a helyüket.  
-
-* Ezek az információk átkerülnek a Spark munkavégző csomópontokhoz.  
-
-* A Spark munkavégző csomópontok az Azure Cosmos DB-partíciók közvetlenül kapcsolódni, csomagolja ki, és térjen vissza az adatokat a Spark-partíciók, a munkavégző csomópontok.  
-
-Spark és az Azure Cosmos DB közötti kommunikáció a jelentősen gyorsabb, mert az adatok áthelyezése az Azure Cosmos DB-adatcsomópontok (partíciók) és a Spark munkavégző csomópontok között. Ebben a példában néhány minta Twitter-adatok küldése az Azure Cosmos DB-fiókhoz, és az adatokat a lekérdezések futtatása Spark. A következő lépések segítségével minta Twitter adatokat írni az Azure Cosmos DB:
-
-1. Hozzon létre egy [Azure Cosmos DB SQL API-fiók](create-sql-api-dotnet.md#create-a-database-account) és [gyűjtemény hozzáadása](create-sql-api-dotnet.md#add-a-collection) ahhoz a fiókhoz.  
-
-2. Töltse le a [TwitterCosmosDBFeed](https://github.com/tknandu/TwitterCosmosDBFeed) Githubon található mintát. Ezzel a hírcsatornával használatával minta Twitter adatokat írni az Azure Cosmos DB-hez.  
-
-3. Nyisson meg egy parancssort, és Tweepy és a pyDocumentdb modulok telepítéséhez a következő parancsok futtatásával:
-
-   ```bash
-   pip install tweepy==3.3.0
-   pip install pyDocumentDB
-   ```
-
-4. Bontsa ki a Twitter-hírcsatornáján minta tartalmát, és nyissa meg a config.py fájlt. Frissítse a masterKey, a gazdagépet, a databaseId, a collectionId és a preferredlocations listában.  
-
-5. Lépjen a `https://apps.twitter.com/`, és a Twitter-hírcsatornáján az alkalmazás regisztrálásához. Miután kiválasztotta az alkalmazás nevét, hogy megkapják a egy **fogyasztói kulcs, a fogyasztói titkos kulcs, a hozzáférési jogkivonatot és a hozzáférési jogkivonat titkos kulcs**. Másolja ki ezeket az értékeket, és frissítse azokat a config.py fájlt adja meg a Twitter-hírcsatorna alkalmazás programozott hozzáférést a Twitteren.   
-
-6. Mentse a config.py fájlt. Nyisson meg egy parancssort, és a Python-alkalmazás futtatása a következő paranccsal:
-
-   ```bash
-   Python driver.py
-   ```
-
-7. Nyissa meg az Azure Cosmos DB-gyűjtemények a portálon, és győződjön meg arról, hogy a Twitter-adatok íródik a gyűjteményben.
-
-### <a name="find-and-attach-the-java-sdk-to-the-spark-cluster"></a>Keresse meg és a Java SDK-t csatolja a Spark-fürt
-
-1. Hozzon létre egy [Azure Databricks-munkaterület](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-an-azure-databricks-workspace) és a egy [Spark-fürt](../azure-databricks/quickstart-create-databricks-workspace-portal.md#create-a-spark-cluster-in-databricks). Az Azure Databricks-modul 4.0-s verziója tartalmazza az Apache Spark 2.3.0-át és Scala 2.11-et azon belül.  
-
-2. Ha a fürt létrejött, és fut-e, lépjen a **munkaterület** > **létrehozás** > **könyvtár**.  
-
-3. Az a **új könyvtár** párbeszédpanelen válassza ki **Maven-koordináta** forrásaként. Adja meg a koordináta értékét **com.microsoft.azure:azure-cosmosdb-spark_2.3.0_2.11:1.2.0**, és válassza ki **könyvtár létrehozása**. A Maven-függőségek feloldása, és a csomagot kell hozzáadni a munkaterülethez. Az előző Maven koordináta formátumban 2.3.0-át jelöli a Spark-verziót, 2.11-et a Scala-verziót, és 1.2.0-s vagy annál újabb jelenti az Azure Cosmos DB-összekötő verziójának. 
-
-4. A kódtár telepítését követően csatlakoztat a fürthöz, a korábban létrehozott. 
-
-Ez a cikk bemutatja, hogy a Spark-összekötő Java SDK-t a következő esetekben:
-
-* Olvassa el a Twitter-adatok az Azure Cosmos DB-ből.  
-
-* Olvasási Twitter-adatok az Azure Cosmos DB streamelési van.  
-
-* Twitter-adatok írni az Azure Cosmos DB-hez. 
-
-### <a name="read-twitter-data-from-azure-cosmos-db"></a>Twitter-adatok olvasása az Azure Cosmos DB-ből
- 
-Ebben a szakaszban a Spark lekérdezéseket futtat a Twitter-adatok kötegelt olvasása az Azure Cosmos DB-ből. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-tárház gazdagépek a [Read_Batch_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Batch_Twitter_Data.ipynb) notebookot. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
-
-1. Nyissa meg az Azure Databricks-fiókját, és válassza ki **munkaterület** > **létrehozás** > **Notebook**. 
-
-2. Az a **jegyzetfüzet létrehozása** párbeszédpanelen adjon meg egy felhasználóbarát nevet, és válassza a **Python** nyelve. A legördülő listából válassza ki a korábban létrehozott fürt, és válassza ki **létrehozás**.  
-
-3. Frissítse a végpont, főkulcs, adatbázis és gyűjtemény értékek csatlakoztathatja a fiókhoz. Tweetek beolvasása az spark.read.format() paranccsal.
-
-   ```python
-   # Configuration Map
-   tweetsConfig = {
-   "Endpoint" : "<Your Azure Cosmos DB endpoint>",
-   "Masterkey" : "<Primary key of your Azure Cosmos DB account>",
-   "Database" : "<Your Azure Cosmos DB database name>",
-   "Collection" : "<Your Azure Cosmos DB collection name>", 
-   "preferredRegions" : "East US",
-   "SamplingRatio" : "1.0",
-   "schema_samplesize" : "200000",
-   "query_custom" : "SELECT c.id, c.created_at, c.user.screen_name, c.user.lang, c.user.location, c.text, c.retweet_count, c.entities.hashtags, c.entities.user_mentions, c.favorited, c.source FROM c"
+{ "name":"Spark-to-Cosmos_DB_Connector",
+  "conf": {
+    "spark.jars.packages": "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.3.5",
+    "spark.jars.excludes": "org.scala-lang:scala-reflect"
    }
-   # Read Tweets
-   tweets = spark.read.format("com.microsoft.azure.cosmosdb.spark").options(**tweetsConfig).load()
-   tweets.createOrReplaceTempView("tweets")
-   #tweets.cache()
+   ...
+}
+```
 
-   ```
+> Vegye figyelembe, felvételét a `spark.jars.excludes` távolítsa el az összekötőt, az Apache Spark és Livy között ellentmondások jellemző.
 
-4. Futtassa a lekérdezést, a Twitter-üzenetek száma a gyorsítótárazott adatokat a különböző hashtageket lekéréséhez. 
+### <a name="build-the-connector"></a>Az összekötő létrehozása
 
-   ```python
-   %sql
-   select hashtags.text, count(distinct id) as tweets
-   from (
-   select 
-     explode(hashtags) as hashtags,
-     id
-   from tweets
-   ) a
-   group by hashtags.text
-   order by tweets desc
-   limit 10
-   ```
+Jelenleg a összekötő projekt által használt `maven` létrehozását úgy, függőségeket, futtatásához:
 
-A Java SDK konfigurációs leképezés a következő értékeket támogatja: 
+```sh
+mvn clean package
+```
 
-|Beállítás  |Leírás  |
-|---------|---------|
-|query_maxdegreeofparallelism  | Csoportok párhuzamos műveletek számát futtassa az ügyfél oldalán párhuzamos lekérdezés-végrehajtás során. Ha 0-nál nagyobb értékre van beállítva, a hozzárendelt értékre párhuzamos műveletek számát korlátozza. Ha 0-nál kisebb érték, a rendszer automatikusan úgy dönt, hogy futtassa a párhuzamos műveletek számát. Az összekötő-végrehajtó az egyes gyűjtemény partíciók térképek, ezt az értéket kell az olvasási műveletet gyakorolt hatását.        |
-|query_maxbuffereditemcount     |    Úgy állítja be, amely képes lehet pufferelt elemek maximális száma az ügyfél oldalán, párhuzamos lekérdezés-végrehajtás során. Ha 0-nál nagyobb értékre van beállítva, a hozzárendelt értékre pufferelt elemek számát korlátozza. Ha 0-nál kisebb érték, a rendszer automatikusan úgy dönt, hogy a puffer elemek száma.     |
-|query_enablescan    |   Engedélyezheti a lekérdezések, amelyek nem nyitható meg, mert az indexelés vizsgálatok volt csoportok kilépteti a programból a kért útvonalakon.       |
-|query_disableruperminuteusage  |  Letiltja a kérelemegység (RU) / perc kiszolgálására képes kapacitást adhat a lekérdezéshez, ha rendszeresen kiosztott kérelemegység/s kimerült.       |
-|query_emitverbosetraces   |   Beállítja a lehetőséget, hogy a lekérdezések kibocsátható vizsgálat részletes nyomkövetési ki.      |
-|query_pagesize  |   A lekérdezés eredménye lap egyes lekérdezési kérés méretének beállítása. A teljesítmény optimalizálása, a nagy lapméret használatával csökkenthető a fetch eredmények való adatváltások számát.      |
-|query_custom  |  Azure Cosmos DB lekérdezése felülírják az alapértelmezett lekérdezéssel, ha az adatok lekérése az Azure Cosmos DB-hez állítja be. Megjegyzés: Ha ezt az értéket ad meg, használhatja azt egy lekérdezés helyett leküldte a predikátumok is.     |
+## <a name="working-with-our-samples"></a>A minták használata
 
-A forgatókönyvtől függően különféle konfigurációs értékeket kell használnia a teljesítmény és a teljesítmény optimalizálásához. Vegye figyelembe, hogy a konfigurációs kulcs jelenleg nem betűérzékeny, és a konfigurációs érték mindig egy karakterláncot.
+A [Cosmos DB Spark GitHub-adattár](https://github.com/Azure/azure-cosmosdb-spark) rendelkezik a következő mintafüzetek és parancsfájlok, próbálja meg.
 
-### <a name="read-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Az Azure Cosmos DB a streamelési olvasási Twitter-adatok
+* **Kereskedelmi repülési teljesítmény Spark és a Cosmos DB (Budapesten)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): Csatlakozzon a Spark HDInsight Jupyter notebook szolgáltatás használatával a Spark SQL, GraphFrames és előrejelzésére járatok késésének használatával a gépi Tanulási folyamatok bemutatására Cosmos DB-hez.
+* **[Csatlakozás a Spark a Cosmos DB – csatorna módosítása](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Spark%2Band%2BCosmos%2BDB%2BChange%2BFeed.ipynb)**: A Cosmos DB-módosítási hírcsatorna kapcsolódás Spark rövid bemutatása.
+* **Twitter-forrás az Apache Spark és az Azure Cosmos DB módosítási hírcsatorna**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
+* **Az Apache Spark használatával lekérdezés Cosmos DB Gráfok**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
+* **[Csatlakozás az Azure Databricks az Azure Cosmos DB](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)**  használatával `azure-cosmosdb-spark`.  Csatolva ide van is egy Azure Databricks verzióját a [időben repülési teljesítmény notebook](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks).
+* **[Lambda architektúra az Azure Cosmos DB és a HDInsight (az Apache Spark)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)**: Csökkentheti a Cosmos DB- és Spark használata big data-adatcsatornákat fenntartásának üzemeltetési terheit.
 
-Ebben a szakaszban a Spark lekérdezéseket futtat egy módosítási hírcsatorna streamelési Twitter-adatok olvasásához. Bár ebben a szakaszban futtassa a lekérdezéseket, ellenőrizze, hogy a Twitter-hírcsatornáján alkalmazás fut, és adatokat az Azure Cosmos DB szivattyúzó. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-tárház gazdagépek a [Read_Stream_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Stream_Twitter_Data.scala) notebookot. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
+## <a name="more-information"></a>További információ
 
-1. Nyissa meg az Azure Databricks-fiókját, és válassza ki **munkaterület** > **létrehozás** > **Notebook**.  
+További információt van a `azure-cosmosdb-spark` [wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki) többek között:
 
-2. Az a **jegyzetfüzet létrehozása** párbeszédpanelen adjon meg egy felhasználóbarát nevet, és válassza a **Scala** nyelve. A legördülő listából válassza ki a korábban létrehozott fürt, és válassza ki **létrehozás**.  
+* [Az Azure Cosmos DB Spark-összekötő felhasználói útmutató](https://github.com/Azure/azure-documentdb-spark/wiki/Azure-Cosmos-DB-Spark-Connector-User-Guide)
+* [Összesítések példák](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)
 
-3. Frissítse a végpont, főkulcs, adatbázis és gyűjtemény értékek csatlakoztathatja a fiókhoz.
+### <a name="configuration-and-setup"></a>Konfiguráció és beállítás
 
-   ```scala
-   // This script does the following:
-   // - creates a structured stream from a Twitter feed CosmosDB collection (on top of change feed)
-   // - get the count of tweets
-   import com.microsoft.azure.cosmosdb.spark._
-   import com.microsoft.azure.cosmosdb.spark.schema._
-   import com.microsoft.azure.cosmosdb.spark.config.Config
-   import org.codehaus.jackson.map.ObjectMapper
-   import com.microsoft.azure.cosmosdb.spark.streaming._
-   import java.time._
+* [Spark-összekötő konfigurálása](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuration-references)
+* [Apache Spark a Cosmos DB-összekötő telepítése](https://github.com/Azure/azure-documentdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup) (folyamatban)
+* [Az Azure Cosmos DB Apache Spark (HDI) a Power BI közvetlen lekérdezés konfigurálása](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuring-Power-BI-Direct-Query-to-Azure-Cosmos-DB-via-Apache-Spark-(HDI))
 
-   val sourceConfigMap = Map(
-   "Endpoint" -> "<Your Azure Cosmos DB endpoint>",
-   "Masterkey" -> "<Primary key of your Azure Cosmos DB account>",
-   "Database" -> "<Your Azure Cosmos DB database name>",
-   "Collection" -> "<Your Azure Cosmos DB collection name>", 
-   "ConnectionMode" -> "Gateway",
-   "ChangeFeedCheckpointLocation" -> "/tmp",
-   "changefeedqueryname" -> "Streaming Query from Cosmos DB Change Feed Internal Count")
-   ```
-4. Indítsa el a spark.readStream.format() paranccsal adatfolyamként olvasása a módosítási hírcsatorna:
+### <a name="troubleshooting"></a>Hibaelhárítás
 
-   ```scala
-   var streamData = spark.readStream.format(classOf[CosmosDBSourceProvider].getName).options(sourceConfigMap).load()
-   ```
-5. A lekérdezés a konzol streamelésének megkezdéséhez:
+* [Összesíti a Cosmos DB használatával](https://github.com/Azure/azure-documentdb-spark/wiki/Troubleshooting:-Using-Cosmos-DB-Aggregates)
+* [Ismert problémák](https://github.com/Azure/azure-cosmosdb-spark/wiki/Known-Issues)
 
-   ```scala
-   //**RUN THE ABOVE FIRST AND KEEP BELOW IN SEPARATE CELL
-   val query = streamData.withColumn("countcol", streamData.col("id").substr(0,0)).groupBy("countcol").count().writeStream.outputMode("complete").format("console").start()
-   ```
+### <a name="performance"></a>Teljesítmény
 
-A Java SDK konfigurációs leképezés a következő értékeket támogatja:
+* [Teljesítménnyel kapcsolatos tippek](https://github.com/Azure/azure-cosmosdb-spark/wiki/Performance-tips)
+* [Lekérdezés tesztelések](https://github.com/Azure/azure-documentdb-spark/wiki/Query-Test-Runs)
+* [Írási teszt futtatása](https://github.com/Azure/azure-cosmosdb-spark/wiki/Writing-Test-Runs)
 
-|Beállítás  |Leírás  |
-|---------|---------|
-|readchangefeed   |  Azt jelzi, hogy a gyűjtemény tartalmát az, cosmos DB-módosítási hírcsatorna letöltődött. Az alapértelmezett értéke FALSE (hamis).       |
-|changefeedqueryname |   Egyéni karakterláncot a lekérdezés azonosításához. Az összekötő nyomon követi, hogy a gyűjtemény folytatási jogkivonatainak különböző változáscsatorna lekérdezések külön-külön. Ha readchangefeed értéke igaz, akkor ez egy szükséges konfiguráció, amely nem üres érték.      |
-|changefeedcheckpointlocation  |   Egy elérési útja helyi file storage segítségével őrzi a folytatási token csomóponthibák esetén.      |
-|changefeedstartfromthebeginning  |  Állítja be, hogy el kell indulnia a módosítási hírcsatorna, az elejétől (igaz) vagy az aktuális pontról (hamis). Alapértelmezés szerint indul az aktuális (hamis).       |
-|rollingchangefeed  |   A legutóbbi lekérdezés egy logikai érték, amely azt jelzi, hogy a módosítási hírcsatorna kell lennie. Az alapértelmezett értéke FALSE (hamis), ami azt jelenti, hogy a módosítások a gyűjtemény első olvasási bájtjai számítanak.      |
-|changefeedusenexttoken  |   Logikai érték feldolgozása sikertelen helyzetek feltételeinek megteremtésére. Azt jelzi, hogy az aktuális változáscsatorna köteg szabályosan kezelése. A Resiliant elosztott adatkészlet a következő folytatási token használatával kell módosításokat az ezt követő kötegelt beolvasása.      |
-| InferStreamSchema | Logikai érték, amely azt jelzi-e a séma a streamelési adatok mintát venni streamelési elején. Alapértelmezés szerint az értéke igaz. Ez a paraméter értéke igaz, és a streamelési adatok sémaváltozások mintavételezés után, ha újonnan hozzáadott tulajdonságait a rendszer eldobja a streamelési adatok keretbe. <br/><br/> Ha azt szeretné, hogy a streamelési adatok keret sémafüggetlen kell, ez a paraméter "false" értékűre. Ebben a módban az Azure Cosmos DB-módosítási hírcsatorna olvasni a dokumentumokat törzsében burkolja be a szervezet tulajdonsággal. Ez a tulajdonság szerepel a eredő streamelt adatokat keret, azokat a rendszer tulajdonságértékek kivéve.
- |
+### <a name="change-feed"></a>Módosítási hírcsatorna
 
-### <a name="connection-settings"></a>Kapcsolati beállítások
+* [Az Azure Cosmos DB módosítási hírcsatorna és az Apache Spark Stream feldolgozása módosítások](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
+* [Módosítási hírcsatorna bemutatók](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
+* [Strukturált Stream bemutatók](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
 
-Java SDK-t az alábbi kapcsolati beállításokat támogatja:
+### <a name="monitoring"></a>Figyelés
 
-|Beállítás  |Leírás  |
-|---------|---------|
-|connectionmode   |  Beállítja a csatlakozási mód, amely a belső DocumentClient kell kommunikálni az Azure Cosmos DB használatával. Engedélyezett értékek a következők **DirectHttps** (alapértelmezett érték) és **átjáró**. A DirectHttps csatlakozási mód közvetlenül irányítja a kérelmeket a CosmosDB-partíciók, és némi késés előnyt biztosít.       |
-|connectionmaxpoolsize   |  Belső DocumentClient által használt kapcsolat készletméret értékét állítja be. Az alapértelmezett érték 100.       |
-|connectionidletimeout  |  Az időtúllépési érték beállítása (másodpercben), a tétlen kapcsolatok. Az alapértelmezett értéke 60.       |
-|query_maxretryattemptsonthrottledrequests    |  Beállítja az újrapróbálkozások maximális számát. Kérelem hiba miatt a sebesség korlátozása az ügyfél esetén ezt az értéket használja. Ha nincs megadva, alapértelmezett értéke 1000 újrapróbálkozási kísérleteket.       |
-|query_maxretrywaittimeinseconds   |  Beállítja a maximális újrapróbálkozási idő másodpercben. Alapértelmezés szerint 1000 másodperc.       |
-
-### <a name="write-twitter-data-to-azure-cosmos-db"></a>Twitter-adatok írni az Azure Cosmos DB-hez 
-
-Ebben a szakaszban a Spark lekérdezéseket futtat a Twitter-adatok kötegelt írni az új gyűjtemény ugyanabban az adatbázisban. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-tárház gazdagépek a [Write_Batch_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Write_Batch_Twitter_Data.ipynb) notebookot. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
-
-1. Nyissa meg az Azure Databricks-fiókját, és válassza ki **munkaterület** > **létrehozás** > **Notebook**.  
-
-2. Az a **jegyzetfüzet létrehozása** párbeszédpanelen adjon meg egy felhasználóbarát nevet, és válassza a **Scala** nyelve. A legördülő listából válassza ki a korábban létrehozott fürt, és válassza ki **létrehozás**.  
-
-3. Frissítse a végpont, főkulcs, adatbázis és gyűjtemény értékeket kapcsolhatja az adatbázis-gyűjtemény, Twitter-adatok írására és olvasására.
-
-   ```scala
-   %scala
-   // Import Necessary Libraries
-   import org.joda.time._
-   import org.joda.time.format._
-   import com.microsoft.azure.cosmosdb.spark.schema._
-   import com.microsoft.azure.cosmosdb.spark._
-   import com.microsoft.azure.cosmosdb.spark.config.Config
-
-   // Maps
-   val readConfigMap = Map(
-   "Endpoint" -> "<Your Azure Cosmos DB endpoint>",
-   "Masterkey" -> "<Primary key of your Azure Cosmos DB account>",
-   "Database" -> "<Your Azure Cosmos DB database name>",
-   "Collection" -> "<Your Azure Cosmos DB source collection name>", 
-   "preferredRegions" -> "East US",
-   "SamplingRatio" -> "1.0",
-   "schema_samplesize" -> "200000",
-   "query_custom" -> "SELECT c.id, c.created_at, c.user.screen_name, c.user.location, c.text, c.retweet_count, c.entities.hashtags, c.entities.user_mentions, c.favorited, c.source FROM c"
-   )
-   val writeConfigMap = Map(
-   "Endpoint" -> "<Your Azure Cosmos DB endpoint>",
-   "Masterkey" -> "<Primary key of your Azure Cosmos DB account>",
-   "Database" -> "<Your Azure Cosmos DB database name>",
-   "Collection" -> "<Your Azure Cosmos DB destination collection name>", 
-   "preferredRegions" -> "East US",
-   "SamplingRatio" -> "1.0",
-   "schema_samplesize" -> "200000"
-   ) 
-
-   // Configs
-   // get read
-   val readConfig = Config(readConfigMap)
-   val tweets = spark.read.cosmosDB(readConfig)
-   tweets.createOrReplaceTempView("tweets")
-   tweets.cache()
-
-   // get write
-   val writeConfig = Config(writeConfigMap)
-   ```
-4. Futtassa a lekérdezést, a Twitter-üzenetek száma a gyorsítótárazott adatokat a különböző hashtageket lekéréséhez. 
-
-   ```scala
-   %sql
-   select hashtags.text, count(distinct id) as tweets
-   from (
-   select 
-     explode(hashtags) as hashtags,
-     id
-   from tweets
-   ) a
-   group by hashtags.text
-   order by tweets desc
-   limit 10
-   ```
-
-5. Hozzon létre egy új adatkeretbe tweetek címkék, és mentse az új gyűjtemény az adatokat. Miután a következő kódot, lépjen vissza a Portalba, és győződjön meg arról, hogy az adatok írása a gyűjteményhez. 
-
-   ```scala
-   %scala
-   // Import SaveMode so you can Overwrite, Append, ErrorIfExists, Ignore
-   import org.apache.spark.sql.{Row, SaveMode, SparkSession}
-
-   // Create new DataFrame of tweets tags
-   val tweets_bytags = spark.sql("select '2018-06-12' as currdt, hashtags.text as hashtags, count(distinct id) as tweets from ( select explode(hashtags) as hashtags, id from tweets ) a group by hashtags.text order by tweets desc limit 10")
-
-   // Save to Cosmos DB (using Append in this case)
-   // Ensure the baseConfig contains a Read-Write Key
-   // The key provided in our examples is a Read-Only Key
-
-   tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
-   ```
-
-A Java SDK konfigurációs leképezés a következő értékeket támogatja:
-
-|Beállítás  |Leírás  |
-|---------|---------|
-| BulkImport | Logikai érték, amely azt jelzi, hogy adatokat importálni kell a BulkExecutor könyvtár használatával. Alapértelmezés szerint az értéke igaz. |
-|WritingBatchSize  |   Azt jelzi, hogy a Köteg mérete, akkor használja, ha adatokat ír az Azure Cosmos DB-gyűjtemények. <br/><br/> Ha BulkImport paraméter értéke true, majd WritingBatchSize paraméter azt jelzi, hogy a paraméter értéke importAll API a BulkExecutor könyvtár bemenetként megadott dokumentumok a Köteg mérete. Alapértelmezés szerint ez az érték 100 ezer értéke. <br/><br/> Ha BulkImport paraméter false értékre van állítva, WritingBatchSize paramétert kell írnia az Azure Cosmos DB-gyűjteményhez használni kívánt batch méretét jelzi. Az összekötő Documentclient és upsertDocument kérelmek aszinkron módon elküldi a Batch szolgáltatásban. Minél nagyobb a Köteg mérete, a további átviteli sebességet érhet el, amíg a fürt erőforrásainak érhetők el. Másrészről adja meg a sebesség és a fogyasztott korlátozása kisebb számú kötegméret. Alapértelmezés szerint a írása a Köteg mérete 500 van beállítva.  |
-|Upsert   |  E helyett Documentclient upsertDocument használni, amikor az Azure Cosmos DB-gyűjtemények ír jelző logikai érték karakterlánc.   |
-| WriteThroughputBudget |  A gyűjtemény számára egy karakterlánc, amely RU\s, amely a tömeges betöltési Spark-feladat, a teljes átviteli sebesség ki a hozzárendelni kívánt számát jelöli. |
-
-
-### <a name="write-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Az Azure Cosmos DB az adatfolyam-, Twitter-adatok írása 
-
-Ebben a szakaszban a Spark lekérdezéseket futtat egy módosítási hírcsatorna streamelési ugyanabban az adatbázisban egy új gyűjteményt a Twitter-adatok írására. A [azure-cosmos DB-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub-tárház gazdagépek a [Write_Stream_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Write_Stream_Data.scala) notebookot. A notebook importálása az Azure Databricks-fiókjába, és frissítse a fiók URI-t, a főkulcs, adatbázis és gyűjtemény neve. A jegyzetfüzet futtatásához, vagy hozzon létre a következő:
-
-1. Nyissa meg az Azure Databricks-fiókját, és válassza ki **munkaterület** > **létrehozás** > **Notebook**.  
-
-2. Az a **jegyzetfüzet létrehozása** párbeszédpanelen adjon meg egy felhasználóbarát nevet, és válassza a **Scala** nyelve. A legördülő listából válassza ki a korábban létrehozott fürt, és válassza ki **létrehozás**.  
-
-3. Frissítse a végpont, főkulcs, adatbázis és gyűjtemény értékeket kapcsolhatja az adatbázis-gyűjtemény, Twitter-adatok írására és olvasására.
-
-   ```scala
-   import com.microsoft.azure.cosmosdb.spark._
-   import com.microsoft.azure.cosmosdb.spark.schema._
-   import com.microsoft.azure.cosmosdb.spark.config.Config
-   import com.microsoft.azure.cosmosdb.spark.streaming._
-
-   // Configure connection to Azure Cosmos DB Change Feed (Trades)
-   val ConfigMap = Map(
-   // Account settings
-   "Endpoint" -> "<Your Azure Cosmos DB endpoint>",
-   "Masterkey" -> "<Primary key of your Azure Cosmos DB account>",
-   "Database" -> "<Your Azure Cosmos DB database name>",
-   "Collection" -> "<Your Azure Cosmos DB source collection name>", 
-   // Change feed settings
-   "ReadChangeFeed" -> "true",
-   "ChangeFeedStartFromTheBeginning" -> "true",
-   "ChangeFeedCheckpointLocation" -> "dbfs:/cosmos-feed",
-   "ChangeFeedQueryName" -> "Structured Stream Read",
-   "InferStreamSchema" -> "true"
-   )
-   ```
-4. Indítsa el a spark.readStream.format() paranccsal adatfolyamként olvasása a módosítási hírcsatorna:
- 
-   ```scala
-   // Start reading change feed of trades as a stream
-   var streamdata = spark
-     .readStream
-     .format(classOf[CosmosDBSourceProvider].getName)
-     .options(ConfigMap)
-     .load()
-   ```
-
-5. A célgyűjtemény konfigurációval, és indítsa el a folyamatos átviteli feladat writeStream.format() módszer használatával:
-
-   ```scala
-   val sinkConfigMap = Map(
-   "Endpoint" -> "<Your Azure Cosmos DB endpoint>",
-   "Masterkey" -> "<Primary key of your Azure Cosmos DB account>",
-   "Database" -> "<Your Azure Cosmos DB database name>",
-   "Collection" -> "<Your Azure Cosmos DB destination collection name>", 
-   "checkpointLocation" -> "streamingcheckpointlocation6",
-   "WritingBatchSize" -> "100",
-   "Upsert" -> "true")
-
-   // Start the stream writer
-   val streamingQueryWriter = streamdata
-    .writeStream
-    .format(classOf[CosmosDBSinkProvider].getName)
-    .outputMode("append")
-    .options(sinkConfigMap)
-    .start()
-    ```
-
-A Java SDK konfigurációs leképezés a következő értékeket támogatja:
-
-|Beállítás  |Leírás  |
-|---------|---------|
-|Upsert   |  E helyett Documentclient upsertDocument használni, amikor az Azure Cosmos DB-gyűjtemények ír jelző logikai érték karakterlánc.   |
-|checkpointlocation  |   Egy elérési útja helyi file storage segítségével őrzi a folytatási token csomóponthibák esetén.   |
-|WritingBatchSize  |  Azt jelzi, hogy a Köteg mérete írja az adatokat az Azure Cosmos DB-gyűjtemények használni. Az összekötő Documentclient és upsertDocument kérelmek aszinkron módon elküldi a Batch szolgáltatásban. Minél nagyobb a Köteg mérete, a további átviteli sebességet érhet el, amíg a fürt erőforrásainak érhetők el. Másrészről adja meg a sebesség és a fogyasztott korlátozása kisebb számú kötegméret. Alapértelmezés szerint a írása a Köteg mérete 500 van beállítva.  |
-
-
-### <a name="considerations-when-using-java-sdk"></a>A Java SDK használatának szempontjai
-
-Csatlakozás a Spark az Azure Cosmos DB Java SDK-val a következő esetekben ajánlott:
-
-* Python- vagy a Scala használni kívánt.  
-
-* Van egy nagy mennyiségű adat az Apache Spark és az Azure Cosmos DB közötti átviteléhez. A Java SDK jobban, mint a pyDocumentDB hajt végre. Lekérdezési teljesítmény különbségekkel kapcsolatos további információkért lásd: a [lekérdezéstesztelésből futtatja a wikin](https://github.com/Azure/azure-cosmosdb-spark/wiki/Query-Test-Runs).
+* [Az application insights segítségével a Spark-feladatok figyelése](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 43992d25590a58b24c48aad8bfbf6f91b17699ee
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b60861b4daced5e3d292feec54f8a54839a80b8f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098081"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728914"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -143,7 +143,7 @@ Eseményindítók, a bemeneti és kimeneti kötései kerülnek a kötelező attr
 
 1. Ellenőrizze, hogy [konfigurálva a helyi fejlesztési projekt](#configure-the-project-for-local-development).
 
-2. Adja hozzá a NuGet-bővítmény csomagot az adott kötéshez. További információkért lásd: [helyi C# használatával a Visual Studio fejlesztési](functions-triggers-bindings.md#local-csharp) az eseményindítók és kötések cikkben. A kötés NuGet csomag követelmény a kötési a áttekintésével foglalkozó cikkben találhatók. Például keresse meg a csomag követelményei az Event Hubs eseményindítót a [az Event Hubs kötés áttekintésével foglalkozó cikkben](functions-bindings-event-hubs.md).
+2. Adja hozzá a NuGet-bővítmény csomagot az adott kötéshez. További információkért lásd: [helyi C# használatával a Visual Studio fejlesztési](./functions-bindings-register.md#local-csharp) az eseményindítók és kötések cikkben. A kötés NuGet csomag követelmény a kötési a áttekintésével foglalkozó cikkben találhatók. Például keresse meg a csomag követelményei az Event Hubs eseményindítót a [az Event Hubs kötés áttekintésével foglalkozó cikkben](functions-bindings-event-hubs.md).
 
 3. Ha vannak olyan alkalmazásbeállításokat, amelyek a kötés van szüksége, adja hozzá őket a **értékek** gyűjteményt a [helyi beállítási fájl](functions-run-local.md#local-settings-file). Ezekkel az értékekkel, ha helyileg futtatja a függvényt. A függvényalkalmazáshoz az Azure-ban, a függvény futásakor a [Alkalmazásbeállítások függvény](#function-app-settings) szolgálnak.
 

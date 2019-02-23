@@ -7,16 +7,16 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 077aebec9a0420ac5f440f78ca9dc664b4cc8c6d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7cb0f37137ebde60e7b40392df458ff98306d9df
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416751"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673205"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Azure natív tanúsítványalapú hitelesítésének használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: PowerShell
 
-Ez a cikk ahhoz nyújt segítséget, hogyan lehet biztonságosan csatlakoztatni Windowst vagy Mac OS X-et futtató egyedi ügyfeleket egy Azure-beli virtuális hálózathoz. A pont–hely VPN-kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról. Pont–hely kapcsolatot is használhat helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. Pont–hely kapcsolat esetén SSTP (Secure Socket Tunneling Protocol) vagy IKEv2-protokoll használatával jön létre a VPN-kapcsolat. További információkat a pont–hely VPN-ről a [pont–hely VPN-t ismertető](point-to-site-about.md) témakör tartalmaz.
+Ez a cikk segítséget nyújt a Windows, Linux vagy Mac OS X rendszerű Azure virtuális hálózatba az egyes ügyfelek biztonságos csatlakoztatása. A pont–hely VPN-kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról. Pont–hely kapcsolatot is használhat helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. Pont–hely kapcsolat esetén SSTP (Secure Socket Tunneling Protocol) vagy IKEv2-protokoll használatával jön létre a VPN-kapcsolat. További információkat a pont–hely VPN-ről a [pont–hely VPN-t ismertető](point-to-site-about.md) témakör tartalmaz.
 
 ![Számítógép csatlakoztatása Azure-beli virtuális hálózathoz – pont-hely kapcsolati diagram](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeportal.png)
 

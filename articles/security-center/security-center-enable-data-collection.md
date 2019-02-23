@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: cdbce2073213906dbb82b0684f8ef4e3528f6cf4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 0afc507a49ae7cc54fb0daa5c7ae71c3a40ee637
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652696"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731106"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések monitorozásához. Adatok gyűjtése a Log Analytics ügynökét használja, amely különböző biztonsági konfigurációkat és eseménynaplókat olvas be a gép, és másolja az adatokat az elemzéshez munkaterülethez. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Log Analytics-ügynököket az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -266,7 +266,8 @@ A Microsoft Monitoring Agent, manuálisan is telepítheti, így a Security Cente
   > [!NOTE]
   > A szakasz **esemény-és teljesítményadatok gyűjtése** nem kötelező.
   >
-6. A bővítmény telepítése a PowerShell használatával, használja a következő PowerShell-példa:
+6. A bővítmény telepítése a PowerShell használatával, használja a következő PowerShell-példa:  [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+   
     1.  Lépjen a **Log Analytics** , majd kattintson a **speciális beállítások**.
     
         ![A log analytics beállítása][11]
@@ -288,11 +289,11 @@ A Microsoft Monitoring Agent, manuálisan is telepítheti, így a Security Cente
 
       - Amikor telepíti egy Windows virtuális gépen:
         
-             Set-AzureRmVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
+             Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
     
        - Amikor telepíti egy Linux rendszerű virtuális gépen:
         
-             Set-AzureRmVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+             Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
 
 > [!NOTE]
 > Hogyan felvétele a Security Center PowerShell-lel, tekintse meg útmutatást [automatizálása a PowerShell-lel az Azure Security Center bevezetése](security-center-powershell-onboarding.md).

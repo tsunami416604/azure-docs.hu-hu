@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory B2B együttműködés felhasználói tulajdonságainak |} A Microsoft Docs
+title: B2B-együttműködés felhasználó – Azure Active Directory tulajdonságainak |} A Microsoft Docs
 description: Az Azure Active Directory B2B együttműködés felhasználói tulajdonságok konfigurálható
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7ef27b1365078ea2c5a7b92338a6c10f8d05de0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 45e9553a3af8a09a6630efa771294661702feef5
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209251"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670700"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B együttműködés felhasználó tulajdonságai
 

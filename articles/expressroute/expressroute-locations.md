@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/20/2019
 ms.author: pareshmu
-ms.openlocfilehash: c80477eee18eda2bb3f6e273fdab760d27531310
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0e999017f7c093b1b9b18db92950d66e453db47c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456435"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670659"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -97,7 +97,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Chicago, Dallas, Dublin, Hongkong, London, London2, Los Angeles, Melbourne, Miami, New York, Oszaka, Párizs, Sao Paulo, Seattle, szilícium-völgy, Szingapúr, Sydney, Tokió, Toronto, Washington, D.C. |
 | **euNetworks** |Támogatott |Támogatott |Amszterdam, Dublin, London |
 | **GÉANT** |Támogatott |Támogatott |Amszterdam |
-| **[Global Cloud Xchange (GCX)](http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | Támogatott| Támogatott | Csennai, Mumbai |
+| **[Global Cloud Xchange (GCX)](http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Támogatott| Támogatott | Csennai, Mumbai |
 | **[InterCloud](https://www.intercloud.com/)** |Támogatott |Támogatott |Amszterdam, London, New York, Párizs, Szilícium-völgy, Szingapúr, Washington, D.C. |
 | **Internet2** |Támogatott |Támogatott |Chicago, Dallas, Washington, D.C. |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Támogatott |Támogatott |Oszaka, Tokió |
@@ -289,7 +289,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** | Észak-Amerika |
 | **[FlexManage](http://www.flexmanage.com/cloud)** | Észak-Amerika |
 | **[Lightstream](https://www.ltstream.com/expressroute)** | Észak-Amerika |
-| **[The IT Consultancy Group](http://itconsult.com.au/microsoft-expressroute)** | Ausztrália |
+| **[The IT Consultancy Group](http://itconsult.com.au/)** | Ausztrália |
 | **[MOQdigital](http://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | Ausztrália |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | Európa (Németország) |
 | **[Nelite](https://www.nelite.com/offres-services/)** | Európa |

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bee9d2f823fe46d81550ea5090222f491562d636
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ea67c19beeb2fa52b77b04913aee1838569c4ac6
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700111"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675024"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 
@@ -80,7 +80,7 @@ Győződjön meg róla, hogy a VMware-kiszolgálók és -virtuálisgépek megfel
 3. Ellenőrizze a helyszíni [hálózat](vmware-physical-azure-support-matrix.md#network) és [tárolás](vmware-physical-azure-support-matrix.md#storage) támogatását. 
 4. Ellenőrizze az Azure támogatott [hálózati](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [tárolási](vmware-physical-azure-support-matrix.md#azure-storage) és [számítási](vmware-physical-azure-support-matrix.md#azure-compute) lehetőségeit a feladatátvételt követően.
 5. Az Azure-ba replikált helyszíni virtuális gépeknek meg kell felelniük az [Azure virtuális gépekre vonatkozó feltételeinek](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
-6. Linux rendszerű virtuális gépek, az eszköz vagy csatlakoztatási pont nevét egyedinek kell lennie. Győződjön meg arról, hogy nincs két eszközök/csatlakoztatási pont rendelkezik-e megkülönbözteti a kis-és nagybetűérzékeny neveket. Például a virtuális géphez ugyanazon a két eszköz elnevezési *device1* és *Device1* nem engedélyezett.
+6. Linux rendszerű virtuális gépek, az eszköz vagy csatlakoztatási pont nevét egyedinek kell lennie. Győződjön meg arról, hogy nincs két eszközök/csatlakoztatási pont rendelkezik-e ugyanazokat a neveket. Vegye figyelembe, hogy a név nem kis-és nagybetűket. Például két eszköz ugyanabban a virtuális Gépben, mint elnevezési _device1_ és _Device1_ nem engedélyezett.
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően

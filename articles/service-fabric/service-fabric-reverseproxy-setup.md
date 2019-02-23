@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 07/27/201
+ms.date: 11/13/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 522e9209da5d2df796700dea764270382b1170f5
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 52d6781f83262162f261d094d4818f803e5f3866
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102765"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670213"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Állítsa be, és az Azure Service Fabric fordított proxy konfigurálása
 Fordított proxy egy nem kötelező az Azure Service Fabric-szolgáltatás, amely segít a Service Fabric-fürtön futó mikroszolgáltatásokat felderítése és kommunikálni más szolgáltatásokkal, amelyek http-végpontokat. További tudnivalókért lásd: [fordított proxy az Azure Service Fabric](service-fabric-reverseproxy.md). Ez a cikk bemutatja, hogyan állíthatja be, és a fürtben a fordított proxy konfigurálása. 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: juliako
-ms.openlocfilehash: a815d03dd4e7163d4d9f00ce8f9c16f1b3055ce9
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: c0dc67ddf0f1de9ca72fd14a9113219209a6bda0
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652331"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674210"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Az Azure Media Services v3 – gyakori kérdések
 
@@ -62,7 +62,7 @@ A megfelelő módszer, hogy kihasználja az STS (Secure Token Service):
 
 STS attól függően, felhasználói profil hozzá más jogcímeket (például a "Prémium szintű felhasználó", "Alapszintű felhasználó", "Ingyenes próbaverzió felhasználó"). A különböző jogcímek a jwt-t a felhasználó megtekintheti a különböző tartalmát. Természetesen különböző tartalom eszköz, a ContentKeyPolicyRestriction rendelkezik a megfelelő RequiredClaims.
 
-Használja az Azure Media Services API-k konfigurálása/licenckulcs kézbesítési és az eszközök titkosítása (ahogyan az [ezt a mintát](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs).
+Használja az Azure Media Services API-k konfigurálása/licenckulcs kézbesítési és az eszközök titkosítása (ahogyan az [ezt a mintát](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
 
 További információkért lásd:
 
@@ -87,5 +87,4 @@ Most már a kiszolgálóoldali tártitkosítás (amely alapértelmezés szerint 
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Media Services v3 áttekintése](media-services-overview.md)
+[Media Services v3 áttekintése](media-services-overview.md)

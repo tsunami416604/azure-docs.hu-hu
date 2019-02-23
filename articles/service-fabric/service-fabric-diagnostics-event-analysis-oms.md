@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: 332939710517e99aaa77642dc5e67256b476bd66
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e8719b071bf2e836ed92fa4f6dcddc5f1865b320
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634575"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668794"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Esemény elemzése és képi megjelenítés, a Log Analytics használatával
  A log Analytics gyűjti és elemzi az alkalmazások és szolgáltatások a felhőben üzemeltetett származó telemetriai adatok, és segítséget nyújtanak a rendelkezésre állás és teljesítmény maximalizálása elemzésére szolgáló eszközöket biztosít. Ez a cikk ismerteti, hogyan elemezheti és mi történik a fürtön a Log Analytics-lekérdezések futtatása. Az alábbi gyakori kérdések foglalkozik:
@@ -28,7 +28,7 @@ ms.locfileid: "52634575"
 * Honnan tudhatom meg, amikor egy csomópont leáll?
 * Honnan tudhatom, hogy ha saját alkalmazásszolgáltatások elindítani vagy leállítani?
 
-## <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
+## <a name="overview-of-the-log-analytics-workspace"></a>A Log Analytics-munkaterület áttekintése
 
 >[!NOTE] 
 >Diagnosztikai tárfiók alapértelmezés szerint engedélyezve van a fürt létrehozásakor, miközben továbbra is be kell állítania a Log Analytics-munkaterületet a diagnosztikai tárfiók olvasni.
@@ -39,17 +39,19 @@ Log Analytics által adatok fogadását követően az Azure rendelkezik több *f
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Hozzáférés a Service Fabric-elemzés megoldás
 
-1. Az Azure Portalon nyissa meg az erőforráscsoport, amelyben létrehozta a Service Fabric-elemzés megoldás.
+Az a [az Azure Portal](https://portal.azure.com), nyissa meg az erőforráscsoport, amelyben létrehozta a Service Fabric-elemzés megoldás.
 
-2. Válassza ki az erőforrást **ServiceFabric\<nameOfOMSWorkspace\>**.
+Válassza ki az erőforrást **ServiceFabric\<nameOfOMSWorkspace\>**.
 
-2. A `Summary`, csempék formájában grafikon, látni fogja az egyes, a megoldások engedélyezve van, amelyek közül az egyik a Service fabric. Kattintson a **Service Fabric** graph (az alábbi első kép), hogy a Service Fabric-elemzés megoldás (második képen).
+A `Summary`, csempék formájában grafikon, látni fogja az egyes, a megoldások engedélyezve van, amelyek közül az egyik a Service fabric. Kattintson a **Service Fabric** graph, hogy a Service Fabric-elemzés megoldás.
 
-    ![A Service Fabric-megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
+![A Service Fabric-megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-    ![A Service Fabric-megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+Az alábbi képen látható a Service Fabric-elemzés megoldás kezdőlapján. A kezdőlap nyújt a pillanatkép, hogy mi történik a fürtön.
 
-A fenti képen a Service Fabric-elemzés megoldás kezdőlapján. Ez az, hogy mi történik, a fürt egy pillanatképnézet. Ha engedélyezte a diagnosztikai fürt létrehozásakor, láthatja az események 
+![A Service Fabric-megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+
+ Ha engedélyezte a diagnosztikai fürt létrehozásakor, láthatja az események 
 
 * [A Service Fabric-fürthöz kapcsolódó események](service-fabric-diagnostics-event-generation-operational.md)
 * [A Reliable Actors programozási modell események](service-fabric-reliable-actors-diagnostics.md)
@@ -58,15 +60,15 @@ A fenti képen a Service Fabric-elemzés megoldás kezdőlapján. Ez az, hogy mi
 >[!NOTE]
 >A beépített Service Fabric-események, valamint részletesebb rendszeresemények által gyűjtött [a diagnosztikai bővítmény, a konfiguráció frissítésével](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
 
-### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Nézet Service Fabric-események többek között a csomópontokon műveletek
+## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Nézet Service Fabric-események, beleértve a csomópontokon műveletek
 
-1. A Service Fabric-elemzés oldalon kattintson a diagramon az **Service Fabric-események**.
+A Service Fabric-elemzés oldalon kattintson a diagramon az **Service Fabric-események**.
 
-    ![Service Fabric megoldást műveleti csatorna](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
+![Service Fabric megoldást műveleti csatorna](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-2. Kattintson a **lista** az események megtekintése a listában. Miután itt látni fogja a rendszer minden olyan események, összegyűjtött alkalmazásproblémát. Referenciaként ezeket az Azure Storage-fiókban a WADServiceFabricSystemEventsTable származnak, és ehhez hasonlóan a reliable services és a következő látja actors-események megfelelő táblák.
+Kattintson a **lista** az események megtekintése a listában. Miután itt látni fogja a rendszer minden olyan események, összegyűjtött alkalmazásproblémát. Referenciaként az alábbiak a **WADServiceFabricSystemEventsTable** az Azure Storage-fiókot, és ehhez hasonlóan a megbízható szolgáltatások és az actors esemény ezután megjelenik megfelelő táblák származnak.
     
-    ![Lekérdezés műveleti csatorna](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
+![Lekérdezés műveleti csatorna](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
 Másik lehetőségként kattintson a Nagyító ikonra a bal oldali és a Kusto-lekérdezési nyelv használatával találja, amit keres. Ha például a fürtben található csomópontok végzett összes művelet megkereséséhez használhatja a következő lekérdezést. Az alábbiakban használt eseményazonosítók találhatók a [műveleti csatorna események referencia](service-fabric-diagnostics-event-generation-operational.md).
 
@@ -77,15 +79,15 @@ ServiceFabricOperationalEvent
 
 A számos további mezők, például a csomópontok (számítógép) a rendszer szolgáltatás (TaskName) lekérdezheti.
 
-### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Nézet Service Fabric Reliable Services és az Aktor esemény
+## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Nézet Service Fabric Reliable Services és az Aktor esemény
 
-1. A Service Fabric-elemzés oldalon kattintson a diagram a **Reliable Services**.
+A Service Fabric-elemzés oldalon kattintson a diagram a **Reliable Services**.
 
-    ![A Service Fabric megoldást a Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
+![A Service Fabric megoldást a Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-2. Kattintson a **lista** az események megtekintése a listában. Itt láthatja a reliable services eseményei. A különböző események láthatja, ha a szolgáltatás runasync elkezdődött és befejeződött, amely általában akkor fordul elő a telepítésekkel és frissítésekkel. 
+Kattintson a **lista** az események megtekintése a listában. Itt láthatja a reliable services eseményei. A különböző események láthatja, ha a szolgáltatás runasync elkezdődött és befejeződött, amely általában akkor fordul elő a telepítésekkel és frissítésekkel. 
 
-    ![A Reliable Services lekérdezés](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
+![A Reliable Services lekérdezés](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
 Reliable actors-események hasonló módon is megtekinthetők. A reliable actors részletesebb események beállításához módosítani szeretné a `scheduledTransferKeywordFilter` a Config a diagnosztikai bővítmény (lásd alább). Ezek a következők az értékeket a részletek a [a reliable actors-események referencia](service-fabric-reliable-actors-diagnostics.md#keywords).
 

@@ -6,15 +6,15 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ebd206f6de031ea73d621568e091632e2e8123b9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745809"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674503"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT hub-kapcsolat tesztelése
 
@@ -122,7 +122,7 @@ Ezúttal hitelesítési hibát lát, amikor az alkalmazás csatlakozni próbál:
 
 Ha az eszköze az IoT Hub egyik eszköz SDK-ját használja, az SDK kódtár kódja hozza létre a hubbal való hitelesítéshez használt SAS-jogkivonatot. A SAS-jogkivonat a hubja nevéből, az eszköze nevéből és az eszközkulcsból jön létre.
 
-Bizonyos esetekben előfordulhat, például egy felhő protokollátjárójában vagy egy egyéni hitelesítési séma részeként, hogy saját kezűleg kell létrehoznia a SAS-jogkivonatot. A SAS létrehozási kódjának hibaelhárításához hasznos, ha létre tud hozni egy működőként azonosított SAS-jogkivonatot, amelyet használhat a tesztelés során.
+Bizonyos esetekben előfordulhat, például egy felhő protokollátjárójában vagy egy egyéni hitelesítési séma részeként, hogy saját kezűleg kell létrehoznia a SAS-jogkivonatot. SAS generálása kódját hibáinak elhárítása, hasznos lehet létrehozni a tesztelés során használandó jó SAS-jogkivonatát.
 
 > [!NOTE]
 > A SimulatedDevice-2.js az SAS-jogkivonat SDK-val és SDK nélkül történő létrehozására is tartalmaz példákat.
@@ -133,7 +133,7 @@ Egy működő SAS-jogkivonat parancssori felületen való létrehozásához futt
 az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubName}
 ```
 
-Jegyezze fel a létrehozott SAS-jogkivonat teljes szövegét. A SAS-jogkivonatok a következőképpen néznek ki: `'SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307'`
+Jegyezze fel a létrehozott SAS-jogkivonat teljes szövegét. A SAS-jogkivonatok a következőképpen néznek ki: `SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
 A fejlesztői gépen egy terminálablakban keresse meg a letöltött Node.js-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Tutorials\ConnectivityTests\simulated-device** mappára.
 
@@ -189,13 +189,9 @@ A terminálablak információkat jelenít meg, miközben telemetriát küld a hu
 
 ![A szimulált eszköz üzeneteket küld](media/tutorial-connectivity/sim-3-sending.png)
 
-A portálon a **Metrikák** lehetőséggel ellenőrizheti, hogy a telemetriai üzenetek elérik-e az IoT Hubot:
+Használhat **metrikák** győződjön meg arról, hogy a telemetriai üzeneteket az IoT hub elérni próbált a portálon. Válassza ki az IoT Hubot az **Erőforrás** legördülő menüből, válassza az **Elküldött telemetriai üzeneteket** metrikaként, majd állítsa az időtartományt az **Elmúlt óra** lehetőségre. A diagram a szimulált eszköz által elküldött üzenetek összegzett darabszámát jeleníti meg:
 
-![IoT Hub metrikáinak megnyitása](media/tutorial-connectivity/metrics-portal.png)
-
-Válassza ki az IoT Hubot az **Erőforrás** legördülő menüből, válassza az **Elküldött telemetriai üzeneteket** metrikaként, majd állítsa az időtartományt az **Elmúlt óra** lehetőségre. A diagram a szimulált eszköz által elküldött üzenetek összegzett darabszámát jeleníti meg:
-
-![IoT Hub metrikáinak megjelenítése](media/tutorial-connectivity/metrics-active.png)
+![IoT Hub metrikáinak megjelenítése](media/tutorial-connectivity/metrics-portal.png)
 
 Néhány percig tart, amíg a metrikák elérhetővé válnak, miután elindította a szimulált eszközt.
 

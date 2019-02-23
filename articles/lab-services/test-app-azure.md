@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: a58ebe14749add30deb229f1b7e30fbb6e9921d7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9ca1c4a1ed1841f82bc386cff48315dd15ef91bb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814890"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730409"
 ---
 # <a name="test-your-app-in-azure"></a>Alkalmazás tesztelése az Azure-ban 
 Ez a cikk ismerteti az Azure-ban az alkalmazás tesztelése a DevTest Labs használatával. Először egy fájlmegosztást a tesztkörnyezet beállításához, és csatlakoztassa meghajtóként helyi fejlesztői gépen és a egy laborban lévő virtuális Gépet. Ezután használja a Visual Studio 2017 helyezze üzembe az alkalmazást a fájlmegosztáshoz, hogy a lab-ben a virtuális gépen futtathatja az alkalmazást.  
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek 
 1. [Azure-előfizetés létrehozása](https://azure.microsoft.com/free/) Ha nincs már rendelkezik ilyennel, és jelentkezzen be a [az Azure portal](https://portal.azure.com).
@@ -56,7 +58,7 @@ Ez a cikk ismerteti az Azure-ban az alkalmazás tesztelése a DevTest Labs haszn
 
     ![Válassza ki a labor virtuális gép](media/test-app-in-azure/select-lab-vm.png)
 2. Válassza ki **Connect** az eszköztáron a virtuális Géphez való csatlakozáshoz. 
-3. [Azure PowerShell telepítése](https://azure.microsoft.com/downloads/) használatával a **Windows telepítése** hivatkozásra a **parancssori eszközök** szakaszban. Azure PowerShell telepítésének egyéb módjai, lásd: [Ez a cikk](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1).
+3. [Telepítse az Azure PowerShellt](/powershell/azure/install-az-ps).
 4. Kövesse az utasításokat a csatlakoztatási a fájl megosztási szakaszban. 
 
 ## <a name="publish-your-app-from-visual-studio"></a>Tegye közzé az alkalmazást a Visual Studióból

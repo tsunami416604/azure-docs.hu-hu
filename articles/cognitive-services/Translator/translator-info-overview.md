@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 12/06/2018
+ms.date: 02/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: cadcd369f9cadf0fc7eb8728f83e8d6345ed2574
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 80c9944628eaa828a34ea16eb9f79271d6cd5728
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587769"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729211"
 ---
 # <a name="what-is-translator-text-api"></a>Mi a Translator Text API?
 
@@ -54,16 +54,6 @@ További információk [a nyelvi testreszabásról](customization.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Olvassa át a [díjszabási részleteket](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/).
-
 - [Regisztráljon](translator-text-how-to-signup.md) egy hozzáférési kulcs beszerzéséhez.
-
-- A [rövid útmutató](quickstarts/csharp.md) a C# nyelven írt REST API-hívásokat mutatja be részletesen. Ismerje meg, hogyan fordíthat le szövegeket az egyik nyelvről egy másikra minimális kódolással.
-
-- Az [API referenciadokumentációja](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) tartalmazza az API-k műszaki dokumentációját.
-
-## <a name="see-also"></a>Lásd még
-
-- [A Cognitive Services dokumentációjának oldala](https://docs.microsoft.com/azure/#pivot=products&panel=ai)
-- [A Cognitive Services termékoldala](https://azure.microsoft.com/services/cognitive-services/)
-- [A megoldásokkal és a díjszabással kapcsolatos információk](https://www.microsoft.com/en-us/translator/default.aspx)
+- [API-referencia](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) biztosít az API-k a technikai dokumentációt.
+- [Díjszabás részletei](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

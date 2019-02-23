@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
+ms.date: 02/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 46df2d6828cd60aee3c64128197579eb6f51a11a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 874e8da66fb01df1b25d14bd8d86186f0f6b55bb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340331"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733894"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Üzembe helyezése az Azure Monitor-beli virtuális gépek (előzetes verzió)
 Ez a cikk ismerteti, hogyan állítható be az Azure Monitor-beli virtuális gépek. A szolgáltatás figyeli az Azure-beli virtuális gépek (VM) és a virtuálisgép-méretezési csoportok és a környezetében a virtuális gépek operációs rendszer állapotát. A monitorozás tartalmaz, a felderítés és az alkalmazás függőségekkel is üzemelhet őket leképezése. 
@@ -36,7 +36,7 @@ A Kezdés előtt győződjön meg arról, hogy tisztában van-e az alábbi szaka
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Log Analytics-munkaterület jelenleg a következő régiókban támogatott:
+A virtuális gépek az Azure Monitor Log Analytics-munkaterület az alábbi régiókban támogatja:
 
 - USA nyugati középső régiója
 - USA keleti régiója

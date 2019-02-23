@@ -14,16 +14,14 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 20639296767c45cb1e7ae854e6ad9494c34fc0ed
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 57c3b5099c24151794b27f4aeec7845495a4630a
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650597"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670407"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Gyors útmutató: Hozzon létre egy virtuális hálózathoz a PowerShell használatával
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Virtuális hálózat lehetővé teszi, hogy az Azure-erőforrások, például virtuális gépeket (VM), a privát módon kommunikáljanak egymással, és az interneten. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatokat. A létrehozott virtuális hálózatban két virtuális gépet fog üzembe helyezni. Ezután csatlakozhat a virtuális gépekhez az internetről, és privát módon kommunikáljanak a virtuális hálózaton keresztül.
 

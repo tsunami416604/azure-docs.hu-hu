@@ -2,19 +2,19 @@
 title: Felhőből az eszközre irányuló üzeneteket az Azure IoT Hub (Python) szolgáltatással |} A Microsoft Docs
 description: Annak a felhőből az eszközre irányuló üzeneteket küld egy eszköz, az Azure IoT hubba a Pythonhoz készült Azure IoT SDK-k használatával. Módosítja egy szimulált eszközalkalmazás felhőből az eszközre irányuló üzenetek fogadása és módosíthat egy háttér-alkalmazást a felhőből az eszközre irányuló üzenetek küldéséhez.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 02/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 8c8cf77107f87522f9ae121845f53d8993449651
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5f649760dde33545a27a5d9a122a027128d5ce00
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824795"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671183"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Az IoT Hub (Python) felhőből az eszközre irányuló üzenetek küldéséhez
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -31,7 +31,7 @@ Ebben az oktatóanyagban épül [IoT Hub használatának első lépései]. Azt m
 * Az eszközön a felhőből az eszközre irányuló üzeneteket fogadni.
 * A megoldás háttérrendszerének, a kérelmek kézbesítési nyugtázás (*visszajelzés*) az IoT Hub az eszközökre küldött üzenetek.
 
-A felhőből az eszközre irányuló üzenetek további tájékoztatást talál a [IoT Hub fejlesztői útmutatójának][IoT Hub developer guide - C2D].
+A felhőből az eszközre irányuló üzenetek további tájékoztatást talál a [IoT Hub fejlesztői útmutatójának](iot-hub-devguide-messaging.md).
 
 Ez az oktatóanyag végén két Python-konzolalkalmazással futtassa:
 
@@ -39,17 +39,17 @@ Ez az oktatóanyag végén két Python-konzolalkalmazással futtassa:
 * **SendCloudToDeviceMessage.py**, amely a felhőből az eszközre üzenetet küld az IoT hubon keresztül a szimulált eszközalkalmazásnak, és annak kézbesítési nyugtázási majd kap.
 
 > [!NOTE]
-> Az IoT Hub SDK számos eszközplatformok és nyelveken (például a C, Java és Javascript) keresztül az Azure IoT eszközoldali SDK-k támogatással rendelkezik. Az eszköz csatlakoztatása, ebben az oktatóanyagban a kódot, és általában az Azure IoT hubba a részletes útmutatót lásd: a [Azure IoT fejlesztői központ].
+> Az IoT Hub SDK számos eszközplatformok és nyelveken (például a C, Java és Javascript) keresztül az Azure IoT eszközoldali SDK-k támogatással rendelkezik. Az eszköz csatlakoztatása, ebben az oktatóanyagban a kódot, és általában az Azure IoT hubba a részletes útmutatót lásd: a [Azure IoT fejlesztői központ](http://www.azure.com/develop/iot).
 > 
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* [Python 2.x vagy 3.x][lnk-python-download]. Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét][lnk-install-pip].
-* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra][lnk-visual-c-redist] van szükség a Python natív DLL-jei használatához.
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
+* [Python 2.x vagy 3.x](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét](https://pip.pypa.io/en/stable/installing/).
+* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra](http://www.microsoft.com/download/confirmation.aspx?id=48145) van szükség a Python natív DLL-jei használatához.
+* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 
 > [!NOTE]
-> `azure-iothub-service-client` és `azure-iothub-device-client` rendszerhez a *pip*-csomagok jelenleg csak Windows operációs rendszer alatt érhetőek el. A Linux/Mac OS tekintse meg a Linux és Mac OS-specifikus szakaszok a [a Python fejlesztőkörnyezet előkészítése] [lnk-python-devbox] bejegyzéshez.
+> `azure-iothub-service-client` és `azure-iothub-device-client` rendszerhez a *pip*-csomagok jelenleg csak Windows operációs rendszer alatt érhetőek el. A Linux/Mac OS, tekintse meg a Linux és Mac OS-specifikus szakaszokat a a [a fejlesztési környezet előkészítését a Pythonhoz készült](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) közzététele.
 > 
 
 
@@ -165,7 +165,7 @@ Ebben a szakaszban hozzon létre egy Python-Konzolalkalmazás, az eszköz szimul
 
 
 ## <a name="send-a-cloud-to-device-message"></a>Felhőből az eszközre irányuló üzenet küldése
-Ebben a szakaszban egy Python-Konzolalkalmazás, amely a felhőből az eszközre irányuló üzeneteket küld a szimulált eszközalkalmazás létrehozása. Az eszköz azonosítója, az eszköz a hozzáadott van szüksége a [IoT Hub használatának első lépései] oktatóanyag. Emellett az IoT Hub kapcsolati karakterláncra, amely találhatja meg a hub a [Azure Portal].
+Ebben a szakaszban egy Python-Konzolalkalmazás, amely a felhőből az eszközre irányuló üzeneteket küld a szimulált eszközalkalmazás létrehozása. Az eszköz azonosítója, az eszköz a hozzáadott van szüksége a [IoT Hub használatának első lépései] oktatóanyag. Emellett az IoT Hub kapcsolati karakterláncra, amely találhatja meg a hub a [az Azure portal](https://portal.azure.com).
 
 1. Egy szövegszerkesztővel hozzon létre egy **SendCloudToDeviceMessage.py** fájlt.
 
@@ -297,9 +297,9 @@ Most már készen áll az alkalmazások futtatására.
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtudhatta, hogyan a felhőből az eszközre irányuló üzenetek küldése és fogadása. 
 
-Példák teljes, végpontok közötti megoldások, amely az IoT Hub használata a megtekintéséhez lásd: [Az Azure IoT távoli figyelési megoldásgyorsító].
+Példák teljes, végpontok közötti megoldások, amely az IoT Hub használata a megtekintéséhez lásd: [Azure IoT távoli figyelési megoldásgyorsító](https://azure.microsoft.com/documentation/suites/iot-suite/).
 
-Az IoT Hub megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [Az IoT Hub fejlesztői útmutató].
+Az IoT Hub megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutatójának](iot-hub-devguide.md).
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-python-python-c2d/simulated-device.png
@@ -307,15 +307,4 @@ Az IoT Hub megoldások fejlesztésével kapcsolatos további tudnivalókért tek
 [img-message-received]: media/iot-hub-python-python-c2d/message-received.png
 
 <!-- Links -->
-[lnk-python-download]: https://www.python.org/downloads/
-[lnk-visual-c-redist]: http://www.microsoft.com/download/confirmation.aspx?id=48145
-[lnk-node-download]: https://nodejs.org/en/download/
-[lnk-install-pip]: https://pip.pypa.io/en/stable/installing/
-[IoT Hub használatának első lépései]: quickstart-send-telemetry-node.md
-[IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
-[Az IoT Hub fejlesztői útmutató]: iot-hub-devguide.md
-[Azure IoT fejlesztői központ]: http://www.azure.com/develop/iot
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-[Azure Portal]: https://portal.azure.com
-[Az Azure IoT távoli figyelési megoldásgyorsító]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[IoT Hub használatának első lépései]: quickstart-send-telemetry-python.md

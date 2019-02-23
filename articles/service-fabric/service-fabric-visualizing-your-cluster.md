@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: b97f2d3a015ebfd5f9c8771d3fc3edc1c074c839
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ba6a9a09945f0e822dfe02a74f2cdb8e21a1691c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203709"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674667"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
@@ -56,7 +56,7 @@ A fejlesztő munkaállomás telepítő, elindíthatja a Service Fabric Explorer 
 >
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Kapcsolódás a Service Fabric-fürt
-A Service Fabric-fürthöz csatlakozik, szüksége van a fürt felügyeleti végpontja (FQDN vagy IP) és a HTTP felügyeleti végpont portjára (19080 alapértelmezés szerint). Például: https://mysfcluster.westus.cloudapp.azure.com:19080. A "Connect to localhost" jelölőnégyzetet ezen a munkaállomáson a helyi fürthöz való csatlakozáshoz.
+A Service Fabric-fürthöz csatlakozik, szüksége van a fürt felügyeleti végpontja (FQDN vagy IP) és a HTTP felügyeleti végpont portjára (19080 alapértelmezés szerint). Ha például a https\:/ / mysfcluster.westus.cloudapp.azure.com:19080. A "Connect to localhost" jelölőnégyzetet ezen a munkaállomáson a helyi fürthöz való csatlakozáshoz.
 
 ### <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 A Service Fabric-fürthöz, tanúsítványok vagy Azure Active Directory (AAD) használatával való ügyfél-hozzáférési szabályozhatja.

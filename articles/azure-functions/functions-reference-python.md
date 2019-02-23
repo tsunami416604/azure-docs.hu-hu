@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: dadb645067a0f6cac436d638a829ac4c0937bd60
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 8fa093d629eb7c655ea277b1d57f35193394f722
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304377"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730001"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Az Azure Functions Python fejlesztői útmutatója
 
@@ -109,7 +109,7 @@ Megosztott kód egy külön mappában kell tárolni. Modulok SharedCode mappába
 from ..SharedCode import myFirstHelperFunction
 ```
 
-A Functions futtatókörnyezete által használt kötési bővítményeket vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](functions-triggers-bindings.md#local-development-azure-functions-core-tools) Azure Functions Core Tools használatával. 
+A Functions futtatókörnyezete által használt kötési bővítményeket vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](./functions-bindings-register.md#local-development-azure-functions-core-tools) Azure Functions Core Tools használatával. 
 
 A függvényalkalmazáshoz az Azure Functions-projekt telepítésekor a FunctionApp mappa teljes tartalmát szerepelnie kell a csomag, de nem maga a mappa.
 
@@ -149,7 +149,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-A függvény meghívásakor a rendszer 'req' értékként adja át a HTTP-kérelmet a függvénynek. A rendszer lekér egy bejegyzést az Azure Blob Storage-ból az útvonal URL-címében található _id_ alapján, és a függvénytörzs 'obj' elemeként elérhetővé teszi.
+Ha a függvény meghívása HTTP-kérelem a függvényt, átadott `req`. Egy bejegyzés az Azure Blob Storage alapján lehet beolvasni a _id_ URL-útvonal és lehetőségként elérhetővé tegyen `obj` függvény törzsében.
 
 ## <a name="outputs"></a>Kimenetek
 

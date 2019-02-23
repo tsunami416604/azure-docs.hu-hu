@@ -6,14 +6,14 @@ author: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/07/2019
+ms.date: 02/21/2019
 ms.author: jamesbak
-ms.openlocfilehash: cfe06720d0afa0f9f5cf22552ba7ab21d4e617c0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 566af5d42b1b5b778db0a2014b238657ace7db5c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993146"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672627"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Oktatóanyag: A kinyerési, átalakítási és az Azure HDInsight segítségével a Apache Hive-adatok betöltése
 
@@ -49,24 +49,22 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
-Ebben az oktatóanyagban a bemutatják, hogyan végezhet ETL-műveletet, a szállítás Hivatala statisztikák repülési adatait használja. Ezeket az adatokat az oktatóanyag elvégzéséhez le kell töltenie.
+1. Keresse meg a [kutatásáról és az innovatív technológia felügyeleti, a szállítás statisztikák Hivatala](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
-1. Lépjen a [kutatásáról és az innovatív technológia felügyeleti, a szállítás statisztikák Hivatala](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
-
-1. Az oldalon válassza ki a következő értékeket:
+2. Az oldalon válassza ki a következő értékeket:
 
    | Name (Név) | Érték |
    | --- | --- |
-   | **Időszak szűrése** |January |
-   | **Mezők** |FlightDate, OriginCityName, WeatherDelay |
+   | Filter Year (Szűrési év) |2013 |
+   | Filter Period (Szűrési időszak) |January |
+   | Mezők |Év FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, forrás, OriginCityName, OriginState, DestAirportID, cél, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   Az összes többi mező jelölését törölje.
 
-1. Az összes többi mező jelölését törölje.
-
-1. Válassza a **Download** (Letöltés) lehetőséget. A kiválasztott adatok mezőkkel .zip fájlt kap.
+3. Válassza a **Download** (Letöltés) lehetőséget. Egy .zip fájlt kap, amely a kiválasztott adatmezőket tartalmazza.
 
 ## <a name="extract-and-upload-the-data"></a>Csomagolja ki, és töltse fel az adatokat
 
-Ebben a szakaszban fogja feltölteni az adatokat a HDInsight-fürthöz. 
+Ebben a szakaszban fogja feltölteni az adatokat a HDInsight-fürt, és másolja az adatokat a Data Lake Storage Gen2-fiók.
 
 1. Nyisson meg egy parancssort, és a következő paranccsal biztonságos másolás (Scp) a .zip-fájlt tölthet fel a HDInsight-fürt fő csomópontjának:
 
@@ -134,25 +132,67 @@ Az Apache Hive-feladat részeként, az adatokat importálhat a .csv-fájlt nevű
 
 2. A következő szöveg módosításához cserélje le a `<file-system-name>` és `<storage-account-name>` helyőrzőket a rendszer és a tárolási fiók nevére. Ezután másolja és illessze be a nano-konzol használatával, az egér jobb gombjával kattintson a gomb mellett a SHIFT billentyű lenyomásával.
 
-   ```hiveql
-   DROP TABLE delays_raw;
+    ```hiveql
+    DROP TABLE delays_raw;
+    -- Creates an external table over the csv file
     CREATE EXTERNAL TABLE delays_raw (
-       FL_DATE string,
-       ORIGIN_CITY_NAME string,
-       WEATHER_DELAY float)
+        YEAR string,
+        FL_DATE string,
+        UNIQUE_CARRIER string,
+        CARRIER string,
+        FL_NUM string,
+        ORIGIN_AIRPORT_ID string,
+        ORIGIN string,
+        ORIGIN_CITY_NAME string,
+        ORIGIN_CITY_NAME_TEMP string,
+        ORIGIN_STATE_ABR string,
+        DEST_AIRPORT_ID string,
+        DEST string,
+        DEST_CITY_NAME string,
+        DEST_CITY_NAME_TEMP string,
+        DEST_STATE_ABR string,
+        DEP_DELAY_NEW float,
+        ARR_DELAY_NEW float,
+        CARRIER_DELAY float,
+        WEATHER_DELAY float,
+        NAS_DELAY float,
+        SECURITY_DELAY float,
+        LATE_AIRCRAFT_DELAY float)
+    -- The following lines describe the format and location of the file
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
     LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
-   DROP TABLE delays;
-   CREATE TABLE delays
-   LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
-   AS
-   SELECT FL_DATE AS FlightDate,
-       substring(ORIGIN_CITY_NAME, 2) AS OriginCityName,
-       WEATHER_DELAY AS WeatherDelay
-   FROM delays_raw;
-   ```
+
+    -- Drop the delays table if it exists
+    DROP TABLE delays;
+    -- Create the delays table and populate it with data
+    -- pulled in from the CSV file (via the external table defined previously)
+    CREATE TABLE delays
+    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
+    AS
+    SELECT YEAR AS year,
+        FL_DATE AS flight_date,
+        substring(UNIQUE_CARRIER, 2, length(UNIQUE_CARRIER) -1) AS unique_carrier,
+        substring(CARRIER, 2, length(CARRIER) -1) AS carrier,
+        substring(FL_NUM, 2, length(FL_NUM) -1) AS flight_num,
+        ORIGIN_AIRPORT_ID AS origin_airport_id,
+        substring(ORIGIN, 2, length(ORIGIN) -1) AS origin_airport_code,
+        substring(ORIGIN_CITY_NAME, 2) AS origin_city_name,
+        substring(ORIGIN_STATE_ABR, 2, length(ORIGIN_STATE_ABR) -1)  AS origin_state_abr,
+        DEST_AIRPORT_ID AS dest_airport_id,
+        substring(DEST, 2, length(DEST) -1) AS dest_airport_code,
+        substring(DEST_CITY_NAME,2) AS dest_city_name,
+        substring(DEST_STATE_ABR, 2, length(DEST_STATE_ABR) -1) AS dest_state_abr,
+        DEP_DELAY_NEW AS dep_delay_new,
+        ARR_DELAY_NEW AS arr_delay_new,
+        CARRIER_DELAY AS carrier_delay,
+        WEATHER_DELAY AS weather_delay,
+        NAS_DELAY AS nas_delay,
+        SECURITY_DELAY AS security_delay,
+        LATE_AIRCRAFT_DELAY AS late_aircraft_delay
+    FROM delays_raw;
+    ```
 
 3. Mentse a fájlt a CTRL + X használja, és írja be `Y` amikor a rendszer kéri.
 
@@ -170,15 +210,15 @@ Az Apache Hive-feladat részeként, az adatokat importálhat a .csv-fájlt nevű
 
 6. Amikor a `jdbc:hive2://localhost:10001/>` parancssor megjelenik, a következő lekérdezéssel nyerhet ki adatokat az importált repülőjárat-késési adatokból:
 
-   ```hiveql
-   INSERT OVERWRITE DIRECTORY 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output'
-   ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-   SELECT regexp_replace(OriginCityName, '''', ''),
-       avg(WeatherDelay)
-   FROM delays
-   WHERE WeatherDelay IS NOT NULL
-   GROUP BY OriginCityName;
-   ```
+    ```hiveql
+    INSERT OVERWRITE DIRECTORY '/tutorials/flightdelays/output'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    SELECT regexp_replace(origin_city_name, '''', ''),
+        avg(weather_delay)
+    FROM delays
+    WHERE weather_delay IS NOT NULL
+    GROUP BY origin_city_name;
+    ```
 
    Ez a lekérdezés lekéri azon városok listáját, ahol időjárás miatti késések történtek, valamint a késések átlagos idejét, és menti ezeket az adatokat a következő helyen: `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`. Később a Sqoop erről a helyről olvassa be az adatokat, amelyeket exportál az Azure SQL Database-be.
 
@@ -209,7 +249,7 @@ A kiszolgáló nevét kell ehhez a művelethez az SQL database-ből. Ezeket a l�
 6. A telepítés befejezése után használja a következő parancsot az SQL Database-kiszolgálóhoz való csatlakozáshoz.
 
    ```bash
-   TDSVER=8.0 tsql -H <server-name>.database.windows.net -U <admin-login> -p 1433 -D <database-name>
+   TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
    * Cserélje le a `<server-name>` helyőrzőt az SQL Database-kiszolgáló nevével.
 

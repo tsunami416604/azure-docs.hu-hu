@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory B2B-együttműködés hibaelhárítása |} A Microsoft Docs
+title: B2B-együttműködés – Azure Active Directory hibaelhárítása |} A Microsoft Docs
 description: Jogorvoslatok az Azure Active Directory B2B együttműködés szolgáltatással kapcsolatos gyakori problémák
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f69bad355bf5644988416958c4b4f32ed66714d9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f772c14f414e4e1c5401e3c85de7009355453c98
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186403"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668530"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Az Azure Active Directory B2B-együttműködés hibaelhárítása
 
@@ -37,7 +37,7 @@ Ez a funkció a bérlő és a hely gyűjtemény szintjén "ShowPeoplePickerSugge
 
 Értesítést kap, hogy nincs engedélye felhasználókat meghívni, győződjön meg arról, hogy a felhasználói fiók jogosult külső felhasználók a felhasználói beállítások szakasz meghívása:
 
-![](media/troubleshoot/external-user-settings.png)
+![Külső felhasználói beállítások](media/troubleshoot/external-user-settings.png)
 
 Ha nemrég módosította ezeket a beállításokat, vagy a Vendégmeghívó szerepkörrel egy felhasználóhoz, van egy 15 – 60 perc késleltetéssel a módosítások életbe léptetéséhez.
 
@@ -49,7 +49,7 @@ Gyakori hibák a következők:
 
 Amikor a felhasználók figyelmét, amelyek a szervezet az Azure Active Directory, de ha az adott felhasználói fiók nem létezik (például a felhasználó nem létezik az Azure ad-ben a contoso.com). A rendszergazda a contoso.com, előfordulhat, hogy tartalmaznak egy házirend meggátolja, hogy a felhasználók létrehozása folyamatban. A felhasználónak ellenőriznie kell meghatározni, ha a külső felhasználók számára engedélyezett a rendszergazdától. Előfordulhat, hogy a külső felhasználó rendszergazda kell e-mailben ellenőrzött felhasználók a tartományhoz (Ez [cikk](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) az e-mailben ellenőrzött felhasználók).
 
-![](media/troubleshoot/allow-email-verified-users.png)
+![Hiba meg ezen a bérlőn nem teszi lehetővé e-mailben ellenőrzött felhasználók felvételét](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Külső felhasználó nem létezik már egy összevont tartományban
 

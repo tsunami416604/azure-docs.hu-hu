@@ -1,72 +1,81 @@
 ---
 title: Törölt Office 365-csoport visszaállítása az Azure AD-ben | Microsoft Docs
-description: A cikkből megtudhatja, hogyan állíthat vissza egy törölt csoportot, tekintheti meg a visszaállítható csoportokat, valamint törölhet véglegesen egy csoportot az Azure Active Directoryban.
+description: Visszaállíthatók a törölt, visszaállítható csoportok megtekintése, és véglegesen törli a csoportot az Azure Active Directoryban
 services: active-directory
-documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 08/28/2017
+ms.date: 02/21/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2e756676ee1abde88f75a1629640239f3162ea
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: cacd4a24becab1dfe797fe29aea125c016527192
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430641"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734387"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Törölt Office 365-csoport visszaállítása az Azure Active Directoryban
-
 Amikor töröl egy Office 365-csoportot az Azure Active Directoryban (Azure AD), a törlés dátumától számított 30 napig a törölt csoport megmarad, azonban nem látható. Ennek célja az, hogy a csoport és tartalma szükség esetén visszaállítható legyen. Ez a funkció kizárólag Azure AD-ben használt Office 365-csoportokra vonatkozik. Nem használható biztonsági csoportok és terjesztési csoportok esetén.
 
 > [!NOTE]
-> Ne használja a `Remove-MsolGroup` parancsot, mert azzal véglegesen törli a csoportot. O365-csoport törléséhez mindig a `Remove-AzureADMSGroup` parancsot használja.
+> Ne használja a `Remove-MsolGroup` parancsot, mert azzal véglegesen törli a csoportot. Mindig használjon `Remove-AzureADMSGroup` törli az Office 365-csoportot.
 
 A csoportok visszaállításához szükséges engedély az alábbiak bármelyike lehet:
 
 Szerepkör | Engedélyek
 --------- | ---------
-Vállalati rendszergazda, 2. szintű partnerek támogatása és az InTune szolgáltatás-rendszergazdái | A törölt Office 365-csoportok bármelyikét visszaállíthatják.
-Felhasználói fiókok rendszergazdája és 1. szintű partnerek támogatása | A törölt Office 365-csoportok bármelyikét visszaállíthatják, a vállalati rendszergazda szerepkörhöz rendelt csoportokat kivéve.
+Vállalati rendszergazda, a Partner 2. rétegbeli támogatása és az Intune Szolgáltatásadminisztrátorai | A törölt Office 365-csoportok bármelyikét visszaállíthatják.
+Felhasználói fiókok rendszergazdája és 1. szintű partnerek támogatása | Minden törölt Office 365-csoportot, kivéve azokat, a vállalati rendszergazda szerepkörrel is helyreállíthatja.
 Felhasználó | A korábban a tulajdonában álló törölt Office 365-csoportokat állíthatja vissza.
 
+## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>Megtekintheti, és elérhető a visszaállítandó törölt Office 365-csoportok kezelése
 
-## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore"></a>A visszaállítható törölt Office 365-csoportok megtekintése
+1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) rendszergazdai fiókkal.
 
+2. Válassza ki **csoportok**, majd **törölt csoportok** elérhető visszaállítani a törölt csoportok megtekintése.
+
+    ![Törölt csoportok panel](media/groups-lifecycle/deleted-groups3.png)
+
+3. Az a **törölt csoportok** panelen is:
+
+  - Állítsa vissza a törölt csoportban és annak tartalma kiválasztásával **csoport visszaállítása**.
+  - Végleg eltávolítani a törölt csoportban kiválasztásával **véglegesen törli a**. Csoport végleges eltávolításához rendszergazdának kell lennie.
+
+## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>Elérhető a Powershell segítségével történő visszaállításhoz törölt Office 365-csoportok megtekintése
 Az alábbi parancsmagokkal tekintheti meg a törölt csoportokat annak ellenőrzéséhez, hogy a kívánt csoport vagy csoportok végleges törlése nem történt-e még meg. A parancsmagok az [Azure AD PowerShell-modul](https://www.powershellgallery.com/packages/AzureAD/) részét képezik. A modullal kapcsolatban az [Azure Active Directory PowerShell 2-es verzióját](/powershell/azure/install-adv2?view=azureadps-2.0) ismertető cikkben tekinthet meg további információt.
 
 1.  Az alábbi parancsmag futtatásával jelenítheti meg a bérlő összes törölt, még visszaállítható Office 365-csoportját.
    
-  ```
-  Get-AzureADMSDeletedGroup
-  ```
+    ```
+    Get-AzureADMSDeletedGroup
+    ```
 
 2.  Ha ismeri egy adott csoport objektumazonosítóját (amelyet egyébként az 1. lépésben található parancsmag kimenetében láthat), az alábbi parancsmag futtatásával ellenőrizheti, hogy az adott törölt csoport végleges törlése megtörtént-e már.
-  
-  ```
-  Get-AzureADMSDeletedGroup –Id <objectId>
-  ```
 
-## <a name="how-to-restore-your-deleted-office-365-group"></a>Törölt Office 365-csoport visszaállítása
+    ```
+    Get-AzureADMSDeletedGroup –Id <objectId>
+    ```
+
+## <a name="how-to-restore-your-deleted-office-365-group-using-powershell"></a>Hogyan lehet visszaállítani a törölt Office 365-csoport Powershell-lel
 Miután ellenőrizte, hogy a csoport visszaállítható-e, az alábbi lépések valamelyikét végrehajtva állíthatja vissza a törölt csoportot. Ha a csoport dokumentumokat, SP-webhelyeket vagy más állandó objektumokat tartalmaz, a csoport és a tartalmainak teljes visszaállítása akár 24 órát is igénybe vehet.
 
-1.  A csoport és a tartalmainak visszaállításához futtassa az alábbi parancsmagot.
+1. A csoport és a tartalmainak visszaállításához futtassa az alábbi parancsmagot.
  
- ```
- Restore-AzureADMSDeletedDirectoryObject –Id <objectId>
- ``` 
+   ```
+    Restore-AzureADMSDeletedDirectoryObject –Id <objectId>
+    ``` 
 
-A törölt csoport az alábbi parancsmag futtatásával távolítható el véglegesen.
- ```
- Remove-AzureADMSDeletedDirectoryObject –Id <objectId>
- ```
+2. A törölt csoport az alábbi parancsmag futtatásával távolítható el véglegesen.
+    
+    ```
+    Remove-AzureADMSDeletedDirectoryObject –Id <objectId>
+    ```
 
 ## <a name="how-do-you-know-this-worked"></a>Hogyan ellenőrizhető a visszaállítás sikeressége?
 

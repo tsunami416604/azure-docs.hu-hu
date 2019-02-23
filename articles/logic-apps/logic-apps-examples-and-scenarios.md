@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
-ms.date: 01/31/18
-ms.openlocfilehash: 6249c45a1cd3a8acbb9770fc39da881d8da9057f
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/31/2018
+ms.openlocfilehash: 89e0294db3178cedd3b14aada0b505787b17c75e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230138"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671794"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gyakori forgatókönyvek, példák, oktatóanyagok és útmutatók az Azure Logic Apps
 
@@ -27,9 +27,9 @@ További információ a sok minták és képességeket nyújt segítséget, amel
 
 Minden logikai alkalmazást egy [ *eseményindító*](../logic-apps/logic-apps-overview.md#logic-app-concepts), és egyetlen eseményindító, amely a logikai alkalmazás munkafolyamatának elindul, és átadja az adatokat az eseményindító részeként. Egyes összekötők eseményindítókat, amelyre ezek a típusok következő biztosítanak:
 
-* *Lekérdezési eseményindítók*: rendszeresen ellenőrzi az új adatok szolgáltatásvégpontot. Új adatok állnak rendelkezésre, ha az eseményindító hoz létre, és a egy új munkafolyamat-példány fut, a bemeneti adatok.
+* *Lekérdezési eseményindítók*: Rendszeresen ellenőrzi egy végpontot az új adatok számára. Új adatok állnak rendelkezésre, ha az eseményindító hoz létre, és a egy új munkafolyamat-példány fut, a bemeneti adatok.
 
-* *Leküldéses eseményindítók*: figyeli az adatok egy végpontot, és megvárja, amíg egy meghatározott esemény. Ha az esemény történik, az eseményindítót, azonnal létrehozásának és futtatásának új munkafolyamat-példány elérhető adatokat használja bemeneti adatként.
+* *Leküldéses eseményindítók*: Figyeli az adatok egy végpontot, és megvárja, amíg egy meghatározott esemény. Ha az esemény történik, az eseményindítót, azonnal létrehozásának és futtatásának új munkafolyamat-példány elérhető adatokat használja bemeneti adatként.
 
 Az alábbiakban néhány népszerű triggert példák:
 
@@ -59,7 +59,7 @@ Rendszerek és szolgáltatások, előfordulhat, hogy nem közzétett összeköt�
 * [A munkafolyamat-futtatások hosszú ideig futó műveletek beállítása](../logic-apps/logic-apps-create-api-app.md)
 * [Külső események és műveletek webhookokkal válaszolni](../logic-apps/logic-apps-create-api-app.md)
 * [Hívása, eseményindító, vagy a HTTP-kérelmekre szinkron válaszok munkafolyamatok beágyazása](../logic-apps/logic-apps-http-endpoint.md)
-* [Oktatóanyag: Egy mesterséges Intelligencia által működtetett közösségi irányítópult létrehozása percek alatt, a Logic Apps és a Power bi-ban](https://aka.ms/logicappsdemo)
+* [Oktatóanyag: Mesterséges Intelligencia által működtetett közösségi irányítópult létrehozása percek alatt a Logic Apps és a Power bi-ban](https://aka.ms/logicappsdemo)
 * [Videó: Twilio SMS webhookok válaszolni, és a egy SMS-válasz küldése](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## <a name="control-flow-error-handling-and-logging-capabilities"></a>Átvitelvezérlés hibakezelést és naplózási képességek
@@ -70,7 +70,7 @@ Logikai alkalmazások közé tartoznak a speciális ellenőrzési folyamat, pél
 * [Ismételje meg a lépéseket, vagy a tömbök és gyűjtemények hoz léte hurkokkal folyamat elemek](../logic-apps/logic-apps-control-flow-loops.md)
 * [Hatókörök együtt műveleteit](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [Szerző hiba- és kivételkezelés a munkafolyamat](../logic-apps/logic-apps-exception-handling.md)
-* [Használati eset: hogyan egy támogatott egészségügyi cég használja a logikai alkalmazás kivételkezelési HL7 FHIR-munkafolyamatok](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+* [Használati eset: Hogyan egy támogatott egészségügyi cég használja a logikai alkalmazás kivételkezelési HL7 FHIR-munkafolyamatok](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Figyelés, naplózás és a meglévő logic apps riasztások bekapcsolása](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [Logikai alkalmazások létrehozásának figyelési és diagnosztikai naplózás bekapcsolása](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
 
@@ -100,7 +100,7 @@ Logikai alkalmazások is rendelkeznek számos szolgáltatás, mint az Azure Func
 * [Oktatóanyag: Az Azure Event Grid és a Logic Apps a virtuális gépek módosításainak monitorozása](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [Oktatóanyag: Hozzon létre egy függvényt, amely integrálható az Azure Logic Apps és a Microsoft Cognitive Services post Twitter-vélemények elemzése](../azure-functions/functions-twitter-email.md)
 * [Oktatóanyag: IoT távoli figyelés és értesítések az Azure Logic Apps csatlakoztatása az IoT hub és a postaláda](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-* [Blog: Hívja a logic apps a SOAP-végpontok](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+* [Blog: A logic apps a SOAP-végpontok hívása](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 
 ## <a name="end-to-end-scenarios"></a>Végpontok közötti forgatókönyvek
 

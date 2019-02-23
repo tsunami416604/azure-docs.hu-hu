@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 02/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 2a786d383d103f9b45ea7b13de24b8de9c9e9f5e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: a2c4f68a35d5baa3d7933243737d02d720409289
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445372"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671590"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
 
@@ -115,6 +115,9 @@ További [példák](./computer-vision-resource-container-config.md#example-docke
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](#billing).
+
+[!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
 
 ## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontja lekérdezése
 

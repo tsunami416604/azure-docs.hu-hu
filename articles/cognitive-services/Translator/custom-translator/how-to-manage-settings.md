@@ -6,15 +6,15 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 6fabbb57538f5e10e6cd91ebc109707045e54033
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: bbec2205fc6b29476cf531c071b5c2ac4c014bcb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227080"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732518"
 ---
 # <a name="how-to-manage-settings"></a>Beállítások kezelése
 
@@ -45,7 +45,7 @@ Ha nem rendelkezik előfizetéssel, kövesse az alábbi lépéseket:
     ![Előfizetési kulcs hozzáadása](media/how-to/how-to-add-subscription-key.png)
 
 3. A párbeszédpanelen adja meg a translator-előfizetéséhez tartozó kulcsot, majd kattintson a "Hozzáadás" gombra.
- 
+
     ![Előfizetési kulcs hozzáadása](media/how-to/how-to-add-subscription-key-dialog.png)
 4.  Miután hozzáadott egy kulcsot, módosíthatja vagy törölheti a kulcsot a tetszőleges időpontban.
 
@@ -53,29 +53,29 @@ Ha nem rendelkezik előfizetéssel, kövesse az alábbi lépéseket:
 
 ## <a name="manage-your-workspace"></a>A munkaterület kezelése
 
-A munkaterület egy munkaterület létrehozása és az egyéni fordítási rendszerek kiépítésének. Munkaterület több projektek, a modellek és a dokumentumok tartalmazhatnak. 
+A munkaterület egy munkaterület létrehozása és az egyéni fordítási rendszerek kiépítésének. Munkaterület több projektek, a modellek és a dokumentumok tartalmazhatnak.
 
-Ha másik része a munkahelyi kell megosztani a különböző emberek, majd a több munkaterület létrehozása akkor lehet hasznos. 
+Ha másik része a munkahelyi kell megosztani a különböző emberek, majd a több munkaterület létrehozása akkor lehet hasznos.
 
 ## <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
 
 1.  Keresse meg a munkaterület "Beállítások" lap.
 2.  Kattintson a "új munkaterület" gombra az "Új munkaterület létrehozása" szakaszban.
-    
+
     ![Új munkaterület létrehozása](media/how-to/create-new-workspace.png)
 
 4.  A párbeszédpanelen adja meg az új munkaterület nevét.
 5.  Kattintson a "Create".
-    
+
     ![Új munkaterület-párbeszédpanel létrehozása](media/how-to/create-new-workspace-dialog.png)
 
 ## <a name="share-your-workspace"></a>A munkaterület megosztása
 
-Az egyéni a fordítót megoszthatja a munkaterület másokkal, ha másik része a munkahelyi oszthatók meg a különböző emberek igényeinek. 
+Az egyéni a fordítót megoszthatja a munkaterület másokkal, ha másik része a munkahelyi oszthatók meg a különböző emberek igényeinek.
 
 1.  Keresse meg a munkaterület "Beállítások" lap.
 2.  A "Megosztás" gombra a "Megosztási beállítások" szakaszban.
-    
+
     ![Munkaterület megosztása](media/how-to/share-workspace.png)
 
 3.  A párbeszédpanelen adja meg azt szeretné, hogy ez a munkaterület megosztott e-mail-címek vesszővel elválasztott listáját. Ellenőrizze, hogy a megosztott e-mail-címmel rendelkező személy jelentkezzen be az egyéni Translator használatával. Ezután válassza ki a megfelelő szintű megosztási engedéllyel.
@@ -85,7 +85,7 @@ Az egyéni a fordítót megoszthatja a munkaterület másokkal, ha másik része
 
 ## <a name="sharing-permissions"></a>Megosztási engedélyek
 
-1.  **Olvasó:** A munkaterület egy olvasó lesz a munkaterület összes adatot megtekintheti. 
+1.  **Olvasó:** A munkaterület egy olvasó lesz a munkaterület összes adatot megtekintheti.
 
 2.  **Editor:** A munkaterület-szerkesztő tudják dokumentumok hozzáadása, modelleket taníthat be és törölje a dokumentumok és projektek. Adjon hozzá egy előfizetési kulcsot, de nem módosíthatja a munkaterület megosztó, a munkaterület törlése, vagy módosítsa a munkaterület nevét.
 

@@ -7,19 +7,19 @@ author: yijenj
 manager: nunoc
 editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
-ms.service: Marketplace
+ms.service: marketplace
 ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: abaad7eabf92b6f3f53d7807af132959533552b9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 810298fc45becf132da6f082df7ad33e7af828aa
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076960"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735541"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>A felhőbeli piactér felügyeleti vezethet
 
@@ -122,35 +122,35 @@ Miután beállította az ajánlat és a cél érdeklődő, az ajánlat közzét�
 
 Keresés az érdeklődő célhelyen "MSFT_TEST", az itt látható egy minta teszt érdeklődők adatai: 
 
-Vállalati = MSFT_TEST_636573304831318844 
+company = MSFT_TEST_636573304831318844 
 
 ország = US 
 
-Leírás = MSFT_TEST_636573304831318844 
+description = MSFT_TEST_636573304831318844 
 
 e-mailek = MSFT_TEST_636573304831318844@test.com
 
-kódolás az UTF-8 = 
+encoding = UTF-8 
 
-kódolás az UTF-8 = 
+encoding = UTF-8 
 
-Utónév = MSFT_TEST_636573304831318844 
+first_name = MSFT_TEST_636573304831318844 
 
-Vezetéknév = MSFT_TEST_636573304831318844 
+last_name = MSFT_TEST_636573304831318844 
 
-lead_source MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 = |}<Offer Name> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|<Offer Name> 
 
-OID = 00Do0000000ZHog 
+oid = 00Do0000000ZHog 
 
 telefonos = 1234567890 
 
-cím = MSFT_TEST_636573304831318844 
+title = MSFT_TEST_636573304831318844 
 
  
 
 **Egy élő ajánlat van, de nem látok bármely érdeklődők?**
 
-Egyes potenciális ügyfelek fog rendelkezni a kijelölt érdeklődők célhelyen mezőkben átadott adatok, az érdeklődőket a következő formátumban fognak érkezni: **Adatforrás-művelet |} Az ajánlat** 
+Egyes potenciális ügyfelek fog rendelkezni a kijelölt érdeklődők célhelyen mezőkben átadott adatok, az érdeklődőket a következő formátumban fognak érkezni: **Source-Action|Offer** 
 
   *Adatforrások:*
 

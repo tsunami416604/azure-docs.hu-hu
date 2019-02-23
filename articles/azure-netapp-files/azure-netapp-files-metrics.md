@@ -11,17 +11,17 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: concepts
+ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 866aa808f4706fa3bce72495dc56f438d567ecb2
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 1563b60ef26ac5e4d40f45095d0109dd9dd71570
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430793"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672576"
 ---
-# <a name="metrics-for-azure-netapp-files"></a>Metrikák, a Azure NetApp-fájlok
+# <a name="metrics-for-azure-netapp-files"></a>Az Azure NetApp Files metrikái
 
 NetApp Azure Files mérőszámait lefoglalt tároló, tényleges tárterület-használat, kötet átviteli sebesség, IOPS és a késés. Ezek a metrikák elemzésével szerezhet a NetApp fiókok használati mintáját és mennyiségi teljesítményét jobb megértése.  
 

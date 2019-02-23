@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2019
 ms.author: jdial
-ms.openlocfilehash: e145642a12db941d52c55081032e247b6d65d38b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a71870115c3ea5e64c8b365d6c4aa64920bc6ca3
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997329"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675041"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
 
@@ -121,7 +121,7 @@ Az [Azure VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2f
 
 ### <a name="application-gateways"></a>Alkalmazásátjárók
 
-A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json), ha hozzárendeli az átjáró **előtér**-konfigurációjához. Ez a nyilvános IP-cím terheléselosztásos virtuális IP-címként szolgál majd. Az alkalmazásátjárók előtér-konfigurációjához csak *dinamikus* alapszintű nyilvános IP-címeket rendelhet.
+A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json), ha hozzárendeli az átjáró **előtér**-konfigurációjához. Ez a nyilvános IP-cím terheléselosztásos virtuális IP-címként szolgál majd. Hozzárendelhet egy *dinamikus* alapszintű nyilvános IP-címet az átjáró V1 előtér-konfigurációjához, és csak egy statikus, alapszintű vagy standard szintű Termékváltozat-címet egy V2 előtér-konfigurációhoz.
 
 ### <a name="at-a-glance"></a>Egy pillantásra
 A következő táblázat bemutatja azokat a konkrét tulajdonságokat, amelyekkel a nyilvános IP-címek legfelsőbb szintű erőforráshoz társíthatók, továbbá a lehetséges használható kiosztási módszereket (dinamikus vagy statikus).
@@ -131,7 +131,7 @@ A következő táblázat bemutatja azokat a konkrét tulajdonságokat, amelyekke
 | Virtuális gép |Hálózati illesztő |Igen |Igen |
 | Internetkapcsolattal rendelkező terheléselosztó |Előtér-konfiguráció |Igen |Igen |
 | VPN-átjáró |Átjáró IP-konfigurációja |Igen |Igen |
-| Alkalmazásátjáró |Előtér-konfiguráció |Igen |Igen |
+| Alkalmazásátjáró |Előtér-konfiguráció |Igen (csak V1) |Igen (csak V2) |
 
 ## <a name="private-ip-addresses"></a>Magánhálózati IP-címek
 A magánhálózati IP-címek segítségével az Azure-erőforrások képesek a helyszíni vagy a [virtuális hálózaton](virtual-networks-overview.md) lévő erőforrásokkal VPN-átjárón vagy ExpressRoute-kapcsolatcsoporton keresztül kommunikálni az internetről elérhető IP-címek használata nélkül is.

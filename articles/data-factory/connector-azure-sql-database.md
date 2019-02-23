@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: ab637ef7dc39fcd2fd32cec2be52a18aaf6706a9
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c66ce1d59cf7bd4878b2903615457b3d1dbf2ba0
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663027"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670451"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Database-ből az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -178,21 +178,21 @@ A szolgáltatás egyszerűszolgáltatás-alapú Azure AD alkalmazástoken-hitele
 
 ### <a name="managed-identity"></a> Felügyelt identitások Azure-erőforrások hitelesítéshez
 
-Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md) , amely az adott adat-előállító jelöli. A felügyeltszolgáltatás-identitás az Azure SQL Database-hitelesítéshez használható. A kijelölt gyári férhet hozzá, és másolja ezt az identitást az adatok vagy az adatbázishoz.
+Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md) , amely az adott adat-előállító jelöli. A felügyelt identitást is használhatja az Azure SQL Database-hitelesítéshez. A kijelölt gyári férhet hozzá, és másolja ezt az identitást az adatok vagy az adatbázishoz.
 
-MSI-alapú Azure AD alkalmazástoken-hitelesítésének használatához kövesse az alábbi lépéseket:
+Felügyelt identitás-hitelesítést használ, kövesse az alábbi lépéseket:
 
-1. **Hozzon létre egy csoportot az Azure ad-ben.** Ellenőrizze az MSI-előállító a csoport tagja.
+1. **Hozzon létre egy csoportot az Azure ad-ben.** Győződjön meg a felügyelt identitás a csoport tagja.
     
-    1. Keresse meg a data factory felügyeltszolgáltatás-identitás az Azure Portalról. Nyissa meg az adat-előállító **tulajdonságok**. Másolja az IDENTITÁS azonosítót.
+    1. Keresse meg a data factory felügyelt identitás az Azure Portalról. Nyissa meg az adat-előállító **tulajdonságok**. Másolja az IDENTITÁS azonosítót.
     
-    1. Telepítse a [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul. Jelentkezzen be a `Connect-AzureAD` parancsot. Hozzon létre egy csoportot, és adja hozzá az adat-előállító MSI, amelynek a következő parancsok futtatásával.
+    1. Telepítse a [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul. Jelentkezzen be a `Connect-AzureAD` parancsot. Hozzon létre egy csoportot, és adja hozzá a felügyelt identitás, amelynek a következő parancsok futtatásával.
     ```powershell
     $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-    Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
+    Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory managed identity object ID>"
     ```
     
-1. **[Az Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL Serverhez, az Azure Portalon, ha ezt még nem tette meg. Az Azure AD-rendszergazda lehet egy Azure AD-felhasználó vagy az Azure AD-csoporthoz. Ha a rendszergazda szerepkörrel, engedélyezze a csoportnak MSI-vel, hagyja ki a 3. és 4. A rendszergazda az adatbázis teljes hozzáféréssel fog rendelkezni.
+1. **[Az Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL Serverhez, az Azure Portalon, ha ezt még nem tette meg. Az Azure AD-rendszergazda lehet egy Azure AD-felhasználó vagy az Azure AD-csoporthoz. Ha a csoport felügyelt identitás rendszergazda szerepkörrel rendelkező biztosít, hagyja ki a 3. és 4. A rendszergazda az adatbázis teljes hozzáféréssel fog rendelkezni.
 
 1. **[Hozzon létre tartalmazottadatbázis-felhasználók](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  az Azure AD-csoport. Az adatbázis vagy amelyek adatok másolása az Azure AD identitás, amelynek legalább az ssms-ben, más eszközök használatával szeretné bármely felhasználó ALTER engedéllyel. Futtassa a következő T-SQL: 
     
@@ -208,7 +208,7 @@ MSI-alapú Azure AD alkalmazástoken-hitelesítésének használatához kövesse
 
 1. **Egy Azure SQL Database társított szolgáltatás konfigurálása** az Azure Data Factoryban.
 
-#### <a name="linked-service-example-that-uses-msi-authentication"></a>MSI-hitelesítést használó társított szolgáltatás példa
+**Példa**
 
 ```json
 {

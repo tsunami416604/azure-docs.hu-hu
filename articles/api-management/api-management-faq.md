@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: e80ebcd6de7a793450a0503c99af151e96658ea9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 99b54a5fe5c28eb66a61fad61d23b94f0955f126
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876742"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728568"
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
 Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API Management.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="contact-us"></a>Kapcsolat
 * [Hogyan tehetek fel a Microsoft Azure API Management csapata egy kérdést?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
@@ -89,9 +91,9 @@ Itt látható, hogyan adhat hozzá egy felhasználót a Rendszergazdák csoport:
 
 Az újonnan hozzáadott közreműködői használható Azure PowerShell most [parancsmagok](https://docs.microsoft.com/powershell/azure/overview). A következő rendszergazdai bejelentkezés:
 
-1. Használja a `Connect-AzureRmAccount` parancsmagot, hogy jelentkezzen be.
-2. A környezet beállítása az előfizetéshez, amely rendelkezik a szolgáltatás használatával `Set-AzureRmContext -SubscriptionID <subscriptionGUID>`.
-3. Egy egyszeri bejelentkezési URL-cím beszerzése a `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
+1. Használja a `Connect-AzAccount` parancsmagot, hogy jelentkezzen be.
+2. A környezet beállítása az előfizetéshez, amely rendelkezik a szolgáltatás használatával `Set-AzContext -SubscriptionID <subscriptionGUID>`.
+3. Egy egyszeri bejelentkezési URL-cím beszerzése a `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
 4. A felügyeleti portál eléréséhez használja az URL-címet.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Miért van a házirend, amelyet szeretnék hozzáadni a Helyicsoportházirend-szerkesztő nem érhető el?
@@ -132,11 +134,11 @@ Igen. Tekintse meg a [Azure API Management szolgáltatás](https://aka.ms/apimte
 Igen. Ez elvégezhető elküldésével közvetlenül az API-t vagy a Powershellen keresztül. Ez lesz a tanúsítványlánc érvényesítésének letiltása, és lehetővé teszi, hogy az önaláírt vagy privát módon által aláírt tanúsítványokat használ a háttérszolgáltatásoknak az API Management közötti kommunikáció során.
 
 #### <a name="powershell-method"></a>PowerShell-módszer ####
-Használja a [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (az új háttér-) vagy [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (a meglévő háttér) PowerShell-parancsmagok és állítsa be a `-SkipCertificateChainValidation` paramétert `True`. 
+Használja a [ `New-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (az új háttér-) vagy [ `Set-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (a meglévő háttér) PowerShell-parancsmagok és állítsa be a `-SkipCertificateChainValidation` paramétert `True`. 
 
 ```powershell
-$context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
-New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
+$context = New-AApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
 #### <a name="direct-api-update-method"></a>Közvetlen API frissítési módszer ####

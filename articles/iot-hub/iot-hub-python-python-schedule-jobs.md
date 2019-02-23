@@ -2,19 +2,19 @@
 title: Az Azure IoT Hub (Python) feladatok ütemezéséhez |} A Microsoft Docs
 description: Hogyan lehet a több eszközre közvetlen metódus meghívása egy Azure IoT Hub-feladat ütemezése. Az Azure IoT SDK Pythonhoz készült használatával valósítható meg a szimulált eszközalkalmazások és a egy service-alkalmazás a feladat futtatásához.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 02/16/2018
+ms.date: 02/16/2019
 ms.author: kgremban
-ms.openlocfilehash: add8253b870c7f1f6689534e11e7d57484248c4d
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: de3eef64f708f711d66c2bce344be0aef06fa209
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515573"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673870"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Feladatok ütemezése és kiküldése (Python)
 
@@ -30,8 +30,8 @@ Elméleti szinten feladat burkolja az alábbi műveletek egyikét, és nyomon k�
 
 További információ az egyes képességek a következő cikkeket:
 
-* Ikereszköz és tulajdonságok: [ikereszközök – első lépések] [ lnk-get-started-twin] és [oktatóanyag: eszköz-ikertulajdonságok használata][lnk-twin-props]
-* Közvetlen metódusok: [az IoT Hub fejlesztői útmutató – közvetlen metódusok] [ lnk-dev-methods] és [oktatóanyag: közvetlen metódusok][lnk-c2d-methods]
+* Ikereszköz és tulajdonságok: [Ikereszközök – első lépések](iot-hub-python-twin-getstarted.md) és [oktatóanyag: Eszköz-ikertulajdonságok használata](tutorial-device-twins.md)
+* Közvetlen metódusok: [Az IoT Hub fejlesztői útmutató – közvetlen metódusok](iot-hub-devguide-direct-methods.md) és [oktatóanyag: közvetlen metódusok](quickstart-control-device-python.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -48,9 +48,9 @@ Ez az oktatóanyag végén kettő Python-alkalmazással rendelkezik:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* [Python 2.x vagy 3.x][lnk-python-download]. Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét][lnk-install-pip].
-* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra][lnk-visual-c-redist] van szükség a Python natív DLL-jei használatához.
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
+* [Python 2.x vagy 3.x](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét](https://pip.pypa.io/en/stable/installing/).
+* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra](http://www.microsoft.com/download/confirmation.aspx?id=48145) van szükség a Python natív DLL-jei használatához.
+* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 
 > [!NOTE]
 > A **Pythonhoz készült Azure IoT SDK** nem támogatja közvetlenül **feladatok** funkciót. Ebben az oktatóanyagban inkább aszinkron hozzászólásláncok és időzítőket alternatív megoldást kínál. További frissítések, tekintse meg a **szolgáltatás ügyfél-SDK** a szolgáltatások listája a [Pythonhoz készült Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-python) lap. 
@@ -324,23 +324,8 @@ Most már készen áll az alkalmazások futtatására.
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban egy feladat ütemezése és eszköz az ikereszköz tulajdonságok frissítése egy közvetlen metódus használt.
 
-Ismerkedés az IoT Hub és az eszközfelügyeleti minták például távolról keresztül a vezeték nélküli belső vezérlőprogram frissítését a folytatáshoz tekintse meg:
+Ismerkedés az IoT Hub és az eszközfelügyeleti minták például távolról keresztül a vezeték nélküli belső vezérlőprogram frissítését a folytatáshoz tekintse meg a [hogyan belső vezérlőprogram frissítése](tutorial-firmware-update.md).
 
-[Oktatóanyag: Hogyan belső vezérlőprogram frissítése][lnk-fwupdate]
-
-Ismerkedés az IoT Hub a folytatáshoz tekintse meg a [– első lépések az Azure IoT Edge][lnk-iot-edge].
-
-[lnk-get-started-twin]: iot-hub-python-twin-getstarted.md
-[lnk-twin-props]: tutorial-device-twins.md
-[lnk-c2d-methods]: quickstart-control-device-python.md
-[lnk-dev-methods]: iot-hub-devguide-direct-methods.md
-[lnk-fwupdate]: tutorial-firmware-update.md
-[lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-python-download]: https://www.python.org/downloads/
-[lnk-visual-c-redist]: http://www.microsoft.com/download/confirmation.aspx?id=48145
-[lnk-install-pip]: https://pip.pypa.io/en/stable/installing/
-
+<!-- images -->
 [1]: ./media/iot-hub-python-python-schedule-jobs/1.png
 [2]: ./media/iot-hub-python-python-schedule-jobs/2.png

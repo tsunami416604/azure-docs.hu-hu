@@ -14,18 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 99c4f838c3c4e4708c3e21ff9c7e63b69a507dbe
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 663864837e2847125d0925b9b82d8962e54290b3
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746914"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726482"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Egy Azure Resource Manager-sablon használatával virtuális gépek létrehozása 
 
 Amikor hoz létre egy virtuális gépet (VM) DevTest Labs-környezetben keresztül a [az Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), megtekintheti az Azure Resource Manager-sablon, a virtuális gép mentése előtt. A sablon majd használható alapjaként ugyanazokkal a beállításokkal további tesztlabor virtuális gépek létrehozásához.
 
 Ez a cikk ismerteti a virtuális gépre kiterjedő és a Resource Manager-sablonokkal egyetlen virtuális, és bemutatja, hogyan megtekintéséhez és a egy sablon mentése a virtuális gép létrehozásakor.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>Több virtuális gépre kiterjedő és a egy virtuális Resource Manager-sablonok
 Virtuális gépek létrehozásához a DevTest Labs szolgáltatásban létrehozott Resource Manager-sablon használatával két módja van: az Microsoft.DevTestLab/labs/virtualmachines erőforrás kiépítéséhez, vagy az Microsoft.Commpute/virtualmachines erőforrás kiépítéséhez. Minden egyes különböző helyzetekben szolgál, és különböző engedélyekkel kell rendelkeznie.
@@ -34,7 +36,7 @@ Virtuális gépek létrehozásához a DevTest Labs szolgáltatásban létrehozot
 
    ![Virtuális gépek, mint a virtuális gépek DevTest Labs listában egyetlen elemek listája](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   Resource Manager-sablon az ilyen típusú keresztül az Azure PowerShell-paranccsal helyezhetők **New-AzureRmResourceGroupDeployment** vagy az Azure CLI-paranccsal **az csoport központi telepítésének létrehozása**. Rendszergazdai engedélyekkel, akkor szükséges, ezért a DevTest Labs felhasználói szerepkörrel felruházott felhasználók nem hajtható végre a központi telepítés. 
+   Resource Manager-sablon az ilyen típusú keresztül az Azure PowerShell-paranccsal helyezhetők **New-AzResourceGroupDeployment** vagy az Azure CLI-paranccsal **az csoport központi telepítésének létrehozása**. Rendszergazdai engedélyekkel, akkor szükséges, ezért a DevTest Labs felhasználói szerepkörrel felruházott felhasználók nem hajtható végre a központi telepítés. 
 
 - Resource Manager-sablonok, amelyek Microsoft.Compute/virtualmachines erőforrás típusa, a virtuális gépek DevTest Labs listában egyetlen környezethez több virtuális gép építhető ki:
 

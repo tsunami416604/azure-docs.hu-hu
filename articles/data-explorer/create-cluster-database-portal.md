@@ -7,17 +7,17 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 1ab6fe13df111b5f56da1f368fc0dacf0a6206fc
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.date: 02/21/2019
+ms.openlocfilehash: e87f9b4905abec2c00ed238445b3e36e41cfa2f6
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408833"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674871"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Gyors útmutató: Az Azure Data Explorer fürt és adatbázis létrehozása
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer használatához először egy *fürtöt* hozunk létre, majd egy vagy több *adatbázist* a fürtben. Ezután adatokat *töltünk be* az adatbázisba, hogy lekérdezéseket futtathassunk rajta. Ebben a rövid útmutatóban egy fürtöt és egy adatbázist hozunk létre. A következő cikkekben mutatjuk majd be az adatok betöltését.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban egy fürtöt és egy adatbázist hozunk létre.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -27,7 +27,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
 
-Egy Azure Data Explorer-fürtöt hozunk létre egy Azure-erőforráscsoportban, számítási és tárolási erőforrások egy meghatározott készletével egyetemben.
+Egy Azure Data Explorer-fürt létrehozása az Azure-erőforráscsoport számítási és tárolási erőforrások egy meghatározott készletével együtt.
 
 1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
 
@@ -37,28 +37,22 @@ Egy Azure Data Explorer-fürtöt hozunk létre egy Azure-erőforráscsoportban, 
 
 1. Az **Azure Data Explorer** területen, a képernyő alján válassza a **Létrehozás** elemet.
 
-1. Adja meg a fürt egyedi nevét, válassza ki az előfizetést, és hozzon létre egy erőforráscsoportot *test-resource-group* néven.
-
-    ![Erőforráscsoport létrehozása](media/create-cluster-database-portal/create-resource-group.png)
-
-1. Adja meg az alábbi adatokat az űrlapon.
+1. Töltse ki az alapszintű fürt részletes adatai a következő információkat.
 
    ![Fürt létrehozása űrlap](media/create-cluster-database-portal/create-cluster-form.png)
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Fürt neve | A fürt egyedi neve | Válasszon egy egyedi nevet a fürt azonosításához. Például: *mytestcluster*. A rendszer hozzáfűzi a *[régiónév].kusto.windows.net* tartománynevet a megadott fürtnévhez. A név csak kisbetűket és számokat tartalmazhat, és 3–22 karakter hosszúságú lehet.
     | Előfizetés | Az Ön előfizetése | Válassza ki a fürthöz használni kívánt Azure-előfizetést.|
-    | Erőforráscsoport | *test-resource-group* | Hozzon létre egy új erőforráscsoportot. |
+    | Erőforráscsoport | *test-resource-group* | Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
+    | Fürt neve | A fürt egyedi neve | Válasszon egy egyedi nevet a fürt azonosításához. Ha például *mydataexplorercluster*. A rendszer hozzáfűzi a *[régiónév].kusto.windows.net* tartománynevet a megadott fürtnévhez. A név csak kisbetűket és számokat tartalmazhat, és 3–22 karakter hosszúságú lehet.
     | Hely | *USA nyugati régiója* | Ebben a rövid útmutatóban válassza az *USA nyugati régióját*. Éles üzemben az igényeinek leginkább megfelelő régiót válassza.
     | Számítási specifikációk | *D13_v2* | Ehhez az útmutatóhoz válassza a legalacsonyabb díjszabást. Éles üzemben az igényeinek leginkább megfelelő díjszabást válassza.
     | | |
 
-1. A fürt üzembe helyezéséhez válassza a **Létrehozás** lehetőséget. Az üzembe helyezés általában nagyjából tíz percet vesz igénybe. Az eszköztáron válassza az **Értesítések** elemet az üzembehelyezési folyamat nyomon követéséhez.
+1. Válassza ki **tekintse át + létrehozása** , tekintse át a fürt részletes adatai, és **létrehozás** a fürt kiépítéséhez. Kiosztása általában körülbelül 10 percet vesz igénybe.
 
-    ![Értesítések](media/create-cluster-database-portal/notifications.png)
-
-1. Amikor a folyamat befejeződött, válassza az **Értesítések**, majd az **Erőforrás megnyitása** lehetőséget.
+1. Az üzembe helyezés befejeződése után válassza ki a **erőforrás megnyitása**.
 
     ![Erőforrás megnyitása](media/create-cluster-database-portal/notification-resource.png)
 
@@ -68,7 +62,7 @@ Most már készen áll a folyamat második lépésének, az adatbázis létrehoz
 
 1. Az **Áttekintés** lapon válassza az **Adatbázis létrehozása** lehetőséget.
 
-    ![Második lépés: Adatbázis létrehozása](media/create-cluster-database-portal/database-creation.png)
+    ![2. lépés: hozzon létre egy adatbázist](media/create-cluster-database-portal/database-creation.png)
 
 1. Adja meg az alábbi adatokat az űrlapon.
 
@@ -78,26 +72,22 @@ Most már készen áll a folyamat második lépésének, az adatbázis létrehoz
     |---|---|---|
     | Adatbázis neve | *TestDatabase* | Az adatbázis nevének egyedinek kell lennie a fürtön belül.
     | Megőrzési időszak | *3650* | Az időtartam (napban), amelynek azt garantálja, hogy az adatok lekérdezhetők tárolódik. Az időtartam az adatok betöltésének időpontjával kezdődik.
-    | Gyorsítótárazási időszak | *31* | Az idő span (napokban), amelynek meg szeretné tartani elérhető gyakran lekérdezett adatokat az SSD-tárolóeszköz vagy RAM, mint a hosszabb távú tárolására.
+    | Gyorsítótárazási időszak | *31* | Az idő span (napokban), amelynek meg szeretné tartani elérhető gyakran lekérdezett adatok SSD-tárolóval és a RAM, mint a hosszabb távú tárolására.
     | | | |
 
-1. Az adatbázis létrehozásához válassza a **Mentés** lehetőséget. Az adatbázis létrehozása általában kevesebb mint egy percet vesz igénybe. Amikor a folyamat befejeződött, a rendszer visszalép a fürt **Áttekintés** lapjára.
+1. Válassza ki **létrehozás** az adatbázis létrehozásához. Az adatbázis létrehozása általában kevesebb mint egy percet vesz igénybe. Amikor a folyamat befejeződött, a rendszer visszalép a fürt **Áttekintés** lapjára.
 
 ## <a name="run-basic-commands-in-the-database"></a>Alapvető parancsok futtatása az adatbázison
 
 Most, hogy rendelkezik egy fürttel és egy adatbázissal, lekérdezéseket és parancsokat futtathat. Az adatbázisban még nincsenek adatok, mindazonáltal már áttekinthető az eszközök működése.
 
-1. A fürt alatt válassza a **Lekérdezés** lehetőséget.
-
-    ![Adatbázis-lekérdezés](media/create-cluster-database-portal/query-database.png)
-
-1. Illessze be a következő parancsot a lekérdezési ablakba (`.show databases`), majd válassza a **Futtatás** lehetőséget.
+1. A fürt alatt válassza a **Lekérdezés** lehetőséget. Illessze be a parancsot `.show databases` a lekérdezési ablakba, majd válassza ki **futtatása**.
 
     ![Adatbázisparancsok megjelenítése](media/create-cluster-database-portal/show-databases.png)
 
     Az eredményhalmaz a **TestDatabase** találatot tartalmazza, amely az egyetlen adatbázis a fürtben.
 
-1. Illessze be a következő parancsot a lekérdezési ablakba (`.show tables`), majd válassza ki ezt a parancsot az ablakban. Válassza a **Futtatás** lehetőséget.
+1. Illessze be a parancsot `.show tables` a lekérdezési ablakot, és válassza ki **futtatása**.
 
     Ez a parancs egy üres eredményhalmazt ad vissza, mivel még nem rendelkezik táblákkal. A sorozat következő cikkében felveszünk egy táblát.
 
@@ -111,21 +101,15 @@ A fürtöt az üzleti igényektől függően bármikor leállíthatja és újrai
 
 1. A fürt újraindításához válassza az **Áttekintés** oldalon az **Indítás** lehetőséget.
 
-    A fürt az újraindítást követően nagyjából tíz perc múlva lesz elérhető (a kezdeti üzembe helyezéshez hasonlóan). További időt vesz igénybe, mire az adatok a gyakori elérésű gyorsítótárba is betöltődnek.  
+    A fürt újraindításakor, hogy válnak elérhetővé (például, ha eredetileg kiosztott) körülbelül 10 percet vesz igénybe. További időt vesz igénybe, mire az adatok a gyakori elérésű gyorsítótárba is betöltődnek.  
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha el szeretné végezni a többi rövid útmutatót és oktatóanyagot, őrizze meg a létrehozott erőforrásokat. Amennyiben a továbbiakban nincs rá szüksége, a költségek elkerülése érdekében törölje a **test-resource-group** erőforráscsoportot.
+Ha azt tervezi, kövesse a további rövid útmutatókkal és oktatóanyagokkal, megtarthatja a létrehozott erőforrásokat. Ellenkező esetben törölni az erőforráscsoportot, költségek elkerülése érdekében.
 
-1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget a bal szélen, majd a létrehozott erőforráscsoport.  
+1. Az Azure Portalon válassza ki a **erőforráscsoportok** a bal oldali, és adja meg az erőforráscsoport, amely tartalmazza az adatkezelő fürt.  
 
-    Ha a bal oldali menü össze van csukva, kattintson a ![Kibontás gombra](media/create-cluster-database-portal/expand.png) a kinyitásához.
-
-   ![A törölni kívánt erőforráscsoport kiválasztása](media/create-cluster-database-portal/delete-resources-select.png)
-
-1. A **test-resource-group** alatt válassza az **Erőforráscsoport törlése** elemet.
-
-1. Az új ablakban írja be a törölni kívánt erőforráscsoport nevét (*test-resource-group*), majd válassza a **Törlés** lehetőséget.
+1. Válassza ki **erőforráscsoport törlése** a teljes erőforráscsoportot törölni szeretné. Ha egy meglévő erőforráscsoportot használ, válassza ki az adatkezelő fürt csak törlése.
 
 ## <a name="next-steps"></a>További lépések
 

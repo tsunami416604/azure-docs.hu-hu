@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 8c913d618313a72f6fb05ea45847a220f6070d42
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 4adc4bc743192832689d5bf6ff8448ed679775fd
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765738"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728505"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Hozzon létre egy Linux rendszerű virtuális gép gyorsított hálózatkezelésű
 
@@ -71,9 +71,14 @@ Gyorsított hálózatkezelés engedélyezett nélkül támogatott virtuális gé
 Gyorsított hálózatkezelésű nem állítható rendszerbe a virtuális gépek (klasszikus).
 
 ## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Linux rendszerű virtuális gép létrehozása az Azure gyorsított hálózatkezelés
+## <a name="portal-creation"></a>Portál létrehozása
+Bár ez a cikk ismerteti a virtuális gép létrehozása az Azure CLI-vel gyorsított hálózatkezeléssel, is [virtuális gép létrehozása az Azure portal használatával gyorsított hálózatkezeléssel](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Az a portálon, a virtuális gép létrehozásakor a **hozzon létre egy virtuális gépet** panelen válassza ki a **hálózati** fülre.  Ezen a lapon lehetősége van a **gyorsított hálózatkezelés**.  Ha úgy döntött, egy [támogatott operációs rendszert](#supported-operating-systems) és [Virtuálisgép-méret](#supported-vm-instances), ezzel a beállítással automatikusan feltölti az "On".  Ha nem, akkor töltse fel a gyorsított hálózatkezelés "Kikapcsolva" lehetőséget, és a felhasználó okot miért nem lehet engedélyezve van.   
 
-Bár ez a cikk ismerteti a virtuális gép létrehozása az Azure CLI-vel gyorsított hálózatkezeléssel, is [virtuális gép létrehozása az Azure portal használatával gyorsított hálózatkezeléssel](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A virtuális gép létrehozásakor a portálon a **beállítások**válassza **engedélyezve**alatt **gyorsított hálózatkezelés**. Engedélyezheti a gyorsított hálózatkezelés nem jelenik meg a portálon, ha kiválasztott egy [támogatott operációs rendszert](#supported-operating-systems) és [Virtuálisgép-méret](#supported-vm-instances). A virtuális gép létrehozása után a következő témakör utasításait végrehajtásához szükséges [győződjön meg arról, hogy engedélyezve van-e a gyorsított hálózatkezelés](#confirm-that-accelerated-networking-is-enabled).
+* *Megjegyzés:* Csak a támogatott operációs rendszerek a portálon keresztül engedélyezhető.  Ha egy egyéni rendszerképet használ, és a rendszerkép támogatja a gyorsított hálózatkezelés, hozzon létre a virtuális gép parancssori felület vagy Powershell használatával. 
 
+A virtuális gép létrehozása után a gyorsított hálózatkezelés engedélyezve van a következő témakör utasításait követve ellenőrizheti a [győződjön meg arról, hogy engedélyezve van-e a gyorsított hálózatkezelés](#confirm-that-accelerated-networking-is-enabled).
+
+## <a name="cli-creation"></a>Parancssori felület létrehozása
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
 Telepítse a legújabb [Azure CLI-vel](/cli/azure/install-azure-cli) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index). A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa paraméterneveket foglalt *myResourceGroup*, *myNic*, és *myVm*.

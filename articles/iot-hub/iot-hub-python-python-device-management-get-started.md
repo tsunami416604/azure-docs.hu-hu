@@ -2,19 +2,19 @@
 title: Ismerkedés az Azure IoT Hub-Eszközfelügyelet (Python) |} A Microsoft Docs
 description: Hogyan használhatja az IoT Hub-Eszközfelügyelet egy távoli eszköz-újraindítás kezdeményezése. A Pythonhoz készült Azure IoT SDK használatával egy szimulált eszközalkalmazás, amely tartalmazza a közvetlen metódus és egy service-alkalmazás, amely a közvetlen metódust hív meg.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 01/02/2018
+ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 36514fe321fa352c2526db5a18ac8618d7af713e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7b2876f30af23f73be5a53770ac75ef323d90c37
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756767"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668977"
 ---
 # <a name="get-started-with-device-management-python"></a>Ismerkedés az eszközfelügyelettel (Python)
 
@@ -34,11 +34,11 @@ Ez az oktatóanyag végén két Python-konzolalkalmazással fog rendelkezni:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* [Python 2.x vagy 3.x][lnk-python-download]. Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét][lnk-install-pip].
+* [Python 2.x vagy 3.x](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét](https://pip.pypa.io/en/stable/installing/).
     * Telepítse a [azure-iothub-device-client](https://pypi.org/project/azure-iothub-device-client/) csomag, a parancs használatával   `pip install azure-iothub-device-client`
     * Telepítse a [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) csomag, a parancs használatával   `pip install azure-iothub-service-client`
-* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra][lnk-visual-c-redist] van szükség a Python natív DLL-jei használatához.
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
+* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra](http://www.microsoft.com/download/confirmation.aspx?id=48145) van szükség a Python natív DLL-jei használatához.
+* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -253,21 +253,3 @@ Most már készen áll az alkalmazások futtatására.
 1. Láthatja, hogy az eszköz válasza a közvetlen metódus a konzolon.
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
-
-<!-- images and links -->
-[lnk-python-download]: https://www.python.org/downloads/
-[lnk-visual-c-redist]: http://www.microsoft.com/download/confirmation.aspx?id=48145
-[lnk-install-pip]: https://pip.pypa.io/en/stable/installing/
-
-[img-output]: media/iot-hub-get-started-with-dm/image6.png
-[img-dm-ui]: media/iot-hub-get-started-with-dm/dmui.png
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[Azure portal]: https://portal.azure.com/
-[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
-[lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-
-[lnk-devtwin]: iot-hub-devguide-device-twins.md
-[lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

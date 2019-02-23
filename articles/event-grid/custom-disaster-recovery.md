@@ -3,16 +3,16 @@ title: A saját vész-helyreállítási hozhat létre egyéni témaköröket az 
 description: Stabilitást biztosít az Azure Event Grid csatlakoztatva tartani a regionális üzemkimaradások utáni helyreállításon.
 services: event-grid
 author: banisadr
-ms.service: even-grid
+ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: babanisa
-ms.openlocfilehash: d1cf09df2db3abe65d7c3c048438e6791129940a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a77c208c208ef7e0df170733dbe89963fc5cb846
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701659"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727179"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>A saját vész-helyreállítási hozhat létre egyéni témaköröket az Event Gridben
 
@@ -85,7 +85,7 @@ Most már:
    * A másodlagos régióba másodlagos témakörében.
    * Az elsődleges témakör csatlakozik az eseményt fogadó webhely másodlagos esemény-előfizetés.
 
-## <a name="implement-client-side-failover"></a>Ügyféloldali feladatátvétel végrehajtása
+## <a name="implement-client-side-failover"></a>Ügyféloldali feladatátvétel implementálása
 
 Most, hogy a témakörök és előfizetések telepítő regionálisan redundáns pár, készen áll az ügyféloldali feladatátvétel végrehajtásához. Számos különböző módon végezhető el, azonban minden feladatátvétel-megvalósítások kell egy közös funkciója: egy témakör már nem működik megfelelően, ha a többi témakör forgalmat irányítja Önt.
 

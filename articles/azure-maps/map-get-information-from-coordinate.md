@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 20616adf649924a13e80411aa5135889a175f442
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 4fdf2e884ca896be1dcb8eea810958076b8b8eb7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750188"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668667"
 ---
 # <a name="get-information-from-a-coordinate"></a>Koordináta információinak lekérése
 
@@ -33,7 +33,7 @@ A vonal jelzi a második kódblokkot egy ügyfél szolgáltatás példányosítj
 
 A harmadik kódblokkot mutató frissíti az egérmutatót a stílus és [előugró](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objektum. Látható [egy előugró ablak hozzáadása a térképen](./map-add-popup.md) útmutatást.
 
-A negyedik kódblokkot hozzáad egy [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) az egérrel rákattint. Egy kattintásra esetén azt a koordináták a való kattintás pont egy keresési lekérdezést hoz létre. Ezután használja a térkép [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest) lekérdezni a koordináták a cím végponthoz.
+A negyedik kódblokkot hozzáad egy [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) az egérrel rákattint. Egy kattintásra esetén azt a koordináták a való kattintás pont egy keresési lekérdezést hoz létre. Ezután használja a térkép [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchaddressreverseresponse?view=azure-iot-typescript-latest) lekérdezni a koordináták a cím végponthoz.
 
 Sikeres válasz, a cím való kattintás helyéhez gyűjti, és meghatározza az előugró ablak tartalmát és pozícióját keresztül [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) függvény az előugró osztály.
 

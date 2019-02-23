@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: 1e96029b75c8168189dacdc420117e82387228d9
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 3a4fbac0000569a17a9916bd1d84dd140576c9ee
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327245"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672066"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Hub (C)
 
@@ -82,7 +82,7 @@ A következő elemek nem kötelező:
 Készítse elő a Raspbian lemezkép telepítésének microSD-kártyán.
 
 1. Töltse le a Raspbian.
-   1. [Töltse le a Desktopban Raspbian Jessie](https://www.raspberrypi.org/downloads/raspbian/) (a .zip-fájlt).
+   1. [Töltse le a Desktopban Raspbian Stretch](https://www.raspberrypi.org/downloads/raspbian/) (a .zip-fájlt).
    1. Bontsa ki a Raspbian lemezképet a számítógép egyik mappájába.
 1. Telepítse a Raspbian a microSD-kártyán.
    1. [Töltse le és telepítse a Etcher SD-kártya író segédprogram](https://etcher.io/).

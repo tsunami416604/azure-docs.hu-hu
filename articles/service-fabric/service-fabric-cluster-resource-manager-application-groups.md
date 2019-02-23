@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c8bab609212c837802be6f70e7fc74df6b5eaf2e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e4f446ff67408ef390ba817de935c286c5b2a47e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346253"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727604"
 ---
 # <a name="introduction-to-application-groups"></a>Alkalmazáscsoportok bemutatása
 A Service Fabric a fürterőforrás-kezelő általában fürterőforrások kezeli a terhelés elosztható (keresztül jelölt [metrikák](service-fabric-cluster-resource-manager-metrics.md)) egyenletesen oszlanak meg a fürtön. A Service Fabric kezeli a fürt és a fürt csomópontjainak keresztül teljes kapacitásának [kapacitás](service-fabric-cluster-resource-manager-cluster-description.md). Metrikák és a kapacitás működik kiválóan alkalmas a számos számítási feladatokhoz, de néha további követelmények is betöltheti a Service Fabric alkalmazás különböző példányait használó mintákat. Például előfordulhat, hogy szeretné:
@@ -107,7 +107,7 @@ A fürtben lévő terület lefoglalása esetében azonnal történik, az alkalma
 - az alkalmazás példány módosítások minden egyes szolgáltatásai száma 
 - a szolgáltatások létezik, de nem használ az erőforrások 
 
-Erőforrások lefoglalását a alkalmazáspéldány meg kell adni a két további paraméterek: *MinimumNodes* és *NodeReservationCapacity*
+Egy alkalmazáspéldány erőforrások lefoglalását meg kell adni a két további paraméterek: *MinimumNodes* és *NodeReservationCapacity*
 
 - **MinimumNodes** – határozza meg, hogy az alkalmazáspéldány futhat a csomópontok minimális száma.  
 - **NodeReservationCapacity** – Ez a beállítás nem az alkalmazás metrikánként. Az érték azt mutatja, hogy az alkalmazás bármely csomópontján fenntartott mérőszám ahol, amelyek az adott alkalmazásban a szolgáltatások futnak.
@@ -179,9 +179,9 @@ foreach (ApplicationLoadMetricInformation metric in metrics)
 A ApplicationLoad lekérdezés visszaadja az alapvető információkat szeretne az alkalmazáshoz megadott alkalmazás kapacitásának. Ezen információk közé tartozik a minimális és maximális csomópontok adatait, és a számát, amelyet az alkalmazás jelenleg kötnek van. Minden egyes alkalmazásmetrika terhelés vonatkozó információkat is tartalmaz többek között:
 
 * Metrika neve: A metrika neve.
-* Foglalás kapacitás: Fürtkapacitás tart fenn a fürtben található ehhez az alkalmazáshoz.
+* Foglalás kapacitás: A fürt számára az alkalmazás fenntartott fürt kapacitása.
 * Alkalmazásterhelés: Az alkalmazás gyermek replikák teljes terhelés.
-* Alkalmazás kapacitásának: A legnagyobb megengedett Alkalmazásterhelés értékét.
+* Alkalmazás kapacitásának: A maximális engedélyezett érték az alkalmazások terhelésének.
 
 ## <a name="removing-application-capacity"></a>Alkalmazás kapacitásának eltávolítása
 Miután beállította az alkalmazás kapacitásának paramétereket az alkalmazáshoz, eltávolíthatók frissítés alkalmazás API-k vagy a PowerShell-parancsmagok használatával. Példa:

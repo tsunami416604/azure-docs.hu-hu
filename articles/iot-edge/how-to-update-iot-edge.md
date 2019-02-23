@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: dfad3199ba3a9cd2f3bca55be50760ddde676e70
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: b11f11aa3966bc57caa5b8dd0379f4d5c59c8375
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558192"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672899"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és a futtatókörnyezet frissítése
 
@@ -28,7 +28,7 @@ IoT Edge-eszköz két összetevőből, ha újabb verzióra szeretne frissíteni 
 >* Az eszköz nem frissített a Windows build 17763. 1.0.5 nem támogatja a Windows IoT Edge-verzió régebbi, mint 17763 épít fel.
 >* A Java vagy Node.js-modulok futtatása Windows-eszközén. Hagyja ki 1.0.5 verzió, még akkor is, ha a Windows-eszköz frissítése a legújabb buildre. 
 >
->IoT Edge verzió 1.0.5 kapcsolatos további információkért lásd: [1.0.5 kibocsátási megjegyzések](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Ahhoz, hogy biztosítsa a fejlesztői eszközöket a legújabb verzióra frissítésével kapcsolatos további információkért lásd: [az IoT-fejlesztői blog](https://aka.ms/dev-win-iot-edge-module).
+>IoT Edge verzió 1.0.5 kapcsolatos további információkért lásd: [1.0.5 kibocsátási megjegyzések](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Ahhoz, hogy biztosítsa a fejlesztői eszközöket a legújabb verzióra frissítésével kapcsolatos további információkért lásd: [az IoT-fejlesztői blog](https://devblogs.microsoft.com/iotdev/).
 
 
 Az Azure IoT Edge legújabb verzióját, lásd: [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases).

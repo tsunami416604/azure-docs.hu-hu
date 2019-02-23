@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 383e17e0a9e60b52a63420af19c2bca4337083d4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: a3ed13cfe764c4f94dfa50fd096cfc7a8ac7656d
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876912"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673751"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Oktatóanyag: A Translator Speech alkalmazásC#
 
@@ -33,7 +34,7 @@ Az alkalmazáshoz tartozó Visual Studio-megoldásfájl [elérhető a GitHubon](
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez az oktatóanyaghoz a Visual Studio 2017 valamelyik kiadására – a Community Editiont is beleértve – lesz szüksége. 
+Ehhez az oktatóanyaghoz a Visual Studio 2017 valamelyik kiadására – a Community Editiont is beleértve – lesz szüksége.
 
 A Visual Studio-megoldás telepítőt is létrehoz az alkalmazáshoz. A funkció támogatásához a [WiX eszközkészlet](http://wixtoolset.org/) és a [WiX eszközkészlethez készült Visual Studio-bővítmény](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension) szükséges.
 
@@ -63,7 +64,7 @@ E dokumentum írásakor a Translator Speech szolgáltatás a szöveges fordítá
 
 Más szóval a beszédfordításhoz a forrásnyelv átírásának támogatása szükséges. A kimeneti nyelv bármely olyan nyelv lehet, amelynek a szöveges fordítása támogatott, feltéve, ha szöveges eredményt szeretne. Ha beszédkimenetre van szüksége, csak olyan nyelvre fordíthat, amelyhez a szövegfelolvasás támogatott.
 
-A Microsoft időről időre további nyelvek támogatását vezetheti be, ezért ne rögzítse szoftveresen a támogatott nyelvekre vonatkozó ismereteket az alkalmazásaiba. A Translator Speech API egy Nyelvek végpontot biztosít, amely lehetővé teszi a támogatott nyelvek lekérdezését a futtatáskor. Egy vagy több nyelvlista lekérése közül választhat: 
+A Microsoft időről időre további nyelvek támogatását vezetheti be, ezért ne rögzítse szoftveresen a támogatott nyelvekre vonatkozó ismereteket az alkalmazásaiba. A Translator Speech API egy Nyelvek végpontot biztosít, amely lehetővé teszi a támogatott nyelvek lekérdezését a futtatáskor. Egy vagy több nyelvlista lekérése közül választhat:
 
 | | |
 |-|-|
@@ -73,7 +74,7 @@ A Microsoft időről időre további nyelvek támogatását vezetheti be, ezért
 
 A Nyelvek végpont nem igényel előfizetői azonosítót, és a használata nem számít bele a kvótába. Az URI-ja `https://dev.microsofttranslator.com/languages`, és az eredményeket JSON formátumban adja vissza.
 
-A `MainWindow.xaml.cs` itt látható `UpdateLanguageSettingsAsync()` metódusa hívja meg a Nyelvek végpontot a támogatott nyelvek listájának lekéréséhez. 
+A `MainWindow.xaml.cs` itt látható `UpdateLanguageSettingsAsync()` metódusa hívja meg a Nyelvek végpontot a támogatott nyelvek listájának lekéréséhez.
 
 ```csharp
 private async Task UpdateLanguageSettingsAsync()
@@ -193,9 +194,9 @@ Ez a metódus először egy, a Nyelvek végpontnak címzett HTTP-kérelmet áll�
 
 A Nyelvek végpont a kérelem `Accept-Languages` fejléce alapján határozza meg, melyik nyelven jelenítse meg a nyelvek nevét. Például a magyarul beszélők számára „német” néven ismert nyelv németül „Deutsch”, spanyolul pedig „Alemán”, és a nyelvek listája tükrözi ezeket az eltéréseket. Ez a fejléc a rendszer alapértelmezett nyelvét használja.
 
-Ha a kérelem el lett küldve, és megérkezett a JSON-válasz, a választ belső adatszerkezetekbe elemzi a rendszer. A Forrásnyelv és Célnyelv menük létrehozása e belső struktúrák alapján történik. 
+Ha a kérelem el lett küldve, és megérkezett a JSON-válasz, a választ belső adatszerkezetekbe elemzi a rendszer. A Forrásnyelv és Célnyelv menük létrehozása e belső struktúrák alapján történik.
 
-Mivel az elérhető hangok a felhasználó által választott Célnyelvtől függenek, még nem lehetséges a Hang menü felépítése. Ehelyett az egyes nyelvekhez tartozó elérhető hangok későbbi használatra tárolódnak. A `ToLanguage_SelectionChanged` kezelő (ugyanebben a forrásfájlban) később frissíti a Hang menüt az `UpdateVoiceComboBox()` meghívásával, amikor a felhasználó kiválasztja a Célnyelvet. 
+Mivel az elérhető hangok a felhasználó által választott Célnyelvtől függenek, még nem lehetséges a Hang menü felépítése. Ehelyett az egyes nyelvekhez tartozó elérhető hangok későbbi használatra tárolódnak. A `ToLanguage_SelectionChanged` kezelő (ugyanebben a forrásfájlban) később frissíti a Hang menüt az `UpdateVoiceComboBox()` meghívásával, amikor a felhasználó kiválasztja a Célnyelvet.
 
 A móka kedvéért a Célnyelv kiválasztása véletlenszerűen történik, ha a felhasználó most futtatja először az alkalmazást. (A menübeállításokat a munkamenetek között menti a rendszer.)
 
@@ -281,7 +282,7 @@ private void Connect()
         TranslateTo = ((ComboBoxItem)this.ToLanguage.SelectedItem).Tag.ToString(),
         Voice = voicename,
     };
-    
+
     options.Hostname = baseUrl;
     options.AuthHeaderKey = "Authorization";
     options.AuthHeaderValue = ""; // set later in ConnectAsync.
@@ -368,11 +369,11 @@ A `Connect()` továbbá létrehozza és inicializálja a bementi hangeszközt (`
 private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAudioDuringTTS)
 {
     await ADMAuthenticate(options);
-    
+
     TextMessageDecoder textDecoder;
-    
+
     s2smtClient = new SpeechClient((SpeechTranslateClientOptions)options, CancellationToken.None);
-    
+
     s2smtClient.OnBinaryData += (c, a) => { AddSamplesToPlay(a, suspendInputAudioDuringTTS); };
     s2smtClient.OnEndOfBinaryData += (c, a) => { AddSamplesToPlay(a, suspendInputAudioDuringTTS); };
     s2smtClient.OnTextData += (c, a) => { textDecoder.AppendData(a); lastReceivedPacketTick = DateTime.Now.Ticks; };
@@ -410,7 +411,7 @@ private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAu
     {
         SafeInvoke(() =>
         {
-            // We only care to react to server disconnect when our state is Connected. 
+            // We only care to react to server disconnect when our state is Connected.
             if (currentState == UiState.Connected)
             {
                 Log("E: Connection has been lost.");

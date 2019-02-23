@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
-ms.date: 03/27/18
+ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: ed17d7cd887df6d8bd749ba4426d1a791b58d457
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0a9975b6f44a97d198dc308e263879c3358aab82
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171230"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672695"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Gyors útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure Portalon
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hoz létre az Azure Portalon.

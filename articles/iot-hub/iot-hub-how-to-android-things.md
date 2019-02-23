@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 1/30/2019
 ms.author: yizhon
-ms.openlocfilehash: 0bfba7f923ca394aa29dd907db1b8b1284a605d8
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e5b075a457c646eb03810b2c51af1a1181ee96ed
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981672"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670256"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Fejlesztés az Azure IoT SDK-k használatával Android dolgot platform
 [Az Azure IoT Hub SDK-k](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) első szintű támogatást nyújt a népszerű platformokhoz, mint a Windows, Linux, OSX, MBED és mobil platformokon, például az Android és IOS rendszerek esetén.  Ahhoz, hogy nagyobb rugalmasságának és szabadságának IoT üzemelő elkötelezettségünk részeként, a Java SDK-t is támogatja [Android dolgot](https://developer.android.com/things/) platform.  A fejlesztők kihasználhatják a dolgok Android operációs rendszer eszköz oldalán előnyeinek használata során [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) a központi üzenetnek számít hub méretezhető több millió egyszerre csatlakoztatott eszközök. 
@@ -69,7 +69,6 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
     ```
 4.  Az Android Studióban nyissa meg a található "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample" az Android-projekt.
 5.  Nyissa meg gradle.properties fájlt, és cserélje le a "Device_connection_string" az eszköz kapcsolati karakterláncát a korábban feljegyzett.
-    ![A tárház főágába képernyőképe](./media/how-to-android-things/connection-string.png)
 6.  Kattintson a Run - hibakeresés, és válassza ki az eszközt, ezt a kódot a dolgok Android-eszközökre telepíteni kívánt.
 7.  Amikor az alkalmazás sikeresen elindult, megjelenik a dolgok Androidos eszközön futó alkalmazások.  Ez a mintaalkalmazás véletlenszerűen generált hőmérsékletét küld.
 

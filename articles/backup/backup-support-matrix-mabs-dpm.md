@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 74b6d953939a569a3240c9d64134d143dc4f179e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 0544782763bebac42b4b68fda42cff80b18ff067
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430849"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670734"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-serversystem-center-dpm"></a>A Microsoft Azure Backup Server és System Center DPM-mel biztonsági mentés támogatási mátrixa
 
@@ -75,7 +75,7 @@ Az Azure Backup is MABS és a DPM biztonsági mentése a következő operációs
 --- | --- 
 **Egy Azure virtuális Gépen futó MABS** | Windows Server 2012 R2<br/><br/> Windows 2016 Datacenter<br/><br/> Windows 2019 adatközpont<br/><br/> Azt javasoljuk, hogy először a-lemezképet a marketplace webhelyről.<br/><br/> Minimális A2 Standard két maggal és 3,5 GB RAM-MAL. 
 **A DPM egy Azure virtuális gépen** | System Center 2012 R2 Update 3 vagy újabb.<br/><br/> Windows operációs rendszer [a System Center által igényelt](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).<br/><br/> Azt javasoljuk, hogy először a-lemezképet a marketplace webhelyről.<br/><br/> Minimális A2 Standard két maggal és 3,5 GB RAM-MAL. 
-**Helyszíni MABS** | 64 bites operációs rendszereken támogatott:<br/><br/> -MABS v3-as és újabb verziók esetében: Windows Server 2019 (Standard, Datacenter, Essentials) <br/><br/> MABS v2 és újabb verziók esetében: Windows Server 2016 (Standard, Datacenter, Essentials)<br/><br/> Minden MABS-verzió: Windows Server 2012 R2/2012 (Standard, Datacenter, Foundation)<br/><br/>Minden MABS-verzió: A Windows Storage Server 2012 R2 vagy 2012 (Standard/munkacsoport)
+**Helyszíni MABS** | 64 bites operációs rendszereken támogatott:<br/><br/> MABS v3-as és újabb verziók esetében: Windows Server 2019 (Standard, Datacenter, Essentials) <br/><br/> MABS v2 és újabb verziók esetében: Windows Server 2016 (Standard, Datacenter, Essentials)<br/><br/> Minden MABS-verzió: Windows Server 2012 R2/2012 (Standard, Datacenter, Foundation)<br/><br/>Minden MABS-verzió: A Windows Storage Server 2012 R2 vagy 2012 (Standard/munkacsoport)
 **A DPM a helyi** | Fizikai kiszolgáló vagy Hyper-V virtuális gépek: A System Center 2012 SP1 vagy újabb.<br/><br/> A VMware virtuális gépek: A System Center 2012 R2 alkalmazás Update 5 vagy újabb. 
 
 
@@ -106,7 +106,7 @@ Telepíthet egy Azure Stack-beli virtuális gépen MABS, hogy az Azure Stack vir
 A MABS .NET-keretrendszer | A MABS VM szüksége van a .NET-keretrendszer 3.3-as SP1 vagy újabb verziója van telepítve rá.
 **MABS domain** | A MABS virtuális Gépet egy tartományhoz kell csatlakoznia. Rendszergazdai jogosultságokkal rendelkező tartományi felhasználó MABS telepíteni kell a virtuális Gépet.
 **Az Azure Stack VM-adatok biztonsági mentése** | Fájlok, mappák és alkalmazások készíthető.
-**Támogatott biztonsági mentés** | Ezek az operációs rendszerek támogatottak a virtuális gépek biztonsági:<br/><br/> – Windows Server féléves csatorna (Datacenter vagy Enterprise/Standard)<br/><br/> Windows Server 2016/2012 R2/2012/2008 R2.
+**Támogatott biztonsági mentés** | Ezek az operációs rendszerek támogatottak a virtuális gépek biztonsági:<br/><br/> A Windows Server féléves csatorna (Datacenter vagy Enterprise/Standard)<br/><br/> Windows Server 2016/2012 R2/2012/2008 R2.
 **Azure Stack virtuális gépeken futó SQL támogatása** | Készítsen biztonsági másolatot az SQL Server 2016/2014/2012 SP1.<br/><br/> Biztonsági mentése és helyreállítása az adatbázis.
 **A SharePoint-támogatás az Azure Stack-beli virtuális gépek** | A SharePoint 2016/2013/2010.<br/><br/> Biztonsági mentése és helyreállítása a farm, adatbázis, előtér, webkiszolgáló.
 **Biztonsági másolat virtuális gépek hálózati követelményei** | Az Azure Stack számítási feladat összes virtuális gép ugyanazon a vneten legyen, és ugyanahhoz az előfizetéshez tartozik.
@@ -220,4 +220,4 @@ A következő táblázat összefoglalja, milyen biztonsági másolat készíthet
 - [További](backup-architecture.md#architecture-back-up-to-dpmmabs) MABS architektúrával kapcsolatban.
 - [Felülvizsgálat](backup-support-matrix-mars-agent.md) a MARS-ügynök esetében támogatott műveleteket ismerteti.
 - [Állítsa be a](backup-azure-microsoft-azure-backup.md) a MABS-kiszolgáló.
-- [Beállítása] (https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-180
+- [A DPM beállítása](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-180)

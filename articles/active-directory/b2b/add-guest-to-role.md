@@ -1,5 +1,5 @@
 ---
-title: Adjon hozzá egy Azure Active Directory B2B-együttműködés felhasználói szerepkörhöz |} A Microsoft Docs
+title: B2B-együttműködés felhasználó hozzáadása szerepkörhöz – Azure Active Directory |} A Microsoft Docs
 description: Vendégfelhasználó hozzáadása szerepkörhöz az Azure Active Directoryban
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df328228dea53f338c0b2c54422e6b343f96e43e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c51a0f1f8eb1999ced02bf3cf14ee81e4fca08e8
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172233"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675194"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Felhasználói engedélyek kiosztása az erőforráspartner-szervezeteknél az Azure Active Directory-bérlőben
 

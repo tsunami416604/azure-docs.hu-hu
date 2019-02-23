@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 9f1ee309156a39078ffdfeed2c75d86476ac8b48
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 2f08d5b8548b8b7af282356d41c26442edd145b0
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158652"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669581"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Elindítása és leállítása az Azure-SSIS integrációs modul ütemezés szerint
 Ez a cikk ismerteti a indítása és leállítása az Azure-SSIS integrációs modul (IR) ütemezése az Azure Data Factory (ADF) használatával. Az Azure-SSIS integrációs modul az ADF számítási erőforrás dedikált SQL Server Integration Services (SSIS) csomagjainak végrehajtásához. Rendszert futtató Azure-SSIS integrációs modul rendelkezik egy hozzá társított költségek. Ezért általában szeretné futtatni az integrációs modul csak akkor, amikor szüksége van leállítása az integrációs modul helyének, ha Ön már nincs rájuk szükség, és az SSIS-csomagok végrehajtása az Azure-ban. Használhatja az ADF felhasználói felületének (UI) / alkalmazás vagy az Azure PowerShell használatával [manuálisan indítása vagy leállítása az integrációs modul helyének](manage-azure-ssis-integration-runtime.md)).
@@ -92,10 +92,10 @@ Ha létrehoz egy harmadik eseményindítót, ütemezett napi éjfélkor futtatja
   
     2. A **metódus**válassza **POST**. 
     3. A **törzs**, adja meg `{"message":"Start my IR"}`. 
-    4. A **hitelesítési**válassza **MSI** az ADF a felügyelt identitást használja, lásd: [Azure Data Factory-szolgáltatásidentitás](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) cikkben további információkat.
+    4. A **hitelesítési**válassza **MSI** az ADF a felügyelt identitást használja, lásd: [felügyelt identiy adat-előállító](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) cikkben további információkat.
     5. A **erőforrás**, adja meg `https://management.azure.com/`.
     
-       ![Az ADF webes tevékenység ütemezés SSIS integrációs modul](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
+       ![ADF Web Activity Schedule SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
   
 3. Az első folyamat létrehozása egy másikat, a tevékenység nevének módosítása klónozása **stopMyIR** , és cserélje le a következő tulajdonságokat.
 
@@ -105,7 +105,7 @@ Ha létrehoz egy harmadik eseményindítót, ütemezett napi éjfélkor futtatja
 
 4. Hozzon létre egy harmadik folyamatot, áthúzással egy **SSIS-csomag végrehajtása** tevékenységet **tevékenységek** alakzatot a folyamattervezőben eszközkészlet tervezőfelületére, és konfigurálja a következő témakör utasításait követve [ Az SSIS-csomag végrehajtása tevékenység az ADF-ben egy SSIS-csomagok meghívásához](how-to-invoke-ssis-package-ssis-activity.md) cikk.  Másik lehetőségként használhatja egy **tárolt eljárás** tevékenység inkább utasításait követve konfigurálja és [az ADF-ben tárolt eljárási tevékenység használatával egy SSIS-csomagok meghívásához](how-to-invoke-ssis-package-stored-procedure-activity.md) cikk.  Ezután összekapcsolja az SSIS-csomag/tárolt eljárás végrehajtása tevékenység két webes tevékenység, amely indítása és leállítása az integrációs modul, ezek webes tevékenység az első/s folyamatokban hasonló között.
 
-   ![SSIS integrációs modul igény szerinti ADF webes tevékenység](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png)
+   ![ADF Web Activity On Demand SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png)
 
 5. A felügyelt identitás hozzárendelése az ADF- **közreműködői** magát, így a folyamatai a webes tevékenység segítségével meghívhatja a REST API-t indítása és leállítása, kiépített Azure-SSIS integrációs modulokról szerepkört.  Az Azure Portalon az ADF lapon kattintson **hozzáférés-vezérlés (IAM)**, kattintson a **+ szerepkör-hozzárendelés hozzáadása**, majd a **szerepkör-hozzárendelés hozzáadása** panelen a következő műveleteket hajthatja végre.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 76239f80076cbe0f86d6e091a29b008a5a5d06c1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7f09db1f37617519926955daf0c29c13993dbf80
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116643"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728454"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Összes bérlőre vonatkozó információk megjelenítése az Azure Security Centerben
 Ez a cikk használatának megkezdésébe vezeti be, amely az Azure Security Center biztosít előnyök maximalizálása és több művelet végrehajtásával. Ezek a műveletek végrehajtása lehetővé teszi, hogy nagyobb láthatóságot érhet el az összes Azure-előfizetések vannak kapcsolva, az Azure Active Directory-bérlőhöz, és hatékonyan kezelheti a szervezet biztonsági állapotáról, ipari méretekben több biztonsági házirendek alkalmazásával előfizetések aggregative módon.
@@ -108,15 +108,15 @@ Az információk megjelenítése az összes előfizetés, a bérlői rendszergaz
 
 
 #### <a name="assign-rbac-roles-to-users-with-powershell"></a>Rendeljen RBAC-szerepköröket a felhasználók számára a PowerShell-lel: 
-1. Telepítse az [Azure PowerShellt](/powershell/azure/azurerm/install-azurerm-ps).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+1. Telepítse az [Azure PowerShellt](/powershell/azure/install-az-ps).
 2. Futtassa az alábbi parancsot: 
 
     ```azurepowershell
-    # Install Management Groups Powershell module
-    Install-Module AzureRM.Resources
-    
     # Login to Azure as a Global Administrator user
-    Login-AzureRmAccount
+    Connect-AzAccount
     ```
 
 3. Amikor a rendszer kéri, jelentkezzen be globális rendszergazdai hitelesítő adataival. 
@@ -128,12 +128,12 @@ Az információk megjelenítése az összes előfizetés, a bérlői rendszergaz
     ```azurepowershell
     # Add Reader role to the required user on the Root Management Group
     # Replace "user@domian.com” with the user to grant access to
-    New-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/"
+    New-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/"
     ```
 5. A szerepkör eltávolításához használja a következő parancsot: 
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
+    Remove-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
 ### <a name="open-or-refresh-security-center"></a>Nyissa meg, vagy frissítse a Security Centerben
@@ -141,11 +141,16 @@ Ha emelt hozzáférési szintű, nyissa meg, vagy frissítse az Azure Security C
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 2. Ellenőrizze, hogy az előfizetés-választó, amely megtekintése a Security Centerben szeretné előfizetések lehetőséget választja.
+
     ![Előfizetés-választó képernyőképe](./media/security-center-management-groups/subscription-selector.png)
+
 1. Válassza ki **minden szolgáltatás** az Azure főmenüjében válassza **a Security Center**.
-2. Az a **áttekintése**, van egy előfizetési lefedettség diagramot. 
+2. Az a **áttekintése**, van egy előfizetési lefedettség diagramot.
+
     ![Előfizetési lefedettség diagram képernyőképe](./media/security-center-management-groups/security-center-subscription-coverage.png)
+
 3. Kattintson a **lefedettség** kezelt előfizetések listájának megtekintéséhez. 
+
     ![Előfizetési lefedettség lista képernyőképe](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Emelt szintű hozzáférés eltávolítása 

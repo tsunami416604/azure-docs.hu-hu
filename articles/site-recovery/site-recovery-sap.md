@@ -9,14 +9,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 9399f9d47d89215080b1f633423843f501fefb7b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 68efc039c5de5d7f61b7ce34e74c6c2cf4bad027
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850431"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670876"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Egy többrétegű SAP NetWeaver alkalmazás üzembe helyezése a vészhelyreállítás beállítása
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Set up disaster recovery for a multi-tier SAP NetWeaver app deployment
 
 A legtöbb nagy méretű és közepes méretű SAP-környezetekhez valamilyen vész-helyreállítási megoldást használja. A robusztus és testable vészhelyreállítási megoldások fontosságát, több alapvető üzleti folyamatokat, mint az SAP alkalmazások áthelyezett nőtt. Az Azure Site Recovery tesztelte, és az SAP-alkalmazások integrált. A Site Recovery meghaladja a legtöbb helyszíni vészhelyreállítási megoldások, és egy alacsonyabb teljes birtoklási költség (TCO) versengő megoldások, mint a képességeket.
 
@@ -80,7 +80,7 @@ A feladatátvételi fürtkörnyezetnek támogatásához [az SIOS DataKeeper Clus
 
 Kezelje a fürtszolgáltatás egy másik úgy, hogy egy fájlkiszolgáló-megosztás fürt megvalósítása. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) nemrég módosította a szolgáltatások központi telepítési minta a /sapmnt globális könyvtárak keresztül UNC elérési út elérésére. Azonban továbbra is ajánlott annak biztosításához, hogy a /sapmnt UNC megosztást magas rendelkezésre állású. Ezt megteheti a Central Services-példányon a méretezési csoport ki fájlkiszolgáló (SOFS) és a közvetlen tárolóhelyek (S2D) szolgáltatást a Windows Server 2016 Windows Server feladatátvételi fürt használatával. 
  > [!NOTE]
- > Jelenleg az Azure Site Recovery támogatási csak összeomlás közvetlen tárolóhelyek használata virtuális gépek alkalmazáskonzisztens replikálása 
+ > Jelenleg az Azure Site Recovery támogatási csak összeomlás storage spaces direct és a passzív az SIOS Datakeeper node használatával virtuális gépek alkalmazáskonzisztens replikálása
 
 
 ## <a name="disaster-recovery-considerations"></a>Vészhelyreállítási szempontok
@@ -99,7 +99,7 @@ Alább a javaslatot, az egyes csomagok ebben a példában használt vész-helyre
 
  **Az SAP-szint** | **Az ajánlás**
  --- | ---
-**Az SAP Web Dispatcher-készlet** |  Replikálni a Site recovery használatával 
+**SAP Web Dispatcher pool** |  Replikálni a Site recovery használatával 
 **SAP alkalmazáskészletet kiszolgáló** |  Replikálni a Site recovery használatával 
 **Az SAP Central Services fürt** |  Replikálni a Site recovery használatával 
 **Az Active directory virtuális gépek** |  Az Active directory-replikáció 
@@ -166,5 +166,5 @@ További információkért lásd: [az Azure-bA a Site Recovery feladatátvételi
 További információkért lásd: [feladatátvétel a Site Recoveryben](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>További lépések
-* A Site Recovery használatával egy vészhelyreállítási megoldás az SAP NetWeaver-telepítések létrehozásával kapcsolatos további tudnivalókért lásd: a letölthető tanulmány [SAP NetWeaver: létrehozásához egy vész-helyreállítási megoldást az Azure Site Recovery](https://aka.ms/asr-sap). A tanulmány különböző SAP-architektúrák vonatkozó javaslatokat tárgyalja, sorolja fel az támogatott alkalmazások és a virtuális gépek típusai az Azure-beli SAP és a vész-helyreállítási megoldás tesztelési terv beállításait ismerteti.
+* A Site Recovery használatával egy vészhelyreállítási megoldás az SAP NetWeaver-telepítések létrehozásával kapcsolatos további tudnivalókért lásd: a letölthető tanulmány [SAP NetWeaver: Létrehozását olyan vész-helyreállítási megoldást az Azure Site Recovery](https://aka.ms/asr-sap). A tanulmány különböző SAP-architektúrák vonatkozó javaslatokat tárgyalja, sorolja fel az támogatott alkalmazások és a virtuális gépek típusai az Azure-beli SAP és a vész-helyreállítási megoldás tesztelési terv beállításait ismerteti.
 * Tudjon meg többet [más munkaterhelések replikálásához](site-recovery-workload.md) Site Recovery használatával.

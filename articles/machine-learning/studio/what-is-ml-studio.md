@@ -15,19 +15,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: e454420c014460fbf44c01cb9f620d0f3273c602
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 44f2c24f1fe53b6fadabf23f03a6feda75c87883
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586018"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738283"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 A Microsoft Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. A Machine Learning Studio a modelleket webszolgáltatásként teszi közzé, amelyeket az egyéni alkalmazások vagy az Excel és más üzletiintelligencia-eszközök egyszerűen felhasználhatnak.
 
 A Machine Learning Studio találkozási pontot biztosít az adatelemzés, a prediktív elemzés, a felhőerőforrások és az Ön adatai számára.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="the-machine-learning-studio-interactive-workspace"></a>A Machine Learning Studio interaktív munkaterülete
 A prediktív elemzési modellek létrehozásához általában egy vagy több forrásból származó adatokat veszünk alapul, különböző adatkezelési és statisztikai függvények felhasználásával átalakítjuk őket, majd eredményhalmazt hozunk létre. Az ilyen modellek fejlesztése iteratív folyamat. A különböző függvényeket és paramétereket addig módosítjuk, az eredményeket addig közelítjük, amíg úgy nem véljük, hogy jól betanított, hatékony modellel rendelkezünk.
@@ -38,14 +37,16 @@ A prediktív elemzési modell összeállításához nincs szükség programozás
 
 ![Az Azure Machine Learning studio diagramja: Kísérletek létrehozása, olvasása, adatok számos forrásból, pontozott adatok, modellek írása.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
+## <a name="download-the-machine-learning-studio-overview-diagram"></a>Töltse le a Machine Learning Studio áttekintési diagramját
+Töltse le a **Microsoft Azure Machine Learning Studio képességeinek áttekintése** diagramot, hogy egy átfogó képet kapjon a Machine Learning Studio képességeiről. Hogy mindig kéznél legyen, kinyomtathatja a diagramot tabloid méretben (11 x 17-es méret).
+
+**Töltse le a diagramot innen: [Microsoft Azure Machine Learning Studio képességeinek áttekintése](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+![Microsoft Azure Machine Learning Studio képességeinek áttekintése](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
+
 ## <a name="get-started-with-machine-learning-studio"></a>A Machine Learning Studio használatának első lépései
 Amikor először belép a [Machine Learning Studio](https://studio.azureml.net) felületére, a **Kezdőlap** oldal jelenik meg. Innen kiindulva megtekintheti a dokumentációt, valamint videókat, webes előadások és más hasznos forrásokat érhet el.
 
 Kattintson a bal felső menüre, ![Menü](./media/what-is-ml-studio/menu.png) amelyben számos lehetőséget fog látni.
-
-### <a name="cortana-intelligence"></a>Cortana Intelligence
-Kattintson a **Cortana Intelligence** elemre, és megnyílik a [Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite) kezdőlapja. A Cortana Intelligence Suite egy teljes mértékben felügyelt big data-feldolgozó és összetett elemzéseket végző csomag, amelynek segítségével az adatait intelligens műveletekké alakíthatja. A teljes dokumentációt, valamint az ügyfelek beszámolóit a csomag honlapján találja.
-
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 Két lehetőség érhető el: a **Kezdőlap**, vagyis a kiindulási oldal, valamint a **Studio**.
 
@@ -108,53 +109,24 @@ Való eligazodást segíti gépi tanulási algoritmusok rendelkezésre álló, l
 Ha elkészült a prediktív elemzési modell, közvetlenül a Machine Learning Studio eszközből üzembe helyezheti webszolgáltatásként. A folyamattal kapcsolatos további információkért tekintse meg az [Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md) című cikket.
 
 
-## <a name="key-machine-learning-terms-and-concepts"></a>A Machine Learning legfontosabb kifejezései és fogalmai
-A Machine Learning kifejezéseinek jelentése nem mindig egyértelmű. Segítségül az alábbiakban ismertetjük a legfontosabb kifejezések meghatározását. Az ezek alatt található megjegyzés rovatban kérdezhet rá olyan további kifejezésekre, amelyek meghatározására kíváncsi.
+## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>Miben különbözik a Machine Learning Studio Azure Machine Learning szolgáltatás?
 
-### <a name="data-exploration-descriptive-analytics-and-predictive-analytics"></a>Az adatok feltárása, deskriptív elemzés és prediktív elemzés
+[Az Azure Machine Learning szolgáltatás](../service/overview-what-is-azure-ml.md) SDK-k és szolgáltatások gyorsan előkészítheti az adatokat, betanítását és gépi tanulási modellek üzembe helyezése nyújt. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. 
 
-Az **adatok feltárásának** azt a folyamatot nevezzük, amikor egy nagy és általában nem strukturált adathalmaz adatait összegyűjtve megkeressük a részletesebb elemzéshez felhasználható általános jellemzőket.
+Használja a Machine Learning Studiot akkor, amikor gyorsan és egyszerűen szeretne gépi tanulási modellekkel kísérletezni, és ha a megoldáshoz elegendőek a beépített gépi tanulási algoritmusok is.
 
-Az **adatbányászat** kifejezés az adatfeltárás automatizált formájára utal.
+A Machine Learning szolgáltatást pedig akkor, amikor Python környezetben dolgozik a gépi tanulási algoritmusok finomhangolásán, vagy ha nyílt forráskódú gépi tanulási kódtárakat venne igénybe.
 
-**Deskriptív elemzésnek nevezzük**, amikor az adathalmaz elemzésével azt szeretnénk megkapni, hogy pontosan mi történt az adatokkal. Az üzleti elemzések nagy része (például az értékesítési jelentések, webes metrikák és közösségihálózat-elemzések) deskriptív elemzésnek számít.
+> [!NOTE]
+> Az Azure Machine Learning Studióban létrehozott modelleket használva nem kell telepíteni, vagy az Azure Machine Learning szolgáltatás kezeli.
 
-**Prediktív elemzésnek** azt a folyamatot nevezzük, amikor előzményadatok vagy aktuális adatok alapján modelleket hozunk létre, amelyek segítségével előre lehet jelezni valamilyen jövőbeli eredményt.
+## <a name="free-trial"></a>Ingyenes próbaidőszak
 
-### <a name="supervised-and-unsupervised-learning"></a>Felügyelt és nem felügyelt tanítás
- A **felügyelt tanítással** képzett algoritmusokat címkézett adatokkal, azaz a kívánt válaszokat példázó adatokkal tanítják. A rosszindulatú bankkártyahasználatot azonosító modellt például már ismert rosszindulatú és érvényes terhelések címkézett adatpontjait tartalmazó adatkészletből kell betanítani. A gépi tanulás általában felügyelt módon történik.
+[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
- A **nem felügyelt tanítást** címkéket nem tartalmazó adatokon alkalmazzák, és a folyamat célja, hogy megtalálja az adathalmazon belüli összefüggéseket. Ez akkor hasznos, ha például vásárlói körében hasonló vásárlási szokásokat követő csoportokat szeretne felállítani.
-
-### <a name="model-training-and-evaluation"></a>A modellek betanítása és kiértékelése
-A gépi tanulási modell a megválaszolandó kérdések vagy az előre jelezni kívánt eredmények absztrakciója. A modellek tanítását és kiértékelését meglévő adatok alapján lehet elvégezni.
-
-#### <a name="training-data"></a>Betanítási adatok
-A modellek adatokból történő betanításakor használhat egy már ismert adatkészletet, majd a legpontosabb válaszok érdekében az adatjellemzők alapján módosíthatja a modellt. Az Azure Machine Learning Studio a modell a tanítási adatokat feldolgozó algoritmusmodul, illetve funkcionális modulok, például pontozási modul épül fel.
-
-Felügyelt tanítás során, például a csalásészlelő modell tanítása esetén egy tranzakciókat tartalmazó halmazt fog használni, amelyben minden tranzakciónál meg van jelölve, hogy az csalási célú vagy érvényes. Az adathalmazt ilyenkor véletlenszerűen fel kell darabolni: az egyik rész a modell betanítására, a másik a modell kiértékelésére való.
-
-#### <a name="evaluation-data"></a>Az adatok kiértékelése
-Ha elvégezte a modell betanítását, a fennmaradó tesztadatok segítségével értékelje ki a modellt. Ilyenkor olyan adatokat kell használni, amelyeknél tisztában van az eredményekkel, mivel így állapítható meg, hogy milyen pontosságú előrejelzésre képes a modell.
-
-## <a name="other-common-machine-learning-terms"></a>A gépi tanulás tárgykörében gyakran használt egyéb kifejezések
-* **algoritmus**: Az adatfeldolgozás, matematikai műveletek vagy automatikus indoklás alkalmazásával segít a problémák megoldásában használt szabályok olyan önálló készlete.
-* **anomáliadetektálás**: Egy modellt, amely észleli, ha szokatlan események vagy értékek, és segít a problémák észlelését. A rosszindulatú bankkártyahasználat észlelése során például a rendszer szokatlan vásárlásokat keres.
-* **kategorikus adatok**: Amely kategóriák szerint vannak rendszerezve, és, amely csoportokra osztható adatok. Egy gépjárműveket tartalmazó kategorizált adathalmazban például meg van adva a gyártás éve, a márka, a típus és az ár.
-* **Besorolási**: Az adatpontok egy adatkészlet, amely csoportosításokat már ismert alapján kategóriákba sorolására használható modell.
-* **jellemzőkiemelés**: A folyamat, vagy kiválasztunk annak érdekében, hogy növelje az adatkészlet, és javíthatja az eredményeket egy adatkészlet kapcsolódó szolgáltatások. A repülőjegyárakra vonatkozó adatokat például a hét napjainak és a munkaszüneti napoknak a kiemelésével lehet javítani. Lásd: [kiválasztása és az Azure Machine Learning Studio a mérnöki csapathoz](../team-data-science-process/create-features.md).
-* **a modul**: A Machine Learning Studio modellben, például az adatbevitel modul, amely lehetővé teszi a bevitelét és szerkesztését a kis adatkészletekhez funkcionális része. A Machine Learning Studióban az algoritmusok is a modulok egyik típusának számítanak.
-* **Modell**: Felügyelt tanítási modell, amely az a machine learning-kísérletből a betanítási adatok, algoritmusmodul és funkcionális modulok, például a Score Model-modul áll.
-* **numerikus adatok**: Adatok, amelyek mérésekként (folytonos adatok), vagy megszámlálják (a diszkrét adatok). A numerikus adatokat *kvantitatív adatoknak* is nevezzük.
-* **partíció**: A módszer osztjuk adatokat mintákra. További információk: [Partition and Sample](https://msdn.microsoft.com/library/azure/dn905960.aspx) (Particionálás és minták létrehozása).
-* **előrejelzési**: Előrejelzett értékeket egy gépi tanulási modellt az nevezzük. Az „előrejelzett pontszám” kifejezés is előfordulhat. Az előrejelzett pontszámok azonban nem a modellek végső kimenetei. A modell értékelése a pontszám alapján történik.
-* **Regresszió**: Egy érték előrejelzésére szolgáló modell független változók, például az egy autó árát annak év alapján előrejelzésére alapján, és győződjön meg arról.
-* **pontszám**: Egy betanított besorolási vagy regressziós modell generált előre jelzett érték használatával a [Score Model-modul](https://msdn.microsoft.com/library/azure/dn905995.aspx) a Machine Learning Studióban. A besorolási modell az előre jelzett érték valószínűségét jelző pontszámot is visszaad. Ha a modell már alkalmas pontszámok generálására, ellenőrizze a modell pontosságát az [Evaluate Model](https://msdn.microsoft.com/library/azure/dn905915.aspx) (Modell kiértékelése) modul segítségével.
-* **minta**: Egy adatkészlet is reprezentatívnak tekinthető, az egész részét. A mintát kiválaszthatja véletlenszerűen vagy az adathalmaz konkrét jellemzői alapján.
 
 ## <a name="next-steps"></a>További lépések
 Alapismeretek a Mobilfunkciók prediktív elemzés, és a machine learning használatával egy [részletes rövid](create-experiment.md) , illetve [bővíthető mintáinkat](sample-experiments.md).
-
 
 <!-- Module References -->
 [convert-to-arff]: https://msdn.microsoft.com/library/azure/62d2cece-d832-4a7a-a0bd-f01f03af0960/

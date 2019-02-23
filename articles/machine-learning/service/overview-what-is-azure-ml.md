@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 36e0ca360cfbdfc77ce0a1768222f43f8864537c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 1645f09682ebb58b442626bf14f26fdb91f9456e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267258"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728284"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -70,7 +70,7 @@ Ismerkedés az Azure Machine Learning szolgáltatás használatával, lásd: [to
 
 ## <a name="how-is-azure-machine-learning-service-different-from-machine-learning-studio"></a>Miben különbözik az Azure Machine Learning szolgáltatás a Machine Learning Studio?
 
-Az Azure Machine Learning Studio egy együttműködést ösztönző, az egér húzásával könnyedén vezérelhető vizuális munkaterület, amelyben anélkül készíthet, tesztelhet és helyezhet üzembe gépi tanulási modelleket, hogy kódot kellene írnia hozzá. Előre elkészített és az előre konfigurált machine learning-algoritmusok és adatkezelési modulok használ. 
+[Az Azure Machine Learning Studióban](../studio/what-is-ml-studio.md) egy együttműködést támogató, fogd és vidd vizuális munkaterület ahol készítése, tesztelése és üzembe helyezése a gépi tanulási megoldások létrehozása kód írása nélkül. Előre elkészített és az előre konfigurált machine learning-algoritmusok és adatkezelési modulok használ.
 
 Használja a Machine Learning Studiot akkor, amikor gyorsan és egyszerűen szeretne gépi tanulási modellekkel kísérletezni, és ha a megoldáshoz elegendőek a beépített gépi tanulási algoritmusok is.
 

@@ -10,18 +10,19 @@ ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 482968af53694f7d40a7077435d33a83884c8808
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 63592a0afc7e5da0a37c25c226b92b587aa5f886
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873043"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673699"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>A Translator Speech API által támogatott nyelvek
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-A következő nyelvek támogatottak beszédalapú fordítási. Ha mindkét nyelveket támogatja a tolmácsolás, beszédfelismerés, beszédfelismerési vagy Diktálás érhető el. Ha a célként megadott nyelv nem támogatott beszédalapú fordítási, szövegfordítás csak beszédfelismerés érhető el. 
+A következő nyelvek támogatottak beszédalapú fordítási. Ha mindkét nyelveket támogatja a tolmácsolás, beszédfelismerés, beszédfelismerési vagy Diktálás érhető el. Ha a célként megadott nyelv nem támogatott beszédalapú fordítási, szövegfordítás csak beszédfelismerés érhető el.
 
 | Beszédfelismerési nyelvet    |
 |:----------- |
@@ -34,9 +35,9 @@ A következő nyelvek támogatottak beszédalapú fordítási. Ha mindkét nyelv
 | japán      |
 | Portugál (brazíliai)     |
 | orosz      |
-| spanyol      | 
+| spanyol      |
 
-A Translator Speech API a következő nyelveket támogatja mint szövegfordítás beszédfelismerés cél nyelvét. 
+A Translator Speech API a következő nyelveket támogatja mint szövegfordítás beszédfelismerés cél nyelvét.
 
 | Szöveg nyelvét    | Nyelvkód |
 |:----------- |:-------------:|
@@ -47,7 +48,7 @@ A Translator Speech API a következő nyelveket támogatja mint szövegfordítá
 | bolgár      | `bg`          |
 | Kantoni (hagyományos)      | `yue`          |
 | katalán      | `ca`          |
-| kínai (egyszerűsített)      | `zh-Hans`          | 
+| kínai (egyszerűsített)      | `zh-Hans`          |
 | kínai (hagyományos)      | `zh-Hant`          |
 | horvát      | `hr`          |
 | cseh      | `cs`          |
@@ -116,4 +117,4 @@ A nyelvek erőforrás beszéd, a szöveg és a szöveg-beszéd átalakítás, t�
 
 A Microsoft Translator webhely a nyelvek egy gyors pillantást mutatja be, a Translator Text és a Speech API-k által támogatott összes nyelv. Ez a lista nem tartalmaz fejlesztői jellemző információkat, például nyelvi kódot.
 
-[Nyelvek listáját lásd:](https://www.microsoft.com/translator/languages.aspx) 
+[Nyelvek listáját lásd:](https://www.microsoft.com/translator/languages.aspx)

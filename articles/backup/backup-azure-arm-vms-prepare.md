@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: effb00a4ebde857e06e34e5f83ca01fc5d74017b
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: e7bbb047a982ee4516372bf7a260688139c61923
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594185"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732721"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure virtuális gépek biztonsági mentése Recovery Services-tárolóban
 
@@ -243,7 +243,7 @@ Biztonsági mentés engedélyezése után:
     -  Azonban a virtuális gép biztonsági másolat még akkor is, ha ki van kapcsolva, és a bővítményt nem lehet telepíteni. Ez az úgynevezett *offline virtuális gép*. Ebben az esetben a helyreállítási pont az *összeomláshoz igazodik* lesz.
     Vegye figyelembe, hogy az Azure Backup nem támogatja az óra automatikus illesztését nyári időszámítás – mentés módosításait az Azure virtuális gép biztonsági mentéseinek. Biztonsági mentési szabályzatok manuálisan szükség szerint módosítsa.
   
- ## <a name="run-the-initial-backup"></a>A kezdeti biztonsági mentés futtatása
+## <a name="run-the-initial-backup"></a>A kezdeti biztonsági mentés futtatása
 
 A kezdeti biztonsági mentés beállított ütemezés fog futni, kivéve, ha manuálisan futtatja, azonnal. Futtassa manuálisan az alábbiak szerint:
 

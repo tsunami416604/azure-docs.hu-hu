@@ -5,15 +5,15 @@ services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 02/19/2019
+ms.date: 02/21/2019
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 619dd7f3b01e2e7ce71e945fce77aa73cb87f264
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: fff3cc176da155ab92514a126c43c33cbd21ad91
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443317"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675432"
 ---
 Az alábbiakban a használati korlátozásokat és egyéb szolgáltatási korlátai, az Azure Active Directory (Azure AD) szolgáltatás.
 
@@ -21,7 +21,7 @@ Az alábbiakban a használati korlátozásokat és egyéb szolgáltatási korlá
 | --- | --- |
 | Könyvtárak | Egy felhasználó legfeljebb 500 Azure AD-címtár vagy egy Vendég is tartozhat.<br/>Egy-egy felhasználóhoz legfeljebb 20 címtárat hozhat létre. |
 | Tartományok | Legfeljebb 900 felügyelt tartományneveket adhat hozzá. Beállítása minden a tartománynak a helyszíni Active Directoryval az összevonáshoz, ha minden könyvtár nem több mint 450 tartományneveket adhat hozzá. |
-| Objektumok |<ul><li>Egy legfeljebb 500 000 objektumot az Azure Active Directory ingyenes kiadásának felhasználói egyetlen címtárban hozható létre.</li><li>A nem rendszergazdai jogosultságú felhasználók legfeljebb 250 objektumot hozhatnak létre.</li></ul> |
+| Objektumok |<ul><li>Egy legfeljebb 500 000 objektumot az Azure Active Directory ingyenes kiadásának felhasználói egyetlen címtárban hozható létre.</li><li>A nem rendszergazdai jogosultságú felhasználók legfeljebb 250 objektumot hozhatnak létre. Aktív objektumok és a törölt objektumok visszaállítása (kevesebb mint 30 napja törölve) felszámítja a kvóta számára elérhető. Törölt objektumok, amelyek már nem érhető el, a kvótát, 1/4-es érték felszámítja visszaállítása 30 napig. Érdemes lehet [rendszergazdai szerepkör hozzárendelése](../articles/active-directory/users-groups-roles/directory-assign-admin-roles.md) valószínűleg többször túllépi a kvótát nem rendszergazdai felhasználók esedékes rendszeres munkájuk során.</li></ul> |
 | Sémabővítmények |<ul><li>A sztring típusú bővítmények legfeljebb 256 karakterből állhatnak. </li><li>A bináris típusú bővítmények legfeljebb 256 bájtosak lehetnek.</li><li>Egyetlen objektumhoz legfeljebb 100 bővítményértéket lehet írni (az ÖSSZES típust és az ÖSSZES alkalmazást beleértve).</li><li>Csak a „User”, „Group”, „TenantDetail”, „Device”, „Application” és „ServicePrincipal” entitások bővíthetőek „String” típusú vagy „Binary” típusú egyértékű attribútumokkal.</li><li>A sémabővítmények csak a Graph API-version 1.21-preview esetében érhetőek el. Az alkalmazás számára írási hozzáférést kell biztosítani a bővítmények regisztrálásához.</li></ul> |
 | Alkalmazások |Legfeljebb 100 felhasználó lehet a tulajdonosa egy alkalmazás. |
 | Csoportok |<ul><li>Legfeljebb 100 felhasználó lehet a tulajdonosa egyetlen csoportnak.</li><li>Tetszőleges számú objektum lehet egyetlen csoport tagjai.</li><li>Egy felhasználó lehet bármely számú csoport tagja.</li><li>Szinkronizálható a helyszíni Active Directoryból az Azure Active Directory, Azure AD connecttel egy csoportnak száma legfeljebb 50 ezer tagja.</li></ul> |

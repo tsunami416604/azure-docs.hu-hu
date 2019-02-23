@@ -1,6 +1,6 @@
 ---
-title: Banki és az adót tudnivalókkal |} Azure
-description: Banki és az adót-adatokat hozzáadni a fejlesztői központban regisztrált fiókjában.
+title: Adja meg a banki és adózási adatait |} Az Azure
+description: Adja hozzá a fejlesztői központban lévő fiókjához banki és adózási adatait.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -13,50 +13,50 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2ff5b9e5bbae15b37726ea066474120d9417feba
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: bfc4f6cbe289326e3a7a2a6ea0a46221e7578d7e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825141"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729083"
 ---
-# <a name="add-bank-and-tax-information"></a>Banki és az adót adatok megadása  
-A bank és az adót információkra szükség, a listaelem típusa transact használatával minden kereskedelmi ajánlatok.  
-*   Ha közzéteszi a beszerzési kereskedelmi ajánlatokat, majd fel kell vennie kifizetés és az adót információkat és a kérelem ellenőrzése fejlesztői központban.  
+# <a name="add-bank-and-tax-information"></a>Adja meg a banki és adózási adatait  
+A banki és adózási adatait az ajánlati típus transact használatával minden kereskedelmi ajánlat megadása kötelező.  
+*   A vásárlás kereskedelmi ajánlatokat tesz közzé, ha majd hozzá kell adnia küldenie jóváhagyásra cége kifizetési és adózási adatait, és ellenőrizni a kéréseket a fejlesztői központban.  
     >[!IMPORTANT]
-    >A kereskedelmi ajánlatok (transact) válik a ajánlatok leküldése éles előtt végezze el a bank és az adót információkat.  
+    >Kereskedelmi ajánlatokat (transact) tudja éles környezetben az ajánlatok leküldése előtt be kell fejeznie a banki és adózási adatait.  
 
-*   Ha csak szabad közzététel vagy BYOL kínál, majd adja meg az információkat a nem kötelező. Az információ későbbi adhat hozzá, de adó információ némi időt vesz igénybe. Ha szeretne vásárolni kereskedelmi ajánlatokat nyújtanak, majd adja hozzá az információkat a lehető leghamarabb.  
+*   Ha Ön közzététel csak ingyenes vagy BYOL kínál, majd adja meg az információkat a nem kötelező. Később is hozzáadhat, de az adózási adatok érvényesítése eltarthat egy ideig. Ha azt tervezi, a vásárlás kereskedelmi ajánlatokat kínáló, akkor hozzá kell adnia az adatokat a lehető leghamarabb.  
 
-## <a name="add-bank-information"></a>Banki adatok megadása  
-1.  Jelentkezzen be a használatával a Microsoft ID. fejlesztői központ  
-    *   Jelentkezzen be a fejlesztői központban, látogasson el a Windows fejlesztői központ lapján található [dev.windows.com](https://dev.windows.com).  
-2.  Válassza ki a bal oldali menü kifizetés fiókot.
+## <a name="add-bank-information"></a>Adja meg a bank adatait  
+1.  Jelentkezzen be a Microsoft ID. használatával fejlesztői központ  
+    *   Jelentkezzen be a fejlesztői központ, látogasson el a Windows fejlesztői központ lapján található [dev.windows.com](https://dev.windows.com).  
+2.  Válassza ki a bal oldali menüben küldenie jóváhagyásra cége kifizetési fiókot.
 3.  Az a `Choose payment method` lapon jelölje be `Bank account` vagy `PayPal`.  
     >[!IMPORTANT]
-    >Ha kereskedelmi ajánlatokat, amelyek ügyfelek vásárlása a piactéren, kifizetés fiókja, ahol a beszerzési kifizetés kapni.  
+    >Ha rendelkezik, amelyek az ügyfelek kereskedelmi ajánlatokat a piactéren, küldenie jóváhagyásra cége kifizetési fiókja, ahol esetében a vásárlások payout kap.  
 
-4.  Adja meg a megadott fizetési adatokat. Miután ellenőrizte, hogy az adatok helyesek, kattintson a Mentés gombra.  
+4.  Adja meg a fizetési adatokat. Miután ellenőrizte, hogy helyesen szerepel-e az adatokat, kattintson a Mentés gombra.  
     >[!IMPORTANT]
-    >Ha frissíteni vagy kifizetés fiókjához, majd hajtsa ugyanezek a lépések az aktuális adatokat lecseréli az új információkkal. A kifizetés változásai miatt késhet kifizetések legfeljebb egy fizetési ciklus. Ez a késés az okozza, hogy a Microsoft ellenőriznie kell a fiókját, ugyanaz, mint amikor ez az első telepítés kifizetés fiókját. A teljes összeg beolvasása fizetős, miután ellenőrizte a fiókját. Fizetési határideje a jelenlegi fizetési a ciklus a következő ciklus kerülnek.  
+    >Ha frissíteni vagy küldenie jóváhagyásra cége kifizetési fiókjához, majd kell követnie ugyanazokat a lépéseket, és cserélje le az aktuális információk az új adatokat. Küldenie jóváhagyásra cége kifizetési fiókjába módosítások legfeljebb egy fizetési ciklus kifizetések késhet. Ez a késleltetés az okozza, hogy a Microsoft ellenőriznie kell a fiók módosítás, ez ugyanaz, mint amikor az első telepítési küldenie jóváhagyásra cége kifizetési fiókját. A teljes összeget első fizetős, miután a fiók ellenőrzése megtörtént. Fizetési határidő, a jelenlegi fizetési ciklus a következő ciklusig az újbóli kerülnek.  
 
 4.  Kattintson a Tovább gombra. 
 
----   
+---
 
-## <a name="add-tax-information"></a>Adó-információk hozzáadása  
-1.  Jelentkezzen be a használatával a Microsoft ID. fejlesztői központ  
-    *   Jelentkezzen be a fejlesztői központban, látogasson el a Windows fejlesztői központ lapján található [dev.windows.com](https://dev.windows.com).  
-2.  Válassza ki a bal oldali menü adó profilt. 
-3.  Az a `Set up your tax form` lapon, válassza ki az országot vagy régiót állandó rezidens esetében.  
+## <a name="add-tax-information"></a>Adózási adatok hozzáadása  
+1.  Jelentkezzen be a Microsoft ID. használatával fejlesztői központ  
+    *   Jelentkezzen be a fejlesztői központ, látogasson el a Windows fejlesztői központ lapján található [dev.windows.com](https://dev.windows.com).  
+2.  Válassza ki a bal oldali menüben adó profilt. 
+3.  Az a `Set up your tax form` lapon, válassza ki az országot vagy régiót, ahol az állandó helyével rendelkezik.  
     
-    Válassza ki az országot vagy régiót, ahol tartsa elsődleges lehetőségekkel.  
+    Válassza ki az országot vagy régiót, ahol elsődleges polgárságról kis türelmet.  
     
     Kattintson a Tovább gombra. 
-4.  Adja meg a adó részleteit.  
+4.  Adja meg a adózási adatait.  
 5.  Kattintson a Tovább gombra.  
 
 ## <a name="next-steps"></a>További lépések
-*   Látogasson el a [AppSource Publisher útmutató és az Azure piactér](./marketplace-publishers-guide.md) lap.  
+*   Látogasson el a [Azure Marketplace és AppSource útmutató Közzétevőknek](./marketplace-publishers-guide.md) lapot.  
  
----  
+---

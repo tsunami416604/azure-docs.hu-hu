@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bec7fdbbbedb44cb4e74206c05ecec18400a4dbb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 13e4b99da6de7d9c1fb08edc80605d38ed07c6f5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989011"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727196"
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Az Azure Media Services API használata az Azure AD-alkalmazás létrehozása a PowerShell használatával
 
@@ -26,20 +26,22 @@ Ismerje meg, hogyan hozhat létre az Azure Media Services-erőforrások elérés
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 - Egy Azure-fiók. Ha nem rendelkezik fiókkal, kezdje egy [Azure ingyenes próbaverziója](https://azure.microsoft.com/pricing/free-trial/). 
 - Egy Media Services-fiók. További információkért lásd: [Azure Media Services-fiók létrehozása az Azure Portalon](media-services-portal-create-account.md).
-- Az Azure PowerShell-verzió 0.8.8 vagy újabb verziója. További információkért lásd: [használata az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview).
-- Az Azure Resource Manager-parancsmagokkal.  
+
+- Azure PowerShell. További információkért lásd: [használata az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview).
 
 ## <a name="create-an-azure-ad-app-by-using-powershell"></a>Az Azure AD-alkalmazás létrehozása a PowerShell használatával  
 
 ```powershell
-Connect-AzureRmAccount
-Import-Module AzureRM.Resources
-Set-AzureRmContext -SubscriptionId $SubscriptionId
-$ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -Password $Password
+Connect-AzAccount
+Import-Module Az.Resources
+Set-AzContext -SubscriptionId $SubscriptionId
+$ServicePrincipal = New-AzADServicePrincipal -DisplayName $ApplicationDisplayName -Password $Password
 
-Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
+Get-AzADServicePrincipal -ObjectId $ServicePrincipal.Id 
 $NewRole = $null
 $Scope = "/subscriptions/your subscription id/resourceGroups/userresourcegroup/providers/microsoft.media/mediaservices/your media account"
 
@@ -47,8 +49,8 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 {
     # Sleep here for a few seconds to allow the service principal application to become active (usually, it will take only a couple of seconds)
     Sleep 15
-    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
+    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+    $NewRole = Get-AzRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
     $Retries++;
 }
 ```

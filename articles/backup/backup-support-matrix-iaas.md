@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: b99d6285942bafe5467827c30b5ba2e42094fdf3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 2bd499c3afc423047dda9ff3ad657d110dab282a
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430884"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673647"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) biztonsági mentése a helyszíni gépek és a számítási feladatok és az Azure virtuális gépeken. Ez a cikk összefoglalja a támogatási beállításait és korlátozások biztonsági mentése Azure-beli virtuális gépek (VM) az Azure Backup szolgáltatással.
@@ -37,7 +37,7 @@ Itt látható, hogyan lehet biztonsági másolatot készíteni, és Azure virtu�
 **Közvetlen biztonsági mentést Azure-beli virtuális (csak Windows)** | Készítsen biztonsági másolatot az adott fájlok/mappák/kötet | Telepítse a [a Microsoft Azure Recovery Services-(MARS) ügynök](backup-azure-file-folder-backup-faq.md).<br/><br/> A MARS-ügynök mellett a biztonsági mentési bővítményt a fájl vagy mappa szintjén a virtuális gép biztonsági másolatának az Azure Virtuálisgép-ügynök futtatásával. | Állítsa vissza az adott mappákat és fájlokat.
 **Biztonsági mentése Azure virtuális gép biztonsági mentési kiszolgálóra** |  Készítsen biztonsági másolatot a fájlok/mappák/kötetek; rendszerállapot/operációs rendszer nélküli rendszerfájlok; fel az adatokat, a System Center DPM vagy a Microsoft Azure Backup Server (MAB kiszolgálót).<br/><br/> A DPM/MABS majd biztonsági másolatot készít a backup-tárolóba | A MABS és a DPM védelmi ügynök telepítése a virtuális gépen. A MARS-ügynök telepítve van a DPM/MABS.| Állítsa vissza a fájlok/mappák/kötetek; rendszerállapot/operációs rendszer nélküli rendszerfájlok; Alkalmazásadatok. 
 
-További információ a biztonsági mentés a biztonsági mentési server(backup-architecture.md#architecture-back-up-to-dpmmabs), és [memóriakonfigurációt](backup-support-matrix-mabs-dpm.md).
+További információ a biztonsági mentés [használatával egy biztonsági mentési kiszolgálóra](backup-architecture.md#architecture-back-up-to-dpmmabs), és [memóriakonfigurációt](backup-support-matrix-mabs-dpm.md).
 
 
 ## <a name="supported-backup-actions"></a>Támogatott biztonsági mentési műveletek
@@ -189,7 +189,7 @@ Nyilvános IP-címekkel rendelkező virtuális gépek    | Támogatott.<br/><br/
 Hálózati biztonsági csoport (NSG) a hálózati adapter (al). |   Támogatott.
 Fenntartott IP-cím (statikus) | Nem támogatott.<br/><br/> Biztonsági mentés egy virtuális Gépet egy fenntartott IP-cím és a nem meghatározott végpontot.
 Dinamikus IP-cím |    Támogatott.<br/><br/> Ha a hálózati adapter a forrás virtuális gép használ, a dinamikus IP-címkezelést, alapértelmezés szerint a hálózati adapter a visszaállított virtuális Gépet a rendszer túl.
-Traffic Manager | Támogatott<br/><br/>. Ha a biztonsági másolat virtuális gép Traffic Managerben, manuálisan adja hozzá a visszaállított virtuális Gépet az azonos a Traffic Manager szüksége. 
+Traffic Manager | Támogatott<br/><br/> Ha a biztonsági másolat virtuális gép Traffic Managerben, manuálisan adja hozzá a visszaállított virtuális Gépet az azonos a Traffic Manager szüksége. 
 Azure DNS | Támogatott.
 Egyéni DNS |    Támogatott.
 Kimenő kapcsolat HTTP-proxyn keresztül | Támogatott.<br/><br/> Egy hitelesített proxyk nem támogatottak. 

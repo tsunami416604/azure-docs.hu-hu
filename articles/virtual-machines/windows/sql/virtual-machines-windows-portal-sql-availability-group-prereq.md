@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: ff2031bd4c4fdc3d3ed8447a08ef29f0f89ea1d8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7aebdace6b6200f400d0c642c8cbdc6d31544752
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818022"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733027"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Teljesítse az előfeltételeket az Always On rendelkezésre állási csoportok létrehozása az Azure-beli virtuális gépeken
 
@@ -308,7 +308,7 @@ Ha a kiszolgáló befejezi a konfiguráció módosításait, indítsa újra a ki
 
 Az Azure Portalon, a virtuális hálózat módosítsa a DNS-kiszolgáló a másodlagos tartományvezérlő IP-címét tartalmazza. Ez a beállítás lehetővé teszi, hogy a DNS szolgáltatás redundanciájára.
 
-### <a name=DomainAccounts></a> A tartományi fiókok konfigurálása
+### <a name="DomainAccounts"></a> A tartományi fiókok konfigurálása
 
 Az alábbi lépésekkel konfigurálja az Active Directory-fiókokat. Az alábbi táblázat a fiókok:
 

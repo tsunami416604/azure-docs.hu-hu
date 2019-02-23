@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: d1d7c5df1b49a1f8c2fe4fbae4d8c8fdbd481e0e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7734a273f6e07290ec7124def5cb3b095f7f067b
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053908"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674158"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Az Azure IoT eszközoldali SDK-t a c nyelvhez készült
 
@@ -111,7 +111,7 @@ A rendszer ezen a lapon kezelheti az IoT hub-ben regisztrált eszközök.
 
 1. Ha úgy dönt, **kijelölt eszközhöz tartozó kapcsolati karakterlánc másolása**, az eszköz kapcsolati karakterláncának másolja a vágólapra. Tartsa meg az eszköz kapcsolati karakterláncának másolatát. Meg kell futtatásakor a következő szakaszok ismertetik a mintaalkalmazásokat.
 
-Amikor végzett a fenti lépéseket, készen áll bizonyos kód futtatásával elindításához. A legtöbb minták állandónak kell felső részén a fő forrásfájlt, amely lehetővé teszi, hogy adjon meg egy kapcsolati karakterláncot. Például a megfelelő sort a **iothub\_ügyfél\_minta\_mqtt** alkalmazás a következőképpen jelenik meg.
+Amikor végzett a fenti lépéseket, készen áll bizonyos kód futtatásával elindításához. A legtöbb minták állandónak kell felső részén a fő forrásfájlt, amely lehetővé teszi, hogy adjon meg egy kapcsolati karakterláncot. Például a megfelelő sort a **iothub_client\_minták\_iothub_convenience_sample** alkalmazás a következőképpen jelenik meg.
 
 ```c
 static const char* connectionString = "[device connection string]";
@@ -121,9 +121,9 @@ static const char* connectionString = "[device connection string]";
 
 Belül a **iothub\_ügyfél** mappájában a [azure-iot-sdk-c](https://github.com/azure/azure-iot-sdk-c) tárházban, van egy **minták** mappába, amelyben egy alkalmazás nevű **iothub\_ügyfél\_minta\_mqtt**.
 
-A Windows verziója a **iothub\_ügyfél\_minta\_mqtt** alkalmazás tartalmaz a következő Visual Studio-megoldást:
+A Windows verziója a **iothub_client\_minták\_iothub_convenience_sample** alkalmazás tartalmaz a következő Visual Studio-megoldást:
 
-  ![A Visual Studio Megoldáskezelőben](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
+  ![Visual Studio Solution Explorer](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
 > [!NOTE]
 > Ha megnyitja a projektet a Visual Studio 2017, fogadja el az utasításokat a legújabb verzióra a projekt átirányítása.
@@ -137,7 +137,7 @@ Ez a megoldás egyetlen projekt tartalmazza. Van telepítve Ez a megoldás a né
 
 Erre mindig szüksége van a **Microsoft.Azure.C.SharedUtility** csomag, az SDK-val működik. Ez a minta az MQTT protokoll használja, ezért meg kell adni a **Microsoft.Azure.umqtt** és **Microsoft.Azure.IoTHub.MqttTransport** csomagok (nincsenek egyenértékű csomagok AMQP-és HTTPS). Mivel a példa a **Iothubclientről** könyvtárban is fel kell a **Microsoft.Azure.IoTHub.IoTHubClient** megoldását a csomagot.
 
-A megvalósítás a mintaalkalmazáshoz annak a **iothub\_ügyfél\_minta\_mqtt.c** forrásfájl.
+A megvalósítás a mintaalkalmazáshoz annak a **iothub_client\_minták\_iothub_convenience_sample** forrásfájl.
 
 Az alábbi lépéseket a mintaalkalmazás segítségével végigvezetik mi használatához szükséges a **Iothubclientről** könyvtár.
 
@@ -351,7 +351,7 @@ Csakúgy, mint az előző mintától, ez egy több NuGet-csomagot tartalmazza:
 
 A legtöbb ezeket a csomagokat az előző példában láthatta, de **Microsoft.Azure.IoTHub.Serializer** jelent meg. Ezt a csomagot kötelező, ha használja a **szerializáló** könyvtár.
 
-A mintaalkalmazáshoz végrehajtásának annak a **simplesample\_mqtt.c** fájlt.
+A mintaalkalmazáshoz végrehajtásának annak a ***iothub_client\_minták\_iothub_convenience_sample** fájlt.
 
 A következő szakaszok végigvezetik a minta fő részét.
 
@@ -392,7 +392,7 @@ Végezetül hívja meg a **létrehozás\_MODELL\_példány** függvény. **Weath
 
 ### <a name="define-the-model"></a>A modellek meghatározásához
 
-A modell a **szerializáló** könyvtár határozza meg, hogy az eszköz IoT hubbal küldhet üzeneteket és az üzenetek, az úgynevezett *műveletek* a modellezési nyelven, amely megkaphatja a. Egy modellt, mint a C makrók használatával meghatározhatja a **simplesample\_mqtt** mintaalkalmazást:
+A modell a **szerializáló** könyvtár határozza meg, hogy az eszköz IoT hubbal küldhet üzeneteket és az üzenetek, az úgynevezett *műveletek* a modellezési nyelven, amely megkaphatja a. Egy modellt, mint a C makrók használatával meghatározhatja a **iothub_client\_minták\_iothub_convenience_sample** mintaalkalmazást:
 
 ```c
 BEGIN_NAMESPACE(WeatherStation);

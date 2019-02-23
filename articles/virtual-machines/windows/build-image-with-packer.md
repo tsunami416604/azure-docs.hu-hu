@@ -12,17 +12,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/29/2018
+ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 0ae4c883baa156276646755273547a17d23edc55
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f768582e8ef32bc654a2f797c5c7a481a26fb643
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982488"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734183"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows virtuálisgép-rendszerképek létrehozása az Azure-ban a Packer használatával
 Az Azure-ban minden virtuális gép (VM) jön létre egy rendszerképből, amely meghatározza a Windows-telepítési és az operációs rendszer verzióját. Rendszerképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactér sok első és a külső képek biztosít az operációs rendszer leggyakrabban használt, és az környezetek, vagy létrehozhat saját igényeire szabott lemezképek. Ez a cikk részletesen bemutatja a nyílt forráskódú eszköz [Packer](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
+
+Ez a cikk utolsó tesztelésének a 2019/2/21 használatával a [Az PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps) verzió 1.3.0 és [Packer](https://www.packer.io/docs/install/index.html) 1.3.4 verzió.
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
@@ -31,8 +33,8 @@ Az összeállítási folyamat során Packer hozza létre, ideiglenes Azure-erőf
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
-```powershell
-$rgName = "myResourceGroup"
+```azurepowershell
+$rgName = "mypackerGroup"
 $location = "East US"
 New-AzResourceGroup -Name $rgName -Location $location
 ```
@@ -40,24 +42,28 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Azure-beli hitelesítő adatok létrehozása
 Csomagolói hitelesíti az Azure-ral egyszerű szolgáltatás használatával. Azure-beli szolgáltatásnév egy biztonsági identitás, az alkalmazások, szolgáltatások és automatizálási eszközökkel, mint például a Packer használható. Szabályozhatja és az egyszerű szolgáltatás az Azure-ban hajthat végre műveleteket helyrendszerszerepkörökre engedélyeinek megadásához.
 
-Az egyszerű szolgáltatás létrehozása [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) és az egyszerű szolgáltatás létrehozása és-erőforrások kezelése a engedélyeket [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment). Cserélje le *&lt;jelszó&gt;* a példában a saját jelszavát.  
+Az egyszerű szolgáltatás létrehozása [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) és az egyszerű szolgáltatás létrehozása és-erőforrások kezelése a engedélyeket [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment). Az érték `-DisplayName` egyedi; kell lennie igény szerint cserélje le a saját értékét.  
 
-```powershell
-$sp = New-AzADServicePrincipal -DisplayName "AzurePacker" `
-    -Password (ConvertTo-SecureString "<password>" -AsPlainText -Force)
-Sleep 20
+```azurepowershell
+$sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
+$BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret)
+$plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
 New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
+
+Ezután kimeneti a jelszót és az alkalmazás azonosítóját.
+
+```powershell
+$plainPassword
+$sp.ApplicationId
+```
+
 
 Azure-beli hitelesítésre, is kell szerezze be az Azure bérlői és az előfizetés azonosítókat [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription):
 
 ```powershell
-$sub = Get-AzSubscription
-$sub.TenantId[0]
-$sub.SubscriptionId[0]
+Get-AzSubscription
 ```
-
-A következő lépésben használhat két azonosítóit a részletekben.
 
 
 ## <a name="define-packer-template"></a>Csomagoló sablon meghatározása
@@ -68,7 +74,7 @@ Hozzon létre egy fájlt *windows.json* , és illessze be az alábbi tartalommal
 | Paraméter                           | Beszerzési helyét |
 |-------------------------------------|----------------------------------------------------|
 | *client_id*                         | Nézet szolgáltatásnév-Azonosítót a `$sp.applicationId` |
-| *client_secret*                     | A megadott jelszó `$securePassword` |
+| *client_secret*                     | Az automatikusan generált jelszót megtekintése `$plainPassword` |
 | *tenant_id*                         | A kimeneti `$sub.TenantId` parancs |
 | *subscription_id*                   | A kimeneti `$sub.SubscriptionId` parancs |
 | *managed_image_resource_group_name* | Az első lépésben létrehozott erőforráscsoport nevét |
@@ -79,12 +85,12 @@ Hozzon létre egy fájlt *windows.json* , és illessze be az alábbi tartalommal
   "builders": [{
     "type": "azure-arm",
 
-    "client_id": "0831b578-8ab6-40b9-a581-9a880a94aab1",
-    "client_secret": "P@ssw0rd!",
-    "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "subscription_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "client_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "client_secret": "ppppppp-pppp-pppp-pppp-ppppppppppp",
+    "tenant_id": "zzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz",
+    "subscription_id": "yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy",
 
-    "managed_image_resource_group_name": "myResourceGroup",
+    "managed_image_resource_group_name": "myPackerGroup",
     "managed_image_name": "myPackerImage",
 
     "os_type": "Windows",
@@ -123,9 +129,9 @@ Ezzel a sablonnal hoz létre egy Windows Server 2016 virtuális gép, telepíti 
 ## <a name="build-packer-image"></a>Csomagolói rendszerkép összeállítása
 Ha még nincs telepítve a helyi gépen Packer [csomagolói telepítési utasításokat](https://www.packer.io/docs/install/index.html).
 
-A rendszerkép létrehozásához adja meg a Packer sablonfájl módon:
+A rendszerkép létrehozásához nyissa meg egy parancssort, és a Packer megadásával sablonfájl módon:
 
-```bash
+```
 ./packer build windows.json
 ```
 

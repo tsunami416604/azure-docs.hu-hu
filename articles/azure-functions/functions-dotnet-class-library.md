@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 7e84e8e99000e9d8bd7a21d343588b1df777b56d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 661cdddb4682d003b0c1149819a096a2a3756090
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994534"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728998"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# – fejlesztői referencia
 
@@ -50,7 +50,7 @@ A projekt buildjének elkészítéséhez, ha úgy tűnik, a következő jön lé
  | - host.json
 ```
 
-Ebben a könyvtárban, mire megtörténik a függvényalkalmazáshoz az Azure-ban. A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) , a Functions runtime a [hozzáadott a projekt NuGet-csomagok](functions-triggers-bindings.md#c-class-library-with-visual-studio-2017).
+Ebben a könyvtárban, mire megtörténik a függvényalkalmazáshoz az Azure-ban. A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) , a Functions runtime a [hozzáadott a projekt NuGet-csomagok](./functions-bindings-register.md#c-class-library-with-visual-studio-2017).
 
 > [!IMPORTANT]
 > A létrehozási folyamat létrehoz egy *function.json* fájlban találhatók. Ez *function.json* fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. Ismerje meg, hogyan tilthatja le a függvény, lásd: [funkciók letiltása](disable-function.md#functions-2x---c-class-libraries).
@@ -83,7 +83,7 @@ A metódus aláírásához nem az a eseményindító attribútumon használt par
 * [Bemeneti és kimeneti kötések](functions-triggers-bindings.md) jelölt ilyen dekorálása azokat az attribútumokat.  
 * Egy `ILogger` vagy `TraceWriter` ([csak 1.x verzió](functions-versions.md#creating-1x-apps)) paramétere [naplózás](#logging).
 * A `CancellationToken` paramétere [szabályos leállítást](#cancellation-tokens).
-* [Kötési kifejezésekben](functions-triggers-bindings.md#binding-expressions-and-patterns) paramétereket aktiválása metaadatait.
+* [Kötési kifejezésekben](./functions-bindings-expressions-patterns.md) paramétereket aktiválása metaadatait.
 
 A paramétereket a függvényaláíráshoz a sorrendje nem számít. Például előtt vagy után más kötések eseményindító paraméterei helyezheti, és a naplózó paraméter előtt vagy után eseményindítóval vagy kötéssel paraméterek helyezheti.
 
@@ -205,7 +205,7 @@ Minden egyes kötés rendelkezik a saját támogatott típusok; például egy bl
 
 ## <a name="binding-to-method-return-value"></a>Kötelező érvényű, a metódus visszatérési értéke
 
-A metódus visszatérési értékek használható egy kimeneti kötést az attribútum a metódus visszatérési érték alkalmazásával. Példák: [eseményindítók és kötések](functions-triggers-bindings.md#using-the-function-return-value). 
+A metódus visszatérési értékek használható egy kimeneti kötést az attribútum a metódus visszatérési érték alkalmazásával. Példák: [eseményindítók és kötések](./functions-bindings-return-value.md). 
 
 Akkor használja a visszaadott érték, ha mindig egy sikeres függvény végrehajtása a kimeneti kötés átadása visszatérési értéket eredményez. Ellenkező esetben használjon `ICollector` vagy `IAsyncCollector`, a következő szakaszban látható módon.
 

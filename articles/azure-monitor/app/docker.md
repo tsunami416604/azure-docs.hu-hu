@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3ea7d6562965debda2c146fedab2ea9ab19f6cc8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0c31d895c453a8272c337b78f01dc8342a4d0765
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077453"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672508"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Docker-alkalmazások figyelése az Application insights szolgáltatásban
 
@@ -29,7 +29,7 @@ Futtatásakor a [Application Insights-lemezkép](https://hub.docker.com/r/micros
 
 * Kapcsolatos futó összes tároló életciklus-telemetria a gazdagép - indítása, leállítása, és így tovább.
 * Teljesítményszámlálók a az összes tárolót. CPU, memória, hálózati használati és egyéb.
-* Ha Ön [Javához készült Application Insights SDK telepítése](../../azure-monitor/app/java-live.md) az alkalmazásokat, a tárolókban futó, ezek az alkalmazások összes telemetriai adat azonosítása a tároló és a gazdagépcsoport gép további tulajdonságokat is rendelkezik. Így például ha egynél több gazdagépen futó példánya, könnyen szűrheti az alkalmazás telemetriai adatainak a gazdagép által.
+* Ha Ön [Javához készült Application Insights SDK telepítése](../../azure-monitor/app/java-get-started.md) az alkalmazásokat, a tárolókban futó, ezek az alkalmazások összes telemetriai adat azonosítása a tároló és a gazdagépcsoport gép további tulajdonságokat is rendelkezik. Így például ha egynél több gazdagépen futó példánya, könnyen szűrheti az alkalmazás telemetriai adatainak a gazdagép által.
 
 > [!NOTE]
 > Ez a megoldás elavult. További információ a meglévő befektetéseit,-tárolók monitorozása a javasoljuk a kivételkor [-tárolókhoz az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
@@ -40,7 +40,7 @@ Futtatásakor a [Application Insights-lemezkép](https://hub.docker.com/r/micros
    
     *Melyik erőforrást kell használnom?* Ha valaki más által kifejlesztett az alkalmazásokat, amelyek a gazdagép futtat, akkor kell [hozzon létre egy új Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ). Ez a, melyen megtekintheti és elemezheti a telemetriát. (Válasszon "Általános" az alkalmazástípushoz.)
    
-    De ha az alkalmazások a fejlesztők, akkor Reméljük, hogy [hozzáadja az Application Insights SDK](../../azure-monitor/app/java-live.md) hozzájuk. Ha az összes valóban egyetlen üzleti alkalmazások összetevői, akkor előfordulhat, hogy konfigurálja azokat, hogy telemetriát küldjön egy erőforrás, és ugyanazt az erőforrást fog használni a Docker-életciklus-kezelés és a teljesítmény adatok megjelenítése. 
+    De ha az alkalmazások a fejlesztők, akkor Reméljük, hogy [hozzáadja az Application Insights SDK](../../azure-monitor/app/java-get-started.md) hozzájuk. Ha az összes valóban egyetlen üzleti alkalmazások összetevői, akkor előfordulhat, hogy konfigurálja azokat, hogy telemetriát küldjön egy erőforrás, és ugyanazt az erőforrást fog használni a Docker-életciklus-kezelés és a teljesítmény adatok megjelenítése. 
    
     Harmadik forgatókönyv, hogy az alkalmazások többségét fejlesztett, de külön erőforrásokat használ a telemetriai adatok megjelenítéséhez. Ebben az esetben, valószínűleg is szeretne létrehozni a Docker-adatok külön erőforrást.
 
@@ -107,6 +107,6 @@ Az SDK-t, mesterséges Intelligencia révén utasított alkalmazás által küld
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Javához készült Application Insights](../../azure-monitor/app/java-get-started.md)
+* [Application Insights for Java](../../azure-monitor/app/java-get-started.md)
 * [NODE.js-hez készült Application Insights](../../azure-monitor/app/nodejs.md)
 * [Az Application Insights az ASP.NET-hez](../../azure-monitor/app/asp-net.md)

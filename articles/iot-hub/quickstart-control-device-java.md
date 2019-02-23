@@ -8,16 +8,16 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/22/2018
+ms.date: 02/22/2019
 ms.author: dobett
-ms.openlocfilehash: 454c3961cb31e147f647095c0a3a71a6c65630f1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 30c5026c0f7c8fcce3cee8780622f4c835f043ce
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422117"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670944"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (Java)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Gyors útmutató: A vezérlőelem egy eszköz csatlakozik az IoT hub (Java)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -42,7 +42,7 @@ A Javát az [Oracle](https://aka.ms/azure-jdks) webhelyéről töltheti le több
 A Java aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 
 ```cmd/sh
-java --version
+java -version
 ```
 
 A minták létrehozásához telepíteni kell a Maven 3-at. A Mavent az [Apache Maven](https://maven.apache.org/download.cgi) webhelyéről töltheti le többféle platformra.
@@ -57,21 +57,21 @@ Ha még nem tette meg, töltse le a Java-mintaprojektet a https://github.com/Azu
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Ha már elvégezte a [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-java.md) című előző útmutatót, kihagyhatja ezt a lépést.
+Ha elvégezte az előző [a rövid útmutató: Telemetria küldése egy eszközről IoT hubra](quickstart-send-telemetry-java.md), kihagyhatja ezt a lépést.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Ha már elvégezte a [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-java.md) című előző útmutatót, kihagyhatja ezt a lépést.
+Ha elvégezte az előző [a rövid útmutató: Telemetria küldése egy eszközről IoT hubra](quickstart-send-telemetry-java.md), kihagyhatja ezt a lépést.
 
 Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a rövid útmutatóban az Azure Cloud Shell használatával regisztrál egy szimulált eszközt.
 
-1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az IoT Hub CLI-bővítmény hozzáadásához és az eszközidentitás létrehozásához. 
+1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az IoT Hub CLI-bővítmény hozzáadásához és az eszközidentitás létrehozásához.
 
-   **YourIoTHubName**: alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
+   **YourIoTHubName**: Alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
 
-   **MyJavaDevice**: ezt az értéket az eszköz a megadott név. A MyJavaDevice eszközt használja a bemutatott módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
+   **MyJavaDevice**: Ön regisztrálja az eszköz neve. Használat **MyJavaDevice** látható módon. Ha úgy dönt, hogy az eszköz egy másik nevet, meg kell során ez a cikk ezt a nevet használja, és az eszköz neve a mintaalkalmazások őket futtatása előtt.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
@@ -81,7 +81,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 2. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
 
-   **YourIoTHubName**: alább a helyőrzőt cserélje le a úgy dönt, az IoT hub nevét.
+   **YourIoTHubName**: Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -98,9 +98,9 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 ## <a name="retrieve-the-service-connection-string"></a>A szolgáltatás kapcsolati sztringjének lekérése
 
-Szüksége van egy _szolgáltatáskapcsolati sztringre_ is azért, hogy a háttéralkalmazás az üzenetek lekérése érdekében csatlakozhasson az IoT Hubhoz. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
-   
-**YourIoTHubName**: alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
+Szüksége van egy _szolgáltatáskapcsolati sztringre_ is azért, hogy a háttéralkalmazás csatlakozhasson az IoT Hubhoz, és üzeneteket kérhessen le. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
+
+**YourIoTHubName**: Alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name YourIoTHubName --output table
@@ -179,4 +179,4 @@ Ebben a rövid útmutatóban egy közvetlen metódust hívott az eszközön egy 
 Ha szeretné megtudni, hogy hogyan irányíthatók az eszközről felhőbe irányuló üzenetek különböző felhőbeli célokhoz, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Telemetria irányítása különböző végpontokra feldolgozás céljából](tutorial-routing.md)
+> [Oktatóanyag: Útvonal telemetriai adatokat a feldolgozáshoz különböző végpontok](tutorial-routing.md)

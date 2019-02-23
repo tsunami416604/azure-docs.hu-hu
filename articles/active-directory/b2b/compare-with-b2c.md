@@ -1,5 +1,5 @@
 ---
-title: A B2B-együttműködés és az Azure Active Directory B2C összehasonlítása | Microsoft Docs
+title: B2C-vel – Azure Active Directory és a B2B-együttműködés összehasonlítása |} A Microsoft Docs
 description: Mi a különbség az Azure Active Directory B2B együttműködés és az Azure AD B2C között?
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c37114f15ae7c3c7a0c1c923b3c81cfa1a1fe4d1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ba06952b4d01e06d7925f70ee4bc26407b48e130
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206786"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670589"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>A B2B-együttműködés és az Azure Active Directory B2C összehasonlítása
 

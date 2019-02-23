@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 2f6e8b40907d02e62ede95a44fa10168f7590bd5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d28a88efc1a9f980d74737936bb960ba13573fa3
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606248"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675092"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Oktatóanyag: A távoli figyelési megoldásgyorsító anomáliadetektálásra a peremhálózaton
 
@@ -55,12 +55,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 IoT Edge-eszköz hozzáadása a távoli figyelési megoldásgyorsító két lépésből áll. Ez a szakasz bemutatja, hogyan használhatja:
 
-* Az IoT Edge-eszköz hozzáadása a **eszközök** oldal a távoli figyelési webes felhasználói felületen.
+* Az IoT Edge-eszköz hozzáadása a **Device Explorer** oldal a távoli figyelési webes felhasználói felületen.
 * Az IoT Edge-futtatókörnyezet telepítése egy Linux rendszerű virtuális gép (VM).
 
 ### <a name="add-an-iot-edge-device-to-your-solution"></a>IoT Edge-eszköz hozzáadása a megoldáshoz
 
-A távoli figyelési megoldásgyorsító IoT Edge-eszköz hozzáadásához lépjen a **eszközök** a webes felhasználói felületen oldalra, majd kattintson a **+ új eszköz**.
+A távoli figyelési megoldásgyorsító IoT Edge-eszköz hozzáadásához lépjen a **Device Explorer** a webes felhasználói felületen oldalra, majd kattintson a **+ új eszköz**.
 
 Az a **új eszköz** panel, válassza a **IoT Edge-eszköz** , és adja meg **olaj-szivattyú** az eszköz azonosítójával. Hagyhatja az alapértelmezett értékeket a többi beállítás esetében. Ezután kattintson az **Apply** (Alkalmaz) gombra:
 
@@ -68,13 +68,13 @@ Az a **új eszköz** panel, válassza a **IoT Edge-eszköz** , és adja meg **ol
 
 Jegyezze fel az eszköz kapcsolati karakterláncának, szüksége lesz rá az oktatóanyag a következő szakaszban.
 
-A távoli figyelési megoldásgyorsító az IoT hub-eszközök regisztrálásakor az megjelenik a **eszközök** oldal a webes felhasználói felületen:
+A távoli figyelési megoldásgyorsító az IoT hub-eszközök regisztrálásakor az megjelenik a **Device Explorer** oldal a webes felhasználói felületen:
 
 [![Új IoT Edge-eszköz](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
 Hogy egyszerűbb legyen a megoldásban az IoT Edge-eszközök kezeléséhez, hozzon létre egy eszközcsoportot, és adja hozzá az IoT Edge-eszköz:
 
-1. Válassza ki a **olaj-szivattyú** eszközre a listában lévő a **eszközök** lapon, majd kattintson **feladatok**.
+1. Válassza ki a **olaj-szivattyú** eszközre a listában lévő a **Device Explorer** lapon, majd kattintson **feladatok**.
 
 1. Hozzon létre egy feladatot, adja hozzá a **IsEdge** címkét az eszközön, a következő beállításokkal:
 
@@ -84,13 +84,13 @@ Hogy egyszerűbb legyen a megoldásban az IoT Edge-eszközök kezeléséhez, hoz
     | Feladat neve | AddEdgeTag |
     | Kulcs     | IsOilPump |
     | Érték   | I     |
-    | Típus    | Szöveg  |
+    | Typo    | Szöveg  |
 
     [![Címke hozzáadása](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
 1. Kattintson a **alkalmazása**, majd **Bezárás**.
 
-1. Az a **eszközök** kattintson **eszközcsoportok kezelése**.
+1. Az a **Device Explorer** kattintson **eszközcsoportok kezelése**.
 
 1. Kattintson a **új csoport létrehozása a eszköz**. Hozzon létre egy új eszköz csoportot a következő beállításokkal:
 
@@ -100,7 +100,7 @@ Hogy egyszerűbb legyen a megoldásban az IoT Edge-eszközök kezeléséhez, hoz
     | Mező   | Tags.IsOilPump |
     | Művelet | = Egyenlő |
     | Érték    | I |
-    | Típus     | Szöveg |
+    | Typo     | Szöveg |
 
     [![Eszközcsoport létrehozása](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
@@ -205,7 +205,7 @@ Ezután hozzon létre egy IoT Edge manifest nasazení, amely meghatározza a mod
 
 1. Kattintson az IoT hub **IoT Edge** a a **automatikus kezelés** szakaszban. Kattintson a **adjon hozzá egy IoT Edge-példányban**.
 
-1. Az a **központi telepítés létrehozása > név és címke** lap, adja meg a nevét **olaj-szivattyú-eszköz**. Kattintson a **Tovább** gombra.
+1. Az a **központi telepítés létrehozása > név és címke** lap, adja meg a nevét **olaj-szivattyú-eszköz**. Kattintson a **tovább**.
 
 1. Az a **központi telepítés létrehozása > modulok hozzáadása** kattintson **+ Hozzáadás**. Válasszon **IoT Edge-modul**.
 
@@ -231,11 +231,11 @@ Ezután hozzon létre egy IoT Edge manifest nasazení, amely meghatározza a mod
 
     Ez a kód a Stream Analytics modul kimenetét a megfelelő helyre irányítja.
 
-    Kattintson a **Tovább** gombra.
+    Kattintson a **tovább**.
 
 1. Az a **központi telepítés létrehozása > metrikákat adja meg** kattintson **tovább**.
 
-1. Az a **központi telepítés létrehozása > Céleszközök** lap, adja meg a 10-es, a prioritás. Kattintson a **Tovább** gombra.
+1. Az a **központi telepítés létrehozása > Céleszközök** lap, adja meg a 10-es, a prioritás. Kattintson a **tovább**.
 
 1. A a **központi telepítés létrehozása > tekintse át a telepítési** kattintson **küldés**:
 
@@ -277,7 +277,7 @@ Most már készen áll a csomag telepítése az eszközre.
     | ------ | ----- |
     | Name (Név)   | OilPumpDevices |
     | Csomag típusa | Edge-jegyzékfájl |
-    | Csomag | olajtartályszint-szivattyú-device.json |
+    | Csomag | oil-pump-device.json |
     | Eszközcsoport | OilPumps |
     | Prioritás | 10 |
 
@@ -300,7 +300,7 @@ A **központi telepítések** lapon látható a következő metrikákat:
 
 A távoli figyelési webes felhasználói felületen az olaj szivattyú eszközről hőmérsékleti telemetria tekintheti meg:
 
-1. Keresse meg a **eszközök** lapon, és válassza ki az olaj szivattyú eszközt.
+1. Keresse meg a **Device Explorer** lapon, és válassza ki az olaj szivattyú eszközt.
 1. Az a **Telemetriai** szakaszában a **eszközadatok** panelen, kattintson a **hőmérséklet**:
 
     [![Telemetria megtekintése](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)

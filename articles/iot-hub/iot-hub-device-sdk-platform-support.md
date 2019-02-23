@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: 15548e801777a99dfb78de0067abb633a2587ee6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7bcc1bf6b734abe202c5fec5d515604f4bf8e4a7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053193"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669363"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Az Azure IoT SDK-k Eszközplatform-támogatás
 
@@ -30,42 +30,42 @@ Emellett az C SDK be további platformok rendelkezik ültették át a partnerek 
 * Arduino
 * Windows CE 2013 (2018. október kivezetjük)
 * .NET standard 1.3 és 2.1-es verziója a .NET Core és a .NET-keretrendszer 4.7
-* Xamarin iOS, Android, az UWP
+* Xamarin iOS, Android, UWP
 
 ## <a name="supported-platforms"></a>Támogatott platformok
 
 Nincsenek támogatott számos platformon.
 
-### <a name="c-sdk"></a>C SDK-T
+### <a name="c-sdk"></a>C SDK
 
-| Operációs rendszer                  | Arch | Kompilátor jazyka             | A TLS-könyvtár       |
+| Operációs rendszer                  | Arch | Compiler             | A TLS-könyvtár       |
 |---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | gcc-5.4.0-s verziójával            | openssl - 1.0.2g |
-| Ubuntu 18.04 LTS    | X64  | gcc-7.3.              | WolfSSL – 1,13.    |
+| Ubuntu 16.04 LTS    | X64  | gcc-5.4.0            | openssl - 1.0.2g |
+| Ubuntu 18.04 LTS    | X64  | gcc-7.3              | WolfSSL – 1.13    |
 | Ubuntu 18.04 LTS    | X64  | Clang 6.0.X          | Openssl – 1.1.0g  |
 | OSX 10.13.4         | x64  | XCode 9.4.1          | Natív osx-ről        |
-| Windows Server 2016 | x64  | A Visual Studio 14.0.X | SChannel          |
-| Windows Server 2016 | x86  | A Visual Studio 14.0.X | SChannel          |
-| Debian 9 Stretch    | x64  | gcc-7.3.              | Openssl – 1.1.0f  |
+| Windows Server 2016 | x64  | Visual Studio 14.0.X | SChannel          |
+| Windows Server 2016 | x86  | Visual Studio 14.0.X | SChannel          |
+| Debian 9 Stretch    | x64  | gcc-7.3              | Openssl – 1.1.0f  |
 
 ### <a name="python-sdk"></a>Python SDK
 
-| Operációs rendszer                  | Arch | Kompilátor jazyka   | A TLS-könyvtár |
+| Operációs rendszer                  | Arch | Compiler   | A TLS-könyvtár |
 |---------------------|------|------------|-------------|
-| Windows Server 2016 | x86  | Python 2.7-es | openssl     |
-| Windows Server 2016 | x64  | Python 2.7-es | openssl     |
+| Windows Server 2016 | x86  | Python 2.7 | openssl     |
+| Windows Server 2016 | x64  | Python 2.7 | openssl     |
 | Windows Server 2016 | x86  | Python 3.5 | openssl     |
 | Windows Server 2016 | x64  | Python 3.5 | openssl     |
-| Ubuntu 18.04 LTS    | x86  | Python 2.7-es | openssl     |
+| Ubuntu 18.04 LTS    | x86  | Python 2.7 | openssl     |
 | Ubuntu 18.04 LTS    | x86  | Python 3.4 | openssl     |
-| MacOS High Sierra   | x64  | Python 2.7-es | openssl     |
+| MacOS High Sierra   | x64  | Python 2.7 | openssl     |
 
 ### <a name="net-sdk"></a>.NET SDK
 
 | Operációs rendszer                  | Arch | Keretrendszer            | Standard          |
 |---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | A .NET core 2.1-es verziója        | A .NET standard 2.0 |
-| Windows Server 2016 | X64  | A .NET core 2.1-es verziója        | A .NET standard 2.0 |
+| Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | A .NET standard 2.0 |
+| Windows Server 2016 | X64  | .NET Core 2.1        | A .NET standard 2.0 |
 | Windows Server 2016 | X64  | .NET-keretrendszer 4.7   | A .NET standard 2.0 |
 | Windows Server 2016 | X64  | .NET-keretrendszer 4.5.1 | –               |
 
@@ -73,8 +73,8 @@ Nincsenek támogatott számos platformon.
 
 | Operációs rendszer                                           | Arch | Csomópont verziója |
 |----------------------------------------------|------|--------------|
-| Ubuntu 16.04 LTS (6 csomópont docker-rendszerkép használatával) | X64  | 6. csomópont       |
-| Windows Server 2016                          | X64  | 6. csomópont       |
+| Ubuntu 16.04 LTS (6 csomópont docker-rendszerkép használatával) | X64  | Node 6       |
+| Windows Server 2016                          | X64  | Node 6       |
 
 ### <a name="java-sdk"></a>Java SDK
 
@@ -83,6 +83,7 @@ Nincsenek támogatott számos platformon.
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
 | Android API 28 | X64  | Java 8       |
+| Android dolgokat | X64  | Java 8      |
 
 ## <a name="partner-supported-platforms"></a>A partner támogatott platformok
 
@@ -90,10 +91,10 @@ Nincsenek támogatott számos platformon.
 
 | Partner             | Eszközök                            | Hivatkozás                     | Támogatás |
 |---------------------|------------------------------------|--------------------------|---------|
-| Espressif           | ESP32 <br/> ESP8266                              | [ESP-Azure-hoz](https://github.com/espressif/esp-azure)                | [GitHubon](https://github.com/espressif/esp-azure)  
+| Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHubon](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT Modem     | [IoT SDK-hoz készült Qualcomm LTE](https://developer.qualcomm.com/software/lte-iot-sdk) | [Fórum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
-| St. Microelectronics | STM32L4 sorozat <br/> STM32F4 sorozat <br/>  STM32F7 sorozat <br/>  IoT-csomópont STM32L4 felderítési csomag    | [X-ADATKOCKA-FELHŐ](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [AZURE-X-ADATKOCKA](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [AZURE-PI-CLD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Támogatás](https://www.st.com/content/st_com/en/support/support-home.html)
-| Texas Instruments   | CC3220SF Kezdőpanele <br/> CC3220S Kezdőpanele <br/> MSP432E4 Kezdőpanele      | [Az Azure IoT beépülő modulja SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E fórum](https://e2e.ti.com) <br/> [CC3220 TI E2E fóruma](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [MSP432E4 TI E2E fóruma](https://e2e.ti.com/support/microcontrollers/msp430/) |
+| St. Microelectronics | STM32L4 sorozat <br/> STM32F4 sorozat <br/>  STM32F7 sorozat <br/>  IoT-csomópont STM32L4 felderítési csomag    | [X-CUBE-CLOUD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [X-CUBE-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Támogatás](https://www.st.com/content/st_com/en/support/support-home.html)
+| Texas Instruments   | CC3220SF Launchpad <br/> CC3220S Kezdőpanele <br/> MSP432E4 Kezdőpanele      | [Az Azure IoT beépülő modulja SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E fórum](https://e2e.ti.com) <br/> [CC3220 TI E2E fóruma](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [MSP432E4 TI E2E fóruma](https://e2e.ti.com/support/microcontrollers/msp430/) |
 
 ## <a name="next-steps"></a>További lépések
 

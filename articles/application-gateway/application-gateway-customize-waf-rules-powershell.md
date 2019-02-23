@@ -1,32 +1,19 @@
 ---
-title: Testre szabhatja a webalkalmazási tűzfalszabályok az Azure Application Gatewayjel – PowerShell |} A Microsoft Docs
+title: Testre szabhatja a webalkalmazási tűzfalszabályok az Azure Application Gatewayjel – PowerShell
 description: Ez a cikk webalkalmazási tűzfalszabályok az Application Gatewayen PowerShell-lel testreszabása ismertetése.
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: dfcd82a17a399f213f5c4e32326a8995d26e8458
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 1e1638d69915f16b9f30acc5b6a0265b25c2c561
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218269"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728879"
 ---
 # <a name="customize-web-application-firewall-rules-through-powershell"></a>Webalkalmazási tűzfalszabályok Powershellen keresztül testreszabása
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
-> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 
 Az Azure Application Gateway webalkalmazási tűzfala (WAF) védelmet kínál a webes alkalmazásokhoz. Ezek a védelmi által az Open Web Application Security Project (OWASP) Core szabály beállítása (CRS) vannak megadva. Néhány szabály által kiváltott hamis pozitív okozhat, és valódi adatforgalmat. Ebből kifolyólag az Application Gateway lehetővé teszi a csoportok és a szabályok testreszabása. Az adott csoportok és a szabályok további információkért lásd: [webes alkalmazás tűzfal CRS-szabálycsoportjainak és szabályok listája](application-gateway-crs-rulegroups-rules.md).
 
@@ -103,6 +90,19 @@ $disabledrules=New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -Rul
 Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $gw -Enabled $true -FirewallMode Detection -RuleSetVersion 3.0 -RuleSetType OWASP -DisabledRuleGroups $disabledrules
 Set-AzureRmApplicationGateway -ApplicationGateway $gw
 ```
+
+## <a name="mandatory-rules"></a>A kötelező szabályok
+
+Az alábbi lista tartalmazza a WAF blokkolása a megelőzés üzemmód (a kivételeket bejelentkeztek észlelési mód) a kérelmet eredményező feltételeket. Ezek nem lehet beállítva vagy le van tiltva:
+
+* Nem sikerült elemezni a kérelem törzsében eredményez blokkolja, a kérelem, kivéve, ha a szervezet ellenőrzési ki van kapcsolva (XML, JSON, az űrlap adatait)
+* Kérelem törzse (rendelkező fájlokat) a következő adattípus adathossza mérete nagyobb, mint a beállított korlát
+* A kérelem törzsében (beleértve a fájlok) nagyobb, mint a határérték
+* Belső hiba történt a WAF-vezérlő
+
+CRS 3.x specifikus:
+
+* Bejövő anomáliadetektálás pontszámot túllépte a küszöbértéket
 
 ## <a name="next-steps"></a>További lépések
 

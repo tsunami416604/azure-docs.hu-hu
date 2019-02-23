@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 4accff7410d17e76a000b7cef957b75c65a16960
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 91193cc328c02f5ba4f5eb18e0bf853f9d91313a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008390"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732262"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Idő kezelése az Azure Stream Analytics ismertetése
 
@@ -163,7 +163,7 @@ Az Azure Stream Analytics vízjel folyamat az egyetlen eseményindító kimeneti
 
 Használata esetén [ablakos összesítéseket](stream-analytics-window-functions.md), a szolgáltatás csak a kimeneteket a windows végén hoz létre. Bizonyos esetekben felhasználók előfordulhat, hogy szeretné látni a Windows generált részleges összesítések. Részleges összesítések nem támogatottak jelenleg az Azure Stream Analytics szolgáltatásban.
 
-Más streamelési megoldások, a kimeneti eseményekben a sikerült materializált külső körülmények között függően különböző eseményindító időpontokban. Az egyes megoldások, hogy a kimeneti eseményekben a megadott idő ablakban néhány jöjjön létre többször is lehetőség. A bemeneti értékek finomított, mert az összesített eredmények pontos válnak. Események időbeli sikerült speculated első és a módosított. Például ha egy bizonyos eszköz offline állapotban van, a hálózatról, becsült értéket az rendszerek által felhasználható. Később az ugyanazon az eszközön online állapotba kerül a hálózathoz. Majd a tényleges esemény adatokat kell szerepel a bemeneti streamet. Az adott időtartományban feldolgozását a kimeneti eredmények pontos kimenetet eredményez.
+Más streamelési megoldások, a kimeneti eseményekben a sikerült materializált külső körülmények között függően különböző eseményindító időpontokban. Az egyes megoldások, hogy a kimeneti eseményekben a megadott időtartomány sikerült jöjjön létre többször is lehetőség. A bemeneti értékek finomított, mert az összesített eredmények pontos válnak. Események időbeli sikerült speculated első és a módosított. Például ha egy bizonyos eszköz offline állapotban van, a hálózatról, becsült értéket az rendszerek által felhasználható. Később az ugyanazon az eszközön online állapotba kerül a hálózathoz. Majd a tényleges esemény adatokat kell szerepel a bemeneti streamet. Az adott időtartományban feldolgozását a kimeneti eredmények pontos kimenetet eredményez.
 
 ## <a name="illustrated-example-of-watermarks"></a>A vízjelek ábrázolt példa
 

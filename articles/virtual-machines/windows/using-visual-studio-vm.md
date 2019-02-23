@@ -17,12 +17,12 @@ ms.prod: vs-devops-alm
 ms.date: 02/19/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 7530545c3577a662ac0075b83b3eb7e4a8a40f89
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 760c60fe5f67ac41d7a41889c0084fdc043e81ef
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428567"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728607"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure Visual Studio-rendszerképek
 A Visual Studio használatával egy előre konfigurált Azure virtuális gépen (VM) módja a gyors és egyszerű nyissa meg a művelet egy felfelé és a futó fejlesztési környezetben. Visual Studio különböző konfigurációival rendszerképek érhetők el a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=visual%20studio&page=1).

@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2018
+ms.date: 02/22/2019
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 14b6559420fad22cfc2294817cbefd23a6c47a70
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b1230c033019d21228fe5283e3ee6cfa478bef4c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650104"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727026"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>A tárolótípus felügyelt lemez frissítése
 
@@ -31,11 +31,8 @@ Azure által felügyelt lemezek ajánlatok négy tárolási típus beállítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az átalakításhoz újra kell indítani a virtuális gép (VM), mert a lemezek tároló áttelepítése egy már létező karbantartási időszakra ütemezze. 
-* Ha egy nem felügyelt lemez használata először [alakíthatja át egy felügyelt lemezt](convert-unmanaged-to-managed-disks.md) lehetővé teszi a tárolási típusok közötti váltani. 
-* Ebben a cikkben szereplő példák az Azure PowerShell-modul verzióját 6.0.0 megkövetelése vagy újabb. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Futtatás [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) kapcsolat létrehozása az Azure-ral.
-
-* Ebben a cikkben szereplő példák az Azure PowerShell-modul verzióját 6.0.0 megkövetelése vagy újabb. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Futtatás [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) kapcsolat létrehozása az Azure-ral.
+* Az átalakításhoz újra kell indítani a virtuális gép (VM), mert a lemezek tároló áttelepítése egy már létező karbantartási időszakra ütemezze.
+* Ha egy nem felügyelt lemez használata először [alakíthatja át egy felügyelt lemezt](convert-unmanaged-to-managed-disks.md) lehetővé teszi a tárolási típusok közötti váltani.
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>A felügyelt lemezek, a virtuális gépek premium standard átalakítása
 

@@ -1,5 +1,5 @@
 ---
-title: Az adott szervezetek – Azure Active Directory B2B-felhasználók meghívások engedélyezése vagy letiltása |} A Microsoft Docs
+title: Engedélyezése vagy letiltása meghívja az adott szervezetek – Azure Active Directory |} A Microsoft Docs
 description: Bemutatja, hogyan rendszergazda használatával az Azure portal vagy a PowerShell-hozzáférés beállítása, vagy engedélyezheti vagy tilthatja le a B2B-felhasználók az egyes tartományok listában elutasítása.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1921def9f09df899a884aa402c5e0f4e9fc16824
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b766f44a7c72075f1f1ec33774e12f40ea1d5b88
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181320"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672083"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Az adott szervezetek a B2B-felhasználók meghívások engedélyezése vagy letiltása
 

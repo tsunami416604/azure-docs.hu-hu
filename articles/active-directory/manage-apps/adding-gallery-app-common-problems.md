@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: fe781802309ad0945eaee23c35dda1617e47ae06
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237869"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727349"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Egy Azure AD katalógusából származó alkalmazás hozzáadása során
 
@@ -38,7 +38,7 @@ Egyes esetekben átmeneti problémák, a hálózati problémák vagy egy hiba mi
 
 Ha hibát tapasztal, amikor kattint a **Hozzáadás** gomb, látni fog egy **értesítési** a egy **hiba** állapota. Ha azt szeretné, hogy további részleteket a hibáról további információ a, vagy megoszthatja a támogatási szakértővel, láthatja a lépéseket követve a hibával kapcsolatos további információkat a [a portál értesítései részleteinek megtekintése](#how-to-see-the-details-of-a-portal-notification) szakaszban.
 
- ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nem tudom, hogyan állítható be az alkalmazásom, miután hozzá van adva
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nem tudom, hogyan állítható be az alkalmazásom, miután hozzá van adva
 
 Ha alkalmazások megismerése segítségre van szüksége a [oktatóanyagok listája SaaS-alkalmazások integrálása az Azure Active Directoryval való](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) cikk egy nagyszerű hely az induláshoz.
 

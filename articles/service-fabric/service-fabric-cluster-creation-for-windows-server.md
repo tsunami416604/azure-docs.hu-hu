@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/10/2017
+ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 321a69768935a9cb220bf5c2ae96c30274dc590d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 9c59da35f5dafcdcf62901689814e696dce3cd20
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159452"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674176"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>A Windows Server rendszert futtató önálló fürt létrehozása
 Az Azure Service Fabric segítségével Service Fabric-fürtök létrehozása virtuális gépek vagy a Windows Server rendszert futtató számítógépeket. Ez azt jelenti, is telepíti, és futtassa a Service Fabric-alkalmazásokat minden olyan környezetben, amely tartalmazza az egyes hálózatáról van szó, a Windows Server számítógépek, legyen az a helyszínen vagy bármely más szolgáltatónál. A Service Fabric biztosít az új telepítési csomagot hozhat létre a Service Fabric-fürtök a különálló Windows Server-csomag neve.
@@ -61,7 +61,9 @@ Több fürtkonfigurációs mintafájl is települ a telepítőcsomaggal. A *Clus
 
 Ebben a cikkben létrehozott fürt nem biztonságos.  Bárki csatlakozhat hozzá névtelenül és végrehajthat kezelési műveleteket, ezért az üzemben lévő fürtöket mindig X.509 tanúsítványok vagy a Windows rendszerbiztonság használatával kell védeni.  A biztonság konfigurálására csak a fürt létrehozásakor van lehetőség, a fürt létrehozása után már nem lehet engedélyezni. Frissítés a konfigurációs fájl engedélyezése [biztonsági tanúsítvány](service-fabric-windows-cluster-x509-security.md) vagy [Windows biztonsági](service-fabric-windows-cluster-windows-security.md). A Service Fabric-fürtök védelmével kapcsolatos további tudnivalókért lásd: [Fürt biztonságossá tétele](service-fabric-cluster-security.md).
 
-### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>1A. lépés: Egy nem biztonságos helyi fejlesztési fürt létrehozása
+### <a name="step-1-create-the-cluster"></a>1. lépés: A fürt létrehozása
+
+#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>„A” alkalmazási helyzet: Egy nem biztonságos helyi fejlesztési fürt létrehozása
 A Service Fabric használatával bármely helyezhető egy gép egy fejlesztési fürtöt a *ClusterConfig.Unsecure.DevCluster.json* fájlban szereplő [minták](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
 Csomagolja ki a különálló csomag a számítógépre, a minta konfigurációs fájl a helyi számítógépre másolja, majd futtassa a *CreateServiceFabricCluster.ps1* a különálló csomag mappájából egy rendszergazdai PowerShell-munkameneten keresztül parancsfájl .
@@ -74,7 +76,7 @@ A környezet beállítása című [tervezze meg és készítse elő a fürt üze
 
 Ha végzett a futó fejlesztési forgatókönyvek, eltávolíthatja a Service Fabric-fürtön a gépről hivatkozó szakaszban ismertetett lépések szerint "[fürt eltávolítása](#removecluster_anchor)". 
 
-### <a name="step-1b-create-a-multi-machine-cluster"></a>1B. lépés: Egy többgépes fürt létrehozása
+#### <a name="scenario-b-create-a-multi-machine-cluster"></a>„B” alkalmazási helyzet: Egy többgépes fürt létrehozása
 Miután elvégezte a tervezési és előkészítő lépések részletes [tervezze meg és készítse elő a fürt üzembe helyezése](service-fabric-cluster-standalone-deployment-preparation.md), készen áll az éles fürt a fürt konfigurációs fájl használatával létrehozásához.
 
 A fürt üzembe helyezését és konfigurálását végző fürtrendszergazdának rendszergazdai jogosultságokkal kell rendelkeznie a számítógépen. A Service Fabric tartományvezérlőn nem telepíthető.
@@ -114,7 +116,7 @@ A fürt üzembe helyezését és konfigurálását végző fürtrendszergazdána
 > 
 > 
 
-### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>1 c. lépés: Egy kapcsolat nélküli (internet-kapcsolat nélkül)-fürt létrehozása
+#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>Forgatókönyv: C: Egy kapcsolat nélküli (internet-kapcsolat nélkül)-fürt létrehozása
 A Service Fabric futtatókörnyezet-csomag automatikusan letölti a fürt létrehozásakor. Amikor a fürt üzembe helyezése a gép nem csatlakozik az internethez, kell külön töltse le a Service Fabric futtatókörnyezet-csomag, és adja meg a fürt létrehozásakor az elérési utat.
 A futtatókörnyezet-csomag tölthetők, az internethez csatlakozik másik gépről [letöltési hivatkozás - Service Fabric-futtatókörnyezet – Windows Server](https://go.microsoft.com/fwlink/?linkid=839354). Ahol a kapcsolat nélküli fürtre végzi, és a fürt létrehozásához futtassa a futtatókörnyezet-csomag másolása `CreateServiceFabricCluster.ps1` együtt a `-FabricRuntimePackagePath` paramétert tartalmaz, ebben a példában látható módon: 
 

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: 2c402898af713901fc4d6f9bd04a5935334c9b61
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e63d5f4b218cb4615f96ce5c9a08b98bd9158728
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822340"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733163"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Event Hubs-kötések az Azure Functions szolgáltatáshoz
 
@@ -429,7 +429,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 ## <a name="trigger---event-metadata"></a>Eseményindító - esemény-metaadatok
 
-Az Event Hubs-eseményindító biztosít több [metaadat-tulajdonságot](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Ezek a tulajdonságok a kötési kifejezésekben való használata más kötések részeként vagy a kód paramétereiben használható. Ezek a tulajdonságai a [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) osztály.
+Az Event Hubs-eseményindító biztosít több [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md). Ezek a tulajdonságok a kötési kifejezésekben való használata más kötések részeként vagy a kód paramétereiben használható. Ezek a tulajdonságai a [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) osztály.
 
 |Tulajdonság|Típus|Leírás|
 |--------|----|-----------|

@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
-ms.date: 05/18/18
+ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: 12f989137c3aea57bdcde0d50315ad157898cd28
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 111adad627ffd830d69efc61bc7a06a99fee30f3
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862751"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673324"
 ---
 # <a name="translator-speech-api-languages"></a>Beszédfordító API: Languages
 
@@ -27,7 +28,7 @@ Az API-t elérhető nyelvek beolvasása használatának bemutatásához Kódmint
 
 ## <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
 
-### <a name="get-languages"></a>/Languages beolvasása 
+### <a name="get-languages"></a>/Languages beolvasása
 
 A beszéd, hogy az átírt szöveg lefordítása, és a fordítás szintetizált lefényképezze nyelvek széles érhető el.
 
@@ -125,7 +126,7 @@ A szolgáltatás minden nyelven az "Accept-nyelv" fejléc szövegfordítás tám
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
 A támogatott nyelvek készletét leíró objektum.
 
-ModelExample érték: 
+ModelExample érték:
 
 Langagues {beszéd (object, nem kötelező), szöveg (object, nem kötelező), szöveg-beszéd átalakítás (object, nem kötelező)}
 
@@ -133,17 +134,17 @@ Langagues {beszéd (object, nem kötelező), szöveg (object, nem kötelező), s
 
 |Fejléc|Leírás|Typo|
 :--|:--|:--|
-X-RequestId|Érték a kiszolgáló azonosításához a kérelem által generált, és használják hibaelhárítási célból.|Karakterlánc|
+X-RequestId|Érték a kiszolgáló azonosításához a kérelem által generált, és használják hibaelhárítási célból.|sztring|
 
 ### <a name="parameters"></a>Paraméterek
 
 |Paraméter|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|
-|API-verzió    |Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés|Karakterlánc|
-|scope  |Támogatott nyelvek, vagy térjen vissza az ügyfél beszédhangot részhalmazához. Ez a paraméter van megadva kulcsszavak vesszővel elválasztott listáját. A következő kulcsszavak érhetők el:<ul><li>`speech`: A beszédfelismerés lefényképezze támogatott nyelvek készletét nyújtja.</li><li>`tts`: A szöveg-beszéd átalakítás támogatott beszédhangot biztosít.</li><li>`text`: Szöveg fordítása a támogatott nyelvek készletét nyújtja.</li></ul>Ha az érték nincs megadva, az értékét `scope` alapértelmezés szerint a `text`.|lekérdezés|Karakterlánc|
-|X-ClientTraceId    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megkönnyítése érdekében kapcsolatos hibák elhárítása, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.|header|Karakterlánc|
-|Accept-Language    |A mezők a válaszban némelyike régiók és nyelvek neve. Ez a paraméter használatával határozza meg a nyelvet, amelyben a nevét adja vissza. A nyelv azáltal, hogy megfelelően formázott BCP-47 nyelvi címke van megadva. Válassza ki a címke nyelv azonosítók hibát adott vissza a listából a `text` hatókör. Nem támogatott nyelvek a nevek angol nyelven szerepelnek.<br/>Például használja az értéket `fr` kérése nevek francia nyelvű, vagy használja az értéket `zh-Hant` hagyományos kínai kérelem nevek.|header|Karakterlánc|
-    
+|API-verzió    |Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés|sztring|
+|scope  |Támogatott nyelvek, vagy térjen vissza az ügyfél beszédhangot részhalmazához. Ez a paraméter van megadva kulcsszavak vesszővel elválasztott listáját. A következő kulcsszavak érhetők el:<ul><li>`speech`: A beszédfelismerés lefényképezze támogatott nyelvek készletét nyújtja.</li><li>`tts`: A szöveg-beszéd átalakítás támogatott beszédhangot biztosít.</li><li>`text`: Szöveg fordítása a támogatott nyelvek készletét nyújtja.</li></ul>Ha az érték nincs megadva, az értékét `scope` alapértelmezés szerint a `text`.|lekérdezés|sztring|
+|X-ClientTraceId    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megkönnyítése érdekében kapcsolatos hibák elhárítása, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.|header|sztring|
+|Accept-Language    |A mezők a válaszban némelyike régiók és nyelvek neve. Ez a paraméter használatával határozza meg a nyelvet, amelyben a nevét adja vissza. A nyelv azáltal, hogy megfelelően formázott BCP-47 nyelvi címke van megadva. Válassza ki a címke nyelv azonosítók hibát adott vissza a listából a `text` hatókör. Nem támogatott nyelvek a nevek angol nyelven szerepelnek.<br/>Például használja az értéket `fr` kérése nevek francia nyelvű, vagy használja az értéket `zh-Hant` hagyományos kínai kérelem nevek.|header|sztring|
+
 ### <a name="response-messages"></a>Parancsválasz-üzeneteket
 
 |HTTP-állapotkód|Ok|

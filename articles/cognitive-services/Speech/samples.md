@@ -10,17 +10,18 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: a1ebb1d818c0085a1741245ed236cf511b1db768
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 4db95bdc5e83badef0170bfb3b1c52bb8610c655
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218053"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669873"
 ---
 # <a name="bing-speech-client-samples"></a>Bing Speech ügyfél minták
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
- 
+
 Bing Speech-végpontok mintáit különböző használati helyzetekhez, például a parancs felismerés, a folyamatos felismerése és szándékának észlelési bemutatásához tartalmazza. Az összes minta a Githubon érhető el, és letölthetik az alábbi hivatkozásokat: A README.md minden egyes adattárban, valamint a [klienskódtárak](GetStarted/GetStartedClientLibraries.md) oldalon részletesen leírják, hogyan hozhat létre és futtassa a mintát.
 
 - [REST API-minták](https://github.com/Azure-Samples/SpeechToText-REST)

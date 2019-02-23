@@ -2,19 +2,19 @@
 title: Első lépések az ikereszközökhöz Azure IoT Hub (Python) |} A Microsoft Docs
 description: Hogyan használható az Azure IoT Hub device twins címkéket adhat hozzá, majd az IoT Hub-lekérdezést. Az Azure IoT SDK Pythonhoz készült használatával valósítható meg a szimulált eszközalkalmazás és a egy szolgáltatás-alkalmazást, amely hozzáadja a címkék és az IoT Hub-lekérdezést.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 12/04/2017
+ms.date: 02/21/2019
 ms.author: kgremban
-ms.openlocfilehash: 5086c831f45fd9c8e411fb02b21d03795d747c8a
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 692639f42d893adcc4b865d3c76fed2d458c4d20
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514179"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670607"
 ---
 # <a name="get-started-with-device-twins-python"></a>Első lépések az ikereszközökhöz (Python)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -25,18 +25,16 @@ Ez az oktatóanyag végén két Python-konzolalkalmazással fog rendelkezni:
 * **ReportConnectivity.py**, Python-alkalmazás, amely szimulálja a olyan eszköz, amely az IoT hubhoz a korábban létrehozott eszközidentitással, és jelenti a kapcsolat állapotát.
 
 > [!NOTE]
-> A cikk [Azure IoT SDK-k] [ lnk-hub-sdks] használható eszköz és a háttér-alkalmazásokat hozhat létre az Azure IoT SDK-kkal kapcsolatos információkat biztosít.
-> 
-> 
+> A cikk [Azure IoT SDK-k](iot-hub-devguide-sdks.md) használható eszköz és a háttér-alkalmazásokat hozhat létre az Azure IoT SDK-kkal kapcsolatos információkat biztosít.
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* [Python 2.x vagy 3.x][lnk-python-download]. Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét][lnk-install-pip].
-* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra][lnk-visual-c-redist] van szükség a Python natív DLL-jei használatához.
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
+* [Python 2.x vagy 3.x](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét](https://pip.pypa.io/en/stable/installing/).
+* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra](http://www.microsoft.com/download/confirmation.aspx?id=48145) van szükség a Python natív DLL-jei használatához.
+* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 
 > [!NOTE]
-> `azure-iothub-service-client` és `azure-iothub-device-client` rendszerhez a *pip*-csomagok jelenleg csak Windows operációs rendszer alatt érhetőek el. Linux/Mac OS rendszer estében olvassa el a [Python fejlesztőkörnyezet előkészítése ][lnk-python-devbox] című bejegyzés Linuxra illetve Mac OS-re vonatkozó részét.
+> `azure-iothub-service-client` és `azure-iothub-device-client` rendszerhez a *pip*-csomagok jelenleg csak Windows operációs rendszer alatt érhetőek el. A Linux/Mac OS, tekintse meg a Linux és Mac OS-specifikus szakaszokat a a [a fejlesztési környezet előkészítését a Pythonhoz készült](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) közzététele.
 > 
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
@@ -52,7 +50,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-the-service-app"></a>Az alkalmazás létrehozása
-Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely hozzáadja az ikereszköz társított metaadatok helye a **{Device Id}**. Ezután lekérdezi az ikereszközök tárolja az IoT hub kiválasztása az eszközök, Redmond, és amelyekre a mobilhálózati kapcsolat jelent.
+Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely hozzáadja az ikereszköz társított metaadatok helye a **{Device ID}**. Ezután lekérdezi az ikereszközök tárolja az IoT hub kiválasztása az eszközök, Redmond, és amelyekre a mobilhálózati kapcsolat jelent.
 
 1. Nyisson meg egy parancssort, és telepítse a **Pythonhoz készült Azure IoT Hub szolgáltatási SDK-t**. Az SDK telepítése után zárja be a parancssort.
 
@@ -152,7 +150,7 @@ Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely hozzáadja az 
 A következő szakaszban, hogy egy eszközalkalmazás létrehozása, amely jelent a kapcsolati adatokat, és módosítja az előző szakaszban a lekérdezés eredménye.
 
 ## <a name="create-the-device-app"></a>Az eszközalkalmazás létrehozása
-Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely csatlakozik a hubhoz, mint a **{Device Id}**, és majd a frissítések az ikereszköz a jelentett tulajdonságok alapján, hogy csatlakoztatva van mobilhálózat használata adatokat tartalmazzák.
+Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely csatlakozik a hubhoz, mint a **{Device ID}**, és majd a frissítések az ikereszköz a jelentett tulajdonságok alapján, hogy csatlakoztatva van mobilhálózat használata adatokat tartalmazzák.
 
 1. Nyisson meg egy parancssort, és telepítse a **Pythonhoz készült Azure IoT Hub szolgáltatási SDK-t**. Az SDK telepítése után zárja be a parancssort.
 
@@ -259,7 +257,7 @@ Ebben a szakaszban hoz létre egy Python-Konzolalkalmazás, amely csatlakozik a 
     python AddTagsAndQuery.py
     ```
    
-    Ezúttal a **{Device Id}** meg kell jelennie mindkét lekérdezés eredményeit.
+    Ezúttal a **{Device ID}** meg kell jelennie mindkét lekérdezés eredményeit.
    
     ![második lekérdezés][3]
 
@@ -268,37 +266,11 @@ Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd
 
 Az alábbi forrásanyagokból megtudhatja, hogyan lehet:
 
-* telemetriát az eszközökről a [IoT Hub használatának első lépései] [ lnk-iothub-getstarted] oktatóanyagban
-* konfigurálhatja az eszközöket használó eszköz ikereszköz kívánt tulajdonságait a a [használata kívánt tulajdonságok konfigurálhatja az eszközöket] [ lnk-twin-how-to-configure] oktatóanyagban
-* Az eszközök, interaktív módon (például bekapcsolása egy felhasználó által felügyelt alkalmazásból ventilátor), szabályozhatja a [közvetlen metódusok használata] [ lnk-methods-tutorial] oktatóanyag.
+* Telemetriát az eszközökről a [IoT Hub használatának első lépései](quickstart-send-telemetry-python.md) oktatóanyagban
+* konfigurálhatja az eszközöket használó eszköz ikereszköz kívánt tulajdonságait a a [használata kívánt tulajdonságok konfigurálhatja az eszközöket](tutorial-device-twins.md) oktatóanyagban
+* Az eszközök, interaktív módon (például bekapcsolása egy felhasználó által felügyelt alkalmazásból ventilátor), szabályozhatja a [közvetlen metódusok használata](quickstart-control-device-python.md) oktatóanyag.
 
 <!-- images -->
 [1]: media/iot-hub-python-twin-getstarted/1.png
 [2]: media/iot-hub-python-twin-getstarted/2.png
 [3]: media/iot-hub-python-twin-getstarted/3.png
-
-<!-- links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-
-[lnk-python-download]: https://www.python.org/downloads/
-[lnk-visual-c-redist]: http://www.microsoft.com/download/confirmation.aspx?id=48145
-[lnk-install-pip]: https://pip.pypa.io/en/stable/installing/
-[lnk-python-devbox]: https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md
-
-[lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
-[lnk-methods]: iot-hub-devguide-direct-methods.md
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-query]: iot-hub-devguide-query-language.md
-[lnk-identity]: iot-hub-devguide-identity-registry.md
-
-[lnk-iothub-getstarted]: quickstart-send-telemetry-python.md
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: ../iot-edge/quickstart-linux.md
-[lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-
-[lnk-twin-how-to-configure]: tutorial-device-twins.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-
-[lnk-methods-tutorial]: quickstart-control-device-node.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md

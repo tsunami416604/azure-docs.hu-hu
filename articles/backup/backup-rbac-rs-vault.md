@@ -6,20 +6,20 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 12/09/2018
 ms.author: trinadhk
-ms.openlocfilehash: de7c00717349a1c814c5a13508adb11879aa10a5
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e86595ceb940ebcfa702823e9c9b8ad3ef50bb45
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704647"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674633"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Szerepköralapú hozzáférés-vezérlés használata kezelheti az Azure Backup helyreállítási pontok
 Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést biztosít az Azure-hoz. Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szüksége van.
 
 > [!IMPORTANT]
-> Az Azure Backup által megadott szerepkörök korlátozódnak, amelyek az Azure Portalon végezhető műveletek vagy Recovery Services-tároló PowerShell-parancsmagokat. Az Azure biztonsági mentési ügynök ügyfél felhasználói felületének vagy a System center Data Protection Manager felhasználói felületén vagy az Azure Backup Server felhasználói felületén ezek a szerepkörök irányítását esnek végrehajtott műveleteket.
+> Szerepkörök az Azure Backup által biztosított korlátozva, az Azure Portalon vagy a REST API-val elvégezhető műveleteket, vagy a Recovery Services-tároló PowerShell vagy parancssori felület parancsmagok. Az Azure biztonsági mentési ügynök ügyfél felhasználói felületének vagy a System center Data Protection Manager felhasználói felületén vagy az Azure Backup Server felhasználói felületén ezek a szerepkörök irányítását esnek végrehajtott műveleteket.
 
 Az Azure Backup biztonsági mentési műveletek szabályozásához 3 beépített szerepkört biztosít. További információ az [Azure beépített RBAC-szerepköreivel](../role-based-access-control/built-in-roles.md) kapcsolatban.
 
@@ -68,4 +68,4 @@ Az alábbi táblázat a biztonsági mentés felügyeleti műveletek és a művel
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Szerepköralapú hozzáférés-vezérlés hibáinak elhárítása](../role-based-access-control/troubleshooting.md): gyakori hibák rögzítésére vonatkozó javaslatokat kérhet.
+* [Szerepköralapú hozzáférés-vezérlés hibáinak elhárítása](../role-based-access-control/troubleshooting.md): Gyakori hibák rögzítésére vonatkozó javaslatokat kérhet.

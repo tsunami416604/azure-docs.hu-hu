@@ -1,6 +1,6 @@
 ---
-title: Azure AD hozzáférési felülvizsgálatok eredményeinek lekérése | Microsoft Docs
-description: Az Azure Active Directory hozzáférési felülvizsgálatok eredményeinek lekérése.
+title: A csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal a hozzáférési felülvizsgálatok eredményeinek lekéréséhez |} A Microsoft Docs
+description: Ismerje meg, hogyan kérheti le a hozzáférési felülvizsgálatok eredményeinek csoporttagok vagy alkalmazás-hozzáférés az Azure AD hozzáférési felülvizsgálatok.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dccacb82b34e7e257fcee9632045f12839b5425
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5a422f619c4ef63da59516ff2748683eb0f7f70
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210798"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726688"
 ---
-# <a name="retrieve-access-review-results"></a>Hozzáférési felülvizsgálatok eredményeinek lekérése
+# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>A csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal a hozzáférési felülvizsgálatok eredményeinek beolvasása
 
 A rendszergazdák az Azure Active Directory (Azure AD) használatával [hozzáférési felülvizsgálatokat](create-access-review.md) hozhatnak létre a csoporttagok vagy alkalmazáshoz rendelt felhasználók számára.  A **Globális rendszergazda**, **Felhasználói fiók adminisztrátora** és **Biztonsági rendszergazda** vagy **Biztonsági olvasó** szerepkörben lévő felhasználók a hozzáférési felülvizsgálatok eredményeit is olvashatják.  Ha felhasználókat szeretne rendelni ezen szerepkörök egyikéhez, egy kiemelt szerepkörű rendszergazda az Azure AD PIM használatával jogosulttá teheti a felhasználókat a szerepkör aktiválására, vagy egy globális rendszergazda végleg [a szerepkörhöz rendelhet egy felhasználót](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
@@ -55,7 +55,7 @@ Alapértelmezés szerint a törölt felhasználók 30 napig töröltek maradnak 
 - [Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal](manage-user-access-with-access-reviews.md)
 - [Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal](manage-guest-access-with-access-reviews.md)
 - [Programok és vezérlők felügyelete az Azure AD hozzáférési felülvizsgálatokkal](manage-programs-controls.md)
-- [Hozzáférési felülvizsgálat létrehozása egy csoport tagjai számára vagy egy alkalmazáshoz való hozzáférés céljából](create-access-review.md)
+- [Csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat létrehozása](create-access-review.md)
 - [Hozzáférési felülvizsgálat létrehozása Azure AD rendszergazdai szerepkörrel rendelkező felhasználókhoz](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 

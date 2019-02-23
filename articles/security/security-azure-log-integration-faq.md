@@ -4,7 +4,7 @@ description: Ez a cikk az Azure Log Integration kapcsolatos kérdésekre ad vál
 services: security
 documentationcenter: na
 author: TomShinder
-manager: barbkess
+manager: MBaldwin
 editor: TerryLanfear
 ms.assetid: d06d1ac5-5c3b-49de-800e-4d54b3064c64
 ms.service: security
@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: f1b809e52cc532d13be85776f73aba4465fa2140
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: fc94208ef01e52207b6efbf88223119cf58ddb7f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114926"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727162"
 ---
 # <a name="azure-log-integration-faq"></a>Az Azure Log Integration – gyakori kérdések
 
@@ -32,6 +32,8 @@ Ebben a cikkben megválaszolunk Azure Log Integration kapcsolatos gyakori kérd�
 Az Azure Log Integration szolgáltatása egy Windows operációs rendszer, amellyel az Azure-erőforrások nyers naplóinak integrálása a helyszíni biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti rendszerek. Ez az integráció az egységesített irányítópult kínál az összes eszközt, a helyszíni vagy a felhőben. Ezután összesíteni, összekapcsolását, elemzése, és az alkalmazásokkal kapcsolatos biztonsági események a riasztást.
 
 Az előnyben részesített módja az Azure-naplók integrálása a SIEM gyártója által biztosított Azure Monitor-összekötő használatával, és ezek a következő van [utasításokat](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Azonban a SIEM gyártója által biztosított az Azure monitornak nem biztosít egy összekötőt, ha, előfordulhat, hogy tudni használni az Azure Log Integration ideiglenes megoldás (ha az Azure Log Integration támogatja a siem-nek) mindaddig, amíg elérhető ilyen egy összekötőt.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Az Azure Log Integration szoftver ingyenes?
 
@@ -118,8 +120,8 @@ Megtudhatja, hogyan szeretne kapni, módosíthatja, és állítsa be az Azure Di
 
 Az alábbi példa lekéri az Azure Diagnostics konfigurálása:
 
-    -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
-    $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
+    Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
+    $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
@@ -136,7 +138,7 @@ Az alábbi példa módosítja az Azure Diagnostics konfigurációja. Ebben a kon
 Az alábbi példa az Azure Diagnostics konfigurációjának beállítása:
 
     $diagnosticsconfig_path = "d:\WADConfig.xml"
-    Set-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
+    Set-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
 
 Miután változtatásokat, ellenőrizze a storage-fiók segítségével, győződjön meg arról, hogy a megfelelő események gyűjtött.
 

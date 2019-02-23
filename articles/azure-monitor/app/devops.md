@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0c7f248023a97bdad09c2c51e9e9a28073def086
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 24b0bc01b5cb4f1d2696a7c9526d586c9b42d0fc
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300125"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674582"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért kell Application Insights?
@@ -166,7 +166,7 @@ Riasztást hoz létre, amikor az Application Insights automatikusan létrehozhat
 ## <a name="next-steps"></a>További lépések
 Ismerkedés az Application Insights ördöngösség. A főbb lehetőségek közül választhat:
 
-* Alakítsa ki egy már futó webalkalmazás. Ez lehetővé teszi a beépített teljesítményfigyelő telemetriai adatokat. Érhető el [Java](../../azure-monitor/app/java-live.md) és [IIS-kiszolgálókkal](../../azure-monitor/app/monitor-performance-live-website-now.md), és emellett a [Azure App Service](../../azure-monitor/app/app-insights-overview.md).
+* [IIS-kiszolgálókkal](../../azure-monitor/app/monitor-performance-live-website-now.md), és emellett a [Azure App Service](../../azure-monitor/app/app-insights-overview.md).
 * Alakítsa ki a projektet a fejlesztés során. Ehhez [ASP.NET](../../azure-monitor/app/asp-net.md) vagy [Java](../../azure-monitor/app/java-get-started.md) alkalmazások esetében, valamint [Node.js](../../azure-monitor/app/nodejs.md) és a egy sereg [más típusú](../../azure-monitor/app/platforms.md). 
 * Eszköz [bármilyen weblapon](../../azure-monitor/app/javascript.md) rövid kódtöredék hozzáadásával.
 

@@ -12,18 +12,18 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: b5109c9c93947118397c383cab3df90c02016ce3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 61c380ee3427afdf40427ed82ed0fd5c4f1b49fd
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652000"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729015"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
 Ebből a cikkből megismerheti, hogyan konfigurálhatja a fejlesztési környezetet az Azure Machine Learning szolgáltatással. Machine Learning szolgáltatás a platform-agnosztikus.
 
-A fejlesztési környezet csak követelményei a Python 3, a Conda (az elkülönített környezet) és a egy konfigurációs fájl, amely tartalmazza az Azure Machine Learning munkaterület-információk.
+A fejlesztési környezet csak követelményei a Python 3, az Anaconda (az elkülönített környezet) és a egy konfigurációs fájl, amely tartalmazza az Azure Machine Learning munkaterület-információk.
 
 Ez a cikk elsősorban a következő környezetekben és eszközöket:
 
@@ -139,20 +139,22 @@ További információkért lásd: [adatelemző virtuális gépek](https://azure.
 
 ## <a id="local"></a>Helyi számítógép
 
-Ha a helyi számítógépen (amely előfordulhat, hogy a távoli virtuális gépek is), hozzon létre egy Conda-környezetet, és az SDK telepítése az alábbiak szerint:
+Ha a helyi számítógépen (amely előfordulhat, hogy a távoli virtuális gépek is), Anaconda környezet létrehozása, és az SDK telepítése az alábbiak szerint:
 
 1. Töltse le és telepítse [Anaconda](https://www.anaconda.com/distribution/#download-section) (Python 3.7 verzió) Ha már nincs.
 
 1. Nyisson meg egy Anaconda-parancssort, és a egy környezet létrehozásához az alábbi parancsokkal:
 
+    Futtassa a következő parancsot a környezet létrehozásához.
+
     ```shell
     conda create -n myenv python=3.6.5
+    ```
 
-    # activate the Conda environment
+    Ezután aktiválja a környezetben.
+
+    ```shell
     conda activate myenv
-
-    # On macOS run
-    source activate myenv
     ```
 
     Ez a példa létrehoz egy python 3.6.5-környezet, de bármely adott subversions választható ki. SDK-kompatibilitási nem lehet garantálni az egyes főbb verziók (3.5 + ajánlott), és azt javasoljuk, hogy ha hibákba ütközik, próbálja meg egy másik verziója/subversion Anaconda környezetében. Összetevők és a csomagok letöltése közben a környezet létrehozása több percig tart.
@@ -188,7 +190,7 @@ Ha a helyi számítógépen (amely előfordulhat, hogy a távoli virtuális gép
    >
    > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
 
-   Eltarthat néhány percig, az SDK telepítése.
+   Eltarthat néhány percig, az SDK telepítése. Tekintse meg a [telepítése útmutató](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) további információt a telepítési beállításokat.
 
 1. A machine learning-kísérletezés az egyéb csomagok telepítéséhez.
 
@@ -286,7 +288,7 @@ A Databricks-fürt előkészítéséhez és mintafüzetek lekérése:
     | Munkavégző csomópont virtuális gépek típusai | Az optimalizált memóriájú virtuális gép előnyben részesített |
     | Automatikus skálázás engedélyezése | Törölje a jelet |
 
-    A Databricks-fürtben található munkavégző csomópontok számát a gépi tanulás automatikus beállítások egyidejű ismétlések maximális száma határozza meg.
+    A Databricks-fürtben található munkavégző csomópontok száma automatizált a Machine learning configuration egyidejű ismétlések maximális száma határozza meg.
 
     A fürt létrehozása néhány percet vesz igénybe. Várjon, amíg a fürt fut, mielőtt továbblépne.
 

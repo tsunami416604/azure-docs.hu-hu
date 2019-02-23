@@ -10,15 +10,15 @@ services: iot-dps
 manager: arjmands
 ms.custom: mvc
 ms.openlocfilehash: 4ab558b680a0d00d1b9bdfbcb1529219f6c37b37
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319252"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728709"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Különböző igazolási mechanizmusok használata a Device Provisioning Service C-hez készült ügyféloldali SDK-jával
 
-Ez a cikk bemutatja, hogyan használhat különböző [igazolási mechanizmusokat](concepts-security.md#attestation-mechanism) a Device Provisioning Service C-hez készült ügyféloldali SDK-jával. Fizikai eszközt vagy szimulátort is használhat. A kiépítési szolgáltatás két igazolásimechanizmus-típus esetében támogatja a hitelesítést: az X **.** 509 és a platformmegbízhatósági modul (TPM) esetében.
+Ez a cikk bemutatja, hogyan használhat különböző [igazolási mechanizmusokat](concepts-security.md#attestation-mechanism) a Device Provisioning Service C-hez készült ügyféloldali SDK-jával. Fizikai eszközt vagy szimulátort is használhat. A kiépítési szolgáltatás két igazolásimechanizmus-típus hitelesítést támogatja: X **.** 509 és a megbízható platformmegbízhatósági modul (TPM).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,9 +28,9 @@ A [szimulált eszköz létrehozását és üzembe helyezését](./quick-create-s
 
 Eszközgyártóként először az egyik támogatott típuson alapuló igazolási mechanizmust kell kiválasztania. A [Device Provisioning Service C-hez készült ügyféloldali SDK-ja](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) jelenleg a következő igazolási mechanizmusokat támogatja: 
 
-- [Platformmegbízhatósági modul (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): A TPM bevett szabvány a legtöbb Windows-alapú eszközplatformhoz, valamint néhány Linux-/Ubuntu-alapú eszközhöz. Eszközgyártóként akkor választhatja ezt az igazolási mechanizmust, ha az eszközökön ezeknek az operációs rendszereknek az egyike fut, és egy bevett szabványt kíván használni. TPM-lapkák esetén csak külön-külön regisztrálhatja az eszközöket a Device Provisioning Service-ben. A TPM-szimulátort használhatja fejlesztési célokra Windows- vagy Linux-alapú fejlesztői gépeken.
+- [Platformmegbízhatósági modul (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): A TPM bevett szabvány a legtöbb Windows-alapú eszközplatformhoz, valamint néhány Linux/Ubuntu-alapú eszközökre. Eszközgyártóként akkor választhatja ezt az igazolási mechanizmust, ha az eszközökön ezeknek az operációs rendszereknek az egyike fut, és egy bevett szabványt kíván használni. TPM-lapkák esetén csak külön-külön regisztrálhatja az eszközöket a Device Provisioning Service-ben. A TPM-szimulátort használhatja fejlesztési célokra Windows- vagy Linux-alapú fejlesztői gépeken.
 
-- [X.509](https://cryptography.io/en/latest/x509/): Az X.509-tanúsítványok tárolhatók a [hardveres biztonsági modul (HSM)](concepts-security.md#hardware-security-module) néven ismert, viszonylag új lapkákon. A Microsoft dolgozik a RIoT- és a DICE-lapkákon, amelyek az X.509-tanúsítványokat használják. Az X.509-lapkákkal kötegelt eszközregisztrációt végezhet a portálon. Ez egyes nem Windows operációs rendszereket is támogat, például az embedOS rendszert. A Device Provisioning Service ügyféloldali SDK-ja támogatja egy X.509-eszközszimulátor használatát fejlesztési célokra. 
+- [X.509](https://cryptography.io/en/latest/x509/): X.509-tanúsítványok tárolhatók nevű viszonylag új lapkák [hardveres biztonsági modulok (HSM)](concepts-security.md#hardware-security-module). A Microsoft dolgozik a RIoT- és a DICE-lapkákon, amelyek az X.509-tanúsítványokat használják. Az X.509-lapkákkal kötegelt eszközregisztrációt végezhet a portálon. Ez egyes nem Windows operációs rendszereket is támogat, például az embedOS rendszert. A Device Provisioning Service ügyféloldali SDK-ja támogatja egy X.509-eszközszimulátor használatát fejlesztési célokra. 
 
 További információt az IoT Hub Device Provisioning Service [biztonsági](concepts-security.md) és [automatikus regisztrációval kapcsolatos fogalmait](/azure/iot-dps/concepts-auto-provisioning) ismertető témakörben talál.
 
@@ -149,8 +149,8 @@ TPM használata esetén kövesse a [szimulált eszköz az IoT Hub Device Provisi
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Jelentkezzen be az Azure Portalra, a bal oldali menüben kattintson a **Minden erőforrás** gombra, és nyissa meg a Device Provisioning Service-t.
-   - X **.** 509 egyéni beléptetés: A kiépítési szolgáltatás összefoglalás panelén válassza a **Beléptetések kezelése** lehetőséget. Válassza az **Egyéni beléptetések** fület, és kattintson a felül lévő **Hozzáadás** gombra. Válassza az **X**.**509** lehetőséget identitásigazolási *mechanizmusként*, és töltse fel a panel által kért levéltanúsítványt. Ha végzett, kattintson a **Mentés** gombra. 
-   - X **.** 509 csoportos beléptetés: A kiépítési szolgáltatás összefoglalás panelén válassza a **Beléptetések kezelése** lehetőséget. Válassza a **Csoportos beléptetések** lapot, és kattintson a felül lévő **Hozzáadás** gombra. Válassza az **X**.**509** lehetőséget identitásigazolási *mechanizmusként*, adja meg a csoport és a tanúsítvány nevét, és töltse fel a panel által kért hitelesítésszolgáltatói/köztes tanúsítványt. Ha végzett, kattintson a **Mentés** gombra. 
+   - X **.** 509 egyéni beléptetés: A kiépítési szolgáltatás összefoglalás panelén válassza **beléptetések kezelése**. Válassza az **Egyéni beléptetések** fület, és kattintson a felül lévő **Hozzáadás** gombra. Válassza az **X**.**509** lehetőséget identitásigazolási *mechanizmusként*, és töltse fel a panel által kért levéltanúsítványt. Ha végzett, kattintson a **Mentés** gombra. 
+   - X **.** 509 csoportos regisztráció: A kiépítési szolgáltatás összefoglalás panelén válassza **beléptetések kezelése**. Válassza a **Csoportos beléptetések** lapot, és kattintson a felül lévő **Hozzáadás** gombra. Válassza az **X**.**509** lehetőséget identitásigazolási *mechanizmusként*, adja meg a csoport és a tanúsítvány nevét, és töltse fel a panel által kért hitelesítésszolgáltatói/köztes tanúsítványt. Ha végzett, kattintson a **Mentés** gombra. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Eszközök hitelesítésének engedélyezése egyéni igazolási mechanizmussal (opcionális)
 

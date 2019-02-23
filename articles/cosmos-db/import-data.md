@@ -4,14 +4,14 @@ description: Ez a dokumentum ismerteti, hogy hogyan telepíthet át adatokat az 
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 02/22/2019
 ms.author: dech
-ms.openlocfilehash: 972602bb6c5fc80433c2479516f8d0a5d885e4dd
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c2020688359fafe6cf39dacc84c84ea79251ddbb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446936"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733350"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Használja az adatok migrálása eszközt az adatok Azure Cosmos DB-be történő migrálásához
 
@@ -58,7 +58,7 @@ Az importálási eszköz tartalmaz egy grafikus felhasználói felületet (dtui.
 
 ## <a id="Install"></a>Telepítés
 
-Az áttelepítési eszköz forráskódját elérheti [ebben a GitHub-adattárban](https://github.com/azure/azure-documentdb-datamigrationtool). Letöltheti a forráskódot, és lefordíthatja helyben a megoldást, vagy [letöltheti az előre lefordított bináris fájlokat is](https://cosmosdbtools.blob.core.windows.net/datamigrationtool/2019.02.19-1.8.2/dt-1.8.2.zip). Ezután futtathatja az alábbiak egyikét:
+Az áttelepítési eszköz forráskódját elérheti [ebben a GitHub-adattárban](https://github.com/azure/azure-documentdb-datamigrationtool). Letöltheti a forráskódot, és lefordíthatja helyben a megoldást, vagy [letöltheti az előre lefordított bináris fájlokat is](http://aka.ms/csdmtool). Ezután futtathatja az alábbiak egyikét:
 
 * **Dtui.exe**: Az eszköz grafikus felület verziója
 * **DT.exe**: Az eszköz parancssori verziója

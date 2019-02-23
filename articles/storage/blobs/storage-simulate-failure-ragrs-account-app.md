@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: tamram
-ms.openlocfilehash: 2d86c0c4838fb2ae9d839e64a067824019133d8b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1fb0f3f76b9363d5e467e91b90287d4b0c5cfc64
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024433"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735893"
 ---
 # <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Oktatóanyag: Írásvédett redundáns tárolók elérése során fellépő hiba szimulálása
 
@@ -83,7 +83,7 @@ Miután az alkalmazás elkezd olvasni az elsődleges végpontból, nyomja le az 
 
 ![Forgatókönyv alkalmazása](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (lap/Java-v10 #)
+# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
 
 Futtassa az alkalmazást az IDE vagy a rendszerhéjat.
 
@@ -123,7 +123,7 @@ Ez a minta az előző oktatóanyagban ismertetett [áramköri-megszakítós](htt
 
 ![Testreszabott szabály beillesztése](media/storage-simulate-failure-ragrs-account-app/figure3.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (lap/Java-v10 #)
+# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
 
 Most, hogy a hiba az Ön új, adja meg a **G** teszteléséhez a hibát.
 
@@ -153,7 +153,7 @@ Amikor végzett, nyomja le az **egyik billentyűt** az alkalmazás folytatásáh
 
 ![Alkalmazás folytatása](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (lap/Java-v10 #)
+# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
 
 Az előző lépésben beállított egyéni Fiddler-szabálykészlettel az elsődleges végpontra érkező kérések meghiúsulnak.
 
@@ -177,7 +177,7 @@ Létrehozhatja az [írásvédett georedundáns](../common/storage-redundancy-grs
 
 Futtassa az alkalmazást az IDE vagy a rendszerhéjat. Miután az alkalmazás elkezd olvasni az elsődleges végpontból, nyomja le az **egyik billentyűt** a konzolablakban az alkalmazás szüneteltetéséhez.
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (lap/Java-v10 #)
+# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
 
 Mivel a minta szabályozhatja, nem kell megszakítási, annak érdekében, hogy a teszt sikertelen.
 
@@ -216,7 +216,7 @@ Az alkalmazás folytatásához nyomja le az **egyik billentyűt**.
 
 Miután újra elindult az alkalmazás, az elsődleges végpontra érkező kérések meghiúsulnak. Az alkalmazás megkísérel csatlakozni az elsődleges végpont ötször. Az öt kísérlet után a másodlagos írásvédett végpontról kéri le a rendszerképet. Miután az alkalmazás 20-szor sikeresen lekéri a rendszerképet a másodlagos végpontról, az alkalmazás megkísérel csatlakozni az elsődleges végponthoz. Ha az elsődleges végpont továbbra sem érhető el, az alkalmazás folytatja a másodlagos végpontból való olvasást. Ez a minta az előző oktatóanyagban ismertetett [áramköri-megszakítós](/azure/architecture/patterns/circuit-breaker) minta.
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (lap/Java-v10 #)
+# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
 
 Most, hogy a hiba az Ön új, adja meg a **G** teszteléséhez a hibát. Tájékoztatja, hogy használt-e a másodlagos folyamat ellentétben az elsődleges adatcsatorna.
 
@@ -243,7 +243,7 @@ Nyomja le az **egyik billentyűt** az alkalmazás folytatásához. Az alkalmazá
 ![Alkalmazás folytatása](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (lap/Java-v10 #)
+# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
 
 Adja meg **G** a letöltés teszteléséhez. Az alkalmazás jelentést készít, hogy most már használt-e az elsődleges folyamatot újra.
 
