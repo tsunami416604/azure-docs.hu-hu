@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: b02ab403c82fd781af72c3b1f08e843c3fc770e3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 3bd2361547a8210ae287eabaa67b60e8ba1f26e3
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094943"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738147"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Népszerűsítse cégét a Microsofttal  
 A Microsoft rendelkezik a cél támogatja a partnerek, (,) és a egyszerűsítése érdekében az alkalmazás értékesítési vagy a kirakattípus a piactéren az ajánlat. A Marketplace-en való felkerüléshez szerint érheti el a programok és erőforrások a marketplace-en. 
@@ -40,4 +40,4 @@ Az ajánlat vagy az előléptetni, használja a következő táblázat további 
 | A Cloud Platform kompetencia megszerzésére | Kompetenciát megszerzéséhez segít különbséget tenni saját maga a más Microsoft-partnerek között. Kompetenciát megszerzéséhez is segítséget nyújt technikai szakértelemmel és az ügyfelek sikerességét a piacon elérhető bemutatásához. Kompetencia számos kulcsfontosságú partner programok, például a közös értékesítési előfeltétele.<ul> <li>Cloud Platform kompetenciával kapcsolatos további információkért látogasson el a Cloud Platform kompetencia oldalon található [partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  
 | Közös értékesítési kész legyen | A közös értékesítési program lehetővé teszi a közvetlenül a Microsoft-értékesítőkkel közösen és a cél ügyfél lehetőségeket és a fiók tervezési más partnerekkel közösen dolgozzon. A megoldás lesz látható a Microsoft-értékesítőkkel közösen az értékesítői megoldás-katalógusban. Microsoft-értékesítőkkel közösen van jutalmakat a beküldött fordításaiért együttműködés és a winning with meg.<ul> <li>A közös értékesítésben kapcsolatos további információkért látogasson el a lapon található a előléptetése üzleti [partner.microsoft.com/reach-customers/promote-your-business](https://partner.microsoft.com/reach-customers/promote-your-business).</li> </ul> |  
 
----  
+---

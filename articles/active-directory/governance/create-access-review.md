@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési felülvizsgálat létrehozása egy csoport vagy az Azure AD-alkalmazáshoz hozzáféréssel rendelkező felhasználók tagjai számára |} A Microsoft Docs
-description: Ismerje meg a hozzáférési felülvizsgálat létrehozása egy csoporthoz vagy alkalmazáshoz való hozzáféréssel rendelkező felhasználók tagjai számára.
+title: Csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat létrehozása az Azure AD hozzáférési felülvizsgálatok |} A Microsoft Docs
+description: Ismerje meg a csoport tagjainak vagy alkalmazás-hozzáférés hozzáférési felülvizsgálat létrehozása az Azure AD hozzáférési felülvizsgálatok.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -11,29 +11,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 11/15/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1616230e3cad765246bcf03d59fb517c99d9b044
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ca27e89ad67b0f0755a7dda50572f3dcd857189
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176917"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733929"
 ---
-# <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Az Azure AD-csoport tagjainak vagy alkalmazás-hozzáférés hozzáférési felülvizsgálat létrehozása
+# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Az Azure AD hozzáférési felülvizsgálatok csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat létrehozása
 
 Hozzáférési csoportoknak és alkalmazásoknak az alkalmazottak és a vendégek változik az idő múlásával. A régi hozzáférési hozzárendelések kockázatának csökkentése érdekében a rendszergazdák az Azure Active Directory (Azure AD) használhatják a hozzáférési felülvizsgálatok létrehozása csoporttagok vagy alkalmazás-hozzáférés. Rendszeresen ellenőrizze a hozzáférés van szüksége, ha ismétlődő a hozzáférési felülvizsgálatok is létrehozhat. Ilyen forgatókönyvekkel kapcsolatos további információkért lásd: [felhasználói hozzáférés felügyelete](manage-user-access-with-access-reviews.md) és [vendégfelhasználói hozzáférés felügyelete](manage-guest-access-with-access-reviews.md).
 
-Ez a cikk ismerteti, hogyan hozhat létre egy új hozzáférési felülvizsgálat csoporttagok vagy alkalmazás-hozzáférést.
+Ez a cikk ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvizsgálatok csoporttagok vagy alkalmazás-hozzáférést.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [A hozzáférési felülvizsgálatok engedélyezve](access-reviews-overview.md)
-- Globális rendszergazda vagy a fiók rendszergazdája
+- Globális rendszergazda vagy a felhasználói fiók
 
-## <a name="create-an-access-review"></a>Hozzáférési felülvizsgálat létrehozása
+## <a name="create-one-or-more-access-reviews"></a>Hozzon létre egy vagy több hozzáférési felülvizsgálatok
 
 1. Jelentkezzen be az Azure Portalon, és nyissa meg a [a hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
@@ -58,6 +58,20 @@ Ez a cikk ismerteti, hogyan hozhat létre egy új hozzáférési felülvizsgála
 1. Az a **felhasználók** területén adja meg a felhasználók, a hozzáférési felülvizsgálat vonatkozik. A hozzáférési felülvizsgálatok lehet a felhasználók számára, akik hozzá lett rendelve egy alkalmazás vagy egy csoport tagjai számára. A hozzáférés tekintse át a felülvizsgálati csak a vendégfelhasználók akik tagjai (vagy az alkalmazáshoz hozzárendelt), ahelyett, hogy tekintse át az összes felhasználó számára a tagja, vagy hozzáférni az alkalmazáshoz rendelkező további körét.
 
     ![Hozzáférési felülvizsgálat - felhasználók létrehozása](./media/create-access-review/users.png)
+
+1. Az a **csoportok** területen válassza ki egy vagy több olyan csoportot, amelyet szeretne, tekintse át a tagságát.
+
+    > [!NOTE]
+    > Több csoport kiválasztásakor több hozzáférési felülvizsgálatok hoz létre. Ha például öt csoportokra hoz létre öt külön a hozzáférési felülvizsgálatok.
+    
+    ![Hozzáférési felülvizsgálat létrehozása – csoport kijelölése](./media/create-access-review/select-group.png)
+
+1. Az a **alkalmazások** szakaszban (Ha a kiválasztott **alkalmazáshoz hozzárendelt** 8. lépés), válassza ki az alkalmazásokat, amelyeket szeretne, tekintse át a hozzáférést.
+
+    > [!NOTE]
+    > Kiválasztásával egynél több alkalmazást hoz létre több hozzáférési felülvizsgálatok. Ha például öt alkalmazások kiválasztása hoz létre öt külön a hozzáférési felülvizsgálatok.
+    
+    ![Hozzáférési felülvizsgálat létrehozása – alkalmazás választása](./media/create-access-review/select-application.png)
 
 1. Az a **felülvizsgálók** területen válassza ki egy vagy több személyeket, és tekintse át a hatókörben lévő összes felhasználó. Vagy tekintse át a saját hozzáférését tagokból ki. Ha az erőforrás-csoport, megkérheti a csoport tulajdonosai áttekintéséhez. Azt is megkövetelheti, hogy a felülvizsgálók szabályzataival OK, a hozzáférés jóváhagyása.
 
@@ -100,7 +114,7 @@ Ez a cikk ismerteti, hogyan hozhat létre egy új hozzáférési felülvizsgála
 
 Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a **Start**.
 
-Alapértelmezés szerint az Azure AD-e-mailt küld felülvizsgálók elindítja a felülvizsgálatot követően rövid időn belül. Ha nem rendelkezik Azure ad-ben az e-mailt, mindenképpen tájékoztatja a felülvizsgálatot, amely a hozzáférési felülvizsgálat várakozik, amíg befejeződnek. Mutathat nekik az utasításokat, hogy hogyan [hozzáférés felülvizsgálata](perform-access-review.md). Ha áttekintésre vendégek tekintse át a saját hozzáférését, azokat az utasítások megjelenítése, hogy hogyan [a saját hozzáférés felülvizsgálata](perform-access-review.md).
+Alapértelmezés szerint az Azure AD-e-mailt küld felülvizsgálók elindítja a felülvizsgálatot követően rövid időn belül. Ha nem rendelkezik Azure ad-ben az e-mailt, mindenképpen tájékoztatja a felülvizsgálatot, amely a hozzáférési felülvizsgálat várakozik, amíg befejeződnek. Mutathat nekik az utasításokat, hogy hogyan [csoportokhoz vagy alkalmazásokhoz való hozzáférés felülvizsgálata](perform-access-review.md). Ha áttekintésre vendégek tekintse át a saját hozzáférését, azokat az utasítások megjelenítése, hogy hogyan [hozzáférés felülvizsgálata maga a csoportokat vagy alkalmazásokat](review-your-access.md).
 
 Ha a felülvizsgálók néhány Vendégek, Vendégek értesítést kap e-mailen keresztül csak akkor, ha korábban már fogadta el a meghívót.
 
@@ -108,7 +122,7 @@ Ha a felülvizsgálók néhány Vendégek, Vendégek értesítést kap e-mailen 
 
 Követheti a folyamat állapotát, ahogy a felülvizsgálatot, végezze el az Azure ad-ben irányítópultján található áttekintette a **hozzáférési felülvizsgálatok** szakaszban. Nincs hozzáférési jogosultsága változnak, amíg a könyvtárban [a felülvizsgálat befejeződött](complete-access-review.md).
 
-Ha ez egy egyszeri tekintse át, majd a hozzáférési felülvizsgálati időszak felett van, vagy a rendszergazda a hozzáférési felülvizsgálat leállítása után kövesse a lépéseket a [hozzáférési felülvizsgálat befejezése](complete-access-review.md) megtekintéséhez és a alkalmazni az eredményeket.  
+Ha ez egy egyszeri tekintse át, majd a hozzáférési felülvizsgálati időszak felett van, vagy a rendszergazda a hozzáférési felülvizsgálat leállítása után kövesse a lépéseket a [csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat befejezése](complete-access-review.md) megtekintéséhez és a alkalmazni az eredményeket.  
 
 A hozzáférési felülvizsgálatok sorozatát kezeléséhez, keresse meg a hozzáférési felülvizsgálatot, az **vezérlők**, és fog közelgő események keresése az ütemezett ellenőrzések, és módosítsa a záró dátumot vagy hozzáadása/eltávolítása felülvizsgálóknak annak megfelelően. 
 
@@ -120,5 +134,6 @@ A hozzáférési felülvizsgálatok API-k használatával is létrehozhat. A cso
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hozzáférési felülvizsgálat indítása az Azure AD hozzáférési felülvizsgálatokkal](perform-access-review.md)
-- [Tagok egy csoport vagy az Azure AD-alkalmazásokhoz való felhasználói hozzáférés hozzáférési felülvizsgálat befejezése](complete-access-review.md)
+- [A csoportokat vagy alkalmazásokat hozzáférés felülvizsgálata](perform-access-review.md)
+- [Tekintse át a hozzáférést a saját maga csoportokat vagy alkalmazásokat](review-your-access.md)
+- [Csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat befejezése](complete-access-review.md)

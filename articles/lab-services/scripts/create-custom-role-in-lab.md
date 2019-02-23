@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-parancsprogram: hozzon létre egy egyéni biztonsági szerepkört a laborban a Azure DevTest Labs szolgáltatásban |} Microsoft Docs'
-description: A PowerShell-parancsfájl hozzáadása egy tesztkörnyezetet a Azure DevTest Labs szolgáltatásban egy külső felhasználó.
+title: 'PowerShell-parancsfájlt: Egyéni szerepkör létrehozása az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet |} A Microsoft Docs'
+description: Ez a PowerShell-szkript egy külső felhasználó hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 295f742342fba7d77b556724c8005f3ac4816482
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4d0c795dffb40ab7efec9005660439f9baef9f3f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636715"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732432"
 ---
-# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>A PowerShell szolgáltatás használatával hozzon létre egy egyéni biztonsági szerepkört a Azure DevTest Labs szolgáltatásban egy tesztkörnyezetben
+# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet egy egyéni szerepkör létrehozása a PowerShell használatával
 
-A PowerShell-parancsfájlpélda hoz létre egy egyéni biztonsági szerepkört a Azure DevTest Labs szolgáltatásban egy tesztkörnyezetben használatára. 
+A PowerShell-példaszkript létrehoz egy egyéni szerepkör használata az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet. 
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Labor**. A parancsfájl szükséges hozzá egy meglévő labor. 
+* **Labor**. A szkriptnek szüksége van, hogy rendelkezik egy meglévő lab. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -38,12 +40,12 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) | Lekérdezi az Azure erőforrás-szolgáltató a műveleteket, amelyek biztonságos Azure RBAC használata. |
-| [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) | Kiosztására használható Azure RBAC-szerepkörök listája. |
-| [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) | Létrehoz egy egyéni biztonsági szerepkört. |
+| [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | Azure RBAC használatával biztosítható a műveletek egy Azure-erőforrás-szolgáltató beolvasása. |
+| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Hozzárendelés elérhető összes Azure RBAC-szerepkörök listája. |
+| [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) | Egy egyéni szerepkört hoz létre. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure labor szolgáltatások PowerShell-parancsfájl példák találhatók a [Azure labor szolgáltatások PowerShell-példák](../samples-powershell.md).
+További Azure Lab Services PowerShell szkriptminták találhatók az [Azure Lab Services PowerShell-minták](../samples-powershell.md).

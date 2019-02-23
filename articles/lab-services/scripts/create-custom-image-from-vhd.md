@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-parancsprogram: létrehozhat egyéni rendszerképeket a VHD-fájl az Azure labor szolgáltatásokban |} Microsoft Docs'
-description: A PowerShell-parancsfájl egy egyéni lemezképet egy VHD-fájlt az Azure labor szolgáltatásokban hoz létre.
+title: 'PowerShell-parancsfájlt: Egy egyéni lemezkép készítése VHD-fájlból az Azure Lab Services |} A Microsoft Docs'
+description: A PowerShell-példaszkript egy egyéni rendszerkép VHD-fájlból az Azure Lab Services hoz létre.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 19b7c3c6018ec56b056761c336bc56c8b63b47a2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2d0cc4012adf2c17b2f7a2e769f2d666b158a8c8
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636402"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734727"
 ---
-# <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>A PowerShell szolgáltatás használatával létrehozhat egyéni rendszerképeket a VHD-fájl az Azure labor szolgáltatásokban
+# <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>Egy egyéni lemezkép készítése VHD-fájlból az Azure Lab Services a PowerShell használatával
 
-A PowerShell-parancsfájlpélda hoz létre egy egyéni lemezképet egy VHD-fájlt az Azure labor szolgáltatásokban
+A PowerShell-példaszkript létrehoz egy egyéni rendszerkép VHD-fájlból az Azure Lab Services
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Labor**. A parancsfájl szükséges hozzá egy meglévő labor. 
+* **Labor**. A szkriptnek szüksége van, hogy rendelkezik egy meglévő lab. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -38,12 +40,12 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Erőforrás lekérése. |
-| [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | Beszerzi egy Azure Storage-fiók hozzáférési kulcsait. |
-| [Új AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) | Egy Azure-telepítés hozzáadása egy erőforráscsoportot. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Megjeleníti az erőforrást. |
+| [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Beszerzi egy Azure Storage-fiók hozzáférési kulcsait. |
+| [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) | Az Azure-telepítés ad hozzá egy erőforráscsoportot. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure labor szolgáltatások PowerShell-parancsfájl példák találhatók a [Azure labor szolgáltatások PowerShell-példák](../samples-powershell.md).
+További Azure Lab Services PowerShell szkriptminták találhatók az [Azure Lab Services PowerShell-minták](../samples-powershell.md).

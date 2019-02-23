@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: d148b43750b4e57ff650f8e96bfda1fb5c57dd4b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ac0a4bf6f332095bd75a6be83d7a1cd3d37c8e1c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657331"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674548"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -113,15 +113,15 @@ A következő tulajdonságok támogatottak:
 
 ### <a name="managed-identity"></a> Felügyelt identitások Azure-erőforrások hitelesítéshez használandó
 
-Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md), amely az adott adat-előállító jelöli. Használhatja a felügyeltszolgáltatás-identitás közvetlenül a Data Lake Store-hitelesítéshez, hasonlóan a saját egyszerű szolgáltatás használatával. A kijelölt factory eléréséhez és másolásához adatokhoz, illetve a Data Lake Store lehetővé teszi.
+Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md), amely az adott adat-előállító jelöli. Használhatja a felügyelt identitást közvetlenül a Data Lake Store-hitelesítéshez, hasonlóan a saját egyszerű szolgáltatás használatával. A kijelölt factory eléréséhez és másolásához adatokhoz, illetve a Data Lake Store lehetővé teszi.
 
 Azure-erőforrások hitelesítéshez használandó felügyelt identitások:
 
-1. [A data factory-szolgáltatásidentitás lekéréséhez](data-factory-service-identity.md#retrieve-service-identity) másolása a "Szolgáltatásidentitás Alkalmazásazonosítója" az előállító együtt létrehozott értékét.
-2. A szolgáltatás identitás hozzáférési jogot Data Lake Store, végezhet el, az egyszerű szolgáltatást, ezek a Megjegyzések a következő azonos módon.
+1. [A data factory által felügyelt azonosító adatok lekéréséhez](data-factory-service-identity.md#retrieve-managed-identity) másolása a "Szolgáltatásidentitás Alkalmazásazonosítója" az előállító együtt létrehozott értékét.
+2. Hozzáférést biztosít a felügyelt identitás a Data Lake Store, végezhet el, az egyszerű szolgáltatást, ezek a Megjegyzések a következő azonos módon.
 
 >[!IMPORTANT]
-> Győződjön meg arról, hogy a data factory szolgáltatás identitás megfelelő engedéllyel a Data Lake Store biztosít:
+> Győződjön meg arról, hogy engedélyeket a data factory által felügyelt identitás megfelelő a Data Lake Store:
 >- **Forrásként**: A **adatkezelő** > **hozzáférés**, adjon meg legalább **Olvasás + végrehajtás** listázása, és másolja a fájlokat a mappákban és almappáiban engedéllyel. Vagy biztosíthat **olvasási** engedéllyel egy fájl másolása. Dönthet úgy, hogy hozzá **ezt a mappát, és az összes gyermekre** a rekurzív, és adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Esetében nem követelmény a fiók fájlszintű hozzáférés-vezérlés (IAM).
 >- **Fogadóként**: A **adatkezelő** > **hozzáférés**, adjon meg legalább **írás + végrehajtás** engedély szükséges gyermekelemek létrehozásához a mappában. Dönthet úgy, hogy hozzá **ezt a mappát, és az összes gyermekre** a rekurzív, és adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), az IAM, biztosítson legalább a **olvasó** szerepkör annak érdekében, hogy észlelni az Data Lake Store-régiót, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [Azure integrációs modul létrehozása](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store. Rendelje azokat a Data Lake Store társított szolgáltatásban az alábbi példa szerint.
 

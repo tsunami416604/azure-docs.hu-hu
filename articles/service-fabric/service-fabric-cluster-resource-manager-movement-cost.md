@@ -1,37 +1,37 @@
 ---
-title: 'Service Fabric fürt erőforrás-kezelő: a mozgás költsége |} Microsoft Docs'
-description: A mozgás költsége Service Fabric-szolgáltatások áttekintése
+title: 'Service Fabric fürterőforrás-kezelő: A mozgás költsége |} A Microsoft Docs'
+description: A mozgás költsége a Service Fabric-szolgáltatások áttekintése
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
 editor: ''
 ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 74b61967a796fca22ab86918235f1def27a22f91
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 58147f5c0c3c7203aa6978e284cf5bdc90fa6971
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204923"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737775"
 ---
-# <a name="service-movement-cost"></a>A mozgás költsége szolgáltatás
-A Service Fabric fürt erőforrás-kezelő úgy ítéli meg, amikor megpróbálja megállapítani, hogy milyen módosítások, hogy a fürt tényezővel a költségét és ezeket a módosításokat. A "költség" fogalmát ellen, hogy mekkora a fürt növelhető a forog ki. Költség Beleszámítja a terheléselosztás, töredezettségmentesítés és egyéb követelmények szolgáltatások áthelyezésekor. A cél, hogy legalább zavaró vagy drága módon követelményeinek. 
+# <a name="service-movement-cost"></a>Szolgáltatás a mozgás költsége
+A Service Fabric fürterőforrás-kezelő úgy ítéli meg, amikor megpróbálja meghatározni, hogy mi változik a fürt tényezővel mennyibe kerül a módosításokat. "Cost" fogalma forog ki ellen, hogy mekkora a fürt javítása érdekében. Költség Beleszámítja a terheléselosztást, töredezettségmentesítése és egyéb követelmények szolgáltatások áthelyezésekor. A cél, hogy megfeleljen a követelményeknek a legkevésbé zavart okozó vagy költséges módon. 
 
-Helyezze át a szolgáltatások költségek CPU-idő, és a hálózati sávszélesség minimális. Állapotalapú szolgáltatások esetén igényel azon szolgáltatásokat, ezzel további memóriát és lemez állapotának másolása. Győződjön meg arról, hogy a fürt erőforrásait feleslegesen nem töltött megoldások, hogy az Azure Service Fabric fürt erőforrás-kezelő a költségek minimalizálása segít. Azonban még nem szeretnénk figyelmen kívül hagyása megoldások, amelyek jelentősen javíthatják a a fürt-erőforrások elosztását.
+Szolgáltatások költségek CPU time áthelyezése, és a hálózati sávszélesség minimális. Az állapotalapú szolgáltatások esetében ez szükséges másolja ezeket a szolgáltatásokat, memóriájának és a lemez állapotát. Hogy az Azure Service Fabric fürt Resource Manager-megoldások költségeinek csökkentése biztosíthatja, hogy a fürt erőforrásainak feleslegesen nem töltött. Azonban még nem szeretné figyelmen kívül hagyja a megoldásokat, amelyek jelentősen javíthatják a lefoglalt erőforrások a fürt.
 
-A fürt erőforrás-kezelő rendelkezik kétféleképpen számítástechnikai költségeket, és korlátozza azokat próbál meg a fürt kezelése közben. Az első eljárás egyszerűen számolása minden elindított áthelyezésre is volna. Ha a két megoldás akkor jönnek létre, az azonos kapcsolatos egyenleg (pontszám), akkor a fürt erőforrás-kezelő inkább egy, a legalacsonyabb költség (a kurzor teljes száma).
+A fürterőforrás-kezelő kétféleképpen számítási költségeit, és korlátozza őket, amíg próbál meg a fürt kezeléséhez rendelkezik. Az első eljárás, amely biztosítja, hogy minden áthelyezés egyszerűen számolása. Ha a két megoldást akkor jönnek létre a nagyjából megegyeztek egyenleg (pontszám), majd a fürterőforrás-kezelő részesíti előnyben, amelyiket a legalacsonyabb költségű (a kurzor teljes száma).
 
-Ezt a stratégiát akkor is működik. De az alapértelmezett vagy statikus, nem valószínű, hogy az összes lépés egyenlőek bármely összetett rendszerben. Néhány valószínűleg sokkal drága lehet.
+Ez a stratégia jól működik. De az alapértelmezett vagy statikus, nem valószínű, hogy az összes lépés megegyeznek bármely összetett rendszerben. Néhány várhatóan sok egyéb mellett költséges lehet.
 
-## <a name="setting-move-costs"></a>A beállítás költségek áthelyezése 
-Az alapértelmezett áthelyezése költség szolgáltatás létrehozásakor adhatók meg:
+## <a name="setting-move-costs"></a>A beállítás áthelyezési költségei 
+Az alapértelmezett áthelyezése költségeket a szolgáltatás létrehozásakor adhatók meg:
 
 PowerShell:
 
@@ -49,7 +49,7 @@ serviceDescription.DefaultMoveCost = MoveCost.Medium;
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Adja meg vagy frissítés MoveCost dinamikusan a szolgáltatás a szolgáltatás létrehozása után is: 
+Adja meg, vagy MoveCost dinamikusan frissülnek a szolgáltatás a szolgáltatás létrehozása után is: 
 
 PowerShell: 
 
@@ -65,9 +65,9 @@ updateDescription.DefaultMoveCost = MoveCost.High;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/ServiceName"), updateDescription);
 ```
 
-## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Dinamikusan adja meg a replika alapon áthelyezés költség
+## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Dinamikusan adja meg a replika alapon áthelyezési költség
 
-Az előző kódtöredékek segédanyagokra MoveCost megadásának egyszerre a teljes szolgáltatás kívül a szolgáltatást. Azonban áthelyezése költsége leghasznosabb kell, ha az élettartamot időbeli változásainak egy adott szolgáltatás objektum áthelyezése költségét. A szolgáltatásoknak valószínűleg a legjobb meghatározni, hogy hogyan költséges azok helyezze át egy adott idő alatt, mert nincs a jelentés a saját egyéni költség áthelyezése futásidőben szolgáltatásainak API. 
+Az előző kódrészletek az összes MoveCost megadására a szolgáltatás kívül egyszerre a teljes szolgáltatás. Azonban a költsége a leghasznosabb a következő esetekben áthelyezése a gyűjteményszintű időbeli változásainak egy adott service objektum áthelyezése költségét. Mivel a szolgáltatások valószínűleg a legjobb kiindulópont annak megértéséhez, hogy költséges azok áthelyezése egy adott idő alatt, van egy jelentéshez a saját egyéni költség áthelyezése során futásidejű szolgáltatások API. 
 
 C#:
 
@@ -75,21 +75,21 @@ C#:
 this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
-## <a name="impact-of-move-cost"></a>Áthelyezési költség hatása
-MoveCost négy szintje van: nulla, alacsony, közepes és magas. MoveCosts vannak egymáshoz, kivéve a nulla. Nulla áthelyezés költség azt jelenti, hogy a mozgás szabad, nem kell csökkenti a pontszám megoldás. A magas does költsége move beállítást *nem* biztosítja, hogy a replika egy helyen tárolhatja.
+## <a name="impact-of-move-cost"></a>Áthelyezés költség hatása
+MoveCost négy szintje van: Nulla, alacsony, közepes és nagy. MoveCosts vannak egymással, viszonyított nulla kivételével. Áthelyezés díjmentesen azt jelenti, hogy a adatátviteli ingyenes, és nem kell csökkentik a pontszámot a megoldás. Az áthelyezés magas does költség beállítás *nem* garantálja, hogy a replika egy helyen tárolhatja.
 
 <center>
-![Helyezze át a költség tényezőként adatátviteli replikák kiválasztása][Image1]
+![Helyezze át a költség tényezőként adatátviteli replikái kiválasztása][Image1]
 </center>
 
-Keresse meg a a megoldást, amely átfogó zavartalanul okozza, és közben továbbra is érkező egyenértékű egyenleg eléréséhez legegyszerűbb MoveCost segítségével. A szolgáltatás fogalmát költség lehet számos elemet viszonyítva. A leggyakoribb tényezők az áthelyezés költsége kiszámításakor a következők:
+MoveCost segít, hogy általános zavartalanul okoznak, és közben továbbra is továbbítótól egyenértékű egyenleg legegyszerűbb megoldhatók. Költség a szolgáltatás fogalmát viszonyított sok-sok dolog is lehet. A leggyakoribb tényezők az áthelyezési költségszámítás a következők:
 
 - Állam vagy olyan adatok, amelyek a szolgáltatás áthelyezése mennyisége.
-- Ügyfelek leválasztása a költségét. Helyezze át az elsődleges replika általában költségesebb, mint a áthelyezi egy másodlagos másodpéldány költségét.
-- Az üzenetsoroktól művelet megszakítása költsége. Bizonyos műveletek, az adatok tárolásához szint, és egy ügyfél hívást végre műveletek esetében költséges. Egy bizonyos mértékig után nem kívánja azokat le, ha nincs. Ezért amíg a művelet van folyamatban, növelheti a move költségek csökkentése érdekében, hogy ez a szolgáltatás-objektum. Amikor a műveletet hajtja végre, a költség be visszaállítása a szokásos módon folytatódik.
+- Az ügyfelek a leválasztás költsége. Egy elsődleges replika áthelyezése általában költségesebb, mint az áthelyezi egy másodlagos másodpéldány költsége.
+- Az átvitel közben a művelet megszakítása költsége. Bizonyos műveleteket az adatok tárolására szintet vagy egy ügyfél hívásra válaszul végrehajtott műveletek költséges. Egy bizonyos ponton után nem kívánja le őket, ha nem kell. Ezért amíg a művelet történik, növelheti a áthelyezési költségek csökkentése érdekében a valószínűsége, hogy áthelyezi azt a szolgáltatás-objektum. A művelet befejeződik, amikor a költségek állítsa vissza a normál.
 
-## <a name="enabling-move-cost-in-your-cluster"></a>Áthelyezési költség, a fürt engedélyezése
-Ahhoz, hogy a részletesebb MoveCosts figyelembe kell venni MoveCost a fürtben engedélyezni kell. Ha ez a beállítás számbavételi helyezi át az alapértelmezett mód MoveCost kiszámításához, és MoveCost jelentéseket a rendszer figyelmen kívül hagyja.
+## <a name="enabling-move-cost-in-your-cluster"></a>A fürt áthelyezési költségei engedélyezése
+Ahhoz, hogy a részletesebb MoveCosts figyelembe kell venni, a MoveCost a fürtben engedélyezni kell. Ez a beállítás alapértelmezett módja annak, hogy a kurzor számbavételi MoveCost kiszámításához, és MoveCost jelentéseket a rendszer figyelmen kívül hagyja.
 
 
 ClusterManifest.xml:
@@ -100,7 +100,7 @@ ClusterManifest.xml:
         </Section>
 ```
 
-az önálló verziója telepítéseinek művelet vagy az Azure-Template.json üzemeltetett fürtök:
+az önálló verziója telepítéseinek ClusterConfig.json vagy Template.json az Azure-ban futó fürtök:
 
 ```json
 "fabricSettings": [
@@ -117,7 +117,7 @@ az önálló verziója telepítéseinek művelet vagy az Azure-Template.json üz
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Service Fabric fürt erőforrás-kezelő metrikákat használ a használat és a kapacitás, a fürt kezeléséhez. A metrikák és konfigurálásuk módját kapcsolatos további tudnivalókért tekintse meg [hálózatierőforrás-fogyasztás kezelése és a metrikák a Service Fabric terheléselosztási](service-fabric-cluster-resource-manager-metrics.md).
-- Hogyan kezeli a fürt erőforrás-kezelő, és elosztja a terhelést a fürt kapcsolatos információkért tekintse meg [a Service Fabric-fürt terheléselosztási](service-fabric-cluster-resource-manager-balancing.md).
+- Service Fabric fürt Resource Manager metrikák használatával használat és a fürt kapacitásának kezelése. Metrikák és a konfigurálásukról kapcsolatos további információkért tekintse meg [kezelése erőforrás-használat és a metrikák a Service Fabric terhelés](service-fabric-cluster-resource-manager-metrics.md).
+- Hogyan kezeli a fürterőforrás-kezelő, és elosztja a terhelést a fürtben kapcsolatos további információkért tekintse meg [terheléselosztás a Service Fabric-fürt](service-fabric-cluster-resource-manager-balancing.md).
 
 [Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png

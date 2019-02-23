@@ -7,16 +7,16 @@ ms.service: terraform
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: nepeters
-ms.openlocfilehash: 408e07e9b6214dbd223bd4ec7959b00ecc414f1e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b3d872008c95d94a8401e6f38665c3c88616a168
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869177"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736923"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Az Azure Terraform konfiguráció létrehozása
 
-Ebben a példában a Terraform konfigurációt hoz létre, és ez a konfiguráció üzembe helyezése az Azure felhasználói élményt kaphat. Amikor elkészült, fog telepített egy Azure Cosmos DB-példányra, az Azure Container Instances és egy alkalmazás, amely a két erőforrás között működik. Jelen dokumentum céljából feltételezzük, hogy az összes munkahelyi befejeződött-e az Azure Cloud Shellt, amelyben előre telepítve van a Terraform eszközök rendelkezik. Ha szeretné, hogy a saját rendszerén keresztül a példa működéséhez, Terraform telepíthető-e utasításait követve [Itt](../virtual-machines/linux/terraform-install-configure.md).
+Ebben a példában a Terraform konfigurációt hoz létre, és ez a konfiguráció üzembe helyezése az Azure felhasználói élményt kaphat. Amikor elkészült, fog telepített egy Azure Cosmos DB-példányra, az Azure-Tárolópéldányon és egy alkalmazás, amely a két erőforrás között működik. Jelen dokumentum céljából feltételezzük, hogy az összes munkahelyi befejeződött-e az Azure Cloud Shellt, amelyben előre telepítve van a Terraform eszközök rendelkezik. Ha szeretné, hogy a saját rendszerén keresztül a példa működéséhez, Terraform telepíthető-e utasításait követve [Itt](../virtual-machines/linux/terraform-install-configure.md).
 
 ## <a name="create-first-configuration"></a>Első konfiguráció létrehozása
 
@@ -30,7 +30,7 @@ code .
 
 Másolja és illessze be a következő Terraform-konfigurációt.
 
-Ez a konfiguráció modellek az Azure-erőforráscsoporttal, véletlenszerű egész szám és egy Azure Cosmos DB-példányok. A véletlenszerű egész szolgál a Cosmos DB-példány neve. Cosmos DB több beállítást is vannak konfigurálva. Cosmos DB Terraform konfigurációk teljes listáját lásd: a [Cosmos DB Terraform-referencia](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html).
+Ez a konfiguráció modellek az Azure-erőforráscsoporttal, véletlenszerű egész szám és egy Azure Cosmos DB-példányra. A véletlenszerű egész szolgál a Cosmos DB-példány neve. Cosmos DB több beállítást is vannak konfigurálva. Cosmos DB Terraform konfigurációk teljes listáját lásd: a [Cosmos DB Terraform-referencia](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html).
 
 Mentse a fájlt az `main.tf` végeztével. Ezt a műveletet a három pontot használ a Kódszerkesztő jobb felső részén.
 
@@ -93,7 +93,7 @@ Frissítse a konfigurációt, hogy tartalmazza az Azure Container Instance. A t�
 
 Másolja a következő konfigurációt alján a `main.tf` fájlt. Mentse a fájlt, ha ezzel elkészült.
 
-Két környezeti változók vannak beállítva, `COSMOS_DB_ENDPOINT` és `COSMOS_DB_MASTERKEY`. Ezeket a változókat tartsa a helyet, és az adatbázis eléréséhez szükséges kulcs. Ezek a változók értékeit kérhetők le az előző lépésben létrehozott az adatbázis-példány. Ez a folyamat interpolációs nevezik. A Terraform interpolációs kapcsolatos további információkért lásd: [interpolációs szintaxis](https://www.terraform.io/docs/configuration/interpolation.html).
+Két környezeti változók vannak beállítva, `COSMOS_DB_ENDPOINT` és `COSMOS_DB_MASTERKEY`. Ezeket a változókat tartsa a helyet, és az adatbázis eléréséhez szükséges kulcs. Ezek a változók értékeit kérhetők le az előző lépésben létrehozott az adatbázis-példány. Ez a folyamat interpolációs néven ismert. A Terraform interpolációs kapcsolatos további információkért lásd: [interpolációs szintaxis](https://www.terraform.io/docs/configuration/interpolation.html).
 
 
 A konfiguráció is tartalmaz egy kimeneti blokkhoz, amely a tárolópéldányt teljesen minősített tartománynevét (FQDN) adja vissza.

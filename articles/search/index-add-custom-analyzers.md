@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: cb2f06bf2a05e2642eb688a48006d0df5fa4fc2c
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 82b2910a1654461cade853b71e6d57a674bb849e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587820"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733197"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Egyéni elemzők az Azure Search-index hozzáadása
 
@@ -189,7 +189,7 @@ Használhatja a **teszt Analyzer művelet** a a [REST API-t](https://docs.micros
   }
 ```
 
- ## <a name="update-custom-analyzers"></a>Egyéni elemzők frissítése
+## <a name="update-custom-analyzers"></a>Egyéni elemzők frissítése
 
 Miután egy elemző, egy tokenizer, egy jogkivonat szűrő vagy char szűrő van megadva, nem lehet módosítani. Új lehet hozzáadni egy meglévő index csak akkor, ha a `allowIndexDowntime` jelző értéke igaz található az indexben frissítésére vonatkozó kérelemben:
 
@@ -205,7 +205,7 @@ Ez a művelet az index offline legalább néhány másodpercet, így az indexel�
 
 Az alábbi táblázat az elemzők, tokenizers, jogkivonat szűrők konfiguráció tulajdonságainak listában, és a egy indexdefiníciót szűrő szakaszában char. Ezek az attribútumok egy elemző, tokenizer vagy szűrő az index felépítését tevődik össze. Érték hozzárendelése információkért lásd: a [tulajdonsághivatkozás](#PropertyReference).
 
- ### <a name="analyzers"></a>Elemzők
+### <a name="analyzers"></a>Elemzők
 
 Az elemzők, indexattribútumokat eltérőek lehetnek attól függően, hogy az előre definiált vagy egyéni elemzőt használja.
 
@@ -229,7 +229,7 @@ Az elemzők, indexattribútumokat eltérőek lehetnek attól függően, hogy az 
 
 <a name="CharFilter"></a>
 
- ### <a name="char-filters"></a>CHAR szűrők
+### <a name="char-filters"></a>CHAR szűrők
 
  Char szűrő segítségével dolgoz fel a jogkivonatokat létrehozó előtt készítse elő a bemeneti szöveg. Például ezek lecserélheti bizonyos karakterek és szimbólumok. Az egyéni elemző rendelkezhet több char szűrőt. A listán sorrendben futnak a CHAR szűrőket.  
 
@@ -239,7 +239,7 @@ Az elemzők, indexattribútumokat eltérőek lehetnek attól függően, hogy az 
 |Typo|Támogatott char szűrőt a listából Char szűrőtípust. Lásd: **char_filter_type** oszlopa a [Char szűrők](#CharFilter) az alábbi táblázat.|  
 |Beállítások|Az érvényes beállítások kell lennie egy adott [Char szűrők](#CharFilter) típusa.|  
 
- ### <a name="tokenizers"></a>Tokenizers
+### <a name="tokenizers"></a>Tokenizers
 
  A jogkivonatokat létrehozó folyamatos szöveg jogkivonatok, például egy mondatnál ossza szavak sorozatát osztja fel.  
 
@@ -252,7 +252,7 @@ Egyéni elemző használható egy előre meghatározott jogkivonatokat létrehoz
 |Typo|A támogatott tokenizers listájából jogkivonatokat létrehozó neve. Lásd: **tokenizer_type** oszlopa a [Tokenizers](#Tokenizers) az alábbi táblázat.|  
 |Beállítások|Kell egy adott jogkivonatokat létrehozó típusú szerepel az érvényes beállítások a [Tokenizers](#Tokenizers) az alábbi táblázat.|  
 
- ### <a name="token-filters"></a>Token szűrők
+### <a name="token-filters"></a>Token szűrők
 
  Szűrje ki, vagy módosítsa a tokeneket a jogkivonatokat létrehozó által generált jogkivonat szűrő segítségével. Például az összes karakter kisbetűssé alakítja egy kis szűrőt is megadhat.   
 Több jogkivonat-szűrőt használhat egyéni elemző. A listán sorrendben futnak a token szűrőket.  

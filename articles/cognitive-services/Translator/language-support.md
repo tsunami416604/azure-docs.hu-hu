@@ -7,19 +7,19 @@ author: Jann-Skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.topic: article
-ms.date: 09/25/2018
+ms.topic: reference
+ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: c0e024281782ede67aa3092d7af05a54113b0d68
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 4e8193a9996c9675a353e3e427c86ecfee45da8f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587531"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737841"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
-A Translator Text API a következő nyelveket támogatja a szöveg a fordítás. Neurális gépi fordítás (NMT) magas színvonalú mesterséges Intelligenciával rendelkező gép fordítások új szabványa, és használja, a Translator Text API v3-as, akkor egy Neurális rendszeren érhető el az alapértelmezett érhető el. 
+A Translator Text API a következő nyelveket támogatja a szöveg a fordítás. Neurális gépi fordítás (NMT) magas színvonalú mesterséges Intelligenciával rendelkező gép fordítások új szabványa, és használja, a Translator Text API v3-as, akkor egy Neurális rendszeren érhető el az alapértelmezett érhető el.
 
 [További információ arról, hogyan működik a gépi fordítás](https://www.microsoft.com/translator/mt.aspx)
 
@@ -33,7 +33,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 * Neurális alapértelmezett: Neurális, az alapértelmezett fordítási rendszer. Használja ezt a paramétert `category=smt` hozzáférhetnek a statisztikai rendszerhez a Microsoft Translator Hub való használatra.
 * Neurális csak: Csak a Neurális fordítással érhető el.
 
-**Translator API v3-as** a v3-as Translator API egy Neurális alapértelmezés szerint, és statisztikai rendszerek csak érhetők el, ha Neurális rendszert nem létezik. Egyéni a fordítót csak akkor használható, a Neurális nyelvek. 
+**Translator API v3-as** a v3-as Translator API egy Neurális alapértelmezés szerint, és statisztikai rendszerek csak érhetők el, ha Neurális rendszert nem létezik. Egyéni a fordítót csak akkor használható, a Neurális nyelvek.
 
 |Nyelv|  Nyelvkód|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|

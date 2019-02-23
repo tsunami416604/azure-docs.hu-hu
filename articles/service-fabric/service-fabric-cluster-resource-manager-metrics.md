@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7a7d3ad59d743287e5fe13c52c6c6a1a115d53f3
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2d1818f42cb2bcb19f979f25962a6c9bdea10155
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053312"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728012"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Kezelését erőforrás-használat és a terhelés a Service Fabric-metrikák
 *Metrikák* az erőforrások, a szolgáltatások ellátás kapcsolatban, és amely a fürt csomópontjainak által biztosított. Egy metrika, amelyeket szeretne kezelni, annak érdekében, hogy monitorozza a szolgáltatások teljesítményét és tökéletesítéséhez. Például előfordulhat, hogy tekintse meg memóriát tudni, hogy ha a szolgáltatás túlterhelt. Egy másik használata döntse el, hogy a szolgáltatás áthelyezhetők máshol ahol memória mérete kisebb jobb teljesítmény érdekében korlátozott.
@@ -56,7 +56,7 @@ Vegye figyelembe, hogy néhány dolgot:
 
 jó!
 
-Az alapértelmezett mérőszámok nagyszerű, Kezdés működik. Azonban az alapértelmezett mérőszámok csak képviselik, eddig. Például: mekkora a valószínűsége, hogy a particionálási séma, kivételezett még akkor is, tökéletesen kihasználtság az eredményeket az összes partíció? Mi az esélye annak, hogy a terhelés egy adott szolgáltatáshoz idő múlásával állandó, vagy akár ugyanúgy több partíción most?
+Az alapértelmezett mérőszámok nagyszerű, Kezdés működik. Azonban az alapértelmezett mérőszámok csak képviselik, eddig. Példa: Még akkor is, tökéletesen kihasználtsági mekkora a valószínűsége, hogy a particionálási séma, kivételezett eredmények összes partíció? Mi az esélye annak, hogy a terhelés egy adott szolgáltatáshoz idő múlásával állandó, vagy akár ugyanúgy több partíción most?
 
 Csak az alapértelmezett metrikákkal futtatható. Azonban ez általában azt jelenti, hogy a fürtkihasználtság alacsonyabb és több mint szeretné egyenetlen. Ez azért, mert az alapértelmezett metrikák nem adaptív, és feltételezik, hogy minden rendben egyenértékű. Például, amely éppen lefoglalja egy elsődleges és, amely nem is hozzájárul a PrimaryCount mérőszámhoz "1". A legrosszabb esetben csak az alapértelmezett mérőszámok segítségével is eredményezhet overscheduled csomópontok teljesítményproblémák eredményez. Ha érdekli a legtöbbet hozhassa ki a fürt és a teljesítménybeli problémák elkerülése, egyéni metrikák és a dinamikus terhelésjelentés-készítés szeretné.
 
@@ -67,7 +67,7 @@ Bármilyen mérőszám néhány tulajdonság tartozik, amely azt írja le: a nev
 
 * Metrika neve: A metrika neve. A metrika neve az a Resource Manager szempontjából a fürtön belül a metrika egyedi azonosító.
 * Súly: Metrika súlyának határozza meg, mennyire fontos metrika, ezt a szolgáltatást a metrikák viszonyítva.
-* Alapértelmezett betöltése: Az alapértelmezett terhelés jelölt eltérően attól függően, hogy a szolgáltatási állapot nélküli vagy állapotalapú.
+* Alapértelmezett betöltése: Az alapértelmezett terhelés eltérően jelölt attól függően, hogy a szolgáltatási állapot nélküli vagy állapotalapú.
   * Az állapotmentes szolgáltatások esetében minden egyes metrika DefaultLoad nevű egyetlen tulajdonsággal rendelkezik
   * Az állapotalapú szolgáltatások esetében definiálása:
     * PrimaryDefaultLoad: Ez a metrika az alapértelmezés szerinti ezt a szolgáltatást használ fel, ha az elsődleges
@@ -232,7 +232,7 @@ Néhány dolog, hogy továbbra is el kell magyarázniuk:
 ## <a name="metric-weights"></a>Metrika súlyok
 Fontos, metrikák követése különböző szolgáltatások között. Globális nézet, hogy milyen tevékenységeket engedélyez a fürt használat nyomon, használatalapú elosztása a csomópontok között, és győződjön meg arról, hogy a csomópont feletti kapacitás nem halad a fürterőforrás-kezelő. Előfordulhat azonban, szolgáltatások különböző nézeteket a helyrendszerszerepkörökre ugyanazt a metrika fontossága. Emellett számos metrikákkal és nagy mennyiségű szolgáltatások fürtben, tökéletesen elosztott terhelésű megoldások nem létezik az összes metrikát. Hogyan kezelje a fürterőforrás-kezelő ezekben a helyzetekben?
 
-Metrika súlyok lehetővé teszik a fürterőforrás-kezelő dönthet arról, hogy a fürt egyensúlyának kialakításához, amikor nincs tökéletes válasz. Metrika súlyok is lehetővé teszi a fürterőforrás-kezelő adott szolgáltatások eltérően elosztása érdekében. A metrikákhoz négy különböző súly szint is: nulla, alacsony, közepes és nagy. Egy metrika egy nulla-as súlyozással rendelkező járul hozzá semmi, amikor a mérlegeli, hogy dolog, vagy nem elosztott terhelésű. A betöltés azonban továbbra is járulnak hozzá a kapacitáskezelés. Metrikák nulla súlyú továbbra is hasznosak, és gyakran használt viselkedéséről, és az alkalmazásteljesítmény-figyelő részeként. [Ez a cikk](service-fabric-diagnostics-event-generation-infra.md) a metrikákat a figyelés és diagnosztika a szolgáltatások további információkat biztosít. 
+Metrika súlyok lehetővé teszik a fürterőforrás-kezelő dönthet arról, hogy a fürt egyensúlyának kialakításához, amikor nincs tökéletes válasz. Metrika súlyok is lehetővé teszi a fürterőforrás-kezelő adott szolgáltatások eltérően elosztása érdekében. Metrikák négy különböző súly szintje lehet: Nulla, alacsony, közepes és nagy. Egy metrika egy nulla-as súlyozással rendelkező járul hozzá semmi, amikor a mérlegeli, hogy dolog, vagy nem elosztott terhelésű. A betöltés azonban továbbra is járulnak hozzá a kapacitáskezelés. Metrikák nulla súlyú továbbra is hasznosak, és gyakran használt viselkedéséről, és az alkalmazásteljesítmény-figyelő részeként. [Ez a cikk](service-fabric-diagnostics-event-generation-infra.md) a metrikákat a figyelés és diagnosztika a szolgáltatások további információkat biztosít. 
 
 A fürt másik mérőszám súlyok valós hatása, hogy a fürterőforrás-kezelő hoz létre a különböző megoldások. Metrika súlyok tájékoztatnia kell a fürterőforrás-kezelő, hogy bizonyos metrikák fontosabbak, mint mások. Amikor tökéletes megoldás nincs a fürterőforrás-kezelő megoldások, amelyek a magasabb jobb súlyozott metrikák elosztása is inkább. Ha egy szolgáltatás fenyegetésként észlel, egy adott metrika nem lényeges, imbalanced talál használata során ennek a mutatónak. Ez lehetővé teszi az egyenletes eloszlás néhány mérőszám, amely fontos, hogy azt egy másik szolgáltatásnak.
 

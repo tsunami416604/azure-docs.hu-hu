@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/22/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 60767c3c61b0d386e4ac9b0a93d16ad161c59949
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0467f131ab4300ba3217ed01f37ebb7f4b8dbe5e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445934"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732772"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez
 
@@ -132,22 +132,7 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 
     ![Az App Service-telepítő][10]
 
-11. Adja meg, hogy az SQL Server, az App Service erőforrás-szolgáltató adatbázisainak üzemeltetésére, és válassza ki a kiszolgálópéldánynak **tovább**. A telepítő ellenőrzi az SQL-kapcsolat tulajdonságai.
-
-    > [!NOTE]
-    > A telepítő megpróbálja az SQL Server, a folytatás előtt a kapcsolat teszteléséhez. De ha egy meglévő virtuális hálózatra telepíti, a kapcsolódási teszt sikertelen lehet. Felhőszolgáltatására, figyelmeztetés és a egy parancssort a folytatáshoz. Ha az SQL Server-adatok helyesek, továbbra is az üzembe helyezés.
-    >
-    > Az Azure App Service, az Azure Stack 1.3 és újabb verziók esetében a telepítő ellenőrzi, hogy rendelkezik-e az SQL Server adatbázis tartalmazási az SQL Server szintjén engedélyezhető.  Nem érhető el, ha a rendszer kéri, a következő kivétel miatt:
-    > ```sql
-    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
-    >    ***********************************************************
-    >    sp_configure 'contained database authentication', 1;  
-    >    GO  
-    >    RECONFIGURE;  
-    >    GO
-    >    ***********************************************************
-    > ```
-    > Tekintse meg a [kibocsátási megjegyzések az Azure App Service az Azure Stack 1.3](azure-stack-app-service-release-notes-update-three.md) további részletekért.
+11. Adja meg, hogy az SQL Server, az App Service erőforrás-szolgáltató adatbázisainak üzemeltetésére, és válassza ki a kiszolgálópéldánynak **tovább**. A telepítő ellenőrzi az SQL-kapcsolat tulajdonságai.<br><br>Az App Service-ben telepítő megpróbálja az SQL Server, a folytatás előtt a kapcsolat teszteléséhez. Ha egy meglévő virtuális hálózatra telepíti, a kapcsolódási teszt sikertelen lehet. Felhőszolgáltatására, figyelmeztetés és a egy parancssort a folytatáshoz. Ha az SQL Server-adatok helyesek, továbbra is az üzembe helyezés.
 
     ![Az App Service-telepítő][11]
 

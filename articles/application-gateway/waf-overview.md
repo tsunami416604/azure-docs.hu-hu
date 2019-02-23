@@ -4,14 +4,14 @@ description: Ez a cikk a webalkalmazási tűzfal (WAF) áttekintést nyújt az A
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/16/2018
+ms.date: 2/22/2019
 ms.author: amsriva
-ms.openlocfilehash: 014353bafa31b1c4e924cba8335dbd30a48c2d11
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e53dde549034e8029fdb7f9c780a7880a1ca515d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651430"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733826"
 ---
 # <a name="web-application-firewall-waf"></a>Webalkalmazási tűzfal (WAF)
 
@@ -58,19 +58,8 @@ Az alábbiak az Application Gateway és a webalkalmazási tűzfal használatána
 - Protection against HTTP protocol anomalies such as missing host user-agent and accept headers
 - Robotprogramok, webbejárók és képolvasók elleni védelem
 - Gyakori alkalmazások konfigurációs hibáinak észlelése (például Apache, IIS, és így tovább)
-
-### <a name="public-preview-features"></a>Nyilvános előzetes verziójú funkciók
-
-A jelenlegi WAF nyilvános előzetes Termékváltozat az alábbi szolgáltatásokat tartalmazza:
-
-- **Kérelem méretbeli korlátokat** -webalkalmazási tűzfal lehetővé teszi a felhasználóknak kérelem méretbeli korlátokat belül alsó és felső határai konfigurálása.
-- **Kizárási listák** -WAF kizárási listák engedélyezése a felhasználók számára bizonyos attribútumainak WAF során hagyja ki. Ilyenek például az Active Directory beszúrt jogkivonatokat, amelyek a hitelesítéshez, vagy a beírt jelszavak.
-
-A WAF nyilvános előzetes verzióban kapcsolatos további információkért lásd: [Web application firewall kérelem méretbeli korlátokat és kizárási listák (nyilvános előzetes verzió)](application-gateway-waf-configuration.md).
-
-
-
-
+- Kérelem méretbeli korlátokat - webalkalmazási tűzfal lehetővé teszi a felhasználóknak kérelem méretbeli korlátokat belül alsó és felső határai konfigurálása.
+- Kizárási listák - WAF kizárási listák engedélyezése a felhasználók számára bizonyos attribútumainak WAF során hagyja ki. Ilyenek például az Active Directory beszúrt jogkivonatokat, amelyek a hitelesítéshez, vagy a beírt jelszavak.
 
 ### <a name="core-rule-sets"></a>Alapvető szabálykészletek
 
@@ -87,7 +76,6 @@ A webalkalmazási tűzfal alapértelmezés szerint a CRS 3.0-s verziójával van
 - Gyakori alkalmazások konfigurációs hibáinak észlelése (például Apache, IIS stb.)
 
 Szabályok és a hozzájuk tartozó védelmi megoldások részletesebb listáját lásd: [alapvető szabálykészletek](#core-rule-sets).
-
 
 #### <a name="owasp30"></a>OWASP_3.0
 

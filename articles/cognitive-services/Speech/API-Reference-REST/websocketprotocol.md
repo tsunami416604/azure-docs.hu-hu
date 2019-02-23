@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 1d6c0a8ca04949216e6410ff81b15f79c7067522
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 35f1d75f28271cd7efc2911fe14de9ed6b525557
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217288"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671743"
 ---
 # <a name="bing-speech-websocket-protocol"></a>A Bing Speech WebSocket protokoll
 
@@ -131,13 +132,13 @@ WebSocket üzenetet meg kell adnia egy üzenet elérési utat a fejléc *eléré
 
 ### <a name="binary-websocket-messages"></a>Bináris WebSocket-üzenetek
 
-Bináris WebSocket-üzeneteket egy bináris tartalom biztosítunk. A Speech Service protokoll hang továbbított és bináris WebSocket üzenetek használatával kapott a szolgáltatástól. Minden más üzenetet, ha szöveget WebSocket üzeneteket. 
+Bináris WebSocket-üzeneteket egy bináris tartalom biztosítunk. A Speech Service protokoll hang továbbított és bináris WebSocket üzenetek használatával kapott a szolgáltatástól. Minden más üzenetet, ha szöveget WebSocket üzeneteket.
 
 WebSocket-üzenetet, például bináris WebSocket üzenetek állnak a fejléc és a egy szervezet szakaszt. Az első 2 bájt bináris WebSocket üzenet megadása a [big endian](https://en.wikipedia.org/wiki/Endianness) sorrendben fejrészében 16 bites egész szám méretét. A minimális fejléc szakasz mérete 0 bájt. A maximális mérete 8192 bájt. A fejlécek bináris WebSocket üzenet szövegének *kell* használata [US-ASCII](https://tools.ietf.org/html/rfc20) kódolást.
 
 Egy bináris WebSocket-üzenetet a fejlécek hasonlóan WebSocket üzenetet ugyanebben a formátumban van kódolva. A *név-érték:* formátum egy egyetlen kocsivissza soremelés pár választja el egymástól. Bináris WebSocket üzenetek meg kell adnia egy üzenet elérési utat a fejléc *elérési út*. A fejléc értéke a speech protokoll üzenettípus, ez a dokumentum későbbi szakaszában meghatározott egyikének kell lennie.
 
-Szöveg és a bináris WebSocket-üzenetek a Speech Service protokoll használatban vannak. 
+Szöveg és a bináris WebSocket-üzenetek a Speech Service protokoll használatban vannak.
 
 ## <a name="client-originated-messages"></a>Ügyfél által kezdeményezett üzenetek
 
@@ -149,7 +150,7 @@ A fő, a szolgáltatásoknak az ügyfél által küldött üzenetek `speech.conf
 
 A következő fejlécek az összes ügyfél által kezdeményezett szükségesek.
 
-| Fejléc | Value |
+| Fejléc | Érték |
 |----|----|
 | Útvonal | Ebben a dokumentumban meghatározottak szerint az üzenet elérési út |
 | X-RequestId | A "no-dash" formátumban UUID |
@@ -178,7 +179,7 @@ Az ügyfelek *kell* küldése egy `speech.config` azokat a csatlakozást beszéd
 
 #### <a name="required-message-headers"></a>Szükséges fejlécek
 
-| Fejléc neve | Value |
+| Fejléc neve | Érték |
 |----|----|
 | Útvonal | `speech.config` |
 | X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
@@ -187,7 +188,7 @@ Az ügyfelek *kell* küldése egy `speech.config` azokat a csatlakozást beszéd
 Csakúgy, mint a Speech Service protokoll ügyfél által kezdeményezett összes üzenet a `speech.config` üzenet *kell* tartalmaznak egy *X-időbélyeg* fejlécet, amely rögzíti, amikor az üzenet el lett küldve az ügyfél UTC idő a szolgáltatásnak. A `speech.config` üzenet *nem* szükséges egy *X-RequestId:* fejléc, mert ez az üzenet nincs hozzárendelve egy adott speech kérelmet.
 
 #### <a name="message-payload"></a>Üzenet adattartalma
-A hasznos a `speech.config` üzenet egy JSON-struktúrát, amely tartalmazza az alkalmazás adatait. Az alábbi példa bemutatja ezeket az információkat. Ügyfél és eszköz környezeti információkat tartalmaznak a *környezet* eleme a JSON-struktúrát. 
+A hasznos a `speech.config` üzenet egy JSON-struktúrát, amely tartalmazza az alkalmazás adatait. Az alábbi példa bemutatja ezeket az információkat. Ügyfél és eszköz környezeti információkat tartalmaznak a *környezet* eleme a JSON-struktúrát.
 
 ```JSON
 {
@@ -249,7 +250,7 @@ Beszédszolgáltatás használja az első `audio` üzenet, amely tartalmaz egy e
 
 A következő fejléceket szükség az összes `audio` üzeneteket.
 
-| Fejléc         |  Value     |
+| Fejléc         |  Érték     |
 | ------------- | ---------------- |
 | Útvonal | `audio` |
 | X-RequestId | A "no-dash" formátumban UUID |
@@ -527,7 +528,7 @@ A hiba leírása legfeljebb 50 karakter hosszú lehet kell lennie, és ideális 
 | ServerUnavailable | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott HTTP `503 Server Unavailable` a WebSocket frissítésére irányuló kérelem az állapotkódot. |
 | Kiszolgálóhibái | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott egy `HTTP 500` állapotkód belső hiba történt a frissítési WebSocket-kérés. |
 | Időtúllépés | Az ügyfél-kapcsolódási kérelem túllépte az időkorlátot a szolgáltatás válaszára nélkül. A *záró* mező tartalmazza az idő, amikor az ügyfél túllépte az időkorlátot, és várakozik a kapcsolatot. |
-| Ügyfélhibái | Az ügyfél egy belső ügyfélhiba miatt megszakította a kapcsolatot. | 
+| Ügyfélhibái | Az ügyfél egy belső ügyfélhiba miatt megszakította a kapcsolatot. |
 
 ### <a name="metric-microphone"></a>A metrika `Microphone`
 
@@ -636,7 +637,7 @@ Beszédszolgáltatás kliensből protokoll szabálysértések észleli, ha a szo
 
 #### <a name="incorrect-message-format"></a>Helytelen üzenet formátuma
 
-Ha egy ügyfél egy szöveges vagy bináris üzenetet küld a szolgáltatásnak, hogy a megfelelő formátumban megadott Ez az meghatározás kódolása nem, a szolgáltatás lezárja a kapcsolatot egy *1007 érvénytelen hasznos adatok* állapotkódot. 
+Ha egy ügyfél egy szöveges vagy bináris üzenetet küld a szolgáltatásnak, hogy a megfelelő formátumban megadott Ez az meghatározás kódolása nem, a szolgáltatás lezárja a kapcsolatot egy *1007 érvénytelen hasznos adatok* állapotkódot.
 
 A szolgáltatás ezzel az állapotkóddal különböző okok miatt, adja vissza, a következő példákban szemléltetett módon:
 

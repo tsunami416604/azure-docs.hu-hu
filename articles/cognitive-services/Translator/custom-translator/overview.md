@@ -6,21 +6,21 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: 852a16f14466d91a0ebfaadb83c674253d0ea15e
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: c3f8d06cf68714f3a8abc203421ae3ff9b533ca6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587752"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737807"
 ---
 # <a name="what-is-custom-translator"></a>Mi a Custom Translator?
 
 [Egyéni a fordítót](https://portal.customtranslator.azure.ai) funkció a Microsoft Translator szolgáltatás, amely lehetővé teszi a Translator vállalkozások, fejlesztők, és a nyelvi szolgáltatók hozhat létre egyéni Neurális gépi fordítás (NMT) rendszereket. A testre szabott fordítási rendszerek zökkenőmentesen integrálhatja meglévő alkalmazások, munkafolyamatok és a websites. [Egyéni a fordítót](https://portal.customtranslator.azure.ai/) hasonló funkciókat kínál, amit [Microsoft Translator Hub](https://hub.microsofttranslator.com/) does a statisztikai gépi fordítási (SMT), de a kizárólag a Neurális gépi fordítás (NMT) rendszerekhez.
 
-A használatával létrehozott fordítási rendszerek [egyéni a fordítót](https://portal.customtranslator.azure.ai) ugyanaz a felhő alapú keresztül elérhető [biztonságos](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), nagy teljesítményű, nagy mértékben skálázható Microsoft Translator [Text API v3-as](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl), amely működteti fordítások milliárd minden nap. 
+A használatával létrehozott fordítási rendszerek [egyéni a fordítót](https://portal.customtranslator.azure.ai) ugyanaz a felhő alapú keresztül elérhető [biztonságos](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), nagy teljesítményű, nagy mértékben skálázható Microsoft Translator [Text API v3-as](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl), amely működteti fordítások milliárd minden nap.
 
 Egyéni Translator több mint három tucat nyelveket támogatja, és a NMT közvetlenül elérhető nyelvek rendeli. Teljes listáját lásd: [Microsoft Translator nyelvek](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
@@ -48,7 +48,7 @@ Ha a megfelelő típusú és a betanítási adatok mennyisége van megadva, akko
 
 ## <a name="be-productive-and-cost-effective"></a>Hatékony és költséghatékony
 
-A [egyéni a fordítót](https://portal.customtranslator.azure.ai), képzés és a egy egyéni rendszer központi telepítéséhez nem szükséges minden olyan programozási ismeretek. 
+A [egyéni a fordítót](https://portal.customtranslator.azure.ai), képzés és a egy egyéni rendszer központi telepítéséhez nem szükséges minden olyan programozási ismeretek.
 
 A biztonságos [egyéni a fordítót](https://portal.customtranslator.azure.ai) portál, felhasználók is töltse fel a betanítási adatok, rendszerek betanításához, tesztrendszerek és üzembe helyezheti őket az éles környezetben egy intuitív felhasználói felületen keresztül. A rendszer ezután lesz használható nagy mennyiségű (a tényleges idő függ, a betanítási adatok mérete) néhány órán belül.
 

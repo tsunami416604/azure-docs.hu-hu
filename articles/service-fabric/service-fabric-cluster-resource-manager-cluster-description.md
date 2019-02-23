@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 55f8ab37-9399-4c9a-9e6c-d2d859de6766
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 64f02b1165d014a0eaa89dae64a7d9aa283cac32
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7be10f03d65e53b51c3916849dc12feb4de9c919
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834587"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737654"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Ismertető a service fabric-fürt
 A Service Fabric fürterőforrás-kezelő több mechanizmust nyújt az fürt leírása. Futásidőben a fürterőforrás-kezelő ezeket az adatokat használja a szolgáltatások a fürtben futó magas rendelkezésre állásának biztosításához. Ezek a szabályok fontos kényszerítése, közben is megkísérli a fürtön belüli erőforrás-használat optimalizálása érdekében.
@@ -28,7 +28,7 @@ A Service Fabric fürterőforrás-kezelő több mechanizmust nyújt az fürt le�
 A fürterőforrás-kezelő számos funkciót, amely a fürt leírása támogatja:
 
 * Tartalék tartományok
-* Frissítési tartományok
+* Upgrade Domains
 * Csomópont tulajdonságai
 * Csomópont-kapacitás
 
@@ -54,7 +54,7 @@ Futásidőben a Service Fabric fürterőforrás-kezelő figyelembe veszi a tarta
 
 A Service Fabric a fürterőforrás-kezelő hány rétegek léteznek, a tartalék tartomány hierarchia nem gondoskodik. Azonban megkísérli annak biztosítása érdekében, hogy a hierarchia bármely egy részének elvesztését nem érinti, a futó szolgáltatásokat. 
 
-Ez nem ajánlott, ha minden szinten, a tartalék tartomány hierarchia mélységét csomópontok azonos számú. Ha a tartalék tartományok "fa" egyenetlen a fürtben, megnehezíti a a fürterőforrás-kezelő, döntse el, a legjobb lefoglalt szolgáltatások. Tartalék tartományok imbalanced elrendezések azt jelenti, az egyes tartományok hatása, mint a más tartományokban további szolgáltatások rendelkezésre állásának elvesztését. Ennek eredményeképpen a fürterőforrás-kezelő levágása között két célt: szeretné, hogy a gépek használja a "nagy" tartomány például azok a szolgáltatások, és szeretné, hogy helyezze el a szolgáltatások más tartományok, hogy a tartomány elvesztését problémákhoz nem. 
+Ez nem ajánlott, ha minden szinten, a tartalék tartomány hierarchia mélységét csomópontok azonos számú. Ha a tartalék tartományok "fa" egyenetlen a fürtben, megnehezíti a a fürterőforrás-kezelő, döntse el, a legjobb lefoglalt szolgáltatások. Tartalék tartományok imbalanced elrendezések azt jelenti, az egyes tartományok hatása, mint a más tartományokban további szolgáltatások rendelkezésre állásának elvesztését. Ennek eredményeképpen a fürterőforrás-kezelő levágása között két célt: Szeretné, hogy a gépek használja a "nagy" tartomány például azok a szolgáltatások, és szeretné, hogy helyezze el a szolgáltatások más tartományok, hogy a tartomány elvesztését nem problémákhoz. 
 
 Hogyan tegye imbalanced tartományok meg? Az alábbi ábrán két különböző fürt elrendezések mutatjuk be. Az első példában a csomópontok egyenlően vannak elosztva a tartalék tartományok. A második példa egy tartalék tartomány számos további csomópontokat, mint a többi tartalék tartományban van. 
 
@@ -97,7 +97,7 @@ A leggyakrabban használt modell az FD/UD mátrix, ahol a tartalék és frissít
 
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Tartalék és frissítési tartomány korlátozások és az eredményül kapott viselkedés
 ### <a name="default-approach"></a>*Alapértelmezett módszer*
-Alapértelmezés szerint a fürterőforrás-kezelő megőrzi a szolgáltatások tartalék és frissítési tartományok között. Ez van modellezve a [megkötés](service-fabric-cluster-resource-manager-management-integration.md). A tartalék és frissítési tartomány korlátozás állapotok: "egy adott szolgáltatás partíció soha nem kell különbséget nagyobb, mint egy szolgáltatási objektumok (állapotmentes szolgáltatás példányainak vagy állapotalapú szolgáltatás replikák) ugyanazon a szinten két tartomány közötti számú hierarchia". Tegyük fel, ez a megkötés "legnagyobb különbség a" garantálja. A tartalék és frissítési tartomány korlátozás megakadályozza, hogy bizonyos áthelyezését vagy a szabályok a fenti szabályt megsértő. 
+Alapértelmezés szerint a fürterőforrás-kezelő megőrzi a szolgáltatások tartalék és frissítési tartományok között. Ez van modellezve a [megkötés](service-fabric-cluster-resource-manager-management-integration.md). A tartalék és frissítési tartomány korlátozás állapotok: "Egy adott szolgáltatás partíció soha nem kell különbséget nagyobb, mint egy szolgáltatási objektumok (állapotmentes szolgáltatás példányainak vagy állapotalapú szolgáltatás replikák) ugyanazon a szinten hierarchia két tartomány közötti számú". Tegyük fel, ez a megkötés "legnagyobb különbség a" garantálja. A tartalék és frissítési tartomány korlátozás megakadályozza, hogy bizonyos áthelyezését vagy a szabályok a fenti szabályt megsértő. 
 
 Lássunk erre egy példát. Tegyük fel, hogy van-e a hat csomópont révén az öt tartalék tartományokkal és öt frissítési tartományok konfigurált egy fürtöt.
 
@@ -176,7 +176,7 @@ Másrészről ezt a módszert kell túl szigorú és a fürt összes erőforrás
 
 ### <a name="alternative-approach"></a>*Alternatív megoldás*
 
-A fürterőforrás-kezelő támogatja a tartalék és frissítési tartomány korlátozás, amely lehetővé teszi, hogy az Elhelyezés során is teheti a minimális szintű biztonság egy másik verziója. Az alternatív tartalék és frissítési tartomány korlátozás meg kell adni a következő: "Egy adott szolgáltatás partícióhoz tartozó replika elosztása a tartományok biztosítania kell, hogy a partíció nem érinti a kvórum elvesztése". Tegyük fel, ez a megkötés "csökkentett kvórum" garantálja. 
+A fürterőforrás-kezelő támogatja a tartalék és frissítési tartomány korlátozás, amely lehetővé teszi, hogy az Elhelyezés során is teheti a minimális szintű biztonság egy másik verziója. Az alternatív tartalék és frissítési tartomány korlátozás is meg kell adni a következő: "Egy adott szolgáltatás partícióhoz tartozó replika elosztása a tartományok biztosítania kell, hogy a partíció nem érinti a kvórum elvesztése". Tegyük fel, ez a megkötés "csökkentett kvórum" garantálja. 
 
 > [!NOTE]
 >Egy állapotalapú szolgáltatás meghatározzuk *kvórum elvesztése* olyan helyzetekben, amikor a partíciók replikáit többsége nem működik egy időben. Például ha TargetReplicaSetSize öt, bármely három replika készletét kvórum jelöli. Hasonlóképpen ha TargetReplicaSetSize 6, négy replika kvóruma számára szükséges. Mindkét esetben legfeljebb két replika is nem működik egyszerre, ha a partíció szeretné a szokásos módon működhet tovább. Az állapotmentes szolgáltatás, nem nincs *kvórum elvesztése* állapotmentes szolgáltatások továbbra is működnek megfelelően, akkor is, ha egyszerre leáll példányok többsége szerint. Ezért fogunk dolgozni a szöveg többi állapotalapú szolgáltatások.
@@ -192,7 +192,7 @@ Mivel mind a módszerek előnyeiről és hátrányairól, jelentettük adaptív 
 > [!NOTE]
 >Ez lesz a Service Fabric verziója 6.2 kezdve alapértelmezett viselkedését. 
 >
-Az adaptív módszer alapértelmezés szerint a "legnagyobb különbség a" logikai használ, és, csak szükség esetén a "biztonságos kvórum" logikai kapcsolók. A fürterőforrás-kezelő automatikusan kitalálja, hogy mely stratégia szükség, megnézzük, hogyan vannak konfigurálva a fürt és a szolgáltatásokat. Egy adott szolgáltatáshoz: *egyenlően osztható fel a frissítési tartományok száma és a tartalék tartományok száma a TargetReplicaSetSize esetén **és** a csomópontok számát a kisebb vagy egyenlő a (a tartalék tartományok száma) * (a hány frissítési tartományt), a fürterőforrás-kezelő, hogy a szolgáltatás a "kvórum alapján" logikát kell használni.* Hogy a fürterőforrás-kezelő ezt a módszert használja a is állapot nélküli és állapotalapú szolgáltatások esetében annak ellenére, hogy a kvórum elvesztése nem releváns, az állapotmentes szolgáltatások esetében figyelembe kell vennie.
+Az adaptív módszer alapértelmezés szerint a "legnagyobb különbség a" logikai használ, és, csak szükség esetén a "biztonságos kvórum" logikai kapcsolók. A fürterőforrás-kezelő automatikusan kitalálja, hogy mely stratégia szükség, megnézzük, hogyan vannak konfigurálva a fürt és a szolgáltatásokat. Egy adott szolgáltatáshoz: *Ha a TargetReplicaSetSize egyenlően osztható fel a frissítési tartományok száma és a tartalék tartományok száma **és** a csomópontok számát a kisebb vagy egyenlő a (a tartalék tartományok száma) * (a frissítési tartományok száma), a fürt Erőforrás-kezelő, hogy a szolgáltatás a "kvórum alapján" logikát kell használni.* Hogy a fürterőforrás-kezelő ezt a módszert használja a is állapot nélküli és állapotalapú szolgáltatások esetében annak ellenére, hogy a kvórum elvesztése nem releváns, az állapotmentes szolgáltatások esetében figyelembe kell vennie.
 
 Lépjen vissza az előző példával, és feltételezik, hogy egy fürt most már rendelkezik-e (a fürt továbbra is lehet konfigurálni az öt tartalék tartományok és öt frissítési tartományok és az adott fürt marad az öt üzemeltetett szolgáltatás TargetReplicaSetSize) 8 csomópont. 
 

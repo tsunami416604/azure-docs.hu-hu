@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 213a695d99c50cea5962237c6210e6efcdbc5f6a
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8f253d150a5073d2d19daf51c12180c9f7b3660b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411679"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734523"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázás
 
@@ -87,11 +87,13 @@ Használja a **szinkronizálási** műveletet.
 
 ### <a name="powershell"></a>PowerShell
 
-PowerShell-lel, mielőtt [telepítése vagy frissítése a legújabb AzureRM-modul](https://github.com/Azure/azure-powershell/releases). 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Lekérdezési replikák száma beállításához használja [Set-azurermanalysisservicesserver parancsmagban](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver). Adja meg a választható `-ReadonlyReplicaCount` paraméter.
+PowerShell-lel, mielőtt [telepítése vagy frissítése a legújabb Azure PowerShell-modul](/powershell/azure/install-az-ps). 
 
-Szinkronizálási futtatásához használja [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+Lekérdezési replikák száma beállításához használja [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Adja meg a választható `-ReadonlyReplicaCount` paraméter.
+
+Szinkronizálási futtatásához használja [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
 
 ## <a name="connections"></a>Kapcsolatok
 

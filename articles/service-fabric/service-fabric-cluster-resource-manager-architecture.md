@@ -1,70 +1,70 @@
 ---
-title: Erőforrás-kezelő architektúra |} Microsoft Docs
-description: Az architektúra áttekintése a Service Fabric fürt Resource Manager.
+title: Fürterőforrás-kezelő architektúrája |} A Microsoft Docs
+description: Az architektúra áttekintése a Service Fabric a fürterőforrás-kezelő.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 6c4421f9-834b-450c-939f-1cb4ff456b9b
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 48da92be0eef1154b490fb4829363598d6d66569
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b39f7bc31ed286ef4a894e9d49166cd305d9e905
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211429"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736744"
 ---
-# <a name="cluster-resource-manager-architecture-overview"></a>Fürt resource manager architektúrájának áttekintése
-A Service Fabric fürt erőforrás-kezelő központi szolgáltatás, amely a fürt. Kezeli a kívánt azon szolgáltatások állapotát, a fürtben, különös tekintettel az erőforrás-felhasználás és elhelyezési szabályokat. 
+# <a name="cluster-resource-manager-architecture-overview"></a>A fürt resource manager-architektúra áttekintése
+A Service Fabric fürterőforrás-kezelő középső szolgáltatást, amely a fürt. A szolgáltatások a fürtben, különös tekintettel az erőforrás-használat és elhelyezési szabályok kívánt állapotát kezeli azt. 
 
-Az erőforrások a fürt felügyeletéhez, a Service Fabric fürt erőforrás-kezelő több adatra kell rendelkeznie:
+A fürt erőforrásainak kezeléséhez, a Service Fabric fürterőforrás-kezelő több adatra kell rendelkeznie:
 
 - Mely szolgáltatások jelenleg található.
-- Minden szolgáltatás aktuális (vagy alapértelmezett) erőforrás-felhasználás 
-- Fürt kapacitása 
-- A fürt a csomópontok kapacitása 
+- Minden egyes szolgáltatás jelenlegi (vagy alapértelmezett) erőforrás-használat 
+- A fennmaradó fürt kapacitása 
+- A fürtben lévő csomópontok kapacitása 
 - Minden egyes csomóponton használt erőforrások mennyisége
 
-Az erőforrás-felhasználás adott szolgáltatás idővel megváltozhat, és a szolgáltatások általában érdeklik egynél több erőforrás típusát. Különböző szolgáltatásban valószínűleg mért tényleges fizikai mind a fizikai erőforrásokat. Szolgáltatások például lemez- és memória-felhasználás fizikai metrikák követheti nyomon. Szolgáltatások gyakrabban, logikai metrikák – többek között a "WorkQueueDepth" vagy "TotalRequests" lehet, hogy érdeklik. Logikai és fizikai metrikák ugyanazon fürt használható. Metrikák meg lehet osztani számos szolgáltatás összes vagy egy adott szolgáltatással.
+Az adott szolgáltatás erőforrás-használat idővel változhat, és a szolgáltatások általában érdeklik egynél több erőforrás típusát. Több különböző szolgáltatásokat a mért valós fizikai és fizikai erőforrások lehetnek. Szolgáltatások fizikai mérőszámokat, például a memória- és használati követheti nyomon. Leggyakrabban szolgáltatások is érdeklik a logikai mérőszámai – például a "WorkQueueDepth" vagy "TotalRequests". Logikai és fizikai metrikákat is használható ugyanazon a fürtön. Metrikák is számos szolgáltatás között lehetnek megosztva, vagy külön az adott szolgáltatáshoz.
 
 ## <a name="other-considerations"></a>Egyéb szempontok
-A tulajdonosok és a fürt operátorok különbözhet a szolgáltatások és alkalmazások szerzők, vagy legalább a azonos személyek elhasználódó különböző kalap. Amikor az alkalmazás fejlesztése ismernie néhány dolgot kapcsolatos akkor van szükség. Az erőforrások fog felhasználni becsült rendelkezik, és hogyan kell telepíteni, különböző szolgáltatások. Például a webes réteg kell csomópontok kommunikál az internettel, amíg az adatbázis-szolgáltatásokat nem kell futnia. Másik példaként a web services rendszer valószínűleg által korlátozott Processzor- és hálózati, miközben az adatok réteg szolgáltatások gondot memóriát és lemezterületet fogyasztás kapcsolatos további információkért. Azonban a live-hely, amelyhez a termelésre vagy a szolgáltatás frissítése kezel szolgáltatás kezelése személy rendelkezik-e egy másik feladat elvégzéséhez, és más eszközök. 
+A tulajdonosai és üzemeltetői a fürt eltérhet a szolgáltatások és alkalmazások szerzőkkel, vagy legalább a azonos személyek elhasználódó különböző hats. Az alkalmazás fejlesztése során ismernie néhány dolgot, a szükséges információk. Az erőforrások fog felhasználni becsült rendelkezik, és hogyan kell üzembe helyezni különböző szolgáltatásokat. Például a webes szint elérhetővé tett csatlakozik az internethez, miközben az adatbázis-szolgáltatásokat nem kell csomópontokon való futáshoz van szüksége. Másik példaként a webes szolgáltatások vannak valószínűleg által korlátozott Processzor és a hálózat további információ a memória- és használati adatok szintű szolgáltatások ellátás közben. Azonban az adott szolgáltatásnak a termelés vagy a frissítés a Service kezel a webhelyek működés közbeni incidensek kezelése személy rendelkezik-e egy másik feladat szeretné elvégezni, és a különböző eszközök igényel. 
 
-A fürt és a szolgáltatások a következők dinamikus:
+A fürt és a szolgáltatások dinamikusak:
 
-- A fürtben lévő csomópontok száma növelhető vagy csökkenthető
-- Különböző méretű és csomópontok származnak, és nyissa meg
-- Szolgáltatások is létrehozható, eltávolítva, és módosítsa a kívánt erőforrás-hozzárendelések és elhelyezési szabályokat
-- Frissítések vagy az egyéb felügyeleti műveleteket lehet vonni az alkalmazás a fürthöz keresztül infrastruktúra szinten
+- A fürtben található csomópontok száma növelhető vagy csökkenthető
+- A különböző méretű és típusú csomópontok származnak, és nyissa meg
+- Szolgáltatások is létrehozhatók, eltávolítva, és módosítsa a kívánt erőforrás-hozzárendelések és elhelyezési szabályok
+- Frissítések vagy az egyéb felügyeleti műveleteket lehet vonni az alkalmazások a fürtön keresztül infrastruktúra szinten
 - Hiba fordulhat elő, tetszőleges időpontban.
 
-## <a name="cluster-resource-manager-components-and-data-flow"></a>Fürt resource manager összetevőit és adatfolyama
-A fürt erőforrás-kezelő egyes szolgáltatások követelményei és az erőforrások felhasználása nyomon ezekbe a szolgáltatásokba minden szolgáltatás objektummal rendelkezik. A fürt erőforrás-kezelő két részből áll fogalmi: minden csomópont- és hibatűrő szolgáltatásként futó ügynököket. Az ügynököt a csomópontra követése tartozó szolgáltatásokat, összesített jelentéseinek őket, és rendszeresen jelenti. A fürt erőforrás-kezelő szolgáltatás a helyi ügynökök és a jelenlegi konfiguráció alapján reagál lévő adatok összesíti.
+## <a name="cluster-resource-manager-components-and-data-flow"></a>Fürt resource manager-összetevők és az adatfolyam
+A fürterőforrás-kezelő nyomon az egyes szolgáltatások követelményei és az erőforrások felhasználását ezeket a szolgáltatásokat minden egyes szolgáltatás objektummal rendelkezik. A fürterőforrás-kezelő két részből fogalmi: arról, hogy egyes csomópontok és a egy hibatűrő szolgáltatás ügynökök. Az ügynökök minden egyes csomópont követése betöltése a szolgáltatások, az összesítő jelentések őket, és rendszeres időközönként jelenti azokat. A fürterőforrás-kezelő szolgáltatás összesíti a helyi ügynökök és az aktuális konfigurációja alapján reagál kapcsolatos összes információt.
 
-A következő ábra vizsgáljuk meg:
+Nézzük meg a következő ábra:
 
 <center>
-![Erőforrás terheléselosztó architektúrája][Image1]
+![Resource Balancer-architektúra][Image1]
 </center>
 
-Futásidőben, sok módosítások vannak, amely akkor fordulhat elő. Például most mondja ki az egyes szolgáltatások felhasználásához erőforrások mennyisége változik, bizonyos szolgáltatások sikertelen lesz, és egyes csomópontok csatlakozásról és annak megszüntetéséről a fürt. A csomópont a módosítások összesített értéket, és rendszeres időközönként a fürt erőforrás-kezelő szolgáltatásnak küldött (1,2) ahol ezek újra összesítve, elemzése, és tárolja. Minden néhány másodpercben, amely a szolgáltatás ellenőrzi, hogy a módosításokat, és határozza meg, ha szükség-e azokat a műveleteket (3). Például azt sikerült figyelje meg, hogy néhány üres csomópontokat a fürthöz hozzáadott. Ennek eredményeképpen dönt, hogy az egyes szolgáltatások áthelyezése azokat a csomópontokat. A fürt erőforrás-kezelő sikerült is vegye figyelembe, hogy egy adott csomópont túl van terhelve, vagy az, hogy egyes szolgáltatások nem sikerült-e vagy törölve lett, szabadítson fel más erőforrásokat.
+Futásidőben a rendszer számos módosítást, amely akkor fordulhat elő. Például hozzunk tegyük az egyes szolgáltatások erőforrásokért mennyisége megváltozik, bizonyos szolgáltatások sikertelenek lesznek, és az egyes csomópontok és annak megszüntetéséről a fürt. A csomópont a módosítások összesítve, és rendszeres időközönként a fürterőforrás-kezelő szolgáltatásnak küldött (1,2) ahol újra összesítése, elemzése, és tárolt. Minden néhány másodpercben, amely a szolgáltatás megvizsgálja a módosításokat, és határozza meg, ha szükség-e azokat a műveleteket (3). Például ez sikerült figyelje meg, hogy a fürt egyes üres csomópontok bővült. Ennek eredményeképpen dönt, hogy az egyes szolgáltatások át azokat a csomópontokat. A fürterőforrás-kezelő sikerült is figyelje meg, hogy egy adott csomópont van-e túlterhelve, vagy azt, hogy egyes szolgáltatások nem sikerült-e vagy törölve lett, más erőforrások felszabadítása.
 
-Most nézze meg az alábbi ábrán, és tekintse meg, mi a következő lépés. Tegyük fel, hogy a fürt erőforrás-kezelő határozza meg, hogy módosításokra szükség. Az koordinálja más rendszer szolgáltatásokkal (különösen a Feladatátvevőfürt-kezelő), a szükséges módosításokat. Majd a szükséges parancsokat kell küldeni a megfelelő csomópontok (4). Például tegyük fel, az erőforrás-kezelő első fellépése Csomópont5 volt terhelve, és ezért úgy döntött, hogy a szolgáltatás B áthelyezése Csomópont5 csomópont4. Az újrakonfigurálás (5) végén a fürt néz ki:
+Nézzük tekintse meg az alábbi ábrán, és tekintse meg a következő lépésekről. Tegyük fel, hogy a fürterőforrás-kezelő határozza meg, hogy a módosítások szükségesek. Ez koordinálja más rendszer szolgáltatásokkal (különösen a Feladatátvevőfürt-kezelő), a szükséges módosításokat. Majd a szükséges parancsok küldve a megfelelő csomópontok (4). Például tegyük fel, az erőforrás-kezelő észrevette, hogy a Csomópont5 túl lett terhelve, és így úgy döntött, hogy a csomópont4 Csomópont5 service B áthelyezéséhez. A fürt végén az újrakonfigurálás (5), a következőhöz hasonló:
 
 <center>
-![Erőforrás terheléselosztó architektúrája][Image2]
+![Resource Balancer-architektúra][Image2]
 </center>
 
 ## <a name="next-steps"></a>További lépések
-- A fürt erőforrás-kezelő rendelkezik a fürt leíró számos lehetőséget. További információkért róluk, tekintse meg a cikk a [leíró a Service Fabric-fürt](./service-fabric-cluster-resource-manager-cluster-description.md)
-- A fürt Resource Manager elsődleges feladatokat van a fürt újraelosztás, és a elhelyezési szabályokat. Ezek közül a viselkedésmódok konfigurálásával kapcsolatos további információkért lásd: [terheléselosztási a Service Fabric-fürt](./service-fabric-cluster-resource-manager-balancing.md)
+- A fürterőforrás-kezelő leíró a fürt számos lehetőség áll. A velük kapcsolatos további információért tekintse meg a cikk a [leíró, Service Fabric-fürt](./service-fabric-cluster-resource-manager-cluster-description.md)
+- A fürt Resource Manager elsődleges feladatkörök újraegyensúlyozása a fürt és elhelyezési szabályok kényszerítése. Ezen viselkedés konfigurálásával kapcsolatos további információkért lásd: [terheléselosztás a Service Fabric-fürt](./service-fabric-cluster-resource-manager-balancing.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
 [Image2]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png

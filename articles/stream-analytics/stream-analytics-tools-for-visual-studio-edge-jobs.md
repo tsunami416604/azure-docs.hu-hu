@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 886cae572ee651efd217e9a87b935918eebe8b13
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 684690baa63f5ccd65c69e3a1b7e310c2f809e59
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558821"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735558"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>A Visual Studio-eszközökkel Stream Analytics Edge-feladatok fejlesztése
 
@@ -69,7 +69,7 @@ A peremhálózati környezetek üzembe helyezett Stream Analytics-feladatok tám
 |**Kategória**  | **Parancs**  |
 |---------|---------|
 |Térinformatikai operátorok |<ul><li>CreatePoint</li><li>CreatePolygon</li><li>CreateLineString</li><li>ST_DISTANCE</li><li>ST_WITHIN</li><li>ST_OVERLAPS</li><li>ST_INTERSECTS</li></ul> |
-|Más operátorokkal | <ul><li>A PARTÍCIÓ SZERINT</li><li>A TÖBB MINT IDŐBÉLYEG</li><li>KÜLÖNBÖZŐ</li><li>A COUNT operátorban kifejezésparaméternek</li><li>A DATE és TIME függvények mikromásodperces</li><li>JavaScript UDA (Ez a funkció egyelőre előzetes verzióként érhető-feladatok a felhőbe telepített)</li></ul>   |
+|Más operátorokkal | <ul><li>A PARTÍCIÓ SZERINT</li><li>A TÖBB MINT IDŐBÉLYEG</li><li>DISTINCT</li><li>A COUNT operátorban kifejezésparaméternek</li><li>A DATE és TIME függvények mikromásodperces</li><li>JavaScript UDA (Ez a funkció egyelőre előzetes verzióként érhető-feladatok a felhőbe telepített)</li></ul>   |
 
 Edge-feladatok a portálon hoz létre, amikor a fordítóprogram automatikusan figyelmeztet, ha nem használ egy támogatott operátort.
 

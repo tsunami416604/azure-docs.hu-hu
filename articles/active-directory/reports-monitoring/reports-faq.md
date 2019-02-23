@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6b8587313a4e98bfefa6489d9698052d312a6d3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c51f1d47a5412e77b7113fccfd2e9a54e1d2ff7f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194546"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730205"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések az Azure Active Directory-jelentések körül
 
@@ -33,13 +33,13 @@ Ez a cikk – gyakori kérdések az Azure Active Directory (Azure AD) jelentésk
 
 **VÁLASZ:** Keresse meg a [API-referencia](https://developer.microsoft.com/graph/) való bemutatja, hogyan [tevékenységre vonatkozó jelentések eléréséhez használja az API-k](concept-reporting-api.md). Ez a végpont rendelkezik két jelentés (**naplózási** és **bejelentkezések**) biztosító, itt van a régi API-végpont az összes adatot. Az új végpont bejelentkezésekre, a prémium szintű Azure AD-licenccel, amelyek segítségével az alkalmazások használatát, eszközhasználat és felhasználói bejelentkezési adatokat is tartalmaz.
 
---- 
+---
 
 **K: Jelenleg használja a https://graph.windows.net/&lt; bérlő neve&gt;/reports/ végpont lekérni az Azure AD biztonsági jelentések (észlelések, mint a kiszivárgott hitelesítő adatok vagy névtelen IP-címekről történő bejelentkezések adott típusú) jelentéskészítési rendszer API-k programozott módon. Mit kell váltani a?**
 
 **VÁLASZ:** Használhatja a [Identity Protection kockázati események API](../identity-protection/graph-get-started.md) való hozzáférés biztonsági észlelések Microsoft Graphon keresztül. Az új formátum hogyan kérdezheti le adatokat, a Speciális szűrés, mező kiválasztása és több, nagyobb rugalmasságot biztosít, és a kockázati események egységesíti az siem-EK és más adatok gyűjtése eszközök egyszerűbb integráció egy típust. Mivel az adatok különböző, a régi lekérdezések nem helyettesítse be a egy új lekérdezést. Azonban [az új API-t használja a Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), azaz a Microsoft standard ilyen API-t az Office 365 vagy Azure ad-ben. Így a kell elvégeznie, vagy végrehajthatja a meglévő az MS Graph-befektetéseit vagy súgó megkezdése az új standard szintű platform az átállás.
 
---- 
+---
 
 **K: Hogyan szerezhetem be a prémium szintű licenccel?**
 
@@ -79,7 +79,7 @@ Ez a cikk – gyakori kérdések az Azure Active Directory (Azure AD) jelentésk
 | Bejelentkezések               | –           | 30 nap             | 30 nap             |
 | Azure MFA Usage        | 30 nap       | 30 nap             | 30 nap             |
 
---- 
+---
 
 **K: Mennyi ideig tart mindaddig, amíg az látható, hogy a tevékenységek adatai I saját feladat befejeződése után?**
 

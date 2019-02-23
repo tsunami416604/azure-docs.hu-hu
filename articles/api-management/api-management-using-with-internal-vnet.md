@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: acaf73c2d981761b0bc57cfccbbf6c6a48e5e0c2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 21175e74bd40d0d4aeaf1c0a1e677f1c8113e80a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446504"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738011"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózathoz az Azure API Management szolgáltatás használatával
 Azure virtuális hálózatokkal az Azure API Management API-k nem érhető el az interneten is kezelheti. Számos VPN technológia érhetők el a kapcsolatot. Az API Management egy virtuális hálózaton belül két fő módban telepíthető:
@@ -67,11 +67,14 @@ Miután az üzembe helyezés sikeres, megjelenik a szolgáltatás belső virtuá
 > A teszt konzolon érhető el az Azure Portalon nem fog működni a **belső** virtuális hálózat üzembe helyezve szolgáltatás, az átjáró URL-címe nincs regisztrálva a nyilvános DNS-kiszolgálón. Ehelyett használjon a megadott tesztelési konzol a **fejlesztői portál**.
 
 ### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>A virtuális hálózati kapcsolat engedélyezése a PowerShell-parancsmagok használatával
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Virtuális hálózati kapcsolat a PowerShell-parancsmagok használatával is engedélyezheti.
 
-* Hozzon létre egy virtuális hálózaton belül egy API Management-szolgáltatás: a parancsmag [New-azurermapimanagement parancsmagok](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) egy virtuális hálózaton belül az Azure API Management szolgáltatás létrehozása és konfigurálása, hogy a belső virtuális hálózat típusát.
+* Hozzon létre egy virtuális hálózaton belül egy API Management-szolgáltatás: A parancsmag [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) egy virtuális hálózaton belül az Azure API Management szolgáltatás létrehozása és konfigurálása, hogy a belső virtuális hálózat típusát.
 
-* Egy virtuális hálózaton belül egy meglévő API Management szolgáltatás üzembe helyezése: parancsmag [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) áthelyezése egy meglévő API Management szolgáltatást egy virtuális hálózaton belül, és konfigurálja úgy, hogy a belső használata virtuális hálózat típusát.
+* Egy virtuális hálózaton belül egy meglévő API Management szolgáltatás üzembe helyezése: A parancsmag [Update-AzApiManagementDeployment](/powershell/module/az.apimanagement/update-azapimanagementdeployment) áthelyezése egy meglévő API Management szolgáltatást egy virtuális hálózaton belül, és konfigurálja úgy, hogy használja a belső virtuális hálózathoz.
 
 ## <a name="apim-dns-configuration"></a>DNS-konfiguráció
 Ha az API Management a külső virtuális hálózat módban van, a DNS-ben az Azure felügyeli. Belső virtuális hálózathoz a módban kell kezelni a saját útválasztás.
@@ -86,7 +89,7 @@ Az API Management-szolgáltatás, például a "contoso" nevű létrehozásakor a
 
    * Az Azure portal és a fejlesztői portál: contoso.portal.azure-API.NET webhelyen
 
-   * Közvetlen felügyeleti végpontja: contoso.management.azure-API.NET webhelyen
+   * Direct management endpoint: contoso.management.azure-api.net
 
    * Git: contoso.scm.azure-api.net
 

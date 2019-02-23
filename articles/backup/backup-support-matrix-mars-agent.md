@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 9d0f751e8d0bc0275cc5fd2c47aaba7a6058931c
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: b579816a4367537a7da4aa0f68c8776465295448
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430786"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670752"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS) ügynök biztonsági mentés támogatási mátrixa
 
@@ -148,7 +148,7 @@ Az Azure Backup támogatja az "offline áttöltést" kezdeti biztonsági mentés
 
 ## <a name="support-for-restore"></a>Visszaállítás támogatása
 
-- Az új [azonnali helyreállítás](/backup-instant-restore-capability.md) kiadás az Azure Backup szolgáltatás lehetővé teszi adatok visszaállítása előtt a tárolóba lett átmásolva.<br/><br/> A funkció használatához a biztonsági mentés alatt álló gépen kell futnia .NET-keretrendszer 4.5.2-es vagy újabb verziója.
+- Az új [azonnali helyreállítás](backup-instant-restore-capability.md) kiadás az Azure Backup szolgáltatás lehetővé teszi adatok visszaállítása előtt a tárolóba lett átmásolva.<br/><br/> A funkció használatához a biztonsági mentés alatt álló gépen kell futnia .NET-keretrendszer 4.5.2-es vagy újabb verziója.
 - Biztonsági mentések nem lehet visszaállítani a célszámítógépen az operációs rendszer egy korábbi verzióját. Például egy Windows 7 számítógépről készült biztonsági másolatok visszaállíthatók, a Windows 8-as vagy újabb. Azonban a Windows 8 rendszerű számítógép egy biztonsági nem állítható vissza egy Windows 7 rendszerű számítógépen.
 
 

@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 00468ca62e55823b4706fc52d9793f676aebd368
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 9f0ccb85fa4b42ef3ca90c6d4ca2d80113b93a0c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312854"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733699"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Alkalmazások hozzáférést biztosíthat az Azure Stack-erőforrások egyszerű szolgáltatások létrehozásával
 
@@ -75,7 +75,7 @@ Ha programozott módon jelentkezik be, az azonosító használata az alkalmazás
 
 2. Másolja ki az **Alkalmazásazonosítót**, és tárolja az alkalmazás kódjában. Az alkalmazások a mintaalkalmazások használatához **ügyfél-azonosító** kontextusban való megnevezésekor a **Alkalmazásazonosító**.
 
-     ![Az alkalmazás alkalmazás azonosítója](./media/azure-stack-create-service-principal/image12.png)
+     ![Az alkalmazás alkalmazás azonosítója](./media/azure-stack-create-service-principals/image12.png)
 3. A hitelesítési kulcs létrehozásához válassza a **Kulcsok** elemet.
 
 4. Adjon meg egy leírást és egy időtartamot a kulcshoz. Ha elkészült, kattintson a **Mentés** elemre.
@@ -83,7 +83,7 @@ Ha programozott módon jelentkezik be, az azonosító használata az alkalmazás
 >[!IMPORTANT]
 A kulcs, a kulcs mentése után **érték** jelenik meg. Jegyezze fel ezt az értéket, mivel később nem tudja lekérni a kulcsot. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
 
-![Mentett kulcs figyelmeztetés kulcs értékét.](./media/azure-stack-create-service-principal/image15.png)
+![Mentett kulcs figyelmeztetés kulcs értékét.](./media/azure-stack-create-service-principals/image15.png)
 
 Az utolsó lépés [az alkalmazás-szerepkör hozzárendelése](azure-stack-create-service-principals.md).
 
@@ -110,7 +110,7 @@ Kövesse az alábbi lépéseket segítségképp szerepkört rendel egy egyszerű
 
 2. Válassza ki az előfizetést, az alkalmazás hozzárendelése. Ebben a példában az előfizetés, a Visual Studio Enterprise.
 
-     ![Válassza ki a Visual Studio Enterprise előfizetéssel hozzárendelés](./media/azure-stack-create-service-principal/image16.png)
+     ![Válassza ki a Visual Studio Enterprise előfizetéssel hozzárendelés](./media/azure-stack-create-service-principals/image16.png)
 
 3. Válassza ki **hozzáférés-vezérlés (IAM)** az előfizetéshez.
 

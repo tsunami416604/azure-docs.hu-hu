@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: df65c29b39921eda6ba2bd682e5938f58a9e4de7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 31b24a7caf679f2e872a60db274218586642624a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964577"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737433"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök
 
@@ -152,9 +152,6 @@ az storage account create \
     --kind StorageV2 \
     --Enable-hierarchical-namespace true
 ```
-
-> [!NOTE]
-> A nyilvános csak a Data Lake Storage Gen2 során `--sku Standard_LRS` használata támogatott.
 
 A rendszer kéri, hogy adja meg a földrajzi régiót, amelyben a tárfiók létre lett hozva. Hozzon létre a tárfiókot ugyanabban a régióban, amely a HDInsight-fürt létrehozását tervezi.
 

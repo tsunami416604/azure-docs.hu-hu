@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/26/2018
 ms.author: glenga
-ms.openlocfilehash: 77b863bc32442261e220b5dd3f11c0bd33b4fa7a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cda977ba59070c3ddaac05784277d6c0b5109f0f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809718"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727111"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Manuálisan telepítse vagy frissítse az Azure Functions kötési bővítményeket a portálról
 
-Az Azure Functions verzió 2.x verziójú futtatókörnyezet kötési bővítményeket használ, az eseményindítók és kötések kód megvalósítását. Kötési bővítményeket NuGet-csomagok vannak megadva. Bővítmények regisztrálásához, lényegében telepít egy csomagot. Függvények fejlesztése, ha a kötési bővítményeket telepíteni módja függ a fejlesztési környezet. További információkért lásd: [regisztrálja a kötési bővítményeket](functions-triggers-bindings.md#register-binding-extensions) az eseményindítók és kötések cikk.
+Az Azure Functions verzió 2.x verziójú futtatókörnyezet kötési bővítményeket használ, az eseményindítók és kötések kód megvalósítását. Kötési bővítményeket NuGet-csomagok vannak megadva. Bővítmények regisztrálásához, lényegében telepít egy csomagot. Függvények fejlesztése, ha a kötési bővítményeket telepíteni módja függ a fejlesztési környezet. További információkért lásd: [regisztrálja a kötési bővítményeket](./functions-bindings-register.md) az eseményindítók és kötések cikk.
 
 Egyes esetekben kell manuálisan telepíteni vagy frissíteni a kötési bővítményeket az Azure Portalon. Például szükség lehet egy regisztrált kötés frissítése újabb verzióra. Szükség lehet regisztrálni egy támogatott kötést, amely nem telepíthető a **integráció** lapot a portálon.
 

@@ -1,10 +1,16 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 9d8433debd31176b4cf4096a4b80cfbd9ddcba82
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737263"
 documentType: LandingData
 title: A Language Understanding (LUIS) dokumentációja
 metadata:
-  document_id: null
-  title: 'Language Understanding (LUIS) – oktatóanyagok, rövid útmutatók és API-referencia'
-  description: 'Megismerheti, hogyan használhatja a Language Understanding szolgáltatást arra, hogy egy személy a saját szavaival elmondhassa, hogy mit szeretne, és az alkalmazás megértse azt.'
+  document_id: 
+  title: Language Understanding (LUIS) – oktatóanyagok, rövid útmutatók és API-referencia
+  description: Megismerheti, hogyan használhatja a Language Understanding szolgáltatást arra, hogy egy személy a saját szavaival elmondhassa, hogy mit szeretne, és az alkalmazás megértse azt.
   author: nitinme
   manager: cgronlun
   ms.service: cognitive-services
@@ -14,101 +20,101 @@ metadata:
   ms.date: 01/23/2019
   ms.author: nitinme
 abstract:
-  description: 'A Language Understanding szolgáltatás (LUIS) lehetővé teszi az alkalmazás számára, hogy megértse egy személy saját szavakkal megfogalmazott utasításait. A LUIS gépi tanulást használ, lehetővé téve a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek képesek a felhasználók természetes nyelvi bevitelét fogadni és megérteni.'
+  description: A Language Understanding szolgáltatás (LUIS) lehetővé teszi az alkalmazás számára, hogy megértse egy személy saját szavakkal megfogalmazott utasításait. A LUIS gépi tanulást használ, lehetővé téve a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek képesek a felhasználók természetes nyelvi bevitelét fogadni és megérteni.
   aside:
     image:
-      alt: null
+      alt: 
       height: 110
       src: ../media/index/luis-landing-page-video.png
       width: 250
-    title: 'A LUIS újdonságai (18:28)'
-    href: 'https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis'
+    title: A LUIS újdonságai (18:28)
+    href: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
     width: 250
 sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/luis/what-is-luis
-            html: <p>Megismerheti a Language Understanding szolgáltatást (LUIS).</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Mi a Language Understanding (LUIS)?
-          - href: /azure/cognitive-services/luis/luis-how-plan-your-app
-            html: <p>Készítsen vázlatot az alkalmazásban releváns szándékokról és entitásokról.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: A LUIS-alkalmazás megtervezése
-          - href: /azure/cognitive-services/luis/luis-concept-best-practices
-            html: <p>Ajánlott eljárások a LUIS-alkalmazások felépítéséhez.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Ajánlott eljárások a LUIS-alkalmazásokhoz
-  - title: 5 perces gyors útmutatók
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
     items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo_csharp.svg
-          - image:
-              src: media/index/logo_java.svg
-          - image:
-              src: media/index/logo_nodejs.svg
-          - image:
-              src: media/index/logo_python.svg
-        rows:
-          - title: Végponti API
-            values:
-              - href: luis-get-started-cs-get-intent
-              - href: luis-get-started-java-get-intent
-              - href: luis-get-started-node-get-intent
-              - href: luis-get-started-python-get-intent
-          - title: Tartalomkészítési API
-            values:
-              - href: luis-get-started-cs-add-utterance
-              - href: luis-get-started-java-add-utterance
-              - href: luis-get-started-node-add-utterance
-              - href: luis-get-started-python-add-utterance
-  - title: Részletes útmutatók
+    - href: /azure/cognitive-services/luis/what-is-luis
+      html: <p>Megismerheti a Language Understanding szolgáltatást (LUIS).</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Mi a Language Understanding (LUIS)?
+    - href: /azure/cognitive-services/luis/luis-how-plan-your-app
+      html: <p>Készítsen vázlatot az alkalmazásban releváns szándékokról és entitásokról.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: A LUIS-alkalmazás megtervezése
+    - href: /azure/cognitive-services/luis/luis-concept-best-practices
+      html: <p>Ajánlott eljárások a LUIS-alkalmazások felépítéséhez.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Ajánlott eljárások a LUIS-alkalmazásokhoz
+- title: 5 perces gyors útmutatók
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+    - image:
+        src: media/index/logo_java.svg
+    - image:
+        src: media/index/logo_nodejs.svg
+    - image:
+        src: media/index/logo_python.svg
+    rows:
+    - title: Végponti API
+      values:
+      - href: luis-get-started-cs-get-intent
+      - href: luis-get-started-java-get-intent
+      - href: luis-get-started-node-get-intent
+      - href: luis-get-started-python-get-intent
+    - title: Tartalomkészítési API
+      values:
+      - href: luis-get-started-cs-add-utterance
+      - href: luis-get-started-java-add-utterance
+      - href: luis-get-started-node-add-utterance
+      - href: luis-get-started-python-add-utterance
+- title: Részletes útmutatók
+  items:
+  - type: list
+    style: ordered
     items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="luis-quickstart-intents-only">Alkalmazás létrehozása az emberi erőforrások (HR) tartományhoz</a>
-          - html: <a href="luis-tutorial-prebuilt-intents-entities">Előre összeállított szándékok és entitások hozzáadása</a>
-          - html: <a href="luis-quickstart-intents-regex-entity">Reguláriskifejezés-entitás hozzáadása</a>
-          - html: <a href="luis-quickstart-intent-and-list-entity">Listaentitás hozzáadása</a>
-          - html: <a href="luis-quickstart-intent-and-hier-entity">Hierarchikus entitás hozzáadása</a>
-          - html: <a href="luis-quickstart-primary-and-secondary-data">Egyszerű entitás és kifejezéslista hozzáadása</a>
-          - html: <a href="luis-quickstart-intent-and-key-phrase">keyPhrase entitás hozzáadása</a>
-          - html: <a href="luis-quickstart-intent-and-sentiment-analysis">Hangulatelemzés hozzáadása</a>
-  - title: Példák
+    - html: <a href="luis-quickstart-intents-only">Alkalmazás létrehozása az emberi erőforrások (HR) tartományhoz</a>
+    - html: <a href="luis-tutorial-prebuilt-intents-entities">Előre összeállított szándékok és entitások hozzáadása</a>
+    - html: <a href="luis-quickstart-intents-regex-entity">Reguláriskifejezés-entitás hozzáadása</a>
+    - html: <a href="luis-quickstart-intent-and-list-entity">Listaentitás hozzáadása</a>
+    - html: <a href="luis-quickstart-intent-and-hier-entity">Hierarchikus entitás hozzáadása</a>
+    - html: <a href="luis-quickstart-primary-and-secondary-data">Egyszerű entitás és kifejezéslista hozzáadása</a>
+    - html: <a href="luis-quickstart-intent-and-key-phrase">keyPhrase entitás hozzáadása</a>
+    - html: <a href="luis-quickstart-intent-and-sentiment-analysis">Hangulatelemzés hozzáadása</a>
+- title: Példák
+  items:
+  - type: list
+    style: unordered
     items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://aka.ms/luis-code-samples">Minták a GitHubon</a><br/>'
-  - title: Videók
+    - html: <a href="https://aka.ms/luis-code-samples">Minták a GitHubon</a><br/>
+- title: Videók
+  items:
+  - type: list
+    style: unordered
     items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" > Az Azure Friday a Build 2018-on – Cognitive Services – Nyelv (LUIS)</a>'
-          - html: '<a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018-bemutató – Mesterséges intelligencia, beszédképességek és NLU – ajánlott eljárások</a>'
-  - title: Referencia
+    - html: <a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" > Az Azure Friday a Build 2018-on – Cognitive Services – Nyelv (LUIS)</a>
+    - html: <a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018-bemutató – Mesterséges intelligencia, beszédképességek és NLU – ajánlott eljárások</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 'REST API-k, 2-es verzió'
-            html: '<p><a href="https://aka.ms/luis-endpoint-apis"> Végponti API</a></p><p><a href="https://aka.ms/luis-authoring-apis"> Tartalomkészítési API</a></p>'
-          - title: SDK-k
-            html: '<p><a href="https://aka.ms/luis-endpoint-sdk"> .NET-végpont SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET-tartalomkészítési SDK</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>'
-          - title: parancssori felület
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>'
+    - title: REST API-k, 2-es verzió
+      html: <p><a href="https://aka.ms/luis-endpoint-apis"> Végponti API</a></p><p><a href="https://aka.ms/luis-authoring-apis"> Tartalomkészítési API</a></p>
+    - title: SDK-k
+      html: <p><a href="https://aka.ms/luis-endpoint-sdk"> .NET-végpont SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET-tartalomkészítési SDK</a></p>
+    - title: PowerShell
+      html: <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
+    - title: parancssori felület
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>

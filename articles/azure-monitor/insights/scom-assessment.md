@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 7ae87763d280e129bab96c604f9118ecf088ea2f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4d6838ecdbf1a33a4f3ee1562f26db7952fdfb83
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819858"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734234"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizálhatja a környezetet a System Center Operations Manager állapotának ellenőrzése (előzetes verzió) megoldás
 
@@ -40,7 +40,7 @@ Után, a megoldáshoz hozzáadott értékelés elvégezni, összefoglaló adatai
 
 ## <a name="installing-and-configuring-the-solution"></a>A megoldás telepítése és konfigurálása
 
-A megoldás együttműködik a Microsoft System Operations Manager 2012 Service Pack (SP) 1 és 2012 R2.
+A megoldás együttműködik a Microsoft System Center 2012 Operations Manager Service Pack 1, a Microsoft System Center 2012 R2 Operations Manager, a Microsoft System Center 2016 Operations Manager, a Microsoft System Center 2016 Operations Manager és a Microsoft System Az Operations Managerben 1807
 
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
@@ -57,9 +57,9 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 1. [A futtató fiók beállítása a System Center Operations Manager állapotának ellenőrzése](#operations-manager-run-as-accounts-for-log-analytics)  
 2. A System Center Operations Manager állapotának ellenőrzése szabály konfigurálása
 
-## <a name="system-center-operations-manager-assessment-data-collection-details"></a>A System Center Operations Manager assessment adatok gyűjtemény részletei
+## <a name="system-center-operations-manager-health-check-data-collection-details"></a>A System Center Operations Manager állapotának ellenőrzése adatok gyűjtése részletei
 
-A System Center Operations Manager assessment a következő forrásokból gyűjt adatokat:
+A System Center Operations Manager állapotának ellenőrzése megoldás a következő forrásokból gyűjt adatokat:
 
 * Beállításjegyzék
 * Windows Management Instrumentation (WMI)
@@ -97,7 +97,7 @@ Most, hogy a futtató fiók jön létre, a cél felügyeleti kiszolgálókat a f
 2. Az a **terjesztési** lapra, majd **Hozzáadás** számára a **kijelölt számítógépek** mezőbe, majd adja hozzá a felügyeleti kiszolgáló és a fiók terjesztését.  Kattintson a **OK** gombra kétszer a módosítások mentéséhez.
 3. A **futtató konfiguráció**, kattintson a **profilok**.
 4. Keresse meg a *SCOM értékelés profil*.
-5. A profil nevének kell lennie: *SCOM-elemzés a Microsoft System Center Advisor futtató profil*.
+5. A profil nevének kell lennie: *A Microsoft System Center Operations Manager Health Check futtató profil*.
 6. Kattintson a jobb gombbal, és a tulajdonságait frissíteni, és adja hozzá a legutóbb létrehozott futtató fiókot a korábban létrehozott.
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Részletes engedélyezés a futtató fiókot az SQL-szkript
@@ -152,13 +152,13 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ### <a name="configure-the-health-check-rule"></a>Az állapot ellenőrzése szabály konfigurálása
 
-A System Center Operations Manager állapotának ellenőrzése megoldási felügyeleti csomag tartalmaz egy szabályt, nevű *Microsoft System Center Advisor SCOM értékelés futtatása Assessment szabály*. Ez a szabály feladata az állapot-ellenőrzés futtatása. A szabály engedélyezése és a gyakoriság beállítása, kövesse az alábbi eljárásokat.
+A System Center Operations Manager állapotának ellenőrzése megoldási felügyeleti csomag tartalmaz egy szabályt, nevű *Microsoft Center Operations Manager futtatása állapotának ellenőrzése Rendszerszabály*. Ez a szabály feladata az állapot-ellenőrzés futtatása. A szabály engedélyezése és a gyakoriság beállítása, kövesse az alábbi eljárásokat.
 
-Alapértelmezés szerint a Microsoft System Center Advisor SCOM értékelés futtassa Assessment szabály le van tiltva. Az állapot-ellenőrzés futtatása, engedélyeznie kell a szabály a felügyeleti kiszolgálón. Kövesse az alábbi lépéseket.
+A Microsoft Center Operations Manager futtatása állapotának ellenőrzése Rendszerszabály alapértelmezés szerint le van tiltva. Az állapot-ellenőrzés futtatása, engedélyeznie kell a szabály a felügyeleti kiszolgálón. Kövesse az alábbi lépéseket.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>A szabály egy adott felügyeleti kiszolgáló engedélyezése
 
-1. Az a **szerzői műveletek** munkaterületen keresse meg a szabály az Operations Manager operatív konzol *Microsoft System Center Advisor SCOM értékelés futtatása Assessment szabály* a a **szabályok** ablaktáblán.
+1. Az a **szerzői műveletek** munkaterületen keresse meg a szabály az Operations Manager operatív konzol *Microsoft Center Operations Manager futtatása állapotának ellenőrzése Rendszerszabály* a a **szabályok** ablaktáblán.
 2. A keresési eredmények között, válassza ki a szöveget tartalmazó *típusa: Felügyeleti kiszolgáló*.
 3. Kattintson a jobb gombbal a szabályt, és kattintson a **felülbírálások** > **osztály egy adott objektumához: Felügyeleti kiszolgáló**.
 4.  Az elérhető felügyeleti kiszolgálók listában válassza ki a felügyeleti kiszolgáló, ahol a szabályt kell futnia.  Ez lehet társítani a futtató fiókot a korábban beállított azonos felügyeleti kiszolgálóhoz.
@@ -170,7 +170,7 @@ Alapértelmezés szerint a Microsoft System Center Advisor SCOM értékelés fut
 
 Alapértelmezés szerint az értékelés futtatása minden 10 080 perc (vagy a hét napja) van konfigurálva. A minimális értékét 1440 perc (vagy egy nap) felül lehet bírálni. Az érték az egymást követő assessment futtatásai között szükséges minimális kihagyást jelöli. Bírálja felül az időközt, használja az alábbi lépéseket.
 
-1. Az a **szerzői műveletek** munkaterületen az Operations Manager-konzolon keresse meg a szabály *Microsoft System Center Advisor SCOM értékelés futtatása Assessment szabály* a a **szabályok** a szakasz.
+1. Az a **szerzői műveletek** munkaterületen az Operations Manager-konzolon keresse meg a szabály *Microsoft Center Operations Manager futtatása állapotának ellenőrzése Rendszerszabály* a a **szabályok** a szakasz.
 2. A keresési eredmények között, válassza ki a szöveget tartalmazó *típusa: Felügyeleti kiszolgáló*.
 3. Kattintson a jobb gombbal a szabályt, és kattintson a **szabály felülbírálása** > **a következő osztály összes objektumához: Felügyeleti kiszolgáló**.
 4. Módosítsa a **időköz** paraméterérték a kívánt értéket. Az alábbi példában a értéke 1440 perc (egy nap).<br><br> ![intervallum paraméter](./media/scom-assessment/interval.png)<br>  
@@ -277,7 +277,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szöve
 
 *Van mód konfigurálása, hogy milyen gyakran az ellenőrzés fut?* Igen. Lásd: [futtatási gyakoriságát](#configure-the-run-frequency).
 
-*Ha egy másik kiszolgáló fel van derítve, miután hozzá van adva a System Center Operations Manager Assessment megoldás, azt ellenőrzött?* Igen, ez be van jelölve ettől kezdve az alapértelmezés szerint minden hét nap felderítése után.
+*Ha egy másik kiszolgáló fel van derítve, miután hozzá van adva a System Center Operations Manager állapotának ellenőrzése megoldást, azt ellenőrzött?* Igen, ez be van jelölve ettől kezdve az alapértelmezés szerint minden hét nap felderítése után.
 
 *Mi a neve, a folyamat, amely az adatgyűjtés?* AdvisorAssessment.exe
 

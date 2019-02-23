@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 47800ce467beb43c514e5e5474247d8c2029feff
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: d87fe608b92dd70cb2dee78c817e0055445b7c70
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188232"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732519"
 ---
 # <a name="automation-with-service-principals"></a>Automation-szolgáltatásnevek
 
@@ -45,7 +45,9 @@ Szolgáltatás egyszerű appID és jelszó vagy tanúsítvány használható kap
 
 ### <a name="powershell"></a>PowerShell
 
-Egyszerű szolgáltatás használata esetén az erőforrás-felügyeleti műveletek a [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) használja, a modul `Login-AzureRmAccount` parancsmagot. Kiszolgálói műveletek az egyszerű szolgáltatás használatakor a [SQLServer](https://www.powershellgallery.com/packages/SqlServer) használja, a modul `Add-AzureAnalysisServicesAccount` parancsmagot. 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Egyszerű szolgáltatás használata esetén az erőforrás-felügyeleti műveletek a [Az.AnalysisServices](/powershell/module/az.analysisservices) használja, a modul `Connect-AzAccount` parancsmagot. Kiszolgálói műveletek az egyszerű szolgáltatás használatakor a [SQLServer](https://www.powershellgallery.com/packages/SqlServer) használja, a modul `Add-AzAnalysisServicesAccount` parancsmagot. 
 
 A következő példában appID és a egy jelszót használt modell adatbázis-frissítési művelet végrehajtásához:
 
@@ -60,7 +62,7 @@ $PWord = ConvertTo-SecureString -String $PlainPWord -AsPlainText -Force
 
 $Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $AppId, $PWord
 
-Add-AzureAnalysisServicesAccount -Credential $Credential -ServicePrincipal -TenantId $TenantId -RolloutEnvironment "westcentralus.asazure.windows.net"
+Add-AzAnalysisServicesAccount -Credential $Credential -ServicePrincipal -TenantId $TenantId -RolloutEnvironment "westcentralus.asazure.windows.net"
 
 Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserver" -TableName "MyTable" -Database "MyDb" -RefreshType "Full"
 ```

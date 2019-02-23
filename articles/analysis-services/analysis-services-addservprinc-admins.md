@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5089083862f243a6a6847a58ac0777c52f978e73
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 701be795ca217c4a2dc5a7dbaa3a3717d16c85bc
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189728"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730222"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Szolgáltatásnév hozzáadása kiszolgálói rendszergazdai szerepkörhöz 
 
@@ -42,7 +42,7 @@ Ez a feladat végrehajtásához rendelkeznie kell [kiszolgáló-rendszergazda](a
 
 
 > [!NOTE]
-> Kiszolgálói műveletek AzureRm-parancsmagok használatával, a szolgáltatás egyszerű futó scheduler kell tartoznia a **tulajdonosa** erőforráshoz tartozó szerepkör [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md). 
+> Kiszolgálói műveletek az Azure PowerShell-parancsmagok használatával, a szolgáltatás egyszerű futó scheduler kell tartoznia a **tulajdonosa** erőforráshoz tartozó szerepkör [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="related-information"></a>Kapcsolódó információk
 

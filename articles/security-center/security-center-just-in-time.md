@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/4/2018
 ms.author: rkarlin
-ms.openlocfilehash: 94364a54a5a0994cc3de3a2fe014b556d438b2c2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2bfa3b6001d714da39ebeb709600504f9d7331c5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114909"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733657"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-in-time virtuálisgép-hozzáférés kezelése
 
@@ -29,6 +29,8 @@ ms.locfileid: "56114909"
 > A just-in-time funkció a Security Center Standard szinten érhető el.  A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
 >
 >
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="attack-scenario"></a>Támadás
 
@@ -208,7 +210,7 @@ A just-in-time VM access szolgáltatás használható az Azure Security Center A
 
 ### <a name="using-jit-vm-access-via-powershell"></a>Virtuális gépek igény szerinti hozzáférés a PowerShell használatával 
 
-A just-in-time VM access megoldás Powershellen keresztül, használja a hivatalos Azure Security Center PowerShell-parancsmagok, és kifejezetten `Set-AzureRmJitNetworkAccessPolicy`.
+A just-in-time VM access megoldás Powershellen keresztül, használja a hivatalos Azure Security Center PowerShell-parancsmagok, és kifejezetten `Set-AzJitNetworkAccessPolicy`.
 
 Az alábbi példa egy just-in-time VM hozzáférési szabályzatot állít be egy adott virtuális Gépre, és beállítja a következő:
 1.  Zárja be a 22-es és a 3389-es portot.
@@ -238,7 +240,7 @@ Futtassa a következő PowerShell-lel ehhez:
 
 3.  A just-in-time VM hozzáférési házirendet konfigurálja a kijelölt virtuális gépen:
     
-        Set-AzureRmJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
+        Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
 #### <a name="requesting-access-to-a-vm"></a>Egy virtuális Géphez való hozzáférés kérése
 
@@ -258,7 +260,7 @@ A PowerShellben futtassa a következőt:
         $JitPolicyArr=@($JitPolicyVm1)
 3.  (Használja az erőforrás-azonosító az 1. lépésben kapott) hozzáférési kérelmek küldése
 
-        Start-AzureRmJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
+        Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
 
 További információ a PowerShell-parancsmag dokumentációjában talál.
 

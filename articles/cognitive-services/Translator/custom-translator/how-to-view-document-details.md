@@ -6,15 +6,15 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: how to edit a model
-ms.openlocfilehash: e656c6dd7050851eb9885fe253ab29f4e3675216
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: ed872a00cd35fcef74ab0b578a86cdb6cd2ec8c7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219804"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727570"
 ---
 # <a name="view-document-details"></a>Dokumentum részleteinek megtekintése
 
@@ -22,7 +22,7 @@ A dokumentum-lista oldalára bemutatja az első 10 dokumentum a munkaterületén
 
 Kattintson egy adott dokumentumot a dokumentum Részletek lap megtekintéséhez. A dokumentum Részletek lap kibontott mondatokat a dokumentumból listáját jeleníti meg.
 
-- A "forrás" alapértelmezés szerint nyelvi van jelölve, a legördülő mezőben, de itt válthat a Célnyelv mondatokat megtekintése. 
+- A "forrás" alapértelmezés szerint nyelvi van jelölve, a legördülő mezőben, de itt válthat a Célnyelv mondatokat megtekintése.
 - 20 mondatokat alapértelmezés szerint egy-egy lapon jelennek meg. Tördelés vezérlő segítségével a lapok közötti Tallózás.
 
 ![a dokumentum adatai](media/how-to/how-to-view-document-details.png)

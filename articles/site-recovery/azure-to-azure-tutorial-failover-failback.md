@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ab920094561b9143945793ddd4ea3da877a7ae90
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 46dae28fd6c9eaa3d5e03f5f06c5e92449653679
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340535"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737722"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek feladatátvétele és feladat-visszavétele Azure-régiók között
 
@@ -48,7 +48,7 @@ Ez az oktatóanyag leírja, hogyan végezhet feladatátvételt egyetlen Azure-be
    * **Legutóbb feldolgozott**: Ez a beállítás visszaáll a virtuális gépet a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontot.
    * **Egyéni**: Ez a beállítás használatával átadja a feladatokat egy adott helyreállítási pontra. Ez a lehetőség feladatátvételi teszt végrehajtásához hasznos.
 
-3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget, ha azt szeretné, hogy a Site Recovery megkísérelje leállítani a forrás virtuális gépeket a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul.
+3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget, ha azt szeretné, hogy a Site Recovery megkísérelje leállítani a forrás virtuális gépeket a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. Vegye figyelembe, hogy a Site Recovery nem távolítsa el a forrás a feladatátvételt követően.
 
 4. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
 

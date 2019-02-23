@@ -4,16 +4,16 @@ description: Ismerje meg az Azure Automation megosztott erőforrásokkal kapcsol
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/3/2018
+ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 911f592c43865ea8bdfe85c1ad1071c7112ae9b6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: abce40958f8d775e0a579a18cf8d1351740031ff
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475441"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671063"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Megosztott erőforrásokkal kapcsolatos hibák elhárítása
 
@@ -38,6 +38,24 @@ A probléma megoldásához el kell távolítania a modul, amely a elakadt a **im
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
+
+### <a name="update-azure-modules-importing"></a>Forgatókönyv: AzureRM-modulok regisztrálásuk után próbálja frissíteni őket importálása
+
+#### <a name="issue"></a>Probléma
+
+A következő üzenetet tartalmazó szalag marad a fiókjában után az AzureRM-modulok frissítése közben:
+
+```
+Azure modules are being updated
+```
+
+#### <a name="cause"></a>Ok
+
+Frissítése az AzureRM-modulokat: Automation-fiók, amely egy erőforráscsoportot a numerikus kezdetű névvel rendelkező 0-val rendelkező egy ismert probléma van.
+
+#### <a name="resolution"></a>Megoldás:
+
+Az Azure-modulokat: Automation-fiók frissítéséhez, amelynek a neve alfanumerikus erőforráscsoportban kell lennie. Erőforráscsoportok 0-tól induló numerikus nevek nem tudnak AzureRM-modulok frissítése most.
 
 ### <a name="module-fails-to-import"></a>Forgatókönyv: Modul importálása sikertelen, vagy a parancsmagok nem hajtható végre, az importálás után
 

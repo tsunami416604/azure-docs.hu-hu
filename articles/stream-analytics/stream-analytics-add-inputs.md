@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 0475318ce983b98951fb9cd5d24a5bc4452b1f1e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a6b6b548f1e5a9fa1e92b5fdbd714117758d75b4
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970110"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737076"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Az Azure Stream Analytics bemenetek ismertetése
 
@@ -27,7 +27,7 @@ Stream Analytics bemenetként a három típusú erőforrásokhoz való kiváló 
 
 Ezeket az erőforrásokat a bemeneti is élő Azure-előfizetéshez, a Stream Analytics-feladatot, vagy egy másik előfizetésben található.
 
-Használhatja a [az Azure portal](stream-analytics-quick-create-portal.md#configure-job-input), [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST API-val](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input), és [Visual Studio](stream-analytics-tools-for-visual-studio-install.md)létrehozása, szerkesztése és tesztelése a Stream Analytics-feladat bemenetek.
+Használhatja a [az Azure portal](stream-analytics-quick-create-portal.md#configure-job-input), [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST API-val](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input), és [Visual Studio](stream-analytics-tools-for-visual-studio-install.md)létrehozása, szerkesztése és tesztelése a Stream Analytics-feladat bemenetek.
 
 ## <a name="stream-and-reference-inputs"></a>Stream- és referenciainformációkat bemenetek
 Az adatok leküldésekor egy adatforrásba, a Stream Analytics-feladat által használt, és valós idejű feldolgozásra. Bemenetei között meg vannak osztva a két típus: adatok streamelése bemenetei között, és streamadat típusú bemenetek hivatkoznak.
@@ -44,4 +44,4 @@ Referenciaadat típusú bemenetek kapcsolatos további információkért lásd: 
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Stream Analytics-feladat létrehozása az Azure portal használatával](stream-analytics-quick-create-portal.md)
+> [Rövid útmutató: Stream Analytics-feladat létrehozása az Azure portal használatával](stream-analytics-quick-create-portal.md)

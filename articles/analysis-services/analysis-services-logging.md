@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9f9a6511d63e57c6cbfa5ee2453f8038bb259047
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: b35707b857c66f0f1b91f2f1b5dd7a0ffa24dd9e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428992"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733758"
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
 
@@ -21,6 +21,7 @@ Fontos része annak az Analysis Services megoldással figyel, hogyan a kiszolgá
 
 ![Diagnosztikai naplózás, Storage, az Event Hubs vagy az Azure Monitor-naplókba](./media/analysis-services-logging/aas-logging-overview.png)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-logged"></a>Mi kerül?
 
@@ -103,7 +104,7 @@ Metrikák és naplózás PowerShell-lel diagnosztika engedélyezéséhez haszná
 - Ahhoz, hogy a diagnosztikai naplókat egy tárfiókban, használja ezt a parancsot:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
    ```
 
    A tárfiók azonosítója a storage-fiók erőforrás-azonosító, ahol szeretné küldeni a naplókat.
@@ -111,7 +112,7 @@ Metrikák és naplózás PowerShell-lel diagnosztika engedélyezéséhez haszná
 - Diagnosztikai naplók egy eseményközpontba streamelésének engedélyezéséhez használja ezt a parancsot:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
    Az Azure Service Bus Szabályazonosító karakterláncnak a következő formátumban:
@@ -123,13 +124,13 @@ Metrikák és naplózás PowerShell-lel diagnosztika engedélyezéséhez haszná
 - Ahhoz, hogy a küldő diagnosztikai naplók a Log Analytics-munkaterülethez, használja ezt a parancsot:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
 - A Log Analytics munkaterület erőforrás-Azonosítóját a következő paranccsal szerezheti be:
 
    ```powershell
-   (Get-AzureRmOperationalInsightsWorkspace).ResourceId
+   (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
 Kombinálhatja ezeket a paramétereket, több kimeneti beállítások engedélyezéséhez.
@@ -187,7 +188,7 @@ Nincsenek lekérdezésekben használható több száz. Lekérdezésekkel kapcsol
 
 ## <a name="turn-on-logging-by-using-powershell"></a>Kapcsolja be a naplózást a PowerShell használatával
 
-Gyors ebben az oktatóanyagban mint az Analysis Services-kiszolgáló hoz létre egy tárfiókot, az ugyanabban az előfizetésben és erőforráscsoportban. Ezt követően az Set-azurermdiagnosticsetting parancshoz, kapcsolja be a diagnosztikai naplózás, a kimeneti küldését az új tárfiókot.
+Gyors ebben az oktatóanyagban mint az Analysis Services-kiszolgáló hoz létre egy tárfiókot, az ugyanabban az előfizetésben és erőforráscsoportban. Ezt követően az Set-AzDiagnosticSetting bekapcsolása a diagnosztikai naplózás, a kimeneti küldését az új tárfiókot.
 
 ### <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőket kell rendelkeznie:
@@ -199,7 +200,7 @@ Az oktatóanyag elvégzéséhez a következőket kell rendelkeznie:
 Indítson el egy Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fiókjába az alábbi paranccsal:  
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Az Azure PowerShell megkeresi az összes olyan előfizetést, amely ehhez a fiókhoz van rendelve, és alapértelmezés szerint kiválasztja az elsőt.
@@ -207,13 +208,13 @@ Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét �
 Ha több előfizetése van, előfordulhat, hogy meg kell adnia azt, amelyikkel az Azure Key Vault tárolóját létrehozta. Írja be az alábbi parancsot a fiókhoz tartozó előfizetések megjelenítéséhez:
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Ezt követően az Azure Analysis Services-fiókkal jelentkezik tartozó előfizetés megadásához írja be:
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 > [!NOTE]
@@ -228,7 +229,7 @@ Használhatja egy meglévő tárfiókot a naplók, feltéve, hogy a kiszolgáló
 Is ugyanazt az erőforráscsoportot használjuk az Analysis Services-kiszolgáló tartalmazza. Értékeit helyettesítse `awsales_resgroup`, `awsaleslogs`, és `West Central US` a saját értékeire:
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName awsales_resgroup `
+$sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `
 -Name awsaleslogs -Type Standard_LRS -Location 'West Central US'
 ```
 
@@ -237,16 +238,16 @@ $sa = New-AzureRmStorageAccount -ResourceGroupName awsales_resgroup `
 Állítsa be a fiók nevét egy nevű változóhoz **fiók**, ahol a ResourceName a fiók nevét.
 
 ```powershell
-$account = Get-AzureRmResource -ResourceGroupName awsales_resgroup `
+$account = Get-AzResource -ResourceGroupName awsales_resgroup `
 -ResourceName awsales -ResourceType "Microsoft.AnalysisServices/servers"
 ```
 
 ### <a name="enable-logging"></a>Naplózás engedélyezése
 
-A naplózás engedélyezéséhez használja a Set-AzureRmDiagnosticSetting parancsmaggal együtt a változókat az új tárfiókot, a kiszolgáló fiók és a kategória. Futtassa a következő parancsot, a beállítás a **-kompatibilis** jelzőt **$true**:
+A naplózás engedélyezéséhez használja a Set-AzDiagnosticSetting parancsmagot, és a változókat az új tárfiókot, a kiszolgáló fiók és a kategória. Futtassa a következő parancsot, a beállítás a **-kompatibilis** jelzőt **$true**:
 
 ```powershell
-Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
+Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
 ```
 
 Az alábbi példában látható kimenethez hasonló eredményt kell kapnia:
@@ -293,7 +294,7 @@ Ez a kimenet megerősíti, hogy naplózás engedélyezve van a kiszolgálón, í
 Beállíthat adatmegőrzési házirend a naplók, a régebbi naplófájlok automatikusan törlődnek. Például állítsa be a megtartási házirendet a **- RetentionEnabled** jelzőt **$true**, és állítsa be **- RetentionInDays** paramétert **90**. 90 napnál régebbi naplófájlok automatikusan törlődnek.
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
+Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
  -StorageAccountId $sa.Id -Enabled $true -Categories Engine`
   -RetentionEnabled $true -RetentionInDays 90
 ```
@@ -302,4 +303,4 @@ Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
 
 Tudjon meg többet [Azure-erőforrás diagnosztikai naplózás](../azure-monitor/platform/diagnostic-logs-overview.md).
 
-Lásd: [Set-azurermdiagnosticsetting parancshoz](https://docs.microsoft.com/powershell/module/azurerm.insights/Set-AzureRmDiagnosticSetting) PowerShell súgójában.
+Lásd: [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.insights/Set-azDiagnosticSetting) PowerShell súgójában.

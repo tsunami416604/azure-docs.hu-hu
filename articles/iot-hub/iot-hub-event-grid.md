@@ -2,21 +2,22 @@
 title: Az Azure IoT Hub és az Event Grid |} A Microsoft Docs
 description: Azure Event Grid használatával aktiválhat folyamatokat alapján műveleteket, amelyeket egy IoT hubot.
 author: kgremban
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/14/2018
+ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 14bdbb5d629cb5a3fccd6f874e30ded0648e0124
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: a2c49a6ba269321d1903565ace3ebaae3f3b917e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249468"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673853"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub-események reagálnak a műveletek indítása Event Grid használatával
 
-Az Azure IoT Hub integrálható az Azure Event Griddel, hogy eseményértesítések küldése más szolgáltatásoknak, és alsóbb rétegbeli folyamatokat aktiválhat. Konfigurálja az üzleti alkalmazások, az IoT Hub-események figyelésére, úgy, hogy megbízható, méretezhető és biztonságos módon reagálhat a kritikus eseményeket. Például készítsen egy alkalmazás például egy adatbázis frissítésével, egy a jegy létrehozása és e-mail-értesítés kézbesítése minden alkalommal, amikor egy új IoT-eszköz regisztrálva van az IoT hub több művelet végrehajtásához. 
+Az Azure IoT Hub integrálható az Azure Event Griddel, hogy eseményértesítések küldése más szolgáltatásoknak, és alsóbb rétegbeli folyamatokat aktiválhat. Konfigurálja az üzleti alkalmazások, az IoT Hub-események figyelésére, úgy, hogy megbízható, méretezhető és biztonságos módon reagálhat a kritikus eseményeket. Ha például hozhat létre olyan alkalmazás, amely frissíti az adatbázist, létrehoz egy munkahelyi jegyet, és továbbítja az e-mailben értesítést minden alkalommal, amikor egy új IoT-eszköz regisztrálása az IoT hub. 
 
 [Az Azure Event Grid](../event-grid/overview.md) van egy teljes körűen felügyelt esemény-útválasztó szolgáltatás, amely egy közzétételi-feliratkozási modell. Az Azure-szolgáltatásokhoz hasonlóan beépített támogatással rendelkezik az Event Grid [Azure Functions](../azure-functions/functions-overview.md) és [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md), és nem Azure-szolgáltatások, webhookok segítségével közvetíti miatti riasztás. Az eseménykezelőket, amely támogatja az Event Grid teljes listáját lásd: [Azure Event Grid bemutatása](../event-grid/overview.md). 
 
@@ -118,7 +119,7 @@ Az alábbi példa bemutatja a séma, esemény létrehozott eszköz:
 }]
 ```
 
-Minden egyes tulajdonság egy részletes ismertetését lásd: [az IoT Hub az Azure Event Grid eseménysémája](../event-grid/event-schema-iot-hub.md)
+Minden egyes tulajdonság egy részletes ismertetését lásd: [az IoT Hub az Azure Event Grid eseménysémája](../event-grid/event-schema-iot-hub.md).
 
 ## <a name="filter-events"></a>Események szűrése
 
@@ -131,15 +132,15 @@ devices/{deviceId}
 ```
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Korlátozások a csatlakoztatott eszközök és az eszköz leválasztott események
 
-Csatlakoztatott eszközök és az eszköz választva eseményeinek kapni, meg kell nyitnia a D2C hivatkozás vagy C2D hivatkozásra az eszközhöz. Ha az eszköz MQTT protokoll használ, az IoT Hub a hivatkozás megnyitásához C2D fogja megőrizni. Az AMQP hívása úgy is megnyithatja a C2D hivatkozásra a [aszinkron API fogadása](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet). 
+Csatlakoztatott eszközök és az eszköz választva eseményeinek kapni, meg kell nyitnia a D2C hivatkozás vagy C2D hivatkozásra az eszközhöz. Ha az eszköz MQTT protokoll használ, az IoT Hub a hivatkozás megnyitásához C2D fogja megőrizni. Az AMQP és megnyithatja a C2D hivatkozás meghívásával a [aszinkron API fogadása](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet). 
 
-A D2C kapcsolat meg nyitva, ha telemetriát küld. Ha az eszköz kapcsolati villogó van, vagyis az eszköz kapcsolódik, és gyakran megszakad, nem küldünk minden egyetlen kapcsolati állapot, de a kapcsolat állapota pillanatfelvétel percenként fog közzétenni. Egy IoT Hub esetleges leállás mi pedig közzétesszük az eszköz kapcsolati állapotát, amint a szolgáltatáskimaradás elhárítása után felett van. Ha az eszköz kapcsolata megszakad, hogy a szolgáltatáskimaradás közben, az eszköz leválasztott esemény közzéteszi 10 percen belül.
+A D2C kapcsolat meg nyitva, ha telemetriát küld. Ha az eszköz kapcsolata van villogó, mely azt jelenti, hogy az eszköz kapcsolódik, és gyakran bontja a kapcsolatot nem küld minden egyetlen kapcsolat állapota egyelőre a kapcsolat állapota pillanatfelvétel percenként fog közzétenni. Egy IoT Hub esetleges leállás mi pedig közzétesszük az eszköz kapcsolati állapotát, amint a szolgáltatáskimaradás elhárítása után felett van. Ha az eszköz kapcsolata megszakad, hogy a szolgáltatáskimaradás közben, az eszköz leválasztott esemény közzéteszi 10 percen belül.
 
 ## <a name="tips-for-consuming-events"></a>Tippek az események felhasználásához
 
 Alkalmazások, amelyek kezelik az IoT Hub-események követendő ajánlott eljárások:
 
-* Több előfizetés is beállítható úgy, hogy az azonos eseménykezelő események átirányítása ezért fontos, hogy nem azt feltételezik, hogy eseményeket adott forrásból származnak. Mindig ellenőrizze annak érdekében, hogy az IoT hub várt származik az üzenet témakörben találhatók. 
+* Több előfizetés is beállítható úgy, hogy az azonos eseménykezelő, így nem érdemes feltételezni, hogy vannak-e események egy adott forrásból származó események átirányítása. Mindig ellenőrizze annak érdekében, hogy az IoT hub várt származik az üzenet témakörben találhatók. 
 
 * Nem érdemes feltételezni, hogy az összes esemény jelenhet meg-e a várt típusok. Mindig ellenőrizze az esemény típusa, az üzenet feldolgozása előtt.
 

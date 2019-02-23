@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 479278400aa056a7cebcefaa2eedee3d98bc9a15
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 549f37c1287373fe8bf4c10dc64e6e778b37be02
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815235"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730137"
 ---
 # <a name="register-in-dev-center"></a>A fejlesztői központban regisztrálása  
 Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző személyes fiók, nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenetében.  
@@ -82,7 +82,7 @@ Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző
 
     *   Egy kereskedelmi ajánlattal egyik példája egy Virtuálisgép-ajánlat a számlázási modell óránként történik.  
 
----  
+---
 
 ## <a name="get-help-with-dev-center-registration"></a>Segítség a fejlesztői központ-regisztráció  
 Ha problémába ütközik a fejlesztői központ-regisztráció, majd kövesse az alábbi lépéseket egy támogatási jegyet is küldhet.  
@@ -125,7 +125,7 @@ A banki és adózási adatait az ajánlati típus transact használatával minde
 
 4.  Kattintson a Tovább gombra. 
 
----   
+---
 
 ## <a name="add-tax-information"></a>Adózási adatok hozzáadása  
 1.  Jelentkezzen be a Microsoft ID. használatával fejlesztői központ  
@@ -195,4 +195,4 @@ A támogatás eléréséhez látogasson el a Windows fejlesztői támogatási ol
 ## <a name="next-steps"></a>További lépések
 *   Látogasson el a [Azure Marketplace és AppSource útmutató Közzétevőknek](./marketplace-publishers-guide.md) lapot.  
  
----  
+---

@@ -3,17 +3,17 @@ title: Azure Device Provisioning szolgáltatás SDK-k használatával eszközök
 description: Az IoT Hub Device Provisioning Service szolgáltatás SDK-k használatával az eszközök beléptetésének kezelése
 author: yzhong94
 ms.author: yizhon
-ms.date: 04/04/18
+ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: arjmands
-ms.openlocfilehash: 1c7fa798c2e767aa6a21b3c56da6f69b4d3a1406
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732350"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674752"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Hogyan eszközök beléptetésének kezelése az Azure Device Provisioning szolgáltatás SDK-k
 A *eszközregisztráció* létrehoz egy rekordot egy adott eszköz vagy egy csoportot az eszközről, bármikor előfordulhat, hogy regisztrálja a Device Provisioning Service szolgáltatással. A regisztrációs rekord az regisztrálása, beleértve a kívánt IoT-központ részeként (ök) höz kezdeti kívánt beállításait tartalmazza. Ez a cikk bemutatja, hogyan kezelheti az eszközök regisztrációját a kiépítési szolgáltatás programozott módon, az Azure IoT Provisioning Service SDK-k segítségével.  Az SDK a Githubon, az Azure IoT SDK-k ugyanabban az adattárban érhetők el.

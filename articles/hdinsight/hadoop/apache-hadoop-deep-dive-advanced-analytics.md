@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 0e17fa877bc2e1e4f72891315d940546a11e674d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 893273fc325eaf878814c07eb095c67f5ea3c3f1
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812497"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675058"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Részletes bemutatása – speciális elemzés
 
@@ -110,7 +110,7 @@ Az adatkészlet képzési 50 000 képkészlet és tesztelési 10 000 képkészle
 * A cognitive Toolkit betölteni a modell és a pontszám a Előfeldolgozott lemezképeket minden egyes csomóponton.
 * A PySpark-szkript futtatásához a Jupyter notebookok összesíti az eredményeket, és használja [Matplotlib](https://matplotlib.org/) megjelenítése a modell teljesítményét.
 
-A teljes előfeldolgozása/pontozás 10 000 rendszerképet tart a kevesebb mint egy perc 4 feldolgozó csomóponttal rendelkező fürt. A modell felel meg pontosan előrejelzi a címkék ~ 9,100 (91 %) lemezképek. Egy keveredési mátrixot a leggyakrabban használt besorolási hibák mutatja be. Például a mátrix kutyák macskák, és ez fordítva is igaz mislabeling történik, hogy látható-e nagyobb gyakran más címkét párokhoz.
+A teljes előfeldolgozása/pontozás 10 000 rendszerképet tart a kevesebb mint egy perc 4 feldolgozó csomóponttal rendelkező fürt. A modell felel meg pontosan előrejelzi a címkéket, ~ 9,100 (91 %) képek. Egy keveredési mátrixot a leggyakrabban használt besorolási hibák mutatja be. Például a mátrix kutyák macskák, és ez fordítva is igaz mislabeling történik, hogy látható-e nagyobb gyakran más címkét párokhoz.
 
 ![Results (Eredmények)](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
 
@@ -133,6 +133,5 @@ Az Apache Spark és MLLib
 
 Deep Learning, Cognitive Toolkit és egyéb
 
-* [Képek besorolása, a tensorflow-hoz és a Cognitive Toolkit használatával az Azure HDInsight Spark zavaróan párhuzamos](https://blogs.technet.microsoft.com/machinelearning/2017/04/12/embarrassingly-parallel-image-classification-using-cognitive-toolkit-tensorflow-on-azure-hdinsight-spark/)
 * [Az adatelemzés az Azure virtuális gép](../../machine-learning/data-science-virtual-machine/overview.md)
 * [Az Azure HDInsight H2O.ai bemutatása](https://azure.microsoft.com/blog/introducing-h2o-ai-with-on-azure-hdinsight-to-bring-the-most-robust-ai-platform-for-enterprises/)

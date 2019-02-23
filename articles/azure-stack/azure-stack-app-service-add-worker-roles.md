@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 02/22/2010
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: 0ac20ee9f6197a8322bb741020aee813c690847e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 839fa7fe8374f1f85b019178d4c3fe53f7137372
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445883"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729644"
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>App Service-ben az Azure Stack: További infrastruktúra vagy feldolgozói szerepkörök hozzáadása
 
@@ -37,11 +37,6 @@ App Service-ben az Azure Stacken, alapértelmezés szerint támogatja az ingyene
 Ha nem biztos abban, hogy mi az Azure Stack-telepítés az alapértelmezett App Service-ben üzemel, áttekintheti a további információkat a [App Service-ben az Azure Stack áttekintése](azure-stack-app-service-overview.md).
 
 Az Azure Stack az Azure App Service üzembe helyezi a Virtual Machine Scale Sets használatával az összes szerepkör, és így igénybe veszi ezt a munkafolyamatot skálázási funkcióit. Ezért az összes méretezés a feldolgozói rétegek használatával történik az App Service-rendszergazdához.
-
-> [!IMPORTANT]
-> Jelenleg nincs lehetőség a virtuálisgép-méretezési csoportok méretezése a portálon az Azure Stack kibocsátási megjegyzések a, ezért a PowerShell-példa használatával horizontális felskálázás.
->
->
 
 ## <a name="add-additional-workers-with-powershell"></a>Adja hozzá a további feldolgozó a PowerShell-lel
 
@@ -80,7 +75,7 @@ Az Azure Stack az Azure App Service üzembe helyezi a Virtual Machine Scale Sets
 
 3. Az új App Service felügyeletének szerepkörpéldányt állapotának figyelése, egy egyéni szerepkör-példány állapota kattintson a szerepkör típusát, a listában.
 
-## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>Adjon hozzá további alkalmazottai közvetlenül az App Service erőforrás szolgáltató rendszergazdával.
+## <a name="add-additional-workers-using-the-administration-portal"></a>Adja hozzá a felügyeleti portál használatával további feldolgozók
 
 1. Jelentkezzen be az Azure Stack felügyeleti portálon a szolgáltatás-rendszergazdaként.
 

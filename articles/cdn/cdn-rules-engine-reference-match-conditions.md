@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 44182d686548fa5b6363a87be0ce7851829e20ab
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3ebc4d94e0bbf24895be0aeba9fef1cc7aacd6b9
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820556"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736712"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotorral feltételeknek megfelelő 
 Ez a cikk felsorolja az elérhető egyezési feltételei számára az Azure Content Delivery Network (CDN) a részletes leírását [szabálymotorral](cdn-rules-engine.md).
@@ -233,7 +233,7 @@ Legfontosabb tudnivalókat:
 
 </br>
 
---- 
+---
 ### <a name="country"></a>Ország
 Megadhatja, hogy egy ország keresztül az országkódot. 
 
@@ -388,7 +388,7 @@ Legfontosabb tudnivalókat:
 
 </br>
 
----  
+---
 ### <a name="request-header-literal"></a>Kérelem fejléce szövegkonstans
 A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a kérelem fejlécében szövegkonstans feltételnek megfelelő feltételek teljesülése.
 - **Egyezések**: A kérelem tartalmazza a megadott fejléc igényel. Az értékét meg kell egyeznie a az egyezési feltétellel megadott.
@@ -409,7 +409,7 @@ Legfontosabb tudnivalókat:
 
 </br>
 
----  
+---
 ### <a name="request-header-regex"></a>Kérelem fejléce reguláris kifejezés
 A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt a kérelem fejlécében Regex feltételnek megfelelő feltételek teljesülése.
 - **Egyezések**: A kérelem tartalmazza a megadott fejléc igényel. Az értékét meg kell egyeznie a megadott minta a megadott [reguláris kifejezés](cdn-rules-engine-reference.md#regular-expressions).

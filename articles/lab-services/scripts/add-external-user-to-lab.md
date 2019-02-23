@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell-parancsprogram: egy külső felhasználó hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet |} A Microsoft Docs'
+title: 'PowerShell-parancsfájlt: Külső felhasználó felvétele az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet |} A Microsoft Docs'
 description: Ez a PowerShell-szkript egy külső felhasználó hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet.
 services: lab-services
 author: spelluru
@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 0acff1eb4cee441187205b11a7e07cc718072cbf
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 042fa1e24ebadfb00a2d55cc97d742f198cb5662
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248189"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738351"
 ---
 # <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>PowerShell használatával ad hozzá egy külső felhasználót az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
 
 A PowerShell-példaszkript egy külső felhasználó hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -38,8 +40,8 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzureRmADUser](/powershell/module/azurerm.resources/get-azurermaduser) | A user objektum az Azure active Directoryból való próbálkozások. |
-| [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) | A megadott szerepkör társítása a megadott egyszerű, a megadott hatókörben. |
+| [Get-AzADUser](/powershell/module/az.resources/get-azaduser) | A user objektum az Azure active Directoryból való próbálkozások. |
+| [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) | A megadott szerepkör társítása a megadott egyszerű, a megadott hatókörben. |
 
 ## <a name="next-steps"></a>További lépések
 

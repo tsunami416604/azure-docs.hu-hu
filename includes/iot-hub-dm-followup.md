@@ -5,15 +5,15 @@ services: iot-hub
 ms.service: iot-hub
 author: dominicbetts
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 02/17/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 3cdfa74c5f124e57b125399e39b7981b1dfb6d09
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 69fdc6cf678107ef64ea1fe7b819738fd4a4ff4f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43096363"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56741537"
 ---
 ## <a name="customize-and-extend-the-device-management-actions"></a>Testreszabhatja és kibővítheti az eszköz felügyeleti műveletei
 
@@ -27,10 +27,6 @@ Az IoT-megoldások eszközfelügyeleti minták meghatározott készletével kibo
 
 Ebben az oktatóanyagban használt közvetlen metódus a-trigger egy távoli újraindítása az eszközön. A jelentett tulajdonságok az eszköz legutóbbi újraindítás jelentésére használhatók, és az ikereszköz felderíteni a felhőből az eszköz legutóbbi újraindítás kérdezhető le.
 
-Ismerkedés az IoT Hub és az eszközfelügyeleti minták például távolról keresztül a vezeték nélküli belső vezérlőprogram frissítését a folytatáshoz tekintse meg:
+Ismerkedés az IoT Hub és az eszközfelügyeleti minták például távolról keresztül a vezeték nélküli belső vezérlőprogram frissítését a folytatáshoz tekintse meg a [hogyan belső vezérlőprogram frissítése](../articles/iot-hub/tutorial-firmware-update.md)
 
-[Oktatóanyag: Hogyan belső vezérlőprogram frissítése](../articles/iot-hub/tutorial-firmware-update.md)
-
-Ismerje meg, hogyan bővítheti az IoT-megoldás és az ütemezés metódus meghívja a több eszközre, tekintse meg a [feladatok ütemezése és szórása](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md) oktatóanyag.
-
-Ismerkedés az IoT Hub a folytatáshoz tekintse meg a [Ismerkedés az IoT Edge szolgáltatással](../articles/iot-edge/tutorial-simulate-device-linux.md).
+Ismerje meg, hogyan bővítheti az IoT-megoldás és az ütemezés metódus meghívja a több eszközre, tekintse meg [feladatok ütemezése és szórása](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md).

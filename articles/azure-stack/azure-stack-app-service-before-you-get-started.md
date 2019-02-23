@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/22/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
-ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 0be1814fd501824056bc80d4aeb561ff58735125
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.lastreviewed: 02/22/2019
+ms.openlocfilehash: 3b057e9c4a0fccb3f85ec237433e4020fd4a84da
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447446"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737484"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Mielőtt elkezdené, az Azure Stack App Service-szel
 
@@ -307,6 +307,16 @@ Az SQL Server-példány az Azure App Service az Azure Stack App Service-ben az �
 > Egy szám, az SQL IaaS virtuális gépek lemezképeit a Marketplace-en felügyeleti szolgáltatáson keresztül érhetők el. Ellenőrizze, hogy Ön mindig Piactéri virtuális gép üzembe helyezése előtt töltse le a legújabb verzióját az SQL IaaS-bővítményt. Az SQL-rendszerképek ugyanazok, mint az SQL virtuális gépek az Azure-ban elérhető. Az SQL virtuális gépek-képekből létrehozott ezeket, az IaaS-bővítményt, és a megfelelő portál fejlesztések automatikus javítás és a biztonsági mentési funkcióit funkciókat biztosítanak.
 >
 Az SQL Server-szerepkörök bármelyikéhez egy alapértelmezett vagy megnevezett példányt is használhatja. Ha egy megnevezett példányt használ, mindenképpen manuálisan indítsa el az SQL Server Browser szolgáltatást, és nyissa meg az 1434-es portot.
+
+Az App Service-telepítő ellenőrzi az SQL Server adatbázis tartalmazási engedélyezve legyen. Ahhoz, hogy az SQL Server, az App Service-adatbázisokat üzemeltető adatbázis tartalmazás, a következő SQL-parancsok futtatása:
+
+```sql
+sp_configure 'contained database authentication', 1;  
+GO  
+RECONFIGURE;  
+GO
+```
+
 
 >[!IMPORTANT]
 > Ha úgy dönt, hogy egy meglévő virtuális hálózatot az App Service üzembe helyezése az SQL Server, az App Service-ben és a fájlkiszolgáló egy külön alhálózatot kell telepíteni.

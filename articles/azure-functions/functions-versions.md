@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: f2f1313461fcb58ea48af99aeda2f7005534fe34
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: cc19a2d7641b20a413bbc39efe0d1c5ede362e6d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885187"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734455"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions runtime verziók áttekintése
 
- Az Azure Functions Runtime két fő verziója: 1.x és a 2.x. A jelenlegi verziót, ahol új funkció a munkahelyi és fejlesztések kerül sor az 2.x, abban az esetben, ha mindkét üzemi forgatókönyvek esetén támogatottak.  Az alábbi részletek néhány különbséget a két, hogyan hozhat létre minden egyes verziója, és frissítse a 1.x a 2.x-es.
+ Nincsenek az Azure Functions runtime két fő verziói: az 1.x és a 2.x. A jelenlegi verziót, ahol új funkció a munkahelyi és fejlesztések kerül sor az 2.x, abban az esetben, ha mindkét üzemi forgatókönyvek esetén támogatottak.  Az alábbi részletek néhány különbséget a két, hogyan hozhat létre minden egyes verziója, és frissítse a 1.x a 2.x-es.
 
 > [!NOTE]
 > Ez a cikk az Azure Functions felhőalapú szolgáltatásra vonatkozik. Az előzetes verzióban üzemel, amely lehetővé teszi Azure Functions helyi futtatását kapcsolatos információkért tekintse meg a [Azure Functions Runtime áttekintése](functions-runtime-overview.md).
@@ -29,7 +29,7 @@ A verzió 2.x verziójú futtatókörnyezet futtat a .NET Core 2, amely lehetőv
 
 Ezzel a verzió 1.x modul fejlesztési és üzemeltetési az Azure Portalon vagy a Windows-számítógépeken csak támogatja.
 
-## <a name="languages"></a>Nyelvek
+## <a name="languages"></a>Languages
 
 A verzió 2.x verziójú futtatókörnyezet új nyelvi bővíthetőségi modellt használ. A verzió 2.x-es, a függvényalkalmazás a függvények meg kell osztani ugyanazt a nyelvet. A függvényalkalmazás a függvények kiválasztott az alkalmazás létrehozásakor.
 
@@ -37,7 +37,7 @@ Az Azure Functions 1.x kísérleti nyelvek kell használni az új modell 2.x-es 
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-További információkért lásd: [támogatott nyelvek](supported-languages.md).
+További információk: [Támogatott nyelvek](supported-languages.md).
 
 ## <a name="creating-1x-apps"></a>Futtassa a verzió 1.x
 
@@ -49,7 +49,7 @@ Dönthet úgy, hogy használja inkább a verzió a verzió 1.x futtatókörnyeze
 
 ### <a name="changes-in-triggers-and-bindings"></a>Eseményindítók és kötések változásai
 
-Verzió 2.x meghatározott eseményindítók és kötések az alkalmazás a functions által használt a bővítmények telepítését igényli. A HTTP- és időzítő eseményindítóik, amelyek a bővítmény nem igénylik az egyetlen kivétel.  További információkért lásd: [regisztrálása és a kötési bővítményeket telepítse](./functions-triggers-bindings.md#register-binding-extensions).
+Verzió 2.x meghatározott eseményindítók és kötések az alkalmazás a functions által használt a bővítmények telepítését igényli. A HTTP- és időzítő eseményindítóik, amelyek a bővítmény nem igénylik az egyetlen kivétel.  További információkért lásd: [regisztrálása és a kötési bővítményeket telepítse](./functions-bindings-expressions-patterns.md).
 
 Vált továbbá néhány módosításával a `function.json` vagy attribútumok verziók között a függvénynek. Ha például az Event Hubs `path` tulajdonság már `eventHubName`. Tekintse meg a [létező kötés táblázat](#bindings) dokumentáció minden kötéshez mutató hivatkozásokat.
 
@@ -73,7 +73,7 @@ A verzió 2.x-es, a következő változások történtek:
 
 * HTTP-egyidejűség szabályozások vannak megvalósítva, példányonként 100 egyidejű kérelmek alapértelmezés szerint a használatalapú csomag funkciók alapértelmezés szerint. Ez az a [ `maxConcurrentRequests` ](functions-host-json.md#http) beállítása a host.json fájlban.
 
-* Mert [.NET core korlátozások](https://github.com/Azure/azure-functions-host/issues/3414), támogatja az F # függvény parancsfájl (.fsx) el lett távolítva. Lefordított F #-függvények (.fs) továbbra is támogatottak.
+* Mert [.NET core korlátozások](https://github.com/Azure/azure-functions-host/issues/3414), támogatja a F# parancsfájl (.fsx) funkciók el lettek távolítva. Lefordított F# függvények (.fs) továbbra is támogatottak.
 
 * Event Grid eseményindító webhookok URL-cím formátuma módosult `https://{app}/runtime/webhooks/{triggerName}`.
 
@@ -121,7 +121,7 @@ A verzió 2.x verziójú futtatókörnyezet használja egy új [bővíthetőség
 
 * Egy világosabb végrehajtási környezetet, ahol csak a használatban lévő kötéseket ismertek és a futtatókörnyezet által betöltött.
 
-HTTP- és időzítő eseményindító kivételével minden kötések kell explicit módon hozzá a függvényalkalmazás projektjét, vagy regisztrálva a portálon. További információkért lásd: [regisztrálja a kötési bővítményeket](functions-triggers-bindings.md#register-binding-extensions).
+HTTP- és időzítő eseményindító kivételével minden kötések kell explicit módon hozzá a függvényalkalmazás projektjét, vagy regisztrálva a portálon. További információkért lásd: [regisztrálja a kötési bővítményeket](./functions-bindings-expressions-patterns.md).
 
 Az alábbi táblázat mutatja, melyik kötések támogatottak a minden egyes modul verzióját.
 

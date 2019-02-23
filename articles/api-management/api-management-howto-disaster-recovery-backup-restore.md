@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 7da97b763c532a2189ef058cbb8ffb14c5b150f9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 56d0b8ced4a0eed3c2bf215ed0e5fc77c343f7fd
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968373"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728641"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás szolgáltatás biztonsági mentése és visszaállítása az Azure API Management szolgáltatásban
 
@@ -32,6 +32,8 @@ Ez az útmutató bemutatja, hogyan Azure Resource Manager-kérések hitelesíté
 > A biztonsági mentése és visszaállítása egy API Management-szolgáltatáspéldány vész-helyreállítási folyamatot is használható átmeneti hasonló forgatókönyvek esetén az API Management szolgáltatáspéldányok replikálásához.
 >
 > Minden egyes biztonsági másolat 30 nap után lejár. Visszaállítás biztonsági másolatból, a 30 napos lejárati időszak lejárta után kísérli meg, ha a visszaállítás sikertelen lesz, és egy `Cannot restore: backup expired` üzenet.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -207,7 +209,7 @@ Visszaállítás egy hosszú ideig futó művelet, amely előfordulhat, hogy 30 
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> Biztonsági mentési és visszaállítási műveletek is elvégezhető a PowerShell-lel *Backup-azurermapimanagement parancsmagok* és *Restore-azurermapimanagement parancsmagok* parancsokat jelölik.
+> Biztonsági mentési és visszaállítási műveletek is elvégezhető a PowerShell-lel *Backup-AzApiManagement* és *Restore-AzApiManagement* parancsokat jelölik.
 
 ## <a name="next-steps"></a>További lépések
 

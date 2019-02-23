@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: d549127b5cbdb3a94e435e753592f3227cb95f3a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 02059409000ee5b68fbcb8695f580980c95effe6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232214"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731708"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -121,11 +121,13 @@ Vegye figyelembe, hogy `<ipFilterIndexToRemove>` meg kell felelnie az IP-szűrő
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>Lekérése és frissítése az Azure PowerShell-lel IP-szűrők
 
-Az IoT Hub IP-szűrők lekérje és beállítása keresztül [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0). 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Az IoT Hub IP-szűrők lekérje és beállítása keresztül [Azure PowerShell-lel](/powershell/azure/overview). 
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name
-$iothubResource = Get-AzureRmResource -ResourceGroupName <resourceGroupNmae> -ResourceName <iotHubName> -ExpandProperties
+$iothubResource = Get-AzResource -ResourceGroupName <resourceGroupNmae> -ResourceName <iotHubName> -ExpandProperties
 
 # Access existing IP filter rules
 $iothubResource.Properties.ipFilterRules |% { Write-host $_ }
@@ -140,7 +142,7 @@ $iothubResource.Properties.ipFilterRules += $filter
 $iothubResource.Properties.ipFilterRules = @($iothubResource.Properties.ipFilterRules | Where 'filterName' -ne 'GoodIP')
 
 # Update your IoT Hub resource with your updated IP filters
-$iothubResource | Set-AzureRmResource -Force
+$iothubResource | Set-AzResource -Force
 ```
 
 ## <a name="update-ip-filter-rules-using-rest"></a>Frissítse az IP-szűrési szabályok REST használatával

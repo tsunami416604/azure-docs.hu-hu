@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: b706e229bed48c821d5ca772450df320fd7e0b7f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: bb6ae9f97d681625218118b8adca116de1c0fb21
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271799"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728233"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Az Azure Data Factory adatok folyamat létrehozása
 
@@ -34,7 +34,12 @@ A rendszer felkéri az Azure Blob Storage-fiók adatait adja meg.
 
 [Ezek a minták használt adatok itt található](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata). Töltse le a mintaadatokat, és tárolja a fájlokat az Azure Blob storage-fiókok, hogy a minták hajthat végre.
 
+## <a name="create-new-data-flow"></a>Hozzon létre új adatfolyamot
+
 Hozzon létre erőforrás "plusz" gomb ADF felhasználói felület létrehozása az adatok elkezdenek beérkezni használata
 
 ![A folyamat lehetőséget](media/data-flow/newresource.png "új erőforrás")
 
+## <a name="next-steps"></a>További lépések
+
+Az adatátalakítás az készítsen egy [átalakítási forrás](data-flow-source.md).

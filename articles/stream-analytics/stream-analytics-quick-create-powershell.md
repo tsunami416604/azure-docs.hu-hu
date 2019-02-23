@@ -8,12 +8,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 5591e8174f15d552bf7295d1c3fe9cb5257c0f2e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b79800f9a9f0eb44c16c7f45fa97c55eca8ecd1a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438898"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737943"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Gyors útmutató: Azure PowerShell-lel a Stream Analytics-feladat létrehozása
 
@@ -23,40 +23,42 @@ A példa feladat streamelési adatokat olvas be egy IoT Hub-eszköz. A bemeneti 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot.](https://azure.microsoft.com/free/)  
 
-* Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. Ahhoz, hogy megtudja, melyik verzió van telepítve a helyi gépen, futtassa a `Get-Module -ListAvailable AzureRM` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket.
+* Ez a rövid útmutatóhoz az Azure PowerShell-modul. Ahhoz, hogy megtudja, melyik verzió van telepítve a helyi gépen, futtassa a `Get-Module -ListAvailable Az` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
 
 * Műveletek nem támogatottak az Azure PowerShell és a befejezett használatával az Azure CLI 2.0.24-es vagy újabb verzióját kell egyes IoT Hub és az IoT-bővítmény Azure CLI-hez. [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és `az extension add --name azure-cli-iot-ext` az IoT-bővítmény telepítése.
 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` parancsot, majd az előugró böngészőablakban adja meg Azure hitelesítő adatait:
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` parancsot, majd az előugró böngészőablakban adja meg Azure hitelesítő adatait:
 
 ```powershell
 # Connect to your Azure account
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Ha több előfizetéssel rendelkezik, válassza ki az útmutató lépéseinek elvégzéséhez a következő parancsmag futtatásával használni kívánt előfizetést. Ügyeljen rá, hogy a `<your subscription name>` helyett saját előfizetésének a nevét adja meg:  
 
 ```powershell
 # List all available subscriptions.
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Select the Azure subscription you want to use to create the resource group and resources.
-Get-AzureRmSubscription -SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
+Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
 ```
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy Azure-erőforráscsoportot [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
 $location = "WestUS2"
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
    -Name $resourceGroup `
    -Location $location 
 ```
@@ -111,17 +113,17 @@ Az alábbi Azure CLI-kódblokkot hajtja végre a feladat bemeneti adatainak elő
 
 Az alábbi Azure PowerShell-kódblokkot parancsokat használja a feladat kimenetének használt blob-tároló létrehozása. Tekintse át az egyes szakaszokat a kód értelmezése céljából.
 
-1. Hozzon létre egy szabványos, általános célú tárfiókot a [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount) parancsmaggal.  Ez a példa létrehoz egy nevű tárfiókot **myasaquickstartstorage** titkosítással helyileg redundáns és blobtitkosítással (alapértelmezés szerint engedélyezve van).  
+1. Hozzon létre egy szabványos, általános célú storage fiókot [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) parancsmagot.  Ez a példa létrehoz egy nevű tárfiókot **myasaquickstartstorage** titkosítással helyileg redundáns és blobtitkosítással (alapértelmezés szerint engedélyezve van).  
    
 2. Kérje le a `$storageAccount.Context` nevű tárfiókkörnyezetet, amely meghatározza a használni kívánt tárfiókot. Ha a tárfiókok használatával történő munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. 
 
-3. Hozzon létre egy storage tárolót [New-AzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer).
+3. Hozzon létre egy storage tárolót [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontainer).
 
 4. A tárfiók hívóbetűjét, a kód által használt kimeneti adattípus másolja, majd mentse a kulcsot később létrehozása a streamelési feladat kimenetének a.
 
    ```powershell
    $storageAccountName = "myasaquickstartstorage"
-   $storageAccount = New-AzureRmStorageAccount `
+   $storageAccount = New-AzStorageAccount `
      -ResourceGroupName $resourceGroup `
      -Name $storageAccountName `
      -Location $location `
@@ -131,11 +133,11 @@ Az alábbi Azure PowerShell-kódblokkot parancsokat használja a feladat kimenet
    $ctx = $storageAccount.Context
    $containerName = "container1"
    
-   New-AzureStorageContainer `
+   New-AzStorageContainer `
      -Name $containerName `
      -Context $ctx
    
-   $storageAccountKey = (Get-AzureRmStorageAccountKey `
+   $storageAccountKey = (Get-AzStorageAccountKey `
      -ResourceGroupName $resourceGroup `
      -Name $storageAccountName).Value[0]
    
@@ -145,7 +147,7 @@ Az alábbi Azure PowerShell-kódblokkot parancsokat használja a feladat kimenet
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
-Hozzon létre egy Stream Analytics-feladatot a [New-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsjob?view=azurermps-5.4.0) parancsmaggal. Ennél a parancsmagnál a feladat neve, az erőforráscsoport-nevet és a feladat definíciója adható meg paraméterként. A feladat neve bármilyen, a feladatot azonosító rövid név lehet. Ez lehet alfanumerikus karaktereket, kötőjeleket, és aláhúzásjelet tartalmazhat, és 3 és 63 karakter között kell lennie. A feladat definíciója egy JSON-fájl, amely a feladat létrehozásához szükséges tulajdonságokat tartalmazza. Hozzon létre a helyi gépén egy `JobDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat:
+Hozzon létre egy Stream Analytics-feladatot a [New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob?view=azurermps-5.4.0) parancsmagot. Ennél a parancsmagnál a feladat neve, az erőforráscsoport-nevet és a feladat definíciója adható meg paraméterként. A feladat neve bármilyen, a feladatot azonosító rövid név lehet. Ez lehet alfanumerikus karaktereket, kötőjeleket, és aláhúzásjelet tartalmazhat, és 3 és 63 karakter között kell lennie. A feladat definíciója egy JSON-fájl, amely a feladat létrehozásához szükséges tulajdonságokat tartalmazza. Hozzon létre a helyi gépén egy `JobDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat:
 
 ```json
 {    
@@ -161,12 +163,12 @@ Hozzon létre egy Stream Analytics-feladatot a [New-AzureRmStreamAnalyticsJob](h
 }
 ```
 
-Ezután futtassa a `New-AzureRmStreamAnalyticsJob` parancsmagot. Cserélje le a értékét `jobDefinitionFile` változó az elérési útját, amelyben megtalálható a feladat definícióját JSON-fájlt. 
+Ezután futtassa a `New-AzStreamAnalyticsJob` parancsmagot. Cserélje le a értékét `jobDefinitionFile` változó az elérési útját, amelyben megtalálható a feladat definícióját JSON-fájlt. 
 
 ```powershell
 $jobName = "MyStreamingJob"
 $jobDefinitionFile = "C:\JobDefinition.json"
-New-AzureRmStreamAnalyticsJob `
+New-AzStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -File $jobDefinitionFile `
   -Name $jobName `
@@ -175,7 +177,7 @@ New-AzureRmStreamAnalyticsJob `
 
 ## <a name="configure-input-to-the-job"></a>A feladat bemenetének konfigurálása
 
-Adja meg a feladat bemenetét a [New-AzureRmStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsinput?view=azurermps-5.4.0) parancsmaggal. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladat bemenetének definíciója egy JSON-fájl, amely a feladat bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy blob storage-bA bemenetként fog létrehozni. 
+Vegye fel a feladat bemenete szerint a [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput?view=azurermps-5.4.0) parancsmagot. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladat bemenetének definíciója egy JSON-fájl, amely a feladat bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy blob storage-bA bemenetként fog létrehozni. 
 
 Hozzon létre a helyi gépén egy `JobInputDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Cserélje le az értéket `accesspolicykey` együtt a `SharedAccessKey` az IoT Hub kapcsolati karakterláncra az egyik előző szakaszban mentett része.
 
@@ -208,12 +210,12 @@ Hozzon létre a helyi gépén egy `JobInputDefinition.json` nevű fájlt, és ad
 }
 ```
 
-Ezután futtassa a `New-AzureRmStreamAnalyticsInput` parancsmag értékét cserélje le `jobDefinitionFile` változó az elérési útját, amelyben megtalálható a feladat bemenetének definícióját JSON-fájlt. 
+Ezután futtassa a `New-AzStreamAnalyticsInput` parancsmag értékét cserélje le `jobDefinitionFile` változó az elérési útját, amelyben megtalálható a feladat bemenetének definícióját JSON-fájlt. 
 
 ```powershell
 $jobInputName = "IoTHubInput"
 $jobInputDefinitionFile = "C:\JobInputDefinition.json"
-New-AzureRmStreamAnalyticsInput `
+New-AzStreamAnalyticsInput `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobInputDefinitionFile `
@@ -222,7 +224,7 @@ New-AzureRmStreamAnalyticsInput `
 
 ## <a name="configure-output-to-the-job"></a>A feladat kimenetének konfigurálása
 
-Adja meg a feladat kimenetét a [New-AzureRMStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsoutput?view=azurermps-5.4.0) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladat kimenetének definíciója egy JSON-fájl, amely a feladat kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként. 
+Kimenet hozzáadása a feladathoz használatával a [New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput?view=azurermps-5.4.0) parancsmagot. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladat kimenetének definíciója egy JSON-fájl, amely a feladat kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként. 
 
 Hozzon létre a helyi gépén egy `JobOutputDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Ügyeljen arra, hogy az `accountKey` értékét lecserélje a tárfiókja hozzáférési kulcsára, amelyet a $storageAccountKey értéke ad meg. 
 
@@ -256,12 +258,12 @@ Hozzon létre a helyi gépén egy `JobOutputDefinition.json` nevű fájlt, és a
 }
 ```
 
-Ezután futtassa a `New-AzureRmStreamAnalyticsOutput` parancsmagot. Ne felejtse el lecserélni a `jobOutputDefinitionFile` változó értékét arra az elérési útra, ahol a feladat kimenetét definiáló JSON-fájl található. 
+Ezután futtassa a `New-AzStreamAnalyticsOutput` parancsmagot. Ne felejtse el lecserélni a `jobOutputDefinitionFile` változó értékét arra az elérési útra, ahol a feladat kimenetét definiáló JSON-fájl található. 
 
 ```powershell
 $jobOutputName = "BlobOutput"
 $jobOutputDefinitionFile = "C:\JobOutputDefinition.json"
-New-AzureRmStreamAnalyticsOutput `
+New-AzStreamAnalyticsOutput `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobOutputDefinitionFile `
@@ -270,7 +272,7 @@ New-AzureRmStreamAnalyticsOutput `
 
 ## <a name="define-the-transformation-query"></a>A transzformációs lekérdezés definiálása
 
-Adjon hozzá transzformációt a feladathoz a [New-AzureRmStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticstransformation?view=azurermps-5.4.0) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat transzformációjának a neve, az erőforráscsoport neve, és a feladat transzformációjának definíciója adható meg paraméterként. Hozzon létre a helyi gépén egy `JobTransformationDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. A JSON-fájl tartalmaz egy query (lekérdezés) paramétert, amellyel definiálható a transzformációs lekérdezés:
+Adjon hozzá transzformációt a feladathoz használatával a [New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation?view=azurermps-5.4.0) parancsmagot. Ennél a parancsmagnál a feladat neve, a feladat transzformációjának a neve, az erőforráscsoport neve, és a feladat transzformációjának definíciója adható meg paraméterként. Hozzon létre a helyi gépén egy `JobTransformationDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. A JSON-fájl tartalmaz egy query (lekérdezés) paramétert, amellyel definiálható a transzformációs lekérdezés:
 
 ```json
 {     
@@ -284,12 +286,12 @@ Adjon hozzá transzformációt a feladathoz a [New-AzureRmStreamAnalyticsTransfo
 }
 ```
 
-Ezután futtassa a `New-AzureRmStreamAnalyticsTransformation` parancsmagot. Győződjön meg arról, hogy `jobTransformationDefinitionFile` változó az elérési útját, amelyben megtalálható a feladat átalakítási definíció JSON-fájlt. 
+Ezután futtassa a `New-AzStreamAnalyticsTransformation` parancsmagot. Győződjön meg arról, hogy `jobTransformationDefinitionFile` változó az elérési útját, amelyben megtalálható a feladat átalakítási definíció JSON-fájlt. 
 
 ```powershell
 $jobTransformationName = "MyJobTransformation"
 $jobTransformationDefinitionFile = "C:\JobTransformationDefinition.json"
-New-AzureRmStreamAnalyticsTransformation `
+New-AzStreamAnalyticsTransformation `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobTransformationDefinitionFile `
@@ -307,12 +309,12 @@ New-AzureRmStreamAnalyticsTransformation `
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>A Stream Analytics-feladat indítása és a kimenet ellenőrzése
 
-Indítsa el a feladatot a [Start-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0) parancsmaggal. Ennél a parancsmagnál a feladat neve, az erőforráscsoport neve, a feladat kimenetének indítási módja, és a kezdés ideje adható meg paraméterként. Az `OutputStartMode` által elfogadott értékek: `JobStartTime`, `CustomTime` és `LastOutputEventTime`. A PowerShell-dokumentáció [paraméterekkel](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0) foglalkozó szakaszában talál további információt arról, hogy ezek az értékek mit jelentenek. 
+Indítsa el a feladat segítségével a [Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob?view=azurermps-5.4.0) parancsmagot. Ennél a parancsmagnál a feladat neve, az erőforráscsoport neve, a feladat kimenetének indítási módja, és a kezdés ideje adható meg paraméterként. Az `OutputStartMode` által elfogadott értékek: `JobStartTime`, `CustomTime` és `LastOutputEventTime`. A PowerShell-dokumentáció [paraméterekkel](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob?view=azurermps-5.4.0) foglalkozó szakaszában talál további információt arról, hogy ezek az értékek mit jelentenek. 
 
 A következő parancsmag futtatása a `True` kimenetet adja vissza, ha a feladat elindult. A Storage-tárolóban létrejön egy kimeneti mappa, amely az átalakított adatokat tartalmazza. 
 
 ```powershell
-Start-AzureRmStreamAnalyticsJob `
+Start-AzStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -Name $jobName `
   -OutputStartMode 'JobStartTime'
@@ -323,7 +325,7 @@ Start-AzureRmStreamAnalyticsJob `
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a streamelési feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megelőzheti a feladat által használt streamelési egységek kiszámlázását. Ha később is szeretné használni a feladatot, akkor nem kell törölnie, hanem elég, ha leállítja. Ha nem fogja tovább használni ezt a feladatot, ha törli a következő parancsmag futtatásával a rövid útmutatóhoz létrehozott összes erőforrást:
 
 ```powershell
-Remove-AzureRmResourceGroup `
+Remove-AzResourceGroup `
   -Name $resourceGroup 
 ```
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: aa1df4811bfe1a59671e8e696958bed9c5ebff45
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 6cbde9d0d53cdd688c39381978bd338c66d5688e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593030"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671675"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Belső terheléselosztó létrehozása sablon használatával
 
@@ -47,7 +47,7 @@ A letöltött sablon PowerShell használatával történő üzembe helyezéséhe
 3. Szerkessze a fájlt, majd mentse el.
 4. Futtassa a **New-AzResourceGroupDeployment** parancsmag segítségével hozzon létre egy erőforráscsoportot a sablon használatával.
 
-    ```powershell
+    ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
         -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json' `
         -TemplateParameterFile 'C:\temp\azuredeploy.parameters.json'
@@ -60,7 +60,7 @@ Az alábbi lépéseket követve hozhatja létre a sablont az Azure parancssori f
 1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../cli-install-nodejs.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
 2. Az **azure config mode** parancs futtatásával váltson az Erőforrás-kezelő módra, a lent látható módon.
 
-    ```azurecli
+    ```azurecli-interactive
     azure config mode arm
     ```
 

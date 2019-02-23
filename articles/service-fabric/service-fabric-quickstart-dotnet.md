@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 3b7b70a5ac0c74cc920df823d1f9ae1152f86bff
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8e83da53d0b2f71abc1f74a0ca8fbc2405e75bda
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561195"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736583"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Gyors útmutató: Egy .NET Service fabric reliable services-alkalmazás üzembe helyezése
 
@@ -55,10 +55,10 @@ A gyorsútmutató elvégzéséhez:
 
 Miután telepítette a futtatókörnyezet, az SDK-k, a Visual Studio tools, Docker, és Docker rendszert, hozzon létre egy öt csomópontot számláló helyi fejlesztési fürtöt.
 
-> [!IMPORTANT]
-> Egy fürt létrehozása előtt a Dockernek futnia **kell**.
+> [!Note]
+> A Docker futó programot, ha a fürt létrehozása az oka, hogy a fürt létrehozása a tároló-funkciók engedélyezve. Ha Docker nem fut, akkor újra létre kell hozni a fürtöt, tároló-szolgáltatások engedélyezése.
+> Bár nem szükséges ehhez a rövid, az útmutatót követve Docker futtatja, a fürt létrehozásakor elérhető az ajánlott eljárásokat.
 > A Docker futásának ellenőrzéséhez nyisson meg egy terminálablakot, majd a `docker ps` parancs futtatásával ellenőrizze, hogy történik-e hiba. Ha a válasz nem jelez hibát, akkor a Docker fut, és készen áll a fürt létrehozására.
-
 
 1. Nyisson meg egy új, emelt szintű PowerShell-ablakot rendszergazdaként.
 2. Futtassa az alábbi PowerShell-parancsot egy fejlesztési fürt létrehozásához:

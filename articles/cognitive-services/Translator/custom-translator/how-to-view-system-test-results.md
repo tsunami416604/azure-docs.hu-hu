@@ -6,19 +6,19 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 6cad142c050ca1de7e4c5f9b4415132a82f38c7b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: 912d62796074c6841d8fb99801bd6ce1f54c7fcf
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215248"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726584"
 ---
 # <a name="view-system-test-results"></a>Rendszer teszteredményeinek megtekintése
 
-Ha a tanítási sikeres, tekintse át a rendszer tesztek a betanítási eredmények elemzéséhez. Ha elégedett a betanítási eredményekkel, helyezze el a betanított modell központi telepítési kérelmet. 
+Ha a tanítási sikeres, tekintse át a rendszer tesztek a betanítási eredmények elemzéséhez. Ha elégedett a betanítási eredményekkel, helyezze el a betanított modell központi telepítési kérelmet.
 
 ## <a name="system-test-results-page"></a>Rendszer vizsgálati eredmények lap
 

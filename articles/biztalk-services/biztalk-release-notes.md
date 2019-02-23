@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 722159b82845eff08e0c302eafd503459941ebe7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260333"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734761"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Az Azure BizTalk Services – kibocsátási megjegyzések
 
@@ -47,7 +47,8 @@ A Microsoft Azure BizTalk Services – kibocsátási megjegyzések az ebben a ki
 * A küldési-oldalon szerződés mostantól megadhatja az egyes séma csoportjainak különböző elválasztó karakter. Ez a konfiguráció a küldési oldalon szerződés protokoll beállításaiban van megadva. További információkért lásd: [egy X12 létrehozása az Azure BizTalk Services szerződés](https://msdn.microsoft.com/library/azure/hh689847.aspx) és [az EDIFACT-egyezmény létrehozása az Azure BizTalk Services](https://msdn.microsoft.com/library/azure/dn606267.aspx). Két új entitásokat is bekerülnek a TPM OM API ugyanazt a célt. Lásd: [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) és [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
 * Standard XSD szerkezeteket, beleértve a származtatott típusok, mostantól támogatottak. Lásd: [használjon standard XSD hoz létre, a maps-](https://msdn.microsoft.com/library/azure/dn793987.aspx) és [használata származtatott típusok Leképezési forgatókönyvek és példák a](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
 * AS2 új MIC üzenet az aláíráshoz és új titkosítási algoritmusok támogatja. Lásd: [egy AS2-egyezmény létrehozása az Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
-  ## <a name="know-issues"></a>Ismert problémák
+
+## <a name="known-issues"></a>Ismert problémák
 
 ### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>Kapcsolódási problémák, miután a BizTalk Services portál frissítése
   Ha a BizTalk Services portáljának megnyitásához, amíg a BizTalk Services szeretné visszaállítani a módosításokat a szolgáltatás frissítése, között előfordulhat, hogy kapcsolati problémák a BizTalk Services Portáljára.  

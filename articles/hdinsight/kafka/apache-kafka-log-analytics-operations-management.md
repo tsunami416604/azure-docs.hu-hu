@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 69eaa0028f1115cafbd1ed28b66940d7faaed062
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0862bcb2c04f3a8cd46a5e60644ebbb8c7735e51
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608545"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729967"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>A HDInsight-beli Apache kafka-naplók elemzése
 
@@ -64,13 +64,13 @@ A Log Analytics engedélyezése a HDInsight lépései megegyeznek az összes HDI
 
     | Napló típusa | Leírás |
     | ---- | ---- |
-    | napló\_kafkaserver\_CL | A Kafka-közvetítő Server.log elérési úton található |
+    | log\_kafkaserver\_CL | Kafka broker server.log |
     | napló\_kafkacontroller\_CL | A Kafka-közvetítő controller.log |
-    | metrikák\_kafka\_CL | A Kafka JMX-metrikák |
+    | metrikák\_kafka\_CL | Kafka JMX metrics |
 
     ![A CPU-használat keresés képe](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
  
- ## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>További lépések
 
 A Log Analytics további információkért lásd: a [Ismerkedés a Log Analytics-munkaterület](../../log-analytics/log-analytics-get-started.md) dokumentumot.
 

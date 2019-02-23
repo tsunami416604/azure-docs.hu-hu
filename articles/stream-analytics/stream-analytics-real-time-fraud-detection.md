@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73fffda6ec0ae0a65af9b5aa8505e3b9551bd3b4
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6433d130da108ce7bd0b6f8b4093161043c32645
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558175"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733146"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Első lépések az Azure Stream Analytics használatával: Csalások valós idejű észlelése
 
@@ -188,9 +188,9 @@ Most, hogy a hívási események streamjével, állíthat egy Stream Analytics-f
    |---------|---------|---------|
    |Bemeneti alias  |  CallStream   |  Adja meg a feladat bemenetének azonosító nevét.   |
    |Előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki az Azure-előfizetést, amely rendelkezik az Event Hubs hozott létre.   |
-   |Event Hubs-névtér  |  ASA-eh-ns-bemutató |  Adja meg az Eseményközpont névterének nevét.   |
-   |Eseményközpont neve  | ASA-eh-frauddetection – bemutató | Válassza ki az Event Hub nevét.   |
-   |Eseményközpont szabályzatának neve  | ASA-Csoportházirend-kezelése – bemutató | Válassza ki a korábban létrehozott hozzáférési szabályzat.   |
+   |Event Hubs-névtér  |  asa-eh-ns-demo |  Adja meg az Eseményközpont névterének nevét.   |
+   |Eseményközpont neve  | asa-eh-frauddetection-demo | Válassza ki az Event Hub nevét.   |
+   |Eseményközpont szabályzatának neve  | asa-policy-manage-demo | Válassza ki a korábban létrehozott hozzáférési szabályzat.   |
     </br>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
@@ -358,7 +358,7 @@ Ha rendelkezik meglévő blob storage-fiókot, használhatja azt. Ebben az oktat
    |Kimeneti alias  |  CallStream-FraudulentCalls   |  Adja meg a feladat kimenetének azonosító nevét.   |
    |Előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott tárfiók tartozik. A tárfiók tartozhat ugyanahhoz az előfizetéshez, de akár egy másik előfizetéshez is. A példa azt feltételezi, hogy a tárfiók ugyanahhoz az előfizetéshez tartozik. |
    |Tárfiók  |  asaehstorage |  Adja meg a létrehozott tárfiók nevére. |
-   |Tároló  | ASA-fraudulentcalls – bemutató | Válassza ki az új létrehozása, és adja meg a tároló nevét. |
+   |Tároló  | asa-fraudulentcalls-demo | Válassza ki az új létrehozása, és adja meg a tároló nevét. |
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     

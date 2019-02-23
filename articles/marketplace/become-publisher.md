@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 33edfdc58d82530bc1a5d0245b5e18e94b0a6dc1
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2970ef58e177d10eac80d46825f3fb985b98af61
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077555"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734965"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
 
@@ -45,7 +45,7 @@ A regisztrálás után jegyezze fel a Microsoft Partner Network-Azonosítóját 
 *   További információ a előnyeit a [Microsoft Partner Network](https://partner.microsoft.com/commercial)
 *   Ha a szervezet rendelkezik egy meglévő tagság, akkor a szervezet a regisztráció során akkor csatlakozik. Ha [Partnerközpont](https://partnercenter.microsoft.com/partner/home), fogja látni az azonosító a Partnerközpont-fiókkal. Ha [Partner tagsági Center (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx), fogja látni, a tagsági Partnerközpont-fiókkal. 
 
----  
+---
 
 ## <a name="2-create-a-microsoft-account"></a>2. Microsoft-fiók létrehozása  
 | 15 perc |}  
@@ -61,7 +61,7 @@ A Microsoft-fiók, pl. *@outlook.com vagy @live.com*, használható számos Micr
 *   Segítségre van szüksége vagy kezeléséről a Microsoft-fiókját, látogasson el a [Microsoft fiók támogatási súgóoldalak](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 
 
----  
+---
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3. A Marketplace-en regisztrációs űrlap beküldése  
 | 15 perc |}  
@@ -72,7 +72,7 @@ Meg kell adnia az alábbi információkat:
 *   Egy rövid leírást a kezdeti alkalmazás vagy tanácsadási szolgáltatásokat nyújtanak, hogy újra szeretné közzétenni, többek között a Microsoft-termék vagy szolgáltatás, amelyhez az ajánlat leginkább igazítja
 *   Az alkalmazás vagy szolgáltatás számára 
 
----  
+---
 ## <a name="4-sign-into-cloud-partner-portal"></a>4. Jelentkezzen be a Cloud Partner portálra
 | 1-3 napig |} <br>
 Marketplace-en csapat fogja ellenőrizni a piactér-beli regisztrációs részleteit a 3. lépésben megadott. Amint jóváhagyják, a fiók hitelesítő adatait és útmutatás a bejelentkezés üdvözlő e-mailt fog kapni a [Cloud Partner Portalon](https://cloudpartner.azure.com).
@@ -108,4 +108,4 @@ Befejezése után a [Dev Center](https://developer.microsoft.com/store/register)
 *   [A megoldás lista típusának meghatározása](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
 
  
----  
+---

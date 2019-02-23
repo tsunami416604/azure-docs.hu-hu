@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: shlo
-ms.openlocfilehash: 323d22363ee52ff6ccf7575b00c6b8b31a0fa156
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: e934c8bdc851f8c550e8b87a923215df3f95e389
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188494"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728256"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
@@ -221,7 +221,7 @@ A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcso
 
 Az adat-előállító két módszer segítségével konfigurálhatja a GitHub Enterprise-zal tárház.
 
- #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Konfiguráció (Enterprise tárházban) 1. módszer: Első lépések lap
+#### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Konfiguráció (Enterprise tárházban) 1. módszer: Első lépések lap
 
 Az Azure Data Factoryben, nyissa meg a **első lépések** lapot. Válassza ki **kódtár konfigurálása**:
 

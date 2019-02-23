@@ -14,18 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: 419e7b1ae05f92b5b97f5317c0315a71958eff9e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cdf644ab37d7f2e15cb35a3234786900a1a64ec1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005165"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733503"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>A Media Services frissítése tárelérési kulcsok váltása után 
 
 Amikor létrehoz egy új Azure Media Services (AMS)-fiókot, a rendszer is felkéri Azure Storage-fiókot, amely a médiatartalmak tárolására szolgál. A Media Services-fiók több mint egy storage-fiókok is hozzáadhat. Ez a cikk bemutatja, hogyan tárkulcsok rotálása. Azt is bemutatja, hogyan tárfiókok hozzáadása media-fiók. 
 
-Az ebben a cikkben leírt műveletek végrehajtását, kellene használni [Azure Resource Manager API-k](/rest/api/media/operations/azure-media-services-rest-api-reference) és [Powershell](https://docs.microsoft.com/powershell/module/azurerm.media).  További információkért lásd: [kezelése az Azure PowerShell és a Resource Manager-erőforrások](../../azure-resource-manager/powershell-azure-resource-manager.md).
+Az ebben a cikkben leírt műveletek végrehajtását, kellene használni [Azure Resource Manager API-k](/rest/api/media/operations/azure-media-services-rest-api-reference) és [Powershell](https://docs.microsoft.com/powershell/module/az.media).  További információkért lásd: [kezelése az Azure PowerShell és a Resource Manager-erőforrások](../../azure-resource-manager/powershell-azure-resource-manager.md).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Áttekintés
 
@@ -42,15 +44,15 @@ A Media Services megadott tárkulcs függ. A keresők továbbításához vagy le
 ## <a name="steps-to-rotate-storage-keys"></a>Tárkulcsok rotálása lépései 
  
  1. A tárfiók elsődleges hívóbetűjét a powershell-parancsmaggal módosíthatja vagy [Azure](https://portal.azure.com/) portálon.
- 2. Hívja meg Sync-AzureRmMediaServiceStorageKeys parancsmagot a megfelelő paraméterei media fiók tárfiókkulcsok csomópontmetrikák kényszerítése
+ 2. Hívja meg Sync-AzMediaServiceStorageKeys parancsmagot a megfelelő paraméterei media fiók tárfiókkulcsok csomópontmetrikák kényszerítése
  
     Az alábbi példa bemutatja, hogyan tárfiókokhoz kulcsok szinkronizálása.
   
-         Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
+         Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
   
  3. Várjon egy órát. Ellenőrizze, hogy a streamelési forgatókönyvek dolgozik.
  4. Módosítsa a tárfiók másodlagos kulcsát a powershell-parancsmag vagy az Azure Portalon keresztül.
- 5. Hívja meg az új tárfiókkulcsok csomópontmetrikák media fiók kényszerítése megfelelő paraméterei Sync-AzureRmMediaServiceStorageKeys powershell. 
+ 5. Hívja meg az új tárfiókkulcsok csomópontmetrikák media fiók kényszerítése megfelelő paraméterei Sync-AzMediaServiceStorageKeys powershell. 
  6. Várjon egy órát. Ellenőrizze, hogy a streamelési forgatókönyvek dolgozik.
  
 ### <a name="a-powershell-cmdlet-example"></a>Egy powershell parancsmag-példával 
@@ -63,7 +65,7 @@ Az alábbi példa bemutatja, hogyan a storage-fiók és szinkronizálás a az AM
     $storageAccountName = "skystorage"
     $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-    Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
+    Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
 
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Az AMS-fiók a storage-fiókok hozzáadásának lépéseit

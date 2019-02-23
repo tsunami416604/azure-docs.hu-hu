@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: dd13a8178fd74f54ffa6fa5d9d8c23d214965dca
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d6daf9805737294fb5bf0e9f4e48a3c7cfbb98e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866968"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731837"
 documentType: LandingData
 title: A Translator Text dokumentációja
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/06/18
+  ms.date: 02/21/2019
   ms.author: v-jansko
 abstract:
   description: 'A Translator Text egy felhőalapú gépi fordítási szolgáltatás, amellyel közel valós időben fordíthat le szövegeket egy egyszerű REST API-hívással. Az API modern idegi gépi fordítási technológiát használ, és statisztikai gépi fordító technológiával is rendelkezik. A Custom Translator a Translator Text API bővítménye, amellyel neurális fordítási rendszereket hozhat létre. A testre szabott fordítási rendszerrel a Translator Text API vagy a <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/"> Microsoft Speech Services</a> használatával fordíthat le szövegeket. A neurális és a statisztikai gépi fordítás által támogatott nyelvek listájáért lásd: <a href="languages.md">Támogatott nyelvek</a>.'

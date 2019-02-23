@@ -1,5 +1,5 @@
 ---
-title: Feltételes hozzáférés az Azure Active Directory B2B együttműködési felhasználókat |} A Microsoft Docs
+title: B2B-együttműködés felhasználók – az Azure Active Directory feltételes hozzáférés |} A Microsoft Docs
 description: Az Azure Active Directory B2B együttműködés támogatja a többtényezős hitelesítés (MFA) szelektív hozzáférést a vállalati alkalmazások
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 720f107b9a3908ebbc6dcbeca71b448c10cb8c6b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f51b42780a4a3500a5f5e8385d0973a335c2b78e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199392"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670179"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Feltételes hozzáférés B2B-együttműködés felhasználók
 

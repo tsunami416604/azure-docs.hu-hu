@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: d1d2dd689cb389b6adfe1dd534e7c73e17f755f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4beb9811a57ecd0a1eada5b36bd65b67851d2564
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989185"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731973"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Célcsoport-kezelési monitorozás az Azure Monitor (előzetes verzió)
 Egy figyelési megoldás hozzáadásakor az előfizetés automatikusan telepített összes Windows és Linux-ügynökök az a Log Analytics-munkaterülethez kapcsolódó alapértelmezés szerint.  Érdemes a költségek kezelése és az ügynökök egy adott készletét korlátozásával megoldás összegyűjtött adatok mennyisége korlátozza.  Ez a cikk ismerteti, hogyan használható **megoldás célcsoportjának** Ez a szolgáltatás lehetővé teszi, hogy a alkalmazni egy hatókört a megoldások.
@@ -35,7 +35,7 @@ Hozzon létre egy hatókört szerepeltetni kívánt számítógépek megad egy [
 Után a munkaterületen létrehozott számítógép csoportot, majd fog foglalni egy hatókör-konfigurációt, amely egy vagy több megoldásokat is alkalmazható.
  
  
- ### <a name="2-create-a-scope-configuration"></a>2. A hatókör-konfiguráció létrehozása
+### <a name="2-create-a-scope-configuration"></a>2. A hatókör-konfiguráció létrehozása
  A **hatókör-konfiguráció** tartalmaz egy vagy több számítógép csoport és a egy vagy több megoldásokat is alkalmazható. 
  
  Hozzon létre egy hatókör-konfigurációt a következő eljárással.  
@@ -49,7 +49,7 @@ Után a munkaterületen létrehozott számítógép csoportot, majd fog foglalni
  6. Kattintson a **OK** létrehozni a hatókör-konfigurációt. 
 
 
- ### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. A megoldás a hatókör-konfiguráció vonatkozik.
+### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. A megoldás a hatókör-konfiguráció vonatkozik.
 Miután egy hatókör-konfigurációt, majd alkalmazhatja azt egy vagy több megoldások.  Vegye figyelembe, hogy egy hatókör-konfigurációt is használható a több megoldásból, míg egyes megoldások csak használhat egy hatókör-konfigurációt.
 
 A alkalmazni egy hatókör-konfigurációt a következő eljárással.  

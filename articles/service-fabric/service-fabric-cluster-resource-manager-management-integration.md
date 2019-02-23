@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7a1bab75521730f7e80e5b86112bbb0aed129f88
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: a51593753cab8a6b07d99df46560808de5400047
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917874"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737926"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Fürt resource manager-integráció Service Fabric-fürt kezelése
 A Service Fabric fürterőforrás-kezelő nem meghajtó frissítése a Service Fabric, de részt vesz. Az első, amely segít a fürterőforrás-kezelő felügyeleti módja a fürt és a benne lévő szolgáltatások állapotának nyomon követése révén. A fürterőforrás-kezelő rendszerállapot-jelentések küldése során, a fürt nem állítható be a szükséges konfiguráció. Például ha nincs elegendő kapacitás a fürterőforrás-kezelő küld ki állapotával kapcsolatos figyelmeztetések és a probléma jelzik. Integráció egy másik részét rendelkezik, a frissítések működését. A fürterőforrás-kezelő működését kis mértékben változtatja frissítések során.  
@@ -73,11 +73,11 @@ HealthEvents          :
 
 Íme, mi az egészségügyi üzenet eredménytelen van:
 
-1. Magukat minden replika megfelelő: mindegyik rendelkezik AggregatedHealthState: Ok
+1. Magukat minden replika megfelelő: Mindegyik rendelkezik AggregatedHealthState: OK
 2. A frissítési tartomány terjesztési korlátozást jelenleg éppen sérül. Ez azt jelenti, hogy az adott frissítési tartományban van több replika ehhez a partícióhoz a kelleténél.
 3. Melyik csomópont tartalmazza a replikát a megsértést okoz. Ebben az esetben a "Node.8" nevű csomópont legyen.
 4. E frissítés pillanatnyilag folyamatban levő esetében ezt a particionálása ("jelenleg frissítése – a hamis")
-5. Ezt a szolgáltatást a terjesztési házirend: "A terjesztési házirend--balí se". Ez vonatkozik a `RequireDomainDistribution` [elhelyezési házirend](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Csomagolási" azt jelzi, hogy ebben az esetben DomainDistribution _nem_ szükséges, hogy tudjuk, hogy elhelyezési szabályzat nincs megadva ehhez a szolgáltatáshoz. 
+5. A terjesztési házirend ezt a szolgáltatást: "Terjesztési házirend – csomagolási". Ez vonatkozik a `RequireDomainDistribution` [elhelyezési házirend](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Csomagolási" azt jelzi, hogy ebben az esetben DomainDistribution _nem_ szükséges, hogy tudjuk, hogy elhelyezési szabályzat nincs megadva ehhez a szolgáltatáshoz. 
 6. Ha a jelentés történt – 8/10/2015 7:13:02-kor
 
 További információkat, például a powers riasztások olyan esetekre, hogy tudja hiba merült fel, és észlelheti és halt rossz frissítés is használható éles környezetben. Ebben az esetben tekintse meg, ha azt is döntse el, miért érdemes az erőforrás-kezelő a replikákat a frissítési tartományba, hogy kellett volna szeretnénk. A csomópontok a más frissítési tartományok volt, például általában csomagolási azért átmeneti.
@@ -92,12 +92,12 @@ Ebben az esetben a rendszerállapot-jelentések a fürt Resource Manager segíts
 ## <a name="constraint-types"></a>Korlátozás típusa
 Vegyük egyes ezeket a rendszerállapot-jelentések az másik korlátozások. Látni fogja a során a replika nem helyezhető el ezek a korlátozások kapcsolatos egészségügyi üzeneteket.
 
-* **ReplicaExclusionStatic** és **ReplicaExclusionDynamic**: ezek a korlátozások azt jelzi, hogy a megoldás el lett utasítva, mivel ugyanazon a partíción két szolgáltatás objektumait kell elhelyezni, ugyanazon a csomóponton. Ez nem engedélyezett, mert, majd az adott csomóponton hiba túlságosan hatással van a partíción. ReplicaExclusionStatic és ReplicaExclusionDynamic szinte ugyanaz a szabály, és nem igazán számít, a különbségeket. Ha egy korlátozást eltávolítási feladatütemezési ReplicaExclusionStatic vagy ReplicaExclusionDynamic korlátozást tartalmazó jelennek meg, a fürterőforrás-kezelő fenyegetésként észlel, hogy nincsenek-e elegendő csomópontok. Ehhez a fennmaradó megoldások használata ezen érvénytelen gyakorlatok, amelyek nem engedélyezettek. Az egyéb korlátozások a feladatütemezési fog általában mondja el, miért csomópont alatt kiküszöbölhetők az elsőként.
+* **ReplicaExclusionStatic** és **ReplicaExclusionDynamic**: Ezek a korlátozások azt jelzi, hogy a megoldás el lett utasítva, mivel ugyanazon a partíción két szolgáltatás objektumait kell elhelyezni, ugyanazon a csomóponton. Ez nem engedélyezett, mert, majd az adott csomóponton hiba túlságosan hatással van a partíción. ReplicaExclusionStatic és ReplicaExclusionDynamic szinte ugyanaz a szabály, és nem igazán számít, a különbségeket. Ha egy korlátozást eltávolítási feladatütemezési ReplicaExclusionStatic vagy ReplicaExclusionDynamic korlátozást tartalmazó jelennek meg, a fürterőforrás-kezelő fenyegetésként észlel, hogy nincsenek-e elegendő csomópontok. Ehhez a fennmaradó megoldások használata ezen érvénytelen gyakorlatok, amelyek nem engedélyezettek. Az egyéb korlátozások a feladatütemezési fog általában mondja el, miért csomópont alatt kiküszöbölhetők az elsőként.
 * **PlacementConstraint**: Ha ezt az üzenetet látja, az azt jelenti, hogy egyes csomópontok azt nem szükséges, mert a szolgáltatás-elhelyezési korlátozások nem egyeznek. A Microsoft nyomkövetési ki a jelenleg konfigurált elhelyezési korlátozások, ez az üzenet részeként. Ez a normál, ha egy elhelyezési korlátozás definiálva van. Azonban ha elhelyezési korlátozás helytelenül okozza-e túl sok csomópontot kell számolni, hogyan szeretné láthatja, hogy azt.
-* **NodeCapacity**: ezt a korlátot, az azt jelenti, hogy a fürterőforrás-kezelő nem tudta elhelyezni, a replikákat a jelzett csomópontokon mert, amely lenne kapacitás fölé helyezi.
+* **NodeCapacity**: Ezt a korlátot, az azt jelenti, hogy a fürterőforrás-kezelő nem tudta elhelyezni, a replikákat a jelzett csomópontokon mert, amely lenne kapacitás fölé helyezi.
 * **Affinitás**: Ez a korlát, hogy azt nem sikerült elhelyezni a replikát az érintett csomópontok óta a kapcsolat korlátozás megsértését okozna. További információk a kapcsolat [Ez a cikk](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-* **FaultDomain** és **UpgradeDomain**: ezt a korlátozást kiküszöböli a csomópontok, ha adott tartalék és frissítési tartományokban lévő csomagolási helyezi el a replika a jelzett csomópontokon okozna. Néhány példa témák megvitatásához ennél a határértéknél jelennek meg a témakör a [hibatűrési és frissítési tartomány korlátozások és az eredményül kapott viselkedés](service-fabric-cluster-resource-manager-cluster-description.md)
-* **PreferredLocation**: ne általában látja ezt a korlátozást csomópontot távolíthat a megoldás, mivel azt futtatja az optimalizálás alapértelmezés szerint. Az előnyben részesített földrajzi megszorítás is megtalálható frissítések során. A frissítés során használatos szolgáltatások áthelyezése vissza, ahol voltak a frissítés indításakor.
+* **FaultDomain** és **UpgradeDomain**: Ennél a határértéknél kiküszöböli a csomópontok, ha adott tartalék és frissítési tartományokban lévő csomagolási helyezi el a replika a jelzett csomópontokon okozna. Néhány példa témák megvitatásához ennél a határértéknél jelennek meg a témakör a [hibatűrési és frissítési tartomány korlátozások és az eredményül kapott viselkedés](service-fabric-cluster-resource-manager-cluster-description.md)
+* **PreferredLocation**: Ennél a határértéknél csomópontot távolíthat a megoldás, mivel azt futtatja az optimalizálás alapértelmezés szerint általában nem látható. Az előnyben részesített földrajzi megszorítás is megtalálható frissítések során. A frissítés során használatos szolgáltatások áthelyezése vissza, ahol voltak a frissítés indításakor.
 
 ## <a name="blocklisting-nodes"></a>Blocklisting csomópontok
 Egy másik egészségügyi üzenet a fürterőforrás-kezelő jelentések akkor, ha csomópontok blocklisted. Ideiglenes korlátozásként, hogy a rendszer automatikusan alkalmazza az Ön számára blocklisting is felfoghatók. Csomópontok blocklisted kaphat, ha a példányok adott típusú szolgáltatás indításakor ismétlődő kudarcát tapasztalható. Csomópontok száma – szolgáltatástípus alapon blocklisted. Egy csomópont lehet, hogy egy szolgáltatás típus blocklisted, de nem egy másik. 

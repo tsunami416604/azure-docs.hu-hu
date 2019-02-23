@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4ad41992b2ac0dfc98303601060ed299e75ddfc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a80ed6af005f04ec48729e918543b2de67810eba
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234288"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738589"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Hitelesítés és hitelesítési hibakódok
 
@@ -255,6 +255,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource - erőforrás nincs konfigurálva csak jogkivonatokat fogadni. |
 | AADSTS240001 | BulkAADJTokenUnauthorized – a felhasználó nem jogosult az eszközök regisztrálása az Azure ad-ben. |
 | AADSTS240002 | RequiredClaimIsMissing – a id_token nem használható `urn:ietf:params:oauth:grant-type:jwt-bearer` megadása.|
+| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy – a bérlői rendszergazda úgy állította be egy biztonsági szabályzatot, amely blokkolja ezt a kérelmet. Ellenőrizze a biztonsági házirendek definiált a bérlői szinten meghatározni, ha a kérelem megfelel-e a házirend követelményeinek. |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest – a címtárbérlőben/az alkalmazás nem található. Ez akkor fordulhat elő, ha az alkalmazás még nem a bérlő rendszergazdája telepítette vagy nem fogadta el a bérlő a egyetlen felhasználója sem. Előfordulhat, hogy van konfigurálva az azonosító értékét az alkalmazás vagy rossz bérlőhöz küldte a a hitelesítési kérést. |
 | AADSTS700020 | A hozzáférési engedély InteractionRequired - műveletet igényel. |
 | AADSTS700022 | InvalidMultipleResourcesScope – a bemeneti paraméter hatókör megadott értéke érvénytelen, mert egynél több erőforrást tartalmaz. |

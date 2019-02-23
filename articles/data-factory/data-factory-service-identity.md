@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Factory-szolgáltatásidentitás |} A Microsoft Docs
-description: Tudnivalók a data factory-szolgáltatásidentitás az Azure Data Factoryban.
+title: Felügyelt identitás a Data Factory |} A Microsoft Docs
+description: További információk a felügyelt identitás az Azure Data Factory.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -11,48 +11,48 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 7937836daad5ad299f3e5b7b6b7994ae40a833fd
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c49cff297404174a6331eaa82ab5efd585a345c4
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446886"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671811"
 ---
-# <a name="azure-data-factory-service-identity"></a>Az Azure Data Factory-szolgáltatásidentitás
+# <a name="managed-identity-for-data-factory"></a>A Data Factory felügyelt identitás
 
-Ez a cikk segítségével megismerheti, mi a data factory-szolgáltatásidentitás és működését.
+Ez a cikk segít megérteni a felügyelt identitás Mi a Data Factory (korábbi nevén ismert, Felügyeltszolgáltatás-identitás/MSI) és működését.
 
 ## <a name="overview"></a>Áttekintés
 
-Amikor egy adat-előállítót hoz létre, a felügyeltszolgáltatás-identitás gyári létrehozása mellett is létrehozható. A felügyeltszolgáltatás-identitását egy felügyelt alkalmazást, regisztrálni az Azure Active Directory, és az adott adat-előállító jelöli.
+Amikor egy adat-előállítót hoz létre, egy felügyelt identitás gyári létrehozása mellett is létrehozható. A felügyelt identitás egy felügyelt alkalmazást, regisztrálni az Azure Active Directory, és az adott adat-előállító jelöli.
 
-Data factory-szolgáltatásidentitás számos előnyt biztosít, a következő funkciókat:
+A Data Factory felügyelt identitás számos előnyt biztosít, a következő funkciókat:
 
-- [Hitelesítő adatok Store az Azure Key Vaultban](store-credentials-in-key-vault.md), ebben az esetben a data factory-szolgáltatásidentitás Azure Key Vault hitelesítési szolgál.
+- [Hitelesítő adatok Store az Azure Key Vaultban](store-credentials-in-key-vault.md), ebben az esetben a data factory által felügyelt identitás az Azure Key Vault hitelesítési szolgál.
 - Összekötők, többek között [Azure Blob storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL Database](connector-azure-sql-database.md), és [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md).
 - [Webes tevékenység](control-flow-web-activity.md).
 
-## <a name="generate-service-identity"></a>Felügyeltszolgáltatás-identitás létrehozása
+## <a name="generate-managed-identity"></a>Hozzon létre felügyelt identitás
 
-Data factory-szolgáltatásidentitás jön létre a következő:
+A Data Factory felügyelt identitás jön létre a következő:
 
-- A data factory segítségével létrehozásakor **az Azure portal vagy a PowerShell**, a felügyeltszolgáltatás-identitást a rendszer mindig automatikusan létrehozza.
-- A data factory segítségével létrehozásakor **SDK**, felügyeltszolgáltatás-identitás hozható létre, csak akkor, ha megad "identitás új FactoryIdentity() =" az előállító objektum létrehozásához. A példa [.NET – rövid útmutató – adat-előállító létrehozása](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
-- A data factory segítségével létrehozásakor **REST API-t**, csak akkor, ha a kérelem törzsében megadott "identity" szakasz létrehozza a felügyeltszolgáltatás-identitást. A példa [REST-rövid útmutató – adat-előállító létrehozása](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
+- A data factory segítségével létrehozásakor **az Azure portal vagy a PowerShell**, felügyelt identitás mindig automatikusan létrejönnek.
+- Keresztül adat-előállító létrehozása során **SDK**, felügyelt identitás hozható létre, csak akkor, ha a megadott "Identity új FactoryIdentity() =" az előállító objektum létrehozásához. A példa [.NET – rövid útmutató – adat-előállító létrehozása](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
+- A data factory segítségével létrehozásakor **REST API-val**, felügyelt identitás hozható létre, csak akkor, ha a "identity" szakaszban adja meg a kérelem törzsében. A példa [REST-rövid útmutató – adat-előállító létrehozása](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 
-Ha látja az adat-előállító nem rendelkezik a következő tartozó szolgáltatásidentitás [beolvasni a felügyeltszolgáltatás-identitás](#retrieve-service-identity) utasítást, explicit módon létrehozhat egyet a data factory programozott módon az identitás kezdeményező frissítésével:
+Ha látja az adat-előállító nem rendelkezik egy felügyelt identitás kapcsolódó következő [lekérése a felügyelt identitás](#retrieve-managed-identity) utasítást, explicit módon létrehozhat egyet a data factory programozott módon az identitás kezdeményező frissítésével:
 
-- [PowerShell-lel felügyeltszolgáltatás-identitás létrehozása](#generate-service-identity-using-powershell)
-- [A REST API használatával felügyeltszolgáltatás-identitás létrehozása](#generate-service-identity-using-rest-api)
-- Hozzon létre egy Azure Resource Manager-sablonnal felügyeltszolgáltatás-identitás
-- [SDK-val felügyeltszolgáltatás-identitás létrehozása](#generate-service-identity-using-sdk)
+- [Hozzon létre felügyelt identitás PowerShell-lel](#generate-managed-identity-using-powershell)
+- [A REST API használatával felügyelt identitás létrehozása](#generate-managed-identity-using-rest-api)
+- Hozzon létre egy Azure Resource Manager-sablon használatával felügyelt identitás
+- [Hozzon létre felügyelt identitás SDK-val](#generate-managed-identity-using-sdk)
 
 >[!NOTE]
->- Felügyeltszolgáltatás-identitás nem módosítható. Egy adat-előállítót, amely már rendelkezik egy felügyeltszolgáltatás-identitás frissítése nem lesz hatással, a felügyeltszolgáltatás-identitás változatlan marad.
->- Ha frissít egy adat-előállítót, amely már rendelkezik egy felügyeltszolgáltatás-identitás, a példánygyár objektumot a "identity" paraméter megadása nélkül, vagy a REST-kérés törzse "identity" szakasz megadása nélkül, megjelenik egy hibaüzenet.
->- Ha töröl egy adat-előállítót, társított szolgáltatásidentitás mentén törlődni fog.
+>- Felügyelt identitás nem módosítható. Egy adat-előállítót, amely már rendelkezik egy felügyelt identitás frissítése nem lesz hatással, a felügyelt identitás változatlan marad.
+>- Ha frissít egy adat-előállítót, amely már rendelkezik egy felügyelt identitás, a példánygyár objektumot a "identity" paraméter megadása nélkül, vagy a REST-kérés törzse "identity" szakasz megadása nélkül, megjelenik egy hibaüzenet.
+>- Ha töröl egy adat-előállító, a kapcsolódó felügyelt identitás mentén törlődni fog.
 
-### <a name="generate-service-identity-using-powershell"></a>PowerShell-lel felügyeltszolgáltatás-identitás létrehozása
+### <a name="generate-managed-identity-using-powershell"></a>Hozzon létre felügyelt identitás PowerShell-lel
 
 Hívás **Set-AzureRmDataFactoryV2** parancsot újra, majd "Identity" az újonnan létrehozott mezők:
 
@@ -68,7 +68,7 @@ Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentit
 ProvisioningState : Succeeded
 ```
 
-### <a name="generate-service-identity-using-rest-api"></a>A REST API használatával felügyeltszolgáltatás-identitás létrehozása
+### <a name="generate-managed-identity-using-rest-api"></a>A REST API használatával felügyelt identitás létrehozása
 
 Alább API-t hívja meg a kérelem törzsében szereplő "identity" szakaszban:
 
@@ -89,7 +89,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**Válasz**: felügyeltszolgáltatás-identitást a rendszer automatikusan létrehozza, és a "identity" szakasz ennek megfelelően fel van töltve.
+**Válasz**: felügyelt identitás automatikusan létrejön, és a "identity" szakasz ennek megfelelően fel van töltve.
 
 ```json
 {
@@ -112,7 +112,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-service-identity-using-an-azure-resource-manager-template"></a>Hozzon létre egy Azure Resource Manager-sablonnal felügyeltszolgáltatás-identitás
+### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Hozzon létre egy Azure Resource Manager-sablon használatával felügyelt identitás
 
 **Sablon**: hozzáadása "identity": {"type": "SystemAssigned"}.
 
@@ -132,7 +132,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-service-identity-using-sdk"></a>SDK-val felügyeltszolgáltatás-identitás létrehozása
+### <a name="generate-managed-identity-using-sdk"></a>Hozzon létre felügyelt identitás SDK-val
 
 A data factory create_or_update függvény identitással = új FactoryIdentity(). A mintakód .NET használatával:
 
@@ -145,26 +145,26 @@ Factory dataFactory = new Factory
 client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 ```
 
-## <a name="retrieve-service-identity"></a>Felügyeltszolgáltatás-identitás beolvasása
+## <a name="retrieve-managed-identity"></a>Felügyelt identitás beolvasása
 
-A felügyeltszolgáltatás-identitás az Azure Portalon vagy programozott módon kérheti le. A következő szakaszok bemutatják az egyes minták.
+A felügyelt identitás, az Azure Portalon vagy programozott módon kérheti le. A következő szakaszok bemutatják az egyes minták.
 
 >[!TIP]
-> Ha nem látja a felügyeltszolgáltatás-identitás [felügyeltszolgáltatás-identitás létrehozása](#generate-service-identity) az előállító frissítésével.
+> Ha nem látja a felügyelt identitás [készítése felügyelt identitás](#generate-managed-identity) az előállító frissítésével.
 
-### <a name="retrieve-service-identity-using-azure-portal"></a>Beolvasni a felügyeltszolgáltatás-identitás az Azure portal használatával
+### <a name="retrieve-managed-identity-using-azure-portal"></a>Az Azure portal használatával felügyelt identitás beolvasása
 
-Annak a identitás adatait az Azure portal -> a data factory -> Beállítások -> Tulajdonságok:
+A felügyelt azonosító adatok az Azure portal -> annak a data factory -> Beállítások -> Tulajdonságok:
 
 - SZOLGÁLTATÁSIDENTITÁS AZONOSÍTÓJA
 - SZOLGÁLTATÁSIDENTITÁS BÉRLŐJE
 - **SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója** > másolja ezt az értéket
 
-![Felügyeltszolgáltatás-identitás beolvasása](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+![Felügyelt identitás beolvasása](media/data-factory-service-identity/retrieve-service-identity-portal.png)
 
-### <a name="retrieve-service-identity-using-powershell"></a>PowerShell-lel felügyeltszolgáltatás-identitás beolvasása
+### <a name="retrieve-managed-identity-using-powershell"></a>PowerShell-lel felügyelt identitás beolvasása
 
-A felügyeltszolgáltatás-identitás résztvevő-Azonosítóját és bérlőazonosítóját vissza kell adni, ha egy adott adat-előállítót a következő:
+A felügyelt identitás résztvevő-Azonosítóját és bérlőazonosítóját vissza kell adni, ha egy adott adat-előállítót a következő:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzureRmDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -187,9 +187,9 @@ Type                  : ServicePrincipal
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő témakörök, amelyek vezeti be, mikor és hogyan használhatja a data factory-szolgáltatásidentitás:
+Tekintse meg a következő témakörök, amelyek vezeti be, mikor és hogyan használja a data factory által felügyelt identitás:
 
 - [Hitelesítő adatok Store az Azure Key Vaultban](store-credentials-in-key-vault.md)
 - [Másolja az adatokat, és az Azure Data Lake Store az Azure-erőforrások hitelesítési felügyelt identitások használatával](connector-azure-data-lake-store.md)
 
-Lásd: [felügyelt identitások Azure-erőforrások áttekintő](/azure/active-directory/managed-identities-azure-resources/overview) ismertető háttér-felügyelt identitások Azure-erőforrások számára, mely data factory-szolgáltatásidentitás alapul. 
+Lásd: [felügyelt identitások Azure-erőforrások áttekintő](/azure/active-directory/managed-identities-azure-resources/overview) típusán alapuló további háttérben az Azure-erőforrások, mely a data factory által felügyelt identitás felügyelt identitások számára. 

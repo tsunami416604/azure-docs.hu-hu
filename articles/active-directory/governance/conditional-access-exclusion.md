@@ -1,6 +1,6 @@
 ---
-title: A feltételes hozzáférési szabályzatok kizárt felhasználók kezelése az Azure AD hozzáférési felülvizsgálatok |} A Microsoft Docs
-description: Használja az Azure Active Directory (Azure AD) hozzáférési felülvizsgálatok a feltételes hozzáférési szabályzatok kizárt felhasználók kezelése
+title: Az Azure AD hozzáférési felülvizsgálatok segítségével a felhasználók ki vannak zárva a feltételes hozzáférési szabályzatok kezelése |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja az Azure Active Directory (Azure AD) hozzáférési felülvizsgálatokkal a feltételes hozzáférési szabályzatok kizárt felhasználók kezelése
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82fdfe598e11415130950443fb0d3e27f5d9d01
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 75ff08111e96fd4b210dfeb09db521856f4f5e52
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168540"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727502"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>A feltételes hozzáférési szabályzatok kizárt felhasználók kezelése az Azure AD hozzáférési felülvizsgálatok
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Használja az Azure AD hozzáférési felülvizsgálatok felhasználók ki vannak zárva a feltételes hozzáférési szabályzatok kezelése
 
-Az ideális világában a minden felhasználó követnie a hozzáférési szabályzatok a munkahelyi erőforrásokhoz való hozzáférés biztonságossá tétele érdekében. Azonban néha előfordulhatnak olyan üzleti esetek, amelyek kivételek kérik. Ez a cikk azt ismerteti, néhány példa, amelyben kizárások szükség lehet, és hogyan, az informatikai rendszergazdaként kezelheti ezt a feladatot, felügyeletét, házirend kivételek elkerülése érdekében, és auditorok biztosítanak arról, hogy az ilyen kivételek lektorálhatók rendszeresen használja az Azure Az Active Directory (Azure AD) hozzáférési felülvizsgálatokkal.
+Az ideális világában a minden felhasználó követnie a hozzáférési szabályzatok a munkahelyi erőforrásokhoz való hozzáférés biztonságossá tétele érdekében. Azonban néha előfordulhatnak olyan üzleti esetek, amelyek kivételek kérik. Ez a cikk azt ismerteti, néhány példa, amelyben kizárások szükség lehet, és hogyan, az informatikai rendszergazdaként kezelheti ezt a feladatot, felügyeletét, házirend kivételek elkerülése érdekében, és auditorok biztosítanak arról, hogy az ilyen kivételek lektorálhatók rendszeresen használja az Azure Active Directory (Azure AD) hozzáférési felülvizsgálatokkal.
 
 > [!NOTE]
 > Egy érvényes Azure AD Premium P2, Enterprise Mobility + Security E5 díjköteles vagy próbaidőszaki licence van szükség az Azure AD hozzáférési felülvizsgálatokkal. További információk: [Azure Active Directory editions](../fundamentals/active-directory-whatis.md) (Azure Active Directory-kiadások).
@@ -158,5 +158,5 @@ INFORMATIKAI rendszergazdaként, hogy a szabályzatokhoz kizárási csoportok ke
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure AD-csoport tagjainak vagy alkalmazás-hozzáférés hozzáférési felülvizsgálat létrehozása](create-access-review.md)
+- [Csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat létrehozása](create-access-review.md)
 - [Mi az az Azure Active Directory feltételes hozzáférés?](../conditional-access/overview.md)

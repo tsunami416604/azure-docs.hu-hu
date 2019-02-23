@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 02d3cd3688f3b34c92422168b79cb4da5a93d970
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 4537d15f88732d4b0c3c3cf514d6b8528af10f81
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587990"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737467"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Hitelesítés a Stream Analytics használatával az Azure Data Lake Storage Gen1 felügyelt identitások (előzetes verzió) használatával
 
@@ -22,6 +22,8 @@ Az Azure Stream Analytics felügyelt identitás hitelesítés az Azure Data Lake
 Látogasson el a [nyolc új funkciók az Azure Stream Analyticsben](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) feliratkozás az előzetes verzió és tanulmányozza részletesen az új funkciók a blogbejegyzést.
 
 Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-feladat, amely, egy Azure Data Lake Storage Gen1 keresztül az Azure Portalon, az Azure Resource Manager-sablon üzembe helyezése és az Azure Stream Analytics tools for Visual Studio-felügyelt identitást.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -158,7 +160,7 @@ Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-
 2. Hozzáférést biztosít az egyszerű szolgáltatás PowerShell használatával. Hozzáférést biztosít a Powershellen keresztül egyszerű szolgáltatást, futtassa a következő parancsot:
 
    ```powershell
-   Set-AzureRmDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
+   Set-AzDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
    ```
 
    A **PrincipalId** a szolgáltatásnév Objektumazonosítóját, és az egyszerű szolgáltatás létrehozása után megjelenik a portál képernyőjén. A feladat egy Resource Manager-sablon üzembe helyezése használatával hozta létre, ha Objektumazonosítóját a feladat válasz az azonosító tulajdonság szerepel.
@@ -166,11 +168,11 @@ Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-
    **Példa**
 
    ```powershell
-   PS > Set-AzureRmDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
+   PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   A fenti PowerShell-paranccsal kapcsolatos további információkért tekintse meg a [Set-AzureRmDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreitemaclentry?view=azurermps-6.8.1&viewFallbackFrom=azurermps-4.2.0#optional-parameters) dokumentációját.
+   A fenti PowerShell-paranccsal kapcsolatos további információkért tekintse meg a [Set-AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry#optional-parameters) dokumentációját.
 
 ## <a name="limitations"></a>Korlátozások
 Ez a funkció nem támogatja a következőket:

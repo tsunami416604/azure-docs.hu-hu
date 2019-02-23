@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: d1c7340038731ebde10a7ffcb0ef2adcde18e901
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 8648042c114c514df2218249719faa3ff19df5ec
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267495"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669822"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
 Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. A különböző platformokon, beleértve a .NET, Node.js és Java EE-alapú, számos olyan alkalmazásokkal működik a helyszíni, hibrid vagy bármely nyilvános felhőben üzemeltetett. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
@@ -107,7 +107,6 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
 * **Futtatáskor: webalkalmazás vizsgálata a kiszolgálón.** Elkerülheti a kódfrissítéseket. Adminisztrátori hozzáféréssel kell rendelkeznie a kiszolgálón.
   * [**IIS a helyszínen vagy egy virtuális gépen**](../../azure-monitor/app/monitor-performance-live-website-now.md)
   * [**Azure-webalkalmazás vagy virtuális gép**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-  * [**Java EE**](../../azure-monitor/app/java-live.md)
 * **Fejlesztéskor: az Application Insights hozzáadása a kódhoz.** Egyéni telemetriai adatok használatát, valamint háttérbeli szolgáltatások és asztali alkalmazások vizsgálatát teszi lehetővé.
   * [Visual Studio](../../azure-monitor/app/asp-net.md) 2013 2. frissítés vagy újabb.
   * [Java](../../azure-monitor/app/java-get-started.md)
@@ -117,12 +116,10 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
 * **[Elemezheti a mobilalkalmazások használatát](../../azure-monitor/learn/mobile-center-quickstart.md)** a Visual Studio App Center integrálásával.
 * **[Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md)** – rendszeresen pingelheti webhelyét kiszolgálóinkról.
 
-
 ## <a name="next-steps"></a>További lépések
 Első lépések futtatáskor:
 
 * [IIS-kiszolgáló](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE-alapú kiszolgálón](../../azure-monitor/app/java-live.md)
 
 Első lépések fejlesztéskor:
 

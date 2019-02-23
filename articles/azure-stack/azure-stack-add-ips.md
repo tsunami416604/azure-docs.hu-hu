@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: scottnap
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: ed2205455c4d3c82554f3d552bacc059fffa68e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cbfe4fcf30e9529f191f2a80de8ab83e7e0811f7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174656"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735892"
 ---
 # <a name="add-public-ip-addresses"></a>Add Public IP Addresses
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*  
@@ -53,11 +53,6 @@ Az első lépésben kell tennie, hogy a-Címblokk hozzáadása az Azure Stackhez
 8.   Adja meg a-Címblokk szeretne hozzáadni a CIDR-jelölésrendszerben.  Példa: 192.168.203.0/24
 9.  Ha megad egy érvényes CIDR-tartományt a cím címtartomány (CIDR-blokk) mezőbe a kezdő IP-cím, záró IP-cím és a rendelkezésre álló IP-címek mezők automatikusan kitöltődnek.  Ezek csak olvasható, és automatikusan jönnek létre, így ezek a cím tartományt mező értékének módosítása nélkül nem módosítható.
 10. Minden állapíthatja meg a panelen található információk áttekintése után kijavításához kattintson az Ok gombra a módosítás véglegesítéséhez és a címtartomány hozzáadása az Azure Stackhez.
-
-## <a name="update-the-acls-on-your-top-of-rack-switches"></a>Hozzáférés-vezérlési listák a tor kapcsolók frissítése
-A legutolsó dolog, és engedélyezze az újonnan hozzáadott IP-címtartomány működéséhez szükséges, hogy a hozzáférés-vezérlési listák (ACL) a Top-of-Rack (ToR) kapcsoló a frissítése.  Hozzáférés-vezérlési listák a ToR-kapcsolók oly módon, hogy csatlakozik az Azure Stack-en kívül az újonnan hozzáadott IP-címtartomány nem fog működni az új tartományon amíg zárolva hozzáadódik a hozzáférés-vezérlési listák a kapcsolón.  
-
-A készülék gyártójától és vele a hozzáférés-vezérlési listák a ToR-kapcsolók frissíteni kell.  Az eszközök támogatott módon ehhez szükség van.
 
 
 ## <a name="next-steps"></a>További lépések 

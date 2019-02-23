@@ -6,22 +6,22 @@ services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: scottwhi
-ms.openlocfilehash: 957a104b8fea7274763f16320cc094ede1f94567
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 96bb11dad34d6ebcfebe0956d2a08b954a37e843
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871837"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733044"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Mi az a Bing Entity Search API?
 
 A Bing Entity Search API egy keresési lekérdezést küld a Bingnek, majd entitásokat és helyeket tartalmazó találatokat kap vissza. A helytalálatok lehetnek éttermek, szállodák vagy egyéb helyi vállalkozások. A Bing helyeket ad vissza, ha a lekérdezés a helyi vállalkozás nevét adja meg, vagy egy vállalkozástípus iránt érdeklődik (például „éttermek a közelben”). A Bing entitásokat ad vissza, ha a lekérdezés közismert személyeket, helyeket (látnivalókat, államokat, országokat stb.) vagy dolgokat ad meg.
 
-|Funkció  |Leírás  |
+|Szolgáltatás  |Leírás  |
 |---------|---------|
 |[Valós idejű keresési javaslatok](concepts/search-for-entities.md#suggest-search-terms-with-the-bing-autosuggest-api)     | Adja meg a keresési javaslatok, mint egy legördülő lista a felhasználók által beírt jelenhet meg.       | 
 | [Entitás Egyértelműsítő](concepts/search-for-entities.md#the-bing-entity-search-api-response)  | Több entitás több lehetséges jelentését lekérdezések beolvasása. |

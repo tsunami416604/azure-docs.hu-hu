@@ -6,15 +6,15 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 87ea4edd9bb548701d6bcf63dd542ed6e35d9f7f
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.topic: conceptual
+ms.openlocfilehash: 2b7e709a06797323cc99bfd636ee26e9bfb8026d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585544"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731854"
 ---
 # <a name="what-is-a-dictionary"></a>Mi az, hogy egy szótárban?
 
@@ -22,7 +22,7 @@ Egy szótárban igazított párjának dokumentumok, amely felsorolja a kifejezé
 
 Szótárak csak működik, amely egy teljes körűen támogatott a Microsoft Neurális gépi fordítás (NMT) rendszer mögöttük nyelvi címpárral projektekhez. [A nyelvek teljes listáját megtekintheti](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
-## <a name="phrase-dictionary"></a>A kifejezés szótár 
+## <a name="phrase-dictionary"></a>A kifejezés szótár
 Amikor egy kifejezést szótár szerepel a modell tanítása, szót vagy kifejezést, megjelenik a megadott módon le. A többi a mondat a szokásos módon van lefordítva. Egy kifejezés szótár segítségével adja meg a kifejezések, amelyek azáltal, hogy a forrás és cél fájlban a szótár azonos jelez a nem konvertált kifejezés nem fordítható.
 
 ## <a name="sentence-dictionary"></a>Mondat szótár
@@ -36,9 +36,9 @@ Csak a szótár-adatokat használó modell betaníthatja. Ehhez válassza ki a c
 
 ## <a name="recommendations"></a>Javaslatok
 
-- Szótárak nem lesznek a betanított modell a betanítási adatok helyett.  A szótárak lényegében keresés és csere szavakat vagy mondatokat.  Így a rendszer az oktatóanyag teljes mondatokban tanuljon alapvetően jobb megoldás, mint egy szótár segítségével. 
+- Szótárak nem lesznek a betanított modell a betanítási adatok helyett.  A szótárak lényegében keresés és csere szavakat vagy mondatokat.  Így a rendszer az oktatóanyag teljes mondatokban tanuljon alapvetően jobb megoldás, mint egy szótár segítségével.
 - A kifejezés szótár takarékosan. Egy kifejezés mondaton belül váltja fel, ha az adott mondaton belül környezet elveszett vagy fordíthatók le mindkét irányba a mondat részeinek korlátozott. Az eredmény, hogy közben a kifejezést vagy word, az adott mondaton belül lefordítja a kifejezés szótár megfelelően, a fordítási minőség a mondat gyakran romlani fog.
-- A kifejezés szótár jól főnevek például termékneveket ("Microsoft SQL Server"), a megfelelő neveket ("város Hamburg") vagy a szolgáltatások a termék ("kimutatás") működik. Nem működik egyaránt jól műveletek vagy melléknevek, mert ezek vannak általában magas ragozott a forrás vagy cél nyelven. A kifejezés dictionary bejegyzései a főnevek csak elkerülése érdekében. 
+- A kifejezés szótár jól főnevek például termékneveket ("Microsoft SQL Server"), a megfelelő neveket ("város Hamburg") vagy a szolgáltatások a termék ("kimutatás") működik. Nem működik egyaránt jól műveletek vagy melléknevek, mert ezek vannak általában magas ragozott a forrás vagy cél nyelven. A kifejezés dictionary bejegyzései a főnevek csak elkerülése érdekében.
 - Egy szótárban használatakor a kis-és nagybetűk, és a fordítások írásjelek jelenik meg a kis-és nagybetűk, és a célként megadott fájlban megadott absztrakt. Írásjelek és a kis-és nagybetűk figyelmen kívül hagyja azonosíthatja a bemeneti mondatot, és a szótár fájlban a forrás mondatok megegyezzen tett kísérlet során. Például tegyük fel, hogy betanított egy angol, spanyol rendszerre, amely egy szótárban használt, a megadott "város Hamburg" a forrásfájl és a cél fájlban "Ciudad Németország hamburg". Amely tartalmazza a "város Hamburg" kifejezést a mondatok fordítása kérésre majd "város Hamburg" megfelel a szótár-fájlt a következő bejegyzést: "Hamburg város", és szeretné leképezése "Ciudad Németország hamburg" saját végső fordítási problémái vannak.
 - Egy szó egy szótár fájl egynél többször jelenik meg, ha a rendszer mindig az utolsó bejegyzés megadott fogja használni. A szótár nem tartalmazhat több fordítások ugyanazon szó.
 

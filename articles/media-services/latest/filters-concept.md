@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/22/2019
 ms.author: juliako
-ms.openlocfilehash: 09de372ffdb48c00fde9a43c07f8f8b574462d1f
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 18e629571a45046e5cf54996cd38b425c999ee36
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56405727"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737637"
 ---
 # <a name="define-account-filters-and-asset-filters"></a>Adja meg a fiók és eszköz szűrőket  
 
-Az ügyfelek számára (élő eseményeket vagy igény szerinti Videószolgáltatás streaming) tartalomtovábbításkor az ügyfél igényelhet az alapértelmezett eszköz jegyzékfájl leírtnál nagyobb rugalmasságot. Az Azure Media Services lehetővé teszi, hogy meghatározza a fiók és a tartalom eszköz szűrőket. 
+Az ügyfelek számára (események élő vagy igény szerinti Videószolgáltatás) tartalomtovábbításkor az ügyfél az alapértelmezett eszköz jegyzékfájl leírtnál rugalmasabb előfordulhat, hogy kell. Az Azure Media Services lehetővé teszi, hogy meghatározza a fiók és a tartalom eszköz szűrőket. 
 
 Szűrők kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek, például a következők: 
 
@@ -38,8 +38,7 @@ Az alábbi táblázatban néhány példa az URL-címek szűrőket jeleníti meg:
 
 |Protokoll|Példa|
 |---|---|
-|HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
-|HLS V3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
+|HLS|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>A v3-as HLS, használja: `format=m3u8-aapl-v3`.|
 |MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
 
@@ -62,22 +61,22 @@ A következő tulajdonságok használatával írja le a szűrőket.
 |presentationTimeRange|A bemutató időtartományban. Ez a tulajdonság jegyzékfájl kezdő és záró pontot bemutató időszak hossza és az élő kezdőpozíciója szűréshez használható. <br/>További információkért lásd: [PresentationTimeRange](#PresentationTimeRange).|
 |nyomon követi|A számok kiválasztási feltételeket. További információkért lásd: [nyomon követi](#tracks)|
 
-### <a name="presentationtimerange"></a>PresentationTimeRange
+### <a name="presentationtimerange"></a>presentationTimeRange
 
 Ezzel a tulajdonsággal rendelkező **eszköz szűrők**. Nem javasoljuk, hogy a tulajdonság a **Fiókszűrők**.
 
 |Name (Név)|Leírás|
 |---|---|
-|**endTimestamp**|Az abszolút befejezési időkorlátját. A videó igény szerinti (VoD) vonatkozik. Az élő bemutató azt csendes figyelmen kívül hagyja, és alkalmazza a bemutató véget ér, a stream válik VoD.<br/><br/>Az érték egy abszolút végpont az adatfolyam jelöli. Azt lekérdezi kerekítve a legközelebbi tovább Képcsoporttal Start.<br/><br/>Használja a StartTimestamp és EndTimestamp szűkítheti a listát (manifest). Ha például StartTimestamp = 40000000 és EndTimestamp = 100000000 létrehoz egy listát, amely tartalmazza az adathordozó StartTimestamp és EndTimestamp között. Ha egy töredék feladata a határt, a teljes töredék fog szerepelni a jegyzékfájlban.<br/><br/>További információ a **forceEndTimestamp** definíciót, amely követi.|
-|**forceEndTimestamp**|Az élő szűrők vonatkozik.<br/><br/>**forceEndTimestamp** logikai érték beolvasása, amely azt jelzi, hogy van-e **endTimestamp** érvényes értékre lett beállítva. <br/><br/>Ha az érték **igaz**, a **endTimestamp** értéket kell megadni. Ha nincs megadva, majd egy hibás kérés adja vissza.<br/><br/>Ha például szeretne meghatározni egy szűrőt, amely 5 perccel indul el, a bemeneti videóhoz, és a stream végéig aktiválást, így állíthatja be **forceEndTimestamp** hamis értékre, és hagyja ki a beállítás **endTimestamp**.|
-|**liveBackoffDuration**|Csak az élő vonatkozik. A tulajdonság élő lejátszási pozíció meghatározására szolgál. Ezzel a szabállyal késleltetés élő lejátszási pozícióját, és hozzon létre egy kiszolgálóoldali puffer lejátszók. LiveBackoffDuration van élő helyétől függően. Az élő leállítási maximális időtartam érték 300 másodperc.|
-|**presentationWindowDuration**|Az élő vonatkozik. Használat **presentationWindowDuration** csúszóablakszerűen történik alkalmazni a listára. Például állítsa be a presentationWindowDuration = a alkalmazni egy kétperces csúszóablakban 1200000000. Média élő széle 2 percen belül fog szerepelni a listában. Ha egy töredék feladata a határt, a teljes töredék a lista fog szerepelni. A minimális bemutató ablak időtartamának érték 60 másodperc.|
-|**startTimestamp**|VoD- vagy élő streamet vonatkozik. Az érték egy abszolút kezdőpontja az adatfolyam jelöli. Az érték beolvasása kerekítve a legközelebbi tovább Képcsoporttal Start.<br/><br/>Használat **startTimestamp** és **endTimestamp** szűkítheti a listát (manifest). Ha például startTimestamp = 40000000 és endTimestamp = 100000000 létrehoz egy listát, amely tartalmazza az adathordozó StartTimestamp és EndTimestamp között. Ha egy töredék feladata a határt, a teljes töredék fog szerepelni a jegyzékfájlban.|
-|**időskálára**|VoD- vagy élő streamet vonatkozik. A időskálára időbélyegei által használt és a fent megadott időtartam. Az alapértelmezett időskálán 10000000. Egy alternatív időskálán is használható. Alapértelmezés szerint száma 10 000 000 HNS (száz nanoszekundumos).|
+|**endTimestamp**|A videó igény szerinti (VoD) vonatkozik.<br/>A Live Streaming bemutató csendes figyelmen kívül hagyja és alkalmazza a bemutató véget ér, a stream válik VoD.<br/>Ez az egy olyan hosszú értéket, amely egy abszolút végpont a bemutató kerekítve a legközelebbi tovább Képcsoporttal Start jelöli. Az egység a időskálára, így egy endTimestamp 1800000000-3 percig lesz.<br/>StartTimestamp és endTimestamp használja az azokat a töredékeket, amely a lista (manifest) lesz.<br/>Ha például startTimestamp = 40000000 és endTimestamp = 100000000 az alapértelmezett időskálán használatával hoz létre egy listát, amely tartalmazza a töredékek munkafüzet 4 másodperc és a VoD-bemutató 10 másodperc. Ha egy töredék feladata a határt, a teljes töredék fog szerepelni a jegyzékfájlban.|
+|**forceEndTimestamp**|Csak az élő Streamelés vonatkozik.<br/>Azt jelzi, hogy a endTimestamp tulajdonság jelen kell lennie. Ha az értéke igaz, endTimestamp meg kell adni, vagy egy hibás kérés kódot ad vissza.<br/>Megengedett értékek: False (hamis), az igaz.|
+|**liveBackoffDuration**|Csak az élő Streamelés vonatkozik.<br/> Ez az érték határozza meg a legújabb élő pozíciótól, amely egy ügyfelet is szolgálnak.<br/>Ezt a tulajdonságot használja, azt élő lejátszási pozícióját, hozzon létre egy kiszolgálóoldali puffer lejátszók.<br/>Ez a tulajdonság a mértékegysége időskálára (lásd alább).<br/>Az élő visszatartási időtartama maximális mérete 300 másodperc (3000000000).<br/>Például a valós élő Edge késleltetett 2000000000 azt jelenti, hogy a legújabb elérhető tartalmak érték: 20 másodperc érték.|
+|**presentationWindowDuration**|Csak az élő Streamelés vonatkozik.<br/>PresentationWindowDuration használatával a alkalmazni egy csúszóablakban töredékek fel a listára.<br/>Ez a tulajdonság a mértékegysége időskálára (lásd alább).<br/>Például állítsa be a presentationWindowDuration = a alkalmazni egy kétperces csúszóablakban 1200000000. Média élő széle 2 percen belül fog szerepelni a listában. Ha egy töredék feladata a határt, a teljes töredék a lista fog szerepelni. A minimális bemutató ablak időtartamának érték 60 másodperc.|
+|**startTimestamp**|A videó igény szerinti (VoD-) vagy élő Streamelés vonatkozik.<br/>Ez az egy olyan hosszú értéket, amely a Stream-látható abszolút kezdő pont jelöli. Az érték beolvasása kerekítve a legközelebbi tovább Képcsoporttal Start. Az egység a időskálára, így egy startTimestamp 150000000, a 15 másodperc lesz.<br/>StartTimestamp és endTimestampp használja az azokat a töredékeket, amely a lista (manifest) lesz.<br/>Ha például startTimestamp = 40000000 és endTimestamp = 100000000 az alapértelmezett időskálán használatával hoz létre egy listát, amely tartalmazza a töredékek munkafüzet 4 másodperc és a VoD-bemutató 10 másodperc. Ha egy töredék feladata a határt, a teljes töredék szerepelni fog a jegyzékfájlban|
+|**időskálára**|Bemutató időtartomány, a lépésközök számát egy második megadott összes időbélyegeket és időtartamok vonatkozik.<br/>Alapértelmezett érték 10000000 - tízmillió lépésekben egy második, ahol minden egyes fokozathoz állítsa 100 nanoszekundumban hosszú lehet.<br/>Például ha szeretné beállítani egy startTimestamp 30 másodperc, használna 300000000 érték az alapértelmezett időskálán használatakor.|
 
 ### <a name="tracks"></a>nyomon követi
 
-Azt adja meg, szűrő nyomon követése Tulajdonságfeltételek (FilterTrackPropertyConditions) listáját, amelyen a nyomon követi a Stream (élő vagy igény szerinti Videószolgáltatás) kell szerepelnie, dinamikusan létrehozott jegyzékfájl. A szűrők használatával egy logikai kombinált **és** és **vagy** műveletet.
+Azt adja meg, szűrő nyomon követése Tulajdonságfeltételek (FilterTrackPropertyConditions) listáját, amelyen a nyomon követi a Stream (élő adatfolyamos és igény szerinti Videószolgáltatás) kell szerepelnie, dinamikusan létrehozott jegyzékfájl. A szűrők használatával egy logikai kombinált **és** és **vagy** műveletet.
 
 Szűrő nyomon követése Tulajdonságfeltételek követési típusok, értékeket (az alábbi táblázatban ismertetett) és (egyenlő, NotEqual) műveleteket ismertetik. 
 

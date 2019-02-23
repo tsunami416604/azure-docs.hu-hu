@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: b8f8d0a089a74334a908e3dad65c63231bbe5975
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 13a2eb080c6822a8a6786be1952bc588fa8afd80
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098935"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729203"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Hogyan teheti biztonságossá a háttérszolgáltatások ügyfél Tanúsítványalapú hitelesítés az Azure API Management
 
@@ -27,6 +27,8 @@ Az API Management lehetővé teszi, hogy a biztonságos hozzáférés az API-há
 Az API Management REST API használatával tanúsítványok kezelésével kapcsolatos információkért lásd: <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API-tanúsítvány entitás</a>.
 
 ## <a name="prerequisites"> </a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgáltatáspéldányhoz ügyféltanúsítvány-alapú hitelesítés használatát a háttér-szolgáltatás API-k eléréséhez. Ebben a cikkben található lépések elvégzése előtt rendelkeznie kell az ügyféltanúsítvány-alapú hitelesítés konfigurált háttérszolgáltatás ([konfigurálása az Azure-webhelyeken tanúsítványhitelesítés tekintse meg ebben a cikkben] [ to configure certificate authentication in Azure WebSites refer to this article]). Feltölteni az API Management szolgáltatás a hozzáférést a tanúsítvány és a jelszó szükséges.
 
@@ -81,11 +83,11 @@ Ha a tanúsítvány egy API-t használja, akkor a figyelmeztetési képernyő je
 
 ## <a name="self-signed-certificates"></a>Önaláírt tanúsítványok
 
-Ha önaláírt tanúsítványokat használ, szüksége lesz ahhoz, hogy a háttérrendszer kommunikálni az API Management tanúsítványlánc érvényesítésének letiltása. Ellenkező esetben egy 500 hibakódot ad vissza. Ennek konfigurálásához használhatja a [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (az új háttér-) vagy [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (a meglévő háttér) PowerShell-parancsmagok és állítsa be a `-SkipCertificateChainValidation` paramétert `True`.
+Ha önaláírt tanúsítványokat használ, szüksége lesz ahhoz, hogy a háttérrendszer kommunikálni az API Management tanúsítványlánc érvényesítésének letiltása. Ellenkező esetben egy 500 hibakódot ad vissza. Ennek konfigurálásához használhatja a [ `New-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (az új háttér-) vagy [ `Set-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (a meglévő háttér) PowerShell-parancsmagok és állítsa be a `-SkipCertificateChainValidation` paramétert `True`.
 
 ```powershell
-$context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
-New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
+$context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
 [How to add operations to an API]: api-management-howto-add-operations.md

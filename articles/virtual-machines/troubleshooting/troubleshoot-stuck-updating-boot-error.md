@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: d56e96ca1fbc96261f6f526c792b0a53c74718ef
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 7fbf157152bd5c2c35c496b1fd8e707884d0f3da
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063660"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731463"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Az Azure virtuális gép indítási megakadt Windows update
 
@@ -27,7 +27,7 @@ Ez a cikk segít megoldani a problémát, ha a virtuális gép (VM) a Windows Up
 > [!NOTE] 
 > Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell használatával. Azt javasoljuk, hogy az új központi telepítéseknél a klasszikus üzemi modell helyett ezt a modellt használja.
 
- ## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Jelenség
 
  Windows virtuális gép nem indul el. Amikor ellenőrizheti a képernyőképek a a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) ablakban megtekintheti, hogy az indítási elakadt a frissítési folyamat során. A következő példák üzeneteket kaphat:
 

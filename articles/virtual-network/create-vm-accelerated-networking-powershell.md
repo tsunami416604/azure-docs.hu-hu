@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: 7f056ab79bbd2d2b66e40546a6df7677ffe75a21
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: a5f32504fc7d8fe0faa17d469aec017d39a6b1ce
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649458"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737144"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Gyorsított hálózatkezelésű Windows virtuális gép létrehozása
 
@@ -62,9 +62,13 @@ Gyorsított hálózatkezelés engedélyezett nélkül támogatott virtuális gé
 Gyorsított hálózatkezelésű nem állítható rendszerbe a virtuális gépek (klasszikus).
 
 ## <a name="create-a-windows-vm-with-azure-accelerated-networking"></a>Egy Windows virtuális gép létrehozása az Azure gyorsított hálózatkezelés
+## <a name="portal-creation"></a>Portál létrehozása
+Bár ez a cikk ismerteti a virtuális gép létrehozása az Azure Powershell-lel gyorsított hálózatkezeléssel, is [virtuális gép létrehozása az Azure portal használatával gyorsított hálózatkezeléssel](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Az a portálon, a virtuális gép létrehozásakor a **hozzon létre egy virtuális gépet** panelen válassza ki a **hálózati** fülre.  Ezen a lapon lehetősége van a **gyorsított hálózatkezelés**.  Ha úgy döntött, egy [támogatott operációs rendszert](#supported-operating-systems) és [Virtuálisgép-méret](#supported-vm-instances), ezzel a beállítással automatikusan feltölti az "On".  Ha nem, akkor töltse fel a gyorsított hálózatkezelés "Kikapcsolva" lehetőséget, és a felhasználó okot miért nem lehet engedélyezve van.   
+* *Megjegyzés:* Csak a támogatott operációs rendszerek a portálon keresztül engedélyezhető.  Ha egy egyéni rendszerképet használ, és a rendszerkép támogatja a gyorsított hálózatkezelés, hozzon létre a virtuális gép parancssori felület vagy Powershell használatával. 
 
-Bár ez a cikk ismerteti a virtuális gép létrehozása az Azure PowerShell-lel gyorsított hálózatkezeléssel, is [virtuális gép létrehozása az Azure portal használatával gyorsított hálózatkezeléssel](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A virtuális gép létrehozásakor a portálon a **beállítások**válassza **engedélyezve**alatt **gyorsított hálózatkezelés**. Engedélyezheti a gyorsított hálózatkezelés nem jelenik meg a portálon, ha kiválasztott egy [támogatott operációs rendszert](#supported-operating-systems) és [Virtuálisgép-méret](#supported-vm-instances). A virtuális gép létrehozása után a következő témakör utasításait végrehajtásához szükséges [ellenőrizze az illesztőprogram telepítve van az operációs rendszer](#confirm-the-driver-is-installed-in-the-operating-system).
+A virtuális gép létrehozása után a gyorsított hálózatkezelés engedélyezve van a következő témakör utasításait követve ellenőrizheti a [győződjön meg arról, hogy engedélyezve van-e a gyorsított hálózatkezelés](#confirm-that-accelerated-networking-is-enabled).
 
+## <a name="powershell-creation"></a>PowerShell létrehozása
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

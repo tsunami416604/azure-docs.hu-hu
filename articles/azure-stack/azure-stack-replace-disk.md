@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 0a73119c7d079498f0e766fb92904c86ff5131c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 4fb2a398baa306cf9303284526bb43cd7f778441
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767222"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734625"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Az Azure Stack fizikai lemez cseréje
 
@@ -39,7 +39,7 @@ Ha egy lemez meghibásodik, kap egy riasztást, mely arra kéri, hogy kapcsolat 
 
 Megnyitja a riasztás, ha a riasztás leírása tartalmazza a skálázási egység csomópont és a lemezre, le kell cserélnie fizikai tárolóhely pontos helyét. Az Azure Stack további segít azonosítani a meghibásodott lemezt LED kijelző képességek segítségével.
 
- ## <a name="replace-the-disk"></a>Cserélje le a lemezt
+## <a name="replace-the-disk"></a>Cserélje le a lemezt
 
 Utasítások a OEM hardver szállítójával FRU tényleges lemezt kell cserélni.
 
@@ -50,7 +50,7 @@ Letilthatja az egy nem támogatott lemez egy integrált rendszer, a rendszer blo
 
 A lemezt cserél ki, az Azure Stack automatikusan felderíti az új lemezt, és elindítja a Virtuálislemez-javítási folyamatot.
  
- ## <a name="check-the-status-of-virtual-disk-repair"></a>A Virtuálislemez-javítási állapot ellenőrzése
+## <a name="check-the-status-of-virtual-disk-repair"></a>A Virtuálislemez-javítási állapot ellenőrzése
  
  Követően a lemezt cserél ki, a virtuális lemez állapot figyelése, és javítsa ki a feladat állapotát a rendszerjogosultságú végpont használatával. Kövesse az alábbi lépéseket bármely olyan számítógépről, amelyen a kiemelt végponthoz való hálózati kapcsolatot.
 

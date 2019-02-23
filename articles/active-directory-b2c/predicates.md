@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9bd015076cdbd70768b1359fac0cfc893d871513
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 360fd8e7ab0f7a85dbeed2bdbc7da379cbcfe91a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149594"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737025"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikátumok és PredicateValidations
 
@@ -350,7 +350,7 @@ A következő bemutatja, hogyan vannak rendszerezve a elemeket az Azure AD B2C-v
 
 ![Predikátum folyamat](./media/predicates/predicates-pass.png)
 
- ## <a name="configure-a-date-range"></a>Egy adott időtartományban konfigurálása
+## <a name="configure-a-date-range"></a>Egy adott időtartományban konfigurálása
 
 Az a **predikátumokat** és **PredicateValidations** elemek minimális és maximális dátum értékét szabályozhatja a **UserInputType** használatával egy `DateTimeDropdown`. Ehhez hozzon létre egy **predikátum** együtt a `IsDateRange` metódust, és adja meg a minimális és maximális paraméterek.
 

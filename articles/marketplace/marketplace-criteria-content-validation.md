@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: fb12fe381cb4df6139fae7289279220f72984484
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 145c6ac01cce9a70f3753b54a46638bf9d9c23b4
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078014"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729746"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace piactéren irányelvek
 
@@ -36,7 +36,7 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 | 2 | Az ajánlat címe | Leíró megoldás ajánlat. A partner webhelyére megoldás egyezések online előléptetése | Kulcs keresett szavakat tartalmaz |
 | 3 | Embléma | Embléma megfelelően megjelenik-e | Embléma megfelelően megjelenik-e, és tartalmazza a [fő kép](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish) Ez az a nagy formátumú képet, az Azure Portalon |
 | 4 |  Az ajánlat leírása | <br>• 2-3 bekezdést <br>• Szolgáltatásajánlat könnyen megérthető egyetlen pillantással <br>• Ajánlat leírása díjmentes, helyesírási és nyelvhelyességi korrekciók hibákkal <br>• Ajánlat leírása átfogó, és rögzíti: célközönsége, a felhasználó, hogy értékes típusa (érték prop) <br>Bekezdés nyújt narratíva formájában a mondatok rövid, könnyen érthető van • ajánlat leírása | <br>• Cél iparági vázolja (Ha releváns) <br>• Jó alapuló mindegyik egy-a mondat vagy kifejezés, amely a következő tartalom és listajele magában foglaló összefoglalójához bekezdés fejléccel formázás mutat (ha szükséges) fő előnyöket emelje ki. Itt célja az olvasó tudni, hogy az ajánlat egy könnyen formátum megtekintheti, és nem kell olvasni a bekezdések egy pillanat. <br>• Nincs minden bekezdés és a egy autó ismertetőben például olvasási közötti térközt. Tehát nem technikai funkciók vagy nyelvjárás, de az ajánlat egyszerűen fogalmazva leíró code, és átfogó. | 
-| 5 | Kategóriák & iparágak | <br>• Kategóriák képességeket kínál megoldást felel meg. <br>• Terjed ki a kategóriát, amely a megoldás nem fér el <br>• Optimális iparági, vagy minden ágazat kiválasztva (Ha nem optimális iparágak) | <br>• Maximális száma. 3 kategóriák <br>• Maximális száma. 3 iparágak |
+| 5 | Kategóriák & iparágak | <br>• Kategóriák képességeket kínál megoldást felel meg. <br>• Terjed ki a kategóriát, amely a megoldás nem fér el <br>• Optimális iparági, vagy minden ágazat kiválasztva (Ha nem optimális iparágak) | <br>• Max. 3 kategóriák <br>• Max. 3 iparágak |
 | 6 | Képek | <br>• Nincs kép szükséges, de ha a megadott kell megjelenítendő és a egy nagy felbontású képet. <br>• A rendszerképre vonatkozó követelmények CPP szerepelnek, és itt is <br>• A képernyőképen szereplő szöveg jól olvasható, a kép törlése | Szolgáltatásajánlat könnyen megérthető egyetlen pillantással |
 | 7 | Videók | <br>• A videók szükséges, de ha adott vissza kell lejátszási hibák nélkül. <br>• Ha meg van adva, nem hivatkozhat versenytárs vállalatok, kivéve, ha egy áttelepítési megoldás bemutatására |<br>• Ideális 3 perc vagy több <br>• Megoldást kínáló könnyen érthető videótartalmak keresztül <br>• Bemutatót a megoldás képességeit |
 | 8 | Lista állapota (a műveleti hívás) | <br>Kell címkével kell a következő típus egyikét: <ul>o velem a kapcsolatot</ul><ul>Próbaverzió/Get próbaverzió o / próbaverzió/Test Drive indítása</ul><ul>o vásárlás / Letöltés most</ul> | Ügyfél könnyen képes megérteni érhető el a következő lépések vannak: <ul>1. A próbaverzió kipróbálása</ul> <ul>2. Vásárlás most</ul><ul>3. Forduljon a PoC, értékelési vagy Briefing elrendezése e-mail vagy telefon száma.</ul> | 
@@ -74,7 +74,7 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 ## <a name="container-offer-requirements"></a>Tároló ajánlat követelményeinek
 |  | Elem listázása | Alap követelmények | Optimális követelmények | 
 |:--- |:--- |:--- |:--- |
-|1 |Ajánlat beállításai | <br>• Ajánlat azonosítója: Legfeljebb 50 karakter <br>• Közzétevő-azonosító: Válassza ki a legördülő listából <br>• Neve: Max. 50 karakter lehet | Már elérhető a leírás - címében nem szeretné, a tükör hosszú címek. | 
+|1 |Ajánlat beállításai | <br>• Ajánlat azonosítója: Legfeljebb 50 karakter <br>• Publisher ID: Válassza ki a legördülő listából <br>• Neve: Max. 50 karakter lehet | Már elérhető a leírás - címében nem szeretné, a tükör hosszú címek. | 
 | 2 | Termékváltozatok | Partner gombra kattint, az új termékváltozatokra| Már elérhető a leírás - címében nem szeretné, a tükör hosszú címek.  |  |
 | 3 | Marketplace-összetevők | Emblémák hibásan jelennek meg |<br>• Embléma tartalmazza a "fő képet," a nagy formátumú képet, az Azure Portalon <br>• Emblémát: Kicsi (48 x 48) és a nagy (216 x 216) követelmények érvényesek. <br>• Hero a rendszerképre vonatkozó követelmények: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• Képernyőkép (max. 5):  CPP feloldási 1280 x 720 között egy .png lemezkép szükséges.|
 | 4 | Felügyeleti vezethet |<br>• A felügyeleti nyújtják: Válassza ki az érdeklődőket a rendszer hol tárolja a rendszer. <br>• Megtudhatja, hogyan csatlakozhat a CRM-rendszerbe [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) | |
@@ -86,13 +86,13 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 |:--- |:--- |:--- |:--- |
 | 1 | Az ajánlat címe  |  <br>• Egyértelműen kell tüntetniük a szolgáltatás típusa és időtartama a következő formátumban: NÉV: IDŐTARTAM TÍPUSÚ. (azaz a "Engagement kínálnak: 1 – hét Proof-of-Concept")  | <br>• Nem ismétli meg a közzétevő neve <br>• Tükrözi a cím már elérhető a leírásban stílust – nem szeretné, hosszú címek. | 
 | 2 | Az ajánlat leírása  |<br>• Győződjön meg, hogy a megfelelő használati [Microsoft-termék neve](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx) <br>• Ajánlatok megjelölve, ár: Becsült kell a feljegyzést felső vagy alsó részén ismertetik a változékonyságát (utazási ügyfél, az áttelepítés alatt álló kiszolgálók száma, stb.) vonatkozó ajánlatot <br>• Egyes ajánlattípusra követelményei leírás használata a következőképpen történik: <ul><br>o tájékoztatói kell legalább 4-5 felsorolás briefing ismertetett témaköröket vonatkozó információkat </ul> <ul><br>o összes workshopokat kell napirend </ul><ul><br>o összes napirendjét kell bonthatók fel további nap vagy hét, attól függően, a workshop időtartama </ul><ul><br>o értékelési, megvalósíthatósági vizsgálat, nem képzési workshopokat megvalósítási ajánlatok kell le </ul><ul><br>o képzési workshopokat le nem szükséges, de szükségük van a tárgyalt témakörök részletesebb Napirend. | <br>• Bármely ajánlat napirend és termékek <br>• Az ajánlat magában foglalja a környezetet a felső részén található a szolgáltatást nyújtó cég a bekezdés <br>• Az ajánlat magában foglalja a saját maga a szolgáltatás egy felső részén, az érték a bekezdés |
-| 3 | Markdown-formázás  | Minden ajánlat kell használnia a Markdown-formázás, hogy az ajánlat megfelelően jelenik meg, ha HTML-fájlba konvertálja  |  |
+| 3 | Markdown Formatting  | Minden ajánlat kell használnia a Markdown-formázás, hogy az ajánlat megfelelően jelenik meg, ha HTML-fájlba konvertálja  |  |
 | 4 | Kategóriák & iparágak | Nem releváns kategóriák |  | 
 | 5 | Lista állapota (CTA) | Automatikusan kapcsolatfelvételi állapottal |  | 
 | 6 | Megoldás-támogatás és Súgó  | Támogatás és súgó nem szükséges  | | 
 | 7 | Adatvédelmi szabályzat és a használati feltételek érhető el  |  Feltételes házirendek vagy nem szükséges feltételek  | | 
 | 8 | Szolgáltatástípusok | Győződjön meg arról, szolgáltatás típusának megfelelő címe | |
-| 9 | Kompetenciák |<br>• A következő legalább egyikének kell lennie:<br>• Fejlesztés <br>• Alkalmazásintegráció <br>• Alkalmazáséletciklus-kezelés <br>• Felhőplatform <br>• Adatelemzés <br>• Adatközpont <br>• Adatplatform <br>• Fejlesztés és üzemeltetés |
+| 9 | Kompetenciák |<br>• A következő legalább egyikének kell lennie:<br>• Fejlesztés <br>• Alkalmazásintegráció <br>• Alkalmazáséletciklus-kezelés <br>• Felhőplatform <br>• Adatelemzés <br>• Data Center <br>• Adatplatform <br>• DevOps |
 | 10 | Termékek | Azure kell lennie. | |
 | 11 | Ország/régió | Győződjön meg, hogy ki currency ország és régió egyezés | |
 | 12 | További információ  | <br>• Hivatkozások (a leírás, nem a Marketplace-en hivatkozások a bal oldali) alján vezet, a megoldás további információt és nyilvánosan elérhető és megjelenítésének megfelelően. <br>• Hivatkozások rendelkeznie kell egy "felhasználóbarát neve", és nem jelennek meg, bármely letöltött fájl neve | |
@@ -103,4 +103,4 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 *   [A megoldás lista típusának meghatározása](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
 
  
----  
+---
