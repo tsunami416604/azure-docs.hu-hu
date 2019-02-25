@@ -1,5 +1,5 @@
 ---
-title: Az Azure Monitor log analytics használatának első lépései |} A Microsoft Docs
+title: Ismerkedés az Azure Monitor Log-Analytics |} A Microsoft Docs
 description: Ez a cikk egy oktatóanyag, a Log Analytics szolgáltatást az Azure Portalon kell lekérdezéseket írni.
 services: log-analytics
 author: bwren
@@ -8,18 +8,18 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 2adb23b63c3a8be56dc55293c7bb06534d9305c4
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ec6f3884504c94b7669df21882aeb2a1eb9d7220
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242107"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750582"
 ---
-# <a name="get-started-with-azure-monitor-log-analytics"></a>Az Azure Monitor log analytics használatának első lépései
+# <a name="get-started-with-azure-monitor-log-analytics"></a>Az Azure Monitor Log Analytics használatának első lépései
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ebben az oktatóanyagban megismerheti, hogyan Azure Monitor log analytics használatához az Azure Portalon az Azure Monitor log-lekérdezések írása lesz. Mely arról szól, hogyan való:
+Ebben az oktatóanyagban elsajátíthatja a Azure Monitor Log Analytics használata az Azure Portalon az Azure Monitor log-lekérdezések írása lesz. Mely arról szól, hogyan való:
 
 - Egyszerű lekérdezéseket írni
 - A séma az adatok megismerése
@@ -30,8 +30,8 @@ Ebben az oktatóanyagban megismerheti, hogyan Azure Monitor log analytics haszn�
 - Exportálás és lekérdezések megosztása
 
 
-## <a name="meet-log-analytics"></a>A log analytics felel meg
-A log analytics egy webes eszköz írása, és hajtsa végre az Azure Monitor log-lekérdezéseket a. Nyissa meg a kiválasztásával **naplók** az Azure figyelő menü. Egy új üres lekérdezés kezdődik.
+## <a name="meet-log-analytics"></a>A Log Analytics felel meg
+A log Analytics egy webes eszköz írása, és hajtsa végre az Azure Monitor log-lekérdezéseket a. Nyissa meg a kiválasztásával **naplók** az Azure figyelő menü. Egy új üres lekérdezés kezdődik.
 
 ![Kezdőlap](media/get-started-portal/homepage.png)
 
@@ -78,7 +78,7 @@ Első lépésként előkészítés véglegesítése a _esemény_ tábla.
 Event
 ```
 
-Automatikusan log analytics által eredmények hatókörök:
+A log Analytics automatikusan hatókörök eredményeket szerint:
 
 - Időtartomány:  Alapértelmezés szerint lekérdezések pedig csak az utolsó 24 óra.
 - Az eredmények száma: Eredmények korlátozva, legfeljebb 10 000 rekordot.
@@ -116,7 +116,7 @@ Eredmények táblázatában gyakran sok oszlopot tartalmaz. Előfordulhat, hogy 
 
 
 ## <a name="select-a-time-range"></a>Időtartomány megadása
-Alapértelmezés szerint a log analytics alkalmazza a _elmúlt 24 órában_ időtartomány. Egy másik tartományt használja, válasszon ki egy másik értéket a időválasztó keresztül, és kattintson a **futtatása**. Az előre definiált értékek mellett használhatja a _egyéni időtartomány_ választhatja a lekérdezés egy abszolút címtartományt.
+Alapértelmezés szerint a Log Analytics alkalmazza a _elmúlt 24 órában_ időtartomány. Egy másik tartományt használja, válasszon ki egy másik értéket a időválasztó keresztül, és kattintson a **futtatása**. Az előre definiált értékek mellett használhatja a _egyéni időtartomány_ választhatja a lekérdezés egy abszolút címtartományt.
 
 ![Időpontválasztó](media/get-started-portal/time-picker.png)
 
@@ -170,7 +170,7 @@ Mentheti a teljes lapja, vagy egyetlen lekérdezés továbbítása. Functions ol
 
 ![Függvény mentése](media/get-started-portal/save-function.png)
 
-Log analytics-lekérdezések mindig egy kijelölt munkaterületen menti, és a munkaterület más felhasználókkal megosztott.
+Log Analytics-lekérdezések mindig egy kijelölt munkaterületen menti, és a munkaterület más felhasználókkal megosztott.
 
 ## <a name="load-queries"></a>Lekérdezések betöltése
 A lekérdezéskezelő ikonra a jobb felső területen van. Ez felsorolja az összes mentett lekérdezések kategória szerint. Lehetővé teszi kedvencként adott lekérdezések gyorsan megtalálhatja azokat a jövőben. Kattintson duplán egy korábban mentett lekérdezés az aktuális ablakban történő hozzáadáshoz.
@@ -178,7 +178,7 @@ A lekérdezéskezelő ikonra a jobb felső területen van. Ez felsorolja az öss
 ![Lekérdezéskezelő](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Exportálási és megosztási hivatkozásként
-A log analytics több módszert is exportáló támogatja:
+A log Analytics több módszert is exportáló támogatja:
 
 - Excel: Az eredmények mentése CSV-fájlként.
 - Power BI: Exportálhatja az eredményeket a power bi-ban. Lásd: [importálása az Azure Monitor log-adatok Power BI-bA](../../azure-monitor/platform/powerbi.md) részleteiről.

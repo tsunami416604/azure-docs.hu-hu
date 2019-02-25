@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 2af94deaedbafdfa638f5deb3150f1e7f711a238
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 62675df9f440df77d1098d5c89bd6810349fb3af
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093517"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750004"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Oktatóanyag: Adatok másolása az Azure Data Box SMB-n keresztül
 
@@ -90,7 +90,11 @@ Ha a gazdagép Windows Server számítógépet használ, kövesse az alábbi lé
 
     **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. Blokkblob típusú a mappában létrehozott, és a blob megosztások lap egy tárolóban, amelyhez data nahrávají blobként jelöli. Nem lehet másolni a fájlokat közvetlenül a *legfelső szintű* mappát a storage-fiókban.
     
-     
+Egy Linux-ügyfél használata esetén a következő paranccsal csatlakoztatni az SMB-fájlmegosztást. Az alábbi "vers" paraméter, amely támogatja a Linux-állomáshoz SMB verziója. Beépülő modul az alábbi parancsot a megfelelő verzióját. SMB, hogy a Data Box támogatja-e további verziói [fájlrendszerek támogatott Linux-ügyfelek](https://docs.microsoft.com/en-us/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
+
+    `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
+    
+
 
 ## <a name="copy-data-to-data-box"></a>Adatok másolása a Data Boxra
 

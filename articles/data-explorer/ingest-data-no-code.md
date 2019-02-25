@@ -8,40 +8,41 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 2/5/2019
-ms.openlocfilehash: 145a56bee857debdbf028834a3ed378efd8671c8
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: a678722666146fdf22e88680ab414b09d2a7ffaa
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447497"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749936"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Oktatóanyag: Az Azure Data Explorer adatokat egyetlen sor kód nélkül
 
-Ebben az oktatóanyagban hogyan, hogyan lehet, hogy diagnosztikai és a tevékenységnapló adatainak egyetlen sor kód nélkül az adatkezelőt az Azure-fürthöz. Ez a módszer egyszerű Adatbetöltési segítségével gyorsan megkezdheti az Azure Data Explorer adatlekérdezést, az adatelemzés.
+Ebben az oktatóanyagban fog szól, hogyan képes feldolgozni a diagnosztikai adatokat és az adatkezelőt az Azure-fürthöz Tevékenységnaplók kódírás nélkül. Egyszerű Adatbetöltési ezzel a módszerrel gyorsan megkezdheti a lekérdezése az Azure Data Explorer adatelemzés céljából.
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Az oktatóanyag segítségével megtanulhatja a következőket:
+
 > [!div class="checklist"]
 > * Hozzon létre táblák és a feldolgozó leképezés az adatkezelőt az Azure-adatbázisban.
-> * Egy frissítési szabályzattal betöltött adatok formázásához.
-> * Hozzon létre egy [Eseményközpont](/azure/event-hubs/event-hubs-about) , és csatlakoztassa az Azure Data Explorer.
+> * A feldolgozott adatok formázásához egy frissítési szabályzattal.
+> * Hozzon létre egy [eseményközpont](/azure/event-hubs/event-hubs-about) , és csatlakoztassa az Azure Data Explorer.
 > * Stream data egy eseményközpontba való [diagnosztikai naplók az Azure Monitor](/azure/azure-monitor/platform/diagnostic-logs-overview) és [Azure Monitor-Tevékenységnaplók](/azure/azure-monitor/platform/activity-logs-overview).
-> * Az Azure az adatkezelő segítségével a feldolgozott adatokat kérdezhet le.
+> * A feldolgozott adatok lekérdezése Azure Data Explorer használatával.
 
 > [!NOTE]
-> Minden erőforrás létrehozása ugyanabban a régióban az Azure helye /. Ez a követelmény a Azure Monitor-diagnosztikai naplók számára.
+> Az azonos Azure-beli hely vagy régió összes erőforrás létrehozása. Ez a követelmény a Azure Monitor-diagnosztikai naplók számára.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * [Az Azure Data Explorer fürt és az adatbázis](create-cluster-database-portal.md). Ebben az oktatóanyagban az adatbázis neve a következő *AzureMonitoring*.
 
-## <a name="azure-monitoring-data-provider---diagnostic-and-activity-logs"></a>Azure Monitorozási adatok szolgáltató - diagnosztikai és a tevékenységeket tartalmazó naplók
+## <a name="azure-monitor-data-provider-diagnostic-and-activity-logs"></a>Az Azure Monitor-adatszolgáltató: diagnosztikai és Tevékenységnaplók
 
-Megtekintheti, és megismerheti az Azure Monitoring diagnosztikai és a tevékenység naplók által megadott adatok. Az Adatbetöltési folyamat ezen adatsémák alapján hozunk létre.
+Megtekintheti, és megismerheti az Azure Monitor diagnosztikai és a tevékenység naplók által megadott adatok. Az Adatbetöltési folyamat ezen adatsémák alapján hozunk létre.
 
 ### <a name="diagnostic-logs-example"></a>A példában a diagnosztikai naplók
 
-Az Azure diagnosztikai naplók az Azure-szolgáltatások által kibocsátott metrikák, a művelet az adott szolgáltatás vonatkozó adatokkal szolgálnak. Adatok összesített értéket jelenít meg az aggregációs időköz 1 perc. Diagnosztikai naplók eseményekhez több rekordot tartalmaz. Következő példázza az Azure Data Explorer elemzési eseménye séma meg lekérdezések időtartama:
+Az Azure diagnosztikai naplók az Azure-szolgáltatások által kibocsátott metrikák, a művelet az adott szolgáltatás vonatkozó adatokkal szolgálnak. Adatok és a egy 1 perces időfelbontási összesítve. A diagnosztikai naplóban szereplő minden egyes esemény egy bejegyzést tartalmaz. Íme egy példa egy Azure Data Explorer metrika eseménysémája meg lekérdezések időtartama:
 
 ```json
 {
@@ -59,7 +60,7 @@ Az Azure diagnosztikai naplók az Azure-szolgáltatások által kibocsátott met
 
 ### <a name="activity-logs-example"></a>Tevékenység naplók példa
 
-Azure-Tevékenységnaplók olyan előfizetési szintű naplók tartalmazó rekordok gyűjteménye. A naplók nyújtanak az előfizetéséhez tartozó erőforrásokon végrehajtott műveletekkel kapcsolatos információk. Diagnosztikai naplókkal ellentétben a tevékenység naplók esemény van egy rekordokból álló tömbbel. Fogja meg kell osztani a rekordokból álló tömböt, az oktatóanyag későbbi részében. Következő példája egy tevékenységnapló eseményéhez hozzáférés ellenőrzéséhez:
+Azure-Tevékenységnaplók olyan előfizetési szintű naplók, amelyek tartalmazzák a rekordok gyűjteményei. A naplók nyújtanak az előfizetéséhez tartozó erőforrásokon végrehajtott műveletekkel kapcsolatos információk. Diagnosztikai naplókkal ellentétben egy tevékenységnapló szereplő minden esemény van egy rekordokból álló tömbbel. Meg kell osztani a rekordokból álló tömböt, az oktatóanyag későbbi részében. Íme egy példa egy tevékenységnapló eseményt hozzáférés ellenőrzése:
 
 ```json
 {
@@ -116,23 +117,23 @@ Azure-Tevékenységnaplók olyan előfizetési szintű naplók tartalmazó rekor
 }
 ```
 
-## <a name="set-up-ingestion-pipeline-in-azure-data-explorer"></a>Az Adatkezelőben az Azure-feldolgozási folyamat beállítása 
+## <a name="set-up-an-ingestion-pipeline-in-azure-data-explorer"></a>Az Adatkezelőben az Azure-feldolgozási folyamat beállítása
 
-Az Azure Data Explorer folyamat telepítő tartalmaz különféle tartalmazó lépésekhez [tábla létrehozása és az adatok betöltési](/azure/data-explorer/ingest-sample-data#ingest-data). Módosítására, térkép, és frissítheti az adatokat.
+Például egy Azure Data Explorer-folyamat beállítása magában foglalja számos lépést [tábla létrehozása és az adatok betöltési](/azure/data-explorer/ingest-sample-data#ingest-data). Módosítására, térkép, és frissítheti az adatokat.
 
-### <a name="connect-to-azure-data-explorer-web-ui"></a>Csatlakozás az Azure Data Explorer webes felhasználói felületen
+### <a name="connect-to-the-azure-data-explorer-web-ui"></a>Csatlakozás az Azure Data Explorer webes felhasználói felületen
 
-1. Az Azure Data Explorer *AzureMonitoring* adatbázisra, válassza **lekérdezés**, kattintva nyissa meg az Azure Data Explorer webes felhasználói felületen.
+Az Azure Data Explorer *AzureMonitoring* adatbázisra, válassza **lekérdezés** az Azure Data Explorer webes felhasználói felületének megnyitásához.
 
-    ![Lekérdezés](media/ingest-data-no-code/query-database.png)
+![Lekérdezés lap](media/ingest-data-no-code/query-database.png)
 
-### <a name="create-target-tables"></a>Céltáblák létrehozása
+### <a name="create-the-target-tables"></a>A céloldali tábla létrehozásához
 
-Az Azure Data Explorer webes felület használatával a célként megadott táblákhoz létrehozása az Azure Data Explorer adatbázisban.
+Az Azure Data Explorer webes felhasználói felülete segítségével a cél táblák létrehozása az Azure Data Explorer adatbázisban.
 
-#### <a name="diagnostic-logs-table"></a>Diagnosztikai naplók tábla
+#### <a name="the-diagnostic-logs-table"></a>A diagnosztikai naplók tábla
 
-1. Hozzon létre egy táblát *DiagnosticLogsRecords* a a *AzureMonitoring* adatbázis, amely megkapja a diagnosztikai naplóban rögzíti a használatával a `.create table` szabályozhatja a parancsot:
+1. Az a *AzureMonitoring* adatbázisra, és hozzon létre egy táblát nevű *DiagnosticLogsRecords* tárolására a diagnosztikai napló rögzíti. Használja a következő `.create table` szabályozhatja a parancsot:
 
     ```kusto
     .create table DiagnosticLogsRecords (Timestamp:datetime, ResourceId:string, MetricName:string, Count:int, Total:double, Minimum:double, Maximum:double, Average:double, TimeGrain:string)
@@ -140,19 +141,19 @@ Az Azure Data Explorer webes felület használatával a célként megadott tábl
 
 1. Válassza ki **futtatása** a tábla létrehozásához.
 
-    ![Lekérdezés futtatása](media/ingest-data-no-code/run-query.png)
+    ![A lekérdezés futtatása](media/ingest-data-no-code/run-query.png)
 
-#### <a name="activity-logs-tables"></a>Tevékenységnaplók táblák
+#### <a name="the-activity-logs-tables"></a>A Tevékenységnaplók táblák
 
-A tevékenység naplók struktúra nem táblázatos, mert szüksége lesz az adatok feldolgozására, és bontsa ki minden egyes esemény egy vagy több rekordot. A nyers adatokat fog elemezhető, köztes táblához *ActivityLogsRawRecords*. Ugyanakkor az adatok kezelhetők és kibontva. A kibontott adatok be majd lesz töltve a *ActivityLogsRecords* táblázatba egy frissítési szabályzatot. Ezért szüksége, hozzon létre két külön táblát tevékenység naplók támogatunk.
+Tevékenységeket tartalmazó naplók a struktúra nem táblázatos, mert szüksége lesz az adatok feldolgozására, és bontsa ki minden egyes esemény egy vagy több rekordot. A nyers adatokat fog kell egy köztes nevű táblát betöltött *ActivityLogsRawRecords*. Ugyanakkor az adatok kezelhetők és kibontva. A kibontott adatok be majd lesz töltve a *ActivityLogsRecords* tábla egy frissítési szabályzattal. Ez azt jelenti, hogy kell két külön táblák létrehozása a tevékenységnaplókat tölt.
 
-1. Hozzon létre egy táblát *ActivityLogsRecords* a a *AzureMonitoring* adatbázis, amely megkapja a tevékenység a rekordok naplózása. Futtassa a következő Azure adatkezelő lekérdezést a tábla létrehozásához:
+1. Hozzon létre egy táblát nevű *ActivityLogsRecords* a a *AzureMonitoring* adatbázis tevékenység naplórekordok fogadásához. A tábla létrehozásához futtassa a következő Azure adatkezelő lekérdezés:
 
     ```kusto
     .create table ActivityLogsRecords (Timestamp:datetime, ResourceId:string, OperationName:string, Category:string, ResultType:string, ResultSignature:string, DurationMs:int, IdentityAuthorization:dynamic, IdentityClaims:dynamic, Location:string, Level:string)
     ```
 
-1. A köztes adatok tábla létrehozásához *ActivityLogsRawRecords* a a *AzureMonitoring* adatkezelés adatbázist:
+1. A köztes adatok nevű táblát hozzon létre *ActivityLogsRawRecords* a a *AzureMonitoring* adatkezelés adatbázist:
 
     ```kusto
     .create table ActivityLogsRawRecords (Records:dynamic)
@@ -166,25 +167,25 @@ A tevékenység naplók struktúra nem táblázatos, mert szüksége lesz az ada
 
 ### <a name="create-table-mappings"></a>Táblaleképezések létrehozása
 
- Az adatok formátuma `json`, ezért az adatok leképezése kötelező. A `json` leképezés minden json-útvonal képez le egy tábla oszlop neve.
+ Mivel az adatok formátumát `json`, adatok leképezése kötelező. A `json` leképezés minden json-útvonal képez le egy tábla oszlop neve.
 
-#### <a name="diagnostic-logs-table-mapping"></a>Diagnosztikai naplók tábla hozzárendelése
+#### <a name="table-mapping-for-diagnostic-logs"></a>Tábla hozzárendelése a diagnosztikai naplókhoz
 
-Az adatok leképezése a tábla használja a következő lekérdezést:
+A diagnosztikai naplók adatok leképezése a táblában, használja a következő lekérdezést:
 
 ```kusto
 .create table DiagnosticLogsRecords ingestion json mapping 'DiagnosticLogsRecordsMapping' '[{"column":"Timestamp","path":"$.time"},{"column":"ResourceId","path":"$.resourceId"},{"column":"MetricName","path":"$.metricName"},{"column":"Count","path":"$.count"},{"column":"Total","path":"$.total"},{"column":"Minimum","path":"$.minimum"},{"column":"Maximum","path":"$.maximum"},{"column":"Average","path":"$.average"},{"column":"TimeGrain","path":"$.timeGrain"}]'
 ```
 
-#### <a name="activity-logs-table-mapping"></a>Tevékenységnaplók tábla hozzárendelése
+#### <a name="table-mapping-for-activity-logs"></a>A következő tevékenységeket tartalmazó naplók tábla hozzárendelése
 
-Az adatok leképezése a tábla használja a következő lekérdezést:
+A vizsgálati naplók adatok leképezése a táblában, használja a következő lekérdezést:
 
 ```kusto
 .create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-### <a name="create-update-policy"></a>Frissítési szabályzat létrehozása
+### <a name="create-the-update-policy-for-activity-logs-data"></a>A vizsgálati naplók adatok frissítési szabályzat létrehozása
 
 1. Hozzon létre egy [függvény](/azure/kusto/management/functions) , amely kibontja a rekordok gyűjteményei, hogy a gyűjteményben szereplő összes értékhez kap külön sorba. Használja a [ `mvexpand` ](/azure/kusto/query/mvexpandoperator) operátor:
 
@@ -207,167 +208,173 @@ Az adatok leképezése a tábla használja a következő lekérdezést:
     }
     ```
 
-2. Adjon hozzá egy [szabályzat frissítése](/azure/kusto/concepts/updatepolicy) céltáblába. Automatikusan elindul a lekérdezés az újonnan betöltött adatokat a *ActivityLogsRawRecords* köztes adatok táblát, és az eredmények betöltési *ActivityLogsRecords* tábla:
+2. Adja hozzá a [szabályzat frissítése](/azure/kusto/concepts/updatepolicy) céltáblába. Ez a szabályzat automatikusan az a lekérdezés futtatása az újonnan betöltött adatokat a *ActivityLogsRawRecords* köztes adatok táblát, és az eredmények betöltési a *ActivityLogsRecords* tábla:
 
     ```kusto
     .alter table ActivityLogsRecords policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
-## <a name="create-an-event-hub-namespace"></a>Hozzon létre egy Event Hub-Namespace
+## <a name="create-an-azure-event-hubs-namespace"></a>Az Azure Event Hubs-névtér létrehozása
 
-Az Azure diagnosztikai naplók tárfiókba vagy egy Eseményközpontba való exportálása metrikák engedélyezése. Ebben az oktatóanyagban azt irányíthatja a metrikákat egy Eseményközpont-n keresztül. Az Event Hubs-Namespace és az Eseményközpont fog létrehozni a diagnosztikai naplók a következő lépések számára. Az Azure figyelési fog létrehozni az Event Hubs *insights-operational-logs* tevékenységi naplóit.
+Az Azure diagnosztikai naplók engedélyezése egy tárfiókba vagy egy eseményközpontba való exportálása metrikákat. Ebben az oktatóanyagban azt fogja irányítani a metrikákat egy eseményközpont-n keresztül. Létre fog hozni a következő lépéseket az Event Hubs-névtér és eseményközpont a diagnosztikai naplókhoz. Az Azure Monitor fog létrehozni az event hubs *insights-operational-logs* a vizsgálati naplók számára.
 
-1. Létrehoz egy eseményközpontot, az Azure Portalon egy Azure Resource Manager-sablon használatával. Az üzembe helyezés indításához kattintson a következő gombra. Kattintson a jobb gombbal, és válassza ki **Megnyitás új ablakban**, ezért kövesse a cikkben ismertetett lépések a többi. A **üzembe helyezés az Azure** gombra, akkor megnyílik az Azure Portalra.
+1. Event hub létrehozása az Azure Portalon egy Azure Resource Manager-sablon használatával. Kövesse a cikkben ismertetett lépések a többi, kattintson a jobb gombbal a **üzembe helyezés az Azure** gombra, és válassza ki **Megnyitás új ablakban**. A **üzembe helyezés az Azure** gombra, akkor megnyílik az Azure Portalra.
 
-    [![Üzembe helyezés az Azure-ban](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Deploy to Azure gombbal](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
-1. Hozzon létre egy Event Hub-Namespace és a egy Eseményközpontba, a diagnosztikai naplókhoz.
+1. Hozzon létre egy Event Hubs-névtér és a egy eseményközpontot, a diagnosztikai naplókhoz.
 
     ![Eseményközpont létrehozása](media/ingest-data-no-code/event-hub.png)
 
-    Adja meg az alábbi adatokat az űrlapon. Az alábbi táblázatban fel nem sorolt beállítások esetében használja az alapértelmezett értéket.
+1. Adja meg az alábbi adatokat az űrlapon. A következő táblázatban nem szereplő bármely beállításainak megadásához használja az alapértelmezett értékeket.
 
-    **Beállítás** | **Ajánlott érték** | **Mező leírása**
+    **Beállítás** | **Ajánlott érték** | **Leírás**
     |---|---|---|
-    | Előfizetés | Az Ön előfizetése | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
-    | Erőforráscsoport | *test-resource-group* | Hozzon létre egy új erőforráscsoportot. |
-    | Hely | Válassza ki a régiót, amely a legjobban az igényeinek. | Az eseményközpont-névtér létrehozása az egyéb erőforrások megegyező helyen.
-    | Névtér neve | *AzureMonitoringData* | Válasszon egy egyedi nevet a névtér azonosításához.
-    | Event Hubs neve | *DiagnosticLogsData* | Az eseményközpont a névtéren belül helyezkedik el, ami egy egyedi hatókörkezelési tárolóként szolgál. |
-    | Fogyasztói csoport neve | *adxpipeline* | Hozzon létre egy fogyasztói csoport neve. Lehetővé teszi, hogy több felhasználó alkalmazás rendelkezhet az eseménystream külön nézetével. |
+    | **Előfizetés** | *Az Ön előfizetése* | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
+    | **Erőforráscsoport** | *test-resource-group* | Hozzon létre egy új erőforráscsoportot. |
+    | **Hely** | Válassza ki a régiót, amely a legjobban az igényeinek. | Az Event Hubs-névtér létrehozása az egyéb erőforrások ugyanazon a helyen.
+    | **Namespace neve** | *AzureMonitoringData* | Válasszon egy egyedi nevet a névtér azonosításához.
+    | **Eseményközpont neve** | *DiagnosticLogsData* | Az eseményközpont a névtéren belül helyezkedik el, ami egy egyedi hatókörkezelési tárolóként szolgál. |
+    | **Fogyasztói csoport neve** | *adxpipeline* | Hozzon létre egy fogyasztói csoport neve. A fogyasztói csoportokkal több fogyasztói alkalmazás is rendelkezhet az eseménystream külön nézetével. |
     | | |
 
-## <a name="connect-azure-monitoring-logs-to-event-hub"></a>Csatlakozás Azure Monitoring naplók az Eseményközponthoz
+## <a name="connect-azure-monitor-logs-to-your-event-hub"></a>Csatlakozás az Azure Monitor naplóira az eseményközpont
 
-### <a name="diagnostic-logs-connection-to-event-hub"></a>Diagnosztikai naplók kapcsolat eseményközpontba
+Most, csatlakoznia kell a diagnosztikai naplók és a vizsgálati naplók az eseményközpontba.
 
-Válasszon ki egy erőforrást, ahonnan a metrikák exportálása. Többféle erőforrás, beleértve az Event Hub-Namespace, KeyVault, az IoT Hub és az Azure Data Explorer fürt exportálása diagnosztikai naplók engedélyezése. Ebben az oktatóanyagban az Azure Data Explorer fürt használjuk a erőforrásként.
+### <a name="connect-diagnostic-logs-to-your-event-hub"></a>Diagnosztikai naplók csatlakozni az eseményközpont
+
+Válasszon ki egy erőforrást, ahonnan a metrikák exportálása. Többféle erőforrás támogatja a diagnosztikai naplók, beleértve az Event Hubs-névtér, az Azure Key Vault, Azure IoT Hub és az Azure Data Explorer fürtök exportálása. Ebben az oktatóanyagban egy Azure Data Explorer fürtöt erőforrásként a fogjuk használni.
 
 1. Válassza ki a Kusto-fürtöt az Azure Portalon.
+1. Válassza ki **diagnosztikai beállítások**, majd válassza ki a **diagnosztika bekapcsolása** hivatkozásra. 
 
     ![Diagnosztikai beállítások](media/ingest-data-no-code/diagnostic-settings.png)
 
-1. Válassza ki **diagnosztikai beállítások** bal oldali menüből.
-1. Kattintson a **diagnosztika bekapcsolása** hivatkozásra. A **diagnosztikai beállítások** ablak nyílik meg.
+1. A **diagnosztikai beállítások** panel nyílik meg. Az alábbi lépéseket:
+    1. Adjon a diagnosztikai naplóadatokat neve *ADXExportedData*.
+    1. A **METRIKA**, jelölje be a **AllMetrics** (nem kötelező) jelölőnégyzetet.
+    1. Válassza ki a **Stream egy eseményközpontba** jelölőnégyzetet.
+    1. Válassza ki **konfigurálása**.
 
-    ![Diagnosztikai beállítások ablak](media/ingest-data-no-code/diagnostic-settings-window.png)
+    ![Diagnosztikai beállítások panel](media/ingest-data-no-code/diagnostic-settings-window.png)
 
-1. Az a **diagnosztikai beállítások** panelen:
-    1. A diagnosztikai naplóadatokat neve: *ADXExportedData*
-    1. Válassza ki **AllMetrics** (nem kötelező) jelölőnégyzetet.
-    1. Válassza ki **Stream egy eseményközpontba** jelölőnégyzetet.
-    1. Kattintson a **konfigurálása**
-
-1. Az a **válassza ki az eseményközpont** panelen konfigurálja a létrehozott eseményközpont exportálása:
-    1. **Eseményközpont névterének kijelölése** *AzureMonitoringData* legördülő listából.
-    1. **Válassza ki eseményközpont neve** *diagnosticlogsdata* legördülő listából.
-    1. **Válassza ki eseményközpont szabályzatának neve** legördülő listából.
+1. Az a **válassza ki az eseményközpont** ablaktáblán adatainak exportálása a diagnosztikai naplók az event hubs létrehozott konfigurálása:
+    1. Az a **eseményközpont névterének kijelölése** listájáról válassza ki a *AzureMonitoringData*.
+    1. Az a **válassza eseményközpontnév** listájáról válassza ki a *diagnosticlogsdata*.
+    1. Az a **válassza eseményközpont szabályzatának neve** listájáról válassza ki a **RootManagerSharedAccessKey**.
     1. Kattintson az **OK** gombra.
 
-1. Kattintson a **Save** (Mentés) gombra. Az esemény eseményközpont-névtér, a név és a szabályzat neve megjelenik az ablakban.
+1. Kattintson a **Mentés** gombra. Az eseményközpont névtér nevét és a házirend neve a ablakban jelenik meg.
 
     ![Diagnosztikai beállítások mentése](media/ingest-data-no-code/save-diagnostic-settings.png)
 
-### <a name="activity-logs-connection-to-event-hub"></a>Tevékenységnaplók eseményközpontba kapcsolat
+### <a name="connect-activity-logs-to-your-event-hub"></a>A Tevékenységnaplók csatlakozni az eseményközpont
 
-1. Az Azure portal bal oldali menüben válassza ki a **tevékenységnapló**
-1. **Tevékenységnapló** ablak nyílik meg. **Kattintson az Exportálás eseményközpontba**
+1. Az Azure portal bal oldali menüben válassza ki a **tevékenységnapló**.
+1. A **tevékenységnapló** ablak nyílik meg. Válassza ki **exportálás eseményközpontba**.
 
-    ![Tevékenységnapló](media/ingest-data-no-code/activity-log.png)
+    ![Tevékenységnapló ablak](media/ingest-data-no-code/activity-log.png)
 
-1. Az a **tevékenységnapló exportálása** ablakban:
+1. A **tevékenységnapló exportálása** ablak nyílik meg:
  
-    ![Tevékenységnapló exportálása](media/ingest-data-no-code/export-activity-log.png)
+    ![Exportálás tevékenységnapló ablak](media/ingest-data-no-code/export-activity-log.png)
 
-    1. Válassza ki előfizetését.
-    1. A **régiók** legördülő menüben válassza a **az összes kijelölése**
-    1. Válassza ki **exportálása az eseményközpontba** jelölőnégyzetet.
-    1. Kattintson a **válassza ki a service bus-névtér** megnyitásához a **válassza ki az eseményközpont** ablaktáblán.
-    1. Az a **válassza ki az eseményközpont** ablaktáblán válassza ki a legördülő menük: az előfizetés, az esemény-névtér *AzureMonitoringData*, és az alapértelmezett eseményközpont szabályzatának nevét.
-    1. Kattintson az **OK** gombra.
-    1. Kattintson a **mentése** az ablak jobb felső oldalán. Egy eseményközpont nevű *insights-operational-logs* jön létre.
+1. Az a **tevékenységnapló exportálása** ablakban tegye a következőket:
+      1. Válassza ki előfizetését.
+      1. Az a **régiók** menüben válassza ki **válassza ki az összes**.
+      1. Válassza ki a **exportálása az eseményközpontba** jelölőnégyzetet.
+      1. Válasszon **válassza ki a service bus-névtér** megnyitásához a **válassza ki az eseményközpont** ablaktáblán.
+      1. Az a **válassza ki az eseményközpont** ablaktáblán válassza ki az előfizetését.
+      1. Az a **eseményközpont névterének kijelölése** listájáról válassza ki a *AzureMonitoringData*.
+      1. Az a **válassza eseményközpont szabályzatának neve** listájához, válassza ki az alapértelmezett eseményközpont szabályzatának nevét.
+      1. Kattintson az **OK** gombra.
+      1. Az ablak bal felső sarkában válassza **mentése**.
+   Egy eseményközpont nevű *insights-operational-logs* jön létre.
 
-### <a name="see-data-flowing-to-your-event-hubs"></a>Tekintse meg az az Event hubs szolgáltatásba áramló adatok
+### <a name="see-data-flowing-to-your-event-hubs"></a>Tekintse meg az az event hubs szolgáltatásba áramló adatok
 
-1. Várjon néhány percet, amíg a kapcsolat definiálva van, és a Tevékenységnaplói exportálás eseményközpontba befejeződött. Nyissa meg a megtekintéséhez az event hubs létrehozott Eseményközpont-névteret.
+1. Várjon néhány percet, amíg a kapcsolat definiálva van, a tevékenységnapló Exportálás az eseményközpontba befejeződött. Nyissa meg az Event Hubs-névtér az event hubs létrehozott megtekintéséhez.
 
-    ![Az Event Hubs létrehozva](media/ingest-data-no-code/event-hubs-created.png)
+    ![Az Event hubs létrehozva](media/ingest-data-no-code/event-hubs-created.png)
 
-1. Tekintse meg az Eseményközpont adatforgalmát:
+1. Tekintse meg az eseményközpont adatforgalmát:
 
-    ![Event Hubs data](media/ingest-data-no-code/event-hubs-data.png)
+    ![Event hubs-adatok](media/ingest-data-no-code/event-hubs-data.png)
 
-## <a name="connect-event-hub-to-azure-data-explorer"></a>Eseményközpont csatlakozhat az Azure Data Explorer
+## <a name="connect-an-event-hub-to-azure-data-explorer"></a>Egy eseményközpont csatlakozhat az Azure Data Explorer
 
-### <a name="diagnostic-logs-data-connection"></a>Diagnosztikai naplók adatkapcsolat
+Most meg kell a adatkapcsolatokat, a diagnosztikai naplók és a vizsgálati naplók létrehozása.
 
-1. Az Azure Data Explorer fürt *kustodocs*válassza **adatbázisok** a bal oldali menüben.
-1. Az a **adatbázisok** ablakban válassza ki az adatbázis nevét *AzureMonitoring*
-1. A bal oldali menüben válassza ki a **adatbetöltés**
-1. Az a **adatbetöltés** ablakban kattintson a **+ adatkapcsolat hozzáadása**
+### <a name="create-the-data-connection-for-diagnostic-logs"></a>A diagnosztikai naplók számára az adatkapcsolat létrehozása
+
+1. Az Azure Data Explorer fürt nevű *kustodocs*válassza **adatbázisok** a bal oldali menüben.
+1. Az a **adatbázisok** ablakban válassza ki a *AzureMonitoring* adatbázis.
+1. A bal oldali menüben válassza ki a **adatbetöltés**.
+1. Az a **adatbetöltés** ablakban kattintson a **+ adatkapcsolat hozzáadása**.
 1. Az a **adatkapcsolat** ablakban adja meg a következőket:
 
-    ![Eseményközpont-kapcsolat](media/ingest-data-no-code/event-hub-data-connection.png)
+    ![Event hub-adatkapcsolat](media/ingest-data-no-code/event-hub-data-connection.png)
 
     Adatforrás:
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Adatkapcsolat neve | *DiagnosticsLogsConnection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
-    | Eseményközpont-névtér | *AzureMonitoringData* | A korábban a névtér azonosításához választott név. |
-    | Eseményközpont | *diagnosticlogsdata* | A létrehozott eseményközpont. |
-    | Fogyasztói csoport | *adxpipeline* | A létrehozott eseményközponton definiált fogyasztói csoport. |
+    | **Adatok kapcsolat neve** | *DiagnosticsLogsConnection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
+    | **Eseményközpont-névtér** | *AzureMonitoringData* | A korábban a névtér azonosításához választott név. |
+    | **Event hub** | *diagnosticlogsdata* | A létrehozott eseményközpont. |
+    | **Fogyasztói csoport** | *adxpipeline* | A létrehozott eseményközponton definiált fogyasztói csoport. |
     | | |
 
     Céloldali tábla:
 
-    Az útvonalválasztás esetében két lehetőség érhető el: a *statikus* és a *dinamikus*. Ebben az oktatóanyagban használhatja a statikus útválasztás (alapértelmezett), amelyben meghatározhatja azokat a táblázat neve, a formátumot, és a leképezés. Ezért hagyja **adataimat magában foglalja az útválasztási információ** nincs bejelölve.
+    Az útvonalválasztás esetében két lehetőség érhető el: a *statikus* és a *dinamikus*. A jelen oktatóanyag esetében statikus útválasztás (alapértelmezett), amelyben meghatározhatja azokat a táblázat neve, az adatok formátumát és a leképezést fogja használni. Hagyja **A saját adatok útválasztási információt tartalmaznak** lehetőséget bejelöletlenül.
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Tábla | *DiagnosticLogsRecords* | A létrehozott tábla *AzureMonitoring* adatbázis. |
-    | Adatformátum | *JSON* | Táblázat formázása. |
-    | Oszlopleképezés | *DiagnosticLogsRecordsMapping* | A létrehozott hozzárendelést *AzureMonitoring* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal *DiagnosticLogsRecords*.|
+    | **Tábla** | *DiagnosticLogsRecords* | A létrehozott tábla a *AzureMonitoring* adatbázis. |
+    | **Adatformátum** | *JSON* | A formátumot használja a táblában. |
+    | **Oszlopleképezés** | *DiagnosticLogsRecordsMapping* | A létrehozott hozzárendelést a *AzureMonitoring* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal a *DiagnosticLogsRecords* tábla.|
     | | |
 
-1. Kattintson a **Create** (Létrehozás) gombra  
+1. Kattintson a **Létrehozás** gombra.  
 
-### <a name="activity-logs-data-connection"></a>Tevékenységnaplók adatkapcsolat
+### <a name="create-the-data-connection-for-activity-logs"></a>A Tevékenységnaplók az adatkapcsolat létrehozása
 
-Ismételje meg a [diagnosztikai naplók adatkapcsolat](#diagnostic-logs-data-connection) hozhat létre a tevékenység szakaszban adatkapcsolat naplózza.
+Ismételje meg a [a diagnosztikai naplók számára az adatkapcsolat létrehozása](#diagnostic-logs-data-connection) szakasz a tevékenységi naplóit az adatkapcsolat létrehozása.
 
-1. Helyezze be a következő beállításokat a **adatkapcsolat** ablakban:
+1. Használja a következő beállításokat a **adatkapcsolat** ablakban:
 
     Adatforrás:
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Adatkapcsolat neve | *ActivityLogsConnection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
-    | Eseményközpont-névtér | *AzureMonitoringData* | A korábban a névtér azonosításához választott név. |
-    | Eseményközpont | *insights-operational-logs* | A létrehozott eseményközpont. |
-    | Fogyasztói csoport | *$Default* | Az alapértelmezett felhasználói csoport. Ha szükséges, létrehozhat egy másik fogyasztói csoportot. |
+    | **Adatok kapcsolat neve** | *ActivityLogsConnection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
+    | **Eseményközpont-névtér** | *AzureMonitoringData* | A korábban a névtér azonosításához választott név. |
+    | **Event hub** | *insights-operational-logs* | A létrehozott eseményközpont. |
+    | **Fogyasztói csoport** | *$Default* | Az alapértelmezett felhasználói csoport. Ha szükséges, létrehozhat egy másik fogyasztói csoportot. |
     | | |
 
     Céloldali tábla:
 
-    Az útvonalválasztás esetében két lehetőség érhető el: a *statikus* és a *dinamikus*. Ebben az oktatóanyagban használhatja a statikus útválasztás (alapértelmezett), amelyben meghatározhatja azokat a táblázat neve, a formátumot, és a leképezés. Ezért hagyja **adataimat magában foglalja az útválasztási információ** nincs bejelölve.
+    Az útvonalválasztás esetében két lehetőség érhető el: a *statikus* és a *dinamikus*. Ebben az oktatóanyagban statikus útválasztás (alapértelmezett), amelyben meghatározhatja azokat a táblázat neve, az adatok formátuma és hozzárendelésének fog használni. Hagyja **A saját adatok útválasztási információt tartalmaznak** lehetőséget bejelöletlenül.
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Tábla | *ActivityLogsRawRecords* | A létrehozott tábla *AzureMonitoring* adatbázis. |
-    | Adatformátum | *JSON* | Táblázat formázása. |
-    | Oszlopleképezés | *ActivityLogsRawRecordsMapping* | A létrehozott hozzárendelést *AzureMonitoring* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal *ActivityLogsRawRecords*.|
+    | **Tábla** | *ActivityLogsRawRecords* | A létrehozott tábla a *AzureMonitoring* adatbázis. |
+    | **Adatformátum** | *JSON* | A formátumot használja a táblában. |
+    | **Oszlopleképezés** | *ActivityLogsRawRecordsMapping* | A létrehozott hozzárendelést a *AzureMonitoring* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal a *ActivityLogsRawRecords* tábla.|
     | | |
 
-1. Kattintson a **Create** (Létrehozás) gombra  
+1. Kattintson a **Létrehozás** gombra.  
 
 ## <a name="query-the-new-tables"></a>Az új táblák lekérdezése
 
-Rendelkezik egy tárfiókba adatokkal. Keresztül a fürt feldolgozó alapértelmezés szerint 5 percet vesz igénybe, így lehetővé teszi az adatfolyam néhány percet, mielőtt elkezdené a lekérdezés.
+Most már egy folyamatot az adat vizsgálható. Keresztül a fürt feldolgozó alapértelmezés szerint 5 percet vesz igénybe, így lehetővé teszi az adatok áramlását lekérdezéséhez megkezdése előtt néhány percig.
 
-### <a name="diagnostic-logs-table-query-example"></a>Diagnosztikai naplók tábla lekérdezési példa
+### <a name="an-example-of-querying-the-diagnostic-logs-table"></a>Egy példa a diagnosztikai naplók tábla lekérdezése
 
-A következő lekérdezés az Adatkezelőbe az Azure diagnosztikai napló rekordok időtartamának adatait elemzi:
+A következő lekérdezés az Adatkezelőben az Azure diagnosztikai napló rögzíti az időtartam adatait elemzi:
 
 ```kusto
 DiagnosticLogsRecords
@@ -383,9 +390,9 @@ Lekérdezés eredményei:
 |   | 00:06.156 |
 | | |
 
-### <a name="activity-logs-table-query-example"></a>Tevékenység naplók tábla lekérdezési példa
+### <a name="an-example-of-querying-the-activity-logs-table"></a>Egy példa a tevékenység naplók tábla lekérdezése
 
-A következő lekérdezés az adatkezelőt az Azure log tevékenységrekordok származó adatokat elemzi:
+A következő lekérdezés az Adatkezelőben az Azure log tevékenységrekordok származó adatokat elemzi:
 
 ```kusto
 ActivityLogsRecords
@@ -403,7 +410,7 @@ Lekérdezés eredményei:
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, számos további lekérdezések írására, a következő cikk segítségével Azure adatkezelő kinyert adatokkal:
+Ismerje meg, számos további lekérdezések írása a következő cikk az Azure Data Explorer kinyert adatok:
 
 > [!div class="nextstepaction"]
-> [Az Azure Data Explorer lekérdezéseket írni](write-queries.md)
+> [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 6c6bd31961022957ec1a09fef6058ad32476e1c7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7eb5f090026b415e3c980116a9317594f4ca8115
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005097"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750769"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezéseket a functions használatával
 
@@ -32,7 +32,7 @@ A naplólekérdezés használata egy másik lekérdezést is mentheti függvény
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
-Függvény létrehozása a log analytics az Azure Portalon kattintva **mentése** , és ezután az alábbi táblázatban szereplő adatok.
+Függvény létrehozása a Log Analytics használatával az Azure Portalon kattintva **mentése** , és ezután az alábbi táblázatban szereplő adatok.
 
 | Beállítás | Leírás |
 |:---|:---|

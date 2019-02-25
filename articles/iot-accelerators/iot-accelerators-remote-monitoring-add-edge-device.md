@@ -8,23 +8,23 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5172ba9881f80e202bdc69689e67befb79101dc0
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d34ac159a216c5c77214b4c8b799a233c3671235
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450660"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749545"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító IoT Edge-eszköz hozzáadása
 
 Hozzáadása egy [IoT Edge](../iot-edge/about-iot-edge.md) eszközt, hogy a megoldásgyorsító, hajtsa végre a következő lépéseket:
 
-1. Az Edge-eszköz hozzáadásához kattintson a **eszközök** oldal a távoli figyelési megoldás gyorsító webes felhasználói felületen.
+1. Az Edge-eszköz hozzáadásához kattintson a **Device Explorer** oldal a távoli figyelési megoldás gyorsító webes felhasználói felületen.
 1. Telepítse az IoT Edge-futtatókörnyezet az Edge-eszköz.
 
 ## <a name="add-the-iot-edge-device"></a>Az IoT Edge-eszköz hozzáadása
 
-A távoli figyelési megoldásgyorsító IoT Edge-eszköz hozzáadásához lépjen a **eszközök** a webes felhasználói felületen oldalra, majd kattintson a **+ új eszköz**.
+A távoli figyelési megoldásgyorsító IoT Edge-eszköz hozzáadásához lépjen a **Device Explorer** a webes felhasználói felületen oldalra, majd kattintson a **+ új eszköz**.
 
 Az a **új eszköz** panel, válassza a **IoT Edge-eszköz**. Hagyhatja az alapértelmezett értékeket a többi beállítás esetében. Ezután kattintson az **Apply** (Alkalmaz) gombra:
 
@@ -38,7 +38,7 @@ Akkor is közvetlenül a megoldásgyorsító az IoT Hub-példány az IoT Edge-es
 - [Egy új Azure IoT Edge-eszköz regisztrálása az Azure CLI-vel](../iot-edge/how-to-register-device-cli.md)
 - [A Visual Studio Code-ból egy új Azure IoT Edge-eszköz regisztrálása](../iot-edge/how-to-register-device-vscode.md)
 
-Amikor regisztrál egy eszközt a távoli figyelési megoldásgyorsító IoT hubbal, az megjelenik a **eszközök** oldal a webes felhasználói felületen.
+Amikor regisztrál egy eszközt a távoli figyelési megoldásgyorsító IoT hubbal, az megjelenik a **Device Explorer** oldal a webes felhasználói felületen.
 
 ## <a name="install-the-iot-edge-runtime"></a>Az IoT Edge-modul telepítése
 

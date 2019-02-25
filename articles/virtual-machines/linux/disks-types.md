@@ -1,6 +1,6 @@
 ---
-title: Válassza ki a lemez típusát az Azure IaaS virtuális gépek – felügyelt lemezek
-description: További információ az elérhető Azure-lemeztípusokkal virtuális gépekhez, beleértve ultranagy lemezek, a prémium szintű SSD-k, a standard SSD-k és a Standard HDD.
+title: Válassza ki a lemez típusát az Azure IaaS Linux rendszerű virtuális gépek – felügyelt lemezek
+description: További információ az elérhető Azure-lemeztípusokkal Linux rendszerű virtuális gépek, beleértve a ultranagy SSD-k, prémium szintű SSD-k, standard SSD-k és HDD-k szabványos.
 services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: cb5098821399a7515bd7303a37dc2bb8b911bd6c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6cd3804d41f2ff98e2f97415a2ce62fc5a851ba0
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331251"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750097"
 ---
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 

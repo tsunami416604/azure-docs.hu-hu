@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 73d4bfc3aaeb86568e3f7a3555a664a8815e3280
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: b903d20136beb306d3f38fbebdb70562b3634d31
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586171"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749783"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
 Ez a cikk összefoglalja a napló- és az Azure monitorban tárolt metrikai adatok megjelenítése a választható módszerek.
@@ -32,7 +32,7 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 ![Irányítópult](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>Előnyök
-- Szoros integráció az Azure-bA. Vizualizációkat több Azure oldal, beleértve a metrikaböngésző, a log analytics és az Application Insights kitűzhetők az irányítópultokra.
+- Szoros integráció az Azure-bA. Vizualizációkat több Azure oldal, beleértve a Metrikaböngésző, a Log Analytics és az Application Insights kitűzhetők az irányítópultokra.
 - Metrikák és naplók is támogatja.
 - Többek között a kimenetét a több forrásból származó adatokat kombinálni [metrikaböngésző](platform/metrics-charts.md), [lekérdezések naplózását](log-query/log-query-overview.md), és [térképek](app/app-map.md) és rendelkezésre állás az Application Insightsban.
 - Saját vagy megosztott irányítópultok beállítása. Az Azure-ral integrálva [szerepköralapú hitelesítést (RBAC)](../role-based-access-control/overview.md).

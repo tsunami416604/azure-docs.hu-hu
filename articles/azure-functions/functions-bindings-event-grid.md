@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 3d0c72f0178cddd668c0ac029c803ff339a1f6f4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 12056ebec0f0a23ed255532a8ba27b130ecb81d1
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311613"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750446"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-trigger az Azure Functions szolgáltatáshoz
 
@@ -30,17 +30,17 @@ Igény szerint, HTTP-trigger használatával kezeli az Event Grid-események; L�
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
-
-Az Event Grid eseményindító van megadva a [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet-csomag verziója 1.x. A csomag forráskódja a [azure-functions-eventgrid-bővítmény](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) GitHub-adattárban.
-
-[!INCLUDE [functions-package](../../includes/functions-package.md)]
-
 ## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
 
 Az Event Grid eseményindító van megadva a [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet-csomag verziója 2.x. A csomag forráskódja a [azure-functions-eventgrid-bővítmény](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub-adattárban.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
+
+## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
+
+Az Event Grid eseményindító van megadva a [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet-csomag verziója 1.x. A csomag forráskódja a [azure-functions-eventgrid-bővítmény](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) GitHub-adattárban.
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="example"></a>Példa
 
@@ -53,31 +53,6 @@ Tekintse meg a nyelvspecifikus példát egy Event Grid eseményindító:
 * [Python](#python-example)
 
 HTTP eseményindító példa: [használata HTTP-eseményindító](#use-an-http-trigger-as-an-event-grid-trigger) a cikk későbbi részében.
-
-### <a name="c-version-1x"></a>C#(Verzió 1.x)
-
-Az alábbi példa bemutatja a Functions 1.x [C#-függvény](functions-dotnet-class-library.md) , amely összekapcsolja `JObject`:
-
-```cs
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Azure.WebJobs.Host;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Microsoft.Extensions.Logging;
-
-namespace Company.Function
-{
-    public static class EventGridTriggerCSharp
-    {
-        [FunctionName("EventGridTriggerCSharp")]
-        public static void Run([EventGridTrigger]JObject eventGridEvent, ILogger log)
-        {
-            log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-        }
-    }
-}
-```
 
 ### <a name="c-2x"></a>C# (2.x)
 
@@ -105,6 +80,31 @@ namespace Company.Function
 
 További információkért tekintse meg a csomagok, [attribútumok](#attributes), [konfigurációs](#configuration), és [használati](#usage).
 
+### <a name="c-version-1x"></a>C#(Verzió 1.x)
+
+Az alábbi példa bemutatja a Functions 1.x [C#-függvény](functions-dotnet-class-library.md) , amely összekapcsolja `JObject`:
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Host;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Microsoft.Extensions.Logging;
+
+namespace Company.Function
+{
+    public static class EventGridTriggerCSharp
+    {
+        [FunctionName("EventGridTriggerCSharp")]
+        public static void Run([EventGridTrigger]JObject eventGridEvent, ILogger log)
+        {
+            log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+        }
+    }
+}
+```
+
 ### <a name="c-script-example"></a>C#-szkript példa
 
 Az alábbi példa bemutatja a trigger kötés egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja.
@@ -124,22 +124,6 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-#### <a name="c-script-version-1x"></a>C#parancsprogram (verzió 1.x)
-
-Függvények 1.x C# szkriptet kódja kötődő `JObject`:
-
-```cs
-#r "Newtonsoft.Json"
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-public static void Run(JObject eventGridEvent, TraceWriter log)
-{
-    log.Info(eventGridEvent.ToString(Formatting.Indented));
-}
-```
-
 #### <a name="c-script-version-2x"></a>C#parancsprogram (verzió 2.x)
 
 Függvények 2.x C# szkriptet kódja kötődő `EventGridEvent`:
@@ -156,6 +140,22 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 ```
 
 További információkért tekintse meg a csomagok, [attribútumok](#attributes), [konfigurációs](#configuration), és [használati](#usage).
+
+#### <a name="c-script-version-1x"></a>C#parancsprogram (verzió 1.x)
+
+Függvények 1.x C# szkriptet kódja kötődő `JObject`:
+
+```cs
+#r "Newtonsoft.Json"
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject eventGridEvent, TraceWriter log)
+{
+    log.Info(eventGridEvent.ToString(Formatting.Indented));
+}
+```
 
 ### <a name="javascript-example"></a>JavaScript-példa
 
@@ -528,11 +528,18 @@ Például egy eszközzel [Postman](https://www.getpostman.com/) vagy [curl](http
 * Állítsa be a `Content-Type: application/json` fejléc.
 * Állítsa be egy `aeg-event-type: Notification` fejléc.
 * A RequestBin adatok illessze be a kérelem törzsében.
-* Közzététel URL-címét az Event Grid eseményindító függvény használatával a következő mintának:
+* Az Event Grid eseményindító függvény URL-Címének közzététele.
+  * A 2.x használja a következő mintának:
 
-```
-http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={functionname}
-```
+    ```
+    http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
+    ```
+
+  * 1.x használatra:
+
+    ```
+    http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
+    ```
 
 A `functionName` paraméternek kell lennie a megadott név a `FunctionName` attribútum.
 
@@ -591,19 +598,19 @@ Ngrok URL-címe nem kaphat Event GRID, különleges kezelést, így a függvény
 
 Hozzon létre egy Event Grid-előfizetést a vizsgálni kívánt típusú, és adjon neki a ngrok végponthoz.
 
-Ez a végpont-minta használata funkciók 1.x:
-
-```
-https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
-```
-
 Ez a végpont-minta használata funkciók 2.x:
 
 ```
-https://{subdomain}.ngrok.io/runtime/webhooks/eventgrid?functionName={functionName}
+https://{SUBDOMAIN}.ngrok.io/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
 ```
 
-A `functionName` paraméternek kell lennie a megadott név a `FunctionName` attribútum.
+Ez a végpont-minta használata funkciók 1.x:
+
+```
+https://{SUBDOMAIN}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
+```
+
+A `{FUNCTION_NAME}` paraméternek kell lennie a megadott név a `FunctionName` attribútum.
 
 Íme egy példa az Azure CLI használatával:
 

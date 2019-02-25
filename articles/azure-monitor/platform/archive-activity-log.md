@@ -1,19 +1,19 @@
 ---
 title: Az Azure tevékenységnapló archiválása
 description: Hosszú távú adatmegőrzés storage-fiókban található az Azure-tevékenységnapló archiválása.
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
-ms.author: johnkem
+ms.date: 02/22/2019
+ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: d9abfe90296b27918594c41a207befe2b59027b9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f02b17ff4e83c3300973c86f26db76ebff5a8d0a
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461596"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750888"
 ---
 # <a name="archive-the-azure-activity-log"></a>Az Azure tevékenységnapló archiválása
 Ebben a cikkben bemutatjuk a használatáról az Azure portal, PowerShell-parancsmagok vagy többplatformos parancssori felület archiválása a [ **Azure-tevékenységnapló** ](../../azure-monitor/platform/activity-logs-overview.md) a storage-fiókban. Ez a beállítás akkor hasznos, ha szeretné megőrizni a naplózási, statikus elemzési és biztonsági mentés (, teljes körűen felügyelve az adatmegőrzési) 90 napnál hosszabb ideig Tevékenységnaplót. Ha csak szeretné megőrizni az események 90 napig, vagy kisebb, nem kell állítania archiválás tárfiókba, mivel a tevékenységnapló eseményei vannak az Azure platformon 90 napig őrizzük meg engedélyezése archiválás nélkül.
@@ -26,11 +26,8 @@ Ebben a cikkben bemutatjuk a használatáról az Azure portal, PowerShell-paranc
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt elkezdené, kell [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md) , amelyhez a Tevékenységnaplót archiválhatja. Kifejezetten ajánljuk, hogy nem használja egy meglévő tárfiókot, amely a benne tárolt, így jobban szabályozhatja a hozzáférést a figyelési adatok más, nem figyelési adatokat tartalmaz. Azonban ha is archiválása a diagnosztikai naplók és mérőszámok egy tárfiókba, célszerű a storage-fiókját a tevékenységnapló használatával az összes monitorozási adat ne egy központi helyen felhasználójának. A storage-fiók nem rendelkezik a mindaddig, amíg a beállítást konfiguráló felhasználónak mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik a naplókat kibocsátó előfizetésnek az azonos előfizetésben kell.
 
-> [!NOTE]
->  Az adatokat egy biztonságos virtuális hálózaton mögött létrehozott tárfiók jelenleg nem archiválhatja.
-
 ## <a name="log-profile"></a>Naplóprofil
-Az alábbi módszerek bármelyikével a tevékenységnapló archiválása, állítsa be a **Naplóprofil** -előfizetéssel. A napló profil meghatározza az eseményeket, amelyek tárolja, vagy streamelt adatok és a kimeneti típusa – storage-fiók és/vagy event hub. A storage-fiókban tárolt események a megtartási házirend (Ha a napok száma) is meghatározza. Ha a megőrzési házirend értéke nulla, események határozatlan ideig tárolja. Ellenkező esetben ez állítható bármilyen érték 1 és 2147483647 között. Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén a rendszer törli a szabályzatot. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet. [További log kapcsolatos profilok Itt](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). 
+Az alábbi módszerek bármelyikével a tevékenységnapló archiválása, állítsa be a **Naplóprofil** -előfizetéssel. A napló profil meghatározza az eseményeket, amelyek tárolja, vagy streamelt adatok és a kimeneti típusa – storage-fiók és/vagy event hub. A storage-fiókban tárolt események a megtartási házirend (Ha a napok száma) is meghatározza. Ha a megőrzési házirend értéke nulla, események határozatlan ideig tárolja. Ellenkező esetben ez állítható bármilyen érték 1 és 365 között. Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén a rendszer törli a szabályzatot. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet. [További log kapcsolatos profilok Itt](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>A portál használatával a tevékenységnapló archiválása
 1. A portálon kattintson a **tevékenységnapló** a bal oldali navigációs menüben található hivatkozásra. Ha nem lát egy hivatkozást a tevékenységnapló, kattintson a **minden szolgáltatás** először hivatkozásra.

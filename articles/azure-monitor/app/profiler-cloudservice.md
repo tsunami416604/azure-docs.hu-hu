@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: e050122984c19e46f3782c8364331323b403caad
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 32604c06c6a4325f7ae6cb45930de902a1366480
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893834"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750327"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil élő Azure Cloud Services az Application insights segítségével
 
@@ -32,6 +32,8 @@ Application Insights Profiler az Azure Diagnostics bővítmény telepítve van. 
 1. Győződjön meg arról, hogy használ, [.NET-keretrendszer 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb. Ellenőrizze, hogy elegendő a *ServiceConfiguration.\*.cscfg* fájlok egy `osFamily` érték "5" vagy újabb verzió.
 
 1. Adjon hozzá [az Application Insights SDK-t az Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
+
+  >**A profiler WAD legújabb verziójában a Cloud Services részét képező programhiba van.** Annak érdekében, hogy a profiler használni egy felhőalapú szolgáltatás, csak a támogatott AI SDK 2.7.2 verzióra. Az AI SDK újabb verziója használatakor kell vissza a 2.7.2 annak érdekében, hogy a profiler használja.
 
 1. Az Application Insights kérések nyomon követése:
 

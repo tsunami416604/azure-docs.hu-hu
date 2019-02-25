@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 02/13/2019
-ms.openlocfilehash: 59eb0b842392faa2adfcd99b028f1e283a7e8db7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.date: 02/23/2019
+ms.openlocfilehash: db91e67254e9927caba68a84b38a1ee94da8d3ab
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243829"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750123"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Az Azure SQL Database szolgáltatási csomagjai
 
@@ -42,7 +42,7 @@ A következőket ajánljuk figyelmébe:
 - A felügyelt példány tároló mérete 32 GB többszörösének kell adni.
 - Kiválaszthatja, hogy minden önálló adatbázis mérete 10 GB-os és a támogatott maximális érték között
   - A standard vagy általános célú szolgáltatásszinten tároláshoz növelése, vagy mérete 10 GB-os lépésekben csökkentése
-  - Prémium szintű vagy buxiness kritikus szolgáltatási szinten tárolásához növelheti, illetve 250 GB-os lépésekben méretének csökkentése
+  - A prémium szintű vagy üzletileg kritikus tárolás szolgáltatásszintek, növelje vagy csökkentse a 250-GB onként növelhető tárhelyet
 - Az általános célú szolgáltatásszinten lévő `tempdb` használ egy csatlakoztatott SSD és a tárolási költségek a virtuális mag díja tartalmazza.
 - Az üzletileg kritikus szolgáltatási rétegben található `tempdb` megosztások a csatlakoztatott SSD az MDF és az LDF-fájlok és a TempDB adatbázisban a tárolási költségek a virtuális mag díja tartalmazza.
 

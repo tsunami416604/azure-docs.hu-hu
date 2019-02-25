@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
-ms.openlocfilehash: 43ec22836cb32c21953b9eb6871b9efe300cbf9e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001170"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749919"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérfeladatok futtatása a WebJobs Azure App Service-ben
 
@@ -47,8 +47,7 @@ A következő táblázat ismerteti a közötti különbségeket *folyamatos* és
 | A webes alkalmazást futtató összes példánya fut. Egyetlen példány igény szerint korlátozhatja a webjobs-feladatot. |Az Azure által az egyetlen példányán fut a terheléselosztás.|
 | Támogatja a távoli hibakeresésről. | Nem támogatja a távoli hibakeresésről.|
 
-> [!NOTE]
-> Webes alkalmazás időkorlát 20 perc inaktivitás után is. Csak a tényleges webalkalmazáshoz kérelmeket az időzítő alaphelyzetbe állítása. Az alkalmazás konfigurációját megtekintése az Azure Portalon, vagy a speciális eszközök helyhez-kérelem indítására (https:// < alkalmazás_neve >. scm.azurewebsites.net) nem az időzítő alaphelyzetbe. Ha az alkalmazás futása folyamatos vagy ütemezett webjobs-feladatok engedélyezése **Always On** annak érdekében, hogy a webjobs-feladatok megbízhatóan fusson. Ez a funkció csak a Basic, Standard és prémium szintű érhető el [tarifacsomagok](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+[!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ## <a name="acceptablefiles"></a>Szkriptek vagy programok használható fájltípusok
 
@@ -181,10 +180,9 @@ Adhat meg egy [CRON-kifejezés](../azure-functions/functions-bindings-timer.md#c
 {
     "schedule": "0 */15 * * * *"
 }
-``` 
+```
 
-> [!NOTE]
-> Amikor telepít egy webjobs-feladatot a Visual Studióból, jelölje meg a `settings.job` tulajdonságokat a fájl **másolás, ha újabb**.
+További tudnivalókért lásd: [aktivált webjobs-feladat ütemezésének](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob).
 
 ## <a name="ViewJobHistory"></a> A feladatelőzmények megtekintéséhez
 

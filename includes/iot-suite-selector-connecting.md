@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 64cbf8f8704dbb216a15247caf741ff43690496a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54457066"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56751481"
 ---
 > [!div class="op_single_selector"]
 > * [C Windowson](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -58,9 +58,9 @@ Ha a távoli figyelési megoldáshoz a telepítési folyamat befejezését köve
 
 A megoldásgyorsító csatlakozni egy eszközhöz, kell azonosítania magát az IoT Hub érvényes hitelesítő adatokkal. A gyakorlati kipróbálásra menteni az eszköz kapcsolati karakterláncának, amely tartalmazza ezeket a hitelesítő adatokat, amikor hozzáadja az eszközt a megoldáshoz. Az eszköz kapcsolati karakterláncának felvétel az ügyfélalkalmazás az oktatóanyag későbbi részében.
 
-A távoli figyelési megoldáshoz egy eszköz hozzáadásához kövesse az alábbi lépéseket a **eszközök** lap a megoldásban:
+A távoli figyelési megoldáshoz egy eszköz hozzáadásához kövesse az alábbi lépéseket a **Device Explorer** oldal a megoldásban:
 
-1. Válasszon **+ új eszköz**, és válassza a **fizikai** , a **eszköztípus**:
+1. Válasszon **+ új eszköz**, és válassza a **valós** , a **eszköztípus**:
 
     ![Valós eszköz hozzáadása](media/iot-suite-selector-connecting/devicesprovision.png)
 

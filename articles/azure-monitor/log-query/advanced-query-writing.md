@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 401a8d527fc3a8d0430e7eff965b6f5e20db8dc0
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 0b516dc4fb1ca4736791abdea7f0903b6399fa6e
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268016"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749902"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Speciális lekérdezések az Azure monitorban írása
 
 > [!NOTE]
-> Hajtsa végre [Ismerkedés az Azure Monitor log-analytics](get-started-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
+> Hajtsa végre [Ismerkedés az Azure Monitor Log-Analytics](get-started-portal.md) és [Ismerkedés a lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

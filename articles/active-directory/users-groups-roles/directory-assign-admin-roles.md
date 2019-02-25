@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d11fd669817a28e120540fc1db4230585e4575
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 35927b038ee8caa7e826c4edfb7803a2bc0177c8
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672136"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750684"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -42,14 +42,17 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[Alkalmazás fejlesztője](#application-developer)**: A szerepkör felhasználói alkalmazásregisztrációkat hozhat létre. Ha a "Felhasználók regisztrálhatnak alkalmazásokat" beállítás értéke nem. Ez a szerepkör lehetővé teszi a saját nevükben jóváhagyást tagok amikor a "Felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek a céges adatok saját nevükben való" beállítás értéke nem. Ezen szerepkör tagjai tulajdonosként való hozzáadásakor új alkalmazásregisztráció vagy a vállalati alkalmazások létrehozásakor.
 
-* **[Hitelesítési rendszergazda](#authentication-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók beállíthatja vagy a jelszó-hitelesítő adatok alaphelyzetbe állítása. Hitelesítés a rendszergazdák kényszerítheti a felhasználókat, regisztrálja újra a meglévő jelszó-hitelesítő adat (pl. MFA, FIDO) ellen, és visszavonhatja a "MFA megjegyzése az eszközön", más felhasználók, akik nem rendszergazdák vagy a tagok a következő bejelentkezéshez a multi-factor Authentication kéri, a csak következő szerepköröket:
+* **[Hitelesítési rendszergazda](#authentication-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók beállíthatja vagy a jelszó-hitelesítő adatok alaphelyzetbe állítása. Hitelesítés a rendszergazdák megkövetelhetik regisztrálja újra a meglévő jelszó-hitelesítő adat (például a többtényezős hitelesítés vagy a FIDO) ellen, és visszavonását felhasználók **MFA megjegyzése az eszközön**, a következő bejelentkezéskor a felhasználókat a multi-factor Authentication pwhich rompts nem rendszergazdai vagy csak a következő szerepkörök tagjai:
   * Hitelesítési rendszergazda
   * Directory-olvasók
   * Vendég meghívója
   * Üzenetközpont-olvasó
   * Jelentésolvasó
-  
+
+  A hitelesítést rendszergazda szerepkör jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
   <b>Fontos</b>: Ezzel a szerepkörrel rendelkező felhasználók személyek férhetnek hozzá a bizalmas vagy titkos információk vagy kritikus konfigurációs belüli és kívüli Azure Active Directory hitelesítő adatok módosításához. A felhasználó hitelesítő adatainak módosítása jelentheti azt feltételezik, hogy felhasználói identitás- és engedélyek lehetővé teszi. Példa:
+
   * Alkalmazás regisztrálása és a vállalati alkalmazás tulajdonosok, aki kezelheti az alkalmazásokat a saját hitelesítő adatait. Ezeknek az alkalmazásoknak előfordulhat, hogy emelt szintű engedélyek az Azure ad-ben és a hitelesítési rendszergazdák máshol nem kapott. Ez lehet, hogy a hitelesítést rendszergazda az alkalmazás tulajdonosa identitását, és ezután további elérési útján feltételezik, egy emelt szintű alkalmazáshoz a hitelesítő adatokat, az alkalmazás frissítésével.
   * Azure-előfizetéssel rendelkező, előfordulhat, hogy hozzáféréssel rendelkező bizalmas vagy titkos információk vagy kritikus fontosságú konfigurációját az Azure-ban.
   * Biztonsági csoport és az Office 365-csoport tulajdonosainak, csoport tagságának kezelésére jogosult. Ezeket a csoportokat a bizalmas vagy titkos információk, vagy a kritikus konfigurálása az Azure ad-ben és a máshol hozzáférést biztosíthat.
@@ -296,7 +299,7 @@ Hozhat létre alkalmazást az alkalmazásregisztrációk független a "felhaszn�
 | microsoft.aad.directory/servicePrincipals/createAsOwner | A servicePrincipals létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
 
 ### <a name="authentication-administrator"></a>Hitelesítési rendszergazda
-Megtekintheti, állítsa be, és alaphelyzetbe állítása hitelesítési módszerre vonatkozó adatok bármely nem rendszergazdai felhasználó számára engedélyezett.
+Megtekintheti, és alaphelyzetbe állítása hitelesítési módszerre vonatkozó adatok bármely nem rendszergazdai felhasználó számára engedélyezett.
 
 | **Műveletek** | **Leírás** |
 | --- | --- |

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: b6a7fe2c12b2f1f5bcc0ba8cccd1a51ee39c4a6f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e5e80ac2229c3a2962702527dc3162229c25a5c5
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882083"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750871"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Engedélyezése és megtekintése az Application Insights Profiler kapcsolatos problémák elhárítása
 
@@ -123,6 +123,8 @@ Ezeket a paramétereket törölje a mappát, amely az Application Insights Profi
 A webalkalmazás a folyamatos webjobs-feladatként futó Profiler. Megnyithatja a webes alkalmazás-erőforrást a [az Azure portal](https://portal.azure.com). Az a **WebJobs** ablaktáblán állapotának ellenőrzéséhez **ApplicationInsightsProfiler**. Ha ez nem fut, nyissa meg a **naplók** további információért.
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profiler és az Azure Diagnostics-problémák hibaelhárítása
+
+  >**A profiler WAD legújabb verziójában a Cloud Services részét képező programhiba van.** Annak érdekében, hogy a profiler használni egy felhőalapú szolgáltatás, csak a támogatott AI SDK 2.7.2 verzióra. Az AI SDK újabb verziója használatakor kell vissza a 2.7.2 annak érdekében, hogy a profiler használja.
 
 Ha szeretné látni, hogy a Profiler megfelelően van-e konfigurálva az Azure Diagnostics által, tegye a következőket három: 
 1. Először ellenőrizze, hogy az Azure Diagnostics konfigurálása a tartalmát, üzembe helyezett vannak-e a vártaknak. 

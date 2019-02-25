@@ -5,21 +5,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 02/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8d5dca65734640dc9e756f9130e6b362178781f2
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d4f75a7bc552a7764a46865bf300b8fc5ffb350e
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453514"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750786"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
 
 Az Azure VPN Gateway már nem Azure-szintű önaláírt tanúsítványokat állít a P2S-kapcsolatokkal-átjárókat. Kiállított tanúsítványok most már aláírt szerint egy nyilvános hitelesítésszolgáltató (CA). Azonban a régebbi átjárók némelyike előfordulhat, hogy továbbra is az önaláírt tanúsítványokat. Önaláírt tanúsítványok közelében a lejárati dátumnak és nyilvános hitelesítésszolgáltató tanúsítványokat kell átmenet.
 
 >[!NOTE]
-> Az Azure-szintű tanúsítvány módosítása nem érinti a P2S ügyfél-hitelesítéshez használt önaláírt tanúsítványokat. Továbbra is ki, önaláírt tanúsítványokat használni a szokásos módon.
+> * Az Azure-szintű tanúsítvány módosítása nem érinti a P2S ügyfél-hitelesítéshez használt önaláírt tanúsítványokat. Továbbra is ki, önaláírt tanúsítványokat használni a szokásos módon.
+> * Ez a változás nem érinti a Web Apps.
 >
 
 Ebben a környezetben a tanúsítványokat egy további Azure-szintű tanúsítványt is. Azok nem a tanúsítványláncok a saját önaláírt legfelső szintű tanúsítványok és az ügyfél-hitelesítési tanúsítványok létrehozásakor használt. Ezeknek a tanúsítványoknak érinti, és le fog járni a időpontokban generált őket, ennek a végrehajtására.

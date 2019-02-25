@@ -4,45 +4,51 @@ description: További információ a WebJobs SDK-hoz készült kód írásával.
 services: app-service\web, storage
 documentationcenter: .net
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/19/2019
+ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a2e07f9022d7404d037903fda627649918134cb7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ba9dbeb01be5a9869b69836b118651cff7f0c92d
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732738"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750548"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata az eseményvezérelt háttérben történő feldolgozás
 
-Ez a cikk útmutatást, hogy hogyan írhat kódot [az Azure WebJobs SDK](webjobs-sdk-get-started.md). A dokumentáció mindkét verzió érvényes 3.x és a WebJobs SDK 2.x. Ha léteznek különbségek API-t, mindkét példák állnak rendelkezésre. A fő módosítás bevezetett verzió 3.x a .NET Core helyett a .NET-keretrendszer használatát.
+Ez a cikk az Azure WebJobs SDK használata nyújt útmutatást. WebJobs-feladatokkal rögtön használatba, lásd: [eseményvezérelt háttérbeli feldolgozásra az Azure WebJobs SDK használatának első lépései](webjobs-sdk-get-started.md). 
 
->[!NOTE]
-> [Az Azure Functions](../azure-functions/functions-overview.md) épül, a WebJobs SDK-val, és ez a cikk hivatkozásokat tartalmaz olyan témakörök, az Azure Functions dokumentációját. Megjegyzés: a Functions és a WebJobs SDK között a következő eltérésekkel:
+## <a name="webjobs-sdk-versions"></a>A WebJobs SDK-verziókra
+
+A következő főbb különbségek verziójában a WebJobs SDK 3.x verziót képest 2.x:
+
+* Verzió 3.x már támogatja a .NET Core.
+* A verzió 3.x, explicit módon telepíteni kell a tárolási kötési bővítmény, a WebJobs SDK által igényelt. A verzió 2.x-es, a Storage kötések szerepeljenek az SDK-t.
+* .NET Core (3.x) projektek hibakeresését a Visual Studio .NET-keretrendszer (2.x) projektek eltér. További információkért lásd: [fejlesztés és üzembe helyezése a Visual Studio használatával – az Azure App Service WebJobs](webjobs-dotnet-deploy-vs.md).
+
+Ha lehetséges, példák mindkét verziót biztosít 3.x verziót és a 2.x.
+
+> [!NOTE]
+> [Az Azure Functions](../azure-functions/functions-overview.md) épül, a WebJobs SDK-val, és ez a cikk hivatkozásokat tartalmaz olyan témakörök, az Azure Functions dokumentációját. Funkciók és a WebJobs SDK közötti különbségek a következők:
 > * 2.x WebJobs SDK-verziójának felel meg az Azure Functions-verzió 3.x és az Azure Functions 1.x felel meg a WebJobs SDK 2.x. Forráskódtárházak kövesse a WebJobs SDK számozása.
 > * Az Azure Functions C#-osztálykódtárakat mintakód van, a WebJobs SDK-kód, nem kell azzal a különbséggel a `FunctionName` attribútum a WebJobs SDK-projektben.
 > * Bizonyos kötési típusok csak az funkciók, például a HTTP, a webhook és az Event Grid (amely a HTTP-alapú) támogatottak.
-> 
+>
 > További információkért lásd: [összehasonlítása a WebJobs SDK-val és az Azure Functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
 
-## <a name="prerequisites"></a>Előfeltételek
-
-Ez a cikk feltételezi, hogy olvassa el és fejeződött be a feladatokat az [a WebJobs SDK használatának első lépései](webjobs-sdk-get-started.md).
-
-## <a name="webjobs-host"></a>Webjobs-feladatok gazdagép
+## <a name="webhobs-host"></a>WebHobs gazdagép
 
 A gazdagép az functions runtime tárolója.  Azt figyeli, a functions eseményindítók és a hívások. A verzió 3.x, a gazdagép megvalósítását `IHost`, és verzió 2.x verzióját használja a `JobHost` objektum. Gazdagép-példány létrehozása a kódban, és testre szabhatja annak viselkedését, kód írása.
 
 Ez a fő különbség a közvetlenül a WebJobs SDK-val és közvetve használatával az Azure Functions szolgáltatással. Az Azure Functions a szolgáltatás szabályozza a gazdagépen, és nem szabhatja testre, kód írásával. Azure Functions segítségével testre szabhatja a gazdagép viselkedésének beállításaival a *host.json* fájlt. Ezek a beállítások olyan karakterláncok, nem a kódban, ami a bármilyen típusú testreszabásokat is végezhet.
 
-### <a name="host-connection-strings"></a>Gazdagép kapcsolati karakterláncok 
+### <a name="host-connection-strings"></a>Gazdagép kapcsolati karakterláncok
 
 A WebJobs SDK-val az Azure Storage és az Azure Service Bus kapcsolati karakterláncok keres a *local.settings.json* fájl futtatása helyileg, illetve a webjobs-feladat környezetben való futtatásakor az Azure-ban. Alapértelmezés szerint egy tárolási kapcsolati karakterlánc nevű beállítás `AzureWebJobsStorage` megadása kötelező.  
 
@@ -151,7 +157,20 @@ Functions nyilvános metódusok kell lennie, és rendelkeznie kell egy eseményi
 
 ### <a name="automatic-trigger"></a>Automatikus eseményindító
 
-Automatikus eseményindítók egy esemény bekövetkeztekor függvény hívása. Egy vonatkozó példáért tekintse meg az üzenetsor eseményindító a [Get lépéseket bemutató cikkben](webjobs-sdk-get-started.md).
+Automatikus eseményindítók egy esemény bekövetkeztekor függvény hívása. Vegye figyelembe a következő példa egy üzenet, amely beolvas egy blobot az Azure Blog storage-ból az Azure Queue storage hozzáadott által aktivált függvény:
+
+```cs
+public static void Run(
+    [QueueTrigger("myqueue-items")] string myQueueItem,
+    [Blob("samples-workitems/{myQueueItem}", FileAccess.Read)] Stream myBlob,
+    ILogger log)
+{
+    log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
+}
+```
+
+A `QueueTrigger` attribútum a függvény meghívásához, amikor egy üzenetsor üzenet jelenik meg a futtatókörnyezet arra utasítja a `myqueue-items` várólista. A `Blob` attribútum arra utasítja a futtatókörnyezet, az üzenetsorban található üzenet használatával olvassa el a blobok a *minta-workitems* tároló. A függvény a átadott, az üzenetsorban található üzenet tartalmának a `myQueueItem` paraméter, a blob nevével.
+
 
 ### <a name="manual-trigger"></a>Manuális eseményindító
 
@@ -345,9 +364,78 @@ Néhány triggerét és kötéseit segítségével konfigurálhatja a felhaszná
 * **Verzió 3.x:** Konfigurációs van beállítva, amikor a `Add<Binding>` módszert hívja meg `ConfigureWebJobs`.
 * **Verzió 2.x:** Tulajdonságainak megadásával egy konfigurációs objektumot, amely adja át a `JobHost`.
 
+Ezeket a kötés-specifikus beállításokat egyenértékűek beállításait a [host.json soubor projektu](../azure-functions/functions-host-json.md) az Azure Functions szolgáltatásban.
+
+A következő kötéseket konfigurálhatja:
+
+* [Azure cosmos DB-eseményindító](#azure-cosmosdb-trigger-configuration-version-3x)
+* [Event Hubs-trigger](#event-hubs-trigger-configuration-version-3x)
+* [Queue storage-eseményindító](#queue-trigger-configuration)
+* [A SendGrid-kötés](#sendgrid-binding-configuration-version-3x)
+* [Service Bus-trigger](#service-bus-trigger-configuration-version-3x)
+
+### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Az Azure cosmos DB-eseményindító konfigurálása (verzió 3.x)
+
+Az alábbi példa bemutatja, hogyan konfigurálhatja az Azure Cosmos DB-eseményindító:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+        b.AddCosmosDB(a =>
+        {
+            a.ConnectionMode = ConnectionMode.Gateway;
+            a.Protocol = Protocol.Https;
+            a.LeaseOptions.LeasePrefix = "prefix1";
+
+        });
+    });
+    var host = builder.Build();
+    using (host)
+    {
+
+        host.Run();
+    }
+}
+```
+
+További részletekért tekintse meg a [Azure cosmos DB-kötés cikk](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings).
+
+### <a name="event-hubs-trigger-configuration-version-3x"></a>Az Event Hubs-trigger konfigurációja (verzió 3.x)
+
+Az alábbi példa bemutatja, hogyan konfigurálhatja az Event Hubs-eseményindító:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+        b.AddEventHubs(a =>
+        {
+            a.BatchCheckpointFrequency = 5;
+            a.EventProcessorOptions.MaxBatchSize = 256;
+            a.EventProcessorOptions.PrefetchCount = 512;
+        });
+    });
+    var host = builder.Build();
+    using (host)
+    {
+
+        host.Run();
+    }
+}
+```
+
+További részletekért tekintse meg a [az Event Hubs kötés cikk](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings).
+
 ### <a name="queue-trigger-configuration"></a>Üzenetsor eseményindító konfigurációja
 
-A beállítások konfigurálhatók a tárolási üzenetsor eseményindító mutatjuk be az Azure Functions [host.json referencia](../azure-functions/functions-host-json.md#queues). Az alábbi példák bemutatják, hogyan állíthatja be azokat a konfigurációban:
+Az alábbi példák bemutatják, hogyan konfigurálhatja a tárolási üzenetsor eseményindító:
 
 #### <a name="version-3x"></a>Verzió 3.x
 
@@ -374,6 +462,8 @@ static void Main()
 }
 ```
 
+További részletekért tekintse meg a [Queue storage kötés cikk](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings).
+
 #### <a name="version-2x"></a>Verzió 2.x
 
 ```cs
@@ -388,6 +478,64 @@ static void Main(string[] args)
     host.RunAndBlock();
 }
 ```
+
+További részletekért tekintse meg a [v1.x host.json-referencia](../azure-functions/functions-host-json-v1.md#queues).
+
+### <a name="sendgrid-binding-configuration-version-3x"></a>A SendGrid kötés configuration (verzió 3.x)
+
+A következő példa bemutatja, hogyan konfigurálhatja a SendGrid kimeneti kötést:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+        b.AddSendGrid(a =>
+        {
+            a.FromAddress.Email = "samples@functions.com";
+            a.FromAddress.Name = "Azure Functions";
+        });
+    });
+    var host = builder.Build();
+    using (host)
+    {
+
+        host.Run();
+    }
+}
+```
+
+További részletekért tekintse meg a [SendGrid kötés cikk](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings).
+
+### <a name="service-bus-trigger-configuration-version-3x"></a>A Service Bus-trigger konfigurációja (verzió 3.x)
+
+Az alábbi példa bemutatja, hogyan konfigurálhatja a Service Bus-trigger:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+        b.AddServiceBus(sbOptions =>
+        {
+            sbOptions.MessageHandlerOptions.AutoComplete = true;
+            sbOptions.MessageHandlerOptions.MaxConcurrentCalls = 16;
+        });
+    });
+    var host = builder.Build();
+    using (host)
+    {
+
+        host.Run();
+    }
+}
+```
+
+További részletekért tekintse meg a [kötést a cikk a Service Bus](../azure-functions/functions-bindings-service-bus.md#hostjson-settings).
 
 ### <a name="configuration-for-other-bindings"></a>Konfigurációs más kötések
 

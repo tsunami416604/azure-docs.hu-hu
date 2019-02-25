@@ -5,15 +5,15 @@ services: storage
 author: cbrooksmsft
 ms.service: storage
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/22/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ce682263663c0547d9e35a4d29037fd125d8bc6c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c7f7768406ae64615b46abeb396b5469caf2f6e9
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699176"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750650"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -352,6 +352,7 @@ Ha engedélyezi a **engedélyezése a Microsoft-szolgáltatások megbízható...
 |Azure Backup|Microsoft.Backup|Futtassa a biztonsági mentéshez és helyreállításhoz, a nem felügyelt lemezek az iaas-beli virtuális gépeken. (nem felügyelt lemezek esetén szükséges). [További információk](/azure/backup/backup-introduction-to-azure-backup).|
 |Azure Site Recovery|Microsoft.SiteRecovery |Vészhelyreállítás konfigurálása az Azure IaaS virtuális gépek replikációjának engedélyezése. Ez azért szükséges, ha a tűzfal engedélyezve van a gyorsítótár tárfiókja vagy a forrás tárfiókban vagy a célként megadott tárfiók használata.  [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
 |Azure DevTest Labs|Microsoft.DevTestLab|Egyéni rendszerkép létrehozása és az összetevő telepítését. [További információk](/azure/devtest-lab/devtest-lab-overview).|
+|Azure Data Box|Microsoft.DataBox|Az Azure Data Box segítségével az adatok importálása teszi lehetővé. [További információk](/azure/databox/data-box-overview).|
 |Azure Event Grid|Microsoft.EventGrid|A Blob Storage esemény-közzététel engedélyezése, és lehetővé teszi az Event Grid tárolási üzenetsorok közzétételére. Ismerje meg [blob storage-események](/azure/event-grid/event-sources) és [várólisták közzétételét](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Az Event Hubs Capture adatok archiválása. [További](/azure/event-hubs/event-hubs-capture-overview).|
 |Azure-hálózatok|Microsoft.Networking|Store és a hálózati forgalom naplóinak elemzése. [További információk](/azure/network-watcher/network-watcher-packet-capture-overview).|

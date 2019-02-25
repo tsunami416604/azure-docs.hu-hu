@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: eb2a6692c0b00dc4419c601228453a8cfc44c02a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0f444a4ce41a700af4c55795bca95dbbf95003a4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156782"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750021"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Egy IoT DevKit eszköz csatlakoztatása a távoli figyelési megoldásgyorsító
 
@@ -79,7 +79,7 @@ Győződjön meg arról, hogy működik-e a mintaalkalmazáshoz az DevKit eszkö
 
 A mintaalkalmazás futtatásakor a DevKit eszköz telemetriai adatokat küld az érzékelők adataiból Wi-Fi keresztül a megoldásgyorsító. A telemetria megtekintése:
 
-1. Nyissa meg a megoldás irányítópultján, és kattintson a **eszközök**.
+1. Nyissa meg a megoldás irányítópultján, és kattintson a **Device Explorer**.
 
 1. Kattintson az eszköz neve, a fejlesztői készlet. a jobb oldali lapon láthatja a valós idejű DevKit származó telemetria:
 
@@ -87,7 +87,7 @@ A mintaalkalmazás futtatásakor a DevKit eszköz telemetriai adatokat küld az 
 
 ### <a name="control-the-devkit-device"></a>A fejlesztői készlet eszköz vezérléséhez
 
-A távoli figyelési megoldásgyorsító lehetővé teszi, hogy az eszköz távolról vezérelheti. A mintakód látható három módszerrel valósítja meg a **metódus** szakaszban az eszköz a kiválasztásakor a **eszközök** oldalon:
+A távoli figyelési megoldásgyorsító lehetővé teszi, hogy az eszköz távolról vezérelheti. A mintakód látható három módszerrel valósítja meg a **metódus** szakaszban az eszköz a kiválasztásakor a **Device Explorer** oldalon:
 
 ![IoT DevKit módszerek](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-methods.png)
 

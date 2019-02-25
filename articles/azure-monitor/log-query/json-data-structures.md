@@ -1,6 +1,6 @@
 ---
 title: Az Azure Monitor log-lekérdezéseket a karakterláncokkal való munka |} A Microsoft Docs
-description: Ez a cikk egy oktatóanyag az Azure Monitor log analytics az Azure Portalon, lekérdezéséhez és elemezheti a naplófájlok adatait az Azure monitorban.
+description: Ez a cikk egy oktatóanyag az Azure Monitor Log Analytics az Azure Portalon, lekérdezéséhez és elemezheti a naplófájlok adatait az Azure monitorban.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: dda7ef2e4e974ea053f030a3ebe71a16872612b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 718b12c8a66d66a75796f88ef31b5f0f62abbbc4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993724"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750956"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>JSON és a használata adatok struktúrák az Azure Monitor log-lekérdezések
 
 > [!NOTE]
-> Hajtsa végre [Ismerkedés az Azure Monitor log-analytics](get-started-portal.md) és [Ismerkedés az Azure Monitor log-lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
+> Hajtsa végre [Ismerkedés az Azure Monitor Log-Analytics](get-started-portal.md) és [Ismerkedés az Azure Monitor log-lekérdezések](get-started-queries.md) ebben a leckében befejezése előtt.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

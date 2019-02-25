@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
-ms.openlocfilehash: b1cf3dc24482da70372f775d0ba63a203df1b285
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f96c3a693ce8fc099374c998b35ce2fa90f4bb3f
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572261"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56753719"
 ---
 Néhány Bing-válaszok a miniatűr képekhez, a Bing által kiszolgált URL-címeket tartalmazza. Előfordulhat, hogy átméretezése és vágja körül, a miniatűr képeket. 
 
@@ -17,11 +17,11 @@ Néhány Bing-válaszok a miniatűr képekhez, a Bing által kiszolgált URL-cí
 > Győződjön meg, hogy a mérete, és a miniatűr vágása adja meg a Keresés a forgatókönyv és a keresési Bing-API használatával szükség szerint a harmadik fél jogainak tiszteletben és megjelenítési követelményeihez.
 
 
-Egy kép átméretezéséhez közé tartozik a magassági és szélességi lekérdezési paramétert a Miniatűr URL-címben. Adja meg a szélességét és magasságát (képpontban). Példa:  
+Egy kép átméretezéséhez, például a szélesség lekérdezés h paramétert (magasság) lekérdezési paraméter vagy mindkettő a Miniatűr URL-címben. Adja meg a szélességét és magasságát (képpontban). Példa:  
   
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=200&h=200`  
   
-Ha a kép átméretezéséhez a méretarányt változatlan marad. Az eredeti oldalarányok fenntartásához, fehér kitöltés a kép szegélyének lehet hozzáadni. Például levágás nélküli átméretez egy 200 x 200 480 x 359-lemezképet, ha a teljes szélesség lemezképét tartalmazza, de magasságát tartalmaz, a felső és alsó kép padding fehér 25 képpont. Ugyanez igaz lenne, ha a rendszerkép lett 359 x 480-as kivételével a bal és jobb oldali szegély tartalmazná fehér kitöltési. Ha a kép levágja, fehér margó nem kerül.  
+Ha csak a szélességét, vagy csak a magasság lekérdezési paramétert ad meg, a Bing a kép eredeti oldalarányok tart fenn. Ha szélességének és magasságának is megadhat, és nem megmaradjanak a kép eredeti oldalarányának megőrzésével, a Bing fehér kitöltési hozzáadása a kép szegélyének. Például levágás nélküli átméretez egy 200 x 200 480 x 359-lemezképet, ha a teljes szélesség lemezképét tartalmazza, de magasságát tartalmaz, a felső és alsó kép padding fehér 25 képpont. Ugyanez igaz lenne, ha a rendszerkép lett 359 x 480-as kivételével a bal és jobb oldali szegély tartalmazná fehér kitöltési. Ha a kép levágja, fehér margó nem kerül.  
 
  
 Az alábbi képen az eredeti méretével, egy miniatűrképet (300 x 480-as).  

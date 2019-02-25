@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/25/2019
+ms.date: 02/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: d730efe8b09f167aaba2a4aa8e33446d44171c53
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 97f9c893487b486bd76031cb6321fe100321931d
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340847"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750718"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 
@@ -68,6 +68,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [Hagyományos tároló fiók fő operátora – szolgáltatási szerepkör](#classic-storage-account-key-operator-service-role) | A hagyományos tárfiók kulcsának operátorai jogosultak a hagyományos tárfiókokhoz tartozó kulcsok listázására és újragenerálására |
 | [Virtuális gépek hagyományos Közreműködője](#classic-virtual-machine-contributor) | Lehetővé teszi a hagyományos virtuális gépek kezelését, de ezekhez nem biztosít hozzáférést, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
 | [A cognitive Services-közreműködő](#cognitive-services-contributor) | Lehetővé teszi, hogy létrehozása, olvasása, frissítése, törlése és a Cognitive Services, kulcsok kezelése. |
+| [A cognitive Services-adatok olvasója (minta)](#cognitive-services-data-reader-preview) | Lehetővé teszi a Cognitive Services-adatok olvasása. |
 | [A cognitive Services-felhasználó](#cognitive-services-user) | Lehetővé teszi, hogy Ön elolvassa és a Cognitive Services, kulcsok listázását. |
 | [A cosmos DB-fiók olvasói szerepköre](#cosmos-db-account-reader-role) | Olvashatja az Azure Cosmos DB-fiókja adatait. Lásd: [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) kezeléséhez az Azure Cosmos DB-fiókokhoz. |
 | [CosmosBackupOperator](#cosmosbackupoperator) | Cosmos DB-adatbázis vagy fióktároló visszaállítására vonatkozó kérelmet küldhet. |
@@ -113,6 +114,9 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [Site Recovery-közreműködő](#site-recovery-contributor) | Lehetővé teszi a Site Recovery szolgáltatás felügyeletét, kivéve a tárolók létrehozását és a szerepkör-hozzárendelést |
 | [Site Recovery-operátor](#site-recovery-operator) | Lehetővé teszi a feladatátvételt és a feladat-visszavételt, de nem biztosít egyéb Site Recovery-beli felügyeleti műveleteket |
 | [Site Recovery-olvasó](#site-recovery-reader) | Lehetővé teszi a Site Recovery állapotának megtekintését, de nem biztosít egyéb felügyeleti műveleteket |
+| [Térbeli horgonyok közreműködő](#spatial-anchors-account-contributor) | Lehetővé teszi, hogy térbeli horgonyok kezelése a fiókban, de ne törölje őket |
+| [Térbeli horgonyok fiók tulajdonosa](#spatial-anchors-account-owner) | Lehetővé teszi a fiókjában, beleértve a törlésük térbeli horgonyok kezelését |
+| [Térbeli horgonyok fiók olvasó](#spatial-anchors-account-reader) | Keresse meg és a fiókban térbeli horgonyok tulajdonságainak olvasása |
 | [SQL-Adatbázisok Közreműködője](#sql-db-contributor) | Lehetővé teszi az SQL Database-adatbázisok kezelését, ezekhez nem biztosít hozzáférést. Emellett a biztonsággal kapcsolatos házirendjeiket vagy a szülő SQL Server nem tudja kezelni. |
 | [SQL Security Manager](#sql-security-manager) | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok biztonsági házirendjeinek felügyeletére az azokhoz való hozzáférés nélkül. |
 | [SQL Server Contributor](#sql-server-contributor) | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok felügyeletére az azokhoz való hozzáférés nélkül. Az adatbázisok biztonsági házirendjeinek felügyeletét nem teszi lehetővé. |
@@ -122,6 +126,8 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [Tárolási Blob adatok tulajdonosa (előzetes verzió)](#storage-blob-data-owner-preview) | Teljes hozzáférést engedélyez az Azure Storage blobtárolóihoz és adataihoz, így a POSIX hozzá-férésvezérlés hozzárendeléséhez is. |
 | [Storage-Blobadatok olvasója (előzetes verzió)](#storage-blob-data-reader-preview) | Azure Storage-blobtárolók és -adatok olvasási hozzáférésének engedélyezése |
 | [Storage-Üzenetsorbeli adatok Közreműködője (előzetes verzió)](#storage-queue-data-contributor-preview) | Azure Storage-üzenetsorok és üzenetsorbeli üzenetek olvasási, írási és törlési hozzáférésének engedélyezése |
+| [Tárolási üzenetsor üzenetet processzor (előzetes verzió)](#storage-queue-data-message-processor-preview) | Lehetővé teszi, hogy a betekintési, kap, és törlési hozzáférésének Azure Storage-üzenetsor üzenetei |
+| [Tárolási üzenetsor adatok üzenet küldője (előzetes verzió)](#storage-queue-data-message-sender-preview) | Lehetővé teszi, hogy az Azure Storage-üzenetsorbeli üzenetek küldéséhez |
 | [Storage-Üzenetsorbeli adatok olvasója (előzetes verzió)](#storage-queue-data-reader-preview) | Azure Storage-üzenetsorok és üzenetsorbeli üzenetek olvasási hozzáférésének engedélyezése |
 | [Támogatáskérési közreműködő](#support-request-contributor) | Támogatási kérések létrehozását és kezelését teszi lehetővé |
 | [Traffic Manager-közreműködő](#traffic-manager-contributor) | Lehetővé teszi Traffic Manager-profilok kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
@@ -934,6 +940,21 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
+## <a name="cognitive-services-data-reader-preview"></a>A cognitive Services-adatok olvasója (minta)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi a Cognitive Services-adatok olvasása. |
+> | **Azonosító** | b59867f0-fa02-499b-be73-45a86b5b3e1c |
+> | **Műveletek** |  |
+> | *none* |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.CognitiveServices/*/read |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
 ## <a name="cognitive-services-user"></a>A cognitive Services-felhasználó
 > [!div class="mx-tableFixed"]
 > | | |
@@ -943,11 +964,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Műveletek** |  |
 > | Microsoft.CognitiveServices/*/read |  |
 > | Microsoft.CognitiveServices/accounts/listkeys/action | Kulcsok listázása |
-> | Microsoft.Insights/metricdefinitions/read | A metrikadefiníciók olvasása |
-> | Microsoft.Insights/metrics/read | Metrikák olvasása |
 > | Microsoft.Insights/alertRules/read | Klasszikus metrikaalapú riasztás olvasása |
 > | Microsoft.Insights/diagnosticSettings/read | Erőforrás diagnosztikai beállításának olvasása |
 > | Microsoft.Insights/logDefinitions/read | A naplódefiníciók olvasása |
+> | Microsoft.Insights/metricdefinitions/read | A metrikadefiníciók olvasása |
+> | Microsoft.Insights/metrics/read | Metrikák olvasása |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
 > | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveleteket. |
 > | Microsoft.Resources/subscriptions/operationresults/read | Az előfizetési művelet eredményeinek lekérése. |
@@ -957,7 +978,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **notActions** |  |
 > | *none* |  |
 > | **DataActions** |  |
-> | *none* |  |
+> | Microsoft.CognitiveServices/* |  |
 > | **NotDataActions** |  |
 > | *none* |  |
 
@@ -1177,16 +1198,16 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Kiértékeli a labor házirend. |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | Meglévő virtuális gép tulajdonjogának átvétele |
 > | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | A alkalmazni indítása és leállítása ütemezések sorolja fel, ha van ilyen. |
-> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | A load balancer háttércímkészlet csatlakozik |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Csatlakozik a terheléselosztó bejövő nat-szabály |
+> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | A load balancer háttércímkészlet csatlakozik. Nem Alertable. |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Csatlakozik egy terheléselosztó bejövő nat-szabályt. Nem Alertable. |
 > | Microsoft.Network/networkInterfaces/*/read | Hálózati adapter (például az összes a terheléselosztók, amely a hálózati adapter egy része) tulajdonságainak olvasása |
-> | Microsoft.Network/networkInterfaces/join/action | Csatlakoztatja a virtuális gépek hálózati adapter |
+> | Microsoft.Network/networkInterfaces/join/action | Virtuális gép csatlakozik egy hálózati adapterhez. Nem Alertable. |
 > | Microsoft.Network/networkInterfaces/read | Lekérdezi egy hálózati illesztőjének definícióját.  |
 > | Microsoft.Network/networkInterfaces/write | Hálózati adapter létrehozása vagy frissítése egy meglévő hálózati adaptert.  |
 > | Microsoft.Network/publicIPAddresses/*/read | Nyilvános IP-cím tulajdonságainak olvasása |
-> | Microsoft.Network/publicIPAddresses/join/action | Nyilvános ip-címmel csatlakozik |
+> | Microsoft.Network/publicIPAddresses/join/action | Nyilvános ip-címmel csatlakozik. Nem Alertable. |
 > | Microsoft.Network/publicIPAddresses/read | Lekérdezi egy nyilvános IP-cím cím definíciója. |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Virtuális hálózat csatlakozik |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | Egy virtuális hálózathoz csatlakozik. Nem Alertable. |
 > | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveleteket. |
 > | Microsoft.Resources/deployments/read | Beolvassa vagy listázza az üzemelő példányokat. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
@@ -2033,6 +2054,65 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
+## <a name="spatial-anchors-account-contributor"></a>Spatial Anchors-fiókközreműködő
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi, hogy térbeli horgonyok kezelése a fiókban, de ne törölje őket |
+> | **Azonosító** | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
+> | **Műveletek** |  |
+> | *none* |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Térbeli horgonyokat létrehozni |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Térbeli horgonyok közeli felderítése |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Térbeli horgonyok tulajdonságainak beolvasása |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Keresse meg a térbeli horgonyok |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Az Azure térbeli horgonyok minőségének javítása érdekében a diagnosztikai adatok beküldése |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Térbeli horgonyok tulajdonságainak frissítése |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="spatial-anchors-account-owner"></a>Spatial Anchors-fióktulajdonos
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi a fiókjában, beleértve a törlésük térbeli horgonyok kezelését |
+> | **Azonosító** | 70bbe301-9835-447d-afdd-19eb3167307c |
+> | **Műveletek** |  |
+> | *none* |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Térbeli horgonyokat létrehozni |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | Térbeli kapcsolatok alapjainak törlése |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Térbeli horgonyok közeli felderítése |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Térbeli horgonyok tulajdonságainak beolvasása |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Keresse meg a térbeli horgonyok |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Az Azure térbeli horgonyok minőségének javítása érdekében a diagnosztikai adatok beküldése |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Térbeli horgonyok tulajdonságainak frissítése |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="spatial-anchors-account-reader"></a>Spatial Anchors-fiókolvasó
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Keresse meg és a fiókban térbeli horgonyok tulajdonságainak olvasása |
+> | **Azonosító** | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
+> | **Műveletek** |  |
+> | *none* |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Térbeli horgonyok közeli felderítése |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Térbeli horgonyok tulajdonságainak beolvasása |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Keresse meg a térbeli horgonyok |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Az Azure térbeli horgonyok minőségének javítása érdekében a diagnosztikai adatok beküldése |
+> | **NotDataActions** |  |
+> | *none* |  |
+
 ## <a name="sql-db-contributor"></a>SQL-adatbázisok közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
@@ -2082,7 +2162,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el a Microsoft-engedélyezés |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
-> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Például a storage-fiók vagy az SQL database erőforrás csatlakozik egy alhálózathoz. |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Például a storage-fiók vagy az SQL database erőforrás csatlakozik egy alhálózathoz. Nem alertable. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
@@ -2173,7 +2253,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Authorization/*/read | Olvassa el az összes engedélyt |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
 > | Microsoft.Insights/diagnosticSettings/* | Diagnosztikai beállítások kezelése |
-> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Például a storage-fiók vagy az SQL database erőforrás csatlakozik egy alhálózathoz. |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Például a storage-fiók vagy az SQL database erőforrás csatlakozik egy alhálózathoz. Nem alertable. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
@@ -2267,6 +2347,37 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Üzenet törlésének eredményét adja vissza |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Egy üzenetet ad vissza |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Üzenet írásának eredményét adja vissza |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="storage-queue-data-message-processor-preview"></a>Tárolási üzenetsor üzenetet processzor (előzetes verzió)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi, hogy a betekintési, kap, és törlési hozzáférésének Azure Storage-üzenetsor üzenetei |
+> | **Azonosító** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
+> | **Műveletek** |  |
+> | *none* |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Egy üzenetet ad vissza |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action | Üzenet feldolgozásának eredményét adja vissza |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="storage-queue-data-message-sender-preview"></a>Tárolási üzenetsor adatok üzenet küldője (előzetes verzió)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi, hogy az Azure Storage-üzenetsorbeli üzenetek küldéséhez |
+> | **Azonosító** | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | **Műveletek** |  |
+> | *none* |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | Üzenet hozzáadásának eredményét adja vissza |
 > | **NotDataActions** |  |
 > | *none* |  |
 
@@ -2374,20 +2485,20 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Compute/virtualMachineScaleSets/* | Létrehozása és kezelése a virtual machine scale sets |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
-> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Egy application gateway háttércímkészlet csatlakozik |
-> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | A load balancer háttércímkészlet csatlakozik |
-> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Csatlakozik a terheléselosztó bejövő nat-készlet |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Csatlakozik a terheléselosztó bejövő nat-szabály |
-> | Microsoft.Network/loadBalancers/probes/join/action | Lehetővé teszi, hogy a terheléselosztó a mintavételezők használatával. Az ezen engedély healthProbe tulajdonságot a Virtuálisgép-méretezési csoport például set hivatkozhat a mintavétel. |
+> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Egy application gateway háttércímkészlet csatlakozik. Nem Alertable. |
+> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | A load balancer háttércímkészlet csatlakozik. Nem Alertable. |
+> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Csatlakozik a terheléselosztó bejövő NAT-készlet. Nem alertable. |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Csatlakozik egy terheléselosztó bejövő nat-szabályt. Nem Alertable. |
+> | Microsoft.Network/loadBalancers/probes/join/action | Lehetővé teszi, hogy a terheléselosztó a mintavételezők használatával. Az ezen engedély healthProbe tulajdonságot a Virtuálisgép-méretezési csoport például set hivatkozhat a mintavétel. Nem alertable. |
 > | Microsoft.Network/loadBalancers/read | Load balancer definici beolvasása |
 > | Microsoft.Network/locations/* | Hozzon létre és kezelheti a hálózati helyek |
 > | Microsoft.Network/networkInterfaces/* | Hozzon létre, és a hálózati adapterek kezelése |
-> | Microsoft.Network/networkSecurityGroups/join/action | Csatlakoztatja a hálózati biztonsági csoport |
+> | Microsoft.Network/networkSecurityGroups/join/action | Csatlakoztatja a hálózati biztonsági csoport. Nem Alertable. |
 > | Microsoft.Network/networkSecurityGroups/read | Egy hálózati biztonsági csoport definíció beolvasása |
-> | Microsoft.Network/publicIPAddresses/join/action | Nyilvános ip-címmel csatlakozik |
+> | Microsoft.Network/publicIPAddresses/join/action | Nyilvános ip-címmel csatlakozik. Nem Alertable. |
 > | Microsoft.Network/publicIPAddresses/read | Lekérdezi egy nyilvános IP-cím cím definíciója. |
 > | Microsoft.Network/virtualNetworks/read | A virtuális hálózati definíció beolvasása |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Virtuális hálózat csatlakozik |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | Egy virtuális hálózathoz csatlakozik. Nem Alertable. |
 > | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | A biztonsági másolat védelmi leképezésének létrehozása |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |

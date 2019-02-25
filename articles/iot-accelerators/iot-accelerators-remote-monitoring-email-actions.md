@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 08e80a9baa4c6841b6d88d1c5f2ba69992ffa7ef
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 3e9d7191af3a870f60b40311be03e0ef9d9bf7ad
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977060"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750208"
 ---
 # <a name="add-an-email-action"></a>E-mail-művelet hozzáadása
 
@@ -31,7 +31,7 @@ Kövesse az alábbi lépéseket egy e-mail-művelet hozzáadása egy meglévő s
 
 1. Az a **irányítópult**, keresse meg a **szabályok** oldalon:
 
-    ![Szabályok lap](./media/iot-accelerators-remote-monitoring-email-actions/rules.png)
+    ![Szabályok lap](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
 1. A jelölőnégyzet bejelölésével módosíthatja, és kattintson a meglévő szabály mellett **szerkesztése** tetején. Egy szerkeszthető **szabály** panel jelenik meg.
 
@@ -41,7 +41,7 @@ Kövesse az alábbi lépéseket egy e-mail-művelet hozzáadása egy meglévő s
 
 1. Adjon meg egy e-mail-címet a címzett mezőbe, és nyomja le az **Enter** kulcs minden e-mail-cím hozzáadása:
 
-    ![Cím bejegyzés](./media/iot-accelerators-remote-monitoring-email-actions/address.png)
+    ![Cím bejegyzés](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
 1. Adja meg az e-mail tárgyát.
 
@@ -59,7 +59,7 @@ E-mail-művelet hozzáadása, ha létrehoz egy új szabályt az alábbi lépése
 
 1. Az a **irányítópult**, keresse meg a **szabályok** oldalon:
 
-    ![Szabályok lap](./media/iot-accelerators-remote-monitoring-email-actions/rules.png)
+    ![Szabályok lap](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
 1. Kövesse a [hozzon létre egy szabályt szakaszt](iot-accelerators-remote-monitoring-automate.md#create-a-rule). A következő lépéseit a [egy olyan speciális szabályt](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) szakasz addig a pontig, ahol beállíthat egy **súlyossági szintet**. Ne kattintson **alkalmaz** még.
 
@@ -69,7 +69,7 @@ E-mail-művelet hozzáadása, ha létrehoz egy új szabályt az alábbi lépése
 
 1. Adjon meg egy e-mail-címet a címzett mezőbe, és nyomja le az **Enter** kulcs minden e-mail-cím hozzáadása:
 
-    ![Cím bejegyzés](./media/iot-accelerators-remote-monitoring-email-actions/address.png)
+    ![Cím bejegyzés](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
 1. Adja meg az e-mail tárgyát.
 
@@ -128,7 +128,7 @@ A következő lépések segítségével jelentkezzen be, és állítsa be az e-m
 
 1. Ide kattintva jelentkezzen be az Outlook. Ekkor átkerül az Azure Portalon:
 
-  ![Jelentkezzen be az Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook.png)
+  ![Jelentkezzen be az Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
 
 1. Kattintson a **engedélyezése**. Kéri, hogy jelentkezzen be. A bejelentkezéshez használt fióknak kell lennie az e-mail-cím az alkalmazás használatával küldjön értesítő:
 
@@ -136,7 +136,7 @@ A következő lépések segítségével jelentkezzen be, és állítsa be az e-m
 
 1. Az e-mail-értesítés sikeresen konfigurálta, a következő üzenet jelenik meg:
 
-  ![A sikeres Outlook jelentkezzen be](./media/iot-accelerators-remote-monitoring-email-actions/success.png)
+  ![A sikeres Outlook jelentkezzen be](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
 ## Testre szabhatja az e-mail HTML <a name="htmledit"></a>
 
@@ -168,7 +168,7 @@ A következő lépések bemutatják, hogyan HTML formátumú e-mailt sablon szer
 
 A távoli figyelési megoldásgyorsító Outlook használatával e-mail értesítések küldéséhez. Az Outlook korlátozza az e-mailekhez [30 e-mailek száma 1 percenként](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). Fogadásakor az e-mail-ügyfélprogramokat is előfordulhat, hogy szabályozás küldött e-mailekben percenkénti számát. Ellenőrizze a megadott levelezési ügyfeléről korlátozások. E-mail értesítési szabály beállításakor a szabály kiszámítsa átlagos értékek, legalább egy perces időszak alatt, és nem azonnali értékeket használja:
 
-![Átlagszámítás](./media/iot-accelerators-remote-monitoring-email-actions/calculation.png)
+![Átlagszámítás](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 
 ## <a name="next-steps"></a>További lépések
 

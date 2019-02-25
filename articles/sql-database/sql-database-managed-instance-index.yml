@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 287e4d63ca60200340a88dd45d6b8912a62b74cd
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 92af534642f5e1d56209944a481e244b8cf6207a
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454692"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750096"
 documentType: LandingData
 title: Felügyelt Azure SQL Database-példány
 metadata:
@@ -82,6 +82,7 @@ sections:
     - html: (Előzetes verzió) <a href="https://aka.ms/managed-instance-tde-byok">Saját titkosítási kulcsok használata</a> Bár a migrálás a helyszíni adatbázisok, amelyek már rendelkeznek engedélyezve van a transzparens adattitkosítás (TDE).
     - html: Felügyelt példányok védett <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">beépített tűzfal</a>.
     - html: (Előzetes verzió) <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2019/01/21/recreate-dropped-database-on-azure-sql-managed-instance/">Hozza létre újra az adatbázisok eldobott</a>.
+    - html: Adatbázis neve sp_renamedb eljárás vagy ALTER DATABASE utasítás használatával.
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
