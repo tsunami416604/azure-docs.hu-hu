@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: aschhab
-ms.openlocfilehash: a5d0f457d06bd4e4e655d8f3ebc712f4d6ee7523
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: c2a6acc1ce48a8671af20df6daa89498a81fdb4c
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849906"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587157"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Hogyan használható a Service Bus-üzenettémák és előfizetések a node.js használatával
 
@@ -36,6 +36,8 @@ Ez az útmutató azt ismerteti, hogyan használható a Service Bus-üzenettémá
 Üzenettémakörökkel és előfizetésekkel kapcsolatos további információkért lásd: [további lépések](#next-steps) szakaszban.
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
 Hozzon létre egy üres Node.js-alkalmazás. Node.js-alkalmazás létrehozásával kapcsolatos útmutatóért lásd: [Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre], [Node.js Felhőszolgáltatás] [ Node.js Cloud Service] Windows használatával A PowerShell vagy WebMatrix-webhely.

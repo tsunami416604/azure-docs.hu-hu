@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: jowargo
-ms.openlocfilehash: 7f1a1bd22ecd0b0a7ab64e639683ae316742c5f0
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f2f11abcb3290e1d9459c26167706abc79c1b7fa
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563983"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670332"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Az Azure Notification Hubs leküldéses értesítések: Gyakori kérdések
 
@@ -209,8 +209,6 @@ Telemetriai adatok megtekintése az Azure Notification hubs szolgáltatás segí
 > [!NOTE]
 > Sikeres értesítések, leküldéses értesítések lesz küldve a külső pns-sel (például az Apple APNS) vagy a Google FCM egyszerűen jelenti. A feladata az, hogy az értesítések céleszközökre a PNS. Általában a PNS nem fedi fel kézbesítési metrikák át harmadik félnek.  
 
-Is biztosítunk a funkció a telemetriai adatok programozott módon (a Standard szinten) exportálása. További információkért lásd: a [Notification Hubs metrikák minta].
-
 [Azure Portal]: https://portal.azure.com
 [Notification Hubs díjszabása]: http://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
@@ -229,7 +227,6 @@ Is biztosítunk a funkció a telemetriai adatok programozott módon (a Standard 
 [Notification Hubs leküldéses biztonságos oktatóanyag]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [A Notification Hubs hibáinak elhárítása]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs-metrikák]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[Notification Hubs metrikák minta]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [Regisztrációk Exportálás/importálás]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

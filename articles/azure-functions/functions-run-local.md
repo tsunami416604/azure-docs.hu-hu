@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: a16b9126bb2d5a5daa382417a413c8ceba0cea9a
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b6b8db03c8aa5dd05dcc6f430fbaca5e4f1bf3bc
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649532"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729066"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -156,7 +156,7 @@ A verzió 2.x verzióját az Azure Functions futtatókörnyezettel, explicit mó
 
 [!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
-További információkért lásd: [Azure Functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md#register-binding-extensions).
+További információkért lásd: [Azure Functions eseményindítók és kötések fogalmak](./functions-bindings-expressions-patterns.md).
 
 ## <a name="local-settings-file"></a>Local settings file (Helyi beállításfájl)
 

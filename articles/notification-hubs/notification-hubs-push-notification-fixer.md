@@ -1,5 +1,5 @@
 ---
-title: Az Azure Notification Hubs eldobott értesítési diagnosztizálása
+title: Diagnosztika az Azure Notification Hubs – elvetett értesítések
 description: Megtudhatja, hogyan elvetett értesítések az Azure Notification hubs szolgáltatással kapcsolatos leggyakoribb problémák diagnosztizálásához.
 services: notification-hubs
 documentationcenter: Mobile
@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 9dd6a66ea416ad61682b8e33c6163db3ac345d92
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4419b68a0005ff6e0b5e46f22fba918699f3ba4f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447717"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672202"
 ---
-# <a name="diagnose-dropped-notifications-in-notification-hubs"></a>Elvetett értesítések a Notification Hubs diagnosztizálása
+# <a name="azure-notification-hubs---diagnose-dropped-notifications"></a>Diagnosztika az Azure Notification Hubs – elvetett értesítések
 
 Azure Notification hubs használatával ügyfeleink a leggyakoribb kérdések egyike hibaelhárítása, amikor egy alkalmazásból küldött értesítő e-nem jelennek meg az ügyféleszközökön. Szeretné tudnia, hol és miért értesítések eldobva, hogyan háríthatja el a problémát. Ez a cikk azonosítja, ezért előfordulhat, hogy első eldobott vagy eszközök által nem kapott értesítések. Ismerje meg, hogyan elemezheti és megállapítani a hiba okát.
 
@@ -246,10 +246,7 @@ A portálon az összes tevékenység gyors áttekintést kaphat az értesítési
 
 * **Szoftveres hozzáférés**
 
-Programozott hozzáféréssel kapcsolatos további információkért tanulmányozza a következő cikkeket:
-
-* [Telemetria programozott hozzáférés]  
-* [API-k minta telemetriai adatok elérését]
+Programozott hozzáféréssel kapcsolatos további információkért lásd: [Telemetria programozott hozzáférés]
 
 > [!NOTE]
 > Számos telemetriát funkcióiról, exportálása, például és importálása a regisztrációk és API-k, telemetriai adatok elérését csak a Standard szintű szolgáltatáscsomagban elérhető. Próbálja meg használni, ha ezeket a funkciókat az ingyenes vagy alapszintű szolgáltatásszintet, olyan kivétel üzenetet kap, ha használja az SDK-t, és a egy HTTP 403 (tiltott) hiba közvetlenül a REST API-k az a funkciók használatakor.
@@ -282,4 +279,3 @@ Programozott hozzáféréssel kapcsolatos további információkért tanulmányo
 [A Visual Studio 2013 Update 3 és az Azure SDK 2.4 kibocsátási bejelentése]: http://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
 [EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
 [Telemetria programozott hozzáférés]: http://msdn.microsoft.com/library/azure/dn458823.aspx
-[API-k minta telemetriai adatok elérését]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel

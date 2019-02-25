@@ -2,39 +2,39 @@
 title: Az Azure IoT Hub állapotának figyelése |} A Microsoft Docs
 description: Az Azure Monitor és Azure Resource Health segítségével figyelheti az IoT Hub és a problémák gyorsan diagnosztizálása
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 86e690e5ff437d924b9c548c2d75afb1866b14aa
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 4ecea0efdc7163b4738756d1b54726caf7e96665
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446783"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673086"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának monitorozásához és a problémák gyorsan diagnosztizálása
 
-Azure IoT Hub alkalmazó vállalatok erőforrásaikat a megbízható teljesítmény várható. Segítséget egy közeli nézze meg a műveletek a kezelése, az IoT Hub teljesen integrálva van a [Azure Monitor] [ lnk-AM] és [az Azure Resource Health] [ lnk-ARH]. A két szolgáltatás biztosítja az adatok megőrzése be az IoT-megoldások és kifogástalan állapotban fut párhuzamosan működik. 
+Azure IoT Hub alkalmazó vállalatok erőforrásaikat a megbízható teljesítmény várható. Segítséget egy közeli nézze meg a műveletek a kezelése, az IoT Hub teljesen integrálva van a [Azure Monitor](../azure-monitor/index.yml) és [az Azure Resource Health](../service-health/resource-health-overview.md). A két szolgáltatás működik biztosítani számukra, így az IoT-megoldásait, mentése és kifogástalan állapotban fut szükséges adatokat. 
 
 Az Azure Monitor egyetlen adatforrás a figyelés és naplózás az Azure-szolgáltatásokhoz. Elküldheti a diagnosztikai naplók, amely az Azure Monitor hoz létre a Log Analytics, az Event Hubs vagy Azure Storage egyéni feldolgozáshoz. Az Azure Monitor-metrikák és diagnosztikai beállításait az erőforrások betekintést nyújtanak. Olvassa ebből a cikkből megtudhatja, hogyan [használata az Azure Monitor](#use-azure-monitor) az IoT hubbal. 
 
 > [!IMPORTANT]
 > A diagnosztikai naplók az Azure Monitor használatával az IoT Hub-szolgáltatás által kibocsátott események a rendszer nem garantált, hogy a megbízható és rendezett. Néhány esemény esetleg elvész, vagy -i üzemen kívüli. Diagnosztikai naplók is nincsenek szinkronban kell lennie a valós idejű, és jelentkezzen be a kívánt rendeltetési események több percig is eltarthat.
 
-Az Azure Resource Health segítségével diagnosztizálhatja és a támogatás igénylésében, ha egy Azure-beli probléma kihat az erőforrásaira. A személyre szabott irányítópultok az IoT-központok biztosít a jelenlegi és korábbi állapotát. Olvassa ebből a cikkből megtudhatja, hogyan [használata az Azure Resource Health](#use-azure-resource-health) az IoT hubbal. 
+Az Azure Resource Health segítségével diagnosztizálhatja és a támogatás igénylésében, ha egy Azure-beli probléma kihat az erőforrásaira. Egy irányítópult aktuális és korábbi állapotát az egyes IoT-központok biztosít. Folytassa a szakasz alján, ebből a cikkből megtudhatja, hogyan [használata az Azure Resource Health](#use-azure-resource-health) az IoT hubbal. 
 
-IoT Hub is biztosít a saját mérőszámok, amelyek segítségével az IoT-erőforrások állapotának ismertetése. További tudnivalókért lásd: [megismerheti az IoT Hub-metrikák][lnk-metrics].
+IoT Hub is biztosít a saját mérőszámok, amelyek segítségével az IoT-erőforrások állapotának ismertetése. További tudnivalókért lásd: [megismerheti az IoT Hub-metrikák](iot-hub-metrics.md).
 
 ## <a name="use-azure-monitor"></a>Az Azure Monitor használata
 
 Az Azure Monitor biztosít a diagnosztikai adatokat az Azure-erőforrásokhoz, ami azt jelenti, hogy figyelemmel kísérheti a műveleteket, az IoT hub között kerül sor. 
 
-Az Azure Monitor diagnosztikai beállításait lecseréli az IoT Hub-műveletek monitorozása. Ha jelenleg használja a műveletek figyelése, át kell telepítenie a munkafolyamatokat. További információkért lásd: [a műveletek figyelése a diagnosztikai beállítások][lnk-migrate].
+Az Azure Monitor diagnosztikai beállításait lecseréli az IoT Hub-műveletek monitorozása. Ha jelenleg használja a műveletek figyelése, át kell telepítenie a munkafolyamatokat. További információkért lásd: [a műveletek figyelése a diagnosztikai beállítások](iot-hub-migrate-to-diagnostics-settings.md).
 
-Az adott mérőszámok és eseményeket figyeli az Azure Monitor kapcsolatos további információkért lásd: [az Azure monitorban támogatott mérőszámok] [ lnk-AM-metrics] és [támogatott szolgáltatások, sémákat és kategóriák az Azure-hoz Diagnosztikai naplók][lnk-AM-schemas].
+Az adott mérőszámok és eseményeket figyeli az Azure Monitor kapcsolatos további információkért lásd: [az Azure monitorban támogatott mérőszámok](../azure-monitor/platform/metrics-supported.md) és [támogatott szolgáltatások, sémákat és kategóriák az Azure diagnosztikai naplók](../azure-monitor/platform/diagnostic-logs-schema.md).
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
@@ -47,7 +47,7 @@ Az Azure Monitor nyomon követi az IoT Hub előforduló különféle műveletek.
 A kapcsolatok kategóriában nyomon követi eszköz csatlakoztatása, és események leválasztása az IoT hubra, valamint a hibák. Ez a kategória jogosulatlan kapcsolódási kísérletek azonosításával és vagy a riasztás az eszköz kapcsolata megszakad, ha hasznos.
 
 > [!NOTE]
-> Az eszközök megbízható kapcsolat állapotának ellenőrzése [eszköz szívverés][lnk-devguide-heartbeat].
+> Az eszközök megbízható kapcsolat állapotának ellenőrzése [eszköz szívverés](iot-hub-devguide-identity-registry.md#device-heartbeat).
 
 
 ```json
@@ -311,9 +311,9 @@ A közvetlen metódusok kategória nyomon követi a kérés-válasz interakciók
 
 #### <a name="distributed-tracing-preview"></a>Elosztott nyomkövetési (előzetes verzió)
 
-Kategória elosztott nyomkövetést korrelációs azonosítók, amelyek a nyomkövetési környezet fejléc üzenetek követi nyomon. Ezek a naplók teljes engedélyezéséhez ügyféloldali kóddal frissíteni kell a következő [elemzés és diagnosztizálhatja a IoT alkalmazások – teljes körű az IoT Hub elosztott nyomkövetést (előzetes verzió)](iot-hub-distributed-tracing.md).
+Kategória elosztott nyomkövetést korrelációs azonosítók, amelyek a nyomkövetési környezet fejléc üzenetek követi nyomon. Ezek a naplók teljes engedélyezéséhez ügyféloldali kódot frissíteni kell a következő [elemzés és diagnosztizálhatja a IoT alkalmazások – teljes körű az IoT Hub elosztott nyomkövetést (előzetes verzió)](iot-hub-distributed-tracing.md).
 
-Vegye figyelembe, hogy `correlationId` , és megfelelnek a [W3C nyomkövetési környezet](https://github.com/w3c/trace-context) javaslatot, ha tartalmaz egy `trace-id` , valamint egy `span-id`. 
+Vegye figyelembe, hogy `correlationId` megfelel-e a [W3C nyomkövetési környezet](https://github.com/w3c/trace-context) javaslatot, ha tartalmaz egy `trace-id` , valamint egy `span-id`. 
 
 ##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C (device-to-cloud) logs
 
@@ -487,28 +487,18 @@ class Program 
 
 Az Azure Resource Health segítségével figyelheti az IoT hub működik-e. Emellett megismerjük, akár regionális kimaradás az IoT hub állapotának negatív hatással van. Szeretné megtudni, részletes adatait az Azure IoT Hub állapotát, akkor javasoljuk, hogy Ön [használata az Azure Monitor](#use-azure-monitor). 
 
-Az Azure IoT Hub egy regionális szinten állapotát jelzi. Regionális kimaradás hatással van az IoT hubhoz, ha az állapot mutatja **ismeretlen**. További tudnivalókért lásd: [erőforrástípusok és állapot-ellenőrzések a az Azure resource health segítségével elérhető][lnk-ARH-checks].
+Az Azure IoT Hub egy regionális szinten állapotát jelzi. Regionális kimaradás hatással van az IoT hubhoz, ha az állapot mutatja **ismeretlen**. További tudnivalókért lásd: [erőforrástípusok és állapot-ellenőrzések a az Azure resource health segítségével elérhető](../service-health/resource-health-checks-resource-types.md).
 
 Az IoT hub állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Navigáljon a **Service Health** > **a Resource health**.
-1. A legördülő mezőben válassza ki az előfizetését és **az IoT Hub**.
+1. A legördülő mezőben válassza ki az előfizetését, majd válassza ki **az IoT Hub** erőforrás típusaként.
 
-Egészségügyi adatok értelmezése kapcsolatos további információkért lásd: [az Azure resource health áttekintése][lnk-ARH]
+Egészségügyi adatok értelmezése kapcsolatos további információkért lásd: [az Azure resource health áttekintése](../service-health/resource-health-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Megismerheti az IoT Hub-metrikák][lnk-metrics]
-- [IoT távoli figyelés és értesítések az Azure Logic Apps csatlakoztatása az IoT hub és a postaláda][lnk-monitoring-notifications]
+- [Megismerheti az IoT Hub-metrikák](iot-hub-metrics.md)
+- [IoT távoli figyelés és értesítések az Azure Logic Apps csatlakoztatása az IoT hub és a postaláda](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
-
-[lnk-AM]: ../azure-monitor/index.yml
-[lnk-ARH]: ../service-health/resource-health-overview.md
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-migrate]: iot-hub-migrate-to-diagnostics-settings.md
-[lnk-AM-metrics]: ../azure-monitor/platform/metrics-supported.md
-[lnk-AM-schemas]: ../azure-monitor/platform/diagnostic-logs-schema.md
-[lnk-ARH-checks]: ../service-health/resource-health-checks-resource-types.md
-[lnk-monitoring-notifications]: iot-hub-monitoring-notifications-with-azure-logic-apps.md
-[lnk-devguide-heartbeat]: iot-hub-devguide-identity-registry.md#device-heartbeat
